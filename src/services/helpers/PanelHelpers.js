@@ -218,7 +218,6 @@ export function createEventPagination(statusService) {
             <div class="page-input-container">
                 <span class="page-label">Page</span>
                 <input type="number" id="pageInput" class="page-input" min="1" value="1" title="Enter page number">
-                <span class="page-total" id="pageTotal">/ 1</span>
             </div>
         </div>
     `;

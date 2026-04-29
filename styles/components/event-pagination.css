@@ -513,6 +513,23 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
 }
 
 /*
+ * Mobile portrait only: no side border art, no trapezium cap (controls live in .page-controls-row--mobile-only).
+ * Narrow landscape keeps the cap — matches JS isMobilePortrait (width ≤768 && height > width).
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-top-cap-row {
+        display: none !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) {
+        --dock-border-img-h: 0px;
+        --dock-trapezoid-offset-y: 0px;
+        --dock-top-cap-lift: 0px;
+        --dock-trapezoid-rail-shift-y: 0px;
+    }
+}
+
+/*
  * Mobile-locked dock: match desktop collapsed slots (dark numerals on white — base .event-number-btn is color: white).
  */
 body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__key {
@@ -816,6 +833,148 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
         width: 24px !important;
         height: 24px !important;
         margin-right: 6px !important;
+    }
+}
+
+/*
+ * Mobile portrait + dock: one flat chip row (no skew). Scoped to mobile-locked + portrait; desktop unchanged.
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only {
+        gap: 6px;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding: 8px clamp(8px, 3vw, 16px);
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .globe-control-btn.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #globalImageToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #filtersToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #eventsManageToggle.dock-globe-rail__btn {
+        flex: 0 0 auto !important;
+        min-width: 44px !important;
+        width: auto !important;
+        max-width: none !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        max-height: 44px !important;
+        padding: 0 10px !important;
+        margin: 0 !important;
+        transform: none !important;
+        border-radius: 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.38) !important;
+        background: var(--btn-primary-bg) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+    }
+
+    /*
+     * Row chrome: fixed 44×44 icon chips. The block above sets width:auto on all
+     * .globe-control-btn.dock-globe-rail__btn; this pins every dock icon + hub toggle to the same footprint.
+     */
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #prevPageBtn.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #nextPageBtn.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #prevEventBtn.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #nextEventBtn.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #globalImageToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #filtersToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #eventsManageToggle.dock-globe-rail__btn {
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > .globe-control-btn.dock-globe-rail__btn
+        > *,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #globalImageToggle.dock-globe-rail__btn
+        > *,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #filtersToggle.dock-globe-rail__btn
+        > *,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #eventsManageToggle.dock-globe-rail__btn
+        > *,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > .globe-control-btn.dock-globe-rail__btn
+        [id$='Icon'] {
+        transform: none !important;
+    }
+
+    /* Next page / next event: mirror arrow & double-arrow (prev rules clear all [id$=Icon] transforms). */
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #nextPageBtn.dock-globe-rail__btn
+        [id$='Icon'].icon-flip-h,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #nextEventBtn.dock-globe-rail__btn
+        [id$='Icon'].icon-flip-h {
+        transform: scaleX(-1) !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .globe-control-btn.dock-globe-rail__btn img,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #globalImageToggle.dock-globe-rail__btn
+        img,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #filtersToggle.dock-globe-rail__btn
+        img,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #eventsManageToggle.dock-globe-rail__btn
+        img {
+        transform: none !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .globe-control-btn.dock-globe-rail__btn:hover,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #globalImageToggle.dock-globe-rail__btn:hover,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #filtersToggle.dock-globe-rail__btn:hover,
+    body.pagination-dock-mobile-locked:has(#paginationDock)
+        .page-controls-row--mobile-only
+        > #eventsManageToggle.dock-globe-rail__btn:hover {
+        transform: none !important;
+        background: var(--btn-primary-bg-hover) !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .page-input-container {
+        min-height: 44px !important;
+        height: 44px !important;
+        max-height: 44px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+        border-radius: 10px !important;
+        background: var(--btn-primary-bg) !important;
+        border: 1px solid rgba(255, 255, 255, 0.38) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28) !important;
+        max-width: min(200px, 40vw) !important;
+        box-sizing: border-box !important;
+    }
+
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .page-input-container .page-input {
+        height: 30px !important;
+        max-height: 30px !important;
     }
 }
 
@@ -2181,6 +2340,44 @@ button.event-number-btn.locked,
         background: #f3f3f3 !important;
         transform: skewX(var(--thumb-skew)) scale(1.06);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
+    }
+}
+
+/*
+ * Desktop landscape: shorter dock than portrait / variables.css default — vh-capped band + compact thumbs.
+ * Collapsed dock (200px !important) and mobile-locked unchanged.
+ */
+@media (min-width: 769px) and (min-height: 600px) and (orientation: landscape) {
+    body:has(#paginationDock):not(.pagination-dock-mobile-locked):not(.pagination-dock-collapsed) {
+        --pagination-dock-height: clamp(220px, 20vh, 236px);
+    }
+
+    body:has(#paginationDock):not(.pagination-dock-mobile-locked) .event-pagination {
+        padding-top: 8px;
+        padding-bottom: 6px;
+        gap: 8px;
+    }
+
+    body:has(#paginationDock):not(.pagination-dock-mobile-locked) .event-page-slider-row {
+        min-height: 36px;
+        padding: 2px 0 4px;
+    }
+
+    .event-number-buttons.event-number-buttons--thumbs-desktop {
+        --thumb-outline-y: 5px;
+        gap: 10px;
+        padding-top: calc(var(--thumb-outline-y) + 1px);
+        padding-bottom: calc(var(--thumb-outline-y) + 1px);
+    }
+
+    .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
+        min-height: calc(84px + 2 * var(--thumb-outline-y));
+        max-height: calc(108px + 2 * var(--thumb-outline-y));
+    }
+
+    .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__visual {
+        min-height: 84px;
+        max-height: 180px;
     }
 }
 

@@ -206,7 +206,7 @@ export function handlePageInputChange(inputValue, dataModel, wrappedUpdatePagina
  * @param {HTMLElement} prevBtn - Previous button element
  * @param {HTMLElement} nextBtn - Next button element
  * @param {HTMLElement} pageInput - Page input element
- * @param {HTMLElement} pageTotal - Page total element
+ * @param {HTMLElement|null|undefined} pageTotal - Optional “/ N” span (omitted in current markup)
  * @param {Object} dataModel - DataModel instance
  */
 export function updatePaginationButtonStates(prevBtn, nextBtn, pageInput, pageTotal, dataModel) {
@@ -216,7 +216,7 @@ export function updatePaginationButtonStates(prevBtn, nextBtn, pageInput, pageTo
     // Update input value (without triggering change event)
     pageInput.value = currentPage;
     pageInput.max = totalPages;
-    pageTotal.textContent = `/ ${totalPages}`;
+    if (pageTotal) pageTotal.textContent = `/ ${totalPages}`;
     
     /* Icons are images in markup; only titles + disabled update here */
     if (totalPages > 1) {
