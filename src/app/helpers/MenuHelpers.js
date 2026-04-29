@@ -9,6 +9,51 @@ import { createGlobeControlButton } from './ComponentLoadHelpers.js';
 import { shouldEventBeLocked } from '../../managers/helpers/MarkerCreationHelpers.js';
 import { EventMarkerManager } from '../../managers/EventMarkerManager.js';
 
+function teardownMenuHelpersEventSystemLayout() {
+    const st = window.__menuHelpersEventSystemLayout;
+    if (!st) return;
+    if (st.moveChrome) {
+        window.removeEventListener('resize', st.moveChrome);
+        window.removeEventListener('orientationchange', st.moveChrome);
+    }
+    if (st.moveDock) {
+        window.removeEventListener('resize', st.moveDock);
+        window.removeEventListener('orientationchange', st.moveDock);
+    }
+    window.__menuHelpersEventSystemLayout = null;
+}
+
+/** Remove stray dock/pagination chrome so a second Event System load cannot double-mount controls */
+function sweepEventSystemDockOrphans() {
+    const ids = [
+        'prevPageBtn',
+        'prevEventBtn',
+        'nextEventBtn',
+        'nextPageBtn',
+        'globalImageToggle',
+        'filtersToggle',
+        'eventsManageToggle',
+        'pageInput',
+        'pageTotal',
+    ];
+    ids.forEach((id) => document.getElementById(id)?.remove());
+    document.querySelectorAll('.page-input-container').forEach((el) => el.remove());
+}
+
+function ensureDockGlobeRailCenterRestored() {
+    if (document.getElementById('dockGlobeRailCenter')) return;
+    const el = document.createElement('div');
+    el.id = 'dockGlobeRailCenter';
+    el.className = 'dock-globe-rail dock-globe-rail--center';
+    el.setAttribute('aria-label', 'Pagination and navigation');
+    const left = document.getElementById('dockGlobeRailLeft');
+    if (left?.parentNode) {
+        left.parentNode.insertBefore(el, left.nextSibling);
+    } else {
+        document.body.appendChild(el);
+    }
+}
+
 /** WAAPI keyframes for page turn animation - matches globe implementation */
 function thumbPageTurnShrinkKeyframes(isThumbsDesktop, locked) {
     if (isThumbsDesktop) {
@@ -816,6 +861,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
             // LOAD
             updateStatus('Loading Event System...', 'info');
             try {
+                teardownMenuHelpersEventSystemLayout();
+                sweepEventSystemDockOrphans();
+
                 // Create event buttons (dev-only: hide eventsManageToggle on GitHub Pages)
                 const isGitHubPages = window.location.hostname.includes('github.io');
                 if (!isGitHubPages) {
@@ -1015,8 +1063,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             pageControlsRow.insertBefore(filtersBtn, pageInputContainer.nextSibling);
                         }
                         // Keep mobile portrait pagination order stable:
-                        // Prev Event, Prev Page, Page box, Next Event, Next Page.
-                        const mobileCenterOrder = [prevEventBtn, prevPageBtn, pageInputContainer, nextEventBtn, nextPageBtn];
+                        // Prev Page, Prev Event, Page box, Next Event, Next Page.
+                        const mobileCenterOrder = [prevPageBtn, prevEventBtn, pageInputContainer, nextEventBtn, nextPageBtn];
                         mobileCenterOrder.forEach((element) => {
                             if (element && element.parentElement === pageControlsRow) {
                                 pageControlsRow.appendChild(element);
@@ -1050,7 +1098,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                 // Run immediately
                 moveButtonsToPageControlsRow();
 
-                // Also run on window resize/orientation change
+                window.__menuHelpersEventSystemLayout = {
+                    moveChrome: moveButtonsToPageControlsRow,
+                    moveDock: null,
+                };
                 window.addEventListener('resize', moveButtonsToPageControlsRow);
                 window.addEventListener('orientationchange', moveButtonsToPageControlsRow);
 
@@ -1164,10 +1215,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                     const filtersBtn = document.getElementById('filtersToggle');
                     const eventsBtn = document.getElementById('eventsManageToggle');
                     
-                    /* Dock bar: Prev Event, Prev Page, Image, Textbox, Filters, Next Event, Next Page (image/filters join center rail when trapezoid dock). */
+                    /* Dock bar: Prev Page, Prev Event, Image, Textbox, Filters, Next Event, Next Page (image/filters join center rail when trapezoid dock). */
                     const centerChromeDockBarOrder = [
-                        prevEventBtn,
                         prevPageBtn,
+                        prevEventBtn,
                         globalImageToggleBtn,
                         pageInputContainer,
                         filtersBtn,
@@ -1175,8 +1226,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         nextPageBtn,
                     ];
                     const centerChromePaginationOnly = [
-                        prevEventBtn,
                         prevPageBtn,
+                        prevEventBtn,
                         pageInputContainer,
                         nextEventBtn,
                         nextPageBtn,
@@ -1207,6 +1258,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                   : centerChromePaginationOnly;
 
                         centerTargets.forEach((element) => {
+                            // Skip elements that no longer exist in document (unloaded)
+                            if (!element || !element.isConnected) return;
                             if (element) {
                                 if (isMobilePortrait && pageControlsRow) {
                                     if (element.parentElement !== pageControlsRow) {
@@ -1229,30 +1282,54 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 }
                             }
                         });
+
+                        // Keep trapezoid center rail deterministic: exactly 7 controls in order.
+                        // Use .page-input-container (not #pageInput): moving the input alone leaves "/ 1" orphaned and appendChild puts it after #nextPageBtn.
+                        if (useTrapezoidSideChrome && centerRail) {
+                            const pageInputWrap =
+                                document.querySelector('#eventPagination .page-input-container') ||
+                                document.querySelector('.page-input-container');
+                            const orderedChrome = [
+                                document.getElementById('prevPageBtn'),
+                                document.getElementById('prevEventBtn'),
+                                document.getElementById('globalImageToggle'),
+                                pageInputWrap,
+                                document.getElementById('filtersToggle'),
+                                document.getElementById('nextEventBtn'),
+                                document.getElementById('nextPageBtn'),
+                            ].filter(Boolean);
+                            orderedChrome.forEach((element) => {
+                                if (!element.isConnected) return;
+                                clearDockChromeMoveStyles(element);
+                                centerRail.appendChild(element);
+                            });
+                        }
                         
                         const rightRailTargets = useTrapezoidSideChrome
                             ? [eventsBtn]
                             : [globalImageToggleBtn, filtersBtn, eventsBtn];
 
                         rightRailTargets.forEach((element) => {
-                            if (element) {
-                                if (isMobilePortrait && pageControlsRow) {
-                                    if (element.parentElement !== pageControlsRow) {
-                                        clearDockChromeMoveStyles(element);
-                                        pageControlsRow.appendChild(element);
-                                    }
-                                } else if (rightRail) {
-                                    if (element.parentElement !== rightRail) {
-                                        clearDockChromeMoveStyles(element);
-                                        rightRail.appendChild(element);
-                                    }
+                            // Skip elements that no longer exist in document (unloaded)
+                            if (!element || !element.isConnected) return;
+                            if (isMobilePortrait && pageControlsRow) {
+                                if (element.parentElement !== pageControlsRow) {
+                                    clearDockChromeMoveStyles(element);
+                                    pageControlsRow.appendChild(element);
+                                }
+                            } else if (rightRail) {
+                                if (element.parentElement !== rightRail) {
+                                    clearDockChromeMoveStyles(element);
+                                    rightRail.appendChild(element);
                                 }
                             }
                         });
 
                         if (!useTrapezoidSideChrome && !isMobilePortrait && rightRail) {
                             [globalImageToggleBtn, filtersBtn].forEach((element) => {
-                                if (element && element.parentElement !== rightRail) {
+                                // Skip elements that no longer exist in document (unloaded)
+                                if (!element || !element.isConnected) return;
+                                if (element.parentElement !== rightRail) {
                                     clearDockChromeMoveStyles(element);
                                     rightRail.appendChild(element);
                                 }
@@ -1265,95 +1342,23 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 ...centerChromeDockBarOrder.filter((el) => el && el !== eventsBtn),
                             ].filter(Boolean);
                             mobileDockOrder.forEach((element) => {
-                                if (element && element.parentElement === pageControlsRow) {
+                                // Skip elements that no longer exist in document (unloaded)
+                                if (!element || !element.isConnected) return;
+                                if (element.parentElement === pageControlsRow) {
                                     pageControlsRow.appendChild(element);
                                 }
                             });
                         }
 
-                        if (!isMobilePortrait && centerRail) {
-                            const centerOrder = useTrapezoidSideChrome
-                                ? centerChromeDockBarOrder
-                                : centerChromePaginationOnly;
-                            const currentCenterChildren = Array.from(centerRail.children);
-                            
-                            // Check if elements are in correct order
-                            let needsReorder = false;
-                            centerOrder.forEach((element, index) => {
-                                if (element) {
-                                    const currentIndex = currentCenterChildren.indexOf(element);
-                                    if (currentIndex === -1 || currentIndex !== index) {
-                                        needsReorder = true;
-                                    }
-                                }
-                            });
-                            
-                            // Only reorder if needed
-                            if (needsReorder) {
-                                console.log('[DEBUG] Reordering center rail elements');
-                                centerOrder.forEach((element, index) => {
-                                    if (element) {
-                                        const nextSibling = centerOrder.slice(index + 1).find(el => el && el.parentElement === centerRail);
-                                        if (nextSibling) {
-                                            centerRail.insertBefore(element, nextSibling);
-                                        } else {
-                                            centerRail.appendChild(element);
-                                        }
-                                    }
-                                });
-                            }
-                        }
-                        
-                        // On desktop, order right rail elements (dock without trapezoid: all three; with trapezoid: Events only)
-                        if (!isMobilePortrait && rightRail) {
-                            const rightOrder = useTrapezoidSideChrome
-                                ? [eventsBtn]
-                                : [globalImageToggleBtn, filtersBtn, eventsBtn];
-                            const currentRightChildren = Array.from(rightRail.children);
-                            
-                            // Check if elements are in correct order
-                            let needsReorder = false;
-                            rightOrder.forEach((element, index) => {
-                                if (element) {
-                                    const currentIndex = currentRightChildren.indexOf(element);
-                                    if (currentIndex === -1 || currentIndex !== index) {
-                                        needsReorder = true;
-                                    }
-                                }
-                            });
-                            
-                            // Only reorder if needed
-                            if (needsReorder) {
-                                console.log('[DEBUG] Reordering right rail elements');
-                                rightOrder.forEach((element, index) => {
-                                    if (element) {
-                                        const nextSibling = rightOrder.slice(index + 1).find(el => el && el.parentElement === rightRail);
-                                        if (nextSibling) {
-                                            rightRail.insertBefore(element, nextSibling);
-                                        } else {
-                                            rightRail.appendChild(element);
-                                        }
-                                    }
-                                });
-                            }
-                        }
                     }
-                    
-                    // Run initially
+
+                    // Run once on init - no MutationObserver to prevent infinite loops
                     moveElements();
-                    
-                    // Watch for dock collapse/expand changes and reposition elements
-                    const observer = new MutationObserver(() => {
-                        moveElements();
-                    });
-                    
-                    // Observe rails + trapezoid for child changes
-                    if (centerRail) observer.observe(centerRail, { childList: true });
-                    if (rightRail) observer.observe(rightRail, { childList: true });
-                    const trapForObserve = document.querySelector('.pagination-dock-top-trapezoid');
-                    if (trapForObserve) observer.observe(trapForObserve, { childList: true });
-                    
-                    // Also run on resize/orientation change
+
+                    if (!window.__menuHelpersEventSystemLayout) {
+                        window.__menuHelpersEventSystemLayout = {};
+                    }
+                    window.__menuHelpersEventSystemLayout.moveDock = moveElements;
                     window.addEventListener('resize', moveElements);
                     window.addEventListener('orientationchange', moveElements);
                 }, 200);
@@ -5064,6 +5069,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
         } else {
             // UNLOAD
             updateStatus('Unloading news ticker...', 'info');
+            teardownMenuHelpersEventSystemLayout();
 
             // Clear news ticker
             if (window.newsTickerService) {
@@ -5116,6 +5122,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
             if (eventNumberButtons) {
                 eventNumberButtons.innerHTML = '';
             }
+
+            document.getElementById('globalImageToggle')?.remove();
+            document.querySelectorAll('.page-input-container').forEach((el) => el.remove());
+            ensureDockGlobeRailCenterRestored();
 
             // Close events manage panel if open
             const eventsManagePanel = document.getElementById('eventsManagePanel');

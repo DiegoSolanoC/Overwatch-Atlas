@@ -124,19 +124,19 @@ body.color-palette-gray .dock-globe-rail--center > .page-input-container {
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #globalImageToggle.dock-globe-rail__btn,
-body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #filtersToggle.dock-globe-rail__btn {
+body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #globalImageToggle.dock-globe-rail__btn,
+body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #filtersToggle.dock-globe-rail__btn {
     background: var(--btn-gray-bg) !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #globalImageToggle.dock-globe-rail__btn:hover,
-body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #filtersToggle.dock-globe-rail__btn:hover,
+body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #globalImageToggle.dock-globe-rail__btn:hover,
+body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #filtersToggle.dock-globe-rail__btn:hover,
 body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #prevPageBtn:hover,
 body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #nextPageBtn:hover,
 body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #prevEventBtn:hover,
 body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > #nextEventBtn:hover,
-body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center > .page-input-container:hover {
+body.color-palette-gray .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > .page-input-container:hover {
     background: var(--btn-gray-bg-hover) !important;
     border-color: rgba(255, 255, 255, 0.55) !important;
 }

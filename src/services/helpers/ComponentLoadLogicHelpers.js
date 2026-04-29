@@ -313,7 +313,18 @@ function isEventSystemLoadOutActive() {
  * and only do Globe-specific setup (codex toggle, 3D sync)
  */
 export async function loadEventsLogic({ initializeEventManager, createGlobeControlButton, createEventPagination, createFiltersPanel, verifyEventPanels, loadEventSoundEffects, initializeFilterPanel, setupEventManagerListeners, syncEventsWithGlobe, loadSoundEffect, statusService }) {
-    
+
+    // Clear dock rails first to prevent duplicates from previous loads
+    const centerRail = document.getElementById('dockGlobeRailCenter');
+    const rightRail = document.getElementById('dockGlobeRailRight');
+    const paginationElements = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn', 'globalImageToggle', 'filtersToggle', 'eventsManageToggle', 'pageInput', 'pageTotal'];
+    paginationElements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+    });
+    const pageInputContainer = document.querySelector('.page-input-container');
+    if (pageInputContainer) pageInputContainer.remove();
+
     // Check if Event System Load Out already did the heavy lifting
     const eventSystemActive = isEventSystemLoadOutActive();
     
@@ -421,8 +432,23 @@ export async function unloadEventsLogic({ removeElementsByIds, statusService }) 
     // Remove event UI components using helper
     // Note: headerGlobalTimelineBtn, headerConceptGlossaryBtn, and homeBtn are universal
     // header features and persist across mode switches
+
+    // First remove pagination buttons and elements from dock rails/center rail (they may have been moved by moveElements)
+    const paginationElements = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn', 'globalImageToggle', 'filtersToggle', 'pageInput', 'pageTotal'];
+    paginationElements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.remove();
+        }
+    });
+
+    // Also remove page input container if it exists (it may have been moved from eventPagination)
+    const pageInputContainer = document.querySelector('.page-input-container');
+    if (pageInputContainer) {
+        pageInputContainer.remove();
+    }
+
     removeElementsByIds([
-        { id: 'filtersToggle', message: 'Filter button removed' },
         { id: 'eventsManageToggle', message: 'Event manager button removed' },
         { id: 'codexToggle', message: 'Codex button removed' },
         { id: 'eventPagination', message: 'Event pagination removed' },

@@ -168,10 +168,29 @@ export function createFiltersPanel(statusService) {
  * @returns {HTMLElement} - The created pagination element
  */
 export function createEventPagination(statusService) {
+    // Check if pagination already exists
     if (document.getElementById('eventPagination')) {
         return document.getElementById('eventPagination');
     }
-    
+
+    // Also check if pagination buttons already exist (they may have been moved to dock rails)
+    const existingButtons = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn'].filter(
+        id => document.getElementById(id)
+    );
+    if (existingButtons.length > 0) {
+        const existingPagination = document.getElementById('eventPagination');
+        if (existingPagination) {
+            if (statusService) {
+                statusService.update('Pagination already present, skipping creation', 'info');
+            }
+            return existingPagination;
+        }
+        if (statusService) {
+            statusService.update('Removing orphan pagination buttons before rebuild', 'info');
+        }
+        existingButtons.forEach((id) => document.getElementById(id)?.remove());
+    }
+
     if (statusService) {
         statusService.update('Adding event pagination...', 'info');
     }
@@ -189,11 +208,11 @@ export function createEventPagination(statusService) {
             </div>
         </div>
         <div class="event-pagination-thumb-row">
-            <button type="button" id="prevPageBtn" class="page-btn page-btn--thumb-rail page-btn--pagination-arrow" title="Previous Page" aria-label="Previous page"><span class="page-btn__arrow-inner" aria-hidden="true"><img class="ui-pagination-arrow" src="assets/images/icons/Double Arrow.png" alt="" width="28" height="28" decoding="async" /></span></button>
-            <button type="button" id="prevEventBtn" class="page-btn page-btn--thumb-rail page-btn--event-nav" title="Previous Event" aria-label="Previous event"><span class="page-btn__arrow-inner" aria-hidden="true"><img class="ui-pagination-arrow" src="assets/images/icons/Arrow Icon.png" alt="" width="24" height="24" decoding="async" /></span></button>
+            <button type="button" id="prevPageBtn" class="globe-control-btn dock-globe-rail__btn" title="Previous Page" aria-label="Previous page"><span id="prevPageBtnIcon"><img src="assets/images/icons/Double Arrow.png" alt="" decoding="async" style="width: 100%; height: 100%; object-fit: contain;" /></span></button>
+            <button type="button" id="prevEventBtn" class="globe-control-btn dock-globe-rail__btn" title="Previous Event" aria-label="Previous event"><span id="prevEventBtnIcon"><img src="assets/images/icons/Arrow Icon.png" alt="" decoding="async" style="width: 100%; height: 100%; object-fit: contain;" /></span></button>
             <div class="event-number-buttons event-number-buttons--thumbs-desktop" id="eventNumberButtons">${getEventThumbNumberButtonsHtml()}</div>
-            <button type="button" id="nextEventBtn" class="page-btn page-btn--thumb-rail page-btn--event-nav" title="Next Event" aria-label="Next event"><span class="page-btn__arrow-inner page-btn__arrow-inner--next" aria-hidden="true"><img class="ui-pagination-arrow" src="assets/images/icons/Arrow Icon.png" alt="" width="24" height="24" decoding="async" /></span></button>
-            <button type="button" id="nextPageBtn" class="page-btn page-btn--thumb-rail page-btn--pagination-arrow" title="Next Page" aria-label="Next page"><span class="page-btn__arrow-inner page-btn__arrow-inner--next" aria-hidden="true"><img class="ui-pagination-arrow" src="assets/images/icons/Double Arrow.png" alt="" width="28" height="28" decoding="async" /></span></button>
+            <button type="button" id="nextEventBtn" class="globe-control-btn dock-globe-rail__btn" title="Next Event" aria-label="Next event"><span id="nextEventBtnIcon" class="icon-flip-h"><img src="assets/images/icons/Arrow Icon.png" alt="" decoding="async" style="width: 100%; height: 100%; object-fit: contain;" /></span></button>
+            <button type="button" id="nextPageBtn" class="globe-control-btn dock-globe-rail__btn" title="Next Page" aria-label="Next page"><span id="nextPageBtnIcon" class="icon-flip-h"><img src="assets/images/icons/Double Arrow.png" alt="" decoding="async" style="width: 100%; height: 100%; object-fit: contain;" /></span></button>
         </div>
         <div class="page-controls-row page-controls-row--page-only page-controls-row--mobile-only">
             <div class="page-input-container">
@@ -291,14 +310,10 @@ export function createEventPagination(statusService) {
         paginationEl.style.removeProperty('transform');
         paginationEl.style.removeProperty('top');
 
-        const TRAPEZOID_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="8" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
-<defs>
-<linearGradient id="paginationDockTrapezoidGrad" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
-<stop offset="0%" style="stop-color: rgba(var(--accent-primary-rgb), 0.55)" />
-<stop offset="100%" style="stop-color: rgba(var(--accent-primary-rgb), 0.2)" />
-</linearGradient>
-</defs>
-<polygon points="2,0 98,0 112,100 -12,100" fill="url(#paginationDockTrapezoidGrad)" />
+        const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="9" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
+<polygon class="pagination-dock-top-trapezoid__fill" points="2,0 98,0 112,100 -12,100" />
+</svg>`;
+        const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="1" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
 <path d="M -12,100 L 2,0 L 98,0 L 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
 </svg>`;
 
@@ -360,12 +375,33 @@ export function createEventPagination(statusService) {
         }
 
         const trap = capRow.querySelector('.pagination-dock-top-trapezoid');
-        if (trap && !trap.querySelector('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="8"]')) {
-            trap.innerHTML = TRAPEZOID_SVG;
+        if (trap) {
+            trap.querySelectorAll('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="8"]').forEach((el) => el.remove());
+            if (!trap.querySelector('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="9"]')) {
+                trap.insertAdjacentHTML('afterbegin', TRAPEZOID_FILL_SVG);
+            }
         }
-        const centerRailDock = document.getElementById('dockGlobeRailCenter');
+        const ensureDockGlobeRailCenter = () => {
+            let el = document.getElementById('dockGlobeRailCenter');
+            if (el) return el;
+            el = document.createElement('div');
+            el.id = 'dockGlobeRailCenter';
+            el.className = 'dock-globe-rail dock-globe-rail--center';
+            el.setAttribute('aria-label', 'Pagination and navigation');
+            const left = document.getElementById('dockGlobeRailLeft');
+            if (left?.parentNode) {
+                left.parentNode.insertBefore(el, left.nextSibling);
+            } else {
+                document.body.appendChild(el);
+            }
+            return el;
+        };
+        const centerRailDock = ensureDockGlobeRailCenter();
         if (centerRailDock && trap && centerRailDock.parentNode !== trap) {
             trap.appendChild(centerRailDock);
+        }
+        if (trap && !trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"]')) {
+            trap.insertAdjacentHTML('beforeend', TRAPEZOID_BORDER_SVG);
         }
 
         applyPaginationDockViewportMode();

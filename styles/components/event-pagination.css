@@ -340,7 +340,8 @@ body.color-palette-gray .events-pagination-input:focus {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: center;
+        /* Stretch so the center rail fills the trapezoid band (clip-path aligns with SVG). */
+        justify-content: stretch;
         align-items: stretch;
         gap: 0;
         box-sizing: border-box;
@@ -355,6 +356,22 @@ body.color-palette-gray .events-pagination-input:focus {
         position: absolute;
         inset: 0;
         z-index: 1;
+        pointer-events: none;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-trapezoid__svg .pagination-dock-top-trapezoid__fill {
+        fill: var(--dock-trapezium-segment-bg);
+    }
+
+    /* White trapezium outline above the flex rail (sibling after #dockGlobeRailCenter). */
+    body:has(#paginationDock) .pagination-dock-top-trapezoid__border-svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        position: absolute;
+        inset: 0;
+        z-index: 6;
         pointer-events: none;
     }
 

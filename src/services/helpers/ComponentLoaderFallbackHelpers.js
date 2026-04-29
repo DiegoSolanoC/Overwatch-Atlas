@@ -84,7 +84,18 @@ export const createFiltersPanel = (typeof window !== 'undefined' && window.Servi
 export const createEventPagination = (typeof window !== 'undefined' && window.ServicePanelHelpers?.createEventPagination)
     ? window.ServicePanelHelpers.createEventPagination
     : (statusService) => {
-        if (document.getElementById('eventPagination')) return document.getElementById('eventPagination');
+        // Check if pagination already exists
+        if (document.getElementById('eventPagination')) {
+            return document.getElementById('eventPagination');
+        }
+        // Also check if pagination buttons already exist (they may have been moved to dock rails)
+        const existingButtons = ['prevPageBtn', 'prevEventBtn', 'nextEventBtn', 'nextPageBtn'].filter(
+            id => document.getElementById(id)
+        );
+        if (existingButtons.length > 0) {
+            // Buttons exist somewhere, don't create duplicates
+            return document.getElementById('eventPagination');
+        }
         return null;
     };
 
