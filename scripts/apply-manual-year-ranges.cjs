@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 
-const path = 'c:/Users/diego/OneDrive/Escritorio/Projects/Overwatch-Timeline-Website/data/events.json';
-const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+const eventsPath = path.join(__dirname, '..', 'data', 'events.json');
+const data = JSON.parse(fs.readFileSync(eventsPath, 'utf8'));
 const events = data.events || [];
 
 const normalize = (s) =>
@@ -79,7 +80,7 @@ for (const group of groups) {
   }
 }
 
-fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
+fs.writeFileSync(eventsPath, JSON.stringify(data, null, 2) + '\n', 'utf8');
 
 console.log(`Applied ${applied.length} event updates.`);
 for (const line of applied) console.log(line);
