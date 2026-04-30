@@ -52,7 +52,7 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background-image: url('../../../assets/images/maps/Pattern Blue.png');
+    background-image: url('../../assets/images/maps/Pattern Blue.png');
     background-repeat: repeat;
     background-size: clamp(720px, 58vw, 1360px) auto;
     background-position: center center;
@@ -70,7 +70,7 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background-image: url('../../../assets/images/maps/Pattern Blue.png');
+    background-image: url('../../assets/images/maps/Pattern Blue.png');
     background-repeat: repeat;
     background-size: clamp(720px, 58vw, 1360px) auto;
     background-position: center center;
@@ -112,36 +112,36 @@
 
 /* Palette-specific pattern images for map base layer (::before) */
 body.color-palette-blue .map-2d-lite__world::before {
-    background-image: url('../../../assets/images/maps/Pattern Blue.png');
+    background-image: url('../../assets/images/maps/Pattern Blue.png');
 }
 
 body.color-palette-gray .map-2d-lite__world::before {
-    background-image: url('../../../assets/images/maps/Pattern Dark.png');
+    background-image: url('../../assets/images/maps/Pattern Dark.png');
 }
 
 body.color-palette-crimson .map-2d-lite__world::before {
-    background-image: url('../../../assets/images/maps/Pattern Crimson.png');
+    background-image: url('../../assets/images/maps/Pattern Crimson.png');
 }
 
 body.color-palette-nulled .map-2d-lite__world::before {
-    background-image: url('../../../assets/images/maps/Pattern Nulled.png');
+    background-image: url('../../assets/images/maps/Pattern Nulled.png');
 }
 
 /* Palette-specific pattern images for wave layer (::after) */
 body.color-palette-blue .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/maps/Pattern Blue.png');
+    background-image: url('../../assets/images/maps/Pattern Blue.png');
 }
 
 body.color-palette-gray .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/maps/Pattern Dark.png');
+    background-image: url('../../assets/images/maps/Pattern Dark.png');
 }
 
 body.color-palette-crimson .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/maps/Pattern Crimson.png');
+    background-image: url('../../assets/images/maps/Pattern Crimson.png');
 }
 
 body.color-palette-nulled .map-2d-lite__world::after {
-    background-image: url('../../../assets/images/maps/Pattern Nulled.png');
+    background-image: url('../../assets/images/maps/Pattern Nulled.png');
 }
 
 /* Pattern wave animation - sweeps from right to left (counter-rotation, matches globe) */

@@ -1,7 +1,7 @@
 /**
  * Dev-only: bare range input to spin the sun around world Y (no chrome).
  *
- * Shown when: ?devSun=1, localStorage.devSunSlider=1, or localhost.
+ * Shown when: ?devSun=1, localStorage.devSunSlider=1, localhost, or github.io (Pages).
  * Yaw: sessionStorage `devSunYawDeg`.
  */
 
@@ -19,7 +19,12 @@ function isDevSunUiEnabled() {
         if (window.localStorage.getItem('devSunSlider') === '1') return true;
     } catch (_) { /* ignore */ }
     const h = window.location.hostname;
-    return h === 'localhost' || h === '127.0.0.1';
+    return (
+        h === 'localhost' ||
+        h === '127.0.0.1' ||
+        h.includes('github.io') ||
+        h === 'pages.github.com'
+    );
 }
 
 function readStoredYaw() {

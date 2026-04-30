@@ -589,7 +589,7 @@ body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-emb
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background-image: url('../../../assets/images/pattern/Pattern Blue.png');
+    background-image: url('../../assets/images/pattern/Pattern Blue.png');
     background-repeat: repeat;
     background-size: clamp(720px, 58vw, 1360px) auto;
     background-position: center center;
@@ -598,19 +598,19 @@ body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-emb
 
 /* Palette-specific pattern images for story viewer */
 body.color-palette-blue .story-viewer-container::before {
-    background-image: url('../../../assets/images/pattern/Pattern Blue.png');
+    background-image: url('../../assets/images/pattern/Pattern Blue.png');
 }
 
 body.color-palette-gray .story-viewer-container::before {
-    background-image: url('../../../assets/images/pattern/Pattern Dark.png');
+    background-image: url('../../assets/images/pattern/Pattern Dark.png');
 }
 
 body.color-palette-crimson .story-viewer-container::before {
-    background-image: url('../../../assets/images/pattern/Pattern Crimson.png');
+    background-image: url('../../assets/images/pattern/Pattern Crimson.png');
 }
 
 body.color-palette-nulled .story-viewer-container::before {
-    background-image: url('../../../assets/images/pattern/Pattern Nulled.png');
+    background-image: url('../../assets/images/pattern/Pattern Nulled.png');
 }
 
 .story-viewer-container::after {

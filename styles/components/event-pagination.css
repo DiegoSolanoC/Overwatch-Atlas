@@ -385,7 +385,7 @@ body.color-palette-gray .events-pagination-input:focus {
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        background-image: url('../../../assets/images/pattern/Pattern Blue.png');
+        background-image: url('../../assets/images/pattern/Pattern Blue.png');
         background-repeat: repeat;
         /*
          * One length + `auto` preserves the PNG aspect ratio (no horizontal/vertical squash).
@@ -398,19 +398,19 @@ body.color-palette-gray .events-pagination-input:focus {
 
     /* Palette-specific pattern images for dock */
     body.color-palette-blue:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/pattern/Pattern Blue.png');
+        background-image: url('../../assets/images/pattern/Pattern Blue.png');
     }
 
     body.color-palette-gray:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/pattern/Pattern Dark.png');
+        background-image: url('../../assets/images/pattern/Pattern Dark.png');
     }
 
     body.color-palette-crimson:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/pattern/Pattern Crimson.png');
+        background-image: url('../../assets/images/pattern/Pattern Crimson.png');
     }
 
     body.color-palette-nulled:has(#paginationDock) .pagination-dock::before {
-        background-image: url('../../../assets/images/pattern/Pattern Nulled.png');
+        background-image: url('../../assets/images/pattern/Pattern Nulled.png');
     }
 
     body:has(#paginationDock) .pagination-dock::after {
@@ -1277,7 +1277,7 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
         height: 32px;
         border-radius: var(--dock-collapse-pill-top-radius, 22px) var(--dock-collapse-pill-top-radius, 22px) 0 0;
         background-color: transparent;
-        background-image: url('../../../assets/images/misc/Controller Border.png');
+        background-image: url('../../assets/images/misc/Controller Border.png');
         background-repeat: no-repeat;
         background-position: center bottom;
         background-size: 100% 100%;
@@ -1316,7 +1316,7 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
 
     body:has(#paginationDock) .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
     body:has(#paginationDock) .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-        background-image: url('../../../assets/images/misc/Controller Border.png');
+        background-image: url('../../assets/images/misc/Controller Border.png');
         background-size: 100% 100%;
         width: var(--dock-collapse-pill-width, min(280px, 46vw));
         height: 38px;
