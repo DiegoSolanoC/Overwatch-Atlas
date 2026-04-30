@@ -387,8 +387,9 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     margin: 0 0 10px 0;
 }
 
-/* Story Archive: grid width / gutters (localStorage storyArchiveGridSquish); sits above #eventsList */
+/* Story Archive grid squish bar — hidden (fixed squish via JS); keep rules if re-enabled */
 .story-viewer-panel-embedded #storyArchiveGridSquishBar.story-archive-grid-squish-bar {
+    display: none !important;
     display: flex;
     flex-direction: column;
     align-items: stretch;
