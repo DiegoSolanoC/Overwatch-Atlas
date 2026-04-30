@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Overwatch Atlas - Interactive 3D timeline</title>
+    <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="assets/images/icons/Icon.png">
-    <link rel="stylesheet" href="styles.css?v=43">
+    <link rel="stylesheet" href="styles.css?v=58">
     <link rel="stylesheet" href="styles/entry.css?v=17">
 </head>
 <body>
@@ -17,7 +17,7 @@
             <div class="header-hub-stack" id="headerHubMapStack" aria-label="View controls" data-header-order="30"></div>
         </div>
         <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu">
-            <button class="header-hub-btn header-hub-btn--exit header-hub-btn--icon" type="button" data-action="menu" title="Exit to Main Menu" aria-label="Exit to Main Menu" style="display:none">
+            <button class="header-hub-btn header-hub-btn--exit header-hub-btn--icon" type="button" data-action="menu" title="Exit to Main Menu" aria-label="Exit to Main Menu">
                 <span class="header-hub-icon-wrap">
                     <img class="header-hub-icon" src="assets/images/icons/Home Button.png" alt="" />
                 </span>
@@ -33,12 +33,10 @@
         </a>
     </header>
 
-    <!-- Desktop: rotation strip under map; hidden on mobile via layout.css -->
     <div class="header-subbar" id="headerRotateSubBar" aria-label="Rotation controls">
         <div class="header-subbar-inner" id="headerRotateSubBarInner"></div>
     </div>
 
-    <!-- Mobile-only dock rails (see globe.css); desktop keeps controls in header -->
     <div id="dockGlobeRailLeft" class="dock-globe-rail dock-globe-rail--left" aria-label="Transport and weather"></div>
     <div id="dockGlobeRailCenter" class="dock-globe-rail dock-globe-rail--center" aria-label="Pagination and navigation"></div>
     <div id="dockGlobeRailRight" class="dock-globe-rail dock-globe-rail--right" aria-label="Map view and rotation"></div>
@@ -73,13 +71,13 @@
                 </div>
                 <div class="event-slide-bottom" id="eventSlideBottom">
                     <div class="event-control-buttons">
-                        <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
                     </div>
                     <div class="event-navigation-buttons">
                         <button type="button" id="eventPrevBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Previous Event" aria-label="Previous event"><img class="ui-pagination-arrow" src="assets/images/icons/Arrow Icon.png" alt="" width="26" height="26" decoding="async" /></button>
                         <button type="button" id="eventImageToggle" class="event-image-toggle-btn">Show Image</button>
                         <button id="eventAllEventsBtn" class="event-all-events-btn" title="View All Events">All Events</button>
                         <button type="button" id="eventNextBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Next Event" aria-label="Next event"><img class="ui-pagination-arrow ui-pagination-arrow--flip-h" src="assets/images/icons/Arrow Icon.png" alt="" width="26" height="26" decoding="async" /></button>
+                        <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
                     </div>
                 </div>
             </div>
@@ -110,13 +108,6 @@
                     <div class="loading-progress-bar" id="loadingProgressBar"></div>
                 </div>
                 <div id="overlayStatusContent"></div>
-            </div>
-        </div>
-
-        <!-- Event Image Overlay (over globe) -->
-        <div class="event-image-overlay" id="eventImageOverlay">
-            <div class="event-image-container" id="eventImageContainer">
-                <img id="eventImage" src="" alt="Event Image" style="display: none;">
             </div>
         </div>
         
@@ -207,12 +198,13 @@
     <script src="src/services/SoundEffectsManager.js?v=8"></script>
     <script src="src/services/GlitchTextService.js?v=10"></script>
     <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/utils/DevServerApiUrl.js?v=1"></script>
-    <script src="src/services/EventDataService.js?v=10"></script>
+    <script src="src/services/EventDataService.js?v=9"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
     <script src="src/utils/LocationFlagHelpers.js?v=9"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
+    <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
+    <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
     <script src="src/services/EventRenderService.js?v=19"></script>
     <script src="src/services/EventEditService.js?v=10"></script>
     <script src="src/services/NewsTickerService.js?v=8"></script>
@@ -224,7 +216,7 @@
     <script src="src/services/EventFormService.js?v=10"></script>
     <script src="src/services/EventDragDropService.js?v=8"></script>
     <script src="src/services/EventListenerService.js?v=13"></script>
-    <script src="src/services/EventInteractionService.js?v=9"></script>
+    <script src="src/services/EventInteractionService.js?v=10"></script>
     <script src="src/services/EventInitService.js?v=8"></script>
     <script src="src/services/CityLookupService.js?v=9"></script>
     <script src="src/services/ImagePathService.js?v=8"></script>
@@ -262,4 +254,3 @@
     <script src="src/app/page-init.js?v=10"></script>
 </body>
 </html>
-
