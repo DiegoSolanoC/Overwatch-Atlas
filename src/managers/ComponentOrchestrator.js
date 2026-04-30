@@ -561,7 +561,7 @@ export class ComponentOrchestrator {
 
     /**
      * Apply grid inset from localStorage key storyArchiveGridSquish, else default (5).
-     * No UI — values were tuned with the removed slider; optional override remains in localStorage.
+     * UI: {@link _setupStoryArchiveGridSquishBar} (Story Archive only).
      */
     _applyStoryArchiveGridSquishFromPreferences(eventsManagePanel) {
         if (!eventsManagePanel || !eventsManagePanel.classList.contains('story-viewer-panel-embedded')) {
@@ -572,6 +572,119 @@ export class ComponentOrchestrator {
         const n = parseInt(window.localStorage.getItem(LS_KEY), 10);
         const squishVal = Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : DEFAULT_SQUISH;
         this._applyStoryArchiveGridSquish(eventsManagePanel, squishVal);
+    }
+
+    /**
+     * Story Archive: range control for list max-width + gutters (localStorage `storyArchiveGridSquish`, 0–100).
+     * Placed above `#eventsList` (not inside `#eventsManageControls`) so it stays visible when search is collapsed.
+     */
+    _setupStoryArchiveGridSquishBar(eventsManagePanel) {
+        if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
+        const manageContent = eventsManagePanel.querySelector('.events-manage-content');
+        const eventsList = document.getElementById('eventsList');
+        if (!manageContent || !eventsList) return;
+
+        const LS_KEY = 'storyArchiveGridSquish';
+        const DEFAULT_SQUISH = 5;
+        const readSquish = () => {
+            const n = parseInt(window.localStorage.getItem(LS_KEY), 10);
+            return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : DEFAULT_SQUISH;
+        };
+
+        let bar = document.getElementById('storyArchiveGridSquishBar');
+        if (!bar) {
+            bar = document.createElement('div');
+            bar.id = 'storyArchiveGridSquishBar';
+            bar.className = 'story-archive-grid-squish-bar';
+
+            const label = document.createElement('label');
+            label.className = 'story-archive-grid-squish-bar__label';
+            label.setAttribute('for', 'storyArchiveGridSquishSlider');
+            label.textContent = 'Preview grid';
+
+            const range = document.createElement('input');
+            range.type = 'range';
+            range.id = 'storyArchiveGridSquishSlider';
+            range.className = 'story-archive-grid-squish-bar__range';
+            range.min = '0';
+            range.max = '100';
+            range.step = '1';
+            range.setAttribute('aria-valuemin', '0');
+            range.setAttribute('aria-valuemax', '100');
+            range.setAttribute(
+                'aria-label',
+                'How wide or tight the event preview grid is; lower is wider, higher is tighter'
+            );
+            const initial = readSquish();
+            range.setAttribute('aria-valuenow', String(initial));
+            range.value = String(initial);
+
+            const valueOut = document.createElement('span');
+            valueOut.className = 'story-archive-grid-squish-bar__value';
+            valueOut.setAttribute('aria-live', 'polite');
+
+            const topRow = document.createElement('div');
+            topRow.className = 'story-archive-grid-squish-bar__top';
+
+            const sliderRow = document.createElement('div');
+            sliderRow.className = 'story-archive-grid-squish-bar__slider-row';
+
+            const wideEnd = document.createElement('span');
+            wideEnd.className = 'story-archive-grid-squish-bar__end story-archive-grid-squish-bar__end--wide';
+            wideEnd.textContent = 'Wide';
+
+            const tightEnd = document.createElement('span');
+            tightEnd.className = 'story-archive-grid-squish-bar__end story-archive-grid-squish-bar__end--tight';
+            tightEnd.textContent = 'Tight';
+
+            const hint = document.createElement('span');
+            hint.className = 'story-archive-grid-squish-bar__hint';
+            hint.textContent =
+                'Toward Wide uses more horizontal space for previews; Tight pulls the grid inward with roomier gutters.';
+
+            const syncAria = () => {
+                range.setAttribute('aria-valuenow', range.value);
+                valueOut.textContent = range.value;
+            };
+            syncAria();
+
+            const applyFromRange = () => {
+                const v = Math.min(100, Math.max(0, parseInt(range.value, 10) || 0));
+                range.value = String(v);
+                window.localStorage.setItem(LS_KEY, String(v));
+                this._applyStoryArchiveGridSquish(eventsManagePanel, v);
+                syncAria();
+            };
+            range.addEventListener('input', applyFromRange);
+            range.addEventListener('change', applyFromRange);
+
+            topRow.appendChild(label);
+            topRow.appendChild(valueOut);
+
+            sliderRow.appendChild(wideEnd);
+            sliderRow.appendChild(range);
+            sliderRow.appendChild(tightEnd);
+
+            bar.appendChild(topRow);
+            bar.appendChild(sliderRow);
+            bar.appendChild(hint);
+
+            manageContent.insertBefore(bar, eventsList);
+        } else {
+            const range = document.getElementById('storyArchiveGridSquishSlider');
+            const v = readSquish();
+            if (range) {
+                range.value = String(v);
+                range.setAttribute('aria-valuenow', String(v));
+                const valueOut = bar.querySelector('.story-archive-grid-squish-bar__value');
+                if (valueOut) valueOut.textContent = String(v);
+            }
+            this._applyStoryArchiveGridSquish(eventsManagePanel, v);
+        }
+
+        if (bar.parentNode !== manageContent || bar.nextElementSibling !== eventsList) {
+            manageContent.insertBefore(bar, eventsList);
+        }
     }
 
     /** Event Manager × — removed from DOM in Story Archive (never use getElementById: wrong node if duplicate ids). */
@@ -770,6 +883,7 @@ export class ComponentOrchestrator {
                 this._setupStoryArchiveCompactChrome(emp);
                 this._hideStoryArchiveEventManagerClose(emp);
                 this._applyStoryArchiveGridSquishFromPreferences(emp);
+                this._setupStoryArchiveGridSquishBar(emp);
             }
             return;
         }
@@ -851,6 +965,7 @@ export class ComponentOrchestrator {
 
         this._hideStoryArchiveEventManagerClose(eventsManagePanel);
         this._applyStoryArchiveGridSquishFromPreferences(eventsManagePanel);
+        this._setupStoryArchiveGridSquishBar(eventsManagePanel);
 
         // DEV ONLY: Debug - inspect actual DOM structure
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {

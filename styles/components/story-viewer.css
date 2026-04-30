@@ -387,6 +387,90 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     margin: 0 0 10px 0;
 }
 
+/* Story Archive: grid width / gutters (localStorage storyArchiveGridSquish); sits above #eventsList */
+.story-viewer-panel-embedded #storyArchiveGridSquishBar.story-archive-grid-squish-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: min(var(--story-archive-list-max-width), 100%);
+    margin-inline: auto;
+    box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    width: 100%;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__slider-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px 12px;
+    width: 100%;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    white-space: nowrap;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end--wide {
+    color: rgba(144, 202, 249, 0.95);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end--tight {
+    color: rgba(255, 183, 77, 0.95);
+    justify-self: end;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__range {
+    width: 100%;
+    min-width: 0;
+    height: 6px;
+    accent-color: var(--accent-primary, #2196f3);
+    cursor: pointer;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__value {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    min-width: 2.5ch;
+    text-align: right;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__hint {
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.55);
+}
+
 /* Story Archive: no dark slab behind search — controls sit on the panel pattern */
 .story-viewer-panel-embedded .events-manage-controls {
     background: transparent;
