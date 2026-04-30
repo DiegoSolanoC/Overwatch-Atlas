@@ -112,6 +112,9 @@ class FilterService {
         this.factionsTab = null;
         this.npcsTab = null;
         this.countriesTab = null;
+        this.filtersMenuSearchInput = null;
+        this._panelExclusivityObserver = null;
+        this._enforcingPanelExclusivity = false;
     }
     
     init() {
@@ -132,6 +135,7 @@ class FilterService {
         this.factionsTab = document.getElementById('factionsTab');
         this.npcsTab = document.getElementById('npcsTab');
         this.countriesTab = document.getElementById('countriesTab');
+        this.filtersMenuSearchInput = document.getElementById('filtersMenuSearch');
         
         console.log('Initializing filters panel...');
         console.log('Filters button:', this.filtersButton);
@@ -146,6 +150,7 @@ class FilterService {
         
         // Mark as initialized
         this.initialized = true;
+        this._setupPanelExclusivityObserver();
         
         // Initialize with confirmed filters
         this.resetToConfirmedFilters();
@@ -157,6 +162,7 @@ class FilterService {
             
             // Setup button handlers
             this.setupButtons();
+            this._setupSearchHandlers();
         });
     }
     
@@ -166,6 +172,13 @@ class FilterService {
      */
     reset() {
         console.log('[FilterService] Resetting initialization state...');
+        if (this._panelExclusivityObserver) {
+            try {
+                this._panelExclusivityObserver.disconnect();
+            } catch (_) {}
+            this._panelExclusivityObserver = null;
+        }
+        this._enforcingPanelExclusivity = false;
         this.initialized = false;
         this.filtersButton = null;
         this.filtersPanel = null;
@@ -177,6 +190,7 @@ class FilterService {
         this.factionsTab = null;
         this.npcsTab = null;
         this.countriesTab = null;
+        this.filtersMenuSearchInput = null;
         this.buttonCache = {
             heroes: null,
             factions: null,
@@ -185,6 +199,60 @@ class FilterService {
             music: null
         };
         console.log('[FilterService] Reset complete. initialized =', this.initialized);
+    }
+
+    _enforcePanelExclusivity() {
+        if (this._enforcingPanelExclusivity) return;
+        this._enforcingPanelExclusivity = true;
+        try {
+            const filtersPanel = document.getElementById('filtersPanel');
+            const eventSlide = document.getElementById('eventSlide');
+            const filtersToggle = document.getElementById('filtersToggle');
+            const filtersOpen = !!filtersPanel?.classList.contains('open');
+            const eventOpen = !!eventSlide?.classList.contains('open');
+            if (filtersOpen && eventOpen) {
+                // Prefer the panel that just changed to open:
+                // if filters are open, close event info by default.
+                eventSlide.classList.remove('open');
+                // Keep image overlay in sync when Event Info is auto-closed.
+                const overlay = document.getElementById('eventImageOverlay');
+                if (overlay) {
+                    overlay.classList.remove('open', 'slide-open', 'fade-in', 'fade-out');
+                    overlay.style.display = 'none';
+                    overlay.style.opacity = '0';
+                }
+                const eventImage = document.getElementById('eventImage');
+                if (eventImage) {
+                    eventImage.style.display = 'none';
+                }
+                try {
+                    if (window.standaloneEventSlide?.hideImageOverlay) {
+                        window.standaloneEventSlide.hideImageOverlay();
+                    } else if (window.globeController?.uiView?.hideImageOverlay) {
+                        window.globeController.uiView.hideImageOverlay();
+                    }
+                } catch (_) {}
+            }
+            // Keep toggle visual state coherent with actual panel state.
+            if (filtersToggle) {
+                filtersToggle.classList.toggle('active', !!filtersPanel?.classList.contains('open'));
+            }
+        } finally {
+            this._enforcingPanelExclusivity = false;
+        }
+    }
+
+    _setupPanelExclusivityObserver() {
+        if (this._panelExclusivityObserver) return;
+        const filtersPanel = document.getElementById('filtersPanel');
+        const eventSlide = document.getElementById('eventSlide');
+        if (!filtersPanel || !eventSlide || typeof MutationObserver === 'undefined') return;
+        const onChange = () => this._enforcePanelExclusivity();
+        this._panelExclusivityObserver = new MutationObserver(onChange);
+        this._panelExclusivityObserver.observe(filtersPanel, { attributes: true, attributeFilter: ['class'] });
+        this._panelExclusivityObserver.observe(eventSlide, { attributes: true, attributeFilter: ['class'] });
+        // Enforce immediately in case both are already open.
+        this._enforcePanelExclusivity();
     }
     
     /**
@@ -497,7 +565,46 @@ class FilterService {
                 (items, type, folder) => this.preloadImages(items, type, folder),
                 () => this.updateFilterCounts()
             );
+            this._applyCurrentCategorySearch();
         }
+    }
+
+    _searchPlaceholderForType(type) {
+        if (type === 'factions') return 'Search factions...';
+        if (type === 'npcs') return 'Search NPCs...';
+        if (type === 'countries') return 'Search countries...';
+        return 'Search heroes...';
+    }
+
+    _setupSearchHandlers() {
+        const input = this.filtersMenuSearchInput || document.getElementById('filtersMenuSearch');
+        if (!input) return;
+        this.filtersMenuSearchInput = input;
+        input.placeholder = this._searchPlaceholderForType(this.currentFilterType);
+        if (input.dataset.searchBound === '1') {
+            this._applyCurrentCategorySearch();
+            return;
+        }
+        input.dataset.searchBound = '1';
+        input.addEventListener('input', () => {
+            this._applyCurrentCategorySearch();
+        });
+        this._applyCurrentCategorySearch();
+    }
+
+    _applyCurrentCategorySearch() {
+        const input = this.filtersMenuSearchInput || document.getElementById('filtersMenuSearch');
+        const grid = this.filtersGrid || document.getElementById('filtersGrid');
+        if (!input || !grid) return;
+        input.placeholder = this._searchPlaceholderForType(this.currentFilterType);
+        const query = String(input.value || '').trim().toLowerCase();
+        const buttons = grid.querySelectorAll('.filter-btn');
+        buttons.forEach((btn) => {
+            const labelEl = btn.querySelector('.filter-label-text');
+            const text = String(labelEl?.textContent || btn.dataset.filterKey || '').trim().toLowerCase();
+            const match = !query || text.includes(query);
+            btn.style.display = match ? '' : 'none';
+        });
     }
     
     // Setup tab switching - delegates to helper
@@ -536,6 +643,7 @@ class FilterService {
                         this.countriesTab.setAttribute('aria-selected', 'false');
                     }
                     this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
+                    this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
                 });
             }
@@ -560,6 +668,7 @@ class FilterService {
                         this.countriesTab.setAttribute('aria-selected', 'false');
                     }
                     this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
+                    this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
                 });
             }
@@ -584,6 +693,7 @@ class FilterService {
                         this.countriesTab.setAttribute('aria-selected', 'false');
                     }
                     this.createFilterButtons(this.npcs, 'npcs', 'assets/images/npcs');
+                    this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
                 });
             }
@@ -608,6 +718,7 @@ class FilterService {
                         this.npcsTab.setAttribute('aria-selected', 'false');
                     }
                     this.createFilterButtons(this.countries, 'countries', 'assets/images/flags');
+                    this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
                 });
             }
@@ -621,6 +732,10 @@ class FilterService {
         const helper = window.FilterPanelHelpers?.closeOtherPanels;
         if (helper) {
             helper();
+            const eventSlide = document.getElementById('eventSlide');
+            if (eventSlide?.classList.contains('open')) {
+                eventSlide.classList.remove('open');
+            }
         } else {
             // Fallback
             const musicPanel = document.getElementById('musicPanel');
@@ -635,6 +750,10 @@ class FilterService {
                 eventsManagePanel.classList.remove('open');
                 eventsManageToggle?.classList.remove('active');
             }
+            const eventSlide = document.getElementById('eventSlide');
+            if (eventSlide?.classList.contains('open')) {
+                eventSlide.classList.remove('open');
+            }
         }
     }
     
@@ -644,6 +763,11 @@ class FilterService {
     openPanel() {
         const confirmedFilters = window.standaloneActiveFilters ? Array.from(window.standaloneActiveFilters) : [];
         this._logFilterStateWithMatches('📂 OPEN', confirmedFilters);
+        // Mutual exclusion: if Event Info is open, close it before opening Filters.
+        const eventSlide = document.getElementById('eventSlide');
+        if (eventSlide?.classList.contains('open')) {
+            eventSlide.classList.remove('open');
+        }
         
         const helper = window.FilterPanelHelpers?.openPanel;
         if (helper) {
@@ -704,6 +828,11 @@ class FilterService {
                 this.filtersPanel, this.filtersButton,
                 () => this.closeOtherPanels(),
                 async (panel, button, stateManager, getSceneModel, currentType, heroes, factions, npcs, countries, createFilterButtons) => {
+                    // Mutual exclusion: opening Filters closes Event Info.
+                    const eventSlide = document.getElementById('eventSlide');
+                    if (eventSlide?.classList.contains('open')) {
+                        eventSlide.classList.remove('open');
+                    }
                     // Use standaloneActiveFilters if Event System is active
                     const eventSystemActive = typeof window.eventManager !== 'undefined' && window.eventManager !== null;
                     if (eventSystemActive && window.standaloneActiveFilters) {

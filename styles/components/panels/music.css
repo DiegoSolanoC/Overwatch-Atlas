@@ -267,7 +267,7 @@ body.color-palette-gray .music-mute-btn:hover {
 .music-now-playing-badge {
     position: fixed;
     top: 0;
-    z-index: 150; /* below panels (200), above globe/content */
+    z-index: 40; /* below event image overlay (500) */
     pointer-events: none;
     opacity: 0;
     transition:

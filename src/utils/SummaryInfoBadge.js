@@ -47,6 +47,73 @@ function getBodyScale() {
     }
 }
 
+function isEventImageOverlayOpen() {
+    try {
+        const overlay = document.getElementById('eventImageOverlay');
+        return !!(overlay && overlay.classList.contains('open'));
+    } catch (_) {
+        return false;
+    }
+}
+
+/** Last successful hover payload so we can re-show after overlay closes without a new mouseenter. */
+let lastStickySummaryShow = null;
+let imageOverlaySummaryRestoreMo = null;
+
+function cloneStickyShowArgs(
+    eventNum,
+    plainEventName,
+    otherVariantNames,
+    eraName,
+    primaryRowFlag,
+    otherRowFlags,
+    yearLine
+) {
+    const ov = Array.isArray(otherVariantNames) ? [...otherVariantNames] : [];
+    const flags = Array.isArray(otherRowFlags)
+        ? otherRowFlags.map((f) => (f && typeof f === 'object' ? { ...f } : f))
+        : [];
+    const prim = primaryRowFlag && typeof primaryRowFlag === 'object' ? { ...primaryRowFlag } : primaryRowFlag;
+    return [
+        eventNum,
+        plainEventName,
+        ov,
+        eraName != null ? String(eraName) : '',
+        prim,
+        flags,
+        yearLine,
+    ];
+}
+
+function tryRestoreStickySummaryBadge() {
+    if (!lastStickySummaryShow || isEventImageOverlayOpen() || isEventsManageDockDrawerOpen()) return;
+    try {
+        if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+            return;
+        }
+    } catch (_) {}
+    const args = lastStickySummaryShow.args;
+    if (!Array.isArray(args) || args.length < 7) return;
+    showSummaryInfo(...args);
+}
+
+function ensureImageOverlaySummaryRestoreObserver() {
+    if (imageOverlaySummaryRestoreMo) return;
+    const overlay = document.getElementById('eventImageOverlay');
+    if (!overlay || typeof MutationObserver === 'undefined') return;
+    let wasOpen = overlay.classList.contains('open');
+    imageOverlaySummaryRestoreMo = new MutationObserver(() => {
+        const open = overlay.classList.contains('open');
+        if (wasOpen && !open) {
+            requestAnimationFrame(() => {
+                tryRestoreStickySummaryBadge();
+            });
+        }
+        wasOpen = open;
+    });
+    imageOverlaySummaryRestoreMo.observe(overlay, { attributes: true, attributeFilter: ['class'] });
+}
+
 let textPrimaryFlagSlot = null;
 let textEraNameEl = null;
 let textEraYearsEl = null;
@@ -74,7 +141,7 @@ function ensureBadge() {
     badgeEl = document.createElement('div');
     badgeEl.id = 'summaryInfoBadge';
     badgeEl.className = 'music-now-playing-badge summary-info-badge';
-    badgeEl.style.zIndex = '165';
+    badgeEl.style.zIndex = '40';
     badgeEl.setAttribute('aria-hidden', 'true');
     badgeEl.innerHTML = `
         <div class="summary-info-stack">
@@ -117,12 +184,13 @@ function positionBadge() {
     const rect = anchorEl.getBoundingClientRect();
     const gap = 2;
     
-    // Position symmetrically to match Now Playing badge distance from edge
-    // Now Playing is 80% from left edge (20% from right)
-    // So Summary badge should be 20% from right edge
-    // Anchor from RIGHT edge so badge grows LEFTWARD when text expands
+    // Anchor against the current center stage width (main#content), not viewport.
+    // This makes badge position slide with panel open/close layout changes.
+    const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
     const vw = Math.max(1, (window.innerWidth || 1) / scale);
-    const rightPos = (vw * 0.80); // 80% from left edge = 20% from right edge
+    const rightPos = contentRect
+        ? ((vw - ((contentRect.left + (contentRect.width * 0.25)) / scale)))
+        : (vw * 0.75);
 
     const top = (rect.bottom + gap) / scale;
 
@@ -251,6 +319,8 @@ export function showSummaryInfo(
     yearLine
 ) {
     const badgeEl = ensureBadge();
+    ensureImageOverlaySummaryRestoreObserver();
+    if (isEventImageOverlayOpen()) return;
     try {
         if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
             return;
@@ -332,6 +402,18 @@ export function showSummaryInfo(
     badgeEl.classList.add('music-now-playing-badge--visible');
     positionBadge();
 
+    lastStickySummaryShow = {
+        args: cloneStickyShowArgs(
+            eventNum,
+            plainEventName,
+            otherVariantNames,
+            eraName,
+            primaryRowFlag,
+            otherRowFlags,
+            yearLine
+        ),
+    };
+
     stopHoverPreviewFollow();
     let pending = null;
     const schedule = () => {
@@ -339,6 +421,10 @@ export function showSummaryInfo(
         pending = requestAnimationFrame(() => {
             pending = null;
             if (!badgeEl || !badgeEl.classList.contains('music-now-playing-badge--visible')) return;
+            if (isEventImageOverlayOpen()) {
+                hideSummaryInfo({ clearSticky: false });
+                return;
+            }
             if (isEventsManageDockDrawerOpen()) {
                 hideSummaryInfo();
                 return;
@@ -349,6 +435,17 @@ export function showSummaryInfo(
     const onScroll = () => schedule();
     window.addEventListener('scroll', onScroll, true);
     window.addEventListener('resize', onScroll);
+    const observerTargets = [
+        document.getElementById('filtersPanel'),
+        document.getElementById('eventSlide'),
+        document.getElementById('eventsManagePanel'),
+        document.querySelector('.layout-container'),
+    ].filter(Boolean);
+    let mo = null;
+    if (typeof MutationObserver !== 'undefined' && observerTargets.length > 0) {
+        mo = new MutationObserver(() => schedule());
+        observerTargets.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['class', 'style'] }));
+    }
     // Get header hub directly (button is now in dock rail, not header)
     const hub = document.getElementById('headerHub');
     if (hub) hub.addEventListener('scroll', onScroll);
@@ -356,6 +453,7 @@ export function showSummaryInfo(
         window.removeEventListener('scroll', onScroll, true);
         window.removeEventListener('resize', onScroll);
         if (hub) hub.removeEventListener('scroll', onScroll);
+        if (mo) mo.disconnect();
         if (pending != null) {
             cancelAnimationFrame(pending);
             pending = null;
@@ -372,7 +470,14 @@ function cancelPendingHideCleanup() {
     }
 }
 
-export function hideSummaryInfo() {
+/**
+ * @param {{ clearSticky?: boolean }} [opts] - Pass `{ clearSticky: false }` when hiding only because the image overlay opened (pointer may still be over the same hover target).
+ */
+export function hideSummaryInfo(opts) {
+    const clearSticky = !(opts && opts.clearSticky === false);
+    if (clearSticky) {
+        lastStickySummaryShow = null;
+    }
     stopHoverPreviewFollow();
     if (!badgeEl) return;
     
@@ -418,6 +523,13 @@ export function hideSummaryInfo() {
  * This allows the badge to be recreated on next load
  */
 export function cleanupSummaryInfo() {
+    if (imageOverlaySummaryRestoreMo) {
+        try {
+            imageOverlaySummaryRestoreMo.disconnect();
+        } catch (_) {}
+        imageOverlaySummaryRestoreMo = null;
+    }
+    lastStickySummaryShow = null;
     stopHoverPreviewFollow();
     if (badgeEl && badgeEl.parentNode) {
         badgeEl.parentNode.removeChild(badgeEl);

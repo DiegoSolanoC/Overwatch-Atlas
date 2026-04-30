@@ -30,9 +30,15 @@ class EventDataService {
      * Check if we're running on GitHub Pages
      */
     isGitHubPages() {
+        try {
+            const m = document.querySelector('meta[name="timeline-deploy"]');
+            if (m && String(m.getAttribute('content') || '').toLowerCase() === 'static') {
+                return true;
+            }
+        } catch (_) {}
         const hostname = window.location.hostname;
-        return hostname === 'github.io' || 
-               hostname.includes('github.io') || 
+        return hostname === 'github.io' ||
+               hostname.includes('github.io') ||
                hostname === 'pages.github.com';
     }
 
@@ -385,7 +391,11 @@ class EventDataService {
             const isLoopbackHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
             if (!isGitHubPages && isHttp && (isDevServerPort || isLoopbackHost)) {
-                fetch('/api/events', {
+                const apiUrl =
+                    typeof window.resolveDevApiUrl === 'function'
+                        ? window.resolveDevApiUrl('api/events')
+                        : '/api/events';
+                fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ events: this.events })

@@ -628,7 +628,7 @@ footer.timeline-loaded {
         var(--bg-primary) 100%
     );
     position: relative;
-    z-index: 250; /* Above sliding panels (z-index: 200), below modals (z-index: 1000) */
+    z-index: 700; /* Keep headlines/logo above pagination dock (~620), below modals (~1000) */
 }
 
 /* Gray palette: headline strip + bottom bar (theme file may override with !important) */
@@ -655,7 +655,7 @@ footer.timeline-loaded .footer-atlas-news {
     left: -10px; /* Moved slightly left from screen border */
     bottom: 0; /* Align bottom with screen bottom */
     top: auto; /* Remove top positioning */
-    z-index: 260; /* Ensure it's above panels, stays within footer layer */
+    z-index: 710; /* Above footer headline strip and dock chrome */
     padding: 0.5rem; /* Reduced from 0.7rem */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
     transform: none; /* Remove centering transform */

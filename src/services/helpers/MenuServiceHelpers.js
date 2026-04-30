@@ -546,13 +546,13 @@ export function createMenuButtonsContainer(statusService) {
                     label: 'Filters',
                     iconPath: 'assets/images/icons/Filter Icon.png',
                     iconAlt: 'Filters',
-                    parentId: 'dockGlobeRailRight',
+                    parentId: 'dockGlobeRailCenter',
                     baseClass: 'globe-control-btn',
                     headerOrder: 5,
                     mobileParentId: 'dockGlobeRailLeft',
                     mobileBaseClass: 'globe-control-btn',
                     mobileClassName: 'dock-globe-rail__btn',
-                    desktopParentId: 'dockGlobeRailRight',
+                    desktopParentId: 'dockGlobeRailCenter',
                     desktopClassName: 'dock-globe-rail__btn'
                 });
 
@@ -568,7 +568,7 @@ export function createMenuButtonsContainer(statusService) {
                     label: globalImageToggleState ? 'Image On' : 'Image Off',
                     iconPath: 'assets/images/icons/Image Display Icon.png',
                     iconAlt: 'Images',
-                    parentId: 'dockGlobeRailRight',
+                    parentId: 'dockGlobeRailCenter',
                     baseClass: 'globe-control-btn',
                     headerOrder: 6,
                     mobileParentId: 'dockGlobeRailLeft',
@@ -599,20 +599,40 @@ export function createMenuButtonsContainer(statusService) {
                         }
                         if (nextState) {
                             newBtn.classList.add('active');
-                            const eventSlide = document.getElementById('eventSlide');
-                            if (eventSlide?.classList.contains('open') && window.standaloneEventSlide?.showImageOverlayGradually) {
-                                const path = window.standaloneEventSlide.currentImagePath?.trim();
-                                if (path) {
-                                    window.standaloneEventSlide.showImageOverlayGradually(path, 600);
-                                }
-                            }
                         } else {
                             newBtn.classList.remove('active');
-                            const overlay = document.getElementById('eventImageOverlay');
-                            if (overlay?.classList.contains('open') && window.standaloneEventSlide?.hideImageOverlayGradually) {
-                                window.standaloneEventSlide.hideImageOverlayGradually(600);
+                        }
+
+                        // Ensure the event slide is open, then apply image state.
+                        const eventSlide = document.getElementById('eventSlide');
+                        const isSlideOpen = !!eventSlide?.classList.contains('open');
+                        const ss = window.standaloneEventSlide;
+                        if (!isSlideOpen && ss?.showStandaloneEventSlide) {
+                            const events = window.eventManager?.events || [];
+                            let idx = Number.isFinite(ss.currentEventIndex) ? ss.currentEventIndex : 0;
+                            if (idx < 0) idx = 0;
+                            if (idx >= events.length) idx = Math.max(0, events.length - 1);
+                            const eventToOpen = ss.currentEventData || events[idx];
+                            if (eventToOpen) {
+                                ss.showStandaloneEventSlide(eventToOpen, idx);
                             }
                         }
+
+                        setTimeout(() => {
+                            const slideNowOpen = !!document.getElementById('eventSlide')?.classList.contains('open');
+                            if (!slideNowOpen || !ss) return;
+                            if (nextState) {
+                                const path = ss.currentImagePath?.trim();
+                                if (path && ss.showImageOverlayGradually) {
+                                    ss.showImageOverlayGradually(path, 600);
+                                }
+                            } else if (ss.hideImageOverlayGradually) {
+                                ss.hideImageOverlayGradually(600);
+                            } else if (ss.hideImageOverlay) {
+                                ss.hideImageOverlay();
+                            }
+                        }, 0);
+
                         if (window.SoundEffectsManager) {
                             window.SoundEffectsManager.play('imageDisplay');
                         }
@@ -631,19 +651,9 @@ export function createMenuButtonsContainer(statusService) {
                     }
 
                     const pageInputContainer = document.querySelector('.page-input-container');
-                    const rightRail = document.getElementById('dockGlobeRailRight');
-                    const filtersBtn = document.getElementById('filtersToggle');
-
-                    if (rightRail) {
-                        const trapMountEarly = document.querySelector('.pagination-dock-top-trapezoid');
-                        if (!trapMountEarly) {
-                            if (pageInputContainer && pageInputContainer.parentElement !== rightRail) {
-                                rightRail.appendChild(pageInputContainer);
-                            }
-                            if (filtersBtn && filtersBtn.parentElement !== rightRail) {
-                                rightRail.appendChild(filtersBtn);
-                            }
-                        }
+                    const centerRail = document.getElementById('dockGlobeRailCenter');
+                    if (centerRail && pageInputContainer && pageInputContainer.parentElement !== centerRail) {
+                        centerRail.appendChild(pageInputContainer);
                     }
                 }
 
@@ -1135,6 +1145,13 @@ export function createMenuButtonsContainer(statusService) {
                             this.wireNavButtons(eventData);
                             this.wireEditButtons(eventData, displayEvent, editBtn, saveBtn, eventSlideTitle, eventSlideText);
                             
+                            // Mutual exclusion: opening Event Info closes Filters.
+                            const filtersPanel = document.getElementById('filtersPanel');
+                            const filtersToggle = document.getElementById('filtersToggle');
+                            if (filtersPanel?.classList.contains('open')) {
+                                filtersPanel.classList.remove('open');
+                                filtersToggle?.classList.remove('active');
+                            }
                             eventSlide.classList.add('open');
 
                             if (eventSlideClose) {

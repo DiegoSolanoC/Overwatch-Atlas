@@ -644,38 +644,32 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Move Show all, Per page, Clear into bottom bar (right column), matching Add/Save/Export row.
+     * Move Show all + Per page into one right-side unit in Story Archive.
      */
     _populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar) {
-        if (!bottomBar || document.getElementById('storyArchiveRightToolbar')) return;
+        if (!bottomBar) return;
 
         const secondary = eventsManagePanel.querySelector('.events-manage-search-row--secondary');
         if (!secondary) return;
 
         const showAllLabel = document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox');
         const perPage = document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group');
-        const clearBtn = document.getElementById('eventsSearchClear');
-
-        const wrap = document.createElement('div');
-        wrap.id = 'storyArchiveRightToolbar';
-        wrap.className = 'story-archive-right-toolbar';
-
-        const addControlClass = (el) => {
-            if (!el) return;
-            el.classList.add('story-viewer-bottom-bar-control');
-        };
-
-        if (showAllLabel && secondary.contains(showAllLabel)) {
-            addControlClass(showAllLabel);
-            wrap.appendChild(showAllLabel);
+        let wrap = document.getElementById('storyArchiveRightToolbar');
+        if (!wrap) {
+            wrap = document.createElement('div');
+            wrap.id = 'storyArchiveRightToolbar';
+            wrap.className = 'story-archive-right-toolbar';
         }
-        if (perPage && secondary.contains(perPage)) {
-            addControlClass(perPage);
-            wrap.appendChild(perPage);
-        }
-        if (clearBtn && secondary.contains(clearBtn)) {
-            clearBtn.classList.add('story-viewer-action-btn');
-            wrap.appendChild(clearBtn);
+
+        if (showAllLabel || perPage) {
+            let unit = wrap.querySelector('.story-archive-page-unit');
+            if (!unit) {
+                unit = document.createElement('div');
+                unit.className = 'story-archive-page-unit story-viewer-bottom-bar-control';
+            }
+            if (showAllLabel) unit.appendChild(showAllLabel);
+            if (perPage) unit.appendChild(perPage);
+            wrap.appendChild(unit);
         }
 
         if (wrap.childNodes.length === 0) {
@@ -742,7 +736,6 @@ export class ComponentOrchestrator {
             const perPage = document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group');
             const showAllLabel = document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox');
             const clearBtn = document.getElementById('eventsSearchClear');
-            clearBtn?.classList.remove('story-viewer-action-btn');
             [showAllLabel, perPage].forEach((el) => el?.classList.remove('story-viewer-bottom-bar-control'));
 
             const ordered = [useFilter, perPage, showAllLabel, clearBtn].filter(Boolean);

@@ -50,14 +50,14 @@ body.color-palette-gray .pagination-dock-collapse-pill {
     background-position: center bottom !important;
     background-size: 100% 100% !important;
     border: none !important;
-    box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.45) !important;
+    box-shadow: none !important;
 }
 
 body.color-palette-gray .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
 body.color-palette-gray .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
     background-image: url('../../assets/images/misc/Controller Border.png') !important;
     background-size: 100% 100% !important;
-    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: none !important;
 }
 
 /* Globe Control Buttons */

@@ -1931,7 +1931,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         margin: 0 0 0 calc(var(--dock-segment-slant) * -1) !important;
         align-self: stretch !important;
         box-sizing: border-box !important;
-        border-radius: 0 !important;
+        border-radius: 10px !important;
         border: none !important;
         border-right: none !important;
         box-shadow: none !important;
@@ -1941,7 +1941,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
             calc(100% - var(--dock-segment-slant)) 0%,
             100% 100%,
             var(--dock-segment-slant) 100%
-        );
+        ) round 10px;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -1981,7 +1981,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
             100% 0%,
             calc(100% - var(--dock-segment-slant)) 100%,
             0% 100%
-        );
+        ) round 10px;
     }
 
     body:has(#paginationDock)
@@ -1993,7 +1993,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
             calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
             100% 100%,
             0% 100%
-        );
+        ) round 10px;
     }
 
     body:has(#paginationDock)
@@ -2142,7 +2142,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
             calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
             100% 100%,
             0% 100%
-        ) !important;
+        ) round 10px !important;
         min-width: 0 !important;
         filter: none !important;
         height: 100% !important;
@@ -2716,7 +2716,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.doc
     transform: none !important;
     background: rgb(13, 71, 161) !important;
     border: none !important;
-    border-radius: 0 !important;
+    border-radius: 10px !important;
     padding: 6px 14px !important;
     gap: 6px !important;
     display: flex !important;
@@ -2725,7 +2725,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.doc
     height: 44px !important;
     min-width: 100px !important;
     /* Trapezium: left slope matches left buttons, right slope matches right buttons */
-    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 100%, 0 100%) !important;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 100%, 0 100%) round 10px !important;
     transition: transform 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
 }
 

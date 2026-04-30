@@ -871,7 +871,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                     label: 'Filters',
                     iconPath: 'assets/images/icons/Filter Icon.png',
                     iconAlt: 'Filters',
-                    parentId: 'dockGlobeRailRight',
+                    parentId: 'dockGlobeRailCenter',
                     baseClass: 'globe-control-btn',
                     headerOrder: 5,
                     mobileParentId: 'dockGlobeRailLeft',
@@ -894,7 +894,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                     label: globalImageToggleState ? 'Image On' : 'Image Off',
                     iconPath: 'assets/images/icons/Image Display Icon.png',
                     iconAlt: 'Images',
-                    parentId: 'dockGlobeRailRight',
+                    parentId: 'dockGlobeRailCenter',
                     baseClass: 'globe-control-btn',
                     headerOrder: 6,
                     mobileParentId: 'dockGlobeRailLeft',
@@ -936,53 +936,43 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 labelEl.textContent = newState ? 'Image On' : 'Image Off';
                                 console.log('[DEBUG global button click] Label updated to:', labelEl.textContent);
                             }
-                            
                             if (newState) {
                                 newBtn.classList.add('active');
                                 console.log('[DEBUG global button click] Added active class');
-                                // If event slide is open, show image immediately
-                                const eventSlide = document.getElementById('eventSlide');
-                                console.log('[DEBUG global button click] eventSlide:', !!eventSlide, 'open:', eventSlide?.classList.contains('open'));
-                                if (eventSlide && eventSlide.classList.contains('open')) {
-                                    console.log('[DEBUG global button click] Event slide is open, manually showing image with gradual fade');
-                                    // Use gradual fade-in for showing image
-                                    if (window.standaloneEventSlide?.showImageOverlayGradually && window.standaloneEventSlide?.currentImagePath) {
-                                        // Check if currentImagePath is valid (not empty string)
-                                        if (window.standaloneEventSlide.currentImagePath && window.standaloneEventSlide.currentImagePath.trim() !== '') {
-                                            window.standaloneEventSlide.showImageOverlayGradually(window.standaloneEventSlide.currentImagePath, 600);
-                                        } else {
-                                            console.error('[DEBUG global button click] No valid image path available for current event');
-                                            // Revert toggle state since there's no image to show
-                                            newState = false;
-                                            newBtn.classList.remove('active');
-                                            newBtn.textContent = 'Image Off';
-                                        }
-                                    } else {
-                                        console.error('[DEBUG global button click] showImageOverlayGradually not available or no currentImagePath');
-                                    }
-                                }
                             } else {
                                 newBtn.classList.remove('active');
                                 console.log('[DEBUG global button click] Removed active class');
-                                // If event slide is open, hide image immediately
-                                const eventSlide = document.getElementById('eventSlide');
-                                console.log('[DEBUG global button click] eventSlide:', !!eventSlide, 'open:', eventSlide?.classList.contains('open'));
-                                if (eventSlide && eventSlide.classList.contains('open')) {
-                                    console.log('[DEBUG global button click] Event slide is open, hiding image');
-                                    // Use standalone event system's image overlay methods
-                                    const overlay = document.getElementById('eventImageOverlay');
-                                    console.log('[DEBUG global button click] overlay:', !!overlay, 'open:', overlay?.classList.contains('open'));
-                                    if (overlay && overlay.classList.contains('open')) {
-                                        console.log('[DEBUG global button click] Calling hideImageOverlayGradually directly');
-                                        // Call the gradual fade function directly to avoid the wrong function being called
-                                        if (window.standaloneEventSlide?.hideImageOverlayGradually) {
-                                            window.standaloneEventSlide.hideImageOverlayGradually(600);
-                                        } else {
-                                            console.error('[DEBUG global button click] hideImageOverlayGradually not available');
-                                        }
-                                    }
+                            }
+
+                            // Ensure the event slide is open, then apply image state.
+                            const eventSlide = document.getElementById('eventSlide');
+                            const isSlideOpen = !!eventSlide?.classList.contains('open');
+                            const ss = window.standaloneEventSlide;
+                            if (!isSlideOpen && ss?.showStandaloneEventSlide) {
+                                const events = window.eventManager?.events || [];
+                                let idx = Number.isFinite(ss.currentEventIndex) ? ss.currentEventIndex : 0;
+                                if (idx < 0) idx = 0;
+                                if (idx >= events.length) idx = Math.max(0, events.length - 1);
+                                const eventToOpen = ss.currentEventData || events[idx];
+                                if (eventToOpen) {
+                                    ss.showStandaloneEventSlide(eventToOpen, idx);
                                 }
                             }
+
+                            setTimeout(() => {
+                                const slideNowOpen = !!document.getElementById('eventSlide')?.classList.contains('open');
+                                if (!slideNowOpen || !ss) return;
+                                if (newState) {
+                                    const path = ss.currentImagePath?.trim();
+                                    if (path && ss.showImageOverlayGradually) {
+                                        ss.showImageOverlayGradually(path, 600);
+                                    }
+                                } else if (ss.hideImageOverlayGradually) {
+                                    ss.hideImageOverlayGradually(600);
+                                } else if (ss.hideImageOverlay) {
+                                    ss.hideImageOverlay();
+                                }
+                            }, 0);
                             
                             // Play sound
                             if (window.SoundEffectsManager) {
@@ -1005,25 +995,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                     }
 
                     const pageInputContainer = document.querySelector('.page-input-container');
-                    const rightRail = document.getElementById('dockGlobeRailRight');
-                    const filtersBtn = document.getElementById('filtersToggle');
-                    const globalImageToggleBtn = document.getElementById('globalImageToggle');
-
-                    if (rightRail) {
-                        const trapMountEarly = document.querySelector('.pagination-dock-top-trapezoid');
-                        // Pagination dock: page box + image/filters live in trapezoid / center rail (moveElements).
-                        if (!trapMountEarly) {
-                            // Move page input container to dock rail on desktop or landscape
-                            if (pageInputContainer && pageInputContainer.parentElement !== rightRail) {
-                                rightRail.appendChild(pageInputContainer);
-                            }
-                            if (globalImageToggleBtn && globalImageToggleBtn.parentElement !== rightRail) {
-                                rightRail.appendChild(globalImageToggleBtn);
-                            }
-                            if (filtersBtn && filtersBtn.parentElement !== rightRail) {
-                                rightRail.appendChild(filtersBtn);
-                            }
-                        }
+                    const centerRail = document.getElementById('dockGlobeRailCenter');
+                    if (centerRail && pageInputContainer && pageInputContainer.parentElement !== centerRail) {
+                        centerRail.appendChild(pageInputContainer);
                     }
                 }
 
@@ -1656,6 +1630,13 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             this.wireEditButtons(eventData, displayEvent, editBtn, saveBtn, eventSlideTitle, eventSlideText);
                             
                             // Show the panel
+                            // Mutual exclusion: opening Event Info closes Filters.
+                            const filtersPanel = document.getElementById('filtersPanel');
+                            const filtersToggle = document.getElementById('filtersToggle');
+                            if (filtersPanel?.classList.contains('open')) {
+                                filtersPanel.classList.remove('open');
+                                filtersToggle?.classList.remove('active');
+                            }
                             eventSlide.classList.add('open');
                             
                             // Wire close button

@@ -541,7 +541,7 @@ let onWindowResizeRedraw = null;
 /** @type {((e: KeyboardEvent) => void)|null} */
 let onCodexGlobalKeydown = null;
 
-/** True only when the repo Node server is expected to expose `GET/POST /api/codex` (default port 8000). */
+/** True when the repo Node server is expected to expose `GET/POST /api/codex` (same rules as EventDataService save). */
 function isCodexFileApiAvailable() {
     try {
         const ds = window.EventDataService;
@@ -549,7 +549,7 @@ function isCodexFileApiAvailable() {
         const isHttp = window.location.protocol === 'http:' || window.location.protocol === 'https:';
         const isDevServerPort = String(window.location.port || '') === '8000';
         const isLoopbackHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        return isHttp && isDevServerPort && isLoopbackHost;
+        return isHttp && (isDevServerPort || isLoopbackHost);
     } catch (_) {
         return false;
     }
@@ -567,7 +567,11 @@ async function fetchCanonicalCodexJson() {
 
     if (isCodexFileApiAvailable()) {
         try {
-            const r = await fetch(`/api/codex?v=${Date.now()}`);
+            const codexGet =
+                typeof window.resolveDevApiUrl === 'function'
+                    ? window.resolveDevApiUrl(`api/codex?v=${Date.now()}`)
+                    : `/api/codex?v=${Date.now()}`;
+            const r = await fetch(codexGet);
             if (r.ok) {
                 const ct = r.headers.get('content-type') || '';
                 if (ct.includes('json')) {
@@ -3254,7 +3258,9 @@ export function saveCodexLayout() {
     redrawCodexEdges();
 
     if (isCodexFileApiAvailable()) {
-        fetch('/api/codex', {
+        const codexPost =
+            typeof window.resolveDevApiUrl === 'function' ? window.resolveDevApiUrl('api/codex') : '/api/codex';
+        fetch(codexPost, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

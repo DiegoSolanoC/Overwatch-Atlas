@@ -153,9 +153,26 @@ export function createFiltersPanel(statusService) {
                             </span>
                         </button>
                     </div>
+                    <div class="filters-search-wrap">
+                        <label for="filtersMenuSearch" class="filters-search-label">Search current category</label>
+                        <input
+                            type="text"
+                            id="filtersMenuSearch"
+                            class="filters-search-input"
+                            placeholder="Search heroes..."
+                            autocomplete="off"
+                            spellcheck="false"
+                        />
+                    </div>
                     <div class="filters-actions-buttons">
-                        <button type="button" id="clearFiltersBtn" class="filters-action-btn">Clear</button>
-                        <button type="button" id="confirmFiltersBtn" class="filters-action-btn filters-confirm-btn">Confirm</button>
+                        <button type="button" id="clearFiltersBtn" class="filters-action-btn">
+                            <img class="filters-action-btn__icon" src="assets/images/icons/Clear Filter Icon.png" alt="" width="22" height="22" decoding="async" />
+                            <span class="filters-action-btn__label">Clear</span>
+                        </button>
+                        <button type="button" id="confirmFiltersBtn" class="filters-action-btn filters-confirm-btn">
+                            <img class="filters-action-btn__icon" src="assets/images/icons/Confirm Filter Icon.png" alt="" width="22" height="22" decoding="async" />
+                            <span class="filters-action-btn__label">Confirm</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -321,8 +338,8 @@ export function createEventPagination(statusService) {
         const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="9" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
 <polygon class="pagination-dock-top-trapezoid__fill" points="2,0 98,0 112,100 -12,100" />
 </svg>`;
-        const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="1" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
-<path d="M -12,100 L 2,0 L 98,0 L 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
+        const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="2" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
+<path d="M -12,100 Q -5,52 2,3 L 98,3 Q 105,52 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
 </svg>`;
 
         let capRow = dock.querySelector('.pagination-dock-top-cap-row');
@@ -408,7 +425,8 @@ export function createEventPagination(statusService) {
         if (centerRailDock && trap && centerRailDock.parentNode !== trap) {
             trap.appendChild(centerRailDock);
         }
-        if (trap && !trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"]')) {
+        trap?.querySelectorAll('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"]').forEach((el) => el.remove());
+        if (trap && !trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="2"]')) {
             trap.insertAdjacentHTML('beforeend', TRAPEZOID_BORDER_SVG);
         }
 

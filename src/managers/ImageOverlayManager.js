@@ -187,6 +187,13 @@ export class ImageOverlayManager {
                 if (!temporary) {
                     this.imageToggleState = false;
                 }
+
+                // Passive "Now playing" badge was hidden while overlay was open — restore if appropriate.
+                if (window.MusicManager && typeof window.MusicManager.updateNowPlaying === 'function') {
+                    try {
+                        window.MusicManager.updateNowPlaying();
+                    } catch (_) {}
+                }
             }
         }, fadeInterval);
     }

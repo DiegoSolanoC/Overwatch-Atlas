@@ -11,7 +11,7 @@
     height: 75%; /* Match headline strip height */
     overflow: hidden;
     display: none; /* Hidden by default, shown when timeline is loaded */
-    z-index: 5; /* Below Atlas News logo (z-index: 10) */
+    z-index: 705; /* Above dock chrome, below Atlas News trapezoid/logo */
     pointer-events: auto; /* Headlines are interactive (hover + click) */
     padding: 2px 0; /* Minimal vertical padding to reduce white space */
 }

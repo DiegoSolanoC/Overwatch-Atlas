@@ -297,33 +297,6 @@
       ]
     },
     {
-      "name": "The Super Coral Reef",
-      "description": "They eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Super Coral. This genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
-      "locationType": "earth",
-      "cityDisplayName": "Coral Sea, Oceania",
-      "lat": -20,
-      "lon": 155,
-      "yearStart": 2020,
-      "yearEnd": 2040,
-      "eraName": "The Age of Progress",
-      "filters": [
-        "Mauga"
-      ],
-      "factions": [
-        "03Ecopoints"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "headlines": [
-        "Artificial Coral is to be released into Polynesian waters"
-      ],
-      "image": ""
-    },
-    {
       "name": "Vivian Chase is Born",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
@@ -381,6 +354,35 @@
       "yearStart": 2020,
       "yearEnd": 2040,
       "eraName": "The Age of Progress"
+    },
+    {
+      "name": "The Super Coral Reef",
+      "description": "In their search for solutions on the ecological crisism the Polynesian naitons eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Super Coral. This genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
+      "locationType": "earth",
+      "cityDisplayName": "Coral Sea, Oceania",
+      "lat": -20,
+      "lon": 155,
+      "yearStart": 2020,
+      "yearEnd": 2040,
+      "eraName": "The Age of Progress",
+      "filters": [
+        "Mauga"
+      ],
+      "factions": [
+        "03Ecopoints"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "headlines": [
+        "Artificial Coral is to be released into Polynesian waters"
+      ],
+      "image": "",
+      "npcs": [],
+      "secondaryCountryFlags": []
     },
     {
       "name": "Mako Rutledge is Born",

@@ -48,4 +48,19 @@ copyRecursive(ROOT, OUT);
 // Ensure Jekyll is disabled on Pages
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
+// Mark deploy as static so runtime matches GitHub Pages (file over localStorage, no /api writes)
+const siteIndex = path.join(OUT, 'index.html');
+if (fs.existsSync(siteIndex)) {
+    let html = fs.readFileSync(siteIndex, 'utf8');
+    if (!/name=["']timeline-deploy["']/i.test(html)) {
+        const marker = '<meta name="timeline-deploy" content="static">';
+        if (/<meta\s+charset=/i.test(html)) {
+            html = html.replace(/(<meta\s+charset=["']UTF-8["']\s*\/?>)/i, `$1\n    ${marker}`);
+        } else {
+            html = html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}\n    ${marker}`);
+        }
+        fs.writeFileSync(siteIndex, html, 'utf8');
+    }
+}
+
 console.log('GitHub Pages output:', OUT);

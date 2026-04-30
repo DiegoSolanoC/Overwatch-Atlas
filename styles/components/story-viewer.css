@@ -236,7 +236,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     border-top: none;
 }
 
-/* Right rail: Show all + Per page + Clear (moved from search row in JS) — mirrors left .events-manage-actions + .story-viewer-action-btn */
+/* Right rail: Show all + Per page combined into one unit */
 .story-viewer-panel-embedded #storyArchiveRightToolbar.story-archive-right-toolbar {
     grid-column: 3;
     justify-self: end;
@@ -278,6 +278,28 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-search-checkbox,
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-per-page-group {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    min-height: 0;
+    height: auto;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-search-checkbox {
+    width: auto;
 }
 
 .story-viewer-panel-embedded #storyArchiveRightToolbar .events-per-page-group.story-viewer-bottom-bar-control {
@@ -328,6 +350,11 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     height: var(--story-archive-bar-control-height);
     padding-block: 0;
     padding-inline: 16px;
+}
+
+/* Story Archive: Clear button no longer used */
+.story-viewer-panel-embedded #eventsSearchClear {
+    display: none !important;
 }
 
 .story-viewer-panel-embedded .events-manage-content,

@@ -1490,6 +1490,14 @@ export class EventSlideManager {
         }
 
         if (eventSlide) {
+            // Mutual exclusion: opening Event Info closes Filters.
+            const filtersPanel = document.getElementById('filtersPanel');
+            const filtersToggle = document.getElementById('filtersToggle');
+            if (filtersPanel?.classList.contains('open')) {
+                filtersPanel.classList.remove('open');
+                filtersToggle?.classList.remove('active');
+            }
+
             // Setup variant toggle buttons using helper
             const setupVariantToggles = window.EventSlideContentHelpers?.setupVariantToggles;
             if (setupVariantToggles) {

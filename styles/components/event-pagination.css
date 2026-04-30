@@ -1286,7 +1286,7 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
         align-items: center;
         justify-content: center;
         color: white;
-        box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.35);
+        box-shadow: none;
         transform: translateY(var(--dock-collapse-pill-nudge-y, 6px));
         transition:
             width 0.25s ease,
@@ -1320,13 +1320,11 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
         background-size: 100% 100%;
         width: var(--dock-collapse-pill-width, min(280px, 46vw));
         height: 38px;
-        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.42);
+        box-shadow: none;
     }
 
     body:has(#paginationDock) .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
-        box-shadow:
-            0 -3px 16px rgba(0, 0, 0, 0.4),
-            0 0 0 2px rgba(255, 255, 255, 0.35);
+        box-shadow: none;
     }
 
     body:has(#paginationDock) .pagination-dock-collapse-handle:focus {

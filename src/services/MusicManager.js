@@ -55,6 +55,9 @@ class MusicManager {
         this.isLooping = false;
         /** Reposition passive now-playing label after header hub resort (e.g. palette loads after music). */
         this._owtlHeaderHubListenerAttached = false;
+        /** When event image overlay closes, refresh passive badge visibility (was suppressed while open). */
+        this._eventImageOverlayMo = null;
+        this._eventImageOverlaySyncTimer = null;
     }
 
     /** Same coordinate space as `SummaryInfoBadge` (under-button passive label). */
@@ -125,17 +128,46 @@ class MusicManager {
         const musicRect = btn.getBoundingClientRect();
         const gap = 2;
 
-        // Position symmetrically to match Summary badge distance from edge
-        // Summary badge is 20% from right edge, so Now Playing should be 20% from right edge (80% from left)
-        // Anchor from LEFT edge so badge grows RIGHTWARD when text expands
-        const vw = Math.max(1, (window.innerWidth || 1) / scale);
-        const leftPos = (vw * 0.80); // 80% from left edge (same as 20% from right)
+        // Anchor against the current center stage width (main#content), not viewport.
+        // This makes badge position slide with panel open/close layout changes.
+        const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
+        const leftPos = contentRect
+            ? ((contentRect.left + (contentRect.width * 0.75)) / scale)
+            : (Math.max(1, (window.innerWidth || 1) / scale) * 0.75);
 
         const top = (musicRect.bottom + gap) / scale;
 
         badge.style.left = `${leftPos}px`;
         badge.style.right = '';
         badge.style.top = `${top}px`;
+    }
+
+    _isEventImageOverlayOpen() {
+        const overlay = document.getElementById('eventImageOverlay');
+        return !!(overlay && overlay.classList.contains('open'));
+    }
+
+    /**
+     * Re-run badge visibility after #eventImageOverlay stops blocking it (any code path).
+     */
+    _installEventImageOverlayNowPlayingSync() {
+        if (this._eventImageOverlayMo) return;
+        const overlay = document.getElementById('eventImageOverlay');
+        if (!overlay || typeof MutationObserver === 'undefined') return;
+        const self = this;
+        const scheduleRefresh = () => {
+            if (self._eventImageOverlaySyncTimer) clearTimeout(self._eventImageOverlaySyncTimer);
+            self._eventImageOverlaySyncTimer = setTimeout(() => {
+                self._eventImageOverlaySyncTimer = null;
+                if (typeof self.updateNowPlaying !== 'function') return;
+                if (self._isEventImageOverlayOpen()) return;
+                try {
+                    self.updateNowPlaying();
+                } catch (_) {}
+            }, 0);
+        };
+        this._eventImageOverlayMo = new MutationObserver(() => scheduleRefresh());
+        this._eventImageOverlayMo.observe(overlay, { attributes: true, attributeFilter: ['class'] });
     }
 
     _onHeaderHubMutated() {
@@ -146,8 +178,44 @@ class MusicManager {
         this._stopNowPlayingBadgeFollow();
         this._syncMusicToggleButton();
         this._positionNowPlayingBadge();
-        // Don't reposition on scroll or resize - badge is anchored from left edge and should grow rightward
-        this._nowPlayingFollowCleanup = () => {};
+        // Reposition on layout changes (panel open/close shifts dock/header geometry).
+        let pending = null;
+        const schedule = () => {
+            if (pending != null) return;
+            pending = requestAnimationFrame(() => {
+                pending = null;
+                if (!this.nowPlayingBadge || !this.nowPlayingBadge.classList.contains('music-now-playing-badge--visible')) return;
+                if (this._isEventImageOverlayOpen()) {
+                    this.nowPlayingBadge.classList.remove('music-now-playing-badge--visible');
+                    this._stopNowPlayingBadgeFollow();
+                    return;
+                }
+                this._positionNowPlayingBadge();
+            });
+        };
+        const onViewport = () => schedule();
+        window.addEventListener('resize', onViewport);
+        window.addEventListener('scroll', onViewport, true);
+        const observerTargets = [
+            document.getElementById('filtersPanel'),
+            document.getElementById('eventSlide'),
+            document.getElementById('eventsManagePanel'),
+            document.querySelector('.layout-container'),
+        ].filter(Boolean);
+        let mo = null;
+        if (typeof MutationObserver !== 'undefined' && observerTargets.length > 0) {
+            mo = new MutationObserver(() => schedule());
+            observerTargets.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['class', 'style'] }));
+        }
+        this._nowPlayingFollowCleanup = () => {
+            window.removeEventListener('resize', onViewport);
+            window.removeEventListener('scroll', onViewport, true);
+            if (mo) mo.disconnect();
+            if (pending != null) {
+                cancelAnimationFrame(pending);
+                pending = null;
+            }
+        };
     }
 
     _stopNowPlayingBadgeFollow() {
@@ -164,6 +232,11 @@ class MusicManager {
     _setNowPlayingBadgeVisible(visible) {
         this._ensureNowPlayingBadge();
         if (!this.nowPlayingBadge) return;
+        if (this._isEventImageOverlayOpen()) {
+            this.nowPlayingBadge.classList.remove('music-now-playing-badge--visible');
+            this._stopNowPlayingBadgeFollow();
+            return;
+        }
         // Never show on mobile (too cramped; user requested hidden).
         try {
             if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
@@ -448,6 +521,7 @@ class MusicManager {
             }
             self._updatePlayingDiscSpinning();
         };
+        self._installEventImageOverlayNowPlayingSync();
         this.updateProgressBar = function () { self.progressService.updateProgressBar(); };
         this.formatTime = function (sec) { return self.progressService.formatTime(sec); };
 
