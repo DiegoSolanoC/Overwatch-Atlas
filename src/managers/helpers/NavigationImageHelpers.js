@@ -6,12 +6,17 @@
  * Gets the image path for an event
  * @param {Object} displayEvent - Event object to get image for
  * @param {string} eventName - Event name (fallback)
+ * @param {string} [imageArchiveOverride] - e.g. `'story'` for dock thumbs while editing heroes
  * @returns {string|null} - Image path or null
  */
-export function getEventImagePath(displayEvent, eventName) {
+export function getEventImagePath(displayEvent, eventName, imageArchiveOverride) {
     // Use EventManager's function if available for consistency
     if (window.eventManager && typeof window.eventManager.getEventImagePath === 'function') {
-        const imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+        const imagePath = window.eventManager.getEventImagePath(
+            displayEvent.name,
+            displayEvent.image,
+            imageArchiveOverride
+        );
         console.log(`[NavigationImageHelpers] Image path for "${eventName}": ${imagePath}`);
         return imagePath;
     }
@@ -21,7 +26,7 @@ export function getEventImagePath(displayEvent, eventName) {
     if (!imagePath || !imagePath.trim()) {
         const normalizedName = eventName.replace(/\s+/g, ' ').trim();
         const encodedFileName = encodeURIComponent(normalizedName);
-        imagePath = `assets/images/events/${encodedFileName}.png`;
+        imagePath = `assets/images/Archive%20data/events/${encodedFileName}.png`;
     }
     console.log(`[NavigationImageHelpers] Image path (fallback) for "${eventName}": ${imagePath}`);
     return imagePath;

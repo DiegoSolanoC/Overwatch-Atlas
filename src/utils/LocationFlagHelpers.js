@@ -98,11 +98,21 @@
         return null;
     }
 
+    /** Strip trailing ", , ," so "Cairo, Egypt," still resolves to Egypt (otherwise last segment is empty → pin). */
+    function stripTrailingCommaSep(s) {
+        return String(s == null ? '' : s)
+            .replace(/\u00a0/g, ' ')
+            .replace(/,+\s*$/g, '')
+            .trim();
+    }
+
     function extractCountryFromDisplay(locationName) {
         if (!locationName || typeof locationName !== 'string') return null;
-        var idx = locationName.lastIndexOf(',');
+        var s = stripTrailingCommaSep(locationName);
+        if (!s) return null;
+        var idx = s.lastIndexOf(',');
         if (idx < 0) return null;
-        var c = locationName.slice(idx + 1).trim();
+        var c = s.slice(idx + 1).trim();
         return c || null;
     }
 
@@ -237,13 +247,16 @@
      * Which flag PNG would be shown for this location (same rules as the location row). Returns null if pin only.
      */
     function getResolvedFlagFilename(locationName, locationType) {
-        var special = trySpecialDisplayFile(locationName);
+        var loc = stripTrailingCommaSep(locationName);
+        if (!loc) return null;
+
+        var special = trySpecialDisplayFile(loc);
         if (special) return special;
 
-        var fic = tryFictionalFile(locationName, locationType);
+        var fic = tryFictionalFile(loc, locationType);
         if (fic) return fic;
 
-        var country = extractCountryFromDisplay(locationName);
+        var country = extractCountryFromDisplay(loc);
         if (country) {
             var fn = resolveCountryToFilename(country);
             if (fn) return fn;
@@ -263,12 +276,568 @@
         return createLeadingGraphicHtml(text, locationType) + ' ' + text;
     }
 
+    function escapeHtmlAttr(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    /**
+     * Hero archive slide: rows with flag from `country` (same rules as secondary countries) + reasoning.
+     * Accepts legacy string[] ("Place, Country") or { locationName, country, reasoning }[].
+     * @param {Array<string|{locationName?:string,name?:string,country?:string,reasoning?:string}>|null|undefined} entries
+     * @param {string} [locationType]
+     * @returns {string} HTML fragment
+     */
+    /** If location text already ends with ", Country", avoid duplicating country in the label. */
+    function dedupeLocNameForHeroRow(locName, country) {
+        var ln = stripTrailingCommaSep(locName);
+        var c = stripTrailingCommaSep(country);
+        if (!ln || !c) return ln;
+        var ix = ln.lastIndexOf(',');
+        if (ix < 0) return ln;
+        var lastSeg = ln.slice(ix + 1).trim();
+        if (lastSeg.toLowerCase() === c.toLowerCase()) {
+            return stripTrailingCommaSep(ln.slice(0, ix));
+        }
+        return ln;
+    }
+
+    function createRelevantLocationsSlideHtml(entries, locationType) {
+        var t = locationType || 'earth';
+        var list = Array.isArray(entries) ? entries : [];
+        var rowParts = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            var locName = '';
+            var country = '';
+            var reasoning = '';
+            if (typeof item === 'string') {
+                var s0 = stripTrailingCommaSep(String(item));
+                if (!s0) continue;
+                var ix = s0.lastIndexOf(',');
+                if (ix >= 0) {
+                    locName = stripTrailingCommaSep(s0.slice(0, ix));
+                    country = stripTrailingCommaSep(s0.slice(ix + 1));
+                } else {
+                    locName = s0;
+                }
+            } else if (item && typeof item === 'object') {
+                locName = stripTrailingCommaSep(
+                    item.locationName != null ? String(item.locationName) : ''
+                );
+                if (!locName && item.name != null) locName = stripTrailingCommaSep(String(item.name));
+                country = stripTrailingCommaSep(item.country != null ? String(item.country) : '');
+                reasoning = item.reasoning != null ? String(item.reasoning).trim() : '';
+            }
+            if (!locName && !country && !reasoning) continue;
+
+            /* If everything was typed in "Location" as "City, Country" and country column is empty, split for flag lookup. */
+            if (!country && locName) {
+                var inferred = extractCountryFromDisplay(locName);
+                if (inferred) {
+                    country = inferred;
+                    var ixCut = locName.lastIndexOf(',');
+                    if (ixCut >= 0) {
+                        locName = stripTrailingCommaSep(locName.slice(0, ixCut));
+                    }
+                }
+            }
+
+            locName = dedupeLocNameForHeroRow(locName, country);
+
+            /* Multiple countries in one field (e.g. "Egypt, Angola") → one flag each in a row. */
+            var countryTokens = (country || '')
+                .split(',')
+                .map(function (s) {
+                    return stripTrailingCommaSep(s);
+                })
+                .filter(Boolean);
+            var manyCountryTokens = countryTokens.length > 1;
+            var lead = '';
+            if (country && countryTokens.length > 1) {
+                lead = '<span class="event-slide-relevant-locations__flag-row">';
+                for (var ti = 0; ti < countryTokens.length; ti += 1) {
+                    var tok = countryTokens[ti];
+                    var fMulti = resolveManualCountryTokenToFlagFile(tok, t);
+                    if (!fMulti && locName) {
+                        fMulti = getResolvedFlagFilename(locName + ', ' + tok, t);
+                    }
+                    if (!fMulti) {
+                        fMulti = getResolvedFlagFilename(tok, t);
+                    }
+                    lead += fMulti ? flagImg(fMulti) : pinImg();
+                }
+                lead += '</span>';
+            } else {
+                /* Single country token: prefer explicit `country`, then "Place, Country", then place-only. */
+                var flagFn = null;
+                if (country) {
+                    flagFn = resolveManualCountryTokenToFlagFile(country, t);
+                }
+                if (!flagFn && locName && country) {
+                    flagFn = getResolvedFlagFilename(locName + ', ' + country, t);
+                }
+                if (!flagFn && locName) {
+                    flagFn = getResolvedFlagFilename(locName, t);
+                }
+                lead = flagFn ? flagImg(flagFn) : pinImg();
+            }
+
+            /* With a group label + many countries: flags carry geography; do not repeat the full country list in prose. */
+            var mainText;
+            if (locName && country) {
+                if (manyCountryTokens) {
+                    mainText = escapeHtmlAttr(locName);
+                } else {
+                    mainText =
+                        escapeHtmlAttr(locName) +
+                        '<span class="event-slide-relevant-locations__comma-country">, ' +
+                        escapeHtmlAttr(country) +
+                        '</span>';
+                }
+            } else if (locName) {
+                mainText = escapeHtmlAttr(locName);
+            } else if (country) {
+                if (manyCountryTokens) {
+                    mainText =
+                        escapeHtmlAttr(String(countryTokens.length)) +
+                        ' countries';
+                } else {
+                    mainText = escapeHtmlAttr(country);
+                }
+            } else {
+                mainText = '';
+            }
+
+            var mainBlock =
+                lead + '<span class="event-slide-relevant-locations__main">' + mainText + '</span>';
+
+            var reasonSuffix = reasoning
+                ? '<span class="event-slide-relevant-locations__reason">' +
+                  escapeHtmlAttr(' — ' + reasoning) +
+                  '</span>'
+                : '';
+            rowParts.push(
+                '<div class="event-slide-relevant-locations__row">' + mainBlock + reasonSuffix + '</div>'
+            );
+        }
+        if (!rowParts.length) return '';
+        return rowParts.join('');
+    }
+
+    /**
+     * Rows for slide display: `secondaryCountryPlaces` (story), else hero/faction/NPC `relevantLocations`,
+     * else one synthetic row from legacy `secondaryCountryFlags`.
+     * @param {Object|null} ev
+     * @returns {Array<{locationName?: string, country?: string, reasoning?: string}>}
+     */
+    function getSecondaryCountryPlacesRowsForDisplay(ev) {
+        if (!ev) return [];
+        var places = ev.secondaryCountryPlaces;
+        if (Array.isArray(places) && places.length > 0) {
+            return places;
+        }
+        var rel = ev.relevantLocations;
+        if (Array.isArray(rel) && rel.length > 0) {
+            return rel;
+        }
+        var flags = ev.secondaryCountryFlags;
+        if (!Array.isArray(flags) || flags.length === 0) return [];
+        var formSvc = typeof window !== 'undefined' ? window.eventManager?.formService : null;
+        var countryText =
+            formSvc && typeof formSvc.secondaryFlagsToFormString === 'function'
+                ? formSvc.secondaryFlagsToFormString(flags)
+                : flags.join(', ');
+        return countryText ? [{ locationName: '', country: countryText, reasoning: '' }] : [];
+    }
+
+    /** Hide hero/story shared "Relevant locations" block under the description. */
+    function clearRelevantLocationsSlideDom() {
+        var relEl = typeof document !== 'undefined' ? document.getElementById('eventSlideRelevantLocations') : null;
+        var relSection = typeof document !== 'undefined' ? document.getElementById('eventRelevantLocationsSection') : null;
+        if (relEl) relEl.innerHTML = '';
+        if (relSection) relSection.style.display = 'none';
+    }
+
+    /**
+     * Slide "Relevant locations" block: same HTML as hero editor, from `secondaryCountryPlaces`, `relevantLocations`, or legacy flags.
+     * @param {Object|null} ev
+     */
+    function updateRelevantLocationsSlideFromSecondaryPlaces(ev) {
+        var relEl = typeof document !== 'undefined' ? document.getElementById('eventSlideRelevantLocations') : null;
+        var relSection = typeof document !== 'undefined' ? document.getElementById('eventRelevantLocationsSection') : null;
+        if (!relEl) return;
+        var rows = getSecondaryCountryPlacesRowsForDisplay(ev);
+        var lt = (ev && ev.locationType) || 'earth';
+        var inner = rows.length ? createRelevantLocationsSlideHtml(rows, lt) : '';
+        relEl.innerHTML = inner;
+        if (relSection) relSection.style.display = inner ? 'block' : 'none';
+    }
+
+    var ICON_HERO_CAT = 'assets/images/icons/Heroes Icon.png';
+    var ICON_FACTION_CAT = 'assets/images/icons/Factions Icon.png';
+    var ICON_NPC_CAT = 'assets/images/icons/NPC Icon.png';
+
+    function clonePlaceRowObjects(arr) {
+        if (!Array.isArray(arr)) return [];
+        return arr.map(function (p) {
+            return {
+                locationName: p && p.locationName != null ? String(p.locationName) : '',
+                country: p && p.country != null ? String(p.country) : '',
+                reasoning: p && p.reasoning != null ? String(p.reasoning) : ''
+            };
+        });
+    }
+
+    function migrateHeroPlacesFromFilters(filters) {
+        if (!Array.isArray(filters) || filters.length === 0) return [];
+        return [{ locationName: '', country: filters.join(', '), reasoning: '' }];
+    }
+
+    function migrateFactionPlacesFromFactions(factions) {
+        if (!Array.isArray(factions) || factions.length === 0) return [];
+        var formSvc = typeof window !== 'undefined' ? window.eventManager?.formService : null;
+        var manifest =
+            window.eventManager?.factions?.length > 0
+                ? window.eventManager.factions
+                : window.globeController?.dataModel?.factions || [];
+        var display =
+            formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
+                ? formSvc.factionsArrayToFormDisplayString(factions, manifest || [])
+                : factions.map(function (f) { return String(f).replace(/^\d+/, '').trim(); }).join(', ');
+        return [{ locationName: '', country: display, reasoning: '' }];
+    }
+
+    function migrateNpcPlacesFromNpcs(npcs) {
+        if (!Array.isArray(npcs) || npcs.length === 0) return [];
+        return [{ locationName: '', country: npcs.join(', '), reasoning: '' }];
+    }
+
+    /** @param {Object|null} ev */
+    function getHeroFilterPlacesRowsForDisplay(ev) {
+        if (!ev) return [];
+        if (Array.isArray(ev.heroFilterPlaces) && ev.heroFilterPlaces.length > 0) {
+            return clonePlaceRowObjects(ev.heroFilterPlaces);
+        }
+        return migrateHeroPlacesFromFilters(ev.filters || []);
+    }
+
+    function getFactionFilterPlacesRowsForDisplay(ev) {
+        if (!ev) return [];
+        if (Array.isArray(ev.factionFilterPlaces) && ev.factionFilterPlaces.length > 0) {
+            return clonePlaceRowObjects(ev.factionFilterPlaces);
+        }
+        return migrateFactionPlacesFromFactions(ev.factions || []);
+    }
+
+    function getNpcFilterPlacesRowsForDisplay(ev) {
+        if (!ev) return [];
+        if (Array.isArray(ev.npcFilterPlaces) && ev.npcFilterPlaces.length > 0) {
+            return clonePlaceRowObjects(ev.npcFilterPlaces);
+        }
+        return migrateNpcPlacesFromNpcs(ev.npcs || []);
+    }
+
+    function resolveHeroImageKey(token) {
+        var t = stripTrailingCommaSep(String(token || '')).trim();
+        if (!t) return '';
+        var list = window.eventManager?.heroes || window.globeController?.dataModel?.heroes || [];
+        var nk = normalizeKey(t);
+        for (var i = 0; i < list.length; i++) {
+            if (normalizeKey(list[i]) === nk) return String(list[i]);
+        }
+        return t;
+    }
+
+    function resolveNpcImageKey(token) {
+        var t = stripTrailingCommaSep(String(token || '')).trim();
+        if (!t) return '';
+        var list = window.eventManager?.npcs || [];
+        var nk = normalizeKey(t);
+        for (var i = 0; i < list.length; i++) {
+            if (normalizeKey(list[i]) === nk) return String(list[i]);
+        }
+        return t;
+    }
+
+    function resolveFactionImageFilename(rawFaction) {
+        var raw = String(rawFaction || '').trim();
+        if (!raw) return null;
+        var factions =
+            window.eventManager?.factions?.length > 0
+                ? window.eventManager.factions
+                : window.globeController?.dataModel?.factions || [];
+        var fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+        for (var i = 0; i < factions.length; i++) {
+            var f = factions[i];
+            var fn = f && f.filename ? String(f.filename).trim() : '';
+            var dn = f && f.displayName ? String(f.displayName).trim() : '';
+            if (!fn) continue;
+            if (fn === raw || dn === raw) return fn;
+            if (fh && typeof fh.factionIdsMatch === 'function') {
+                if (fh.factionIdsMatch(fn, raw) || fh.factionIdsMatch(dn, raw)) return fn;
+            }
+        }
+        var bare = raw.replace(/^\d+/, '').trim();
+        for (var j = 0; j < factions.length; j++) {
+            var f2 = factions[j];
+            var fn2 = f2 && f2.filename ? String(f2.filename).trim() : '';
+            if (!fn2) continue;
+            if (normalizeKey(fn2.replace(/^\d+/, '').trim()) === normalizeKey(bare)) return fn2;
+        }
+        return null;
+    }
+
+    function filterFallbackIconSrc(kind) {
+        if (kind === 'factions') return ICON_FACTION_CAT;
+        if (kind === 'npcs') return ICON_NPC_CAT;
+        return ICON_HERO_CAT;
+    }
+
+    function filterTokenImgHtml(kind, token) {
+        var t = stripTrailingCommaSep(String(token || '')).trim();
+        if (!t) return '';
+        var src = '';
+        var fb = filterFallbackIconSrc(kind).replace(/'/g, "\\'");
+        if (kind === 'heroes') {
+            var hk = resolveHeroImageKey(t);
+            var canon = hk || t;
+            src = 'assets/images/heroes/' + encodeURIComponent(canon) + '.png';
+            var dataEnc = encodeURIComponent(canon);
+            return (
+                '<img class="event-slide-filter-token-img event-slide-filter-token-img--heroes event-slide-filter-token-img--clickable-hero" ' +
+                'data-hero-open="' +
+                dataEnc +
+                '" role="button" tabindex="0" ' +
+                'src="' +
+                src +
+                '" alt="" title="Open ' +
+                escapeHtmlAttr(canon) +
+                ' in Heroes archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
+                fb +
+                '\';" />'
+            );
+        }
+        if (kind === 'npcs') {
+            var nk = resolveNpcImageKey(t);
+            src = 'assets/images/npcs/' + encodeURIComponent(nk || t) + '.png';
+        } else if (kind === 'factions') {
+            var ff = resolveFactionImageFilename(t);
+            if (!ff) return '';
+            src = 'assets/images/factions/' + encodeURIComponent(ff) + '.png';
+        } else {
+            return '';
+        }
+        return (
+            '<img class="event-slide-filter-token-img event-slide-filter-token-img--' +
+            kind +
+            '" src="' +
+            src +
+            '" alt="" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
+            fb +
+            '\';" />'
+        );
+    }
+
+    /** One-time: hero portraits in story relevancy open that hero’s Heroes archive slide. */
+    function wireStoryFilterSectionHeroArchiveNav(sec) {
+        if (!sec || sec.dataset.heroArchiveNavWired === '1') return;
+        sec.dataset.heroArchiveNavWired = '1';
+
+        function activateFromImg(img) {
+            if (!img) return;
+            var enc = img.getAttribute('data-hero-open');
+            if (!enc) return;
+            var name = decodeURIComponent(enc);
+            var em = window.eventManager;
+            if (em && typeof em.openHeroArchiveEventByName === 'function') {
+                void em.openHeroArchiveEventByName(name);
+            }
+        }
+
+        sec.addEventListener('click', function (e) {
+            var img = e.target.closest('img.event-slide-filter-token-img--clickable-hero[data-hero-open]');
+            if (!img || !sec.contains(img)) return;
+            e.preventDefault();
+            activateFromImg(img);
+        });
+
+        sec.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            var t = e.target;
+            if (!t || String(t.tagName || '').toLowerCase() !== 'img') return;
+            if (!t.classList.contains('event-slide-filter-token-img--clickable-hero')) return;
+            if (!t.getAttribute('data-hero-open')) return;
+            if (!sec.contains(t)) return;
+            e.preventDefault();
+            activateFromImg(t);
+        });
+    }
+
+    /**
+     * Story slide: grouped heroes / factions / NPCs — same row layout as relevant locations, filter icons instead of flags.
+     * @param {Array<{locationName?:string,country?:string,reasoning?:string}>} rows
+     * @param {'heroes'|'factions'|'npcs'} kind
+     */
+    function createStoryFilterPlacesSlideHtml(rows, kind) {
+        var list = Array.isArray(rows) ? rows : [];
+        var rowParts = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            var locName = stripTrailingCommaSep(item.locationName != null ? String(item.locationName) : '');
+            var country = stripTrailingCommaSep(item.country != null ? String(item.country) : '');
+            var reasoning = item.reasoning != null ? String(item.reasoning).trim() : '';
+            if (!locName && !country && !reasoning) continue;
+
+            var tokens = (country || '')
+                .split(',')
+                .map(function (s) { return stripTrailingCommaSep(s); })
+                .filter(Boolean);
+            var manyTokens = tokens.length > 1;
+            var lead = '';
+            if (tokens.length > 0) {
+                lead = '<span class="event-slide-relevant-locations__flag-row">';
+                for (var ti = 0; ti < tokens.length; ti += 1) {
+                    var one = filterTokenImgHtml(kind, tokens[ti]);
+                    if (one) lead += one;
+                }
+                lead += '</span>';
+            } else {
+                lead =
+                    '<img class="event-slide-filter-token-img event-slide-filter-token-img--' +
+                    kind +
+                    '" src="' +
+                    filterFallbackIconSrc(kind).replace(/'/g, "\\'") +
+                    '" alt="" width="44" height="44" decoding="async" />';
+            }
+
+            var mainText;
+            if (locName && country) {
+                if (manyTokens) {
+                    mainText = escapeHtmlAttr(locName);
+                } else {
+                    mainText =
+                        escapeHtmlAttr(locName) +
+                        '<span class="event-slide-relevant-locations__comma-country">, ' +
+                        escapeHtmlAttr(stripTrailingCommaSep(tokens[0] || country)) +
+                        '</span>';
+                }
+            } else if (locName) {
+                mainText = escapeHtmlAttr(locName);
+            } else if (country) {
+                if (manyTokens) {
+                    mainText = escapeHtmlAttr(String(tokens.length)) + ' ' + (kind === 'factions' ? 'factions' : kind === 'npcs' ? 'NPCs' : 'heroes');
+                } else {
+                    mainText = escapeHtmlAttr(stripTrailingCommaSep(tokens[0] || country));
+                }
+            } else {
+                mainText = '';
+            }
+
+            var mainBlock =
+                lead + '<span class="event-slide-relevant-locations__main">' + mainText + '</span>';
+            var reasonSuffix = reasoning
+                ? '<span class="event-slide-relevant-locations__reason">' +
+                  escapeHtmlAttr(' — ' + reasoning) +
+                  '</span>'
+                : '';
+            rowParts.push(
+                '<div class="event-slide-relevant-locations__row">' + mainBlock + reasonSuffix + '</div>'
+            );
+        }
+        if (!rowParts.length) return '';
+        return rowParts.join('');
+    }
+
+    function clearStoryFilterPlacesSlideDom() {
+        var sec = typeof document !== 'undefined' ? document.getElementById('eventStoryFilterPlacesSection') : null;
+        if (sec) {
+            sec.innerHTML = '';
+            sec.style.display = 'none';
+        }
+    }
+
+    /**
+     * Renders grouped hero / faction / NPC rows under the description (read-only, like Relevant locations).
+     * @param {Object|null} ev
+     */
+    function updateStoryFilterPlacesSlideFromEvent(ev) {
+        var sec = typeof document !== 'undefined' ? document.getElementById('eventStoryFilterPlacesSection') : null;
+        if (!sec) return;
+        var arch = typeof window !== 'undefined' && window.eventManager?.dataService?.getArchiveSource
+            ? window.eventManager.dataService.getArchiveSource()
+            : 'story';
+        /** Main-timeline dock slide uses story event data even if Event Manager archive is still heroes/factions/etc. */
+        var dockStoryPresentation =
+            typeof window !== 'undefined'
+            && window.standaloneEventSlide
+            && window.standaloneEventSlide._presentationFromDockTimeline === true;
+        var useStoryGroupedRelevancy = arch === 'story' || dockStoryPresentation;
+        if (!useStoryGroupedRelevancy) {
+            sec.innerHTML = '';
+            sec.style.display = 'none';
+            return;
+        }
+        var heroRows = getHeroFilterPlacesRowsForDisplay(ev);
+        var facRows = getFactionFilterPlacesRowsForDisplay(ev);
+        var npcRows = getNpcFilterPlacesRowsForDisplay(ev);
+        var heroHtml = heroRows.length ? createStoryFilterPlacesSlideHtml(heroRows, 'heroes') : '';
+        var facHtml = facRows.length ? createStoryFilterPlacesSlideHtml(facRows, 'factions') : '';
+        var npcHtml = npcRows.length ? createStoryFilterPlacesSlideHtml(npcRows, 'npcs') : '';
+        var parts = [];
+        if (heroHtml) {
+            parts.push(
+                '<h4 class="event-filter-header event-filter-header--category">' +
+                    '<img class="event-filter-header-icon" src="' +
+                    ICON_HERO_CAT +
+                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '<span class="event-filter-header-label">Relevant heroes</span>' +
+                '</h4>' +
+                '<div class="event-slide-relevant-locations">' +
+                    heroHtml +
+                '</div>'
+            );
+        }
+        if (facHtml) {
+            parts.push(
+                '<h4 class="event-filter-header event-filter-header--category">' +
+                    '<img class="event-filter-header-icon" src="' +
+                    ICON_FACTION_CAT +
+                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '<span class="event-filter-header-label">Relevant factions</span>' +
+                '</h4>' +
+                '<div class="event-slide-relevant-locations">' +
+                    facHtml +
+                '</div>'
+            );
+        }
+        if (npcHtml) {
+            parts.push(
+                '<h4 class="event-filter-header event-filter-header--category">' +
+                    '<img class="event-filter-header-icon" src="' +
+                    ICON_NPC_CAT +
+                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '<span class="event-filter-header-label">Relevant NPCs</span>' +
+                '</h4>' +
+                '<div class="event-slide-relevant-locations">' +
+                    npcHtml +
+                '</div>'
+            );
+        }
+        sec.innerHTML = parts.join('');
+        sec.style.display = parts.length ? 'block' : 'none';
+        wireStoryFilterSectionHeroArchiveNav(sec);
+    }
+
     /**
      * Resolve one manual token (e.g. from "Secondary countries" field) to a flag PNG filename.
      * Tries full-display rules first, then plain country name lookup.
      */
     function resolveManualCountryTokenToFlagFile(token, locationType) {
-        var trimmed = String(token || '').trim();
+        var trimmed = stripTrailingCommaSep(token);
         if (!trimmed) return null;
         var t = locationType || 'earth';
         var viaDisplay = getResolvedFlagFilename(trimmed, t);
@@ -293,6 +862,154 @@
         return out;
     }
 
+    /**
+     * Story timeline: flatten `secondaryCountryPlaces[].country` (comma-separated allowed) into unique flag filenames.
+     * @param {Array<{locationName?: string, country?: string, reasoning?: string}>} places
+     * @param {string} [locationType]
+     * @returns {string[]}
+     */
+    function deriveSecondaryCountryFlagFilenamesFromPlaces(places, locationType) {
+        var lt = locationType || 'earth';
+        var seen = {};
+        var out = [];
+        if (!Array.isArray(places)) return out;
+        places.forEach(function (row) {
+            var c = row && row.country != null ? String(row.country) : '';
+            var list = parseSecondaryCountryList(c, lt);
+            list.forEach(function (fn) {
+                if (fn && !seen[fn]) {
+                    seen[fn] = true;
+                    out.push(fn);
+                }
+            });
+        });
+        return out;
+    }
+
+    /**
+     * True when the first `secondaryCountryPlaces` row is already the primary location row
+     * (same location label as `cityDisplayName` and at least one resolved flag matches the primary).
+     */
+    function firstSecondaryRowAlreadyMatchesPrimary(places, city, lt, primaryFn) {
+        if (!Array.isArray(places) || !places.length || !city || !primaryFn) return false;
+        var p0 = places[0];
+        if (String(p0.locationName || '').trim() !== city) return false;
+        var derived = deriveSecondaryCountryFlagFilenamesFromPlaces([p0], lt);
+        for (var di = 0; di < derived.length; di++) {
+            if (derived[di] === primaryFn) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Story timeline: prepend one row derived from the primary location so grouped relevant-locations
+     * always includes the base country (same flag as the location line). Idempotent.
+     * @param {Object|null} node - single event or one variant object
+     */
+    function ensurePrimaryLocationAsFirstSecondaryPlace(node) {
+        if (!node || typeof node !== 'object') return;
+        var city = stripTrailingCommaSep(node.cityDisplayName != null ? String(node.cityDisplayName) : '').trim();
+        if (!city) return;
+        var lt = node.locationType || 'earth';
+        var primaryFn = getResolvedFlagFilename(city, lt);
+        if (!primaryFn) return;
+
+        var places = Array.isArray(node.secondaryCountryPlaces) ? node.secondaryCountryPlaces : [];
+        if (firstSecondaryRowAlreadyMatchesPrimary(places, city, lt, primaryFn)) {
+            return;
+        }
+
+        var countryToken = extractCountryFromDisplay(city);
+        if (countryToken) {
+            var viaTok = resolveManualCountryTokenToFlagFile(countryToken, lt);
+            if (viaTok !== primaryFn) {
+                countryToken = commonLabelForFlagFile(primaryFn);
+            }
+        } else {
+            countryToken = commonLabelForFlagFile(primaryFn);
+        }
+
+        var primaryRow = { locationName: city, country: countryToken, reasoning: '' };
+        node.secondaryCountryPlaces = [primaryRow].concat(places);
+    }
+
+    /**
+     * Mutates a single event or variant: sets `secondaryCountryFlags` from `secondaryCountryPlaces`, or clears it.
+     * @param {Object|null} node
+     */
+    function syncSecondaryCountryFlagsOnEntity(node) {
+        if (!node || typeof node !== 'object') return;
+        var places = node.secondaryCountryPlaces;
+        var lt = node.locationType || 'earth';
+        if (Array.isArray(places) && places.length > 0) {
+            var derived = deriveSecondaryCountryFlagFilenamesFromPlaces(places, lt);
+            node.secondaryCountryFlags = derived.length > 0 ? derived : undefined;
+        } else {
+            node.secondaryCountryFlags = undefined;
+        }
+    }
+
+    /**
+     * Flag filenames for country filter / chips: prefer grouped `secondaryCountryPlaces`, else legacy `secondaryCountryFlags`.
+     * @param {Object|null} ev
+     * @returns {string[]}
+     */
+    function getSecondaryCountryFlagFilenamesForEntity(ev) {
+        if (!ev) return [];
+        var places = ev.secondaryCountryPlaces;
+        var lt = ev.locationType || 'earth';
+        if (Array.isArray(places) && places.length > 0) {
+            return deriveSecondaryCountryFlagFilenamesFromPlaces(places, lt);
+        }
+        var rel = ev.relevantLocations;
+        if (Array.isArray(rel) && rel.length > 0) {
+            return deriveSecondaryCountryFlagFilenamesFromPlaces(rel, lt);
+        }
+        return Array.isArray(ev.secondaryCountryFlags) ? ev.secondaryCountryFlags.slice() : [];
+    }
+
+    function _migrateOneStoryTimelineNode(node) {
+        if (!node || typeof node !== 'object') return;
+        var places = node.secondaryCountryPlaces;
+        if (!Array.isArray(places) || places.length === 0) {
+            var flags = node.secondaryCountryFlags;
+            var formSvc = typeof window !== 'undefined' ? window.eventManager?.formService : null;
+            var countryText = '';
+            if (Array.isArray(flags) && flags.length > 0) {
+                countryText =
+                    formSvc && typeof formSvc.secondaryFlagsToFormString === 'function'
+                        ? formSvc.secondaryFlagsToFormString(flags)
+                        : flags.join(', ');
+                node.secondaryCountryPlaces = [{ locationName: '', country: countryText, reasoning: '' }];
+            } else {
+                node.secondaryCountryPlaces = [];
+            }
+        }
+        ensurePrimaryLocationAsFirstSecondaryPlace(node);
+        syncSecondaryCountryFlagsOnEntity(node);
+    }
+
+    /**
+     * Main timeline story events: ensure `secondaryCountryPlaces` exists and `secondaryCountryFlags` stays in sync.
+     * @param {Object} ev
+     */
+    function migrateStoryEventSecondaryPlaces(ev) {
+        if (!ev) return;
+        if (Array.isArray(ev.variants) && ev.variants.length > 0) {
+            ev.variants.forEach(_migrateOneStoryTimelineNode);
+        } else {
+            _migrateOneStoryTimelineNode(ev);
+        }
+    }
+
+    /**
+     * @param {Array<Object>} events
+     */
+    function migrateAllStoryEventsSecondaryPlaces(events) {
+        if (!Array.isArray(events)) return;
+        events.forEach(migrateStoryEventSecondaryPlaces);
+    }
+
     /** Sorted common country names from FLAG_FILE_BY_COMMON (for autocomplete). */
     function getCountryCommonNamesForAutocomplete() {
         var map = typeof window !== 'undefined' ? window.FLAG_FILE_BY_COMMON : null;
@@ -314,7 +1031,7 @@
             seen.add(primary);
             ordered.push(primary);
         }
-        var sec = Array.isArray(ev && ev.secondaryCountryFlags) ? ev.secondaryCountryFlags : [];
+        var sec = getSecondaryCountryFlagFilenamesForEntity(ev);
         sec.forEach(function (f) {
             var fn = f != null ? String(f).trim() : '';
             if (fn && !seen.has(fn)) {
@@ -350,10 +1067,25 @@
     window.LocationFlagHelpers = {
         createLeadingGraphicHtml: createLeadingGraphicHtml,
         createLocationRowInnerHtml: createLocationRowInnerHtml,
+        createRelevantLocationsSlideHtml: createRelevantLocationsSlideHtml,
+        getSecondaryCountryPlacesRowsForDisplay: getSecondaryCountryPlacesRowsForDisplay,
+        clearRelevantLocationsSlideDom: clearRelevantLocationsSlideDom,
+        updateRelevantLocationsSlideFromSecondaryPlaces: updateRelevantLocationsSlideFromSecondaryPlaces,
+        getHeroFilterPlacesRowsForDisplay: getHeroFilterPlacesRowsForDisplay,
+        getFactionFilterPlacesRowsForDisplay: getFactionFilterPlacesRowsForDisplay,
+        getNpcFilterPlacesRowsForDisplay: getNpcFilterPlacesRowsForDisplay,
+        createStoryFilterPlacesSlideHtml: createStoryFilterPlacesSlideHtml,
+        clearStoryFilterPlacesSlideDom: clearStoryFilterPlacesSlideDom,
+        updateStoryFilterPlacesSlideFromEvent: updateStoryFilterPlacesSlideFromEvent,
         flagSrc: flagSrc,
         getFlagLocationContext: getFlagLocationContext,
         getResolvedFlagFilename: getResolvedFlagFilename,
         parseSecondaryCountryList: parseSecondaryCountryList,
+        deriveSecondaryCountryFlagFilenamesFromPlaces: deriveSecondaryCountryFlagFilenamesFromPlaces,
+        syncSecondaryCountryFlagsOnEntity: syncSecondaryCountryFlagsOnEntity,
+        getSecondaryCountryFlagFilenamesForEntity: getSecondaryCountryFlagFilenamesForEntity,
+        migrateStoryEventSecondaryPlaces: migrateStoryEventSecondaryPlaces,
+        migrateAllStoryEventsSecondaryPlaces: migrateAllStoryEventsSecondaryPlaces,
         getCountryCommonNamesForAutocomplete: getCountryCommonNamesForAutocomplete,
         collectCountryFlagFilesForEntity: collectCountryFlagFilesForEntity,
         commonLabelForFlagFile: commonLabelForFlagFile

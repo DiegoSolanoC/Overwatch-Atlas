@@ -71,21 +71,81 @@
  * Panel will naturally resize with dock changes
  */
 
-.event-slide-close {
+/* Close (×) + Back cluster — top-right */
+.event-slide-close-cluster {
     position: absolute;
     top: 10px;
     right: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+    z-index: 501;
+    pointer-events: none;
+}
+
+.event-slide-close-cluster > * {
+    pointer-events: auto;
+}
+
+.event-slide-close-cluster .event-slide-close {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+.event-slide-back-btn {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: transform 0.15s ease, opacity 0.15s ease, filter 0.15s ease;
+}
+
+.event-slide-back-btn__icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+}
+
+.event-slide-back-btn:hover:not(:disabled) {
+    transform: scale(1.06);
+}
+
+.event-slide-back-btn:hover:not(:disabled) .event-slide-back-btn__icon {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45)) brightness(1.12);
+}
+
+.event-slide-back-btn:focus-visible {
+    outline: 2px solid var(--accent-primary, #5aa9e6);
+    outline-offset: 2px;
+}
+
+.event-slide-back-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.event-slide-close {
     font-size: 48px;
     cursor: pointer;
     color: #fff;
     line-height: 1;
-    z-index: 501;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: auto;
     padding: 0;
     margin: 0;
 }
@@ -128,11 +188,11 @@
 }
 
 .event-slide-save-btn {
-    right: 75px; /* sits left of X (right: 15px, width 50px) */
+    right: 130px; /* left of close cluster (Back + ×) */
 }
 
 .event-slide-edit-btn {
-    right: 140px; /* sits left of Save button */
+    right: 205px; /* sits left of Save button */
 }
 
 .event-slide--inline-editing .event-slide-scrollable p#eventSlideText {
@@ -150,7 +210,8 @@
 
 /* Inline edit mode: hide rendered sections to save space */
 .event-slide--inline-editing #eventSourcesSection,
-.event-slide--inline-editing #eventFiltersSection {
+.event-slide--inline-editing #eventFiltersSection,
+.event-slide--inline-editing #eventRelevantLocationsSection {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -668,6 +729,215 @@
     letter-spacing: 0.03em;
 }
 
+/* Relevant locations + story grouped filters (same card rhythm and accent as sources) */
+.event-relevant-locations-section {
+    margin: 20px 0 10px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid #2196f3; /* match default .event-sources-section */
+}
+
+.event-relevant-locations-section .event-filter-header {
+    margin-top: 0;
+}
+
+.event-relevant-locations-section .event-slide-relevant-locations {
+    margin: 4px 0 0 0;
+    font-size: 16px;
+}
+
+/* Story timeline — grouped heroes / factions / NPCs (read-only, same rhythm as relevant locations) */
+.event-story-filter-places-section .event-filter-header--category {
+    margin-top: 14px;
+}
+
+.event-story-filter-places-section .event-filter-header--category:first-child {
+    margin-top: 0;
+}
+
+.event-story-filter-places-section .event-slide-relevant-locations {
+    margin: 4px 0 10px 0;
+    font-size: 16px;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-img {
+    height: 48px;
+    max-height: 56px;
+    width: auto;
+    max-width: 72px;
+    object-fit: contain;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-img--clickable-hero {
+    cursor: pointer;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-img--clickable-hero:focus-visible {
+    outline: 2px solid rgba(33, 150, 243, 0.95);
+    outline-offset: 3px;
+}
+
+.event-relevant-locations-section .event-slide-relevant-locations__row .event-location-flag {
+    height: 22px;
+    max-width: 52px;
+}
+
+.event-relevant-locations-section .event-slide-relevant-locations__row .event-location-pin {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hero archive — relevant places (Name, Country) + flags */
+.event-slide-relevant-locations {
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.45;
+}
+
+.event-slide-relevant-locations__label {
+    font-weight: 700;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+}
+
+.event-slide-relevant-locations__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 4px 0;
+}
+
+/* Multiple country tokens → several flags; wrap to extra lines when they do not fit */
+.event-slide-relevant-locations__flag-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+    min-width: 0;
+    vertical-align: middle;
+}
+
+.event-slide-relevant-locations__main {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.event-slide-relevant-locations__reason {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.92em;
+    font-weight: 500;
+}
+
+.event-slide-relevant-locations__row .event-location-flag,
+.event-slide-relevant-locations__row .event-location-pin {
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.event-slide-relevant-locations__row .event-location-flag {
+    display: inline-block;
+    width: auto;
+    height: 34px;
+    max-width: 80px;
+    object-fit: contain;
+}
+
+.event-slide-relevant-locations__comma-country {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+
+.event-slide-hero-locations-edit {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-slide-hero-locations-edit__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.event-slide-hero-locations-edit__label {
+    font-weight: 700;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.event-slide-relevant-loc-reorder {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-slide-relevant-loc-reorder__btn {
+    min-width: 32px;
+    height: 28px;
+    padding: 0 6px;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.event-slide-relevant-loc-reorder__btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.35);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.event-slide-inline-editor__relevant-loc-row {
+    display: grid;
+    grid-template-columns: min-content 1.05fr 0.95fr 1.2fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.event-slide-inline-editor__relevant-locations-sources {
+    margin-top: 4px;
+}
+
+@media (max-width: 620px) {
+    .event-slide-inline-editor__relevant-loc-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .event-slide-inline-editor__relevant-loc-row .event-slide-relevant-loc-reorder {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-self: flex-end;
+    }
+}
+
+.event-slide-hero-locations-edit__hint {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
 .event-slide-scrollable p#eventSlideText,
 .event-slide-content p#eventSlideText {
     line-height: 1.6;
@@ -786,8 +1056,8 @@
         height: auto !important;
     }
     
-    /* Mobile: Ensure close button doesn't cause overflow */
-    .event-slide-close {
+    /* Mobile: cluster hug top-right */
+    .event-slide-close-cluster {
         right: 10px !important;
         left: auto !important;
     }

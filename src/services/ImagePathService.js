@@ -16,12 +16,36 @@ class ImagePathService {
     }
 
     /**
-     * Get event image path (auto-detect from Event Images folder or use provided path)
+     * URL base for auto-resolved images (story timeline vs satellite Story Archive JSON).
+     * Uses %20 for the "Archive data" segment so browser requests match static paths.
      */
-    getEventImagePath(eventName, providedPath) {
+    _getArchiveImageBaseWeb(archiveOverride) {
+        const ds = this.eventManager?.dataService;
+        const src =
+            archiveOverride != null && String(archiveOverride).trim() !== ''
+                ? String(archiveOverride).trim()
+                : (typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story');
+        if (src === 'heroes') return 'assets/images/Archive%20data/Heroes/';
+        if (src === 'factions') return 'assets/images/Archive%20data/Factions/';
+        if (src === 'npcs') return 'assets/images/Archive%20data/NPCS/';
+        if (src === 'locations') return 'assets/images/Archive%20data/Locations/';
+        return 'assets/images/Archive%20data/events/';
+    }
+
+    /**
+     * Get event image path (auto-detect from Event Images folder or use provided path)
+     * @param {string} [imageArchiveOverride] Force folder bucket (`story` | `heroes` | …) for dock thumbs while another archive is active.
+     */
+    getEventImagePath(eventName, providedPath, imageArchiveOverride) {
+        const storyEventsWebBase = 'assets/images/Archive%20data/events/';
+        const activeImagesWebBase = this._getArchiveImageBaseWeb(imageArchiveOverride);
+        const rewriteLegacyEventFolder = (str) =>
+            str ? str.replace(/assets\/images\/events\//g, storyEventsWebBase) : str;
+
         // Helper function to encode image paths properly (avoid double-encoding)
         const encodeImagePath = (path) => {
             if (!path) return path;
+            path = rewriteLegacyEventFolder(path);
             
             // Helper to decode multiple times until fully decoded
             const fullyDecode = (str) => {
@@ -43,19 +67,20 @@ class ImagePathService {
                 return current;
             };
             
-            // If path already contains Event Images/, normalize to assets/images/events and encode just the filename
+            // If path already contains Event Images/, normalize to archive events folder and encode just the filename
             const folderPattern = /Event(?:%20| )Images\//;
             if (folderPattern.test(path)) {
                 const parts = path.split(/Event(?:%20| )Images\//);
                 if (parts.length === 2) {
                     let filename = fullyDecode(parts[1]);
-                    return `assets/images/events/${encodeURIComponent(filename)}`;
+                    return `${storyEventsWebBase}${encodeURIComponent(filename)}`;
                 }
             }
             // If it's a full path, try to encode just the filename part
             const lastSlash = path.lastIndexOf('/');
             if (lastSlash !== -1) {
-                const folder = path.substring(0, lastSlash + 1);
+                let folder = path.substring(0, lastSlash + 1);
+                folder = rewriteLegacyEventFolder(folder);
                 let filename = fullyDecode(path.substring(lastSlash + 1));
                 return folder + encodeURIComponent(filename);
             }
@@ -96,7 +121,7 @@ class ImagePathService {
         // Encode the filename to handle spaces and special characters in URLs
         // Split the path so we only encode the filename, not the folder name
         const encodedFileName = encodeURIComponent(normalizedName);
-        const imagePath = `assets/images/events/${encodedFileName}.png`;
+        const imagePath = `${activeImagesWebBase}${encodedFileName}.png`;
         
         // Return the path (browser will handle 404 if image doesn't exist)
         // No console log to reduce noise - 404s are expected for missing images

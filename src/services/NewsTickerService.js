@@ -54,9 +54,17 @@ class NewsTickerService {
                 const targetEvent = allEvents[eventIndex];
                 
                 if (!targetEvent) return;
-                
-                // Show event slide using MenuServiceHelpers
-                if (window.MenuServiceHelpers?.showStandaloneEventSlide) {
+
+                const ss = window.standaloneEventSlide;
+                if (ss) {
+                    const arch = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                    ss._presentationFromDockTimeline = arch === 'story';
+                }
+
+                // Show event slide (prefer standalone object used by the event system)
+                if (ss?.showStandaloneEventSlide) {
+                    ss.showStandaloneEventSlide(targetEvent, eventIndex);
+                } else if (window.MenuServiceHelpers?.showStandaloneEventSlide) {
                     window.MenuServiceHelpers.showStandaloneEventSlide(targetEvent, eventIndex);
                 }
 

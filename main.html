@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="assets/images/icons/Icon.png">
-    <link rel="stylesheet" href="styles.css?v=64">
+    <link rel="stylesheet" href="styles.css?v=67">
     <link rel="stylesheet" href="styles/entry.css?v=17">
 </head>
 <body>
@@ -46,7 +46,12 @@
         <div class="event-slide" id="eventSlide">
             <button class="event-slide-action-btn event-slide-edit-btn" id="eventSlideEditBtn" title="Edit description" type="button">Edit</button>
             <button class="event-slide-action-btn event-slide-save-btn" id="eventSlideSaveBtn" title="Save description" type="button" style="display: none;">Save</button>
-            <div class="event-slide-close" id="eventSlideClose">&times;</div>
+            <div class="event-slide-close-cluster" id="eventSlideCloseCluster">
+                <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close">&times;</div>
+                <button type="button" class="event-slide-back-btn" id="eventSlideBack" aria-label="Back to previous entry" title="Back" style="display: none;">
+                    <img class="event-slide-back-btn__icon" src="assets/images/icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
+                </button>
+            </div>
             <div class="event-slide-content" id="eventSlideContent">
                 <div class="event-slide-top" id="eventSlideTop">
                     <p id="eventSlideEra" class="event-slide-era-heading event-slide-era-heading--empty" aria-hidden="true"></p>
@@ -61,6 +66,14 @@
                     </div>
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
                     <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
+                    <div id="eventSlideHeroLocationsEdit" class="event-slide-hero-locations-edit" hidden>
+                        <div class="event-slide-hero-locations-edit__toolbar">
+                            <span class="event-slide-hero-locations-edit__label">Relevant locations</span>
+                            <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddRelevantLocationBtn">+ Add</button>
+                        </div>
+                        <p class="event-slide-hero-locations-edit__hint">Each row: location name, country (autocomplete like story <strong>Secondary countries</strong> — drives the flag), and why it matters (e.g. Place of birth, Former base).</p>
+                        <div id="eventSlideEditRelevantLocations" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
+                    </div>
                 </div>
                 <div class="event-slide-mid-controls" id="eventSlideMidControls" aria-label="Event display options">
                     <div class="event-control-buttons">
@@ -68,6 +81,11 @@
                 </div>
                 <div class="event-slide-scrollable" id="eventSlideScrollable">
                     <p id="eventSlideText">Placeholder text for event information.</p>
+                    <div id="eventRelevantLocationsSection" class="event-relevant-locations-section" style="display: none;">
+                        <h4 class="event-filter-header">Relevant locations</h4>
+                        <div id="eventSlideRelevantLocations" class="event-slide-relevant-locations" aria-live="polite"></div>
+                    </div>
+                    <div id="eventStoryFilterPlacesSection" class="event-relevant-locations-section event-story-filter-places-section" style="display: none;" aria-live="polite"></div>
                     <div class="event-sources-section" id="eventSourcesSection" style="display: none;">
                         <h4 class="event-filter-header">Sources:</h4>
                         <div class="event-sources-list" id="eventSourcesList"></div>
@@ -194,24 +212,24 @@
     <script src="src/services/CameraControlService.js?v=8"></script>
     <script src="src/services/MouseInteractionService.js?v=8"></script>
     <script src="src/services/TouchInteractionService.js?v=8"></script>
-    <script src="src/services/MarkerInteractionService.js?v=9"></script>
+    <script src="src/services/MarkerInteractionService.js?v=10"></script>
     <script src="src/services/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/app/component-loader.js?v=67"></script>
+    <script type="module" src="src/app/component-loader.js?v=77"></script>
     
     <!-- Load services -->
     <script src="src/services/SoundEffectsManager.js?v=8"></script>
     <script src="src/services/GlitchTextService.js?v=10"></script>
     <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/services/EventDataService.js?v=9"></script>
+    <script src="src/services/EventDataService.js?v=16"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=9"></script>
+    <script src="src/utils/LocationFlagHelpers.js?v=15"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
     <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
     <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
-    <script src="src/services/EventRenderService.js?v=19"></script>
+    <script src="src/services/EventRenderService.js?v=21"></script>
     <script src="src/services/EventEditService.js?v=10"></script>
     <script src="src/services/NewsTickerService.js?v=8"></script>
     <!-- EventFormService dependencies - load before EventFormService -->
@@ -220,12 +238,13 @@
     <script src="src/services/HeadlinesFieldManager.js?v=8"></script>
     <script src="src/services/FormAutocompleteService.js?v=10"></script>
     <script src="src/services/EventFormService.js?v=10"></script>
+    <script src="src/utils/HeroRelevantLocationsEditor.js?v=3"></script>
     <script src="src/services/EventDragDropService.js?v=8"></script>
     <script src="src/services/EventListenerService.js?v=13"></script>
-    <script src="src/services/EventInteractionService.js?v=10"></script>
+    <script src="src/services/EventInteractionService.js?v=12"></script>
     <script src="src/services/EventInitService.js?v=8"></script>
     <script src="src/services/CityLookupService.js?v=9"></script>
-    <script src="src/services/ImagePathService.js?v=8"></script>
+    <script src="src/services/ImagePathService.js?v=11"></script>
     <script src="src/services/GlobeSyncService.js?v=8"></script>
     <!-- MusicManager dependencies - load before MusicManager -->
     <script src="src/services/MusicStateService.js?v=8"></script>

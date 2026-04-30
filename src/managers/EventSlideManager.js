@@ -17,6 +17,31 @@ import { setupEarthLocation, setupMoonMarsLocation, setupStationLocation, setupM
 import { loadEventImage, setupImageFadeIn } from './helpers/ImageLoadingHelpers.js';
 import { findVariantMarker, zoomToVariantLocation, createTempMarkerForCoords } from './helpers/VariantHelpers.js';
 import { isEventSlideEditDevHost } from '../utils/isEventSlideEditDevHost.js';
+import {
+    STORY_SECONDARY_PLACES_EDITOR_OPTS,
+    STORY_HERO_FILTER_PLACES_OPTS,
+    STORY_FACTION_FILTER_PLACES_OPTS,
+    STORY_NPC_FILTER_PLACES_OPTS,
+    applyStoryFilterPlacesToTarget,
+    heroPlacesForEditor,
+    factionPlacesForEditor,
+    npcPlacesForEditor,
+    copyFilterPlaceArraysFromSource
+} from '../utils/StoryFilterPlacesSync.js';
+
+const SATELLITE_RELEVANT_PLACES_EDITOR_OPTS = {
+    placeholders: {
+        locationName: 'Location / group label',
+        country: 'Countries (comma-separated for multiple flags)',
+        reasoning: 'Relevance (e.g. headquarters, place of origin)'
+    },
+    autocompleteType: 'countries'
+};
+
+function isBioArchiveSource(archiveId) {
+    const s = archiveId != null ? String(archiveId) : '';
+    return s === 'heroes' || s === 'factions' || s === 'npcs';
+}
 
 // getHeroDisplayName removed - not used in this file
 
@@ -353,35 +378,45 @@ export class EventSlideManager {
         const newName = (eventSlideTitle.innerText ?? eventSlideTitle.textContent ?? '').trim();
         const newText = (eventSlideText.textContent ?? '').replace(/\r\n/g, '\n');
         const newCity = (cityInput?.value || '').trim();
-        const newFilters = (filtersInput?.value || '')
-            .split(',')
-            .map((s) => s.trim())
-            .filter(Boolean);
-        const factionTokens = (factionsInput?.value || '')
-            .split(',')
-            .map((s) => s.trim())
-            .filter(Boolean);
 
-        const availableFactions = window.eventManager?.factions || [];
-        const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
-        const newFactions = factionTokens.map((token) => {
-            const found = availableFactions.find((f) =>
-                (f?.displayName || '').toLowerCase() === token.toLowerCase()
-                || (f?.filename || '').toLowerCase() === token.toLowerCase()
-                || (fh && typeof fh.factionIdsMatch === 'function' && (
-                    fh.factionIdsMatch(f.filename, token) || fh.factionIdsMatch(f.displayName, token)
-                ))
-            );
-            return found ? found.displayName : token;
-        });
+        let newFilters = null;
+        if (filtersInput) {
+            newFilters = (filtersInput.value || '')
+                .split(',')
+                .map((s) => s.trim())
+                .filter(Boolean);
+        }
 
-        const npcTokens = (npcsInput?.value || '')
-            .split(',')
-            .map((s) => s.trim())
-            .filter(Boolean);
-        const manifestNpcs = window.eventManager?.npcs || [];
-        const npcCanon = new Map(manifestNpcs.map((n) => [String(n).toLowerCase(), n]));
-        const newNpcs = npcTokens.map((t) => npcCanon.get(t.toLowerCase()) || t);
+        let newFactions = null;
+        if (factionsInput) {
+            const factionTokens = (factionsInput.value || '')
+                .split(',')
+                .map((s) => s.trim())
+                .filter(Boolean);
+            const availableFactions = window.eventManager?.factions || [];
+            const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+            newFactions = factionTokens.map((token) => {
+                const found = availableFactions.find((f) =>
+                    (f?.displayName || '').toLowerCase() === token.toLowerCase()
+                    || (f?.filename || '').toLowerCase() === token.toLowerCase()
+                    || (fh && typeof fh.factionIdsMatch === 'function' && (
+                        fh.factionIdsMatch(f.filename, token) || fh.factionIdsMatch(f.displayName, token)
+                    ))
+                );
+                return found ? found.displayName : token;
+            });
+        }
+
+        let newNpcs = null;
+        if (npcsInput) {
+            const npcTokens = (npcsInput.value || '')
+                .split(',')
+                .map((s) => s.trim())
+                .filter(Boolean);
+            const manifestNpcs = window.eventManager?.npcs || [];
+            const npcCanon = new Map(manifestNpcs.map((n) => [String(n).toLowerCase(), n]));
+            newNpcs = npcTokens.map((t) => npcCanon.get(t.toLowerCase()) || t);
+        }
 
         const headlinesLines = (headlinesInput?.value || '')
             .split('\n')
@@ -390,21 +425,40 @@ export class EventSlideManager {
 
         const newSources = this._readSlideSourcesFromDom();
 
-        const secondaryField = document.getElementById('eventSlideEditSecondaryCountries');
-        const locTypeForSecondary = target.locationType || 'earth';
-        const parseSecondary = window.LocationFlagHelpers?.parseSecondaryCountryList;
-        let secondaryParsed = [];
-        if (secondaryField && typeof parseSecondary === 'function') {
-            secondaryParsed = parseSecondary(secondaryField.value, locTypeForSecondary);
+        const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+
+        const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+        const places = window.HeroRelevantLocationsEditor?.collect?.(secPlacesEl) ?? [];
+        if (isBioArchiveSource(archiveSrc)) {
+            target.relevantLocations = places;
+            delete target.secondaryCountryPlaces;
+            delete target.secondaryCountryFlags;
+        } else {
+            target.secondaryCountryPlaces = places;
+            if (window.LocationFlagHelpers?.syncSecondaryCountryFlagsOnEntity) {
+                window.LocationFlagHelpers.syncSecondaryCountryFlagsOnEntity(target);
+            }
+        }
+
+        const heroPlacesEl = document.getElementById('eventSlideEditHeroFilterPlaces');
+        if (!isBioArchiveSource(archiveSrc) && heroPlacesEl && window.HeroRelevantLocationsEditor?.collect) {
+            const hr = window.HeroRelevantLocationsEditor.collect(heroPlacesEl);
+            const fr = window.HeroRelevantLocationsEditor.collect(
+                document.getElementById('eventSlideEditFactionFilterPlaces')
+            );
+            const nr = window.HeroRelevantLocationsEditor.collect(
+                document.getElementById('eventSlideEditNpcFilterPlaces')
+            );
+            applyStoryFilterPlacesToTarget(target, hr, fr, nr);
+        } else {
+            if (newFilters !== null) target.filters = newFilters;
+            if (newFactions !== null) target.factions = newFactions;
+            if (newNpcs !== null) target.npcs = newNpcs.length > 0 ? newNpcs : [];
         }
 
         if (newName) target.name = newName;
         target.description = newText;
         target.cityDisplayName = newCity || undefined;
-        target.filters = newFilters;
-        target.factions = newFactions;
-        target.npcs = newNpcs.length > 0 ? newNpcs : [];
-        target.secondaryCountryFlags = secondaryParsed.length > 0 ? secondaryParsed : undefined;
         target.sources = newSources.length > 0 ? newSources : undefined;
         target.headlines = headlinesLines.length > 0 ? headlinesLines : undefined;
 
@@ -427,6 +481,14 @@ export class EventSlideManager {
             y: root.y,
             cityDisplayName: root.cityDisplayName,
             secondaryCountryFlags: Array.isArray(root.secondaryCountryFlags) ? [...root.secondaryCountryFlags] : undefined,
+            secondaryCountryPlaces: Array.isArray(root.secondaryCountryPlaces)
+                ? root.secondaryCountryPlaces.map((p) => ({
+                      locationName: p.locationName,
+                      country: p.country,
+                      reasoning: p.reasoning
+                  }))
+                : [],
+            ...copyFilterPlaceArraysFromSource(root)
         };
         const lt = v0.locationType || 'earth';
         const v1 = {
@@ -438,6 +500,9 @@ export class EventSlideManager {
             sources: undefined,
             headlines: undefined,
             locationType: lt,
+            heroFilterPlaces: [],
+            factionFilterPlaces: [],
+            npcFilterPlaces: []
         };
         if (lt === 'earth') {
             v1.lat = v0.lat;
@@ -459,6 +524,10 @@ export class EventSlideManager {
         delete root.x;
         delete root.y;
         delete root.secondaryCountryFlags;
+        delete root.secondaryCountryPlaces;
+        delete root.heroFilterPlaces;
+        delete root.factionFilterPlaces;
+        delete root.npcFilterPlaces;
         root.locationType = lt;
         if (v0.cityDisplayName) {
             root.cityDisplayName = v0.cityDisplayName;
@@ -480,6 +549,20 @@ export class EventSlideManager {
         root.secondaryCountryFlags = Array.isArray(v.secondaryCountryFlags) && v.secondaryCountryFlags.length > 0
             ? [...v.secondaryCountryFlags]
             : undefined;
+        root.secondaryCountryPlaces = Array.isArray(v.secondaryCountryPlaces)
+            ? v.secondaryCountryPlaces.map((p) => ({
+                  locationName: p.locationName,
+                  country: p.country,
+                  reasoning: p.reasoning
+              }))
+            : [];
+        const fp = copyFilterPlaceArraysFromSource(v);
+        if (fp.heroFilterPlaces.length) root.heroFilterPlaces = fp.heroFilterPlaces;
+        else delete root.heroFilterPlaces;
+        if (fp.factionFilterPlaces.length) root.factionFilterPlaces = fp.factionFilterPlaces;
+        else delete root.factionFilterPlaces;
+        if (fp.npcFilterPlaces.length) root.npcFilterPlaces = fp.npcFilterPlaces;
+        else delete root.npcFilterPlaces;
         delete root.lat;
         delete root.lon;
         delete root.x;
@@ -593,6 +676,10 @@ export class EventSlideManager {
                 sources: undefined,
                 headlines: undefined,
                 locationType: lt,
+                secondaryCountryPlaces: [],
+                heroFilterPlaces: [],
+                factionFilterPlaces: [],
+                npcFilterPlaces: []
             };
             if (lt === 'earth') {
                 nv.lat = last?.lat;
@@ -682,12 +769,50 @@ export class EventSlideManager {
                 : (target.factions || []).map((f) => String(f).replace(/^\d+/, '').trim()).join(', ');
         }
         if (npcsInput) npcsInput.value = (target.npcs || []).join(', ');
-        const secondaryEl = document.getElementById('eventSlideEditSecondaryCountries');
-        if (secondaryEl) {
-            const formSvc = window.eventManager?.formService || window.EventFormService;
-            secondaryEl.value = formSvc && typeof formSvc.secondaryFlagsToFormString === 'function'
-                ? formSvc.secondaryFlagsToFormString(target.secondaryCountryFlags)
-                : '';
+        const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+        if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
+            const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            let places = [];
+            let editorOpts = STORY_SECONDARY_PLACES_EDITOR_OPTS;
+            if (isBioArchiveSource(archiveSrc)) {
+                places = Array.isArray(target.relevantLocations) ? target.relevantLocations : [];
+                editorOpts = SATELLITE_RELEVANT_PLACES_EDITOR_OPTS;
+            } else {
+                places = Array.isArray(target.secondaryCountryPlaces) ? target.secondaryCountryPlaces : [];
+            }
+            window.HeroRelevantLocationsEditor.render(secPlacesEl, places, editorOpts);
+        }
+        const heroFpEl = document.getElementById('eventSlideEditHeroFilterPlaces');
+        const factionFpEl = document.getElementById('eventSlideEditFactionFilterPlaces');
+        const npcFpEl = document.getElementById('eventSlideEditNpcFilterPlaces');
+        if (
+            heroFpEl &&
+            factionFpEl &&
+            npcFpEl &&
+            window.HeroRelevantLocationsEditor?.render
+        ) {
+            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            if (!isBioArchiveSource(archPop)) {
+                window.HeroRelevantLocationsEditor.render(
+                    heroFpEl,
+                    heroPlacesForEditor(target),
+                    STORY_HERO_FILTER_PLACES_OPTS
+                );
+                window.HeroRelevantLocationsEditor.render(
+                    factionFpEl,
+                    factionPlacesForEditor(target),
+                    STORY_FACTION_FILTER_PLACES_OPTS
+                );
+                window.HeroRelevantLocationsEditor.render(
+                    npcFpEl,
+                    npcPlacesForEditor(target),
+                    STORY_NPC_FILTER_PLACES_OPTS
+                );
+            } else {
+                heroFpEl.innerHTML = '';
+                factionFpEl.innerHTML = '';
+                npcFpEl.innerHTML = '';
+            }
         }
         if (headlinesInput) headlinesInput.value = (target.headlines || []).join('\n');
 
@@ -833,20 +958,36 @@ export class EventSlideManager {
                     <label class="event-slide-inline-editor__label">Description</label>
                 </div>
                 <div class="event-slide-inline-editor__row">
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditFilters">Heroes (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditFilters" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" />
+                    <div class="event-slide-inline-editor__label">Relevant countries &amp; places (grouped)</div>
+                    <p class="event-slide-inline-editor__hint">Add one row per group. Reorder with ↑ / ↓. Each row: group label, countries (comma-separated for multiple flags), and why they matter.</p>
+                    <div class="event-slide-inline-editor__actions">
+                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddSecondaryCountryPlaceBtn">+ Add group</button>
+                    </div>
+                    <div id="eventSlideEditSecondaryCountryPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Secondary country groups"></div>
                 </div>
                 <div class="event-slide-inline-editor__row">
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditFactions">Factions (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditFactions" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" />
+                    <div class="event-slide-inline-editor__label">Relevant heroes (grouped)</div>
+                    <p class="event-slide-inline-editor__hint">Same pattern as countries: group label, comma-separated heroes, why they matter.</p>
+                    <div class="event-slide-inline-editor__actions">
+                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddHeroFilterPlaceBtn">+ Add group</button>
+                    </div>
+                    <div id="eventSlideEditHeroFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Hero groups"></div>
                 </div>
                 <div class="event-slide-inline-editor__row">
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditNpcs">NPCs (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditNpcs" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" />
+                    <div class="event-slide-inline-editor__label">Relevant factions (grouped)</div>
+                    <p class="event-slide-inline-editor__hint">Group label, comma-separated factions, why they matter.</p>
+                    <div class="event-slide-inline-editor__actions">
+                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddFactionFilterPlaceBtn">+ Add group</button>
+                    </div>
+                    <div id="eventSlideEditFactionFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Faction groups"></div>
                 </div>
                 <div class="event-slide-inline-editor__row">
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditSecondaryCountries">Secondary countries (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditSecondaryCountries" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Also match country filter (optional)" />
+                    <div class="event-slide-inline-editor__label">Relevant NPCs (grouped)</div>
+                    <p class="event-slide-inline-editor__hint">Group label, comma-separated NPCs, why they matter.</p>
+                    <div class="event-slide-inline-editor__actions">
+                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddNpcFilterPlaceBtn">+ Add group</button>
+                    </div>
+                    <div id="eventSlideEditNpcFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="NPC groups"></div>
                 </div>
                 <div class="event-slide-inline-editor__row">
                     <label class="event-slide-inline-editor__label" for="eventSlideEditHeadlines">Headlines (one per line)</label>
@@ -870,34 +1011,6 @@ export class EventSlideManager {
                 eventSlideScrollable.insertBefore(editor, sourcesSection);
             } else {
                 eventSlideScrollable.appendChild(editor);
-            }
-        }
-
-        const editorEl = document.getElementById('eventSlideInlineEditor');
-        if (editorEl && !document.getElementById('eventSlideEditNpcs')) {
-            const factionsRow = document.getElementById('eventSlideEditFactions')?.closest('.event-slide-inline-editor__row');
-            if (factionsRow) {
-                const row = document.createElement('div');
-                row.className = 'event-slide-inline-editor__row';
-                row.innerHTML = `
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditNpcs">NPCs (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditNpcs" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" />
-                `;
-                factionsRow.after(row);
-            }
-        }
-        if (editorEl && !document.getElementById('eventSlideEditSecondaryCountries')) {
-            const npcsRow = document.getElementById('eventSlideEditNpcs')?.closest('.event-slide-inline-editor__row');
-            const factionsRow = document.getElementById('eventSlideEditFactions')?.closest('.event-slide-inline-editor__row');
-            const anchor = npcsRow || factionsRow;
-            if (anchor) {
-                const row = document.createElement('div');
-                row.className = 'event-slide-inline-editor__row';
-                row.innerHTML = `
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditSecondaryCountries">Secondary countries (comma-separated)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditSecondaryCountries" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Also match country filter (optional)" />
-                `;
-                anchor.after(row);
             }
         }
 
@@ -932,7 +1045,6 @@ export class EventSlideManager {
         const filtersInput = document.getElementById('eventSlideEditFilters');
         const factionsInput = document.getElementById('eventSlideEditFactions');
         const npcsInput = document.getElementById('eventSlideEditNpcs');
-        const secondaryCountriesInput = document.getElementById('eventSlideEditSecondaryCountries');
         const headlinesInput = document.getElementById('eventSlideEditHeadlines');
         const sourcesList = document.getElementById('eventSlideEditSources');
         const addSourceBtn = document.getElementById('eventSlideAddSourceBtn');
@@ -998,12 +1110,33 @@ export class EventSlideManager {
         filtersInput?.addEventListener('input', markDirty, { passive: true });
         factionsInput?.addEventListener('input', markDirty, { passive: true });
         npcsInput?.addEventListener('input', markDirty, { passive: true });
-        secondaryCountriesInput?.addEventListener('input', markDirty, { passive: true });
         headlinesInput?.addEventListener('input', markDirty, { passive: true });
 
         if (slideEditorRoot && !slideEditorRoot.dataset.slidePlacementWired) {
             slideEditorRoot.dataset.slidePlacementWired = 'true';
             this._wireSlidePlacementListeners(slideEditorRoot, markDirty);
+        }
+
+        if (slideEditorRoot && !slideEditorRoot.dataset.secondaryPlacesDirtyWired) {
+            slideEditorRoot.dataset.secondaryPlacesDirtyWired = 'true';
+            slideEditorRoot.addEventListener(
+                'input',
+                (e) => {
+                    if (!this._inlineDescEdit.active) return;
+                    if (e.target.closest('[data-inline-grouped-places="1"]')) markDirty();
+                },
+                { passive: true }
+            );
+            slideEditorRoot.addEventListener('click', (e) => {
+                if (!this._inlineDescEdit.active) return;
+                if (
+                    e.target.closest(
+                        '[data-inline-grouped-places="1"] .event-slide-inline-editor__relevant-loc-row'
+                    )
+                ) {
+                    markDirty();
+                }
+            });
         }
 
         // Make the description field behave like a plain-text editor.
@@ -1112,8 +1245,6 @@ export class EventSlideManager {
             if (factionsInput) factionsInput.dataset.autocompleteSetup = 'false';
             const npcsInputAuto = document.getElementById('eventSlideEditNpcs');
             if (npcsInputAuto) npcsInputAuto.dataset.autocompleteSetup = 'false';
-            const secondaryCountriesInputEl = document.getElementById('eventSlideEditSecondaryCountries');
-            if (secondaryCountriesInputEl) secondaryCountriesInputEl.dataset.autocompleteSetup = 'false';
             const auto = window.eventManager?.formService?.autocompleteService || window.EventFormService?.autocompleteService;
             if (auto && typeof auto.setupAutocomplete === 'function') {
                 const heroes = window.eventManager?.heroes || window.globeController?.dataModel?.heroes || [];
@@ -1121,17 +1252,55 @@ export class EventSlideManager {
                 const factionList = window.eventManager?.factions?.length
                     ? window.eventManager.factions
                     : (window.globeController?.dataModel?.factions || []);
-                const countryOptions = window.LocationFlagHelpers
-                    && typeof window.LocationFlagHelpers.getCountryCommonNamesForAutocomplete === 'function'
-                    ? window.LocationFlagHelpers.getCountryCommonNamesForAutocomplete()
-                    : [];
                 
                 if (filtersInput) auto.setupAutocomplete(filtersInput, heroes, 'heroes');
                 if (factionsInput) auto.setupAutocomplete(factionsInput, factionList, 'factions');
                 if (npcsInputAuto && npcList.length > 0) auto.setupAutocomplete(npcsInputAuto, npcList, 'npcs');
-                if (secondaryCountriesInputEl && countryOptions.length > 0) {
-                    auto.setupAutocomplete(secondaryCountriesInputEl, countryOptions, 'countries');
-                }
+            }
+
+            const addSecBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');
+            if (addSecBtn && window.HeroRelevantLocationsEditor?.addRow) {
+                addSecBtn.onclick = () => {
+                    const ar = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                    const opts = isBioArchiveSource(ar)
+                        ? SATELLITE_RELEVANT_PLACES_EDITOR_OPTS
+                        : STORY_SECONDARY_PLACES_EDITOR_OPTS;
+                    window.HeroRelevantLocationsEditor.addRow({
+                        containerId: 'eventSlideEditSecondaryCountryPlaces',
+                        placeholders: opts.placeholders,
+                        autocompleteType: opts.autocompleteType
+                    });
+                };
+            }
+            const addHeroBtn = document.getElementById('eventSlideAddHeroFilterPlaceBtn');
+            if (addHeroBtn && window.HeroRelevantLocationsEditor?.addRow) {
+                addHeroBtn.onclick = () => {
+                    window.HeroRelevantLocationsEditor.addRow({
+                        containerId: 'eventSlideEditHeroFilterPlaces',
+                        placeholders: STORY_HERO_FILTER_PLACES_OPTS.placeholders,
+                        autocompleteType: STORY_HERO_FILTER_PLACES_OPTS.autocompleteType
+                    });
+                };
+            }
+            const addFactionBtn = document.getElementById('eventSlideAddFactionFilterPlaceBtn');
+            if (addFactionBtn && window.HeroRelevantLocationsEditor?.addRow) {
+                addFactionBtn.onclick = () => {
+                    window.HeroRelevantLocationsEditor.addRow({
+                        containerId: 'eventSlideEditFactionFilterPlaces',
+                        placeholders: STORY_FACTION_FILTER_PLACES_OPTS.placeholders,
+                        autocompleteType: STORY_FACTION_FILTER_PLACES_OPTS.autocompleteType
+                    });
+                };
+            }
+            const addNpcBtn = document.getElementById('eventSlideAddNpcFilterPlaceBtn');
+            if (addNpcBtn && window.HeroRelevantLocationsEditor?.addRow) {
+                addNpcBtn.onclick = () => {
+                    window.HeroRelevantLocationsEditor.addRow({
+                        containerId: 'eventSlideEditNpcFilterPlaces',
+                        placeholders: STORY_NPC_FILTER_PLACES_OPTS.placeholders,
+                        autocompleteType: STORY_NPC_FILTER_PLACES_OPTS.autocompleteType
+                    });
+                };
             }
 
             // Track edits
@@ -1311,7 +1480,7 @@ export class EventSlideManager {
                         else break;
                     } catch (e) { break; }
                 }
-                imagePath = `assets/images/events/${encodeURIComponent(filename)}`;
+                imagePath = `assets/images/Archive%20data/events/${encodeURIComponent(filename)}`;
             }
         }
         return imagePath;
@@ -1758,6 +1927,8 @@ export class EventSlideManager {
         const eventImageOverlay = document.getElementById('eventImageOverlay');
         const eventImage = document.getElementById('eventImage');
 
+        window.standaloneEventSlide?.clearSlideHistory?.();
+
         // Close instantly - no fade delays
         if (eventSlide) {
             eventSlide.classList.remove('open');
@@ -1952,7 +2123,7 @@ export class EventSlideManager {
             if (eventImage && eventImageOverlay) {
                 let imagePath = window.eventManager?.getEventImagePath(variant.name, variant.image) || variant.image;
                 if (!imagePath?.trim()) {
-                    imagePath = `assets/images/events/${encodeURIComponent(variant.name.replace(/\s+/g, ' ').trim())}.png`;
+                    imagePath = `assets/images/Archive%20data/events/${encodeURIComponent(variant.name.replace(/\s+/g, ' ').trim())}.png`;
                 }
                 const processed = this.processImagePath(imagePath);
                 // Keep slide + overlay in sync: switching variants must update the pending path

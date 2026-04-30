@@ -488,6 +488,10 @@ body.color-palette-gray .event-sources-section {
     border-left: 3px solid #ff6600; /* Orange for gray palette */
 }
 
+body.color-palette-gray .event-relevant-locations-section {
+    border-left: 3px solid #ff6600; /* match sources */
+}
+
 body.color-palette-gray .event-image-toggle-btn {
     background: #ff6600; /* Orange for gray palette */
 }

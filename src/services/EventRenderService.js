@@ -696,8 +696,13 @@ class EventRenderService {
         
         // For multi-events, show the current variant; otherwise show the main event
         const displayEvent = isMultiEvent ? event.variants[currentVariantIndex] : event;
-        const imagePath = this.eventManager.getEventImagePath ? 
-            this.eventManager.getEventImagePath(displayEvent.name, displayEvent.image) : null;
+        const isSatelliteArchive =
+            typeof this.eventManager?.dataService?.getArchiveSource === 'function'
+            && this.eventManager.dataService.getArchiveSource() !== 'story';
+
+        const imagePath = this.eventManager.getEventImagePath
+            ? this.eventManager.getEventImagePath(displayEvent.name, displayEvent.image)
+            : null;
         
         // Update location for current variant
         if (isMultiEvent && event.variants[currentVariantIndex]) {
@@ -781,18 +786,32 @@ class EventRenderService {
         const actionButtons = '';
 
         const displayLocationType = (displayEvent && displayEvent.locationType) || event.locationType || 'earth';
-        const locationDisplayText = locationName || `${event.lat ? event.lat.toFixed(4) : '0'}, ${event.lon ? event.lon.toFixed(4) : '0'}`;
-        const locationRowInner = (window.LocationFlagHelpers && typeof window.LocationFlagHelpers.createLocationRowInnerHtml === 'function')
-            ? window.LocationFlagHelpers.createLocationRowInnerHtml(locationDisplayText, displayLocationType)
-            : `<img class="event-location-pin" src="assets/images/icons/Location Icon.png" alt="" width="28" height="28" decoding="async" /> ${locationDisplayText}`;
-        const timelineHelpers = (typeof window !== 'undefined') ? window.EventTimelineHelpers : null;
-        const yearSource = (
-            displayEvent
-            && (displayEvent.yearStart != null || displayEvent.yearEnd != null)
-        ) ? displayEvent : event;
-        const yearLine = timelineHelpers && typeof timelineHelpers.formatPanelYearRangeLine === 'function'
-            ? timelineHelpers.formatPanelYearRangeLine(yearSource)
-            : 'Year Unknown';
+        let locationRowInner;
+        let yearLine;
+        if (isSatelliteArchive) {
+            const descPlain = (displayEvent.description || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+            const preview = descPlain.length > 140 ? `${descPlain.slice(0, 137)}…` : descPlain;
+            const esc = (s) => String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+            locationRowInner = preview ? esc(preview) : '—';
+            yearLine = '';
+        } else {
+            const locationDisplayText = locationName || `${event.lat ? event.lat.toFixed(4) : '0'}, ${event.lon ? event.lon.toFixed(4) : '0'}`;
+            locationRowInner = (window.LocationFlagHelpers && typeof window.LocationFlagHelpers.createLocationRowInnerHtml === 'function')
+                ? window.LocationFlagHelpers.createLocationRowInnerHtml(locationDisplayText, displayLocationType)
+                : `<img class="event-location-pin" src="assets/images/icons/Location Icon.png" alt="" width="28" height="28" decoding="async" /> ${locationDisplayText}`;
+            const timelineHelpers = (typeof window !== 'undefined') ? window.EventTimelineHelpers : null;
+            const yearSource = (
+                displayEvent
+                && (displayEvent.yearStart != null || displayEvent.yearEnd != null)
+            ) ? displayEvent : event;
+            yearLine = timelineHelpers && typeof timelineHelpers.formatPanelYearRangeLine === 'function'
+                ? timelineHelpers.formatPanelYearRangeLine(yearSource)
+                : 'Year Unknown';
+        }
 
         if (this.eventManager.getSearchMatchAxesForItem) {
             const axes = this.eventManager.getSearchMatchAxesForItem(displayEvent);
@@ -835,7 +854,7 @@ class EventRenderService {
                     ${bodyHeadingHtml}
                     <div class="event-item-meta">
                         <p class="event-item-location">${locationRowInner}</p>
-                        <p class="event-item-year">${yearLine}</p>
+                        ${yearLine ? `<p class="event-item-year">${yearLine}</p>` : ''}
                     </div>
                 </div>
                 ${actionButtons}

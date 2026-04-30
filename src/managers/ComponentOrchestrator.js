@@ -19,6 +19,403 @@ export class ComponentOrchestrator {
         this._storyArchiveDetachedClose = null;
     }
 
+    /** True when `#eventsManagePanel` is mounted inside `#storyViewerContainer` (events list view). */
+    _storyArchiveEventsPanelMounted() {
+        const c = document.getElementById('storyViewerContainer');
+        const p = document.getElementById('eventsManagePanel');
+        return !!(c && p && c.contains(p));
+    }
+
+    /** Shared setup when entering Story Archive (menu hidden, Event Manager rail hidden). */
+    _prepareStoryArchiveShell() {
+        const testContainer = document.querySelector('.test-container');
+        if (testContainer) {
+            testContainer.style.display = 'none';
+        }
+        const eventManagerBtn = document.getElementById('eventsManageToggle');
+        if (eventManagerBtn) {
+            eventManagerBtn.style.setProperty('display', 'none', 'important');
+        }
+        const eventsManagePanel = document.getElementById('eventsManagePanel');
+        if (eventsManagePanel) {
+            eventsManagePanel.classList.remove('open');
+        }
+    }
+
+    /**
+     * Category picker: Story + Heroes / Factions / NPCs / Locations (each loads its own JSON into the same Event Manager UI).
+     * @returns {HTMLElement}
+     */
+    _buildStoryArchiveCategoryHub() {
+        const root = document.createElement('div');
+        root.id = 'storyArchiveCategoryHub';
+        root.className = 'story-archive-category-hub';
+        root.setAttribute('role', 'navigation');
+        root.setAttribute('aria-label', 'Story archive categories');
+
+        const tiles = [
+            { id: 'story', label: 'Story', src: 'assets/images/data/Story.png', archive: 'story', isFeature: true },
+            { id: 'heroes', label: 'Heroes', src: 'assets/images/data/Heroes.png', archive: 'heroes' },
+            { id: 'factions', label: 'Factions', src: 'assets/images/data/Factions.png', archive: 'factions' },
+            { id: 'npcs', label: 'NPCs', src: 'assets/images/data/NPCs.png', archive: 'npcs' },
+            { id: 'locations', label: 'Locations', src: 'assets/images/data/Locations.png', archive: 'locations' },
+        ];
+
+        const featureSlot = document.createElement('div');
+        featureSlot.className = 'story-archive-category-hub__feature';
+
+        const gridSlot = document.createElement('div');
+        gridSlot.className = 'story-archive-category-hub__grid';
+
+        tiles.forEach((t) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'story-archive-category-hub__tile';
+            btn.dataset.category = t.id;
+            btn.innerHTML = `
+                <span class="story-archive-category-hub__figure" aria-hidden="true">
+                    <img class="story-archive-category-hub__img" src="${t.src}" alt="" width="160" height="160" decoding="async" draggable="false" />
+                </span>
+                <span class="story-archive-category-hub__label">${t.label}</span>
+            `;
+            btn.title = `Open ${t.label} archive`;
+            btn.addEventListener('click', () => {
+                this._playStoryArchiveCategorySfx();
+                void this._enterStoryArchiveEventsView(t.archive);
+            });
+            if (t.isFeature) {
+                btn.classList.add('story-archive-category-hub__tile--story');
+            } else {
+                btn.classList.add('story-archive-category-hub__tile--placeholder');
+            }
+
+            if (t.isFeature) {
+                featureSlot.appendChild(btn);
+            } else {
+                gridSlot.appendChild(btn);
+            }
+        });
+
+        root.appendChild(featureSlot);
+        root.appendChild(gridSlot);
+
+        return root;
+    }
+
+    /** Play category-tile click sound, loading fallback path if needed. */
+    _playStoryArchiveCategorySfx() {
+        const sfx = window.SoundEffectsManager;
+        if (!sfx) return;
+        if (sfx.sounds && sfx.sounds.eventManager) {
+            sfx.play('eventManager');
+            return;
+        }
+        if (typeof sfx.loadSound === 'function') {
+            sfx.loadSound('eventManager', 'assets/audio/sfx/Event Manager.mp3');
+            setTimeout(() => {
+                if (sfx.sounds && sfx.sounds.eventManager) {
+                    sfx.play('eventManager');
+                }
+            }, 60);
+        }
+    }
+
+    /**
+     * From category hub → mount Event Manager panel (same UI; data from `archiveSource` JSON).
+     * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} archiveSource
+     */
+    async _enterStoryArchiveEventsView(archiveSource = 'story') {
+        if (this._storyArchiveEventsPanelMounted()) {
+            const eventsManagePanelMounted = document.getElementById('eventsManagePanel');
+            try {
+                if (window.eventManager?.switchStoryArchiveSource) {
+                    await window.eventManager.switchStoryArchiveSource(archiveSource);
+                } else if (window.eventManager) {
+                    window.eventManager.dataService?.setArchiveSource?.(archiveSource);
+                    await window.eventManager.loadEvents();
+                    window.eventManager.renderEvents();
+                }
+            } catch (err) {
+                console.error('[ComponentOrchestrator] Story Archive archive switch failed:', err);
+                updateStatus(`⚠ Could not load archive: ${err?.message || err}`, 'error');
+                return;
+            }
+            if (eventsManagePanelMounted) {
+                this._ensureStoryArchiveBackToCategoriesButton(eventsManagePanelMounted);
+                this._updateStoryArchiveCategoryStripActive(archiveSource);
+            }
+            const labelMounted =
+                archiveSource === 'story'
+                    ? 'Story timeline'
+                    : `${archiveSource.charAt(0).toUpperCase()}${archiveSource.slice(1)} archive`;
+            updateStatus(`✓ ${labelMounted} open`, 'success');
+            return;
+        }
+
+        const storyContainer = document.getElementById('storyViewerContainer');
+        const eventsManagePanel = document.getElementById('eventsManagePanel');
+        if (!storyContainer || !eventsManagePanel) {
+            updateStatus('⚠ Story Archive or Event Manager panel not found', 'error');
+            return;
+        }
+
+        document.getElementById('storyArchiveCategoryHub')?.remove();
+        storyContainer.classList.remove('story-viewer-container--hub');
+
+        if (!this._originalEventsPanelParent) {
+            this._originalEventsPanelParent = eventsManagePanel.parentNode;
+            this._originalEventsPanelClasses = eventsManagePanel.className;
+        }
+
+        eventsManagePanel.classList.remove('events-manage-panel');
+        eventsManagePanel.classList.add('story-viewer-panel-embedded');
+        eventsManagePanel.style.right = 'auto';
+        eventsManagePanel.style.position = 'relative';
+        eventsManagePanel.style.width = '100%';
+        eventsManagePanel.style.height = '100%';
+        eventsManagePanel.style.top = 'auto';
+        eventsManagePanel.style.bottom = 'auto';
+
+        storyContainer.appendChild(eventsManagePanel);
+
+        const header = eventsManagePanel.querySelector('.events-manage-header');
+        if (header) {
+            header.classList.add('story-viewer-header');
+        }
+
+        const addBtn = document.getElementById('addEventBtn');
+        const saveBtn = document.getElementById('saveEventsBtn');
+        const exportBtn = document.getElementById('exportEventsBtn');
+        if (addBtn) addBtn.classList.add('story-viewer-action-btn');
+        if (saveBtn) saveBtn.classList.add('story-viewer-action-btn');
+        if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
+
+        eventsManagePanel.classList.add('open');
+
+        this._setupStoryArchiveBottomBar(eventsManagePanel);
+        this._setupStoryArchiveCompactChrome(eventsManagePanel);
+
+        try {
+            if (window.eventManager?.switchStoryArchiveSource) {
+                await window.eventManager.switchStoryArchiveSource(archiveSource);
+            } else if (window.eventManager) {
+                window.eventManager.dataService?.setArchiveSource?.(archiveSource);
+                await window.eventManager.loadEvents();
+                window.eventManager.renderEvents();
+            }
+        } catch (err) {
+            console.error('[ComponentOrchestrator] Story Archive load failed:', err);
+            updateStatus(`⚠ Could not load archive: ${err?.message || err}`, 'error');
+        }
+
+        this._hideStoryArchiveEventManagerClose(eventsManagePanel);
+        this._applyStoryArchiveGridSquishFromPreferences(eventsManagePanel);
+        this._ensureStoryArchiveBackToCategoriesButton(eventsManagePanel);
+        this._updateStoryArchiveCategoryStripActive(archiveSource);
+
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            setTimeout(() => {
+                console.log('[ComponentOrchestrator] Story Archive (events view) DOM inspection:');
+                console.log('[ComponentOrchestrator] eventsManagePanel:', eventsManagePanel);
+                const eventItems = eventsManagePanel.querySelectorAll('.event-item');
+                console.log('[ComponentOrchestrator] Event items found:', eventItems.length);
+            }, 300);
+        }
+
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            setTimeout(() => {
+                this._applyStoryArchiveOverlapStyling();
+
+                if (!this._storyArchiveObserver) {
+                    this._storyArchiveObserver = new MutationObserver(() => {
+                        this._applyStoryArchiveOverlapStyling();
+                    });
+                    this._storyArchiveObserver.observe(eventsManagePanel, {
+                        childList: true,
+                        subtree: true,
+                    });
+                }
+            }, 400);
+        }
+
+        const label =
+            archiveSource === 'story'
+                ? 'Story timeline'
+                : `${archiveSource.charAt(0).toUpperCase()}${archiveSource.slice(1)} archive`;
+        updateStatus(`✓ ${label} open`, 'success');
+    }
+
+    /**
+     * Search row: “Categories” back + five archive icon buttons (Story Archive embedded only).
+     */
+    _ensureStoryArchiveBackToCategoriesButton(eventsManagePanel) {
+        if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
+        if (document.getElementById('storyArchiveSearchCategoryStrip')) return;
+
+        const primaryRow = eventsManagePanel.querySelector(
+            '#eventsManageSearch .events-manage-search-row--primary'
+        );
+        if (!primaryRow) return;
+
+        const titleInput = document.getElementById('eventsSearchInput');
+        const strip = document.createElement('div');
+        strip.id = 'storyArchiveSearchCategoryStrip';
+        strip.className = 'story-archive-search-category-strip';
+        strip.setAttribute('role', 'toolbar');
+        strip.setAttribute('aria-label', 'Story archive categories');
+
+        const backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.id = 'storyArchiveBackToHubBtn';
+        backBtn.className = 'story-viewer-action-btn story-archive-back-to-hub-btn';
+        backBtn.setAttribute('title', 'Back to Story Archive categories');
+        backBtn.innerHTML = `
+            <span class="story-archive-back-to-hub-btn__icon-wrap" aria-hidden="true">
+                <img class="story-archive-back-to-hub-btn__icon" src="assets/images/icons/Back%20Arrow.png" alt="" width="18" height="18" decoding="async" draggable="false" />
+            </span>
+            <span class="story-archive-back-to-hub-btn__label">Categories</span>
+        `;
+        backBtn.addEventListener('click', () => {
+            this._playStoryArchiveCategorySfx();
+            void this._returnToStoryArchiveCategoryHub();
+        });
+        strip.appendChild(backBtn);
+
+        const categories = [
+            { archive: 'story', label: 'Story', icon: 'assets/images/icons/Story%20Icon.png' },
+            { archive: 'heroes', label: 'Heroes', icon: 'assets/images/icons/Heroes%20Icon.png' },
+            { archive: 'factions', label: 'Factions', icon: 'assets/images/icons/Factions%20Icon.png' },
+            { archive: 'npcs', label: 'NPCs', icon: 'assets/images/icons/NPC%20Icon.png' },
+            { archive: 'locations', label: 'Locations', icon: 'assets/images/icons/Location%20Icon.png' },
+        ];
+        categories.forEach((c) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'story-viewer-action-btn story-archive-category-icon-btn';
+            b.dataset.storyArchive = c.archive;
+            b.title = `Open ${c.label} archive`;
+            b.setAttribute('aria-label', c.label);
+            b.innerHTML = `<img class="story-archive-category-icon-btn__img" src="${c.icon}" alt="" width="22" height="22" decoding="async" draggable="false" />`;
+            b.addEventListener('click', () => {
+                this._playStoryArchiveCategorySfx();
+                void this._enterStoryArchiveEventsView(c.archive);
+            });
+            strip.appendChild(b);
+        });
+
+        if (titleInput?.parentNode === primaryRow) {
+            primaryRow.insertBefore(strip, titleInput.nextSibling);
+        } else {
+            primaryRow.insertBefore(strip, primaryRow.firstChild);
+        }
+    }
+
+    _updateStoryArchiveCategoryStripActive(archiveSource) {
+        const strip = document.getElementById('storyArchiveSearchCategoryStrip');
+        if (!strip) return;
+        strip.querySelectorAll('[data-story-archive]').forEach((el) => {
+            el.classList.toggle('story-archive-category-icon-btn--active', el.dataset.storyArchive === archiveSource);
+        });
+    }
+
+    _disconnectStoryArchiveOverlapObserver() {
+        if (this._storyArchiveObserver) {
+            try {
+                this._storyArchiveObserver.disconnect();
+            } catch (_) { /* ignore */ }
+            this._storyArchiveObserver = null;
+        }
+    }
+
+    /**
+     * Move `#eventsManagePanel` out of `#storyViewerContainer` and restore Event Manager chrome.
+     * Caller should re-append hub or exit Story Archive as appropriate.
+     */
+    _detachEventsManagePanelFromStoryArchive(eventsManagePanel) {
+        document.getElementById('storyArchiveSearchCategoryStrip')?.remove();
+
+        if (!eventsManagePanel || !this._originalEventsPanelParent) {
+            return;
+        }
+
+        this._restoreStoryArchiveEventManagerClose();
+        this._restoreStoryArchiveCompactChrome(eventsManagePanel);
+        this._teardownStoryArchiveBottomBar(eventsManagePanel);
+
+        eventsManagePanel.className = this._originalEventsPanelClasses || 'events-manage-panel';
+
+        eventsManagePanel.style.right = '';
+        eventsManagePanel.style.position = '';
+        eventsManagePanel.style.width = '';
+        eventsManagePanel.style.height = '';
+        eventsManagePanel.style.top = '';
+        eventsManagePanel.style.bottom = '';
+        eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline');
+        eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline-end');
+        eventsManagePanel.style.removeProperty('--story-archive-list-gutter');
+        eventsManagePanel.style.removeProperty('--story-archive-list-max-width');
+
+        const title = eventsManagePanel.querySelector('.story-viewer-title');
+        if (title) {
+            title.textContent = 'Event Management';
+            title.classList.remove('story-viewer-title');
+            title.classList.add('events-manage-title');
+        }
+
+        const addBtn = document.getElementById('addEventBtn');
+        const saveBtn = document.getElementById('saveEventsBtn');
+        const exportBtn = document.getElementById('exportEventsBtn');
+        if (addBtn) addBtn.classList.remove('story-viewer-action-btn');
+        if (saveBtn) saveBtn.classList.remove('story-viewer-action-btn');
+        if (exportBtn) exportBtn.classList.remove('story-viewer-action-btn');
+        document.getElementById('eventsSearchClear')?.classList.remove('story-viewer-action-btn');
+        document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox')?.classList.remove('story-viewer-bottom-bar-control');
+        document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group')?.classList.remove('story-viewer-bottom-bar-control');
+
+        const header = eventsManagePanel.querySelector('.story-viewer-header');
+        if (header) {
+            header.classList.remove('story-viewer-header');
+        }
+
+        document.getElementById('storyArchiveLayoutControl')?.remove();
+        document.getElementById('storyArchiveGridSquishBar')?.remove();
+
+        eventsManagePanel.classList.remove('open');
+        this._originalEventsPanelParent.appendChild(eventsManagePanel);
+    }
+
+    /** Hub again: detach list panel, restore main timeline in memory, show category tiles. */
+    async _returnToStoryArchiveCategoryHub() {
+        const storyContainer = document.getElementById('storyViewerContainer');
+        const eventsManagePanel = document.getElementById('eventsManagePanel');
+        if (!storyContainer || !eventsManagePanel || !this._storyArchiveEventsPanelMounted()) {
+            return;
+        }
+
+        document.getElementById('storyArchiveCategoryHub')?.remove();
+        this._disconnectStoryArchiveOverlapObserver();
+
+        this._detachEventsManagePanelFromStoryArchive(eventsManagePanel);
+
+        if (window.eventManager?.dataService?.setArchiveSource) {
+            window.eventManager.dataService.setArchiveSource('story');
+        }
+        try {
+            if (window.eventManager?.loadEvents) {
+                await window.eventManager.loadEvents();
+            }
+        } catch (e) {
+            console.warn('[ComponentOrchestrator] Restoring main timeline for category hub:', e);
+        }
+        if (window.eventManager?.renderEvents) {
+            window.eventManager.renderEvents();
+        }
+
+        storyContainer.classList.add('story-viewer-container--hub');
+        storyContainer.appendChild(this._buildStoryArchiveCategoryHub());
+        updateStatus('✓ Story Archive — choose a category', 'success');
+    }
+
     dispatchAppModeChange(mode) {
         try {
             if (typeof window !== 'undefined') {
@@ -767,151 +1164,66 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Create the Story Archive - takes over center space like Globe/Codex
-     * Uses actual Event Manager panel but displayed in center
+     * Create the Story Archive shell: category hub first; events list mounts after user taps **Story**.
+     * Uses the same `#eventsManagePanel` flow as before, deferred until `_enterStoryArchiveEventsView()`.
      */
     async createStoryViewerPanel() {
-        // Check if already exists
         let storyContainer = document.getElementById('storyViewerContainer');
-        if (storyContainer) {
+        const eventsManagePanel = document.getElementById('eventsManagePanel');
+
+        if (this._storyArchiveEventsPanelMounted()) {
             storyContainer.style.display = 'flex';
-            storyContainer.classList.add('active');
-            const emp = document.getElementById('eventsManagePanel');
-            if (emp) {
-                this._setupStoryArchiveBottomBar(emp);
-                this._setupStoryArchiveCompactChrome(emp);
-                this._hideStoryArchiveEventManagerClose(emp);
-                this._applyStoryArchiveGridSquishFromPreferences(emp);
+            if (eventsManagePanel) {
+                this._setupStoryArchiveBottomBar(eventsManagePanel);
+                this._setupStoryArchiveCompactChrome(eventsManagePanel);
+                this._hideStoryArchiveEventManagerClose(eventsManagePanel);
+                this._applyStoryArchiveGridSquishFromPreferences(eventsManagePanel);
+                this._ensureStoryArchiveBackToCategoriesButton(eventsManagePanel);
+                const curArchive =
+                    window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                this._updateStoryArchiveCategoryStripActive(curArchive);
             }
+            requestAnimationFrame(() => {
+                storyContainer.classList.add('active');
+            });
             return;
         }
 
-        // Hide the test-container (main menu buttons)
-        const testContainer = document.querySelector('.test-container');
-        if (testContainer) {
-            testContainer.style.display = 'none';
+        if (storyContainer?.querySelector('#storyArchiveCategoryHub')) {
+            storyContainer.style.display = 'flex';
+            requestAnimationFrame(() => {
+                storyContainer.classList.add('active');
+            });
+            return;
         }
 
-        // Hide the Event Manager button since Story Archive uses the panel
-        const eventManagerBtn = document.getElementById('eventsManageToggle');
-        if (eventManagerBtn) {
-            eventManagerBtn.style.setProperty('display', 'none', 'important');
-        }
+        this._prepareStoryArchiveShell();
 
-        // Get the actual eventsManagePanel and move it to center
-        const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (!eventsManagePanel) {
             updateStatus('⚠ Event Manager panel not found', 'error');
             return;
         }
 
-        // Create story archive container
-        storyContainer = document.createElement('div');
-        storyContainer.id = 'storyViewerContainer';
-        storyContainer.className = 'story-viewer-container';
-        
-        // Move the eventsManagePanel into story archive container
-        // Store original parent to restore later
-        this._originalEventsPanelParent = eventsManagePanel.parentNode;
-        this._originalEventsPanelClasses = eventsManagePanel.className;
-        
-        // Change panel to be centered instead of side panel
-        eventsManagePanel.classList.remove('events-manage-panel');
-        eventsManagePanel.classList.add('story-viewer-panel-embedded');
-        eventsManagePanel.style.right = 'auto';
-        eventsManagePanel.style.position = 'relative';
-        eventsManagePanel.style.width = '100%';
-        eventsManagePanel.style.height = '100%';
-        eventsManagePanel.style.top = 'auto';
-        eventsManagePanel.style.bottom = 'auto';
-        
-        // Move panel into story container
-        storyContainer.appendChild(eventsManagePanel);
-        
-        // Add story-viewer-header class to the header
-        const header = eventsManagePanel.querySelector('.events-manage-header');
-        if (header) {
-            header.classList.add('story-viewer-header');
+        if (!storyContainer) {
+            storyContainer = document.createElement('div');
+            storyContainer.id = 'storyViewerContainer';
+            storyContainer.className = 'story-viewer-container story-viewer-container--hub';
+            storyContainer.appendChild(this._buildStoryArchiveCategoryHub());
+
+            const content = document.getElementById('content');
+            if (content) {
+                content.appendChild(storyContainer);
+            } else {
+                document.body.appendChild(storyContainer);
+            }
+
+            requestAnimationFrame(() => {
+                storyContainer.classList.add('active');
+            });
+
+            updateStatus('✓ Story Archive — choose a category', 'success');
+            return;
         }
-        
-        // Add/Save/Export styling; DOM row is built in _setupStoryArchiveBottomBar (with pagination)
-        const addBtn = document.getElementById('addEventBtn');
-        const saveBtn = document.getElementById('saveEventsBtn');
-        const exportBtn = document.getElementById('exportEventsBtn');
-        if (addBtn) addBtn.classList.add('story-viewer-action-btn');
-        if (saveBtn) saveBtn.classList.add('story-viewer-action-btn');
-        if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
-
-        // Insert into main content area
-        const content = document.getElementById('content');
-        if (content) {
-            content.appendChild(storyContainer);
-        } else {
-            document.body.appendChild(storyContainer);
-        }
-
-        // Open the panel
-        eventsManagePanel.classList.add('open');
-
-        this._setupStoryArchiveBottomBar(eventsManagePanel);
-        this._setupStoryArchiveCompactChrome(eventsManagePanel);
-
-        // Ensure EventManager renders to this panel
-        if (window.eventManager) {
-            window.eventManager.renderEvents();
-        }
-
-        this._hideStoryArchiveEventManagerClose(eventsManagePanel);
-        this._applyStoryArchiveGridSquishFromPreferences(eventsManagePanel);
-
-        // DEV ONLY: Debug - inspect actual DOM structure
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            setTimeout(() => {
-                console.log('[ComponentOrchestrator] Story Archive DOM inspection:');
-                console.log('[ComponentOrchestrator] eventsManagePanel:', eventsManagePanel);
-                console.log('[ComponentOrchestrator] eventsManagePanel.innerHTML length:', eventsManagePanel.innerHTML.length);
-                
-                const allBadges = eventsManagePanel.querySelectorAll('[class*="badge"], [class*="number"]');
-                console.log('[ComponentOrchestrator] All badge/number elements:', allBadges.length);
-                allBadges.forEach((el, i) => {
-                    if (i < 5) {
-                        console.log('[ComponentOrchestrator] Badge', i, ':', el.className, 'textContent:', el.textContent.trim());
-                    }
-                });
-                
-                const eventItems = eventsManagePanel.querySelectorAll('.event-item');
-                console.log('[ComponentOrchestrator] Event items found:', eventItems.length);
-                if (eventItems.length > 0) {
-                    const firstItem = eventItems[0];
-                    console.log('[ComponentOrchestrator] First event item HTML:', firstItem.innerHTML.substring(0, 500));
-                }
-            }, 300);
-        }
-
-        // DEV ONLY: Apply red styling to overlap badges in Story Archive
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            setTimeout(() => {
-                this._applyStoryArchiveOverlapStyling();
-                
-                // Set up MutationObserver to re-apply styling when DOM changes
-                if (!this._storyArchiveObserver) {
-                    this._storyArchiveObserver = new MutationObserver(() => {
-                        this._applyStoryArchiveOverlapStyling();
-                    });
-                    this._storyArchiveObserver.observe(eventsManagePanel, {
-                        childList: true,
-                        subtree: true
-                    });
-                }
-            }, 400);
-        }
-
-        // Show with animation
-        requestAnimationFrame(() => {
-            storyContainer.classList.add('active');
-        });
-
-        updateStatus('✓ Story Archive loaded with full Event Manager functionality', 'success');
     }
 
     /**
@@ -1158,7 +1470,7 @@ export class ComponentOrchestrator {
             item.dataset.eventId = event.id;
             item.innerHTML = `
                 <div class="event-item-preview-image">
-                    <img src="${event.image || 'assets/images/events/default.png'}" alt="${event.name}" />
+                    <img src="${event.image || 'assets/images/Archive%20data/events/default.png'}" alt="${event.name}" />
                 </div>
                 <div class="event-item-info">
                     <h3 class="event-item-title">${event.name}</h3>
@@ -1269,8 +1581,14 @@ export class ComponentOrchestrator {
      * Open a specific event in story mode
      */
     openStoryEvent(event, index) {
+        const ss = window.standaloneEventSlide;
+        if (ss) {
+            ss._presentationFromDockTimeline = true;
+        }
         // Use the existing event slide system but in story context
-        if (window.MenuHelpers && window.MenuHelpers.showStandaloneEventSlide) {
+        if (ss?.showStandaloneEventSlide) {
+            ss.showStandaloneEventSlide(event, index);
+        } else if (window.MenuHelpers && window.MenuHelpers.showStandaloneEventSlide) {
             window.MenuHelpers.showStandaloneEventSlide(event, index);
         } else if (window.MenuServiceHelpers && window.MenuServiceHelpers.showStandaloneEventSlide) {
             window.MenuServiceHelpers.showStandaloneEventSlide(event, index);
@@ -1468,65 +1786,31 @@ export class ComponentOrchestrator {
     async killBiographyComponents(restoreMenu = true) {
         updateStatus('Exiting Story Archive...', 'info');
         
-        // Restore Event Manager panel to its original location (from story archive)
         const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (eventsManagePanel && this._originalEventsPanelParent) {
-            this._restoreStoryArchiveEventManagerClose();
-            this._restoreStoryArchiveCompactChrome(eventsManagePanel);
-            this._teardownStoryArchiveBottomBar(eventsManagePanel);
-
-            // Restore original classes
-            eventsManagePanel.className = this._originalEventsPanelClasses || 'events-manage-panel';
-            
-            // Restore original styles
-            eventsManagePanel.style.right = '';
-            eventsManagePanel.style.position = '';
-            eventsManagePanel.style.width = '';
-            eventsManagePanel.style.height = '';
-            eventsManagePanel.style.top = '';
-            eventsManagePanel.style.bottom = '';
-            eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline');
-            eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline-end');
-            eventsManagePanel.style.removeProperty('--story-archive-list-gutter');
-            eventsManagePanel.style.removeProperty('--story-archive-list-max-width');
-            
-            // Restore original title
-            const title = eventsManagePanel.querySelector('.story-viewer-title');
-            if (title) {
-                title.textContent = 'Event Management';
-                title.classList.remove('story-viewer-title');
-                title.classList.add('events-manage-title');
-            }
-            
-            // Restore Add/Save/Export buttons to normal state
-            const addBtn = document.getElementById('addEventBtn');
-            const saveBtn = document.getElementById('saveEventsBtn');
-            const exportBtn = document.getElementById('exportEventsBtn');
-            if (addBtn) addBtn.classList.remove('story-viewer-action-btn');
-            if (saveBtn) saveBtn.classList.remove('story-viewer-action-btn');
-            if (exportBtn) exportBtn.classList.remove('story-viewer-action-btn');
-            document.getElementById('eventsSearchClear')?.classList.remove('story-viewer-action-btn');
-            document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox')?.classList.remove('story-viewer-bottom-bar-control');
-            document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group')?.classList.remove('story-viewer-bottom-bar-control');
-            
-            // Show Event Manager button again
-            const eventManagerBtn = document.getElementById('eventsManageToggle');
-            if (eventManagerBtn) {
-                eventManagerBtn.style.display = '';
-            }
-
-            // Remove story-viewer-header class from header
-            const header = eventsManagePanel.querySelector('.story-viewer-header');
-            if (header) {
-                header.classList.remove('story-viewer-header');
-            }
-
-            document.getElementById('storyArchiveLayoutControl')?.remove();
-            document.getElementById('storyArchiveGridSquishBar')?.remove();
-
-            // Move back to original parent
-            this._originalEventsPanelParent.appendChild(eventsManagePanel);
+            this._detachEventsManagePanelFromStoryArchive(eventsManagePanel);
         }
+
+        if (window.eventManager?.dataService?.setArchiveSource) {
+            window.eventManager.dataService.setArchiveSource('story');
+        }
+        try {
+            if (window.eventManager?.loadEvents) {
+                await window.eventManager.loadEvents();
+            }
+        } catch (e) {
+            console.warn('[ComponentOrchestrator] Restoring main timeline after Story Archive failed:', e);
+        }
+        if (window.eventManager?.renderEvents) {
+            window.eventManager.renderEvents();
+        }
+
+        const eventManagerBtnRestore = document.getElementById('eventsManageToggle');
+        if (eventManagerBtnRestore) {
+            eventManagerBtnRestore.style.removeProperty('display');
+        }
+
+        this._disconnectStoryArchiveOverlapObserver();
         
         // Remove story archive container
         const storyContainer = document.getElementById('storyViewerContainer');

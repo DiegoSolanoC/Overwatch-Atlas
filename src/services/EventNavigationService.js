@@ -221,7 +221,7 @@ class EventNavigationService {
                         if (!imagePath || !imagePath.trim()) {
                             const normalizedName = eventName.replace(/\s+/g, ' ').trim();
                             const encodedFileName = encodeURIComponent(normalizedName);
-                            imagePath = `assets/images/events/${encodedFileName}.png`;
+                            imagePath = `assets/images/Archive%20data/events/${encodedFileName}.png`;
                         }
                         console.log(`[EventNavigationService] Image path (fallback) for "${eventName}": ${imagePath}`);
                     }

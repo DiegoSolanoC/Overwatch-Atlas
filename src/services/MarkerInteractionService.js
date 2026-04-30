@@ -464,7 +464,7 @@ class MarkerInteractionService {
                 }
                 
                 // Check if this is the same event that's currently open (by checking Event System's current index)
-                const events = window.eventManager?.events || [];
+                const events = window.eventManager?.getDockTimelineEvents?.() || [];
                 console.log('[onMarkerClick] Total events in eventManager:', events.length);
                 const eventData = clickedMarker.userData.event;
                 console.log('[onMarkerClick] Event data from marker:', eventData);
@@ -576,7 +576,7 @@ class MarkerInteractionService {
                         const eventName = eventData?.name || 'Event';
                         const eventDescription = eventData?.description || '';
                         const imagePath = window.eventManager?.getEventImagePath
-                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image)
+                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image, 'story')
                             : null;
                         window.globeController.uiView.showEventSlide(eventName, imagePath, eventDescription, clickedMarker, eventData);
                     }

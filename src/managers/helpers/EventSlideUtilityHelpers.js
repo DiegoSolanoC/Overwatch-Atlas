@@ -32,7 +32,7 @@ export function processImagePath(imagePath) {
                         break;
                     }
                 }
-                imagePath = `assets/images/events/${encodeURIComponent(filename)}`;
+                imagePath = `assets/images/Archive%20data/events/${encodeURIComponent(filename)}`;
             }
         }
     }

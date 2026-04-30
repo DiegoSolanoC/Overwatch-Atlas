@@ -465,21 +465,21 @@
         position: absolute !important;
     }
 
-    .event-slide-close {
+    .event-slide-close-cluster {
         right: 10px !important;
         left: auto !important;
     }
 
-    /* Inline description edit buttons next to X */
+    /* Inline description edit buttons left of close cluster */
     #eventSlideSaveBtn {
-        right: 70px !important;
+        right: 118px !important;
         top: 14px !important;
         height: 34px !important;
         padding: 0 10px !important;
         font-size: 13px !important;
     }
     #eventSlideEditBtn {
-        right: 130px !important;
+        right: 188px !important;
         top: 14px !important;
         height: 34px !important;
         padding: 0 10px !important;

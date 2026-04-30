@@ -9,6 +9,17 @@ import { createGlobeControlButton } from './ComponentLoadHelpers.js';
 import { shouldEventBeLocked } from '../../managers/helpers/MarkerCreationHelpers.js';
 import { EventMarkerManager } from '../../managers/EventMarkerManager.js';
 import { isEventSlideEditDevHost } from '../../utils/isEventSlideEditDevHost.js';
+import {
+    STORY_SECONDARY_PLACES_EDITOR_OPTS,
+    STORY_HERO_FILTER_PLACES_OPTS,
+    STORY_FACTION_FILTER_PLACES_OPTS,
+    STORY_NPC_FILTER_PLACES_OPTS,
+    applyStoryFilterPlacesToTarget,
+    heroPlacesForEditor,
+    factionPlacesForEditor,
+    npcPlacesForEditor,
+    copyFilterPlaceArraysFromSource
+} from '../../utils/StoryFilterPlacesSync.js';
 
 function teardownMenuHelpersEventSystemLayout() {
     const st = window.__menuHelpersEventSystemLayout;
@@ -365,7 +376,7 @@ function restoreCameraFromThumbnailHover() {
  */
 export function updateStandalonePaginationForFilters() {
     const activeFilters = window.standaloneActiveFilters || new Set();
-    const events = window.eventManager?.events || [];
+    const events = window.eventManager?.getDockTimelineEvents?.() || [];
     const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
     
     // Get stack trace to find who's calling this function
@@ -956,6 +967,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (idx >= events.length) idx = Math.max(0, events.length - 1);
                                 const eventToOpen = ss.currentEventData || events[idx];
                                 if (eventToOpen) {
+                                    const arch = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                                    ss._presentationFromDockTimeline = arch === 'story';
                                     ss.showStandaloneEventSlide(eventToOpen, idx);
                                 }
                             }
@@ -1344,16 +1357,88 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         currentEventIndex: 0,
                         currentPage: 1, // Track current page for marker display
                         allEvents: [],
+                        /** True when the slide row comes from the main-timeline dock (thumbs / story), not satellite Event Manager rows. Do not infer via `allEvents === getDockTimelineEvents()` — references can differ while content is still dock. */
+                        _presentationFromDockTimeline: true,
                         currentEventData: null,
                         currentVariantIndex: 0,
                         isEditing: false,
-                        
-                        // Show event at index without globe
-                        showEvent(index) {
-                            const events = window.eventManager?.events || [];
+                        /** @type {{ archiveSource: string, eventIndex: number, presentationFromDock: boolean }[]} */
+                        _slideHistoryStack: [],
+                        _slideHistoryRestoring: false,
+
+                        pushSlideHistoryIfOpen() {
+                            const panel = document.getElementById('eventSlide');
+                            if (!panel?.classList.contains('open')) return;
+                            if (this._slideHistoryRestoring) return;
+                            const em = window.eventManager;
+                            this._slideHistoryStack.push({
+                                archiveSource: em?.dataService?.getArchiveSource?.() || 'story',
+                                eventIndex: this.currentEventIndex,
+                                presentationFromDock: !!this._presentationFromDockTimeline
+                            });
+                            this.updateBackButtonVisibility();
+                        },
+
+                        updateBackButtonVisibility() {
+                            const btn = document.getElementById('eventSlideBack');
+                            if (!btn) return;
+                            const n = this._slideHistoryStack?.length || 0;
+                            btn.style.display = n > 0 ? 'inline-flex' : 'none';
+                            btn.disabled = n === 0;
+                            btn.setAttribute('aria-hidden', n === 0 ? 'true' : 'false');
+                        },
+
+                        clearSlideHistory() {
+                            if (this._slideHistoryStack) {
+                                this._slideHistoryStack.length = 0;
+                            }
+                            this.updateBackButtonVisibility();
+                        },
+
+                        async goBackSlide() {
+                            if (!this._slideHistoryStack?.length) return;
+                            const prev = this._slideHistoryStack.pop();
+                            if (!prev) {
+                                this.updateBackButtonVisibility();
+                                return;
+                            }
+                            this._slideHistoryRestoring = true;
+                            try {
+                                const em = window.eventManager;
+                                if (em?.switchStoryArchiveSource) {
+                                    await em.switchStoryArchiveSource(prev.archiveSource);
+                                }
+                                if (prev.presentationFromDock) {
+                                    this.showEvent(prev.eventIndex, {});
+                                } else {
+                                    const list = em?.events || [];
+                                    this.showEvent(prev.eventIndex, { eventList: list });
+                                }
+                            } finally {
+                                this._slideHistoryRestoring = false;
+                            }
+                            this.updateBackButtonVisibility();
+                            if (window.SoundEffectsManager?.play) {
+                                window.SoundEffectsManager.play('eventClick');
+                            }
+                        },
+
+                        /**
+                         * @param {number} index
+                         * @param {{ eventList?: Array<Object>, keepSlideHistory?: boolean }} [options] - `eventList` for Event Manager rows; omit for dock. `keepSlideHistory` when following relevancy / prev-next while Back stack is active.
+                         */
+                        showEvent(index, options = {}) {
+                            if (!this._slideHistoryRestoring && !options.keepSlideHistory) {
+                                this.clearSlideHistory();
+                            }
+                            const dockList = window.eventManager?.getDockTimelineEvents?.() || [];
+                            const events =
+                                options.eventList != null ? options.eventList : dockList;
                             if (index < 0 || index >= events.length) return;
                             this.currentEventIndex = index;
-                            this.allEvents = events; // Fix: set allEvents so updateNavButtons works
+                            this.allEvents = events;
+                            this._presentationFromDockTimeline =
+                                options.eventList == null || events === dockList;
                             
                             const eventData = events[index];
                             this.showStandaloneEventSlide(eventData, index);
@@ -1372,13 +1457,22 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             // Get event data for display
                             let eventName = displayEvent.name || eventData.name || 'Unnamed Event';
                             const description = displayEvent.description || '';
-                            
-                            // Get image path using NavigationImageHelpers
+
+                            // Get image path — dock rows are always main-timeline story art
+                            const useStoryDockImages = !!this._presentationFromDockTimeline;
                             let imagePath = null;
                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, eventName);
+                                imagePath = window.NavigationImageHelpers.getEventImagePath(
+                                    displayEvent,
+                                    eventName,
+                                    useStoryDockImages ? 'story' : undefined
+                                );
                             } else if (window.eventManager?.getEventImagePath) {
-                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                imagePath = window.eventManager.getEventImagePath(
+                                    displayEvent.name,
+                                    displayEvent.image,
+                                    useStoryDockImages ? 'story' : undefined
+                                );
                             } else {
                                 imagePath = displayEvent.image || displayEvent.imagePath || null;
                             }
@@ -1398,6 +1492,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         // Display the slide panel
                         displaySlide(eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
                             const eventSlide = document.getElementById('eventSlide');
+                            if (!eventSlide) return;
+                            /* Fresh open from a closed panel: drop stale back-stack (X, hideEventSlide, filters, etc.). */
+                            if (!eventSlide.classList.contains('open')) {
+                                this.clearSlideHistory();
+                            }
                             const eventSlideTitle = document.getElementById('eventSlideTitle');
                             const eventSlideText = document.getElementById('eventSlideText');
                             const eventSlideClose = document.getElementById('eventSlideClose');
@@ -1407,14 +1506,31 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const saveBtn = document.getElementById('eventSlideSaveBtn');
                             const eventSlideLocation = document.getElementById('eventSlideLocation');
                             const eventSlideTimelineMeta = document.getElementById('eventSlideTimelineMeta');
-                            
-                            if (!eventSlide) return;
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSourceSlide = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+                            const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceSlide !== 'story';
                             
                             // Store the image path for later use when toggling
                             this.currentImagePath = imagePath;
                             
                             // Cancel any active editing
                             this.cancelEdit();
+                            
+                            const relElClear = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionClear = document.getElementById('eventRelevantLocationsSection');
+                            const heroLocEditClear = document.getElementById('eventSlideHeroLocationsEdit');
+                            if (relElClear) {
+                                relElClear.innerHTML = '';
+                            }
+                            if (relSectionClear) {
+                                relSectionClear.style.display = 'none';
+                            }
+                            if (heroLocEditClear) {
+                                heroLocEditClear.setAttribute('hidden', '');
+                                heroLocEditClear.style.display = 'none';
+                            }
                             
                             // Check for Olivia Colomar
                             const hasOliviaColomar = /Olivia\s+Colomar/gi.test(eventName) || 
@@ -1437,38 +1553,53 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 eventSlideText.innerHTML = applyGlitch(description) || 'No description available.';
                             }
                             
-                            // Display location and years under title
+                            // Display location and years under title (Story timeline only)
                             const target = displayEvent || eventData;
-                            if (eventSlideLocation && target.cityDisplayName) {
-                                // Get location flag
-                                const lh = window.LocationFlagHelpers;
-                                const flagFile = lh?.getResolvedFlagFilename?.(target.cityDisplayName, target.locationType || 'earth');
-                                
-                                if (flagFile) {
-                                    eventSlideLocation.innerHTML = `<img class="event-slide-location-flag" src="assets/images/flags/${flagFile}" alt="" width="24" height="16" decoding="async"> ${target.cityDisplayName}`;
-                                } else {
-                                    eventSlideLocation.textContent = target.cityDisplayName;
+                            if (!isSatelliteArchive) {
+                                if (eventSlideLocation && target.cityDisplayName) {
+                                    // Get location flag
+                                    const lh = window.LocationFlagHelpers;
+                                    const flagFile = lh?.getResolvedFlagFilename?.(target.cityDisplayName, target.locationType || 'earth');
+                                    
+                                    if (flagFile) {
+                                        eventSlideLocation.innerHTML = `<img class="event-slide-location-flag" src="assets/images/flags/${flagFile}" alt="" width="24" height="16" decoding="async"> ${target.cityDisplayName}`;
+                                    } else {
+                                        eventSlideLocation.textContent = target.cityDisplayName;
+                                    }
+                                    eventSlideLocation.style.display = 'block';
+                                } else if (eventSlideLocation) {
+                                    eventSlideLocation.style.display = 'none';
                                 }
-                                eventSlideLocation.style.display = 'block';
-                            } else if (eventSlideLocation) {
-                                eventSlideLocation.style.display = 'none';
-                            }
-                            
-                            if (eventSlideTimelineMeta) {
-                                const yearStart = target.yearStart || target.year;
-                                const yearEnd = target.yearEnd;
-                                let yearText = '';
-                                if (yearStart) {
-                                    yearText = String(yearStart);
-                                    if (yearEnd) {
-                                        yearText += ` – ${yearEnd}`;
+                                
+                                if (eventSlideTimelineMeta) {
+                                    const yearStart = target.yearStart || target.year;
+                                    const yearEnd = target.yearEnd;
+                                    let yearText = '';
+                                    if (yearStart) {
+                                        yearText = String(yearStart);
+                                        if (yearEnd) {
+                                            yearText += ` – ${yearEnd}`;
+                                        }
+                                    }
+                                    if (yearText) {
+                                        eventSlideTimelineMeta.textContent = yearText;
+                                        eventSlideTimelineMeta.style.display = 'block';
+                                    } else {
+                                        eventSlideTimelineMeta.style.display = 'none';
                                     }
                                 }
-                                if (yearText) {
-                                    eventSlideTimelineMeta.textContent = yearText;
-                                    eventSlideTimelineMeta.style.display = 'block';
-                                } else {
-                                    eventSlideTimelineMeta.style.display = 'none';
+                            } else {
+                                if (eventSlideLocation) eventSlideLocation.style.display = 'none';
+                                if (eventSlideTimelineMeta) eventSlideTimelineMeta.style.display = 'none';
+                                const relEl = document.getElementById('eventSlideRelevantLocations');
+                                const isBioSlide =
+                                    archiveSourceSlide === 'heroes'
+                                    || archiveSourceSlide === 'factions'
+                                    || archiveSourceSlide === 'npcs';
+                                if (isBioSlide && relEl) {
+                                    window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                        target
+                                    );
                                 }
                             }
                             
@@ -1548,7 +1679,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             // Setup variant toggles
                             if (variantToggles) {
                                 variantToggles.innerHTML = '';
-                                if (isMultiEvent && eventData.variants) {
+                                if (!isSatelliteArchive && isMultiEvent && eventData.variants) {
                                     variantToggles.style.display = 'flex';
                                     eventData.variants.forEach((variant, idx) => {
                                         const btn = document.createElement('button');
@@ -1601,8 +1732,12 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                             }
                                             
                                             // Update image for variant
-                                            const vImagePath = window.eventManager?.getEventImagePath 
-                                                ? window.eventManager.getEventImagePath(v.name, v.image)
+                                            const vImagePath = window.eventManager?.getEventImagePath
+                                                ? window.eventManager.getEventImagePath(
+                                                    v.name,
+                                                    v.image,
+                                                    !isSatelliteArchive ? 'story' : undefined
+                                                )
                                                 : v.image;
                                             if (vImagePath) {
                                                 this.showImageOverlay(vImagePath);
@@ -1645,6 +1780,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 eventSlideClose.onclick = () => {
                                     console.log('[eventSlideClose] Close button clicked (MenuHelpers)');
                                     this.cancelEdit();
+                                    this.clearSlideHistory();
                                     eventSlide.classList.remove('open');
                                     this.hideImageOverlay();
                                     
@@ -1690,9 +1826,24 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (isMobile && !imagePath && eventSlide) {
                                 eventSlide.classList.add('full-screen');
                             }
+
+                            this.updateBackButtonVisibility?.();
                         },
                         
                         updateSourcesAndFilters(event) {
+                            const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const showingDockStoryEvent = !!this._presentationFromDockTimeline;
+                            if (archiveSrc !== 'story' && !showingDockStoryEvent) {
+                                const ss = document.getElementById('eventSourcesSection');
+                                const fs = document.getElementById('eventFiltersSection');
+                                if (ss) ss.style.display = 'none';
+                                if (fs) fs.style.display = 'none';
+                                const lhEarly = window.LocationFlagHelpers;
+                                lhEarly?.clearStoryFilterPlacesSlideDom?.();
+                                // Do not clear relevant locations here: displaySlide already filled them for bio satellites;
+                                // clearing would wipe Ana (relevantLocations) right after render.
+                                return;
+                            }
                             // Update sources section
                             const sourcesSection = document.getElementById('eventSourcesSection');
                             const sourcesList = document.getElementById('eventSourcesList');
@@ -1735,247 +1886,106 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const filtersSection = document.getElementById('eventFiltersSection');
                             const filtersList = document.getElementById('eventFiltersList');
                             if (!filtersSection || !filtersList) return;
-                            
+
                             filtersList.innerHTML = '';
-                            
-                            const CATEGORY_ICON_HEROES = 'assets/images/icons/Heroes Icon.png';
-                            const CATEGORY_ICON_FACTIONS = 'assets/images/icons/Factions Icon.png';
-                            const CATEGORY_ICON_NPCS = 'assets/images/icons/NPC Icon.png';
+
                             const CATEGORY_ICON_COUNTRIES = 'assets/images/icons/Location Icon.png';
-                            
-                            const heroFilters = event?.filters || [];
-                            const npcFilters = event?.npcs || [];
-                            const factionFilters = event?.factions || [];
-                            
-                            // Collect country flags
-                            const countryFlags = [];
-                            if (event?.cityDisplayName) {
-                                const lh = window.LocationFlagHelpers;
-                                const flagFile = lh?.getResolvedFlagFilename?.(event.cityDisplayName, event.locationType || 'earth');
-                                if (flagFile) countryFlags.push(flagFile);
-                            }
-                            if (event?.secondaryCountryFlags?.length) {
-                                countryFlags.push(...event.secondaryCountryFlags);
-                            }
-                            
-                            // Category header helper
+
+                            const lh = window.LocationFlagHelpers;
+                            const countryFlags =
+                                lh && typeof lh.collectCountryFlagFilesForEntity === 'function'
+                                    ? lh.collectCountryFlagFilesForEntity(event)
+                                    : (() => {
+                                          const out = [];
+                                          if (event?.cityDisplayName) {
+                                              const flagFile = lh?.getResolvedFlagFilename?.(
+                                                  event.cityDisplayName,
+                                                  event.locationType || 'earth'
+                                              );
+                                              if (flagFile) out.push(flagFile);
+                                          }
+                                          if (event?.secondaryCountryFlags?.length) {
+                                              out.push(...event.secondaryCountryFlags);
+                                          }
+                                          return out;
+                                      })();
+                            const hasGroupedSecondary =
+                                lh && typeof lh.getSecondaryCountryPlacesRowsForDisplay === 'function'
+                                    ? lh.getSecondaryCountryPlacesRowsForDisplay(event).length > 0
+                                    : false;
+                            const showCountryChips = countryFlags.length > 0 && !hasGroupedSecondary;
+
                             const createHeader = (label, iconSrc) => {
                                 const h = document.createElement('h4');
                                 h.className = 'event-filter-header event-filter-header--category';
                                 h.innerHTML = `<img class="event-filter-header-icon" src="${iconSrc}" alt="" width="20" height="20" decoding="async"><span class="event-filter-header-label">${label}</span>`;
                                 return h;
                             };
-                            
-                            // Icon tag helper
-                            const createIconTag = (key, displayName, type) => {
+
+                            const createCountryIconTag = (key, displayName) => {
                                 const tag = document.createElement('span');
-                                tag.className = 'event-filter-tag event-filter-tag--icon event-filter-tag--clickable';
+                                tag.className = 'event-filter-tag event-filter-tag--icon event-filter-tag--clickable event-filter-tag--country';
                                 tag.title = displayName;
                                 tag.setAttribute('role', 'button');
                                 tag.tabIndex = 0;
-                                
+
+                                const em = window.eventManager;
+                                const countryFilters = em?.searchCountryFilters;
+                                if (Array.isArray(countryFilters) && countryFilters.includes(key)) {
+                                    tag.classList.add('selected');
+                                }
+
                                 const box = document.createElement('span');
                                 box.className = 'event-filter-image-container';
-                                
+
                                 const img = document.createElement('img');
-                                img.className = 'event-filter-icon';
+                                img.className = 'event-filter-icon event-filter-icon--country';
                                 img.alt = displayName;
                                 img.loading = 'lazy';
-                                
-                                if (type === 'factions') {
-                                    img.src = `assets/images/factions/${encodeURIComponent(key)}.png`;
-                                } else if (type === 'npcs') {
-                                    img.src = `assets/images/npcs/${encodeURIComponent(key)}.png`;
-                                } else if (type === 'countries') {
-                                    img.classList.add('event-filter-icon--country');
-                                    const lh = window.LocationFlagHelpers;
-                                    img.src = lh?.flagSrc?.(key) || `assets/images/flags/${encodeURIComponent(key)}`;
-                                } else {
-                                    img.src = `assets/images/heroes/${encodeURIComponent(key)}.png`;
-                                }
-                                
+                                img.src = lh?.flagSrc?.(key) || `assets/images/flags/${encodeURIComponent(key)}`;
+
                                 box.appendChild(img);
                                 tag.appendChild(box);
-                                
-                                // Check if this filter matches the active selection (green highlight)
-                                const activeFilters = window.standaloneActiveFilters || new Set();
-                                if (activeFilters.size > 0) {
-                                    let filterKey = type === 'heroes' ? `hero:${key}` 
-                                        : type === 'factions' ? `faction:${key}`
-                                        : type === 'npcs' ? `npc:${key}`
-                                        : `country:${key}`;
-                                    
-                                    // Also check without prefix for compatibility
-                                    if (activeFilters.has(filterKey) || activeFilters.has(key)) {
-                                        tag.classList.add('selected');
-                                    }
-                                }
-                                
-                                // Click handler to open Event Manager with search
+
                                 tag.addEventListener('click', (e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     const mgr = window.eventManager;
                                     if (!mgr?.prependEventManagerSearchTokens || !mgr.openEventsManagePanel) return;
-                                    
-                                    if (type === 'heroes') {
-                                        mgr.prependEventManagerSearchTokens({ heroName: key });
-                                    } else if (type === 'factions') {
-                                        mgr.prependEventManagerSearchTokens({ factionFilename: key });
-                                    } else if (type === 'npcs') {
-                                        mgr.prependEventManagerSearchTokens({ npcName: key });
-                                    } else if (type === 'countries') {
-                                        mgr.prependEventManagerSearchTokens({ countryFlagFilename: key });
-                                    }
+                                    mgr.prependEventManagerSearchTokens({ countryFlagFilename: key });
                                     mgr.openEventsManagePanel();
                                     window.SoundEffectsManager?.play?.('filterConfirm');
                                 });
-                                
+
                                 tag.addEventListener('keydown', (e) => {
                                     if (e.key === 'Enter' || e.key === ' ') {
                                         e.preventDefault();
                                         tag.click();
                                     }
                                 });
-                                
+
                                 return tag;
                             };
-                            
-                            // Render heroes
-                            if (heroFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant Heroes:', CATEGORY_ICON_HEROES));
-                                heroFilters.forEach(hero => {
-                                    if (hero) filtersList.appendChild(createIconTag(hero, hero, 'heroes'));
-                                });
-                            }
-                            
-                            // Render NPCs
-                            if (npcFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant NPCs:', CATEGORY_ICON_NPCS));
-                                npcFilters.forEach(npc => {
-                                    if (npc) filtersList.appendChild(createIconTag(npc, npc, 'npcs'));
-                                });
-                            }
-                            
-                            // Render factions (with filename resolution)
-                            if (factionFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant Factions:', CATEGORY_ICON_FACTIONS));
-                                factionFilters.forEach(faction => {
-                                    const resolved = this.resolveFactionFilename(faction);
-                                    if (resolved) {
-                                        filtersList.appendChild(createIconTag(resolved, faction, 'factions'));
-                                    }
-                                });
-                            }
-                            
-                            // Render countries
-                            if (countryFlags.length > 0) {
+
+                            if (showCountryChips) {
                                 filtersList.appendChild(createHeader('Relevant Countries:', CATEGORY_ICON_COUNTRIES));
-                                countryFlags.forEach(flagFile => {
+                                countryFlags.forEach((flagFile) => {
                                     const label = this.getCountryLabel(flagFile);
-                                    if (flagFile) filtersList.appendChild(createIconTag(flagFile, label, 'countries'));
+                                    if (flagFile) filtersList.appendChild(createCountryIconTag(flagFile, label));
                                 });
                             }
-                            
-                            filtersSection.style.display = filtersList.children.length > 0 ? 'block' : 'none';
+
+                            if (hasGroupedSecondary) {
+                                lh?.updateRelevantLocationsSlideFromSecondaryPlaces?.(event);
+                            } else {
+                                lh?.clearRelevantLocationsSlideDom?.();
+                            }
+
+                            lh?.updateStoryFilterPlacesSlideFromEvent?.(event);
+
+                            filtersSection.style.display = showCountryChips ? 'block' : 'none';
                         },
-                        
-                        resolveFactionFilename(rawFaction) {
-                            if (!rawFaction) return null;
-                            const raw = String(rawFaction).trim();
-                            if (!raw) return null;
-                            
-                            // Get factions list
-                            const em = window.eventManager;
-                            const factions = em?.factions || [];
-                            
-                            // Try to find matching faction
-                            const normalize = (s) => String(s || '').trim().toLowerCase().replace(/[\s_-]+/g, '');
-                            const rawNorm = normalize(raw);
-                            
-                            for (const f of factions) {
-                                const filename = String(f.filename || '').trim();
-                                const displayName = String(f.displayName || '').trim();
-                                
-                                // Direct match on filename
-                                if (normalize(filename) === rawNorm) {
-                                    return filename;
-                                }
-                                
-                                // Match on display name
-                                if (normalize(displayName) === rawNorm) {
-                                    return filename;
-                                }
-                                
-                                // Match bare filename (without leading digits) against raw
-                                const bareFilename = filename.replace(/^\d+/, '').trim().toLowerCase();
-                                if (normalize(bareFilename) === rawNorm) {
-                                    return filename;
-                                }
-                                
-                                // Match display name without leading digits
-                                const bareDisplay = displayName.replace(/^\d+/, '').trim().toLowerCase();
-                                if (normalize(bareDisplay) === rawNorm) {
-                                    return filename;
-                                }
-                                
-                                // Check if raw is contained in display name (for partial matches like "Vishkar" in "Vishkar Corporation")
-                                if (normalize(displayName).includes(rawNorm)) {
-                                    return filename;
-                                }
-                                
-                                // Check if raw matches start of display name
-                                const displayNorm = normalize(displayName);
-                                if (displayNorm.startsWith(rawNorm)) {
-                                    return filename;
-                                }
-                            }
-                            
-                            // Legacy mapping for common faction names
-                            const legacyMap = {
-                                'vishkar': '05Vishkar Corporation',
-                                'volskaya': '11Volskaya Industries',
-                                'omnica': '04Omnica Corporation',
-                                'crisis': '12The Anubis Omnic Crisis',
-                                'lucheng': '07Lucheng Interstellar',
-                                'shimada': '21Shimada Clan',
-                                'ironclad': '08Ironclad Guild',
-                                'shambali': '25Shambali Order',
-                                'lumerico': '13Lumérico Incorporated',
-                                'deadlock': '14Deadlock Rebels',
-                                'talon': '03Talon Empire',
-                                'overwatch': '01Overwatch',
-                                'nullsector': '26Null Sector',
-                                'blackwatch': '02Blackwatch',
-                                'junkers': '16Junker Monarchy',
-                                'wayfinders': '19Wayfinder Society',
-                                'conspiracy': '23The Chernobog Conspiracy',
-                                'hashimoto': '22Hashimoto Clan',
-                                'yokai': '32Yokai Gang',
-                                'phreaks': '29The Phreaks',
-                                'collective': '27The Martins Collective',
-                                'meka': '30M.E.K.A Squad',
-                                'oasis': '24Oasis Ministries',
-                                'crusaders': '09Crusader Initiative'
-                            };
-                            
-                            const bareName = raw.replace(/^\d+/, '').toLowerCase().replace(/[\s_-]+/g, '');
-                            if (legacyMap[bareName]) {
-                                return legacyMap[bareName];
-                            }
-                            
-                            // If no match, try to find in factions list by partial match
-                            for (const f of factions) {
-                                const displayName = String(f.displayName || '').trim().toLowerCase();
-                                if (displayName.includes(bareName)) {
-                                    return f.filename;
-                                }
-                            }
-                            
-                            // Return raw as last resort
-                            return raw;
-                        },
-                        
+
                         getCountryLabel(flagFile) {
                             const map = window.FLAG_FILE_BY_COMMON;
                             if (map) {
@@ -2026,6 +2036,12 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             this.isEditing = true;
                             this.editTarget = { eventData, displayEvent };
                             this.originalState = JSON.parse(JSON.stringify(eventData));
+
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSourceEdit = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+                            const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceEdit !== 'story';
                             
                             // Initialize variant index
                             const isMulti = Array.isArray(eventData.variants) && eventData.variants.length > 0;
@@ -2039,7 +2055,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             // Add editing class
                             eventSlide?.classList.add('event-slide--inline-editing');
                             const orderRow = document.getElementById('eventSlideOrderRow');
-                            if (orderRow) {
+                            if (!isSatelliteArchive && orderRow) {
                                 orderRow.removeAttribute('hidden');
                                 orderRow.setAttribute('aria-hidden', 'false');
                             }
@@ -2060,11 +2076,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 editor = this.createInlineEditor();
                                 eventSlideScrollable?.insertBefore(editor, eventSlideScrollable.firstChild);
                             }
-                            editor.style.display = 'block';
+                            editor.style.display = isSatelliteArchive ? 'none' : 'block';
                             
                             // Move description element into the description container
                             const descContainer = document.getElementById('eventSlideEditDescriptionContainer');
-                            if (descContainer && textEl) {
+                            if (!isSatelliteArchive && descContainer && textEl) {
                                 // Store original parent for restoration
                                 this.descriptionOriginalParent = textEl.parentNode;
                                 this.descriptionOriginalNextSibling = textEl.nextSibling;
@@ -2072,19 +2088,88 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             }
                             
                             // Populate editor fields
-                            this.populateInlineEditor(eventData, displayEvent);
+                            if (!isSatelliteArchive) {
+                                this.populateInlineEditor(eventData, displayEvent);
+                            }
                             
                             // Enable predictive/autocomplete behavior (same service used in EventManager edit modal)
                             const filtersInput = document.getElementById('eventSlideEditFilters');
                             const factionsInput = document.getElementById('eventSlideEditFactions');
                             const npcsInput = document.getElementById('eventSlideEditNpcs');
-                            const secondaryCountriesInput = document.getElementById('eventSlideEditSecondaryCountries');
                             
+                            const relElHero = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionHero = document.getElementById('eventRelevantLocationsSection');
+                            const heroLocEdit = document.getElementById('eventSlideHeroLocationsEdit');
+                            const locContainer = document.getElementById('eventSlideEditRelevantLocations');
+                            const isBioEdit =
+                                archiveSourceEdit === 'heroes'
+                                || archiveSourceEdit === 'factions'
+                                || archiveSourceEdit === 'npcs';
+                            if (isSatelliteArchive && isBioEdit) {
+                                if (relElHero) {
+                                    relElHero.innerHTML = '';
+                                }
+                                if (relSectionHero) relSectionHero.style.display = 'none';
+                                if (heroLocEdit && locContainer && window.HeroRelevantLocationsEditor?.render) {
+                                    heroLocEdit.removeAttribute('hidden');
+                                    heroLocEdit.style.display = 'block';
+                                    const locs = Array.isArray(this.editTarget?.eventData?.relevantLocations)
+                                        ? this.editTarget.eventData.relevantLocations
+                                        : [];
+                                    window.HeroRelevantLocationsEditor.render(locContainer, locs);
+                                    const addBtn = document.getElementById('eventSlideAddRelevantLocationBtn');
+                                    if (addBtn) {
+                                        addBtn.onclick = () =>
+                                            window.HeroRelevantLocationsEditor?.addRow?.();
+                                    }
+                                }
+                            } else if (heroLocEdit) {
+                                heroLocEdit.setAttribute('hidden', '');
+                                heroLocEdit.style.display = 'none';
+                            }
+
+                            const addSecPlacesBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');
+                            if (!isSatelliteArchive && addSecPlacesBtn && window.HeroRelevantLocationsEditor?.addRow) {
+                                addSecPlacesBtn.onclick = () =>
+                                    window.HeroRelevantLocationsEditor.addRow({
+                                        containerId: 'eventSlideEditSecondaryCountryPlaces',
+                                        placeholders: STORY_SECONDARY_PLACES_EDITOR_OPTS.placeholders,
+                                        autocompleteType: STORY_SECONDARY_PLACES_EDITOR_OPTS.autocompleteType
+                                    });
+                                const addHeroFp = document.getElementById('eventSlideAddHeroFilterPlaceBtn');
+                                if (addHeroFp) {
+                                    addHeroFp.onclick = () =>
+                                        window.HeroRelevantLocationsEditor.addRow({
+                                            containerId: 'eventSlideEditHeroFilterPlaces',
+                                            placeholders: STORY_HERO_FILTER_PLACES_OPTS.placeholders,
+                                            autocompleteType: STORY_HERO_FILTER_PLACES_OPTS.autocompleteType
+                                        });
+                                }
+                                const addFactionFp = document.getElementById('eventSlideAddFactionFilterPlaceBtn');
+                                if (addFactionFp) {
+                                    addFactionFp.onclick = () =>
+                                        window.HeroRelevantLocationsEditor.addRow({
+                                            containerId: 'eventSlideEditFactionFilterPlaces',
+                                            placeholders: STORY_FACTION_FILTER_PLACES_OPTS.placeholders,
+                                            autocompleteType: STORY_FACTION_FILTER_PLACES_OPTS.autocompleteType
+                                        });
+                                }
+                                const addNpcFp = document.getElementById('eventSlideAddNpcFilterPlaceBtn');
+                                if (addNpcFp) {
+                                    addNpcFp.onclick = () =>
+                                        window.HeroRelevantLocationsEditor.addRow({
+                                            containerId: 'eventSlideEditNpcFilterPlaces',
+                                            placeholders: STORY_NPC_FILTER_PLACES_OPTS.placeholders,
+                                            autocompleteType: STORY_NPC_FILTER_PLACES_OPTS.autocompleteType
+                                        });
+                                }
+                            }
+
+                            if (!isSatelliteArchive) {
                             // Reset setup flag each time we enter edit mode so options stay in sync
                             if (filtersInput) filtersInput.dataset.autocompleteSetup = 'false';
                             if (factionsInput) factionsInput.dataset.autocompleteSetup = 'false';
                             if (npcsInput) npcsInput.dataset.autocompleteSetup = 'false';
-                            if (secondaryCountriesInput) secondaryCountriesInput.dataset.autocompleteSetup = 'false';
                             
                             const auto = window.eventManager?.formService?.autocompleteService || window.EventFormService?.autocompleteService;
                             if (auto && typeof auto.setupAutocomplete === 'function') {
@@ -2093,17 +2178,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 const factionList = window.eventManager?.factions?.length
                                     ? window.eventManager.factions
                                     : (window.globeController?.dataModel?.factions || []);
-                                const countryOptions = window.LocationFlagHelpers
-                                    && typeof window.LocationFlagHelpers.getCountryCommonNamesForAutocomplete === 'function'
-                                    ? window.LocationFlagHelpers.getCountryCommonNamesForAutocomplete()
-                                    : [];
                                 
                                 if (filtersInput) auto.setupAutocomplete(filtersInput, heroes, 'heroes');
                                 if (factionsInput) auto.setupAutocomplete(factionsInput, factionList, 'factions');
                                 if (npcsInput && npcList.length > 0) auto.setupAutocomplete(npcsInput, npcList, 'npcs');
-                                if (secondaryCountriesInput && countryOptions.length > 0) {
-                                    auto.setupAutocomplete(secondaryCountriesInput, countryOptions, 'countries');
-                                }
+                            }
                             }
                             
                             // Update buttons
@@ -2184,20 +2263,36 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     <label class="event-slide-inline-editor__label">Description</label>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label" for="eventSlideEditFilters">Heroes (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditFilters" type="text" spellcheck="false" autocomplete="off" />
+                                    <div class="event-slide-inline-editor__label">Relevant countries &amp; places (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Add one row per group. Reorder with ↑ / ↓. Each row: group label, countries (comma-separated for multiple flags), and why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddSecondaryCountryPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditSecondaryCountryPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Secondary country groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label" for="eventSlideEditFactions">Factions (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditFactions" type="text" spellcheck="false" autocomplete="off" />
+                                    <div class="event-slide-inline-editor__label">Relevant heroes (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Same pattern as countries: group label, comma-separated heroes, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddHeroFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditHeroFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Hero groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label" for="eventSlideEditNpcs">NPCs (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditNpcs" type="text" spellcheck="false" autocomplete="off" />
+                                    <div class="event-slide-inline-editor__label">Relevant factions (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Group label, comma-separated factions, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddFactionFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditFactionFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Faction groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label" for="eventSlideEditSecondaryCountries">Secondary countries (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditSecondaryCountries" type="text" spellcheck="false" autocomplete="off" placeholder="Also match country filter (optional)" />
+                                    <div class="event-slide-inline-editor__label">Relevant NPCs (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Group label, comma-separated NPCs, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddNpcFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditNpcFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="NPC groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
                                     <label class="event-slide-inline-editor__label" for="eventSlideEditHeadlines">Headlines (one per line)</label>
@@ -2275,7 +2370,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         
                         populateInlineEditor(eventData, displayEvent) {
                             const target = displayEvent || eventData;
-                            
+                            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const isBioPop =
+                                archPop === 'heroes' || archPop === 'factions' || archPop === 'npcs';
+
                             // Set field values
                             const cityInput = document.getElementById('eventSlideEditCityDisplayName');
                             const cityLookupInput = document.getElementById('eventSlideEditCityLookup');
@@ -2285,7 +2383,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const filtersInput = document.getElementById('eventSlideEditFilters');
                             const factionsInput = document.getElementById('eventSlideEditFactions');
                             const npcsInput = document.getElementById('eventSlideEditNpcs');
-                            const secondaryCountriesInput = document.getElementById('eventSlideEditSecondaryCountries');
                             const headlinesInput = document.getElementById('eventSlideEditHeadlines');
                             const locationTypeInput = document.getElementById('eventSlideEditLocationType');
                             const latInput = document.getElementById('eventSlideEditLat');
@@ -2302,13 +2399,56 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (factionsInput) factionsInput.value = (target.factions || []).join(', ');
                             if (npcsInput) npcsInput.value = (target.npcs || []).join(', ');
                             
-                            const formSvc = window.eventManager?.formService || window.EventFormService;
-                            if (secondaryCountriesInput) {
-                                secondaryCountriesInput.value = formSvc && typeof formSvc.secondaryFlagsToFormString === 'function'
-                                    ? formSvc.secondaryFlagsToFormString(target.secondaryCountryFlags)
-                                    : '';
+                            const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+                            if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
+                                const places = isBioPop
+                                    ? (Array.isArray(target.relevantLocations) ? target.relevantLocations : [])
+                                    : (Array.isArray(target.secondaryCountryPlaces) ? target.secondaryCountryPlaces : []);
+                                const opts = isBioPop
+                                    ? {
+                                          placeholders: {
+                                              locationName: 'Location / group label',
+                                              country: 'Countries (comma-separated for multiple flags)',
+                                              reasoning: 'Relevance (e.g. headquarters, place of origin)'
+                                          },
+                                          autocompleteType: 'countries'
+                                      }
+                                    : STORY_SECONDARY_PLACES_EDITOR_OPTS;
+                                window.HeroRelevantLocationsEditor.render(secPlacesEl, places, opts);
                             }
-                            
+
+                            const heroFpEl = document.getElementById('eventSlideEditHeroFilterPlaces');
+                            const factionFpEl = document.getElementById('eventSlideEditFactionFilterPlaces');
+                            const npcFpEl = document.getElementById('eventSlideEditNpcFilterPlaces');
+                            if (
+                                heroFpEl &&
+                                factionFpEl &&
+                                npcFpEl &&
+                                window.HeroRelevantLocationsEditor?.render
+                            ) {
+                                if (!isBioPop) {
+                                    window.HeroRelevantLocationsEditor.render(
+                                        heroFpEl,
+                                        heroPlacesForEditor(target),
+                                        STORY_HERO_FILTER_PLACES_OPTS
+                                    );
+                                    window.HeroRelevantLocationsEditor.render(
+                                        factionFpEl,
+                                        factionPlacesForEditor(target),
+                                        STORY_FACTION_FILTER_PLACES_OPTS
+                                    );
+                                    window.HeroRelevantLocationsEditor.render(
+                                        npcFpEl,
+                                        npcPlacesForEditor(target),
+                                        STORY_NPC_FILTER_PLACES_OPTS
+                                    );
+                                } else {
+                                    heroFpEl.innerHTML = '';
+                                    factionFpEl.innerHTML = '';
+                                    npcFpEl.innerHTML = '';
+                                }
+                            }
+
                             if (headlinesInput) headlinesInput.value = (target.headlines || []).join('\n');
 
                             const emList = window.eventManager;
@@ -2498,6 +2638,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     sources: undefined,
                                     headlines: undefined,
                                     locationType: lt,
+                                    secondaryCountryPlaces: [],
+                                    heroFilterPlaces: [],
+                                    factionFilterPlaces: [],
+                                    npcFilterPlaces: []
                                 };
                                 if (lt === 'earth') {
                                     nv.lat = last?.lat;
@@ -2615,9 +2759,28 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (yearStartInput) target.yearStart = yearStartInput.value;
                             if (yearEndInput) target.yearEnd = yearEndInput.value;
                             if (eraInput) target.eraName = eraInput.value;
-                            if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(s => s);
-                            if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(s => s);
-                            if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(s => s);
+                            const heroFpElSv = document.getElementById('eventSlideEditHeroFilterPlaces');
+                            if (heroFpElSv && window.HeroRelevantLocationsEditor?.collect) {
+                                const hr = window.HeroRelevantLocationsEditor.collect(heroFpElSv);
+                                const fr = window.HeroRelevantLocationsEditor.collect(
+                                    document.getElementById('eventSlideEditFactionFilterPlaces')
+                                );
+                                const nr = window.HeroRelevantLocationsEditor.collect(
+                                    document.getElementById('eventSlideEditNpcFilterPlaces')
+                                );
+                                applyStoryFilterPlacesToTarget(target, hr, fr, nr);
+                            } else {
+                                if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(s => s);
+                                if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(s => s);
+                                if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(s => s);
+                            }
+                            const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+                            const places =
+                                window.HeroRelevantLocationsEditor?.collect?.(secPlacesEl) ?? [];
+                            target.secondaryCountryPlaces = places;
+                            if (window.LocationFlagHelpers?.syncSecondaryCountryFlagsOnEntity) {
+                                window.LocationFlagHelpers.syncSecondaryCountryFlagsOnEntity(target);
+                            }
                             if (headlinesInput) target.headlines = headlinesInput.value.split('\n').map(s => s.trim()).filter(s => s);
                             if (locationTypeInput) target.locationType = locationTypeInput.value;
                             if (latInput) target.lat = parseFloat(latInput.value) || null;
@@ -2644,9 +2807,23 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 lon: eventData.lon,
                                 x: eventData.x,
                                 y: eventData.y,
-                                locationType: eventData.locationType
+                                locationType: eventData.locationType,
+                                secondaryCountryFlags: Array.isArray(eventData.secondaryCountryFlags)
+                                    ? [...eventData.secondaryCountryFlags]
+                                    : undefined,
+                                secondaryCountryPlaces: Array.isArray(eventData.secondaryCountryPlaces)
+                                    ? eventData.secondaryCountryPlaces.map((p) => ({
+                                          locationName: p.locationName,
+                                          country: p.country,
+                                          reasoning: p.reasoning
+                                      }))
+                                    : [],
+                                ...copyFilterPlaceArraysFromSource(eventData)
                             };
                             eventData.variants = [firstVariant];
+                            delete eventData.heroFilterPlaces;
+                            delete eventData.factionFilterPlaces;
+                            delete eventData.npcFilterPlaces;
                         },
                         
                         collapseMultiToSingleRoot(eventData, keepVariant) {
@@ -2667,6 +2844,23 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             eventData.x = keepVariant.x;
                             eventData.y = keepVariant.y;
                             eventData.locationType = keepVariant.locationType;
+                            eventData.secondaryCountryFlags = Array.isArray(keepVariant.secondaryCountryFlags)
+                                ? [...keepVariant.secondaryCountryFlags]
+                                : undefined;
+                            eventData.secondaryCountryPlaces = Array.isArray(keepVariant.secondaryCountryPlaces)
+                                ? keepVariant.secondaryCountryPlaces.map((p) => ({
+                                      locationName: p.locationName,
+                                      country: p.country,
+                                      reasoning: p.reasoning
+                                  }))
+                                : [];
+                            const fp = copyFilterPlaceArraysFromSource(keepVariant);
+                            if (fp.heroFilterPlaces.length) eventData.heroFilterPlaces = fp.heroFilterPlaces;
+                            else delete eventData.heroFilterPlaces;
+                            if (fp.factionFilterPlaces.length) eventData.factionFilterPlaces = fp.factionFilterPlaces;
+                            else delete eventData.factionFilterPlaces;
+                            if (fp.npcFilterPlaces.length) eventData.npcFilterPlaces = fp.npcFilterPlaces;
+                            else delete eventData.npcFilterPlaces;
                             delete eventData.variants;
                         },
                         
@@ -2723,6 +2917,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     orderRowIdle.setAttribute('hidden', '');
                                     orderRowIdle.setAttribute('aria-hidden', 'true');
                                 }
+                                const heroIdle = document.getElementById('eventSlideHeroLocationsEdit');
+                                if (heroIdle) {
+                                    heroIdle.setAttribute('hidden', '');
+                                    heroIdle.style.display = 'none';
+                                }
                                 return;
                             }
                             
@@ -2772,6 +2971,25 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
 
                             if (eb) eb.textContent = 'Edit';
                             if (sb) sb.style.display = 'none';
+
+                            const heroLocEditCancel = document.getElementById('eventSlideHeroLocationsEdit');
+                            if (heroLocEditCancel) {
+                                heroLocEditCancel.setAttribute('hidden', '');
+                                heroLocEditCancel.style.display = 'none';
+                            }
+                            const archiveSrcAfterCancel =
+                                window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const relAfterCancel = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionAfterCancel = document.getElementById('eventRelevantLocationsSection');
+                            const isBioAfterCancel =
+                                archiveSrcAfterCancel === 'heroes'
+                                || archiveSrcAfterCancel === 'factions'
+                                || archiveSrcAfterCancel === 'npcs';
+                            if (relAfterCancel && isBioAfterCancel && this.editTarget?.eventData) {
+                                window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                    this.editTarget.eventData
+                                );
+                            }
                             
                             this.isEditing = false;
                             this.editTarget = null;
@@ -2780,6 +2998,86 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         
                         saveFullEdit(eventData, editBtn, saveBtn) {
                             if (!this.isEditing || !this.editTarget) return;
+
+                            const archiveSource = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const titleElEarly = document.getElementById('eventSlideTitle');
+                            const textElEarly = document.getElementById('eventSlideText');
+
+                            if (archiveSource !== 'story') {
+                                const cleanName = (titleElEarly?.textContent || '').trim();
+                                const cleanDesc = (textElEarly?.innerHTML || '').trim();
+                                const em = window.eventManager;
+                                const locContainer = document.getElementById('eventSlideEditRelevantLocations');
+                                const isBioSave =
+                                    archiveSource === 'heroes'
+                                    || archiveSource === 'factions'
+                                    || archiveSource === 'npcs';
+                                const relevantLocations = isBioSave
+                                    ? window.HeroRelevantLocationsEditor?.collect(locContainer) ?? []
+                                    : undefined;
+                                const normalized = isBioSave
+                                    ? { name: cleanName, description: cleanDesc, relevantLocations }
+                                    : { name: cleanName, description: cleanDesc };
+                                if (em?.events) {
+                                    const idx = em.events.indexOf(this.editTarget.eventData);
+                                    if (idx >= 0) {
+                                        em.events[idx] = normalized;
+                                        em.unsavedEventIndices?.add(idx);
+                                    }
+                                    this.currentEventData = normalized;
+                                    this.editTarget.eventData = normalized;
+                                }
+                                em?.dataService?.saveEvents?.();
+
+                                if (titleElEarly) {
+                                    titleElEarly.contentEditable = 'false';
+                                    titleElEarly.removeAttribute('spellcheck');
+                                }
+                                if (textElEarly) {
+                                    textElEarly.contentEditable = 'false';
+                                    textElEarly.removeAttribute('spellcheck');
+                                }
+                                if (this.descriptionOriginalParent && textElEarly) {
+                                    const originalParent = this.descriptionOriginalParent;
+                                    const originalNextSibling = this.descriptionOriginalNextSibling;
+                                    if (originalNextSibling) {
+                                        originalParent.insertBefore(textElEarly, originalNextSibling);
+                                    } else {
+                                        originalParent.appendChild(textElEarly);
+                                    }
+                                    this.descriptionOriginalParent = null;
+                                    this.descriptionOriginalNextSibling = null;
+                                }
+                                document.getElementById('eventSlideInlineEditor')?.style && (document.getElementById('eventSlideInlineEditor').style.display = 'none');
+                                document.getElementById('eventSlide')?.classList.remove('event-slide--inline-editing');
+                                const orderRowSat = document.getElementById('eventSlideOrderRow');
+                                if (orderRowSat) {
+                                    orderRowSat.setAttribute('hidden', '');
+                                    orderRowSat.setAttribute('aria-hidden', 'true');
+                                }
+                                if (editBtn) editBtn.textContent = 'Edit';
+                                if (saveBtn) saveBtn.style.display = 'none';
+                                this.isEditing = false;
+                                this.editTarget = null;
+                                this.originalState = null;
+                                this.updateSourcesAndFilters(normalized);
+                                this.allEvents = window.eventManager?.events || [];
+                                // Dock is main-timeline only; satellite saves do not change it — avoid dock thumb/page-turn refresh
+                                if (window.eventManager?.renderEvents) window.eventManager.renderEvents();
+                                const heroLocEditSaved = document.getElementById('eventSlideHeroLocationsEdit');
+                                if (heroLocEditSaved) {
+                                    heroLocEditSaved.setAttribute('hidden', '');
+                                    heroLocEditSaved.style.display = 'none';
+                                }
+                                const relSaved = document.getElementById('eventSlideRelevantLocations');
+                                if (isBioSave && relSaved) {
+                                    window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                        normalized
+                                    );
+                                }
+                                if (window.SoundEffectsManager?.play) window.SoundEffectsManager.play('save');
+                                return;
+                            }
                             
                             // Save current variant data before saving
                             this.saveCurrentVariantData();
@@ -2795,7 +3093,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const filtersInput = document.getElementById('eventSlideEditFilters');
                             const factionsInput = document.getElementById('eventSlideEditFactions');
                             const npcsInput = document.getElementById('eventSlideEditNpcs');
-                            const secondaryCountriesInput = document.getElementById('eventSlideEditSecondaryCountries');
                             const headlinesInput = document.getElementById('eventSlideEditHeadlines');
                             const locationTypeInput = document.getElementById('eventSlideEditLocationType');
                             const latInput = document.getElementById('eventSlideEditLat');
@@ -2813,60 +3110,30 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (yearStartInput) target.yearStart = parseInt(yearStartInput.value) || target.yearStart;
                                 if (yearEndInput) target.yearEnd = parseInt(yearEndInput.value) || null;
                                 if (eraInput) target.eraName = eraInput.value || null;
-                                if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(Boolean);
-                                if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(Boolean);
-                                if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(Boolean);
-                                
-                                const formSvc = window.eventManager?.formService || window.EventFormService;
-                                const locTypeForSecondary = target.locationType || eventData.locationType || 'earth';
-                                console.log('[MenuHelpers] secondaryCountriesInput:', secondaryCountriesInput);
-                                console.log('[MenuHelpers] secondaryCountriesInput.value:', secondaryCountriesInput?.value);
-                                console.log('[MenuHelpers] formSvc:', formSvc);
-                                console.log('[MenuHelpers] parseSecondaryCountryList function:', formSvc?.parseSecondaryCountryList);
-                                if (secondaryCountriesInput && formSvc && typeof formSvc.parseSecondaryCountryList === 'function') {
-                                    const parsed = formSvc.parseSecondaryCountryList(secondaryCountriesInput.value, locTypeForSecondary);
-                                    console.log('[MenuHelpers] Parsed secondary countries:', parsed);
-                                    target.secondaryCountryFlags = parsed;
-                                } else if (secondaryCountriesInput) {
-                                    // Fallback: parse secondary countries manually
-                                    const rawValue = secondaryCountriesInput.value.trim();
-                                    console.log('[MenuHelpers] Raw value:', rawValue);
-                                    if (rawValue) {
-                                        const lh = window.LocationFlagHelpers;
-                                        const countryNames = rawValue.split(',').map(s => s.trim()).filter(Boolean);
-                                        console.log('[MenuHelpers] Country names:', countryNames);
-                                        const flagFiles = countryNames.map(name => {
-                                            console.log('[MenuHelpers] Resolving country:', name);
-                                            if (lh && typeof lh.getResolvedFlagFilename === 'function') {
-                                                const resolved = lh.getResolvedFlagFilename(name, locTypeForSecondary);
-                                                console.log('[MenuHelpers] getResolvedFlagFilename returned:', resolved);
-                                                if (resolved) return resolved;
-                                            }
-                                            // Fallback: try to find in FLAG_FILE_BY_COMMON
-                                            const commonMap = window.FLAG_FILE_BY_COMMON;
-                                            console.log('[MenuHelpers] FLAG_FILE_BY_COMMON:', commonMap ? 'exists' : 'missing');
-                                            if (commonMap) {
-                                                for (const [common, file] of Object.entries(commonMap)) {
-                                                    if (common.toLowerCase() === name.toLowerCase()) {
-                                                        console.log('[MenuHelpers] Found in FLAG_FILE_BY_COMMON:', file);
-                                                        return file;
-                                                    }
-                                                }
-                                            }
-                                            // Last resort: assume it's already a filename
-                                            const fallback = name.endsWith('.png') ? name : `${name}.png`;
-                                            console.log('[MenuHelpers] Using fallback filename:', fallback);
-                                            return fallback;
-                                        }).filter(Boolean);
-                                        console.log('[MenuHelpers] Fallback parsed secondary countries:', flagFiles);
-                                        target.secondaryCountryFlags = flagFiles;
-                                    } else {
-                                        target.secondaryCountryFlags = [];
-                                    }
+                                const heroFpSave = document.getElementById('eventSlideEditHeroFilterPlaces');
+                                if (heroFpSave && window.HeroRelevantLocationsEditor?.collect) {
+                                    const hr = window.HeroRelevantLocationsEditor.collect(heroFpSave);
+                                    const fr = window.HeroRelevantLocationsEditor.collect(
+                                        document.getElementById('eventSlideEditFactionFilterPlaces')
+                                    );
+                                    const nr = window.HeroRelevantLocationsEditor.collect(
+                                        document.getElementById('eventSlideEditNpcFilterPlaces')
+                                    );
+                                    applyStoryFilterPlacesToTarget(target, hr, fr, nr);
                                 } else {
-                                    console.error('[MenuHelpers] Cannot save secondary countries - missing input');
+                                    if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(Boolean);
+                                    if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(Boolean);
+                                    if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(Boolean);
                                 }
-                                
+
+                                const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+                                const places =
+                                    window.HeroRelevantLocationsEditor?.collect?.(secPlacesEl) ?? [];
+                                target.secondaryCountryPlaces = places;
+                                if (window.LocationFlagHelpers?.syncSecondaryCountryFlagsOnEntity) {
+                                    window.LocationFlagHelpers.syncSecondaryCountryFlagsOnEntity(target);
+                                }
+
                                 if (headlinesInput) target.headlines = headlinesInput.value.split('\n').map(s => s.trim()).filter(Boolean);
                                 
                                 // Save location type and coordinates
@@ -3010,7 +3277,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     const newIndex = this.currentEventIndex > 0 
                                         ? this.currentEventIndex - 1 
                                         : this.allEvents.length - 1;
-                                    this.showEvent(newIndex);
+                                    const list = this.allEvents?.length
+                                        ? this.allEvents
+                                        : (window.eventManager?.getDockTimelineEvents?.() || []);
+                                    const keepHist = (this._slideHistoryStack?.length || 0) > 0;
+                                    this.showEvent(newIndex, { eventList: list, keepSlideHistory: keepHist });
                                     if (window.SoundEffectsManager?.play) {
                                         window.SoundEffectsManager.play('switchEvent');
                                     }
@@ -3023,7 +3294,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     const newIndex = this.currentEventIndex < this.allEvents.length - 1 
                                         ? this.currentEventIndex + 1 
                                         : 0;
-                                    this.showEvent(newIndex);
+                                    const list = this.allEvents?.length
+                                        ? this.allEvents
+                                        : (window.eventManager?.getDockTimelineEvents?.() || []);
+                                    const keepHist = (this._slideHistoryStack?.length || 0) > 0;
+                                    this.showEvent(newIndex, { eventList: list, keepSlideHistory: keepHist });
                                     if (window.SoundEffectsManager?.play) {
                                         window.SoundEffectsManager.play('switchEvent');
                                     }
@@ -3145,6 +3420,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             
                             // Only play sound if panel was actually open
                             const wasOpen = eventSlide?.classList.contains('open');
+                            if (wasOpen) {
+                                this.clearSlideHistory();
+                            }
                             
                             if (eventSlide) {
                                 eventSlide.classList.remove('open');
@@ -3180,20 +3458,19 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             
                             if (!prevBtn || !nextBtn) return;
                             
-                            // Get data from eventManager (same as Event Manager panel uses)
-                            const events = window.eventManager?.events || [];
+                            const getDockEvents = () => window.eventManager?.getDockTimelineEvents?.() || [];
                             const eventsPerPage = 10; // Globe uses 10 events per page
                             
-                            if (!events.length) {
-                                console.warn('MenuHelpers: No events available for pagination');
+                            if (!getDockEvents().length) {
+                                console.warn('MenuHelpers: No dock timeline events available for pagination');
                                 return;
                             }
                             
-                            console.log('MenuHelpers: Setting up pagination with', events.length, 'events');
+                            console.log('MenuHelpers: Setting up pagination with', getDockEvents().length, 'dock story events');
                             
                             // Calculate total pages
                             const getTotalPages = () => {
-                                const currentEvents = window.eventManager?.events || events;
+                                const currentEvents = getDockEvents();
                                 return Math.max(1, Math.ceil(currentEvents.length / eventsPerPage));
                             };
                             
@@ -3212,9 +3489,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             
                             // Get events for a specific page (mimics DataModel.getEventsForCurrentPage)
                             const getEventsForPage = (pageNum) => {
+                                const ev = getDockEvents();
                                 const start = (pageNum - 1) * eventsPerPage;
                                 const end = start + eventsPerPage;
-                                return events.slice(start, end);
+                                return ev.slice(start, end);
                             };
                             
                             // Generate slider ticks matching globe implementation
@@ -3222,8 +3500,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (!ticksEl || totalPages <= 1) return;
                                 
                                 ticksEl.innerHTML = '';
-                                // Use current events from eventManager instead of closure
-                                const currentEvents = window.eventManager?.events || events;
+                                const currentEvents = getDockEvents();
                                 const totalEvents = currentEvents.length;
                                 
                                 // Add page number labels at the start of each page segment
@@ -3307,8 +3584,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 
                                 if (!eraStrip) return;
                                 
-                                // Use current events from eventManager
-                                const currentEvents = window.eventManager?.events || events;
+                                const currentEvents = getDockEvents();
                                 
                                 // Try to use EraHoverPreviewTheme first
                                 if (window.EraHoverPreviewTheme?.buildGlobalEraStripeBackgroundLinearGradient) {
@@ -3397,7 +3673,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 
                                 // Update filter-hit ticks for current filter state
                                 const activeFilters = window.standaloneActiveFilters || new Set();
-                                const currentEvents = window.eventManager?.events || events;
+                                const currentEvents = getDockEvents();
                                 updateStandaloneSliderTicks(activeFilters, currentEvents, eventsPerPage, currentPage);
                                 
                                 // Update buttons
@@ -3425,12 +3701,13 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 const activeFilters = window.standaloneActiveFilters || new Set();
                                 if (activeFilters.size === 0) return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
                                 
+                                const dockEv = getDockEvents();
                                 const pageStart = (pageNum - 1) * 10;
-                                const pageEnd = Math.min(pageStart + 10, events.length);
+                                const pageEnd = Math.min(pageStart + 10, dockEv.length);
                                 const matching = [];
                                 
                                 for (let i = pageStart; i < pageEnd; i++) {
-                                    const event = events[i];
+                                    const event = dockEv[i];
                                     if (event && !shouldEventBeLocked(event, activeFilters)) {
                                         matching.push((i % 10) + 1); // 1-based index on page
                                     }
@@ -3507,7 +3784,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             
                             if (prevEventBtn && nextEventBtn) {
                                 const getCurrentEventIndex = () => window.standaloneEventSlide?.currentEventIndex ?? -1;
-                                const getFilteredEvents = () => window.eventManager?.getFilteredEvents?.() || window.eventManager?.events || events;
+                                const getFilteredEvents = () =>
+                                    window.eventManager?.getFilteredDockTimelineEvents?.() ||
+                                    window.eventManager?.getDockTimelineEvents?.() ||
+                                    [];
                                 
                                 const navigateToEvent = (direction) => {
                                     const currentEvents = getFilteredEvents();
@@ -3705,7 +3985,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
                             if (!buttons.length) return;
                             
-                            const events = allEvents || window.eventManager?.events || [];
+                            const events = allEvents || window.eventManager?.getDockTimelineEvents?.() || [];
                             const eventsPerPage = 10;
                             const baseIndex = (pageNum - 1) * eventsPerPage;
                             
@@ -3784,9 +4064,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 // Get image path using helper
                                 let imagePath = null;
                                 if (window.NavigationImageHelpers?.getEventImagePath) {
-                                    imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName);
+                                    imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
                                 } else if (window.eventManager?.getEventImagePath) {
-                                    imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                    imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
                                 } else {
                                     imagePath = displayEvent.image || displayEvent.imagePath || null;
                                 }
@@ -3808,7 +4088,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
                                     console.log('[DEV Overlap Check] Event:', event.name, 'coords:', event.location?.lat, event.location?.lon);
                                     
-                                    const currentPageEvents = window.eventManager?.events || [];
+                                    const currentPageEvents = window.eventManager?.getDockTimelineEvents?.() || [];
                                     const hasOverlap = currentPageEvents.some((otherEvent, otherIndex) => {
                                         if (otherIndex === globalEventIndex) return false;
                                         const otherLat = otherEvent.location?.lat;
@@ -3898,9 +4178,17 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                         if (variantDisplayEvent && imgEl) {
                                             let variantImagePath = null;
                                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                                variantImagePath = window.NavigationImageHelpers.getEventImagePath(variantDisplayEvent, variantDisplayEvent.name);
+                                                variantImagePath = window.NavigationImageHelpers.getEventImagePath(
+                                                    variantDisplayEvent,
+                                                    variantDisplayEvent.name,
+                                                    'story'
+                                                );
                                             } else if (window.eventManager?.getEventImagePath) {
-                                                variantImagePath = window.eventManager.getEventImagePath(variantDisplayEvent.name, variantDisplayEvent.image);
+                                                variantImagePath = window.eventManager.getEventImagePath(
+                                                    variantDisplayEvent.name,
+                                                    variantDisplayEvent.image,
+                                                    'story'
+                                                );
                                             } else {
                                                 variantImagePath = variantDisplayEvent.image || variantDisplayEvent.imagePath || null;
                                             }
@@ -4093,8 +4381,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         },
                         
                         updateNumberButtons(pageEvents, pageNum) {
-                            // Get all events for indexing
-                            const allEvents = window.eventManager?.events || [];
+                            // Get all events for indexing (dock = main story timeline only)
+                            const allEvents = window.eventManager?.getDockTimelineEvents?.() || [];
                             
                             // Animate with content swap during animation (like globe)
                             this.animatePageTurn(pageEvents, pageNum, allEvents);
@@ -4364,12 +4652,12 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             btn.classList.toggle('event-number-btn--unfinished', !hasDescription);
                             btn.title = hasDescription ? plainName : `${plainName} — Unfinished: missing description`;
                             
-                            // Get image
+                            // Get image (dock thumbs always use main timeline event art)
                             let imagePath = null;
                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName);
+                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
                             } else if (window.eventManager?.getEventImagePath) {
-                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
                             } else {
                                 imagePath = displayEvent.image || displayEvent.imagePath || null;
                             }
@@ -4435,9 +4723,17 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     if (variantDisplayEvent && imgEl) {
                                         let variantImagePath = null;
                                         if (window.NavigationImageHelpers?.getEventImagePath) {
-                                            variantImagePath = window.NavigationImageHelpers.getEventImagePath(variantDisplayEvent, variantDisplayEvent.name);
+                                            variantImagePath = window.NavigationImageHelpers.getEventImagePath(
+                                                variantDisplayEvent,
+                                                variantDisplayEvent.name,
+                                                'story'
+                                            );
                                         } else if (window.eventManager?.getEventImagePath) {
-                                            variantImagePath = window.eventManager.getEventImagePath(variantDisplayEvent.name, variantDisplayEvent.image);
+                                            variantImagePath = window.eventManager.getEventImagePath(
+                                                variantDisplayEvent.name,
+                                                variantDisplayEvent.image,
+                                                'story'
+                                            );
                                         } else {
                                             variantImagePath = variantDisplayEvent.image || variantDisplayEvent.imagePath || null;
                                         }
@@ -4960,12 +5256,28 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 console.log('[hideImageOverlay] eventSlide computed top:', window.getComputedStyle(eventSlide).top);
                             }
                         },
+                    };
+
+                    const backBtnInit = document.getElementById('eventSlideBack');
+                    if (backBtnInit && !backBtnInit.dataset.slideNavBound) {
+                        backBtnInit.dataset.slideNavBound = '1';
+                        backBtnInit.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (window.standaloneEventSlide?.goBackSlide) {
+                                await window.standaloneEventSlide.goBackSlide();
+                            }
+                        });
                     }
                     
-                    // Wire up Event Manager list clicks
+                    // Wire up Event Manager list clicks (index is into the *active* archive list, not the dock timeline)
                     window.eventManager.openEventFromList = function(event, index) {
                         if (window.standaloneEventSlide) {
-                            window.standaloneEventSlide.showEvent(index);
+                            const list = window.eventManager?.events || [];
+                            let idx = typeof index === 'number' ? index : list.indexOf(event);
+                            if (idx < 0 || idx >= list.length) idx = list.indexOf(event);
+                            if (idx < 0 || idx >= list.length) return;
+                            window.standaloneEventSlide.showEvent(idx, { eventList: list });
                             if (window.SoundEffectsManager?.play) {
                                 window.SoundEffectsManager.play('eventClick');
                             }

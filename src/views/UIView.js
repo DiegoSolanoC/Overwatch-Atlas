@@ -126,10 +126,20 @@ export class UIView {
         const isMobilePortrait = isTouchDevice && window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
 
         if (isMobilePortrait && window.standaloneEventSlide) {
-            // Mobile portrait: use standalone implementation with full features
-            const eventIndex = window.eventManager?.events?.indexOf(fullEvent);
+            // Mobile portrait: resolve index in the same list the marker / slide row came from (story globe vs active archive)
+            const activeList = window.eventManager?.events || [];
+            const dockList = window.eventManager?.getDockTimelineEvents?.() || [];
+            let eventIndex = activeList.indexOf(fullEvent);
+            let list = activeList;
+            if (eventIndex < 0) {
+                eventIndex = dockList.indexOf(fullEvent);
+                list = dockList;
+            }
             if (eventIndex >= 0) {
-                window.standaloneEventSlide.showEvent(eventIndex);
+                window.standaloneEventSlide.showEvent(
+                    eventIndex,
+                    list === dockList ? {} : { eventList: list }
+                );
                 return;
             }
         }

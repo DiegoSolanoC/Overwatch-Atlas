@@ -83,7 +83,7 @@ class EventManager {
     /**
      * Hero/faction/NPC dimension: OR within each list. When multiple filter kinds are set, a row
      * matches if it satisfies any of the active kinds (heroes, factions, or NPCs).
-     * Country dimension: primary resolved flag or secondaryCountryFlags matches any selected country file.
+     * Country dimension: primary resolved flag or secondary flags (from `secondaryCountryPlaces` or legacy `secondaryCountryFlags`) match any selected country file.
      */
     _computeSearchAxisMatchesForItem(item) {
         const heroFilters = this.searchHeroFilters || [];
@@ -129,7 +129,11 @@ class EventManager {
             const locType = item?.locationType || 'earth';
             const resolved = flagFn(locName, locType);
             const primaryMatch = !!resolved && countrySet.has(resolved);
-            const secondary = item?.secondaryCountryFlags;
+            const lhSec = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
+            const secondary =
+                lhSec && typeof lhSec.getSecondaryCountryFlagFilenamesForEntity === 'function'
+                    ? lhSec.getSecondaryCountryFlagFilenamesForEntity(item)
+                    : item?.secondaryCountryFlags || [];
             const secondaryMatch = Array.isArray(secondary) && secondary.some((fn) => countrySet.has(fn));
             matchCountry = primaryMatch || secondaryMatch;
         } else if (countryFilters.length > 0) {
@@ -162,11 +166,32 @@ class EventManager {
     }
 
     /**
+     * Main timeline rows for the standalone pagination dock (story only), even when editing a satellite archive.
+     */
+    getDockTimelineEvents() {
+        return this.dataService?.getStoryTimelineEventsForDock?.() || [];
+    }
+
+    /**
+     * Same filter rules as {@link getFilteredEvents} but applied to {@link getDockTimelineEvents} (dock / prev-next).
+     */
+    getFilteredDockTimelineEvents() {
+        return this.getFilteredEventsFromList(this.getDockTimelineEvents());
+    }
+
+    /**
      * Get events filtered by search query and hero/faction/NPC/country (for event manager list)
      * Title: AND with the rest. Hero/faction/NPC group uses OR between kinds. Filter group vs country: OR when both are non-empty.
      */
     getFilteredEvents() {
-        const all = this.events;
+        return this.getFilteredEventsFromList(this.events);
+    }
+
+    /**
+     * @param {Array<Object>} all
+     */
+    getFilteredEventsFromList(all) {
+        if (!Array.isArray(all)) return [];
         const q = (this.searchQuery || '').trim().toLowerCase();
         const heroFilters = this.searchHeroFilters || [];
         const factionFilters = this.searchFactionFilters || [];
@@ -281,8 +306,116 @@ class EventManager {
     async loadEvents() {
         if (!this.dataService) throw new Error('EventDataService not available');
         const result = await this.dataService.loadEvents();
-        if (result?.shouldSync) this.syncEventsToGlobe();
+        const isMainStory =
+            typeof this.dataService.getArchiveSource === 'function'
+                ? this.dataService.getArchiveSource() === 'story'
+                : true;
+        if (isMainStory && typeof this.dataService.refreshStoryDockSnapshotFromCurrentEvents === 'function') {
+            this.dataService.refreshStoryDockSnapshotFromCurrentEvents();
+        }
+        if (result?.shouldSync && isMainStory) {
+            this.syncEventsToGlobe();
+        }
         return result;
+    }
+
+    /** Story Archive category: switch backing JSON + refresh list (no globe sync for satellite JSONs). */
+    async switchStoryArchiveSource(archiveId) {
+        if (!this.dataService?.setArchiveSource) return;
+        this.dataService.setArchiveSource(archiveId);
+        this._resetStoryArchiveListState();
+        await this.loadEvents();
+        this.renderEvents();
+    }
+
+    _resetStoryArchiveListState() {
+        this.searchQuery = '';
+        this.searchHeroFilters = [];
+        this.searchFactionFilters = [];
+        this.searchNpcFilters = [];
+        this.searchCountryFilters = [];
+        this.searchUnmatchedFilterTokens = [];
+        this.currentPage = 1;
+        this.showAllEventsInManager = false;
+        if (this.eventItemVariantIndices?.clear) {
+            this.eventItemVariantIndices.clear();
+        }
+    }
+
+    /** @param {string} s */
+    _normalizeHeroNameForArchiveMatch(s) {
+        return String(s || '')
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ');
+    }
+
+    /** Loose match (e.g. Soldier: 76 vs Soldier 76). */
+    _heroArchiveNamesLooselyEqual(a, b) {
+        const na = this._normalizeHeroNameForArchiveMatch(a);
+        const nb = this._normalizeHeroNameForArchiveMatch(b);
+        if (na && na === nb) return true;
+        const la = na.replace(/:/g, '').replace(/\s/g, '');
+        const lb = nb.replace(/:/g, '').replace(/\s/g, '');
+        return la.length > 0 && la === lb;
+    }
+
+    /**
+     * Index in current `this.events` (Heroes archive) whose `name` matches a filter / codex label.
+     * @param {string} heroNameFromFilter
+     * @returns {number}
+     */
+    findHeroArchiveEventIndex(heroNameFromFilter) {
+        const events = this.events;
+        if (!Array.isArray(events) || !events.length) return -1;
+        for (let i = 0; i < events.length; i += 1) {
+            const rowName = events[i] && events[i].name != null ? String(events[i].name) : '';
+            if (this._heroArchiveNamesLooselyEqual(rowName, heroNameFromFilter)) return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Switch to Heroes archive if needed and open that hero's slide (same row as Heroes archive list).
+     * @param {string} heroName
+     * @returns {Promise<void>}
+     */
+    async openHeroArchiveEventByName(heroName) {
+        const raw = String(heroName || '').trim();
+        if (!raw) return;
+        const slide = typeof window !== 'undefined' ? window.standaloneEventSlide : null;
+        if (!slide || typeof slide.showEvent !== 'function') {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus('Event slide is not available.', 'warning');
+            }
+            return;
+        }
+        try {
+            if (slide.pushSlideHistoryIfOpen) {
+                slide.pushSlideHistoryIfOpen();
+            }
+            const src =
+                typeof this.dataService?.getArchiveSource === 'function'
+                    ? this.dataService.getArchiveSource()
+                    : 'story';
+            if (src !== 'heroes') {
+                await this.switchStoryArchiveSource('heroes');
+            }
+            const idx = this.findHeroArchiveEventIndex(raw);
+            if (idx < 0) {
+                if (typeof window.updateStatus === 'function') {
+                    window.updateStatus(`No Heroes archive entry matches “${raw}”`, 'warning');
+                }
+                return;
+            }
+            const list = this.events || [];
+            slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+            if (window.SoundEffectsManager?.play) {
+                window.SoundEffectsManager.play('eventClick');
+            }
+        } catch (err) {
+            console.warn('EventManager.openHeroArchiveEventByName failed', err);
+        }
     }
     
     
@@ -568,17 +701,38 @@ class EventManager {
         this.searchUnmatchedFilterTokens = [];
         this.searchCountryFilters = [];
 
-        const blank = {
-            name: '',
-            description: '',
-            locationType: 'earth',
-            lat: 0,
-            lon: 0,
-            filters: [],
-            factions: [],
-            npcs: [],
-            image: ''
-        };
+        const isStoryArchive =
+            typeof this.dataService?.getArchiveSource === 'function'
+                ? this.dataService.getArchiveSource() === 'story'
+                : true;
+
+        const archiveSrc =
+            typeof this.dataService?.getArchiveSource === 'function'
+                ? this.dataService.getArchiveSource()
+                : 'story';
+
+        const blank = isStoryArchive
+            ? {
+                name: '',
+                description: '',
+                locationType: 'earth',
+                lat: 0,
+                lon: 0,
+                filters: [],
+                factions: [],
+                npcs: [],
+                image: ''
+            }
+            : archiveSrc === 'heroes' || archiveSrc === 'factions' || archiveSrc === 'npcs'
+                ? {
+                    name: '',
+                    description: '',
+                    relevantLocations: []
+                }
+                : {
+                    name: '',
+                    description: ''
+                };
 
         const result = this.editService.addEvent(blank, null);
         if (!result.success) return;
@@ -608,9 +762,13 @@ class EventManager {
             }
         };
 
-        const p = this.refreshGlobeEvents();
-        if (p && typeof p.then === 'function') {
-            p.then(open).catch(open);
+        if (isStoryArchive) {
+            const p = this.refreshGlobeEvents();
+            if (p && typeof p.then === 'function') {
+                p.then(open).catch(open);
+            } else {
+                requestAnimationFrame(open);
+            }
         } else {
             requestAnimationFrame(open);
         }
@@ -630,8 +788,9 @@ class EventManager {
     async geocodeCity(cityName) { return await this.cityLookupService?.geocodeCity(cityName) || null; }
 
     // ImagePathService delegation
-    getEventImagePath(eventName, providedPath) {
-        return this.imagePathService?.getEventImagePath(eventName, providedPath) || null;
+    /** @param {string} [imageArchiveOverride] e.g. `'story'` to resolve thumbnails while a satellite archive is active */
+    getEventImagePath(eventName, providedPath, imageArchiveOverride) {
+        return this.imagePathService?.getEventImagePath(eventName, providedPath, imageArchiveOverride) || null;
     }
 
     /**

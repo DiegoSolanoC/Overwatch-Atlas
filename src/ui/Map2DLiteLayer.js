@@ -33,7 +33,7 @@ function resolveEventImagePath(displayEvent, eventName) {
     let eventImage = displayEvent.image || null;
     if (!eventImage || !String(eventImage).trim()) {
         const normalizedName = eventName.replace(/\s+/g, ' ').trim();
-        return `assets/images/events/${encodeURIComponent(normalizedName)}.png`;
+        return `assets/images/Archive%20data/events/${encodeURIComponent(normalizedName)}.png`;
     }
     return String(eventImage).trim();
 }
@@ -818,7 +818,7 @@ export class Map2DLiteLayer {
                 }
 
                 // Find event index in Event System (match globe marker logic)
-                const events = window.eventManager?.events || [];
+                const events = window.eventManager?.getDockTimelineEvents?.() || [];
                 const eventData = stub.userData.event;
                 let eventIndex = events.findIndex(e => e === eventData);
                 if (eventIndex < 0) {
@@ -848,7 +848,7 @@ export class Map2DLiteLayer {
                         const eventName = eventData?.name || 'Event';
                         const eventDescription = eventData?.description || '';
                         const imagePath = window.eventManager?.getEventImagePath
-                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image)
+                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image, 'story')
                             : null;
                         window.globeController.uiView.showEventSlide(eventName, imagePath, eventDescription, stub, eventData);
                     }

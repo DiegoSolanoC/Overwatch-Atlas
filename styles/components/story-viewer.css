@@ -357,6 +357,83 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     display: none !important;
 }
 
+/* Search row: Categories back + five archive icons (after #eventsSearchInput) */
+.story-viewer-panel-embedded .story-archive-search-category-strip {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn.story-viewer-action-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    align-self: center;
+    margin: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn.story-viewer-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn__img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn--active {
+    box-shadow:
+        0 0 0 2px rgba(255, 210, 120, 0.65),
+        0 2px 10px rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 210, 120, 0.75) !important;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__label {
+    font-weight: 600;
+    font-size: inherit;
+}
+
 .story-viewer-panel-embedded .events-manage-content,
 .story-viewer-panel-embedded .story-viewer-content {
     flex: 1;
@@ -489,7 +566,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     color: transparent;
     font-size: 0;
     line-height: 0;
-    margin: 0 0 10px 0;
+    margin: 0 0 clamp(16px, 2.5vmin, 24px) 0;
 }
 
 .story-viewer-panel-embedded .events-manage-controls-title::after {
@@ -517,7 +594,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     align-items: center;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    gap: 0;
+    gap: clamp(16px, 2.6vmin, 26px);
 }
 
 .story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchInput"] {
@@ -562,6 +639,235 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
 .story-viewer-container.active {
     opacity: 1;
     visibility: visible;
+}
+
+/* First screen: category tiles (Heroes / Factions / NPCs / Locations / Story) */
+.story-viewer-container--hub {
+    justify-content: center;
+    align-items: center;
+}
+
+#storyArchiveCategoryHub.story-archive-category-hub {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    /* Right 2×2 (Heroes / Factions / NPCs / Locations) gets more width than Story */
+    grid-template-columns: minmax(260px, 0.88fr) minmax(380px, 1.62fr);
+    gap: clamp(28px, 3.8vw, 52px);
+    width: min(1920px, calc(100% - 16px));
+    max-width: 100%;
+    padding: 20px 8px 32px;
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+@media (min-width: 1400px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        width: min(2200px, calc(100% - 12px));
+        grid-template-columns: minmax(280px, 0.78fr) minmax(420px, 1.85fr);
+    }
+}
+
+.story-archive-category-hub__feature {
+    min-width: 0;
+}
+
+.story-archive-category-hub__grid {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 2.6vw, 30px);
+}
+
+.story-archive-category-hub__tile {
+    --thumb-skew: -11deg;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(220px, 34vmin, 320px);
+    padding: 0;
+    margin: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 0;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transform: skewX(var(--thumb-skew));
+    transform-origin: center center;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.story-archive-category-hub__tile--story {
+    min-height: clamp(440px, 58vmin, 620px);
+}
+
+.story-archive-category-hub__tile:hover {
+    transform: skewX(var(--thumb-skew)) scale(1.04);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93);
+}
+
+.story-archive-category-hub__tile:focus-visible {
+    outline: 2px solid var(--accent-primary, #f99e1a);
+    outline-offset: 3px;
+}
+
+.story-archive-category-hub__tile--placeholder {
+    opacity: 0.86;
+    cursor: default;
+}
+
+.story-archive-category-hub__tile--placeholder:hover {
+    transform: skewX(var(--thumb-skew)) scale(1);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.42);
+}
+
+body.color-palette-gray .story-archive-category-hub__tile:hover {
+    border-top-color: rgba(255, 102, 0, 0.95);
+    border-bottom-color: rgba(255, 102, 0, 0.95);
+}
+
+.story-archive-category-hub__figure {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 124%;
+    height: 100%;
+    margin-left: -12%;
+    padding: 0;
+    transform: skewX(11deg) scale(1.06);
+    transform-origin: center center;
+    overflow: hidden;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* Dock thumbnail: bottom scrim over image for title readability */
+.story-archive-category-hub__figure::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 58%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 38%,
+        rgba(0, 0, 0, 0.18) 72%,
+        transparent 100%
+    );
+}
+
+.story-archive-category-hub__img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #fff;
+    position: relative;
+    z-index: 0;
+    inset: auto;
+    margin: 0;
+}
+
+.story-archive-category-hub__label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    margin-left: 0;
+    transform: skewX(11deg);
+    --thumb-title-pad-x: clamp(40px, 5vw, 72px);
+    padding: clamp(22px, 3.2vmin, 34px) var(--thumb-title-pad-x) clamp(20px, 3vmin, 30px);
+    box-sizing: border-box;
+    text-align: left;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(22px, 4.2vmin, 42px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.85),
+        0 2px 16px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.42) 0%,
+        rgba(0, 0, 0, 0.12) 55%,
+        transparent 82%
+    );
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        grid-template-columns: 1fr;
+        width: min(960px, calc(100% - 16px));
+        max-width: 100%;
+    }
+
+    .story-archive-category-hub__tile--story {
+        min-height: clamp(300px, 47vmin, 420px);
+    }
+
+    .story-archive-category-hub__label {
+        font-size: clamp(20px, 5vmin, 34px);
+    }
+}
+
+@media (max-width: 520px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        gap: 12px;
+        padding: 14px 10px 24px;
+    }
+
+    .story-archive-category-hub__grid {
+        gap: 12px;
+    }
+
+    .story-archive-category-hub__tile {
+        min-height: 160px;
+        border-top-width: 9px;
+        border-bottom-width: 9px;
+    }
+
+    .story-archive-category-hub__tile--story {
+        min-height: 240px;
+    }
+
+    .story-archive-category-hub__label {
+        --thumb-title-pad-x: 24px;
+        padding-top: 16px;
+        padding-bottom: 14px;
+        font-size: clamp(16px, 5.2vw, 26px);
+    }
 }
 
 /* Pagination dock cap (~80px border art + trapezium) intrudes above the dock; lift list + page controls. */

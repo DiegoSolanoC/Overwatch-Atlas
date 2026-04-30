@@ -5,6 +5,8 @@
 
 class EventDataService {
     constructor() {
+        /** @type {'story'|'heroes'|'factions'|'npcs'|'locations'} Which JSON backs the Event Manager list */
+        this.archiveSource = 'story';
         this.events = [];
         this.cities = [];
         this.fictionalCities = [];
@@ -15,6 +17,10 @@ class EventDataService {
         this.npcs = [];
         this.displayNames = {};
         this.locationCache = new Map();
+        /** Last main-timeline event list when user switches to a satellite archive (dock thumbnails / slide indices stay on story). */
+        this._storyDockEventsSnapshot = [];
+        /** Parsed `timelineEvents` when no in-memory snapshot exists yet (stable array ref for dock). */
+        this._storyDockEventsSnapshotFromLs = null;
     }
 
     /**
@@ -40,6 +46,335 @@ class EventDataService {
         return hostname === 'github.io' ||
                hostname.includes('github.io') ||
                hostname === 'pages.github.com';
+    }
+
+    /** Active Story Archive / timeline JSON bucket (main timeline = `story`). */
+    getArchiveSource() {
+        return this.archiveSource || 'story';
+    }
+
+    /**
+     * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} sourceId
+     */
+    setArchiveSource(sourceId) {
+        const allowed = new Set(['story', 'heroes', 'factions', 'npcs', 'locations']);
+        const next = allowed.has(sourceId) ? sourceId : 'story';
+        if (this._isMainTimelineArchive() && next !== 'story' && Array.isArray(this.events) && this.events.length > 0) {
+            this._storyDockEventsSnapshot = this.events.slice();
+        }
+        this._storyDockEventsSnapshotFromLs = null;
+        this.archiveSource = next;
+    }
+
+    /**
+     * Events used only by the bottom pagination dock: live main timeline when on story,
+     * otherwise the snapshot taken when leaving story (so dock stays on story entries).
+     */
+    getStoryTimelineEventsForDock() {
+        if (this._isMainTimelineArchive()) {
+            return Array.isArray(this.events) ? this.events : [];
+        }
+        if (Array.isArray(this._storyDockEventsSnapshot) && this._storyDockEventsSnapshot.length > 0) {
+            return this._storyDockEventsSnapshot;
+        }
+        if (!this._storyDockEventsSnapshotFromLs) {
+            try {
+                const raw = localStorage.getItem('timelineEvents');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    this._storyDockEventsSnapshotFromLs = Array.isArray(parsed) ? parsed : [];
+                } else {
+                    this._storyDockEventsSnapshotFromLs = [];
+                }
+            } catch (_) {
+                this._storyDockEventsSnapshotFromLs = [];
+            }
+        }
+        return this._storyDockEventsSnapshotFromLs;
+    }
+
+    /** Refresh dock snapshot from current main-timeline rows (call after story load/save). */
+    refreshStoryDockSnapshotFromCurrentEvents() {
+        if (!this._isMainTimelineArchive()) return;
+        this._storyDockEventsSnapshot = Array.isArray(this.events) ? this.events.slice() : [];
+        this._storyDockEventsSnapshotFromLs = null;
+    }
+
+    _isMainTimelineArchive() {
+        return this.getArchiveSource() === 'story';
+    }
+
+    /**
+     * True when this origin can call the repo Node server to write `data/*.json` (localhost / :8000 / http(s)).
+     * GitHub Pages and file:// never persist via API.
+     */
+    _canPersistTimelineJsonToRepo() {
+        try {
+            if (this.isGitHubPages()) return false;
+            const proto = window.location.protocol;
+            if (proto !== 'http:' && proto !== 'https:') return false;
+            const isDevServerPort = String(window.location.port || '') === '8000';
+            const host = window.location.hostname || '';
+            const isLoopbackHost = host === 'localhost' || host === '127.0.0.1';
+            return isDevServerPort || isLoopbackHost;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    _getArchiveFilePath() {
+        const map = {
+            story: 'data/events.json',
+            heroes: 'data/story-archive-heroes.json',
+            factions: 'data/story-archive-factions.json',
+            npcs: 'data/story-archive-npcs.json',
+            locations: 'data/story-archive-locations.json',
+        };
+        return map[this.getArchiveSource()] || map.story;
+    }
+
+    _getArchiveLocalStorageKey() {
+        const map = {
+            story: 'timelineEvents',
+            heroes: 'timelineEventsArchiveHeroes',
+            factions: 'timelineEventsArchiveFactions',
+            npcs: 'timelineEventsArchiveNpcs',
+            locations: 'timelineEventsArchiveLocations',
+        };
+        return map[this.getArchiveSource()] || map.story;
+    }
+
+    /** Strip trailing ", ," so "Cairo, Egypt," parses to Egypt (matches LocationFlagHelpers). */
+    _stripTrailingCommaSep(s) {
+        return String(s == null ? '' : s)
+            .replace(/\u00a0/g, ' ')
+            .replace(/,+\s*$/g, '')
+            .trim();
+    }
+
+    /**
+     * If name already ends with ", Country" and matches `country`, keep only the place part (avoids "Cairo, Egypt" + Egypt).
+     */
+    _dedupeHeroLocationNameCountry(locationName, country) {
+        const ln = this._stripTrailingCommaSep(locationName);
+        const c = this._stripTrailingCommaSep(country);
+        if (!ln || !c) return ln;
+        const idx = ln.lastIndexOf(',');
+        if (idx < 0) return ln;
+        const lastSeg = this._stripTrailingCommaSep(ln.slice(idx + 1));
+        if (lastSeg.toLowerCase() === c.toLowerCase()) {
+            return this._stripTrailingCommaSep(ln.slice(0, idx));
+        }
+        return ln;
+    }
+
+    /**
+     * One hero relevant-location entry: display name, country token for flag, optional note.
+     * @param {unknown} item
+     * @returns {{ locationName: string, country: string, reasoning: string }}
+     */
+    _normalizeHeroRelevantLocationItem(item) {
+        if (typeof item === 'string') {
+            const s = this._stripTrailingCommaSep(item);
+            if (!s) return { locationName: '', country: '', reasoning: '' };
+            const idx = s.lastIndexOf(',');
+            if (idx >= 0) {
+                const locationName = this._stripTrailingCommaSep(s.slice(0, idx));
+                const country = this._stripTrailingCommaSep(s.slice(idx + 1));
+                return {
+                    locationName: this._dedupeHeroLocationNameCountry(locationName, country),
+                    country,
+                    reasoning: ''
+                };
+            }
+            return { locationName: s, country: '', reasoning: '' };
+        }
+        if (item && typeof item === 'object' && !Array.isArray(item)) {
+            let locationName = this._stripTrailingCommaSep(
+                item.locationName != null ? String(item.locationName) : item.name != null ? String(item.name) : ''
+            );
+            let country = this._stripTrailingCommaSep(
+                item.country != null ? String(item.country) : ''
+            );
+            const reasoning = String(item.reasoning != null ? item.reasoning : '').trim();
+            if (!country && locationName) {
+                const ix = locationName.lastIndexOf(',');
+                if (ix >= 0) {
+                    const tail = this._stripTrailingCommaSep(locationName.slice(ix + 1));
+                    if (tail) {
+                        country = tail;
+                        locationName = this._stripTrailingCommaSep(locationName.slice(0, ix));
+                    }
+                }
+            }
+            locationName = this._dedupeHeroLocationNameCountry(locationName, country);
+            return { locationName, country, reasoning };
+        }
+        return { locationName: '', country: '', reasoning: '' };
+    }
+
+    /**
+     * Hero archive `relevantLocations`: array of { locationName, country, reasoning }.
+     * Migrates legacy string[] ("Place, Country" per line) and mixed shapes.
+     * @param {unknown} raw
+     * @returns {Array<{ locationName: string, country: string, reasoning: string }>}
+     */
+    _normalizeHeroRelevantLocations(raw) {
+        if (raw == null) return [];
+        if (typeof raw === 'string') {
+            return raw
+                .split(/\r?\n/)
+                .map((line) => this._normalizeHeroRelevantLocationItem(line))
+                .filter((e) => e.locationName || e.country || e.reasoning);
+        }
+        if (!Array.isArray(raw)) return [];
+        return raw
+            .map((item) => this._normalizeHeroRelevantLocationItem(item))
+            .filter((e) => e.locationName || e.country || e.reasoning);
+    }
+
+    /**
+     * Non-story archives (Heroes / Factions / NPCs / Locations): title + description.
+     * Heroes, Factions, and NPCs archives support `relevantLocations` ({ locationName, country, reasoning }[]).
+     * Collapse legacy full event objects to the slim shape.
+     * @param {unknown} raw
+     * @returns {{ name: string, description: string, relevantLocations?: Array<{ locationName: string, country: string, reasoning: string }> }}
+     */
+    _normalizeSatelliteArchiveEntry(raw) {
+        if (!raw || typeof raw !== 'object') {
+            return { name: '', description: '' };
+        }
+        let name = '';
+        let description = '';
+        const variants = raw.variants;
+        if (Array.isArray(variants) && variants.length > 0) {
+            const v0 = variants[0];
+            name = v0 && v0.name != null ? String(v0.name) : '';
+            description = v0 && v0.description != null ? String(v0.description) : '';
+        } else {
+            name = raw.name != null ? String(raw.name) : '';
+            description = raw.description != null ? String(raw.description) : '';
+        }
+        const base = { name, description };
+        const bioArchives = new Set(['heroes', 'factions', 'npcs']);
+        if (bioArchives.has(this.archiveSource)) {
+            base.relevantLocations = this._normalizeHeroRelevantLocations(raw.relevantLocations);
+        }
+        return base;
+    }
+
+    _normalizeSatelliteEventsInPlace() {
+        if (this._isMainTimelineArchive()) return;
+        this.events = (this.events || []).map((e) => this._normalizeSatelliteArchiveEntry(e));
+    }
+
+    /**
+     * Satellite archives: one JSON + separate localStorage key; no merge with main timeline rules.
+     */
+    async _loadEventsSatelliteArchive() {
+        const fileUrl = this._getArchiveFilePath();
+        const storageKey = this._getArchiveLocalStorageKey();
+        const label = fileUrl.replace(/^data\//, '');
+        this.updateStatus(`EventDataService: Loading ${this.getArchiveSource()} archive (${label})...`, 'info');
+
+        let fileEvents = null;
+        const fetchStartTime = performance.now();
+        try {
+            const fetchWithTimeout = (url, timeout = 10000) => {
+                const separator = url.includes('?') ? '&' : '?';
+                const cacheBuster = `${separator}v=${Date.now()}&_=${Math.random().toString(36).substr(2, 9)}&nocache=true`;
+                const fullUrl = url + cacheBuster;
+                return Promise.race([
+                    fetch(fullUrl).then((res) => {
+                        if (!res.ok) {
+                            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                        }
+                        return res.json();
+                    }),
+                    new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error(`Timeout: ${url} took longer than ${timeout}ms`)), timeout)
+                    ),
+                ]);
+            };
+            const data = await fetchWithTimeout(fileUrl);
+            const fetchTime = performance.now() - fetchStartTime;
+            if (data && Array.isArray(data.events)) {
+                fileEvents = data.events;
+                this.updateStatus(
+                    `EventDataService: ${label} loaded (${fetchTime.toFixed(0)}ms, ${fileEvents.length} events)`,
+                    'success'
+                );
+            } else {
+                this.updateStatus(`EventDataService: ${label} has no { events: [] } — using empty list`, 'warning');
+                fileEvents = [];
+            }
+        } catch (error) {
+            console.warn(`EventDataService: ${label} fetch failed:`, error);
+            this.updateStatus(`EventDataService: ${label} fetch error — ${error.message}`, 'warning');
+        }
+
+        const savedEvents = localStorage.getItem(storageKey);
+        const isGitHubPages = this.isGitHubPages();
+
+        if (isGitHubPages) {
+            this.events = Array.isArray(fileEvents) ? fileEvents : [];
+            this._normalizeSatelliteEventsInPlace();
+            if (this.events.length === 0) {
+                try {
+                    localStorage.removeItem(storageKey);
+                } catch (_) { /* ignore */ }
+            } else {
+                this.saveEvents();
+            }
+            return { events: this.events, source: 'file', shouldSync: false };
+        }
+
+        // Local http(s): without repo write API (e.g. Live Server on :5500), prefer localStorage so edits survive reload.
+        let parsedLocal = null;
+        if (savedEvents) {
+            try {
+                parsedLocal = JSON.parse(savedEvents);
+            } catch (_) {
+                parsedLocal = null;
+            }
+        }
+        const localOk = Array.isArray(parsedLocal) && parsedLocal.length > 0;
+        if (localOk && !this._canPersistTimelineJsonToRepo()) {
+            this.events = parsedLocal;
+            this._normalizeSatelliteEventsInPlace();
+            this.updateStatus(
+                `EventDataService: Using localStorage for ${this.getArchiveSource()} (dev file API not on this port — edits kept locally)`,
+                'info'
+            );
+            return { events: this.events, source: 'localStorage', shouldSync: false };
+        }
+
+        if (Array.isArray(fileEvents)) {
+            this.events = fileEvents;
+            this._normalizeSatelliteEventsInPlace();
+            this.saveEvents();
+            return { events: this.events, source: 'file', shouldSync: false };
+        }
+
+        if (savedEvents) {
+            try {
+                const parsed = JSON.parse(savedEvents);
+                this.events = Array.isArray(parsed) ? parsed : [];
+                this._normalizeSatelliteEventsInPlace();
+                this.updateStatus(
+                    `EventDataService: Using localStorage for ${this.getArchiveSource()} (${this.events.length} events)`,
+                    'info'
+                );
+                return { events: this.events, source: 'localStorage', shouldSync: false };
+            } catch (e) {
+                console.error('EventDataService: satellite localStorage parse failed', e);
+            }
+        }
+
+        this.events = [];
+        this._normalizeSatelliteEventsInPlace();
+        this.updateStatus(`EventDataService: No data for ${this.getArchiveSource()} archive`, 'warning');
+        return { events: this.events, source: 'none', shouldSync: false };
     }
 
     /**
@@ -130,6 +465,10 @@ class EventDataService {
      * Load events from localStorage or fetch from events.json
      */
     async loadEvents() {
+        if (!this._isMainTimelineArchive()) {
+            return this._loadEventsSatelliteArchive();
+        }
+
         // First, always try to load from events.json (source of truth)
         let fileEventCount = 0;
         let fileEvents = null;
@@ -218,7 +557,7 @@ class EventDataService {
                         // Clear old localStorage and save fresh data
                         localStorage.removeItem('timelineEvents');
                         this.saveEvents();
-                        return { events: this.events, source: 'file', shouldSync: true };
+                        return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
                     }
                     
                     // On localhost: Use file if it has more events (even just 1 more), otherwise prefer localStorage
@@ -229,7 +568,7 @@ class EventDataService {
                         // Clear old localStorage and save fresh data
                         localStorage.removeItem('timelineEvents');
                         this.saveEvents();
-                        return { events: this.events, source: 'file', shouldSync: true };
+                        return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
                     }
                     
                     // On localhost: localStorage has same or more events, prefer it (user's saved changes)
@@ -257,7 +596,7 @@ class EventDataService {
                         this.events = fileEvents;
                         localStorage.removeItem('timelineEvents');
                         this.saveEvents();
-                        return { events: this.events, source: 'file', shouldSync: true };
+                        return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
                     } else if (!isGitHubPages && fileEventCount > this.events.length + 4) {
                         // Localhost: Only update if file has 5+ more events (user might have local edits)
                         console.warn(`EventDataService [Localhost]: localStorage has ${this.events.length} events, but events.json has ${fileEventCount} (${fileEventCount - this.events.length} more). Using events.json.`);
@@ -265,11 +604,11 @@ class EventDataService {
                         this.events = fileEvents;
                         localStorage.removeItem('timelineEvents');
                         this.saveEvents();
-                        return { events: this.events, source: 'file', shouldSync: true };
+                        return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
                     }
                 }
                 
-                return { events: this.events, source: 'localStorage', shouldSync: true };
+                return this._finishMainTimelineLoadEvents({ events: this.events, source: 'localStorage', shouldSync: true });
             } catch (error) {
                 console.error('EventDataService: Error parsing saved events:', error);
                 console.error('EventDataService: Raw data:', savedEvents.substring(0, 200));
@@ -281,7 +620,7 @@ class EventDataService {
                     localStorage.removeItem('timelineEvents');
                     this.events = fileEvents;
                     this.saveEvents();
-                    return { events: this.events, source: 'file', shouldSync: true };
+                    return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
                 }
             }
         }
@@ -304,7 +643,7 @@ class EventDataService {
             // Save to localStorage for future use
             this.saveEvents();
             
-            return { events: this.events, source: 'file', shouldSync: true };
+            return this._finishMainTimelineLoadEvents({ events: this.events, source: 'file', shouldSync: true });
         }
 
         // CRITICAL: If events.json failed to load, try localStorage as fallback (even on GitHub Pages)
@@ -316,7 +655,7 @@ class EventDataService {
                     console.warn('EventDataService: events.json failed to load, using localStorage as fallback');
                     this.updateStatus(`EventDataService: Using localStorage fallback (${fallbackEvents.length} events) - events.json unavailable`, 'warning');
                     this.events = fallbackEvents;
-                    return { events: this.events, source: 'localStorage-fallback', shouldSync: true };
+                    return this._finishMainTimelineLoadEvents({ events: this.events, source: 'localStorage-fallback', shouldSync: true });
                 }
             } catch (e) {
                 console.error('EventDataService: localStorage fallback also failed:', e);
@@ -328,7 +667,23 @@ class EventDataService {
         console.error('EventDataService: CRITICAL - No events found from events.json or localStorage!');
         this.updateStatus('EventDataService: ERROR - No events found. Check events.json file.', 'error');
         
-        return { events: this.events, source: 'none', shouldSync: true };
+        return this._finishMainTimelineLoadEvents({ events: this.events, source: 'none', shouldSync: true });
+    }
+
+    /**
+     * Normalize story `secondaryCountryPlaces` / `secondaryCountryFlags` after any main-timeline load path.
+     * @param {{ events: Array<Object>, source: string, shouldSync: boolean }} result
+     */
+    _finishMainTimelineLoadEvents(result) {
+        try {
+            const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
+            if (Array.isArray(this.events) && lh?.migrateAllStoryEventsSecondaryPlaces) {
+                lh.migrateAllStoryEventsSecondaryPlaces(this.events);
+            }
+        } catch (e) {
+            console.warn('EventDataService: migrate secondary country places failed:', e);
+        }
+        return result;
     }
 
     /**
@@ -338,6 +693,9 @@ class EventDataService {
      * @returns {boolean} true if any field was merged
      */
     mergeTimelineMetadataFromFileEvents(fileEvents) {
+        if (!this._isMainTimelineArchive()) {
+            return false;
+        }
         if (!fileEvents || !Array.isArray(this.events) || this.events.length !== fileEvents.length) {
             return false;
         }
@@ -377,48 +735,69 @@ class EventDataService {
      * Save events to localStorage
      */
     saveEvents() {
-        localStorage.setItem('timelineEvents', JSON.stringify(this.events));
+        if (!this._isMainTimelineArchive()) {
+            this._normalizeSatelliteEventsInPlace();
+        }
+        const storageKey = this._getArchiveLocalStorageKey();
+        localStorage.setItem(storageKey, JSON.stringify(this.events));
+        if (this._isMainTimelineArchive()) {
+            this.refreshStoryDockSnapshotFromCurrentEvents();
+        }
         console.log('[EventDataService] Events saved to localStorage, count:', this.events.length);
         console.log('[EventDataService] Saved event names:', this.events.map(e => e.name || (e.variants && e.variants[0]?.name) || 'Unnamed'));
 
-        // Dev server enhancement: if running locally, also persist to data/events.json via API.
-        // (Not available on GitHub Pages, and we keep that read-only.)
-        try {
-            const isGitHubPages = this.isGitHubPages();
-            const isHttp = window.location.protocol === 'http:' || window.location.protocol === 'https:';
-            // Allow mobile/LAN testing (hostname may be a local IP) as long as we're on the dev server port.
-            const isDevServerPort = String(window.location.port || '') === '8000';
-            const isLoopbackHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        if (!this._canPersistTimelineJsonToRepo()) {
+            return;
+        }
 
-            if (!isGitHubPages && isHttp && (isDevServerPort || isLoopbackHost)) {
-                const apiUrl =
-                    typeof window.resolveDevApiUrl === 'function'
-                        ? window.resolveDevApiUrl('api/events')
-                        : '/api/events';
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ events: this.events })
+        // Dev server: also persist to data/*.json via Node server (main timeline + Story Archive satellites).
+        try {
+            const isMain = this._isMainTimelineArchive();
+            const apiUrl =
+                typeof window.resolveDevApiUrl === 'function'
+                    ? window.resolveDevApiUrl(isMain ? 'api/events' : 'api/story-archive')
+                    : isMain
+                        ? '/api/events'
+                        : '/api/story-archive';
+            const body = isMain
+                ? JSON.stringify({ events: this.events })
+                : JSON.stringify({ archive: this.getArchiveSource(), events: this.events });
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body,
+            })
+                .then(async (res) => {
+                    if (!res.ok) {
+                        const data = await res.json().catch(() => ({}));
+                        throw new Error(data?.error || `HTTP ${res.status}`);
+                    }
+                    return res.json().catch(() => ({}));
                 })
-                    .then(async (res) => {
-                        if (!res.ok) {
-                            const data = await res.json().catch(() => ({}));
-                            throw new Error(data?.error || `HTTP ${res.status}`);
-                        }
-                        return res.json().catch(() => ({}));
-                    })
-                    .then((data) => {
-                        this.updateStatus(`✓ Saved to data/events.json (${data?.eventsCount ?? this.events.length} events)`, 'success');
-                    })
-                    .catch((e) => {
-                        console.warn('EventDataService: Failed to persist events.json via /api/events:', e);
+                .then((data) => {
+                    if (isMain) {
                         this.updateStatus(
-                            `Saved locally, but failed to write data/events.json (${e?.message || 'API error'}). ` +
-                            `If you just updated server code, restart the server.`,
-                            'warning'
+                            `✓ Saved to data/events.json (${data?.eventsCount ?? this.events.length} events)`,
+                            'success'
                         );
-                    });
-            }
+                    } else {
+                        const label = this._getArchiveFilePath().replace(/^data\//, '');
+                        this.updateStatus(
+                            `✓ Saved to data/${label} (${data?.eventsCount ?? this.events.length} entries)`,
+                            'success'
+                        );
+                    }
+                })
+                .catch((e) => {
+                    const target = isMain ? 'data/events.json' : this._getArchiveFilePath().replace(/^data\//, '');
+                    console.warn(`EventDataService: Failed to persist ${target} via dev API:`, e);
+                    this.updateStatus(
+                        `Saved locally, but failed to write ${target} (${e?.message || 'API error'}). ` +
+                            `Use the project server on port 8000 (node server.js), or restart it after pulling new routes.`,
+                        'warning'
+                    );
+                });
         } catch (e) {
             // Ignore API persistence errors; localStorage is still updated.
         }
@@ -450,6 +829,9 @@ class EventDataService {
                     const data = JSON.parse(e.target.result);
                     if (data.events && Array.isArray(data.events)) {
                         this.events = data.events;
+                        if (!this._isMainTimelineArchive()) {
+                            this._normalizeSatelliteEventsInPlace();
+                        }
                         this.saveEvents();
                         console.log('EventDataService: Events imported:', this.events.length);
                         resolve({ success: true, count: this.events.length });

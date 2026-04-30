@@ -434,6 +434,10 @@ body.color-palette-crimson .event-sources-section {
     border-left: 3px solid #ef5350; /* Orange for gray palette */
 }
 
+body.color-palette-crimson .event-relevant-locations-section {
+    border-left: 3px solid #ef5350; /* match sources */
+}
+
 body.color-palette-crimson .event-image-toggle-btn {
     background: #ef5350; /* Orange for gray palette */
 }

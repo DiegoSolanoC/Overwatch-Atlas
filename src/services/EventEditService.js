@@ -227,7 +227,35 @@ class EventEditService {
                 if (Array.isArray(variant.secondaryCountryFlags) && variant.secondaryCountryFlags.length > 0) {
                     variantObj.secondaryCountryFlags = variant.secondaryCountryFlags.slice();
                 }
-                
+                if (Array.isArray(variant.secondaryCountryPlaces) && variant.secondaryCountryPlaces.length > 0) {
+                    variantObj.secondaryCountryPlaces = variant.secondaryCountryPlaces.map((p) => ({
+                        locationName: p.locationName,
+                        country: p.country,
+                        reasoning: p.reasoning
+                    }));
+                }
+                if (Array.isArray(variant.heroFilterPlaces) && variant.heroFilterPlaces.length > 0) {
+                    variantObj.heroFilterPlaces = variant.heroFilterPlaces.map((p) => ({
+                        locationName: p.locationName,
+                        country: p.country,
+                        reasoning: p.reasoning
+                    }));
+                }
+                if (Array.isArray(variant.factionFilterPlaces) && variant.factionFilterPlaces.length > 0) {
+                    variantObj.factionFilterPlaces = variant.factionFilterPlaces.map((p) => ({
+                        locationName: p.locationName,
+                        country: p.country,
+                        reasoning: p.reasoning
+                    }));
+                }
+                if (Array.isArray(variant.npcFilterPlaces) && variant.npcFilterPlaces.length > 0) {
+                    variantObj.npcFilterPlaces = variant.npcFilterPlaces.map((p) => ({
+                        locationName: p.locationName,
+                        country: p.country,
+                        reasoning: p.reasoning
+                    }));
+                }
+
                 return variantObj;
             }).filter(v => v.name); // Only include variants with name
 
@@ -257,6 +285,38 @@ class EventEditService {
             const secondary0 = v0 && Array.isArray(v0.secondaryCountryFlags) && v0.secondaryCountryFlags.length > 0
                 ? v0.secondaryCountryFlags.slice()
                 : undefined;
+            const secondaryPlaces0 =
+                v0 && Array.isArray(v0.secondaryCountryPlaces) && v0.secondaryCountryPlaces.length > 0
+                    ? v0.secondaryCountryPlaces.map((p) => ({
+                          locationName: p.locationName,
+                          country: p.country,
+                          reasoning: p.reasoning
+                      }))
+                    : undefined;
+            const heroPlaces0 =
+                v0 && Array.isArray(v0.heroFilterPlaces) && v0.heroFilterPlaces.length > 0
+                    ? v0.heroFilterPlaces.map((p) => ({
+                          locationName: p.locationName,
+                          country: p.country,
+                          reasoning: p.reasoning
+                      }))
+                    : undefined;
+            const factionPlaces0 =
+                v0 && Array.isArray(v0.factionFilterPlaces) && v0.factionFilterPlaces.length > 0
+                    ? v0.factionFilterPlaces.map((p) => ({
+                          locationName: p.locationName,
+                          country: p.country,
+                          reasoning: p.reasoning
+                      }))
+                    : undefined;
+            const npcPlaces0 =
+                v0 && Array.isArray(v0.npcFilterPlaces) && v0.npcFilterPlaces.length > 0
+                    ? v0.npcFilterPlaces.map((p) => ({
+                          locationName: p.locationName,
+                          country: p.country,
+                          reasoning: p.reasoning
+                      }))
+                    : undefined;
             event = {
                 name: mainName,
                 locationType: locationType,
@@ -271,6 +331,18 @@ class EventEditService {
             };
             if (secondary0) {
                 event.secondaryCountryFlags = secondary0;
+            }
+            if (secondaryPlaces0) {
+                event.secondaryCountryPlaces = secondaryPlaces0;
+            }
+            if (heroPlaces0) {
+                event.heroFilterPlaces = heroPlaces0;
+            }
+            if (factionPlaces0) {
+                event.factionFilterPlaces = factionPlaces0;
+            }
+            if (npcPlaces0) {
+                event.npcFilterPlaces = npcPlaces0;
             }
             // Add coordinates based on location type
             if (locationType === 'earth') {

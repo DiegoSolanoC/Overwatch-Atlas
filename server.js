@@ -76,6 +76,41 @@ function writeEventsJson(events, res) {
     }
 }
 
+/** Story Archive satellite JSONs (Heroes / Factions / NPCs / Locations) — same shape as shipped files: { events: [...] } */
+const STORY_ARCHIVE_WRITE_MAP = {
+    heroes: 'story-archive-heroes.json',
+    factions: 'story-archive-factions.json',
+    npcs: 'story-archive-npcs.json',
+    locations: 'story-archive-locations.json',
+};
+
+function writeStoryArchiveJson(body, res) {
+    const archive = body && typeof body.archive === 'string' ? body.archive.trim() : '';
+    const events = Array.isArray(body?.events) ? body.events : null;
+    const fileName = STORY_ARCHIVE_WRITE_MAP[archive];
+    if (!fileName || !events) {
+        sendJson(res, 400, {
+            error: 'Expected { archive: "heroes"|"factions"|"npcs"|"locations", events: [...] }',
+        });
+        return;
+    }
+
+    const outPath = path.join(__dirname, 'data', fileName);
+    const payload = { events };
+    const json = JSON.stringify(payload, null, 2) + '\n';
+    const tmpPath = outPath + '.tmp';
+    try {
+        fs.writeFileSync(tmpPath, json, 'utf8');
+        fs.renameSync(tmpPath, outPath);
+        sendJson(res, 200, { ok: true, archive, eventsCount: events.length });
+    } catch (e) {
+        try {
+            if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+        } catch (_) {}
+        sendJson(res, 500, { ok: false, error: 'Write failed' });
+    }
+}
+
 function writeCodexStateJson(body, res) {
     let nodes = null;
     let edges = [];
@@ -140,6 +175,17 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    if (decodedPath === '/api/story-archive') {
+        if (req.method === 'POST' || req.method === 'PUT') {
+            readJsonBody(req, res, (body) => {
+                writeStoryArchiveJson(body, res);
+            });
+            return;
+        }
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
     if (decodedPath === '/api/codex') {
         if (req.method === 'GET') {
             const p = path.join(__dirname, 'data', 'codex-labels.json');
@@ -185,11 +231,17 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Legacy path compatibility: map old Event Images URLs to new assets location
-    // Requests like /Event%20Images/Foo.png → /assets/images/events/Foo.png
+    // Legacy path compatibility: map old Event Images URLs to archive assets location
+    // Requests like /Event%20Images/Foo.png → /assets/images/Archive data/events/Foo.png
     if (decodedPath.startsWith('/Event Images/')) {
         const rest = decodedPath.substring('/Event Images/'.length);
-        decodedPath = '/assets/images/events/' + rest;
+        decodedPath = '/assets/images/Archive data/events/' + rest;
+    }
+
+    // Old direct event image URLs (pre–Archive data layout)
+    if (decodedPath.startsWith('/assets/images/events/')) {
+        const rest = decodedPath.substring('/assets/images/events/'.length);
+        decodedPath = '/assets/images/Archive data/events/' + rest;
     }
     
     // Serve static files
@@ -244,6 +296,7 @@ server.listen(PORT, () => {
     console.log(`  - http://localhost:${PORT}/test      → test.html`);
     console.log(`  - http://localhost:${PORT}/test.html → test.html`);
     console.log(`  - http://localhost:${PORT}/api/events → GET/POST events.json`);
+    console.log(`  - http://localhost:${PORT}/api/story-archive → POST story-archive-*.json (Heroes/Factions/NPCs/Locations)`);
     console.log(`  - http://localhost:${PORT}/api/codex → GET/POST codex-labels.json`);
     console.log(`\nPress Ctrl+C to stop the server\n`);
 });

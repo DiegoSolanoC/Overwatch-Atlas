@@ -5260,6 +5260,9 @@ function onPointerUpMaybeSelect(ev) {
     document.removeEventListener('pointercancel', onPointerUpMaybeSelect, capOpts);
     pointerPending = null;
     selectCodexNode(p.el, { mode: p.shiftKey ? 'toggle' : 'replace' });
+    if (!p.shiftKey) {
+        maybeOpenHeroArchiveFromCodexNodeEl(p.el);
+    }
 }
 
 function beginActualNodeDrag(prep, firstMoveEv) {
@@ -5403,6 +5406,90 @@ function beginActualNodeDrag(prep, firstMoveEv) {
     document.addEventListener('pointercancel', onUp, capOpts);
 }
 
+function normalizeCodexHeroNameForMatch(s) {
+    return String(s || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+}
+
+/** Loose match for UI quirks (e.g. Soldier: 76 vs Soldier 76). */
+function codexHeroNamesLooselyEqual(a, b) {
+    const na = normalizeCodexHeroNameForMatch(a);
+    const nb = normalizeCodexHeroNameForMatch(b);
+    if (na && na === nb) return true;
+    const la = na.replace(/:/g, '').replace(/\s/g, '');
+    const lb = nb.replace(/:/g, '').replace(/\s/g, '');
+    return la.length > 0 && la === lb;
+}
+
+/**
+ * @param {string} heroNameFromNode - `dataset.codexHero` from a hero codex node
+ * @returns {number}
+ */
+function findHeroArchiveIndexByCodexName(heroNameFromNode) {
+    const events = window.eventManager?.events;
+    if (!Array.isArray(events) || !events.length) return -1;
+    for (let i = 0; i < events.length; i += 1) {
+        const rowName = events[i] && events[i].name != null ? String(events[i].name) : '';
+        if (codexHeroNamesLooselyEqual(rowName, heroNameFromNode)) return i;
+    }
+    return -1;
+}
+
+/**
+ * Switch to Heroes archive (if needed), find a row whose `name` matches the codex hero label, open the event slide.
+ * @param {string} heroNameFromNode
+ * @returns {Promise<void>}
+ */
+async function openHeroArchiveEntryFromCodexHeroName(heroNameFromNode) {
+    const em = window.eventManager;
+    if (!em || !String(heroNameFromNode || '').trim()) return;
+    if (typeof em.openHeroArchiveEventByName === 'function') {
+        await em.openHeroArchiveEventByName(heroNameFromNode);
+        return;
+    }
+    /* Legacy fallback if EventManager method unavailable */
+    const slide = window.standaloneEventSlide;
+    if (!slide) return;
+    try {
+        if (slide.pushSlideHistoryIfOpen) {
+            slide.pushSlideHistoryIfOpen();
+        }
+        const src = typeof em.dataService?.getArchiveSource === 'function' ? em.dataService.getArchiveSource() : 'story';
+        if (src !== 'heroes') {
+            if (typeof em.switchStoryArchiveSource === 'function') {
+                await em.switchStoryArchiveSource('heroes');
+            } else if (em.dataService?.setArchiveSource) {
+                em.dataService.setArchiveSource('heroes');
+                await em.loadEvents();
+                if (typeof em.renderEvents === 'function') em.renderEvents();
+            } else {
+                return;
+            }
+        }
+        const list = em.events || [];
+        const idx = findHeroArchiveIndexByCodexName(heroNameFromNode);
+        if (idx < 0) {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus(`No Heroes archive entry matches “${String(heroNameFromNode).trim()}”`, 'warning');
+            }
+            return;
+        }
+        slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+        if (window.SoundEffectsManager?.play) window.SoundEffectsManager.play('eventClick');
+    } catch (err) {
+        console.warn('CodexCanvasService: open hero archive from codex node failed', err);
+    }
+}
+
+function maybeOpenHeroArchiveFromCodexNodeEl(nodeEl) {
+    if (!nodeEl || nodeEl.dataset.codexKind !== 'hero') return;
+    const heroName = String(nodeEl.dataset.codexHero || '').trim();
+    if (!heroName) return;
+    void openHeroArchiveEntryFromCodexHeroName(heroName);
+}
+
 function bindCodexNodeInteraction(el) {
     let lastCtx = 0;
     el.addEventListener('contextmenu', (e) => {
@@ -5489,6 +5576,7 @@ function bindCodexNodeInteraction(el) {
             }
             // Select the node
             selectCodexNode(el);
+            maybeOpenHeroArchiveFromCodexNodeEl(el);
             return;
         }
         

@@ -20,7 +20,26 @@
       "eraName": "The Age of Progress",
       "lat": 52.0799838,
       "lon": 4.3113461,
-      "npcs": []
+      "npcs": [],
+      "yearEnd": null,
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Hague, Netherlands",
+          "country": "Netherlands",
+          "reasoning": "Siebren De Kuiper is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Netherlands.png"
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma",
+          "reasoning": "Siebren De Kuiper is Born"
+        }
+      ]
     },
     {
       "name": "Reinhardt Wilhelm is Born",
@@ -47,7 +66,19 @@
       "lat": 48.7758,
       "lon": 9.1829,
       "eraName": "The Age of Progress",
-      "yearStart": 2015
+      "yearStart": 2015,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Stuttgrat, Germany",
+          "country": "Germany",
+          "reasoning": "Reinhardt Wilhelm is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Ana Amari is Born",
@@ -72,7 +103,19 @@
       "lat": 30.0444,
       "lon": 31.2357,
       "eraName": "The Age of Progress",
-      "yearStart": 2017
+      "yearStart": 2017,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Ana Amari is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Gabriel Reyes is Born",
@@ -97,7 +140,19 @@
       "lat": 34.0522,
       "lon": -119.2,
       "eraName": "The Age of Progress",
-      "yearStart": 2018
+      "yearStart": 2018,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Los Angeles, United States",
+          "country": "United States",
+          "reasoning": "Gabriel Reyes is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Torbjörn Lindholm is Born",
@@ -127,7 +182,19 @@
       "lon": 11.9670171,
       "npcs": [
         "Ingrid"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": "Torbjörn Lindholm is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Medical Miracles",
@@ -158,7 +225,17 @@
       "lon": -79.3839347,
       "yearStart": 2020,
       "yearEnd": 2040,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Crystal Clear",
@@ -184,7 +261,17 @@
         "Record breaking draughts in Africa force hundreds to migrate after loosing their homes",
         "Nano filtration machines become available to buy for home use"
       ],
-      "image": ""
+      "image": "",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Nampula, Mozambique",
+          "country": "Mozambique",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mozambique.png"
+      ]
     },
     {
       "name": "Out of Thin Air",
@@ -209,7 +296,17 @@
       "headlines": [
         "Scientist Claims its now possible to extract water out of tin air"
       ],
-      "image": ""
+      "image": "",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Great Basin, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "John Francis Morrison is Born",
@@ -234,7 +331,19 @@
       "lat": 39.1670396,
       "lon": -86.5342881,
       "eraName": "The Age of Progress",
-      "yearStart": 2021
+      "yearStart": 2021,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bloomington, United States",
+          "country": "United States",
+          "reasoning": "John Francis Morrison is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Greener Energy",
@@ -261,7 +370,17 @@
       "lon": -73.6731282,
       "yearStart": 2020,
       "yearEnd": 2040,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bogota, Colombia",
+          "country": "Colombia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Colombia.png"
+      ]
     },
     {
       "name": "Cleaner Oceans",
@@ -291,16 +410,29 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "Hawaii.png",
         "Cook Islands.png",
         "New Zealand.png",
         "Samoa.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Honolulu, Hawaii",
+          "country": "Hawaii",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Cook Islands, New Zealand, Samoa",
+          "reasoning": ""
+        }
       ]
     },
     {
       "name": "Vivian Chase is Born",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "On January 12th of 2028, Vivian Chase and her twin sister Valentine were born, as daughters of ex-military parents. Unfortunately, Vivian was born with a rare autoimmune disease that caused her body to attack her own organs, which would force her to spend most of her childhood and teenage years bedridden. The time in the hospital gave Vivian a lot of time to read books and play strategy games, as she quickly grew interest in the military like her parents.\n\nAs her condition worsened and threatened her life, her family made the hard choice of admitting her into Dr. Esat's experimental program, where they would replace a vast majority of her body with cybernetics over the years. Vivian lived on, but it would further change the course of her life.",
+      "description": "On January 12th of 2028, Vivian Chase and her twin sister Valentine were born, as daughters of ex-military parents. Unfortunately, Vivian was born with a rare autoimmune disease that caused her body to attack her own organs, which would force her to spend most of her childhood and teenage years bedridden. The time in the hospital gave Vivian a lot of time to read books and play strategy games, as she quickly grew interest in the military like her parents.<br><br>As her condition worsened and threatened her life, her family made the hard choice of admitting her into Dr. Esat's experimental program, where they would replace a vast majority of her body with cybernetics over the years. Vivian lived on, but it would further change the course of her life.",
       "image": "",
       "filters": [
         "Sojourn"
@@ -327,7 +459,18 @@
       "lat": 43.6534817,
       "lon": -79.3839347,
       "eraName": "The Age of Progress",
-      "yearStart": 2028
+      "yearStart": 2028,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": "Vivian Chase is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "The Nuclear Solution",
@@ -353,7 +496,17 @@
       "lon": -83.0466403,
       "yearStart": 2020,
       "yearEnd": 2040,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "The Super Coral Reef",
@@ -382,7 +535,16 @@
       ],
       "image": "",
       "npcs": [],
-      "secondaryCountryFlags": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Coral Sea, Oceania",
+          "country": "Oceania",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "New Zealand.png"
+      ]
     },
     {
       "name": "Mako Rutledge is Born",
@@ -406,7 +568,18 @@
       "lat": -25,
       "lon": 135,
       "eraName": "The Age of Progress",
-      "yearStart": 2028
+      "yearStart": 2028,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Outback, Australia",
+          "country": "Australia",
+          "reasoning": "Mako Rutledge is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Rising Tides",
@@ -430,6 +603,7 @@
         "Borda Algae  can now be found in nearly all major bodies of fresh water according to study"
       ],
       "secondaryCountryFlags": [
+        "Portugal.png",
         "Venezuela.png"
       ],
       "yearStart": 2020,
@@ -440,6 +614,18 @@
       "npcs": [
         "Hector",
         "Claudio"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Esperança, Portugal",
+          "country": "Portugal",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Venezuela",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -467,7 +653,17 @@
       "lon": -72.545,
       "yearStart": 2020,
       "yearEnd": 2040,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ]
     },
     {
       "name": "Moira O'Deorain is Born",
@@ -491,7 +687,18 @@
       "lat": 53.3493795,
       "lon": -6.2605593,
       "eraName": "The Age of Progress",
-      "yearStart": 2029
+      "yearStart": 2029,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dublin, Ireland",
+          "country": "Ireland",
+          "reasoning": "Moira O'Deorain is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Ireland.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Akande Ogundimu is Born",
@@ -516,7 +723,18 @@
       "lat": 8.2151249,
       "lon": 3.5642897,
       "eraName": "The Age of Progress",
-      "yearStart": 2031
+      "yearStart": 2031,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oyo, Nigeria",
+          "country": "Nigeria",
+          "reasoning": "Akande Ogundimu is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nigeria.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Emre Sarioglu is Born",
@@ -537,7 +755,19 @@
       "lat": 41.006381,
       "lon": 28.9758715,
       "eraName": "The Age of Progress",
-      "yearStart": 2034
+      "yearStart": 2034,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Istanbul, Turkey",
+          "country": "Turkey",
+          "reasoning": "Emre Sarioglu is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Turkey.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Mei-Ling Zhou is Born",
@@ -564,7 +794,18 @@
       "lon": 108.9423363,
       "npcs": [
         "Jiayi"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Xi'an, China",
+          "country": "China",
+          "reasoning": "Mei-Ling Zhou is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Wuxing University",
@@ -590,7 +831,17 @@
       "lon": 104.063315,
       "yearStart": 2030,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "The Rise of Omnics",
@@ -620,13 +871,23 @@
       "lon": -83.0466403,
       "npcs": [
         "Liao"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
       "name": "Elizabeth Caledonia is Born",
       "locationType": "earth",
       "cityDisplayName": "Bellaire, United States",
-      "description": "On October 1st of 2037, Elizabeth Caledonia was born outside of Bellaire. Elizabeth grew up in the Lead Rose Manor, coming from a privileged family of old money. Her family worked in many fields, consulting powerful CEOS around the world, but were mainly known for their ownership of the Arbalest Arms Company, a 19th century weapon manufacturer.\n\nBecause of their busy schedule, the adults in the house barely ever paid attention to the little Elizabeth, leading to her often feeling alone and often getting into trouble getting back at her parents. The only one that was truly there for her was the family's butler, B.O.B., a Bouncer Omnic Unit, one of the earliest on the market.",
+      "description": "On October 1st of 2037, Elizabeth Caledonia was born outside of Bellaire. Elizabeth grew up in the Lead Rose Manor, coming from a privileged family of old money. Her family worked in many fields, consulting powerful CEOS around the world, but were mainly known for their ownership of the Arbalest Arms Company, a 19th century weapon manufacturer.<br><br>Because of their busy schedule, the adults in the house barely ever paid attention to the little Elizabeth, leading to her often feeling alone and often getting into trouble getting back at her parents. The only one that was truly there for her was the family's butler, B.O.B., a Bouncer Omnic Unit, one of the earliest on the market.",
       "image": "",
       "filters": [
         "Ashe"
@@ -647,13 +908,24 @@
       "lon": -95.4588299,
       "npcs": [
         "B.O.B"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bellaire, United States",
+          "country": "United States",
+          "reasoning": "Elizabeth Caledonia is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Hanzo Shimada is Born",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.\nDue to his position, he trained since very young to take his father's role as the leader of the clan, becoming very close to his father, especially after his mother abandoned the family.",
+      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.<br>Due to his position, he trained since very young to take his father's role as the leader of the clan, becoming very close to his father, especially after his mother abandoned the family.",
       "image": "",
       "filters": [
         "Hanzo"
@@ -673,7 +945,18 @@
       "lat": 35.6768601,
       "lon": 139.7638947,
       "eraName": "The Age of Progress",
-      "yearStart": 2038
+      "yearStart": 2038,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Hanzo Shimada is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Nourishing the World",
@@ -699,7 +982,17 @@
       "lon": -73.9855319,
       "yearStart": 2030,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "New York City, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Grasping Gravity",
@@ -725,12 +1018,25 @@
       "lat": 52.0799838,
       "lon": 4.3113461,
       "secondaryCountryFlags": [
+        "Netherlands.png",
         "Morocco.png",
         "Iraq.png"
       ],
       "yearStart": 2030,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Hague, Netherlands",
+          "country": "Netherlands",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Morocco, Iraq",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Angela Zeigler is Born",
@@ -754,7 +1060,18 @@
       "lat": 47.3744489,
       "lon": 8.5410422,
       "eraName": "The Age of Progress",
-      "yearStart": 2039
+      "yearStart": 2039,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": "Angela Zeigler is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Cole Cassidy is Born",
@@ -778,7 +1095,18 @@
       "lat": 30.2711286,
       "lon": -97.7436995,
       "eraName": "The Age of Progress",
-      "yearStart": 2039
+      "yearStart": 2039,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Austin, United States",
+          "country": "United States",
+          "reasoning": "Cole Cassidy is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Hardlight for the World",
@@ -804,7 +1132,17 @@
       "lon": 77.590082,
       "yearStart": 2030,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bengaluru, India",
+          "country": "India",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "India.png"
+      ]
     },
     {
       "name": "Resource Management",
@@ -832,13 +1170,26 @@
       "lat": 30.0443879,
       "lon": 31.2357257,
       "secondaryCountryFlags": [
+        "Egypt.png",
         "United States.png",
         "Mexico.png",
         "Finland.png"
       ],
       "yearStart": 2040,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "United States, Mexico, Finland",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Jean-Baptiste Augustin is Born",
@@ -862,7 +1213,18 @@
       "lat": 20.0410035,
       "lon": -72.785587,
       "eraName": "The Age of Progress",
-      "yearStart": 2041
+      "yearStart": 2041,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tortuga Island, Haiti",
+          "country": "Haiti",
+          "reasoning": "Jean-Baptiste Augustin is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Haiti.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Maugaloa Malosi is Born",
@@ -886,7 +1248,18 @@
       "lat": -13.8345235,
       "lon": -171.7630955,
       "eraName": "The Age of Progress",
-      "yearStart": 2041
+      "yearStart": 2041,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": "Maugaloa Malosi is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Samoa.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Voslkaya Industries",
@@ -912,7 +1285,17 @@
       "lon": 30.316229,
       "yearStart": 2040,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Saint Petersburg, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Genji Shimada is Born",
@@ -938,13 +1321,24 @@
       "lat": 35.6768601,
       "lon": 139.7638947,
       "eraName": "The Age of Progress",
-      "yearStart": 2041
+      "yearStart": 2041,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Genji Shimada is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Amélie Lacroix is Born",
       "locationType": "earth",
       "cityDisplayName": "Annecy, France",
-      "description": "On November 19th, 2043, Amélie Lacroix was born in Annecy, France. Part of an influential family, growing up in the ancestral Chataeu Guillard in the rural areas of France, where the crumbling building accumulated cobwebs and spiders, which both fascinated and terrified her as a kid.\n\n\nAmelie's life was cold and filled with pressure from a conservative family, which expected her to live by aristocratic traditions. She would go on to become a well-accomplished ballet dancer in Paris, and marry a diplomat by the name of Gérard Lacroix.",
+      "description": "On November 19th, 2043, Amélie Lacroix was born in Annecy, France. Part of an influential family, growing up in the ancestral Chataeu Guillard in the rural areas of France, where the crumbling building accumulated cobwebs and spiders, which both fascinated and terrified her as a kid.<br><br>Amelie's life was cold and filled with pressure from a conservative family, which expected her to live by aristocratic traditions. She would go on to become a well-accomplished ballet dancer in Paris, and marry a diplomat by the name of Gérard Lacroix.",
       "image": "",
       "filters": [
         "Widowmaker"
@@ -959,7 +1353,19 @@
       "lat": 45.8992348,
       "lon": 6.1288847,
       "eraName": "The Age of Progress",
-      "yearStart": 2043
+      "yearStart": 2043,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Annecy, France",
+          "country": "France",
+          "reasoning": "Amélie Lacroix is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "France.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Upgrades",
@@ -987,7 +1393,17 @@
       "lat": 43.6534817,
       "lon": -79.3839347,
       "yearStart": 2044,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Freja Skov is Born",
@@ -1011,7 +1427,18 @@
       "lat": 55.6867243,
       "lon": 12.5700724,
       "eraName": "The Age of Progress",
-      "yearStart": 2044
+      "yearStart": 2044,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen, Denmark",
+          "country": "Denmark",
+          "reasoning": "Freja Skov is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Denmark.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Road to the Stars",
@@ -1038,8 +1465,21 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "India.png",
         "China.png",
         "Horizon Lunar Colony.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "China, Horizon Lunar Colony",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -1067,7 +1507,20 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "China.png",
         "Horizon Lunar Colony.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chongqing, China",
+          "country": "China",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -1097,10 +1550,24 @@
       "lat": 30.0443879,
       "lon": 31.2357257,
       "secondaryCountryFlags": [
+        "Egypt.png",
         "Canada.png"
       ],
       "eraName": "The Age of Progress",
-      "yearStart": 2045
+      "yearStart": 2045,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Fareeha Amari is Born"
+        },
+        {
+          "locationName": "",
+          "country": "Canada",
+          "reasoning": "Fareeha gains double citizenship from her father's side"
+        }
+      ],
+      "yearEnd": null
     },
     {
       "name": "Tekhartha Zenyatta is Made",
@@ -1125,7 +1592,17 @@
       "lat": 42.3315509,
       "lon": -83.0466403,
       "eraName": "The Age of Progress",
-      "yearStart": 2025
+      "yearStart": 2025,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "SST Laboratories Siege Automaton E54 is Made",
@@ -1151,7 +1628,17 @@
       "lat": 57.7072326,
       "lon": 11.9670171,
       "eraName": "The Age of Progress",
-      "yearStart": 2046
+      "yearStart": 2046,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Vaira Singhania is Born",
@@ -1174,16 +1661,31 @@
       "lat": 51.5074456,
       "lon": -0.1277653,
       "secondaryCountryFlags": [
+        "United Kingdom.png",
         "India.png"
       ],
       "eraName": "The Age of Progress",
-      "yearStart": 2046
+      "yearStart": 2046,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Vaira Singhania is Born"
+        },
+        {
+          "locationName": "",
+          "country": "India",
+          "reasoning": "Vaira gains double citizenship from her family's Indian roots"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Olivia Colomar is Born",
       "locationType": "earth",
       "cityDisplayName": "Castillo, Mexico",
-      "description": "On December 31st of 2046, Olivia Colomar is born. One of the millions orphaned by the crisis, left to fend for herself in a country left to ruin and riddled with political scandals. From an early age, Olivia learned a constant truth in her life: If you have the information, you control everything. ",
+      "description": "On December 31st of 2046, <span class=\"glitchy-text-toggle-target\" role=\"button\" tabindex=\"0\" title=\"Toggle glitch effect\" style=\"cursor: pointer;\">Olivia Colomar</span> is born. One of the millions orphaned by the crisis, left to fend for herself in a country left to ruin and riddled with political scandals. From an early age, <span class=\"glitchy-text-toggle-target\" role=\"button\" tabindex=\"0\" title=\"Toggle glitch effect\" style=\"cursor: pointer;\">Olivia</span> learned a constant truth in her life: If you have the information, you control everything. ",
       "image": "",
       "filters": [
         "Sombra"
@@ -1202,7 +1704,18 @@
       "yearStart": 2046,
       "eraName": "The Age of Progress",
       "lat": 18,
-      "lon": -95
+      "lon": -95,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Castillo, Mexico",
+          "country": "Mexico",
+          "reasoning": "Olivia Colomar is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Specimen 28 is Born",
@@ -1226,6 +1739,7 @@
         "Lucheng secures deal to ship a primate colony into Space for genetic research"
       ],
       "secondaryCountryFlags": [
+        "DR Congo.png",
         "Horizon Lunar Colony.png"
       ],
       "yearStart": 2047,
@@ -1234,7 +1748,20 @@
       "lon": 18,
       "npcs": [
         "Harold"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Congo Basin, Democratic Republic of the Congo",
+          "country": "Democratic Republic of the Congo",
+          "reasoning": "Specimen 28 is Born"
+        },
+        {
+          "locationName": "",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Specimen 28 is transported to the Lunar Colony"
+        }
+      ],
+      "yearEnd": null
     },
     {
       "name": "The Ironclad Guild",
@@ -1262,7 +1789,17 @@
       "lon": 11.9670171,
       "yearStart": 2040,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Odessa Stone is Born",
@@ -1283,7 +1820,19 @@
       "lat": -25,
       "lon": 135,
       "eraName": "The Age of Progress",
-      "yearStart": 2047
+      "yearStart": 2047,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Outback, Australia",
+          "country": "Australia",
+          "reasoning": "Odessa Stone is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Genesis",
@@ -1309,6 +1858,7 @@
         "Dr. Mina Liao commits career suicide, claiming her newest creation is alive"
       ],
       "secondaryCountryFlags": [
+        "United States.png",
         "Singapore.png"
       ],
       "yearStart": 2040,
@@ -1319,6 +1869,18 @@
       "npcs": [
         "Liao",
         "Aurora"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Singapore",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -1351,13 +1913,23 @@
       "y": 70,
       "npcs": [
         "Harold"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Horizon Lunar Colony.png"
       ]
     },
     {
       "name": "Niran Pruksamanee is Born",
       "locationType": "earth",
       "cityDisplayName": "Chiang Mai City, Thailand",
-      "description": "On April 28 of 2048, Niran Pruksamanee was born in the city of Chiang Mai. As the middle child of a wealthy family, he had his life planned and high expectations to fulfill, although the young Niran would resist this structure by wandering through their compound's gardens and mending plants alongside their gardeners.\n\nHe was too intelligent for the expensive schools his family chose for him, completing assignments more thoroughly than needed and annoying his teachers, which caused his parents to get frustrated and continue to attempt to install order in his life.",
+      "description": "On April 28 of 2048, Niran Pruksamanee was born in the city of Chiang Mai. As the middle child of a wealthy family, he had his life planned and high expectations to fulfill, although the young Niran would resist this structure by wandering through their compound's gardens and mending plants alongside their gardeners.<br><br>He was too intelligent for the expensive schools his family chose for him, completing assignments more thoroughly than needed and annoying his teachers, which caused his parents to get frustrated and continue to attempt to install order in his life.",
       "image": "",
       "filters": [
         "Lifeweaver"
@@ -1372,7 +1944,19 @@
       "lat": 18.7882778,
       "lon": 98.9858802,
       "eraName": "The Age of Progress",
-      "yearStart": 2048
+      "yearStart": 2048,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chiang Mai City, Thailand",
+          "country": "Thailand",
+          "reasoning": "Niran Pruksamanee is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Thailand.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Answers",
@@ -1404,6 +1988,16 @@
       "image": "",
       "npcs": [
         "Aurora"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nepal.png"
       ]
     },
     {
@@ -1432,7 +2026,17 @@
       "lon": 13.3951309,
       "yearStart": 2040,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Berlin, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ]
     },
     {
       "name": "A Grasping Talon",
@@ -1463,6 +2067,16 @@
       "lon": 12.3345898,
       "npcs": [
         "Antonio"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
       ]
     },
     {
@@ -1487,6 +2101,16 @@
       "image": "",
       "npcs": [
         "Liao"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -1508,7 +2132,19 @@
       "lat": 17.360589,
       "lon": 78.4740613,
       "eraName": "The Age of Progress",
-      "yearStart": 2048
+      "yearStart": 2048,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hyderabad, India",
+          "country": "India",
+          "reasoning": "Satya Vaswani is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "India.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "To Build a Better Soldier",
@@ -1531,6 +2167,7 @@
         "US Military hires Dr. Naughton for secret project following her return from the Moon"
       ],
       "secondaryCountryFlags": [
+        "United States.png",
         "Australia.png"
       ],
       "yearStart": 2040,
@@ -1538,7 +2175,19 @@
       "eraName": "The Age of Progress",
       "lat": 39.475518,
       "lon": -106.1177077,
-      "npcs": []
+      "npcs": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Camp Hale, United States",
+          "country": "United States",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Playing God",
@@ -1563,11 +2212,24 @@
       "lat": 30.0443879,
       "lon": 31.2357257,
       "secondaryCountryFlags": [
+        "Egypt.png",
         "Nigeria.png"
       ],
       "yearStart": 2040,
       "yearEnd": 2050,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Aleksandra Zaryanova is Born",
@@ -1588,7 +2250,19 @@
       "lat": 60,
       "lon": 100,
       "eraName": "The Age of Progress",
-      "yearStart": 2048
+      "yearStart": 2048,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Novoanskoye, Russia",
+          "country": "Russia",
+          "reasoning": "Aleksandra Zaryanova is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Lena Oxton is Born",
@@ -1609,13 +2283,25 @@
       "lat": 51.5074456,
       "lon": -0.1277653,
       "eraName": "The Age of Progress",
-      "yearStart": 2049
+      "yearStart": 2049,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": "Lena Oxton is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Marzia Bartalotti is Born",
       "locationType": "earth",
       "cityDisplayName": "Rome, Italy",
-      "description": "On February 15th of 2050, Marzia Bartalotti was born to the promise of great power, being the sole daughter of Antonio Bartalotti, a notorious arms dealer in Rome, and a key figure in the rising Talon council. Marzia found a sense of pride in her heritage and grew up expecting to take over her father, even if he wished a different life for her. Her temperament found her few friends when growing up, and constant clashes with her father's decisions and management, as his choices led to the loss of her mother at an early age.\n\nFrustrated that her father's decisions and hubris could risk her own future, she dedicated her youth to studying business and preparing to take over his empire.",
+      "description": "On February 15th of 2050, Marzia Bartalotti was born to the promise of great power, being the sole daughter of Antonio Bartalotti, a notorious arms dealer in Rome, and a key figure in the rising Talon council. Marzia found a sense of pride in her heritage and grew up expecting to take over her father, even if he wished a different life for her. Her temperament found her few friends when growing up, and constant clashes with her father's decisions and management, as his choices led to the loss of her mother at an early age.<br><br>Frustrated that her father's decisions and hubris could risk her own future, she dedicated her youth to studying business and preparing to take over his empire.",
       "image": "",
       "filters": [
         "Vendetta"
@@ -1636,10 +2322,21 @@
       "lon": 12.4829321,
       "npcs": [
         "Antonio"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome, Italy",
+          "country": "Italy",
+          "reasoning": "Marzia Bartalotti is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ],
+      "yearEnd": null
     },
     {
-      "name": "Lúcio Correia Dos Santos",
+      "name": "Lúcio Correia Dos Santos is Born",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
       "description": "On March 20th of 2051, Lúcio Correia dos Santos was born in Rio de Janeiro, growing up in a poor and crowded favela that would be hit hard by the financial upheaval of the Crisis. As his country recovered, he would often try to lift people's spirits through the power of music, using it to bring people together and make them forget their troubles, even if only for a short time. The young man would often perform in the streets, and at block parties, eventually growing up to become an underground celebrity, hosting larger shows.",
@@ -1657,7 +2354,20 @@
       "lat": -22.9110137,
       "lon": -43.2093727,
       "yearStart": 2051,
-      "eraName": "The Age of Progress"
+      "eraName": "The Age of Progress",
+      "yearEnd": null,
+      "npcs": [],
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": "Lúcio Correia Dos Santos is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Brazil.png"
+      ]
     },
     {
       "name": "The Lagos Attack",
@@ -1688,10 +2398,23 @@
       "lat": 6.4550575,
       "lon": 3.3941795,
       "secondaryCountryFlags": [
+        "Nigeria.png",
         "Egypt.png"
       ],
       "yearStart": 2051,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lagos, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Ramattra is Made",
@@ -1718,16 +2441,29 @@
       "lat": -75.1,
       "lon": 123.35,
       "secondaryCountryFlags": [
+        "Antarctica.png",
         "Egypt.png"
       ],
       "eraName": "The Omnic Crisis",
-      "yearStart": 2051
+      "yearStart": 2051,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Secret Omnium, Antartica?",
+          "country": "Antartica?",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "The Caribbean Coalition",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
-      "description": "As the warbots caused chaos and bloodshed across the world, nature had its way to show cruel mercy to the Caribbean. The region has been consistently slammed with Super Storms due to a changing climate. Anubis had prepared to attack people from all regions and environments, with the islands of the Atlantic being hit by waves of subaquatic units deployed via drop pods from motherships. While effective, not even Anubis could have foreseen the raw power of Hurricane Crystal, a massive Super Storm that made landfall in Havana shortly after the global attacks began.\n\n\n\nThe destruction of the storm caused just as much tragedy and loss as the Omnics, but it also disrupted the incoming Anubis forces during these initial assaults. This brief stalemate allowed military groups across the region to organize a defensive alliance, with skilled soldiers and marksmen hopping from one island to another to stop the incoming attacks together. This alliance would be known as the Caribbean Coalition, and by the time the storm had passed, they had gathered enough support and manpower to go toe to toe against the incoming waves of warbots. \n\n\n\nFrom beginning to end, the Coalition would stay locked in a brutal fight against Anubis, as people from Belice to Guyana, and all the Antilles came together to help each other in their time of need. If all the mighty storms that nature threw at them seasonally were not enough to blow their will away, then they would never yield to Anubis either.",
+      "description": "As the warbots caused chaos and bloodshed across the world, nature had its way to show cruel mercy to the Caribbean. The region has been consistently slammed with Super Storms due to a changing climate. Anubis had prepared to attack people from all regions and environments, with the islands of the Atlantic being hit by waves of subaquatic units deployed via drop pods from motherships. While effective, not even Anubis could have foreseen the raw power of Hurricane Crystal, a massive Super Storm that made landfall in Havana shortly after the global attacks began.<br><br>The destruction of the storm caused just as much tragedy and loss as the Omnics, but it also disrupted the incoming Anubis forces during these initial assaults. This brief stalemate allowed military groups across the region to organize a defensive alliance, with skilled soldiers and marksmen hopping from one island to another to stop the incoming attacks together. This alliance would be known as the Caribbean Coalition, and by the time the storm had passed, they had gathered enough support and manpower to go toe to toe against the incoming waves of warbots. <br><br>From beginning to end, the Coalition would stay locked in a brutal fight against Anubis, as people from Belice to Guyana, and all the Antilles came together to help each other in their time of need. If all the mighty storms that nature threw at them seasonally were not enough to blow their will away, then they would never yield to Anubis either.",
       "image": "",
       "filters": [
         "Baptiste"
@@ -1748,6 +2484,7 @@
       "lat": 23.135305,
       "lon": -82.3589631,
       "secondaryCountryFlags": [
+        "Cuba.png",
         "Belize.png",
         "Guatemala.png",
         "Honduras.png",
@@ -1766,7 +2503,6 @@
         "British Virgin Islands.png",
         "Caribbean Netherlands.png",
         "Cayman Islands.png",
-        "Cuba.png",
         "Curacao.png",
         "Dominica.png",
         "Dominican Republic.png",
@@ -1789,7 +2525,20 @@
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Havana, Cuba",
+          "country": "Cuba",
+          "reasoning": "Huriccane Crystal makes landfall shortly after the Crisis Starts"
+        },
+        {
+          "locationName": "Caribbean Island Nations and Continental Latin America",
+          "country": "Belize, Guatemala, Honduras, El Salvador, Nicaragua, Costa Rica, Panama, Colombia, Venezuela, Guyana, Anguilla, Antigua and Barbuda, Aruba, Bahamas, Barbados, British Virgin Islands, Caribbean Netherlands, Cayman Islands, Cuba, Curaçao, Dominica, Dominican Republic, Grenada, Guadeloupe, Haiti, Jamaica, Martinique, Montserrat, Puerto Rico, Saint Barthélemy, Saint Kitts and Nevis, Saint Lucia, Saint Martin, Saint Vincent and the Grenadines, Sint Maarten, Trinidad and Tobago, Turks and Caicos Islands, United States Virgin Islands",
+          "reasoning": "Joined a military coalition to aid each other survive the Crisis"
+        }
+      ],
+      "npcs": []
     },
     {
       "name": "Early Victories",
@@ -1816,7 +2565,17 @@
       "lon": 37.6063916,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Moscow, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Swedish Engineering",
@@ -1845,7 +2604,17 @@
       "lon": 11.9670171,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Expanding the Wall",
@@ -1868,6 +2637,7 @@
         "Spain forms an alliance with Portugal to face the Omnics  together"
       ],
       "secondaryCountryFlags": [
+        "Portugal.png",
         "Spain.png",
         "Gibraltar.png"
       ],
@@ -1879,6 +2649,18 @@
       "npcs": [
         "Hector",
         "Claudio"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Esperança, Portugal",
+          "country": "Portugal",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Spain, Gibraltar",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -1907,7 +2689,17 @@
       "lon": -73.9855319,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Manhattan, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Call Sign Sojourn",
@@ -1938,6 +2730,16 @@
       "lon": -79.3832,
       "npcs": [
         "Liao"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
       ]
     },
     {
@@ -1967,11 +2769,24 @@
       "lat": 23.2599,
       "lon": 77.4126,
       "secondaryCountryFlags": [
+        "India.png",
         "China.png"
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "China",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Fiery Pride",
@@ -2001,7 +2816,17 @@
       "lon": 104.063315,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Children of the Sun",
@@ -2030,7 +2855,17 @@
       "lon": -72.545,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ]
     },
     {
       "name": "Force the Sun to Set",
@@ -2059,7 +2894,17 @@
       "lon": 3.3941795,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lagos, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nigeria.png"
+      ]
     },
     {
       "name": "The Svyatogor",
@@ -2089,6 +2934,16 @@
       "lon": 37.6063916,
       "npcs": [
         "Katya"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Moscow, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
       ]
     },
     {
@@ -2113,6 +2968,7 @@
         "Overwatch Initiative passes United Nations hearings, scouting for candidates begins shortly after"
       ],
       "secondaryCountryFlags": [
+        "Switzerland.png",
         "Nigeria.png"
       ],
       "yearStart": 2051,
@@ -2122,6 +2978,18 @@
       "lon": 6.1466014,
       "npcs": [
         "Adawe"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Geneva, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -2148,11 +3016,24 @@
       "lat": 30.0443879,
       "lon": 31.2357257,
       "secondaryCountryFlags": [
+        "Egypt.png",
         "Canada.png"
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "The Heroic Five",
@@ -2179,13 +3060,26 @@
       "lat": 57.7072326,
       "lon": 11.9670171,
       "secondaryCountryFlags": [
+        "Sweden.png",
         "Russia.png",
         "Germany.png",
         "Syria.png"
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Russia, Germany, Syria",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Building a Myth",
@@ -2214,7 +3108,17 @@
       "lon": 13.3951309,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Berlin, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ]
     },
     {
       "name": "The Skycannon",
@@ -2244,7 +3148,20 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "United States.png",
         "Sweden.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Manhattan, United States",
+          "country": "United States",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sweden",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -2277,6 +3194,16 @@
       "lon": -100.2632764,
       "npcs": [
         "Kendra"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Wheeler County, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -2310,7 +3237,17 @@
       "lon": 8,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Eichenwalde Castle, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ]
     },
     {
       "name": "Defense Network",
@@ -2340,9 +3277,22 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "Sweden.png",
         "Canada.png",
         "United States.png",
         "Finland.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Canada, United States, Finland",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -2381,6 +3331,16 @@
         "Hector",
         "Claudio",
         "Adawe"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
       ]
     },
     {
@@ -2416,12 +3376,25 @@
       ],
       "image": "",
       "secondaryCountryFlags": [
+        "Japan.png",
         "China.png",
         "Mongolia.png",
         "Pakistan.png"
       ],
       "npcs": [
         "Adawe"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kyoto, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "China, Mongolia, Pakistan",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -2449,7 +3422,17 @@
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oymyakon, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Who knew Better",
@@ -2486,7 +3469,17 @@
       "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "lat": 41.8755616,
-      "lon": -87.6244212
+      "lon": -87.6244212,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chicago, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "In Partnership",
@@ -2516,6 +3509,7 @@
         "Detroit Omnium sucessfully decomissioned"
       ],
       "secondaryCountryFlags": [
+        "United States.png",
         "Canada.png"
       ],
       "npcs": [
@@ -2526,7 +3520,19 @@
       "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "lat": 42.3315509,
-      "lon": -83.0466403
+      "lon": -83.0466403,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "The Battle of the Bridges",
@@ -2552,6 +3558,16 @@
       "headlines": [
         "New York city breached, war rages on",
         "Empire sky cannon takes down incoming Anubis carrier"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Manhattan, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -2582,6 +3598,16 @@
       "headlines": [
         "Source of the Omnic Crisis discovered",
         "God AI Anubis leading the warbot advance"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Helsinki, Finland",
+          "country": "Finland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Finland.png"
       ]
     },
     {
@@ -2608,6 +3634,16 @@
       ],
       "headlines": [
         "Mexico goes dark following the shutdown of Xibalba"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
       ]
     },
     {
@@ -2634,6 +3670,16 @@
       "headlines": [
         "God AI sides with Humanity agaisnt Anubis",
         "New York defies federal orders to turn Macaria off"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Manhattan, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -2660,7 +3706,18 @@
       "lat": -25,
       "lon": 135,
       "eraName": "The Omnic Crisis",
-      "yearStart": 2052
+      "yearStart": 2052,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Outback, Australia",
+          "country": "Australia",
+          "reasoning": "Jamison Fawkes is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ],
+      "yearEnd": null
     },
     {
       "name": "Bombardment",
@@ -2692,6 +3749,16 @@
       "lon": 11.9670171,
       "npcs": [
         "Ingrid"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
       ]
     },
     {
@@ -2719,7 +3786,17 @@
       "lon": 3.8969928,
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Ibadan, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nigeria.png"
+      ]
     },
     {
       "name": "The Awakening",
@@ -2757,7 +3834,17 @@
       "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "lat": 28.3949,
-      "lon": 84.124
+      "lon": 84.124,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nepal.png"
+      ]
     },
     {
       "name": "Sloan Cameron is Born",
@@ -2783,14 +3870,33 @@
       "lat": 45.1960403,
       "lon": -63.1653789,
       "secondaryCountryFlags": [
+        "Canada.png",
+        "Mexico.png",
         "United States.png",
         "Argentina.png",
         "Iceland.png",
-        "Mexico.png",
         "Singapore.png"
       ],
       "eraName": "The Omnic Crisis",
-      "yearStart": 2052
+      "yearStart": 2052,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Nova Scotia, Canada",
+          "country": "Canada",
+          "reasoning": "Sloan Cameron is Born"
+        },
+        {
+          "locationName": "Dorado, Mexico,",
+          "country": "Mexico,",
+          "reasoning": "Sloan gains dual citizenship from Mexican roots"
+        },
+        {
+          "locationName": "Cameron Excursion Destinations",
+          "country": "United States, Argentina, Iceland, Mexico, Singapore",
+          "reasoning": "Sloan's family is constantly on the move"
+        }
+      ],
+      "yearEnd": null
     },
     {
       "name": "Striking the Source",
@@ -2830,6 +3936,16 @@
       ],
       "npcs": [
         "Liao"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
       ]
     },
     {
@@ -2856,12 +3972,25 @@
         "Omnic Crisis officially over, can humanity ever recover?"
       ],
       "secondaryCountryFlags": [
+        "Indonesia.png",
         "New Zealand.png",
         "Spain.png"
       ],
       "yearStart": 2051,
       "yearEnd": 2053,
-      "eraName": "The Omnic Crisis"
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Jakarta, Indonesia",
+          "country": "Indonesia",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "New Zealand, Spain",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Energy For Mexico",
@@ -2891,7 +4020,16 @@
       "yearEnd": 2060,
       "eraName": "The Omnic Crisis",
       "npcs": [],
-      "secondaryCountryFlags": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Mexico City, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Prejudice",
@@ -2923,7 +4061,16 @@
       "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "npcs": [],
-      "secondaryCountryFlags": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Manhattan, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "The Temple of Anubis",
@@ -2959,6 +4106,16 @@
       ],
       "npcs": [
         "Liao"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
       ]
     },
     {
@@ -2985,7 +4142,17 @@
       ],
       "yearStart": 2053,
       "yearEnd": 2060,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Adawe Departs",
@@ -3009,6 +4176,7 @@
         "Construction of the city of Numbani begins in Nigeria"
       ],
       "secondaryCountryFlags": [
+        "Numbani.png",
         "Nigeria.png",
         "Switzerland.png"
       ],
@@ -3019,6 +4187,18 @@
       "lon": 8.5919,
       "npcs": [
         "Adawe"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Nigeria, Switzerland",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -3048,6 +4228,16 @@
       "lon": -95.4588299,
       "npcs": [
         "B.O.B"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bellaire, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -3078,11 +4268,24 @@
         "Meet the new member of the Strike team, Emre Sarioglu"
       ],
       "secondaryCountryFlags": [
+        "Switzerland.png",
         "Turkey.png"
       ],
       "yearStart": 2053,
       "yearEnd": 2060,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Turkey",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Operation White Dome",
@@ -3112,13 +4315,23 @@
         "Overwatch agent severely wounded"
       ],
       "yearStart": 2053,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Istanbul, Turkey",
+          "country": "Turkey",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Turkey.png"
+      ]
     },
     {
       "name": "Brigitte Lindholm is Born",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "On September 22nd of 2053, Brigitte Lindholm was born. The youngest of Torbjörn and Ingrid's children. Following Operation White Dome, Reinhardt saw to Lindholm's recovery at the hospital. The grumpy old man grew frustrated by his insistence, so he proposed that if he left him alone, he would allow him to name his soon-to-be-born daughter. Reinhardt agreed, choosing the name Brigitte. The pair would grow close following the mission, and Lindholm would ultimately choose Wilhelm as the child's godfather, making him part of the family.\n\n\n\nBrigitte was the first of Torbjörn's kids to show interest in engineering. Following her father's footsteps by tinkering in his workshop, and listening to Reinhardt's chivalry stories when he paid them a visit.",
+      "description": "On September 22nd of 2053, Brigitte Lindholm was born. The youngest of Torbjörn and Ingrid's children. Following Operation White Dome, Reinhardt saw to Lindholm's recovery at the hospital. The grumpy old man grew frustrated by his insistence, so he proposed that if he left him alone, he would allow him to name his soon-to-be-born daughter. Reinhardt agreed, choosing the name Brigitte. The pair would grow close following the mission, and Lindholm would ultimately choose Wilhelm as the child's godfather, making him part of the family.<br><br>Brigitte was the first of Torbjörn's kids to show interest in engineering. Following her father's footsteps by tinkering in his workshop, and listening to Reinhardt's chivalry stories when he paid them a visit.",
       "image": "",
       "filters": [
         "Brigitte",
@@ -3140,7 +4353,19 @@
       "lon": 11.9670171,
       "npcs": [
         "Ingrid"
-      ]
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": "Brigitte Lindholm is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Watching the Globe",
@@ -3163,6 +4388,7 @@
         "The Martins gift Overwatch their Gibraltar Laboratory"
       ],
       "secondaryCountryFlags": [
+        "Gibraltar.png",
         "Spain.png",
         "United States.png",
         "French Southern And Antarctic Lands.png",
@@ -3178,6 +4404,18 @@
       "npcs": [
         "Hector",
         "Claudio"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Spain, United States, French Southern and Antarctic Lands, China, Iceland, Switzerland",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -3212,7 +4450,20 @@
         "Omnics across the world pilgrim towards the Himalayas"
       ],
       "secondaryCountryFlags": [
+        "Nepal.png",
         "India.png"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "India",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -3243,9 +4494,18 @@
       "eraName": "The Golden Age",
       "lat": 48.8588897,
       "lon": 2.320041,
-      "secondaryCountryFlags": [],
       "headlines": [
         "Overwatch expands personnel for Reyes lead operations"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "París, France",
+          "country": "France",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "France.png"
       ]
     },
     {
@@ -3271,13 +4531,22 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "secondaryCountryFlags": [],
       "headlines": [
         "ALF extremist group causes nuclear fallout in the Outback",
         "Tensions between humans and Omnics intensify in Australia"
       ],
       "npcs": [
         "Mason"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
       ]
     },
     {
@@ -3303,13 +4572,22 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "secondaryCountryFlags": [],
       "headlines": [
         "\"Junker Monarchy\" vanishes collaborators to the wasteland",
         "Australia refuses to negotiate with Junkers"
       ],
       "npcs": [
         "Mason"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
       ]
     },
     {
@@ -3339,10 +4617,19 @@
       "eraName": "The Golden Age",
       "lat": 35.6762,
       "lon": 139.6503,
-      "secondaryCountryFlags": [],
       "headlines": [
         "Gang violence in Japa slows down, but Shimada activity is at an all time high",
         "Shimada Clan operators wield unknown energy swords during confrontation with rival groups"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
       ]
     },
     {
@@ -3370,6 +4657,7 @@
         "Ingrid"
       ],
       "secondaryCountryFlags": [
+        "Switzerland.png",
         "Sweden.png"
       ],
       "yearStart": 2053,
@@ -3380,6 +4668,18 @@
       "headlines": [
         "Meet the new face of naoobiotics",
         "Yet another medical breakthrough thanks  to Dr. Angela Zeigler"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sweden",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -3400,7 +4700,6 @@
       "lat": 36.9034309,
       "lon": -82.7853107,
       "yearEnd": null,
-      "secondaryCountryFlags": [],
       "headlines": [
         "SEP subjects go silent across America",
         "Naugthon research to be classified and kept under lock"
@@ -3410,6 +4709,16 @@
           "text": "Overwatch Website, Sierra",
           "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Appalachian Virginia, United States",
+          "country": "United States",
+          "reasoning": "Sierra Turner Woods is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -3434,9 +4743,18 @@
       "yearStart": 2054,
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
       "headlines": [
         "Crisis veterans struggle to substain their families after the war"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Findlay Docherty is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
       ]
     },
     {
@@ -3462,7 +4780,6 @@
         "Frankie",
         "Bez"
       ],
-      "secondaryCountryFlags": [],
       "headlines": [
         "Gang violence in the new Wild West increases",
         "Arbalest reports assets stolen after repeated heists"
@@ -3472,6 +4789,16 @@
           "text": "Deadlock Rebels",
           "url": "https://www.amazon.com/Deadlock-Rebels-AFK-Book-Overwatch-ebook/dp/B0912HD7Q2"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bellaire, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -3492,6 +4819,7 @@
       "yearEnd": 2060,
       "npcs": [],
       "secondaryCountryFlags": [
+        "Italy.png",
         "Mexico.png",
         "Egypt.png",
         "Greece.png",
@@ -3505,6 +4833,18 @@
         {
           "text": "Overwatch Website, Vendetta",
           "url": "https://overwatch.blizzard.com/en-us/heroes/vendetta/"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mexico, Egypt, Greece, Iraq",
+          "reasoning": ""
         }
       ]
     },
@@ -3530,8 +4870,17 @@
       "yearStart": 2056,
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
-      "headlines": []
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": "Ye Anran is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "The New West",
@@ -3565,10 +4914,19 @@
         "Frankie",
         "Bez"
       ],
-      "secondaryCountryFlags": [],
       "headlines": [
         "Overwatch cracks down on Gang violence globally",
         "Gabriel Reyes recurits a minor into special division"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roud 66, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -3589,17 +4947,26 @@
       "eraName": "The Golden Age",
       "lat": 36.9034309,
       "lon": -82.7853107,
-      "secondaryCountryFlags": [],
       "headlines": [
         "US Government publicly allows SEP Soldiers to remain anonymous"
       ],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Appalachian Virginia, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Hana Song is Born",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "D.va"
@@ -3614,13 +4981,25 @@
         }
       ],
       "eraName": "The Golden Age",
-      "yearStart": 2057
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": "Hana Song is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Mizuki Kawano is Born",
       "locationType": "earth",
       "cityDisplayName": "Fukuoka, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Mitzuki"
@@ -3635,7 +5014,19 @@
       "lat": 33.6251241,
       "lon": 130.6180016,
       "eraName": "The Golden Age",
-      "yearStart": 2057
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Fukuoka, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki Kawano is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Vancouver Floods",
@@ -3663,7 +5054,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "British Columbia, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Building Coalitions",
@@ -3688,13 +5089,23 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Havana, Cuba",
+          "country": "Cuba",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Cuba.png"
+      ]
     },
     {
       "name": "Kiriko Kamori is Born",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Kiriko"
@@ -3709,7 +5120,19 @@
         }
       ],
       "eraName": "The Golden Age",
-      "yearStart": 2057
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "Kiriko Kamori is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "The Architech Academy",
@@ -3734,7 +5157,17 @@
       ],
       "yearStart": 2056,
       "yearEnd": 2060,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "India.png"
+      ]
     },
     {
       "name": "Liao's Renaissance",
@@ -3758,7 +5191,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "Ecological Initiative",
@@ -3781,7 +5224,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Samoa.png"
+      ]
     },
     {
       "name": "The Scourge of Numbani",
@@ -3805,7 +5258,17 @@
       ],
       "yearStart": 2056,
       "yearEnd": 2060,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Gwishin",
@@ -3828,7 +5291,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ]
     },
     {
       "name": "Black Ops",
@@ -3854,7 +5327,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2056,
-      "yearEnd": 2060
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Capetown, South Africa",
+          "country": "South Africa",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Africa.png"
+      ]
     },
     {
       "name": "Growing with the Clan",
@@ -3874,7 +5357,17 @@
       "lon": 138.7274,
       "yearStart": 2057,
       "yearEnd": 2068,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Survivor",
@@ -3901,7 +5394,17 @@
       "yearEnd": 2060,
       "eraName": "The Golden Age",
       "lat": -20.7274568,
-      "lon": 139.49896
+      "lon": 139.49896,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Outback Wasteland, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Pocket King",
@@ -3925,7 +5428,17 @@
       "yearEnd": 2068,
       "eraName": "The Golden Age",
       "lat": 43.7402961,
-      "lon": 7.426559
+      "lon": 7.426559,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Monaco.png"
+      ]
     },
     {
       "name": "The Red Promise",
@@ -3948,13 +5461,23 @@
       ],
       "yearStart": 2053,
       "yearEnd": 2060,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang City, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Juno Teo Minh is Born",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Juno"
@@ -3969,7 +5492,19 @@
         }
       ],
       "eraName": "The Golden Age",
-      "yearStart": 2060
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": "Juno Teo Minh is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Red Promise Colony.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Valkirie",
@@ -3993,13 +5528,23 @@
         }
       ],
       "yearStart": 2063,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "Ye Wuyang is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Wuyang"
@@ -4014,7 +5559,19 @@
         }
       ],
       "eraName": "The Golden Age",
-      "yearStart": 2060
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": "Ye Wuyang is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Radiation Poisoning",
@@ -4042,7 +5599,17 @@
       ],
       "yearStart": 2063,
       "yearEnd": 2065,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Melbourne, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Deep Rising",
@@ -4065,13 +5632,23 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gwishin Omnium, East China Sea",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Illari Quispe Ruiz is Born",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Illari"
@@ -4088,7 +5665,19 @@
         }
       ],
       "eraName": "The Golden Age",
-      "yearStart": 2060
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": "Illari Quispe Ruiz is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Omnic Liberation",
@@ -4107,7 +5696,17 @@
         "26Null Sector"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Harnessing te Harness",
@@ -4129,13 +5728,23 @@
       "yearEnd": 2068,
       "eraName": "The Golden Age",
       "x": 60,
-      "y": 30
+      "y": 30,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Interstellar Journey Space Station",
+          "country": "Interstellar Journey Space Station",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Interstellar Journey Space Station.png"
+      ]
     },
     {
       "name": "Specimen 8 is Born",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Wrecking Ball"
@@ -4146,7 +5755,20 @@
       "x": 60,
       "y": 70,
       "eraName": "The Golden Age",
-      "yearStart": 2062
+      "yearStart": 2062,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Specimen 8 is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Horizon Lunar Colony.png"
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Omnic Housing",
@@ -4168,6 +5790,16 @@
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
       ]
     },
     {
@@ -4191,7 +5823,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Atlantic Arcology.png"
+      ]
     },
     {
       "name": "Taking the Throne",
@@ -4214,7 +5856,17 @@
         }
       ],
       "yearStart": 2064,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Project Echo Goes Online",
@@ -4229,7 +5881,17 @@
       "lat": 59.9133301,
       "lon": 10.7389701,
       "eraName": "The Golden Age",
-      "yearStart": 2065
+      "yearStart": 2065,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oslo, Norway",
+          "country": "Norway",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Norway.png"
+      ]
     },
     {
       "name": "Fell Dragons",
@@ -4257,7 +5919,17 @@
         }
       ],
       "yearStart": 2066,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Biolight",
@@ -4275,7 +5947,17 @@
       "lon": 77.4126,
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "India.png"
+      ]
     },
     {
       "name": "Search and Rescue",
@@ -4297,7 +5979,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen, Denmark",
+          "country": "Denmark",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Denmark.png"
+      ]
     },
     {
       "name": "Cursed",
@@ -4320,7 +6012,17 @@
       "lat": 35.6768601,
       "lon": 139.7638947,
       "yearStart": 2066,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Lost in Time",
@@ -4344,7 +6046,17 @@
       ],
       "yearStart": 2066,
       "yearEnd": 2067,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Takeover",
@@ -4369,7 +6081,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Lunar Revolt",
@@ -4394,7 +6116,17 @@
       ],
       "yearStart": 2062,
       "yearEnd": 2068,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Horizon Lunar Colony.png"
+      ]
     },
     {
       "name": "Uneasy Alliance",
@@ -4422,7 +6154,17 @@
       "yearEnd": 2068,
       "eraName": "The Golden Age",
       "lat": 43.7402961,
-      "lon": 7.426559
+      "lon": 7.426559,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Monaco.png"
+      ]
     },
     {
       "name": "Intrepit Adventurers",
@@ -4439,7 +6181,17 @@
       "lat": 45.1960403,
       "lon": -63.1653789,
       "yearStart": 2068,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Nova Scotia, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Blacklisted",
@@ -4464,7 +6216,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dublin, Ireland",
+          "country": "Ireland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Ireland.png"
+      ]
     },
     {
       "name": "Shimada Takedown",
@@ -4490,6 +6252,16 @@
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
       ]
     },
     {
@@ -4508,7 +6280,17 @@
       "lon": -0.1277653,
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Cold Snap",
@@ -4533,7 +6315,17 @@
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
-      "yearEnd": 2068
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Ecoopint Antartica",
+          "country": "Antarctica",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Antarctica.png"
+      ]
     },
     {
       "name": "Chronal Dissociation",
@@ -4556,7 +6348,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2069,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Shrine Maiden",
@@ -4574,7 +6376,17 @@
         "22Hashimoto"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Champion",
@@ -4592,7 +6404,17 @@
       "lon": 135,
       "yearStart": 2062,
       "yearEnd": 2068,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "The Oslo Attack",
@@ -4618,7 +6440,17 @@
         }
       ],
       "yearStart": 2068,
-      "eraName": "The Golden Age"
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oslo, Norway",
+          "country": "Norway",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Norway.png"
+      ]
     },
     {
       "name": "Retribution",
@@ -4643,7 +6475,17 @@
         }
       ],
       "yearStart": 2068,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome,, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "The Venice Incident",
@@ -4670,6 +6512,16 @@
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
       ]
     },
     {
@@ -4695,7 +6547,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iraq.png"
+      ]
     },
     {
       "name": "Prodigy Child",
@@ -4713,7 +6575,17 @@
       "lon": -72.545,
       "yearStart": 2060,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ]
     },
     {
       "name": "Stolen Future",
@@ -4732,7 +6604,17 @@
         "03Talon"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Deep Sea Raiders",
@@ -4756,7 +6638,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Coral Sea",
+          "country": "New Zealand",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "New Zealand.png"
+      ]
     },
     {
       "name": "Uprising",
@@ -4789,7 +6681,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2069,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Widowed",
@@ -4813,7 +6715,17 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "image": ""
+      "image": "",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "France.png"
+      ]
     },
     {
       "name": "Neural Reconditioning",
@@ -4839,8 +6751,17 @@
       "image": "",
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
-      "headlines": []
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iraq.png"
+      ]
     },
     {
       "name": "Failure at Sea",
@@ -4868,7 +6789,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2069,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Samoa.png"
+      ]
     },
     {
       "name": "La Lupa",
@@ -4886,7 +6817,17 @@
       "lon": 12.491903,
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Forced Retirement",
@@ -4911,7 +6852,17 @@
       ],
       "yearStart": 2069,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Asuncion, Paraguay",
+          "country": "Paraguay",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Paraguay.png"
+      ]
     },
     {
       "name": "Resolve",
@@ -4929,7 +6880,17 @@
       "lon": 123.35,
       "yearStart": 2069,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Secret Omnium",
+          "country": "Antarctica",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Antarctica.png"
+      ]
     },
     {
       "name": "Missing in Action",
@@ -4956,7 +6917,17 @@
       ],
       "yearStart": 2069,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Warsaw, Poland",
+          "country": "Poland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Poland.png"
+      ]
     },
     {
       "name": "Another Job, Another Battlefield",
@@ -4981,7 +6952,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Port-de-Paix,, Haiti",
+          "country": "Haiti",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Haiti.png"
+      ]
     },
     {
       "name": "Fun with Friends",
@@ -5001,7 +6982,17 @@
       "lon": 12.3345898,
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Hacking Addiction",
@@ -5019,7 +7010,17 @@
       "lon": -96.1342,
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "MEKKA",
@@ -5041,7 +7042,17 @@
       ],
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ]
     },
     {
       "name": "Disappeared",
@@ -5059,7 +7070,17 @@
       "yearStart": 2070,
       "eraName": "The Fall of Overwatch",
       "lat": 33.6353873,
-      "lon": -84.170196
+      "lon": -84.170196,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Panola Mountain, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Fighting the System",
@@ -5075,7 +7096,17 @@
       "lon": 2.320041,
       "yearStart": 2068,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "France.png"
+      ]
     },
     {
       "name": "Overridden",
@@ -5093,7 +7124,17 @@
       "lon": 24.9435408,
       "yearStart": 2069,
       "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Helsinki, Finland",
+          "country": "Finland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Finland.png"
+      ]
     },
     {
       "name": "Storm Rising",
@@ -5125,6 +7166,16 @@
       ],
       "npcs": [
         "Maximillien"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Havana, Cuba",
+          "country": "Cuba",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Cuba.png"
       ]
     },
     {
@@ -5145,7 +7196,17 @@
         "03Talon"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "The Conspiracy",
@@ -5165,7 +7226,17 @@
       "lon": -96.1342,
       "yearStart": 2069,
       "yearEnd": 2072,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Closed Fist",
@@ -5193,7 +7264,17 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "npcs": []
+      "npcs": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Singapore, Singapore",
+          "country": "Singapore",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Singapore.png"
+      ]
     },
     {
       "name": "Open Talon",
@@ -5219,6 +7300,16 @@
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iceland.png"
       ]
     },
     {
@@ -5239,7 +7330,17 @@
       "lon": -4.2501687,
       "yearStart": 2070,
       "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Scotland.png"
+      ]
     },
     {
       "name": "Back in Business",
@@ -5257,7 +7358,17 @@
       "lon": 12.3345898,
       "yearStart": 2068,
       "yearEnd": 2077,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "The Zurich Attack",
@@ -5284,7 +7395,17 @@
       ],
       "yearStart": 2070,
       "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "Self Discovery",
@@ -5303,7 +7424,17 @@
       "lon": 84.124,
       "yearStart": 2070,
       "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nepal.png"
+      ]
     },
     {
       "name": "The Petras Act Hearings",
@@ -5329,7 +7460,17 @@
       "lon": 35.4745669,
       "yearStart": 2070,
       "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch"
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Petra, Jordan",
+          "country": "Jordan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Jordan.png"
+      ]
     },
     {
       "name": "Code of Violence",
@@ -5353,7 +7494,17 @@
         "Talon"
       ],
       "image": "",
-      "npcs": []
+      "npcs": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "New Mexico, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Released",
@@ -5374,7 +7525,17 @@
         "Talon"
       ],
       "image": "",
-      "npcs": []
+      "npcs": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iraq.png"
+      ]
     },
     {
       "name": "Shrike",
@@ -5393,7 +7554,17 @@
       "lon": 31,
       "yearStart": 2069,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Necropolis, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Found Family",
@@ -5411,7 +7582,17 @@
       "lon": -4.2501687,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Scotland.png"
+      ]
     },
     {
       "name": "Runs in the Family",
@@ -5429,7 +7610,17 @@
       "lon": -105.2664724,
       "yearStart": 2071,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Deadlock Gorge, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Treassure",
@@ -5449,7 +7640,17 @@
       "lon": 135,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "A Better World",
@@ -5468,7 +7669,17 @@
         "Vishkar"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Brazil.png"
+      ]
     },
     {
       "name": "Networking",
@@ -5488,7 +7699,17 @@
         "05Vishkar"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Left Behind",
@@ -5507,7 +7728,17 @@
       "lon": -71.4448113,
       "yearStart": 2070,
       "yearEnd": 2079,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte Cristi, Dominican Republic",
+          "country": "Dominican Republic",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Dominican Republic.png"
+      ]
     },
     {
       "name": "Anubis Escapes",
@@ -5525,7 +7756,17 @@
       "lon": 31.2357257,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Siberian Front",
@@ -5543,7 +7784,17 @@
       "lon": 100,
       "yearStart": 2071,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Novoanskoye, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Game On",
@@ -5566,7 +7817,17 @@
         }
       ],
       "yearStart": 2075,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ]
     },
     {
       "name": "Vanadium Strand",
@@ -5585,7 +7846,17 @@
       "lon": 35.4745669,
       "yearStart": 2069,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Petra, Jordan",
+          "country": "Jordan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Jordan.png"
+      ]
     },
     {
       "name": "Bounty Hunter",
@@ -5601,7 +7872,17 @@
       "lon": 12.5700724,
       "yearStart": 2070,
       "yearEnd": 2079,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen, Denmark",
+          "country": "Denmark",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Denmark.png"
+      ]
     },
     {
       "name": "Legend of the Junker Queen",
@@ -5619,7 +7900,17 @@
       "lon": 139.49896,
       "yearStart": 2064,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Outback Wasteland, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Fire Star",
@@ -5637,7 +7928,17 @@
       "lon": 104.063315,
       "yearStart": 2074,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Idina Troopers",
@@ -5655,7 +7956,17 @@
       "lon": 8.5919,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Train Hopper",
@@ -5673,7 +7984,17 @@
       "lon": -95.3676974,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Houston, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Traitor",
@@ -5692,9 +8013,18 @@
       "cityDisplayName": "Tortuga, Haiti",
       "yearEnd": null,
       "eraName": "The Age of Conflict",
-      "secondaryCountryFlags": [],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tortuga, Haiti",
+          "country": "Haiti",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Haiti.png"
+      ]
     },
     {
       "name": "Crime Spree",
@@ -5713,7 +8043,17 @@
       "lon": 151.2082848,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Sydney, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Sonic Policing",
@@ -5737,7 +8077,17 @@
       ],
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Brazil.png"
+      ]
     },
     {
       "name": "Apagando las Luces",
@@ -5756,7 +8106,17 @@
       "lon": -96.1342,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Dragon Slayer",
@@ -5775,7 +8135,17 @@
       "lon": 26.102684,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bucharest, Romania",
+          "country": "Romania",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Romania.png"
+      ]
     },
     {
       "name": "Vigilante",
@@ -5794,7 +8164,17 @@
         "Helix Securities"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Hero",
@@ -5813,7 +8193,17 @@
         "21Los Muertos"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Help for the Needy",
@@ -5833,7 +8223,17 @@
       "lon": 31.2357257,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Squire",
@@ -5852,7 +8252,17 @@
       "lon": 11.9670171,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Destroyer",
@@ -5870,7 +8280,17 @@
       "lon": 74.724091,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Boklovo, Kurjikstan",
+          "country": "Kurjikstan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Kyrgyzstan.png"
+      ]
     },
     {
       "name": "Shooting Star",
@@ -5888,7 +8308,17 @@
       "lon": 129.0752365,
       "yearStart": 2075,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ]
     },
     {
       "name": "The Last Bastion",
@@ -5904,13 +8334,23 @@
       "lon": 8.1647488,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Black Forest, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ]
     },
     {
       "name": "Fika is Born",
       "locationType": "earth",
       "cityDisplayName": "Lijiang, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Jetpack Cat"
@@ -5924,7 +8364,19 @@
       ],
       "lat": 26.8595868,
       "lon": 100.2249797,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": "Fika is Born"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Return of the Maiden",
@@ -5941,7 +8393,17 @@
       "lat": 35.3606,
       "lon": 138.7274,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Here to be heard",
@@ -5959,7 +8421,17 @@
       "lon": -43.2093727,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Brazil.png"
+      ]
     },
     {
       "name": "Lurking in the Water",
@@ -5981,7 +8453,17 @@
       ],
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Ecopoint Monterrey, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Assassination",
@@ -6001,7 +8483,17 @@
         "Shambali"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Recall",
@@ -6020,7 +8512,17 @@
       "lat": 36.1285933,
       "lon": -5.3474761,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "London Calling",
@@ -6040,13 +8542,23 @@
         "05Vishkar"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Rise and Shine",
       "locationType": "earth",
       "cityDisplayName": "Ecoopint Antartica",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "filters": [
         "Mei"
@@ -6058,7 +8570,26 @@
       "lat": -67.107616,
       "lon": -68099824,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Ecoopint Antartica",
+          "country": "Antarctica",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Ecopoint Antartica",
+          "country": "Antarctica,",
+          "reasoning": "Mei wakes up from Cryo sleep and intercepts Winstons's Recall"
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Antarctica.png"
+      ],
+      "yearEnd": null,
+      "npcs": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Protector",
@@ -6076,7 +8607,17 @@
       "lat": 35.3606,
       "lon": 138.7274,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Unfinished Business",
@@ -6095,7 +8636,17 @@
       "lat": 20.0410035,
       "lon": -72.785587,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Port-de-Paix, Haiti",
+          "country": "Haiti",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Haiti.png"
+      ]
     },
     {
       "name": "Ecological Network",
@@ -6113,7 +8664,17 @@
       "lat": 60.5678461,
       "lon": -140.4056911,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Mount Logan, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Infiltration",
@@ -6134,7 +8695,17 @@
       "lat": 59.938732,
       "lon": 30.316229,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Saint Petersburg, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Answering the Call",
@@ -6152,7 +8723,17 @@
       "lat": 50,
       "lon": 8,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Eichenwalde Castle, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Germany.png"
+      ]
     },
     {
       "name": "A New Empire",
@@ -6170,7 +8751,17 @@
       "lat": 41.8909421,
       "lon": 12.491903,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Genius Grant",
@@ -6187,7 +8778,17 @@
       "lat": 12.0022,
       "lon": 8.5919,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Reflections",
@@ -6202,10 +8803,19 @@
       "cityDisplayName": "Watchpoint Gibraltar",
       "yearEnd": null,
       "eraName": "The Age of Conflict",
-      "secondaryCountryFlags": [],
       "headlines": [],
       "sources": [],
-      "yearStart": 2077
+      "yearStart": 2077,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Old Soldiers",
@@ -6225,7 +8835,17 @@
         "Talon"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Necropolis, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Bastet",
@@ -6244,7 +8864,17 @@
         "Talon"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Failed Recovery",
@@ -6260,7 +8890,17 @@
       "y": 70,
       "yearStart": 2070,
       "yearEnd": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Horizon Lunar Colony.png"
+      ]
     },
     {
       "name": "Old Dragons",
@@ -6279,7 +8919,17 @@
       "lat": 35.6762,
       "lon": 139.6503,
       "yearStart": 2077,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "The World could use more Heroes",
@@ -6300,7 +8950,17 @@
       "lat": 40.7127281,
       "lon": -74.0060152,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "New York, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Heroes Never Die",
@@ -6320,7 +8980,17 @@
       "lat": 30.0443879,
       "lon": 31.2357257,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Doomfist Escapes",
@@ -6339,7 +9009,17 @@
         "Talon"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iceland.png"
+      ]
     },
     {
       "name": "Stolen Gauntlet",
@@ -6359,7 +9039,17 @@
         "19Numbani"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Business Meeting",
@@ -6384,7 +9074,17 @@
       "npcs": [
         "Maximillien"
       ],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Monaco.png"
+      ]
     },
     {
       "name": "Idina Unit OR15A Goes Online",
@@ -6401,7 +9101,17 @@
       "lat": 12.0022,
       "lon": 8.5919,
       "eraName": "The Age of Conflict",
-      "yearStart": 2078
+      "yearStart": 2078,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Binary",
@@ -6420,7 +9130,17 @@
         "Ironclad"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tiveden, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Masquerade",
@@ -6442,7 +9162,17 @@
         "Max's Vault"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Searching",
@@ -6462,7 +9192,17 @@
       "lat": 19.1738,
       "lon": -96.1342,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Stone by Stone",
@@ -6481,7 +9221,17 @@
       "lat": 23.2599,
       "lon": 77.4126,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Suravasa, India",
+          "country": "India",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "India.png"
+      ]
     },
     {
       "name": "Venture's Adventures",
@@ -6500,7 +9250,17 @@
       "lat": 28.3949,
       "lon": 84.124,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Nepal.png"
+      ]
     },
     {
       "name": "System Reboot",
@@ -6519,7 +9279,17 @@
         "08Ironclad"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Failed Exams",
@@ -6537,7 +9307,17 @@
       "lat": 30.659867,
       "lon": 104.063315,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Sending a Message",
@@ -6556,7 +9336,17 @@
       "lat": 41.8909421,
       "lon": 12.491903,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Yokais",
@@ -6573,7 +9363,17 @@
       "lat": 35.3606,
       "lon": 138.7274,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Tangle with Talon",
@@ -6594,7 +9394,17 @@
       "lat": 36.1725297,
       "lon": 27.9194016,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Illios, Greece",
+          "country": "Greece",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Greece.png"
+      ]
     },
     {
       "name": "Hero of Numbani",
@@ -6614,7 +9424,17 @@
       "lat": 12.0022,
       "lon": 8.5919,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Last Child of the Sun",
@@ -6632,7 +9452,17 @@
       "lat": -13.1631,
       "lon": -72.545,
       "yearStart": 2078,
-      "eraName": "The Age of Conflict"
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ]
     },
     {
       "name": "Reunion",
@@ -6652,7 +9482,17 @@
       "lat": 40.0170005,
       "lon": -105.2664724,
       "eraName": "The Age of Conflict",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roud 66, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Worsening Atmosphere",
@@ -6669,7 +9509,17 @@
       "x": 45,
       "y": 35,
       "eraName": "The Age of Conflict",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Red Promise Colony.png"
+      ]
     },
     {
       "name": "New Blood",
@@ -6689,7 +9539,17 @@
         "00Overwatch"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "The Plan",
@@ -6708,7 +9568,17 @@
         "16Junkers"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Friendly Rivalry",
@@ -6729,7 +9599,17 @@
         "16Junkers"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Australia.png"
+      ]
     },
     {
       "name": "Lost Family",
@@ -6750,7 +9630,17 @@
         "00Overwatch"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Egypt.png"
+      ]
     },
     {
       "name": "Suspicious activity",
@@ -6771,8 +9661,17 @@
       "sources": [],
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
-      "headlines": []
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Stalker",
@@ -6791,7 +9690,17 @@
       "lat": 44.4361414,
       "lon": 26.102684,
       "eraName": "The Age of Conflict",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bucharest, Romania",
+          "country": "Romania",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Romania.png"
+      ]
     },
     {
       "name": "Surprise attack",
@@ -6809,7 +9718,17 @@
       "lat": 60,
       "lon": 100,
       "eraName": "The Age of Conflict",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Novoanskoye, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Russia.png"
+      ]
     },
     {
       "name": "Shockwaves",
@@ -6827,7 +9746,17 @@
         "27Null Sector"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Zero Hour",
@@ -6852,7 +9781,17 @@
       "lat": 48.8534951,
       "lon": 2.3483915,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "France.png"
+      ]
     },
     {
       "name": "Luck of the Draw",
@@ -6870,7 +9809,17 @@
       "lat": 36.1674263,
       "lon": -115.1484131,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Las Vegas, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Busan Defense",
@@ -6893,7 +9842,17 @@
       "lat": 35.1799528,
       "lon": 129.0752365,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "South Korea.png"
+      ]
     },
     {
       "name": "Thoughtless Gods",
@@ -6911,7 +9870,17 @@
       "lat": 26.8595868,
       "lon": 100.2249797,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Where Honor Lives",
@@ -6930,7 +9899,17 @@
       "lat": 35.6768601,
       "lon": 139.7638947,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Resistance",
@@ -6956,7 +9935,17 @@
       "lat": -22.9110137,
       "lon": -43.2093727,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Brazil.png"
+      ]
     },
     {
       "name": "Unity",
@@ -6974,7 +9963,17 @@
       "lat": 12.0022,
       "lon": 8.5919,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Numbani.png"
+      ]
     },
     {
       "name": "Rebuilding Ruins",
@@ -6994,7 +9993,17 @@
       "lat": 37.7412,
       "lon": -25.6756,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Atlantic Arcology.png"
+      ]
     },
     {
       "name": "Liberation",
@@ -7025,7 +10034,17 @@
       "lat": 43.6534817,
       "lon": -79.3839347,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Canada.png"
+      ]
     },
     {
       "name": "Lost Ghosts",
@@ -7045,7 +10064,17 @@
         "27Null Sector"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "Ironclad Help",
@@ -7067,7 +10096,17 @@
       "lat": 57.7072326,
       "lon": 11.9670171,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "A Great Day",
@@ -7088,7 +10127,17 @@
       "lat": 56,
       "lon": 18,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Baltic Sea",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Sweden.png"
+      ]
     },
     {
       "name": "Lucky Man",
@@ -7108,7 +10157,17 @@
         "24Conspiracy"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "Stalemate",
@@ -7129,7 +10188,17 @@
       "yearEnd": 2080,
       "eraName": "The Null Sector Invasion",
       "lat": -75.1,
-      "lon": 123.35
+      "lon": 123.35,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Secret Omnium",
+          "country": "Antarctica",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Antarctica.png"
+      ]
     },
     {
       "name": "Visitor",
@@ -7148,7 +10217,17 @@
         "Overwatch"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Red Promise Escape Ship",
+          "country": "Red Promise Colony",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Red Promise Colony.png"
+      ]
     },
     {
       "name": "Water Fighter",
@@ -7165,7 +10244,17 @@
       "lat": 30.659867,
       "lon": 104.063315,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Emergency Landing",
@@ -7187,7 +10276,17 @@
         "07Lucheng"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Mexico.png"
+      ]
     },
     {
       "name": "Free the Phreaks",
@@ -7205,7 +10304,17 @@
       "lat": 34.0209,
       "lon": -6.8416,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Aatlis, Morocco",
+          "country": "Morocco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Morocco.png"
+      ]
     },
     {
       "name": "Warm Welcome",
@@ -7238,7 +10347,17 @@
       "lat": 36.1285933,
       "lon": -5.3474761,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Curse Breaker",
@@ -7256,7 +10375,17 @@
       "lat": 35.6768601,
       "lon": 139.7638947,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Japan.png"
+      ]
     },
     {
       "name": "Partnership",
@@ -7278,7 +10407,17 @@
         "28Collective"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Atlantic Arcology.png"
+      ]
     },
     {
       "name": "Picture of Sucesss",
@@ -7297,7 +10436,17 @@
         "05Vishkar"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Hazardous Tactics",
@@ -7316,7 +10465,17 @@
       "lat": 29.5918,
       "lon": 52.5836,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Iraq.png"
+      ]
     },
     {
       "name": "Together",
@@ -7331,10 +10490,19 @@
       "cityDisplayName": "Watchpoint Gibraltar",
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
-      "secondaryCountryFlags": [],
       "headlines": [],
       "sources": [],
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Futures Past",
@@ -7355,7 +10523,17 @@
       "lat": -13.1631,
       "lon": -72.545,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2079
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Peru.png"
+      ]
     },
     {
       "name": "New Heights",
@@ -7374,7 +10552,17 @@
       "yearEnd": 2080,
       "eraName": "The Null Sector Invasion",
       "lat": 39.1131257,
-      "lon": -108.0127646
+      "lon": -108.0127646,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
+      ]
     },
     {
       "name": "Vested Interests",
@@ -7396,6 +10584,16 @@
       "lon": 7.426559,
       "npcs": [
         "Maximillien"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Monaco.png"
       ]
     },
     {
@@ -7417,6 +10615,16 @@
       "lon": 12.5700724,
       "npcs": [
         "Maximillien"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen,, Denmark",
+          "country": "Denmark",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Denmark.png"
       ]
     },
     {
@@ -7437,7 +10645,17 @@
       "eraName": "The Null Sector Invasion",
       "lat": 30.659867,
       "lon": 104.063315,
-      "npcs": []
+      "npcs": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "The Upper Hand",
@@ -7457,7 +10675,17 @@
       "lat": 41.8909421,
       "lon": 12.491903,
       "yearStart": 2080,
-      "eraName": "The Null Sector Invasion"
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Sentinels",
@@ -7478,7 +10706,17 @@
       "lat": -34.8222,
       "lon": -58.5358,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2080
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Buenos Aires, Argentina",
+          "country": "Argentina",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Argentina.png"
+      ]
     },
     {
       "name": "New Charter",
@@ -7499,7 +10737,17 @@
       "yearEnd": 2080,
       "eraName": "The Null Sector Invasion",
       "lat": 47.3769,
-      "lon": 8.5417
+      "lon": 8.5417,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Switzerland.png"
+      ]
     },
     {
       "name": "The Invitation",
@@ -7522,7 +10770,17 @@
       ],
       "image": "",
       "npcs": [],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Signs of Life",
@@ -7542,7 +10800,17 @@
         "Overwatch"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Reconciliation",
@@ -7564,7 +10832,17 @@
       "lat": 51.5074456,
       "lon": -0.1277653,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2080
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United Kingdom.png"
+      ]
     },
     {
       "name": "Elemental Kin",
@@ -7585,7 +10863,17 @@
       ],
       "image": "",
       "npcs": [],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "China.png"
+      ]
     },
     {
       "name": "Old Friend",
@@ -7606,6 +10894,16 @@
       "lon": 7.426559,
       "npcs": [
         "Maximillien"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Monaco.png"
       ]
     },
     {
@@ -7625,7 +10923,17 @@
         "00Overwatch"
       ],
       "image": "",
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Search and Destroy",
@@ -7644,7 +10952,17 @@
       "lat": 23.333333,
       "lon": 45.333333,
       "eraName": "The Reign of Talon",
-      "yearStart": 2080
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Riyadh, Saudi Arabia",
+          "country": "Saudi Arabia",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Saudi Arabia.png"
+      ]
     },
     {
       "name": "Reign of Talon",
@@ -7673,7 +10991,17 @@
       "npcs": [
         "Maximillien"
       ],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "Vengance Comes",
@@ -7707,8 +11035,17 @@
       "sources": [],
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
-      "headlines": []
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Serenza, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Italy.png"
+      ]
     },
     {
       "name": "From the Ashes",
@@ -7749,9 +11086,18 @@
       "yearStart": 2080,
       "yearEnd": null,
       "npcs": [],
-      "secondaryCountryFlags": [],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "Gibraltar.png"
+      ]
     },
     {
       "name": "Crossroads",
@@ -7777,12 +11123,21 @@
       "image": "",
       "npcs": [],
       "headlines": [],
-      "secondaryCountryFlags": [],
       "sources": [
         {
           "text": "Cross Roads",
           "url": "https://overwatch.blizzard.com/en-us/media/comic/crossroads/"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     },
     {
@@ -7809,12 +11164,21 @@
       "image": "",
       "npcs": [],
       "headlines": [],
-      "secondaryCountryFlags": [],
       "sources": [
         {
           "text": "Summit Breach",
           "url": "https://www.youtube.com/watch?v=lxz-055QD6Q"
         }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryFlags": [
+        "United States.png"
       ]
     }
   ]

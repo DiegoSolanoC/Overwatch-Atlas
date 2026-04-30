@@ -439,6 +439,10 @@ body.color-palette-nulled .event-sources-section {
     border-left: 3px solid #b388ff;
 }
 
+body.color-palette-nulled .event-relevant-locations-section {
+    border-left: 3px solid #b388ff; /* match sources */
+}
+
 body.color-palette-nulled .event-image-toggle-btn {
     background: #b388ff;
 }

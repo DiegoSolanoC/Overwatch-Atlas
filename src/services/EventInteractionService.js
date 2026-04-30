@@ -119,10 +119,11 @@ class EventInteractionService {
             const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             const isMobilePortrait = isTouchDevice && window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
             if (isMobilePortrait && window.standaloneEventSlide) {
-                // Mobile portrait: use standalone implementation
-                const eventIndex = this.eventManager.events.indexOf(event);
+                // Mobile portrait: use standalone implementation (same row list as Event Manager, not dock timeline)
+                const listEv = this.eventManager.events || [];
+                const eventIndex = listEv.indexOf(event);
                 if (eventIndex >= 0) {
-                    window.standaloneEventSlide.showEvent(eventIndex);
+                    window.standaloneEventSlide.showEvent(eventIndex, { eventList: listEv });
                 }
             } else {
                 // Desktop / mobile landscape: use simple dock-like implementation

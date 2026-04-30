@@ -1,0 +1,290 @@
+{
+  "events": [
+    {
+      "name": "Ana",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Cairo",
+          "country": "Egypt",
+          "reasoning": "Place of Birth, Primary center of Operations"
+        },
+        {
+          "locationName": "Zurich",
+          "country": "Switzerland",
+          "reasoning": "Overwatch HQ"
+        },
+        {
+          "locationName": "Moscow",
+          "country": "Russia",
+          "reasoning": "Permanently forbidden to ender the country following the Xie Incident"
+        },
+        {
+          "locationName": "Warsaw",
+          "country": "Poland",
+          "reasoning": "Went MIA during a Sniper Duel"
+        },
+        {
+          "locationName": "Necropolis",
+          "country": "Egypt",
+          "reasoning": "Former Hideout"
+        },
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "Temporary Alliance with Overwatch"
+        }
+      ]
+    },
+    {
+      "name": "Anran",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Ashe",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Baptiste",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Bastion",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Brigitte",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Cassidy",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "D.va",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Domina",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Doomfist",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Echo",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Emre",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Freja",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Genji",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Hanzo",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Hazard",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Illari",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Jetpack Cat",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Junker Queen",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Junkrat",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Juno",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Kiriko",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Life Weaver",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Lúcio",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Mauga",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Mei",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Mercy",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Mizuki",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Moira",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Orisa",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Pharah",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Ramattra",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Reaper",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Reinhardt",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Roadhog",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Sierra",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Sigma",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Sojourn",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Soldier 76",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Sombra",
+      "description": "Olivia Colomar",
+      "relevantLocations": []
+    },
+    {
+      "name": "Symmetra",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Torbjörn",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Tracer",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Vendetta",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Venture",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Widowmaker",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Winston",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Wrecking Ball",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Wuyang",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Zarya",
+      "description": "",
+      "relevantLocations": []
+    },
+    {
+      "name": "Zenyatta",
+      "description": "",
+      "relevantLocations": []
+    }
+  ]
+}

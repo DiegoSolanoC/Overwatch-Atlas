@@ -6,6 +6,16 @@
 import { createGlobeControlButton } from '../../app/helpers/ComponentLoadHelpers.js';
 import { EventMarkerManager } from '../../managers/EventMarkerManager.js';
 import { isEventSlideEditDevHost } from '../../utils/isEventSlideEditDevHost.js';
+import {
+    STORY_SECONDARY_PLACES_EDITOR_OPTS,
+    STORY_HERO_FILTER_PLACES_OPTS,
+    STORY_FACTION_FILTER_PLACES_OPTS,
+    STORY_NPC_FILTER_PLACES_OPTS,
+    applyStoryFilterPlacesToTarget,
+    heroPlacesForEditor,
+    factionPlacesForEditor,
+    npcPlacesForEditor
+} from '../../utils/StoryFilterPlacesSync.js';
 
 function teardownMenuServiceEventSystemLayout() {
     const st = window.__menuServiceEventSystemLayout;
@@ -87,7 +97,7 @@ function thumbPageTurnGrowKeyframes(isThumbsDesktop, locked) {
  */
 function updateStandalonePaginationForFilters() {
     const activeFilters = window.standaloneActiveFilters || new Set();
-    const events = window.eventManager?.events || [];
+    const events = window.eventManager?.getDockTimelineEvents?.() || [];
     const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
     
     if (!buttons.length) return;
@@ -609,12 +619,13 @@ export function createMenuButtonsContainer(statusService) {
                         const isSlideOpen = !!eventSlide?.classList.contains('open');
                         const ss = window.standaloneEventSlide;
                         if (!isSlideOpen && ss?.showStandaloneEventSlide) {
-                            const events = window.eventManager?.events || [];
+                            const events = window.eventManager?.getDockTimelineEvents?.() || [];
                             let idx = Number.isFinite(ss.currentEventIndex) ? ss.currentEventIndex : 0;
                             if (idx < 0) idx = 0;
                             if (idx >= events.length) idx = Math.max(0, events.length - 1);
                             const eventToOpen = ss.currentEventData || events[idx];
                             if (eventToOpen) {
+                                ss._presentationFromDockTimeline = true;
                                 ss.showStandaloneEventSlide(eventToOpen, idx);
                             }
                         }
@@ -964,15 +975,87 @@ export function createMenuButtonsContainer(statusService) {
                         currentEventIndex: 0,
                         currentPage: 1, // Track current page for marker display
                         allEvents: [],
+                        _presentationFromDockTimeline: true,
                         currentEventData: null,
                         currentVariantIndex: 0,
                         isEditing: false,
-                        
-                        showEvent(index) {
-                            const events = window.eventManager?.events || [];
+                        /** @type {{ archiveSource: string, eventIndex: number, presentationFromDock: boolean }[]} */
+                        _slideHistoryStack: [],
+                        _slideHistoryRestoring: false,
+
+                        pushSlideHistoryIfOpen() {
+                            const panel = document.getElementById('eventSlide');
+                            if (!panel?.classList.contains('open')) return;
+                            if (this._slideHistoryRestoring) return;
+                            const em = window.eventManager;
+                            this._slideHistoryStack.push({
+                                archiveSource: em?.dataService?.getArchiveSource?.() || 'story',
+                                eventIndex: this.currentEventIndex,
+                                presentationFromDock: !!this._presentationFromDockTimeline
+                            });
+                            this.updateBackButtonVisibility();
+                        },
+
+                        updateBackButtonVisibility() {
+                            const btn = document.getElementById('eventSlideBack');
+                            if (!btn) return;
+                            const n = this._slideHistoryStack?.length || 0;
+                            btn.style.display = n > 0 ? 'inline-flex' : 'none';
+                            btn.disabled = n === 0;
+                            btn.setAttribute('aria-hidden', n === 0 ? 'true' : 'false');
+                        },
+
+                        clearSlideHistory() {
+                            if (this._slideHistoryStack) {
+                                this._slideHistoryStack.length = 0;
+                            }
+                            this.updateBackButtonVisibility();
+                        },
+
+                        async goBackSlide() {
+                            if (!this._slideHistoryStack?.length) return;
+                            const prev = this._slideHistoryStack.pop();
+                            if (!prev) {
+                                this.updateBackButtonVisibility();
+                                return;
+                            }
+                            this._slideHistoryRestoring = true;
+                            try {
+                                const em = window.eventManager;
+                                if (em?.switchStoryArchiveSource) {
+                                    await em.switchStoryArchiveSource(prev.archiveSource);
+                                }
+                                if (prev.presentationFromDock) {
+                                    this.showEvent(prev.eventIndex, {});
+                                } else {
+                                    const list = em?.events || [];
+                                    this.showEvent(prev.eventIndex, { eventList: list });
+                                }
+                            } finally {
+                                this._slideHistoryRestoring = false;
+                            }
+                            this.updateBackButtonVisibility();
+                            if (window.SoundEffectsManager?.play) {
+                                window.SoundEffectsManager.play('eventClick');
+                            }
+                        },
+
+                        /**
+                         * @param {number} index
+                         * @param {{ eventList?: Array<Object>, keepSlideHistory?: boolean }} [options] - `eventList` = active Event Manager rows; omit for dock. `keepSlideHistory` for relevancy / prev-next while Back stack exists.
+                         */
+                        showEvent(index, options = {}) {
+                            if (!this._slideHistoryRestoring && !options.keepSlideHistory) {
+                                this.clearSlideHistory();
+                            }
+                            const dockList = window.eventManager?.getDockTimelineEvents?.() || [];
+                            const events =
+                                options.eventList != null ? options.eventList : dockList;
                             if (index < 0 || index >= events.length) return;
                             this.currentEventIndex = index;
                             this.allEvents = events;
+                            this._presentationFromDockTimeline =
+                                options.eventList == null || events === dockList;
                             
                             const eventData = events[index];
                             this.showStandaloneEventSlide(eventData, index);
@@ -990,13 +1073,21 @@ export function createMenuButtonsContainer(statusService) {
                             
                             let eventName = displayEvent.name || eventData.name || 'Unnamed Event';
                             const description = displayEvent.description || '';
-                            
-                            // Get image path using NavigationImageHelpers
+
+                            const useStoryDockImages = !!this._presentationFromDockTimeline;
                             let imagePath = null;
                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, eventName);
+                                imagePath = window.NavigationImageHelpers.getEventImagePath(
+                                    displayEvent,
+                                    eventName,
+                                    useStoryDockImages ? 'story' : undefined
+                                );
                             } else if (window.eventManager?.getEventImagePath) {
-                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                imagePath = window.eventManager.getEventImagePath(
+                                    displayEvent.name,
+                                    displayEvent.image,
+                                    useStoryDockImages ? 'story' : undefined
+                                );
                             } else {
                                 imagePath = displayEvent.image || displayEvent.imagePath || null;
                             }
@@ -1012,6 +1103,10 @@ export function createMenuButtonsContainer(statusService) {
                         
                         displaySlide(eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
                             const eventSlide = document.getElementById('eventSlide');
+                            if (!eventSlide) return;
+                            if (!eventSlide.classList.contains('open')) {
+                                this.clearSlideHistory();
+                            }
                             const eventSlideTitle = document.getElementById('eventSlideTitle');
                             const eventSlideText = document.getElementById('eventSlideText');
                             const eventSlideClose = document.getElementById('eventSlideClose');
@@ -1019,10 +1114,27 @@ export function createMenuButtonsContainer(statusService) {
                             const variantToggles = document.getElementById('eventVariantToggles');
                             const editBtn = document.getElementById('eventSlideEditBtn');
                             const saveBtn = document.getElementById('eventSlideSaveBtn');
-                            
-                            if (!eventSlide) return;
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSourceSlide = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+                            const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceSlide !== 'story';
                             
                             this.cancelEdit();
+
+                            const relElClear = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionClear = document.getElementById('eventRelevantLocationsSection');
+                            const heroLocEditClear = document.getElementById('eventSlideHeroLocationsEdit');
+                            if (relElClear) {
+                                relElClear.innerHTML = '';
+                            }
+                            if (relSectionClear) {
+                                relSectionClear.style.display = 'none';
+                            }
+                            if (heroLocEditClear) {
+                                heroLocEditClear.setAttribute('hidden', '');
+                                heroLocEditClear.style.display = 'none';
+                            }
                             
                             // Check for Olivia Colomar
                             const hasOliviaColomar = /Olivia\s+Colomar/gi.test(eventName) || 
@@ -1039,6 +1151,27 @@ export function createMenuButtonsContainer(statusService) {
                             
                             if (eventSlideTitle) eventSlideTitle.innerHTML = applyGlitch(eventName);
                             if (eventSlideText) eventSlideText.innerHTML = applyGlitch(description) || 'No description available.';
+
+                            const eventSlideLocation = document.getElementById('eventSlideLocation');
+                            const eventSlideTimelineMeta = document.getElementById('eventSlideTimelineMeta');
+                            const targetSlide = displayEvent || eventData;
+                            if (!isSatelliteArchive) {
+                                if (eventSlideLocation) eventSlideLocation.style.display = 'none';
+                                if (eventSlideTimelineMeta) eventSlideTimelineMeta.style.display = 'none';
+                            } else {
+                                if (eventSlideLocation) eventSlideLocation.style.display = 'none';
+                                if (eventSlideTimelineMeta) eventSlideTimelineMeta.style.display = 'none';
+                                const relEl = document.getElementById('eventSlideRelevantLocations');
+                                const isBioSlide =
+                                    archiveSourceSlide === 'heroes'
+                                    || archiveSourceSlide === 'factions'
+                                    || archiveSourceSlide === 'npcs';
+                                if (isBioSlide && relEl) {
+                                    window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                        targetSlide
+                                    );
+                                }
+                            }
                             
                             // Setup glitch toggle button
                             const glitchToggleBtn = document.getElementById('eventGlitchToggle');
@@ -1104,7 +1237,7 @@ export function createMenuButtonsContainer(statusService) {
                             
                             if (variantToggles) {
                                 variantToggles.innerHTML = '';
-                                if (isMultiEvent && eventData.variants) {
+                                if (!isSatelliteArchive && isMultiEvent && eventData.variants) {
                                     variantToggles.style.display = 'flex';
                                     eventData.variants.forEach((variant, idx) => {
                                         const btn = document.createElement('button');
@@ -1123,8 +1256,12 @@ export function createMenuButtonsContainer(statusService) {
                                             if (eventSlideText) eventSlideText.innerHTML = applyGlitch(vDesc) || 'No description available.';
                                             
                                             // Update image for variant
-                                            const vImagePath = window.eventManager?.getEventImagePath 
-                                                ? window.eventManager.getEventImagePath(v.name, v.image)
+                                            const vImagePath = window.eventManager?.getEventImagePath
+                                                ? window.eventManager.getEventImagePath(
+                                                    v.name,
+                                                    v.image,
+                                                    !isSatelliteArchive ? 'story' : undefined
+                                                )
                                                 : v.image;
                                             if (vImagePath) {
                                                 this.showImageOverlay(vImagePath);
@@ -1159,6 +1296,7 @@ export function createMenuButtonsContainer(statusService) {
                                 eventSlideClose.onclick = () => {
                                     console.log('[eventSlideClose MenuServiceHelpers] Close button clicked');
                                     this.cancelEdit();
+                                    this.clearSlideHistory();
                                     eventSlide.classList.remove('open');
                                     this.hideImageOverlay();
                                     
@@ -1192,6 +1330,8 @@ export function createMenuButtonsContainer(statusService) {
                                     this.hideImageOverlay();
                                 }
                             }, 100);
+
+                            this.updateBackButtonVisibility?.();
                         },
                         
                         wireEditButtons(eventData, displayEvent, editBtn, saveBtn, titleEl, textEl) {
@@ -1232,6 +1372,12 @@ export function createMenuButtonsContainer(statusService) {
                             this.isEditing = true;
                             this.editTarget = { eventData, displayEvent };
                             this.originalState = JSON.parse(JSON.stringify(eventData));
+
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSourceEdit = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+                            const isSatelliteArchiveEdit = !dockStoryPresentationActive && archiveSourceEdit !== 'story';
                             
                             const eventSlide = document.getElementById('eventSlide');
                             const eventSlideScrollable = document.getElementById('eventSlideScrollable');
@@ -1240,7 +1386,7 @@ export function createMenuButtonsContainer(statusService) {
                             
                             eventSlide?.classList.add('event-slide--inline-editing');
                             const orderRow = document.getElementById('eventSlideOrderRow');
-                            if (orderRow) {
+                            if (!isSatelliteArchiveEdit && orderRow) {
                                 orderRow.removeAttribute('hidden');
                                 orderRow.setAttribute('aria-hidden', 'false');
                             }
@@ -1262,6 +1408,42 @@ export function createMenuButtonsContainer(statusService) {
                             editor.style.display = 'block';
                             
                             this.populateInlineEditor(eventData, displayEvent);
+
+                            const editorAfter = document.getElementById('eventSlideInlineEditor');
+                            if (editorAfter && isSatelliteArchiveEdit) {
+                                editorAfter.style.display = 'none';
+                            }
+
+                            const relElHero = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionHero = document.getElementById('eventRelevantLocationsSection');
+                            const heroLocEdit = document.getElementById('eventSlideHeroLocationsEdit');
+                            const locContainer = document.getElementById('eventSlideEditRelevantLocations');
+                            const isBioEdit =
+                                archiveSourceEdit === 'heroes'
+                                || archiveSourceEdit === 'factions'
+                                || archiveSourceEdit === 'npcs';
+                            if (isSatelliteArchiveEdit && isBioEdit) {
+                                if (relElHero) {
+                                    relElHero.innerHTML = '';
+                                }
+                                if (relSectionHero) relSectionHero.style.display = 'none';
+                                if (heroLocEdit && locContainer && window.HeroRelevantLocationsEditor?.render) {
+                                    heroLocEdit.removeAttribute('hidden');
+                                    heroLocEdit.style.display = 'block';
+                                    const locs = Array.isArray(this.editTarget?.eventData?.relevantLocations)
+                                        ? this.editTarget.eventData.relevantLocations
+                                        : [];
+                                    window.HeroRelevantLocationsEditor.render(locContainer, locs);
+                                    const addBtn = document.getElementById('eventSlideAddRelevantLocationBtn');
+                                    if (addBtn) {
+                                        addBtn.onclick = () =>
+                                            window.HeroRelevantLocationsEditor?.addRow?.();
+                                    }
+                                }
+                            } else if (heroLocEdit) {
+                                heroLocEdit.setAttribute('hidden', '');
+                                heroLocEdit.style.display = 'none';
+                            }
                             
                             editBtn.textContent = 'Cancel';
                             saveBtn.style.display = 'inline-flex';
@@ -1291,16 +1473,36 @@ export function createMenuButtonsContainer(statusService) {
                                     <input class="event-slide-inline-editor__input" id="eventSlideEditEraName" type="text" />
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label">Heroes (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditFilters" type="text" />
+                                    <div class="event-slide-inline-editor__label">Relevant countries &amp; places (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Add one row per group. Reorder with ↑ / ↓. Each row: group label, countries (comma-separated for multiple flags), and why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddSecondaryCountryPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditSecondaryCountryPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Secondary country groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label">Factions (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditFactions" type="text" />
+                                    <div class="event-slide-inline-editor__label">Relevant heroes (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Same pattern as countries: group label, comma-separated heroes, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddHeroFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditHeroFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Hero groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
-                                    <label class="event-slide-inline-editor__label">NPCs (comma-separated)</label>
-                                    <input class="event-slide-inline-editor__input" id="eventSlideEditNpcs" type="text" />
+                                    <div class="event-slide-inline-editor__label">Relevant factions (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Group label, comma-separated factions, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddFactionFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditFactionFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="Faction groups"></div>
+                                </div>
+                                <div class="event-slide-inline-editor__row">
+                                    <div class="event-slide-inline-editor__label">Relevant NPCs (grouped)</div>
+                                    <p class="event-slide-inline-editor__hint">Group label, comma-separated NPCs, why they matter.</p>
+                                    <div class="event-slide-inline-editor__actions">
+                                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddNpcFilterPlaceBtn">+ Add group</button>
+                                    </div>
+                                    <div id="eventSlideEditNpcFilterPlaces" class="event-slide-inline-editor__relevant-locs" data-inline-grouped-places="1" aria-label="NPC groups"></div>
                                 </div>
                                 <div class="event-slide-inline-editor__row">
                                     <label class="event-slide-inline-editor__label">Headlines (one per line)</label>
@@ -1325,6 +1527,34 @@ export function createMenuButtonsContainer(statusService) {
                                 document.getElementById('eventSlideAddSourceBtn')?.addEventListener('click', () => this.addSourceRow());
                                 document.getElementById('eventSlideAddVariantBtn')?.addEventListener('click', () => this.addVariant());
                                 document.getElementById('eventSlideInlineDeleteBtn')?.addEventListener('click', () => this.deleteCurrentEvent());
+                                document.getElementById('eventSlideAddSecondaryCountryPlaceBtn')?.addEventListener('click', () =>
+                                    window.HeroRelevantLocationsEditor?.addRow?.({
+                                        containerId: 'eventSlideEditSecondaryCountryPlaces',
+                                        placeholders: STORY_SECONDARY_PLACES_EDITOR_OPTS.placeholders,
+                                        autocompleteType: STORY_SECONDARY_PLACES_EDITOR_OPTS.autocompleteType
+                                    })
+                                );
+                                document.getElementById('eventSlideAddHeroFilterPlaceBtn')?.addEventListener('click', () =>
+                                    window.HeroRelevantLocationsEditor?.addRow?.({
+                                        containerId: 'eventSlideEditHeroFilterPlaces',
+                                        placeholders: STORY_HERO_FILTER_PLACES_OPTS.placeholders,
+                                        autocompleteType: STORY_HERO_FILTER_PLACES_OPTS.autocompleteType
+                                    })
+                                );
+                                document.getElementById('eventSlideAddFactionFilterPlaceBtn')?.addEventListener('click', () =>
+                                    window.HeroRelevantLocationsEditor?.addRow?.({
+                                        containerId: 'eventSlideEditFactionFilterPlaces',
+                                        placeholders: STORY_FACTION_FILTER_PLACES_OPTS.placeholders,
+                                        autocompleteType: STORY_FACTION_FILTER_PLACES_OPTS.autocompleteType
+                                    })
+                                );
+                                document.getElementById('eventSlideAddNpcFilterPlaceBtn')?.addEventListener('click', () =>
+                                    window.HeroRelevantLocationsEditor?.addRow?.({
+                                        containerId: 'eventSlideEditNpcFilterPlaces',
+                                        placeholders: STORY_NPC_FILTER_PLACES_OPTS.placeholders,
+                                        autocompleteType: STORY_NPC_FILTER_PLACES_OPTS.autocompleteType
+                                    })
+                                );
                             }, 0);
                             
                             return editor;
@@ -1332,7 +1562,10 @@ export function createMenuButtonsContainer(statusService) {
                         
                         populateInlineEditor(eventData, displayEvent) {
                             const target = displayEvent || eventData;
-                            
+                            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const isBioPop =
+                                archPop === 'heroes' || archPop === 'factions' || archPop === 'npcs';
+
                             console.log('[MenuServiceHelpers.populateInlineEditor] Called for event:', target.name);
                             console.log('[MenuServiceHelpers.populateInlineEditor] Has variants:', !!(eventData.variants && eventData.variants.length > 0));
                             
@@ -1340,9 +1573,62 @@ export function createMenuButtonsContainer(statusService) {
                             document.getElementById('eventSlideEditYearStart')?.value = target.yearStart || target.year || '';
                             document.getElementById('eventSlideEditYearEnd')?.value = target.yearEnd || '';
                             document.getElementById('eventSlideEditEraName')?.value = target.eraName || '';
-                            document.getElementById('eventSlideEditFilters')?.value = (target.filters || []).join(', ');
-                            document.getElementById('eventSlideEditFactions')?.value = (target.factions || []).join(', ');
-                            document.getElementById('eventSlideEditNpcs')?.value = (target.npcs || []).join(', ');
+                            const fi = document.getElementById('eventSlideEditFilters');
+                            if (fi) fi.value = (target.filters || []).join(', ');
+                            const fa = document.getElementById('eventSlideEditFactions');
+                            if (fa) fa.value = (target.factions || []).join(', ');
+                            const ni = document.getElementById('eventSlideEditNpcs');
+                            if (ni) ni.value = (target.npcs || []).join(', ');
+                            const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+                            if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
+                                const places = isBioPop
+                                    ? (Array.isArray(target.relevantLocations) ? target.relevantLocations : [])
+                                    : (Array.isArray(target.secondaryCountryPlaces) ? target.secondaryCountryPlaces : []);
+                                const opts = isBioPop
+                                    ? {
+                                          placeholders: {
+                                              locationName: 'Location / group label',
+                                              country: 'Countries (comma-separated for multiple flags)',
+                                              reasoning: 'Relevance (e.g. headquarters, place of origin)'
+                                          },
+                                          autocompleteType: 'countries'
+                                      }
+                                    : STORY_SECONDARY_PLACES_EDITOR_OPTS;
+                                window.HeroRelevantLocationsEditor.render(secPlacesEl, places, opts);
+                            }
+
+                            const heroFpEl = document.getElementById('eventSlideEditHeroFilterPlaces');
+                            const factionFpEl = document.getElementById('eventSlideEditFactionFilterPlaces');
+                            const npcFpEl = document.getElementById('eventSlideEditNpcFilterPlaces');
+                            if (
+                                heroFpEl &&
+                                factionFpEl &&
+                                npcFpEl &&
+                                window.HeroRelevantLocationsEditor?.render
+                            ) {
+                                if (!isBioPop) {
+                                    window.HeroRelevantLocationsEditor.render(
+                                        heroFpEl,
+                                        heroPlacesForEditor(target),
+                                        STORY_HERO_FILTER_PLACES_OPTS
+                                    );
+                                    window.HeroRelevantLocationsEditor.render(
+                                        factionFpEl,
+                                        factionPlacesForEditor(target),
+                                        STORY_FACTION_FILTER_PLACES_OPTS
+                                    );
+                                    window.HeroRelevantLocationsEditor.render(
+                                        npcFpEl,
+                                        npcPlacesForEditor(target),
+                                        STORY_NPC_FILTER_PLACES_OPTS
+                                    );
+                                } else {
+                                    heroFpEl.innerHTML = '';
+                                    factionFpEl.innerHTML = '';
+                                    npcFpEl.innerHTML = '';
+                                }
+                            }
+
                             document.getElementById('eventSlideEditHeadlines')?.value = (target.headlines || []).join('\n');
 
                             const emList = window.eventManager;
@@ -1529,6 +1815,11 @@ export function createMenuButtonsContainer(statusService) {
                                     orderRowIdle.setAttribute('hidden', '');
                                     orderRowIdle.setAttribute('aria-hidden', 'true');
                                 }
+                                const heroIdle = document.getElementById('eventSlideHeroLocationsEdit');
+                                if (heroIdle) {
+                                    heroIdle.setAttribute('hidden', '');
+                                    heroIdle.style.display = 'none';
+                                }
                                 return;
                             }
                             
@@ -1555,6 +1846,25 @@ export function createMenuButtonsContainer(statusService) {
 
                             if (eb) eb.textContent = 'Edit';
                             if (sb) sb.style.display = 'none';
+
+                            const heroLocEditCancel = document.getElementById('eventSlideHeroLocationsEdit');
+                            if (heroLocEditCancel) {
+                                heroLocEditCancel.setAttribute('hidden', '');
+                                heroLocEditCancel.style.display = 'none';
+                            }
+                            const archiveSrcAfterCancel =
+                                window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const relAfterCancel = document.getElementById('eventSlideRelevantLocations');
+                            const relSectionAfterCancel = document.getElementById('eventRelevantLocationsSection');
+                            const isBioAfterCancel =
+                                archiveSrcAfterCancel === 'heroes'
+                                || archiveSrcAfterCancel === 'factions'
+                                || archiveSrcAfterCancel === 'npcs';
+                            if (relAfterCancel && isBioAfterCancel && this.editTarget?.eventData) {
+                                window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                    this.editTarget.eventData
+                                );
+                            }
                             
                             this.isEditing = false;
                             this.editTarget = null;
@@ -1565,12 +1875,59 @@ export function createMenuButtonsContainer(statusService) {
                             if (!this.isEditing || !this.editTarget) return;
                             
                             console.log('[MenuServiceHelpers] saveFullEdit called for event:', eventData.name);
+
+                            const archiveSource = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const titleEl = document.getElementById('eventSlideTitle');
+                            const textEl = document.getElementById('eventSlideText');
+                            /** @type {object|null} */
+                            let eventForFilterRefresh = null;
+
+                            if (archiveSource !== 'story') {
+                                const cleanName = (titleEl?.textContent || '').trim();
+                                const cleanDesc = (textEl?.innerHTML || '').trim();
+                                const em = window.eventManager;
+                                const locContainer = document.getElementById('eventSlideEditRelevantLocations');
+                                const isBioSave =
+                                    archiveSource === 'heroes'
+                                    || archiveSource === 'factions'
+                                    || archiveSource === 'npcs';
+                                const relevantLocations = isBioSave
+                                    ? window.HeroRelevantLocationsEditor?.collect(locContainer) ?? []
+                                    : undefined;
+                                const normalized = isBioSave
+                                    ? { name: cleanName, description: cleanDesc, relevantLocations }
+                                    : { name: cleanName, description: cleanDesc };
+                                if (em?.events) {
+                                    const idx = em.events.indexOf(this.editTarget.eventData);
+                                    if (idx >= 0) {
+                                        em.events[idx] = normalized;
+                                        em.unsavedEventIndices?.add(idx);
+                                    }
+                                    this.currentEventData = normalized;
+                                    this.editTarget.eventData = normalized;
+                                }
+                                em?.dataService?.saveEvents?.();
+                                eventForFilterRefresh = normalized;
+
+                                const heroLocEditSaved = document.getElementById('eventSlideHeroLocationsEdit');
+                                if (heroLocEditSaved) {
+                                    heroLocEditSaved.setAttribute('hidden', '');
+                                    heroLocEditSaved.style.display = 'none';
+                                }
+                                const relSaved = document.getElementById('eventSlideRelevantLocations');
+                                if (isBioSave && relSaved) {
+                                    window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
+                                        normalized
+                                    );
+                                }
+                                if (window.eventManager?.renderEvents) {
+                                    window.eventManager.renderEvents();
+                                }
+                            } else {
                             
                             const isMultiEvent = eventData.variants && eventData.variants.length > 0;
                             const target = isMultiEvent ? eventData.variants[this.currentVariantIndex || 0] : eventData;
-                            
-                            const titleEl = document.getElementById('eventSlideTitle');
-                            const textEl = document.getElementById('eventSlideText');
+                            eventForFilterRefresh = target;
                             
                             if (target) {
                                 if (titleEl) target.name = titleEl.textContent || target.name;
@@ -1579,9 +1936,37 @@ export function createMenuButtonsContainer(statusService) {
                                 target.yearStart = parseInt(document.getElementById('eventSlideEditYearStart')?.value) || target.yearStart;
                                 target.yearEnd = parseInt(document.getElementById('eventSlideEditYearEnd')?.value) || null;
                                 target.eraName = document.getElementById('eventSlideEditEraName')?.value || null;
-                                target.filters = document.getElementById('eventSlideEditFilters')?.value.split(',').map(s => s.trim()).filter(Boolean) || [];
-                                target.factions = document.getElementById('eventSlideEditFactions')?.value.split(',').map(s => s.trim()).filter(Boolean) || [];
-                                target.npcs = document.getElementById('eventSlideEditNpcs')?.value.split(',').map(s => s.trim()).filter(Boolean) || [];
+                                const heroFpSv = document.getElementById('eventSlideEditHeroFilterPlaces');
+                                if (heroFpSv && window.HeroRelevantLocationsEditor?.collect) {
+                                    const hr = window.HeroRelevantLocationsEditor.collect(heroFpSv);
+                                    const fr = window.HeroRelevantLocationsEditor.collect(
+                                        document.getElementById('eventSlideEditFactionFilterPlaces')
+                                    );
+                                    const nr = window.HeroRelevantLocationsEditor.collect(
+                                        document.getElementById('eventSlideEditNpcFilterPlaces')
+                                    );
+                                    applyStoryFilterPlacesToTarget(target, hr, fr, nr);
+                                } else {
+                                    const fiSv = document.getElementById('eventSlideEditFilters');
+                                    if (fiSv) {
+                                        target.filters = fiSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
+                                    }
+                                    const faSv = document.getElementById('eventSlideEditFactions');
+                                    if (faSv) {
+                                        target.factions = faSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
+                                    }
+                                    const niSv = document.getElementById('eventSlideEditNpcs');
+                                    if (niSv) {
+                                        target.npcs = niSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
+                                    }
+                                }
+                                const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
+                                const places =
+                                    window.HeroRelevantLocationsEditor?.collect?.(secPlacesEl) ?? [];
+                                target.secondaryCountryPlaces = places;
+                                if (window.LocationFlagHelpers?.syncSecondaryCountryFlagsOnEntity) {
+                                    window.LocationFlagHelpers.syncSecondaryCountryFlagsOnEntity(target);
+                                }
                                 target.headlines = document.getElementById('eventSlideEditHeadlines')?.value.split('\n').map(s => s.trim()).filter(Boolean) || [];
                                 
                                 const sourceRows = document.querySelectorAll('#eventSlideEditSources .event-slide-inline-editor__source-row');
@@ -1627,6 +2012,8 @@ export function createMenuButtonsContainer(statusService) {
                             if (window.eventManager?.refreshGlobeEvents) {
                                 window.eventManager.refreshGlobeEvents();
                             }
+
+                            } // end story-only full save branch
                             
                             if (titleEl) { titleEl.contentEditable = 'false'; titleEl.removeAttribute('spellcheck'); }
                             if (textEl) { textEl.contentEditable = 'false'; textEl.removeAttribute('spellcheck'); }
@@ -1646,7 +2033,7 @@ export function createMenuButtonsContainer(statusService) {
                             this.editTarget = null;
                             this.originalState = null;
                             
-                            this.updateSourcesAndFilters(target);
+                            this.updateSourcesAndFilters(eventForFilterRefresh);
                             
                             if (window.SoundEffectsManager?.play) {
                                 window.SoundEffectsManager.play('save');
@@ -1654,6 +2041,18 @@ export function createMenuButtonsContainer(statusService) {
                         },
                         
                         updateSourcesAndFilters(event) {
+                            const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const showingDockStoryEvent = !!this._presentationFromDockTimeline;
+                            if (archiveSrc !== 'story' && !showingDockStoryEvent) {
+                                const ss = document.getElementById('eventSourcesSection');
+                                const fs = document.getElementById('eventFiltersSection');
+                                if (ss) ss.style.display = 'none';
+                                if (fs) fs.style.display = 'none';
+                                const lhEarly = window.LocationFlagHelpers;
+                                lhEarly?.clearStoryFilterPlacesSlideDom?.();
+                                // Do not clear relevant locations here: displaySlide already filled them for bio satellites.
+                                return;
+                            }
                             const sourcesSection = document.getElementById('eventSourcesSection');
                             const sourcesList = document.getElementById('eventSourcesList');
                             if (sourcesSection && sourcesList && event?.sources?.length > 0) {
@@ -1689,208 +2088,106 @@ export function createMenuButtonsContainer(statusService) {
                             const filtersSection = document.getElementById('eventFiltersSection');
                             const filtersList = document.getElementById('eventFiltersList');
                             if (!filtersSection || !filtersList) return;
-                            
+
                             filtersList.innerHTML = '';
-                            
-                            const CATEGORY_ICON_HEROES = 'assets/images/icons/Heroes Icon.png';
-                            const CATEGORY_ICON_FACTIONS = 'assets/images/icons/Factions Icon.png';
-                            const CATEGORY_ICON_NPCS = 'assets/images/icons/NPC Icon.png';
+
                             const CATEGORY_ICON_COUNTRIES = 'assets/images/icons/Location Icon.png';
-                            
-                            const heroFilters = event?.filters || [];
-                            const npcFilters = event?.npcs || [];
-                            const factionFilters = event?.factions || [];
-                            
-                            // Collect country flags
-                            const countryFlags = [];
-                            if (event?.cityDisplayName) {
-                                const lh = window.LocationFlagHelpers;
-                                const flagFile = lh?.getResolvedFlagFilename?.(event.cityDisplayName, event.locationType || 'earth');
-                                if (flagFile) countryFlags.push(flagFile);
-                            }
-                            if (event?.secondaryCountryFlags?.length) {
-                                countryFlags.push(...event.secondaryCountryFlags);
-                            }
-                            
-                            // Category header helper
+
+                            const lh = window.LocationFlagHelpers;
+                            const countryFlags =
+                                lh && typeof lh.collectCountryFlagFilesForEntity === 'function'
+                                    ? lh.collectCountryFlagFilesForEntity(event)
+                                    : (() => {
+                                          const out = [];
+                                          if (event?.cityDisplayName) {
+                                              const flagFile = lh?.getResolvedFlagFilename?.(
+                                                  event.cityDisplayName,
+                                                  event.locationType || 'earth'
+                                              );
+                                              if (flagFile) out.push(flagFile);
+                                          }
+                                          if (event?.secondaryCountryFlags?.length) {
+                                              out.push(...event.secondaryCountryFlags);
+                                          }
+                                          return out;
+                                      })();
+                            const hasGroupedSecondary =
+                                lh && typeof lh.getSecondaryCountryPlacesRowsForDisplay === 'function'
+                                    ? lh.getSecondaryCountryPlacesRowsForDisplay(event).length > 0
+                                    : false;
+                            const showCountryChips = countryFlags.length > 0 && !hasGroupedSecondary;
+
                             const createHeader = (label, iconSrc) => {
                                 const h = document.createElement('h4');
                                 h.className = 'event-filter-header event-filter-header--category';
                                 h.innerHTML = `<img class="event-filter-header-icon" src="${iconSrc}" alt="" width="20" height="20" decoding="async"><span class="event-filter-header-label">${label}</span>`;
                                 return h;
                             };
-                            
-                            // Icon tag helper with click handler
-                            const createIconTag = (key, displayName, type) => {
+
+                            const createCountryIconTag = (key, displayName) => {
                                 const tag = document.createElement('span');
-                                tag.className = 'event-filter-tag event-filter-tag--icon event-filter-tag--clickable';
+                                tag.className = 'event-filter-tag event-filter-tag--icon event-filter-tag--clickable event-filter-tag--country';
                                 tag.title = displayName;
                                 tag.setAttribute('role', 'button');
                                 tag.tabIndex = 0;
-                                
+
+                                const em = window.eventManager;
+                                const countryFilters = em?.searchCountryFilters;
+                                if (Array.isArray(countryFilters) && countryFilters.includes(key)) {
+                                    tag.classList.add('selected');
+                                }
+
                                 const box = document.createElement('span');
                                 box.className = 'event-filter-image-container';
-                                
+
                                 const img = document.createElement('img');
-                                img.className = 'event-filter-icon';
+                                img.className = 'event-filter-icon event-filter-icon--country';
                                 img.alt = displayName;
                                 img.loading = 'lazy';
-                                
-                                if (type === 'factions') {
-                                    img.src = `assets/images/factions/${encodeURIComponent(key)}.png`;
-                                } else if (type === 'npcs') {
-                                    img.src = `assets/images/npcs/${encodeURIComponent(key)}.png`;
-                                } else if (type === 'countries') {
-                                    img.classList.add('event-filter-icon--country');
-                                    const lh = window.LocationFlagHelpers;
-                                    img.src = lh?.flagSrc?.(key) || `assets/images/flags/${encodeURIComponent(key)}`;
-                                } else {
-                                    img.src = `assets/images/heroes/${encodeURIComponent(key)}.png`;
-                                }
-                                
+                                img.src = lh?.flagSrc?.(key) || `assets/images/flags/${encodeURIComponent(key)}`;
+
                                 box.appendChild(img);
                                 tag.appendChild(box);
-                                
-                                // Check if this filter matches the active selection (green highlight)
-                                const activeFilters = window.standaloneActiveFilters || new Set();
-                                if (activeFilters.size > 0) {
-                                    let filterKey = type === 'heroes' ? `hero:${key}` 
-                                        : type === 'factions' ? `faction:${key}`
-                                        : type === 'npcs' ? `npc:${key}`
-                                        : `country:${key}`;
-                                    
-                                    // Also check without prefix for compatibility
-                                    if (activeFilters.has(filterKey) || activeFilters.has(key)) {
-                                        tag.classList.add('selected');
-                                    }
-                                }
-                                
-                                // Click handler to open Event Manager with search
+
                                 tag.addEventListener('click', (e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     const mgr = window.eventManager;
                                     if (!mgr?.prependEventManagerSearchTokens || !mgr.openEventsManagePanel) return;
-                                    
-                                    if (type === 'heroes') {
-                                        mgr.prependEventManagerSearchTokens({ heroName: key });
-                                    } else if (type === 'factions') {
-                                        mgr.prependEventManagerSearchTokens({ factionFilename: key });
-                                    } else if (type === 'npcs') {
-                                        mgr.prependEventManagerSearchTokens({ npcName: key });
-                                    } else if (type === 'countries') {
-                                        mgr.prependEventManagerSearchTokens({ countryFlagFilename: key });
-                                    }
+                                    mgr.prependEventManagerSearchTokens({ countryFlagFilename: key });
                                     mgr.openEventsManagePanel();
                                     window.SoundEffectsManager?.play?.('filterConfirm');
                                 });
-                                
-                                return tag;
-                            };
-                            
-                            // Render heroes
-                            if (heroFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant Heroes:', CATEGORY_ICON_HEROES));
-                                heroFilters.forEach(hero => {
-                                    if (hero) filtersList.appendChild(createIconTag(hero, hero, 'heroes'));
-                                });
-                            }
-                            
-                            // Render NPCs
-                            if (npcFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant NPCs:', CATEGORY_ICON_NPCS));
-                                npcFilters.forEach(npc => {
-                                    if (npc) filtersList.appendChild(createIconTag(npc, npc, 'npcs'));
-                                });
-                            }
-                            
-                            // Render factions (with filename resolution)
-                            if (factionFilters.length > 0) {
-                                filtersList.appendChild(createHeader('Relevant Factions:', CATEGORY_ICON_FACTIONS));
-                                factionFilters.forEach(faction => {
-                                    const resolved = this.resolveFactionFilename(faction);
-                                    if (resolved) {
-                                        filtersList.appendChild(createIconTag(resolved, faction, 'factions'));
+
+                                tag.addEventListener('keydown', (e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        tag.click();
                                     }
                                 });
-                            }
-                            
-                            // Render countries
-                            if (countryFlags.length > 0) {
+
+                                return tag;
+                            };
+
+                            if (showCountryChips) {
                                 filtersList.appendChild(createHeader('Relevant Countries:', CATEGORY_ICON_COUNTRIES));
-                                countryFlags.forEach(flagFile => {
+                                countryFlags.forEach((flagFile) => {
                                     const label = this.getCountryLabel(flagFile);
-                                    if (flagFile) filtersList.appendChild(createIconTag(flagFile, label, 'countries'));
+                                    if (flagFile) filtersList.appendChild(createCountryIconTag(flagFile, label));
                                 });
                             }
-                            
-                            filtersSection.style.display = filtersList.children.length > 0 ? 'block' : 'none';
-                        },
-                        
-                        resolveFactionFilename(rawFaction) {
-                            if (!rawFaction) return null;
-                            const raw = String(rawFaction).trim();
-                            if (!raw) return null;
-                            
-                            const em = window.eventManager;
-                            const factions = em?.factions || [];
-                            
-                            const normalize = (s) => String(s || '').trim().toLowerCase().replace(/[\s_-]+/g, '');
-                            const rawNorm = normalize(raw);
-                            
-                            for (const f of factions) {
-                                const filename = String(f.filename || '').trim();
-                                const displayName = String(f.displayName || '').trim();
-                                
-                                if (normalize(filename) === rawNorm || normalize(displayName) === rawNorm) {
-                                    return filename;
-                                }
-                                
-                                const bareFilename = filename.replace(/^\d+/, '').trim().toLowerCase();
-                                if (normalize(bareFilename) === rawNorm) return filename;
-                                
-                                if (normalize(displayName).includes(rawNorm)) return filename;
+
+                            if (hasGroupedSecondary) {
+                                lh?.updateRelevantLocationsSlideFromSecondaryPlaces?.(event);
+                            } else {
+                                lh?.clearRelevantLocationsSlideDom?.();
                             }
-                            
-                            // Legacy mapping
-                            const legacyMap = {
-                                'vishkar': '05Vishkar Corporation',
-                                'volskaya': '11Volskaya Industries',
-                                'omnica': '04Omnica Corporation',
-                                'crisis': '12The Anubis Omnic Crisis',
-                                'lucheng': '07Lucheng Interstellar',
-                                'shimada': '21Shimada Clan',
-                                'ironclad': '08Ironclad Guild',
-                                'shambali': '25Shambali Order',
-                                'lumerico': '13Lumérico Incorporated',
-                                'deadlock': '14Deadlock Rebels',
-                                'talon': '03Talon Empire',
-                                'overwatch': '01Overwatch',
-                                'nullsector': '26Null Sector',
-                                'blackwatch': '02Blackwatch',
-                                'junkers': '16Junker Monarchy',
-                                'wayfinders': '19Wayfinder Society',
-                                'conspiracy': '23The Chernobog Conspiracy',
-                                'hashimoto': '22Hashimoto Clan',
-                                'yokai': '32Yokai Gang',
-                                'phreaks': '29The Phreaks',
-                                'collective': '27The Martins Collective',
-                                'meka': '30M.E.K.A Squad',
-                                'oasis': '24Oasis Ministries',
-                                'crusaders': '09Crusader Initiative'
-                            };
-                            
-                            const bareName = raw.replace(/^\d+/, '').toLowerCase().replace(/[\s_-]+/g, '');
-                            if (legacyMap[bareName]) return legacyMap[bareName];
-                            
-                            for (const f of factions) {
-                                const displayName = String(f.displayName || '').trim().toLowerCase();
-                                if (displayName.includes(bareName)) return f.filename;
-                            }
-                            
-                            return raw;
+
+                            lh?.updateStoryFilterPlacesSlideFromEvent?.(event);
+
+                            filtersSection.style.display = showCountryChips ? 'block' : 'none';
                         },
-                        
+
                         getCountryLabel(flagFile) {
                             const map = window.FLAG_FILE_BY_COMMON;
                             if (map) {
@@ -1912,7 +2209,11 @@ export function createMenuButtonsContainer(statusService) {
                                     const newIndex = this.currentEventIndex > 0 
                                         ? this.currentEventIndex - 1 
                                         : this.allEvents.length - 1;
-                                    this.showEvent(newIndex);
+                                    const list = this.allEvents?.length
+                                        ? this.allEvents
+                                        : (window.eventManager?.getDockTimelineEvents?.() || []);
+                                    const keepHist = (this._slideHistoryStack?.length || 0) > 0;
+                                    this.showEvent(newIndex, { eventList: list, keepSlideHistory: keepHist });
                                     if (window.SoundEffectsManager?.play) {
                                         window.SoundEffectsManager.play('switchEvent');
                                     }
@@ -1924,7 +2225,11 @@ export function createMenuButtonsContainer(statusService) {
                                     const newIndex = this.currentEventIndex < this.allEvents.length - 1 
                                         ? this.currentEventIndex + 1 
                                         : 0;
-                                    this.showEvent(newIndex);
+                                    const list = this.allEvents?.length
+                                        ? this.allEvents
+                                        : (window.eventManager?.getDockTimelineEvents?.() || []);
+                                    const keepHist = (this._slideHistoryStack?.length || 0) > 0;
+                                    this.showEvent(newIndex, { eventList: list, keepSlideHistory: keepHist });
                                     if (window.SoundEffectsManager?.play) {
                                         window.SoundEffectsManager.play('switchEvent');
                                     }
@@ -1961,6 +2266,9 @@ export function createMenuButtonsContainer(statusService) {
                             
                             // Only play sound if panel was actually open
                             const wasOpen = eventSlide?.classList.contains('open');
+                            if (wasOpen) {
+                                this.clearSlideHistory();
+                            }
                             
                             if (eventSlide) {
                                 eventSlide.classList.remove('open');
@@ -2006,17 +2314,15 @@ export function createMenuButtonsContainer(statusService) {
                             
                             if (!prevBtn || !nextBtn) return;
                             
-                            // Use eventManager.events (same data as Event Manager panel)
-                            const events = window.eventManager?.events || [];
+                            const getDockEvents = () => window.eventManager?.getDockTimelineEvents?.() || [];
                             const eventsPerPage = 10; // Globe pagination uses 10 events per page
                             
-                            if (!events.length) {
-                                console.warn('MenuServiceHelpers: No events for pagination');
+                            if (!getDockEvents().length) {
+                                console.warn('MenuServiceHelpers: No dock timeline events for pagination');
                                 return;
                             }
                             
-                            // Calculate total pages
-                            const getTotalPages = () => Math.max(1, Math.ceil(events.length / eventsPerPage));
+                            const getTotalPages = () => Math.max(1, Math.ceil(getDockEvents().length / eventsPerPage));
                             
                             // STANDALONE: Track our own current page (don't rely on globe dataModel)
                             let standaloneCurrentPage = 1;
@@ -2032,15 +2338,17 @@ export function createMenuButtonsContainer(statusService) {
                             };
                             
                             const getEventsForPage = (pageNum) => {
+                                const ev = getDockEvents();
                                 const start = (pageNum - 1) * eventsPerPage;
                                 const end = start + eventsPerPage;
-                                return events.slice(start, end);
+                                return ev.slice(start, end);
                             };
                             
                             const generateSliderTicks = (totalPages) => {
                                 if (!ticksEl || totalPages <= 1) return;
                                 ticksEl.innerHTML = '';
-                                const totalEvents = events.length;
+                                const ev = getDockEvents();
+                                const totalEvents = ev.length;
                                 
                                 // Page labels
                                 for (let i = 0; i < totalPages; i++) {
@@ -2078,7 +2386,7 @@ export function createMenuButtonsContainer(statusService) {
                                     const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
                                     for (let e = 0; e < onPage; e++) {
                                         const g = p * eventsPerPage + e;
-                                        const rootEv = g >= 0 && g < totalEvents ? events[g] : null;
+                                        const rootEv = g >= 0 && g < totalEvents ? ev[g] : null;
                                         if (!eventRootSlotMissingDescription(rootEv)) continue;
                                         const mark = document.createElement('span');
                                         mark.className = 'event-page-slider-tick event-page-slider-tick--unfinished-slot';
@@ -2106,10 +2414,11 @@ export function createMenuButtonsContainer(statusService) {
                                 
                                 if (!eraStrip) return;
                                 
+                                const ev = getDockEvents();
                                 // Try to use EraHoverPreviewTheme first
                                 if (window.EraHoverPreviewTheme?.buildGlobalEraStripeBackgroundLinearGradient) {
                                     eraStrip.style.background = window.EraHoverPreviewTheme.buildGlobalEraStripeBackgroundLinearGradient(
-                                        events,
+                                        ev,
                                         eventsPerPage,
                                         totalPages
                                     );
@@ -2135,7 +2444,7 @@ export function createMenuButtonsContainer(statusService) {
                                     const stops = [];
                                     for (let p = 0; p < totalPages; p++) {
                                         const startIdx = p * eventsPerPage;
-                                        const pageEvents = events.slice(startIdx, startIdx + eventsPerPage);
+                                        const pageEvents = ev.slice(startIdx, startIdx + eventsPerPage);
                                         
                                         // Find dominant era on this page
                                         const eraCounts = {};
@@ -2242,7 +2551,10 @@ export function createMenuButtonsContainer(statusService) {
                             
                             if (prevEventBtn && nextEventBtn) {
                                 const getCurrentEventIndex = () => window.standaloneEventSlide?.currentEventIndex ?? -1;
-                                const getFilteredEvents = () => window.eventManager?.getFilteredEvents?.() || window.eventManager?.events || events;
+                                const getFilteredEvents = () =>
+                                    window.eventManager?.getFilteredDockTimelineEvents?.() ||
+                                    window.eventManager?.getDockTimelineEvents?.() ||
+                                    [];
                                 
                                 const navigateToEvent = (direction) => {
                                     const currentEvents = getFilteredEvents();
@@ -2433,7 +2745,7 @@ export function createMenuButtonsContainer(statusService) {
                             const buttons = document.querySelectorAll('#eventNumberButtons .event-number-btn');
                             if (!buttons.length) return;
                             
-                            const events = allEvents || window.eventManager?.events || [];
+                            const events = allEvents || window.eventManager?.getDockTimelineEvents?.() || [];
                             const eventsPerPage = 10; // Globe uses 10 events per page
                             const baseIndex = (pageNum - 1) * eventsPerPage;
                             
@@ -2473,7 +2785,7 @@ export function createMenuButtonsContainer(statusService) {
                                 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
                                     console.log('[DEV Overlap Check] Event:', event.name, 'coords:', event.location?.lat, event.location?.lon);
                                     
-                                    const currentPageEvents = window.eventManager?.events || [];
+                                    const currentPageEvents = window.eventManager?.getDockTimelineEvents?.() || [];
                                     const hasOverlap = currentPageEvents.some((otherEvent, otherIndex) => {
                                         if (otherIndex === globalEventIndex) return false;
                                         const otherLat = otherEvent.location?.lat;
@@ -2517,9 +2829,9 @@ export function createMenuButtonsContainer(statusService) {
                                 // Get image path using helper
                                 let imagePath = null;
                                 if (window.NavigationImageHelpers?.getEventImagePath) {
-                                    imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName);
+                                    imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
                                 } else if (window.eventManager?.getEventImagePath) {
-                                    imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                    imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
                                 } else {
                                     imagePath = displayEvent.image || displayEvent.imagePath || null;
                                 }
@@ -2592,9 +2904,17 @@ export function createMenuButtonsContainer(statusService) {
                                         if (variantDisplayEvent && imgEl) {
                                             let variantImagePath = null;
                                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                                variantImagePath = window.NavigationImageHelpers.getEventImagePath(variantDisplayEvent, variantDisplayEvent.name);
+                                                variantImagePath = window.NavigationImageHelpers.getEventImagePath(
+                                                    variantDisplayEvent,
+                                                    variantDisplayEvent.name,
+                                                    'story'
+                                                );
                                             } else if (window.eventManager?.getEventImagePath) {
-                                                variantImagePath = window.eventManager.getEventImagePath(variantDisplayEvent.name, variantDisplayEvent.image);
+                                                variantImagePath = window.eventManager.getEventImagePath(
+                                                    variantDisplayEvent.name,
+                                                    variantDisplayEvent.image,
+                                                    'story'
+                                                );
                                             } else {
                                                 variantImagePath = variantDisplayEvent.image || variantDisplayEvent.imagePath || null;
                                             }
@@ -2650,7 +2970,7 @@ export function createMenuButtonsContainer(statusService) {
                         },
                         
                         updateNumberButtons(pageEvents, pageNum) {
-                            const allEvents = window.eventManager?.events || [];
+                            const allEvents = window.eventManager?.getDockTimelineEvents?.() || [];
                             this.animatePageTurn(pageEvents, pageNum, allEvents);
                         },
                         
@@ -2864,12 +3184,12 @@ export function createMenuButtonsContainer(statusService) {
                             btn.classList.toggle('event-number-btn--unfinished', !hasDescription);
                             btn.title = hasDescription ? plainName : `${plainName} — Unfinished: missing description`;
                             
-                            // Get image
+                            // Get image (dock uses main timeline event art)
                             let imagePath = null;
                             if (window.NavigationImageHelpers?.getEventImagePath) {
-                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName);
+                                imagePath = window.NavigationImageHelpers.getEventImagePath(displayEvent, plainName, 'story');
                             } else if (window.eventManager?.getEventImagePath) {
-                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image);
+                                imagePath = window.eventManager.getEventImagePath(displayEvent.name, displayEvent.image, 'story');
                             } else {
                                 imagePath = displayEvent.image || displayEvent.imagePath || null;
                             }
@@ -2923,9 +3243,17 @@ export function createMenuButtonsContainer(statusService) {
                                     if (variantDisplayEvent && imgEl) {
                                         let variantImagePath = null;
                                         if (window.NavigationImageHelpers?.getEventImagePath) {
-                                            variantImagePath = window.NavigationImageHelpers.getEventImagePath(variantDisplayEvent, variantDisplayEvent.name);
+                                            variantImagePath = window.NavigationImageHelpers.getEventImagePath(
+                                                variantDisplayEvent,
+                                                variantDisplayEvent.name,
+                                                'story'
+                                            );
                                         } else if (window.eventManager?.getEventImagePath) {
-                                            variantImagePath = window.eventManager.getEventImagePath(variantDisplayEvent.name, variantDisplayEvent.image);
+                                            variantImagePath = window.eventManager.getEventImagePath(
+                                                variantDisplayEvent.name,
+                                                variantDisplayEvent.image,
+                                                'story'
+                                            );
                                         } else {
                                             variantImagePath = variantDisplayEvent.image || variantDisplayEvent.imagePath || null;
                                         }
@@ -3193,6 +3521,18 @@ export function createMenuButtonsContainer(statusService) {
                             }
                         }
                     };
+
+                    const backBtnInitMs = document.getElementById('eventSlideBack');
+                    if (backBtnInitMs && !backBtnInitMs.dataset.slideNavBound) {
+                        backBtnInitMs.dataset.slideNavBound = '1';
+                        backBtnInitMs.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (window.standaloneEventSlide?.goBackSlide) {
+                                await window.standaloneEventSlide.goBackSlide();
+                            }
+                        });
+                    }
                     
                     // Wire up news ticker clicks
                     if (window.newsTickerService?.tickerContainer) {
@@ -3206,9 +3546,14 @@ export function createMenuButtonsContainer(statusService) {
                         });
                     }
                     
-                    // Wire up Event Manager list clicks
+                    // Wire up Event Manager list clicks (index is into the active archive list, not the dock timeline)
                     window.eventManager.openEventFromList = function(event, index) {
-                        window.standaloneEventSlide?.showEvent(index);
+                        if (!window.standaloneEventSlide) return;
+                        const list = window.eventManager?.events || [];
+                        let idx = typeof index === 'number' ? index : list.indexOf(event);
+                        if (idx < 0 || idx >= list.length) idx = list.indexOf(event);
+                        if (idx < 0 || idx >= list.length) return;
+                        window.standaloneEventSlide.showEvent(idx, { eventList: list });
                         if (window.SoundEffectsManager?.play) {
                             window.SoundEffectsManager.play('eventClick');
                         }
