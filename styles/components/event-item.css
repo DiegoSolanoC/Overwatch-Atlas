@@ -354,42 +354,7 @@ body.color-palette-gray .event-item-title {
     color: #ff6600; /* Orange for gray palette */
 }
 
-/* Event manager: Filters vs Country search is OR — pills show which axis matched the card row */
-.event-search-hit-pills-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 0;
-    min-height: 0;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-.event-search-hit-pill {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 4px;
-    line-height: 1.2;
-    flex-shrink: 0;
-}
-
-.event-search-hit-pill--filter {
-    background: rgba(76, 175, 80, 0.35);
-    color: #c8e6c9;
-    border: 1px solid rgba(76, 175, 80, 0.65);
-}
-
-.event-search-hit-pill--country {
-    background: rgba(33, 150, 243, 0.3);
-    color: #bbdefb;
-    border: 1px solid rgba(33, 150, 243, 0.65);
-}
-
+/* Optional card tint when filter/country search is active (no “Filters” / “Country” pill labels) */
 .event-item.event-item--search-hit-filter:not(.event-item--search-hit-country) {
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(255, 255, 255, 0.05) 45%);
 }

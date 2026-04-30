@@ -616,27 +616,73 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * One bottom row: Add/Save/Export (left) + pagination (centered in remaining space).
+     * One bottom row: Add/Save/Export (left) + pagination (center) + Show all / Per page / Clear (right).
      */
     _setupStoryArchiveBottomBar(eventsManagePanel) {
         if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
-        if (document.getElementById('storyArchiveBottomBar')) return;
 
-        const manageContent = eventsManagePanel.querySelector('.events-manage-content');
-        const list = document.getElementById('eventsList');
-        if (!manageContent || !list) return;
+        let bottomBar = document.getElementById('storyArchiveBottomBar');
+        if (!bottomBar) {
+            const manageContent = eventsManagePanel.querySelector('.events-manage-content');
+            const list = document.getElementById('eventsList');
+            if (!manageContent || !list) return;
 
-        const bottomBar = document.createElement('div');
-        bottomBar.id = 'storyArchiveBottomBar';
-        bottomBar.className = 'story-archive-bottom-bar';
+            bottomBar = document.createElement('div');
+            bottomBar.id = 'storyArchiveBottomBar';
+            bottomBar.className = 'story-archive-bottom-bar';
 
-        const actions = eventsManagePanel.querySelector('.events-manage-actions');
-        if (actions) bottomBar.appendChild(actions);
+            const actions = eventsManagePanel.querySelector('.events-manage-actions');
+            if (actions) bottomBar.appendChild(actions);
 
-        const pag = document.getElementById('eventsPagination');
-        if (pag) bottomBar.appendChild(pag);
+            const pag = document.getElementById('eventsPagination');
+            if (pag) bottomBar.appendChild(pag);
 
-        manageContent.insertBefore(bottomBar, list.nextSibling);
+            manageContent.insertBefore(bottomBar, list.nextSibling);
+        }
+
+        this._populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar);
+    }
+
+    /**
+     * Move Show all, Per page, Clear into bottom bar (right column), matching Add/Save/Export row.
+     */
+    _populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar) {
+        if (!bottomBar || document.getElementById('storyArchiveRightToolbar')) return;
+
+        const secondary = eventsManagePanel.querySelector('.events-manage-search-row--secondary');
+        if (!secondary) return;
+
+        const showAllLabel = document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox');
+        const perPage = document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group');
+        const clearBtn = document.getElementById('eventsSearchClear');
+
+        const wrap = document.createElement('div');
+        wrap.id = 'storyArchiveRightToolbar';
+        wrap.className = 'story-archive-right-toolbar';
+
+        const addControlClass = (el) => {
+            if (!el) return;
+            el.classList.add('story-viewer-bottom-bar-control');
+        };
+
+        if (showAllLabel && secondary.contains(showAllLabel)) {
+            addControlClass(showAllLabel);
+            wrap.appendChild(showAllLabel);
+        }
+        if (perPage && secondary.contains(perPage)) {
+            addControlClass(perPage);
+            wrap.appendChild(perPage);
+        }
+        if (clearBtn && secondary.contains(clearBtn)) {
+            clearBtn.classList.add('story-viewer-action-btn');
+            wrap.appendChild(clearBtn);
+        }
+
+        if (wrap.childNodes.length === 0) {
+            return;
+        }
+
+        bottomBar.appendChild(wrap);
     }
 
     /**
@@ -688,6 +734,21 @@ export class ComponentOrchestrator {
         const list = document.getElementById('eventsList');
         const header = eventsManagePanel?.querySelector('.events-manage-header');
         if (!bottomBar || !eventsManagePanel?.contains(bottomBar) || !list?.parentNode || !header) return;
+
+        const secondary = eventsManagePanel.querySelector('.events-manage-search-row--secondary');
+        const rightToolbar = document.getElementById('storyArchiveRightToolbar');
+        if (secondary && rightToolbar) {
+            const useFilter = document.getElementById('eventsUseFilterSelectionCheckbox')?.closest('label.events-search-checkbox');
+            const perPage = document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group');
+            const showAllLabel = document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox');
+            const clearBtn = document.getElementById('eventsSearchClear');
+            clearBtn?.classList.remove('story-viewer-action-btn');
+            [showAllLabel, perPage].forEach((el) => el?.classList.remove('story-viewer-bottom-bar-control'));
+
+            const ordered = [useFilter, perPage, showAllLabel, clearBtn].filter(Boolean);
+            ordered.forEach((el) => secondary.appendChild(el));
+            rightToolbar.remove();
+        }
 
         const pag = document.getElementById('eventsPagination');
         const actions = bottomBar.querySelector('.events-manage-actions');
@@ -948,7 +1009,7 @@ export class ComponentOrchestrator {
         const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
         const filterTerms = filtersInput ? filtersInput.value.toLowerCase().split(',').map(s => s.trim()).filter(s => s) : [];
         const countryTerms = countryInput ? countryInput.value.toLowerCase().split(',').map(s => s.trim()).filter(s => s) : [];
-        const useFilterSelection = useFilterCheckbox ? useFilterCheckbox.checked : false;
+        const useFilterSelection = useFilterCheckbox ? useFilterCheckbox.checked : true;
 
         // Get active filters from Filter panel if checkbox is checked
         let activeFilterSet = new Set();
@@ -1439,6 +1500,9 @@ export class ComponentOrchestrator {
             if (addBtn) addBtn.classList.remove('story-viewer-action-btn');
             if (saveBtn) saveBtn.classList.remove('story-viewer-action-btn');
             if (exportBtn) exportBtn.classList.remove('story-viewer-action-btn');
+            document.getElementById('eventsSearchClear')?.classList.remove('story-viewer-action-btn');
+            document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox')?.classList.remove('story-viewer-bottom-bar-control');
+            document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group')?.classList.remove('story-viewer-bottom-bar-control');
             
             // Show Event Manager button again
             const eventManagerBtn = document.getElementById('eventsManageToggle');

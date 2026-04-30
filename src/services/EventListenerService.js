@@ -339,6 +339,11 @@ class EventListenerService {
         const clearBtn = document.getElementById('eventsSearchClear');
         if (!searchInput || !filtersInput) return;
 
+        /* “Use filter selection” is always on (control hidden); keep checkbox checked for existing logic paths */
+        if (useSelectionCheckbox) {
+            useSelectionCheckbox.checked = true;
+        }
+
         const defaultFactionDisplayName = (filename) => {
             const base = String(filename ?? '').replace(/\.png$/i, '').trim();
             if (!base) return '';
@@ -558,6 +563,10 @@ class EventListenerService {
 
         const updateCountryPredictions = () => {
             if (!countryInput) return;
+            if (useSelectionCheckbox && useSelectionCheckbox.checked) {
+                hideCountrySuggestions();
+                return;
+            }
             const { before, current } = getCurrentCountryTokenInfo();
             const prefix = (current || '').trim();
             if (!prefix) {
@@ -653,6 +662,37 @@ class EventListenerService {
             return [];
         };
 
+        const partitionSelectionKeys = (keys) => {
+            const nonCountryKeys = [];
+            const countryKeys = [];
+            (keys || []).forEach((k) => {
+                const s = (k ?? '').toString().trim();
+                if (!s) return;
+                if (s.toLowerCase().startsWith('country:')) {
+                    countryKeys.push(s);
+                } else {
+                    nonCountryKeys.push(s);
+                }
+            });
+            return { nonCountryKeys, countryKeys };
+        };
+
+        const countryKeysToDisplayCsv = (countryKeys) => {
+            const helper = window.LocationFlagHelpers?.commonLabelForFlagFile;
+            const names = [];
+            const seenFile = new Set();
+            (countryKeys || []).forEach((key) => {
+                const flagFile = String(key ?? '').replace(/^country:/i, '').trim();
+                if (!flagFile) return;
+                const lk = flagFile.toLowerCase();
+                if (seenFile.has(lk)) return;
+                seenFile.add(lk);
+                const label = (typeof helper === 'function' && helper(flagFile)) || flagFile.replace(/\.png$/i, '');
+                if (label) names.push(label);
+            });
+            return names.join(', ');
+        };
+
         const selectionKeysToFilterText = (keys) => {
             // Rebuild index if data arrived after init
             if (!filterIndex
@@ -672,6 +712,7 @@ class EventListenerService {
             (keys || []).forEach((k) => {
                 const raw = (k ?? '').toString().trim();
                 if (!raw) return;
+                if (raw.toLowerCase().startsWith('country:')) return;
                 const lower = raw.toLowerCase();
                 // If it matches a known faction filename, prefer using its displayName token.
                 if (factionByFilenameLower.has(lower)) {
@@ -949,13 +990,22 @@ class EventListenerService {
             isSyncingSelection = true;
             try {
                 const keys = getSelectedFilterKeys();
-                const text = selectionKeysToFilterText(keys);
+                const { nonCountryKeys, countryKeys } = partitionSelectionKeys(keys);
+                const text = selectionKeysToFilterText(nonCountryKeys);
                 filtersInput.value = text;
                 filtersInput.readOnly = true;
                 filtersInput.style.cursor = 'not-allowed';
                 filtersInput.style.opacity = '0.75';
                 filtersInput.classList.remove('no-filter-match');
                 hideSuggestions();
+                if (countryInput) {
+                    countryInput.value = countryKeysToDisplayCsv(countryKeys);
+                    countryInput.readOnly = true;
+                    countryInput.style.cursor = 'not-allowed';
+                    countryInput.style.opacity = '0.75';
+                    countryInput.classList.remove('no-filter-match');
+                    hideCountrySuggestions();
+                }
                 applySearch();
             } finally {
                 isSyncingSelection = false;
@@ -966,6 +1016,11 @@ class EventListenerService {
             filtersInput.readOnly = false;
             filtersInput.style.cursor = '';
             filtersInput.style.opacity = '';
+            if (countryInput) {
+                countryInput.readOnly = false;
+                countryInput.style.cursor = '';
+                countryInput.style.opacity = '';
+            }
         };
 
         const applyPerPageSettings = () => {
@@ -993,6 +1048,12 @@ class EventListenerService {
         searchInput.addEventListener('change', applySearch);
         filtersInput.addEventListener('input', () => {
             if (useSelectionCheckbox && useSelectionCheckbox.checked) {
+                // Programmatic updates (e.g. prepend from map) must not be overwritten by a resync.
+                if (typeof window !== 'undefined' && window.__eventsFiltersInputBypassSelectionSync) {
+                    updateFilterPredictions();
+                    applySearch();
+                    return;
+                }
                 // Ignore manual typing while locked to selection.
                 syncFiltersInputFromSelection();
                 return;
@@ -1002,6 +1063,11 @@ class EventListenerService {
         });
         filtersInput.addEventListener('change', () => {
             if (useSelectionCheckbox && useSelectionCheckbox.checked) {
+                if (typeof window !== 'undefined' && window.__eventsFiltersInputBypassSelectionSync) {
+                    updateFilterPredictions();
+                    applySearch();
+                    return;
+                }
                 syncFiltersInputFromSelection();
                 return;
             }
@@ -1032,10 +1098,28 @@ class EventListenerService {
         });
         if (countryInput) {
             countryInput.addEventListener('input', () => {
+                if (useSelectionCheckbox && useSelectionCheckbox.checked) {
+                    if (typeof window !== 'undefined' && window.__eventsFiltersInputBypassSelectionSync) {
+                        updateCountryPredictions();
+                        applySearch();
+                        return;
+                    }
+                    syncFiltersInputFromSelection();
+                    return;
+                }
                 updateCountryPredictions();
                 applySearch();
             });
             countryInput.addEventListener('change', () => {
+                if (useSelectionCheckbox && useSelectionCheckbox.checked) {
+                    if (typeof window !== 'undefined' && window.__eventsFiltersInputBypassSelectionSync) {
+                        updateCountryPredictions();
+                        applySearch();
+                        return;
+                    }
+                    syncFiltersInputFromSelection();
+                    return;
+                }
                 updateCountryPredictions();
                 applySearch();
             });
@@ -1077,44 +1161,58 @@ class EventListenerService {
                     window.SoundEffectsManager.play('filterClear');
                 }
                 searchInput.value = '';
-                if (useSelectionCheckbox) {
-                    useSelectionCheckbox.checked = false;
-                }
-                unlockFiltersInput();
-                filtersInput.value = '';
-                filtersInput.classList.remove('no-filter-match');
-                hideSuggestions();
                 if (countryInput) {
                     countryInput.value = '';
                     countryInput.classList.remove('no-filter-match');
                     hideCountrySuggestions();
                 }
-                this.eventManager.searchQuery = '';
-                this.eventManager.searchHeroFilters = [];
-                this.eventManager.searchFactionFilters = [];
-                this.eventManager.searchNpcFilters = [];
-                this.eventManager.searchUnmatchedFilterTokens = [];
-                this.eventManager.searchCountryFilters = [];
-                if (this.eventManager.applySearchAndRender) {
-                    this.eventManager.applySearchAndRender();
+
+                const syncFromSelection = !!(useSelectionCheckbox && useSelectionCheckbox.checked);
+                if (syncFromSelection) {
+                    this.eventManager.searchQuery = '';
+                    this.eventManager.searchCountryFilters = [];
+                    this.eventManager.searchUnmatchedFilterTokens = [];
+                    syncFiltersInputFromSelection();
+                    if (this.eventManager.applySearchAndRender) {
+                        this.eventManager.applySearchAndRender();
+                    }
+                } else {
+                    if (useSelectionCheckbox) {
+                        useSelectionCheckbox.checked = false;
+                    }
+                    unlockFiltersInput();
+                    filtersInput.value = '';
+                    filtersInput.classList.remove('no-filter-match');
+                    hideSuggestions();
+                    this.eventManager.searchQuery = '';
+                    this.eventManager.searchHeroFilters = [];
+                    this.eventManager.searchFactionFilters = [];
+                    this.eventManager.searchNpcFilters = [];
+                    this.eventManager.searchUnmatchedFilterTokens = [];
+                    this.eventManager.searchCountryFilters = [];
+                    if (this.eventManager.applySearchAndRender) {
+                        this.eventManager.applySearchAndRender();
+                    }
                 }
             });
         }
 
         if (useSelectionCheckbox) {
             useSelectionCheckbox.addEventListener('change', () => {
-                if (window.SoundEffectsManager) {
-                    window.SoundEffectsManager.play(useSelectionCheckbox.checked ? 'filterConfirm' : 'filterClear');
-                }
-                if (useSelectionCheckbox.checked) {
-                    manualFilterText = (filtersInput.value || '').toString();
+                /* Control is hidden — selection sync stays on; ignore attempts to turn off */
+                if (!useSelectionCheckbox.checked) {
+                    useSelectionCheckbox.checked = true;
+                    if (window.SoundEffectsManager) {
+                        window.SoundEffectsManager.play('filterConfirm');
+                    }
                     syncFiltersInputFromSelection();
-                } else {
-                    unlockFiltersInput();
-                    filtersInput.value = manualFilterText || '';
-                    updateFilterPredictions();
-                    applySearch();
+                    return;
                 }
+                if (window.SoundEffectsManager) {
+                    window.SoundEffectsManager.play('filterConfirm');
+                }
+                manualFilterText = (filtersInput.value || '').toString();
+                syncFiltersInputFromSelection();
             });
 
             // If the user changes filter selections while this is enabled,

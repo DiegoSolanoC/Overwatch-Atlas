@@ -24,6 +24,13 @@ export function getFilterKeyAndDisplayName(item, type) {
             filterKey: item,
             displayName: getHeroDisplayName(item)
         };
+    } else if (type === 'countries') {
+        const flagFile = item && item.flagFile != null ? String(item.flagFile).trim() : '';
+        const commonName = item && item.commonName != null ? String(item.commonName).trim() : '';
+        return {
+            filterKey: flagFile ? `country:${flagFile}` : '',
+            displayName: commonName || flagFile
+        };
     } else if (type === 'music') {
         return { 
             filterKey: `assets/audio/music/${item.filename}`, 
@@ -42,11 +49,12 @@ export function getFilterKeyAndDisplayName(item, type) {
  * Create image element for filter button
  */
 export function createFilterImage(filterKey, displayName, type, folder, imageService) {
-    const imagePath = imageService.buildImagePath(
-        type === 'factions' ? { filename: filterKey } : filterKey,
-        type,
-        folder
-    );
+    const pathItem = type === 'factions'
+        ? { filename: filterKey }
+        : (type === 'countries' && typeof filterKey === 'string' && filterKey.startsWith('country:'))
+            ? { flagFile: filterKey.slice('country:'.length).trim() }
+            : filterKey;
+    const imagePath = imageService.buildImagePath(pathItem, type, folder);
     const img = imageService.createImageElement(imagePath, type, filterKey, folder);
     img.alt = displayName;
     return img;
@@ -136,7 +144,7 @@ export function useCachedButtons(type, buttonCache, filtersGrid, stateManager, u
 /**
  * Create filter buttons (with caching)
  */
-export function createFilterButtons(items, type, folder, filtersGrid, buttonCache, stateManager, imageService, soundManager, heroes, factions, npcs, preloadImages, updateFilterCounts) {
+export function createFilterButtons(items, type, folder, filtersGrid, buttonCache, stateManager, imageService, soundManager, heroes, factions, npcs, countries, preloadImages, updateFilterCounts) {
     if (!filtersGrid) return;
     
     // Try to use cached buttons first
@@ -158,6 +166,7 @@ export function createFilterButtons(items, type, folder, filtersGrid, buttonCach
     buttonCache[type] = cachedButtons;
     
     const npcList = Array.isArray(npcs) ? npcs : [];
+    const countryList = Array.isArray(countries) ? countries : [];
     // Preload images for other categories in the background
     if (type === 'heroes') {
         if (factions.length > 0) {
@@ -166,6 +175,9 @@ export function createFilterButtons(items, type, folder, filtersGrid, buttonCach
         if (npcList.length > 0) {
             setTimeout(() => preloadImages(npcList, 'npcs', 'assets/images/npcs'), 150);
         }
+        if (countryList.length > 0) {
+            setTimeout(() => preloadImages(countryList, 'countries', 'assets/images/flags'), 200);
+        }
     } else if (type === 'factions') {
         if (heroes.length > 0) {
             setTimeout(() => preloadImages(heroes, 'heroes', 'assets/images/heroes'), 100);
@@ -173,12 +185,28 @@ export function createFilterButtons(items, type, folder, filtersGrid, buttonCach
         if (npcList.length > 0) {
             setTimeout(() => preloadImages(npcList, 'npcs', 'assets/images/npcs'), 150);
         }
+        if (countryList.length > 0) {
+            setTimeout(() => preloadImages(countryList, 'countries', 'assets/images/flags'), 200);
+        }
     } else if (type === 'npcs') {
         if (heroes.length > 0) {
             setTimeout(() => preloadImages(heroes, 'heroes', 'assets/images/heroes'), 100);
         }
         if (factions.length > 0) {
             setTimeout(() => preloadImages(factions, 'factions', 'assets/images/factions'), 150);
+        }
+        if (countryList.length > 0) {
+            setTimeout(() => preloadImages(countryList, 'countries', 'assets/images/flags'), 200);
+        }
+    } else if (type === 'countries') {
+        if (heroes.length > 0) {
+            setTimeout(() => preloadImages(heroes, 'heroes', 'assets/images/heroes'), 100);
+        }
+        if (factions.length > 0) {
+            setTimeout(() => preloadImages(factions, 'factions', 'assets/images/factions'), 120);
+        }
+        if (npcList.length > 0) {
+            setTimeout(() => preloadImages(npcList, 'npcs', 'assets/images/npcs'), 140);
         }
     }
     

@@ -794,24 +794,26 @@ class EventRenderService {
             ? timelineHelpers.formatPanelYearRangeLine(yearSource)
             : 'Year Unknown';
 
-        let searchPillsRow = '';
         if (this.eventManager.getSearchMatchAxesForItem) {
             const axes = this.eventManager.getSearchMatchAxesForItem(displayEvent);
             if (axes.filterActive || axes.countryActive) {
                 if (axes.filterHit) item.classList.add('event-item--search-hit-filter');
                 if (axes.countryHit) item.classList.add('event-item--search-hit-country');
-                const pills = [];
-                if (axes.filterActive && axes.filterHit) {
-                    pills.push('<span class="event-search-hit-pill event-search-hit-pill--filter" title="Matches Filters (hero/faction)">Filters</span>');
-                }
-                if (axes.countryActive && axes.countryHit) {
-                    pills.push('<span class="event-search-hit-pill event-search-hit-pill--country" title="Matches country search">Country</span>');
-                }
-                if (pills.length) {
-                    searchPillsRow = `<div class="event-search-hit-pills-row" aria-label="Search match type">${pills.join('')}</div>`;
-                }
             }
         }
+
+        const storyPanel = typeof document !== 'undefined' ? document.getElementById('eventsManagePanel') : null;
+        const useStoryArchiveDockTitle = !!(storyPanel?.classList.contains('story-viewer-panel-embedded'));
+        const displayTitleHtml = window.GlitchTextService
+            ? window.GlitchTextService.getDisplayEventName(displayEvent.name)
+            : displayEvent.name;
+        const headingRowHtml = `<div class="event-item-heading">
+                        <h3 class="event-item-title">${displayTitleHtml}</h3>
+                    </div>`;
+        const thumbTitleOverlayHtml = useStoryArchiveDockTitle
+            ? `<div class="event-item__thumb-titlebar">${headingRowHtml}</div>`
+            : '';
+        const bodyHeadingHtml = useStoryArchiveDockTitle ? '' : headingRowHtml;
 
         item.innerHTML = `
             <div class="event-item__thumb-block">
@@ -821,6 +823,7 @@ class EventRenderService {
                             ${imageHtml}
                         </div>
                         ${multiEventBadge}
+                        ${thumbTitleOverlayHtml}
                     </div>
                 </div>
                 <div class="event-item__thumb-chrome">
@@ -829,10 +832,7 @@ class EventRenderService {
             </div>
             <div class="event-item__body">
                 <div class="event-item-info">
-                    <div class="event-item-heading">
-                        <h3 class="event-item-title">${window.GlitchTextService ? window.GlitchTextService.getDisplayEventName(displayEvent.name) : displayEvent.name}</h3>
-                        ${searchPillsRow}
-                    </div>
+                    ${bodyHeadingHtml}
                     <div class="event-item-meta">
                         <p class="event-item-location">${locationRowInner}</p>
                         <p class="event-item-year">${yearLine}</p>

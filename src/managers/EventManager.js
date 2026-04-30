@@ -669,15 +669,7 @@ class EventManager {
     prependEventManagerSearchTokens({ heroName, factionFilename, npcName, countryFlagFilename } = {}) {
         const filtersInput = document.getElementById('eventsSearchFilters');
         const countryInput = document.getElementById('eventsSearchCountry');
-        const useSel = document.getElementById('eventsUseFilterSelectionCheckbox');
         if (!filtersInput) return;
-
-        if (useSel?.checked) {
-            useSel.checked = false;
-            filtersInput.readOnly = false;
-            filtersInput.style.cursor = '';
-            filtersInput.style.opacity = '';
-        }
 
         const prependToCommaList = (current, token) => {
             const t = String(token || '').trim();
@@ -717,8 +709,17 @@ class EventManager {
             }
         }
 
-        filtersInput.dispatchEvent(new Event('input', { bubbles: true }));
-        if (countryInput) countryInput.dispatchEvent(new Event('input', { bubbles: true }));
+        if (typeof window !== 'undefined') {
+            window.__eventsFiltersInputBypassSelectionSync = true;
+        }
+        try {
+            filtersInput.dispatchEvent(new Event('input', { bubbles: true }));
+            if (countryInput) countryInput.dispatchEvent(new Event('input', { bubbles: true }));
+        } finally {
+            if (typeof window !== 'undefined') {
+                delete window.__eventsFiltersInputBypassSelectionSync;
+            }
+        }
     }
 
     /**

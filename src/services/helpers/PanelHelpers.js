@@ -143,6 +143,15 @@ export function createFiltersPanel(statusService) {
                                 <span class="filter-count" id="npcsCount">0</span>
                             </span>
                         </button>
+                        <button type="button" id="countriesTab" class="filter-tab" role="tab" aria-selected="false">
+                            <span class="filter-tab-graphic">
+                                <img class="filter-tab-icon" src="assets/images/icons/Location Icon.png" alt="" width="40" height="40" decoding="async" />
+                            </span>
+                            <span class="filter-tab-footer">
+                                <span class="filter-tab-label">Country</span>
+                                <span class="filter-count" id="countriesCount">0</span>
+                            </span>
+                        </button>
                     </div>
                     <div class="filters-actions-buttons">
                         <button type="button" id="clearFiltersBtn" class="filters-action-btn">Clear</button>

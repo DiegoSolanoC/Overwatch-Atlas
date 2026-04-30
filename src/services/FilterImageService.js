@@ -33,6 +33,11 @@ class FilterImageService {
         if (type === 'factions') {
             const encodedFilename = encodeURIComponent(item.filename);
             return `${folder}/${encodedFilename}.png`;
+        } else if (type === 'countries') {
+            const fn = (item && item.flagFile != null) ? String(item.flagFile).trim() : '';
+            if (!fn) return `${folder}/`;
+            const segs = fn.split('/').map((s) => encodeURIComponent(s));
+            return `${folder}/${segs.join('/')}`;
         } else if (type === 'music') {
             const iconName = item.filename.replace(/\.(mp3|wav|ogg)$/i, '');
             const encodedIconName = encodeURIComponent(iconName);
@@ -72,6 +77,12 @@ class FilterImageService {
                     const iconName = filterKey.replace(/\.(mp3|wav|ogg)$/i, '');
                     const encodedIconName = encodeURIComponent(iconName);
                     img.src = `${IMAGE_PATHS.MUSIC}/${encodedIconName}.png?v=${retryCacheBuster}`;
+                } else if (type === 'countries') {
+                    const raw = String(filterKey || '').startsWith('country:')
+                        ? String(filterKey).slice('country:'.length).trim()
+                        : String(filterKey || '').trim();
+                    const segs = raw.split('/').map((s) => encodeURIComponent(s));
+                    img.src = `${folder}/${segs.join('/')}?v=${retryCacheBuster}`;
                 } else if (type === 'factions') {
                     const encodedFilename = encodeURIComponent(filterKey);
                     img.src = `${folder}/${encodedFilename}.png?v=${retryCacheBuster}`;
@@ -103,6 +114,12 @@ class FilterImageService {
         if (type === 'music') {
             const iconName = filterKey.replace(/\.(mp3|wav|ogg)$/i, '');
             altPath = `${IMAGE_PATHS.MUSIC}/${iconName.replace(/\s+/g, '%20')}.png?v=${altCacheBuster}`;
+        } else if (type === 'countries') {
+            const raw = String(filterKey || '').startsWith('country:')
+                ? String(filterKey).slice('country:'.length).trim()
+                : String(filterKey || '').trim();
+            const segs = raw.split('/').map((s) => encodeURIComponent(s.replace(/\s+/g, '%20')));
+            altPath = `${folder}/${segs.join('/')}?v=${altCacheBuster}`;
         } else {
             altPath = `${folder}/${altEncoded}.png?v=${altCacheBuster}`;
         }

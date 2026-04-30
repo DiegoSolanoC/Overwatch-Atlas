@@ -263,7 +263,7 @@ class EventInteractionService {
                 window.GlitchTextService.getDisplayEventName(variant.name) : variant.name;
         }
 
-        // Refresh Filters / Country match pills + card tint for the active variant
+        // Refresh filter/country hit classes for the active variant (no visible pills)
         itemElement.classList.remove('event-item--search-hit-filter', 'event-item--search-hit-country');
         const oldPills = itemElement.querySelector('.event-search-hit-pills-row');
         if (oldPills) oldPills.remove();
@@ -272,20 +272,6 @@ class EventInteractionService {
             if (axes.filterActive || axes.countryActive) {
                 if (axes.filterHit) itemElement.classList.add('event-item--search-hit-filter');
                 if (axes.countryHit) itemElement.classList.add('event-item--search-hit-country');
-                const pills = [];
-                if (axes.filterActive && axes.filterHit) {
-                    pills.push('<span class="event-search-hit-pill event-search-hit-pill--filter" title="Matches Filters (hero/faction)">Filters</span>');
-                }
-                if (axes.countryActive && axes.countryHit) {
-                    pills.push('<span class="event-search-hit-pill event-search-hit-pill--country" title="Matches country search">Country</span>');
-                }
-                if (pills.length && titleElement) {
-                    const row = document.createElement('div');
-                    row.className = 'event-search-hit-pills-row';
-                    row.setAttribute('aria-label', 'Search match type');
-                    row.innerHTML = pills.join('');
-                    titleElement.insertAdjacentElement('afterend', row);
-                }
             }
         }
         

@@ -3,7 +3,7 @@
  * Extracted from FilterService to reduce file size
  */
 
-function deactivateTabs(heroesTab, factionsTab, npcsTab) {
+function deactivateTabs(heroesTab, factionsTab, npcsTab, countriesTab) {
     if (heroesTab) {
         heroesTab.classList.remove('active');
         heroesTab.setAttribute('aria-selected', 'false');
@@ -16,18 +16,22 @@ function deactivateTabs(heroesTab, factionsTab, npcsTab) {
         npcsTab.classList.remove('active');
         npcsTab.setAttribute('aria-selected', 'false');
     }
+    if (countriesTab) {
+        countriesTab.classList.remove('active');
+        countriesTab.setAttribute('aria-selected', 'false');
+    }
 }
 
 /**
  * Setup tab switching
  */
-export function setupTabs(heroesTab, factionsTab, npcsTab, heroes, factions, npcs, createFilterButtons, updateFilterCounts) {
+export function setupTabs(heroesTab, factionsTab, npcsTab, countriesTab, heroes, factions, npcs, countries, createFilterButtons, updateFilterCounts) {
     if (heroesTab) {
         heroesTab.addEventListener('click', () => {
             if (!heroesTab.classList.contains('active') && window.SoundEffectsManager) {
                 window.SoundEffectsManager.play('switchMap');
             }
-            deactivateTabs(heroesTab, factionsTab, npcsTab);
+            deactivateTabs(heroesTab, factionsTab, npcsTab, countriesTab);
             heroesTab.classList.add('active');
             heroesTab.setAttribute('aria-selected', 'true');
             createFilterButtons(heroes, 'heroes', 'assets/images/heroes');
@@ -40,7 +44,7 @@ export function setupTabs(heroesTab, factionsTab, npcsTab, heroes, factions, npc
             if (!factionsTab.classList.contains('active') && window.SoundEffectsManager) {
                 window.SoundEffectsManager.play('switchMap');
             }
-            deactivateTabs(heroesTab, factionsTab, npcsTab);
+            deactivateTabs(heroesTab, factionsTab, npcsTab, countriesTab);
             factionsTab.classList.add('active');
             factionsTab.setAttribute('aria-selected', 'true');
             createFilterButtons(factions, 'factions', 'assets/images/factions');
@@ -53,10 +57,23 @@ export function setupTabs(heroesTab, factionsTab, npcsTab, heroes, factions, npc
             if (!npcsTab.classList.contains('active') && window.SoundEffectsManager) {
                 window.SoundEffectsManager.play('switchMap');
             }
-            deactivateTabs(heroesTab, factionsTab, npcsTab);
+            deactivateTabs(heroesTab, factionsTab, npcsTab, countriesTab);
             npcsTab.classList.add('active');
             npcsTab.setAttribute('aria-selected', 'true');
             createFilterButtons(npcs, 'npcs', 'assets/images/npcs');
+            updateFilterCounts();
+        });
+    }
+
+    if (countriesTab) {
+        countriesTab.addEventListener('click', () => {
+            if (!countriesTab.classList.contains('active') && window.SoundEffectsManager) {
+                window.SoundEffectsManager.play('switchMap');
+            }
+            deactivateTabs(heroesTab, factionsTab, npcsTab, countriesTab);
+            countriesTab.classList.add('active');
+            countriesTab.setAttribute('aria-selected', 'true');
+            createFilterButtons(countries || [], 'countries', 'assets/images/flags');
             updateFilterCounts();
         });
     }

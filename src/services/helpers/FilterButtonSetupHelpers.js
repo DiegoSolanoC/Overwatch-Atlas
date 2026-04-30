@@ -74,9 +74,9 @@ function resolveFilterType(getCurrentFilterType) {
 
 /**
  * Setup clear button handler
- * @param {() => string} getCurrentFilterType - live tab (`heroes` | `factions`); not a snapshot at init
+ * @param {() => string} getCurrentFilterType - live tab (`heroes` | `factions` | `npcs` | `countries`); not a snapshot at init
  */
-export function setupClearButton(clearFiltersBtn, soundManager, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, createFilterButtons) {
+export function setupClearButton(clearFiltersBtn, soundManager, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, countries, createFilterButtons) {
     if (!clearFiltersBtn) return;
     
     clearFiltersBtn.addEventListener('click', () => {
@@ -90,12 +90,15 @@ export function setupClearButton(clearFiltersBtn, soundManager, stateManager, up
         
         // Rebuild the grid for whichever tab is active now (avoid stale type from setup time)
         const currentFilterType = resolveFilterType(getCurrentFilterType);
+        const countryList = Array.isArray(countries) ? countries : [];
         if (currentFilterType === 'heroes' && heroes.length > 0) {
             createFilterButtons(heroes, 'heroes', 'assets/images/heroes');
         } else if (currentFilterType === 'factions' && factions.length > 0) {
             createFilterButtons(factions, 'factions', 'assets/images/factions');
         } else if (currentFilterType === 'npcs' && npcs.length > 0) {
             createFilterButtons(npcs, 'npcs', 'assets/images/npcs');
+        } else if (currentFilterType === 'countries' && countryList.length > 0) {
+            createFilterButtons(countryList, 'countries', 'assets/images/flags');
         }
     });
 }
@@ -121,10 +124,10 @@ export function setupConfirmButton(confirmFiltersBtn, soundManager, stateManager
 /**
  * Setup all button handlers
  */
-export function setupButtons(filtersButton, filtersPanelClose, clearFiltersBtn, confirmFiltersBtn, soundManager, togglePanel, resetToConfirmedFilters, closePanel, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, createFilterButtons) {
+export function setupButtons(filtersButton, filtersPanelClose, clearFiltersBtn, confirmFiltersBtn, soundManager, togglePanel, resetToConfirmedFilters, closePanel, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, countries, createFilterButtons) {
     setupFiltersButton(filtersButton, soundManager, togglePanel);
     setupCloseButton(filtersPanelClose, soundManager, resetToConfirmedFilters, closePanel);
-    setupClearButton(clearFiltersBtn, soundManager, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, createFilterButtons);
+    setupClearButton(clearFiltersBtn, soundManager, stateManager, updateButtonStates, getSceneModel, getCurrentFilterType, heroes, factions, npcs, countries, createFilterButtons);
     setupConfirmButton(confirmFiltersBtn, soundManager, stateManager, getSceneModel, closePanel);
 }
 

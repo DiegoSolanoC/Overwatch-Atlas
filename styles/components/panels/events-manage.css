@@ -329,6 +329,11 @@ body.color-palette-gray .events-manage-title {
 }
 
 /* Row 2: equal-width columns so each control uses the full row horizontally */
+/* “Use filter selection” is always on in JS; label hidden — keep input in DOM for listeners */
+.events-search-checkbox.events-search-checkbox--use-filter-selection-hidden {
+    display: none !important;
+}
+
 .events-manage-search-row--secondary {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

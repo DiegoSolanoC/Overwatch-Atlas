@@ -4,6 +4,19 @@
 
 import { getEraHoverPreviewSlug } from './EraHoverPreviewTheme.js';
 
+/**
+ * Side-dock Event Manager uses `.open` on #eventsManagePanel. Story Archive also sets `.open` while
+ * centered (`.story-viewer-panel-embedded`) — suppress the hover badge only for the dock drawer.
+ */
+function isEventsManageDockDrawerOpen() {
+    try {
+        const p = document.getElementById('eventsManagePanel');
+        return !!(p && p.classList.contains('open') && !p.classList.contains('story-viewer-panel-embedded'));
+    } catch (_) {
+        return false;
+    }
+}
+
 let badgeEl = null;
 let textNumberEl = null;
 let textTitleEl = null;
@@ -243,10 +256,7 @@ export function showSummaryInfo(
             return;
         }
     } catch (_) {}
-    try {
-        const panel = document.getElementById('eventsManagePanel');
-        if (panel && panel.classList.contains('open')) return;
-    } catch (_) {}
+    if (isEventsManageDockDrawerOpen()) return;
 
     // Cancel any pending hide cleanup when showing new content
     cancelPendingHideCleanup();
@@ -329,13 +339,10 @@ export function showSummaryInfo(
         pending = requestAnimationFrame(() => {
             pending = null;
             if (!badgeEl || !badgeEl.classList.contains('music-now-playing-badge--visible')) return;
-            try {
-                const p = document.getElementById('eventsManagePanel');
-                if (p && p.classList.contains('open')) {
-                    hideEventsHoverPreview();
-                    return;
-                }
-            } catch (_) {}
+            if (isEventsManageDockDrawerOpen()) {
+                hideSummaryInfo();
+                return;
+            }
             positionBadge();
         });
     };

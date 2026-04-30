@@ -10,11 +10,13 @@ class FilterService {
         this.heroes = [];
         this.factions = [];
         this.npcs = [];
-        this.currentFilterType = 'heroes'; // 'heroes' | 'factions' | 'npcs'
+        this.countries = [];
+        this.currentFilterType = 'heroes'; // 'heroes' | 'factions' | 'npcs' | 'countries'
         this.buttonCache = {
             heroes: null,
             factions: null,
             npcs: null,
+            countries: null,
             music: null
         };
         
@@ -44,9 +46,18 @@ class FilterService {
                 if (SM && SM.prototype && typeof SM.prototype.getCounts === 'function') {
                     return SM.prototype.getCounts.call(this);
                 }
-                let heroCount = 0, factionCount = 0, npcCount = 0;
-                this.selectedFilters.forEach((f) => (/^\d+/.test(f) ? factionCount++ : heroCount++));
-                return { heroCount, factionCount, npcCount };
+                let heroCount = 0, factionCount = 0, npcCount = 0, countryCount = 0;
+                this.selectedFilters.forEach((f) => {
+                    const s = String(f ?? '');
+                    if (s.startsWith('country:')) {
+                        countryCount++;
+                    } else if (/^\d+/.test(s)) {
+                        factionCount++;
+                    } else {
+                        heroCount++;
+                    }
+                });
+                return { heroCount, factionCount, npcCount, countryCount };
             }
             applyToScene() {
                 // Apply to standalone state instead of sceneModel
@@ -61,6 +72,10 @@ class FilterService {
             buildImagePath(item, type, folder) {
                 if (type === 'factions') {
                     return `${folder}/${encodeURIComponent(item.filename)}.png`;
+                } else if (type === 'countries') {
+                    const fn = (item && item.flagFile != null) ? String(item.flagFile).trim() : '';
+                    if (!fn) return `${folder}/`;
+                    return `${folder}/${fn.split('/').map((s) => encodeURIComponent(s)).join('/')}`;
                 } else if (type === 'music') {
                     const iconName = item.filename.replace(/\.(mp3|wav|ogg)$/i, '');
                     return `assets/images/music/${encodeURIComponent(iconName)}.png`;
@@ -96,6 +111,7 @@ class FilterService {
         this.heroesTab = null;
         this.factionsTab = null;
         this.npcsTab = null;
+        this.countriesTab = null;
     }
     
     init() {
@@ -115,6 +131,7 @@ class FilterService {
         this.heroesTab = document.getElementById('heroesTab');
         this.factionsTab = document.getElementById('factionsTab');
         this.npcsTab = document.getElementById('npcsTab');
+        this.countriesTab = document.getElementById('countriesTab');
         
         console.log('Initializing filters panel...');
         console.log('Filters button:', this.filtersButton);
@@ -159,10 +176,12 @@ class FilterService {
         this.heroesTab = null;
         this.factionsTab = null;
         this.npcsTab = null;
+        this.countriesTab = null;
         this.buttonCache = {
             heroes: null,
             factions: null,
             npcs: null,
+            countries: null,
             music: null
         };
         console.log('[FilterService] Reset complete. initialized =', this.initialized);
@@ -314,6 +333,7 @@ class FilterService {
         this.buttonCache.heroes = null;
         this.buttonCache.factions = null;
         this.buttonCache.npcs = null;
+        this.buttonCache.countries = null;
 
         const helper = window.FilterManifestHelpers?.loadManifest;
         if (helper) {
@@ -326,6 +346,7 @@ class FilterService {
             this.heroes = result.heroes;
             this.factions = result.factions;
             this.npcs = result.npcs || [];
+            this._initCountryFilterItems();
         } else {
             // Fallback implementation
             try {
@@ -345,6 +366,7 @@ class FilterService {
                     number: f.number,
                     displayName: f.displayName
                 })).sort((a, b) => a.number - b.number) : [];
+                this._initCountryFilterItems();
                 this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
                 this.updateFilterCounts();
                 if (this.factions.length > 0) {
@@ -358,9 +380,21 @@ class FilterService {
                 this.heroes = [];
                 this.factions = [];
                 this.npcs = [];
+                this._initCountryFilterItems();
                 this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
             }
         }
+    }
+
+    _initCountryFilterItems() {
+        const map = typeof window !== 'undefined' ? window.FLAG_FILE_BY_COMMON : null;
+        if (!map) {
+            this.countries = [];
+            return;
+        }
+        this.countries = Object.keys(map)
+            .map((commonName) => ({ commonName, flagFile: map[commonName] }))
+            .sort((a, b) => a.commonName.localeCompare(b.commonName));
     }
     
     /**
@@ -388,8 +422,9 @@ class FilterService {
             // Fallback implementation
             const heroesCount = document.getElementById('heroesCount');
             const factionsCount = document.getElementById('factionsCount');
-            const { heroCount, factionCount, npcCount = 0 } = this.stateManager.getCounts();
+            const { heroCount, factionCount, npcCount = 0, countryCount = 0 } = this.stateManager.getCounts();
             const npcsCount = document.getElementById('npcsCount');
+            const countriesCount = document.getElementById('countriesCount');
             
             if (heroesCount) {
                 if (heroCount > 0) {
@@ -413,6 +448,14 @@ class FilterService {
                     npcsCount.style.display = 'inline';
                 } else {
                     npcsCount.style.display = 'none';
+                }
+            }
+            if (countriesCount) {
+                if (countryCount > 0) {
+                    countriesCount.textContent = countryCount;
+                    countriesCount.style.display = 'inline';
+                } else {
+                    countriesCount.style.display = 'none';
                 }
             }
         }
@@ -450,7 +493,7 @@ class FilterService {
                 items, type, folder, 
                 this.filtersGrid, this.buttonCache, 
                 this.stateManager, this.imageService, this.soundManager,
-                this.heroes, this.factions, this.npcs,
+                this.heroes, this.factions, this.npcs, this.countries,
                 (items, type, folder) => this.preloadImages(items, type, folder),
                 () => this.updateFilterCounts()
             );
@@ -462,8 +505,8 @@ class FilterService {
         const helper = window.FilterTabHelpers?.setupTabs;
         if (helper) {
             helper(
-                this.heroesTab, this.factionsTab, this.npcsTab,
-                this.heroes, this.factions, this.npcs,
+                this.heroesTab, this.factionsTab, this.npcsTab, this.countriesTab,
+                this.heroes, this.factions, this.npcs, this.countries,
                 (items, type, folder) => {
                     this.currentFilterType = type;
                     this.createFilterButtons(items, type, folder);
@@ -488,6 +531,10 @@ class FilterService {
                         this.npcsTab.classList.remove('active');
                         this.npcsTab.setAttribute('aria-selected', 'false');
                     }
+                    if (this.countriesTab) {
+                        this.countriesTab.classList.remove('active');
+                        this.countriesTab.setAttribute('aria-selected', 'false');
+                    }
                     this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
                     this.updateFilterCounts();
                 });
@@ -507,6 +554,10 @@ class FilterService {
                     if (this.npcsTab) {
                         this.npcsTab.classList.remove('active');
                         this.npcsTab.setAttribute('aria-selected', 'false');
+                    }
+                    if (this.countriesTab) {
+                        this.countriesTab.classList.remove('active');
+                        this.countriesTab.setAttribute('aria-selected', 'false');
                     }
                     this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
                     this.updateFilterCounts();
@@ -528,7 +579,35 @@ class FilterService {
                         this.factionsTab.classList.remove('active');
                         this.factionsTab.setAttribute('aria-selected', 'false');
                     }
+                    if (this.countriesTab) {
+                        this.countriesTab.classList.remove('active');
+                        this.countriesTab.setAttribute('aria-selected', 'false');
+                    }
                     this.createFilterButtons(this.npcs, 'npcs', 'assets/images/npcs');
+                    this.updateFilterCounts();
+                });
+            }
+            if (this.countriesTab) {
+                this.countriesTab.addEventListener('click', () => {
+                    if (!this.countriesTab.classList.contains('active') && window.SoundEffectsManager) {
+                        window.SoundEffectsManager.play('switchMap');
+                    }
+                    this.currentFilterType = 'countries';
+                    this.countriesTab.classList.add('active');
+                    this.countriesTab.setAttribute('aria-selected', 'true');
+                    if (this.heroesTab) {
+                        this.heroesTab.classList.remove('active');
+                        this.heroesTab.setAttribute('aria-selected', 'false');
+                    }
+                    if (this.factionsTab) {
+                        this.factionsTab.classList.remove('active');
+                        this.factionsTab.setAttribute('aria-selected', 'false');
+                    }
+                    if (this.npcsTab) {
+                        this.npcsTab.classList.remove('active');
+                        this.npcsTab.setAttribute('aria-selected', 'false');
+                    }
+                    this.createFilterButtons(this.countries, 'countries', 'assets/images/flags');
                     this.updateFilterCounts();
                 });
             }
@@ -571,7 +650,7 @@ class FilterService {
             helper(
                 this.filtersPanel, this.filtersButton,
                 this.stateManager, () => this.getSceneModel(),
-                this.currentFilterType, this.heroes, this.factions, this.npcs,
+                this.currentFilterType, this.heroes, this.factions, this.npcs, this.countries,
                 (items, type, folder) => this.createFilterButtons(items, type, folder)
             );
         } else {
@@ -587,6 +666,8 @@ class FilterService {
                 this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
             } else if (this.currentFilterType === 'factions') {
                 this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
+            } else if (this.currentFilterType === 'countries') {
+                this.createFilterButtons(this.countries, 'countries', 'assets/images/flags');
             } else {
                 this.createFilterButtons(this.npcs, 'npcs', 'assets/images/npcs');
             }
@@ -622,7 +703,7 @@ class FilterService {
             helper(
                 this.filtersPanel, this.filtersButton,
                 () => this.closeOtherPanels(),
-                async (panel, button, stateManager, getSceneModel, currentType, heroes, factions, npcs, createFilterButtons) => {
+                async (panel, button, stateManager, getSceneModel, currentType, heroes, factions, npcs, countries, createFilterButtons) => {
                     // Use standaloneActiveFilters if Event System is active
                     const eventSystemActive = typeof window.eventManager !== 'undefined' && window.eventManager !== null;
                     if (eventSystemActive && window.standaloneActiveFilters) {
@@ -635,6 +716,8 @@ class FilterService {
                         await createFilterButtons(heroes, 'heroes', 'assets/images/heroes');
                     } else if (currentType === 'factions') {
                         await createFilterButtons(factions, 'factions', 'assets/images/factions');
+                    } else if (currentType === 'countries') {
+                        await createFilterButtons(countries || [], 'countries', 'assets/images/flags');
                     } else {
                         await createFilterButtons(npcs, 'npcs', 'assets/images/npcs');
                     }
@@ -648,7 +731,7 @@ class FilterService {
                     button?.classList.remove('active');
                 },
                 this.stateManager, () => this.getSceneModel(),
-                this.currentFilterType, this.heroes, this.factions, this.npcs,
+                this.currentFilterType, this.heroes, this.factions, this.npcs, this.countries,
                 (items, type, folder) => this.createFilterButtons(items, type, folder)
             );
         } else {
@@ -716,7 +799,7 @@ class FilterService {
                 () => this.resetToConfirmedFilters(), () => this.closePanel(),
                 this.stateManager, () => this.updateButtonStates(),
                 () => this.getSceneModel(), () => this.currentFilterType,
-                this.heroes, this.factions, this.npcs,
+                this.heroes, this.factions, this.npcs, this.countries,
                 (items, type, folder) => this.createFilterButtons(items, type, folder)
             );
         } else {

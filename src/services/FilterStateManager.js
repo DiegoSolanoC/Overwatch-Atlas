@@ -72,6 +72,7 @@ class FilterStateManager {
         let heroCount = 0;
         let factionCount = 0;
         let npcCount = 0;
+        let countryCount = 0;
 
         const fs = typeof window !== 'undefined' ? window.FilterService : null;
         const heroes = Array.isArray(fs?.heroes) ? fs.heroes : [];
@@ -93,6 +94,10 @@ class FilterStateManager {
 
         this.selectedFilters.forEach((filter) => {
             const f = String(filter ?? '');
+            if (f.startsWith('country:')) {
+                countryCount++;
+                return;
+            }
             if (heroSet.has(f)) {
                 heroCount++;
                 return;
@@ -119,7 +124,7 @@ class FilterStateManager {
             }
         });
 
-        return { heroCount, factionCount, npcCount };
+        return { heroCount, factionCount, npcCount, countryCount };
     }
     
     /**

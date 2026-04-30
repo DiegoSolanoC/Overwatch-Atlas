@@ -145,6 +145,34 @@ const LEGACY_FACTION_ID_TO_CANONICAL = {
     '33Yokai': '32Yokai Gang'
 };
 
+/**
+ * True if entity's resolved country flags intersect any `country:<flagFile.png>` entries in activeFilters.
+ */
+function countryFiltersMatchEntity(entity, activeFilters) {
+    if (!entity || !activeFilters || activeFilters.size === 0) return false;
+    let anyCountryChip = false;
+    for (const f of activeFilters) {
+        if (String(f).startsWith('country:')) {
+            anyCountryChip = true;
+            break;
+        }
+    }
+    if (!anyCountryChip) return false;
+    const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
+    const files = lh && typeof lh.collectCountryFlagFilesForEntity === 'function'
+        ? lh.collectCountryFlagFilesForEntity(entity)
+        : [];
+    if (!files.length) return false;
+    const flagSet = new Set(files);
+    for (const f of activeFilters) {
+        const s = String(f ?? '');
+        if (!s.startsWith('country:')) continue;
+        const want = s.slice('country:'.length).trim();
+        if (want && flagSet.has(want)) return true;
+    }
+    return false;
+}
+
 function factionIdMatchesActiveFilters(factionId, activeFilters) {
     if (factionId == null || !activeFilters) return false;
     const id = String(factionId).trim();
@@ -173,7 +201,8 @@ export function entityMatchesActiveFilters(entity, activeFilters) {
     const factionFilters = entity.factions || [];
     return heroFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
         || npcFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
-        || factionFilters.some((id) => factionIdMatchesActiveFilters(id, activeFilters));
+        || factionFilters.some((id) => factionIdMatchesActiveFilters(id, activeFilters))
+        || countryFiltersMatchEntity(entity, activeFilters);
 }
 
 /**

@@ -300,6 +300,53 @@
         return Object.keys(map).sort(function (a, b) { return a.localeCompare(b); });
     }
 
+    /**
+     * Flag PNG filenames associated with an event/variant (primary location + secondary + explicit countries[]).
+     * Used by filter panel country chips and marker lock logic (`country:…` keys in standaloneActiveFilters).
+     */
+    function collectCountryFlagFilesForEntity(ev) {
+        var ordered = [];
+        var seen = new Set();
+        var loc = (ev && ev.cityDisplayName != null) ? String(ev.cityDisplayName) : '';
+        var locType = (ev && ev.locationType) ? String(ev.locationType) : 'earth';
+        var primary = getResolvedFlagFilename(loc, locType);
+        if (primary) {
+            seen.add(primary);
+            ordered.push(primary);
+        }
+        var sec = Array.isArray(ev && ev.secondaryCountryFlags) ? ev.secondaryCountryFlags : [];
+        sec.forEach(function (f) {
+            var fn = f != null ? String(f).trim() : '';
+            if (fn && !seen.has(fn)) {
+                seen.add(fn);
+                ordered.push(fn);
+            }
+        });
+        var extra = Array.isArray(ev && ev.countries) ? ev.countries : [];
+        extra.forEach(function (token) {
+            var fn = resolveManualCountryTokenToFlagFile(String(token || ''), locType);
+            if (fn && !seen.has(fn)) {
+                seen.add(fn);
+                ordered.push(fn);
+            }
+        });
+        return ordered;
+    }
+
+    /** Inverse of FLAG_FILE_BY_COMMON for filter sync / labels. */
+    function commonLabelForFlagFile(flagFile) {
+        var map = typeof window !== 'undefined' ? window.FLAG_FILE_BY_COMMON : null;
+        var file = String(flagFile || '').trim();
+        if (!file) return '';
+        if (map) {
+            var commons = Object.keys(map);
+            for (var i = 0; i < commons.length; i++) {
+                if (map[commons[i]] === file) return commons[i];
+            }
+        }
+        return file.replace(/\.png$/i, '').trim() || file;
+    }
+
     window.LocationFlagHelpers = {
         createLeadingGraphicHtml: createLeadingGraphicHtml,
         createLocationRowInnerHtml: createLocationRowInnerHtml,
@@ -307,6 +354,8 @@
         getFlagLocationContext: getFlagLocationContext,
         getResolvedFlagFilename: getResolvedFlagFilename,
         parseSecondaryCountryList: parseSecondaryCountryList,
-        getCountryCommonNamesForAutocomplete: getCountryCommonNamesForAutocomplete
+        getCountryCommonNamesForAutocomplete: getCountryCommonNamesForAutocomplete,
+        collectCountryFlagFilesForEntity: collectCountryFlagFilesForEntity,
+        commonLabelForFlagFile: commonLabelForFlagFile
     };
 })();
