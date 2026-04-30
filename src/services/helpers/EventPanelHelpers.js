@@ -39,23 +39,21 @@ export function setupEventManagerListeners(eventManager, statusService) {
     }
     
     statusService.update('Setting up event listeners for add/edit functionality...', 'info');
-    const toggleBtn = document.getElementById('eventsManageToggle');
     const panel = document.getElementById('eventsManagePanel');
     const addBtn = document.getElementById('addEventBtn');
-    
-    if (toggleBtn && panel && addBtn) {
+
+    if (panel && addBtn) {
         setTimeout(() => {
             eventManager.setupEventListeners();
             statusService.update('✓ Event listeners set up - add/edit functionality ready', 'success');
         }, 50);
     } else {
-        statusService.update(`⚠ Some elements not found! Toggle: ${!!toggleBtn}, Panel: ${!!panel}, AddBtn: ${!!addBtn}`, 'error');
+        statusService.update(`⚠ Some elements not found! Panel: ${!!panel}, AddBtn: ${!!addBtn}`, 'error');
         setTimeout(() => {
             if (eventManager) {
-                const retryToggleBtn = document.getElementById('eventsManageToggle');
                 const retryPanel = document.getElementById('eventsManagePanel');
                 const retryAddBtn = document.getElementById('addEventBtn');
-                if (retryToggleBtn && retryPanel && retryAddBtn) {
+                if (retryPanel && retryAddBtn) {
                     eventManager.setupEventListeners();
                     statusService.update('✓ Event listeners set up (retry successful)', 'success');
                 } else {

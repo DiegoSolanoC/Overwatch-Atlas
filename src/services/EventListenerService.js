@@ -40,18 +40,16 @@ class EventListenerService {
         }
 
         this.setupEventsManageToolbarCollapse(panel);
-        
-        // If listeners already set up, skip (but allow re-setup if needed)
-        if (this.eventManager.listenersSetup && toggleBtn && panel) {
+
+        if (this.eventManager.listenersSetup) {
             console.log('EventListenerService: Listeners already set up, skipping...');
             return;
         }
-        
+
         console.log('EventListenerService: Panel found, setting up listeners...');
         console.log('EventListenerService: Toggle button found:', !!toggleBtn);
         console.log('EventListenerService: Close button found:', !!closeBtn);
 
-        // Ensure button is always visible (never hide it)
         if (toggleBtn) {
             toggleBtn.style.display = '';
             toggleBtn.style.visibility = 'visible';
@@ -130,11 +128,8 @@ class EventListenerService {
                     newToggleBtn.classList.remove('active');
                 }
             });
-        } else {
-            console.error('EventListenerService: setupEventListeners - toggleBtn or panel not found', {
-                toggleBtn: !!toggleBtn,
-                panel: !!panel
-            });
+        } else if (!toggleBtn && panel) {
+            console.log('EventListenerService: No eventsManageToggle — panel listeners only (toggle removed)');
         }
 
         if (closeBtn && panel) {

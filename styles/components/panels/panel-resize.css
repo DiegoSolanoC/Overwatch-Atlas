@@ -62,7 +62,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    /* Fits max pill (38px) so translateX(±100%) clears the panel entirely */
+    /* Default: fits pill width; event info handle overrides total width to trapezium + pill. */
     width: 40px;
     z-index: 205;
     cursor: ew-resize;
@@ -86,6 +86,8 @@
     right: auto;
     transform: translateX(-100%);
     justify-content: flex-end;
+    /* Sideways pill: anchor border art on seam (right); hover widens away from panel. */
+    --panel-resize-pill-bg-x: right;
 }
 
 .panel-resize-handle--inner-right {
@@ -93,18 +95,232 @@
     left: auto;
     transform: translateX(100%);
     justify-content: flex-start;
+    --panel-resize-pill-bg-x: left;
+}
+
+/* Event info side chrome: top + bottom border art bands around the center trapezium. */
+.event-slide .panel-resize-handle--inner-right {
+    /* Nudge trap icons vs flex center; negative = toward long vertical seam / panel side. */
+    --trap-icon-optical-shift-x: -6px;
+    --trap-icon-optical-shift-y: 0px;
+    /* Horizontal offset for the drag pill only (border + trapezium stay put). Positive = toward panel interior. */
+    --event-info-pill-nudge-x: 0px;
+    /* Trapezium is 64px wide; short vertical ~x=64. Slight negative offset pulls pill left to close anti-alias gap. */
+    width: calc(64px + 38px);
+    padding-left: calc(64px - 2px);
+    justify-content: flex-start;
+    --event-info-side-trapezium-h: 160px;
+    --event-info-side-border-w: 54px;
+    --event-info-side-gap-h: calc((100% - var(--event-info-side-trapezium-h)) / 2);
+    align-items: center;
+    box-sizing: border-box;
+    background-image: url('../../../assets/images/misc/Panel Border.png');
+    background-repeat: no-repeat;
+    background-size: var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h));
+    background-position: left top;
+}
+
+/* Bottom border band: dedicated art (top uses Panel Border.png). */
+.event-slide .panel-resize-handle--inner-right::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    /* Pull upward slightly so thicker outline keeps touching the bottom band. */
+    bottom: -4px;
+    width: var(--event-info-side-border-w);
+    height: calc(max(0px, var(--event-info-side-gap-h)) + 4px);
+    background-image: url('../../../assets/images/misc/Cut%20Panel%20Border.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Dock-style trapezium fill + dock-style 3-side white outline (no bottom stroke). */
+.event-slide .panel-resize-handle--inner-right::after {
+    content: '';
+    position: absolute;
+    /* Overlap top/bottom border-image bands slightly to avoid anti-aliased seam gaps. */
+    top: calc(var(--event-info-side-gap-h) - 2px);
+    left: 0;
+    width: 64px;
+    height: calc(var(--event-info-side-trapezium-h) + 8px);
+    /* Sideways trapezium (flipped): long side at drag-control start (left), short side outward (right). */
+    clip-path: polygon(0% 0%, 100% 12%, 100% 88%, 0% 100%);
+    background-color: rgb(13, 71, 161);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M 0,0 L 100,12 L 100,88 L 0,100' fill='none' stroke='%23ffffff' stroke-width='20' vector-effect='non-scaling-stroke' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-shadow: none;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.color-palette-gray .event-slide .panel-resize-handle--inner-right::after {
+    background-color: var(--btn-gray-bg-hover);
+}
+
+body.color-palette-crimson .event-slide .panel-resize-handle--inner-right::after {
+    background-color: var(--btn-crimson-bg-hover);
+}
+
+body.color-palette-nulled .event-slide .panel-resize-handle--inner-right::after {
+    background-color: var(--btn-nulled-bg-hover);
+}
+
+/* Trapezium text (dock-style fill behind at z-index -1; label sits on top, clipped to same polygon). */
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-label,
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-label {
+    position: absolute;
+    top: calc(var(--event-info-side-gap-h) - 2px);
+    width: 64px;
+    height: calc(var(--event-info-side-trapezium-h) + 8px);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Icon-only: keep horizontal-tb so flex axes match the trapezium box (sideways-* skews “center”). */
+    writing-mode: horizontal-tb;
+    padding: 8px 0;
+    /* Hit target for trapezium strip (paired with pointer-events:none on parent handle on desktop). */
+    pointer-events: auto;
+    user-select: none;
+    z-index: 0;
+    color: #fff;
+    /* Big Noodle Too Oblique — same stack as --font-title (variables.css @font-face). */
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif);
+    font-weight: normal;
+    font-style: oblique;
+    font-size: clamp(22px, 5.5vmin, 44px);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-orientation: mixed;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-icon,
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-icon {
+    width: clamp(22px, 9.5vmin, 45px);
+    height: auto;
+    max-height: 62%;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    pointer-events: none;
+    transform: translate(var(--trap-icon-optical-shift-x, 0px), var(--trap-icon-optical-shift-y, 0px));
+}
+
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-label {
+    left: 0;
+    clip-path: polygon(0% 0%, 100% 12%, 100% 88%, 0% 100%);
+}
+
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-label {
+    right: 0;
+    left: auto;
+    clip-path: polygon(100% 0%, 0% 12%, 0% 88%, 100% 100%);
+}
+
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__pill,
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__pill {
+    position: relative;
+    z-index: 2;
+}
+
+.event-slide .panel-resize-handle--inner-right .panel-resize-handle__pill {
+    margin-left: var(--event-info-pill-nudge-x);
+}
+
+/* Filters (right edge): mirrored chrome vs event — Mirrored *Border.png assets, seam on handle’s right. */
+.filters-panel .panel-resize-handle--inner-left {
+    /* Mirror of event: opposite sign on X so icons move the same visual direction. */
+    --trap-icon-optical-shift-x: 6px;
+    --trap-icon-optical-shift-y: 0px;
+    width: calc(64px + 38px);
+    padding-right: calc(64px - 2px);
+    /* inner-left default flex-end: pill sits at seam-side of content strip (matches event pill vs trapezium). */
+    --event-info-side-trapezium-h: 160px;
+    --event-info-side-border-w: 54px;
+    --event-info-side-gap-h: calc((100% - var(--event-info-side-trapezium-h)) / 2);
+    align-items: center;
+    box-sizing: border-box;
+    background-image: url('../../../assets/images/misc/Mirrored%20Panel%20Border.png');
+    background-repeat: no-repeat;
+    background-size: var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h));
+    background-position: right top;
+}
+
+.filters-panel .panel-resize-handle--inner-left::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    width: var(--event-info-side-border-w);
+    height: calc(max(0px, var(--event-info-side-gap-h)) + 4px);
+    background-image: url('../../../assets/images/misc/Mirrored%20Cut%20Panel%20Border.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.filters-panel .panel-resize-handle--inner-left::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--event-info-side-gap-h) - 2px);
+    right: 0;
+    left: auto;
+    width: 64px;
+    height: calc(var(--event-info-side-trapezium-h) + 8px);
+    /* Mirror of event trapezium: short vertical at seam (right), long side outward (left). */
+    clip-path: polygon(100% 0%, 0% 12%, 0% 88%, 100% 100%);
+    background-color: rgb(13, 71, 161);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M 100,0 L 0,12 L 0,88 L 100,100' fill='none' stroke='%23ffffff' stroke-width='20' vector-effect='non-scaling-stroke' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-shadow: none;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.color-palette-gray .filters-panel .panel-resize-handle--inner-left::after {
+    background-color: var(--btn-gray-bg-hover);
+}
+
+body.color-palette-crimson .filters-panel .panel-resize-handle--inner-left::after {
+    background-color: var(--btn-crimson-bg-hover);
+}
+
+body.color-palette-nulled .filters-panel .panel-resize-handle--inner-left::after {
+    background-color: var(--btn-nulled-bg-hover);
+}
+
+/* Filters only: flip Drag Border asset; counter-flip arrow (borders stay unflipped). */
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__pill {
+    transform: scaleX(-1);
+}
+
+.filters-panel .panel-resize-handle--inner-left .panel-resize-handle__arrow {
+    transform: scaleX(-1);
 }
 
 .panel-resize-handle__pill {
     width: 32px;
     height: 112px;
     border-radius: 5px 0 0 5px;
-    background: rgba(13, 71, 161, 0.6);
+    background-color: transparent;
+    background-image: url('../../../assets/images/misc/Drag%20Border.png');
+    background-repeat: no-repeat;
+    /* Sideways: anchor on panel seam (left or right via handle var); hover widens like dock grows on height. */
+    background-position: var(--panel-resize-pill-bg-x, left) center;
+    background-size: 100% 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: none;
     transition:
         width 0.25s ease,
         height 0.25s ease,
@@ -125,31 +341,59 @@
 /* Same arrow asset as pagination; mirror on inner-right so it points into the drag direction */
 .panel-resize-handle .panel-resize-handle__arrow {
     display: block;
-    width: 20px;
+    width: 30px;
     height: auto;
-    max-height: 26px;
+    max-height: 30px;
     object-fit: contain;
     pointer-events: none;
     user-select: none;
+    filter: brightness(0);
 }
 
 .panel-resize-handle:hover .panel-resize-handle__pill,
 .panel-resize-handle:focus-visible .panel-resize-handle__pill {
-    background: rgba(13, 71, 161, 0.9);
+    background-color: transparent;
+    background-image: url('../../../assets/images/misc/Drag%20Border.png');
+    background-repeat: no-repeat;
+    background-position: var(--panel-resize-pill-bg-x, left) center;
+    background-size: 100% 100%;
+    /* +6px on the cross-axis vs default 32 — dock uses +6 on height; here width grows from seam outward. */
     width: 38px;
-    height: 128px;
+    height: 112px;
 }
 
 .panel-resize-handle:focus-visible .panel-resize-handle__pill {
-    box-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.4),
-        0 0 0 2px rgba(100, 181, 246, 0.85);
+    box-shadow: none;
 }
 
 .panel--resizing .panel-resize-handle__pill {
-    background: rgba(13, 71, 161, 0.95);
+    background-color: transparent;
+    background-image: url('../../../assets/images/misc/Drag%20Border.png');
+    background-repeat: no-repeat;
+    background-position: var(--panel-resize-pill-bg-x, left) center;
+    background-size: 100% 100%;
     width: 38px;
-    height: 128px;
+    height: 112px;
+}
+
+/* Force image pill across palette themes (theme files set solid backgrounds with !important). */
+body.color-palette-gray .panel-resize-handle__pill,
+body.color-palette-crimson .panel-resize-handle__pill,
+body.color-palette-nulled .panel-resize-handle__pill,
+body.color-palette-gray .panel-resize-handle:hover .panel-resize-handle__pill,
+body.color-palette-gray .panel-resize-handle:focus-visible .panel-resize-handle__pill,
+body.color-palette-crimson .panel-resize-handle:hover .panel-resize-handle__pill,
+body.color-palette-crimson .panel-resize-handle:focus-visible .panel-resize-handle__pill,
+body.color-palette-nulled .panel-resize-handle:hover .panel-resize-handle__pill,
+body.color-palette-nulled .panel-resize-handle:focus-visible .panel-resize-handle__pill,
+body.color-palette-gray .panel--resizing .panel-resize-handle__pill,
+body.color-palette-crimson .panel--resizing .panel-resize-handle__pill,
+body.color-palette-nulled .panel--resizing .panel-resize-handle__pill {
+    background-color: transparent !important;
+    background-image: url('../../../assets/images/misc/Drag%20Border.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: var(--panel-resize-pill-bg-x, left) center !important;
+    background-size: 100% 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -164,5 +408,39 @@
     .music-panel.panel--resizing,
     .events-manage-panel.panel--resizing {
         transition: none !important;
+    }
+
+    /*
+     * Expanded pagination dock: keep Cut / Mirrored Cut bottom bands flush inside the handle.
+     * Default bottom: -4px + extra height overlaps dock top chrome when layout height animates;
+     * collapsed dock still uses the nudged overlap (user-preferred seam there).
+     */
+    body:has(#paginationDock):not(.pagination-dock-collapsed) .event-slide .panel-resize-handle--inner-right::before,
+    body:has(#paginationDock):not(.pagination-dock-collapsed) .filters-panel .panel-resize-handle--inner-left::before {
+        bottom: 0;
+        height: max(0px, var(--event-info-side-gap-h));
+    }
+
+    /*
+     * Info + Filters: border PNG bands are non-interactive; only trapezoid strip + drag pill hit-test.
+     * Events still use the <button> listeners (bubble from children). Music / Manager unchanged (full button).
+     */
+    body.event-system-loaded #eventSlide .panel-resize-handle.panel-resize-handle--inner-right,
+    body.event-system-loaded .event-slide .panel-resize-handle.panel-resize-handle--inner-right,
+    #filtersPanel .panel-resize-handle.panel-resize-handle--inner-left,
+    .filters-panel .panel-resize-handle.panel-resize-handle--inner-left {
+        pointer-events: none;
+    }
+
+    body.event-system-loaded #eventSlide .panel-resize-handle--inner-right .panel-resize-handle__trap-label,
+    body.event-system-loaded #eventSlide .panel-resize-handle--inner-right .panel-resize-handle__pill,
+    body.event-system-loaded .event-slide .panel-resize-handle--inner-right .panel-resize-handle__trap-label,
+    body.event-system-loaded .event-slide .panel-resize-handle--inner-right .panel-resize-handle__pill,
+    #filtersPanel .panel-resize-handle--inner-left .panel-resize-handle__trap-label,
+    #filtersPanel .panel-resize-handle--inner-left .panel-resize-handle__pill,
+    .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__trap-label,
+    .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__pill {
+        pointer-events: auto;
+        cursor: ew-resize;
     }
 }

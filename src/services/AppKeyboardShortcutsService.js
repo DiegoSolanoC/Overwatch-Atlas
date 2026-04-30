@@ -503,9 +503,7 @@
             if (document.getElementById('storyViewerContainer')) {
                 return;
             }
-            if (isEventSlideOpen()) {
-                if (clickIfEnabled('eventAllEventsBtn')) consumeEvent(e);
-            } else if (clickIfEnabled('eventsManageToggle')) {
+            if (isEventSlideOpen() && clickIfEnabled('eventAllEventsBtn')) {
                 consumeEvent(e);
             }
             return;

@@ -3,6 +3,13 @@
  * Separates rendering logic from event management logic
  */
 
+/** Valid transparent src until IO assigns `data-src` — `<img>` with no `src` paints an opaque blank (reads as white) on top of the loading backdrop. */
+const EVENT_LIST_LAZY_IMG_PLACEHOLDER =
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+/** Real file; shown as sibling under the lazy photo (CSS background was hidden behind full-bleed img). */
+const EVENT_LIST_LOADING_SPINNER_SRC = 'assets/images/misc/loading%20asset.gif';
+
 class EventRenderService {
     constructor() {
         // Will be set by EventManager
@@ -448,8 +455,18 @@ class EventRenderService {
             paginationContainer.id = 'eventsPagination';
             paginationContainer.className = 'events-pagination';
             const eventsList = document.getElementById('eventsList');
+            const storyBottom = document.getElementById('storyArchiveBottomBar');
             if (eventsList && eventsList.parentNode) {
-                eventsList.parentNode.insertBefore(paginationContainer, eventsList.nextSibling);
+                if (storyBottom && storyBottom.parentNode === eventsList.parentNode) {
+                    storyBottom.appendChild(paginationContainer);
+                } else {
+                    eventsList.parentNode.insertBefore(paginationContainer, eventsList.nextSibling);
+                }
+            }
+        } else {
+            const storyBottom = document.getElementById('storyArchiveBottomBar');
+            if (storyBottom && storyBottom.parentNode && !storyBottom.contains(paginationContainer)) {
+                storyBottom.appendChild(paginationContainer);
             }
         }
         
@@ -732,7 +749,7 @@ class EventRenderService {
 
         // Always use the same container structure to maintain consistent sizing
         const imageHtml = imagePathWithCache
-            ? `<div class="event-item-preview-image event-item-preview-image--loading" style="position: relative; width: 100%; aspect-ratio: 1; overflow: hidden;"><img data-src="${imagePathWithCache}" alt="${displayEvent.name}" decoding="async" fetchpriority="low" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.18s ease;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; width: 100%; height: 100%;\\'>No Image</div>';" onload="this.style.opacity='1';var p=this.closest('.event-item-preview-image');if(p)p.classList.remove('event-item-preview-image--loading');"></div>`
+            ? `<div class="event-item-preview-image event-item-preview-image--loading" style="position: relative; width: 100%; aspect-ratio: 1; overflow: hidden;"><img class="event-item-preview-image__spinner" src="${EVENT_LIST_LOADING_SPINNER_SRC}" alt="" width="56" height="56" decoding="async" draggable="false" /><img class="event-item-preview-image__photo" src="${EVENT_LIST_LAZY_IMG_PLACEHOLDER}" data-src="${imagePathWithCache}" alt="${displayEvent.name}" decoding="async" fetchpriority="low" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; opacity: 0; transition: opacity 0.18s ease;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; width: 100%; height: 100%;\\'>No Image</div>';" onload="this.style.opacity='1';var p=this.closest('.event-item-preview-image');if(p)p.classList.remove('event-item-preview-image--loading');"></div>`
             : `<div class="event-item-preview-image" style="position: relative; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; background: rgba(0,0,0,0.5); width: 100%; aspect-ratio: 1;">No Image</div>`;
 
         // Multi-event indicator badge - show current variant / total (e.g., "1/2")

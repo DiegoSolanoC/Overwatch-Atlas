@@ -12,7 +12,8 @@
     background: var(--bg-secondary); /* Dark blue for default blue palette */
     box-shadow: none !important; /* Remove shadow to prevent overlap */
     transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
-    z-index: 200;
+    /* Match event-slide: above main stage (event image overlay z-index 500) for protruding resize handle */
+    z-index: 540;
     overflow-y: hidden; /* Hide panel scrollbar - only grid scrolls */
     color: white;
     margin: 0;
@@ -31,6 +32,14 @@
 /* Hide panel content when collapsed */
 .filters-panel:not(.open) .filters-panel-content {
     display: none;
+}
+
+/* Close is outside .filters-panel-content — when collapsed it would still paint (often over the
+   center stage / Story Archive) and steal clicks as a “phantom ×”. Only show it while open. */
+.filters-panel:not(.open) .filters-panel-close {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 /* Mobile Styles */

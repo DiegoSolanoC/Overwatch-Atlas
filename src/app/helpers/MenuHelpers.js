@@ -864,25 +864,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                 teardownMenuHelpersEventSystemLayout();
                 sweepEventSystemDockOrphans();
 
-                // Create event buttons (dev-only: hide eventsManageToggle on GitHub Pages)
-                const isGitHubPages = window.location.hostname.includes('github.io');
-                if (!isGitHubPages) {
-                    createGlobeControlButton({
-                        id: 'eventsManageToggle',
-                        className: 'dock-globe-rail__btn',
-                        title: 'Manage Events',
-                        label: 'Events',
-                        iconPath: 'assets/images/icons/Event Manager Icon.png',
-                        iconAlt: 'Event Manager',
-                        parentId: 'dockGlobeRailRight',
-                        baseClass: 'globe-control-btn',
-                        headerOrder: 10,
-                        mobileParentId: 'dockGlobeRailLeft',
-                        mobileBaseClass: 'globe-control-btn',
-                        mobileClassName: 'dock-globe-rail__btn'
-                    });
-                }
-
                 createGlobeControlButton({
                     id: 'filtersToggle',
                     className: 'dock-globe-rail__btn',
@@ -1012,7 +993,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                 }, 100);
 
                 // Move Filters, Global Image Toggle, and Page Input Container between dock rail and page controls row
-                // Events Manager stays on right rail (dev feature)
                 function moveButtonsToPageControlsRow() {
                     const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
                     /* Portrait row order + membership: moveElements / moveDock (replaceChildren). Avoid legacy insertBefore/appendChild here — it fought moveDock and scrambled control order. */
@@ -1026,19 +1006,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
 
                     const pageInputContainer = document.querySelector('.page-input-container');
                     const rightRail = document.getElementById('dockGlobeRailRight');
-                    const eventsBtn = document.getElementById('eventsManageToggle');
                     const filtersBtn = document.getElementById('filtersToggle');
                     const globalImageToggleBtn = document.getElementById('globalImageToggle');
-
-                    // Move Events Manager to right rail when not mobile portrait
-                    if (rightRail && eventsBtn && eventsBtn.parentElement !== rightRail) {
-                        eventsBtn.style.position = '';
-                        eventsBtn.style.top = '';
-                        eventsBtn.style.left = '';
-                        eventsBtn.style.right = '';
-                        eventsBtn.style.bottom = '';
-                        rightRail.appendChild(eventsBtn);
-                    }
 
                     if (rightRail) {
                         const trapMountEarly = document.querySelector('.pagination-dock-top-trapezoid');
@@ -1054,13 +1023,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (filtersBtn && filtersBtn.parentElement !== rightRail) {
                                 rightRail.appendChild(filtersBtn);
                             }
-                        } else if (eventsBtn && eventsBtn.parentElement !== rightRail) {
-                            eventsBtn.style.position = '';
-                            eventsBtn.style.top = '';
-                            eventsBtn.style.left = '';
-                            eventsBtn.style.right = '';
-                            eventsBtn.style.bottom = '';
-                            rightRail.appendChild(eventsBtn);
                         }
                     }
                 }
@@ -1114,55 +1076,11 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                 const events = window.eventManager.events || [];
                 window.newsTickerService.updateTicker(events);
 
-                // Wire up Event Manager panel (decoupled from globe)
+                // Wire up Event Manager panel controls (no dock toggle — panel only via e.g. All Events)
                 if (window.eventManager && !window.eventManager.listenersSetup) {
                     window.eventManager.setupEventListeners();
-                    window.eventManager.listenersSetup = true;
-                    // Show the events manage panel toggle button (dev-only: hide on GitHub Pages)
-                const isGitHubPages = window.location.hostname.includes('github.io');
-                const eventsManageToggle = document.getElementById('eventsManageToggle');
-                if (eventsManageToggle && !isGitHubPages) {
-                    eventsManageToggle.style.setProperty('display', 'flex', 'important');
-                        // Remove the old globe-bootstrap handler
-                        const newBtn = eventsManageToggle.cloneNode(true);
-                        eventsManageToggle.parentNode.replaceChild(newBtn, eventsManageToggle);
-                        // Add new handler that just opens the panel
-                        newBtn.addEventListener('click', () => {
-                            const panel = document.getElementById('eventsManagePanel');
-                            if (panel) {
-                                const isOpening = !panel.classList.contains('open');
-                                panel.classList.toggle('open');
-                                
-                                // Flash feedback (orange for panel toggle)
-                                if (window.flashButton) {
-                                    window.flashButton(newBtn, 'flash-orange');
-                                }
-                                
-                                // Close other panels if opening (mutual exclusion)
-                                if (isOpening) {
-                                    // Close filters panel
-                                    const filtersPanel = document.getElementById('filtersPanel');
-                                    const filtersButton = document.getElementById('filtersToggle');
-                                    if (filtersPanel?.classList.contains('open')) {
-                                        filtersPanel.classList.remove('open');
-                                        filtersButton?.classList.remove('active');
-                                    }
-                                    // Close music panel
-                                    const musicPanel = document.getElementById('musicPanel');
-                                    const musicButton = document.getElementById('musicToggle');
-                                    if (musicPanel?.classList.contains('open')) {
-                                        musicPanel.classList.remove('open');
-                                        musicButton?.classList.remove('active');
-                                    }
-                                }
-                            }
-                            // Play event manager sound
-                            if (window.SoundEffectsManager?.play) {
-                                window.SoundEffectsManager.play('eventManager');
-                            }
-                        });
-                    }
                 }
+
                 
                 // Create pagination dock for standalone mode
                 getOrCreateElement('eventPagination', () => {
@@ -1183,7 +1101,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                     const nextEventBtn = document.getElementById('nextEventBtn');
                     const globalImageToggleBtn = document.getElementById('globalImageToggle');
                     const filtersBtn = document.getElementById('filtersToggle');
-                    const eventsBtn = document.getElementById('eventsManageToggle');
                     
                     /* Dock bar: Prev Page, Prev Event, Image, Textbox, Filters, Next Event, Next Page (image/filters join center rail when trapezoid dock). */
                     const centerChromeDockBarOrder = [
@@ -1236,7 +1153,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 document.querySelector('#eventPagination .page-input-container') ||
                                 document.querySelector('.page-input-container');
                             const mobilePortraitChrome = [
-                                eventsBtn,
                                 prevPageBtn,
                                 prevEventBtn,
                                 globalImageToggleBtn,
@@ -1291,8 +1207,8 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             }
 
                             const rightRailTargets = useTrapezoidSideChrome
-                                ? [eventsBtn]
-                                : [globalImageToggleBtn, filtersBtn, eventsBtn];
+                                ? []
+                                : [globalImageToggleBtn, filtersBtn];
 
                             rightRailTargets.forEach((element) => {
                                 // Skip elements that no longer exist in document (unloaded)
@@ -1400,6 +1316,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         if (filtersPanel) filtersPanel.classList.remove('open');
                         const filtersToggle = document.getElementById('filtersToggle');
                         if (filtersToggle) filtersToggle.classList.remove('active');
+                        if (typeof window.syncFiltersPanelTrapIcon === 'function') {
+                            window.syncFiltersPanelTrapIcon();
+                        }
                         updateStatus('✓ Filters applied', 'success');
                     });
                 }
@@ -5049,11 +4968,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                 footer.classList.remove('timeline-loaded');
             }
 
-            // Hide events manage toggle button
-            const eventsManageToggle = document.getElementById('eventsManageToggle');
-            if (eventsManageToggle) {
-                eventsManageToggle.style.setProperty('display', 'none', 'important');
-            }
+            document.getElementById('eventsManageToggle')?.remove();
 
             // Close event slide panel if open
             const eventSlide = document.getElementById('eventSlide');

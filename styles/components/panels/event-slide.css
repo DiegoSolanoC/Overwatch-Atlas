@@ -12,7 +12,8 @@
     background: var(--bg-secondary); /* Dark blue for default blue palette */
     box-shadow: none; /* Remove shadow to prevent overlap */
     transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
-    z-index: 500;
+    /* Above main#content stage (.event-image-overlay is z-index 500) so resize chrome can sit on the seam */
+    z-index: 540;
     overflow-y: auto;
     overflow-x: hidden;
     color: white;

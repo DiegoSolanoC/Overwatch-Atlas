@@ -94,14 +94,10 @@ function ensureBadge() {
 }
 
 function positionBadge() {
-    // Anchor to header hub instead of eventsManageToggle (which is now in dock rail)
-    // This keeps the hover preview in the header area
     const headerHub = document.getElementById('headerHub');
-    const btn = document.getElementById('eventsManageToggle');
     if (!badgeEl) return;
-    
-    // Use header hub as anchor, fallback to button if hub not found
-    const anchorEl = headerHub || btn;
+
+    const anchorEl = headerHub;
     if (!anchorEl) return;
 
     const scale = getBodyScale();

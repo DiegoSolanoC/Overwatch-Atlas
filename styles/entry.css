@@ -7,6 +7,8 @@
 /* Ensure main element properly contains containers */
 main#content {
     position: relative;
+    /* Flex sibling of side panels: explicit 0 so panels (z-index 540) stack above the map + image overlay */
+    z-index: 0;
 }
 
 /* Test container styling - for Menu Components */
@@ -445,22 +447,34 @@ body.color-palette-gray .main-menu-label-container {
     }
 }
 
-/* Zoom Controls */
+/* Zoom Controls — bottom-right row; same right inset as .dock-globe-rail--right / Events strip (--dock-globe-rail-edge-inset 42px) */
 .zoom-controls {
     position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: auto;
+    right: max(42px, env(safe-area-inset-right));
+    top: auto;
+    transform: none;
+    /* Match .dock-globe-rail--left / --right vertical position */
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + var(--dock-globe-rail-gap, 10px)
+        + var(--dock-rail-lift-into-border, 0px)
+        + var(--dock-rail-side-extra, 30px)
+    );
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
     z-index: 150; /* Above globe but below event slide (200) and overlays */
     pointer-events: none; /* Allow clicks to pass through container */
 }
 
 .zoom-btn {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 8px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     /* Uses palette tokens (blue default; gray / crimson / nulled from body.color-palette-*) */
@@ -496,16 +510,17 @@ body.color-palette-gray .main-menu-label-container {
     transform: none;
 }
 
-.zoom-in-btn {
-    order: 1; /* + button on top */
+/* Horizontal row: zoom out → reset → zoom in (left to right) */
+.zoom-out-btn {
+    order: 1;
 }
 
 .zoom-reset-btn {
-    order: 2; /* = button in middle */
+    order: 2;
 }
 
-.zoom-out-btn {
-    order: 3; /* - button on bottom */
+.zoom-in-btn {
+    order: 3;
 }
 
 /* Hide zoom controls initially */
@@ -545,17 +560,31 @@ body:has(.loading-overlay.active) .time-control-slider {
     pointer-events: auto; /* Buttons are clickable */
 }
 
-/* Mobile: Match desktop vertical position (centered), smaller buttons */
-@media (max-width: 768px) and (orientation: portrait) {
+/* Mobile: same bottom band as dock rails; compact row on the right */
+@media (max-width: 768px) {
     .zoom-controls {
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        left: 15px !important;
+        left: auto !important;
+        right: max(42px, env(safe-area-inset-right)) !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: row !important;
+        bottom: calc(var(--footer-height, 65px) + 24px) !important;
+    }
+
+    body:has(#paginationDock) .zoom-controls {
+        bottom: calc(
+                var(--footer-height, 65px)
+                + var(--pagination-dock-height, 240px)
+                + var(--dock-globe-rail-gap, 10px)
+                + var(--dock-rail-lift-into-border, 0px)
+                + var(--dock-rail-side-extra, 30px)
+            )
+            !important;
     }
 
     .zoom-btn {
-        width: 42px !important;
-        height: 42px !important;
-        font-size: 28px !important;
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 26px !important;
     }
 }

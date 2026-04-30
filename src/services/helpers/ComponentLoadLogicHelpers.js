@@ -336,13 +336,9 @@ export async function loadEventsLogic({ initializeEventManager, createGlobeContr
         
         // Make sure dock buttons are visible (they may have been hidden)
         const filtersToggle = document.getElementById('filtersToggle');
-        const eventsManageToggle = document.getElementById('eventsManageToggle');
-        
+
         if (filtersToggle) {
             filtersToggle.style.setProperty('display', 'flex', 'important');
-        }
-        if (eventsManageToggle) {
-            eventsManageToggle.style.setProperty('display', 'flex', 'important');
         }
         
         // Ensure filter panel exists (create if missing, though Event System should have done this)

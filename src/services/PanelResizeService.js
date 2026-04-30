@@ -8,8 +8,22 @@
     var MOBILE_MQ = '(max-width: 768px)';
 
     var PANELS = [
-        { id: 'eventSlide', name: 'Info', edge: 'inner-right', cssVar: '--user-panel-event-width', defaultVar: '--panel-event-width' },
-        { id: 'filtersPanel', name: 'Filters', edge: 'inner-left', cssVar: '--user-panel-filters-width', defaultVar: '--panel-filters-width' },
+        {
+            id: 'eventSlide',
+            name: 'Event info',
+            edge: 'inner-right',
+            cssVar: '--user-panel-event-width',
+            defaultVar: '--panel-event-width',
+            maxVar: '--panel-event-width-max'
+        },
+        {
+            id: 'filtersPanel',
+            name: 'Filters',
+            edge: 'inner-left',
+            cssVar: '--user-panel-filters-width',
+            defaultVar: '--panel-filters-width',
+            maxVar: '--panel-filters-width-max'
+        },
         { id: 'musicPanel', name: 'Music', edge: 'inner-left', cssVar: '--user-panel-music-width', defaultVar: '--panel-music-width' },
         { id: 'eventsManagePanel', name: 'Manager', edge: 'inner-left', cssVar: '--user-panel-events-manage-width', defaultVar: '--panel-events-manage-width' }
     ];
@@ -56,6 +70,9 @@
     /** Cumulative px pulled past clamp before rim appears; then ramp to 1 over RIM_PULL_RAMP_PX more */
     var RIM_PULL_DEAD_PX = 28;
     var RIM_PULL_RAMP_PX = 90;
+
+    /** Log one line on each resize drag release. Set true while tuning. */
+    var LOG_DRAG_DISTANCE_ON_RELEASE = false;
 
     var gearTickPool = null;
     var gearTickPoolIx = 0;
@@ -142,14 +159,32 @@
         return Number.isFinite(n) && n > 0 ? n : 600;
     }
 
+    /** Optional positive length from :root (returns null if missing/invalid). */
+    function getOptionalPx(cssVar) {
+        var raw = getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+        var n = parseInt(raw, 10);
+        return Number.isFinite(n) && n > 0 ? n : null;
+    }
+
     function maxPanelPx() {
         /* Allow nearly full viewport width; small gutter keeps map/map UI usable */
         return Math.max(400, Math.floor(window.innerWidth * 0.99 - 8));
     }
 
-    function clampWidth(px, defaultVar) {
-        var min = getDefaultPx(defaultVar);
-        var max = maxPanelPx();
+    function maxWidthForPanel(cfg) {
+        var cap = maxPanelPx();
+        if (cfg && cfg.maxVar) {
+            var m = getOptionalPx(cfg.maxVar);
+            if (m != null) {
+                return Math.min(m, cap);
+            }
+        }
+        return cap;
+    }
+
+    function clampWidth(px, cfg) {
+        var min = getDefaultPx(cfg.defaultVar);
+        var max = maxWidthForPanel(cfg);
         return Math.min(Math.max(px, min), max);
     }
 
@@ -165,6 +200,42 @@
                 /* ignore */
             }
         });
+    }
+
+    var EVENT_TRAP_PAGE_ICON = 'assets/images/icons/Page Icon.png';
+    var FILTERS_TRAP_EMPTY = 'assets/images/icons/Empty Filter Icon.png';
+    var FILTERS_TRAP_ACTIVE = 'assets/images/icons/Filter Icon.png';
+
+    function filtersTrapHasActiveSelection() {
+        try {
+            if (
+                window.FilterService &&
+                window.FilterService.stateManager &&
+                window.FilterService.stateManager.selectedFilters
+            ) {
+                return window.FilterService.stateManager.selectedFilters.size > 0;
+            }
+        } catch (e) {
+            /* ignore */
+        }
+        return !!(window.standaloneActiveFilters && window.standaloneActiveFilters.size > 0);
+    }
+
+    /** @param {HTMLImageElement|null|undefined} trapImg optional img from ensureHandle */
+    function syncFiltersPanelTrapIcon(trapImg) {
+        var img = trapImg;
+        if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') {
+            var panel = document.getElementById('filtersPanel');
+            img = panel && panel.querySelector('.panel-resize-handle__trap-icon');
+        }
+        if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') {
+            return;
+        }
+        img.src = filtersTrapHasActiveSelection() ? FILTERS_TRAP_ACTIVE : FILTERS_TRAP_EMPTY;
+    }
+
+    function syncFiltersPanelTrapIconFromWindow() {
+        syncFiltersPanelTrapIcon(null);
     }
 
     function currentWidthPx(cfg) {
@@ -222,6 +293,24 @@
             icon.classList.add('ui-pagination-arrow--flip-h');
         }
         pill.appendChild(icon);
+        if (cfg.id === 'eventSlide' || cfg.id === 'filtersPanel') {
+            var trapLabel = document.createElement('span');
+            trapLabel.className = 'panel-resize-handle__trap-label';
+            trapLabel.setAttribute('aria-hidden', 'true');
+            var trapImg = document.createElement('img');
+            trapImg.className = 'panel-resize-handle__trap-icon';
+            trapImg.alt = '';
+            trapImg.decoding = 'async';
+            trapImg.setAttribute('aria-hidden', 'true');
+            if (cfg.id === 'eventSlide') {
+                trapImg.src = EVENT_TRAP_PAGE_ICON;
+            } else {
+                trapImg.src = FILTERS_TRAP_EMPTY;
+                syncFiltersPanelTrapIcon(trapImg);
+            }
+            trapLabel.appendChild(trapImg);
+            btn.appendChild(trapLabel);
+        }
         btn.appendChild(pill);
 
         btn.addEventListener('dblclick', function (e) {
@@ -231,21 +320,13 @@
 
         // Click to open panel when collapsed (for event slide and filters panel)
         btn.addEventListener('click', function (e) {
-            console.log('[PanelResizeService] Resize handle clicked');
-            console.log('[PanelResizeService] Panel ID:', cfg.id);
-            console.log('[PanelResizeService] Panel classes:', panel.className);
-            console.log('[PanelResizeService] Panel has open class:', panel.classList.contains('open'));
-
             if (!panel.classList.contains('open')) {
                 e.preventDefault();
 
                 if (cfg.id === 'eventSlide') {
-                    console.log('[PanelResizeService] Panel is eventSlide and not open, proceeding to open event');
-
                     // Check if event system is loaded
                     const testBtn = document.getElementById('testBtn');
                     const isEventSystemLoaded = testBtn && testBtn.dataset.loaded === 'true';
-                    console.log('[PanelResizeService] Event system loaded:', isEventSystemLoaded);
 
                     if (!isEventSystemLoaded) {
                         console.warn('[PanelResizeService] Event system not loaded, cannot open event slide');
@@ -259,34 +340,25 @@
                     // Try to open last opened event, or first event if none
                     try {
                         const lastEventStr = localStorage.getItem('lastOpenedEvent');
-                        console.log('[PanelResizeService] lastOpenedEvent from localStorage:', lastEventStr);
                         let eventToOpen = null;
 
                         if (lastEventStr) {
                             eventToOpen = JSON.parse(lastEventStr);
-                            console.log('[PanelResizeService] Parsed last opened event:', eventToOpen);
                         }
 
                         // Get event manager
                         const eventManager = window.eventManager;
-                        console.log('[PanelResizeService] window.eventManager:', eventManager);
-                        console.log('[PanelResizeService] eventManager.openEventFromList:', eventManager?.openEventFromList);
 
                         if (eventManager && eventManager.openEventFromList) {
                             let eventData = null;
                             let eventIndex = -1;
                             const events = eventManager.events || [];
-                            console.log('[PanelResizeService] Events array:', events);
-                            console.log('[PanelResizeService] Events count:', events.length);
 
                             if (eventToOpen) {
                                 // Try to find the last opened event by name
                                 eventIndex = events.findIndex(ev => ev.name === eventToOpen.name);
-                                console.log('[PanelResizeService] Searching for event with name:', eventToOpen.name);
-                                console.log('[PanelResizeService] Found index:', eventIndex);
                                 if (eventIndex >= 0) {
                                     eventData = events[eventIndex];
-                                    console.log('[PanelResizeService] Found last event at index:', eventIndex, 'data:', eventData);
                                 }
                             }
 
@@ -294,14 +366,11 @@
                             if (!eventData && events.length > 0) {
                                 eventData = events[0];
                                 eventIndex = 0;
-                                console.log('[PanelResizeService] Using first event:', eventData?.name, 'at index:', eventIndex);
                             }
 
                             // Open the event using eventManager.openEventFromList
                             if (eventData && eventIndex >= 0) {
-                                console.log('[PanelResizeService] Calling eventManager.openEventFromList with:', eventData.name, eventIndex);
                                 eventManager.openEventFromList(eventData, eventIndex);
-                                console.log('[PanelResizeService] openEventFromList call completed');
                             } else {
                                 console.warn('[PanelResizeService] No event data available, just opening panel');
                                 panel.classList.add('open');
@@ -321,14 +390,11 @@
                         window.SoundEffectsManager.play('eventClick');
                     }
                 } else if (cfg.id === 'filtersPanel') {
-                    console.log('[PanelResizeService] Panel is filtersPanel and not open, opening panel');
                     panel.classList.add('open');
                     if (window.SoundEffectsManager?.play) {
                         window.SoundEffectsManager.play('filterButton');
                     }
                 }
-            } else {
-                console.log('[PanelResizeService] Panel is already open');
             }
         });
 
@@ -345,12 +411,14 @@
                 raw = dragState.startWidth - dx;
             }
             var minW = getDefaultPx(cfg.defaultVar);
-            var maxW = maxPanelPx();
-            var next = clampWidth(raw, cfg.defaultVar);
+            var maxW = maxWidthForPanel(cfg);
+            var next = clampWidth(raw, cfg);
             document.documentElement.style.setProperty(cfg.cssVar, next + 'px');
 
             var atLimit = raw < minW || raw > maxW;
             dragState.lastPointerX = ev.clientX;
+            dragState.lastRawWidth = raw;
+            dragState.totalAbsDx = (dragState.totalAbsDx || 0) + pxMove;
 
             if (atLimit) {
                 stopGearTicks();
@@ -384,6 +452,38 @@
 
         function endDrag() {
             if (!dragState) return;
+            var ds = dragState;
+            if (LOG_DRAG_DISTANCE_ON_RELEASE) {
+                var minW = getDefaultPx(cfg.defaultVar);
+                var maxW = maxWidthForPanel(cfg);
+                var finalW = currentWidthPx(cfg);
+                var widthDelta = finalW - ds.startWidth;
+                var travel = ds.totalAbsDx || 0;
+                var lastRaw =
+                    typeof ds.lastRawWidth === 'number' && Number.isFinite(ds.lastRawWidth)
+                        ? Math.round(ds.lastRawWidth)
+                        : null;
+                var msg =
+                    '[PanelResize drag end] ' +
+                    cfg.name +
+                    ' | pointer travel: ' +
+                    Math.round(travel) +
+                    'px | width: ' +
+                    Math.round(ds.startWidth) +
+                    '→' +
+                    Math.round(finalW) +
+                    ' (' +
+                    (widthDelta >= 0 ? '+' : '') +
+                    Math.round(widthDelta) +
+                    'px) | clamp min/max: ' +
+                    minW +
+                    '/' +
+                    maxW;
+                if (lastRaw != null) {
+                    msg += ' | last raw (pre-clamp): ' + lastRaw;
+                }
+                console.log(msg);
+            }
             stopGearTicks();
             panel.classList.remove('panel--resizing');
             panel.classList.remove('panel-resize--at-limit');
@@ -392,7 +492,7 @@
             window.removeEventListener('pointerup', endDrag);
             window.removeEventListener('pointercancel', endDrag);
             try {
-                btn.releasePointerCapture(dragState.pointerId);
+                btn.releasePointerCapture(ds.pointerId);
             } catch (e) {
                 /* ignore */
             }
@@ -417,7 +517,9 @@
                 pointerId: ev.pointerId,
                 lastPointerX: ev.clientX,
                 gearAccum: 0,
-                limitPullAccum: 0
+                limitPullAccum: 0,
+                totalAbsDx: 0,
+                lastRawWidth: w
             };
             stopGearTicks();
             panel.classList.remove('panel-resize--at-limit');
@@ -441,6 +543,7 @@
                 ensureHandle(panel, cfg);
             }
         });
+        syncFiltersPanelTrapIconFromWindow();
     }
 
     /** Body subtree mutations can fire in huge bursts; coalesce to one rAF. */
@@ -461,7 +564,7 @@
             if (!raw) return;
             var px = parseInt(raw, 10);
             if (!Number.isFinite(px)) return;
-            var c = clampWidth(px, cfg.defaultVar);
+            var c = clampWidth(px, cfg);
             if (c !== px) {
                 document.documentElement.style.setProperty(cfg.cssVar, c + 'px');
             }
@@ -498,6 +601,7 @@
             play: playGearTick,
             syncFromSoundEffectsVolume: syncGearTickPoolVolume
         };
+        window.syncFiltersPanelTrapIcon = syncFiltersPanelTrapIconFromWindow;
     }
 
     if (document.readyState === 'loading') {

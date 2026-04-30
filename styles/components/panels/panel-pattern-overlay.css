@@ -30,9 +30,7 @@
 }
 
 .events-manage-panel::after,
-.filters-panel::after,
 .music-panel::after,
-.event-slide::after,
 .codex-view-root::after,
 .main-menu-buttons::after {
     content: '';
@@ -42,6 +40,22 @@
     pointer-events: none;
     background: rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
     mix-blend-mode: color;
+}
+
+/* Event info + filters: same tint, plus thin black U at bottom (50px tall, 1px stroke). */
+.event-slide::after,
+.filters-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: color;
+    background:
+        linear-gradient(#000, #000) left bottom / 1px 50px no-repeat,
+        linear-gradient(#000, #000) right bottom / 1px 50px no-repeat,
+        linear-gradient(#000, #000) left bottom / 100% 1px no-repeat,
+        rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
 }
 
 .events-manage-content,

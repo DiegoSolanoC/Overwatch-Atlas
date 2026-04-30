@@ -1797,6 +1797,8 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
 /* Mobile-only dock rail pairs. Desktop now unhides these to match mobile look for specific buttons. */
 
 .dock-globe-rail {
+    /* Horizontal inset from viewport so rails clear dock / panel border art */
+    --dock-globe-rail-edge-inset: 42px;
     --dock-globe-rail-gap: 10px;
     position: fixed;
     bottom: calc(var(--footer-height, 65px) + 24px);
@@ -1809,7 +1811,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     justify-content: flex-start;
     pointer-events: none;
     width: max-content;
-    max-width: calc(100vw - 24px);
+    max-width: calc(100vw - (2 * var(--dock-globe-rail-edge-inset, 42px)));
     box-sizing: border-box;
     transition: bottom var(--pagination-dock-transition-duration, 0.42s)
         var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
@@ -1831,7 +1833,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     }
 
     .dock-globe-rail--left {
-        left: max(10px, env(safe-area-inset-left));
+        left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
         bottom: calc(
             var(--footer-height, 65px)
             + var(--pagination-dock-height, 240px)
@@ -1854,24 +1856,24 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         ) !important;
     }
 
-    /* Segment colors: on trapezoid wrapper so fill SVG + rail children share one source. */
+    /* Segment colors: on trapezoid wrapper so fill SVG + rail children share one source (fully opaque). */
     body:has(#paginationDock) .pagination-dock-top-trapezoid {
-        --dock-trapezium-segment-bg: rgba(13, 71, 161, 0.42);
-        --dock-trapezium-segment-hover-bg: rgba(255, 255, 255, 0.12);
+        --dock-trapezium-segment-bg: rgb(13, 71, 161);
+        --dock-trapezium-segment-hover-bg: rgb(32, 105, 205);
     }
 
     body.color-palette-crimson:has(#paginationDock) .pagination-dock-top-trapezoid {
-        --dock-trapezium-segment-bg: var(--btn-crimson-bg);
+        --dock-trapezium-segment-bg: rgb(92, 16, 24);
         --dock-trapezium-segment-hover-bg: var(--btn-crimson-bg-hover);
     }
 
     body.color-palette-gray:has(#paginationDock) .pagination-dock-top-trapezoid {
-        --dock-trapezium-segment-bg: var(--btn-gray-bg);
+        --dock-trapezium-segment-bg: rgb(74, 74, 74);
         --dock-trapezium-segment-hover-bg: var(--btn-gray-bg-hover);
     }
 
     body.color-palette-nulled:has(#paginationDock) .pagination-dock-top-trapezoid {
-        --dock-trapezium-segment-bg: var(--btn-nulled-bg);
+        --dock-trapezium-segment-bg: rgb(104, 58, 168);
         --dock-trapezium-segment-hover-bg: var(--btn-nulled-bg-hover);
     }
 
@@ -1913,21 +1915,33 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         );
     }
 
-    /* Each direct child = one segment; shared fill from variables (page row matches buttons). */
+    /*
+     * Each direct child = one segment.
+     * Mirrored parallelograms that follow the trapezium direction (inverted vs previous pass):
+     * left half leans with the left trapezium side, right half mirrors it.
+     * Slight overlap removes anti-alias seams/gaps between clipped neighbors.
+     */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         > * {
+        --dock-segment-slant: clamp(8px, 1.2vw, 14px);
         flex: 1 1 0 !important;
         min-width: 0 !important;
-        margin: 0 !important;
+        margin: 0 0 0 calc(var(--dock-segment-slant) * -1) !important;
         align-self: stretch !important;
         box-sizing: border-box !important;
         border-radius: 0 !important;
         border: none !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-right: none !important;
         box-shadow: none !important;
         background: var(--dock-trapezium-segment-bg) !important;
+        clip-path: polygon(
+            0% 0%,
+            calc(100% - var(--dock-segment-slant)) 0%,
+            100% 100%,
+            var(--dock-segment-slant) 100%
+        );
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -1954,8 +1968,32 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > *:last-child {
-        border-right: none !important;
+        > *:first-child {
+        margin-left: 0 !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:nth-child(-n + 3) {
+        clip-path: polygon(
+            var(--dock-segment-slant) 0%,
+            100% 0%,
+            calc(100% - var(--dock-segment-slant)) 100%,
+            0% 100%
+        );
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:nth-child(4) {
+        clip-path: polygon(
+            calc(var(--dock-segment-slant) * 0.85) 0%,
+            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
+            100% 100%,
+            0% 100%
+        );
     }
 
     body:has(#paginationDock)
@@ -1986,7 +2024,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > #prevPageBtn.globe-control-btn {
         flex: 1.32 1 0 !important;
         justify-content: flex-end !important;
-        padding: 0 6px 0 clamp(14px, 14%, 28px) !important;
+        padding: 0 10px 0 clamp(14px, 14%, 28px) !important;
     }
 
     body:has(#paginationDock)
@@ -1995,7 +2033,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         > #nextPageBtn.globe-control-btn {
         flex: 1.32 1 0 !important;
         justify-content: flex-start !important;
-        padding: 0 clamp(14px, 14%, 28px) 0 6px !important;
+        padding: 0 clamp(10px, 10%, 22px) 0 6px !important;
     }
 
     /* Undo global center-rail skew for controls inside the trapezoid strip */
@@ -2094,12 +2132,17 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         transform: none !important;
     }
 
-    /* Page field: same segment cell; outer shape comes from parent rail clip-path */
+    /* Page field: center trapezium segment (match image/filters mirrored slopes). */
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
         > .page-input-container {
-        clip-path: none !important;
+        clip-path: polygon(
+            calc(var(--dock-segment-slant) * 0.85) 0%,
+            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
+            100% 100%,
+            0% 100%
+        ) !important;
         min-width: 0 !important;
         filter: none !important;
         height: 100% !important;
@@ -2227,7 +2270,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     }
 
     .dock-globe-rail--right {
-        right: max(10px, env(safe-area-inset-right));
+        right: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-right));
         bottom: calc(
             var(--footer-height, 65px)
             + var(--pagination-dock-height, 240px)
@@ -2275,6 +2318,32 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         transform: skewX(-11deg) translateY(-3px) scale(1.04) !important;
         background: var(--btn-primary-bg-hover) !important;
         border-color: #fff !important;
+    }
+
+    /* Narrow lateral width (desktop/tablet): left dock Map/Vehicles/Weather/Lighting/Rotation — icon only */
+    @media (max-width: 1180px) and (min-width: 769px) {
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn {
+            width: 52px !important;
+            min-width: 52px !important;
+            max-width: 52px !important;
+            padding: 0 !important;
+            justify-content: center !important;
+            gap: 0 !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn > span:not([id$="Icon"]) {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn [id$="Icon"] {
+            margin: 0 !important;
+        }
     }
 
     body.map-view-enabled .dock-globe-rail--right > .globe-control-btn#autoRotateToggle {
@@ -2645,7 +2714,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.doc
     position: relative !important;
     inset: auto !important;
     transform: none !important;
-    background: rgba(13, 71, 161, 0.9) !important;
+    background: rgb(13, 71, 161) !important;
     border: none !important;
     border-radius: 0 !important;
     padding: 6px 14px !important;

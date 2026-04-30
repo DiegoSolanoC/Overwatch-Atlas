@@ -15,6 +15,8 @@ export class ComponentOrchestrator {
         this.loadedComponents = loadedComponents;
         this.loaders = loaders; // Object with load functions: { palette: loadPalette, music: loadMusic, ... }
         this.unloaders = unloaders; // Object with unload functions: { palette: unloadPalette, music: unloadMusic, ... }
+        /** @type {HTMLElement|null} Event Manager × removed from DOM while Story Archive is open */
+        this._storyArchiveDetachedClose = null;
     }
 
     dispatchAppModeChange(mode) {
@@ -542,6 +544,162 @@ export class ComponentOrchestrator {
         }
     }
 
+    /** 0 = widest grid, 100 = most inset (narrower column + larger gutters). */
+    _storyArchiveSquishToLayout(squish0to100) {
+        const t = Math.min(100, Math.max(0, squish0to100)) / 100;
+        const gutter = 10 + t * 70;
+        const maxW = Math.round(3000 - t * 1900);
+        return { gutter, maxW };
+    }
+
+    _applyStoryArchiveGridSquish(eventsManagePanel, squish0to100) {
+        if (!eventsManagePanel) return;
+        const { gutter, maxW } = this._storyArchiveSquishToLayout(squish0to100);
+        eventsManagePanel.style.setProperty('--story-archive-list-gutter', `${gutter}px`);
+        eventsManagePanel.style.setProperty('--story-archive-list-max-width', `${maxW}px`);
+    }
+
+    /**
+     * Apply grid inset from localStorage key storyArchiveGridSquish, else default (5).
+     * No UI — values were tuned with the removed slider; optional override remains in localStorage.
+     */
+    _applyStoryArchiveGridSquishFromPreferences(eventsManagePanel) {
+        if (!eventsManagePanel || !eventsManagePanel.classList.contains('story-viewer-panel-embedded')) {
+            return;
+        }
+        const LS_KEY = 'storyArchiveGridSquish';
+        const DEFAULT_SQUISH = 5;
+        const n = parseInt(window.localStorage.getItem(LS_KEY), 10);
+        const squishVal = Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : DEFAULT_SQUISH;
+        this._applyStoryArchiveGridSquish(eventsManagePanel, squishVal);
+    }
+
+    /** Event Manager × — removed from DOM in Story Archive (never use getElementById: wrong node if duplicate ids). */
+    _hideStoryArchiveEventManagerClose(eventsManagePanel) {
+        if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
+
+        const findCloseInPanel = (panel) =>
+            panel.querySelector(':scope > #eventsManageClose') ||
+            panel.querySelector(':scope > .events-manage-close') ||
+            panel.querySelector('#eventsManageClose') ||
+            panel.querySelector('.events-manage-close');
+
+        const detach = () => {
+            const closeInPanel = findCloseInPanel(eventsManagePanel);
+            if (!closeInPanel) return;
+
+            const held = this._storyArchiveDetachedClose;
+            if (held && held !== closeInPanel) {
+                this._storyArchiveDetachedClose = null;
+            }
+            this._storyArchiveDetachedClose = closeInPanel;
+            closeInPanel.remove();
+        };
+
+        detach();
+        requestAnimationFrame(detach);
+    }
+
+    /** Put Event Manager × back before `.events-manage-content`. */
+    _restoreStoryArchiveEventManagerClose() {
+        const close = this._storyArchiveDetachedClose;
+        if (!close) return;
+        const panel = document.getElementById('eventsManagePanel');
+        const content = panel?.querySelector('.events-manage-content');
+        if (panel && content) {
+            panel.insertBefore(close, content);
+        }
+        ['display', 'visibility', 'opacity', 'pointer-events'].forEach((prop) => {
+            close.style.removeProperty(prop);
+        });
+        this._storyArchiveDetachedClose = null;
+    }
+
+    /**
+     * One bottom row: Add/Save/Export (left) + pagination (centered in remaining space).
+     */
+    _setupStoryArchiveBottomBar(eventsManagePanel) {
+        if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
+        if (document.getElementById('storyArchiveBottomBar')) return;
+
+        const manageContent = eventsManagePanel.querySelector('.events-manage-content');
+        const list = document.getElementById('eventsList');
+        if (!manageContent || !list) return;
+
+        const bottomBar = document.createElement('div');
+        bottomBar.id = 'storyArchiveBottomBar';
+        bottomBar.className = 'story-archive-bottom-bar';
+
+        const actions = eventsManagePanel.querySelector('.events-manage-actions');
+        if (actions) bottomBar.appendChild(actions);
+
+        const pag = document.getElementById('eventsPagination');
+        if (pag) bottomBar.appendChild(pag);
+
+        manageContent.insertBefore(bottomBar, list.nextSibling);
+    }
+
+    /**
+     * Story Archive: hide header (title + count). Only “Show controls” moves above Search & filters.
+     */
+    _setupStoryArchiveCompactChrome(eventsManagePanel) {
+        if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
+        const header = eventsManagePanel.querySelector('.events-manage-header');
+        const controls = document.getElementById('eventsManageControls');
+        const btn = document.getElementById('eventsManageToolbarToggleBtn');
+        if (!header || !controls || !btn) return;
+
+        const strayTitle = Array.from(controls.children).find((el) =>
+            el.classList?.contains('events-manage-title-section')
+        );
+        if (strayTitle && !header.contains(strayTitle)) {
+            header.insertBefore(strayTitle, header.firstChild);
+        }
+
+        if (!controls.contains(btn)) {
+            controls.insertBefore(btn, controls.firstChild);
+        }
+
+        header.classList.add('events-manage-header--story-empty');
+    }
+
+    /**
+     * Restore toolbar toggle into header and show header again.
+     */
+    _restoreStoryArchiveCompactChrome(eventsManagePanel) {
+        const header = eventsManagePanel?.querySelector('.events-manage-header');
+        const controls = document.getElementById('eventsManageControls');
+        const btn = document.getElementById('eventsManageToolbarToggleBtn');
+        if (!header || !controls || !btn) return;
+
+        header.classList.remove('events-manage-header--story-empty');
+
+        const titleRow = header.querySelector('.events-manage-title-row');
+        if (titleRow && controls.contains(btn)) {
+            titleRow.appendChild(btn);
+        }
+    }
+
+    /**
+     * Restore Add/Save/Export to header and pagination after #eventsList (Event Manager layout).
+     */
+    _teardownStoryArchiveBottomBar(eventsManagePanel) {
+        const bottomBar = document.getElementById('storyArchiveBottomBar');
+        const list = document.getElementById('eventsList');
+        const header = eventsManagePanel?.querySelector('.events-manage-header');
+        if (!bottomBar || !eventsManagePanel?.contains(bottomBar) || !list?.parentNode || !header) return;
+
+        const pag = document.getElementById('eventsPagination');
+        const actions = bottomBar.querySelector('.events-manage-actions');
+        if (pag && bottomBar.contains(pag)) {
+            list.parentNode.insertBefore(pag, bottomBar);
+        }
+        if (actions) {
+            header.appendChild(actions);
+        }
+        bottomBar.remove();
+    }
+
     /**
      * Create the Story Archive - takes over center space like Globe/Codex
      * Uses actual Event Manager panel but displayed in center
@@ -551,6 +709,14 @@ export class ComponentOrchestrator {
         let storyContainer = document.getElementById('storyViewerContainer');
         if (storyContainer) {
             storyContainer.style.display = 'flex';
+            storyContainer.classList.add('active');
+            const emp = document.getElementById('eventsManagePanel');
+            if (emp) {
+                this._setupStoryArchiveBottomBar(emp);
+                this._setupStoryArchiveCompactChrome(emp);
+                this._hideStoryArchiveEventManagerClose(emp);
+                this._applyStoryArchiveGridSquishFromPreferences(emp);
+            }
             return;
         }
 
@@ -602,28 +768,13 @@ export class ComponentOrchestrator {
             header.classList.add('story-viewer-header');
         }
         
-        // Update title
-        const title = eventsManagePanel.querySelector('.events-manage-title');
-        if (title) {
-            title.textContent = 'Story Archive';
-            title.classList.remove('events-manage-title');
-            title.classList.add('story-viewer-title');
-        }
-        
-        // Move Add/Save/Export buttons to center position in story archive mode
+        // Add/Save/Export styling; DOM row is built in _setupStoryArchiveBottomBar (with pagination)
         const addBtn = document.getElementById('addEventBtn');
         const saveBtn = document.getElementById('saveEventsBtn');
         const exportBtn = document.getElementById('exportEventsBtn');
         if (addBtn) addBtn.classList.add('story-viewer-action-btn');
         if (saveBtn) saveBtn.classList.add('story-viewer-action-btn');
         if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
-        
-        // Hide close button - we exit via Home button instead
-        const closeBtnById = document.getElementById('eventsManageClose');
-        const closeBtnByClass = eventsManagePanel.querySelector('.events-manage-close');
-        [closeBtnById, closeBtnByClass].forEach(btn => {
-            if (btn) btn.style.setProperty('display', 'none', 'important');
-        });
 
         // Insert into main content area
         const content = document.getElementById('content');
@@ -635,11 +786,17 @@ export class ComponentOrchestrator {
 
         // Open the panel
         eventsManagePanel.classList.add('open');
-        
+
+        this._setupStoryArchiveBottomBar(eventsManagePanel);
+        this._setupStoryArchiveCompactChrome(eventsManagePanel);
+
         // Ensure EventManager renders to this panel
         if (window.eventManager) {
             window.eventManager.renderEvents();
         }
+
+        this._hideStoryArchiveEventManagerClose(eventsManagePanel);
+        this._applyStoryArchiveGridSquishFromPreferences(eventsManagePanel);
 
         // DEV ONLY: Debug - inspect actual DOM structure
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -1248,6 +1405,10 @@ export class ComponentOrchestrator {
         // Restore Event Manager panel to its original location (from story archive)
         const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (eventsManagePanel && this._originalEventsPanelParent) {
+            this._restoreStoryArchiveEventManagerClose();
+            this._restoreStoryArchiveCompactChrome(eventsManagePanel);
+            this._teardownStoryArchiveBottomBar(eventsManagePanel);
+
             // Restore original classes
             eventsManagePanel.className = this._originalEventsPanelClasses || 'events-manage-panel';
             
@@ -1258,6 +1419,10 @@ export class ComponentOrchestrator {
             eventsManagePanel.style.height = '';
             eventsManagePanel.style.top = '';
             eventsManagePanel.style.bottom = '';
+            eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline');
+            eventsManagePanel.style.removeProperty('--story-archive-list-inset-inline-end');
+            eventsManagePanel.style.removeProperty('--story-archive-list-gutter');
+            eventsManagePanel.style.removeProperty('--story-archive-list-max-width');
             
             // Restore original title
             const title = eventsManagePanel.querySelector('.story-viewer-title');
@@ -1275,12 +1440,6 @@ export class ComponentOrchestrator {
             if (saveBtn) saveBtn.classList.remove('story-viewer-action-btn');
             if (exportBtn) exportBtn.classList.remove('story-viewer-action-btn');
             
-            // Show close button again
-            const closeBtn = document.getElementById('eventsManageClose');
-            if (closeBtn) {
-                closeBtn.style.display = '';
-            }
-
             // Show Event Manager button again
             const eventManagerBtn = document.getElementById('eventsManageToggle');
             if (eventManagerBtn) {
@@ -1292,6 +1451,9 @@ export class ComponentOrchestrator {
             if (header) {
                 header.classList.remove('story-viewer-header');
             }
+
+            document.getElementById('storyArchiveLayoutControl')?.remove();
+            document.getElementById('storyArchiveGridSquishBar')?.remove();
 
             // Move back to original parent
             this._originalEventsPanelParent.appendChild(eventsManagePanel);

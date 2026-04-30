@@ -1905,12 +1905,12 @@ button.event-number-btn.locked,
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {
-        background-color: #fff;
-        background-image: url('../../assets/images/misc/loading.gif');
+        background-color: rgba(8, 18, 32, 0.94);
+        background-image: url('../../assets/images/misc/loading%20asset.gif');
         background-repeat: no-repeat;
         background-position: center center;
-        /* Match .event-number-btn__img: object-fit cover — no letterboxing around the GIF */
-        background-size: cover;
+        /* Same asset as Story Archive / event cards — centered spinner (slot is skewed parallelogram) */
+        background-size: 48px 48px;
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop
@@ -2340,44 +2340,6 @@ button.event-number-btn.locked,
         background: #f3f3f3 !important;
         transform: skewX(var(--thumb-skew)) scale(1.06);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
-    }
-}
-
-/*
- * Desktop landscape: shorter dock than portrait / variables.css default — vh-capped band + compact thumbs.
- * Collapsed dock (200px !important) and mobile-locked unchanged.
- */
-@media (min-width: 769px) and (min-height: 600px) and (orientation: landscape) {
-    body:has(#paginationDock):not(.pagination-dock-mobile-locked):not(.pagination-dock-collapsed) {
-        --pagination-dock-height: clamp(220px, 20vh, 236px);
-    }
-
-    body:has(#paginationDock):not(.pagination-dock-mobile-locked) .event-pagination {
-        padding-top: 8px;
-        padding-bottom: 6px;
-        gap: 8px;
-    }
-
-    body:has(#paginationDock):not(.pagination-dock-mobile-locked) .event-page-slider-row {
-        min-height: 36px;
-        padding: 2px 0 4px;
-    }
-
-    .event-number-buttons.event-number-buttons--thumbs-desktop {
-        --thumb-outline-y: 5px;
-        gap: 10px;
-        padding-top: calc(var(--thumb-outline-y) + 1px);
-        padding-bottom: calc(var(--thumb-outline-y) + 1px);
-    }
-
-    .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
-        min-height: calc(84px + 2 * var(--thumb-outline-y));
-        max-height: calc(108px + 2 * var(--thumb-outline-y));
-    }
-
-    .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__visual {
-        min-height: 84px;
-        max-height: 180px;
     }
 }
 

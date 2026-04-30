@@ -228,6 +228,9 @@ class FilterService {
         if (typeof window.applyCodexFilterState === 'function') {
             window.applyCodexFilterState();
         }
+        if (typeof window.syncFiltersPanelTrapIcon === 'function') {
+            window.syncFiltersPanelTrapIcon();
+        }
     }
     
     /**
@@ -300,6 +303,9 @@ class FilterService {
                 }
             }
         });
+        if (typeof window.syncFiltersPanelTrapIcon === 'function') {
+            window.syncFiltersPanelTrapIcon();
+        }
     }
     
     // Load manifest - delegates to helper

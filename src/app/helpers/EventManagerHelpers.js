@@ -108,11 +108,10 @@ export function setupEventManagerListeners(eventManager) {
     updateStatus('Setting up event listeners for add/edit functionality...', 'info');
     
     const trySetup = () => {
-        const toggleBtn = document.getElementById('eventsManageToggle');
         const panel = document.getElementById('eventsManagePanel');
         const addBtn = document.getElementById('addEventBtn');
         
-        if (toggleBtn && panel && addBtn) {
+        if (panel && addBtn) {
             eventManager.setupEventListeners();
             updateStatus('✓ Event listeners set up - add/edit functionality ready', 'success');
             return true;

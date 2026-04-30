@@ -141,16 +141,7 @@ class EventInitService {
                 }
             }
         }, 100);
-        
-        // Ensure button is visible after initialization
-        const toggleBtn = document.getElementById('eventsManageToggle');
-        if (toggleBtn) {
-            toggleBtn.style.display = '';
-            toggleBtn.style.visibility = 'visible';
-            toggleBtn.style.opacity = '1';
-            console.log('EventInitService: Button visibility ensured');
-        }
-        
+
         const initTime = performance.now() - initStartTime;
         console.log(`EventInitService: Initialized with ${this.eventManager.events.length} events in ${initTime.toFixed(2)}ms`);
         if (this.eventManager.updateStatus) {

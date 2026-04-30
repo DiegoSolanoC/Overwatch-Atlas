@@ -151,13 +151,17 @@
     --breakpoint-small-mobile: 480px;
     
     /* Panel Dimensions - Desktop */
-    --panel-event-width: 900px;
+    --panel-event-width: 1248px; /* Default + resize minimum (PanelResizeService) */
+    --panel-event-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
     --panel-event-width-collapsed: 1px; /* Collapsed width showing handle */
-    --panel-filters-width: 800px;
+    --panel-filters-width: 1248px; /* Default + resize minimum (right edge; expands left — PanelResizeService) */
+    --panel-filters-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
     --panel-filters-width-collapsed: 1px; /* Collapsed width showing handle */
     --panel-music-width: 800px;
     --panel-events-manage-width: 1040px;
-    
+    /* Event info + Filters: thick bottom accent (shared) */
+    --panel-bottom-accent-border: 5px solid #c93439;
+
     /* Opacity Values */
     --opacity-light: 0.3;
     --opacity-medium: 0.6;
