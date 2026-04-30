@@ -76,15 +76,27 @@ export class EventSlideManager {
         return i >= 0 ? i : -1;
     }
 
+    _showEventSlideOrderRowForEdit() {
+        const row = document.getElementById('eventSlideOrderRow');
+        if (!row) return;
+        row.removeAttribute('hidden');
+        row.setAttribute('aria-hidden', 'false');
+    }
+
+    _hideEventSlideOrderRow() {
+        const row = document.getElementById('eventSlideOrderRow');
+        if (!row) return;
+        row.setAttribute('hidden', '');
+        row.setAttribute('aria-hidden', 'true');
+    }
+
     _ensureSlidePlacementBlock(editor) {
         if (!editor) return;
-        console.log('[EventSlideManager._ensureSlidePlacementBlock] Called, editor exists:', !!editor);
-        console.log('[EventSlideManager._ensureSlidePlacementBlock] Variant bar exists:', !!document.getElementById('eventSlideInlineVariantBar'));
-        
+        if (editor.querySelector('#eventSlidePlacementBlock')) return;
+
         if (!document.getElementById('eventSlideInlineVariantBar')) {
             // Create variant row at the very top of the editor (before city name)
             const firstRow = editor.querySelector('.event-slide-inline-editor__row');
-            console.log('[EventSlideManager._ensureSlidePlacementBlock] First row found:', !!firstRow);
             if (firstRow) {
                 firstRow.insertAdjacentHTML('beforebegin', `
                 <div class="event-slide-inline-editor__row" id="eventSlideVariantEditRow">
@@ -92,22 +104,11 @@ export class EventSlideManager {
                     <div class="event-slide-inline-variant-bar" id="eventSlideInlineVariantBar"></div>
                     <p class="event-slide-inline-editor__hint">Switch tabs to edit another variant. + / − add or remove (saved when you click Save).</p>
                 </div>`);
-                console.log('[EventSlideManager._ensureSlidePlacementBlock] Variant row created');
             }
         }
-        if (document.getElementById('eventSlideEditEventNumber')) return;
         const first = editor.querySelector('.event-slide-inline-editor__row');
         const html = `
                 <div class="event-slide-inline-editor__placement" id="eventSlidePlacementBlock">
-                <div class="event-slide-inline-editor__row">
-                    <label class="event-slide-inline-editor__label" for="eventSlideEditEventNumber">Event number (order in list)</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditEventNumber" type="number" min="1" step="1" autocomplete="off" />
-                </div>
-                <div class="event-slide-inline-editor__row" id="eventSlideVariantEditRow">
-                    <div class="event-slide-inline-editor__label">Variants</div>
-                    <div class="event-slide-inline-variant-bar" id="eventSlideInlineVariantBar"></div>
-                    <p class="event-slide-inline-editor__hint">Switch tabs to edit another variant. + / − add or remove (saved when you click Save).</p>
-                </div>
                 <div class="event-slide-inline-editor__row" id="eventSlideCityLookupRow">
                     <label class="event-slide-inline-editor__label" for="eventSlideEditCityLookup">City name (for coordinate lookup)</label>
                     <div class="event-slide-inline-editor__lookup-row">
@@ -1077,6 +1078,7 @@ export class EventSlideManager {
             this._inlineDescEdit.eventListIndex = this._resolveEventListIndex(eventData);
 
             eventSlide.classList.add('event-slide--inline-editing');
+            this._showEventSlideOrderRowForEdit();
             saveBtn.style.display = 'inline-flex';
             editBtn.textContent = 'Cancel';
 
@@ -1226,6 +1228,7 @@ export class EventSlideManager {
         }
         
         if (eventSlide) eventSlide.classList.remove('event-slide--inline-editing');
+        this._hideEventSlideOrderRow();
         if (saveBtn) saveBtn.style.display = 'none';
         if (editBtn) editBtn.textContent = 'Edit';
         if (editor) editor.style.display = 'none';

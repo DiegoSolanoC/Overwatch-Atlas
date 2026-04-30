@@ -5676,6 +5676,27 @@
       "eraName": "The Age of Conflict"
     },
     {
+      "name": "Traitor",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 20.0410036,
+      "lon": -72.785587,
+      "filters": [
+        "Baptiste"
+      ],
+      "factions": [
+        "Talon"
+      ],
+      "npcs": [],
+      "image": "",
+      "cityDisplayName": "Tortuga, Haiti",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryFlags": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Crime Spree",
       "locationType": "earth",
       "cityDisplayName": "Sydney, Australia",
@@ -5906,6 +5927,23 @@
       "eraName": "The Age of Conflict"
     },
     {
+      "name": "Return of the Maiden",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "",
+      "image": "",
+      "filters": [
+        "Kiriko"
+      ],
+      "factions": [
+        "Hashimoto"
+      ],
+      "lat": 35.3606,
+      "lon": 138.7274,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict"
+    },
+    {
       "name": "Here to be heard",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
@@ -5921,23 +5959,6 @@
       "lon": -43.2093727,
       "yearStart": 2070,
       "yearEnd": 2077,
-      "eraName": "The Age of Conflict"
-    },
-    {
-      "name": "Return of the Maiden",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
-      "image": "",
-      "filters": [
-        "Kiriko"
-      ],
-      "factions": [
-        "Hashimoto"
-      ],
-      "lat": 35.3606,
-      "lon": 138.7274,
-      "yearStart": 2077,
       "eraName": "The Age of Conflict"
     },
     {
@@ -5963,25 +5984,6 @@
       "eraName": "The Age of Conflict"
     },
     {
-      "name": "Recall",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "",
-      "image": "",
-      "filters": [
-        "Reaper",
-        "Winston"
-      ],
-      "factions": [
-        "Talon",
-        "Overwatch"
-      ],
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict"
-    },
-    {
       "name": "Assassination",
       "description": "",
       "locationType": "earth",
@@ -6000,6 +6002,25 @@
       ],
       "image": "",
       "sources": []
+    },
+    {
+      "name": "Recall",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "description": "",
+      "image": "",
+      "filters": [
+        "Reaper",
+        "Winston"
+      ],
+      "factions": [
+        "Talon",
+        "Overwatch"
+      ],
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict"
     },
     {
       "name": "London Calling",
@@ -6112,25 +6133,6 @@
       ],
       "lat": 59.938732,
       "lon": 30.316229,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict"
-    },
-    {
-      "name": "Old Dragons",
-      "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "description": "",
-      "image": "",
-      "filters": [
-        "Hanzo",
-        "Genji"
-      ],
-      "factions": [
-        "Shimada",
-        "Hashimoto"
-      ],
-      "lat": 35.6762,
-      "lon": 139.6503,
       "yearStart": 2077,
       "eraName": "The Age of Conflict"
     },
@@ -6261,23 +6263,22 @@
       "eraName": "The Age of Conflict"
     },
     {
-      "name": "Heroes Never Die",
+      "name": "Old Dragons",
       "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
+      "cityDisplayName": "Hanamura, Japan",
       "description": "",
       "image": "",
       "filters": [
-        "Mercy",
-        "Soldier 76",
-        "Ana"
+        "Hanzo",
+        "Genji"
       ],
       "factions": [
-        "Helix Securities",
-        "Talon"
+        "Shimada",
+        "Hashimoto"
       ],
-      "lat": 30.0443879,
-      "lon": 31.2357257,
-      "yearStart": 2078,
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "yearStart": 2077,
       "eraName": "The Age of Conflict"
     },
     {
@@ -6298,6 +6299,26 @@
       ],
       "lat": 40.7127281,
       "lon": -74.0060152,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict"
+    },
+    {
+      "name": "Heroes Never Die",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "description": "",
+      "image": "",
+      "filters": [
+        "Mercy",
+        "Soldier 76",
+        "Ana"
+      ],
+      "factions": [
+        "Helix Securities",
+        "Talon"
+      ],
+      "lat": 30.0443879,
+      "lon": 31.2357257,
       "yearStart": 2078,
       "eraName": "The Age of Conflict"
     },
@@ -6671,27 +6692,6 @@
       "sources": []
     },
     {
-      "name": "Lost Family",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "lat": 30.0443879,
-      "lon": 31.2357257,
-      "yearStart": 2079,
-      "eraName": "The Age of Conflict",
-      "filters": [
-        "Cassidy",
-        "Ana",
-        "Pharah"
-      ],
-      "factions": [
-        "03Talon",
-        "00Overwatch"
-      ],
-      "image": "",
-      "sources": []
-    },
-    {
       "name": "The Plan",
       "description": "",
       "locationType": "earth",
@@ -6732,6 +6732,49 @@
       "sources": []
     },
     {
+      "name": "Lost Family",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "lat": 30.0443879,
+      "lon": 31.2357257,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "filters": [
+        "Cassidy",
+        "Ana",
+        "Pharah"
+      ],
+      "factions": [
+        "03Talon",
+        "00Overwatch"
+      ],
+      "image": "",
+      "sources": []
+    },
+    {
+      "name": "Suspicious activity",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Toronto, Canada",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "filters": [
+        "Sojourn"
+      ],
+      "factions": [
+        "27Null Sector"
+      ],
+      "image": "",
+      "sources": [],
+      "yearEnd": null,
+      "npcs": [],
+      "secondaryCountryFlags": [],
+      "headlines": []
+    },
+    {
       "name": "Stalker",
       "locationType": "earth",
       "cityDisplayName": "Bucharest, Romania",
@@ -6767,24 +6810,6 @@
       "lon": 100,
       "eraName": "The Age of Conflict",
       "yearStart": 2079
-    },
-    {
-      "name": "Suspicious activity",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Toronto, Canada",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
-      "yearStart": 2079,
-      "eraName": "The Null Sector Invasion",
-      "filters": [
-        "Sojourn"
-      ],
-      "factions": [
-        "27Null Sector"
-      ],
-      "image": "",
-      "sources": []
     },
     {
       "name": "Shockwaves",

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="assets/images/icons/Icon.png">
-    <link rel="stylesheet" href="styles.css?v=61">
+    <link rel="stylesheet" href="styles.css?v=64">
     <link rel="stylesheet" href="styles/entry.css?v=17">
 </head>
 <body>
@@ -50,8 +50,15 @@
             <div class="event-slide-content" id="eventSlideContent">
                 <div class="event-slide-top" id="eventSlideTop">
                     <p id="eventSlideEra" class="event-slide-era-heading event-slide-era-heading--empty" aria-hidden="true"></p>
+                    <div class="event-slide-order-row" id="eventSlideOrderRow" hidden aria-hidden="true">
+                        <label class="event-slide-order-row__label" for="eventSlideEditEventNumber">List order</label>
+                        <input class="event-slide-order-row__input" id="eventSlideEditEventNumber" type="number" min="1" step="1" inputmode="numeric" autocomplete="off" title="1 = first in the timeline list. Save moves this event to that position and shifts others." />
+                    </div>
                     <div id="eventVariantToggles" style="display: none; margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap;"></div>
-                    <h2 id="eventSlideTitle">Event</h2>
+                    <div class="event-slide-title-row" id="eventSlideTitleRow">
+                        <h2 id="eventSlideTitle">Event</h2>
+                        <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
+                    </div>
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
                     <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
                 </div>
@@ -77,7 +84,6 @@
                         <button type="button" id="eventImageToggle" class="event-image-toggle-btn">Show Image</button>
                         <button id="eventAllEventsBtn" class="event-all-events-btn" title="View All Events">All Events</button>
                         <button type="button" id="eventNextBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Next Event" aria-label="Next event"><img class="ui-pagination-arrow ui-pagination-arrow--flip-h" src="assets/images/icons/Arrow Icon.png" alt="" width="26" height="26" decoding="async" /></button>
-                        <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
                     </div>
                 </div>
             </div>

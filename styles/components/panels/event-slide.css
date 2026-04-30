@@ -539,14 +539,78 @@
     margin: 0;
 }
 
+/* Event list position (1-based); shown only while inline editing */
+.event-slide-order-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 0 0 10px 0;
+}
+
+.event-slide-order-row[hidden] {
+    display: none !important;
+}
+
+.event-slide-order-row__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+}
+
+.event-slide-order-row__input {
+    width: 4.5rem;
+    max-width: 28%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+.event-slide-order-row__input:focus {
+    outline: 2px solid var(--accent-primary, #f99e1a);
+    outline-offset: 1px;
+}
+
 @media (min-width: 769px) {
     .event-slide-era-heading:not(.event-slide-era-heading--empty) {
         display: block;
     }
 
-    .event-slide-top .event-slide-era-heading:not(.event-slide-era-heading--empty) ~ h2#eventSlideTitle {
+    .event-slide-top .event-slide-era-heading:not(.event-slide-era-heading--empty) ~ .event-slide-title-row #eventSlideTitle {
         margin-top: 0;
     }
+}
+
+/* Title + glitch toggle: keep icon beside the title, not space-between to the panel edge (× lives top-right) */
+.event-slide-title-row {
+    --event-slide-glitch-slot: 52px; /* ~48px icon + gap */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding-right: 44px; /* clear absolute close control */
+    box-sizing: border-box;
+}
+
+.event-slide-title-row #eventSlideTitle {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: calc(100% - var(--event-slide-glitch-slot));
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.event-slide-title-row .event-glitch-toggle-btn {
+    flex: 0 0 auto;
+    align-self: center;
 }
 
 .event-slide-top h2,
@@ -556,6 +620,10 @@
     margin-bottom: 10px;
     margin-top: 0;
     font-size: 2.2rem;
+}
+
+.event-slide-title-row h2 {
+    margin-bottom: 0;
 }
 
 .event-slide-top .event-slide-location,
@@ -757,15 +825,38 @@
     }
 
     /* Mobile: Ensure title, location, and description are visible */
+    .event-slide-content .event-slide-title-row,
+    .event-slide-scrollable .event-slide-title-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        margin: 0 0 10px 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-right: 40px !important;
+        box-sizing: border-box !important;
+    }
+
     .event-slide-content h2#eventSlideTitle,
     .event-slide-scrollable h2#eventSlideTitle {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        margin: 0 0 10px 0 !important;
+        margin: 0 !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - var(--event-slide-glitch-slot, 52px)) !important;
         font-size: 1.5rem !important;
         position: relative !important;
         z-index: 1 !important;
+    }
+
+    .event-slide-content .event-slide-title-row .event-glitch-toggle-btn,
+    .event-slide-scrollable .event-slide-title-row .event-glitch-toggle-btn {
+        flex: 0 0 auto !important;
+        align-self: center !important;
     }
     
     .event-slide-content p#eventSlideLocation,
@@ -927,11 +1018,20 @@
     }
 
     /* Lead block (title + location + time) lives in scrollable on portrait — compact type */
+    .event-slide-scrollable .event-slide-title-row {
+        margin: 0 0 6px 0 !important;
+    }
+
     .event-slide-scrollable h2#eventSlideTitle {
         font-size: 1.15rem !important;
         line-height: 1.25 !important;
-        margin: 0 0 6px 0 !important;
+        margin: 0 !important;
         font-weight: 700 !important;
+    }
+
+    .event-slide-scrollable .event-slide-title-row .event-glitch-toggle-btn__icon {
+        width: 40px !important;
+        height: 40px !important;
     }
 
     .event-slide-scrollable p#eventSlideLocation.event-slide-location {

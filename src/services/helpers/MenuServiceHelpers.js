@@ -1239,7 +1239,12 @@ export function createMenuButtonsContainer(statusService) {
                             const textEl = document.getElementById('eventSlideText');
                             
                             eventSlide?.classList.add('event-slide--inline-editing');
-                            
+                            const orderRow = document.getElementById('eventSlideOrderRow');
+                            if (orderRow) {
+                                orderRow.removeAttribute('hidden');
+                                orderRow.setAttribute('aria-hidden', 'false');
+                            }
+
                             if (titleEl) {
                                 titleEl.contentEditable = 'true';
                                 titleEl.setAttribute('spellcheck', 'true');
@@ -1339,6 +1344,15 @@ export function createMenuButtonsContainer(statusService) {
                             document.getElementById('eventSlideEditFactions')?.value = (target.factions || []).join(', ');
                             document.getElementById('eventSlideEditNpcs')?.value = (target.npcs || []).join(', ');
                             document.getElementById('eventSlideEditHeadlines')?.value = (target.headlines || []).join('\n');
+
+                            const emList = window.eventManager;
+                            const numEl = document.getElementById('eventSlideEditEventNumber');
+                            const listIdx = emList?.events ? emList.events.indexOf(eventData) : -1;
+                            if (numEl && emList?.events?.length && listIdx >= 0) {
+                                numEl.min = '1';
+                                numEl.max = String(emList.events.length);
+                                numEl.value = String(listIdx + 1);
+                            }
                             
                             this.renderSourcesEditor(target.sources || []);
                             this.renderVariantsEditor(eventData);
@@ -1510,6 +1524,11 @@ export function createMenuButtonsContainer(statusService) {
                         cancelEdit(editBtn, saveBtn) {
                             if (!this.isEditing) {
                                 document.getElementById('eventSlideInlineEditor')?.style.display = 'none';
+                                const orderRowIdle = document.getElementById('eventSlideOrderRow');
+                                if (orderRowIdle) {
+                                    orderRowIdle.setAttribute('hidden', '');
+                                    orderRowIdle.setAttribute('aria-hidden', 'true');
+                                }
                                 return;
                             }
                             
@@ -1528,7 +1547,12 @@ export function createMenuButtonsContainer(statusService) {
                             
                             document.getElementById('eventSlideInlineEditor')?.style.display = 'none';
                             eventSlide?.classList.remove('event-slide--inline-editing');
-                            
+                            const orderRowCancel = document.getElementById('eventSlideOrderRow');
+                            if (orderRowCancel) {
+                                orderRowCancel.setAttribute('hidden', '');
+                                orderRowCancel.setAttribute('aria-hidden', 'true');
+                            }
+
                             if (eb) eb.textContent = 'Edit';
                             if (sb) sb.style.display = 'none';
                             
@@ -1568,6 +1592,21 @@ export function createMenuButtonsContainer(statusService) {
                                 
                                 console.log('[MenuServiceHelpers] Updated target description:', target.description);
                             }
+
+                            const emReorder = window.eventManager;
+                            const numReorderEl = document.getElementById('eventSlideEditEventNumber');
+                            if (emReorder && typeof emReorder.reorderEvents === 'function' && numReorderEl && Array.isArray(emReorder.events)) {
+                                const startIdx = emReorder.events.indexOf(eventData);
+                                if (startIdx >= 0) {
+                                    const n = parseInt(numReorderEl.value, 10);
+                                    if (!Number.isNaN(n) && n >= 1) {
+                                        const newIdx = Math.min(n - 1, emReorder.events.length - 1);
+                                        if (newIdx !== startIdx) {
+                                            emReorder.reorderEvents(startIdx, newIdx);
+                                        }
+                                    }
+                                }
+                            }
                             
                             if (window.eventManager) {
                                 const idx = window.eventManager.events.indexOf(eventData);
@@ -1584,12 +1623,21 @@ export function createMenuButtonsContainer(statusService) {
                             } else {
                                 console.error('[MenuServiceHelpers] window.eventManager not available!');
                             }
+
+                            if (window.eventManager?.refreshGlobeEvents) {
+                                window.eventManager.refreshGlobeEvents();
+                            }
                             
                             if (titleEl) { titleEl.contentEditable = 'false'; titleEl.removeAttribute('spellcheck'); }
                             if (textEl) { textEl.contentEditable = 'false'; textEl.removeAttribute('spellcheck'); }
                             
                             document.getElementById('eventSlideInlineEditor')?.style.display = 'none';
                             document.getElementById('eventSlide')?.classList.remove('event-slide--inline-editing');
+                            const orderRowAfterSave = document.getElementById('eventSlideOrderRow');
+                            if (orderRowAfterSave) {
+                                orderRowAfterSave.setAttribute('hidden', '');
+                                orderRowAfterSave.setAttribute('aria-hidden', 'true');
+                            }
                             
                             if (editBtn) editBtn.textContent = 'Edit';
                             if (saveBtn) saveBtn.style.display = 'none';

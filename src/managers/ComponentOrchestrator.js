@@ -560,7 +560,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Fixed preview-grid squish (0–100): localhost/dev = 5, GitHub Pages static deploy = 20.
+     * Fixed preview-grid squish (0–100): localhost/dev = 3, GitHub Pages static deploy = 20.
      * Slider UI removed for now; values stay fixed unless this logic is extended later.
      */
     _getStoryArchiveDefaultGridSquish() {
@@ -574,7 +574,7 @@ export class ComponentOrchestrator {
         if (h.includes('github.io') || h === 'pages.github.com') {
             return 20;
         }
-        return 5;
+        return 3;
     }
 
     /** Apply grid inset for Story Archive (no localStorage; see {@link _getStoryArchiveDefaultGridSquish}). */

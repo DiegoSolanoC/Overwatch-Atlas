@@ -71,6 +71,7 @@ export function syncMobileEventSlidePortraitLayout() {
     const scroll = document.getElementById('eventSlideScrollable');
     const text = document.getElementById('eventSlideText');
     const top = document.getElementById('eventSlideTop');
+    const titleRow = document.getElementById('eventSlideTitleRow');
     const title = document.getElementById('eventSlideTitle');
     const loc = document.getElementById('eventSlideLocation');
     const meta = document.getElementById('eventSlideTimelineMeta');
@@ -84,11 +85,12 @@ export function syncMobileEventSlidePortraitLayout() {
         return;
     }
 
-    if (title.parentElement === scroll) {
+    const titleBlock = titleRow || title;
+    if (titleBlock.parentElement === scroll) {
         return;
     }
 
-    scroll.insertBefore(title, text);
+    scroll.insertBefore(titleBlock, text);
     if (loc) {
         scroll.insertBefore(loc, text);
     }
@@ -102,10 +104,12 @@ export function syncMobileEventSlidePortraitLayout() {
  */
 export function restorePortraitMetaToTop() {
     const top = document.getElementById('eventSlideTop');
+    const titleRow = document.getElementById('eventSlideTitleRow');
     const title = document.getElementById('eventSlideTitle');
     const loc = document.getElementById('eventSlideLocation');
     const meta = document.getElementById('eventSlideTimelineMeta');
-    if (!top || !title || title.parentElement === top) {
+    const titleBlock = titleRow || title;
+    if (!top || !titleBlock || titleBlock.parentElement === top) {
         return;
     }
 
@@ -115,16 +119,16 @@ export function restorePortraitMetaToTop() {
         variants && variants.parentNode === top ? variants : era && era.parentNode === top ? era : null;
 
     if (anchor) {
-        top.insertBefore(title, anchor.nextSibling);
+        top.insertBefore(titleBlock, anchor.nextSibling);
     } else {
-        top.insertBefore(title, top.firstChild);
+        top.insertBefore(titleBlock, top.firstChild);
     }
 
     if (loc) {
-        top.insertBefore(loc, title.nextSibling);
+        top.insertBefore(loc, titleBlock.nextSibling);
     }
     if (meta) {
-        const after = loc || title;
+        const after = loc || titleBlock;
         top.insertBefore(meta, after.nextSibling);
     }
 }
