@@ -163,7 +163,7 @@ class LocationService {
             
             const response = await fetch(url, {
                 headers: {
-                    'User-Agent': 'Timeline Overwatch Event Manager'
+                    'User-Agent': 'OverwatchAtlas/1.0 (community lore project)'
                 }
             });
 

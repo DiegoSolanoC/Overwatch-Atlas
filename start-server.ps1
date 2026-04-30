@@ -1,5 +1,5 @@
-# PowerShell script to start Timeline Overwatch server and open in Chrome
-Write-Host "Starting Timeline Overwatch Server..." -ForegroundColor Green
+# PowerShell script to start Overwatch Atlas server and open in Chrome
+Write-Host "Starting Overwatch Atlas Server..." -ForegroundColor Green
 Write-Host ""
 
 # Change to script directory

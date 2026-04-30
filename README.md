@@ -1,4 +1,4 @@
-# Timeline Overwatch
+# Overwatch Atlas
 
 An interactive 3D timeline visualization of the Overwatch universe, featuring a globe-based interface for exploring events, characters, and locations.
 
@@ -23,9 +23,12 @@ An interactive 3D timeline visualization of the Overwatch universe, featuring a 
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd Timeline-Overwatch
+git clone https://github.com/DiegoSolanoC/Overwatch-Timeline-Website.git
+cd Overwatch-Timeline-Website
 ```
+If you rename the GitHub repo to `Overwatch-Atlas`, switch the remote:  
+`git remote set-url origin https://github.com/DiegoSolanoC/Overwatch-Atlas.git`  
+and rename your local folder to `Overwatch-Atlas` if you prefer.
 
 2. Install dependencies (if any):
 ```bash
@@ -54,6 +57,11 @@ The application is configured to work on GitHub Pages. Follow these steps to dep
 2. Push to `main` / `master`; the workflow `.github/workflows/deploy.yml` runs **`npm run build:pages`** (regenerates `manifest.json` and copies a clean tree into **`_site/`** without `.git` / `node_modules`) and publishes **`_site`**.  
 3. First run: approve the **github-pages** environment if GitHub prompts you.
 
+**Rename the live URL (repository slug)**  
+Project Pages use `https://<user>.github.io/<repository-name>/`. Change **`Overwatch-Timeline-Website`** → **`Overwatch-Atlas`** in the repo: **Settings → General → Repository name** (hyphens allowed; spaces are not). GitHub redirects old web and `git` URLs for a while. Then run:  
+`git remote set-url origin https://github.com/DiegoSolanoC/Overwatch-Atlas.git`  
+Optional: **Settings → Pages → Custom domain** if you want a short branded host (e.g. `atlas.example.com`) instead of the `github.io` path.
+
 **Option B — Deploy from a branch**  
 1. Go to **Settings** → **Pages**  
 2. Under **Source**, select **Branch** → `main` (or `master`) → **/ (root)**  
@@ -79,10 +87,11 @@ After enabling GitHub Pages, your site will be available at:
 https://<your-username>.github.io/<repository-name>/
 ```
 
-For example:
+For example (project site):
 ```
-https://username.github.io/Timeline-Overwatch/
+https://diegosolanoc.github.io/Overwatch-Atlas/
 ```
+GitHub serves the site under **`/<repository-name>/`**, so renaming the repository updates that path. The old URL usually redirects for a while after a rename.
 
 ### 4. Important Notes for GitHub Pages
 
@@ -99,7 +108,7 @@ https://username.github.io/Timeline-Overwatch/
 ## Project Structure
 
 ```
-Timeline-Overwatch/
+Overwatch-Atlas/
 ├── index.html          # Main entry point (GitHub Pages)
 ├── main.html           # Main application page
 ├── test.html           # Test/development page

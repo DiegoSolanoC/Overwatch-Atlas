@@ -1,5 +1,5 @@
 /**
- * Node.js HTTP Server for Timeline Overwatch
+ * Node.js HTTP Server for Overwatch Atlas
  * Handles custom routes and serves static files
  */
 const http = require('http');
@@ -235,7 +235,7 @@ function serveFile(res, filePath, contentType) {
 }
 
 server.listen(PORT, () => {
-    console.log(`\n=== Timeline Overwatch Server ===`);
+    console.log(`\n=== Overwatch Atlas Server ===`);
     console.log(`Server running at http://localhost:${PORT}/`);
     console.log(`\nAvailable routes:`);
     console.log(`  - http://localhost:${PORT}/          → main.html (default)`);

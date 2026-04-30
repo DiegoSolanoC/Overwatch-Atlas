@@ -116,7 +116,7 @@ class CityLookupService {
             
             const response = await fetch(url, {
                 headers: {
-                    'User-Agent': 'Timeline Overwatch Event Manager' // Required by Nominatim
+                    'User-Agent': 'OverwatchAtlas/1.0 (community lore project)' // Required by Nominatim
                 }
             });
 

@@ -1,7 +1,7 @@
 {
-  "name": "timeline-overwatch",
+  "name": "overwatch-atlas",
   "version": "1.0.0",
-  "description": "Timeline Overwatch Interactive Map",
+  "description": "Overwatch Atlas — interactive lore timeline",
   "scripts": {
     "start": "node generate-manifest.js && node server.js",
     "generate": "node generate-manifest.js",

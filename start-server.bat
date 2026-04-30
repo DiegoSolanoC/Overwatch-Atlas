@@ -1,5 +1,5 @@
 @echo off
-echo Starting Timeline Overwatch Server...
+echo Starting Overwatch Atlas Server...
 echo.
 
 REM Change to the script's directory (where the .bat file is)
@@ -30,7 +30,7 @@ for /f "tokens=5" %%p in ('netstat -ano ^| findstr ":8000" ^| findstr "LISTENING
 
 REM Start server in a new window (server-run.bat runs in project dir)
 echo Starting server...
-start "Timeline Overwatch Server" "%~dp0server-run.bat"
+start "Overwatch Atlas Server" "%~dp0server-run.bat"
 
 REM Wait for server to be ready (5 seconds so port 8000 is listening)
 echo Waiting for server to start...
@@ -47,7 +47,7 @@ if exist "%ProgramFiles%\Google\Chrome\Application\chrome.exe" (
 )
 
 echo.
-echo If Chrome shows "connection refused", check the "Timeline Overwatch Server" window for errors.
+echo If Chrome shows "connection refused", check the "Overwatch Atlas Server" window for errors.
 echo Server runs at http://localhost:8000 - you can also open that in your browser manually.
 echo.
 pause
