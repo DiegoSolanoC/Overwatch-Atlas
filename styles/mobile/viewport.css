@@ -640,16 +640,17 @@
         max-width: 100%;
     }
 
+    /* Match desktop base.css: keep --desktop-scale so GitHub/narrow tabs match wide localhost (was transform:none → ~1.49× larger). */
     body {
         margin: 0 !important;
         padding: 0 !important;
         overflow-x: hidden !important;
         overflow-y: hidden !important; /* Prevent page scroll; panels/slide handle their own scrolling */
-        transform: none !important;
-        width: 100% !important;
-        height: 100vh !important;  /* fallback */
-        height: 100dvh !important; /* modern mobile viewport (prevents “scroll to see footer”) */
-        min-height: 100vh !important;  /* fallback */
+        transform: scale(var(--desktop-scale)) !important;
+        transform-origin: top left !important;
+        width: var(--desktop-scale-inverse) !important;
+        height: var(--desktop-scale-inverse) !important;
+        min-height: 100vh !important;
         min-height: 100dvh !important;
     }
 
