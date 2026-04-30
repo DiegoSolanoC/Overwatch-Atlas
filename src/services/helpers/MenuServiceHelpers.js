@@ -5,6 +5,7 @@
 
 import { createGlobeControlButton } from '../../app/helpers/ComponentLoadHelpers.js';
 import { EventMarkerManager } from '../../managers/EventMarkerManager.js';
+import { isEventSlideEditDevHost } from '../../utils/isEventSlideEditDevHost.js';
 
 function teardownMenuServiceEventSystemLayout() {
     const st = window.__menuServiceEventSystemLayout;
@@ -1195,6 +1196,14 @@ export function createMenuButtonsContainer(statusService) {
                         
                         wireEditButtons(eventData, displayEvent, editBtn, saveBtn, titleEl, textEl) {
                             if (!editBtn || !saveBtn) return;
+
+                            if (!isEventSlideEditDevHost()) {
+                                editBtn.style.display = 'none';
+                                saveBtn.style.display = 'none';
+                                editBtn.disabled = true;
+                                saveBtn.disabled = true;
+                                return;
+                            }
                             
                             this.isEditing = false;
                             editBtn.textContent = 'Edit';

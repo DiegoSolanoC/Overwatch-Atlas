@@ -16,6 +16,7 @@ import {
 import { setupEarthLocation, setupMoonMarsLocation, setupStationLocation, setupMarsShipLocation, hideLocationWithFade, setupLocationClickHandler } from './helpers/LocationDisplayHelpers.js';
 import { loadEventImage, setupImageFadeIn } from './helpers/ImageLoadingHelpers.js';
 import { findVariantMarker, zoomToVariantLocation, createTempMarkerForCoords } from './helpers/VariantHelpers.js';
+import { isEventSlideEditDevHost } from '../utils/isEventSlideEditDevHost.js';
 
 // getHeroDisplayName removed - not used in this file
 
@@ -752,12 +753,8 @@ export class EventSlideManager {
     }
 
     _isInlineEditAllowed() {
-        // Keep behavior consistent with EventManager: disable editing on GitHub Pages.
-        try {
-            return !(window.eventManager && typeof window.eventManager.isGitHubPages === 'function' && window.eventManager.isGitHubPages());
-        } catch (e) {
-            return true;
-        }
+        // Dev-only: localhost / 127.0.0.1 (hidden on GitHub Pages and other hosts).
+        return isEventSlideEditDevHost();
     }
 
     _getCurrentDescriptionTarget() {

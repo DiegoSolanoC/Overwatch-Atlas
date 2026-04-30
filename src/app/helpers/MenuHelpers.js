@@ -8,6 +8,7 @@ import { getOrCreateElement, createEventPagination, createFiltersPanel } from '.
 import { createGlobeControlButton } from './ComponentLoadHelpers.js';
 import { shouldEventBeLocked } from '../../managers/helpers/MarkerCreationHelpers.js';
 import { EventMarkerManager } from '../../managers/EventMarkerManager.js';
+import { isEventSlideEditDevHost } from '../../utils/isEventSlideEditDevHost.js';
 
 function teardownMenuHelpersEventSystemLayout() {
     const st = window.__menuHelpersEventSystemLayout;
@@ -1987,6 +1988,14 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         
                         wireEditButtons(eventData, displayEvent, editBtn, saveBtn, titleEl, textEl) {
                             if (!editBtn || !saveBtn) return;
+
+                            if (!isEventSlideEditDevHost()) {
+                                editBtn.style.display = 'none';
+                                saveBtn.style.display = 'none';
+                                editBtn.disabled = true;
+                                saveBtn.disabled = true;
+                                return;
+                            }
                             
                             // Reset state
                             this.isEditing = false;
