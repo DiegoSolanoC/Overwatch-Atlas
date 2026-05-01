@@ -199,6 +199,7 @@ export class EventContentManager {
             }
 
             lhSlide?.updateStoryFilterPlacesSlideFromEvent?.(event);
+            lhSlide?.updateBioConnectionsSlideFromEvent?.(event);
 
             eventFiltersSection.style.display = showCountryChips ? 'block' : 'none';
         } else {
@@ -208,6 +209,7 @@ export class EventContentManager {
             const lhClear = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
             lhClear?.clearRelevantLocationsSlideDom?.();
             lhClear?.clearStoryFilterPlacesSlideDom?.();
+            lhClear?.clearBioConnectionsSlideDom?.();
         }
     }
 }

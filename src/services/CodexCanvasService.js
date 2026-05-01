@@ -26,8 +26,8 @@ let codexRenderedNodeIds = new Set();
 let codexNodeElements = new Map();
 /** Virtual scroll buffer in pixels around viewport - larger = more preloading (increased from 600 to 1200 for fewer add/remove ops) */
 const CODEX_VIRTUAL_BUFFER_PX = 1200;
-/** Enable performance debugging logs for Codex operations */
-const CODEX_PERFORMANCE_DEBUG = true;
+/** Enable performance + verbose redraw / selection logs for Codex (off by default — logging adds jank). */
+const CODEX_PERFORMANCE_DEBUG = false;
 /** Flag to skip edge redraws during initial batch loading */
 let codexSkipEdgeRedraw = false;
 /** Flag to skip edge redraws during node placement (more aggressive) */
@@ -74,7 +74,7 @@ function parseCodexJsonWorker(json) {
     });
 }
 
-const DOUBLE_RIGHT_MS = 450;
+const DOUBLE_RIGHT_MS = 900;
 const capOpts = { capture: true };
 const CODEX_JUNCTION_PREVIEW_DATA_URI =
     'data:image/svg+xml,'
@@ -488,6 +488,8 @@ const cordDoubleRightLastTs = new Map();
 let cordPendingDeletePairKey = null;
 /** Multi-select node delete: first right-click arms; second within window removes all selected nodes. */
 let codexBulkNodeDeleteArmedAt = 0;
+/** nodeId → last right-click time (ms) for double–right delete; Map survives virtual-scroll DOM remounts. */
+const codexNodeDeleteLastRightTs = new Map();
 /** @type {Set<HTMLElement>} */
 let codexSelectedNodeEls = new Set();
 /** Last node picked (non–shift-click multi-select); used for toolbar when one node is primary. */
@@ -708,6 +710,90 @@ function reverseCodexEdgeForSelectedPair() {
     const e = findEdge(ida, idb) || findEdge(idb, ida);
     if (!e) return;
     reverseCodexDirectedEdge(e);
+}
+
+/** Add a single directed link if absent (no duplicate pair; respects {@link hasCodexConnectionBetween}). */
+function addDirectedCodexEdge(fromId, toId) {
+    if (!fromId || !toId || fromId === toId) return false;
+    if (findEdge(fromId, toId)) return false;
+    if (hasCodexConnectionBetween(fromId, toId)) return false;
+    codexEdges.push({ fromId, toId });
+    markCodexEdgeUnsaved(fromId, toId);
+    return true;
+}
+
+/** World top-left for a new junction centered between two node centers. */
+function junctionTopLeftBetweenNodeElements(elFrom, elTo) {
+    const cA = getNodeCenterWorldPx(elFrom);
+    const cB = getNodeCenterWorldPx(elTo);
+    const mx = (cA.x + cB.x) / 2;
+    const my = (cA.y + cB.y) / 2;
+    const scale = resolveCodexNodeScale('junction', undefined);
+    const dim = CODEX_JUNCTION_BASE_PX * scale;
+    const x = mx - dim / 2;
+    const y = my - dim / 2;
+    return clampCodexNodeTopLeftToWorld(x, y, scale, 'junction');
+}
+
+/**
+ * Dev mode: with two nodes selected, insert a junction on the segment and wire A → break → B.
+ * If a directed link already exists between the pair, it is replaced by two links through the new waypoint.
+ * If there is no link, creates first-selected → break → second-selected (same order as A/B preview).
+ */
+function insertCodexBreakBetweenSelectedPair() {
+    if (codexMode !== 'dev') return;
+    const selected = getSelectedCodexNodesInRoot();
+    if (selected.length !== 2) return;
+    const elA = selected[0];
+    const elB = selected[1];
+    const ida = elA.dataset.codexNodeId;
+    const idb = elB.dataset.codexNodeId;
+    if (!ida || !idb || ida === idb) return;
+
+    const existing = findEdge(ida, idb) || findEdge(idb, ida);
+    let fromId;
+    let toId;
+    let elFrom;
+    let elTo;
+    if (existing) {
+        fromId = existing.fromId;
+        toId = existing.toId;
+        elFrom = codexNodeElements.get(fromId);
+        elTo = codexNodeElements.get(toId);
+        if (!elFrom || !elTo) return;
+        removeCodexEdgeDirected(fromId, toId);
+    } else {
+        fromId = ida;
+        toId = idb;
+        elFrom = elA;
+        elTo = elB;
+    }
+
+    const { x: jx, y: jy } = junctionTopLeftBetweenNodeElements(elFrom, elTo);
+    const jId = generateNodeId();
+    placeCodexNode(jx, jy, 'junction', null, null, { fromSaved: false, id: jId, skipRedraw: true });
+
+    const added1 = addDirectedCodexEdge(fromId, jId);
+    const added2 = addDirectedCodexEdge(jId, toId);
+    if (!added1 || !added2) {
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus('Could not add links through the new break node (duplicate or invalid).', 'warning');
+        }
+    }
+
+    const elJ = codexNodeElements.get(jId);
+    if (elFrom && elJ) {
+        markNodeVisualUnsaved(elFrom);
+        markNodeVisualUnsaved(elJ);
+    }
+    if (elTo) markNodeVisualUnsaved(elTo);
+    markCodexLayoutDirty();
+    redrawCodexEdges();
+    scheduleUpdateCodexVirtualScroll();
+    selectCodexNodesPair(elFrom, elJ, elJ);
+    if (typeof window.updateStatus === 'function') {
+        window.updateStatus('Inserted break waypoint between the two nodes.', 'success');
+    }
 }
 
 /**
@@ -1267,6 +1353,53 @@ function clearPendingCodexDeleteState() {
     }
 }
 
+/** True when edge/node visuals depend on pending-delete state (call before clearPendingCodexDeleteState). */
+function codexHasPendingDeleteVisuals() {
+    if (cordPendingDeletePairKey != null) return true;
+    if (root && root.querySelector('.codex-node--pending-delete')) return true;
+    return false;
+}
+
+/** Clears pending-delete state and schedules an edge redraw only if that state affected drawing (avoids ~O(nodes) SVG rebuild on every pointerdown). */
+function clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded() {
+    const had = codexHasPendingDeleteVisuals();
+    clearPendingCodexDeleteState();
+    if (had) scheduleRedrawCodexEdges();
+}
+
+/** Drop virtual-scroll + double–right-click tracking for a removed node id. */
+function unregisterCodexNodeRenderTracking(nodeId) {
+    if (!nodeId) return;
+    codexRenderedNodeIds.delete(nodeId);
+    codexNodeElements.delete(nodeId);
+    codexNodeDeleteLastRightTs.delete(nodeId);
+}
+
+/**
+ * Dev toolbar: delete all selected nodes immediately (edges removed; layout marked dirty).
+ */
+function deleteCodexToolbarSelectedNodes() {
+    if (codexMode !== 'dev' || !root) return;
+    const toRemove = getSelectedCodexNodesInRoot().filter((n) => root.contains(n));
+    const ids = toRemove.map((n) => n.dataset.codexNodeId).filter(Boolean);
+    if (!ids.length) return;
+    clearPendingCodexDeleteState();
+    removeEdgesForDeletedNodesWithJunctionBridging(ids);
+    codexAllNodes = codexAllNodes.filter((n) => !ids.includes(n.id));
+    markCodexLayoutDirty();
+    codexSelectedNodeEls.clear();
+    codexPrimarySelectedNodeEl = null;
+    for (const id of ids) unregisterCodexNodeRenderTracking(id);
+    toRemove.forEach((n) => n.remove());
+    applyCodexSelectionToDom();
+    redrawCodexEdges();
+    updateCodexToolbar();
+    scheduleUpdateCodexVirtualScroll();
+    if (typeof window.updateStatus === 'function') {
+        window.updateStatus(ids.length === 1 ? 'Deleted 1 node.' : `Deleted ${ids.length} nodes.`, 'success');
+    }
+}
+
 function pruneStaleCodexSelection() {
     for (const el of [...codexSelectedNodeEls]) {
         if (!root || !root.contains(el)) codexSelectedNodeEls.delete(el);
@@ -1416,6 +1549,7 @@ function updateCodexToolbar() {
     const btnNet = codexToolbarEl.querySelector('.codex-toolbar__mode-network');
     const netHint = codexToolbarEl.querySelector('.codex-toolbar__network-hint');
     const selectAllBtn = codexToolbarEl.querySelector('.codex-toolbar__select-all');
+    const deleteSelBtn = codexToolbarEl.querySelector('.codex-toolbar__delete-selected');
 
     if (saveBtn) {
         saveBtn.disabled = !codexLayoutDirty;
@@ -1452,6 +1586,18 @@ function updateCodexToolbar() {
             : `Select all ${totalNodes} nodes. Use toolbar − / + to change node size; header + / − zooms the whole board.`;
     }
 
+    if (deleteSelBtn) {
+        const dev = codexMode === 'dev';
+        deleteSelBtn.disabled = !dev || !hasSel;
+        deleteSelBtn.title = !dev
+            ? 'Switch to Dev mode to delete nodes from the board.'
+            : !hasSel
+                ? 'Select one or more nodes, then delete them from the board.'
+                : selectedNodes.length > 1
+                    ? `Delete ${selectedNodes.length} selected nodes (and their links).`
+                    : 'Delete the selected node (and its links).';
+    }
+
     const scaleInput = codexToolbarEl.querySelector('.codex-toolbar__scale-input');
     if (scaleInput) {
         const inputActive = document.activeElement === scaleInput;
@@ -1485,6 +1631,7 @@ function updateCodexToolbar() {
     const previewImgA = wrapA?.querySelector('.codex-toolbar__selection-preview-img');
     const previewImgB = wrapB?.querySelector('.codex-toolbar__selection-preview-img');
     const btnEdgeReverse = dualWrap?.querySelector('.codex-toolbar__edge-reverse');
+    const btnInsertBreak = dualWrap?.querySelector('.codex-toolbar__insert-break');
 
     function fillCodexToolbarPreviewImg(img, nodeEl) {
         if (!img) return;
@@ -1539,6 +1686,13 @@ function updateCodexToolbar() {
                     btnEdgeReverse.title =
                         'Reverse link direction (swap A and B; packets flow A → B)';
                 }
+                if (btnInsertBreak) {
+                    btnInsertBreak.disabled = codexMode !== 'dev';
+                    btnInsertBreak.title =
+                        codexMode === 'dev'
+                            ? 'Insert break (waypoint): replace A → B with A → break → B (same direction).'
+                            : 'Switch to Dev Mode to insert a break between these nodes.';
+                }
             } else if (st.kind === 'pair-no-edge' || st.kind === 'cord-pending') {
                 fillCodexToolbarPreviewImg(previewImgA, st.fromEl);
                 fillCodexToolbarPreviewImg(previewImgB, st.toEl);
@@ -1549,6 +1703,19 @@ function updateCodexToolbar() {
                             ? 'Finish or cancel the link first — direction is set when the cord exists'
                             : 'No link between these nodes — reverse applies to an existing link';
                 }
+                if (btnInsertBreak) {
+                    if (st.kind === 'cord-pending') {
+                        btnInsertBreak.disabled = true;
+                        btnInsertBreak.title =
+                            'Finish or cancel the link first — then you can insert a break on the new cord.';
+                    } else {
+                        btnInsertBreak.disabled = codexMode !== 'dev';
+                        btnInsertBreak.title =
+                            codexMode === 'dev'
+                                ? 'Insert break (waypoint): create A → break → B using selection order (first → second).'
+                                : 'Switch to Dev Mode to insert a break between these nodes.';
+                    }
+                }
             } else if (st.kind === 'pending') {
                 fillCodexToolbarPreviewImg(previewImgA, st.fromEl);
                 fillCodexToolbarPreviewImg(previewImgB, null);
@@ -1557,6 +1724,10 @@ function updateCodexToolbar() {
                     btnEdgeReverse.disabled = true;
                     btnEdgeReverse.title =
                         'Pick the second node — then you can reverse direction on the new link';
+                }
+                if (btnInsertBreak) {
+                    btnInsertBreak.disabled = true;
+                    btnInsertBreak.title = 'Select two nodes to insert a break between them.';
                 }
             }
             previewRow.style.display = '';
@@ -1595,7 +1766,7 @@ function markNodeVisualUnsaved(el) {
  * @param {{ network?: boolean, mode?: 'replace'|'toggle' }} [opts]
  */
 function debugLogNodeInfo(el) {
-    if (!el) return;
+    if (!CODEX_PERFORMANCE_DEBUG || !el) return;
     const nid = el.dataset.codexNodeId || 'unknown';
     const kind = el.dataset.codexKind || 'unknown';
     const hero = el.dataset.codexHero || '';
@@ -1634,8 +1805,8 @@ function selectCodexNode(el, opts = {}) {
         codexPrimarySelectedNodeEl = null;
         stripCodexSelectionFromDom();
         stripCodexBDescendantGlowFromDom();
-        clearPendingCodexDeleteState();
-        // Skip edge redraw on selection - edges don't change when selecting
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+        // Skip edge redraw on selection unless pending-delete visuals were cleared
         updateCodexToolbar();
         // Reset toolbar color picker and hex input to default when no node selected
         const colorPicker = root.querySelector('[data-codex-bg-color-picker]');
@@ -1669,8 +1840,7 @@ function selectCodexNode(el, opts = {}) {
         codexSelectedNodeEls.add(el);
         codexPrimarySelectedNodeEl = el;
         applyCodexSelectionToDom();
-        clearPendingCodexDeleteState();
-        redrawCodexEdges();
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
         updateCodexToolbar();
         return;
     }
@@ -1693,8 +1863,8 @@ function selectCodexNode(el, opts = {}) {
         codexPrimarySelectedNodeEl = el;
     }
     applyCodexSelectionToDom();
-    clearPendingCodexDeleteState();
-    // Skip edge redraw on selection - edges don't change when selecting
+    clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+    // Skip edge redraw on selection unless pending-delete visuals were cleared
     updateCodexToolbar();
 }
 
@@ -1714,8 +1884,7 @@ function selectCodexNodesPair(elA, elB, primaryEl) {
         codexPrimarySelectedNodeEl = null;
     }
     applyCodexSelectionToDom();
-    clearPendingCodexDeleteState();
-    redrawCodexEdges();
+    clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
     updateCodexToolbar();
 }
 
@@ -1730,8 +1899,7 @@ function selectAllCodexNodes() {
     els.forEach((el) => codexSelectedNodeEls.add(el));
     codexPrimarySelectedNodeEl = els[els.length - 1];
     applyCodexSelectionToDom();
-    clearPendingCodexDeleteState();
-    redrawCodexEdges();
+    clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
     updateCodexToolbar();
 }
 
@@ -1873,6 +2041,24 @@ function ensureCodexToolbarSelectAllRow(bar) {
     }
 }
 
+function ensureCodexToolbarDeleteSelectedButton(bar) {
+    if (!bar) return;
+    const row = bar.querySelector('.codex-toolbar__row--select-all');
+    if (!row || row.querySelector('.codex-toolbar__delete-selected')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'codex-toolbar__delete-selected';
+    btn.textContent = 'Delete selected';
+    btn.title = 'Remove selected nodes from the board (Dev mode).';
+    btn.disabled = true;
+    btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        deleteCodexToolbarSelectedNodes();
+    });
+    row.appendChild(btn);
+}
+
 function ensureCodexToolbarScaleInput(bar) {
     const row = bar?.querySelector('.codex-toolbar__shrink')?.parentElement;
     if (!row || row.querySelector('.codex-toolbar__scale-input')) return;
@@ -1912,6 +2098,76 @@ function removeEdgesTouchingNodeIds(nodeIds) {
         codexEdges = next;
         redrawCodexEdges();
     }
+}
+
+function codexNodeKindById(id) {
+    const n = codexAllNodes.find((x) => x.id === id);
+    return n && n.kind ? n.kind : null;
+}
+
+/**
+ * A junction in `deleteSet` whose every incoming edge starts outside `deleteSet` (or has no incoming).
+ * Splicing those first preserves chains like A→J1→J2→B when deleting {J1,J2}.
+ */
+function pickJunctionReadyToSpliceAmongDeleteSet(deleteSet) {
+    for (const id of deleteSet) {
+        if (codexNodeKindById(id) !== 'junction') continue;
+        const incoming = codexEdges.filter((e) => e.toId === id);
+        const outgoing = codexEdges.filter((e) => e.fromId === id);
+        if (!incoming.length && !outgoing.length) continue;
+        const predsOk = incoming.length === 0 || incoming.every((e) => !deleteSet.has(e.fromId));
+        if (predsOk) return id;
+    }
+    return null;
+}
+
+/**
+ * Splice one junction out: for each X→J and J→Y, add X→Y unless an endpoint is in `removedIds` (except J itself).
+ * Then removes all edges incident to J. Does not redraw.
+ * @param {string} junctionId
+ * @param {Set<string>} removedIds - full delete batch (other deleted junctions may appear as bridge endpoints until spliced).
+ */
+function removeJunctionAndBridgeEdges(junctionId, removedIds) {
+    if (!junctionId) return;
+    const skip = new Set(removedIds instanceof Set ? removedIds : [removedIds]);
+    skip.delete(junctionId);
+    const incoming = codexEdges.filter((e) => e.toId === junctionId);
+    const outgoing = codexEdges.filter((e) => e.fromId === junctionId);
+    for (const e of [...incoming, ...outgoing]) {
+        codexUnsavedEdgeKeys.delete(edgeDirectedKey(e.fromId, e.toId));
+        cordDoubleRightLastTs.delete(codexUnorderedPairKey(e.fromId, e.toId));
+        const pk = codexUnorderedPairKey(e.fromId, e.toId);
+        if (cordPendingDeletePairKey === pk) cordPendingDeletePairKey = null;
+    }
+    codexEdges = codexEdges.filter((e) => e.fromId !== junctionId && e.toId !== junctionId);
+    for (const ein of incoming) {
+        for (const eout of outgoing) {
+            const fromId = ein.fromId;
+            const toId = eout.toId;
+            if (fromId === junctionId || toId === junctionId) continue;
+            if (fromId === toId) continue;
+            if (skip.has(fromId) || skip.has(toId)) continue;
+            addDirectedCodexEdge(fromId, toId);
+        }
+    }
+}
+
+/**
+ * Removes edges for nodes in `ids`. Junctions are spliced in dependency order so cords reconnect
+ * (e.g. A→J1→J2→B with both breaks deleted becomes A→B). Non-junction deletes unchanged.
+ * @param {string[]} ids
+ */
+function removeEdgesForDeletedNodesWithJunctionBridging(ids) {
+    const idSet = new Set((ids || []).filter(Boolean));
+    if (!idSet.size) return;
+    const safety = idSet.size + codexEdges.length + 8;
+    let guard = 0;
+    while (guard++ < safety) {
+        const j = pickJunctionReadyToSpliceAmongDeleteSet(idSet);
+        if (!j) break;
+        removeJunctionAndBridgeEdges(j, idSet);
+    }
+    removeEdgesTouchingNodeIds([...idSet]);
 }
 
 function edgeCordIsActivelyUpdating(edge) {
@@ -2804,48 +3060,51 @@ if (typeof window !== 'undefined') {
 }
 
 function redrawCodexEdges() {
-    console.log('[Codex Redraw] redrawCodexEdges called - mode=' + codexMode);
-    
+    if (CODEX_PERFORMANCE_DEBUG) {
+        console.log('[Codex Redraw] redrawCodexEdges called - mode=' + codexMode);
+    }
+
     // In View Mode, skip all redraws after initial render (edges are static)
     if (codexMode === 'view') {
         if (codexViewModeInitialRenderDone) {
-            console.log('[Codex Redraw] Skipping redraw in View Mode (already rendered)');
             if (CODEX_PERFORMANCE_DEBUG) {
+                console.log('[Codex Redraw] Skipping redraw in View Mode (already rendered)');
                 console.log('[Codex Perf] Skipping redraw in View Mode (already rendered)');
             }
             return;
         }
-        console.log('[Codex Redraw] View Mode initial render - forcing through all skips');
         if (CODEX_PERFORMANCE_DEBUG) {
+            console.log('[Codex Redraw] View Mode initial render - forcing through all skips');
             console.log('[Codex Perf] View Mode initial render - forcing through all skips');
         }
     }
-    
-    console.log('[Codex Redraw] Skip flags - skipAll=' + codexSkipAllEdgeRedraws + ', skipEdge=' + codexSkipEdgeRedraw);
+
+    if (CODEX_PERFORMANCE_DEBUG) {
+        console.log('[Codex Redraw] Skip flags - skipAll=' + codexSkipAllEdgeRedraws + ', skipEdge=' + codexSkipEdgeRedraw);
+    }
     
     // Aggressive skip during batch node placement to prevent O(n²) behavior
     // BUT: allow initial View Mode render attempts
     if (codexSkipAllEdgeRedraws) {
         const isViewModeInitialRender = codexMode === 'view' && !codexViewModeInitialRenderDone;
         if (!isViewModeInitialRender) {
-            console.log('[Codex Redraw] Skipping ALL edge redraws (batch mode), isViewModeInitialRender=' + isViewModeInitialRender);
             if (CODEX_PERFORMANCE_DEBUG) {
+                console.log('[Codex Redraw] Skipping ALL edge redraws (batch mode), isViewModeInitialRender=' + isViewModeInitialRender);
                 console.log('[Codex Perf] Skipping ALL edge redraws (batch mode), isViewModeInitialRender=' + isViewModeInitialRender);
             }
             return;
-        } else {
+        }
+        if (CODEX_PERFORMANCE_DEBUG) {
             console.log('[Codex Redraw] Bypassing batch skip for View Mode initial render');
-            if (CODEX_PERFORMANCE_DEBUG) {
-                console.log('[Codex Perf] Bypassing batch skip for View Mode initial render');
-            }
+            console.log('[Codex Perf] Bypassing batch skip for View Mode initial render');
         }
     }
-    
+
     // Skip edge redraws when flag is set (during zoom/pan operations)
     // BUT: allow initial View Mode render attempts
     if (codexSkipEdgeRedraw && !(codexMode === 'view' && !codexViewModeInitialRenderDone)) {
-        console.log('[Codex Redraw] Skipping edge redraw (skip flag set)');
         if (CODEX_PERFORMANCE_DEBUG) {
+            console.log('[Codex Redraw] Skipping edge redraw (skip flag set)');
             console.log('[Codex Perf] Skipping edge redraw (skip flag set)');
         }
         return;
@@ -2858,10 +3117,14 @@ function redrawCodexEdges() {
 
     const svg = root?.querySelector('.codex-edges-layer');
     if (!svg || !root) {
-        console.log('[Codex Redraw] No SVG or root found, aborting');
+        if (CODEX_PERFORMANCE_DEBUG) {
+            console.log('[Codex Redraw] No SVG or root found, aborting');
+        }
         return;
     }
-    console.log('[Codex Redraw] SVG found, proceeding with render');
+    if (CODEX_PERFORMANCE_DEBUG) {
+        console.log('[Codex Redraw] SVG found, proceeding with render');
+    }
 
     if (codexEdgesRedrawRaf) {
         clearTimeout(codexEdgesRedrawRaf);
@@ -2870,9 +3133,9 @@ function redrawCodexEdges() {
 
     const nodeList = root.querySelectorAll('.codex-node');
     const nodeCount = nodeList.length;
-    console.log('[Codex Redraw] Found ' + nodeCount + ' nodes in DOM');
 
     if (CODEX_PERFORMANCE_DEBUG) {
+        console.log('[Codex Redraw] Found ' + nodeCount + ' nodes in DOM');
         console.log(`[Codex Perf] redrawCodexEdges: ${nodeCount} visible nodes, ${codexEdges.length} edges`);
     }
 
@@ -3128,17 +3391,17 @@ function redrawCodexEdges() {
     // In View Mode, all nodes are rendered at once, so first render is complete
     if (codexMode === 'view' && !codexViewModeInitialRenderDone) {
         const visibleNodeCount = nodeList ? nodeList.length : 0;
-        console.log('[Codex Redraw] View Mode render complete - visibleNodeCount=' + visibleNodeCount);
-        codexViewModeInitialRenderDone = true;
-        console.log('[Codex Redraw] Marking View Mode initial render as DONE');
         if (CODEX_PERFORMANCE_DEBUG) {
+            console.log('[Codex Redraw] View Mode render complete - visibleNodeCount=' + visibleNodeCount);
+            console.log('[Codex Redraw] Marking View Mode initial render as DONE');
             console.log('[Codex Perf] View Mode initial render complete with ' + visibleNodeCount + ' visible nodes');
         }
+        codexViewModeInitialRenderDone = true;
     }
 
     const elapsed = performance.now() - startTime;
-    console.log('[Codex Redraw] Completed in ' + elapsed.toFixed(2) + 'ms');
     if (CODEX_PERFORMANCE_DEBUG) {
+        console.log('[Codex Redraw] Completed in ' + elapsed.toFixed(2) + 'ms');
         console.log(`[Codex Perf] redrawCodexEdges completed in ${elapsed.toFixed(2)}ms`);
     }
 }
@@ -3663,6 +3926,7 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     codexEdges = edges;
     codexUnsavedEdgeKeys.clear();
     cordDoubleRightLastTs.clear();
+    codexNodeDeleteLastRightTs.clear();
     clearPendingCodexDeleteState();
     codexViewZoom = CODEX_ZOOM_INITIAL;
     if (!nodes.length) {
@@ -4146,17 +4410,13 @@ function onHitLayerBackgroundPanPointerDown(e) {
     if (!hitLayerEl || e.target !== hitLayerEl) return;
     cancelBackgroundPanPointerPending();
     cancelPointerPending();
-    clearPendingCodexDeleteState();
-    
+    clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+
     // In View Mode, deselect nodes when clicking background
     if (codexMode === 'view') {
         selectCodexNode(null);
     }
-    
-    // Skip edge redraw in View Mode (edges are static, pan uses CSS transforms)
-    if (codexMode !== 'view') {
-        redrawCodexEdges();
-    }
+
     armCodexBackgroundPanPendingFromEvent(e);
 }
 
@@ -4188,7 +4448,29 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
             bar.appendChild(rowPreview);
         }
     }
-    if (rowPreview.querySelector('.codex-toolbar__endpoint-preview-dual')) return;
+    const dualPre = rowPreview.querySelector('.codex-toolbar__endpoint-preview-dual');
+    if (dualPre) {
+        if (!dualPre.querySelector('.codex-toolbar__insert-break')) {
+            const rev = dualPre.querySelector('.codex-toolbar__edge-reverse');
+            if (rev) {
+                const btnIns = document.createElement('button');
+                btnIns.type = 'button';
+                btnIns.className = 'codex-toolbar__insert-break';
+                btnIns.textContent = '+';
+                btnIns.setAttribute('aria-label', 'Insert break node between A and B');
+                btnIns.title =
+                    'Insert break (waypoint): A → break → B — replaces the current link if one exists, or creates links in selection order (first → second).';
+                btnIns.disabled = true;
+                btnIns.addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    insertCodexBreakBetweenSelectedPair();
+                });
+                rev.insertAdjacentElement('afterend', btnIns);
+            }
+        }
+        return;
+    }
 
     while (rowPreview.firstChild) rowPreview.removeChild(rowPreview.firstChild);
 
@@ -4233,6 +4515,20 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
         reverseCodexEdgeForSelectedPair();
     });
 
+    const btnInsertBreak = document.createElement('button');
+    btnInsertBreak.type = 'button';
+    btnInsertBreak.className = 'codex-toolbar__insert-break';
+    btnInsertBreak.textContent = '+';
+    btnInsertBreak.setAttribute('aria-label', 'Insert break node between A and B');
+    btnInsertBreak.title =
+        'Insert break (waypoint): A → break → B — replaces the current link if one exists, or creates links in selection order (first → second).';
+    btnInsertBreak.disabled = true;
+    btnInsertBreak.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        insertCodexBreakBetweenSelectedPair();
+    });
+
     const wrapB = document.createElement('div');
     wrapB.className = 'codex-toolbar__selection-preview codex-toolbar__selection-preview--to';
     const lblB = document.createElement('span');
@@ -4250,6 +4546,7 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
 
     dual.appendChild(wrapA);
     dual.appendChild(btnRev);
+    dual.appendChild(btnInsertBreak);
     dual.appendChild(wrapB);
     rowPreview.appendChild(single);
     rowPreview.appendChild(dual);
@@ -4654,6 +4951,7 @@ function ensureCodexToolbar() {
     }
     codexToolbarEl = bar;
     ensureCodexToolbarSelectAllRow(bar);
+    ensureCodexToolbarDeleteSelectedButton(bar);
     ensureCodexToolbarSelectionPreviewRow(bar);
     ensureCodexToolbarScaleInput(bar);
     ensureCodexToolbarImportExportRow(bar);
@@ -5217,15 +5515,13 @@ function codexSvgPointerDownCapture(e) {
         e.preventDefault();
         e.stopPropagation();
         cancelPointerPending();
-        clearPendingCodexDeleteState();
-        redrawCodexEdges();
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
         armCodexBackgroundPanPendingFromEvent(e);
         return;
     }
 
     if (e.button === 0) {
-        clearPendingCodexDeleteState();
-        redrawCodexEdges();
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
     }
 }
 
@@ -5260,9 +5556,8 @@ function onPointerUpMaybeSelect(ev) {
     document.removeEventListener('pointercancel', onPointerUpMaybeSelect, capOpts);
     pointerPending = null;
     selectCodexNode(p.el, { mode: p.shiftKey ? 'toggle' : 'replace' });
-    if (!p.shiftKey) {
-        maybeOpenHeroArchiveFromCodexNodeEl(p.el);
-    }
+    // Dev mode: do not open info panels on click — selection/drag/network tooling only.
+    // View mode opens the panel from the dedicated pointerdown branch, not here.
 }
 
 function beginActualNodeDrag(prep, firstMoveEv) {
@@ -5484,6 +5779,7 @@ async function openHeroArchiveEntryFromCodexHeroName(heroNameFromNode) {
 }
 
 function maybeOpenHeroArchiveFromCodexNodeEl(nodeEl) {
+    if (codexMode !== 'view') return;
     if (!nodeEl || nodeEl.dataset.codexKind !== 'hero') return;
     const heroName = String(nodeEl.dataset.codexHero || '').trim();
     if (!heroName) return;
@@ -5491,14 +5787,13 @@ function maybeOpenHeroArchiveFromCodexNodeEl(nodeEl) {
 }
 
 function bindCodexNodeInteraction(el) {
-    let lastCtx = 0;
     el.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // Prevent deletion in view mode
         if (codexMode === 'view') return;
-        
+
         const now = Date.now();
         pruneStaleCodexSelection();
         const inSelection = codexSelectedNodeEls.has(el);
@@ -5510,16 +5805,18 @@ function bindCodexNodeInteraction(el) {
                 const toRemove = [...codexSelectedNodeEls].filter((n) => root && root.contains(n));
                 const ids = toRemove.map((n) => n.dataset.codexNodeId).filter(Boolean);
                 clearPendingCodexDeleteState();
-                removeEdgesTouchingNodeIds(ids);
+                removeEdgesForDeletedNodesWithJunctionBridging(ids);
                 // Remove from codexAllNodes for save persistence
                 codexAllNodes = codexAllNodes.filter(n => !ids.includes(n.id));
                 markCodexLayoutDirty();
                 codexSelectedNodeEls.clear();
                 codexPrimarySelectedNodeEl = null;
+                for (const id of ids) unregisterCodexNodeRenderTracking(id);
                 toRemove.forEach((n) => n.remove());
                 applyCodexSelectionToDom();
                 redrawCodexEdges();
                 updateCodexToolbar();
+                scheduleUpdateCodexVirtualScroll();
             } else {
                 clearPendingCodexDeleteState();
                 codexBulkNodeDeleteArmedAt = now;
@@ -5528,15 +5825,17 @@ function bindCodexNodeInteraction(el) {
                 });
                 redrawCodexEdges();
             }
-            lastCtx = now;
             return;
         }
 
         codexBulkNodeDeleteArmedAt = 0;
-        if (now - lastCtx < DOUBLE_RIGHT_MS) {
+        const nid = el.dataset.codexNodeId;
+        if (!nid) return;
+        const prevTs = codexNodeDeleteLastRightTs.get(nid) || 0;
+        if (prevTs > 0 && now - prevTs < DOUBLE_RIGHT_MS) {
+            codexNodeDeleteLastRightTs.delete(nid);
             clearPendingCodexDeleteState();
-            const nid = el.dataset.codexNodeId;
-            removeEdgesTouchingNodeId(nid);
+            removeEdgesForDeletedNodesWithJunctionBridging([nid]);
             // Remove from codexAllNodes for save persistence
             codexAllNodes = codexAllNodes.filter(n => n.id !== nid);
             markCodexLayoutDirty();
@@ -5546,23 +5845,27 @@ function bindCodexNodeInteraction(el) {
                 codexPrimarySelectedNodeEl = rest.length ? rest[rest.length - 1] : null;
             }
             applyCodexSelectionToDom();
+            unregisterCodexNodeRenderTracking(nid);
             el.remove();
             redrawCodexEdges();
             updateCodexToolbar();
+            scheduleUpdateCodexVirtualScroll();
         } else {
             clearPendingCodexDeleteState();
             el.classList.add('codex-node--pending-delete');
+            codexNodeDeleteLastRightTs.set(nid, now);
             redrawCodexEdges();
         }
-        lastCtx = now;
-    });
+    }, true);
 
     el.addEventListener('pointerdown', (e) => {
+        if (e.button === 0 && codexMode === 'dev' && el.dataset.codexNodeId) {
+            codexNodeDeleteLastRightTs.delete(el.dataset.codexNodeId);
+        }
         if (e.button !== 0) return;
         e.stopPropagation();
-        clearPendingCodexDeleteState();
-        redrawCodexEdges();
-        
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
+
         // Prevent selection of filtered-out nodes
         if (el.classList.contains('codex-node--filtered-out')) {
             return;
@@ -5822,9 +6125,9 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
  * Use `skipRedraw: true` when placing many nodes in one task; caller must call {@link redrawCodexEdges} once after.
  */
 function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
-    if (!root) return;
-    if (kind === 'npc' && !String(heroName || '').trim()) return;
-    if (kind === 'country' && !normalizeCodexCountryKey(opts.countryKey)) return;
+    if (!root) return undefined;
+    if (kind === 'npc' && !String(heroName || '').trim()) return undefined;
+    if (kind === 'country' && !normalizeCodexCountryKey(opts.countryKey)) return undefined;
     const scale = resolveCodexNodeScale(kind, opts.scale);
     const { x: cx, y: cy } = clampCodexNodeTopLeftToWorld(x, y, scale, kind);
     const fromSaved = opts.fromSaved === true;
@@ -5857,12 +6160,16 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
             newNode.countryKey = opts.countryKey;
         }
         codexAllNodes.push(newNode);
-        
+        /* Dev virtual scroll: mark as rendered so updateCodexVirtualScroll does not call
+         * placeLoadedCodexNodeRecord again (would append a second DOM node and orphan the first). */
+        if (nodeId) codexRenderedNodeIds.add(nodeId);
+
         markNodeVisualUnsaved(el);
         markCodexLayoutDirty();
         selectCodexNode(el);
     }
     if (!opts.skipRedraw) redrawCodexEdges();
+    return el;
 }
 
 /**
@@ -5918,8 +6225,7 @@ export function initCodexCanvas(rootElement) {
         if (!fromLayer && !fromRootBare) return;
 
         e.preventDefault();
-        clearPendingCodexDeleteState();
-        redrawCodexEdges();
+        clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
 
         // Prevent picker from opening in view mode
         if (codexMode === 'view') return;
@@ -6001,6 +6307,7 @@ export function destroyCodexCanvas() {
     cancelBackgroundPanPointerPending();
     codexActiveDragNodeIds.clear();
     cordDoubleRightLastTs.clear();
+    codexNodeDeleteLastRightTs.clear();
     cordPendingDeletePairKey = null;
     codexBulkNodeDeleteArmedAt = 0;
     if (codexEdgesSvgEl) {

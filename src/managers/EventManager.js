@@ -727,7 +727,8 @@ class EventManager {
                 ? {
                     name: '',
                     description: '',
-                    relevantLocations: []
+                    relevantLocations: [],
+                    connections: []
                 }
                 : {
                     name: '',

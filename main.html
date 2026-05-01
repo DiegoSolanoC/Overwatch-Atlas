@@ -73,6 +73,12 @@
                         </div>
                         <p class="event-slide-hero-locations-edit__hint">Each row: location name, country (autocomplete like story <strong>Secondary countries</strong> — drives the flag), and why it matters (e.g. Place of birth, Former base).</p>
                         <div id="eventSlideEditRelevantLocations" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
+                        <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
+                            <span class="event-slide-hero-locations-edit__label">Connections</span>
+                            <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddBioConnectionBtn">+ Add</button>
+                        </div>
+                        <p class="event-slide-hero-locations-edit__hint">Each row: linked Hero, Faction, or NPC (same autocomplete as story relevancy), then relationship <strong>from this entry toward them</strong> and <strong>from them toward this entry</strong> (shown as two arrows on the slide). Legacy rows with a single “reasoning” field still load and display both ways. Saving adds or updates the mirrored row on the linked entry when it exists in <strong>this same archive</strong> (e.g. hero↔hero in Heroes); cross-archive links are not duplicated.</p>
+                        <div id="eventSlideEditBioConnections" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
                     </div>
                 </div>
                 <div class="event-slide-mid-controls" id="eventSlideMidControls" aria-label="Event display options">
@@ -84,6 +90,10 @@
                     <div id="eventRelevantLocationsSection" class="event-relevant-locations-section" style="display: none;">
                         <h4 class="event-filter-header">Relevant locations</h4>
                         <div id="eventSlideRelevantLocations" class="event-slide-relevant-locations" aria-live="polite"></div>
+                    </div>
+                    <div id="eventBioConnectionsSection" class="event-relevant-locations-section event-bio-connections-section" style="display: none;" aria-live="polite">
+                        <h4 class="event-filter-header">Connections</h4>
+                        <div id="eventSlideBioConnections" class="event-slide-bio-connections"></div>
                     </div>
                     <div id="eventStoryFilterPlacesSection" class="event-relevant-locations-section event-story-filter-places-section" style="display: none;" aria-live="polite"></div>
                     <div class="event-sources-section" id="eventSourcesSection" style="display: none;">
@@ -222,10 +232,10 @@
     <script src="src/services/SoundEffectsManager.js?v=8"></script>
     <script src="src/services/GlitchTextService.js?v=10"></script>
     <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/services/EventDataService.js?v=16"></script>
+    <script src="src/services/EventDataService.js?v=23"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=15"></script>
+    <script src="src/utils/LocationFlagHelpers.js?v=17"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
     <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
     <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
@@ -239,6 +249,8 @@
     <script src="src/services/FormAutocompleteService.js?v=10"></script>
     <script src="src/services/EventFormService.js?v=10"></script>
     <script src="src/utils/HeroRelevantLocationsEditor.js?v=3"></script>
+    <script src="src/utils/BioArchiveConnectionsEditor.js?v=4"></script>
+    <script src="src/utils/BioArchiveConnectionsSync.js?v=4"></script>
     <script src="src/services/EventDragDropService.js?v=8"></script>
     <script src="src/services/EventListenerService.js?v=13"></script>
     <script src="src/services/EventInteractionService.js?v=12"></script>

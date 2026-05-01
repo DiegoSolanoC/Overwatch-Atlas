@@ -34,257 +34,649 @@
           "country": "Gibraltar",
           "reasoning": "Temporary Alliance with Overwatch"
         }
+      ],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Pharah",
+          "reasoningSubjectToLinked": "Daugther",
+          "reasoningLinkedToSubject": "Mother"
+        }
       ]
     },
     {
       "name": "Anran",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Chengdu",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Ashe",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Bellaire",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Baptiste",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Tortuga Island",
+          "country": "Haiti",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Bastion",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Brigitte",
-      "description": "",
-      "relevantLocations": []
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "Father",
+          "reasoningLinkedToSubject": "Daughter"
+        },
+        {
+          "kind": "hero",
+          "name": "Reinhardt",
+          "reasoningSubjectToLinked": "Mentor",
+          "reasoningLinkedToSubject": "Squire"
+        }
+      ]
     },
     {
       "name": "Cassidy",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Austin",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "D.va",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Busan",
+          "country": "South Korea",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Domina",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "London",
+          "country": "United Kingdom",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Doomfist",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Oyo",
+          "country": "Nigeria",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Echo",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Oslo",
+          "country": "Norway",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Emre",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Istanbul",
+          "country": "Turkey",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Freja",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Copenhagen",
+          "country": "Denmark",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Genji",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Hanamura",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Hanzo",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Hanamura",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Hazard",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Glasgow",
+          "country": "United Kingdom",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Illari",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Runasapi",
+          "country": "Peru",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Jetpack Cat",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Lijiang",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Junker Queen",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Junkrat",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Juno",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Kiriko",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Kanezaka",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Life Weaver",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Chiang Mai City",
+          "country": "Thailand",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Lúcio",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Rio de Janeiro",
+          "country": "Brazil",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Mauga",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Apia",
+          "country": "Samoa",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Mei",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Xi'an",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Mercy",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Zurich",
+          "country": "Switzerland",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Mizuki",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Fukuoka",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Moira",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Dublin",
+          "country": "Ireland",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Orisa",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Pharah",
-      "description": "",
-      "relevantLocations": []
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Cairo",
+          "country": "Egypt",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ana",
+          "reasoningSubjectToLinked": "Mother",
+          "reasoningLinkedToSubject": "Daugther"
+        }
+      ]
     },
     {
       "name": "Ramattra",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Secret Omnium",
+          "country": "Antarctica",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Reaper",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Los Angeles",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Reinhardt",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Stuttgrat",
+          "country": "Germany",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "Squire",
+          "reasoningLinkedToSubject": "Mentor"
+        }
+      ]
     },
     {
       "name": "Roadhog",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Sierra",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Appalachian Virginia",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Sigma",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "The Hague",
+          "country": "Netherlands",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Sojourn",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Toronto",
+          "country": "Canada",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Soldier 76",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Bloomington",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Sombra",
       "description": "Olivia Colomar",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Castillo",
+          "country": "Mexico",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Symmetra",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Hyderabad",
+          "country": "India",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Torbjörn",
-      "description": "",
-      "relevantLocations": []
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "Daughter",
+          "reasoningLinkedToSubject": "Father"
+        }
+      ]
     },
     {
       "name": "Tracer",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "London",
+          "country": "England",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Vendetta",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Rome",
+          "country": "Italy",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Venture",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Nova Scotia",
+          "country": "Canada",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Widowmaker",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Annecy",
+          "country": "France",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Winston",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Congo Basin",
+          "country": "Democratic Republic of the Congo",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Wrecking Ball",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Wuyang",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Chengdu",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Zarya",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Novoanskoye",
+          "country": "Russia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     },
     {
       "name": "Zenyatta",
       "description": "",
-      "relevantLocations": []
+      "relevantLocations": [
+        {
+          "locationName": "Detroit",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": []
     }
   ]
 }

@@ -1131,6 +1131,7 @@ export function createMenuButtonsContainer(statusService) {
                             if (relSectionClear) {
                                 relSectionClear.style.display = 'none';
                             }
+                            window.LocationFlagHelpers?.clearBioConnectionsSlideDom?.();
                             if (heroLocEditClear) {
                                 heroLocEditClear.setAttribute('hidden', '');
                                 heroLocEditClear.style.display = 'none';
@@ -1170,6 +1171,7 @@ export function createMenuButtonsContainer(statusService) {
                                     window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
                                         targetSlide
                                     );
+                                    window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(targetSlide);
                                 }
                             }
                             
@@ -1438,6 +1440,18 @@ export function createMenuButtonsContainer(statusService) {
                                     if (addBtn) {
                                         addBtn.onclick = () =>
                                             window.HeroRelevantLocationsEditor?.addRow?.();
+                                    }
+                                    const connContainer = document.getElementById('eventSlideEditBioConnections');
+                                    if (connContainer && window.BioArchiveConnectionsEditor?.render) {
+                                        const conns = Array.isArray(this.editTarget?.eventData?.connections)
+                                            ? this.editTarget.eventData.connections
+                                            : [];
+                                        window.BioArchiveConnectionsEditor.render(connContainer, conns);
+                                        const addConn = document.getElementById('eventSlideAddBioConnectionBtn');
+                                        if (addConn) {
+                                            addConn.onclick = () =>
+                                                window.BioArchiveConnectionsEditor?.addRow?.();
+                                        }
                                     }
                                 }
                             } else if (heroLocEdit) {
@@ -1864,6 +1878,9 @@ export function createMenuButtonsContainer(statusService) {
                                 window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
                                     this.editTarget.eventData
                                 );
+                                window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(
+                                    this.editTarget.eventData
+                                );
                             }
                             
                             this.isEditing = false;
@@ -1894,14 +1911,40 @@ export function createMenuButtonsContainer(statusService) {
                                 const relevantLocations = isBioSave
                                     ? window.HeroRelevantLocationsEditor?.collect(locContainer) ?? []
                                     : undefined;
+                                const connections = isBioSave
+                                    ? window.BioArchiveConnectionsEditor?.collect?.(
+                                          document.getElementById('eventSlideEditBioConnections')
+                                      ) ?? []
+                                    : undefined;
                                 const normalized = isBioSave
-                                    ? { name: cleanName, description: cleanDesc, relevantLocations }
+                                    ? { name: cleanName, description: cleanDesc, relevantLocations, connections }
                                     : { name: cleanName, description: cleanDesc };
                                 if (em?.events) {
-                                    const idx = em.events.indexOf(this.editTarget.eventData);
+                                    const idx =
+                                        window.BioArchiveConnectionsSync?.resolveBioArchiveEventIndex?.(
+                                            em.events,
+                                            this.editTarget.eventData,
+                                            archiveSource
+                                        ) ?? em.events.indexOf(this.editTarget.eventData);
+                                    const oldRef = this.editTarget.eventData;
+                                    const prevConnections =
+                                        isBioSave && Array.isArray(oldRef?.connections)
+                                            ? oldRef.connections.map((c) => ({ ...c }))
+                                            : [];
                                     if (idx >= 0) {
                                         em.events[idx] = normalized;
                                         em.unsavedEventIndices?.add(idx);
+                                        if (
+                                            isBioSave &&
+                                            window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
+                                        ) {
+                                            window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
+                                                em.events,
+                                                archiveSource,
+                                                normalized,
+                                                prevConnections
+                                            );
+                                        }
                                     }
                                     this.currentEventData = normalized;
                                     this.editTarget.eventData = normalized;
@@ -1919,6 +1962,7 @@ export function createMenuButtonsContainer(statusService) {
                                     window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
                                         normalized
                                     );
+                                    window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(normalized);
                                 }
                                 if (window.eventManager?.renderEvents) {
                                     window.eventManager.renderEvents();
@@ -2184,6 +2228,7 @@ export function createMenuButtonsContainer(statusService) {
                             }
 
                             lh?.updateStoryFilterPlacesSlideFromEvent?.(event);
+                            lh?.updateBioConnectionsSlideFromEvent?.(event);
 
                             filtersSection.style.display = showCountryChips ? 'block' : 'none';
                         },

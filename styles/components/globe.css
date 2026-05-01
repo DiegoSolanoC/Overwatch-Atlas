@@ -333,6 +333,32 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     cursor: default;
 }
 
+.codex-toolbar__insert-break {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.codex-toolbar__insert-break:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__insert-break:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
 .codex-toolbar__mode-btn {
     flex: 1;
     min-width: 0;
@@ -356,8 +382,19 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     background: rgba(255, 255, 255, 0.08);
 }
 
-.codex-toolbar__select-all {
+.codex-toolbar__row--select-all {
     width: 100%;
+    flex-wrap: nowrap;
+}
+
+.codex-toolbar__row--select-all .codex-toolbar__select-all,
+.codex-toolbar__row--select-all .codex-toolbar__delete-selected {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.codex-toolbar__select-all {
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 600;
@@ -374,6 +411,29 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 }
 
 .codex-toolbar__select-all:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__delete-selected {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.35);
+    color: rgba(254, 226, 226, 0.95);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.codex-toolbar__delete-selected:hover:not(:disabled) {
+    background: rgba(153, 27, 27, 0.45);
+    border-color: rgba(252, 165, 165, 0.55);
+}
+
+.codex-toolbar__delete-selected:disabled {
     opacity: 0.4;
     cursor: not-allowed;
 }

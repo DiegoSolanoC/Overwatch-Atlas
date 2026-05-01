@@ -234,11 +234,68 @@ class EventDataService {
     }
 
     /**
+     * Strip trailing punctuation often pasted from list/autocomplete (e.g. "Pharah,").
+     * @param {unknown} s
+     * @returns {string}
+     */
+    _sanitizeBioConnectionEntityName(s) {
+        let t = s != null ? String(s).trim() : '';
+        while (t.length > 0 && /[,;]\s*$/.test(t)) {
+            t = t.replace(/[,;]\s*$/, '').trim();
+        }
+        return t;
+    }
+
+    /**
+     * Bio archives: `connections` — linked hero/faction/npc + relationship text each direction.
+     * Legacy single `reasoning` is shown both ways when the directional fields are absent.
+     * @param {unknown} raw
+     * @returns {Array<{ kind: 'hero'|'faction'|'npc', name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string }>}
+     */
+    _normalizeBioArchiveConnections(raw) {
+        if (!Array.isArray(raw)) return [];
+        return raw
+            .map((item) => {
+                let kind = String(item?.kind || '').toLowerCase();
+                if (kind === 'character') kind = 'hero';
+                if (kind !== 'faction' && kind !== 'npc') kind = 'hero';
+                const name = this._sanitizeBioConnectionEntityName(item?.name);
+                let reasoningSubjectToLinked =
+                    item?.reasoningSubjectToLinked != null ? String(item.reasoningSubjectToLinked).trim() : '';
+                let reasoningLinkedToSubject =
+                    item?.reasoningLinkedToSubject != null ? String(item.reasoningLinkedToSubject).trim() : '';
+                const legacy = item?.reasoning != null ? String(item.reasoning).trim() : '';
+                if (!reasoningSubjectToLinked && !reasoningLinkedToSubject && legacy) {
+                    reasoningSubjectToLinked = legacy;
+                    reasoningLinkedToSubject = legacy;
+                }
+                return {
+                    kind,
+                    name,
+                    reasoningSubjectToLinked,
+                    reasoningLinkedToSubject
+                };
+            })
+            .filter(
+                (c) =>
+                    c.name ||
+                    c.reasoningSubjectToLinked ||
+                    c.reasoningLinkedToSubject
+            );
+    }
+
+    /** @param {unknown} raw */
+    normalizeBioArchiveConnections(raw) {
+        return this._normalizeBioArchiveConnections(raw);
+    }
+
+    /**
      * Non-story archives (Heroes / Factions / NPCs / Locations): title + description.
      * Heroes, Factions, and NPCs archives support `relevantLocations` ({ locationName, country, reasoning }[]).
+     * and `connections` ({ kind, name, reasoningSubjectToLinked, reasoningLinkedToSubject }[]; legacy `reasoning` is migrated).
      * Collapse legacy full event objects to the slim shape.
      * @param {unknown} raw
-     * @returns {{ name: string, description: string, relevantLocations?: Array<{ locationName: string, country: string, reasoning: string }> }}
+     * @returns {{ name: string, description: string, relevantLocations?: Array<{ locationName: string, country: string, reasoning: string }>, connections?: Array<{ kind: string, name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string }> }}
      */
     _normalizeSatelliteArchiveEntry(raw) {
         if (!raw || typeof raw !== 'object') {
@@ -259,6 +316,7 @@ class EventDataService {
         const bioArchives = new Set(['heroes', 'factions', 'npcs']);
         if (bioArchives.has(this.archiveSource)) {
             base.relevantLocations = this._normalizeHeroRelevantLocations(raw.relevantLocations);
+            base.connections = this._normalizeBioArchiveConnections(raw.connections);
         }
         return base;
     }
@@ -736,6 +794,20 @@ class EventDataService {
      */
     saveEvents() {
         if (!this._isMainTimelineArchive()) {
+            const arch = this.getArchiveSource();
+            if (
+                (arch === 'heroes' || arch === 'factions' || arch === 'npcs') &&
+                typeof window !== 'undefined' &&
+                window.BioArchiveConnectionsSync?.repairMissingMirrorsForBioArchive
+            ) {
+                if (window.BioArchiveConnectionsSync?.isDebugVerbose?.()) {
+                    console.log('[EventDataService] running bio connection mirror repair before normalize', {
+                        archive: arch,
+                        eventCount: this.events?.length
+                    });
+                }
+                window.BioArchiveConnectionsSync.repairMissingMirrorsForBioArchive(this.events, arch);
+            }
             this._normalizeSatelliteEventsInPlace();
         }
         const storageKey = this._getArchiveLocalStorageKey();

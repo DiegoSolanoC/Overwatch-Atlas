@@ -477,9 +477,186 @@
         if (relSection) relSection.style.display = inner ? 'block' : 'none';
     }
 
+    function clearBioConnectionsSlideDom() {
+        var el = typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
+        var sec = typeof document !== 'undefined' ? document.getElementById('eventBioConnectionsSection') : null;
+        if (el) el.innerHTML = '';
+        if (sec) sec.style.display = 'none';
+    }
+
     var ICON_HERO_CAT = 'assets/images/icons/Heroes Icon.png';
     var ICON_FACTION_CAT = 'assets/images/icons/Factions Icon.png';
     var ICON_NPC_CAT = 'assets/images/icons/NPC Icon.png';
+
+    /**
+     * Portrait for one side of a bio archive connection row (hero / faction / NPC).
+     * Hero portraits use the same click-to-open-Heroes-archive behavior as story relevancy.
+     * @param {'hero'|'faction'|'npc'} entityKind
+     * @param {string} token
+     * @returns {string}
+     */
+    function bioArchiveConnectionPortraitHtml(entityKind, token) {
+        var t = stripTrailingCommaSep(String(token || '')).trim();
+        var k = String(entityKind || 'hero').toLowerCase();
+        if (k === 'character') k = 'hero';
+        if (k !== 'faction' && k !== 'npc') k = 'hero';
+        var fbPath =
+            k === 'faction' ? ICON_FACTION_CAT : k === 'npc' ? ICON_NPC_CAT : ICON_HERO_CAT;
+        var fb = fbPath.replace(/'/g, "\\'");
+        if (!t) {
+            return (
+                '<img class="event-slide-bio-connections__portrait event-slide-bio-connections__portrait--fallback" src="' +
+                fbPath +
+                '" alt="" width="52" height="52" decoding="async" draggable="false" />'
+            );
+        }
+        if (k === 'hero') {
+            var hk = resolveHeroImageKey(t);
+            var canon = hk || t;
+            var src = 'assets/images/heroes/' + encodeURIComponent(canon) + '.png';
+            var dataEnc = encodeURIComponent(canon);
+            return (
+                '<img class="event-slide-filter-token-img event-slide-filter-token-img--heroes event-slide-filter-token-img--clickable-hero event-slide-bio-connections__portrait" ' +
+                'data-hero-open="' +
+                dataEnc +
+                '" role="button" tabindex="0" ' +
+                'src="' +
+                src +
+                '" alt="" title="Open ' +
+                escapeHtmlAttr(canon) +
+                ' in Heroes archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
+                fb +
+                '\';" />'
+            );
+        }
+        if (k === 'npc') {
+            var nk = resolveNpcImageKey(t);
+            var srcN = 'assets/images/npcs/' + encodeURIComponent(nk || t) + '.png';
+            return (
+                '<img class="event-slide-bio-connections__portrait" src="' +
+                srcN +
+                '" alt="" title="' +
+                escapeHtmlAttr(nk || t) +
+                '" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
+                fb +
+                '\';" />'
+            );
+        }
+        var ff = resolveFactionImageFilename(t);
+        if (!ff) {
+            return (
+                '<img class="event-slide-bio-connections__portrait event-slide-bio-connections__portrait--fallback" src="' +
+                fbPath +
+                '" alt="" width="52" height="52" decoding="async" draggable="false" />'
+            );
+        }
+        var srcF = 'assets/images/factions/' + encodeURIComponent(ff) + '.png';
+        return (
+            '<img class="event-slide-bio-connections__portrait" src="' +
+            srcF +
+            '" alt="" title="' +
+            escapeHtmlAttr(t) +
+            '" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
+            fb +
+            '\';" />'
+        );
+    }
+
+    /**
+     * Read-only HTML for Heroes / Factions / NPCs archive `connections`: current entry | arrows + text | linked entry.
+     * @param {Object|null} ev
+     * @param {string} arch heroes|factions|npcs
+     */
+    function createBioConnectionsSlideHtml(ev, arch) {
+        var rows = Array.isArray(ev && ev.connections) ? ev.connections : [];
+        if (!rows.length) return '';
+        var subjectName = '';
+        if (ev && ev.name != null) subjectName = String(ev.name).trim();
+        if (
+            !subjectName &&
+            ev &&
+            Array.isArray(ev.variants) &&
+            ev.variants[0] &&
+            ev.variants[0].name != null
+        ) {
+            subjectName = String(ev.variants[0].name).trim();
+        }
+        var subjectKind = arch === 'factions' ? 'faction' : arch === 'npcs' ? 'npc' : 'hero';
+        var parts = [];
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i] || {};
+            var linkedKind = String(r.kind || 'hero').toLowerCase();
+            if (linkedKind === 'character') linkedKind = 'hero';
+            if (linkedKind !== 'faction' && linkedKind !== 'npc') linkedKind = 'hero';
+            var linkedName = r.name != null ? String(r.name).trim() : '';
+            if (!linkedName) continue;
+
+            var tOut = r.reasoningSubjectToLinked != null ? String(r.reasoningSubjectToLinked).trim() : '';
+            var tIn = r.reasoningLinkedToSubject != null ? String(r.reasoningLinkedToSubject).trim() : '';
+            var leg = r.reasoning != null ? String(r.reasoning).trim() : '';
+            if (!tOut && !tIn && leg) {
+                tOut = leg;
+                tIn = leg;
+            }
+            var outDisp = tOut
+                ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tOut) + '</span>'
+                : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
+            var inDisp = tIn
+                ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tIn) + '</span>'
+                : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
+
+            var leftHtml =
+                '<div class="event-slide-bio-connections__portrait-col">' +
+                bioArchiveConnectionPortraitHtml(subjectKind, subjectName) +
+                '</div>';
+            var rightHtml =
+                '<div class="event-slide-bio-connections__portrait-col">' +
+                bioArchiveConnectionPortraitHtml(linkedKind, linkedName) +
+                '</div>';
+            var mid =
+                '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
+                '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
+                outDisp +
+                '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
+                '</div>' +
+                '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
+                '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
+                inDisp +
+                '</div>' +
+                '</div>';
+
+            parts.push(
+                '<div class="event-slide-bio-connections__row event-slide-bio-connections__row--dual">' +
+                    leftHtml +
+                    mid +
+                    rightHtml +
+                    '</div>'
+            );
+        }
+        return parts.join('');
+    }
+
+    /** @param {Object|null} ev */
+    function updateBioConnectionsSlideFromEvent(ev) {
+        var el = typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
+        var sec = typeof document !== 'undefined' ? document.getElementById('eventBioConnectionsSection') : null;
+        if (!el || !sec) return;
+        var arch =
+            typeof window !== 'undefined' && window.eventManager?.dataService?.getArchiveSource
+                ? window.eventManager.dataService.getArchiveSource()
+                : 'story';
+        if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') {
+            el.innerHTML = '';
+            sec.style.display = 'none';
+            return;
+        }
+        var inner = createBioConnectionsSlideHtml(ev, arch);
+        el.innerHTML = inner;
+        sec.style.display = inner ? 'block' : 'none';
+        if (inner) {
+            wireStoryFilterSectionHeroArchiveNav(sec);
+        }
+    }
 
     function clonePlaceRowObjects(arr) {
         if (!Array.isArray(arr)) return [];
@@ -1070,7 +1247,9 @@
         createRelevantLocationsSlideHtml: createRelevantLocationsSlideHtml,
         getSecondaryCountryPlacesRowsForDisplay: getSecondaryCountryPlacesRowsForDisplay,
         clearRelevantLocationsSlideDom: clearRelevantLocationsSlideDom,
+        clearBioConnectionsSlideDom: clearBioConnectionsSlideDom,
         updateRelevantLocationsSlideFromSecondaryPlaces: updateRelevantLocationsSlideFromSecondaryPlaces,
+        updateBioConnectionsSlideFromEvent: updateBioConnectionsSlideFromEvent,
         getHeroFilterPlacesRowsForDisplay: getHeroFilterPlacesRowsForDisplay,
         getFactionFilterPlacesRowsForDisplay: getFactionFilterPlacesRowsForDisplay,
         getNpcFilterPlacesRowsForDisplay: getNpcFilterPlacesRowsForDisplay,

@@ -433,6 +433,10 @@ export class EventSlideManager {
             target.relevantLocations = places;
             delete target.secondaryCountryPlaces;
             delete target.secondaryCountryFlags;
+            const bioConnEl = document.getElementById('eventSlideEditBioConnections');
+            if (bioConnEl && window.BioArchiveConnectionsEditor?.collect) {
+                target.connections = window.BioArchiveConnectionsEditor.collect(bioConnEl);
+            }
         } else {
             target.secondaryCountryPlaces = places;
             if (window.LocationFlagHelpers?.syncSecondaryCountryFlagsOnEntity) {
@@ -812,6 +816,16 @@ export class EventSlideManager {
                 heroFpEl.innerHTML = '';
                 factionFpEl.innerHTML = '';
                 npcFpEl.innerHTML = '';
+            }
+        }
+        const bioConnPopulate = document.getElementById('eventSlideEditBioConnections');
+        if (bioConnPopulate && window.BioArchiveConnectionsEditor?.render) {
+            const archConn = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            if (isBioArchiveSource(archConn)) {
+                const conns = Array.isArray(target.connections) ? target.connections : [];
+                window.BioArchiveConnectionsEditor.render(bioConnPopulate, conns);
+            } else {
+                bioConnPopulate.innerHTML = '';
             }
         }
         if (headlinesInput) headlinesInput.value = (target.headlines || []).join('\n');
@@ -1317,7 +1331,28 @@ export class EventSlideManager {
             if (!this._isInlineEditAllowed()) return;
             if (!this._inlineDescEdit.active) return;
 
+            const archInline = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const { target: prevDescTarget } = this._getCurrentDescriptionTarget();
+            const prevBioConnections =
+                isBioArchiveSource(archInline) && Array.isArray(prevDescTarget?.connections)
+                    ? prevDescTarget.connections.map((c) => ({ ...c }))
+                    : [];
+
             if (!this._applyAllInlineFieldsToTarget()) return;
+
+            if (
+                isBioArchiveSource(archInline) &&
+                window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave &&
+                window.eventManager?.events
+            ) {
+                const { target: savedDescTarget } = this._getCurrentDescriptionTarget();
+                window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
+                    window.eventManager.events,
+                    archInline,
+                    savedDescTarget,
+                    prevBioConnections
+                );
+            }
 
             const emReorder = window.eventManager;
             const startIdx = this._inlineDescEdit.eventListIndex;
