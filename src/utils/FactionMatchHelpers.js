@@ -1,6 +1,6 @@
 /**
- * Faction id matching: PNG filenames use a numeric prefix only for sort order (e.g. 25Shambali Order.png).
- * Event data may store the prefixed filename, bare name, or manifest displayName — all should match
+ * Faction id matching: PNG filenames may use a numeric prefix (e.g. 25Shambali Order.png); filter chip key is manifest `filename`.
+ * Event data may store the prefixed filename, manifest displayName, or other aliases — all should match
  * the same globe filter chip (filterKey = manifest filename).
  *
  * LEGACY_FACTION_BODY_ALIASES: short / old labels after renames (e.g. "Shambali" → "Shambali Order").

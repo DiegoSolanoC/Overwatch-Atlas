@@ -21,11 +21,19 @@ export async function loadManifest(createFilterButtons, updateFilterCounts, prel
         
         const heroes = manifest.heroes ? manifest.heroes.sort() : [];
         const npcs = manifest.npcs ? [...manifest.npcs].sort() : [];
-        const processedFactions = manifest.factions ? manifest.factions.map(f => ({
-            filename: f.filename,
-            number: f.number,
-            displayName: f.displayName
-        })).sort((a, b) => a.number - b.number) : [];
+        const processedFactions = manifest.factions
+            ? [...manifest.factions]
+                .map((f) => ({
+                    filename: f.filename,
+                    displayName: f.displayName
+                }))
+                .sort((a, b) =>
+                    String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+                        sensitivity: 'base',
+                        numeric: true
+                    })
+                )
+            : [];
         
         // Initialize with loaded data
         createFilterButtons(heroes, 'heroes', 'assets/images/heroes');

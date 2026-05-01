@@ -27,7 +27,7 @@
     "Mauga",
     "Mei",
     "Mercy",
-    "Mitzuki",
+    "Mizuki",
     "Moira",
     "Orisa",
     "Pharah",
@@ -54,209 +54,168 @@
   ],
   "factions": [
     {
-      "filename": "00Overwatch",
-      "number": 0,
-      "displayName": "Overwatch"
-    },
-    {
       "filename": "01Blackwatch",
-      "number": 1,
       "displayName": "Blackwatch"
     },
     {
-      "filename": "02Ecopoints",
-      "number": 2,
-      "displayName": "Ecopoints"
-    },
-    {
-      "filename": "03Talon",
-      "number": 3,
-      "displayName": "Talon"
-    },
-    {
-      "filename": "04Omnica Corporation",
-      "number": 4,
-      "displayName": "Omnica Corporation"
-    },
-    {
-      "filename": "05Vishkar Corporation",
-      "number": 5,
-      "displayName": "Vishkar Corporation"
-    },
-    {
-      "filename": "06Inti Warriors",
-      "number": 6,
-      "displayName": "Inti Warriors"
-    },
-    {
-      "filename": "07Lucheng Interstellar",
-      "number": 7,
-      "displayName": "Lucheng Interstellar"
-    },
-    {
-      "filename": "08Ironclad Guild",
-      "number": 8,
-      "displayName": "Ironclad Guild"
-    },
-    {
-      "filename": "09Crusader Initiative",
-      "number": 9,
-      "displayName": "Crusader Initiative"
-    },
-    {
-      "filename": "10Wuxing University",
-      "number": 10,
-      "displayName": "Wuxing University"
-    },
-    {
-      "filename": "11Volskaya Industries",
-      "number": 11,
-      "displayName": "Volskaya Industries"
-    },
-    {
-      "filename": "12The Anubis Omnic Crisis",
-      "number": 12,
-      "displayName": "The Anubis Omnic Crisis"
-    },
-    {
-      "filename": "13Lumérico Incorporated",
-      "number": 13,
-      "displayName": "Lumérico Incorporated"
-    },
-    {
-      "filename": "14Deadlock Rebels",
-      "number": 14,
-      "displayName": "Deadlock Rebels"
-    },
-    {
       "filename": "15Caribbean Coalition",
-      "number": 15,
       "displayName": "Caribbean Coalition"
     },
     {
-      "filename": "16Junker Monarchy",
-      "number": 16,
-      "displayName": "Junker Monarchy"
-    },
-    {
       "filename": "17Colloseo Gladiatori",
-      "number": 17,
       "displayName": "Colloseo Gladiatori"
     },
     {
-      "filename": "18Livre Tournois",
-      "number": 18,
-      "displayName": "Livre Tournois"
+      "filename": "09Crusader Initiative",
+      "displayName": "Crusader Initiative"
     },
     {
-      "filename": "19Wayfinder Society",
-      "number": 19,
-      "displayName": "Wayfinder Society"
-    },
-    {
-      "filename": "20Los Muertos",
-      "number": 20,
-      "displayName": "Los Muertos"
-    },
-    {
-      "filename": "21Shimada Clan",
-      "number": 21,
-      "displayName": "Shimada Clan"
-    },
-    {
-      "filename": "22Hashimoto Clan",
-      "number": 22,
-      "displayName": "Hashimoto Clan"
-    },
-    {
-      "filename": "23The Chernobog Conspiracy",
-      "number": 23,
-      "displayName": "The Chernobog Conspiracy"
-    },
-    {
-      "filename": "24Oasis Ministries",
-      "number": 24,
-      "displayName": "Oasis Ministries"
-    },
-    {
-      "filename": "25Shambali Order",
-      "number": 25,
-      "displayName": "Shambali Order"
-    },
-    {
-      "filename": "26Null Sector",
-      "number": 26,
-      "displayName": "Null Sector"
-    },
-    {
-      "filename": "27The Martins Collective",
-      "number": 27,
-      "displayName": "The Martins Collective"
+      "filename": "14Deadlock Rebels",
+      "displayName": "Deadlock Rebels"
     },
     {
       "filename": "28Deep Sea Raiders",
-      "number": 28,
       "displayName": "Deep Sea Raiders"
     },
     {
-      "filename": "29The Phreaks",
-      "number": 29,
-      "displayName": "The Phreaks"
+      "filename": "02Ecopoints",
+      "displayName": "Ecopoints"
     },
     {
-      "filename": "30M.E.K.A Squad",
-      "number": 30,
-      "displayName": "M.E.K.A Squad"
-    },
-    {
-      "filename": "31Helix Securities",
-      "number": 31,
-      "displayName": "Helix Securities"
-    },
-    {
-      "filename": "32Yokai Gang",
-      "number": 32,
-      "displayName": "Yokai Gang"
-    },
-    {
-      "filename": "33Talon Empire",
-      "number": 33,
-      "displayName": "Talon Empire"
-    },
-    {
-      "filename": "34Search & Rescue",
-      "number": 34,
-      "displayName": "Search & Rescue"
-    },
-    {
-      "filename": "35IJC",
-      "number": 35,
-      "displayName": "IJC"
-    },
-    {
-      "filename": "36The Gwishin",
-      "number": 36,
-      "displayName": "The Gwishin"
-    },
-    {
-      "filename": "36The Sombra Collective",
-      "number": 36,
-      "displayName": "The Sombra Collective"
-    },
-    {
-      "filename": "37 Yamagami Blades",
-      "number": 37,
-      "displayName": "Yamagami Blades"
-    },
-    {
-      "filename": "38Pacific Energy Solutions",
-      "number": 38,
-      "displayName": "Pacific Energy Solutions"
+      "filename": "22Hashimoto Clan",
+      "displayName": "Hashimoto Clan"
     },
     {
       "filename": "39Heliotech Industries",
-      "number": 39,
       "displayName": "Heliotech Industries"
+    },
+    {
+      "filename": "31Helix Securities",
+      "displayName": "Helix Securities"
+    },
+    {
+      "filename": "35IJC",
+      "displayName": "IJC"
+    },
+    {
+      "filename": "06Inti Warriors",
+      "displayName": "Inti Warriors"
+    },
+    {
+      "filename": "08Ironclad Guild",
+      "displayName": "Ironclad Guild"
+    },
+    {
+      "filename": "16Junker Monarchy",
+      "displayName": "Junker Monarchy"
+    },
+    {
+      "filename": "18Livre Tournois",
+      "displayName": "Livre Tournois"
+    },
+    {
+      "filename": "20Los Muertos",
+      "displayName": "Los Muertos"
+    },
+    {
+      "filename": "07Lucheng Interstellar",
+      "displayName": "Lucheng Interstellar"
+    },
+    {
+      "filename": "13Lumérico Incorporated",
+      "displayName": "Lumérico Incorporated"
+    },
+    {
+      "filename": "30M.E.K.A Squad",
+      "displayName": "M.E.K.A Squad"
+    },
+    {
+      "filename": "26Null Sector",
+      "displayName": "Null Sector"
+    },
+    {
+      "filename": "24Oasis Ministries",
+      "displayName": "Oasis Ministries"
+    },
+    {
+      "filename": "04Omnica Corporation",
+      "displayName": "Omnica Corporation"
+    },
+    {
+      "filename": "00Overwatch",
+      "displayName": "Overwatch"
+    },
+    {
+      "filename": "38Pacific Energy Solutions",
+      "displayName": "Pacific Energy Solutions"
+    },
+    {
+      "filename": "34Search & Rescue",
+      "displayName": "Search & Rescue"
+    },
+    {
+      "filename": "25Shambali Order",
+      "displayName": "Shambali Order"
+    },
+    {
+      "filename": "21Shimada Clan",
+      "displayName": "Shimada Clan"
+    },
+    {
+      "filename": "03Talon",
+      "displayName": "Talon"
+    },
+    {
+      "filename": "33Talon Empire",
+      "displayName": "Talon Empire"
+    },
+    {
+      "filename": "12The Anubis Omnic Crisis",
+      "displayName": "The Anubis Omnic Crisis"
+    },
+    {
+      "filename": "23The Chernobog Conspiracy",
+      "displayName": "The Chernobog Conspiracy"
+    },
+    {
+      "filename": "36The Gwishin",
+      "displayName": "The Gwishin"
+    },
+    {
+      "filename": "27The Martins Collective",
+      "displayName": "The Martins Collective"
+    },
+    {
+      "filename": "29The Phreaks",
+      "displayName": "The Phreaks"
+    },
+    {
+      "filename": "36The Sombra Collective",
+      "displayName": "The Sombra Collective"
+    },
+    {
+      "filename": "05Vishkar Corporation",
+      "displayName": "Vishkar Corporation"
+    },
+    {
+      "filename": "11Volskaya Industries",
+      "displayName": "Volskaya Industries"
+    },
+    {
+      "filename": "19Wayfinder Society",
+      "displayName": "Wayfinder Society"
+    },
+    {
+      "filename": "10Wuxing University",
+      "displayName": "Wuxing University"
+    },
+    {
+      "filename": "37 Yamagami Blades",
+      "displayName": "Yamagami Blades"
+    },
+    {
+      "filename": "32Yokai Gang",
+      "displayName": "Yokai Gang"
     }
   ],
   "npcs": [

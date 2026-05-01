@@ -283,11 +283,14 @@
                     continue;
                 }
                 var dir = directionalTextsFromRow(c);
+                var lane =
+                    String(c.thisEntryLane || 'A').toUpperCase() === 'B' ? 'B' : 'A';
                 var mirror = {
                     kind: subjectKind,
                     name: subjectName,
                     reasoningSubjectToLinked: dir.toSubject,
-                    reasoningLinkedToSubject: dir.toLinked
+                    reasoningLinkedToSubject: dir.toLinked,
+                    thisEntryLane: lane
                 };
                 dbg('repair: ADD mirror', {
                     ontoLinked: linked.name,
@@ -454,11 +457,14 @@
                 return;
             }
             var dir = directionalTextsFromRow(c);
+            var laneSync =
+                String(c.thisEntryLane || 'A').toUpperCase() === 'B' ? 'B' : 'A';
             var mirror = {
                 kind: subjectKind,
                 name: subjectName,
                 reasoningSubjectToLinked: dir.toSubject,
-                reasoningLinkedToSubject: dir.toLinked
+                reasoningLinkedToSubject: dir.toLinked,
+                thisEntryLane: laneSync
             };
             var linked = events[linkedIx];
             dbg('sync(upsert): writing mirror', {

@@ -5002,7 +5002,7 @@
       "description": "No description available.",
       "image": "",
       "filters": [
-        "Mitzuki"
+        "Mizuki"
       ],
       "factions": [],
       "sources": [
@@ -5998,7 +5998,7 @@
       "description": "",
       "image": "",
       "filters": [
-        "Mitzuki"
+        "Mizuki"
       ],
       "factions": [
         "Hashimoto"
@@ -10366,7 +10366,7 @@
       "description": "",
       "image": "",
       "filters": [
-        "Mitzuki"
+        "Mizuki"
       ],
       "factions": [
         "23Hashimoto",
@@ -11121,7 +11121,12 @@
         "Talon Empire"
       ],
       "image": "",
-      "npcs": [],
+      "npcs": [
+        "Bars",
+        "B.O.B",
+        "Bez",
+        "Frankie"
+      ],
       "headlines": [],
       "sources": [
         {
@@ -11138,6 +11143,27 @@
       ],
       "secondaryCountryFlags": [
         "United States.png"
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sierra, Sojourn, Freja, Emre",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities, Overwatch, Talon Empire",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Bars, B.O.B, Bez, Frankie,",
+          "reasoning": ""
+        }
       ]
     },
     {

@@ -77,7 +77,7 @@
                             <span class="event-slide-hero-locations-edit__label">Connections</span>
                             <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddBioConnectionBtn">+ Add</button>
                         </div>
-                        <p class="event-slide-hero-locations-edit__hint">Each row: linked Hero, Faction, or NPC (same autocomplete as story relevancy), then relationship <strong>from this entry toward them</strong> and <strong>from them toward this entry</strong> (shown as two arrows on the slide). Legacy rows with a single “reasoning” field still load and display both ways. Saving adds or updates the mirrored row on the linked entry when it exists in <strong>this same archive</strong> (e.g. hero↔hero in Heroes); cross-archive links are not duplicated.</p>
+                        <p class="event-slide-hero-locations-edit__hint">Each row matches the slide: <strong>This entry</strong> (you) on one side, <strong>Them</strong> (linked hero / faction / NPC, autocomplete) on the other, relationship lines in the middle. Choose <strong>A (left)</strong> or <strong>B (right)</strong> for this entry; the linked side uses the other letter. Legacy rows without a letter default to A. Saving mirrors onto the linked row in <strong>this same archive</strong> when that row exists; cross-archive links are not duplicated.</p>
                         <div id="eventSlideEditBioConnections" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
                     </div>
                 </div>
@@ -226,16 +226,16 @@
     <script src="src/services/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/app/component-loader.js?v=77"></script>
+    <script type="module" src="src/app/component-loader.js?v=78"></script>
     
     <!-- Load services -->
     <script src="src/services/SoundEffectsManager.js?v=8"></script>
     <script src="src/services/GlitchTextService.js?v=10"></script>
     <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/services/EventDataService.js?v=23"></script>
+    <script src="src/services/EventDataService.js?v=24"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=17"></script>
+    <script src="src/utils/LocationFlagHelpers.js?v=20"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
     <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
     <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
@@ -249,8 +249,8 @@
     <script src="src/services/FormAutocompleteService.js?v=10"></script>
     <script src="src/services/EventFormService.js?v=10"></script>
     <script src="src/utils/HeroRelevantLocationsEditor.js?v=3"></script>
-    <script src="src/utils/BioArchiveConnectionsEditor.js?v=4"></script>
-    <script src="src/utils/BioArchiveConnectionsSync.js?v=4"></script>
+    <script src="src/utils/BioArchiveConnectionsEditor.js?v=5"></script>
+    <script src="src/utils/BioArchiveConnectionsSync.js?v=5"></script>
     <script src="src/services/EventDragDropService.js?v=8"></script>
     <script src="src/services/EventListenerService.js?v=13"></script>
     <script src="src/services/EventInteractionService.js?v=12"></script>

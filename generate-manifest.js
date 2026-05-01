@@ -28,29 +28,31 @@ function getHeroesFromFolder(folderPath) {
     }
 }
 
+/** PNG basename keeps optional numeric prefix for file naming; labels use the rest (e.g. 01Blackwatch → Blackwatch). */
+function factionDisplayNameFromBasename(base) {
+    const m = String(base).match(/^(\d+)(.*)$/);
+    if (m && m[2] != null) {
+        const rest = m[2].trim();
+        if (rest) return rest;
+    }
+    return base;
+}
+
 function getFactionsFromFolder(folderPath) {
     try {
         const files = fs.readdirSync(folderPath);
-        const factions = files
+        return files
             .filter((file) => file.toLowerCase().endsWith('.png'))
             .map((file) => {
-                const base = file.replace(/\.png$/i, '');
-                const match = base.match(/^(\d+)(.+)$/);
-                if (match) {
-                    return {
-                        filename: base,
-                        number: parseInt(match[1], 10),
-                        displayName: match[2].trim()
-                    };
-                }
+                const filename = file.replace(/\.png$/i, '');
                 return {
-                    filename: base,
-                    number: 999,
-                    displayName: base
+                    filename,
+                    displayName: factionDisplayNameFromBasename(filename)
                 };
             })
-            .sort((a, b) => a.number - b.number);
-        return factions;
+            .sort((a, b) =>
+                a.displayName.localeCompare(b.displayName, undefined, { sensitivity: 'base', numeric: true })
+            );
     } catch (error) {
         console.error(`Error reading folder ${folderPath}:`, error);
         return [];
@@ -86,7 +88,6 @@ const manifest = {
     heroes,
     factions: factions.map((f) => ({
         filename: f.filename,
-        number: f.number,
         displayName: f.displayName
     })),
     npcs,

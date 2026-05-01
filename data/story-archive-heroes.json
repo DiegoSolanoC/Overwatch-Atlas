@@ -40,7 +40,8 @@
           "kind": "hero",
           "name": "Pharah",
           "reasoningSubjectToLinked": "Daugther",
-          "reasoningLinkedToSubject": "Mother"
+          "reasoningLinkedToSubject": "Mother",
+          "thisEntryLane": "A"
         }
       ]
     },
@@ -107,13 +108,15 @@
           "kind": "hero",
           "name": "Torbjörn",
           "reasoningSubjectToLinked": "Father",
-          "reasoningLinkedToSubject": "Daughter"
+          "reasoningLinkedToSubject": "Daughter",
+          "thisEntryLane": "A"
         },
         {
           "kind": "hero",
           "name": "Reinhardt",
           "reasoningSubjectToLinked": "Mentor",
-          "reasoningLinkedToSubject": "Squire"
+          "reasoningLinkedToSubject": "Squire",
+          "thisEntryLane": "A"
         }
       ]
     },
@@ -310,8 +313,8 @@
       "connections": []
     },
     {
-      "name": "Life Weaver",
-      "description": "",
+      "name": "Lifeweaver",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Chiang Mai City",
@@ -420,7 +423,8 @@
           "kind": "hero",
           "name": "Ana",
           "reasoningSubjectToLinked": "Mother",
-          "reasoningLinkedToSubject": "Daugther"
+          "reasoningLinkedToSubject": "Daugther",
+          "thisEntryLane": "A"
         }
       ]
     },
@@ -463,7 +467,8 @@
           "kind": "hero",
           "name": "Brigitte",
           "reasoningSubjectToLinked": "Squire",
-          "reasoningLinkedToSubject": "Mentor"
+          "reasoningLinkedToSubject": "Mentor",
+          "thisEntryLane": "A"
         }
       ]
     },
@@ -566,7 +571,8 @@
           "kind": "hero",
           "name": "Brigitte",
           "reasoningSubjectToLinked": "Daughter",
-          "reasoningLinkedToSubject": "Father"
+          "reasoningLinkedToSubject": "Father",
+          "thisEntryLane": "A"
         }
       ]
     },

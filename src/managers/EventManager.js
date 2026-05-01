@@ -375,6 +375,54 @@ class EventManager {
         return -1;
     }
 
+    /** @param {string} s */
+    _normalizeNpcArchiveNameMatch(s) {
+        return String(s || '')
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ');
+    }
+
+    /**
+     * Index in current `this.events` (Factions archive) whose `name` matches a filter / slide token.
+     * @param {string} nameFromFilter
+     * @returns {number}
+     */
+    findFactionArchiveEventIndex(nameFromFilter) {
+        const events = this.events;
+        const raw = String(nameFromFilter || '').trim();
+        if (!Array.isArray(events) || !events.length || !raw) return -1;
+        const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+        for (let i = 0; i < events.length; i += 1) {
+            const rowName = events[i] && events[i].name != null ? String(events[i].name).trim() : '';
+            if (!rowName) continue;
+            if (fh && typeof fh.factionIdsMatch === 'function') {
+                if (fh.factionIdsMatch(rowName, raw)) return i;
+            } else if (rowName.toLowerCase() === raw.toLowerCase()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Index in current `this.events` (NPCs archive) whose `name` matches a filter / slide token.
+     * @param {string} nameFromFilter
+     * @returns {number}
+     */
+    findNpcArchiveEventIndex(nameFromFilter) {
+        const events = this.events;
+        const raw = String(nameFromFilter || '').trim();
+        if (!Array.isArray(events) || !events.length || !raw) return -1;
+        const nb = this._normalizeNpcArchiveNameMatch(raw);
+        for (let i = 0; i < events.length; i += 1) {
+            const rowName = events[i] && events[i].name != null ? String(events[i].name) : '';
+            const na = this._normalizeNpcArchiveNameMatch(rowName);
+            if (na && na === nb) return i;
+        }
+        return -1;
+    }
+
     /**
      * Switch to Heroes archive if needed and open that hero's slide (same row as Heroes archive list).
      * @param {string} heroName
@@ -417,8 +465,93 @@ class EventManager {
             console.warn('EventManager.openHeroArchiveEventByName failed', err);
         }
     }
-    
-    
+
+    /**
+     * Switch to Factions archive if needed and open that faction's slide.
+     * @param {string} factionToken — display name, manifest filename, or legacy prefixed id
+     * @returns {Promise<void>}
+     */
+    async openFactionArchiveEventByName(factionToken) {
+        const raw = String(factionToken || '').trim();
+        if (!raw) return;
+        const slide = typeof window !== 'undefined' ? window.standaloneEventSlide : null;
+        if (!slide || typeof slide.showEvent !== 'function') {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus('Event slide is not available.', 'warning');
+            }
+            return;
+        }
+        try {
+            if (slide.pushSlideHistoryIfOpen) {
+                slide.pushSlideHistoryIfOpen();
+            }
+            const src =
+                typeof this.dataService?.getArchiveSource === 'function'
+                    ? this.dataService.getArchiveSource()
+                    : 'story';
+            if (src !== 'factions') {
+                await this.switchStoryArchiveSource('factions');
+            }
+            const idx = this.findFactionArchiveEventIndex(raw);
+            if (idx < 0) {
+                if (typeof window.updateStatus === 'function') {
+                    window.updateStatus(`No Factions archive entry matches “${raw}”`, 'warning');
+                }
+                return;
+            }
+            const list = this.events || [];
+            slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+            if (window.SoundEffectsManager?.play) {
+                window.SoundEffectsManager.play('eventClick');
+            }
+        } catch (err) {
+            console.warn('EventManager.openFactionArchiveEventByName failed', err);
+        }
+    }
+
+    /**
+     * Switch to NPCs archive if needed and open that NPC's slide.
+     * @param {string} npcName
+     * @returns {Promise<void>}
+     */
+    async openNpcArchiveEventByName(npcName) {
+        const raw = String(npcName || '').trim();
+        if (!raw) return;
+        const slide = typeof window !== 'undefined' ? window.standaloneEventSlide : null;
+        if (!slide || typeof slide.showEvent !== 'function') {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus('Event slide is not available.', 'warning');
+            }
+            return;
+        }
+        try {
+            if (slide.pushSlideHistoryIfOpen) {
+                slide.pushSlideHistoryIfOpen();
+            }
+            const src =
+                typeof this.dataService?.getArchiveSource === 'function'
+                    ? this.dataService.getArchiveSource()
+                    : 'story';
+            if (src !== 'npcs') {
+                await this.switchStoryArchiveSource('npcs');
+            }
+            const idx = this.findNpcArchiveEventIndex(raw);
+            if (idx < 0) {
+                if (typeof window.updateStatus === 'function') {
+                    window.updateStatus(`No NPCs archive entry matches “${raw}”`, 'warning');
+                }
+                return;
+            }
+            const list = this.events || [];
+            slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+            if (window.SoundEffectsManager?.play) {
+                window.SoundEffectsManager.play('eventClick');
+            }
+        } catch (err) {
+            console.warn('EventManager.openNpcArchiveEventByName failed', err);
+        }
+    }
+
     syncEventsToGlobe() {
         if (this.globeSyncService) {
             this.globeSyncService.syncEventsToGlobe();

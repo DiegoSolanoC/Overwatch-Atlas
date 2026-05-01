@@ -823,7 +823,12 @@ export class EventSlideManager {
             const archConn = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
             if (isBioArchiveSource(archConn)) {
                 const conns = Array.isArray(target.connections) ? target.connections : [];
-                window.BioArchiveConnectionsEditor.render(bioConnPopulate, conns);
+                const bioOpts =
+                    window.BioArchiveConnectionsEditor?.subjectOptsFromArchiveRow?.(target, archConn) || {
+                        subjectName: '',
+                        subjectKind: 'hero'
+                    };
+                window.BioArchiveConnectionsEditor.render(bioConnPopulate, conns, bioOpts);
             } else {
                 bioConnPopulate.innerHTML = '';
             }

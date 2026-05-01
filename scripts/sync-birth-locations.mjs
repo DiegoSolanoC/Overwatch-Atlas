@@ -11,11 +11,6 @@ const root = path.join(__dirname, "..");
 const eventsPath = path.join(root, "data", "events.json");
 const heroesPath = path.join(root, "data", "story-archive-heroes.json");
 
-const FILTER_TO_HERO = {
-  Mitzuki: "Mizuki",
-  Lifeweaver: "Life Weaver",
-};
-
 const COUNTRY_FIX = {
   "Antartica?": "Antarctica",
 };
@@ -76,8 +71,7 @@ for (const ev of events) {
   const filters = ev.filters;
   if (!Array.isArray(filters) || !filters.length) continue;
 
-  let heroKey = filters[0];
-  heroKey = FILTER_TO_HERO[heroKey] || heroKey;
+  const heroKey = filters[0];
 
   const { locationName, country } = placeFromEvent(ev);
   if (!country && !locationName) continue;

@@ -429,11 +429,19 @@ class FilterService {
                 const manifest = await response.json();
                 this.heroes = manifest.heroes ? manifest.heroes.sort() : [];
                 this.npcs = manifest.npcs ? [...manifest.npcs].sort() : [];
-                this.factions = manifest.factions ? manifest.factions.map(f => ({
-                    filename: f.filename,
-                    number: f.number,
-                    displayName: f.displayName
-                })).sort((a, b) => a.number - b.number) : [];
+                this.factions = manifest.factions
+                    ? [...manifest.factions]
+                        .map((f) => ({
+                            filename: f.filename,
+                            displayName: f.displayName
+                        }))
+                        .sort((a, b) =>
+                            String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+                                sensitivity: 'base',
+                                numeric: true
+                            })
+                        )
+                    : [];
                 this._initCountryFilterItems();
                 this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
                 this.updateFilterCounts();

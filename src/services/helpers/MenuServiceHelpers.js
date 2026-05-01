@@ -1446,7 +1446,12 @@ export function createMenuButtonsContainer(statusService) {
                                         const conns = Array.isArray(this.editTarget?.eventData?.connections)
                                             ? this.editTarget.eventData.connections
                                             : [];
-                                        window.BioArchiveConnectionsEditor.render(connContainer, conns);
+                                        const bioOpts =
+                                            window.BioArchiveConnectionsEditor?.subjectOptsFromArchiveRow?.(
+                                                this.editTarget?.eventData,
+                                                archiveSourceEdit
+                                            ) || { subjectName: '', subjectKind: 'hero' };
+                                        window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
                                         const addConn = document.getElementById('eventSlideAddBioConnectionBtn');
                                         if (addConn) {
                                             addConn.onclick = () =>

@@ -532,12 +532,17 @@
         if (k === 'npc') {
             var nk = resolveNpcImageKey(t);
             var srcN = 'assets/images/npcs/' + encodeURIComponent(nk || t) + '.png';
+            var dataNpc = encodeURIComponent(nk || t);
             return (
-                '<img class="event-slide-bio-connections__portrait" src="' +
+                '<img class="event-slide-filter-token-img event-slide-filter-token-img--npcs event-slide-filter-token-img--clickable-npc event-slide-bio-connections__portrait" ' +
+                'data-npc-open="' +
+                dataNpc +
+                '" role="button" tabindex="0" ' +
+                'src="' +
                 srcN +
-                '" alt="" title="' +
+                '" alt="" title="Open ' +
                 escapeHtmlAttr(nk || t) +
-                '" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
+                ' in NPCs archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
                 fb +
                 '\';" />'
             );
@@ -551,12 +556,17 @@
             );
         }
         var srcF = 'assets/images/factions/' + encodeURIComponent(ff) + '.png';
+        var dataFac = encodeURIComponent(t);
         return (
-            '<img class="event-slide-bio-connections__portrait" src="' +
+            '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction event-slide-bio-connections__portrait" ' +
+            'data-faction-open="' +
+            dataFac +
+            '" role="button" tabindex="0" ' +
+            'src="' +
             srcF +
-            '" alt="" title="' +
+            '" alt="" title="Open ' +
             escapeHtmlAttr(t) +
-            '" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
+            ' in Factions archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
             fb +
             '\';" />'
         );
@@ -605,28 +615,51 @@
                 ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tIn) + '</span>'
                 : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
 
-            var leftHtml =
+            var laneB = String(r.thisEntryLane || 'A').toUpperCase() === 'B';
+            var colThis =
                 '<div class="event-slide-bio-connections__portrait-col">' +
                 bioArchiveConnectionPortraitHtml(subjectKind, subjectName) +
                 '</div>';
-            var rightHtml =
+            var colThem =
                 '<div class="event-slide-bio-connections__portrait-col">' +
                 bioArchiveConnectionPortraitHtml(linkedKind, linkedName) +
                 '</div>';
-            var mid =
-                '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
-                '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
-                outDisp +
-                '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
-                '</div>' +
-                '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
-                '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
-                inDisp +
-                '</div>' +
-                '</div>';
+            var leftHtml = laneB ? colThem : colThis;
+            var rightHtml = laneB ? colThis : colThem;
+
+            var mid;
+            if (laneB) {
+                mid =
+                    '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
+                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
+                    inDisp +
+                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
+                    '</div>' +
+                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
+                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
+                    outDisp +
+                    '</div>' +
+                    '</div>';
+            } else {
+                mid =
+                    '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
+                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
+                    outDisp +
+                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
+                    '</div>' +
+                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
+                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
+                    inDisp +
+                    '</div>' +
+                    '</div>';
+            }
+
+            var rowCls =
+                'event-slide-bio-connections__row event-slide-bio-connections__row--dual' +
+                (laneB ? ' event-slide-bio-connections__row--lane-b' : '');
 
             parts.push(
-                '<div class="event-slide-bio-connections__row event-slide-bio-connections__row--dual">' +
+                '<div class="' + rowCls + '">' +
                     leftHtml +
                     mid +
                     rightHtml +
@@ -654,7 +687,7 @@
         el.innerHTML = inner;
         sec.style.display = inner ? 'block' : 'none';
         if (inner) {
-            wireStoryFilterSectionHeroArchiveNav(sec);
+            wireStoryFilterSectionBioArchiveNav(sec);
         }
     }
 
@@ -801,42 +834,69 @@
         if (kind === 'npcs') {
             var nk = resolveNpcImageKey(t);
             src = 'assets/images/npcs/' + encodeURIComponent(nk || t) + '.png';
-        } else if (kind === 'factions') {
+            var dataNpcTok = encodeURIComponent(nk || t);
+            return (
+                '<img class="event-slide-filter-token-img event-slide-filter-token-img--npcs event-slide-filter-token-img--clickable-npc" ' +
+                'data-npc-open="' +
+                dataNpcTok +
+                '" role="button" tabindex="0" ' +
+                'src="' +
+                src +
+                '" alt="" title="Open ' +
+                escapeHtmlAttr(nk || t) +
+                ' in NPCs archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
+                fb +
+                '\';" />'
+            );
+        }
+        if (kind === 'factions') {
             var ff = resolveFactionImageFilename(t);
             if (!ff) return '';
             src = 'assets/images/factions/' + encodeURIComponent(ff) + '.png';
-        } else {
-            return '';
+            var dataFacTok = encodeURIComponent(t);
+            return (
+                '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction" ' +
+                'data-faction-open="' +
+                dataFacTok +
+                '" role="button" tabindex="0" ' +
+                'src="' +
+                src +
+                '" alt="" title="Open ' +
+                escapeHtmlAttr(t) +
+                ' in Factions archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
+                fb +
+                '\';" />'
+            );
         }
-        return (
-            '<img class="event-slide-filter-token-img event-slide-filter-token-img--' +
-            kind +
-            '" src="' +
-            src +
-            '" alt="" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
-            fb +
-            '\';" />'
-        );
+        return '';
     }
 
-    /** One-time: hero portraits in story relevancy open that hero’s Heroes archive slide. */
-    function wireStoryFilterSectionHeroArchiveNav(sec) {
-        if (!sec || sec.dataset.heroArchiveNavWired === '1') return;
-        sec.dataset.heroArchiveNavWired = '1';
+    /** One-time: hero / faction / NPC portraits open the matching bio archive slide (same as hero-only before). */
+    function wireStoryFilterSectionBioArchiveNav(sec) {
+        if (!sec || sec.dataset.bioArchiveNavWired === '1') return;
+        sec.dataset.bioArchiveNavWired = '1';
 
         function activateFromImg(img) {
             if (!img) return;
-            var enc = img.getAttribute('data-hero-open');
-            if (!enc) return;
-            var name = decodeURIComponent(enc);
             var em = window.eventManager;
-            if (em && typeof em.openHeroArchiveEventByName === 'function') {
-                void em.openHeroArchiveEventByName(name);
+            if (img.hasAttribute('data-hero-open') && em && typeof em.openHeroArchiveEventByName === 'function') {
+                void em.openHeroArchiveEventByName(decodeURIComponent(img.getAttribute('data-hero-open') || ''));
+                return;
+            }
+            if (img.hasAttribute('data-faction-open') && em && typeof em.openFactionArchiveEventByName === 'function') {
+                void em.openFactionArchiveEventByName(decodeURIComponent(img.getAttribute('data-faction-open') || ''));
+                return;
+            }
+            if (img.hasAttribute('data-npc-open') && em && typeof em.openNpcArchiveEventByName === 'function') {
+                void em.openNpcArchiveEventByName(decodeURIComponent(img.getAttribute('data-npc-open') || ''));
             }
         }
 
         sec.addEventListener('click', function (e) {
-            var img = e.target.closest('img.event-slide-filter-token-img--clickable-hero[data-hero-open]');
+            var img =
+                e.target.closest('img.event-slide-filter-token-img--clickable-hero[data-hero-open]')
+                || e.target.closest('img.event-slide-filter-token-img--clickable-faction[data-faction-open]')
+                || e.target.closest('img.event-slide-filter-token-img--clickable-npc[data-npc-open]');
             if (!img || !sec.contains(img)) return;
             e.preventDefault();
             activateFromImg(img);
@@ -846,9 +906,14 @@
             if (e.key !== 'Enter' && e.key !== ' ') return;
             var t = e.target;
             if (!t || String(t.tagName || '').toLowerCase() !== 'img') return;
-            if (!t.classList.contains('event-slide-filter-token-img--clickable-hero')) return;
-            if (!t.getAttribute('data-hero-open')) return;
             if (!sec.contains(t)) return;
+            var okHero =
+                t.classList.contains('event-slide-filter-token-img--clickable-hero') && t.getAttribute('data-hero-open');
+            var okFac =
+                t.classList.contains('event-slide-filter-token-img--clickable-faction') && t.getAttribute('data-faction-open');
+            var okNpc =
+                t.classList.contains('event-slide-filter-token-img--clickable-npc') && t.getAttribute('data-npc-open');
+            if (!okHero && !okFac && !okNpc) return;
             e.preventDefault();
             activateFromImg(t);
         });
@@ -1006,7 +1071,7 @@
         }
         sec.innerHTML = parts.join('');
         sec.style.display = parts.length ? 'block' : 'none';
-        wireStoryFilterSectionHeroArchiveNav(sec);
+        wireStoryFilterSectionBioArchiveNav(sec);
     }
 
     /**

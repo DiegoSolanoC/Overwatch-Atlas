@@ -250,7 +250,7 @@ class EventDataService {
      * Bio archives: `connections` — linked hero/faction/npc + relationship text each direction.
      * Legacy single `reasoning` is shown both ways when the directional fields are absent.
      * @param {unknown} raw
-     * @returns {Array<{ kind: 'hero'|'faction'|'npc', name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string }>}
+     * @returns {Array<{ kind: 'hero'|'faction'|'npc', name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string, thisEntryLane: 'A'|'B' }>}
      */
     _normalizeBioArchiveConnections(raw) {
         if (!Array.isArray(raw)) return [];
@@ -269,11 +269,14 @@ class EventDataService {
                     reasoningSubjectToLinked = legacy;
                     reasoningLinkedToSubject = legacy;
                 }
+                const laneRaw = String(item?.thisEntryLane ?? '').trim().toUpperCase();
+                const thisEntryLane = laneRaw === 'B' ? 'B' : 'A';
                 return {
                     kind,
                     name,
                     reasoningSubjectToLinked,
-                    reasoningLinkedToSubject
+                    reasoningLinkedToSubject,
+                    thisEntryLane
                 };
             })
             .filter(
@@ -509,7 +512,7 @@ class EventDataService {
         if (manifestResult.status === 'fulfilled') {
             const manifest = manifestResult.value;
             this.heroes = manifest.heroes || [];
-            // Store full faction objects (with filename, displayName, number)
+            // Store full faction objects (filename + displayName from manifest)
             this.factions = manifest.factions || [];
             this.npcs = manifest.npcs || [];
             this.updateStatus(`EventDataService: Processed ${this.heroes.length} heroes, ${this.factions.length} factions, ${this.npcs.length} NPCs`, 'success');

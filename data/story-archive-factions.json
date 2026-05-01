@@ -1,3 +1,250 @@
 {
-  "events": []
+  "events": [
+    {
+      "name": "Blackwatch",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Caribbean Coalition",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Colloseo Gladiatori",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Crusader Initiative",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Deadlock Rebels",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Deep Sea Raiders",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Ecopoints",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Hashimoto Clan",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Heliotech Industries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Helix Securities",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "IJC",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Inti Warriors",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Ironclad Guild",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Junker Monarchy",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Livre Tournois",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Los Muertos",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Lucheng Interstellar",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Lumérico Incorporated",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "M.E.K.A Squad",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Null Sector",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Oasis Ministries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Omnica Corporation",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Overwatch",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Pacific Energy Solutions",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Search & Rescue",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Shambali Order",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Shimada Clan",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Talon",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Talon Empire",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Anubis Omnic Crisis",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Chernobog Conspiracy",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Gwishin",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Martins Collective",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Phreaks",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "The Sombra Collective",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Vishkar Corporation",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Volskaya Industries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Wayfinder Society",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Wuxing University",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Yamagami Blades",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    },
+    {
+      "name": "Yokai Gang",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
+    }
+  ]
 }
