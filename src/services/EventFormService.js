@@ -178,9 +178,6 @@ class EventFormService {
         this.eventManager.variantData = [{
             name: '',
             description: '',
-            filters: [],
-            factions: [],
-            npcs: [],
             sources: [],
             headlines: [],
             locationType: 'earth'
@@ -201,11 +198,14 @@ class EventFormService {
         variant.name = document.getElementById('eventEditName').value.trim();
         variant.description = document.getElementById('eventEditDescription').value.trim();
         const filtersStr = document.getElementById('eventEditFilters').value.trim();
-        variant.filters = filtersStr ? filtersStr.split(',').map(f => f.trim()).filter(f => f) : [];
+        const heroTokens = filtersStr ? filtersStr.split(',').map((f) => f.trim()).filter(Boolean) : [];
+        const heroRows = heroTokens.length
+            ? [{ locationName: '', country: heroTokens.join(', '), reasoning: '' }]
+            : [];
         const factionsStr = document.getElementById('eventEditFactions').value.trim();
-        const factionDisplayNames = factionsStr ? factionsStr.split(',').map(f => f.trim()).filter(f => f) : [];
+        const factionDisplayNames = factionsStr ? factionsStr.split(',').map((f) => f.trim()).filter((f) => f) : [];
         const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
-        variant.factions = factionDisplayNames.map((displayName) => {
+        const resolvedFactions = factionDisplayNames.map((displayName) => {
             const dn = displayName.trim();
             const found = this.eventManager.factions.find((f) =>
                 f.displayName.toLowerCase() === dn.toLowerCase()
@@ -216,14 +216,25 @@ class EventFormService {
             );
             return found ? found.displayName : dn;
         });
+        const factionRows = resolvedFactions.length
+            ? [{ locationName: '', country: resolvedFactions.join(', '), reasoning: '' }]
+            : [];
 
         const npcsField = document.getElementById('eventEditNpcs');
+        let npcRows = [];
         if (npcsField) {
             const npcsStr = npcsField.value.trim();
             const npcTokens = npcsStr ? npcsStr.split(',').map((s) => s.trim()).filter(Boolean) : [];
             const manifestNpcs = this.eventManager.npcs || [];
             const npcCanon = new Map(manifestNpcs.map((n) => [String(n).toLowerCase(), n]));
-            variant.npcs = npcTokens.map((t) => npcCanon.get(t.toLowerCase()) || t);
+            const resolvedNpcs = npcTokens.map((t) => npcCanon.get(t.toLowerCase()) || t);
+            npcRows = resolvedNpcs.length
+                ? [{ locationName: '', country: resolvedNpcs.join(', '), reasoning: '' }]
+                : [];
+        }
+        const applyFp = window.StoryFilterPlacesSync?.applyStoryFilterPlacesToTarget;
+        if (applyFp) {
+            applyFp(variant, heroRows, factionRows, npcRows);
         }
 
         const secondaryCountriesInput = document.getElementById('eventEditSecondaryCountries');
@@ -234,9 +245,18 @@ class EventFormService {
             const ltInput = document.getElementById('eventEditLocationType');
             const locForSecondary = (ltInput && ltInput.value) ? ltInput.value : (variant.locationType || 'earth');
             const secondaryList = parseSecondary(secondaryCountriesInput.value, locForSecondary);
-            variant.secondaryCountryFlags = secondaryList.length > 0 ? secondaryList : undefined;
+            if (secondaryList.length > 0) {
+                variant.secondaryCountryPlaces = [{
+                    locationName: '',
+                    country: this.secondaryFlagsToFormString(secondaryList),
+                    reasoning: ''
+                }];
+            } else {
+                delete variant.secondaryCountryPlaces;
+            }
+            delete variant.secondaryCountryFlags;
         } else if (secondaryCountriesInput) {
-            variant.secondaryCountryFlags = undefined;
+            delete variant.secondaryCountryFlags;
         }
         
         // Save location type and coordinates for this variant
@@ -353,17 +373,20 @@ class EventFormService {
         
         document.getElementById('eventEditName').value = variant.name || '';
         document.getElementById('eventEditDescription').value = variant.description || '';
-        document.getElementById('eventEditFilters').value = (variant.filters || []).join(', ');
+        const sync = window.StoryFilterPlacesSync;
+        document.getElementById('eventEditFilters').value = (sync?.getStoryEventHeroTokens?.(variant) || []).join(', ');
         const displayFactions = this.factionsArrayToFormDisplayString(
-            variant.factions || [],
+            sync?.getStoryEventFactionTokens?.(variant) || [],
             this.eventManager.factions || []
         );
         document.getElementById('eventEditFactions').value = displayFactions;
         const npcsLoad = document.getElementById('eventEditNpcs');
-        if (npcsLoad) npcsLoad.value = (variant.npcs || []).join(', ');
+        if (npcsLoad) npcsLoad.value = (sync?.getStoryEventNpcTokens?.(variant) || []).join(', ');
         const secondaryCountriesField = document.getElementById('eventEditSecondaryCountries');
         if (secondaryCountriesField) {
-            secondaryCountriesField.value = this.secondaryFlagsToFormString(variant.secondaryCountryFlags);
+            const lh = window.LocationFlagHelpers;
+            const secFiles = lh?.getSecondaryCountryFlagFilenamesForEntity?.(variant) || [];
+            secondaryCountriesField.value = secFiles.length ? this.secondaryFlagsToFormString(secFiles) : '';
         }
         
         // Load variant-specific location type and coordinates
@@ -475,9 +498,6 @@ class EventFormService {
             const newVariant = {
                 name: '',
                 description: '',
-                filters: [],
-                factions: [],
-                npcs: [],
                 sources: [],
                 headlines: [],
                 locationType: currentLocationType
@@ -559,9 +579,6 @@ class EventFormService {
             this.eventManager.variantData[0] = {
                 name: '',
                 description: '',
-                filters: [],
-                factions: [],
-                npcs: [],
                 sources: [],
                 headlines: []
             };
@@ -639,14 +656,17 @@ class EventFormService {
         }
         document.getElementById('eventEditCity').value = '';
         
+        const cloneFp = (rows) => (Array.isArray(rows)
+            ? rows.map((p) => ({
+                locationName: p?.locationName ?? '',
+                country: p?.country ?? '',
+                reasoning: p?.reasoning ?? ''
+            }))
+            : []);
         if (isMultiEvent) {
-            // Load all variants into variantData, including locationType, lat/lon, x/y, cityDisplayName, and headlines
-            this.eventManager.variantData = event.variants.map(variant => ({
+            this.eventManager.variantData = event.variants.map((variant) => ({
                 name: variant.name || '',
                 description: variant.description || '',
-                filters: variant.filters || [],
-                factions: variant.factions || [],
-                npcs: variant.npcs || [],
                 sources: variant.sources || [],
                 headlines: variant.headlines || [],
                 locationType: variant.locationType || mainLocationType,
@@ -655,19 +675,16 @@ class EventFormService {
                 x: variant.x !== undefined ? variant.x : undefined,
                 y: variant.y !== undefined ? variant.y : undefined,
                 cityDisplayName: variant.cityDisplayName || undefined,
-                secondaryCountryFlags: Array.isArray(variant.secondaryCountryFlags) && variant.secondaryCountryFlags.length > 0
-                    ? variant.secondaryCountryFlags.slice()
-                    : undefined
+                secondaryCountryPlaces: cloneFp(variant.secondaryCountryPlaces),
+                heroFilterPlaces: cloneFp(variant.heroFilterPlaces),
+                factionFilterPlaces: cloneFp(variant.factionFilterPlaces),
+                npcFilterPlaces: cloneFp(variant.npcFilterPlaces)
             }));
             this.eventManager.activeVariantIndex = 0;
         } else {
-            // Single event - convert to variantData with one variant
             this.eventManager.variantData = [{
                 name: event.name || '',
                 description: event.description || '',
-                filters: event.filters || [],
-                factions: event.factions || [],
-                npcs: event.npcs || [],
                 sources: event.sources || [],
                 headlines: event.headlines || [],
                 locationType: event.locationType || 'earth',
@@ -676,9 +693,10 @@ class EventFormService {
                 x: event.x !== undefined ? event.x : undefined,
                 y: event.y !== undefined ? event.y : undefined,
                 cityDisplayName: event.cityDisplayName || undefined,
-                secondaryCountryFlags: Array.isArray(event.secondaryCountryFlags) && event.secondaryCountryFlags.length > 0
-                    ? event.secondaryCountryFlags.slice()
-                    : undefined
+                secondaryCountryPlaces: cloneFp(event.secondaryCountryPlaces),
+                heroFilterPlaces: cloneFp(event.heroFilterPlaces),
+                factionFilterPlaces: cloneFp(event.factionFilterPlaces),
+                npcFilterPlaces: cloneFp(event.npcFilterPlaces)
             }];
             this.eventManager.activeVariantIndex = 0;
         }
@@ -688,17 +706,20 @@ class EventFormService {
             const variant = this.eventManager.variantData[0];
             document.getElementById('eventEditName').value = variant.name || '';
             document.getElementById('eventEditDescription').value = variant.description || '';
-            document.getElementById('eventEditFilters').value = (variant.filters || []).join(', ');
+            const syncPop = window.StoryFilterPlacesSync;
+            document.getElementById('eventEditFilters').value = (syncPop?.getStoryEventHeroTokens?.(variant) || []).join(', ');
             const displayFactions = this.factionsArrayToFormDisplayString(
-                variant.factions || [],
+                syncPop?.getStoryEventFactionTokens?.(variant) || [],
                 this.eventManager.factions || []
             );
             document.getElementById('eventEditFactions').value = displayFactions;
             const npcsPop = document.getElementById('eventEditNpcs');
-            if (npcsPop) npcsPop.value = (variant.npcs || []).join(', ');
+            if (npcsPop) npcsPop.value = (syncPop?.getStoryEventNpcTokens?.(variant) || []).join(', ');
             const secondaryPop = document.getElementById('eventEditSecondaryCountries');
             if (secondaryPop) {
-                secondaryPop.value = this.secondaryFlagsToFormString(variant.secondaryCountryFlags);
+                const lhPop = window.LocationFlagHelpers;
+                const secF = lhPop?.getSecondaryCountryFlagFilenamesForEntity?.(variant) || [];
+                secondaryPop.value = secF.length ? this.secondaryFlagsToFormString(secF) : '';
             }
             
             // Load variant-specific location type and coordinates

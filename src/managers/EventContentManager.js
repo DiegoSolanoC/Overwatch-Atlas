@@ -83,7 +83,7 @@ export class EventContentManager {
             const sec =
                 lh && typeof lh.getSecondaryCountryFlagFilenamesForEntity === 'function'
                     ? lh.getSecondaryCountryFlagFilenamesForEntity(ev)
-                    : (Array.isArray(ev?.secondaryCountryFlags) ? ev.secondaryCountryFlags : []);
+                    : [];
             sec.forEach((f) => {
                 const fn = f != null ? String(f).trim() : '';
                 if (fn && !seen.has(fn)) {

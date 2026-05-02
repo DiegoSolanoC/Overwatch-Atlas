@@ -1,6 +1,8 @@
 /**
  * Story events: grouped rows (same shape as secondaryCountryPlaces / hero relevant locations)
- * for heroes, factions, and NPCs — synced to flat filters / factions / npcs for chips and search.
+ * for heroes, factions, and NPCs. Flat `filters` / `factions` / `npcs` are legacy; persisted data
+ * and saves use only `heroFilterPlaces` / `factionFilterPlaces` / `npcFilterPlaces`. Readers use
+ * {@link getStoryEventHeroTokens} (etc.) for chips, search, and Codex.
  */
 
 export const STORY_SECONDARY_PLACES_EDITOR_OPTS = {
@@ -126,6 +128,106 @@ export function migrateNpcPlacesFromNpcs(npcs) {
     return [{ locationName: '', country: npcs.join(', '), reasoning: '' }];
 }
 
+/** @param {unknown[]} factions */
+function factionFlatTokensToCountryCsv(factions) {
+    if (!Array.isArray(factions) || factions.length === 0) return '';
+    return factions
+        .map((f) => String(f).replace(/^\d+/, '').trim())
+        .filter(Boolean)
+        .join(', ');
+}
+
+/**
+ * Ensure one story event node (root or variant) stores only grouped filter places; remove flat arrays.
+ * Prefers existing `*FilterPlaces` rows; otherwise builds a single row from legacy `filters` / `factions` / `npcs`.
+ * @param {object} node
+ */
+export function migrateStoryEventFilterFieldsToGroupedOnly(node) {
+    if (!node || typeof node !== 'object') return;
+
+    const heroNorm = normalizeCollectedPlaces(node.heroFilterPlaces);
+    if (heroNorm.length) {
+        node.heroFilterPlaces = heroNorm;
+    } else if (Array.isArray(node.filters) && node.filters.length > 0) {
+        node.heroFilterPlaces = migrateHeroPlacesFromFilters(node.filters);
+    } else {
+        delete node.heroFilterPlaces;
+    }
+
+    const facNorm = normalizeCollectedPlaces(node.factionFilterPlaces);
+    if (facNorm.length) {
+        node.factionFilterPlaces = facNorm;
+    } else if (Array.isArray(node.factions) && node.factions.length > 0) {
+        const formSvc = typeof window !== 'undefined' ? window.eventManager?.formService : null;
+        const manifest =
+            typeof window !== 'undefined' && window.eventManager?.factions?.length > 0
+                ? window.eventManager.factions
+                : typeof window !== 'undefined' && window.globeController?.dataModel?.factions?.length
+                    ? window.globeController.dataModel.factions
+                    : [];
+        const display =
+            formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
+                ? formSvc.factionsArrayToFormDisplayString(node.factions, manifest || [])
+                : factionFlatTokensToCountryCsv(node.factions);
+        node.factionFilterPlaces = [{ locationName: '', country: display, reasoning: '' }];
+    } else {
+        delete node.factionFilterPlaces;
+    }
+
+    const npcNorm = normalizeCollectedPlaces(node.npcFilterPlaces);
+    if (npcNorm.length) {
+        node.npcFilterPlaces = npcNorm;
+    } else if (Array.isArray(node.npcs) && node.npcs.length > 0) {
+        node.npcFilterPlaces = migrateNpcPlacesFromNpcs(node.npcs);
+    } else {
+        delete node.npcFilterPlaces;
+    }
+
+    delete node.filters;
+    delete node.factions;
+    delete node.npcs;
+}
+
+/**
+ * @param {unknown[]} events
+ */
+export function migrateAllStoryEventsFilterPlacesToGroupedInPlace(events) {
+    if (!Array.isArray(events)) return;
+    for (let i = 0; i < events.length; i += 1) {
+        const ev = events[i];
+        migrateStoryEventFilterFieldsToGroupedOnly(ev);
+        if (Array.isArray(ev.variants)) {
+            for (let j = 0; j < ev.variants.length; j += 1) {
+                migrateStoryEventFilterFieldsToGroupedOnly(ev.variants[j]);
+            }
+        }
+    }
+}
+
+/** @param {object|null|undefined} target */
+export function getStoryEventHeroTokens(target) {
+    if (!target || typeof target !== 'object') return [];
+    const fromPlaces = canonicalizeHeroTokens(tokensFromPlacesCountryFields(target.heroFilterPlaces));
+    if (fromPlaces.length) return fromPlaces;
+    return canonicalizeHeroTokens(Array.isArray(target.filters) ? [...target.filters] : []);
+}
+
+/** @param {object|null|undefined} target */
+export function getStoryEventFactionTokens(target) {
+    if (!target || typeof target !== 'object') return [];
+    const fromPlaces = canonicalizeFactionTokens(tokensFromPlacesCountryFields(target.factionFilterPlaces));
+    if (fromPlaces.length) return fromPlaces;
+    return canonicalizeFactionTokens(Array.isArray(target.factions) ? [...target.factions] : []);
+}
+
+/** @param {object|null|undefined} target */
+export function getStoryEventNpcTokens(target) {
+    if (!target || typeof target !== 'object') return [];
+    const fromPlaces = canonicalizeNpcTokens(tokensFromPlacesCountryFields(target.npcFilterPlaces));
+    if (fromPlaces.length) return fromPlaces;
+    return canonicalizeNpcTokens(Array.isArray(target.npcs) ? [...target.npcs] : []);
+}
+
 export function heroPlacesForEditor(target) {
     if (Array.isArray(target?.heroFilterPlaces) && target.heroFilterPlaces.length > 0) {
         return clonePlaceRows(target.heroFilterPlaces);
@@ -153,7 +255,7 @@ export function npcPlacesForEditor(target) {
 }
 
 /**
- * Persist grouped rows and derived flat arrays on a story variant or root event.
+ * Persist grouped rows on a story variant or root event. Does not write flat `filters` / `factions` / `npcs`.
  * @param {object} target
  * @param {object[]} heroRows
  * @param {object[]} factionRows
@@ -173,9 +275,9 @@ export function applyStoryFilterPlacesToTarget(target, heroRows, factionRows, np
     if (n.length) target.npcFilterPlaces = n;
     else delete target.npcFilterPlaces;
 
-    target.filters = canonicalizeHeroTokens(tokensFromPlacesCountryFields(h));
-    target.factions = canonicalizeFactionTokens(tokensFromPlacesCountryFields(f));
-    target.npcs = canonicalizeNpcTokens(tokensFromPlacesCountryFields(n));
+    delete target.filters;
+    delete target.factions;
+    delete target.npcs;
 }
 
 export function copyFilterPlaceArraysFromSource(from) {
@@ -208,5 +310,24 @@ export function copyFilterPlaceArraysFromSource(from) {
                   reasoning: p.reasoning
               }))
             : []
+    };
+}
+
+if (typeof window !== 'undefined') {
+    window.StoryFilterPlacesSync = {
+        ...(window.StoryFilterPlacesSync || {}),
+        migrateStoryEventFilterFieldsToGroupedOnly,
+        migrateAllStoryEventsFilterPlacesToGroupedInPlace,
+        getStoryEventHeroTokens,
+        getStoryEventFactionTokens,
+        getStoryEventNpcTokens,
+        applyStoryFilterPlacesToTarget,
+        heroPlacesForEditor,
+        factionPlacesForEditor,
+        npcPlacesForEditor,
+        tokensFromPlacesCountryFields,
+        canonicalizeHeroTokens,
+        canonicalizeFactionTokens,
+        canonicalizeNpcTokens
     };
 }

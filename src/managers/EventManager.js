@@ -60,9 +60,9 @@ class EventManager {
         this.eventsPerPageSetting = 50; // User-selected events per page (when not showing all)
         this.showAllEventsInManager = false; // If true, show all events in one long page
         this.searchQuery = ''; // Event manager search: filter by title
-        this.searchHeroFilters = []; // Hero names (event.filters)
+        this.searchHeroFilters = []; // Hero names (from grouped places via StoryFilterPlacesSync)
         this.searchFactionFilters = []; // Resolved manifest faction filenames from search tokens (chips use filenames)
-        this.searchNpcFilters = []; // NPC names from manifest (event.npcs)
+        this.searchNpcFilters = []; // NPC names from manifest (grouped places)
         /** Tokens from hero/faction search field that did not match manifest (matched against event/variant name). */
         this.searchUnmatchedFilterTokens = [];
         this.searchCountryFilters = []; // Flag PNG filenames (FLAG_FILE_BY_COMMON values, e.g. "France.png")
@@ -83,7 +83,7 @@ class EventManager {
     /**
      * Hero/faction/NPC dimension: OR within each list. When multiple filter kinds are set, a row
      * matches if it satisfies any of the active kinds (heroes, factions, or NPCs).
-     * Country dimension: primary resolved flag or secondary flags (from `secondaryCountryPlaces` or legacy `secondaryCountryFlags`) match any selected country file.
+     * Country dimension: primary resolved flag or secondary flags derived from `secondaryCountryPlaces` match any selected country file.
      */
     _computeSearchAxisMatchesForItem(item) {
         const heroFilters = this.searchHeroFilters || [];
@@ -93,9 +93,10 @@ class EventManager {
         const rawUnmatched = this.searchUnmatchedFilterTokens || [];
         const unmatchedLower = rawUnmatched.map((t) => String(t || '').trim().toLowerCase()).filter(Boolean);
         const hasU = unmatchedLower.length > 0;
-        const itemHeroes = item?.filters || [];
-        const itemNpcs = item?.npcs || [];
-        const itemFactions = item?.factions || [];
+        const S = typeof window !== 'undefined' ? window.StoryFilterPlacesSync : null;
+        const itemHeroes = S?.getStoryEventHeroTokens?.(item) ?? item?.filters ?? [];
+        const itemNpcs = S?.getStoryEventNpcTokens?.(item) ?? item?.npcs ?? [];
+        const itemFactions = S?.getStoryEventFactionTokens?.(item) ?? item?.factions ?? [];
         const hasH = heroFilters.length > 0;
         const hasF = factionFilters.length > 0;
         const hasN = npcFilters.length > 0;
@@ -133,7 +134,7 @@ class EventManager {
             const secondary =
                 lhSec && typeof lhSec.getSecondaryCountryFlagFilenamesForEntity === 'function'
                     ? lhSec.getSecondaryCountryFlagFilenamesForEntity(item)
-                    : item?.secondaryCountryFlags || [];
+                    : [];
             const secondaryMatch = Array.isArray(secondary) && secondary.some((fn) => countrySet.has(fn));
             matchCountry = primaryMatch || secondaryMatch;
         } else if (countryFilters.length > 0) {
@@ -552,6 +553,64 @@ class EventManager {
         }
     }
 
+    /**
+     * @param {string} locationNameToken
+     * @returns {number}
+     */
+    findLocationArchiveEventIndex(locationNameToken) {
+        const want = String(locationNameToken || '').trim().toLowerCase();
+        if (!want) return -1;
+        const events = this.events || [];
+        for (let i = 0; i < events.length; i += 1) {
+            const rowName = events[i] && events[i].name != null ? String(events[i].name).trim().toLowerCase() : '';
+            if (rowName && rowName === want) return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Switch to Locations archive if needed and open that location's slide (e.g. Codex country node "Numbani").
+     * @param {string} locationName
+     * @returns {Promise<void>}
+     */
+    async openLocationArchiveEventByName(locationName) {
+        const raw = String(locationName || '').trim();
+        if (!raw) return;
+        const slide = typeof window !== 'undefined' ? window.standaloneEventSlide : null;
+        if (!slide || typeof slide.showEvent !== 'function') {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus('Event slide is not available.', 'warning');
+            }
+            return;
+        }
+        try {
+            if (slide.pushSlideHistoryIfOpen) {
+                slide.pushSlideHistoryIfOpen();
+            }
+            const src =
+                typeof this.dataService?.getArchiveSource === 'function'
+                    ? this.dataService.getArchiveSource()
+                    : 'story';
+            if (src !== 'locations') {
+                await this.switchStoryArchiveSource('locations');
+            }
+            const idx = this.findLocationArchiveEventIndex(raw);
+            if (idx < 0) {
+                if (typeof window.updateStatus === 'function') {
+                    window.updateStatus(`No Locations archive entry matches “${raw}”`, 'warning');
+                }
+                return;
+            }
+            const list = this.events || [];
+            slide.showEvent(idx, { eventList: list, keepSlideHistory: true });
+            if (window.SoundEffectsManager?.play) {
+                window.SoundEffectsManager.play('eventClick');
+            }
+        } catch (err) {
+            console.warn('EventManager.openLocationArchiveEventByName failed', err);
+        }
+    }
+
     syncEventsToGlobe() {
         if (this.globeSyncService) {
             this.globeSyncService.syncEventsToGlobe();
@@ -851,9 +910,6 @@ class EventManager {
                 locationType: 'earth',
                 lat: 0,
                 lon: 0,
-                filters: [],
-                factions: [],
-                npcs: [],
                 image: ''
             }
             : archiveSrc === 'heroes' || archiveSrc === 'factions' || archiveSrc === 'npcs'

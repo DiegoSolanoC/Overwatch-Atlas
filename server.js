@@ -6,6 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
+const { syncStoryArchivesFromCodexEdges } = require('./server-bio-codex-sync.js');
 
 const PORT = 8000;
 
@@ -134,7 +135,24 @@ function writeCodexStateJson(body, res) {
     try {
         fs.writeFileSync(tmpPath, json, 'utf8');
         fs.renameSync(tmpPath, outPath);
-        sendJson(res, 200, { ok: true, nodesCount: nodes.length, edgesCount: edges.length });
+        const dataDir = path.join(__dirname, 'data');
+        let bio = {};
+        try {
+            // Always reconcile every entity↔entity edge (not only “new” keys). Otherwise a link
+            // already present in codex-labels.json never gets mirrored into story archives.
+            bio = syncStoryArchivesFromCodexEdges(dataDir, nodes, edges);
+        } catch (syncErr) {
+            bio = {
+                bioArchiveSync: false,
+                bioArchiveError: syncErr && syncErr.message ? syncErr.message : String(syncErr),
+            };
+        }
+        sendJson(res, 200, {
+            ok: true,
+            nodesCount: nodes.length,
+            edgesCount: edges.length,
+            ...bio,
+        });
     } catch (e) {
         try { if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath); } catch (_) {}
         sendJson(res, 500, { ok: false, error: 'Write failed' });

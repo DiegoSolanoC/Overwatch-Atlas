@@ -282,16 +282,24 @@
                     });
                     continue;
                 }
+                coerceFactionMixedRowInPlace(c, subjectKind);
                 var dir = directionalTextsFromRow(c);
-                var lane =
-                    String(c.thisEntryLane || 'A').toUpperCase() === 'B' ? 'B' : 'A';
+                var mixedRep = isFactionHeroNpcMixed(subjectKind, lk);
+                var laneMirrorRep = mixedRep
+                    ? subjectKind === 'faction'
+                        ? 'B'
+                        : 'A'
+                    : String(c.thisEntryLane || 'A').toUpperCase() === 'B'
+                      ? 'B'
+                      : 'A';
                 var mirror = {
                     kind: subjectKind,
                     name: subjectName,
                     reasoningSubjectToLinked: dir.toSubject,
                     reasoningLinkedToSubject: dir.toLinked,
-                    thisEntryLane: lane
+                    thisEntryLane: laneMirrorRep
                 };
+                if (c.showInCodex === true) mirror.showInCodex = true;
                 dbg('repair: ADD mirror', {
                     ontoLinked: linked.name,
                     ontoIndex: linkedIx,
@@ -359,6 +367,35 @@
             toSubject = leg;
         }
         return { toLinked: toLinked, toSubject: toSubject };
+    }
+
+    /** Faction ↔ hero|npc: one-way from faction toward the other; not faction↔faction. */
+    function isFactionHeroNpcMixed(subjectKind, linkedKind) {
+        var sk = normalizeConnKind(subjectKind);
+        var lk = normalizeConnKind(linkedKind);
+        if (sk === 'faction' && (lk === 'hero' || lk === 'npc')) return true;
+        if ((sk === 'hero' || sk === 'npc') && lk === 'faction') return true;
+        return false;
+    }
+
+    /**
+     * Force lane + single descriptor field for faction mixed links (mutates `c`).
+     * @param {Object} c connection row
+     * @param {'hero'|'faction'|'npc'} subjectKind archive row kind
+     */
+    function coerceFactionMixedRowInPlace(c, subjectKind) {
+        var sk = normalizeConnKind(subjectKind);
+        var lk = normalizeConnKind(c && c.kind);
+        if (!isFactionHeroNpcMixed(sk, lk)) return;
+        c.thisEntryLane = sk === 'faction' ? 'A' : 'B';
+        var d = directionalTextsFromRow(c);
+        if (sk === 'faction') {
+            c.reasoningSubjectToLinked = (d.toLinked || d.toSubject || '').trim();
+            c.reasoningLinkedToSubject = '';
+        } else {
+            c.reasoningLinkedToSubject = (d.toSubject || d.toLinked || '').trim();
+            c.reasoningSubjectToLinked = '';
+        }
     }
 
     /**
@@ -456,16 +493,24 @@
                 });
                 return;
             }
+            coerceFactionMixedRowInPlace(c, subjectKind);
             var dir = directionalTextsFromRow(c);
-            var laneSync =
-                String(c.thisEntryLane || 'A').toUpperCase() === 'B' ? 'B' : 'A';
+            var mixed = isFactionHeroNpcMixed(subjectKind, lk);
+            var laneMirror = mixed
+                ? subjectKind === 'faction'
+                    ? 'B'
+                    : 'A'
+                : String(c.thisEntryLane || 'A').toUpperCase() === 'B'
+                  ? 'B'
+                  : 'A';
             var mirror = {
                 kind: subjectKind,
                 name: subjectName,
                 reasoningSubjectToLinked: dir.toSubject,
                 reasoningLinkedToSubject: dir.toLinked,
-                thisEntryLane: laneSync
+                thisEntryLane: laneMirror
             };
+            if (c.showInCodex === true) mirror.showInCodex = true;
             var linked = events[linkedIx];
             dbg('sync(upsert): writing mirror', {
                 linkedIndex: linkedIx,
@@ -496,6 +541,7 @@
         syncMirrorsAfterSubjectSave: syncMirrorsAfterSubjectSave,
         repairMissingMirrorsForBioArchive: repairMissingMirrorsForBioArchive,
         resolveBioArchiveEventIndex: resolveBioArchiveEventIndex,
+        isFactionHeroNpcMixed: isFactionHeroNpcMixed,
         setDebug: setDebug,
         /** @returns {boolean} */
         isDebugVerbose: function () {

@@ -96,8 +96,8 @@
       "kind": "faction",
       "factionFilename": "23The Chernobog Conspiracy",
       "factionDisplay": "The Chernobog Conspiracy",
-      "x": 9848.729391674266,
-      "y": 9259.5,
+      "x": 9982.050281923714,
+      "y": 9112.16407960199,
       "scale": 4,
       "bgColor": "#BB2516"
     },
@@ -236,8 +236,8 @@
       "kind": "faction",
       "factionFilename": "08Ironclad Guild",
       "factionDisplay": "Ironclad Guild",
-      "x": 13805.1,
-      "y": 11091.4,
+      "x": 13744.983913764512,
+      "y": 11288.332006633498,
       "scale": 3,
       "bgColor": "#49494B"
     },
@@ -430,8 +430,8 @@
       "id": "cn-1776196223986-3odd2n1h",
       "kind": "hero",
       "heroName": "Brigitte",
-      "x": 13810.3,
-      "y": 10755.6,
+      "x": 13790.932433828666,
+      "y": 10953.846276628083,
       "scale": 2.5,
       "bgColor": null
     },
@@ -682,8 +682,8 @@
       "id": "cn-1776196805086-xyq2ev6r",
       "kind": "hero",
       "heroName": "Reinhardt",
-      "x": 13981.9,
-      "y": 10467.2,
+      "x": 14276.239800995027,
+      "y": 10519,
       "scale": 2.5,
       "bgColor": null
     },
@@ -754,8 +754,8 @@
       "id": "cn-1776196905749-nf6n8qe5",
       "kind": "hero",
       "heroName": "Torbjörn",
-      "x": 13489.6,
-      "y": 10939.9,
+      "x": 13394.064842454394,
+      "y": 11305.029850746268,
       "scale": 2.5,
       "bgColor": null
     },
@@ -1213,8 +1213,8 @@
       "id": "cn-1776199020498-imn45tfj",
       "kind": "npc",
       "npcName": "Sven",
-      "x": 14199.7,
-      "y": 11255.2,
+      "x": 14309.567330016582,
+      "y": 11257.272968490877,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1405,72 +1405,32 @@
       "y": 10545.857406327736,
       "scale": 1.5,
       "bgColor": null
+    },
+    {
+      "id": "cn-1777673752943-gb8tch6c",
+      "kind": "junction",
+      "x": 14282.642620232173,
+      "y": 10947.1728026534,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1777673982960-bvy991rw",
+      "kind": "junction",
+      "x": 13160.21393034826,
+      "y": 10857.959867330017,
+      "scale": 3,
+      "bgColor": null
     }
   ],
   "edges": [
-    {
-      "fromId": "cn-1776188568433-ct7ioax0",
-      "toId": "cn-1776196454601-i5cqp9rt"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776196918049-3szka57e"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776196674639-wzypztd4"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776196835600-1h52n95b"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776196706068-vf6jo3yv"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776199062968-hvbhj4fv"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776188407279-tczl1kd3"
-    },
-    {
-      "fromId": "cn-1776187942174-ajc0gk24",
-      "toId": "cn-1776198232155-ou5s8rbe"
-    },
     {
       "fromId": "cn-1776196918049-3szka57e",
       "toId": "cn-1776188989261-sni9cnre"
     },
     {
-      "fromId": "cn-1776196918049-3szka57e",
-      "toId": "cn-1776197727524-g8fx2yzv"
-    },
-    {
-      "fromId": "cn-1776196918049-3szka57e",
-      "toId": "cn-1776199062968-hvbhj4fv"
-    },
-    {
-      "fromId": "cn-1776197727524-g8fx2yzv",
-      "toId": "cn-1776199062968-hvbhj4fv"
-    },
-    {
-      "fromId": "cn-1776196706068-vf6jo3yv",
-      "toId": "cn-1776196835600-1h52n95b"
-    },
-    {
-      "fromId": "cn-1776198232155-ou5s8rbe",
-      "toId": "cn-1776188407279-tczl1kd3"
-    },
-    {
       "fromId": "cn-1776196674639-wzypztd4",
       "toId": "cn-1776189013831-v9g8z604"
-    },
-    {
-      "fromId": "cn-1776196250777-gqnrvcb6",
-      "toId": "cn-1776197727524-g8fx2yzv"
     },
     {
       "fromId": "cn-1776196250777-gqnrvcb6",
@@ -1526,18 +1486,6 @@
     },
     {
       "fromId": "cn-1776188997910-x5sjqser",
-      "toId": "cn-1776196198262-5y6w0bjm"
-    },
-    {
-      "fromId": "cn-1776188997910-x5sjqser",
-      "toId": "cn-1776197773898-vrt0idb9"
-    },
-    {
-      "fromId": "cn-1776196198262-5y6w0bjm",
-      "toId": "cn-1776197773898-vrt0idb9"
-    },
-    {
-      "fromId": "cn-1776188997910-x5sjqser",
       "toId": "cn-1776197779816-8kojasku"
     },
     {
@@ -1557,10 +1505,6 @@
       "toId": "cn-1776196454601-i5cqp9rt"
     },
     {
-      "fromId": "cn-1776198232155-ou5s8rbe",
-      "toId": "cn-1776196460311-ckh9f0q6"
-    },
-    {
       "fromId": "cn-1776377077915-gxzcag2i",
       "toId": "cn-1776377423834-5hcwepin"
     },
@@ -1571,6 +1515,94 @@
     {
       "fromId": "cn-1776378174256-j0k8stw4",
       "toId": "cn-1776188568433-ct7ioax0"
+    },
+    {
+      "fromId": "cn-1776189507539-assf49p2",
+      "toId": "cn-1776196774051-4c33pw30"
+    },
+    {
+      "fromId": "cn-1776196223986-3odd2n1h",
+      "toId": "cn-1776196905749-nf6n8qe5"
+    },
+    {
+      "fromId": "cn-1776196905749-nf6n8qe5",
+      "toId": "cn-1776197976145-vsj1hid6"
+    },
+    {
+      "fromId": "cn-1776190150580-gay8nq0u",
+      "toId": "cn-1776196949591-cyopgpwx"
+    },
+    {
+      "fromId": "cn-1776197996547-ax6bzskn",
+      "toId": "cn-1776196641135-ah1klxj2"
+    },
+    {
+      "fromId": "cn-1776197905423-vxfliac5",
+      "toId": "cn-1776196930475-lm63xd8b"
+    },
+    {
+      "fromId": "cn-1776198033132-vt4u1eu5",
+      "toId": "cn-1776196828122-lxi2dv4l"
+    },
+    {
+      "fromId": "cn-1776196223986-3odd2n1h",
+      "toId": "cn-1777673752943-gb8tch6c"
+    },
+    {
+      "fromId": "cn-1777673752943-gb8tch6c",
+      "toId": "cn-1776196805086-xyq2ev6r"
+    },
+    {
+      "fromId": "cn-1776196198262-5y6w0bjm",
+      "toId": "cn-1776188997910-x5sjqser"
+    },
+    {
+      "fromId": "cn-1776196198262-5y6w0bjm",
+      "toId": "cn-1776197773898-vrt0idb9"
+    },
+    {
+      "fromId": "cn-1776196250777-gqnrvcb6",
+      "toId": "cn-1776197727524-g8fx2yzv"
+    },
+    {
+      "fromId": "cn-1776196454601-i5cqp9rt",
+      "toId": "cn-1776188568433-ct7ioax0"
+    },
+    {
+      "fromId": "cn-1776196460311-ckh9f0q6",
+      "toId": "cn-1776198232155-ou5s8rbe"
+    },
+    {
+      "fromId": "cn-1776196674639-wzypztd4",
+      "toId": "cn-1776187942174-ajc0gk24"
+    },
+    {
+      "fromId": "cn-1776196706068-vf6jo3yv",
+      "toId": "cn-1776187942174-ajc0gk24"
+    },
+    {
+      "fromId": "cn-1776196706068-vf6jo3yv",
+      "toId": "cn-1776196835600-1h52n95b"
+    },
+    {
+      "fromId": "cn-1776196918049-3szka57e",
+      "toId": "cn-1776187942174-ajc0gk24"
+    },
+    {
+      "fromId": "cn-1776188407279-tczl1kd3",
+      "toId": "cn-1776187942174-ajc0gk24"
+    },
+    {
+      "fromId": "cn-1776196905749-nf6n8qe5",
+      "toId": "cn-1777673982960-bvy991rw"
+    },
+    {
+      "fromId": "cn-1777673982960-bvy991rw",
+      "toId": "cn-1776196211171-fiu3bla1"
+    },
+    {
+      "fromId": "cn-1776189507539-assf49p2",
+      "toId": "cn-1776196852034-00yc3egl"
     }
   ]
 }

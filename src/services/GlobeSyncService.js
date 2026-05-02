@@ -9,6 +9,25 @@ class GlobeSyncService {
     }
 
     /**
+     * Markers live on {@link window.globeEventMarkerManager} in current builds; older code called
+     * {@link window.globeController.globeView.refreshEventMarkers}.
+     * @param {boolean} [animate]
+     * @param {object} [options]
+     * @returns {unknown}
+     */
+    _refreshEventMarkers(animate = true, options) {
+        const mm = window.globeEventMarkerManager;
+        if (mm && typeof mm.refreshEventMarkers === 'function') {
+            return mm.refreshEventMarkers(animate, options || {});
+        }
+        const gv = window.globeController?.globeView;
+        if (gv && typeof gv.refreshEventMarkers === 'function') {
+            return gv.refreshEventMarkers(animate, options);
+        }
+        return undefined;
+    }
+
+    /**
      * Set the EventManager instance (dependency injection)
      */
     setEventManager(eventManager) {
@@ -25,9 +44,8 @@ class GlobeSyncService {
             window.globeController.dataModel.events = [...this.eventManager.events];
             console.log('GlobeSyncService: Synced', this.eventManager.events.length, 'events with DataModel');
             
-            // Refresh event markers if globe is already initialized
-            if (window.globeController.globeView) {
-                window.globeController.globeView.refreshEventMarkers();
+            if (window.globeController?.globeView || window.globeEventMarkerManager) {
+                this._refreshEventMarkers();
                 console.log('GlobeSyncService: Refreshed event markers on globe');
             }
             
@@ -61,11 +79,8 @@ class GlobeSyncService {
             window.globeController.dataModel.events = [...this.eventManager.events];
 
             let markerPromise = Promise.resolve();
-            // Refresh event markers
-            if (window.globeController.globeView) {
-                const r = window.globeController.globeView.refreshEventMarkers();
-                markerPromise = r && typeof r.then === 'function' ? r : Promise.resolve();
-            }
+            const r0 = this._refreshEventMarkers();
+            markerPromise = r0 && typeof r0.then === 'function' ? r0 : Promise.resolve();
 
             // Refresh pagination UI
             if (window.globeController.uiView && window.globeController.uiView.dataModel) {
@@ -75,11 +90,9 @@ class GlobeSyncService {
 
                 // Re-setup pagination to update UI
                 window.globeController.uiView.setupEventPagination(() => {
-                    if (window.globeController.globeView) {
-                        window.globeController.globeView.refreshEventMarkers(true, {
-                            preservePaginationThumbEntrance: true
-                        });
-                    }
+                    this._refreshEventMarkers(true, {
+                        preservePaginationThumbEntrance: true
+                    });
                 });
             }
 

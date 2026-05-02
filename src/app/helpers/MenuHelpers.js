@@ -18,7 +18,10 @@ import {
     heroPlacesForEditor,
     factionPlacesForEditor,
     npcPlacesForEditor,
-    copyFilterPlaceArraysFromSource
+    copyFilterPlaceArraysFromSource,
+    getStoryEventFactionTokens,
+    getStoryEventHeroTokens,
+    getStoryEventNpcTokens
 } from '../../utils/StoryFilterPlacesSync.js';
 
 function teardownMenuHelpersEventSystemLayout() {
@@ -1906,8 +1909,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                               );
                                               if (flagFile) out.push(flagFile);
                                           }
-                                          if (event?.secondaryCountryFlags?.length) {
-                                              out.push(...event.secondaryCountryFlags);
+                                          const secFn =
+                                              lh?.getSecondaryCountryFlagFilenamesForEntity?.(event) || [];
+                                          if (secFn.length) {
+                                              out.push(...secFn);
                                           }
                                           return out;
                                       })();
@@ -2136,11 +2141,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                                 archiveSourceEdit
                                             ) || { subjectName: '', subjectKind: 'hero' };
                                         window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
-                                        const addConn = document.getElementById('eventSlideAddBioConnectionBtn');
-                                        if (addConn) {
-                                            addConn.onclick = () =>
-                                                window.BioArchiveConnectionsEditor?.addRow?.();
-                                        }
                                     }
                                 }
                             } else if (heroLocEdit) {
@@ -2390,7 +2390,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         
                         populateInlineEditor(eventData, displayEvent) {
                             const target = displayEvent || eventData;
-                            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const archPop = this._presentationFromDockTimeline
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
                             const isBioPop =
                                 archPop === 'heroes' || archPop === 'factions' || archPop === 'npcs';
 
@@ -2415,9 +2417,19 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (yearStartInput) yearStartInput.value = target.yearStart || target.year || '';
                             if (yearEndInput) yearEndInput.value = target.yearEnd || '';
                             if (eraInput) eraInput.value = target.eraName || '';
-                            if (filtersInput) filtersInput.value = (target.filters || []).join(', ');
-                            if (factionsInput) factionsInput.value = (target.factions || []).join(', ');
-                            if (npcsInput) npcsInput.value = (target.npcs || []).join(', ');
+                            if (filtersInput) filtersInput.value = getStoryEventHeroTokens(target).join(', ');
+                            if (factionsInput) {
+                                const formSvc = window.eventManager?.formService;
+                                const manifest = window.eventManager?.factions?.length
+                                    ? window.eventManager.factions
+                                    : window.globeController?.dataModel?.factions || [];
+                                const facTok = getStoryEventFactionTokens(target);
+                                factionsInput.value =
+                                    formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
+                                        ? formSvc.factionsArrayToFormDisplayString(facTok, manifest)
+                                        : facTok.map((f) => String(f).replace(/^\d+/, '').trim()).join(', ');
+                            }
+                            if (npcsInput) npcsInput.value = getStoryEventNpcTokens(target).join(', ');
                             
                             const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
                             if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
@@ -2652,9 +2664,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 const nv = {
                                     name: '',
                                     description: '',
-                                    filters: [],
-                                    factions: [],
-                                    npcs: [],
                                     sources: undefined,
                                     headlines: undefined,
                                     locationType: lt,
@@ -2765,9 +2774,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const yearStartInput = document.getElementById('eventSlideEditYearStart');
                             const yearEndInput = document.getElementById('eventSlideEditYearEnd');
                             const eraInput = document.getElementById('eventSlideEditEraName');
-                            const filtersInput = document.getElementById('eventSlideEditFilters');
-                            const factionsInput = document.getElementById('eventSlideEditFactions');
-                            const npcsInput = document.getElementById('eventSlideEditNpcs');
                             const headlinesInput = document.getElementById('eventSlideEditHeadlines');
                             const locationTypeInput = document.getElementById('eventSlideEditLocationType');
                             const latInput = document.getElementById('eventSlideEditLat');
@@ -2779,9 +2785,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             if (yearStartInput) target.yearStart = yearStartInput.value;
                             if (yearEndInput) target.yearEnd = yearEndInput.value;
                             if (eraInput) target.eraName = eraInput.value;
-                            const heroFpElSv = document.getElementById('eventSlideEditHeroFilterPlaces');
-                            if (heroFpElSv && window.HeroRelevantLocationsEditor?.collect) {
-                                const hr = window.HeroRelevantLocationsEditor.collect(heroFpElSv);
+                            if (window.HeroRelevantLocationsEditor?.collect) {
+                                const heroFpElSv = document.getElementById('eventSlideEditHeroFilterPlaces');
+                                const hr = heroFpElSv ? window.HeroRelevantLocationsEditor.collect(heroFpElSv) : [];
                                 const fr = window.HeroRelevantLocationsEditor.collect(
                                     document.getElementById('eventSlideEditFactionFilterPlaces')
                                 );
@@ -2789,10 +2795,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     document.getElementById('eventSlideEditNpcFilterPlaces')
                                 );
                                 applyStoryFilterPlacesToTarget(target, hr, fr, nr);
-                            } else {
-                                if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(s => s);
-                                if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(s => s);
-                                if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(s => s);
                             }
                             const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
                             const places =
@@ -2818,9 +2820,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 yearStart: eventData.yearStart || eventData.year,
                                 yearEnd: eventData.yearEnd || null,
                                 eraName: eventData.eraName || '',
-                                filters: [...(eventData.filters || [])],
-                                factions: [...(eventData.factions || [])],
-                                npcs: [...(eventData.npcs || [])],
                                 headlines: [...(eventData.headlines || [])],
                                 sources: eventData.sources ? [...eventData.sources] : undefined,
                                 lat: eventData.lat,
@@ -2828,9 +2827,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 x: eventData.x,
                                 y: eventData.y,
                                 locationType: eventData.locationType,
-                                secondaryCountryFlags: Array.isArray(eventData.secondaryCountryFlags)
-                                    ? [...eventData.secondaryCountryFlags]
-                                    : undefined,
                                 secondaryCountryPlaces: Array.isArray(eventData.secondaryCountryPlaces)
                                     ? eventData.secondaryCountryPlaces.map((p) => ({
                                           locationName: p.locationName,
@@ -2844,6 +2840,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             delete eventData.heroFilterPlaces;
                             delete eventData.factionFilterPlaces;
                             delete eventData.npcFilterPlaces;
+                            delete eventData.secondaryCountryFlags;
                         },
                         
                         collapseMultiToSingleRoot(eventData, keepVariant) {
@@ -2854,9 +2851,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             eventData.yearStart = keepVariant.yearStart;
                             eventData.yearEnd = keepVariant.yearEnd;
                             eventData.eraName = keepVariant.eraName || '';
-                            eventData.filters = [...(keepVariant.filters || [])];
-                            eventData.factions = [...(keepVariant.factions || [])];
-                            eventData.npcs = [...(keepVariant.npcs || [])];
                             eventData.headlines = [...(keepVariant.headlines || [])];
                             eventData.sources = keepVariant.sources ? [...keepVariant.sources] : undefined;
                             eventData.lat = keepVariant.lat;
@@ -2864,9 +2858,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             eventData.x = keepVariant.x;
                             eventData.y = keepVariant.y;
                             eventData.locationType = keepVariant.locationType;
-                            eventData.secondaryCountryFlags = Array.isArray(keepVariant.secondaryCountryFlags)
-                                ? [...keepVariant.secondaryCountryFlags]
-                                : undefined;
                             eventData.secondaryCountryPlaces = Array.isArray(keepVariant.secondaryCountryPlaces)
                                 ? keepVariant.secondaryCountryPlaces.map((p) => ({
                                       locationName: p.locationName,
@@ -2881,6 +2872,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             else delete eventData.factionFilterPlaces;
                             if (fp.npcFilterPlaces.length) eventData.npcFilterPlaces = fp.npcFilterPlaces;
                             else delete eventData.npcFilterPlaces;
+                            delete eventData.secondaryCountryFlags;
                             delete eventData.variants;
                         },
                         
@@ -3022,7 +3014,10 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         saveFullEdit(eventData, editBtn, saveBtn) {
                             if (!this.isEditing || !this.editTarget) return;
 
-                            const archiveSource = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSource = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
                             const titleElEarly = document.getElementById('eventSlideTitle');
                             const textElEarly = document.getElementById('eventSlideText');
 
@@ -3140,9 +3135,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             const yearStartInput = document.getElementById('eventSlideEditYearStart');
                             const yearEndInput = document.getElementById('eventSlideEditYearEnd');
                             const eraInput = document.getElementById('eventSlideEditEraName');
-                            const filtersInput = document.getElementById('eventSlideEditFilters');
-                            const factionsInput = document.getElementById('eventSlideEditFactions');
-                            const npcsInput = document.getElementById('eventSlideEditNpcs');
                             const headlinesInput = document.getElementById('eventSlideEditHeadlines');
                             const locationTypeInput = document.getElementById('eventSlideEditLocationType');
                             const latInput = document.getElementById('eventSlideEditLat');
@@ -3160,9 +3152,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (yearStartInput) target.yearStart = parseInt(yearStartInput.value) || target.yearStart;
                                 if (yearEndInput) target.yearEnd = parseInt(yearEndInput.value) || null;
                                 if (eraInput) target.eraName = eraInput.value || null;
-                                const heroFpSave = document.getElementById('eventSlideEditHeroFilterPlaces');
-                                if (heroFpSave && window.HeroRelevantLocationsEditor?.collect) {
-                                    const hr = window.HeroRelevantLocationsEditor.collect(heroFpSave);
+                                if (window.HeroRelevantLocationsEditor?.collect) {
+                                    const heroFpSave = document.getElementById('eventSlideEditHeroFilterPlaces');
+                                    const hr = heroFpSave ? window.HeroRelevantLocationsEditor.collect(heroFpSave) : [];
                                     const fr = window.HeroRelevantLocationsEditor.collect(
                                         document.getElementById('eventSlideEditFactionFilterPlaces')
                                     );
@@ -3170,10 +3162,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                         document.getElementById('eventSlideEditNpcFilterPlaces')
                                     );
                                     applyStoryFilterPlacesToTarget(target, hr, fr, nr);
-                                } else {
-                                    if (filtersInput) target.filters = filtersInput.value.split(',').map(s => s.trim()).filter(Boolean);
-                                    if (factionsInput) target.factions = factionsInput.value.split(',').map(s => s.trim()).filter(Boolean);
-                                    if (npcsInput) target.npcs = npcsInput.value.split(',').map(s => s.trim()).filter(Boolean);
                                 }
 
                                 const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
@@ -3239,6 +3227,14 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 if (window.eventManager.dataService && typeof window.eventManager.dataService.saveEvents === 'function') {
                                     window.eventManager.dataService.saveEvents();
                                 }
+                            }
+
+                            if (
+                                dockStoryPresentationActive &&
+                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
+                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
+                            ) {
+                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
                             }
 
                             if (window.eventManager?.refreshGlobeEvents) {

@@ -158,41 +158,19 @@ class EventEditService {
         let event;
         
         if (isMultiEvent) {
-            // Collect variants from variantData
             const variants = variantData.map((variant, variantIndex) => {
-                const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
-                const variantData = processFiltersAndFactions(
-                    (variant.filters || []).join(', '),
-                    (variant.factions || []).map((f) => {
-                        const faction = factions.find((fac) =>
-                            fac.filename === f
-                            || fac.displayName === f
-                            || (fh && typeof fh.factionIdsMatch === 'function' && (
-                                fh.factionIdsMatch(fac.filename, f) || fh.factionIdsMatch(fac.displayName, f)
-                            ))
-                        );
-                        return faction ? faction.displayName : String(f).replace(/^\d+/, '').trim();
-                    }).join(', '),
-                    factions
-                );
-                
-                // Preserve headlines - check if variant has headlines and they're valid
                 let headlines = undefined;
                 if (variant.headlines) {
                     if (Array.isArray(variant.headlines) && variant.headlines.length > 0) {
                         headlines = variant.headlines;
                     } else if (typeof variant.headlines === 'string' && variant.headlines.trim()) {
-                        // Handle case where headlines might be a string
                         headlines = [variant.headlines.trim()];
                     }
                 }
-                
+
                 const variantObj = {
                     name: variant.name || '',
                     description: variant.description || '',
-                    filters: variantData.filters,
-                    factions: variantData.factions,
-                    npcs: Array.isArray(variant.npcs) ? variant.npcs : [],
                     sources: variant.sources && variant.sources.length > 0 ? variant.sources : undefined,
                     headlines: headlines,
                     image: '', // Auto-detect
@@ -224,9 +202,6 @@ class EventEditService {
                     variantObj.cityDisplayName = variant.cityDisplayName;
                 }
 
-                if (Array.isArray(variant.secondaryCountryFlags) && variant.secondaryCountryFlags.length > 0) {
-                    variantObj.secondaryCountryFlags = variant.secondaryCountryFlags.slice();
-                }
                 if (Array.isArray(variant.secondaryCountryPlaces) && variant.secondaryCountryPlaces.length > 0) {
                     variantObj.secondaryCountryPlaces = variant.secondaryCountryPlaces.map((p) => ({
                         locationName: p.locationName,
@@ -282,9 +257,6 @@ class EventEditService {
         } else {
             // Regular single event
             const v0 = variantData[0];
-            const secondary0 = v0 && Array.isArray(v0.secondaryCountryFlags) && v0.secondaryCountryFlags.length > 0
-                ? v0.secondaryCountryFlags.slice()
-                : undefined;
             const secondaryPlaces0 =
                 v0 && Array.isArray(v0.secondaryCountryPlaces) && v0.secondaryCountryPlaces.length > 0
                     ? v0.secondaryCountryPlaces.map((p) => ({
@@ -293,45 +265,34 @@ class EventEditService {
                           reasoning: p.reasoning
                       }))
                     : undefined;
-            const heroPlaces0 =
-                v0 && Array.isArray(v0.heroFilterPlaces) && v0.heroFilterPlaces.length > 0
-                    ? v0.heroFilterPlaces.map((p) => ({
-                          locationName: p.locationName,
-                          country: p.country,
-                          reasoning: p.reasoning
-                      }))
-                    : undefined;
-            const factionPlaces0 =
-                v0 && Array.isArray(v0.factionFilterPlaces) && v0.factionFilterPlaces.length > 0
-                    ? v0.factionFilterPlaces.map((p) => ({
-                          locationName: p.locationName,
-                          country: p.country,
-                          reasoning: p.reasoning
-                      }))
-                    : undefined;
-            const npcPlaces0 =
-                v0 && Array.isArray(v0.npcFilterPlaces) && v0.npcFilterPlaces.length > 0
-                    ? v0.npcFilterPlaces.map((p) => ({
-                          locationName: p.locationName,
-                          country: p.country,
-                          reasoning: p.reasoning
-                      }))
-                    : undefined;
+            const mapPlaceRows = (rows) => (Array.isArray(rows) && rows.length > 0
+                ? rows.map((p) => ({
+                    locationName: p.locationName,
+                    country: p.country,
+                    reasoning: p.reasoning
+                }))
+                : null);
+            let heroPlaces0 = mapPlaceRows(v0?.heroFilterPlaces);
+            if (!heroPlaces0 && mainData.filters.length > 0) {
+                heroPlaces0 = [{ locationName: '', country: mainData.filters.join(', '), reasoning: '' }];
+            }
+            let factionPlaces0 = mapPlaceRows(v0?.factionFilterPlaces);
+            if (!factionPlaces0 && mainData.factions.length > 0) {
+                factionPlaces0 = [{ locationName: '', country: mainData.factions.join(', '), reasoning: '' }];
+            }
+            let npcPlaces0 = mapPlaceRows(v0?.npcFilterPlaces);
+            if (!npcPlaces0 && Array.isArray(v0?.npcs) && v0.npcs.length > 0) {
+                npcPlaces0 = [{ locationName: '', country: v0.npcs.join(', '), reasoning: '' }];
+            }
             event = {
                 name: mainName,
                 locationType: locationType,
                 cityDisplayName: cityDisplayName || undefined,
                 description: mainDescription,
                 image: '', // Auto-detect
-                filters: mainData.filters,
-                factions: mainData.factions,
-                npcs: Array.isArray(v0?.npcs) ? v0.npcs : [],
                 sources: mainSources.length > 0 ? mainSources : undefined,
                 headlines: mainHeadlines && mainHeadlines.length > 0 ? mainHeadlines : undefined
             };
-            if (secondary0) {
-                event.secondaryCountryFlags = secondary0;
-            }
             if (secondaryPlaces0) {
                 event.secondaryCountryPlaces = secondaryPlaces0;
             }

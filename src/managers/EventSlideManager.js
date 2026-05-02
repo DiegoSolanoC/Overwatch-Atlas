@@ -26,7 +26,10 @@ import {
     heroPlacesForEditor,
     factionPlacesForEditor,
     npcPlacesForEditor,
-    copyFilterPlaceArraysFromSource
+    copyFilterPlaceArraysFromSource,
+    getStoryEventFactionTokens,
+    getStoryEventHeroTokens,
+    getStoryEventNpcTokens
 } from '../utils/StoryFilterPlacesSync.js';
 
 const SATELLITE_RELEVANT_PLACES_EDITOR_OPTS = {
@@ -72,6 +75,11 @@ export class EventSlideManager {
             window.EventSlideGlitchHelpers.bindGlitchTextClickDelegation(eventSlideEl, uiView);
         }
 
+        this._onAtlasBioArchivesRefreshedBound = (ev) => this._onAtlasBioArchivesRefreshed(ev);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('atlas-bio-archives-refreshed', this._onAtlasBioArchivesRefreshedBound);
+        }
+
         this._inlineDescEdit = {
             active: false,
             dirty: false,
@@ -92,6 +100,15 @@ export class EventSlideManager {
             /** Index in eventManager.events when edit started (for reorder / event number) */
             eventListIndex: -1,
         };
+    }
+
+    /**
+     * Which archive shape the slide editor should use: dock main-timeline rows are story-shaped even when
+     * {@link EventDataService.getArchiveSource} is a satellite (heroes, etc.).
+     */
+    _getEffectiveSlideArchiveSource() {
+        if (window.standaloneEventSlide?._presentationFromDockTimeline) return 'story';
+        return window.eventManager?.dataService?.getArchiveSource?.() || 'story';
     }
 
     _resolveEventListIndex(rootEvent) {
@@ -370,53 +387,11 @@ export class EventSlideManager {
         }
 
         const cityInput = document.getElementById('eventSlideEditCityDisplayName');
-        const filtersInput = document.getElementById('eventSlideEditFilters');
-        const factionsInput = document.getElementById('eventSlideEditFactions');
-        const npcsInput = document.getElementById('eventSlideEditNpcs');
         const headlinesInput = document.getElementById('eventSlideEditHeadlines');
 
         const newName = (eventSlideTitle.innerText ?? eventSlideTitle.textContent ?? '').trim();
         const newText = (eventSlideText.textContent ?? '').replace(/\r\n/g, '\n');
         const newCity = (cityInput?.value || '').trim();
-
-        let newFilters = null;
-        if (filtersInput) {
-            newFilters = (filtersInput.value || '')
-                .split(',')
-                .map((s) => s.trim())
-                .filter(Boolean);
-        }
-
-        let newFactions = null;
-        if (factionsInput) {
-            const factionTokens = (factionsInput.value || '')
-                .split(',')
-                .map((s) => s.trim())
-                .filter(Boolean);
-            const availableFactions = window.eventManager?.factions || [];
-            const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
-            newFactions = factionTokens.map((token) => {
-                const found = availableFactions.find((f) =>
-                    (f?.displayName || '').toLowerCase() === token.toLowerCase()
-                    || (f?.filename || '').toLowerCase() === token.toLowerCase()
-                    || (fh && typeof fh.factionIdsMatch === 'function' && (
-                        fh.factionIdsMatch(f.filename, token) || fh.factionIdsMatch(f.displayName, token)
-                    ))
-                );
-                return found ? found.displayName : token;
-            });
-        }
-
-        let newNpcs = null;
-        if (npcsInput) {
-            const npcTokens = (npcsInput.value || '')
-                .split(',')
-                .map((s) => s.trim())
-                .filter(Boolean);
-            const manifestNpcs = window.eventManager?.npcs || [];
-            const npcCanon = new Map(manifestNpcs.map((n) => [String(n).toLowerCase(), n]));
-            newNpcs = npcTokens.map((t) => npcCanon.get(t.toLowerCase()) || t);
-        }
 
         const headlinesLines = (headlinesInput?.value || '')
             .split('\n')
@@ -425,7 +400,7 @@ export class EventSlideManager {
 
         const newSources = this._readSlideSourcesFromDom();
 
-        const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+        const archiveSrc = this._getEffectiveSlideArchiveSource();
 
         const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
         const places = window.HeroRelevantLocationsEditor?.collect?.(secPlacesEl) ?? [];
@@ -445,8 +420,8 @@ export class EventSlideManager {
         }
 
         const heroPlacesEl = document.getElementById('eventSlideEditHeroFilterPlaces');
-        if (!isBioArchiveSource(archiveSrc) && heroPlacesEl && window.HeroRelevantLocationsEditor?.collect) {
-            const hr = window.HeroRelevantLocationsEditor.collect(heroPlacesEl);
+        if (!isBioArchiveSource(archiveSrc) && window.HeroRelevantLocationsEditor?.collect) {
+            const hr = heroPlacesEl ? window.HeroRelevantLocationsEditor.collect(heroPlacesEl) : [];
             const fr = window.HeroRelevantLocationsEditor.collect(
                 document.getElementById('eventSlideEditFactionFilterPlaces')
             );
@@ -454,10 +429,6 @@ export class EventSlideManager {
                 document.getElementById('eventSlideEditNpcFilterPlaces')
             );
             applyStoryFilterPlacesToTarget(target, hr, fr, nr);
-        } else {
-            if (newFilters !== null) target.filters = newFilters;
-            if (newFactions !== null) target.factions = newFactions;
-            if (newNpcs !== null) target.npcs = newNpcs.length > 0 ? newNpcs : [];
         }
 
         if (newName) target.name = newName;
@@ -473,9 +444,6 @@ export class EventSlideManager {
         const v0 = {
             name: root.name || '',
             description: root.description || '',
-            filters: Array.isArray(root.filters) ? [...root.filters] : [],
-            factions: Array.isArray(root.factions) ? [...root.factions] : [],
-            npcs: Array.isArray(root.npcs) ? [...root.npcs] : [],
             sources: root.sources ? JSON.parse(JSON.stringify(root.sources)) : undefined,
             headlines: Array.isArray(root.headlines) ? [...root.headlines] : undefined,
             locationType: root.locationType || 'earth',
@@ -484,7 +452,6 @@ export class EventSlideManager {
             x: root.x,
             y: root.y,
             cityDisplayName: root.cityDisplayName,
-            secondaryCountryFlags: Array.isArray(root.secondaryCountryFlags) ? [...root.secondaryCountryFlags] : undefined,
             secondaryCountryPlaces: Array.isArray(root.secondaryCountryPlaces)
                 ? root.secondaryCountryPlaces.map((p) => ({
                       locationName: p.locationName,
@@ -498,9 +465,6 @@ export class EventSlideManager {
         const v1 = {
             name: '',
             description: '',
-            filters: [],
-            factions: [],
-            npcs: [],
             sources: undefined,
             headlines: undefined,
             locationType: lt,
@@ -518,9 +482,6 @@ export class EventSlideManager {
         root.variants = [v0, v1];
         delete root.name;
         delete root.description;
-        delete root.filters;
-        delete root.factions;
-        delete root.npcs;
         delete root.sources;
         delete root.headlines;
         delete root.lat;
@@ -543,16 +504,10 @@ export class EventSlideManager {
         const v = keepVariant;
         root.name = v.name || '';
         root.description = v.description || '';
-        root.filters = Array.isArray(v.filters) ? [...v.filters] : [];
-        root.factions = Array.isArray(v.factions) ? [...v.factions] : [];
-        root.npcs = Array.isArray(v.npcs) ? [...v.npcs] : [];
         root.sources = v.sources ? JSON.parse(JSON.stringify(v.sources)) : undefined;
         root.headlines = Array.isArray(v.headlines) ? [...v.headlines] : undefined;
         root.locationType = v.locationType || root.locationType || 'earth';
         root.cityDisplayName = v.cityDisplayName;
-        root.secondaryCountryFlags = Array.isArray(v.secondaryCountryFlags) && v.secondaryCountryFlags.length > 0
-            ? [...v.secondaryCountryFlags]
-            : undefined;
         root.secondaryCountryPlaces = Array.isArray(v.secondaryCountryPlaces)
             ? v.secondaryCountryPlaces.map((p) => ({
                   locationName: p.locationName,
@@ -579,6 +534,7 @@ export class EventSlideManager {
             if (v.x !== undefined) root.x = v.x;
             if (v.y !== undefined) root.y = v.y;
         }
+        delete root.secondaryCountryFlags;
         delete root.variants;
     }
 
@@ -733,6 +689,63 @@ export class EventSlideManager {
     }
 
     /**
+     * Resolve the live row object from eventManager.events for the slide that is open (bio archives only).
+     * @returns {object|null}
+     */
+    _findFreshBioRootForCurrentSlide() {
+        const em = typeof window !== 'undefined' ? window.eventManager : null;
+        const ds = em?.dataService;
+        if (!em || !ds) return null;
+        const arch = typeof ds.getArchiveSource === 'function' ? ds.getArchiveSource() : '';
+        if (!isBioArchiveSource(arch)) return null;
+        const cur = this.uiView?.currentEventData || this.currentEventData;
+        if (!cur?.name) return null;
+        const name = cur.name;
+        let ix = -1;
+        if (arch === 'heroes' && typeof em.findHeroArchiveEventIndex === 'function') {
+            ix = em.findHeroArchiveEventIndex(name);
+        } else if (arch === 'factions' && typeof em.findFactionArchiveEventIndex === 'function') {
+            ix = em.findFactionArchiveEventIndex(name);
+        } else if (arch === 'npcs' && typeof em.findNpcArchiveEventIndex === 'function') {
+            ix = em.findNpcArchiveEventIndex(name);
+        }
+        const list = em.events;
+        if (ix < 0 || !Array.isArray(list) || !list[ix]) return null;
+        return list[ix];
+    }
+
+    /**
+     * After Codex save updates story-archive JSON on disk, EventDataService re-fetches files;
+     * re-point the open slide at the new row object and refresh connections UI.
+     */
+    _onAtlasBioArchivesRefreshed(ev) {
+        const touched = ev?.detail?.archives;
+        if (!Array.isArray(touched) || !touched.length) return;
+        const ds = window.eventManager?.dataService;
+        if (!ds || !isBioArchiveSource(ds.getArchiveSource())) return;
+        if (!touched.includes(ds.getArchiveSource())) return;
+
+        const eventSlide = document.getElementById('eventSlide');
+        if (!eventSlide?.classList.contains('open')) return;
+        if (this._inlineDescEdit?.dirty) return;
+
+        const fresh = this._findFreshBioRootForCurrentSlide();
+        if (!fresh) return;
+
+        this.currentEventData = fresh;
+        if (this.uiView) {
+            this.uiView.currentEventData = fresh;
+        }
+
+        if (typeof window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent === 'function') {
+            window.LocationFlagHelpers.updateBioConnectionsSlideFromEvent(fresh);
+        }
+        if (eventSlide.classList.contains('event-slide--inline-editing')) {
+            this._populateInlineEditorFieldsFromTarget();
+        }
+    }
+
+    /**
      * Fills inline inputs from currentEventData + currentVariantIndex (while staying in edit mode).
      */
     _populateInlineEditorFieldsFromTarget() {
@@ -762,20 +775,21 @@ export class EventSlideManager {
         if (yearStartInput) yearStartInput.value = eventData.yearStart != null && eventData.yearStart !== '' ? String(eventData.yearStart) : '';
         if (yearEndInput) yearEndInput.value = eventData.yearEnd != null && eventData.yearEnd !== '' ? String(eventData.yearEnd) : '';
         if (eraNameInput) eraNameInput.value = eventData.eraName != null ? String(eventData.eraName) : '';
-        if (filtersInput) filtersInput.value = (target.filters || []).join(', ');
+        if (filtersInput) filtersInput.value = getStoryEventHeroTokens(target).join(', ');
         if (factionsInput) {
             const formSvc = window.eventManager?.formService;
             const manifest = window.eventManager?.factions?.length
                 ? window.eventManager.factions
                 : (window.globeController?.dataModel?.factions || []);
+            const facTok = getStoryEventFactionTokens(target);
             factionsInput.value = formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
-                ? formSvc.factionsArrayToFormDisplayString(target.factions || [], manifest)
-                : (target.factions || []).map((f) => String(f).replace(/^\d+/, '').trim()).join(', ');
+                ? formSvc.factionsArrayToFormDisplayString(facTok, manifest)
+                : facTok.map((f) => String(f).replace(/^\d+/, '').trim()).join(', ');
         }
-        if (npcsInput) npcsInput.value = (target.npcs || []).join(', ');
+        if (npcsInput) npcsInput.value = getStoryEventNpcTokens(target).join(', ');
         const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
         if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
-            const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archiveSrc = this._getEffectiveSlideArchiveSource();
             let places = [];
             let editorOpts = STORY_SECONDARY_PLACES_EDITOR_OPTS;
             if (isBioArchiveSource(archiveSrc)) {
@@ -795,7 +809,7 @@ export class EventSlideManager {
             npcFpEl &&
             window.HeroRelevantLocationsEditor?.render
         ) {
-            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archPop = this._getEffectiveSlideArchiveSource();
             if (!isBioArchiveSource(archPop)) {
                 window.HeroRelevantLocationsEditor.render(
                     heroFpEl,
@@ -820,7 +834,7 @@ export class EventSlideManager {
         }
         const bioConnPopulate = document.getElementById('eventSlideEditBioConnections');
         if (bioConnPopulate && window.BioArchiveConnectionsEditor?.render) {
-            const archConn = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archConn = this._getEffectiveSlideArchiveSource();
             if (isBioArchiveSource(archConn)) {
                 const conns = Array.isArray(target.connections) ? target.connections : [];
                 const bioOpts =
@@ -1217,14 +1231,16 @@ export class EventSlideManager {
             this._inlineDescEdit.originalText = target.description || '';
             this._inlineDescEdit.originalName = target.name || '';
             this._inlineDescEdit.originalCityDisplayName = target.cityDisplayName || '';
-            this._inlineDescEdit.originalFilters = Array.isArray(target.filters) ? [...target.filters] : [];
-            this._inlineDescEdit.originalFactions = Array.isArray(target.factions) ? [...target.factions] : [];
-            this._inlineDescEdit.originalNpcs = Array.isArray(target.npcs) ? [...target.npcs] : [];
+            this._inlineDescEdit.originalFilters = [...getStoryEventHeroTokens(target)];
+            this._inlineDescEdit.originalFactions = [...getStoryEventFactionTokens(target)];
+            this._inlineDescEdit.originalNpcs = [...getStoryEventNpcTokens(target)];
             this._inlineDescEdit.originalSources = Array.isArray(target.sources) ? JSON.parse(JSON.stringify(target.sources)) : [];
             this._inlineDescEdit.originalHeadlines = Array.isArray(target.headlines) ? [...target.headlines] : [];
-            this._inlineDescEdit.originalSecondaryCountryFlags = Array.isArray(target.secondaryCountryFlags)
-                ? [...target.secondaryCountryFlags]
-                : [];
+            const lhOrig = window.LocationFlagHelpers;
+            this._inlineDescEdit.originalSecondaryCountryFlags =
+                lhOrig && typeof lhOrig.getSecondaryCountryFlagFilenamesForEntity === 'function'
+                    ? [...lhOrig.getSecondaryCountryFlagFilenamesForEntity(target)]
+                    : [];
             this._inlineDescEdit.eventData = eventData;
             this._inlineDescEdit.variantIndex = variantIndex;
             this._inlineDescEdit.eventListIndex = this._resolveEventListIndex(eventData);
@@ -1280,7 +1296,7 @@ export class EventSlideManager {
             const addSecBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');
             if (addSecBtn && window.HeroRelevantLocationsEditor?.addRow) {
                 addSecBtn.onclick = () => {
-                    const ar = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                    const ar = this._getEffectiveSlideArchiveSource();
                     const opts = isBioArchiveSource(ar)
                         ? SATELLITE_RELEVANT_PLACES_EDITOR_OPTS
                         : STORY_SECONDARY_PLACES_EDITOR_OPTS;
@@ -1336,7 +1352,8 @@ export class EventSlideManager {
             if (!this._isInlineEditAllowed()) return;
             if (!this._inlineDescEdit.active) return;
 
-            const archInline = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archInline = this._getEffectiveSlideArchiveSource();
+            const dockStoryInline = !!window.standaloneEventSlide?._presentationFromDockTimeline;
             const { target: prevDescTarget } = this._getCurrentDescriptionTarget();
             const prevBioConnections =
                 isBioArchiveSource(archInline) && Array.isArray(prevDescTarget?.connections)
@@ -1375,6 +1392,14 @@ export class EventSlideManager {
             // Persist the same way EventManager does: save to localStorage via EventDataService.
             if (window.eventManager?.dataService?.saveEvents) {
                 window.eventManager.dataService.saveEvents();
+            }
+
+            if (
+                dockStoryInline &&
+                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
+                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
+            ) {
+                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
             }
 
             if (window.eventManager?.refreshGlobeEvents) {

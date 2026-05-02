@@ -14,7 +14,11 @@ import {
     applyStoryFilterPlacesToTarget,
     heroPlacesForEditor,
     factionPlacesForEditor,
-    npcPlacesForEditor
+    npcPlacesForEditor,
+    copyFilterPlaceArraysFromSource,
+    getStoryEventFactionTokens,
+    getStoryEventHeroTokens,
+    getStoryEventNpcTokens
 } from '../../utils/StoryFilterPlacesSync.js';
 
 function teardownMenuServiceEventSystemLayout() {
@@ -232,12 +236,9 @@ function updateStandaloneSliderTicks(activeFilters, events, eventsPerPage, curre
 function checkEventMatchesFilters(event, activeFilters) {
     if (!activeFilters || activeFilters.size === 0) return true;
     const filters = Array.from(activeFilters);
-    // Check heroes
-    const heroMatch = event.filters?.some(f => filters.includes(f));
-    // Check factions  
-    const factionMatch = event.factions?.some(f => filters.includes(f));
-    // Check npcs
-    const npcMatch = event.npcs?.some(n => filters.includes(n));
+    const heroMatch = getStoryEventHeroTokens(event).some((f) => filters.includes(f));
+    const factionMatch = getStoryEventFactionTokens(event).some((f) => filters.includes(f));
+    const npcMatch = getStoryEventNpcTokens(event).some((n) => filters.includes(n));
     return heroMatch || factionMatch || npcMatch;
 }
 
@@ -1452,11 +1453,6 @@ export function createMenuButtonsContainer(statusService) {
                                                 archiveSourceEdit
                                             ) || { subjectName: '', subjectKind: 'hero' };
                                         window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
-                                        const addConn = document.getElementById('eventSlideAddBioConnectionBtn');
-                                        if (addConn) {
-                                            addConn.onclick = () =>
-                                                window.BioArchiveConnectionsEditor?.addRow?.();
-                                        }
                                     }
                                 }
                             } else if (heroLocEdit) {
@@ -1581,7 +1577,9 @@ export function createMenuButtonsContainer(statusService) {
                         
                         populateInlineEditor(eventData, displayEvent) {
                             const target = displayEvent || eventData;
-                            const archPop = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const archPop = this._presentationFromDockTimeline
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
                             const isBioPop =
                                 archPop === 'heroes' || archPop === 'factions' || archPop === 'npcs';
 
@@ -1593,11 +1591,21 @@ export function createMenuButtonsContainer(statusService) {
                             document.getElementById('eventSlideEditYearEnd')?.value = target.yearEnd || '';
                             document.getElementById('eventSlideEditEraName')?.value = target.eraName || '';
                             const fi = document.getElementById('eventSlideEditFilters');
-                            if (fi) fi.value = (target.filters || []).join(', ');
+                            if (fi) fi.value = getStoryEventHeroTokens(target).join(', ');
                             const fa = document.getElementById('eventSlideEditFactions');
-                            if (fa) fa.value = (target.factions || []).join(', ');
+                            if (fa) {
+                                const formSvc = window.eventManager?.formService;
+                                const manifest = window.eventManager?.factions?.length
+                                    ? window.eventManager.factions
+                                    : window.globeController?.dataModel?.factions || [];
+                                const facTok = getStoryEventFactionTokens(target);
+                                fa.value =
+                                    formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
+                                        ? formSvc.factionsArrayToFormDisplayString(facTok, manifest)
+                                        : facTok.map((f) => String(f).replace(/^\d+/, '').trim()).join(', ');
+                            }
                             const ni = document.getElementById('eventSlideEditNpcs');
-                            if (ni) ni.value = (target.npcs || []).join(', ');
+                            if (ni) ni.value = getStoryEventNpcTokens(target).join(', ');
                             const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
                             if (secPlacesEl && window.HeroRelevantLocationsEditor?.render) {
                                 const places = isBioPop
@@ -1743,6 +1751,7 @@ export function createMenuButtonsContainer(statusService) {
                             }
                             
                             // Create a new variant based on the current event data
+                            const fpNew = copyFilterPlaceArraysFromSource(eventData);
                             const newVariant = {
                                 name: 'New Variant',
                                 description: '',
@@ -1750,18 +1759,17 @@ export function createMenuButtonsContainer(statusService) {
                                 yearStart: eventData.yearStart || eventData.year,
                                 yearEnd: eventData.yearEnd || null,
                                 eraName: eventData.eraName || '',
-                                filters: [...(eventData.filters || [])],
-                                factions: [...(eventData.factions || [])],
-                                npcs: [...(eventData.npcs || [])],
                                 headlines: [...(eventData.headlines || [])],
                                 sources: [],
-                                // Copy location-specific fields if they exist
                                 lat: eventData.lat,
                                 lon: eventData.lon,
                                 x: eventData.x,
                                 y: eventData.y,
                                 locationType: eventData.locationType
                             };
+                            if (fpNew.heroFilterPlaces.length) newVariant.heroFilterPlaces = fpNew.heroFilterPlaces;
+                            if (fpNew.factionFilterPlaces.length) newVariant.factionFilterPlaces = fpNew.factionFilterPlaces;
+                            if (fpNew.npcFilterPlaces.length) newVariant.npcFilterPlaces = fpNew.npcFilterPlaces;
                             
                             eventData.variants.push(newVariant);
                             this.renderVariantsEditor(eventData);
@@ -1898,7 +1906,10 @@ export function createMenuButtonsContainer(statusService) {
                             
                             console.log('[MenuServiceHelpers] saveFullEdit called for event:', eventData.name);
 
-                            const archiveSource = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+                            const dockStoryPresentationActive = !!this._presentationFromDockTimeline;
+                            const archiveSource = dockStoryPresentationActive
+                                ? 'story'
+                                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
                             const titleEl = document.getElementById('eventSlideTitle');
                             const textEl = document.getElementById('eventSlideText');
                             /** @type {object|null} */
@@ -1985,9 +1996,9 @@ export function createMenuButtonsContainer(statusService) {
                                 target.yearStart = parseInt(document.getElementById('eventSlideEditYearStart')?.value) || target.yearStart;
                                 target.yearEnd = parseInt(document.getElementById('eventSlideEditYearEnd')?.value) || null;
                                 target.eraName = document.getElementById('eventSlideEditEraName')?.value || null;
-                                const heroFpSv = document.getElementById('eventSlideEditHeroFilterPlaces');
-                                if (heroFpSv && window.HeroRelevantLocationsEditor?.collect) {
-                                    const hr = window.HeroRelevantLocationsEditor.collect(heroFpSv);
+                                if (window.HeroRelevantLocationsEditor?.collect) {
+                                    const heroFpSv = document.getElementById('eventSlideEditHeroFilterPlaces');
+                                    const hr = heroFpSv ? window.HeroRelevantLocationsEditor.collect(heroFpSv) : [];
                                     const fr = window.HeroRelevantLocationsEditor.collect(
                                         document.getElementById('eventSlideEditFactionFilterPlaces')
                                     );
@@ -1995,19 +2006,6 @@ export function createMenuButtonsContainer(statusService) {
                                         document.getElementById('eventSlideEditNpcFilterPlaces')
                                     );
                                     applyStoryFilterPlacesToTarget(target, hr, fr, nr);
-                                } else {
-                                    const fiSv = document.getElementById('eventSlideEditFilters');
-                                    if (fiSv) {
-                                        target.filters = fiSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
-                                    }
-                                    const faSv = document.getElementById('eventSlideEditFactions');
-                                    if (faSv) {
-                                        target.factions = faSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
-                                    }
-                                    const niSv = document.getElementById('eventSlideEditNpcs');
-                                    if (niSv) {
-                                        target.npcs = niSv.value.split(',').map(s => s.trim()).filter(Boolean) || [];
-                                    }
                                 }
                                 const secPlacesEl = document.getElementById('eventSlideEditSecondaryCountryPlaces');
                                 const places =
@@ -2056,6 +2054,14 @@ export function createMenuButtonsContainer(statusService) {
                                 }
                             } else {
                                 console.error('[MenuServiceHelpers] window.eventManager not available!');
+                            }
+
+                            if (
+                                dockStoryPresentationActive &&
+                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
+                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
+                            ) {
+                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
                             }
 
                             if (window.eventManager?.refreshGlobeEvents) {
@@ -2155,8 +2161,10 @@ export function createMenuButtonsContainer(statusService) {
                                               );
                                               if (flagFile) out.push(flagFile);
                                           }
-                                          if (event?.secondaryCountryFlags?.length) {
-                                              out.push(...event.secondaryCountryFlags);
+                                          const secFn =
+                                              lh?.getSecondaryCountryFlagFilenamesForEntity?.(event) || [];
+                                          if (secFn.length) {
+                                              out.push(...secFn);
                                           }
                                           return out;
                                       })();

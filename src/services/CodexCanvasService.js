@@ -722,6 +722,222 @@ function addDirectedCodexEdge(fromId, toId) {
     return true;
 }
 
+function normalizeBioNameLoose(s) {
+    return String(s || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+}
+
+function heroNamesLooselyEqualCodex(a, b) {
+    const na = normalizeBioNameLoose(a);
+    const nb = normalizeBioNameLoose(b);
+    if (na && na === nb) return true;
+    const la = na.replace(/:/g, '').replace(/\s/g, '');
+    const lb = nb.replace(/:/g, '').replace(/\s/g, '');
+    return la.length > 0 && la === lb;
+}
+
+function factionNodeMatchesToken(node, token) {
+    const raw = String(token || '').trim();
+    if (!raw || node.kind !== 'faction') return false;
+    const fn = String(node.factionFilename || '').trim();
+    const dn = String(node.factionDisplay || '').trim();
+    if (fn === raw || dn === raw) return true;
+    const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+    if (fh && typeof fh.factionIdsMatch === 'function') {
+        if (fh.factionIdsMatch(fn, raw) || fh.factionIdsMatch(dn, raw)) return true;
+    }
+    const bare = raw.replace(/^\d+/, '').trim();
+    const fnBare = fn.replace(/^\d+/, '').trim();
+    return (
+        normalizeBioNameLoose(fnBare) === normalizeBioNameLoose(bare)
+        || normalizeBioNameLoose(dn) === normalizeBioNameLoose(bare)
+    );
+}
+
+/**
+ * @param {'hero'|'faction'|'npc'} kind
+ * @param {string} nameToken
+ * @returns {string} node id or ''
+ */
+function findCodexNodeIdForBioEntity(kind, nameToken) {
+    const token = String(nameToken || '').trim();
+    if (!token || !Array.isArray(codexAllNodes)) return '';
+    const k = String(kind || 'hero').toLowerCase();
+    for (let i = 0; i < codexAllNodes.length; i += 1) {
+        const n = codexAllNodes[i];
+        if (!n || n.kind === 'junction') continue;
+        if (k === 'hero' && n.kind === 'hero' && heroNamesLooselyEqualCodex(n.heroName, token)) {
+            return n.id;
+        }
+        if (k === 'npc' && n.kind === 'npc') {
+            if (String(n.npcName || '').trim().toLowerCase() === token.toLowerCase()) return n.id;
+        }
+        if (k === 'faction' && n.kind === 'faction' && factionNodeMatchesToken(n, token)) {
+            return n.id;
+        }
+    }
+    return '';
+}
+
+function isCodexDirectedReachable(startId, targetId) {
+    if (!startId || !targetId || startId === targetId) return false;
+    const adj = new Map();
+    for (let i = 0; i < codexEdges.length; i += 1) {
+        const e = codexEdges[i];
+        if (!e || !e.fromId || !e.toId) continue;
+        if (!adj.has(e.fromId)) adj.set(e.fromId, []);
+        adj.get(e.fromId).push(e.toId);
+    }
+    const q = [startId];
+    const seen = new Set([startId]);
+    while (q.length) {
+        const cur = q.shift();
+        if (cur === targetId) return true;
+        const outs = adj.get(cur);
+        if (!outs) continue;
+        for (let j = 0; j < outs.length; j += 1) {
+            const nxt = outs[j];
+            if (!seen.has(nxt)) {
+                seen.add(nxt);
+                q.push(nxt);
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * True if `targetId` is reachable from `startId` treating all edges as undirected (junction chains count).
+ * Used so archive “Show in Codex” does not add a shortcut A→B when A and B are already linked through breaks
+ * in either direction (e.g. B→J→A still connects the pair).
+ */
+function isCodexUndirectedReachable(startId, targetId) {
+    if (!startId || !targetId || startId === targetId) return false;
+    const adj = new Map();
+    for (let i = 0; i < codexEdges.length; i += 1) {
+        const e = codexEdges[i];
+        if (!e || !e.fromId || !e.toId) continue;
+        if (!adj.has(e.fromId)) adj.set(e.fromId, []);
+        if (!adj.has(e.toId)) adj.set(e.toId, []);
+        adj.get(e.fromId).push(e.toId);
+        adj.get(e.toId).push(e.fromId);
+    }
+    const q = [startId];
+    const seen = new Set([startId]);
+    while (q.length) {
+        const cur = q.shift();
+        if (cur === targetId) return true;
+        const outs = adj.get(cur);
+        if (!outs) continue;
+        for (let j = 0; j < outs.length; j += 1) {
+            const nxt = outs[j];
+            if (!seen.has(nxt)) {
+                seen.add(nxt);
+                q.push(nxt);
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * Add directed edges for bio-archive connections with `showInCodex` when no path exists yet.
+ * Junction chains in codex-labels.json stay authoritative for routing; we only add missing hops.
+ * Uses undirected connectivity so a break path B→J→A does not get a duplicate archive shortcut A→B.
+ */
+async function syncCodexEdgesFromBioArchiveConnections() {
+    if (!root || !Array.isArray(codexAllNodes) || codexAllNodes.length === 0) return;
+    const files = [
+        ['heroes', 'data/story-archive-heroes.json'],
+        ['factions', 'data/story-archive-factions.json'],
+        ['npcs', 'data/story-archive-npcs.json']
+    ];
+    let added = 0;
+    for (let fi = 0; fi < files.length; fi += 1) {
+        const arch = files[fi][0];
+        const url = files[fi][1];
+        let events = [];
+        try {
+            const sep = url.includes('?') ? '&' : '?';
+            const res = await fetch(`${url}${sep}v=${Date.now()}`, { cache: 'no-store' });
+            if (!res.ok) continue;
+            const data = await res.json();
+            events = Array.isArray(data.events) ? data.events : [];
+        } catch (_) {
+            continue;
+        }
+        const subjectKind = arch === 'heroes' ? 'hero' : arch === 'factions' ? 'faction' : 'npc';
+        for (let ei = 0; ei < events.length; ei += 1) {
+            const ev = events[ei];
+            if (!ev) continue;
+            let subjectName = ev.name != null ? String(ev.name).trim() : '';
+            if (
+                !subjectName
+                && Array.isArray(ev.variants)
+                && ev.variants[0]
+                && ev.variants[0].name != null
+            ) {
+                subjectName = String(ev.variants[0].name).trim();
+            }
+            if (!subjectName) continue;
+            const conns = Array.isArray(ev.connections) ? ev.connections : [];
+            for (let ci = 0; ci < conns.length; ci += 1) {
+                const c = conns[ci];
+                if (!c || c.showInCodex !== true) continue;
+                let lk = String(c.kind || 'hero').toLowerCase();
+                if (lk === 'character') lk = 'hero';
+                if (lk !== 'faction' && lk !== 'npc') lk = 'hero';
+                const linkedName = c.name != null ? String(c.name).trim() : '';
+                if (!linkedName) continue;
+                const fromId = findCodexNodeIdForBioEntity(subjectKind, subjectName);
+                const toId = findCodexNodeIdForBioEntity(lk, linkedName);
+                if (!fromId || !toId || fromId === toId) continue;
+                if (isCodexUndirectedReachable(fromId, toId)) continue;
+                if (addDirectedCodexEdge(fromId, toId)) added += 1;
+            }
+        }
+    }
+    if (added > 0) {
+        markCodexLayoutDirty();
+        redrawCodexEdges();
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus(`Codex: added ${added} link(s) from archive “Show in Codex” rows.`, 'success');
+        }
+    }
+}
+
+function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
+    if (!Array.isArray(codexAllNodes)) return '';
+    if (kind === 'hero' && String(heroName || '').trim()) {
+        const t = String(heroName).trim();
+        for (let i = 0; i < codexAllNodes.length; i += 1) {
+            const n = codexAllNodes[i];
+            if (n && n.kind === 'hero' && heroNamesLooselyEqualCodex(n.heroName, t)) return n.id;
+        }
+    } else if (kind === 'npc' && String(heroName || '').trim()) {
+        const t = String(heroName).trim().toLowerCase();
+        for (let j = 0; j < codexAllNodes.length; j += 1) {
+            const n = codexAllNodes[j];
+            if (n && n.kind === 'npc' && String(n.npcName || '').trim().toLowerCase() === t) return n.id;
+        }
+    } else if (kind === 'faction' && faction && faction.filename) {
+        const fn = String(faction.filename).trim();
+        for (let k = 0; k < codexAllNodes.length; k += 1) {
+            const n = codexAllNodes[k];
+            if (n && n.kind === 'faction' && String(n.factionFilename || '').trim() === fn) return n.id;
+        }
+    } else if (kind === 'country' && countryKey) {
+        const ck = String(countryKey).trim();
+        for (let m = 0; m < codexAllNodes.length; m += 1) {
+            const n = codexAllNodes[m];
+            if (n && n.kind === 'country' && String(n.countryKey || '').trim() === ck) return n.id;
+        }
+    }
+    return '';
+}
+
 /** World top-left for a new junction centered between two node centers. */
 function junctionTopLeftBetweenNodeElements(elFrom, elTo) {
     const cA = getNodeCenterWorldPx(elFrom);
@@ -3535,12 +3751,39 @@ export function saveCodexLayout() {
                 }
                 return res.json().catch(() => ({}));
             })
-            .then((data) => {
+            .then(async (data) => {
+                let archList = Array.isArray(data?.bioArchiveFilesWritten)
+                    ? data.bioArchiveFilesWritten.filter(Boolean)
+                    : [];
+                if (!archList.length && Number(data?.bioConnectionsUpserted) > 0) {
+                    archList = ['heroes', 'factions', 'npcs'];
+                }
+                const ds = window.eventManager?.dataService;
+                if (archList.length && typeof ds?.refreshBioArchivesFromCodexDiskWrite === 'function') {
+                    try {
+                        const r = await ds.refreshBioArchivesFromCodexDiskWrite(archList);
+                        const out = r?.updated && r.updated.length ? r.updated : archList;
+                        window.dispatchEvent(
+                            new CustomEvent('atlas-bio-archives-refreshed', { detail: { archives: out } })
+                        );
+                    } catch (reErr) {
+                        console.warn('CodexCanvasService: post-codex bio archive refresh failed', reErr);
+                    }
+                }
                 if (typeof window.updateStatus === 'function') {
-                    window.updateStatus(
-                        `✓ Codex saved (${data?.nodesCount ?? nodes.length} nodes, ${data?.edgesCount ?? edges.length} links)`,
-                        'success'
-                    );
+                    let msg = `✓ Codex saved (${data?.nodesCount ?? nodes.length} nodes, ${data?.edgesCount ?? edges.length} links)`;
+                    const nBio = Number(data?.bioConnectionsUpserted) || 0;
+                    if (nBio > 0) {
+                        msg += `. Story archives: ${nBio} connection row(s) synced from entity links.`;
+                    }
+                    const warns = Array.isArray(data?.bioArchiveWarnings) ? data.bioArchiveWarnings : [];
+                    if (warns.length) {
+                        msg += ` (${warns.slice(0, 2).join(' ')}${warns.length > 2 ? '…' : ''})`;
+                    }
+                    if (data?.bioArchiveError) {
+                        msg += ` Bio archive sync error: ${data.bioArchiveError}`;
+                    }
+                    window.updateStatus(msg, data?.bioArchiveError ? 'warning' : 'success');
                 }
             })
             .catch((e) => {
@@ -3588,6 +3831,76 @@ function codexNodesLookLikeModernSavedShape(nodeArr) {
 }
 
 /**
+ * Drop a direct entity↔entity edge if those two nodes are still connected without it via a path
+ * that uses at least one junction (break) node — i.e. the archive “shortcut” on top of A→J→B.
+ * Requires a junction on the alternate path so we do not strip middle segments when only another
+ * entity chord (e.g. R→B) still connects J to B.
+ * @param {unknown[]} nodes
+ * @param {{ fromId: string, toId: string }[]} edges
+ */
+function pruneRedundantEntityShortcutEdges(nodes, edges) {
+    if (!Array.isArray(edges) || edges.length === 0 || !Array.isArray(nodes)) return edges;
+    const byId = new Map();
+    for (let i = 0; i < nodes.length; i += 1) {
+        const n = nodes[i];
+        if (n && n.id) byId.set(n.id, n);
+    }
+    const entityKinds = new Set(['hero', 'faction', 'npc', 'country']);
+    function isEntityNode(id) {
+        const n = byId.get(id);
+        return !!(n && entityKinds.has(n.kind));
+    }
+    function isJunctionNode(id) {
+        const n = byId.get(id);
+        return !!(n && n.kind === 'junction');
+    }
+    /** Undirected reachability from start to goal using edgeList, path must visit a junction. */
+    function connectedViaJunction(edgeList, start, goal) {
+        const adj = new Map();
+        for (let k = 0; k < edgeList.length; k += 1) {
+            const e = edgeList[k];
+            if (!e || !e.fromId || !e.toId) continue;
+            if (!adj.has(e.fromId)) adj.set(e.fromId, []);
+            if (!adj.has(e.toId)) adj.set(e.toId, []);
+            adj.get(e.fromId).push(e.toId);
+            adj.get(e.toId).push(e.fromId);
+        }
+        const q = [{ cur: start, passedJunction: false }];
+        const seen = new Set([`${start}|0`]);
+        while (q.length) {
+            const { cur, passedJunction } = q.shift();
+            if (cur === goal && passedJunction) return true;
+            const neighbors = adj.get(cur) || [];
+            for (let j = 0; j < neighbors.length; j += 1) {
+                const nxt = neighbors[j];
+                const pj = passedJunction || isJunctionNode(nxt);
+                const key = `${nxt}|${pj ? 1 : 0}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    q.push({ cur: nxt, passedJunction: pj });
+                }
+            }
+        }
+        return false;
+    }
+    const out = [];
+    for (let i = 0; i < edges.length; i += 1) {
+        const e = edges[i];
+        if (!e || !e.fromId || !e.toId) continue;
+        if (!isEntityNode(e.fromId) || !isEntityNode(e.toId)) {
+            out.push(e);
+            continue;
+        }
+        const rest = edges.filter((_, j) => j !== i);
+        if (connectedViaJunction(rest, e.fromId, e.toId)) {
+            continue;
+        }
+        out.push(e);
+    }
+    return out;
+}
+
+/**
  * Parse raw save/API payload → node list, deduped edges, migration flags (shared by load + import).
  * @param {unknown} sourceObj
  * @returns {{ nodes: unknown[], edges: { fromId: string, toId: string }[], migratedNow: boolean }}
@@ -3613,7 +3926,8 @@ function parseMigrateAndDedupeCodexSource(sourceObj) {
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
     );
-    return { nodes, edges: dedupedEdges, migratedNow };
+    const prunedEdges = pruneRedundantEntityShortcutEdges(nodes, dedupedEdges);
+    return { nodes, edges: prunedEdges, migratedNow };
 }
 
 /** One saved node record → DOM (used by initial load and JSON import). */
@@ -3881,6 +4195,7 @@ async function loadCodexState() {
     }
     updateCodexToolbar();
     mirrorCanonicalToLocalStorage();
+    void syncCodexEdgesFromBioArchiveConnections();
 }
 
 function stripCodexBoardForFullReplace() {
@@ -3949,6 +4264,7 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
         } catch (_) {
             /* ignore */
         }
+        void syncCodexEdgesFromBioArchiveConnections();
         updateCodexToolbar();
         if (typeof window.updateStatus === 'function') {
             window.updateStatus('Codex import: board cleared (empty layout).', 'success');
@@ -3982,6 +4298,7 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
             'success'
         );
     }
+    void syncCodexEdgesFromBioArchiveConnections();
     updateCodexToolbar();
 }
 
@@ -5264,10 +5581,17 @@ function applyCodexEventThumbnailFilterHover(event, displayEvent) {
     if (!codexRoot || !event) return;
     clearCodexEventThumbnailFilterHover();
     const disp = displayEvent && typeof displayEvent === 'object' ? displayEvent : event;
+    const S = window.StoryFilterPlacesSync;
     const mergeList = (a, b) => [...(Array.isArray(a) ? a : []), ...(Array.isArray(b) ? b : [])];
-    const heroesRaw = mergeList(event.filters, disp.filters);
-    const factionsRaw = mergeList(event.factions, disp.factions);
-    const npcsRaw = mergeList(event.npcs, disp.npcs);
+    const heroesRaw = S?.getStoryEventHeroTokens
+        ? mergeList(S.getStoryEventHeroTokens(event), S.getStoryEventHeroTokens(disp))
+        : mergeList(event.filters, disp.filters);
+    const factionsRaw = S?.getStoryEventFactionTokens
+        ? mergeList(S.getStoryEventFactionTokens(event), S.getStoryEventFactionTokens(disp))
+        : mergeList(event.factions, disp.factions);
+    const npcsRaw = S?.getStoryEventNpcTokens
+        ? mergeList(S.getStoryEventNpcTokens(event), S.getStoryEventNpcTokens(disp))
+        : mergeList(event.npcs, disp.npcs);
     const heroesLower = new Set(
         heroesRaw.map((h) => String(h || '').trim().toLowerCase()).filter(Boolean)
     );
@@ -5778,12 +6102,41 @@ async function openHeroArchiveEntryFromCodexHeroName(heroNameFromNode) {
     }
 }
 
-function maybeOpenHeroArchiveFromCodexNodeEl(nodeEl) {
+/**
+ * View mode: portrait / country nodes open the matching Story Archive row (heroes, factions, npcs, locations).
+ */
+function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl) {
     if (codexMode !== 'view') return;
-    if (!nodeEl || nodeEl.dataset.codexKind !== 'hero') return;
-    const heroName = String(nodeEl.dataset.codexHero || '').trim();
-    if (!heroName) return;
-    void openHeroArchiveEntryFromCodexHeroName(heroName);
+    if (!nodeEl) return;
+    const em = window.eventManager;
+    if (!em) return;
+    const kind = nodeEl.dataset.codexKind || '';
+
+    if (kind === 'hero') {
+        const heroName = String(nodeEl.dataset.codexHero || '').trim();
+        if (!heroName) return;
+        void openHeroArchiveEntryFromCodexHeroName(heroName);
+        return;
+    }
+    if (kind === 'npc') {
+        const npc = String(nodeEl.dataset.codexNpc || '').trim();
+        if (!npc || typeof em.openNpcArchiveEventByName !== 'function') return;
+        void em.openNpcArchiveEventByName(npc);
+        return;
+    }
+    if (kind === 'faction') {
+        const token = String(
+            nodeEl.dataset.codexFactionDisplay || nodeEl.dataset.codexFactionFile || ''
+        ).trim();
+        if (!token || typeof em.openFactionArchiveEventByName !== 'function') return;
+        void em.openFactionArchiveEventByName(token);
+        return;
+    }
+    if (kind === 'country') {
+        const ck = String(nodeEl.dataset.codexCountryKey || '').trim();
+        if (!ck || typeof em.openLocationArchiveEventByName !== 'function') return;
+        void em.openLocationArchiveEventByName(ck);
+    }
 }
 
 function bindCodexNodeInteraction(el) {
@@ -5879,7 +6232,7 @@ function bindCodexNodeInteraction(el) {
             }
             // Select the node
             selectCodexNode(el);
-            maybeOpenHeroArchiveFromCodexNodeEl(el);
+            maybeOpenStoryArchiveFromCodexNodeEl(el);
             return;
         }
         
@@ -6131,6 +6484,18 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
     const scale = resolveCodexNodeScale(kind, opts.scale);
     const { x: cx, y: cy } = clampCodexNodeTopLeftToWorld(x, y, scale, kind);
     const fromSaved = opts.fromSaved === true;
+    if (!fromSaved) {
+        const dup = findCodexDuplicatePortraitNodeId(kind, heroName, faction, opts.countryKey);
+        if (dup) {
+            if (typeof window.updateStatus === 'function') {
+                window.updateStatus(
+                    'A Codex node already exists for this hero, faction, NPC, or country. Each entity can only appear once.',
+                    'warning'
+                );
+            }
+            return undefined;
+        }
+    }
     const el = createCodexNodeElement(cx, cy, kind, heroName, faction, { ...opts, scale });
     (codexWorldEl || root).appendChild(el);
 
@@ -6359,6 +6724,7 @@ if (typeof window !== 'undefined') {
         applyCodexEventThumbnailFilterHover,
         clearCodexEventThumbnailFilterHover,
         exportCodexJson: exportCodexLayoutJsonDownload,
-        importCodexJsonText: importCodexLayoutFromJsonText
+        importCodexJsonText: importCodexLayoutFromJsonText,
+        syncCodexEdgesFromBioArchiveConnections
     };
 }

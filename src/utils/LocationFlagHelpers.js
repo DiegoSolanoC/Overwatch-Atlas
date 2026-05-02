@@ -592,7 +592,7 @@
             subjectName = String(ev.variants[0].name).trim();
         }
         var subjectKind = arch === 'factions' ? 'faction' : arch === 'npcs' ? 'npc' : 'hero';
-        var parts = [];
+        var buckets = { hero: [], faction: [], npc: [] };
         for (var i = 0; i < rows.length; i++) {
             var r = rows[i] || {};
             var linkedKind = String(r.kind || 'hero').toLowerCase();
@@ -608,65 +608,114 @@
                 tOut = leg;
                 tIn = leg;
             }
-            var outDisp = tOut
-                ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tOut) + '</span>'
-                : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
-            var inDisp = tIn
-                ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tIn) + '</span>'
-                : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
 
-            var laneB = String(r.thisEntryLane || 'A').toUpperCase() === 'B';
-            var colThis =
-                '<div class="event-slide-bio-connections__portrait-col">' +
-                bioArchiveConnectionPortraitHtml(subjectKind, subjectName) +
-                '</div>';
-            var colThem =
-                '<div class="event-slide-bio-connections__portrait-col">' +
-                bioArchiveConnectionPortraitHtml(linkedKind, linkedName) +
-                '</div>';
-            var leftHtml = laneB ? colThem : colThis;
-            var rightHtml = laneB ? colThis : colThem;
+            var factionMixed =
+                (subjectKind === 'faction' && (linkedKind === 'hero' || linkedKind === 'npc')) ||
+                ((subjectKind === 'hero' || subjectKind === 'npc') && linkedKind === 'faction');
 
-            var mid;
-            if (laneB) {
-                mid =
-                    '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
-                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
-                    inDisp +
+            var rowHtml;
+            if (factionMixed) {
+                var facName = linkedKind === 'faction' ? linkedName : subjectName;
+                var othKind = linkedKind === 'faction' ? subjectKind : linkedKind;
+                var othName = linkedKind === 'faction' ? subjectName : linkedName;
+                var tOne = String(
+                    subjectKind === 'faction' ? tOut || tIn || leg : tIn || tOut || leg
+                ).trim();
+                var oneDisp = tOne
+                    ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tOne) + '</span>'
+                    : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
+                var colFac =
+                    '<div class="event-slide-bio-connections__portrait-col">' +
+                    bioArchiveConnectionPortraitHtml('faction', facName) +
+                    '</div>';
+                var colOth =
+                    '<div class="event-slide-bio-connections__portrait-col">' +
+                    bioArchiveConnectionPortraitHtml(othKind, othName) +
+                    '</div>';
+                var midOne =
+                    '<div class="event-slide-bio-connections__oneway-arrows" role="group" aria-label="Relationship from faction">' +
+                    oneDisp +
                     '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
-                    '</div>' +
-                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
-                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
-                    outDisp +
-                    '</div>' +
+                    '</div>';
+                rowHtml =
+                    '<div class="event-slide-bio-connections__row event-slide-bio-connections__row--dual event-slide-bio-connections__row--faction-oneway">' +
+                    colFac +
+                    midOne +
+                    colOth +
                     '</div>';
             } else {
-                mid =
-                    '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
-                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
-                    outDisp +
-                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
-                    '</div>' +
-                    '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
-                    '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
-                    inDisp +
-                    '</div>' +
+                var outDisp = tOut
+                    ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tOut) + '</span>'
+                    : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
+                var inDisp = tIn
+                    ? '<span class="event-slide-bio-connections__arrow-text">' + escapeHtmlAttr(tIn) + '</span>'
+                    : '<span class="event-slide-bio-connections__arrow-text event-slide-bio-connections__arrow-text--muted">—</span>';
+
+                var laneB = String(r.thisEntryLane || 'A').toUpperCase() === 'B';
+                var colThis =
+                    '<div class="event-slide-bio-connections__portrait-col">' +
+                    bioArchiveConnectionPortraitHtml(subjectKind, subjectName) +
                     '</div>';
+                var colThem =
+                    '<div class="event-slide-bio-connections__portrait-col">' +
+                    bioArchiveConnectionPortraitHtml(linkedKind, linkedName) +
+                    '</div>';
+                var leftHtml = laneB ? colThem : colThis;
+                var rightHtml = laneB ? colThis : colThem;
+
+                var mid;
+                if (laneB) {
+                    mid =
+                        '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
+                        '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
+                        inDisp +
+                        '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
+                        '</div>' +
+                        '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
+                        '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
+                        outDisp +
+                        '</div>' +
+                        '</div>';
+                } else {
+                    mid =
+                        '<div class="event-slide-bio-connections__arrows" role="group" aria-label="Relationship in each direction">' +
+                        '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--out">' +
+                        outDisp +
+                        '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
+                        '</div>' +
+                        '<div class="event-slide-bio-connections__arrow-lane event-slide-bio-connections__arrow-lane--in">' +
+                        '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">←</span>' +
+                        inDisp +
+                        '</div>' +
+                        '</div>';
+                }
+
+                var rowCls =
+                    'event-slide-bio-connections__row event-slide-bio-connections__row--dual' +
+                    (laneB ? ' event-slide-bio-connections__row--lane-b' : '');
+
+                rowHtml = '<div class="' + rowCls + '">' + leftHtml + mid + rightHtml + '</div>';
             }
 
-            var rowCls =
-                'event-slide-bio-connections__row event-slide-bio-connections__row--dual' +
-                (laneB ? ' event-slide-bio-connections__row--lane-b' : '');
-
-            parts.push(
-                '<div class="' + rowCls + '">' +
-                    leftHtml +
-                    mid +
-                    rightHtml +
+            buckets[linkedKind].push(rowHtml);
+        }
+        var order = ['hero', 'faction', 'npc'];
+        var out = [];
+        for (var g = 0; g < order.length; g++) {
+            var k = order[g];
+            var arr = buckets[k];
+            if (!arr.length) continue;
+            out.push(
+                '<div class="event-slide-bio-connections__group" data-linked-kind="' +
+                    k +
+                    '" role="group" aria-label="' +
+                    (k === 'faction' ? 'Faction' : k === 'npc' ? 'NPC' : 'Hero') +
+                    ' connections">' +
+                    arr.join('') +
                     '</div>'
             );
         }
-        return parts.join('');
+        return out.join('');
     }
 
     /** @param {Object|null} ev */
@@ -1176,23 +1225,18 @@
     }
 
     /**
-     * Mutates a single event or variant: sets `secondaryCountryFlags` from `secondaryCountryPlaces`, or clears it.
+     * Story timeline: remove persisted `secondaryCountryFlags`. Flag filenames are always derived from
+     * `secondaryCountryPlaces` (or bio `relevantLocations`) via {@link getSecondaryCountryFlagFilenamesForEntity}.
      * @param {Object|null} node
      */
     function syncSecondaryCountryFlagsOnEntity(node) {
         if (!node || typeof node !== 'object') return;
-        var places = node.secondaryCountryPlaces;
-        var lt = node.locationType || 'earth';
-        if (Array.isArray(places) && places.length > 0) {
-            var derived = deriveSecondaryCountryFlagFilenamesFromPlaces(places, lt);
-            node.secondaryCountryFlags = derived.length > 0 ? derived : undefined;
-        } else {
-            node.secondaryCountryFlags = undefined;
-        }
+        delete node.secondaryCountryFlags;
     }
 
     /**
-     * Flag filenames for country filter / chips: prefer grouped `secondaryCountryPlaces`, else legacy `secondaryCountryFlags`.
+     * Flag filenames for country filter / chips: prefer grouped `secondaryCountryPlaces`, else bio
+     * `relevantLocations`, else legacy `secondaryCountryFlags` (in-memory / stale JSON only).
      * @param {Object|null} ev
      * @returns {string[]}
      */
@@ -1232,7 +1276,7 @@
     }
 
     /**
-     * Main timeline story events: ensure `secondaryCountryPlaces` exists and `secondaryCountryFlags` stays in sync.
+     * Main timeline story events: ensure `secondaryCountryPlaces` exists; strip legacy `secondaryCountryFlags`.
      * @param {Object} ev
      */
     function migrateStoryEventSecondaryPlaces(ev) {

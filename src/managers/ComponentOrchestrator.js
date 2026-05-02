@@ -1343,10 +1343,11 @@ export class ComponentOrchestrator {
 
             // Filter tags (heroes, factions, NPCs)
             if (filterTerms.length > 0) {
+                const S = window.StoryFilterPlacesSync;
                 const eventTags = [
-                    ...(event.heroes || []),
-                    ...(event.factions || []),
-                    ...(event.npcs || [])
+                    ...(S?.getStoryEventHeroTokens?.(event) || event.heroes || []),
+                    ...(S?.getStoryEventFactionTokens?.(event) || event.factions || []),
+                    ...(S?.getStoryEventNpcTokens?.(event) || event.npcs || [])
                 ].map(t => t.toLowerCase());
                 
                 const hasMatch = filterTerms.some(term => 
@@ -1357,10 +1358,11 @@ export class ComponentOrchestrator {
 
             // Filter panel selection
             if (useFilterSelection && activeFilterSet.size > 0) {
+                const S = window.StoryFilterPlacesSync;
                 const eventTags = [
-                    ...(event.heroes || []),
-                    ...(event.factions || []),
-                    ...(event.npcs || [])
+                    ...(S?.getStoryEventHeroTokens?.(event) || event.heroes || []),
+                    ...(S?.getStoryEventFactionTokens?.(event) || event.factions || []),
+                    ...(S?.getStoryEventNpcTokens?.(event) || event.npcs || [])
                 ].map(t => t.toLowerCase());
                 
                 const hasMatch = Array.from(activeFilterSet).some(filter => 

@@ -224,6 +224,25 @@
     pointer-events: none !important;
 }
 
+/*
+ * Inline editing: relevant locations + bio connections live in .event-slide-top (above the
+ * description scrollport). Default .event-slide-content { overflow: hidden } clips tall forms.
+ * Use one scroll on the content column; description no longer uses a nested scroll while editing.
+ */
+.event-slide.event-slide--inline-editing .event-slide-content {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.event-slide.event-slide--inline-editing .event-slide-scrollable {
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow-y: visible !important;
+    overflow-x: hidden;
+}
+
 .event-slide-inline-editor {
     margin: 14px 0 14px 0;
     padding: 12px;
@@ -921,9 +940,78 @@
     align-items: center;
 }
 
-/* Bio archive connections editor: reorder | this + lane | relationship text | them | remove */
+/* Bio archive connections: three stacked blocks (hero / faction / NPC), each with its own row list */
+.event-slide-bio-conn-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.event-slide-bio-conn-block {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 12px 12px;
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.event-slide-bio-conn-block__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-slide-bio-conn-block__title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.event-slide-bio-conn-block__list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px 12px;
+    align-items: stretch;
+    container-type: inline-size;
+    container-name: bio-conn-edit-list;
+}
+
+/* Multiple same-type connection rows share one wrapping row; each card grows/shrinks with panel. */
+.event-slide-bio-conn-block__list > .event-slide-bio-conn-row {
+    flex: 1 1 min(100%, 380px);
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+@container bio-conn-edit-list (max-width: 440px) {
+    .event-slide-bio-conn-block__list > .event-slide-bio-conn-row {
+        flex: 1 1 100%;
+    }
+}
+
+.event-slide-bio-conn-block__list:empty::after {
+    content: 'No rows yet — use + Add above.';
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.38);
+    padding: 6px 2px 4px;
+}
+
+/* Bio archive connections editor: reorder | this + lane | relationship text | linked name | remove */
 .event-slide-bio-conn-row {
-    grid-template-columns: min-content minmax(120px, 1fr) minmax(160px, 1.35fr) minmax(130px, 1fr) auto;
+    grid-template-columns: min-content minmax(120px, 1fr) minmax(160px, 1.35fr) minmax(120px, 1fr) auto;
     align-items: start;
 }
 
@@ -998,26 +1086,94 @@
     box-sizing: border-box;
 }
 
-/* Read-only: this entry | bidirectional labels | linked entry */
-.event-slide-bio-connections__row--dual {
-    display: grid;
-    grid-template-columns: minmax(52px, 72px) minmax(0, 1fr) minmax(52px, 72px);
-    gap: 12px 16px;
+.event-slide-bio-conn-row__show-codex {
+    display: flex;
     align-items: center;
-    margin-bottom: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.78);
+    cursor: pointer;
 }
 
-.event-slide-bio-connections__row--dual:last-child {
-    border-bottom: none;
+.event-slide-bio-conn-row__show-codex input {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Read-only: group by linked type — multiple hero (etc.) links wrap on one line when space allows. */
+.event-slide-bio-connections__group {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 12px 14px;
+    align-items: stretch;
+    margin-bottom: 16px;
+    container-type: inline-size;
+    container-name: bio-slide-group;
+}
+
+.event-slide-bio-connections__group:last-child {
     margin-bottom: 4px;
+}
+
+.event-slide-bio-connections__group > .event-slide-bio-connections__row--dual {
+    flex: 1 1 min(100%, 340px);
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    padding: 10px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.14);
+}
+
+@container bio-slide-group (max-width: 400px) {
+    .event-slide-bio-connections__group > .event-slide-bio-connections__row--dual {
+        flex: 1 1 100%;
+    }
+}
+
+/* Faction ↔ hero|npc: one arrow from faction (always left / A) toward the other portrait. */
+.event-slide-bio-connections__row--faction-oneway {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px 16px;
+}
+
+.event-slide-bio-connections__oneway-arrows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 0 1 auto;
+    max-width: min(40rem, 100%);
+    font-size: 15px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Read-only row: this entry | bidirectional labels | linked entry — flex keeps the cluster tight (no 1fr gutter). */
+.event-slide-bio-connections__row--dual {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px 16px;
 }
 
 .event-slide-bio-connections__portrait-col {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 0 0 auto;
 }
 
 .event-slide-bio-connections__portrait {
@@ -1035,6 +1191,8 @@
     gap: 10px;
     text-align: center;
     min-width: 0;
+    flex: 0 1 auto;
+    max-width: min(40rem, 100%);
     justify-content: center;
 }
 
@@ -1101,10 +1259,21 @@
         align-items: stretch;
     }
 
-    .event-slide-bio-connections__row--dual {
-        grid-template-columns: 1fr;
+    .event-slide-bio-connections__group > .event-slide-bio-connections__row--dual {
+        flex: 1 1 100%;
+    }
+
+    .event-slide-bio-connections__row--faction-oneway {
+        flex-direction: column;
         gap: 14px;
-        justify-items: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .event-slide-bio-connections__row--dual {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
         text-align: center;
     }
 
@@ -1434,6 +1603,11 @@
         padding: 12px 14px 12px 14px !important;
         padding-left: 14px !important;
         padding-right: 14px !important;
+    }
+
+    /* Portrait + inline edit: allow scrolling long location/connection forms (overrides hidden above). */
+    .event-slide.event-slide--inline-editing .event-slide-content {
+        overflow-y: auto !important;
     }
 
     .event-slide-top {

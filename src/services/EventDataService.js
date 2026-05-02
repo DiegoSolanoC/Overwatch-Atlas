@@ -3,6 +3,95 @@
  * Separates data operations from UI logic
  */
 
+/** Keep in sync with `StoryFilterPlacesSync.migrateStoryEventFilterFieldsToGroupedOnly` (classic script load order). */
+function _normalizeCollectedPlacesForMigration(rows) {
+    if (!Array.isArray(rows)) return [];
+    return rows
+        .map((r) => ({
+            locationName: String(r?.locationName || '').trim(),
+            country: String(r?.country || '').trim(),
+            reasoning: String(r?.reasoning || '').trim()
+        }))
+        .filter((r) => r.locationName || r.country || r.reasoning);
+}
+
+function _migrateHeroPlacesFromFiltersFlat(filters) {
+    if (!Array.isArray(filters) || filters.length === 0) return [];
+    return [{ locationName: '', country: filters.join(', '), reasoning: '' }];
+}
+
+function _migrateNpcPlacesFromNpcsFlat(npcs) {
+    if (!Array.isArray(npcs) || npcs.length === 0) return [];
+    return [{ locationName: '', country: npcs.join(', '), reasoning: '' }];
+}
+
+function _factionFlatToCsv(factions) {
+    if (!Array.isArray(factions) || factions.length === 0) return '';
+    return factions
+        .map((f) => String(f).replace(/^\d+/, '').trim())
+        .filter(Boolean)
+        .join(', ');
+}
+
+function _migrateStoryEventFilterFieldsToGroupedOnlyNode(node) {
+    if (!node || typeof node !== 'object') return;
+
+    const heroNorm = _normalizeCollectedPlacesForMigration(node.heroFilterPlaces);
+    if (heroNorm.length) {
+        node.heroFilterPlaces = heroNorm;
+    } else if (Array.isArray(node.filters) && node.filters.length > 0) {
+        node.heroFilterPlaces = _migrateHeroPlacesFromFiltersFlat(node.filters);
+    } else {
+        delete node.heroFilterPlaces;
+    }
+
+    const facNorm = _normalizeCollectedPlacesForMigration(node.factionFilterPlaces);
+    if (facNorm.length) {
+        node.factionFilterPlaces = facNorm;
+    } else if (Array.isArray(node.factions) && node.factions.length > 0) {
+        const formSvc = typeof window !== 'undefined' ? window.eventManager?.formService : null;
+        const manifest =
+            typeof window !== 'undefined' && window.eventManager?.factions?.length > 0
+                ? window.eventManager.factions
+                : typeof window !== 'undefined' && window.globeController?.dataModel?.factions?.length
+                    ? window.globeController.dataModel.factions
+                    : [];
+        const display =
+            formSvc && typeof formSvc.factionsArrayToFormDisplayString === 'function'
+                ? formSvc.factionsArrayToFormDisplayString(node.factions, manifest || [])
+                : _factionFlatToCsv(node.factions);
+        node.factionFilterPlaces = [{ locationName: '', country: display, reasoning: '' }];
+    } else {
+        delete node.factionFilterPlaces;
+    }
+
+    const npcNorm = _normalizeCollectedPlacesForMigration(node.npcFilterPlaces);
+    if (npcNorm.length) {
+        node.npcFilterPlaces = npcNorm;
+    } else if (Array.isArray(node.npcs) && node.npcs.length > 0) {
+        node.npcFilterPlaces = _migrateNpcPlacesFromNpcsFlat(node.npcs);
+    } else {
+        delete node.npcFilterPlaces;
+    }
+
+    delete node.filters;
+    delete node.factions;
+    delete node.npcs;
+}
+
+function _migrateAllStoryEventsFilterPlacesToGroupedInPlace(events) {
+    if (!Array.isArray(events)) return;
+    for (let i = 0; i < events.length; i += 1) {
+        const ev = events[i];
+        _migrateStoryEventFilterFieldsToGroupedOnlyNode(ev);
+        if (Array.isArray(ev.variants)) {
+            for (let j = 0; j < ev.variants.length; j += 1) {
+                _migrateStoryEventFilterFieldsToGroupedOnlyNode(ev.variants[j]);
+            }
+        }
+    }
+}
+
 class EventDataService {
     constructor() {
         /** @type {'story'|'heroes'|'factions'|'npcs'|'locations'} Which JSON backs the Event Manager list */
@@ -144,6 +233,82 @@ class EventDataService {
         return map[this.getArchiveSource()] || map.story;
     }
 
+    /** @param {'story'|'heroes'|'factions'|'npcs'|'locations'} sourceId */
+    _getArchiveFilePathForSource(sourceId) {
+        const map = {
+            story: 'data/events.json',
+            heroes: 'data/story-archive-heroes.json',
+            factions: 'data/story-archive-factions.json',
+            npcs: 'data/story-archive-npcs.json',
+            locations: 'data/story-archive-locations.json',
+        };
+        return map[sourceId] || map.story;
+    }
+
+    /** @param {'story'|'heroes'|'factions'|'npcs'|'locations'} sourceId */
+    _getArchiveLocalStorageKeyForSource(sourceId) {
+        const map = {
+            story: 'timelineEvents',
+            heroes: 'timelineEventsArchiveHeroes',
+            factions: 'timelineEventsArchiveFactions',
+            npcs: 'timelineEventsArchiveNpcs',
+            locations: 'timelineEventsArchiveLocations',
+        };
+        return map[sourceId] || map.story;
+    }
+
+    /**
+     * After POST /api/codex updates story-archive-*.json on disk, re-fetch those files,
+     * refresh matching localStorage keys, and replace in-memory `this.events` when the
+     * active archive is one of them (so open slides see new connections immediately).
+     * @param {string[]} archivesTouched e.g. ['heroes','npcs']
+     * @returns {Promise<{ updated: string[] }>}
+     */
+    async refreshBioArchivesFromCodexDiskWrite(archivesTouched) {
+        const bio = new Set(['heroes', 'factions', 'npcs']);
+        const list = Array.isArray(archivesTouched) ? archivesTouched.filter((a) => bio.has(a)) : [];
+        if (!list.length) return { updated: [] };
+
+        const savedArch = this.getArchiveSource();
+        const updated = [];
+
+        for (let i = 0; i < list.length; i += 1) {
+            const arch = list[i];
+            const fileUrl = this._getArchiveFilePathForSource(arch);
+            const storageKey = this._getArchiveLocalStorageKeyForSource(arch);
+            try {
+                const sep = fileUrl.includes('?') ? '&' : '?';
+                const res = await fetch(`${fileUrl}${sep}v=${Date.now()}&_=${Math.random().toString(36).slice(2, 10)}`, {
+                    cache: 'no-store',
+                });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                const rawEvents = Array.isArray(data.events) ? data.events : [];
+
+                this.archiveSource = arch;
+                const normalized = rawEvents.map((e) => this._normalizeSatelliteArchiveEntry(e));
+                this.archiveSource = savedArch;
+
+                try {
+                    localStorage.setItem(storageKey, JSON.stringify(normalized));
+                } catch (lsErr) {
+                    console.warn('EventDataService: localStorage update after codex save failed', arch, lsErr);
+                }
+
+                updated.push(arch);
+
+                if (savedArch === arch) {
+                    this.events = normalized;
+                    this._normalizeSatelliteEventsInPlace();
+                }
+            } catch (e) {
+                console.warn(`EventDataService: re-fetch ${arch} after codex save failed`, e);
+            }
+        }
+
+        return { updated };
+    }
+
     /** Strip trailing ", ," so "Cairo, Egypt," parses to Egypt (matches LocationFlagHelpers). */
     _stripTrailingCommaSep(s) {
         return String(s == null ? '' : s)
@@ -271,13 +436,16 @@ class EventDataService {
                 }
                 const laneRaw = String(item?.thisEntryLane ?? '').trim().toUpperCase();
                 const thisEntryLane = laneRaw === 'B' ? 'B' : 'A';
-                return {
+                const showInCodex = item?.showInCodex === true;
+                const out = {
                     kind,
                     name,
                     reasoningSubjectToLinked,
                     reasoningLinkedToSubject,
                     thisEntryLane
                 };
+                if (showInCodex) out.showInCodex = true;
+                return out;
             })
             .filter(
                 (c) =>
@@ -732,10 +900,17 @@ class EventDataService {
     }
 
     /**
-     * Normalize story `secondaryCountryPlaces` / `secondaryCountryFlags` after any main-timeline load path.
+     * Normalize story `secondaryCountryPlaces` (and strip legacy `secondaryCountryFlags`) after any main-timeline load path.
      * @param {{ events: Array<Object>, source: string, shouldSync: boolean }} result
      */
     _finishMainTimelineLoadEvents(result) {
+        try {
+            if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
+                _migrateAllStoryEventsFilterPlacesToGroupedInPlace(this.events);
+            }
+        } catch (e) {
+            console.warn('EventDataService: migrate hero/faction/NPC filter places to grouped failed:', e);
+        }
         try {
             const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
             if (Array.isArray(this.events) && lh?.migrateAllStoryEventsSecondaryPlaces) {
@@ -813,6 +988,13 @@ class EventDataService {
             }
             this._normalizeSatelliteEventsInPlace();
         }
+        if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
+            try {
+                _migrateAllStoryEventsFilterPlacesToGroupedInPlace(this.events);
+            } catch (e) {
+                console.warn('EventDataService: pre-save grouped filter migration failed:', e);
+            }
+        }
         const storageKey = this._getArchiveLocalStorageKey();
         localStorage.setItem(storageKey, JSON.stringify(this.events));
         if (this._isMainTimelineArchive()) {
@@ -820,6 +1002,23 @@ class EventDataService {
         }
         console.log('[EventDataService] Events saved to localStorage, count:', this.events.length);
         console.log('[EventDataService] Saved event names:', this.events.map(e => e.name || (e.variants && e.variants[0]?.name) || 'Unnamed'));
+
+        if (!this._isMainTimelineArchive()) {
+            const archAfter = this.getArchiveSource();
+            if (
+                (archAfter === 'heroes' || archAfter === 'factions' || archAfter === 'npcs')
+                && typeof window !== 'undefined'
+            ) {
+                setTimeout(() => {
+                    try {
+                        const fn = window.CodexCanvasService?.syncCodexEdgesFromBioArchiveConnections;
+                        if (typeof fn === 'function') void fn();
+                    } catch (e) {
+                        console.warn('EventDataService: Codex bio-edge sync skipped', e);
+                    }
+                }, 400);
+            }
+        }
 
         if (!this._canPersistTimelineJsonToRepo()) {
             return;
@@ -875,6 +1074,58 @@ class EventDataService {
                 });
         } catch (e) {
             // Ignore API persistence errors; localStorage is still updated.
+        }
+    }
+
+    /**
+     * While a satellite archive is active, main-timeline rows live in the story dock snapshot (`getStoryTimelineEventsForDock`).
+     * After editing a dock story event, `saveEvents()` only writes the satellite file — call this to also persist `timelineEvents`
+     * (and `data/events.json` on the dev server) from that snapshot.
+     */
+    persistStoryDockTimelineFromSnapshot() {
+        if (this._isMainTimelineArchive()) return;
+        const dock = this.getStoryTimelineEventsForDock();
+        if (!Array.isArray(dock) || dock.length === 0) return;
+        try {
+            _migrateAllStoryEventsFilterPlacesToGroupedInPlace(dock);
+        } catch (e) {
+            console.warn('EventDataService: dock snapshot grouped migration skipped:', e);
+        }
+        try {
+            localStorage.setItem('timelineEvents', JSON.stringify(dock));
+            console.log('[EventDataService] timelineEvents updated from story dock snapshot', dock.length);
+        } catch (e) {
+            console.warn('EventDataService: failed to write timelineEvents from dock snapshot', e);
+        }
+        if (!this._canPersistTimelineJsonToRepo()) return;
+        try {
+            const apiUrl =
+                typeof window.resolveDevApiUrl === 'function'
+                    ? window.resolveDevApiUrl('api/events')
+                    : '/api/events';
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ events: dock })
+            })
+                .then(async (res) => {
+                    if (!res.ok) {
+                        const data = await res.json().catch(() => ({}));
+                        throw new Error(data?.error || `HTTP ${res.status}`);
+                    }
+                    return res.json().catch(() => ({}));
+                })
+                .then((data) => {
+                    this.updateStatus(
+                        `✓ Saved story timeline from dock (${data?.eventsCount ?? dock.length} events)`,
+                        'success'
+                    );
+                })
+                .catch((e) => {
+                    console.warn('EventDataService: Failed to persist dock timeline to data/events.json', e);
+                });
+        } catch (e) {
+            /* ignore */
         }
     }
 

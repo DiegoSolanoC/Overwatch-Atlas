@@ -3,6 +3,12 @@
  * Extracted from EventMarkerManager to reduce duplication
  */
 
+import {
+    getStoryEventFactionTokens,
+    getStoryEventHeroTokens,
+    getStoryEventNpcTokens
+} from '../../utils/StoryFilterPlacesSync.js';
+
 /** Draw after clouds (0) / aurora (1) / rim (1–2) so pins and hover don’t fight atmosphere. */
 export const EVENT_PIN_RENDER_ORDER = 14;
 export const EVENT_MARKER_RENDER_ORDER = 15;
@@ -196,9 +202,9 @@ export function entityMatchesActiveFilters(entity, activeFilters) {
     if (!entity || !activeFilters || activeFilters.size === 0) {
         return false;
     }
-    const heroFilters = entity.filters || [];
-    const npcFilters = entity.npcs || [];
-    const factionFilters = entity.factions || [];
+    const heroFilters = getStoryEventHeroTokens(entity);
+    const npcFilters = getStoryEventNpcTokens(entity);
+    const factionFilters = getStoryEventFactionTokens(entity);
     return heroFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
         || npcFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
         || factionFilters.some((id) => factionIdMatchesActiveFilters(id, activeFilters))

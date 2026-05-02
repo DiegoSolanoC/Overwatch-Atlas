@@ -41,7 +41,23 @@
           "name": "Pharah",
           "reasoningSubjectToLinked": "Daugther",
           "reasoningLinkedToSubject": "Mother",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Soldier 76",
+          "reasoningSubjectToLinked": "Old Companion",
+          "reasoningLinkedToSubject": "Old Companion",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "Ex Captain, Current Ally",
+          "thisEntryLane": "B"
         }
       ]
     },
@@ -55,7 +71,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Wuyang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ashe",
@@ -67,7 +92,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "B.O.B",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Baptiste",
@@ -91,7 +133,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Brigitte",
@@ -109,14 +160,16 @@
           "name": "Torbjörn",
           "reasoningSubjectToLinked": "Father",
           "reasoningLinkedToSubject": "Daughter",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
         },
         {
           "kind": "hero",
           "name": "Reinhardt",
           "reasoningSubjectToLinked": "Mentor",
           "reasoningLinkedToSubject": "Squire",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -166,7 +219,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Antonio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Echo",
@@ -190,7 +252,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Freja",
@@ -202,7 +273,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Maximillien",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Genji",
@@ -298,7 +378,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Jiayi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Kiriko",
@@ -346,7 +435,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deep Sea Raiders",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Mei",
@@ -394,7 +500,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sigma",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Orisa",
@@ -424,7 +547,8 @@
           "name": "Ana",
           "reasoningSubjectToLinked": "Mother",
           "reasoningLinkedToSubject": "Daugther",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -468,7 +592,8 @@
           "name": "Brigitte",
           "reasoningSubjectToLinked": "Squire",
           "reasoningLinkedToSubject": "Mentor",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -494,7 +619,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Kendra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sigma",
@@ -506,7 +640,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Moira",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sojourn",
@@ -530,7 +681,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ana",
+          "reasoningSubjectToLinked": "Old Companion",
+          "reasoningLinkedToSubject": "Old Companion",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sombra",
@@ -572,7 +732,24 @@
           "name": "Brigitte",
           "reasoningSubjectToLinked": "Daughter",
           "reasoningLinkedToSubject": "Father",
-          "thisEntryLane": "A"
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Ingrid",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Bastion",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -598,7 +775,40 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Vialli",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Colloseo Gladiatori",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Antonio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Venture",
@@ -622,7 +832,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Gerard",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Winston",
@@ -658,7 +877,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Anran",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Zarya",
