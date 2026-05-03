@@ -1,56 +1,56 @@
 {
   "heroes": [
-    "Ana",
-    "Anran",
-    "Ashe",
-    "Baptiste",
-    "Bastion",
-    "Brigitte",
-    "Cassidy",
     "D.va",
-    "Domina",
-    "Doomfist",
-    "Echo",
-    "Emre",
-    "Freja",
-    "Genji",
-    "Hanzo",
     "Hazard",
-    "Illari",
-    "Jetpack Cat",
-    "Junker Queen",
-    "Junkrat",
-    "Juno",
-    "Kiriko",
-    "Lifeweaver",
-    "Lúcio",
+    "Doomfist",
+    "Winston",
+    "Wrecking Ball",
     "Mauga",
-    "Mei",
-    "Mercy",
-    "Mizuki",
-    "Moira",
     "Orisa",
-    "Pharah",
-    "Ramattra",
-    "Reaper",
-    "Reinhardt",
     "Roadhog",
-    "Sierra",
+    "Zarya",
+    "Domina",
+    "Junker Queen",
+    "Ramattra",
+    "Reinhardt",
     "Sigma",
-    "Sojourn",
+    "Bastion",
+    "Emre",
+    "Junkrat",
+    "Mei",
     "Soldier 76",
-    "Sombra",
     "Symmetra",
     "Torbjörn",
+    "Ashe",
+    "Cassidy",
+    "Hanzo",
+    "Sojourn",
+    "Widowmaker",
+    "Anran",
+    "Genji",
+    "Reaper",
     "Tracer",
     "Vendetta",
     "Venture",
-    "Widowmaker",
-    "Winston",
-    "Wrecking Ball",
-    "Wuyang",
-    "Zarya",
-    "Zenyatta"
+    "Echo",
+    "Freja",
+    "Pharah",
+    "Sierra",
+    "Sombra",
+    "Baptiste",
+    "Ana",
+    "Jetpack Cat",
+    "Lúcio",
+    "Zenyatta",
+    "Kiriko",
+    "Lifeweaver",
+    "Mercy",
+    "Moira",
+    "Brigitte",
+    "Illari",
+    "Juno",
+    "Mizuki",
+    "Wuyang"
   ],
   "factions": [
     {
@@ -62,60 +62,40 @@
       "displayName": "Talon"
     },
     {
-      "filename": "15Caribbean Coalition",
-      "displayName": "Caribbean Coalition"
+      "filename": "26Null Sector",
+      "displayName": "Null Sector"
     },
     {
-      "filename": "17Colloseo Gladiatori",
-      "displayName": "Colloseo Gladiatori"
-    },
-    {
-      "filename": "09Crusader Initiative",
-      "displayName": "Crusader Initiative"
-    },
-    {
-      "filename": "14Deadlock Rebels",
-      "displayName": "Deadlock Rebels"
-    },
-    {
-      "filename": "28Deep Sea Raiders",
-      "displayName": "Deep Sea Raiders"
-    },
-    {
-      "filename": "02Ecopoints",
-      "displayName": "Ecopoints"
-    },
-    {
-      "filename": "22Hashimoto Clan",
-      "displayName": "Hashimoto Clan"
-    },
-    {
-      "filename": "39Heliotech Industries",
-      "displayName": "Heliotech Industries"
-    },
-    {
-      "filename": "31Helix Securities",
-      "displayName": "Helix Securities"
+      "filename": "23The Chernobog Conspiracy",
+      "displayName": "The Chernobog Conspiracy"
     },
     {
       "filename": "35IJC",
       "displayName": "IJC"
     },
     {
-      "filename": "01Blackwatch",
-      "displayName": "Blackwatch"
+      "filename": "14Deadlock Rebels",
+      "displayName": "Deadlock Rebels"
     },
     {
-      "filename": "06Inti Warriors",
-      "displayName": "Inti Warriors"
+      "filename": "21Shimada Clan",
+      "displayName": "Shimada Clan"
     },
     {
-      "filename": "08Ironclad Guild",
-      "displayName": "Ironclad Guild"
+      "filename": "22Hashimoto Clan",
+      "displayName": "Hashimoto Clan"
+    },
+    {
+      "filename": "32Yokai Gang",
+      "displayName": "Yokai Gang"
     },
     {
       "filename": "16Junker Monarchy",
       "displayName": "Junker Monarchy"
+    },
+    {
+      "filename": "29The Phreaks",
+      "displayName": "The Phreaks"
     },
     {
       "filename": "18Livre Tournois",
@@ -126,84 +106,88 @@
       "displayName": "Los Muertos"
     },
     {
-      "filename": "07Lucheng Interstellar",
-      "displayName": "Lucheng Interstellar"
-    },
-    {
-      "filename": "13Lumérico Incorporated",
-      "displayName": "Lumérico Incorporated"
-    },
-    {
-      "filename": "30M.E.K.A Squad",
-      "displayName": "M.E.K.A Squad"
-    },
-    {
-      "filename": "26Null Sector",
-      "displayName": "Null Sector"
-    },
-    {
-      "filename": "24Oasis Ministries",
-      "displayName": "Oasis Ministries"
-    },
-    {
-      "filename": "04Omnica Corporation",
-      "displayName": "Omnica Corporation"
-    },
-    {
-      "filename": "38Pacific Energy Solutions",
-      "displayName": "Pacific Energy Solutions"
-    },
-    {
-      "filename": "34Search & Rescue",
-      "displayName": "Search & Rescue"
-    },
-    {
-      "filename": "25Shambali Order",
-      "displayName": "Shambali Order"
-    },
-    {
-      "filename": "21Shimada Clan",
-      "displayName": "Shimada Clan"
-    },
-    {
-      "filename": "33Talon Empire",
-      "displayName": "Talon Empire"
-    },
-    {
-      "filename": "12The Anubis Omnic Crisis",
-      "displayName": "The Anubis Omnic Crisis"
-    },
-    {
-      "filename": "23The Chernobog Conspiracy",
-      "displayName": "The Chernobog Conspiracy"
-    },
-    {
-      "filename": "36The Gwishin",
-      "displayName": "The Gwishin"
-    },
-    {
-      "filename": "27The Martins Collective",
-      "displayName": "The Martins Collective"
-    },
-    {
-      "filename": "29The Phreaks",
-      "displayName": "The Phreaks"
-    },
-    {
       "filename": "36The Sombra Collective",
       "displayName": "The Sombra Collective"
     },
     {
-      "filename": "05Vishkar Corporation",
-      "displayName": "Vishkar Corporation"
+      "filename": "09Crusader Initiative",
+      "displayName": "Crusader Initiative"
+    },
+    {
+      "filename": "06Inti Warriors",
+      "displayName": "Inti Warriors"
     },
     {
       "filename": "11Volskaya Industries",
       "displayName": "Volskaya Industries"
     },
     {
-      "filename": "19Wayfinder Society",
-      "displayName": "Wayfinder Society"
+      "filename": "15Caribbean Coalition",
+      "displayName": "Caribbean Coalition"
+    },
+    {
+      "filename": "28Deep Sea Raiders",
+      "displayName": "Deep Sea Raiders"
+    },
+    {
+      "filename": "17Colloseo Gladiatori",
+      "displayName": "Colloseo Gladiatori"
+    },
+    {
+      "filename": "31Helix Securities",
+      "displayName": "Helix Securities"
+    },
+    {
+      "filename": "30M.E.K.A Squad",
+      "displayName": "M.E.K.A Squad"
+    },
+    {
+      "filename": "36The Gwishin",
+      "displayName": "The Gwishin"
+    },
+    {
+      "filename": "12The Anubis Omnic Crisis",
+      "displayName": "The Anubis Omnic Crisis"
+    },
+    {
+      "filename": "04Omnica Corporation",
+      "displayName": "Omnica Corporation"
+    },
+    {
+      "filename": "08Ironclad Guild",
+      "displayName": "Ironclad Guild"
+    },
+    {
+      "filename": "07Lucheng Interstellar",
+      "displayName": "Lucheng Interstellar"
+    },
+    {
+      "filename": "24Oasis Ministries",
+      "displayName": "Oasis Ministries"
+    },
+    {
+      "filename": "38Pacific Energy Solutions",
+      "displayName": "Pacific Energy Solutions"
+    },
+    {
+      "filename": "27The Martins Collective",
+      "displayName": "The Martins Collective"
+    },
+    {
+      "filename": "25Shambali Order",
+      "displayName": "Shambali Order"
+    },
+    {
+      "filename": "13Lumérico Incorporated",
+      "displayName": "Lumérico Incorporated"
+    },
+    {
+      "filename": "39Heliotech Industries",
+      "displayName": "Heliotech Industries"
+    },
+    {
+      "filename": "05Vishkar Corporation",
+      "displayName": "Vishkar Corporation"
     },
     {
       "filename": "10Wuxing University",
@@ -214,8 +198,24 @@
       "displayName": "Yamagami Blades"
     },
     {
-      "filename": "32Yokai Gang",
-      "displayName": "Yokai Gang"
+      "filename": "19Wayfinder Society",
+      "displayName": "Wayfinder Society"
+    },
+    {
+      "filename": "01Blackwatch",
+      "displayName": "Blackwatch"
+    },
+    {
+      "filename": "02Ecopoints",
+      "displayName": "Ecopoints"
+    },
+    {
+      "filename": "34Search & Rescue",
+      "displayName": "Search & Rescue"
+    },
+    {
+      "filename": "33Talon Empire",
+      "displayName": "Talon Empire"
     }
   ],
   "npcs": [
@@ -267,6 +267,7 @@
     "Touch Up",
     "Vialli",
     "Zera",
+    "Dae-Hyun",
     "Gérard"
   ],
   "music": [

@@ -5254,7 +5254,7 @@
     },
     {
       "name": "On the Run",
-      "description": "No description available.",
+      "description": "While the US publicly seemed OK with SEP soldiers vanishing into obscuring, something about Soldier: 00 appears to be different. Kendra Banks had been the first candidate for the Soldier Enhancement Program, and much like the rest of Project Naughton, her service was heavily redacted and poorly documented. What little is known suggests she defected from the program shortly after her procedure and has been in hiding ever since. Kendra hoped living in Appalachia would keep her and her family hidden, but only a year after her daughter Sierra was born, Kendra would be found.\n\nKendra Banks, now going by Kendra Woods, fled into the night and took Sierra with her, as government agents raided their house asking questions about Project Naughton to her husband, James Turner. Ever since that day, Sierra has lived on the run, bouncing from one school to another, completely unaware of her mother's past. Each time they were found, they would have to move out quickly, and to calm little Sierra down, Kendra knew how to make a game out of evacuation and protocol.\n\nThrough it all, Sierra lived a relatively normal life. While she was always the new kid and had little to no friends due to this, she always placed at the top of her class and demonstrated innate physical skills and sharp thinking. While she always attributed this to her mother's teachings, little did she know one of Doctor Naughton's main hypothesis with the Soldier Enhancement Program, was the possibility of children inheriting the modifications.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Appalachian Virginia, United States",
@@ -5293,7 +5293,7 @@
       "name": "Hana Song is Born",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "No description available.",
+      "description": "On June 22th or 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.<div><br>Hana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.</div>",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -5318,7 +5318,14 @@
         {
           "locationName": "",
           "country": "D.va",
-          "reasoning": ""
+          "reasoning": "Hana Song is Born"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": "Childhood Friend"
         }
       ]
     },
@@ -5326,7 +5333,7 @@
       "name": "Mizuki Kawano is Born",
       "locationType": "earth",
       "cityDisplayName": "Fukuoka, Japan",
-      "description": "No description available.",
+      "description": "On April 9th of 2057, Mizuki Kawano was born in Fukuoka, under the shadow of misfortune. Ever since he was a baby, his family had been surrounded by unexplained tragedy. His grandparents suddenly lost to unnatural causes, and years later his mom would drown in a freak accident. His father, quite the superstitious man, was quick to assume the bloodline must have been cursed, and from there Mizuki's life would only continue to go downhill. As the mental state of his dad worsened, he ingrained the idea of a curse in the poor kid's head, telling him tales of all the malevolent spirits that haunted the family ever since he was born.",
       "image": "",
       "sources": [
         {
@@ -5350,8 +5357,8 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mitzuki",
-          "reasoning": ""
+          "country": "Mizuki,",
+          "reasoning": "Mizuki Kawano is Born"
         }
       ]
     },
@@ -5359,7 +5366,7 @@
       "name": "Vancouver Floods",
       "locationType": "earth",
       "cityDisplayName": "British Columbia, Canada",
-      "description": "",
+      "description": "Overwatch aided in the rebuilding efforts all around the world. In the words of Torbjörn himself, they were \"The Janitors of the Apocalypse\", and their efforts became invaluable in getting the world back together.\n\nThe engineering team was working on repairing the Canadian pipeline system when a massive storm struck, causing much of British Columbia to flood all the way down to Seattle.\n\nOverwatch's quick response allowed the displaced locals to survive the disaster, as both a field team and support staff were sent to assist in the evacuation of both people and wildlife. Thanks to Overwatch the situation was dealt with swiftly and with minimal losses. Once the water receded, Amari coordinated with local authorities to distribute resources with the refugees, while Lindholm's team began the construction of a series of Dams and bridges across the West Coast, to reroute water out to the sea.\n\nThe Vancouver Flood response made headlines and many proved Overwatch's worth in a post-crisis world, showing that, in spite of their superhuman capabilities, they were also more than willing to come down and help with the dirty work.",
       "image": "",
       "lat": 55.001251,
       "lon": -125.002441,
@@ -5376,14 +5383,24 @@
         {
           "locationName": "British Columbia, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Brittish Columbia floods following a massive storm"
         }
       ],
       "heroFilterPlaces": [
         {
+          "locationName": "Overwatch Strike Team",
+          "country": "Reinhardt, Soldier 76, Sojourn, Cassidy,",
+          "reasoning": "Primary Evacuation effort"
+        },
+        {
           "locationName": "",
-          "country": "Reinhardt, Soldier 76, Sojourn, Cassidy, Torbjörn",
-          "reasoning": ""
+          "country": "Torbjörn",
+          "reasoning": "Aids in Construction of a Dam System"
+        },
+        {
+          "locationName": "",
+          "country": "Ana",
+          "reasoning": "Assisted on attending refugees"
         }
       ],
       "factionFilterPlaces": [
@@ -5392,13 +5409,24 @@
           "country": "Overwatch",
           "reasoning": ""
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": "Aids in construction of a Dam system"
+        }
+      ],
+      "headlines": [
+        "Overwatch responds quickly to massive floods in Brittish Columbia",
+        "Dam System to be built by Overwatch across the West coast of North America"
       ]
     },
     {
       "name": "Building Coalitions",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
-      "description": "",
+      "description": "As Overwatch expanded and aided the world heal, they sought to form good relationships with other peacekeeping operations around the globe, particularly those that didnt make a part of the original recruitment process during the Crisis. Just like how Doomfist chose to protect his own home over joining Overwatch, many other groups like the Inti Warriors of Peru or the Caribbean Coaliton rejected Adawe's proposal, oftne due to intense regional pressure and concerns joining Overwatch would leave their home undefended. Morrison outreach groups all over the world, from Peru to Polynesia, Jordan and Bangladesh to try and collaborate in the post-Crisis landscape, but one of these partners proved to be closer than the rest.\n\nThe Caribbean Coaltion remained strong even as the Crisis ended, but it quickly fueled concerns among the governments of the Caribbean and Latin America that the alliance defied their sovereignty. This was part of a global wave of nationalism following the Crisis, as many nations, struck by years of violence and destruction, chose to spend resources inward. The Coaltion defied that mindset, and understood that without sharing their resources in these dire times the Caribbean would never bounce back. The Concerned Nations requested Overwatch to intervene and dismantle the rouge Coalition at once, but to everyone's surprise, Commander Morrison chose to aid the Coalition's efforts instead, deploying the strike team and much of the medical crew, including Angela Ziegler herself. To the people of the Caribbean, Overwatch were more than welcome, and a wave of recruitments soon followed, but the governments soon would come to resent this response and in the years to follow they would be less inclined to speak positively of Overwatch.\n\nDuring this period, a young orphan, Jean-Baptiste Augustin, would await the day he could enlist into Overwatch, hoping he could be a medic alongside his heroes. However, as the governments resisted their presence, Overwatch recruitment would never come to Haiti, so without many other options to survive, Baptiste chose to join the military, working as a combat medic for the Caribbean Coalition, hoping one day he could be like the heroes from the posters.",
       "image": "",
       "lat": 23.135305,
       "lon": -82.3589631,
@@ -5415,22 +5443,26 @@
         {
           "locationName": "Havana, Cuba",
           "country": "Cuba",
-          "reasoning": ""
+          "reasoning": "Overwatch aids the Caribbean Coaltion in spite of Government requests"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Soldier 76",
-          "reasoning": ""
+          "reasoning": "Defies petition to shut don the Caribbean Coalition"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Caribbean Coalition, Inti Warriors",
-          "reasoning": ""
+          "country": "Overwatch, Caribbean Coalition, Inti Warriors,",
+          "reasoning": "Overwatch forms alliances across the World"
         }
+      ],
+      "headlines": [
+        "Overwatch defies government petitions to shut down the Caribbean Coaltion",
+        "Overwatch aids in efforts to rebuild Latin America"
       ]
     },
     {
@@ -8173,6 +8205,26 @@
       ]
     },
     {
+      "name": "Top Player",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Treassure",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
@@ -8235,6 +8287,39 @@
         {
           "locationName": "",
           "country": "Vishkar",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Siberian Front",
+      "locationType": "earth",
+      "cityDisplayName": "Novoanskoye, Russia",
+      "description": "",
+      "image": "",
+      "lat": 60,
+      "lon": 100,
+      "yearStart": 2071,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Novoanskoye, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Volskaya",
           "reasoning": ""
         }
       ]
@@ -8307,6 +8392,27 @@
       ]
     },
     {
+      "name": "Strongest Woman Alive",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 0,
+      "lon": 0,
+      "image": "",
+      "cityDisplayName": "Novoanskoye, Russia",
+      "yearEnd": 100,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Novoanskoye, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "yearStart": 60
+    },
+    {
       "name": "Anubis Escapes",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
@@ -8335,39 +8441,6 @@
         {
           "locationName": "",
           "country": "Helix Securities",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Siberian Front",
-      "locationType": "earth",
-      "cityDisplayName": "Novoanskoye, Russia",
-      "description": "",
-      "image": "",
-      "lat": 60,
-      "lon": 100,
-      "yearStart": 2071,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Novoanskoye, Russia",
-          "country": "Russia",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Zarya",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Volskaya",
           "reasoning": ""
         }
       ]

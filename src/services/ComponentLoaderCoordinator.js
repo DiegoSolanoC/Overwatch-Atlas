@@ -72,7 +72,7 @@ class ComponentLoaderCoordinator {
         
         if (runGlobeBtn && !runGlobeBtn.hasAttribute('data-listener-attached')) {
             runGlobeBtn.setAttribute('data-listener-attached', 'true');
-            runGlobeBtn.addEventListener('click', async () => {
+            const launchGlobe = async () => {
                 this.overlayService.setRunOperation(true);
                 this.overlayService.show();
                 try {
@@ -82,6 +82,13 @@ class ComponentLoaderCoordinator {
                     this.statusService.update(`✗ Error: ${error.message}`, 'error');
                     this.overlayService.setRunOperation(false);
                     this.overlayService.hide();
+                }
+            };
+            runGlobeBtn.addEventListener('click', () => {
+                if (typeof window.openGlobeMapLaunchChoice === 'function') {
+                    void window.openGlobeMapLaunchChoice({ launchGlobe });
+                } else {
+                    void launchGlobe();
                 }
             });
         }

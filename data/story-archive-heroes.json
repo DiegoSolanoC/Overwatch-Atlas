@@ -2,7 +2,7 @@
   "events": [
     {
       "name": "D.va",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Busan",
@@ -10,7 +10,15 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Dae-Hyun",
+          "reasoningSubjectToLinked": "Childhood friend, Mechanic",
+          "reasoningLinkedToSubject": "Childhood friend, Assistant Mechanic",
+          "thisEntryLane": "A"
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -788,6 +796,13 @@
           "name": "Overwatch",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "Ex Captain, Current Ally",
+          "thisEntryLane": "B"
+        },
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "a",
           "thisEntryLane": "B"
         }
       ],

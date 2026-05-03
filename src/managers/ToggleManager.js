@@ -706,32 +706,8 @@ export class ToggleManager {
                 mapGlobeLabel.textContent = newStartOnMap ? 'Starts on Map' : 'Starts on Globe';
             }
             
-            // Update header button
-            const headerGlobeBtn = document.getElementById('headerInteractiveGlobeBtn');
-            if (headerGlobeBtn) {
-                const labelEl = headerGlobeBtn.querySelector('.header-hub-btn-label');
-                if (labelEl) labelEl.textContent = newStartOnMap ? 'Interactive Map' : 'Interactive Globe';
-                headerGlobeBtn.title = newStartOnMap ? 'Interactive Map' : 'Interactive Globe';
-                const iconSpan = document.getElementById('headerInteractiveGlobeIcon');
-                if (iconSpan) iconSpan.alt = newStartOnMap ? 'Interactive Map' : 'Interactive Globe';
-            }
-            
-            // Update main menu button
-            const mainMenuGlobeBtn = document.getElementById('runGlobeBtn');
-            if (mainMenuGlobeBtn) {
-                const labelEl = mainMenuGlobeBtn.querySelector('.main-menu-label');
-                const descEl = mainMenuGlobeBtn.querySelector('.main-menu-external-label__desc');
-                if (labelEl) labelEl.textContent = newStartOnMap ? 'Interactive Map' : 'Interactive Globe';
-                if (descEl) {
-                    descEl.style.opacity = '0';
-                    setTimeout(() => {
-                        descEl.textContent = newStartOnMap 
-                            ? 'Visualize the story of Overwatch through a 2D map'
-                            : 'Visualize the story of Overwatch through a 3D globe';
-                        descEl.style.opacity = '1';
-                    }, 150);
-                }
-                mainMenuGlobeBtn.title = newStartOnMap ? 'Interactive Map' : 'Interactive Globe';
+            if (typeof window.syncGlobeMapLaunchLabels === 'function') {
+                window.syncGlobeMapLaunchLabels(newStartOnMap);
             }
 
             // Keep icon as image (stateful)

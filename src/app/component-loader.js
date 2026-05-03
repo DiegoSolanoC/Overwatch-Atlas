@@ -13,7 +13,7 @@ import { withLoadWrapper, withUnloadWrapper, checkAlreadyLoaded, loadSoundEffect
 import { getOrCreateElement, createMusicPanel, createFiltersPanel, createEventPagination } from './helpers/ComponentDOMHelpers.js';
 import { initializeEventManager, setupEventManagerListeners, syncEventsWithGlobe, verifyEventPanels } from './helpers/EventManagerHelpers.js';
 import { createMenuButtons, getOrCreateTestContainer } from './helpers/MenuHelpers.js';
-import { setupAllEventListeners, createRunOperationHandler } from './helpers/EventListenerHelpers.js';
+import { setupAllEventListeners, createRunOperationHandler, setupButtonListener } from './helpers/EventListenerHelpers.js';
 import { setupGlobeContainer, makeGlobeContainerVisible, hideGlobeContainer, stopGlobeAnimations, disposeThreeJSResources, importGlobeController, initializeGlobeController, removeEventMarkersIfNeeded } from './helpers/GlobeBaseHelpers.js';
 import { requireGlobeBase } from './helpers/ComponentDependencyHelpers.js';
 import { createExitButton } from './helpers/ControlsHelpers.js';
@@ -22,6 +22,7 @@ import { clearEventManager, removeAllEventMarkers } from './helpers/EventCleanup
 import { removeElementById, removeElementBySelector, removeElementsByIds } from './helpers/ComponentUnloadHelpers.js';
 import { setupEventUIComponents, loadEventSoundEffects, initializeFilterPanel, setupEventListenersDelayed } from './helpers/EventsLoadHelpers.js';
 import { createOrchestratorDelegations } from './helpers/ComponentOrchestratorDelegationHelpers.js';
+import { openGlobeMapLaunchChoice } from '../utils/GlobeMapLaunchChoice.js';
 
 // Track which components are loaded
 const loadedComponents = {
@@ -108,30 +109,28 @@ function loadHeaderNavButtons() {
     // standalone Event System Load Out only (via testBtn click)
     // Globe no longer creates these buttons
 
-    // Interactive Globe/Map button - launches globe timeline
-    const startOnMap = localStorage.getItem('mapGlobePreToggle') === 'true';
+    // Interactive timeline (header) — same globe vs map chooser as main menu
     createGlobeControlButton({
         id: 'headerInteractiveGlobeBtn',
         className: '',
-        title: startOnMap ? 'Interactive Map' : 'Interactive Globe',
-        label: startOnMap ? 'Interactive Map' : 'Interactive Globe',
+        title: 'Interactive Worldview',
+        label: 'Interactive Worldview',
         iconPath: 'assets/images/icons/Timeline Icon.png',
-        iconAlt: startOnMap ? 'Interactive Map' : 'Interactive Globe',
+        iconAlt: 'Interactive Worldview',
         parentId: 'headerHub',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerInteractiveGlobeIcon',
         headerOrder: 15
     });
 
-    // Bootstrap handler: clicking Interactive Globe launches globe components
+    // Bootstrap handler: chooser then runGlobeComponents (with loading overlay)
     const headerGlobeBtn = document.getElementById('headerInteractiveGlobeBtn');
     if (headerGlobeBtn) {
         headerGlobeBtn.addEventListener('click', function bootstrapGlobe(e) {
             e.stopPropagation();
             e.preventDefault();
-            if (typeof window.runGlobeComponents === 'function') {
-                void window.runGlobeComponents(false);
-            }
+            const launchGlobe = createRunOperationHandler(runGlobeComponents, setIsRunOperation);
+            void openGlobeMapLaunchChoice({ launchGlobe });
         }, true);
     }
 
@@ -810,6 +809,14 @@ async function loadMenu() {
         
         const menuButtons = createMenuButtons(setupGlobeHandler, setupGlossaryHandler, setupBiographyHandler);
         testContainer.appendChild(menuButtons);
+        setupButtonListener(
+            'runGlobeBtn',
+            () =>
+                void openGlobeMapLaunchChoice({
+                    launchGlobe: createRunOperationHandler(runGlobeComponents, setIsRunOperation)
+                }),
+            true
+        );
         updateStatus('✓ Menu buttons created', 'success');
         
         updateStatus('✓ Menu button listeners set up', 'success');

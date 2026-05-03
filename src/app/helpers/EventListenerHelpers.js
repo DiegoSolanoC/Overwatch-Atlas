@@ -5,6 +5,7 @@
 
 import { showLoadingOverlay, hideLoadingOverlay } from '../../managers/LoadingOverlayManager.js';
 import { updateStatus } from '../../managers/StatusManager.js';
+import { openGlobeMapLaunchChoice } from '../../utils/GlobeMapLaunchChoice.js';
 
 /**
  * Creates a run operation handler wrapper
@@ -96,7 +97,14 @@ export function setupAllEventListeners(handlers, setIsRunOperation) {
     setupButtonListener('loadTransportBtn', createAsyncHandler(handlers.loadTransport), false, 'loadTransportBtn');
     setupButtonListener('loadControlsBtn', createAsyncHandler(handlers.loadControls), false, 'loadControlsBtn');
     setupButtonListener('loadEventsBtn', createAsyncHandler(handlers.loadEvents), false, 'loadEventsBtn');
-    setupButtonListener('runGlobeBtn', createRunOperationHandler(handlers.runGlobeComponents, setIsRunOperation), true);
+    setupButtonListener(
+        'runGlobeBtn',
+        () =>
+            void openGlobeMapLaunchChoice({
+                launchGlobe: createRunOperationHandler(handlers.runGlobeComponents, setIsRunOperation)
+            }),
+        true
+    );
     setupButtonListener('killGlobeBtn', createAsyncHandler(handlers.killGlobeComponents));
     
     // Glossary components

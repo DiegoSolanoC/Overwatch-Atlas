@@ -17,6 +17,8 @@ export class ComponentOrchestrator {
         this.unloaders = unloaders; // Object with unload functions: { palette: unloadPalette, music: unloadMusic, ... }
         /** @type {HTMLElement|null} Event Manager × removed from DOM while Story Archive is open */
         this._storyArchiveDetachedClose = null;
+        /** @type {((e: KeyboardEvent) => void) | null} Escape → exit Story Archive while category hub is visible */
+        this._storyArchiveHubKeyHandler = null;
     }
 
     /** True when `#eventsManagePanel` is mounted inside `#storyViewerContainer` (events list view). */
@@ -53,6 +55,17 @@ export class ComponentOrchestrator {
         root.setAttribute('role', 'navigation');
         root.setAttribute('aria-label', 'Story archive categories');
 
+        const heading = document.createElement('h2');
+        heading.id = 'storyArchiveHubHeading';
+        heading.className = 'story-archive-category-hub-heading';
+        heading.textContent = 'Choose archive';
+
+        const lead = document.createElement('p');
+        lead.className = 'story-archive-category-hub-lead';
+        lead.textContent = 'Pick a category to open timelines, heroes, factions, and more.';
+
+        root.setAttribute('aria-labelledby', 'storyArchiveHubHeading');
+
         const tiles = [
             { id: 'story', label: 'Story', src: 'assets/images/data/Story.png', archive: 'story', isFeature: true },
             { id: 'heroes', label: 'Heroes', src: 'assets/images/data/Heroes.png', archive: 'heroes' },
@@ -85,8 +98,6 @@ export class ComponentOrchestrator {
             });
             if (t.isFeature) {
                 btn.classList.add('story-archive-category-hub__tile--story');
-            } else {
-                btn.classList.add('story-archive-category-hub__tile--placeholder');
             }
 
             if (t.isFeature) {
@@ -96,10 +107,44 @@ export class ComponentOrchestrator {
             }
         });
 
+        root.appendChild(heading);
+        root.appendChild(lead);
         root.appendChild(featureSlot);
         root.appendChild(gridSlot);
 
+        const dismissRow = document.createElement('div');
+        dismissRow.className = 'story-archive-category-hub__dismiss-row';
+        const cancelBtn = document.createElement('button');
+        cancelBtn.type = 'button';
+        cancelBtn.className = 'story-viewer-action-btn story-archive-category-hub-dismiss';
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.setAttribute('title', 'Return to main menu');
+        cancelBtn.addEventListener('click', () => {
+            void this.killBiographyComponents(true);
+        });
+        dismissRow.appendChild(cancelBtn);
+        root.appendChild(dismissRow);
+
         return root;
+    }
+
+    _detachStoryArchiveHubDismissChrome() {
+        if (this._storyArchiveHubKeyHandler) {
+            document.removeEventListener('keydown', this._storyArchiveHubKeyHandler);
+            this._storyArchiveHubKeyHandler = null;
+        }
+    }
+
+    /** Escape exits Story Archive when the category hub is showing (parity with globe/map chooser). */
+    _attachStoryArchiveHubDismissChrome() {
+        this._detachStoryArchiveHubDismissChrome();
+        this._storyArchiveHubKeyHandler = (e) => {
+            if (e.key !== 'Escape') return;
+            if (this._storyArchiveEventsPanelMounted()) return;
+            e.preventDefault();
+            void this.killBiographyComponents(true);
+        };
+        document.addEventListener('keydown', this._storyArchiveHubKeyHandler);
     }
 
     /** Play category-tile click sound, loading fallback path if needed. */
@@ -159,6 +204,7 @@ export class ComponentOrchestrator {
             return;
         }
 
+        this._detachStoryArchiveHubDismissChrome();
         document.getElementById('storyArchiveCategoryHub')?.remove();
         storyContainer.classList.remove('story-viewer-container--hub');
 
@@ -413,6 +459,7 @@ export class ComponentOrchestrator {
 
         storyContainer.classList.add('story-viewer-container--hub');
         storyContainer.appendChild(this._buildStoryArchiveCategoryHub());
+        this._attachStoryArchiveHubDismissChrome();
         updateStatus('✓ Story Archive — choose a category', 'success');
     }
 
@@ -593,7 +640,7 @@ export class ComponentOrchestrator {
                 updateStatus('⬛ Palette already loaded, skipping...', 'info');
             }
 
-            // Always ensure header nav buttons exist (Interactive Globe, Connection Codex, Story Archive, Home)
+            // Always ensure header nav buttons exist (Interactive Worldview, Connection Codex, Story Archive, Home)
             // NOTE: Events and Filters buttons are now created by standalone Event System Load Out only
             if (this.loaders.headerNav) {
                 this.loaders.headerNav();
@@ -1191,6 +1238,7 @@ export class ComponentOrchestrator {
 
         if (storyContainer?.querySelector('#storyArchiveCategoryHub')) {
             storyContainer.style.display = 'flex';
+            this._attachStoryArchiveHubDismissChrome();
             requestAnimationFrame(() => {
                 storyContainer.classList.add('active');
             });
@@ -1221,6 +1269,7 @@ export class ComponentOrchestrator {
                 storyContainer.classList.add('active');
             });
 
+            this._attachStoryArchiveHubDismissChrome();
             updateStatus('✓ Story Archive — choose a category', 'success');
             return;
         }
@@ -1701,6 +1750,14 @@ export class ComponentOrchestrator {
         if (eventsManageToggle) eventsManageToggle.classList.remove('active');
         if (filtersToggle) filtersToggle.classList.remove('active');
 
+        // Globe/map chooser (in-content shell, same as Story Archive container)
+        document.getElementById('globeMapLaunchHost')?.remove();
+        document.getElementById('globeMapLaunchHubOverlay')?.remove();
+        if (testContainer) {
+            delete testContainer.dataset.globeMapChoiceHidden;
+            delete testContainer.dataset.globeMapChoicePrevDisplay;
+        }
+
         // Keep header hub (and Home button visibility) in sync with the actual loaded state.
         this.dispatchAppModeChange('menu');
     }
@@ -1787,7 +1844,9 @@ export class ComponentOrchestrator {
      */
     async killBiographyComponents(restoreMenu = true) {
         updateStatus('Exiting Story Archive...', 'info');
-        
+
+        this._detachStoryArchiveHubDismissChrome();
+
         const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (eventsManagePanel && this._originalEventsPanelParent) {
             this._detachEventsManagePanelFromStoryArchive(eventsManagePanel);

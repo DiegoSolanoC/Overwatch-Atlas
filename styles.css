@@ -10,6 +10,7 @@
 
 /* Layout Components */
 @import url('styles/layout.css?v=16');
+@import url('styles/components/globe-map-launch-hub.css?v=3');
 
 /* Main Content & Globe */
 @import url('styles/components/globe.css?v=53');
