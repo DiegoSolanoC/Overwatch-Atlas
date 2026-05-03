@@ -3,6 +3,8 @@
  * Extracted from FilterService to reduce file size
  */
 
+import { applyStoryArchiveOrderFromNetwork } from './FilterArchiveOrderHelpers.js';
+
 /**
  * Load manifest and process heroes/factions
  */
@@ -18,23 +20,21 @@ export async function loadManifest(createFilterButtons, updateFilterCounts, prel
             }
         });
         const manifest = await response.json();
-        
-        const heroes = manifest.heroes ? manifest.heroes.sort() : [];
-        const npcs = manifest.npcs ? [...manifest.npcs].sort() : [];
-        const processedFactions = manifest.factions
-            ? [...manifest.factions]
-                .map((f) => ({
-                    filename: f.filename,
-                    displayName: f.displayName
-                }))
-                .sort((a, b) =>
-                    String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
-                        sensitivity: 'base',
-                        numeric: true
-                    })
-                )
+
+        let heroes = manifest.heroes ? [...manifest.heroes] : [];
+        let npcs = manifest.npcs ? [...manifest.npcs] : [];
+        let processedFactions = manifest.factions
+            ? [...manifest.factions].map((f) => ({
+                  filename: f.filename,
+                  displayName: f.displayName
+              }))
             : [];
-        
+
+        const ordered = await applyStoryArchiveOrderFromNetwork(heroes, processedFactions, npcs);
+        heroes = ordered.heroes;
+        processedFactions = ordered.factions;
+        npcs = ordered.npcs;
+
         // Initialize with loaded data
         createFilterButtons(heroes, 'heroes', 'assets/images/heroes');
         updateFilterCounts();

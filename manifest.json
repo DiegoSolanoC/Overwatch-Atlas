@@ -54,8 +54,12 @@
   ],
   "factions": [
     {
-      "filename": "01Blackwatch",
-      "displayName": "Blackwatch"
+      "filename": "00Overwatch",
+      "displayName": "Overwatch"
+    },
+    {
+      "filename": "03Talon",
+      "displayName": "Talon"
     },
     {
       "filename": "15Caribbean Coalition",
@@ -96,6 +100,10 @@
     {
       "filename": "35IJC",
       "displayName": "IJC"
+    },
+    {
+      "filename": "01Blackwatch",
+      "displayName": "Blackwatch"
     },
     {
       "filename": "06Inti Warriors",
@@ -142,10 +150,6 @@
       "displayName": "Omnica Corporation"
     },
     {
-      "filename": "00Overwatch",
-      "displayName": "Overwatch"
-    },
-    {
       "filename": "38Pacific Energy Solutions",
       "displayName": "Pacific Energy Solutions"
     },
@@ -160,10 +164,6 @@
     {
       "filename": "21Shimada Clan",
       "displayName": "Shimada Clan"
-    },
-    {
-      "filename": "03Talon",
-      "displayName": "Talon"
     },
     {
       "filename": "33Talon Empire",
@@ -236,7 +236,6 @@
     "Emily",
     "Frankie",
     "Geiger",
-    "Gerard",
     "Harold",
     "Hector",
     "Iggy",
@@ -267,7 +266,8 @@
     "Toshiro",
     "Touch Up",
     "Vialli",
-    "Zera"
+    "Zera",
+    "Gérard"
   ],
   "music": [
     {

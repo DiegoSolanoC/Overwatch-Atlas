@@ -285,6 +285,21 @@
     }
 
     /**
+     * Slide prose for locations / grouped relevancy: same Olivia·Colomar rules and newlines as the event body
+     * ({@link window.GlitchTextService.getDisplayText}). Falls back to escaped plain text if the service is missing.
+     * @param {string|null|undefined} plain
+     * @returns {string}
+     */
+    function slideStoryDisplayHtml(plain) {
+        var s = String(plain == null ? '' : plain);
+        var gts = typeof window !== 'undefined' && window.GlitchTextService;
+        if (gts && typeof gts.getDisplayText === 'function') {
+            return gts.getDisplayText(s);
+        }
+        return escapeHtmlAttr(s);
+    }
+
+    /**
      * Hero archive slide: rows with flag from `country` (same rules as secondary countries) + reasoning.
      * Accepts legacy string[] ("Place, Country") or { locationName, country, reasoning }[].
      * @param {Array<string|{locationName?:string,name?:string,country?:string,reasoning?:string}>|null|undefined} entries
@@ -390,23 +405,25 @@
             var mainText;
             if (locName && country) {
                 if (manyCountryTokens) {
-                    mainText = escapeHtmlAttr(locName);
+                    mainText = slideStoryDisplayHtml(locName);
                 } else {
                     mainText =
-                        escapeHtmlAttr(locName) +
+                        slideStoryDisplayHtml(locName) +
                         '<span class="event-slide-relevant-locations__comma-country">, ' +
-                        escapeHtmlAttr(country) +
+                        slideStoryDisplayHtml(country) +
                         '</span>';
                 }
             } else if (locName) {
-                mainText = escapeHtmlAttr(locName);
+                mainText = slideStoryDisplayHtml(locName);
             } else if (country) {
                 if (manyCountryTokens) {
-                    mainText =
-                        escapeHtmlAttr(String(countryTokens.length)) +
-                        ' countries';
+                    mainText = countryTokens
+                        .map(function (tok) {
+                            return slideStoryDisplayHtml(tok);
+                        })
+                        .join('<span class="event-slide-relevant-locations__comma-country">, </span>');
                 } else {
-                    mainText = escapeHtmlAttr(country);
+                    mainText = slideStoryDisplayHtml(country);
                 }
             } else {
                 mainText = '';
@@ -417,7 +434,7 @@
 
             var reasonSuffix = reasoning
                 ? '<span class="event-slide-relevant-locations__reason">' +
-                  escapeHtmlAttr(' — ' + reasoning) +
+                  slideStoryDisplayHtml(' — ' + reasoning) +
                   '</span>'
                 : '';
             rowParts.push(
@@ -1008,21 +1025,25 @@
             var mainText;
             if (locName && country) {
                 if (manyTokens) {
-                    mainText = escapeHtmlAttr(locName);
+                    mainText = slideStoryDisplayHtml(locName);
                 } else {
                     mainText =
-                        escapeHtmlAttr(locName) +
+                        slideStoryDisplayHtml(locName) +
                         '<span class="event-slide-relevant-locations__comma-country">, ' +
-                        escapeHtmlAttr(stripTrailingCommaSep(tokens[0] || country)) +
+                        slideStoryDisplayHtml(stripTrailingCommaSep(tokens[0] || country)) +
                         '</span>';
                 }
             } else if (locName) {
-                mainText = escapeHtmlAttr(locName);
+                mainText = slideStoryDisplayHtml(locName);
             } else if (country) {
                 if (manyTokens) {
-                    mainText = escapeHtmlAttr(String(tokens.length)) + ' ' + (kind === 'factions' ? 'factions' : kind === 'npcs' ? 'NPCs' : 'heroes');
+                    mainText = tokens
+                        .map(function (tok) {
+                            return slideStoryDisplayHtml(tok);
+                        })
+                        .join('<span class="event-slide-relevant-locations__comma-country">, </span>');
                 } else {
-                    mainText = escapeHtmlAttr(stripTrailingCommaSep(tokens[0] || country));
+                    mainText = slideStoryDisplayHtml(stripTrailingCommaSep(tokens[0] || country));
                 }
             } else {
                 mainText = '';
@@ -1032,7 +1053,7 @@
                 lead + '<span class="event-slide-relevant-locations__main">' + mainText + '</span>';
             var reasonSuffix = reasoning
                 ? '<span class="event-slide-relevant-locations__reason">' +
-                  escapeHtmlAttr(' — ' + reasoning) +
+                  slideStoryDisplayHtml(' — ' + reasoning) +
                   '</span>'
                 : '';
             rowParts.push(

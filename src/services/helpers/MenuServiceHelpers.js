@@ -20,6 +20,16 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../utils/StoryFilterPlacesSync.js';
+import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../utils/FactionTypeBioPanel.js';
+import {
+    readHeroRoleBioPanelTrimmed,
+    readHeroSubRoleBioPanelTrimmed,
+    syncHeroBioRolePanelsVisibility
+} from '../../utils/HeroRoleBioPanel.js';
+import {
+    updateEventSlideFactionTypeDisplay,
+    updateEventSlideHeroRoleDisplay
+} from '../../managers/helpers/EventSlideShowHelpers.js';
 
 function teardownMenuServiceEventSystemLayout() {
     const st = window.__menuServiceEventSystemLayout;
@@ -1137,6 +1147,8 @@ export function createMenuButtonsContainer(statusService) {
                                 heroLocEditClear.setAttribute('hidden', '');
                                 heroLocEditClear.style.display = 'none';
                             }
+                            syncFactionTypeBioPanelVisibility('story');
+                            syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                             
                             // Check for Olivia Colomar
                             const hasOliviaColomar = /Olivia\s+Colomar/gi.test(eventName) || 
@@ -1175,7 +1187,18 @@ export function createMenuButtonsContainer(statusService) {
                                     window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(targetSlide);
                                 }
                             }
-                            
+
+                            if (archiveSourceSlide === 'factions') {
+                                updateEventSlideFactionTypeDisplay(eventData, this.currentVariantIndex ?? 0);
+                            } else {
+                                updateEventSlideFactionTypeDisplay(null, 0);
+                            }
+                            if (archiveSourceSlide === 'heroes') {
+                                updateEventSlideHeroRoleDisplay(eventData, this.currentVariantIndex ?? 0);
+                            } else {
+                                updateEventSlideHeroRoleDisplay(null, 0);
+                            }
+
                             // Setup glitch toggle button
                             const glitchToggleBtn = document.getElementById('eventGlitchToggle');
                             if (glitchToggleBtn) {
@@ -1208,6 +1231,7 @@ export function createMenuButtonsContainer(statusService) {
                                         const currentEvent = isMultiEvent ? eventData.variants[this.currentVariantIndex || 0] : eventData;
                                         if (eventSlideTitle) eventSlideTitle.innerHTML = applyGlitch(currentEvent?.name || eventName);
                                         if (eventSlideText) eventSlideText.innerHTML = applyGlitch(currentEvent?.description || description) || 'No description available.';
+                                        this.updateSourcesAndFilters?.(currentEvent);
                                         setTimeout(wireGlitchClickToggle, 100);
                                         if (window.SoundEffectsManager?.play) {
                                             window.SoundEffectsManager.play(newEnabled ? 'hackOn' : 'hackOff');
@@ -1402,6 +1426,24 @@ export function createMenuButtonsContainer(statusService) {
                                 textEl.contentEditable = 'true';
                                 textEl.setAttribute('spellcheck', 'true');
                             }
+
+                            const descContainer = document.getElementById('eventSlideEditDescriptionContainer');
+                            const isBioEditEarly =
+                                archiveSourceEdit === 'heroes'
+                                || archiveSourceEdit === 'factions'
+                                || archiveSourceEdit === 'npcs';
+                            const bioDescHost = document.getElementById('eventSlideBioDescriptionEditHost');
+                            if (!isSatelliteArchiveEdit && descContainer && textEl) {
+                                this.descriptionOriginalParent = textEl.parentNode;
+                                this.descriptionOriginalNextSibling = textEl.nextSibling;
+                                descContainer.appendChild(textEl);
+                            } else if (isSatelliteArchiveEdit && isBioEditEarly && bioDescHost && textEl) {
+                                if (textEl.parentNode !== bioDescHost) {
+                                    this.descriptionOriginalParent = textEl.parentNode;
+                                    this.descriptionOriginalNextSibling = textEl.nextSibling;
+                                    bioDescHost.appendChild(textEl);
+                                }
+                            }
                             
                             let editor = document.getElementById('eventSlideInlineEditor');
                             if (!editor) {
@@ -1455,9 +1497,26 @@ export function createMenuButtonsContainer(statusService) {
                                         window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
                                     }
                                 }
+                                syncFactionTypeBioPanelVisibility(
+                                    archiveSourceEdit,
+                                    archiveSourceEdit === 'factions'
+                                        ? this.editTarget?.eventData?.factionType
+                                        : undefined
+                                );
+                                syncHeroBioRolePanelsVisibility(
+                                    archiveSourceEdit,
+                                    archiveSourceEdit === 'heroes'
+                                        ? this.editTarget?.eventData?.heroRole
+                                        : undefined,
+                                    archiveSourceEdit === 'heroes'
+                                        ? this.editTarget?.eventData?.heroSubRole
+                                        : undefined
+                                );
                             } else if (heroLocEdit) {
                                 heroLocEdit.setAttribute('hidden', '');
                                 heroLocEdit.style.display = 'none';
+                                syncFactionTypeBioPanelVisibility('story');
+                                syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                             }
                             
                             editBtn.textContent = 'Cancel';
@@ -1590,6 +1649,15 @@ export function createMenuButtonsContainer(statusService) {
                             document.getElementById('eventSlideEditYearStart')?.value = target.yearStart || target.year || '';
                             document.getElementById('eventSlideEditYearEnd')?.value = target.yearEnd || '';
                             document.getElementById('eventSlideEditEraName')?.value = target.eraName || '';
+                            syncFactionTypeBioPanelVisibility(
+                                archPop,
+                                archPop === 'factions' ? target.factionType : undefined
+                            );
+                            syncHeroBioRolePanelsVisibility(
+                                archPop,
+                                archPop === 'heroes' ? target.heroRole : undefined,
+                                archPop === 'heroes' ? target.heroSubRole : undefined
+                            );
                             const fi = document.getElementById('eventSlideEditFilters');
                             if (fi) fi.value = getStoryEventHeroTokens(target).join(', ');
                             const fa = document.getElementById('eventSlideEditFactions');
@@ -1862,6 +1930,18 @@ export function createMenuButtonsContainer(statusService) {
                             
                             if (titleEl) { titleEl.contentEditable = 'false'; titleEl.removeAttribute('spellcheck'); }
                             if (textEl) { textEl.contentEditable = 'false'; textEl.removeAttribute('spellcheck'); }
+
+                            if (this.descriptionOriginalParent && textEl) {
+                                const originalParent = this.descriptionOriginalParent;
+                                const originalNextSibling = this.descriptionOriginalNextSibling;
+                                if (originalNextSibling) {
+                                    originalParent.insertBefore(textEl, originalNextSibling);
+                                } else {
+                                    originalParent.appendChild(textEl);
+                                }
+                                this.descriptionOriginalParent = null;
+                                this.descriptionOriginalNextSibling = null;
+                            }
                             
                             document.getElementById('eventSlideInlineEditor')?.style.display = 'none';
                             eventSlide?.classList.remove('event-slide--inline-editing');
@@ -1879,6 +1959,8 @@ export function createMenuButtonsContainer(statusService) {
                                 heroLocEditCancel.setAttribute('hidden', '');
                                 heroLocEditCancel.style.display = 'none';
                             }
+                            syncFactionTypeBioPanelVisibility('story');
+                            syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                             const archiveSrcAfterCancel =
                                 window.eventManager?.dataService?.getArchiveSource?.() || 'story';
                             const relAfterCancel = document.getElementById('eventSlideRelevantLocations');
@@ -1895,7 +1977,19 @@ export function createMenuButtonsContainer(statusService) {
                                     this.editTarget.eventData
                                 );
                             }
-                            
+                            if (archiveSrcAfterCancel === 'factions' && this.editTarget?.eventData) {
+                                updateEventSlideFactionTypeDisplay(
+                                    this.editTarget.eventData,
+                                    this.currentVariantIndex ?? 0
+                                );
+                            }
+                            if (archiveSrcAfterCancel === 'heroes' && this.editTarget?.eventData) {
+                                updateEventSlideHeroRoleDisplay(
+                                    this.editTarget.eventData,
+                                    this.currentVariantIndex ?? 0
+                                );
+                            }
+
                             this.isEditing = false;
                             this.editTarget = null;
                             this.originalState = null;
@@ -1935,6 +2029,13 @@ export function createMenuButtonsContainer(statusService) {
                                 const normalized = isBioSave
                                     ? { name: cleanName, description: cleanDesc, relevantLocations, connections }
                                     : { name: cleanName, description: cleanDesc };
+                                if (archiveSource === 'factions') {
+                                    normalized.factionType = readFactionTypeBioPanelTrimmed();
+                                }
+                                if (archiveSource === 'heroes') {
+                                    normalized.heroRole = readHeroRoleBioPanelTrimmed();
+                                    normalized.heroSubRole = readHeroSubRoleBioPanelTrimmed();
+                                }
                                 if (em?.events) {
                                     const idx =
                                         window.BioArchiveConnectionsSync?.resolveBioArchiveEventIndex?.(
@@ -1949,7 +2050,38 @@ export function createMenuButtonsContainer(statusService) {
                                             : [];
                                     if (idx >= 0) {
                                         em.events[idx] = normalized;
-                                        em.unsavedEventIndices?.add(idx);
+                                        if (
+                                            archiveSource === 'factions' &&
+                                            window.FactionArchiveGroupOrderHelpers
+                                        ) {
+                                            const fgo = window.FactionArchiveGroupOrderHelpers;
+                                            if (
+                                                fgo.normalizeFactionArchiveType(oldRef?.factionType) !==
+                                                fgo.normalizeFactionArchiveType(normalized.factionType)
+                                            ) {
+                                                fgo.moveFactionEntryToLastInItsTypeGroup(em.events, normalized);
+                                            }
+                                        }
+                                        if (
+                                            archiveSource === 'heroes' &&
+                                            window.HeroArchiveRoleOrderHelpers
+                                        ) {
+                                            const hro = window.HeroArchiveRoleOrderHelpers;
+                                            const oldR = hro.normalizeHeroArchiveRole(oldRef?.heroRole);
+                                            const newR = hro.normalizeHeroArchiveRole(normalized.heroRole);
+                                            const oldS = hro.normalizeHeroArchiveSubrole(oldRef?.heroSubRole, oldR);
+                                            const newS = hro.normalizeHeroArchiveSubrole(normalized.heroSubRole, newR);
+                                            if (oldR !== newR) {
+                                                hro.moveHeroEntryToLastInItsRoleGroup(em.events, normalized);
+                                            }
+                                            if (oldR !== newR || oldS !== newS) {
+                                                hro.moveHeroEntryToLastInItsSubroleGroup(em.events, normalized);
+                                            }
+                                        }
+                                        {
+                                            const ni = em.events.indexOf(normalized);
+                                            if (ni >= 0) em.unsavedEventIndices?.add(ni);
+                                        }
                                         if (
                                             isBioSave &&
                                             window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
@@ -1968,17 +2100,51 @@ export function createMenuButtonsContainer(statusService) {
                                 em?.dataService?.saveEvents?.();
                                 eventForFilterRefresh = normalized;
 
+                                if (titleEl) {
+                                    titleEl.contentEditable = 'false';
+                                    titleEl.removeAttribute('spellcheck');
+                                }
+                                if (textEl) {
+                                    textEl.contentEditable = 'false';
+                                    textEl.removeAttribute('spellcheck');
+                                }
+                                if (this.descriptionOriginalParent && textEl) {
+                                    const originalParent = this.descriptionOriginalParent;
+                                    const originalNextSibling = this.descriptionOriginalNextSibling;
+                                    if (originalNextSibling) {
+                                        originalParent.insertBefore(textEl, originalNextSibling);
+                                    } else {
+                                        originalParent.appendChild(textEl);
+                                    }
+                                    this.descriptionOriginalParent = null;
+                                    this.descriptionOriginalNextSibling = null;
+                                }
+
                                 const heroLocEditSaved = document.getElementById('eventSlideHeroLocationsEdit');
                                 if (heroLocEditSaved) {
                                     heroLocEditSaved.setAttribute('hidden', '');
                                     heroLocEditSaved.style.display = 'none';
                                 }
+                                syncFactionTypeBioPanelVisibility('story');
+                                syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                                 const relSaved = document.getElementById('eventSlideRelevantLocations');
                                 if (isBioSave && relSaved) {
                                     window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
                                         normalized
                                     );
                                     window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(normalized);
+                                }
+                                if (archiveSource === 'factions' && normalized) {
+                                    updateEventSlideFactionTypeDisplay(
+                                        normalized,
+                                        this.currentVariantIndex ?? 0
+                                    );
+                                }
+                                if (archiveSource === 'heroes' && normalized) {
+                                    updateEventSlideHeroRoleDisplay(
+                                        normalized,
+                                        this.currentVariantIndex ?? 0
+                                    );
                                 }
                                 if (window.eventManager?.renderEvents) {
                                     window.eventManager.renderEvents();

@@ -748,6 +748,15 @@
     letter-spacing: 0.03em;
 }
 
+.event-slide-faction-type-display {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 10px 0 0 0;
+    line-height: 1.35;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
 /* Relevant locations + story grouped filters (same card rhythm and accent as sources) */
 .event-relevant-locations-section {
     margin: 20px 0 10px 0;
@@ -861,9 +870,10 @@
 }
 
 .event-slide-relevant-locations__reason {
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 0.92em;
+    color: #ffffff;
+    font-size: 1.1em;
     font-weight: 500;
+    line-height: 1.45;
 }
 
 .event-slide-relevant-locations__row .event-location-flag,
@@ -904,6 +914,20 @@
     font-weight: 700;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* Role / Subrole / Faction type strip — much larger labels and controls */
+.event-slide-hero-locations-edit__faction-type .event-slide-hero-locations-edit__label {
+    font-size: 24px;
+    letter-spacing: 0.02em;
+}
+
+.event-slide-hero-locations-edit__faction-type .event-slide-inline-editor__input,
+.event-slide-hero-locations-edit__faction-type select.event-slide-inline-editor__input {
+    font-size: 26px;
+    padding: 14px 16px;
+    min-height: 56px;
+    line-height: 1.25;
 }
 
 .event-slide-relevant-loc-reorder {
@@ -1685,6 +1709,26 @@
         margin: 0 0 10px 0 !important;
         font-weight: 600 !important;
         letter-spacing: 0.02em !important;
+    }
+
+    .event-slide-scrollable p#eventSlideFactionTypeDisplay.event-slide-faction-type-display,
+    .event-slide-scrollable p#eventSlideHeroRoleDisplay.event-slide-faction-type-display {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        margin: 0 0 10px 0 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type .event-slide-hero-locations-edit__label {
+        font-size: 20px !important;
+    }
+
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type .event-slide-inline-editor__input,
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type select.event-slide-inline-editor__input {
+        font-size: 22px !important;
+        padding: 12px 14px !important;
+        min-height: 50px !important;
     }
 
     .event-slide-scrollable p#eventSlideText {

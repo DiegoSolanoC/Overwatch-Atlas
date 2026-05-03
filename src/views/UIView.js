@@ -9,6 +9,10 @@ import { HackedOverlayManager } from '../managers/HackedOverlayManager.js';
 import { ToggleManager } from '../managers/ToggleManager.js';
 import { CameraViewManager } from '../managers/CameraViewManager.js';
 import { VariantMarkerManager } from '../managers/VariantMarkerManager.js';
+import {
+    updateEventSlideFactionTypeDisplay,
+    updateEventSlideHeroRoleDisplay
+} from '../managers/helpers/EventSlideShowHelpers.js';
 
 /**
  * UIView - Handles UI elements (labels, buttons, toggles)
@@ -182,6 +186,30 @@ export class UIView {
             }
         }
 
+        // Globe / dock list path does not run EventSlideManager or standalone displaySlide — still show title, body, and factions type.
+        const eventSlideTitle = document.getElementById('eventSlideTitle');
+        const eventSlideText = document.getElementById('eventSlideText');
+        if (eventSlideTitle && eventName != null) {
+            eventSlideTitle.innerHTML =
+                typeof eventName === 'string' ? eventName : String(eventName);
+        }
+        if (eventSlideText) {
+            const body = desc != null && String(desc).trim() !== '' ? String(desc) : 'No description available.';
+            eventSlideText.innerHTML = body;
+        }
+        const variantIdx =
+            stub && stub.userData && stub.userData.variantIndex != null
+                ? Number(stub.userData.variantIndex)
+                : 0;
+        if (fullEvent) {
+            const v = Number.isFinite(variantIdx) ? variantIdx : 0;
+            updateEventSlideFactionTypeDisplay(fullEvent, v);
+            updateEventSlideHeroRoleDisplay(fullEvent, v);
+        } else {
+            updateEventSlideFactionTypeDisplay(null, 0);
+            updateEventSlideHeroRoleDisplay(null, 0);
+        }
+
         // Show the image overlay
         this.imageOverlayManager.showImageOverlay();
     }
@@ -219,6 +247,9 @@ export class UIView {
         // This is called by Map2DLiteLayer when clicking markers
         // Clear the current event marker
         this.currentEventMarker = null;
+
+        updateEventSlideFactionTypeDisplay(null, 0);
+        updateEventSlideHeroRoleDisplay(null, 0);
 
         // Stop hover radiate loop
         if (window.globeController?.map2dLite?.stopHoverRadiateLoop) {

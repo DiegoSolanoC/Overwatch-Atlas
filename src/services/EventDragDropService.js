@@ -61,12 +61,69 @@ class EventDragDropService {
             item.addEventListener('drop', (e) => {
                 e.preventDefault();
                 if (this.eventManager.draggedElement && this.eventManager.draggedElement !== item) {
-                    const fromIndex = parseInt(this.eventManager.draggedElement.dataset.index);
-                    const toIndex = parseInt(item.dataset.index);
-                    this.reorderEvents(fromIndex, toIndex);
+                    const fromIndex = parseInt(this.eventManager.draggedElement.dataset.index, 10);
+                    const toIndex = parseInt(item.dataset.index, 10);
+                    const arch = this.eventManager.dataService?.getArchiveSource?.();
+                    const targetFactionType =
+                        arch === 'factions' && item.dataset.factionType !== undefined
+                            ? item.dataset.factionType
+                            : undefined;
+                    const targetHeroRole =
+                        arch === 'heroes' && item.dataset.heroRole !== undefined
+                            ? item.dataset.heroRole
+                            : undefined;
+                    const targetHeroSubRole =
+                        arch === 'heroes' && item.dataset.heroSubRole !== undefined
+                            ? item.dataset.heroSubRole
+                            : undefined;
+                    this.reorderEvents(fromIndex, toIndex, {
+                        targetFactionType,
+                        targetHeroRole,
+                        targetHeroSubRole
+                    });
                 }
             });
         });
+
+        const fgo = typeof window !== 'undefined' ? window.FactionArchiveGroupOrderHelpers : null;
+        const hro = typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers : null;
+        const archSrc = this.eventManager.dataService?.getArchiveSource?.();
+        if ((fgo && archSrc === 'factions') || (hro && archSrc === 'heroes')) {
+            document.querySelectorAll('.event-archive-type-separator').forEach((sep) => {
+                sep.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                });
+                sep.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const dragged = this.eventManager.draggedElement;
+                    if (!dragged || !dragged.classList.contains('event-item')) return;
+                    const fromIndex = parseInt(dragged.dataset.index, 10);
+                    const evs = this.eventManager.events;
+                    if (archSrc === 'factions' && fgo && sep.dataset.dropFactionType !== undefined) {
+                        const typeKey = sep.dataset.dropFactionType != null ? sep.dataset.dropFactionType : '';
+                        const toIndex = fgo.findFirstIndexForFactionTypeInList(evs, typeKey);
+                        this.reorderEvents(fromIndex, toIndex, { targetFactionType: typeKey });
+                    } else if (archSrc === 'heroes' && hro && sep.dataset.dropHeroRole !== undefined) {
+                        const roleKey = sep.dataset.dropHeroRole != null ? sep.dataset.dropHeroRole : '';
+                        if ('dropHeroSubRole' in sep.dataset) {
+                            const subKey = sep.dataset.dropHeroSubRole != null ? sep.dataset.dropHeroSubRole : '';
+                            const toIndex = hro.findFirstIndexForHeroRoleAndSubroleInList(evs, roleKey, subKey);
+                            this.reorderEvents(fromIndex, toIndex, {
+                                targetHeroRole: roleKey,
+                                targetHeroSubRole: subKey
+                            });
+                        } else {
+                            const toIndex = hro.findFirstIndexForHeroRoleInList(evs, roleKey);
+                            this.reorderEvents(fromIndex, toIndex, {
+                                targetHeroRole: roleKey,
+                                clearHeroSubRoleOnRoleDrop: true
+                            });
+                        }
+                    }
+                });
+            });
+        }
     }
 
     /**
@@ -90,46 +147,39 @@ class EventDragDropService {
     /**
      * Reorder events
      */
-    reorderEvents(fromIndex, toIndex) {
+    reorderEvents(fromIndex, toIndex, options = {}) {
         if (!this.eventManager) return;
         
         const events = this.eventManager.events;
-        if (fromIndex < 0 || fromIndex >= events.length || toIndex < 0 || toIndex >= events.length) {
+        if (fromIndex < 0 || fromIndex >= events.length || toIndex < 0 || toIndex > events.length) {
             return;
         }
-        
-        const [moved] = events.splice(fromIndex, 1);
-        events.splice(toIndex, 0, moved);
-        
-        // Update unsaved indices after reordering
-        const wasUnsaved = this.eventManager.unsavedEventIndices.has(fromIndex);
-        this.eventManager.unsavedEventIndices.delete(fromIndex);
-        
-        // Rebuild unsaved indices with new positions
-        const newUnsaved = new Set();
-        this.eventManager.unsavedEventIndices.forEach(oldIndex => {
-            if (oldIndex === fromIndex) {
-                // The moved item - goes to toIndex
-                newUnsaved.add(toIndex);
-            } else if (oldIndex < fromIndex && oldIndex < toIndex) {
-                // Before both - no change
-                newUnsaved.add(oldIndex);
-            } else if (oldIndex > fromIndex && oldIndex > toIndex) {
-                // After both - shift left
-                newUnsaved.add(oldIndex - 1);
-            } else if (oldIndex < fromIndex && oldIndex >= toIndex) {
-                // Between toIndex and fromIndex - shift right
-                newUnsaved.add(oldIndex + 1);
-            } else if (oldIndex > fromIndex && oldIndex <= toIndex) {
-                // Between fromIndex and toIndex - shift left
-                newUnsaved.add(oldIndex - 1);
-            }
-        });
-        if (wasUnsaved) {
-            newUnsaved.add(toIndex);
+        if (fromIndex === toIndex) {
+            return;
         }
-        this.eventManager.unsavedEventIndices = newUnsaved;
-        
+
+        const [moved] = events.splice(fromIndex, 1);
+        let insertAt = toIndex;
+        if (fromIndex < toIndex) {
+            insertAt = toIndex - 1;
+        }
+        if (insertAt < 0) insertAt = 0;
+        if (insertAt > events.length) insertAt = events.length;
+        events.splice(insertAt, 0, moved);
+
+        const arch = this.eventManager.dataService?.getArchiveSource?.();
+        if (arch === 'factions' && options && options.targetFactionType !== undefined) {
+            moved.factionType = options.targetFactionType;
+        }
+        if (arch === 'heroes' && options && options.targetHeroRole !== undefined) {
+            moved.heroRole = options.targetHeroRole;
+        }
+        if (arch === 'heroes' && options && options.clearHeroSubRoleOnRoleDrop) {
+            moved.heroSubRole = '';
+        } else if (arch === 'heroes' && options && options.targetHeroSubRole !== undefined) {
+            moved.heroSubRole = options.targetHeroSubRole;
+        }
+
         if (this.eventManager.renderEvents) {
             this.eventManager.renderEvents();
         }

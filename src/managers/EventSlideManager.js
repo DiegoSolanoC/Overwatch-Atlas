@@ -31,6 +31,13 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../utils/StoryFilterPlacesSync.js';
+import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../utils/FactionTypeBioPanel.js';
+import {
+    readHeroRoleBioPanelTrimmed,
+    readHeroSubRoleBioPanelTrimmed,
+    syncHeroBioRolePanelsVisibility,
+    populateHeroSubroleBioSelectOptions
+} from '../utils/HeroRoleBioPanel.js';
 
 const SATELLITE_RELEVANT_PLACES_EDITOR_OPTS = {
     placeholders: {
@@ -97,6 +104,9 @@ export class EventSlideManager {
             originalSources: [],
             originalHeadlines: [],
             originalSecondaryCountryFlags: [],
+            originalFactionType: '',
+            originalHeroRole: '',
+            originalHeroSubRole: '',
             /** Index in eventManager.events when edit started (for reorder / event number) */
             eventListIndex: -1,
         };
@@ -431,6 +441,14 @@ export class EventSlideManager {
             applyStoryFilterPlacesToTarget(target, hr, fr, nr);
         }
 
+        if (archiveSrc === 'factions') {
+            target.factionType = readFactionTypeBioPanelTrimmed();
+        }
+        if (archiveSrc === 'heroes') {
+            target.heroRole = readHeroRoleBioPanelTrimmed();
+            target.heroSubRole = readHeroSubRoleBioPanelTrimmed();
+        }
+
         if (newName) target.name = newName;
         target.description = newText;
         target.cityDisplayName = newCity || undefined;
@@ -461,6 +479,9 @@ export class EventSlideManager {
                 : [],
             ...copyFilterPlaceArraysFromSource(root)
         };
+        if (root.factionType !== undefined) {
+            v0.factionType = String(root.factionType);
+        }
         const lt = v0.locationType || 'earth';
         const v1 = {
             name: '',
@@ -472,6 +493,9 @@ export class EventSlideManager {
             factionFilterPlaces: [],
             npcFilterPlaces: []
         };
+        if (window.eventManager?.dataService?.getArchiveSource?.() === 'factions') {
+            v1.factionType = '';
+        }
         if (lt === 'earth') {
             v1.lat = v0.lat;
             v1.lon = v0.lon;
@@ -493,6 +517,7 @@ export class EventSlideManager {
         delete root.heroFilterPlaces;
         delete root.factionFilterPlaces;
         delete root.npcFilterPlaces;
+        delete root.factionType;
         root.locationType = lt;
         if (v0.cityDisplayName) {
             root.cityDisplayName = v0.cityDisplayName;
@@ -522,6 +547,11 @@ export class EventSlideManager {
         else delete root.factionFilterPlaces;
         if (fp.npcFilterPlaces.length) root.npcFilterPlaces = fp.npcFilterPlaces;
         else delete root.npcFilterPlaces;
+        if (v.factionType !== undefined) {
+            root.factionType = String(v.factionType);
+        } else {
+            delete root.factionType;
+        }
         delete root.lat;
         delete root.lon;
         delete root.x;
@@ -641,6 +671,9 @@ export class EventSlideManager {
                 factionFilterPlaces: [],
                 npcFilterPlaces: []
             };
+            if (window.eventManager?.dataService?.getArchiveSource?.() === 'factions') {
+                nv.factionType = '';
+            }
             if (lt === 'earth') {
                 nv.lat = last?.lat;
                 nv.lon = last?.lon;
@@ -740,6 +773,14 @@ export class EventSlideManager {
         if (typeof window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent === 'function') {
             window.LocationFlagHelpers.updateBioConnectionsSlideFromEvent(fresh);
         }
+        if (window.EventSlideShowHelpers?.updateEventSlideFactionTypeDisplay) {
+            const vIdx = this.uiView?.currentVariantIndex ?? this.currentVariantIndex ?? 0;
+            window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay(fresh, vIdx);
+        }
+        if (window.EventSlideShowHelpers?.updateEventSlideHeroRoleDisplay) {
+            const vIdxH = this.uiView?.currentVariantIndex ?? this.currentVariantIndex ?? 0;
+            window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay(fresh, vIdxH);
+        }
         if (eventSlide.classList.contains('event-slide--inline-editing')) {
             this._populateInlineEditorFieldsFromTarget();
         }
@@ -775,6 +816,16 @@ export class EventSlideManager {
         if (yearStartInput) yearStartInput.value = eventData.yearStart != null && eventData.yearStart !== '' ? String(eventData.yearStart) : '';
         if (yearEndInput) yearEndInput.value = eventData.yearEnd != null && eventData.yearEnd !== '' ? String(eventData.yearEnd) : '';
         if (eraNameInput) eraNameInput.value = eventData.eraName != null ? String(eventData.eraName) : '';
+        const archFt = this._getEffectiveSlideArchiveSource();
+        syncFactionTypeBioPanelVisibility(
+            archFt,
+            archFt === 'factions' ? target.factionType : undefined
+        );
+        syncHeroBioRolePanelsVisibility(
+            archFt,
+            archFt === 'heroes' ? target.heroRole : undefined,
+            archFt === 'heroes' ? target.heroSubRole : undefined
+        );
         if (filtersInput) filtersInput.value = getStoryEventHeroTokens(target).join(', ');
         if (factionsInput) {
             const formSvc = window.eventManager?.formService;
@@ -1075,6 +1126,9 @@ export class EventSlideManager {
         const yearStartInput = document.getElementById('eventSlideEditYearStart');
         const yearEndInput = document.getElementById('eventSlideEditYearEnd');
         const eraNameInput = document.getElementById('eventSlideEditEraName');
+        const factionTypeBioInput = document.getElementById('eventSlideEditFactionTypeBio');
+        const heroRoleBioSelect = document.getElementById('eventSlideEditHeroRoleBio');
+        const heroSubRoleBioSelect = document.getElementById('eventSlideEditHeroSubRoleBio');
         const filtersInput = document.getElementById('eventSlideEditFilters');
         const factionsInput = document.getElementById('eventSlideEditFactions');
         const npcsInput = document.getElementById('eventSlideEditNpcs');
@@ -1140,6 +1194,12 @@ export class EventSlideManager {
         yearStartInput?.addEventListener('input', markDirty, { passive: true });
         yearEndInput?.addEventListener('input', markDirty, { passive: true });
         eraNameInput?.addEventListener('input', markDirty, { passive: true });
+        factionTypeBioInput?.addEventListener('input', markDirty, { passive: true });
+        heroRoleBioSelect?.addEventListener('change', () => {
+            populateHeroSubroleBioSelectOptions();
+            markDirty();
+        });
+        heroSubRoleBioSelect?.addEventListener('change', markDirty);
         filtersInput?.addEventListener('input', markDirty, { passive: true });
         factionsInput?.addEventListener('input', markDirty, { passive: true });
         npcsInput?.addEventListener('input', markDirty, { passive: true });
@@ -1236,6 +1296,9 @@ export class EventSlideManager {
             this._inlineDescEdit.originalNpcs = [...getStoryEventNpcTokens(target)];
             this._inlineDescEdit.originalSources = Array.isArray(target.sources) ? JSON.parse(JSON.stringify(target.sources)) : [];
             this._inlineDescEdit.originalHeadlines = Array.isArray(target.headlines) ? [...target.headlines] : [];
+            this._inlineDescEdit.originalFactionType = target.factionType != null ? String(target.factionType) : '';
+            this._inlineDescEdit.originalHeroRole = target.heroRole != null ? String(target.heroRole) : '';
+            this._inlineDescEdit.originalHeroSubRole = target.heroSubRole != null ? String(target.heroSubRole) : '';
             const lhOrig = window.LocationFlagHelpers;
             this._inlineDescEdit.originalSecondaryCountryFlags =
                 lhOrig && typeof lhOrig.getSecondaryCountryFlagFilenamesForEntity === 'function'
@@ -1261,13 +1324,22 @@ export class EventSlideManager {
             eventSlideText.setAttribute('contenteditable', 'true');
             eventSlideText.setAttribute('spellcheck', 'true');
 
-            // Move description element into the description container in the inline editor
+            // Move description into the inline editor, or into the visible bio strip when it is open (MenuHelpers satellite edit).
             const descContainer = document.getElementById('eventSlideEditDescriptionContainer');
-            if (descContainer && eventSlideText) {
-                // Store original parent for restoration
+            const bioDescHost = document.getElementById('eventSlideBioDescriptionEditHost');
+            const heroLocStrip = document.getElementById('eventSlideHeroLocationsEdit');
+            const archDesc = this._getEffectiveSlideArchiveSource();
+            const useBioDescHost =
+                isBioArchiveSource(archDesc) &&
+                bioDescHost &&
+                heroLocStrip &&
+                !heroLocStrip.hasAttribute('hidden') &&
+                heroLocStrip.style.display !== 'none';
+            const moveDescTarget = useBioDescHost ? bioDescHost : descContainer;
+            if (moveDescTarget && eventSlideText) {
                 this._inlineDescEdit.descriptionOriginalParent = eventSlideText.parentNode;
                 this._inlineDescEdit.descriptionOriginalNextSibling = eventSlideText.nextSibling;
-                descContainer.appendChild(eventSlideText);
+                moveDescTarget.appendChild(eventSlideText);
             }
 
             if (editor) editor.style.display = 'block';
@@ -1377,16 +1449,60 @@ export class EventSlideManager {
             }
 
             const emReorder = window.eventManager;
-            const startIdx = this._inlineDescEdit.eventListIndex;
+            const fgoReorder = typeof window !== 'undefined' ? window.FactionArchiveGroupOrderHelpers : null;
+            const hroReorder = typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers : null;
+            const { target: savedTargetForOrder } = this._getCurrentDescriptionTarget();
+            let factionListOrderChanged = false;
+            if (archInline === 'factions' && fgoReorder && emReorder?.events && savedTargetForOrder) {
+                const oldFt = fgoReorder.normalizeFactionArchiveType(this._inlineDescEdit.originalFactionType);
+                const newFt = fgoReorder.normalizeFactionArchiveType(savedTargetForOrder.factionType);
+                if (oldFt !== newFt) {
+                    fgoReorder.moveFactionEntryToLastInItsTypeGroup(emReorder.events, savedTargetForOrder);
+                    factionListOrderChanged = true;
+                }
+            }
+            let heroListOrderChanged = false;
+            if (archInline === 'heroes' && hroReorder && emReorder?.events && savedTargetForOrder) {
+                const oldR = hroReorder.normalizeHeroArchiveRole(this._inlineDescEdit.originalHeroRole);
+                const newR = hroReorder.normalizeHeroArchiveRole(savedTargetForOrder.heroRole);
+                const oldRoleForSub = oldR;
+                const newRoleForSub = newR;
+                const oldS = hroReorder.normalizeHeroArchiveSubrole(this._inlineDescEdit.originalHeroSubRole, oldRoleForSub);
+                const newS = hroReorder.normalizeHeroArchiveSubrole(savedTargetForOrder.heroSubRole, newRoleForSub);
+                if (oldR !== newR) {
+                    hroReorder.moveHeroEntryToLastInItsRoleGroup(emReorder.events, savedTargetForOrder);
+                    heroListOrderChanged = true;
+                }
+                if (oldR !== newR || oldS !== newS) {
+                    hroReorder.moveHeroEntryToLastInItsSubroleGroup(emReorder.events, savedTargetForOrder);
+                    heroListOrderChanged = true;
+                }
+            }
             const numReorderEl = document.getElementById('eventSlideEditEventNumber');
+            let startIdx =
+                (archInline === 'factions' || archInline === 'heroes') &&
+                savedTargetForOrder &&
+                emReorder?.events
+                    ? emReorder.events.indexOf(savedTargetForOrder)
+                    : this._inlineDescEdit.eventListIndex;
+            if (startIdx < 0) startIdx = this._inlineDescEdit.eventListIndex;
+            let didReorderViaNumber = false;
             if (emReorder && typeof emReorder.reorderEvents === 'function' && numReorderEl && startIdx >= 0 && Array.isArray(emReorder.events)) {
                 const n = parseInt(numReorderEl.value, 10);
                 if (!Number.isNaN(n) && n >= 1) {
                     const newIdx = Math.min(n - 1, emReorder.events.length - 1);
                     if (newIdx !== startIdx) {
                         emReorder.reorderEvents(startIdx, newIdx);
+                        didReorderViaNumber = true;
                     }
                 }
+            }
+            if (
+                (factionListOrderChanged || heroListOrderChanged) &&
+                !didReorderViaNumber &&
+                typeof emReorder?.renderEvents === 'function'
+            ) {
+                emReorder.renderEvents();
             }
 
             // Persist the same way EventManager does: save to localStorage via EventDataService.
@@ -1467,6 +1583,27 @@ export class EventSlideManager {
         if (editBtn) editBtn.textContent = 'Edit';
         if (editor) editor.style.display = 'none';
 
+        const archExit = this._getEffectiveSlideArchiveSource();
+        if (archExit === 'factions') {
+            const ftRestore = keepEdits
+                ? (target?.factionType != null ? String(target.factionType) : '')
+                : (this._inlineDescEdit.originalFactionType ?? '');
+            syncFactionTypeBioPanelVisibility('factions', ftRestore);
+        } else {
+            syncFactionTypeBioPanelVisibility(archExit, undefined);
+        }
+        if (archExit === 'heroes') {
+            const hrRestore = keepEdits
+                ? (target?.heroRole != null ? String(target.heroRole) : '')
+                : (this._inlineDescEdit.originalHeroRole ?? '');
+            const hsRestore = keepEdits
+                ? (target?.heroSubRole != null ? String(target.heroSubRole) : '')
+                : (this._inlineDescEdit.originalHeroSubRole ?? '');
+            syncHeroBioRolePanelsVisibility('heroes', hrRestore, hsRestore);
+        } else {
+            syncHeroBioRolePanelsVisibility(archExit, undefined, undefined);
+        }
+
         const variantToggles = document.getElementById('eventVariantToggles');
         const rootForToggles = this.uiView?.currentEventData || this.currentEventData;
         if (variantToggles && rootForToggles) {
@@ -1500,6 +1637,20 @@ export class EventSlideManager {
             if (typeof refreshMeta === 'function') {
                 refreshMeta(eventData);
             }
+            const refreshFactionType = window.EventSlideShowHelpers?.updateEventSlideFactionTypeDisplay;
+            if (typeof refreshFactionType === 'function') {
+                refreshFactionType(
+                    eventData,
+                    this.uiView?.currentVariantIndex ?? this.currentVariantIndex ?? 0
+                );
+            }
+            const refreshHeroRole = window.EventSlideShowHelpers?.updateEventSlideHeroRoleDisplay;
+            if (typeof refreshHeroRole === 'function') {
+                refreshHeroRole(
+                    eventData,
+                    this.uiView?.currentVariantIndex ?? this.currentVariantIndex ?? 0
+                );
+            }
         }
 
         this._inlineDescEdit.active = false;
@@ -1515,6 +1666,9 @@ export class EventSlideManager {
         this._inlineDescEdit.originalSources = [];
         this._inlineDescEdit.originalHeadlines = [];
         this._inlineDescEdit.originalSecondaryCountryFlags = [];
+        this._inlineDescEdit.originalFactionType = '';
+        this._inlineDescEdit.originalHeroRole = '';
+        this._inlineDescEdit.originalHeroSubRole = '';
         this._inlineDescEdit.eventListIndex = -1;
     }
 
@@ -1780,6 +1934,12 @@ export class EventSlideManager {
                 if (window.EventSlideShowHelpers && typeof window.EventSlideShowHelpers.updateEventSlideTimelineMeta === 'function') {
                     window.EventSlideShowHelpers.updateEventSlideTimelineMeta(eventData);
                 }
+                if (window.EventSlideShowHelpers?.updateEventSlideFactionTypeDisplay) {
+                    window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay(eventData, initialVariantIndex);
+                }
+                if (window.EventSlideShowHelpers?.updateEventSlideHeroRoleDisplay) {
+                    window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay(eventData, initialVariantIndex);
+                }
                 this.updateContentWithFade(eventSlideText, getDisplayText(description || 'Placeholder text for event information. This will be replaced with actual event details.'), isAlreadyOpen);
             }
 
@@ -2043,6 +2203,13 @@ export class EventSlideManager {
             this.uiView.currentEventMarker = null;
         }
 
+        if (window.EventSlideShowHelpers?.updateEventSlideFactionTypeDisplay) {
+            window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay(null, 0);
+        }
+        if (window.EventSlideShowHelpers?.updateEventSlideHeroRoleDisplay) {
+            window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay(null, 0);
+        }
+
         // Only zoom out and restore camera position if we actually zoomed to an event
         // (i.e., if originalCameraPosition was set from zoomToMarker)
         // Read from uiView since zoomToMarker sets it there
@@ -2208,6 +2375,13 @@ export class EventSlideManager {
                     eventImageOverlay.classList.add('open');
                 }
             }
+        }
+
+        if (window.EventSlideShowHelpers?.updateEventSlideFactionTypeDisplay) {
+            window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay(eventData, variantIndex);
+        }
+        if (window.EventSlideShowHelpers?.updateEventSlideHeroRoleDisplay) {
+            window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay(eventData, variantIndex);
         }
 
         // Play switch event sound

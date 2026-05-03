@@ -293,6 +293,44 @@ body.color-palette-gray .filter-tab.active .filter-count {
     color: #fff;
 }
 
+/* Factions archive: full-width type row inside the filters modal (same language as Event Manager list) */
+.filters-grid .filters-grid-type-separator {
+    grid-column: 1 / -1;
+    margin: 14px 0 6px;
+    padding: 8px 4px 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+    border-bottom: 2px solid rgba(33, 150, 243, 0.45);
+    user-select: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+body.color-palette-gray .filters-grid .filters-grid-type-separator {
+    border-bottom-color: rgba(255, 102, 0, 0.55);
+}
+
+/* Heroes archive: subrole row under Role (narrower band, same grid span) */
+.filters-grid .filters-grid-hero-subrole-separator {
+    grid-column: 1 / -1;
+    margin: 4px 0 2px 12px;
+    padding: 4px 4px 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    border-left: 3px solid rgba(33, 150, 243, 0.5);
+    user-select: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
+    border-left-color: rgba(255, 102, 0, 0.55);
+}
+
 .filters-grid {
     display: grid;
     /* Extra panel width adds columns (~5 at default width), not stretched tiles */

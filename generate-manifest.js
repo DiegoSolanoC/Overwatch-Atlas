@@ -2,26 +2,107 @@
 // Run: node generate-manifest.js
 
 const fs = require('fs');
-const path = require('path');
 
 const heroesFolder = './assets/images/heroes';
 const factionsFolder = './assets/images/factions';
 const npcsFolder = './assets/images/npcs';
 const musicFolder = './assets/audio/music';
 
-/** Locale-aware sort so "51" orders like a number among hero names */
-function sortHeroBasenames(names) {
-    return [...names].sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+/**
+ * Story-archive order for filters (keep aligned with src/services/helpers/FilterArchiveOrderHelpers.js).
+ */
+function readStoryArchiveNames(jsonPath) {
+    try {
+        const raw = fs.readFileSync(jsonPath, 'utf8');
+        const j = JSON.parse(raw);
+        if (!j.events || !Array.isArray(j.events)) return [];
+        return j.events
+            .map((e) => (e && e.name != null ? String(e.name).trim() : ''))
+            .filter(Boolean);
+    } catch {
+        return [];
+    }
+}
+
+function orderHeroOrNpcIdsByArchive(manifestItems, archiveNames) {
+    if (!Array.isArray(manifestItems) || manifestItems.length === 0) return manifestItems || [];
+    const set = new Set(manifestItems.map((x) => String(x)));
+    if (!Array.isArray(archiveNames) || archiveNames.length === 0) {
+        return [...manifestItems].sort((a, b) =>
+            String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' })
+        );
+    }
+    const seen = new Set();
+    const out = [];
+    for (const n of archiveNames) {
+        if (!set.has(n) || seen.has(n)) continue;
+        out.push(n);
+        seen.add(n);
+    }
+    const tail = manifestItems.filter((x) => !seen.has(x));
+    tail.sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' }));
+    return out.concat(tail);
+}
+
+function orderFactionsByArchive(manifestFactions, archiveNames) {
+    if (!Array.isArray(manifestFactions) || manifestFactions.length === 0) return manifestFactions || [];
+    if (!Array.isArray(archiveNames) || archiveNames.length === 0) {
+        return [...manifestFactions].sort((a, b) =>
+            String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+                sensitivity: 'base',
+                numeric: true
+            })
+        );
+    }
+    const resolveFaction = (archiveName) => {
+        const key = String(archiveName).trim();
+        if (!key) return null;
+        let f = manifestFactions.find(
+            (x) => String(x.displayName || '').trim() === key || String(x.filename || '').trim() === key
+        );
+        if (!f) {
+            const kl = key.toLowerCase();
+            f = manifestFactions.find(
+                (x) =>
+                    String(x.displayName || '')
+                        .trim()
+                        .toLowerCase() === kl ||
+                    String(x.filename || '')
+                        .trim()
+                        .toLowerCase() === kl
+            );
+        }
+        return f || null;
+    };
+    const seen = new Set();
+    const out = [];
+    for (const name of archiveNames) {
+        const f = resolveFaction(name);
+        const fn = f && f.filename != null ? String(f.filename) : '';
+        if (f && fn && !seen.has(fn)) {
+            out.push(f);
+            seen.add(fn);
+        }
+    }
+    const tail = manifestFactions.filter((f) => {
+        const fn = f && f.filename != null ? String(f.filename) : '';
+        return fn && !seen.has(fn);
+    });
+    tail.sort((a, b) =>
+        String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+            sensitivity: 'base',
+            numeric: true
+        })
+    );
+    return out.concat(tail);
 }
 
 function getHeroesFromFolder(folderPath) {
     try {
         const files = fs.readdirSync(folderPath);
-        return sortHeroBasenames(
-            files
-                .filter((file) => file.toLowerCase().endsWith('.png'))
-                .map((file) => file.replace(/\.png$/i, ''))
-        );
+        return files
+            .filter((file) => file.toLowerCase().endsWith('.png'))
+            .map((file) => file.replace(/\.png$/i, ''));
     } catch (error) {
         console.error(`Error reading folder ${folderPath}:`, error);
         return [];
@@ -49,10 +130,7 @@ function getFactionsFromFolder(folderPath) {
                     filename,
                     displayName: factionDisplayNameFromBasename(filename)
                 };
-            })
-            .sort((a, b) =>
-                a.displayName.localeCompare(b.displayName, undefined, { sensitivity: 'base', numeric: true })
-            );
+            });
     } catch (error) {
         console.error(`Error reading folder ${folderPath}:`, error);
         return [];
@@ -79,9 +157,14 @@ function getMusicFiles(folderPath) {
     }
 }
 
-const heroes = getHeroesFromFolder(heroesFolder);
-const factions = getFactionsFromFolder(factionsFolder);
-const npcs = getHeroesFromFolder(npcsFolder);
+let heroes = getHeroesFromFolder(heroesFolder);
+let factions = getFactionsFromFolder(factionsFolder);
+let npcs = getHeroesFromFolder(npcsFolder);
+
+heroes = orderHeroOrNpcIdsByArchive(heroes, readStoryArchiveNames('./data/story-archive-heroes.json'));
+npcs = orderHeroOrNpcIdsByArchive(npcs, readStoryArchiveNames('./data/story-archive-npcs.json'));
+factions = orderFactionsByArchive(factions, readStoryArchiveNames('./data/story-archive-factions.json'));
+
 const music = getMusicFiles(musicFolder);
 
 const manifest = {
@@ -95,5 +178,5 @@ const manifest = {
 };
 
 fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2));
-console.log('manifest.json written from disk assets.');
+console.log('manifest.json written from disk assets (heroes/factions/npcs ordered like story-archive JSON).');
 console.log(`  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}`);

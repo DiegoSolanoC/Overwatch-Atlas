@@ -66,8 +66,38 @@
                     </div>
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
                     <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
+                    <p id="eventSlideFactionTypeDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
+                    <p id="eventSlideHeroRoleDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <div id="eventSlideHeroLocationsEdit" class="event-slide-hero-locations-edit" hidden>
-                        <div class="event-slide-hero-locations-edit__toolbar">
+                        <div id="eventSlideFactionTypeBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
+                            <div class="event-slide-hero-locations-edit__toolbar">
+                                <label class="event-slide-hero-locations-edit__label" for="eventSlideEditFactionTypeBio">Faction type</label>
+                            </div>
+                            <input class="event-slide-inline-editor__input" id="eventSlideEditFactionTypeBio" type="text" spellcheck="true" autocomplete="on" placeholder="e.g. Major Player, Criminal Groups (optional)" style="width: 100%; box-sizing: border-box; margin-top: 6px;" />
+                        </div>
+                        <div id="eventSlideHeroRoleBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
+                            <div class="event-slide-hero-locations-edit__toolbar">
+                                <label class="event-slide-hero-locations-edit__label" for="eventSlideEditHeroRoleBio">Role</label>
+                            </div>
+                            <select class="event-slide-inline-editor__input" id="eventSlideEditHeroRoleBio" aria-label="Hero role" style="width: 100%; box-sizing: border-box; margin-top: 6px;">
+                                <option value="">None</option>
+                                <option value="Tank">Tank</option>
+                                <option value="Damage">Damage</option>
+                                <option value="Support">Support</option>
+                            </select>
+                        </div>
+                        <div id="eventSlideHeroSubRoleBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
+                            <div class="event-slide-hero-locations-edit__toolbar">
+                                <label class="event-slide-hero-locations-edit__label" for="eventSlideEditHeroSubRoleBio">Subrole</label>
+                            </div>
+                            <select class="event-slide-inline-editor__input" id="eventSlideEditHeroSubRoleBio" aria-label="Hero subrole" style="width: 100%; box-sizing: border-box; margin-top: 6px;"></select>
+                        </div>
+                        <div id="eventSlideBioDescriptionEditHost" class="event-slide-hero-locations-edit__description-host">
+                            <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
+                                <span class="event-slide-hero-locations-edit__label">Description</span>
+                            </div>
+                        </div>
+                        <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
                             <span class="event-slide-hero-locations-edit__label">Relevant locations</span>
                             <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddRelevantLocationBtn">+ Add</button>
                         </div>
@@ -225,20 +255,22 @@
     <script src="src/services/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/app/component-loader.js?v=83"></script>
+    <script type="module" src="src/app/component-loader.js?v=84"></script>
     
     <!-- Load services -->
     <script src="src/services/SoundEffectsManager.js?v=8"></script>
     <script src="src/services/GlitchTextService.js?v=10"></script>
     <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/services/EventDataService.js?v=28"></script>
+    <script src="src/services/EventDataService.js?v=29"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=23"></script>
+    <script src="src/utils/LocationFlagHelpers.js?v=25"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
     <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
     <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
-    <script src="src/services/EventRenderService.js?v=21"></script>
+    <script src="src/utils/FactionArchiveGroupOrder.js?v=2"></script>
+    <script src="src/utils/HeroArchiveRoleOrder.js?v=3"></script>
+    <script src="src/services/EventRenderService.js?v=25"></script>
     <script src="src/services/EventEditService.js?v=12"></script>
     <script src="src/services/NewsTickerService.js?v=8"></script>
     <!-- EventFormService dependencies - load before EventFormService -->
@@ -250,7 +282,7 @@
     <script src="src/utils/HeroRelevantLocationsEditor.js?v=3"></script>
     <script src="src/utils/BioArchiveConnectionsSync.js?v=7"></script>
     <script src="src/utils/BioArchiveConnectionsEditor.js?v=9"></script>
-    <script src="src/services/EventDragDropService.js?v=8"></script>
+    <script src="src/services/EventDragDropService.js?v=11"></script>
     <script src="src/services/EventListenerService.js?v=13"></script>
     <script src="src/services/EventInteractionService.js?v=12"></script>
     <script src="src/services/EventInitService.js?v=8"></script>
@@ -274,12 +306,12 @@
     <script src="src/services/FilterStateManager.js?v=10"></script>
     <script src="src/services/FilterImageService.js?v=8"></script>
     <!-- FilterService helpers - load before FilterService -->
-    <script type="module" src="src/services/helpers/FilterButtonHelpers.js?v=9"></script>
+    <script type="module" src="src/services/helpers/FilterButtonHelpers.js?v=10"></script>
     <script type="module" src="src/services/helpers/FilterButtonSetupHelpers.js?v=10"></script>
-    <script type="module" src="src/services/helpers/FilterManifestHelpers.js?v=9"></script>
+    <script type="module" src="src/services/helpers/FilterManifestHelpers.js?v=10"></script>
     <script type="module" src="src/services/helpers/FilterTabHelpers.js?v=9"></script>
     <script type="module" src="src/services/helpers/FilterCountHelpers.js?v=9"></script>
-    <script src="src/services/FilterService.js?v=12"></script>
+    <script src="src/services/FilterService.js?v=15"></script>
     <script src="src/services/AppKeyboardShortcutsService.js?v=11"></script>
     <script src="src/services/PanelResizeService.js?v=14"></script>
     

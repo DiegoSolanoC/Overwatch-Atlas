@@ -3,6 +3,16 @@
  * Separates rendering logic from event management logic
  */
 
+/** @returns {typeof window.FactionArchiveGroupOrderHelpers|null} */
+function factionArchiveGroupOrder() {
+    return typeof window !== 'undefined' ? window.FactionArchiveGroupOrderHelpers || null : null;
+}
+
+/** @returns {typeof window.HeroArchiveRoleOrderHelpers|null} */
+function heroArchiveRoleOrder() {
+    return typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers || null : null;
+}
+
 /** Valid transparent src until IO assigns `data-src` — `<img>` with no `src` paints an opaque blank (reads as white) on top of the loading backdrop. */
 const EVENT_LIST_LAZY_IMG_PLACEHOLDER =
     'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
@@ -329,16 +339,100 @@ class EventRenderService {
 
         // Create event items for current page; use index in full list for edit/open (events may be filtered)
         const fullList = this.eventManager && this.eventManager.events ? this.eventManager.events : events;
+        const archiveSourceList =
+            typeof this.eventManager?.dataService?.getArchiveSource === 'function'
+                ? this.eventManager.dataService.getArchiveSource()
+                : 'story';
+        const factionsGroupedList = archiveSourceList === 'factions';
+        const heroesGroupedList = archiveSourceList === 'heroes';
+        if (factionsGroupedList) {
+            factionArchiveGroupOrder()?.sortFactionsArchiveEventsStable(fullList);
+        }
+        if (heroesGroupedList) {
+            heroArchiveRoleOrder()?.sortHeroesArchiveEventsStable(fullList);
+        }
         console.log(`[EventRenderService] Full list has ${fullList.length} events, rendering ${eventsToRender.length} events on page ${validPage}`);
         const overlapIndexSet = this._computeOverlapIndexSet(eventsToRender, fullList);
         const renderStartTime = performance.now();
         const fragment = document.createDocumentFragment();
+        let lastFactionGroupKey = '';
+        if (factionsGroupedList && startIndex > 0) {
+            const fgoPrev = factionArchiveGroupOrder();
+            if (fgoPrev) {
+                const prevEv = events[startIndex - 1];
+                const pr = fgoPrev.factionArchiveTypeRank(prevEv?.factionType);
+                lastFactionGroupKey = `${pr}|${fgoPrev.normalizeFactionArchiveType(prevEv?.factionType)}`;
+            }
+        }
+        let lastHeroGroupKey = '';
+        let lastHeroSubKey = '';
+        if (heroesGroupedList && startIndex > 0) {
+            const hroPrev = heroArchiveRoleOrder();
+            if (hroPrev) {
+                const prevEvH = events[startIndex - 1];
+                const prh = hroPrev.heroArchiveRoleRank(prevEvH?.heroRole);
+                const nr = hroPrev.normalizeHeroArchiveRole(prevEvH?.heroRole);
+                lastHeroGroupKey = `${prh}|${nr}`;
+                lastHeroSubKey = `${hroPrev.heroArchiveSubroleRank(prevEvH?.heroSubRole, nr)}|${hroPrev.normalizeHeroArchiveSubrole(prevEvH?.heroSubRole, nr)}`;
+            }
+        }
         eventsToRender.forEach((event, pageIndex) => {
             const actualIndex = fullList.indexOf(event);
             if (actualIndex === -1) return;
             const hasOverlap = overlapIndexSet.has(actualIndex);
             console.log(`[EventRenderService] Event #${actualIndex + 1} (${event.name}): hasOverlap=${hasOverlap}`);
-            const eventItem = this.createEventItem(event, actualIndex, fullList, { hasOverlap });
+            if (factionsGroupedList) {
+                const fgo = factionArchiveGroupOrder();
+                if (fgo) {
+                    const gRank = fgo.factionArchiveTypeRank(event?.factionType);
+                    const gKey = `${gRank}|${fgo.normalizeFactionArchiveType(event?.factionType)}`;
+                    if (gKey !== lastFactionGroupKey) {
+                        lastFactionGroupKey = gKey;
+                        fragment.appendChild(
+                            this.createFactionArchiveTypeSeparator(
+                                fgo.displayLabelForFactionArchiveType(event?.factionType),
+                                fgo.normalizeFactionArchiveType(event?.factionType)
+                            )
+                        );
+                    }
+                }
+            }
+            if (heroesGroupedList) {
+                const hro = heroArchiveRoleOrder();
+                if (hro) {
+                    const gRankH = hro.heroArchiveRoleRank(event?.heroRole);
+                    const normRole = hro.normalizeHeroArchiveRole(event?.heroRole);
+                    const gKeyH = `${gRankH}|${normRole}`;
+                    if (gKeyH !== lastHeroGroupKey) {
+                        lastHeroGroupKey = gKeyH;
+                        lastHeroSubKey = '';
+                        fragment.appendChild(
+                            this.createHeroArchiveRoleSeparator(
+                                hro.displayLabelForHeroArchiveRole(event?.heroRole),
+                                normRole
+                            )
+                        );
+                    }
+                    const gRankS = hro.heroArchiveSubroleRank(event?.heroSubRole, normRole);
+                    const normSub = hro.normalizeHeroArchiveSubrole(event?.heroSubRole, normRole);
+                    const gKeyS = `${gRankS}|${normSub}`;
+                    if (gKeyS !== lastHeroSubKey) {
+                        lastHeroSubKey = gKeyS;
+                        fragment.appendChild(
+                            this.createHeroArchiveSubroleSeparator(
+                                hro.displayLabelForHeroArchiveSubrole(event?.heroSubRole, normRole),
+                                normRole,
+                                normSub
+                            )
+                        );
+                    }
+                }
+            }
+            const eventItem = this.createEventItem(event, actualIndex, fullList, {
+                hasOverlap,
+                factionsGroupedList,
+                heroesGroupedList
+            });
             fragment.appendChild(eventItem);
         });
         eventsList.appendChild(fragment);
@@ -591,6 +685,56 @@ class EventRenderService {
     }
 
     /**
+     * Section divider for Factions archive Event Manager list (also a drop target).
+     * @param {string} displayLabel
+     * @param {string} typeKey — normalized faction type; empty string = None bucket
+     */
+    createFactionArchiveTypeSeparator(displayLabel, typeKey) {
+        const el = document.createElement('div');
+        el.className = 'event-archive-type-separator';
+        el.setAttribute('role', 'separator');
+        el.setAttribute('aria-label', displayLabel);
+        el.textContent = displayLabel;
+        el.dataset.dropFactionType = typeKey;
+        el.draggable = false;
+        return el;
+    }
+
+    /**
+     * Section divider for Heroes archive Event Manager list (also a drop target for Role).
+     * @param {string} displayLabel
+     * @param {string} roleKey — normalized role; empty string = None bucket
+     */
+    createHeroArchiveRoleSeparator(displayLabel, roleKey) {
+        const el = document.createElement('div');
+        el.className = 'event-archive-type-separator';
+        el.setAttribute('role', 'separator');
+        el.setAttribute('aria-label', displayLabel);
+        el.textContent = displayLabel;
+        el.dataset.dropHeroRole = roleKey;
+        el.draggable = false;
+        return el;
+    }
+
+    /**
+     * Sub-section divider under Role (also a drop target for Role + Subrole).
+     * @param {string} displayLabel
+     * @param {string} roleKey — normalized role
+     * @param {string} subKey — normalized subrole; '' = None
+     */
+    createHeroArchiveSubroleSeparator(displayLabel, roleKey, subKey) {
+        const el = document.createElement('div');
+        el.className = 'event-archive-type-separator event-archive-hero-subrole-separator';
+        el.setAttribute('role', 'separator');
+        el.setAttribute('aria-label', displayLabel);
+        el.textContent = displayLabel;
+        el.dataset.dropHeroRole = roleKey;
+        el.dataset.dropHeroSubRole = subKey;
+        el.draggable = false;
+        return el;
+    }
+
+    /**
      * Create event item element
      * @param {Object} event - Event object
      * @param {number} index - Event index in array
@@ -615,6 +759,20 @@ class EventRenderService {
             item.draggable = true;
         }
         item.dataset.index = index;
+        if (options.factionsGroupedList) {
+            const fgo = factionArchiveGroupOrder();
+            if (fgo) {
+                item.dataset.factionType = fgo.normalizeFactionArchiveType(event?.factionType);
+            }
+        }
+        if (options.heroesGroupedList) {
+            const hro = heroArchiveRoleOrder();
+            if (hro) {
+                const nr = hro.normalizeHeroArchiveRole(event?.heroRole);
+                item.dataset.heroRole = nr;
+                item.dataset.heroSubRole = hro.normalizeHeroArchiveSubrole(event?.heroSubRole, nr);
+            }
+        }
 
         // Check if this event has unsaved changes
         if (this.eventManager.unsavedEventIndices && this.eventManager.unsavedEventIndices.has(index)) {

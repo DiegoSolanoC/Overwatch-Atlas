@@ -1939,8 +1939,8 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
 
     /*
      * Center rail: seven equal flex segments inside the dock trapezium shape.
-     * clip-path matches SVG polygon in ComponentDOMHelpers (viewBox -12 -12 124 124, data-dock-trap-v="9"):
-     * points="2,0 98,0 112,100 -12,100" → percentages vs 124×124.
+     * clip-path matches SVG fill polygon (viewBox -12 -12 124 124, data-dock-trap-v="10"):
+     * points="2,3 98,3 112,100 -12,100" → percentages vs 124×124 (origin shift +12 on x/y).
      */
     body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail.dock-globe-rail--center {
         position: relative !important;
@@ -1968,8 +1968,8 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
         min-height: 0 !important;
         overflow: hidden;
         clip-path: polygon(
-            11.29032258% 9.67741935%,
-            88.70967742% 9.67741935%,
+            11.29032258% 12.09677419%,
+            88.70967742% 12.09677419%,
             100% 90.32258065%,
             0% 90.32258065%
         );

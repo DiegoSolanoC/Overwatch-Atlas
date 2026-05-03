@@ -159,10 +159,72 @@ class FilterService {
         this.loadManifest().then(() => {
             // Setup tab switching
             this.setupTabs();
-            
+
             // Setup button handlers
             this.setupButtons();
             this._setupSearchHandlers();
+
+            if (!this._onAtlasBioArchivesRefreshedForFilters) {
+                this._onAtlasBioArchivesRefreshedForFilters = (ev) => {
+                    const d = ev && ev.detail ? ev.detail : {};
+                    const orderNames = Array.isArray(d.orderNames) ? d.orderNames : null;
+                    const archives = Array.isArray(d.archives) ? d.archives : [];
+                    const H = typeof window !== 'undefined' ? window.FilterArchiveOrderHelpers : null;
+
+                    const repaintCurrentFilterTab = () => {
+                        const type = this.currentFilterType || 'heroes';
+                        if (type === 'heroes') {
+                            this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
+                        } else if (type === 'factions') {
+                            this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
+                        } else if (type === 'npcs') {
+                            this.createFilterButtons(this.npcs, 'npcs', 'assets/images/npcs');
+                        } else if (type === 'countries') {
+                            this.createFilterButtons(this.countries, 'countries', 'assets/images/flags');
+                        }
+                        if (typeof this._applyCurrentCategorySearch === 'function') {
+                            this._applyCurrentCategorySearch();
+                        }
+                        if (typeof this.updateButtonStates === 'function') {
+                            this.updateButtonStates();
+                        }
+                    };
+
+                    this.buttonCache.heroes = null;
+                    this.buttonCache.factions = null;
+                    this.buttonCache.npcs = null;
+                    if (typeof window !== 'undefined' && window.FilterButtonHelpers?.invalidateArchiveLayoutFileCaches) {
+                        window.FilterButtonHelpers.invalidateArchiveLayoutFileCaches();
+                    }
+
+                    if (
+                        orderNames &&
+                        orderNames.length &&
+                        archives.length &&
+                        H &&
+                        typeof H.orderHeroOrNpcIdsByArchive === 'function' &&
+                        typeof H.orderFactionsByArchive === 'function'
+                    ) {
+                        for (const arch of archives) {
+                            if (arch === 'heroes') {
+                                this.heroes = H.orderHeroOrNpcIdsByArchive(this.heroes, orderNames);
+                            } else if (arch === 'npcs') {
+                                this.npcs = H.orderHeroOrNpcIdsByArchive(this.npcs, orderNames);
+                            } else if (arch === 'factions') {
+                                this.factions = H.orderFactionsByArchive(this.factions, orderNames);
+                            }
+                        }
+                        repaintCurrentFilterTab();
+                        return;
+                    }
+
+                    this.loadManifest().then(() => repaintCurrentFilterTab());
+                };
+                window.addEventListener(
+                    'atlas-bio-archives-refreshed',
+                    this._onAtlasBioArchivesRefreshedForFilters
+                );
+            }
         });
     }
     
@@ -179,6 +241,15 @@ class FilterService {
             this._panelExclusivityObserver = null;
         }
         this._enforcingPanelExclusivity = false;
+        if (this._onAtlasBioArchivesRefreshedForFilters) {
+            try {
+                window.removeEventListener(
+                    'atlas-bio-archives-refreshed',
+                    this._onAtlasBioArchivesRefreshedForFilters
+                );
+            } catch (_) {}
+            this._onAtlasBioArchivesRefreshedForFilters = null;
+        }
         this.initialized = false;
         this.filtersButton = null;
         this.filtersPanel = null;
@@ -402,6 +473,9 @@ class FilterService {
         this.buttonCache.factions = null;
         this.buttonCache.npcs = null;
         this.buttonCache.countries = null;
+        if (typeof window !== 'undefined' && window.FilterButtonHelpers?.invalidateArchiveLayoutFileCaches) {
+            window.FilterButtonHelpers.invalidateArchiveLayoutFileCaches();
+        }
 
         const helper = window.FilterManifestHelpers?.loadManifest;
         if (helper) {
@@ -427,21 +501,44 @@ class FilterService {
                     }
                 });
                 const manifest = await response.json();
-                this.heroes = manifest.heroes ? manifest.heroes.sort() : [];
-                this.npcs = manifest.npcs ? [...manifest.npcs].sort() : [];
-                this.factions = manifest.factions
-                    ? [...manifest.factions]
-                        .map((f) => ({
-                            filename: f.filename,
-                            displayName: f.displayName
-                        }))
-                        .sort((a, b) =>
-                            String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
-                                sensitivity: 'base',
-                                numeric: true
-                            })
-                        )
+                let heroes = manifest.heroes ? [...manifest.heroes] : [];
+                let npcs = manifest.npcs ? [...manifest.npcs] : [];
+                let factions = manifest.factions
+                    ? [...manifest.factions].map((f) => ({
+                          filename: f.filename,
+                          displayName: f.displayName
+                      }))
                     : [];
+                try {
+                    const modUrl = new URL(
+                        'src/services/helpers/FilterArchiveOrderHelpers.js',
+                        document.baseURI
+                    ).href;
+                    const orderMod = await import(modUrl);
+                    if (orderMod && typeof orderMod.applyStoryArchiveOrderFromNetwork === 'function') {
+                        const o = await orderMod.applyStoryArchiveOrderFromNetwork(heroes, factions, npcs);
+                        heroes = o.heroes;
+                        factions = o.factions;
+                        npcs = o.npcs;
+                    }
+                } catch (e) {
+                    console.warn('FilterService: story-archive filter order unavailable', e);
+                    heroes.sort((a, b) =>
+                        String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' })
+                    );
+                    npcs.sort((a, b) =>
+                        String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' })
+                    );
+                    factions.sort((a, b) =>
+                        String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+                            sensitivity: 'base',
+                            numeric: true
+                        })
+                    );
+                }
+                this.heroes = heroes;
+                this.npcs = npcs;
+                this.factions = factions;
                 this._initCountryFilterItems();
                 this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
                 this.updateFilterCounts();
@@ -565,16 +662,59 @@ class FilterService {
         }
         
         if (helper) {
+            // Heroes / Factions filter tabs always use archive-style section headers + order,
+            // even when the Event Manager is on the main story list (rows come from LS or JSON snapshot).
+            const groupFactionsByArchiveType = type === 'factions';
+            const groupHeroesByArchiveRole = type === 'heroes';
+            if (groupFactionsByArchiveType || groupHeroesByArchiveRole) {
+                const ensure = window.FilterButtonHelpers?.ensureArchiveLayoutSnapshotsForFilter;
+                if (typeof ensure === 'function') {
+                    if (groupHeroesByArchiveRole) await ensure('heroes');
+                    if (groupFactionsByArchiveType) await ensure('factions');
+                }
+            }
             helper(
-                items, type, folder, 
-                this.filtersGrid, this.buttonCache, 
+                items, type, folder,
+                this.filtersGrid, this.buttonCache,
                 this.stateManager, this.imageService, this.soundManager,
                 this.heroes, this.factions, this.npcs, this.countries,
-                (items, type, folder) => this.preloadImages(items, type, folder),
-                () => this.updateFilterCounts()
+                (itemsPre, typePre, folderPre) => this.preloadImages(itemsPre, typePre, folderPre),
+                () => this.updateFilterCounts(),
+                groupFactionsByArchiveType,
+                groupHeroesByArchiveRole
             );
             this._applyCurrentCategorySearch();
         }
+    }
+
+    /**
+     * Invalidate cached Heroes / Factions filter DOM and JSON snapshots when switching bio archives
+     * or when grouped chip layout must rebuild from disk / localStorage.
+     */
+    invalidateBioArchiveFilterLayouts() {
+        if (typeof window !== 'undefined' && window.FilterButtonHelpers?.invalidateArchiveLayoutFileCaches) {
+            window.FilterButtonHelpers.invalidateArchiveLayoutFileCaches();
+        }
+        this.buttonCache.factions = null;
+        this.buttonCache.heroes = null;
+        if (!this.initialized || !this.filtersGrid) {
+            return;
+        }
+        const t = this.currentFilterType;
+        if (t === 'factions') {
+            void this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
+        } else if (t === 'heroes') {
+            void this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
+        } else {
+            return;
+        }
+        if (typeof this._applyCurrentCategorySearch === 'function') {
+            this._applyCurrentCategorySearch();
+        }
+        if (typeof this.updateButtonStates === 'function') {
+            this.updateButtonStates();
+        }
+        void this.updateFilterCounts();
     }
 
     _searchPlaceholderForType(type) {
@@ -613,6 +753,26 @@ class FilterService {
             const match = !query || text.includes(query);
             btn.style.display = match ? '' : 'none';
         });
+        grid.querySelectorAll('.filters-grid-type-separator, .filters-grid-hero-subrole-separator').forEach((sep) => {
+            if (!query) {
+                sep.style.display = '';
+                return;
+            }
+            let n = sep.nextElementSibling;
+            let any = false;
+            while (
+                n &&
+                !n.classList.contains('filters-grid-type-separator') &&
+                !n.classList.contains('filters-grid-hero-subrole-separator')
+            ) {
+                if (n.classList?.contains('filter-btn') && n.style.display !== 'none') {
+                    any = true;
+                    break;
+                }
+                n = n.nextElementSibling;
+            }
+            sep.style.display = any ? '' : 'none';
+        });
     }
     
     // Setup tab switching - delegates to helper
@@ -620,8 +780,14 @@ class FilterService {
         const helper = window.FilterTabHelpers?.setupTabs;
         if (helper) {
             helper(
-                this.heroesTab, this.factionsTab, this.npcsTab, this.countriesTab,
-                this.heroes, this.factions, this.npcs, this.countries,
+                this.heroesTab,
+                this.factionsTab,
+                this.npcsTab,
+                this.countriesTab,
+                this.heroes,
+                this.factions,
+                this.npcs,
+                this.countries,
                 (items, type, folder) => {
                     this.currentFilterType = type;
                     this.createFilterButtons(items, type, folder);
@@ -630,26 +796,22 @@ class FilterService {
             );
         } else {
             // Fallback implementation
+            const deactivateOthers = (active) => {
+                [this.heroesTab, this.factionsTab, this.npcsTab, this.countriesTab].forEach((tab) => {
+                    if (!tab || tab === active) return;
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                });
+            };
             if (this.heroesTab) {
                 this.heroesTab.addEventListener('click', () => {
                     if (!this.heroesTab.classList.contains('active') && window.SoundEffectsManager) {
                         window.SoundEffectsManager.play('switchMap');
                     }
                     this.currentFilterType = 'heroes';
+                    deactivateOthers(this.heroesTab);
                     this.heroesTab.classList.add('active');
                     this.heroesTab.setAttribute('aria-selected', 'true');
-                    if (this.factionsTab) {
-                        this.factionsTab.classList.remove('active');
-                        this.factionsTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.npcsTab) {
-                        this.npcsTab.classList.remove('active');
-                        this.npcsTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.countriesTab) {
-                        this.countriesTab.classList.remove('active');
-                        this.countriesTab.setAttribute('aria-selected', 'false');
-                    }
                     this.createFilterButtons(this.heroes, 'heroes', 'assets/images/heroes');
                     this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
@@ -661,20 +823,9 @@ class FilterService {
                         window.SoundEffectsManager.play('switchMap');
                     }
                     this.currentFilterType = 'factions';
+                    deactivateOthers(this.factionsTab);
                     this.factionsTab.classList.add('active');
                     this.factionsTab.setAttribute('aria-selected', 'true');
-                    if (this.heroesTab) {
-                        this.heroesTab.classList.remove('active');
-                        this.heroesTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.npcsTab) {
-                        this.npcsTab.classList.remove('active');
-                        this.npcsTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.countriesTab) {
-                        this.countriesTab.classList.remove('active');
-                        this.countriesTab.setAttribute('aria-selected', 'false');
-                    }
                     this.createFilterButtons(this.factions, 'factions', 'assets/images/factions');
                     this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
@@ -686,20 +837,9 @@ class FilterService {
                         window.SoundEffectsManager.play('switchMap');
                     }
                     this.currentFilterType = 'npcs';
+                    deactivateOthers(this.npcsTab);
                     this.npcsTab.classList.add('active');
                     this.npcsTab.setAttribute('aria-selected', 'true');
-                    if (this.heroesTab) {
-                        this.heroesTab.classList.remove('active');
-                        this.heroesTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.factionsTab) {
-                        this.factionsTab.classList.remove('active');
-                        this.factionsTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.countriesTab) {
-                        this.countriesTab.classList.remove('active');
-                        this.countriesTab.setAttribute('aria-selected', 'false');
-                    }
                     this.createFilterButtons(this.npcs, 'npcs', 'assets/images/npcs');
                     this._applyCurrentCategorySearch();
                     this.updateFilterCounts();
@@ -711,20 +851,9 @@ class FilterService {
                         window.SoundEffectsManager.play('switchMap');
                     }
                     this.currentFilterType = 'countries';
+                    deactivateOthers(this.countriesTab);
                     this.countriesTab.classList.add('active');
                     this.countriesTab.setAttribute('aria-selected', 'true');
-                    if (this.heroesTab) {
-                        this.heroesTab.classList.remove('active');
-                        this.heroesTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.factionsTab) {
-                        this.factionsTab.classList.remove('active');
-                        this.factionsTab.setAttribute('aria-selected', 'false');
-                    }
-                    if (this.npcsTab) {
-                        this.npcsTab.classList.remove('active');
-                        this.npcsTab.setAttribute('aria-selected', 'false');
-                    }
                     this.createFilterButtons(this.countries, 'countries', 'assets/images/flags');
                     this._applyCurrentCategorySearch();
                     this.updateFilterCounts();

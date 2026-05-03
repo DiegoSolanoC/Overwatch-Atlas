@@ -335,8 +335,9 @@ export function createEventPagination(statusService) {
         paginationEl.style.removeProperty('transform');
         paginationEl.style.removeProperty('top');
 
-        const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="9" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
-<polygon class="pagination-dock-top-trapezoid__fill" points="2,0 98,0 112,100 -12,100" />
+        /* Top edge y=3 matches TRAPEZOID_BORDER_SVG flat segment (2,3–98,3); y=0 left fill peeking above the white stroke. */
+        const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="10" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
+<polygon class="pagination-dock-top-trapezoid__fill" points="2,3 98,3 112,100 -12,100" />
 </svg>`;
         const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="2" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
 <path d="M -12,100 Q -5,52 2,3 L 98,3 Q 105,52 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
@@ -401,8 +402,10 @@ export function createEventPagination(statusService) {
 
         const trap = capRow.querySelector('.pagination-dock-top-trapezoid');
         if (trap) {
-            trap.querySelectorAll('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="8"]').forEach((el) => el.remove());
-            if (!trap.querySelector('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="9"]')) {
+            trap.querySelectorAll(
+                '.pagination-dock-top-trapezoid__svg[data-dock-trap-v="8"], .pagination-dock-top-trapezoid__svg[data-dock-trap-v="9"]'
+            ).forEach((el) => el.remove());
+            if (!trap.querySelector('.pagination-dock-top-trapezoid__svg[data-dock-trap-v="10"]')) {
                 trap.insertAdjacentHTML('afterbegin', TRAPEZOID_FILL_SVG);
             }
         }

@@ -326,6 +326,9 @@ class EventManager {
         this.dataService.setArchiveSource(archiveId);
         this._resetStoryArchiveListState();
         await this.loadEvents();
+        if (typeof window !== 'undefined' && window.FilterService?.invalidateBioArchiveFilterLayouts) {
+            window.FilterService.invalidateBioArchiveFilterLayouts();
+        }
         this.renderEvents();
     }
 
@@ -840,9 +843,9 @@ class EventManager {
     /**
      * Reorder events (delegates to EventDragDropService)
      */
-    reorderEvents(fromIndex, toIndex) {
+    reorderEvents(fromIndex, toIndex, options) {
         if (this.dragDropService) {
-            this.dragDropService.reorderEvents(fromIndex, toIndex);
+            this.dragDropService.reorderEvents(fromIndex, toIndex, options || {});
         }
     }
 
@@ -917,7 +920,9 @@ class EventManager {
                     name: '',
                     description: '',
                     relevantLocations: [],
-                    connections: []
+                    connections: [],
+                    ...(archiveSrc === 'factions' ? { factionType: '' } : {}),
+                    ...(archiveSrc === 'heroes' ? { heroRole: '', heroSubRole: '' } : {})
                 }
                 : {
                     name: '',

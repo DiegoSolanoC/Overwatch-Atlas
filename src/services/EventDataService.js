@@ -466,7 +466,7 @@ class EventDataService {
      * and `connections` ({ kind, name, reasoningSubjectToLinked, reasoningLinkedToSubject }[]; legacy `reasoning` is migrated).
      * Collapse legacy full event objects to the slim shape.
      * @param {unknown} raw
-     * @returns {{ name: string, description: string, relevantLocations?: Array<{ locationName: string, country: string, reasoning: string }>, connections?: Array<{ kind: string, name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string }> }}
+     * @returns {{ name: string, description: string, relevantLocations?: Array<{ locationName: string, country: string, reasoning: string }>, connections?: Array<{ kind: string, name: string, reasoningSubjectToLinked: string, reasoningLinkedToSubject: string }>, factionType?: string, heroRole?: string, heroSubRole?: string }}
      */
     _normalizeSatelliteArchiveEntry(raw) {
         if (!raw || typeof raw !== 'object') {
@@ -488,6 +488,30 @@ class EventDataService {
         if (bioArchives.has(this.archiveSource)) {
             base.relevantLocations = this._normalizeHeroRelevantLocations(raw.relevantLocations);
             base.connections = this._normalizeBioArchiveConnections(raw.connections);
+        }
+        if (this.archiveSource === 'factions') {
+            let factionType = '';
+            if (Array.isArray(variants) && variants.length > 0) {
+                const v0 = variants[0];
+                factionType = v0?.factionType != null ? String(v0.factionType) : '';
+            } else {
+                factionType = raw.factionType != null ? String(raw.factionType) : '';
+            }
+            base.factionType = factionType;
+        }
+        if (this.archiveSource === 'heroes') {
+            let heroRole = '';
+            let heroSubRole = '';
+            if (Array.isArray(variants) && variants.length > 0) {
+                const v0 = variants[0];
+                heroRole = v0?.heroRole != null ? String(v0.heroRole) : '';
+                heroSubRole = v0?.heroSubRole != null ? String(v0.heroSubRole) : '';
+            } else {
+                heroRole = raw.heroRole != null ? String(raw.heroRole) : '';
+                heroSubRole = raw.heroSubRole != null ? String(raw.heroSubRole) : '';
+            }
+            base.heroRole = heroRole;
+            base.heroSubRole = heroSubRole;
         }
         return base;
     }
@@ -1002,6 +1026,22 @@ class EventDataService {
         }
         console.log('[EventDataService] Events saved to localStorage, count:', this.events.length);
         console.log('[EventDataService] Saved event names:', this.events.map(e => e.name || (e.variants && e.variants[0]?.name) || 'Unnamed'));
+
+        const archForFilterOrder = this.getArchiveSource();
+        if (
+            typeof window !== 'undefined' &&
+            !this._isMainTimelineArchive() &&
+            (archForFilterOrder === 'heroes' || archForFilterOrder === 'factions' || archForFilterOrder === 'npcs')
+        ) {
+            const orderNames = (this.events || [])
+                .map((e) => (e && e.name != null ? String(e.name).trim() : ''))
+                .filter(Boolean);
+            window.dispatchEvent(
+                new CustomEvent('atlas-bio-archives-refreshed', {
+                    detail: { archives: [archForFilterOrder], orderNames }
+                })
+            );
+        }
 
         if (!this._isMainTimelineArchive()) {
             const archAfter = this.getArchiveSource();

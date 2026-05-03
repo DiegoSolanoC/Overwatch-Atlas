@@ -75,6 +75,8 @@ export function syncMobileEventSlidePortraitLayout() {
     const title = document.getElementById('eventSlideTitle');
     const loc = document.getElementById('eventSlideLocation');
     const meta = document.getElementById('eventSlideTimelineMeta');
+    const factionType = document.getElementById('eventSlideFactionTypeDisplay');
+    const heroRole = document.getElementById('eventSlideHeroRoleDisplay');
 
     if (!scroll || !text || !top || !title) {
         return;
@@ -97,6 +99,12 @@ export function syncMobileEventSlidePortraitLayout() {
     if (meta) {
         scroll.insertBefore(meta, text);
     }
+    if (factionType) {
+        scroll.insertBefore(factionType, text);
+    }
+    if (heroRole) {
+        scroll.insertBefore(heroRole, text);
+    }
 }
 
 /**
@@ -108,6 +116,8 @@ export function restorePortraitMetaToTop() {
     const title = document.getElementById('eventSlideTitle');
     const loc = document.getElementById('eventSlideLocation');
     const meta = document.getElementById('eventSlideTimelineMeta');
+    const factionType = document.getElementById('eventSlideFactionTypeDisplay');
+    const heroRole = document.getElementById('eventSlideHeroRoleDisplay');
     const titleBlock = titleRow || title;
     if (!top || !titleBlock || titleBlock.parentElement === top) {
         return;
@@ -130,6 +140,14 @@ export function restorePortraitMetaToTop() {
     if (meta) {
         const after = loc || titleBlock;
         top.insertBefore(meta, after.nextSibling);
+    }
+    if (factionType) {
+        const afterFt = meta || loc || titleBlock;
+        top.insertBefore(factionType, afterFt.nextSibling);
+    }
+    if (heroRole) {
+        const afterHr = factionType || meta || loc || titleBlock;
+        top.insertBefore(heroRole, afterHr.nextSibling);
     }
 }
 
