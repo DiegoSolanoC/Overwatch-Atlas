@@ -5,7 +5,7 @@
 import { getEraHoverPreviewSlug } from './EraHoverPreviewTheme.js';
 
 /**
- * Side-dock Event Manager uses `.open` on #eventsManagePanel. Story Archive also sets `.open` while
+ * Side-dock Event Manager uses `.open` on #eventsManagePanel. Data Archive also sets `.open` while
  * centered (`.story-viewer-panel-embedded`) — suppress the hover badge only for the dock drawer.
  */
 function isEventsManageDockDrawerOpen() {

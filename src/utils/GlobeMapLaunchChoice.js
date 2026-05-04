@@ -1,8 +1,8 @@
 /**
- * Globe vs map launch chooser — same shell as Story Archive hub: fills `main#content`
+ * Globe vs map launch chooser — same shell as Data Archive hub: fills `main#content`
  * (`story-viewer-container story-viewer-container--hub`), not a body-level overlay.
  * Uses `story-archive-category-hub__*` tiles + world art; writes `mapGlobePreToggle` then `launchGlobe`.
- * Entry matches Story Archive: mode-switch SFX, loading overlay ~800ms, menu hidden while waiting.
+ * Entry matches Data Archive: mode-switch SFX, loading overlay ~800ms, menu hidden while waiting.
  */
 
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../managers/LoadingOverlayManager.js';

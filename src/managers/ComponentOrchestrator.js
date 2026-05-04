@@ -15,9 +15,9 @@ export class ComponentOrchestrator {
         this.loadedComponents = loadedComponents;
         this.loaders = loaders; // Object with load functions: { palette: loadPalette, music: loadMusic, ... }
         this.unloaders = unloaders; // Object with unload functions: { palette: unloadPalette, music: unloadMusic, ... }
-        /** @type {HTMLElement|null} Event Manager × removed from DOM while Story Archive is open */
+        /** @type {HTMLElement|null} Event Manager × removed from DOM while Data Archive is open */
         this._storyArchiveDetachedClose = null;
-        /** @type {((e: KeyboardEvent) => void) | null} Escape → exit Story Archive while category hub is visible */
+        /** @type {((e: KeyboardEvent) => void) | null} Escape → exit Data Archive while category hub is visible */
         this._storyArchiveHubKeyHandler = null;
     }
 
@@ -28,7 +28,7 @@ export class ComponentOrchestrator {
         return !!(c && p && c.contains(p));
     }
 
-    /** Shared setup when entering Story Archive (menu hidden, Event Manager rail hidden). */
+    /** Shared setup when entering Data Archive (menu hidden, Event Manager rail hidden). */
     _prepareStoryArchiveShell() {
         const testContainer = document.querySelector('.test-container');
         if (testContainer) {
@@ -45,7 +45,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Category picker: Story + Heroes / Factions / NPCs / Locations (each loads its own JSON into the same Event Manager UI).
+     * Data Archive category hub: Story timeline plus Heroes / Factions / NPCs / Locations (each loads its own JSON into the same Event Manager UI).
      * @returns {HTMLElement}
      */
     _buildStoryArchiveCategoryHub() {
@@ -53,16 +53,17 @@ export class ComponentOrchestrator {
         root.id = 'storyArchiveCategoryHub';
         root.className = 'story-archive-category-hub';
         root.setAttribute('role', 'navigation');
-        root.setAttribute('aria-label', 'Story archive categories');
+        root.setAttribute('aria-label', 'Data Archive categories');
 
         const heading = document.createElement('h2');
         heading.id = 'storyArchiveHubHeading';
         heading.className = 'story-archive-category-hub-heading';
-        heading.textContent = 'Choose archive';
+        heading.textContent = 'Data Archive';
 
         const lead = document.createElement('p');
         lead.className = 'story-archive-category-hub-lead';
-        lead.textContent = 'Pick a category to open timelines, heroes, factions, and more.';
+        lead.textContent =
+            'Browse the story timeline, heroes, factions, NPCs, and locations—each category loads its own data into the same viewer.';
 
         root.setAttribute('aria-labelledby', 'storyArchiveHubHeading');
 
@@ -135,7 +136,7 @@ export class ComponentOrchestrator {
         }
     }
 
-    /** Escape exits Story Archive when the category hub is showing (parity with globe/map chooser). */
+    /** Escape exits Data Archive when the category hub is showing (parity with globe/map chooser). */
     _attachStoryArchiveHubDismissChrome() {
         this._detachStoryArchiveHubDismissChrome();
         this._storyArchiveHubKeyHandler = (e) => {
@@ -181,7 +182,7 @@ export class ComponentOrchestrator {
                     window.eventManager.renderEvents();
                 }
             } catch (err) {
-                console.error('[ComponentOrchestrator] Story Archive archive switch failed:', err);
+                console.error('[ComponentOrchestrator] Data Archive category switch failed:', err);
                 updateStatus(`⚠ Could not load archive: ${err?.message || err}`, 'error');
                 return;
             }
@@ -200,7 +201,7 @@ export class ComponentOrchestrator {
         const storyContainer = document.getElementById('storyViewerContainer');
         const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (!storyContainer || !eventsManagePanel) {
-            updateStatus('⚠ Story Archive or Event Manager panel not found', 'error');
+            updateStatus('⚠ Data Archive or Event Manager panel not found', 'error');
             return;
         }
 
@@ -250,7 +251,7 @@ export class ComponentOrchestrator {
                 window.eventManager.renderEvents();
             }
         } catch (err) {
-            console.error('[ComponentOrchestrator] Story Archive load failed:', err);
+            console.error('[ComponentOrchestrator] Data Archive load failed:', err);
             updateStatus(`⚠ Could not load archive: ${err?.message || err}`, 'error');
         }
 
@@ -261,7 +262,7 @@ export class ComponentOrchestrator {
 
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             setTimeout(() => {
-                console.log('[ComponentOrchestrator] Story Archive (events view) DOM inspection:');
+                console.log('[ComponentOrchestrator] Data Archive (events view) DOM inspection:');
                 console.log('[ComponentOrchestrator] eventsManagePanel:', eventsManagePanel);
                 const eventItems = eventsManagePanel.querySelectorAll('.event-item');
                 console.log('[ComponentOrchestrator] Event items found:', eventItems.length);
@@ -292,7 +293,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Search row: “Categories” back + five archive icon buttons (Story Archive embedded only).
+     * Search row: “Categories” back + five archive icon buttons (Data Archive embedded only).
      */
     _ensureStoryArchiveBackToCategoriesButton(eventsManagePanel) {
         if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
@@ -308,13 +309,13 @@ export class ComponentOrchestrator {
         strip.id = 'storyArchiveSearchCategoryStrip';
         strip.className = 'story-archive-search-category-strip';
         strip.setAttribute('role', 'toolbar');
-        strip.setAttribute('aria-label', 'Story archive categories');
+        strip.setAttribute('aria-label', 'Data Archive categories');
 
         const backBtn = document.createElement('button');
         backBtn.type = 'button';
         backBtn.id = 'storyArchiveBackToHubBtn';
         backBtn.className = 'story-viewer-action-btn story-archive-back-to-hub-btn';
-        backBtn.setAttribute('title', 'Back to Story Archive categories');
+        backBtn.setAttribute('title', 'Back to Data Archive categories');
         backBtn.innerHTML = `
             <span class="story-archive-back-to-hub-btn__icon-wrap" aria-hidden="true">
                 <img class="story-archive-back-to-hub-btn__icon" src="assets/images/icons/Back%20Arrow.png" alt="" width="18" height="18" decoding="async" draggable="false" />
@@ -375,7 +376,7 @@ export class ComponentOrchestrator {
 
     /**
      * Move `#eventsManagePanel` out of `#storyViewerContainer` and restore Event Manager chrome.
-     * Caller should re-append hub or exit Story Archive as appropriate.
+     * Caller should re-append hub or exit Data Archive as appropriate.
      */
     _detachEventsManagePanelFromStoryArchive(eventsManagePanel) {
         document.getElementById('storyArchiveSearchCategoryStrip')?.remove();
@@ -460,7 +461,7 @@ export class ComponentOrchestrator {
         storyContainer.classList.add('story-viewer-container--hub');
         storyContainer.appendChild(this._buildStoryArchiveCategoryHub());
         this._attachStoryArchiveHubDismissChrome();
-        updateStatus('✓ Story Archive — choose a category', 'success');
+        updateStatus('✓ Data Archive — choose a category', 'success');
     }
 
     dispatchAppModeChange(mode) {
@@ -640,7 +641,7 @@ export class ComponentOrchestrator {
                 updateStatus('⬛ Palette already loaded, skipping...', 'info');
             }
 
-            // Always ensure header nav buttons exist (Interactive Worldview, Connection Codex, Story Archive, Home)
+            // Always ensure header nav buttons exist (Interactive Worldview, Connection Codex, Data Archive, Home)
             // NOTE: Events and Filters buttons are now created by standalone Event System Load Out only
             if (this.loaders.headerNav) {
                 this.loaders.headerNav();
@@ -915,7 +916,7 @@ export class ComponentOrchestrator {
 
     /**
      * Run all Biography Components sequentially
-     * Story Archive mode - displays events in a centered panel
+     * Data Archive mode - displays events in a centered panel
      */
     async runBiographyComponents(isAutoLoad = false) {
         this.playModeSwitchSound(isAutoLoad);
@@ -955,7 +956,7 @@ export class ComponentOrchestrator {
             setRunOperation(true);
             showLoadingOverlay();
         }
-        updateStatus('🚀 Starting Story Archive...', 'info');
+        updateStatus('🚀 Starting Data Archive...', 'info');
         
         try {
             // Hide test-container (consistent with other modes)
@@ -965,7 +966,7 @@ export class ComponentOrchestrator {
                 updateStatus('→ Hiding menu container...', 'info');
             }
             
-            // Create and show the Story Archive panel
+            // Create and show the Data Archive panel
             await this.createStoryViewerPanel();
             
             // Minimum loading time for visual consistency (800ms)
@@ -975,10 +976,10 @@ export class ComponentOrchestrator {
             this.dispatchAppModeChange('biography');
             
             this.loadedComponents.biography = true;
-            updateStatus('✓ Story Archive loaded!', 'success');
+            updateStatus('✓ Data Archive loaded!', 'success');
         } catch (error) {
-            console.error('Error in Story Archive load:', error);
-            updateStatus(`✗ Error in Story Archive load: ${error.message}`, 'error');
+            console.error('Error in Data Archive load:', error);
+            updateStatus(`✗ Error in Data Archive load: ${error.message}`, 'error');
         } finally {
             setRunOperation(false);
             hideLoadingOverlay();
@@ -1021,7 +1022,7 @@ export class ComponentOrchestrator {
         return 3;
     }
 
-    /** Apply grid inset for Story Archive (no localStorage; see {@link _getStoryArchiveDefaultGridSquish}). */
+    /** Apply grid inset for Data Archive (no localStorage; see {@link _getStoryArchiveDefaultGridSquish}). */
     _applyStoryArchiveGridSquishFromPreferences(eventsManagePanel) {
         if (!eventsManagePanel || !eventsManagePanel.classList.contains('story-viewer-panel-embedded')) {
             return;
@@ -1030,7 +1031,7 @@ export class ComponentOrchestrator {
         this._applyStoryArchiveGridSquish(eventsManagePanel, squishVal);
     }
 
-    /** Event Manager × — removed from DOM in Story Archive (never use getElementById: wrong node if duplicate ids). */
+    /** Event Manager × — removed from DOM in Data Archive (never use getElementById: wrong node if duplicate ids). */
     _hideStoryArchiveEventManagerClose(eventsManagePanel) {
         if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
 
@@ -1100,7 +1101,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Move Show all + Per page into one right-side unit in Story Archive.
+     * Move Show all + Per page into one right-side unit in Data Archive.
      */
     _populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar) {
         if (!bottomBar) return;
@@ -1136,7 +1137,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Story Archive: hide header (title + count). Only “Show controls” moves above Search & filters.
+     * Data Archive: hide header (title + count). Only “Show controls” moves above Search & filters.
      */
     _setupStoryArchiveCompactChrome(eventsManagePanel) {
         if (!eventsManagePanel?.classList.contains('story-viewer-panel-embedded')) return;
@@ -1211,7 +1212,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Create the Story Archive shell: category hub first; events list mounts after user taps **Story**.
+     * Create the Data Archive shell: category hub first; events list mounts after user taps **Story**.
      * Uses the same `#eventsManagePanel` flow as before, deferred until `_enterStoryArchiveEventsView()`.
      */
     async createStoryViewerPanel() {
@@ -1270,13 +1271,13 @@ export class ComponentOrchestrator {
             });
 
             this._attachStoryArchiveHubDismissChrome();
-            updateStatus('✓ Story Archive — choose a category', 'success');
+            updateStatus('✓ Data Archive — choose a category', 'success');
             return;
         }
     }
 
     /**
-     * Wire up event handlers for Story Archive - mirrors Event Manager
+     * Wire up event handlers for Data Archive - mirrors Event Manager
      */
     wireStoryViewerHandlers() {
         const self = this;
@@ -1358,11 +1359,11 @@ export class ComponentOrchestrator {
             });
         }
 
-        updateStatus('✓ Story Archive handlers wired', 'success');
+        updateStatus('✓ Data Archive handlers wired', 'success');
     }
 
     /**
-     * Filter events in Story Archive - mirrors Event Manager logic
+     * Filter events in Data Archive - mirrors Event Manager logic
      */
     filterStoryViewerEvents() {
         if (!window.eventManager || !window.eventManager.events) return;
@@ -1443,7 +1444,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Render events in Story Archive - mirrors Event Manager rendering
+     * Render events in Data Archive - mirrors Event Manager rendering
      */
     renderStoryViewerEvents(events) {
         console.log('[ComponentOrchestrator] renderStoryViewerEvents called with', events.length, 'events');
@@ -1481,8 +1482,8 @@ export class ComponentOrchestrator {
                 list,
                 1,
                 perPage,
-                () => {}, // No drag/drop needed for Story Archive
-                false // Don't show pagination controls in Story Archive
+                () => {}, // No drag/drop needed for Data Archive
+                false // Don't show pagination controls in Data Archive
             );
             
             // Add click handlers for opening events
@@ -1546,7 +1547,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Render pagination for Story Archive
+     * Render pagination for Data Archive
      */
     renderStoryViewerPagination(total, perPage) {
         const pagination = document.getElementById('storyViewerPagination');
@@ -1567,11 +1568,11 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Go to specific page in Story Archive
+     * Go to specific page in Data Archive
      */
     goToStoryViewerPage(page, perPage) {
         // Implementation would track current page and re-render
-        updateStatus(`Story Archive: Page ${page} selected`, 'info');
+        updateStatus(`Data Archive: Page ${page} selected`, 'info');
         
         // DEV ONLY: Re-apply red styling after page change
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -1582,14 +1583,14 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * DEV ONLY: Apply red styling to overlap badges in Story Archive
+     * DEV ONLY: Apply red styling to overlap badges in Data Archive
      */
     _applyStoryArchiveOverlapStyling() {
         const eventsManagePanel = document.getElementById('eventsManagePanel');
         if (!eventsManagePanel) return;
         
         const overlapBadges = eventsManagePanel.querySelectorAll('.event-number-badge--overlap');
-        console.log('[ComponentOrchestrator] Story Archive: Found', overlapBadges.length, 'overlap badges, applying red styling');
+        console.log('[ComponentOrchestrator] Data Archive: Found', overlapBadges.length, 'overlap badges, applying red styling');
         overlapBadges.forEach((badge) => {
             badge.style.setProperty('color', '#ff4444', 'important');
             badge.style.setProperty('text-shadow', '0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 12px rgba(0, 0, 0, 0.45)', 'important');
@@ -1614,7 +1615,7 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Clear all search filters in Story Archive
+     * Clear all search filters in Data Archive
      */
     clearStoryViewerSearch() {
         const searchInput = document.getElementById('storyViewerSearchInput');
@@ -1750,7 +1751,7 @@ export class ComponentOrchestrator {
         if (eventsManageToggle) eventsManageToggle.classList.remove('active');
         if (filtersToggle) filtersToggle.classList.remove('active');
 
-        // Globe/map chooser (in-content shell, same as Story Archive container)
+        // Globe/map chooser (in-content shell, same as Data Archive container)
         document.getElementById('globeMapLaunchHost')?.remove();
         document.getElementById('globeMapLaunchHubOverlay')?.remove();
         if (testContainer) {
@@ -1839,11 +1840,11 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Kill all Biography Components (Story Archive)
+     * Kill all Biography Components (Data Archive)
      * @param {boolean} [restoreMenu=true] - Whether to restore main menu (false when switching to another mode)
      */
     async killBiographyComponents(restoreMenu = true) {
-        updateStatus('Exiting Story Archive...', 'info');
+        updateStatus('Exiting Data Archive...', 'info');
 
         this._detachStoryArchiveHubDismissChrome();
 
@@ -1860,7 +1861,7 @@ export class ComponentOrchestrator {
                 await window.eventManager.loadEvents();
             }
         } catch (e) {
-            console.warn('[ComponentOrchestrator] Restoring main timeline after Story Archive failed:', e);
+            console.warn('[ComponentOrchestrator] Restoring main timeline after Data Archive failed:', e);
         }
         if (window.eventManager?.renderEvents) {
             window.eventManager.renderEvents();
@@ -1873,7 +1874,7 @@ export class ComponentOrchestrator {
 
         this._disconnectStoryArchiveOverlapObserver();
         
-        // Remove story archive container
+        // Remove data archive viewer container
         const storyContainer = document.getElementById('storyViewerContainer');
         if (storyContainer) {
             storyContainer.classList.remove('active');
@@ -1890,6 +1891,6 @@ export class ComponentOrchestrator {
         localStorage.removeItem('currentMode');
         this.loadedComponents.biography = false;
         
-        updateStatus('✓ Story Archive exited!', 'success');
+        updateStatus('✓ Data Archive exited!', 'success');
     }
 }

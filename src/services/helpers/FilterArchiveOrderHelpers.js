@@ -20,7 +20,7 @@ export function extractArchiveOrderFromJson(json) {
 
 /**
  * @param {string[]} manifestItems hero or npc basenames from manifest
- * @param {string[]} archiveNames ordered names from story archive
+ * @param {string[]} archiveNames ordered names from Data Archive categories
  * @returns {string[]}
  */
 export function orderHeroOrNpcIdsByArchive(manifestItems, archiveNames) {

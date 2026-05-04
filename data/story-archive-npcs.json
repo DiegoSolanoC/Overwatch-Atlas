@@ -12,8 +12,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Vendetta",
+          "kind": "faction",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -29,7 +29,7 @@
         },
         {
           "kind": "hero",
-          "name": "Doomfist",
+          "name": "Vendetta",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -59,39 +59,13 @@
       "name": "B.O.B",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ashe",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Bars",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Bez",
@@ -157,16 +131,7 @@
       "name": "Gerard",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Harold",
@@ -211,16 +176,7 @@
       "name": "Jiayi",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Juno",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Kace",
@@ -232,22 +188,30 @@
       "name": "Katya",
       "description": "",
       "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Kendra",
-      "description": "",
-      "relevantLocations": [],
       "connections": [
         {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "hero",
-          "name": "Sierra",
+          "name": "Sombra",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
       ]
+    },
+    {
+      "name": "Kendra",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
     },
     {
       "name": "King",
@@ -271,7 +235,24 @@
       "name": "Lynx 17",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Mason",
@@ -295,14 +276,6 @@
         {
           "kind": "faction",
           "name": "Livre Tournois",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Freja",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -362,7 +335,24 @@
       "name": "Sanjay",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Domina",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Susannah",
@@ -374,22 +364,22 @@
       "name": "Sven",
       "description": "",
       "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "The Triplets",
-      "description": "",
-      "relevantLocations": [],
       "connections": [
         {
           "kind": "faction",
-          "name": "Deadlock Rebels",
+          "name": "Ironclad Guild",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
       ]
+    },
+    {
+      "name": "The Triplets",
+      "description": "",
+      "relevantLocations": [],
+      "connections": []
     },
     {
       "name": "Toshiro",
@@ -409,24 +399,16 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Vendetta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "npc",
           "name": "Antonio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -445,6 +427,52 @@
       "description": "No description available.",
       "relevantLocations": [],
       "connections": []
+    },
+    {
+      "name": "Ngumi",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Adeyemi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Adeyemi",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Ngumi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     }
   ]
 }

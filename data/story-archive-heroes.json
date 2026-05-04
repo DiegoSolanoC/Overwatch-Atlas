@@ -10,15 +10,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Dae-Hyun",
-          "reasoningSubjectToLinked": "Childhood friend, Mechanic",
-          "reasoningLinkedToSubject": "Childhood friend, Assistant Mechanic",
-          "thisEntryLane": "A"
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -49,7 +41,15 @@
       "connections": [
         {
           "kind": "npc",
-          "name": "Antonio",
+          "name": "Adeyemi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -100,7 +100,7 @@
       "connections": [
         {
           "kind": "faction",
-          "name": "Talon Empire",
+          "name": "Deep Sea Raiders",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -108,7 +108,7 @@
         },
         {
           "kind": "faction",
-          "name": "Deep Sea Raiders",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -170,7 +170,32 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Vendetta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Sanjay",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -204,7 +229,7 @@
     },
     {
       "name": "Reinhardt",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Stuttgrat",
@@ -214,10 +239,18 @@
       ],
       "connections": [
         {
+          "kind": "faction",
+          "name": "Crusader Initiative",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "hero",
           "name": "Brigitte",
-          "reasoningSubjectToLinked": "Squire",
-          "reasoningLinkedToSubject": "Mentor",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
@@ -266,16 +299,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -289,16 +313,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -343,10 +358,18 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "Old Companion",
-          "reasoningLinkedToSubject": "Old Companion",
-          "thisEntryLane": "B",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
           "showInCodex": true
         }
       ],
@@ -363,7 +386,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -381,8 +413,8 @@
         {
           "kind": "hero",
           "name": "Brigitte",
-          "reasoningSubjectToLinked": "Daughter",
-          "reasoningLinkedToSubject": "Father",
+          "reasoningSubjectToLinked": "Father of",
+          "reasoningLinkedToSubject": "Daugther of",
           "thisEntryLane": "A",
           "showInCodex": true
         },
@@ -395,8 +427,8 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Bastion",
+          "kind": "faction",
+          "name": "Ironclad Guild",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -416,24 +448,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "B.O.B",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -481,7 +496,7 @@
     },
     {
       "name": "Widowmaker",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Annecy",
@@ -489,16 +504,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Gerard",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -512,16 +518,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Wuyang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -588,7 +585,7 @@
         },
         {
           "kind": "npc",
-          "name": "Vialli",
+          "name": "Antonio",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -603,8 +600,8 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
-          "name": "Antonio",
+          "kind": "hero",
+          "name": "Domina",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -624,7 +621,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Wayfinder Society",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -652,16 +666,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Maximillien",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -675,16 +680,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "Mother",
-          "reasoningLinkedToSubject": "Daugther",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -698,16 +694,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Kendra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -721,7 +708,40 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Los Muertos",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Katya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Soldier 76",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -774,38 +794,7 @@
           "reasoning": "Temporary Alliance with Overwatch"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Pharah",
-          "reasoningSubjectToLinked": "Daugther",
-          "reasoningLinkedToSubject": "Mother",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "Old Companion",
-          "reasoningLinkedToSubject": "Old Companion",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "Ex Captain, Current Ally",
-          "thisEntryLane": "B"
-        },
-        {
-          "kind": "faction",
-          "name": "Talon",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "a",
-          "thisEntryLane": "B"
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -938,16 +927,24 @@
         {
           "kind": "hero",
           "name": "Torbjörn",
-          "reasoningSubjectToLinked": "Father",
-          "reasoningLinkedToSubject": "Daughter",
+          "reasoningSubjectToLinked": "Daugther of",
+          "reasoningLinkedToSubject": "Father of",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
           "kind": "hero",
           "name": "Reinhardt",
-          "reasoningSubjectToLinked": "Mentor",
-          "reasoningLinkedToSubject": "Squire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
@@ -965,7 +962,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -979,16 +993,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Jiayi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -1016,16 +1021,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Anran",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     }

@@ -6,7 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const { syncStoryArchivesFromCodexEdges } = require('./server-bio-codex-sync.js');
+const { syncStoryArchivesFromCodexEdges, diffStoryArchivesVsCodex } = require('./server-bio-codex-sync.js');
 
 const PORT = 8000;
 
@@ -77,7 +77,7 @@ function writeEventsJson(events, res) {
     }
 }
 
-/** Story Archive satellite JSONs (Heroes / Factions / NPCs / Locations) — same shape as shipped files: { events: [...] } */
+/** Data Archive satellite JSONs (Heroes / Factions / NPCs / Locations) — same shape as shipped files: { events: [...] } */
 const STORY_ARCHIVE_WRITE_MAP = {
     heroes: 'story-archive-heroes.json',
     factions: 'story-archive-factions.json',
@@ -139,7 +139,7 @@ function writeCodexStateJson(body, res) {
         let bio = {};
         try {
             // Always reconcile every entity↔entity edge (not only “new” keys). Otherwise a link
-            // already present in codex-labels.json never gets mirrored into story archives.
+            // already present in codex-labels.json never gets mirrored into satellite archive JSONs.
             bio = syncStoryArchivesFromCodexEdges(dataDir, nodes, edges);
         } catch (syncErr) {
             bio = {
@@ -200,6 +200,40 @@ const server = http.createServer((req, res) => {
             });
             return;
         }
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
+    if (decodedPath === '/api/codex/bio-sync-preview') {
+        if (req.method === 'POST' || req.method === 'PUT') {
+            readJsonBody(req, res, (body) => {
+                try {
+                    let nodes = null;
+                    let edges = [];
+                    if (Array.isArray(body)) {
+                        nodes = body;
+                    } else if (body && typeof body === 'object') {
+                        if (Array.isArray(body.nodes)) nodes = body.nodes;
+                        else if (Array.isArray(body.labels)) nodes = body.labels;
+                        if (Array.isArray(body.edges)) edges = body.edges;
+                    }
+                    if (!Array.isArray(nodes)) {
+                        sendJson(res, 400, { ok: false, error: 'Expected { nodes: [...], edges?: [...] }' });
+                        return;
+                    }
+                    const dataDir = path.join(__dirname, 'data');
+                    const out = diffStoryArchivesVsCodex(dataDir, nodes, edges);
+                    sendJson(res, 200, out);
+                } catch (e) {
+                    sendJson(res, 500, {
+                        ok: false,
+                        error: e && e.message ? e.message : String(e),
+                    });
+                }
+            });
+            return;
+        }
+
         sendJson(res, 405, { error: 'Method not allowed' });
         return;
     }

@@ -1945,7 +1945,7 @@ button.event-number-btn.locked,
         background-image: url('../../assets/images/misc/loading%20asset.gif');
         background-repeat: no-repeat;
         background-position: center center;
-        /* Same asset as Story Archive / event cards — centered spinner (slot is skewed parallelogram) */
+        /* Same asset as Data Archive / event cards — centered spinner (slot is skewed parallelogram) */
         background-size: 48px 48px;
     }
 

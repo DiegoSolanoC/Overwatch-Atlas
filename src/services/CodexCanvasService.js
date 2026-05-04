@@ -482,6 +482,8 @@ let networkLinkSourceId = null;
 let codexEdges = [];
 /** @type {SVGSVGElement|null} */
 let codexEdgesSvgEl = null;
+/** Directed edge keys (`edgeDirectedKey`) for the cord chain currently under pointer hover (view mode). */
+let codexEdgeHoverChainKeySet = null;
 /** Unordered node-pair keys for double–right-click delete on links. */
 const cordDoubleRightLastTs = new Map();
 /** Cord armed for delete — second right-click removes the link. */
@@ -546,7 +548,10 @@ let onCodexGlobalKeydown = null;
 /** True when the repo Node server is expected to expose `GET/POST /api/codex` (same rules as EventDataService save). */
 function isCodexFileApiAvailable() {
     try {
-        const ds = window.EventDataService;
+        const ds = window.eventManager?.dataService || window.EventDataService;
+        if (ds && typeof ds._canPersistTimelineJsonToRepo === 'function') {
+            return ds._canPersistTimelineJsonToRepo();
+        }
         if (ds && typeof ds.isGitHubPages === 'function' && ds.isGitHubPages()) return false;
         const isHttp = window.location.protocol === 'http:' || window.location.protocol === 'https:';
         const isDevServerPort = String(window.location.port || '') === '8000';
@@ -808,34 +813,61 @@ function isCodexDirectedReachable(startId, targetId) {
     return false;
 }
 
+function codexNodeIsBioEntityKind(node) {
+    return !!(node && (node.kind === 'hero' || node.kind === 'faction' || node.kind === 'npc'));
+}
+
+function codexEdgeIsBioEntityChord(nFrom, nTo) {
+    return codexNodeIsBioEntityKind(nFrom) && codexNodeIsBioEntityKind(nTo);
+}
+
 /**
- * True if `targetId` is reachable from `startId` treating all edges as undirected (junction chains count).
- * Used so archive “Show in Codex” does not add a shortcut A→B when A and B are already linked through breaks
- * in either direction (e.g. B→J→A still connects the pair).
+ * True when `aId` and `bId` (bio entity nodes) are already linked by an undirected path that does **not**
+ * use the direct A↔B chord, and that path visits at least one junction. Then archive `showInCodex` should
+ * not spawn a duplicate direct cord on top of A→break→B routing.
  */
-function isCodexUndirectedReachable(startId, targetId) {
-    if (!startId || !targetId || startId === targetId) return false;
+function codexBioEntityPairHasJunctionAlternatePath(aId, bId) {
+    if (!aId || !bId || aId === bId || !Array.isArray(codexAllNodes) || !Array.isArray(codexEdges)) return false;
+    const byId = new Map();
+    for (let i = 0; i < codexAllNodes.length; i += 1) {
+        const n = codexAllNodes[i];
+        if (n && n.id) byId.set(n.id, n);
+    }
+    const isJunctionNode = (id) => {
+        const n = byId.get(id);
+        return !!(n && n.kind === 'junction');
+    };
+    const edgeList = codexEdges.filter(
+        (e) =>
+            e
+            && e.fromId
+            && e.toId
+            && !(
+                (e.fromId === aId && e.toId === bId)
+                || (e.fromId === bId && e.toId === aId)
+            )
+    );
     const adj = new Map();
-    for (let i = 0; i < codexEdges.length; i += 1) {
-        const e = codexEdges[i];
-        if (!e || !e.fromId || !e.toId) continue;
+    for (let k = 0; k < edgeList.length; k += 1) {
+        const e = edgeList[k];
         if (!adj.has(e.fromId)) adj.set(e.fromId, []);
         if (!adj.has(e.toId)) adj.set(e.toId, []);
         adj.get(e.fromId).push(e.toId);
         adj.get(e.toId).push(e.fromId);
     }
-    const q = [startId];
-    const seen = new Set([startId]);
+    const q = [{ cur: aId, passedJunction: false }];
+    const seen = new Set([`${aId}|0`]);
     while (q.length) {
-        const cur = q.shift();
-        if (cur === targetId) return true;
-        const outs = adj.get(cur);
-        if (!outs) continue;
-        for (let j = 0; j < outs.length; j += 1) {
-            const nxt = outs[j];
-            if (!seen.has(nxt)) {
-                seen.add(nxt);
-                q.push(nxt);
+        const { cur, passedJunction } = q.shift();
+        if (cur === bId && passedJunction) return true;
+        const neighbors = adj.get(cur) || [];
+        for (let j = 0; j < neighbors.length; j += 1) {
+            const nxt = neighbors[j];
+            const pj = passedJunction || isJunctionNode(nxt);
+            const key = `${nxt}|${pj ? 1 : 0}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                q.push({ cur: nxt, passedJunction: pj });
             }
         }
     }
@@ -843,9 +875,8 @@ function isCodexUndirectedReachable(startId, targetId) {
 }
 
 /**
- * Add directed edges for bio-archive connections with `showInCodex` when no path exists yet.
- * Junction chains in codex-labels.json stay authoritative for routing; we only add missing hops.
- * Uses undirected connectivity so a break path B→J→A does not get a duplicate archive shortcut A→B.
+ * Reconcile Codex cords with archive JSON (heroes/factions/npcs): drop edges that no longer have a matching
+ * `showInCodex` row, then add any missing links from archives. (Junction / country links are left untouched.)
  */
 async function syncCodexEdgesFromBioArchiveConnections() {
     if (!root || !Array.isArray(codexAllNodes) || codexAllNodes.length === 0) return;
@@ -854,7 +885,10 @@ async function syncCodexEdgesFromBioArchiveConnections() {
         ['factions', 'data/story-archive-factions.json'],
         ['npcs', 'data/story-archive-npcs.json']
     ];
-    let added = 0;
+    /** @type {Set<string>} */
+    const allowedUnorderedNodePairKeys = new Set();
+    /** @type {{ arch: string, events: object[] }[]} */
+    const loadedArchives = [];
     for (let fi = 0; fi < files.length; fi += 1) {
         const arch = files[fi][0];
         const url = files[fi][1];
@@ -868,6 +902,7 @@ async function syncCodexEdgesFromBioArchiveConnections() {
         } catch (_) {
             continue;
         }
+        loadedArchives.push({ arch, events });
         const subjectKind = arch === 'heroes' ? 'hero' : arch === 'factions' ? 'faction' : 'npc';
         for (let ei = 0; ei < events.length; ei += 1) {
             const ev = events[ei];
@@ -894,16 +929,81 @@ async function syncCodexEdgesFromBioArchiveConnections() {
                 const fromId = findCodexNodeIdForBioEntity(subjectKind, subjectName);
                 const toId = findCodexNodeIdForBioEntity(lk, linkedName);
                 if (!fromId || !toId || fromId === toId) continue;
-                if (isCodexUndirectedReachable(fromId, toId)) continue;
+                allowedUnorderedNodePairKeys.add(codexUnorderedPairKey(fromId, toId));
+            }
+        }
+    }
+
+    let removed = 0;
+    const nextEdges = [];
+    for (let ei = 0; ei < codexEdges.length; ei += 1) {
+        const e = codexEdges[ei];
+        if (!e || !e.fromId || !e.toId) continue;
+        const nFrom = codexAllNodes.find((n) => n && n.id === e.fromId);
+        const nTo = codexAllNodes.find((n) => n && n.id === e.toId);
+        if (!codexEdgeIsBioEntityChord(nFrom, nTo)) {
+            nextEdges.push(e);
+            continue;
+        }
+        const pk = codexUnorderedPairKey(e.fromId, e.toId);
+        if (allowedUnorderedNodePairKeys.has(pk)) {
+            nextEdges.push(e);
+        } else {
+            removed += 1;
+            codexUnsavedEdgeKeys.delete(edgeDirectedKey(e.fromId, e.toId));
+        }
+    }
+    if (removed > 0) {
+        codexEdges = nextEdges;
+        const pk = cordPendingDeletePairKey;
+        if (pk && !codexEdges.some((ed) => codexUnorderedPairKey(ed.fromId, ed.toId) === pk)) {
+            cordPendingDeletePairKey = null;
+        }
+    }
+
+    let added = 0;
+    for (let ai = 0; ai < loadedArchives.length; ai += 1) {
+        const { arch, events } = loadedArchives[ai];
+        const subjectKind = arch === 'heroes' ? 'hero' : arch === 'factions' ? 'faction' : 'npc';
+        for (let ei = 0; ei < events.length; ei += 1) {
+            const ev = events[ei];
+            if (!ev) continue;
+            let subjectName = ev.name != null ? String(ev.name).trim() : '';
+            if (
+                !subjectName
+                && Array.isArray(ev.variants)
+                && ev.variants[0]
+                && ev.variants[0].name != null
+            ) {
+                subjectName = String(ev.variants[0].name).trim();
+            }
+            if (!subjectName) continue;
+            const conns = Array.isArray(ev.connections) ? ev.connections : [];
+            for (let ci = 0; ci < conns.length; ci += 1) {
+                const c = conns[ci];
+                if (!c || c.showInCodex !== true) continue;
+                let lk = String(c.kind || 'hero').toLowerCase();
+                if (lk === 'character') lk = 'hero';
+                if (lk !== 'faction' && lk !== 'npc') lk = 'hero';
+                const linkedName = c.name != null ? String(c.name).trim() : '';
+                if (!linkedName) continue;
+                const fromId = findCodexNodeIdForBioEntity(subjectKind, subjectName);
+                const toId = findCodexNodeIdForBioEntity(lk, linkedName);
+                if (!fromId || !toId || fromId === toId) continue;
+                if (codexBioEntityPairHasJunctionAlternatePath(fromId, toId)) continue;
                 if (addDirectedCodexEdge(fromId, toId)) added += 1;
             }
         }
     }
-    if (added > 0) {
+
+    if (removed > 0 || added > 0) {
         markCodexLayoutDirty();
         redrawCodexEdges();
         if (typeof window.updateStatus === 'function') {
-            window.updateStatus(`Codex: added ${added} link(s) from archive “Show in Codex” rows.`, 'success');
+            const parts = [];
+            if (removed > 0) parts.push(`removed ${removed} orphan link(s)`);
+            if (added > 0) parts.push(`added ${added} from archives`);
+            window.updateStatus(`Codex: ${parts.join('; ')} (“Show in Codex”).`, 'success');
         }
     }
 }
@@ -1010,6 +1110,91 @@ function insertCodexBreakBetweenSelectedPair() {
     if (typeof window.updateStatus === 'function') {
         window.updateStatus('Inserted break waypoint between the two nodes.', 'success');
     }
+}
+
+/**
+ * Dev mode: merge two selected junction (“break”) nodes into one at the **primary** selection’s position.
+ * Rewires every edge that touched the secondary junction to use the primary id; removes the secondary node.
+ * @returns {boolean}
+ */
+function mergeCodexJunctionPairKeepPrimary(primaryId, secondaryId) {
+    if (!primaryId || !secondaryId || primaryId === secondaryId || !Array.isArray(codexAllNodes) || !Array.isArray(codexEdges)) {
+        return false;
+    }
+    const p = codexAllNodes.find((n) => n && n.id === primaryId);
+    const s = codexAllNodes.find((n) => n && n.id === secondaryId);
+    if (!p || !s || p.kind !== 'junction' || s.kind !== 'junction') return false;
+
+    const next = [];
+    const seen = new Set();
+    const take = (f, t) => {
+        if (!f || !t || f === t) return;
+        const k = edgeDirectedKey(f, t);
+        if (seen.has(k)) return;
+        seen.add(k);
+        next.push({ fromId: f, toId: t });
+    };
+    for (let i = 0; i < codexEdges.length; i += 1) {
+        const e = codexEdges[i];
+        if (!e || !e.fromId || !e.toId) continue;
+        let f = e.fromId;
+        let t = e.toId;
+        if (f === secondaryId) f = primaryId;
+        if (t === secondaryId) t = primaryId;
+        take(f, t);
+    }
+    codexEdges = next;
+
+    codexAllNodes = codexAllNodes.filter((n) => n && n.id !== secondaryId);
+    const elS = codexNodeElements.get(secondaryId);
+    if (elS) {
+        codexSelectedNodeEls.delete(elS);
+        if (codexPrimarySelectedNodeEl === elS) {
+            codexPrimarySelectedNodeEl = codexNodeElements.get(primaryId) || null;
+        }
+        if (elS.parentNode) elS.remove();
+    }
+    unregisterCodexNodeRenderTracking(secondaryId);
+    codexNodeElements.delete(secondaryId);
+
+    const elP = codexNodeElements.get(primaryId);
+    if (elP) {
+        markNodeVisualUnsaved(elP);
+        markCodexLayoutDirty();
+        redrawCodexEdges();
+        scheduleUpdateCodexVirtualScroll();
+        selectCodexNode(elP);
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus('Merged two break nodes into one at the primary selection.', 'success');
+        }
+        return true;
+    }
+    markCodexLayoutDirty();
+    redrawCodexEdges();
+    scheduleUpdateCodexVirtualScroll();
+    if (typeof window.updateStatus === 'function') {
+        window.updateStatus('Merged junctions; primary DOM was missing — check the board.', 'warning');
+    }
+    return true;
+}
+
+function mergeCodexSelectedJunctionPair() {
+    if (codexMode !== 'dev') return;
+    const selected = getSelectedCodexNodesInRoot();
+    if (selected.length !== 2) return;
+    const el0 = selected[0];
+    const el1 = selected[1];
+    if (!el0?.classList.contains('codex-node--junction') || !el1?.classList.contains('codex-node--junction')) {
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus('Merge: select two break (junction) nodes.', 'warning');
+        }
+        return;
+    }
+    const id0 = el0.dataset.codexNodeId;
+    const id1 = el1.dataset.codexNodeId;
+    if (!id0 || !id1 || id0 === id1) return;
+    /** First in selection order matches preview “A” (first picked). */
+    mergeCodexJunctionPairKeepPrimary(id0, id1);
 }
 
 /**
@@ -1848,6 +2033,7 @@ function updateCodexToolbar() {
     const previewImgB = wrapB?.querySelector('.codex-toolbar__selection-preview-img');
     const btnEdgeReverse = dualWrap?.querySelector('.codex-toolbar__edge-reverse');
     const btnInsertBreak = dualWrap?.querySelector('.codex-toolbar__insert-break');
+    const btnMergeJunctions = dualWrap?.querySelector('.codex-toolbar__merge-junctions');
 
     function fillCodexToolbarPreviewImg(img, nodeEl) {
         if (!img) return;
@@ -1909,6 +2095,18 @@ function updateCodexToolbar() {
                             ? 'Insert break (waypoint): replace A → B with A → break → B (same direction).'
                             : 'Switch to Dev Mode to insert a break between these nodes.';
                 }
+                if (btnMergeJunctions) {
+                    const bothJ =
+                        !!st.fromEl?.classList.contains('codex-node--junction')
+                        && !!st.toEl?.classList.contains('codex-node--junction');
+                    btnMergeJunctions.disabled = !(codexMode === 'dev' && bothJ);
+                    btnMergeJunctions.title =
+                        codexMode !== 'dev'
+                            ? 'Switch to Dev mode to merge break nodes.'
+                            : bothJ
+                                ? 'Merge both break nodes into one at the primary selection (first picked / highlighted A).'
+                                : 'Select two break (junction) nodes to merge.';
+                }
             } else if (st.kind === 'pair-no-edge' || st.kind === 'cord-pending') {
                 fillCodexToolbarPreviewImg(previewImgA, st.fromEl);
                 fillCodexToolbarPreviewImg(previewImgB, st.toEl);
@@ -1932,6 +2130,18 @@ function updateCodexToolbar() {
                                 : 'Switch to Dev Mode to insert a break between these nodes.';
                     }
                 }
+                if (btnMergeJunctions) {
+                    const bothJ =
+                        !!st.fromEl?.classList.contains('codex-node--junction')
+                        && !!st.toEl?.classList.contains('codex-node--junction');
+                    btnMergeJunctions.disabled = !(codexMode === 'dev' && bothJ);
+                    btnMergeJunctions.title =
+                        codexMode !== 'dev'
+                            ? 'Switch to Dev mode to merge break nodes.'
+                            : bothJ
+                                ? 'Merge both break nodes into one at the primary selection (first picked / highlighted A).'
+                                : 'Select two break (junction) nodes to merge.';
+                }
             } else if (st.kind === 'pending') {
                 fillCodexToolbarPreviewImg(previewImgA, st.fromEl);
                 fillCodexToolbarPreviewImg(previewImgB, null);
@@ -1944,6 +2154,10 @@ function updateCodexToolbar() {
                 if (btnInsertBreak) {
                     btnInsertBreak.disabled = true;
                     btnInsertBreak.title = 'Select two nodes to insert a break between them.';
+                }
+                if (btnMergeJunctions) {
+                    btnMergeJunctions.disabled = true;
+                    btnMergeJunctions.title = 'Select two break (junction) nodes to merge.';
                 }
             }
             previewRow.style.display = '';
@@ -2623,10 +2837,17 @@ function appendCordFilteredLineGroup(parent, ns, {
     strokeOpacity = '1',
     filterUrl,
     lineClass,
-    padStrokeWidth = CODEX_EDGE_FILTER_PAD_PX
+    padStrokeWidth = CODEX_EDGE_FILTER_PAD_PX,
+    edgeFromId,
+    edgeToId
 }) {
     const g = document.createElementNS(ns, 'g');
     g.setAttribute('filter', filterUrl);
+    if (edgeFromId && edgeToId) {
+        g.classList.add('codex-edge-segment-group');
+        g.setAttribute('data-codex-edge-from', String(edgeFromId));
+        g.setAttribute('data-codex-edge-to', String(edgeToId));
+    }
     const pad = document.createElementNS(ns, 'line');
     pad.classList.add('codex-edge-filter-pad');
     pad.setAttribute('x1', String(x1));
@@ -3477,7 +3698,9 @@ function redrawCodexEdges() {
                 stroke: strokeColor,
                 strokeWidth: codexVisualPrefs.cordThickness,
                 filterUrl,
-                lineClass: 'codex-edge-segment'
+                lineClass: 'codex-edge-segment',
+                edgeFromId: fromId,
+                edgeToId: toId
             });
         }
     });
@@ -3499,33 +3722,29 @@ function redrawCodexEdges() {
             hit.dataset.codexEdgeFrom = fromId;
             hit.dataset.codexEdgeTo = toId;
             hit.dataset.codexSeg = String(seg);
-            
-            // Skip hit targets in View Mode (no editing needed)
-            if (codexMode === 'view') continue;
-            
-            hit.addEventListener('contextmenu', (evt) => {
-                evt.preventDefault();
-                evt.stopPropagation();
-                
-                // Prevent edge deletion in view mode
-                if (codexMode === 'view') return;
-                
-                const ed = findEdge(fromId, toId);
-                if (!ed) return;
-                const k = codexUnorderedPairKey(fromId, toId);
-                const now = Date.now();
-                const prev = cordDoubleRightLastTs.get(k) || 0;
-                if (now - prev < DOUBLE_RIGHT_MS) {
-                    cordDoubleRightLastTs.delete(k);
-                    cordPendingDeletePairKey = null;
-                    removeCodexEdgeDirected(fromId, toId);
-                } else {
-                    clearPendingCodexDeleteState();
-                    cordPendingDeletePairKey = k;
-                    cordDoubleRightLastTs.set(k, now);
-                    redrawCodexEdges();
-                }
-            });
+
+            if (codexMode !== 'view') {
+                hit.addEventListener('contextmenu', (evt) => {
+                    evt.preventDefault();
+                    evt.stopPropagation();
+
+                    const ed = findEdge(fromId, toId);
+                    if (!ed) return;
+                    const k = codexUnorderedPairKey(fromId, toId);
+                    const now = Date.now();
+                    const prev = cordDoubleRightLastTs.get(k) || 0;
+                    if (now - prev < DOUBLE_RIGHT_MS) {
+                        cordDoubleRightLastTs.delete(k);
+                        cordPendingDeletePairKey = null;
+                        removeCodexEdgeDirected(fromId, toId);
+                    } else {
+                        clearPendingCodexDeleteState();
+                        cordPendingDeletePairKey = k;
+                        cordDoubleRightLastTs.set(k, now);
+                        redrawCodexEdges();
+                    }
+                });
+            }
             hitPickRoot.appendChild(hit);
         }
     });
@@ -3755,7 +3974,10 @@ export function saveCodexLayout() {
                 let archList = Array.isArray(data?.bioArchiveFilesWritten)
                     ? data.bioArchiveFilesWritten.filter(Boolean)
                     : [];
-                if (!archList.length && Number(data?.bioConnectionsUpserted) > 0) {
+                if (
+                    !archList.length
+                    && (Number(data?.bioConnectionsUpserted) > 0 || Number(data?.bioConnectionsRemoved) > 0)
+                ) {
                     archList = ['heroes', 'factions', 'npcs'];
                 }
                 const ds = window.eventManager?.dataService;
@@ -3770,11 +3992,20 @@ export function saveCodexLayout() {
                         console.warn('CodexCanvasService: post-codex bio archive refresh failed', reErr);
                     }
                 }
+                try {
+                    await syncCodexEdgesFromBioArchiveConnections();
+                } catch (reconcileErr) {
+                    console.warn('CodexCanvasService: post-save codex/archive edge reconcile failed', reconcileErr);
+                }
                 if (typeof window.updateStatus === 'function') {
                     let msg = `✓ Codex saved (${data?.nodesCount ?? nodes.length} nodes, ${data?.edgesCount ?? edges.length} links)`;
                     const nBio = Number(data?.bioConnectionsUpserted) || 0;
-                    if (nBio > 0) {
-                        msg += `. Story archives: ${nBio} connection row(s) synced from entity links.`;
+                    const nRm = Number(data?.bioConnectionsRemoved) || 0;
+                    if (nBio > 0 || nRm > 0) {
+                        const parts = [];
+                        if (nBio > 0) parts.push(`${nBio} row(s) added/updated`);
+                        if (nRm > 0) parts.push(`${nRm} stale “show in Codex” row(s) removed`);
+                        msg += `. Archive JSON: ${parts.join('; ')}.`;
                     }
                     const warns = Array.isArray(data?.bioArchiveWarnings) ? data.bioArchiveWarnings : [];
                     if (warns.length) {
@@ -3798,6 +4029,122 @@ export function saveCodexLayout() {
     } else if (typeof window.updateStatus === 'function') {
         window.updateStatus('Codex saved (this browser).', 'success');
     }
+}
+
+const CODEX_BIO_SYNC_PREVIEW_MAX_LINES = 45;
+
+function removeCodexBioSyncPreviewPanel() {
+    document.querySelectorAll('.codex-bio-sync-preview-overlay').forEach((el) => el.remove());
+}
+
+/**
+ * Compare entity↔entity Codex links vs story-archive `showInCodex` rows (dev server POST).
+ */
+export async function previewBioCodexArchiveLinkDiff() {
+    if (!isCodexFileApiAvailable()) {
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus(
+                'Archive link check needs the local dev server (POST /api/codex/bio-sync-preview).',
+                'warning'
+            );
+        }
+        return;
+    }
+    if (!root) return;
+    const { nodes, edges } = serializeCodexState();
+    const payload = { v: CODEX_SAVE_VERSION, nodes, edges };
+    const url =
+        typeof window.resolveDevApiUrl === 'function'
+            ? window.resolveDevApiUrl('api/codex/bio-sync-preview')
+            : '/api/codex/bio-sync-preview';
+    try {
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus('Comparing Codex links to archive data…', 'success');
+        }
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`);
+        removeCodexBioSyncPreviewPanel();
+        const overlay = document.createElement('div');
+        overlay.className = 'codex-bio-sync-preview-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        const card = document.createElement('div');
+        card.className = 'codex-bio-sync-preview-card';
+        const nCodex = Number(data.pairsInCodexCount) || 0;
+        const nArch = Number(data.pairsInArchivesShowInCodexCount) || 0;
+        const onlyA = Array.isArray(data.onlyInArchives) ? data.onlyInArchives : [];
+        const onlyC = Array.isArray(data.onlyInCodex) ? data.onlyInCodex : [];
+        const fmtList = (arr, cap) => {
+            const slice = arr.slice(0, cap);
+            const more = arr.length > cap ? `\n… +${arr.length - cap} more` : '';
+            return slice.length ? `${slice.map((s) => `• ${s}`).join('\n')}${more}` : '(none)';
+        };
+        card.innerHTML = `
+            <h3 class="codex-bio-sync-preview__title">Codex ↔ archives (<code>showInCodex</code>)</h3>
+            <p class="codex-bio-sync-preview__summary">
+                <strong>${nCodex}</strong> entity link pair(s) on the board ·
+                <strong>${nArch}</strong> in JSON with <code>showInCodex</code>
+            </p>
+            <p class="codex-bio-sync-preview__hint">
+                Saving the Codex updates archives: new links are written; board-only removals drop stale <code>showInCodex</code> rows.
+            </p>
+            <div class="codex-bio-sync-preview__col">
+                <h4>Only in archives <span class="codex-bio-sync-preview__badge">${onlyA.length}</span></h4>
+                <pre class="codex-bio-sync-preview__pre">${escapeHtml(fmtList(onlyA, CODEX_BIO_SYNC_PREVIEW_MAX_LINES))}</pre>
+            </div>
+            <div class="codex-bio-sync-preview__col">
+                <h4>Only on Codex <span class="codex-bio-sync-preview__badge">${onlyC.length}</span></h4>
+                <pre class="codex-bio-sync-preview__pre">${escapeHtml(fmtList(onlyC, CODEX_BIO_SYNC_PREVIEW_MAX_LINES))}</pre>
+            </div>
+            <div class="codex-bio-sync-preview__actions">
+                <button type="button" class="codex-bio-sync-preview__close">Close</button>
+            </div>
+        `;
+        overlay.appendChild(card);
+        const host = root.closest('.codex-view-root') || root.parentElement || document.body;
+        host.appendChild(overlay);
+        const close = () => {
+            removeCodexBioSyncPreviewPanel();
+        };
+        card.querySelector('.codex-bio-sync-preview__close')?.addEventListener('click', close);
+        overlay.addEventListener('click', (ev) => {
+            if (ev.target === overlay) close();
+        });
+        const esc = (ev) => {
+            if (ev.key === 'Escape') {
+                close();
+                document.removeEventListener('keydown', esc);
+            }
+        };
+        document.addEventListener('keydown', esc);
+        if (typeof window.updateStatus === 'function') {
+            const mismatch = onlyA.length + onlyC.length;
+            window.updateStatus(
+                mismatch
+                    ? `Archive link diff: ${onlyA.length} only in files, ${onlyC.length} only on board.`
+                    : 'Codex entity links match archive showInCodex rows.',
+                mismatch ? 'warning' : 'success'
+            );
+        }
+    } catch (e) {
+        console.warn('CodexCanvasService: bio-sync-preview failed', e);
+        if (typeof window.updateStatus === 'function') {
+            window.updateStatus(`Archive link check failed: ${e?.message || e}`, 'warning');
+        }
+    }
+}
+
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
 }
 
 function parseLoadedCodexPayload(parsed) {
@@ -3926,7 +4273,12 @@ function parseMigrateAndDedupeCodexSource(sourceObj) {
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
     );
-    const prunedEdges = pruneRedundantEntityShortcutEdges(nodes, dedupedEdges);
+    // Only prune “shortcut over junction” duplicates during layout *migration* — not on every load.
+    // Otherwise explicit chords (e.g. NPC ↔ faction with showInCodex) vanish on refresh when a longer
+    // path exists through breaks (see pruneRedundantEntityShortcutEdges).
+    const prunedEdges = migratedNow
+        ? pruneRedundantEntityShortcutEdges(nodes, dedupedEdges)
+        : dedupedEdges;
     return { nodes, edges: prunedEdges, migratedNow };
 }
 
@@ -4786,6 +5138,24 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
                 rev.insertAdjacentElement('afterend', btnIns);
             }
         }
+        if (!dualPre.querySelector('.codex-toolbar__merge-junctions')) {
+            const ins = dualPre.querySelector('.codex-toolbar__insert-break');
+            if (ins) {
+                const btnM = document.createElement('button');
+                btnM.type = 'button';
+                btnM.className = 'codex-toolbar__merge-junctions';
+                btnM.textContent = 'Merge';
+                btnM.title =
+                    'Merge two break nodes into one at the primary selection position (Dev mode, two junctions).';
+                btnM.disabled = true;
+                btnM.addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    mergeCodexSelectedJunctionPair();
+                });
+                ins.insertAdjacentElement('afterend', btnM);
+            }
+        }
         return;
     }
 
@@ -4846,6 +5216,19 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
         insertCodexBreakBetweenSelectedPair();
     });
 
+    const btnMergeJunctions = document.createElement('button');
+    btnMergeJunctions.type = 'button';
+    btnMergeJunctions.className = 'codex-toolbar__merge-junctions';
+    btnMergeJunctions.textContent = 'Merge';
+    btnMergeJunctions.title =
+        'Merge two break nodes into one at the primary selection position (Dev mode, two junctions).';
+    btnMergeJunctions.disabled = true;
+    btnMergeJunctions.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        mergeCodexSelectedJunctionPair();
+    });
+
     const wrapB = document.createElement('div');
     wrapB.className = 'codex-toolbar__selection-preview codex-toolbar__selection-preview--to';
     const lblB = document.createElement('span');
@@ -4864,6 +5247,7 @@ function ensureCodexToolbarSelectionPreviewRow(bar) {
     dual.appendChild(wrapA);
     dual.appendChild(btnRev);
     dual.appendChild(btnInsertBreak);
+    dual.appendChild(btnMergeJunctions);
     dual.appendChild(wrapB);
     rowPreview.appendChild(single);
     rowPreview.appendChild(dual);
@@ -4917,7 +5301,11 @@ function syncCodexModeClass() {
     const oldMode = codexMode;
     root.classList.toggle('codex--view-mode', codexMode === 'view');
     root.classList.toggle('codex--dev-mode', codexMode === 'dev');
-    
+
+    if (codexMode !== 'view') {
+        clearAllCodexEdgeHoverVisual();
+    }
+
     console.log('[Codex Mode] Switching from ' + oldMode + ' to ' + codexMode);
     
     // Reset View Mode initial render flag when switching to View Mode
@@ -5272,8 +5660,32 @@ function ensureCodexToolbar() {
     ensureCodexToolbarSelectionPreviewRow(bar);
     ensureCodexToolbarScaleInput(bar);
     ensureCodexToolbarImportExportRow(bar);
+    ensureCodexToolbarBioSyncButton(bar);
     ensureCodexVisualPrefsPanel();
     updateCodexToolbar();
+}
+
+function ensureCodexToolbarBioSyncButton(bar) {
+    if (!bar) return;
+    const row = bar.querySelector('.codex-toolbar__row--import-export');
+    if (!row || row.querySelector('.codex-toolbar__bio-sync-preview')) return;
+    const exportBtn = row.querySelector('.codex-toolbar__export-json');
+    const bioBtn = document.createElement('button');
+    bioBtn.type = 'button';
+    bioBtn.className = 'codex-toolbar__import-export-btn codex-toolbar__bio-sync-preview';
+    bioBtn.textContent = 'Check vs archives';
+    bioBtn.title =
+        'Compare entity-to-entity Codex links with story-archive rows marked show in Codex. Save Codex to apply changes to JSON.';
+    bioBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        void previewBioCodexArchiveLinkDiff();
+    });
+    if (exportBtn) {
+        row.insertBefore(bioBtn, exportBtn);
+    } else {
+        row.appendChild(bioBtn);
+    }
 }
 
 function ensureCodexToolbarImportExportRow(bar) {
@@ -5828,6 +6240,126 @@ function syncSuggestionList(input) {
     }
 }
 
+function codexEscapeEdgeIdForSelector(id) {
+    if (typeof CSS !== 'undefined' && typeof CSS.escape === 'function') {
+        return CSS.escape(String(id));
+    }
+    return String(id).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+/**
+ * All directed edges in the maximal A→…→B chain containing `fromId`→`toId` through junctions only
+ * (unique incoming/outgoing at each junction). Used so hover highlights the full routed cord.
+ * @returns {Set<string>} keys from {@link edgeDirectedKey}
+ */
+function collectCodexDirectedChainEdgeKeys(fromId, toId) {
+    const keys = new Set();
+    if (!fromId || !toId || fromId === toId || !Array.isArray(codexEdges)) return keys;
+    const maxSteps = Math.max(8, codexEdges.length + 2);
+    const addK = (a, b) => {
+        if (a && b && a !== b) keys.add(edgeDirectedKey(a, b));
+    };
+    addK(fromId, toId);
+    let cur = fromId;
+    let forbidFrom = toId;
+    let steps = 0;
+    while (steps < maxSteps && codexNodeKindById(cur) === 'junction') {
+        steps += 1;
+        const inc = codexEdges.filter((e) => e && e.toId === cur && e.fromId !== forbidFrom);
+        if (inc.length !== 1) break;
+        const e = inc[0];
+        addK(e.fromId, e.toId);
+        forbidFrom = cur;
+        cur = e.fromId;
+    }
+    cur = toId;
+    let forbidTo = fromId;
+    steps = 0;
+    while (steps < maxSteps && codexNodeKindById(cur) === 'junction') {
+        steps += 1;
+        const outs = codexEdges.filter((e) => e && e.fromId === cur && e.toId !== forbidTo);
+        if (outs.length !== 1) break;
+        const e = outs[0];
+        addK(e.fromId, e.toId);
+        forbidTo = cur;
+        cur = e.toId;
+    }
+    return keys;
+}
+
+function codexEdgeHoverChainSetsEqual(a, b) {
+    if (!a || !b || a.size !== b.size) return false;
+    for (const k of a) {
+        if (!b.has(k)) return false;
+    }
+    return true;
+}
+
+function setCodexEdgeHoverVisual(fromId, toId, active) {
+    if (!root || !fromId || !toId) return;
+    const svg = root.querySelector('.codex-edges-layer');
+    if (!svg) return;
+    const sel = `g.codex-edge-segment-group[data-codex-edge-from="${codexEscapeEdgeIdForSelector(fromId)}"][data-codex-edge-to="${codexEscapeEdgeIdForSelector(toId)}"]`;
+    try {
+        svg.querySelectorAll(sel).forEach((g) => {
+            g.classList.toggle('codex-edge-segment-group--hover', active);
+        });
+    } catch (_) {
+        /* ignore */
+    }
+}
+
+function clearAllCodexEdgeHoverVisual() {
+    codexEdgeHoverChainKeySet = null;
+    if (!root) return;
+    const svg = root.querySelector('.codex-edges-layer');
+    if (!svg) return;
+    svg.querySelectorAll('g.codex-edge-segment-group--hover').forEach((g) => {
+        g.classList.remove('codex-edge-segment-group--hover');
+    });
+}
+
+function onCodexEdgeSvgPointerOver(e) {
+    if (codexMode !== 'view') return;
+    const t = /** @type {Element} */ (e.target);
+    if (!t?.classList?.contains('codex-edge-hit')) return;
+    const f = t.dataset.codexEdgeFrom;
+    const to = t.dataset.codexEdgeTo;
+    if (!f || !to) return;
+    const chain = collectCodexDirectedChainEdgeKeys(f, to);
+    if (codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(codexEdgeHoverChainKeySet, chain)) {
+        return;
+    }
+    clearAllCodexEdgeHoverVisual();
+    codexEdgeHoverChainKeySet = chain;
+    chain.forEach((key) => {
+        const sep = key.indexOf('\x1e');
+        if (sep < 0) return;
+        const a = key.slice(0, sep);
+        const b = key.slice(sep + 1);
+        setCodexEdgeHoverVisual(a, b, true);
+    });
+}
+
+function onCodexEdgeSvgPointerOut(e) {
+    if (codexMode !== 'view') return;
+    const t = /** @type {Element} */ (e.target);
+    if (!t?.classList?.contains('codex-edge-hit')) return;
+    const rel = e.relatedTarget;
+    if (rel && codexEdgesSvgEl && codexEdgesSvgEl.contains(rel)) {
+        const nextHit = typeof rel.closest === 'function' ? rel.closest('.codex-edge-hit') : null;
+        if (nextHit) {
+            const nf = nextHit.dataset.codexEdgeFrom || '';
+            const nt = nextHit.dataset.codexEdgeTo || '';
+            const nk = nf && nt ? edgeDirectedKey(nf, nt) : '';
+            if (nk && codexEdgeHoverChainKeySet?.has(nk)) {
+                return;
+            }
+        }
+    }
+    clearAllCodexEdgeHoverVisual();
+}
+
 function codexSvgPointerDownCapture(e) {
     if (!root || !codexEdgesSvgEl) return;
     cancelBackgroundPanPointerPending();
@@ -5836,6 +6368,15 @@ function codexSvgPointerDownCapture(e) {
     if (t.closest && (t.closest('.codex-toolbar') || t.closest('.codex-visual-panel'))) return;
 
     if (e.button === 0 && t.classList.contains('codex-edge-hit')) {
+        if (codexMode === 'view') {
+            e.preventDefault();
+            e.stopPropagation();
+            openStoryArchiveFromCodexEdgeHit(
+                t.dataset.codexEdgeFrom || '',
+                t.dataset.codexEdgeTo || ''
+            );
+            return;
+        }
         e.preventDefault();
         e.stopPropagation();
         cancelPointerPending();
@@ -6102,26 +6643,88 @@ async function openHeroArchiveEntryFromCodexHeroName(heroNameFromNode) {
     }
 }
 
+/** Hero / faction / npc / country nodes can open a Data Archive row; junctions cannot. */
+function codexNodeElSupportsStoryArchiveLink(el) {
+    if (!el?.dataset) return false;
+    const k = el.dataset.codexKind || '';
+    return k === 'hero' || k === 'npc' || k === 'faction' || k === 'country';
+}
+
+/** @returns {{ kind: 'hero'|'faction'|'npc', name: string }|null} */
+function codexBioLinkSpecFromNodeEl(el) {
+    if (!el?.dataset) return null;
+    const k = el.dataset.codexKind || '';
+    if (k === 'hero') {
+        const name = String(el.dataset.codexHero || '').trim();
+        return name ? { kind: 'hero', name } : null;
+    }
+    if (k === 'npc') {
+        const name = String(el.dataset.codexNpc || '').trim();
+        return name ? { kind: 'npc', name } : null;
+    }
+    if (k === 'faction') {
+        const name = String(
+            el.dataset.codexFactionDisplay || el.dataset.codexFactionFile || ''
+        ).trim();
+        return name ? { kind: 'faction', name } : null;
+    }
+    return null;
+}
+
 /**
- * View mode: portrait / country nodes open the matching Story Archive row (heroes, factions, npcs, locations).
+ * View mode: primary click on an edge opens node A's archive — the directed **from** endpoint.
+ * If `from` is not archive-linkable (e.g. junction), falls back to **to**.
  */
-function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl) {
+function openStoryArchiveFromCodexEdgeHit(fromId, toId) {
+    if (codexMode !== 'view' || !fromId) return;
+    const tryOpen = (subjectEl, otherEl) => {
+        if (!subjectEl || !codexNodeElSupportsStoryArchiveLink(subjectEl)) return false;
+        if (window.SoundEffectsManager?.play) window.SoundEffectsManager.play('nodeSelect');
+        const spec = codexBioLinkSpecFromNodeEl(otherEl);
+        maybeOpenStoryArchiveFromCodexNodeEl(subjectEl, { codexConnectionHighlight: spec });
+        return true;
+    };
+    if (tryOpen(codexNodeElements.get(fromId), codexNodeElements.get(toId))) return;
+    if (toId && tryOpen(codexNodeElements.get(toId), codexNodeElements.get(fromId))) return;
+}
+
+/**
+ * View mode: portrait / country nodes open the matching archive row (heroes, factions, npcs, locations).
+ * @param {HTMLElement} nodeEl
+ * @param {{ codexConnectionHighlight?: { kind: string, name: string }|null }} [opts]
+ */
+function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl, opts) {
     if (codexMode !== 'view') return;
     if (!nodeEl) return;
     const em = window.eventManager;
     if (!em) return;
+    const o = opts || {};
+    const highlight = o.codexConnectionHighlight || null;
+    const scheduleHighlight = () => {
+        if (!highlight || !String(highlight.name || '').trim()) return;
+        const run = () => {
+            window.LocationFlagHelpers?.applyBioConnectionCodexHighlight?.(highlight);
+        };
+        requestAnimationFrame(() => requestAnimationFrame(run));
+    };
     const kind = nodeEl.dataset.codexKind || '';
 
     if (kind === 'hero') {
         const heroName = String(nodeEl.dataset.codexHero || '').trim();
         if (!heroName) return;
-        void openHeroArchiveEntryFromCodexHeroName(heroName);
+        void (async () => {
+            await openHeroArchiveEntryFromCodexHeroName(heroName);
+            scheduleHighlight();
+        })();
         return;
     }
     if (kind === 'npc') {
         const npc = String(nodeEl.dataset.codexNpc || '').trim();
         if (!npc || typeof em.openNpcArchiveEventByName !== 'function') return;
-        void em.openNpcArchiveEventByName(npc);
+        void (async () => {
+            await em.openNpcArchiveEventByName(npc);
+            scheduleHighlight();
+        })();
         return;
     }
     if (kind === 'faction') {
@@ -6129,13 +6732,19 @@ function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl) {
             nodeEl.dataset.codexFactionDisplay || nodeEl.dataset.codexFactionFile || ''
         ).trim();
         if (!token || typeof em.openFactionArchiveEventByName !== 'function') return;
-        void em.openFactionArchiveEventByName(token);
+        void (async () => {
+            await em.openFactionArchiveEventByName(token);
+            scheduleHighlight();
+        })();
         return;
     }
     if (kind === 'country') {
         const ck = String(nodeEl.dataset.codexCountryKey || '').trim();
         if (!ck || typeof em.openLocationArchiveEventByName !== 'function') return;
-        void em.openLocationArchiveEventByName(ck);
+        void (async () => {
+            await em.openLocationArchiveEventByName(ck);
+            scheduleHighlight();
+        })();
     }
 }
 
@@ -6572,6 +7181,8 @@ export function initCodexCanvas(rootElement) {
     ensureCodexModeToggle();
     if (codexEdgesSvgEl) {
         codexEdgesSvgEl.addEventListener('pointerdown', codexSvgPointerDownCapture, true);
+        codexEdgesSvgEl.addEventListener('pointerover', onCodexEdgeSvgPointerOver, true);
+        codexEdgesSvgEl.addEventListener('pointerout', onCodexEdgeSvgPointerOut, true);
     }
 
     if (hitLayerEl) {
@@ -6677,7 +7288,10 @@ export function destroyCodexCanvas() {
     codexBulkNodeDeleteArmedAt = 0;
     if (codexEdgesSvgEl) {
         codexEdgesSvgEl.removeEventListener('pointerdown', codexSvgPointerDownCapture, true);
+        codexEdgesSvgEl.removeEventListener('pointerover', onCodexEdgeSvgPointerOver, true);
+        codexEdgesSvgEl.removeEventListener('pointerout', onCodexEdgeSvgPointerOut, true);
     }
+    codexEdgeHoverChainKeySet = null;
     codexEdgesSvgEl = null;
     removePicker();
     if (hitLayerEl) {
@@ -6725,6 +7339,7 @@ if (typeof window !== 'undefined') {
         clearCodexEventThumbnailFilterHover,
         exportCodexJson: exportCodexLayoutJsonDownload,
         importCodexJsonText: importCodexLayoutFromJsonText,
-        syncCodexEdgesFromBioArchiveConnections
+        syncCodexEdgesFromBioArchiveConnections,
+        previewBioCodexArchiveLinkDiff
     };
 }

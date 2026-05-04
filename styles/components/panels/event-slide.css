@@ -853,6 +853,16 @@
     margin: 4px 0;
 }
 
+/* Rows whose tokens match the active filter panel selection */
+.event-slide-relevant-locations__row--filter-match {
+    margin: 4px -4px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(72, 199, 116, 0.85);
+    box-shadow: 0 0 0 1px rgba(72, 199, 116, 0.28), 0 0 14px rgba(72, 199, 116, 0.18);
+    background: rgba(72, 199, 116, 0.1);
+}
+
 /* Multiple country tokens → several flags; wrap to extra lines when they do not fit */
 .event-slide-relevant-locations__flag-row {
     display: flex;
@@ -1150,6 +1160,13 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
+}
+
+/* Cord-open → archive: which connection the edge referred to */
+.event-slide-bio-connections__row--codex-focus {
+    border-color: rgba(72, 199, 116, 0.85) !important;
+    box-shadow: 0 0 0 1px rgba(72, 199, 116, 0.35), 0 0 18px rgba(72, 199, 116, 0.22);
+    background: rgba(72, 199, 116, 0.12) !important;
 }
 
 @container bio-slide-group (max-width: 400px) {

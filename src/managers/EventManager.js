@@ -320,7 +320,7 @@ class EventManager {
         return result;
     }
 
-    /** Story Archive category: switch backing JSON + refresh list (no globe sync for satellite JSONs). */
+    /** Data Archive category: switch backing JSON + refresh list (no globe sync for satellite JSONs). */
     async switchStoryArchiveSource(archiveId) {
         if (!this.dataService?.setArchiveSource) return;
         this.dataService.setArchiveSource(archiveId);

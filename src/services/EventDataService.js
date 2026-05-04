@@ -137,7 +137,7 @@ class EventDataService {
                hostname === 'pages.github.com';
     }
 
-    /** Active Story Archive / timeline JSON bucket (main timeline = `story`). */
+    /** Active Data Archive bucket: which JSON dataset the viewer uses (`story` = main timeline; heroes, factions, npcs, locations = satellites). */
     getArchiveSource() {
         return this.archiveSource || 'story';
     }
@@ -1064,7 +1064,7 @@ class EventDataService {
             return;
         }
 
-        // Dev server: also persist to data/*.json via Node server (main timeline + Story Archive satellites).
+        // Dev server: also persist to data/*.json via Node server (main timeline + satellite archive JSONs).
         try {
             const isMain = this._isMainTimelineArchive();
             const apiUrl =

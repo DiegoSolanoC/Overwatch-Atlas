@@ -343,13 +343,13 @@ export function createMenuButtonsContainer(statusService) {
     });
     menuButtons.appendChild(glossaryBtn);
 
-    // Story Archive button (always shown)
+    // Data Archive button (always shown)
     const biographyBtn = createMenuButton({
         id: 'runBiographyBtn',
-        title: 'Story Archive',
+        title: 'Data Archive',
         imagePath: 'assets/images/menu/Character%20Bios.png',
-        label: 'Story Archive',
-        description: 'Explore the Story and Concepts through a series of Slides'
+        label: 'Data Archive',
+        description: 'Browse through Story slides and Concept Files'
     });
     menuButtons.appendChild(biographyBtn);
 
@@ -365,7 +365,7 @@ export function createMenuButtonsContainer(statusService) {
         user-select: none;
     `;
     autoPreloadContainer.title =
-        'Automatically load Event System when opening Story Archive, Interactive Worldview, or Connection Codex';
+        'Automatically load Event System when opening Data Archive, Interactive Worldview, or Connection Codex';
 
     const autoPreloadCheckbox = document.createElement('input');
     autoPreloadCheckbox.type = 'checkbox';
@@ -813,6 +813,9 @@ export function createMenuButtonsContainer(statusService) {
                         if (typeof window.syncFiltersPanelTrapIcon === 'function') {
                             window.syncFiltersPanelTrapIcon();
                         }
+                        if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+                            window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
+                        }
                         if (statusService) statusService.update('✓ Filters applied', 'success');
                     });
                 }
@@ -838,6 +841,9 @@ export function createMenuButtonsContainer(statusService) {
                         // Clear filters from Globe markers (if EventMarkerManager exists)
                         if (window.globeEventMarkerManager) {
                             window.globeEventMarkerManager.applyFilters();
+                        }
+                        if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+                            window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
                         }
                         if (statusService) statusService.update('✓ Filters cleared', 'success');
                     });

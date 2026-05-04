@@ -35,7 +35,7 @@
 }
 
 /* Close is outside .filters-panel-content — when collapsed it would still paint (often over the
-   center stage / Story Archive) and steal clicks as a “phantom ×”. Only show it while open. */
+   center stage / Data Archive) and steal clicks as a “phantom ×”. Only show it while open. */
 .filters-panel:not(.open) .filters-panel-close {
     display: none !important;
     visibility: hidden !important;

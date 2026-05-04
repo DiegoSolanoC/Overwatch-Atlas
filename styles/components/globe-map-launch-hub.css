@@ -1,4 +1,4 @@
-/* Globe/map chooser — lives in main#content like Story Archive (story-viewer-container), not a body overlay */
+/* Globe/map chooser — lives in main#content like Data Archive (story-viewer-container), not a body overlay */
 
 .globe-map-launch-host.story-viewer-container {
     /* Same stacking as #storyViewerContainer: above .test-container (z-index 1), under rails @ 540 */
@@ -41,7 +41,7 @@
     color: rgba(255, 255, 255, 0.72);
 }
 
-/* Reuse Story Archive tile styles: hub is two tiles in one row */
+/* Reuse Data Archive tile styles: hub is two tiles in one row */
 #globeMapCategoryHub.story-archive-category-hub--globe-map {
     position: relative;
     z-index: 2;

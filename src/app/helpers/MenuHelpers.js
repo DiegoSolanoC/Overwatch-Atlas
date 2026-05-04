@@ -633,13 +633,13 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
 
     mainButtonsRow.appendChild(glossaryBtn);
 
-    // Story Archive button - always show now
+    // Data Archive button - always show now
     const biographyBtn = createMenuButton({
         id: 'runBiographyBtn',
-        title: 'Story Archive',
+        title: 'Data Archive',
         imagePath: 'assets/images/menu/Character%20Bios.png',
-        label: 'Story Archive',
-        description: 'Explore the Story and Concepts through a series of Slides'
+        label: 'Data Archive',
+        description: 'Browse through Story slides and Concept Files'
     });
 
     if (setupBiographyHandler) {
@@ -683,7 +683,7 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
         user-select: none;
     `;
     autoPreloadContainer.title =
-        'Automatically load Event System when opening Story Archive, Interactive Worldview, or Connection Codex';
+        'Automatically load Event System when opening Data Archive, Interactive Worldview, or Connection Codex';
 
     const autoPreloadCheckbox = document.createElement('input');
     autoPreloadCheckbox.type = 'checkbox';
@@ -1176,6 +1176,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         if (typeof window.applyCodexFilterState === 'function') {
                             window.applyCodexFilterState();
                         }
+                        if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+                            window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
+                        }
                         // Close panel
                         const filtersPanel = document.getElementById('filtersPanel');
                         if (filtersPanel) filtersPanel.classList.remove('open');
@@ -1217,6 +1220,9 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                         // Apply filter state to Codex nodes (clears filtered-out state)
                         if (typeof window.applyCodexFilterState === 'function') {
                             window.applyCodexFilterState();
+                        }
+                        if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+                            window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
                         }
                         updateStatus('✓ Filters cleared', 'success');
                     });

@@ -2,7 +2,8 @@
   "events": [
     {
       "name": "Numbani",
-      "description": ""
+      "description": "",
+      "connections": []
     }
   ]
 }

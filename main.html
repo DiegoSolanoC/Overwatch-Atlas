@@ -8,22 +8,12 @@
     <link rel="stylesheet" href="styles.css?v=71">
     <link rel="stylesheet" href="styles/entry.css?v=17">
 </head>
-<body>
+<body class="app-timeline-default">
     <header>
         <div class="header-hub" id="headerHub" aria-label="Mode hub">
-            <button class="header-hub-btn" type="button" data-mode="globe" title="Global Timeline">Timeline</button>
-            <button class="header-hub-btn" type="button" data-mode="glossary" title="Concept Glossary">Glossary</button>
-            <button class="header-hub-btn" type="button" data-mode="biography" title="Character Bios">Bios</button>
             <div class="header-hub-stack" id="headerHubMapStack" aria-label="View controls" data-header-order="30"></div>
         </div>
-        <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu">
-            <button class="header-hub-btn header-hub-btn--exit header-hub-btn--icon" type="button" data-action="menu" title="Exit to Main Menu" aria-label="Exit to Main Menu">
-                <span class="header-hub-icon-wrap">
-                    <img class="header-hub-icon" src="assets/images/icons/Home Button.png" alt="" />
-                </span>
-                <span class="header-hub-btn-label">Exit</span>
-            </button>
-        </div>
+        <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu"></div>
         <a class="header-title-badge header-title-badge--link" id="headerTitleBadge" href="https://overwatch.blizzard.com/en-us/" target="_blank" rel="noopener noreferrer" aria-label="Open official Overwatch website" title="Go to official website">
             <svg class="header-title-badge-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <path class="header-title-badge-path" vector-effect="non-scaling-stroke" d="M28 10 H72 Q76 10 78 14 L92 90 Q94 98 86 98 H14 Q6 98 8 90 L22 14 Q24 10 28 10 Z"></path>
@@ -264,7 +254,7 @@
     <script src="src/services/EventDataService.js?v=29"></script>
     <script src="src/services/LocationService.js?v=8"></script>
     <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=25"></script>
+    <script src="src/utils/LocationFlagHelpers.js?v=27"></script>
     <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
     <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
     <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>

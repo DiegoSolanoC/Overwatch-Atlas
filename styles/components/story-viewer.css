@@ -58,7 +58,7 @@
     padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
 }
 
-/* Story Archive grid: ~10 columns on large screens (was ~15 with auto-fill 158px) + taller thumb cap */
+/* Data Archive grid: ~10 columns on large screens (was ~15 with auto-fill 158px) + taller thumb cap */
 .story-viewer-panel-embedded #eventsList {
     --em-visual-min: calc(215px * 0.82);
     --em-visual-max: calc(292px * 0.82);
@@ -69,7 +69,7 @@
     gap: 6px;
 }
 
-/* Story Archive: title on the image like pagination dock thumbs (.event-number-btn__name) */
+/* Data Archive: title on the image like pagination dock thumbs (.event-number-btn__name) */
 .story-viewer-panel-embedded #eventsList .event-item__thumb-visual::after {
     content: '';
     position: absolute;
@@ -352,7 +352,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     padding-inline: 16px;
 }
 
-/* Story Archive: Clear button no longer used */
+/* Data Archive: Clear button no longer used */
 .story-viewer-panel-embedded #eventsSearchClear {
     display: none !important;
 }
@@ -444,12 +444,12 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     overflow: hidden;
 }
 
-/* Tighter top padding — Story Archive hides the header chrome */
+/* Tighter top padding — Data Archive hides the header chrome */
 .story-viewer-panel-embedded .events-manage-content {
     padding-top: 12px;
 }
 
-/* Whole header hidden in Story Archive (title + count); toolbar lives in #eventsManageControls */
+/* Whole header hidden in Data Archive (title + count); toolbar lives in #eventsManageControls */
 .story-viewer-panel-embedded .events-manage-header.events-manage-header--story-empty {
     display: none !important;
     margin: 0 !important;
@@ -464,7 +464,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     margin: 0 0 10px 0;
 }
 
-/* Story Archive grid squish bar — hidden (fixed squish via JS); keep rules if re-enabled */
+/* Data Archive grid squish bar — hidden (fixed squish via JS); keep rules if re-enabled */
 .story-viewer-panel-embedded #storyArchiveGridSquishBar.story-archive-grid-squish-bar {
     display: none !important;
     display: flex;
@@ -549,7 +549,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     color: rgba(255, 255, 255, 0.55);
 }
 
-/* Story Archive: no dark slab behind search — controls sit on the panel pattern */
+/* Data Archive: no dark slab behind search — controls sit on the panel pattern */
 .story-viewer-panel-embedded .events-manage-controls {
     background: transparent;
     border: none;
@@ -560,7 +560,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     margin-bottom: 20px;
 }
 
-/* Story Archive: section title is “Search” only (HTML still says “Search & filters” for the docked panel) */
+/* Data Archive: section title is “Search” only (HTML still says “Search & filters” for the docked panel) */
 .story-viewer-panel-embedded .events-manage-controls-title {
     text-align: center;
     color: transparent;
@@ -579,7 +579,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     display: block;
 }
 
-/* Story Archive: hero/faction/NPC + country live in Filters panel — hide duplicate fields */
+/* Data Archive: hero/faction/NPC + country live in Filters panel — hide duplicate fields */
 .story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchFilters"],
 .story-viewer-panel-embedded .events-manage-search-row--primary .events-search-field--filters,
 .story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchCountry"],
@@ -587,7 +587,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     display: none !important;
 }
 
-/* Story Archive: title above field is the h3; hide duplicate “Search:” label (kept for screen readers / for=) */
+/* Data Archive: title above field is the h3; hide duplicate “Search:” label (kept for screen readers / for=) */
 .story-viewer-panel-embedded .events-manage-search-row--primary {
     position: relative;
     flex-direction: column;
@@ -966,7 +966,7 @@ body.color-palette-nulled .story-viewer-container::before {
     z-index: 1;
 }
 
-/* Event number badges in Story Archive - ensure overlap styling applies */
+/* Event number badges in Data Archive - ensure overlap styling applies */
 .story-viewer-panel-embedded .event-number-badge {
     color: rgba(255, 255, 255, 0.98);
     text-shadow:
@@ -1095,14 +1095,14 @@ body.color-palette-gray .story-viewer-exit-btn:hover {
     background: rgba(var(--accent-primary-rgb), var(--opacity-heavy));
 }
 
-/* Event Manager width handle (arrow) — not used in centered Story Archive */
+/* Event Manager width handle (arrow) — not used in centered Data Archive */
 #eventsManagePanel.story-viewer-panel-embedded .panel-resize-handle {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
 }
 
-/* Event Manager × — must not appear in Story Archive (backup if JS detach misses) */
+/* Event Manager × — must not appear in Data Archive (backup if JS detach misses) */
 #eventsManagePanel.story-viewer-panel-embedded > .events-manage-close,
 #eventsManagePanel.story-viewer-panel-embedded > #eventsManageClose,
 #storyViewerContainer #eventsManagePanel.story-viewer-panel-embedded .events-manage-close,

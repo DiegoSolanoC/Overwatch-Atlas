@@ -1,6 +1,6 @@
 /**
  * After Codex layout is saved, upsert hero/faction/npc bio `connections[]` rows so
- * entity↔entity edges drawn on the board appear in story archives (with showInCodex).
+ * entity↔entity edges drawn on the board appear in hero/faction/NPC archive data (with showInCodex).
  * Mirrors each link onto both endpoints (same idea as BioArchiveConnectionsSync).
  */
 const fs = require('fs');
@@ -120,6 +120,189 @@ function findEventIndexForEntity(events, arch, entity) {
     return findFactionIndex(events, entity.connectionName);
 }
 
+function entityKindForArchiveSource(arch) {
+    if (arch === 'factions') return 'faction';
+    if (arch === 'npcs') return 'npc';
+    return 'hero';
+}
+
+function archForConnKind(k) {
+    const nk = normalizeConnKind(k);
+    if (nk === 'faction') return 'factions';
+    if (nk === 'npc') return 'npc';
+    return 'heroes';
+}
+
+function unorderedPairKey(a, b) {
+    return a <= b ? `${a}\x1e${b}` : `${b}\x1e${a}`;
+}
+
+/**
+ * Stable signature for an archive row / codex bio entity, using the canonical row name when found.
+ * @param {Record<string, { events: object[] }>} loads
+ * @param {{ arch: string, kind: string, connectionName: string }} bioEntity
+ */
+function canonicalBioEntitySignature(loads, bioEntity) {
+    if (!bioEntity || !bioEntity.arch) return '';
+    const events = loads[bioEntity.arch]?.events || [];
+    const ix = findEventIndexForEntity(events, bioEntity.arch, bioEntity);
+    let name = sanitizeConnectionEntityName(bioEntity.connectionName);
+    if (ix >= 0 && events[ix] && events[ix].name != null) {
+        name = String(events[ix].name).trim();
+    }
+    const k = normalizeConnKind(bioEntity.kind);
+    return `${bioEntity.arch}\0${connectionKey(k, name)}`;
+}
+
+/**
+ * Undirected pair keys for every entity↔entity link on the Codex board that resolves to two archive rows.
+ * @param {Record<string, { events: object[] }>} loads
+ * @param {Map<string, object>} byId
+ * @param {{ fromId: string, toId: string }[]} edges
+ */
+function buildAllowedEntityPairKeys(loads, byId, edges) {
+    const set = new Set();
+    for (const e of edges || []) {
+        if (!e || !e.fromId || !e.toId || e.fromId === e.toId) continue;
+        const a = nodeToBioEntity(byId.get(e.fromId));
+        const b = nodeToBioEntity(byId.get(e.toId));
+        if (!a || !b) continue;
+        const eventsA = loads[a.arch]?.events || [];
+        const eventsB = loads[b.arch]?.events || [];
+        if (findEventIndexForEntity(eventsA, a.arch, a) < 0) continue;
+        if (findEventIndexForEntity(eventsB, b.arch, b) < 0) continue;
+        const sa = canonicalBioEntitySignature(loads, a);
+        const sb = canonicalBioEntitySignature(loads, b);
+        if (sa && sb) set.add(unorderedPairKey(sa, sb));
+    }
+    return set;
+}
+
+/**
+ * Remove `connections[]` rows with `showInCodex: true` when no matching entity↔entity Codex edge exists.
+ * Narrative-only rows (`showInCodex` not true) are left unchanged.
+ * @returns {{ removed: number, dirty: { heroes: boolean, factions: boolean, npcs: boolean } }}
+ */
+function pruneStaleShowInCodexConnections(loads, allowedKeys) {
+    let removed = 0;
+    const dirty = { heroes: false, factions: false, npcs: false };
+    for (const arch of Object.keys(ARCHIVE_FILES)) {
+        const events = loads[arch]?.events;
+        if (!Array.isArray(events)) continue;
+        const subjKind = entityKindForArchiveSource(arch);
+        for (let i = 0; i < events.length; i += 1) {
+            const ev = events[i];
+            if (!ev || !Array.isArray(ev.connections)) continue;
+            const subjectName = ev.name != null ? String(ev.name).trim() : '';
+            if (!subjectName) continue;
+            const subjEntity = { arch, kind: subjKind, connectionName: subjectName };
+            const subjectSig = canonicalBioEntitySignature(loads, subjEntity);
+            const next = [];
+            for (let j = 0; j < ev.connections.length; j += 1) {
+                const c = ev.connections[j];
+                if (!c) continue;
+                if (c.showInCodex !== true) {
+                    next.push(c);
+                    continue;
+                }
+                const lk = normalizeConnKind(c.kind);
+                const ln = sanitizeConnectionEntityName(c.name);
+                if (!ln) {
+                    next.push(c);
+                    continue;
+                }
+                const linkedEntity = { arch: archForConnKind(lk), kind: lk, connectionName: ln };
+                const linkedSig = canonicalBioEntitySignature(loads, linkedEntity);
+                const pk = unorderedPairKey(subjectSig, linkedSig);
+                if (allowedKeys.has(pk)) {
+                    next.push(c);
+                } else {
+                    removed += 1;
+                    dirty[arch] = true;
+                }
+            }
+            if (next.length !== ev.connections.length) {
+                ev.connections = next;
+            }
+        }
+    }
+    return { removed, dirty };
+}
+
+/**
+ * Read-only: compare Codex entity edges vs archive `showInCodex` rows (for UI preview).
+ * @returns {{ ok: boolean, pairsInCodex: string[], pairsInArchives: string[], onlyInArchives: string[], onlyInCodex: string[] }}
+ */
+function diffStoryArchivesVsCodex(dataDir, nodes, edges) {
+    const loads = {};
+    for (const arch of Object.keys(ARCHIVE_FILES)) {
+        const p = path.join(dataDir, ARCHIVE_FILES[arch]);
+        try {
+            loads[arch] = JSON.parse(fs.readFileSync(p, 'utf8'));
+        } catch (_) {
+            loads[arch] = { events: [] };
+        }
+        if (!Array.isArray(loads[arch].events)) loads[arch].events = [];
+    }
+    const byId = new Map();
+    for (const n of nodes || []) {
+        if (n && n.id) byId.set(n.id, n);
+    }
+    const allowedKeys = buildAllowedEntityPairKeys(loads, byId, edges);
+    const codexLabels = [...allowedKeys].map((k) => k.replace(/\x1e/g, ' · ').replace(/\0/g, ' | ')).sort();
+
+    const archiveKeys = new Set();
+    /** @type {Map<string, string>} */
+    const archiveKeyToLabel = new Map();
+    for (const arch of Object.keys(ARCHIVE_FILES)) {
+        const events = loads[arch].events;
+        const subjKind = entityKindForArchiveSource(arch);
+        for (let i = 0; i < events.length; i += 1) {
+            const ev = events[i];
+            if (!ev || !Array.isArray(ev.connections)) continue;
+            const subjectName = ev.name != null ? String(ev.name).trim() : '';
+            if (!subjectName) continue;
+            const subjEntity = { arch, kind: subjKind, connectionName: subjectName };
+            const subjectSig = canonicalBioEntitySignature(loads, subjEntity);
+            for (let j = 0; j < ev.connections.length; j += 1) {
+                const c = ev.connections[j];
+                if (!c || c.showInCodex !== true) continue;
+                const lk = normalizeConnKind(c.kind);
+                const ln = sanitizeConnectionEntityName(c.name);
+                if (!ln) continue;
+                const linkedEntity = { arch: archForConnKind(lk), kind: lk, connectionName: ln };
+                const linkedSig = canonicalBioEntitySignature(loads, linkedEntity);
+                const pk = unorderedPairKey(subjectSig, linkedSig);
+                if (!archiveKeyToLabel.has(pk)) {
+                    archiveKeys.add(pk);
+                    archiveKeyToLabel.set(
+                        pk,
+                        `${subjectName} ↔ ${lk} "${ln}" [${arch}]`
+                    );
+                }
+            }
+        }
+    }
+
+    const onlyInArchives = [...archiveKeys]
+        .filter((k) => !allowedKeys.has(k))
+        .map((k) => archiveKeyToLabel.get(k) || k)
+        .sort();
+    const onlyInCodex = [...allowedKeys]
+        .filter((k) => !archiveKeys.has(k))
+        .map((k) => k.replace(/\x1e/g, ' · ').replace(/\0/g, ' | '))
+        .sort();
+
+    return {
+        ok: true,
+        pairsInCodexCount: allowedKeys.size,
+        pairsInArchivesShowInCodexCount: archiveKeys.size,
+        onlyInArchives,
+        onlyInCodex,
+        pairsInCodexLabels: codexLabels,
+    };
+}
+
 function upsertConnectionRow(events, eventIndex, targetKind, targetName) {
     const ev = events[eventIndex];
     if (!ev) return false;
@@ -199,6 +382,12 @@ function syncStoryArchivesFromCodexEdges(dataDir, nodes, edges) {
         if (!Array.isArray(loads[arch].events)) loads[arch].events = [];
     }
 
+    const allowedKeys = buildAllowedEntityPairKeys(loads, byId, edges);
+    const { removed: pruned, dirty: dirtyPrune } = pruneStaleShowInCodexConnections(loads, allowedKeys);
+    for (const k of Object.keys(dirty)) {
+        if (dirtyPrune[k]) dirty[k] = true;
+    }
+
     for (const e of edges || []) {
         if (!e || !e.fromId || !e.toId || e.fromId === e.toId) continue;
         const fromNode = byId.get(e.fromId);
@@ -243,9 +432,10 @@ function syncStoryArchivesFromCodexEdges(dataDir, nodes, edges) {
     return {
         bioArchiveSync: true,
         bioConnectionsUpserted: upserts,
+        bioConnectionsRemoved: pruned,
         bioArchiveFilesWritten: Object.keys(dirty).filter((k) => dirty[k]),
         bioArchiveWarnings: warnings,
     };
 }
 
-module.exports = { syncStoryArchivesFromCodexEdges };
+module.exports = { syncStoryArchivesFromCodexEdges, diffStoryArchivesVsCodex };

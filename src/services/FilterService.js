@@ -389,6 +389,9 @@ class FilterService {
         if (typeof window.syncFiltersPanelTrapIcon === 'function') {
             window.syncFiltersPanelTrapIcon();
         }
+        if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+            window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
+        }
     }
     
     /**
@@ -1139,8 +1142,11 @@ class FilterService {
                 // Also refresh globe markers to unlock all
                 if (window.globeEventMarkerManager) {
                     window.globeEventMarkerManager.unlockAllEvents();
-                } else if (window.globeController?.eventMarkerManager) {
+                } else                 if (window.globeController?.eventMarkerManager) {
                     window.globeController.eventMarkerManager.unlockAllEvents();
+                }
+                if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
+                    window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
                 }
             });
         }

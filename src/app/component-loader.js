@@ -160,21 +160,21 @@ function loadHeaderNavButtons() {
         }, true);
     }
 
-    // Story Archive button - launches story mode
+    // Data Archive button - launches archive hub (story + satellite datasets)
     createGlobeControlButton({
         id: 'headerStoryViewerBtn',
         className: '',
-        title: 'Story Archive',
-        label: 'Story Archive',
+        title: 'Data Archive',
+        label: 'Data Archive',
         iconPath: 'assets/images/icons/Story%20Icon.png',
-        iconAlt: 'Story Archive',
+        iconAlt: 'Data Archive',
         parentId: 'headerHub',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerStoryViewerIcon',
         headerOrder: 17
     });
 
-    // Bootstrap handler: clicking Story Archive launches story mode
+    // Bootstrap handler: clicking Data Archive launches archive hub
     const headerStoryBtn = document.getElementById('headerStoryViewerBtn');
     if (headerStoryBtn) {
         headerStoryBtn.addEventListener('click', function bootstrapStory(e) {
@@ -200,7 +200,7 @@ function loadHeaderNavButtons() {
         headerOrder: 70
     });
 
-    // Wire up Home button click — unloads globe, glossary/codex, or story archive, returns to clean state
+    // Wire up Home button click — unloads globe, glossary/codex, or data archive, returns to clean state
     const homeButton = document.getElementById('homeBtn');
     if (homeButton) {
         homeButton.addEventListener('click', async function(e) {
@@ -247,7 +247,7 @@ function loadHeaderNavButtons() {
                 await new Promise(r => setTimeout(r, 500));
             }
 
-            // Kill Story Archive if active
+            // Kill Data Archive if active
             if (currentMode === 'biography') {
                 if (typeof window.killBiographyComponents === 'function') {
                     await window.killBiographyComponents();

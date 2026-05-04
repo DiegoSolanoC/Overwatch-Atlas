@@ -157,9 +157,23 @@
     }
 
     function flagImg(filename) {
+        var fn = String(filename || '').trim();
         var src = flagSrc(filename);
         var esc = LOC_ICON.replace(/'/g, "\\'");
-        return '<img class="event-location-flag" src="' + src + '" alt="" width="52" height="36" decoding="async" onerror="this.onerror=null;this.src=\'' + esc + '\';this.className=\'event-location-pin\';this.width=28;this.height=28;" />';
+        var dataAttr = '';
+        if (fn) {
+            var safe = fn.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+            dataAttr = ' data-relevancy-flag-file="' + safe + '"';
+        }
+        return (
+            '<img class="event-location-flag"' +
+            dataAttr +
+            ' src="' +
+            src +
+            '" alt="" width="52" height="36" decoding="async" onerror="this.onerror=null;this.src=\'' +
+            esc +
+            '\';this.className=\'event-location-pin\';this.width=28;this.height=28;" />'
+        );
     }
 
     /**
@@ -492,6 +506,7 @@
         var inner = rows.length ? createRelevantLocationsSlideHtml(rows, lt) : '';
         relEl.innerHTML = inner;
         if (relSection) relSection.style.display = inner ? 'block' : 'none';
+        scheduleApplyRelevancyRowFilterHighlight();
     }
 
     function clearBioConnectionsSlideDom() {
@@ -589,6 +604,119 @@
         );
     }
 
+    function normalizeBioCodexKind(k) {
+        var x = String(k || 'hero').toLowerCase();
+        if (x === 'character') x = 'hero';
+        if (x !== 'faction' && x !== 'npc') x = 'hero';
+        return x;
+    }
+
+    /** `data-bio-codex-*` on each read-only row — matches archive `connections[].kind` / `name`. */
+    function bioCodexDataAttrsForRow(linkedKind, linkedName) {
+        var k = normalizeBioCodexKind(linkedKind);
+        var nm = linkedName != null ? String(linkedName).trim() : '';
+        if (!nm) return '';
+        return (
+            ' data-bio-codex-kind="' +
+            escapeHtmlAttr(k) +
+            '" data-bio-codex-name="' +
+            escapeHtmlAttr(nm) +
+            '"'
+        );
+    }
+
+    function normalizeBioCodexHeroForLooseMatch(s) {
+        return String(s || '')
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ');
+    }
+
+    /** Same rules as Codex hero label vs archive row (e.g. Soldier: 76 vs Soldier 76). */
+    function bioCodexHeroNamesLooselyEqual(a, b) {
+        var na = normalizeBioCodexHeroForLooseMatch(a);
+        var nb = normalizeBioCodexHeroForLooseMatch(b);
+        if (na && na === nb) return true;
+        var la = na.replace(/:/g, '').replace(/\s/g, '');
+        var lb = nb.replace(/:/g, '').replace(/\s/g, '');
+        return la.length > 0 && la === lb;
+    }
+
+    function normalizeBioCodexNpcForMatch(s) {
+        return String(s || '')
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ');
+    }
+
+    function bioCodexNpcNamesMatch(specName, rowName) {
+        var a = normalizeBioCodexNpcForMatch(specName);
+        var b = normalizeBioCodexNpcForMatch(rowName);
+        return a && b && a === b;
+    }
+
+    function bioCodexFactionNamesMatch(specName, rowName) {
+        var raw = String(specName || '').trim();
+        var row = String(rowName || '').trim();
+        if (!raw || !row) return false;
+        var fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+        if (fh && typeof fh.factionIdsMatch === 'function') {
+            return fh.factionIdsMatch(raw, row) || fh.factionIdsMatch(row, raw);
+        }
+        return raw.toLowerCase() === row.toLowerCase();
+    }
+
+    /**
+     * @param {{ kind?: string, name?: string }} spec — other Codex endpoint (hero / faction / npc).
+     * @param {string} rowKind
+     * @param {string} rowName
+     * @returns {boolean}
+     */
+    function bioCodexSlideRowMatchesSpec(spec, rowKind, rowName) {
+        if (!spec || !spec.name) return false;
+        var sk = normalizeBioCodexKind(spec.kind);
+        var rk = normalizeBioCodexKind(rowKind);
+        if (sk !== rk) return false;
+        var want = String(spec.name || '').trim();
+        var have = String(rowName || '').trim();
+        if (!want || !have) return false;
+        if (sk === 'hero') return bioCodexHeroNamesLooselyEqual(want, have);
+        if (sk === 'npc') return bioCodexNpcNamesMatch(want, have);
+        return bioCodexFactionNamesMatch(want, have);
+    }
+
+    function clearBioConnectionCodexHighlight() {
+        var root =
+            typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
+        if (!root) return;
+        var rows = root.querySelectorAll('.event-slide-bio-connections__row--codex-focus');
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].classList.remove('event-slide-bio-connections__row--codex-focus');
+        }
+    }
+
+    /**
+     * After opening a bio archive slide from a Codex cord, mark the connection row for the other endpoint.
+     * @param {{ kind?: string, name?: string }|null|undefined} spec
+     */
+    function applyBioConnectionCodexHighlight(spec) {
+        clearBioConnectionCodexHighlight();
+        var root =
+            typeof document !== 'undefined' ? document.getElementById('eventSlideBioConnections') : null;
+        if (!root || !spec || !spec.name) return;
+        var wantK = normalizeBioCodexKind(spec.kind);
+        if (wantK !== 'hero' && wantK !== 'faction' && wantK !== 'npc') return;
+        var rows = root.querySelectorAll('.event-slide-bio-connections__row[data-bio-codex-kind]');
+        for (var j = 0; j < rows.length; j++) {
+            var row = rows[j];
+            var rk = row.getAttribute('data-bio-codex-kind') || '';
+            var rn = row.getAttribute('data-bio-codex-name') || '';
+            if (bioCodexSlideRowMatchesSpec(spec, rk, rn)) {
+                row.classList.add('event-slide-bio-connections__row--codex-focus');
+            }
+        }
+    }
+
     /**
      * Read-only HTML for Heroes / Factions / NPCs archive `connections`: current entry | arrows + text | linked entry.
      * @param {Object|null} ev
@@ -655,7 +783,9 @@
                     '<span class="event-slide-bio-connections__arrow-glyph" aria-hidden="true">→</span>' +
                     '</div>';
                 rowHtml =
-                    '<div class="event-slide-bio-connections__row event-slide-bio-connections__row--dual event-slide-bio-connections__row--faction-oneway">' +
+                    '<div class="event-slide-bio-connections__row event-slide-bio-connections__row--dual event-slide-bio-connections__row--faction-oneway"' +
+                    bioCodexDataAttrsForRow(linkedKind, linkedName) +
+                    '>' +
                     colFac +
                     midOne +
                     colOth +
@@ -711,7 +841,16 @@
                     'event-slide-bio-connections__row event-slide-bio-connections__row--dual' +
                     (laneB ? ' event-slide-bio-connections__row--lane-b' : '');
 
-                rowHtml = '<div class="' + rowCls + '">' + leftHtml + mid + rightHtml + '</div>';
+                rowHtml =
+                    '<div class="' +
+                    rowCls +
+                    '"' +
+                    bioCodexDataAttrsForRow(linkedKind, linkedName) +
+                    '>' +
+                    leftHtml +
+                    mid +
+                    rightHtml +
+                    '</div>';
             }
 
             buckets[linkedKind].push(rowHtml);
@@ -1142,6 +1281,116 @@
         sec.innerHTML = parts.join('');
         sec.style.display = parts.length ? 'block' : 'none';
         wireStoryFilterSectionBioArchiveNav(sec);
+        scheduleApplyRelevancyRowFilterHighlight();
+    }
+
+    function clearRelevancyRowFilterHighlight() {
+        var ids = ['eventSlideRelevantLocations', 'eventStoryFilterPlacesSection'];
+        for (var r = 0; r < ids.length; r++) {
+            var root = typeof document !== 'undefined' ? document.getElementById(ids[r]) : null;
+            if (!root) continue;
+            var marked = root.querySelectorAll('.event-slide-relevant-locations__row--filter-match');
+            for (var i = 0; i < marked.length; i++) {
+                marked[i].classList.remove('event-slide-relevant-locations__row--filter-match');
+            }
+        }
+    }
+
+    function getStandaloneActiveFiltersForHighlight() {
+        var af = typeof window !== 'undefined' ? window.standaloneActiveFilters : null;
+        if (af && af instanceof Set && af.size > 0) return af;
+        return null;
+    }
+
+    function rowMatchesActiveCastFilters(row, active) {
+        if (!active || active.size === 0 || !row) return false;
+        var imgs = row.querySelectorAll('img[data-hero-open]');
+        var hi;
+        for (hi = 0; hi < imgs.length; hi++) {
+            var hn = decodeURIComponent(imgs[hi].getAttribute('data-hero-open') || '').trim();
+            if (!hn) continue;
+            if (active.has(hn) || active.has('hero:' + hn)) return true;
+        }
+        imgs = row.querySelectorAll('img[data-npc-open]');
+        for (hi = 0; hi < imgs.length; hi++) {
+            var nn = decodeURIComponent(imgs[hi].getAttribute('data-npc-open') || '').trim();
+            if (!nn) continue;
+            if (active.has(nn) || active.has('npc:' + nn)) return true;
+        }
+        imgs = row.querySelectorAll('img[data-faction-open]');
+        var fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+        for (hi = 0; hi < imgs.length; hi++) {
+            var fac = decodeURIComponent(imgs[hi].getAttribute('data-faction-open') || '').trim();
+            if (!fac) continue;
+            if (fh && typeof fh.activeFilterSetMatchesFactionId === 'function') {
+                if (fh.activeFilterSetMatchesFactionId(active, fac)) return true;
+            } else if (active.has(fac)) return true;
+        }
+        return false;
+    }
+
+    function rowMatchesActiveCountryFlagFilters(row, active) {
+        if (!active || active.size === 0 || !row) return false;
+        var imgs = row.querySelectorAll('img[data-relevancy-flag-file]');
+        var keys = [];
+        active.forEach(function (a) {
+            keys.push(String(a || ''));
+        });
+        for (var i = 0; i < imgs.length; i++) {
+            var fn = (imgs[i].getAttribute('data-relevancy-flag-file') || '').trim();
+            if (!fn) continue;
+            for (var k = 0; k < keys.length; k++) {
+                var s = keys[k];
+                if (s.toLowerCase().indexOf('country:') === 0) {
+                    if (s.slice('country:'.length).trim() === fn) return true;
+                } else if (s === fn || s.toLowerCase() === fn.toLowerCase()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Green row outline for relevancy rows that match `standaloneActiveFilters` (globe / filter panel).
+     */
+    function applyRelevancyRowFilterHighlight() {
+        clearRelevancyRowFilterHighlight();
+        var active = getStandaloneActiveFiltersForHighlight();
+        if (!active) return;
+
+        var locRoot = typeof document !== 'undefined' ? document.getElementById('eventSlideRelevantLocations') : null;
+        if (locRoot) {
+            var locRows = locRoot.querySelectorAll('.event-slide-relevant-locations__row');
+            for (var li = 0; li < locRows.length; li++) {
+                if (rowMatchesActiveCountryFlagFilters(locRows[li], active)) {
+                    locRows[li].classList.add('event-slide-relevant-locations__row--filter-match');
+                }
+            }
+        }
+
+        var storyRoot = typeof document !== 'undefined' ? document.getElementById('eventStoryFilterPlacesSection') : null;
+        if (storyRoot) {
+            var castRows = storyRoot.querySelectorAll('.event-slide-relevant-locations__row');
+            for (var ci = 0; ci < castRows.length; ci++) {
+                if (rowMatchesActiveCastFilters(castRows[ci], active)) {
+                    castRows[ci].classList.add('event-slide-relevant-locations__row--filter-match');
+                }
+            }
+        }
+    }
+
+    function scheduleApplyRelevancyRowFilterHighlight() {
+        var run = function () {
+            applyRelevancyRowFilterHighlight();
+        };
+        if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(function () {
+                requestAnimationFrame(run);
+            });
+        } else {
+            setTimeout(run, 0);
+        }
     }
 
     /**
@@ -1380,6 +1629,8 @@
         clearBioConnectionsSlideDom: clearBioConnectionsSlideDom,
         updateRelevantLocationsSlideFromSecondaryPlaces: updateRelevantLocationsSlideFromSecondaryPlaces,
         updateBioConnectionsSlideFromEvent: updateBioConnectionsSlideFromEvent,
+        clearBioConnectionCodexHighlight: clearBioConnectionCodexHighlight,
+        applyBioConnectionCodexHighlight: applyBioConnectionCodexHighlight,
         getHeroFilterPlacesRowsForDisplay: getHeroFilterPlacesRowsForDisplay,
         getFactionFilterPlacesRowsForDisplay: getFactionFilterPlacesRowsForDisplay,
         getNpcFilterPlacesRowsForDisplay: getNpcFilterPlacesRowsForDisplay,
@@ -1397,6 +1648,8 @@
         migrateAllStoryEventsSecondaryPlaces: migrateAllStoryEventsSecondaryPlaces,
         getCountryCommonNamesForAutocomplete: getCountryCommonNamesForAutocomplete,
         collectCountryFlagFilesForEntity: collectCountryFlagFilesForEntity,
-        commonLabelForFlagFile: commonLabelForFlagFile
+        commonLabelForFlagFile: commonLabelForFlagFile,
+        applyRelevancyRowFilterHighlight: applyRelevancyRowFilterHighlight,
+        scheduleApplyRelevancyRowFilterHighlight: scheduleApplyRelevancyRowFilterHighlight
     };
 })();

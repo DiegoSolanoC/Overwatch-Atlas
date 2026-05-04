@@ -359,6 +359,33 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     cursor: default;
 }
 
+.codex-toolbar__merge-junctions {
+    flex-shrink: 0;
+    min-width: 52px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.codex-toolbar__merge-junctions:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__merge-junctions:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
 .codex-toolbar__mode-btn {
     flex: 1;
     min-width: 0;
@@ -461,6 +488,105 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 .codex-toolbar__import-export-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(140, 210, 255, 0.45);
+}
+
+.codex-bio-sync-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.55);
+    box-sizing: border-box;
+}
+
+.codex-bio-sync-preview-card {
+    max-width: min(960px, 100%);
+    max-height: min(86vh, 100%);
+    overflow: auto;
+    padding: 20px 22px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--bg-secondary) 92%, #000 8%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.codex-bio-sync-preview__title {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.codex-bio-sync-preview__summary {
+    margin: 0 0 8px;
+}
+
+.codex-bio-sync-preview__hint {
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.codex-bio-sync-preview__col {
+    margin-bottom: 14px;
+}
+
+.codex-bio-sync-preview__col h4 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(200, 235, 255, 0.88);
+}
+
+.codex-bio-sync-preview__badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(var(--accent-primary-rgb), 0.35);
+}
+
+.codex-bio-sync-preview__pre {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 220px;
+    overflow: auto;
+}
+
+.codex-bio-sync-preview__actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.codex-bio-sync-preview__close {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(140, 210, 255, 0.45);
+    background: rgba(30, 50, 80, 0.75);
+    color: rgba(230, 245, 255, 0.95);
+    cursor: pointer;
+}
+
+.codex-bio-sync-preview__close:hover {
+    background: rgba(45, 75, 115, 0.9);
 }
 
 .codex-toolbar__scale-btn {
@@ -652,8 +778,21 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     outline: none !important;
 }
 
+/* View mode: edge hits must receive pointer events (archive click + hover). Do not use pointer-events: none here. */
 .codex--view-mode .codex-edge-hit {
-    pointer-events: none !important;
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
+.codex-edge-segment-group .codex-edge-segment {
+    transition:
+        stroke 0.14s ease,
+        stroke-width 0.14s ease;
+}
+
+.codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment {
+    stroke: #38bdf8 !important;
+    stroke-width: 6px !important;
 }
 
 /* Codex Mode Toggle Button - always visible, styled like globe-control-btn */

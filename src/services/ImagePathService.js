@@ -16,7 +16,7 @@ class ImagePathService {
     }
 
     /**
-     * URL base for auto-resolved images (story timeline vs satellite Story Archive JSON).
+     * URL base for auto-resolved images (story timeline vs satellite archive JSON).
      * Uses %20 for the "Archive data" segment so browser requests match static paths.
      */
     _getArchiveImageBaseWeb(archiveOverride) {

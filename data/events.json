@@ -3049,6 +3049,13 @@
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis is left confused by the power of a lone warrior"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ngumi,",
+          "reasoning": "The Original Doomfist, Overwatch Candidate"
+        }
       ]
     },
     {
@@ -3523,6 +3530,11 @@
           "locationName": "",
           "country": "Hector, Claudio, Adawe",
           "reasoning": "Many Great minds were hired to assist the Strike Team"
+        },
+        {
+          "locationName": "",
+          "country": "Ngumi,",
+          "reasoning": "Rejected the Overwatch Proposal"
         }
       ]
     },
@@ -3987,6 +3999,13 @@
           "locationName": "",
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis defeats Doomfist in an all out attack"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ngumi,",
+          "reasoning": "Died heroically defending Nigeria"
         }
       ]
     },
@@ -5469,7 +5488,7 @@
       "name": "Kiriko Kamori is Born",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "No description available.",
+      "description": "On July 7th of 2057, Kiriko Kamori is born into the Yamagami blades, spending her childhood surrounded by powerful figures of all kinds, among her parents, stemmed figures in the art of the blade and the craft, her grandmother, the local Shrine Maiden, and the shadow of the Shimada Clan, and the tales of their relationship with the city.\n\nKiriko grew to be a very idealistic, impressionable kid who did not quite fully understand the reality of her situation, of the clan brawls that plagued Kanezaka, and the role her family played in endorsing them, but despite of that, her idealistic self and the teachings of her grandma's faith pushed her to help others and follow her own path.",
       "image": "",
       "lat": 35.3606,
       "lon": 138.7274,
@@ -5494,7 +5513,21 @@
         {
           "locationName": "",
           "country": "Kiriko",
-          "reasoning": ""
+          "reasoning": "Kiriko Kamori is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yamagami Blades, Shimada Clan,",
+          "reasoning": "Family Busines with Ties to the Shimada Clan"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa, Toshiro,",
+          "reasoning": "Kiriko's parents and shop owners"
         }
       ]
     },
@@ -5502,7 +5535,7 @@
       "name": "The Architech Academy",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
-      "description": "",
+      "description": "In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chance to spearhead the reparations. But in spite of their power, they had far too few hands. Most of the early architects had either left the company years ago or died during the Crisis. Hard light technology was quite complex, and it required years of training to master, but in looking for solutions to their shortage of staff, Vishkar would make the controversial decision to turn to the hundreds of orphans left by the crisis.<br><br>With the approval of a desperate government, Vishkar would open the Architect Academy, a school meant to pipeline kids across the nation into becoming the architects of the future. Staffed with the best professionals in the country and providing housing and education to any orphan they could find. To pay for their education, the students would merely be required to complete a five-year tour of duty for the company following their graduation day, which would in most cases set them off for success and open doors within the corporation. While initially met with outcry about the coercing of minors, the Academy was a success in the long run, which led to many wealthy families across the globe sending their children to the Academy, with fully paid tuition to avoid the post-graduation requirements. It is here where Satya Vaswani and Niran Pruksamanee first crossed paths, the son of a wealthy family and a girl plucked out of poverty, spending their student days as roommates and quickly gaining notoriety amongst their peers for their unique perspective and techniques.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -5519,29 +5552,38 @@
         {
           "locationName": "Roshani, India",
           "country": "India",
-          "reasoning": ""
+          "reasoning": "Vishkar opens the Architect Academy"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Symmetra, Lifeweaver",
-          "reasoning": ""
+          "country": "Symmetra,",
+          "reasoning": "Taken out of poverty and into the Academy"
+        },
+        {
+          "locationName": "",
+          "country": "Lifeweaver",
+          "reasoning": "Send to the Academy with paid tuition"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
-          "reasoning": ""
+          "country": "Vishkar Corporation,",
+          "reasoning": "Opesn the Architect Academy"
         }
+      ],
+      "headlines": [
+        "Vishkar Opens the Architect Academy",
+        "India approves the schooling project for hundreds of orphans"
       ]
     },
     {
       "name": "Liao's Renaissance",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "",
+      "description": "With the Crisis, the world had lost faith in Artificial Intelligence all together. Between heavy tensions with Omnics growing worldwide and the repurposing, if not outright, shutdown of God programs worldwide, the planet was ready to move on from AI, but Mina Liao was eager to revitalize the world's trust in her field. Years after the Crisis, Dr. Liao would reveal her first major project under Overwatch, the Athena artificial intelligence system.\n\nIn spite of taking the name of a deity, Athena was not a full god program in the traditional sense. In spite of the limited scope of the program's intelligence, Athena was able to optimize missions, providing detailed briefings and projected areas of potential conflict, way before any agents received intel on a task. The assistant proved successful in many missions and paved the road for further projects under Liao's guidance, albeit without truly removing safe lines around her research.\n\nLiao still grieved the loss of Aurora as her creator. In her eyes, the Omnics were Aurora's legacy, and she hoped the for equality between Humans and Omnics could one day be achieved. While she was not often a public speaker, her writings and interviews quickly positioned her as a powerful ally to the rising Omnic rights movement, for which she later joined in a handful of rallies and marches.",
       "image": "",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -5558,29 +5600,33 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Echo",
-          "reasoning": ""
+          "reasoning": "Liao devlops the Athena AI for Overwatch"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Testing of the Athena project goes sucessfully"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Liao, Athena,",
+          "reasoning": "Development of the Athena project"
+        }
+      ],
+      "headlines": [
+        "Protests over God AI shutdown continue",
+        "Overwatch reveals Athena AI support"
       ]
     },
     {
       "name": "Ecological Initiative",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
-      "description": "",
+      "description": "With God programs being gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they started to become heavily neglected. Anubis was meant to be used for ecological preservation, and yet with most infrastructure lost, the whole left by the program began to become apparent to Hector and Claudio. The Martins were long time environmentalist advocates, and they believed that Overwatch could be used to improve the world, so they took a proposal to Morrison and the UN to create a specialized Watchpoint branch. The Ecopoint Program would create stations staffed with Overwatch's scientific leads in critical locations across the globe, where they could monitor ongoing abnormalities in nature and aid in global efforts for preservation of the environment. In spite of a wave of nationalism and distrust for Overwatch presence hitting many countries over the years, the Ecopoints were quite a welcomed proposal, as the Martins were highly respected names in the international communities they worked with, and the benefits of scientifically-oriented bases were far more self-evident than the more generalist and often military nature of Watchpoints. With the approval of the program, other big names like Mui and Namuaca quickly joined, adding further credibility to the initiative. <br><br>In the end, seven initial bases were approved, with more coming later. Ecopoint Antartica focused on monitoring the impacts of climate change and pursuing methods of recovery of both the atmosphere and the ice caps, as well as studying strange fluctuations found around the Peninsula. Samoa would receive a base within one of the active volcanoes, to focus on seismic monitoring and geothermal research, detecting multiple major earthquakes in the region and saving countless lives. Ecopoint Connemara focused on the restoration of Irish boglands, later on collaborating with Russian scientists to aid in revitalizing the Siberian lowlands. Ecopoint Osa in Costa Rica would focus on the recovery of reptiles and amphibians of the Corcovado cloud forest, seen as a bellwether of the rest of the natural world, focusing primarily on antifungals and biological solutions to waste treatment. Ecopoint Zelandia off the coast of New Zeland would exist in response to the Australian fall-out zone, focusing on filtering radiation and aiding in the recovery of Oceania following the ALF's attack. Ecopoint Tarapoto, deep within the Colombian Amazon, was built to study the many ecosystems of the area. And lastly, Ecopoint Monterrey, a submarine base off the shore of California, meant to research marine life and follow protocols originally proposed by Leon Honisch to aid in the recovery of many species.<br><br>The program was overall seen as one of Overwatch's most clean-cut successes and net positives to society at large, and a great example of the good they could do for the world",
       "image": "",
       "lat": -13.8345235,
       "lon": -171.7630955,
@@ -5597,14 +5643,57 @@
         {
           "locationName": "Apia, Samoa",
           "country": "Samoa",
-          "reasoning": ""
+          "reasoning": "Ecopoint: Samoa, Geothermal and Seismic Research"
+        },
+        {
+          "locationName": "Antartci Peninsula",
+          "country": "Antarctica,",
+          "reasoning": "Ecopoint: Antartica, Atmospheric revoery and Meterological research"
+        },
+        {
+          "locationName": "Conemara, Ireland",
+          "country": "Ireland,",
+          "reasoning": "Ecopoint: Connemara, Bogland restauration"
+        },
+        {
+          "locationName": "Osa Peninsula, Costa Rica",
+          "country": "Costa Rica,",
+          "reasoning": "Ecopoint: Osa, Herpetology recovery, Antifungals and biological waste management"
+        },
+        {
+          "locationName": "Zealandian Ocean",
+          "country": "New Zealand,",
+          "reasoning": "Ecopoint: Zealandia, Radiation filtering and regional restoration"
+        },
+        {
+          "locationName": "Lake Tarapoto, Colombia",
+          "country": "Colombia,",
+          "reasoning": "Ecopoint: Tarapoto, Ecosystem studies"
+        },
+        {
+          "locationName": "Monterrey Bay, United States",
+          "country": "United States,",
+          "reasoning": "Ecopoint: Monterrey, Marine Life preservation and Ocean cleaning"
+        },
+        {
+          "locationName": "Okeechobee, United States",
+          "country": "United States,",
+          "reasoning": "Watchpoint: Okeechobee, Reclamation of flooded land"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Ecopoints",
-          "reasoning": ""
+          "reasoning": "Approval of the Ecopoint program and multiple bases"
+        }
+      ],
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hector, Claudio,",
+          "reasoning": "Proposers of the Ecopoint program"
         }
       ]
     },
@@ -5646,6 +5735,27 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Omnic Rights",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "image": "",
+      "cityDisplayName": "London, United Kingdom",
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Gwishin",
