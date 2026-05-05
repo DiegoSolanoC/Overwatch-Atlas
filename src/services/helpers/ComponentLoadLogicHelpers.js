@@ -1,4 +1,4 @@
-gr/**
+/**
  * ComponentLoadLogicHelpers - Component-specific loading/unloading logic
  * Extracted from ComponentLoaderService to reduce file size
  */
@@ -15,7 +15,7 @@ export async function loadPaletteLogic({ paletteService, createGlobeControlButto
         label: 'Palette',
         iconPath: 'assets/images/icons/Palette Icon.png',
         iconAlt: 'Color Palette',
-        parentId: 'headerHubRight',
+        parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         headerOrder: 50,
         iconSpanId: 'colorPaletteIcon'
@@ -257,7 +257,7 @@ export async function loadMusicLogic({ createGlobeControlButton, createMusicPane
         label: 'Music',
         iconPath: 'assets/images/icons/Music Icon.png',
         iconAlt: 'Music',
-        parentId: 'headerHubRight',
+        parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         headerOrder: 60
     }, statusService);
@@ -371,7 +371,7 @@ export async function loadEventsLogic({ initializeEventManager, createGlobeContr
         label: 'Codex',
         iconPath: 'assets/images/icons/Codex%20Icon.png',
         iconAlt: 'Codex',
-        parentId: 'headerHub',
+        parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         headerOrder: 15
     }, statusService);

@@ -3,7 +3,7 @@
    ======================================== */
 
 body.color-palette-nulled header {
-    background: var(--primary-nulled) !important;
+    background: #000 !important;
 }
 
 body.color-palette-nulled footer {

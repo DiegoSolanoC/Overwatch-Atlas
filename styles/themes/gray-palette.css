@@ -4,7 +4,7 @@
 
 /* Layout Components */
 body.color-palette-gray header {
-    background: var(--primary-gray) !important;
+    background: #000 !important;
 }
 
 body.color-palette-gray footer {

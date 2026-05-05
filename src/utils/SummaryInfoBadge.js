@@ -189,8 +189,8 @@ function positionBadge() {
     const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
     const vw = Math.max(1, (window.innerWidth || 1) / scale);
     const rightPos = contentRect
-        ? ((vw - ((contentRect.left + (contentRect.width * 0.25)) / scale)))
-        : (vw * 0.75);
+        ? ((vw - ((contentRect.left + (contentRect.width * 0.2)) / scale)))
+        : (vw * 0.8);
 
     const top = (rect.bottom + gap) / scale;
 

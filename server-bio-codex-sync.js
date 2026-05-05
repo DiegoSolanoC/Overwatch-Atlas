@@ -1,7 +1,7 @@
 /**
  * After Codex layout is saved, upsert hero/faction/npc bio `connections[]` rows so
- * entity↔entity edges drawn on the board appear in hero/faction/NPC archive data (with showInCodex).
- * Mirrors each link onto both endpoints (same idea as BioArchiveConnectionsSync).
+ * entity links on the board appear in archive JSON (with showInCodex): direct bio↔bio edges **and**
+ * bio pairs reachable only through `junction` waypoints (e.g. A → break → B). Mirrors onto both endpoints.
  */
 const fs = require('fs');
 const path = require('path');
@@ -137,6 +137,103 @@ function unorderedPairKey(a, b) {
     return a <= b ? `${a}\x1e${b}` : `${b}\x1e${a}`;
 }
 
+/** Undirected adjacency for path finding (Codex edges are stored directed). */
+function buildUndirectedAdj(byId, edges) {
+    /** @type {Map<string, string[]>} */
+    const adj = new Map();
+    function link(u, v) {
+        if (!u || !v || u === v) return;
+        if (!byId.has(u) || !byId.has(v)) return;
+        if (!adj.has(u)) adj.set(u, []);
+        adj.get(u).push(v);
+    }
+    for (const e of edges || []) {
+        if (!e || !e.fromId || !e.toId) continue;
+        link(e.fromId, e.toId);
+        link(e.toId, e.fromId);
+    }
+    return adj;
+}
+
+function bioEntityResolvableInArchives(loads, entity) {
+    if (!entity || !entity.arch) return false;
+    const events = loads[entity.arch]?.events || [];
+    return findEventIndexForEntity(events, entity.arch, entity) >= 0;
+}
+
+/**
+ * All hero/faction/npc pairs that should appear as mirrored `showInCodex` archive links:
+ * — direct bio↔bio edges on the Codex
+ * — bio↔bio pairs connected by any path whose **interior** vertices are only `junction` nodes
+ *   (e.g. Ironclad → break → Wayfinder counts as Ironclad ↔ Wayfinder).
+ * @returns {{ allowedKeys: Set<string>, pairs: { a: object, b: object }[] }}
+ */
+function collectCodexBioConnectionPairs(loads, byId, edges) {
+    /** @type {Set<string>} */
+    const allowedKeys = new Set();
+    /** @type {Map<string, { a: object, b: object }>} */
+    const pairByKey = new Map();
+
+    function recordPair(entityA, entityB) {
+        if (!entityA || !entityB) return;
+        if (!bioEntityResolvableInArchives(loads, entityA) || !bioEntityResolvableInArchives(loads, entityB)) return;
+        const sa = canonicalBioEntitySignature(loads, entityA);
+        const sb = canonicalBioEntitySignature(loads, entityB);
+        if (!sa || !sb || sa === sb) return;
+        const k = unorderedPairKey(sa, sb);
+        if (pairByKey.has(k)) return;
+        pairByKey.set(k, { a: entityA, b: entityB });
+        allowedKeys.add(k);
+    }
+
+    const und = buildUndirectedAdj(byId, edges);
+    const bioIds = [...byId.keys()].filter((id) => {
+        const ent = nodeToBioEntity(byId.get(id));
+        return !!ent;
+    });
+
+    for (const startId of bioIds) {
+        const startNode = byId.get(startId);
+        const startEnt = nodeToBioEntity(startNode);
+        if (!startEnt) continue;
+
+        const visitedJunction = new Set();
+        const queue = [];
+
+        for (const nbrId of und.get(startId) || []) {
+            const nbrNode = byId.get(nbrId);
+            if (!nbrNode) continue;
+            const nbrEnt = nodeToBioEntity(nbrNode);
+            if (nbrEnt && nbrId !== startId) {
+                recordPair(startEnt, nbrEnt);
+            } else if (nbrNode.kind === 'junction' && !visitedJunction.has(nbrId)) {
+                visitedJunction.add(nbrId);
+                queue.push(nbrId);
+            }
+        }
+
+        while (queue.length) {
+            const u = queue.shift();
+            for (const nbrId of und.get(u) || []) {
+                if (nbrId === startId) continue;
+                const nbrNode = byId.get(nbrId);
+                if (!nbrNode) continue;
+                const nbrEnt = nodeToBioEntity(nbrNode);
+                if (nbrEnt) {
+                    recordPair(startEnt, nbrEnt);
+                    continue;
+                }
+                if (nbrNode.kind === 'junction' && !visitedJunction.has(nbrId)) {
+                    visitedJunction.add(nbrId);
+                    queue.push(nbrId);
+                }
+            }
+        }
+    }
+
+    return { allowedKeys, pairs: [...pairByKey.values()] };
+}
+
 /**
  * Stable signature for an archive row / codex bio entity, using the canonical row name when found.
  * @param {Record<string, { events: object[] }>} loads
@@ -155,32 +252,16 @@ function canonicalBioEntitySignature(loads, bioEntity) {
 }
 
 /**
- * Undirected pair keys for every entity↔entity link on the Codex board that resolves to two archive rows.
- * @param {Record<string, { events: object[] }>} loads
- * @param {Map<string, object>} byId
- * @param {{ fromId: string, toId: string }[]} edges
+ * Undirected pair keys for every archive-backed entity pair implied by the Codex graph
+ * (direct bio edges + bio pairs linked only through `junction` vertices). See {@link collectCodexBioConnectionPairs}.
  */
 function buildAllowedEntityPairKeys(loads, byId, edges) {
-    const set = new Set();
-    for (const e of edges || []) {
-        if (!e || !e.fromId || !e.toId || e.fromId === e.toId) continue;
-        const a = nodeToBioEntity(byId.get(e.fromId));
-        const b = nodeToBioEntity(byId.get(e.toId));
-        if (!a || !b) continue;
-        const eventsA = loads[a.arch]?.events || [];
-        const eventsB = loads[b.arch]?.events || [];
-        if (findEventIndexForEntity(eventsA, a.arch, a) < 0) continue;
-        if (findEventIndexForEntity(eventsB, b.arch, b) < 0) continue;
-        const sa = canonicalBioEntitySignature(loads, a);
-        const sb = canonicalBioEntitySignature(loads, b);
-        if (sa && sb) set.add(unorderedPairKey(sa, sb));
-    }
-    return set;
+    return collectCodexBioConnectionPairs(loads, byId, edges).allowedKeys;
 }
 
 /**
- * Remove `connections[]` rows with `showInCodex: true` when no matching entity↔entity Codex edge exists.
- * Narrative-only rows (`showInCodex` not true) are left unchanged.
+ * Remove `connections[]` rows with `showInCodex: true` when no matching implied Codex link exists
+ * (direct bio edge or bio↔bio through junction-only paths). Narrative-only rows stay.
  * @returns {{ removed: number, dirty: { heroes: boolean, factions: boolean, npcs: boolean } }}
  */
 function pruneStaleShowInCodexConnections(loads, allowedKeys) {
@@ -382,20 +463,14 @@ function syncStoryArchivesFromCodexEdges(dataDir, nodes, edges) {
         if (!Array.isArray(loads[arch].events)) loads[arch].events = [];
     }
 
-    const allowedKeys = buildAllowedEntityPairKeys(loads, byId, edges);
+    const { allowedKeys, pairs } = collectCodexBioConnectionPairs(loads, byId, edges);
     const { removed: pruned, dirty: dirtyPrune } = pruneStaleShowInCodexConnections(loads, allowedKeys);
     for (const k of Object.keys(dirty)) {
         if (dirtyPrune[k]) dirty[k] = true;
     }
 
-    for (const e of edges || []) {
-        if (!e || !e.fromId || !e.toId || e.fromId === e.toId) continue;
-        const fromNode = byId.get(e.fromId);
-        const toNode = byId.get(e.toId);
-        const a = nodeToBioEntity(fromNode);
-        const b = nodeToBioEntity(toNode);
-        if (!a || !b) continue;
-
+    for (let pi = 0; pi < pairs.length; pi += 1) {
+        const { a, b } = pairs[pi];
         const eventsA = loads[a.arch].events;
         const eventsB = loads[b.arch].events;
         const ixA = findEventIndexForEntity(eventsA, a.arch, a);

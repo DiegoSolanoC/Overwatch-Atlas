@@ -132,8 +132,8 @@ class MusicManager {
         // This makes badge position slide with panel open/close layout changes.
         const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
         const leftPos = contentRect
-            ? ((contentRect.left + (contentRect.width * 0.75)) / scale)
-            : (Math.max(1, (window.innerWidth || 1) / scale) * 0.75);
+            ? ((contentRect.left + (contentRect.width * 0.8)) / scale)
+            : (Math.max(1, (window.innerWidth || 1) / scale) * 0.7);
 
         const top = (musicRect.bottom + gap) / scale;
 

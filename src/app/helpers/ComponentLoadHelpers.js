@@ -25,9 +25,12 @@ function _getHeaderHubLeft() {
 function _sortHeaderHubRight(parent) {
     if (!parent) return;
     const exitBtn =
-        parent.querySelector('.header-hub-btn--exit') ||
-        parent.querySelector('[data-action="menu"]');
-    const buttons = Array.from(parent.querySelectorAll('button')).filter(b => b !== exitBtn);
+        parent.querySelector(':scope > .header-hub-btn--exit') ||
+        parent.querySelector(':scope > [data-action="menu"]');
+    const group = parent.querySelector('#headerHubRightButtonGroup');
+    const buttons = group
+        ? Array.from(group.querySelectorAll(':scope > button')).filter((b) => b !== exitBtn)
+        : Array.from(parent.querySelectorAll('button')).filter((b) => b !== exitBtn);
 
     buttons.sort((a, b) => {
         const ao = a.dataset.headerOrder ? parseFloat(a.dataset.headerOrder) : 9999;
@@ -36,8 +39,10 @@ function _sortHeaderHubRight(parent) {
         return (a.id || '').localeCompare(b.id || '');
     });
 
-    buttons.forEach(b => {
-        if (exitBtn) {
+    buttons.forEach((b) => {
+        if (group) {
+            group.appendChild(b);
+        } else if (exitBtn) {
             parent.insertBefore(b, exitBtn);
         } else {
             parent.appendChild(b);
@@ -56,14 +61,24 @@ function _sortHeaderHubLeft(parent) {
     // Only sort direct children so nested button groups (e.g. Map/Rotate stack)
     // keep their internal layout.
     const children = Array.from(parent.children);
-    const sortable = children.filter(el => el && (el.tagName === 'BUTTON' || el.id === 'headerHubMapStack'));
+    const sortable = children.filter(
+        (el) =>
+            el &&
+            (el.tagName === 'BUTTON' ||
+                el.id === 'headerHubMapStack' ||
+                el.id === 'headerHubButtonGroup')
+    );
 
     const getOrder = (el) => {
+        if (el?.id === 'headerHubMapStack') return 30;
+        if (el?.id === 'headerHubButtonGroup') {
+            const n = parseFloat(el.dataset.headerOrder);
+            return Number.isFinite(n) ? n : 31;
+        }
         if (el?.dataset?.headerOrder) {
             const n = parseFloat(el.dataset.headerOrder);
             if (Number.isFinite(n)) return n;
         }
-        if (el?.id === 'headerHubMapStack') return 30;
         return 9999;
     };
 
@@ -105,10 +120,15 @@ function _applyResponsiveMount(button) {
     }
 
     // If we moved into the header hub, re-sort so Exit stays last.
-    if (!isMobile && targetParentId === 'headerHubRight') {
+    if (!isMobile && (targetParentId === 'headerHubRight' || targetParentId === 'headerHubRightButtonGroup')) {
         _sortHeaderHubRight(_getHeaderHubRight());
     }
-    if (!isMobile && (targetParentId === 'headerHub' || targetParentId === 'headerHubMapStack')) {
+    if (
+        !isMobile &&
+        (targetParentId === 'headerHub' ||
+            targetParentId === 'headerHubButtonGroup' ||
+            targetParentId === 'headerHubMapStack')
+    ) {
         _sortHeaderHubLeft(_getHeaderHubLeft());
     }
 }
@@ -349,11 +369,11 @@ export function createGlobeControlButton({
 
         // If these buttons are being added into the header hub, keep their order stable
         // (regardless of which component loads first) and keep Exit last.
-        if (resolvedParentId === 'headerHubRight') {
-            _sortHeaderHubRight(parent);
+        if (resolvedParentId === 'headerHubRight' || resolvedParentId === 'headerHubRightButtonGroup') {
+            _sortHeaderHubRight(_getHeaderHubRight());
         }
-        if (resolvedParentId === 'headerHub') {
-            _sortHeaderHubLeft(parent);
+        if (resolvedParentId === 'headerHub' || resolvedParentId === 'headerHubButtonGroup') {
+            _sortHeaderHubLeft(_getHeaderHubLeft());
         }
         if (resolvedParentId === 'headerHubMapStack') {
             _sortHeaderHubLeft(_getHeaderHubLeft());

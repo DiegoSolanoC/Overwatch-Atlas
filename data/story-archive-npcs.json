@@ -4,7 +4,16 @@
       "name": "Adawe",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Antonio",
@@ -20,16 +29,16 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
-          "name": "Vialli",
+          "kind": "hero",
+          "name": "Vendetta",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Vendetta",
+          "kind": "npc",
+          "name": "Vialli",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -41,91 +50,282 @@
       "name": "Asa",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yamagami Blades",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Kiriko",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Toshiro",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Athena",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Liao",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Aurora",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shambali Order",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Omnica Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "B.O.B",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ashe",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Bars",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Bez",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Frankie",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Boomslang",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Casino",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Chisaka",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Claudio",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Martins Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Hector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "D.mon",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Efi",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Orisa",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Emily",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Tracer",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Frankie",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Bez",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Geiger",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Gerard",
@@ -137,19 +337,70 @@
       "name": "Harold",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Lucheng Interstellar",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Hector",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Martins Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Claudio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Iggy",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Tracer",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Lúcio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ingrid",
@@ -170,13 +421,39 @@
       "name": "Jackdaw",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Jiayi",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Mei",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Juno",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Kace",
@@ -211,25 +488,77 @@
       "name": "Kendra",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "King",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Lanet",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Liao",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Omnica Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Athena",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Lynx 17",
@@ -258,7 +587,16 @@
       "name": "Mason",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Maximillien",
@@ -280,6 +618,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Freja",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -287,49 +633,129 @@
       "name": "Meri",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Mondatta",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Zenyatta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Shambali Order",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Nameless",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Nobuto",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Overlord",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Revel",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ryota",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sakura",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sanjay",
@@ -351,6 +777,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ]
     },
@@ -358,7 +792,24 @@
       "name": "Susannah",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Hazard",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sven",
@@ -379,19 +830,62 @@
       "name": "The Triplets",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Toshiro",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yamagami Blades",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Kiriko",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Asa",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Touch Up",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Vialli",
@@ -399,16 +893,16 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "npc",
-          "name": "Antonio",
+          "kind": "faction",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "faction",
-          "name": "Talon Empire",
+          "kind": "npc",
+          "name": "Antonio",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -420,13 +914,31 @@
       "name": "Zera",
       "description": "",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Dae-Hyun",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": []
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "D.va",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ngumi",
@@ -449,14 +961,6 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "npc",
-          "name": "Ngumi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Doomfist",
           "reasoningSubjectToLinked": "",
@@ -467,6 +971,14 @@
         {
           "kind": "faction",
           "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Ngumi",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

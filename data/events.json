@@ -1653,10 +1653,10 @@
       "yearEnd": null
     },
     {
-      "name": "SST Laboratories Siege Automaton E54 is Made",
+      "name": "SST Labs Siege Automaton E54 is Made",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Around the year 2046, the STT Laboratories would begin production of the Siege Automaton E54 Bastion Units. Designed in part by the great mind of Torbjörn Lindholm, these machines were originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.<br><br>On an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made.",
+      "description": "Around the year 2046, the STT Laboratories would begin production of the Siege Automaton E54 Bastion Units. Designed in part by the great mind of Torbjörn Lindholm, these machines were originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.\n\nOn an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made.",
       "image": "",
       "sources": [
         {
@@ -11738,6 +11738,45 @@
       ]
     },
     {
+      "name": "Old Friend",
+      "locationType": "earth",
+      "cityDisplayName": "Monte-Carlo, Monaco",
+      "description": "",
+      "image": "",
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "lat": 43.7402961,
+      "lon": 7.426559,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Freja",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Livre Tournois, Talon",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Sentinels",
       "locationType": "earth",
       "cityDisplayName": "Buenos Aires, Argentina",
@@ -11929,45 +11968,6 @@
         {
           "locationName": "",
           "country": "Overwatch, Wuxing University",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Old Friend",
-      "locationType": "earth",
-      "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "",
-      "image": "",
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 43.7402961,
-      "lon": 7.426559,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Monte-Carlo, Monaco",
-          "country": "Monaco",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Freja",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Livre Tournois, Talon",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Maximillien",
           "reasoning": ""
         }
       ]

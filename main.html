@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="assets/images/icons/Icon.png">
-    <link rel="stylesheet" href="styles.css?v=71">
+    <link rel="stylesheet" href="styles.css?v=72">
     <link rel="stylesheet" href="styles/entry.css?v=17">
 </head>
 <body class="app-timeline-default">
     <header>
         <div class="header-hub" id="headerHub" aria-label="Mode hub">
             <div class="header-hub-stack" id="headerHubMapStack" aria-label="View controls" data-header-order="30"></div>
+            <div class="header-hub-group" id="headerHubButtonGroup" data-header-order="31" aria-label="Primary apps"></div>
         </div>
-        <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu"></div>
+        <div class="header-hub header-hub--right" id="headerHubRight" aria-label="Main menu">
+            <div class="header-hub-group" id="headerHubRightButtonGroup" aria-label="Session controls"></div>
+        </div>
         <a class="header-title-badge header-title-badge--link" id="headerTitleBadge" href="https://overwatch.blizzard.com/en-us/" target="_blank" rel="noopener noreferrer" aria-label="Open official Overwatch website" title="Go to official website">
             <svg class="header-title-badge-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                <path class="header-title-badge-path" vector-effect="non-scaling-stroke" d="M28 10 H72 Q76 10 78 14 L92 90 Q94 98 86 98 H14 Q6 98 8 90 L22 14 Q24 10 28 10 Z"></path>
+                <path class="header-title-badge-path" vector-effect="non-scaling-stroke" d="M8 10 H92 L94 22 L82 98 H18 L6 22 Z"></path>
             </svg>
             <img class="header-title-badge-logo" src="assets/images/misc/Website.png" alt="Overwatch Website" />
             <span class="header-title-badge-sr">Overwatch Atlas</span>
@@ -309,6 +312,6 @@
     <script src="script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script src="src/app/page-init.js?v=10"></script>
+    <script src="src/app/page-init.js?v=14"></script>
 </body>
 </html>

@@ -138,6 +138,8 @@
     --desktop-scale: 0.67;
     --desktop-scale-inverse: 149.25%; /* 100% / 0.67 */
     --header-height: 60px;
+    /* Core bar height before title-badge extension; body overrides --header-height to painted chrome bottom */
+    --header-inner-height: 60px;
     --footer-height: 65px; /* Increased for more space for news ticker */
     --pagination-dock-height: 360px; /* Desktop pagination thumbnails dock */
     --pagination-dock-height-collapsed: 200px; /* Slider + collapse grip + compact number row */

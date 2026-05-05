@@ -9,6 +9,7 @@
         /* Slightly shorter footer on tall phones to reduce dead space */
         --footer-height: 60px;
         /* Include notch safe area in header height on mobile */
+        --header-inner-height: calc(60px + env(safe-area-inset-top));
         --header-height: calc(60px + env(safe-area-inset-top));
     }
 
@@ -16,14 +17,16 @@
         padding-top: env(safe-area-inset-top);
     }
 
+    body {
+        /* Match layout.css ≤768; hubs + hex + subbar slant read from `body` */
+        --header-chrome-align-top: 2px;
+        --header-chrome-align-extra: 12px;
+    }
+
     /* Title badge: keep it fully visible below notch */
     .header-title-badge {
-        /* Pull slightly upward so it doesn't look "below" the header */
-        top: -8px !important;
-        height: calc(var(--header-height) + 12px) !important;
-        /* Let `styles/layout.css` control the 40/20/40 proportions */
         min-width: 0 !important;
-        width: var(--header-center-width) !important;
+        width: var(--header-badge-outer-w) !important;
         max-width: unset !important;
         padding: 0 6px !important;
     }

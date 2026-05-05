@@ -2,17 +2,87 @@
    LAYOUT COMPONENTS
    ======================================== */
 
+/*
+ * Header chrome geometry on `body` so descendants (e.g. rotate subbar `.header-hub-btn`)
+ * inherit `--header-hub-btn-slant` and hub strip math.
+ */
+body {
+    --header-chrome-align-top: 0px;
+    --header-chrome-align-extra: 22px;
+    /*
+     * Hub strip vs title-badge SVG (viewBox 0–100, preserveAspectRatio none):
+     * y 22 = chamfer tips; y 98 = bottom (path d="… L82 98 H18 …").
+     */
+    --header-hub-hex-y-top: 22;
+    --header-hub-hex-y-bottom: 98;
+    /* Hex long sides (82,98)→(94,22) and (18,98)→(6,22): |Δx|/|Δy| = 12/76 in viewBox units */
+    --header-hub-hex-edge-dx: 12;
+    --header-hub-hex-edge-dy: 76;
+    /* Title badge / hex box uses inner bar + extension; slant + hubs derive from this (not --header-height) */
+    --header-title-badge-box-h: calc(var(--header-inner-height) + var(--header-chrome-align-extra));
+    /* Same clamp as .header-title-badge width — on body so hub slant can match stretched SVG (W/H). */
+    --header-badge-outer-w: clamp(240px, 22vw, 320px);
+    --header-badge-half: calc(var(--header-badge-outer-w) / 2);
+    /* Black header paints to hub row bottom (aligned with buttons) */
+    --header-chrome-paint-h: calc(
+        var(--header-chrome-align-top)
+        + var(--header-title-badge-box-h) * var(--header-hub-hex-y-bottom) / 100
+    );
+    /* Layout clearance: match painted chrome so content clears the black bar */
+    --header-height: var(--header-chrome-paint-h);
+    /*
+     * Parallelogram clip-path slant: same screen slope as hex diagonals.
+     * ViewBox run is 12×76 with non-uniform stretch → multiply 12/76 by (badge W / badge H).
+     */
+    --header-hub-btn-slant: calc(
+        var(--header-title-badge-box-h)
+        * (var(--header-hub-hex-y-bottom) - var(--header-hub-hex-y-top))
+        / 100
+        * var(--header-hub-hex-edge-dx)
+        / var(--header-hub-hex-edge-dy)
+        * var(--header-badge-outer-w)
+        / var(--header-title-badge-box-h)
+    );
+    /* Hub button row height (matches .header-hub height) — used to scale outline slant */
+    --header-hub-strip-h: calc(
+        var(--header-title-badge-box-h) * (var(--header-hub-hex-y-bottom) - var(--header-hub-hex-y-top)) / 100
+    );
+    /*
+     * Hub column white rim (#headerHubButtonGroup / #headerHubRightButtonGroup), asymmetric:
+     * 0 top, 10 bottom, 20 toward center badge; viewport outer edges 0.
+     */
+    --header-hub-outline-top: 0px;
+    --header-hub-outline-bottom: 10px;
+    --header-hub-outline-inward: 20px;
+    --header-hub-outline-outward: 0px;
+    /*
+     * ::before clip-path slant: match button diagonals after the rim extends only past the bottom
+     * (and inward on one horizontal side per hub).
+     */
+    --header-hub-outline-slant: calc(
+        var(--header-hub-btn-slant)
+        * (var(--header-hub-strip-h) + var(--header-hub-outline-bottom))
+        / var(--header-hub-strip-h)
+    );
+}
+
 /* Header Styles */
 header {
-    background: var(--bg-primary);
+    background: #000;
     --header-title-size: 26px;
+    /*
+     * Hub inner edges vs badge bbox: small negative % pulls toward hex; tune for a sliver of gap.
+     * #headerTitleBadge z-index stays above hubs in overlap with the link hit area.
+     */
+    --header-badge-gap: calc(var(--header-badge-outer-w) * -0.08);
+    --header-hub-stack-w: clamp(56px, 7.5vw, 88px);
     padding: 0; /* allow hub sections to be seamless full-height blocks */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     /* Above sliding panels / image overlay (~150–210); below modals (1000+) */
     z-index: 270;
-    height: var(--header-height);
-    min-height: var(--header-height);
-    max-height: var(--header-height);
+    height: var(--header-chrome-paint-h);
+    min-height: var(--header-chrome-paint-h);
+    max-height: var(--header-chrome-paint-h);
     display: flex;
     align-items: center;
     justify-content: center; /* title badge is absolutely centered */
@@ -24,24 +94,14 @@ header {
     overflow: visible; /* allow title badge to protrude */
 }
 
-/* Header layout proportions (left hub / center badge / right hub) */
-header {
-    /* Give the labeled left hub a bit more room. */
-    --header-left-width: 45%;
-    --header-center-width: 18%;
-    --header-right-width: 37%;
-}
-
 /* Center title badge (inverted trapezoid) */
 .header-title-badge {
     position: absolute;
     left: 50%;
-    top: -10px; /* protrude above */
+    top: var(--header-chrome-align-top);
     transform: translateX(-50%);
-    height: calc(var(--header-height) + 22px); /* protrude below too */
-    width: var(--header-center-width);
-    min-width: 180px;
-    max-width: 320px;
+    height: var(--header-title-badge-box-h);
+    width: var(--header-badge-outer-w);
     padding: 0 14px;
     display: flex;
     align-items: center;
@@ -122,29 +182,113 @@ header {
 .header-hub {
     position: absolute;
     left: 0;
-    top: 0;
-    bottom: 0;
+    top: calc(
+        var(--header-chrome-align-top)
+        + var(--header-title-badge-box-h) * var(--header-hub-hex-y-top) / 100
+    );
+    bottom: auto;
     display: flex;
     align-items: stretch;
     gap: 0;
     z-index: 2;
-    height: 100%;
-    width: var(--header-left-width);
+    height: calc(
+        var(--header-title-badge-box-h) * (var(--header-hub-hex-y-bottom) - var(--header-hub-hex-y-top)) / 100
+    );
     min-width: 0;
+}
+
+/*
+ * Left hub: flush to viewport start → inner edge at 50% − half − gap (--header-badge-gap may be negative).
+ * Padding-left reserves the map stack only while it holds controls; when empty, padding would
+ * leave a dead gap (right hub has no equivalent). Icon row uses flex-start so equal flex children
+ * fill the band (flex-end left a gap on the outer edge when parallelogram overlaps shrink the row).
+ */
+#headerHub.header-hub {
+    left: 0;
+    right: calc(50% + var(--header-badge-half) + var(--header-badge-gap));
+    width: auto;
+    justify-content: flex-start;
+    padding-left: var(--header-hub-stack-w);
+    box-sizing: border-box;
+}
+
+/* Empty map stack: no reserved strip — first mode button aligns to the screen edge like the right hub */
+#headerHub.header-hub:not(:has(#headerHubMapStack .header-hub-btn)) {
+    padding-left: 0;
+}
+
+/* Row of three header actions per side (Interactive / Codex / Archive · Music / Palette / Home) */
+.header-hub-group {
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: visible;
+}
+
+/*
+ * White rim under hub rows — asymmetric inset: no top, bottom + inward (toward badge) only.
+ * Left hub: inward = right; right hub: inward = left.
+ */
+#headerHub .header-hub-group::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: calc(-1 * var(--header-hub-outline-top));
+    right: calc(-1 * var(--header-hub-outline-inward));
+    bottom: calc(-1 * var(--header-hub-outline-bottom));
+    left: calc(-1 * var(--header-hub-outline-outward));
+    pointer-events: none;
+    background: #fff;
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--header-hub-outline-slant)) 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.header-hub.header-hub--right .header-hub-group::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: calc(-1 * var(--header-hub-outline-top));
+    right: calc(-1 * var(--header-hub-outline-outward));
+    bottom: calc(-1 * var(--header-hub-outline-bottom));
+    left: calc(-1 * var(--header-hub-outline-inward));
+    pointer-events: none;
+    background: #fff;
+    clip-path: polygon(
+        var(--header-hub-outline-slant) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+#headerHub .header-hub-group > .header-hub-btn,
+.header-hub.header-hub--right .header-hub-group > .header-hub-btn {
+    z-index: 1;
 }
 
 /* Stack container inside the left hub (Map/Globe + Rotate) */
 .header-hub-stack {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
     gap: 0;
-    height: 100%;
+    width: var(--header-hub-stack-w);
     padding: 0;
     align-items: stretch;
-    /* Behave like a normal hub segment so Map/Globe matches other buttons */
-    flex: 1 1 0;
-    min-width: 0;
+    box-sizing: border-box;
 }
 
 /* In the stack, don't use the horizontal overlap trick. */
@@ -257,11 +401,12 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
 }
 
 .header-hub.header-hub--right {
-    left: auto;
+    left: calc(50% + var(--header-badge-half) + var(--header-badge-gap));
     right: 0;
-    width: var(--header-right-width);
+    width: auto;
     min-width: 0;
-    justify-content: flex-end;
+    /* Palette (first) on the inner edge toward the hex */
+    justify-content: flex-start;
 }
 
 .header-hub.header-hub--right .header-hub-btn {
@@ -355,10 +500,11 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     border: none;
     border-right: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 0;
-    /* Parallelogram button shape (clip-path keeps hover highlight aligned) */
-    --hub-btn-slant: 14px;
+    /* Parallelogram: slant matches hex edges 6→3 / 5→4 (see --header-hub-hex-edge-*) */
+    --hub-btn-slant: var(--header-hub-btn-slant);
     position: relative;
     overflow: hidden;
+    /* Default: right hub — same slant sense as hex edge 6→3 */
     clip-path: polygon(
         var(--hub-btn-slant) 0%,
         100% 0%,
@@ -379,6 +525,36 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Left hub + rotate subbar: mirror parallelogram to match hex edge 5→4 */
+#headerHub .header-hub-btn,
+.header-hub-btn.header-subbar-btn {
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--hub-btn-slant)) 0%,
+        100% 100%,
+        var(--hub-btn-slant) 100%
+    );
+}
+
+/* Viewport-side edge: straight vertical (no slant) on outer side */
+#headerInteractiveGlobeBtn.header-hub-btn {
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--hub-btn-slant)) 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+#homeBtn.header-hub-btn {
+    clip-path: polygon(
+        var(--hub-btn-slant) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
 }
 
 /* Overlap neighboring buttons so angled edges meet cleanly */
@@ -416,6 +592,35 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     background: transparent;
     box-shadow: inset 0 -3px 0 rgba(76, 175, 80, 0.85);
     color: rgba(255, 255, 255, 1);
+}
+
+/* Header bar is black; hub segments use palette button colors (skip ghost exit + subbar clones). */
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn) {
+    background: var(--btn-primary-bg);
+}
+
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn):hover {
+    background: var(--btn-primary-bg-hover);
+    color: rgba(255, 255, 255, 1);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.16),
+        0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn):active {
+    background: var(--btn-primary-bg-hover);
+}
+
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).header-hub-btn--active,
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).active {
+    background: var(--btn-primary-bg);
+    box-shadow: inset 0 -3px 0 rgba(76, 175, 80, 0.85);
+    color: rgba(255, 255, 255, 1);
+}
+
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).header-hub-btn--active:hover,
+.header-hub .header-hub-btn:not(.header-hub-btn--exit):not(.header-subbar-btn).active:hover {
+    background: var(--btn-primary-bg-hover);
 }
 
 /* Vehicles header control: crimson tint only (gray matches default header) */
@@ -456,11 +661,16 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
 }
 
 @media (max-width: 768px) {
+    body {
+        --header-chrome-align-top: 2px;
+        --header-chrome-align-extra: 12px;
+        --header-badge-outer-w: clamp(200px, 52vw, 280px);
+        --header-badge-half: calc(var(--header-badge-outer-w) / 2);
+    }
+
     header {
         --header-title-size: 18px;
-        --header-left-width: 40%;
-        --header-center-width: 20%;
-        --header-right-width: 40%;
+        --header-hub-stack-w: clamp(48px, 12vw, 72px);
     }
 
     /* Match desktop: each hub button grows to fill its column (flex 1 1 0 from .header-hub-btn). */
@@ -469,14 +679,14 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
         min-width: 0;
     }
 
+    /* Map stack is hidden on small screens — no reserved strip */
     #headerHub.header-hub {
-        width: var(--header-left-width);
         justify-content: flex-start;
+        padding-left: 0;
     }
 
     .header-hub.header-hub--right {
-        width: var(--header-right-width);
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
     /* Icon-only on mobile — same as Events / Filters (labels hidden below). */
@@ -485,11 +695,7 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     }
 
     .header-title-badge {
-        width: var(--header-center-width);
-        min-width: 120px;
-        max-width: 200px;
-        height: calc(var(--header-height) + 16px);
-        top: -8px;
+        width: var(--header-badge-outer-w);
         padding: 0 8px;
     }
 }
@@ -506,29 +712,36 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     }
 }
 
+/*
+ * Left hub icon row: equal-width columns like the right hub.
+ * Placed after .header-hub-btn--icon { width: auto } so this wins without relying on import/cache order.
+ */
+#headerHub.header-hub > .header-hub-btn.header-hub-btn--icon {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 0;
+    box-sizing: border-box;
+    border-left: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
 @media (max-width: 420px) {
-    header {
-        --header-title-size: 16px;
-        --header-left-width: 40%;
-        --header-center-width: 20%;
-        --header-right-width: 40%;
+    body {
+        --header-badge-outer-w: clamp(180px, 58vw, 260px);
+        --header-badge-half: calc(var(--header-badge-outer-w) / 2);
     }
 
-    .header-hub {
-        width: var(--header-left-width);
+    header {
+        --header-title-size: 16px;
+        --header-hub-stack-w: clamp(44px, 14vw, 68px);
     }
 
     .header-title-badge {
-        width: var(--header-center-width);
-        min-width: 96px;
-        max-width: 160px;
+        width: var(--header-badge-outer-w);
         padding: 0 6px;
     }
 
     /* On very small phones, keep hub labels from fighting the center badge */
-    .header-hub {
-        width: var(--header-left-width);
-    }
     .header-hub-btn {
         font-size: 13px;
         padding: 0 6px;

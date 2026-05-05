@@ -83,7 +83,7 @@ async function loadPalette() {
             label: 'Palette',
             iconPath: 'assets/images/icons/Palette Icon.png',
             iconAlt: 'Color Palette',
-            parentId: 'headerHubRight',
+            parentId: 'headerHubRightButtonGroup',
             baseClass: 'header-hub-btn header-hub-btn--icon',
             iconSpanId: 'colorPaletteIcon',
             headerOrder: 50
@@ -117,7 +117,7 @@ function loadHeaderNavButtons() {
         label: 'Interactive Worldview',
         iconPath: 'assets/images/icons/Timeline Icon.png',
         iconAlt: 'Interactive Worldview',
-        parentId: 'headerHub',
+        parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerInteractiveGlobeIcon',
         headerOrder: 15
@@ -142,7 +142,7 @@ function loadHeaderNavButtons() {
         label: 'Connection Codex',
         iconPath: 'assets/images/icons/Codex%20Icon.png',
         iconAlt: 'Connection Codex',
-        parentId: 'headerHub',
+        parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerWorldCodexIcon',
         headerOrder: 16
@@ -168,7 +168,7 @@ function loadHeaderNavButtons() {
         label: 'Data Archive',
         iconPath: 'assets/images/icons/Story%20Icon.png',
         iconAlt: 'Data Archive',
-        parentId: 'headerHub',
+        parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerStoryViewerIcon',
         headerOrder: 17
@@ -194,7 +194,7 @@ function loadHeaderNavButtons() {
         label: 'Home',
         iconPath: 'assets/images/icons/Home Button.png',
         iconAlt: 'Home',
-        parentId: 'headerHubRight',
+        parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'homeBtnIcon',
         headerOrder: 70
@@ -651,7 +651,7 @@ async function loadMusic() {
             label: 'Music',
             iconPath: 'assets/images/icons/Music Icon.png',
             iconAlt: 'Music',
-            parentId: 'headerHubRight',
+            parentId: 'headerHubRightButtonGroup',
             baseClass: 'header-hub-btn header-hub-btn--icon',
             headerOrder: 60
         });

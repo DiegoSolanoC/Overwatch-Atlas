@@ -243,6 +243,19 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/** Remove legacy hub outline SVGs (white border disabled). */
+function teardownHeaderHubFrameSvgs() {
+    ['headerHub', 'headerHubRight'].forEach((id) => {
+        const hub = document.getElementById(id);
+        if (!hub) return;
+        hub.querySelectorAll(':scope > svg.header-hub-frame').forEach((svg) => svg.remove());
+    });
+}
+
+function setupHeaderHubFrames() {
+    teardownHeaderHubFrameSvgs();
+}
+
 // Header hub: mode switching buttons (Timeline / Glossary / Bios)
 function setupHeaderHub() {
     const hubs = [
@@ -348,6 +361,11 @@ function setupHeaderHub() {
     window.addEventListener('appmodechange', (ev) => {
         setActive(ev?.detail?.mode || 'menu');
     });
+
+    setupHeaderHubFrames();
+    requestAnimationFrame(() => {
+        setupHeaderHubFrames();
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -355,6 +373,21 @@ if (document.readyState === 'loading') {
 } else {
     setupHeaderHub();
 }
+
+/* Strip any legacy hub outline SVG on load (outline disabled). */
+(function scheduleHeaderHubFrameSync() {
+    const kick = () => {
+        if (document.getElementById('headerHub') || document.getElementById('headerHubRight')) {
+            setupHeaderHubFrames();
+        }
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', kick);
+    } else {
+        kick();
+    }
+    window.addEventListener('load', kick);
+})();
 
 // Zoom controls setup (shared between main/index pages)
 // Guard: this function may run twice (DOMContentLoaded + delayed globe-ready poll).
