@@ -1251,22 +1251,11 @@ export class EventSlideManager {
             eventSlideText.dataset.inlinePlainTextSetup = 'true';
 
             eventSlideText.addEventListener('keydown', (e) => {
-                if (!this._inlineDescEdit.active) return;
                 if (!eventSlideText.isContentEditable) return;
                 if (e.key !== 'Enter') return;
                 e.preventDefault();
                 insertPlainTextAtCursor('\n');
-                markDirty();
-            });
-
-            eventSlideText.addEventListener('paste', (e) => {
-                if (!this._inlineDescEdit.active) return;
-                if (!eventSlideText.isContentEditable) return;
-                e.preventDefault();
-                const text = e.clipboardData?.getData('text/plain') ?? '';
-                if (!text) return;
-                insertPlainTextAtCursor(text.replace(/\r\n/g, '\n'));
-                markDirty();
+                if (this._inlineDescEdit.active) markDirty();
             });
         }
 

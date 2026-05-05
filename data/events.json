@@ -5701,7 +5701,7 @@
       "name": "The Scourge of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "",
+      "description": "The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order to achieve this, she collaborated with an Omnic task force that would pioneer what a truly Omnic-inclusive environment looked like, from tailored housing that accommodated their needs instead of human ones, lacking kitchens and instead hosting things like oiling gear. Clinics that performed maintenance and repair of crisis wounds, psychological services to help with the trauma that followed the war and the trouble of consciousness, as well as spiritual centers for study of philosophy and theology, especially with the rising Shambali faith. A lot of focus was also placed on giving Omnics resources to find jobs outside their pre-Crisis designation, letting them pursue their own dreams outside human expectations and design. \n\nThe push for Omnic infrastructure would lead to heavy investment in intellectual and artistic enrichment, which would lead to a thriving sense of pride and community for the arts in the city. A lot of the principles used when building Numbani were modeled after the infrastructure and plans of the new Toronto, following their own Omnic Integration. By the time the city was finished, it had proved to the world that coexistence was possible, and the city became a beacon of hope for Omnic allies around the globe. The day the last brick was laid would be declared Unity Day, and celebrated as a holiday in the city to mark the huge accomplishment of Omnic and Human Collaboration. Shortly after the inauguration, Adawe passed away, and was mourned by the people across the entire city, and celebrated as a Nigerian hero, not unlike Adhabu Ngumi, the first Doomfist.\n\nThe war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. \n\nWhile Scouting for Ecopoint locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance Watchpoint: Kisangani got approved. While the base focused on informatics security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member. Wildebeest.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -5718,27 +5718,38 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": ""
+          "reasoning": "Years after the sucess of the city of Numbani, a second Doomfist terrorizes the city"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Doomfist",
-          "reasoning": ""
+          "reasoning": "Liutenant to the Scourge of Numbani"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Aids Numbani externally through Watchpoint Kisangani"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Adeyemi,",
+          "reasoning": "Second Doomfist, the Scourge of Numbani"
+        }
+      ],
+      "headlines": [
+        "Man claiming to be Doomfist wrecks havoc across Numbani",
+        "The city of harmony delays Unity Day celebrations due to concerns about warmonger raid"
       ]
     },
     {
       "name": "Omnic Rights",
-      "description": "No description available.",
+      "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.<br>",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -5751,11 +5762,27 @@
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": ""
+          "reasoning": "Omnics segregated to Underground spaces under strict policing"
+        },
+        {
+          "locationName": "Geneva, Switzerland",
+          "country": "Switzerland,",
+          "reasoning": "Omnics are granted legal personhood"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "First person ever charged of Omnic Murder",
+        "Mina Liao to tesitfy in favor of Omnic Rights",
+        "Omnic Rights case passes the UN hearings"
+      ],
+      "sources": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": "Testifies in favor of Omnic rights"
+        }
+      ]
     },
     {
       "name": "Gwishin",
@@ -6117,6 +6144,41 @@
       ]
     },
     {
+      "name": "Idina Troopers",
+      "locationType": "earth",
+      "cityDisplayName": "City State of Numbani",
+      "description": "No description available.",
+      "image": "",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Orisa",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Deep Rising",
       "locationType": "earth",
       "cityDisplayName": "Gwishin Omnium, East China Sea",
@@ -6290,8 +6352,41 @@
       ]
     },
     {
+      "name": "The Atlantic Arcology",
+      "locationType": "earth",
+      "cityDisplayName": "Atlantic Arcology",
+      "description": "No description available.",
+      "image": "",
+      "lat": 37.7412,
+      "lon": -25.6756,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Collective, Overwatch",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
+    },
+    {
       "name": "Omnic Housing",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -6319,39 +6414,8 @@
           "country": "Shambali",
           "reasoning": ""
         }
-      ]
-    },
-    {
-      "name": "The Atlantic Arcology",
-      "locationType": "earth",
-      "cityDisplayName": "Atlantic Arcology",
-      "description": "",
-      "image": "",
-      "lat": 37.7412,
-      "lon": -25.6756,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
       ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Atlantic Arcology",
-          "country": "Atlantic Arcology",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Collective, Overwatch",
-          "reasoning": ""
-        }
-      ]
+      "headlines": []
     },
     {
       "name": "Taking the Throne",
@@ -7335,6 +7399,45 @@
       ]
     },
     {
+      "name": "Failure at Sea",
+      "locationType": "earth",
+      "cityDisplayName": "Apia, Samoa",
+      "description": "",
+      "image": "",
+      "lat": -13.8345235,
+      "lon": -171.7630955,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2068,
+      "yearEnd": 2069,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emre, Freja, Reaper, Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deep Sea Raiders, Overwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Neural Reconditioning",
       "description": "No description available.",
       "locationType": "earth",
@@ -7370,45 +7473,6 @@
         {
           "locationName": "",
           "country": "Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Failure at Sea",
-      "locationType": "earth",
-      "cityDisplayName": "Apia, Samoa",
-      "description": "",
-      "image": "",
-      "lat": -13.8345235,
-      "lon": -171.7630955,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2068,
-      "yearEnd": 2069,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Apia, Samoa",
-          "country": "Samoa",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Emre, Freja, Reaper, Sojourn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Deep Sea Raiders, Overwatch",
           "reasoning": ""
         }
       ]
@@ -8714,39 +8778,6 @@
         {
           "locationName": "",
           "country": "Wuxing University",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Idina Troopers",
-      "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
-      "description": "",
-      "image": "",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Orisa",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Numbani",
           "reasoning": ""
         }
       ]

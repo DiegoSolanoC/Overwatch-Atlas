@@ -30,6 +30,9 @@ import {
     updateEventSlideFactionTypeDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../managers/helpers/EventSlideShowHelpers.js';
+import { installEventSlidePlainPasteGuard } from '../../utils/EventSlidePlainPasteGuard.js';
+
+installEventSlidePlainPasteGuard();
 
 function teardownMenuServiceEventSystemLayout() {
     const st = window.__menuServiceEventSystemLayout;
@@ -1298,6 +1301,8 @@ export function createMenuButtonsContainer(statusService) {
                                 titleEl.setAttribute('spellcheck', 'true');
                             }
                             if (textEl) {
+                                const plainDesc = (textEl.innerText ?? textEl.textContent ?? '').replace(/\r\n/g, '\n');
+                                textEl.textContent = plainDesc;
                                 textEl.contentEditable = 'true';
                                 textEl.setAttribute('spellcheck', 'true');
                             }
