@@ -504,6 +504,19 @@ body.color-palette-gray .events-pagination-input:focus {
         --dock-collapse-pill-top-radius: 22px;
         /* Shift collapse pill + border art slightly toward the dock seam */
         --dock-collapse-pill-nudge-y: 6px;
+        /*
+         * Side-panel bottom Cut / Mirrored Cut bands (panel-resize.css): when the pagination dock is
+         * expanded, shorten them from the panel bottom so they end above dock top border imgs.
+         * Cap row uses --dock-border-img-h; negative --dock-top-cap-lift pulls the row slightly past
+         * the dock top — add |lift| so panel chrome clears that band too.
+         */
+        --side-panel-dock-cut-bottom-lift: calc(
+            var(--dock-border-img-h, 80px) + max(0px, -1 * var(--dock-top-cap-lift, 0px))
+        );
+        /* Info-panel-only intentional overlap into dock top border art (eyeball tuning knob). */
+        --event-info-dock-border-overlap: 50px;
+        /* Filters/music mirrored cut overlap uses separate geometry; tune independently. */
+        --filters-music-dock-border-overlap: 50px;
         max-height: var(--desktop-scale-inverse, 149.25%) !important;
         overflow: hidden !important;
     }
@@ -548,6 +561,18 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
     --dock-border-height: 150px;
     --dock-collapse-bottom: 43px;
     --dock-center-rail-y: 11px;
+}
+
+/*
+ * Debug overlay: tint dock top border image zones.
+ * Enable by adding `debug-border-image-overlay` to <body>.
+ */
+body.debug-border-image-overlay:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
+    box-shadow: inset 0 0 0 9999px rgba(255, 140, 0, 0.34);
+}
+
+body.debug-border-image-overlay:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
+    box-shadow: inset 0 0 0 9999px rgba(255, 230, 0, 0.26);
 }
 
 /*

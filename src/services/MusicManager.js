@@ -300,8 +300,8 @@ class MusicManager {
         var logAssetLoad = getLogAssetLoad();
         
         this.musicButton = document.getElementById('musicToggle');
-        this.musicPanel = document.getElementById('musicPanel');
-        this.musicPanelClose = document.getElementById('musicPanelClose');
+        this.musicPanel = document.getElementById('filtersPanel') || document.getElementById('musicPanel');
+        this.musicPanelClose = document.getElementById('filtersPanelClose') || document.getElementById('musicPanelClose');
         this.backgroundMusic = document.getElementById('backgroundMusic');
         this.volumeSlider = document.getElementById('volumeSlider');
         this.volumeValue = document.getElementById('volumeValue');
@@ -513,7 +513,9 @@ class MusicManager {
             if (el) el.textContent = name;
 
             // Passive badge: catalog only (no title for startup / site ambience).
-            var panelOpen = !!(self.musicPanel && self.musicPanel.classList.contains('open'));
+            var panelOpen = !!(self.musicPanel &&
+                self.musicPanel.classList.contains('open') &&
+                (self.musicPanel.dataset.panelMode === 'music' || self.musicPanel.id === 'musicPanel'));
             var shouldShow = !!(path && !panelOpen && !hideTrackTitle);
             self._setNowPlayingBadgeVisible(shouldShow);
             if (shouldShow) {

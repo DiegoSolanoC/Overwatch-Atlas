@@ -205,6 +205,7 @@
     var EVENT_TRAP_PAGE_ICON = 'assets/images/icons/Page Icon.png';
     var FILTERS_TRAP_EMPTY = 'assets/images/icons/Empty Filter Icon.png';
     var FILTERS_TRAP_ACTIVE = 'assets/images/icons/Filter Icon.png';
+    var MUSIC_TRAP_ICON = 'assets/images/icons/Music Icon.png';
 
     function filtersTrapHasActiveSelection() {
         try {
@@ -226,7 +227,12 @@
         var img = trapImg;
         if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') {
             var panel = document.getElementById('filtersPanel');
-            img = panel && panel.querySelector('.panel-resize-handle__trap-icon');
+            // Only update the filters-mode trapezium icon; keep music-mode icon untouched.
+            img =
+                panel &&
+                panel.querySelector(
+                    '.panel-resize-handle[data-panel-mode="filters"] .panel-resize-handle__trap-icon'
+                );
         }
         if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') {
             return;
@@ -270,60 +276,73 @@
 
     function ensureHandle(panel, cfg) {
         if (!panel || panel.querySelector('.panel-resize-handle')) return;
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'panel-resize-handle panel-resize-handle--' + cfg.edge;
-        btn.setAttribute('aria-orientation', 'vertical');
-        btn.setAttribute('aria-label', 'Resize ' + cfg.name + ' panel');
-        btn.title = cfg.name + ' panel - Drag to resize. Width resets when you close the panel. Double-click to reset now.';
-
-        var pill = document.createElement('span');
-        pill.className = 'panel-resize-handle__pill';
-        pill.setAttribute('aria-hidden', 'true');
-        var icon = document.createElement('img');
-        icon.className = 'ui-pagination-arrow panel-resize-handle__arrow';
-        icon.src = 'assets/images/icons/Arrow Icon.png';
-        icon.alt = '';
-        icon.decoding = 'async';
-        icon.width = 22;
-        icon.height = 22;
-        icon.setAttribute('aria-hidden', 'true');
-        /* inner-right: point right; inner-left: point left (default asset) */
-        if (cfg.edge === 'inner-right') {
-            icon.classList.add('ui-pagination-arrow--flip-h');
-        }
-        pill.appendChild(icon);
-        if (cfg.id === 'eventSlide' || cfg.id === 'filtersPanel') {
-            var trapLabel = document.createElement('span');
-            trapLabel.className = 'panel-resize-handle__trap-label';
-            trapLabel.setAttribute('aria-hidden', 'true');
-            var trapImg = document.createElement('img');
-            trapImg.className = 'panel-resize-handle__trap-icon';
-            trapImg.alt = '';
-            trapImg.decoding = 'async';
-            trapImg.setAttribute('aria-hidden', 'true');
-            if (cfg.id === 'eventSlide') {
-                trapImg.src = EVENT_TRAP_PAGE_ICON;
-            } else {
-                trapImg.src = FILTERS_TRAP_EMPTY;
-                syncFiltersPanelTrapIcon(trapImg);
+        function createHandle(options) {
+            var opts = options || {};
+            var mode = opts.mode || 'filters';
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'panel-resize-handle panel-resize-handle--' + cfg.edge + (opts.extraClass ? (' ' + opts.extraClass) : '');
+            btn.setAttribute('aria-orientation', 'vertical');
+            btn.setAttribute('aria-label', opts.ariaLabel || ('Resize ' + cfg.name + ' panel'));
+            btn.title = opts.title || (cfg.name + ' panel - Drag to resize. Width resets when you close the panel. Double-click to reset now.');
+            if (cfg.id === 'filtersPanel') {
+                btn.dataset.panelMode = mode;
             }
-            trapLabel.appendChild(trapImg);
-            btn.appendChild(trapLabel);
-        }
-        btn.appendChild(pill);
 
-        btn.addEventListener('dblclick', function (e) {
-            e.preventDefault();
-            clearUserWidth(cfg);
-        });
-
-        // Click to open panel when collapsed (for event slide and filters panel)
-        btn.addEventListener('click', function (e) {
-            if (!panel.classList.contains('open')) {
-                e.preventDefault();
-
+            var pill = document.createElement('span');
+            pill.className = 'panel-resize-handle__pill';
+            pill.setAttribute('aria-hidden', 'true');
+            var icon = document.createElement('img');
+            icon.className = 'ui-pagination-arrow panel-resize-handle__arrow';
+            icon.src = 'assets/images/icons/Arrow Icon.png';
+            icon.alt = '';
+            icon.decoding = 'async';
+            icon.width = 22;
+            icon.height = 22;
+            icon.setAttribute('aria-hidden', 'true');
+            /* inner-right: point right; inner-left: point left (default asset) */
+            if (cfg.edge === 'inner-right') {
+                icon.classList.add('ui-pagination-arrow--flip-h');
+            }
+            pill.appendChild(icon);
+            if (cfg.id === 'eventSlide' || cfg.id === 'filtersPanel') {
+                var trapLabel = document.createElement('span');
+                trapLabel.className = 'panel-resize-handle__trap-label';
+                trapLabel.setAttribute('aria-hidden', 'true');
+                var trapImg = document.createElement('img');
+                trapImg.className = 'panel-resize-handle__trap-icon';
+                trapImg.alt = '';
+                trapImg.decoding = 'async';
+                trapImg.setAttribute('aria-hidden', 'true');
                 if (cfg.id === 'eventSlide') {
+                    trapImg.src = EVENT_TRAP_PAGE_ICON;
+                } else if (mode === 'music') {
+                    trapImg.src = MUSIC_TRAP_ICON;
+                } else {
+                    trapImg.src = FILTERS_TRAP_EMPTY;
+                    syncFiltersPanelTrapIcon(trapImg);
+                }
+                trapLabel.appendChild(trapImg);
+                btn.appendChild(trapLabel);
+            }
+            btn.appendChild(pill);
+            return btn;
+        }
+
+        function attachHandleBehavior(btn) {
+            var dragState = null;
+
+            btn.addEventListener('dblclick', function (e) {
+                e.preventDefault();
+                clearUserWidth(cfg);
+            });
+
+            // Click to open panel when collapsed (for event slide and filters panel)
+            btn.addEventListener('click', function (e) {
+                if (!panel.classList.contains('open')) {
+                    e.preventDefault();
+
+                    if (cfg.id === 'eventSlide') {
                     // Check if event system is loaded
                     const testBtn = document.getElementById('testBtn');
                     const isEventSystemLoaded = testBtn && testBtn.dataset.loaded === 'true';
@@ -386,152 +405,187 @@
                         panel.classList.add('open');
                     }
 
-                    if (window.SoundEffectsManager?.play) {
-                        window.SoundEffectsManager.play('eventClick');
+                        if (window.SoundEffectsManager?.play) {
+                            window.SoundEffectsManager.play('eventClick');
+                        }
+                    } else if (cfg.id === 'filtersPanel') {
+                        var mode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
+                        if (window.FilterService && typeof window.FilterService.openPanelWithMode === 'function') {
+                            window.FilterService.openPanelWithMode(mode);
+                        } else {
+                            panel.classList.add('open');
+                        }
+                        if (window.SoundEffectsManager?.play) {
+                            window.SoundEffectsManager.play(mode === 'music' ? 'music' : 'filterButton');
+                        }
                     }
                 } else if (cfg.id === 'filtersPanel') {
-                    panel.classList.add('open');
-                    if (window.SoundEffectsManager?.play) {
-                        window.SoundEffectsManager.play('filterButton');
+                    // Shared panel is already open: clicking the other trapezium should switch modes.
+                    var targetMode = btn.dataset.panelMode === 'music' ? 'music' : 'filters';
+                    var currentMode = panel.dataset.panelMode === 'music' ? 'music' : 'filters';
+                    if (targetMode !== currentMode) {
+                        e.preventDefault();
+                        if (window.FilterService && typeof window.FilterService.openPanelWithMode === 'function') {
+                            window.FilterService.openPanelWithMode(targetMode);
+                        }
+                        if (window.SoundEffectsManager?.play) {
+                            window.SoundEffectsManager.play(targetMode === 'music' ? 'music' : 'filterButton');
+                        }
+                    }
+                }
+            });
+
+            function onPointerMove(ev) {
+                if (!dragState || isMobile()) return;
+                var pxMove = Math.abs(ev.clientX - dragState.lastPointerX);
+                var dx = ev.clientX - dragState.startX;
+                var raw;
+                if (cfg.edge === 'inner-right') {
+                    raw = dragState.startWidth + dx;
+                } else {
+                    raw = dragState.startWidth - dx;
+                }
+                var minW = getDefaultPx(cfg.defaultVar);
+                var maxW = maxWidthForPanel(cfg);
+                var next = clampWidth(raw, cfg);
+                document.documentElement.style.setProperty(cfg.cssVar, next + 'px');
+
+                var atLimit = raw < minW || raw > maxW;
+                dragState.lastPointerX = ev.clientX;
+                dragState.lastRawWidth = raw;
+                dragState.totalAbsDx = (dragState.totalAbsDx || 0) + pxMove;
+
+                if (atLimit) {
+                    stopGearTicks();
+                    dragState.gearAccum = 0;
+                    dragState.limitPullAccum = (dragState.limitPullAccum || 0) + pxMove;
+                    var over = dragState.limitPullAccum - RIM_PULL_DEAD_PX;
+                    var t = over <= 0 ? 0 : Math.min(1, over / RIM_PULL_RAMP_PX);
+                    t = t * t * (3 - 2 * t);
+                    if (t > 0.008) {
+                        panel.classList.add('panel-resize--at-limit');
+                        panel.style.setProperty('--panel-resize-rim-strength', t.toFixed(4));
+                    } else {
+                        panel.classList.remove('panel-resize--at-limit');
+                        panel.style.removeProperty('--panel-resize-rim-strength');
+                    }
+                    return;
+                }
+
+                dragState.limitPullAccum = 0;
+                panel.classList.remove('panel-resize--at-limit');
+                panel.style.removeProperty('--panel-resize-rim-strength');
+
+                dragState.gearAccum += pxMove;
+                while (dragState.gearAccum >= GEAR_TICK_EVERY_PX) {
+                    if (!playGearTick()) {
+                        break;
+                    }
+                    dragState.gearAccum -= GEAR_TICK_EVERY_PX;
+                }
+            }
+
+            function endDrag() {
+                if (!dragState) return;
+                var ds = dragState;
+                if (LOG_DRAG_DISTANCE_ON_RELEASE) {
+                    var minW = getDefaultPx(cfg.defaultVar);
+                    var maxW = maxWidthForPanel(cfg);
+                    var finalW = currentWidthPx(cfg);
+                    var widthDelta = finalW - ds.startWidth;
+                    var travel = ds.totalAbsDx || 0;
+                    var lastRaw =
+                        typeof ds.lastRawWidth === 'number' && Number.isFinite(ds.lastRawWidth)
+                            ? Math.round(ds.lastRawWidth)
+                            : null;
+                    var msg =
+                        '[PanelResize drag end] ' +
+                        cfg.name +
+                        ' | pointer travel: ' +
+                        Math.round(travel) +
+                        'px | width: ' +
+                        Math.round(ds.startWidth) +
+                        '→' +
+                        Math.round(finalW) +
+                        ' (' +
+                        (widthDelta >= 0 ? '+' : '') +
+                        Math.round(widthDelta) +
+                        'px) | clamp min/max: ' +
+                        minW +
+                        '/' +
+                        maxW;
+                    if (lastRaw != null) {
+                        msg += ' | last raw (pre-clamp): ' + lastRaw;
+                    }
+                    console.log(msg);
+                }
+                stopGearTicks();
+                panel.classList.remove('panel--resizing');
+                panel.classList.remove('panel-resize--at-limit');
+                panel.style.removeProperty('--panel-resize-rim-strength');
+                window.removeEventListener('pointermove', onPointerMove);
+                window.removeEventListener('pointerup', endDrag);
+                window.removeEventListener('pointercancel', endDrag);
+                try {
+                    btn.releasePointerCapture(ds.pointerId);
+                } catch (e) {
+                    /* ignore */
+                }
+                dragState = null;
+                var cur = document.documentElement.style.getPropertyValue(cfg.cssVar).trim();
+                var n = parseInt(cur, 10);
+                if (Number.isFinite(n)) {
+                    var def = getDefaultPx(cfg.defaultVar);
+                    if (n <= def) {
+                        clearUserWidth(cfg);
                     }
                 }
             }
-        });
 
-        var dragState = null;
-
-        function onPointerMove(ev) {
-            if (!dragState || isMobile()) return;
-            var pxMove = Math.abs(ev.clientX - dragState.lastPointerX);
-            var dx = ev.clientX - dragState.startX;
-            var raw;
-            if (cfg.edge === 'inner-right') {
-                raw = dragState.startWidth + dx;
-            } else {
-                raw = dragState.startWidth - dx;
-            }
-            var minW = getDefaultPx(cfg.defaultVar);
-            var maxW = maxWidthForPanel(cfg);
-            var next = clampWidth(raw, cfg);
-            document.documentElement.style.setProperty(cfg.cssVar, next + 'px');
-
-            var atLimit = raw < minW || raw > maxW;
-            dragState.lastPointerX = ev.clientX;
-            dragState.lastRawWidth = raw;
-            dragState.totalAbsDx = (dragState.totalAbsDx || 0) + pxMove;
-
-            if (atLimit) {
+            btn.addEventListener('pointerdown', function (ev) {
+                if (ev.button !== 0 || isMobile()) return;
+                ev.preventDefault();
+                var w = currentWidthPx(cfg);
+                dragState = {
+                    startX: ev.clientX,
+                    startWidth: w,
+                    pointerId: ev.pointerId,
+                    lastPointerX: ev.clientX,
+                    gearAccum: 0,
+                    limitPullAccum: 0,
+                    totalAbsDx: 0,
+                    lastRawWidth: w
+                };
                 stopGearTicks();
-                dragState.gearAccum = 0;
-                dragState.limitPullAccum = (dragState.limitPullAccum || 0) + pxMove;
-                var over = dragState.limitPullAccum - RIM_PULL_DEAD_PX;
-                var t = over <= 0 ? 0 : Math.min(1, over / RIM_PULL_RAMP_PX);
-                t = t * t * (3 - 2 * t);
-                if (t > 0.008) {
-                    panel.classList.add('panel-resize--at-limit');
-                    panel.style.setProperty('--panel-resize-rim-strength', t.toFixed(4));
-                } else {
-                    panel.classList.remove('panel-resize--at-limit');
-                    panel.style.removeProperty('--panel-resize-rim-strength');
-                }
-                return;
-            }
+                panel.classList.remove('panel-resize--at-limit');
+                panel.style.removeProperty('--panel-resize-rim-strength');
+                panel.classList.add('panel--resizing');
+                btn.setPointerCapture(ev.pointerId);
+                window.addEventListener('pointermove', onPointerMove);
+                window.addEventListener('pointerup', endDrag);
+                window.addEventListener('pointercancel', endDrag);
+            });
 
-            dragState.limitPullAccum = 0;
-            panel.classList.remove('panel-resize--at-limit');
-            panel.style.removeProperty('--panel-resize-rim-strength');
-
-            dragState.gearAccum += pxMove;
-            while (dragState.gearAccum >= GEAR_TICK_EVERY_PX) {
-                if (!playGearTick()) {
-                    break;
-                }
-                dragState.gearAccum -= GEAR_TICK_EVERY_PX;
-            }
+            panel.appendChild(btn);
         }
 
-        function endDrag() {
-            if (!dragState) return;
-            var ds = dragState;
-            if (LOG_DRAG_DISTANCE_ON_RELEASE) {
-                var minW = getDefaultPx(cfg.defaultVar);
-                var maxW = maxWidthForPanel(cfg);
-                var finalW = currentWidthPx(cfg);
-                var widthDelta = finalW - ds.startWidth;
-                var travel = ds.totalAbsDx || 0;
-                var lastRaw =
-                    typeof ds.lastRawWidth === 'number' && Number.isFinite(ds.lastRawWidth)
-                        ? Math.round(ds.lastRawWidth)
-                        : null;
-                var msg =
-                    '[PanelResize drag end] ' +
-                    cfg.name +
-                    ' | pointer travel: ' +
-                    Math.round(travel) +
-                    'px | width: ' +
-                    Math.round(ds.startWidth) +
-                    '→' +
-                    Math.round(finalW) +
-                    ' (' +
-                    (widthDelta >= 0 ? '+' : '') +
-                    Math.round(widthDelta) +
-                    'px) | clamp min/max: ' +
-                    minW +
-                    '/' +
-                    maxW;
-                if (lastRaw != null) {
-                    msg += ' | last raw (pre-clamp): ' + lastRaw;
-                }
-                console.log(msg);
-            }
-            stopGearTicks();
-            panel.classList.remove('panel--resizing');
-            panel.classList.remove('panel-resize--at-limit');
-            panel.style.removeProperty('--panel-resize-rim-strength');
-            window.removeEventListener('pointermove', onPointerMove);
-            window.removeEventListener('pointerup', endDrag);
-            window.removeEventListener('pointercancel', endDrag);
-            try {
-                btn.releasePointerCapture(ds.pointerId);
-            } catch (e) {
-                /* ignore */
-            }
-            dragState = null;
-            var cur = document.documentElement.style.getPropertyValue(cfg.cssVar).trim();
-            var n = parseInt(cur, 10);
-            if (Number.isFinite(n)) {
-                var def = getDefaultPx(cfg.defaultVar);
-                if (n <= def) {
-                    clearUserWidth(cfg);
-                }
-            }
+        if (cfg.id === 'filtersPanel') {
+            var filtersBtn = createHandle({
+                mode: 'music',
+                extraClass: 'panel-resize-handle--filters-launch',
+                ariaLabel: 'Resize and open music menu',
+                title: 'Music menu - Drag to resize. Click to open music menu.'
+            });
+            attachHandleBehavior(filtersBtn);
+            var musicBtn = createHandle({
+                mode: 'filters',
+                extraClass: 'panel-resize-handle--music-launch',
+                ariaLabel: 'Resize filters panel'
+            });
+            attachHandleBehavior(musicBtn);
+        } else {
+            attachHandleBehavior(createHandle({}));
         }
-
-        btn.addEventListener('pointerdown', function (ev) {
-            if (ev.button !== 0 || isMobile()) return;
-            ev.preventDefault();
-            var w = currentWidthPx(cfg);
-            dragState = {
-                startX: ev.clientX,
-                startWidth: w,
-                pointerId: ev.pointerId,
-                lastPointerX: ev.clientX,
-                gearAccum: 0,
-                limitPullAccum: 0,
-                totalAbsDx: 0,
-                lastRawWidth: w
-            };
-            stopGearTicks();
-            panel.classList.remove('panel-resize--at-limit');
-            panel.style.removeProperty('--panel-resize-rim-strength');
-            panel.classList.add('panel--resizing');
-            btn.setPointerCapture(ev.pointerId);
-            window.addEventListener('pointermove', onPointerMove);
-            window.addEventListener('pointerup', endDrag);
-            window.addEventListener('pointercancel', endDrag);
-        });
-
-        panel.appendChild(btn);
     }
 
     function tryAttachAll() {

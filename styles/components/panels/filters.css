@@ -129,6 +129,20 @@ body.color-palette-gray .filters-panel-close:hover {
     position: relative;
 }
 
+.filters-panel .music-panel-content {
+    display: none;
+}
+
+.filters-panel.filters-panel--music-mode .filters-panel-content {
+    display: none;
+}
+
+.filters-panel.filters-panel--music-mode .music-panel-content {
+    display: flex;
+    height: 100%;
+    padding: 20px 20px 20px 20px;
+}
+
 .filters-title {
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
     color: var(--accent-primary);

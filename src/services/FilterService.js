@@ -113,6 +113,7 @@ class FilterService {
         this.npcsTab = null;
         this.countriesTab = null;
         this.filtersMenuSearchInput = null;
+        this.panelMode = 'filters';
         this._panelExclusivityObserver = null;
         this._enforcingPanelExclusivity = false;
     }
@@ -150,6 +151,7 @@ class FilterService {
         
         // Mark as initialized
         this.initialized = true;
+        this.setPanelMode('filters');
         this._setupPanelExclusivityObserver();
         
         // Initialize with confirmed filters
@@ -262,6 +264,7 @@ class FilterService {
         this.npcsTab = null;
         this.countriesTab = null;
         this.filtersMenuSearchInput = null;
+        this.panelMode = 'filters';
         this.buttonCache = {
             heroes: null,
             factions: null,
@@ -270,6 +273,66 @@ class FilterService {
             music: null
         };
         console.log('[FilterService] Reset complete. initialized =', this.initialized);
+    }
+
+    setPanelMode(mode) {
+        const nextMode = mode === 'music' ? 'music' : 'filters';
+        this.panelMode = nextMode;
+        const panel = this.filtersPanel || document.getElementById('filtersPanel');
+        if (!panel) return;
+        panel.classList.toggle('filters-panel--music-mode', nextMode === 'music');
+        panel.classList.toggle('filters-panel--filters-mode', nextMode !== 'music');
+        panel.dataset.panelMode = nextMode;
+
+        const filtersButton = document.getElementById('filtersToggle');
+        const musicButton = document.getElementById('musicToggle');
+        if (panel.classList.contains('open')) {
+            filtersButton?.classList.toggle('active', nextMode !== 'music');
+            musicButton?.classList.toggle('active', nextMode === 'music');
+        }
+    }
+
+    getPanelMode() {
+        const panel = this.filtersPanel || document.getElementById('filtersPanel');
+        const mode = panel?.dataset?.panelMode || this.panelMode;
+        return mode === 'music' ? 'music' : 'filters';
+    }
+
+    _ensureMusicContentInSharedPanel() {
+        const panel = this.filtersPanel || document.getElementById('filtersPanel');
+        if (!panel) return;
+        if (panel.querySelector('.music-panel-content')) return;
+        const legacyMusicPanel = document.getElementById('musicPanel');
+        const musicContent = legacyMusicPanel?.querySelector('.music-panel-content');
+        if (!musicContent) return;
+        panel.appendChild(musicContent);
+        legacyMusicPanel.style.display = 'none';
+    }
+
+    openPanelWithMode(mode) {
+        const nextMode = mode === 'music' ? 'music' : 'filters';
+        if (nextMode === 'music') {
+            this._ensureMusicContentInSharedPanel();
+            this.setPanelMode('music');
+            if (!this.filtersPanel?.classList.contains('open')) {
+                this.closeOtherPanels();
+                this.filtersPanel?.classList.add('open');
+            }
+            const filtersButton = document.getElementById('filtersToggle');
+            const musicButton = document.getElementById('musicToggle');
+            filtersButton?.classList.remove('active');
+            musicButton?.classList.add('active');
+            return;
+        }
+        this.setPanelMode('filters');
+        if (this.filtersPanel?.classList.contains('open')) {
+            const filtersButton = document.getElementById('filtersToggle');
+            const musicButton = document.getElementById('musicToggle');
+            filtersButton?.classList.add('active');
+            musicButton?.classList.remove('active');
+            return;
+        }
+        this.openPanel();
     }
 
     _enforcePanelExclusivity() {
@@ -956,6 +1019,9 @@ class FilterService {
             this.filtersPanel.classList.remove('open');
             this.filtersButton?.classList.remove('active');
         }
+        const musicButton = document.getElementById('musicToggle');
+        musicButton?.classList.remove('active');
+        this.setPanelMode('filters');
     }
     
     /**
@@ -1085,6 +1151,21 @@ class FilterService {
         // Toggle button - open/close panel
         if (filtersButton) {
             filtersButton.addEventListener('click', () => {
+                const mode = this.getPanelMode();
+                if (this.filtersPanel?.classList.contains('open') && mode === 'music') {
+                    this.setPanelMode('filters');
+                    filtersButton.classList.add('active');
+                    const musicButton = document.getElementById('musicToggle');
+                    musicButton?.classList.remove('active');
+                    if (window.flashButton) {
+                        window.flashButton(filtersButton, 'flash-orange');
+                    }
+                    if (this.soundManager) {
+                        this.soundManager.play('filterButton');
+                    }
+                    return;
+                }
+                this.setPanelMode('filters');
                 const isOpening = !this.filtersPanel?.classList.contains('open');
                 this.togglePanel();
                 if (isOpening && this.soundManager) {

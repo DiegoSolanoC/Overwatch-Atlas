@@ -10,6 +10,35 @@
         overflow: visible;
     }
 
+    /*
+     * Middle seam art between the two filters-side trapeziums (vars on .filters-panel).
+     * panel-pattern-overlay.css also uses .filters-panel::before for the tiled pattern + opacity: 0.62;
+     * this block replaces that pseudo for desktop so we must reset opacity/inset or the border looks washed out.
+     */
+    /*
+     * Palette theme files set body.color-palette-* .filters-panel::before { background-image: Pattern*.png }
+     * with higher specificity than .filters-panel::before — without !important the seam shows faint tiled pattern.
+     */
+    .filters-panel::before {
+        content: '';
+        position: absolute;
+        inset: auto;
+        left: calc(-1 * var(--event-info-side-border-w));
+        top: calc(50% - (var(--filters-middle-gap-h) / 2) - var(--filters-middle-overlap, 0px));
+        right: auto;
+        bottom: auto;
+        width: var(--event-info-side-border-w);
+        height: calc(var(--filters-middle-gap-h) + (2 * var(--filters-middle-overlap, 0px)));
+        background-image: url('../../../assets/images/misc/Mirrored%20Middle%20Panel%20Border.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
+        background-position: center center !important;
+        opacity: 1 !important;
+        mix-blend-mode: normal;
+        pointer-events: none;
+        z-index: 204;
+    }
+
     /* Show resize handle regardless of panel state, but only when event system is loaded */
     body.event-system-loaded .event-slide .panel-resize-handle,
     .filters-panel .panel-resize-handle,
@@ -232,6 +261,19 @@ body.color-palette-nulled .event-slide .panel-resize-handle--inner-right::after 
     margin-left: var(--event-info-pill-nudge-x);
 }
 
+/*
+ * Dual trapezium handles: seam metrics must live on .filters-panel so ::before (middle border) can resolve them.
+ * (--event-info-side-gap-h stays on the handle: its % height is the full handle / panel height.)
+ */
+.filters-panel {
+    --event-info-side-border-w: 54px;
+    --event-info-side-trapezium-h: 160px;
+    --filters-dual-handle-offset: 180px;
+    --filters-trap-visual-h: calc(var(--event-info-side-trapezium-h) + 8px);
+    --filters-middle-gap-h: calc(max(0px, (var(--filters-dual-handle-offset) * 2) - var(--filters-trap-visual-h)));
+    --filters-middle-overlap: 4px;
+}
+
 /* Filters (right edge): mirrored chrome vs event — Mirrored *Border.png assets, seam on handle’s right. */
 .filters-panel .panel-resize-handle--inner-left {
     /* Mirror of event: opposite sign on X so icons move the same visual direction. */
@@ -240,22 +282,40 @@ body.color-palette-nulled .event-slide .panel-resize-handle--inner-right::after 
     width: calc(64px + 38px);
     padding-right: calc(64px - 2px);
     /* inner-left default flex-end: pill sits at seam-side of content strip (matches event pill vs trapezium). */
-    --event-info-side-trapezium-h: 160px;
-    --event-info-side-border-w: 54px;
     --event-info-side-gap-h: calc((100% - var(--event-info-side-trapezium-h)) / 2);
     align-items: center;
     box-sizing: border-box;
+    background-image: none;
+}
+
+.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch {
+    transform: translateX(-100%) translateY(calc(var(--filters-dual-handle-offset) * -1));
     background-image: url('../../../assets/images/misc/Mirrored%20Panel%20Border.png');
     background-repeat: no-repeat;
     background-size: var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h));
     background-position: right top;
 }
 
-.filters-panel .panel-resize-handle--inner-left::before {
+.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--music-launch {
+    transform: translateX(-100%) translateY(var(--filters-dual-handle-offset));
+}
+
+.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--filters-launch::before {
+    content: none;
+}
+
+/*
+ * Mirrored Cut bottom band: only on music-launch handle.
+ * Do NOT anchor with bottom: — the handle uses translateY(...) so bottom-aligned pseudos drift vs the
+ * trapezium + dock seam. Match trapezium ::after stack: top = gap - 2px, height = trap + 8px, then band below.
+ */
+.filters-panel .panel-resize-handle--inner-left.panel-resize-handle--music-launch::before {
     content: '';
     position: absolute;
     right: 0;
-    bottom: -4px;
+    bottom: auto;
+    /* Slight overlap with trapezium ::after (same -2px language as top band / ::after top). */
+    top: calc(var(--event-info-side-gap-h) - 2px + var(--event-info-side-trapezium-h) + 8px - 2px);
     width: var(--event-info-side-border-w);
     height: calc(max(0px, var(--event-info-side-gap-h)) + 4px);
     background-image: url('../../../assets/images/misc/Mirrored%20Cut%20Panel%20Border.png');
@@ -400,6 +460,10 @@ body.color-palette-nulled .panel--resizing .panel-resize-handle__pill {
     .panel-resize-handle {
         display: none !important;
     }
+
+    .filters-panel::before {
+        content: none !important;
+    }
 }
 
 @media (min-width: 769px) {
@@ -411,14 +475,41 @@ body.color-palette-nulled .panel--resizing .panel-resize-handle__pill {
     }
 
     /*
-     * Expanded pagination dock: keep Cut / Mirrored Cut bottom bands flush inside the handle.
-     * Default bottom: -4px + extra height overlaps dock top chrome when layout height animates;
-     * collapsed dock still uses the nudged overlap (user-preferred seam there).
+     * Pagination dock present (collapsed or expanded): reserve dock top-cap border image space so
+     * Cut / Mirrored Cut bands stop above that chrome instead of clipping into it.
      */
-    body:has(#paginationDock):not(.pagination-dock-collapsed) .event-slide .panel-resize-handle--inner-right::before,
-    body:has(#paginationDock):not(.pagination-dock-collapsed) .filters-panel .panel-resize-handle--inner-left::before {
-        bottom: 0;
-        height: max(0px, var(--event-info-side-gap-h));
+    body:has(#paginationDock) .event-slide .panel-resize-handle--inner-right::before {
+        bottom: calc(
+            var(--side-panel-dock-cut-bottom-lift, 0px) - var(--event-info-dock-border-overlap, 8px)
+        );
+        height: max(
+            0px,
+            calc(
+                var(--event-info-side-gap-h)
+                - var(--side-panel-dock-cut-bottom-lift, 0px)
+                + var(--event-info-dock-border-overlap, 8px)
+            )
+        );
+    }
+
+    /*
+     * Same dock reserve on filters music-launch (top-anchored pseudo): keep top anchor fixed and
+     * reduce height only, so both collapsed and expanded states behave consistently.
+     */
+    body:has(#paginationDock)
+        .filters-panel
+        .panel-resize-handle--inner-left.panel-resize-handle--music-launch::before {
+        bottom: auto;
+        top: calc(var(--event-info-side-gap-h) - 2px + var(--event-info-side-trapezium-h) + 8px - 2px);
+        height: max(
+            0px,
+            calc(
+                var(--event-info-side-gap-h)
+                - var(--side-panel-dock-cut-bottom-lift, 0px)
+                - var(--filters-dual-handle-offset, 0px)
+                + var(--filters-music-dock-border-overlap, 0px)
+            )
+        );
     }
 
     /*
@@ -442,5 +533,55 @@ body.color-palette-nulled .panel--resizing .panel-resize-handle__pill {
     .filters-panel .panel-resize-handle--inner-left .panel-resize-handle__pill {
         pointer-events: auto;
         cursor: ew-resize;
+    }
+
+    /*
+     * Debug overlay: tint side-panel border image zones.
+     * Enable by adding `debug-border-image-overlay` to <body>.
+     */
+    body.debug-border-image-overlay .event-slide .panel-resize-handle--inner-right {
+        background-image:
+            linear-gradient(rgba(255, 0, 255, 0.32), rgba(255, 0, 255, 0.32)),
+            url('../../../assets/images/misc/Panel Border.png');
+        background-repeat: no-repeat, no-repeat;
+        background-size:
+            var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h)),
+            var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h));
+        background-position: left top, left top;
+    }
+
+    body.debug-border-image-overlay
+        .filters-panel
+        .panel-resize-handle--inner-left.panel-resize-handle--filters-launch {
+        background-image:
+            linear-gradient(rgba(0, 200, 255, 0.32), rgba(0, 200, 255, 0.32)),
+            url('../../../assets/images/misc/Mirrored%20Panel%20Border.png');
+        background-repeat: no-repeat, no-repeat;
+        background-size:
+            var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h)),
+            var(--event-info-side-border-w) max(0px, var(--event-info-side-gap-h));
+        background-position: right top, right top;
+    }
+
+    body.debug-border-image-overlay .event-slide .panel-resize-handle--inner-right::before {
+        box-shadow: inset 0 0 0 9999px rgba(255, 64, 64, 0.34);
+    }
+
+    body.debug-border-image-overlay
+        .filters-panel
+        .panel-resize-handle--inner-left.panel-resize-handle--music-launch::before {
+        box-shadow: inset 0 0 0 9999px rgba(64, 255, 128, 0.34);
+    }
+
+    body.debug-border-image-overlay .event-slide .panel-resize-handle--inner-right::after {
+        box-shadow: inset 0 0 0 9999px rgba(255, 180, 0, 0.32);
+    }
+
+    body.debug-border-image-overlay .filters-panel .panel-resize-handle--inner-left::after {
+        box-shadow: inset 0 0 0 9999px rgba(0, 150, 255, 0.32);
+    }
+
+    body.debug-border-image-overlay .filters-panel::before {
+        box-shadow: inset 0 0 0 9999px rgba(190, 120, 255, 0.34);
     }
 }

@@ -12,6 +12,35 @@ const WELCOME_SFX_VOLUME_SCALE = 0.38;
 const WELCOME_SFX_VOLUME_CAP = 0.28;
 /** When startup theme + welcome path runs, music should be audible at this level. */
 const STARTUP_WELCOME_MUSIC_VOLUME = 0.3;
+const BORDER_IMAGE_DEBUG_STORAGE_KEY = 'debugBorderImageOverlay';
+
+function setBorderImageDebugOverlay(enabled) {
+    if (!document || !document.body) return;
+    document.body.classList.toggle('debug-border-image-overlay', !!enabled);
+    try {
+        localStorage.setItem(BORDER_IMAGE_DEBUG_STORAGE_KEY, enabled ? '1' : '0');
+    } catch (_) {
+        /* ignore */
+    }
+}
+
+function getBorderImageDebugOverlayEnabledFromStorage() {
+    try {
+        return localStorage.getItem(BORDER_IMAGE_DEBUG_STORAGE_KEY) === '1';
+    } catch (_) {
+        return false;
+    }
+}
+
+function shouldForceEnableBorderImageDebugOverlayFromQuery() {
+    try {
+        var qp = new URLSearchParams(window.location.search || '');
+        var raw = (qp.get('debugBorderOverlay') || '').toString().toLowerCase();
+        return raw === '1' || raw === 'true' || raw === 'on' || raw === 'yes';
+    } catch (_) {
+        return false;
+    }
+}
 
 /**
  * Unmute and set music volume for the first-run startup theme + welcome SFX path.
@@ -92,6 +121,7 @@ function scheduleWelcomeSoundForStartupTheme() {
 if (typeof window !== 'undefined') {
     window.scheduleWelcomeSoundForStartupTheme = scheduleWelcomeSoundForStartupTheme;
     window.applyStartupWelcomeMusicDefaults = applyStartupWelcomeMusicDefaults;
+    window.setBorderImageDebugOverlay = setBorderImageDebugOverlay;
 }
 
 // Detect if we're running on GitHub Pages (or similar static hosting)
@@ -126,6 +156,11 @@ if (isGitHubPages()) {
 window.addEventListener('DOMContentLoaded', function () {
     // Simplified default UX: start directly in Global Timeline mode.
     document.body.classList.add('app-timeline-default');
+    // Keep debug border overlays off by default; only explicit query can force-enable.
+    setBorderImageDebugOverlay(false);
+    if (shouldForceEnableBorderImageDebugOverlayFromQuery()) {
+        setBorderImageDebugOverlay(true);
+    }
 
     const loadingOverlay = document.getElementById('loadingOverlay');
     const pageName = window.location.pathname.split('/').pop() || 'index.html';

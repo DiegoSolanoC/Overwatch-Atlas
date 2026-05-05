@@ -564,6 +564,18 @@
             }
             return;
         }
+        if (lower === 'o') {
+            var body = document.body;
+            var next = !(body && body.classList.contains('debug-border-image-overlay'));
+            var setter = window.setBorderImageDebugOverlay;
+            if (typeof setter === 'function') {
+                setter(next);
+            } else if (body) {
+                body.classList.toggle('debug-border-image-overlay', next);
+            }
+            consumeEvent(e);
+            return;
+        }
         if (key === 'Enter') {
             if (isTypingContext(target)) return;
             if (target && target.closest && target.closest('button, a[href], [role="button"], [role="menuitem"]')) {
