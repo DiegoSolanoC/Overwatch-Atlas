@@ -3219,6 +3219,17 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 }
                             }
                             
+                            // Persist main-timeline rows for the dock before saveEvents() when a satellite archive
+                            // is active — saveEvents() only writes the active archive key; without this, story
+                            // dock edits never reach timelineEvents / data/events.json and vanish on reload.
+                            if (
+                                dockStoryPresentationActive &&
+                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
+                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
+                            ) {
+                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
+                            }
+
                             // Mark as unsaved and persist to localStorage
                             if (window.eventManager) {
                                 const idx = window.eventManager.events.indexOf(eventData);
@@ -3231,18 +3242,6 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                 }
                             }
 
-                            if (
-                                dockStoryPresentationActive &&
-                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
-                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
-                            ) {
-                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
-                            }
-
-                            if (window.eventManager?.refreshGlobeEvents) {
-                                window.eventManager.refreshGlobeEvents();
-                            }
-                            
                             // Disable editing
                             if (titleEl) {
                                 titleEl.contentEditable = 'false';
@@ -3287,11 +3286,21 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                             // Refresh display
                             this.updateSourcesAndFilters(target);
                             
-                            // Reload events from localStorage to get updated data
-                            if (window.eventManager?.dataService?.loadEvents) {
-                                window.eventManager.dataService.loadEvents();
-                                // Update allEvents reference
-                                this.allEvents = window.eventManager.events || [];
+                            // Do not call loadEvents() here: while viewing a satellite archive it reloads that
+                            // JSON from disk and can overwrite localStorage + in-memory rows unrelated to the dock.
+                            // While on story it re-fetches events.json and may prefer disk over timelineEvents
+                            // (lost edits if the dev POST failed or the file is stale). Dock rows are already updated in memory.
+                            this.allEvents =
+                                window.eventManager?.getDockTimelineEvents?.() ||
+                                window.eventManager?.events ||
+                                [];
+
+                            if (window.eventManager?.refreshGlobeEvents) {
+                                try {
+                                    window.eventManager.refreshGlobeEvents();
+                                } catch (err) {
+                                    console.warn('[MenuHelpers] refreshGlobeEvents after save failed', err);
+                                }
                             }
                             
                             // Regenerate slider ticks to update unfinished markers
@@ -3837,6 +3846,35 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     window.eventManager?.getDockTimelineEvents?.() ||
                                     [];
                                 
+                                const dockIndexFromFilteredSlot = (listIndex, list) => {
+                                    const dock = getDockEvents();
+                                    const filtered = list || getFilteredEvents();
+                                    if (
+                                        listIndex < 0
+                                        || !filtered.length
+                                        || listIndex >= filtered.length
+                                        || !dock.length
+                                    ) {
+                                        return listIndex;
+                                    }
+                                    const ev = filtered[listIndex];
+                                    if (!ev) return listIndex;
+                                    const di = dock.indexOf(ev);
+                                    return di !== -1 ? di : listIndex;
+                                };
+                                
+                                const syncPaginationToDockIndex = (dockIdx) => {
+                                    if (!Number.isFinite(dockIdx) || dockIdx < 0) return;
+                                    const totalPages = getTotalPages();
+                                    const targetPage = Math.max(
+                                        1,
+                                        Math.min(totalPages, Math.floor(dockIdx / eventsPerPage) + 1)
+                                    );
+                                    if (targetPage !== getCurrentPage()) {
+                                        handlePageChange(targetPage, { skipSound: true });
+                                    }
+                                };
+                                
                                 const navigateToEvent = (direction) => {
                                     const currentEvents = getFilteredEvents();
                                     if (!currentEvents.length) return;
@@ -3848,27 +3886,39 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                     let targetIndex;
                                     
                                     if (isEventOpen && currentIndex >= 0) {
-                                        // Event is open - navigate to next/prev event
-                                        targetIndex = currentIndex + direction;
+                                        // currentEventIndex is always a dock-timeline index from showEvent()
+                                        const dock = getDockEvents();
+                                        if (!dock.length) return;
                                         
-                                        // Wrap around
-                                        if (targetIndex < 0) targetIndex = currentEvents.length - 1;
-                                        if (targetIndex >= currentEvents.length) targetIndex = 0;
-                                        
-                                        // Close current event first
-                                        if (eventSlide) {
-                                            eventSlide.classList.remove('open');
+                                        let dockIdx;
+                                        if (currentEvents === dock) {
+                                            dockIdx = currentIndex + direction;
+                                            if (dockIdx < 0) dockIdx = dock.length - 1;
+                                            if (dockIdx >= dock.length) dockIdx = 0;
+                                        } else {
+                                            const atDock = dock[currentIndex];
+                                            let curF = currentEvents.indexOf(atDock);
+                                            if (curF === -1) {
+                                                curF = direction > 0 ? -1 : currentEvents.length;
+                                            }
+                                            let nextF = curF + direction;
+                                            if (nextF < 0) nextF = currentEvents.length - 1;
+                                            if (nextF >= currentEvents.length) nextF = 0;
+                                            dockIdx = dock.indexOf(currentEvents[nextF]);
+                                            if (dockIdx === -1) return;
                                         }
                                         
-                                        // Open new event after brief delay
-                                        setTimeout(() => {
-                                            if (window.standaloneEventSlide) {
-                                                window.standaloneEventSlide.showEvent(targetIndex);
-                                                if (window.SoundEffectsManager?.play) {
-                                                    window.SoundEffectsManager.play('eventClick');
-                                                }
+                                        syncPaginationToDockIndex(dockIdx);
+                                        
+                                        // Keep panel open: closing + delayed reopen caused visible jitter
+                                        if (window.standaloneEventSlide) {
+                                            window.standaloneEventSlide.showEvent(dockIdx, {
+                                                keepSlideHistory: true
+                                            });
+                                            if (window.SoundEffectsManager?.play) {
+                                                window.SoundEffectsManager.play('eventClick');
                                             }
-                                        }, 50);
+                                        }
                                     } else {
                                         // No event open - load first event of current page
                                         const currentPage = getCurrentPage();
@@ -3891,7 +3941,12 @@ export function createMenuButtons(setupGlobeHandler, setupGlossaryHandler = null
                                         }
                                         
                                         if (targetIndex < currentEvents.length && window.standaloneEventSlide) {
-                                            window.standaloneEventSlide.showEvent(targetIndex);
+                                            const dockIdx = dockIndexFromFilteredSlot(
+                                                targetIndex,
+                                                currentEvents
+                                            );
+                                            syncPaginationToDockIndex(dockIdx);
+                                            window.standaloneEventSlide.showEvent(dockIdx);
                                             if (window.SoundEffectsManager?.play) {
                                                 window.SoundEffectsManager.play('eventClick');
                                             }

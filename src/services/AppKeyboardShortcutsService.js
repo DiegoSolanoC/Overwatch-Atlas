@@ -295,6 +295,12 @@
     }
 
     function triggerEventSlidePrev() {
+        /* Dock rail (standalone / timeline): wired in MenuHelpers with page sync + filtered nav */
+        var dock = document.getElementById('prevEventBtn');
+        if (dock && !dock.disabled) {
+            dock.click();
+            return true;
+        }
         var b = document.getElementById('eventPrevBtn');
         if (!b || b.disabled) return false;
         b.click();
@@ -302,6 +308,11 @@
     }
 
     function triggerEventSlideNext() {
+        var dock = document.getElementById('nextEventBtn');
+        if (dock && !dock.disabled) {
+            dock.click();
+            return true;
+        }
         var b = document.getElementById('eventNextBtn');
         if (!b || b.disabled) return false;
         b.click();

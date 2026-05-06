@@ -79,7 +79,7 @@
     },
     {
       "name": "Athena",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [],
       "connections": [
         {
@@ -613,7 +613,7 @@
         },
         {
           "kind": "faction",
-          "name": "Livre Tournois",
+          "name": "La Coterie",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

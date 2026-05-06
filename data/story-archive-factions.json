@@ -488,7 +488,7 @@
       "factionType": "Criminal Groups"
     },
     {
-      "name": "Livre Tournois",
+      "name": "La Coterie",
       "description": "",
       "relevantLocations": [],
       "connections": [
@@ -549,14 +549,6 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
-          "name": "Lynx 17",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Illari",
           "reasoningSubjectToLinked": "",
@@ -567,6 +559,14 @@
         {
           "kind": "hero",
           "name": "Venture",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Lynx 17",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -893,16 +893,16 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
-          "name": "Sven",
+          "kind": "faction",
+          "name": "Wayfinder Society",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "faction",
-          "name": "Wayfinder Society",
+          "kind": "npc",
+          "name": "Sven",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -1341,6 +1341,22 @@
           "showInCodex": true
         },
         {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "npc",
           "name": "Maximillien",
           "reasoningSubjectToLinked": "",
@@ -1373,24 +1389,8 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "npc",
           "name": "Adeyemi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Null Sector",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

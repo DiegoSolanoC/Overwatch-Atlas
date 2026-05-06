@@ -29,8 +29,9 @@
         phreaks: 'the phreaks',
         meka: 'm.e.k.a squad',
         yokai: 'yokai gang',
-        /* Manifest displayName Livre Tournois; PNG / keys still use Max's Vault body */
-        'livre tournois': 'max\'s vault'
+        /* Legacy names → La Coterie (manifest filename 18La Coterie.png) */
+        'livre tournois': 'la coterie',
+        'max\'s vault': 'la coterie'
     };
 
     function normalizeFactionMatchKey(raw) {

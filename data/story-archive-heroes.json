@@ -756,6 +756,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
       ],
       "heroRole": "Damage",
@@ -1043,14 +1051,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Illari",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "heroRole": "Damage",
@@ -1058,7 +1058,7 @@
     },
     {
       "name": "Echo",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Oslo",
@@ -1067,6 +1067,14 @@
         }
       ],
       "connections": [
+        {
+          "kind": "hero",
+          "name": "Cassidy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
         {
           "kind": "npc",
           "name": "Liao",
@@ -1608,14 +1616,6 @@
         {
           "kind": "faction",
           "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Venture",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

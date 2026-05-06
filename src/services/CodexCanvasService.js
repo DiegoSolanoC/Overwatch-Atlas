@@ -877,6 +877,10 @@ function codexBioEntityPairHasJunctionAlternatePath(aId, bId) {
 /**
  * Reconcile Codex cords with archive JSON (heroes/factions/npcs): drop edges that no longer have a matching
  * `showInCodex` row, then add any missing links from archives. (Junction / country links are left untouched.)
+ *
+ * Bio↔bio chords listed in the archive are also **removed** when the graph already connects the same pair
+ * through at least one junction (“break”) waypoint — same rule as skipping adds — so merged breaks do not
+ * leave a misleading direct cord alongside A→J→…→B routing.
  */
 async function syncCodexEdgesFromBioArchiveConnections() {
     if (!root || !Array.isArray(codexAllNodes) || codexAllNodes.length === 0) return;
@@ -946,7 +950,10 @@ async function syncCodexEdgesFromBioArchiveConnections() {
             continue;
         }
         const pk = codexUnorderedPairKey(e.fromId, e.toId);
-        if (allowedUnorderedNodePairKeys.has(pk)) {
+        const authorized = allowedUnorderedNodePairKeys.has(pk);
+        const redundantChord =
+            authorized && codexBioEntityPairHasJunctionAlternatePath(e.fromId, e.toId);
+        if (authorized && !redundantChord) {
             nextEdges.push(e);
         } else {
             removed += 1;
@@ -1115,6 +1122,7 @@ function insertCodexBreakBetweenSelectedPair() {
 /**
  * Dev mode: merge two selected junction (“break”) nodes into one at the **primary** selection’s position.
  * Rewires every edge that touched the secondary junction to use the primary id; removes the secondary node.
+ * Does not synthesize new bio↔bio edges — only remaps endpoints onto the kept junction id.
  * @returns {boolean}
  */
 function mergeCodexJunctionPairKeepPrimary(primaryId, secondaryId) {

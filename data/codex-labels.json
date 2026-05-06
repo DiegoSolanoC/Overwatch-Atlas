@@ -64,8 +64,8 @@
     {
       "id": "cn-1776188407279-tczl1kd3",
       "kind": "faction",
-      "factionFilename": "18Livre Tournois",
-      "factionDisplay": "Livre Tournois",
+      "factionFilename": "18La Coterie",
+      "factionDisplay": "La Coterie",
       "x": 8838.40787908565,
       "y": 10144.12859050926,
       "scale": 2,
@@ -412,8 +412,8 @@
       "id": "cn-1776196204721-fis6namn",
       "kind": "hero",
       "heroName": "Baptiste",
-      "x": 12316.6,
-      "y": 8211.23,
+      "x": 12495.408394742039,
+      "y": 8217.732123445163,
       "scale": 2.5,
       "bgColor": null
     },
@@ -475,8 +475,8 @@
       "id": "cn-1776196449851-ihq6q2kc",
       "kind": "hero",
       "heroName": "Echo",
-      "x": 11351.61563460954,
-      "y": 8119.247324174154,
+      "x": 11221.557531096698,
+      "y": 8155.011678948407,
       "scale": 2.5,
       "bgColor": null
     },
@@ -826,8 +826,8 @@
       "id": "cn-1776196956799-6ugphhum",
       "kind": "hero",
       "heroName": "Zarya",
-      "x": 11996.7,
-      "y": 8207.42,
+      "x": 12235.091376451079,
+      "y": 7985.612371475954,
       "scale": 2.5,
       "bgColor": null
     },
@@ -871,8 +871,8 @@
       "id": "cn-1776197740892-6e9fqzn6",
       "kind": "npc",
       "npcName": "Athena",
-      "x": 11527.20440587424,
-      "y": 7882.352150393929,
+      "x": 11409.087530052082,
+      "y": 7806.990375746527,
       "scale": 2,
       "bgColor": null
     },
@@ -1078,8 +1078,8 @@
       "id": "cn-1776198190957-4hj4odld",
       "kind": "npc",
       "npcName": "Liao",
-      "x": 10193.41563460954,
-      "y": 7074.017324174154,
+      "x": 10274.676543064563,
+      "y": 7113.03274067099,
       "scale": 2,
       "bgColor": null
     },
@@ -1390,6 +1390,22 @@
       "kind": "junction",
       "x": 7220.729120399917,
       "y": 11123.82533731425,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778084259867-j5gc29j7",
+      "kind": "junction",
+      "x": 11085.874979965278,
+      "y": 7872.223906151619,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778084307767-yys2cbfp",
+      "kind": "junction",
+      "x": 11889.88569138889,
+      "y": 8264.624281898148,
       "scale": 3,
       "bgColor": null
     }
@@ -1956,14 +1972,6 @@
       "toId": "cn-1776196956799-6ugphhum"
     },
     {
-      "fromId": "cn-1776198190957-4hj4odld",
-      "toId": "cn-1776196449851-ihq6q2kc"
-    },
-    {
-      "fromId": "cn-1776198190957-4hj4odld",
-      "toId": "cn-1776197740892-6e9fqzn6"
-    },
-    {
       "fromId": "cn-1776196936200-9siqgmrn",
       "toId": "cn-1776289508655-9brmpvgq"
     },
@@ -2086,6 +2094,30 @@
     {
       "fromId": "cn-1776196821571-4rcgktce",
       "toId": "cn-1776189424359-1982a8ml"
+    },
+    {
+      "fromId": "cn-1776198190957-4hj4odld",
+      "toId": "cn-1778084259867-j5gc29j7"
+    },
+    {
+      "fromId": "cn-1778084259867-j5gc29j7",
+      "toId": "cn-1776196449851-ihq6q2kc"
+    },
+    {
+      "fromId": "cn-1776196229194-2fk44bft",
+      "toId": "cn-1778084307767-yys2cbfp"
+    },
+    {
+      "fromId": "cn-1778084307767-yys2cbfp",
+      "toId": "cn-1776196449851-ihq6q2kc"
+    },
+    {
+      "fromId": "cn-1778084259867-j5gc29j7",
+      "toId": "cn-1776198190957-4hj4odld"
+    },
+    {
+      "fromId": "cn-1778084259867-j5gc29j7",
+      "toId": "cn-1776197740892-6e9fqzn6"
     }
   ]
 }

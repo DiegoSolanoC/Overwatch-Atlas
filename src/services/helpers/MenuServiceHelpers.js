@@ -2086,6 +2086,14 @@ export function createMenuButtonsContainer(statusService) {
                                 }
                             }
                             
+                            if (
+                                dockStoryPresentationActive &&
+                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
+                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
+                            ) {
+                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
+                            }
+
                             if (window.eventManager) {
                                 const idx = window.eventManager.events.indexOf(eventData);
                                 if (idx >= 0) window.eventManager.unsavedEventIndices.add(idx);
@@ -2100,18 +2108,6 @@ export function createMenuButtonsContainer(statusService) {
                                 }
                             } else {
                                 console.error('[MenuServiceHelpers] window.eventManager not available!');
-                            }
-
-                            if (
-                                dockStoryPresentationActive &&
-                                (window.eventManager?.dataService?.getArchiveSource?.() || 'story') !== 'story' &&
-                                typeof window.eventManager?.dataService?.persistStoryDockTimelineFromSnapshot === 'function'
-                            ) {
-                                window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
-                            }
-
-                            if (window.eventManager?.refreshGlobeEvents) {
-                                window.eventManager.refreshGlobeEvents();
                             }
 
                             } // end story-only full save branch
@@ -2135,6 +2131,14 @@ export function createMenuButtonsContainer(statusService) {
                             this.originalState = null;
                             
                             this.updateSourcesAndFilters(eventForFilterRefresh);
+
+                            if (archiveSource === 'story' && window.eventManager?.refreshGlobeEvents) {
+                                try {
+                                    window.eventManager.refreshGlobeEvents();
+                                } catch (err) {
+                                    console.warn('[MenuServiceHelpers] refreshGlobeEvents after save failed', err);
+                                }
+                            }
                             
                             if (window.SoundEffectsManager?.play) {
                                 window.SoundEffectsManager.play('save');
@@ -2660,6 +2664,35 @@ export function createMenuButtonsContainer(statusService) {
                                     window.eventManager?.getDockTimelineEvents?.() ||
                                     [];
                                 
+                                const dockIndexFromFilteredSlot = (listIndex, list) => {
+                                    const dock = getDockEvents();
+                                    const filtered = list || getFilteredEvents();
+                                    if (
+                                        listIndex < 0
+                                        || !filtered.length
+                                        || listIndex >= filtered.length
+                                        || !dock.length
+                                    ) {
+                                        return listIndex;
+                                    }
+                                    const ev = filtered[listIndex];
+                                    if (!ev) return listIndex;
+                                    const di = dock.indexOf(ev);
+                                    return di !== -1 ? di : listIndex;
+                                };
+                                
+                                const syncPaginationToDockIndex = (dockIdx) => {
+                                    if (!Number.isFinite(dockIdx) || dockIdx < 0) return;
+                                    const totalPages = getTotalPages();
+                                    const targetPage = Math.max(
+                                        1,
+                                        Math.min(totalPages, Math.floor(dockIdx / eventsPerPage) + 1)
+                                    );
+                                    if (targetPage !== getCurrentPage()) {
+                                        handlePageChange(targetPage, { skipSound: true });
+                                    }
+                                };
+                                
                                 const navigateToEvent = (direction) => {
                                     const currentEvents = getFilteredEvents();
                                     if (!currentEvents.length) return;
@@ -2671,27 +2704,38 @@ export function createMenuButtonsContainer(statusService) {
                                     let targetIndex;
                                     
                                     if (isEventOpen && currentIndex >= 0) {
-                                        // Event is open - navigate to next/prev event
-                                        targetIndex = currentIndex + direction;
+                                        // currentEventIndex is always a dock-timeline index from showEvent()
+                                        const dock = getDockEvents();
+                                        if (!dock.length) return;
                                         
-                                        // Wrap around
-                                        if (targetIndex < 0) targetIndex = currentEvents.length - 1;
-                                        if (targetIndex >= currentEvents.length) targetIndex = 0;
-                                        
-                                        // Close current event first
-                                        if (eventSlide) {
-                                            eventSlide.classList.remove('open');
+                                        let dockIdx;
+                                        if (currentEvents === dock) {
+                                            dockIdx = currentIndex + direction;
+                                            if (dockIdx < 0) dockIdx = dock.length - 1;
+                                            if (dockIdx >= dock.length) dockIdx = 0;
+                                        } else {
+                                            const atDock = dock[currentIndex];
+                                            let curF = currentEvents.indexOf(atDock);
+                                            if (curF === -1) {
+                                                curF = direction > 0 ? -1 : currentEvents.length;
+                                            }
+                                            let nextF = curF + direction;
+                                            if (nextF < 0) nextF = currentEvents.length - 1;
+                                            if (nextF >= currentEvents.length) nextF = 0;
+                                            dockIdx = dock.indexOf(currentEvents[nextF]);
+                                            if (dockIdx === -1) return;
                                         }
                                         
-                                        // Open new event after brief delay
-                                        setTimeout(() => {
-                                            if (window.standaloneEventSlide) {
-                                                window.standaloneEventSlide.showEvent(targetIndex);
-                                                if (window.SoundEffectsManager?.play) {
-                                                    window.SoundEffectsManager.play('eventClick');
-                                                }
+                                        syncPaginationToDockIndex(dockIdx);
+                                        
+                                        if (window.standaloneEventSlide) {
+                                            window.standaloneEventSlide.showEvent(dockIdx, {
+                                                keepSlideHistory: true
+                                            });
+                                            if (window.SoundEffectsManager?.play) {
+                                                window.SoundEffectsManager.play('eventClick');
                                             }
-                                        }, 50);
+                                        }
                                     } else {
                                         // No event open - load first event of current page
                                         const currentPage = getCurrentPage();
@@ -2714,7 +2758,12 @@ export function createMenuButtonsContainer(statusService) {
                                         }
                                         
                                         if (targetIndex < currentEvents.length && window.standaloneEventSlide) {
-                                            window.standaloneEventSlide.showEvent(targetIndex);
+                                            const dockIdx = dockIndexFromFilteredSlot(
+                                                targetIndex,
+                                                currentEvents
+                                            );
+                                            syncPaginationToDockIndex(dockIdx);
+                                            window.standaloneEventSlide.showEvent(dockIdx);
                                             if (window.SoundEffectsManager?.play) {
                                                 window.SoundEffectsManager.play('eventClick');
                                             }

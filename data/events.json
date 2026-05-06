@@ -675,6 +675,10 @@
         {
           "text": "Overwatch Website, Moira",
           "url": "https://overwatch.blizzard.com/en-us/heroes/moira/"
+        },
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
       "headlines": [
@@ -2143,12 +2147,16 @@
       "name": "A Grasping Talon",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
-      "description": "A corrupt force began to rise from the shadows in the years nearing the crisis. The internationally designated Terrorist Organization known as Talon began to spread their influence across the world. The organization was a losing coalition of criminal groups around the world, as well as many corporations and political parties that wished to use their means to further their own influence.<br><br>Talon was a decentralized organization, commanded by an ever-changing council of top contributors. It began spreading itself across Europe by installing puppet governments and supporting corporate power grabs, in order to impose their dominance on the global elite and satisfy the wishes of the benefactors. The organization would go under the radar of most regulatory agencies thanks to its subtle tactics and ever-growing corruption of authority. But as their influence grew, the global political climate began to become more and more tense.",
+      "description": "A corrupt force began to rise from the shadows in the years nearing the crisis. The internationally designated Terrorist Organization known as Talon began to spread their influence across the world. The organization was a losing coalition of criminal groups around the world, as well as many corporations and political parties that wished to use their means to further their own influence.\n\nTalon was a decentralized organization, commanded by an ever-changing council of top contributors. It began spreading itself across Europe by installing puppet governments and supporting corporate power grabs, in order to impose their dominance on the global elite and satisfy the wishes of the benefactors. The organization would go under the radar of most regulatory agencies thanks to its subtle tactics and ever-growing corruption of authority. But as their influence grew, the global political climate began to become more and more tense.",
       "image": "",
       "sources": [
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Website: Vendetta",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/vendetta/"
         }
       ],
       "headlines": [
@@ -2191,7 +2199,7 @@
     },
     {
       "name": "Collaterate Damage",
-      "description": "Following Aurora's trials and the many controversies they had found themselves in, from accusations of fraud and many protests from locals who were affected by the Omniums, as well as critics of Aurora's research, Omnica found itself with no other option than bankruptcy.<br><br>The Company shut down all operations, but decided to keep ownership of their Omnium factories. Full decommissioning of the factories proved to be a logistical nightmare, and many people at the Company remained hopeful that one day they would be able to use them again, so in the end Omnica left the world with giant empty shells, ghostly facilities that went unused for years.<br><br>By humans, anyway.",
+      "description": "Following Aurora's trials and the many controversies they had found themselves in, from accusations of fraud and many protests from locals who were affected by the Omniums, as well as critics of Aurora's research, Omnica found itself with no other option than bankruptcy.\n\nThe Company shut down all operations, but decided to keep ownership of their Omnium factories. Full decommissioning of the factories proved to be a logistical nightmare, and many people at the Company remained hopeful that one day they would be able to use them again, so in the end Omnica left the world with giant empty shells, ghostly facilities that went unused for years.\n\nBy humans, anyway.",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
       "lat": 42.3315509,
@@ -2225,7 +2233,12 @@
           "reasoning": "The Legal battle for Aurora's personhood plays a large part in the bankrupcy"
         }
       ],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ]
     },
     {
       "name": "Satya Vaswani is Born",
@@ -4611,7 +4624,7 @@
       "name": "Watching the Globe",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "As Overwatch expanded its personnel, they found themselves in need for more bases of operations. The solution became the Watchpoint system, massive specialized facilities all across the world that would not only allow Overwatch to focus its dedicated personnel into a single place, but also increase their influence and ease of action in many different countries. Plenty of criticism rose from the UN, with many thinking it was an overreach, but the approval rates were overwhelming, as after all, who wouldn't want superheroes living in their neighborhood? With the rise of Omnic violence, the many cities in need of humanitarian aid and rebuilding efforts being halted by lack of manpower, Overwatch's help was welcomed all around the globe.<br><br>Acquiring permission for building the Watchpoints was a political battle of its own, but some of them came from resources shared from within. The Martins had been given a small military outpost and research lab on the Strait of Gibraltar following their support of Spain during the Crisis. Once the war was over, the base went unused, so they decided to donate the outpost to become the very first Watchpoint. Many bases were built for specialized purposes. Gibraltar got turned into an Orbital Launch site, but in addition to that, Overwatch would soon see many other bases. Grand Mesa, a weapons development facility. Kerguelen, reserved for biological studies. Xining, focused on social analysis and Omnic integration, as well as later on the maximum security prison at Grímsvötn. In addition to the Watchpoints, Overwatch also established headquarters in Zurich, establishing the beginning of a new hopeful era for humanity.",
+      "description": "As Overwatch expanded its personnel, they found themselves in need for more bases of operations. The solution became the Watchpoint system, massive specialized facilities all across the world that would not only allow Overwatch to focus its dedicated personnel into a single place, but also increase their influence and ease of action in many different countries. Plenty of criticism rose from the UN, with many thinking it was an overreach, but the approval rates were overwhelming, as after all, who wouldn't want superheroes living in their neighborhood? With the rise of Omnic violence, the many cities in need of humanitarian aid and rebuilding efforts being halted by lack of manpower, Overwatch's help was welcomed all around the globe.\n\nAcquiring permission for building the Watchpoints was a political battle of its own, but some of them came from resources shared from within. The Martins had been given a small military outpost and research lab on the Strait of Gibraltar following their support of Spain during the Crisis. Once the war was over, the base went unused, so they decided to donate the outpost to become the very first Watchpoint. Many bases were built for specialized purposes. Gibraltar got turned into an Orbital Launch site, but in addition to that, Overwatch would soon see many other bases. Grand Mesa, a weapons development facility. Kerguelen, reserved for biological studies. Xining, focused on social analysis and Omnic integration, as well as later on the maximum security prison at Grímsvötn. In addition to the Watchpoints, Overwatch also established headquarters in Zurich, establishing the beginning of a new hopeful era for humanity.",
       "image": "",
       "sources": [
         {
@@ -4643,11 +4656,6 @@
           "locationName": "",
           "country": "French Southern and Antarctic Lands,",
           "reasoning": "Watchpoint Kerguelen, Biological Studies"
-        },
-        {
-          "locationName": "",
-          "country": "China,",
-          "reasoning": "Watchpoint: Xining, Social Analitics and Omnic Integration"
         },
         {
           "locationName": "",
@@ -5285,7 +5293,16 @@
       "headlines": [
         "US Government publicly allows SEP Soldiers to remain anonymous"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "text": "New Heights",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/new-heights/"
+        },
+        {
+          "text": "Overwatch Website: Sierra",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Appalachian Virginia, United States",
@@ -5623,10 +5640,63 @@
       ]
     },
     {
+      "name": "Gwishin",
+      "locationType": "earth",
+      "cityDisplayName": "Busan, South Korea",
+      "description": "Years after the end of the Crisis a Robotic Colossus emerged from the East China Sea, immediately making its advance towards South Korea and setting off Overwatch's alarms. Morrison recalled all agent fields and directed every resource they had towards the machine. The battle against the colossus was unlike any other; The robot dwarfed even the largest Crisis-era Titan units. By the time Overwatch and the Korean army, the Colossus was miles offshore, intercepting shipping vessels and destroying them without hesitation. Overwatch, not used to fighting in water, struggled to contain the beast and stop the violence, but in the end the Colossus was beaten back and presumably destroyed.\n\nSome strike team members welcomed the battle as a chance to return to what they did best, while for many others this was far more concerning. Liao noticed the warbot's design felt unusual to her, so she requested a long-term field assignment to South Korea to study the remains, and while Korea had shown significant push back at the idea of establishing a Watchpoint in the country, they at least aided Liao by providing her with recovered pieces for Analysis. The primary concern was for some hostile group to have access to an unknown Omnium and use it to attack enemy nations. For the time being, it appeared there would be no way to find out what happened, and Liao's research would not yield any results for months. The beast would be known as the Gwishin, a type of spirit curse to roam the earth in Korean folklore, a fitting name for a lingering ghost of the Omnic Crisis.\n\nSeeing as Korea would not allow the construction of an base, Overwatch would establish Watchpoint: Xining in China. Originally planed as a Busan base before Korea's rejection, the base  would focus on analyzing world politics and inter personal patterns, as well as working towards Omnic Integration and Crisis recovery of communities around Asia. However te base would also act as Overwatch's nearest deployment in case of another Gwishin attack.",
+      "image": "",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2056,
+      "yearEnd": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": "A massive colossus rises"
+        },
+        {
+          "locationName": "Xining, China",
+          "country": "China,",
+          "reasoning": "Watchpoint Xining: Social Analysisc, Omnic Integration and Gwishin Response"
+        },
+        {
+          "locationName": "East China Sea",
+          "country": "China,",
+          "reasoning": "Emergance point of the first Gwishin"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Quick all out response towards Gwishin attack"
+        },
+        {
+          "locationName": "",
+          "country": "MEKA",
+          "reasoning": "Formed years later for Gwishin response"
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": "A phantom group of war machines made by an underwater Omnium"
+        }
+      ],
+      "headlines": []
+    },
+    {
       "name": "Ecological Initiative",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
-      "description": "With God programs being gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they started to become heavily neglected. Anubis was meant to be used for ecological preservation, and yet with most infrastructure lost, the whole left by the program began to become apparent to Hector and Claudio. The Martins were long time environmentalist advocates, and they believed that Overwatch could be used to improve the world, so they took a proposal to Morrison and the UN to create a specialized Watchpoint branch. The Ecopoint Program would create stations staffed with Overwatch's scientific leads in critical locations across the globe, where they could monitor ongoing abnormalities in nature and aid in global efforts for preservation of the environment. In spite of a wave of nationalism and distrust for Overwatch presence hitting many countries over the years, the Ecopoints were quite a welcomed proposal, as the Martins were highly respected names in the international communities they worked with, and the benefits of scientifically-oriented bases were far more self-evident than the more generalist and often military nature of Watchpoints. With the approval of the program, other big names like Mui and Namuaca quickly joined, adding further credibility to the initiative. <br><br>In the end, seven initial bases were approved, with more coming later. Ecopoint Antartica focused on monitoring the impacts of climate change and pursuing methods of recovery of both the atmosphere and the ice caps, as well as studying strange fluctuations found around the Peninsula. Samoa would receive a base within one of the active volcanoes, to focus on seismic monitoring and geothermal research, detecting multiple major earthquakes in the region and saving countless lives. Ecopoint Connemara focused on the restoration of Irish boglands, later on collaborating with Russian scientists to aid in revitalizing the Siberian lowlands. Ecopoint Osa in Costa Rica would focus on the recovery of reptiles and amphibians of the Corcovado cloud forest, seen as a bellwether of the rest of the natural world, focusing primarily on antifungals and biological solutions to waste treatment. Ecopoint Zelandia off the coast of New Zeland would exist in response to the Australian fall-out zone, focusing on filtering radiation and aiding in the recovery of Oceania following the ALF's attack. Ecopoint Tarapoto, deep within the Colombian Amazon, was built to study the many ecosystems of the area. And lastly, Ecopoint Monterrey, a submarine base off the shore of California, meant to research marine life and follow protocols originally proposed by Leon Honisch to aid in the recovery of many species.<br><br>The program was overall seen as one of Overwatch's most clean-cut successes and net positives to society at large, and a great example of the good they could do for the world",
+      "description": "With God programs being gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they started to become heavily neglected. Anubis was meant to be used for ecological preservation, and yet with most infrastructure lost, the whole left by the program began to become apparent to Hector and Claudio. The Martins were long time environmentalist advocates, and they believed that Overwatch could be used to improve the world, so they took a proposal to Morrison and the UN to create a specialized Watchpoint branch. The Ecopoint Program would create stations staffed with Overwatch's scientific leads in critical locations across the globe, where they could monitor ongoing abnormalities in nature and aid in global efforts for preservation of the environment. In spite of a wave of nationalism and distrust for Overwatch presence hitting many countries over the years, the Ecopoints were quite a welcomed proposal, as the Martins were highly respected names in the international communities they worked with, and the benefits of scientifically-oriented bases were far more self-evident than the more generalist and often military nature of Watchpoints. With the approval of the program, other big names like Mui and Namuaca quickly joined, adding further credibility to the initiative. \n\nIn the end, seven initial bases were approved, with more coming later. Ecopoint Antartica focused on monitoring the impacts of climate change and pursuing methods of recovery of both the atmosphere and the ice caps, as well as studying strange fluctuations found around the Peninsula. Samoa would receive a base within one of the active volcanoes, to focus on seismic monitoring and geothermal research, detecting multiple major earthquakes in the region and saving countless lives. Ecopoint Connemara focused on the restoration of Irish boglands, later on collaborating with Russian scientists to aid in revitalizing the Siberian lowlands. Ecopoint Osa in Costa Rica would focus on the recovery of reptiles and amphibians of the Corcovado cloud forest, seen as a bellwether of the rest of the natural world, focusing primarily on antifungals and biological solutions to waste treatment. Ecopoint Zelandia off the coast of New Zeland would exist in response to the Australian fall-out zone, focusing on filtering radiation and aiding in the recovery of Oceania following the ALF's attack. Ecopoint Tarapoto, deep within the Colombian Amazon, was built to study the many ecosystems of the area. And lastly, Ecopoint Monterrey, a submarine base off the shore of California, meant to research marine life and follow protocols originally proposed by Leon Honisch to aid in the recovery of many species.\n\nThe program was overall seen as one of Overwatch's most clean-cut successes and net positives to society at large, and a great example of the good they could do for the world",
       "image": "",
       "lat": -13.8345235,
       "lon": -171.7630955,
@@ -5688,7 +5758,9 @@
           "reasoning": "Approval of the Ecopoint program and multiple bases"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Overwatch to approve ecological focused bases on many countries"
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -5748,8 +5820,66 @@
       ]
     },
     {
+      "name": "The Red Promise",
+      "locationType": "earth",
+      "cityDisplayName": "Lijiang City, China",
+      "description": "The Horizon Lunar Colony had been a long-lasting success by this point, but Lucheng Interstellar was never aiming for the Moon. Their eyes always lie beyond the stars. So many years after the Moon base's establishment, the company felt ready to begin the process on the next frontier: Mars.\n\nThe initial proposal, however, was denied by the UN, but this did not stop Lucheng. They would keep the plans in motion funded internally, and begin gathering a group of scientists and engineers in the public eye. The small team was going to be the first phase of Project: Red Promise, a multi-stage terraforming Initiative to colonize the surface of Mars. At first, the project carried on smoothly, as the astronauts arrived on the red planet's surface and established a base within a matter of months. What none of them expected was that two of the team members, Dr. Jiayi Teo and Dr. Khiem Van Minh, were having a baby",
+      "image": "",
+      "lat": 26.8595868,
+      "lon": 100.2249797,
+      "sources": [
+        {
+          "text": "Red Promise",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/the-red-promise/"
+        },
+        {
+          "text": "Overwatch Website: Juno",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/juno/"
+        }
+      ],
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang City, China",
+          "country": "China",
+          "reasoning": "Lucheng approves Martian colony in spite of UN denial"
+        },
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony,",
+          "reasoning": "Begins Construction secretly"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Juno",
+          "reasoning": "Future First martian"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng",
+          "reasoning": "Sets into motion the secret Project Red Promise"
+        }
+      ],
+      "headlines": [
+        "UN rejects funding proposal for Lucheng's Mars Colony"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": "Astronaut send as part of Project Red Promise"
+        }
+      ]
+    },
+    {
       "name": "Omnic Rights",
-      "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.<br>",
+      "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.\n",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -5775,7 +5905,12 @@
         "Mina Liao to tesitfy in favor of Omnic Rights",
         "Omnic Rights case passes the UN hearings"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -5785,42 +5920,10 @@
       ]
     },
     {
-      "name": "Gwishin",
-      "locationType": "earth",
-      "cityDisplayName": "Busan, South Korea",
-      "description": "",
-      "image": "",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2056,
-      "yearEnd": 2060,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, MEKA",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Black Ops",
       "locationType": "earth",
       "cityDisplayName": "Capetown, South Africa",
-      "description": "",
+      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge god program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge Ai and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
       "image": "",
       "lat": -33.9228378,
       "lon": 18.426976,
@@ -5837,29 +5940,52 @@
         {
           "locationName": "Capetown, South Africa",
           "country": "South Africa",
-          "reasoning": ""
+          "reasoning": "A rouge AI breaches containment and begins an insureciton"
+        },
+        {
+          "locationName": "Chicago, United States",
+          "country": "United States,",
+          "reasoning": "Reyes and Cassiy  get into a lawsuit"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reaper, Ana",
-          "reasoning": ""
+          "country": "Reaper,",
+          "reasoning": "Goes on Vacations with Gérard, criminals seemignly vanish every time"
+        },
+        {
+          "locationName": "",
+          "country": "Cassidy,",
+          "reasoning": "Gets involved in a lawsuit over criminal take down"
+        },
+        {
+          "locationName": "",
+          "country": "Ana,",
+          "reasoning": "Banned from Russia after rescue mission"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Blackwatch",
-          "reasoning": ""
+          "reasoning": "Constant breaking of protocol as red tape blocks them from acting in time"
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": "Goes on Vacations with Reyes, criminals seemignly vanish every time"
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Growing with the Clan",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
+      "description": "Over the years, the Shimada family had come to rely on the Yamagami Blades, the business run by Toshiro and his wife, Asa. The Yamagami name has served the city for generations following traditional paths, heavily linked by the local shrine to the Fox Spirit, and now under Shimada control, the family chose their side in the turf war of the clans. Not only did Toshiro develop the Anima weapons used by the clean head and his sons, but his wife proved to be quite an asset as well. Often regarded as the best sword master in the world, Asa would serve as the teacher to the Shimada brothers. From a very young age, Asa wished for his daughter to also choose the path of the blade, so since she was very little, Kiriko would often join the brothers in training. Both brothers would quickly grow attached to the little girl, seeing her as a little niece figure. Genji in particular, was one to slack off from training and play with the kids, stealing sweets from the kitchen and playing games in the arcade.\n\n It was not just the brothers who Kiriko grew close to, since she spent so much time in the Shimada Castle, the clan leader, Sojiro Shimada had also grown accustomed to her presence. She would often join the family during the fireworks festivals at the end of summer, and during one night, he told his sons the stories of the clan. How centuries ago, a rival clan attempted to end their rule by setting the orchards aflame, but the Shimada did not move to defend the fields. Instead, they aided the people. These teachings heavily shaped Kiriko's perspective of the clan as Kanezaka's protectors, while she was still too young to understand the true nature of their operations.\n\nOn the off days when Kiriko was not training, she spent time at the Fox shrine with her grandmother, who taught her the traditional ways of spiritual cleansing and meditation. From an early age, her grandmother would teach him how to use the Anima ofuda that her dad had crafted, to summon the Fox spirit and use it to aid those in need. Much like how her mother wanted her to follow in her footsteps, her grandma had laid another path for her as well.\n",
       "image": "",
       "lat": 35.3606,
       "lon": 138.7274,
@@ -5870,27 +5996,53 @@
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": ""
+          "reasoning": "The Shimada brothers train under the Yamagami Blades"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hanzo, Genji, Kiriko",
-          "reasoning": ""
+          "country": "Hanzo, Genji,",
+          "reasoning": "The Shimada brothers both see Kiriko as a cute little niece"
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": "Young kid joining the brothers in their training"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shimada",
-          "reasoning": ""
+          "country": "Shimada, Yamagami Blades,",
+          "reasoning": "The Clan establishes a continous relationship with the Yamagami family"
+        }
+      ],
+      "headlines": [
+        "Shimada clan stops Hashimoto attack during End of Summer festival",
+        "Reports of a ghostly Fox appearing in Kanezaka continue"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website: Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
+        },
+        {
+          "text": "Kiriko Origin Story",
+          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa, Toshiro,",
+          "reasoning": "Owners of the Yamagami business and parents to Kiriko"
         }
       ]
     },
     {
       "name": "Survivor",
-      "description": "",
+      "description": "\"Dez\" Stone would grow up in the living hell of the Australian Outback, where other exhiled savages roamed in caravans fighting in an unending battle for land and resources, in a hostile, radiated wasteland. If that was not enough already, wastlanders still needed to defend themselves from the Omnics, who had been forever changed by the radiation messing with their systems and the struggle to survive in harsh environments pushed them to become feral. Neither machines nor men were truly sane or safe. The Stones fought hard to survive this harsh life but one by one, they would fall all of them, except for Dez. Fueled by her anger towards King Mason for doing this to her family, and the loss of her loved ones, Odessa endured for years and became a formidable wasteland warrior, who scrapped Feral Omnics for parts to use on armor and weapons, including an electro magnetic gauntlet that proved deadly against anyone who opposed her. \n\nYears later, the memories of that day, where her family had vanished, still cause her nightmares.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Outback Wasteland, Australia",
@@ -5913,26 +6065,31 @@
         {
           "locationName": "Outback Wasteland, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Australian Wasteland becomes filled with raiders, mutants and feral Omnics"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Junker Queen",
-          "reasoning": ""
+          "reasoning": "Roamed through the Wastelands for years, salvagin Omnics to survive"
         }
+      ],
+      "headlines": [
+        "Australian Outback declared unsafe to visit due to Caravan raiders",
+        "Health Conditions on the south of Australia worsen as radiation outbreak continues"
       ]
     },
     {
       "name": "Pocket King",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "",
+      "description": "Following the Crisis many Omnics struggled to integrate into human society. Very few of them managed to climb up the ladder of capitalism, but perhaps there is no bigger success than that of Maximillien. Before the crisis, Max was a low-level accountant in Marseille, but following the Awakening he found himself in the position of a preeminent financial advisor for La Coterie, the name the press had given to a group of Europe's most influential power brokers. While he was often stepped on by many of his clients, soon enough they all began kneeling at his feet.  For the longest time, his clients blindly trusted their assets into Max, and behind their backs he had built an elaborate web of money laundering and contingency agreements, very carefully worded deals that would all direct those fortunes directly to him. After years of serving ignorant, arrogant Tycoons, Max arranged a meeting with the six most powerful figures of Monaco, and broke to them the news; he owned each one of them and their companies. \n\nOvernight, Max had become one of the most powerful figures in out of Europe, and the head of La Coterie. The Omnic was one call away from bankrupting anyone he wished to, so his old clients had no real choice but to serve him. Over the years, Maximillien had guided the reconstruction and rise of Monte Carlo from the shadows, and after years of effort he owned half of the city. His reign over Monaco would continue to expand as he pursued other deals across Europe and beyond, later acquiring Don Rumbotico in Cuba and using it as yet another front for his money laundering. From the window views of his casino, Max watched as the world's wealthiest and powerful elites fed from his hand.",
       "image": "",
       "sources": [
         {
-          "text": "Pocket King"
+          "text": "The Pocket King",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/the-pocket-king/"
         }
       ],
       "yearStart": 2063,
@@ -5944,67 +6101,33 @@
         {
           "locationName": "Monte-Carlo, Monaco",
           "country": "Monaco",
-          "reasoning": ""
+          "reasoning": "Maximillien secures assets to pretty much the entirety of Monaco"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Livre Tournois",
-          "reasoning": ""
+          "country": "La Coterie,",
+          "reasoning": "A name given to Europe's most powerful power brokers"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "The Red Promise",
-      "locationType": "earth",
-      "cityDisplayName": "Lijiang City, China",
-      "description": "",
-      "image": "",
-      "lat": 26.8595868,
-      "lon": 100.2249797,
-      "sources": [
-        {
-          "text": "Red Promise"
+          "reasoning": "Comes to contorl the entirety of Monte Carlo"
         }
       ],
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Lijiang City, China",
-          "country": "China",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Juno",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng",
-          "reasoning": ""
-        }
+      "headlines": [
+        "Omnic appointed head of Monte Carlo's development",
+        "Axiom stocks spike follwoing change in company leadership"
       ]
     },
     {
       "name": "Juno Teo Minh is Born",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
-      "description": "No description available.",
+      "description": "On Marsh 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.\n\nIt also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the Cowboy movies that her dad had brought with him.",
       "image": "",
       "x": 45,
       "y": 35,
@@ -6029,7 +6152,21 @@
         {
           "locationName": "",
           "country": "Juno",
-          "reasoning": ""
+          "reasoning": "Juno Teo Minh is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Unaware of Juno's existance"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": "Juno's Mother"
         }
       ]
     },

@@ -82,18 +82,20 @@ class GlobeSyncService {
             const r0 = this._refreshEventMarkers();
             markerPromise = r0 && typeof r0.then === 'function' ? r0 : Promise.resolve();
 
-            // Refresh pagination UI
-            if (window.globeController.uiView && window.globeController.uiView.dataModel) {
-                // Trigger pagination update
-                const currentPage = window.globeController.dataModel.getCurrentEventPage();
-                window.globeController.dataModel.setCurrentEventPage(currentPage);
-
-                // Re-setup pagination to update UI
-                window.globeController.uiView.setupEventPagination(() => {
+            // Refresh pagination UI (optional — UIView in current app often has no setupEventPagination; standalone dock wires its own.)
+            const ui = window.globeController.uiView;
+            const dm = window.globeController.dataModel;
+            if (ui && typeof ui.setupEventPagination === 'function' && dm) {
+                const currentPage = dm.getCurrentEventPage();
+                dm.setCurrentEventPage(currentPage);
+                ui.setupEventPagination(() => {
                     this._refreshEventMarkers(true, {
                         preservePaginationThumbEntrance: true
                     });
                 });
+            } else if (dm && typeof dm.getCurrentEventPage === 'function' && typeof dm.setCurrentEventPage === 'function') {
+                const currentPage = dm.getCurrentEventPage();
+                dm.setCurrentEventPage(currentPage);
             }
 
             // Update news ticker with headlines from current page

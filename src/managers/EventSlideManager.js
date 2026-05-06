@@ -1507,12 +1507,16 @@ export class EventSlideManager {
                 window.eventManager.dataService.persistStoryDockTimelineFromSnapshot();
             }
 
-            if (window.eventManager?.refreshGlobeEvents) {
-                window.eventManager.refreshGlobeEvents();
-            }
-
-            // Exit edit mode and render display text
+            // Exit edit mode first so a failing marker/pagination refresh cannot strand the slide in edit UI.
             this._exitInlineDescriptionEdit(true);
+
+            if (window.eventManager?.refreshGlobeEvents) {
+                try {
+                    window.eventManager.refreshGlobeEvents();
+                } catch (err) {
+                    console.warn('[EventSlideManager] refreshGlobeEvents after save failed', err);
+                }
+            }
 
             // Quick feedback
             const originalLabel = saveBtn.textContent;
