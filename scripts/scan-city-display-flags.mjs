@@ -7,7 +7,7 @@ import vm from 'vm';
 
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(new URL('../src/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
+vm.runInContext(fs.readFileSync(new URL('../src/features/worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
 const FLAG_FILE_BY_COMMON = sandbox.window.FLAG_FILE_BY_COMMON;
 
 const ALIASES = {
@@ -134,7 +134,7 @@ function wouldGetFlag(locationName, locationType) {
   return false;
 }
 
-const eventsPath = new URL('../data/events.json', import.meta.url);
+const eventsPath = new URL('../src/data/events.json', import.meta.url);
 const data = JSON.parse(fs.readFileSync(eventsPath, 'utf8'));
 const eventList = Array.isArray(data) ? data : data.events || [];
 

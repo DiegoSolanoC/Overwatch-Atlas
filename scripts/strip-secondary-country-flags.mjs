@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const jsonPath = path.join(root, 'data', 'events.json');
+const jsonPath = path.join(root, 'src', 'data', 'events.json');
 
 function stripNode(n) {
     if (!n || typeof n !== 'object') return;

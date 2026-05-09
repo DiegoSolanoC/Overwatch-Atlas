@@ -14,11 +14,11 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
-const codexPath = path.join(root, 'data', 'codex-labels.json');
+const codexPath = path.join(root, 'src', 'data', 'codex-labels.json');
 const archives = {
-    heroes: path.join(root, 'data', 'story-archive-heroes.json'),
-    factions: path.join(root, 'data', 'story-archive-factions.json'),
-    npcs: path.join(root, 'data', 'story-archive-npcs.json')
+    heroes: path.join(root, 'src', 'data', 'story-archive-heroes.json'),
+    factions: path.join(root, 'src', 'data', 'story-archive-factions.json'),
+    npcs: path.join(root, 'src', 'data', 'story-archive-npcs.json')
 };
 
 function readJson(p) {

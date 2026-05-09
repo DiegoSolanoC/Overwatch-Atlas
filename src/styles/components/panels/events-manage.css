@@ -1,0 +1,663 @@
+/* ========================================
+   EVENTS MANAGE PANEL
+   ======================================== */
+
+/* Off-DOM pool: #eventsManagePanel lives here until Data Archive mounts it (no sliding side overlay). */
+.events-manage-panel-detached-host {
+    display: none !important;
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Event Management Panel (width + off-screen offset from variables — same pattern as filters panel) */
+.events-manage-panel {
+    position: fixed;
+    right: calc(-1 * var(--user-panel-events-manage-width, var(--panel-events-manage-width)));
+    top: var(--header-height);
+    bottom: var(--footer-height);
+    width: var(--user-panel-events-manage-width, var(--panel-events-manage-width));
+    background: #0a1929; /* Dark blue for default blue palette */
+    box-shadow: none !important;
+    transition: right var(--panel-transition);
+    z-index: 200;
+    overflow-y: auto;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* Mobile: Override desktop right position to ensure smooth transition */
+@media (max-width: var(--breakpoint-mobile)) {
+    .events-manage-panel {
+        right: -100% !important; /* Full-width slide; off-screen = -100% */
+    }
+}
+
+.events-manage-panel.open {
+    right: 0;
+}
+
+.events-manage-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 48px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 1;
+    z-index: 201;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.events-manage-close:hover {
+    color: #2196F3; /* Light blue for default blue palette */
+}
+
+/* Gray palette: dark gray background for event manager panel */
+body.color-palette-gray .events-manage-panel {
+    background: #1a1a1a !important;
+}
+
+/* Gray palette: orange hover for event manager close */
+body.color-palette-gray .events-manage-close:hover {
+    color: #ff6600;
+}
+
+.events-manage-content {
+    padding: 22px 28px 24px 28px; /* Horizontal room for skewed thumbs; inner clip stays on .event-item__thumb-shell */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Same chrome as .filters-actions — solid plate isolates controls from panel pattern blend */
+.events-manage-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 12px 80px 12px 15px;
+    border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    isolation: isolate;
+}
+
+.events-manage-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.events-manage-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.events-manage-actions {
+    display: flex;
+    gap: 10px;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+@media (max-width: var(--breakpoint-mobile)) {
+    .events-manage-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .events-manage-actions {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .events-manage-title-row {
+        width: 100%;
+    }
+}
+
+/* Collapse hidden controls: narrow *or* short edge (phone landscape) */
+@media (max-width: var(--breakpoint-mobile)), (max-height: 599px) {
+    .events-manage-panel--toolbar-collapsed #eventsManageControls,
+    .events-manage-panel--toolbar-collapsed .events-manage-controls {
+        display: none !important;
+    }
+}
+
+/* Same collapse rule with literal breakpoint (covers browsers where var() in @media fails) */
+@media (max-width: 768px), (max-height: 599px) {
+    .events-manage-panel--toolbar-collapsed #eventsManageControls,
+    .events-manage-panel--toolbar-collapsed .events-manage-controls {
+        display: none !important;
+    }
+}
+
+/* Mobile-only: hide on desktop */
+.events-manage-toolbar-toggle-btn {
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    background: rgba(33, 150, 243, 0.35);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    line-height: 1.2;
+    padding: 10px 14px;
+    min-height: 44px;
+    min-width: 44px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Short-edge rule matches JS (phone landscape width often > 768) */
+@media (max-width: 768px), (max-height: 599px) {
+    .events-manage-toolbar-toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.events-manage-toolbar-toggle-btn:hover {
+    background: rgba(33, 150, 243, 0.5);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.events-manage-toolbar-toggle-btn:active {
+    transform: scale(0.98);
+}
+
+body.color-palette-gray .events-manage-toolbar-toggle-btn {
+    background: rgba(255, 102, 0, 0.38);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+body.color-palette-gray .events-manage-toolbar-toggle-btn:hover {
+    background: rgba(255, 102, 0, 0.52);
+}
+
+.events-manage-title {
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    color: #2196F3; /* Light blue for default blue palette */
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+/* Gray palette: orange title */
+body.color-palette-gray .events-manage-title {
+    color: #ff6600;
+}
+
+.events-manage-count {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.events-manage-action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--panel-transition);
+}
+
+.events-manage-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.events-manage-action-btn.save-btn {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.6);
+}
+
+.events-manage-action-btn.save-btn:hover {
+    background: rgba(76, 175, 80, 0.5);
+}
+
+.events-manage-action-btn.export-btn {
+    background: rgba(33, 150, 243, 0.3);
+    border-color: rgba(33, 150, 243, 0.6);
+}
+
+.events-manage-action-btn.export-btn:hover {
+    background: rgba(33, 150, 243, 0.5);
+}
+
+/* Search toolbar — outer frame matches .filters-actions + .filters-title */
+.events-manage-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 15px;
+    margin-top: 4px;
+    padding: 12px 70px 12px 15px;
+    border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    border-radius: 8px;
+    /* Stronger than header plate — keeps fields readable over panel pattern */
+    background: rgba(0, 0, 0, 0.62);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    isolation: isolate;
+}
+
+.events-manage-controls-title {
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    color: var(--accent-primary);
+    margin: 0;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+/* Event manager search rows (inside .events-manage-controls) */
+.events-manage-search {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.events-manage-search-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    width: 100%;
+}
+
+/* Title + hero/faction + country: wrap on narrow widths */
+.events-manage-search-row--primary {
+    flex-wrap: wrap;
+}
+
+.events-manage-search-row--primary .events-search-input--title {
+    flex: 1 1 150px;
+    max-width: none;
+    min-width: 120px;
+}
+
+.events-manage-search-row--primary .events-search-field--filters {
+    flex: 1 1 240px;
+    min-width: 180px;
+}
+
+.events-manage-search-row--primary .events-search-field--filters .events-search-input {
+    width: 100%;
+    max-width: none;
+}
+
+.events-manage-search-row--primary .events-search-field--country {
+    flex: 1 1 220px;
+    min-width: 180px;
+}
+
+.events-manage-search-row--primary .events-search-field--country .events-search-input {
+    width: 100%;
+    max-width: none;
+}
+
+/* Row 2: equal-width columns so each control uses the full row horizontally */
+/* “Use filter selection” is always on in JS; label hidden — keep input in DOM for listeners */
+.events-search-checkbox.events-search-checkbox--use-filter-selection-hidden {
+    display: none !important;
+}
+
+.events-manage-search-row--secondary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    gap: 10px 12px;
+    width: 100%;
+}
+
+.events-manage-search-row--secondary .events-search-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.events-manage-search-row--secondary .events-search-checkbox input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.events-manage-search-row--secondary .events-per-page-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.events-manage-search-row--secondary .events-per-page-group .events-search-label {
+    flex-shrink: 0;
+}
+
+.events-manage-search-row--secondary .events-per-page-group .events-search-input-small {
+    flex: 1 1 auto;
+    min-width: 56px;
+    max-width: none;
+    width: auto;
+}
+
+.events-manage-search-row--secondary .events-search-clear-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .events-manage-search-row--primary {
+        flex-wrap: wrap;
+    }
+
+    .events-manage-search-row--secondary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 420px) {
+    .events-manage-search-row--secondary {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.events-per-page-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+.events-search-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.events-search-input {
+    min-width: 160px;
+    max-width: 220px;
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.45);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.events-search-input.events-search-input-small {
+    min-width: 70px;
+    max-width: 90px;
+    width: 80px;
+    text-align: center;
+}
+
+.events-search-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.events-search-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+.events-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+.events-search-input:focus {
+    outline: none;
+    border-color: rgba(var(--accent-primary-rgb), 0.9);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 1px rgba(var(--accent-primary-rgb), 0.2);
+}
+
+/* Filters textbox: turn red when current token has no matches */
+.events-search-input.no-filter-match {
+    border-color: rgba(244, 67, 54, 0.9) !important;
+    color: rgba(255, 120, 120, 1) !important;
+}
+
+.events-search-input.no-filter-match::placeholder {
+    color: rgba(255, 120, 120, 0.7);
+}
+/* Gray / crimson / nulled: inputs use --accent-primary-rgb via rules above */
+
+/* Wrapper for filters input + suggestions dropdown */
+.events-search-field {
+    position: relative;
+    display: inline-block;
+    z-index: 100; /* Establish stacking context for suggestions dropdown */
+}
+
+.events-search-suggestions {
+    position: fixed; /* Use fixed to escape overflow clipping from parent containers */
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 99999; /* Very high z-index to ensure it appears on top of everything */
+    background: var(--bg-secondary);
+    background: color-mix(in srgb, var(--bg-secondary) 94%, #000 6%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.2);
+    padding: 6px 0;
+}
+
+.events-search-suggestion {
+    display: flex;
+    width: 100%;
+    padding: 8px 10px;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+}
+
+.events-search-suggestion--with-flag {
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.events-search-suggestion-flag {
+    width: 32px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.events-search-suggestion-flag--filter-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.events-search-suggestion-label {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.events-search-suggestion--with-flag .muted {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.events-search-suggestion:hover {
+    background: rgba(var(--accent-primary-rgb), 0.14);
+}
+
+.events-search-suggestion .muted {
+    color: rgba(var(--accent-primary-rgb), 0.85);
+    font-size: 12px;
+    font-weight: 500;
+}
+.events-search-clear-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.45);
+    border-radius: 6px;
+    background: rgba(var(--accent-primary-rgb), 0.12);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+/* Floating autocomplete (edit modal / inline editor) — matches search suggestion rows */
+.filter-autocomplete-list {
+    position: fixed;
+    z-index: 10000;
+    max-height: 220px;
+    overflow-y: auto;
+    background: color-mix(in srgb, var(--bg-secondary) 94%, #000 6%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.2);
+    padding: 6px 0;
+    min-width: 200px;
+}
+
+.filter-autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 13px;
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+.filter-autocomplete-item:hover {
+    background: rgba(var(--accent-primary-rgb), 0.14);
+}
+
+.filter-autocomplete-item-icon {
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.filter-autocomplete-item-icon--hero,
+.filter-autocomplete-item-icon--faction,
+.filter-autocomplete-item-icon--npc {
+    width: 28px;
+    height: 28px;
+}
+
+.filter-autocomplete-item-icon--flag {
+    width: 32px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+.filter-autocomplete-item-label {
+    flex: 1;
+    min-width: 0;
+}
+
+.filter-autocomplete-item .filter-autocomplete-item-detail {
+    flex-shrink: 0;
+    color: rgba(var(--accent-primary-rgb), 0.85);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.events-search-clear-btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.22);
+    border-color: rgba(var(--accent-primary-rgb), 0.75);
+}
+
+/* Note: Events list, pagination, event items, and edit modal styles
+   have been extracted to separate component files:
+   - styles/components/event-pagination.css
+   - styles/components/event-item.css
+   - styles/components/event-edit-modal.css
+*/
+
+/* Source pairs styling */
+.source-pair {
+    margin-bottom: 4px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.source-pair:last-child {
+    margin-bottom: 0;
+}

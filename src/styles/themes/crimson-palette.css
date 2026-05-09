@@ -1,0 +1,512 @@
+/* ========================================
+   CRIMSON PALETTE THEME OVERRIDES
+   ======================================== */
+
+/* Layout Components */
+body.color-palette-crimson header {
+    background: #000 !important;
+}
+
+body.color-palette-crimson footer {
+    background: var(--primary-crimson) !important;
+}
+
+/* Headlines strip: near-black crimson + white type */
+body.color-palette-crimson footer.timeline-loaded {
+    background: linear-gradient(
+        to bottom,
+        var(--bg-crimson-primary) 0%,
+        var(--bg-crimson-primary) 75%,
+        var(--primary-crimson) 75%,
+        var(--primary-crimson) 100%
+    ) !important;
+}
+
+body.color-palette-crimson footer.timeline-loaded p {
+    display: none !important;
+}
+
+body.color-palette-crimson main {
+    background: var(--bg-main);
+}
+
+body.color-palette-crimson .panel-resize-handle__pill {
+    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-medium)) !important;
+}
+
+body.color-palette-crimson .panel-resize-handle:hover .panel-resize-handle__pill,
+body.color-palette-crimson .panel-resize-handle:focus-visible .panel-resize-handle__pill {
+    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-heavy)) !important;
+}
+
+body.color-palette-crimson .panel--resizing .panel-resize-handle__pill {
+    background: rgba(var(--accent-crimson-primary-rgb), var(--opacity-heavy)) !important;
+}
+
+body.color-palette-crimson .pagination-dock-collapse-pill {
+    background-color: transparent !important;
+    background-image: url('../../assets/images/Misc/UI/Controller%20Border.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center bottom !important;
+    background-size: 100% 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.color-palette-crimson .pagination-dock-collapse-handle:hover .pagination-dock-collapse-pill,
+body.color-palette-crimson .pagination-dock-collapse-handle:focus-visible .pagination-dock-collapse-pill {
+    background-image: url('../../assets/images/Misc/UI/Controller%20Border.png') !important;
+    background-size: 100% 100% !important;
+    box-shadow: none !important;
+}
+
+/* Globe Control Buttons */
+body.color-palette-crimson .globe-control-btn {
+    background: var(--btn-crimson-bg) !important;
+}
+
+body.color-palette-crimson .globe-control-btn:hover {
+    background: var(--btn-crimson-bg-hover) !important;
+}
+
+body.color-palette-crimson .globe-control-btn.active {
+    background: rgba(27, 94, 32, 0.9) !important; /* Keep green for active state */
+}
+
+body.color-palette-crimson .globe-control-btn.active:hover {
+    background: rgba(27, 94, 32, 1) !important; /* Keep green for active hover */
+}
+
+/* Variant Toggle Buttons */
+body.color-palette-crimson .variant-toggle-btn,
+body.color-palette-crimson .variant-tab-btn {
+    background: var(--bg-crimson-quaternary) !important;
+    border-color: rgba(120, 45, 55, var(--opacity-medium)) !important;
+}
+
+body.color-palette-crimson .variant-toggle-btn:hover,
+body.color-palette-crimson .variant-tab-btn:hover {
+    background: rgba(120, 45, 55, 0.5) !important;
+    border-color: rgba(120, 45, 55, var(--opacity-heavy)) !important;
+}
+
+body.color-palette-crimson .variant-toggle-btn.active,
+body.color-palette-crimson .variant-tab-btn.active {
+    background: rgba(120, 45, 55, 0.8) !important;
+    border-color: var(--secondary-crimson) !important;
+}
+
+/* Page Buttons and Pagination */
+body.color-palette-crimson .page-btn {
+    background: var(--btn-crimson-bg) !important;
+}
+
+body.color-palette-crimson .page-btn:hover:not(:disabled) {
+    background: var(--btn-crimson-bg-hover) !important;
+}
+
+body.color-palette-crimson .page-input-container {
+    background: var(--btn-crimson-bg) !important;
+}
+
+/* Center rail buttons should match palette colors */
+body.color-palette-crimson .dock-globe-rail--center > .page-btn,
+body.color-palette-crimson .dock-globe-rail--center > #prevPageBtn,
+body.color-palette-crimson .dock-globe-rail--center > #nextPageBtn,
+body.color-palette-crimson .dock-globe-rail--center > #prevEventBtn,
+body.color-palette-crimson .dock-globe-rail--center > #nextEventBtn {
+    background: var(--btn-crimson-bg) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.color-palette-crimson .dock-globe-rail--center > .page-input-container {
+    background: var(--btn-crimson-bg) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #globalImageToggle.dock-globe-rail__btn,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #filtersToggle.dock-globe-rail__btn {
+    background: var(--btn-crimson-bg) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #globalImageToggle.dock-globe-rail__btn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > #filtersToggle.dock-globe-rail__btn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center > #prevPageBtn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center > #nextPageBtn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center > #prevEventBtn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center > #nextEventBtn:hover,
+body.color-palette-crimson .pagination-dock-top-trapezoid .dock-globe-rail--center .dock-trapezium-mid-strip > .page-input-container:hover {
+    background: var(--btn-crimson-bg-hover) !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+body.color-palette-crimson .event-page-slider::-webkit-slider-runnable-track {
+    border-color: rgba(239, 83, 80, 0.45) !important;
+}
+
+body.color-palette-crimson .event-page-slider::-webkit-slider-thumb {
+    background: url('../../assets/images/Misc/Website%20Icons/Website%20Crimson.png') center/contain no-repeat !important;
+    border: none !important;
+}
+
+body.color-palette-crimson .event-page-slider::-moz-range-track {
+    border-color: rgba(239, 83, 80, 0.45) !important;
+}
+
+body.color-palette-crimson .event-page-slider::-moz-range-thumb {
+    background: url('../../assets/images/Misc/Website%20Icons/Website%20Crimson.png') center/contain no-repeat !important;
+    border: none !important;
+}
+
+body.color-palette-crimson .event-page-slider-tick--major {
+    background: rgba(239, 83, 80, 0.92) !important;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.55) !important;
+}
+
+body.color-palette-crimson .event-page-slider-tick--sub {
+    background: rgba(255, 138, 128, 0.55) !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.45) !important;
+}
+
+body.color-palette-crimson .event-page-slider-tick--sub.event-page-slider-tick--filter-hit {
+    background: rgba(76, 175, 80, 0.95) !important;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.65) !important;
+}
+
+body.color-palette-crimson .event-page-slider-tick--unfinished-slot {
+    background: rgba(255, 82, 82, 0.98) !important;
+    box-shadow: 0 0 8px rgba(255, 82, 82, 0.75) !important;
+}
+
+body.color-palette-crimson .event-number-btn {
+    background: rgba(85, 30, 38, 0.9) !important;
+}
+
+body.color-palette-crimson .event-number-btn:hover:not(:disabled) {
+    background: rgba(85, 30, 38, 1) !important;
+}
+
+body.color-palette-crimson .event-number-btn:disabled,
+body.color-palette-crimson .event-number-btn.locked {
+    filter: brightness(0.5) !important; /* Darken the button */
+}
+
+body.color-palette-crimson .event-nav-btn {
+    background: rgba(85, 30, 38, 0.9) !important;
+}
+
+body.color-palette-crimson .event-nav-btn:hover:not(:disabled) {
+    background: rgba(85, 30, 38, 1) !important;
+}
+
+/* Event Manager Modal */
+body.color-palette-crimson .event-item-variant-name,
+body.color-palette-crimson .event-item-variant-description {
+    color: var(--secondary-crimson) !important;
+}
+
+body.color-palette-crimson .event-item-variant-name:hover {
+    color: var(--primary-crimson) !important;
+}
+
+/* Panels - Filters */
+body.color-palette-crimson .filters-panel {
+    background: var(--bg-secondary) !important;
+}
+
+body.color-palette-crimson .filters-panel-close:hover {
+    color: var(--accent-primary);
+}
+
+body.color-palette-crimson .filter-tab .filter-count,
+body.color-palette-crimson .filter-tab.active .filter-count {
+    color: #4caf50 !important; /* Always green on both palettes */
+}
+
+body.color-palette-crimson .filter-btn.selected .filter-image-container {
+    background: rgba(27, 94, 32, 0.9) !important; /* Green when selected on both palettes */
+}
+
+body.color-palette-crimson .filter-btn .filter-label {
+    background: #8a4a52; /* Light gray background */
+}
+
+body.color-palette-crimson .filter-btn.selected .filter-label {
+    background: rgba(76, 175, 80, 0.9) !important; /* Light green for label background */
+}
+
+body.color-palette-crimson .filters-actions {
+    border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+}
+
+body.color-palette-crimson .filters-confirm-btn {
+    background: rgba(239, 83, 80, 0.4);
+    border-color: #ef5350;
+}
+
+body.color-palette-crimson .filters-confirm-btn:hover {
+    background: rgba(239, 83, 80, 0.6);
+    border-color: #ff8a80;
+    box-shadow: 0 4px 12px rgba(239, 83, 80, 0.4);
+}
+
+/* Panels - Music */
+body.color-palette-crimson .music-panel {
+    background: var(--bg-secondary) !important;
+}
+
+body.color-palette-crimson .music-panel-close:hover {
+    color: var(--accent-primary);
+}
+
+body.color-palette-crimson .music-title {
+    color: var(--accent-primary);
+}
+
+body.color-palette-crimson .volume-slider::-webkit-slider-thumb {
+    background: var(--accent-primary); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .volume-slider::-moz-range-thumb {
+    background: var(--accent-primary); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .volume-value {
+    color: var(--accent-primary); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-mute-btn {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-light));
+    border-color: var(--accent-primary);
+}
+
+body.color-palette-crimson .music-mute-btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.5);
+    border-color: var(--accent-primary-hover);
+}
+
+body.color-palette-crimson .music-grid::-webkit-scrollbar-thumb {
+    background: rgba(239, 83, 80, 0.6); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 83, 80, 0.8);
+}
+
+body.color-palette-crimson .music-grid {
+    scrollbar-color: rgba(239, 83, 80, 0.6) rgba(0, 0, 0, 0.2);
+}
+
+body.color-palette-crimson .music-grid-btn .music-label {
+    background: #8a4a52; /* Light gray background */
+}
+
+/* Gray palette: ensure selected music shows green label on both palettes (match filters) */
+body.color-palette-crimson .music-grid-btn.selected .music-label {
+    background: rgba(76, 175, 80, 0.9) !important; /* Light green for label background */
+    color: white;
+    font-weight: bold;
+}
+
+body.color-palette-crimson .music-actions {
+    border-bottom: 2px solid rgba(239, 83, 80, 0.3); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-current-song {
+    color: var(--accent-primary); /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-progress-bar::-webkit-slider-thumb {
+    background: #ef5350; /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-progress-bar::-moz-range-thumb {
+    background: #ef5350; /* Orange for gray palette */
+}
+
+body.color-palette-crimson .music-control-btn.active {
+    background: rgba(239, 83, 80, 0.4);
+    border-color: #ef5350;
+}
+
+body.color-palette-crimson .music-control-btn.active:hover {
+    background: rgba(239, 83, 80, 0.6);
+    border-color: #ff8a80;
+    box-shadow: 0 4px 12px rgba(239, 83, 80, 0.4);
+}
+
+/* Panels - Events Manage */
+body.color-palette-crimson .events-manage-panel {
+    background: var(--bg-crimson-primary) !important;
+}
+
+body.color-palette-crimson .events-manage-close:hover {
+    color: #ef5350;
+}
+
+body.color-palette-crimson .events-manage-header {
+    border-bottom: 2px solid rgba(239, 83, 80, 0.3);
+}
+
+body.color-palette-crimson .events-manage-title {
+    color: #ef5350;
+}
+
+body.color-palette-crimson .events-list::-webkit-scrollbar-thumb {
+    background: rgba(239, 83, 80, 0.6);
+}
+
+body.color-palette-crimson .events-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 83, 80, 0.8);
+}
+
+body.color-palette-crimson .events-list {
+    scrollbar-color: rgba(239, 83, 80, 0.6) rgba(0, 0, 0, 0.2);
+}
+
+body.color-palette-crimson .events-pagination-btn {
+    background: rgba(239, 83, 80, 0.3);
+    border-color: rgba(239, 83, 80, 0.6);
+}
+
+body.color-palette-crimson .events-pagination-btn:hover:not(:disabled) {
+    background: rgba(239, 83, 80, 0.5);
+    border-color: rgba(239, 83, 80, 0.9);
+}
+
+body.color-palette-crimson .events-pagination-input {
+    border-color: rgba(239, 83, 80, 0.6);
+}
+
+body.color-palette-crimson .events-pagination-input:focus {
+    border-color: rgba(239, 83, 80, 0.9);
+}
+
+/* Event Items */
+body.color-palette-crimson .event-item.multi-event {
+    border-left: 4px solid #ef5350;
+}
+
+body.color-palette-crimson .event-item-title {
+    color: #ef5350; /* Orange for gray palette */
+}
+
+body.color-palette-crimson .event-item:hover {
+    border-color: rgba(239, 83, 80, 0.5);
+}
+
+body.color-palette-crimson .event-item.drag-over {
+    border-color: #ef5350;
+    background: rgba(239, 83, 80, 0.1);
+}
+
+body.color-palette-crimson .event-number-badge {
+    background: rgba(239, 83, 80, 0.9);
+}
+
+body.color-palette-crimson .event-number-badge:hover {
+    background: rgba(198, 40, 40, 0.9);
+}
+
+/* Multi-event trapezoid selector: always green (match blue palette) */
+body.color-palette-crimson .multi-event-badge {
+    background: #4caf50;
+}
+body.color-palette-crimson .multi-event-badge:hover {
+    background: #2e7d32;
+}
+
+/* Event Variants */
+body.color-palette-crimson .event-variant-header {
+    border-bottom: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+}
+
+/* Event info panel: selected filter tags green (match main filters and music) */
+body.color-palette-crimson .event-filter-tag.selected {
+    background: rgba(76, 175, 80, 0.3) !important;
+    color: #4caf50 !important;
+    border-color: #4caf50 !important;
+    font-weight: 600;
+}
+
+body.color-palette-crimson .event-sources-section {
+    border-left: 3px solid #ef5350; /* Orange for gray palette */
+}
+
+body.color-palette-crimson .event-relevant-locations-section {
+    border-left: 3px solid #ef5350; /* match sources */
+}
+
+body.color-palette-crimson .event-image-toggle-btn {
+    background: #ef5350; /* Orange for gray palette */
+}
+
+body.color-palette-crimson .event-image-toggle-btn:hover {
+    background: #ff8a80;
+}
+
+/* Event Edit Modal */
+body.color-palette-crimson .event-edit-modal-content {
+    background: var(--bg-secondary);
+    border: 2px solid rgba(var(--accent-primary-rgb), 0.5);
+}
+
+body.color-palette-crimson .event-edit-modal-header {
+    border-bottom: 2px solid rgba(239, 83, 80, 0.3);
+}
+
+body.color-palette-crimson .event-edit-modal-header h3 {
+    color: #ef5350;
+}
+
+body.color-palette-crimson .event-edit-modal-close:hover {
+    background: rgba(239, 83, 80, 0.3); /* Orange for gray palette */
+    border-color: rgba(239, 83, 80, 0.6);
+    color: #ef5350;
+}
+
+body.color-palette-crimson .event-edit-input:focus,
+body.color-palette-crimson .event-edit-textarea:focus {
+    border-color: var(--accent-primary);
+}
+
+body.color-palette-crimson .event-edit-actions {
+    border-top: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+}
+
+body.color-palette-crimson .lookup-city-btn {
+    background: rgba(239, 83, 80, 0.3); /* Orange for gray palette */
+    border: 1px solid rgba(239, 83, 80, 0.6);
+}
+
+body.color-palette-crimson .lookup-city-btn:hover {
+    background: rgba(239, 83, 80, 0.5);
+}
+
+body.color-palette-crimson .location-type-btn {
+    background: rgba(120, 45, 55, 0.2);
+    border-color: rgba(120, 45, 55, 0.4);
+}
+
+body.color-palette-crimson .location-type-btn:hover {
+    background: rgba(120, 45, 55, 0.3);
+    border-color: rgba(120, 45, 55, 0.6);
+}
+
+body.color-palette-crimson .location-type-btn.active {
+    background: rgba(120, 45, 55, 0.8);
+    border-color: rgba(120, 45, 55, 1);
+    box-shadow: 0 2px 8px rgba(120, 45, 55, 0.4);
+}
+
+body.color-palette-crimson .location-type-btn.active:hover {
+    background: rgba(120, 45, 55, 0.9);
+    box-shadow: 0 4px 12px rgba(120, 45, 55, 0.6);
+}
+
+/* Palette Options */
+body.color-palette-crimson .palette-option-btn.active {
+    border-color: #4CAF50; /* Green highlight for active palette (always green) */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}

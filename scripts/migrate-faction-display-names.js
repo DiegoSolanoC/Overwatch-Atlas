@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
-const data = JSON.parse(fs.readFileSync(path.join(root, 'data/events.json'), 'utf8'));
-const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
+const data = JSON.parse(fs.readFileSync(path.join(root, 'src/data/events.json'), 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'src', 'data', 'manifest.json'), 'utf8'));
 
 function norm(s) {
     const t = String(s || '').trim();
@@ -41,5 +41,5 @@ function walk(ev) {
 }
 
 (data.events || []).forEach(walk);
-fs.writeFileSync(path.join(root, 'data/events.json'), JSON.stringify(data, null, 2));
+fs.writeFileSync(path.join(root, 'src/data/events.json'), JSON.stringify(data, null, 2));
 console.log('events.json factions updated to display names where matched manifest.');

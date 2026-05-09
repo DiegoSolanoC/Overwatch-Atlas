@@ -29,7 +29,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
 function loadFlagMap() {
-    const src = fs.readFileSync(path.join(root, 'src/data/flagFileByCommonName.js'), 'utf8');
+    const src = fs.readFileSync(path.join(root, 'src/features/worldview/data/flagFileByCommonName.js'), 'utf8');
     const map = {};
     for (const m of src.matchAll(/"([^"]+)"\s*:\s*"([^"]+\.png)"/g)) {
         map[m[1]] = m[2];
@@ -106,7 +106,7 @@ function isCityOnPrimaryLabel(cityName, loc) {
 }
 
 function loadCityToCountry() {
-    const p = path.join(__dirname, 'data', 'city-to-country.json');
+    const p = path.join(__dirname, 'src', 'data', 'city-to-country.json');
     if (!fs.existsSync(p)) {
         return {};
     }
@@ -293,7 +293,7 @@ function findCountryMentionsDemonyms(text, map) {
 const limit = parseInt(process.argv[2], 10) > 0 ? parseInt(process.argv[2], 10) : 100;
 const map = loadFlagMap();
 const cityToCountry = loadCityToCountry();
-const data = JSON.parse(fs.readFileSync(path.join(root, 'data/events.json'), 'utf8'));
+const data = JSON.parse(fs.readFileSync(path.join(root, 'src/data/events.json'), 'utf8'));
 const events = data.events || [];
 const slice = events.slice(0, limit);
 

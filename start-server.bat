@@ -15,7 +15,7 @@ if errorlevel 1 (
 
 REM Generate manifest
 echo Generating manifest...
-call node generate-manifest.js
+call node scripts/generate-manifest.js
 if errorlevel 1 (
     echo Error generating manifest!
     pause
@@ -28,9 +28,9 @@ for /f "tokens=5" %%p in ('netstat -ano ^| findstr ":8000" ^| findstr "LISTENING
     taskkill /F /PID %%p >nul 2>nul
 )
 
-REM Start server in a new window (server-run.bat runs in project dir)
+REM Start server in a new cmd window (cwd is already %~dp0 from above)
 echo Starting server...
-start "Overwatch Atlas Server" "%~dp0server-run.bat"
+start "Overwatch Atlas Server" cmd /k "node src\server.js"
 
 REM Wait for server to be ready (5 seconds so port 8000 is listening)
 echo Waiting for server to start...

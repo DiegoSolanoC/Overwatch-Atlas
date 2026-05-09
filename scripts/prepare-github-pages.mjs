@@ -1,6 +1,6 @@
 /**
  * Copies the static site into _site/ for GitHub Pages, excluding dev-only paths.
- * Run after generate-manifest.js: npm run build:pages
+ * Run after scripts/generate-manifest.js: npm run build:pages
  */
 import fs from 'fs';
 import path from 'path';

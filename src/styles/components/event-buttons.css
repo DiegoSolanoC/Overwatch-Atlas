@@ -1,0 +1,220 @@
+/* ========================================
+   EVENT BUTTONS
+   ======================================== */
+
+/* Event Image Toggle */
+.event-image-toggle-btn {
+    width: auto;
+    min-width: 120px;
+    height: 50px;
+    background: rgba(33, 150, 243, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none; /* Hidden on desktop - use global dock toggle instead */
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    transition: all var(--panel-transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* Show event image toggle button on mobile only */
+@media (max-width: 768px) {
+    .event-image-toggle-btn {
+        display: flex;
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+    }
+
+    .event-image-toggle-btn span:not([id$="Icon"]) {
+        display: none !important;
+    }
+}
+
+.event-image-toggle-btn:hover {
+    background: rgba(33, 150, 243, 1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.event-image-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+body.color-palette-gray .event-image-toggle-btn {
+    background: #ff6600; /* Orange for gray palette */
+}
+
+body.color-palette-gray .event-image-toggle-btn:hover {
+    background: #ff8833;
+}
+
+/* Event Control Buttons Container */
+.event-control-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    flex-shrink: 0; /* Don't shrink - always at bottom */
+}
+
+.event-slide-mid-controls .event-control-buttons {
+    margin-top: 0;
+}
+
+/* Event Navigation Buttons (prev/next in full list) - Mobile Only */
+.event-navigation-buttons {
+    display: none; /* Hidden on desktop */
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    justify-content: center;
+    flex-shrink: 0; /* Don't shrink - always at bottom */
+}
+
+/* Show event navigation buttons on mobile */
+@media (max-width: 768px) {
+    .event-navigation-buttons {
+        display: flex;
+    }
+}
+
+.event-nav-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(13, 71, 161, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--panel-transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+.event-nav-btn--pagination-arrow {
+    font-size: 0;
+}
+
+.event-nav-btn--pagination-arrow .ui-pagination-arrow {
+    width: 26px;
+    max-height: 26px;
+}
+
+.event-nav-btn:hover:not(:disabled) {
+    background: rgba(13, 71, 161, 1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.event-nav-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.event-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Gray palette: gray navigation buttons */
+body.color-palette-gray .event-nav-btn {
+    background: rgba(74, 74, 74, 0.9) !important;
+}
+
+body.color-palette-gray .event-nav-btn:hover:not(:disabled) {
+    background: rgba(74, 74, 74, 1) !important;
+}
+
+/* Glitch toggle: Hacked.png (same as in-slide stamp), no chip background */
+.event-glitch-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 2px;
+    margin: 0;
+    cursor: pointer;
+    line-height: 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    align-self: center;
+    border-radius: 6px;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.event-glitch-toggle-btn:hover {
+    background: transparent;
+    opacity: 1;
+}
+
+.event-glitch-toggle-btn:focus-visible {
+    outline: 2px solid rgba(234, 128, 252, 0.85);
+    outline-offset: 3px;
+}
+
+.event-glitch-toggle-btn:active {
+    transform: scale(0.94);
+}
+
+.event-glitch-toggle-btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+.event-glitch-toggle-btn__icon .event-glitch-toggle-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Inactive: calm; matches “glitch off” legibility */
+.event-glitch-toggle-btn:not(.event-glitch-toggle-btn--on) .event-glitch-toggle-img {
+    opacity: 0.68;
+    filter: saturate(0.72);
+    animation: none;
+}
+
+/* Active: same motion language as .hacked-overlay.hacked-glitch (hue + jitter) */
+.event-glitch-toggle-btn--on .event-glitch-toggle-img {
+    opacity: 1;
+    filter: saturate(1.08) drop-shadow(0 0 6px rgba(255, 102, 255, 0.45));
+    animation: hackedGlitchFilter 0.15s infinite, hackedGlitchTransform 0.15s infinite;
+}
+
+body.color-palette-gray .event-glitch-toggle-btn:focus-visible {
+    outline-color: rgba(77, 208, 225, 0.9);
+}
+
+body.color-palette-crimson .event-glitch-toggle-btn:focus-visible {
+    outline-color: rgba(255, 138, 128, 0.9);
+}
+
+body.color-palette-nulled .event-glitch-toggle-btn:focus-visible {
+    outline-color: rgba(179, 136, 255, 0.9);
+}

@@ -39,9 +39,11 @@ npm install
 npm start
 ```
 
+   On Windows you can instead double-click **`start-server.bat`** in the repo root: it regenerates the asset manifest, stops anything already listening on port 8000, starts **`node src/server.js`** in a separate console window, then opens the site in Chrome (or your default browser).
+
 4. Open your browser and navigate to:
 - `http://localhost:8000/` - Main application (index.html)
-- `http://localhost:8000/main` - Main application (alternative)
+- `http://localhost:8000/index.html` - Same app (explicit path; `/main` still works as a legacy alias)
 - `http://localhost:8000/test` - Test page with component loader
 - `http://localhost:8000/map` - Map view
 
@@ -53,7 +55,7 @@ The application is configured to work on GitHub Pages. Follow these steps to dep
 
 **Option A — GitHub Actions (recommended)**  
 1. Go to **Settings** → **Pages** → **Build and deployment** → **Source**: **GitHub Actions**.  
-2. Push to `main` / `master`; the workflow `.github/workflows/deploy.yml` runs **`npm run build:pages`** (regenerates `manifest.json` and copies a clean tree into **`_site/`** without `.git` / `node_modules`) and publishes **`_site`**.  
+2. Push to `main` / `master`; the workflow `.github/workflows/deploy.yml` runs **`npm run build:pages`** (regenerates `src/data/manifest.json` and copies a clean tree into **`_site/`** without `.git` / `node_modules`) and publishes **`_site`**.  
 3. First run: approve the **github-pages** environment if GitHub prompts you.
 
 **Site URL**  
@@ -62,20 +64,20 @@ Project Pages are served at `https://<user>.github.io/<repository-name>/` (this 
 **Option B — Deploy from a branch**  
 1. Go to **Settings** → **Pages**  
 2. Under **Source**, select **Branch** → `main` (or `master`) → **/ (root)**  
-3. Before pushing, run **`npm run build:pages`** (or `node generate-manifest.js`) so `manifest.json` matches your `assets/` folders.  
+3. Before pushing, run **`npm run build:pages`** (or `node scripts/generate-manifest.js`) so `src/data/manifest.json` matches your `src/assets/` folders.  
 4. Click **Save**
 
 ### 2. Verify Files
 
-Make sure these files are in your repository root:
-- `index.html` - Main entry point (GitHub Pages will serve this at the root URL)
-- `main.html` - Main timeline application (use this URL for direct access)
-- `404.html` - Redirects unknown paths to `index.html` under the same GitHub Pages base (project or user site)
-- `.nojekyll` - Empty file; tells GitHub Pages not to use Jekyll
-- `styles.css` and `styles/` - All CSS (layout, footer, news ticker, pagination, mobile)
-- `src/` - All JavaScript (component-loader, controllers, managers, services)
-- `data/` - `events.json`, `locations.json`, etc.
-- `assets/` - Images (e.g. `assets/images/misc/Atlas News.png`), models, audio
+Make sure these paths exist in the repo (typical GitHub Pages tree):
+- `index.html` — timeline app (GitHub Pages root + local `/`; dev server also serves the same file for legacy `/main*`)
+- `404.html` — SPA-style fallback where used
+- `.nojekyll` — disables Jekyll on GitHub Pages
+- `src/styles/app.css` and `src/styles/` — global CSS entry and partials
+- `src/` — application JavaScript (features, controllers, services)
+- `src/data/` — JSON data (`events.json`, `locations.json`, **`manifest.json`**, codex, story archives, etc.)
+- `src/assets/` — images, audio, models (e.g. `src/assets/images/Misc/Atlas News.png`)
+- `scripts/` — Node helpers (`generate-manifest`, Pages prep, migrations); CI uses **`npm run build:pages`**, which regenerates **`src/data/manifest.json`** before copying to **`_site/`**
 
 ### 3. Access Your Site
 
@@ -94,44 +96,46 @@ GitHub serves the site under **`/<repository-name>/`**, so renaming the reposito
 
 - **Edit Mode**: The application automatically detects when running on GitHub Pages and disables edit/delete functionality for events. This prevents users from modifying data on the live site.
 - **Local Storage**: User preferences (color palette, music state) are saved in browser localStorage and will persist across sessions.
-- **Event Data**: Events are loaded from `data/events.json`. On GitHub Pages, users can view events but cannot edit them (edit buttons are hidden).
+- **Event Data**: Events are loaded from `src/data/events.json`. On GitHub Pages, users can view events but cannot edit them (edit buttons are hidden).
 - **File Paths**: All file paths are relative (no leading `/`), so the site works the same on both localhost and GitHub Pages. Asset paths with spaces (e.g. `Atlas News.png`) use URL-encoded form (`Atlas%20News.png`) in HTML for compatibility.
 - **Parity with local**: The following are built to look and behave the same on GitHub Pages as locally:
   - **Footer**: Atlas News image (red trapezoid) and sliding headlines ticker appear after the timeline loads (`footer.timeline-loaded`).
-  - **Number buttons (1–10)**: Pagination and event-number button styles (including marker-hover highlight) are in `styles/components/event-pagination.css` and load via `styles.css`.
-  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `styles/entry.css`, `styles/components/globe.css`, and `styles/mobile/viewport.css`; all loaded via relative imports.
-- **Root files**: Ensure `.nojekyll` exists in the repo root so GitHub Pages does not run Jekyll. Ensure `assets/images/misc/Atlas News.png` (and other assets under `assets/`, `data/`) are committed.
+  - **Number buttons (1–10)**: Pagination and event-number button styles (including marker-hover highlight) are in `src/styles/components/event-pagination.css` and load via `src/styles/app.css`.
+  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `src/styles/entry.css`, `src/styles/components/globe.css`, and `src/styles/mobile/viewport.css`; all loaded via relative imports.
+- **Root files**: Ensure `.nojekyll` exists in the repo root so GitHub Pages does not run Jekyll. Ensure `src/assets/images/Misc/Atlas News.png` (and other files under `src/assets/`, `src/data/`) are committed.
 
-## Project Structure
+## Design documentation
+
+For an in-depth description of modes, the shared event system, codex/world view behavior, APIs, and keyboard shortcuts, see **[`docs/DESIGN.md`](docs/DESIGN.md)**.
+
+For the **refactor roadmap** (Codex → Archive → Main menu → `src/` sweep; foundation + backlog), see **[`docs/REFACTOR_PHASES.md`](docs/REFACTOR_PHASES.md)**. For **timeline ↔ globe/map marker ownership**, see **[`docs/TIMELINE_WORLDVIEW_CONTRACT.md`](docs/TIMELINE_WORLDVIEW_CONTRACT.md)**.
+
+## Project Structure (high level)
 
 ```
 Overwatch-Atlas/
-├── index.html          # Main entry point (GitHub Pages)
-├── main.html           # Main application page
-├── test.html           # Test/development page
-├── map.html            # Map view
-├── 404.html            # GitHub Pages 404 handler
-├── styles.css          # Main stylesheet
-├── script.js           # Main application script
-├── test-loader.js      # Component loader
-├── server.js            # Local development server
-├── package.json         # Node.js dependencies
-├── data/                # JSON data files
-│   ├── events.json
-│   ├── locations.json
-│   └── connections.json
-├── controllers/         # Application controllers
-├── models/              # Data models
-├── views/               # View components
-├── utils/               # Utility functions
-├── js/                  # Additional JavaScript
-├── Music/               # Music files
-├── Music Icons/         # Music icons
-├── Event Images/        # Event images
-├── Icons/               # Application icons
-├── Misc/                # Miscellaneous assets
-└── Models3D/            # 3D model files
+├── index.html, 404.html              # HTML (timeline shell + GitHub Pages 404 → index)
+├── .nojekyll                         # GitHub Pages: disable Jekyll
+├── .gitignore
+├── package.json, package-lock.json   # npm / CI
+├── README.md
+├── start-server.bat                  # Windows: manifest + server window + browser (optional)
+├── scripts/                          # Node tooling (manifest, Pages prep, migrations)
+├── src/
+│   ├── styles/app.css, styles/       # Global CSS bundle + partials (linked from index.html)
+│   ├── script.js                     # Bootstrap script (linked from index.html)
+│   ├── server.js                     # Local dev HTTP server (port 8000)
+│   ├── data/                         # Shipped JSON (events, codex, manifest, …)
+│   ├── assets/                       # Images, audio, models
+│   └── features/                     # Application modules (globe, timeline, codex, …)
+├── docs/                             # Design and refactor notes
+├── .github/                          # CI (e.g. Pages deploy)
+└── _site/                            # GitHub Pages output (generated; not usually committed)
 ```
+
+**Root is intentionally small.** `index.html`, `404.html`, and `.nojekyll` belong at the repo root for GitHub Pages. `package.json` / lockfile must stay at the root for npm. `start-server.bat` stays at the root so double‑click starts in the correct directory without extra path glue.
+
+Older one-off folders (`Music/`, root `data/`, etc.) are not part of the current tree; prefer **`src/assets`** and **`src/data`**.
 
 ## Browser Compatibility
 

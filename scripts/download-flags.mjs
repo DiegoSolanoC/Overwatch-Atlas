@@ -14,7 +14,7 @@ import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const OUT_DIR = path.join(ROOT, 'assets', 'images', 'flags');
+const OUT_DIR = path.join(ROOT, 'src', 'assets', 'images', 'Filters', 'flags');
 const INDEX_PATH = path.join(OUT_DIR, 'flags-index.json');
 
 const TARGET_W = 640;

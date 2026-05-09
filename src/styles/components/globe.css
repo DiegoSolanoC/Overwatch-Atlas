@@ -1,0 +1,3504 @@
+/* Main Content */
+main {
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+    background: #0a1929; /* Dark blue for default blue palette */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border: none;
+    border-top: none; /* Explicitly remove top border */
+    border-bottom: none; /* Explicitly remove bottom border */
+}
+
+/* Gray palette: dark gray background for main */
+body.color-palette-gray main {
+    background: #1a1a1a;
+}
+
+body.color-palette-crimson main {
+    background: var(--bg-main);
+}
+
+body.color-palette-nulled main {
+    background: var(--bg-main);
+}
+
+/* Globe Container */
+#globe-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: grab;
+    /* Mobile: prevent browser panning/scroll chaining while dragging the map */
+    touch-action: none;
+    overscroll-behavior: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#globe-container.codex-mode {
+    cursor: default;
+    touch-action: auto;
+}
+
+/* Inline timeline load: pin to the same main stage as globe/map (entry.css #globe-container) */
+#globe-container.globe-inline-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.globe-inline-loading {
+    bottom: 108px;
+}
+
+/* Fill #globe-container so hit-testing and getBoundingClientRect match the full stage
+   (otherwise height:100% can collapse and Codex UI coords clamp to the top-left). */
+.codex-view-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* Pattern on the stage, not on .codex-world: when zoomed out the scaled board is smaller than
+       the viewport — letterboxing must still show the texture (see panel-pattern-overlay.css). */
+    isolation: isolate;
+}
+
+
+
+
+/* Pannable/zoomable board; inner size gives extra layout space (see features/connection-codex/services/CodexCanvasService CODEX_WORLD_*). */
+.codex-world {
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    transform-origin: 0 0;
+    z-index: 1;
+    pointer-events: auto;
+    /* Performance optimization: isolate this layer from document reflows */
+    contain: layout style;
+}
+
+/* Optimize during active panning */
+.codex-world--panning {
+    will-change: transform;
+}
+
+/* Full-stage pointer target: contextmenu offsetX/Y are native-local to this box (same space as node left/top). */
+.codex-hit-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 0;
+    pointer-events: auto;
+    cursor: grab;
+    touch-action: none;
+}
+
+/* Unmasked pick lines sit under .codex-edges-masked. Do not set pointer-events: none on this group. */
+
+/* Root SVG ignores hits so empty canvas passes through to .codex-hit-layer (context menu → add node).
+   Thick .codex-edge-hit lines opt back in for panning on top of cords. */
+.codex-edges-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.codex-edge-segment {
+    pointer-events: none;
+    /* Smooth fade-in when edges appear */
+    animation: codex-edge-fade-in 200ms ease-out;
+}
+
+@keyframes codex-edge-fade-in {
+    from {
+        opacity: 0;
+        stroke-dashoffset: 20;
+    }
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+.codex-edge-elbow-parallelogram {
+    pointer-events: none;
+}
+
+.codex-edge-packets {
+    pointer-events: none;
+}
+
+.codex-edge-packet {
+    pointer-events: none;
+}
+
+.codex-edge-filter-pad {
+    pointer-events: none;
+}
+
+.codex-edge-hit {
+    stroke: transparent;
+    fill: none;
+    pointer-events: stroke;
+    cursor: grab;
+}
+
+.codex-edge-degree-labels {
+    pointer-events: none;
+}
+
+.codex-edge-degree {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    fill: rgba(255, 255, 255, 0.96);
+    stroke: rgba(0, 0, 0, 0.82);
+    stroke-width: 8px;
+    paint-order: stroke fill;
+}
+
+.codex-edge-degree.codex-edge-degree--octilinear {
+    fill: #4ade80;
+    stroke: rgba(0, 0, 0, 0.78);
+}
+
+.codex-toolbar {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 88%, #000 12%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+    max-width: min(420px, calc(100% - 24px));
+    font-size: 15px;
+}
+
+.codex-toolbar__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.codex-toolbar__row--footer {
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.codex-toolbar__hint {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffeb3b;
+    letter-spacing: 0.02em;
+}
+
+.codex-toolbar__network-hint {
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0 2px;
+}
+
+.codex-toolbar__row--selection-preview {
+    justify-content: center;
+}
+
+.codex-toolbar__endpoint-preview-single {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.codex-toolbar__endpoint-preview-dual {
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.codex-toolbar__selection-preview--from,
+.codex-toolbar__selection-preview--to {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.codex-toolbar__endpoint-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(180, 230, 255, 0.9);
+    line-height: 1;
+}
+
+.codex-toolbar__selection-preview-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 200, 255, 0.45);
+    background: rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.codex-toolbar__selection-preview--empty .codex-toolbar__selection-preview-thumb::after {
+    content: '?';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+.codex-toolbar__selection-preview--empty .codex-toolbar__selection-preview-img {
+    opacity: 0;
+}
+
+.codex-toolbar__selection-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    pointer-events: none;
+}
+
+.codex-toolbar__edge-reverse {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.codex-toolbar__edge-reverse:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__edge-reverse:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__insert-break {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.codex-toolbar__insert-break:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__insert-break:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__merge-junctions {
+    flex-shrink: 0;
+    min-width: 52px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.codex-toolbar__merge-junctions:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__merge-junctions:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__mode-btn {
+    flex: 1;
+    min-width: 0;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+}
+
+.codex-toolbar__mode-btn--active {
+    border-color: rgba(var(--accent-primary-rgb), 0.65);
+    background: rgba(var(--accent-primary-rgb), 0.28);
+    color: #fff;
+}
+
+.codex-toolbar__mode-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.codex-toolbar__row--select-all {
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.codex-toolbar__row--select-all .codex-toolbar__select-all,
+.codex-toolbar__row--select-all .codex-toolbar__delete-selected {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.codex-toolbar__select-all {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+}
+
+.codex-toolbar__select-all:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.codex-toolbar__select-all:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__delete-selected {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.35);
+    color: rgba(254, 226, 226, 0.95);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.codex-toolbar__delete-selected:hover:not(:disabled) {
+    background: rgba(153, 27, 27, 0.45);
+    border-color: rgba(252, 165, 165, 0.55);
+}
+
+.codex-toolbar__delete-selected:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__row--import-export {
+    width: 100%;
+    justify-content: stretch;
+    gap: 8px;
+}
+
+.codex-toolbar__import-export-btn {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+.codex-toolbar__import-export-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(140, 210, 255, 0.45);
+}
+
+.codex-bio-sync-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.55);
+    box-sizing: border-box;
+}
+
+.codex-bio-sync-preview-card {
+    max-width: min(960px, 100%);
+    max-height: min(86vh, 100%);
+    overflow: auto;
+    padding: 20px 22px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--bg-secondary) 92%, #000 8%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.codex-bio-sync-preview__title {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.codex-bio-sync-preview__summary {
+    margin: 0 0 8px;
+}
+
+.codex-bio-sync-preview__hint {
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.codex-bio-sync-preview__col {
+    margin-bottom: 14px;
+}
+
+.codex-bio-sync-preview__col h4 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(200, 235, 255, 0.88);
+}
+
+.codex-bio-sync-preview__badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(var(--accent-primary-rgb), 0.35);
+}
+
+.codex-bio-sync-preview__pre {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 220px;
+    overflow: auto;
+}
+
+.codex-bio-sync-preview__actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.codex-bio-sync-preview__close {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(140, 210, 255, 0.45);
+    background: rgba(30, 50, 80, 0.75);
+    color: rgba(230, 245, 255, 0.95);
+    cursor: pointer;
+}
+
+.codex-bio-sync-preview__close:hover {
+    background: rgba(45, 75, 115, 0.9);
+}
+
+.codex-toolbar__scale-btn {
+    width: 48px;
+    height: 44px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+}
+
+.codex-toolbar__scale-btn:hover:not(:disabled) {
+    background: rgba(255, 235, 59, 0.15);
+    border-color: rgba(255, 235, 59, 0.45);
+}
+
+.codex-toolbar__scale-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__scale-input {
+    box-sizing: border-box;
+    width: 4.5rem;
+    min-width: 0;
+    height: 44px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.codex-toolbar__scale-input::-webkit-outer-spin-button,
+.codex-toolbar__scale-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.codex-toolbar__scale-input:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-toolbar__scale-input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__scale-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 600;
+}
+
+/* Codex pan/zoom uses the same floating #zoomControls as the globe (entry.css .zoom-btn). */
+
+.codex-toolbar__save {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
+    background: rgba(var(--accent-primary-rgb), 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.codex-toolbar__save:hover:not(:disabled) {
+    background: rgba(var(--accent-primary-rgb), 0.32);
+}
+
+.codex-toolbar__save:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.codex-picker {
+    position: absolute;
+    z-index: 60;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 94%, #000 6%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.codex-picker-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+    outline: none;
+}
+
+.codex-picker-input:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-picker__row {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.codex-picker__row .codex-picker-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.codex-picker__junction {
+    flex-shrink: 0;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(196, 181, 253, 0.55);
+    background: rgba(147, 51, 234, 0.22);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.codex-picker__junction:hover {
+    background: rgba(147, 51, 234, 0.35);
+}
+
+/* Suggestions sit under the picker input (avoids body scale / fixed positioning offset vs the text box). */
+.codex-picker .filter-autocomplete-list--codex-picker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    width: auto !important;
+    min-width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    z-index: 25;
+}
+
+/* Toggle off via toolbar: hide debug overlays (waypoints, angles, coords, Break picker); data unchanged. */
+.codex--debug-ui-hidden .codex-node--junction {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.codex--debug-ui-hidden .codex-picker__junction {
+    display: none !important;
+}
+
+.codex--debug-ui-hidden .codex-node__coord-label {
+    visibility: hidden;
+}
+
+.codex--debug-ui-hidden .codex-edge-degree-labels {
+    display: none;
+}
+
+/* View Mode: hide all editing controls, make read-only */
+.codex--view-mode .codex-toolbar,
+.codex--view-mode .codex-visual-panel,
+.codex--view-mode .codex-picker {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.codex--view-mode .codex-node {
+    cursor: default !important;
+}
+
+.codex--view-mode .codex-node--selected {
+    outline: none !important;
+}
+
+/* View mode: edge hits must receive pointer events (archive click + hover). Do not use pointer-events: none here. */
+.codex--view-mode .codex-edge-hit {
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
+.codex-edge-segment-group .codex-edge-segment {
+    transition:
+        stroke 0.14s ease,
+        stroke-width 0.14s ease;
+}
+
+.codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment {
+    stroke: #38bdf8 !important;
+    stroke-width: 6px !important;
+}
+
+/* Codex Mode Toggle Button - always visible, styled like globe-control-btn */
+.codex-mode-toggle-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 100;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+}
+
+.codex-mode-toggle-btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.3);
+    border-color: rgba(var(--accent-primary-rgb), 0.7);
+}
+
+.codex-mode-toggle-btn:active {
+    transform: scale(0.96);
+}
+
+.codex-mode-toggle-label {
+    white-space: nowrap;
+}
+
+.codex-toolbar__junction-pref-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    user-select: none;
+}
+
+.codex-toolbar__junction-toggle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: rgba(196, 181, 253, 0.95);
+}
+
+.codex-toolbar__mode-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    user-select: none;
+}
+
+.codex-toolbar__mode-toggle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: rgba(var(--accent-primary-rgb), 0.95);
+}
+
+/* Right dock: cord/packet appearance (separate from left .codex-toolbar). */
+.codex-visual-panel {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 80;
+    width: min(320px, calc(100vw - 24px));
+    max-height: min(72vh, calc(100% - 24px));
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 88%, #000 12%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+}
+
+.codex-visual-panel__details {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.codex-visual-panel__summary {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(220, 230, 255, 0.95);
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 0 8px;
+    list-style-position: outside;
+}
+
+.codex-visual-panel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.codex-visual-panel__section {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(196, 181, 253, 0.9);
+    margin-top: 6px;
+}
+
+.codex-visual-panel__section:first-child {
+    margin-top: 0;
+}
+
+.codex-visual-panel__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.codex-visual-panel__label {
+    line-height: 1.25;
+}
+
+.codex-visual-panel__inputwrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.codex-visual-panel__range {
+    flex: 1;
+    min-width: 0;
+    height: 22px;
+    accent-color: rgba(196, 181, 253, 0.9);
+}
+
+.codex-visual-panel__val {
+    flex-shrink: 0;
+    min-width: 2.5rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 235, 150, 0.95);
+    text-align: right;
+}
+
+.codex-visual-panel__color {
+    width: 100%;
+    max-width: 120px;
+    height: 36px;
+    padding: 2px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.codex-visual-panel__reset {
+    margin-top: 8px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(40, 30, 70, 0.55);
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+}
+
+.codex-visual-panel__reset:hover {
+    background: rgba(60, 45, 100, 0.75);
+    border-color: rgba(196, 181, 253, 0.45);
+}
+
+.codex-node {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+    will-change: transform;
+    /* Smooth fade-in when nodes appear */
+    animation: codex-node-fade-in 300ms ease-out;
+}
+
+.codex-node:hover {
+    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+    z-index: 20;
+}
+
+.codex-node:hover .codex-node__inner,
+.codex-node:hover.codex-node--simplified {
+    filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.8)) drop-shadow(0 0 6px rgba(147, 51, 234, 0.5));
+}
+
+.codex-node--simplified:hover {
+    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+}
+
+.codex-node--filtered-out:hover {
+    /* Filtered-out nodes don't get hover effects */
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    filter: brightness(0.5) grayscale(0.8);
+    z-index: 10;
+}
+
+.codex-node--filtered-out.codex-node--simplified:hover {
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+}
+
+@keyframes codex-node-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Large boards: skip rendering/paint for nodes outside the view (class toggled in features/connection-codex/services/CodexCanvasService). */
+.codex-node--cv-offscreen {
+    content-visibility: auto;
+    contain-intrinsic-size: 160px 160px;
+    pointer-events: none;
+}
+
+.codex-node__coord-label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    margin-top: 4px;
+    white-space: nowrap;
+    font-family: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: rgba(230, 240, 255, 0.96);
+    text-shadow:
+        0 0 3px rgba(0, 0, 0, 0.95),
+        0 1px 2px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.codex-node--junction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.codex-node__junction {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: rgba(196, 181, 253, 0.35);
+    border: 2.75px solid rgba(233, 213, 255, 0.95);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.codex-node--junction.codex-node--unsaved {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--junction.codex-node--selected {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--junction.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--junction.codex-node--pending-delete {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--junction.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node__inner {
+    position: relative;
+    width: 144px;
+    height: 144px;
+    box-sizing: border-box;
+    /*
+     * Portrait placement vs hex in Node Alpha.png (681×681): dark hex AABB ≈ 564×640 px, centered in canvas.
+     * Square hero/faction art uses object-fit: cover in this box; NodePortraitMask.png clips to hex alpha.
+     */
+    --codex-portrait-fit-w: calc(100% * 564 / 681);
+    --codex-portrait-fit-h: calc(100% * 640 / 681);
+}
+
+/* Hex alpha mask + frame rotate (--codex-hex-rotation); portrait stays upright via .codex-node__img-spin. */
+.codex-node__clip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+    overflow: hidden;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+}
+
+/* Variant-specific masks for legacy DOM - matches Node1/2/3 frame variants */
+.codex-node[data-codex-frame-variant="1"] .codex-node__clip {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node1.png');
+    mask-image: url('../../assets/images/Codex/Mask%20Node1.png');
+}
+
+.codex-node[data-codex-frame-variant="2"] .codex-node__clip {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node2.png');
+    mask-image: url('../../assets/images/Codex/Mask%20Node2.png');
+}
+
+.codex-node[data-codex-frame-variant="3"] .codex-node__clip {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node3.png');
+    mask-image: url('../../assets/images/Codex/Mask%20Node3.png');
+}
+
+.codex-node__img-spin {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform: rotate(var(--codex-portrait-counter-rotation, 0deg));
+    transform-origin: center center;
+}
+
+.codex-node__portrait-fit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--codex-portrait-fit-w);
+    height: var(--codex-portrait-fit-h);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.codex-node__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+}
+
+.codex-node__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Default white with 30% opacity */
+    pointer-events: none;
+    z-index: -1; /* Behind the image */
+    /* Inherits mask from parent img-wrapper */
+}
+
+.codex-node__frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+/* Simplified DOM structure (5 elements): wrapper with variant-specific mask + frame */
+.codex-node--simplified {
+    width: 144px;
+    height: 144px;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+}
+
+/* Wrapper element: positioned inside rotating root, gets masked, contains image */
+.codex-node--simplified .codex-node__img-wrapper {
+    position: absolute;
+    left: 8.6%;
+    top: 3.0%;
+    width: 82.8%;
+    height: 94.0%;
+    /* No transform here - inherits rotation from parent root */
+    overflow: hidden;
+}
+
+/* Variant-specific masking applied to wrapper (rotates with hex) */
+/* Mask is scaled UP to match frame: wrapper is 82.8% x 94%, so mask = 1/0.828 x 1/0.94 = 121% x 106% */
+.codex-node--simplified[data-codex-frame-variant="1"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node1.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../assets/images/Codex/Mask%20Node1.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.codex-node--simplified[data-codex-frame-variant="2"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node2.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../assets/images/Codex/Mask%20Node2.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.codex-node--simplified[data-codex-frame-variant="3"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../assets/images/Codex/Mask%20Node3.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../assets/images/Codex/Mask%20Node3.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+/* Image inside wrapper: fills wrapper, counter-rotates to stay upright */
+.codex-node--simplified .codex-node__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(-1 * var(--codex-hex-rotation, 0deg)));
+    transform-origin: center center;
+    object-fit: cover;
+}
+
+/* Frame rotates with parent and scales via percentage sizing */
+.codex-node--simplified .codex-node__frame {
+    width: 100% !important;
+    height: 100% !important;
+    transform: none;
+}
+
+/* Faction logos: smaller tile + contain so the full emblem fits inside the hex */
+.codex-node--simplified[data-codex-kind='faction'] .codex-node__img {
+    object-fit: contain;
+    /* Further inset for factions: 72% of the hero size */
+    width: 59.6%;  /* 82.8% * 0.72 */
+    height: 67.7%; /* 94.0% * 0.72 */
+    left: 20.2%;   /* (100 - 59.6) / 2 */
+    top: 16.15%;   /* (100 - 67.7) / 2 */
+}
+
+/* Legacy: nested structure styles for backward compatibility */
+.codex-node[data-codex-kind='faction'] .codex-node__inner {
+    --codex-faction-portrait-inset: 0.72;
+    --codex-portrait-fit-w: calc(100% * 564 / 681 * var(--codex-faction-portrait-inset));
+    --codex-portrait-fit-h: calc(100% * 640 / 681 * var(--codex-faction-portrait-inset));
+}
+
+.codex-node[data-codex-kind='faction'] .codex-node__img {
+    object-fit: contain;
+}
+
+.codex-node__frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 144px;
+    height: 144px;
+    object-fit: contain;
+    object-position: center center;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+}
+
+.codex-node--unsaved .codex-node__inner {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+/* Simplified DOM: filters apply directly to root node */
+.codex-node--unsaved.codex-node--simplified {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--selected .codex-node__inner {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--selected.codex-node--simplified {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+/* Event list thumbnail hover: match hero / faction / NPC filters to Codex nodes */
+.codex-node--filter-hover:not(.codex-node--junction) {
+    z-index: 25;
+    outline: 3px solid rgba(192, 132, 252, 0.95);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.codex-node--filter-hover:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.95))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.65));
+}
+
+.codex-node--filter-hover.codex-node--selected:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.92))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55))
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.9))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.55));
+}
+
+/* Filtered-out nodes: dark, half-transparent, unselectable */
+.codex-node--filtered-out {
+    opacity: 0.4;
+    filter: brightness(0.5) grayscale(0.8);
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.codex-node--filtered-out .codex-node__inner,
+.codex-node--filtered-out.codex-node--simplified {
+    filter: brightness(0.5) grayscale(0.8);
+}
+
+.codex-node--unsaved.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--pending-delete .codex-node__inner {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--unsaved.codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--unsaved.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+/* Outgoing “B” chain while a single A hub is selected (drag mode); stacks with unsaved / pending / selected */
+.codex-node--b-of-selected-a:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.78))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.45))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.75))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.42))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--unsaved {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+/* Simplified DOM: all combined filter states */
+.codex-node--simplified.codex-node--filter-hover:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.95))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.65));
+}
+
+.codex-node--simplified.codex-node--filter-hover.codex-node--selected:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.92))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55))
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.9))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.55));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--simplified.codex-node--pending-delete {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--simplified.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+/* Simplified DOM: b-of-selected-a chain styles */
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.78))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.45))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.75))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.42))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+.codex-node:active {
+    cursor: grabbing;
+}
+
+/* While inline loading, hide WebGL + DOM map so the 3D globe (desktop) or map layer can’t show through */
+#globe-container.globe-inline-loading canvas {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+#globe-container.globe-inline-loading .map-2d-lite {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* In-view timeline load: black stage (matches full-screen overlay + loading.gif) */
+.globe-inline-loader {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #000000;
+    pointer-events: auto;
+}
+
+.globe-inline-loader .loading-status-overlay {
+    max-width: 600px;
+    width: 90%;
+}
+
+.loading-status-overlay #globeInlineOverlayStatusContent,
+.loading-status-overlay #codexEntryInlineOverlayStatusContent {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the WebGL canvas also opts out of touch gestures */
+#globe-container canvas {
+    touch-action: none;
+    overscroll-behavior: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Dev-only: sun yaw — slider centered below header */
+#globe-container .dev-sun-yaw-panel {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
+    z-index: 125;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    max-width: none;
+    box-sizing: border-box;
+    pointer-events: auto;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: opacity 0.3s ease;
+}
+
+#globe-container .dev-sun-yaw-panel__range {
+    display: block;
+    width: min(600px, calc(100vw - 160px));
+    height: 24px;
+    margin: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
+}
+
+#globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+    height: 24px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
+}
+
+#globe-container .dev-sun-yaw-panel__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 48px;
+    height: 48px;
+    margin-top: -14px;
+    border-radius: 50%;
+    background: url('../../assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png') center/contain no-repeat;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#globe-container .dev-sun-yaw-panel__range::-moz-range-track {
+    height: 24px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
+}
+
+#globe-container .dev-sun-yaw-panel__range::-moz-range-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: url('../../assets/images/Icons/Worldview%20Icons/Lighting%20Icon.png') center/contain no-repeat;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/* Sun slider track backgrounds per palette (thumb uses --accent-primary from variables.css) */
+body.color-palette-gray #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+    background: rgba(74, 74, 74, 0.5);
+}
+
+body.color-palette-gray #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
+    background: rgba(74, 74, 74, 0.5);
+}
+
+body.color-palette-crimson #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+    background: rgba(92, 16, 24, 0.5);
+}
+
+body.color-palette-crimson #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
+    background: rgba(92, 16, 24, 0.5);
+}
+
+body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+    background: rgba(61, 36, 104, 0.5);
+}
+
+body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
+    background: rgba(61, 36, 104, 0.5);
+}
+
+@media (max-width: 768px) {
+    #globe-container .dev-sun-yaw-panel {
+        top: 80px;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        transform: translateX(-50%);
+    }
+
+    #globe-container .dev-sun-yaw-panel__range {
+        width: min(500px, calc(100vw - 40px));
+        height: 20px;
+    }
+
+    #globe-container .dev-sun-yaw-panel__range::-webkit-slider-runnable-track {
+        height: 20px;
+    }
+
+    #globe-container .dev-sun-yaw-panel__range::-webkit-slider-thumb {
+        width: 40px;
+        height: 40px;
+        margin-top: -12px;
+    }
+
+    #globe-container .dev-sun-yaw-panel__range::-moz-range-track {
+        height: 20px;
+    }
+
+    #globe-container .dev-sun-yaw-panel__range::-moz-range-thumb {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Unwrapped map edge feedback (white glow like main menu hover) */
+.map-edge-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5; /* below UI buttons, above canvas */
+}
+
+.map-edge-glow__edge {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 80ms linear;
+}
+
+/* Reuse main-menu hover "white glow" feel: layered bright edges */
+.map-edge-glow__edge--left,
+.map-edge-glow__edge--right {
+    top: 0;
+    bottom: 0;
+    width: 22px;
+}
+.map-edge-glow__edge--top,
+.map-edge-glow__edge--bottom {
+    left: 0;
+    right: 0;
+    height: 22px;
+}
+
+.map-edge-glow__edge--left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    box-shadow:
+        inset 0 0 50px 10px rgba(255, 255, 255, 0.50),
+        0 0 30px 5px rgba(255, 255, 255, 0.55),
+        0 0 60px 10px rgba(255, 255, 255, 0.25);
+}
+.map-edge-glow__edge--right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    box-shadow:
+        inset 0 0 50px 10px rgba(255, 255, 255, 0.50),
+        0 0 30px 5px rgba(255, 255, 255, 0.55),
+        0 0 60px 10px rgba(255, 255, 255, 0.25);
+}
+.map-edge-glow__edge--top {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    box-shadow:
+        inset 0 0 50px 10px rgba(255, 255, 255, 0.50),
+        0 0 30px 5px rgba(255, 255, 255, 0.55),
+        0 0 60px 10px rgba(255, 255, 255, 0.25);
+}
+.map-edge-glow__edge--bottom {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    box-shadow:
+        inset 0 0 50px 10px rgba(255, 255, 255, 0.50),
+        0 0 30px 5px rgba(255, 255, 255, 0.55),
+        0 0 60px 10px rgba(255, 255, 255, 0.25);
+}
+
+/* Globe Control Button */
+.globe-control-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: clamp(72px, 8.5vw, 88px);
+    height: 60px;
+    background: rgba(13, 71, 161, 0.35);
+    border-style: solid;
+    border-width: 2px 2px 2px 6px;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-radius: 4px;
+    padding: 0 16px; /* Increased horizontal padding */
+    transform: skewX(-11deg);
+    gap: 10px; /* Space between icon and text */
+    color: white;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 16px;
+    z-index: 100; /* Higher than test-container to ensure buttons are clickable */
+    pointer-events: auto; /* Ensure buttons are clickable */
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    line-height: 1;
+}
+
+.globe-control-btn:hover {
+    transform: skewX(-11deg) translateY(-3px) scale(1.04);
+    background: rgba(13, 71, 161, 0.55);
+    border-color: #fff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.globe-control-btn span,
+.globe-control-btn i,
+.globe-control-btn [id$="Icon"],
+.globe-control-btn .header-hub-btn-label {
+    transform: skewX(11deg) !important; /* Force EVERYTHING inside to stay upright */
+    display: inline-block;
+}
+
+/* Images inside counter-skewed spans should have no transform */
+.globe-control-btn [id$="Icon"] img {
+    transform: none !important;
+}
+
+/* Standardize icon container size and prevent distortion */
+.globe-control-btn [id$="Icon"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 28px !important; /* Slightly smaller for better balance */
+    height: 28px !important;
+    flex-shrink: 0;
+    margin-right: 2px;
+}
+
+.globe-control-btn [id$="Icon"] img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+.globe-control-btn .header-hub-btn-label,
+.globe-control-btn .globe-control-btn__label {
+    transform: skewX(11deg) !important; /* Keep text straight */
+    white-space: nowrap;
+    margin-left: 2px;
+}
+
+/* Mobile-only dock rail pairs. Desktop now unhides these to match mobile look for specific buttons. */
+
+.dock-globe-rail {
+    /* Horizontal inset from viewport so rails clear dock / panel border art */
+    --dock-globe-rail-edge-inset: 42px;
+    --dock-globe-rail-gap: 10px;
+    position: fixed;
+    bottom: calc(var(--footer-height, 65px) + 24px);
+    z-index: 115;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+    width: max-content;
+    max-width: calc(100vw - (2 * var(--dock-globe-rail-edge-inset, 42px)));
+    box-sizing: border-box;
+    transition: bottom var(--pagination-dock-transition-duration, 0.42s)
+        var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+}
+
+@media (max-width: 768px) {
+    .dock-globe-rail {
+        bottom: calc(var(--footer-height, 65px) + 24px);
+    }
+}
+
+    body:has(#paginationDock) .dock-globe-rail {
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height, 240px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+        );
+    }
+
+    .dock-globe-rail--left {
+        left: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-left));
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height, 240px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+            + var(--dock-rail-side-extra, 30px)
+        ) !important;
+    }
+
+    .dock-globe-rail--center {
+        left: 50%;
+        transform: translateX(-50%) translateY(var(--dock-center-rail-y, 0px));
+        /* Keep the 5 center rail controls above event slide/image layers (~500). */
+        z-index: 660;
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height, 240px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+        ) !important;
+    }
+
+    /* Segment colors: on trapezoid wrapper so fill SVG + rail children share one source (fully opaque). */
+    body:has(#paginationDock) .pagination-dock-top-trapezoid {
+        --dock-trapezium-segment-bg: rgb(13, 71, 161);
+        --dock-trapezium-segment-hover-bg: rgb(32, 105, 205);
+    }
+
+    body.color-palette-crimson:has(#paginationDock) .pagination-dock-top-trapezoid {
+        --dock-trapezium-segment-bg: rgb(92, 16, 24);
+        --dock-trapezium-segment-hover-bg: var(--btn-crimson-bg-hover);
+    }
+
+    body.color-palette-gray:has(#paginationDock) .pagination-dock-top-trapezoid {
+        --dock-trapezium-segment-bg: rgb(74, 74, 74);
+        --dock-trapezium-segment-hover-bg: var(--btn-gray-bg-hover);
+    }
+
+    body.color-palette-nulled:has(#paginationDock) .pagination-dock-top-trapezoid {
+        --dock-trapezium-segment-bg: rgb(104, 58, 168);
+        --dock-trapezium-segment-hover-bg: var(--btn-nulled-bg-hover);
+    }
+
+    /*
+     * Center rail: seven equal flex segments inside the dock trapezium shape.
+     * clip-path matches SVG fill polygon (viewBox -12 -12 124 124, data-dock-trap-v="10"):
+     * points="2,3 98,3 112,100 -12,100" → percentages vs 124×124 (origin shift +12 on x/y).
+     */
+    body:has(#paginationDock) .pagination-dock-top-trapezoid .dock-globe-rail.dock-globe-rail--center {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        top: auto !important;
+        transform: translateY(
+                calc(var(--dock-center-rail-y, 0px) + var(--dock-trapezoid-rail-shift-y, -3px))
+            )
+            !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0;
+        flex: 1 1 0;
+        flex-wrap: nowrap !important;
+        justify-content: stretch !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        z-index: 4 !important;
+        margin: 0 !important;
+        transition: none;
+        pointer-events: none;
+        align-self: stretch !important;
+        min-height: 0 !important;
+        overflow: hidden;
+        clip-path: polygon(
+            11.29032258% 12.09677419%,
+            88.70967742% 12.09677419%,
+            100% 90.32258065%,
+            0% 90.32258065%
+        );
+    }
+
+    /*
+     * Each direct child = one segment.
+     * Mirrored parallelograms that follow the trapezium direction (inverted vs previous pass):
+     * left half leans with the left trapezium side, right half mirrors it.
+     * Slight overlap removes anti-alias seams/gaps between clipped neighbors.
+     */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > * {
+        --dock-segment-slant: clamp(8px, 1.2vw, 14px);
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        margin: 0 0 0 calc(var(--dock-segment-slant) * -1) !important;
+        align-self: stretch !important;
+        box-sizing: border-box !important;
+        border-radius: 10px !important;
+        border: none !important;
+        border-right: none !important;
+        box-shadow: none !important;
+        background: var(--dock-trapezium-segment-bg) !important;
+        clip-path: polygon(
+            0% 0%,
+            calc(100% - var(--dock-segment-slant)) 0%,
+            100% 100%,
+            var(--dock-segment-slant) 100%
+        ) round 10px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        pointer-events: auto !important;
+        z-index: 5;
+        position: relative !important;
+        inset: auto !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 0 8px !important;
+        font-size: 13px !important;
+        line-height: 1.15 !important;
+        transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:first-child {
+        margin-left: 0 !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:nth-child(-n + 3) {
+        clip-path: polygon(
+            var(--dock-segment-slant) 0%,
+            100% 0%,
+            calc(100% - var(--dock-segment-slant)) 100%,
+            0% 100%
+        ) round 10px;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:nth-child(4) {
+        clip-path: polygon(
+            calc(var(--dock-segment-slant) * 0.85) 0%,
+            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
+            100% 100%,
+            0% 100%
+        ) round 10px;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > *:hover {
+        background: var(--dock-trapezium-segment-hover-bg) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Narrower prev/next *event* columns so prev/next *page* (and clip-path) have more room */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn.globe-control-btn {
+        flex: 0.52 1 0 !important;
+        padding: 0 4px !important;
+    }
+
+    /* Wider columns + bias double-arrow icons toward strip center (away from outer clip). */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn.globe-control-btn {
+        flex: 1.32 1 0 !important;
+        justify-content: flex-end !important;
+        padding: 0 10px 0 clamp(14px, 14%, 28px) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn.globe-control-btn {
+        flex: 1.32 1 0 !important;
+        justify-content: flex-start !important;
+        padding: 0 clamp(10px, 10%, 22px) 0 6px !important;
+    }
+
+    /* Undo global center-rail skew for controls inside the trapezoid strip */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn {
+        transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn > *,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn [id$='Icon'] {
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn.globe-control-btn [id$='Icon'].icon-flip-h,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn.globe-control-btn [id$='Icon'].icon-flip-h {
+        transform: scaleX(-1) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn:hover,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn:hover,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn:hover {
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn:active,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn:active,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn:active {
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevPageBtn.globe-control-btn:disabled,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #prevEventBtn.globe-control-btn:disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextEventBtn.globe-control-btn:disabled,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #nextPageBtn.globe-control-btn:disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+    }
+
+    /* Page field: center trapezium segment (match image/filters mirrored slopes). */
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container {
+        clip-path: polygon(
+            calc(var(--dock-segment-slant) * 0.85) 0%,
+            calc(100% - calc(var(--dock-segment-slant) * 0.85)) 0%,
+            100% 100%,
+            0% 100%
+        ) round 10px !important;
+        min-width: 0 !important;
+        filter: none !important;
+        height: 100% !important;
+        padding: 4px 8px !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container .page-input {
+        background: rgba(255, 255, 255, 0.22) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        color: #fff !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container .page-label,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container .page-total {
+        color: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container:hover {
+        transform: none !important;
+        filter: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .page-input-container > * {
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > .globe-control-btn img,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn img,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn img {
+        transform: none !important;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn
+        .globe-control-btn__label,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn
+        .globe-control-btn__label,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #globalImageToggle.dock-globe-rail__btn
+        .header-hub-btn-label,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail--center
+        > #filtersToggle.dock-globe-rail__btn
+        .header-hub-btn-label {
+        white-space: nowrap;
+    }
+
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #prevPageBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #nextPageBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #prevEventBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #nextEventBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        .page-input-container,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #globalImageToggle.dock-globe-rail__btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #filtersToggle.dock-globe-rail__btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #prevPageBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #prevEventBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #nextEventBtn.globe-control-btn,
+    body:has(#paginationDock)
+        .pagination-dock-top-trapezoid
+        .dock-globe-rail.dock-globe-rail--center
+        #nextPageBtn.globe-control-btn {
+        pointer-events: auto;
+    }
+
+    .dock-globe-rail--right {
+        right: max(var(--dock-globe-rail-edge-inset, 42px), env(safe-area-inset-right));
+        bottom: calc(
+            var(--footer-height, 65px)
+            + var(--pagination-dock-height, 240px)
+            + var(--dock-globe-rail-gap, 10px)
+            + var(--dock-rail-lift-into-border, 0px)
+            + var(--dock-rail-side-extra, 30px)
+        ) !important;
+    }
+
+    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+        position: relative !important;
+        inset: auto !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: skewX(-11deg) !important;
+        width: 125px !important; /* Unified width for all 5 buttons */
+        height: 52px;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0 8px !important; /* Centered content */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        pointer-events: auto;
+        font-size: 13px; /* Slightly smaller to fit fixed width comfortably */
+        border-style: solid !important;
+        border-width: 2px 2px 2px 6px !important;
+        border-color: rgba(255, 255, 255, 0.93) !important;
+        background: var(--btn-primary-bg) !important;
+    }
+
+    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn > * {
+        transform: skewX(11deg) !important;
+    }
+
+    /* Images should NOT be counter-skewed again (they're inside counter-skewed spans) */
+    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn img {
+        transform: none !important;
+    }
+
+    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn:hover {
+        transform: skewX(-11deg) translateY(-3px) scale(1.04) !important;
+        background: var(--btn-primary-bg-hover) !important;
+        border-color: #fff !important;
+    }
+
+    /* Narrow lateral width (desktop/tablet): left dock Map/Vehicles/Weather/Lighting/Rotation — icon only */
+    @media (max-width: 1180px) and (min-width: 769px) {
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn {
+            width: 52px !important;
+            min-width: 52px !important;
+            max-width: 52px !important;
+            padding: 0 !important;
+            justify-content: center !important;
+            gap: 0 !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn > span:not([id$="Icon"]) {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail--left > .globe-control-btn.dock-globe-rail__btn [id$="Icon"] {
+            margin: 0 !important;
+        }
+    }
+
+    body.map-view-enabled .dock-globe-rail--right > .globe-control-btn#autoRotateToggle {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+/* Color Palette Button (bottom right) - now handled by .bottom-right-btn */
+
+/* Scope palette icon sizing to globe-control buttons only.
+   The header hub can also contain `#colorPaletteIcon`, and its sizing is handled in `styles/layout.css`. */
+.globe-control-btn #colorPaletteIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.globe-control-btn:hover {
+    background: rgba(13, 71, 161, 1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    /* Match zoom/page hover styling */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* (intentionally no white-glow hover for panel toggle buttons; glow belongs to panel option buttons) */
+
+/* Labels for globe-control buttons (used in dock rails on desktop) */
+.globe-control-btn .header-hub-btn-label {
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* Expand button width on desktop if it has a label */
+@media (min-width: 769px) {
+    .globe-control-btn:has(.header-hub-btn-label) {
+        width: auto;
+        min-width: 120px;
+        padding: 0 16px;
+        justify-content: flex-start;
+    }
+}
+
+.globe-control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Toggle Feedback Flashes (Maximum specificity to override dock rail and hover states) */
+.globe-control-btn.flash-green,
+.globe-control-btn.flash-green:hover,
+.dock-globe-rail > .globe-control-btn.flash-green,
+.dock-globe-rail > .globe-control-btn.flash-green:hover,
+.page-controls-row--mobile-only .globe-control-btn.flash-green,
+.page-controls-row--mobile-only .globe-control-btn.flash-green:hover,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-green,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-green:hover,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-green,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-green:hover {
+    background: rgba(46, 125, 50, 0.95) !important;
+    border-color: rgba(76, 175, 80, 0.9) !important;
+    box-shadow: 0 0 25px rgba(76, 175, 80, 0.7) !important;
+}
+
+.globe-control-btn.flash-red,
+.globe-control-btn.flash-red:hover,
+.dock-globe-rail > .globe-control-btn.flash-red,
+.dock-globe-rail > .globe-control-btn.flash-red:hover,
+.page-controls-row--mobile-only .globe-control-btn.flash-red,
+.page-controls-row--mobile-only .globe-control-btn.flash-red:hover,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-red,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-red:hover,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-red,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-red:hover {
+    background: rgba(198, 40, 40, 0.95) !important;
+    border-color: rgba(239, 83, 80, 0.9) !important;
+    box-shadow: 0 0 25px rgba(239, 83, 80, 0.7) !important;
+}
+
+.globe-control-btn.flash-orange,
+.globe-control-btn.flash-orange:hover,
+.dock-globe-rail > .globe-control-btn.flash-orange,
+.dock-globe-rail > .globe-control-btn.flash-orange:hover,
+.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn.flash-orange,
+.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn.flash-orange:hover,
+.page-controls-row--mobile-only .globe-control-btn.flash-orange,
+.page-controls-row--mobile-only .globe-control-btn.flash-orange:hover,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-orange,
+.page-controls-row--mobile-only .dock-globe-rail__btn.flash-orange:hover,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-orange,
+body:has(#paginationDock) .page-controls-row--mobile-only .globe-control-btn.dock-globe-rail__btn.flash-orange:hover {
+    background: rgba(239, 108, 0, 0.95) !important;
+    border-color: rgba(255, 152, 0, 0.9) !important;
+    box-shadow: 0 0 25px rgba(255, 152, 0, 0.7) !important;
+}
+
+.globe-control-btn.active {
+    /* Subtle indicator that feature is ON, but no heavy background */
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.globe-control-btn.toggle-off,
+.dock-globe-rail > .globe-control-btn.toggle-off {
+    border-color: rgba(183, 28, 28, 0.55) !important; /* Desaturated, grayish-red border */
+}
+
+/* Visual lockout for features not available in Map mode */
+.globe-control-btn.globe-locked {
+    opacity: 0.25 !important;
+    pointer-events: none !important;
+    filter: grayscale(0.8);
+    cursor: default;
+}
+
+#mapViewToggle.toggle-off {
+    border-color: rgba(255, 255, 255, 0.93) !important;
+}
+
+/* Event Pagination Controls */
+.event-pagination {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    z-index: 10;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 12px);
+    box-sizing: border-box;
+    padding: 0 8px;
+}
+
+.page-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    align-self: center;
+}
+
+.event-page-slider-row {
+    width: 100%;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px), (min-width: 769px) and (max-height: 599px) {
+    .event-page-slider-row--desktop-only {
+        display: none !important;
+    }
+}
+
+.event-page-slider-wrap {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.event-page-slider-ticks {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.event-page-slider-tick {
+    position: absolute;
+    border-radius: 1px;
+}
+
+.event-page-slider-tick--major {
+    top: -5px;
+    bottom: -5px;
+    width: 3px;
+    margin-left: -1.5px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.event-page-slider-tick--sub {
+    top: 3px;
+    bottom: 3px;
+    width: 1px;
+    margin-left: -0.5px;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.42);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+}
+
+.event-page-slider-tick--sub.event-page-slider-tick--filter-hit {
+    width: 2px;
+    margin-left: -1px;
+    background: rgba(76, 175, 80, 0.95) !important;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.65) !important;
+}
+
+.event-page-slider {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.event-page-slider:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.event-page-slider:focus-visible {
+    outline: 2px solid rgba(255, 200, 100, 0.95);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.event-page-slider::-webkit-slider-runnable-track {
+    height: 18px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.event-page-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(100, 181, 246, 1) 0%, rgba(33, 150, 243, 1) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.event-page-slider::-moz-range-track {
+    height: 14px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.event-page-slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(100, 181, 246, 1) 0%, rgba(33, 150, 243, 1) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+}
+
+
+.page-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(13, 71, 161, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: rgba(13, 71, 161, 1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.page-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-input-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(13, 71, 161, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Page input container in dock rail - shares positioning logic with event manager button */
+.dock-globe-rail > .page-input-container {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: skewX(-20deg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 8px;
+    margin: 4px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.dock-globe-rail > .page-input-container:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.dock-globe-rail > .page-input-container > * {
+    transform: skewX(11deg) !important;
+}
+
+/* Center rail globe-control-btn buttons: keep parallelogram skew */
+.dock-globe-rail--center > .globe-control-btn {
+    transform: skewX(-11deg) !important;
+}
+
+.dock-globe-rail--center > .globe-control-btn > *,
+.dock-globe-rail--center > .globe-control-btn [id$='Icon'] {
+    transform: skewX(11deg) !important;
+}
+
+.dock-globe-rail--center > .globe-control-btn:hover {
+    transform: skewX(-11deg) translateY(-2px) scale(1.02) !important;
+}
+
+.dock-globe-rail--center > .globe-control-btn:active {
+    transform: skewX(-11deg) scale(0.98) !important;
+}
+
+/* Page input container: trapezium shape matching parallelogram slopes */
+.dock-globe-rail--center > .page-input-container {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    background: rgb(13, 71, 161) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 6px 14px !important;
+    gap: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;
+    min-width: 100px !important;
+    /* Trapezium: left slope matches left buttons, right slope matches right buttons */
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 100%, 0 100%) round 10px !important;
+    transition: transform 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
+}
+
+/* No counter-skew needed for page input container children */
+.dock-globe-rail--center > .page-input-container > * {
+    transform: none !important;
+}
+
+.dock-globe-rail--center > .page-input-container:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    background: rgba(13, 71, 161, 1) !important;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4)) !important;
+}
+
+.dock-globe-rail--center > .page-input-container .page-label,
+.dock-globe-rail--center > .page-input-container .page-total {
+    font-size: 13px !important;
+}
+
+.dock-globe-rail--center > .page-input-container .page-input {
+    width: 42px !important;
+    height: 28px !important;
+    font-size: 13px !important;
+}
+
+/* Left side buttons in dock rail: negative skew */
+.dock-globe-rail > #globalImageToggle.dock-globe-rail__btn,
+.dock-globe-rail > #prevPageBtn.globe-control-btn,
+.dock-globe-rail > #prevEventBtn.globe-control-btn {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: skewX(-11deg) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(13, 71, 161, 0.9) !important;
+    padding: 0 8px !important;
+    height: 44px !important;
+    min-width: 52px !important;
+    margin: 4px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    flex-shrink: 0;
+    pointer-events: auto;
+    border-radius: 4px !important;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Right side buttons in dock rail: positive skew (mirrored) */
+.dock-globe-rail > #nextPageBtn.globe-control-btn,
+.dock-globe-rail > #nextEventBtn.globe-control-btn {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: skewX(11deg) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(13, 71, 161, 0.9) !important;
+    padding: 0 8px !important;
+    height: 44px !important;
+    min-width: 52px !important;
+    margin: 4px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    flex-shrink: 0;
+    pointer-events: auto;
+    border-radius: 4px !important;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Hover: left side */
+.dock-globe-rail > #globalImageToggle.dock-globe-rail__btn:hover,
+.dock-globe-rail > #prevPageBtn.globe-control-btn:hover,
+.dock-globe-rail > #prevEventBtn.globe-control-btn:hover {
+    background: rgba(13, 71, 161, 1) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: skewX(-11deg) translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Hover: right side */
+.dock-globe-rail > #nextPageBtn.globe-control-btn:hover,
+.dock-globe-rail > #nextEventBtn.globe-control-btn:hover {
+    background: rgba(13, 71, 161, 1) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: skewX(11deg) translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Counter-skew: left side buttons */
+.dock-globe-rail > #globalImageToggle.dock-globe-rail__btn > *,
+.dock-globe-rail > #prevPageBtn.globe-control-btn > *,
+.dock-globe-rail > #prevEventBtn.globe-control-btn > *,
+.dock-globe-rail > #globalImageToggle.dock-globe-rail__btn [id$='Icon'],
+.dock-globe-rail > #prevPageBtn.globe-control-btn [id$='Icon'],
+.dock-globe-rail > #prevEventBtn.globe-control-btn [id$='Icon'] {
+    transform: skewX(11deg) !important;
+}
+
+/* Counter-skew: right side buttons */
+.dock-globe-rail > #nextPageBtn.globe-control-btn > *,
+.dock-globe-rail > #nextEventBtn.globe-control-btn > *,
+.dock-globe-rail > #nextPageBtn.globe-control-btn [id$='Icon'],
+.dock-globe-rail > #nextEventBtn.globe-control-btn [id$='Icon'] {
+    transform: skewX(-11deg) !important;
+}
+
+/* Images inside dock rail buttons: no direct transform - counter-skew is on the icon span */
+.dock-globe-rail > #globalImageToggle.dock-globe-rail__btn img,
+.dock-globe-rail > #prevPageBtn.globe-control-btn img,
+.dock-globe-rail > #prevEventBtn.globe-control-btn img,
+.dock-globe-rail > #nextEventBtn.globe-control-btn img,
+.dock-globe-rail > #nextPageBtn.globe-control-btn img {
+    transform: none !important;
+}
+
+/* Next button icons: counter-skew (-11deg for right side) + horizontal flip */
+.dock-globe-rail > #nextEventBtn.globe-control-btn [id$='Icon'].icon-flip-h,
+.dock-globe-rail > #nextPageBtn.globe-control-btn [id$='Icon'].icon-flip-h {
+    transform: skewX(-11deg) scaleX(-1) !important;
+}
+
+.page-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.page-input {
+    width: 50px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+    -moz-appearance: textfield; /* Firefox - remove spinner */
+}
+
+.page-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Remove spinner arrows from number input (Chrome, Safari, Edge) */
+.page-input::-webkit-inner-spin-button,
+.page-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-total {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Event Number Buttons (1-10) */
+.event-number-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-number-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(13, 71, 161, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    opacity: 1;
+}
+
+/* Shared hover style: number button hover and marker-hover highlight (same look) */
+.event-number-btn:hover:not(:disabled),
+.event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
+    background: rgba(13, 71, 161, 1);
+    border-width: 3px;
+    border-color: rgba(255, 170, 0, 0.95);
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px rgba(255, 170, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.event-number-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Disabled/locked button styles - highest specificity */
+button.event-number-btn:disabled,
+button.event-number-btn.locked,
+.event-number-btn:disabled,
+.event-number-btn.locked {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    filter: brightness(0.5) !important; /* Darken the button */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+    pointer-events: none !important;
+}
+
+/* Gray palette: gray number buttons */
+body.color-palette-gray .event-number-btn {
+    background: rgba(74, 74, 74, 0.9) !important;
+}
+
+body.color-palette-gray .event-number-btn:hover:not(:disabled),
+body.color-palette-gray .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
+    background: rgba(74, 74, 74, 1) !important;
+    border-color: rgba(255, 170, 0, 0.95) !important;
+    box-shadow: 0 0 0 2px rgba(255, 170, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Gray palette: keep the same subtle white hover halo for control buttons */
+body.color-palette-gray .globe-control-btn:hover {
+    /* Match zoom/page hover styling in gray palette too */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Disabled state for gray palette */
+body.color-palette-gray .event-number-btn:disabled,
+body.color-palette-gray .event-number-btn.locked {
+    filter: brightness(0.5) !important; /* Darken the button */
+}
+
+/* Crimson palette: red-toned number buttons */
+body.color-palette-crimson .event-number-btn {
+    background: rgba(85, 30, 38, 0.9) !important;
+}
+
+body.color-palette-crimson .event-number-btn:hover:not(:disabled),
+body.color-palette-crimson .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
+    background: rgba(85, 30, 38, 1) !important;
+    border-color: rgba(255, 138, 128, 0.95) !important;
+    box-shadow: 0 0 0 2px rgba(255, 138, 128, 0.35), 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.color-palette-crimson .globe-control-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.color-palette-crimson .event-number-btn:disabled,
+body.color-palette-crimson .event-number-btn.locked {
+    filter: brightness(0.5) !important;
+}
+
+body.color-palette-nulled .event-number-btn {
+    background: rgba(55, 32, 88, 0.9) !important;
+}
+
+body.color-palette-nulled .event-number-btn:hover:not(:disabled),
+body.color-palette-nulled .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
+    background: rgba(55, 32, 88, 1) !important;
+    border-color: rgba(212, 191, 255, 0.95) !important;
+    box-shadow: 0 0 0 2px rgba(212, 191, 255, 0.35), 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.color-palette-nulled .globe-control-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.color-palette-nulled .event-number-btn:disabled,
+body.color-palette-nulled .event-number-btn.locked {
+    filter: brightness(0.5) !important;
+}
+
+/* NOTE: `#rotateIcon` is used in both the floating globe-control button (mobile/legacy)
+   and the header hub button (desktop). The floating control needs a full-size icon,
+   but the header hub needs the icon wrapper to size to content so the label can sit
+   right next to it. Scope these rules to the floating control button only. */
+.globe-control-btn #rotateIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: none !important;
+    transform: none !important;
+}
+
+.globe-control-btn #rotateIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Legacy floating positions (skip buttons in .dock-globe-rail) */
+.globe-control-btn#autoRotateToggle:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+/* Map view: auto-rotate is not applicable (no globe rotation). */
+body.map-view-enabled .globe-control-btn#autoRotateToggle:not(.dock-globe-rail__btn) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Hyperloop Toggle Button - positioned next to rotation button (second row, top-left) */
+.globe-control-btn.hyperloop-btn:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 95px !important; /* Second row (map + transport) */
+    left: 110px !important; /* To the right of map toggle */
+}
+
+/* Map View Toggle Button - third row, top-left */
+.globe-control-btn#mapViewToggle:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 95px !important; /* Second row (map + transport) */
+    left: 20px !important;
+}
+
+/* Map toggle stays on row 2 in all modes. */
+
+/* Top-left buttons (filters and event manager) - positioned at top left */
+.globe-control-btn.top-left-btn {
+    bottom: auto !important;
+    top: 20px !important;
+    left: 20px !important;
+}
+
+/* Filters Toggle Button - positioned next to event manager button at top left */
+.globe-control-btn.filters-btn {
+    left: 110px !important; /* Position next to event manager button */
+}
+
+/* Event Manager Toggle Button - positioned at top left (first button) */
+.globe-control-btn.events-manage-btn.top-left-btn {
+    left: 20px !important; /* First button at top left */
+}
+
+/* Bottom-right buttons (music and color palette) - positioned at bottom right */
+.globe-control-btn.bottom-right-btn {
+    bottom: 20px !important;
+    top: auto !important;
+    right: 20px !important;
+    left: auto !important;
+}
+
+/* Music Toggle Button - positioned next to color palette button at bottom right */
+.globe-control-btn.music-btn.bottom-right-btn {
+    right: 110px !important; /* Position next to color palette button */
+}
+
+/* Color Palette Button - positioned at bottom right (first button) */
+.globe-control-btn.color-palette-btn.bottom-right-btn {
+    right: 20px !important; /* First button at bottom right */
+}
+
+/* Palette Menu - appears when palette button is clicked */
+.palette-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Space between circles */
+    z-index: 300;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 12px);
+    transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
+    align-items: center;
+}
+
+.palette-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+/* Palette Option Buttons - circular buttons */
+.palette-option-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.palette-option-btn:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.palette-option-btn.active {
+    border-color: #4CAF50; /* Green highlight for active palette (always green) */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+    transform: scale(1.1);
+}
+
+/* Blue palette option button */
+.palette-option-btn.blue {
+    background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
+}
+
+.palette-option-btn.blue:hover {
+    background: linear-gradient(135deg, #1565C0 0%, #1E88E5 100%);
+}
+
+/* Gray/Black palette option button */
+.palette-option-btn.black {
+    background: linear-gradient(135deg, #1a1a1a 0%, #424242 100%);
+}
+
+.palette-option-btn.black:hover {
+    background: linear-gradient(135deg, #2a2a2a 0%, #525252 100%);
+}
+
+/* Crimson / red palette option button */
+.palette-option-btn.crimson {
+    background: linear-gradient(135deg, #7f1018 0%, #c62828 100%);
+}
+
+.palette-option-btn.crimson:hover {
+    background: linear-gradient(135deg, #9a1520 0%, #e53935 100%);
+}
+
+/* Nulled (purple) — swatch centered on brand purple #A55DC6 */
+.palette-option-btn.nulled {
+    background: linear-gradient(135deg, #c77ee0 0%, #A55DC6 55%, #8346a3 100%);
+}
+
+.palette-option-btn.nulled:hover {
+    background: linear-gradient(135deg, #d49aee 0%, #b56dd8 45%, #A55DC6 100%);
+}
+
+/* Active state is always green regardless of palette */
+body.color-palette-gray .palette-option-btn.active {
+    border-color: #4CAF50; /* Green highlight for active palette (always green) */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+body.color-palette-crimson .palette-option-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+body.color-palette-nulled .palette-option-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+/* Mobile adjustments for palette menu */
+@media (max-width: 768px) {
+    .palette-menu {
+        gap: 8px;
+    }
+    
+    .palette-option-btn {
+        width: 40px;
+        height: 40px;
+        border-width: 2px;
+    }
+}
+
+#eventsManageIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#eventsManageIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#filtersIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#filtersIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#musicIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#musicIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Scope hyperloop icon sizing to globe-control buttons only.
+   The header hub also uses `#hyperloopIcon`, but header icon sizing is handled in `styles/layout.css`. */
+.globe-control-btn #hyperloopIcon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Floating weather toggle (mobile): match hub rail sizing like `#rotateIcon` / hyperloop */
+.globe-control-btn #weatherEffectsIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.globe-control-btn #weatherEffectsIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Weather PNG reads smaller than train/rotation in the same cell (more padding in asset) */
+
+@media (max-width: 768px) {
+    .globe-control-btn.weather-effects-btn #weatherEffectsIcon img {
+        transform: skewX(11deg) scale(1.14);
+        transform-origin: center center;
+    }
+}
+
+#globe-container:active {
+    cursor: grabbing;
+}
+
+#globe-container canvas {
+    display: block;
+}
+
+/* Shorter canvas when timeline is up without dock (float pagination); dock layout uses entry.css bottom: 0 */
+body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container {
+    bottom: 108px;
+}
+

@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const jsonPath = path.join(root, 'data', 'events.json');
+const jsonPath = path.join(root, 'src', 'data', 'events.json');
 
 const raw = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 const syncUrl = pathToFileURL(path.join(root, 'src', 'utils', 'StoryFilterPlacesSync.js')).href;

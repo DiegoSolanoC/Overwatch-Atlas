@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const eventsPath = path.join(__dirname, '..', 'data', 'events.json');
+const eventsPath = path.join(__dirname, '..', 'src', 'data', 'events.json');
 const data = JSON.parse(fs.readFileSync(eventsPath, 'utf8'));
 const events = data.events || [];
 

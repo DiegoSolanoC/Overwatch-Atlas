@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Main - Overwatch Atlas</title>
-    <link rel="icon" type="image/png" href="assets/images/icons/Icon.png">
-    <link rel="stylesheet" href="styles.css?v=72">
-    <link rel="stylesheet" href="styles/entry.css?v=17">
+    <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
+    <link rel="stylesheet" href="src/styles/app.css?v=73">
+    <link rel="stylesheet" href="src/styles/entry.css?v=17">
 </head>
 <body class="app-timeline-default">
     <header>
@@ -21,7 +21,7 @@
             <svg class="header-title-badge-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <path class="header-title-badge-path" vector-effect="non-scaling-stroke" d="M8 10 H92 L94 22 L82 98 H18 L6 22 Z"></path>
             </svg>
-            <img class="header-title-badge-logo" src="assets/images/misc/Website.png" alt="Overwatch Website" />
+            <img class="header-title-badge-logo" src="src/assets/images/Misc/Website%20Icons/Website.png" alt="Overwatch Website" />
             <span class="header-title-badge-sr">Overwatch Atlas</span>
         </a>
     </header>
@@ -42,7 +42,7 @@
             <div class="event-slide-close-cluster" id="eventSlideCloseCluster">
                 <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close">&times;</div>
                 <button type="button" class="event-slide-back-btn" id="eventSlideBack" aria-label="Back to previous entry" title="Back" style="display: none;">
-                    <img class="event-slide-back-btn__icon" src="assets/images/icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
+                    <img class="event-slide-back-btn__icon" src="src/assets/images/Icons/Utility%20Icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
                 </button>
             </div>
             <div class="event-slide-content" id="eventSlideContent">
@@ -130,10 +130,9 @@
                     <div class="event-control-buttons">
                     </div>
                     <div class="event-navigation-buttons">
-                        <button type="button" id="eventPrevBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Previous Event" aria-label="Previous event"><img class="ui-pagination-arrow" src="assets/images/icons/Arrow Icon.png" alt="" width="26" height="26" decoding="async" /></button>
+                        <button type="button" id="eventPrevBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Previous Event" aria-label="Previous event"><img class="ui-pagination-arrow" src="src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png" alt="" width="26" height="26" decoding="async" /></button>
                         <button type="button" id="eventImageToggle" class="event-image-toggle-btn">Show Image</button>
-                        <button id="eventAllEventsBtn" class="event-all-events-btn" title="View All Events">All Events</button>
-                        <button type="button" id="eventNextBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Next Event" aria-label="Next event"><img class="ui-pagination-arrow ui-pagination-arrow--flip-h" src="assets/images/icons/Arrow Icon.png" alt="" width="26" height="26" decoding="async" /></button>
+                        <button type="button" id="eventNextBtn" class="event-nav-btn event-nav-btn--pagination-arrow" title="Next Event" aria-label="Next event"><img class="ui-pagination-arrow ui-pagination-arrow--flip-h" src="src/assets/images/Icons/Utility%20Icons/Arrow%20Icon.png" alt="" width="26" height="26" decoding="async" /></button>
                     </div>
                 </div>
             </div>
@@ -158,7 +157,7 @@
         <!-- Loading Overlay (fades in during Globe Components loading) -->
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-status-overlay">
-                <img src="assets/images/misc/loading.gif" alt="Loading" class="loading-gif" id="loadingGif">
+                <img src="src/assets/images/Misc/GIFs/loading.gif" alt="Loading" class="loading-gif" id="loadingGif">
                 <h3>Loading Status</h3>
                 <div class="loading-progress-container">
                     <div class="loading-progress-bar" id="loadingProgressBar"></div>
@@ -167,7 +166,8 @@
             </div>
         </div>
         
-        <!-- Event Manager Panel -->
+        <!-- Event list UI for Data Archive only (hidden pool; overlay slide removed). -->
+        <div id="eventsManagePanelDetachedHost" class="events-manage-panel-detached-host" hidden>
         <div class="events-manage-panel" id="eventsManagePanel">
             <div class="events-manage-close" id="eventsManageClose">&times;</div>
             <div class="events-manage-content">
@@ -225,11 +225,12 @@
                 <!-- Pagination controls will be inserted here -->
             </div>
         </div>
+        </div>
     </div>
 
     <footer>
         <div class="footer-atlas-news">
-            <img src="assets/images/misc/Atlas%20News.png" alt="Atlas News" />
+            <img src="src/assets/images/Misc/Atlas%20News.png" alt="Atlas News" />
         </div>
         <p>&copy; Original Work by Blizzard Entertainment.</p>
     </footer>
@@ -239,79 +240,80 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
     <!-- InteractionController dependencies - load before component-loader (which imports InteractionController) -->
-    <script src="src/services/MarkerPulseService.js?v=8"></script>
-    <script src="src/services/MapEdgeGlowService.js?v=8"></script>
-    <script src="src/services/CameraControlService.js?v=8"></script>
-    <script src="src/services/MouseInteractionService.js?v=8"></script>
-    <script src="src/services/TouchInteractionService.js?v=8"></script>
-    <script src="src/services/MarkerInteractionService.js?v=10"></script>
-    <script src="src/services/StationFollowService.js?v=8"></script>
+    <script src="src/features/worldview/services/MarkerPulseService.js?v=8"></script>
+    <script src="src/features/worldview/services/MapEdgeGlowService.js?v=8"></script>
+    <script src="src/features/worldview/services/CameraControlService.js?v=8"></script>
+    <script src="src/features/worldview/services/MouseInteractionService.js?v=8"></script>
+    <script src="src/features/worldview/services/TouchInteractionService.js?v=8"></script>
+    <script src="src/features/worldview/services/MarkerInteractionService.js?v=10"></script>
+    <script src="src/features/worldview/services/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/app/component-loader.js?v=84"></script>
+    <script type="module" src="src/features/universal-features/component-loader.js?v=87"></script>
     
     <!-- Load services -->
-    <script src="src/services/SoundEffectsManager.js?v=8"></script>
-    <script src="src/services/GlitchTextService.js?v=10"></script>
-    <script src="src/utils/FactionMatchHelpers.js?v=3"></script>
-    <script src="src/services/EventDataService.js?v=29"></script>
-    <script src="src/services/LocationService.js?v=8"></script>
-    <script src="src/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/utils/LocationFlagHelpers.js?v=27"></script>
-    <script src="src/utils/EventTimelineHelpers.js?v=9"></script>
-    <script type="module" src="src/utils/EraHoverPreviewTheme.js?v=1"></script>
-    <script type="module" src="src/utils/SummaryInfoBadge.js?v=2"></script>
-    <script src="src/utils/FactionArchiveGroupOrder.js?v=2"></script>
-    <script src="src/utils/HeroArchiveRoleOrder.js?v=3"></script>
-    <script src="src/services/EventRenderService.js?v=25"></script>
-    <script src="src/services/EventEditService.js?v=12"></script>
-    <script src="src/services/NewsTickerService.js?v=8"></script>
+    <script src="src/features/universal-features/services/SoundEffectsManager.js?v=8"></script>
+    <script src="src/features/system-interface/services/GlitchTextService.js?v=10"></script>
+    <script src="src/features/system-interface/utils/FactionMatchHelpers.js?v=1"></script>
+    <script src="src/features/system-interface/services/EventDataService.js?v=29"></script>
+    <script src="src/features/system-interface/services/LocationService.js?v=8"></script>
+    <script src="src/features/worldview/data/flagFileByCommonName.js?v=8"></script>
+    <script src="src/features/system-interface/utils/LocationFlagHelpers.js?v=1"></script>
+    <script src="src/features/system-interface/integration/EventTimelineHelpers.js?v=9"></script>
+    <script src="src/features/system-interface/integration/timelineMarkerSync.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/utils/EraHoverPreviewTheme.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/utils/SummaryInfoBadge.js?v=1"></script>
+    <script src="src/features/data-archive/utils/FactionArchiveGroupOrder.js?v=1"></script>
+    <script src="src/features/data-archive/utils/HeroArchiveRoleOrder.js?v=1"></script>
+    <script src="src/features/system-interface/services/EventRenderService.js?v=25"></script>
+    <script src="src/features/system-interface/services/EventEditService.js?v=12"></script>
+    <script src="src/features/system-interface/services/NewsTickerService.js?v=8"></script>
     <!-- EventFormService dependencies - load before EventFormService -->
-    <script src="src/services/LocationFieldManager.js?v=8"></script>
-    <script src="src/services/SourceFieldManager.js?v=8"></script>
-    <script src="src/services/HeadlinesFieldManager.js?v=8"></script>
-    <script src="src/services/FormAutocompleteService.js?v=10"></script>
-    <script src="src/services/EventFormService.js?v=12"></script>
-    <script src="src/utils/HeroRelevantLocationsEditor.js?v=3"></script>
-    <script src="src/utils/BioArchiveConnectionsSync.js?v=7"></script>
-    <script src="src/utils/BioArchiveConnectionsEditor.js?v=9"></script>
-    <script src="src/services/EventDragDropService.js?v=11"></script>
-    <script src="src/services/EventListenerService.js?v=13"></script>
-    <script src="src/services/EventInteractionService.js?v=12"></script>
-    <script src="src/services/EventInitService.js?v=8"></script>
-    <script src="src/services/CityLookupService.js?v=9"></script>
-    <script src="src/services/ImagePathService.js?v=11"></script>
-    <script src="src/services/GlobeSyncService.js?v=9"></script>
+    <script src="src/features/system-interface/services/LocationFieldManager.js?v=8"></script>
+    <script src="src/features/system-interface/services/SourceFieldManager.js?v=8"></script>
+    <script src="src/features/system-interface/services/HeadlinesFieldManager.js?v=8"></script>
+    <script src="src/features/system-interface/services/FormAutocompleteService.js?v=10"></script>
+    <script src="src/features/system-interface/services/EventFormService.js?v=12"></script>
+    <script src="src/features/system-interface/utils/HeroRelevantLocationsEditor.js?v=3"></script>
+    <script src="src/features/system-interface/utils/BioArchiveConnectionsSync.js?v=7"></script>
+    <script src="src/features/system-interface/utils/BioArchiveConnectionsEditor.js?v=9"></script>
+    <script src="src/features/system-interface/services/EventDragDropService.js?v=11"></script>
+    <script src="src/features/system-interface/services/EventListenerService.js?v=13"></script>
+    <script src="src/features/system-interface/services/EventInteractionService.js?v=12"></script>
+    <script src="src/features/system-interface/services/EventInitService.js?v=8"></script>
+    <script src="src/features/system-interface/services/CityLookupService.js?v=9"></script>
+    <script src="src/features/system-interface/services/ImagePathService.js?v=11"></script>
+    <script src="src/features/worldview/services/GlobeSyncService.js?v=9"></script>
     <!-- MusicManager dependencies - load before MusicManager -->
-    <script src="src/services/MusicStateService.js?v=8"></script>
-    <script src="src/services/MusicShuffleService.js?v=8"></script>
-    <script src="src/services/MusicVolumeService.js?v=8"></script>
-    <script src="src/services/MusicProgressService.js?v=8"></script>
-    <script src="src/services/helpers/MusicPaletteDefaultHelpers.js?v=8"></script>
-    <script src="src/services/MusicPlaybackService.js?v=8"></script>
-    <script src="src/services/MusicFileService.js?v=8"></script>
-    <script src="src/services/MusicPanelService.js?v=8"></script>
-    <script src="src/services/MusicIconService.js?v=8"></script>
-    <script src="src/services/MusicControlService.js?v=8"></script>
-    <script src="src/services/helpers/MusicManagerInitHelpers.js?v=10"></script>
-    <script src="src/services/MusicManager.js?v=12"></script>
+    <script src="src/features/universal-features/services/MusicStateService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicShuffleService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicVolumeService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicProgressService.js?v=8"></script>
+    <script src="src/features/universal-features/services/helpers/MusicPaletteDefaultHelpers.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicPlaybackService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicFileService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicPanelService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicIconService.js?v=8"></script>
+    <script src="src/features/universal-features/services/MusicControlService.js?v=8"></script>
+    <script src="src/features/universal-features/services/helpers/MusicManagerInitHelpers.js?v=10"></script>
+    <script src="src/features/universal-features/services/MusicManager.js?v=12"></script>
     <!-- Filter services - load dependencies before FilterService -->
-    <script src="src/services/FilterStateManager.js?v=10"></script>
-    <script src="src/services/FilterImageService.js?v=8"></script>
+    <script src="src/features/system-interface/services/FilterStateManager.js?v=10"></script>
+    <script src="src/features/system-interface/services/FilterImageService.js?v=8"></script>
     <!-- FilterService helpers - load before FilterService -->
-    <script type="module" src="src/services/helpers/FilterButtonHelpers.js?v=10"></script>
-    <script type="module" src="src/services/helpers/FilterButtonSetupHelpers.js?v=10"></script>
-    <script type="module" src="src/services/helpers/FilterManifestHelpers.js?v=10"></script>
-    <script type="module" src="src/services/helpers/FilterTabHelpers.js?v=9"></script>
-    <script type="module" src="src/services/helpers/FilterCountHelpers.js?v=9"></script>
-    <script src="src/services/FilterService.js?v=15"></script>
-    <script src="src/services/AppKeyboardShortcutsService.js?v=11"></script>
-    <script src="src/services/PanelResizeService.js?v=14"></script>
+    <script type="module" src="src/features/system-interface/services/helpers/FilterButtonHelpers.js?v=10"></script>
+    <script type="module" src="src/features/system-interface/services/helpers/FilterButtonSetupHelpers.js?v=10"></script>
+    <script type="module" src="src/features/system-interface/services/helpers/FilterManifestHelpers.js?v=10"></script>
+    <script type="module" src="src/features/system-interface/services/helpers/FilterTabHelpers.js?v=9"></script>
+    <script type="module" src="src/features/system-interface/services/helpers/FilterCountHelpers.js?v=9"></script>
+    <script src="src/features/system-interface/services/FilterService.js?v=15"></script>
+    <script src="src/features/system-interface/services/AppKeyboardShortcutsService.js?v=11"></script>
+    <script src="src/features/system-interface/services/PanelResizeService.js?v=14"></script>
     
     <!-- Load main script -->
-    <script src="script.js?v=8"></script>
+    <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script src="src/app/page-init.js?v=14"></script>
+    <script src="src/features/universal-features/page-init.js?v=15"></script>
 </body>
 </html>

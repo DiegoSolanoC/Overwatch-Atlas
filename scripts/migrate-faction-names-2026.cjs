@@ -8,8 +8,8 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
-const FACTIONS_DIR = path.join(__dirname, '..', 'assets', 'images', 'factions');
-const EVENTS_PATH = path.join(__dirname, '..', 'data', 'events.json');
+const FACTIONS_DIR = path.join(__dirname, '..', 'src', 'assets', 'images', 'Filters', 'factions');
+const EVENTS_PATH = path.join(__dirname, '..', 'src', 'data', 'events.json');
 const ROOT = path.join(__dirname, '..');
 
 const RENAMES = [
@@ -98,7 +98,7 @@ const TO_DISPLAY = {
 };
 
 function mergeManifestIntoToDisplay() {
-    const m = JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8'));
+    const m = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'data', 'manifest.json'), 'utf8'));
     for (const f of m.factions || []) {
         if (f?.filename && f?.displayName) {
             TO_DISPLAY[f.filename] = f.displayName;
@@ -153,7 +153,7 @@ function migrateFactions(obj) {
 
 function main() {
     renamePngs();
-    execFileSync(process.execPath, ['generate-manifest.js'], { cwd: ROOT, stdio: 'inherit' });
+    execFileSync(process.execPath, [path.join('scripts', 'generate-manifest.js')], { cwd: ROOT, stdio: 'inherit' });
     mergeManifestIntoToDisplay();
 
     const raw = fs.readFileSync(EVENTS_PATH, 'utf8');

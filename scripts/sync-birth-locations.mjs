@@ -8,8 +8,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
-const eventsPath = path.join(root, "data", "events.json");
-const heroesPath = path.join(root, "data", "story-archive-heroes.json");
+const eventsPath = path.join(root, "src", "data", "events.json");
+const heroesPath = path.join(root, "src", "data", "story-archive-heroes.json");
 
 const COUNTRY_FIX = {
   "Antartica?": "Antarctica",

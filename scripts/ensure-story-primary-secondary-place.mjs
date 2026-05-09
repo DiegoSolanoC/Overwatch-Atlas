@@ -8,15 +8,18 @@ import vm from 'vm';
 const rootDir = new URL('../', import.meta.url);
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(new URL('../src/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
-vm.runInContext(fs.readFileSync(new URL('../src/utils/LocationFlagHelpers.js', import.meta.url), 'utf8'), sandbox);
+vm.runInContext(fs.readFileSync(new URL('../src/features/worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
+vm.runInContext(
+    fs.readFileSync(new URL('../src/features/system-interface/utils/LocationFlagHelpers.js', import.meta.url), 'utf8'),
+    sandbox
+);
 
 const LFH = sandbox.window.LocationFlagHelpers;
 if (!LFH?.migrateAllStoryEventsSecondaryPlaces) {
   throw new Error('LocationFlagHelpers migration not available');
 }
 
-const eventsPath = new URL('../data/events.json', import.meta.url);
+const eventsPath = new URL('../src/data/events.json', import.meta.url);
 const data = JSON.parse(fs.readFileSync(eventsPath, 'utf8'));
 const events = Array.isArray(data) ? data : data.events;
 if (!Array.isArray(events)) {

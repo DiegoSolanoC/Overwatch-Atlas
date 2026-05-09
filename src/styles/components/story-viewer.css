@@ -1,0 +1,1349 @@
+/* ========================================
+   STORY VIEWER - Full Center Space
+   Like Globe/Codex - takes over main content area
+   ======================================== */
+
+/* Story Viewer Container - fills center space like globe */
+.story-viewer-container {
+    /* Extra bottom inset when #paginationDock exists: dock top-cap overlaps main#content. */
+    --story-archive-dock-clearance: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-secondary, #0a1929); /* Uses palette variable */
+    /* Above main#content backdrop; filters/event-slide rails use 540 — stay under those when open */
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Embedded Event Manager panel (when moved to Story Viewer) */
+.story-viewer-panel-embedded {
+    /* Overridden by JS (applyStoryArchiveGridSquish in storyArchiveGridSquish.js); fallbacks match localhost default squish 3 */
+    --story-archive-list-max-width: 2905px;
+    --story-archive-list-gutter: 13.5px;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    /* One scrollport: the events list — avoids a second bar from nested overflow-y:auto */
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Event preview grid: gutters from screen edge + centered max width on ultrawide */
+.story-viewer-panel-embedded #eventsList.events-list {
+    width: 100%;
+    max-width: min(var(--story-archive-list-max-width), 100%);
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding-left: max(var(--story-archive-list-gutter), 12px);
+    padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
+}
+
+/* Data Archive grid: ~10 columns on large screens (was ~15 with auto-fill 158px) + taller thumb cap */
+.story-viewer-panel-embedded #eventsList {
+    --em-visual-min: calc(215px * 0.82);
+    --em-visual-max: calc(292px * 0.82);
+}
+
+.story-viewer-panel-embedded #eventsList .event-item {
+    min-height: 272px;
+    gap: 6px;
+}
+
+/* Data Archive: title on the image like pagination dock thumbs (.event-number-btn__name) */
+.story-viewer-panel-embedded #eventsList .event-item__thumb-visual::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 58%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 38%,
+        rgba(0, 0, 0, 0.18) 72%,
+        transparent 100%
+    );
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    z-index: 3;
+    --thumb-title-pad-x: 42px;
+    padding: 14px var(--thumb-title-pad-x) 12px var(--thumb-title-pad-x);
+    margin: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0%, transparent 75%);
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title {
+    margin: 0;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(12px, 2.2vmin, 15px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.98);
+    text-align: left;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.85),
+        0 2px 16px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    max-width: 100%;
+}
+
+body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title {
+    color: rgba(255, 255, 255, 0.98);
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-container {
+    display: inline;
+    vertical-align: baseline;
+    pointer-events: auto;
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-toggle-target {
+    pointer-events: auto;
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-info {
+    gap: 4px;
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta {
+    font-size: 12px;
+    line-height: 1.25;
+    gap: 2px;
+}
+
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta .event-item-location,
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta .event-item-year {
+    font-size: inherit;
+    margin: 0;
+}
+
+@media (min-width: 1201px) {
+    .story-viewer-panel-embedded #eventsList.events-list {
+        grid-template-columns: repeat(10, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    .story-viewer-panel-embedded #eventsList.events-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .story-viewer-panel-embedded #eventsList.events-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    .story-viewer-panel-embedded #eventsList .event-item {
+        min-height: 240px;
+    }
+}
+
+/* Bottom bar: actions left; pagination in true horizontal center (1fr | auto | 1fr) */
+.story-viewer-panel-embedded #storyArchiveBottomBar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 10px;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: min(var(--story-archive-list-max-width), 100%);
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding: 12px max(var(--story-archive-list-gutter), 12px) 16px;
+    padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Shared pill height for left actions + right rail (Show all / Per page / Clear) */
+    --story-archive-bar-control-height: 36px;
+}
+
+.story-viewer-panel-embedded #storyArchiveBottomBar .events-manage-actions {
+    grid-column: 1;
+    justify-self: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    min-width: 0;
+}
+
+.story-viewer-panel-embedded #storyArchiveBottomBar #eventsPagination.events-pagination {
+    grid-column: 2;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    max-width: none;
+    width: max-content;
+    padding: 0;
+    border-top: none;
+}
+
+/* Right rail: Show all + Per page combined into one unit */
+.story-viewer-panel-embedded #storyArchiveRightToolbar.story-archive-right-toolbar {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 0;
+}
+
+.story-viewer-panel-embedded #storyArchiveBottomBar .events-manage-actions .story-viewer-action-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--story-archive-bar-control-height);
+    padding-block: 0;
+    padding-inline: 16px;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-viewer-bottom-bar-control {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: var(--story-archive-bar-control-height);
+    min-height: var(--story-archive-bar-control-height);
+    padding: 0 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    border: 1px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    color: #fff;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-search-checkbox,
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-per-page-group {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    min-height: 0;
+    height: auto;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-archive-page-unit .events-search-checkbox {
+    width: auto;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .events-per-page-group.story-viewer-bottom-bar-control {
+    gap: 6px;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-viewer-bottom-bar-control:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-heavy));
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .story-viewer-bottom-bar-control input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: #fff;
+    cursor: pointer;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .events-per-page-group .events-search-label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar .events-per-page-group .events-search-input-small {
+    min-width: 48px;
+    max-width: 72px;
+    width: 56px;
+    height: 24px;
+    min-height: 24px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > .story-viewer-action-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--story-archive-bar-control-height);
+    padding-block: 0;
+    padding-inline: 16px;
+}
+
+/* Data Archive: Clear button no longer used */
+.story-viewer-panel-embedded #eventsSearchClear {
+    display: none !important;
+}
+
+/* Search row: Categories back + five archive icons (after #eventsSearchInput) */
+.story-viewer-panel-embedded .story-archive-search-category-strip {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn.story-viewer-action-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    align-self: center;
+    margin: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn.story-viewer-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn__img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.story-viewer-panel-embedded .story-archive-category-icon-btn--active {
+    box-shadow:
+        0 0 0 2px rgba(255, 210, 120, 0.65),
+        0 2px 10px rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 210, 120, 0.75) !important;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.story-viewer-panel-embedded .story-archive-back-to-hub-btn__label {
+    font-weight: 600;
+    font-size: inherit;
+}
+
+.story-viewer-panel-embedded .events-manage-content,
+.story-viewer-panel-embedded .story-viewer-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Clip to panel height so #eventsList is the only vertical scroll */
+    overflow: hidden;
+}
+
+/* Tighter top padding — Data Archive hides the header chrome */
+.story-viewer-panel-embedded .events-manage-content {
+    padding-top: 12px;
+}
+
+/* Whole header hidden in Data Archive (title + count); toolbar lives in #eventsManageControls */
+.story-viewer-panel-embedded .events-manage-header.events-manage-header--story-empty {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    min-height: 0 !important;
+}
+
+/* Toolbar toggle alone above search controls */
+.story-viewer-panel-embedded #eventsManageControls > #eventsManageToolbarToggleBtn {
+    align-self: flex-start;
+    margin: 0 0 10px 0;
+}
+
+/* Data Archive grid squish bar — hidden (fixed squish via JS); keep rules if re-enabled */
+.story-viewer-panel-embedded #storyArchiveGridSquishBar.story-archive-grid-squish-bar {
+    display: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: min(var(--story-archive-list-max-width), 100%);
+    margin-inline: auto;
+    box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    width: 100%;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__slider-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px 12px;
+    width: 100%;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    white-space: nowrap;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end--wide {
+    color: rgba(144, 202, 249, 0.95);
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__end--tight {
+    color: rgba(255, 183, 77, 0.95);
+    justify-self: end;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__range {
+    width: 100%;
+    min-width: 0;
+    height: 6px;
+    accent-color: var(--accent-primary, #2196f3);
+    cursor: pointer;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__value {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    min-width: 2.5ch;
+    text-align: right;
+}
+
+.story-viewer-panel-embedded .story-archive-grid-squish-bar__hint {
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Data Archive: no dark slab behind search — controls sit on the panel pattern */
+.story-viewer-panel-embedded .events-manage-controls {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px 20px 16px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Data Archive: section title is “Search” only (HTML still says “Search & filters” for the docked panel) */
+.story-viewer-panel-embedded .events-manage-controls-title {
+    text-align: center;
+    color: transparent;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 0 clamp(16px, 2.5vmin, 24px) 0;
+}
+
+.story-viewer-panel-embedded .events-manage-controls-title::after {
+    content: 'Search';
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    color: var(--accent-primary);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+    display: block;
+}
+
+/* Data Archive: hero/faction/NPC + country live in Filters panel — hide duplicate fields */
+.story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchFilters"],
+.story-viewer-panel-embedded .events-manage-search-row--primary .events-search-field--filters,
+.story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchCountry"],
+.story-viewer-panel-embedded .events-manage-search-row--primary .events-search-field--country {
+    display: none !important;
+}
+
+/* Data Archive: title above field is the h3; hide duplicate “Search:” label (kept for screen readers / for=) */
+.story-viewer-panel-embedded .events-manage-search-row--primary {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: clamp(16px, 2.6vmin, 26px);
+}
+
+.story-viewer-panel-embedded .events-manage-search-row--primary label[for="eventsSearchInput"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.story-viewer-panel-embedded .events-manage-search-row--primary .events-search-input--title {
+    flex: 0 1 auto;
+    width: clamp(260px, 52vw, 440px);
+    max-width: min(440px, 92vw);
+    min-width: 220px;
+    padding: 8px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Secondary row: Show all / Per page / Clear live in bottom bar; hidden “Use filter selection” may be the only node */
+.story-viewer-panel-embedded .events-manage-search-row--secondary {
+    width: 100%;
+}
+
+.story-viewer-panel-embedded
+    .events-manage-search-row--secondary:has(> .events-search-checkbox--use-filter-selection-hidden:only-child) {
+    display: none !important;
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    gap: 0;
+}
+
+.story-viewer-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* First screen: category tiles (Heroes / Factions / NPCs / Locations / Story) */
+.story-viewer-container--hub {
+    justify-content: center;
+    align-items: center;
+}
+
+#storyArchiveCategoryHub.story-archive-category-hub {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    /* Right 2×2 (Heroes / Factions / NPCs / Locations) gets more width than Story */
+    grid-template-columns: minmax(260px, 0.88fr) minmax(380px, 1.62fr);
+    gap: clamp(28px, 3.8vw, 52px);
+    width: min(1920px, calc(100% - 16px));
+    max-width: 100%;
+    padding: 20px 8px 32px;
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+/* Match globe/map chooser intro copy (see globe-map-launch-hub-heading / -lead). */
+.story-archive-category-hub-heading {
+    grid-column: 1 / -1;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-control-bold, var(--font-default));
+    font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.story-archive-category-hub-lead {
+    grid-column: 1 / -1;
+    margin: 0 0 clamp(4px, 1vw, 10px);
+    max-width: 42rem;
+    width: 100%;
+    justify-self: center;
+    text-align: center;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.story-archive-category-hub__dismiss-row {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(6px, 1.2vw, 14px);
+}
+
+.story-archive-category-hub-dismiss {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+}
+
+@media (min-width: 1400px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        width: min(2200px, calc(100% - 12px));
+        grid-template-columns: minmax(280px, 0.78fr) minmax(420px, 1.85fr);
+    }
+}
+
+.story-archive-category-hub__feature {
+    min-width: 0;
+}
+
+.story-archive-category-hub__grid {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 2.6vw, 30px);
+}
+
+.story-archive-category-hub__tile {
+    --thumb-skew: -11deg;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(220px, 34vmin, 320px);
+    padding: 0;
+    margin: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 0;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transform: skewX(var(--thumb-skew));
+    transform-origin: center center;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.story-archive-category-hub__tile--story {
+    min-height: clamp(440px, 58vmin, 620px);
+}
+
+.story-archive-category-hub__tile:hover {
+    transform: skewX(var(--thumb-skew)) scale(1.04);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93);
+}
+
+.story-archive-category-hub__tile:focus-visible {
+    outline: 2px solid var(--accent-primary, #f99e1a);
+    outline-offset: 3px;
+}
+
+body.color-palette-gray .story-archive-category-hub__tile:hover {
+    border-top-color: rgba(255, 102, 0, 0.95);
+    border-bottom-color: rgba(255, 102, 0, 0.95);
+}
+
+.story-archive-category-hub__figure {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 124%;
+    height: 100%;
+    margin-left: -12%;
+    padding: 0;
+    transform: skewX(11deg) scale(1.06);
+    transform-origin: center center;
+    overflow: hidden;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* Dock thumbnail: bottom scrim over image for title readability */
+.story-archive-category-hub__figure::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 58%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 38%,
+        rgba(0, 0, 0, 0.18) 72%,
+        transparent 100%
+    );
+}
+
+.story-archive-category-hub__img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #fff;
+    position: relative;
+    z-index: 0;
+    inset: auto;
+    margin: 0;
+}
+
+.story-archive-category-hub__label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    margin-left: 0;
+    transform: skewX(11deg);
+    --thumb-title-pad-x: clamp(40px, 5vw, 72px);
+    padding: clamp(22px, 3.2vmin, 34px) var(--thumb-title-pad-x) clamp(20px, 3vmin, 30px);
+    box-sizing: border-box;
+    text-align: left;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(22px, 4.2vmin, 42px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.85),
+        0 2px 16px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.42) 0%,
+        rgba(0, 0, 0, 0.12) 55%,
+        transparent 82%
+    );
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        grid-template-columns: 1fr;
+        width: min(960px, calc(100% - 16px));
+        max-width: 100%;
+    }
+
+    .story-archive-category-hub__tile--story {
+        min-height: clamp(300px, 47vmin, 420px);
+    }
+
+    .story-archive-category-hub__label {
+        font-size: clamp(20px, 5vmin, 34px);
+    }
+}
+
+@media (max-width: 520px) {
+    #storyArchiveCategoryHub.story-archive-category-hub {
+        gap: 12px;
+        padding: 14px 10px 24px;
+    }
+
+    .story-archive-category-hub__grid {
+        gap: 12px;
+    }
+
+    .story-archive-category-hub__tile {
+        min-height: 160px;
+        border-top-width: 9px;
+        border-bottom-width: 9px;
+    }
+
+    .story-archive-category-hub__tile--story {
+        min-height: 240px;
+    }
+
+    .story-archive-category-hub__label {
+        --thumb-title-pad-x: 24px;
+        padding-top: 16px;
+        padding-bottom: 14px;
+        font-size: clamp(16px, 5.2vw, 26px);
+    }
+}
+
+/* Pagination dock cap (~80px border art + trapezium) intrudes above the dock; lift list + page controls. */
+body:has(#paginationDock) .story-viewer-container.active {
+    --story-archive-dock-clearance: clamp(92px, 12vmin, 148px);
+}
+
+body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded .events-manage-content {
+    padding-bottom: calc(24px + var(--story-archive-dock-clearance));
+}
+
+body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded #storyArchiveBottomBar {
+    margin-top: 18px;
+    padding-top: 20px;
+    padding-bottom: 8px;
+}
+
+/* Pattern overlay - matches events-manage-panel, filters-panel, music-panel */
+.story-viewer-container {
+    isolation: isolate;
+}
+
+.story-viewer-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url('../../assets/images/Background%20Pattern/Pattern Blue.png');
+    background-repeat: repeat;
+    background-size: clamp(720px, 58vw, 1360px) auto;
+    background-position: center center;
+    opacity: 0.62;
+}
+
+/* Palette-specific pattern images for story viewer */
+body.color-palette-blue .story-viewer-container::before {
+    background-image: url('../../assets/images/Background%20Pattern/Pattern Blue.png');
+}
+
+body.color-palette-gray .story-viewer-container::before {
+    background-image: url('../../assets/images/Background%20Pattern/Pattern Dark.png');
+}
+
+body.color-palette-crimson .story-viewer-container::before {
+    background-image: url('../../assets/images/Background%20Pattern/Pattern Crimson.png');
+}
+
+body.color-palette-nulled .story-viewer-container::before {
+    background-image: url('../../assets/images/Background%20Pattern/Pattern Nulled.png');
+}
+
+.story-viewer-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: rgb(var(--dock-pattern-tint-rgb, 33, 150, 243) / 0.28);
+    mix-blend-mode: color;
+}
+
+/* Ensure content sits above pattern */
+.story-viewer-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Event number badges in Data Archive - ensure overlap styling applies */
+.story-viewer-panel-embedded .event-number-badge {
+    color: rgba(255, 255, 255, 0.98);
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.85),
+        0 2px 12px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.28) 0%,
+        transparent 75%
+    );
+}
+
+.story-viewer-panel-embedded .event-number-badge.event-number-badge--overlap {
+    color: rgba(255, 230, 230, 0.98) !important;
+    text-shadow:
+        0 0 14px rgba(244, 67, 54, 0.75),
+        0 1px 3px rgba(0, 0, 0, 0.85) !important;
+    background: linear-gradient(
+        180deg,
+        rgba(60, 20, 20, 0.42) 0%,
+        transparent 78%
+    ) !important;
+}
+
+/* Exit button - positioned in header */
+.story-viewer-close,
+.story-viewer-exit-btn {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    border: 1px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    z-index: 15;
+}
+
+.story-viewer-close:hover,
+.story-viewer-exit-btn:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-heavy));
+}
+
+/* Gray palette: orange hover for exit */
+body.color-palette-gray .story-viewer-close:hover,
+body.color-palette-gray .story-viewer-exit-btn:hover {
+    background: rgba(255, 102, 0, 0.8);
+}
+
+/* Content - same as events-manage-content */
+.story-viewer-content {
+    padding: 22px 28px 24px 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Title section */
+.story-viewer-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.story-viewer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.story-viewer-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.story-viewer-count {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Toolbar toggle button */
+.story-viewer-toolbar-toggle-btn {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.story-viewer-toolbar-toggle-btn:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+}
+
+/* Actions */
+.story-viewer-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.story-viewer-action-btn {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    border: 1px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.story-viewer-action-btn:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-heavy));
+}
+
+/* Event Manager width handle (arrow) — not used in centered Data Archive */
+#eventsManagePanel.story-viewer-panel-embedded .panel-resize-handle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Event Manager × — must not appear in Data Archive (backup if JS detach misses) */
+#eventsManagePanel.story-viewer-panel-embedded > .events-manage-close,
+#eventsManagePanel.story-viewer-panel-embedded > #eventsManageClose,
+#storyViewerContainer #eventsManagePanel.story-viewer-panel-embedded .events-manage-close,
+#storyViewerContainer #eventsManageClose {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    position: absolute !important;
+    inset: auto !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    z-index: -1 !important;
+}
+
+/* Controls section - same as events-manage-controls */
+.story-viewer-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.story-viewer-controls.collapsed {
+    display: none;
+}
+
+.story-viewer-controls-title {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+/* Search section */
+.story-viewer-search {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.story-viewer-search-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.story-viewer-search-row--primary {
+    flex: 1;
+}
+
+.story-viewer-search-row--secondary {
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Search labels and inputs - same as events-manage */
+.story-search-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+}
+
+.story-search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+.story-search-input:focus {
+    outline: none;
+    border-color: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.story-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.story-search-input-small {
+    width: 60px;
+    flex: none;
+}
+
+/* Search field with suggestions dropdown */
+.story-search-field {
+    position: relative;
+    display: inline-block;
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Search suggestions dropdown */
+.story-search-suggestions {
+    position: fixed;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 99999;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.story-search-suggestions .suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #fff;
+    transition: background 0.15s ease;
+}
+
+.story-search-suggestions .suggestion-item:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+}
+
+/* Checkboxes */
+.story-search-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.story-search-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Per page group */
+.story-per-page-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Clear button */
+.story-search-clear-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.story-search-clear-btn:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    border-color: rgba(var(--accent-primary-rgb), var(--opacity-light));
+}
+
+/* Event list - uses same event-item styles */
+#storyViewerList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Pagination - same as event pagination */
+.story-viewer-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.story-viewer-pagination-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    min-width: 36px;
+}
+
+.story-viewer-pagination-btn:hover {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+    border-color: rgba(var(--accent-primary-rgb), var(--opacity-light));
+}
+
+.story-viewer-pagination-btn.active {
+    background: rgba(var(--accent-primary-rgb), var(--opacity-heavy));
+    border-color: rgba(var(--accent-primary-rgb), var(--opacity-medium));
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .story-viewer-panel {
+        width: 95vw;
+        height: 90vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .story-viewer-panel.open {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .story-viewer-content {
+        padding: 16px;
+    }
+
+    .story-viewer-title {
+        font-size: 1.2rem;
+    }
+
+    .story-viewer-close {
+        font-size: 36px;
+        width: 40px;
+        height: 40px;
+    }
+}
