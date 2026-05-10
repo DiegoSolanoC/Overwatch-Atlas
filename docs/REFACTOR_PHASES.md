@@ -18,7 +18,7 @@ After those, **`src/` cleanup**: empty directories, orphaned/straggler files, im
 
 Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) is **backlog**: you decide when to schedule it.
 
-`src/features/worldview/`, `src/features/system-interface/`, and **`src/features/connection-codex/`** (canvas + mode) remain **anchors** we carve out; nothing in this revision removes them.
+`src/features/Interactive-Worldview/`, `src/features/system-interface/`, and **`src/features/connection-codex/`** (canvas + mode) remain **anchors** we carve out; nothing in this revision removes them.
 
 ---
 
@@ -33,7 +33,7 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 
 **Backlog (you choose sequencing):**
 
-- Mechanical **worldview** dedupe: single canonical imports (legacy parallel trees like old ~~`src/views/`~~ removed; see `features/worldview/presentation/views/`)  
+- Mechanical **worldview** dedupe: single canonical imports (legacy parallel trees like old ~~`src/views/`~~ removed; see `features/Interactive-Worldview/presentation/views/`)  
 - **Universal / shell** — palette, music/SFX, keyboard shortcuts (thin `window` surface over time)  
 - **Naming pass** — capability-based names (`EventManagerHelpers` vs boot vs panel helpers, etc.)
 
@@ -42,7 +42,7 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 **Why most of `src/` never moved into `features/` during A–C**
 
 - **Scope:** Phases A–C only carved **Connection Codex**, **Data Archive**, and **main menu** into `src/features/*`. The rest waited for a deliberate sweep.
-- **Boot & script order:** **`src/features/universal-features/component-loader.js`** and **`page-init.js`** are loaded from **`index.html`**; other classic scripts still anchor load order.
+- **Boot & script order:** **`src/features/universal-features/BootUp/LoadingOrchestrator.js`** and **`AppInitializer.js`** are loaded from **`index.html`**; other classic scripts still anchor load order.
 - **Cross-cutting code:** Music, filters, markers, loaders, keyboard shortcuts, and globals are **shared** across modes. Loader glue lives under **`src/features/universal-features/helpers/`**.
 - **Compatibility:** `window.*` glue remains where needed; **`src/app/`** was removed after cutover.
 
@@ -51,10 +51,10 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 | Order | Folder | ~Files | What to decide |
 |------:|--------|-------:|----------------|
 | 1 | ~~`src/helpers/`~~ | ~~1~~ → **`scripts/create-event.cjs`** | **Done:** Node CLI (not browser code); reads/writes **`src/data/locations.json`** and related paths from repo root. |
-| 2 | ~~`src/views/`~~ | ~~2~~ | **Done:** `UIView.js` + `TransportView.js` → **`src/features/worldview/presentation/views/`** (with `GlobeView`); `GlobeController` imports `../views/…`. Removed top-level `src/views/`. |
-| 3 | ~~`src/data/`~~ | ~~1~~ | **Done:** `flagFileByCommonName.js` → **`src/features/worldview/data/`** (globe flag lookup); `index.html` / `scripts/build-flags-lookup.mjs` and tooling paths updated. |
-| 4 | ~~`src/app/`~~ | — | **Done:** **`src/features/universal-features/`** — `component-loader.js`, `page-init.js`, **`helpers/`** (loader glue). HTML points at `src/features/universal-features/…`. **`GlobeInlineLoadHelpers`** still side-imported from `component-loader`. |
-| 5 | ~~`src/managers/`~~ | **0** | **Done:** No top-level **`src/managers/`** — shell managers live under **`src/features/universal-features/managers/`**; marker/navigation/pagination helpers under **`src/features/system-interface/managers/helpers/`** (**`loadBrowserNavigationHelpers.js`** side-imported from **`component-loader.js`**). |
+| 2 | ~~`src/views/`~~ | ~~2~~ | **Done:** `UIView.js` + `TransportView.js` → **`src/features/Interactive-Worldview/presentation/views/`** (with `GlobeView`); `GlobeController` imports `../views/…`. Removed top-level `src/views/`. |
+| 3 | ~~`src/data/`~~ | ~~1~~ | **Done:** `flagFileByCommonName.js` → **`src/features/Interactive-Worldview/data/`** (globe flag lookup); `index.html` / `scripts/build-flags-lookup.mjs` and tooling paths updated. |
+| 4 | ~~`src/app/`~~ | — | **Done:** **`src/features/universal-features/`** — `BootUp/LoadingOrchestrator.js`, `BootUp/AppInitializer.js`, **`ComponentSetUp/`** (loader glue + cross-mode primitives). HTML points at `src/features/universal-features/BootUp/…`. **`GlobeInlineLoadHelpers`** moved to `Interactive-Worldview/services/`. |
+| 5 | ~~`src/managers/`~~ | **0** | **Done:** No top-level **`src/managers/`** — shell managers live under **`src/features/universal-features/managers/`**; marker/navigation/pagination helpers under **`src/features/system-interface/managers/helpers/`** (**`loadBrowserNavigationHelpers.js`** side-imported from **`LoadingOrchestrator.js`**). |
 | 6 | `src/services/` | ~71 | Batch by domain (music, filters, markers, component loading, …) → feature or **`src/infrastructure/`**-style island |
 | 7 | `src/utils/` | ~22 | Pure shared helpers vs feature-specific; relocate or namespace |
 
@@ -69,7 +69,7 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 | **Timeline ↔ globe markers** | **Done:** `globeEventMarkerManager` + `TimelineMarkerSync`; see [`TIMELINE_WORLDVIEW_CONTRACT.md`](TIMELINE_WORLDVIEW_CONTRACT.md) |
 | **Integration helpers** | Live under **`src/features/system-interface/integration/`** (`timelineMarkerSync.js`, `syncEventsWithGlobeCore.js`) |
 | **System interface** | **Canonical:** `src/features/system-interface/` (dock / slide / Event* services stack); duplicated Event-era files under **`src/services` / `src/utils`** were trimmed over time; former **`src/managers/`** code now lives only under **`features/system-interface/managers/helpers`** and **`features/universal-features/managers`**. |
-| **Worldview** | **`src/features/worldview/`** is the feature home; consolidation with leftover legacy folders is **backlog**, not prerequisite for Steps A–C |
+| **Worldview** | **`src/features/Interactive-Worldview/`** is the feature home; consolidation with leftover legacy folders is **backlog**, not prerequisite for Steps A–C |
 | **Codex** | **`src/features/connection-codex/`** — canvas + mode shell (`CodexCanvasService`, `CodexModeService`); still one large module until internal split |
 
 ---

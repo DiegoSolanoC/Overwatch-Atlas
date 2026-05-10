@@ -3,7 +3,7 @@
  * Extracted from EventMarkerManager to reduce duplication
  */
 
-import { latLonToVector3 } from '../../../worldview/utils/GeometryUtils.js';
+import { latLonToVector3 } from '../../../Interactive-Worldview/utils/GeometryUtils.js';
 import { EVENT_PIN_RENDER_ORDER } from './MarkerCreationHelpers.js';
 import { useOrbitPanelForStationShipMarkers } from './TransportOrbitPanelHelpers.js';
 

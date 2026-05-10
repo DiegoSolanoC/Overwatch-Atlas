@@ -29,7 +29,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
 function loadFlagMap() {
-    const src = fs.readFileSync(path.join(root, 'src/features/worldview/data/flagFileByCommonName.js'), 'utf8');
+    const src = fs.readFileSync(path.join(root, 'src/features/Interactive-Worldview/data/flagFileByCommonName.js'), 'utf8');
     const map = {};
     for (const m of src.matchAll(/"([^"]+)"\s*:\s*"([^"]+\.png)"/g)) {
         map[m[1]] = m[2];

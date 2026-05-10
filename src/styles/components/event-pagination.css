@@ -564,18 +564,6 @@ body.pagination-dock-mobile-locked:has(#paginationDock) {
 }
 
 /*
- * Debug overlay: tint dock top border image zones.
- * Enable by adding `debug-border-image-overlay` to <body>.
- */
-body.debug-border-image-overlay:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
-    box-shadow: inset 0 0 0 9999px rgba(255, 140, 0, 0.34);
-}
-
-body.debug-border-image-overlay:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
-    box-shadow: inset 0 0 0 9999px rgba(255, 230, 0, 0.26);
-}
-
-/*
  * Mobile portrait only: no side border art, no trapezium cap (controls live in .page-controls-row--mobile-only).
  * Narrow landscape keeps the cap — matches JS isMobilePortrait (width ≤768 && height > width).
  */

@@ -7,7 +7,7 @@
 
 ## Executive summary
 
-The codebase already has a **partial MVC shape** (`GlobeController` wires `DataModel` / `SceneModel` → `GlobeView` / `UIView`), but **behavior is spread across `services/`, `managers/`, `features/universal-features/helpers/`, `features/worldview/`, and `window.*` globals**. The heaviest duplication and confusion cluster around:
+The codebase already has a **partial MVC shape** (`GlobeController` wires `DataModel` / `SceneModel` → `GlobeView` / `UIView`), but **behavior is spread across `services/`, `managers/`, `features/universal-features/helpers/`, `features/Interactive-Worldview/`, and `window.*` globals**. The heaviest duplication and confusion cluster around:
 
 1. **Event markers & globe sync** — two refresh paths (`globeView.refreshEventMarkers` vs `window.globeEventMarkerManager`) and comments that contradict current behavior.
 2. **Event system** — `EventManager` delegates to many `Event*Service` modules plus multiple `EventManager*` / `EventSlide*` helper files; similar glue exists in both `features/universal-features/helpers` and `services/helpers`.
@@ -41,11 +41,11 @@ Approximate line counts (including blanks/comments):
 | ~1695 | `src/features/universal-features/managers/ComponentOrchestrator.js` | Mode loading / lifecycle hub |
 | ~1536 | `src/utils/LocationFlagHelpers.js` | Data + UI-adjacent helpers |
 | ~1498 | `src/ui/Map2DLiteLayer.js` | 2D map / DOM markers |
-| ~1428 | `src/features/worldview/presentation/views/GlobeView.js` | WebGL globe view |
+| ~1428 | `src/features/Interactive-Worldview/presentation/views/GlobeView.js` | WebGL globe view |
 | ~1243 | `src/features/system-interface/services/EventDataService.js` | Event JSON / normalization |
 | ~1232 | `src/services/FilterService.js` | Filter UI + state |
 | ~1190 | `src/features/system-interface/services/EventListenerService.js` | Event wiring |
-| ~1111 | `src/features/worldview/presentation/views/helpers/GlobeInitHelpers.js` | Globe init split from `GlobeView` |
+| ~1111 | `src/features/Interactive-Worldview/presentation/views/helpers/GlobeInitHelpers.js` | Globe init split from `GlobeView` |
 | ~1044 | `src/features/system-interface/application/EventManager.js` | Facade over many services |
 | ~1040 | `src/features/system-interface/services/EventRenderService.js` | Rendering/event list |
 
@@ -70,13 +70,13 @@ Approximate line counts (including blanks/comments):
    In `GlobeController.js` (~lines 97–99): comments state **event markers were removed from the globe** and the event system handles them — yet **`syncEventsWithGlobe` still calls `globeView.addEventMarkers()` and `refreshEventMarkers()`**. That is a **maintainability hazard** (future you will “fix” the wrong layer).
 
 3. **Helpers explosion**  
-   Globe logic is split across `GlobeView.js`, `GlobeInitHelpers.js`, `GlobeMarkerHelpers.js`, `GlobeTextureHelpers.js`, `GlobeConnectionHelpers.js`, `GlobeBaseHelpers.js`, `GlobeBaseServiceHelpers.js`, `GlobeSyncService.js` — **good for file size**, but **boundaries are unclear** (view vs controller vs service).
+   Globe logic is split across `GlobeView.js`, `GlobeInitHelpers.js`, `GlobeMarkerHelpers.js`, `GlobeTextureHelpers.js`, `GlobeConnectionHelpers.js`, `GlobeBaseHelpers.js`, `GlobeSyncService.js` — **good for file size**, but **boundaries are unclear** (view vs controller vs service).
 
 ### Recommendations (later phases)
 
 - Define **one module** responsible for “markers for timeline events on the current surface (globe vs map)” and route all refresh/filter calls through it.  
 - Align **comments, `GlobeController`, and `EventPanelHelpers`** with the real behavior.  
-- Target folder: proposed **`worldview/`** with `model/`, `view/`, `controller/` (or `controllers/`) subfolders.
+- Target folder: proposed **`Interactive-Worldview/`** with `model/`, `view/`, `controller/` (or `controllers/`) subfolders.
 
 ---
 
@@ -110,7 +110,7 @@ Approximate line counts (including blanks/comments):
 ## Codex — findings
 
 - `CodexCanvasService.js` is **feature-complete but monolithic** (~6.8k lines), with explicit **legacy DOM**, deprecated prefs, and worker-based JSON parse.  
-- **Recommendation:** treat Codex as its own vertical slice (`codex/model`, `codex/view`, `codex/controller`, `codex/persistence`) *after* worldview/event stabilization, unless you want codex-first.
+- **Recommendation:** treat Codex as its own vertical slice (`codex/model`, `codex/view`, `codex/controller`, `codex/persistence`) *after* Interactive-Worldview/event stabilization, unless you want codex-first.
 
 ---
 
@@ -215,7 +215,7 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
 
 2. **Remove or fix the stale `globeView.addEventMarkers` / `refreshEventMarkers` call sites** so they either call **`GlobeSyncService`-style logic** or **`globeEventMarkerManager`** directly — **no references to non-existent `GlobeView` methods**.
 
-3. **Deduplicate `syncEventsWithGlobe`** — one implementation, one module, used by **`src/features/universal-features/component-loader.js`** and ComponentLoadLogicHelpers.
+3. **Deduplicate `syncEventsWithGlobe`** — one implementation, one module, used by **`src/features/universal-features/BootUp/LoadingOrchestrator.js`** (and any future loaders).
 
 4. **Defer** folder moves until (1)–(3) are done; otherwise imports shuffle around **broken** semantics.
 

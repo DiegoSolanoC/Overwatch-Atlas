@@ -7,7 +7,7 @@ import vm from 'vm';
 
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(new URL('../src/features/worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
+vm.runInContext(fs.readFileSync(new URL('../src/features/Interactive-Worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
 const FLAG_FILE_BY_COMMON = sandbox.window.FLAG_FILE_BY_COMMON;
 
 const ALIASES = {

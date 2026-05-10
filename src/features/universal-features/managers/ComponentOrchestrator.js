@@ -13,6 +13,13 @@ import { playStoryArchiveCategorySfx } from '../../data-archive/presentation/pla
 import { applyStoryArchiveGridSquishFromDefaults } from '../../data-archive/presentation/storyArchiveGridSquish.js';
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from './LoadingOverlayManager.js';
 import { updateStatus, updateGlobeComponentsProgress, resetGlobeComponentsProgress } from './StatusManager.js';
+import { setCurrentMode, clearCurrentMode } from '../ComponentSetUp/CurrentModeStatus.js';
+import { runModeChangingProtocol } from '../ComponentSetUp/ModeChangingProtocol.js';
+import { hideMenuContainer } from '../MainMenu/MenuContainer.js';
+import { restoreMainMenu as restoreMainMenuImpl } from '../MainMenu/restoreMainMenu.js';
+import { killOtherModes } from '../ComponentSetUp/ModeMutualExclusion.js';
+import { runMenuComponents as runMenuComponentsImpl } from '../MainMenu/runMenuComponents.js';
+import { mountGlobeMapChooserHub, teardownGlobeMapChooserHub, syncGlobeMapLaunchLabels } from '../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js';
 
 /**
  * ComponentOrchestrator class
@@ -23,6 +30,18 @@ export class ComponentOrchestrator {
         this.loadedComponents = loadedComponents;
         this.loaders = loaders; // Object with load functions: { palette: loadPalette, music: loadMusic, ... }
         this.unloaders = unloaders; // Object with unload functions: { palette: unloadPalette, music: unloadMusic, ... }
+        /**
+         * Bound kill functions for `killOtherModes`. Built once so each
+         * `runXComponents()` doesn't have to re-bind them on every call. Safe
+         * to include all three: `killOtherModes` returns early when the
+         * persisted mode already equals the target, so the self-killer is
+         * never invoked.
+         */
+        this._killers = {
+            killGlobeComponents: this.killGlobeComponents.bind(this),
+            killGlossaryComponents: this.killGlossaryComponents.bind(this),
+            killBiographyComponents: this.killBiographyComponents.bind(this)
+        };
         /** @type {HTMLElement|null} Event Manager × removed from DOM while Data Archive is open */
         this._storyArchiveDetachedClose = null;
         /** @type {((e: KeyboardEvent) => void) | null} Escape → exit Data Archive while category hub is visible */
@@ -336,17 +355,6 @@ export class ComponentOrchestrator {
         updateStatus('✓ Data Archive — choose a category', 'success');
     }
 
-    dispatchAppModeChange(mode) {
-        try {
-            if (typeof window !== 'undefined') {
-                window.dispatchEvent(new CustomEvent('appmodechange', { detail: { mode } }));
-            }
-        } catch (e) {
-            // Non-fatal; mode switching should still work even if CustomEvent is unavailable.
-            console.warn('dispatchAppModeChange failed:', e);
-        }
-    }
-
     /**
      * Open Data Archive on the given source (replaces the legacy sliding {@link #eventsManagePanel} overlay).
      * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} [archiveSource]
@@ -445,42 +453,10 @@ export class ComponentOrchestrator {
      * Run Menu Components
      */
     async runMenuComponents() {
-        const isRunOperation = getRunOperation();
-        // Note: isRunOperation and overlay should already be set by the button click handler
-        // But if called directly (not from button), set them here
-        if (!isRunOperation) {
-            setRunOperation(true);
-            showLoadingOverlay();
-        }
-        updateStatus('🚀 Running Menu Components...', 'info');
-        
-        try {
-            // If menu is not loaded, load it first
-            if (!this.loadedComponents.menu) {
-                updateStatus('→ Menu not loaded, loading now...', 'info');
-                await this.loaders.menu();
-            } else {
-                updateStatus('→ Menu already loaded', 'info');
-            }
-            
-            // Ensure menu is visible
-            const testContainer = document.querySelector('.test-container');
-            const menuButtons = testContainer ? testContainer.querySelector('.main-menu-buttons') : null;
-            
-            if (menuButtons) {
-                menuButtons.style.display = 'flex';
-                updateStatus('✓ Menu Components are running!', 'success');
-                this.dispatchAppModeChange('menu');
-            } else {
-                updateStatus('⚠ Menu buttons not found', 'error');
-            }
-        } catch (error) {
-            console.error('Error running Menu Components:', error);
-            updateStatus(`✗ Error running Menu Components: ${error.message}`, 'error');
-        } finally {
-            setRunOperation(false);
-            hideLoadingOverlay();
-        }
+        await runMenuComponentsImpl({
+            loadedComponents: this.loadedComponents,
+            loadMenu: this.loaders.menu
+        });
     }
 
     /**
@@ -533,7 +509,7 @@ export class ComponentOrchestrator {
             console.error('Error in Universal Features auto-load:', error);
             updateStatus(`✗ Error in Universal Features auto-load: ${error.message}`, 'error');
         } finally {
-            // If we're in a boot chain (e.g., page-init), keep the overlay up
+            // If we're in a boot chain (e.g., AppInitializer), keep the overlay up
             // so the user doesn't see a "menu flash" between Universal and Globe loads.
             if (!keepOverlay) {
                 setRunOperation(false);
@@ -546,18 +522,25 @@ export class ComponentOrchestrator {
     }
 
     /**
-     * Run all Globe Components sequentially
-     * Loads: Globe Base, then Transport, then Controls, then Events
+     * Enter Worldview mode and present the 3D Globe / 2D Map chooser hub.
+     *
+     * Mirrors `runBiographyComponents`: this method does mode entry, paints
+     * the hub inside `main#content`, then EXITS — releasing the loading
+     * overlay so the user can interact with the hub. It does NOT await the
+     * user's pick; the hub buttons drive `_loadGlobeAssets(startOnMap)` (the
+     * actual asset loader) on their own.
+     *
+     * `isAutoLoad === true` skips the hub entirely and uses the persisted
+     * `mapGlobePreToggle` preference (used by header switches and other
+     * automated flows where the user has already chosen).
      */
     async runGlobeComponents(isAutoLoad = false) {
         this.playModeSwitchSound(isAutoLoad);
 
-        // Auto-load Event System if checkbox is enabled
         if (!isAutoLoad) {
             await this.autoPreloadEventSystemIfEnabled();
         }
 
-        // Close event slide panel if open (both EventSlideManager and standalone event system)
         if (window.EventSlideManager?.instance?.hideEventSlide) {
             window.EventSlideManager.instance.hideEventSlide();
         }
@@ -565,31 +548,79 @@ export class ComponentOrchestrator {
             window.standaloneEventSlide.hideEventSlide();
         }
 
-        // Kill other modes first (mutual exclusion)
-        const currentMode = localStorage.getItem('currentMode');
-        if (currentMode === 'biography' && this.loadedComponents.biography) {
-            await this.killBiographyComponents(false); // Don't restore menu when switching to Globe
-        }
-        if (currentMode === 'glossary' && this.loadedComponents.glossary) {
-            await this.killGlossaryComponents();
-        }
+        await killOtherModes({
+            targetMode: 'globe',
+            loadedComponents: this.loadedComponents,
+            killers: this._killers
+        });
 
-        // Save current mode to localStorage
-        localStorage.setItem('currentMode', 'globe');
+        setCurrentMode('globe');
 
         const runBtn = document.getElementById('runGlobeBtn');
         if (runBtn) {
             runBtn.disabled = true;
         }
 
-        // Reset progress
         resetGlobeComponentsProgress();
+        hideMenuContainer();
 
-        // Hide the test-container completely (which contains the main menu buttons)
-        const testContainer = document.querySelector('.test-container');
-        if (testContainer) {
-            testContainer.style.display = 'none';
-            updateStatus('→ Hiding menu container...', 'info');
+        if (isAutoLoad) {
+            const startOnMap = localStorage.getItem('mapGlobePreToggle') === 'true';
+            await this._loadGlobeAssets(startOnMap, { keepRunOperation: true });
+            return;
+        }
+
+        // Manual entry — paint the hub, then EXIT (overlay drops, hub is interactive).
+        const isRunOperation = getRunOperation();
+        if (!isRunOperation) {
+            setRunOperation(true);
+            showLoadingOverlay();
+        }
+
+        try {
+            mountGlobeMapChooserHub({
+                onPick: (startOnMap) => {
+                    void this._loadGlobeAssets(startOnMap);
+                },
+                onCancel: () => {
+                    if (runBtn) runBtn.disabled = false;
+                    clearCurrentMode();
+                    void this.restoreMainMenu();
+                }
+            });
+            updateStatus('✓ Worldview — choose a view', 'success');
+        } catch (error) {
+            console.error('Error mounting Worldview chooser:', error);
+            updateStatus(`✗ Error in Worldview chooser: ${error.message}`, 'error');
+        } finally {
+            setRunOperation(false);
+            hideLoadingOverlay();
+        }
+    }
+
+    /**
+     * Load globe assets (Globe Base → Transport → Controls), then wire markers
+     * and dispatch the mode-change event. Called by `runGlobeComponents` (for
+     * auto-load) and by the chooser hub's "Globe" / "Map" tile click handlers.
+     *
+     * @param {boolean} startOnMap - `true` opens timeline as 2D map, `false` as 3D globe.
+     * @param {{ keepRunOperation?: boolean }} [opts] - When `true`, assume the
+     *   caller already set `setRunOperation(true)` + showed the overlay (the
+     *   auto-load path does this). Default `false`: this method manages the
+     *   run-operation flag itself (the hub-button path).
+     */
+    async _loadGlobeAssets(startOnMap, opts = {}) {
+        const keepRunOperation = !!opts.keepRunOperation;
+        const runBtn = document.getElementById('runGlobeBtn');
+
+        try { localStorage.setItem('mapGlobePreToggle', startOnMap ? 'true' : 'false'); } catch (_) {}
+        syncGlobeMapLaunchLabels(startOnMap);
+
+        teardownGlobeMapChooserHub();
+
+        if (!keepRunOperation) {
+            setRunOperation(true);
+            showLoadingOverlay();
         }
 
         const globeContainer = document.getElementById('globe-container');
@@ -602,21 +633,10 @@ export class ComponentOrchestrator {
 
         updateStatus('🚀 Starting Globe Components auto-load...', 'info');
 
-        const isRunOperation = getRunOperation();
-        // Note: isRunOperation and overlay should already be set by the button click handler
-        // But if called directly (not from button), set them here
-        if (!isRunOperation) {
-            setRunOperation(true);
-            showLoadingOverlay();
-            await new Promise(r => setTimeout(r, 50));
-        }
-        
         try {
-            // Load Globe Base
             if (!this.loadedComponents.globeBase) {
                 updateStatus('→ Loading Globe Base...', 'info');
                 await this.loaders.globeBase();
-                // Show globe container immediately after Globe Base loads
                 if (globeContainer) {
                     globeContainer.style.opacity = '1';
                     globeContainer.style.pointerEvents = 'auto';
@@ -624,11 +644,9 @@ export class ComponentOrchestrator {
                     globeContainer.classList.add('loaded');
                 }
                 updateGlobeComponentsProgress(1);
-                // Small delay between loads
                 await new Promise(r => setTimeout(r, 300));
             } else {
                 updateStatus('→ Globe Base already loaded, skipping...', 'info');
-                // If already loaded, make sure globe is visible
                 if (globeContainer) {
                     globeContainer.style.opacity = '1';
                     globeContainer.style.pointerEvents = 'auto';
@@ -637,8 +655,7 @@ export class ComponentOrchestrator {
                 }
                 updateGlobeComponentsProgress(1);
             }
-            
-            // Load Transport
+
             if (!this.loadedComponents.transport) {
                 updateStatus('→ Loading Transport...', 'info');
                 await this.loaders.transport();
@@ -648,12 +665,8 @@ export class ComponentOrchestrator {
                 updateStatus('→ Transport already loaded, skipping...', 'info');
                 updateGlobeComponentsProgress(2);
             }
-            
-            // Load Controls (always reload to ensure rotation slider is repositioned)
+
             updateStatus('→ Loading Controls...', 'info');
-            // Check localStorage for map/globe pre-toggle preference
-            const startOnMap = localStorage.getItem('mapGlobePreToggle') === 'true';
-            // Set sceneModel to the preferred view BEFORE loading controls so setupMapViewToggle uses correct state
             if (window.globeController?.sceneModel) {
                 if (window.globeController.sceneModel.setMapViewEnabled) {
                     window.globeController.sceneModel.setMapViewEnabled(startOnMap);
@@ -661,18 +674,14 @@ export class ComponentOrchestrator {
                     window.globeController.sceneModel.isMapView = startOnMap;
                 }
             }
-            // Also call controller's setMapViewEnabled to actually trigger the view switch
             if (window.globeController && typeof window.globeController.setMapViewEnabled === 'function') {
                 window.globeController.setMapViewEnabled(startOnMap);
             }
             await this.loaders.controls();
-            // Call setupMapViewToggle again after loading controls to ensure correct state
             if (window.globeController?.uiView?.setupMapViewToggle) {
                 window.globeController.uiView.setupMapViewToggle();
             }
-            // Ensure rotate-subbar-open class is set on body (shows rotation slider) - do this AFTER setupMapViewToggle
             document.body.classList.add('rotate-subbar-open');
-            // Show rotation subbar and reset position
             const rotateSubBar = document.getElementById('headerRotateSubBar');
             if (rotateSubBar) {
                 rotateSubBar.style.display = 'block';
@@ -681,10 +690,7 @@ export class ComponentOrchestrator {
             }
             updateGlobeComponentsProgress(3);
             await new Promise(r => setTimeout(r, 300));
-            
-            // NOTE: Footer styling removed - Event System Load Out handles this when it loads
-            
-            // If Event System is already loaded, create EventMarkerManager for Globe markers
+
             console.log(`[ComponentOrchestrator] Checking marker creation: eventSystemActive=${this.isEventSystemLoadOutActive()}, globeController=${!!window.globeController?.sceneModel}, markerManager=${!!window.globeEventMarkerManager}`);
             if (this.isEventSystemLoadOutActive() && window.globeController?.sceneModel && !window.globeEventMarkerManager) {
                 console.log('[ComponentOrchestrator] Creating EventMarkerManager for Globe...');
@@ -701,10 +707,8 @@ export class ComponentOrchestrator {
             } else {
                 console.log('[ComponentOrchestrator] Skipping marker creation');
             }
-            
-            // Ensure header hub state updates even when globe is started from the main menu button
-            // (which runs loaders directly and doesn't go through appModeSwitch()).
-            this.dispatchAppModeChange('globe');
+
+            runModeChangingProtocol('globe');
         } catch (error) {
             console.error('Error in Globe Components auto-load:', error);
             updateStatus(`✗ Error in Globe Components auto-load: ${error.message}`, 'error');
@@ -737,17 +741,13 @@ export class ComponentOrchestrator {
             window.standaloneEventSlide.hideEventSlide();
         }
 
-        // Kill other modes first (mutual exclusion)
-        const currentMode = localStorage.getItem('currentMode');
-        if (currentMode === 'biography' && this.loadedComponents.biography) {
-            await this.killBiographyComponents();
-        }
-        if (currentMode === 'globe' && this.loadedComponents.globeBase) {
-            await this.killGlobeComponents();
-        }
+        await killOtherModes({
+            targetMode: 'glossary',
+            loadedComponents: this.loadedComponents,
+            killers: this._killers
+        });
 
-        // Save current mode to localStorage
-        localStorage.setItem('currentMode', 'glossary');
+        setCurrentMode('glossary');
 
         const runBtn = document.getElementById('runGlossaryBtn');
         if (runBtn) {
@@ -764,12 +764,7 @@ export class ComponentOrchestrator {
         updateStatus('🚀 Starting Glossary Components auto-load...', 'info');
 
         try {
-            // Hide test-container (consistent with other modes)
-            const testContainer = document.querySelector('.test-container');
-            if (testContainer) {
-                testContainer.style.display = 'none';
-                updateStatus('→ Hiding menu container...', 'info');
-            }
+            hideMenuContainer();
 
             // Enter Codex mode via CodexModeService
             if (window.CodexModeService && typeof window.CodexModeService.enterCodexMode === 'function') {
@@ -779,7 +774,7 @@ export class ComponentOrchestrator {
             }
 
             // Ensure header hub state updates
-            this.dispatchAppModeChange('glossary');
+            runModeChangingProtocol('glossary');
 
             this.loadedComponents.glossary = true;
             updateStatus('✓ Glossary Components auto-load complete!', 'success');
@@ -815,17 +810,13 @@ export class ComponentOrchestrator {
             window.standaloneEventSlide.hideEventSlide();
         }
 
-        // Kill other modes first (mutual exclusion)
-        const currentMode = localStorage.getItem('currentMode');
-        if (currentMode === 'glossary' && this.loadedComponents.glossary) {
-            await this.killGlossaryComponents();
-        }
-        if (currentMode === 'globe' && this.loadedComponents.globeBase) {
-            await this.killGlobeComponents();
-        }
+        await killOtherModes({
+            targetMode: 'biography',
+            loadedComponents: this.loadedComponents,
+            killers: this._killers
+        });
 
-        // Save current mode to localStorage
-        localStorage.setItem('currentMode', 'biography');
+        setCurrentMode('biography');
         
         const runBtn = document.getElementById('runBiographyBtn');
         if (runBtn) {
@@ -840,12 +831,7 @@ export class ComponentOrchestrator {
         updateStatus('🚀 Starting Data Archive...', 'info');
         
         try {
-            // Hide test-container (consistent with other modes)
-            const testContainer = document.querySelector('.test-container');
-            if (testContainer) {
-                testContainer.style.display = 'none';
-                updateStatus('→ Hiding menu container...', 'info');
-            }
+            hideMenuContainer();
             
             // Create and show the Data Archive panel
             await this.createStoryViewerPanel();
@@ -854,7 +840,7 @@ export class ComponentOrchestrator {
             await new Promise(r => setTimeout(r, 800));
 
             // Ensure header hub state updates
-            this.dispatchAppModeChange('biography');
+            runModeChangingProtocol('biography');
             
             this.loadedComponents.biography = true;
             updateStatus('✓ Data Archive loaded!', 'success');
@@ -1507,84 +1493,10 @@ export class ComponentOrchestrator {
      * @param {boolean} preserveNewsTicker - If true, preserve the news ticker instead of clearing it
      */
     async restoreMainMenu(preserveNewsTicker = false) {
-        const testContainer = document.querySelector('.test-container');
-        const globeContainer = document.getElementById('globe-container');
-        
-        // Ensure menu is loaded (reload if it was killed)
-        if (!this.loadedComponents.menu) {
-            updateStatus('Loading menu components...', 'info');
-            await this.loaders.menu();
-        }
-        
-        // Restore menu visibility - ensure it's fully visible
-        const menuButtons = testContainer ? testContainer.querySelector('.main-menu-buttons') : null;
-        if (testContainer) {
-            testContainer.style.display = 'flex';
-            testContainer.classList.remove('fading');
-            testContainer.style.opacity = '1';
-            testContainer.style.visibility = 'visible';
-        }
-        
-        // Restore menu buttons visibility
-        if (menuButtons) {
-            menuButtons.style.display = 'flex';
-            menuButtons.style.visibility = 'visible';
-            menuButtons.style.opacity = '1';
-        }
-        
-        // Hide globe and reset its positioning
-        if (globeContainer) {
-            globeContainer.style.display = 'none';
-            globeContainer.classList.remove('loaded');
-            globeContainer.style.position = '';
-            globeContainer.style.top = '';
-            globeContainer.style.left = '';
-        }
-
-        // Hide rotation subbar when returning to menu
-        const rotateSubBar = document.getElementById('headerRotateSubBar');
-        if (rotateSubBar) {
-            rotateSubBar.style.display = 'none';
-        }
-        
-        // Restore footer to dark blue with text when returning to main menu (unless preserving for mode switch)
-        const footer = document.querySelector('footer');
-        if (footer && !preserveNewsTicker) {
-            footer.classList.remove('timeline-loaded');
-        }
-
-        // Clear/hide headlines ticker when returning to main menu (unless preserving for mode switch)
-        if (!preserveNewsTicker) {
-            if (window.newsTickerService && typeof window.newsTickerService.clear === 'function') {
-                window.newsTickerService.clear();
-            }
-        }
-        
-        // Close any open panels
-        const eventSlide = document.getElementById('eventSlide');
-        const eventsManagePanel = document.getElementById('eventsManagePanel');
-        const filtersPanel = document.getElementById('filtersPanel');
-        
-        if (eventSlide) eventSlide.classList.remove('open');
-        if (eventsManagePanel) eventsManagePanel.classList.remove('open');
-        if (filtersPanel) filtersPanel.classList.remove('open');
-        
-        // Remove active states from buttons
-        const eventsManageToggle = document.getElementById('eventsManageToggle');
-        const filtersToggle = document.getElementById('filtersToggle');
-        if (eventsManageToggle) eventsManageToggle.classList.remove('active');
-        if (filtersToggle) filtersToggle.classList.remove('active');
-
-        // Globe/map chooser (in-content shell, same as Data Archive container)
-        document.getElementById('globeMapLaunchHost')?.remove();
-        document.getElementById('globeMapLaunchHubOverlay')?.remove();
-        if (testContainer) {
-            delete testContainer.dataset.globeMapChoiceHidden;
-            delete testContainer.dataset.globeMapChoicePrevDisplay;
-        }
-
-        // Keep header hub (and Home button visibility) in sync with the actual loaded state.
-        this.dispatchAppModeChange('menu');
+        await restoreMainMenuImpl(
+            { loadedComponents: this.loadedComponents, loadMenu: this.loaders.menu },
+            preserveNewsTicker
+        );
     }
 
     /**
@@ -1628,7 +1540,7 @@ export class ComponentOrchestrator {
         window.globeEventMarkerManager = null;
 
         // Clear mode from localStorage (consistent with other modes)
-        localStorage.removeItem('currentMode');
+        clearCurrentMode();
 
         updateStatus('✓ All Globe Components killed!', 'success');
     }
@@ -1657,7 +1569,7 @@ export class ComponentOrchestrator {
         // Restore the menu (test-container) - consistent with other modes
         await this.restoreMainMenu();
 
-        localStorage.removeItem('currentMode');
+        clearCurrentMode();
         this.loadedComponents.glossary = false;
 
         updateStatus('✓ All Glossary Components killed!', 'success');
@@ -1712,7 +1624,7 @@ export class ComponentOrchestrator {
             await this.restoreMainMenu();
         }
 
-        localStorage.removeItem('currentMode');
+        clearCurrentMode();
         this.loadedComponents.biography = false;
         
         updateStatus('✓ Data Archive exited!', 'success');

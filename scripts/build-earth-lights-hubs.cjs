@@ -1,5 +1,5 @@
 /**
- * Builds data/earth-lights-hubs.json — same hub rules as src/features/worldview/utils/EarthLightsData.js (transport + events).
+ * Builds data/earth-lights-hubs.json — same hub rules as src/features/Interactive-Worldview/utils/EarthLightsData.js (transport + events).
  * Run from repo root: node scripts/build-earth-lights-hubs.cjs
  */
 
@@ -12,7 +12,7 @@ const connectionsPath = path.join(root, 'src', 'data', 'connections.json');
 const eventsPath = path.join(root, 'src', 'data', 'events.json');
 const outPath = path.join(root, 'src', 'data', 'earth-lights-hubs.json');
 
-/** Keep in sync with src/features/worldview/utils/EarthLightsData.js — isExcludedEarthLightHub */
+/** Keep in sync with src/features/Interactive-Worldview/utils/EarthLightsData.js — isExcludedEarthLightHub */
 function isExcludedEarthLightHub(h) {
     if (!h || !Number.isFinite(h.lat) || !Number.isFinite(h.lon)) return true;
     if (h.lon < -180 || h.lon > 180) return true;

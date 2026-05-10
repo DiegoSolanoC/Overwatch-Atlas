@@ -13,7 +13,7 @@ import {
     EVENT_MARKER_LOCKED_HEX
 } from './MarkerCreationHelpers.js';
 import { createPinLinePoints, createPinLine } from './PinLineHelpers.js';
-import { EARTH_GLOBE_LIGHT_LAYER } from '../../../worldview/constants/GlobeLightingConstants.js';
+import { EARTH_GLOBE_LIGHT_LAYER } from '../../../Interactive-Worldview/constants/GlobeLightingConstants.js';
 import { useOrbitPanelForStationShipMarkers } from './TransportOrbitPanelHelpers.js';
 
 function stationShipOnOrbitPanel(sceneModel, locationType) {

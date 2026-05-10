@@ -24,13 +24,13 @@ On load, the app typically shows:
 - **Universal features**: color palette controls, music/SFX infrastructure, and the **header hub** (mode switching and global chrome).
 - The **main menu** (hub tiles / descriptions), not necessarily the full timeline or WebGL scene yet.
 
-`src/features/universal-features/page-init.js` coordinates overlay lifecycle, optional **welcome SFX** when a **palette startup theme** plays (subject to browser autoplay policy), and integration with the component loader.
+`src/features/universal-features/BootUp/AppInitializer.js` coordinates overlay lifecycle and integration with the component loader. The optional **welcome SFX** that plays when a **palette startup theme** kicks in (subject to browser autoplay policy) lives in `src/features/universal-features/Audio/WelcomeStartup.js`, side-imported by `AppInitializer`.
 
 Fresh loads clear **`currentMode`** in `localStorage` so the user starts from a neutral hub state; other preferences (palette, music, codex prefs) may still persist.
 
 ### 2.2 Modular loading
 
-`src/features/universal-features/component-loader.js` and `src/features/universal-features/managers/ComponentOrchestrator.js` load features in **stages**:
+`src/features/universal-features/BootUp/LoadingOrchestrator.js` and `src/features/universal-features/managers/ComponentOrchestrator.js` load features in **stages**:
 
 - **Universal**: palette, music, menus, shared event-system UI where required.
 - **Per mode**: globe stack, codex (glossary) stack, or story-archive / biography flows.
@@ -75,7 +75,7 @@ Mode switches may play **mode-switch SFX** and show the loading overlay briefly 
 ### 3.4 Header and hub styling
 
 - The **header** uses a deliberate **stylized** layout: hub buttons for major destinations, consistent with the rest of the chrome.
-- **Interactive Worldview** is labeled in code as a timeline entry whose subtitle explains **3D globe or 2D map** (`src/features/worldview/entry/GlobeMapLaunchChoice.js`).
+- **Interactive Worldview** is labeled in code as a timeline entry whose subtitle explains **3D globe or 2D map** (`src/features/Interactive-Worldview/entry/GlobeMapLaunchChoice.js`).
 
 ---
 
@@ -250,7 +250,6 @@ Documented in `src/features/system-interface/services/AppKeyboardShortcutsServic
 | **X** | Glitch toggle when visible. |
 | **Tab** | Cycle variant selector when slide open. |
 | **1–9**, **0** (10) | Pagination jump in timeline context; variant / palette behavior in other contexts. |
-| **O** | Toggle debug border-image overlay (layout debugging). |
 
 ---
 
@@ -259,7 +258,7 @@ Documented in `src/features/system-interface/services/AppKeyboardShortcutsServic
 1. **External link confirmation** — Leaving the app via certain links may pass through **`ExternalLinkConfirm`** overlay (`#externalLinkConfirmOverlay`); Escape handling is aware of it.
 2. **Sidebar** — A **sidebar** can be toggled; Escape closes it and persists `sidebarOpen` in storage where used.
 3. **Headlines in forms** — `HeadlinesFieldManager` manages **dynamic headline fields** in the event editor; ticker copy can derive from event headline data.
-4. **GitHub Pages sidebar** — `page-init` may **hide** sidebar behavior on GitHub Pages (marketing / parity).
+4. **GitHub Pages sidebar** — `AppInitializer` may **hide** sidebar behavior on GitHub Pages (marketing / parity).
 5. **Mobile** — Dedicated CSS under `src/styles/mobile/` and helpers (`MobileEventSlideHelpers`, responsive dock) adjust layout; not every desktop shortcut applies on touch devices.
 6. **Zoom controls** — Visibility and behavior are tied to page init and globe load (see README parity notes).
 7. **Codex prefs** — Local keys such as `timelineCodexMode`, `timelineCodexVisualPrefs`, `timelineCodexShowDebugging` store codex UI state.

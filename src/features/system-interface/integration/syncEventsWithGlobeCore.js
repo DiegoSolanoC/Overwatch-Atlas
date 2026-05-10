@@ -2,7 +2,7 @@
  * Shared implementation: copy {@link EventManager} events into {@link GlobeController#dataModel}
  * and refresh markers via {@link window.TimelineMarkerSync} / {@link window.globeEventMarkerManager}.
  *
- * @param {import('../features/worldview/presentation/controllers/GlobeController.js').GlobeController|null|undefined} globeController
+ * @param {import('../features/Interactive-Worldview/presentation/controllers/GlobeController.js').GlobeController|null|undefined} globeController
  * @param {{ events?: unknown[] }|null|undefined} eventManager
  * @param {(message: string, level?: string) => void} [notify]
  */

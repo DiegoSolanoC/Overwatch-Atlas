@@ -3,7 +3,7 @@
  * Extracted from GlobeView.js to improve maintainability
  */
 
-import { latLonToVector3, xyToPlanePosition } from '../../../worldview/utils/GeometryUtils.js';
+import { latLonToVector3, xyToPlanePosition } from '../../../Interactive-Worldview/utils/GeometryUtils.js';
 import { createMarkerMesh, createMarkerUserData, shouldEventBeLocked, getMarkerRadius, getDefaultMarkerOriginalHex } from '../../managers/helpers/MarkerCreationHelpers.js';
 import { createPinLinePoints, createPinLine } from '../../managers/helpers/PinLineHelpers.js';
 import { traverseEventMarkers, collectEventMarkers, collectEventMarkerPins } from '../../managers/helpers/MarkerTraversalHelpers.js';

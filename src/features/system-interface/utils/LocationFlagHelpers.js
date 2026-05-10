@@ -1,6 +1,6 @@
 /**
  * LocationFlagHelpers — flag image next to "City, Country" and fictional / off-world locations.
- * Depends on window.FLAG_FILE_BY_COMMON from src/features/worldview/data/flagFileByCommonName.js.
+ * Depends on window.FLAG_FILE_BY_COMMON from src/features/Interactive-Worldview/data/flagFileByCommonName.js.
  */
 (function () {
     'use strict';

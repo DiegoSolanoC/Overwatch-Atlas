@@ -51,7 +51,7 @@ function showAbout() {
     window.location.href = 'filters.html';
 }
 
-// Sound Effects Manager is now loaded from src/features/universal-features/services/SoundEffectsManager.js
+// Sound Effects Manager is now loaded from src/features/universal-features/Audio/SoundEffects/SoundEffectsManager.js
 // It's available globally as window.SoundEffectsManager
 
 function showContact() {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.SidebarService.init();
     }
     
-    // NOTE: MusicManager.init() is now called from component-loader.js after music components are loaded
+    // NOTE: MusicManager.init() is now called from LoadingOrchestrator.js after music components are loaded
     // This ensures the music button and panel elements exist before initialization
     // The old initialization here has been moved to loadMusic() function
     
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-// Music Panel functionality has been moved to src/features/universal-features/services/MusicManager.js
+// Music Panel functionality has been moved to src/features/universal-features/Audio/Music/MusicManager.js
 // The old initMusicPanel function is no longer needed - use MusicManager.init() instead
 
 // Filters Panel functionality has been moved to src/features/system-interface/services/FilterService.js

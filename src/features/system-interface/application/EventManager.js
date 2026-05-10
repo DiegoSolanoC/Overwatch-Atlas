@@ -267,7 +267,7 @@ class EventManager {
      * Helper function to update status (if available)
      */
     updateStatus(message, type = 'info') {
-        // Check if updateStatus function exists (from test-loader.js or script.js)
+        // Check if updateStatus function exists (from LoadingOrchestrator.js or script.js)
         if (typeof window.updateStatus === 'function') {
             window.updateStatus(message, type);
         }

@@ -8,7 +8,7 @@ import vm from 'vm';
 const rootDir = new URL('../', import.meta.url);
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(new URL('../src/features/worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
+vm.runInContext(fs.readFileSync(new URL('../src/features/Interactive-Worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
 vm.runInContext(
     fs.readFileSync(new URL('../src/features/system-interface/utils/LocationFlagHelpers.js', import.meta.url), 'utf8'),
     sandbox

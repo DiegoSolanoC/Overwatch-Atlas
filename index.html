@@ -239,25 +239,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
-    <!-- InteractionController dependencies - load before component-loader (which imports InteractionController) -->
-    <script src="src/features/worldview/services/MarkerPulseService.js?v=8"></script>
-    <script src="src/features/worldview/services/MapEdgeGlowService.js?v=8"></script>
-    <script src="src/features/worldview/services/CameraControlService.js?v=8"></script>
-    <script src="src/features/worldview/services/MouseInteractionService.js?v=8"></script>
-    <script src="src/features/worldview/services/TouchInteractionService.js?v=8"></script>
-    <script src="src/features/worldview/services/MarkerInteractionService.js?v=10"></script>
-    <script src="src/features/worldview/services/StationFollowService.js?v=8"></script>
+    <!-- InteractionController dependencies - load before LoadingOrchestrator (which imports InteractionController) -->
+    <script src="src/features/Interactive-Worldview/services/MarkerPulseService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/services/MapEdgeGlowService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/services/CameraControlService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/services/MouseInteractionService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/services/TouchInteractionService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/services/MarkerInteractionService.js?v=10"></script>
+    <script src="src/features/Interactive-Worldview/services/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/features/universal-features/component-loader.js?v=87"></script>
+    <script type="module" src="src/features/universal-features/BootUp/LoadingOrchestrator.js?v=89"></script>
     
     <!-- Load services -->
-    <script src="src/features/universal-features/services/SoundEffectsManager.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/SoundEffects/SoundEffectsManager.js?v=8"></script>
     <script src="src/features/system-interface/services/GlitchTextService.js?v=10"></script>
     <script src="src/features/system-interface/utils/FactionMatchHelpers.js?v=1"></script>
     <script src="src/features/system-interface/services/EventDataService.js?v=29"></script>
     <script src="src/features/system-interface/services/LocationService.js?v=8"></script>
-    <script src="src/features/worldview/data/flagFileByCommonName.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/data/flagFileByCommonName.js?v=8"></script>
     <script src="src/features/system-interface/utils/LocationFlagHelpers.js?v=1"></script>
     <script src="src/features/system-interface/integration/EventTimelineHelpers.js?v=9"></script>
     <script src="src/features/system-interface/integration/timelineMarkerSync.js?v=1"></script>
@@ -283,20 +283,20 @@
     <script src="src/features/system-interface/services/EventInitService.js?v=8"></script>
     <script src="src/features/system-interface/services/CityLookupService.js?v=9"></script>
     <script src="src/features/system-interface/services/ImagePathService.js?v=11"></script>
-    <script src="src/features/worldview/services/GlobeSyncService.js?v=9"></script>
+    <script src="src/features/Interactive-Worldview/services/GlobeSyncService.js?v=9"></script>
     <!-- MusicManager dependencies - load before MusicManager -->
-    <script src="src/features/universal-features/services/MusicStateService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicShuffleService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicVolumeService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicProgressService.js?v=8"></script>
-    <script src="src/features/universal-features/services/helpers/MusicPaletteDefaultHelpers.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicPlaybackService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicFileService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicPanelService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicIconService.js?v=8"></script>
-    <script src="src/features/universal-features/services/MusicControlService.js?v=8"></script>
-    <script src="src/features/universal-features/services/helpers/MusicManagerInitHelpers.js?v=10"></script>
-    <script src="src/features/universal-features/services/MusicManager.js?v=12"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicStateService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicShuffleService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicVolumeService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicProgressService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/helpers/MusicPaletteDefaultHelpers.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicPlaybackService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicFileService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicPanelService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicIconService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicControlService.js?v=8"></script>
+    <script src="src/features/universal-features/Audio/Music/helpers/MusicManagerInitHelpers.js?v=10"></script>
+    <script src="src/features/universal-features/Audio/Music/MusicManager.js?v=12"></script>
     <!-- Filter services - load dependencies before FilterService -->
     <script src="src/features/system-interface/services/FilterStateManager.js?v=10"></script>
     <script src="src/features/system-interface/services/FilterImageService.js?v=8"></script>
@@ -314,6 +314,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script src="src/features/universal-features/page-init.js?v=15"></script>
+    <script type="module" src="src/features/universal-features/BootUp/AppInitializer.js?v=17"></script>
 </body>
 </html>
