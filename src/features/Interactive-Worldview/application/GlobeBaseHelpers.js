@@ -3,8 +3,8 @@
  * Extracted from component-loader.js to reduce size
  */
 
-import { updateStatus } from '../../universal-features/managers/StatusManager.js';
-import { setButtonState } from '../../universal-features/managers/ButtonStateManager.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
+import { setButtonState } from '../../universal-features/ComponentSetUp/setButtonState.js';
 import { clearCodexShellForGlobeInit } from '../../connection-codex/application/CodexModeService.js';
 
 /**

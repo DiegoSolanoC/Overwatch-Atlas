@@ -10,24 +10,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "M.E.K.A Squad",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Dae-Hyun",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -41,24 +24,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Phreaks",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Susannah",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -72,24 +38,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Adeyemi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -103,24 +52,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Harold",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -134,16 +66,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -157,24 +80,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Deep Sea Raiders",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser"
     },
@@ -188,16 +94,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Efi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser"
     },
@@ -211,24 +108,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Junkrat",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser"
     },
@@ -242,16 +122,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Cassidy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser"
     },
@@ -265,32 +136,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Vendetta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Sanjay",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -304,16 +150,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -327,24 +164,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Null Sector",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Zenyatta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -358,24 +178,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Crusader Initiative",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Brigitte",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -389,24 +192,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Moira",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -420,16 +206,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -443,32 +220,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -482,24 +234,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Roadhog",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -513,24 +248,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ecopoints",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Jiayi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -544,48 +262,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Sombra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "IJC",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -599,24 +276,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Lifeweaver",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -630,32 +290,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Bastion",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Brigitte",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Ingrid",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -669,32 +304,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "B.O.B",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -708,48 +318,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Baptiste",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Zarya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Blackwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Echo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -763,16 +332,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Shimada Clan",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -786,16 +346,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -809,16 +360,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -832,24 +374,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Wuxing University",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Wuyang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -863,16 +388,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -886,32 +402,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Blackwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -925,32 +416,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Emily",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Iggy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -964,32 +430,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Colloseo Gladiatori",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Domina",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Antonio",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -1003,32 +444,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Wayfinder Society",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Illari",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -1042,32 +458,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Cassidy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Liao",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Athena",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -1081,24 +472,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Maximillien",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -1112,24 +486,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -1143,24 +500,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Kendra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -1174,40 +514,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Los Muertos",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Katya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -1221,16 +528,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Cassidy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -1269,24 +567,7 @@
           "reasoning": "Temporary Alliance with Overwatch"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Pharah",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -1300,16 +581,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Brigitte",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -1323,16 +595,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -1346,32 +609,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Shambali Order",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ramattra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Mondatta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -1385,32 +623,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Yokai Gang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Toshiro",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Asa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Medic"
     },
@@ -1424,24 +637,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Martins Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Symmetra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Medic"
     },
@@ -1455,16 +651,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Medic"
     },
@@ -1478,24 +665,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Sigma",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Oasis Ministries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Medic"
     },
@@ -1509,32 +679,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Reinhardt",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Jetpack Cat",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -1548,32 +693,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Inti Warriors",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Venture",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -1587,24 +707,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Lucheng Interstellar",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Jiayi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -1618,24 +721,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Yokai Gang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Hashimoto Clan",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },
@@ -1649,24 +735,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Wuxing University",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Anran",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     }

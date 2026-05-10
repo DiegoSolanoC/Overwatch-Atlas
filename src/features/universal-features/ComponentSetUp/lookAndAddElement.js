@@ -15,7 +15,7 @@
  * mounting, which would have been a bug if anyone had written it that way).
  */
 
-import { updateStatus } from '../managers/StatusManager.js';
+import { updateStatus } from '../runtime/statusFeed.js';
 
 /**
  * @param {string} id - Element ID to look up.

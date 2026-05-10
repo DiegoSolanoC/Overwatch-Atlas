@@ -26,7 +26,7 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 
 | Step | Goal | Rough scope | Expected effort |
 |:----:|------|-------------|-----------------|
-| **A** | **Codex** vertical slice | `src/features/connection-codex/` (`CodexCanvasService.js` ~7k LOC still), `ComponentOrchestrator` bridges; internal splits later | Large — plan internal splits |
+| **A** | **Codex** vertical slice | `src/features/connection-codex/` (`CodexCanvasService.js` ~7k LOC still), `ModeOrchestrator` bridges; internal splits later | Large — plan internal splits |
 | **B** | **Archive** vertical slice | Data Archive hub, biography/story-archive wiring, overlaps with orchestrator/menu | Large |
 | **C** | **Main menu** | Canonical **`src/features/main-menu/`**; shared loader DOM/button helpers import **`src/features/universal-features/helpers/`** | Large |
 | **D** | **`src/` sweep** | Remove empty dirs, delete/move stragglers, fix broken imports left from moves; optionally document “allowed” legacy islands | Moderate |
@@ -100,7 +100,7 @@ Approximate lines (comments included). Sizes drift — re-measure anytime.
 | ~5365 | `src/features/main-menu/MenuHelpers.js` |
 | ~3770 | `src/features/main-menu/MenuServiceHelpers.js` |
 | ~2240 | `src/features/system-interface/presentation/slide/EventSlideManager.js` |
-| ~1695 | `src/features/universal-features/managers/ComponentOrchestrator.js` |
+| ~1695 | `src/features/universal-features/runtime/ModeOrchestrator.js` |
 
 *Example re-count (PowerShell):*  
 `Get-ChildItem src -Recurse -Filter *.js \| ForEach-Object { ... Measure-Object Line }`

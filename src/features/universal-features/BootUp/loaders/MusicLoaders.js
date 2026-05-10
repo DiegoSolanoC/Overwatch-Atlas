@@ -17,8 +17,8 @@ import { createHeaderHubButton } from '../header/HeaderHubButton.js';
 import { lookAndAddElement } from '../../ComponentSetUp/lookAndAddElement.js';
 import { createMusicPanel } from '../../Audio/Music/MusicPanelDom.js';
 import { removeElementsByIds } from '../../ComponentSetUp/removeElement.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { getRunOperation } from '../../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 import {
     initializeMusicManager,
     createBackgroundMusicElement

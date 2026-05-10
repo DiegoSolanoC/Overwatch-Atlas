@@ -1,12 +1,10 @@
 /**
- * ButtonStateManager - Handles button state management
- * Extracted from component-loader.js to improve maintainability
- */
-
-/**
- * Set button state (loading, loaded, default)
+ * setButtonState — toggles the `loading` / `loaded` CSS classes (and the
+ * `disabled` attribute) on a menu run button. Used by every loader to
+ * reflect "spinner spinning" / "ready" / "idle" on its own button.
+ *
  * @param {string} buttonId - ID of the button element
- * @param {string} state - Button state ('loading', 'loaded', 'default')
+ * @param {'loading'|'loaded'|'default'} state
  */
 export function setButtonState(buttonId, state) {
     const btn = document.getElementById(buttonId);

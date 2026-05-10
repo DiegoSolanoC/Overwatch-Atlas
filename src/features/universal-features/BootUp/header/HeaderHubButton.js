@@ -19,7 +19,7 @@
  * name and the exported function finally agree.
  */
 
-import { updateStatus } from '../../managers/StatusManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 
 let responsiveMountingInitialized = false;
 

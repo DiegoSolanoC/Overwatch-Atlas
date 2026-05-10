@@ -11,7 +11,7 @@
  *   - `loadSoundEffects(sounds, statusMessage?)` — batch (`[{ name, path }, ...]`).
  */
 
-import { updateStatus } from '../../managers/StatusManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 
 /**
  * @param {string} soundName

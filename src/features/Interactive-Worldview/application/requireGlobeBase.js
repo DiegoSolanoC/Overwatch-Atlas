@@ -16,8 +16,8 @@
  * Worldview-specific and intentionally lives in the Worldview feature.
  */
 
-import { updateStatus } from '../../universal-features/managers/StatusManager.js';
-import { setButtonState } from '../../universal-features/managers/ButtonStateManager.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
+import { setButtonState } from '../../universal-features/ComponentSetUp/setButtonState.js';
 
 /**
  * @param {string|null} buttonId - Optional dev/test button id to flip to error state.

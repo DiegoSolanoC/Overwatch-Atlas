@@ -519,7 +519,7 @@
                     window.SoundEffectsManager.play('eventClick');
                 }
                 hideEventSlideIfOpen();
-                var orchE = window.componentOrchestrator;
+                var orchE = window.modeOrchestrator;
                 if (orchE && typeof orchE.openDataArchiveEventsView === 'function') {
                     void orchE.openDataArchiveEventsView('story');
                 } else {

@@ -20,9 +20,9 @@ Unlike Windows, GitHub Pages serves files from a **case-sensitive** filesystem. 
 
 ## Footer and sliding headlines
 
-- **Footer**: `<footer>` contains `.footer-atlas-news` (Atlas image) and a `<p>`; the red trapezoid and image are shown when the footer has class `timeline-loaded` (added by `ComponentOrchestrator` when the globe is ready).
+- **Footer**: `<footer>` contains `.footer-atlas-news` (Atlas image) and a `<p>`; the red trapezoid and image are shown when the footer has class `timeline-loaded` (added by `ModeOrchestrator` when the globe is ready).
 - **News ticker**: `NewsTickerService` creates `.news-ticker-container` and appends it to the footer; it is initialized when the timeline loads and updated with headlines from the current page. No GitHub Pages–specific logic hides it.
-- **Script order**: `NewsTickerService.js` is loaded before **`src/features/universal-features/BootUp/LoadingOrchestrator.js`** and other services; `ComponentOrchestrator` runs after the globe loads and then calls `newsTickerService.init()` and `updateTicker(currentPageEvents)`.
+- **Script order**: `NewsTickerService.js` is loaded before **`src/features/universal-features/BootUp/LoadingOrchestrator.js`** and other services; `ModeOrchestrator` runs after the globe loads and then calls `newsTickerService.init()` and `updateTicker(currentPageEvents)`.
 
 ## Number buttons and hover
 

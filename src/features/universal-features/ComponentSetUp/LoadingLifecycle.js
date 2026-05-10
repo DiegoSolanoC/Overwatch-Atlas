@@ -21,9 +21,9 @@
  * being added.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay } from '../managers/LoadingOverlayManager.js';
-import { updateStatus } from '../managers/StatusManager.js';
-import { setButtonState } from '../managers/ButtonStateManager.js';
+import { showLoadingOverlay, hideLoadingOverlay } from '../runtime/loadingOverlayState.js';
+import { updateStatus } from '../runtime/statusFeed.js';
+import { setButtonState } from './setButtonState.js';
 
 /**
  * Runs `loadFn` inside the standard load lifecycle (button state, toasts,

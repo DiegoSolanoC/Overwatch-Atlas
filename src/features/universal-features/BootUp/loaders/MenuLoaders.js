@@ -16,11 +16,11 @@ import {
     removeElementBySelector
 } from '../../ComponentSetUp/removeElement.js';
 import { createLoadingLockHandler } from '../../ComponentSetUp/LoadingLockProtocol.js';
-import { updateStatus } from '../../managers/StatusManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getRunOperation,
     setRunOperation
-} from '../../managers/LoadingOverlayManager.js';
+} from '../../runtime/loadingOverlayState.js';
 import { createMenuButtons, MenuContainer } from '../../MainMenu/MenuEntry.js';
 
 export async function loadMenu(loadedComponents) {

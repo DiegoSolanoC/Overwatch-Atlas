@@ -3,7 +3,7 @@
  *
  * `loadPalette` registers the palette button in the right header hub, loads
  * its sound effect, and wires up the toggle. `unloadPalette` tears all of
- * that down. Used by the ComponentOrchestrator under the `palette` key.
+ * that down. Used by the ModeOrchestrator under the `palette` key.
  */
 
 import { setupPaletteToggle, resetPaletteToggleSetup } from '../../Palette/PaletteManager.js';
@@ -15,8 +15,8 @@ import {
 import { loadSoundEffect } from '../../Audio/SoundEffects/SoundEffectsLoaders.js';
 import { createHeaderHubButton } from '../header/HeaderHubButton.js';
 import { removeElementById } from '../../ComponentSetUp/removeElement.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { getRunOperation } from '../../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 
 export async function loadPalette(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.palette, 'Palette')) {

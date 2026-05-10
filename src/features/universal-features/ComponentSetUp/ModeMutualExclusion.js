@@ -2,7 +2,7 @@ import { getCurrentMode } from './CurrentModeStatus.js';
 
 /**
  * Mutual-exclusion guard run at the start of every `runXComponents()` in
- * `ComponentOrchestrator`. Enforces the policy: at most one heavy mode
+ * `ModeOrchestrator`. Enforces the policy: at most one heavy mode
  * (Globe / Codex / Data Archive) is mounted at a time.
  *
  * Reads the persisted current mode and tears down whichever mode is currently

@@ -11,7 +11,7 @@ This is the **authoritative** description of how story timeline data connects to
 ## Markers (WebGL globe)
 
 - **Owner:** **`window.globeEventMarkerManager`** — an **`EventMarkerManager`** instance (not `GlobeView`).
-- **Created when:** `ComponentOrchestrator` loads worldview with the event system already active, or equivalent setup paths.
+- **Created when:** `ModeOrchestrator` loads worldview with the event system already active, or equivalent setup paths.
 - **Refresh:** **`window.TimelineMarkerSync.refreshTimelineEventMarkers(animate, options)`** → **`globeEventMarkerManager.refreshEventMarkers`** (remove + re-add + filters).
 - **`GlobeView`** does **not** implement `addEventMarkers` / `refreshEventMarkers`; do not call those on `globeView`.
 

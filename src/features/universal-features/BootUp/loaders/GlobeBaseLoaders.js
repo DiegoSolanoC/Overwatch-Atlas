@@ -28,9 +28,9 @@ import {
     showLoadingOverlay,
     hideLoadingOverlay,
     getRunOperation
-} from '../../managers/LoadingOverlayManager.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { setButtonState } from '../../managers/ButtonStateManager.js';
+} from '../../runtime/loadingOverlayState.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { setButtonState } from '../../ComponentSetUp/setButtonState.js';
 import {
     setupGlobeContainer,
     makeGlobeContainerVisible,

@@ -10,8 +10,8 @@
  * Sole consumer: `BootUp/loaders/ControlsLoaders.js`.
  */
 
-import { updateStatus } from '../managers/StatusManager.js';
-import { showLoadingOverlay, hideLoadingOverlay } from '../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../runtime/statusFeed.js';
+import { showLoadingOverlay, hideLoadingOverlay } from '../runtime/loadingOverlayState.js';
 import { clearCurrentMode } from './CurrentModeStatus.js';
 
 /**

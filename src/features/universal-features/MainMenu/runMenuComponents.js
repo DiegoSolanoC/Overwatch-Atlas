@@ -3,16 +3,16 @@
     hideLoadingOverlay,
     setRunOperation,
     getRunOperation
-} from '../managers/LoadingOverlayManager.js';
-import { updateStatus } from '../managers/StatusManager.js';
-import { runModeChangingProtocol } from '../ComponentSetUp/ModeChangingProtocol.js';
+} from '../runtime/loadingOverlayState.js';
+import { updateStatus } from '../runtime/statusFeed.js';
+import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
 
 /**
  * Loads (if needed) and shows the main menu — the app's landing state.
  *
  * Called from `BootUp/AppInitializer.js` after universal features finish (via
  * `window.runMenuComponents`, because the boot script runs after `LoadingOrchestrator`
- * has attached globals) and from `ComponentOrchestrator.runMenuComponents()`.
+ * has attached globals) and from `ModeOrchestrator.runMenuComponents()`.
  * Returning to the hub from another mode uses `restoreMainMenu` instead; it
  * does not call this function.
  *
@@ -44,7 +44,7 @@ export async function runMenuComponents(ctx) {
         if (menuButtons) {
             menuButtons.style.display = 'flex';
             updateStatus('✓ Menu Components are running!', 'success');
-            runModeChangingProtocol('menu');
+            broadcastModeChange('menu');
         } else {
             updateStatus('⚠ Menu buttons not found', 'error');
         }

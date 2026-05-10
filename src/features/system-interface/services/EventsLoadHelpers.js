@@ -8,7 +8,7 @@ import { createEventPagination } from './EventPaginationDom.js';
 import { createFiltersPanel } from './FiltersPanelDom.js';
 import { initializeEventManager, setupEventManagerListeners, syncEventsWithGlobe, verifyEventPanels } from './EventManagerHelpers.js';
 import { loadSoundEffect, loadSoundEffects } from '../../universal-features/Audio/SoundEffects/SoundEffectsLoaders.js';
-import { updateStatus } from '../../universal-features/managers/StatusManager.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 
 /**
  * Sets up all event-related UI components

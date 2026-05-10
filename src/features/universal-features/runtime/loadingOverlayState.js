@@ -1,6 +1,13 @@
 /**
- * LoadingOverlayManager - Handles loading overlay show/hide functionality
- * Extracted from component-loader.js to improve maintainability
+ * loadingOverlayState — show/hide of the full-screen `#loadingOverlay`
+ * plus the run-operation flag that gates re-entrant hides.
+ *
+ * Why the flag exists: a long mode-entry walks through several stages,
+ * each of which may call `hideLoadingOverlay()` after it finishes its own
+ * little ceremony. We want the overlay to stay up for the *whole* entry,
+ * not flicker between stages — so callers `setRunOperation(true)` at the
+ * start, and `hideLoadingOverlay()` becomes a no-op (unless `force: true`)
+ * until the outer caller flips the flag back off in its `finally`.
  */
 
 let isRunOperation = false; // Flag to track if we're in a run operation

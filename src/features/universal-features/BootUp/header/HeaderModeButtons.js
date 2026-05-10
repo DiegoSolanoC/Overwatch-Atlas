@@ -5,14 +5,14 @@
  * and Home (right hub). Each gets a bootstrap click handler that delegates
  * to the appropriate `runXComponents` global the orchestrator publishes.
  *
- * Loaded by the `ComponentOrchestrator` under the `headerNav` loader key.
+ * Loaded by the `ModeOrchestrator` under the `headerNav` loader key.
  * (Renamed from `HeaderNavButtons.js`.)
  */
 
 import { createHeaderHubButton } from './HeaderHubButton.js';
 import { createLoadingLockHandler } from '../../ComponentSetUp/LoadingLockProtocol.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { setRunOperation } from '../../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { setRunOperation } from '../../runtime/loadingOverlayState.js';
 import { attachHomeButtonHandler } from './HomeButtonHandler.js';
 
 function attachWorldviewBootstrap() {

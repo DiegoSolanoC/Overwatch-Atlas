@@ -3,7 +3,7 @@
  * Extracted from component-loader.js
  */
 
-import { updateStatus } from '../../universal-features/managers/StatusManager.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { syncEventsWithGlobeCore } from '../../system-interface/integration/syncEventsWithGlobeCore.js';
 
 /**

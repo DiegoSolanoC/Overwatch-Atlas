@@ -22,8 +22,8 @@ import {
 import { loadSoundEffect } from '../../Audio/SoundEffects/SoundEffectsLoaders.js';
 import { createHeaderHubButton } from '../header/HeaderHubButton.js';
 import { requireGlobeBase } from '../../../Interactive-Worldview/application/requireGlobeBase.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { getRunOperation } from '../../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 
 export async function loadToggles(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.transport, 'Toggles')) {

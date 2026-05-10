@@ -1082,7 +1082,7 @@ class EventManager {
      * Open the event list in Data Archive (legacy sliding overlay removed).
      */
     openEventsManagePanel() {
-        const orch = typeof window !== 'undefined' ? window.componentOrchestrator : null;
+        const orch = typeof window !== 'undefined' ? window.modeOrchestrator : null;
         if (orch && typeof orch.openDataArchiveEventsView === 'function') {
             void orch.openDataArchiveEventsView('story');
             return;

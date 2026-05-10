@@ -3,7 +3,7 @@
  * Extracted from component-loader.js to reduce duplication
  */
 
-import { updateStatus } from '../../managers/StatusManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 
 /**
  * Initializes MusicManager with proper error handling

@@ -8,7 +8,7 @@
  * (which kills globe components and returns to the menu), wires the
  * rotation/map handlers on the globe view, and loads the rotation SFX.
  *
- * The Exit button delegation goes through `window.componentOrchestrator`
+ * The Exit button delegation goes through `window.modeOrchestrator`
  * instead of a direct import so this module stays free of the orchestrator
  * cycle (the orchestrator already imports this loader).
  */
@@ -23,11 +23,11 @@ import { createHeaderHubButton } from '../header/HeaderHubButton.js';
 import { requireGlobeBase } from '../../../Interactive-Worldview/application/requireGlobeBase.js';
 import { removeElementsByIds } from '../../ComponentSetUp/removeElement.js';
 import { createExitButton } from '../../ComponentSetUp/ExitButton.js';
-import { updateStatus } from '../../managers/StatusManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getRunOperation,
     setRunOperation
-} from '../../managers/LoadingOverlayManager.js';
+} from '../../runtime/loadingOverlayState.js';
 
 export async function loadControls(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.controls, 'Controls')) {
@@ -76,7 +76,7 @@ export async function loadControls(loadedComponents) {
         // Exit button needs `killGlobeComponents` from the orchestrator. We
         // pull it off `window` to avoid a circular import — the orchestrator
         // already depends on this loader.
-        createExitButton(setRunOperation, () => window.componentOrchestrator?.killGlobeComponents());
+        createExitButton(setRunOperation, () => window.modeOrchestrator?.killGlobeComponents());
 
         if (controller.uiView) {
             controller.uiView.setupAutoRotateToggle();

@@ -28,8 +28,8 @@
  * overlay is locked."
  */
 
-import { showLoadingOverlay, hideLoadingOverlay } from '../managers/LoadingOverlayManager.js';
-import { updateStatus } from '../managers/StatusManager.js';
+import { showLoadingOverlay, hideLoadingOverlay } from '../runtime/loadingOverlayState.js';
+import { updateStatus } from '../runtime/statusFeed.js';
 
 /**
  * @param {() => Promise<void>} asyncFn - The big operation to run under the lock.

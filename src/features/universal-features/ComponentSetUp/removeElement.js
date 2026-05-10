@@ -9,7 +9,7 @@
  * success.
  */
 
-import { updateStatus } from '../managers/StatusManager.js';
+import { updateStatus } from '../runtime/statusFeed.js';
 
 /**
  * Removes an element by ID and updates status

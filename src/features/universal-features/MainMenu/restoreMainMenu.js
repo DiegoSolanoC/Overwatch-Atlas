@@ -1,5 +1,5 @@
-﻿import { updateStatus } from '../managers/StatusManager.js';
-import { runModeChangingProtocol } from '../ComponentSetUp/ModeChangingProtocol.js';
+﻿import { updateStatus } from '../runtime/statusFeed.js';
+import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
 
 /**
  * @param {{ menu: boolean }} loadedComponents
@@ -120,5 +120,5 @@ export async function restoreMainMenu(ctx, preserveNewsTicker = false) {
 
     closeSidePanelsAndToggles();
     removeGlobeMapChooserChrome();
-    runModeChangingProtocol('menu');
+    broadcastModeChange('menu');
 }

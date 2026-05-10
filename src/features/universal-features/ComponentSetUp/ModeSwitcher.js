@@ -7,7 +7,7 @@
  * `'timeline'` for `'globe'`), this:
  *   1. Unloads the currently active mode's assets.
  *   2. Loads the target mode's assets.
- *   3. Fires the `appmodechange` event (via `runModeChangingProtocol`) so the
+ *   3. Fires the `appmodechange` event (via `broadcastModeChange`) so the
  *      rest of the app can react.
  *
  * Biography is a "coming soon" placeholder — selecting it reroutes to the
@@ -22,7 +22,7 @@
  * Renamed from `appModeSwitch.js` — the file now matches its conceptual
  * role rather than the exported function it contains. Lives in
  * `ComponentSetUp/` because it's a runtime cross-mode primitive (sibling
- * to `ModeChangingProtocol.js` and `ModeMutualExclusion.js`), not a
+ * to `broadcastModeChange.js` and `ModeMutualExclusion.js`), not a
  * boot-time concern. `LoadingOrchestrator` still publishes the bound
  * `appModeSwitch` on `window` so non-module callers can invoke it.
  */
@@ -31,8 +31,8 @@ import {
     getCurrentModeOrMenu,
     setCurrentMode
 } from './CurrentModeStatus.js';
-import { runModeChangingProtocol } from './ModeChangingProtocol.js';
-import { updateStatus } from '../managers/StatusManager.js';
+import { broadcastModeChange } from './broadcastModeChange.js';
+import { updateStatus } from '../runtime/statusFeed.js';
 
 const VALID_LOAD_TARGETS = new Set(['globe', 'glossary', 'biography']);
 
@@ -95,12 +95,12 @@ export async function appModeSwitch(targetMode) {
         if (isBiographyPlaceholder) {
             updateStatus('Biography mode is coming soon — returning to main menu.', 'info');
         }
-        runModeChangingProtocol(effectiveNext);
+        broadcastModeChange(effectiveNext);
     } catch (e) {
         console.error(`appModeSwitch failed transitioning ${current} -> ${effectiveNext} (requested: ${next}):`, e);
         try {
             await window.restoreMainMenu?.();
         } catch (_) { /* ignore secondary failure */ }
-        runModeChangingProtocol('menu');
+        broadcastModeChange('menu');
     }
 }

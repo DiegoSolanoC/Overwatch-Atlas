@@ -30,7 +30,7 @@ Fresh loads clear **`currentMode`** in `localStorage` so the user starts from a 
 
 ### 2.2 Modular loading
 
-`src/features/universal-features/BootUp/LoadingOrchestrator.js` and `src/features/universal-features/managers/ComponentOrchestrator.js` load features in **stages**:
+`src/features/universal-features/BootUp/LoadingOrchestrator.js` and `src/features/universal-features/runtime/ModeOrchestrator.js` load features in **stages**:
 
 - **Universal**: palette, music, menus, shared event-system UI where required.
 - **Per mode**: globe stack, codex (glossary) stack, or story-archive / biography flows.

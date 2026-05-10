@@ -38,7 +38,7 @@ Approximate line counts (including blanks/comments):
 | ~5365 | `src/features/main-menu/MenuHelpers.js` | Menu + dock + event UI layout glue |
 | ~3770 | `src/features/main-menu/MenuServiceHelpers.js` | Overlap with `MenuHelpers` by responsibility |
 | ~2240 | `src/features/system-interface/presentation/slide/EventSlideManager.js` | Slide UI orchestration |
-| ~1695 | `src/features/universal-features/managers/ComponentOrchestrator.js` | Mode loading / lifecycle hub |
+| ~1695 | `src/features/universal-features/runtime/ModeOrchestrator.js` | Mode loading / lifecycle hub |
 | ~1536 | `src/utils/LocationFlagHelpers.js` | Data + UI-adjacent helpers |
 | ~1498 | `src/ui/Map2DLiteLayer.js` | 2D map / DOM markers |
 | ~1428 | `src/features/Interactive-Worldview/presentation/views/GlobeView.js` | WebGL globe view |
@@ -92,7 +92,7 @@ Approximate line counts (including blanks/comments):
    - **`src/features/universal-features/helpers/EventManagerHelpers.js`** (boot loader) vs similarly named helpers under **`src/features/system-interface/`** — **Phase 8** should rename by capability (`EventSystemBootHelpers`, …).
 
 2. **Wide blast radius**  
-   `EventManager`, `EventSlideManager`, `MenuHelpers`, `MenuServiceHelpers`, `FilterService`, and `ComponentOrchestrator` all **touch pagination, slide, filters, or globals**. MVC boundaries blur (UI + domain + persistence hints in one flow).
+   `EventManager`, `EventSlideManager`, `MenuHelpers`, `MenuServiceHelpers`, `FilterService`, and `ModeOrchestrator` all **touch pagination, slide, filters, or globals**. MVC boundaries blur (UI + domain + persistence hints in one flow).
 
 3. **Legacy data paths**  
    `EventDataService`, `LocationFlagHelpers`, `StoryFilterPlacesSync` carry **migration from legacy fields** (`secondaryCountryFlags`, string arrays, etc.). This is **necessary** but should live behind a **single “EventRecord normalization” model** to avoid scatter.
@@ -139,7 +139,7 @@ Grep highlights worth tracking:
 |-----------|---------------|-----|
 | **Model** | `DataModel`, `SceneModel`, `TransportModel`; event JSON via `EventDataService` | Event normalization + filter state scattered; globals duplicate “confirmed” vs “draft” filter sets |
 | **View** | `GlobeView`, `UIView`, `Map2DLiteLayer`, DOM builders in helpers | Large helpers **build DOM + encode behavior** |
-| **Controller** | `GlobeController`, parts of `ComponentOrchestrator`, `EventManager` | **Orchestrator + loader + mode kill** mixed; event/globe sync spread across many files |
+| **Controller** | `GlobeController`, parts of `ModeOrchestrator`, `EventManager` | **Orchestrator + loader + mode kill** mixed; event/globe sync spread across many files |
 
 **Strict MVC** here means: **stop importing “view helpers” from 20 places**; each feature exposes a **small API** (e.g. `worldviewApi.syncMarkersFromEvents(events)`).
 
@@ -193,7 +193,7 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
    - `_ensureGlobeWorldBuilt` comments: event markers **not** added in globe init.  
    - `setMapViewEnabled`: when returning from map to globe, it calls **`globeEventMarkerManager.addEventMarkers(false)`** — aligns with **`EventMarkerManager`** as the WebGL marker owner.
 
-5. **`ComponentOrchestrator`** (worldview load): if event system is already active, it **constructs `EventMarkerManager`** and calls **`addEventMarkers(true)`** — the **modern** integration point.
+5. **`ModeOrchestrator`** (worldview load): if event system is already active, it **constructs `EventMarkerManager`** and calls **`addEventMarkers(true)`** — the **modern** integration point.
 
 6. **`UIView` is a hybrid for map clicks**  
    - File header says event features removed from globe.  

@@ -983,6 +983,47 @@ function unregisterCodexNodeRenderTracking(nodeId) {
 }
 
 /**
+ * Dev toolbar: clear every node and link from the board (Save Codex still required to persist).
+ * Confirmation prompts the user with the current totals.
+ */
+function clearAllCodexBoard() {
+    if (codexMode !== 'dev' || !root) return;
+    const totalNodes = codexAllNodes.length;
+    const totalEdges = codexEdges.length;
+    if (totalNodes === 0 && totalEdges === 0) {
+        updateAppStatus('Codex is already empty.', 'info');
+        return;
+    }
+    const ok = userConfirms(
+        `Clear the entire Codex board? This removes ${totalNodes} node${totalNodes === 1 ? '' : 's'} and ${totalEdges} link${totalEdges === 1 ? '' : 's'}. Use Save Codex to persist the change.`
+    );
+    if (!ok) return;
+
+    stripCodexBoardForFullReplace();
+    codexAllNodes = [];
+    codexEdges = [];
+    codexUnsavedEdgeKeys.clear();
+    cordDoubleRightLastTs.clear();
+    codexNodeDeleteLastRightTs.clear();
+    clearPendingCodexDeleteState();
+    codexRenderedNodeIds.clear();
+    codexNodeElements.clear();
+    codexSelectedNodeEls = new Set();
+    codexPrimarySelectedNodeEl = null;
+    codexBulkNodeDeleteArmedAt = 0;
+
+    markCodexLayoutDirty();
+    redrawCodexEdges();
+    applyCodexSelectionToDom();
+    updateCodexToolbar();
+    scheduleUpdateCodexVirtualScroll();
+    updateAppStatus(
+        `Cleared Codex (${totalNodes} node${totalNodes === 1 ? '' : 's'}, ${totalEdges} link${totalEdges === 1 ? '' : 's'}). Save Codex to persist.`,
+        'success'
+    );
+}
+
+/**
  * Dev toolbar: delete all selected nodes immediately (edges removed; layout marked dirty).
  */
 function deleteCodexToolbarSelectedNodes() {
@@ -1201,6 +1242,20 @@ function updateCodexToolbar() {
                 : selectedNodes.length > 1
                     ? `Delete ${selectedNodes.length} selected nodes (and their links).`
                     : 'Delete the selected node (and its links).';
+    }
+
+    const clearAllBtn = codexToolbarEl.querySelector('.codex-toolbar__clear-all');
+    if (clearAllBtn) {
+        const dev = codexMode === 'dev';
+        const totalNodesAll = codexAllNodes.length;
+        const totalEdgesAll = codexEdges.length;
+        const empty = totalNodesAll === 0 && totalEdgesAll === 0;
+        clearAllBtn.disabled = !dev || empty;
+        clearAllBtn.title = !dev
+            ? 'Switch to Dev mode to clear the board.'
+            : empty
+                ? 'Codex is already empty.'
+                : `Remove all ${totalNodesAll} node${totalNodesAll === 1 ? '' : 's'} and ${totalEdgesAll} link${totalEdgesAll === 1 ? '' : 's'} from the board. Save Codex to persist.`;
     }
 
     const scaleInput = codexToolbarEl.querySelector('.codex-toolbar__scale-input');
@@ -2434,6 +2489,14 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     cordDoubleRightLastTs.clear();
     codexNodeDeleteLastRightTs.clear();
     clearPendingCodexDeleteState();
+    /*
+     * Set the in-memory model BEFORE placing DOM nodes — placeLoadedCodexNodeRecord calls
+     * placeCodexNode with fromSaved:true, which does not push into codexAllNodes (only new
+     * user-placed nodes do). Without this, save serializes 0 nodes + N edges and the board
+     * disappears on next reload (centerCodexViewOnNodes also early-returns on empty model).
+     */
+    codexAllNodes = nodes || [];
+    clearCodexVirtualScroll();
     codexViewZoom = CODEX_ZOOM_INITIAL;
     if (!nodes.length) {
         centerCodexViewOnWorldCenter();
@@ -2462,6 +2525,14 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     }
 
     await placeCodexNodeRecordsInChunks(nodes);
+    /*
+     * placeCodexNode(fromSaved) doesn't add to codexRenderedNodeIds — populate explicitly so
+     * the next updateCodexVirtualScroll doesn't try to place duplicate DOM elements. Mirrors
+     * the failsafe loop in loadCodexState.
+     */
+    for (const n of nodes) {
+        if (n && n.id) codexRenderedNodeIds.add(n.id);
+    }
     centerCodexViewOnNodes();
     applyCodexWorldTransformStyle();
     syncCodexNodeDomCullFromView();
@@ -3536,6 +3607,18 @@ function ensureCodexToolbarImportExportRow(bar) {
         fileInput.click();
     });
 
+    const clearAllBtn = document.createElement('button');
+    clearAllBtn.type = 'button';
+    clearAllBtn.className = 'codex-toolbar__import-export-btn codex-toolbar__clear-all';
+    clearAllBtn.textContent = 'Clear all';
+    clearAllBtn.title =
+        'Remove every node and link from the board. Save Codex afterwards to persist the empty board to data/codex-labels.json.';
+    clearAllBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        clearAllCodexBoard();
+    });
+
     // Add background color picker for selected node
     const colorLabel = document.createElement('label');
     colorLabel.className = 'codex-toolbar__bg-color-label';
@@ -3629,9 +3712,16 @@ function ensureCodexToolbarImportExportRow(bar) {
     row.appendChild(exportBtn);
     row.appendChild(fileInput);
     row.appendChild(importBtn);
-    row.appendChild(colorLabel);
-    row.appendChild(colorInput);
-    row.appendChild(hexInput);
+    row.appendChild(clearAllBtn);
+
+    // Wrap color label + picker + hex input so the import/export row can wrap them
+    // onto their own line under the four text buttons (CSS: flex-basis: 100%).
+    const colorGroup = document.createElement('div');
+    colorGroup.className = 'codex-toolbar__bg-color-group';
+    colorGroup.appendChild(colorLabel);
+    colorGroup.appendChild(colorInput);
+    colorGroup.appendChild(hexInput);
+    row.appendChild(colorGroup);
 
     const footer = bar.querySelector('.codex-toolbar__row--footer');
     if (footer) {

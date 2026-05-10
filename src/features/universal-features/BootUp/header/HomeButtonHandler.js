@@ -12,8 +12,8 @@
 import {
     showLoadingOverlay,
     hideLoadingOverlay
-} from '../../managers/LoadingOverlayManager.js';
-import { updateStatus } from '../../managers/StatusManager.js';
+} from '../../runtime/loadingOverlayState.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getCurrentModeOrMenu,
     clearCurrentMode

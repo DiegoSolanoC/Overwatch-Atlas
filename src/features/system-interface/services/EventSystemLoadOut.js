@@ -1,5 +1,5 @@
 /**
- * Event System Load Out service ù the heavy LOAD / UNLOAD payload behind the
+ * Event System Load Out service ÔøΩ the heavy LOAD / UNLOAD payload behind the
  * main-menu's "LOAD Event System Load Out" button.
  *
  * Exposed entry points:
@@ -17,7 +17,7 @@
  * Extracted from main-menu/event-system-load-out/EventSystemLoadOut.js.
  */
 
-import { updateStatus } from '../../universal-features/managers/StatusManager.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { lookAndAddElement } from '../../universal-features/ComponentSetUp/lookAndAddElement.js';
 import { createEventPagination } from './EventPaginationDom.js';
 import { createFiltersPanel } from './FiltersPanelDom.js';
@@ -74,7 +74,7 @@ installEventSlidePlainPasteGuard();
 let _thumbnailHoverSoundInterval = null;
 
 /**
- * LOAD path ù mount the full Event System Load Out:
+ * LOAD path ÔøΩ mount the full Event System Load Out:
  *   - Filters button + Filters panel
  *   - Image Display toggle
  *   - Pagination dock and slider
@@ -216,7 +216,7 @@ export async function loadEventSystem(testBtn) {
                 // Move Filters, Global Image Toggle, and Page Input Container between dock rail and page controls row
                 function moveButtonsToPageControlsRow() {
                     const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-                    /* Portrait row order + membership: moveElements / moveDock (replaceChildren). Avoid legacy insertBefore/appendChild here ù it fought moveDock and scrambled control order. */
+                    /* Portrait row order + membership: moveElements / moveDock (replaceChildren). Avoid legacy insertBefore/appendChild here ÔøΩ it fought moveDock and scrambled control order. */
                     if (isMobilePortrait) {
                         const runDock =
                             window.__menuHelpersEventSystemLayout?.moveDock ||
@@ -281,7 +281,7 @@ export async function loadEventSystem(testBtn) {
                 const events = window.eventManager.events || [];
                 window.newsTickerService.updateTicker(events);
 
-                // Wire up Event Manager panel controls (no dock toggle ù list via Data Archive)
+                // Wire up Event Manager panel controls (no dock toggle ÔøΩ list via Data Archive)
                 if (window.eventManager && !window.eventManager.listenersSetup) {
                     window.eventManager.setupEventListeners();
                 }
@@ -580,7 +580,7 @@ export async function loadEventSystem(testBtn) {
                         currentEventIndex: 0,
                         currentPage: 1, // Track current page for marker display
                         allEvents: [],
-                        /** True when the slide row comes from the main-timeline dock (thumbs / story), not satellite Event Manager rows. Do not infer via `allEvents === getDockTimelineEvents()` ù references can differ while content is still dock. */
+                        /** True when the slide row comes from the main-timeline dock (thumbs / story), not satellite Event Manager rows. Do not infer via `allEvents === getDockTimelineEvents()` ÔøΩ references can differ while content is still dock. */
                         _presentationFromDockTimeline: true,
                         currentEventData: null,
                         currentVariantIndex: 0,
@@ -682,7 +682,7 @@ export async function loadEventSystem(testBtn) {
                             let eventName = displayEvent.name || eventData.name || 'Unnamed Event';
                             const description = displayEvent.description || '';
 
-                            // Get image path ù dock rows are always main-timeline story art
+                            // Get image path ÔøΩ dock rows are always main-timeline story art
                             const useStoryDockImages = !!this._presentationFromDockTimeline;
                             let imagePath = null;
                             if (window.NavigationImageHelpers?.getEventImagePath) {
@@ -805,7 +805,7 @@ export async function loadEventSystem(testBtn) {
                                     if (yearStart) {
                                         yearText = String(yearStart);
                                         if (yearEnd) {
-                                            yearText += ` ù ${yearEnd}`;
+                                            yearText += ` ÔøΩ ${yearEnd}`;
                                         }
                                     }
                                     if (yearText) {
@@ -960,7 +960,7 @@ export async function loadEventSystem(testBtn) {
                                                 if (vYearStart) {
                                                     vYearText = String(vYearStart);
                                                     if (vYearEnd) {
-                                                        vYearText += ` ù ${vYearEnd}`;
+                                                        vYearText += ` ÔøΩ ${vYearEnd}`;
                                                     }
                                                 }
                                                 if (vYearText) {
@@ -1516,11 +1516,11 @@ export async function loadEventSystem(testBtn) {
                                     </div>
                                     <div class="event-slide-inline-editor__year-row" id="eventSlideXyRow" style="display: none; grid-template-columns: 1fr 1fr; gap: 8px; align-items: end; margin-bottom: 10px;">
                                         <div class="event-slide-inline-editor__year-cell">
-                                            <label class="event-slide-inline-editor__label" for="eventSlideEditX">X (0ù100)</label>
+                                            <label class="event-slide-inline-editor__label" for="eventSlideEditX">X (0ÔøΩ100)</label>
                                             <input class="event-slide-inline-editor__input" id="eventSlideEditX" type="number" step="any" min="0" max="100" autocomplete="off" />
                                         </div>
                                         <div class="event-slide-inline-editor__year-cell">
-                                            <label class="event-slide-inline-editor__label" for="eventSlideEditY">Y (0ù100)</label>
+                                            <label class="event-slide-inline-editor__label" for="eventSlideEditY">Y (0ÔøΩ100)</label>
                                             <input class="event-slide-inline-editor__input" id="eventSlideEditY" type="number" step="any" min="0" max="100" autocomplete="off" />
                                         </div>
                                     </div>
@@ -2431,7 +2431,7 @@ export async function loadEventSystem(testBtn) {
                                 this.originalState = null;
                                 this.updateSourcesAndFilters(normalized);
                                 this.allEvents = window.eventManager?.events || [];
-                                // Dock is main-timeline only; satellite saves do not change it ù avoid dock thumb/page-turn refresh
+                                // Dock is main-timeline only; satellite saves do not change it ÔøΩ avoid dock thumb/page-turn refresh
                                 if (window.eventManager?.renderEvents) window.eventManager.renderEvents();
                                 const heroLocEditSaved = document.getElementById('eventSlideHeroLocationsEdit');
                                 if (heroLocEditSaved) {
@@ -2557,7 +2557,7 @@ export async function loadEventSystem(testBtn) {
                             }
                             
                             // Persist main-timeline rows for the dock before saveEvents() when a satellite archive
-                            // is active ù saveEvents() only writes the active archive key; without this, story
+                            // is active ÔøΩ saveEvents() only writes the active archive key; without this, story
                             // dock edits never reach timelineEvents / data/events.json and vanish on reload.
                             if (
                                 dockStoryPresentationActive &&
@@ -2791,7 +2791,7 @@ export async function loadEventSystem(testBtn) {
                             this.hideImageOverlayGradually(600);
                         },
                         
-                        // Hide event slide panel - used by ComponentOrchestrator when switching modes
+                        // Hide event slide panel - used by ModeOrchestrator when switching modes
                         hideEventSlide() {
                             const eventSlide = document.getElementById('eventSlide');
                             const eventImageOverlay = document.getElementById('eventImageOverlay');
@@ -3484,7 +3484,7 @@ export async function loadEventSystem(testBtn) {
                                     }
                                 }
                                 newBtn.classList.toggle('event-number-btn--unfinished', !hasDescription);
-                                newBtn.title = hasDescription ? plainName : `${plainName} ù Unfinished: missing description`;
+                                newBtn.title = hasDescription ? plainName : `${plainName} ÔøΩ Unfinished: missing description`;
                                 
                                 // Get image path using helper
                                 let imagePath = null;
@@ -3649,7 +3649,7 @@ export async function loadEventSystem(testBtn) {
                                     if (window.SummaryInfoBadge?.show && event) {
                                         const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines 
                                             ? window.SummaryInfoBadge.getHoverPreviewLines(event)
-                                            : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ù${displayEvent.yearEnd}` : ''}` : '' };
+                                            : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ÔøΩ${displayEvent.yearEnd}` : ''}` : '' };
                                         
                                         const variants = isMultiEvent ? event.variants : [];
                                         const otherVariants = variants.slice(1);
@@ -3661,7 +3661,7 @@ export async function loadEventSystem(testBtn) {
                                             hoverLines.eraName || displayEvent.eraName || '',
                                             hoverLines.primaryRowFlag || null,
                                             hoverLines.otherRowFlags || [],
-                                            hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ù${displayEvent.yearEnd}` : ''}` : '')
+                                            hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ÔøΩ${displayEvent.yearEnd}` : ''}` : '')
                                         );
                                     }
 
@@ -4075,7 +4075,7 @@ export async function loadEventSystem(testBtn) {
                                 }
                             }
                             btn.classList.toggle('event-number-btn--unfinished', !hasDescription);
-                            btn.title = hasDescription ? plainName : `${plainName} ù Unfinished: missing description`;
+                            btn.title = hasDescription ? plainName : `${plainName} ÔøΩ Unfinished: missing description`;
                             
                             // Get image (dock thumbs always use main timeline event art)
                             let imagePath = null;
@@ -4191,7 +4191,7 @@ export async function loadEventSystem(testBtn) {
                                 if (window.SummaryInfoBadge?.show && event) {
                                     const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines 
                                         ? window.SummaryInfoBadge.getHoverPreviewLines(event)
-                                        : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ù${displayEvent.yearEnd}` : ''}` : '' };
+                                        : { eraName: displayEvent.eraName || '', primaryRowFlag: null, otherRowFlags: [], yearLine: displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ÔøΩ${displayEvent.yearEnd}` : ''}` : '' };
                                     
                                     const variants = isMultiEvent ? event.variants : [];
                                     const otherVariants = variants.slice(1);
@@ -4203,7 +4203,7 @@ export async function loadEventSystem(testBtn) {
                                         hoverLines.eraName || displayEvent.eraName || '',
                                         hoverLines.primaryRowFlag || null,
                                         hoverLines.otherRowFlags || [],
-                                        hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ù${displayEvent.yearEnd}` : ''}` : '')
+                                        hoverLines.yearLine || (displayEvent.yearStart ? `${displayEvent.yearStart}${displayEvent.yearEnd ? `ÔøΩ${displayEvent.yearEnd}` : ''}` : '')
                                     );
                                 }
 
@@ -4730,7 +4730,7 @@ export async function loadEventSystem(testBtn) {
 }
 
 /**
- * UNLOAD path ù tear down everything LOAD set up:
+ * UNLOAD path ÔøΩ tear down everything LOAD set up:
  *   - Remove the dock, pagination strip, filters panel/button, image toggle
  *   - Clear the news ticker, close the event slide and overlays
  *   - Reset standalone filters and the standalone event slide proxy

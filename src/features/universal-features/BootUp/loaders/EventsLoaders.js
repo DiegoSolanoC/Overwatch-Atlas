@@ -18,8 +18,8 @@ import {
 } from '../../ComponentSetUp/LoadingLifecycle.js';
 import { requireGlobeBase } from '../../../Interactive-Worldview/application/requireGlobeBase.js';
 import { removeElementsByIds } from '../../ComponentSetUp/removeElement.js';
-import { updateStatus } from '../../managers/StatusManager.js';
-import { getRunOperation } from '../../managers/LoadingOverlayManager.js';
+import { updateStatus } from '../../runtime/statusFeed.js';
+import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 import {
     initializeEventManager,
     setupEventManagerListeners,

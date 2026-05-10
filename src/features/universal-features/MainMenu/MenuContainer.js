@@ -11,7 +11,7 @@
  * for stylesheet and tooling compatibility.
  */
 
-import { updateStatus } from '../managers/StatusManager.js';
+import { updateStatus } from '../runtime/statusFeed.js';
 
 /**
  * Returns the singleton host element for the main menu. Creates it once

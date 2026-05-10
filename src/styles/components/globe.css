@@ -191,8 +191,13 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 
 .codex-toolbar {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
+    /*
+     * Default: only clear the footer area. #globe-container already shrinks to bottom:108px when
+     * the timeline is loaded without a pagination dock (see entry.css), so a small inset is enough.
+     */
+    bottom: 16px;
+    /* Inset from the viewport edge so we clear filters-panel side trapezoid + border art. */
+    left: max(64px, env(safe-area-inset-left, 0px));
     z-index: 80;
     display: flex;
     flex-direction: column;
@@ -204,8 +209,22 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     pointer-events: auto;
-    max-width: min(420px, calc(100% - 24px));
+    /* Wider so the three import/export buttons stay readable; reserve room for both side insets. */
+    max-width: min(480px, calc(100% - 128px));
     font-size: 15px;
+}
+
+/*
+ * When the pagination dock is present #globe-container stretches under it (entry.css bottom:0),
+ * so the toolbar must lift above footer + dock or it gets covered. --pagination-dock-height
+ * auto-shrinks to 200px when body.pagination-dock-collapsed is set.
+ */
+body:has(#paginationDock) .codex-toolbar {
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + 16px
+    );
 }
 
 .codex-toolbar__row {
@@ -468,12 +487,18 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 .codex-toolbar__row--import-export {
     width: 100%;
     justify-content: stretch;
-    gap: 8px;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 8px;
 }
 
 .codex-toolbar__import-export-btn {
-    flex: 1;
-    min-width: 0;
+    /*
+     * Four buttons (Check vs archives / Export JSON / Import JSON / Clear all) lay out as a 2×2
+     * grid so "Check vs archives" stays readable instead of collapsing to ellipsis.
+     */
+    flex: 1 1 calc(50% - 4px);
+    min-width: 140px;
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 600;
@@ -483,11 +508,89 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     background: rgba(0, 0, 0, 0.28);
     color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .codex-toolbar__import-export-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(140, 210, 255, 0.45);
+}
+
+/* Clear all is destructive — match .codex-toolbar__delete-selected red palette. */
+.codex-toolbar__import-export-btn.codex-toolbar__clear-all {
+    border-color: rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.35);
+    color: rgba(254, 226, 226, 0.95);
+}
+
+.codex-toolbar__import-export-btn.codex-toolbar__clear-all:hover:not(:disabled) {
+    background: rgba(153, 27, 27, 0.45);
+    border-color: rgba(252, 165, 165, 0.55);
+}
+
+.codex-toolbar__import-export-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/*
+ * Node bg color group: forced onto its own line below the three import/export buttons via
+ * flex-basis 100% on the wrap grid. Keeps label + color picker + hex input together.
+ */
+.codex-toolbar__bg-color-group {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+    min-width: 0;
+}
+
+.codex-toolbar__bg-color-label {
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(220, 230, 255, 0.92);
+    user-select: none;
+}
+
+.codex-toolbar__bg-color-input {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.codex-toolbar__bg-color-hex {
+    flex: 1 1 auto;
+    min-width: 0;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.94);
+    font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    outline: none;
+}
+
+.codex-toolbar__bg-color-hex:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-toolbar__bg-color-hex::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .codex-bio-sync-preview-overlay {
@@ -876,11 +979,12 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 /* Right dock: cord/packet appearance (separate from left .codex-toolbar). */
 .codex-visual-panel {
     position: absolute;
-    right: 12px;
-    bottom: 12px;
+    /* Match .codex-toolbar inset: clear event-slide side trapezoid border art. */
+    right: max(64px, env(safe-area-inset-right, 0px));
+    bottom: 16px;
     z-index: 80;
-    width: min(320px, calc(100vw - 24px));
-    max-height: min(72vh, calc(100% - 24px));
+    width: min(320px, calc(100vw - 152px));
+    max-height: min(72vh, calc(100% - 32px));
     overflow-x: hidden;
     overflow-y: auto;
     box-sizing: border-box;
@@ -890,6 +994,24 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
     border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     pointer-events: auto;
+}
+
+/* Lift above footer + pagination dock when present (mirrors .codex-toolbar). */
+body:has(#paginationDock) .codex-visual-panel {
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + 16px
+    );
+    max-height: min(
+        72vh,
+        calc(
+            100%
+            - var(--footer-height, 65px)
+            - var(--pagination-dock-height, 240px)
+            - 32px
+        )
+    );
 }
 
 .codex-visual-panel__details {
