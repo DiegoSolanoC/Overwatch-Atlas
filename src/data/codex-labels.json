@@ -1,5 +1,764 @@
 {
   "v": 4,
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "id": "cn-1776196924066-edm90ljs",
+      "kind": "hero",
+      "heroName": "Venture",
+      "x": 12654.494693200664,
+      "y": 11051.399502487562,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414198930-oqaubehv",
+      "kind": "npc",
+      "npcName": "Liao",
+      "x": 12539.769408860497,
+      "y": 9789.452350451855,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414223771-oguea44i",
+      "kind": "npc",
+      "npcName": "Aurora",
+      "x": 12604.024118580552,
+      "y": 9902.697058408643,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414234830-o73wifmj",
+      "kind": "faction",
+      "factionFilename": "04Omnica Corporation",
+      "factionDisplay": "Omnica Corporation",
+      "x": 12662.097070751526,
+      "y": 9685.481161119773,
+      "scale": 2,
+      "bgColor": "#969696"
+    },
+    {
+      "id": "cn-1778414422271-0u0ep2cy",
+      "kind": "faction",
+      "factionFilename": "01Blackwatch",
+      "factionDisplay": "Blackwatch",
+      "x": 13596.035077180728,
+      "y": 10786.070154361456,
+      "scale": 2,
+      "bgColor": "#1d2125"
+    },
+    {
+      "id": "cn-1778414436383-rkpglmnf",
+      "kind": "faction",
+      "factionFilename": "34Search & Rescue",
+      "factionDisplay": "Search & Rescue",
+      "x": 13728.6,
+      "y": 10787.89119766682,
+      "scale": 2,
+      "bgColor": "#021887"
+    },
+    {
+      "id": "cn-1778414447510-4ykmz3vn",
+      "kind": "faction",
+      "factionFilename": "35IJC",
+      "factionDisplay": "IJC",
+      "x": 13663.728569015158,
+      "y": 10673.390322724234,
+      "scale": 2,
+      "bgColor": "#899fbd"
+    },
+    {
+      "id": "cn-1778414662965-hn7dfozk",
+      "kind": "npc",
+      "npcName": "Adawe",
+      "x": 11314.811168336095,
+      "y": 11284.573405071264,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414840823-pspsdb2e",
+      "kind": "faction",
+      "factionFilename": "05Vishkar Corporation",
+      "factionDisplay": "Vishkar Corporation",
+      "x": 10462.11760466636,
+      "y": 9661.539825011485,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414869029-zxgqrvvp",
+      "kind": "npc",
+      "npcName": "Sanjay",
+      "x": 10850.549106782879,
+      "y": 9736.608100601425,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778414970914-38fy61qd",
+      "kind": "faction",
+      "factionFilename": "30M.E.K.A Squad",
+      "factionDisplay": "M.E.K.A Squad",
+      "x": 10441.719260544154,
+      "y": 10968.937728814195,
+      "scale": 2,
+      "bgColor": "#74f1ab"
+    },
+    {
+      "id": "cn-1778420191022-ns418sab",
+      "kind": "faction",
+      "factionFilename": "00Overwatch",
+      "factionDisplay": "Overwatch",
+      "x": 13529.45043901925,
+      "y": 10228.144918211576,
+      "scale": 2,
+      "bgColor": "#021887"
+    },
+    {
+      "id": "cn-1778420456571-pq7tw0i4",
+      "kind": "junction",
+      "x": 13402.716749585406,
+      "y": 11125.312603648425,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778420484713-3f1nnj9h",
+      "kind": "junction",
+      "x": 13402.37538590364,
+      "y": 10979.432932867676,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778420632460-u9zvr6h7",
+      "kind": "junction",
+      "x": 12987.90585189518,
+      "y": 10663.088688824097,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778420767157-4leqsqnw",
+      "kind": "junction",
+      "x": 13928.154824823683,
+      "y": 10994.747719717894,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778420841632-srsjkxv9",
+      "kind": "junction",
+      "x": 14075.206433098247,
+      "y": 10992.210321654913,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778420991307-qc5z9pdw",
+      "kind": "junction",
+      "x": 14077.888734572227,
+      "y": 10234.911265427776,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421010280-9uxuxras",
+      "kind": "junction",
+      "x": 14174.729578190741,
+      "y": 10236.96807269753,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421095280-ashlvl6g",
+      "kind": "faction",
+      "factionFilename": "21Shimada Clan",
+      "factionDisplay": "Shimada Clan",
+      "x": 14206.122928921124,
+      "y": 9989.038912099233,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421353766-4uicxbfy",
+      "kind": "junction",
+      "x": 14004.758264882772,
+      "y": 10309.392032856269,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421810487-ore7xk95",
+      "kind": "junction",
+      "x": 12455.646102819237,
+      "y": 10537.522553897183,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421896697-4oypvu58",
+      "kind": "junction",
+      "x": 12765.536152570481,
+      "y": 10287.190547263683,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778421993468-rljnxnuk",
+      "kind": "junction",
+      "x": 12456.48466119062,
+      "y": 11099.322710475026,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422006346-xvuy8kkt",
+      "kind": "junction",
+      "x": 12653.300497512439,
+      "y": 10871.844444444445,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422209168-8d81w5wf",
+      "kind": "junction",
+      "x": 11955.735272405922,
+      "y": 11315.689288312718,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422542573-g8fi1xlr",
+      "kind": "junction",
+      "x": 12226.557863234902,
+      "y": 10412.95501496342,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422587139-ld67t5yi",
+      "kind": "junction",
+      "x": 11938.934903306623,
+      "y": 10700.124007069686,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422609238-fzcdovpb",
+      "kind": "junction",
+      "x": 11774.616898004353,
+      "y": 10699.6,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422643593-qohkyb6q",
+      "kind": "junction",
+      "x": 11566.346906841463,
+      "y": 10913.447275940765,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422764020-owhow0cs",
+      "kind": "junction",
+      "x": 11674.206910079547,
+      "y": 10566.95320519723,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778422786050-swyyjs22",
+      "kind": "junction",
+      "x": 11356.805318985747,
+      "y": 10584.211698700694,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423037605-3qpyb62o",
+      "kind": "junction",
+      "x": 12509.68160257382,
+      "y": 10221.09080128691,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423099802-lesz1sdc",
+      "kind": "junction",
+      "x": 12044.298160257384,
+      "y": 10222.567893161746,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423105108-imo3hsqz",
+      "kind": "junction",
+      "x": 11857.93578632349,
+      "y": 10046.277091874834,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423184732-3uedonrg",
+      "kind": "junction",
+      "x": 11186.710349056057,
+      "y": 10263.120215598366,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423361857-kzbdpezj",
+      "kind": "junction",
+      "x": 11595.572412735986,
+      "y": 10245.985852146787,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423380226-fu7eiee5",
+      "kind": "junction",
+      "x": 11762.246611906217,
+      "y": 10244.4,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423403687-nrwnazbi",
+      "kind": "junction",
+      "x": 11889.822710475028,
+      "y": 10400.342330595311,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423549008-tjmsq3qx",
+      "kind": "hero",
+      "heroName": "Domina",
+      "x": 10975.744814306649,
+      "y": 9980.511737711457,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423687622-twzxc4x2",
+      "kind": "junction",
+      "x": 10801.323637970383,
+      "y": 10861.55927947561,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423689738-bwq2ua0y",
+      "kind": "junction",
+      "x": 10793.217820752614,
+      "y": 10720.111634435541,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423752023-e3rn9du0",
+      "kind": "junction",
+      "x": 10811.188942501527,
+      "y": 10088.930677618757,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423756063-g4c81s1g",
+      "kind": "junction",
+      "x": 10724.597175931236,
+      "y": 9968.357532025551,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423827642-o4yjqh9c",
+      "kind": "junction",
+      "x": 10876.375390126397,
+      "y": 9864.930513337407,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423867660-2z4vkezt",
+      "kind": "junction",
+      "x": 10380.085634136554,
+      "y": 10889.91915448459,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778423869203-lh4hnoys",
+      "kind": "junction",
+      "x": 10408.54498503658,
+      "y": 10071.260534191275,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778424203269-unk6dmnz",
+      "kind": "faction",
+      "factionFilename": "37 Yamagami Blades",
+      "factionDisplay": "Yamagami Blades",
+      "x": 14473.02100470169,
+      "y": 10099.24445839229,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778424216815-871j6vfo",
+      "kind": "hero",
+      "heroName": "Hanzo",
+      "x": 14403.142590267953,
+      "y": 10217.057409732048,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778433289269-2sae5gjg",
+      "kind": "faction",
+      "factionFilename": "03Talon",
+      "factionDisplay": "Talon",
+      "x": 14746.300735604687,
+      "y": 11178.135327389997,
+      "scale": 2,
+      "bgColor": "#57ff97"
+    },
+    {
+      "id": "cn-1778433294516-4401iww0",
+      "kind": "faction",
+      "factionFilename": "23The Chernobog Conspiracy",
+      "factionDisplay": "The Chernobog Conspiracy",
+      "x": 14997.822910260307,
+      "y": 10611.624413913847,
+      "scale": 2,
+      "bgColor": "#fb0404"
+    }
+  ],
+  "edges": [
+    {
+      "fromId": "cn-1778363563995-u8tye7t8",
+      "toId": "cn-1778370431962-z5cylcje"
+    },
+    {
+      "fromId": "cn-1778370431962-z5cylcje",
+      "toId": "cn-1778370445706-imlb39c4"
+    },
+    {
+      "fromId": "cn-1778370445706-imlb39c4",
+      "toId": "cn-1778420456571-pq7tw0i4"
+    },
+    {
+      "fromId": "cn-1778420456571-pq7tw0i4",
+      "toId": "cn-1778420484713-3f1nnj9h"
+    },
+    {
+      "fromId": "cn-1778420484713-3f1nnj9h",
+      "toId": "cn-1778414422271-0u0ep2cy"
+    },
+    {
+      "fromId": "cn-1778363563995-u8tye7t8",
+      "toId": "cn-1778420632460-u9zvr6h7"
+    },
+    {
+      "fromId": "cn-1778420632460-u9zvr6h7",
+      "toId": "cn-1778370465639-iuxsmyjz"
+    },
+    {
+      "fromId": "cn-1778370465639-iuxsmyjz",
+      "toId": "cn-1778414422271-0u0ep2cy"
+    },
+    {
+      "fromId": "cn-1778370455249-g3zjrr87",
+      "toId": "cn-1778414436383-rkpglmnf"
+    },
+    {
+      "fromId": "cn-1778370471265-053kft81",
+      "toId": "cn-1778414447510-4ykmz3vn"
+    },
+    {
+      "fromId": "cn-1778414436383-rkpglmnf",
+      "toId": "cn-1778420767157-4leqsqnw"
+    },
+    {
+      "fromId": "cn-1778420767157-4leqsqnw",
+      "toId": "cn-1778420841632-srsjkxv9"
+    },
+    {
+      "fromId": "cn-1778420841632-srsjkxv9",
+      "toId": "cn-1778366507782-x23y0pkt"
+    },
+    {
+      "fromId": "cn-1778366507782-x23y0pkt",
+      "toId": "cn-1778373005454-wfy5ptlh"
+    },
+    {
+      "fromId": "cn-1778420191022-ns418sab",
+      "toId": "cn-1778370483095-f57ikm0v"
+    },
+    {
+      "fromId": "cn-1778370483095-f57ikm0v",
+      "toId": "cn-1778370493641-7qyc28v9"
+    },
+    {
+      "fromId": "cn-1778421010280-9uxuxras",
+      "toId": "cn-1778420991307-qc5z9pdw"
+    },
+    {
+      "fromId": "cn-1778421095280-ashlvl6g",
+      "toId": "cn-1778421010280-9uxuxras"
+    },
+    {
+      "fromId": "cn-1778420191022-ns418sab",
+      "toId": "cn-1778370501228-5xt35bdg"
+    },
+    {
+      "fromId": "cn-1778370501228-5xt35bdg",
+      "toId": "cn-1778370506266-swmnytza"
+    },
+    {
+      "fromId": "cn-1778420991307-qc5z9pdw",
+      "toId": "cn-1778421353766-4uicxbfy"
+    },
+    {
+      "fromId": "cn-1778421353766-4uicxbfy",
+      "toId": "cn-1778370483095-f57ikm0v"
+    },
+    {
+      "fromId": "cn-1778420191022-ns418sab",
+      "toId": "cn-1778370547595-83bd4svf"
+    },
+    {
+      "fromId": "cn-1778370547595-83bd4svf",
+      "toId": "cn-1778370557434-7fw8q8rn"
+    },
+    {
+      "fromId": "cn-1778370547595-83bd4svf",
+      "toId": "cn-1778370552173-togl4nt8"
+    },
+    {
+      "fromId": "cn-1778370557434-7fw8q8rn",
+      "toId": "cn-1778370552173-togl4nt8"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778363563995-u8tye7t8"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778421810487-ore7xk95"
+    },
+    {
+      "fromId": "cn-1778421810487-ore7xk95",
+      "toId": "cn-1778366771968-xznv2g26"
+    },
+    {
+      "fromId": "cn-1778370547595-83bd4svf",
+      "toId": "cn-1778370563344-ljzu2xi1"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778421896697-4oypvu58"
+    },
+    {
+      "fromId": "cn-1778421896697-4oypvu58",
+      "toId": "cn-1778370563344-ljzu2xi1"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778414223771-oguea44i"
+    },
+    {
+      "fromId": "cn-1778363563995-u8tye7t8",
+      "toId": "cn-1778422006346-xvuy8kkt"
+    },
+    {
+      "fromId": "cn-1778422006346-xvuy8kkt",
+      "toId": "cn-1778421993468-rljnxnuk"
+    },
+    {
+      "fromId": "cn-1778421993468-rljnxnuk",
+      "toId": "cn-1778370415461-judvlvwf"
+    },
+    {
+      "fromId": "cn-1778364208042-usk7q3v4",
+      "toId": "cn-1778372850367-rn3gblhx"
+    },
+    {
+      "fromId": "cn-1778372850367-rn3gblhx",
+      "toId": "cn-1778372857689-hfqvi20f"
+    },
+    {
+      "fromId": "cn-1778372857689-hfqvi20f",
+      "toId": "cn-1778422209168-8d81w5wf"
+    },
+    {
+      "fromId": "cn-1778422209168-8d81w5wf",
+      "toId": "cn-1778370415461-judvlvwf"
+    },
+    {
+      "fromId": "cn-1778364208042-usk7q3v4",
+      "toId": "cn-1778370575696-tsjv9m2f"
+    },
+    {
+      "fromId": "cn-1778364208042-usk7q3v4",
+      "toId": "cn-1778414662965-hn7dfozk"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778420191022-ns418sab"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778422542573-g8fi1xlr"
+    },
+    {
+      "fromId": "cn-1778422542573-g8fi1xlr",
+      "toId": "cn-1778422587139-ld67t5yi"
+    },
+    {
+      "fromId": "cn-1778422587139-ld67t5yi",
+      "toId": "cn-1778422609238-fzcdovpb"
+    },
+    {
+      "fromId": "cn-1778422609238-fzcdovpb",
+      "toId": "cn-1778422643593-qohkyb6q"
+    },
+    {
+      "fromId": "cn-1778422643593-qohkyb6q",
+      "toId": "cn-1778364208042-usk7q3v4"
+    },
+    {
+      "fromId": "cn-1778422609238-fzcdovpb",
+      "toId": "cn-1778422764020-owhow0cs"
+    },
+    {
+      "fromId": "cn-1778422764020-owhow0cs",
+      "toId": "cn-1778422786050-swyyjs22"
+    },
+    {
+      "fromId": "cn-1778422786050-swyyjs22",
+      "toId": "cn-1778365037633-er2v9741"
+    },
+    {
+      "fromId": "cn-1778362818785-ohjng3lq",
+      "toId": "cn-1778423037605-3qpyb62o"
+    },
+    {
+      "fromId": "cn-1778423105108-imo3hsqz",
+      "toId": "cn-1778365906963-nazc8uq2"
+    },
+    {
+      "fromId": "cn-1778423099802-lesz1sdc",
+      "toId": "cn-1778423105108-imo3hsqz"
+    },
+    {
+      "fromId": "cn-1778423037605-3qpyb62o",
+      "toId": "cn-1778423099802-lesz1sdc"
+    },
+    {
+      "fromId": "cn-1778365037633-er2v9741",
+      "toId": "cn-1778423184732-3uedonrg"
+    },
+    {
+      "fromId": "cn-1778423184732-3uedonrg",
+      "toId": "cn-1778365906963-nazc8uq2"
+    },
+    {
+      "fromId": "cn-1778365037633-er2v9741",
+      "toId": "cn-1778370575696-tsjv9m2f"
+    },
+    {
+      "fromId": "cn-1778365037633-er2v9741",
+      "toId": "cn-1778370582517-et0fh3bk"
+    },
+    {
+      "fromId": "cn-1778370582517-et0fh3bk",
+      "toId": "cn-1778370589795-5ba2d0e6"
+    },
+    {
+      "fromId": "cn-1778370589795-5ba2d0e6",
+      "toId": "cn-1778370575696-tsjv9m2f"
+    },
+    {
+      "fromId": "cn-1778365906963-nazc8uq2",
+      "toId": "cn-1778370602538-d92rrzds"
+    },
+    {
+      "fromId": "cn-1778370602538-d92rrzds",
+      "toId": "cn-1778370597899-75s2tbmm"
+    },
+    {
+      "fromId": "cn-1778365906963-nazc8uq2",
+      "toId": "cn-1778423361857-kzbdpezj"
+    },
+    {
+      "fromId": "cn-1778423361857-kzbdpezj",
+      "toId": "cn-1778423380226-fu7eiee5"
+    },
+    {
+      "fromId": "cn-1778423380226-fu7eiee5",
+      "toId": "cn-1778423403687-nrwnazbi"
+    },
+    {
+      "fromId": "cn-1778423403687-nrwnazbi",
+      "toId": "cn-1778370622863-co4cx0ue"
+    },
+    {
+      "fromId": "cn-1778365906963-nazc8uq2",
+      "toId": "cn-1778423549008-tjmsq3qx"
+    },
+    {
+      "fromId": "cn-1778423687622-twzxc4x2",
+      "toId": "cn-1778414970914-38fy61qd"
+    },
+    {
+      "fromId": "cn-1778370582517-et0fh3bk",
+      "toId": "cn-1778423689738-bwq2ua0y"
+    },
+    {
+      "fromId": "cn-1778423689738-bwq2ua0y",
+      "toId": "cn-1778423687622-twzxc4x2"
+    },
+    {
+      "fromId": "cn-1778423752023-e3rn9du0",
+      "toId": "cn-1778423549008-tjmsq3qx"
+    },
+    {
+      "fromId": "cn-1778414840823-pspsdb2e",
+      "toId": "cn-1778423756063-g4c81s1g"
+    },
+    {
+      "fromId": "cn-1778423756063-g4c81s1g",
+      "toId": "cn-1778423752023-e3rn9du0"
+    },
+    {
+      "fromId": "cn-1778423549008-tjmsq3qx",
+      "toId": "cn-1778423827642-o4yjqh9c"
+    },
+    {
+      "fromId": "cn-1778423827642-o4yjqh9c",
+      "toId": "cn-1778414869029-zxgqrvvp"
+    },
+    {
+      "fromId": "cn-1778423867660-2z4vkezt",
+      "toId": "cn-1778414970914-38fy61qd"
+    },
+    {
+      "fromId": "cn-1778414840823-pspsdb2e",
+      "toId": "cn-1778423869203-lh4hnoys"
+    },
+    {
+      "fromId": "cn-1778423869203-lh4hnoys",
+      "toId": "cn-1778423867660-2z4vkezt"
+    },
+    {
+      "fromId": "cn-1778433289269-2sae5gjg",
+      "toId": "cn-1778433294516-4401iww0"
+    }
+  ]
 }
