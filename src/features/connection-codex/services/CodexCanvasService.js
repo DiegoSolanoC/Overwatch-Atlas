@@ -1633,6 +1633,16 @@ function applyNodeScale(el, scale, skipRedraw) {
             frame.style.height = `${px}px`;
         }
     }
+    /*
+     * Mirror scale into codexAllNodes — serializeCodexLayoutSnapshot reads node.scale
+     * from this model, NOT the DOM. Without this write, Save / Export ship the original
+     * placement scale and resizes don't survive a round-trip.
+     */
+    const nodeId = el.dataset.codexNodeId;
+    if (nodeId) {
+        const nodeObj = codexAllNodes.find((n) => n && n.id === nodeId);
+        if (nodeObj) nodeObj.scale = s;
+    }
     if (!skipRedraw) redrawCodexEdges();
 }
 
@@ -2518,9 +2528,14 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
         } catch (_) {
             /* ignore */
         }
-        void syncCodexEdgesFromBioArchiveConnections();
+        /*
+         * Verbatim import: do NOT run syncCodexEdgesFromBioArchiveConnections here.
+         * The bio reconcile runs automatically after a successful Save Codex (saveCodexLayout
+         * line ~2195), so the imported state lands first and reconciliation is applied
+         * against the new, persisted layout.
+         */
         updateCodexToolbar();
-        updateAppStatus('Codex import: board cleared (empty layout).', 'success');
+        updateAppStatus('Codex import: board cleared (empty layout). Save Codex to persist and reconcile with archives.', 'success');
         return;
     }
 
@@ -2549,16 +2564,23 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     }
     if (migratedNow) {
         updateAppStatus(
-            'Codex import: layout was upgraded from an older format — use Save Codex to persist.',
+            'Codex import: layout was upgraded from an older format — use Save Codex to persist (archives reconcile after save).',
             'info'
         );
     } else {
         updateAppStatus(
-            `Codex import: ${nodes.length} nodes, ${codexEdges.length} links. Use Save Codex on the dev server to write the repo file.`,
+            `Codex import: ${nodes.length} nodes, ${codexEdges.length} links (verbatim). Use Save Codex to persist; archive reconciliation runs after save.`,
             'success'
         );
     }
-    void syncCodexEdgesFromBioArchiveConnections();
+    /*
+     * Verbatim import: skip bio-sync here. The reconciler runs automatically after a
+     * successful Save Codex (saveCodexLayout, see post-write hook), so the imported
+     * state — including any direct entity-to-entity cords from another user's export
+     * that aren't in the local archives — survives until the user explicitly saves.
+     * After save, the status line reports any reconcile changes ("removed N orphan
+     * link(s); added M from archives") and the user can Save again to commit them.
+     */
     updateCodexToolbar();
 }
 

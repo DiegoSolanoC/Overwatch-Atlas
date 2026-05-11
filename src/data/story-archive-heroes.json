@@ -38,7 +38,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Adeyemi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -52,7 +69,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Tracer",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator"
     },
@@ -122,7 +156,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Katya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Lynx 17",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser"
     },
@@ -136,24 +187,7 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Sanjay",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -195,7 +229,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart"
     },
@@ -279,7 +330,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "IJC",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -307,7 +367,40 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reinhardt",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist"
     },
@@ -349,7 +442,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Yamagami Blades",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -377,7 +487,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter"
     },
@@ -405,7 +524,32 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mercy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -419,7 +563,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -433,7 +594,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker"
     },
@@ -475,7 +645,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -503,7 +690,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Damage",
       "heroSubRole": "Recon"
     },
@@ -584,7 +780,16 @@
           "reasoning": "Temporary Alliance with Overwatch"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Support",
       "heroSubRole": "Tactician"
     },
@@ -668,7 +873,16 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Genji",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Support",
       "heroSubRole": "Medic"
     },
@@ -696,7 +910,24 @@
           "reasoning": "Place of Birth"
         }
       ],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Reinhardt",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "heroRole": "Support",
       "heroSubRole": "Survivor"
     },

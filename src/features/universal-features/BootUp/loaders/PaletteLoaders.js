@@ -6,7 +6,7 @@
  * that down. Used by the ModeOrchestrator under the `palette` key.
  */
 
-import { setupPaletteToggle, resetPaletteToggleSetup } from '../../Palette/PaletteManager.js';
+import { setupPaletteToggle, resetPaletteToggleSetup } from '../../Palette/PaletteToggleSetup.js';
 import {
     withLoadLifecycle,
     withUnloadLifecycle,
