@@ -16,7 +16,7 @@
  */
 
 import { updateStatus } from '../../../universal-features/runtime/statusFeed.js';
-import { syncEventsWithGlobeCore } from '../../integration/syncEventsWithGlobeCore.js';
+import { syncEventsWithGlobeCore } from '../../../Data-Archive/data-archive-mode/syncEventsWithGlobeCore.js';
 
 /**
  * Initializes EventManager, handling both script tag loading and ES6 module scenarios

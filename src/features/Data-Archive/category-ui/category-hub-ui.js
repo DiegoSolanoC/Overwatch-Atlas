@@ -1,13 +1,17 @@
 /**
- * Data Archive category hub DOM (Story + Heroes / Factions / NPCs / Locations tiles).
- * Orchestrator supplies callbacks so this module stays free of `window` / loader coupling.
+ * Data Archive category selection interface UI.
+ * Builds the DOM for the category hub with tiles for Story, Heroes, Factions, NPCs, and Locations.
+ * Uses centralized category metadata to avoid data duplication.
  */
+
+import { CATEGORY_METADATA, ARCHIVE_CATEGORIES } from '../archive-ordering/category-types.js';
 
 /**
  * @typedef {'story'|'heroes'|'factions'|'npcs'|'locations'} StoryArchiveSource
  */
 
 /**
+ * Build category hub UI with category tiles and navigation.
  * @param {{
  *   onSelectArchive: (archive: StoryArchiveSource) => void,
  *   onCancel: () => void,
@@ -15,7 +19,7 @@
  * }} callbacks
  * @returns {HTMLElement}
  */
-export function buildStoryArchiveCategoryHub(callbacks) {
+export function buildCategoryHubUI(callbacks) {
     const root = document.createElement('div');
     root.id = 'storyArchiveCategoryHub';
     root.className = 'story-archive-category-hub';
@@ -30,45 +34,41 @@ export function buildStoryArchiveCategoryHub(callbacks) {
     const lead = document.createElement('p');
     lead.className = 'story-archive-category-hub-lead';
     lead.textContent =
-        'Browse the story timeline, heroes, factions, NPCs, and locations—each category loads its own data into the same viewer.';
+        'Browse story timeline, heroes, factions, NPCs, and locations—each category loads its own data into the same viewer.';
 
     root.setAttribute('aria-labelledby', 'storyArchiveHubHeading');
 
-    const tiles = [
-        { id: 'story', label: 'Story', src: 'src/assets/images/Archive/Categories/Story.png', archive: 'story', isFeature: true },
-        { id: 'heroes', label: 'Heroes', src: 'src/assets/images/Archive/Categories/Heroes.png', archive: 'heroes' },
-        { id: 'factions', label: 'Factions', src: 'src/assets/images/Archive/Categories/Factions.png', archive: 'factions' },
-        { id: 'npcs', label: 'NPCs', src: 'src/assets/images/Archive/Categories/NPCs.png', archive: 'npcs' },
-        { id: 'locations', label: 'Locations', src: 'src/assets/images/Archive/Categories/Locations.png', archive: 'locations' }
-    ];
-
+    // Create category tiles from centralized metadata
     const featureSlot = document.createElement('div');
     featureSlot.className = 'story-archive-category-hub__feature';
 
     const gridSlot = document.createElement('div');
     gridSlot.className = 'story-archive-category-hub__grid';
 
-    tiles.forEach((t) => {
+    // Process categories using centralized metadata
+    ARCHIVE_CATEGORIES.forEach((categoryKey) => {
+        const metadata = CATEGORY_METADATA[categoryKey];
+        if (!metadata) return;
+
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'story-archive-category-hub__tile';
-        btn.dataset.category = t.id;
+        btn.dataset.category = categoryKey;
         btn.innerHTML = `
-                <span class="story-archive-category-hub__figure" aria-hidden="true">
-                    <img class="story-archive-category-hub__img" src="${t.src}" alt="" width="160" height="160" decoding="async" draggable="false" />
-                </span>
-                <span class="story-archive-category-hub__label">${t.label}</span>
-            `;
-        btn.title = `Open ${t.label} archive`;
+            <span class="story-archive-category-hub__figure" aria-hidden="true">
+                <img class="story-archive-category-hub__img" src="${metadata.icon}" alt="" width="160" height="160" decoding="async" draggable="false" />
+            </span>
+            <span class="story-archive-category-hub__label">${metadata.label}</span>
+        `;
+        btn.title = `Open ${metadata.label} archive`;
         btn.addEventListener('click', () => {
             callbacks.playCategorySfx?.();
-            callbacks.onSelectArchive(t.archive);
+            callbacks.onSelectArchive(categoryKey);
         });
-        if (t.isFeature) {
-            btn.classList.add('story-archive-category-hub__tile--story');
-        }
 
-        if (t.isFeature) {
+        // Story category gets special treatment as feature
+        if (metadata.isFeature) {
+            btn.classList.add('story-archive-category-hub__tile--story');
             featureSlot.appendChild(btn);
         } else {
             gridSlot.appendChild(btn);
@@ -80,6 +80,7 @@ export function buildStoryArchiveCategoryHub(callbacks) {
     root.appendChild(featureSlot);
     root.appendChild(gridSlot);
 
+    // Add dismiss/cancel button
     const dismissRow = document.createElement('div');
     dismissRow.className = 'story-archive-category-hub__dismiss-row';
     const cancelBtn = document.createElement('button');
@@ -94,4 +95,12 @@ export function buildStoryArchiveCategoryHub(callbacks) {
     root.appendChild(dismissRow);
 
     return root;
+}
+
+/**
+ * Legacy export for backward compatibility.
+ * @deprecated Use buildCategoryHubUI instead.
+ */
+export function buildStoryArchiveCategoryHub(callbacks) {
+    return buildCategoryHubUI(callbacks);
 }

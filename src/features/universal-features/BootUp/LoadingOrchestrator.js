@@ -19,7 +19,7 @@
  * file was the monolithic loader; today it does not load anything itself.
  */
 
-import { ModeOrchestrator } from '../runtime/ModeOrchestrator.js';
+import { ModeOrchestrator } from '../runtime/ModeOrchestrator_new.js';
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/platform/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
