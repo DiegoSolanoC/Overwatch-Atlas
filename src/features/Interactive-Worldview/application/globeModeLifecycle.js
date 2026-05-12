@@ -21,7 +21,7 @@
 
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../universal-features/runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { resetGlobeComponentsProgress } from '../../universal-features/runtime/globeLoadProgress.js';
+import { resetLoadProgress } from '../../universal-features/runtime/loadProgressTracker.js';
 import { setCurrentMode, clearCurrentMode } from '../../universal-features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 import { hideMenuContainer } from '../../universal-features/MainMenu/MenuContainer.js';
 import { killOtherModes } from '../../universal-features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
@@ -71,7 +71,7 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
         runBtn.disabled = true;
     }
 
-    resetGlobeComponentsProgress();
+    resetLoadProgress();
     hideMenuContainer();
 
     const assetsCtx = { loadedComponents, loaders };

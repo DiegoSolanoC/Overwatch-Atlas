@@ -23,6 +23,7 @@
 
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from './loadingOverlayState.js';
 import { updateStatus } from './statusFeed.js';
+import { resetLoadProgress } from './loadProgressTracker.js';
 import { setCurrentMode, clearCurrentMode } from '../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 import { broadcastModeChange } from '../ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 import { hideMenuContainer } from '../MainMenu/MenuContainer.js';
@@ -80,6 +81,11 @@ export async function enterMode(orchCtx, cfg, entryFn) {
         setRunOperation(true);
         showLoadingOverlay();
     }
+    /* Reset the shared progress bar so each mode entry starts at 0%, regardless
+     * of which mode (or stage of which mode) was active last. The body's own
+     * `createLoadProgressTracker(...)` will also reset, but doing it here means
+     * the bar is at 0 from the instant the overlay appears. */
+    resetLoadProgress();
     updateStatus(startMessage, 'info');
 
     try {

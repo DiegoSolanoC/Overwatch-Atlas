@@ -1,10 +1,15 @@
 /**
  * loadGlobeAssets — the Worldview heavy-asset loader.
  *
- * Walks the staged sequence Globe Base → Transport → Controls, applies the
- * 3D-vs-2D map preference to the scene model, mounts event markers when the
- * Event System is active, and dispatches the `appmodechange` event so the
- * rest of the app reacts.
+ * Walks the staged sequence Scene → Transport → Controls → Event markers,
+ * applies the 3D-vs-2D map preference to the scene model, mounts event
+ * markers when the Event System is active, and dispatches the
+ * `appmodechange` event so the rest of the app reacts.
+ *
+ * Progress is driven through the shared
+ * `createLoadProgressTracker` from `universal-features/runtime/loadProgressTracker.js`
+ * so the bar and the status text stay in lock-step, the same way Codex
+ * and Data Archive do it.
  *
  * Called by `ModeOrchestrator.runGlobeComponents` (via `globeModeLifecycle`) in two paths:
  *   - **auto-load** (e.g. header switch into Worldview): the orchestrator
@@ -26,7 +31,7 @@ import {
     setRunOperation
 } from '../../universal-features/runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { updateGlobeComponentsProgress } from '../../universal-features/runtime/globeLoadProgress.js';
+import { createLoadProgressTracker } from '../../universal-features/runtime/loadProgressTracker.js';
 import { broadcastModeChange } from '../../universal-features/ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 import {
     teardownGlobeMapChooserHub,
@@ -35,6 +40,18 @@ import {
 import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
 
 const STAGE_SETTLE_MS = 300;
+
+/**
+ * Declared up-front so the tracker knows the full denominator. The Event
+ * markers stage is always declared even when there are no markers to
+ * mount, so the bar reaches 100% by skipping it cleanly.
+ */
+const GLOBE_LOAD_STAGES = Object.freeze([
+    { id: 'scene', label: 'Globe scene (WebGL + earth mesh)' },
+    { id: 'transport', label: 'Camera transport (orbit + zoom)' },
+    { id: 'controls', label: 'View controls + map / globe toggle' },
+    { id: 'eventMarkers', label: 'Event markers' }
+]);
 
 /**
  * @param {boolean} startOnMap - `true` opens the timeline as 2D map, `false` as 3D globe.
@@ -59,26 +76,31 @@ export async function loadGlobeAssets(startOnMap, ctx, opts = {}) {
         showLoadingOverlay();
     }
 
+    const progress = createLoadProgressTracker({
+        modeLabel: 'Worldview',
+        stages: GLOBE_LOAD_STAGES
+    });
+    progress.start('🚀 Starting Worldview load…');
+
     const globeContainer = document.getElementById('globe-container');
     if (globeContainer) {
         globeContainer.style.width = '100%';
         globeContainer.style.height = '100%';
         globeContainer.style.display = 'none';
-        updateStatus('→ Preparing globe container...', 'info');
+        updateStatus('→ Preparing globe container…', 'info');
     }
 
-    updateStatus('🚀 Starting Globe Components auto-load...', 'info');
-
     try {
-        await loadGlobeBaseStage(loadedComponents, loaders, globeContainer);
-        await loadTransportStage(loadedComponents, loaders);
-        await loadControlsStage(loadedComponents, loaders, startOnMap);
-        await mountEventMarkersIfNeeded();
+        await runSceneStage(progress, loadedComponents, loaders, globeContainer);
+        await runTransportStage(progress, loadedComponents, loaders);
+        await runControlsStage(progress, loadedComponents, loaders, startOnMap);
+        await runEventMarkersStage(progress);
 
+        progress.finish('✓ Worldview ready');
         broadcastModeChange('globe');
     } catch (error) {
         console.error('Error in Globe Components auto-load:', error);
-        updateStatus(`✗ Error in Globe Components auto-load: ${error.message}`, 'error');
+        progress.fail(error);
     } finally {
         setRunOperation(false);
         hideLoadingOverlay();
@@ -88,7 +110,7 @@ export async function loadGlobeAssets(startOnMap, ctx, opts = {}) {
     }
 }
 
-async function loadGlobeBaseStage(loadedComponents, loaders, globeContainer) {
+async function runSceneStage(progress, loadedComponents, loaders, globeContainer) {
     const showContainer = () => {
         if (!globeContainer) return;
         globeContainer.style.opacity = '1';
@@ -97,77 +119,112 @@ async function loadGlobeBaseStage(loadedComponents, loaders, globeContainer) {
         globeContainer.classList.add('loaded');
     };
 
-    if (!loadedComponents.globeBase) {
-        updateStatus('→ Loading Globe Base...', 'info');
-        await loaders.globeBase();
+    if (loadedComponents.globeBase) {
+        progress.skipStage('scene', '→ Worldview — globe scene already loaded, skipping…');
         showContainer();
-        updateGlobeComponentsProgress(1);
-        await new Promise(r => setTimeout(r, STAGE_SETTLE_MS));
+        await sleep(STAGE_SETTLE_MS);
         return;
     }
-    updateStatus('→ Globe Base already loaded, skipping...', 'info');
-    showContainer();
-    updateGlobeComponentsProgress(1);
+
+    await progress.runStage(
+        'scene',
+        async () => {
+            await loaders.globeBase();
+            showContainer();
+        },
+        { beginMessage: '→ Worldview — loading globe scene (WebGL + earth mesh)…' }
+    );
+    await sleep(STAGE_SETTLE_MS);
 }
 
-async function loadTransportStage(loadedComponents, loaders) {
-    if (!loadedComponents.transport) {
-        updateStatus('→ Loading Transport...', 'info');
-        await loaders.transport();
-        updateGlobeComponentsProgress(2);
-        await new Promise(r => setTimeout(r, STAGE_SETTLE_MS));
+async function runTransportStage(progress, loadedComponents, loaders) {
+    if (loadedComponents.transport) {
+        progress.skipStage('transport', '→ Worldview — camera transport already loaded, skipping…');
+        await sleep(STAGE_SETTLE_MS);
         return;
     }
-    updateStatus('→ Transport already loaded, skipping...', 'info');
-    updateGlobeComponentsProgress(2);
+    await progress.runStage(
+        'transport',
+        async () => {
+            await loaders.transport();
+        },
+        { beginMessage: '→ Worldview — loading camera transport (orbit + zoom)…' }
+    );
+    await sleep(STAGE_SETTLE_MS);
 }
 
-async function loadControlsStage(loadedComponents, loaders, startOnMap) {
-    updateStatus('→ Loading Controls...', 'info');
-    if (window.globeController?.sceneModel) {
-        if (window.globeController.sceneModel.setMapViewEnabled) {
-            window.globeController.sceneModel.setMapViewEnabled(startOnMap);
-        } else {
-            window.globeController.sceneModel.isMapView = startOnMap;
-        }
-    }
-    if (window.globeController && typeof window.globeController.setMapViewEnabled === 'function') {
-        window.globeController.setMapViewEnabled(startOnMap);
-    }
-    await loaders.controls();
-    if (window.globeController?.uiView?.setupMapViewToggle) {
-        window.globeController.uiView.setupMapViewToggle();
-    }
-    document.body.classList.add('rotate-subbar-open');
-    const rotateSubBar = document.getElementById('headerRotateSubBar');
-    if (rotateSubBar) {
-        rotateSubBar.style.display = 'block';
-        rotateSubBar.style.top = '0';
-        rotateSubBar.style.left = '0';
-    }
-    updateGlobeComponentsProgress(3);
-    await new Promise(r => setTimeout(r, STAGE_SETTLE_MS));
+async function runControlsStage(progress, loadedComponents, loaders, startOnMap) {
+    await progress.runStage(
+        'controls',
+        async () => {
+            if (window.globeController?.sceneModel) {
+                if (window.globeController.sceneModel.setMapViewEnabled) {
+                    window.globeController.sceneModel.setMapViewEnabled(startOnMap);
+                } else {
+                    window.globeController.sceneModel.isMapView = startOnMap;
+                }
+            }
+            if (window.globeController && typeof window.globeController.setMapViewEnabled === 'function') {
+                window.globeController.setMapViewEnabled(startOnMap);
+            }
+            await loaders.controls();
+            if (window.globeController?.uiView?.setupMapViewToggle) {
+                window.globeController.uiView.setupMapViewToggle();
+            }
+            document.body.classList.add('rotate-subbar-open');
+            const rotateSubBar = document.getElementById('headerRotateSubBar');
+            if (rotateSubBar) {
+                rotateSubBar.style.display = 'block';
+                rotateSubBar.style.top = '0';
+                rotateSubBar.style.left = '0';
+            }
+        },
+        { beginMessage: '→ Worldview — loading view controls + map / globe toggle…' }
+    );
+    await sleep(STAGE_SETTLE_MS);
 }
 
-async function mountEventMarkersIfNeeded() {
+async function runEventMarkersStage(progress) {
     const eventSystemActive = isEventSystemLoadOutActive();
+    const needsMarkers =
+        eventSystemActive
+        && !!window.globeController?.sceneModel
+        && !window.globeEventMarkerManager;
+
     console.log(
         `[loadGlobeAssets] Checking marker creation: eventSystemActive=${eventSystemActive}, globeController=${!!window.globeController?.sceneModel}, markerManager=${!!window.globeEventMarkerManager}`
     );
-    if (!(eventSystemActive && window.globeController?.sceneModel && !window.globeEventMarkerManager)) {
-        console.log('[loadGlobeAssets] Skipping marker creation');
+
+    if (!needsMarkers) {
+        progress.skipStage(
+            'eventMarkers',
+            eventSystemActive
+                ? '→ Worldview — event markers already mounted, skipping…'
+                : '→ Worldview — Event System inactive, skipping marker stage'
+        );
         return;
     }
 
     console.log('[loadGlobeAssets] Creating EventMarkerManager for Globe...');
-    updateStatus('→ Event System detected, creating event markers...', 'info');
-    const { EventMarkerManager } = await import('../../system-interface/markers/EventMarkerManager.js');
-    window.globeEventMarkerManager = new EventMarkerManager(
-        window.globeController.sceneModel,
-        window.globeController.dataModel
+    await progress.runStage(
+        'eventMarkers',
+        async () => {
+            const { EventMarkerManager } = await import('../../system-interface/markers/EventMarkerManager.js');
+            window.globeEventMarkerManager = new EventMarkerManager(
+                window.globeController.sceneModel,
+                window.globeController.dataModel
+            );
+            console.log('[loadGlobeAssets] EventMarkerManager created, adding markers...');
+            await window.globeEventMarkerManager.addEventMarkers(true);
+            console.log('[loadGlobeAssets] Markers added successfully');
+        },
+        {
+            beginMessage: '→ Worldview — mounting event markers…',
+            completeMessage: '✓ Event markers mounted'
+        }
     );
-    console.log('[loadGlobeAssets] EventMarkerManager created, adding markers...');
-    await window.globeEventMarkerManager.addEventMarkers(true);
-    console.log('[loadGlobeAssets] Markers added successfully');
-    updateStatus('✓ Event markers added to Globe', 'success');
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }

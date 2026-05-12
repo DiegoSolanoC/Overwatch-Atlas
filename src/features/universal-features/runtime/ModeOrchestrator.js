@@ -1,5 +1,5 @@
 /**
- * ModeOrchestrator — runtime owner of the app's mode lifecycle.
+ * ModeOrchestrator  runtime owner of the app's mode lifecycle.
  *
  * Holds the loaded-component flag bag and the load/unload pairs for every
  * component, and exposes `runXComponents` / `killXComponents` for each mode
@@ -21,6 +21,7 @@
  */
 
 import { updateStatus } from './statusFeed.js';
+import { createLoadProgressTracker } from './loadProgressTracker.js';
 import { setCurrentMode } from '../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 import { restoreMainMenu as restoreMainMenuImpl } from '../MainMenu/restoreMainMenu.js';
 import { runMenuComponents as runMenuComponentsImpl } from '../MainMenu/runMenuComponents.js';
@@ -35,6 +36,16 @@ import {
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js';
 import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/application/globeModeLifecycle.js';
+
+/**
+ * Stages for the Data Archive entry. Declared up-front so the bar can
+ * fill from 0 ? 100% by stage label, the same as Worldview and Codex.
+ */
+const DATA_ARCHIVE_STAGES = Object.freeze([
+    { id: 'shellPrep', label: 'Preparing Data Archive shell' },
+    { id: 'categoryHub', label: 'Building category hub' },
+    { id: 'settle', label: 'Finalizing layout' }
+]);
 
 /**
  * ModeOrchestrator class
@@ -112,15 +123,16 @@ export class ModeOrchestrator {
         await enterMode(this._modeContext(), {
             mode: 'glossary',
             runBtnId: 'runGlossaryBtn',
-            startMessage: '?? Starting Glossary Components auto-load...',
-            successMessage: '? Glossary Components auto-load complete!',
-            errorPrefix: 'Error in Glossary Components auto-load',
+            // Status glyphs are kept ASCII here because this file's encoding strips emojis on save.
+            startMessage: '>> Starting Codex...',
+            successMessage: 'OK - Codex ready',
+            errorPrefix: 'Error in Codex auto-load',
             isAutoLoad
         }, async () => {
             if (window.CodexModeService && typeof window.CodexModeService.enterCodexMode === 'function') {
                 await window.CodexModeService.enterCodexMode();
             } else {
-                updateStatus('? CodexModeService not available', 'error');
+                updateStatus('ERR - CodexModeService not available', 'error');
             }
         });
     }
@@ -135,16 +147,47 @@ export class ModeOrchestrator {
         await enterMode(this._modeContext(), {
             mode: 'biography',
             runBtnId: 'runBiographyBtn',
-            startMessage: '?? Starting Data Archive...',
-            successMessage: '? Data Archive loaded!',
+            startMessage: '>> Starting Data Archive...',
+            successMessage: 'OK - Data Archive loaded!',
             errorPrefix: 'Error in Data Archive load',
             isAutoLoad
         }, async () => {
-            await createDataArchivePanel({
-                onCancel: () => this.killBiographyComponents(true)
+            const progress = createLoadProgressTracker({
+                modeLabel: 'Data Archive',
+                stages: DATA_ARCHIVE_STAGES
             });
-            // Minimum loading time for visual consistency (800ms).
-            await new Promise(r => setTimeout(r, 800));
+            progress.start('>> Starting Data Archive...');
+
+            progress.skipStage('shellPrep', '-> Data Archive: preparing shell...');
+
+            await progress.runStage(
+                'categoryHub',
+                async () => {
+                    await createDataArchivePanel({
+                        onCancel: () => this.killBiographyComponents(true)
+                    });
+                },
+                { beginMessage: '-> Data Archive: building category hub...' }
+            );
+
+            await progress.runStage(
+                'settle',
+                async ({ setProgress }) => {
+                    /* Minimum 800ms settle gives the category hub a frame to
+                     * paint before the overlay drops; stream sub-progress so
+                     * the bar moves smoothly across the wait. */
+                    const totalMs = 800;
+                    const stepMs = 80;
+                    const steps = Math.max(1, Math.round(totalMs / stepMs));
+                    for (let i = 1; i <= steps; i += 1) {
+                        await new Promise((r) => setTimeout(r, stepMs));
+                        setProgress(i / steps);
+                    }
+                },
+                { beginMessage: '-> Data Archive: finalizing layout...' }
+            );
+
+            progress.finish('OK - Data Archive ready');
         });
     }
 
@@ -171,7 +214,7 @@ export class ModeOrchestrator {
             await this.unloaders.menu();
         }
         
-        updateStatus('? All Menu Components killed!', 'success');
+        updateStatus('OK - All Menu Components killed!', 'success');
     }
 
     /**
@@ -230,7 +273,7 @@ export class ModeOrchestrator {
         await exitMode(this._modeContext(), {
             mode: 'glossary',
             startMessage: 'Killing all Glossary Components...',
-            successMessage: '? All Glossary Components killed!'
+            successMessage: 'OK - All Glossary Components killed!'
         }, async () => {
             if (window.unloadGlobeBase && typeof window.unloadGlobeBase === 'function') {
                 try {
@@ -257,7 +300,7 @@ export class ModeOrchestrator {
         await exitMode(this._modeContext(), {
             mode: 'biography',
             startMessage: 'Exiting Data Archive...',
-            successMessage: '? Data Archive exited!',
+            successMessage: 'OK - Data Archive exited!',
             restoreMenu
         }, async () => {
             await exitDataArchive();
