@@ -913,6 +913,16 @@ function applyWorldCenterToNodeTopLeft(el, cx, cy) {
     const { x, y } = clampCodexNodeTopLeftToWorld(left, top, scale, kind);
     el.style.left = `${x}px`;
     el.style.top = `${y}px`;
+
+    /* Octilinear snap updates DOM after finishDrag wrote codexAllNodes; export uses the model. */
+    const nodeId = el.dataset.codexNodeId;
+    if (nodeId && Array.isArray(codexAllNodes)) {
+        const nodeObj = codexAllNodes.find((n) => n && n.id === nodeId);
+        if (nodeObj) {
+            nodeObj.x = x;
+            nodeObj.y = y;
+        }
+    }
 }
 
 function codexNodeElById(nodeId) {

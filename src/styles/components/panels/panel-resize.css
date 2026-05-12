@@ -1,4 +1,4 @@
-/* Desktop-only panel resize handles (width set via --user-panel-* on :root from PanelResizeService) */
+/* Desktop-only panel resize handles (width set via --user-panel-* on :root from panel-resize/installPanelResize.js) */
 /* Loaded after other panel CSS so overflow + handle positioning win. */
 
 /* Desktop: let handles protrude past the panel edge (requires overflow: visible on the panel). */

@@ -12,7 +12,7 @@ const musicFolder = path.join(ROOT, 'src', 'assets', 'audio', 'music');
 const dataDir = path.join(ROOT, 'src', 'data');
 
 /**
- * Story-archive order for filters (keep aligned with src/features/system-interface/services/helpers/FilterArchiveOrderHelpers.js).
+ * Story-archive order for filters (keep aligned with src/features/system-interface/filters/manifest/storyArchiveFilterOrder.js).
  */
 function readStoryArchiveNames(jsonPath) {
     try {

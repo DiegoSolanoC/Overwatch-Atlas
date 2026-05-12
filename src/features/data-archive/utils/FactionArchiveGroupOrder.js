@@ -1,7 +1,7 @@
 /**
  * Factions archive: canonical type order for Event Manager list, drag/drop, and stable resort.
  * Unknown / future types sort after known buckets and before empty ("None").
- * Classic script: exposes `window.FactionArchiveGroupOrderHelpers` for EventRenderService / EventDragDropService.
+ * Classic script: exposes `window.FactionArchiveGroupOrderHelpers` for EventRenderService / EventListReorderDragDrop.
  */
 
 (function attachFactionArchiveGroupOrder(global) {

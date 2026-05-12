@@ -1,5 +1,5 @@
-﻿/**
- * ModeOrchestrator — runtime owner of the app's mode lifecycle.
+/**
+ * ModeOrchestrator � runtime owner of the app's mode lifecycle.
  *
  * Holds the loaded-component flag bag and the load/unload pairs for every
  * component, and exposes `runXComponents` / `killXComponents` for each mode
@@ -7,11 +7,11 @@
  * / `restoreMainMenu` for the menu shell. The actual mode bodies live in
  * their owning features:
  *
- *   - Worldview run/kill → `Interactive-Worldview/application/globeModeLifecycle.js`
- *   - Worldview asset load → `Interactive-Worldview/application/loadGlobeAssets.js`
- *   - Data Archive shell  → `data-archive/integration/DataArchiveShell.js`
- *   - Linear-mode ceremony → `runtime/modeLifecycleCeremony.js`
- *   - Universal Features  → `runtime/universalFeaturesLifecycle.js`
+ *   - Worldview run/kill ? `Interactive-Worldview/application/globeModeLifecycle.js`
+ *   - Worldview asset load ? `Interactive-Worldview/application/loadGlobeAssets.js`
+ *   - Data Archive shell  ? `data-archive/integration/DataArchiveShell.js`
+ *   - Linear-mode ceremony ? `runtime/modeLifecycleCeremony.js`
+ *   - Universal Features  ? `runtime/universalFeaturesLifecycle.js`
  *
  * This class is a thin coordinator: it owns the shared state and forwards
  * to those modules. Originally lived in `component-loader.js` (now
@@ -21,7 +21,7 @@
  */
 
 import { updateStatus } from './statusFeed.js';
-import { setCurrentMode } from '../ComponentSetUp/CurrentModeStatus.js';
+import { setCurrentMode } from '../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 import { restoreMainMenu as restoreMainMenuImpl } from '../MainMenu/restoreMainMenu.js';
 import { runMenuComponents as runMenuComponentsImpl } from '../MainMenu/runMenuComponents.js';
 import {
@@ -76,12 +76,16 @@ export class ModeOrchestrator {
 
     /**
      * Run Menu Components
+     * @param {object} [options]
+     * @param {boolean} [options.keepOverlay=false] - Forwarded to `runMenuComponentsImpl`
+     *   so the boot path can keep the loading overlay up across the
+     *   Universal ? Menu ? Event System chain.
      */
-    async runMenuComponents() {
+    async runMenuComponents(options = {}) {
         await runMenuComponentsImpl({
             loadedComponents: this.loadedComponents,
             loadMenu: this.loaders.menu
-        });
+        }, options);
     }
 
     /**
@@ -108,15 +112,15 @@ export class ModeOrchestrator {
         await enterMode(this._modeContext(), {
             mode: 'glossary',
             runBtnId: 'runGlossaryBtn',
-            startMessage: '🚀 Starting Glossary Components auto-load...',
-            successMessage: '✓ Glossary Components auto-load complete!',
+            startMessage: '?? Starting Glossary Components auto-load...',
+            successMessage: '? Glossary Components auto-load complete!',
             errorPrefix: 'Error in Glossary Components auto-load',
             isAutoLoad
         }, async () => {
             if (window.CodexModeService && typeof window.CodexModeService.enterCodexMode === 'function') {
                 await window.CodexModeService.enterCodexMode();
             } else {
-                updateStatus('→ CodexModeService not available', 'error');
+                updateStatus('? CodexModeService not available', 'error');
             }
         });
     }
@@ -131,8 +135,8 @@ export class ModeOrchestrator {
         await enterMode(this._modeContext(), {
             mode: 'biography',
             runBtnId: 'runBiographyBtn',
-            startMessage: '🚀 Starting Data Archive...',
-            successMessage: '✓ Data Archive loaded!',
+            startMessage: '?? Starting Data Archive...',
+            successMessage: '? Data Archive loaded!',
             errorPrefix: 'Error in Data Archive load',
             isAutoLoad
         }, async () => {
@@ -167,7 +171,7 @@ export class ModeOrchestrator {
             await this.unloaders.menu();
         }
         
-        updateStatus('✓ All Menu Components killed!', 'success');
+        updateStatus('? All Menu Components killed!', 'success');
     }
 
     /**
@@ -226,7 +230,7 @@ export class ModeOrchestrator {
         await exitMode(this._modeContext(), {
             mode: 'glossary',
             startMessage: 'Killing all Glossary Components...',
-            successMessage: '✓ All Glossary Components killed!'
+            successMessage: '? All Glossary Components killed!'
         }, async () => {
             if (window.unloadGlobeBase && typeof window.unloadGlobeBase === 'function') {
                 try {
@@ -253,7 +257,7 @@ export class ModeOrchestrator {
         await exitMode(this._modeContext(), {
             mode: 'biography',
             startMessage: 'Exiting Data Archive...',
-            successMessage: '✓ Data Archive exited!',
+            successMessage: '? Data Archive exited!',
             restoreMenu
         }, async () => {
             await exitDataArchive();

@@ -24,7 +24,7 @@ On load, the app typically shows:
 - **Universal features**: color palette controls, music/SFX infrastructure, and the **header hub** (mode switching and global chrome).
 - The **main menu** (hub tiles / descriptions), not necessarily the full timeline or WebGL scene yet.
 
-`src/features/universal-features/BootUp/AppInitializer.js` coordinates overlay lifecycle and integration with the component loader. The optional **welcome SFX** that plays when a **palette startup theme** kicks in (subject to browser autoplay policy) lives in `src/features/universal-features/Audio/WelcomeStartup.js`, side-imported by `AppInitializer`.
+`src/features/universal-features/BootUp/AppInitializer.js` coordinates overlay lifecycle and integration with the component loader. The optional **welcome SFX** that plays when a **palette startup theme** kicks in (subject to browser autoplay policy) is wired from `src/features/universal-features/Audio/SoundEffects/welcomeSoundEffect.js` (side-imported by `AppInitializer`), which calls `src/features/universal-features/Audio/Music/applyStartupWelcomeMusicDefaults.js` to set startup music levels before the cue.
 
 Fresh loads clear **`currentMode`** in `localStorage` so the user starts from a neutral hub state; other preferences (palette, music, codex prefs) may still persist.
 
@@ -62,7 +62,7 @@ Mode switches may play **mode-switch SFX** and show the loading overlay briefly 
 
 ### 3.2 Music
 
-- **MusicManager** (`src/features/universal-features/services/MusicManager.js` and helpers) loads tracks from the generated **manifest** (see §8).
+- **MusicService** (`src/features/universal-features/Audio/Music/MusicService.js`) is the root coordinator; the actual implementation is grouped by concern under `Audio/Music/` (`services/`, `Initialization/`, `playback/`, `panel/`, `now-playing-badge/`). It loads tracks from the generated **manifest** (see §8) and is exposed globally as `window.MusicManager` for backward compatibility.
 - Playlists can be **palette-aligned**: certain themes or fallback loops apply when nothing is playing.
 - User controls typically include **play / pause**, **skip**, **shuffle**, and **volume**.
 - Volume and mute state can be **persisted** (e.g. localStorage via music state helpers).
@@ -102,13 +102,13 @@ This subsystem is **loaded for modes that need the story dock** and is the main 
 
 - Opening a thumbnail (or a map/globe marker) opens a **left information panel** (event slide) with fields, headlines, relations, and optional **variant** imagery.
 - **Main-stage image** can be **hidden** or toggled while reading (**H** / **I** shortcuts when the slide is open).
-- **Glitch / “hacked”** presentation: optional overlay styling for flavor (`HackedOverlayService`, **X** when glitch control is visible).
+- **Glitch / “hacked”** presentation: optional overlay styling for flavor (`HackedOverlayManager` on the globe UIView, **X** when glitch control is visible).
 - **Variant cycling**: **Tab** cycles variant controls; **digit keys** can select variants when applicable.
-- **Plain paste guard** on the slide reduces accidental rich paste in editable fields (`EventSlidePlainPasteGuard`).
+- **Plain paste guard** on the slide reduces accidental rich paste in editable fields (`installEventSlidePlainPasteGuard.js`).
 
 ### 4.4 Editing and save rules
 
-- **Edit / save** on the slide is restricted to **true local dev hosts**: `localhost` and `127.0.0.1` (`src/features/system-interface/presentation/slide/isEventSlideEditDevHost.js`).
+- **Edit / save** on the slide is restricted to **true local dev hosts**: `localhost` and `127.0.0.1` (`src/features/system-interface/info-panel/isEventSlideEditDevHost.js`).
 - **GitHub Pages** and other hosts: viewing and navigation work; **persisting edits** through the app is not the supported path (no write API on static hosting).
 - On **local server**, `POST/PUT /api/events` atomically writes `src/data/events.json`; story archive and codex have their own endpoints (§9).
 
@@ -187,7 +187,7 @@ Choosing **Interactive Worldview** does not always jump straight into WebGL. The
 
 ### 6.3 Bridge to the event slide
 
-- In codex mode, **`__codexEventSlideBridge`** can supply `dataModel` / `uiView` so **pagination and the event slide** share logic with the globe path (`src/features/system-interface/services/AppKeyboardShortcutsService.js`).
+- In codex mode, **`__codexEventSlideBridge`** can supply `dataModel` / `uiView` so **pagination and the event slide** share logic with the globe path (`src/features/system-interface/platform/shortcuts/keyboardModeResolution.js`).
 
 ---
 
@@ -229,7 +229,7 @@ and emits **`src/data/manifest.json`** with ordered lists aligned to **story arc
 
 ## 10. Keyboard shortcuts (global, when not typing)
 
-Documented in `src/features/system-interface/services/AppKeyboardShortcutsService.js` (capture phase; ignores most keys when focus is in text fields, with **Escape** exceptions for panels).
+Documented in `src/features/system-interface/platform/shortcuts/installAppKeyboardShortcuts.js` (capture phase; ignores most keys when focus is in text fields, with **Escape** exceptions for panels). The dispatcher delegates to siblings in `platform/shortcuts/` (typing context, mode resolution, pagination triggers, variant/number keys, palette cycling, overlay closers).
 
 | Key | Action |
 |-----|--------|
@@ -264,7 +264,7 @@ Documented in `src/features/system-interface/services/AppKeyboardShortcutsServic
 7. **Codex prefs** — Local keys such as `timelineCodexMode`, `timelineCodexVisualPrefs`, `timelineCodexShowDebugging` store codex UI state.
 8. **Bio panel sub-fields** — Hero roles and faction types have **synced visibility** helpers (`HeroRoleBioPanel`, `FactionTypeBioPanel`) so the slide matches structured data.
 9. **Story filter places** — `StoryFilterPlacesSync` keeps **filter-related place lists** aligned between editor and story events where configured.
-10. **Loading / status managers** — User-visible **status lines** and **button disabled states** during long operations come from `StatusManager`, `LoadingOverlayManager`, `ButtonStateManager`.
+10. **Loading / status feedback** — User-visible **status lines** come from `src/features/universal-features/runtime/statusFeed.js` (`updateStatus`). The **loading overlay** and a small **run-operation** flag are coordinated via `src/features/universal-features/runtime/loadingOverlayState.js`. **Button disabled states** during guarded async work use `src/features/universal-features/ComponentSetUp/dom/setButtonState.js` and the **loading lock** pattern in `src/features/universal-features/ComponentSetUp/loading/LoadingLockProtocol.js` (see also `LoadingLifecycle.js`).
 
 ---
 

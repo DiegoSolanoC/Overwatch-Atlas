@@ -17,25 +17,23 @@
 
 import { MenuButtonArrangement } from './MenuButtonArrangement.js';
 import { wireModeActivation } from './ModeActivation.js';
-import { createAutoPreloadToggle } from './createAutoPreloadToggle.js';
-import { createEventSystemLoadOutButton } from './EventSystemLoadOutButton.js';
 
-export { isGitHubPages } from './isGitHubPages.js';
 export { MenuContainer } from './MenuContainer.js';
 
 /**
  * Builds the centered main-menu DOM tree (`.main-menu-buttons`) and returns it.
  *
- * Composition (top to bottom):
+ * Composition:
  *   1. `MenuButtonArrangement()` — the three Worldview / Codex / Data Archive tiles.
  *   2. `wireModeActivation()` — attaches click handlers for all three tiles.
  *      Worldview's "3D Globe vs 2D Map" picker is part of
  *      `runGlobeComponents` (mode entry → in-content hub → exit), the same
  *      shape as Codex / Data Archive — every tile fires its mode launcher
  *      and the mode shows its sub-menu inside its own shell.
- *   3. A horizontal separator.
- *   4. An "event system" row containing the Auto preload checkbox and the
- *      LOAD/UNLOAD Event System Load Out button.
+ *
+ * (Historically the menu also rendered an Auto-preload checkbox + a
+ * LOAD/UNLOAD Event System Load Out button. Both were removed once the
+ * Event System became part of the boot sequence — see `AppInitializer.js`.)
  *
  * @param {Function} [setupGlobeHandler]     - Click handler for the Worldview tile.
  * @param {Function} [setupGlossaryHandler]  - Click handler for the Codex tile.
@@ -53,33 +51,6 @@ export function createMenuButtons(setupGlobeHandler = null, setupGlossaryHandler
         setupBiographyHandler
     });
     menuButtons.appendChild(tiles.row);
-
-    const separator = document.createElement('div');
-    separator.style.cssText = `
-        width: 60%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #555, transparent);
-        margin: 30px auto 10px auto;
-    `;
-    menuButtons.appendChild(separator);
-
-    const eventSystemContainer = document.createElement('div');
-    eventSystemContainer.style.cssText = `
-        margin-top: 10px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        width: 100%;
-    `;
-
-    const autoPreloadToggle = createAutoPreloadToggle();
-    const testBtn = createEventSystemLoadOutButton();
-
-    eventSystemContainer.appendChild(autoPreloadToggle);
-    eventSystemContainer.appendChild(testBtn);
-    menuButtons.appendChild(eventSystemContainer);
 
     return menuButtons;
 }

@@ -17,11 +17,11 @@ import {
     withLoadLifecycle,
     withUnloadLifecycle,
     checkAlreadyLoaded
-} from '../../ComponentSetUp/LoadingLifecycle.js';
-import { loadSoundEffect } from '../../Audio/SoundEffects/SoundEffectsLoaders.js';
+} from '../../ComponentSetUp/loading/LoadingLifecycle.js';
+import { loadSoundEffect } from '../../Audio/SoundEffects/loadSoundEffects.js';
 import { createHeaderHubButton } from '../header/HeaderHubButton.js';
 import { requireGlobeBase } from '../../../Interactive-Worldview/application/requireGlobeBase.js';
-import { removeElementsByIds } from '../../ComponentSetUp/removeElement.js';
+import { removeElementsByIds } from '../../ComponentSetUp/dom/removeElement.js';
 import { createExitButton } from '../../ComponentSetUp/ExitButton.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import {

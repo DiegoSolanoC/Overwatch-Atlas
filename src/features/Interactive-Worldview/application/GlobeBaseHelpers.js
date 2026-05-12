@@ -4,7 +4,7 @@
  */
 
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { setButtonState } from '../../universal-features/ComponentSetUp/setButtonState.js';
+import { setButtonState } from '../../universal-features/ComponentSetUp/dom/setButtonState.js';
 import { clearCodexShellForGlobeInit } from '../../connection-codex/application/CodexModeService.js';
 
 /**

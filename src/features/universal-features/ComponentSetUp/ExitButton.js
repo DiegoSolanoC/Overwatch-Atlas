@@ -12,7 +12,7 @@
 
 import { updateStatus } from '../runtime/statusFeed.js';
 import { showLoadingOverlay, hideLoadingOverlay } from '../runtime/loadingOverlayState.js';
-import { clearCurrentMode } from './CurrentModeStatus.js';
+import { clearCurrentMode } from './mode-lifecycle/CurrentModeStatus.js';
 
 /**
  * Creates and sets up the exit button

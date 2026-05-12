@@ -153,10 +153,10 @@
     --breakpoint-small-mobile: 480px;
     
     /* Panel Dimensions - Desktop */
-    --panel-event-width: 1248px; /* Default + resize minimum (PanelResizeService) */
+    --panel-event-width: 1248px; /* Default + resize minimum (panel-resize/) */
     --panel-event-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
     --panel-event-width-collapsed: 1px; /* Collapsed width showing handle */
-    --panel-filters-width: 1248px; /* Default + resize minimum (right edge; expands left — PanelResizeService) */
+    --panel-filters-width: 1248px; /* Default + resize minimum (right edge; expands left — panel-resize/) */
     --panel-filters-width-max: 1584px; /* Resize maximum; capped by viewport in JS */
     --panel-filters-width-collapsed: 1px; /* Collapsed width showing handle */
     --panel-music-width: 800px;

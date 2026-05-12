@@ -15,26 +15,25 @@ import {
     withLoadLifecycle,
     withUnloadLifecycle,
     checkAlreadyLoaded
-} from '../../ComponentSetUp/LoadingLifecycle.js';
+} from '../../ComponentSetUp/loading/LoadingLifecycle.js';
 import { requireGlobeBase } from '../../../Interactive-Worldview/application/requireGlobeBase.js';
-import { removeElementsByIds } from '../../ComponentSetUp/removeElement.js';
+import { removeElementsByIds } from '../../ComponentSetUp/dom/removeElement.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 import {
     initializeEventManager,
     setupEventManagerListeners,
     syncEventsWithGlobe
-} from '../../../system-interface/services/EventManagerHelpers.js';
+} from '../../../system-interface/event-system/boot/bootEventManager.js';
 import {
     clearEventManager,
     removeAllEventMarkers
-} from '../../../system-interface/services/EventCleanupHelpers.js';
+} from '../../../system-interface/event-system/boot/unloadEventSystem.js';
 import {
-    setupEventUIComponents,
     loadEventSoundEffects,
     initializeFilterPanel,
     setupEventListenersDelayed
-} from '../../../system-interface/services/EventsLoadHelpers.js';
+} from '../../../system-interface/event-system/boot/bootEventExtras.js';
 
 export async function loadEvents(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.events, 'Events')) {
@@ -47,10 +46,6 @@ export async function loadEvents(loadedComponents) {
 
     await withLoadLifecycle(async () => {
         window.eventManager = await initializeEventManager();
-
-        // Pagination + header controls must exist before UIView binds
-        // number buttons / hover preview.
-        setupEventUIComponents({ updateStatus });
 
         const filtersToggleBtn = document.getElementById('filtersToggle');
         if (filtersToggleBtn) {

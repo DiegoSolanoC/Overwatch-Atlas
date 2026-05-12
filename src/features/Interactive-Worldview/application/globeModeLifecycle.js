@@ -22,10 +22,10 @@
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../universal-features/runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { resetGlobeComponentsProgress } from '../../universal-features/runtime/globeLoadProgress.js';
-import { setCurrentMode, clearCurrentMode } from '../../universal-features/ComponentSetUp/CurrentModeStatus.js';
+import { setCurrentMode, clearCurrentMode } from '../../universal-features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 import { hideMenuContainer } from '../../universal-features/MainMenu/MenuContainer.js';
-import { killOtherModes } from '../../universal-features/ComponentSetUp/ModeMutualExclusion.js';
-import { autoPreloadEventSystemIfEnabled, isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
+import { killOtherModes } from '../../universal-features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
+import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
 import { playModeSwitchSound } from '../../universal-features/Audio/SoundEffects/playModeSwitchSound.js';
 import { mountGlobeMapChooserHub } from '../entry/GlobeMapLaunchChoice.js';
 import { loadGlobeAssets } from './loadGlobeAssets.js';
@@ -54,13 +54,6 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
 
     playModeSwitchSound(isAutoLoad);
 
-    if (!isAutoLoad) {
-        await autoPreloadEventSystemIfEnabled();
-    }
-
-    if (window.EventSlideManager?.instance?.hideEventSlide) {
-        window.EventSlideManager.instance.hideEventSlide();
-    }
     if (window.standaloneEventSlide?.hideEventSlide) {
         window.standaloneEventSlide.hideEventSlide();
     }

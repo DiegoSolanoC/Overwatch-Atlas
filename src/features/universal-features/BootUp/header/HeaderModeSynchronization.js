@@ -18,7 +18,7 @@
 import {
     getCurrentModeOrMenu,
     setCurrentMode
-} from '../../ComponentSetUp/CurrentModeStatus.js';
+} from '../../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 
 function isTimelineActuallyLoaded() {
     const globeContainer = document.getElementById('globe-container');

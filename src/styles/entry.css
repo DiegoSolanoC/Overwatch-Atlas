@@ -84,6 +84,24 @@ body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
     pointer-events: auto;
 }
 
+/* ----------------------------------------------------------------------
+ * Boot mask
+ * ---------------------------------------------------------------------- */
+/* Until the Event System Load Out has finished mounting, hide every
+ * direct body child except the loading overlay. Without this, deferred
+ * mounts (pagination dock, filter panel chrome, dock rails, side-panel
+ * resize handles, etc.) and CSS transitions (height / flex-basis on the
+ * dock, panel-resize trapezoids) visibly cascade in during the overlay's
+ * 500ms fade, producing a "menu first, then dock, then panels" pop-in
+ * sequence. With the mask in place every layout/paint that happens
+ * during boot stays invisible behind the still-opaque overlay; once
+ * `body.app-booted` is set (immediately before `hideLoadingOverlayElement`
+ * runs in `AppInitializer.js`) every child becomes visible at once and
+ * the overlay then fades to reveal the final composed UI. */
+body:not(.app-booted) > *:not(.loading-overlay) {
+    visibility: hidden !important;
+}
+
 .loading-status-overlay {
     background: transparent; /* Backgroundless */
     padding: 30px;

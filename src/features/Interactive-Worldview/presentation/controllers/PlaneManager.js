@@ -3,7 +3,7 @@
  * Extracted from GlobeController to follow Single Responsibility Principle
  */
 
-import { useOrbitPanelForStationShipMarkers } from '../../../system-interface/managers/helpers/TransportOrbitPanelHelpers.js';
+import { useOrbitPanelForStationShipMarkers } from '../../../system-interface/platform/useOrbitPanelForStationShipMarkers.js';
 
 const THREE = typeof window !== 'undefined' ? window.THREE : null;
 

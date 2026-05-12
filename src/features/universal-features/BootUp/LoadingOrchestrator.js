@@ -1,5 +1,5 @@
 /**
- * LoadingOrchestrator  the app's central boot-time wiring file.
+ * LoadingOrchestrator - the app's central boot-time wiring file.
  *
  * It does four things in order:
  *   1. Imports every load/unload pair from its sibling `*Loaders.js` file.
@@ -9,11 +9,11 @@
  *   4. Publishes the public API on `window` so non-module scripts and
  *      cross-feature code can trigger mode lifecycle.
  *
- * No actual loading logic lives here  see the sibling `*Loaders.js` files
+ * No actual loading logic lives here - see the sibling `*Loaders.js` files
  * for that. This file is the *registry* that binds them to the runtime,
  * which is why it pairs with (but is distinct from) `ModeOrchestrator`:
- *   - `LoadingOrchestrator` (this file)  boot-time wiring + window globals
- *   - `ModeOrchestrator` (a class)       the runtime that owns lifecycle
+ *   - `LoadingOrchestrator` (this file) - boot-time wiring + window globals
+ *   - `ModeOrchestrator` (a class)      - the runtime that owns lifecycle
  *
  * Renamed from `component-loader.js`, which was a holdover from when this
  * file was the monolithic loader; today it does not load anything itself.
@@ -22,7 +22,7 @@
 import { ModeOrchestrator } from '../runtime/ModeOrchestrator.js';
 
 // Side-effect imports: each module attaches handlers / globals on import.
-import '../../system-interface/managers/helpers/loadBrowserNavigationHelpers.js'; // browser back/forward integration
+import '../../system-interface/platform/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
 import '../../Interactive-Worldview/services/GlobeInlineLoadHelpers.js';                       // inline globe-container loader API
 import '../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js';                            // 3D globe / 2D map chooser hub
 
@@ -34,7 +34,7 @@ import { loadToggles, unloadToggles } from './loaders/TogglesLoaders.js';
 import { loadControls, unloadControls } from './loaders/ControlsLoaders.js';
 import { loadEvents, unloadEvents } from './loaders/EventsLoaders.js';
 import { loadHeaderModeButtons } from './header/HeaderModeButtons.js';
-import { appModeSwitch } from '../ComponentSetUp/ModeSwitcher.js';
+import { appModeSwitch } from '../ComponentSetUp/mode-lifecycle/ModeSwitcher.js';
 
 // === Shared component state ============================================
 
@@ -93,7 +93,7 @@ const loaders = {
 
 const modeOrchestrator = new ModeOrchestrator(loadedComponents, loaders, unloaders);
 
-const runMenuComponents = () => modeOrchestrator.runMenuComponents();
+const runMenuComponents = (options = {}) => modeOrchestrator.runMenuComponents(options);
 const runUniversalFeatures = (options = {}) => modeOrchestrator.runUniversalFeatures(options);
 const runGlobeComponents = (isAutoLoad = false) => modeOrchestrator.runGlobeComponents(isAutoLoad);
 const killMenuComponents = () => modeOrchestrator.killMenuComponents();

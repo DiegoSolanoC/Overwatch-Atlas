@@ -2,12 +2,12 @@
  * modeLifecycleCeremony — the shared "enter mode" / "exit mode" ceremony
  * used by the linear modes (Codex/Glossary, Data Archive/Biography).
  *
- * Every mode entry follows the same beats: play SFX, optionally
- * auto-preload Event System, hide event slides, kill the other modes,
- * persist the new mode, disable the menu run button, raise the loading
- * overlay, hide the menu container, run the mode-specific body, dispatch
- * the mode-change event, mark loaded, and drop the overlay in `finally`.
- * Exit mirrors that in reverse minus the SFX.
+ * Every mode entry follows the same beats: play SFX, hide event slides,
+ * kill the other modes, persist the new mode, disable the menu run
+ * button, raise the loading overlay, hide the menu container, run the
+ * mode-specific body, dispatch the mode-change event, mark loaded, and
+ * drop the overlay in `finally`. Exit mirrors that in reverse minus the
+ * SFX.
  *
  * The Worldview mode does NOT use these — its `runGlobeComponents` has a
  * chooser-hub branch that exits early instead of running a body, and its
@@ -23,11 +23,10 @@
 
 import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from './loadingOverlayState.js';
 import { updateStatus } from './statusFeed.js';
-import { setCurrentMode, clearCurrentMode } from '../ComponentSetUp/CurrentModeStatus.js';
-import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
+import { setCurrentMode, clearCurrentMode } from '../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
+import { broadcastModeChange } from '../ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 import { hideMenuContainer } from '../MainMenu/MenuContainer.js';
-import { killOtherModes } from '../ComponentSetUp/ModeMutualExclusion.js';
-import { autoPreloadEventSystemIfEnabled } from '../../system-interface/integration/eventSystemAutoPreload.js';
+import { killOtherModes } from '../ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
 import { playModeSwitchSound } from '../Audio/SoundEffects/playModeSwitchSound.js';
 
 /**
@@ -51,7 +50,7 @@ import { playModeSwitchSound } from '../Audio/SoundEffects/playModeSwitchSound.j
  * @param {string} cfg.startMessage              Status line shown when entry begins.
  * @param {string} cfg.successMessage            Status line shown after entry succeeds.
  * @param {string} cfg.errorPrefix               Prefix used in the catch-branch status / log line.
- * @param {boolean} cfg.isAutoLoad               Suppresses the Event-System auto-preload prompt and SFX.
+ * @param {boolean} cfg.isAutoLoad               Suppresses the mode-switch SFX (header switches use this).
  * @param {() => Promise<void>} entryFn          Mode-specific body run inside the try-block.
  */
 export async function enterMode(orchCtx, cfg, entryFn) {
@@ -60,13 +59,6 @@ export async function enterMode(orchCtx, cfg, entryFn) {
 
     playModeSwitchSound(isAutoLoad);
 
-    if (!isAutoLoad) {
-        await autoPreloadEventSystemIfEnabled();
-    }
-
-    if (window.EventSlideManager?.instance?.hideEventSlide) {
-        window.EventSlideManager.instance.hideEventSlide();
-    }
     if (window.standaloneEventSlide?.hideEventSlide) {
         window.standaloneEventSlide.hideEventSlide();
     }

@@ -17,7 +17,7 @@
  */
 
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { setButtonState } from '../../universal-features/ComponentSetUp/setButtonState.js';
+import { setButtonState } from '../../universal-features/ComponentSetUp/dom/setButtonState.js';
 
 /**
  * @param {string|null} buttonId - Optional dev/test button id to flip to error state.

@@ -5,8 +5,11 @@
  *   1. Marks the body as `app-timeline-default` (simplified default UX).
  *   2. Hides the sidebar on production hosting (GitHub Pages / public site).
  *   3. Shows the loading overlay, waits briefly so `LoadingOrchestrator`
- *      publishes its globals, then loads Universal Features and the
- *      Main Menu via the orchestrator.
+ *      publishes its globals, then in order: loads Universal Features,
+ *      loads the Main Menu, and finally mounts the Event System Load Out
+ *      (filters panel, pagination dock, news ticker, standalone slide,
+ *      manage panel listeners). The overlay only drops once all three
+ *      have finished.
  *   4. Wires up cleanup on `beforeunload` / `pagehide` so the globe
  *      releases its WebGL/Three.js resources.
  *   5. Triggers `HeaderModeSynchronization` (`setupHeaderHub`,
@@ -22,10 +25,16 @@ import {
     setupOfficialSiteLinkSound
 } from './header/HeaderModeSynchronization.js';
 import { setupZoomControls } from '../../Interactive-Worldview/services/ZoomControlsService.js';
+import { loadEventSystem } from '../../system-interface/load-out/EventSystemLoadOut.js';
+import {
+    setRunOperation,
+    showLoadingOverlay,
+    hideLoadingOverlay
+} from '../runtime/loadingOverlayState.js';
 
 // Side-effect imports: these modules publish globals consumed by
 // non-module scripts loaded via classic <script> tags.
-import '../Audio/WelcomeStartup.js';
+import '../Audio/SoundEffects/welcomeSoundEffect.js';
 
 // === Constants =========================================================
 
@@ -36,10 +45,9 @@ const COMPONENT_LOADER_RETRY_MS = 1000;
 /** Brief fade after auto-load completes before the overlay disappears. */
 const OVERLAY_FADE_OUT_MS = 300;
 
-// === GitHub Pages detection ============================================
-// Distinct from `MainMenu/isGitHubPages.js` (which is narrower and gates
-// dev-only menu affordances). This one fires for *any* non-local host so
-// the debug sidebar disappears in production.
+// === Production env detection ==========================================
+// Fires for *any* non-local host so the debug sidebar disappears in
+// production (GitHub Pages and similar static hosting).
 
 function isProductionEnv() {
     const hostname = window.location.hostname;
@@ -69,17 +77,22 @@ if (isProductionEnv()) {
 
 // === Main boot sequence ================================================
 
-function showLoadingOverlayElement(loadingOverlay) {
-    if (loadingOverlay) {
-        loadingOverlay.classList.add('active');
-    }
+/**
+ * Boot-time overlay control. We delegate to `loadingOverlayState` so the
+ * `isRunOperation` flag is set for the *entire* boot chain — that flag
+ * makes both `runUniversalFeatures` and `runMenuComponents` skip their own
+ * `hideLoadingOverlay()` in `finally`, keeping the overlay opaque from the
+ * very first paint until `dropBootOverlay()` is called.
+ */
+function openBootOverlay() {
+    setRunOperation(true);
+    showLoadingOverlay();
 }
 
-function hideLoadingOverlayElement(loadingOverlay) {
+function dropBootOverlay() {
+    setRunOperation(false);
     setTimeout(function () {
-        if (loadingOverlay) {
-            loadingOverlay.classList.remove('active');
-        }
+        hideLoadingOverlay();
     }, OVERLAY_FADE_OUT_MS);
 }
 
@@ -96,7 +109,10 @@ function writeOverlayStatus(message) {
 async function autoLoadUniversalFeatures(logPrefix) {
     if (typeof window.runUniversalFeatures === 'function') {
         try {
-            await window.runUniversalFeatures({ keepOverlay: false });
+            // `keepOverlay: true` so the overlay stays up across the
+            // Universal → Menu → Event System chain (we drop it once at
+            // the very end via `dropBootOverlay()`).
+            await window.runUniversalFeatures({ keepOverlay: true });
             console.log(`${logPrefix} ✓ Universal Features auto-loaded`);
         } catch (error) {
             console.error(`${logPrefix} Error auto-loading Universal Features:`, error);
@@ -104,11 +120,10 @@ async function autoLoadUniversalFeatures(logPrefix) {
         }
         return;
     }
-    // First retry path — the loader module may not have published globals yet.
     console.warn(`${logPrefix} runUniversalFeatures not available yet, retrying...`);
     setTimeout(async function () {
         if (typeof window.runUniversalFeatures === 'function') {
-            await window.runUniversalFeatures({ keepOverlay: false });
+            await window.runUniversalFeatures({ keepOverlay: true });
         }
     }, COMPONENT_LOADER_RETRY_MS);
 }
@@ -116,10 +131,28 @@ async function autoLoadUniversalFeatures(logPrefix) {
 async function autoLoadMenuComponents(logPrefix) {
     if (typeof window.runMenuComponents !== 'function') return;
     try {
-        await window.runMenuComponents();
+        await window.runMenuComponents({ keepOverlay: true });
         console.log(`${logPrefix} ✓ Menu Components auto-loaded`);
     } catch (error) {
         console.error(`${logPrefix} Error auto-loading Menu Components:`, error);
+    }
+}
+
+/**
+ * Mount the Event System Load Out as part of the boot sequence so it's
+ * already wired (manage panel listeners, pagination dock, filters panel,
+ * news ticker, standalone slide) by the time the loading overlay drops.
+ * The Home button no longer tears this down — it stays alive for the
+ * lifetime of the page.
+ */
+async function autoLoadEventSystem(logPrefix) {
+    writeOverlayStatus('Loading Event System...');
+    try {
+        await loadEventSystem(null);
+        console.log(`${logPrefix} ✓ Event System auto-loaded`);
+    } catch (error) {
+        console.error(`${logPrefix} Error auto-loading Event System:`, error);
+        writeOverlayStatus('Error loading Event System');
     }
 }
 
@@ -137,11 +170,13 @@ function attachGlobeDestroyOnPageExit() {
 window.addEventListener('DOMContentLoaded', function () {
     document.body.classList.add('app-timeline-default');
 
-    const loadingOverlay = document.getElementById('loadingOverlay');
     const pageName = window.location.pathname.split('/').pop() || 'index.html';
     const logPrefix = `[${pageName}]`;
 
-    showLoadingOverlayElement(loadingOverlay);
+    // Open the overlay AND lock the run-operation flag so neither
+    // `runUniversalFeatures` nor `runMenuComponents` can prematurely drop
+    // it during their own `finally` blocks.
+    openBootOverlay();
 
     setTimeout(async function () {
         console.log(`${logPrefix} Auto-loading Universal Features...`);
@@ -152,8 +187,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
         await autoLoadUniversalFeatures(logPrefix);
         await autoLoadMenuComponents(logPrefix);
+        await autoLoadEventSystem(logPrefix);
 
-        hideLoadingOverlayElement(loadingOverlay);
+        // `body.app-booted` lifts the entry.css mask that hid every body
+        // child during boot. Set it BEFORE the overlay starts fading so
+        // the reveal is atomic (overlay fades over a fully-painted UI).
+        document.body.classList.add('app-booted');
+
+        dropBootOverlay();
     }, COMPONENT_LOADER_GLOBALS_READY_MS);
 
     attachGlobeDestroyOnPageExit();

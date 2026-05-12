@@ -27,7 +27,7 @@ import {
 } from '../../universal-features/runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { updateGlobeComponentsProgress } from '../../universal-features/runtime/globeLoadProgress.js';
-import { broadcastModeChange } from '../../universal-features/ComponentSetUp/broadcastModeChange.js';
+import { broadcastModeChange } from '../../universal-features/ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 import {
     teardownGlobeMapChooserHub,
     syncGlobeMapLaunchLabels
@@ -161,7 +161,7 @@ async function mountEventMarkersIfNeeded() {
 
     console.log('[loadGlobeAssets] Creating EventMarkerManager for Globe...');
     updateStatus('→ Event System detected, creating event markers...', 'info');
-    const { EventMarkerManager } = await import('../../system-interface/presentation/markers/EventMarkerManager.js');
+    const { EventMarkerManager } = await import('../../system-interface/markers/EventMarkerManager.js');
     window.globeEventMarkerManager = new EventMarkerManager(
         window.globeController.sceneModel,
         window.globeController.dataModel

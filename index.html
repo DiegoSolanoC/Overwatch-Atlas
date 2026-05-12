@@ -6,7 +6,7 @@
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
     <link rel="stylesheet" href="src/styles/app.css?v=73">
-    <link rel="stylesheet" href="src/styles/entry.css?v=17">
+    <link rel="stylesheet" href="src/styles/entry.css?v=18">
 </head>
 <body class="app-timeline-default">
     <header>
@@ -252,68 +252,58 @@
     <script type="module" src="src/features/universal-features/BootUp/LoadingOrchestrator.js?v=89"></script>
     
     <!-- Load services -->
-    <script src="src/features/universal-features/Audio/SoundEffects/SoundEffectsManager.js?v=8"></script>
-    <script src="src/features/system-interface/services/GlitchTextService.js?v=10"></script>
-    <script src="src/features/system-interface/utils/FactionMatchHelpers.js?v=1"></script>
-    <script src="src/features/system-interface/services/EventDataService.js?v=29"></script>
-    <script src="src/features/system-interface/services/LocationService.js?v=8"></script>
+    <script type="module" src="src/features/universal-features/Audio/SoundEffects/SoundEffectsService.js?v=10"></script>
+    <script src="src/features/system-interface/utils/slide-effects/GlitchTextOverlay.js?v=11"></script>
+    <script type="module" src="src/features/system-interface/info-panel/eventSlideMetaDisplays.js?v=1"></script>
+    <script src="src/features/system-interface/utils/factionIdMatching.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/event-system/data/EventDataService.js?v=30"></script>
+    <script type="module" src="src/features/system-interface/event-system/lookup/LocationLabelResolver.js?v=11"></script>
     <script src="src/features/Interactive-Worldview/data/flagFileByCommonName.js?v=8"></script>
-    <script src="src/features/system-interface/utils/LocationFlagHelpers.js?v=1"></script>
-    <script src="src/features/system-interface/integration/EventTimelineHelpers.js?v=9"></script>
+    <!-- LocationFlagHelpers: 7 slice modules + 1 facade that builds window.LocationFlagHelpers. -->
+    <script src="src/features/system-interface/utils/flags/flagFileResolver.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/flagLocationContext.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/secondaryCountryFlags.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/relevancyRowFilterHighlight.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/slideBioConnections.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/slideRelevantLocations.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/slideStoryFilterPlaces.js?v=1"></script>
+    <script src="src/features/system-interface/utils/flags/LocationFlagHelpers.js?v=1"></script>
+    <script src="src/features/system-interface/utils/eventTimelineFields.js?v=9"></script>
     <script src="src/features/system-interface/integration/timelineMarkerSync.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/utils/EraHoverPreviewTheme.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/utils/SummaryInfoBadge.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/utils/hover-badge/eraHoverPreviewTheme.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/utils/hover-badge/SummaryInfoBadge.js?v=1"></script>
     <script src="src/features/data-archive/utils/FactionArchiveGroupOrder.js?v=1"></script>
     <script src="src/features/data-archive/utils/HeroArchiveRoleOrder.js?v=1"></script>
-    <script src="src/features/system-interface/services/EventRenderService.js?v=25"></script>
-    <script src="src/features/system-interface/services/EventEditService.js?v=12"></script>
-    <script src="src/features/system-interface/services/NewsTickerService.js?v=8"></script>
+    <script type="module" src="src/features/system-interface/event-system/render/EventRenderService.js?v=26"></script>
+    <script type="module" src="src/features/system-interface/event-system/edit/EventEditService.js?v=14"></script>
+    <script src="src/features/system-interface/platform/news-ticker/FooterNewsTicker.js?v=9"></script>
     <!-- EventFormService dependencies - load before EventFormService -->
-    <script src="src/features/system-interface/services/LocationFieldManager.js?v=8"></script>
-    <script src="src/features/system-interface/services/SourceFieldManager.js?v=8"></script>
-    <script src="src/features/system-interface/services/HeadlinesFieldManager.js?v=8"></script>
-    <script src="src/features/system-interface/services/FormAutocompleteService.js?v=10"></script>
-    <script src="src/features/system-interface/services/EventFormService.js?v=12"></script>
-    <script src="src/features/system-interface/utils/HeroRelevantLocationsEditor.js?v=3"></script>
-    <script src="src/features/system-interface/utils/BioArchiveConnectionsSync.js?v=7"></script>
-    <script src="src/features/system-interface/utils/BioArchiveConnectionsEditor.js?v=9"></script>
-    <script src="src/features/system-interface/services/EventDragDropService.js?v=11"></script>
-    <script src="src/features/system-interface/services/EventListenerService.js?v=13"></script>
-    <script src="src/features/system-interface/services/EventInteractionService.js?v=12"></script>
-    <script src="src/features/system-interface/services/EventInitService.js?v=8"></script>
-    <script src="src/features/system-interface/services/CityLookupService.js?v=9"></script>
-    <script src="src/features/system-interface/services/ImagePathService.js?v=11"></script>
+    <script src="src/features/system-interface/event-system/form/fields/LocationTypeFields.js?v=1"></script>
+    <script src="src/features/system-interface/event-system/form/fields/SourcePairFields.js?v=1"></script>
+    <script src="src/features/system-interface/event-system/form/fields/HeadlineFields.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/event-system/form/autocomplete/FormTokenAutocomplete.js?v=2"></script>
+    <script type="module" src="src/features/system-interface/event-system/form/EventFormService.js?v=14"></script>
+    <script src="src/features/system-interface/utils/bio-archive/HeroRelevantLocationsEditor.js?v=3"></script>
+    <script src="src/features/system-interface/utils/bio-archive/mirrorBioArchiveConnections.js?v=7"></script>
+    <script src="src/features/system-interface/utils/bio-archive/BioArchiveConnectionsEditor.js?v=9"></script>
+    <script type="module" src="src/features/system-interface/event-system/drag-drop/EventListReorderDragDrop.js?v=13"></script>
+    <script type="module" src="src/features/system-interface/event-system/listeners/EventListenerService.js?v=14"></script>
+    <script type="module" src="src/features/system-interface/event-system/interaction/EventInteractionService.js?v=14"></script>
+    <script src="src/features/system-interface/event-system/boot/runEventManagerInit.js?v=10"></script>
+    <script src="src/features/system-interface/event-system/lookup/CityCoordinateLookup.js?v=11"></script>
+    <script src="src/features/system-interface/utils/EventImagePathResolver.js?v=1"></script>
     <script src="src/features/Interactive-Worldview/services/GlobeSyncService.js?v=9"></script>
-    <!-- MusicManager dependencies - load before MusicManager -->
-    <script src="src/features/universal-features/Audio/Music/MusicStateService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicShuffleService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicVolumeService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicProgressService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/helpers/MusicPaletteDefaultHelpers.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicPlaybackService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicFileService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicPanelService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicIconService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicControlService.js?v=8"></script>
-    <script src="src/features/universal-features/Audio/Music/helpers/MusicManagerInitHelpers.js?v=10"></script>
-    <script src="src/features/universal-features/Audio/Music/MusicManager.js?v=12"></script>
-    <!-- Filter services - load dependencies before FilterService -->
-    <script src="src/features/system-interface/services/FilterStateManager.js?v=10"></script>
-    <script src="src/features/system-interface/services/FilterImageService.js?v=8"></script>
-    <!-- FilterService helpers - load before FilterService -->
-    <script type="module" src="src/features/system-interface/services/helpers/FilterButtonHelpers.js?v=10"></script>
-    <script type="module" src="src/features/system-interface/services/helpers/FilterButtonSetupHelpers.js?v=10"></script>
-    <script type="module" src="src/features/system-interface/services/helpers/FilterManifestHelpers.js?v=10"></script>
-    <script type="module" src="src/features/system-interface/services/helpers/FilterTabHelpers.js?v=9"></script>
-    <script type="module" src="src/features/system-interface/services/helpers/FilterCountHelpers.js?v=9"></script>
-    <script src="src/features/system-interface/services/FilterService.js?v=15"></script>
-    <script src="src/features/system-interface/services/AppKeyboardShortcutsService.js?v=11"></script>
-    <script src="src/features/system-interface/services/PanelResizeService.js?v=14"></script>
+    <!-- MusicService — single ES module entry; pulls in all sibling Music*Service modules. -->
+    <script type="module" src="src/features/universal-features/Audio/Music/MusicService.js?v=13"></script>
+    <!-- Filters panel: single ES module entry; pulls in state, images, manifest, buttons, tabs, wiring. -->
+    <script type="module" src="src/features/system-interface/filters/FiltersPanel.js?v=16"></script>
+    <script type="module" src="src/features/system-interface/platform/shortcuts/installAppKeyboardShortcuts.js?v=12"></script>
+    <script type="module" src="src/features/system-interface/platform/panel-resize/installPanelResize.js?v=15"></script>
     
     <!-- Load main script -->
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/BootUp/AppInitializer.js?v=17"></script>
+    <script type="module" src="src/features/universal-features/BootUp/AppInitializer.js?v=18"></script>
 </body>
 </html>

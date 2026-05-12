@@ -6,6 +6,10 @@
  * Codex / Data Archive), restores the main menu, and clears persisted
  * mode so a refresh also lands on the menu.
  *
+ * The Event System Load Out (filters panel, pagination dock, news ticker,
+ * standalone slide) is **not** torn down on Home — it's mounted at boot
+ * and stays alive for the lifetime of the page.
+ *
  * Designed to be attached once during `loadHeaderModeButtons`.
  */
 
@@ -17,12 +21,11 @@ import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getCurrentModeOrMenu,
     clearCurrentMode
-} from '../../ComponentSetUp/CurrentModeStatus.js';
+} from '../../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
 
 const MODE_SWITCH_SFX_KEY = 'modeSwitch';
 const MODE_SWITCH_SFX_PATH = 'src/assets/audio/sfx/Mode Switch.mp3';
 const SFX_LAZY_LOAD_DELAY_MS = 100;
-const EVENT_SYSTEM_UNLOAD_SETTLE_MS = 500;
 
 function playModeSwitchSfx() {
     const sfx = window.SoundEffectsManager;
@@ -36,9 +39,6 @@ function playModeSwitchSfx() {
 }
 
 function closeFloatingOverlays() {
-    if (window.EventSlideManager?.instance?.hideEventSlide) {
-        window.EventSlideManager.instance.hideEventSlide();
-    }
     if (window.standaloneEventSlide?.hideEventSlide) {
         window.standaloneEventSlide.hideEventSlide();
     }
@@ -48,14 +48,6 @@ function closeFloatingOverlays() {
 }
 
 async function unloadActiveModeBeforeReturningHome(currentMode) {
-    // Standalone Event System tears itself down via its own toggle handler.
-    const testBtn = document.getElementById('testBtn');
-    if (testBtn && testBtn.dataset.loaded === 'true') {
-        console.log('[Home Button] Unloading Event System...');
-        testBtn.click();
-        await new Promise((r) => setTimeout(r, EVENT_SYSTEM_UNLOAD_SETTLE_MS));
-    }
-
     if (currentMode === 'biography' && typeof window.killBiographyComponents === 'function') {
         await window.killBiographyComponents();
     }

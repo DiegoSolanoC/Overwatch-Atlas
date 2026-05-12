@@ -1,5 +1,5 @@
-﻿import { updateStatus } from '../runtime/statusFeed.js';
-import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
+import { updateStatus } from '../runtime/statusFeed.js';
+import { broadcastModeChange } from '../ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 
 /**
  * @param {{ menu: boolean }} loadedComponents
@@ -91,7 +91,7 @@ function removeGlobeMapChooserChrome() {
  *   3. Hide the globe container and reset its inline positioning.
  *   4. Hide the rotation subbar.
  *   5. (When `preserveNewsTicker` is `false`) restore the dark-blue footer and
- *      clear the news ticker — these are kept around when the user is just
+ *      clear the news ticker � these are kept around when the user is just
  *      switching from one mode straight to another.
  *   6. Close any side panels (event slide, events-manage, filters) and remove
  *      any in-flight Globe / Map chooser overlay.

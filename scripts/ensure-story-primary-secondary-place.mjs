@@ -6,13 +6,27 @@ import fs from 'fs';
 import vm from 'vm';
 
 const rootDir = new URL('../', import.meta.url);
-const sandbox = { window: {} };
+const sandbox = { window: {}, console };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(new URL('../src/features/Interactive-Worldview/data/flagFileByCommonName.js', import.meta.url), 'utf8'), sandbox);
-vm.runInContext(
-    fs.readFileSync(new URL('../src/features/system-interface/utils/LocationFlagHelpers.js', import.meta.url), 'utf8'),
-    sandbox
-);
+
+const FLAGS_DIR = '../src/features/system-interface/utils/flags/';
+const FLAGS_FILES = [
+    'flagFileResolver.js',
+    'flagLocationContext.js',
+    'secondaryCountryFlags.js',
+    'relevancyRowFilterHighlight.js',
+    'slideBioConnections.js',
+    'slideRelevantLocations.js',
+    'slideStoryFilterPlaces.js',
+    'LocationFlagHelpers.js'
+];
+for (const f of FLAGS_FILES) {
+    vm.runInContext(
+        fs.readFileSync(new URL(FLAGS_DIR + f, import.meta.url), 'utf8'),
+        sandbox
+    );
+}
 
 const LFH = sandbox.window.LocationFlagHelpers;
 if (!LFH?.migrateAllStoryEventsSecondaryPlaces) {

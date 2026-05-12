@@ -1,14 +1,14 @@
-﻿import {
+import {
     showLoadingOverlay,
     hideLoadingOverlay,
     setRunOperation,
     getRunOperation
 } from '../runtime/loadingOverlayState.js';
 import { updateStatus } from '../runtime/statusFeed.js';
-import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
+import { broadcastModeChange } from '../ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 
 /**
- * Loads (if needed) and shows the main menu — the app's landing state.
+ * Loads (if needed) and shows the main menu � the app's landing state.
  *
  * Called from `BootUp/AppInitializer.js` after universal features finish (via
  * `window.runMenuComponents`, because the boot script runs after `LoadingOrchestrator`
@@ -19,23 +19,28 @@ import { broadcastModeChange } from '../ComponentSetUp/broadcastModeChange.js';
  * @param {Object} ctx
  * @param {{ menu: boolean }} ctx.loadedComponents - Orchestrator loaded-state map.
  * @param {() => Promise<void>} ctx.loadMenu       - Loader for the menu components.
+ * @param {object} [options]
+ * @param {boolean} [options.keepOverlay=false] - If `true`, leave the loading
+ *   overlay up for the next boot stage (AppInitializer chains
+ *   Universal ? Menu ? Event System and doesn't want a flash between them).
  */
-export async function runMenuComponents(ctx) {
+export async function runMenuComponents(ctx, options = {}) {
     const { loadedComponents, loadMenu } = ctx;
+    const keepOverlay = !!options.keepOverlay;
 
     const isRunOperation = getRunOperation();
     if (!isRunOperation) {
         setRunOperation(true);
         showLoadingOverlay();
     }
-    updateStatus('🚀 Running Menu Components...', 'info');
+    updateStatus('?? Running Menu Components...', 'info');
 
     try {
         if (!loadedComponents.menu) {
-            updateStatus('→ Menu not loaded, loading now...', 'info');
+            updateStatus('? Menu not loaded, loading now...', 'info');
             await loadMenu();
         } else {
-            updateStatus('→ Menu already loaded', 'info');
+            updateStatus('? Menu already loaded', 'info');
         }
 
         const testContainer = document.querySelector('.test-container');
@@ -43,16 +48,18 @@ export async function runMenuComponents(ctx) {
 
         if (menuButtons) {
             menuButtons.style.display = 'flex';
-            updateStatus('✓ Menu Components are running!', 'success');
+            updateStatus('? Menu Components are running!', 'success');
             broadcastModeChange('menu');
         } else {
-            updateStatus('⚠ Menu buttons not found', 'error');
+            updateStatus('? Menu buttons not found', 'error');
         }
     } catch (error) {
         console.error('Error running Menu Components:', error);
-        updateStatus(`✗ Error running Menu Components: ${error.message}`, 'error');
+        updateStatus(`? Error running Menu Components: ${error.message}`, 'error');
     } finally {
-        setRunOperation(false);
-        hideLoadingOverlay();
+        if (!keepOverlay) {
+            setRunOperation(false);
+            hideLoadingOverlay();
+        }
     }
 }

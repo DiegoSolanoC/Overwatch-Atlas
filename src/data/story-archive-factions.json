@@ -6,8 +6,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
+          "kind": "hero",
+          "name": "Winston",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -22,24 +22,8 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Winston",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "faction",
           "name": "IJC",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Genji",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -63,15 +47,7 @@
         },
         {
           "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
+          "name": "Widowmaker",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -79,7 +55,7 @@
         },
         {
           "kind": "hero",
-          "name": "Widowmaker",
+          "name": "Reaper",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -131,30 +107,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Aurora",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Talon",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "factionType": "Major Player"
@@ -165,16 +117,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Blackwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
+          "kind": "hero",
+          "name": "Soldier 76",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -189,8 +133,8 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Soldier 76",
+          "kind": "faction",
+          "name": "Search & Rescue",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -213,7 +157,7 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Genji",
+          "name": "Hanzo",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -221,7 +165,7 @@
         },
         {
           "kind": "hero",
-          "name": "Hanzo",
+          "name": "Genji",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -331,22 +275,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Katya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Lynx 17",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "factionType": "Military Initiatives"
@@ -378,16 +306,16 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Search & Rescue",
+          "kind": "hero",
+          "name": "Pharah",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Pharah",
+          "kind": "faction",
+          "name": "Search & Rescue",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -486,7 +414,7 @@
       "connections": [
         {
           "kind": "faction",
-          "name": "Lumérico Incorporated",
+          "name": "Heliotech Industries",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -494,7 +422,7 @@
         },
         {
           "kind": "faction",
-          "name": "Heliotech Industries",
+          "name": "Lumérico Incorporated",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -524,7 +452,7 @@
       "connections": [
         {
           "kind": "faction",
-          "name": "The Chernobog Conspiracy",
+          "name": "Los Muertos",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -532,7 +460,7 @@
         },
         {
           "kind": "faction",
-          "name": "Los Muertos",
+          "name": "The Chernobog Conspiracy",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -585,14 +513,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Sanjay",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "factionType": "Research Institutions"
@@ -631,32 +551,7 @@
       "name": "Blackwatch",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "IJC",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {
@@ -672,24 +567,16 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Blackwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Ana",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

@@ -37,17 +37,16 @@ Approximate line counts (including blanks/comments):
 | ~6846 | `src/features/connection-codex/services/CodexCanvasService.js` | Entire codex feature in one module |
 | ~5365 | `src/features/main-menu/MenuHelpers.js` | Menu + dock + event UI layout glue |
 | ~3770 | `src/features/main-menu/MenuServiceHelpers.js` | Overlap with `MenuHelpers` by responsibility |
-| ~2240 | `src/features/system-interface/presentation/slide/EventSlideManager.js` | Slide UI orchestration |
 | ~1695 | `src/features/universal-features/runtime/ModeOrchestrator.js` | Mode loading / lifecycle hub |
-| ~1536 | `src/utils/LocationFlagHelpers.js` | Data + UI-adjacent helpers |
+| ~1390 (across 8 files) | `src/features/system-interface/utils/flags/` (post-refactor) | 7 slice modules + facade for country flags / slide relevancy / bio connections / story filter places |
 | ~1498 | `src/ui/Map2DLiteLayer.js` | 2D map / DOM markers |
 | ~1428 | `src/features/Interactive-Worldview/presentation/views/GlobeView.js` | WebGL globe view |
-| ~1243 | `src/features/system-interface/services/EventDataService.js` | Event JSON / normalization |
-| ~1232 | `src/services/FilterService.js` | Filter UI + state |
-| ~1190 | `src/features/system-interface/services/EventListenerService.js` | Event wiring |
+| ~1243 | `src/features/system-interface/event-services/EventDataService.js` | Event JSON / normalization |
+| ~360 | `src/features/system-interface/filters/FiltersPanel.js` | Filter UI orchestrator (was right-panel/FilterService.js, ~1232 LOC). Sliced into `filters/{state,images,manifest,buttons,tabs,counts,wiring,panel}/`. |
+| ~1190 | `src/features/system-interface/event-services/EventListenerService.js` | Event wiring |
 | ~1111 | `src/features/Interactive-Worldview/presentation/views/helpers/GlobeInitHelpers.js` | Globe init split from `GlobeView` |
-| ~1044 | `src/features/system-interface/application/EventManager.js` | Facade over many services |
-| ~1040 | `src/features/system-interface/services/EventRenderService.js` | Rendering/event list |
+| ~278 | `src/features/system-interface/coordinator/EventManager.js` | Facade over many services |
+| ~1040 | `src/features/system-interface/event-services/EventRenderService.js` | Rendering/event list |
 
 **Implication:** “Feature folders + MVC” is correct, but **must be phased**; moving these without tests risks regressions.
 
@@ -84,7 +83,7 @@ Approximate line counts (including blanks/comments):
 
 ### What works well
 
-- `EventManager` uses **dependency injection style** via `EventManagerServiceHelpers` / `EventManagerConfigHelpers` instead of one monolithic class.
+- `EventManager` composes globals via `coordinator/composeEventServices.js` and delegates list filtering / archive slide open / search-input helpers to sibling coordinator modules (loaded with the `EventManager.js` module graph).
 
 ### Problems
 
@@ -92,10 +91,10 @@ Approximate line counts (including blanks/comments):
    - **`src/features/universal-features/helpers/EventManagerHelpers.js`** (boot loader) vs similarly named helpers under **`src/features/system-interface/`** — **Phase 8** should rename by capability (`EventSystemBootHelpers`, …).
 
 2. **Wide blast radius**  
-   `EventManager`, `EventSlideManager`, `MenuHelpers`, `MenuServiceHelpers`, `FilterService`, and `ModeOrchestrator` all **touch pagination, slide, filters, or globals**. MVC boundaries blur (UI + domain + persistence hints in one flow).
+   `EventManager`, `standaloneEventSlide` / dock wiring, `MenuHelpers`, `MenuServiceHelpers`, `FilterService`, and `ModeOrchestrator` all **touch pagination, slide, filters, or globals**. MVC boundaries blur (UI + domain + persistence hints in one flow).
 
 3. **Legacy data paths**  
-   `EventDataService`, `LocationFlagHelpers`, `StoryFilterPlacesSync` carry **migration from legacy fields** (`secondaryCountryFlags`, string arrays, etc.). This is **necessary** but should live behind a **single “EventRecord normalization” model** to avoid scatter.
+   `EventDataService`, `utils/flags/secondaryCountryFlags.js`, and `utils/storyEventFilterPlaces.js` carry **migration from legacy fields** (`secondaryCountryFlags`, string arrays, etc.). This is **necessary** but should live behind a **single “EventRecord normalization” model** to avoid scatter.
 
 ### Recommendations
 
@@ -128,7 +127,7 @@ Grep highlights worth tracking:
 - `CodexCanvasService.js` — `@deprecated` prefs, legacy DOM branches  
 - `GlobeMapLaunchChoice.js` — deprecated overlay id  
 - `HeroRoleBioPanel.js` — `@deprecated` export  
-- `EventDataService.js` / `LocationFlagHelpers.js` / `StoryFilterPlacesSync.js` — **data migration** (not necessarily removable)  
+- `EventDataService.js` / `utils/flags/secondaryCountryFlags.js` / `utils/storyEventFilterPlaces.js` — **data migration** (not necessarily removable)  
 - Dock/panel helpers — **legacy DOM cleanup** (`pagination-dock-top-border`, etc.)
 
 ---
@@ -176,7 +175,7 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
 | Aspect | **Legacy / globe-centric** | **Current / standalone-centric** |
 |--------|----------------------------|-----------------------------------|
 | **WebGL event markers** | Assumed to live on `globeView` (`addEventMarkers`, `refreshEventMarkers`) | Implemented on **`EventMarkerManager`** exposed as **`window.globeEventMarkerManager`** |
-| **Slide / panel** | `UIView` “simple” path: toggle `#eventSlide` DOM only | **`EventSlideManager`** + **`standaloneEventSlide`** (full editor, pagination bridge, mobile behavior) |
+| **Slide / panel** | `UIView` “simple” path: toggle `#eventSlide` DOM only | **`standaloneEventSlide`** built by `load-out/standalone-slide/createStandaloneEventSlide.js` (full editor, pagination bridge, mobile behavior). The factory itself is a thin object literal (state + one-line delegations only); every non-trivial method ships in a sibling single-purpose module under `standalone-slide/{history,display,edit,variants,pagination,image-overlay}/`. |
 | **Filters** | Older idea: `sceneModel.activeFilters` (mostly gone) | **`standaloneActiveFilters`** + `FilterService` / `FilterStateManager` |
 | **Sync from `EventManager` → map/globe** | Copy into `globeController.dataModel` then refresh markers | Same **data model** copy is still used, but marker refresh must go through **`GlobeSyncService._refreshEventMarkers`** (prefers `globeEventMarkerManager`) |
 
@@ -197,8 +196,8 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
 
 6. **`UIView` is a hybrid for map clicks**  
    - File header says event features removed from globe.  
-   - **`showEventSlide` / `hideEventSlide`** still implement **two behaviors**: **standalone** (`standaloneEventSlide`) on **mobile portrait**, and **`_showEventSlideSimple`** (DOM panel + image overlay only, **not** `EventSlideManager`) on desktop / landscape — explicitly for **Map2DLiteLayer** marker clicks.  
-   So **map marker UX** is **not** the same code path as **dock-driven** `EventSlideManager`, which matches “we bolted standalone on later.”
+   - **`showEventSlide` / `hideEventSlide`** still implement **two behaviors**: **standalone** (`standaloneEventSlide`) on **mobile portrait**, and **`_showEventSlideSimple`** (DOM panel + image overlay only) on desktop / landscape — explicitly for **Map2DLiteLayer** marker clicks.
+   So **map marker UX** is **not** the same code path as **dock-driven** `standaloneEventSlide`, which matches “we bolted standalone on later.”
 
 7. **`Map2DLiteLayer`** reads **`standaloneEventSlide.currentPage`** and **`standaloneActiveFilters`** for DOM markers — correct for the standalone world, but it **cements** globals as the contract between map and event system.
 
@@ -211,7 +210,7 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
 ### Phase 1 goals (refined)
 
 1. **Declare one contract** (documentation + thin API):  
-   *“Timeline events for worldview: `DataModel.events` is fed from `EventManager`; WebGL markers are owned by `EventMarkerManager` (`globeEventMarkerManager`); map markers by `Map2DLiteLayer`; slide from dock/archive/codex goes through `standaloneEventSlide` / `EventSlideManager`; map marker click on desktop uses `UIView` simple slide unless unified later.”*
+   *“Timeline events for worldview: `DataModel.events` is fed from `EventManager`; WebGL markers are owned by `EventMarkerManager` (`globeEventMarkerManager`); map markers by `Map2DLiteLayer`; slide from dock/archive/codex goes through `standaloneEventSlide` built by `load-out/standalone-slide/createStandaloneEventSlide.js`; map marker click on desktop uses `UIView` simple slide unless unified later.”*
 
 2. **Remove or fix the stale `globeView.addEventMarkers` / `refreshEventMarkers` call sites** so they either call **`GlobeSyncService`-style logic** or **`globeEventMarkerManager`** directly — **no references to non-existent `GlobeView` methods**.
 
@@ -222,6 +221,6 @@ Use this document as the backlog for **Phase 1 implementation**: pick **marker o
 ### Implemented (2026): agnostic marker sync entry point
 
 - **`src/features/system-interface/integration/timelineMarkerSync.js`** defines **`window.TimelineMarkerSync`** with `copyEventsToGlobeDataModel` and `refreshTimelineEventMarkers` (delegates to **`globeEventMarkerManager`** only).
-- **`GlobeSyncService`**, **`EventManagerHelpers.syncEventsWithGlobe`**, **`EventPanelHelpers.syncEventsWithGlobe`**, **`EventManager.syncEventsToGlobe` fallback**, **`EventNavigationService`**, **`EventInteractionService`**, and **`AppKeyboardShortcutsService`** no longer call removed **`globeView.addEventMarkers` / `refreshEventMarkers`** APIs.
+- **`GlobeSyncService`**, **`EventManagerHelpers.syncEventsWithGlobe`**, **`EventPanelHelpers.syncEventsWithGlobe`**, **`EventManager.syncEventsToGlobe` fallback**, **`EventNavigationService`**, **`EventInteractionService`**, and the **`platform/shortcuts/`** keyboard dispatcher no longer call removed **`globeView.addEventMarkers` / `refreshEventMarkers`** APIs.
 - **`index.html`** loads `timelineMarkerSync.js` before **`EventInteractionService`** and **`GlobeSyncService`**.
 - **`src/features/system-interface/integration/syncEventsWithGlobeCore.js`** — single implementation used by **`EventManagerHelpers.syncEventsWithGlobe`** and **`EventPanelHelpers.syncEventsWithGlobe`** (no duplicated sync logic).

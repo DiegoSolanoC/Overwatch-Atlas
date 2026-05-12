@@ -4,7 +4,7 @@
  */
 
 import { applyCurrentPaletteToTransportVehicles } from '../../Interactive-Worldview/utils/TransportPaletteColors.js';
-import { applyPaletteToExistingEventMarkers } from '../../system-interface/managers/helpers/MarkerCreationHelpers.js';
+import { applyPaletteToExistingEventMarkers } from '../../system-interface/markers/styling/markerColors.js';
 import {
     normalizeSavedPalette,
     applyPaletteBodyClasses,
@@ -13,6 +13,7 @@ import {
 } from './PaletteConstants.js';
 import { updatePaletteMenuActiveState } from './PaletteMenuDom.js';
 import { closePaletteMenu } from './PaletteMenuPositioning.js';
+import { notifyMusicDefaultPaletteChange } from '../Audio/Music/musicPaletteThemes.js';
 
 const COLOR_CHANGE_SFX = 'src/assets/audio/sfx/Color Change.mp3';
 
@@ -71,9 +72,7 @@ export function changePalette(palette) {
 
     playColorChangeSound();
 
-    if (window.MusicPaletteDefaultHelpers?.notifyMusicDefaultPaletteChange) {
-        window.MusicPaletteDefaultHelpers.notifyMusicDefaultPaletteChange(previousPalette, normalized);
-    }
+    notifyMusicDefaultPaletteChange(previousPalette, normalized);
 
     closePaletteMenu();
 }

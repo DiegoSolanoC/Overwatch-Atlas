@@ -30,22 +30,6 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "npc",
-          "name": "Liao",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "faction",
           "name": "Omnica Corporation",
           "reasoningSubjectToLinked": "",
@@ -189,14 +173,6 @@
           "showInCodex": true
         },
         {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Zarya",
           "reasoningSubjectToLinked": "",
@@ -236,14 +212,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Aurora",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ]
     },
@@ -251,24 +219,7 @@
       "name": "Lynx 17",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Zarya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Mason",
@@ -334,16 +285,7 @@
       "name": "Sanjay",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Susannah",
@@ -397,16 +339,7 @@
       "name": "Ngumi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Adeyemi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Adeyemi",
@@ -416,14 +349,6 @@
         {
           "kind": "hero",
           "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Ngumi",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

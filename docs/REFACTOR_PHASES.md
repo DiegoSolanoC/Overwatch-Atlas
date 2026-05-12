@@ -54,9 +54,9 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 | 2 | ~~`src/views/`~~ | ~~2~~ | **Done:** `UIView.js` + `TransportView.js` → **`src/features/Interactive-Worldview/presentation/views/`** (with `GlobeView`); `GlobeController` imports `../views/…`. Removed top-level `src/views/`. |
 | 3 | ~~`src/data/`~~ | ~~1~~ | **Done:** `flagFileByCommonName.js` → **`src/features/Interactive-Worldview/data/`** (globe flag lookup); `index.html` / `scripts/build-flags-lookup.mjs` and tooling paths updated. |
 | 4 | ~~`src/app/`~~ | — | **Done:** **`src/features/universal-features/`** — `BootUp/LoadingOrchestrator.js`, `BootUp/AppInitializer.js`, **`ComponentSetUp/`** (loader glue + cross-mode primitives). HTML points at `src/features/universal-features/BootUp/…`. **`GlobeInlineLoadHelpers`** moved to `Interactive-Worldview/services/`. |
-| 5 | ~~`src/managers/`~~ | **0** | **Done:** No top-level **`src/managers/`** — shell managers live under **`src/features/universal-features/managers/`**; marker/navigation/pagination helpers under **`src/features/system-interface/managers/helpers/`** (**`loadBrowserNavigationHelpers.js`** side-imported from **`LoadingOrchestrator.js`**). |
+| 5 | ~~`src/managers/`~~ | **0** | **Done:** No top-level **`src/managers/`** — shell managers live under **`src/features/universal-features/managers/`**; system-interface navigation/pagination/marker glue lives under **`dock/`**, **`platform/`** (now sliced into `shortcuts/`, `panel-resize/`, `news-ticker/`, `navigation/`), and **`markers/`** (filtering, creation, styling, `findMarkerForEvent.js`, `overlapCycling.js`; e.g. **`platform/installPlatformGlobals.js`** side-imported from **`LoadingOrchestrator.js`** populates the remaining `window.Navigation*Helpers` aliases). |
 | 6 | `src/services/` | ~71 | Batch by domain (music, filters, markers, component loading, …) → feature or **`src/infrastructure/`**-style island |
-| 7 | `src/utils/` | ~22 | Pure shared helpers vs feature-specific; relocate or namespace |
+| 7 | ~~`src/utils/`~~ | **Done** | **`src/features/system-interface/utils/`** reorganised into workflow subfolders: **`flags/`** (7 slice modules + facade for what was the 1,536-line `LocationFlagHelpers.js`), **`bio-archive/`** (heroes/factions/NPCs slide editors + `mirrorBioArchiveConnections.js`), **`hover-badge/`** (event preview + era theme), **`slide-effects/`** (`GlitchTextOverlay`), **`dialogs/`** (`ExternalLinkConfirm`, `flashButton`, `dismissFiltersAndMusicPanels`). `PaginationDockCollapse.js` moved to **`dock/paginationDockCollapse.js`** (the only consumer). Renames at root: `FactionMatchHelpers→factionIdMatching`, `StoryFilterPlacesSync→storyEventFilterPlaces`, `DevServerApiUrl→resolveDevApiUrl`. Dead-code purge: deprecated `syncHeroRoleBioPanelVisibility`, duplicate `migrate*` / `get*FilterPlacesRowsForDisplay` helpers (already provided by `storyEventFilterPlaces`), and verbose `dbg`/`dbgWarn` chatter in mirror sync removed (kept genuine `console.warn` for missing links). |
 
 `src/features/` is the **reference tree** for vertical slices; this pass cleans everything that still sits beside it.
 
@@ -68,7 +68,7 @@ Further work (worldview dedupe vs legacy paths, universal shell, renames, etc.) 
 |------|--------|
 | **Timeline ↔ globe markers** | **Done:** `globeEventMarkerManager` + `TimelineMarkerSync`; see [`TIMELINE_WORLDVIEW_CONTRACT.md`](TIMELINE_WORLDVIEW_CONTRACT.md) |
 | **Integration helpers** | Live under **`src/features/system-interface/integration/`** (`timelineMarkerSync.js`, `syncEventsWithGlobeCore.js`) |
-| **System interface** | **Canonical:** `src/features/system-interface/` (dock / slide / Event* services stack); duplicated Event-era files under **`src/services` / `src/utils`** were trimmed over time; former **`src/managers/`** code now lives only under **`features/system-interface/managers/helpers`** and **`features/universal-features/managers`**. |
+| **System interface** | **Canonical:** `src/features/system-interface/` — **`coordinator/`**, **`dock/`**, **`info-panel/`**, **`filters/`**, **`markers/`**, **`load-out/`**, **`event-system/`**, **`platform/`**, **`utils/`** (with `flags/`, `bio-archive/`, `hover-badge/`, `slide-effects/`, `dialogs/` sub-buckets); duplicated Event-era files under **`src/services` / `src/utils`** were trimmed over time; shell managers under **`features/universal-features/managers`**. |
 | **Worldview** | **`src/features/Interactive-Worldview/`** is the feature home; consolidation with leftover legacy folders is **backlog**, not prerequisite for Steps A–C |
 | **Codex** | **`src/features/connection-codex/`** — canvas + mode shell (`CodexCanvasService`, `CodexModeService`); still one large module until internal split |
 
@@ -99,7 +99,7 @@ Approximate lines (comments included). Sizes drift — re-measure anytime.
 | ~6846 | `src/features/connection-codex/services/CodexCanvasService.js` |
 | ~5365 | `src/features/main-menu/MenuHelpers.js` |
 | ~3770 | `src/features/main-menu/MenuServiceHelpers.js` |
-| ~2240 | `src/features/system-interface/presentation/slide/EventSlideManager.js` |
+| ~317 | `src/features/system-interface/load-out/standalone-slide/createStandaloneEventSlide.js` (thin factory — state + delegations only; second pass sliced 25 methods into `history/`, `display/`, `edit/`, `variants/`, `pagination/`, `image-overlay/` siblings; original home was ~4733 LOC inside `EventSystemLoadOut.js`) |
 | ~1695 | `src/features/universal-features/runtime/ModeOrchestrator.js` |
 
 *Example re-count (PowerShell):*  

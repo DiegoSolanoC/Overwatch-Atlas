@@ -30,7 +30,7 @@ import {
     getRunOperation
 } from '../../runtime/loadingOverlayState.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
-import { setButtonState } from '../../ComponentSetUp/setButtonState.js';
+import { setButtonState } from '../../ComponentSetUp/dom/setButtonState.js';
 import {
     setupGlobeContainer,
     makeGlobeContainerVisible,

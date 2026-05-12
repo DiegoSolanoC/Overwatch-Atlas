@@ -1,0 +1,65 @@
+/**
+ * Lazy-load preview images in the Event Manager list.
+ *
+ * Modern browsers: IntersectionObserver pinned to the scroll container (`eventsList`)
+ * with a 200px top/bottom margin so images load just-before they scroll into view.
+ * Threshold = 0.01 (effectively "any sliver visible").
+ *
+ * Old browsers without IntersectionObserver: immediate eager load (browser handles caching).
+ *
+ * Once the image's `data-src` is moved to `src`, `event-item-preview-image--loading` is
+ * stripped from the wrapper so the spinner sibling fades out. Re-running the function
+ * disconnects the previous observer so stale entries can't leak from a prior render.
+ *
+ * @param {{ _eventManagerImgObserver: IntersectionObserver|null }} renderService
+ * @param {HTMLElement|null} eventsList
+ */
+export function setupEventManagerImageLazyLoading(renderService, eventsList) {
+    if (!eventsList) return;
+
+    const imgs = Array.from(eventsList.querySelectorAll('img[data-src]'));
+    if (imgs.length === 0) return;
+
+    if (!('IntersectionObserver' in window)) {
+        imgs.forEach((img) => {
+            if (img.dataset.src) {
+                const wrap = img.closest('.event-item-preview-image');
+                img.src = img.dataset.src;
+                delete img.dataset.src;
+                if (img.complete && img.naturalWidth > 0) {
+                    img.style.opacity = '1';
+                    wrap?.classList.remove('event-item-preview-image--loading');
+                }
+            }
+        });
+        return;
+    }
+
+    if (renderService._eventManagerImgObserver) {
+        renderService._eventManagerImgObserver.disconnect();
+    }
+
+    renderService._eventManagerImgObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target;
+            const src = img.dataset ? img.dataset.src : null;
+            if (src) {
+                const wrap = img.closest('.event-item-preview-image');
+                img.src = src;
+                delete img.dataset.src;
+                if (img.complete && img.naturalWidth > 0) {
+                    img.style.opacity = '1';
+                    wrap?.classList.remove('event-item-preview-image--loading');
+                }
+            }
+            obs.unobserve(img);
+        });
+    }, {
+        root: eventsList,
+        rootMargin: '200px 0px',
+        threshold: 0.01
+    });
+
+    imgs.forEach((img) => renderService._eventManagerImgObserver.observe(img));
+}

@@ -11,11 +11,11 @@ import {
     withLoadLifecycle,
     withUnloadLifecycle,
     checkAlreadyLoaded
-} from '../../ComponentSetUp/LoadingLifecycle.js';
+} from '../../ComponentSetUp/loading/LoadingLifecycle.js';
 import {
     removeElementBySelector
-} from '../../ComponentSetUp/removeElement.js';
-import { createLoadingLockHandler } from '../../ComponentSetUp/LoadingLockProtocol.js';
+} from '../../ComponentSetUp/dom/removeElement.js';
+import { createLoadingLockHandler } from '../../ComponentSetUp/loading/LoadingLockProtocol.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getRunOperation,

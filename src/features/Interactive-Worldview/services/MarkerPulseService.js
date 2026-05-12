@@ -2,12 +2,12 @@
  * MarkerPulseService - Handles marker pulse animation effects
  */
 
-// Keep in sync with MarkerCreationHelpers.EVENT_PULSE_RING_RENDER_ORDER (this file loads via script tag).
+// Keep in sync with markers/styling/eventMarkerRenderOrders.js EVENT_PULSE_RING_RENDER_ORDER (this file loads via script tag).
 const EVENT_PULSE_RING_RENDER_ORDER = 17;
 /** Flat map: draw wave *under* EVENT_MARKER_RENDER_ORDER (15) so it reads as one dot + halo, not two stacked disks. */
 const FLAT_MAP_PULSE_RING_RENDER_ORDER = 12;
 
-/** Same logic as TransportOrbitPanelHelpers (this file loads via script tag, no ES imports). */
+/** Same logic as platform/useOrbitPanelForStationShipMarkers.js (this file loads via script tag, no ES imports). */
 function useOrbitPanelForStationShipMarkers(sceneModel) {
     if (!sceneModel) return false;
     const isMap = sceneModel.getMapViewEnabled?.() ? sceneModel.getMapViewEnabled() : !!sceneModel.isMapView;

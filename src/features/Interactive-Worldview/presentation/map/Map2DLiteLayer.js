@@ -3,12 +3,9 @@
  * Earth markers on the equirectangular layer. Moon/Mars/Orbit panels are laid out in DOM from camera frustum math
  * and each rig’s local Y scale (squash animation only); map mode does not depend on WebGL rig world positions.
  */
-import {
-    shouldEventBeLocked,
-    getMarkerColor,
-    getMap2dLiteMarkerDiameterPx,
-    EVENT_MARKER_LOCKED_HEX
-} from '../../../system-interface/managers/helpers/MarkerCreationHelpers.js';
+import { shouldEventBeLocked } from '../../../system-interface/markers/filtering/shouldEventBeLocked.js';
+import { getMarkerColor, EVENT_MARKER_LOCKED_HEX } from '../../../system-interface/markers/styling/markerColors.js';
+import { getMap2dLiteMarkerDiameterPx } from '../../../system-interface/markers/styling/markerSizes.js';
 import { getMoonTexturePath, getMarsTexturePath, getOrbitTexturePath } from '../views/helpers/GlobePlaneHelpers.js';
 
 function readPaletteKey() {
@@ -82,10 +79,10 @@ function awakeningWaveMaxScale(u, v, baseW, baseH, markerDiameterPx) {
 const DOM_LITE_RADIATE_INTERVAL_NORMAL_MS = 1500;
 const DOM_LITE_RADIATE_INTERVAL_AWAKENING_MS = 2900;
 
-/** Match {@link MarkerAnimationHelpers} grow/shrink duration. */
+/** Match {@link markerGrowShrink} grow/shrink duration. */
 const DOM_LITE_MARKER_TRANSITION_MS = 300;
 
-/** Match {@link MarkerLockAnimationHelpers} lock/unlock duration. */
+/** Match {@link markerLockUnlock} lock/unlock duration. */
 const MAP2D_LOCK_TRANSITION_MS = 300;
 
 /** Match celestial {@link GlobePlaneHelpers#createCelestialPlane} default size (world units). */

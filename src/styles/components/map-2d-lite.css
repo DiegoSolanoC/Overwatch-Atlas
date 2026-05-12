@@ -174,7 +174,7 @@ body.color-palette-nulled .map-2d-lite__world::after {
     background: transparent;
 }
 
-/* Inner wrapper: grow/shrink animations (WebGL uses MarkerAnimationHelpers 300ms). */
+/* Inner wrapper: grow/shrink animations (WebGL uses markerGrowShrink 300ms). */
 .map-2d-lite__marker-body {
     display: block;
     position: relative;

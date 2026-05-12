@@ -1,6 +1,6 @@
 /**
  * UIView - Handles UI elements (labels, buttons, toggles)
- * Note: Glitch text functionality is now handled by GlitchTextService
+ * Note: Glitch text is handled by `window.GlitchTextService` (`utils/slide-effects/GlitchTextOverlay.js`).
  * Note: Event System features removed - Globe no longer handles events
  */
 
@@ -12,7 +12,7 @@ import { VariantMarkerManager } from './VariantMarkerManager.js';
 import {
     updateEventSlideFactionTypeDisplay,
     updateEventSlideHeroRoleDisplay
-} from '../../../system-interface/managers/helpers/EventSlideShowHelpers.js';
+} from '../../../system-interface/info-panel/eventSlideMetaDisplays.js';
 
 /**
  * UIView - Handles UI elements (labels, buttons, toggles)
@@ -186,7 +186,7 @@ export class UIView {
             }
         }
 
-        // Globe / dock list path does not run EventSlideManager or standalone displaySlide — still show title, body, and factions type.
+        // Globe / dock list path does not run standalone `displaySlide` — still show title, body, and factions type.
         const eventSlideTitle = document.getElementById('eventSlideTitle');
         const eventSlideText = document.getElementById('eventSlideText');
         if (eventSlideTitle && eventName != null) {

@@ -10,7 +10,7 @@
  */
 
 import { createHeaderHubButton } from './HeaderHubButton.js';
-import { createLoadingLockHandler } from '../../ComponentSetUp/LoadingLockProtocol.js';
+import { createLoadingLockHandler } from '../../ComponentSetUp/loading/LoadingLockProtocol.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import { setRunOperation } from '../../runtime/loadingOverlayState.js';
 import { attachHomeButtonHandler } from './HomeButtonHandler.js';

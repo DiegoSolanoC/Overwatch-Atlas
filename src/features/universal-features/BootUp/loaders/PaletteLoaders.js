@@ -11,10 +11,10 @@ import {
     withLoadLifecycle,
     withUnloadLifecycle,
     checkAlreadyLoaded
-} from '../../ComponentSetUp/LoadingLifecycle.js';
-import { loadSoundEffect } from '../../Audio/SoundEffects/SoundEffectsLoaders.js';
+} from '../../ComponentSetUp/loading/LoadingLifecycle.js';
+import { loadSoundEffect } from '../../Audio/SoundEffects/loadSoundEffects.js';
 import { createHeaderHubButton } from '../header/HeaderHubButton.js';
-import { removeElementById } from '../../ComponentSetUp/removeElement.js';
+import { removeElementById } from '../../ComponentSetUp/dom/removeElement.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import { getRunOperation } from '../../runtime/loadingOverlayState.js';
 
