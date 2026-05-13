@@ -94,23 +94,27 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         
         // DEV ONLY: Check for overlapping coordinates on localhost
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            
-            const hasOverlap = pageEvents.some((otherEvent, otherIndex) => {
+            const earthLatLon = (ev) => {
+                if (!ev) return { lat: null, lon: null };
+                const multi = Array.isArray(ev.variants) && ev.variants.length > 0;
+                const base = multi && ev.variants[0] ? { ...ev, ...ev.variants[0] } : ev;
+                let lat = base.lat !== undefined ? base.lat : ev.lat;
+                let lon = base.lon !== undefined ? base.lon : ev.lon;
+                if (lat == null && ev.location && typeof ev.location === 'object') {
+                    lat = ev.location.lat;
+                    lon = ev.location.lon;
+                }
+                const nLat = Number(lat);
+                const nLon = Number(lon);
+                if (!Number.isFinite(nLat) || !Number.isFinite(nLon)) return { lat: null, lon: null };
+                return { lat: nLat, lon: nLon };
+            };
+            const { lat: thisLat, lon: thisLon } = earthLatLon(event);
+            const hasOverlap = thisLat != null && thisLon != null && pageEvents.some((otherEvent, otherIndex) => {
                 if (otherIndex === (globalEventIndex % 10)) return false;
-                const otherLat = otherEvent.lat;
-                const otherLon = otherEvent.lon;
-                const thisLat = event.lat;
-                const thisLon = event.lon;
-                
-                // Only consider it an overlap if both have valid coordinates AND they match
-                if (otherLat == null || otherLon == null || thisLat == null || thisLon == null) {
-                    return false;
-                }
-                
-                const matches = otherLat === thisLat && otherLon === thisLon;
-                if (matches) {
-                }
-                return matches;
+                const { lat: oLat, lon: oLon } = earthLatLon(otherEvent);
+                if (oLat == null || oLon == null) return false;
+                return oLat === thisLat && oLon === thisLon;
             });
             
             

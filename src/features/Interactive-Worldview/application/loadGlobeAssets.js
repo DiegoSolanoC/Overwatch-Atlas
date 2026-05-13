@@ -37,7 +37,7 @@ import {
     teardownGlobeMapChooserHub,
     syncGlobeMapLaunchLabels
 } from '../entry/GlobeMapLaunchChoice.js';
-import { isEventSystemLoadOutActive } from '../../Data-Archive/data-archive-mode/eventSystemAutoPreload.js';
+import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
 
 const STAGE_SETTLE_MS = 300;
 

@@ -147,20 +147,32 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
             }
             if (keyEl) keyEl.textContent = index + 1;
             
-            // DEV ONLY: Check for overlapping coordinates on localhost
+            // DEV ONLY: same-globe-page coordinate overlap (matches dock pagination: 10 per page).
             if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                
-                const currentPageEvents = window.eventManager?.getDockTimelineEvents?.() || [];
-                const hasOverlap = currentPageEvents.some((otherEvent, otherIndex) => {
-                    if (otherIndex === globalEventIndex) return false;
-                    const otherLat = otherEvent.location?.lat;
-                    const otherLon = otherEvent.location?.lon;
-                    const thisLat = event.location?.lat;
-                    const thisLon = event.location?.lon;
-                    const matches = otherLat === thisLat && otherLon === thisLon;
-                    if (matches) {
+                const earthLatLon = (ev) => {
+                    if (!ev) return { lat: null, lon: null };
+                    const multi = Array.isArray(ev.variants) && ev.variants.length > 0;
+                    const base = multi && ev.variants[0] ? { ...ev, ...ev.variants[0] } : ev;
+                    let lat = base.lat !== undefined ? base.lat : ev.lat;
+                    let lon = base.lon !== undefined ? base.lon : ev.lon;
+                    if (lat == null && ev.location && typeof ev.location === 'object') {
+                        lat = ev.location.lat;
+                        lon = ev.location.lon;
                     }
-                    return matches;
+                    const nLat = Number(lat);
+                    const nLon = Number(lon);
+                    if (!Number.isFinite(nLat) || !Number.isFinite(nLon)) return { lat: null, lon: null };
+                    return { lat: nLat, lon: nLon };
+                };
+                const allDock = window.eventManager?.getDockTimelineEvents?.() || [];
+                const thisPage = Math.floor(globalEventIndex / 10);
+                const { lat: thisLat, lon: thisLon } = earthLatLon(event);
+                const hasOverlap = thisLat != null && thisLon != null && allDock.some((otherEvent, otherIndex) => {
+                    if (otherIndex === globalEventIndex) return false;
+                    if (Math.floor(otherIndex / 10) !== thisPage) return false;
+                    const { lat: oLat, lon: oLon } = earthLatLon(otherEvent);
+                    if (oLat == null || oLon == null) return false;
+                    return oLat === thisLat && oLon === thisLon;
                 });
                 
                 
