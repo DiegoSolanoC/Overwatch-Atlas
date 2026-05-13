@@ -1,5 +1,5 @@
-/**
- * ModeOrchestrator � runtime owner of the app's mode lifecycle.
+﻿/**
+ * ModeOrchestrator ¥ runtime owner of the app's mode lifecycle.
  *
  * Holds the loaded-component flag bag and the load/unload pairs for every
  * component, and exposes `runXComponents` / `killXComponents` for each mode
@@ -9,7 +9,7 @@
  *
  *   - Worldview run/kill ? `Interactive-Worldview/application/globeModeLifecycle.js`
  *   - Worldview asset load ? `Interactive-Worldview/application/loadGlobeAssets.js`
- *   - Data Archive shell  ? `data-archive/integration/DataArchiveShell.js`
+ *   - Data Archive mode entry: `Data-Archive/archive-mode/dataArchiveMode.js`
  *   - Linear-mode ceremony ? `runtime/modeLifecycleCeremony.js`
  *   - Universal Features  ? `runtime/universalFeaturesLifecycle.js`
  *
@@ -29,7 +29,7 @@ import {
     createDataArchivePanel,
     openDataArchiveEventsView as openDataArchiveEventsViewImpl,
     exitDataArchive
-} from '../../data-archive/integration/DataArchiveShell.js';
+} from '../../Data-Archive/archive-mode/dataArchiveMode.js';
 import {
     runUniversalFeatures as runUniversalFeaturesImpl,
     killUniversalFeatures as killUniversalFeaturesImpl
@@ -139,7 +139,7 @@ export class ModeOrchestrator {
 
     /**
      * Enter Data Archive mode. Mounts the category-hub shell via
-     * `data-archive/integration/DataArchiveShell` and lets the user pick a
+     * `Data-Archive/archive-mode/dataArchiveMode.js` and lets the user pick a
      * category from there. The actual events panel is embedded by the shell
      * once the user selects a tile.
      */
@@ -290,7 +290,7 @@ export class ModeOrchestrator {
 
     /**
      * Exit Data Archive mode. Tears down the embedded shell via
-     * `data-archive/integration/DataArchiveShell` and either restores the
+     * `Data-Archive/archive-mode/dataArchiveMode.js` and either restores the
      * main menu or stays where the user is (when switching directly to
      * another mode).
      *

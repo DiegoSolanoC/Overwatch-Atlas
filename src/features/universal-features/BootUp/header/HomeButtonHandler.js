@@ -15,13 +15,15 @@
 
 import {
     showLoadingOverlay,
-    hideLoadingOverlay
+    hideLoadingOverlay,
+    setRunOperation
 } from '../../runtime/loadingOverlayState.js';
 import { updateStatus } from '../../runtime/statusFeed.js';
 import {
     getCurrentModeOrMenu,
     clearCurrentMode
 } from '../../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
+import { teardownGlobeMapChooserHub } from '../../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js';
 
 const MODE_SWITCH_SFX_KEY = 'modeSwitch';
 const MODE_SWITCH_SFX_PATH = 'src/assets/audio/sfx/Mode Switch.mp3';
@@ -57,6 +59,12 @@ async function unloadActiveModeBeforeReturningHome(currentMode) {
         await window.killGlossaryComponents();
     }
 
+    if (currentMode === 'globe') {
+        teardownGlobeMapChooserHub();
+        const runBtn = document.getElementById('runGlobeBtn');
+        if (runBtn) runBtn.disabled = false;
+    }
+
     if (window.globeController && typeof window.killGlobeComponents === 'function') {
         await window.killGlobeComponents();
     }
@@ -78,6 +86,8 @@ export function attachHomeButtonHandler(homeButton) {
 
         const currentMode = getCurrentModeOrMenu();
 
+        setRunOperation(false);
+        setRunOperation(true);
         showLoadingOverlay();
         updateStatus('Returning to Home...', 'info');
 
@@ -91,7 +101,8 @@ export function attachHomeButtonHandler(homeButton) {
 
         clearCurrentMode();
 
-        hideLoadingOverlay();
+        setRunOperation(false);
+        hideLoadingOverlay({ force: true });
         updateStatus('✓ Returned to Home', 'success');
     });
 }

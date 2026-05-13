@@ -29,10 +29,10 @@ import {
     showLoadingOverlay,
     hideLoadingOverlay,
     setRunOperation
-} from '../../universal-features/runtime/loadingOverlayState.js';
-import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { createLoadProgressTracker } from '../../universal-features/runtime/loadProgressTracker.js';
-import { broadcastModeChange } from '../../universal-features/ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
+} from '../../Universal-Features/runtime/loadingOverlayState.js';
+import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
+import { createLoadProgressTracker } from '../../Universal-Features/runtime/loadProgressTracker.js';
+import { broadcastModeChange } from '../../Universal-Features/ComponentSetUp/mode-lifecycle/broadcastModeChange.js';
 import {
     teardownGlobeMapChooserHub,
     syncGlobeMapLaunchLabels

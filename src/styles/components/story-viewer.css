@@ -31,7 +31,7 @@
 
 /* Embedded Event Manager panel (when moved to Story Viewer) */
 .story-viewer-panel-embedded {
-    /* Overridden by JS (applyStoryArchiveGridSquish in storyArchiveGridSquish.js); fallbacks match localhost default squish 3 */
+    /* Overridden by JS (applyStoryArchiveGridSquish in layout-adaptations/gridSquish.js); fallbacks match localhost default squish 3 */
     --story-archive-list-max-width: 2905px;
     --story-archive-list-gutter: 13.5px;
     width: 100% !important;

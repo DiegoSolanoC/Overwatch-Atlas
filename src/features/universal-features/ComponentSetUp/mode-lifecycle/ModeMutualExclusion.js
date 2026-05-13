@@ -1,4 +1,6 @@
-import { getCurrentMode } from './CurrentModeStatus.js';
+import { setRunOperation } from '../../runtime/loadingOverlayState.js';
+import { teardownGlobeMapChooserHub } from '../../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js';
+import { clearCurrentMode, getCurrentMode } from './CurrentModeStatus.js';
 
 /**
  * Mutual-exclusion guard run at the start of every `runXComponents()` in
@@ -36,7 +38,18 @@ export async function killOtherModes(ctx) {
     if (currentMode === 'glossary' && loadedComponents.glossary && killers.killGlossaryComponents) {
         await killers.killGlossaryComponents();
     }
-    if (currentMode === 'globe' && loadedComponents.globeBase && killers.killGlobeComponents) {
-        await killers.killGlobeComponents();
+    if (currentMode === 'globe' && killers.killGlobeComponents) {
+        if (loadedComponents.globeBase) {
+            await killers.killGlobeComponents();
+        } else {
+            // Worldview chooser is up but the user never picked 3D/2D — `globeBase`
+            // stays false, so a full `killGlobeMode` unload never ran. Tear down
+            // the hub so Codex / Data Archive do not sit behind a stale dialog.
+            teardownGlobeMapChooserHub();
+            const runBtn = document.getElementById('runGlobeBtn');
+            if (runBtn) runBtn.disabled = false;
+            clearCurrentMode();
+            setRunOperation(false);
+        }
     }
 }

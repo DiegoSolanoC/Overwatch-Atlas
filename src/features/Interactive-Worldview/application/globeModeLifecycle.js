@@ -19,16 +19,31 @@
  * wrapper methods that just forward to these.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../universal-features/runtime/loadingOverlayState.js';
-import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-import { resetLoadProgress } from '../../universal-features/runtime/loadProgressTracker.js';
-import { setCurrentMode, clearCurrentMode } from '../../universal-features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
-import { hideMenuContainer } from '../../universal-features/MainMenu/MenuContainer.js';
-import { killOtherModes } from '../../universal-features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
+import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../Universal-Features/runtime/loadingOverlayState.js';
+import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
+import { resetLoadProgress } from '../../Universal-Features/runtime/loadProgressTracker.js';
+import { setCurrentMode, clearCurrentMode } from '../../Universal-Features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
+import { hideMenuContainer } from '../../Universal-Features/MainMenu/MenuContainer.js';
+import { killOtherModes } from '../../Universal-Features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
 import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
-import { playModeSwitchSound } from '../../universal-features/Audio/SoundEffects/playModeSwitchSound.js';
-import { mountGlobeMapChooserHub } from '../entry/GlobeMapLaunchChoice.js';
+import { playModeSwitchSound } from '../../Universal-Features/Audio/SoundEffects/playModeSwitchSound.js';
+import { mountGlobeMapChooserHub, teardownGlobeMapChooserHub } from '../entry/GlobeMapLaunchChoice.js';
 import { loadGlobeAssets } from './loadGlobeAssets.js';
+
+/** Wait until the next frame has painted (twice) so the chooser DOM is visible. */
+function nextPaintCommitted() {
+    return new Promise((resolve) => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => resolve());
+        });
+    });
+}
+
+const CHOOSER_OVERLAY_MIN_VISIBLE_MS = 320;
+
+function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 /**
  * @typedef {object} GlobeModeContext
@@ -86,13 +101,19 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
         setRunOperation(true);
         showLoadingOverlay();
     }
+    updateStatus('Loading Worldview…', 'info');
 
+    let hubInteractionStarted = false;
     try {
         mountGlobeMapChooserHub({
             onPick: (startOnMap) => {
+                hubInteractionStarted = true;
                 void loadGlobeAssets(startOnMap, assetsCtx);
             },
             onCancel: () => {
+                hubInteractionStarted = true;
+                setRunOperation(false);
+                hideLoadingOverlay();
                 if (runBtn) runBtn.disabled = false;
                 clearCurrentMode();
                 void restoreMainMenu();
@@ -102,7 +123,19 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
     } catch (error) {
         console.error('Error mounting Worldview chooser:', error);
         updateStatus(`✗ Error in Worldview chooser: ${error.message}`, 'error');
-    } finally {
+        setRunOperation(false);
+        hideLoadingOverlay();
+        return;
+    }
+
+    try {
+        await nextPaintCommitted();
+        await wait(CHOOSER_OVERLAY_MIN_VISIBLE_MS);
+    } catch (_) {
+        /* ignore */
+    }
+
+    if (!hubInteractionStarted) {
         setRunOperation(false);
         hideLoadingOverlay();
     }
@@ -119,6 +152,8 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
  */
 export async function killGlobeMode(ctx) {
     const { loadedComponents, unloaders, restoreMainMenu } = ctx;
+
+    teardownGlobeMapChooserHub();
 
     updateStatus('Killing all Globe Components...', 'info');
 

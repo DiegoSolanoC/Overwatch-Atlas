@@ -21,7 +21,7 @@
  * file can stay focused on cross-mode coordination state.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from './loadingOverlayState.js';
+import { showLoadingOverlay, hideLoadingOverlay, setRunOperation } from './loadingOverlayState.js';
 import { updateStatus } from './statusFeed.js';
 import { resetLoadProgress } from './loadProgressTracker.js';
 import { setCurrentMode, clearCurrentMode } from '../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
@@ -77,10 +77,12 @@ export async function enterMode(orchCtx, cfg, entryFn) {
         runBtn.disabled = true;
     }
 
-    if (!getRunOperation()) {
-        setRunOperation(true);
-        showLoadingOverlay();
-    }
+    // Always start a fresh run-operation + overlay for linear mode entry.
+    // A stale `isRunOperation` (e.g. abandoned loading-lock / hub teardown paths)
+    // would skip `showLoadingOverlay()` and make Codex / Data Archive look instant.
+    setRunOperation(false);
+    setRunOperation(true);
+    showLoadingOverlay();
     /* Reset the shared progress bar so each mode entry starts at 0%, regardless
      * of which mode (or stage of which mode) was active last. The body's own
      * `createLoadProgressTracker(...)` will also reset, but doing it here means
