@@ -14,60 +14,55 @@
  */
 
 import {
-    showLoadingOverlay,
-    hideLoadingOverlay,
-    setRunOperation
-} from '../../runtime/loadingOverlayState.js';
-import { updateStatus } from '../../runtime/statusFeed.js';
+  showLoadingOverlay,
+  hideLoadingOverlay,
+  setRunOperation,
+} from "../../runtime/loadingOverlayState.js";
+import { updateStatus } from "../../runtime/statusFeed.js";
 import {
-    getCurrentModeOrMenu,
-    clearCurrentMode
-} from '../../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
-import { teardownGlobeMapChooserHub } from '../../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js';
-
-const MODE_SWITCH_SFX_KEY = 'modeSwitch';
-const MODE_SWITCH_SFX_PATH = 'src/assets/audio/sfx/Mode Switch.mp3';
-const SFX_LAZY_LOAD_DELAY_MS = 100;
-
-function playModeSwitchSfx() {
-    const sfx = window.SoundEffectsManager;
-    if (!sfx) return;
-    if (sfx.sounds && sfx.sounds[MODE_SWITCH_SFX_KEY]) {
-        sfx.play(MODE_SWITCH_SFX_KEY);
-        return;
-    }
-    sfx.loadSound(MODE_SWITCH_SFX_KEY, MODE_SWITCH_SFX_PATH);
-    setTimeout(() => sfx.play(MODE_SWITCH_SFX_KEY), SFX_LAZY_LOAD_DELAY_MS);
-}
+  getCurrentModeOrMenu,
+  clearCurrentMode,
+} from "../../ComponentSetUp/mode-lifecycle/CurrentModeStatus.js";
+import { teardownGlobeMapChooserHub } from "../../../Interactive-Worldview/entry/GlobeMapLaunchChoice.js";
+import { playModeSwitchSound } from "../../Audio/SoundEffects/playModeSwitchSound.js";
 
 function closeFloatingOverlays() {
-    if (window.standaloneEventSlide?.hideEventSlide) {
-        window.standaloneEventSlide.hideEventSlide();
-    }
-    if (window.imageOverlay?.hide) {
-        window.imageOverlay.hide();
-    }
+  if (window.standaloneEventSlide?.hideEventSlide) {
+    window.standaloneEventSlide.hideEventSlide();
+  }
+  if (window.imageOverlay?.hide) {
+    window.imageOverlay.hide();
+  }
 }
 
 async function unloadActiveModeBeforeReturningHome(currentMode) {
-    if (currentMode === 'biography' && typeof window.killBiographyComponents === 'function') {
-        await window.killBiographyComponents();
-    }
+  if (
+    currentMode === "biography" &&
+    typeof window.killBiographyComponents === "function"
+  ) {
+    await window.killBiographyComponents();
+  }
 
-    if ((currentMode === 'glossary' || document.body.classList.contains('codex-mode-active'))
-        && typeof window.killGlossaryComponents === 'function') {
-        await window.killGlossaryComponents();
-    }
+  if (
+    (currentMode === "glossary" ||
+      document.body.classList.contains("codex-mode-active")) &&
+    typeof window.killGlossaryComponents === "function"
+  ) {
+    await window.killGlossaryComponents();
+  }
 
-    if (currentMode === 'globe') {
-        teardownGlobeMapChooserHub();
-        const runBtn = document.getElementById('runGlobeBtn');
-        if (runBtn) runBtn.disabled = false;
-    }
+  if (currentMode === "globe") {
+    teardownGlobeMapChooserHub();
+    const runBtn = document.getElementById("runGlobeBtn");
+    if (runBtn) runBtn.disabled = false;
+  }
 
-    if (window.globeController && typeof window.killGlobeComponents === 'function') {
-        await window.killGlobeComponents();
-    }
+  if (
+    window.globeController &&
+    typeof window.killGlobeComponents === "function"
+  ) {
+    await window.killGlobeComponents();
+  }
 }
 
 /**
@@ -78,31 +73,31 @@ async function unloadActiveModeBeforeReturningHome(currentMode) {
  * @param {HTMLElement} homeButton - the `#homeBtn` element to bind
  */
 export function attachHomeButtonHandler(homeButton) {
-    homeButton.addEventListener('click', async function (e) {
-        e.stopPropagation();
-        e.preventDefault();
+  homeButton.addEventListener("click", async function (e) {
+    e.stopPropagation();
+    e.preventDefault();
 
-        playModeSwitchSfx();
+    playModeSwitchSound(false);
 
-        const currentMode = getCurrentModeOrMenu();
+    const currentMode = getCurrentModeOrMenu();
 
-        setRunOperation(false);
-        setRunOperation(true);
-        showLoadingOverlay();
-        updateStatus('Returning to Home...', 'info');
+    setRunOperation(false);
+    setRunOperation(true);
+    showLoadingOverlay();
+    updateStatus("Returning to Home...", "info");
 
-        closeFloatingOverlays();
+    closeFloatingOverlays();
 
-        await unloadActiveModeBeforeReturningHome(currentMode);
+    await unloadActiveModeBeforeReturningHome(currentMode);
 
-        if (typeof window.restoreMainMenu === 'function') {
-            await window.restoreMainMenu();
-        }
+    if (typeof window.restoreMainMenu === "function") {
+      await window.restoreMainMenu();
+    }
 
-        clearCurrentMode();
+    clearCurrentMode();
 
-        setRunOperation(false);
-        hideLoadingOverlay({ force: true });
-        updateStatus('✓ Returned to Home', 'success');
-    });
+    setRunOperation(false);
+    hideLoadingOverlay({ force: true });
+    updateStatus("✓ Returned to Home", "success");
+  });
 }
