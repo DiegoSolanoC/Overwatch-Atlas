@@ -1,18 +1,18 @@
 /**
  * Event Manager panel DOM manipulation for Data Archive mode.
  * Handles detaching, embedding, and restoring EventManager panel in the DOM.
+ *
+ * Panel parent/class snapshot is owned by `adapter-state.js` so it stays in sync
+ * with `archive-mode` embedding.
  */
 
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
-
-// === State Management ============================================
-
-/** @type {Node | null} Where `#eventsManagePanel` lived before being moved into Data Archive */
-let originalEventsPanelParent = null;
-/** @type {string | null} ClassName the panel had before Data Archive started rewriting it */
-let originalEventsPanelClasses = null;
-
-// === Panel Management Functions ==================================
+import {
+    storeOriginalPanelState,
+    clearOriginalPanelState,
+    originalEventsPanelParent,
+    originalEventsPanelClasses
+} from './adapter-state.js';
 
 /**
  * Remove EventManager panel from its original location and store original state.
@@ -25,11 +25,8 @@ export function removePanelFromOriginalLocation() {
         return null;
     }
 
-    // Store original state
-    originalEventsPanelParent = eventsManagePanel.parentNode;
-    originalEventsPanelClasses = eventsManagePanel.className;
+    storeOriginalPanelState(eventsManagePanel.parentNode, eventsManagePanel.className);
 
-    // Detach from DOM
     if (originalEventsPanelParent) {
         originalEventsPanelParent.removeChild(eventsManagePanel);
     }
@@ -48,11 +45,9 @@ export function placePanelInArchiveContainer(eventsManagePanel) {
         return;
     }
 
-    // Add archive-specific classes
     eventsManagePanel.classList.add('story-viewer-panel-embedded');
     eventsManagePanel.classList.remove('open');
 
-    // Embed in container
     storyViewerContainer.appendChild(eventsManagePanel);
 }
 
@@ -65,23 +60,18 @@ export function returnPanelToOriginalLocation() {
         return;
     }
 
-    // Remove from archive container
     const storyViewerContainer = document.getElementById('storyViewerContainer');
     if (storyViewerContainer && storyViewerContainer.contains(eventsManagePanel)) {
         storyViewerContainer.removeChild(eventsManagePanel);
     }
 
-    // Restore to original location
     originalEventsPanelParent.appendChild(eventsManagePanel);
 
-    // Restore original classes
     if (originalEventsPanelClasses) {
         eventsManagePanel.className = originalEventsPanelClasses;
     }
 
-    // Clear stored state
-    originalEventsPanelParent = null;
-    originalEventsPanelClasses = null;
+    clearOriginalPanelState();
 }
 
 /**
@@ -94,10 +84,7 @@ export function isPanelEmbedded() {
     return !!(eventsManagePanel && storyViewerContainer && storyViewerContainer.contains(eventsManagePanel));
 }
 
-// === Legacy Compatibility ========================================
-
 /**
- * Legacy export for backward compatibility.
  * @deprecated Use removePanelFromOriginalLocation instead.
  */
 export function detachEventManagerPanel() {
@@ -105,16 +92,13 @@ export function detachEventManagerPanel() {
 }
 
 /**
- * Legacy export for backward compatibility.
  * @deprecated Use placePanelInArchiveContainer instead.
  */
 export function embedEventManagerInArchive(eventsManagePanel, archiveSource) {
     placePanelInArchiveContainer(eventsManagePanel);
-    // Note: Data source switching is now handled by data-adapter.js
 }
 
 /**
- * Legacy export for backward compatibility.
  * @deprecated Use returnPanelToOriginalLocation instead.
  */
 export function restoreEventManagerPanel() {
@@ -122,7 +106,6 @@ export function restoreEventManagerPanel() {
 }
 
 /**
- * Legacy export for backward compatibility.
  * @deprecated Use isPanelEmbedded instead.
  */
 export function isEventManagerEmbedded() {

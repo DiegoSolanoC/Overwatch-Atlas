@@ -7,13 +7,13 @@
 import { CATEGORY_METADATA, ARCHIVE_CATEGORIES } from '../archive-ordering/category-types.js';
 
 /**
- * @typedef {'story'|'heroes'|'factions'|'npcs'|'locations'} StoryArchiveSource
+ * @typedef {'story'|'heroes'|'factions'|'npcs'|'locations'} DataArchiveSource
  */
 
 /**
  * Build category hub UI with category tiles and navigation.
  * @param {{
- *   onSelectArchive: (archive: StoryArchiveSource) => void,
+ *   onSelectArchive: (archive: DataArchiveSource) => void,
  *   onCancel: () => void,
  *   playCategorySfx?: () => void
  * }} callbacks
@@ -45,7 +45,6 @@ export function buildCategoryHubUI(callbacks) {
     const gridSlot = document.createElement('div');
     gridSlot.className = 'story-archive-category-hub__grid';
 
-    // Process categories using centralized metadata
     ARCHIVE_CATEGORIES.forEach((categoryKey) => {
         const metadata = CATEGORY_METADATA[categoryKey];
         if (!metadata) return;
@@ -66,7 +65,6 @@ export function buildCategoryHubUI(callbacks) {
             callbacks.onSelectArchive(categoryKey);
         });
 
-        // Story category gets special treatment as feature
         if (metadata.isFeature) {
             btn.classList.add('story-archive-category-hub__tile--story');
             featureSlot.appendChild(btn);
@@ -80,7 +78,6 @@ export function buildCategoryHubUI(callbacks) {
     root.appendChild(featureSlot);
     root.appendChild(gridSlot);
 
-    // Add dismiss/cancel button
     const dismissRow = document.createElement('div');
     dismissRow.className = 'story-archive-category-hub__dismiss-row';
     const cancelBtn = document.createElement('button');
@@ -97,10 +94,14 @@ export function buildCategoryHubUI(callbacks) {
     return root;
 }
 
+/** Primary export name for the category tile hub. */
+export function buildDataArchiveCategoryHub(callbacks) {
+    return buildCategoryHubUI(callbacks);
+}
+
 /**
- * Legacy export for backward compatibility.
- * @deprecated Use buildCategoryHubUI instead.
+ * @deprecated Use {@link buildDataArchiveCategoryHub} or {@link buildCategoryHubUI}.
  */
 export function buildStoryArchiveCategoryHub(callbacks) {
-    return buildCategoryHubUI(callbacks);
+    return buildDataArchiveCategoryHub(callbacks);
 }

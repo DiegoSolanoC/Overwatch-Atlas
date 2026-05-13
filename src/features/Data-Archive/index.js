@@ -1,26 +1,27 @@
 /**
- * Data Archive mode - refactored modular structure.
- * 
- * Provides organized access to Data Archive functionality through clear separation of concerns:
- * - Category hub for initial selection
- * - Archive shell for mode management
- * - Event Manager integration for embedding
- * - Layout adaptations for responsive design
- * - Navigation controls for category switching
- * - Category data management
- * - Archive-specific features
- * - Utilities and helpers
+ * Data Archive — lore archive browsing (story/heroes/factions/npcs/locations) and
+ * related ordering/styling helpers used across the app.
+ *
+ * Folder map (user flow vs plumbing):
+ * - `archive-mode/` — entering/leaving Data Archive as a mode (category hub, embed #eventsManagePanel).
+ * - `category-ui/` + `category-toolbar/` + `category-behaviors/` — tiles, strip, and CSS hooks.
+ * - `category-hub-manager/` — optional standalone hub host (see note on `showCategoryHub`).
+ * - `event-manager-adapter/` — panel move + archive JSON source switching.
+ * - `archive-ordering/` — sort/group rules (plus `legacy-helpers.js` for `window.*` shims).
+ * - `archive-support/` — env checks, DOM helpers, dev-only overlap styling, SFX.
+ * - `layout-adaptations/` — embedded list layout (grid squish).
+ * Globe ↔ Event System marker sync lives under `system-interface/integration/` (see index.html).
  */
-
 // === Public API Exports ===========================================
 
 // Category UI
 export {
     buildCategoryHubUI,
+    buildDataArchiveCategoryHub,
     buildStoryArchiveCategoryHub
 } from './category-ui/category-hub-ui.js';
 
-// Archive Support
+// Archive Support — sound effects
 export {
     playStoryArchiveCategorySfx,
     playFilterInteractionSfx,
@@ -124,7 +125,7 @@ export {
     setupCategoryBehaviors
 } from './category-behaviors/categoryStyling.js';
 
-// Archive Support
+// Archive Support — environment, DOM helpers, dev-only overlap styling
 export {
     isLocalhost,
     eventsPanelMountedInStoryArchive
@@ -142,9 +143,14 @@ export {
     applyOverlapBadgeHighlighting
 } from './archive-support/dev-styling.js';
 
-// === Legacy Compatibility ==========================================
-// Keep the old DataArchiveShell exports for backward compatibility
+// === Data Archive mode (Event Manager embedded in #storyViewerContainer) ===
 export {
-    enterDataArchive as enterDataArchiveLegacy,
+    mountDataArchiveMode,
+    unmountDataArchiveMode,
+    openDataArchiveAtSource,
+    createDataArchivePanel,
+    exitDataArchive,
+    openDataArchiveEventsView,
+    createDataArchivePanel as enterDataArchiveLegacy,
     exitDataArchive as exitDataArchiveLegacy
-} from './data-archive-mode/mode-orchestrator.js';
+} from './archive-mode/dataArchiveMode.js';
