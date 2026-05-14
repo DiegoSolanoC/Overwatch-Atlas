@@ -10,7 +10,7 @@
 import { eventsPanelMountedInStoryArchive } from '../archive-support/environment-checks.js';
 import { clearOriginalPanelState } from '../event-manager-adapter/adapter-state.js';
 import { updateActiveCategory } from '../category-toolbar/categoryToolbar.js';
-import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { archiveModeSession, clearArchiveModeCallbacks, disconnectStoryArchiveOverlapObserver } from './sessionState.js';
 import {
     prepareStoryArchiveShell,

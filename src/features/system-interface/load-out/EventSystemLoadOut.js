@@ -18,11 +18,11 @@
  *     `testBtn` contract.
  */
 
-import { updateStatus } from "../../Universal-Features/runtime/statusFeed.js";
-import { lookAndAddElement } from "../../Universal-Features/ComponentSetUp/dom/lookAndAddElement.js";
+import { updateStatus } from "../../universal-features/runtime/statusFeed.js";
+import { lookAndAddElement } from "../../universal-features/ComponentSetUp/dom/lookAndAddElement.js";
 import { createEventPagination } from "../dock/EventPaginationDom.js";
 import { createFiltersPanel } from "../filters/filtersPanelMarkup.js";
-import { createHeaderHubButton } from "../../Universal-Features/BootUp/header/HeaderHubButton.js";
+import { createHeaderHubButton } from "../../universal-features/BootUp/header/HeaderHubButton.js";
 import { EventMarkerManager } from "../markers/EventMarkerManager.js";
 import {
   teardownMenuHelpersEventSystemLayout,

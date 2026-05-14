@@ -6,7 +6,7 @@
  * with `archive-mode` embedding.
  */
 
-import { updateStatus } from "../../Universal-Features/runtime/statusFeed.js";
+import { updateStatus } from "../../universal-features/runtime/statusFeed.js";
 import {
   storeOriginalPanelState,
   clearOriginalPanelState,

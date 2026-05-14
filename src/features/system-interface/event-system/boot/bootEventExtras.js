@@ -7,7 +7,7 @@
  *   - `setupEventListenersDelayed` — deferred panel/button listener wiring, post-mount.
  */
 
-import { loadSoundEffects } from "../../../Universal-Features/Audio/SoundEffects/loadSoundEffects.js";
+import { loadSoundEffects } from "../../../universal-features/Audio/SoundEffects/loadSoundEffects.js";
 
 export function loadEventSoundEffects() {
   loadSoundEffects(

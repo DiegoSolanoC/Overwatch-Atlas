@@ -8,7 +8,7 @@
 
 import { buildDataArchiveCategoryHub } from '../category-ui/category-hub-ui.js';
 import { playStoryArchiveCategorySfx } from '../archive-support/sound-effects.js';
-import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { eventsPanelMountedInStoryArchive } from '../archive-support/environment-checks.js';
 import {
     prepareStoryArchiveShell,

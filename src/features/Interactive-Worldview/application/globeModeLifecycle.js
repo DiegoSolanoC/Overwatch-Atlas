@@ -19,14 +19,14 @@
  * wrapper methods that just forward to these.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../Universal-Features/runtime/loadingOverlayState.js';
-import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
-import { resetLoadProgress } from '../../Universal-Features/runtime/loadProgressTracker.js';
-import { setCurrentMode, clearCurrentMode } from '../../Universal-Features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
-import { hideMenuContainer } from '../../Universal-Features/MainMenu/MenuContainer.js';
-import { killOtherModes } from '../../Universal-Features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
+import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../universal-features/runtime/loadingOverlayState.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
+import { resetLoadProgress } from '../../universal-features/runtime/loadProgressTracker.js';
+import { setCurrentMode, clearCurrentMode } from '../../universal-features/ComponentSetUp/mode-lifecycle/CurrentModeStatus.js';
+import { hideMenuContainer } from '../../universal-features/MainMenu/MenuContainer.js';
+import { killOtherModes } from '../../universal-features/ComponentSetUp/mode-lifecycle/ModeMutualExclusion.js';
 import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
-import { playModeSwitchSound } from '../../Universal-Features/Audio/SoundEffects/playModeSwitchSound.js';
+import { playModeSwitchSound } from '../../universal-features/Audio/SoundEffects/playModeSwitchSound.js';
 import { mountGlobeMapChooserHub, teardownGlobeMapChooserHub } from '../entry/GlobeMapLaunchChoice.js';
 import { loadGlobeAssets } from './loadGlobeAssets.js';
 

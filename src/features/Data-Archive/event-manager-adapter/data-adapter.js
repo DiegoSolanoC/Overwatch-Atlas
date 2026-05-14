@@ -3,7 +3,7 @@
  * Handles switching Event Manager data context between different archive types.
  */
 
-import { updateStatus } from "../../Universal-Features/runtime/statusFeed.js";
+import { updateStatus } from "../../universal-features/runtime/statusFeed.js";
 
 // === Data Source Management ======================================
 

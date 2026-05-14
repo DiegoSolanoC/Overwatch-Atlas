@@ -10,7 +10,7 @@ import { playStoryArchiveCategorySfx } from '../archive-support/sound-effects.js
 import { applyStoryArchiveGridSquishFromDefaults } from '../layout-adaptations/gridSquish.js';
 import { isLocalhost, eventsPanelMountedInStoryArchive } from '../archive-support/environment-checks.js';
 import { hasOriginalState, storeOriginalPanelState } from '../event-manager-adapter/adapter-state.js';
-import { updateStatus } from '../../Universal-Features/runtime/statusFeed.js';
+import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { archiveModeSession, disconnectStoryArchiveOverlapObserver } from './sessionState.js';
 import {
     detachStoryArchiveHubDismissChrome,
