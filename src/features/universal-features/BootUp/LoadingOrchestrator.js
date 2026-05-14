@@ -19,7 +19,7 @@
  * file was the monolithic loader; today it does not load anything itself.
  */
 
-import { ModeOrchestrator } from '../runtime/ModeOrchestrator.js';
+import { ModeOrchestrator } from '../runtime/ModeOrchestrator.js?v=100';
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/platform/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
@@ -32,7 +32,7 @@ import { loadMenu, unloadMenu } from './loaders/MenuLoaders.js';
 import { loadGlobeBase, unloadGlobeBase } from './loaders/GlobeBaseLoaders.js';
 import { loadToggles, unloadToggles } from './loaders/TogglesLoaders.js';
 import { loadControls, unloadControls } from './loaders/ControlsLoaders.js';
-import { loadEvents, unloadEvents } from './loaders/EventsLoaders.js';
+import { loadEvents, unloadEvents } from './loaders/EventsLoaders.js?v=100';
 import { loadHeaderModeButtons } from './header/HeaderModeButtons.js';
 import { appModeSwitch } from '../ComponentSetUp/mode-lifecycle/ModeSwitcher.js';
 

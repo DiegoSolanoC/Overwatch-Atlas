@@ -25,7 +25,7 @@ import {
     setupOfficialSiteLinkSound
 } from './header/HeaderModeSynchronization.js';
 import { setupZoomControls } from '../../Interactive-Worldview/services/ZoomControlsService.js';
-import { loadEventSystem } from '../../system-interface/load-out/EventSystemLoadOut.js';
+import { loadEventSystem } from '../../system-interface/load-out/EventSystemLoadOut.js?v=100';
 import {
     setRunOperation,
     showLoadingOverlay,

@@ -35,7 +35,7 @@ import {
     killUniversalFeatures as killUniversalFeaturesImpl
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js';
-import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/application/globeModeLifecycle.js?v=93';
+import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/application/globeModeLifecycle.js?v=100';
 
 /**
  * Stages for the Data Archive entry. Declared up-front so the bar can
