@@ -1,5 +1,11 @@
 # Deploy static site to GitHub Pages (Actions source).
 # Repo Settings → Pages → Build: GitHub Actions, then use this workflow.
+#
+# If you see "Deployment failed, try again later" from actions/deploy-pages, that
+# message is generic (GitHub does not expose the underlying Pages API error). It
+# is often a transient outage or queue issue. Check https://www.githubstatus.com/
+# and re-run the workflow (Actions tab → failed run → Re-run, or use
+# "Run workflow" when workflow_dispatch is enabled).
 
 name: Deploy to GitHub Pages
 
@@ -8,6 +14,7 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,9 +28,10 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +50,36 @@ jobs:
         with:
           path: '_site'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      # First attempt — continue-on-error so we can retry once on flaky Pages API.
+      - name: Deploy to GitHub Pages (attempt 1)
+        id: deploy1
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+        with:
+          timeout: '900000'
+
+      - name: Wait before Pages retry
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy to GitHub Pages (attempt 2)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: '900000'
+
+      - name: Require successful Pages deployment
+        if: always()
+        run: |
+          if [ "${{ steps.deploy1.outcome }}" = "success" ]; then
+            echo "Pages deployed on first attempt."
+            exit 0
+          fi
+          if [ "${{ steps.deploy2.outcome }}" = "success" ]; then
+            echo "Pages deployed on second attempt."
+            exit 0
+          fi
+          echo "::error::GitHub Pages deployment failed after two attempts. Often transient — see https://www.githubstatus.com/ and re-run this workflow."
+          exit 1
