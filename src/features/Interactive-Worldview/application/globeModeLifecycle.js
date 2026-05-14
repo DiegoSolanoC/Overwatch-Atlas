@@ -28,7 +28,7 @@ import { killOtherModes } from '../../universal-features/ComponentSetUp/mode-lif
 import { isEventSystemLoadOutActive } from '../../system-interface/integration/eventSystemAutoPreload.js';
 import { playModeSwitchSound } from '../../universal-features/Audio/SoundEffects/playModeSwitchSound.js';
 import { mountGlobeMapChooserHub, teardownGlobeMapChooserHub } from '../entry/GlobeMapLaunchChoice.js';
-import { loadGlobeAssets } from './loadGlobeAssets.js';
+import { loadGlobeAssets } from './loadGlobeAssets.js?v=93';
 
 /** Wait until the next frame has painted (twice) so the chooser DOM is visible. */
 function nextPaintCommitted() {

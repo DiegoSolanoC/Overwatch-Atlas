@@ -33,7 +33,7 @@ import {
     loadEventSoundEffects,
     initializeFilterPanel,
     setupEventListenersDelayed
-} from '../../../system-interface/event-system/boot/bootEventExtras.js';
+} from '../../../system-interface/event-system/boot/bootEventExtras.js?v=93';
 
 export async function loadEvents(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.events, 'Events')) {
