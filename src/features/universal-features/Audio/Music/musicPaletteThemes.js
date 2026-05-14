@@ -14,6 +14,21 @@ import { normalizeSavedPalette } from "../../Palette/PaletteConstants.js";
 const AMBIENT_REL = "src/assets/audio/Default.ogg";
 const THEMES_BASE = "src/assets/audio/Themes";
 
+/**
+ * Ensures persisted or external music paths use the repo layout (`src/assets/...`).
+ * Older saves (or mistaken links) used `assets/audio/...`, which 404s on static hosts.
+ * @param {string|null|undefined} path
+ * @returns {string|null|undefined}
+ */
+export function normalizeMusicAssetPath(path) {
+    if (!path || typeof path !== "string") return path;
+    const trimmed = path.trim();
+    if (trimmed.startsWith("src/assets/")) return trimmed;
+    if (trimmed.startsWith("assets/audio/")) return `src/${trimmed}`;
+    if (trimmed.startsWith("/assets/audio/")) return `src${trimmed}`;
+    return trimmed;
+}
+
 /** Preferred filenames in Themes/ per palette (browser cannot list dir contents). */
 const STARTUP_FILES = {
   blue: ["Overwatch.mp3", "overwatch.mp3"],

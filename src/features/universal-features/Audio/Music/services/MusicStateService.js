@@ -4,6 +4,8 @@
  * music memory is scoped to the tab session; color palette keeps using localStorage elsewhere.
  */
 
+import { normalizeMusicAssetPath } from '../musicPaletteThemes.js';
+
 export class MusicStateService {
     constructor() {
         this.storageKey = 'musicState';
@@ -56,7 +58,11 @@ export class MusicStateService {
         try {
             const savedState = this._storage().getItem(this.storageKey);
             if (!savedState) return null;
-            return JSON.parse(savedState);
+            const parsed = JSON.parse(savedState);
+            if (parsed && typeof parsed.currentSong === 'string') {
+                parsed.currentSong = normalizeMusicAssetPath(parsed.currentSong);
+            }
+            return parsed;
         } catch (e) {
             console.error('Error loading music state:', e);
             return null;

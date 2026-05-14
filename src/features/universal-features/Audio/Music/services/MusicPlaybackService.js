@@ -2,6 +2,7 @@
  * MusicPlaybackService — load source, `play()`, catalog next-track resolution, path matching.
  */
 
+import { normalizeMusicAssetPath } from '../musicPaletteThemes.js';
 import { onceFiniteDurationReady } from '../playback/waitForFiniteAudioDuration.js';
 
 export class MusicPlaybackService {
@@ -13,6 +14,7 @@ export class MusicPlaybackService {
 
     encodeMusicPath(path) {
         if (!path) return path;
+        path = normalizeMusicAssetPath(path);
         const parts = path.split('/');
         if (parts.length < 2) return path;
         const filename = parts[parts.length - 1];
@@ -30,6 +32,8 @@ export class MusicPlaybackService {
 
     loadSong(songPath, isShuffling, onMetadataLoaded, loopOverride) {
         if (!songPath || !this.backgroundMusic) return;
+
+        songPath = normalizeMusicAssetPath(songPath);
 
         if (typeof loopOverride === 'boolean') {
             this.backgroundMusic.loop = loopOverride;
