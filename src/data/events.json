@@ -5773,7 +5773,7 @@
       "name": "The Scourge of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order to achieve this, she collaborated with an Omnic task force that would pioneer what a truly Omnic-inclusive environment looked like, from tailored housing that accommodated their needs instead of human ones, lacking kitchens and instead hosting things like oiling gear. Clinics that performed maintenance and repair of crisis wounds, psychological services to help with the trauma that followed the war and the trouble of consciousness, as well as spiritual centers for study of philosophy and theology, especially with the rising Shambali faith. A lot of focus was also placed on giving Omnics resources to find jobs outside their pre-Crisis designation, letting them pursue their own dreams outside human expectations and design. \n\nThe push for Omnic infrastructure would lead to heavy investment in intellectual and artistic enrichment, which would lead to a thriving sense of pride and community for the arts in the city. A lot of the principles used when building Numbani were modeled after the infrastructure and plans of the new Toronto, following their own Omnic Integration. By the time the city was finished, it had proved to the world that coexistence was possible, and the city became a beacon of hope for Omnic allies around the globe. The day the last brick was laid would be declared Unity Day, and celebrated as a holiday in the city to mark the huge accomplishment of Omnic and Human Collaboration. Shortly after the inauguration, Adawe passed away, and was mourned by the people across the entire city, and celebrated as a Nigerian hero, not unlike Adhabu Ngumi, the first Doomfist.\n\nThe war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. \n\nWhile Scouting for Ecopoint locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance Watchpoint: Kisangani got approved. While the base focused on informatics security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member. Wildebeest.",
+      "description": "The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order to achieve this, she collaborated with an Omnic task force that would pioneer what a truly Omnic-inclusive environment looked like, from tailored housing that accommodated their needs instead of human ones, lacking kitchens and instead hosting things like oiling gear. Clinics that performed maintenance and repair of crisis wounds, psychological services to help with the trauma that followed the war and the trouble of consciousness, as well as spiritual centers for study of philosophy and theology, especially with the rising Shambali faith. A lot of focus was also placed on giving Omnics resources to find jobs outside their pre-Crisis designation, letting them pursue their own dreams outside human expectations and design. \n\nThe push for Omnic infrastructure would lead to heavy investment in intellectual and artistic enrichment, which would lead to a thriving sense of pride and community for the arts in the city. A lot of the principles used when building Numbani were modeled after the infrastructure and plans of the new Toronto, following their own Omnic Integration. By the time the city was finished, it had proved to the world that coexistence was possible, and the city became a beacon of hope for Omnic allies around the globe. The day the last brick was laid would be declared Unity Day, and celebrated as a holiday in the city to mark the huge accomplishment of Omnic and Human Collaboration. Shortly after the inauguration, Adawe passed away, and was mourned by the people across the entire city, and celebrated as a Nigerian hero, not unlike Adhabu Ngumi, the first Doomfist.\n\nThe war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. While Scouting for Ecopoint locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance Watchpoint: Kisangani got approved. While the base focused on informatics security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member. Wildebeest.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -6294,10 +6294,50 @@
       ]
     },
     {
+      "name": "When you Wish",
+      "description": "Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.\n\nVivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  But Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.",
+      "locationType": "earth",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "image": "",
+      "cityDisplayName": "Toronto, Canada",
+      "yearStart": 2063,
+      "yearEnd": 2065,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada,",
+          "reasoning": "Sojourn is requested by a charity organization to meet a critically ill child"
+        }
+      ],
+      "headlines": [
+        "Chase and Ziegler face criticism over dying child"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": "Visits a young girl in terminal condition"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy,",
+          "reasoning": "Answers to public criticism for her lack of involvement"
+        }
+      ]
+    },
+    {
       "name": "Idina Troopers",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
+      "description": "As the Scourge of Numbani continues its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results. \n\nBetween Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Akande had lost his right arm during the crisis, and while his company provided him with cybernetics, the prosthetics deemed him to have an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors, going by the name of Talon.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -6308,25 +6348,49 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": ""
+          "reasoning": "Numbani deploys the Idina troopers"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Orisa",
-          "reasoning": ""
+          "reasoning": "Future Repurposed OR14 Unit"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": "Recruited into Doomfist's mercenary ranks"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Numbani",
-          "reasoning": ""
+          "reasoning": "Chooses to remain independent"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "War era Idina units repurposed for police patrolling in Numbani",
+        "Doomfist attacks continue, Overwatch assistance denied"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Adeyemi,",
+          "reasoning": "Continues raids through Numbani"
+        }
+      ]
     },
     {
       "name": "Deep Rising",
