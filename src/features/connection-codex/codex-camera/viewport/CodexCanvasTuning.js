@@ -10,7 +10,7 @@ import { CODEX_IMG_BASE_PX } from '../../codex-nodes/placement/CodexNodePortrait
 /** Pointer move below this (screen px, squared dist) does not start a node drag. */
 export const DRAG_THRESHOLD_PX = 6;
 
-/** @deprecated Prefer canvas `codexVisualPrefs.cordThickness` where available; kept for fallbacks. */
+/** @deprecated Prefer canvas `s.codexVisualPrefs.cordThickness` where available; kept for fallbacks. */
 export const CODEX_EDGE_STROKE_PX = 3.35;
 
 /** Arm length (world px) along each cord direction for junction elbow parallelogram (axis + 45° turns). */

@@ -4941,7 +4941,7 @@
       "name": "Miracle Worker",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "Like many others around the world, young Angela Zeigler had lost her parents to the Crisis, while they volunteered at a local hospital. This traumatic event would serve to keep her focus on her studies. The girl would go on to become one of the youngest graduates of the medical program at the University of Zurich and quickly rose up to be quite the name in the scientific world, meeting brilliant minds like Siebren de Kuiper while at school. She would later enroll at Chalmers University in Gothenburg, where she focused on nanobiology and developed several breakthroughs in the field and its uses in medicinal science.<br><br>Angela had visited Torbjörn at the hospital following his injury during Operation White Dome, as her family were close friends with the Linholms. During the visit, he was so impressed by her papers on nanobiotics that he sent a recommendation to Morrison to fund her schooling and offer monetary support. On Linholm's advice, Angela had also begun volunteering for Overwatch's medical staff, becoming one of very few civilians allowed to tour Watchpoints. With their funding and guidance, Zeigler was a brilliant mind with an even brighter future lying ahead of her.",
+      "description": "Like many others around the world, young Angela Zeigler had lost her parents to the Crisis, while they volunteered at a local hospital. This traumatic event would serve to keep her focus on her studies. The girl would go on to become one of the youngest graduates of the medical program at the University of Zurich and quickly rose up to be quite the name in the scientific world, meeting brilliant minds like Siebren de Kuiper while at school. She would later enroll at Chalmers University in Gothenburg, where she focused on nanobiology and developed several breakthroughs in the field and its uses in medicinal science.\n\nAngela had visited Torbjörn at the hospital following his injury during Operation White Dome, as her family were close friends with the Linholms. During the visit, he was so impressed by her papers on nanobiotics that he sent a recommendation to Morrison to fund her schooling and offer monetary support. On Linholm's advice, Angela had also begun volunteering for Overwatch's medical staff, becoming one of very few civilians allowed to tour Watchpoints. With their funding and guidance, Zeigler was a brilliant mind with an even brighter future lying ahead of her.",
       "image": "",
       "sources": [
         {
@@ -4956,7 +4956,7 @@
       "lon": 8.5410422,
       "headlines": [
         "Meet the new face of naoobiotics",
-        "Yet another medical breakthrough thanks  to Dr. Angela Zeigler"
+        "Yet another medical breakthrough thanks to Dr. Angela Zeigler"
       ],
       "secondaryCountryPlaces": [
         {
@@ -6174,7 +6174,7 @@
       "name": "Valkirie",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "",
+      "description": "It had been ten years since the end of the Crisis, and Angela's early career was already a fruitful one. Her breakthroughs in the field of applied nanobiology radically improved the treatment of life-threatening injuries, capable of stabilizing near-death patients and saving countless lives. Through her schooling and early years outside of college, Overwatch kept an eye on her, allowing her access to the Watchpoints as she volunteered on the medical staff. Ziegler's technology could have made her rich if she chose to remain in private practice, but she always saw science as something that belonged to the world and the people who benefited from it.\n\nIt was here when Morrison finally chose to approach her directly. As the world finally moved away from the crisis, Morrison wished to shift towards peacetime and civilian applications. The heavy investment in the support departments and Ecopoint bases was one of the early signs of this new mission, making the world a better place. As such, Morrison offered Angela to become the leader of the medical division, with all the money, resources and personnel she could ever dream of. Angela was intrigued by these promises, but she was greatly opposed to the militaristic nature of Overwatch. Even since losing her parents to the war, she did not have the greatest opinion on military peacekeeping.\n\nIn the end, she had agreed to the offer with one caveat. The same way Torbjörn requested back in the day, she wanted to become a part of the strike team, so she could keep a level of control over the use of her technology and allow her to see at work personally. Morrison agreed. In order to work on the frontlines, she began development of the Valkyrie swift-response suit, a personal aerial combat armor that came equipped with nanobiotic capabilities and assistive protocols. Ziegler quickly proved to be a surprisingly adept field agent, with a surgical tactic approach to changing situations. Between her efficiency and the design of her suit, she quickly gained notoriety among the strike team, earning her the call sign \"Mercy\". While she did not enjoy the way this framed her, she was always glad to use her technology for the greater good.\n",
       "image": "",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -6182,6 +6182,10 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Valkyrie",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
         }
       ],
       "yearStart": 2063,
@@ -6190,29 +6194,34 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Angela Ziegler recruited as head of medical staff and part of the Strike team"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mercy, Soldier 76",
-          "reasoning": ""
+          "reasoning": "Angela accepts Morrison's proposal to join Overwatch"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Expanding peacekeeping resources beyond military"
         }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Overwatch's new Member \"Mercy\" saves countless lives thanks to flying medical suit",
+        "Nanobiotic equipment to begin mass production soon"
       ]
     },
     {
       "name": "Ye Wuyang is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "No description available.",
+      "description": "On May 1st of 2060, Ye Wuyang was born. The younger of the Ye brothers, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's fire College.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -6237,7 +6246,7 @@
         {
           "locationName": "",
           "country": "Wuyang",
-          "reasoning": ""
+          "reasoning": "Ye Wuyang is Born"
         }
       ]
     },
@@ -6245,7 +6254,7 @@
       "name": "Radiation Poisoning",
       "locationType": "earth",
       "cityDisplayName": "Melbourne, Australia",
-      "description": "",
+      "description": "With Angela leading the medical division, Overwatch began campaigns around the world using Nanobiotics to heal those in need, and perhaps there was no other place that needed it the most than Australia. Following the explosion of the Outback Omnium, the high amount of radioactive material blasted into the air and water led to a catastrophic health crisis in the region. While Ecopoint Zealandia focused on helping the environment heal, the people of Australia needed help to get through the radiation poisoning faster. Cases escalated, and the cancer rate skyrocketed, and in spite of Australia's prior resistance to Overwatch action, Ziegler would not stand by such a tragedy.\n\nUnder Angela's command, a mission team would be deployed, comprised of nearly the entire medical staff, alongside Chase and Sarioglu, both rising stars in the Strike team, well versed in public relationships. Together, they collaborated with local governments and local nonprofit groups to help get resources to affected populations, and bring those in remote locations into the Melbourne hospital, where Ziegler could give intensive care. Thanks to their efforts, the projected mortality rate was cut by more than seventy percent, and a wing of the Melbourne hospital was renamed for Ziegler. As the team was ready to leave, a group of Junkers came out of the You Yang Mountains and attempted to claim the city of Little River, hoping to take the medical facilities for themselves once Overwatch left. Ziegler and Chase were still present when the attack happened and were able to repel the raiders with no lives lost. However, they chose to stay at their post and monitor for further hostilities, delaying their return for over a month.",
       "image": "",
       "lat": -37.8142454,
       "lon": 144.9631732,
@@ -6262,22 +6271,26 @@
         {
           "locationName": "Melbourne, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Mercy leads Medicla Campaign in Australia"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mercy, Ana, Emre, Sojourn",
-          "reasoning": ""
+          "reasoning": "Aided local authorities to counteract the radiation crisis"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Junkers",
-          "reasoning": ""
+          "reasoning": "Fiound each other in a fight during a raide at Little River"
         }
+      ],
+      "headlines": [
+        "Junker cavaran raids Overwatch outpost, no casualties, few wounded",
+        "Melbourn hospotal renames facility in honor to Angela Ziegler"
       ]
     },
     {

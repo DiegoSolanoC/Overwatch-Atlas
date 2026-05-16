@@ -28,16 +28,7 @@
       "name": "Aurora",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Omnica Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "B.O.B",
@@ -163,24 +154,7 @@
       "name": "Katya",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "M.E.K.A Squad",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Zarya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Kendra",
@@ -204,16 +178,7 @@
       "name": "Liao",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Omnica Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     },
     {
       "name": "Lynx 17",
@@ -345,16 +310,7 @@
       "name": "Adeyemi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "connections": []
     }
   ]
 }

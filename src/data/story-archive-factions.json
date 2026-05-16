@@ -4,64 +4,14 @@
       "name": "Overwatch",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Winston",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "IJC",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Major Player"
     },
     {
       "name": "Talon",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Major Player"
     },
     {
@@ -75,72 +25,14 @@
       "name": "The Chernobog Conspiracy",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Echo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Lumérico Incorporated",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Major Player"
     },
     {
       "name": "IJC",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Major Player"
     },
     {
@@ -154,24 +46,7 @@
       "name": "Shimada Clan",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Hanzo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Genji",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Criminal Groups"
     },
     {
@@ -213,32 +88,14 @@
       "name": "Los Muertos",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Lumérico Incorporated",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Criminal Groups"
     },
     {
       "name": "The Sombra Collective",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Criminal Groups"
     },
     {
@@ -259,24 +116,7 @@
       "name": "Volskaya Industries",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Lumérico Incorporated",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
@@ -304,48 +144,14 @@
       "name": "Helix Securities",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Pharah",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
       "name": "M.E.K.A Squad",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Katya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
@@ -366,24 +172,7 @@
       "name": "Omnica Corporation",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Liao",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Aurora",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
@@ -411,24 +200,7 @@
       "name": "Pacific Energy Solutions",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Heliotech Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Lumérico Incorporated",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
@@ -449,72 +221,21 @@
       "name": "Lumérico Incorporated",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Los Muertos",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Pacific Energy Solutions",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
       "name": "Heliotech Industries",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Pacific Energy Solutions",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
       "name": "Vishkar Corporation",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "M.E.K.A Squad",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
@@ -528,16 +249,7 @@
       "name": "Yamagami Blades",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Hanzo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Research Institutions"
     },
     {
@@ -565,32 +277,7 @@
       "name": "Search & Rescue",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "IJC",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {

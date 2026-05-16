@@ -166,7 +166,7 @@ export function updateCodexVirtualScroll() {
     }
 }
 
-/** Clear all rendered nodes from DOM (keeps model in `codexAllNodes` on the canvas). */
+/** Clear all rendered nodes from DOM (keeps model in `s.codexAllNodes` on the canvas). */
 export function clearCodexVirtualScroll() {
     if (!_rt) return;
     _rt.getRenderedNodeIds().clear();
