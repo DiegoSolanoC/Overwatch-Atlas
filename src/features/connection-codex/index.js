@@ -1,11 +1,14 @@
 /**
- * Connection Codex (graph canvas): mode shell + canvas bundle; most runtime entry points use `window.*`.
- * Domain and infrastructure modules are safe to import from tooling or future tests.
+ * Connection Codex — node–edge relationship graph (heroes, factions, NPCs, countries, junctions).
+ *
+ * Responsibility folders (see each top-level `codex-*` tree). Monolith until sliced:
+ * `services/CodexCanvasService.js`.
  */
+
 export {
     enterCodexMode,
     applyCodexShell,
     clearCodexShellForGlobeInit
-} from './application/CodexModeService.js';
-export { fetchCanonicalCodexJson } from './infrastructure/CodexJsonRepository.js';
-export { parseMigrateAndDedupeCodexSource } from './domain/CodexPayloadMigration.js';
+} from './codex-mode/mode-entry/CodexModeService.js';
+export { fetchCanonicalCodexJson } from './codex-data/load/CodexJsonRepository.js';
+export { parseMigrateAndDedupeCodexSource } from './codex-data/migration/CodexPayloadMigration.js';

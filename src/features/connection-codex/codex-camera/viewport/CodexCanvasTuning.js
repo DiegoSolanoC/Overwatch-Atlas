@@ -3,7 +3,7 @@
  * Bundled as one module to avoid a sprawl of tiny single-purpose files (see refactor notes / deslop: YAGNI on micro-splits).
  */
 
-import { CODEX_IMG_BASE_PX } from './CodexNodePortraitMetrics.js';
+import { CODEX_IMG_BASE_PX } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 
 // --- Edge / cord / packet / cull / zoom ------------------------------------
 

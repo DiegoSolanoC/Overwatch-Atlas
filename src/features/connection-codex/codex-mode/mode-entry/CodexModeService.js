@@ -7,9 +7,9 @@
  * declared-stages-done percentage, and it reaches 100% on success.
  */
 
-import { initCodexCanvas, destroyCodexCanvas } from '../services/CodexCanvasService.js';
-import { createLoadProgressTracker } from '../../universal-features/runtime/loadProgressTracker.js';
-import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
+import { initCodexCanvas, destroyCodexCanvas } from '../../services/CodexCanvasService.js';
+import { createLoadProgressTracker } from '../../../universal-features/runtime/loadProgressTracker.js';
+import { updateStatus } from '../../../universal-features/runtime/statusFeed.js';
 
 const CODEX_ROOT_ID = 'codex-view-root';
 

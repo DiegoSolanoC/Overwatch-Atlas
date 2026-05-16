@@ -2,8 +2,8 @@
  * Pan/zoom framing math for the Codex board (world space, y down).
  */
 
-import { CODEX_WORLD_H, CODEX_WORLD_W } from './CodexLayoutConstants.js';
-import { CODEX_IMG_BASE_PX } from './CodexNodePortraitMetrics.js';
+import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
+import { CODEX_IMG_BASE_PX } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 
 /**
  * Pan values so world center sits in the viewport for the given zoom.

@@ -2,8 +2,8 @@
  * Codex directed-edge SVG redraw + RAF debounce. Canvas service registers live state/callbacks once per mount.
  */
 
-import { CODEX_WORLD_H, CODEX_WORLD_W } from '../domain/CodexLayoutConstants.js';
-import { codexUnorderedPairKey } from '../domain/CodexGraphPrimitives.js';
+import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
+import { codexUnorderedPairKey } from '../../codex-edges/topology/CodexGraphPrimitives.js';
 import {
     CODEX_EDGE_CULL_MARGIN_PX,
     CODEX_EDGE_DEGREE_FONT_PX,
@@ -13,7 +13,7 @@ import {
     CODEX_OCT_SOFT_SNAP_TOL_DEG,
     CODEX_VIEWPORT_CULL_MIN_EDGES,
     CODEX_VIEWPORT_CULL_MIN_NODES
-} from '../domain/CodexCanvasTuning.js';
+} from '../../codex-camera/viewport/CodexCanvasTuning.js';
 
 /** @type {CodexEdgeRedrawRuntime|null} */
 let _rt = null;

@@ -5,7 +5,7 @@
 
 import { updateStatus } from '../../universal-features/runtime/statusFeed.js';
 import { setButtonState } from '../../universal-features/ComponentSetUp/dom/setButtonState.js';
-import { clearCodexShellForGlobeInit } from '../../connection-codex/application/CodexModeService.js';
+import { clearCodexShellForGlobeInit } from '../../connection-codex/codex-mode/mode-entry/CodexModeService.js';
 
 /**
  * Sets up globe container for initialization (invisible but functional)

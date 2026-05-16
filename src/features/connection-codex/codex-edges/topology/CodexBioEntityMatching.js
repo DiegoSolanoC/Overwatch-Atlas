@@ -2,7 +2,7 @@
  * Resolve codex portrait nodes ↔ story-archive entity names (minimal helpers; DOM-free).
  */
 
-import { getFactionMatchHelpers } from '../integration/CodexAppBridge.js';
+import { getFactionMatchHelpers } from '../../codex-integration/bridge/CodexAppBridge.js';
 import {
     heroNamesLooselyEqualCodex,
     normalizeBioNameLoose

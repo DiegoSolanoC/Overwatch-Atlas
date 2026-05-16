@@ -7,11 +7,11 @@ import {
     CODEX_SAVE_VERSION,
     CODEX_WORLD_EXPAND_SHIFT_X,
     CODEX_WORLD_EXPAND_SHIFT_Y
-} from './CodexLayoutConstants.js';
+} from '../persistence/CodexLayoutConstants.js';
 import {
     dedupeCodexEdgesByNodePair,
     normalizeEdgeRecord
-} from './CodexGraphPrimitives.js';
+} from '../../codex-edges/topology/CodexGraphPrimitives.js';
 
 function parseLoadedCodexPayload(parsed) {
     let nodes = null;

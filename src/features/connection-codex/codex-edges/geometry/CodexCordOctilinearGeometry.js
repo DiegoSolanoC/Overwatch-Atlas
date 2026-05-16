@@ -2,7 +2,7 @@
  * Octilinear cord geometry: degree readouts and “near a 45° lane” tests (world/SVG space, y down).
  */
 
-import { CODEX_OCT_RAD, CODEX_OCT_SOFT_SNAP_TOL_DEG } from './CodexCanvasTuning.js';
+import { CODEX_OCT_RAD, CODEX_OCT_SOFT_SNAP_TOL_DEG } from '../../codex-camera/viewport/CodexCanvasTuning.js';
 
 /**
  * True geometric bearing of segment p0→p1 in degrees (0–359, 0° = east → 90° = south, world y down).

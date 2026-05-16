@@ -2,9 +2,9 @@
  * Octilinear elbow facets at simple waypoint junctions (axis segment meets diagonal).
  */
 
-import { CODEX_ELBOW_BEARING_TOL_DEG, CODEX_ELBOW_PARALLELOGRAM_ARM_PX } from '../domain/CodexCanvasTuning.js';
-import { codexPointInWorldRect } from '../domain/CodexViewportWorldBounds.js';
-import { appendCordFilteredPolygonGroup } from '../presentation/CodexCordSvgElements.js';
+import { CODEX_ELBOW_BEARING_TOL_DEG, CODEX_ELBOW_PARALLELOGRAM_ARM_PX } from '../../codex-camera/viewport/CodexCanvasTuning.js';
+import { codexPointInWorldRect } from '../../codex-camera/viewport/CodexViewportWorldBounds.js';
+import { appendCordFilteredPolygonGroup } from '../svg/CodexCordSvgElements.js';
 
 /**
  * @typedef {object} CodexJunctionElbowContext

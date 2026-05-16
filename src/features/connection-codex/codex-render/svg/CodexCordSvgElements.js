@@ -2,7 +2,7 @@
  * Reusable SVG `<defs>` filters and cord stroke groups for Codex edges and animated packets.
  */
 
-import { CODEX_CORD_STROKE_OPACITY, CODEX_EDGE_FILTER_PAD_PX } from '../domain/CodexCanvasTuning.js';
+import { CODEX_CORD_STROKE_OPACITY, CODEX_EDGE_FILTER_PAD_PX } from '../../codex-camera/viewport/CodexCanvasTuning.js';
 
 /**
  * Cord: dilate + blur with stacked halo; `blurLayers` controls glow strength (merge count before core).

@@ -3,41 +3,41 @@
  * Cords use free positioning while dragging; on release, segments to fixed neighbors snap to 45° if within a small angular window.
  */
 
-import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY, CODEX_WORLD_H, CODEX_WORLD_W } from '../domain/CodexLayoutConstants.js';
+import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY, CODEX_WORLD_H, CODEX_WORLD_W } from '../codex-data/persistence/CodexLayoutConstants.js';
 import {
     codexEdgePolyIntersectsRect,
     codexPointInWorldRect,
     codexUnionBoundsFromEdgePolys,
     computeCodexVisibleWorldBoundsExpanded
-} from '../domain/CodexViewportWorldBounds.js';
+} from '../codex-camera/viewport/CodexViewportWorldBounds.js';
 import {
     downloadTextFileAsJson,
     serializeCodexLayoutSnapshot,
     stringifyCodexLayoutJson
-} from '../domain/CodexLayoutSerialization.js';
+} from '../codex-data/persistence/CodexLayoutSerialization.js';
 import {
     computeCodexPanForNodeBounds,
     computeCodexPanForWorldCenter
-} from '../domain/CodexViewFraming.js';
+} from '../codex-camera/transform/CodexViewFraming.js';
 import {
     cordAngleDistToNearestOctilinearDegFromRad,
     cordSegmentDegreesLabel,
     cordSegmentWithinOctilinearToleranceDegrees
-} from '../domain/CodexCordOctilinearGeometry.js';
+} from '../codex-edges/geometry/CodexCordOctilinearGeometry.js';
 import {
     codexUnorderedPairKey,
     edgeDirectedKey,
     generateNodeId,
     heroNamesLooselyEqualCodex
-} from '../domain/CodexGraphPrimitives.js';
+} from '../codex-edges/topology/CodexGraphPrimitives.js';
 import {
     codexBioEntityPairHasJunctionAlternatePath as topologyJunctionAlternatePath,
     codexEdgeIsBioEntityChord,
     hasCodexConnectionBetween as topologyHasUndirectedLink
-} from '../domain/CodexGraphTopology.js';
-import { findCodexNodeIdForBioEntity } from '../domain/CodexBioEntityMatching.js';
-import { parseMigrateAndDedupeCodexSource } from '../domain/CodexPayloadMigration.js';
-import { fetchCanonicalCodexJson } from '../infrastructure/CodexJsonRepository.js';
+} from '../codex-edges/topology/CodexGraphTopology.js';
+import { findCodexNodeIdForBioEntity } from '../codex-edges/topology/CodexBioEntityMatching.js';
+import { parseMigrateAndDedupeCodexSource } from '../codex-data/migration/CodexPayloadMigration.js';
+import { fetchCanonicalCodexJson } from '../codex-data/load/CodexJsonRepository.js';
 import {
     applyLocationFlagBioHighlight,
     dispatchBioArchivesRefreshed,
@@ -57,21 +57,21 @@ import {
     resolveCodexRepoApiUrl,
     updateAppStatus,
     userConfirms
-} from '../integration/CodexAppBridge.js';
-import { parseCodexJsonInWorker, terminateCodexJsonParseWorker } from '../infrastructure/CodexJsonParseWorker.js';
-import { escapeHtml, hexToRgba } from '../presentation/CodexPresentationUtils.js';
+} from '../codex-integration/bridge/CodexAppBridge.js';
+import { parseCodexJsonInWorker, terminateCodexJsonParseWorker } from '../codex-data/load/CodexJsonParseWorker.js';
+import { escapeHtml, hexToRgba } from '../codex-render/svg/CodexPresentationUtils.js';
 import {
     appendCordFilteredLineGroup,
     appendEdgeGlowFilter,
     appendSoftPacketGlowFilter
-} from '../presentation/CodexCordSvgElements.js';
+} from '../codex-render/svg/CodexCordSvgElements.js';
 import {
     appendCodexEdgeNodeMask as appendCodexEdgeNodeMaskCore,
     nodeFrameIntersectsRect,
     parseTranslatePxFromTransform
-} from '../presentation/CodexNodeFrameSvg.js';
-import { observeCodexImage, disconnectCodexImageObserver } from '../presentation/CodexImageLazyLoad.js';
-import { codexFrameVariantForId, codexHexRotationDegreesForId } from '../domain/CodexNodeVisualHash.js';
+} from '../codex-render/svg/CodexNodeFrameSvg.js';
+import { observeCodexImage, disconnectCodexImageObserver } from '../codex-render/lazy-images/CodexImageLazyLoad.js';
+import { codexFrameVariantForId, codexHexRotationDegreesForId } from '../codex-nodes/placement/CodexNodeVisualHash.js';
 import {
     CODEX_ALLOWED_COUNTRY_KEYS,
     CODEX_DEFAULT_SCALE_COUNTRY,
@@ -88,7 +88,7 @@ import {
     codexCountryFlagSrc,
     normalizeCodexCountryKey,
     resolveCodexNodeScale
-} from '../domain/CodexNodePortraitMetrics.js';
+} from '../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import {
     CODEX_EDGE_CULL_MARGIN_PX,
     CODEX_EDGE_DEGREE_FONT_PX,
@@ -111,14 +111,14 @@ import {
     CODEX_ZOOM_MIN,
     DRAG_THRESHOLD_PX,
     normalizeCodexVisualPrefs
-} from '../domain/CodexCanvasTuning.js';
+} from '../codex-camera/viewport/CodexCanvasTuning.js';
 import {
     clearCodexEdgeRedrawSchedule,
     redrawCodexEdges,
     registerCodexEdgeRedrawRuntime,
     scheduleRedrawCodexEdges,
     unregisterCodexEdgeRedrawRuntime
-} from './CodexEdgeRedraw.js';
+} from '../codex-render/redraw/CodexEdgeRedraw.js';
 import {
     codexStopCordAnimRafOnly,
     deleteCodexCordPacketStateForKey,
@@ -127,13 +127,13 @@ import {
     stopCordAnimAndClearCordPacketState,
     syncCodexCordPacketState,
     unregisterCodexCordPacketRuntime
-} from './CodexCordPacketAnimation.js';
-import { appendCodexJunctionElbowParallelograms as appendCodexJunctionElbowParallelogramsCore } from './CodexJunctionElbowParallelograms.js';
+} from '../codex-render/packets/CodexCordPacketAnimation.js';
+import { appendCodexJunctionElbowParallelograms as appendCodexJunctionElbowParallelogramsCore } from '../codex-render/junction-decor/CodexJunctionElbowParallelograms.js';
 import {
     previewBioCodexArchiveLinkDiff,
     registerCodexBioPreviewRuntime,
     unregisterCodexBioPreviewRuntime
-} from './CodexCanvasBioSyncPreview.js';
+} from '../codex-bio-sync/preview/CodexCanvasBioSyncPreview.js';
 export { previewBioCodexArchiveLinkDiff };
 import {
     clearCodexVirtualScroll,
@@ -141,7 +141,7 @@ import {
     scheduleUpdateCodexVirtualScroll,
     unregisterCodexVirtualScrollRuntime,
     updateCodexVirtualScroll
-} from './CodexVirtualScroll.js';
+} from '../codex-render/virtual-scroll/CodexVirtualScroll.js';
 
 let root = null;
 let hitLayerEl = null;

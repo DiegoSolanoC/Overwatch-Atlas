@@ -5,7 +5,7 @@
 import {
     isCodexPersistToRepoAvailable,
     resolveCodexRepoApiUrl
-} from '../integration/CodexAppBridge.js';
+} from '../../codex-integration/bridge/CodexAppBridge.js';
 
 /**
  * Canonical Codex snapshot: try `/api/codex` on the Node dev server, then always try static `src/data/codex-labels.json`.

@@ -2,7 +2,7 @@
  * Codex node frame bounds in world/SVG space and SVG mask used to clip cords under portrait alpha.
  */
 
-import { CODEX_NODE_ALPHA_PATH } from '../domain/CodexNodePortraitMetrics.js';
+import { CODEX_NODE_ALPHA_PATH } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 
 export function parseTranslatePxFromTransform(transformStr) {
     if (!transformStr || transformStr === 'none') return { tx: 0, ty: 0 };

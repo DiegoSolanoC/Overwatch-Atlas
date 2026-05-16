@@ -20,9 +20,9 @@ import {
     CODEX_PACKET_PULSE_WIDTH_PEAK_MULT,
     CODEX_PACKET_SPEED_MAX,
     CODEX_PACKET_SPEED_MIN
-} from '../domain/CodexCanvasTuning.js';
-import { edgeDirectedKey } from '../domain/CodexGraphPrimitives.js';
-import { appendCordFilteredLineGroup, appendCordPlainLineGroup } from '../presentation/CodexCordSvgElements.js';
+} from '../../codex-camera/viewport/CodexCanvasTuning.js';
+import { edgeDirectedKey } from '../../codex-edges/topology/CodexGraphPrimitives.js';
+import { appendCordFilteredLineGroup, appendCordPlainLineGroup } from '../svg/CodexCordSvgElements.js';
 
 /** @type {CodexCordPacketRuntime|null} */
 let _rt = null;

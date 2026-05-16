@@ -6,7 +6,7 @@
 import {
     computeCodexVirtualViewportBounds,
     isCodexNodeInVirtualViewport
-} from '../domain/CodexCanvasTuning.js';
+} from '../../codex-camera/viewport/CodexCanvasTuning.js';
 
 /** @type {CodexVirtualScrollRuntime|null} */
 let _rt = null;

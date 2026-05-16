@@ -2,14 +2,14 @@
  * Dev-server bio ↔ Codex link diff preview overlay (`POST /api/codex/bio-sync-preview`).
  */
 
-import { CODEX_SAVE_VERSION } from '../domain/CodexLayoutConstants.js';
-import { serializeCodexLayoutSnapshot } from '../domain/CodexLayoutSerialization.js';
+import { CODEX_SAVE_VERSION } from '../../codex-data/persistence/CodexLayoutConstants.js';
+import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/CodexLayoutSerialization.js';
 import {
     resolveCodexRepoApiUrl,
     updateAppStatus,
     isCodexPersistToRepoAvailable
-} from '../integration/CodexAppBridge.js';
-import { escapeHtml } from '../presentation/CodexPresentationUtils.js';
+} from '../../codex-integration/bridge/CodexAppBridge.js';
+import { escapeHtml } from '../../codex-render/svg/CodexPresentationUtils.js';
 
 const CODEX_BIO_SYNC_PREVIEW_MAX_LINES = 45;
 
