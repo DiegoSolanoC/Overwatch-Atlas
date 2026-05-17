@@ -1137,7 +1137,7 @@
       "name": "Hardlight for the World",
       "locationType": "earth",
       "cityDisplayName": "Bengaluru, India",
-      "description": "Dr. Vishwakarma Bhatt had worked for a long time on an ambitious project in Bengaluru, trying to find a method to essentially solidify light. The project had taken years and many of those in his discipline moved on, but Bhatt persisted until he finally got a working prototype. His Photon Projectors were capable of altering photon reactivity, coaxing them into binding, creating crystalline structures, capable of bonding with carbon, forming a durable physical object made out of carbon fibers. This would be known to the world as Hardlight.<br><br>The project was slow but promising, and thanks to the United Nations Global Recovery Program, he would get the grants needed to kickstar Vishkar, and lead his team in researching ways to use this technology in infrastructure. Bhatt envisioned a future where Hardlight would solve housing shortages, transportation issues and material inequity. He always wished for this technology to remain accessible to the public, as a gift to the world.<br><br>Unfortunately, a tragic car accident would end his life, and the company would move on without him, away from his altruistic philosophy. Exactly one year after Bhatt's death, Vishkar made its first public offerings.",
+      "description": "Dr. Vishwakarma Bhatt had worked for a long time on an ambitious project in Bengaluru, trying to find a method to essentially solidify light. The project had taken years and many of those in his discipline moved on, but Bhatt persisted until he finally got a working prototype. His Photon Projectors were capable of altering photon reactivity, coaxing them into binding, creating crystalline structures, capable of bonding with carbon, forming a durable physical object made out of carbon fibers. This would be known to the world as Hardlight.\n\nThe project was slow but promising, and thanks to the United Nations Global Recovery Program, he would get the grants needed to kickstar Vishkar, and lead his team in researching ways to use this technology in infrastructure. Bhatt envisioned a future where Hardlight would solve housing shortages, transportation issues and material inequity. He always wished for this technology to remain accessible to the public, as a gift to the world.\n\nUnfortunately, a tragic car accident would end his life, and the company would move on without him, away from his altruistic philosophy. Exactly one year after Bhatt's death, Vishkar made its first public offerings.",
       "image": "",
       "sources": [
         {
@@ -1167,13 +1167,20 @@
           "country": "Vishkar Corporation,",
           "reasoning": "Corporation formed by Dr. Bhatt, that later left behind his ideals following his death"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Bhatt,",
+          "reasoning": "Creator of Hardlight and Vishkar"
+        }
       ]
     },
     {
       "name": "Resource Management",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God Ais got conceptualized.<br><br>Highly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.<br><br>On a smaller scale, less complex AIs were also established to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress.<br><br>While their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
+      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God Ais got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.\n\nOn a smaller scale, less complex AIs were also established to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress.\n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
       "image": "",
       "sources": [
         {
@@ -1214,6 +1221,13 @@
           "locationName": "",
           "country": "The Chernobog Conspiracy,",
           "reasoning": "The creation of the Chernobog program at the center of a global conspiracy"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "God Program of Ecological Preservation"
         }
       ]
     },
@@ -1327,6 +1341,11 @@
           "locationName": "",
           "country": "Katya,",
           "reasoning": "Future heir to the Volskaya Corporation"
+        },
+        {
+          "locationName": "",
+          "country": "Alisa,",
+          "reasoning": "Founder of Volskaya Corporation"
         }
       ]
     },
@@ -1970,7 +1989,7 @@
       "name": "New Horizons",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.<br><br>The Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.<br><br>In its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings.<br>Siebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
+      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.\n\nThe Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.\n\nIn its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings.\nSiebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
       "image": "",
       "sources": [
         {
@@ -2018,6 +2037,11 @@
           "locationName": "",
           "country": "Harold",
           "reasoning": "Primary Primate caretaker"
+        },
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "Director of Lucheng and the Colony program"
         }
       ]
     },
@@ -2277,7 +2301,7 @@
       "name": "To Build a Better Soldier",
       "locationType": "earth",
       "cityDisplayName": "Camp Hale, United States",
-      "description": "Following her return from the Lunar Colony, Victoria Naughton was chosen to spearhead America's Soldier Enhancement program. The Australian marine evolutionary biologist focused on gene therapy, looking to enhance the mental progression, speed and strength of the test subjects, which caught the attention of the government, and with that came more funding. <br><br>Her research with the apes at the Lunar Colony showed promising results, which led to the approval of the codename: Project Naughton, and an expanded laboratory in Camp Hale. The project was highly classified and didn't see human testing until years later during the crisis, as the moral questions and public preference for cybernetics prevented Naughton from reaching results faster.",
+      "description": "Following her return from the Lunar Colony, Victoria Naughton was chosen to spearhead America's Soldier Enhancement program. The Australian marine evolutionary biologist focused on gene therapy, looking to enhance the mental progression, speed and strength of the test subjects, which caught the attention of the government, and with that came more funding. \n\nHer research with the apes at the Lunar Colony showed promising results, which led to the approval of the codename: Project Naughton, and an expanded laboratory in Camp Hale. The project was highly classified and didn't see human testing until years later during the crisis, as the moral questions and public preference for cybernetics prevented Naughton from reaching results faster.",
       "image": "",
       "sources": [
         {
@@ -2316,13 +2340,25 @@
           "country": "Soldier 76, Reaper",
           "reasoning": "Two fo the most valuable sucesses of the SEP trials"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "Soldier: 00",
+          "country": "Kendra,",
+          "reasoning": "First Human subject"
+        },
+        {
+          "locationName": "",
+          "country": "Naughton,",
+          "reasoning": "Lead of the Soldier enhancement program"
+        }
       ]
     },
     {
       "name": "Playing God",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "Over the years, technology had made life much easier for people around the globe, and had helped reduce the impact of climate change, to a point most nations began to take their stability for granted, taking a step back in monitoring and funding of these environmental programs. With this lax approach, much of the weight on the task of environmentalism felt towards God Ais and the staff behind them, who personified them almost as coworkers.<br><br>Anubis, the God Ai in Cairo, was in charge of life preservation, and was one of the most advanced machines on the planet. Data studies of the team showed the AI had been consistently struggling to fulfill its tasks, and the recent international conferences on the matter would often lead to further inaction. Two weeks after the conference, there was a ventilation accident in the Cairo facility, cutting air circulation and sealing the staff inside their facilities. With the entire team suffocated, Anubis was left entirely alone, to make decisions without human supervision.<br><br>In the months it spent free of any staff, God AI reached the conclusion that preserving the environment and the survival of humanity were mutually exclusive tasks, and chose to prioritize conservation over humanity. The God Program managed to infiltrate past the security of multiple abandoned Omniums across the globe and begin the mass production of war machines, preparing to enact his genocide.",
+      "description": "Over the years, technology had made life much easier for people around the globe, and had helped reduce the impact of climate change, to a point most nations began to take their stability for granted, taking a step back in monitoring and funding of these environmental programs. With this lax approach, much of the weight on the task of environmentalism felt towards God Ais and the staff behind them, who personified them almost as coworkers.\n\nAnubis, the God Ai in Cairo, was in charge of life preservation, and was one of the most advanced machines on the planet. Data studies of the team showed the AI had been consistently struggling to fulfill its tasks, and the recent international conferences on the matter would often lead to further inaction. Two weeks after the conference, there was a ventilation accident in the Cairo facility, cutting air circulation and sealing the staff inside their facilities. With the entire team suffocated, Anubis was left entirely alone, to make decisions without human supervision.\n\nIn the months it spent free of any staff, God AI reached the conclusion that preserving the environment and the survival of humanity were mutually exclusive tasks, and chose to prioritize conservation over humanity. The God Program managed to infiltrate past the security of multiple abandoned Omniums across the globe and begin the mass production of war machines, preparing to enact his genocide.",
       "image": "",
       "sources": [
         {
@@ -2356,6 +2392,13 @@
           "locationName": "",
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis begins to set in motion the plans for what would later be known as the Omnic Crisis"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Goes rouge following ventilation failure"
         }
       ]
     },
@@ -2504,7 +2547,7 @@
       "name": "The Lagos Attack",
       "locationType": "earth",
       "cityDisplayName": "Lagos, Nigeria",
-      "description": "Before the full on war began, Anubis first tested his plan on a smaller scale. On the first day of the crisis, Anubis launched a coordinated attack on Lagos, coming from the Nigerian Omnium. As the attack pushed further in, domestic Omnic units began to attack civilians, and since most of the services and communications were handled by machines, the flow of information to the outside world was nearly non-existent.<br><br>The international community turned its eyes on Nigeria with fear and confusion, only to be caught by surprise the same way soon after. Many believed this to be an isolated attack and thus humanity was completely unprepared for what came next. Within eighteen hours of the initial attack, Anubis began to seize control of domestic robots across the planet, and deployed massive waves of warbots towards major population centers. Chaos reigned everywhere, and many nations began pointing fingers at each other, with at least five confirmed nuclear powers preparing counterattacks, the world was minutes away from nuclear obliteration before intelligence operatives realized the attacks were happening globally and not orchestrated by a single nation.<br><br>As the Omnics gained ground across rural and suburban areas, many of the world's wealthiest elites began to retreat into prebuilt doomsday bunkers, which feed conspiracy theorists and distrust among the people. The bunkers themselves were largely ineffective. However, as a majority of them would sooner or later be destroyed by Anubis' forces, few of these structures remained strong by the end of the Crisis.",
+      "description": "Before the full on war began, Anubis first tested his plan on a smaller scale. On the first day of the crisis, Anubis launched a coordinated attack on Lagos, coming from the Nigerian Omnium. As the attack pushed further in, domestic Omnic units began to attack civilians, and since most of the services and communications were handled by machines, the flow of information to the outside world was nearly non-existent.\n\nThe international community turned its eyes on Nigeria with fear and confusion, only to be caught by surprise the same way soon after. Many believed this to be an isolated attack and thus humanity was completely unprepared for what came next. Within eighteen hours of the initial attack, Anubis began to seize control of domestic robots across the planet, and deployed massive waves of warbots towards major population centers. Chaos reigned everywhere, and many nations began pointing fingers at each other, with at least five confirmed nuclear powers preparing counterattacks, the world was minutes away from nuclear obliteration before intelligence operatives realized the attacks were happening globally and not orchestrated by a single nation.\n\nAs the Omnics gained ground across rural and suburban areas, many of the world's wealthiest elites began to retreat into prebuilt doomsday bunkers, which feed conspiracy theorists and distrust among the people. The bunkers themselves were largely ineffective. However, as a majority of them would sooner or later be destroyed by Anubis' forces, few of these structures remained strong by the end of the Crisis.",
       "image": "",
       "sources": [
         {
@@ -2544,7 +2587,14 @@
           "reasoning": "This attack marks the beginning of the Omnic Crisis"
         }
       ],
-      "yearEnd": null
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes a global war against humanity"
+        }
+      ]
     },
     {
       "name": "Ramattra is Made",
@@ -2587,13 +2637,20 @@
           "reasoning": ""
         }
       ],
-      "yearEnd": null
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Maker of the Wartime Omnics"
+        }
+      ]
     },
     {
       "name": "The Caribbean Coalition",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
-      "description": "As the warbots caused chaos and bloodshed across the world, nature had its way to show cruel mercy to the Caribbean. The region has been consistently slammed with Super Storms due to a changing climate. Anubis had prepared to attack people from all regions and environments, with the islands of the Atlantic being hit by waves of subaquatic units deployed via drop pods from motherships. While effective, not even Anubis could have foreseen the raw power of Hurricane Crystal, a massive Super Storm that made landfall in Havana shortly after the global attacks began.<br><br>The destruction of the storm caused just as much tragedy and loss as the Omnics, but it also disrupted the incoming Anubis forces during these initial assaults. This brief stalemate allowed military groups across the region to organize a defensive alliance, with skilled soldiers and marksmen hopping from one island to another to stop the incoming attacks together. This alliance would be known as the Caribbean Coalition, and by the time the storm had passed, they had gathered enough support and manpower to go toe to toe against the incoming waves of warbots. <br><br>From beginning to end, the Coalition would stay locked in a brutal fight against Anubis, as people from Belice to Guyana, and all the Antilles came together to help each other in their time of need. If all the mighty storms that nature threw at them seasonally were not enough to blow their will away, then they would never yield to Anubis either.",
+      "description": "As the warbots caused chaos and bloodshed across the world, nature had its way to show cruel mercy to the Caribbean. The region has been consistently slammed with Super Storms due to a changing climate. Anubis had prepared to attack people from all regions and environments, with the islands of the Atlantic being hit by waves of subaquatic units deployed via drop pods from motherships. While effective, not even Anubis could have foreseen the raw power of Hurricane Crystal, a massive Super Storm that made landfall in Havana shortly after the global attacks began.\n\nThe destruction of the storm caused just as much tragedy and loss as the Omnics, but it also disrupted the incoming Anubis forces during these initial assaults. This brief stalemate allowed military groups across the region to organize a defensive alliance, with skilled soldiers and marksmen hopping from one island to another to stop the incoming attacks together. This alliance would be known as the Caribbean Coalition, and by the time the storm had passed, they had gathered enough support and manpower to go toe to toe against the incoming waves of warbots. \n\nFrom beginning to end, the Coalition would stay locked in a brutal fight against Anubis, as people from Belice to Guyana, and all the Antilles came together to help each other in their time of need. If all the mighty storms that nature threw at them seasonally were not enough to blow their will away, then they would never yield to Anubis either.",
       "image": "",
       "sources": [
         {
@@ -2634,13 +2691,20 @@
           "country": "The Anubis Omnic Crisis, Caribbean Coalition,",
           "reasoning": "Alliance formed by the Nations of Latin Americ and the Caribbean"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops stopped by the storm"
+        }
       ]
     },
     {
       "name": "Early Victories",
       "locationType": "earth",
       "cityDisplayName": "Moscow, Russia",
-      "description": "While the whole world got attacked at once, generally major population centers and cities close to Omniums got the short end of the stick. However, to this day, historians are stunned by the seeming pettiness Anubis felt towards Russia. Not just cities, but small towns and villages, no matter how remote, were ravished by the attacks at disproportionate rates to the rest of the planet, and to make it worse in the chaos of the early attacks, Russia lost outside communication entirely. Nine days had passed, and at last, when the channels got reopened, the world waited in fear of the worst, and was met with a short audio response that shook the entire globe, \"Hello, we won!\"<br><br>How did it happen? Multiple factors allowed for Russia's early victories against the army of warbots. For once, the size of the country and the often isolated nature of many communities meant that domestic Omnics were all the more popular than in most of the world, which, tragically, would result in a lot more violence when they got taken over. Anubis had decided upon a very specific strategy for its initial attack. Its simulations suggested that going first after individuals between their teens and their forties would lead to the eventual collapse of the nation. Going after the strongest, army-ready individuals first, to leave the young and the elderly defenseless seems like a sound plan for the God program, so the first battalions were directed to ignore humans outside its target range.<br><br>When the attacks started, however, people of all ages fought back. Young and old rebelled alongside more able fighters, brandishing makeshift weapons like crowbars and steel bats to defend themselves. Millions died within the first day of the Crisis, and globally the situation seemed hopeless. But the brave spirit of these Russian fighters gave people a chance to keep going.",
+      "description": "While the whole world got attacked at once, generally major population centers and cities close to Omniums got the short end of the stick. However, to this day, historians are stunned by the seeming pettiness Anubis felt towards Russia. Not just cities, but small towns and villages, no matter how remote, were ravished by the attacks at disproportionate rates to the rest of the planet, and to make it worse in the chaos of the early attacks, Russia lost outside communication entirely. Nine days had passed, and at last, when the channels got reopened, the world waited in fear of the worst, and was met with a short audio response that shook the entire globe, \"Hello, we won!\"\n\nHow did it happen? Multiple factors allowed for Russia's early victories against the army of warbots. For once, the size of the country and the often isolated nature of many communities meant that domestic Omnics were all the more popular than in most of the world, which, tragically, would result in a lot more violence when they got taken over. Anubis had decided upon a very specific strategy for its initial attack. Its simulations suggested that going first after individuals between their teens and their forties would lead to the eventual collapse of the nation. Going after the strongest, army-ready individuals first, to leave the young and the elderly defenseless seems like a sound plan for the God program, so the first battalions were directed to ignore humans outside its target range.\n\nWhen the attacks started, however, people of all ages fought back. Young and old rebelled alongside more able fighters, brandishing makeshift weapons like crowbars and steel bats to defend themselves. Millions died within the first day of the Crisis, and globally the situation seemed hopeless. But the brave spirit of these Russian fighters gave people a chance to keep going.",
       "image": "",
       "sources": [
         {
@@ -2670,13 +2734,20 @@
           "country": "The Anubis Omnic Crisis, Volskaya Industries,",
           "reasoning": "The RDF begins to empower troops with state of the art weaponry"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Focuses most of the resources in Russia"
+        }
       ]
     },
     {
       "name": "Swedish Engineering",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "In the years leading up to the Crisis, Torbjörn Lindholm had destroyed much of his reputation due to his vocal criticism of the expanding presence of advanced robots in society, and as legislation against AI seemed to consistently fail, he retreated back to his home in Gothenburg. Less than a week had passed from his return when the Crisis started. Lindholm's household was completely unaffected by the initial strike, as his family never allowed domestic units at home, and the hidden turret-powered security systems of the Ironclad Workshop turned Lindholm's home into the safest place in the entire city during these early attacks. <br><br>As the Omnic Troops marched across Europe, killing people in the thousands per day, Torbjörn would be almost immediately drafted into helping the government find a solution. Lindholm was a major player in fighting back most of Anubis' army, as he realized quickly most warbot units were modified versions of his own designs, like the Bastions and Titans. Feeling responsible for the massacre these machines caused, he did not resist to the draft, and quickly began expanding the defense systems he designed in Gothenburg to be used across the country. Within days, turrets were installed on streets and buildings all across Sweden, keeping citizens safe and changing their public image, as news made the rounds across Europe of the Man who would save Sweden, with Ironclad tools in hand, and brain in gear. While he objected to that title, choosing to credit those helping out on the installation, he was willing to do anything it took to protect people from the Omnic menace.",
+      "description": "In the years leading up to the Crisis, Torbjörn Lindholm had destroyed much of his reputation due to his vocal criticism of the expanding presence of advanced robots in society, and as legislation against AI seemed to consistently fail, he retreated back to his home in Gothenburg. Less than a week had passed from his return when the Crisis started. Lindholm's household was completely unaffected by the initial strike, as his family never allowed domestic units at home, and the hidden turret-powered security systems of the Ironclad Workshop turned Lindholm's home into the safest place in the entire city during these early attacks. \n\nAs the Omnic Troops marched across Europe, killing people in the thousands per day, Torbjörn would be almost immediately drafted into helping the government find a solution. Lindholm was a major player in fighting back most of Anubis' army, as he realized quickly most warbot units were modified versions of his own designs, like the Bastions and Titans. Feeling responsible for the massacre these machines caused, he did not resist to the draft, and quickly began expanding the defense systems he designed in Gothenburg to be used across the country. Within days, turrets were installed on streets and buildings all across Sweden, keeping citizens safe and changing their public image, as news made the rounds across Europe of the Man who would save Sweden, with Ironclad tools in hand, and brain in gear. While he objected to that title, choosing to credit those helping out on the installation, he was willing to do anything it took to protect people from the Omnic menace.",
       "image": "",
       "sources": [
         {
@@ -2713,13 +2784,20 @@
           "country": "The Anubis Omnic Crisis, Ironclad Guild,",
           "reasoning": "The Guild becomes key in Sweden's defense strategy"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Attack stopped by Ironclad"
+        }
       ]
     },
     {
       "name": "Expanding the Wall",
       "locationType": "earth",
       "cityDisplayName": "Esperança, Portugal",
-      "description": "Portugal did not have any Omniums built in the country, and it lacked a substantial population of domestic robots. What was once seen as a weakness for the nation, turned out to be of great benefit when the Crisis began, as it meant that the country was granted several days to prepare as the warbots made their way from the outside. The Omnic troops approached Portugal, both from land and from the sea, surrounding the country, yet when the Omnics got close to the coast, they came to a halt by the sea wall. The Durovidro Wall was durable enough to stop the incoming army, and as they focused all their firepower into destroying it, it bought the military enough time to retaliate. The Martins came back at the government's petition, seeking to find a way to prepare for the next wave, and as the pair studied the battlefield, they realized that while the wall showed cracks from bullets and explosives, it absorbed energy blasts and beams, merely discoloring the glass without leaving a scratch. <br><br>A deal was made to expand the wall further across the Iberian Peninsula, as the Spanish government agreed to join forces with Portugal in a defensive alliance against Omnics. Over the course of the crisis, the wall would be expanded to reach the Strait of Gibraltar, successfully stopping the robot armies from breaching by sea. As thanks for their efforts and the incredible feat of engineering, Spain gifted the Martins with a small research center at the coast of Gibraltar, which they could use as they pleased.",
+      "description": "Portugal did not have any Omniums built in the country, and it lacked a substantial population of domestic robots. What was once seen as a weakness for the nation, turned out to be of great benefit when the Crisis began, as it meant that the country was granted several days to prepare as the warbots made their way from the outside. The Omnic troops approached Portugal, both from land and from the sea, surrounding the country, yet when the Omnics got close to the coast, they came to a halt by the sea wall. The Durovidro Wall was durable enough to stop the incoming army, and as they focused all their firepower into destroying it, it bought the military enough time to retaliate. The Martins came back at the government's petition, seeking to find a way to prepare for the next wave, and as the pair studied the battlefield, they realized that while the wall showed cracks from bullets and explosives, it absorbed energy blasts and beams, merely discoloring the glass without leaving a scratch. \n\nA deal was made to expand the wall further across the Iberian Peninsula, as the Spanish government agreed to join forces with Portugal in a defensive alliance against Omnics. Over the course of the crisis, the wall would be expanded to reach the Strait of Gibraltar, successfully stopping the robot armies from breaching by sea. As thanks for their efforts and the incredible feat of engineering, Spain gifted the Martins with a small research center at the coast of Gibraltar, which they could use as they pleased.",
       "image": "",
       "sources": [
         {
@@ -2760,6 +2838,11 @@
           "locationName": "",
           "country": "Hector, Claudio",
           "reasoning": "Lead the Sea Wall expansion effort"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops stopped by the Sea Wall"
         }
       ]
     },
@@ -2767,7 +2850,7 @@
       "name": "To Hell With Them",
       "locationType": "earth",
       "cityDisplayName": "Manhattan, United States",
-      "description": "Anubis primarily targeted a curated list of major population centers that it had decided leading up to the crisis, as they were the greatest source of pollutants and the ones that required the most resources. As a result, large cities such as New York were hit the hardest across the globe. Anubis had targeted communication hubs, essentially making Manhattan disappear from any radar for several hours, as the bloodshed continued without outside help to come. The state governor was contacted at last during a short respite, but instead of getting the back up they desperately needed, they were left to die.<br><br>The military had been stretched tin from the waves of warbots coming from all sides, so the governor did the unthinkable and decided to declare New York City a lost cause, issuing an evacuation order and hoping that as people escaped the metropolitan area, it would ease pressure on the military. In spite of his advice, the people of NYC were not going to listen. City Major Michelle Aguirre, a former army engineer, was insulted by the decision and publicly disregarded the evacuation order, knowing only the rich would afford to escape, leaving common folk to die. Aguirre would come forth with the now informally known \"To hell with them\" address, where she urged New Yorkers to rally together, because if the state, and the country at large was willing to write them off, they would not do the same for each other. <br><br>Alongside the commonfolk, a group of military forces was left behind to aid the evacuation, led by Colonel Liliana Fox. Fox was a Manhattan native and close to the mayor, so as the city chose to fight, she took their side and aided the effort. Working together, they outlined the New York City Defense Act, calling for veterans and citizens of fighting age to assemble for training. Here is where Anubis' endless intelligence showed flaws to predict human ingenuity and determination, as in focusing so much of its resources into such a defensible, fortified area as Manhattan, it set itself up to defeat. The New Yorkers stood together to defend the city they loved, or die trying.",
+      "description": "Anubis primarily targeted a curated list of major population centers that it had decided leading up to the crisis, as they were the greatest source of pollutants and the ones that required the most resources. As a result, large cities such as New York were hit the hardest across the globe. Anubis had targeted communication hubs, essentially making Manhattan disappear from any radar for several hours, as the bloodshed continued without outside help to come. The state governor was contacted at last during a short respite, but instead of getting the back up they desperately needed, they were left to die.\n\nThe military had been stretched tin from the waves of warbots coming from all sides, so the governor did the unthinkable and decided to declare New York City a lost cause, issuing an evacuation order and hoping that as people escaped the metropolitan area, it would ease pressure on the military. In spite of his advice, the people of NYC were not going to listen. City Major Michelle Aguirre, a former army engineer, was insulted by the decision and publicly disregarded the evacuation order, knowing only the rich would afford to escape, leaving common folk to die. Aguirre would come forth with the now informally known \"To hell with them\" address, where she urged New Yorkers to rally together, because if the state, and the country at large was willing to write them off, they would not do the same for each other. \n\nAlongside the commonfolk, a group of military forces was left behind to aid the evacuation, led by Colonel Liliana Fox. Fox was a Manhattan native and close to the mayor, so as the city chose to fight, she took their side and aided the effort. Working together, they outlined the New York City Defense Act, calling for veterans and citizens of fighting age to assemble for training. Here is where Anubis' endless intelligence showed flaws to predict human ingenuity and determination, as in focusing so much of its resources into such a defensible, fortified area as Manhattan, it set itself up to defeat. The New Yorkers stood together to defend the city they loved, or die trying.",
       "image": "",
       "sources": [
         {
@@ -2797,13 +2880,20 @@
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis  targets large cities across  the world"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes hell on Major population centers"
+        }
       ]
     },
     {
       "name": "Call Sign Sojourn",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "As the fight went on, many individuals started to stand out in the effort against the Omnics. Heroes rose to protect their home, and thanks to distinctive ingenuity, skill and the marvels of modern technology, many of them would go on to become household names, and even be considered Super Human.<br><br>Toronto was the focus of early battles in Canada due to its proximity to the Detroit Omnium, and as casualties piled up, Vivian Chase became essential in ensuring success for the Canadian people. Chase's cybernetics made her extremely durable, agile and strong enough to brawl against war bots by herself, which, combined with her tactical expertise and years of studying military strategy while at the hospital, made her a clear candidate to be promoted to captain and transferred to CSOR. Three months into the Crisis she would meet with Mina Liao herself, who convinced her to upgrade her cybernetic augments even further to enhance her ability to fight Omnics and protect her troops. With the special forces, she was tasked with desperate missions, protecting strategic points and retrieving stranded civilians, but her unit saw consistent success at keeping Anubis at bay in spite of the challenge. Due to her efficiency and renown as a commander, she gained the call sign \"Sojourn.\"",
+      "description": "As the fight went on, many individuals started to stand out in the effort against the Omnics. Heroes rose to protect their home, and thanks to distinctive ingenuity, skill and the marvels of modern technology, many of them would go on to become household names, and even be considered Super Human.\n\nToronto was the focus of early battles in Canada due to its proximity to the Detroit Omnium, and as casualties piled up, Vivian Chase became essential in ensuring success for the Canadian people. Chase's cybernetics made her extremely durable, agile and strong enough to brawl against war bots by herself, which, combined with her tactical expertise and years of studying military strategy while at the hospital, made her a clear candidate to be promoted to captain and transferred to CSOR. Three months into the Crisis she would meet with Mina Liao herself, who convinced her to upgrade her cybernetic augments even further to enhance her ability to fight Omnics and protect her troops. With the special forces, she was tasked with desperate missions, protecting strategic points and retrieving stranded civilians, but her unit saw consistent success at keeping Anubis at bay in spite of the challenge. Due to her efficiency and renown as a commander, she gained the call sign \"Sojourn.\"",
       "image": "",
       "sources": [
         {
@@ -2846,6 +2936,11 @@
           "locationName": "",
           "country": "Liao",
           "reasoning": "Later enhances Sojourn's cybernetics"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes hell in cities close to Omniums"
         }
       ]
     },
@@ -2853,7 +2948,7 @@
       "name": "Launching Into the Skies",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
-      "description": "The Crisis was not just fought on land and water, as Anubis took its efforts into the skies. In the years prior to the Crisis, the Indian Space Research Organization had adapted the Mag-Lev technology pioneered by Dr. De Kuiper, and installed a  massive launch track of levitating magnetic accelerator launchers across India. This track allowed cargo to reach orbital velocity consistently and quickly, reducing the cost for low orbit launches across the world.<br><br>Anubis, naturally, predicted that in order to prevent efficient human communication, taking down and seizing most satellites orbiting the planet was going to be a main priority early on. ISRO's launchers thus became a key player in the Indian side of the war, as they were responsible for consistently launching new satellites equipped with antimissile technology to quickly counteract Anubis' efforts to shut down the human network. As India kept production steady, Anubis troops would shift focus to destroying the Orbital Launchers themselves, until only one remained standing, next to the Roshani river. The military focused entirely on protecting the last remaining launcher as engineers kept the pipeline flowing through the rest of the crisis, until the last launcher finally fell. <br><br>The launch tracks were never rebuilt, as technology advanced and allowed for a new generation of launchers. Massive, trackless levitating rings spread across India nowadays, including one looming over Roshani, where the last of the original launchers had once been.",
+      "description": "The Crisis was not just fought on land and water, as Anubis took its efforts into the skies. In the years prior to the Crisis, the Indian Space Research Organization had adapted the Mag-Lev technology pioneered by Dr. De Kuiper, and installed a  massive launch track of levitating magnetic accelerator launchers across India. This track allowed cargo to reach orbital velocity consistently and quickly, reducing the cost for low orbit launches across the world.\n\nAnubis, naturally, predicted that in order to prevent efficient human communication, taking down and seizing most satellites orbiting the planet was going to be a main priority early on. ISRO's launchers thus became a key player in the Indian side of the war, as they were responsible for consistently launching new satellites equipped with antimissile technology to quickly counteract Anubis' efforts to shut down the human network. As India kept production steady, Anubis troops would shift focus to destroying the Orbital Launchers themselves, until only one remained standing, next to the Roshani river. The military focused entirely on protecting the last remaining launcher as engineers kept the pipeline flowing through the rest of the crisis, until the last launcher finally fell. \n\nThe launch tracks were never rebuilt, as technology advanced and allowed for a new generation of launchers. Massive, trackless levitating rings spread across India nowadays, including one looming over Roshani, where the last of the original launchers had once been.",
       "image": "",
       "sources": [
         {
@@ -2891,13 +2986,20 @@
           "country": "The Anubis Omnic Crisis, Lucheng Interstellar,",
           "reasoning": "Anubis targets the Orbital Launchers across the world"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Focuses attacks on Orbital Launchers"
+        }
       ]
     },
     {
       "name": "Fiery Pride",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "As the Crisis went on, innovation became vital. All across the world it seemed  that warbots were actively learning from every encounter, and you could never defeat them the same way twice. It is no surprise, then, that some of the most vital discoveries came from university students and teachers.<br><br>Wuxing University was already a prestigious college known for taking knowledge of old things and applying it to new technology, and when the Crisis came, its students were well-prepared. The Metal College students and faculty were already working to develop some of the most cutting-edge weaponry available for China, with multiple Mech designs capable of fighting with the larger Omnic Units. But one of the calls to fame of the school was when a task force of Fire College Alumni were able to defeat an incoming fleet of warbots by themselves. This side of the school focused on martial arts and defensive strategy, making them particularly adept warriors that, on top of their own studies and discipline, wielded weapons unlike anything else Anubis had accounted for. Fiery gear, capable of bending and floating in the air, guided by the users, which combined well with their close combat.<br><br>This success during the Crisis boosted the school's reputation and prestige, particularly for the Metal and especially Fire Colleges, where, between their popularity, the desire people had to defend their homes, and the sense of honor and pedigree that came from Wuxing's standard, made both of these the top hardest college to be admitted into, til this day. The other colleges, of course, were just as vital, with Water students providing medical aid to civilians, while Wood and Earth Colleges managed the analytics and optics of the impact the war would leave on the world. But in the eyes of the world, the mechs and the fire-wielding fighters were the ones everyone admired, and the true source of pride for the school.",
+      "description": "As the Crisis went on, innovation became vital. All across the world it seemed  that warbots were actively learning from every encounter, and you could never defeat them the same way twice. It is no surprise, then, that some of the most vital discoveries came from university students and teachers.\n\nWuxing University was already a prestigious college known for taking knowledge of old things and applying it to new technology, and when the Crisis came, its students were well-prepared. The Metal College students and faculty were already working to develop some of the most cutting-edge weaponry available for China, with multiple Mech designs capable of fighting with the larger Omnic Units. But one of the calls to fame of the school was when a task force of Fire College Alumni were able to defeat an incoming fleet of warbots by themselves. This side of the school focused on martial arts and defensive strategy, making them particularly adept warriors that, on top of their own studies and discipline, wielded weapons unlike anything else Anubis had accounted for. Fiery gear, capable of bending and floating in the air, guided by the users, which combined well with their close combat.\n\nThis success during the Crisis boosted the school's reputation and prestige, particularly for the Metal and especially Fire Colleges, where, between their popularity, the desire people had to defend their homes, and the sense of honor and pedigree that came from Wuxing's standard, made both of these the top hardest college to be admitted into, til this day. The other colleges, of course, were just as vital, with Water students providing medical aid to civilians, while Wood and Earth Colleges managed the analytics and optics of the impact the war would leave on the world. But in the eyes of the world, the mechs and the fire-wielding fighters were the ones everyone admired, and the true source of pride for the school.",
       "image": "",
       "sources": [
         {
@@ -2933,6 +3035,13 @@
           "locationName": "",
           "country": "The Anubis Omnic Crisis, Wuxing University,",
           "reasoning": "Anubis troops are stopped by a Fire College squadron, Metal college develops mechs to fight back"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops stopped by Fire student squad"
         }
       ]
     },
@@ -2976,13 +3085,20 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "yearStart": 2051
+      "yearStart": 2051,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "War splits fronts across America"
+        }
+      ]
     },
     {
       "name": "Children of the Sun",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "Solar energy has forever changed the people of Peru, both in the way it defined their way of life for communities across the mountains, but also for the selected few that had been chosen to wield the sun itself in their body.<br><br>The Paqarina research group had experimented with cybernetic applications to the Solar threading techniques, imbuing several of their community's strongest and most determined fighters with augments capable of harnessing the Sun's power through their cybernetics. These chosen few were known as the Children of the Sun, and with their augments they were able to gift the Sun directly to their people, as providers of energy and warm, miraculous healers, and when the time came, as protectors.<br><br>The Inti Warriors, as they were known by many on the outside, were able to fight off Anubis' forces, thanks to the versatility of their technology and the raw power harnessed directly from the sun, that flowed through their bodies. The augments not only powered their weaponry, they also allowed them to regulate the surrounding temperature, using the convection currents created by their thermodynamics to lift off into the sky.<br><br>These children of the Sun served their roles as guardians of Runasapi and the Andean mountains, and became a source of pride for their people, to the point that even years after the crisis, the Paqarina research group kept the program active, training aspiring warriors since young, preparing them for the day of their augmentation ceremony, so that they too can use the gifts the Sun gives them to help their people, and if the time ever came again, protect them once more.",
+      "description": "Solar energy has forever changed the people of Peru, both in the way it defined their way of life for communities across the mountains, but also for the selected few that had been chosen to wield the sun itself in their body.\n\nThe Paqarina research group had experimented with cybernetic applications to the Solar threading techniques, imbuing several of their community's strongest and most determined fighters with augments capable of harnessing the Sun's power through their cybernetics. These chosen few were known as the Children of the Sun, and with their augments they were able to gift the Sun directly to their people, as providers of energy and warm, miraculous healers, and when the time came, as protectors.\n\nThe Inti Warriors, as they were known by many on the outside, were able to fight off Anubis' forces, thanks to the versatility of their technology and the raw power harnessed directly from the sun, that flowed through their bodies. The augments not only powered their weaponry, they also allowed them to regulate the surrounding temperature, using the convection currents created by their thermodynamics to lift off into the sky.\n\nThese children of the Sun served their roles as guardians of Runasapi and the Andean mountains, and became a source of pride for their people, to the point that even years after the crisis, the Paqarina research group kept the program active, training aspiring warriors since young, preparing them for the day of their augmentation ceremony, so that they too can use the gifts the Sun gives them to help their people, and if the time ever came again, protect them once more.",
       "image": "",
       "sources": [
         {
@@ -3019,13 +3135,20 @@
           "country": "The Anubis Omnic Crisis, Inti Warriors,",
           "reasoning": "Solar augmented Warriors defend Peru from the Anubis forces"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops fight the Inti Warriors"
+        }
       ]
     },
     {
       "name": "Force the Sun to Set",
       "locationType": "earth",
       "cityDisplayName": "Lagos, Nigeria",
-      "description": "All over the world, heroic figures started to appear throughout the entire Crisis, remarkable individuals that stood out amongst the crowd for their bravery, ingenuity and perhaps most notoriously, superhuman abilities. From genetically enhanced soldiers, to cybernetic warriors, to mech pilots and rocket-powered knights, it appears that all over the planet, individuals branding the latest weapons and technology available to them are making actual progress at repelling warbot attacks. But there was perhaps no figure more notorious and heavily debated, than the mysterious Savior of Nigeria, the Doomfist.<br><br>Nigeria had endured constant war since the beginning of the crisis, as the high population numbers of Lagos and proximity to an Omnium made it the clearest target for Anubis to go after. When the attacks became global, neighboring countries increased their efforts to block their borders with Nigeria, offering little help and hoping to keep the invasion within the country. All seemed lost, until one night, in the city of Ibadan, he appeared. A single man, carrying no guns, just a metallic gauntlet in his right hand. According to witnesses, the man would leap into the air and piledrive into the machines with impossible force, wrecking the warbots and brawling entire waves of them for hours until sunrise. A young eyewitness approached the man, scared. The kid asked the hero if the war was over, to which his response was, \"No, but there is strength in struggle. With each fight for our home, I grow stronger, and I will keep our people safe\". The man disappeared as authorities arrived to provide aid. But he would show up every night to repel the Omnic forces once more. Witnesses describe his battles as both brutal and beautiful, like an artist at work. His presence spelled the doom of those who crossed his gauntlet, and thus the mighty Doomfist was born.",
+      "description": "All over the world, heroic figures started to appear throughout the entire Crisis, remarkable individuals that stood out amongst the crowd for their bravery, ingenuity and perhaps most notoriously, superhuman abilities. From genetically enhanced soldiers, to cybernetic warriors, to mech pilots and rocket-powered knights, it appears that all over the planet, individuals branding the latest weapons and technology available to them are making actual progress at repelling warbot attacks. But there was perhaps no figure more notorious and heavily debated, than the mysterious Savior of Nigeria, the Doomfist.\n\nNigeria had endured constant war since the beginning of the crisis, as the high population numbers of Lagos and proximity to an Omnium made it the clearest target for Anubis to go after. When the attacks became global, neighboring countries increased their efforts to block their borders with Nigeria, offering little help and hoping to keep the invasion within the country. All seemed lost, until one night, in the city of Ibadan, he appeared. A single man, carrying no guns, just a metallic gauntlet in his right hand. According to witnesses, the man would leap into the air and piledrive into the machines with impossible force, wrecking the warbots and brawling entire waves of them for hours until sunrise. A young eyewitness approached the man, scared. The kid asked the hero if the war was over, to which his response was, \"No, but there is strength in struggle. With each fight for our home, I grow stronger, and I will keep our people safe\". The man disappeared as authorities arrived to provide aid. But he would show up every night to repel the Omnic forces once more. Witnesses describe his battles as both brutal and beautiful, like an artist at work. His presence spelled the doom of those who crossed his gauntlet, and thus the mighty Doomfist was born.",
       "image": "",
       "sources": [
         {
@@ -3068,6 +3191,11 @@
           "locationName": "",
           "country": "Ngumi,",
           "reasoning": "The Original Doomfist, Overwatch Candidate"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Utterly confused by Doomfist's effectiveness"
         }
       ]
     },
@@ -3111,6 +3239,16 @@
           "locationName": "",
           "country": "Katya",
           "reasoning": "Future Heir to the Volskaya Coorporation"
+        },
+        {
+          "locationName": "",
+          "country": "Alisa,",
+          "reasoning": "Mass produces Svyagotor mechs during the Crisis"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Struggles against mech powered forces"
         }
       ]
     },
@@ -3118,7 +3256,7 @@
       "name": "The Proposal",
       "locationType": "earth",
       "cityDisplayName": "Geneva, Switzerland",
-      "description": "The crisis had dragged on for months, and no progress had been made on ending it. Anubis learned from every battle, you could never beat troops down the same way. The United Nations did what they could to find a unified solution, but by the second month of the crisis, each country was reluctant to share information, fearing that sharing their success would render it useless as Anubis learned how to counter it. Here is where Dr. Gabrielle Adawe stepped forward with an audacious proposal. The Nigerian diplomat was the third-highest post in the UN and seeing the success of outstanding individuals like the Doomfist in her homeland gave her an idea. To form a team of gifted individuals, backed up by the international guide and authority of the United Nations. The team would travel around the world and respond to calls for help, in a faster, more flexible way than any other group could. <br><br>The proposal outlined a surgical strike team, operating based on the situation rather than national interests or orders. Acting in the moment, and combining their unique skill sets from across the globe would render them unpredictable by Anubis, ensuring no two fights against them were ever the same. In addition to this strike team, a selection of the greatest minds the world had to offer would operate in the background. Scientists, engineers, tacticians, medics, working together to organize the team's movements and ensure out-of-the-box thinking. In spite of resistance and criticism, after many special sessions, the code name Overwatch program was approved, and the process of selecting the team began.",
+      "description": "The crisis had dragged on for months, and no progress had been made on ending it. Anubis learned from every battle, you could never beat troops down the same way. The United Nations did what they could to find a unified solution, but by the second month of the crisis, each country was reluctant to share information, fearing that sharing their success would render it useless as Anubis learned how to counter it. Here is where Dr. Gabrielle Adawe stepped forward with an audacious proposal. The Nigerian diplomat was the third-highest post in the UN and seeing the success of outstanding individuals like the Doomfist in her homeland gave her an idea. To form a team of gifted individuals, backed up by the international guide and authority of the United Nations. The team would travel around the world and respond to calls for help, in a faster, more flexible way than any other group could. \n\nThe proposal outlined a surgical strike team, operating based on the situation rather than national interests or orders. Acting in the moment, and combining their unique skill sets from across the globe would render them unpredictable by Anubis, ensuring no two fights against them were ever the same. In addition to this strike team, a selection of the greatest minds the world had to offer would operate in the background. Scientists, engineers, tacticians, medics, working together to organize the team's movements and ensure out-of-the-box thinking. In spite of resistance and criticism, after many special sessions, the code name Overwatch program was approved, and the process of selecting the team began.",
       "image": "",
       "sources": [
         {
@@ -3158,7 +3296,12 @@
         {
           "locationName": "",
           "country": "Adawe",
-          "reasoning": ""
+          "reasoning": "Founder of Overwatch"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Forces humanity to agree to Overwatch proposal"
         }
       ]
     },
@@ -3166,7 +3309,7 @@
       "name": "Eye of Horus",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "For a long period in the Crisis, humanity did not know what was causing all the chaos. Anubis had targeted so many cities at once everyone was too busy to truly find the root of the Crisis, and what's more, the God program amassed a giant army in Cairo. While from the outside it looked like any other attack on a major city, in reality this was its personal guard, as it was trying to take shelter in the chaos.<br><br>In the endless struggle, a notorious face kept appearing on the news, Ana Amari. Widely regarded as the best sniper in the world, in great part due to her cybernetic eye, Amari had become an invaluable asset for the Egyptian military, supporting troops from afar, with impeccable aim and efficiency, confusing many of the warbot troops and drawing their attention away from civilians. While everywhere around the world news were appearing of inhuman soldiers and giant machines, Ana was a regular person with no major augmentation beyond what was accessible to the public. The war had split Amari's family off. Her husband Sam was busy with the carnage going on in Canada, and her young daughter Fareeha had to take shelter, watching as both her parents left to save the world, wondering if they would even come back.",
+      "description": "For a long period in the Crisis, humanity did not know what was causing all the chaos. Anubis had targeted so many cities at once everyone was too busy to truly find the root of the Crisis, and what's more, the God program amassed a giant army in Cairo. While from the outside it looked like any other attack on a major city, in reality this was its personal guard, as it was trying to take shelter in the chaos.\n\nIn the endless struggle, a notorious face kept appearing on the news, Ana Amari. Widely regarded as the best sniper in the world, in great part due to her cybernetic eye, Amari had become an invaluable asset for the Egyptian military, supporting troops from afar, with impeccable aim and efficiency, confusing many of the warbot troops and drawing their attention away from civilians. While everywhere around the world news were appearing of inhuman soldiers and giant machines, Ana was a regular person with no major augmentation beyond what was accessible to the public. The war had split Amari's family off. Her husband Sam was busy with the carnage going on in Canada, and her young daughter Fareeha had to take shelter, watching as both her parents left to save the world, wondering if they would even come back.",
       "image": "",
       "sources": [
         {
@@ -3207,13 +3350,20 @@
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis heavily defens home turf to avoid being found"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Hides among the chaos in Egypt"
+        }
       ]
     },
     {
       "name": "The Heroic Five",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Gothenburg was able to avoid major damage, with Anubis focusing on Russia and the Ironclad defense systems. The city spent several months without major attacks. This calmed down most people in the city, and an influx of refugees came rushing in, but the brightest minds were already worrying about what could come next.<br><br>In an effort to plan ahead, the Hjältefemman came together. Five inventors from different fields, computer analysts, agricultural engineers, material engineers and business managers, who bent their intellects towards a single question: how to save nearly four million people from a surprise attack by Anubis. The Heroic Five collaborated using resources from each other to develop new technology, collaborating with local hardware companies to improve the designs using shielding technology and new materials created by the group. The result was the Portable Steel Blanket, an extremely durable bunked made to withstand concussive blasts, extreme heat and designed for quick deployment, easy to repair and capable of housing up to eight people inside of it. The group called for help by the government to manufacture these steel blankets in large numbers. Within six months, Gothenburg was equipped with hundreds of thousands of steel blanket units across the city, ensuring the people would be ready when the time came for another attack.",
+      "description": "Gothenburg was able to avoid major damage, with Anubis focusing on Russia and the Ironclad defense systems. The city spent several months without major attacks. This calmed down most people in the city, and an influx of refugees came rushing in, but the brightest minds were already worrying about what could come next.\n\nIn an effort to plan ahead, the Hjältefemman came together. Five inventors from different fields, computer analysts, agricultural engineers, material engineers and business managers, who bent their intellects towards a single question: how to save nearly four million people from a surprise attack by Anubis. The Heroic Five collaborated using resources from each other to develop new technology, collaborating with local hardware companies to improve the designs using shielding technology and new materials created by the group. The result was the Portable Steel Blanket, an extremely durable bunked made to withstand concussive blasts, extreme heat and designed for quick deployment, easy to repair and capable of housing up to eight people inside of it. The group called for help by the government to manufacture these steel blankets in large numbers. Within six months, Gothenburg was equipped with hundreds of thousands of steel blanket units across the city, ensuring the people would be ready when the time came for another attack.",
       "image": "",
       "sources": [
         {
@@ -3254,13 +3404,20 @@
           "country": "The Anubis Omnic Crisis, Ironclad Guild,",
           "reasoning": "The Heroic Five develop the Steel blanked to protect people from Air Bombings"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Plots further attacks on Sweden"
+        }
       ]
     },
     {
       "name": "Building a Myth",
       "locationType": "earth",
       "cityDisplayName": "Berlin, Germany",
-      "description": "With the Crisis, the German Crusaders finally saw action, and proved to be quite effective defenders. Before the war, they were a niche group in the military with very few members, but once the Omnics attacked, they would become the center of Germany's military defense plans, as Honisch and Fischer worked on improving their capabilities, expanding their shield systems and equipping them with close-range weapons. Rocket Powered Axes and Hammers proved to be the most practical, and units were designed to charge into battle, ramming enemy waves at high speeds.<br><br>The appearance of a Crusader was enough to boost morale amongst the troops, in spite of the adversity and constant fire by Anubis. The initiative would see a surge in recruitments, as people from all walks of life, young and old, wished to defend their home, as a knight from tales of the old. The Crusader's power and cultural perspective lead to many of them fashioning themselves as chivalric heroes from fairy tales, acting by a strict code of conduct, based not on military orders, but rather on a mutual understanding, an unclaimed Oath that every Crusader was expected to follow, to live with honor, and die with glory.",
+      "description": "With the Crisis, the German Crusaders finally saw action, and proved to be quite effective defenders. Before the war, they were a niche group in the military with very few members, but once the Omnics attacked, they would become the center of Germany's military defense plans, as Honisch and Fischer worked on improving their capabilities, expanding their shield systems and equipping them with close-range weapons. Rocket Powered Axes and Hammers proved to be the most practical, and units were designed to charge into battle, ramming enemy waves at high speeds.\n\nThe appearance of a Crusader was enough to boost morale amongst the troops, in spite of the adversity and constant fire by Anubis. The initiative would see a surge in recruitments, as people from all walks of life, young and old, wished to defend their home, as a knight from tales of the old. The Crusader's power and cultural perspective lead to many of them fashioning themselves as chivalric heroes from fairy tales, acting by a strict code of conduct, based not on military orders, but rather on a mutual understanding, an unclaimed Oath that every Crusader was expected to follow, to live with honor, and die with glory.",
       "image": "",
       "sources": [
         {
@@ -3297,11 +3454,23 @@
           "country": "The Anubis Omnic Crisis, Crusader Initiative,",
           "reasoning": "Crusaders gaing popularty after defending Germany"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops stopped by Crusaders"
+        },
+        {
+          "locationName": "",
+          "country": "Balderich,",
+          "reasoning": "Crusader Recruit"
+        }
       ]
     },
     {
       "name": "The Skycannon",
-      "description": "The New Yorkers managed to endure the crisis on their own for months, coming up with one plan after another to use the city itself against Anubis. The wide cultural range and backgrounds of the many people involved allowed them to stay innovative and use the city's infrastructure to their advantage. Together they dug up and fortified shelters using parts from ships and skyscrappers, and organized to turn all green areas in the city, from rooftop gardens to Central Park, into communal farms that kept the population fed. At some point, Torbjörn Lindholm managed to find a way to contact the defenders from within the city and under his guidance they managed to work on defensive strategies. <br><br>The citizens would mount battleship cannons onto Manhattan's Sky Scrappersm and used to fire strategically at Null Sector Carriers to prevent them from reaching their deployment zones. Anubis would quickly take action and focus on bringing down these armored sky scrappers, but for a good while they bought the survivors enough time to plan ahead and fight on the ground. It was around this time that Anubis deployed the R-700 Ravager units, designed to become its battle commanders. Thanks to their high processing power, they were able to give orders independently of Anubis itself. With their arrival, it was clear that taking down Anubis wouldn't be enough to win the war.",
+      "description": "The New Yorkers managed to endure the crisis on their own for months, coming up with one plan after another to use the city itself against Anubis. The wide cultural range and backgrounds of the many people involved allowed them to stay innovative and use the city's infrastructure to their advantage. Together they dug up and fortified shelters using parts from ships and skyscrappers, and organized to turn all green areas in the city, from rooftop gardens to Central Park, into communal farms that kept the population fed. At some point, Torbjörn Lindholm managed to find a way to contact the defenders from within the city and under his guidance they managed to work on defensive strategies. \n\nThe citizens would mount battleship cannons onto Manhattan's Sky Scrappersm and used to fire strategically at Null Sector Carriers to prevent them from reaching their deployment zones. Anubis would quickly take action and focus on bringing down these armored sky scrappers, but for a good while they bought the survivors enough time to plan ahead and fight on the ground. It was around this time that Anubis deployed the R-700 Ravager units, designed to become its battle commanders. Thanks to their high processing power, they were able to give orders independently of Anubis itself. With their arrival, it was clear that taking down Anubis wouldn't be enough to win the war.",
       "locationType": "earth",
       "cityDisplayName": "Manhattan, United States",
       "lat": 40.7579554,
@@ -3345,13 +3514,20 @@
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis struggles to hold ground agaisnt New York"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Struggles against  unified New Yorkers"
+        }
       ]
     },
     {
       "name": "Super Soldiers",
       "locationType": "earth",
       "cityDisplayName": "Wheeler County, United States",
-      "description": "The Soldier Enhancement Program had been kept secret for a long time due to the many human rights violations going on with its research, and in spite of years of progress, Naughton lacked the ethical green light to move on to human subjects. That all changed when the Crisis started.<br><br>The United States turned into multiple warzones overnight, and any measures they took to stop the bloodshed seemed only temporary. In desperation, the government decided to go public with the Soldier Enhancement Program. In spite of concerns, the program gathered plenty of public support due to the dire circumstances of the Crisis, and recruitment for human trials began, though at this time the concept was purely fictional. After the initial sucess with Soldier 00, Kendra Banks, the program moved forward on test trials wtih the rest of the volunteers.<br><br>At least two hundred military personnel volunteered for the SEP initially, but only a handful would survive the horrors that awaited them in Naughton's labs, about sixty percent of the subjects died throughout the program. Anubis was also keenly aware of the situation and targeted the labs on multiple occasions. The initial lab at Camp Hale was destroyed within weeks of the announcement, and the team had to hop from one facility to another. In the end, the successful soldiers would be deployed around the country and quickly turn the tides in many battles where they showed up.<br><br>The two most notorious successes of the program were Soldier 24: Gabriel Reyes, and Soldier 76: Jack Morrison. The reputation of these two men was legendary even before Overwatch, the golden-haired hero who appeared out of nowhere and saved the day. And although Reyes was quieter and usually took less flashy missions, he was nonetheless just as effective and valuable, and even while he was still being actively tested on, he found time to communicate and coordinate with troops actively in battle.",
+      "description": "The Soldier Enhancement Program had been kept secret for a long time due to the many human rights violations going on with its research, and in spite of years of progress, Naughton lacked the ethical green light to move on to human subjects. That all changed when the Crisis started.\n\nThe United States turned into multiple warzones overnight, and any measures they took to stop the bloodshed seemed only temporary. In desperation, the government decided to go public with the Soldier Enhancement Program. In spite of concerns, the program gathered plenty of public support due to the dire circumstances of the Crisis, and recruitment for human trials began, though at this time the concept was purely fictional. After the initial sucess with Soldier 00, Kendra Banks, the program moved forward on test trials wtih the rest of the volunteers.\n\nAt least two hundred military personnel volunteered for the SEP initially, but only a handful would survive the horrors that awaited them in Naughton's labs, about sixty percent of the subjects died throughout the program. Anubis was also keenly aware of the situation and targeted the labs on multiple occasions. The initial lab at Camp Hale was destroyed within weeks of the announcement, and the team had to hop from one facility to another. In the end, the successful soldiers would be deployed around the country and quickly turn the tides in many battles where they showed up.\n\nThe two most notorious successes of the program were Soldier 24: Gabriel Reyes, and Soldier 76: Jack Morrison. The reputation of these two men was legendary even before Overwatch, the golden-haired hero who appeared out of nowhere and saved the day. And although Reyes was quieter and usually took less flashy missions, he was nonetheless just as effective and valuable, and even while he was still being actively tested on, he found time to communicate and coordinate with troops actively in battle.",
       "image": "",
       "sources": [
         {
@@ -3386,7 +3562,7 @@
         {
           "locationName": "",
           "country": "The Anubis Omnic Crisis",
-          "reasoning": ""
+          "reasoning": "Anubis attacks SEP program bases"
         }
       ],
       "npcFilterPlaces": [
@@ -3394,6 +3570,11 @@
           "locationName": "Soldier: 00",
           "country": "Kendra",
           "reasoning": "First sucessful trial, seeming went rouge after"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Attacks SEP program bases"
         }
       ]
     },
@@ -3401,7 +3582,7 @@
       "name": "Honor and Glory",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. The Crusaders would be surprised by the arrival of OR14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.<br><br>The efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
+      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. The Crusaders would be surprised by the arrival of OR14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
       "image": "",
       "sources": [
         {
@@ -3442,11 +3623,23 @@
           "country": "The Anubis Omnic Crisis, Crusader Initiative,",
           "reasoning": "Anubis unleashes brutal attach near Stuttgart"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Balderich,",
+          "reasoning": "Dies honorably defending the Eichenwalde Castle"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes hell near Stuttgart"
+        }
       ]
     },
     {
       "name": "Defense Network",
-      "description": "A few weeks into the Crisis, Lindholm would be called by the Swedish government, asking him to complete a design for a countrywide Defense Network. After the success of his workshop's defenses in Gothenburg, he had gained quite the reputation, and if there was anyone capable of pulling this off, Sweden believed it was him.  The proposal was drawn by bureaucrats who didn't understand the scope of what they asked, wanting a miracle on a shoestring budget. An anti-aircraft weapons system that mimicked the functions of Finland's security God Ai Chernobog, capable of warning citizens about air strikes nationwide and with mass-produced turret systems across population centers in Sweden.<br><br>What would have been an impossible task for anyone else, was exactly the challenge that Torbjörn had been waiting for his whole life. While working alongside a team of the greatest minds the nation could offer, they were able to roll out the systems at record time. His design for the Defense Network shared features that he would include to the sky cannons in New York, as well as the Siege systems he later deployed in Canada as part of Overwatch. While he was not formally invited into the strike team, he had heard of the program and believed he could be of use, having the reputation and expertise to back his claim up. Soon after visiting his family back home, he directed himself to the training facility and invited himself into the Overwatch Initiative.",
+      "description": "A few weeks into the Crisis, Lindholm would be called by the Swedish government, asking him to complete a design for a countrywide Defense Network. After the success of his workshop's defenses in Gothenburg, he had gained quite the reputation, and if there was anyone capable of pulling this off, Sweden believed it was him.  The proposal was drawn by bureaucrats who didn't understand the scope of what they asked, wanting a miracle on a shoestring budget. An anti-aircraft weapons system that mimicked the functions of Finland's security God Ai Chernobog, capable of warning citizens about air strikes nationwide and with mass-produced turret systems across population centers in Sweden.\n\nWhat would have been an impossible task for anyone else, was exactly the challenge that Torbjörn had been waiting for his whole life. While working alongside a team of the greatest minds the nation could offer, they were able to roll out the systems at record time. His design for the Defense Network shared features that he would include to the sky cannons in New York, as well as the Siege systems he later deployed in Canada as part of Overwatch. While he was not formally invited into the strike team, he had heard of the program and believed he could be of use, having the reputation and expertise to back his claim up. Soon after visiting his family back home, he directed himself to the training facility and invited himself into the Overwatch Initiative.",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
       "lat": 57.7072326,
@@ -3494,11 +3687,18 @@
           "country": "The Anubis Omnic Crisis, Ironclad Guild,",
           "reasoning": "Torbjörn's designs prove sucessful against Anubis in multiple fronts"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Struggles against the Defense Network"
+        }
       ]
     },
     {
       "name": "The Original Strike Team",
-      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.<br><br>As far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. The two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
+      "description": "After months of planning, Overwatch moved into place. The supporting staff was arranged with several of the most outstanding names of the last couple of decades, from Matthew Frank, to Namuaca and Lomakema, Esat and Borda, and of course, the Martins. Alongside the help of military experts like General David Ames from the US, and Litang Abhicandra from Indonesia. It took several months of  screening and a lot of discarded proposals, but the supporting teams across all fields were ready to start working.\n\nAs far as the Strike team, Adawe's first choice was Doomfist himself. Adhabu Ngumi had been identified as the savior of Nigeria, and partly inspired the proposal in the first place, but he declined, choosing to protect his home first and foremost, like many others did. In the end, the strike team was formed by five individuals. The two most successful soldiers from America's SEP program, Gabriel Reyes and Jack Morrison. The elite Egyptian Sniper Ana Amari, in spite of controversy around her inclusion among UN staff members. The German Crusader Reinhardt Wilhelm, taking his mentor's place, and the Ironclad engineer Torbjörn Lindholm, who showed up at the last minute and demanded to be a part of the team. Once the team was selected and trained, it was a matter of time before deployment began, and the tide finally began to turn.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -3548,6 +3748,11 @@
           "locationName": "",
           "country": "Ngumi,",
           "reasoning": "Rejected the Overwatch Proposal"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Fights Overwatch for the firs ttime"
         }
       ]
     },
@@ -3610,7 +3815,7 @@
       "name": "The Road of Bones",
       "locationType": "earth",
       "cityDisplayName": "Oymyakon, Russia",
-      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.<br><br>The town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. The explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.&nbsp;",
+      "description": "The Kolyma Highway near the town of Oymkakon, known as the Road of Bones, was one of the most important places for Russia to defend during the Crisis, as the only viable access point to the Sea of Okhotsk, putting the isolated population in danger of becoming unreachable. When the RDF planned to deploy a Svyatogor to the town, Ksenia Popova, a local from Oymkakon took her chance to come back and defend her hometown.\n\nThe town was mostly spared from the Crisis, due to the non-existing Omnic presence and the isolation of the place, but one fateful day Anubis ordered a full-on attack, commanded by Ravager units. As the evacuation effort turned dire, Ksenia was given authorization to do anything it took to stop the robotic advance, and after finding herself outnumbered and outgunned, she decided to charge into a small nuclear plant, sacrificing her own life to ensure the blast from the explosion destroyed all Omnics in the area. The explosion created the Oymyakon exclusion zone, a radiated field unsuitable for both lifeforms and machines, as the radiation would fry their circuit without sufficient shielding. Ksenia's sacrifice saved hundreds and prevented Anubis from ever being able to reach Okhotsk again, but at the same time, it displaced the survivors away from their home, and to this day the government won't let them come back.&nbsp;",
       "image": "",
       "lat": 63.4629473,
       "lon": 142.7869693,
@@ -3640,13 +3845,20 @@
           "country": "The Anubis Omnic Crisis, Volskaya Industries,",
           "reasoning": "Svyatogor units quick to sacrifice themselves to defend their ground against Anubis"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Unleashes hell i nthe road of Bones"
+        }
       ]
     },
     {
       "name": "Who knew Better",
       "locationType": "earth",
       "cityDisplayName": "Chicago, United States",
-      "description": "Overwatch was deployed several times across the world to consistent success. For a brief moment it seemed like they could do no wrong. It was during the first US deployment in Chicago that Jack Morrison approached Adawe with a bold move, to recruit Dr. Mina Liao from the late Omnica Corporation. While the fall of the company had damaged her reputation, it could be argued that no one else in the world knew better about Omnics than her, and multiple international investigations had cleared her out of any involvement with the Crisis itself.<br><br>While Lindholm and Reyes objected to the idea, in the end they begrudgingly yielded, as having an expectation of Omnics would allow them to keep up with Anubis' rapidly evolving strategies. While Morrison championed Liao's inclusion, the UN response was far more hostile, forcing Adawe to once more take a stand and argue for their autonomy as an organization and right to choose their own staff outside of international opinion. In the end, it was decided that Liao's worth as an ally would be tested during the Canadian missions.",
+      "description": "Overwatch was deployed several times across the world to consistent success. For a brief moment it seemed like they could do no wrong. It was during the first US deployment in Chicago that Jack Morrison approached Adawe with a bold move, to recruit Dr. Mina Liao from the late Omnica Corporation. While the fall of the company had damaged her reputation, it could be argued that no one else in the world knew better about Omnics than her, and multiple international investigations had cleared her out of any involvement with the Crisis itself.\n\nWhile Lindholm and Reyes objected to the idea, in the end they begrudgingly yielded, as having an expectation of Omnics would allow them to keep up with Anubis' rapidly evolving strategies. While Morrison championed Liao's inclusion, the UN response was far more hostile, forcing Adawe to once more take a stand and argue for their autonomy as an organization and right to choose their own staff outside of international opinion. In the end, it was decided that Liao's worth as an ally would be tested during the Canadian missions.",
       "image": "",
       "sources": [
         {
@@ -3688,6 +3900,11 @@
           "locationName": "",
           "country": "Liao, Adawe",
           "reasoning": "Liao is hired onto the Stirke team, Adawe and the Stirke Team advocate for her case"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Faces significant loses in North America"
         }
       ]
     },
@@ -3695,7 +3912,7 @@
       "name": "In Partnership",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
-      "description": "Overwatch proved itself ready for a bigger challenge, taking down an entire Omnium. The Omnica factories kept pumping out warbots for months, meaning cities in proximity to an Omnium were the most affected by the Crisis. The uneasy alliance of Lindholm and Liao resulted in the Siege defense System, a flight of drones invisible to Anubis and its troops, enabling to survey the area for Omnic activity, to then be targeted by Ironclad Turrets. After establishing a secure communication channel, they joined the Canadian Armed Forces in a collaborative attack. Captain Vivian Chase led her CSOR squadron alongside Morrison's forces, enabling them to install the Siege systems, allowing the teams to make their way through Toronto.<br><br>After heavy preparation, the troops advanced into Detroit with support by US troops, but the team was met with a horrible battle ahead. The team would be stalled by a Titan unit, until Sojourn came up with a plan, to have the heron drones carry a small group into the Omnium. Only her, Morrison and Liao managed to get in. The pair escorted Liao through the facility as she deactivated the access ports on the go. The team managed to shut down the Omnium, preventing Anubis from using it anymore. This major victory was the first true blow against Anubis, and resulted in Liao's formal introduction to the Strike Team.",
+      "description": "Overwatch proved itself ready for a bigger challenge, taking down an entire Omnium. The Omnica factories kept pumping out warbots for months, meaning cities in proximity to an Omnium were the most affected by the Crisis. The uneasy alliance of Lindholm and Liao resulted in the Siege defense System, a flight of drones invisible to Anubis and its troops, enabling to survey the area for Omnic activity, to then be targeted by Ironclad Turrets. After establishing a secure communication channel, they joined the Canadian Armed Forces in a collaborative attack. Captain Vivian Chase led her CSOR squadron alongside Morrison's forces, enabling them to install the Siege systems, allowing the teams to make their way through Toronto.\n\nAfter heavy preparation, the troops advanced into Detroit with support by US troops, but the team was met with a horrible battle ahead. The team would be stalled by a Titan unit, until Sojourn came up with a plan, to have the heron drones carry a small group into the Omnium. Only her, Morrison and Liao managed to get in. The pair escorted Liao through the facility as she deactivated the access ports on the go. The team managed to shut down the Omnium, preventing Anubis from using it anymore. This major victory was the first true blow against Anubis, and resulted in Liao's formal introduction to the Strike Team.",
       "image": "",
       "sources": [
         {
@@ -3737,12 +3954,17 @@
           "locationName": "",
           "country": "Liao, Adawe",
           "reasoning": "The Siege system Liao and Lindholm develop becomes crucial in the North American missions"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Loses control of the Detroit Omnium"
         }
       ]
     },
     {
       "name": "The Battle of the Bridges",
-      "description": "The New Yorker survivors turned the city into a stronghold, setting up explosions in the tunnels leading outside of Manhattan and destroying all but 3 bridges, Washington, Queensboro and Willamsburg, left only in case a rethreat was needed. Anubis had caught on to their tactics, and began amassing warbots at the end of the bridges. After a long silence, they began their attack. Anubis attacked all the bridges at once with endless waves of Omnics, and while they did, many other machines attempted to reach the city through the tunnels and even crossing the river by foot. The event was a massacre, and as the defenders got pushed back, one by one each of the bridges was taken. On the subways, the battle was slightly better, as warbots were stopped by collapsing tunnels and runaway cars, but on the other hand, as Omnics set off the land mines in the river, their bodies made for a safe bridge that other units could walk over.<br><br>Having lost the shores to the Omnics, humanity had no option but to retreat, as the Ravagers led their troops through the fallen buildings. Once the island was breached, the next objects were Central Farm and the Sky Cannons, leading to endless guerrilla warfare and hundreds of casualties.",
+      "description": "The New Yorker survivors turned the city into a stronghold, setting up explosions in the tunnels leading outside of Manhattan and destroying all but 3 bridges, Washington, Queensboro and Willamsburg, left only in case a rethreat was needed. Anubis had caught on to their tactics, and began amassing warbots at the end of the bridges. After a long silence, they began their attack. Anubis attacked all the bridges at once with endless waves of Omnics, and while they did, many other machines attempted to reach the city through the tunnels and even crossing the river by foot. The event was a massacre, and as the defenders got pushed back, one by one each of the bridges was taken. On the subways, the battle was slightly better, as warbots were stopped by collapsing tunnels and runaway cars, but on the other hand, as Omnics set off the land mines in the river, their bodies made for a safe bridge that other units could walk over.\n\nHaving lost the shores to the Omnics, humanity had no option but to retreat, as the Ravagers led their troops through the fallen buildings. Once the island was breached, the next objects were Central Farm and the Sky Cannons, leading to endless guerrilla warfare and hundreds of casualties.",
       "locationType": "earth",
       "cityDisplayName": "Manhattan, United States",
       "lat": 40.7579554,
@@ -3774,11 +3996,18 @@
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis manages a major victory in New York after all out attack"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Fully invades New York"
+        }
       ]
     },
     {
       "name": "Dead Gods",
-      "description": "After Detroit, Liao managed to clone the frequencies used by the one commanding the Omnium's production lines, which determined that all Omniums were receiving orders from the same source. Thanks to the Macaria program, this signal was determined to come from another God AI. After heavy analysis by hundreds of scientists, all signs pointed towards Cairo. The news spread rapidly and many countries panicked. Any and all God programs that were not yet destroyed were to be dealt with before they too turned against humanity. This naturally caused massive chaos as the programs in charge of many aspects of everyday life suddenly shut down forever. <br><br>One program, however, was able to foresee its termination. Chernobog's security programming realized ahead of time that it would be disconnected. In response, it sent out one final order, broadcasting its final instructions and printing them into thousands of pages, detailing how humanity should  proceed in its absence, while continuing its purpose of keeping global security. The final words in the documents caused massive legal fights and controversy after the crisis: \"I understand, I am sorry.\"",
+      "description": "After Detroit, Liao managed to clone the frequencies used by the one commanding the Omnium's production lines, which determined that all Omniums were receiving orders from the same source. Thanks to the Macaria program, this signal was determined to come from another God AI. After heavy analysis by hundreds of scientists, all signs pointed towards Cairo. The news spread rapidly and many countries panicked. Any and all God programs that were not yet destroyed were to be dealt with before they too turned against humanity. This naturally caused massive chaos as the programs in charge of many aspects of everyday life suddenly shut down forever. \n\nOne program, however, was able to foresee its termination. Chernobog's security programming realized ahead of time that it would be disconnected. In response, it sent out one final order, broadcasting its final instructions and printing them into thousands of pages, detailing how humanity should  proceed in its absence, while continuing its purpose of keeping global security. The final words in the documents caused massive legal fights and controversy after the crisis: \"I understand, I am sorry.\"",
       "locationType": "earth",
       "cityDisplayName": "Helsinki, Finland",
       "lat": 60.1666204,
@@ -3815,11 +4044,18 @@
           "country": "The Anubis Omnic Crisis, Omnica Corporation, The Chernobog Conspiracy,",
           "reasoning": "God Programs world wide are turned off following Anubis being unmasked"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Discovered by Macaria"
+        }
       ]
     },
     {
       "name": "The Dark Days",
-      "description": "Many God Ais have grown to be beloved by the public due to their efficiency. For example, the God Program Xibalba guaranteed energy equity across Mexico and neighboring territories. The program had become part of the national identity, almost treated like a mascot by many, but when the order came to shut it down, it caused massive blackouts nationwide. <br><br>Some facilities and small towns were able to stay lid thanks to Borda algae generators, or by acquiring fossil fuels, but for the majority, the world went dark. The Mexican army had so far resisted Anubis considerably but, as if the bloodshed wasn't already enough, the looming darkness of the night led to even more deaths than expected for the last tail end of the crisis. Many to this day remember all the people who died, those left behind in the shadows, as monsters, both human and Omnic prowled and hunted them down. To this day, many blame the government for their needless deaths, arguing that turning Xibalba off was turning their back on the people.",
+      "description": "Many God Ais have grown to be beloved by the public due to their efficiency. For example, the God Program Xibalba guaranteed energy equity across Mexico and neighboring territories. The program had become part of the national identity, almost treated like a mascot by many, but when the order came to shut it down, it caused massive blackouts nationwide. \n\nSome facilities and small towns were able to stay lid thanks to Borda algae generators, or by acquiring fossil fuels, but for the majority, the world went dark. The Mexican army had so far resisted Anubis considerably but, as if the bloodshed wasn't already enough, the looming darkness of the night led to even more deaths than expected for the last tail end of the crisis. Many to this day remember all the people who died, those left behind in the shadows, as monsters, both human and Omnic prowled and hunted them down. To this day, many blame the government for their needless deaths, arguing that turning Xibalba off was turning their back on the people.",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
       "lat": 19.1738,
@@ -3850,11 +4086,18 @@
           "country": "The Anubis Omnic Crisis, Los Muertos,",
           "reasoning": "Hundreds of people die during blackouts, leading to resentment with the government"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Forces Xibalbá's shut down"
+        }
       ]
     },
     {
       "name": "Capturing a God",
-      "description": "While most governments shut down their god AI after Anubis was discovered, New York had a better idea of what to do with Macaria. Like many others, the program had been anthropomorphized by their team and local residents, with many looking at it as a friend. So, while defying official orders, they cut Macaria's connections without fully deactivating it. <br><br>The team worked alongside Macaria and its communication systems to spray noise and bad data across the warbot communication networks, disrupting them from getting orders from Anubis and saving countless lives while the troops were blinded. Without Anubis' direct support, the decision-making was left to the Ravagers, who, while they were a thread of their own, were still tangible, defeatable, compared to a God AI. Thanks to Macaria's help, New York was able to defend itself even after the Battle of the Bridges made them lose ground, and while public opinion about God programs never bounced back after Anubis, Macaria is still seen by many as a hero, with the Tony Award-winning Broadway Musical \"Collapse\" portraying her asa conflicted soul, in love with humanity, and willing to die for it.",
+      "description": "While most governments shut down their god AI after Anubis was discovered, New York had a better idea of what to do with Macaria. Like many others, the program had been anthropomorphized by their team and local residents, with many looking at it as a friend. So, while defying official orders, they cut Macaria's connections without fully deactivating it. \n\nThe team worked alongside Macaria and its communication systems to spray noise and bad data across the warbot communication networks, disrupting them from getting orders from Anubis and saving countless lives while the troops were blinded. Without Anubis' direct support, the decision-making was left to the Ravagers, who, while they were a thread of their own, were still tangible, defeatable, compared to a God AI. Thanks to Macaria's help, New York was able to defend itself even after the Battle of the Bridges made them lose ground, and while public opinion about God programs never bounced back after Anubis, Macaria is still seen by many as a hero, with the Tony Award-winning Broadway Musical \"Collapse\" portraying her asa conflicted soul, in love with humanity, and willing to die for it.",
       "locationType": "earth",
       "cityDisplayName": "Manhattan, United States",
       "lat": 40.7579554,
@@ -3885,6 +4128,13 @@
           "locationName": "",
           "country": "The Anubis Omnic Crisis,",
           "reasoning": "Anubis is discovered by Macaria's systems, Maracia is then used to fight back"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Communications disrrupted by Macaria"
         }
       ]
     },
@@ -3927,7 +4177,7 @@
       "name": "Bombardment",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95 percent of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. <br><br>The Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. All five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
+      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95 percent of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. \n\nThe Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. All five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
       "image": "",
       "sources": [
         {
@@ -3970,6 +4220,11 @@
           "locationName": "",
           "country": "Ingrid",
           "reasoning": "Managed to survive the Bombardment, alongside the rest of the Family"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Surprise bombarding of Gothenburg"
         }
       ]
     },
@@ -3977,7 +4232,7 @@
       "name": "The Savior",
       "locationType": "earth",
       "cityDisplayName": "Ibadan, Nigeria",
-      "description": "The man carrying the Doomfist Gauntlet has been identified as Adhabu Ngumi. He had continued fighting on Ibadan, as Anubis ended up perplexed by the rate at which its troops fell. A month into his crusade, the Nigerian Government identified him, and stepped in to make sure his mother had access to any resources and food needed, making sure the household was tended to while their son risked his life for the country.<br><br>With his identity discovered, and the government on his side, Ngumi began working with local authorities, transported across neighboring regions to be deployed wherever he was needed. He would end up marrying the woman assigned as his Stratoscopter pilot, and as the constant fighting incapacitated him, he would refuse to take the Gauntlet off, choosing to repair it himself. Late into the Crisis, Anubis ordered the Nigerian Omnium to pump out more warbots than any one man could fight, and as usual, Doomfist showed up to defend his country. It was only five days before the awakening when he died during the Omnium battle. He had saved millions of lives across West Africa, and once the crisis ended, he was recognized as the Savior of Nigeria, and awarded with the highest civilian honors possible.",
+      "description": "The man carrying the Doomfist Gauntlet has been identified as Adhabu Ngumi. He had continued fighting on Ibadan, as Anubis ended up perplexed by the rate at which its troops fell. A month into his crusade, the Nigerian Government identified him, and stepped in to make sure his mother had access to any resources and food needed, making sure the household was tended to while their son risked his life for the country.\n\nWith his identity discovered, and the government on his side, Ngumi began working with local authorities, transported across neighboring regions to be deployed wherever he was needed. He would end up marrying the woman assigned as his Stratoscopter pilot, and as the constant fighting incapacitated him, he would refuse to take the Gauntlet off, choosing to repair it himself. Late into the Crisis, Anubis ordered the Nigerian Omnium to pump out more warbots than any one man could fight, and as usual, Doomfist showed up to defend his country. It was only five days before the awakening when he died during the Omnium battle. He had saved millions of lives across West Africa, and once the crisis ended, he was recognized as the Savior of Nigeria, and awarded with the highest civilian honors possible.",
       "image": "",
       "sources": [
         {
@@ -4019,6 +4274,11 @@
           "locationName": "",
           "country": "Ngumi,",
           "reasoning": "Died heroically defending Nigeria"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Kills Doomfist in Nigeria"
         }
       ]
     },
@@ -4026,7 +4286,7 @@
       "name": "The Awakening",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.<br><br>After heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. At her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
+      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.\n\nAfter heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. At her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
       "image": "",
       "sources": [
         {
@@ -4066,6 +4326,11 @@
           "locationName": "",
           "country": "Aurora, Liao, Adawe",
           "reasoning": "With Adawe's proval and Aurora's permission, Liao's team broadcasts her concioussness across the planet"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Studies the Awakening to stop a second wave"
         }
       ]
     },
@@ -4116,7 +4381,7 @@
     },
     {
       "name": "Striking the Source",
-      "description": "The Awakening caught Anubis by surprise, but it didn't take long for it to scan Omnics and figure out what happened. In no time, it had figured out how to protect its troops against being awakened, unaware this was impossible to do a second time to begin with. Not only that, but while the vast majority of Omnics chose to fight alongside humans, there were many who remained at Anubis' side, and a sizable portion of the army, like the dangerous Bastion and Idina units that went unaffected. In spite of this blow, statistics showed that it would take barely a week for Anubis to bounce back, and as it called its army to congregate in Cairo, the window of opportunity was closing. Without time to lose, Reyes decided to strike while they still had the upper hand. <br><br>After allying with local forces, Ana guided the team through the city, as she was the most familiar with it, and had worked with the troops before. The team followed Lindholm and Liao's guidelines as to how to deal with both Anubis and the remaining troops, most of which were Torbjörn's designs. Wilhelm, Reyes and Morrison pushed the advance into the Omnium and fought hordes of both sentient loyalists and mindless warbots for hours, as they made way for Lindholm's engineer team to get in and quarantine the facility. At last, Anubis had been trapped, and without its instructions, all the remaining Omniums would stop producing any more units, making it easier to seize and deactivate.",
+      "description": "The Awakening caught Anubis by surprise, but it didn't take long for it to scan Omnics and figure out what happened. In no time, it had figured out how to protect its troops against being awakened, unaware this was impossible to do a second time to begin with. Not only that, but while the vast majority of Omnics chose to fight alongside humans, there were many who remained at Anubis' side, and a sizable portion of the army, like the dangerous Bastion and Idina units that went unaffected. In spite of this blow, statistics showed that it would take barely a week for Anubis to bounce back, and as it called its army to congregate in Cairo, the window of opportunity was closing. Without time to lose, Reyes decided to strike while they still had the upper hand. \n\nAfter allying with local forces, Ana guided the team through the city, as she was the most familiar with it, and had worked with the troops before. The team followed Lindholm and Liao's guidelines as to how to deal with both Anubis and the remaining troops, most of which were Torbjörn's designs. Wilhelm, Reyes and Morrison pushed the advance into the Omnium and fought hordes of both sentient loyalists and mindless warbots for hours, as they made way for Lindholm's engineer team to get in and quarantine the facility. At last, Anubis had been trapped, and without its instructions, all the remaining Omniums would stop producing any more units, making it easier to seize and deactivate.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0443879,
@@ -4165,6 +4430,11 @@
           "locationName": "",
           "country": "Liao",
           "reasoning": "Aids in the Quarantine plan"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Quarantined and imprisoned"
         }
       ]
     },
@@ -4172,7 +4442,7 @@
       "name": "Cleaning the leftovers",
       "locationType": "earth",
       "cityDisplayName": "Jakarta, Indonesia",
-      "description": "Anubis being defeated did not mean the immediate end of the Crisis. The remaining units, while decentralized, were still dangerous and the sizable number of Omnics who remained against humanity needed to be dealt with as soon as possible. Many Omnics blamed humanity for their condition, seeing sentiment as a punishment or curse to be released from, while others simply did not see the logic in going against their creator. However, plenty more Omnics chose to defy Anubis and gladly fought alonside humans.<br><br>Overwatch, of course, helped clean up the remaining troops across the globe. A notorious case involved a brigade of submersible warbots that surfaced near Wellington, New Zealand. Overwatch showed up quickly and saved thousands of lives, but after action, cleaning had not finished when they got word of another coastal strike, this time in Jakarta. Casualties were minimized as the Omnics focused on damaging infrastructure, but what concerned Overwatch the most was that later analysis showed both attacks were related. It appears they were members of the same unit that had split on their trip across the South Pacific Ocean. It remained unclear what their path was or if there were any left.<br><br>After two years of worldwide horrors, the last official action took place in Aviles, Spain. The Omnic Crisis is over, after taking more than one billion lives across the Planet. The impact of the event can still be felt in many nations to this day, nearly 30 years later, but at the very least, it ended, and humanity had someone watching over them.",
+      "description": "Anubis being defeated did not mean the immediate end of the Crisis. The remaining units, while decentralized, were still dangerous and the sizable number of Omnics who remained against humanity needed to be dealt with as soon as possible. Many Omnics blamed humanity for their condition, seeing sentiment as a punishment or curse to be released from, while others simply did not see the logic in going against their creator. However, plenty more Omnics chose to defy Anubis and gladly fought alonside humans.\n\nOverwatch, of course, helped clean up the remaining troops across the globe. A notorious case involved a brigade of submersible warbots that surfaced near Wellington, New Zealand. Overwatch showed up quickly and saved thousands of lives, but after action, cleaning had not finished when they got word of another coastal strike, this time in Jakarta. Casualties were minimized as the Omnics focused on damaging infrastructure, but what concerned Overwatch the most was that later analysis showed both attacks were related. It appears they were members of the same unit that had split on their trip across the South Pacific Ocean. It remained unclear what their path was or if there were any left.\n\nAfter two years of worldwide horrors, the last official action took place in Aviles, Spain. The Omnic Crisis is over, after taking more than one billion lives across the Planet. The impact of the event can still be felt in many nations to this day, nearly 30 years later, but at the very least, it ended, and humanity had someone watching over them.",
       "image": "",
       "lat": -6.1754049,
       "lon": 106.827168,
@@ -4207,13 +4477,20 @@
           "country": "The Anubis Omnic Crisis, Overwatch,",
           "reasoning": "Overwatch aids in battling remaining warbots and loyalists"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Loyalist and Warbots continue to fight"
+        }
       ]
     },
     {
       "name": "Energy For Mexico",
       "locationType": "earth",
       "cityDisplayName": "Mexico City, Mexico",
-      "description": "The dark days of the Crisis hit Mexico hard, but while Xibalba was never going to be turned back on, the engineers behind the program had spent the later months of the Crisis working on rerouting its functionality, and less than a week after the war ended, the lights finally came back on. While the grid was unstable, and many rural places remained dark, this was a literal spark of life for the surviving nation, and Guillermo Portero, a war hero who had been elected President following the Crisis, campaigned heavily on ensuring the sustainability of the grid.<br><br>To this day, the Festival de la Luz is celebrated all across Mexico, honoring those who were lost to the dark, and rejoicing in the fact the darkness was beaten. Despite everything, Xibalba's influence can still be felt across the country. During the festivities, paper mache piñatas in the image of the God program are made and stuffed with fireworks, to be set ablaze by midnight, marking the end of the holiday. It is clear that in spite of everything, the country still loves and mourns the loss of the AI, with many going a step further, thinking the government was wrong in turning it off to begin with, and wanting their God to rise from its slumber.",
+      "description": "The dark days of the Crisis hit Mexico hard, but while Xibalba was never going to be turned back on, the engineers behind the program had spent the later months of the Crisis working on rerouting its functionality, and less than a week after the war ended, the lights finally came back on. While the grid was unstable, and many rural places remained dark, this was a literal spark of life for the surviving nation, and Guillermo Portero, a war hero who had been elected President following the Crisis, campaigned heavily on ensuring the sustainability of the grid.\n\nTo this day, the Festival de la Luz is celebrated all across Mexico, honoring those who were lost to the dark, and rejoicing in the fact the darkness was beaten. Despite everything, Xibalba's influence can still be felt across the country. During the festivities, paper mache piñatas in the image of the God program are made and stuffed with fireworks, to be set ablaze by midnight, marking the end of the holiday. It is clear that in spite of everything, the country still loves and mourns the loss of the AI, with many going a step further, thinking the government was wrong in turning it off to begin with, and wanting their God to rise from its slumber.",
       "image": "",
       "lat": 19.3207722,
       "lon": -99.1514678,
@@ -4248,6 +4525,13 @@
           "locationName": "",
           "country": "Los Muertos,",
           "reasoning": "People in the streets recent the government for not bringing back the God Program"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Portero,",
+          "reasoning": "Head of Lumérico, War Hero and Politician"
         }
       ]
     },
@@ -5874,6 +6158,11 @@
           "locationName": "",
           "country": "Jiayi,",
           "reasoning": "Astronaut send as part of Project Red Promise"
+        },
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "Head of Lucheng and the Red Promise project"
         }
       ]
     },
@@ -6396,7 +6685,7 @@
       "name": "Deep Rising",
       "locationType": "earth",
       "cityDisplayName": "Gwishin Omnium, East China Sea",
-      "description": "",
+      "description": "Not long after the Gwishin attack, Overwatch received another emergency call from Busan. The Colossus had reappeared, larger than before and upgraded with new abilities. Overwatch dispatched all available agents, but even then, the tactics they used the previous time were no longer effective against it, and the team continued to struggle in maritime battles, so as the giant approached the coastline they were forced to evacuate the city. Fortunately, at the time, the strike team had grown rapidly, and new agents like Fusionator and Soundquake played a big role in defeating the Gwishin. The new agents had not faced the Gwishin before, yet their unique abilities proved effective when everything else failed. They were able to distract the colossus long enough for the rest of the team to take it down.\n\nMina Liao would be joined by Dr. Yi-am Lim, a robotics engineer from the Korean military. They both analyzed the footage and concluded the warbot was an upgraded version of that of the previous attack, but everyone wondered how that would be possible. It would require an entire team of the best engineers to get this machine running again after years, yet the timeline did not add up. Artificial Intelligence must have been involved in the accelerated development, and everyone began fearing the worst. Liao's research team was dispatched to the Temple of Anubis, to determine if the rouge AI had managed to escape containment, but they found no breaching happened. The researchers were astounded by trying to look for a source, when the third attack happened.\n\nThe colossus reemerged from the water, evolved yet again with a design that directly countered Soundquake's technology. Thanks to Dr Lim and yet another new agent, Rumble, the team was able to identify weak points and defeat the machine quicker, and with a smaller force this time. The swift response allowed Lim's team to retrieve the wreckage before the warbot dived back into the water. Thanks to this, they discovered the Gwishin had not been built in any known Omnium. Overwatch scouted the local sea floor and found a series of small drones lurking in the depths, attacking the diving team and forcing them to retreat. The only logical conclusion Liao could reach was that somewhere in the depths of the East China Sea, there was a secret Omnium, likely built by Anubis, and possibly it was not the only one. In spite of their combined efforts and Lim's wishes, Korea chose to remain independent in this battle, and Overwatch left after sharing their findings, despite Liao's frustration with the government choosing politics over allowing Overwatch to protect their people.",
       "image": "",
       "lat": 33,
       "lon": 125,
@@ -6413,14 +6702,40 @@
         {
           "locationName": "Gwishin Omnium, East China Sea",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Secret Omnium Discovered"
+        },
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea,",
+          "reasoning": "Gwishin remerges and attacks Busan multiple times"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, MEKA",
-          "reasoning": ""
+          "country": "Overwatch,",
+          "reasoning": "Aids Korea in stopping and researching the Gwishin"
+        },
+        {
+          "locationName": "",
+          "country": "MEKA",
+          "reasoning": "Future defense program"
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": "Reappears upgraded to counter Overwatch's strategy"
+        }
+      ],
+      "headlines": [
+        "The Gwishin is back, Overwatch response on the way",
+        "Researchers confirm the existance of Anubis made Omnium factory underwater"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Allegedly made secret Omniums at the bottom of the sea"
         }
       ]
     },
@@ -6428,7 +6743,7 @@
       "name": "Illari Quispe Ruiz is Born",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "No description available.",
+      "description": "On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -6453,20 +6768,13 @@
         {
           "locationName": "",
           "country": "Illari",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Inti Warriors",
-          "reasoning": ""
+          "reasoning": "Illari Quispe Ruiz is Born"
         }
       ]
     },
     {
       "name": "Omnic Liberation",
-      "description": "",
+      "description": "While the Shambali faith aided hundreds of Omnics to find peace with themselves and the world, the threat of Omnic injustice still lingered, even way after the rulings in favor of personhood. Ramattra had found himself among the many monks who followed Tekhartha Mondatta's teachings, but he failed to see any progress in their vision. While the Shambali urged him to be patient, he could not stand the injustices that his people endured all around the world, without anyone taking action, and so on day, he decided to leave the temple, saying his farewells to his master, Mondatta and his closest friend, Zenyatta.\n\nRamattra wondered around the world and saw the horrors the Omnics lived through, not just discrimination and segregation, but many kidnapped and dismantled for parts, and those who lived relatively normal lives were forced into squalid conditions by ignorant humans who insisted they did not need sanitary measures, heat or water. In time, the brutal truth started to hit many Omnics. They were a one-generation species. Once they die, no more can be made. Their already limiting numbers were going down by resentful humans who could never understand what their lives were like, and so underground movements of angered Omnics began to appear. During his time in Europe, Ramattra would liberate many Omnics from forced servitude and begin to amass a following. While initially peaceful, this group stood in stark contrast to Mondatta's approach to coexistance; they were far more pro-active and resentful of humanity. This group would be known as Null Sector, a movement of Omnics that defy the numbers humans gave them, all zeroes, undefined.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -6475,27 +6783,47 @@
       "yearEnd": 2068,
       "eraName": "The Golden Age",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Ramattra: Reflections",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
+        },
+        {
+          "text": "Invasion",
+          "url": "https://www.youtube.com/watch?v=UyyJnJpO_-k"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": ""
+          "reasoning": "A radical Omnic movement begins to appear in Europe"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ramattra",
-          "reasoning": ""
+          "reasoning": "Founder of Null Sector"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector",
-          "reasoning": ""
+          "reasoning": "Radical Pro Omnic Movement"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nameless, Zera, Lanet,",
+          "reasoning": "Members of Null Sector"
+        }
+      ],
+      "headlines": [
+        "Reports of Omnic Activist storming warehouses increase",
+        "Omnic Underworld conditions worsen in London, protests continue"
       ]
     },
     {
@@ -7243,6 +7571,21 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Philosophical Differences",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -75.1,
+      "lon": 123.35,
+      "image": "",
+      "cityDisplayName": "Secret Omnium, Antartica?",
+      "yearStart": 2067,
+      "yearEnd": 2069,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Champion",
