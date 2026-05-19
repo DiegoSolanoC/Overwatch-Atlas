@@ -6830,12 +6830,16 @@
       "name": "Harnessing te Harness",
       "locationType": "station",
       "cityDisplayName": "Interstellar Journey Space Station",
-      "description": "",
+      "description": "Doctor De Kuiper had dedicated decades of his life to the study of gravitational forces and how to harness their power. His research had reshaped the world with flying cars and connecting the entire planet with a transcontinental train, and yet, he continues to seek more. Years of research in The Hague led him to believe it would soon be possible to harness the power of a black hole. In order to test his theory, he would perform an experiment within the Interstellar Journey Space Station. Then everything went wrong.\n\nSomething failed during the experiment, triggering the formation of a black hole for a brief, yet fatal moment. Siebren found himself right in the gravitational field of the experiment as the black hole appeared, and during this period of time he was exposed to its raw power. De Kuiper survived, both a miracle and a curse, as he now had to pay for the consequences of his hubris. The area nearing Dr. Siebren began to experience strange fluctuations in gravity, relative to his reactions to what was happening around him. To make matters worse, the experience left Siebren with serious psychological damage, incapable of acting coherently and mentioning a constant, maddening melody that nobody else heard. His distress caused the fluctuations to peak. He had to be evacuated immediately.\n\nUpon returning to Earth, he would be quarantined in a Secret Government facility somewhere in New Mexico, raving about the true nature of the universe, incoherently talking about time being non-linear, all while gravity around him shifted out of control. Once the most celebrated scientists in human history, Siebren found himself unable to hold reality together, and was deemed a danger to himself, and the world as a whole. For years, he would be detained under the name of \"Subject: Sigma\", in an isolated room where his power could be contained. As years went on, the Doctor retreated into his own mind and the forbidden knowledge that had now cursed him was his only company. For years, he thought he would never see the outside world again.",
       "image": "",
       "sources": [
         {
           "text": "Sigma Origin Story",
           "url": "https://www.youtube.com/watch?v=onplsJSdp4A"
+        },
+        {
+          "text": "Overwatch Website Sigma",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
         }
       ],
       "yearStart": 2053,
@@ -6847,22 +6851,31 @@
         {
           "locationName": "Interstellar Journey Space Station",
           "country": "Interstellar Journey Space Station",
-          "reasoning": ""
+          "reasoning": "Dr. Siebren De Kuiper Accidentally creates a black hole"
+        },
+        {
+          "locationName": "Secret New Mexico Facility, United States",
+          "country": "United States,",
+          "reasoning": "Subject Sigma contained"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sigma",
-          "reasoning": ""
+          "reasoning": "Changed forever by Black Hole Exposure"
         }
+      ],
+      "headlines": [
+        "Accident on the International Space Station during Dr. De Kuiper's experiment",
+        "Dr. De Kuiper still missing after evacuation, authorities refuse to ellaborate"
       ]
     },
     {
       "name": "Specimen 8 is Born",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "No description available.",
+      "description": "Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.\n\nOn October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed \"Hammond\" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.",
       "image": "",
       "x": 60,
       "y": 70,
@@ -6877,19 +6890,31 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website: Wrecking Ball",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Wrecking Ball",
-          "reasoning": ""
+          "reasoning": "Specimen 8 is Born"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng",
-          "reasoning": ""
+          "reasoning": "Approves use of Hamsters for Genetic Therapy"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "In charge of Genetic Therapy"
         }
       ]
     },
@@ -6993,6 +7018,56 @@
         {
           "locationName": "",
           "country": "Junkers",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Out There",
+      "description": "No description available.",
+      "locationType": "moon",
+      "image": "",
+      "cityDisplayName": "",
+      "yearStart": 2062,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "x": 60,
+      "y": 70,
+      "sources": [
+        {
+          "text": "Thoughless Gods",
+          "url": ""
+        },
+        {
+          "text": "Wrecking Ball Origin Story",
+          "url": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Wrecking Ball,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Harold,",
           "reasoning": ""
         }
       ]
@@ -7583,7 +7658,13 @@
       "yearStart": 2067,
       "yearEnd": 2069,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Secret Omnium, Antartica?",
+          "country": "Antartica?",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
