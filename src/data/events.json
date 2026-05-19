@@ -6919,6 +6919,39 @@
       ]
     },
     {
+      "name": "Pressure Makes a DIamond",
+      "locationType": "earth",
+      "cityDisplayName": "London, England",
+      "description": "",
+      "image": "",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Domina",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "The Atlantic Arcology",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
@@ -7506,39 +7539,6 @@
         {
           "locationName": "",
           "country": "Talon, Shimada",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Pressure Makes a DIamond",
-      "locationType": "earth",
-      "cityDisplayName": "London, England",
-      "description": "",
-      "image": "",
-      "lat": 51.5074456,
-      "lon": -0.1277653,
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "London, England",
-          "country": "England",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Domina",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar",
           "reasoning": ""
         }
       ]
@@ -12784,6 +12784,21 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "sHELTER",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Crossroads",
