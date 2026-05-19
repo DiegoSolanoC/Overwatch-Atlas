@@ -1551,8 +1551,8 @@
       ]
     },
     {
-      "name": "Progress together",
-      "description": "In order to survive in space, many logistics need to be solved and, much like before, the advancements made to accommodate the Colony would find many different uses across the world. Textile manufacturing for long-term space suits would be used by many workers down on earth due to their similar properties to Kevlar, saving many lives during the crisis. Medical advancements in radiation shielding lead to further research into cancer treatments, also applicable on Earth. A similar case happened for treatment of lower bone density and tissue rejuvenation. In the end, even with all of these discoveries, the key to the stars was found in older technology.<br><br>Dr. Wing Mui from Wancài Industries in Honk Kong would be responsible for developing advanced hydroponics systems that the Lunar Colony would use to source their breathable air. Using a combination of Namuaca's nano-filtration sheets and Lomakema's water extractor, powering them with a controlled population of Borda Algae, in the wastewater tanks. The result was a massive success, and approved for use in the colony. Mui would go on to be known as the woman who put potatoes on the moon and turned hydroponics into one of the greatest achievements in human history.",
+      "name": "Space Race",
+      "description": "In order to survive in space, many logistics need to be solved and, much like before, the advancements made to accommodate the Colony would find many different uses across the world. Textile manufacturing for long-term space suits would be used by many workers down on earth due to their similar properties to Kevlar, saving many lives during the crisis. Medical advancements in radiation shielding lead to further research into cancer treatments, also applicable on Earth. A similar case happened for treatment of lower bone density and tissue rejuvenation. In the end, even with all of these discoveries, the key to the stars was found in older technology.\n\nDr. Wing Mui from Wancài Industries in Honk Kong would be responsible for developing advanced hydroponics systems that the Lunar Colony would use to source their breathable air. Using a combination of Namuaca's nano-filtration sheets and Lomakema's water extractor, powering them with a controlled population of Borda Algae, in the wastewater tanks. The result was a massive success, and approved for use in the colony. Mui would go on to be known as the woman who put potatoes on the moon and turned hydroponics into one of the greatest achievements in human history.",
       "locationType": "earth",
       "cityDisplayName": "Chongqing, China",
       "lat": 30.05518,
@@ -1720,7 +1720,7 @@
       "name": "Vaira Singhania is Born",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "On August 28 of 2046, Vaira Singhania was born. As the granddaughter of Vishkar's founder, she was expected to eventually inherit the family business, which had placed immense pressure upon her since she was young and quickly shaped her into a perfectionist negotiator. But although she had a knack for corporate talk, she lacked the artistic vision of an architect, and over the years had become desperate to be perceived as flawless, spending fortunes on private lessons and customized assistive equipment to allow her to compete within the company.",
+      "description": "On August 28 of 2046, Vaira Singhania was born. As the granddaughter of Vishkar's founder, she was expected to eventually inherit the family business, which had placed immense pressure upon her since she was young and quickly shaped her into a perfectionist negotiator, but she always struggled when it came to Hardlight manipulation, which caused constant judgment and disappoiment in the family. <div><br></div><div>From an early age, Vaira grew to resend those who did not appreciate her own merits, and took several messures to level the playing field with the competition.</div>",
       "image": "",
       "sources": [
         {
@@ -3414,61 +3414,6 @@
       ]
     },
     {
-      "name": "Building a Myth",
-      "locationType": "earth",
-      "cityDisplayName": "Berlin, Germany",
-      "description": "With the Crisis, the German Crusaders finally saw action, and proved to be quite effective defenders. Before the war, they were a niche group in the military with very few members, but once the Omnics attacked, they would become the center of Germany's military defense plans, as Honisch and Fischer worked on improving their capabilities, expanding their shield systems and equipping them with close-range weapons. Rocket Powered Axes and Hammers proved to be the most practical, and units were designed to charge into battle, ramming enemy waves at high speeds.\n\nThe appearance of a Crusader was enough to boost morale amongst the troops, in spite of the adversity and constant fire by Anubis. The initiative would see a surge in recruitments, as people from all walks of life, young and old, wished to defend their home, as a knight from tales of the old. The Crusader's power and cultural perspective lead to many of them fashioning themselves as chivalric heroes from fairy tales, acting by a strict code of conduct, based not on military orders, but rather on a mutual understanding, an unclaimed Oath that every Crusader was expected to follow, to live with honor, and die with glory.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "headlines": [
-        "German recruitment offices full, a new Generation of Crusaders has been selected",
-        "Knights in shinig armor shield civillians from Omnic attacks"
-      ],
-      "lat": 52.5173885,
-      "lon": 13.3951309,
-      "yearStart": 2051,
-      "yearEnd": 2053,
-      "eraName": "The Omnic Crisis",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Berlin, Germany",
-          "country": "Germany",
-          "reasoning": "A wave of new Crusader recruits come in following the Crisis, a culture of chivalry grows within the troops"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Reinhardt",
-          "reasoning": "Crusader Recruit"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "The Anubis Omnic Crisis, Crusader Initiative,",
-          "reasoning": "Crusaders gaing popularty after defending Germany"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "Troops stopped by Crusaders"
-        },
-        {
-          "locationName": "",
-          "country": "Balderich,",
-          "reasoning": "Crusader Recruit"
-        }
-      ]
-    },
-    {
       "name": "The Skycannon",
       "description": "The New Yorkers managed to endure the crisis on their own for months, coming up with one plan after another to use the city itself against Anubis. The wide cultural range and backgrounds of the many people involved allowed them to stay innovative and use the city's infrastructure to their advantage. Together they dug up and fortified shelters using parts from ships and skyscrappers, and organized to turn all green areas in the city, from rooftop gardens to Central Park, into communal farms that kept the population fed. At some point, Torbjörn Lindholm managed to find a way to contact the defenders from within the city and under his guidance they managed to work on defensive strategies. \n\nThe citizens would mount battleship cannons onto Manhattan's Sky Scrappersm and used to fire strategically at Null Sector Carriers to prevent them from reaching their deployment zones. Anubis would quickly take action and focus on bringing down these armored sky scrappers, but for a good while they bought the survivors enough time to plan ahead and fight on the ground. It was around this time that Anubis deployed the R-700 Ravager units, designed to become its battle commanders. Thanks to their high processing power, they were able to give orders independently of Anubis itself. With their arrival, it was clear that taking down Anubis wouldn't be enough to win the war.",
       "locationType": "earth",
@@ -3520,6 +3465,61 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Struggles against  unified New Yorkers"
+        }
+      ]
+    },
+    {
+      "name": "Building a Myth",
+      "locationType": "earth",
+      "cityDisplayName": "Berlin, Germany",
+      "description": "With the Crisis, the German Crusaders finally saw action, and proved to be quite effective defenders. Before the war, they were a niche group in the military with very few members, but once the Omnics attacked, they would become the center of Germany's military defense plans, as Honisch and Fischer worked on improving their capabilities, expanding their shield systems and equipping them with close-range weapons. Rocket Powered Axes and Hammers proved to be the most practical, and units were designed to charge into battle, ramming enemy waves at high speeds.\n\nThe appearance of a Crusader was enough to boost morale amongst the troops, in spite of the adversity and constant fire by Anubis. The initiative would see a surge in recruitments, as people from all walks of life, young and old, wished to defend their home, as a knight from tales of the old. The Crusader's power and cultural perspective lead to many of them fashioning themselves as chivalric heroes from fairy tales, acting by a strict code of conduct, based not on military orders, but rather on a mutual understanding, an unclaimed Oath that every Crusader was expected to follow, to live with honor, and die with glory.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "headlines": [
+        "German recruitment offices full, a new Generation of Crusaders has been selected",
+        "Knights in shinig armor shield civillians from Omnic attacks"
+      ],
+      "lat": 52.5173885,
+      "lon": 13.3951309,
+      "yearStart": 2051,
+      "yearEnd": 2053,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Berlin, Germany",
+          "country": "Germany",
+          "reasoning": "A wave of new Crusader recruits come in following the Crisis, a culture of chivalry grows within the troops"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reinhardt",
+          "reasoning": "Crusader Recruit"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "The Anubis Omnic Crisis, Crusader Initiative,",
+          "reasoning": "Crusaders gaing popularty after defending Germany"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Troops stopped by Crusaders"
+        },
+        {
+          "locationName": "",
+          "country": "Balderich,",
+          "reasoning": "Crusader Recruit"
         }
       ]
     },
@@ -5018,60 +5018,6 @@
       ]
     },
     {
-      "name": "Undercover",
-      "locationType": "earth",
-      "cityDisplayName": "París, France",
-      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. Gérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Lacroix himself was recently married to a renowned ballerina, Amélie Lacroix, who gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. <br><br>Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world.<br>",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "lat": 48.8588897,
-      "lon": 2.320041,
-      "headlines": [
-        "Overwatch expands personnel for Reyes lead operations"
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "París, France",
-          "country": "France",
-          "reasoning": "Gérard Lacroix is hired into Blackwatch"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Reaper,",
-          "reasoning": "BLackwatch Commander"
-        },
-        {
-          "locationName": "",
-          "country": "Widowmaker",
-          "reasoning": "Lacroix's wif"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Blackwatch",
-          "reasoning": "Overwatch expands its covert ops division"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Gérard,",
-          "reasoning": "Newly hired Blackwatch Agent"
-        }
-      ]
-    },
-    {
       "name": "Australian Liberation",
       "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.<br><br>In Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.<br><br>Members of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
       "locationType": "earth",
@@ -5122,15 +5068,10 @@
       ]
     },
     {
-      "name": "Outcasted",
-      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self centric king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.<br><br>Living in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland, and the feral Omnics lurking in the Outback.",
+      "name": "Undercover",
       "locationType": "earth",
-      "cityDisplayName": "Junkertown, Australia",
-      "lat": -25,
-      "lon": 135,
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
+      "cityDisplayName": "París, France",
+      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. Gérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Lacroix himself was recently married to a renowned ballerina, Amélie Lacroix, who gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. <br><br>Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world.<br>",
       "image": "",
       "sources": [
         {
@@ -5138,36 +5079,45 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "lat": 48.8588897,
+      "lon": 2.320041,
       "headlines": [
-        "\"Junker Monarchy\" vanishes collaborators to the wasteland",
-        "Australia refuses to negotiate with Junkers"
+        "Overwatch expands personnel for Reyes lead operations"
       ],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
-          "reasoning": "Mason Howl vanishes possible threads and rivals into the Australian Wasteland"
+          "locationName": "París, France",
+          "country": "France",
+          "reasoning": "Gérard Lacroix is hired into Blackwatch"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junker Queen,",
-          "reasoning": "Vanished alongside the rest of her family"
+          "country": "Reaper,",
+          "reasoning": "BLackwatch Commander"
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker",
+          "reasoning": "Lacroix's wif"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junker Monarchy",
-          "reasoning": "Ruthless monarchy lead by a tyrant King"
+          "country": "Overwatch, Blackwatch",
+          "reasoning": "Overwatch expands its covert ops division"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mason",
-          "reasoning": "King of Junkertown"
+          "country": "Gérard,",
+          "reasoning": "Newly hired Blackwatch Agent"
         }
       ]
     },
@@ -5278,6 +5228,56 @@
           "locationName": "",
           "country": "Ingrid",
           "reasoning": "Close family friend with the Zeiglers"
+        }
+      ]
+    },
+    {
+      "name": "Outcasted",
+      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self centric king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.<br><br>Living in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland, and the feral Omnics lurking in the Outback.",
+      "locationType": "earth",
+      "cityDisplayName": "Junkertown, Australia",
+      "lat": -25,
+      "lon": 135,
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "headlines": [
+        "\"Junker Monarchy\" vanishes collaborators to the wasteland",
+        "Australia refuses to negotiate with Junkers"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": "Mason Howl vanishes possible threads and rivals into the Australian Wasteland"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": "Vanished alongside the rest of her family"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Monarchy",
+          "reasoning": "Ruthless monarchy lead by a tyrant King"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mason",
+          "reasoning": "King of Junkertown"
         }
       ]
     },
@@ -5965,7 +5965,7 @@
         },
         {
           "locationName": "",
-          "country": "MEKA",
+          "country": "M.E.K.A Squad,",
           "reasoning": "Formed years later for Gwishin response"
         },
         {
@@ -6146,7 +6146,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lucheng",
+          "country": "Lucheng Interstellar,",
           "reasoning": "Sets into motion the secret Project Red Promise"
         }
       ],
@@ -6303,7 +6303,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shimada, Yamagami Blades,",
+          "country": "Shimada Clan, Yamagami Blades,",
           "reasoning": "The Clan establishes a continous relationship with the Yamagami family"
         }
       ],
@@ -6573,7 +6573,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Junkers",
+          "country": "Overwatch, Junker Monarchy,",
           "reasoning": "Fiound each other in a fight during a raide at Little River"
         }
       ],
@@ -6718,7 +6718,7 @@
         },
         {
           "locationName": "",
-          "country": "MEKA",
+          "country": "M.E.K.A Squad,",
           "reasoning": "Future defense program"
         },
         {
@@ -6906,7 +6906,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lucheng",
+          "country": "Lucheng Interstellar,",
           "reasoning": "Approves use of Hamsters for Genetic Therapy"
         }
       ],
@@ -6921,33 +6921,52 @@
     {
       "name": "Pressure Makes a DIamond",
       "locationType": "earth",
-      "cityDisplayName": "London, England",
-      "description": "",
+      "cityDisplayName": "Utopea, India",
+      "description": "The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.\n\n As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. Through this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira Mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.",
       "image": "",
-      "lat": 51.5074456,
-      "lon": -0.1277653,
+      "lat": 23.2599,
+      "lon": 77.4126,
       "eraName": "The Golden Age",
       "yearStart": 2060,
       "yearEnd": 2068,
       "secondaryCountryPlaces": [
         {
-          "locationName": "London, England",
-          "country": "England",
+          "locationName": "Utopea, India",
+          "country": "India",
           "reasoning": ""
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom,",
+          "reasoning": "Vaira struggles to keep up with Vishkar Architects in spite of Family expectations"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Domina",
-          "reasoning": ""
+          "reasoning": "Pays the design of Assistive Hardlight Arms"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
-          "reasoning": ""
+          "country": "Vishkar Corporation,",
+          "reasoning": "Growing Larger, yet getting into many controversies"
+        }
+      ],
+      "headlines": [
+        "Hundreds displace in India following Vishkar home prices being revealed",
+        "Acussations of nepotism and corruption continue within Vishkar's corporate circle"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website Domina",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/domina/"
+        },
+        {
+          "text": "Picture of Sucess",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/picture-of-success/"
         }
       ]
     },
@@ -6955,7 +6974,7 @@
       "name": "The Atlantic Arcology",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
-      "description": "No description available.",
+      "description": "The Martins had been some of Overwatch's most respected and valued members since the founding of the organization back during the Crisis. And within Overwatch, they have achieved massive accomplishments on a global scale after founding the Ecopoint program. However, the couple was not tied to the organization and in its later years they moved on from it to begin a project of their own.\n\nAfter leaving Overwatch behind, the Martins formed The Collective. A scientific research nonprofit organization that could operate outside a politically regulated scope. It was meant to be a community made by scientists, for scientists, where every member contributed anything they could, and all of them shared the fruit of everyone's labor. This Utopic idea would later develop into the Atlantic Arcology, a massive sea spire made out of durovidro, that would become the home of the collective and anyone from the outer world who wished to be a part of their dream. Arcology became a self-sustaining, eco-friendly city that was not tethered to global politics, where scientists could continue their research without fears of funding or blockades, all with the objective of benefiting humanity as a whole. Many of the world's preeminent scholars and artists would end up sailing to the Spire, especially those seeking political asylum. As a result, it also went on to become a haven for Omnic refugees across the world, and the Collective welcomed them with open arms. Aside from the recurrent presence of curious whales migrating near the facilities and disrupting traffic in and out of the city, Arcology was a massive success for the scientific community, and showed many that Overwatch's goals could be pursued without their involvement.",
       "image": "",
       "lat": 37.7412,
       "lon": -25.6756,
@@ -6972,21 +6991,33 @@
         {
           "locationName": "Atlantic Arcology",
           "country": "Atlantic Arcology",
-          "reasoning": ""
+          "reasoning": "The Martins leave Overwatch to create the Atlantic Arcology"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Collective, Overwatch",
-          "reasoning": ""
+          "country": "The Martins Collective,",
+          "reasoning": "A community of Scientists working outside of international laws"
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": "The Martins leave to found the Collecive"
         }
       ],
-      "headlines": []
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hector, Claudio,",
+          "reasoning": "Leave Overwatch to create the Arcology and Collective"
+        }
+      ]
     },
     {
       "name": "Omnic Housing",
-      "description": "No description available.",
+      "description": "Just like his student before him, Tekhartha Mondatta would choose to leave the monastery not long after Ramattra did. While Ramattra sought to unify Omnics within a banner of justice and liberation, Mondatta believed the Shambali teachings could be used to teach equality and aid Omnic communities around the world through peaceful dialogue. In order to do this, Mondatta traveled the world, giving speeches and meeting with local authorities to discuss measures towards full Omnic Integration, and the place Mondatta had his eyes on to achieve the first milestone was King's Row, in London. \n\nThe Omnics of England had been forced to live in the Underworld, a subterranean complex dug from abandoned Tube lines, power grid and sewage systems. Checkpoints around the city enforced curfews and police kept the Omnic people at bay to maintain segregation. This constant struggle had deemed London one of the main centers of Human Omnic tension in Europe, and the perfect spot for Mondatta to test his influence and teachings. Working with Major Mandah to begin work on Turing Green, a public housing development plan that would effectively give the Omnics a proper home, where they could live alongside human peers, without hiding underground. Mondatta's influence in the city could be felt within the Omnic community and with the groundbreaking of Turing Green, it marked the first step in rectifying years of injustice that Omnics had endured... if only it had lasted.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -7005,23 +7036,34 @@
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": ""
+          "reasoning": "Mondatta leads the Turing Green Housing Program"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shambali",
-          "reasoning": ""
+          "country": "Shambali Order,",
+          "reasoning": "Mondatta leaves to spread Shambali values across the world"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Mondatta takes a shovel and helps with the gorund breaking of Turing green",
+        "Reports of Null Sector extremist protesting Mondatta's precense in London continue",
+        "Underworld Curfews extended indefinetly"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mondatta,",
+          "reasoning": "Works with the local government to give Omnics a Home"
+        }
+      ]
     },
     {
       "name": "Taking the Throne",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
-      "description": "",
+      "description": "Every few seasons, Junketown hosts the Reckoning. A week-long festivity where junkers from all the outback could feast endlessly, and take part in brawls and shows of strength. The main event of the Reckoning consisted of a free for all in the Scrapyard. A battle for the death in which challengers use all sorts of gadgets and machinery to gain an open hand. Anyone may publicly challenge the reigning monarch to a battle for the crown, provided they were the last man standing in the brawl.\n\nKing Mason had gone undefeated for several years, reigning as a tyrant and stomping over allies. The heads of each Junker faction had long tried to dethrone him and take the crown for themselves, but they would all be eclipsed by a certain newcomer. Odessa Stone, an exiled wastelander, made her way into the city and challenged Mason. In her recounting debut, she faced Mari of the Thinkers and Geiger of the Scavengers, and was able to tear through both, while still showing them mercy. Odessa valued connections and loyalty, and could tell the faction leaders did not support their King. As such, she wished to show all Junkers the kind of leader she could be. The match was also being broadcast across the Outback, which she counted on to gain clout and respect with the masses. After defeating all the contenders, Mason himself came down from the top of the scrapyard to take on the wastelander.\n\nAfter a fierce battle that followed pushed Mason into a corner, as his true colors showed at his worst when he activated the Scrapyard's Magnetism in a desperate move to end the fight. As the crowd turned on Mason for his recklessness, the leaders took Odessa's side, since she spared both. With the magnet down, Odessa was able to defeat the King, and win over support from the crowd, becoming the new Queen of the Junkers.",
       "image": "",
       "lat": -25,
       "lon": 135,
@@ -7037,71 +7079,97 @@
         {
           "locationName": "Junkertown, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "King Mason is defeated by a Wastelander"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Junker Queen",
-          "reasoning": ""
+          "reasoning": "Wins the Reckoning and takes the crown"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkers",
-          "reasoning": ""
+          "country": "Junker Monarchy,",
+          "reasoning": "Odessa becomes the new Junker Queen"
         }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Geiger, Meri,",
+          "reasoning": "Aid Odessa in taking the throner"
+        },
+        {
+          "locationName": "",
+          "country": "Mason,",
+          "reasoning": "Dethroned and exhiled"
+        }
+      ],
+      "headlines": [
+        "Reports of a change in Junker Monarchy confirmed",
+        "Radiation levels in the outback stabilizing"
       ]
     },
     {
       "name": "Out There",
-      "description": "No description available.",
+      "description": "Among the Apes in the Lunar Colony, one of the gorillas was displaying rapid brain development faster than the rest. Specimen 28, was taken under the wing of Dr. Harold Winston, who took care of the Gorilla almost like a son, nourishing his curiosity with science and tales of human ingenuity back on earth. The young gorilla spent his days assisting the Doctor on experiments, away from the other apes, as he had become an outcast among the other apes. At one point, 28 would be visited by a peculiar, small intruder. Specimen 8, Hammond, had escaped through the vents, and he had just interrupted his plans.\n\nNot long before they first met, Hammond realized that Winston was just like him, another survivor of the genetic therapy who was showing intelligence faster than his peers, and he was struck with a sense of sympathy, at seeing someone just as alone as he was. He was moved by the ape's innocence and sense of wonder, and the two quickly became friends. During his nightly escapades, Hammond would sneak treats like candy and peanut butter, and aid the gorilla in fixing things that the others break. In return, the ape showed him how to dream of a better life. The pair spent hours watching the giant blue marble just outside the window of the habitat, wondering what awaited them there. \n\nThe pair wished to one day leave the base together and explore this distant world, and it just so happened that Hammond's escapades were not just to visit his friend. All this time, he had been tinkering with nuts and bolts, learning how the machinery in the base work, and he quickly fancied himself a mechanic. Even if the scientists found him every time he escaped his cell, none of them had a clue about the real purpose of his exploration of the base. He was set on leaving the moon, and taking Specimen 28 with him.",
       "locationType": "moon",
       "image": "",
       "cityDisplayName": "",
       "yearStart": 2062,
       "yearEnd": 2068,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony,",
+          "country": "Horizon Lunar Colony,",
+          "reasoning": "Hammond befriends Winston during escape attempts"
+        }
+      ],
+      "headlines": [
+        "Lucheng goes silent on future plans",
+        "Conspiracy theories about Lunar Colony Ape lack credibility says Chinese judge"
+      ],
       "x": 60,
       "y": 70,
       "sources": [
         {
           "text": "Thoughless Gods",
-          "url": ""
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/thoughtless-gods/"
         },
         {
           "text": "Wrecking Ball Origin Story",
-          "url": ""
+          "url": "https://www.google.com/search?q=wrecking+ball+overwatch+oriign&sca_esv=de9c253ead70df5d&rlz=1C1RXQR_enUS1071US1071&sxsrf=ANbL-n6k7h9cf9-qlS1SJuQKdgIX5rRjgA%3A1779224224449&ei=oM4MaqiFG4-2qtsP6sbl6Qk&biw=2400&bih=1138&ved=0ahUKEwio1f7ensaUAxUPm2oFHWpjOZ0Q4dUDCBI&uact=5&oq=wrecking+ball+overwatch+oriign&gs_lp=Egxnd3Mtd2l6LXNlcnAiHndyZWNraW5nIGJhbGwgb3ZlcndhdGNoIG9yaWlnbjIHEAAYgAQYDTILEAAYgAQYigUYhgMyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOUSUPYBWKURcAF4AZABAJgBR6ABqwOqAQE3uAEDyAEA-AEBmAIIoALGA8ICChAAGEcY1gQYsAPCAg0QABiABBiKBRhDGLADwgIXEC4Y3AYYuAYY2gYY2AIYyAMYsAPYAQHCAhcQLhjYAhi4BhjaBhjcBhjIAxiwA9gBAcICGhAuGNwGGLgGGNoGGNgCGOUEGMgDGLAD2AEBwgIFEAAYgATCAgoQABiABBgUGIcCwgIGEAAYFhgemAMAiAYBkAYMugYECAEYGZIHATigB-EpsgcBN7gHwAPCBwUwLjYuMsgHFIAIAQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:5bf2242b,vid:ZEnC_N06Uxc,st:0"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Winston, Wrecking Ball,",
-          "reasoning": ""
+          "reasoning": "Beomce close friends in the Lunar Colony"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng Interstellar,",
-          "reasoning": ""
+          "reasoning": "Continues experiments on animals"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Chao,",
-          "reasoning": ""
+          "reasoning": "Head of the Genetic experiments"
         },
         {
           "locationName": "",
           "country": "Harold,",
-          "reasoning": ""
+          "reasoning": "Winston and Hammond's caretaker"
         }
       ]
     },
@@ -7164,39 +7232,6 @@
         {
           "locationName": "",
           "country": "Overwatch, Shimada",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Biolight",
-      "locationType": "earth",
-      "cityDisplayName": "Roshani, India",
-      "description": "",
-      "image": "",
-      "lat": 23.2599,
-      "lon": 77.4126,
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Roshani, India",
-          "country": "India",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lifeweaver",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar",
           "reasoning": ""
         }
       ]
@@ -7267,6 +7302,78 @@
         {
           "locationName": "",
           "country": "Hashimoto",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Blacklisted",
+      "locationType": "earth",
+      "cityDisplayName": "Dublin, Ireland",
+      "description": "",
+      "image": "",
+      "lat": 53.3493795,
+      "lon": -6.2605593,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dublin, Ireland",
+          "country": "Ireland",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Moira, Reaper",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Blackwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Biolight",
+      "locationType": "earth",
+      "cityDisplayName": "Roshani, India",
+      "description": "",
+      "image": "",
+      "lat": 23.2599,
+      "lon": 77.4126,
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lifeweaver",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
           "reasoning": ""
         }
       ]
@@ -7467,45 +7574,6 @@
       ]
     },
     {
-      "name": "Blacklisted",
-      "locationType": "earth",
-      "cityDisplayName": "Dublin, Ireland",
-      "description": "",
-      "image": "",
-      "lat": 53.3493795,
-      "lon": -6.2605593,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dublin, Ireland",
-          "country": "Ireland",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Moira, Reaper",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Blackwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Shimada Takedown",
       "description": "",
       "locationType": "earth",
@@ -7583,36 +7651,25 @@
       ]
     },
     {
-      "name": "Chronal Dissociation",
+      "name": "Lab Rat",
+      "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "",
+      "lat": 0,
+      "lon": 0,
       "image": "",
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2068,
-      "yearEnd": 2069,
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2060,
+      "yearEnd": 2068,
       "eraName": "The Golden Age",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Watchpoint Gibraltar",
-          "country": "Gibraltar",
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
           "reasoning": ""
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Tracer, Winston",
-          "reasoning": ""
-        }
-      ]
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Shrine Maiden",
@@ -7643,6 +7700,38 @@
         {
           "locationName": "",
           "country": "Hashimoto",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Chronal Dissociation",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "description": "",
+      "image": "",
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2068,
+      "yearEnd": 2069,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer, Winston",
           "reasoning": ""
         }
       ]
@@ -8260,6 +8349,71 @@
       ]
     },
     {
+      "name": "Hacking Addiction",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sombra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Los Muertos",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "MEKKA",
+      "locationType": "earth",
+      "cityDisplayName": "Busan, South Korea",
+      "description": "",
+      "image": "",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "MEKA",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Another Job, Another Battlefield",
       "locationType": "earth",
       "cityDisplayName": "Port-de-Paix,, Haiti",
@@ -8327,71 +8481,6 @@
         {
           "locationName": "",
           "country": "Deep Sea Raiders, Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Hacking Addiction",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "",
-      "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sombra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "MEKKA",
-      "locationType": "earth",
-      "cityDisplayName": "Busan, South Korea",
-      "description": "",
-      "image": "",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "MEKA",
           "reasoning": ""
         }
       ]
@@ -8675,39 +8764,6 @@
       ]
     },
     {
-      "name": "Colateral Damage",
-      "locationType": "earth",
-      "cityDisplayName": "Glasgow, Scotland",
-      "description": "",
-      "image": "",
-      "lat": 55.861155,
-      "lon": -4.2501687,
-      "yearStart": 2070,
-      "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Glasgow, Scotland",
-          "country": "Scotland",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hazard, Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Back in Business",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
@@ -8736,6 +8792,39 @@
         {
           "locationName": "",
           "country": "Talon",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Colateral Damage",
+      "locationType": "earth",
+      "cityDisplayName": "Glasgow, Scotland",
+      "description": "",
+      "image": "",
+      "lat": 55.861155,
+      "lon": -4.2501687,
+      "yearStart": 2070,
+      "yearEnd": 2071,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hazard, Soldier 76",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Talon",
           "reasoning": ""
         }
       ]
@@ -8951,37 +9040,24 @@
       ]
     },
     {
-      "name": "Found Family",
+      "name": "Top Player",
+      "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "Glasgow, Scotland",
-      "description": "",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
       "image": "",
-      "lat": 55.861155,
-      "lon": -4.2501687,
-      "yearStart": 2070,
-      "yearEnd": 2077,
+      "cityDisplayName": "Busan, South Korea",
+      "yearEnd": null,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Glasgow, Scotland",
-          "country": "Scotland",
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
           "reasoning": ""
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hazard",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Phreaks",
-          "reasoning": ""
-        }
-      ]
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Runs in the Family",
@@ -9017,24 +9093,37 @@
       ]
     },
     {
-      "name": "Top Player",
-      "description": "No description available.",
+      "name": "Found Family",
       "locationType": "earth",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
+      "cityDisplayName": "Glasgow, Scotland",
+      "description": "",
       "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearEnd": null,
+      "lat": 55.861155,
+      "lon": -4.2501687,
+      "yearStart": 2070,
+      "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": []
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hazard",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Phreaks",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Treassure",
@@ -9138,9 +9227,9 @@
     },
     {
       "name": "Networking",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "London, England",
+      "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
       "lon": -0.1277653,
       "yearStart": 2070,
@@ -9150,8 +9239,13 @@
       "sources": [],
       "secondaryCountryPlaces": [
         {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        },
+        {
           "locationName": "London, England",
-          "country": "England",
+          "country": "United Kingdom,",
           "reasoning": ""
         }
       ],
@@ -9168,7 +9262,8 @@
           "country": "Talon, Vishkar",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": []
     },
     {
       "name": "Left Behind",
@@ -9949,38 +10044,6 @@
       ]
     },
     {
-      "name": "Lurking in the Water",
-      "locationType": "earth",
-      "cityDisplayName": "Ecopoint Monterrey, United States",
-      "description": "",
-      "image": "",
-      "lat": 36.6537668,
-      "lon": -124,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Ecopoint Monterrey, United States",
-          "country": "United States",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ecopoints",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Assassination",
       "description": "",
       "locationType": "earth",
@@ -10119,38 +10182,6 @@
       ]
     },
     {
-      "name": "Protector",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
-      "image": "",
-      "lat": 35.3606,
-      "lon": 138.7274,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto, Yokai",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Unfinished Business",
       "locationType": "earth",
       "cityDisplayName": "Port-de-Paix, Haiti",
@@ -10178,6 +10209,70 @@
         {
           "locationName": "",
           "country": "Talon",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Lurking in the Water",
+      "locationType": "earth",
+      "cityDisplayName": "Ecopoint Monterrey, United States",
+      "description": "",
+      "image": "",
+      "lat": 36.6537668,
+      "lon": -124,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Ecopoint Monterrey, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ecopoints",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Protector",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "",
+      "image": "",
+      "lat": 35.3606,
+      "lon": 138.7274,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto, Yokai",
           "reasoning": ""
         }
       ]
@@ -10279,38 +10374,6 @@
       ]
     },
     {
-      "name": "A New Empire",
-      "locationType": "earth",
-      "cityDisplayName": "Colosseo, Italy",
-      "description": "",
-      "image": "",
-      "lat": 41.8909421,
-      "lon": 12.491903,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Colosseo, Italy",
-          "country": "Italy",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vendetta",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Colloseo Gladiatori, Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Genius Grant",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
@@ -10338,6 +10401,38 @@
         {
           "locationName": "",
           "country": "Numbani",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "A New Empire",
+      "locationType": "earth",
+      "cityDisplayName": "Colosseo, Italy",
+      "description": "",
+      "image": "",
+      "lat": 41.8909421,
+      "lon": 12.491903,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Colloseo Gladiatori, Talon",
           "reasoning": ""
         }
       ]
@@ -10397,6 +10492,32 @@
       ]
     },
     {
+      "name": "Failed Recovery",
+      "locationType": "moon",
+      "cityDisplayName": "Horizon Lunar Colony",
+      "description": "",
+      "image": "",
+      "x": 60,
+      "y": 70,
+      "yearStart": 2070,
+      "yearEnd": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Bastet",
       "description": "",
       "locationType": "earth",
@@ -10425,32 +10546,6 @@
         {
           "locationName": "",
           "country": "Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Failed Recovery",
-      "locationType": "moon",
-      "cityDisplayName": "Horizon Lunar Colony",
-      "description": "",
-      "image": "",
-      "x": 60,
-      "y": 70,
-      "yearStart": 2070,
-      "yearEnd": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Horizon Lunar Colony",
-          "country": "Horizon Lunar Colony",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng",
           "reasoning": ""
         }
       ]
@@ -10520,38 +10615,6 @@
       ]
     },
     {
-      "name": "Heroes Never Die",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "description": "",
-      "image": "",
-      "lat": 30.0443879,
-      "lon": 31.2357257,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mercy, Soldier 76, Ana",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities, Talon",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Doomfist Escapes",
       "description": "",
       "locationType": "earth",
@@ -10580,6 +10643,38 @@
         {
           "locationName": "",
           "country": "Talon",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Heroes Never Die",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "description": "",
+      "image": "",
+      "lat": 30.0443879,
+      "lon": 31.2357257,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mercy, Soldier 76, Ana",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities, Talon",
           "reasoning": ""
         }
       ]
@@ -11207,34 +11302,36 @@
       ]
     },
     {
-      "name": "Friendly Rivalry",
-      "description": "",
+      "name": "Suspicious activity",
+      "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "Junkertown, Australia",
-      "lat": -25,
-      "lon": 135,
+      "cityDisplayName": "Toronto, Canada",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
       "sources": [],
+      "yearEnd": null,
+      "headlines": [],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
           "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkrat, Roadhog, Junker Queen, Wrecking Ball",
+          "country": "Sojourn",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkers",
+          "country": "Null Sector",
           "reasoning": ""
         }
       ]
@@ -11273,36 +11370,34 @@
       ]
     },
     {
-      "name": "Suspicious activity",
-      "description": "No description available.",
+      "name": "Friendly Rivalry",
+      "description": "",
       "locationType": "earth",
-      "cityDisplayName": "Toronto, Canada",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
+      "cityDisplayName": "Junkertown, Australia",
+      "lat": -25,
+      "lon": 135,
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
       "sources": [],
-      "yearEnd": null,
-      "headlines": [],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Toronto, Canada",
-          "country": "Canada",
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
           "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sojourn",
+          "country": "Junkrat, Roadhog, Junker Queen, Wrecking Ball",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Null Sector",
+          "country": "Junkers",
           "reasoning": ""
         }
       ]
@@ -11889,38 +11984,6 @@
       ]
     },
     {
-      "name": "Water Fighter",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "description": "",
-      "image": "",
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "eraName": "The Null Sector Invasion",
-      "yearStart": 2079,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuyang",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Emergency Landing",
       "description": "",
       "locationType": "earth",
@@ -12013,6 +12076,38 @@
         {
           "locationName": "",
           "country": "Overwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Water Fighter",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "description": "",
+      "image": "",
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "eraName": "The Null Sector Invasion",
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University",
           "reasoning": ""
         }
       ]
@@ -12201,39 +12296,6 @@
       ]
     },
     {
-      "name": "New Heights",
-      "description": "",
-      "locationType": "earth",
-      "image": "",
-      "cityDisplayName": "Watchpoint Grand Mesa, United States",
-      "yearStart": 2079,
-      "yearEnd": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Grand Mesa, United States",
-          "country": "United States",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sierra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Vested Interests",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
@@ -12268,6 +12330,39 @@
         {
           "locationName": "",
           "country": "Maximillien",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "New Heights",
+      "description": "",
+      "locationType": "earth",
+      "image": "",
+      "cityDisplayName": "Watchpoint Grand Mesa, United States",
+      "yearStart": 2079,
+      "yearEnd": 2080,
+      "eraName": "The Null Sector Invasion",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sierra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities",
           "reasoning": ""
         }
       ]
@@ -12546,6 +12641,39 @@
       ]
     },
     {
+      "name": "Jetpack Katt",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Brigitte",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Reconciliation",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
@@ -12611,71 +12739,6 @@
       ]
     },
     {
-      "name": "Jetpack Katt",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Jetpack Cat, Brigitte",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Search and Destroy",
-      "locationType": "earth",
-      "cityDisplayName": "Riyadh, Saudi Arabia",
-      "description": "",
-      "image": "",
-      "lat": 23.333333,
-      "lon": 45.333333,
-      "eraName": "The Reign of Talon",
-      "yearStart": 2080,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Riyadh, Saudi Arabia",
-          "country": "Saudi Arabia",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Freja, Emre",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon, Conspiracy",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Reign of Talon",
       "description": "",
       "locationType": "earth",
@@ -12711,6 +12774,38 @@
         {
           "locationName": "",
           "country": "Maximillien",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Search and Destroy",
+      "locationType": "earth",
+      "cityDisplayName": "Riyadh, Saudi Arabia",
+      "description": "",
+      "image": "",
+      "lat": 23.333333,
+      "lon": 45.333333,
+      "eraName": "The Reign of Talon",
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Riyadh, Saudi Arabia",
+          "country": "Saudi Arabia",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Freja, Emre",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon, Conspiracy",
           "reasoning": ""
         }
       ]
@@ -12786,7 +12881,7 @@
       ]
     },
     {
-      "name": "sHELTER",
+      "name": "Shelter",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 57.7072326,
@@ -12796,7 +12891,13 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -12886,6 +12987,27 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Progress",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "image": "",
+      "cityDisplayName": "Oasis University, Iraq",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     }
   ]
 }
