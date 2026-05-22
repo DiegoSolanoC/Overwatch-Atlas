@@ -7119,11 +7119,16 @@
       "description": "Among the Apes in the Lunar Colony, one of the gorillas was displaying rapid brain development faster than the rest. Specimen 28, was taken under the wing of Dr. Harold Winston, who took care of the Gorilla almost like a son, nourishing his curiosity with science and tales of human ingenuity back on earth. The young gorilla spent his days assisting the Doctor on experiments, away from the other apes, as he had become an outcast among the other apes. At one point, 28 would be visited by a peculiar, small intruder. Specimen 8, Hammond, had escaped through the vents, and he had just interrupted his plans.\n\nNot long before they first met, Hammond realized that Winston was just like him, another survivor of the genetic therapy who was showing intelligence faster than his peers, and he was struck with a sense of sympathy, at seeing someone just as alone as he was. He was moved by the ape's innocence and sense of wonder, and the two quickly became friends. During his nightly escapades, Hammond would sneak treats like candy and peanut butter, and aid the gorilla in fixing things that the others break. In return, the ape showed him how to dream of a better life. The pair spent hours watching the giant blue marble just outside the window of the habitat, wondering what awaited them there. \n\nThe pair wished to one day leave the base together and explore this distant world, and it just so happened that Hammond's escapades were not just to visit his friend. All this time, he had been tinkering with nuts and bolts, learning how the machinery in the base work, and he quickly fancied himself a mechanic. Even if the scientists found him every time he escaped his cell, none of them had a clue about the real purpose of his exploration of the base. He was set on leaving the moon, and taking Specimen 28 with him.",
       "locationType": "moon",
       "image": "",
-      "cityDisplayName": "",
+      "cityDisplayName": "Horizon Lunar Colony",
       "yearStart": 2062,
       "yearEnd": 2068,
       "eraName": "The Golden Age",
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        },
         {
           "locationName": "Horizon Lunar Colony,",
           "country": "Horizon Lunar Colony,",
@@ -7177,7 +7182,7 @@
       "name": "Project Echo Goes Online",
       "locationType": "earth",
       "cityDisplayName": "Oslo, Norway",
-      "description": "",
+      "description": "After Liao's work in Busan, she retreated back to Overwatch's research facility in Oslo. Years of work with Overwatch had slowly allowed her to gain support and leniency to work on her passion through passion, Artificial Intelligence. Following the success of the Athena AI, Liao would go on to work on several more complex projects in secrecy. Documentation on the rest of the projects following Athena is heavily classified, but we do know of her fifth and last, Project: Echo.\n\nOn February 5th of 2065, Project Echo went online for the first time. Her masterpiece, her legacy, her redemption, her apology all packaged into a perfect machine. Liao dreamed of one day improving on the design of Omnics, and possibly even replicating Aurora's sentience for years, but even after proving herself, Overwatch limited her research. In the end, Echo was designed as a multi-role adaptive robot that could learn by replicating behavior, using a chassis with Hard light projectors that would allow Echo to duplicate the form of those she scanned, not just learning from their behavior but imitating them to a T. In the end, what was supposed to push the boundaries of sentience once more, was decimated into yet another tool for Overwatch to deploy in missions.",
       "image": "",
       "lat": 59.9133301,
       "lon": 10.7389701,
@@ -7187,22 +7192,41 @@
         {
           "locationName": "Oslo, Norway",
           "country": "Norway",
-          "reasoning": ""
+          "reasoning": "Project: Echo goes Online"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Echo",
-          "reasoning": ""
+          "reasoning": "Project: Echo goes Online"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Dr. Liao continues to advocate for Artificial Intelligence making a comeback",
+        "Overwatch to fun Liao's research on a secret project in Norway"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website: Echo",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/echo/"
+        },
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Mina Liao Project Echo Transcripts",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
         }
       ]
     },
     {
-      "name": "Fell Dragons",
+      "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "",
+      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. \nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan and spent his days pursuing a playboy lifestyle. The elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
       "image": "",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -7218,29 +7242,54 @@
         {
           "locationName": "Hanamura, Japan",
           "country": "Japan",
-          "reasoning": ""
+          "reasoning": "Overwatch finds a dying Genji during a mission against the Shimada Clan"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mercy, Genji, Emre, Reaper, Hanzo",
-          "reasoning": ""
+          "country": "Genji, Hanzo",
+          "reasoning": "Dueled to death following the clan's orders"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Emre,",
+          "reasoning": "Found Genji during the Kanezaka mission"
+        },
+        {
+          "locationName": "",
+          "country": "Reaper,",
+          "reasoning": "Convinced Genji to join Overwatch in exchange for a rebuilt body"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Shimada",
-          "reasoning": ""
+          "country": "Overwatch,",
+          "reasoning": "Begins an operation to take down the Shimada Clan"
+        },
+        {
+          "locationName": "",
+          "country": "Blackwatch,",
+          "reasoning": "Expands into a larger division and recruits Genji"
+        },
+        {
+          "locationName": "",
+          "country": "Shimada Clan, Hashimoto Clan,",
+          "reasoning": "Sojiro's death leads to a change in direction in the Shimada Clan"
         }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Tensions grow between Criminal gangs in Japan following the assasination of Sojiro Shimada",
+        "Overwatch seen in Kanezaka amidst growing Clan violence"
       ]
     },
     {
       "name": "Search and Rescue",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
-      "description": "",
+      "description": "With Overwatch expanding all of its departments from Blackwatch to the Ecopoint program, Ana Amari aided each division in the recruitment process and one. Generally, most of the supportive staff tended to be overshadowed by the Strike team in the public eye, but one key addition gained notoriety even among the Strike team itself: Freja Skov, the daughter of a Dannish diplomat who played a key role in her country's defense during the Omnic Crisis. She had admired her mother's work for the longest time, but instead of following in her footsteps, she wished to save people on the ground alongside other operatives. After graduating from University with a criminology degree, Freja joined her local search and rescue team to gain experience in the field. It was here where she developed outstanding skills at tracking down anyone, in any place, as she felt in love with the rush of seeing a job through the end, and making a difference hands on.\n\nFor the longest time, Freja dedicated herself to chasing that gratifying feeling, and her determination began to open many doors. Ana Amari approached Freja to join a burgeoning search and rescue division among the Overwatch support personnel. While in Overwatch, Freja would quickly gain notoriety for her unmatched excellence on the job, with many considering her the best tracker in the world. Freja would go on to become personally requested as an assiting operative by several members of the Strike team, like Reinhardt, Mercy and particularly Emre Sarioglu, who she grew especially close with, often taking trips to Istanbul together while on break from duty.",
       "image": "",
       "lat": 55.6867243,
       "lon": 12.5700724,
@@ -7257,52 +7306,40 @@
         {
           "locationName": "Copenhagen, Denmark",
           "country": "Denmark",
-          "reasoning": ""
+          "reasoning": "Freja Skov gets recruited into the Search and Rescue division of Overwatch"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Freja",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Cursed",
-      "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "",
-      "image": "",
-      "sources": [
-        {
-          "text": "CurseBreaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf"
-        }
-      ],
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2066,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
+          "reasoning": "Recruited into Search and Rescue"
+        },
         {
           "locationName": "",
-          "country": "Mitzuki",
-          "reasoning": ""
+          "country": "Ana,",
+          "reasoning": "Recruited Freja to the Search and Rescue division"
+        },
+        {
+          "locationName": "",
+          "country": "Emre,",
+          "reasoning": "Coordinated with Search and Rescue, close friend of Freja"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Reinhardt,",
+          "reasoning": "Often requested Freja by name"
         }
+      ],
+      "headlines": [
+        "Hundreds Evacuated by Overwatch's Search and Rescue team",
+        "The best tracker in the world to Join Overwatch"
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto",
-          "reasoning": ""
+          "country": "Overwatch, Search & Rescue,",
+          "reasoning": "Overwatch expands into new Divisions"
         }
       ]
     },
@@ -7310,7 +7347,7 @@
       "name": "Blacklisted",
       "locationType": "earth",
       "cityDisplayName": "Dublin, Ireland",
-      "description": "",
+      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. He came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repeating the subject's entire body through sheer biological will.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark. \n\nGabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Moira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her further her progress emulating the original formula. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.",
       "image": "",
       "lat": 53.3493795,
       "lon": -6.2605593,
@@ -7327,53 +7364,156 @@
         {
           "locationName": "Dublin, Ireland",
           "country": "Ireland",
-          "reasoning": ""
+          "reasoning": "Moira O'Deorain is black listed following the release of controversial papers"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Moira, Reaper",
-          "reasoning": ""
+          "reasoning": "Reyes hires Moira into Blackwatch in secret"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Mercy, Sojourn,",
+          "reasoning": "Continously oppose Reyes' choices"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Blackwatch",
-          "reasoning": ""
+          "reasoning": "Expands into its own medical staff"
         }
+      ],
+      "headlines": [
+        "Controversial paper on Celular regeneration shakes the scientific world",
+        "Overwatch releases public condemnation of Moira O'Deorain's research"
       ]
     },
     {
-      "name": "Biolight",
+      "name": "Cursed",
       "locationType": "earth",
-      "cityDisplayName": "Roshani, India",
-      "description": "",
+      "cityDisplayName": "Tokyo, Japan",
+      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls.\n\nMizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. As the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, the Elders would take a keen interest in the young boy. The clan showed Mizuki mercy by forgiving his debt if he joined their organization, and without nowhere else to go, Mizuki accepted this fate reluctantly. ",
       "image": "",
-      "lat": 23.2599,
-      "lon": 77.4126,
+      "sources": [
+        {
+          "text": "CurseBreaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf"
+        }
+      ],
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2066,
       "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Roshani, India",
-          "country": "India",
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": "Captured by the Hashimto, Mizuki's friend and mentor"
+        }
+      ],
+      "headlines": [
+        "Hashimoto gangsters seen wielding energy weapons",
+        "Tokyo crime rates increase twice as fast this last month"
+      ]
+    },
+    {
+      "name": "Shimada Takedown",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Hanamura, Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "yearStart": 2068,
+      "eraName": "The Golden Age",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
           "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lifeweaver",
+          "country": "Genji, Reaper, Cassidy",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
+          "country": "Talon, Shimada",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Takeover",
+      "locationType": "earth",
+      "cityDisplayName": "Venice, Italy",
+      "description": "",
+      "image": "",
+      "lat": 45.4371908,
+      "lon": 12.3345898,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.youtube.com/watch?v=8-nXN9ZMl8o&t=3s"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon, Numbani",
           "reasoning": ""
         }
       ]
@@ -7418,40 +7558,67 @@
       ]
     },
     {
-      "name": "Takeover",
+      "name": "Biolight",
       "locationType": "earth",
-      "cityDisplayName": "Venice, Italy",
+      "cityDisplayName": "Roshani, India",
       "description": "",
       "image": "",
-      "lat": 45.4371908,
-      "lon": 12.3345898,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.youtube.com/watch?v=8-nXN9ZMl8o&t=3s"
-        }
-      ],
+      "lat": 23.2599,
+      "lon": 77.4126,
       "eraName": "The Golden Age",
       "yearStart": 2060,
       "yearEnd": 2068,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Venice, Italy",
-          "country": "Italy",
+          "locationName": "Roshani, India",
+          "country": "India",
           "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Doomfist",
+          "country": "Lifeweaver",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Numbani",
+          "country": "Vishkar",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Shrine Maiden",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "lat": 35.3606,
+      "lon": 138.7274,
+      "yearStart": 2068,
+      "eraName": "The Golden Age",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto",
           "reasoning": ""
         }
       ]
@@ -7574,44 +7741,6 @@
       ]
     },
     {
-      "name": "Shimada Takedown",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "lat": 35.6762,
-      "lon": 139.6503,
-      "yearStart": 2068,
-      "eraName": "The Golden Age",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Genji, Reaper, Cassidy",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon, Shimada",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Cold Snap",
       "locationType": "earth",
       "cityDisplayName": "Ecoopint Antartica",
@@ -7646,60 +7775,6 @@
         {
           "locationName": "",
           "country": "Ecopoints, Overwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Lab Rat",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 0,
-      "lon": 0,
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Shrine Maiden",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "lat": 35.3606,
-      "lon": 138.7274,
-      "yearStart": 2068,
-      "eraName": "The Golden Age",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto",
           "reasoning": ""
         }
       ]
@@ -7905,10 +7980,10 @@
       ]
     },
     {
-      "name": "Bad Company",
+      "name": "Unshackled",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 29.5918,
       "lon": 52.5836,
@@ -7941,7 +8016,8 @@
           "country": "Oasis, Talon",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": []
     },
     {
       "name": "Prodigy Child",

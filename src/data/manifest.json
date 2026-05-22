@@ -287,6 +287,22 @@
       "name": "A New Era"
     },
     {
+      "filename": "Aatlis.mp3",
+      "name": "Aatlis"
+    },
+    {
+      "filename": "Adventurer.mp3",
+      "name": "Adventurer"
+    },
+    {
+      "filename": "Amaterasu.mp3",
+      "name": "Amaterasu"
+    },
+    {
+      "filename": "Anniversary Suite.mp3",
+      "name": "Anniversary Suite"
+    },
+    {
       "filename": "Answering the Call.mp3",
       "name": "Answering the Call"
     },
@@ -303,12 +319,28 @@
       "name": "Busan"
     },
     {
+      "filename": "Call of the Hunt.mp3",
+      "name": "Call of the Hunt"
+    },
+    {
       "filename": "Château Guillard.mp3",
       "name": "Château Guillard"
     },
     {
       "filename": "Colosseo.mp3",
       "name": "Colosseo"
+    },
+    {
+      "filename": "Conquest.mp3",
+      "name": "Conquest"
+    },
+    {
+      "filename": "Desperado.mp3",
+      "name": "Desperado"
+    },
+    {
+      "filename": "Dokiwatch.mp3",
+      "name": "Dokiwatch"
     },
     {
       "filename": "Dorado.mp3",
@@ -319,6 +351,14 @@
       "name": "Eichenwalde"
     },
     {
+      "filename": "Emperor.mp3",
+      "name": "Emperor"
+    },
+    {
+      "filename": "Gothenburg.mp3",
+      "name": "Gothenburg"
+    },
+    {
       "filename": "Hanamura.mp3",
       "name": "Hanamura"
     },
@@ -327,8 +367,16 @@
       "name": "Havana"
     },
     {
+      "filename": "Hold Your Ground.mp3",
+      "name": "Hold Your Ground"
+    },
+    {
       "filename": "Hollywood.mp3",
       "name": "Hollywood"
+    },
+    {
+      "filename": "Hop Online.mp3",
+      "name": "Hop Online"
     },
     {
       "filename": "Horizon Lunar Colony.mp3",
@@ -361,6 +409,10 @@
     {
       "filename": "Loverwatch.mp3",
       "name": "Loverwatch"
+    },
+    {
+      "filename": "Lunar Year.mp3",
+      "name": "Lunar Year"
     },
     {
       "filename": "Mauga's Theme.mp3",
@@ -399,12 +451,32 @@
       "name": "Paris"
     },
     {
+      "filename": "Questwatch.mp3",
+      "name": "Questwatch"
+    },
+    {
       "filename": "Rialto.mp3",
       "name": "Rialto"
     },
     {
       "filename": "Route 66.mp3",
       "name": "Route 66"
+    },
+    {
+      "filename": "Runasapi.mp3",
+      "name": "Runasapi"
+    },
+    {
+      "filename": "Starwatch.mp3",
+      "name": "Starwatch"
+    },
+    {
+      "filename": "Summer Games.mp3",
+      "name": "Summer Games"
+    },
+    {
+      "filename": "Summit Breach.mp3",
+      "name": "Summit Breach"
     },
     {
       "filename": "Suravasa Market.mp3",
@@ -419,8 +491,8 @@
       "name": "The Wastelander"
     },
     {
-      "filename": "The Wolf's Talon.mp3",
-      "name": "The Wolf's Talon"
+      "filename": "Vendetta.mp3",
+      "name": "Vendetta"
     },
     {
       "filename": "Volskaya Industries.mp3",
@@ -433,6 +505,10 @@
     {
       "filename": "Winston's Desk.mp3",
       "name": "Winston's Desk"
+    },
+    {
+      "filename": "Winter Wonderland.mp3",
+      "name": "Winter Wonderland"
     },
     {
       "filename": "Wrecking Ball's Theme.mp3",
