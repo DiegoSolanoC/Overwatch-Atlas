@@ -7228,7 +7228,7 @@
       "cityDisplayName": "Hanamura, Japan",
       "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. \nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan and spent his days pursuing a playboy lifestyle. The elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
       "image": "",
-      "lat": 35.6762,
+      "lat": 36.6762,
       "lon": 139.6503,
       "sources": [
         {
@@ -7283,6 +7283,61 @@
       "headlines": [
         "Tensions grow between Criminal gangs in Japan following the assasination of Sojiro Shimada",
         "Overwatch seen in Kanezaka amidst growing Clan violence"
+      ]
+    },
+    {
+      "name": "Cursed",
+      "locationType": "earth",
+      "cityDisplayName": "Akihabara, Taito, Tokyo, 110-0006, Japan",
+      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls.\n\nMizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. As the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, the Elders would take a keen interest in the young boy. The clan showed Mizuki mercy by forgiving his debt if he joined their organization, and without nowhere else to go, Mizuki accepted this fate reluctantly. ",
+      "image": "",
+      "sources": [
+        {
+          "text": "CurseBreaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf"
+        }
+      ],
+      "lat": 34.7018928,
+      "lon": 140.7743684,
+      "yearStart": 2066,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Taito, Tokyo, 110-0006, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": "Captured by the Hashimto, Mizuki's friend and mentor"
+        }
+      ],
+      "headlines": [
+        "Hashimoto gangsters seen wielding energy weapons",
+        "Tokyo crime rates increase twice as fast this last month"
       ]
     },
     {
@@ -7344,6 +7399,153 @@
       ]
     },
     {
+      "name": "Takeover",
+      "locationType": "earth",
+      "cityDisplayName": "Venice, Italy",
+      "description": "For years, Akande Ogundimu had trained under the wing of Akinjide Adeyemi, as one of the best lieutenants. His involvement was known by Numbani's security forces, but he was smart enough to keep distance away from more active conflicts to avoid being apprehended. As Ogundimu became one of Adeyemi's most trusted confidants, behind his back, Akande was thinking far bigger than he could ever have imagined. Akande was a well-studied visionary, who had grown to adopt a certain philosophy as his personal mantra: Humanity evolves through conflict.  =It was conflict like the pandemics earlier in the century that pushed medical advances to their limits. It was conflict like the ecological impact of humanity that led to the hundreds of inventions that made life better. It was a conflict like the Omnic Crisis that allowed humanity to come together with Overwatch, and push through an enemy larger than any nation on their own. It was conflict that prevented him from sports, and allowed him to realize his true calling. Akande was meant to spread conflict across the world, for the betterment of humanity.\n\nAkande had grown connections within Talon's council through Adeyemi's network of mercenaries, and within the council they saw him as a potentially valuable asset. Before long, Ogundimu made his choice. He turned against his master and after a brutal face off, he was able to kill him, taking the Gauntlet and the mantle of Doomfist for himself. Akande was already respected within Talon, but between his vision, and now the imposing force of the Gauntlet, the members of the council would have little option but to fall in line at his command. After all, it would be easier to take advantage of governments and industry amid the chaos of ongoing conflicts, so while the new Doomfist pursued an ideology, his closest allies stuck around purely to profit from his crusade.\n\nUnder Doomfist, Talon would shift from being an amorphous, silent force that hijacked power across regions, to a loud, imposing terrorist that quickly proved to be Overwatch's primary obstacle in their peacekeeping duties. The organization was actively growing at this time as well. Research teams began to raise warnings of fringe scientists being recruited by Talon agents, and in some cases, reputable researchers getting kidnapped. Perhaps a more direct blow would be the beggining of a recruitment campaign across the Carribean Sea, as many experienced personnel from the Caribbean Coalition ranks began to be lured by the calling of Talon. Reyes and Lacroix became aware of the change in leadership and even obtained partial footage of the battle. The subject became a main priority for their research, but soon enough, Overwatch would have their hands full from dealing with Talon.",
+      "image": "",
+      "lat": 45.4371908,
+      "lon": 12.3345898,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.youtube.com/watch?v=8-nXN9ZMl8o&t=3s"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Venice, Italy",
+          "country": "Italy",
+          "reasoning": "Akande takes over the Doomfist mantle and control of Talon"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist",
+          "reasoning": "Kills his mentor and becomes the new Doomfist and leader of Talon"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon, Numbani",
+          "reasoning": "Talon accepts Akande as the new leading force for the group"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Adeyemi,",
+          "reasoning": "Killed by Akande"
+        }
+      ],
+      "headlines": [
+        "The Scourge of Numbani is dead, man claiming to be his killer steals the Doomfist Gauntlet",
+        "Reports of Talon across the Caribbean continue, corruption allegations among the Coaltion ranks on the rise"
+      ]
+    },
+    {
+      "name": "Lost in Time",
+      "locationType": "earth",
+      "cityDisplayName": "London, United Kingdom",
+      "description": "Overwatch's research team was relatively quieter than the many controversies the Strike team and Blackwatch would eventually be remembered for, but one of their many experiments would become one of the things the organization became the most known for. Lena Oxton was at the time a young pilot in the Brittish Royal Air Force and had just enlisted into Overwatch for trials of their next generation, teleporting fighter jet, the Splitstream. Lena might have been pretty young at the time, but her uniquely fast reflexes, hand coordination and love for flying at high speeds made her the most suited choice for the test that Britain could offer. \n\nUnfortunately, during the first test flight, the ship's teleportation matrix would malfunction, and suddenly both Oxton and the jet vanished. Lena was presumed dead, and the incident did not bring any good publicity for Overwatch, but what the scientists did not expect at the time was that Lena's disappearance was a far more complex, rare event than merely vanishing in the accident.\n\nOxton's molecular structure had become desynchronized from the regular flow of time and space, a condition that would later be called \"Chronal Disassociation.\" In short, Lena was a living ghost, disappearing for hours and days at a time, and whenever she was visible in our present, it was often at completely different places, and she could barely maintain a physical form for long. Lena would remain in this limbo state for about two whole years, in which her body showed no signs of aging while disassociated from our timeline. After her first reappearance in the months after the accident, Shira Wexler, the lead designer of the jet, took full responsibility for her condition and dedicated her team's efforts to finding a cure.",
+      "image": "",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2066,
+      "yearEnd": 2067,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Lena Oxton goes missing during experimental test flight"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer",
+          "reasoning": "Becomes Chronically Disasociated following the Splitstream accident"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": "Works on finding a cure for Lena's condition"
+        }
+      ],
+      "headlines": [
+        "Overwatch pilot lost in time following engine malfunciton in experimental jet"
+      ]
+    },
+    {
+      "name": "Shimada Takedown",
+      "description": "After months of treatment, Genji's body was fully reconstructed, and the man had turned into a living weapon, filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within. \n\nTo make matters easier, the Clan had also lost their other heir, not long after Genji. Hanzo Shimada had abandoned his duties, feeling ashamed by his actions, since, as far as he knew, he had killed his brother in cold blood at the orders of a bunch of old men who were supposed to serve him. They say the man became a vagabond, taking his father's Anima storm bow with him as a memento, he swore never to wield a blade again, and once he left Hanamura Castle and began to travel the world, seeking for ways to restore his honor and put his old life behind.\n\n Without solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further. The long-lasting Shimada Clan had been completely dismantled from the shadows, and although Genji craved more, and actively pursued the take-down of other rival gangs in the region like the Hashimoto, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region.",
+      "locationType": "earth",
+      "cityDisplayName": "Hanamura, Japan",
+      "lat": 36.6762,
+      "lon": 139.6503,
+      "yearStart": 2068,
+      "eraName": "The Golden Age",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "The Shimada Clan is dismantled by Blackwatch"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Genji, Reaper, Cassidy",
+          "reasoning": "Work together to arrest the Shimada"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Blackwatch,",
+          "reasoning": "Pursues the take down of the Shimada and other gangs in Japan"
+        },
+        {
+          "locationName": "",
+          "country": "Shimada Clan, Hashimoto Clan,",
+          "reasoning": "With the Shimada crumbling the Hashimoto slowly grow to fill in their role"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": "Works to arrest the Shimada"
+        }
+      ],
+      "headlines": [
+        "Shimada activity reports in Kanezaka suddendly drop, several known members missing",
+        "Kanezakan locals claim extorsion attempts at the hand of Shimada gangsters"
+      ]
+    },
+    {
       "name": "Blacklisted",
       "locationType": "earth",
       "cityDisplayName": "Dublin, Ireland",
@@ -7392,105 +7594,17 @@
       ]
     },
     {
-      "name": "Cursed",
+      "name": "Cold Snap",
       "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls.\n\nMizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. As the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, the Elders would take a keen interest in the young boy. The clan showed Mizuki mercy by forgiving his debt if he joined their organization, and without nowhere else to go, Mizuki accepted this fate reluctantly. ",
+      "cityDisplayName": "Ecoopint Antartica",
+      "description": "Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. An abnormally huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.\n\nAs the storm raged on, the team remained in cryo stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was pressured to death. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. During one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents.\n\nAll of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.",
       "image": "",
-      "sources": [
-        {
-          "text": "CurseBreaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf"
-        }
-      ],
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2066,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro,",
-          "reasoning": "Captured by the Hashimto, Mizuki's friend and mentor"
-        }
-      ],
-      "headlines": [
-        "Hashimoto gangsters seen wielding energy weapons",
-        "Tokyo crime rates increase twice as fast this last month"
-      ]
-    },
-    {
-      "name": "Shimada Takedown",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "lat": 35.6762,
-      "lon": 139.6503,
-      "yearStart": 2068,
-      "eraName": "The Golden Age",
-      "image": "",
+      "lat": -67.107616,
+      "lon": -68099824,
       "sources": [
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Genji, Reaper, Cassidy",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon, Shimada",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Takeover",
-      "locationType": "earth",
-      "cityDisplayName": "Venice, Italy",
-      "description": "",
-      "image": "",
-      "lat": 45.4371908,
-      "lon": 12.3345898,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.youtube.com/watch?v=8-nXN9ZMl8o&t=3s"
         }
       ],
       "eraName": "The Golden Age",
@@ -7498,70 +7612,43 @@
       "yearEnd": 2068,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Venice, Italy",
-          "country": "Italy",
-          "reasoning": ""
+          "locationName": "Ecoopint Antartica",
+          "country": "Antarctica",
+          "reasoning": "Ecopoint Antartica staff pressumed dead after massive superstorm"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Doomfist",
-          "reasoning": ""
+          "country": "Mei",
+          "reasoning": "Stuck in Cryostasis, presumed dead"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Numbani",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Lost in Time",
-      "locationType": "earth",
-      "cityDisplayName": "London, United Kingdom",
-      "description": "",
-      "image": "",
-      "lat": 51.5074456,
-      "lon": -0.1277653,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+          "country": "Ecopoints, Overwatch",
+          "reasoning": "Overwatch attempts and fails to rescue the bodies"
         }
       ],
-      "yearStart": 2066,
-      "yearEnd": 2067,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "London, United Kingdom",
-          "country": "United Kingdom",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
+      "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Tracer",
-          "reasoning": ""
+          "country": "Hector, Claudio,",
+          "reasoning": "Join their fellow scientists in mourning"
         }
       ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch",
-          "reasoning": ""
-        }
+      "headlines": [
+        "Anomalous Blizzard reaches Thirteen months of consistent activity",
+        "Overwatch declares Antartica staff dead after storm extends pass the survivable window",
+        "The Resolute ship is lost during rescue mission in Antartica"
       ]
     },
     {
       "name": "Biolight",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
-      "description": "",
+      "description": "As Niran grew older, he would use his parent's wealth to travel the world during his breaks from the architecture academy. While exploring the wilderness of the globe, he was able to experience the turmoil that existed in the world outside his bubble of wealth. Animals and forests dying, in part due to Vishkar's own expansion, war, illness and poverty everywhere he looked, with people who needed help being actively ignored, entire communities riddled with pain. Niran became determined to use his talents to fix the world, and began to experiment with healing applications of hardlight.\n\nAfter months of research at the Architech Academy, Niran used his knowledge and fascination of botany. Niran would push the limits of hardlight design into something new entirely. A self-replicating biomass made from hardlight. A living, organic material manifested from light structures, capable of repairing tissue near its light in the blink of an eye. Biolight was a revolutionary discovery that could change the world and bring balance back between man and nature. However, he would soon discover that was not possible under Vishkar. \n\nDuring his research at the Academy, he would come to discover the notes of Vishwakarma Bhatt, the late founder of the corporation, as well as his dream of providing hardlight freely to the world. Niran wished Biolight would remain accessible to all as well, but seeing how quick the company was to ignore their founder's wishes, choosing to place restrictions on the technology and profit from their monopoly, Niran knew the same fate would await his discovery.  When he unveiled the technology, Vishkar began to claim full ownership of the invention, and Niran resisted. Against the demands of Vishkar's higher ups and the advice of his closest friend Satya, Niran fled the academy and took his research on Biolight with him. Overnight, he became a wanted man on a crusade against a powerful empire, and to make matters worse, his family would cut him off from their wealth to pressure him into turning in his discovery.\n\nNiran was alone and hunted, but not out of options. He pleaded for sanctuary in the Atlantic Arcology, where he would be received by a supportive community of like-minded individuals. The nature of the Collective placed him outside global laws and prevented Vishkar from pursuing him further, and the assets of the Arcology allowed Niran to continue his research independently, working alongside the other members of the collective to bring his power to the world, free of charge.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -7572,22 +7659,331 @@
         {
           "locationName": "Roshani, India",
           "country": "India",
-          "reasoning": ""
+          "reasoning": "Niran leaves Vishkar after his discovery of Biolight"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Lifeweaver",
-          "reasoning": ""
+          "reasoning": "Escapes Vishkar and takes Biolight with him"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
-          "reasoning": ""
+          "country": "Vishkar Corporation,",
+          "reasoning": "Pursues legal action against Niran"
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective,",
+          "reasoning": "Recieve Niran with open arms into their community"
         }
+      ],
+      "headlines": [
+        "Vishkar engineer goes rouge and flees with priceless technology",
+        "Bounty is placed for Niran PruksaManee in multiple countries"
+      ],
+      "sources": [
+        {
+          "text": "Lifeweaver Origin Story",
+          "url": "https://www.youtube.com/watch?v=y5ggehpY6bQ"
+        }
+      ]
+    },
+    {
+      "name": "Uneasy Alliance",
+      "locationType": "earth",
+      "cityDisplayName": "Monte-Carlo, Monaco",
+      "description": "Soon after his takeover of Talon, Doomfist began his campaign of conflict by arranging a series of attacks on powerful figures across the globe. Maximillien, the head of the ever-growing Monte Carlo, was naturally a tantalizing target. The first assassin sent his way caused concern, but swiftly dealt with by his security staff. When the second assassin came, this was more flattering. Following this second attempt, the assassin would not return to Doomfist empty-handed, as they claimed the target proposed a deal. \n\nNot long after, Max found himself in the wreckage of his office, as the imposing figure of Doomfist himself towered over him. Max understood well the level of power he was dealing with, Doomfist was unquestioned and his crusade would not be stopped. All he could do if he had any hope of surviving, was join his side. Maximillien's deal allowed Akande access to his resources, money and connections, as well as his ability to manage Talon's assets effectively. In return, he asked to be allowed to live, as one of his council members. Talon's aid would also allow Maximilien to pursue more contentious negotiations, offering leverage through brute force.\n\nLucky for Maximillien, Doomfist respected his perseverance, his confidence and his ability to adapt, the deal was made, and Max dragged all of Monte Carlo into Talon's umbrella, just to save his own life. The deal, however, was still a losing hand for Max. At La Coterie, control was everything, and Max had long enjoyed being the one pulling the strings of everyone who was once above him. The house always wins, but if Talon took the house, what would be left of him?",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Pocket King",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/the-pocket-king/"
+        }
+      ],
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "lat": 43.7402961,
+      "lon": 7.426559,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Monte-Carlo, Monaco",
+          "country": "Monaco",
+          "reasoning": "Maximillien offers to aid Doomfist in exchange for a seat at the Talon Council"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist",
+          "reasoning": "Accepts Max's deal"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon, La Coterie,",
+          "reasoning": "Talon gains acess to La Coterie's assets"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien",
+          "reasoning": "Allies with Doomfist to survive"
+        }
+      ],
+      "headlines": [
+        "La Coaterie power brokect presumed to have ties with Talon",
+        "Talon activity reported in Monte Carlo"
+      ]
+    },
+    {
+      "name": "Lunar Revolt",
+      "locationType": "moon",
+      "cityDisplayName": "Horizon Lunar Colony",
+      "description": "The Horizon Lunar Colony had stood strong for decades, it saw a changing world, survived the Crisis, and now was home to a generation of increasingly smarter Apes. The experiments pursued by the Horizon team, however, were extremely morally dubious in nature, and the animals themselves grew to resent their handlers for their actions. By this time, Dr. Chao, the head of the research, had returned to Earth, as long-term activity on the moon turned her bones feeble, unable to walk on land, or to get cybernetics, she had moved back to Lijiang Tower's administrative sectors, but the experiments continued without her, and the researchers soon would realize the price for crossing such ethical barriers.\n\nCommunication with Horizon was lost abruptly and never restored. What little is known is that the Apes ead an uprising against the staff, killing every single scientist, and claiming control of the colony for themselves. Specimen 28, a gorilla who grew attached to his caretaker, Harold Winston, saw his world crumble apart as his peers killed his teacher. 28 took his mentor's name into his memory and, in the middle of the chaos, he was able to find a nearly finished, makeshift rocket in the base. After putting the finishing touches, he was able to launch the pod and escape to Earth. Little did he know that vessel was actually Hammond's, and he had worked on it for months hoping that they could escape together. Ingenious as always, Hammond was able to attach a spare capsule to Winston's vessel, and secretly hitched a ride when they blasted off. However, the cable broke when they entered the Atmosphere, and Hammond landed in a completely different spot than Winston, who had no idea his friend was following close.\n\nWinston's ship would be intercepted by Overwatch agents in Gibraltar. After making landfall, the team was surprised to find he could address them in perfect English, as he required urgent medical assistance and lost consciousness soon after. After recovery, Overwatch made controversial headlines with the recruitment of their first fully non-human member. Winston proved himself highly intelligent, strong and agile, and when he requested to join the organization, he himself presented a case for personhood in court, following the precedents set by the Omnic Rights movement. Winston's reception was mixed at the start due to the ethically questionable nature of his mere existence, but he quickly proved to be an invaluable ally for the organization, as well as one of the most charismatic faces of the Strike team, becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own.",
+      "image": "",
+      "x": 60,
+      "y": 70,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Wrecking Ball Origin Story",
+          "url": "https://www.youtube.com/watch?v=ZEnC_N06Uxc"
+        }
+      ],
+      "yearStart": 2062,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "The apes rebel and kill Lucheng's staff"
+        },
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "Winstons makes landfall and is intercepted by Overwatch"
+        },
+        {
+          "locationName": "Australian Outback",
+          "country": "Australia",
+          "reasoning": "Hammond's pod detaches in the atmosphere, lands near Junkertown instead"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Escapes the lunar colony after finding makeshift rocket, joins Overwatch soon after"
+        },
+        {
+          "locationName": "",
+          "country": "Wrecking Ball",
+          "reasoning": "Hitches a ride following Winston but gets separated while entering the planet atmosphere"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Loses control of the Lunar Colony"
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Recruits Winston and helps with Personhood case"
+        }
+      ],
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "Left the Colony before the uprising"
+        },
+        {
+          "locationName": "",
+          "country": "Harold,",
+          "reasoning": "Killed alongside the rest of the staff"
+        }
+      ]
+    },
+    {
+      "name": "Intrepit Adventurers",
+      "locationType": "earth",
+      "cityDisplayName": "Nova Scotia, Canada",
+      "description": "The Crisis left behind a broken world, and with it priceless history and icons of cultural value were lost. While many cities rebuilt themselves and archen back to the classical periods, it became all the more evident to many across the world how important it was to preserve history, what was left of it anyway. This is how the Wayfinder Society came to be, a group of archeologists and historians from around the globe, coming together to share resources and connections, all with the goal of preparing expeditions all over the world, to retrieve artifacts and find clues from the past to use in the present.\n\nSloan Cameron had spent their life traveling with their family, getting to see all corners of the world and exploring their culture and history each time they arrived at a new place. This innate curiosity as well as a keen eye for finding unearthed trinkets drew them to the Wayfinders. At age sixteen, they began an apprenticeship with the group, and never looked back. Sloan would adopt the nickname \"Venture\" while operating in digsites, and as they joined expeditions through ancient ruins and dormant Omniums, their unfettered bravery and persistence in dangerous situations would make them stand out among many other Wayfinders. Sloan would often return from dig sites covered in dirt, bruises and local fauna, but always with a smile on their face, and it was this passion and dedication that allowed them to take increasingly dangerous and exciting expeditions with the Wayfinders.",
+      "image": "",
+      "lat": 45.1960403,
+      "lon": -63.1653789,
+      "yearStart": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Nova Scotia, Canada",
+          "country": "Canada",
+          "reasoning": "Sloan begins their apprenticeship with the Wayfinder Society"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Venture",
+          "reasoning": "Begins apprentice ship in the Wayfinder Society"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
+          "reasoning": "An international group of collaborating Archeologists"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Wayfinder excavation in Illios solves millenea old mystery",
+        "Recruitment begins for Wayfinder expedition near the Temple of Anubis"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Venture",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/venture/#rise-to-the-challenge"
+        }
+      ]
+    },
+    {
+      "name": "Hostage",
+      "description": "Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. This social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils.\n\nThe Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. In spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long.  The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.\n\nWhile he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose. In his time at the Neon Junction of Akihabara, he would often be joined by Mizuki, who was still far too young to take part in the clan's criminal dealings, and was often left behind in the stronghold. Mizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties.",
+      "locationType": "earth",
+      "lat": 34.7018928,
+      "lon": 140.7743684,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2068,
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "The Hashimoto expand into Kanezaka after the Shimada takedown"
+        }
+      ],
+      "headlines": [
+        "Hashimoto activity increasing on Kanezaka region, locals concerned",
+        "Individuals with Shimada connections found dead during turf dispute"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
+        },
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Spends time with Toshiro as his guardian"
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": "Hidden from the clan by her family"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Takes over Kanezaka after the Shimada Clan's fall"
+        },
+        {
+          "locationName": "",
+          "country": "Yamagami Blades,",
+          "reasoning": "Toshiro is kidnapped"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": "Kidnapped by the Hashimoto to develop Anima weapons"
+        },
+        {
+          "locationName": "",
+          "country": "Asa,",
+          "reasoning": "Sends Kiriko away to protect her"
+        }
+      ]
+    },
+    {
+      "name": "Chronal Dissociation",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "description": "Overwatch generally saw Winston as a possible fresh start, an outsider who had no preconceptions about Omnics, and with an idealized vision of human culture and history. He never saw the world for what it was, he dared to see what it could be. Since he lacked the assumptions of what was or not possible, he was the perfect mind to tackle the Oxton case. Alongside Wexler's team, Winston studied Lena's Chronal disassociation condition and began work on a device that he called the Chronal anchor. This harness was intended to pull Oxton back into the normal flow of time, and keep her from blipping out again. However, when tested, the device was only capable of keeping Lena anchored in space, not time. Her body was no longer reappearing in entirely different places, but it still vanished from the time flow uncontrollably. Still, progress was still progress.\n\nDuring this testing, Winston realized that the matrix of the device was building up an unknown form of energy the longer Lena was kept anchored. Eventually, this buildup reaches a critical amount, causing Oxton's time fluctuations. After learning this, he scrapped the original design in favor of a new device called the Chronal Accelerator. This new iteration harnessed the mounting energy into a limited, controlled disassociation, essentially allowing Oxton to experience localized time travel at will. The device kept Lena anchored in time, and as energy built, she could use it to willingly blink or rewind back her own relationship with time and space, releasing the buildup without losing control. Oxton was stable and capable of living a somewhat normal life as long as she was in proximity to a Chronal Accelerator, but she realized that this gift of hers could be used to help Overwatch and the world. So, after being cleared from test runs, Lena began training to become part of the Strike team alongside Winston, who she grew to be close friends with. After all the time, he worked on a solution to her problem. Due to the trails of light left by the Chronal accelerator as she blinked through time, she would earn the call sign Tracer.",
+      "image": "",
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Tracer Origin Story",
+          "url": "https://www.youtube.com/watch?v=27LPGldyY7M"
+        }
+      ],
+      "yearStart": 2068,
+      "yearEnd": 2069,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "Winston designs a device capable of stabilizing Lena's Chronal disassociation"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston",
+          "reasoning": "Invents  the chronal accelerator to save Lena Oxton"
+        },
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": "Joins the strike team after her condition stabilizes"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Recruit Lena into the strike team alongside Winston"
+        }
+      ],
+      "headlines": [
+        "Agent Winston saves pilot lost in time",
+        "Overwatch to recruit time traveling agent"
       ]
     },
     {
@@ -7624,195 +8020,7 @@
       ]
     },
     {
-      "name": "Lunar Revolt",
-      "locationType": "moon",
-      "cityDisplayName": "Horizon Lunar Colony",
-      "description": "",
-      "image": "",
-      "x": 60,
-      "y": 70,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2062,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Horizon Lunar Colony",
-          "country": "Horizon Lunar Colony",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Winston, Wrecking Ball",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Uneasy Alliance",
-      "locationType": "earth",
-      "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "lat": 43.7402961,
-      "lon": 7.426559,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Monte-Carlo, Monaco",
-          "country": "Monaco",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doomfist",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon, Livre Tournois",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Maximillien",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Intrepit Adventurers",
-      "locationType": "earth",
-      "cityDisplayName": "Nova Scotia, Canada",
-      "description": "",
-      "image": "",
-      "lat": 45.1960403,
-      "lon": -63.1653789,
-      "yearStart": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Nova Scotia, Canada",
-          "country": "Canada",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Venture",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wayfinders",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Cold Snap",
-      "locationType": "earth",
-      "cityDisplayName": "Ecoopint Antartica",
-      "description": "",
-      "image": "",
-      "lat": -67.107616,
-      "lon": -68099824,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Ecoopint Antartica",
-          "country": "Antarctica",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mei",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ecopoints, Overwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Chronal Dissociation",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "",
-      "image": "",
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2068,
-      "yearEnd": 2069,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Tracer, Winston",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Philosophical Differences",
+      "name": "Escalation",
       "description": "No description available.",
       "locationType": "earth",
       "lat": -75.1,
