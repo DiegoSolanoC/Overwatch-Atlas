@@ -7988,7 +7988,7 @@
     },
     {
       "name": "Shrine Maiden",
-      "description": "",
+      "description": "Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.\n\nKiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain. Not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings. While the old clan was unmistakably corrupt and their activies were as bad as the Hashimotos, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
       "lat": 35.3606,
@@ -7996,32 +7996,49 @@
       "yearStart": 2068,
       "eraName": "The Golden Age",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": ""
+          "reasoning": "Kiriko becomes a Miko under her gradnma's care"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Kiriko",
-          "reasoning": ""
+          "reasoning": "Becomes a Shrine Maiden for the Fox Spirit"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Hashimoto",
-          "reasoning": ""
+          "reasoning": "On the look out for Toshiro's daugther"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Hashimoto operation delays the end of Summer festival in Kanezaka",
+        "New sighting of the Blue Fox Cryptid in Japan"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa, Toshiro,",
+          "reasoning": "Plotting agaisnt the Hashimoto"
         }
       ]
     },
     {
       "name": "Escalation",
-      "description": "No description available.",
+      "description": "Null Sector activity continued across the world, inspiring many Omnics to follow Ramattra's teachings, especially following the groundbreaking of Turing Green, which many followers of Mondatta saw as a new start for Omnics. Null Sector, in contrast, took the idea as an insult, throwing a bone at his people to try and act like it absolved them from years worth of injustice. As momentum grew, the group radicalized from a small cell of liberators, to a fully militarized operation. The escalation meant many of his initial supporters soon began to leave the group behind, but his resolve to bring justice for all Omnics only grew stronger with each ally he lost.\n\nHe decided to bring his closest allies, Nameless, Zera and Lanet, on a journey across the depths of a freezing wasteland, where they found the very same Anubis made Omnium, where Ramattra was born. His plan was to use the facility to create an army, and use it to speak to humans in a language they can understand, violence. For the next two years, the group would produce entire battalions of Crisis-era units at Lanet's supervision, and Ramattra himself would upgrade his own design combining Shambali technology with an invention of his own, Nanites, microscopic machines capable of cooperation and assembly of different structures, including extra reinforced limbs for close combat. As his army grew, Ramattra already had his eyes on the first targer of his revolution, but Lanet urged caution, noting the antiquated designs needed more work if they wanted to get things right.\n\nDuring this back-and-forward, tension built up over philosophical differences amongst the group, as Ramattra continuously refused to involve other Omnics and rally forces outside his mindless troops. While Nameless and Zera were used to appealing to the Omnic masses, and wished to allow their people to fight alongside them, Ramattra was tired of bloodshed. He saw himself as a liberator, not a general. It was because of this that he chose to manufacture an army of robots, instead of using his influence to command his supporters, as he wished to keep sentient Omnics away from active conflict as much as possible. This led to constant argument with his allies, who saw their leader radicalize further into a lonely crusade.",
       "locationType": "earth",
       "lat": -75.1,
       "lon": 123.35,
@@ -8034,17 +8051,46 @@
         {
           "locationName": "Secret Omnium, Antartica?",
           "country": "Antartica?",
-          "reasoning": ""
+          "reasoning": "Ramattra begins the creation of a warbot army"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Antartic Anomalies continue, creating unlivable conditions for any human",
+        "Null Sector cells caught during riots in London over Turing Green's development policies"
+      ],
+      "sources": [
+        {
+          "text": "Ramattra Reflections",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ramattra,",
+          "reasoning": "Amasses an Army to liberate Omnics with"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Null Sector,",
+          "reasoning": "Grows larger in support, but does not rally its people"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nameless, Zera, Lanet,",
+          "reasoning": "Work with Ramattra but grow frustrated by his ideals"
+        }
+      ]
     },
     {
       "name": "Champion",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
-      "description": "",
+      "description": "While Winston was intercepted by Overwatch and found a new home with the organization, Hammond's escape pod would take him to a far more hostile land. Crashing in the middle of the Australian Outback, Hammond used his ingenuity to survive the cruel wasteland. Scrapping debris and metal Omnics, he was able to modify the escape pod into a mobile unit for him to pilot around.\n\nHe would eventually make his way into Junkertown and learn about their culture, growing fascinated by the Scrapyard Arena and seeing it as an opportunity to prove himself. Using his knowledge of physics, and available weaponry, his mech became a rolling ball of death, which he used to climb up the ranks of the city. Going by the name of Wrecking Ball, Hammond became a celebrity among Junkers, though his identity remained secret as no one ever saw him outside the mech. Soon enough, Wrecking Ball went from contender, to uncontested champion, becoming a close ally and confidant to the Junker Queen herself, the first person to learn of his true identity. \n\nHammond had found a happy, chaotic home among the Junkers and while he was still hurt by Winston abandoning him, he never really looked back now that he had his new life. On occasion, he would wonder out of the city to explore the wider world and acquire parts of his inventions, but of course, as the champion of the Scrapyard, he would always come back to defend his title.",
       "image": "",
       "lat": -25,
       "lon": 135,
@@ -8055,21 +8101,36 @@
         {
           "locationName": "Junkertown, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Wrecking ball becomes the Champion of the Scrapyard"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Wrecking Ball",
-          "reasoning": ""
+          "reasoning": "Builds a mech to battle Junkers"
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": "Becomes a close friend to Hammond"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkers",
-          "reasoning": ""
+          "country": "Junker Monarchy,",
+          "reasoning": "Wrecking Ball becomes celebrated among junkers"
+        }
+      ],
+      "headlines": [
+        "Giant Metal Ball reportedly seen across multiple cities aorund the world",
+        "Oversized Wombat attacks Tourist in the Outback"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Wrecking Ball",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
         }
       ]
     },
@@ -8115,7 +8176,7 @@
       "name": "Retribution",
       "locationType": "earth",
       "cityDisplayName": "Rome,, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -8147,7 +8208,9 @@
           "country": "Blackwatch, Talon",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "The Venice Incident",
