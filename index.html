@@ -240,74 +240,74 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
     <!-- InteractionController dependencies - load before LoadingOrchestrator (which imports InteractionController) -->
-    <script src="src/features/Interactive-Worldview/services/MarkerPulseService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/services/MapEdgeGlowService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/services/CameraControlService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/services/MouseInteractionService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/services/TouchInteractionService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/services/MarkerInteractionService.js?v=10"></script>
-    <script src="src/features/Interactive-Worldview/services/StationFollowService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MarkerPulseService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MapEdgeGlowService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/CameraControlService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MouseInteractionService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/TouchInteractionService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MarkerInteractionService.js?v=10"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/StationFollowService.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/features/universal-features/BootUp/LoadingOrchestrator.js?v=100"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=100"></script>
     
     <!-- Load services -->
-    <script type="module" src="src/features/universal-features/Audio/SoundEffects/SoundEffectsService.js?v=10"></script>
-    <script src="src/features/system-interface/utils/slide-effects/GlitchTextOverlay.js?v=11"></script>
-    <script type="module" src="src/features/system-interface/info-panel/eventSlideMetaDisplays.js?v=1"></script>
-    <script src="src/features/system-interface/utils/factionIdMatching.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/event-system/data/EventDataService.js?v=30"></script>
-    <script type="module" src="src/features/system-interface/event-system/lookup/LocationLabelResolver.js?v=11"></script>
-    <script src="src/features/Interactive-Worldview/data/flagFileByCommonName.js?v=8"></script>
+    <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js?v=10"></script>
+    <script src="src/features/system-interface/interface-shared/slide-effects/GlitchTextOverlay.js?v=11"></script>
+    <script type="module" src="src/features/system-interface/interface-info-display/eventSlideMetaDisplays.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/factionIdMatching.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/data/EventDataService.js?v=30"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/lookup/LocationLabelResolver.js?v=11"></script>
+    <script src="src/features/Interactive-Worldview/worldview-shared-assets/data/flagFileByCommonName.js?v=8"></script>
     <!-- LocationFlagHelpers: 7 slice modules + 1 facade that builds window.LocationFlagHelpers. -->
-    <script src="src/features/system-interface/utils/flags/flagFileResolver.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/flagLocationContext.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/secondaryCountryFlags.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/relevancyRowFilterHighlight.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/slideBioConnections.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/slideRelevantLocations.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/slideStoryFilterPlaces.js?v=1"></script>
-    <script src="src/features/system-interface/utils/flags/LocationFlagHelpers.js?v=1"></script>
-    <script src="src/features/system-interface/utils/eventTimelineFields.js?v=9"></script>
-    <script src="src/features/system-interface/integration/timelineMarkerSync.js?v=2"></script>
-    <script type="module" src="src/features/system-interface/utils/hover-badge/eraHoverPreviewTheme.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/utils/hover-badge/SummaryInfoBadge.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/category-types.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/faction-ordering.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/hero-roles.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/hero-subroles.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/hero-sorting.js?v=1"></script>
-    <script type="module" src="src/features/Data-Archive/archive-ordering/legacy-helpers.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/event-system/render/EventRenderService.js?v=26"></script>
-    <script type="module" src="src/features/system-interface/event-system/edit/EventEditService.js?v=14"></script>
-    <script src="src/features/system-interface/platform/news-ticker/FooterNewsTicker.js?v=9"></script>
+    <script src="src/features/system-interface/interface-shared/flags/flagFileResolver.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/flagLocationContext.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/secondaryCountryFlags.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/relevancyRowFilterHighlight.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/slideBioConnections.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/slideRelevantLocations.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/slideStoryFilterPlaces.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/LocationFlagHelpers.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/eventTimelineFields.js?v=9"></script>
+    <script src="src/features/system-interface/interface-load-unload/integration/timelineMarkerSync.js?v=2"></script>
+    <script type="module" src="src/features/system-interface/interface-shared/hover-badge/eraHoverPreviewTheme.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/interface-shared/hover-badge/SummaryInfoBadge.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-shared/ArchiveCategoryTypes.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-factions/ArchiveFactionOrdering.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-heroes/ArchiveHeroRoles.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-heroes/ArchiveHeroSubroles.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-heroes/ArchiveHeroSorting.js?v=1"></script>
+    <script type="module" src="src/features/Data-Archive/archive-category-shared/ArchiveLegacyHelpers.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/render/EventRenderService.js?v=26"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/edit/EventEditService.js?v=14"></script>
+    <script src="src/features/system-interface/interface-platform-input/news-ticker/FooterNewsTicker.js?v=9"></script>
     <!-- EventFormService dependencies - load before EventFormService -->
-    <script src="src/features/system-interface/event-system/form/fields/LocationTypeFields.js?v=1"></script>
-    <script src="src/features/system-interface/event-system/form/fields/SourcePairFields.js?v=1"></script>
-    <script src="src/features/system-interface/event-system/form/fields/HeadlineFields.js?v=1"></script>
-    <script type="module" src="src/features/system-interface/event-system/form/autocomplete/FormTokenAutocomplete.js?v=2"></script>
-    <script type="module" src="src/features/system-interface/event-system/form/EventFormService.js?v=14"></script>
-    <script src="src/features/system-interface/utils/bio-archive/HeroRelevantLocationsEditor.js?v=3"></script>
-    <script src="src/features/system-interface/utils/bio-archive/mirrorBioArchiveConnections.js?v=7"></script>
-    <script src="src/features/system-interface/utils/bio-archive/BioArchiveConnectionsEditor.js?v=9"></script>
-    <script type="module" src="src/features/system-interface/event-system/drag-drop/EventListReorderDragDrop.js?v=13"></script>
-    <script type="module" src="src/features/system-interface/event-system/listeners/EventListenerService.js?v=14"></script>
-    <script type="module" src="src/features/system-interface/event-system/interaction/EventInteractionService.js?v=14"></script>
-    <script src="src/features/system-interface/event-system/boot/runEventManagerInit.js?v=10"></script>
-    <script src="src/features/system-interface/event-system/lookup/CityCoordinateLookup.js?v=11"></script>
-    <script src="src/features/system-interface/utils/EventImagePathResolver.js?v=1"></script>
-    <script src="src/features/Interactive-Worldview/services/GlobeSyncService.js?v=9"></script>
+    <script src="src/features/system-interface/interface-left-panel/event-system/form/fields/LocationTypeFields.js?v=1"></script>
+    <script src="src/features/system-interface/interface-left-panel/event-system/form/fields/SourcePairFields.js?v=1"></script>
+    <script src="src/features/system-interface/interface-left-panel/event-system/form/fields/HeadlineFields.js?v=1"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/form/autocomplete/FormTokenAutocomplete.js?v=2"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/form/EventFormService.js?v=14"></script>
+    <script src="src/features/system-interface/interface-shared/bio-archive/HeroRelevantLocationsEditor.js?v=3"></script>
+    <script src="src/features/system-interface/interface-shared/bio-archive/mirrorBioArchiveConnections.js?v=7"></script>
+    <script src="src/features/system-interface/interface-shared/bio-archive/BioArchiveConnectionsEditor.js?v=9"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/drag-drop/EventListReorderDragDrop.js?v=13"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/listeners/EventListenerService.js?v=14"></script>
+    <script type="module" src="src/features/system-interface/interface-left-panel/event-system/interaction/EventInteractionService.js?v=14"></script>
+    <script src="src/features/system-interface/interface-left-panel/event-system/boot/runEventManagerInit.js?v=10"></script>
+    <script src="src/features/system-interface/interface-left-panel/event-system/lookup/CityCoordinateLookup.js?v=11"></script>
+    <script src="src/features/system-interface/interface-shared/EventImagePathResolver.js?v=1"></script>
+    <script src="src/features/Interactive-Worldview/worldview-event-sync/GlobeSyncService.js?v=9"></script>
     <!-- MusicService — single ES module entry; pulls in all sibling Music*Service modules. -->
-    <script type="module" src="src/features/universal-features/Audio/Music/MusicService.js?v=101"></script>
+    <script type="module" src="src/features/universal-features/atlas-music/MusicService.js?v=101"></script>
     <!-- Filters panel: single ES module entry; pulls in state, images, manifest, buttons, tabs, wiring. -->
-    <script type="module" src="src/features/system-interface/filters/FiltersPanel.js?v=16"></script>
-    <script type="module" src="src/features/system-interface/platform/shortcuts/installAppKeyboardShortcuts.js?v=12"></script>
-    <script type="module" src="src/features/system-interface/platform/panel-resize/installPanelResize.js?v=15"></script>
+    <script type="module" src="src/features/system-interface/interface-filter-menu/FiltersPanel.js?v=16"></script>
+    <script type="module" src="src/features/system-interface/interface-platform-input/shortcuts/installAppKeyboardShortcuts.js?v=12"></script>
+    <script type="module" src="src/features/system-interface/interface-platform-input/panel-resize/installPanelResize.js?v=15"></script>
     
     <!-- Load main script -->
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/BootUp/AppInitializer.js?v=100"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=100"></script>
 </body>
 </html>

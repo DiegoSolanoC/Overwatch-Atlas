@@ -1,9 +1,9 @@
 /** CodexNodeDomCull — Codex canvas slice. */
-import { api } from '../../codex-core/codexCanvasApi.js';
-import { s } from '../../codex-core/canvasSession.js';
-import { CODEX_EDGE_CULL_MARGIN_PX, CODEX_NODE_DOM_CULL_MARGIN_EXTRA_PX, CODEX_NODE_DOM_CULL_MIN_NODES } from '../../codex-camera/viewport/CodexCanvasTuning.js';
-import { nodeFrameIntersectsRect } from '../../codex-render/svg/CodexNodeFrameSvg.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-core/canvasConstants.js';
+import { api } from '../../codex-canvas/core/codexCanvasApi.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
+import { CODEX_EDGE_CULL_MARGIN_PX, CODEX_NODE_DOM_CULL_MARGIN_EXTRA_PX, CODEX_NODE_DOM_CULL_MIN_NODES } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
+import { nodeFrameIntersectsRect } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
+import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
 
 function syncCodexNodeOffscreenContentVisibility(visibleRect, nodeList) {

@@ -1,17 +1,17 @@
 /** CodexLayoutLoad — Codex canvas slice. */
-import { api } from '../../codex-core/codexCanvasApi.js';
-import { s } from '../../codex-core/canvasSession.js';
-import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-sync/reconcile/CodexBioArchiveEdgeSync.js';
-import { CODEX_ZOOM_INITIAL } from '../../codex-camera/viewport/CodexCanvasTuning.js';
+import { api } from '../../codex-canvas/core/codexCanvasApi.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
+import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
+import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { parseCodexJsonInWorker } from './CodexJsonParseWorker.js';
 import { fetchCanonicalCodexJson } from './CodexJsonRepository.js';
 import { parseMigrateAndDedupeCodexSource } from '../migration/CodexPayloadMigration.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
-import { getCodexLoadingOverlayLineSetter } from '../../codex-integration/bridge/CodexAppBridge.js';
+import { getCodexLoadingOverlayLineSetter } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { normalizeCodexCountryKey, resolveCodexNodeScale } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
-import { redrawCodexEdges, scheduleRedrawCodexEdges } from '../../codex-render/redraw/CodexEdgeRedraw.js';
-import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-render/virtual-scroll/CodexVirtualScroll.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-core/canvasConstants.js';
+import { redrawCodexEdges, scheduleRedrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
+import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
 
 function placeLoadedCodexNodeRecord(L) {

@@ -81,7 +81,7 @@ body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.glo
 
 
 
-/* Pannable/zoomable board; inner size gives extra layout space (see features/connection-codex/services/CodexCanvasService CODEX_WORLD_*). */
+/* Pannable/zoomable board; inner size gives extra layout space (see features/connection-codex/codex-canvas/CodexCanvasEntry CODEX_WORLD_*). */
 .codex-world {
     position: absolute;
     left: 0;
@@ -1168,7 +1168,7 @@ body:has(#paginationDock) .codex-visual-panel {
     }
 }
 
-/* Large boards: skip rendering/paint for nodes outside the view (class toggled in features/connection-codex/services/CodexCanvasService). */
+/* Large boards: skip rendering/paint for nodes outside the view (class toggled in features/connection-codex/codex-canvas/CodexCanvasEntry). */
 .codex-node--cv-offscreen {
     content-visibility: auto;
     contain-intrinsic-size: 160px 160px;

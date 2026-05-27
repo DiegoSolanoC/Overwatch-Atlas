@@ -1,12 +1,12 @@
 /** CodexLayoutSave — Codex canvas slice. */
-import { api } from '../../codex-core/codexCanvasApi.js';
-import { s } from '../../codex-core/canvasSession.js';
+import { api } from '../../codex-canvas/core/codexCanvasApi.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
 import { serializeCodexLayoutSnapshot } from '../persistence/CodexLayoutSerialization.js';
-import { dispatchBioArchivesRefreshed, getEventTimelineDataService, isCodexPersistToRepoAvailable, resolveCodexRepoApiUrl, updateAppStatus } from '../../codex-integration/bridge/CodexAppBridge.js';
-import { redrawCodexEdges } from '../../codex-render/redraw/CodexEdgeRedraw.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-core/canvasConstants.js';
-import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-sync/reconcile/CodexBioArchiveEdgeSync.js';
+import { dispatchBioArchivesRefreshed, getEventTimelineDataService, isCodexPersistToRepoAvailable, resolveCodexRepoApiUrl, updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
+import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
 
 
 function isCodexFileApiAvailable() {

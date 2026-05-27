@@ -1,16 +1,16 @@
 /** CodexNodePlacement — Codex canvas slice. */
-import { api } from '../../codex-core/codexCanvasApi.js';
-import { s } from '../../codex-core/canvasSession.js';
+import { api } from '../../codex-canvas/core/codexCanvasApi.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
-import { generateNodeId, heroNamesLooselyEqualCodex } from '../../codex-edges/topology/CodexGraphPrimitives.js';
-import { applyLocationFlagBioHighlight, getEventManager, playSoundEffect, updateAppStatus } from '../../codex-integration/bridge/CodexAppBridge.js';
+import { generateNodeId, heroNamesLooselyEqualCodex } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { applyLocationFlagBioHighlight, getEventManager, playSoundEffect, updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { CODEX_FRAME_PATH, CODEX_IMG_BASE_PX, CODEX_JUNCTION_BASE_PX, CODEX_SCALE_MAX, CODEX_SCALE_MIN, codexCountryFlagSrc, normalizeCodexCountryKey, resolveCodexNodeScale } from './CodexNodePortraitMetrics.js';
 import { codexFrameVariantForId, codexHexRotationDegreesForId } from './CodexNodeVisualHash.js';
-import { observeCodexImage } from '../../codex-render/lazy-images/CodexImageLazyLoad.js';
-import { redrawCodexEdges } from '../../codex-render/redraw/CodexEdgeRedraw.js';
-import { hexToRgba } from '../../codex-render/svg/CodexPresentationUtils.js';
-import { scheduleUpdateCodexVirtualScroll } from '../../codex-render/virtual-scroll/CodexVirtualScroll.js';
-import { capOpts, DOUBLE_RIGHT_MS } from '../../codex-core/canvasConstants.js';
+import { observeCodexImage } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
+import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { hexToRgba } from '../../codex-node-drawing/svg/CodexPresentationUtils.js';
+import { scheduleUpdateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
+import { capOpts, DOUBLE_RIGHT_MS } from '../../codex-canvas/core/canvasConstants.js';
 
 function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
     if (!Array.isArray(s.codexAllNodes)) return '';

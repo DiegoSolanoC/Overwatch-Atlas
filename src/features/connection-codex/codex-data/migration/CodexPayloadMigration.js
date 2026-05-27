@@ -11,7 +11,7 @@ import {
 import {
     dedupeCodexEdgesByNodePair,
     normalizeEdgeRecord
-} from '../../codex-edges/topology/CodexGraphPrimitives.js';
+} from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 
 function parseLoadedCodexPayload(parsed) {
     let nodes = null;

@@ -1,14 +1,14 @@
 /** CodexNodeFilters — Codex canvas slice. */
-import { api } from '../../codex-core/codexCanvasApi.js';
-import { s } from '../../codex-core/canvasSession.js';
+import { api } from '../../codex-canvas/core/codexCanvasApi.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
 import {
     exposeApplyCodexFilterState,
     getFactionMatchHelpers,
     getStandaloneActiveFiltersSet,
     getStoryFilterPlacesSync
-} from '../../codex-integration/bridge/CodexAppBridge.js';
-import { redrawCodexEdges } from '../../codex-render/redraw/CodexEdgeRedraw.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-core/canvasConstants.js';
+} from '../../codex-canvas/bridge/CodexAppBridge.js';
+import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
 
 function codexNodeMatchesFilters(nodeEl) {

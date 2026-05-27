@@ -4905,6 +4905,56 @@
       ]
     },
     {
+      "name": "Australian Liberation",
+      "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.<br><br>In Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.<br><br>Members of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
+      "locationType": "earth",
+      "cityDisplayName": "Junkertown, Australia",
+      "lat": -25,
+      "lon": 135,
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "headlines": [
+        "ALF extremist group causes nuclear fallout in the Outback",
+        "Tensions between humans and Omnics intensify in Australia"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": "ALF rebels break into Australian Omnium and cause a nuclear explosion in the Outback"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Roadhog",
+          "reasoning": "ALF Member"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Monarchy",
+          "reasoning": "Kingdom formed by the ALF in the Australian Omnium after the Fallout"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mason",
+          "reasoning": "ALF Member, founding Kind of Junkertown"
+        }
+      ]
+    },
+    {
       "name": "Watching the Globe",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint Gibraltar",
@@ -4968,6 +5018,26 @@
       ]
     },
     {
+      "name": "Duty Calls",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "image": "",
+      "cityDisplayName": "London, United Kingdom",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "One with the Iris",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
@@ -5018,52 +5088,52 @@
       ]
     },
     {
-      "name": "Australian Liberation",
-      "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.<br><br>In Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.<br><br>Members of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
+      "name": "Anima Weaponry",
       "locationType": "earth",
-      "cityDisplayName": "Junkertown, Australia",
-      "lat": -25,
-      "lon": 135,
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
+      "cityDisplayName": "Hanamura, Japan",
+      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.<br><br>A big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.<br><br>While the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
       "image": "",
       "sources": [
         {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+          "text": "Overwatch Website, Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
         }
       ],
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "lat": 35.6762,
+      "lon": 139.6503,
       "headlines": [
-        "ALF extremist group causes nuclear fallout in the Outback",
-        "Tensions between humans and Omnics intensify in Australia"
+        "Gang violence in Japa slows down, but Shimada activity is at an all time high",
+        "Shimada Clan operators wield unknown energy swords during confrontation with rival groups"
       ],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
-          "reasoning": "ALF rebels break into Australian Omnium and cause a nuclear explosion in the Outback"
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "The Shimada Clan expands its power using Anima weapons"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Roadhog",
-          "reasoning": "ALF Member"
+          "country": "Kiriko",
+          "reasoning": "Future Daughter, heir to the Fox Anima"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junker Monarchy",
-          "reasoning": "Kingdom formed by the ALF in the Australian Omnium after the Fallout"
+          "country": "Shimada Clan, Yamagami Blades,",
+          "reasoning": "The Shimada Clan forms an alliance with local smiths"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mason",
-          "reasoning": "ALF Member, founding Kind of Junkertown"
+          "country": "Toshiro, Asa",
+          "reasoning": "The Yamagami Blades, Maker of Anima technology alongside his wife"
         }
       ]
     },
@@ -5118,56 +5188,6 @@
           "locationName": "",
           "country": "Gérard,",
           "reasoning": "Newly hired Blackwatch Agent"
-        }
-      ]
-    },
-    {
-      "name": "Anima Weaponry",
-      "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.<br><br>A big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.<br><br>While the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website, Kiriko",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
-        }
-      ],
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "lat": 35.6762,
-      "lon": 139.6503,
-      "headlines": [
-        "Gang violence in Japa slows down, but Shimada activity is at an all time high",
-        "Shimada Clan operators wield unknown energy swords during confrontation with rival groups"
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": "The Shimada Clan expands its power using Anima weapons"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": "Future Daughter, heir to the Fox Anima"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shimada Clan, Yamagami Blades,",
-          "reasoning": "The Shimada Clan forms an alliance with local smiths"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro, Asa",
-          "reasoning": "The Yamagami Blades, Maker of Anima technology alongside his wife"
         }
       ]
     },
@@ -5327,7 +5347,7 @@
     {
       "name": "Findlay Docherty is Born",
       "locationType": "earth",
-      "cityDisplayName": "Glasgow, United Kingdom",
+      "cityDisplayName": "Glasgow, Scotland",
       "description": "On November 11th of 2054, Findlay Dorchety was born to veterans of the Omnic Crisis. He grew up poor in a world that was still adjusting after the war, surrounded by stories of violence and a system that kept failing the people. The crisis had taken a heavy toll on his parents, causing hardship and arguments. His mother died when he was only four, and his father became absent and unkind, leaving Findlay to fend for himself.",
       "image": "",
       "lat": 55.861155,
@@ -5345,6 +5365,11 @@
         "Crisis veterans struggle to substain their families after the war"
       ],
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": ""
+        },
         {
           "locationName": "Glasgow, United Kingdom",
           "country": "United Kingdom",
@@ -5560,6 +5585,45 @@
           "locationName": "",
           "country": "Gérard,",
           "reasoning": "Blackwatch Operator"
+        }
+      ]
+    },
+    {
+      "name": "Outlaw",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Ana,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch,",
+          "reasoning": ""
         }
       ]
     },
@@ -5879,6 +5943,45 @@
         "Vishkar Opens the Architect Academy",
         "India approves the schooling project for hundreds of orphans"
       ]
+    },
+    {
+      "name": "Life Gets in the way",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 30.0443879,
+      "lon": 31.2357257,
+      "image": "",
+      "cityDisplayName": "Cairo, Egypt",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pharah,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Liao's Renaissance",
@@ -6623,61 +6726,35 @@
       ]
     },
     {
-      "name": "Idina Troopers",
+      "name": "Illari Quispe Ruiz is Born",
       "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
-      "description": "As the Scourge of Numbani continues its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results. \n\nBetween Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Akande had lost his right arm during the crisis, and while his company provided him with cybernetics, the prosthetics deemed him to have an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors, going by the name of Talon.",
+      "cityDisplayName": "Runasapi, Peru",
+      "description": "On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.",
       "image": "",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
+      "lat": -13.1631,
+      "lon": -72.545,
+      "sources": [
         {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "Numbani deploys the Idina troopers"
+          "text": "Overwatch Website, Illari",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
         }
       ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": "Illari Quispe Ruiz is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Orisa",
-          "reasoning": "Future Repurposed OR14 Unit"
-        },
-        {
-          "locationName": "",
-          "country": "Doomfist,",
-          "reasoning": "Recruited into Doomfist's mercenary ranks"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Numbani",
-          "reasoning": "Chooses to remain independent"
-        }
-      ],
-      "headlines": [
-        "War era Idina units repurposed for police patrolling in Numbani",
-        "Doomfist attacks continue, Overwatch assistance denied"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Orisa Origin Story",
-          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Adeyemi,",
-          "reasoning": "Continues raids through Numbani"
+          "country": "Illari",
+          "reasoning": "Illari Quispe Ruiz is Born"
         }
       ]
     },
@@ -6740,35 +6817,49 @@
       ]
     },
     {
-      "name": "Illari Quispe Ruiz is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Runasapi, Peru",
-      "description": "On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.",
+      "name": "Specimen 8 is Born",
+      "locationType": "moon",
+      "cityDisplayName": "Horizon Lunar Colony",
+      "description": "Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.\n\nOn October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed \"Hammond\" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.",
       "image": "",
-      "lat": -13.1631,
-      "lon": -72.545,
-      "sources": [
-        {
-          "text": "Overwatch Website, Illari",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
-        }
-      ],
+      "x": 60,
+      "y": 70,
       "eraName": "The Golden Age",
-      "yearStart": 2060,
+      "yearStart": 2062,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Runasapi, Peru",
-          "country": "Peru",
-          "reasoning": "Illari Quispe Ruiz is Born"
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Specimen 8 is Born"
         }
       ],
       "yearEnd": null,
       "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website: Wrecking Ball",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Illari",
-          "reasoning": "Illari Quispe Ruiz is Born"
+          "country": "Wrecking Ball",
+          "reasoning": "Specimen 8 is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Approves use of Hamsters for Genetic Therapy"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "In charge of Genetic Therapy"
         }
       ]
     },
@@ -6872,53 +6963,6 @@
       ]
     },
     {
-      "name": "Specimen 8 is Born",
-      "locationType": "moon",
-      "cityDisplayName": "Horizon Lunar Colony",
-      "description": "Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.\n\nOn October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed \"Hammond\" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.",
-      "image": "",
-      "x": 60,
-      "y": 70,
-      "eraName": "The Golden Age",
-      "yearStart": 2062,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Horizon Lunar Colony",
-          "country": "Horizon Lunar Colony",
-          "reasoning": "Specimen 8 is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website: Wrecking Ball",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wrecking Ball",
-          "reasoning": "Specimen 8 is Born"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Approves use of Hamsters for Genetic Therapy"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Chao,",
-          "reasoning": "In charge of Genetic Therapy"
-        }
-      ]
-    },
-    {
       "name": "Pressure Makes a DIamond",
       "locationType": "earth",
       "cityDisplayName": "Utopea, India",
@@ -6971,6 +7015,70 @@
       ]
     },
     {
+      "name": "Out There",
+      "description": "Among the Apes in the Lunar Colony, one of the gorillas was displaying rapid brain development faster than the rest. Specimen 28, was taken under the wing of Dr. Harold Winston, who took care of the Gorilla almost like a son, nourishing his curiosity with science and tales of human ingenuity back on earth. The young gorilla spent his days assisting the Doctor on experiments, away from the other apes, as he had become an outcast among the other apes. At one point, 28 would be visited by a peculiar, small intruder. Specimen 8, Hammond, had escaped through the vents, and he had just interrupted his plans.\n\nNot long before they first met, Hammond realized that Winston was just like him, another survivor of the genetic therapy who was showing intelligence faster than his peers, and he was struck with a sense of sympathy, at seeing someone just as alone as he was. He was moved by the ape's innocence and sense of wonder, and the two quickly became friends. During his nightly escapades, Hammond would sneak treats like candy and peanut butter, and aid the gorilla in fixing things that the others break. In return, the ape showed him how to dream of a better life. The pair spent hours watching the giant blue marble just outside the window of the habitat, wondering what awaited them there. \n\nThe pair wished to one day leave the base together and explore this distant world, and it just so happened that Hammond's escapades were not just to visit his friend. All this time, he had been tinkering with nuts and bolts, learning how the machinery in the base work, and he quickly fancied himself a mechanic. Even if the scientists found him every time he escaped his cell, none of them had a clue about the real purpose of his exploration of the base. He was set on leaving the moon, and taking Specimen 28 with him.",
+      "locationType": "moon",
+      "image": "",
+      "cityDisplayName": "Horizon Lunar Colony",
+      "yearStart": 2062,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Horizon Lunar Colony,",
+          "country": "Horizon Lunar Colony,",
+          "reasoning": "Hammond befriends Winston during escape attempts"
+        }
+      ],
+      "headlines": [
+        "Lucheng goes silent on future plans",
+        "Conspiracy theories about Lunar Colony Ape lack credibility says Chinese judge"
+      ],
+      "x": 60,
+      "y": 70,
+      "sources": [
+        {
+          "text": "Thoughless Gods",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/thoughtless-gods/"
+        },
+        {
+          "text": "Wrecking Ball Origin Story",
+          "url": "https://www.google.com/search?q=wrecking+ball+overwatch+oriign&sca_esv=de9c253ead70df5d&rlz=1C1RXQR_enUS1071US1071&sxsrf=ANbL-n6k7h9cf9-qlS1SJuQKdgIX5rRjgA%3A1779224224449&ei=oM4MaqiFG4-2qtsP6sbl6Qk&biw=2400&bih=1138&ved=0ahUKEwio1f7ensaUAxUPm2oFHWpjOZ0Q4dUDCBI&uact=5&oq=wrecking+ball+overwatch+oriign&gs_lp=Egxnd3Mtd2l6LXNlcnAiHndyZWNraW5nIGJhbGwgb3ZlcndhdGNoIG9yaWlnbjIHEAAYgAQYDTILEAAYgAQYigUYhgMyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOUSUPYBWKURcAF4AZABAJgBR6ABqwOqAQE3uAEDyAEA-AEBmAIIoALGA8ICChAAGEcY1gQYsAPCAg0QABiABBiKBRhDGLADwgIXEC4Y3AYYuAYY2gYY2AIYyAMYsAPYAQHCAhcQLhjYAhi4BhjaBhjcBhjIAxiwA9gBAcICGhAuGNwGGLgGGNoGGNgCGOUEGMgDGLAD2AEBwgIFEAAYgATCAgoQABiABBgUGIcCwgIGEAAYFhgemAMAiAYBkAYMugYECAEYGZIHATigB-EpsgcBN7gHwAPCBwUwLjYuMsgHFIAIAQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:5bf2242b,vid:ZEnC_N06Uxc,st:0"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Wrecking Ball,",
+          "reasoning": "Beomce close friends in the Lunar Colony"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Continues experiments on animals"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "Head of the Genetic experiments"
+        },
+        {
+          "locationName": "",
+          "country": "Harold,",
+          "reasoning": "Winston and Hammond's caretaker"
+        }
+      ]
+    },
+    {
       "name": "The Atlantic Arcology",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
@@ -7012,6 +7120,65 @@
           "locationName": "",
           "country": "Hector, Claudio,",
           "reasoning": "Leave Overwatch to create the Arcology and Collective"
+        }
+      ]
+    },
+    {
+      "name": "Idina Troopers",
+      "locationType": "earth",
+      "cityDisplayName": "City State of Numbani",
+      "description": "As the Scourge of Numbani continues its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results. \n\nBetween Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Akande had lost his right arm during the crisis, and while his company provided him with cybernetics, the prosthetics deemed him to have an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors, going by the name of Talon.",
+      "image": "",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "yearStart": 2066,
+      "yearEnd": 2077,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Numbani deploys the Idina troopers"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Orisa",
+          "reasoning": "Future Repurposed OR14 Unit"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": "Recruited into Doomfist's mercenary ranks"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani",
+          "reasoning": "Chooses to remain independent"
+        }
+      ],
+      "headlines": [
+        "War era Idina units repurposed for police patrolling in Numbani",
+        "Doomfist attacks continue, Overwatch assistance denied"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Adeyemi,",
+          "reasoning": "Continues raids through Numbani"
         }
       ]
     },
@@ -7112,70 +7279,6 @@
       "headlines": [
         "Reports of a change in Junker Monarchy confirmed",
         "Radiation levels in the outback stabilizing"
-      ]
-    },
-    {
-      "name": "Out There",
-      "description": "Among the Apes in the Lunar Colony, one of the gorillas was displaying rapid brain development faster than the rest. Specimen 28, was taken under the wing of Dr. Harold Winston, who took care of the Gorilla almost like a son, nourishing his curiosity with science and tales of human ingenuity back on earth. The young gorilla spent his days assisting the Doctor on experiments, away from the other apes, as he had become an outcast among the other apes. At one point, 28 would be visited by a peculiar, small intruder. Specimen 8, Hammond, had escaped through the vents, and he had just interrupted his plans.\n\nNot long before they first met, Hammond realized that Winston was just like him, another survivor of the genetic therapy who was showing intelligence faster than his peers, and he was struck with a sense of sympathy, at seeing someone just as alone as he was. He was moved by the ape's innocence and sense of wonder, and the two quickly became friends. During his nightly escapades, Hammond would sneak treats like candy and peanut butter, and aid the gorilla in fixing things that the others break. In return, the ape showed him how to dream of a better life. The pair spent hours watching the giant blue marble just outside the window of the habitat, wondering what awaited them there. \n\nThe pair wished to one day leave the base together and explore this distant world, and it just so happened that Hammond's escapades were not just to visit his friend. All this time, he had been tinkering with nuts and bolts, learning how the machinery in the base work, and he quickly fancied himself a mechanic. Even if the scientists found him every time he escaped his cell, none of them had a clue about the real purpose of his exploration of the base. He was set on leaving the moon, and taking Specimen 28 with him.",
-      "locationType": "moon",
-      "image": "",
-      "cityDisplayName": "Horizon Lunar Colony",
-      "yearStart": 2062,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Horizon Lunar Colony",
-          "country": "Horizon Lunar Colony",
-          "reasoning": ""
-        },
-        {
-          "locationName": "Horizon Lunar Colony,",
-          "country": "Horizon Lunar Colony,",
-          "reasoning": "Hammond befriends Winston during escape attempts"
-        }
-      ],
-      "headlines": [
-        "Lucheng goes silent on future plans",
-        "Conspiracy theories about Lunar Colony Ape lack credibility says Chinese judge"
-      ],
-      "x": 60,
-      "y": 70,
-      "sources": [
-        {
-          "text": "Thoughless Gods",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/thoughtless-gods/"
-        },
-        {
-          "text": "Wrecking Ball Origin Story",
-          "url": "https://www.google.com/search?q=wrecking+ball+overwatch+oriign&sca_esv=de9c253ead70df5d&rlz=1C1RXQR_enUS1071US1071&sxsrf=ANbL-n6k7h9cf9-qlS1SJuQKdgIX5rRjgA%3A1779224224449&ei=oM4MaqiFG4-2qtsP6sbl6Qk&biw=2400&bih=1138&ved=0ahUKEwio1f7ensaUAxUPm2oFHWpjOZ0Q4dUDCBI&uact=5&oq=wrecking+ball+overwatch+oriign&gs_lp=Egxnd3Mtd2l6LXNlcnAiHndyZWNraW5nIGJhbGwgb3ZlcndhdGNoIG9yaWlnbjIHEAAYgAQYDTILEAAYgAQYigUYhgMyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOUSUPYBWKURcAF4AZABAJgBR6ABqwOqAQE3uAEDyAEA-AEBmAIIoALGA8ICChAAGEcY1gQYsAPCAg0QABiABBiKBRhDGLADwgIXEC4Y3AYYuAYY2gYY2AIYyAMYsAPYAQHCAhcQLhjYAhi4BhjaBhjcBhjIAxiwA9gBAcICGhAuGNwGGLgGGNoGGNgCGOUEGMgDGLAD2AEBwgIFEAAYgATCAgoQABiABBgUGIcCwgIGEAAYFhgemAMAiAYBkAYMugYECAEYGZIHATigB-EpsgcBN7gHwAPCBwUwLjYuMsgHFIAIAQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:5bf2242b,vid:ZEnC_N06Uxc,st:0"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Winston, Wrecking Ball,",
-          "reasoning": "Beomce close friends in the Lunar Colony"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Continues experiments on animals"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Chao,",
-          "reasoning": "Head of the Genetic experiments"
-        },
-        {
-          "locationName": "",
-          "country": "Harold,",
-          "reasoning": "Winston and Hammond's caretaker"
-        }
       ]
     },
     {
@@ -8552,39 +8655,6 @@
       ]
     },
     {
-      "name": "La Lupa",
-      "locationType": "earth",
-      "cityDisplayName": "Colosseo, Italy",
-      "description": "",
-      "image": "",
-      "lat": 41.8909421,
-      "lon": 12.491903,
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Colosseo, Italy",
-          "country": "Italy",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vendetta",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Colloseo Gladiatori",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Forced Retirement",
       "locationType": "earth",
       "cityDisplayName": "Asuncion, Paraguay",
@@ -8691,6 +8761,39 @@
         {
           "locationName": "",
           "country": "Overwatch, Talon",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "La Lupa",
+      "locationType": "earth",
+      "cityDisplayName": "Colosseo, Italy",
+      "description": "",
+      "image": "",
+      "lat": 41.8909421,
+      "lon": 12.491903,
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Colloseo Gladiatori",
           "reasoning": ""
         }
       ]
@@ -9573,6 +9676,26 @@
       ]
     },
     {
+      "name": "Not Alone",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1408,
+      "lon": -5.3536,
+      "image": "",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Networking",
       "description": "No description available.",
       "locationType": "earth",
@@ -9736,6 +9859,26 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Neighborhood Hero",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "image": "",
+      "cityDisplayName": "London, United Kingdom",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Vanadium Strand",
@@ -13228,23 +13371,16 @@
       ]
     },
     {
-      "name": "Shelter",
+      "name": "Adaptable Feline",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
       "image": "",
       "cityDisplayName": "Gothenburg, Sweden",
-      "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Gothenburg, Sweden",
-          "country": "Sweden",
-          "reasoning": ""
-        }
-      ],
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": []
     },
@@ -13296,6 +13432,20 @@
       ]
     },
     {
+      "name": "The Siege of Tokyo",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.7018928,
+      "lon": 139.7743684,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Summit Breach",
       "description": "<br>",
       "locationType": "earth",
@@ -13337,7 +13487,7 @@
     },
     {
       "name": "Progress",
-      "description": "No description available.",
+      "description": "<br>",
       "locationType": "earth",
       "lat": 29.5918,
       "lon": 52.5836,
@@ -13353,6 +13503,20 @@
           "reasoning": ""
         }
       ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Old Love",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": []
     }

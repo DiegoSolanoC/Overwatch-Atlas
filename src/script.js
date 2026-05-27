@@ -51,7 +51,7 @@ function showAbout() {
     window.location.href = 'filters.html';
 }
 
-// Sound Effects Manager (window.SoundEffectsManager) is now mounted by src/features/universal-features/Audio/SoundEffects/SoundEffectsService.js
+// Sound Effects Manager (window.SoundEffectsManager) is now mounted by src/features/universal-features/atlas-sound-effects/SoundEffectsService.js
 // It's available globally as window.SoundEffectsManager
 
 function showContact() {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.FilterService && typeof window.FilterService.init === 'function') {
             window.FilterService.init();
         } else {
-            console.warn('FilterService not available - make sure src/features/system-interface/filters/FiltersPanel.js is loaded before script.js');
+            console.warn('FilterService not available - make sure src/features/system-interface/interface-filter-menu/FiltersPanel.js is loaded before script.js');
         }
         
         // Log asset loading summary
@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-// Music Panel functionality has been moved to src/features/universal-features/Audio/Music/MusicService.js (ES module)
+// Music Panel functionality has been moved to src/features/universal-features/atlas-music/MusicService.js (ES module)
 // The old initMusicPanel function is no longer needed - use MusicManager.init() instead
 
-// Filters Panel functionality has been moved to src/features/system-interface/filters/FiltersPanel.js
+// Filters Panel functionality has been moved to src/features/system-interface/interface-filter-menu/FiltersPanel.js
 // The old initFiltersPanel function is no longer needed - use FilterService.init() instead
 
 // Optional: Add keyboard shortcut to close modal (ESC key)
