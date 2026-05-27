@@ -1,3 +1,5 @@
+import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
+
 /**
  * Builds a single main-menu tile (button + external description label below).
  *
@@ -36,6 +38,11 @@ export function MenuButtonMaker({ id, title, imagePath, label, description }) {
 
     button.appendChild(externalLabel);
     wrapper.appendChild(button);
+
+    const menuImg = button.querySelector('.main-menu-image-container img');
+    wireLoadingAssetImage(menuImg, {
+        wrap: button.querySelector('.main-menu-image-container'),
+    });
 
     wrapper.button = button;
 

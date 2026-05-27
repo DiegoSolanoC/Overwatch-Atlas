@@ -3,6 +3,8 @@
  * so header, docks, and footer stay visible (no full-screen #loadingOverlay).
  */
 
+import { getOverlayLoadingGifSrc } from '../../../universal-features/atlas-ui/loadingGifAssets.js';
+
 let inlineLoadActive = false;
 
 /**
@@ -38,7 +40,7 @@ export function showGlobeInlineLoader(container) {
 
     const img = document.createElement('img');
     img.className = 'loading-gif';
-    img.src = 'src/assets/images/Misc/GIFs/loading.gif';
+    img.src = getOverlayLoadingGifSrc();
     img.alt = 'Loading';
 
     const title = document.createElement('h3');
@@ -97,7 +99,7 @@ export function showCodexEntryInlineLoader(container) {
 
     const img = document.createElement('img');
     img.className = 'loading-gif';
-    img.src = 'src/assets/images/Misc/GIFs/loading.gif';
+    img.src = getOverlayLoadingGifSrc();
     img.alt = 'Loading';
 
     const title = document.createElement('h3');

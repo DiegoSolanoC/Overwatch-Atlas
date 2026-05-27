@@ -842,12 +842,11 @@ button.event-number-btn.locked,
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {
-        background-color: rgba(8, 18, 32, 0.94);
+        background-color: #000;
         background-image: url('../../../assets/images/Misc/GIFs/loading%20asset.gif');
         background-repeat: no-repeat;
         background-position: center center;
-        /* Same asset as Data Archive / event cards — centered spinner (slot is skewed parallelogram) */
-        background-size: 48px 48px;
+        background-size: auto 100%;
     }
 
     .event-number-buttons.event-number-buttons--thumbs-desktop

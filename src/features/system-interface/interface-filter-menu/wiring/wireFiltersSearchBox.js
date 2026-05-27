@@ -3,6 +3,10 @@
  * Search is per-tab and case-insensitive; matching looks at the chip's display
  * label first, falling back to the underlying filter key.
  *
+ * Countries tab: chips with zero timeline usage are hidden until the user types
+ * in the search box; matching unused countries stay visible but greyed out
+ * (`.filter-btn--zero-event-matches`).
+ *
  * Section separators (`.filters-grid-type-separator` /
  * `.filters-grid-hero-subrole-separator`) auto-hide when every chip in the
  * section is filtered out, so the grid never shows an orphan header.
@@ -23,12 +27,29 @@ export function applyFilterChipSearch(input, grid, currentFilterType) {
     if (!input || !grid) return;
     input.placeholder = placeholderForFilterType(currentFilterType);
     const query = String(input.value || '').trim().toLowerCase();
+    const isCountries = currentFilterType === 'countries';
     const buttons = grid.querySelectorAll('.filter-btn');
     buttons.forEach(btn => {
         const labelEl = btn.querySelector('.filter-label-text');
         const text = String(labelEl?.textContent || btn.dataset.filterKey || '').trim().toLowerCase();
-        const match = !query || text.includes(query);
-        btn.style.display = match ? '' : 'none';
+        const textMatch = !query || text.includes(query);
+
+        if (!isCountries) {
+            btn.style.display = textMatch ? '' : 'none';
+            btn.classList.remove('filter-btn--zero-event-matches');
+            return;
+        }
+
+        const matchCount = parseInt(btn.dataset.eventMatchCount || '0', 10) || 0;
+        const hasEventUsage = matchCount > 0;
+
+        if (!query) {
+            btn.style.display = hasEventUsage ? '' : 'none';
+            btn.classList.remove('filter-btn--zero-event-matches');
+        } else {
+            btn.style.display = textMatch ? '' : 'none';
+            btn.classList.toggle('filter-btn--zero-event-matches', textMatch && !hasEventUsage);
+        }
     });
     grid.querySelectorAll('.filters-grid-type-separator, .filters-grid-hero-subrole-separator').forEach(sep => {
         if (!query) {

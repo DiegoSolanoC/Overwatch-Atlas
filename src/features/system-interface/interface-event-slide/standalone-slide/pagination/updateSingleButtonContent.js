@@ -18,6 +18,7 @@ import {
     eventRootSlotMissingDescription,
     eventSlotMissingDescription
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
+import { setLoadingAssetImageSrc } from '../../../../universal-features/atlas-ui/loadingAssetSlot.js';
 import {
     thumbPageTurnShrinkKeyframes,
     thumbPageTurnGrowKeyframes
@@ -172,15 +173,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         }
         
         if (imgEl) {
-            if (imagePath) {
-                imgEl.src = imagePath;
-                imgEl.style.display = '';
-                if (imgWrap) imgWrap.classList.remove('event-number-btn__img-wrap--empty');
-            } else {
-                imgEl.removeAttribute('src');
-                imgEl.style.display = 'none';
-                if (imgWrap) imgWrap.classList.add('event-number-btn__img-wrap--empty');
-            }
+            setLoadingAssetImageSrc(imgEl, imagePath, { wrap: imgWrap });
         }
         
         // Variant badge
@@ -244,9 +237,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                     }
                     
                     if (variantImagePath) {
-                        imgEl.src = variantImagePath;
-                        imgEl.style.display = '';
-                        if (imgWrap) imgWrap.classList.remove('event-number-btn__img-wrap--empty');
+                        setLoadingAssetImageSrc(imgEl, variantImagePath, { wrap: imgWrap });
                     }
                     if (nameEl && variantDisplayEvent.name) {
                         nameEl.textContent = variantDisplayEvent.name;

@@ -410,6 +410,34 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
     -webkit-backface-visibility: hidden;
 }
 
+/* Countries tab: visible during search but unused on any event */
+.filter-btn.filter-btn--zero-event-matches {
+    opacity: 0.42;
+    filter: grayscale(0.85);
+    pointer-events: auto;
+}
+
+.filter-btn.filter-btn--zero-event-matches:hover {
+    transform: none;
+    box-shadow: none;
+    opacity: 0.55;
+}
+
+.filter-btn.filter-btn--zero-event-matches .filter-label {
+    background: #3a4a5c;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+body.color-palette-gray .filter-btn.filter-btn--zero-event-matches .filter-label {
+    background: #4a4a4a;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.filter-btn.filter-btn--zero-event-matches.selected .filter-label,
+.filter-btn.filter-btn--zero-event-matches.selected .filter-image-container {
+    opacity: 0.75;
+}
+
 .filter-btn:hover {
     /* translateZ reduces subpixel seams when scaling with box-shadow */
     transform: translateY(-2px) scale(1.06) translateZ(0);

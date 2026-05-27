@@ -1,0 +1,65 @@
+/**
+ * Production: black slot + loading asset.gif while preview images load.
+ */
+
+/* --- Main menu --- */
+.main-menu-image-container--loading {
+    background-color: #000 !important;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
+.main-menu-image-container--loading::after {
+    display: none;
+}
+
+.main-menu-image-container--loading > img {
+    opacity: 0;
+}
+
+/* --- Data Archive / Choose view category tiles --- */
+.story-archive-category-hub__figure--loading {
+    background-color: #000 !important;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
+.story-archive-category-hub__figure--loading::after {
+    display: none;
+}
+
+.story-archive-category-hub__figure--loading .story-archive-category-hub__img {
+    opacity: 0;
+}
+
+/* --- Data Archive / Event Manager list thumbs --- */
+#eventsList .event-item .event-item__thumb-media .event-item-preview-image.event-item-preview-image--loading {
+    background-color: #000;
+}
+
+#eventsList .event-item .event-item__thumb-media .event-item-preview-image .event-item-preview-image__spinner {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* --- Pagination dock (desktop thumb mode) --- */
+.event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn__img-wrap--loading {
+    background-color: #000;
+    background-image: url('../../assets/images/Misc/GIFs/loading%20asset.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+
+.event-number-buttons.event-number-buttons--thumbs-desktop
+    .event-number-btn__img-wrap--loading
+    .event-number-btn__img {
+    opacity: 0 !important;
+}

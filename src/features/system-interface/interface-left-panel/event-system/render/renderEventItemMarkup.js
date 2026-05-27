@@ -19,12 +19,11 @@
  * `window.*` lookups (`LocationFlagHelpers`, `EventTimelineHelpers`, `GlitchTextService`).
  */
 
+import { getEventListSpinnerGifSrc } from '../../../../universal-features/atlas-ui/loadingGifAssets.js';
+
 /** Transparent 1×1 GIF — placeholder `src` for lazy-loaded `<img>` until IO assigns the real one. */
 const EVENT_LIST_LAZY_IMG_PLACEHOLDER =
     'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-
-/** Loading spinner shown as a sibling under the lazy `<img>` until it loads. */
-const EVENT_LIST_LOADING_SPINNER_SRC = 'src/assets/images/Misc/GIFs/loading%20asset.gif';
 
 /** Tiny HTML-escape for satellite-archive description previews. */
 function escapeHtml(s) {
@@ -70,7 +69,7 @@ export function renderEventItemMarkup(ctx) {
 
     // Image: always wrap so card sizing stays stable even when imagePath is null.
     const imageHtml = imagePath
-        ? `<div class="event-item-preview-image event-item-preview-image--loading" style="position: relative; width: 100%; aspect-ratio: 1; overflow: hidden;"><img class="event-item-preview-image__spinner" src="${EVENT_LIST_LOADING_SPINNER_SRC}" alt="" width="56" height="56" decoding="async" draggable="false" /><img class="event-item-preview-image__photo" src="${EVENT_LIST_LAZY_IMG_PLACEHOLDER}" data-src="${imagePath}" alt="${displayEvent.name}" decoding="async" fetchpriority="low" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; opacity: 0; transition: opacity 0.18s ease;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; width: 100%; height: 100%;\\'>No Image</div>';" onload="this.style.opacity='1';var p=this.closest('.event-item-preview-image');if(p)p.classList.remove('event-item-preview-image--loading');"></div>`
+        ? `<div class="event-item-preview-image event-item-preview-image--loading" style="position: relative; width: 100%; aspect-ratio: 1; overflow: hidden;"><img class="event-item-preview-image__spinner" src="${getEventListSpinnerGifSrc()}" alt="" width="56" height="56" decoding="async" draggable="false" /><img class="event-item-preview-image__photo" src="${EVENT_LIST_LAZY_IMG_PLACEHOLDER}" data-src="${imagePath}" alt="${displayEvent.name}" decoding="async" fetchpriority="low" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; opacity: 0; transition: opacity 0.18s ease;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; width: 100%; height: 100%;\\'>No Image</div>';" onload="this.style.opacity='1';var p=this.closest('.event-item-preview-image');if(p)p.classList.remove('event-item-preview-image--loading');"></div>`
         : `<div class="event-item-preview-image" style="position: relative; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 12px; background: rgba(0,0,0,0.5); width: 100%; aspect-ratio: 1;">No Image</div>`;
 
     // "1/3"-style variant counter; clickable to advance.

@@ -104,6 +104,9 @@ class EventManager {
         if (result?.shouldSync && isMainStory) {
             this.syncEventsToGlobe();
         }
+        if (typeof window !== 'undefined' && window.FilterService?.refreshCountryFilterUsage) {
+            window.FilterService.refreshCountryFilterUsage();
+        }
         return result;
     }
 
@@ -150,6 +153,9 @@ class EventManager {
 
     saveEvents() {
         this.dataService?.saveEvents();
+        if (typeof window !== 'undefined' && window.FilterService?.refreshCountryFilterUsage) {
+            window.FilterService.refreshCountryFilterUsage();
+        }
         this.unsavedEventIndices.clear();
         this.renderEvents();
         showSaveSuccessFeedback('saveEventsBtn');

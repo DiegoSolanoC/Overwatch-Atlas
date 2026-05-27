@@ -18,6 +18,8 @@ const HOST_ID = 'globeMapLaunchHost';
 const LEGACY_OVERLAY_ID = 'globeMapLaunchHubOverlay';
 const HUB_ID = 'globeMapCategoryHub';
 
+import { wireLoadingAssetImage } from '../../../universal-features/atlas-ui/loadingAssetSlot.js';
+
 const IMG_GLOBE = 'src/assets/images/World%20View/Globe.png';
 const IMG_MAP = 'src/assets/images/World%20View/Map.png';
 
@@ -130,6 +132,9 @@ function buildGlobeMapCategoryHub(onPick) {
             playStoryArchiveStyleChoiceSfx();
             onPick(t.startOnMap);
         });
+        const hubImg = btn.querySelector('.story-archive-category-hub__img');
+        const hubFigure = btn.querySelector('.story-archive-category-hub__figure');
+        wireLoadingAssetImage(hubImg, { wrap: hubFigure });
         gridSlot.appendChild(btn);
     });
 

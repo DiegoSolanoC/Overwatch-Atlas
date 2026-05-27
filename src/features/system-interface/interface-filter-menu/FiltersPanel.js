@@ -31,6 +31,10 @@ import {
 } from "./manifest/storyArchiveFilterOrder.js";
 import { wireFilterTabs } from "./tabs/wireFilterTabs.js";
 import { updateFilterTabCounts } from "./counts/updateFilterTabCounts.js";
+import {
+  buildCountryFilterUsageMap,
+  getCountryEventMatchCount,
+} from "./counts/countryFilterUsage.js";
 import { createFilterButtonsGrid } from "./buttons/createFilterButtonsGrid.js";
 import {
   invalidateArchiveLayoutFileCaches,
@@ -61,6 +65,7 @@ class FilterService {
     this.factions = [];
     this.npcs = [];
     this.countries = [];
+    this.countryUsageMap = new Map();
     this.currentFilterType = "heroes";
     this.buttonCache = {
       heroes: null,
@@ -258,6 +263,46 @@ class FilterService {
     this.factions = result.factions;
     this.npcs = result.npcs || [];
     this._initCountryFilterItems();
+    this.refreshCountryFilterUsage();
+  }
+
+  /**
+   * Recompute per-flag event usage from the current timeline store and refresh
+   * country chip visibility (call after events load or save).
+   */
+  refreshCountryFilterUsage() {
+    const events =
+      typeof window !== "undefined" && window.EventDataService?.events
+        ? window.EventDataService.events
+        : [];
+    this.countryUsageMap = buildCountryFilterUsageMap(events);
+    this._syncCountryUsageOnCachedButtons();
+    if (this.currentFilterType === "countries") {
+      this._applyCurrentCategorySearch();
+    }
+  }
+
+  _syncCountryUsageOnCachedButtons() {
+    const buttons = this.buttonCache.countries;
+    if (!Array.isArray(buttons)) return;
+    for (const btn of buttons) {
+      const filterKey = btn.dataset.filterKey;
+      if (!filterKey || !filterKey.startsWith("country:")) continue;
+      const flagFile = filterKey.slice("country:".length).trim();
+      btn.dataset.eventMatchCount = String(
+        getCountryEventMatchCount(this.countryUsageMap, flagFile),
+      );
+    }
+  }
+
+  _countriesWithUsageCounts() {
+    return this.countries.map((item) => ({
+      ...item,
+      eventMatchCount: getCountryEventMatchCount(
+        this.countryUsageMap,
+        item.flagFile,
+      ),
+    }));
   }
 
   _initCountryFilterItems() {
@@ -288,6 +333,11 @@ class FilterService {
    * separators on those tabs regardless of which archive is open.
    */
   async createFilterButtons(items, type, folder) {
+    let list = items;
+    if (type === "countries") {
+      this.refreshCountryFilterUsage();
+      list = this._countriesWithUsageCounts();
+    }
     const groupFactionsByArchiveType = type === "factions";
     const groupHeroesByArchiveRole = type === "heroes";
     if (groupFactionsByArchiveType)
@@ -296,7 +346,7 @@ class FilterService {
       await ensureArchiveLayoutSnapshotsForFilter("heroes");
 
     createFilterButtonsGrid(
-      items,
+      list,
       type,
       folder,
       this.filtersGrid,

@@ -28,6 +28,8 @@
 /* Shared UI */
 @import url('ui/modals.css?v=9');
 @import url('ui/external-link-confirm.css?v=9');
+@import url('ui/loading-asset-slot.css?v=1');
+@import url('ui/debug-loading-asset-gif.css?v=3');
 
 /* Story */
 @import url('features/story/hero.css?v=9');

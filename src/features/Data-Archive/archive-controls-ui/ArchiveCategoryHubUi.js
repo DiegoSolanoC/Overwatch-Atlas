@@ -5,6 +5,7 @@
  */
 
 import { CATEGORY_METADATA, ARCHIVE_CATEGORIES } from '../archive-category-shared/ArchiveCategoryTypes.js';
+import { wireLoadingAssetImage } from '../../universal-features/atlas-ui/loadingAssetSlot.js';
 
 /**
  * @typedef {'story'|'heroes'|'factions'|'npcs'|'locations'} DataArchiveSource
@@ -64,6 +65,10 @@ export function buildCategoryHubUI(callbacks) {
             callbacks.playCategorySfx?.();
             callbacks.onSelectArchive(categoryKey);
         });
+
+        const hubImg = btn.querySelector('.story-archive-category-hub__img');
+        const hubFigure = btn.querySelector('.story-archive-category-hub__figure');
+        wireLoadingAssetImage(hubImg, { wrap: hubFigure });
 
         if (metadata.isFeature) {
             btn.classList.add('story-archive-category-hub__tile--story');

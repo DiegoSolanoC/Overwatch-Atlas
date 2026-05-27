@@ -1,3 +1,5 @@
+import { isLoadingAssetGifDebugForced } from '../../../../universal-features/atlas-ui/loadingGifAssets.js';
+
 /**
  * Lazy-load preview images in the Event Manager list.
  *
@@ -14,8 +16,17 @@
  * @param {{ _eventManagerImgObserver: IntersectionObserver|null }} renderService
  * @param {HTMLElement|null} eventsList
  */
+function finishPreviewImageLoad(img, wrap) {
+    if (isLoadingAssetGifDebugForced()) return;
+    if (img.complete && img.naturalWidth > 0) {
+        img.style.opacity = '1';
+        wrap?.classList.remove('event-item-preview-image--loading');
+    }
+}
+
 export function setupEventManagerImageLazyLoading(renderService, eventsList) {
     if (!eventsList) return;
+    if (isLoadingAssetGifDebugForced()) return;
 
     const imgs = Array.from(eventsList.querySelectorAll('img[data-src]'));
     if (imgs.length === 0) return;
@@ -24,12 +35,15 @@ export function setupEventManagerImageLazyLoading(renderService, eventsList) {
         imgs.forEach((img) => {
             if (img.dataset.src) {
                 const wrap = img.closest('.event-item-preview-image');
-                img.src = img.dataset.src;
+                const src = img.dataset.src;
+                wrap?.classList.add('event-item-preview-image--loading');
+                img.style.opacity = '0';
+                const done = () => finishPreviewImageLoad(img, wrap);
+                img.addEventListener('load', done, { once: true });
+                img.addEventListener('error', done, { once: true });
+                img.src = src;
                 delete img.dataset.src;
-                if (img.complete && img.naturalWidth > 0) {
-                    img.style.opacity = '1';
-                    wrap?.classList.remove('event-item-preview-image--loading');
-                }
+                if (img.complete) done();
             }
         });
         return;
@@ -46,12 +60,14 @@ export function setupEventManagerImageLazyLoading(renderService, eventsList) {
             const src = img.dataset ? img.dataset.src : null;
             if (src) {
                 const wrap = img.closest('.event-item-preview-image');
+                wrap?.classList.add('event-item-preview-image--loading');
+                img.style.opacity = '0';
+                const done = () => finishPreviewImageLoad(img, wrap);
+                img.addEventListener('load', done, { once: true });
+                img.addEventListener('error', done, { once: true });
                 img.src = src;
                 delete img.dataset.src;
-                if (img.complete && img.naturalWidth > 0) {
-                    img.style.opacity = '1';
-                    wrap?.classList.remove('event-item-preview-image--loading');
-                }
+                if (img.complete) done();
             }
             obs.unobserve(img);
         });

@@ -44,6 +44,10 @@ export function createFilterButton(item, type, folder, stateManager, imageServic
     filterBtn.className = 'filter-btn';
     filterBtn.dataset.filterType = type;
     filterBtn.dataset.filterKey = filterKey;
+    if (type === 'countries') {
+        const n = item && typeof item.eventMatchCount === 'number' ? item.eventMatchCount : 0;
+        filterBtn.dataset.eventMatchCount = String(n);
+    }
 
     const imageContainer = document.createElement('div');
     imageContainer.className = 'filter-image-container';
