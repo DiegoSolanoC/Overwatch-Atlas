@@ -1,0 +1,73 @@
+/* Main Content */
+main {
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+    background: #0a1929; /* Dark blue for default blue palette */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border: none;
+    border-top: none; /* Explicitly remove top border */
+    border-bottom: none; /* Explicitly remove bottom border */
+}
+
+/* Gray palette: dark gray background for main */
+body.color-palette-gray main {
+    background: #1a1a1a;
+}
+
+body.color-palette-crimson main {
+    background: var(--bg-main);
+}
+
+body.color-palette-nulled main {
+    background: var(--bg-main);
+}
+
+/* Globe Container */
+#globe-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: grab;
+    /* Mobile: prevent browser panning/scroll chaining while dragging the map */
+    touch-action: none;
+    overscroll-behavior: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#globe-container.codex-mode {
+    cursor: default;
+    touch-action: auto;
+}
+
+/* Inline timeline load: pin to the same main stage as globe/map (entry.css #globe-container) */
+#globe-container.globe-inline-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container.globe-inline-loading {
+    bottom: 108px;
+}
+
+
+#globe-container canvas {
+    display: block;
+}
+
+/* Shorter canvas when timeline is up without dock (float pagination); dock layout uses entry.css bottom: 0 */
+body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container {
+    bottom: 108px;
+}
+
+

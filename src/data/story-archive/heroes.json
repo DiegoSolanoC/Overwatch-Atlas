@@ -1,0 +1,743 @@
+{
+  "events": [
+    {
+      "name": "D.va",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Busan",
+          "country": "South Korea",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator"
+    },
+    {
+      "name": "Hazard",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Glasgow",
+          "country": "United Kingdom",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator"
+    },
+    {
+      "name": "Doomfist",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Oyo",
+          "country": "Nigeria",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator"
+    },
+    {
+      "name": "Winston",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Congo Basin",
+          "country": "Democratic Republic of the Congo",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator"
+    },
+    {
+      "name": "Wrecking Ball",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator"
+    },
+    {
+      "name": "Mauga",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Apia",
+          "country": "Samoa",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Bruiser"
+    },
+    {
+      "name": "Orisa",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Bruiser"
+    },
+    {
+      "name": "Roadhog",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Bruiser"
+    },
+    {
+      "name": "Zarya",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Novoanskoye",
+          "country": "Russia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Bruiser"
+    },
+    {
+      "name": "Domina",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "London",
+          "country": "United Kingdom",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Stalwart"
+    },
+    {
+      "name": "Junker Queen",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Stalwart"
+    },
+    {
+      "name": "Ramattra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Secret Omnium",
+          "country": "Antarctica",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Stalwart"
+    },
+    {
+      "name": "Reinhardt",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Stuttgrat",
+          "country": "Germany",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Stalwart"
+    },
+    {
+      "name": "Sigma",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "The Hague",
+          "country": "Netherlands",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Stalwart"
+    },
+    {
+      "name": "Bastion",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Emre",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Istanbul",
+          "country": "Turkey",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Junkrat",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "The Outback",
+          "country": "Australia",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Mei",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Xi'an",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Soldier 76",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Bloomington",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Symmetra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Hyderabad",
+          "country": "India",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Torbjörn",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Specialist"
+    },
+    {
+      "name": "Ashe",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Bellaire",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Sharpshooter"
+    },
+    {
+      "name": "Cassidy",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Austin",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Sharpshooter"
+    },
+    {
+      "name": "Hanzo",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Hanamura",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Sharpshooter"
+    },
+    {
+      "name": "Sojourn",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Toronto",
+          "country": "Canada",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Sharpshooter"
+    },
+    {
+      "name": "Widowmaker",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Annecy",
+          "country": "France",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Sharpshooter"
+    },
+    {
+      "name": "Anran",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Chengdu",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Genji",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Hanamura",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Reaper",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Los Angeles",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Tracer",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "London",
+          "country": "England",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Vendetta",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Rome",
+          "country": "Italy",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Venture",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Nova Scotia",
+          "country": "Canada",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker"
+    },
+    {
+      "name": "Echo",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Oslo",
+          "country": "Norway",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon"
+    },
+    {
+      "name": "Freja",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Copenhagen",
+          "country": "Denmark",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon"
+    },
+    {
+      "name": "Pharah",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Cairo",
+          "country": "Egypt",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon"
+    },
+    {
+      "name": "Sierra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Appalachian Virginia",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon"
+    },
+    {
+      "name": "Sombra",
+      "description": "Olivia Colomar",
+      "relevantLocations": [
+        {
+          "locationName": "Castillo",
+          "country": "Mexico",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon"
+    },
+    {
+      "name": "Baptiste",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Tortuga Island",
+          "country": "Haiti",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician"
+    },
+    {
+      "name": "Ana",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Cairo",
+          "country": "Egypt",
+          "reasoning": "Place of Birth, Primary center of Operations"
+        },
+        {
+          "locationName": "Zurich",
+          "country": "Switzerland",
+          "reasoning": "Overwatch HQ"
+        },
+        {
+          "locationName": "Moscow",
+          "country": "Russia",
+          "reasoning": "Permanently forbidden to ender the country following the Xie Incident"
+        },
+        {
+          "locationName": "Warsaw",
+          "country": "Poland",
+          "reasoning": "Went MIA during a Sniper Duel"
+        },
+        {
+          "locationName": "Necropolis",
+          "country": "Egypt",
+          "reasoning": "Former Hideout"
+        },
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "Temporary Alliance with Overwatch"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician"
+    },
+    {
+      "name": "Jetpack Cat",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Lijiang",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician"
+    },
+    {
+      "name": "Lúcio",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Rio de Janeiro",
+          "country": "Brazil",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician"
+    },
+    {
+      "name": "Zenyatta",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Detroit",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Tactician"
+    },
+    {
+      "name": "Kiriko",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Kanezaka",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Medic"
+    },
+    {
+      "name": "Lifeweaver",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Chiang Mai City",
+          "country": "Thailand",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Medic"
+    },
+    {
+      "name": "Mercy",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Zurich",
+          "country": "Switzerland",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Medic"
+    },
+    {
+      "name": "Moira",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Dublin",
+          "country": "Ireland",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Medic"
+    },
+    {
+      "name": "Brigitte",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Gothenburg",
+          "country": "Sweden",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Survivor"
+    },
+    {
+      "name": "Illari",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Runasapi",
+          "country": "Peru",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Survivor"
+    },
+    {
+      "name": "Juno",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Survivor"
+    },
+    {
+      "name": "Mizuki",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Fukuoka",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Survivor"
+    },
+    {
+      "name": "Wuyang",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Chengdu",
+          "country": "China",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "connections": [],
+      "heroRole": "Support",
+      "heroSubRole": "Survivor"
+    }
+  ]
+}

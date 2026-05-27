@@ -6,11 +6,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.join(__dirname, '..');
-const locationsPath = path.join(root, 'src', 'data', 'locations.json');
-const connectionsPath = path.join(root, 'src', 'data', 'connections.json');
-const eventsPath = path.join(root, 'src', 'data', 'events.json');
-const outPath = path.join(root, 'src', 'data', 'earth-lights-hubs.json');
+const {
+    locations: locationsPath,
+    connections: connectionsPath,
+    timelineEvents: eventsPath,
+    abs,
+    FILES,
+} = require('./data-paths.cjs');
+const outPath = abs(FILES.worldview.earthLightsHubs);
 
 /** Keep in sync with src/features/Interactive-Worldview/utils/EarthLightsData.js — isExcludedEarthLightHub */
 function isExcludedEarthLightHub(h) {

@@ -8,13 +8,10 @@
     "build:pages": "node scripts/generate-manifest.js && node scripts/prepare-github-pages.mjs",
     "dev": "node scripts/generate-manifest.js && node src/server.js",
     "launch": "node scripts/generate-manifest.js && start cmd /k \"node src/server.js\" && timeout /t 3 /nobreak >nul && start chrome.exe http://localhost:8000",
-    "flags": "node scripts/download-flags.mjs",
     "flags:lookup": "node scripts/build-flags-lookup.mjs"
   },
   "dependencies": {},
-  "devDependencies": {
-    "sharp": "^0.33.5"
-  }
+  "devDependencies": {}
 }
 
 

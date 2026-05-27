@@ -7,9 +7,9 @@ const fs = require('fs');
 const path = require('path');
 
 const ARCHIVE_FILES = {
-    heroes: 'story-archive-heroes.json',
-    factions: 'story-archive-factions.json',
-    npcs: 'story-archive-npcs.json',
+    heroes: path.join('story-archive', 'heroes.json'),
+    factions: path.join('story-archive', 'factions.json'),
+    npcs: path.join('story-archive', 'npcs.json'),
 };
 
 function normLoose(s) {

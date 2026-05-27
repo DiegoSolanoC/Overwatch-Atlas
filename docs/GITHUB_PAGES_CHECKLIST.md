@@ -26,13 +26,13 @@ Unlike Windows, GitHub Pages serves files from a **case-sensitive** filesystem. 
 
 ## Number buttons and hover
 
-- **Styles**: Event number buttons (1–10) and marker-hover highlight (`.number-btn-marker-hover`) are in `src/styles/components/event-pagination.css`, imported via `src/styles/app.css`. Same file for desktop and mobile (media queries inside).
+- **Styles**: Event number buttons (1–10) and marker-hover highlight (`.number-btn-marker-hover`) are in `src/styles/features/event-system/event-pagination.css`, imported via `src/styles/app.css`. Same bundle for desktop and mobile (media queries inside).
 - **Behavior**: `MarkerInteractionService` adds/removes `number-btn-marker-hover` on the corresponding button when a marker is hovered. No conditional that disables this on GitHub Pages.
 
 ## Button layouts (desktop and mobile)
 
-- **Globe/pagination**: `src/styles/components/globe.css`, `src/styles/components/event-pagination.css`.
-- **Zoom, music, palette, event manager, filters, etc.**: `src/styles/entry.css`, `src/styles/components/globe.css`, `src/styles/mobile/viewport.css` (via `src/styles/mobile.css`).
+- **Globe/pagination**: `src/styles/features/worldview/globe.css`, `src/styles/features/connection-codex/codex.css`, `src/styles/features/event-system/event-pagination.css`.
+- **Zoom, music, palette, event manager, filters, etc.**: `src/styles/entry.css`, `src/styles/features/worldview/globe.css`, `src/styles/mobile/viewport.css` (via `src/styles/mobile.css`).
 - All loaded through `src/styles/app.css` and `src/styles/entry.css` with relative imports; no absolute URLs.
 
 ## Before you push

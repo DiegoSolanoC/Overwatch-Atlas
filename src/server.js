@@ -7,6 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const { syncStoryArchivesFromCodexEdges, diffStoryArchivesVsCodex } = require('../scripts/server-bio-codex-sync.js');
+const {
+    absFromPublic,
+    FILES,
+    STORY_ARCHIVE_WRITE_FILES,
+} = require('./data/registry.cjs');
 
 const PORT = 8000;
 
@@ -61,7 +66,7 @@ function writeEventsJson(events, res) {
         return;
     }
 
-    const outPath = path.join(__dirname, 'data', 'events.json');
+    const outPath = absFromPublic(FILES.eventSystem.timelineEvents);
     const payload = { events };
     const json = JSON.stringify(payload, null, 2) + '\n';
 
@@ -77,18 +82,10 @@ function writeEventsJson(events, res) {
     }
 }
 
-/** Data Archive satellite JSONs (Heroes / Factions / NPCs / Locations) — same shape as shipped files: { events: [...] } */
-const STORY_ARCHIVE_WRITE_MAP = {
-    heroes: 'story-archive-heroes.json',
-    factions: 'story-archive-factions.json',
-    npcs: 'story-archive-npcs.json',
-    locations: 'story-archive-locations.json',
-};
-
 function writeStoryArchiveJson(body, res) {
     const archive = body && typeof body.archive === 'string' ? body.archive.trim() : '';
     const events = Array.isArray(body?.events) ? body.events : null;
-    const fileName = STORY_ARCHIVE_WRITE_MAP[archive];
+    const fileName = STORY_ARCHIVE_WRITE_FILES[archive];
     if (!fileName || !events) {
         sendJson(res, 400, {
             error: 'Expected { archive: "heroes"|"factions"|"npcs"|"locations", events: [...] }',
@@ -96,7 +93,7 @@ function writeStoryArchiveJson(body, res) {
         return;
     }
 
-    const outPath = path.join(__dirname, 'data', fileName);
+    const outPath = path.join(__dirname, 'data', 'story-archive', fileName);
     const payload = { events };
     const json = JSON.stringify(payload, null, 2) + '\n';
     const tmpPath = outPath + '.tmp';
@@ -127,7 +124,7 @@ function writeCodexStateJson(body, res) {
         return;
     }
 
-    const outPath = path.join(__dirname, 'data', 'codex-labels.json');
+    const outPath = absFromPublic(FILES.connectionCodex.codexLabels);
     const vOut = typeof body.v === 'number' && body.v >= 4 ? body.v : 4;
     const payload = { v: vOut, nodes, edges };
     const json = JSON.stringify(payload, null, 2) + '\n';
@@ -170,7 +167,7 @@ const server = http.createServer((req, res) => {
     // Local API: persist events to data/events.json (works only when running this server)
     if (decodedPath === '/api/events') {
         if (req.method === 'GET') {
-            const p = path.join(__dirname, 'data', 'events.json');
+            const p = absFromPublic(FILES.eventSystem.timelineEvents);
             try {
                 const data = JSON.parse(fs.readFileSync(p, 'utf8'));
                 const events = Array.isArray(data) ? data : (Array.isArray(data?.events) ? data.events : []);
@@ -240,9 +237,15 @@ const server = http.createServer((req, res) => {
 
     if (decodedPath === '/api/codex') {
         if (req.method === 'GET') {
-            const p = path.join(__dirname, 'data', 'codex-labels.json');
+            const p = absFromPublic(FILES.connectionCodex.codexLabels);
+            const legacyPath = path.join(__dirname, 'data', 'codex-labels.json');
+            let readPath = p;
             try {
-                const data = JSON.parse(fs.readFileSync(p, 'utf8'));
+                if (!fs.existsSync(p) && fs.existsSync(legacyPath)) {
+                    console.warn('[server] GET /api/codex: using legacy path', legacyPath);
+                    readPath = legacyPath;
+                }
+                const data = JSON.parse(fs.readFileSync(readPath, 'utf8'));
                 if (Array.isArray(data)) {
                     sendJson(res, 200, { v: 1, labels: data, nodes: data, edges: [] });
                     return;
@@ -251,7 +254,8 @@ const server = http.createServer((req, res) => {
                 const edges = Array.isArray(data.edges) ? data.edges : [];
                 sendJson(res, 200, { v: data.v || 2, nodes, edges, labels: nodes });
             } catch (e) {
-                sendJson(res, 200, { v: 2, nodes: [], edges: [], labels: [] });
+                console.error('[server] GET /api/codex: failed to read', readPath, e.message);
+                sendJson(res, 500, { ok: false, error: 'Failed to read codex labels', path: readPath });
             }
             return;
         }
@@ -305,7 +309,7 @@ const server = http.createServer((req, res) => {
 
     // Legacy URLs (older HTML / bookmarks)
     if (decodedPath === '/manifest.json') {
-        decodedPath = '/src/data/manifest.json';
+        decodedPath = '/src/data/platform/manifest.json';
     }
     if (decodedPath === '/script.js') {
         decodedPath = '/src/script.js';

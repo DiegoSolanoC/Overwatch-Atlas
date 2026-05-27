@@ -1,5 +1,5 @@
 /**
- * musicManifestFetch — fetch and parse `src/data/manifest.json` for the music catalog.
+ * musicManifestFetch — fetch and parse `src/data/platform/manifest.json` for the music catalog.
  */
 
 const getLogAssetLoad = () =>
@@ -15,7 +15,7 @@ export async function fetchMusicManifest() {
     logAssetLoad('MUSIC', 'Loading manifest.json (PRIORITY)');
 
     const cacheBuster = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    const response = await fetch(`src/data/manifest.json?v=${cacheBuster}`, {
+    const response = await fetch(`src/data/platform/manifest.json?v=${cacheBuster}`, {
         cache: 'no-store',
         headers: {
             'Cache-Control': 'no-cache, no-store, must-revalidate',

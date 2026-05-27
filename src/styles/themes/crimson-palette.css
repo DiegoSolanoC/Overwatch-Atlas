@@ -446,35 +446,6 @@ body.color-palette-crimson .event-image-toggle-btn:hover {
     background: #ff8a80;
 }
 
-/* Event Edit Modal */
-body.color-palette-crimson .event-edit-modal-content {
-    background: var(--bg-secondary);
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.5);
-}
-
-body.color-palette-crimson .event-edit-modal-header {
-    border-bottom: 2px solid rgba(239, 83, 80, 0.3);
-}
-
-body.color-palette-crimson .event-edit-modal-header h3 {
-    color: #ef5350;
-}
-
-body.color-palette-crimson .event-edit-modal-close:hover {
-    background: rgba(239, 83, 80, 0.3); /* Orange for gray palette */
-    border-color: rgba(239, 83, 80, 0.6);
-    color: #ef5350;
-}
-
-body.color-palette-crimson .event-edit-input:focus,
-body.color-palette-crimson .event-edit-textarea:focus {
-    border-color: var(--accent-primary);
-}
-
-body.color-palette-crimson .event-edit-actions {
-    border-top: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
-}
-
 body.color-palette-crimson .lookup-city-btn {
     background: rgba(239, 83, 80, 0.3); /* Orange for gray palette */
     border: 1px solid rgba(239, 83, 80, 0.6);

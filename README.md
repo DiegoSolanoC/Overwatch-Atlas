@@ -55,7 +55,7 @@ The application is configured to work on GitHub Pages. Follow these steps to dep
 
 **Option A — GitHub Actions (recommended)**  
 1. Go to **Settings** → **Pages** → **Build and deployment** → **Source**: **GitHub Actions**.  
-2. Push to `main` / `master`; the workflow `.github/workflows/deploy.yml` runs **`npm run build:pages`** (regenerates `src/data/manifest.json` and copies a clean tree into **`_site/`** without `.git` / `node_modules`) and publishes **`_site`**.  
+2. Push to `main` / `master`; the workflow `.github/workflows/deploy.yml` runs **`npm run build:pages`** (regenerates `src/data/platform/manifest.json` and copies a clean tree into **`_site/`** without `.git` / `node_modules`) and publishes **`_site`**.  
 3. First run: approve the **github-pages** environment if GitHub prompts you.
 
 **Site URL**  
@@ -64,7 +64,7 @@ Project Pages are served at `https://<user>.github.io/<repository-name>/` (this 
 **Option B — Deploy from a branch**  
 1. Go to **Settings** → **Pages**  
 2. Under **Source**, select **Branch** → `main` (or `master`) → **/ (root)**  
-3. Before pushing, run **`npm run build:pages`** (or `node scripts/generate-manifest.js`) so `src/data/manifest.json` matches your `src/assets/` folders.  
+3. Before pushing, run **`npm run build:pages`** (or `node scripts/generate-manifest.js`) so `src/data/platform/manifest.json` matches your `src/assets/` folders.  
 4. Click **Save**
 
 ### 2. Verify Files
@@ -75,9 +75,9 @@ Make sure these paths exist in the repo (typical GitHub Pages tree):
 - `.nojekyll` — disables Jekyll on GitHub Pages
 - `src/styles/app.css` and `src/styles/` — global CSS entry and partials
 - `src/` — application JavaScript (features, controllers, services)
-- `src/data/` — JSON data (`events.json`, `locations.json`, **`manifest.json`**, codex, story archives, etc.)
+- `src/data/` — JSON by feature (`event-system/`, `story-archive/`, `connection-codex/`, `worldview/`, `platform/`); paths in `src/data/registry.js`
 - `src/assets/` — images, audio, models (e.g. `src/assets/images/Misc/Atlas News.png`)
-- `scripts/` — Node helpers (`generate-manifest`, Pages prep, migrations); CI uses **`npm run build:pages`**, which regenerates **`src/data/manifest.json`** before copying to **`_site/`**
+- `scripts/` — Node helpers (`generate-manifest`, Pages prep, codex/data tools); see **`scripts/README.md`**. CI uses **`npm run build:pages`**, which regenerates **`src/data/platform/manifest.json`** before copying to **`_site/`**
 
 ### 3. Access Your Site
 
@@ -96,19 +96,19 @@ GitHub serves the site under **`/<repository-name>/`**, so renaming the reposito
 
 - **Edit Mode**: The application automatically detects when running on GitHub Pages and disables edit/delete functionality for events. This prevents users from modifying data on the live site.
 - **Local Storage**: User preferences (color palette, music state) are saved in browser localStorage and will persist across sessions.
-- **Event Data**: Events are loaded from `src/data/events.json`. On GitHub Pages, users can view events but cannot edit them (edit buttons are hidden).
+- **Event Data**: Story timeline loads from `src/data/event-system/timeline-events.json`. On GitHub Pages, users can view events but cannot edit them (edit buttons are hidden).
 - **File Paths**: All file paths are relative (no leading `/`), so the site works the same on both localhost and GitHub Pages. Asset paths with spaces (e.g. `Atlas News.png`) use URL-encoded form (`Atlas%20News.png`) in HTML for compatibility.
 - **Parity with local**: The following are built to look and behave the same on GitHub Pages as locally:
   - **Footer**: Atlas News image (red trapezoid) and sliding headlines ticker appear after the timeline loads (`footer.timeline-loaded`).
-  - **Number buttons (1–10)**: Pagination and event-number button styles (including marker-hover highlight) are in `src/styles/components/event-pagination.css` and load via `src/styles/app.css`.
-  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `src/styles/entry.css`, `src/styles/components/globe.css`, and `src/styles/mobile/viewport.css`; all loaded via relative imports.
+  - **Number buttons (1–10)**: Pagination and event-number button styles (including marker-hover highlight) are in `src/styles/features/event-system/event-pagination.css` and load via `src/styles/app.css`.
+  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `src/styles/entry.css`, `src/styles/features/worldview/globe.css`, and `src/styles/mobile/viewport.css`; all loaded via relative imports.
 - **Root files**: Ensure `.nojekyll` exists in the repo root so GitHub Pages does not run Jekyll. Ensure `src/assets/images/Misc/Atlas News.png` (and other files under `src/assets/`, `src/data/`) are committed.
 
 ## Design documentation
 
 For an in-depth description of modes, the shared event system, codex/world view behavior, APIs, and keyboard shortcuts, see **[`docs/DESIGN.md`](docs/DESIGN.md)**.
 
-For the **refactor roadmap** (Codex → Archive → Main menu → `src/` sweep; foundation + backlog), see **[`docs/REFACTOR_PHASES.md`](docs/REFACTOR_PHASES.md)**. For **timeline ↔ globe/map marker ownership**, see **[`docs/TIMELINE_WORLDVIEW_CONTRACT.md`](docs/TIMELINE_WORLDVIEW_CONTRACT.md)**.
+For **refactoring guidelines** (scope, conventions, review habits), see **[`docs/deslop.md`](docs/deslop.md)**. For **GitHub Pages deploy checks**, see **[`docs/GITHUB_PAGES_CHECKLIST.md`](docs/GITHUB_PAGES_CHECKLIST.md)**.
 
 ## Project Structure (high level)
 
@@ -120,7 +120,7 @@ Overwatch-Atlas/
 ├── package.json, package-lock.json   # npm / CI
 ├── README.md
 ├── start-server.bat                  # Windows: manifest + server window + browser (optional)
-├── scripts/                          # Node tooling (manifest, Pages prep, migrations)
+├── scripts/                          # Node tooling (see scripts/README.md)
 ├── src/
 │   ├── styles/app.css, styles/       # Global CSS bundle + partials (linked from index.html)
 │   ├── script.js                     # Bootstrap script (linked from index.html)

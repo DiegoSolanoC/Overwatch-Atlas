@@ -1,0 +1,558 @@
+/* ========================================
+   EVENT SLIDE PANEL
+   ======================================== */
+
+/* Event Slide Panel (left side) - flexbox layout */
+.event-slide {
+    position: relative;
+    width: var(--panel-event-width-collapsed);
+    min-width: var(--panel-event-width-collapsed);
+    max-width: var(--panel-event-width-collapsed);
+    flex: 0 0 var(--panel-event-width-collapsed);
+    background: var(--bg-secondary); /* Dark blue for default blue palette */
+    box-shadow: none; /* Remove shadow to prevent overlap */
+    transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
+    /* Above main#content stage (.event-image-overlay is z-index 500) so resize chrome can sit on the seam */
+    z-index: 540;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    transition:
+        width var(--panel-transition),
+        min-width var(--panel-transition),
+        max-width var(--panel-transition),
+        flex-basis var(--panel-transition);
+}
+
+.event-slide.open {
+    width: var(--user-panel-event-width, var(--panel-event-width));
+    min-width: var(--user-panel-event-width, var(--panel-event-width));
+    max-width: var(--user-panel-event-width, var(--panel-event-width));
+    flex: 0 0 var(--user-panel-event-width, var(--panel-event-width));
+}
+
+/* Hide panel content when collapsed */
+.event-slide:not(.open) .event-slide-content {
+    display: none;
+}
+
+/* Custom scrollbar styling for event slide */
+.event-slide::-webkit-scrollbar {
+    width: 12px;
+}
+
+.event-slide::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.event-slide::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb); /* Light blue for default blue palette */
+    border-radius: var(--border-radius-small);
+    border: 2px solid var(--scrollbar-track);
+}
+
+.event-slide::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox scrollbar */
+.event-slide {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/*
+ * Desktop pagination dock: no special handling needed since panel is now flexbox sibling
+ * Panel will naturally resize with dock changes
+ */
+
+/* Close (×) + Back cluster — top-right */
+.event-slide-close-cluster {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+    z-index: 501;
+    pointer-events: none;
+}
+
+.event-slide-close-cluster > * {
+    pointer-events: auto;
+}
+
+.event-slide-close-cluster .event-slide-close {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+.event-slide-back-btn {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: transform 0.15s ease, opacity 0.15s ease, filter 0.15s ease;
+}
+
+.event-slide-back-btn__icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+}
+
+.event-slide-back-btn:hover:not(:disabled) {
+    transform: scale(1.06);
+}
+
+.event-slide-back-btn:hover:not(:disabled) .event-slide-back-btn__icon {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45)) brightness(1.12);
+}
+
+.event-slide-back-btn:focus-visible {
+    outline: 2px solid var(--accent-primary, #5aa9e6);
+    outline-offset: 2px;
+}
+
+.event-slide-back-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.event-slide-close {
+    font-size: 48px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.event-slide-action-btn {
+    position: absolute;
+    top: 16px;
+    z-index: 201;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    background: var(--btn-primary-bg);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.event-slide-action-btn:hover:not(:disabled) {
+    background: var(--btn-primary-bg-hover);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.event-slide-action-btn:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.event-slide-action-btn:disabled {
+    cursor: not-allowed;
+}
+
+.event-slide-save-btn {
+    right: 130px; /* left of close cluster (Back + ×) */
+}
+
+.event-slide-edit-btn {
+    right: 205px; /* sits left of Save button */
+}
+
+.event-slide--inline-editing .event-slide-scrollable p#eventSlideText {
+    border: 2px solid rgba(var(--accent-primary-rgb), 0.45);
+    border-radius: 8px;
+    padding: 10px 10px;
+    background: rgba(0, 0, 0, 0.22);
+    white-space: pre-wrap; /* keep blank lines stable while editing */
+}
+
+.event-slide--inline-editing .event-slide-scrollable p#eventSlideText:focus {
+    outline: none;
+    border-color: rgba(var(--accent-primary-rgb), 0.75);
+}
+
+/* Inline edit mode: hide rendered sections to save space */
+.event-slide--inline-editing #eventSourcesSection,
+.event-slide--inline-editing #eventFiltersSection,
+.event-slide--inline-editing #eventRelevantLocationsSection {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Header variant tabs call switchEventVariant (exits edit); use inline bar instead while editing */
+.event-slide--inline-editing #eventVariantToggles {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/*
+ * Inline editing: relevant locations + bio connections live in .event-slide-top (above the
+ * description scrollport). Default .event-slide-content { overflow: hidden } clips tall forms.
+ * Use one scroll on the content column; description no longer uses a nested scroll while editing.
+ */
+.event-slide.event-slide--inline-editing .event-slide-content {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.event-slide.event-slide--inline-editing .event-slide-scrollable {
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow-y: visible !important;
+    overflow-x: hidden;
+}
+
+.event-slide-inline-editor {
+    margin: 14px 0 14px 0;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.14);
+}
+
+.event-slide-inline-editor__row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.event-slide-inline-editor__label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.event-slide-inline-editor__input,
+.event-slide-inline-editor__textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+    padding: 10px 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.event-slide-inline-editor__textarea {
+    resize: vertical;
+    min-height: 86px;
+}
+
+.event-slide-inline-editor__input:focus,
+.event-slide-inline-editor__textarea:focus {
+    outline: none;
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.event-slide-inline-editor__placement {
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-slide-inline-editor__lookup-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-slide-inline-editor__input--grow {
+    flex: 1 1 160px;
+    min-width: 0;
+}
+
+.event-slide-inline-editor__inline-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+}
+
+.event-slide-inline-editor__inline-check input {
+    margin: 0;
+    cursor: pointer;
+}
+
+.event-slide-inline-editor__loc-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.event-slide-loc-type-btn {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.event-slide-loc-type-btn:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.event-slide-loc-type-btn.active {
+    border-color: rgba(var(--accent-primary-rgb), 0.65);
+    background: rgba(var(--accent-primary-rgb), 0.22);
+    color: #fff;
+}
+
+.event-slide-inline-editor__sources {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.event-slide-inline-editor__source-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1.3fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.event-slide-inline-editor__year-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: end;
+}
+
+.event-slide-inline-editor__year-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.event-slide-inline-editor__actions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.event-slide-inline-editor__small-btn {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: var(--btn-primary-bg);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.event-slide-inline-editor__small-btn:hover {
+    background: var(--btn-primary-bg-hover);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: scale(1.04);
+}
+
+.event-slide-inline-variant-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-slide-inline-variant-tab {
+    min-width: 36px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.event-slide-inline-variant-tab:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.event-slide-inline-variant-tab.active {
+    border-color: rgba(var(--accent-primary-rgb), 0.65);
+    background: rgba(var(--accent-primary-rgb), 0.22);
+}
+
+.event-slide-inline-variant-action {
+    flex-shrink: 0;
+}
+
+.event-slide-inline-editor__hint {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.event-slide-inline-editor__row--delete {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 80, 80, 0.22);
+    margin-bottom: 0;
+}
+
+.event-slide-inline-editor__delete-btn {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 40px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 120, 120, 0.45);
+    background: rgba(180, 40, 40, 0.25);
+    color: rgba(255, 220, 220, 0.95);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.event-slide-inline-editor__delete-btn:hover {
+    background: rgba(200, 50, 50, 0.4);
+    border-color: rgba(255, 160, 160, 0.65);
+}
+
+.event-slide-inline-editor__delete-btn:active {
+    transform: scale(0.99);
+}
+
+.event-slide-inline-editor__variant-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    margin-bottom: 6px;
+}
+
+.event-slide-inline-editor__variant-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.event-slide-inline-editor__variant-remove {
+    flex-shrink: 0;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 120, 120, 0.4);
+    background: rgba(180, 40, 40, 0.2);
+    color: rgba(255, 220, 220, 0.9);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.event-slide-inline-editor__variant-remove:hover {
+    background: rgba(200, 50, 50, 0.35);
+    border-color: rgba(255, 140, 140, 0.6);
+}
+
+.event-slide-inline-editor__no-variants {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+    padding: 8px 0;
+}
+
+#eventSlideAddVariantBtn {
+    margin-top: 8px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: var(--btn-primary-bg);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+#eventSlideAddVariantBtn:hover {
+    background: var(--btn-primary-bg-hover);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: scale(1.04);
+}
+
+.event-slide-close:hover {
+    color: var(--accent-primary);
+}
+
+.event-slide-content {
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent content from overflowing */
+}
+

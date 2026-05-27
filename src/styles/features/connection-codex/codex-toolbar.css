@@ -1,0 +1,548 @@
+.codex-toolbar {
+    position: absolute;
+    /*
+     * Default: only clear the footer area. #globe-container already shrinks to bottom:108px when
+     * the timeline is loaded without a pagination dock (see entry.css), so a small inset is enough.
+     */
+    bottom: 16px;
+    /* Inset from the viewport edge so we clear filters-panel side trapezoid + border art. */
+    left: max(64px, env(safe-area-inset-left, 0px));
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 88%, #000 12%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+    /* Wider so the three import/export buttons stay readable; reserve room for both side insets. */
+    max-width: min(480px, calc(100% - 128px));
+    font-size: 15px;
+    transition: bottom var(--pagination-dock-transition-duration, 0.42s)
+        var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+}
+
+/*
+ * When the pagination dock is present #globe-container stretches under it (entry.css bottom:0),
+ * so the toolbar must lift above footer + dock or it gets covered. --pagination-dock-height
+ * auto-shrinks to 200px when body.pagination-dock-collapsed is set.
+ */
+body:has(#paginationDock) .codex-toolbar {
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + 16px
+    );
+}
+
+.codex-toolbar__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.codex-toolbar__row--footer {
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.codex-toolbar__hint {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffeb3b;
+    letter-spacing: 0.02em;
+}
+
+.codex-toolbar__network-hint {
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0 2px;
+}
+
+.codex-toolbar__row--selection-preview {
+    justify-content: center;
+}
+
+.codex-toolbar__endpoint-preview-single {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.codex-toolbar__endpoint-preview-dual {
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.codex-toolbar__selection-preview--from,
+.codex-toolbar__selection-preview--to {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.codex-toolbar__endpoint-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(180, 230, 255, 0.9);
+    line-height: 1;
+}
+
+.codex-toolbar__selection-preview-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 200, 255, 0.45);
+    background: rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.codex-toolbar__selection-preview--empty .codex-toolbar__selection-preview-thumb::after {
+    content: '?';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+.codex-toolbar__selection-preview--empty .codex-toolbar__selection-preview-img {
+    opacity: 0;
+}
+
+.codex-toolbar__selection-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    pointer-events: none;
+}
+
+.codex-toolbar__edge-reverse {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.codex-toolbar__edge-reverse:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__edge-reverse:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__insert-break {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.codex-toolbar__insert-break:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__insert-break:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__merge-junctions {
+    flex-shrink: 0;
+    min-width: 52px;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 200, 255, 0.5);
+    background: rgba(30, 50, 80, 0.65);
+    color: rgba(200, 235, 255, 0.95);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.codex-toolbar__merge-junctions:hover:not(:disabled) {
+    background: rgba(45, 75, 115, 0.85);
+    border-color: rgba(140, 210, 255, 0.65);
+}
+
+.codex-toolbar__merge-junctions:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.codex-toolbar__mode-btn {
+    flex: 1;
+    min-width: 0;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+}
+
+.codex-toolbar__mode-btn--active {
+    border-color: rgba(var(--accent-primary-rgb), 0.65);
+    background: rgba(var(--accent-primary-rgb), 0.28);
+    color: #fff;
+}
+
+.codex-toolbar__mode-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.codex-toolbar__row--select-all {
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.codex-toolbar__row--select-all .codex-toolbar__select-all,
+.codex-toolbar__row--select-all .codex-toolbar__delete-selected {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.codex-toolbar__select-all {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+}
+
+.codex-toolbar__select-all:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.codex-toolbar__select-all:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__delete-selected {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.35);
+    color: rgba(254, 226, 226, 0.95);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.codex-toolbar__delete-selected:hover:not(:disabled) {
+    background: rgba(153, 27, 27, 0.45);
+    border-color: rgba(252, 165, 165, 0.55);
+}
+
+.codex-toolbar__delete-selected:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__row--import-export {
+    width: 100%;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 8px;
+}
+
+.codex-toolbar__import-export-btn {
+    /*
+     * Four buttons (Check vs archives / Export JSON / Import JSON / Clear all) lay out as a 2×2
+     * grid so "Check vs archives" stays readable instead of collapsing to ellipsis.
+     */
+    flex: 1 1 calc(50% - 4px);
+    min-width: 140px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.codex-toolbar__import-export-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(140, 210, 255, 0.45);
+}
+
+/* Clear all is destructive — match .codex-toolbar__delete-selected red palette. */
+.codex-toolbar__import-export-btn.codex-toolbar__clear-all {
+    border-color: rgba(248, 113, 113, 0.45);
+    background: rgba(127, 29, 29, 0.35);
+    color: rgba(254, 226, 226, 0.95);
+}
+
+.codex-toolbar__import-export-btn.codex-toolbar__clear-all:hover:not(:disabled) {
+    background: rgba(153, 27, 27, 0.45);
+    border-color: rgba(252, 165, 165, 0.55);
+}
+
+.codex-toolbar__import-export-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/*
+ * Node bg color group: forced onto its own line below the three import/export buttons via
+ * flex-basis 100% on the wrap grid. Keeps label + color picker + hex input together.
+ */
+.codex-toolbar__bg-color-group {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+    min-width: 0;
+}
+
+.codex-toolbar__bg-color-label {
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(220, 230, 255, 0.92);
+    user-select: none;
+}
+
+.codex-toolbar__bg-color-input {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.codex-toolbar__bg-color-hex {
+    flex: 1 1 auto;
+    min-width: 0;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.94);
+    font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    outline: none;
+}
+
+.codex-toolbar__bg-color-hex:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-toolbar__bg-color-hex::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.codex-bio-sync-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.55);
+    box-sizing: border-box;
+}
+
+.codex-bio-sync-preview-card {
+    max-width: min(960px, 100%);
+    max-height: min(86vh, 100%);
+    overflow: auto;
+    padding: 20px 22px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--bg-secondary) 92%, #000 8%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.codex-bio-sync-preview__title {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.codex-bio-sync-preview__summary {
+    margin: 0 0 8px;
+}
+
+.codex-bio-sync-preview__hint {
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.codex-bio-sync-preview__col {
+    margin-bottom: 14px;
+}
+
+.codex-bio-sync-preview__col h4 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(200, 235, 255, 0.88);
+}
+
+.codex-bio-sync-preview__badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(var(--accent-primary-rgb), 0.35);
+}
+
+.codex-bio-sync-preview__pre {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 220px;
+    overflow: auto;
+}
+
+.codex-bio-sync-preview__actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.codex-bio-sync-preview__close {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(140, 210, 255, 0.45);
+    background: rgba(30, 50, 80, 0.75);
+    color: rgba(230, 245, 255, 0.95);
+    cursor: pointer;
+}
+
+.codex-bio-sync-preview__close:hover {
+    background: rgba(45, 75, 115, 0.9);
+}
+
+.codex-toolbar__scale-btn {
+    width: 48px;
+    height: 44px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+}
+
+.codex-toolbar__scale-btn:hover:not(:disabled) {
+    background: rgba(255, 235, 59, 0.15);
+    border-color: rgba(255, 235, 59, 0.45);
+}
+
+.codex-toolbar__scale-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__scale-input {
+    box-sizing: border-box;
+    width: 4.5rem;
+    min-width: 0;
+    height: 44px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.codex-toolbar__scale-input::-webkit-outer-spin-button,
+.codex-toolbar__scale-input::-webkit-inner-spin-button {

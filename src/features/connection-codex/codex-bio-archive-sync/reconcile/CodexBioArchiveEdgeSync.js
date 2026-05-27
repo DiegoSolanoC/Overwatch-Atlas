@@ -38,9 +38,9 @@ export function unregisterCodexBioArchiveEdgeSyncRuntime() {
 }
 
 const BIO_ARCHIVE_FILES = Object.freeze([
-    ['heroes', 'src/data/story-archive-heroes.json'],
-    ['factions', 'src/data/story-archive-factions.json'],
-    ['npcs', 'src/data/story-archive-npcs.json']
+    ['heroes', 'src/data/story-archive/heroes.json'],
+    ['factions', 'src/data/story-archive/factions.json'],
+    ['npcs', 'src/data/story-archive/npcs.json']
 ]);
 
 /**

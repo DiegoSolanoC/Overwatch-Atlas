@@ -1,6 +1,6 @@
 /**
  * Event creation helper (Node CLI).
- * Looks up city coordinates in src/data/locations.json and can append an event entry.
+ * Looks up city coordinates in src/data/worldview/locations.json and can append an event entry.
  *
  * Usage:
  *   node scripts/create-event.cjs
@@ -9,9 +9,9 @@
 const fs = require('fs');
 const path = require('path');
 
-/** Repo src/data/locations.json (this file lives in scripts/) */
+const { locations: LOCATIONS_JSON } = require('./data-paths.cjs');
 function locationsJsonPath() {
-    return path.join(__dirname, '..', 'src', 'data', 'locations.json');
+    return LOCATIONS_JSON;
 }
 
 /**

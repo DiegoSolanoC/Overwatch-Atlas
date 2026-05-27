@@ -1,15 +1,17 @@
 /**
  * Reorder the hero / faction / NPC filter lists so they match the Codex story
- * archive (`src/data/story-archive-*.json` -> `events[].name`). Items only in
- * `manifest.json` (and missing from the archive) fall back to a locale-aware
+ * archive (`src/data/story-archive/*.json` -> `events[].name`). Items only in
+ * platform manifest (and missing from the archive) fall back to a locale-aware
  * sort and are appended after the archive-ordered block, so a new manifest
  * entry without a story still appears in the panel.
  */
 
+import { FILES } from '../../../../data/registry.js';
+
 const ARCHIVE_URLS = {
-    heroes: 'src/data/story-archive-heroes.json',
-    factions: 'src/data/story-archive-factions.json',
-    npcs: 'src/data/story-archive-npcs.json'
+    heroes: FILES.storyArchive.heroes,
+    factions: FILES.storyArchive.factions,
+    npcs: FILES.storyArchive.npcs
 };
 
 export function extractArchiveOrderFromJson(json) {

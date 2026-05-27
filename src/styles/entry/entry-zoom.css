@@ -1,0 +1,145 @@
+/* Zoom Controls — bottom-right row; same right inset as .dock-globe-rail--right / Events strip (--dock-globe-rail-edge-inset 42px) */
+.zoom-controls {
+    position: fixed;
+    left: auto;
+    right: max(42px, env(safe-area-inset-right));
+    top: auto;
+    transform: none;
+    /* Match .dock-globe-rail--left / --right vertical position */
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + var(--dock-globe-rail-gap, 10px)
+        + var(--dock-rail-lift-into-border, 0px)
+        + var(--dock-rail-side-extra, 30px)
+    );
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    z-index: 150; /* Above globe but below event slide (200) and overlays */
+    pointer-events: none; /* Allow clicks to pass through container */
+    transition:
+        opacity 0.3s ease,
+        bottom var(--pagination-dock-transition-duration, 0.42s)
+            var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+}
+
+.zoom-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* Uses palette tokens (blue default; gray / crimson / nulled from body.color-palette-*) */
+    background: var(--btn-primary-bg);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto; /* Enable clicks on buttons */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    user-select: none;
+    line-height: 1;
+}
+
+.zoom-btn:hover:not(:disabled) {
+    background: var(--btn-primary-bg-hover);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.zoom-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.zoom-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Horizontal row: zoom out → reset → zoom in (left to right) */
+.zoom-out-btn {
+    order: 1;
+}
+
+.zoom-reset-btn {
+    order: 2;
+}
+
+.zoom-in-btn {
+    order: 3;
+}
+
+/* Hide zoom controls initially (bottom transition defined on base .zoom-controls) */
+.zoom-controls:not(.visible) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Ensure globe UI stays behind loading overlay */
+.loading-overlay.active ~ #app-container .dev-sun-yaw-panel,
+.loading-overlay.active ~ #app-container .dock-globe-rail,
+.loading-overlay.active ~ #app-container .test-container,
+.loading-overlay.active ~ #app-container #zoomControls,
+.loading-overlay.active ~ #app-container .zoom-btn,
+.loading-overlay.active ~ #globe-container .dev-sun-yaw-panel,
+.loading-overlay.active ~ #globe-container .dock-globe-rail,
+.loading-overlay.active ~ #globe-container #zoomControls,
+.loading-overlay.active ~ #globe-container .zoom-btn,
+body:has(.loading-overlay.active) .dev-sun-yaw-panel,
+body:has(.loading-overlay.active) .dock-globe-rail,
+/* Hide all globe UI when loading overlay is active */
+body:has(.loading-overlay.active) .dev-sun-yaw-panel,
+body:has(.loading-overlay.active) .dock-globe-rail,
+body:has(.loading-overlay.active) .test-container,
+body:has(.loading-overlay.active) #zoomControls,
+body:has(.loading-overlay.active) .zoom-btn,
+body:has(.loading-overlay.active) .globe-control-btn,
+body:has(.loading-overlay.active) .time-control-slider {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Show zoom controls when visible */
+.zoom-controls.visible {
+    opacity: 1;
+    pointer-events: auto; /* Buttons are clickable */
+}
+
+/* Mobile: same bottom band as dock rails; compact row on the right */
+@media (max-width: 768px) {
+    .zoom-controls {
+        left: auto !important;
+        right: max(42px, env(safe-area-inset-right)) !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: row !important;
+        bottom: calc(var(--footer-height, 65px) + 24px) !important;
+    }
+
+    body:has(#paginationDock) .zoom-controls {
+        bottom: calc(
+                var(--footer-height, 65px)
+                + var(--pagination-dock-height, 240px)
+                + var(--dock-globe-rail-gap, 10px)
+                + var(--dock-rail-lift-into-border, 0px)
+                + var(--dock-rail-side-extra, 30px)
+            )
+            !important;
+    }
+
+    .zoom-btn {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 26px !important;
+    }
+}
+

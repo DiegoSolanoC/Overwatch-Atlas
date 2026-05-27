@@ -106,7 +106,7 @@ export function persistEvents(dataService) {
             .then((data) => {
                 if (isMain) {
                     dataService.updateStatus(
-                        `✓ Saved to src/data/events.json (${data?.eventsCount ?? dataService.events.length} events)`,
+                        `✓ Saved timeline (${data?.eventsCount ?? dataService.events.length} events)`,
                         'success'
                     );
                 } else {
@@ -118,7 +118,7 @@ export function persistEvents(dataService) {
                 }
             })
             .catch((e) => {
-                const target = isMain ? 'src/data/events.json' : dataService._getArchiveFilePath().replace(/^src\/data\//, '');
+                const target = isMain ? dataService._getArchiveFilePath() : dataService._getArchiveFilePath();
                 console.warn(`EventDataService: Failed to persist ${target} via dev API:`, e);
                 dataService.updateStatus(
                     `Saved locally, but failed to write ${target} (${e?.message || 'API error'}). ` +
@@ -171,7 +171,7 @@ export function persistStoryDockTimelineFromSnapshot(dataService) {
                 );
             })
             .catch((e) => {
-                console.warn('EventDataService: Failed to persist dock timeline to src/data/events.json', e);
+                console.warn('EventDataService: Failed to persist dock timeline via dev API', e);
             });
     } catch (e) {
         /* ignore */

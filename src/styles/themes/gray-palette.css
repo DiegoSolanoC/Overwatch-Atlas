@@ -500,35 +500,6 @@ body.color-palette-gray .event-image-toggle-btn:hover {
     background: #ff8833;
 }
 
-/* Event Edit Modal */
-body.color-palette-gray .event-edit-modal-content {
-    background: var(--bg-secondary);
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.5);
-}
-
-body.color-palette-gray .event-edit-modal-header {
-    border-bottom: 2px solid rgba(255, 102, 0, 0.3);
-}
-
-body.color-palette-gray .event-edit-modal-header h3 {
-    color: #ff6600;
-}
-
-body.color-palette-gray .event-edit-modal-close:hover {
-    background: rgba(255, 102, 0, 0.3); /* Orange for gray palette */
-    border-color: rgba(255, 102, 0, 0.6);
-    color: #ff6600;
-}
-
-body.color-palette-gray .event-edit-input:focus,
-body.color-palette-gray .event-edit-textarea:focus {
-    border-color: var(--accent-primary);
-}
-
-body.color-palette-gray .event-edit-actions {
-    border-top: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
-}
-
 body.color-palette-gray .lookup-city-btn {
     background: rgba(255, 102, 0, 0.3); /* Orange for gray palette */
     border: 1px solid rgba(255, 102, 0, 0.6);

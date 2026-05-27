@@ -1,0 +1,291 @@
+{
+  "events": [
+    {
+      "name": "Overwatch",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Major Player"
+    },
+    {
+      "name": "Talon",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Major Player"
+    },
+    {
+      "name": "Null Sector",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Major Player"
+    },
+    {
+      "name": "The Chernobog Conspiracy",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Major Player"
+    },
+    {
+      "name": "IJC",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Major Player"
+    },
+    {
+      "name": "Deadlock Rebels",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Shimada Clan",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Hashimoto Clan",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Yokai Gang",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Junker Monarchy",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "The Phreaks",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "La Coterie",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Los Muertos",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "The Sombra Collective",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Crusader Initiative",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Inti Warriors",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Volskaya Industries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Caribbean Coalition",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Deep Sea Raiders",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Colloseo Gladiatori",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Helix Securities",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "M.E.K.A Squad",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "The Gwishin",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "The Anubis Omnic Crisis",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Military Initiatives"
+    },
+    {
+      "name": "Omnica Corporation",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Ironclad Guild",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Lucheng Interstellar",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Oasis Ministries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Pacific Energy Solutions",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "The Martins Collective",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Shambali Order",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Lumérico Incorporated",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Heliotech Industries",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Vishkar Corporation",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Wuxing University",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Yamagami Blades",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Wayfinder Society",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Research Institutions"
+    },
+    {
+      "name": "Blackwatch",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Overwatch Branches"
+    },
+    {
+      "name": "Ecopoints",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Overwatch Branches"
+    },
+    {
+      "name": "Search & Rescue",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": "Overwatch Branches"
+    },
+    {
+      "name": "Talon Empire",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "factionType": ""
+    }
+  ]
+}

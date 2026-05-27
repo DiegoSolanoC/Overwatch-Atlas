@@ -1,59 +1,52 @@
 /* ========================================
-   CSS IMPORTS - Organized by Responsibility
+   CSS IMPORTS — feature-aligned layout
    (Entry file: linked from index.html as src/styles/app.css)
    ======================================== */
 
-/* Design Tokens & Variables */
-@import url('variables.css?v=20');
+/* Foundation */
+@import url('foundation/variables.css?v=21');
+@import url('foundation/base.css?v=10');
+@import url('foundation/animations.css?v=10');
 
-/* Base & Reset Styles */
-@import url('base.css?v=9');
+/* App shell */
+@import url('shell/layout.css?v=18');
+@import url('features/worldview/globe-map-launch-hub.css?v=4');
 
-/* Layout Components */
-@import url('layout.css?v=17');
-@import url('components/globe-map-launch-hub.css?v=3');
+/* Interactive Worldview + Connection Codex */
+@import url('features/worldview/globe.css?v=54');
+@import url('features/connection-codex/codex.css?v=1');
+@import url('features/worldview/map-2d-lite.css?v=13');
 
-/* Main Content & Globe */
-@import url('components/globe.css?v=53');
-@import url('components/map-2d-lite.css?v=12');
+/* Color palettes */
+@import url('themes/gray-palette.css?v=15');
+@import url('themes/crimson-palette.css?v=15');
+@import url('themes/nulled-palette.css?v=15');
 
-/* Gray Palette Theme Overrides */
-@import url('themes/gray-palette.css?v=14');
+/* Mobile */
+@import url('mobile.css?v=23');
 
-/* Crimson Palette Theme Overrides */
-@import url('themes/crimson-palette.css?v=14');
+/* Shared UI */
+@import url('ui/modals.css?v=9');
+@import url('ui/external-link-confirm.css?v=9');
 
-/* Nulled (purple) Palette Theme Overrides */
-@import url('themes/nulled-palette.css?v=14');
+/* Story */
+@import url('features/story/hero.css?v=9');
+@import url('features/story/story-viewer.css?v=62');
 
-/* Animations */
-@import url('animations.css?v=9');
+/* Event system */
+@import url('features/event-system/variants.css?v=9');
+@import url('features/event-system/event-filters.css?v=12');
+@import url('features/event-system/event-sources.css?v=9');
+@import url('features/event-system/event-buttons.css?v=14');
+@import url('features/event-system/event-image-overlay.css?v=11');
+@import url('features/event-system/event-item.css?v=51');
+@import url('features/event-system/event-pagination.css?v=123');
+@import url('features/event-system/news-ticker.css?v=10');
 
-/* Mobile Responsive Styles */
-@import url('mobile.css?v=22');
-
-/* Modals & Forms */
-@import url('components/modals.css?v=8');
-@import url('components/external-link-confirm.css?v=8');
-
-/* Hero Section */
-@import url('components/hero.css?v=8');
-
-/* Event Components */
-@import url('components/variants.css?v=8');
-@import url('components/event-filters.css?v=11');
-@import url('components/event-sources.css?v=8');
-@import url('components/event-buttons.css?v=13');
-@import url('components/event-image-overlay.css?v=10');
-@import url('components/event-item.css?v=50');
-@import url('components/event-pagination.css?v=122');
-@import url('components/news-ticker.css?v=9');
-
-/* Panel Components */
-@import url('components/panels/event-slide.css?v=30');
-@import url('components/panels/filters.css?v=11');
-@import url('components/panels/music.css?v=22');
-@import url('components/panels/events-manage.css?v=27');
-@import url('components/story-viewer.css?v=61');
-@import url('components/panels/panel-pattern-overlay.css?v=3');
-@import url('components/panels/panel-resize.css?v=24');
+/* Event system panels */
+@import url('features/event-system/panels/event-slide.css?v=31');
+@import url('features/event-system/panels/filters.css?v=12');
+@import url('features/music/panels/music.css?v=23');
+@import url('features/event-system/panels/events-manage.css?v=28');
+@import url('features/event-system/panels/panel-pattern-overlay.css?v=4');
+@import url('features/event-system/panels/panel-resize.css?v=25');

@@ -451,34 +451,6 @@ body.color-palette-nulled .event-image-toggle-btn:hover {
     background: #d4bfff;
 }
 
-body.color-palette-nulled .event-edit-modal-content {
-    background: var(--bg-secondary);
-    border: 2px solid rgba(var(--accent-primary-rgb), 0.5);
-}
-
-body.color-palette-nulled .event-edit-modal-header {
-    border-bottom: 2px solid rgba(179, 136, 255, 0.3);
-}
-
-body.color-palette-nulled .event-edit-modal-header h3 {
-    color: #b388ff;
-}
-
-body.color-palette-nulled .event-edit-modal-close:hover {
-    background: rgba(179, 136, 255, 0.28);
-    border-color: rgba(179, 136, 255, 0.6);
-    color: #b388ff;
-}
-
-body.color-palette-nulled .event-edit-input:focus,
-body.color-palette-nulled .event-edit-textarea:focus {
-    border-color: var(--accent-primary);
-}
-
-body.color-palette-nulled .event-edit-actions {
-    border-top: 2px solid rgba(var(--accent-primary-rgb), var(--opacity-light));
-}
-
 body.color-palette-nulled .lookup-city-btn {
     background: rgba(179, 136, 255, 0.28);
     border: 1px solid rgba(179, 136, 255, 0.6);

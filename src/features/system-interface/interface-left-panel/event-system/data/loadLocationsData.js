@@ -1,8 +1,8 @@
 /**
  * Load three static dataset files in parallel:
- *   - `src/data/locations.json`            (cities, fictionalCities, airports, seaports)
- *   - `src/data/location-display-names.json` (`displayNames` lookup)
- *   - `src/data/manifest.json`             (heroes, factions, npcs)
+ *   - worldview/locations.json
+ *   - worldview/location-display-names.json
+ *   - platform/manifest.json
  * Populates the corresponding fields on the EventDataService instance.
  *
  * Each fetch has a 10-second timeout via `fetchJsonWithTimeout` so a slow file
@@ -10,6 +10,7 @@
  */
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
+import { FILES } from '../../../../../data/registry.js';
 
 /** @param {import('./EventDataService.js').default} dataService */
 export async function loadLocationsData(dataService) {
@@ -18,15 +19,15 @@ export async function loadLocationsData(dataService) {
 
     dataService.updateStatus('EventDataService: Fetching locations.json...', 'info');
     const [locationsResult, displayNamesResult, manifestResult] = await Promise.allSettled([
-        fetchJsonWithTimeout('src/data/locations.json').then((data) => {
+        fetchJsonWithTimeout(FILES.worldview.locations).then((data) => {
             dataService.updateStatus('EventDataService: locations.json response received, parsing...', 'info');
             return data;
         }),
-        fetchJsonWithTimeout('src/data/location-display-names.json').then((data) => {
+        fetchJsonWithTimeout(FILES.worldview.locationDisplayNames).then((data) => {
             dataService.updateStatus('EventDataService: location-display-names.json response received, parsing...', 'info');
             return data;
         }),
-        fetchJsonWithTimeout('src/data/manifest.json').then((data) => {
+        fetchJsonWithTimeout(FILES.platform.manifest).then((data) => {
             dataService.updateStatus('EventDataService: manifest.json response received, parsing...', 'info');
             return data;
         }),

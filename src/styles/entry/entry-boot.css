@@ -1,0 +1,163 @@
+/* ========================================
+   ENTRY LAYOUT - index.html (timeline app)
+   Shared: main#content, test-container, globe, loading overlay,
+   main menu, zoom controls. Extracted from inline <style> for DRY.
+   ======================================== */
+
+/* Ensure main element properly contains containers */
+main#content {
+    position: relative;
+    /* Flex sibling of side panels: explicit 0 so panels (z-index 540) stack above the map + image overlay */
+    z-index: 0;
+}
+
+/* Test container styling - for Menu Components */
+.test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Lower than buttons */
+    pointer-events: none; /* Allow clicks to pass through to buttons */
+}
+
+/* Allow pointer events on test-container children */
+.test-container > * {
+    pointer-events: auto;
+}
+
+/* Globe container should take full space when visible */
+#globe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Lift canvas above bottom pagination strip when timeline is active but dock is not in use */
+body:has(footer.timeline-loaded):not(:has(#paginationDock)) #globe-container {
+    bottom: 108px;
+}
+
+/*
+ * Pagination dock sits below .layout-container; flex layout clears the dock — no extra bottom inset.
+ */
+body:has(footer.timeline-loaded):has(#paginationDock) #globe-container {
+    bottom: 0;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000; /* Fully black (100% opacity) */
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    /* Block interaction while visible; otherwise clicks hit the frozen globe underneath. */
+    pointer-events: auto;
+}
+
+/* ----------------------------------------------------------------------
+ * Boot mask
+ * ---------------------------------------------------------------------- */
+/* Until the Event System Load Out has finished mounting, hide every
+ * direct body child except the loading overlay. Without this, deferred
+ * mounts (pagination dock, filter panel chrome, dock rails, side-panel
+ * resize handles, etc.) and CSS transitions (height / flex-basis on the
+ * dock, panel-resize trapezoids) visibly cascade in during the overlay's
+ * 500ms fade, producing a "menu first, then dock, then panels" pop-in
+ * sequence. With the mask in place every layout/paint that happens
+ * during boot stays invisible behind the still-opaque overlay; once
+ * `body.app-booted` is set (immediately before `hideLoadingOverlayElement`
+ * runs in `AppInitializer.js`) every child becomes visible at once and
+ * the overlay then fades to reveal the final composed UI. */
+body:not(.app-booted) > *:not(.loading-overlay) {
+    visibility: hidden !important;
+}
+
+.loading-status-overlay {
+    background: transparent; /* Backgroundless */
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-gif {
+    /* Larger, responsive loading graphic */
+    width: clamp(260px, 40vw, 460px);
+    height: auto;
+    max-width: 460px;
+    max-height: 460px;
+    margin-bottom: 20px;
+}
+
+.loading-status-overlay h3 {
+    margin-top: 0;
+    color: #2196F3;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.loading-progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.loading-progress-bar {
+    height: 100%;
+    background: #ffffff;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.loading-status-overlay #overlayStatusContent {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-status-overlay .test-status-item {
+    text-align: center;
+    padding: 10px;
+    background: transparent;
+}
+
+/* Main menu button layout - for Menu Components */

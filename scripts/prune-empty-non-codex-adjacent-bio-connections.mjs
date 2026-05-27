@@ -9,16 +9,15 @@
  * Run: node scripts/prune-empty-non-codex-adjacent-bio-connections.mjs
  */
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { createRequire } from 'node:module';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.join(__dirname, '..');
-const codexPath = path.join(root, 'src', 'data', 'codex-labels.json');
+const require = createRequire(import.meta.url);
+const dp = require('./data-paths.cjs');
+const codexPath = dp.codexLabels;
 const archives = {
-    heroes: path.join(root, 'src', 'data', 'story-archive-heroes.json'),
-    factions: path.join(root, 'src', 'data', 'story-archive-factions.json'),
-    npcs: path.join(root, 'src', 'data', 'story-archive-npcs.json')
+    heroes: dp.storyArchive.heroes,
+    factions: dp.storyArchive.factions,
+    npcs: dp.storyArchive.npcs,
 };
 
 function readJson(p) {

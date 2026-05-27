@@ -5,13 +5,15 @@
  *   • Codex mode   → `window.CodexCanvasService.{zoomIn,resetView,zoomOut}`
  *   • Globe mode   → `window.globeController.interactionController.{zoomIn,resetToDefault,zoomOut}`
  *
- * Visibility tracks two signals: the `globe-container.loaded` class plus
- * the `.test-container` (menu) display state. Whenever either changes,
- * the visibility is re-evaluated.
+ * Visibility: shown only in Codex or loaded Worldview (globe/map), not on the main
+ * menu or Data Archive. Archive is detected via persisted mode + story viewer shell.
  *
  * Lives in `Interactive-Worldview/worldview-controls-ui/runtime/` because the controls are owned by the
  * Interactive-Worldview/codex modes — AppInitializer only kicks the setup off at boot time.
  */
+
+import { getCurrentModeOrMenu } from '../../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
+import { eventsPanelMountedInStoryArchive } from '../../../Data-Archive/archive-support/ArchiveEnvironmentChecks.js';
 
 let zoomControlsLifecycleInitialized = false;
 let waitingForGlobeReady = false;
@@ -51,6 +53,14 @@ function isCodexModeActive() {
     return typeof document !== 'undefined' && document.body.classList.contains('codex-mode-active');
 }
 
+/** Data Archive / story viewer — zoom is for panning the globe or codex board only. */
+function isDataArchiveActive() {
+    if (getCurrentModeOrMenu() === 'biography') return true;
+    const story = document.getElementById('storyViewerContainer');
+    if (story?.classList.contains('active')) return true;
+    return eventsPanelMountedInStoryArchive();
+}
+
 function getZoomControlsElements() {
     return {
         zoomInBtn: document.getElementById('zoomInBtn'),
@@ -77,7 +87,9 @@ function buildVisibilityUpdater(zoomControls) {
         const globeLoaded = globeContainer && globeContainer.classList.contains('loaded');
         const codexActive = isCodexModeActive();
 
-        if (codexActive || (globeLoaded && !isMenuVisible())) {
+        if (isDataArchiveActive()) {
+            zoomControls.classList.remove('visible');
+        } else if (codexActive || (globeLoaded && !isMenuVisible())) {
             zoomControls.classList.add('visible');
         } else {
             zoomControls.classList.remove('visible');
@@ -134,6 +146,10 @@ function observeVisibilityChanges(updateZoomControlsVisibility) {
     }
     if (document.body) {
         observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+    const storyContainer = document.getElementById('storyViewerContainer');
+    if (storyContainer) {
+        observer.observe(storyContainer, { attributes: true, attributeFilter: ['class', 'style'] });
     }
     window.addEventListener('appmodechange', updateZoomControlsVisibility);
 

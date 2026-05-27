@@ -3,25 +3,14 @@
  * Event Manager list ('story' | 'heroes' | 'factions' | 'npcs' | 'locations') and the small
  * helpers that resolve them per-source.
  *
- * The Event Manager swaps buckets at runtime when the user toggles between the story
- * timeline and the satellite archives (heroes / factions / NPCs / locations); each bucket
- * has its own:
- *   - file path under `src/data/...`
- *   - localStorage key for the "edits in progress" mirror
- *
- * `setArchiveSourceOn(dataService, sourceId)` is the only mutator that touches the active
- * bucket on a live `EventDataService` instance; it also snapshots the current main-timeline
- * rows into `_storyDockEventsSnapshot` so the pagination dock can keep showing story rows
- * even after the user switches to a satellite archive.
+ * File paths: `src/data/registry.js` (feature folders under src/data/).
  */
 
-export const ARCHIVE_FILE_PATHS = {
-    story: 'src/data/events.json',
-    heroes: 'src/data/story-archive-heroes.json',
-    factions: 'src/data/story-archive-factions.json',
-    npcs: 'src/data/story-archive-npcs.json',
-    locations: 'src/data/story-archive-locations.json',
-};
+import {
+    ARCHIVE_FILE_PATHS as REGISTRY_ARCHIVE_PATHS,
+} from '../../../../../data/registry.js';
+
+export const ARCHIVE_FILE_PATHS = REGISTRY_ARCHIVE_PATHS;
 
 export const ARCHIVE_LOCALSTORAGE_KEYS = {
     story: 'timelineEvents',
@@ -44,10 +33,6 @@ export function getArchiveSource(dataService) {
 }
 
 /**
- * Atomic source swap: snapshot the main timeline before leaving, then flip
- * `archiveSource`. The dock snapshot is also nulled so a subsequent
- * `getStoryTimelineEventsForDock` re-reads from localStorage on demand.
- *
  * @param {any} dataService
  * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} sourceId
  */

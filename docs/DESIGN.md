@@ -278,9 +278,6 @@ Overwatch and related marks are **Blizzard Entertainment**. This project is a **
 
 - [`README.md`](../README.md) — setup, scripts, GitHub Pages checklist overview.
 - [`GITHUB_PAGES_CHECKLIST.md`](GITHUB_PAGES_CHECKLIST.md) — deploy verification.
-- [`LAYOUT_SIZES.md`](LAYOUT_SIZES.md) — layout constants.
-- [`REFACTOR_PHASES.md`](REFACTOR_PHASES.md) — refactor roadmap and phase status.
-- [`TIMELINE_WORLDVIEW_CONTRACT.md`](TIMELINE_WORLDVIEW_CONTRACT.md) — timeline ↔ globe/map marker ownership (post–Event System migration).
-- [`deslop.md`](deslop.md) — optional “deslop” / code-review command reference (for AI tooling; not required to run the app).
+- [`deslop.md`](deslop.md) — refactoring guidelines and code-review habits (for contributors and AI tooling).
 
 When this document and the README disagree on **deployment URLs** or **feature flags**, prefer **README** for process and **this file** for **architecture and UX intent**, and reconcile both when behavior changes.

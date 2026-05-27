@@ -1,6 +1,6 @@
 /**
  * Main-timeline load (story archive).
- *   1. Try `src/data/events.json` (source of truth) with a cache-busted 10s timeout.
+ *   1. Try `src/data/event-system/timeline-events.json` (source of truth) with a cache-busted 10s timeout.
  *   2. Compare with localStorage `timelineEvents`.
  *
  * Selection rules:
@@ -16,6 +16,7 @@
  */
 
 import { fetchJsonWithTimeout } from "./fetchWithTimeout.js";
+import { FILES } from "../../../../../data/registry.js";
 
 // ---------------------------------------------------------------------------
 // Private helper
@@ -78,7 +79,7 @@ export async function loadMainTimelineEvents(dataService) {
   // 1. Fetch events.json
   // ------------------------------------------------------------------
   try {
-    const data = await fetchJsonWithTimeout("src/data/events.json");
+    const data = await fetchJsonWithTimeout(FILES.eventSystem.timelineEvents);
     if (data && Array.isArray(data.events) && data.events.length > 0) {
       fileEvents = data.events;
       dataService.updateStatus(
@@ -97,7 +98,7 @@ export async function loadMainTimelineEvents(dataService) {
     }
   } catch (error) {
     console.error(
-      "EventDataService: ✗ CRITICAL - Could not load from src/data/events.json:",
+      `EventDataService: ✗ CRITICAL - Could not load from ${FILES.eventSystem.timelineEvents}:`,
       error,
     );
     dataService.updateStatus(

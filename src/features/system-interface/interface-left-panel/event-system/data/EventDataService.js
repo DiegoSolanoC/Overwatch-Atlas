@@ -1,6 +1,6 @@
 /**
  * EventDataService — in-memory store for events + location datasets, and orchestrator for
- * loading / saving against `src/data/events.json` (story) or `src/data/story-archive-*.json`
+ * loading / saving against `src/data/event-system/timeline-events.json` (story) or `src/data/story-archive/*.json`
  * (heroes / factions / npcs / locations satellites).
  *
  * Behaviour is split across sibling modules in this folder:

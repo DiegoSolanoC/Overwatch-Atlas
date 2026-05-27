@@ -1,5 +1,5 @@
 /**
- * Fetch `src/data/manifest.json`, reorder its `heroes` / `factions` / `npcs`
+ * Fetch `src/data/platform/manifest.json`, reorder its `heroes` / `factions` / `npcs`
  * lists by the Codex story archive, and kick off image preloading.
  *
  * Cache-busting headers are aggressive (`Cache-Control: no-store` + query
@@ -16,7 +16,7 @@ import { applyStoryArchiveOrderFromNetwork } from './storyArchiveFilterOrder.js'
 export async function loadFilterManifest(createFilterButtons, updateFilterCounts, preloadImages) {
     try {
         const cacheBuster = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        const response = await fetch(`src/data/manifest.json?v=${cacheBuster}`, {
+        const response = await fetch(`src/data/platform/manifest.json?v=${cacheBuster}`, {
             cache: 'no-store',
             headers: {
                 'Cache-Control': 'no-cache, no-store, must-revalidate',

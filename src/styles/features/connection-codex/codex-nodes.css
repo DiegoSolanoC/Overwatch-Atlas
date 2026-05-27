@@ -1,0 +1,1060 @@
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.codex-toolbar__scale-input:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-toolbar__scale-input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.codex-toolbar__scale-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 600;
+}
+
+/* Codex pan/zoom uses the same floating #zoomControls as the globe (entry.css .zoom-btn). */
+
+.codex-toolbar__save {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
+    background: rgba(var(--accent-primary-rgb), 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.codex-toolbar__save:hover:not(:disabled) {
+    background: rgba(var(--accent-primary-rgb), 0.32);
+}
+
+.codex-toolbar__save:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.codex-picker {
+    position: absolute;
+    z-index: 60;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 94%, #000 6%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.codex-picker-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+    outline: none;
+}
+
+.codex-picker-input:focus {
+    border-color: rgba(var(--accent-primary-rgb), 0.55);
+}
+
+.codex-picker__row {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.codex-picker__row .codex-picker-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.codex-picker__junction {
+    flex-shrink: 0;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(196, 181, 253, 0.55);
+    background: rgba(147, 51, 234, 0.22);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.codex-picker__junction:hover {
+    background: rgba(147, 51, 234, 0.35);
+}
+
+/* Suggestions sit under the picker input (avoids body scale / fixed positioning offset vs the text box). */
+.codex-picker .filter-autocomplete-list--codex-picker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    width: auto !important;
+    min-width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    z-index: 25;
+}
+
+/* Toggle off via toolbar: hide debug overlays (waypoints, angles, coords, Break picker); data unchanged. */
+.codex--debug-ui-hidden .codex-node--junction {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.codex--debug-ui-hidden .codex-picker__junction {
+    display: none !important;
+}
+
+.codex--debug-ui-hidden .codex-node__coord-label {
+    visibility: hidden;
+}
+
+.codex--debug-ui-hidden .codex-edge-degree-labels {
+    display: none;
+}
+
+/* View Mode: hide all editing controls, make read-only */
+.codex--view-mode .codex-toolbar,
+.codex--view-mode .codex-visual-panel,
+.codex--view-mode .codex-picker {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.codex--view-mode .codex-node {
+    cursor: default !important;
+}
+
+.codex--view-mode .codex-node--selected {
+    outline: none !important;
+}
+
+/* View mode: edge hits must receive pointer events (archive click + hover). Do not use pointer-events: none here. */
+.codex--view-mode .codex-edge-hit {
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
+.codex-edge-segment-group .codex-edge-segment {
+    transition:
+        stroke 0.14s ease,
+        stroke-width 0.14s ease;
+}
+
+.codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment {
+    stroke: #38bdf8 !important;
+    stroke-width: 6px !important;
+}
+
+/* Codex Mode Toggle Button - always visible, styled like globe-control-btn */
+.codex-mode-toggle-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 100;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+}
+
+.codex-mode-toggle-btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.3);
+    border-color: rgba(var(--accent-primary-rgb), 0.7);
+}
+
+.codex-mode-toggle-btn:active {
+    transform: scale(0.96);
+}
+
+.codex-mode-toggle-label {
+    white-space: nowrap;
+}
+
+.codex-toolbar__junction-pref-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    user-select: none;
+}
+
+.codex-toolbar__junction-toggle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: rgba(196, 181, 253, 0.95);
+}
+
+.codex-toolbar__mode-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    user-select: none;
+}
+
+.codex-toolbar__mode-toggle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: rgba(var(--accent-primary-rgb), 0.95);
+}
+
+/* Right dock: cord/packet appearance (separate from left .codex-toolbar). */
+.codex-visual-panel {
+    position: absolute;
+    /* Match .codex-toolbar inset: clear event-slide side trapezoid border art. */
+    right: max(64px, env(safe-area-inset-right, 0px));
+    bottom: 16px;
+    z-index: 80;
+    width: min(320px, calc(100vw - 152px));
+    max-height: min(72vh, calc(100% - 32px));
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-secondary) 88%, #000 12%);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+    transition: bottom var(--pagination-dock-transition-duration, 0.42s)
+        var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+}
+
+/* Lift above footer + pagination dock when present (mirrors .codex-toolbar). */
+body:has(#paginationDock) .codex-visual-panel {
+    bottom: calc(
+        var(--footer-height, 65px)
+        + var(--pagination-dock-height, 240px)
+        + 16px
+    );
+    max-height: min(
+        72vh,
+        calc(
+            100%
+            - var(--footer-height, 65px)
+            - var(--pagination-dock-height, 240px)
+            - 32px
+        )
+    );
+}
+
+.codex-visual-panel__details {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.codex-visual-panel__summary {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(220, 230, 255, 0.95);
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 0 8px;
+    list-style-position: outside;
+}
+
+.codex-visual-panel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.codex-visual-panel__section {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(196, 181, 253, 0.9);
+    margin-top: 6px;
+}
+
+.codex-visual-panel__section:first-child {
+    margin-top: 0;
+}
+
+.codex-visual-panel__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.codex-visual-panel__label {
+    line-height: 1.25;
+}
+
+.codex-visual-panel__inputwrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.codex-visual-panel__range {
+    flex: 1;
+    min-width: 0;
+    height: 22px;
+    accent-color: rgba(196, 181, 253, 0.9);
+}
+
+.codex-visual-panel__val {
+    flex-shrink: 0;
+    min-width: 2.5rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 235, 150, 0.95);
+    text-align: right;
+}
+
+.codex-visual-panel__color {
+    width: 100%;
+    max-width: 120px;
+    height: 36px;
+    padding: 2px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.codex-visual-panel__reset {
+    margin-top: 8px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(40, 30, 70, 0.55);
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+}
+
+.codex-visual-panel__reset:hover {
+    background: rgba(60, 45, 100, 0.75);
+    border-color: rgba(196, 181, 253, 0.45);
+}
+
+.codex-node {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+    will-change: transform;
+    /* Smooth fade-in when nodes appear */
+    animation: codex-node-fade-in 300ms ease-out;
+}
+
+.codex-node:hover {
+    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+    z-index: 20;
+}
+
+.codex-node:hover .codex-node__inner,
+.codex-node:hover.codex-node--simplified {
+    filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.8)) drop-shadow(0 0 6px rgba(147, 51, 234, 0.5));
+}
+
+.codex-node--simplified:hover {
+    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+}
+
+.codex-node--filtered-out:hover {
+    /* Filtered-out nodes don't get hover effects */
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    filter: brightness(0.5) grayscale(0.8);
+    z-index: 10;
+}
+
+.codex-node--filtered-out.codex-node--simplified:hover {
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+}
+
+@keyframes codex-node-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Large boards: skip rendering/paint for nodes outside the view (class toggled in features/connection-codex/codex-canvas/CodexCanvasEntry). */
+.codex-node--cv-offscreen {
+    content-visibility: auto;
+    contain-intrinsic-size: 160px 160px;
+    pointer-events: none;
+}
+
+.codex-node__coord-label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    margin-top: 4px;
+    white-space: nowrap;
+    font-family: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: rgba(230, 240, 255, 0.96);
+    text-shadow:
+        0 0 3px rgba(0, 0, 0, 0.95),
+        0 1px 2px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.codex-node--junction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.codex-node__junction {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: rgba(196, 181, 253, 0.35);
+    border: 2.75px solid rgba(233, 213, 255, 0.95);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.codex-node--junction.codex-node--unsaved {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--junction.codex-node--selected {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--junction.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--junction.codex-node--pending-delete {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--junction.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node__inner {
+    position: relative;
+    width: 144px;
+    height: 144px;
+    box-sizing: border-box;
+    /*
+     * Portrait placement vs hex in Node Alpha.png (681×681): dark hex AABB ≈ 564×640 px, centered in canvas.
+     * Square hero/faction art uses object-fit: cover in this box; NodePortraitMask.png clips to hex alpha.
+     */
+    --codex-portrait-fit-w: calc(100% * 564 / 681);
+    --codex-portrait-fit-h: calc(100% * 640 / 681);
+}
+
+/* Hex alpha mask + frame rotate (--codex-hex-rotation); portrait stays upright via .codex-node__img-spin. */
+.codex-node__clip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+    overflow: hidden;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+}
+
+/* Variant-specific masks for legacy DOM - matches Node1/2/3 frame variants */
+.codex-node[data-codex-frame-variant="1"] .codex-node__clip {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node1.png');
+    mask-image: url('../../../assets/images/Codex/Mask%20Node1.png');
+}
+
+.codex-node[data-codex-frame-variant="2"] .codex-node__clip {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node2.png');
+    mask-image: url('../../../assets/images/Codex/Mask%20Node2.png');
+}
+
+.codex-node[data-codex-frame-variant="3"] .codex-node__clip {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node3.png');
+    mask-image: url('../../../assets/images/Codex/Mask%20Node3.png');
+}
+
+.codex-node__img-spin {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform: rotate(var(--codex-portrait-counter-rotation, 0deg));
+    transform-origin: center center;
+}
+
+.codex-node__portrait-fit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--codex-portrait-fit-w);
+    height: var(--codex-portrait-fit-h);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.codex-node__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+}
+
+.codex-node__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Default white with 30% opacity */
+    pointer-events: none;
+    z-index: -1; /* Behind the image */
+    /* Inherits mask from parent img-wrapper */
+}
+
+.codex-node__frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+/* Simplified DOM structure (5 elements): wrapper with variant-specific mask + frame */
+.codex-node--simplified {
+    width: 144px;
+    height: 144px;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+}
+
+/* Wrapper element: positioned inside rotating root, gets masked, contains image */
+.codex-node--simplified .codex-node__img-wrapper {
+    position: absolute;
+    left: 8.6%;
+    top: 3.0%;
+    width: 82.8%;
+    height: 94.0%;
+    /* No transform here - inherits rotation from parent root */
+    overflow: hidden;
+}
+
+/* Variant-specific masking applied to wrapper (rotates with hex) */
+/* Mask is scaled UP to match frame: wrapper is 82.8% x 94%, so mask = 1/0.828 x 1/0.94 = 121% x 106% */
+.codex-node--simplified[data-codex-frame-variant="1"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node1.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../../assets/images/Codex/Mask%20Node1.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.codex-node--simplified[data-codex-frame-variant="2"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node2.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../../assets/images/Codex/Mask%20Node2.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.codex-node--simplified[data-codex-frame-variant="3"] .codex-node__img-wrapper {
+    -webkit-mask-image: url('../../../assets/images/Codex/Mask%20Node3.png');
+    -webkit-mask-size: 121% 106%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('../../../assets/images/Codex/Mask%20Node3.png');
+    mask-size: 121% 106%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+/* Image inside wrapper: fills wrapper, counter-rotates to stay upright */
+.codex-node--simplified .codex-node__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(-1 * var(--codex-hex-rotation, 0deg)));
+    transform-origin: center center;
+    object-fit: cover;
+}
+
+/* Frame rotates with parent and scales via percentage sizing */
+.codex-node--simplified .codex-node__frame {
+    width: 100% !important;
+    height: 100% !important;
+    transform: none;
+}
+
+/* Faction logos: smaller tile + contain so the full emblem fits inside the hex */
+.codex-node--simplified[data-codex-kind='faction'] .codex-node__img {
+    object-fit: contain;
+    /* Further inset for factions: 72% of the hero size */
+    width: 59.6%;  /* 82.8% * 0.72 */
+    height: 67.7%; /* 94.0% * 0.72 */
+    left: 20.2%;   /* (100 - 59.6) / 2 */
+    top: 16.15%;   /* (100 - 67.7) / 2 */
+}
+
+/* Legacy: nested structure styles for backward compatibility */
+.codex-node[data-codex-kind='faction'] .codex-node__inner {
+    --codex-faction-portrait-inset: 0.72;
+    --codex-portrait-fit-w: calc(100% * 564 / 681 * var(--codex-faction-portrait-inset));
+    --codex-portrait-fit-h: calc(100% * 640 / 681 * var(--codex-faction-portrait-inset));
+}
+
+.codex-node[data-codex-kind='faction'] .codex-node__img {
+    object-fit: contain;
+}
+
+.codex-node__frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 144px;
+    height: 144px;
+    object-fit: contain;
+    object-position: center center;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(var(--codex-hex-rotation, 0deg));
+    transform-origin: center center;
+}
+
+.codex-node--unsaved .codex-node__inner {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+/* Simplified DOM: filters apply directly to root node */
+.codex-node--unsaved.codex-node--simplified {
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.65)) drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--selected .codex-node__inner {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--selected.codex-node--simplified {
+    filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.95)) drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+/* Event list thumbnail hover: match hero / faction / NPC filters to Codex nodes */
+.codex-node--filter-hover:not(.codex-node--junction) {
+    z-index: 25;
+    outline: 3px solid rgba(192, 132, 252, 0.95);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.codex-node--filter-hover:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.95))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.65));
+}
+
+.codex-node--filter-hover.codex-node--selected:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.92))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55))
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.9))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.55));
+}
+
+/* Filtered-out nodes: dark, half-transparent, unselectable */
+.codex-node--filtered-out {
+    opacity: 0.4;
+    filter: brightness(0.5) grayscale(0.8);
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.codex-node--filtered-out .codex-node__inner,
+.codex-node--filtered-out.codex-node--simplified {
+    filter: brightness(0.5) grayscale(0.8);
+}
+
+.codex-node--unsaved.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--pending-delete .codex-node__inner {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--unsaved.codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--unsaved.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+/* Outgoing “B” chain while a single A hub is selected (drag mode); stacks with unsaved / pending / selected */
+.codex-node--b-of-selected-a:not(.codex-node--junction) .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.78))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.45))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete.codex-node--selected .codex-node__inner {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.75))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.42))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--unsaved {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--junction.codex-node--b-of-selected-a.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+/* Simplified DOM: all combined filter states */
+.codex-node--simplified.codex-node--filter-hover:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.95))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.65));
+}
+
+.codex-node--simplified.codex-node--filter-hover.codex-node--selected:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.92))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55))
+        drop-shadow(0 0 10px rgba(192, 132, 252, 0.9))
+        drop-shadow(0 0 4px rgba(147, 51, 234, 0.55));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--simplified.codex-node--pending-delete {
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.85)) drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--simplified.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--simplified.codex-node--unsaved.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+/* Simplified DOM: b-of-selected-a chain styles */
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction) {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.9))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.55));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.88))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.4));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.95))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.6));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.82))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.65))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.35))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.9))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.55));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.85))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.5))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.85))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.45));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.8))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.48))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.8))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.4))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.85))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.5));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.78))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.45))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.55))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.3))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.75))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+}
+
+.codex-node--simplified.codex-node--b-of-selected-a:not(.codex-node--junction).codex-node--unsaved.codex-node--pending-delete.codex-node--selected {
+    filter:
+        drop-shadow(0 0 12px rgba(74, 222, 128, 0.75))
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.42))
+        drop-shadow(0 0 10px rgba(255, 235, 59, 0.5))
+        drop-shadow(0 0 4px rgba(255, 235, 59, 0.28))
+        drop-shadow(0 0 10px rgba(248, 113, 113, 0.7))
+        drop-shadow(0 0 4px rgba(239, 68, 68, 0.32))
+        drop-shadow(0 0 8px rgba(100, 200, 255, 0.8))
+        drop-shadow(0 0 3px rgba(100, 200, 255, 0.48));
+}
+
+.codex-node:active {
+    cursor: grabbing;
+}
+

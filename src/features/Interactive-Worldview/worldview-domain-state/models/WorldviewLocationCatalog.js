@@ -25,7 +25,7 @@ export class WorldviewLocationCatalog {
     async loadData() {
         try {
             // Load locations
-            const locationsResponse = await fetch('src/data/locations.json');
+            const locationsResponse = await fetch('src/data/worldview/locations.json');
             const locationsData = await locationsResponse.json();
             
             // Check localStorage first for events (user's saved events)
@@ -52,7 +52,7 @@ export class WorldviewLocationCatalog {
             this.allSeaports = [...(locationsData.seaports || [])]; // Store all seaports before filtering
 
             // Load connections
-            const connectionsResponse = await fetch('src/data/connections.json');
+            const connectionsResponse = await fetch('src/data/connection-codex/connections.json');
             const connectionsData = await connectionsResponse.json();
             this.trainConnections = connectionsData.trainConnections || [];
             this.secondaryConnections = connectionsData.secondaryConnections || [];

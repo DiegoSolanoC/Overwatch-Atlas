@@ -1,0 +1,349 @@
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Mobile: Event slide takes bottom half, matches panel full width (100% like other panels) */
+    .event-slide {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        top: calc(60px + (50vh - 30px)) !important;
+        bottom: var(--footer-height) !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        transform: translateY(100%);
+        transition: transform 0.3s ease !important;
+        box-sizing: border-box !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        z-index: 3000 !important;
+    }
+
+    .event-slide.open {
+        transform: translateY(0) !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        top: calc(60px + (50vh - 30px)) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 3000 !important;
+    }
+    
+    /* Full screen mode when image is hidden on mobile */
+    .event-slide.open.full-screen {
+        top: 60px !important;
+        bottom: var(--footer-height) !important;
+        height: auto !important;
+    }
+    
+    /* Mobile: cluster hug top-right */
+    .event-slide-close-cluster {
+        right: 10px !important;
+        left: auto !important;
+    }
+    
+    /* Mobile: Ensure event slide content is visible and scrollable, fills full width */
+    .event-slide-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding: 15px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        overflow-y: auto !important; /* Entire content scrolls on mobile */
+        overflow-x: hidden !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Mobile: Scrollable area */
+    .event-slide-scrollable {
+        flex: 1 !important;
+        min-height: 0 !important;
+        overflow-y: auto !important; /* Keep scrollable for proper layout */
+        overflow-x: hidden !important;
+        padding-right: 5px !important;
+        margin-bottom: 10px !important;
+        width: 100% !important;
+    }
+    
+    .event-slide-era-heading {
+        display: none !important;
+    }
+
+    /* Mobile: Ensure title, location, and description are visible */
+    .event-slide-content .event-slide-title-row,
+    .event-slide-scrollable .event-slide-title-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        margin: 0 0 10px 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-right: 40px !important;
+        box-sizing: border-box !important;
+    }
+
+    .event-slide-content h2#eventSlideTitle,
+    .event-slide-scrollable h2#eventSlideTitle {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - var(--event-slide-glitch-slot, 52px)) !important;
+        font-size: 1.5rem !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    .event-slide-content .event-slide-title-row .event-glitch-toggle-btn,
+    .event-slide-scrollable .event-slide-title-row .event-glitch-toggle-btn {
+        flex: 0 0 auto !important;
+        align-self: center !important;
+    }
+    
+    .event-slide-content p#eventSlideLocation,
+    .event-slide-scrollable p#eventSlideLocation.event-slide-location {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 0 10px 0 !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Force location to be visible even if inline style says display: none */
+    .event-slide-content p#eventSlideLocation[style*="display: none"],
+    .event-slide-scrollable p#eventSlideLocation[style*="display: none"] {
+        display: block !important;
+    }
+    
+    .event-slide-content p#eventSlideText,
+    .event-slide-scrollable p#eventSlideText {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Mobile: Bottom section always at bottom */
+    .event-slide-bottom {
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        margin-top: auto !important;
+        width: 100% !important;
+    }
+    
+    .event-slide-content * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Mobile: Ensure image container fills full width */
+    .event-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .event-image-container img {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+    
+    .event-slide-content p#eventSlideText {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #e0e0e0 !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+    
+    /* Mobile: Image overlay takes top half, full width */
+    .event-image-overlay {
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: auto !important;
+        height: 50vh !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .event-image-overlay.slide-open {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+    }
+}
+
+/*
+ * Mobile portrait: shorter map strip, taller info sheet, title/location/time scroll with description
+ * (DOM reparented in MobileEventSlideHelpers). Single scroll via .event-slide-scrollable only.
+ */
+@media (max-width: 768px) and (orientation: portrait) {
+    :root {
+        --event-mobile-map-strip-height: min(34vh, 260px);
+    }
+
+    .event-image-overlay {
+        top: var(--header-height, 60px) !important;
+        height: var(--event-mobile-map-strip-height) !important;
+    }
+
+    .event-slide:not(.event-slide--mobile-full-text),
+    .event-slide.open:not(.event-slide--mobile-full-text) {
+        top: calc(var(--header-height, 60px) + var(--event-mobile-map-strip-height)) !important;
+    }
+
+    /* Full screen mode when image is hidden on mobile - override above */
+    .event-slide.open.full-screen:not(.event-slide--mobile-full-text) {
+        top: var(--header-height, 60px) !important;
+        bottom: var(--footer-height) !important;
+        height: auto !important;
+    }
+
+    .event-slide-content {
+        overflow-y: hidden !important;
+        padding: 12px 14px 12px 14px !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    /* Portrait + inline edit: allow scrolling long location/connection forms (overrides hidden above). */
+    .event-slide.event-slide--inline-editing .event-slide-content {
+        overflow-y: auto !important;
+    }
+
+    .event-slide-top {
+        margin-bottom: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .event-slide-top #eventVariantToggles {
+        margin-bottom: 8px !important;
+        gap: 6px !important;
+    }
+
+    .event-slide-top #eventVariantToggles .variant-toggle-btn {
+        font-size: 12px !important;
+        padding: 5px 10px !important;
+        min-height: 32px !important;
+    }
+
+    .event-slide-mid-controls {
+        margin: 0 0 8px 0 !important;
+        padding-bottom: 8px !important;
+    }
+
+    .event-slide-mid-controls .event-image-toggle-btn {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        min-height: 36px !important;
+    }
+
+    .event-slide-scrollable {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        margin-bottom: 6px !important;
+        padding-top: 2px !important;
+    }
+
+    /* Lead block (title + location + time) lives in scrollable on portrait — compact type */
+    .event-slide-scrollable .event-slide-title-row {
+        margin: 0 0 6px 0 !important;
+    }
+
+    .event-slide-scrollable h2#eventSlideTitle {
+        font-size: 1.15rem !important;
+        line-height: 1.25 !important;
+        margin: 0 !important;
+        font-weight: 700 !important;
+    }
+
+    .event-slide-scrollable .event-slide-title-row .event-glitch-toggle-btn__icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .event-slide-scrollable p#eventSlideLocation.event-slide-location {
+        font-size: 14px !important;
+        line-height: 1.35 !important;
+        margin: 0 0 6px 0 !important;
+    }
+
+    .event-slide-scrollable .event-slide-location .event-location-flag {
+        height: 22px !important;
+        max-width: 52px !important;
+        margin-right: 8px !important;
+    }
+
+    .event-slide-scrollable .event-slide-location .event-location-pin {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 8px !important;
+    }
+
+    .event-slide-scrollable p#eventSlideTimelineMeta.event-slide-timeline-meta {
+        font-size: 12px !important;
+        line-height: 1.35 !important;
+        margin: 0 0 10px 0 !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    .event-slide-scrollable p#eventSlideFactionTypeDisplay.event-slide-faction-type-display,
+    .event-slide-scrollable p#eventSlideHeroRoleDisplay.event-slide-faction-type-display {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        margin: 0 0 10px 0 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type .event-slide-hero-locations-edit__label {
+        font-size: 20px !important;
+    }
+
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type .event-slide-inline-editor__input,
+    .event-slide-scrollable .event-slide-hero-locations-edit__faction-type select.event-slide-inline-editor__input {
+        font-size: 22px !important;
+        padding: 12px 14px !important;
+        min-height: 50px !important;
+    }
+
+    .event-slide-scrollable p#eventSlideText {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+    }
+}
+

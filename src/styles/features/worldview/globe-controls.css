@@ -1,0 +1,284 @@
+/* NOTE: `#rotateIcon` is used in both the floating globe-control button (mobile/legacy)
+   and the header hub button (desktop). The floating control needs a full-size icon,
+   but the header hub needs the icon wrapper to size to content so the label can sit
+   right next to it. Scope these rules to the floating control button only. */
+.globe-control-btn #rotateIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: none !important;
+    transform: none !important;
+}
+
+.globe-control-btn #rotateIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Legacy floating positions (skip buttons in .dock-globe-rail) */
+.globe-control-btn#autoRotateToggle:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+/* Map view: auto-rotate is not applicable (no globe rotation). */
+body.map-view-enabled .globe-control-btn#autoRotateToggle:not(.dock-globe-rail__btn) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Hyperloop Toggle Button - positioned next to rotation button (second row, top-left) */
+.globe-control-btn.hyperloop-btn:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 95px !important; /* Second row (map + transport) */
+    left: 110px !important; /* To the right of map toggle */
+}
+
+/* Map View Toggle Button - third row, top-left */
+.globe-control-btn#mapViewToggle:not(.dock-globe-rail__btn) {
+    bottom: auto !important;
+    top: 95px !important; /* Second row (map + transport) */
+    left: 20px !important;
+}
+
+/* Map toggle stays on row 2 in all modes. */
+
+/* Top-left buttons (filters and event manager) - positioned at top left */
+.globe-control-btn.top-left-btn {
+    bottom: auto !important;
+    top: 20px !important;
+    left: 20px !important;
+}
+
+/* Filters Toggle Button - positioned next to event manager button at top left */
+.globe-control-btn.filters-btn {
+    left: 110px !important; /* Position next to event manager button */
+}
+
+/* Event Manager Toggle Button - positioned at top left (first button) */
+.globe-control-btn.events-manage-btn.top-left-btn {
+    left: 20px !important; /* First button at top left */
+}
+
+/* Bottom-right buttons (music and color palette) - positioned at bottom right */
+.globe-control-btn.bottom-right-btn {
+    bottom: 20px !important;
+    top: auto !important;
+    right: 20px !important;
+    left: auto !important;
+}
+
+/* Music Toggle Button - positioned next to color palette button at bottom right */
+.globe-control-btn.music-btn.bottom-right-btn {
+    right: 110px !important; /* Position next to color palette button */
+}
+
+/* Color Palette Button - positioned at bottom right (first button) */
+.globe-control-btn.color-palette-btn.bottom-right-btn {
+    right: 20px !important; /* First button at bottom right */
+}
+
+/* Palette Menu - appears when palette button is clicked */
+.palette-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Space between circles */
+    z-index: 300;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 12px);
+    transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
+    align-items: center;
+}
+
+.palette-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+/* Palette Option Buttons - circular buttons */
+.palette-option-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.palette-option-btn:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.palette-option-btn.active {
+    border-color: #4CAF50; /* Green highlight for active palette (always green) */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+    transform: scale(1.1);
+}
+
+/* Blue palette option button */
+.palette-option-btn.blue {
+    background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
+}
+
+.palette-option-btn.blue:hover {
+    background: linear-gradient(135deg, #1565C0 0%, #1E88E5 100%);
+}
+
+/* Gray/Black palette option button */
+.palette-option-btn.black {
+    background: linear-gradient(135deg, #1a1a1a 0%, #424242 100%);
+}
+
+.palette-option-btn.black:hover {
+    background: linear-gradient(135deg, #2a2a2a 0%, #525252 100%);
+}
+
+/* Crimson / red palette option button */
+.palette-option-btn.crimson {
+    background: linear-gradient(135deg, #7f1018 0%, #c62828 100%);
+}
+
+.palette-option-btn.crimson:hover {
+    background: linear-gradient(135deg, #9a1520 0%, #e53935 100%);
+}
+
+/* Nulled (purple) — swatch centered on brand purple #A55DC6 */
+.palette-option-btn.nulled {
+    background: linear-gradient(135deg, #c77ee0 0%, #A55DC6 55%, #8346a3 100%);
+}
+
+.palette-option-btn.nulled:hover {
+    background: linear-gradient(135deg, #d49aee 0%, #b56dd8 45%, #A55DC6 100%);
+}
+
+/* Active state is always green regardless of palette */
+body.color-palette-gray .palette-option-btn.active {
+    border-color: #4CAF50; /* Green highlight for active palette (always green) */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+body.color-palette-crimson .palette-option-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+body.color-palette-nulled .palette-option-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+/* Mobile adjustments for palette menu */
+@media (max-width: 768px) {
+    .palette-menu {
+        gap: 8px;
+    }
+    
+    .palette-option-btn {
+        width: 40px;
+        height: 40px;
+        border-width: 2px;
+    }
+}
+
+#eventsManageIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#eventsManageIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#filtersIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#filtersIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#musicIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#musicIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Scope hyperloop icon sizing to globe-control buttons only.
+   The header hub also uses `#hyperloopIcon`, but header icon sizing is handled in `shell/layout.css`. */
+.globe-control-btn #hyperloopIcon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Floating weather toggle (mobile): match hub rail sizing like `#rotateIcon` / hyperloop */
+.globe-control-btn #weatherEffectsIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.globe-control-btn #weatherEffectsIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Weather PNG reads smaller than train/rotation in the same cell (more padding in asset) */
+
+@media (max-width: 768px) {
+    .globe-control-btn.weather-effects-btn #weatherEffectsIcon img {
+        transform: skewX(11deg) scale(1.14);
+        transform-origin: center center;
+    }
+}
+
+#globe-container:active {
+    cursor: grabbing;
+}

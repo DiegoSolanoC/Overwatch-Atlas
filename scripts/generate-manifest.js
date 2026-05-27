@@ -1,4 +1,4 @@
-// Regenerate src/data/manifest.json from assets (heroes / factions PNGs, music audio).
+// Regenerate src/data/platform/manifest.json from assets (heroes / factions PNGs, music audio).
 // Run from repo root: node scripts/generate-manifest.js
 
 const fs = require('fs');
@@ -164,9 +164,9 @@ let heroes = getHeroesFromFolder(heroesFolder);
 let factions = getFactionsFromFolder(factionsFolder);
 let npcs = getHeroesFromFolder(npcsFolder);
 
-heroes = orderHeroOrNpcIdsByArchive(heroes, readStoryArchiveNames(path.join(dataDir, 'story-archive-heroes.json')));
-npcs = orderHeroOrNpcIdsByArchive(npcs, readStoryArchiveNames(path.join(dataDir, 'story-archive-npcs.json')));
-factions = orderFactionsByArchive(factions, readStoryArchiveNames(path.join(dataDir, 'story-archive-factions.json')));
+heroes = orderHeroOrNpcIdsByArchive(heroes, readStoryArchiveNames(path.join(dataDir, 'story-archive', 'heroes.json')));
+npcs = orderHeroOrNpcIdsByArchive(npcs, readStoryArchiveNames(path.join(dataDir, 'story-archive', 'npcs.json')));
+factions = orderFactionsByArchive(factions, readStoryArchiveNames(path.join(dataDir, 'story-archive', 'factions.json')));
 
 const music = getMusicFiles(musicFolder);
 
@@ -180,7 +180,7 @@ const manifest = {
     music
 };
 
-const manifestPath = path.join(dataDir, 'manifest.json');
+const manifestPath = path.join(dataDir, 'platform', 'manifest.json');
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 console.log(`${manifestPath} written from disk assets (heroes/factions/npcs ordered like story-archive JSON).`);
 console.log(`  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}`);

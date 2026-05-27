@@ -1,0 +1,125 @@
+/* Events Pagination */
+.events-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.events-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.events-pagination-btn {
+    background: rgba(33, 150, 243, 0.3);
+    border: 1px solid rgba(33, 150, 243, 0.6);
+    border-radius: 6px;
+    color: white;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    min-width: 40px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.events-pagination-btn__arrow {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.events-pagination-btn .ui-pagination-arrow {
+    width: 18px;
+    max-height: 18px;
+}
+
+.events-pagination-btn:hover:not(:disabled) {
+    background: rgba(33, 150, 243, 0.5);
+    border-color: rgba(33, 150, 243, 0.9);
+}
+
+.events-pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.events-pagination-page-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 8px;
+}
+
+.events-pagination-page-selector label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    user-select: none;
+}
+
+.events-pagination-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.6);
+    border-radius: 4px;
+    color: white;
+    padding: 6px 10px;
+    font-size: 14px;
+    width: 60px;
+    text-align: center;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.events-pagination-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(33, 150, 243, 0.9);
+}
+
+/* Hide number input spinner (up/down arrows) */
+.events-pagination-input::-webkit-outer-spin-button,
+.events-pagination-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.events-pagination-input {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.events-pagination-total {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    user-select: none;
+}
+
+/* Gray palette pagination */
+body.color-palette-gray .events-pagination-btn {
+    background: rgba(255, 102, 0, 0.3);
+    border-color: rgba(255, 102, 0, 0.6);
+}
+
+body.color-palette-gray .events-pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 102, 0, 0.5);
+    border-color: rgba(255, 102, 0, 0.9);
+}
+
+body.color-palette-gray .events-pagination-input {
+    border-color: rgba(255, 102, 0, 0.6);
+}
+
+body.color-palette-gray .events-pagination-input:focus {
+    border-color: rgba(255, 102, 0, 0.9);
+}
+

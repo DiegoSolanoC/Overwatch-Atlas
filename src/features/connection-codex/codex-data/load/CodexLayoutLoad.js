@@ -128,6 +128,7 @@ async function loadCodexState() {
         if (!loadedFromCanonical) return;
         try {
             const { nodes: nPersist, edges: ePersist } = api.serializeCodexState();
+            if (!nPersist.length) return;
             localStorage.setItem(
                 CODEX_STORAGE_KEY,
                 JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist })

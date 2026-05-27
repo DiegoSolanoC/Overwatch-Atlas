@@ -1,0 +1,15 @@
+/* Shared pagination arrow (icons/Utility Icons/Arrow Icon.png) — dock, event manager, info panel */
+.ui-pagination-arrow {
+    display: block;
+    width: 22px;
+    height: auto;
+    max-height: 26px;
+    object-fit: contain;
+    pointer-events: none;
+    flex-shrink: 0;
+}
+
+.ui-pagination-arrow--flip-h {
+    transform: scaleX(-1);
+}
+

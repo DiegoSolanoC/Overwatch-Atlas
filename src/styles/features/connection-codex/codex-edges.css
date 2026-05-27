@@ -1,0 +1,74 @@
+/* Unmasked pick lines sit under .codex-edges-masked. Do not set pointer-events: none on this group. */
+
+/* Root SVG ignores hits so empty canvas passes through to .codex-hit-layer (context menu → add node).
+   Thick .codex-edge-hit lines opt back in for panning on top of cords. */
+.codex-edges-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.codex-edge-segment {
+    pointer-events: none;
+    /* Smooth fade-in when edges appear */
+    animation: codex-edge-fade-in 200ms ease-out;
+}
+
+@keyframes codex-edge-fade-in {
+    from {
+        opacity: 0;
+        stroke-dashoffset: 20;
+    }
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+.codex-edge-elbow-parallelogram {
+    pointer-events: none;
+}
+
+.codex-edge-packets {
+    pointer-events: none;
+}
+
+.codex-edge-packet {
+    pointer-events: none;
+}
+
+.codex-edge-filter-pad {
+    pointer-events: none;
+}
+
+.codex-edge-hit {
+    stroke: transparent;
+    fill: none;
+    pointer-events: stroke;
+    cursor: grab;
+}
+
+.codex-edge-degree-labels {
+    pointer-events: none;
+}
+
+.codex-edge-degree {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    fill: rgba(255, 255, 255, 0.96);
+    stroke: rgba(0, 0, 0, 0.82);
+    stroke-width: 8px;
+    paint-order: stroke fill;
+}
+
+.codex-edge-degree.codex-edge-degree--octilinear {
+    fill: #4ade80;
+    stroke: rgba(0, 0, 0, 0.78);
+}
+

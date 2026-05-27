@@ -1,6 +1,10 @@
 /* ========================================
-   CUSTOM OVERRIDE - Remove Map Edge Glow Effects
+   CUSTOM OVERRIDE — optional local tweaks (NOT in app.css)
+   Add after app.css in index.html when experimenting, e.g.:
+   <link rel="stylesheet" href="src/styles/custom-override.css">
    ======================================== */
+
+/* Remove Map Edge Glow Effects */
 
 /* Option 1: Completely hide all map edge glow effects */
 .map-edge-glow {

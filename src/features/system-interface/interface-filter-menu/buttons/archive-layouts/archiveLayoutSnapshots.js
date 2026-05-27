@@ -55,7 +55,7 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
             }
         } catch (_) {}
         if (!__heroesArchiveFileCache || __heroesArchiveFileCache.length === 0) {
-            await fetchJsonEventsIntoCache('src/data/story-archive-heroes.json', a => {
+            await fetchJsonEventsIntoCache('src/data/story-archive/heroes.json', a => {
                 __heroesArchiveFileCache = a;
             });
         }
@@ -70,7 +70,7 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
             }
         } catch (_) {}
         if (!__factionsArchiveFileCache || __factionsArchiveFileCache.length === 0) {
-            await fetchJsonEventsIntoCache('src/data/story-archive-factions.json', a => {
+            await fetchJsonEventsIntoCache('src/data/story-archive/factions.json', a => {
                 __factionsArchiveFileCache = a;
             });
         }

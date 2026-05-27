@@ -1,0 +1,7 @@
+/* Event system pagination (was components/event-pagination.css) */
+@import url('./events-list.css?v=1');
+@import url('./pagination-shared.css?v=1');
+@import url('./events-manage-pagination.css?v=1');
+@import url('./pagination-dock.css?v=1');
+@import url('./pagination-dock-rail.css?v=1');
+@import url('./pagination-float.css?v=1');
