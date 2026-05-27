@@ -24,7 +24,7 @@ import {
     setupHeaderHub,
     setupOfficialSiteLinkSound
 } from '../atlas-header/HeaderModeSynchronization.js';
-import { setupZoomControls } from '../../Interactive-Worldview/worldview-controls-ui/runtime/ZoomControlsService.js';
+import { setupZoomControls } from '../../Interactive-Worldview/worldview-controls-ui/runtime/WorldviewZoomControls.js';
 import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=100';
 import {
     setRunOperation,

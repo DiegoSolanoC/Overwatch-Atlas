@@ -23,8 +23,8 @@ import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=10
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/interface-platform-input/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
-import '../../Interactive-Worldview/worldview-controls-ui/runtime/GlobeInlineLoadHelpers.js';                       // inline globe-container loader API
-import '../../Interactive-Worldview/worldview-mode-entry/entry/GlobeMapLaunchChoice.js';                            // 3D globe / 2D map chooser hub
+import '../../Interactive-Worldview/worldview-controls-ui/runtime/WorldviewInlineLoad.js';                       // inline globe-container loader API
+import '../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js';                            // 3D globe / 2D map chooser hub
 
 import { loadPalette, unloadPalette } from './loaders/PaletteLoaders.js';
 import { loadMusic, unloadMusic } from './loaders/MusicLoaders.js';

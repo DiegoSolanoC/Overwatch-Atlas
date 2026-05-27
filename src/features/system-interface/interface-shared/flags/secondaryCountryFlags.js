@@ -24,10 +24,14 @@
     function resolveManualCountryTokenToFlagFile(token, locationType) {
         var trimmed = R.stripTrailingCommaSep(token);
         if (!trimmed) return null;
+        // Prefer explicit real-country resolution first so moon/mars event types
+        // don't override Earth country tokens like "Gibraltar" / "Australia".
+        var directCountry = R.resolveCountryToFilename(trimmed);
+        if (directCountry) return directCountry;
         var t = locationType || 'earth';
         var viaDisplay = R.getResolvedFlagFilename(trimmed, t);
         if (viaDisplay) return viaDisplay;
-        return R.resolveCountryToFilename(trimmed);
+        return null;
     }
 
     function parseSecondaryCountryList(text, locationType) {

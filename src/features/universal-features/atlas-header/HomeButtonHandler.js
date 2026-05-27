@@ -23,7 +23,7 @@ import {
   getCurrentModeOrMenu,
   clearCurrentMode,
 } from "../atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js";
-import { teardownGlobeMapChooserHub } from "../../Interactive-Worldview/worldview-mode-entry/entry/GlobeMapLaunchChoice.js";
+import { teardownGlobeMapChooserHub } from "../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js";
 import { playModeSwitchSound } from "../atlas-sound-effects/playModeSwitchSound.js";
 
 function closeFloatingOverlays() {

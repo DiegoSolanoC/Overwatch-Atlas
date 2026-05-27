@@ -40,7 +40,7 @@ import {
     importGlobeController,
     initializeGlobeController,
     removeEventMarkersIfNeeded
-} from '../../../Interactive-Worldview/worldview-mode-entry/GlobeBaseHelpers.js';
+} from '../../../Interactive-Worldview/worldview-mode-entry/WorldviewBootHelpers.js';
 
 /**
  * @param {Object} loadedComponents - shared component-state object

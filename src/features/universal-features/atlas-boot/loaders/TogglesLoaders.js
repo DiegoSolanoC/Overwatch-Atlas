@@ -21,7 +21,7 @@ import {
 } from '../../atlas-shared-ui/loading/LoadingLifecycle.js';
 import { loadSoundEffect } from '../../atlas-sound-effects/loadSoundEffects.js';
 import { createHeaderHubButton } from '../../atlas-header/HeaderHubButton.js';
-import { requireGlobeBase } from '../../../Interactive-Worldview/worldview-mode-entry/requireGlobeBase.js';
+import { requireGlobeBase } from '../../../Interactive-Worldview/worldview-mode-entry/WorldviewRequireGlobe.js';
 import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js';
 

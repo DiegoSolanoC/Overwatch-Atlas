@@ -240,13 +240,13 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
     <!-- InteractionController dependencies - load before LoadingOrchestrator (which imports InteractionController) -->
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MarkerPulseService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MapEdgeGlowService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/CameraControlService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MouseInteractionService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/TouchInteractionService.js?v=8"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/MarkerInteractionService.js?v=10"></script>
-    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/StationFollowService.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewMarkerPulse.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewMapEdgeGlow.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewCameraControl.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewMouseInteraction.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewTouchInteraction.js?v=8"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewMarkerInteraction.js?v=10"></script>
+    <script src="src/features/Interactive-Worldview/worldview-controls-ui/runtime/WorldviewStationFollow.js?v=8"></script>
     
     <!-- Load component loader for globe/menu/features -->
     <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=100"></script>
@@ -296,7 +296,7 @@
     <script src="src/features/system-interface/interface-left-panel/event-system/boot/runEventManagerInit.js?v=10"></script>
     <script src="src/features/system-interface/interface-left-panel/event-system/lookup/CityCoordinateLookup.js?v=11"></script>
     <script src="src/features/system-interface/interface-shared/EventImagePathResolver.js?v=1"></script>
-    <script src="src/features/Interactive-Worldview/worldview-event-sync/GlobeSyncService.js?v=9"></script>
+    <script src="src/features/Interactive-Worldview/worldview-event-sync/WorldviewGlobeSync.js?v=9"></script>
     <!-- MusicService — single ES module entry; pulls in all sibling Music*Service modules. -->
     <script type="module" src="src/features/universal-features/atlas-music/MusicService.js?v=101"></script>
     <!-- Filters panel: single ES module entry; pulls in state, images, manifest, buttons, tabs, wiring. -->

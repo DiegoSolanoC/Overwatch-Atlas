@@ -16,7 +16,7 @@ export function getMarsShipEmissiveHex() {
 
 /**
  * Re-apply vehicle Phong colors and ISS/Mars orbit + map line accents after a palette change.
- * @param {*} transportModel - TransportModel instance (trains, planes, boats, satellites arrays).
+ * @param {*} transportModel - WorldviewTransportState instance (trains, planes, boats, satellites arrays).
  */
 export function applyCurrentPaletteToTransportVehicles(transportModel) {
     if (!transportModel) return;

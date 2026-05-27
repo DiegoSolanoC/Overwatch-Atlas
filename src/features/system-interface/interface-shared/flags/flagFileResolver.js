@@ -27,7 +27,8 @@
 
     var FICTIONAL = {
         numbani: 'Numbani.png',
-        moon: 'Moon.png',
+        // No standalone Moon.png in flags set; use Lunar Colony asset for moon-type entries.
+        moon: 'Horizon Lunar Colony.png',
         horizonLunarColony: 'Horizon Lunar Colony.png',
         redPromiseColony: 'Red Promise Colony.png',
         mars: 'Mars.png',
@@ -183,13 +184,15 @@
         if (!loc) return null;
         var special = trySpecialDisplayFile(loc);
         if (special) return special;
-        var fic = tryFictionalFile(loc, locationType);
-        if (fic) return fic;
         var country = extractCountryFromDisplay(loc);
         if (country) {
             var fn = resolveCountryToFilename(country);
             if (fn) return fn;
         }
+        // Only fall back to fictional/locationType mapping after explicit country resolution.
+        // This avoids moon/mars/station event types overriding valid Earth flags on mixed-location rows.
+        var fic = tryFictionalFile(loc, locationType);
+        if (fic) return fic;
         return null;
     }
 

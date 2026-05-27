@@ -7,8 +7,8 @@
  * / `restoreMainMenu` for the menu shell. The actual mode bodies live in
  * their owning features:
  *
- *   - Worldview run/kill ? `Interactive-Worldview/worldview-mode-entry/globeModeLifecycle.js`
- *   - Worldview asset load ? `Interactive-Worldview/worldview-mode-entry/loadGlobeAssets.js`
+ *   - Worldview run/kill ? `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
+ *   - Worldview asset load ? `Interactive-Worldview/worldview-mode-entry/WorldviewAssetLoader.js`
  *   - Data Archive mode entry: `Data-Archive/archive-mode/ArchiveModeMount.js`
  *   - Linear-mode ceremony ? `runtime/modeLifecycleCeremony.js`
  *   - Universal Features  ? `runtime/universalFeaturesLifecycle.js`
@@ -35,7 +35,7 @@ import {
     killUniversalFeatures as killUniversalFeaturesImpl
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js';
-import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/worldview-mode-entry/globeModeLifecycle.js?v=100';
+import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js';
 
 /**
  * Stages for the Data Archive entry. Declared up-front so the bar can
@@ -109,7 +109,7 @@ export class ModeOrchestrator {
 
     /**
      * Enter Worldview mode.
-     * @see runGlobeMode in `Interactive-Worldview/worldview-mode-entry/globeModeLifecycle.js`
+     * @see runGlobeMode in `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
      */
     async runGlobeComponents(isAutoLoad = false) {
         await runGlobeMode(this._globeModeContext(), isAutoLoad);
@@ -248,7 +248,7 @@ export class ModeOrchestrator {
 
     /**
      * Exit Worldview mode.
-     * @see killGlobeMode in `Interactive-Worldview/worldview-mode-entry/globeModeLifecycle.js`
+     * @see killGlobeMode in `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
      */
     async killGlobeComponents() {
         await killGlobeMode(this._globeModeContext());

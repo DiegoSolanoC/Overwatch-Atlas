@@ -135,7 +135,7 @@ const REPLACEMENTS = [
   ['Interactive-Worldview/presentation/transport/', 'Interactive-Worldview/worldview-transport/'],
   ['Interactive-Worldview/presentation/controllers/', 'Interactive-Worldview/worldview-controls-ui/controllers/'],
   ['Interactive-Worldview/presentation/views/', 'Interactive-Worldview/worldview-globe-3d/views/'],
-  ['Interactive-Worldview/services/GlobeSyncService.js', 'Interactive-Worldview/worldview-event-sync/GlobeSyncService.js'],
+  ['Interactive-Worldview/services/GlobeSyncService.js', 'Interactive-Worldview/worldview-event-sync/WorldviewGlobeSync.js'],
   ['Interactive-Worldview/services/GlobeSyncService', 'Interactive-Worldview/worldview-event-sync/GlobeSyncService'],
   ['Interactive-Worldview/services/', 'Interactive-Worldview/worldview-controls-ui/runtime/'],
   ['Interactive-Worldview/presentation/', 'Interactive-Worldview/worldview-globe-3d/'],

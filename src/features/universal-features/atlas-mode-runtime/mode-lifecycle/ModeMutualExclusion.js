@@ -1,5 +1,5 @@
 import { setRunOperation } from '../loadingOverlayState.js';
-import { teardownGlobeMapChooserHub } from '../../../Interactive-Worldview/worldview-mode-entry/entry/GlobeMapLaunchChoice.js';
+import { teardownGlobeMapChooserHub } from '../../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js';
 import { clearCurrentMode, getCurrentMode } from './CurrentModeStatus.js';
 
 /**

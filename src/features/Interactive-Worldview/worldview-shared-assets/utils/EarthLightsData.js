@@ -150,7 +150,7 @@ export function getEarthLightsPerHubMultiplier(lat, lon, name) {
 
 /**
  * @param {string} name
- * @param {import('../features/Interactive-Worldview/worldview-domain-state/models/DataModel.js').DataModel} dataModel
+ * @param {import('../features/Interactive-Worldview/worldview-domain-state/models/WorldviewLocationCatalog.js').WorldviewLocationCatalog} dataModel
  * @returns {{ lat: number, lon: number, name: string }|null}
  */
 export function resolveCityOrFictional(name, dataModel) {
@@ -168,7 +168,7 @@ export function resolveCityOrFictional(name, dataModel) {
 }
 
 /**
- * @param {import('../features/Interactive-Worldview/worldview-domain-state/models/DataModel.js').DataModel} dataModel
+ * @param {import('../features/Interactive-Worldview/worldview-domain-state/models/WorldviewLocationCatalog.js').WorldviewLocationCatalog} dataModel
  * @returns {Array<{ lat: number, lon: number, name: string, kinds: string[] }>}
  */
 export function collectEarthLightHubs(dataModel) {

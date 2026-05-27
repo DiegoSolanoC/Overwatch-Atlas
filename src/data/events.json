@@ -5517,7 +5517,7 @@
       "name": "The New West",
       "locationType": "earth",
       "cityDisplayName": "Roud 66, United States",
-      "description": "The rise of Gang violence across the American Southwest quickly became a topic of interest for Overwatch, and when needed, they would address these gangs individually by dispatching agents, and later send the engineering teams for repairs. Among the gangs, the rising threat of the Deadlock Rebels became of special concern to Reyes. The leader, Calamity Ashe was fast at forming alliances with other rival gangs, and had created a stranglehold on the region. Reyes would take a small team of troops to investigate the situation personally. After gathering intelligence on the gang, a massive operation to take down the Rebels was put into action.<br><br>Cole Cassidy, a founding member of the gang, would create a distraction that resulted in his arrest, but allowed the rest of the leadership to escape. Ashe, Frankie and Bez would continue to search for him in hopes of rescue, but they did not know that it was too late for that, as Cassidy had been taken by Overwatch, not as a prisoner but as a willing recruit.<br><br>Reyes saw talent in Cassidy, and thus he gave him the choice, to either rot in jail for years, or to come with him as his student, and make better use of his marksmanship as an Overwatch agent. While many saw his inclusion as conscription of a minor, he seemed pleased with the arrangement and quickly proved himself to be an efficient asset. He would be placed under Ana's wing to hone his skills with the gun, and soon after, he would join Reyes in the Blackwatch division.",
+      "description": "The rise of Gang violence across the American Southwest quickly became a topic of interest for Overwatch, and when needed, they would address these gangs individually by dispatching agents, and later send the engineering teams for repairs. Among the gangs, the rising threat of the Deadlock Rebels became of special concern to Reyes. The leader, Calamity Ashe was fast at forming alliances with other rival gangs, and had created a stranglehold on the region. Reyes would take a small team of troops to investigate the situation personally. After gathering intelligence on the gang, a massive operation to take down the Rebels was put into action.\n\nCole Cassidy, a founding member of the gang, would create a distraction that resulted in his arrest, but allowed the rest of the leadership to escape. Ashe, Frankie and Bez would continue to search for him in hopes of rescue, but they did not know that it was too late for that, as Cassidy had been taken by Overwatch, not as a prisoner but as a willing recruit.\n",
       "image": "",
       "lat": 40.0170005,
       "lon": -105.2664724,
@@ -5532,7 +5532,7 @@
       "yearEnd": null,
       "headlines": [
         "Overwatch cracks down on Gang violence globally",
-        "Gabriel Reyes recurits a minor into special division"
+        "Deadlock Gang largely apprehended following Overwatch Raid"
       ],
       "secondaryCountryPlaces": [
         {
@@ -5550,17 +5550,12 @@
         {
           "locationName": "",
           "country": "Cassidy,",
-          "reasoning": "Captured by Overwatch, recruited into Blackwatch"
+          "reasoning": "Captured by Overwatch"
         },
         {
           "locationName": "",
           "country": "Ashe,",
           "reasoning": "Nearly captured by Overwatch, on the loose"
-        },
-        {
-          "locationName": "",
-          "country": "Ana",
-          "reasoning": "In charge of Training Casidy"
         }
       ],
       "factionFilterPlaces": [
@@ -5590,7 +5585,7 @@
     },
     {
       "name": "Outlaw",
-      "description": "No description available.",
+      "description": "After the Deadlock raid, Reyes surprised everyone when he brought their prisoner alongside him. Gabriel saw talent in Cassidy, notin his guts, loyalty and excellent marksmanship for someone his age. With enough guidance he could turn his life around, and Reyes believed it would be a waste to lock him up without a second change.\n\n\nThus he gave him the choice, to either rot in jail for years, or to come with him as his student, and make better use of his skill as an Overwatch agent. While many saw his inclusion as conscription of a minor, he seemed pleased with the arrangement and quickly proved himself to be an efficient asset. He would be placed under Ana's wing to hone his skills with the gun, and soon after, he would join Reyes in the Blackwatch division. As Reyes understudy, Cass would often think back of Deadlock, assuming he did the right thing because his gang never came  to his rescue, convincing himself that this path meant he was better than them, clueless of the fact that his old partners were still desperately trying to save him by the time he agreed to join Reyes. Still, Cassidy made for a great addition to the Strike team and a valuable asset for Reyes' division.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -5602,28 +5597,35 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Cole Cassidy is recruited into the Strike Team"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Overwatch recruits a minor after takedown in the US"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Cassidy,",
-          "reasoning": ""
+          "reasoning": "Takes Reyes offer"
         },
         {
           "locationName": "",
           "country": "Reaper, Ana,",
-          "reasoning": ""
+          "reasoning": "Agree to mentor Cassidy"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Blackwatch,",
-          "reasoning": ""
+          "reasoning": "Integrate Cassidy into Reyes' staff"
         }
       ]
     },
@@ -7027,11 +7029,6 @@
         {
           "locationName": "Horizon Lunar Colony",
           "country": "Horizon Lunar Colony",
-          "reasoning": ""
-        },
-        {
-          "locationName": "Horizon Lunar Colony,",
-          "country": "Horizon Lunar Colony,",
           "reasoning": "Hammond befriends Winston during escape attempts"
         }
       ],
@@ -9609,6 +9606,26 @@
       ]
     },
     {
+      "name": "Chivalry",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "A Better World",
       "description": "",
       "locationType": "earth",
@@ -10211,74 +10228,6 @@
       ]
     },
     {
-      "name": "Vigilante",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Grand Mesa, United States",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Grand Mesa, United States",
-          "country": "United States",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Help for the Needy",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
@@ -10378,6 +10327,40 @@
       ]
     },
     {
+      "name": "Vigilante",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Grand Mesa, United States",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Shooting Star",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
@@ -10406,6 +10389,40 @@
         {
           "locationName": "",
           "country": "Helix Securities",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Los Muertos",
           "reasoning": ""
         }
       ]
@@ -13380,7 +13397,13 @@
       "cityDisplayName": "Gothenburg, Sweden",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -13441,7 +13464,13 @@
       "cityDisplayName": "Akihabara, Japan",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -13516,7 +13545,13 @@
       "cityDisplayName": "Gothenburg, Sweden",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     }

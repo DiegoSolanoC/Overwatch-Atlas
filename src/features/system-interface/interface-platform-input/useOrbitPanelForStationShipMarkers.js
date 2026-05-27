@@ -4,7 +4,7 @@
  * simulation on the map), they use the orbit texture panel (same x/y % coordinates
  * as Moon/Mars).
  *
- * @param {import('../../Interactive-Worldview/worldview-domain-state/models/SceneModel.js').SceneModel} sceneModel
+ * @param {import('../../Interactive-Worldview/worldview-domain-state/models/WorldviewSceneState.js').SceneModel} sceneModel
  * @returns {boolean}
  */
 export function useOrbitPanelForStationShipMarkers(sceneModel) {
