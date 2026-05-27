@@ -3,8 +3,7 @@ import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
 /**
  * Builds a single main-menu tile (button + external description label below).
  *
- * Used by `MenuButtonArrangement` to construct the Interactive Worldview,
- * Connection Codex, and Data Archive tiles in the main menu. Pure DOM
+ * Used by `MenuButtonArrangement` for primary mode tiles in the main menu. Pure DOM
  * construction; no click handlers are wired here.
  *
  * @param {Object} config
@@ -21,7 +20,7 @@ export function MenuButtonMaker({ id, title, imagePath, label, description }) {
 
     const button = document.createElement('button');
     button.id = id;
-    button.className = 'main-menu-btn';
+    button.className = 'main-menu-btn main-menu-mode-btn';
     button.title = title;
     button.innerHTML = `
         <div class="main-menu-image-container">

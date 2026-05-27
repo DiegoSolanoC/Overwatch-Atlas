@@ -63,6 +63,9 @@ export async function loadMenu(loadedComponents) {
         const setupDialogueTheaterHandler = typeof window.runDialogueTheaterComponents === 'function'
             ? createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation)
             : null;
+        const setupOfficialResourcesHandler = typeof window.runOfficialResourcesComponents === 'function'
+            ? createLoadingLockHandler(window.runOfficialResourcesComponents, setRunOperation)
+            : null;
 
         const menuButtons = createMenuButtons(
             setupGlobeHandler,
@@ -71,6 +74,7 @@ export async function loadMenu(loadedComponents) {
             setupHeroBiographyHandler,
             setupStoryTimelineHandler,
             setupDialogueTheaterHandler,
+            setupOfficialResourcesHandler,
         );
         menuContainer.appendChild(menuButtons);
         updateStatus('✓ Menu buttons created', 'success');

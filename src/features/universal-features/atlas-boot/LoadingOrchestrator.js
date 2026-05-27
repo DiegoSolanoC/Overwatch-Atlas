@@ -51,6 +51,7 @@ const loadedComponents = {
     heroBiography: false,
     storyTimeline: false,
     dialogueTheater: false,
+    officialResources: false,
 };
 
 if (typeof window !== 'undefined') {
@@ -113,6 +114,9 @@ const runStoryTimelineComponents = (isAutoLoad = false) => modeOrchestrator.runS
 const killStoryTimelineComponents = () => modeOrchestrator.killStoryTimelineComponents();
 const runDialogueTheaterComponents = (isAutoLoad = false) => modeOrchestrator.runDialogueTheaterComponents(isAutoLoad);
 const killDialogueTheaterComponents = () => modeOrchestrator.killDialogueTheaterComponents();
+const runOfficialResourcesComponents = (isAutoLoad = false) =>
+    modeOrchestrator.runOfficialResourcesComponents(isAutoLoad);
+const killOfficialResourcesComponents = () => modeOrchestrator.killOfficialResourcesComponents();
 
 // === Public API on window ==============================================
 
@@ -133,6 +137,8 @@ window.runStoryTimelineComponents = runStoryTimelineComponents;
 window.killStoryTimelineComponents = killStoryTimelineComponents;
 window.runDialogueTheaterComponents = runDialogueTheaterComponents;
 window.killDialogueTheaterComponents = killDialogueTheaterComponents;
+window.runOfficialResourcesComponents = runOfficialResourcesComponents;
+window.killOfficialResourcesComponents = killOfficialResourcesComponents;
 window.unloadGlobeBase = unloaders.globeBase;
 window.appModeSwitch = appModeSwitch;
 

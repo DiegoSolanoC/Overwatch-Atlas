@@ -7,6 +7,23 @@
  * the original method's `this`).
  */
 
+import { showMenuContainer } from '../../../../universal-features/atlas-main-menu/MenuContainer.js';
+import { getCurrentModeOrMenu } from '../../../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
+
+function restoreHubMenuIfHidden() {
+    if (!document.body.classList.contains('app-timeline-default')) return;
+    if (getCurrentModeOrMenu() !== 'menu') return;
+    const testContainer = document.querySelector('.test-container');
+    if (!testContainer || testContainer.style.display !== 'none') return;
+    showMenuContainer();
+    const menuButtons = testContainer.querySelector('.main-menu-buttons');
+    if (menuButtons) {
+        menuButtons.style.display = 'flex';
+        menuButtons.style.visibility = 'visible';
+        menuButtons.style.opacity = '1';
+    }
+}
+
 export function runHideEventSlide(slide) {
             const eventSlide = document.getElementById('eventSlide');
             const eventImageOverlay = document.getElementById('eventImageOverlay');
@@ -40,5 +57,9 @@ export function runHideEventSlide(slide) {
             // Only play sound if panel was actually closed
             if (wasOpen && window.SoundEffectsManager?.play) {
                 window.SoundEffectsManager.play('eventClick');
+            }
+
+            if (wasOpen) {
+                restoreHubMenuIfHidden();
             }
 }

@@ -33,6 +33,7 @@ import {
 } from './CurrentModeStatus.js';
 import { broadcastModeChange } from './broadcastModeChange.js';
 import { updateStatus } from '../statusFeed.js';
+import { killPlaceholderModeIfActive } from '../../atlas-header/triggerHomeExit.js';
 
 const VALID_LOAD_TARGETS = new Set(['globe', 'glossary', 'biography']);
 
@@ -43,6 +44,10 @@ function normalizeTarget(targetMode) {
 }
 
 async function unloadCurrentMode(currentMode, effectiveNext) {
+    if (await killPlaceholderModeIfActive(currentMode)) {
+        return;
+    }
+
     if (currentMode === 'globe') {
         await window.killGlobeComponents?.();
         return;

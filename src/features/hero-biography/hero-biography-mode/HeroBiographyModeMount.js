@@ -1,4 +1,4 @@
-import { loadHeroFilterManifest } from './loadHeroFilterManifest.js';
+import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
 import {
     mountHeroBiographyHeroFilterBar,
     unmountHeroBiographyHeroFilterBar,
@@ -24,10 +24,8 @@ function hideMenuAndGlobe() {
     }
 }
 
-/**
- * @param {{ onCancel?: () => void }} [options]
- */
-export async function mountHeroBiographyMode({ onCancel } = {}) {
+/** @param {object} [_options] Reserved for future mount options. */
+export async function mountHeroBiographyMode(_options = {}) {
     unmountHeroBiographyMode();
     hideMenuAndGlobe();
 
@@ -60,7 +58,7 @@ export async function mountHeroBiographyMode({ onCancel } = {}) {
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;
         e.preventDefault();
-        onCancel?.();
+        triggerHomeExit();
     };
     document.addEventListener('keydown', onEscape);
     host._heroBiographyEscape = onEscape;

@@ -256,6 +256,16 @@ export async function loadEventSystem(testBtn) {
       testBtn.style.background = "#c93439";
     }
     document.body.classList.add("event-system-loaded");
+
+    try {
+      const { refreshSeeTheLatestMenuPreview } = await import(
+        "../../universal-features/atlas-main-menu/seeTheLatestPreview.js"
+      );
+      refreshSeeTheLatestMenuPreview();
+    } catch (err) {
+      console.warn("[EventSystem] See the Latest preview refresh skipped:", err);
+    }
+
     updateStatus("Event System loaded", "success");
   } catch (error) {
     console.error("Error loading Event System:", error);

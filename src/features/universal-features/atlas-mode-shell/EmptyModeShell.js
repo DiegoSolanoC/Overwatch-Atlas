@@ -1,14 +1,16 @@
 /**
  * Minimal in-content shell for modes that are not yet fully built.
- * Hides the main menu and shows a titled placeholder with Cancel → main menu.
+ * Exit via the header Home button (or Escape → Home), not an in-panel Cancel.
  */
+
+import { triggerHomeExit } from '../atlas-header/triggerHomeExit.js';
 
 const HOST_ID = 'atlasEmptyModeHost';
 
 /**
- * @param {{ title: string, lead?: string, onCancel?: () => void }} options
+ * @param {{ title: string, lead?: string }} options
  */
-export function mountEmptyModeShell({ title, lead = '', onCancel }) {
+export function mountEmptyModeShell({ title, lead = '' }) {
     unmountEmptyModeShell();
 
     const testContainer = document.querySelector('.test-container');
@@ -36,9 +38,8 @@ export function mountEmptyModeShell({ title, lead = '', onCancel }) {
     const host = document.createElement('div');
     host.id = HOST_ID;
     host.className = 'story-viewer-container story-viewer-container--hub atlas-empty-mode-host';
-    host.setAttribute('role', 'dialog');
-    host.setAttribute('aria-modal', 'true');
-    host.setAttribute('aria-labelledby', 'atlasEmptyModeHostHeading');
+    host.setAttribute('role', 'main');
+    host.setAttribute('aria-label', title);
 
     const inner = document.createElement('div');
     inner.className = 'atlas-empty-mode-host__inner';
@@ -57,26 +58,13 @@ export function mountEmptyModeShell({ title, lead = '', onCancel }) {
         inner.appendChild(sub);
     }
 
-    const dismissRow = document.createElement('div');
-    dismissRow.className = 'story-archive-category-hub__dismiss-row';
-    const cancelBtn = document.createElement('button');
-    cancelBtn.type = 'button';
-    cancelBtn.className = 'story-viewer-action-btn story-archive-category-hub-dismiss';
-    cancelBtn.textContent = 'Cancel';
-    cancelBtn.setAttribute('title', 'Return to main menu');
-    cancelBtn.addEventListener('click', () => {
-        onCancel?.();
-    });
-    dismissRow.appendChild(cancelBtn);
-    inner.appendChild(dismissRow);
-
     host.appendChild(inner);
     content.appendChild(host);
 
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;
         e.preventDefault();
-        onCancel?.();
+        triggerHomeExit();
     };
     document.addEventListener('keydown', onEscape);
     host._atlasEmptyModeEscape = onEscape;

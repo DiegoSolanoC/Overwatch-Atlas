@@ -48,6 +48,10 @@ import {
     mountDialogueTheaterMode,
     unmountDialogueTheaterMode,
 } from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js';
+import {
+    mountOfficialResourcesMode,
+    unmountOfficialResourcesMode,
+} from '../../official-resources/official-resources-mode/OfficialResourcesModeMount.js';
 
 /**
  * Stages for the Data Archive entry. Declared up-front so the bar can
@@ -83,6 +87,7 @@ export class ModeOrchestrator {
             killHeroBiographyComponents: this.killHeroBiographyComponents.bind(this),
             killStoryTimelineComponents: this.killStoryTimelineComponents.bind(this),
             killDialogueTheaterComponents: this.killDialogueTheaterComponents.bind(this),
+            killOfficialResourcesComponents: this.killOfficialResourcesComponents.bind(this),
         };
     }
 
@@ -216,9 +221,7 @@ export class ModeOrchestrator {
             errorPrefix: 'Error in Hero Biography load',
             isAutoLoad,
         }, async () => {
-            await mountHeroBiographyMode({
-                onCancel: () => this.killHeroBiographyComponents(true),
-            });
+            await mountHeroBiographyMode();
         });
     }
 
@@ -232,9 +235,7 @@ export class ModeOrchestrator {
             errorPrefix: 'Error in Story Timeline load',
             isAutoLoad,
         }, async () => {
-            await mountStoryTimelineMode({
-                onCancel: () => this.killStoryTimelineComponents(true),
-            });
+            await mountStoryTimelineMode();
         });
     }
 
@@ -248,9 +249,21 @@ export class ModeOrchestrator {
             errorPrefix: 'Error in Dialogue Theater load',
             isAutoLoad,
         }, async () => {
-            await mountDialogueTheaterMode({
-                onCancel: () => this.killDialogueTheaterComponents(true),
-            });
+            await mountDialogueTheaterMode();
+        });
+    }
+
+    /** Placeholder mode — empty main space until Official Resources is built out. */
+    async runOfficialResourcesComponents(isAutoLoad = false) {
+        await enterMode(this._modeContext(), {
+            mode: 'officialResources',
+            runBtnId: 'runOfficialResourcesBtn',
+            startMessage: '>> Starting Official Resources...',
+            successMessage: 'OK - Official Resources ready',
+            errorPrefix: 'Error in Official Resources load',
+            isAutoLoad,
+        }, async () => {
+            await mountOfficialResourcesMode();
         });
     }
 
@@ -400,6 +413,17 @@ export class ModeOrchestrator {
             restoreMenu,
         }, async () => {
             await unmountDialogueTheaterMode();
+        });
+    }
+
+    async killOfficialResourcesComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: 'officialResources',
+            startMessage: 'Exiting Official Resources...',
+            successMessage: 'OK - Official Resources exited!',
+            restoreMenu,
+        }, async () => {
+            await unmountOfficialResourcesMode();
         });
     }
 }

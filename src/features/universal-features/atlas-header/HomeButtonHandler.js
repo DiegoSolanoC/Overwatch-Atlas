@@ -25,6 +25,10 @@ import {
 } from "../atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js";
 import { teardownGlobeMapChooserHub } from "../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js";
 import { playModeSwitchSound } from "../atlas-sound-effects/playModeSwitchSound.js";
+import {
+  killPlaceholderModeIfActive,
+  killPlaceholderModeFromDomIfPresent,
+} from "./triggerHomeExit.js";
 
 function closeFloatingOverlays() {
   if (window.standaloneEventSlide?.hideEventSlide) {
@@ -36,6 +40,13 @@ function closeFloatingOverlays() {
 }
 
 async function unloadActiveModeBeforeReturningHome(currentMode) {
+  if (await killPlaceholderModeIfActive(currentMode)) {
+    return;
+  }
+  if (await killPlaceholderModeFromDomIfPresent()) {
+    return;
+  }
+
   if (
     currentMode === "biography" &&
     typeof window.killBiographyComponents === "function"

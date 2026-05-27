@@ -18,7 +18,7 @@ import { clearCurrentMode, getCurrentMode } from './CurrentModeStatus.js';
  * the self-killer is never invoked.
  *
  * @param {Object} ctx
- * @param {string} ctx.targetMode - Mode being launched (`globe`, `glossary`, `biography`, `heroBiography`, `storyTimeline`, `dialogueTheater`).
+ * @param {string} ctx.targetMode - Mode being launched (`globe`, `glossary`, `biography`, `heroBiography`, `storyTimeline`, `dialogueTheater`, `officialResources`).
  * @param {Record<string, boolean>} ctx.loadedComponents - Orchestrator's loaded-state map.
  * @param {Record<string, (restoreMenu?: boolean) => Promise<void>>} ctx.killers - Per-mode kill functions (`orchestrator._killers`).
  */
@@ -36,6 +36,7 @@ export async function killOtherModes(ctx) {
     await killLinear('heroBiography', killers.killHeroBiographyComponents);
     await killLinear('storyTimeline', killers.killStoryTimelineComponents);
     await killLinear('dialogueTheater', killers.killDialogueTheaterComponents);
+    await killLinear('officialResources', killers.killOfficialResourcesComponents);
 
     if (currentMode === 'glossary' && loadedComponents.glossary && killers.killGlossaryComponents) {
         await killers.killGlossaryComponents();

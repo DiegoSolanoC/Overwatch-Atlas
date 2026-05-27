@@ -455,6 +455,14 @@ export function runSetupStandalonePagination(slide) {
         // Store for external access
         slide.updatePaginationUI = updatePaginationUI;
 
+        window.standaloneDockPagination = {
+            goToPage: (page, options) => handlePageChange(page, options),
+            getTotalPages,
+            getCurrentPage,
+            getDockEvents,
+            eventsPerPage,
+        };
+
         // Initial seed: skip the page-turn animation so the user sees the
         // populated thumbnails immediately (the boot loading overlay is
         // still up at this point and would otherwise mask a 1.4s stagger).

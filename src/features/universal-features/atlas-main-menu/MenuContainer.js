@@ -49,3 +49,16 @@ export function hideMenuContainer() {
     testContainer.style.display = 'none';
     updateStatus('→ Hiding menu container...', 'info');
 }
+
+/**
+ * Shows the main menu host again (hub / timeline default). Used when closing
+ * the event slide after flows that hid the menu, and by `restoreMainMenu`.
+ */
+export function showMenuContainer() {
+    const testContainer = document.querySelector('.test-container');
+    if (!testContainer) return;
+    testContainer.style.display = 'flex';
+    testContainer.style.visibility = 'visible';
+    testContainer.style.opacity = '1';
+    testContainer.classList.remove('fading');
+}
