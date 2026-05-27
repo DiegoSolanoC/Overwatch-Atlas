@@ -54,8 +54,24 @@ export async function loadMenu(loadedComponents) {
         const setupBiographyHandler = typeof window.runBiographyComponents === 'function'
             ? createLoadingLockHandler(window.runBiographyComponents, setRunOperation)
             : null;
+        const setupHeroBiographyHandler = typeof window.runHeroBiographyComponents === 'function'
+            ? createLoadingLockHandler(window.runHeroBiographyComponents, setRunOperation)
+            : null;
+        const setupStoryTimelineHandler = typeof window.runStoryTimelineComponents === 'function'
+            ? createLoadingLockHandler(window.runStoryTimelineComponents, setRunOperation)
+            : null;
+        const setupDialogueTheaterHandler = typeof window.runDialogueTheaterComponents === 'function'
+            ? createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation)
+            : null;
 
-        const menuButtons = createMenuButtons(setupGlobeHandler, setupGlossaryHandler, setupBiographyHandler);
+        const menuButtons = createMenuButtons(
+            setupGlobeHandler,
+            setupGlossaryHandler,
+            setupBiographyHandler,
+            setupHeroBiographyHandler,
+            setupStoryTimelineHandler,
+            setupDialogueTheaterHandler,
+        );
         menuContainer.appendChild(menuButtons);
         updateStatus('✓ Menu buttons created', 'success');
 

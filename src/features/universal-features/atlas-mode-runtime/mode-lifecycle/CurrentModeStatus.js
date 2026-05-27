@@ -1,6 +1,7 @@
 /**
  * Single source of truth for the persisted "current mode" of the app
- * (`'menu' | 'globe' | 'glossary' | 'biography'`). Stored in `localStorage`
+ * (`'menu' | 'globe' | 'glossary' | 'biography' | 'heroBiography' | 'storyTimeline' | 'dialogueTheater'`).
+ * Stored in `localStorage`
  * under one key so the loader, orchestrator, and helpers all agree on what
  * mode the app thinks it's in across reloads. A missing value means `'menu'`.
  */

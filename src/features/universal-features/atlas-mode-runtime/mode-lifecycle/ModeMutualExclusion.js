@@ -18,23 +18,25 @@ import { clearCurrentMode, getCurrentMode } from './CurrentModeStatus.js';
  * the self-killer is never invoked.
  *
  * @param {Object} ctx
- * @param {string} ctx.targetMode - The mode being launched: `'globe' | 'glossary' | 'biography'`.
- * @param {{ globeBase: boolean, glossary: boolean, biography: boolean }} ctx.loadedComponents - Orchestrator's loaded-state map.
- * @param {{
- *   killGlobeComponents?:    () => Promise<void>,
- *   killGlossaryComponents?: () => Promise<void>,
- *   killBiographyComponents?: (restoreMenu?: boolean) => Promise<void>
- * }} ctx.killers - Per-mode kill functions, typically `orchestrator._killers`.
+ * @param {string} ctx.targetMode - Mode being launched (`globe`, `glossary`, `biography`, `heroBiography`, `storyTimeline`, `dialogueTheater`).
+ * @param {Record<string, boolean>} ctx.loadedComponents - Orchestrator's loaded-state map.
+ * @param {Record<string, (restoreMenu?: boolean) => Promise<void>>} ctx.killers - Per-mode kill functions (`orchestrator._killers`).
  */
 export async function killOtherModes(ctx) {
     const { targetMode, loadedComponents, killers } = ctx;
     const currentMode = getCurrentMode();
     if (!currentMode || currentMode === targetMode) return;
 
-    if (currentMode === 'biography' && loadedComponents.biography && killers.killBiographyComponents) {
-        // Pass `false` so killBiography doesn't restore the menu — we're about to mount another mode.
-        await killers.killBiographyComponents(false);
-    }
+    const killLinear = async (modeKey, killFn) => {
+        if (currentMode !== modeKey || !loadedComponents[modeKey] || !killFn) return;
+        await killFn(false);
+    };
+
+    await killLinear('biography', killers.killBiographyComponents);
+    await killLinear('heroBiography', killers.killHeroBiographyComponents);
+    await killLinear('storyTimeline', killers.killStoryTimelineComponents);
+    await killLinear('dialogueTheater', killers.killDialogueTheaterComponents);
+
     if (currentMode === 'glossary' && loadedComponents.glossary && killers.killGlossaryComponents) {
         await killers.killGlossaryComponents();
     }

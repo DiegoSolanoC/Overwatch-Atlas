@@ -47,7 +47,10 @@ const loadedComponents = {
     controls: false,
     events: false,
     glossary: false,
-    biography: false
+    biography: false,
+    heroBiography: false,
+    storyTimeline: false,
+    dialogueTheater: false,
 };
 
 if (typeof window !== 'undefined') {
@@ -104,6 +107,12 @@ const runGlossaryComponents = (isAutoLoad = false) => modeOrchestrator.runGlossa
 const killGlossaryComponents = () => modeOrchestrator.killGlossaryComponents();
 const runBiographyComponents = (isAutoLoad = false) => modeOrchestrator.runBiographyComponents(isAutoLoad);
 const killBiographyComponents = () => modeOrchestrator.killBiographyComponents();
+const runHeroBiographyComponents = (isAutoLoad = false) => modeOrchestrator.runHeroBiographyComponents(isAutoLoad);
+const killHeroBiographyComponents = () => modeOrchestrator.killHeroBiographyComponents();
+const runStoryTimelineComponents = (isAutoLoad = false) => modeOrchestrator.runStoryTimelineComponents(isAutoLoad);
+const killStoryTimelineComponents = () => modeOrchestrator.killStoryTimelineComponents();
+const runDialogueTheaterComponents = (isAutoLoad = false) => modeOrchestrator.runDialogueTheaterComponents(isAutoLoad);
+const killDialogueTheaterComponents = () => modeOrchestrator.killDialogueTheaterComponents();
 
 // === Public API on window ==============================================
 
@@ -118,6 +127,12 @@ window.runGlossaryComponents = runGlossaryComponents;
 window.killGlossaryComponents = killGlossaryComponents;
 window.runBiographyComponents = runBiographyComponents;
 window.killBiographyComponents = killBiographyComponents;
+window.runHeroBiographyComponents = runHeroBiographyComponents;
+window.killHeroBiographyComponents = killHeroBiographyComponents;
+window.runStoryTimelineComponents = runStoryTimelineComponents;
+window.killStoryTimelineComponents = killStoryTimelineComponents;
+window.runDialogueTheaterComponents = runDialogueTheaterComponents;
+window.killDialogueTheaterComponents = killDialogueTheaterComponents;
 window.unloadGlobeBase = unloaders.globeBase;
 window.appModeSwitch = appModeSwitch;
 

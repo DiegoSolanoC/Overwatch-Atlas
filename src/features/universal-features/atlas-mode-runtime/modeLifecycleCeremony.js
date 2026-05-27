@@ -46,7 +46,7 @@ import { playModeSwitchSound } from '../atlas-sound-effects/playModeSwitchSound.
  *
  * @param {OrchestratorContext} orchCtx
  * @param {object} cfg
- * @param {'glossary'|'biography'} cfg.mode      Target mode + `loadedComponents` flag.
+ * @param {string} cfg.mode                      Target mode + `loadedComponents` flag.
  * @param {string} cfg.runBtnId                  DOM id of the menu's run button (disabled during load).
  * @param {string} cfg.startMessage              Status line shown when entry begins.
  * @param {string} cfg.successMessage            Status line shown after entry succeeds.
@@ -113,7 +113,7 @@ export async function enterMode(orchCtx, cfg, entryFn) {
  *
  * @param {OrchestratorContext} orchCtx
  * @param {object} cfg
- * @param {'glossary'|'biography'} cfg.mode    `loadedComponents` flag to clear.
+ * @param {string} cfg.mode                    `loadedComponents` flag to clear.
  * @param {string} cfg.startMessage            Status line shown when exit begins.
  * @param {string} cfg.successMessage          Status line shown after exit completes.
  * @param {boolean} [cfg.restoreMenu=true]     Skip when chaining straight into another mode entry.

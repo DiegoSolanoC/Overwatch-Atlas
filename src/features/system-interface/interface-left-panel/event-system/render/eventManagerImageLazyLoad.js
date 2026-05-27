@@ -1,5 +1,3 @@
-import { isLoadingAssetGifDebugForced } from '../../../../universal-features/atlas-ui/loadingGifAssets.js';
-
 /**
  * Lazy-load preview images in the Event Manager list.
  *
@@ -17,7 +15,6 @@ import { isLoadingAssetGifDebugForced } from '../../../../universal-features/atl
  * @param {HTMLElement|null} eventsList
  */
 function finishPreviewImageLoad(img, wrap) {
-    if (isLoadingAssetGifDebugForced()) return;
     if (img.complete && img.naturalWidth > 0) {
         img.style.opacity = '1';
         wrap?.classList.remove('event-item-preview-image--loading');
@@ -26,7 +23,6 @@ function finishPreviewImageLoad(img, wrap) {
 
 export function setupEventManagerImageLazyLoading(renderService, eventsList) {
     if (!eventsList) return;
-    if (isLoadingAssetGifDebugForced()) return;
 
     const imgs = Array.from(eventsList.querySelectorAll('img[data-src]'));
     if (imgs.length === 0) return;

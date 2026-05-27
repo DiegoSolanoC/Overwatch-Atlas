@@ -29,11 +29,11 @@
 @import url('ui/modals.css?v=9');
 @import url('ui/external-link-confirm.css?v=9');
 @import url('ui/loading-asset-slot.css?v=1');
-@import url('ui/debug-loading-asset-gif.css?v=3');
 
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=62');
+@import url('features/hero-biography/hero-biography-mode.css?v=17');
 
 /* Event system */
 @import url('features/event-system/variants.css?v=9');

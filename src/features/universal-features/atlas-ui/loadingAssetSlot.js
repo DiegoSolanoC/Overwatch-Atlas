@@ -2,8 +2,6 @@
  * Black slot + `loading asset.gif` while `<img>` previews load (main menu, hubs, dock thumbs).
  */
 
-import { isLoadingAssetGifDebugForced } from './loadingGifAssets.js';
-
 const LOADING_CLASS = {
     menu: 'main-menu-image-container--loading',
     hub: 'story-archive-category-hub__figure--loading',
@@ -54,7 +52,6 @@ export function beginLoadingAssetSlot(slot, img) {
  */
 export function endLoadingAssetSlot(slot, img) {
     if (!(slot instanceof HTMLElement) || !(img instanceof HTMLImageElement)) return;
-    if (isLoadingAssetGifDebugForced()) return;
     const kind = slotKind(slot);
     if (!kind) return;
     slot.classList.remove(LOADING_CLASS[kind]);

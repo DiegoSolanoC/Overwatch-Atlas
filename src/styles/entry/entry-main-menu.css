@@ -14,6 +14,48 @@
     isolation: isolate;
 }
 
+.main-menu-buttons-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 2.5vh, 28px);
+    width: min(1920px, 100%);
+    max-width: 100%;
+    padding: 0 clamp(8px, 1.5vw, 24px);
+    box-sizing: border-box;
+}
+
+.main-menu-buttons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(16px, 2vw, 28px);
+    width: 100%;
+}
+
+.main-menu-buttons-stack .main-menu-btn-wrapper {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+}
+
+.main-menu-buttons-stack .main-menu-btn {
+    max-height: min(420px, 38vh);
+}
+
+.atlas-empty-mode-host__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: min(720px, calc(100% - 32px));
+    padding: 24px 16px 32px;
+    box-sizing: border-box;
+}
+
 /* Button wrapper with external label */
 .main-menu-btn-wrapper {
     display: flex;
@@ -216,6 +258,12 @@ body.color-palette-gray .main-menu-label-container {
         width: 100% !important;
         height: 100% !important;
         min-height: 100% !important;
+    }
+
+    body .main-menu-buttons-stack {
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 !important;
     }
 
     body .main-menu-buttons-row {

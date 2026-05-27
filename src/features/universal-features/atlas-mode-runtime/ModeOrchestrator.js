@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ModeOrchestrator ¥ runtime owner of the app's mode lifecycle.
  *
  * Holds the loaded-component flag bag and the load/unload pairs for every
@@ -36,6 +36,18 @@ import {
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js';
 import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js';
+import {
+    mountHeroBiographyMode,
+    unmountHeroBiographyMode,
+} from '../../hero-biography/hero-biography-mode/HeroBiographyModeMount.js';
+import {
+    mountStoryTimelineMode,
+    unmountStoryTimelineMode,
+} from '../../story-timeline/story-timeline-mode/StoryTimelineModeMount.js';
+import {
+    mountDialogueTheaterMode,
+    unmountDialogueTheaterMode,
+} from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js';
 
 /**
  * Stages for the Data Archive entry. Declared up-front so the bar can
@@ -67,7 +79,10 @@ export class ModeOrchestrator {
         this._killers = {
             killGlobeComponents: this.killGlobeComponents.bind(this),
             killGlossaryComponents: this.killGlossaryComponents.bind(this),
-            killBiographyComponents: this.killBiographyComponents.bind(this)
+            killBiographyComponents: this.killBiographyComponents.bind(this),
+            killHeroBiographyComponents: this.killHeroBiographyComponents.bind(this),
+            killStoryTimelineComponents: this.killStoryTimelineComponents.bind(this),
+            killDialogueTheaterComponents: this.killDialogueTheaterComponents.bind(this),
         };
     }
 
@@ -191,6 +206,54 @@ export class ModeOrchestrator {
         });
     }
 
+    /** Placeholder mode — empty main space until Hero Biography is built out. */
+    async runHeroBiographyComponents(isAutoLoad = false) {
+        await enterMode(this._modeContext(), {
+            mode: 'heroBiography',
+            runBtnId: 'runHeroBiographyBtn',
+            startMessage: '>> Starting Hero Biography...',
+            successMessage: 'OK - Hero Biography ready',
+            errorPrefix: 'Error in Hero Biography load',
+            isAutoLoad,
+        }, async () => {
+            await mountHeroBiographyMode({
+                onCancel: () => this.killHeroBiographyComponents(true),
+            });
+        });
+    }
+
+    /** Placeholder mode — empty main space until Story Timeline is built out. */
+    async runStoryTimelineComponents(isAutoLoad = false) {
+        await enterMode(this._modeContext(), {
+            mode: 'storyTimeline',
+            runBtnId: 'runStoryTimelineBtn',
+            startMessage: '>> Starting Story Timeline...',
+            successMessage: 'OK - Story Timeline ready',
+            errorPrefix: 'Error in Story Timeline load',
+            isAutoLoad,
+        }, async () => {
+            await mountStoryTimelineMode({
+                onCancel: () => this.killStoryTimelineComponents(true),
+            });
+        });
+    }
+
+    /** Placeholder mode — empty main space until Dialogue Theater is built out. */
+    async runDialogueTheaterComponents(isAutoLoad = false) {
+        await enterMode(this._modeContext(), {
+            mode: 'dialogueTheater',
+            runBtnId: 'runDialogueTheaterBtn',
+            startMessage: '>> Starting Dialogue Theater...',
+            successMessage: 'OK - Dialogue Theater ready',
+            errorPrefix: 'Error in Dialogue Theater load',
+            isAutoLoad,
+        }, async () => {
+            await mountDialogueTheaterMode({
+                onCancel: () => this.killDialogueTheaterComponents(true),
+            });
+        });
+    }
+
     /**
      * Build the orchestrator-context object that the linear-mode ceremony
      * helpers (`enterMode` / `exitMode`) need.
@@ -304,6 +367,39 @@ export class ModeOrchestrator {
             restoreMenu
         }, async () => {
             await exitDataArchive();
+        });
+    }
+
+    async killHeroBiographyComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: 'heroBiography',
+            startMessage: 'Exiting Hero Biography...',
+            successMessage: 'OK - Hero Biography exited!',
+            restoreMenu,
+        }, async () => {
+            await unmountHeroBiographyMode();
+        });
+    }
+
+    async killStoryTimelineComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: 'storyTimeline',
+            startMessage: 'Exiting Story Timeline...',
+            successMessage: 'OK - Story Timeline exited!',
+            restoreMenu,
+        }, async () => {
+            await unmountStoryTimelineMode();
+        });
+    }
+
+    async killDialogueTheaterComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: 'dialogueTheater',
+            startMessage: 'Exiting Dialogue Theater...',
+            successMessage: 'OK - Dialogue Theater exited!',
+            restoreMenu,
+        }, async () => {
+            await unmountDialogueTheaterMode();
         });
     }
 }
