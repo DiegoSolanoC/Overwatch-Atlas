@@ -93,7 +93,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Initiator"
+      "heroSubRole": "Initiator",
+      "birthday": ""
     },
     {
       "name": "Hazard",
@@ -124,7 +125,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Initiator"
+      "heroSubRole": "Initiator",
+      "birthday": ""
     },
     {
       "name": "Doomfist",
@@ -251,7 +253,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Initiator"
+      "heroSubRole": "Initiator",
+      "birthday": ""
     },
     {
       "name": "Winston",
@@ -362,7 +365,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Initiator"
+      "heroSubRole": "Initiator",
+      "birthday": ""
     },
     {
       "name": "Wrecking Ball",
@@ -417,7 +421,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Initiator"
+      "heroSubRole": "Initiator",
+      "birthday": ""
     },
     {
       "name": "Mauga",
@@ -448,7 +453,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Bruiser"
+      "heroSubRole": "Bruiser",
+      "birthday": ""
     },
     {
       "name": "Orisa",
@@ -503,14 +509,6 @@
         },
         {
           "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Emre",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -519,7 +517,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Bruiser"
+      "heroSubRole": "Bruiser",
+      "birthday": ""
     },
     {
       "name": "Roadhog",
@@ -542,7 +541,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Bruiser"
+      "heroSubRole": "Bruiser",
+      "birthday": ""
     },
     {
       "name": "Zarya",
@@ -637,7 +637,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Bruiser"
+      "heroSubRole": "Bruiser",
+      "birthday": ""
     },
     {
       "name": "Domina",
@@ -692,7 +693,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Stalwart"
+      "heroSubRole": "Stalwart",
+      "birthday": ""
     },
     {
       "name": "Junker Queen",
@@ -715,7 +717,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Stalwart"
+      "heroSubRole": "Stalwart",
+      "birthday": ""
     },
     {
       "name": "Ramattra",
@@ -786,7 +789,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Stalwart"
+      "heroSubRole": "Stalwart",
+      "birthday": ""
     },
     {
       "name": "Reinhardt",
@@ -849,7 +853,8 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Stalwart"
+      "heroSubRole": "Stalwart",
+      "birthday": ""
     },
     {
       "name": "Sigma",
@@ -928,11 +933,12 @@
         }
       ],
       "heroRole": "Tank",
-      "heroSubRole": "Stalwart"
+      "heroSubRole": "Stalwart",
+      "birthday": ""
     },
     {
       "name": "Bastion",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Gothenburg",
@@ -942,40 +948,8 @@
       ],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Los Muertos",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Venture",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Illari",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -996,10 +970,19 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Emre",
@@ -1102,7 +1085,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Junkrat",
@@ -1141,7 +1125,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Mei",
@@ -1204,7 +1189,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Soldier 76",
@@ -1275,7 +1261,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Symmetra",
@@ -1314,7 +1301,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Torbjörn",
@@ -1377,7 +1365,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Specialist"
+      "heroSubRole": "Specialist",
+      "birthday": ""
     },
     {
       "name": "Ashe",
@@ -1416,7 +1405,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Sharpshooter"
+      "heroSubRole": "Sharpshooter",
+      "birthday": ""
     },
     {
       "name": "Cassidy",
@@ -1527,7 +1517,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Sharpshooter"
+      "heroSubRole": "Sharpshooter",
+      "birthday": ""
     },
     {
       "name": "Hanzo",
@@ -1550,7 +1541,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Sharpshooter"
+      "heroSubRole": "Sharpshooter",
+      "birthday": ""
     },
     {
       "name": "Sojourn",
@@ -1605,7 +1597,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Sharpshooter"
+      "heroSubRole": "Sharpshooter",
+      "birthday": ""
     },
     {
       "name": "Widowmaker",
@@ -1660,7 +1653,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Sharpshooter"
+      "heroSubRole": "Sharpshooter",
+      "birthday": ""
     },
     {
       "name": "Anran",
@@ -1707,7 +1701,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Genji",
@@ -1778,11 +1773,12 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Reaper",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Los Angeles",
@@ -1791,38 +1787,6 @@
         }
       ],
       "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Blackwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Shimada Clan",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "hero",
           "name": "Ana",
@@ -1834,14 +1798,6 @@
         {
           "kind": "hero",
           "name": "Moira",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Orisa",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -1864,14 +1820,6 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
-          "name": "Antonio",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "hero",
           "name": "Emre",
           "reasoningSubjectToLinked": "",
@@ -1880,8 +1828,40 @@
           "showInCodex": true
         },
         {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
           "kind": "npc",
-          "name": "Efi",
+          "name": "Antonio",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -1889,7 +1869,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Tracer",
@@ -1936,7 +1917,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Vendetta",
@@ -1991,7 +1973,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Venture",
@@ -2038,7 +2021,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Flanker"
+      "heroSubRole": "Flanker",
+      "birthday": ""
     },
     {
       "name": "Echo",
@@ -2149,7 +2133,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Recon"
+      "heroSubRole": "Recon",
+      "birthday": ""
     },
     {
       "name": "Freja",
@@ -2212,7 +2197,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Recon"
+      "heroSubRole": "Recon",
+      "birthday": ""
     },
     {
       "name": "Pharah",
@@ -2291,7 +2277,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Recon"
+      "heroSubRole": "Recon",
+      "birthday": ""
     },
     {
       "name": "Sierra",
@@ -2402,7 +2389,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Recon"
+      "heroSubRole": "Recon",
+      "birthday": ""
     },
     {
       "name": "Sombra",
@@ -2489,7 +2477,8 @@
         }
       ],
       "heroRole": "Damage",
-      "heroSubRole": "Recon"
+      "heroSubRole": "Recon",
+      "birthday": ""
     },
     {
       "name": "Baptiste",
@@ -2560,7 +2549,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Tactician"
+      "heroSubRole": "Tactician",
+      "birthday": ""
     },
     {
       "name": "Ana",
@@ -2664,7 +2654,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Tactician"
+      "heroSubRole": "Tactician",
+      "birthday": ""
     },
     {
       "name": "Jetpack Cat",
@@ -2703,7 +2694,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Tactician"
+      "heroSubRole": "Tactician",
+      "birthday": ""
     },
     {
       "name": "Lúcio",
@@ -2734,7 +2726,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Tactician"
+      "heroSubRole": "Tactician",
+      "birthday": ""
     },
     {
       "name": "Zenyatta",
@@ -2789,7 +2782,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Tactician"
+      "heroSubRole": "Tactician",
+      "birthday": ""
     },
     {
       "name": "Kiriko",
@@ -2812,7 +2806,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Medic"
+      "heroSubRole": "Medic",
+      "birthday": ""
     },
     {
       "name": "Lifeweaver",
@@ -2859,7 +2854,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Medic"
+      "heroSubRole": "Medic",
+      "birthday": ""
     },
     {
       "name": "Mercy",
@@ -2898,7 +2894,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Medic"
+      "heroSubRole": "Medic",
+      "birthday": ""
     },
     {
       "name": "Moira",
@@ -2993,7 +2990,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Medic"
+      "heroSubRole": "Medic",
+      "birthday": ""
     },
     {
       "name": "Brigitte",
@@ -3048,7 +3046,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Survivor"
+      "heroSubRole": "Survivor",
+      "birthday": ""
     },
     {
       "name": "Illari",
@@ -3103,7 +3102,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Survivor"
+      "heroSubRole": "Survivor",
+      "birthday": ""
     },
     {
       "name": "Juno",
@@ -3166,7 +3166,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Survivor"
+      "heroSubRole": "Survivor",
+      "birthday": ""
     },
     {
       "name": "Mizuki",
@@ -3189,7 +3190,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Survivor"
+      "heroSubRole": "Survivor",
+      "birthday": ""
     },
     {
       "name": "Wuyang",
@@ -3236,7 +3238,8 @@
         }
       ],
       "heroRole": "Support",
-      "heroSubRole": "Survivor"
+      "heroSubRole": "Survivor",
+      "birthday": ""
     }
   ]
 }

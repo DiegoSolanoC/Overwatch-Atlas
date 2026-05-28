@@ -10,7 +10,7 @@ import {
 /** @type {Record<string, string[]> | null} */
 let cachedHeroBiosMap = null;
 
-async function fetchPlatformManifest() {
+export async function fetchPlatformManifest() {
     const cacheBuster = `${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
     const response = await fetch(`src/data/platform/manifest.json?v=${cacheBuster}`, {
         cache: 'no-store',

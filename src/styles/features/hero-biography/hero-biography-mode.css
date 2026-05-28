@@ -9,7 +9,8 @@
     justify-content: stretch;
     padding: 0;
     gap: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     transition: grid-template-rows 0.58s cubic-bezier(0.32, 0.72, 0.25, 1);
 }
 
@@ -35,11 +36,11 @@
 /* Heroes archive description — left stage column (not the event slide panel) */
 .hero-biography-mode__archive-description {
     position: absolute;
-    left: clamp(28px, 4vw, 56px);
+    left: clamp(52px, 6vw, 92px);
     top: clamp(4.5rem, 10vh, 7.5rem);
     bottom: calc(var(--hero-bio-chip-dock-gap, 48px) + clamp(100px, 14vh, 160px));
-    width: min(520px, 44vw);
-    max-width: min(560px, 52ch);
+    width: min(880px, 62vw);
+    max-width: min(920px, 82ch);
     z-index: 1;
     box-sizing: border-box;
     display: flex;
@@ -50,8 +51,8 @@
     border-width: 1px 1px 1px 3px;
     border-color: rgba(255, 255, 255, 0.14);
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.38);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.42);
+    background: transparent;
+    box-shadow: none;
     pointer-events: auto;
     overflow: hidden;
     opacity: 0;
@@ -69,11 +70,138 @@
     transform: translateX(0);
 }
 
+.hero-biography-mode__archive-description-toolbar {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0 0 clamp(10px, 1.2vh, 14px);
+    padding-bottom: clamp(8px, 1vh, 12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-biography-mode__archive-description-btn {
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+}
+
+.hero-biography-mode__archive-description-btn:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-biography-mode__archive-description-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.hero-biography-mode__archive-description-btn--primary {
+    border-color: rgba(100, 180, 255, 0.55);
+    color: rgba(200, 230, 255, 0.95);
+}
+
+.hero-biography-mode__archive-description.is-editing .hero-biography-mode__archive-description-empty {
+    display: none;
+}
+
+.hero-biography-mode__archive-birthday-edit {
+    flex: 0 0 auto;
+    margin: 0 0 clamp(10px, 1.2vh, 14px);
+    padding: 0 clamp(2px, 0.3vw, 4px) clamp(10px, 1.2vh, 14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-biography-mode__archive-birthday-edit[hidden] {
+    display: none;
+}
+
+.hero-biography-mode__archive-birthday-edit-label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-biography-mode__archive-birthday-edit .event-slide-hero-birthday-field__input {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    min-height: 40px;
+}
+
+.hero-biography-mode__archive-description-body--edit {
+    outline: none;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: clamp(8px, 1vh, 12px);
+    min-height: 4rem;
+}
+
+.hero-biography-mode__archive-description-body--edit:focus {
+    border-color: rgba(100, 180, 255, 0.45);
+}
+
+.hero-biography-mode__archive-description-body[hidden],
+.hero-biography-mode__archive-description-body--edit[hidden] {
+    display: none;
+}
+
+.hero-biography-mode__archive-birthday-meta {
+    flex: 0 0 auto;
+    margin: 0 0 clamp(12px, 1.4vh, 16px);
+    padding: 0 clamp(2px, 0.3vw, 4px) clamp(10px, 1.2vh, 14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-biography-mode__archive-birthday-meta[hidden] {
+    display: none;
+}
+
+.hero-biography-mode__archive-birthday-line,
+.hero-biography-mode__archive-age-line {
+    margin: 0 0 0.35em;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-biography-mode__archive-age-line {
+    margin-bottom: 0;
+}
+
+.hero-biography-mode__archive-birthday-label {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.78em;
+}
+
+.hero-biography-mode__archive-birthday-value {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+}
+
 .hero-biography-mode__archive-description-body {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-right: clamp(12px, 1vw, 18px);
     font-family: var(--font-default, 'Config', sans-serif);
     font-size: clamp(0.92rem, 1.35vw, 1.05rem);
     font-weight: 500;
@@ -82,6 +210,26 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.hero-biography-mode__archive-description-body::-webkit-scrollbar {
+    width: 12px;
+}
+
+.hero-biography-mode__archive-description-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.hero-biography-mode__archive-description-body::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+
+.hero-biography-mode__archive-description-body::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
 }
 
 .hero-biography-mode__archive-description-empty {
@@ -97,11 +245,102 @@
     display: none;
 }
 
+.hero-biography-mode__archive-connections-body[hidden] {
+    display: none;
+}
+
+.hero-biography-mode__archive-connections-inner {
+    width: 100%;
+}
+
+.hero-biography-mode__archive-connections-body .event-slide-bio-connections__group > .event-slide-bio-connections__row--dual {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 8px;
+}
+
+.hero-biography-mode__archive-connections-body .event-slide-bio-connections__portrait {
+    width: 44px;
+    height: 44px;
+}
+
+.hero-biography-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.hero-biography-mode__archive-view-toggle {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: clamp(10px, 1.2vh, 14px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-biography-mode__archive-view-toggle[hidden] {
+    display: none;
+}
+
+.hero-biography-mode__archive-view-toggle-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.72);
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.hero-biography-mode__archive-view-toggle-btn:hover {
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-biography-mode__archive-view-toggle-btn.is-active {
+    border-color: rgba(100, 180, 255, 0.55);
+    background: rgba(100, 180, 255, 0.14);
+    color: rgba(220, 235, 255, 0.98);
+}
+
+.hero-biography-mode__archive-view-toggle-btn__icon {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    opacity: 0.92;
+}
+
+.hero-biography-mode__archive-view-toggle-btn__label {
+    line-height: 1.2;
+    text-align: center;
+}
+
+.hero-biography-mode__archive-description.is-editing .hero-biography-mode__archive-view-toggle {
+    display: none;
+}
+
 @media (max-width: 900px) {
     .hero-biography-mode__archive-description {
-        left: clamp(20px, 3.2vw, 36px);
-        width: min(400px, 48vw);
-        max-width: min(440px, 46ch);
+        left: clamp(34px, 4.8vw, 60px);
+        width: min(720px, 64vw);
+        max-width: min(760px, 72ch);
         padding: 12px 16px;
     }
 }
@@ -172,6 +411,7 @@ body:has(#atlasHeroBiographyHost) #heroBiographyChipStripToggle.dock-globe-rail_
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    overflow: visible;
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
@@ -194,6 +434,8 @@ body:has(#atlasHeroBiographyHost) #heroBiographyChipStripToggle.dock-globe-rail_
     height: 100%;
     max-width: none;
     max-height: none;
+    flex: 0 0 auto;
+    align-self: flex-end;
     object-fit: contain;
     object-position: center bottom;
 }

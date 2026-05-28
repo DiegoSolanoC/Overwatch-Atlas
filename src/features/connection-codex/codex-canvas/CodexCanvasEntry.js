@@ -8,6 +8,7 @@ import {
 } from './core/codexCanvasHost.js';
 import { api } from './core/codexCanvasApi.js';
 import { s } from './core/canvasSession.js';
+import { buildDirectCodexBioPairKeySet, pairKeyForBioArchiveConnection } from '../../system-interface/interface-shared/bio-archive/bioArchiveDirectCodexPairKeys.js';
 
 export {
     initCodexCanvas,
@@ -32,6 +33,27 @@ if (typeof window !== 'undefined') {
         exportCodexJson: () => api.exportCodexLayoutJsonDownload(),
         importCodexJsonText: (...args) => api.importCodexLayoutFromJsonText(...args),
         syncCodexEdgesFromBioArchiveConnections,
-        previewBioCodexArchiveLinkDiff
+        previewBioCodexArchiveLinkDiff,
+        getBioArchiveCodexSnapshot() {
+            const nodes = s.codexAllNodes;
+            const edges = s.codexEdges;
+            if (!Array.isArray(nodes) || nodes.length === 0) return null;
+            const allowedShowInCodexPairKeys = buildDirectCodexBioPairKeySet(nodes, edges || []);
+            return {
+                nodes,
+                edges: edges || [],
+                allowedShowInCodexPairKeys,
+                pairKeyFor(arch, subjectKind, subjectName, linkedKind, linkedName) {
+                    return pairKeyForBioArchiveConnection(
+                        arch,
+                        subjectKind,
+                        linkedKind,
+                        subjectName,
+                        linkedName,
+                        nodes,
+                    );
+                },
+            };
+        },
     };
 }

@@ -5,6 +5,10 @@
 
 import { matchHeroManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { ensureArchiveLayoutSnapshotsForFilter } from '../../system-interface/interface-filter-menu/buttons/archive-layouts/archiveLayoutSnapshots.js';
+import {
+    getHeroBirthdayAgeDisplay,
+    getHeroBirthdayRawFromEntry
+} from '../../system-interface/interface-shared/bio-archive/HeroBirthdayAge.js';
 
 /** @type {object[] | null} */
 let cachedHeroArchiveEvents = null;
@@ -58,8 +62,13 @@ export async function loadHeroesArchiveEvents() {
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                cachedHeroArchiveEvents = parsed;
-                return cachedHeroArchiveEvents;
+                const hasConnections = parsed.some(
+                    (e) => Array.isArray(e?.connections) && e.connections.length > 0,
+                );
+                if (hasConnections) {
+                    cachedHeroArchiveEvents = parsed;
+                    return cachedHeroArchiveEvents;
+                }
             }
         }
     } catch (_) {}
@@ -81,6 +90,13 @@ export async function loadHeroesArchiveEvents() {
 
 export function clearHeroesArchiveEventsCache() {
     cachedHeroArchiveEvents = null;
+}
+
+/**
+ * @param {object[] | null} events
+ */
+export function setHeroesArchiveEventsCache(events) {
+    cachedHeroArchiveEvents = Array.isArray(events) ? events : null;
 }
 
 /**
@@ -112,4 +128,16 @@ export function getHeroArchiveBioDescription(entry) {
     if (!raw) return null;
     if (/^no description available\.?$/i.test(raw)) return null;
     return raw;
+}
+
+/**
+ * Birthday + age shown above biography text.
+ * @param {object | null} entry
+ * @returns {{ birthdayText: string, age: number } | null}
+ */
+export function getHeroArchiveBirthdayAgeDisplay(entry) {
+    if (!entry) return null;
+    const raw = getHeroBirthdayRawFromEntry(entry);
+    if (!raw) return null;
+    return getHeroBirthdayAgeDisplay(raw);
 }

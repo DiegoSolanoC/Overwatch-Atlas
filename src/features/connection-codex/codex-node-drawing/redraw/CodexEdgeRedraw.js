@@ -281,7 +281,6 @@ export function redrawCodexEdges(opts = {}) {
 
     const hitPickRoot = document.createElementNS(ns, 'g');
     hitPickRoot.classList.add('codex-edges-hit-pick');
-    svg.appendChild(hitPickRoot);
 
     const contentRoot = document.createElementNS(ns, 'g');
     contentRoot.classList.add('codex-edges-masked');
@@ -370,6 +369,8 @@ export function redrawCodexEdges(opts = {}) {
             hitPickRoot.appendChild(hit);
         }
     });
+
+    svg.appendChild(hitPickRoot);
 
     const degLabelsG = document.createElementNS(ns, 'g');
     degLabelsG.classList.add('codex-edge-degree-labels');

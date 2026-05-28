@@ -61,6 +61,7 @@
                     <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
                     <p id="eventSlideFactionTypeDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <p id="eventSlideHeroRoleDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
+                    <p id="eventSlideHeroBirthdayDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <div id="eventSlideHeroLocationsEdit" class="event-slide-hero-locations-edit" hidden>
                         <div id="eventSlideFactionTypeBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
                             <div class="event-slide-hero-locations-edit__toolbar">
@@ -84,6 +85,28 @@
                                 <label class="event-slide-hero-locations-edit__label" for="eventSlideEditHeroSubRoleBio">Subrole</label>
                             </div>
                             <select class="event-slide-inline-editor__input" id="eventSlideEditHeroSubRoleBio" aria-label="Hero subrole" style="width: 100%; box-sizing: border-box; margin-top: 6px;"></select>
+                        </div>
+                        <div id="eventSlideHeroBirthdayBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
+                            <div class="event-slide-hero-locations-edit__toolbar">
+                                <span class="event-slide-hero-locations-edit__label">Birthday</span>
+                            </div>
+                            <div class="event-slide-hero-birthday-fields" style="margin-top: 6px;">
+                                <div class="event-slide-hero-birthday-field">
+                                    <label class="event-slide-hero-birthday-field__label" for="eventSlideEditHeroBirthdayDay">Day</label>
+                                    <input class="event-slide-inline-editor__input event-slide-hero-birthday-field__input" id="eventSlideEditHeroBirthdayDay" type="number" min="1" max="31" inputmode="numeric" autocomplete="off" placeholder="12" />
+                                </div>
+                                <div class="event-slide-hero-birthday-field event-slide-hero-birthday-field--month">
+                                    <label class="event-slide-hero-birthday-field__label" for="eventSlideEditHeroBirthdayMonth">Month</label>
+                                    <div class="event-slide-hero-birthday-month-wrap">
+                                        <input class="event-slide-inline-editor__input event-slide-hero-birthday-field__input" id="eventSlideEditHeroBirthdayMonth" type="text" spellcheck="false" autocomplete="off" placeholder="May" />
+                                        <div id="eventSlideHeroBirthdayMonthList" class="filter-autocomplete-list event-slide-hero-birthday-month-list" hidden role="listbox" aria-label="Month suggestions"></div>
+                                    </div>
+                                </div>
+                                <div class="event-slide-hero-birthday-field">
+                                    <label class="event-slide-hero-birthday-field__label" for="eventSlideEditHeroBirthdayYear">Year</label>
+                                    <input class="event-slide-inline-editor__input event-slide-hero-birthday-field__input" id="eventSlideEditHeroBirthdayYear" type="number" min="1" max="9999" inputmode="numeric" autocomplete="off" placeholder="2048" />
+                                </div>
+                            </div>
                         </div>
                         <div id="eventSlideBioDescriptionEditHost" class="event-slide-hero-locations-edit__description-host">
                             <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
@@ -290,7 +313,7 @@
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/form/autocomplete/FormTokenAutocomplete.js?v=2"></script>
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/form/EventFormService.js?v=14"></script>
     <script src="src/features/system-interface/interface-shared/bio-archive/HeroRelevantLocationsEditor.js?v=3"></script>
-    <script src="src/features/system-interface/interface-shared/bio-archive/mirrorBioArchiveConnections.js?v=7"></script>
+    <script src="src/features/system-interface/interface-shared/bio-archive/mirrorBioArchiveConnections.js?v=10"></script>
     <script src="src/features/system-interface/interface-shared/bio-archive/BioArchiveConnectionsEditor.js?v=9"></script>
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/drag-drop/EventListReorderDragDrop.js?v=13"></script>
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/listeners/EventListenerService.js?v=14"></script>

@@ -277,9 +277,11 @@
     "Bhatt",
     "Chao",
     "Gérard",
+    "Kamori-san",
     "Naughton",
     "Osai",
     "Portero",
+    "Sojiro",
     "Vincent"
   ],
   "music": [
@@ -527,11 +529,64 @@
       "Merciful",
       "Shrike",
       "Wasteland"
+    ],
+    "Anran": [
+      "Heroic"
+    ],
+    "Ashe": [
+      "Heroic",
+      "Classic",
+      "Deadlock",
+      "Socialite"
+    ],
+    "Baptiste": [
+      "Heroic",
+      "Classic",
+      "Medic",
+      "Talon"
+    ],
+    "Bastion": [
+      "Heroic",
+      "Classic",
+      "Overgrown"
+    ],
+    "Brigitte": [
+      "Heroic",
+      "Classic",
+      "Engineer",
+      "Sparkplug"
     ]
   },
   "heroPhrases": {
     "Ana": [
       "Selection.ogg"
+    ],
+    "Anran": [
+      "Selection.ogg"
+    ],
+    "Ashe": [
+      "Selection.ogg"
+    ],
+    "Baptiste": [
+      "Selection.ogg"
+    ],
+    "Brigitte": [
+      "(Swedish) Hard work pays off.ogg",
+      "(Swedish) I'm giving it all I've got.ogg",
+      "(Swedish) Let the professionals handle this.ogg",
+      "(Swedish) Rally to me.ogg",
+      "Brigitte at your service.ogg",
+      "Don't underestimate me.ogg",
+      "Hard work pays off.ogg",
+      "Hey, hey.ogg",
+      "I hope you weren't holding back.ogg",
+      "It's like Reinhardt always says....ogg",
+      "Mace to the face.ogg",
+      "Precision Swedish engineering.ogg",
+      "Rally to me.ogg",
+      "Selection.ogg",
+      "Stay close to me and I'll keep you safe.ogg",
+      "That's the Lindholm way.ogg"
     ]
   }
 }

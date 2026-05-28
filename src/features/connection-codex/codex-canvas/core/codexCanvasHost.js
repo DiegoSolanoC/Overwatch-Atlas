@@ -40,6 +40,7 @@ import { terminateCodexJsonParseWorker } from '../../codex-data/load/CodexJsonPa
 import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/CodexLayoutSerialization.js';
 import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { DOUBLE_RIGHT_MS } from './canvasConstants.js';
+import { ensureCodexTargetedArchiveCache } from '../../codex-controls-ui/stage/codexTargetedSelectionAllowlist.js';
 
 export function initCodexCanvas(rootElement) {
     destroyCodexCanvas();
@@ -259,6 +260,7 @@ export function initCodexCanvas(rootElement) {
     return (async () => {
         await api.yieldCodexBrowserPaint();
         await api.loadCodexState();
+        ensureCodexTargetedArchiveCache().catch(() => {});
     })();
 }
 

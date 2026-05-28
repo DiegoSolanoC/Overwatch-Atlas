@@ -14,6 +14,17 @@
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 
 /** @param {import('./EventDataService.js').default} dataService */
+function pruneSatellitePhantomConnectionsInPlace(dataService) {
+    const arch = dataService.getArchiveSource();
+    if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') return;
+    if (typeof window === 'undefined') return;
+    window.BioArchiveConnectionsSync?.pruneJunctionPhantomConnectionsInPlace?.(
+        dataService.events,
+        arch,
+    );
+}
+
+/** @param {import('./EventDataService.js').default} dataService */
 export async function loadSatelliteArchive(dataService) {
     const fileUrl = dataService._getArchiveFilePath();
     const storageKey = dataService._getArchiveLocalStorageKey();
@@ -46,6 +57,7 @@ export async function loadSatelliteArchive(dataService) {
     if (isGitHubPages) {
         dataService.events = Array.isArray(fileEvents) ? fileEvents : [];
         dataService._normalizeSatelliteEventsInPlace();
+        pruneSatellitePhantomConnectionsInPlace(dataService);
         if (dataService.events.length === 0) {
             try {
                 localStorage.removeItem(storageKey);
@@ -66,9 +78,23 @@ export async function loadSatelliteArchive(dataService) {
         }
     }
     const localOk = Array.isArray(parsedLocal) && parsedLocal.length > 0;
+    const localHasConnections =
+        localOk &&
+        parsedLocal.some((e) => Array.isArray(e?.connections) && e.connections.length > 0);
     if (localOk && !dataService._canPersistTimelineJsonToRepo()) {
+        if (!localHasConnections && Array.isArray(fileEvents) && fileEvents.length > 0) {
+            dataService.events = fileEvents;
+            dataService._normalizeSatelliteEventsInPlace();
+            pruneSatellitePhantomConnectionsInPlace(dataService);
+            dataService.updateStatus(
+                `EventDataService: localStorage ${dataService.getArchiveSource()} had no connections — loaded bundled file`,
+                'info'
+            );
+            return { events: dataService.events, source: 'file', shouldSync: false };
+        }
         dataService.events = parsedLocal;
         dataService._normalizeSatelliteEventsInPlace();
+        pruneSatellitePhantomConnectionsInPlace(dataService);
         dataService.updateStatus(
             `EventDataService: Using localStorage for ${dataService.getArchiveSource()} (dev file API not on this port — edits kept locally)`,
             'info'
@@ -79,6 +105,7 @@ export async function loadSatelliteArchive(dataService) {
     if (Array.isArray(fileEvents)) {
         dataService.events = fileEvents;
         dataService._normalizeSatelliteEventsInPlace();
+        pruneSatellitePhantomConnectionsInPlace(dataService);
         dataService.saveEvents();
         return { events: dataService.events, source: 'file', shouldSync: false };
     }
@@ -88,6 +115,7 @@ export async function loadSatelliteArchive(dataService) {
             const parsed = JSON.parse(savedEvents);
             dataService.events = Array.isArray(parsed) ? parsed : [];
             dataService._normalizeSatelliteEventsInPlace();
+            pruneSatellitePhantomConnectionsInPlace(dataService);
             dataService.updateStatus(
                 `EventDataService: Using localStorage for ${dataService.getArchiveSource()} (${dataService.events.length} events)`,
                 'info'

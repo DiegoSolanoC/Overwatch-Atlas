@@ -3,6 +3,11 @@
  * Legacy bag: `window.EventSlideShowHelpers` (subset of former slide helper surface).
  */
 
+import {
+    getHeroBirthdayAgeDisplay,
+    getHeroBirthdayRawFromEntry
+} from '../interface-shared/bio-archive/HeroBirthdayAge.js';
+
 function getCandidateEventLists(dataModel) {
     const lists = [];
     const push = (arr) => {
@@ -168,6 +173,49 @@ export function updateEventSlideHeroRoleDisplay(eventData, variantIndex) {
     el.style.display = '';
 }
 
+export function updateEventSlideHeroBirthdayDisplay(eventData, variantIndex) {
+    const el = document.getElementById('eventSlideHeroBirthdayDisplay');
+    if (!el) return;
+
+    const heroStrip = document.getElementById('eventSlideHeroLocationsEdit');
+    let stripVisible = false;
+    if (heroStrip) {
+        if (!heroStrip.hasAttribute('hidden')) {
+            try {
+                stripVisible = window.getComputedStyle(heroStrip).display !== 'none';
+            } catch (_) {
+                stripVisible = heroStrip.style.display !== 'none' && heroStrip.style.display !== '';
+            }
+        }
+    }
+
+    const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
+    const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : '';
+    const isHeroesArchive = arch === 'heroes' || eventRowHasHeroRoleField(eventData);
+
+    if (stripVisible || !eventData || !isHeroesArchive) {
+        el.textContent = '';
+        el.setAttribute('hidden', 'hidden');
+        el.style.display = 'none';
+        return;
+    }
+
+    const isMulti = Array.isArray(eventData.variants) && eventData.variants.length > 0;
+    const vIdx = isMulti ? (variantIndex ?? 0) : 0;
+    const target = isMulti ? (eventData.variants[vIdx] || eventData.variants[0]) : eventData;
+    const birthdayRaw = getHeroBirthdayRawFromEntry(target || eventData);
+    const display = getHeroBirthdayAgeDisplay(birthdayRaw);
+    if (!display) {
+        el.textContent = '';
+        el.setAttribute('hidden', 'hidden');
+        el.style.display = 'none';
+        return;
+    }
+    el.textContent = `Birthday: ${display.birthdayText}\nAge: ${display.age}`;
+    el.removeAttribute('hidden');
+    el.style.display = '';
+}
+
 if (typeof window !== 'undefined') {
     if (!window.EventSlideShowHelpers) {
         window.EventSlideShowHelpers = {};
@@ -175,4 +223,5 @@ if (typeof window !== 'undefined') {
     window.EventSlideShowHelpers.getGlobalEventNumber1Based = getGlobalEventNumber1Based;
     window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay = updateEventSlideFactionTypeDisplay;
     window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay = updateEventSlideHeroRoleDisplay;
+    window.EventSlideShowHelpers.updateEventSlideHeroBirthdayDisplay = updateEventSlideHeroBirthdayDisplay;
 }

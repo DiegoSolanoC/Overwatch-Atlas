@@ -8,6 +8,7 @@
  */
 
 import { syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncHeroBirthdayBioPanelVisibility } from '../../../interface-shared/bio-archive/HeroBirthdayBioInput.js';
 import { syncHeroBioRolePanelsVisibility } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     STORY_SECONDARY_PLACES_EDITOR_OPTS,
@@ -59,6 +60,10 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
                 archPop,
                 archPop === 'heroes' ? target.heroRole : undefined,
                 archPop === 'heroes' ? target.heroSubRole : undefined
+            );
+            syncHeroBirthdayBioPanelVisibility(
+                archPop,
+                archPop === 'heroes' ? target.birthday : undefined
             );
             if (filtersInput) filtersInput.value = getStoryEventHeroTokens(target).join(', ');
             if (factionsInput) {

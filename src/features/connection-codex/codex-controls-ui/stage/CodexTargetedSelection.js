@@ -14,6 +14,11 @@ import {
 } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { CODEX_TARGETED_LINK_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { stopCordAnimAndClearCordPacketState } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
+import {
+    buildAllowedBioNodeIdsForTargetedSeed,
+    ensureCodexTargetedArchiveCache,
+} from './codexTargetedSelectionAllowlist.js';
 
 /** @param {object} node */
 export function getCodexNodeDisplayName(node) {
@@ -103,7 +108,7 @@ export function resolveCodexNodeIdFromNameQuery(query) {
 }
 
 /** @param {{ fromId: string, toId: string }[]} edges */
-function buildCodexUndirectedAdjacency(edges) {
+export function buildCodexUndirectedAdjacency(edges) {
     /** @type {Map<string, Set<string>>} */
     const adj = new Map();
     const add = (a, b) => {
@@ -132,46 +137,56 @@ function buildCodexNodeKindMap() {
     return kindById;
 }
 
+function isCodexPortraitKind(kind) {
+    return Boolean(kind && kind !== 'junction');
+}
+
 /**
- * From one seed: follow every cord through breaks; stop each branch at the next portrait
- * (hero, faction, NPC, country). Does not walk through other portraits.
+ * From seed: follow junction cords; include a branch only if its terminal portrait is allowlisted.
+ * @param {string} seedId
+ * @param {Map<string, Set<string>>} adj
+ * @param {Map<string, string>} kindById
+ * @param {Set<string>} allowedBioIds
+ * @returns {{ nodeIds: Set<string>, edgePairKeys: Set<string> }}
+ */
+function expandCodexConnectionsOfSeedPruned(seedId, adj, kindById, allowedBioIds) {
+    const nodeIds = new Set([seedId]);
+    const edgePairKeys = new Set();
+    const allowed = allowedBioIds || new Set();
+
+    const addPath = (path) => {
+        if (!path?.length) return;
+        for (let i = 0; i < path.length; i += 1) nodeIds.add(path[i]);
+        for (let j = 0; j < path.length - 1; j += 1) {
+            edgePairKeys.add(codexUnorderedPairKey(path[j], path[j + 1]));
+        }
+    };
+
+    for (const bioId of allowed) {
+        if (!bioId || bioId === seedId) continue;
+        const path = shortestPathNodeIdsForTargetedRoutePreview(adj, kindById, seedId, bioId);
+        addPath(path);
+    }
+
+    for (const nb of adj.get(seedId) || []) {
+        if (!isCodexPortraitKind(kindById.get(nb) || '')) continue;
+        if (!allowed.has(nb)) continue;
+        nodeIds.add(nb);
+        edgePairKeys.add(codexUnorderedPairKey(seedId, nb));
+    }
+
+    return { nodeIds, edgePairKeys };
+}
+
+/**
  * @param {string} seedId
  * @param {Map<string, Set<string>>} adj
  * @param {Map<string, string>} kindById
  * @returns {{ nodeIds: Set<string>, edgePairKeys: Set<string> }}
  */
-function expandCodexConnectionsOfSeed(seedId, adj, kindById) {
-    const nodeIds = new Set([seedId]);
-    const edgePairKeys = new Set();
-
-    const addEdge = (a, b) => {
-        edgePairKeys.add(codexUnorderedPairKey(a, b));
-    };
-
-    const visitedJunctions = new Set();
-
-    const walkFromJunction = (junctionId, parentId) => {
-        if (visitedJunctions.has(junctionId)) return;
-        visitedJunctions.add(junctionId);
-        for (const nb of adj.get(junctionId) || []) {
-            if (nb === parentId) continue;
-            addEdge(junctionId, nb);
-            nodeIds.add(nb);
-            if (kindById.get(nb) === 'junction') {
-                walkFromJunction(nb, junctionId);
-            }
-        }
-    };
-
-    for (const nb of adj.get(seedId) || []) {
-        addEdge(seedId, nb);
-        nodeIds.add(nb);
-        if (kindById.get(nb) === 'junction') {
-            walkFromJunction(nb, seedId);
-        }
-    }
-
-    return { nodeIds, edgePairKeys };
+function expandCodexConnectionsOfSeedForTargeted(seedId, adj, kindById) {
+    const allowed = buildAllowedBioNodeIdsForTargetedSeed(seedId);
+    return expandCodexConnectionsOfSeedPruned(seedId, adj, kindById, allowed);
 }
 
 /**
@@ -180,7 +195,7 @@ function expandCodexConnectionsOfSeed(seedId, adj, kindById) {
  * @param {string} goal
  * @returns {string[]|null}
  */
-function shortestPathNodeIds(adj, start, goal) {
+export function shortestPathNodeIds(adj, start, goal) {
     if (start === goal) return [start];
     /** @type {Map<string, string|null>} */
     const prev = new Map([[start, null]]);
@@ -205,6 +220,60 @@ function shortestPathNodeIds(adj, start, goal) {
         }
     }
     return null;
+}
+
+/**
+ * Route preview path: only break nodes may appear between the seed and hovered portrait.
+ * Other portraits are not used as hop points (junction-only hops between seed and goal).
+ * @param {Map<string, Set<string>>} adj
+ * @param {Map<string, string>} kindById
+ * @param {string} start
+ * @param {string} goal
+ * @param {Set<string>} [restrictToNodeIds] when set, path may only use these nodes
+ * @returns {string[]|null}
+ */
+export function shortestPathNodeIdsForTargetedRoutePreview(
+    adj,
+    kindById,
+    start,
+    goal,
+    restrictToNodeIds,
+) {
+    if (start === goal) return [start];
+    const isPortrait = (id) => {
+        const k = kindById.get(id) || '';
+        return k !== 'junction' && k !== '';
+    };
+    /** @type {Map<string, string|null>} */
+    const prev = new Map([[start, null]]);
+    const q = [start];
+    let qi = 0;
+    while (qi < q.length) {
+        const id = q[qi];
+        qi += 1;
+        for (const nb of adj.get(id) || []) {
+            if (prev.has(nb)) continue;
+            if (restrictToNodeIds && !restrictToNodeIds.has(nb)) continue;
+            if (isPortrait(nb) && nb !== goal && nb !== start) continue;
+            prev.set(nb, id);
+            if (nb === goal) {
+                const path = [];
+                let cur = nb;
+                while (cur != null) {
+                    path.push(cur);
+                    cur = prev.get(cur) ?? null;
+                }
+                return path.reverse();
+            }
+            q.push(nb);
+        }
+    }
+    return null;
+}
+
+/** @returns {Map<string, string>} */
+export function buildCodexNodeKindMapFromSession() {
+    return buildCodexNodeKindMap();
 }
 
 /** @param {string[]} path */
@@ -233,7 +302,7 @@ function computeCodexTargetedSelectionGraphLinkSeeds(seedIds) {
     const edgePairKeys = new Set();
 
     if (seeds.length === 1) {
-        return expandCodexConnectionsOfSeed(seeds[0], adj, kindById);
+        return expandCodexConnectionsOfSeedForTargeted(seeds[0], adj, kindById);
     }
 
     for (let i = 0; i < seeds.length; i += 1) {
@@ -254,7 +323,7 @@ function computeCodexTargetedSelectionGraphLinkSeeds(seedIds) {
             }
         }
         if (!linkedToAnotherSeed) {
-            const branch = expandCodexConnectionsOfSeed(sid, adj, kindById);
+            const branch = expandCodexConnectionsOfSeedForTargeted(sid, adj, kindById);
             branch.nodeIds.forEach((id) => nodeIds.add(id));
             branch.edgePairKeys.forEach((k) => edgePairKeys.add(k));
         }
@@ -280,7 +349,7 @@ function computeCodexTargetedSelectionGraphBranches(seedIds) {
     const edgePairKeys = new Set();
 
     for (let i = 0; i < seeds.length; i += 1) {
-        const branch = expandCodexConnectionsOfSeed(seeds[i], adj, kindById);
+        const branch = expandCodexConnectionsOfSeedForTargeted(seeds[i], adj, kindById);
         branch.nodeIds.forEach((id) => nodeIds.add(id));
         branch.edgePairKeys.forEach((k) => edgePairKeys.add(k));
     }
@@ -320,9 +389,9 @@ export function persistCodexTargetedLinkPref() {
     }
 }
 
-export function reapplyCodexTargetedSelectionIfActive() {
+export async function reapplyCodexTargetedSelectionIfActive() {
     if (!s.codexTargetedSelectionActive || s.codexTargetedSelectionSeedIds.size === 0) return;
-    applyCodexTargetedSelection([...s.codexTargetedSelectionSeedIds]);
+    await applyCodexTargetedSelection([...s.codexTargetedSelectionSeedIds]);
 }
 
 export function syncCodexTargetedSelectionDom() {
@@ -344,7 +413,8 @@ export function syncCodexTargetedSelectionDom() {
 /**
  * @param {string[]} seedIds
  */
-export function applyCodexTargetedSelection(seedIds) {
+export async function applyCodexTargetedSelection(seedIds) {
+    await ensureCodexTargetedArchiveCache();
     const ids = [...new Set((seedIds || []).filter(Boolean))];
     if (!ids.length) {
         clearCodexTargetedSelection();
@@ -356,6 +426,7 @@ export function applyCodexTargetedSelection(seedIds) {
     s.codexTargetedSelectionVisibleIds = graph.nodeIds;
     s.codexTargetedSelectionVisibleEdgeKeys = graph.edgePairKeys;
     syncCodexTargetedSelectionDom();
+    stopCordAnimAndClearCordPacketState();
     redrawCodexEdges({ force: true });
 }
 
@@ -366,7 +437,11 @@ export function clearCodexTargetedSelection() {
     s.codexTargetedSelectionVisibleIds = new Set();
     s.codexTargetedSelectionVisibleEdgeKeys = new Set();
     syncCodexTargetedSelectionDom();
-    if (had) redrawCodexEdges({ force: true });
+    api.clearAllCodexEdgeHoverVisual?.();
+    if (had) {
+        stopCordAnimAndClearCordPacketState();
+        redrawCodexEdges({ force: true });
+    }
 }
 
 api.getCodexNodeDisplayName = getCodexNodeDisplayName;

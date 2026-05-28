@@ -98,7 +98,9 @@ function recomputePacketPolylineMetrics(p) {
  */
 function syncPacketPathToEdge(p, fromId, toId) {
     if (!_rt) return;
-    let tail = Array.isArray(p.tailNodeIds) ? p.tailNodeIds : null;
+    const targeted = s.codexTargetedSelectionActive
+        && s.codexTargetedSelectionVisibleEdgeKeys.size > 0;
+    let tail = !targeted && Array.isArray(p.tailNodeIds) ? p.tailNodeIds : null;
     if (tail == null) {
         tail = _rt.samplePacketTailNodeIds(fromId, toId);
         p.tailNodeIds = tail;

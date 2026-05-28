@@ -20,6 +20,12 @@ import {
 import { resetHeroBiographyDockLookHoverState } from './heroBiographyDockLookHover.js';
 import { wireHeroBiographyPortraitCopy } from './heroBiographyPortraitCopy.js';
 import {
+    applyHeroBiographyPortraitScale,
+    clearHeroBiographyPortraitScaleCache,
+    preloadHeroBiographyPortraitReference,
+    resetHeroBiographyPortraitScale,
+} from './heroBiographyPortraitScale.js';
+import {
     destroyHeroBiographyLookRangesEditor,
     initHeroBiographyLookRangesEditor,
     isHeroBiographyLookRangesEditorEnabled,
@@ -116,6 +122,7 @@ export function initHeroBiographySelection(hostEl, mainEl) {
 
     portraitEl.append(portraitImg, empty);
     hostEl.insertBefore(portraitEl, mainEl.nextSibling);
+    preloadHeroBiographyPortraitReference();
 
     headerEl = document.createElement('div');
     headerEl.className = 'hero-biography-mode__hero-header';
@@ -282,6 +289,7 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
         delete portraitImg.dataset.heroBioLook;
         delete portraitImg.dataset.heroBioHero;
         portraitImg.alt = '';
+        resetHeroBiographyPortraitScale(portraitImg);
         return;
     }
 
@@ -298,6 +306,9 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
         portraitEl.classList.add('is-visible');
         portraitEl.setAttribute('aria-hidden', 'false');
         if (portraitImg.alt !== alt) portraitImg.alt = alt;
+        if (portraitImg.naturalWidth) {
+            void applyHeroBiographyPortraitScale(portraitImg, heroKey);
+        }
         return;
     }
 
@@ -308,6 +319,7 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
     portraitImg.onload = null;
     portraitImg.onerror = null;
     portraitImg.removeAttribute('src');
+    resetHeroBiographyPortraitScale(portraitImg);
     portraitImg.dataset.heroBioHero = heroKey;
     portraitImg.dataset.heroBioLook = look;
     portraitImg.alt = alt;
@@ -318,6 +330,7 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
     portraitImg.onload = () => {
         if (loadId !== portraitLoadId) return;
         if (portraitImg.dataset.heroBioHero !== heroKey) return;
+        void applyHeroBiographyPortraitScale(portraitImg, heroKey);
         portraitEl?.classList.add('has-image');
     };
     portraitImg.onerror = () => {
@@ -327,9 +340,15 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
         portraitImg.removeAttribute('src');
         delete portraitImg.dataset.heroBioLook;
         delete portraitImg.dataset.heroBioHero;
+        resetHeroBiographyPortraitScale(portraitImg);
     };
 
     portraitImg.src = src;
+
+    if (portraitImg.complete && portraitImg.naturalWidth) {
+        void applyHeroBiographyPortraitScale(portraitImg, heroKey);
+        portraitEl.classList.add('has-image');
+    }
 }
 
 /**
@@ -367,7 +386,7 @@ async function applyHeroSelection(heroFilterKey, displayName) {
     setHeroBiographyDockHeroFilter(heroFilterKey);
     setHeroBiographyLookRangesEditorHero(heroFilterKey, currentLook);
     void setHeroBiographyPhraseButtonHero(heroFilterKey);
-    void setHeroBiographyArchiveDescriptionHero(heroFilterKey);
+    void setHeroBiographyArchiveDescriptionHero(heroFilterKey, displayName);
     refreshHeroBiographyDockPagination();
 }
 
@@ -442,6 +461,7 @@ export function destroyHeroBiographySelection() {
     clearHeroBiographyLookRangesCache();
     clearHeroPhrasesCache();
     heroBiosLooksMap = null;
+    clearHeroBiographyPortraitScaleCache();
     headerEl = null;
     titleEl = null;
     controlsRowEl = null;

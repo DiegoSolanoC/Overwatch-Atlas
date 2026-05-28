@@ -26,6 +26,18 @@ export function persistEvents(dataService) {
         ) {
             window.BioArchiveConnectionsSync.repairMissingMirrorsForBioArchive(dataService.events, arch);
         }
+        if (window.BioArchiveConnectionsSync?.pruneShowInCodexWithoutDirectCodexEdge) {
+            window.BioArchiveConnectionsSync.pruneShowInCodexWithoutDirectCodexEdge(
+                dataService.events,
+                arch,
+            );
+        }
+        if (window.BioArchiveConnectionsSync?.pruneJunctionPhantomConnectionsInPlace) {
+            window.BioArchiveConnectionsSync.pruneJunctionPhantomConnectionsInPlace(
+                dataService.events,
+                arch,
+            );
+        }
         dataService._normalizeSatelliteEventsInPlace();
     }
     if (dataService._isMainTimelineArchive() && Array.isArray(dataService.events)) {

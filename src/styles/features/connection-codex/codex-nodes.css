@@ -156,7 +156,8 @@
         stroke-width 0.14s ease;
 }
 
-.codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment {
+.codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment,
+.codex--targeted-selection-active .codex-edge-segment-group--hover .codex-edge-segment {
     stroke: #38bdf8 !important;
     stroke-width: 6px !important;
 }

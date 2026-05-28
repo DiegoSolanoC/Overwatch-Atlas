@@ -39,12 +39,19 @@ import {
 } from '../../../interface-shared/storyEventFilterPlaces.js';
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
 import {
+    heroBirthdayPartsIncomplete,
+    readHeroBirthdayBioPanelTrimmed,
+    syncHeroBirthdayBioPanelVisibility
+} from '../../../interface-shared/bio-archive/HeroBirthdayBioInput.js';
+import { normalizeHeroBirthdayDayMonthYear } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
+import {
     readHeroRoleBioPanelTrimmed,
     readHeroSubRoleBioPanelTrimmed,
     syncHeroBioRolePanelsVisibility
 } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     updateEventSlideFactionTypeDisplay,
+    updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 
@@ -84,6 +91,19 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             if (archiveSource === 'heroes') {
                 normalized.heroRole = readHeroRoleBioPanelTrimmed();
                 normalized.heroSubRole = readHeroSubRoleBioPanelTrimmed();
+                const birthdayNormalized = readHeroBirthdayBioPanelTrimmed();
+                if (heroBirthdayPartsIncomplete()) {
+                    window.updateAppStatus?.(
+                        'Birthday needs a valid day, month, and year (example: 12 May 2048).',
+                        'warning'
+                    );
+                    document.getElementById('eventSlideEditHeroBirthdayDay')?.focus();
+                    return;
+                }
+                normalized.birthday =
+                    birthdayNormalized
+                    || normalizeHeroBirthdayDayMonthYear(slide.editTarget?.eventData?.birthday)
+                    || '';
             }
             if (em?.events) {
                 const idx =
@@ -190,6 +210,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             }
             syncFactionTypeBioPanelVisibility('story');
             syncHeroBioRolePanelsVisibility('story', undefined, undefined);
+            syncHeroBirthdayBioPanelVisibility('story', undefined);
             const relSaved = document.getElementById('eventSlideRelevantLocations');
             if (isBioSave && relSaved) {
                 window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
@@ -205,6 +226,10 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             }
             if (archiveSource === 'heroes' && normalized) {
                 updateEventSlideHeroRoleDisplay(
+                    normalized,
+                    slide.currentVariantIndex ?? 0
+                );
+                updateEventSlideHeroBirthdayDisplay(
                     normalized,
                     slide.currentVariantIndex ?? 0
                 );

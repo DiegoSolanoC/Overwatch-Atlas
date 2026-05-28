@@ -199,6 +199,50 @@
     letter-spacing: 0.02em;
 }
 
+#eventSlideHeroBirthdayDisplay.event-slide-faction-type-display {
+    white-space: pre-line;
+}
+
+.event-slide-hero-birthday-fields {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 0.65fr) minmax(7rem, 1.35fr) minmax(5.5rem, 0.85fr);
+    gap: 10px;
+    align-items: end;
+}
+
+.event-slide-hero-birthday-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.event-slide-hero-birthday-field__label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.03em;
+}
+
+.event-slide-hero-birthday-field__input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.event-slide-hero-birthday-month-wrap {
+    position: relative;
+}
+
+.event-slide-hero-birthday-month-list.filter-autocomplete-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    z-index: 40;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
 /* Relevant locations + story grouped filters (same card rhythm and accent as sources) */
 .event-relevant-locations-section {
     margin: 20px 0 10px 0;
@@ -380,6 +424,12 @@
     padding: 14px 16px;
     min-height: 56px;
     line-height: 1.25;
+}
+
+.event-slide-hero-locations-edit__faction-type .event-slide-hero-birthday-field__input {
+    font-size: 22px;
+    padding: 12px 14px;
+    min-height: 48px;
 }
 
 .event-slide-relevant-loc-reorder {

@@ -53,6 +53,10 @@
     cursor: grab;
 }
 
+.codex--view-mode .codex-edge-hit {
+    cursor: pointer;
+}
+
 .codex-edge-degree-labels {
     pointer-events: none;
 }

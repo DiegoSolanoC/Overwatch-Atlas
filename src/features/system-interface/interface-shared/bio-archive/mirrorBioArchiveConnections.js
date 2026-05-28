@@ -9,6 +9,9 @@
  * that previous saves missed (e.g. when the slide held a stale object ref
  * that `indexOf` couldn't locate).
  *
+ * Mirrors only explicit `connections[]` rows (or direct Codex cords after a codex save).
+ * Junction chains in the Codex do not add archive rows for every bio along the branch.
+ *
  * Compatibility note: this file used to be `BioArchiveConnectionsSync.js`
  * and exposed `window.BioArchiveConnectionsSync`. Both the file content and
  * the global keep their public surface, so existing call sites (mostly
@@ -29,6 +32,15 @@
         if (archiveSource === 'factions') return 'faction';
         if (archiveSource === 'npcs') return 'npc';
         return 'hero';
+    }
+
+    /** Mirrors only run within one archive file (heroes↔heroes, factions↔factions, npcs↔npcs). */
+    function connectionTargetInThisArchive(archiveSource, linkedKind) {
+        var lk = normalizeConnKind(linkedKind);
+        if (archiveSource === 'heroes') return lk === 'hero';
+        if (archiveSource === 'npcs') return lk === 'npc';
+        if (archiveSource === 'factions') return lk === 'faction';
+        return false;
     }
 
     function normalizeConnKind(k) {
@@ -140,6 +152,41 @@
         return false;
     }
 
+    function bioConnectionRowHasNarrativeText(c) {
+        if (!c) return false;
+        var d = directionalTextsFromRow(c);
+        return Boolean(d.toLinked || d.toSubject);
+    }
+
+    function shouldMirrorBioConnectionRow(c) {
+        return bioConnectionRowHasNarrativeText(c);
+    }
+
+    function bioConnectionRowIsJunctionPhantomStub(c) {
+        if (!c) return false;
+        var name = c.name != null ? String(c.name).trim() : '';
+        if (!name) return false;
+        if (bioConnectionRowHasNarrativeText(c)) return false;
+        if (c.showInCodex === true) return false;
+        return true;
+    }
+
+    function pruneJunctionPhantomConnectionsInPlace(events, archiveSource) {
+        var arch = archiveSource || '';
+        if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') return;
+        if (!Array.isArray(events)) return;
+        for (var i = 0; i < events.length; i++) {
+            var ev = events[i];
+            if (!ev || !Array.isArray(ev.connections)) continue;
+            var kept = ev.connections.filter(function (c) {
+                return !bioConnectionRowIsJunctionPhantomStub(c);
+            });
+            if (kept.length !== ev.connections.length) {
+                ev.connections = kept;
+            }
+        }
+    }
+
     function directionalTextsFromRow(c) {
         var toLinked = c.reasoningSubjectToLinked != null ? String(c.reasoningSubjectToLinked).trim() : '';
         var toSubject = c.reasoningLinkedToSubject != null ? String(c.reasoningLinkedToSubject).trim() : '';
@@ -199,7 +246,13 @@
         return arr;
     }
 
-    function buildMirrorRow(c, subjectKind, subjectName) {
+  /**
+   * @param {object} c
+   * @param {'hero'|'faction'|'npc'} subjectKind
+   * @param {string} subjectName
+   * @param {{ copyShowInCodex?: boolean }} [options]
+   */
+    function buildMirrorRow(c, subjectKind, subjectName, options) {
         var lk = normalizeConnKind(c.kind);
         var dir = directionalTextsFromRow(c);
         var mixed = isFactionHeroNpcMixed(subjectKind, lk);
@@ -213,7 +266,9 @@
             reasoningLinkedToSubject: dir.toLinked,
             thisEntryLane: laneMirror
         };
-        if (c.showInCodex === true) mirror.showInCodex = true;
+        if (options && options.copyShowInCodex === true && c.showInCodex === true) {
+            mirror.showInCodex = true;
+        }
         return mirror;
     }
 
@@ -250,22 +305,68 @@
                 var ln = sanitizeConnectionEntityName(c.name);
                 if (!ln) continue;
                 if (connectionKey(lk, ln) === connectionKey(subjectKind, subjectName)) continue;
+                if (!connectionTargetInThisArchive(arch, lk)) continue;
                 var linkedIx = findBioEntryIndex(events, lk, ln);
                 if (linkedIx === i) continue;
-                if (linkedIx < 0) {
-                    console.warn('[BioConnSync] linked row not found; mirror skipped', {
-                        from: subjectName, kind: lk, name: ln, archive: arch
-                    });
-                    continue;
-                }
+                if (linkedIx < 0) continue;
                 var linked = events[linkedIx];
                 if (linkedHasMirrorBack(linked, subjectKind, subjectName)) continue;
+                if (!shouldMirrorBioConnectionRow(c)) continue;
                 coerceFactionMixedRowInPlace(c, subjectKind);
-                var mirror = buildMirrorRow(c, subjectKind, subjectName);
+                var mirror = buildMirrorRow(c, subjectKind, subjectName, { copyShowInCodex: false });
                 linked.connections = normalizeBioRows(upsertMirror(linked.connections, mirror));
                 if (em && em.unsavedEventIndices && typeof em.unsavedEventIndices.add === 'function') {
                     em.unsavedEventIndices.add(linkedIx);
                 }
+            }
+        }
+    }
+
+    /**
+     * Drop `showInCodex` on rows that are not backed by a direct Codex cord (junction-only links).
+     * @param {Array<Object>} events
+     * @param {string} archiveSource
+     */
+    function pruneShowInCodexWithoutDirectCodexEdge(events, archiveSource) {
+        var getSnap = typeof window !== 'undefined' && window.CodexCanvasService
+            ? window.CodexCanvasService.getBioArchiveCodexSnapshot
+            : null;
+        if (typeof getSnap !== 'function') return;
+
+        var snap = getSnap();
+        if (!snap || !Array.isArray(snap.nodes) || snap.nodes.length === 0) return;
+
+        var arch = archiveSource || '';
+        if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') return;
+
+        var allowed = snap.allowedShowInCodexPairKeys;
+        if (!allowed || typeof allowed.has !== 'function' || allowed.size === 0) return;
+
+        var subjectKind = entityKindForArchive(arch);
+
+        for (var i = 0; i < events.length; i++) {
+            var ev = events[i];
+            if (!ev || !Array.isArray(ev.connections)) continue;
+            var subjectName = ev.name != null ? String(ev.name).trim() : '';
+            if (!subjectName) continue;
+
+            var changed = false;
+            for (var j = 0; j < ev.connections.length; j++) {
+                var c = ev.connections[j];
+                if (!c || c.showInCodex !== true) continue;
+                var lk = normalizeConnKind(c.kind);
+                var ln = sanitizeConnectionEntityName(c.name);
+                if (!ln) continue;
+                var pk = snap.pairKeyFor(arch, subjectKind, subjectName, lk, ln);
+                if (pk && !allowed.has(pk)) {
+                    var next = Object.assign({}, c);
+                    delete next.showInCodex;
+                    ev.connections[j] = next;
+                    changed = true;
+                }
+            }
+            if (changed) {
+                ev.connections = normalizeBioRows(ev.connections);
             }
         }
     }
@@ -314,11 +415,9 @@
             var ln = sanitizeConnectionEntityName(oldRow.name);
             if (!ln) return;
             if (connectionKey(lk, ln) === connectionKey(subjectKind, subjectName)) return;
+            if (!connectionTargetInThisArchive(arch, lk)) return;
             var linkedIx = findBioEntryIndex(events, lk, ln);
-            if (linkedIx < 0) {
-                console.warn('[BioConnSync] linked row not found on remove', { subject: subjectName, kind: lk, name: ln });
-                return;
-            }
+            if (linkedIx < 0) return;
             var linked = events[linkedIx];
             linked.connections = normalizeBioRows(
                 removeConnectionToSubject(linked.connections || [], subjectKind, subjectName)
@@ -335,13 +434,12 @@
             var ln = sanitizeConnectionEntityName(c.name);
             if (!ln) return;
             if (connectionKey(lk, ln) === connectionKey(subjectKind, subjectName)) return;
+            if (!connectionTargetInThisArchive(arch, lk)) return;
+            if (!shouldMirrorBioConnectionRow(c)) return;
             var linkedIx = findBioEntryIndex(events, lk, ln);
-            if (linkedIx < 0) {
-                console.warn('[BioConnSync] linked row not found on upsert', { subject: subjectName, kind: lk, name: ln });
-                return;
-            }
+            if (linkedIx < 0) return;
             coerceFactionMixedRowInPlace(c, subjectKind);
-            var mirror = buildMirrorRow(c, subjectKind, subjectName);
+            var mirror = buildMirrorRow(c, subjectKind, subjectName, { copyShowInCodex: false });
             var linked = events[linkedIx];
             linked.connections = normalizeBioRows(upsertMirror(linked.connections, mirror));
             if (em && em.unsavedEventIndices && typeof em.unsavedEventIndices.add === 'function') {
@@ -350,6 +448,8 @@
         });
 
         subjectEntry.connections = normalizeBioRows(subjectEntry.connections);
+        pruneShowInCodexWithoutDirectCodexEdge(events, arch);
+        pruneJunctionPhantomConnectionsInPlace(events, arch);
         var selfIx = findBioEntryIndex(events, subjectKind, subjectName);
         if (selfIx >= 0 && em && em.unsavedEventIndices && typeof em.unsavedEventIndices.add === 'function') {
             em.unsavedEventIndices.add(selfIx);
@@ -359,6 +459,15 @@
     window.BioArchiveConnectionsSync = {
         syncMirrorsAfterSubjectSave: syncMirrorsAfterSubjectSave,
         repairMissingMirrorsForBioArchive: repairMissingMirrorsForBioArchive,
+        pruneShowInCodexWithoutDirectCodexEdge: pruneShowInCodexWithoutDirectCodexEdge,
+        pruneJunctionPhantomConnectionsInPlace: pruneJunctionPhantomConnectionsInPlace,
+        bioConnectionRowIsDisplayable: function (c) {
+            if (!c) return false;
+            var name = c.name != null ? String(c.name).trim() : '';
+            if (!name) return false;
+            if (bioConnectionRowHasNarrativeText(c)) return true;
+            return c.showInCodex === true;
+        },
         resolveBioArchiveEventIndex: resolveBioArchiveEventIndex,
         isFactionHeroNpcMixed: isFactionHeroNpcMixed
     };

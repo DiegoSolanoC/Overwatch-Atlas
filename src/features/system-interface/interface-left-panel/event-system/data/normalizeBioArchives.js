@@ -190,16 +190,20 @@ export function normalizeSatelliteArchiveEntry(raw, archiveSource) {
     if (archiveSource === 'heroes') {
         let heroRole = '';
         let heroSubRole = '';
+        let birthday = '';
         if (Array.isArray(variants) && variants.length > 0) {
             const v0 = variants[0];
             heroRole = v0?.heroRole != null ? String(v0.heroRole) : '';
             heroSubRole = v0?.heroSubRole != null ? String(v0.heroSubRole) : '';
+            birthday = v0?.birthday != null ? String(v0.birthday) : '';
         } else {
             heroRole = raw.heroRole != null ? String(raw.heroRole) : '';
             heroSubRole = raw.heroSubRole != null ? String(raw.heroSubRole) : '';
+            birthday = raw.birthday != null ? String(raw.birthday) : '';
         }
         base.heroRole = heroRole;
         base.heroSubRole = heroSubRole;
+        base.birthday = birthday;
     }
     return base;
 }

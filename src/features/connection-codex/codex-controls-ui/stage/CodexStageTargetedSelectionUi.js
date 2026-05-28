@@ -245,7 +245,7 @@ export function mountCodexStageTargetedSelectionUi(host) {
         ev.preventDefault();
         tryAddFromInput(input, host);
         if (draftSeedIds.size === 0) return;
-        applyCodexTargetedSelection([...draftSeedIds]);
+        void applyCodexTargetedSelection([...draftSeedIds]);
     });
 
     clearBtn.addEventListener('click', (ev) => {

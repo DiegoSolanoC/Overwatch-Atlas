@@ -45,6 +45,7 @@ import {
 } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     updateEventSlideFactionTypeDisplay,
+    updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 
@@ -172,8 +173,10 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
         }
         if (archiveSourceSlide === 'heroes') {
             updateEventSlideHeroRoleDisplay(eventData, slide.currentVariantIndex ?? 0);
+            updateEventSlideHeroBirthdayDisplay(eventData, slide.currentVariantIndex ?? 0);
         } else {
             updateEventSlideHeroRoleDisplay(null, 0);
+            updateEventSlideHeroBirthdayDisplay(null, 0);
         }
 
         // Setup glitch toggle button
@@ -270,6 +273,10 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
                         // Update title and description
                         if (eventSlideTitle) eventSlideTitle.innerHTML = applyGlitch(vName);
                         if (eventSlideText) eventSlideText.innerHTML = applyGlitch(vDesc) || 'No description available.';
+                        if (archiveSourceSlide === 'heroes') {
+                            updateEventSlideHeroRoleDisplay(eventData, idx);
+                            updateEventSlideHeroBirthdayDisplay(eventData, idx);
+                        }
                         
                         // Update location and years for variant
                         if (eventSlideLocation && v.cityDisplayName) {

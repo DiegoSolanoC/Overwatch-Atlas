@@ -250,8 +250,29 @@
         }
         var subjectKind = arch === 'factions' ? 'faction' : arch === 'npcs' ? 'npc' : 'hero';
         var buckets = { hero: [], faction: [], npc: [] };
+        var rowIsDisplayable =
+            typeof window !== 'undefined'
+            && window.BioArchiveConnectionsSync
+            && typeof window.BioArchiveConnectionsSync.bioConnectionRowIsDisplayable === 'function'
+                ? window.BioArchiveConnectionsSync.bioConnectionRowIsDisplayable
+                : function (row) {
+                    if (!row) return false;
+                    var nm = row.name != null ? String(row.name).trim() : '';
+                    if (!nm) return false;
+                    var tOut = row.reasoningSubjectToLinked != null
+                        ? String(row.reasoningSubjectToLinked).trim()
+                        : '';
+                    var tIn = row.reasoningLinkedToSubject != null
+                        ? String(row.reasoningLinkedToSubject).trim()
+                        : '';
+                    var leg = row.reasoning != null ? String(row.reasoning).trim() : '';
+                    if (tOut || tIn || leg) return true;
+                    return row.showInCodex === true;
+                };
+
         for (var i = 0; i < rows.length; i++) {
             var r = rows[i] || {};
+            if (!rowIsDisplayable(r)) continue;
             var linkedKind = String(r.kind || 'hero').toLowerCase();
             if (linkedKind === 'character') linkedKind = 'hero';
             if (linkedKind !== 'faction' && linkedKind !== 'npc') linkedKind = 'hero';

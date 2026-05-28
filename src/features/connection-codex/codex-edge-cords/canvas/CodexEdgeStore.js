@@ -8,6 +8,11 @@ import { playSoundEffect } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { appendCodexJunctionElbowParallelograms as appendCodexJunctionElbowParallelogramsCore } from '../../codex-node-drawing/junction-decor/CodexJunctionElbowParallelograms.js';
 import { deleteCodexCordPacketStateForKey } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { redrawCodexEdges, scheduleRedrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import {
+    buildCodexUndirectedAdjacency,
+    buildCodexNodeKindMapFromSession,
+    shortestPathNodeIdsForTargetedRoutePreview
+} from '../../codex-controls-ui/stage/CodexTargetedSelection.js';
 import { appendCodexEdgeNodeMask as appendCodexEdgeNodeMaskCore } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
@@ -205,15 +210,31 @@ function buildPolylineForEdge(edge) {
     return [{ x: ca.x, y: ca.y }, { x: cb.x, y: cb.y }];
 }
 
+/** @param {string} fromId @param {string} toId */
+function codexDirectedEdgeAllowedForPacketWalk(fromId, toId) {
+    if (!s.codexTargetedSelectionActive) return true;
+    const visible = s.codexTargetedSelectionVisibleIds;
+    const edgeKeys = s.codexTargetedSelectionVisibleEdgeKeys;
+    if (!visible?.size || !edgeKeys?.size) return true;
+    if (!visible.has(fromId) || !visible.has(toId)) return false;
+    return edgeKeys.has(codexUnorderedPairKey(fromId, toId));
+}
+
 function samplePacketTailNodeIds(fromId, toId) {
     if (!api.codexNodeIsJunctionWaypoint(toId)) return [];
     const tail = [];
     let cur = toId;
     let prev = fromId;
     while (api.codexNodeIsJunctionWaypoint(cur)) {
-        const outs = s.codexEdges.filter((e) => e.fromId === cur && e.toId !== prev);
+        const outs = s.codexEdges.filter(
+            (e) => e.fromId === cur
+                && e.toId !== prev
+                && codexDirectedEdgeAllowedForPacketWalk(e.fromId, e.toId),
+        );
         if (outs.length === 0) break;
-        const pick = outs[Math.floor(Math.random() * outs.length)];
+        const pick = outs.length === 1
+            ? outs[0]
+            : outs[Math.floor(Math.random() * outs.length)];
         tail.push(pick.toId);
         prev = cur;
         cur = pick.toId;
@@ -259,10 +280,70 @@ function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = nul
     });
 }
 
+function codexChainWalkMaxSteps() {
+    return Math.max(8, (Array.isArray(s.codexEdges) ? s.codexEdges.length : 0) + 2);
+}
+
+/**
+ * Follow junctions upstream from `startId` (away from `awayId`) to the bio anchor on that side.
+ * @param {string} startId
+ * @param {string} awayId
+ * @returns {string}
+ */
+function resolveCodexChainUpstreamBioEndpoint(startId, awayId) {
+    if (!startId) return startId;
+    let cur = startId;
+    let forbid = awayId;
+    let steps = 0;
+    const maxSteps = codexChainWalkMaxSteps();
+    while (steps < maxSteps && api.codexNodeKindById(cur) === 'junction') {
+        steps += 1;
+        const inc = s.codexEdges.filter((e) => e && e.toId === cur && e.fromId !== forbid);
+        if (inc.length !== 1) break;
+        forbid = cur;
+        cur = inc[0].fromId;
+    }
+    return cur;
+}
+
+/**
+ * Follow junctions downstream from `startId` (away from `awayId`) to the bio anchor on that side.
+ * @param {string} startId
+ * @param {string} awayId
+ * @returns {string}
+ */
+function resolveCodexChainDownstreamBioEndpoint(startId, awayId) {
+    if (!startId) return startId;
+    let cur = startId;
+    let forbid = awayId;
+    let steps = 0;
+    const maxSteps = codexChainWalkMaxSteps();
+    while (steps < maxSteps && api.codexNodeKindById(cur) === 'junction') {
+        steps += 1;
+        const outs = s.codexEdges.filter((e) => e && e.fromId === cur && e.toId !== forbid);
+        if (outs.length !== 1) break;
+        forbid = cur;
+        cur = outs[0].toId;
+    }
+    return cur;
+}
+
+/**
+ * Bio nodes at each end of a cord chain through simple break waypoints (same walk as hover).
+ * @param {string} fromId
+ * @param {string} toId
+ * @returns {{ subjectId: string, otherId: string }}
+ */
+function resolveCodexChainBioEndpoints(fromId, toId) {
+    return {
+        subjectId: resolveCodexChainUpstreamBioEndpoint(fromId, toId),
+        otherId: resolveCodexChainDownstreamBioEndpoint(toId, fromId),
+    };
+}
+
 function collectCodexDirectedChainEdgeKeys(fromId, toId) {
     const keys = new Set();
     if (!fromId || !toId || fromId === toId || !Array.isArray(s.codexEdges)) return keys;
-    const maxSteps = Math.max(8, s.codexEdges.length + 2);
     const addK = (a, b) => {
         if (a && b && a !== b) keys.add(edgeDirectedKey(a, b));
     };
@@ -270,6 +351,7 @@ function collectCodexDirectedChainEdgeKeys(fromId, toId) {
     let cur = fromId;
     let forbidFrom = toId;
     let steps = 0;
+    const maxSteps = codexChainWalkMaxSteps();
     while (steps < maxSteps && api.codexNodeKindById(cur) === 'junction') {
         steps += 1;
         const inc = s.codexEdges.filter((e) => e && e.toId === cur && e.fromId !== forbidFrom);
@@ -326,6 +408,108 @@ function clearAllCodexEdgeHoverVisual() {
     });
 }
 
+/**
+ * Directed cord keys along a node path (each hop uses junction chain expansion).
+ * @param {string[]} pathNodeIds
+ * @returns {Set<string>}
+ */
+function collectCodexPathRouteDirectedEdgeKeys(pathNodeIds) {
+    const keys = new Set();
+    if (!Array.isArray(pathNodeIds) || pathNodeIds.length < 2) return keys;
+    for (let i = 0; i < pathNodeIds.length - 1; i += 1) {
+        const a = pathNodeIds[i];
+        const b = pathNodeIds[i + 1];
+        const forward = findEdge(a, b);
+        const back = forward ? null : findEdge(b, a);
+        const ed = forward || back;
+        if (!ed) continue;
+        const chain = collectCodexDirectedChainEdgeKeys(ed.fromId, ed.toId);
+        chain.forEach((k) => keys.add(k));
+    }
+    return keys;
+}
+
+/** @param {Set<string>} chain */
+function applyCodexEdgeHoverChainKeySet(chain) {
+    clearAllCodexEdgeHoverVisual();
+    s.codexEdgeHoverChainKeySet = chain;
+    chain.forEach((key) => {
+        const sep = key.indexOf('\x1e');
+        if (sep < 0) return;
+        const a = key.slice(0, sep);
+        const b = key.slice(sep + 1);
+        setCodexEdgeHoverVisual(a, b, true);
+    });
+}
+
+/** @returns {string} */
+function getSingleTargetedSelectionSeedId() {
+    if (!s.codexTargetedSelectionActive || s.codexTargetedSelectionSeedIds.size !== 1) return '';
+    return [...s.codexTargetedSelectionSeedIds][0] || '';
+}
+
+/**
+ * Shortest route cords between two nodes (same highlight as cord hover).
+ * @param {string} fromId
+ * @param {string} toId
+ */
+function highlightCodexRouteBetweenNodes(fromId, toId) {
+    if (!fromId || !toId) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    if (fromId === toId) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const adj = buildCodexUndirectedAdjacency(s.codexEdges || []);
+    const kindById = buildCodexNodeKindMapFromSession();
+    const restrict = s.codexTargetedSelectionActive
+        ? s.codexTargetedSelectionVisibleIds
+        : undefined;
+    const path = shortestPathNodeIdsForTargetedRoutePreview(
+        adj,
+        kindById,
+        fromId,
+        toId,
+        restrict,
+    );
+    if (!path?.length) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const chain = collectCodexPathRouteDirectedEdgeKeys(path);
+    if (s.codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(s.codexEdgeHoverChainKeySet, chain)) {
+        return;
+    }
+    applyCodexEdgeHoverChainKeySet(chain);
+}
+
+/** @param {HTMLElement} nodeEl */
+function onCodexNodeTargetedRoutePointerEnter(nodeEl) {
+    if (!s.codexTargetedSelectionActive || s.codexTargetedSelectionSeedIds.size !== 1) return;
+    if (!nodeEl || nodeEl.classList.contains('codex-node--target-hidden')) return;
+    const hoveredId = nodeEl.dataset.codexNodeId || '';
+    const seedId = getSingleTargetedSelectionSeedId();
+    if (!hoveredId || !seedId) return;
+    highlightCodexRouteBetweenNodes(seedId, hoveredId);
+}
+
+/**
+ * @param {PointerEvent} e
+ * @param {HTMLElement} nodeEl
+ */
+function onCodexNodeTargetedRoutePointerLeave(e, nodeEl) {
+    if (!s.codexTargetedSelectionActive || s.codexTargetedSelectionSeedIds.size !== 1) return;
+    const rel = /** @type {Node|null} */ (e.relatedTarget);
+    if (rel instanceof Element && s.root?.contains(rel)) {
+        if (rel.closest('.codex-node')) return;
+        if (rel.closest('.codex-edge-hit')) return;
+    }
+    if (nodeEl && rel && nodeEl.contains(rel)) return;
+    clearAllCodexEdgeHoverVisual();
+}
+
 function onCodexEdgeSvgPointerOver(e) {
     if (s.codexMode !== 'view') return;
     const t = /** @type {Element} */ (e.target);
@@ -337,15 +521,7 @@ function onCodexEdgeSvgPointerOver(e) {
     if (s.codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(s.codexEdgeHoverChainKeySet, chain)) {
         return;
     }
-    clearAllCodexEdgeHoverVisual();
-    s.codexEdgeHoverChainKeySet = chain;
-    chain.forEach((key) => {
-        const sep = key.indexOf('\x1e');
-        if (sep < 0) return;
-        const a = key.slice(0, sep);
-        const b = key.slice(sep + 1);
-        setCodexEdgeHoverVisual(a, b, true);
-    });
+    applyCodexEdgeHoverChainKeySet(chain);
 }
 
 function onCodexEdgeSvgPointerOut(e) {
@@ -405,7 +581,8 @@ function codexEscapeEdgeIdForSelector(id) {
 }
 
 function openStoryArchiveFromCodexEdgeHit(fromId, toId) {
-    if (s.codexMode !== 'view' || !fromId) return;
+    if (s.codexMode !== 'view' || !fromId || !toId) return;
+    const { subjectId, otherId } = resolveCodexChainBioEndpoints(fromId, toId);
     const tryOpen = (subjectEl, otherEl) => {
         if (!subjectEl || !api.codexNodeElSupportsStoryArchiveLink(subjectEl)) return false;
         playSoundEffect('nodeSelect');
@@ -413,8 +590,8 @@ function openStoryArchiveFromCodexEdgeHit(fromId, toId) {
         api.maybeOpenStoryArchiveFromCodexNodeEl(subjectEl, { codexConnectionHighlight: spec });
         return true;
     };
-    if (tryOpen(s.codexNodeElements.get(fromId), s.codexNodeElements.get(toId))) return;
-    if (toId && tryOpen(s.codexNodeElements.get(toId), s.codexNodeElements.get(fromId))) return;
+    if (tryOpen(s.codexNodeElements.get(subjectId), s.codexNodeElements.get(otherId))) return;
+    if (tryOpen(s.codexNodeElements.get(otherId), s.codexNodeElements.get(subjectId))) return;
 }
 
 api.findEdge = findEdge;
@@ -443,9 +620,14 @@ api.appendCodexEdgeNodeMask = appendCodexEdgeNodeMask;
 api.codexEffectivePacketStrokeRange = codexEffectivePacketStrokeRange;
 api.appendCodexJunctionElbowParallelograms = appendCodexJunctionElbowParallelograms;
 api.collectCodexDirectedChainEdgeKeys = collectCodexDirectedChainEdgeKeys;
+api.resolveCodexChainBioEndpoints = resolveCodexChainBioEndpoints;
 api.codexEdgeHoverChainSetsEqual = codexEdgeHoverChainSetsEqual;
 api.setCodexEdgeHoverVisual = setCodexEdgeHoverVisual;
 api.clearAllCodexEdgeHoverVisual = clearAllCodexEdgeHoverVisual;
+api.applyCodexEdgeHoverChainKeySet = applyCodexEdgeHoverChainKeySet;
+api.highlightCodexRouteBetweenNodes = highlightCodexRouteBetweenNodes;
+api.onCodexNodeTargetedRoutePointerEnter = onCodexNodeTargetedRoutePointerEnter;
+api.onCodexNodeTargetedRoutePointerLeave = onCodexNodeTargetedRoutePointerLeave;
 api.onCodexEdgeSvgPointerOver = onCodexEdgeSvgPointerOver;
 api.onCodexEdgeSvgPointerOut = onCodexEdgeSvgPointerOut;
 api.codexSvgPointerDownCapture = codexSvgPointerDownCapture;

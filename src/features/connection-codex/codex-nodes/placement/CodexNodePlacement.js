@@ -393,6 +393,17 @@ function bindCodexNodeInteraction(el) {
         document.addEventListener('pointerup', api.onPointerUpMaybeSelect, capOpts);
         document.addEventListener('pointercancel', api.onPointerUpMaybeSelect, capOpts);
     });
+
+    el.addEventListener('pointerenter', () => {
+        if (typeof api.onCodexNodeTargetedRoutePointerEnter === 'function') {
+            api.onCodexNodeTargetedRoutePointerEnter(el);
+        }
+    });
+    el.addEventListener('pointerleave', (e) => {
+        if (typeof api.onCodexNodeTargetedRoutePointerLeave === 'function') {
+            api.onCodexNodeTargetedRoutePointerLeave(e, el);
+        }
+    });
 }
 
 function maybeOpenStoryArchiveFromCodexNodeEl(nodeEl, opts) {

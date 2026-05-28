@@ -8,6 +8,7 @@
  */
 
 import { syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncHeroBirthdayBioPanelVisibility } from '../../../interface-shared/bio-archive/HeroBirthdayBioInput.js';
 import { syncHeroBioRolePanelsVisibility } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     STORY_SECONDARY_PLACES_EDITOR_OPTS,
@@ -146,11 +147,18 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                         ? slide.editTarget?.eventData?.heroSubRole
                         : undefined
                 );
+                syncHeroBirthdayBioPanelVisibility(
+                    archiveSourceEdit,
+                    archiveSourceEdit === 'heroes'
+                        ? slide.editTarget?.eventData?.birthday
+                        : undefined
+                );
             } else if (heroLocEdit) {
                 heroLocEdit.setAttribute('hidden', '');
                 heroLocEdit.style.display = 'none';
                 syncFactionTypeBioPanelVisibility('story');
                 syncHeroBioRolePanelsVisibility('story', undefined, undefined);
+                syncHeroBirthdayBioPanelVisibility('story', undefined);
             }
 
             const addSecPlacesBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');
