@@ -8,7 +8,7 @@
  *   1. Escape / Q -> stacked dismiss (still works while focus is inside our
  *      panels for Escape).
  *   2. If typing in a regular text field, bail out — let the field have the key.
- *   3. Single-letter toggles (E, H/I, X, F, G, V, T, C, M, R, Z).
+ *   3. Single-letter toggles (E, H hero roster / H·I image, X, F, G, V, T, C, M, R, Z).
  *   4. Enter -> zoom reset (unless a button/link has focus).
  *   5. Tab -> cycle event slide variants.
  *   6. Arrow keys / WASD -> scroll panel, else zoom, else page-scroll.
@@ -132,6 +132,15 @@ function handleLetterToggle(lower, e) {
             consumeEvent(e);
         }
         return true;
+    }
+    if (lower === 'h') {
+        if (
+            document.getElementById('atlasHeroBiographyHost') &&
+            clickIfEnabled('heroBiographyChipStripToggle')
+        ) {
+            consumeEvent(e);
+            return true;
+        }
     }
     if (lower === 'h' || lower === 'i') {
         if (isEventSlideOpen() && clickIfEnabled('eventImageToggle')) consumeEvent(e);

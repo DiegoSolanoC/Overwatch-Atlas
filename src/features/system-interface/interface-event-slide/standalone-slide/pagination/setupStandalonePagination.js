@@ -7,6 +7,10 @@
  * the original method's 	his).
  */
 
+import {
+    getDockTimelineEventsForPagination,
+    isHeroBiographyDockFilterActive,
+} from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import {
     updateStandaloneSliderTicks,
@@ -23,7 +27,7 @@ export function runSetupStandalonePagination(slide) {
         
         if (!prevBtn || !nextBtn) return;
         
-        const getDockEvents = () => window.eventManager?.getDockTimelineEvents?.() || [];
+        const getDockEvents = () => getDockTimelineEventsForPagination();
         const eventsPerPage = 10; // Globe uses 10 events per page
         
         if (!getDockEvents().length) {
@@ -60,47 +64,56 @@ export function runSetupStandalonePagination(slide) {
         
         // Generate slider ticks matching globe implementation
         const generateSliderTicks = (totalPages) => {
-            if (!ticksEl || totalPages <= 1) return;
-            
+            if (!ticksEl || totalPages < 1) return;
+
             ticksEl.innerHTML = '';
             const currentEvents = getDockEvents();
             const totalEvents = currentEvents.length;
-            
+            if (totalEvents <= 0) return;
+
+            const pages = Math.max(1, totalPages);
+
             // Add page number labels at the start of each page segment
-            for (let i = 0; i < totalPages; i++) {
+            for (let i = 0; i < pages; i++) {
                 const label = document.createElement('span');
                 label.className = 'event-page-slider-label';
-                label.style.left = `${(i / totalPages) * 100}%`;
+                label.style.left = `${(i / pages) * 100}%`;
                 label.textContent = String(i + 1);
                 ticksEl.appendChild(label);
             }
+
+            // Hide redundant "page 1" label when the whole strip is one page
+            if (pages === 1) {
+                const lonePageLabel = ticksEl.querySelector('.event-page-slider-label');
+                if (lonePageLabel) lonePageLabel.style.display = 'none';
+            }
             
             // Add major tick marks between pages
-            if (totalPages > 1) {
-                for (let i = 1; i < totalPages; i++) {
+            if (pages > 1) {
+                for (let i = 1; i < pages; i++) {
                     const tick = document.createElement('span');
                     tick.className = 'event-page-slider-tick event-page-slider-tick--major';
-                    tick.style.left = `${(i / totalPages) * 100}%`;
+                    tick.style.left = `${(i / pages) * 100}%`;
                     ticksEl.appendChild(tick);
                 }
             }
             
             // Add event number labels (1-10) for each page position
-            for (let p = 0; p < totalPages; p++) {
+            for (let p = 0; p < pages; p++) {
                 const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
                 for (let e = 0; e < onPage; e++) {
                     const numLabel = document.createElement('span');
                     numLabel.className = 'event-page-slider-num';
                     numLabel.dataset.eventIndex = p * eventsPerPage + e;
                     numLabel.dataset.pagePosition = e + 1; // 1-10 position
-                    numLabel.style.left = `${((p + (e + 0.5) / onPage) / totalPages) * 100}%`;
+                    numLabel.style.left = `${((p + (e + 0.5) / onPage) / pages) * 100}%`;
                     numLabel.textContent = String(e + 1);
                     ticksEl.appendChild(numLabel);
                 }
             }
             
             // Add event position ticks (one per event slot, centered)
-            for (let p = 0; p < totalPages; p++) {
+            for (let p = 0; p < pages; p++) {
                 const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
                 for (let e = 0; e < onPage; e++) {
                     const tick = document.createElement('span');
@@ -108,13 +121,13 @@ export function runSetupStandalonePagination(slide) {
                     tick.dataset.eventIndex = p * eventsPerPage + e;
                     tick.dataset.pagePosition = e + 1; // 1-10
                     // Centered on each event position
-                    tick.style.left = `${((p + (e + 0.5) / onPage) / totalPages) * 100}%`;
+                    tick.style.left = `${((p + (e + 0.5) / onPage) / pages) * 100}%`;
                     ticksEl.appendChild(tick);
                 }
             }
             
             // Add unfinished slot markers (red bars) for events missing descriptions
-            for (let p = 0; p < totalPages; p++) {
+            for (let p = 0; p < pages; p++) {
                 const onPage = Math.min(eventsPerPage, Math.max(0, totalEvents - p * eventsPerPage));
                 for (let e = 0; e < onPage; e++) {
                     const g = p * eventsPerPage + e;
@@ -122,7 +135,7 @@ export function runSetupStandalonePagination(slide) {
                     if (!eventRootSlotMissingDescription(rootEv)) continue;
                     const mark = document.createElement('span');
                     mark.className = 'event-page-slider-tick event-page-slider-tick--unfinished-slot';
-                    mark.style.left = `${((p + (e + 0.5) / onPage) / totalPages) * 100}%`;
+                    mark.style.left = `${((p + (e + 0.5) / onPage) / pages) * 100}%`;
                     mark.title = 'Unfinished: missing description';
                     ticksEl.appendChild(mark);
                 }
@@ -214,6 +227,7 @@ export function runSetupStandalonePagination(slide) {
             const animate = options.animate !== false;
             const currentPage = getCurrentPage();
             const totalPages = getTotalPages();
+            const currentEvents = getDockEvents();
             const pageTotal = document.getElementById('pageTotal');
             
             if (pageTotal) pageTotal.textContent = `/ ${totalPages}`;
@@ -225,12 +239,17 @@ export function runSetupStandalonePagination(slide) {
             // Update slider using globe's EVENT_PAGE_SLIDER_RESOLUTION
             if (pageSlider) {
                 const SLIDER_RESOLUTION = 10000;
+                const slotsOnCurrentPage = Math.min(
+                    eventsPerPage,
+                    Math.max(0, currentEvents.length - (currentPage - 1) * eventsPerPage),
+                );
                 pageSlider.min = '0';
                 pageSlider.max = String(SLIDER_RESOLUTION);
-                pageSlider.disabled = totalPages <= 1;
-                
-                // Calculate slider value for page center (same as globe)
-                const pageCenter = (currentPage - 0.5) / totalPages;
+                // One page: still scrub across event slots on that page (hero-bio short lists).
+                pageSlider.disabled = totalPages <= 1 && slotsOnCurrentPage <= 1;
+
+                const pages = Math.max(1, totalPages);
+                const pageCenter = (currentPage - 0.5) / pages;
                 pageSlider.value = String(Math.round(pageCenter * SLIDER_RESOLUTION));
             }
             
@@ -239,8 +258,9 @@ export function runSetupStandalonePagination(slide) {
             updateEraStrip(totalPages);
             
             // Update filter-hit ticks for current filter state
-            const activeFilters = window.standaloneActiveFilters || new Set();
-            const currentEvents = getDockEvents();
+            const activeFilters = isHeroBiographyDockFilterActive()
+                ? new Set()
+                : (window.standaloneActiveFilters || new Set());
             updateStandaloneSliderTicks(activeFilters, currentEvents, eventsPerPage, currentPage);
             
             // Update buttons
@@ -256,16 +276,19 @@ export function runSetupStandalonePagination(slide) {
                 window.newsTickerService.updateTicker(currentPageEvents);
             }
             
-            // Show/hide pagination
+            // Keep thumbnails visible even when events fit on one page (hero bio filters).
             const pagination = document.getElementById('eventPagination');
             if (pagination) {
-                pagination.style.display = totalPages <= 1 ? 'none' : 'flex';
+                pagination.style.display = currentEvents.length > 0 ? 'flex' : 'none';
+                pagination.classList.toggle('event-pagination--single-page', totalPages <= 1);
             }
         };
         
         // Helper to calculate matching events on a page
         const getMatchingEventsOnPage = (pageNum) => {
-            const activeFilters = window.standaloneActiveFilters || new Set();
+            const activeFilters = isHeroBiographyDockFilterActive()
+                ? new Set()
+                : (window.standaloneActiveFilters || new Set());
             if (activeFilters.size === 0) return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
             
             const dockEv = getDockEvents();
@@ -425,9 +448,14 @@ export function runSetupStandalonePagination(slide) {
             // Input event for live page updates
             pageSlider.addEventListener('input', () => {
                 const tp = getTotalPages();
-                if (tp <= 1) return;
                 const value = parseInt(pageSlider.value, 10);
                 const progress = value / SLIDER_RESOLUTION;
+
+                if (tp <= 1) {
+                    // Single-page lists: thumb moves across event slots (visual only).
+                    return;
+                }
+
                 const newPage = Math.min(tp, Math.max(1, Math.floor(progress * tp) + 1));
                 
                 if (newPage === lastPage) return;

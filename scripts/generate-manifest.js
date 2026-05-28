@@ -9,6 +9,8 @@ const heroesFolder = path.join(ROOT, 'src', 'assets', 'images', 'Filters', 'Hero
 const factionsFolder = path.join(ROOT, 'src', 'assets', 'images', 'Filters', 'Factions');
 const npcsFolder = path.join(ROOT, 'src', 'assets', 'images', 'Filters', 'NPCs');
 const musicFolder = path.join(ROOT, 'src', 'assets', 'audio', 'music');
+const biosFolder = path.join(ROOT, 'src', 'assets', 'images', 'Bios');
+const phrasesFolder = path.join(ROOT, 'src', 'assets', 'audio', 'Phrases');
 const dataDir = path.join(ROOT, 'src', 'data');
 
 /**
@@ -140,6 +142,75 @@ function getFactionsFromFolder(folderPath) {
     }
 }
 
+/** Heroic first, Classic second, remaining looks A–Z (basename without .png). */
+function sortHeroBioLookNames(fileNames) {
+    const seen = new Set();
+    const unique = [];
+    for (const file of fileNames) {
+        const base = String(file).replace(/\.png$/i, '').trim();
+        if (!base || seen.has(base)) continue;
+        seen.add(base);
+        unique.push(base);
+    }
+    const norm = (s) => s.toLowerCase();
+    const heroic = unique.filter((x) => norm(x) === 'heroic');
+    const classic = unique.filter((x) => norm(x) === 'classic');
+    const rest = unique.filter((x) => norm(x) !== 'heroic' && norm(x) !== 'classic');
+    rest.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
+    return [...heroic, ...classic, ...rest];
+}
+
+function getHeroPhrasesFromFolder(folderPath) {
+    const out = {};
+    const audioExt = /\.(mp3|wav|ogg|m4a|webm)$/i;
+    try {
+        const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+        for (const entry of entries) {
+            if (!entry.isDirectory()) continue;
+            const heroId = entry.name;
+            const heroDir = path.join(folderPath, heroId);
+            let files;
+            try {
+                files = fs.readdirSync(heroDir);
+            } catch {
+                continue;
+            }
+            const clips = files
+                .filter((f) => audioExt.test(f))
+                .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
+            if (clips.length === 0) continue;
+            out[heroId] = clips;
+        }
+    } catch (error) {
+        console.error(`Error reading folder ${folderPath}:`, error);
+    }
+    return out;
+}
+
+function getHeroBiosFromFolder(folderPath) {
+    const out = {};
+    try {
+        const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+        for (const entry of entries) {
+            if (!entry.isDirectory()) continue;
+            const heroId = entry.name;
+            const heroDir = path.join(folderPath, heroId);
+            let files;
+            try {
+                files = fs.readdirSync(heroDir);
+            } catch {
+                continue;
+            }
+            const pngs = files.filter((f) => f.toLowerCase().endsWith('.png'));
+            if (pngs.length === 0) continue;
+            out[heroId] = sortHeroBioLookNames(pngs);
+        }
+    } catch (error) {
+        console.error(`Error reading folder ${folderPath}:`, error);
+    }
+    return out;
+}
+
 function getMusicFiles(folderPath) {
     try {
         const files = fs.readdirSync(folderPath);
@@ -169,6 +240,8 @@ npcs = orderHeroOrNpcIdsByArchive(npcs, readStoryArchiveNames(path.join(dataDir,
 factions = orderFactionsByArchive(factions, readStoryArchiveNames(path.join(dataDir, 'story-archive', 'factions.json')));
 
 const music = getMusicFiles(musicFolder);
+const heroBios = getHeroBiosFromFolder(biosFolder);
+const heroPhrases = getHeroPhrasesFromFolder(phrasesFolder);
 
 const manifest = {
     heroes,
@@ -177,10 +250,14 @@ const manifest = {
         displayName: f.displayName
     })),
     npcs,
-    music
+    music,
+    heroBios,
+    heroPhrases
 };
 
 const manifestPath = path.join(dataDir, 'platform', 'manifest.json');
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 console.log(`${manifestPath} written from disk assets (heroes/factions/npcs ordered like story-archive JSON).`);
-console.log(`  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}`);
+console.log(
+    `  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}, heroBios: ${Object.keys(heroBios).length}, heroPhrases: ${Object.keys(heroPhrases).length}`
+);

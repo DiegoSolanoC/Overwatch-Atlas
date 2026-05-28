@@ -50,6 +50,7 @@ import { runSaveCurrentVariantData } from './variants/saveCurrentVariantData.js'
 import { runConvertRootEventToMulti } from './variants/convertRootEventToMulti.js';
 import { runCollapseMultiToSingleRoot } from './variants/collapseMultiToSingleRoot.js';
 // Pagination
+import { getDockTimelineEventsForPagination } from '../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
 import { runSetupStandalonePagination } from './pagination/setupStandalonePagination.js';
 import { runWireNumberButtons } from './pagination/wireNumberButtons.js';
 import { runAnimatePageTurn } from './pagination/animatePageTurn.js';
@@ -121,7 +122,7 @@ export function createStandaloneEventSlide() {
             if (!this._slideHistoryRestoring && !options.keepSlideHistory) {
                 this.clearSlideHistory();
             }
-            const dockList = window.eventManager?.getDockTimelineEvents?.() || [];
+            const dockList = getDockTimelineEventsForPagination();
             const events =
                 options.eventList != null ? options.eventList : dockList;
             if (index < 0 || index >= events.length) return;
@@ -300,7 +301,7 @@ export function createStandaloneEventSlide() {
         
         updateNumberButtons(pageEvents, pageNum, options = {}) {
             // Get all events for indexing (dock = main story timeline only)
-            const allEvents = window.eventManager?.getDockTimelineEvents?.() || [];
+            const allEvents = getDockTimelineEventsForPagination();
 
             // Initial boot seeding bypasses the page-turn animation so the
             // user doesn't see thumbnails staggering in after the loading

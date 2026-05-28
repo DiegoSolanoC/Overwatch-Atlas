@@ -1,11 +1,59 @@
 /* Hero Biography mode — full main stage + bottom hero filter strip */
 
 .hero-biography-mode.story-viewer-container {
-    flex-direction: column;
+    /* Inherit absolute fill from .story-viewer-container — do not use position:relative
+       or the host becomes a flex sibling of #eventImageOverlay and splits main#content. */
+    display: grid;
+    grid-template-rows: 1fr minmax(0, auto);
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: stretch;
     padding: 0;
     gap: 0;
+    overflow: hidden;
+    transition: grid-template-rows 0.58s cubic-bezier(0.32, 0.72, 0.25, 1);
+}
+
+/* Entry image must cover the full main stage (same stack as globe / story archive). */
+@media (min-width: 769px) {
+    body:has(#atlasHeroBiographyHost) .event-image-overlay.open {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        flex: none;
+        margin: 0;
+    }
+
+    body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-mode__main,
+    body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-hero-filters {
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+.hero-biography-mode--hero-filters-collapsed {
+    grid-template-rows: 1fr 0fr;
+}
+
+/* Select Hero toggle — left dock rail (same chrome as Filters / Map toggles) */
+body:has(#atlasHeroBiographyHost) #dockGlobeRailLeft > .globe-control-btn.dock-globe-rail__btn:not(#heroBiographyChipStripToggle) {
+    display: none !important;
+}
+
+body:has(#atlasHeroBiographyHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
+    display: flex !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+/* Fallback when dock rail is not in the layout */
+#atlasHeroBiographyHost > #heroBiographyChipStripToggle.hero-biography-select-hero-toggle--floating {
+    position: fixed;
+    left: max(20px, env(safe-area-inset-left));
+    bottom: calc(var(--footer-height, 65px) + 24px);
+    z-index: 120;
+    display: flex !important;
+    pointer-events: auto !important;
 }
 
 .hero-biography-mode__main {
@@ -17,16 +65,117 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: clamp(16px, 3vh, 36px) 16px 12px;
+    padding: clamp(12px, 2.5vh, 28px) 0 0;
     position: relative;
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Full-stage heroic art — sits behind title + chip strip, anchored to dock */
+.hero-biography-mode__portrait {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: clamp(3.75rem, 8.5vh, 6.5rem);
+    bottom: 0;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition:
+        opacity 0.28s ease,
+        visibility 0.28s ease,
+        transform 0.28s ease;
+    pointer-events: none;
+}
+
+.hero-biography-mode__portrait.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.hero-biography-mode__portrait-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.hero-biography-mode__portrait.has-image .hero-biography-mode__portrait-img {
+    display: block;
+    pointer-events: auto;
+    user-select: auto;
+    -webkit-user-select: auto;
+    -webkit-user-drag: element;
+    cursor: grab;
+}
+
+.hero-biography-mode__portrait.has-image .hero-biography-mode__portrait-img:active {
+    cursor: grabbing;
+}
+
+.hero-biography-mode__portrait-empty {
+    margin: 0 0 18vh;
+    padding: 0 16px;
+    max-width: 28ch;
+    text-align: center;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    font-style: italic;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.hero-biography-mode__portrait.has-image .hero-biography-mode__portrait-empty {
+    display: none;
+}
+
+.hero-biography-mode__hero-header {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(10px, 1.4vh, 16px);
+    width: 100%;
+    max-width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 12px clamp(4px, 0.75vh, 10px);
+    box-sizing: border-box;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+}
+
+.hero-biography-mode__hero-header.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .hero-biography-mode__hero-title {
     margin: 0;
-    padding: 0 12px;
+    padding: 0;
     width: 100%;
-    max-width: min(1200px, 100%);
-    box-sizing: border-box;
+    flex: 0 0 auto;
     text-align: center;
     font-family: 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif;
     font-style: oblique;
@@ -37,21 +186,310 @@
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.96);
     text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition:
-        opacity 0.22s ease,
-        visibility 0.22s ease,
-        transform 0.22s ease;
-    pointer-events: none;
+}
+
+.hero-biography-mode__controls-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: min(440px, 94vw);
     flex: 0 0 auto;
 }
 
-.hero-biography-mode__hero-title.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.hero-biography-mode__look-field {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hero-biography-mode__look-select-label {
+    font-family: var(--font-control-bold, var(--font-default, 'Config', sans-serif));
+    font-size: clamp(0.72rem, 1.2vw, 0.82rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1;
+    padding-left: 2px;
+}
+
+.hero-biography-mode__phrase-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+    padding: 4px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    border-style: solid;
+    border-width: 2px 2px 2px 5px;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-radius: 4px;
+    background: rgba(13, 71, 161, 0.4);
+    color: rgba(255, 255, 255, 0.96);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hero-biography-mode__phrase-btn:hover:not(:disabled) {
+    background: rgba(13, 71, 161, 0.62);
+    border-color: #fff;
+}
+
+.hero-biography-mode__phrase-btn:focus-visible {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.hero-biography-mode__phrase-btn:disabled {
+    opacity: 0.42;
+    cursor: default;
+}
+
+.hero-biography-mode__phrase-btn.is-playing {
+    border-color: rgba(120, 220, 255, 0.95);
+    box-shadow: 0 0 0 2px rgba(100, 200, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.hero-biography-mode__phrase-btn-icon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.hero-biography-mode__phrase-btn-label {
+    font-family: var(--font-control-bold, var(--font-default, 'Config', sans-serif));
+    font-size: clamp(0.62rem, 1vw, 0.72rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.hero-biography-mode__ranges-row {
+    width: 100%;
+    max-width: min(520px, 96vw);
+    flex: 0 0 auto;
+    overflow: visible;
+}
+
+.hero-biography-mode__hero-header,
+.hero-biography-mode__look-event-range,
+.hero-biography-mode__look-event-range-input-wrap {
+    overflow: visible;
+}
+
+.hero-biography-mode__ranges-row--active .hero-biography-mode__look-event-range {
+    width: 100%;
+}
+
+.hero-biography-mode__look-event-range {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-biography-mode__look-event-range-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+}
+
+.hero-biography-mode__look-event-range-input-wrap {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.hero-biography-mode__look-event-range-input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 38px;
+    padding: 0 10px;
+    border-style: solid;
+    border-width: 2px 2px 2px 4px;
+    border-color: rgba(255, 255, 255, 0.75);
+    border-radius: 4px;
+    background: rgba(8, 20, 40, 0.72);
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-control-bold, var(--font-default, 'Config', sans-serif));
+    font-size: clamp(0.82rem, 1.25vw, 0.92rem);
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-biography-mode__look-event-range-input::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+    font-weight: 500;
+}
+
+.hero-biography-mode__look-event-range-input:focus-visible {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18), 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero-biography-mode__look-event-range-sep {
+    flex: 0 0 auto;
+    align-self: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.hero-biography-mode__look-event-range-confirm {
+    flex: 0 0 auto;
+    height: 38px;
+    padding: 0 14px;
+    border-style: solid;
+    border-width: 2px 2px 2px 4px;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-radius: 4px;
+    background: rgba(13, 71, 161, 0.5);
+    color: rgba(255, 255, 255, 0.96);
+    font-family: var(--font-control-bold, var(--font-default, 'Config', sans-serif));
+    font-size: clamp(0.82rem, 1.25vw, 0.92rem);
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.hero-biography-mode__look-event-range-confirm:hover:not(:disabled) {
+    background: rgba(13, 71, 161, 0.72);
+    border-color: #fff;
+}
+
+.hero-biography-mode__look-event-range-confirm:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.hero-biography-mode__look-event-range-status {
+    margin: 4px 0 0;
+    padding: 0 2px;
+    font-size: clamp(0.72rem, 1.1vw, 0.8rem);
+    line-height: 1.35;
+    color: rgba(220, 215, 205, 0.65);
+}
+
+.hero-biography-mode__look-event-range-status.is-valid {
+    color: rgba(150, 220, 170, 0.9);
+}
+
+.hero-biography-mode__look-event-range-status.is-invalid {
+    color: rgba(255, 160, 140, 0.92);
+}
+
+.hero-biography-mode__look-select {
+    width: 100%;
+    min-width: 0;
+    height: 58px;
+    padding: 0 36px 0 14px;
+    border-style: solid;
+    border-width: 2px 2px 2px 5px;
+    border-color: rgba(255, 255, 255, 0.93);
+    border-radius: 4px;
+    background: rgba(13, 71, 161, 0.35);
+    color: rgba(255, 255, 255, 0.96);
+    font-family: var(--font-control-bold, var(--font-default, 'Config', sans-serif));
+    font-size: clamp(1rem, 1.85vw, 1.15rem);
+    font-weight: 700;
+    line-height: 1.15;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.9) 50%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9) 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hero-biography-mode__look-select:hover:not(:disabled) {
+    background-color: rgba(13, 71, 161, 0.55);
+    border-color: #fff;
+}
+
+.hero-biography-mode__look-select:focus-visible {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.hero-biography-mode__look-select:disabled {
+    opacity: 0.72;
+    cursor: default;
+}
+
+.hero-biography-mode__look-select option {
+    background: var(--bg-secondary, #0a1929);
+    color: #fff;
+    font-weight: 600;
+}
+
+.hero-biography-mode__hero-header:not(.is-visible) .hero-biography-mode__look-select,
+.hero-biography-mode__hero-header:not(.is-visible) .hero-biography-mode__phrase-btn,
+.hero-biography-mode__hero-header:not(.is-visible) .hero-biography-mode__look-event-range-input,
+.hero-biography-mode__hero-header:not(.is-visible) .hero-biography-mode__look-event-range-confirm {
+    pointer-events: none;
+}
+
+.hero-biography-mode__look-event-range-input-wrap .hero-biography-look-ranges__autocomplete-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 80;
+    box-sizing: border-box;
+}
+
+.hero-biography-look-ranges__autocomplete-list {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.hero-biography-look-ranges__autocomplete-item {
+    text-align: left;
+    width: 100%;
 }
 
 .hero-biography-mode__error {
@@ -61,26 +499,94 @@
 }
 
 .hero-biography-hero-filters {
+    position: relative;
+    z-index: 4;
     --hero-bio-chip-max-h: clamp(80px, 6.75vw, 104px);
     --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
     --hero-bio-chip-h: var(--hero-bio-chip-max-h);
     --hero-bio-chip-w: var(--hero-bio-chip-max-w);
     --hero-bio-label-band: clamp(17px, 1.35vw, 22px);
     --hero-bio-label-rim: clamp(3px, 0.32vw, 5px);
-    flex: 0 0 auto;
+    /* Gap above pagination dock / timeline — keep chips low without sitting under the dock cap */
+    --hero-bio-chip-dock-gap: clamp(10px, 1.6vh, 22px);
+    min-height: 0;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: clamp(56px, 9vh, 112px);
-    padding: 12px clamp(10px, 1.25vw, 20px) clamp(20px, 2.5vh, 36px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.22);
+    margin-bottom: var(--hero-bio-chip-dock-gap);
+    padding: 10px clamp(10px, 1.25vw, 20px) clamp(8px, 1vh, 14px);
+    border-top: none;
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     overflow: visible;
+    isolation: isolate;
+    opacity: 1;
+    pointer-events: auto;
+    transition:
+        opacity 0.55s cubic-bezier(0.32, 0.72, 0.25, 1),
+        margin-bottom 0.58s cubic-bezier(0.32, 0.72, 0.25, 1),
+        padding 0.58s cubic-bezier(0.32, 0.72, 0.25, 1),
+        border-color 0.45s ease,
+        visibility 0s linear 0s;
+    visibility: visible;
+}
+
+body:has(#paginationDock):has(#atlasHeroBiographyHost) .hero-biography-hero-filters:not(.hero-biography-hero-filters--hidden) {
+    /* Dock cap (~80px) intrudes into main; lift strip so bottom subrole labels clear trapezium */
+    --hero-bio-chip-dock-gap: calc(
+        var(--dock-border-img-h, 80px) * 0.62 + clamp(12px, 1.6vh, 18px)
+    );
+    padding-bottom: clamp(10px, 1.25vh, 16px);
+}
+
+/* Backdrop fills the dock gap; chip layout stays on the lifted margin above */
+.hero-biography-hero-filters::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: calc(-1 * var(--hero-bio-chip-dock-gap));
+    z-index: -1;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.22);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition:
+        opacity 0.55s cubic-bezier(0.32, 0.72, 0.25, 1),
+        bottom 0.58s cubic-bezier(0.32, 0.72, 0.25, 1),
+        border-color 0.45s ease;
+}
+
+.hero-biography-hero-filters--hidden::before {
+    opacity: 0;
+    border-top-color: transparent;
+}
+
+.hero-biography-hero-filters--hidden {
+    opacity: 0;
+    pointer-events: none;
+    margin-bottom: clamp(8px, 1.5vh, 16px);
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-color: transparent;
+    visibility: hidden;
+    transition:
+        opacity 0.55s cubic-bezier(0.32, 0.72, 0.25, 1),
+        margin-bottom 0.58s cubic-bezier(0.32, 0.72, 0.25, 1),
+        padding 0.58s cubic-bezier(0.32, 0.72, 0.25, 1),
+        border-color 0.45s ease,
+        visibility 0s linear 0.55s;
+}
+
+.hero-biography-hero-filters--hidden .hero-biography-hero-filters__roles {
+    opacity: 0;
+    transform: translateY(18px);
 }
 
 .hero-biography-hero-filters__roles {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: row;
     justify-content: stretch;
@@ -89,6 +595,9 @@
     width: 100%;
     max-width: none;
     box-sizing: border-box;
+    transition:
+        opacity 0.55s cubic-bezier(0.32, 0.72, 0.25, 1),
+        transform 0.58s cubic-bezier(0.32, 0.72, 0.25, 1);
 }
 
 .hero-biography-hero-filters__role-column {

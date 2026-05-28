@@ -56,7 +56,7 @@ export function createHeroBiographyChip(heroId, imageService, soundManager) {
     };
 
     const onActivate = () => {
-        const selected = toggleHeroBiographyChip(wrap, chip, displayName);
+        const selected = toggleHeroBiographyChip(wrap, chip, displayName, filterKey);
         soundManager?.play?.(selected ? 'filterPick' : 'filterOff');
         if (selected) scheduleLabelFit();
     };

@@ -17,6 +17,11 @@ import {
     HERO_BIOGRAPHY_SUBROLE_ROWS,
     labelForHeroBiographySubrole,
 } from './heroBiographyRoleLayout.js';
+import {
+    bindHeroBiographyChipStrip,
+    mountHeroBiographyChipStripToggle,
+    unmountHeroBiographyChipStripControls,
+} from './heroBiographyChipStripVisibility.js';
 
 /** @type {FilterImageService | null} */
 let sessionImageService = null;
@@ -117,7 +122,7 @@ export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
     unmountHeroBiographyHeroFilterBar();
 
     sessionImageService = new FilterImageService();
-    initHeroBiographySelection(mainEl);
+    initHeroBiographySelection(host, mainEl);
 
     const manifestHeroes = await loadHeroFilterManifest();
     const roleGroups = await buildHeroBiographyRoleGroups(manifestHeroes);
@@ -137,10 +142,17 @@ export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
     host.appendChild(strip);
     host._heroBiographyFilterStrip = strip;
 
+    bindHeroBiographyChipStrip(host, strip);
+    mountHeroBiographyChipStripToggle();
+
     preloadFilterImages(manifestHeroes, 'heroes', FILTER_IMAGE_PATHS.HEROES);
 }
 
 export function unmountHeroBiographyHeroFilterBar() {
+    const host = document.getElementById('atlasHeroBiographyHost');
+    host?._heroBiographyFilterStrip?.remove();
+    if (host) delete host._heroBiographyFilterStrip;
+    unmountHeroBiographyChipStripControls();
     destroyHeroBiographySelection();
     sessionImageService = null;
 }

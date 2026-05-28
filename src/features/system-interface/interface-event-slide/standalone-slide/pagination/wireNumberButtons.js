@@ -7,6 +7,11 @@
  * the original method's 	his).
  */
 
+import { isHeroBiographyDockFilterActive } from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+import {
+    onHeroBiographyDockEventHover,
+    onHeroBiographyDockEventHoverEnd,
+} from '../../../../hero-biography/hero-biography-mode/heroBiographyDockLookHover.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
@@ -61,8 +66,10 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
         const eventsPerPage = 10;
         const baseIndex = (pageNum - 1) * eventsPerPage;
         
-        // Get active filters for lock state check
-        const activeFilters = window.standaloneActiveFilters || new Set();
+        // Curated hero-bio dock list — thumbs are all relevant; skip global filter locks.
+        const activeFilters = isHeroBiographyDockFilterActive()
+            ? new Set()
+            : (window.standaloneActiveFilters || new Set());
         const filtersOn = activeFilters.size > 0;
         
         buttons.forEach((btn, index) => {
@@ -282,6 +289,10 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
             
             // Hover effects - show preview badge and trigger marker hover
             newBtn.onmouseenter = () => {
+                if (isHeroBiographyDockFilterActive()) {
+                    void onHeroBiographyDockEventHover(event);
+                }
+
                 // Show preview badge
                 if (window.SummaryInfoBadge?.show && event) {
                     const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines 
@@ -380,6 +391,10 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
             };
             
             newBtn.onmouseleave = () => {
+                if (isHeroBiographyDockFilterActive()) {
+                    onHeroBiographyDockEventHoverEnd();
+                }
+
                 if (window.SummaryInfoBadge?.hide) {
                     window.SummaryInfoBadge.hide();
                 }

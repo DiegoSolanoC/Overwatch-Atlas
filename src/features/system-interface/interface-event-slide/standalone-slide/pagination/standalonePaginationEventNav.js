@@ -1,6 +1,7 @@
 /**
  * Prev/next event buttons for standalone pagination.
  */
+import { isHeroBiographyDockFilterActive } from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 
 /** @param {object} ctx */
@@ -13,10 +14,15 @@ export function wireStandaloneEventNavButtons(ctx) {
     
     if (prevEventBtn && nextEventBtn) {
         const getCurrentEventIndex = () => window.standaloneEventSlide?.currentEventIndex ?? -1;
-        const getFilteredEvents = () =>
-            window.eventManager?.getFilteredDockTimelineEvents?.() ||
-            window.eventManager?.getDockTimelineEvents?.() ||
-            [];
+        const getFilteredEvents = () => {
+            if (isHeroBiographyDockFilterActive()) {
+                return getDockEvents();
+            }
+            return (
+                window.eventManager?.getFilteredDockTimelineEvents?.() ||
+                getDockEvents()
+            );
+        };
         
         const dockIndexFromFilteredSlot = (listIndex, list) => {
             const dock = getDockEvents();

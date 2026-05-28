@@ -7,6 +7,11 @@
  * the original method's 	his).
  */
 
+import { isHeroBiographyDockFilterActive } from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+import {
+    onHeroBiographyDockEventHover,
+    onHeroBiographyDockEventHoverEnd,
+} from '../../../../hero-biography/hero-biography-mode/heroBiographyDockLookHover.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
@@ -258,6 +263,10 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         
         // Hover effects - show preview badge and trigger marker hover
         btn.onmouseenter = () => {
+            if (isHeroBiographyDockFilterActive()) {
+                void onHeroBiographyDockEventHover(event);
+            }
+
             // Show preview badge
             if (window.SummaryInfoBadge?.show && event) {
                 const hoverLines = window.SummaryInfoBadge.getHoverPreviewLines 
@@ -353,6 +362,10 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         };
 
         btn.onmouseleave = () => {
+            if (isHeroBiographyDockFilterActive()) {
+                onHeroBiographyDockEventHoverEnd();
+            }
+
             if (window.SummaryInfoBadge?.hide) {
                 window.SummaryInfoBadge.hide();
             }

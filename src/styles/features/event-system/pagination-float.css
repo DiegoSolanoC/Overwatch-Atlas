@@ -1361,3 +1361,14 @@ body.color-palette-gray .event-number-btn.locked {
    Dock collapse animates via body.pagination-dock-collapsed + --pagination-dock-height (one clean CSS transition).
    Per-thumb CSS transitions fought transform:none !important, shorthand transitions, and repeated updates. */
 
+/* Fewer than 11 dock events (e.g. hero-bio filter): keep slider + thumbs, hide page nav only */
+.event-pagination.event-pagination--single-page .page-controls-row--page-only {
+    display: none !important;
+}
+
+.event-pagination.event-pagination--single-page #prevPageBtn,
+.event-pagination.event-pagination--single-page #nextPageBtn {
+    visibility: hidden;
+    pointer-events: none;
+}
+

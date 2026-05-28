@@ -515,5 +515,23 @@
       "filename": "Wrecking Ball's Theme.mp3",
       "name": "Wrecking Ball's Theme"
     }
-  ]
+  ],
+  "heroBios": {
+    "Ana": [
+      "Heroic",
+      "Classic",
+      "Bastet",
+      "Captain",
+      "El-Sa'ka",
+      "Horus",
+      "Merciful",
+      "Shrike",
+      "Wasteland"
+    ]
+  },
+  "heroPhrases": {
+    "Ana": [
+      "Selection.ogg"
+    ]
+  }
 }

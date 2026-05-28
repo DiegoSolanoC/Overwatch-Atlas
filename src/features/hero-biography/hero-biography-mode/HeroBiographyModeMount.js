@@ -1,5 +1,9 @@
 import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
 import {
+    clearHeroBiographyDockHeroFilter,
+    refreshHeroBiographyDockPagination,
+} from './heroBiographyDockTimeline.js';
+import {
     mountHeroBiographyHeroFilterBar,
     unmountHeroBiographyHeroFilterBar,
 } from './HeroBiographyHeroFilterBar.js';
@@ -70,6 +74,8 @@ export async function unmountHeroBiographyMode() {
         document.removeEventListener('keydown', host._heroBiographyEscape);
     }
     unmountHeroBiographyHeroFilterBar();
+    clearHeroBiographyDockHeroFilter();
+    refreshHeroBiographyDockPagination();
     host?.remove();
 
     const eventManagerBtn = document.getElementById('eventsManageToggle');
