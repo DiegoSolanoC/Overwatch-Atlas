@@ -16,16 +16,17 @@
  *
  * @param {DocumentFragment} fragment Where separators are appended.
  * @param {object} factories `{ createFactionArchiveTypeSeparator, createHeroArchiveRoleSeparator, createHeroArchiveSubroleSeparator }`.
- * @param {object} helpers   `{ factionArchiveGroupOrder, heroArchiveRoleOrder }` returning the live globals.
+ * @param {object} helpers   `{ factionArchiveGroupOrder, heroArchiveRoleOrder, npcArchiveGroupOrder }` returning the live globals.
  * @returns {{
- *   seedFromPreviousEvent: (prev: any, kind: 'factions'|'heroes') => void,
- *   maybeEmitForEvent: (event: any, kind: 'factions'|'heroes') => void
+ *   seedFromPreviousEvent: (prev: any, kind: 'factions'|'heroes'|'npcs') => void,
+ *   maybeEmitForEvent: (event: any, kind: 'factions'|'heroes'|'npcs') => void
  * }}
  */
 export function createGroupedArchiveSeparatorInjector(fragment, factories, helpers) {
     let lastFactionGroupKey = '';
     let lastHeroGroupKey = '';
     let lastHeroSubKey = '';
+    let lastNpcGroupKey = '';
 
     const seedFromPreviousEvent = (prevEvent, kind) => {
         if (!prevEvent) return;
@@ -41,6 +42,11 @@ export function createGroupedArchiveSeparatorInjector(fragment, factories, helpe
             const nr = hro.normalizeHeroArchiveRole(prevEvent?.heroRole);
             lastHeroGroupKey = `${prh}|${nr}`;
             lastHeroSubKey = `${hro.heroArchiveSubroleRank(prevEvent?.heroSubRole, nr)}|${hro.normalizeHeroArchiveSubrole(prevEvent?.heroSubRole, nr)}`;
+        } else if (kind === 'npcs') {
+            const ngo = helpers.npcArchiveGroupOrder();
+            if (!ngo) return;
+            const pr = ngo.npcArchiveCategoryRank(prevEvent?.npcCategory);
+            lastNpcGroupKey = `${pr}|${ngo.normalizeNpcArchiveCategory(prevEvent?.npcCategory)}`;
         }
     };
 
@@ -85,6 +91,20 @@ export function createGroupedArchiveSeparatorInjector(fragment, factories, helpe
                         hro.displayLabelForHeroArchiveSubrole(event?.heroSubRole, normRole),
                         normRole,
                         normSub
+                    )
+                );
+            }
+        } else if (kind === 'npcs') {
+            const ngo = helpers.npcArchiveGroupOrder();
+            if (!ngo) return;
+            const gRank = ngo.npcArchiveCategoryRank(event?.npcCategory);
+            const gKey = `${gRank}|${ngo.normalizeNpcArchiveCategory(event?.npcCategory)}`;
+            if (gKey !== lastNpcGroupKey) {
+                lastNpcGroupKey = gKey;
+                fragment.appendChild(
+                    factories.createNpcArchiveCategorySeparator(
+                        ngo.displayLabelForNpcArchiveCategory(event?.npcCategory),
+                        ngo.normalizeNpcArchiveCategory(event?.npcCategory)
                     )
                 );
             }

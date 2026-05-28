@@ -1,43 +1,71 @@
 /**
- * Hero Biography — curated dock timeline (events that include the selected hero in filters).
+ * Biography mode — curated dock timeline (events matching the selected archive entity).
  */
 
-import { getStoryEventHeroTokens } from '../../system-interface/interface-shared/storyEventFilterPlaces.js';
+import {
+    getStoryEventFactionTokens,
+    getStoryEventHeroTokens,
+    getStoryEventNpcTokens,
+} from '../../system-interface/interface-shared/storyEventFilterPlaces.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 
 const HOST_ID = 'atlasHeroBiographyHost';
 
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
+let activeCategory = 'heroes';
+
 /** @type {string | null} */
-let activeHeroFilterKey = null;
+let activeFilterKey = null;
+
+/** @type {string} */
+let activeDisplayName = '';
 
 export function isHeroBiographyModeActive() {
     return !!document.getElementById(HOST_ID);
 }
 
 export function isHeroBiographyDockFilterActive() {
-    return isHeroBiographyModeActive() && !!activeHeroFilterKey;
+    return isHeroBiographyModeActive() && !!activeFilterKey;
 }
 
 export function getActiveHeroBiographyDockHeroFilter() {
-    return activeHeroFilterKey;
+    return activeCategory === 'heroes' ? activeFilterKey : null;
+}
+
+export function getActiveBioBiographyDockSelection() {
+    if (!activeFilterKey) return null;
+    return {
+        category: activeCategory,
+        filterKey: activeFilterKey,
+        displayName: activeDisplayName,
+    };
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | null} category
+ * @param {string | null} filterKey
+ * @param {string} [displayName]
+ */
+export function setBioBiographyDockFilter(category, filterKey, displayName = '') {
+    activeCategory = category ? normalizeBioBiographyCategory(category) : 'heroes';
+    const key = filterKey != null ? String(filterKey).trim() : '';
+    activeFilterKey = key || null;
+    activeDisplayName = key ? String(displayName || key).trim() : '';
 }
 
 /**
  * @param {string | null} heroFilterKey — manifest hero id (e.g. "Ana").
  */
 export function setHeroBiographyDockHeroFilter(heroFilterKey) {
-    const key = heroFilterKey != null ? String(heroFilterKey).trim() : '';
-    activeHeroFilterKey = key || null;
+    setBioBiographyDockFilter('heroes', heroFilterKey);
 }
 
 export function clearHeroBiographyDockHeroFilter() {
-    activeHeroFilterKey = null;
+    activeCategory = 'heroes';
+    activeFilterKey = null;
+    activeDisplayName = '';
 }
 
-/**
- * @param {object} event
- * @param {string} heroFilterKey
- * @returns {boolean}
- */
 /**
  * @param {object | null | undefined} entity
  * @param {string} heroFilterKey
@@ -52,18 +80,69 @@ function entityIncludesHero(entity, heroFilterKey) {
     );
 }
 
-export function eventMatchesHeroBiographyFilter(event, heroFilterKey) {
-    const key = String(heroFilterKey || '').trim();
+/**
+ * @param {object | null | undefined} entity
+ * @param {string} factionFilterKey
+ * @param {string} displayName
+ */
+function entityIncludesFaction(entity, factionFilterKey, displayName) {
+    if (!entity) return false;
+    const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+    const tokens = getStoryEventFactionTokens(entity);
+    for (let i = 0; i < tokens.length; i += 1) {
+        const token = String(tokens[i] || '').trim();
+        if (!token) continue;
+        if (fh && typeof fh.factionIdsMatch === 'function') {
+            if (fh.factionIdsMatch(factionFilterKey, token)) return true;
+            if (displayName && fh.factionIdsMatch(displayName, token)) return true;
+        }
+        if (displayName && token.toLowerCase() === displayName.toLowerCase()) return true;
+    }
+    return false;
+}
+
+/**
+ * @param {object | null | undefined} entity
+ * @param {string} npcFilterKey
+ */
+function entityIncludesNpc(entity, npcFilterKey) {
+    if (!entity) return false;
+    const keyLower = String(npcFilterKey || '').trim().toLowerCase();
+    if (!keyLower) return false;
+    return getStoryEventNpcTokens(entity).some(
+        (token) => String(token || '').trim().toLowerCase() === keyLower,
+    );
+}
+
+/**
+ * @param {object} event
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} filterKey
+ * @param {string} displayName
+ */
+export function eventMatchesBioBiographyFilter(event, category, filterKey, displayName = '') {
+    const cat = normalizeBioBiographyCategory(category);
+    const key = String(filterKey || '').trim();
     if (!key || !event) return false;
 
-    if (entityIncludesHero(event, key)) return true;
+    const testEntity = (entity) => {
+        if (cat === 'factions') return entityIncludesFaction(entity, key, displayName);
+        if (cat === 'npcs') return entityIncludesNpc(entity, key);
+        return entityIncludesHero(entity, key);
+    };
+
+    if (testEntity(event)) return true;
 
     const variants = event.variants;
     if (Array.isArray(variants)) {
-        return variants.some((variant) => entityIncludesHero(variant, key));
+        return variants.some((variant) => testEntity(variant));
     }
 
     return false;
+}
+
+export function eventMatchesHeroBiographyFilter(event, heroFilterKey) {
+    return eventMatchesBioBiographyFilter(event, 'heroes', heroFilterKey);
 }
 
 /**
@@ -72,10 +151,20 @@ export function eventMatchesHeroBiographyFilter(event, heroFilterKey) {
  */
 export function resolveDockTimelineEventsForDisplay(baseEvents) {
     const list = Array.isArray(baseEvents) ? baseEvents : [];
-    if (!isHeroBiographyDockFilterActive() || !activeHeroFilterKey) {
+    if (!isHeroBiographyDockFilterActive() || !activeFilterKey) {
         return list;
     }
-    return list.filter((event) => eventMatchesHeroBiographyFilter(event, activeHeroFilterKey));
+    if (activeCategory === 'locations') {
+        return list;
+    }
+    return list.filter((event) =>
+        eventMatchesBioBiographyFilter(
+            event,
+            activeCategory,
+            activeFilterKey,
+            activeDisplayName,
+        ),
+    );
 }
 
 /**
@@ -87,7 +176,7 @@ export function getDockTimelineEventsForPagination() {
 }
 
 /**
- * Rebuild dock pagination for the current hero filter (or full timeline after clear).
+ * Rebuild dock pagination for the current entity filter (or full timeline after clear).
  */
 export function refreshHeroBiographyDockPagination() {
     const slide = window.standaloneEventSlide;

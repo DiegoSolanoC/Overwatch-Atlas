@@ -1,17 +1,22 @@
 /**
- * Heroes Data Archive rows for Hero Biography (description, role, etc.).
+ * Data Archive rows for Biography mode (heroes, factions, NPCs).
  * Uses the same sources as grouped filter layout: live EM, localStorage, bundled JSON.
  */
 
+import { FILES } from '../../../data/registry.js';
 import { matchHeroManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { ensureArchiveLayoutSnapshotsForFilter } from '../../system-interface/interface-filter-menu/buttons/archive-layouts/archiveLayoutSnapshots.js';
+import { ARCHIVE_LOCALSTORAGE_KEYS } from '../../system-interface/interface-left-panel/event-system/data/archiveRouting.js';
 import {
     getHeroBirthdayAgeDisplay,
     getHeroBirthdayRawFromEntry
 } from '../../system-interface/interface-shared/bio-archive/HeroBirthdayAge.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 
-/** @type {object[] | null} */
-let cachedHeroArchiveEvents = null;
+/** @typedef {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} BioBiographyArchiveCategory */
+
+/** @type {Map<string, object[]|null>} */
+const archiveEventsCache = new Map();
 
 /**
  * @param {object} ev
@@ -42,61 +47,80 @@ function archiveRowDescription(ev) {
 }
 
 /**
+ * @param {BioBiographyArchiveCategory} category
  * @returns {Promise<object[]>}
  */
-export async function loadHeroesArchiveEvents() {
-    if (cachedHeroArchiveEvents) return cachedHeroArchiveEvents;
+export async function loadBioArchiveEvents(category) {
+    const cat = normalizeBioBiographyCategory(category);
+    if (cat === 'locations') return [];
 
-    await ensureArchiveLayoutSnapshotsForFilter('heroes');
+    if (archiveEventsCache.has(cat)) {
+        const hit = archiveEventsCache.get(cat);
+        return hit || [];
+    }
+
+    if (cat === 'heroes' || cat === 'factions') {
+        await ensureArchiveLayoutSnapshotsForFilter(cat);
+    }
 
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
 
-    if (arch === 'heroes' && Array.isArray(window.eventManager?.events)) {
-        cachedHeroArchiveEvents = window.eventManager.events.slice();
-        return cachedHeroArchiveEvents;
+    if (arch === cat && Array.isArray(window.eventManager?.events)) {
+        const live = window.eventManager.events.slice();
+        archiveEventsCache.set(cat, live);
+        return live;
     }
 
+    const lsKey = ARCHIVE_LOCALSTORAGE_KEYS[cat];
     try {
-        const raw = localStorage.getItem('timelineEventsArchiveHeroes');
+        const raw = localStorage.getItem(lsKey);
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                const hasConnections = parsed.some(
-                    (e) => Array.isArray(e?.connections) && e.connections.length > 0,
-                );
-                if (hasConnections) {
-                    cachedHeroArchiveEvents = parsed;
-                    return cachedHeroArchiveEvents;
-                }
+                archiveEventsCache.set(cat, parsed);
+                return parsed;
             }
         }
     } catch (_) {}
 
+    const fileUrl = FILES.storyArchive[cat];
     try {
-        const res = await fetch(`src/data/story-archive/heroes.json?v=${Date.now()}`, {
-            cache: 'no-store',
-        });
+        const res = await fetch(`${fileUrl}?v=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
             const data = await res.json();
-            cachedHeroArchiveEvents = Array.isArray(data?.events) ? data.events : [];
-            return cachedHeroArchiveEvents;
+            const events = Array.isArray(data?.events) ? data.events : [];
+            archiveEventsCache.set(cat, events);
+            return events;
         }
     } catch (_) {}
 
-    cachedHeroArchiveEvents = [];
-    return cachedHeroArchiveEvents;
+    archiveEventsCache.set(cat, []);
+    return [];
+}
+
+/** @returns {Promise<object[]>} */
+export async function loadHeroesArchiveEvents() {
+    return loadBioArchiveEvents('heroes');
+}
+
+export function clearBioArchiveEventsCache(category) {
+    if (category) {
+        archiveEventsCache.delete(normalizeBioBiographyCategory(category));
+        return;
+    }
+    archiveEventsCache.clear();
 }
 
 export function clearHeroesArchiveEventsCache() {
-    cachedHeroArchiveEvents = null;
+    clearBioArchiveEventsCache('heroes');
 }
 
 /**
  * @param {object[] | null} events
  */
 export function setHeroesArchiveEventsCache(events) {
-    cachedHeroArchiveEvents = Array.isArray(events) ? events : null;
+    archiveEventsCache.set('heroes', Array.isArray(events) ? events : null);
 }
 
 /**
@@ -115,6 +139,59 @@ export function findHeroArchiveEntryByFilterKey(heroFilterKey, events) {
         if (matched === key) return ev;
     }
     return null;
+}
+
+/**
+ * @param {string} factionFilename — manifest faction filename token.
+ * @param {object[]} events
+ * @returns {object | null}
+ */
+export function findFactionArchiveEntryByFilterKey(factionFilename, events) {
+    const filename = String(factionFilename || '').trim();
+    if (!filename || !Array.isArray(events)) return null;
+    const fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
+    const bare = filename.replace(/^\d+/, '').trim().toLowerCase();
+
+    for (let i = 0; i < events.length; i++) {
+        const ev = events[i];
+        const rowName = archiveRowName(ev);
+        if (!rowName) continue;
+        if (fh && typeof fh.factionIdsMatch === 'function') {
+            if (fh.factionIdsMatch(filename, rowName)) return ev;
+        }
+        const rl = rowName.toLowerCase();
+        if (bare && rl === bare) return ev;
+    }
+    return null;
+}
+
+/**
+ * @param {string} npcFilterKey
+ * @param {object[]} events
+ * @returns {object | null}
+ */
+export function findNpcArchiveEntryByFilterKey(npcFilterKey, events) {
+    const key = String(npcFilterKey || '').trim().toLowerCase();
+    if (!key || !Array.isArray(events)) return null;
+
+    for (let i = 0; i < events.length; i++) {
+        const ev = events[i];
+        const rowName = archiveRowName(ev);
+        if (String(rowName || '').trim().toLowerCase() === key) return ev;
+    }
+    return null;
+}
+
+/**
+ * @param {BioBiographyArchiveCategory} category
+ * @param {string} filterKey
+ * @param {object[]} events
+ */
+export function findBioArchiveEntryByFilterKey(category, filterKey, events) {
+    const cat = normalizeBioBiographyCategory(category);
+    if (cat === 'factions') return findFactionArchiveEntryByFilterKey(filterKey, events);
+    if (cat === 'npcs') return findNpcArchiveEntryByFilterKey(filterKey, events);
+    return findHeroArchiveEntryByFilterKey(filterKey, events);
 }
 
 /**

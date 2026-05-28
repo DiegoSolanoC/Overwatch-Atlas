@@ -1,6 +1,7 @@
 /**
  * Group-section dividers injected between event cards when the Event Manager is showing a
- * grouped archive (factions by `factionType`, or heroes by `heroRole` + `heroSubRole`).
+ * grouped archive (factions by `factionType`, heroes by `heroRole` + `heroSubRole`,
+ * or NPCs by `npcCategory`).
  *
  * Each separator carries the corresponding `data-drop*` attribute so the drag/drop layer
  * (`drag-drop/wireArchiveSeparatorDrop.js`) can use the divider itself as a drop target — dropping
@@ -54,6 +55,22 @@ export function createHeroArchiveSubroleSeparator(displayLabel, roleKey, subKey)
     el.textContent = displayLabel;
     el.dataset.dropHeroRole = roleKey;
     el.dataset.dropHeroSubRole = subKey;
+    el.draggable = false;
+    return el;
+}
+
+/**
+ * NPC archive category divider.
+ * @param {string} displayLabel User-visible label (e.g. "MEKA").
+ * @param {string} categoryKey Normalized category; `''` = "Other" bucket.
+ */
+export function createNpcArchiveCategorySeparator(displayLabel, categoryKey) {
+    const el = document.createElement('div');
+    el.className = 'event-archive-type-separator';
+    el.setAttribute('role', 'separator');
+    el.setAttribute('aria-label', displayLabel);
+    el.textContent = displayLabel;
+    el.dataset.dropNpcCategory = categoryKey;
     el.draggable = false;
     return el;
 }

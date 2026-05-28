@@ -15,17 +15,17 @@
  *     `data-drop-hero-sub-role`. Without sub-role we set `clearHeroSubRoleOnRoleDrop:true`
  *     so dropping on a role divider clears any stale sub-role on the moved row.
  *
- * The whole function is a no-op when the active archive isn't `factions`/`heroes` or when
- * the corresponding helper global (`FactionArchiveGroupOrderHelpers` /
- * `HeroArchiveRoleOrderHelpers`) isn't loaded yet.
+ * The whole function is a no-op when the active archive isn't `factions`/`heroes`/`npcs` or when
+ * the corresponding helper global isn't loaded yet.
  *
  * @param {any} reorderService Owning EventListReorderDragDrop.
  */
 export function wireArchiveSeparatorDrop(reorderService) {
     const fgo = typeof window !== 'undefined' ? window.FactionArchiveGroupOrderHelpers : null;
     const hro = typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers : null;
+    const ngo = typeof window !== 'undefined' ? window.NpcArchiveGroupOrderHelpers : null;
     const archSrc = reorderService.eventManager.dataService?.getArchiveSource?.();
-    if (!((fgo && archSrc === 'factions') || (hro && archSrc === 'heroes'))) return;
+    if (!((fgo && archSrc === 'factions') || (hro && archSrc === 'heroes') || (ngo && archSrc === 'npcs'))) return;
 
     document.querySelectorAll('.event-archive-type-separator').forEach((sep) => {
         sep.addEventListener('dragover', (e) => {
@@ -59,6 +59,10 @@ export function wireArchiveSeparatorDrop(reorderService) {
                         clearHeroSubRoleOnRoleDrop: true
                     });
                 }
+            } else if (archSrc === 'npcs' && ngo && sep.dataset.dropNpcCategory !== undefined) {
+                const categoryKey = sep.dataset.dropNpcCategory != null ? sep.dataset.dropNpcCategory : '';
+                const toIndex = ngo.findFirstIndexForNpcCategoryInList(evs, categoryKey);
+                reorderService.reorderEvents(fromIndex, toIndex, { targetNpcCategory: categoryKey });
             }
         });
     });

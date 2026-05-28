@@ -8,6 +8,7 @@
  */
 
 import { syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
 import { syncHeroBirthdayBioPanelVisibility } from '../../../interface-shared/bio-archive/HeroBirthdayBioInput.js';
 import { syncHeroBioRolePanelsVisibility } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
@@ -55,6 +56,10 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             syncFactionTypeBioPanelVisibility(
                 archPop,
                 archPop === 'factions' ? target.factionType : undefined
+            );
+            syncNpcCategoryBioPanelVisibility(
+                archPop,
+                archPop === 'npcs' ? target.npcCategory : undefined
             );
             syncHeroBioRolePanelsVisibility(
                 archPop,

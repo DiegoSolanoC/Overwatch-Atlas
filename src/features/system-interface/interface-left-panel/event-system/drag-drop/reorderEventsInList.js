@@ -14,6 +14,7 @@
  *   - **heroes** archive — write `moved.heroRole`; optionally `moved.heroSubRole` from
  *     the drop target, or clear the subrole when the user drops directly on a role
  *     separator (`clearHeroSubRoleOnRoleDrop`).
+ *   - **npcs** archive — write `moved.npcCategory` to the drop target's category key.
  *
  * @param {any} reorderService Owning EventListReorderDragDrop.
  * @param {number} fromIndex Source row.
@@ -22,7 +23,8 @@
  *   targetFactionType?: string,
  *   targetHeroRole?: string,
  *   targetHeroSubRole?: string,
- *   clearHeroSubRoleOnRoleDrop?: boolean
+ *   clearHeroSubRoleOnRoleDrop?: boolean,
+ *   targetNpcCategory?: string
  * }} [options]
  */
 export function reorderEventsInList(reorderService, fromIndex, toIndex, options = {}) {
@@ -52,6 +54,9 @@ export function reorderEventsInList(reorderService, fromIndex, toIndex, options 
         moved.heroSubRole = '';
     } else if (arch === 'heroes' && options && options.targetHeroSubRole !== undefined) {
         moved.heroSubRole = options.targetHeroSubRole;
+    }
+    if (arch === 'npcs' && options && options.targetNpcCategory !== undefined) {
+        moved.npcCategory = options.targetNpcCategory;
     }
 
     if (reorderService.eventManager.renderEvents) {

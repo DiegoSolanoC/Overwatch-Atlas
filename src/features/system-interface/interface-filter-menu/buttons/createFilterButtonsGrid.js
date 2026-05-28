@@ -5,6 +5,7 @@
  *   2. Pick the layout:
  *        - factions tab + grouped requested -> faction-type buckets
  *        - heroes tab + grouped requested   -> role + subrole buckets
+ *        - npcs tab + grouped requested     -> npc-category buckets
  *        - everything else                  -> flat chip list
  *   3. Cache the resulting buttons array so the next tab switch is cheap.
  *   4. Preload the OTHER tabs' images on a stagger so switching tabs feels
@@ -15,6 +16,7 @@ import { tryReuseCachedFilterButtons } from './filterButtonCache.js';
 import { createFilterButton } from './createFilterButton.js';
 import { buildGroupedFactionArchiveFilterDom } from './archive-layouts/buildGroupedFactionDom.js';
 import { buildGroupedHeroArchiveFilterDom } from './archive-layouts/buildGroupedHeroDom.js';
+import { buildGroupedNpcArchiveFilterDom } from './archive-layouts/buildGroupedNpcDom.js';
 
 function scheduleOtherTabPreloads(type, { heroes, factions, npcs, countries }, preloadImages) {
     const npcList = Array.isArray(npcs) ? npcs : [];
@@ -46,6 +48,8 @@ function scheduleOtherTabPreloads(type, { heroes, factions, npcs, countries }, p
  *   group chips by archive faction type (always set for the factions tab).
  * @param {boolean} [groupHeroesByArchiveRole] When true and `type === 'heroes'`,
  *   group chips by role + subrole (always set for the heroes tab).
+ * @param {boolean} [groupNpcsByArchiveCategory] When true and `type === 'npcs'`,
+ *   group chips by archive npc category (always set for the npcs tab).
  */
 export function createFilterButtonsGrid(
     items, type, folder,
@@ -54,7 +58,8 @@ export function createFilterButtonsGrid(
     heroes, factions, npcs, countries,
     preloadImages, updateFilterCounts,
     groupFactionsByArchiveType = false,
-    groupHeroesByArchiveRole = false
+    groupHeroesByArchiveRole = false,
+    groupNpcsByArchiveCategory = false
 ) {
     if (!filtersGrid) return;
     if (tryReuseCachedFilterButtons(type, buttonCache, filtersGrid, stateManager, updateFilterCounts)) return;
@@ -68,6 +73,10 @@ export function createFilterButtonsGrid(
         );
     } else if (type === 'heroes' && groupHeroesByArchiveRole) {
         cachedButtons = buildGroupedHeroArchiveFilterDom(
+            items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
+        );
+    } else if (type === 'npcs' && groupNpcsByArchiveCategory) {
+        cachedButtons = buildGroupedNpcArchiveFilterDom(
             items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
         );
     } else {

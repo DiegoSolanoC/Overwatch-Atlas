@@ -1,316 +1,445 @@
 {
   "events": [
     {
-      "name": "Adawe",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Antonio",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Asa",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Athena",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Aurora",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "B.O.B",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Bars",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Bez",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Boomslang",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
       "name": "Casino",
       "description": "",
       "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Chisaka",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Claudio",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
+      "connections": [],
+      "npcCategory": "MEKA"
     },
     {
       "name": "D.mon",
       "description": "",
       "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Efi",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Emily",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Frankie",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Geiger",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Gerard",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Harold",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Hector",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Iggy",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Ingrid",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Jackdaw",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Jiayi",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Kace",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Katya",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Kendra",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "King",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Lanet",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Liao",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Lynx 17",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Mason",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Maximillien",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Meri",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Mondatta",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Nameless",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Nobuto",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Overlord",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Revel",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Ryota",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Sakura",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Sanjay",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Susannah",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Sven",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "The Triplets",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Toshiro",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Touch Up",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Vialli",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
-    },
-    {
-      "name": "Zera",
-      "description": "",
-      "relevantLocations": [],
-      "connections": []
+      "connections": [],
+      "npcCategory": "MEKA"
     },
     {
       "name": "Dae-Hyun",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": []
+      "connections": [],
+      "npcCategory": "MEKA"
     },
     {
-      "name": "Ngumi",
+      "name": "King",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "MEKA"
+    },
+    {
+      "name": "Overlord",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "MEKA"
+    },
+    {
+      "name": "Boomslang",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Phreaks"
+    },
+    {
+      "name": "Jackdaw",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Phreaks"
+    },
+    {
+      "name": "Revel",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": []
+      "connections": [],
+      "npcCategory": "Phreaks"
+    },
+    {
+      "name": "Susannah",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Phreaks"
+    },
+    {
+      "name": "Touch Up",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Phreaks"
+    },
+    {
+      "name": "B.O.B",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Deadlock"
+    },
+    {
+      "name": "Bars",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Deadlock"
+    },
+    {
+      "name": "Bez",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Deadlock"
+    },
+    {
+      "name": "Frankie",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Deadlock"
+    },
+    {
+      "name": "The Triplets",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Deadlock"
+    },
+    {
+      "name": "Chisaka",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Yokai"
+    },
+    {
+      "name": "Nobuto",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Yokai"
+    },
+    {
+      "name": "Ryota",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Yokai"
+    },
+    {
+      "name": "Sakura",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Yokai"
+    },
+    {
+      "name": "Asa",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Shimada"
+    },
+    {
+      "name": "Kamori-san",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Shimada"
+    },
+    {
+      "name": "Sojiro",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Shimada"
+    },
+    {
+      "name": "Toshiro",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Shimada"
+    },
+    {
+      "name": "Geiger",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Junkers"
+    },
+    {
+      "name": "Mason",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Junkers"
+    },
+    {
+      "name": "Meri",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Junkers"
+    },
+    {
+      "name": "Chao",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Lucheng"
+    },
+    {
+      "name": "Harold",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Lucheng"
+    },
+    {
+      "name": "Jiayi",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Lucheng"
+    },
+    {
+      "name": "Adawe",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Athena",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Claudio",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Efi",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Gérard",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Hector",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
+    },
+    {
+      "name": "Liao",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Overwatch"
     },
     {
       "name": "Adeyemi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": []
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Antonio",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Maximillien",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Ngumi",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Sanjay",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Vialli",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Alisa",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Anubis",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Aurora",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Balderich",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Bhatt",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Katya",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Mondatta",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Naughton",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Osai",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Portero",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Emily",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Iggy",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Ingrid",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Kendra",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Lanet",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Lynx 17",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Nameless",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Sven",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Vincent",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Zera",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
+    },
+    {
+      "name": "Kace",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Civilians"
     }
   ]
 }

@@ -40,7 +40,7 @@ export async function mountHeroBiographyMode(_options = {}) {
     host.id = HOST_ID;
     host.className = 'story-viewer-container hero-biography-mode active';
     host.setAttribute('role', 'main');
-    host.setAttribute('aria-label', 'Hero Biography');
+    host.setAttribute('aria-label', 'Biography');
 
     const main = document.createElement('div');
     main.className = 'hero-biography-mode__main';

@@ -32,7 +32,8 @@ export function buildBlankEventForArchiveSource(archiveSrc) {
             relevantLocations: [],
             connections: [],
             ...(archiveSrc === 'factions' ? { factionType: '' } : {}),
-            ...(archiveSrc === 'heroes' ? { heroRole: '', heroSubRole: '' } : {})
+            ...(archiveSrc === 'heroes' ? { heroRole: '', heroSubRole: '' } : {}),
+            ...(archiveSrc === 'npcs' ? { npcCategory: '' } : {})
         };
     }
     return {

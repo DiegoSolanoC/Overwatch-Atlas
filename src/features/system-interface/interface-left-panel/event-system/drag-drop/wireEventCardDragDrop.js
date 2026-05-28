@@ -52,10 +52,14 @@ export function wireEventCardDragDrop(reorderService) {
                 const targetHeroSubRole = (arch === 'heroes' && item.dataset.heroSubRole !== undefined)
                     ? item.dataset.heroSubRole
                     : undefined;
+                const targetNpcCategory = (arch === 'npcs' && item.dataset.npcCategory !== undefined)
+                    ? item.dataset.npcCategory
+                    : undefined;
                 reorderService.reorderEvents(fromIndex, toIndex, {
                     targetFactionType,
                     targetHeroRole,
-                    targetHeroSubRole
+                    targetHeroSubRole,
+                    targetNpcCategory
                 });
             }
         });

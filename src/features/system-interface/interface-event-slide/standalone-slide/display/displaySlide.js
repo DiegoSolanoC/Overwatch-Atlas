@@ -38,6 +38,8 @@ import {
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
+import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import {
     readHeroRoleBioPanelTrimmed,
     readHeroSubRoleBioPanelTrimmed,
@@ -45,6 +47,7 @@ import {
 } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     updateEventSlideFactionTypeDisplay,
+    updateEventSlideNpcCategoryDisplay,
     updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
@@ -92,6 +95,8 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
             heroLocEditClear.style.display = 'none';
         }
         syncFactionTypeBioPanelVisibility('story');
+        syncNpcCategoryBioPanelVisibility('story');
+        syncBioDeleteButtonVisibility('story', false);
         syncHeroBioRolePanelsVisibility('story', undefined, undefined);
         
         // Check for Olivia Colomar
@@ -170,6 +175,11 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
             updateEventSlideFactionTypeDisplay(eventData, slide.currentVariantIndex ?? 0);
         } else {
             updateEventSlideFactionTypeDisplay(null, 0);
+        }
+        if (archiveSourceSlide === 'npcs') {
+            updateEventSlideNpcCategoryDisplay(eventData, slide.currentVariantIndex ?? 0);
+        } else {
+            updateEventSlideNpcCategoryDisplay(null, 0);
         }
         if (archiveSourceSlide === 'heroes') {
             updateEventSlideHeroRoleDisplay(eventData, slide.currentVariantIndex ?? 0);

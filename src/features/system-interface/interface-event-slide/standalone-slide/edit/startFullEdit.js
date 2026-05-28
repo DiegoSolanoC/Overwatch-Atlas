@@ -8,6 +8,8 @@
  */
 
 import { syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
+import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import { syncHeroBirthdayBioPanelVisibility } from '../../../interface-shared/bio-archive/HeroBirthdayBioInput.js';
 import { syncHeroBioRolePanelsVisibility } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
@@ -153,6 +155,12 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                         ? slide.editTarget?.eventData?.factionType
                         : undefined
                 );
+                syncNpcCategoryBioPanelVisibility(
+                    archiveSourceEdit,
+                    archiveSourceEdit === 'npcs'
+                        ? slide.editTarget?.eventData?.npcCategory
+                        : undefined
+                );
                 syncHeroBioRolePanelsVisibility(
                     archiveSourceEdit,
                     archiveSourceEdit === 'heroes'
@@ -168,12 +176,15 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                         ? slide.editTarget?.eventData?.birthday
                         : undefined
                 );
+                syncBioDeleteButtonVisibility(archiveSourceEdit, true);
             } else if (heroLocEdit) {
                 heroLocEdit.setAttribute('hidden', '');
                 heroLocEdit.style.display = 'none';
                 syncFactionTypeBioPanelVisibility('story');
+                syncNpcCategoryBioPanelVisibility('story');
                 syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                 syncHeroBirthdayBioPanelVisibility('story', undefined);
+                syncBioDeleteButtonVisibility('story', false);
             }
 
             const addSecPlacesBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');

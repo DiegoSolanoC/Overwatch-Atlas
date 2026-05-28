@@ -32,6 +32,7 @@ import {
     createFactionArchiveTypeSeparator,
     createHeroArchiveRoleSeparator,
     createHeroArchiveSubroleSeparator,
+    createNpcArchiveCategorySeparator,
 } from './archiveSeparators.js';
 import { createEventItem } from './createEventItem.js';
 import { createGroupedArchiveSeparatorInjector } from './groupedArchiveSeparatorInjector.js';
@@ -44,6 +45,11 @@ function factionArchiveGroupOrder() {
 /** @returns {typeof window.HeroArchiveRoleOrderHelpers|null} */
 function heroArchiveRoleOrder() {
     return typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers || null : null;
+}
+
+/** @returns {typeof window.NpcArchiveGroupOrderHelpers|null} */
+function npcArchiveGroupOrder() {
+    return typeof window !== 'undefined' ? window.NpcArchiveGroupOrderHelpers || null : null;
 }
 
 /**
@@ -116,11 +122,15 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
             : 'story';
     const factionsGroupedList = archiveSourceList === 'factions';
     const heroesGroupedList = archiveSourceList === 'heroes';
+    const npcsGroupedList = archiveSourceList === 'npcs';
     if (factionsGroupedList) {
         factionArchiveGroupOrder()?.sortFactionsArchiveEventsStable(fullList);
     }
     if (heroesGroupedList) {
         heroArchiveRoleOrder()?.sortHeroesArchiveEventsStable(fullList);
+    }
+    if (npcsGroupedList) {
+        npcArchiveGroupOrder()?.sortNpcsArchiveEventsStable(fullList);
     }
 
     const overlapIndexSet = computeOverlapIndexSet(eventsToRender, fullList, renderService.eventManager);
@@ -133,8 +143,9 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
             createFactionArchiveTypeSeparator,
             createHeroArchiveRoleSeparator,
             createHeroArchiveSubroleSeparator,
+            createNpcArchiveCategorySeparator,
         },
-        { factionArchiveGroupOrder, heroArchiveRoleOrder }
+        { factionArchiveGroupOrder, heroArchiveRoleOrder, npcArchiveGroupOrder }
     );
 
     // Seed last-key state when the page slice starts mid-bucket so the first card on the
@@ -142,6 +153,7 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
     if (startIndex > 0) {
         if (factionsGroupedList) separators.seedFromPreviousEvent(events[startIndex - 1], 'factions');
         if (heroesGroupedList) separators.seedFromPreviousEvent(events[startIndex - 1], 'heroes');
+        if (npcsGroupedList) separators.seedFromPreviousEvent(events[startIndex - 1], 'npcs');
     }
 
     eventsToRender.forEach((event) => {
@@ -151,11 +163,13 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
 
         if (factionsGroupedList) separators.maybeEmitForEvent(event, 'factions');
         if (heroesGroupedList) separators.maybeEmitForEvent(event, 'heroes');
+        if (npcsGroupedList) separators.maybeEmitForEvent(event, 'npcs');
 
         const eventItem = createEventItem(renderService, event, actualIndex, fullList, {
             hasOverlap,
             factionsGroupedList,
             heroesGroupedList,
+            npcsGroupedList,
         });
         fragment.appendChild(eventItem);
     });

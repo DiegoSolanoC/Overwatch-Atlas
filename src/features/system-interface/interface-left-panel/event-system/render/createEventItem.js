@@ -31,12 +31,17 @@ function heroArchiveRoleOrder() {
     return typeof window !== 'undefined' ? window.HeroArchiveRoleOrderHelpers || null : null;
 }
 
+/** @returns {typeof window.NpcArchiveGroupOrderHelpers|null} */
+function npcArchiveGroupOrder() {
+    return typeof window !== 'undefined' ? window.NpcArchiveGroupOrderHelpers || null : null;
+}
+
 /**
  * @param {any} renderService Owning EventRenderService.
  * @param {Record<string, any>} event
  * @param {number} index Position in the FULL list (post-filter aware).
  * @param {Array<Record<string, any>>} _allEvents Currently unused but kept for API symmetry.
- * @param {{ hasOverlap?: boolean, factionsGroupedList?: boolean, heroesGroupedList?: boolean }} [options]
+ * @param {{ hasOverlap?: boolean, factionsGroupedList?: boolean, heroesGroupedList?: boolean, npcsGroupedList?: boolean }} [options]
  */
 export function createEventItem(renderService, event, index, _allEvents, options = {}) {
     const eventManager = renderService.eventManager;
@@ -63,6 +68,10 @@ export function createEventItem(renderService, event, index, _allEvents, options
             item.dataset.heroRole = nr;
             item.dataset.heroSubRole = hro.normalizeHeroArchiveSubrole(event?.heroSubRole, nr);
         }
+    }
+    if (options.npcsGroupedList) {
+        const ngo = npcArchiveGroupOrder();
+        if (ngo) item.dataset.npcCategory = ngo.normalizeNpcArchiveCategory(event?.npcCategory);
     }
 
     if (eventManager.unsavedEventIndices && eventManager.unsavedEventIndices.has(index)) {

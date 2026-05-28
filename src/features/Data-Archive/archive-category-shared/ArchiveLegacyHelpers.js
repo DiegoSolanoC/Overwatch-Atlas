@@ -36,6 +36,19 @@ import {
   moveFactionEntryToLastInItsTypeGroup,
 } from "../archive-category-factions/ArchiveFactionOrdering.js";
 
+import {
+  NPC_ARCHIVE_CATEGORY_ORDER,
+  normalizeNpcArchiveCategory,
+  displayLabelForNpcArchiveCategory,
+  npcArchiveCategoryRank,
+  sortNpcsArchiveEventsStable,
+  moveNpcEntryToLastInItsCategoryGroup,
+  findFirstIndexForNpcCategoryInList,
+  defaultNpcCategoryForName,
+  resolveNpcCategoryFromArchiveRow,
+  mapNpcArchiveRowsForGrouping,
+} from "../archive-category-npcs/ArchiveNpcOrdering.js";
+
 // Attach to window for legacy compatibility
 if (typeof window !== "undefined") {
   // Heroes helpers - combined from all hero modules
@@ -69,5 +82,19 @@ if (typeof window !== "undefined") {
     factionArchiveTypeRank,
     sortFactionsArchiveEventsStable,
     moveFactionEntryToLastInItsTypeGroup,
+  };
+
+  // NPC helpers
+  window.NpcArchiveGroupOrderHelpers = {
+    NPC_ARCHIVE_CATEGORY_ORDER,
+    normalizeNpcArchiveCategory,
+    displayLabelForNpcArchiveCategory,
+    npcArchiveCategoryRank,
+    sortNpcsArchiveEventsStable,
+    moveNpcEntryToLastInItsCategoryGroup,
+    findFirstIndexForNpcCategoryInList,
+    defaultNpcCategoryForName,
+    resolveNpcCategoryFromArchiveRow,
+    mapNpcArchiveRowsForGrouping,
   };
 }

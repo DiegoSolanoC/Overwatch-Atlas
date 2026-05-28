@@ -328,9 +328,9 @@ class FilterService {
   }
 
   /**
-   * Build the chip grid for the active tab. Hero / faction tabs always pass
-   * the archive-grouping flag because the visual design specifies role-aware
-   * separators on those tabs regardless of which archive is open.
+   * Build the chip grid for the active tab. Hero / faction / NPC tabs always pass
+   * the archive-grouping flag so chips follow archive role, faction type, or NPC
+   * category order regardless of which archive is open in the Event Manager.
    */
   async createFilterButtons(items, type, folder) {
     let list = items;
@@ -340,10 +340,13 @@ class FilterService {
     }
     const groupFactionsByArchiveType = type === "factions";
     const groupHeroesByArchiveRole = type === "heroes";
+    const groupNpcsByArchiveCategory = type === "npcs";
     if (groupFactionsByArchiveType)
       await ensureArchiveLayoutSnapshotsForFilter("factions");
     if (groupHeroesByArchiveRole)
       await ensureArchiveLayoutSnapshotsForFilter("heroes");
+    if (groupNpcsByArchiveCategory)
+      await ensureArchiveLayoutSnapshotsForFilter("npcs");
 
     createFilterButtonsGrid(
       list,
@@ -363,6 +366,7 @@ class FilterService {
       () => this.updateFilterCounts(),
       groupFactionsByArchiveType,
       groupHeroesByArchiveRole,
+      groupNpcsByArchiveCategory,
     );
     this._applyCurrentCategorySearch();
   }
@@ -376,6 +380,7 @@ class FilterService {
     invalidateArchiveLayoutFileCaches();
     this.buttonCache.factions = null;
     this.buttonCache.heroes = null;
+    this.buttonCache.npcs = null;
     if (!this.initialized || !this.filtersGrid) return;
     const t = this.currentFilterType;
     if (t === "factions") {
@@ -389,6 +394,12 @@ class FilterService {
         this.heroes,
         "heroes",
         "src/assets/images/Filters/Heroes",
+      );
+    } else if (t === "npcs") {
+      void this.createFilterButtons(
+        this.npcs,
+        "npcs",
+        "src/assets/images/Filters/NPCs",
       );
     } else {
       return;

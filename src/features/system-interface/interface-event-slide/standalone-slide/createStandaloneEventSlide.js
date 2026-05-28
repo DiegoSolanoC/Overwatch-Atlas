@@ -41,6 +41,7 @@ import { runCreateInlineEditor } from './edit/createInlineEditor.js';
 import { runPopulateInlineEditor } from './edit/populateInlineEditor.js';
 import { runCancelEdit } from './edit/cancelEdit.js';
 import { runSaveFullEdit } from './edit/saveFullEdit.js';
+import { wireBioDeleteButton } from '../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 // Variants
 import { runRenderVariantBar } from './variants/renderVariantBar.js';
 import { runOnVariantAdd } from './variants/onVariantAdd.js';
@@ -70,7 +71,7 @@ import { runHideImageOverlay } from './image-overlay/hideImageOverlay.js';
  * @returns {Object} the slide controller
  */
 export function createStandaloneEventSlide() {
-    return {
+    const slide = {
         currentEventIndex: 0,
         currentPage: 1, // Track current page for marker display
         allEvents: [],
@@ -258,8 +259,9 @@ export function createStandaloneEventSlide() {
             const idx = em.events.indexOf(eventData);
             if (idx < 0) return;
             
-            if (confirm('Are you sure you want to delete this event?')) {
-                if (em.deleteEvent(idx)) {
+            const entryName = eventData?.name || 'this entry';
+            if (confirm(`Are you sure you want to delete "${entryName}"?`)) {
+                if (em.deleteEvent(idx, { skipConfirm: true })) {
                     this.hideEventSlide();
                 }
             }
@@ -331,5 +333,7 @@ export function createStandaloneEventSlide() {
         
         hideImageOverlay() { return runHideImageOverlay(this); },
     };
+    wireBioDeleteButton(slide);
+    return slide;
 }
 

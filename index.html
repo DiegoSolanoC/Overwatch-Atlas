@@ -60,6 +60,7 @@
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
                     <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
                     <p id="eventSlideFactionTypeDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
+                    <p id="eventSlideNpcCategoryDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <p id="eventSlideHeroRoleDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <p id="eventSlideHeroBirthdayDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <div id="eventSlideHeroLocationsEdit" class="event-slide-hero-locations-edit" hidden>
@@ -68,6 +69,26 @@
                                 <label class="event-slide-hero-locations-edit__label" for="eventSlideEditFactionTypeBio">Faction type</label>
                             </div>
                             <input class="event-slide-inline-editor__input" id="eventSlideEditFactionTypeBio" type="text" spellcheck="true" autocomplete="on" placeholder="e.g. Major Player, Criminal Groups (optional)" style="width: 100%; box-sizing: border-box; margin-top: 6px;" />
+                        </div>
+                        <div id="eventSlideNpcCategoryBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
+                            <div class="event-slide-hero-locations-edit__toolbar">
+                                <label class="event-slide-hero-locations-edit__label" for="eventSlideEditNpcCategoryBio">NPC category</label>
+                            </div>
+                            <input class="event-slide-inline-editor__input" id="eventSlideEditNpcCategoryBio" type="text" list="eventSlideNpcCategoryList" spellcheck="true" autocomplete="on" placeholder="e.g. MEKA, Phreaks, Talon (optional)" style="width: 100%; box-sizing: border-box; margin-top: 6px;" />
+                            <datalist id="eventSlideNpcCategoryList">
+                                <option value="MEKA"></option>
+                                <option value="Phreaks"></option>
+                                <option value="Deadlock"></option>
+                                <option value="Yokai"></option>
+                                <option value="Shimada"></option>
+                                <option value="Junkers"></option>
+                                <option value="Lucheng"></option>
+                                <option value="Overwatch"></option>
+                                <option value="Talon"></option>
+                                <option value="Historical Figures"></option>
+                                <option value="Civilians"></option>
+                                <option value="Other"></option>
+                            </datalist>
                         </div>
                         <div id="eventSlideHeroRoleBioPanel" class="event-slide-hero-locations-edit__faction-type" hidden>
                             <div class="event-slide-hero-locations-edit__toolbar">
@@ -124,6 +145,9 @@
                         </div>
                         <p class="event-slide-hero-locations-edit__hint">Use the <strong>Hero</strong>, <strong>Faction</strong>, and <strong>NPC</strong> blocks. In each block, <strong>+ Add</strong> adds a row: <strong>This entry</strong> (you), relationship lines in the middle, and one linked name (autocomplete for that type only). Choose <strong>A (left)</strong> or <strong>B (right)</strong> for this entry on the slide; the linked side uses the other letter. Legacy rows without a letter default to A. Saving mirrors onto the linked row in <strong>this same archive</strong> when that row exists; cross-archive links are not duplicated.</p>
                         <div id="eventSlideEditBioConnections" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
+                        <div class="event-slide-hero-locations-edit__toolbar event-slide-hero-locations-edit__toolbar--delete">
+                            <button type="button" class="event-slide-inline-editor__delete-btn" id="eventSlideBioDeleteBtn" hidden>Delete entry</button>
+                        </div>
                     </div>
                 </div>
                 <div class="event-slide-mid-controls" id="eventSlideMidControls" aria-label="Event display options">

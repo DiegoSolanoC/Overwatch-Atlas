@@ -1,3 +1,5 @@
+import { mapNpcArchiveRowsForGrouping } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
+
 /**
  * The grouped Heroes / Factions filter layouts need access to the archive
  * `events[]` even when the Event Manager isn't currently displaying that
@@ -18,10 +20,13 @@
 let __heroesArchiveFileCache = null;
 /** @type {unknown[]|null} */
 let __factionsArchiveFileCache = null;
+/** @type {unknown[]|null} */
+let __npcsArchiveFileCache = null;
 
 export function invalidateArchiveLayoutFileCaches() {
     __heroesArchiveFileCache = null;
     __factionsArchiveFileCache = null;
+    __npcsArchiveFileCache = null;
 }
 
 async function fetchJsonEventsIntoCache(url, assign) {
@@ -40,7 +45,7 @@ async function fetchJsonEventsIntoCache(url, assign) {
  * tries to consume it. No-op if the live Event Manager already has the data
  * or if a localStorage snapshot exists.
  *
- * @param {'heroes'|'factions'} type
+ * @param {'heroes'|'factions'|'npcs'} type
  */
 export async function ensureArchiveLayoutSnapshotsForFilter(type) {
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
@@ -72,6 +77,15 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
         if (!__factionsArchiveFileCache || __factionsArchiveFileCache.length === 0) {
             await fetchJsonEventsIntoCache('src/data/story-archive/factions.json', a => {
                 __factionsArchiveFileCache = a;
+            });
+        }
+    }
+
+    if (type === 'npcs' && arch !== 'npcs') {
+        /* Always keep bundled npcs.json in cache — localStorage rows may lack `npcCategory`. */
+        if (!__npcsArchiveFileCache || __npcsArchiveFileCache.length === 0) {
+            await fetchJsonEventsIntoCache('src/data/story-archive/npcs.json', a => {
+                __npcsArchiveFileCache = a;
             });
         }
     }
@@ -151,6 +165,64 @@ export function getHeroesArchiveRowsForFilterGrouping() {
     } catch (_) {}
     if (Array.isArray(__heroesArchiveFileCache) && __heroesArchiveFileCache.length > 0) {
         return __heroesArchiveFileCache.map(snapshotHeroArchiveRowForGrouping);
+    }
+    return [];
+}
+
+/**
+ * Stale NPC localStorage may omit rows that exist in bundled `npcs.json` — merge so
+ * grouped filter layout does not dump manifest chips into the overflow "Other" bucket.
+ * @param {unknown[]} events
+ * @param {unknown[]} fileFallback
+ */
+function mergeNpcArchiveRowsFromFileFallback(events, fileFallback) {
+    if (!Array.isArray(events) || events.length === 0) return events || [];
+    if (!Array.isArray(fileFallback) || fileFallback.length === 0) return events;
+
+    const names = new Set();
+    for (let i = 0; i < events.length; i++) {
+        const n = String(events[i]?.name != null ? events[i].name : '').trim().toLowerCase();
+        if (n) names.add(n);
+    }
+
+    const out = events.slice();
+    for (let i = 0; i < fileFallback.length; i++) {
+        const fe = fileFallback[i];
+        if (!fe || typeof fe !== 'object') continue;
+        const n = String(fe.name != null ? fe.name : '').trim().toLowerCase();
+        if (!n || names.has(n)) continue;
+        names.add(n);
+        out.push(fe);
+    }
+    return out;
+}
+
+/** Resolve the grouped-npc layout's archive rows from the best source. */
+export function getNpcsArchiveRowsForFilterGrouping() {
+    const fileFallback = Array.isArray(__npcsArchiveFileCache) ? __npcsArchiveFileCache : [];
+
+    const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
+    const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
+    if (arch === 'npcs' && Array.isArray(window.eventManager?.events)) {
+        return mapNpcArchiveRowsForGrouping(
+            mergeNpcArchiveRowsFromFileFallback(window.eventManager.events, fileFallback),
+            fileFallback,
+        );
+    }
+    try {
+        const raw = localStorage.getItem('timelineEventsArchiveNpcs');
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                return mapNpcArchiveRowsForGrouping(
+                    mergeNpcArchiveRowsFromFileFallback(parsed, fileFallback),
+                    fileFallback,
+                );
+            }
+        }
+    } catch (_) {}
+    if (fileFallback.length > 0) {
+        return mapNpcArchiveRowsForGrouping(fileFallback, fileFallback);
     }
     return [];
 }

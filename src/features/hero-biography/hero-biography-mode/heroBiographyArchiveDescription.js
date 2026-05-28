@@ -11,12 +11,13 @@ import {
     clearHeroBiographyConnectionsView,
     renderHeroBiographyConnectionsView,
 } from './heroBiographyArchiveConnectionsView.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
-    clearHeroesArchiveEventsCache,
-    findHeroArchiveEntryByFilterKey,
+    clearBioArchiveEventsCache,
+    findBioArchiveEntryByFilterKey,
     getHeroArchiveBioDescription,
     getHeroArchiveBirthdayAgeDisplay,
-    loadHeroesArchiveEvents,
+    loadBioArchiveEvents,
 } from './heroBiographyArchiveData.js';
 
 const ICON_INTEL =
@@ -77,11 +78,14 @@ let viewMode = 'intel';
 /** @type {object | null} */
 let currentEntry = null;
 
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
+let currentCategory = 'heroes';
+
 /** @type {string | null} */
-let currentHeroFilterKey = null;
+let currentFilterKey = null;
 
 /** @type {string} */
-let currentHeroDisplayName = '';
+let currentDisplayName = '';
 
 let isEditing = false;
 
@@ -239,7 +243,7 @@ function exitEditMode() {
 }
 
 function beginEditMode(entry, descriptionText) {
-    if (!canEdit || !currentHeroFilterKey) return;
+    if (!canEdit || !currentFilterKey || currentCategory !== 'heroes') return;
     editDraft = {
         description: descriptionText || '',
         birthdayRaw: entry ? getHeroBirthdayRawFromEntry(entry) : '',
@@ -250,7 +254,9 @@ function beginEditMode(entry, descriptionText) {
 }
 
 async function handleSave() {
-    if (!canEdit || !currentHeroFilterKey || saveInFlight || !birthdayFields || !editBodyEl) return;
+    if (!canEdit || !currentFilterKey || currentCategory !== 'heroes' || saveInFlight || !birthdayFields || !editBodyEl) {
+        return;
+    }
 
     if (birthdayFields.isIncomplete()) {
         window.updateAppStatus?.(
@@ -271,8 +277,8 @@ async function handleSave() {
 
     try {
         const result = await saveHeroArchiveBioFromBiographyStage(
-            currentHeroFilterKey,
-            currentHeroDisplayName,
+            currentFilterKey,
+            currentDisplayName,
             { description, birthday },
         );
         if (!result.ok) {
@@ -280,13 +286,13 @@ async function handleSave() {
             return;
         }
 
-        clearHeroesArchiveEventsCache();
+        clearBioArchiveEventsCache('heroes');
         exitEditMode();
         window.SoundEffectsManager?.play?.('save');
         if (saveBtn && window.flashButton) {
             window.flashButton(saveBtn, 'flash-green');
         }
-        await setHeroBiographyArchiveDescriptionHero(currentHeroFilterKey, currentHeroDisplayName);
+        await setBioBiographyArchiveDescription('heroes', currentFilterKey, currentDisplayName);
     } catch (err) {
         console.warn('[hero-biography] Bio save failed:', err);
         window.updateAppStatus?.('Could not save hero bio.', 'warning');
@@ -326,10 +332,10 @@ export function initHeroBiographyArchiveDescription(hostEl) {
         editBtn.className = 'hero-biography-mode__archive-description-btn';
         editBtn.textContent = 'Edit';
         editBtn.addEventListener('click', async () => {
-            if (!currentHeroFilterKey) return;
-            clearHeroesArchiveEventsCache();
-            const events = await loadHeroesArchiveEvents();
-            const entry = findHeroArchiveEntryByFilterKey(currentHeroFilterKey, events);
+            if (!currentFilterKey || currentCategory !== 'heroes') return;
+            clearBioArchiveEventsCache('heroes');
+            const events = await loadBioArchiveEvents('heroes');
+            const entry = findBioArchiveEntryByFilterKey('heroes', currentFilterKey, events);
             const description = getHeroArchiveBioDescription(entry) || '';
             beginEditMode(entry, description);
         });
@@ -411,53 +417,65 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     hostEl.appendChild(panelEl);
 
     window.addEventListener('atlas-bio-archives-refreshed', (ev) => {
-        if (!currentHeroFilterKey || isEditing) return;
+        if (!currentFilterKey || isEditing) return;
         const archives = ev.detail?.archives;
-        if (Array.isArray(archives) && archives.length > 0 && !archives.includes('heroes')) return;
-        void setHeroBiographyArchiveDescriptionHero(currentHeroFilterKey, currentHeroDisplayName);
+        if (Array.isArray(archives) && archives.length > 0 && !archives.includes(currentCategory)) {
+            return;
+        }
+        void setBioBiographyArchiveDescription(currentCategory, currentFilterKey, currentDisplayName);
     });
 }
 
 /**
- * @param {string | null} heroFilterKey
- * @param {string} [heroDisplayName]
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | null} category
+ * @param {string | null} filterKey
+ * @param {string} [displayName]
  */
-export async function setHeroBiographyArchiveDescriptionHero(heroFilterKey, heroDisplayName = '') {
+export async function setBioBiographyArchiveDescription(category, filterKey, displayName = '') {
     const gen = ++loadGeneration;
     if (!panelEl || !viewBodyEl || !emptyEl) return;
 
     if (isEditing) exitEditMode();
 
-    const key = heroFilterKey ? String(heroFilterKey).trim() : '';
-    currentHeroFilterKey = key || null;
-    currentHeroDisplayName = key ? String(heroDisplayName || key).trim() : '';
+    const cat = category ? normalizeBioBiographyCategory(category) : 'heroes';
+    const key = filterKey ? String(filterKey).trim() : '';
+    currentCategory = cat;
+    currentFilterKey = key || null;
+    currentDisplayName = key ? String(displayName || key).trim() : '';
     viewMode = 'intel';
     currentEntry = null;
 
-    if (!key) {
+    const isHero = cat === 'heroes';
+    if (viewBirthdayMetaEl) viewBirthdayMetaEl.hidden = !isHero;
+    if (editBirthdayEl) editBirthdayEl.hidden = !isHero;
+
+    if (!key || cat === 'locations') {
         renderBirthdayMeta(null);
         renderIntelBody('');
         clearHeroBiographyConnectionsView(connectionsBodyEl);
-        emptyEl.hidden = true;
+        emptyEl.hidden = cat !== 'locations';
+        if (cat === 'locations') {
+            emptyEl.textContent = 'Location biographies are not available yet.';
+        }
         if (toolbarEl) toolbarEl.hidden = true;
         if (viewToggleEl) viewToggleEl.hidden = true;
-        setVisible(false);
+        setVisible(cat === 'locations');
         return;
     }
 
-    if (toolbarEl) toolbarEl.hidden = false;
+    if (toolbarEl) toolbarEl.hidden = !canEdit || !isHero;
     if (viewToggleEl) viewToggleEl.hidden = false;
 
     let description = null;
     let birthdayDisplay = null;
     let entry = null;
     try {
-        const events = await loadHeroesArchiveEvents();
+        const events = await loadBioArchiveEvents(cat);
         if (gen !== loadGeneration) return;
-        entry = findHeroArchiveEntryByFilterKey(key, events);
+        entry = findBioArchiveEntryByFilterKey(cat, key, events);
         currentEntry = entry;
         description = getHeroArchiveBioDescription(entry);
-        birthdayDisplay = getHeroArchiveBirthdayAgeDisplay(entry);
+        birthdayDisplay = isHero ? getHeroArchiveBirthdayAgeDisplay(entry) : null;
     } catch (err) {
         console.warn('[hero-biography] Could not load archive description:', err);
     }
@@ -474,20 +492,29 @@ export async function setHeroBiographyArchiveDescriptionHero(heroFilterKey, hero
         && Array.isArray(entry.connections)
         && entry.connections.length > 0
     );
-    setVisible(hasIntel || hasConnections || canEdit);
+    setVisible(hasIntel || hasConnections || (canEdit && isHero));
     applyViewMode();
 
     if (canEdit && editBtn) {
-        editBtn.disabled = false;
-        editBtn.title = 'Edit biography and birthday';
+        editBtn.disabled = !isHero;
+        editBtn.title = isHero ? 'Edit biography and birthday' : 'Editing is only available for heroes';
     }
+}
+
+/**
+ * @param {string | null} heroFilterKey
+ * @param {string} [heroDisplayName]
+ */
+export async function setHeroBiographyArchiveDescriptionHero(heroFilterKey, heroDisplayName = '') {
+    return setBioBiographyArchiveDescription('heroes', heroFilterKey, heroDisplayName);
 }
 
 export function destroyHeroBiographyArchiveDescription() {
     loadGeneration += 1;
     exitEditMode();
-    currentHeroFilterKey = null;
-    currentHeroDisplayName = '';
+    currentCategory = 'heroes';
+    currentFilterKey = null;
+    currentDisplayName = '';
     panelEl?.remove();
     panelEl = null;
     toolbarEl = null;
@@ -506,5 +533,5 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsToggleBtn = null;
     viewMode = 'intel';
     currentEntry = null;
-    clearHeroesArchiveEventsCache();
+    clearBioArchiveEventsCache();
 }

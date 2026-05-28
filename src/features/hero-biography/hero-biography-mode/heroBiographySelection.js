@@ -12,10 +12,11 @@ import {
     getLooksForHero,
     loadHeroBiosLooksMap,
 } from './loadHeroBiosLooks.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
     clearHeroBiographyDockHeroFilter,
     refreshHeroBiographyDockPagination,
-    setHeroBiographyDockHeroFilter,
+    setBioBiographyDockFilter,
 } from './heroBiographyDockTimeline.js';
 import { resetHeroBiographyDockLookHoverState } from './heroBiographyDockLookHover.js';
 import { wireHeroBiographyPortraitCopy } from './heroBiographyPortraitCopy.js';
@@ -47,7 +48,7 @@ import { clearHeroPhrasesCache } from './loadHeroPhrases.js';
 import {
     destroyHeroBiographyArchiveDescription,
     initHeroBiographyArchiveDescription,
-    setHeroBiographyArchiveDescriptionHero,
+    setBioBiographyArchiveDescription,
 } from './heroBiographyArchiveDescription.js';
 
 /** @type {HTMLElement | null} */
@@ -77,8 +78,11 @@ let portraitImg = null;
 /** @type {Record<string, string[]> | null} */
 let heroBiosLooksMap = null;
 
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
+let currentCategory = 'heroes';
+
 /** @type {string | null} */
-let currentHeroFilterKey = null;
+let currentFilterKey = null;
 
 let currentLook = DEFAULT_HERO_BIO_LOOK;
 /** @type {string | null} */
@@ -146,14 +150,14 @@ export function initHeroBiographySelection(hostEl, mainEl) {
     lookSelectEl.className = 'hero-biography-mode__look-select';
     lookSelectEl.title = 'Change hero look';
     lookSelectEl.addEventListener('change', () => {
-        if (!currentHeroFilterKey || !lookSelectEl) return;
+        if (!currentFilterKey || currentCategory !== 'heroes' || !lookSelectEl) return;
         hoverPreviewLook = null;
         currentLook = lookSelectEl.value;
         if (isHeroBiographyLookRangesEditorEnabled()) {
             syncHeroBiographyLookRangeEditorLook(currentLook);
         }
         setHeroPortrait(
-            currentHeroFilterKey,
+            currentFilterKey,
             titleEl?.textContent || '',
             currentLook,
         );
@@ -184,15 +188,34 @@ export function initHeroBiographySelection(hostEl, mainEl) {
  * @returns {{ heroFilterKey: string | null, currentLook: string } | null}
  */
 export function getActiveHeroBiographySelection() {
-    if (!currentHeroFilterKey) return null;
-    return { heroFilterKey: currentHeroFilterKey, currentLook };
+    if (!currentFilterKey) return null;
+    return {
+        category: currentCategory,
+        filterKey: currentFilterKey,
+        heroFilterKey: currentCategory === 'heroes' ? currentFilterKey : null,
+        currentLook,
+    };
+}
+
+function syncHeroOnlyControlsVisibility() {
+    const isHero = currentCategory === 'heroes';
+    if (portraitEl) {
+        portraitEl.style.display = isHero ? '' : 'none';
+    }
+    if (controlsRowEl) {
+        const lookField = controlsRowEl.querySelector('.hero-biography-mode__look-field');
+        if (lookField) lookField.hidden = !isHero;
+    }
+    if (rangesRowEl) {
+        rangesRowEl.hidden = !isHero;
+    }
 }
 
 /**
  * @param {string} lookName
  */
 export function previewHeroBiographyLook(lookName) {
-    if (!currentHeroFilterKey) return;
+    if (!currentFilterKey || currentCategory !== 'heroes') return;
     if (hoverPreviewLook === lookName) return;
 
     hoverPreviewLook = lookName;
@@ -200,7 +223,7 @@ export function previewHeroBiographyLook(lookName) {
         lookSelectEl.value = lookName;
     }
     setHeroPortrait(
-        currentHeroFilterKey,
+        currentFilterKey,
         titleEl?.textContent || '',
         lookName,
     );
@@ -211,7 +234,7 @@ export function previewHeroBiographyLook(lookName) {
  * @param {string} lookName
  */
 export function commitHeroBiographyLook(lookName) {
-    if (!currentHeroFilterKey || !lookName) return;
+    if (!currentFilterKey || currentCategory !== 'heroes' || !lookName) return;
 
     hoverPreviewLook = null;
     currentLook = lookName;
@@ -219,7 +242,7 @@ export function commitHeroBiographyLook(lookName) {
         lookSelectEl.value = lookName;
     }
     setHeroPortrait(
-        currentHeroFilterKey,
+        currentFilterKey,
         titleEl?.textContent || '',
         lookName,
     );
@@ -352,41 +375,52 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
 }
 
 /**
- * @param {string} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} filterKey
  * @param {string} displayName
  */
-async function applyHeroSelection(heroFilterKey, displayName) {
+async function applyBioSelection(category, filterKey, displayName) {
+    const cat = normalizeBioBiographyCategory(category);
     resetHeroBiographyDockLookHoverState();
     cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     hoverPreviewLook = null;
-    currentHeroFilterKey = heroFilterKey;
+    currentCategory = cat;
+    currentFilterKey = filterKey;
     currentLook = DEFAULT_HERO_BIO_LOOK;
-    /** @type {string[]} */
-    let looks = [DEFAULT_HERO_BIO_LOOK];
+    syncHeroOnlyControlsVisibility();
 
-    try {
-        const map = await ensureHeroBiosLooksMap();
-        looks = getLooksForHero(map, heroFilterKey);
-        populateLookSelect(looks);
-        currentLook = looks.includes(DEFAULT_HERO_BIO_LOOK)
-            ? DEFAULT_HERO_BIO_LOOK
-            : looks[0];
-        if (lookSelectEl) {
-            lookSelectEl.value = currentLook;
+    if (cat === 'heroes') {
+        /** @type {string[]} */
+        let looks = [DEFAULT_HERO_BIO_LOOK];
+        try {
+            const map = await ensureHeroBiosLooksMap();
+            looks = getLooksForHero(map, filterKey);
+            populateLookSelect(looks);
+            currentLook = looks.includes(DEFAULT_HERO_BIO_LOOK)
+                ? DEFAULT_HERO_BIO_LOOK
+                : looks[0];
+            if (lookSelectEl) {
+                lookSelectEl.value = currentLook;
+            }
+        } catch (err) {
+            console.warn('[hero-biography] Could not load hero looks:', err);
+            looks = [DEFAULT_HERO_BIO_LOOK];
+            populateLookSelect(looks);
+            if (lookSelectEl) lookSelectEl.value = DEFAULT_HERO_BIO_LOOK;
         }
-    } catch (err) {
-        console.warn('[hero-biography] Could not load hero looks:', err);
-        looks = [DEFAULT_HERO_BIO_LOOK];
-        populateLookSelect(looks);
-        if (lookSelectEl) lookSelectEl.value = DEFAULT_HERO_BIO_LOOK;
+        setHeroPortrait(filterKey, displayName, currentLook);
+        setHeroBiographyLookRangesEditorHero(filterKey, currentLook);
+        void setHeroBiographyPhraseButtonHero(filterKey);
+    } else {
+        populateLookSelect([]);
+        setHeroPortrait(null, '', DEFAULT_HERO_BIO_LOOK);
+        setHeroBiographyLookRangesEditorHero(null);
+        void setHeroBiographyPhraseButtonHero(null);
     }
 
-    setHeroPortrait(heroFilterKey, displayName, currentLook);
-    setHeroBiographyDockHeroFilter(heroFilterKey);
-    setHeroBiographyLookRangesEditorHero(heroFilterKey, currentLook);
-    void setHeroBiographyPhraseButtonHero(heroFilterKey);
-    void setHeroBiographyArchiveDescriptionHero(heroFilterKey, displayName);
+    setBioBiographyDockFilter(cat, filterKey, displayName);
+    void setBioBiographyArchiveDescription(cat, filterKey, displayName);
     refreshHeroBiographyDockPagination();
 }
 
@@ -395,12 +429,14 @@ function clearHeroSelectionUi() {
     cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     hoverPreviewLook = null;
-    currentHeroFilterKey = null;
+    currentCategory = 'heroes';
+    currentFilterKey = null;
     currentLook = DEFAULT_HERO_BIO_LOOK;
+    syncHeroOnlyControlsVisibility();
     populateLookSelect([]);
     setHeroBiographyLookRangesEditorHero(null);
     void setHeroBiographyPhraseButtonHero(null);
-    void setHeroBiographyArchiveDescriptionHero(null);
+    void setBioBiographyArchiveDescription(null, null);
     setTitle('');
     setHeroPortrait(null, '', DEFAULT_HERO_BIO_LOOK);
     clearHeroBiographyDockHeroFilter();
@@ -408,13 +444,14 @@ function clearHeroSelectionUi() {
 }
 
 /**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
  * @param {HTMLElement} wrap
  * @param {HTMLElement} chip
  * @param {string} displayName
- * @param {string} heroFilterKey
+ * @param {string} filterKey
  * @returns {boolean} True if chip is now selected.
  */
-export function toggleHeroBiographyChip(wrap, chip, displayName, heroFilterKey) {
+export function toggleBioBiographyChip(category, wrap, chip, displayName, filterKey) {
     const isSame = activeWrap === wrap;
 
     if (isSame) {
@@ -432,13 +469,34 @@ export function toggleHeroBiographyChip(wrap, chip, displayName, heroFilterKey) 
     applyChipVisual(wrap, chip);
     activeWrap = wrap;
     setTitle(displayName);
-    void applyHeroSelection(heroFilterKey, displayName);
+    void applyBioSelection(category, filterKey, displayName);
 
     const labelText = chip.querySelector('.filter-label-text');
     if (labelText) {
         requestAnimationFrame(() => fitHeroChipLabelText(labelText));
     }
     return true;
+}
+
+/**
+ * @param {HTMLElement} wrap
+ * @param {HTMLElement} chip
+ * @param {string} displayName
+ * @param {string} heroFilterKey
+ * @returns {boolean}
+ */
+export function toggleHeroBiographyChip(wrap, chip, displayName, heroFilterKey) {
+    return toggleBioBiographyChip('heroes', wrap, chip, displayName, heroFilterKey);
+}
+
+/** Clears entity selection when switching archive category tabs. */
+export function clearBioBiographyChipSelectionForCategoryChange() {
+    if (activeWrap) {
+        const chip = activeWrap.querySelector('.hero-biography-hero-filters__chip');
+        clearChipVisual(activeWrap, chip);
+        activeWrap = null;
+    }
+    clearHeroSelectionUi();
 }
 
 export function clearHeroBiographySelection() {

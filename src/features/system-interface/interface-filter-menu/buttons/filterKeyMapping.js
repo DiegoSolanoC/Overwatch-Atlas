@@ -100,3 +100,8 @@ export function matchHeroManifestToArchiveRowName(rowName, heroes) {
     }
     return null;
 }
+
+/** @param {string} rowName @param {string[]} npcs */
+export function matchNpcManifestToArchiveRowName(rowName, npcs) {
+    return matchHeroManifestToArchiveRowName(rowName, npcs);
+}

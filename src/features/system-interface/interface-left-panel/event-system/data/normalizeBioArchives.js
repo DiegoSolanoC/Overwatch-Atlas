@@ -2,6 +2,7 @@ import {
     connectionRowHasNarrativeText,
     normalizeBioArchiveConnectionRow,
 } from '../../../interface-shared/bio-archive/bioArchiveConnectionRanges.js';
+import { resolveNpcCategoryFromArchiveRow } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /**
  * Normalization helpers for bio archives (Heroes / Factions / NPCs):
@@ -133,7 +134,7 @@ export function normalizeBioArchiveConnections(raw) {
 /**
  * Non-story archives (Heroes / Factions / NPCs / Locations): title + description.
  * Heroes/Factions/NPCs additionally carry `relevantLocations` + `connections`.
- * Heroes get `heroRole` / `heroSubRole`; factions get `factionType`.
+ * Heroes get `heroRole` / `heroSubRole`; factions get `factionType`; NPCs get `npcCategory`.
  * Collapses legacy full-event shapes (with `variants`) down to the slim shape.
  * @param {unknown} raw
  * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} archiveSource
@@ -186,6 +187,9 @@ export function normalizeSatelliteArchiveEntry(raw, archiveSource) {
         base.heroRole = heroRole;
         base.heroSubRole = heroSubRole;
         base.birthday = birthday;
+    }
+    if (archiveSource === 'npcs') {
+        base.npcCategory = resolveNpcCategoryFromArchiveRow(raw);
     }
     return base;
 }

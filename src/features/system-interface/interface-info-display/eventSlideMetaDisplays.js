@@ -111,6 +111,66 @@ function eventRowHasHeroRoleField(ev) {
     return false;
 }
 
+function eventRowHasNpcCategoryField(ev) {
+    if (!ev || typeof ev !== 'object') return false;
+    const root = ev.npcCategory;
+    if (root != null && String(root).trim() !== '') return true;
+    const vars = ev.variants;
+    if (!Array.isArray(vars)) return false;
+    for (let i = 0; i < vars.length; i++) {
+        const nc = vars[i]?.npcCategory;
+        if (nc != null && String(nc).trim() !== '') return true;
+    }
+    return false;
+}
+
+export function updateEventSlideNpcCategoryDisplay(eventData, variantIndex) {
+    const el = document.getElementById('eventSlideNpcCategoryDisplay');
+    if (!el) return;
+
+    const heroStrip = document.getElementById('eventSlideHeroLocationsEdit');
+    let stripVisible = false;
+    if (heroStrip) {
+        if (!heroStrip.hasAttribute('hidden')) {
+            try {
+                stripVisible = window.getComputedStyle(heroStrip).display !== 'none';
+            } catch (_) {
+                stripVisible = heroStrip.style.display !== 'none' && heroStrip.style.display !== '';
+            }
+        }
+    }
+
+    const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
+    const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : '';
+    const isNpcsArchive = arch === 'npcs' || eventRowHasNpcCategoryField(eventData);
+
+    if (stripVisible || !eventData || !isNpcsArchive) {
+        el.textContent = '';
+        el.setAttribute('hidden', 'hidden');
+        el.style.display = 'none';
+        return;
+    }
+
+    const isMulti = Array.isArray(eventData.variants) && eventData.variants.length > 0;
+    const vIdx = isMulti ? (variantIndex ?? 0) : 0;
+    const target = isMulti ? (eventData.variants[vIdx] || eventData.variants[0]) : eventData;
+    let raw = target?.npcCategory;
+    if (isMulti && (raw == null || String(raw).trim() === '') && eventData.npcCategory != null) {
+        raw = eventData.npcCategory;
+    }
+    const ngo = typeof window !== 'undefined' ? window.NpcArchiveGroupOrderHelpers : null;
+    const label =
+        ngo && typeof ngo.displayLabelForNpcArchiveCategory === 'function'
+            ? ngo.displayLabelForNpcArchiveCategory(raw)
+            : raw != null && String(raw).trim() !== ''
+              ? String(raw).trim()
+              : 'Other';
+
+    el.textContent = `NPC category: ${label}`;
+    el.removeAttribute('hidden');
+    el.style.display = '';
+}
+
 export function updateEventSlideHeroRoleDisplay(eventData, variantIndex) {
     const el = document.getElementById('eventSlideHeroRoleDisplay');
     if (!el) return;
@@ -222,6 +282,7 @@ if (typeof window !== 'undefined') {
     }
     window.EventSlideShowHelpers.getGlobalEventNumber1Based = getGlobalEventNumber1Based;
     window.EventSlideShowHelpers.updateEventSlideFactionTypeDisplay = updateEventSlideFactionTypeDisplay;
+    window.EventSlideShowHelpers.updateEventSlideNpcCategoryDisplay = updateEventSlideNpcCategoryDisplay;
     window.EventSlideShowHelpers.updateEventSlideHeroRoleDisplay = updateEventSlideHeroRoleDisplay;
     window.EventSlideShowHelpers.updateEventSlideHeroBirthdayDisplay = updateEventSlideHeroBirthdayDisplay;
 }

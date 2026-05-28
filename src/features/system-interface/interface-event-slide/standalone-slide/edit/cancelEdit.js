@@ -8,9 +8,12 @@
  */
 
 import { syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
+import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import { syncHeroBioRolePanelsVisibility } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     updateEventSlideFactionTypeDisplay,
+    updateEventSlideNpcCategoryDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 
@@ -85,6 +88,8 @@ export function runCancelEdit(slide, editBtn, saveBtn) {
                 heroLocEditCancel.style.display = 'none';
             }
             syncFactionTypeBioPanelVisibility('story');
+            syncNpcCategoryBioPanelVisibility('story');
+            syncBioDeleteButtonVisibility('story', false);
             syncHeroBioRolePanelsVisibility('story', undefined, undefined);
             const archiveSrcAfterCancel =
                 window.eventManager?.dataService?.getArchiveSource?.() || 'story';
@@ -110,6 +115,12 @@ export function runCancelEdit(slide, editBtn, saveBtn) {
             }
             if (archiveSrcAfterCancel === 'heroes' && slide.editTarget?.eventData) {
                 updateEventSlideHeroRoleDisplay(
+                    slide.editTarget.eventData,
+                    slide.currentVariantIndex ?? 0
+                );
+            }
+            if (archiveSrcAfterCancel === 'npcs' && slide.editTarget?.eventData) {
+                updateEventSlideNpcCategoryDisplay(
                     slide.editTarget.eventData,
                     slide.currentVariantIndex ?? 0
                 );

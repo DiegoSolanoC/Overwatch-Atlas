@@ -17,7 +17,7 @@ import { installEventManagerArchiveBindings } from './eventManagerArchiveBinding
 import { installEventManagerDataGetters } from './eventManagerDataGetters.js';
 import { syncManagerPaginationForDisplay } from './syncManagerPaginationForDisplay.js';
 import { runAddBlankEventAndOpen } from './runAddBlankEventAndOpen.js';
-import { runDeleteEventWithConfirm } from './runDeleteEventWithConfirm.js';
+import { runDeleteEventAtIndex, runDeleteEventWithConfirm } from './runDeleteEventWithConfirm.js';
 
 class EventManager {
     constructor() {
@@ -276,7 +276,14 @@ class EventManager {
         this.dragDropService?.reorderEvents(fromIndex, toIndex, options || {});
     }
 
-    deleteEvent(index) {
+    /**
+     * @param {number} index
+     * @param {{ skipConfirm?: boolean }} [options]
+     */
+    deleteEvent(index, options = {}) {
+        if (options.skipConfirm) {
+            return runDeleteEventAtIndex(this, index);
+        }
         return runDeleteEventWithConfirm(this, index);
     }
 

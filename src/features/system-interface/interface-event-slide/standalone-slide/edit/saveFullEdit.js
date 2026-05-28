@@ -38,6 +38,8 @@ import {
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
+import { readNpcCategoryBioPanelTrimmed, syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
+import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import {
     heroBirthdayPartsIncomplete,
     readHeroBirthdayBioPanelTrimmed,
@@ -51,6 +53,7 @@ import {
 } from '../../../interface-shared/bio-archive/HeroRoleBioInputs.js';
 import {
     updateEventSlideFactionTypeDisplay,
+    updateEventSlideNpcCategoryDisplay,
     updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
@@ -91,6 +94,9 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                 : { name: cleanName, description: cleanDesc };
             if (archiveSource === 'factions') {
                 normalized.factionType = readFactionTypeBioPanelTrimmed();
+            }
+            if (archiveSource === 'npcs') {
+                normalized.npcCategory = readNpcCategoryBioPanelTrimmed();
             }
             if (archiveSource === 'heroes') {
                 normalized.heroRole = readHeroRoleBioPanelTrimmed();
@@ -173,6 +179,18 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                             hro.moveHeroEntryToLastInItsSubroleGroup(em.events, mergedRow);
                         }
                     }
+                    if (
+                        archiveSource === 'npcs' &&
+                        window.NpcArchiveGroupOrderHelpers
+                    ) {
+                        const ngo = window.NpcArchiveGroupOrderHelpers;
+                        if (
+                            ngo.normalizeNpcArchiveCategory(oldRef?.npcCategory) !==
+                            ngo.normalizeNpcArchiveCategory(mergedRow.npcCategory)
+                        ) {
+                            ngo.moveNpcEntryToLastInItsCategoryGroup(em.events, saveIdx);
+                        }
+                    }
                     em.unsavedEventIndices?.add(saveIdx);
                     if (
                         isBioSave &&
@@ -245,6 +263,8 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                 heroLocEditSaved.style.display = 'none';
             }
             syncFactionTypeBioPanelVisibility('story');
+            syncNpcCategoryBioPanelVisibility('story');
+            syncBioDeleteButtonVisibility('story', false);
             syncHeroBioRolePanelsVisibility('story', undefined, undefined);
             syncHeroBirthdayBioPanelVisibility('story', undefined);
             const relSaved = document.getElementById('eventSlideRelevantLocations');
@@ -256,6 +276,12 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             }
             if (archiveSource === 'factions' && savedForDisplay) {
                 updateEventSlideFactionTypeDisplay(
+                    savedForDisplay,
+                    slide.currentVariantIndex ?? 0
+                );
+            }
+            if (archiveSource === 'npcs' && savedForDisplay) {
+                updateEventSlideNpcCategoryDisplay(
                     savedForDisplay,
                     slide.currentVariantIndex ?? 0
                 );

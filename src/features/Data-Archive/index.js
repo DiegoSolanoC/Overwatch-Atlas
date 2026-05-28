@@ -107,6 +107,20 @@ export {
 } from './archive-category-factions/ArchiveFactionOrdering.js';
 
 export {
+    NPC_ARCHIVE_CATEGORY_ORDER,
+    NPC_ARCHIVE_CATEGORY_BY_NAME,
+    normalizeNpcArchiveCategory,
+    displayLabelForNpcArchiveCategory,
+    npcArchiveCategoryRank,
+    sortNpcsArchiveEventsStable,
+    moveNpcEntryToLastInItsCategoryGroup,
+    findFirstIndexForNpcCategoryInList,
+    defaultNpcCategoryForName,
+    resolveNpcCategoryFromArchiveRow,
+    mapNpcArchiveRowsForGrouping
+} from './archive-category-npcs/ArchiveNpcOrdering.js';
+
+export {
     applyCategoryStyling,
     removeCategoryClasses,
     setupCategoryBehaviors
