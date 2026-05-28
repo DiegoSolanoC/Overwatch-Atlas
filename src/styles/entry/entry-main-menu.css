@@ -377,7 +377,7 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     .main-menu-side-grid__bottom-row
     .main-menu-side-btn-wrapper:nth-child(1) {
     z-index: 2;
-    transform: translate(0, 0);
+    transform: translate(calc(-1 * var(--side-stack-step-x)), var(--side-stack-step-y));
 }
 
 .main-menu-side-grid--no-data-workshop

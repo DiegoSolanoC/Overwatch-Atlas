@@ -477,14 +477,6 @@
         },
         {
           "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Bastion",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -1014,14 +1006,6 @@
         {
           "kind": "faction",
           "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ana",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -1785,7 +1769,6 @@
           "reasoningSubjectToLinked": "Wants to kill",
           "reasoningLinkedToSubject": "Wants to stop",
           "thisEntryLane": "A",
-          "showInCodex": true,
           "ranges": [
             {
               "startEvent": "The Original Strike Team",
@@ -1897,7 +1880,159 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "gcc-subject",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Reaper",
+            "x": 1324.48,
+            "y": 1489.89,
+            "scale": 5,
+            "portraitKey": "Reaper"
+          },
+          {
+            "id": "gcc-link-hero-ana",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Ana",
+            "x": 1887.62,
+            "y": 974.12,
+            "scale": 2.5,
+            "portraitKey": "Ana"
+          },
+          {
+            "id": "gcc-link-hero-moira",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Moira",
+            "x": 546.416,
+            "y": 1209.33,
+            "scale": 2.5,
+            "portraitKey": "Moira"
+          },
+          {
+            "id": "gcc-link-hero-widowmaker",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Widowmaker",
+            "x": 921.35,
+            "y": 1086.76,
+            "scale": 2.5,
+            "portraitKey": "Widowmaker"
+          },
+          {
+            "id": "gcc-link-hero-soldier-76",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Soldier 76",
+            "x": 1504.48,
+            "y": 788.046,
+            "scale": 2.5,
+            "portraitKey": "Soldier 76"
+          },
+          {
+            "id": "gcc-link-faction-overwatch",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 2272.02,
+            "y": 980.689,
+            "scale": 4,
+            "bgColor": "#021887",
+            "factionFilename": "00Overwatch"
+          },
+          {
+            "id": "gcc-link-faction-talon-empire",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Talon Empire",
+            "x": 467.91,
+            "y": 1649.83,
+            "scale": 4,
+            "bgColor": "#000000",
+            "factionFilename": "33Talon Empire"
+          },
+          {
+            "id": "gcc-link-faction-blackwatch",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Blackwatch",
+            "x": 2244.41,
+            "y": 1633.89,
+            "scale": 3,
+            "bgColor": "#1d2125",
+            "factionFilename": "01Blackwatch"
+          },
+          {
+            "id": "gcc-link-npc-antonio",
+            "kind": "npc",
+            "role": "linked",
+            "entityKind": "npc",
+            "entityName": "Antonio",
+            "x": 936.643,
+            "y": 2112,
+            "scale": 2,
+            "portraitKey": "Antonio"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-ana"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-moira"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-widowmaker"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-soldier-76"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-overwatch"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-talon-empire"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-blackwatch"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-npc-antonio"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "view": {
+          "panX": -155.7508465192438,
+          "panY": -182.9220400056928,
+          "zoom": 0.3295434240000002
+        }
+      }
     },
     {
       "name": "Tracer",
@@ -2633,14 +2768,6 @@
         },
         {
           "kind": "hero",
-          "name": "Emre",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Reaper",
           "reasoningSubjectToLinked": "Wants to stop",
           "reasoningLinkedToSubject": "Wants to kill",
@@ -2668,33 +2795,133 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Orisa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "faction",
           "name": "Overwatch",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Efi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "1 January 2017"
+      "birthday": "1 January 2017",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "gcc-subject",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Ana",
+            "x": 1103.18,
+            "y": 1138.9,
+            "scale": 5,
+            "portraitKey": "Ana"
+          },
+          {
+            "id": "gcc-link-hero-pharah",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Pharah",
+            "x": 2314.27,
+            "y": 1057.28,
+            "scale": 2.5,
+            "portraitKey": "Pharah"
+          },
+          {
+            "id": "gcc-link-hero-soldier-76",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Soldier 76",
+            "x": 622.212,
+            "y": 1318.9,
+            "scale": 2.5,
+            "portraitKey": "Soldier 76"
+          },
+          {
+            "id": "gcc-link-hero-reaper",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Reaper",
+            "x": 816.039,
+            "y": 1786.04,
+            "scale": 2.5,
+            "portraitKey": "Reaper"
+          },
+          {
+            "id": "gcc-link-hero-reinhardt",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Reinhardt",
+            "x": 1677.4,
+            "y": 924.677,
+            "scale": 2.5,
+            "portraitKey": "Reinhardt"
+          },
+          {
+            "id": "gcc-link-faction-overwatch",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 877.031,
+            "y": 630.542,
+            "scale": 4,
+            "bgColor": "#021887",
+            "factionFilename": "00Overwatch"
+          },
+          {
+            "id": "gcc-j-mpq2yiby-e66fu",
+            "kind": "junction",
+            "x": 2187.55,
+            "y": 1448,
+            "scale": 3
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-soldier-76"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-reaper"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-reinhardt"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-overwatch"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-j-mpq2yiby-e66fu"
+          },
+          {
+            "fromId": "gcc-j-mpq2yiby-e66fu",
+            "toId": "gcc-link-hero-pharah"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": false,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "view": {
+          "panX": -182.20757085440061,
+          "panY": -151.96661633344235,
+          "zoom": 0.32954342400000014
+        }
+      }
     },
     {
       "name": "Jetpack Cat",

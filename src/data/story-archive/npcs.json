@@ -396,14 +396,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "npcCategory": "Overwatch"

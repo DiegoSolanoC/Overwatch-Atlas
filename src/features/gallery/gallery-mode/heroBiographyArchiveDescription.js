@@ -6,11 +6,13 @@
 import { createHeroBirthdayFieldSet } from '../../system-interface/interface-shared/bio-archive/HeroBirthdayFieldSet.js';
 import { getHeroBirthdayRawFromEntry } from '../../system-interface/interface-shared/bio-archive/HeroBirthdayAge.js';
 import { isHeroBiographyLocalDev } from './heroBiographyLocalDev.js';
-import { saveHeroArchiveEntryPatchFromBiographyStage } from './heroBiographyArchivePersist.js';
+import { saveHeroArchiveEntryPatchFromBiographyStage, saveBioArchiveConnectionCanvasFromGallery } from './heroBiographyArchivePersist.js';
 import {
     clearHeroBiographyConnectionsView,
     renderHeroBiographyConnectionsView,
 } from './heroBiographyArchiveConnectionsView.js';
+import { createGalleryConnectionCanvas } from './galleryConnectionCanvas.js';
+import { listDisplayableConnectionEntities } from './galleryConnectionCanvasModel.js';
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
     clearBioArchiveEventsCache,
@@ -85,6 +87,23 @@ let intelEmptyEl = null;
 
 /** @type {HTMLElement | null} */
 let connectionsEmptyEl = null;
+
+/** @type {HTMLElement | null} */
+let connectionsListWrapEl = null;
+
+/** @type {HTMLElement | null} */
+let connectionsCanvasMountEl = null;
+
+/** @type {HTMLElement | null} */
+let connectionsViewToggleEl = null;
+
+/** @type {ReturnType<typeof createGalleryConnectionCanvas> | null} */
+let connectionsCanvasController = null;
+
+/** @type {'list' | 'canvas'} */
+let connectionsViewMode = 'list';
+
+let canvasLayoutSaveInFlight = false;
 
 /** @type {object | null} */
 let currentEntry = null;
@@ -166,6 +185,73 @@ function setConnectionsEditingMode(editing) {
     if (connectionsSaveBtn) connectionsSaveBtn.hidden = !editing;
     if (connectionsCancelBtn) connectionsCancelBtn.hidden = !editing;
     if (connectionsEmptyEl) connectionsEmptyEl.hidden = editing;
+    if (connectionsViewToggleEl) connectionsViewToggleEl.hidden = editing;
+    if (editing && connectionsViewMode === 'canvas') {
+        setConnectionsViewMode('list');
+    }
+}
+
+/**
+ * @param {'list' | 'canvas'} mode
+ */
+function setConnectionsViewMode(mode) {
+    connectionsViewMode = mode === 'canvas' ? 'canvas' : 'list';
+    if (connectionsListWrapEl) {
+        connectionsListWrapEl.hidden = connectionsViewMode !== 'list';
+    }
+    if (connectionsCanvasMountEl) {
+        connectionsCanvasMountEl.hidden = connectionsViewMode !== 'canvas';
+    }
+    if (connectionsViewToggleEl) {
+        connectionsViewToggleEl.querySelectorAll('[data-conn-view]').forEach((btn) => {
+            const isActive = btn.getAttribute('data-conn-view') === connectionsViewMode;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+    if (connectionsViewMode === 'canvas') {
+        void refreshConnectionsCanvas();
+    } else {
+        applyConnectionsEmptyState();
+    }
+}
+
+async function refreshConnectionsCanvas() {
+    if (!connectionsCanvasMountEl || connectionsViewMode !== 'canvas') return;
+
+    if (!connectionsCanvasController) {
+        connectionsCanvasController = createGalleryConnectionCanvas(connectionsCanvasMountEl, {
+            canEdit,
+            onDirty: () => {
+                const saveBtn = connectionsCanvasController?.getSaveButton();
+                if (saveBtn) saveBtn.hidden = !canEdit;
+            },
+        });
+        const canvasSaveBtn = connectionsCanvasController.getSaveButton();
+        canvasSaveBtn?.addEventListener('click', () => void handleCanvasLayoutSave());
+    }
+
+    await connectionsCanvasController.load(
+        currentEntry,
+        currentCategory,
+        currentDisplayName,
+        currentFilterKey || '',
+        currentEntry?.connectionCanvas,
+    );
+    applyConnectionsEmptyState();
+}
+
+function applyConnectionsEmptyState() {
+    if (!connectionsEmptyEl || isConnectionsEditing) return;
+    if (connectionsViewMode === 'canvas') {
+        const hasLinks = listDisplayableConnectionEntities(currentEntry).length > 0;
+        const hasCanvas = connectionsCanvasController?.hasContent?.() ?? false;
+        connectionsEmptyEl.hidden = hasLinks || hasCanvas;
+        return;
+    }
+    if (!connectionsBodyEl) return;
+    const hasConnections = !!connectionsBodyEl.querySelector('.event-slide-bio-connections__group');
+    connectionsEmptyEl.hidden = hasConnections;
 }
 
 function applyIntelEmptyState() {
@@ -173,12 +259,6 @@ function applyIntelEmptyState() {
     const hasDescription = !!(viewBodyEl.textContent || '').trim();
     const hasBirthday = viewBirthdayMetaEl && !viewBirthdayMetaEl.hidden;
     intelEmptyEl.hidden = hasDescription || hasBirthday;
-}
-
-function applyConnectionsEmptyState() {
-    if (!connectionsEmptyEl || !connectionsBodyEl || isConnectionsEditing) return;
-    const hasConnections = !!connectionsBodyEl.querySelector('.event-slide-bio-connections__group');
-    connectionsEmptyEl.hidden = hasConnections;
 }
 
 function renderIntelBody(description) {
@@ -205,6 +285,9 @@ function updateConnectionsEmptyCopy(category) {
 function renderConnectionsBody(entry, category) {
     if (!connectionsBodyEl) return;
     renderHeroBiographyConnectionsView(connectionsBodyEl, entry, category);
+    if (connectionsViewMode === 'canvas') {
+        void refreshConnectionsCanvas();
+    }
     applyConnectionsEmptyState();
 }
 
@@ -415,6 +498,50 @@ function handleConnectionsCancel() {
     exitConnectionsEditMode();
 }
 
+async function handleCanvasLayoutSave() {
+    if (
+        !canEdit
+        || !currentFilterKey
+        || canvasLayoutSaveInFlight
+        || !connectionsCanvasController
+        || currentCategory === 'locations'
+    ) {
+        return;
+    }
+
+    const snapshot = connectionsCanvasController.collectSnapshot();
+    canvasLayoutSaveInFlight = true;
+    const canvasSaveBtn = connectionsCanvasController.getSaveButton();
+    if (canvasSaveBtn) canvasSaveBtn.disabled = true;
+
+    try {
+        const result = await saveBioArchiveConnectionCanvasFromGallery(
+            currentCategory,
+            currentFilterKey,
+            currentDisplayName,
+            { connectionCanvas: snapshot },
+        );
+        if (!result.ok) {
+            window.updateAppStatus?.(result.error || 'Could not save canvas layout.', 'warning');
+            return;
+        }
+        if (result.entry) currentEntry = result.entry;
+        clearBioArchiveEventsCache(currentCategory);
+        connectionsCanvasController.clearDirtyState();
+        window.SoundEffectsManager?.play?.('save');
+        if (canvasSaveBtn && window.flashButton) {
+            window.flashButton(canvasSaveBtn, 'flash-green');
+        }
+        window.updateAppStatus?.('Personal connection layout saved.', 'success');
+    } catch (err) {
+        console.warn('[gallery] Canvas layout save failed:', err);
+        window.updateAppStatus?.('Could not save canvas layout.', 'warning');
+    } finally {
+        canvasLayoutSaveInFlight = false;
+        if (canvasSaveBtn) canvasSaveBtn.disabled = false;
+    }
+}
+
 /**
  * @param {HTMLElement} hostEl — `#atlasGalleryHost`
  */
@@ -533,10 +660,37 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     intelScrollEl.append(viewBirthdayMetaEl, editBirthdayEl, viewBodyEl, editBodyEl, intelEmptyEl);
 
     connectionsViewEl = document.createElement('div');
-    connectionsViewEl.className =
-        'gallery-mode__archive-connections-view gallery-mode__archive-panel-scroll scrollbar-custom';
+    connectionsViewEl.className = 'gallery-mode__archive-connections-view';
     connectionsViewEl.setAttribute('tabindex', '0');
     connectionsViewEl.setAttribute('aria-label', 'Archive connections');
+
+    connectionsViewToggleEl = document.createElement('div');
+    connectionsViewToggleEl.className = 'gallery-mode__connections-view-toggle';
+    connectionsViewToggleEl.setAttribute('role', 'group');
+    connectionsViewToggleEl.setAttribute('aria-label', 'Connections display mode');
+
+    const listViewBtn = document.createElement('button');
+    listViewBtn.type = 'button';
+    listViewBtn.className = 'gallery-mode__connections-view-btn is-active';
+    listViewBtn.dataset.connView = 'list';
+    listViewBtn.textContent = 'List';
+    listViewBtn.setAttribute('aria-pressed', 'true');
+    listViewBtn.addEventListener('click', () => setConnectionsViewMode('list'));
+
+    const canvasViewBtn = document.createElement('button');
+    canvasViewBtn.type = 'button';
+    canvasViewBtn.className = 'gallery-mode__connections-view-btn';
+    canvasViewBtn.dataset.connView = 'canvas';
+    canvasViewBtn.textContent = 'Canvas';
+    canvasViewBtn.setAttribute('aria-pressed', 'false');
+    canvasViewBtn.addEventListener('click', () => setConnectionsViewMode('canvas'));
+
+    connectionsViewToggleEl.append(listViewBtn, canvasViewBtn);
+
+    connectionsListWrapEl = document.createElement('div');
+    connectionsListWrapEl.className =
+        'gallery-mode__archive-panel-scroll scrollbar-custom gallery-mode__connections-list-wrap';
+    connectionsListWrapEl.setAttribute('tabindex', '0');
 
     connectionsBodyEl = document.createElement('div');
     connectionsBodyEl.className =
@@ -546,6 +700,14 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsEmptyEl = document.createElement('p');
     connectionsEmptyEl.className = 'gallery-mode__archive-description-empty';
     connectionsEmptyEl.textContent = 'No connections recorded for this entry.';
+
+    connectionsCanvasMountEl = document.createElement('div');
+    connectionsCanvasMountEl.className = 'gallery-mode__connections-canvas-mount';
+    connectionsCanvasMountEl.hidden = true;
+    connectionsCanvasMountEl.setAttribute('aria-label', 'Personal connections canvas');
+
+    connectionsListWrapEl.append(connectionsBodyEl, connectionsEmptyEl);
+    connectionsViewEl.append(connectionsViewToggleEl, connectionsListWrapEl, connectionsCanvasMountEl);
 
     connectionsEditEl = document.createElement('div');
     connectionsEditEl.className =
@@ -557,8 +719,6 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsEditMount.id = 'galleryHeroBioConnectionsEditor';
     connectionsEditMount.className = 'gallery-mode__archive-connections-edit-mount';
     connectionsEditEl.append(connectionsEditMount);
-
-    connectionsViewEl.append(connectionsBodyEl, connectionsEmptyEl);
 
     if (intelToolbarEl) intelPanelEl.append(intelHeading, intelToolbarEl);
     else intelPanelEl.append(intelHeading);
@@ -714,6 +874,12 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsBodyEl = null;
     connectionsEditEl = null;
     connectionsEditMount = null;
+    connectionsListWrapEl = null;
+    connectionsCanvasMountEl = null;
+    connectionsViewToggleEl = null;
+    connectionsViewMode = 'list';
+    connectionsCanvasController?.destroy();
+    connectionsCanvasController = null;
     editBodyEl = null;
     intelScrollEl = null;
     intelEmptyEl = null;
