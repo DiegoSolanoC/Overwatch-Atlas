@@ -17,10 +17,25 @@ import {
     STORY_NPC_FILTER_PLACES_OPTS
 } from '../../../interface-shared/storyEventFilterPlaces.js';
 
+function resolveLiveArchiveEventData(slide, fallbackEventData) {
+    const api = typeof window !== 'undefined' ? window.BioArchiveSlideEventData : null;
+    if (api && typeof api.resolveLiveArchiveEventDataForSlide === 'function') {
+        return api.resolveLiveArchiveEventDataForSlide(slide, fallbackEventData);
+    }
+    const em = window.eventManager;
+    const list = em && em.events;
+    const idx = slide && slide.currentEventIndex;
+    if (Array.isArray(list) && typeof idx === 'number' && idx >= 0 && idx < list.length && list[idx]) {
+        return list[idx];
+    }
+    return fallbackEventData;
+}
+
 export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBtn) {
+            const liveEventData = resolveLiveArchiveEventData(slide, eventData);
             slide.isEditing = true;
-            slide.editTarget = { eventData, displayEvent };
-            slide.originalState = JSON.parse(JSON.stringify(eventData));
+            slide.editTarget = { eventData: liveEventData, displayEvent };
+            slide.originalState = JSON.parse(JSON.stringify(liveEventData));
 
             const dockStoryPresentationActive = !!slide._presentationFromDockTimeline;
             const archiveSourceEdit = dockStoryPresentationActive
@@ -110,8 +125,8 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                 if (heroLocEdit && locContainer && window.HeroRelevantLocationsEditor?.render) {
                     heroLocEdit.removeAttribute('hidden');
                     heroLocEdit.style.display = 'block';
-                    const locs = Array.isArray(slide.editTarget?.eventData?.relevantLocations)
-                        ? slide.editTarget.eventData.relevantLocations
+                    const locs = Array.isArray(liveEventData?.relevantLocations)
+                        ? liveEventData.relevantLocations
                         : [];
                     window.HeroRelevantLocationsEditor.render(locContainer, locs);
                     const addBtn = document.getElementById('eventSlideAddRelevantLocationBtn');
@@ -121,12 +136,12 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                     }
                     const connContainer = document.getElementById('eventSlideEditBioConnections');
                     if (connContainer && window.BioArchiveConnectionsEditor?.render) {
-                        const conns = Array.isArray(slide.editTarget?.eventData?.connections)
-                            ? slide.editTarget.eventData.connections
+                        const conns = Array.isArray(liveEventData?.connections)
+                            ? liveEventData.connections
                             : [];
                         const bioOpts =
                             window.BioArchiveConnectionsEditor?.subjectOptsFromArchiveRow?.(
-                                slide.editTarget?.eventData,
+                                liveEventData,
                                 archiveSourceEdit
                             ) || { subjectName: '', subjectKind: 'hero' };
                         window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);

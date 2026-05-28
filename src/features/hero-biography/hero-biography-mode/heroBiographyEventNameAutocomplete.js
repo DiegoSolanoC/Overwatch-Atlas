@@ -1,5 +1,5 @@
 /**
- * Predictive dropdown for story event names (hero bio look range inputs).
+ * Predictive dropdown for story event names (hero bio look ranges, bio archive connection ranges).
  */
 
 import { normalizeEventNameForMatch } from './heroBiographyLookRangesStorage.js';
@@ -37,11 +37,6 @@ export function clearStoryEventNameOptionsCache() {
 }
 
 /**
- * @param {string} query
- * @param {number} [limit]
- * @returns {string[]}
- */
-/**
  * @param {string} value
  * @returns {boolean}
  */
@@ -61,11 +56,16 @@ export function resolveCanonicalStoryEventName(value) {
     return name || null;
 }
 
+/**
+ * @param {string} query
+ * @param {number} [limit]
+ * @returns {string[]}
+ */
 export function matchStoryEventNames(query, limit = 12) {
-    const q = normalizeEventNameForMatch(query);
-    if (!q) return [];
-
     const options = getStoryEventNameOptions();
+    const q = normalizeEventNameForMatch(query);
+    if (!q) return options.slice(0, limit);
+
     /** @type {{ name: string, rank: number }[]} */
     const scored = [];
 
@@ -88,39 +88,61 @@ export function matchStoryEventNames(query, limit = 12) {
 
 /**
  * @param {HTMLInputElement} input
+ */
+function syncStoryEventInputValidity(input) {
+    const raw = String(input.value || '').trim();
+    input.classList.toggle('no-story-event-match', Boolean(raw) && !isStoryEventNameKnown(raw));
+}
+
+/**
+ * @param {HTMLInputElement} input
  * @param {(value: string) => void} [onPick]
  */
 export function wireStoryEventNameAutocomplete(input, onPick) {
     if (input.dataset.heroBioEventAutocomplete === 'true') return;
     input.dataset.heroBioEventAutocomplete = 'true';
     input.setAttribute('autocomplete', 'off');
+    input.setAttribute('role', 'combobox');
+    input.setAttribute('aria-autocomplete', 'list');
 
     let listEl = null;
 
     const removeList = () => {
         listEl?.remove();
         listEl = null;
+        input.removeAttribute('aria-expanded');
+    };
+
+    const positionList = () => {
+        if (!listEl) return;
+        const rect = input.getBoundingClientRect();
+        listEl.style.left = `${rect.left}px`;
+        listEl.style.top = `${rect.bottom + 4}px`;
+        listEl.style.width = `${Math.max(rect.width, 220)}px`;
     };
 
     const applyPick = (name) => {
-        input.value = name;
+        const canonical = resolveCanonicalStoryEventName(name) || name;
+        input.value = canonical;
         removeList();
+        syncStoryEventInputValidity(input);
         input.dispatchEvent(new Event('change', { bubbles: true }));
-        onPick?.(name);
+        onPick?.(canonical);
     };
 
     const renderMatches = () => {
         removeList();
         const matches = matchStoryEventNames(input.value);
-        if (!matches.length) return;
+        if (!matches.length) {
+            syncStoryEventInputValidity(input);
+            return;
+        }
 
         listEl = document.createElement('div');
-        listEl.className = 'hero-biography-look-ranges__autocomplete-list filter-autocomplete-list';
+        listEl.className =
+            'story-event-name-autocomplete-list filter-autocomplete-list hero-biography-look-ranges__autocomplete-list';
         listEl.setAttribute('role', 'listbox');
-
-        const anchor =
-            input.closest('.hero-biography-mode__look-event-range-input-wrap') || input.parentElement;
-        if (!anchor) return;
+        positionList();
 
         for (const name of matches) {
             const btn = document.createElement('button');
@@ -134,15 +156,36 @@ export function wireStoryEventNameAutocomplete(input, onPick) {
             listEl.appendChild(btn);
         }
 
-        anchor.appendChild(listEl);
+        document.body.appendChild(listEl);
+        input.setAttribute('aria-expanded', 'true');
     };
 
-    input.addEventListener('input', renderMatches);
+    const onViewportChange = () => {
+        if (listEl) positionList();
+    };
+
+    input.addEventListener('input', () => {
+        renderMatches();
+        syncStoryEventInputValidity(input);
+    });
     input.addEventListener('focus', renderMatches);
     input.addEventListener('blur', () => {
-        setTimeout(removeList, 150);
+        setTimeout(() => {
+            removeList();
+            const raw = String(input.value || '').trim();
+            if (raw) {
+                const canonical = resolveCanonicalStoryEventName(raw);
+                if (canonical) input.value = canonical;
+            }
+            syncStoryEventInputValidity(input);
+        }, 200);
     });
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') removeList();
     });
+
+    window.addEventListener('scroll', onViewportChange, true);
+    window.addEventListener('resize', onViewportChange);
+
+    syncStoryEventInputValidity(input);
 }

@@ -45,6 +45,7 @@ const cordPacketState = new Map();
  * @property {() => { min: number, max: number }} getPacketStrokeRange
  * @property {(nodeId: string) => boolean} codexNodeIsJunctionWaypoint
  * @property {(edge: { fromId: string, toId: string }) => boolean} edgeCordShowsYellow
+ * @property {(edge: { fromId: string, toId: string }) => boolean} edgeCordPacketsEnabled
  * @property {(fromId: string, toId: string) => string[]} samplePacketTailNodeIds
  * @property {(fromId: string, toId: string, tailNodeIds: string[]) => ({ x: number, y: number }[]|null)} tryBuildPacketWorldPoints
  * @property {(nodeId: string) => HTMLElement|null} codexNodeElById
@@ -215,6 +216,10 @@ export function syncCodexCordPacketState(edgePolys) {
             });
         }
         st.active = _rt.edgeCordShowsYellow(edge);
+        st.packetsEnabled =
+            typeof _rt.edgeCordPacketsEnabled === 'function'
+                ? _rt.edgeCordPacketsEnabled(edge)
+                : st.active;
     });
     cordPacketState.forEach((_, k) => {
         if (!seen.has(k)) cordPacketState.delete(k);
@@ -382,6 +387,13 @@ function codexCordAnimationTick(ts) {
     const visualPrefs = _rt.getVisualPrefs();
 
     cordPacketState.forEach((st) => {
+        const edge = { fromId: st.fromId, toId: st.toId };
+        if (
+            typeof _rt.edgeCordPacketsEnabled === 'function'
+            && !_rt.edgeCordPacketsEnabled(edge)
+        ) {
+            return;
+        }
         st.packets.forEach((p) => {
             if (!p.pts || p.pts.length < 2 || p.totalLen < 1e-3) return;
             ensureCodexPacketPulseFields(p);

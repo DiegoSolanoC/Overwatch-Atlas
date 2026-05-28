@@ -54,6 +54,10 @@ import {
     updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
+import {
+    resolveLiveArchiveEventDataForSlide,
+    resolveLiveArchiveEventIndexForSlide,
+} from '../../../interface-shared/bio-archive/bioArchiveSlideEventData.js';
 
 export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         if (!slide.isEditing || !slide.editTarget) return;
@@ -105,20 +109,42 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                     || normalizeHeroBirthdayDayMonthYear(slide.editTarget?.eventData?.birthday)
                     || '';
             }
+            let saveIdx = -1;
+            /** @type {object | null} */
+            let mergedRow = null;
+            const liveBeforeSave =
+                resolveLiveArchiveEventDataForSlide(slide, slide.editTarget?.eventData || eventData)
+                || eventData;
             if (em?.events) {
-                const idx =
-                    window.BioArchiveConnectionsSync?.resolveBioArchiveEventIndex?.(
-                        em.events,
-                        slide.editTarget.eventData,
-                        archiveSource
-                    ) ?? em.events.indexOf(slide.editTarget.eventData);
-                const oldRef = slide.editTarget.eventData;
+                saveIdx = resolveLiveArchiveEventIndexForSlide(slide, liveBeforeSave);
+                if (saveIdx < 0) {
+                    saveIdx =
+                        window.BioArchiveConnectionsSync?.resolveBioArchiveEventIndex?.(
+                            em.events,
+                            liveBeforeSave,
+                            archiveSource
+                        ) ?? em.events.indexOf(liveBeforeSave);
+                }
+                const oldRef = liveBeforeSave;
                 const prevConnections =
                     isBioSave && Array.isArray(oldRef?.connections)
                         ? oldRef.connections.map((c) => ({ ...c }))
                         : [];
-                if (idx >= 0) {
-                    em.events[idx] = normalized;
+                mergedRow = Object.assign({}, oldRef, normalized);
+                if (connections !== undefined) mergedRow.connections = connections;
+                if (relevantLocations !== undefined) {
+                    mergedRow.relevantLocations = relevantLocations;
+                }
+                if (saveIdx < 0 && mergedRow.name) {
+                    const want = String(mergedRow.name).trim().toLowerCase();
+                    saveIdx = em.events.findIndex(
+                        (row) =>
+                            row
+                            && String(row.name || '').trim().toLowerCase() === want,
+                    );
+                }
+                if (saveIdx >= 0) {
+                    em.events[saveIdx] = mergedRow;
                     if (
                         archiveSource === 'factions' &&
                         window.FactionArchiveGroupOrderHelpers
@@ -126,9 +152,9 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                         const fgo = window.FactionArchiveGroupOrderHelpers;
                         if (
                             fgo.normalizeFactionArchiveType(oldRef?.factionType) !==
-                            fgo.normalizeFactionArchiveType(normalized.factionType)
+                            fgo.normalizeFactionArchiveType(mergedRow.factionType)
                         ) {
-                            fgo.moveFactionEntryToLastInItsTypeGroup(em.events, normalized);
+                            fgo.moveFactionEntryToLastInItsTypeGroup(em.events, mergedRow);
                         }
                     }
                     if (
@@ -137,20 +163,17 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                     ) {
                         const hro = window.HeroArchiveRoleOrderHelpers;
                         const oldR = hro.normalizeHeroArchiveRole(oldRef?.heroRole);
-                        const newR = hro.normalizeHeroArchiveRole(normalized.heroRole);
+                        const newR = hro.normalizeHeroArchiveRole(mergedRow.heroRole);
                         const oldS = hro.normalizeHeroArchiveSubrole(oldRef?.heroSubRole, oldR);
-                        const newS = hro.normalizeHeroArchiveSubrole(normalized.heroSubRole, newR);
+                        const newS = hro.normalizeHeroArchiveSubrole(mergedRow.heroSubRole, newR);
                         if (oldR !== newR) {
-                            hro.moveHeroEntryToLastInItsRoleGroup(em.events, normalized);
+                            hro.moveHeroEntryToLastInItsRoleGroup(em.events, mergedRow);
                         }
                         if (oldR !== newR || oldS !== newS) {
-                            hro.moveHeroEntryToLastInItsSubroleGroup(em.events, normalized);
+                            hro.moveHeroEntryToLastInItsSubroleGroup(em.events, mergedRow);
                         }
                     }
-                    {
-                        const ni = em.events.indexOf(normalized);
-                        if (ni >= 0) em.unsavedEventIndices?.add(ni);
-                    }
+                    em.unsavedEventIndices?.add(saveIdx);
                     if (
                         isBioSave &&
                         window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
@@ -158,13 +181,21 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                         window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
                             em.events,
                             archiveSource,
-                            normalized,
+                            em.events[saveIdx],
                             prevConnections
                         );
                     }
                 }
-                slide.currentEventData = normalized;
-                slide.editTarget.eventData = normalized;
+            }
+            if (em?.dataService?._normalizeSatelliteEventsInPlace) {
+                em.dataService._normalizeSatelliteEventsInPlace();
+            }
+            if (saveIdx >= 0 && em?.events?.[saveIdx]) {
+                slide.currentEventData = em.events[saveIdx];
+                slide.editTarget.eventData = em.events[saveIdx];
+            } else if (mergedRow) {
+                slide.currentEventData = mergedRow;
+                slide.editTarget.eventData = mergedRow;
             }
             em?.dataService?.saveEvents?.();
 
@@ -199,7 +230,12 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             slide.isEditing = false;
             slide.editTarget = null;
             slide.originalState = null;
-            slide.updateSourcesAndFilters(normalized);
+            const savedForDisplay =
+                saveIdx >= 0 && em?.events?.[saveIdx]
+                    ? em.events[saveIdx]
+                    : mergedRow || normalized;
+            slide.currentEventData = savedForDisplay;
+            slide.updateSourcesAndFilters(savedForDisplay);
             slide.allEvents = window.eventManager?.events || [];
             // Dock is main-timeline only; satellite saves do not change it — avoid dock thumb/page-turn refresh
             if (window.eventManager?.renderEvents) window.eventManager.renderEvents();
@@ -214,24 +250,42 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             const relSaved = document.getElementById('eventSlideRelevantLocations');
             if (isBioSave && relSaved) {
                 window.LocationFlagHelpers?.updateRelevantLocationsSlideFromSecondaryPlaces?.(
-                    normalized
+                    savedForDisplay
                 );
-                window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(normalized);
+                window.LocationFlagHelpers?.updateBioConnectionsSlideFromEvent?.(savedForDisplay);
             }
-            if (archiveSource === 'factions' && normalized) {
+            if (archiveSource === 'factions' && savedForDisplay) {
                 updateEventSlideFactionTypeDisplay(
-                    normalized,
+                    savedForDisplay,
                     slide.currentVariantIndex ?? 0
                 );
             }
-            if (archiveSource === 'heroes' && normalized) {
+            if (archiveSource === 'heroes' && savedForDisplay) {
                 updateEventSlideHeroRoleDisplay(
-                    normalized,
+                    savedForDisplay,
                     slide.currentVariantIndex ?? 0
                 );
                 updateEventSlideHeroBirthdayDisplay(
-                    normalized,
+                    savedForDisplay,
                     slide.currentVariantIndex ?? 0
+                );
+            }
+            if (typeof slide.wireEditButtons === 'function' && savedForDisplay) {
+                const titleEl = document.getElementById('eventSlideTitle');
+                const textEl = document.getElementById('eventSlideText');
+                const displayEv =
+                    slide.currentVariantIndex != null
+                    && Array.isArray(savedForDisplay.variants)
+                    && savedForDisplay.variants[slide.currentVariantIndex]
+                        ? savedForDisplay.variants[slide.currentVariantIndex]
+                        : savedForDisplay;
+                slide.wireEditButtons(
+                    savedForDisplay,
+                    displayEv,
+                    editBtn,
+                    saveBtn,
+                    titleEl,
+                    textEl,
                 );
             }
             if (window.SoundEffectsManager?.play) window.SoundEffectsManager.play('save');

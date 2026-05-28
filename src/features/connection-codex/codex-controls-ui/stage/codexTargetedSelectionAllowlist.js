@@ -24,6 +24,11 @@ async function loadArchiveJson(url) {
     }
 }
 
+/** @returns {{ heroes: object[], factions: object[], npcs: object[] } | null} */
+export function getCodexTargetedArchiveCacheSync() {
+    return archiveCache;
+}
+
 /** @returns {Promise<void>} */
 export function ensureCodexTargetedArchiveCache() {
     if (archiveCache) return Promise.resolve();

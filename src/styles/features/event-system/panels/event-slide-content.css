@@ -627,6 +627,146 @@
     flex-shrink: 0;
 }
 
+/* Per-connection story event ranges (below main connection columns). */
+.event-slide-bio-conn-row__ranges {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    padding: 12px 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.event-slide-bio-conn-row__ranges-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    margin-bottom: 6px;
+}
+
+.event-slide-bio-conn-row__ranges-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.event-slide-bio-conn-row__ranges-hint {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.event-slide-bio-conn-row__ranges-only-note {
+    margin: 0 0 8px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.event-slide-bio-conn-ranges__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.event-slide-bio-conn-ranges__list:empty::after {
+    content: 'No ranges yet — use + Add range to tie wording to story events.';
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.38);
+    padding: 4px 0;
+}
+
+.event-slide-bio-conn-range {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+    gap: 10px 12px;
+    align-items: start;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 720px) {
+    .event-slide-bio-conn-range {
+        grid-template-columns: 1fr auto;
+    }
+
+    .event-slide-bio-conn-range__events {
+        grid-column: 1 / -1;
+    }
+}
+
+.event-slide-bio-conn-range__events {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px 10px;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-range__event-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 140px;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-range__event-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.event-slide-bio-conn-range__event-input-wrap {
+    position: relative;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-range__event-input-wrap .event-slide-inline-editor__input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.event-slide-story-event-input.no-story-event-match {
+    border-color: rgba(244, 67, 54, 0.9) !important;
+    color: rgba(255, 120, 120, 1) !important;
+}
+
+.event-slide-story-event-input.no-story-event-match::placeholder {
+    color: rgba(255, 120, 120, 0.55);
+}
+
+.event-slide-bio-conn-range__event-sep {
+    flex: 0 0 auto;
+    padding-bottom: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.event-slide-bio-conn-range__reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.event-slide-bio-conn-range__reasons .event-slide-inline-editor__input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.event-slide-bio-conn-range__remove {
+    margin-top: 18px;
+}
+
 /* Read-only: group by linked type — multiple hero (etc.) links wrap on one line when space allows. */
 .event-slide-bio-connections__group {
     display: flex;

@@ -4,6 +4,16 @@
 
 import { CODEX_CORD_STROKE_OPACITY, CODEX_EDGE_FILTER_PAD_PX } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 
+/** @param {Element} el @param {string | string[] | null | undefined} classSpec */
+function addSvgElementClasses(el, classSpec) {
+    if (!classSpec) return;
+    const tokens = Array.isArray(classSpec)
+        ? classSpec
+        : String(classSpec).trim().split(/\s+/);
+    const filtered = tokens.map((t) => String(t || '').trim()).filter(Boolean);
+    if (filtered.length) el.classList.add(...filtered);
+}
+
 /**
  * Cord: dilate + blur with stacked halo; `blurLayers` controls glow strength (merge count before core).
  */
@@ -142,7 +152,7 @@ export function appendCordFilteredLineGroup(parent, ns, {
     pad.setAttribute('stroke-linecap', 'round');
     pad.setAttribute('aria-hidden', 'true');
     const vis = document.createElementNS(ns, 'line');
-    if (lineClass) vis.classList.add(lineClass);
+    addSvgElementClasses(vis, lineClass);
     vis.setAttribute('x1', String(x1));
     vis.setAttribute('y1', String(y1));
     vis.setAttribute('x2', String(x2));
@@ -169,7 +179,7 @@ export function appendCordPlainLineGroup(parent, ns, {
 }) {
     const g = document.createElementNS(ns, 'g');
     const vis = document.createElementNS(ns, 'line');
-    if (lineClass) vis.classList.add(lineClass);
+    addSvgElementClasses(vis, lineClass);
     vis.setAttribute('x1', String(x1));
     vis.setAttribute('y1', String(y1));
     vis.setAttribute('x2', String(x2));
@@ -206,7 +216,7 @@ export function appendCordFilteredPolygonGroup(parent, ns, {
     pad.setAttribute('stroke-linejoin', 'round');
     pad.setAttribute('aria-hidden', 'true');
     const vis = document.createElementNS(ns, 'polygon');
-    if (polyClass) vis.classList.add(polyClass);
+    addSvgElementClasses(vis, polyClass);
     vis.setAttribute('points', pointsStr);
     vis.setAttribute('fill', fill);
     vis.setAttribute('fill-opacity', fillOpacity);

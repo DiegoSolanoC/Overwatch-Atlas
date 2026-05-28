@@ -19,13 +19,8 @@ import { migrateAllStoryEventsFilterPlaces } from './eventFilterPlacesMigration.
 export function persistEvents(dataService) {
     if (!dataService._isMainTimelineArchive()) {
         const arch = dataService.getArchiveSource();
-        if (
-            (arch === 'heroes' || arch === 'factions' || arch === 'npcs') &&
-            typeof window !== 'undefined' &&
-            window.BioArchiveConnectionsSync?.repairMissingMirrorsForBioArchive
-        ) {
-            window.BioArchiveConnectionsSync.repairMissingMirrorsForBioArchive(dataService.events, arch);
-        }
+        // Mirror repair runs from slide save (`syncMirrorsAfterSubjectSave`), not on every persist —
+        // `repairMissingMirrorsForBioArchive` could resurrect connections the user removed.
         if (window.BioArchiveConnectionsSync?.pruneShowInCodexWithoutDirectCodexEdge) {
             window.BioArchiveConnectionsSync.pruneShowInCodexWithoutDirectCodexEdge(
                 dataService.events,

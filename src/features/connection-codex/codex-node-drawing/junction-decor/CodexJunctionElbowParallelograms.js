@@ -12,7 +12,7 @@ import { appendCordFilteredPolygonGroup } from '../svg/CodexCordSvgElements.js';
  * @property {() => { fromId: string, toId: string }[]} getEdges
  * @property {(nodeId: string) => HTMLElement|null} codexNodeElById
  * @property {(el: HTMLElement) => { x: number, y: number }} getNodeCenterWorldPx
- * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'} edgeCordAppearance
+ * @property {(edgeIn: { fromId: string, toId: string }, edgeOut: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'grey'} edgeCordAppearance
  * @property {() => string} getCordColorHex
  */
 
@@ -134,15 +134,23 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
             const pts = codexElbowParallelogramPoints(cJ.x, cJ.y, dxIn, dyIn, dxOut, dyOut, arm);
             if (!pts) continue;
 
-            const appearance = ctx.edgeCordAppearance(eOut);
+            const appearance = ctx.edgeCordAppearance(eIn, eOut);
             const fill =
-                appearance === 'red' ? '#f87171' : appearance === 'yellow' ? '#fbbf24' : ctx.getCordColorHex();
+                appearance === 'red'
+                    ? '#f87171'
+                    : appearance === 'yellow'
+                        ? '#fbbf24'
+                        : appearance === 'grey'
+                            ? 'rgba(120, 128, 148, 0.38)'
+                            : ctx.getCordColorHex();
             const filterUrl =
                 appearance === 'red'
                     ? 'url(#codex-edge-red-glow)'
                     : appearance === 'yellow'
                         ? 'url(#codex-edge-yellow-glow)'
-                        : 'url(#codex-edge-violet-glow)';
+                        : appearance === 'grey'
+                            ? 'none'
+                            : 'url(#codex-edge-violet-glow)';
             const pointsStr = pts.map((p) => `${p.x},${p.y}`).join(' ');
             const elbowG = appendCordFilteredPolygonGroup(parentG, ns, {
                 pointsStr,

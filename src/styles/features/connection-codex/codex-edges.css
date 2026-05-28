@@ -19,6 +19,10 @@
     animation: codex-edge-fade-in 200ms ease-out;
 }
 
+.codex-edge-segment--timeline-dormant {
+    animation: none;
+}
+
 @keyframes codex-edge-fade-in {
     from {
         opacity: 0;

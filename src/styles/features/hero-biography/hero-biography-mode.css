@@ -673,6 +673,15 @@ body:has(#atlasHeroBiographyHost) #heroBiographyChipStripToggle.dock-globe-rail_
     font-weight: 500;
 }
 
+.hero-biography-mode__look-event-range-input.no-story-event-match {
+    border-color: rgba(244, 67, 54, 0.9) !important;
+    color: rgba(255, 120, 120, 1) !important;
+}
+
+.hero-biography-mode__look-event-range-input.no-story-event-match::placeholder {
+    color: rgba(255, 120, 120, 0.55);
+}
+
 .hero-biography-mode__look-event-range-input:focus-visible {
     outline: none;
     border-color: #fff;

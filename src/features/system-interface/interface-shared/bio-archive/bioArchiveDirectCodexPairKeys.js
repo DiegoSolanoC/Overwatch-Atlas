@@ -81,6 +81,27 @@ export function buildDirectCodexBioPairKeySet(nodes, edges) {
  * @param {string} linkedName
  * @param {object[]} [codexNodes]
  */
+/**
+ * @param {string} fromId
+ * @param {string} toId
+ * @param {object[]} codexNodes
+ * @returns {string}
+ */
+export function pairKeyForCodexBioNodeIds(fromId, toId, codexNodes) {
+    if (!fromId || !toId || fromId === toId || !Array.isArray(codexNodes)) return '';
+    const byId = new Map();
+    for (const n of codexNodes) {
+        if (n?.id) byId.set(n.id, n);
+    }
+    const entA = nodeToBioEntity(byId.get(fromId));
+    const entB = nodeToBioEntity(byId.get(toId));
+    if (!entA || !entB) return '';
+    const sa = archiveEntitySignature(entA.arch, entA.kind, entA.name);
+    const sb = archiveEntitySignature(entB.arch, entB.kind, entB.name);
+    if (!sa || !sb || sa === sb) return '';
+    return unorderedSigPairKey(sa, sb);
+}
+
 export function pairKeyForBioArchiveConnection(
     subjectArch,
     subjectKind,

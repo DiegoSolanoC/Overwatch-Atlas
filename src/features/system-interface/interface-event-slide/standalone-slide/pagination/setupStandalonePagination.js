@@ -282,6 +282,15 @@ export function runSetupStandalonePagination(slide) {
                 pagination.style.display = currentEvents.length > 0 ? 'flex' : 'none';
                 pagination.classList.toggle('event-pagination--single-page', totalPages <= 1);
             }
+
+            window.dispatchEvent(
+                new CustomEvent('atlas-dock-timeline-page-changed', {
+                    detail: { page: currentPage },
+                }),
+            );
+            if (typeof window.__codexApplyTimelineGateFromDock === 'function') {
+                window.__codexApplyTimelineGateFromDock();
+            }
         };
         
         // Helper to calculate matching events on a page

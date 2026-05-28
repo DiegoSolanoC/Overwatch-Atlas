@@ -15,6 +15,10 @@ import {
 } from '../../codex-controls-ui/stage/CodexTargetedSelection.js';
 import { appendCodexEdgeNodeMask as appendCodexEdgeNodeMaskCore } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import {
+    isCodexEdgeTimelineActiveForDockPage,
+    isDirectedCodexEdgeOnActiveBioConnectionPath,
+} from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 
 
 function findEdge(fromId, toId) {
@@ -154,9 +158,31 @@ function edgeIsCordPendingDelete(edge) {
     return s.cordPendingDeletePairKey === codexUnorderedPairKey(edge.fromId, edge.toId);
 }
 
+function edgeCordBioTimelineActive(edge) {
+    return isCodexEdgeTimelineActiveForDockPage(edge, s.codexAllNodes, s.codexEdges);
+}
+
+function edgeCordPacketsEnabled(edge) {
+    if (edgeIsCordPendingDelete(edge)) return false;
+    return isDirectedCodexEdgeOnActiveBioConnectionPath(
+        edge,
+        s.codexAllNodes,
+        s.codexEdges,
+    );
+}
+
 function edgeCordAppearance(edge) {
     if (edgeIsCordPendingDelete(edge)) return 'red';
     if (edgeCordShowsYellow(edge)) return 'yellow';
+    if (!edgeCordBioTimelineActive(edge)) return 'grey';
+    return 'violet';
+}
+
+/** Junction elbows sit between two segments — grey when either leg is timeline-dormant. */
+function edgeCordAppearanceForJunctionElbow(edgeIn, edgeOut) {
+    if (edgeIsCordPendingDelete(edgeIn) || edgeIsCordPendingDelete(edgeOut)) return 'red';
+    if (edgeCordShowsYellow(edgeIn) || edgeCordShowsYellow(edgeOut)) return 'yellow';
+    if (!edgeCordBioTimelineActive(edgeIn) || !edgeCordBioTimelineActive(edgeOut)) return 'grey';
     return 'violet';
 }
 
@@ -229,7 +255,12 @@ function samplePacketTailNodeIds(fromId, toId) {
         const outs = s.codexEdges.filter(
             (e) => e.fromId === cur
                 && e.toId !== prev
-                && codexDirectedEdgeAllowedForPacketWalk(e.fromId, e.toId),
+                && codexDirectedEdgeAllowedForPacketWalk(e.fromId, e.toId)
+                && isDirectedCodexEdgeOnActiveBioConnectionPath(
+                    e,
+                    s.codexAllNodes,
+                    s.codexEdges,
+                ),
         );
         if (outs.length === 0) break;
         const pick = outs.length === 1
@@ -275,7 +306,7 @@ function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = nul
         getEdges: () => edgesOverride || s.codexEdges,
         codexNodeElById: api.codexNodeElById,
         getNodeCenterWorldPx: api.getNodeCenterWorldPx,
-        edgeCordAppearance: api.edgeCordAppearance,
+        edgeCordAppearance: (eIn, eOut) => edgeCordAppearanceForJunctionElbow(eIn, eOut),
         getCordColorHex: () => s.codexVisualPrefs.cordColor
     });
 }
@@ -608,6 +639,8 @@ api.removeJunctionAndBridgeEdges = removeJunctionAndBridgeEdges;
 api.removeEdgesForDeletedNodesWithJunctionBridging = removeEdgesForDeletedNodesWithJunctionBridging;
 api.edgeIsCordPendingDelete = edgeIsCordPendingDelete;
 api.edgeCordAppearance = edgeCordAppearance;
+api.edgeCordPacketsEnabled = edgeCordPacketsEnabled;
+api.edgeCordBioTimelineActive = edgeCordBioTimelineActive;
 api.edgeCordIsActivelyUpdating = edgeCordIsActivelyUpdating;
 api.edgeCordShowsYellow = edgeCordShowsYellow;
 api.clearPendingCodexDeleteState = clearPendingCodexDeleteState;

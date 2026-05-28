@@ -2,18 +2,14 @@
  * Rules for which archive `connections[]` rows are real narrative links vs codex/mirror stubs.
  */
 
+import { connectionRowHasNarrativeText } from './bioArchiveConnectionRanges.js';
+
 /**
  * @param {object | null | undefined} c
  * @returns {boolean}
  */
 export function bioConnectionRowHasNarrativeText(c) {
-    if (!c) return false;
-    const toLinked =
-        c.reasoningSubjectToLinked != null ? String(c.reasoningSubjectToLinked).trim() : '';
-    const toSubject =
-        c.reasoningLinkedToSubject != null ? String(c.reasoningLinkedToSubject).trim() : '';
-    const legacy = c.reasoning != null ? String(c.reasoning).trim() : '';
-    return Boolean(toLinked || toSubject || legacy);
+    return connectionRowHasNarrativeText(c);
 }
 
 /**
@@ -36,6 +32,7 @@ export function bioConnectionRowIsDisplayable(c) {
     const name = c.name != null ? String(c.name).trim() : '';
     if (!name) return false;
     if (bioConnectionRowHasNarrativeText(c)) return true;
+    if (Array.isArray(c.ranges) && c.ranges.length > 0) return true;
     if (c.showInCodex === true) return true;
     return false;
 }

@@ -123,4 +123,10 @@ export function refreshHeroBiographyDockPagination() {
 
     window.globeEventMarkerManager?.refreshEventMarkers?.(true);
     window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
+
+    window.dispatchEvent(
+        new CustomEvent('atlas-dock-timeline-page-changed', {
+            detail: { page: pagination?.getCurrentPage?.() || 1 },
+        }),
+    );
 }

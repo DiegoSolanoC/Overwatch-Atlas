@@ -148,6 +148,15 @@ class EventDataService {
         return normalizeBioArchiveConnections(raw);
     }
 
+    /** @param {unknown} raw */
+    normalizeBioConnectionRanges(raw) {
+        const R = typeof window !== 'undefined' ? window.BioArchiveConnectionRanges : null;
+        if (R && typeof R.normalizeBioConnectionRanges === 'function') {
+            return R.normalizeBioConnectionRanges(raw);
+        }
+        return Array.isArray(raw) ? raw : [];
+    }
+
     refreshBioArchivesFromCodexDiskWrite(archivesTouched) {
         return refreshBioArchivesFromCodexDiskWrite(this, archivesTouched);
     }

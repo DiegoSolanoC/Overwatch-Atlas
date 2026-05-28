@@ -41,6 +41,12 @@ import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/Codex
 import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { DOUBLE_RIGHT_MS } from './canvasConstants.js';
 import { ensureCodexTargetedArchiveCache } from '../../codex-controls-ui/stage/codexTargetedSelectionAllowlist.js';
+import {
+    debugCodexTimelineGate,
+    getCodexTimelineGateDebugSnapshot,
+    initCodexBioConnectionDockTimelineListener,
+    refreshCodexBioConnectionTimelineIndex,
+} from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 
 export function initCodexCanvas(rootElement) {
     destroyCodexCanvas();
@@ -131,6 +137,7 @@ export function initCodexCanvas(rootElement) {
         getPacketStrokeRange: api.codexEffectivePacketStrokeRange,
         codexNodeIsJunctionWaypoint: api.codexNodeIsJunctionWaypoint,
         edgeCordShowsYellow: api.edgeCordShowsYellow,
+        edgeCordPacketsEnabled: api.edgeCordPacketsEnabled,
         samplePacketTailNodeIds: api.samplePacketTailNodeIds,
         tryBuildPacketWorldPoints: api.tryBuildPacketWorldPoints,
         codexNodeElById: api.codexNodeElById,
@@ -256,10 +263,35 @@ export function initCodexCanvas(rootElement) {
     };
     window.addEventListener('resize', s.onWindowResizeRedraw);
 
+    const applyCodexTimelineGateFromDock = () => {
+        if (!s.root) return;
+        void refreshCodexBioConnectionTimelineIndex().then(() => {
+            s.codexSkipAllEdgeRedraws = false;
+            s.codexSkipEdgeRedraw = false;
+            redrawCodexEdges({ force: true });
+        });
+    };
+
+    s.teardownCodexBioConnectionDockTimeline = initCodexBioConnectionDockTimelineListener(
+        () => ({ nodes: s.codexAllNodes, edges: s.codexEdges }),
+        applyCodexTimelineGateFromDock,
+    );
+
+    if (typeof window !== 'undefined') {
+        window.__codexApplyTimelineGateFromDock = applyCodexTimelineGateFromDock;
+        window.CodexTimelineGate = {
+            debug: () => debugCodexTimelineGate(s.codexAllNodes),
+            snapshot: getCodexTimelineGateDebugSnapshot,
+            refresh: () => refreshCodexBioConnectionTimelineIndex(),
+        };
+    }
+
     api.ensureCodexToolbar();
     return (async () => {
         await api.yieldCodexBrowserPaint();
         await api.loadCodexState();
+        await refreshCodexBioConnectionTimelineIndex();
+        redrawCodexEdges({ force: true });
         ensureCodexTargetedArchiveCache().catch(() => {});
     })();
 }
@@ -302,6 +334,14 @@ export function destroyCodexCanvas() {
     if (s.onWindowResizeRedraw) {
         window.removeEventListener('resize', s.onWindowResizeRedraw);
         s.onWindowResizeRedraw = null;
+    }
+    if (typeof s.teardownCodexBioConnectionDockTimeline === 'function') {
+        s.teardownCodexBioConnectionDockTimeline();
+        s.teardownCodexBioConnectionDockTimeline = null;
+    }
+    if (typeof window !== 'undefined') {
+        if (window.__codexApplyTimelineGateFromDock) delete window.__codexApplyTimelineGateFromDock;
+        if (window.CodexTimelineGate) delete window.CodexTimelineGate;
     }
     api.clearCodexEventThumbnailFilterHover();
     s.root = null;

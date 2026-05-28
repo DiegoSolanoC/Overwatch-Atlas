@@ -154,6 +154,10 @@
 
     function bioConnectionRowHasNarrativeText(c) {
         if (!c) return false;
+        var R = typeof window !== 'undefined' ? window.BioArchiveConnectionRanges : null;
+        if (R && typeof R.connectionRowHasNarrativeText === 'function') {
+            return R.connectionRowHasNarrativeText(c);
+        }
         var d = directionalTextsFromRow(c);
         return Boolean(d.toLinked || d.toSubject);
     }
@@ -252,6 +256,28 @@
    * @param {string} subjectName
    * @param {{ copyShowInCodex?: boolean }} [options]
    */
+    function mirrorBioConnectionRangeRow(range) {
+        var R = typeof window !== 'undefined' ? window.BioArchiveConnectionRanges : null;
+        if (R && typeof R.mirrorBioConnectionRange === 'function') {
+            return R.mirrorBioConnectionRange(range);
+        }
+        var startEvent = range && range.startEvent != null ? String(range.startEvent).trim() : '';
+        var endEvent = range && range.endEvent != null ? String(range.endEvent).trim() : '';
+        var out = {
+            startEvent: startEvent,
+            reasoningSubjectToLinked:
+                range && range.reasoningLinkedToSubject != null
+                    ? String(range.reasoningLinkedToSubject).trim()
+                    : '',
+            reasoningLinkedToSubject:
+                range && range.reasoningSubjectToLinked != null
+                    ? String(range.reasoningSubjectToLinked).trim()
+                    : ''
+        };
+        if (endEvent) out.endEvent = endEvent;
+        return out;
+    }
+
     function buildMirrorRow(c, subjectKind, subjectName, options) {
         var lk = normalizeConnKind(c.kind);
         var dir = directionalTextsFromRow(c);
@@ -266,6 +292,13 @@
             reasoningLinkedToSubject: dir.toLinked,
             thisEntryLane: laneMirror
         };
+        if (Array.isArray(c.ranges) && c.ranges.length) {
+            mirror.ranges = c.ranges.map(mirrorBioConnectionRangeRow);
+            var R = typeof window !== 'undefined' ? window.BioArchiveConnectionRanges : null;
+            if (R && typeof R.syncLegacyReasoningFieldsFromRanges === 'function') {
+                R.syncLegacyReasoningFieldsFromRanges(mirror);
+            }
+        }
         if (options && options.copyShowInCodex === true && c.showInCodex === true) {
             mirror.showInCodex = true;
         }
@@ -466,6 +499,7 @@
             var name = c.name != null ? String(c.name).trim() : '';
             if (!name) return false;
             if (bioConnectionRowHasNarrativeText(c)) return true;
+            if (Array.isArray(c.ranges) && c.ranges.length) return true;
             return c.showInCodex === true;
         },
         resolveBioArchiveEventIndex: resolveBioArchiveEventIndex,

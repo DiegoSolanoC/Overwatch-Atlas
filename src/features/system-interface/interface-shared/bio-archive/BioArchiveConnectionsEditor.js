@@ -1,6 +1,7 @@
 /**
  * Multi-row editor for Heroes / Factions / NPCs archive "connections":
- * Three blocks (hero / faction / NPC); each row is this entry | relationship text | linked name (no type dropdown).
+ * Three blocks (hero / faction / NPC); each row is this entry | relationship (or story ranges) | linked name.
+ * Top-level relationship fields are hidden when the row has story event ranges (wording lives on each range).
  * Mid hints: (subject) is x of (linked) / (linked) is x of (subject), updated as the linked name changes.
  * thisEntryLane A = this entry on the left of the slide, B = on the right (them fills the other side).
  * Faction ↔ hero|npc: one-way descriptor from faction toward the other; faction is always slide A (forced lane).
@@ -102,6 +103,316 @@
      * @param {string} subjectDisplay
      * @param {string} linkedName
      */
+    function storyEventAutocompleteApi() {
+        return window.HeroBiographyStoryEventAutocomplete || null;
+    }
+
+    function canonicalStoryEventName(value) {
+        var raw = String(value || '').trim();
+        if (!raw) return '';
+        var api = storyEventAutocompleteApi();
+        if (api && typeof api.resolveCanonicalStoryEventName === 'function') {
+            return api.resolveCanonicalStoryEventName(raw) || raw;
+        }
+        return raw;
+    }
+
+    function wireBioConnStoryEventInput(input) {
+        if (!input) return;
+        var api = storyEventAutocompleteApi();
+        if (api && typeof api.wireStoryEventNameAutocomplete === 'function') {
+            api.wireStoryEventNameAutocomplete(input);
+            return;
+        }
+        if (input.dataset.bioConnStoryEventWirePending === '1') return;
+        input.dataset.bioConnStoryEventWirePending = '1';
+        requestAnimationFrame(function () {
+            delete input.dataset.bioConnStoryEventWirePending;
+            wireBioConnStoryEventInput(input);
+        });
+    }
+
+    function refreshBioConnRangeHints(row, subjectDisplay, linkedName) {
+        if (!row) return;
+        var items = row.querySelectorAll('[data-bio-conn-range-item]');
+        for (var i = 0; i < items.length; i += 1) {
+            applyBioConnRelationHints(items[i], subjectDisplay, linkedName);
+        }
+    }
+
+    /**
+     * @param {HTMLElement} listEl
+     * @param {object} rangeData
+     * @param {{ factionMixed: boolean, subjectKind: string }} opts
+     */
+    function appendConnectionRangeRow(listEl, rangeData, opts) {
+        var data = rangeData || {};
+        var factionMixed = !!opts.factionMixed;
+        var subjK = normalizeConnKind(opts.subjectKind || 'hero');
+
+        var item = document.createElement('div');
+        item.className = 'event-slide-bio-conn-range';
+        item.dataset.bioConnRangeItem = '1';
+
+        var eventsRow = document.createElement('div');
+        eventsRow.className = 'event-slide-bio-conn-range__events';
+
+        var startPair = document.createElement('div');
+        startPair.className = 'event-slide-bio-conn-range__event-field';
+        var startLab = document.createElement('span');
+        startLab.className = 'event-slide-bio-conn-range__event-label';
+        startLab.textContent = 'From event';
+        var startWrap = document.createElement('div');
+        startWrap.className = 'event-slide-bio-conn-range__event-input-wrap';
+        var startIn = document.createElement('input');
+        startIn.type = 'text';
+        startIn.spellcheck = false;
+        startIn.autocomplete = 'off';
+        startIn.placeholder = 'Story event name (autocomplete)';
+        startIn.className = 'event-slide-inline-editor__input event-slide-story-event-input';
+        startIn.dataset.role = 'bio-conn-range-start';
+        if (data.startEvent) startIn.value = data.startEvent;
+        startWrap.appendChild(startIn);
+        startPair.appendChild(startLab);
+        startPair.appendChild(startWrap);
+        wireBioConnStoryEventInput(startIn);
+
+        var sep = document.createElement('span');
+        sep.className = 'event-slide-bio-conn-range__event-sep';
+        sep.setAttribute('aria-hidden', 'true');
+        sep.textContent = '→';
+
+        var endPair = document.createElement('div');
+        endPair.className = 'event-slide-bio-conn-range__event-field';
+        var endLab = document.createElement('span');
+        endLab.className = 'event-slide-bio-conn-range__event-label';
+        endLab.textContent = 'Until (optional)';
+        var endWrap = document.createElement('div');
+        endWrap.className = 'event-slide-bio-conn-range__event-input-wrap';
+        var endIn = document.createElement('input');
+        endIn.type = 'text';
+        endIn.spellcheck = false;
+        endIn.autocomplete = 'off';
+        endIn.placeholder = 'Leave empty if still active (autocomplete)';
+        endIn.className = 'event-slide-inline-editor__input event-slide-story-event-input';
+        endIn.dataset.role = 'bio-conn-range-end';
+        if (data.endEvent) endIn.value = data.endEvent;
+        endWrap.appendChild(endIn);
+        endPair.appendChild(endLab);
+        endPair.appendChild(endWrap);
+        wireBioConnStoryEventInput(endIn);
+
+        eventsRow.appendChild(startPair);
+        eventsRow.appendChild(sep);
+        eventsRow.appendChild(endPair);
+
+        var reasonBlock = document.createElement('div');
+        reasonBlock.className = 'event-slide-bio-conn-range__reasons';
+
+        var hintOut = document.createElement('div');
+        hintOut.className = 'event-slide-bio-conn-row__mid-hint';
+        hintOut.dataset.role = 'bio-conn-hint-out';
+
+        var reasonOut = document.createElement('input');
+        reasonOut.className = 'event-slide-inline-editor__input';
+        reasonOut.type = 'text';
+        reasonOut.spellcheck = true;
+        reasonOut.placeholder = factionMixed ? 'e.g. commands, opposes' : 'e.g. mentor to';
+        reasonOut.dataset.role = 'bio-conn-range-reason-out';
+
+        var hintIn = document.createElement('div');
+        hintIn.className = 'event-slide-bio-conn-row__mid-hint';
+        hintIn.dataset.role = 'bio-conn-hint-in';
+
+        var reasonIn = document.createElement('input');
+        reasonIn.className = 'event-slide-inline-editor__input';
+        reasonIn.type = 'text';
+        reasonIn.spellcheck = true;
+        reasonIn.placeholder = 'e.g. student of';
+        reasonIn.dataset.role = 'bio-conn-range-reason-in';
+
+        var tOut =
+            data.reasoningSubjectToLinked != null ? String(data.reasoningSubjectToLinked).trim() : '';
+        var tIn =
+            data.reasoningLinkedToSubject != null ? String(data.reasoningLinkedToSubject).trim() : '';
+        var leg = data.reasoning != null ? String(data.reasoning).trim() : '';
+        if (!tOut && !tIn && leg) {
+            tOut = leg;
+            tIn = leg;
+        }
+
+        if (factionMixed) {
+            item.dataset.bioConnFactionMixed = '1';
+            var oneTxt = subjK === 'faction' ? tOut || tIn || leg : tIn || tOut || leg;
+            if (oneTxt) reasonOut.value = oneTxt;
+            reasonBlock.appendChild(hintOut);
+            reasonBlock.appendChild(reasonOut);
+        } else {
+            if (tOut) reasonOut.value = tOut;
+            if (tIn) reasonIn.value = tIn;
+            reasonBlock.appendChild(hintOut);
+            reasonBlock.appendChild(reasonOut);
+            reasonBlock.appendChild(hintIn);
+            reasonBlock.appendChild(reasonIn);
+        }
+
+        var remRange = document.createElement('button');
+        remRange.type = 'button';
+        remRange.className = 'event-slide-inline-editor__small-btn event-slide-bio-conn-range__remove';
+        remRange.textContent = '−';
+        remRange.setAttribute('aria-label', 'Remove this range');
+        remRange.addEventListener('click', function () {
+            var parentRow = item.closest('.event-slide-bio-conn-row');
+            item.remove();
+            if (parentRow) syncRowLegacyRelationshipVisibility(parentRow);
+        });
+
+        item.appendChild(eventsRow);
+        item.appendChild(reasonBlock);
+        item.appendChild(remRange);
+        listEl.appendChild(item);
+    }
+
+    /**
+     * @param {HTMLElement} row
+     * @returns {boolean}
+     */
+    function connectionRowHasRangeItems(row) {
+        if (!row) return false;
+        var listEl = row.querySelector('[data-bio-conn-ranges-list]');
+        if (!listEl) return false;
+        return listEl.querySelectorAll('[data-bio-conn-range-item]').length > 0;
+    }
+
+    /**
+     * When story ranges exist, relationship text lives on each range — hide duplicate top fields.
+     * @param {HTMLElement} row
+     */
+    function syncRowLegacyRelationshipVisibility(row) {
+        if (!row) return;
+        var usesRanges = connectionRowHasRangeItems(row);
+        var legacy = row.querySelector('[data-bio-conn-legacy-reasoning]');
+        var note = row.querySelector('[data-bio-conn-ranges-only-note]');
+        var midHead = row.querySelector('[data-bio-conn-mid-relationship-head]');
+        if (legacy) legacy.hidden = usesRanges;
+        if (note) note.hidden = !usesRanges;
+        if (midHead) midHead.hidden = usesRanges;
+    }
+
+    /**
+     * @param {HTMLElement} row
+     * @param {object} data
+     * @param {{ factionMixed: boolean, subjectKind: string, subjectDisplay: string }} opts
+     */
+    function buildConnectionRangesPanel(row, data, opts) {
+        var panel = document.createElement('div');
+        panel.className = 'event-slide-bio-conn-row__ranges';
+
+        var head = document.createElement('div');
+        head.className = 'event-slide-bio-conn-row__ranges-head';
+
+        var title = document.createElement('span');
+        title.className = 'event-slide-bio-conn-row__ranges-title';
+        title.textContent = 'Story event ranges';
+
+        var addBtn = document.createElement('button');
+        addBtn.type = 'button';
+        addBtn.className = 'event-slide-inline-editor__small-btn';
+        addBtn.textContent = '+ Add range';
+        addBtn.setAttribute('aria-label', 'Add story event range for this connection');
+
+        var listEl = document.createElement('div');
+        listEl.className = 'event-slide-bio-conn-ranges__list';
+        listEl.dataset.bioConnRangesList = '1';
+
+        var hint = document.createElement('p');
+        hint.className = 'event-slide-bio-conn-row__ranges-hint';
+        hint.textContent =
+            'Each range needs a start event and relationship text for that period. '
+            + 'Leave “Until” empty if the wording still applies through the latest story entry. '
+            + 'Use multiple ranges when the link stays but the relationship text changes.';
+
+        addBtn.addEventListener('click', function () {
+            appendConnectionRangeRow(listEl, {}, opts);
+            syncRowLegacyRelationshipVisibility(row);
+            var linkedIn = row.querySelector('[data-role="bio-conn-name"]');
+            refreshBioConnRangeHints(
+                row,
+                opts.subjectDisplay,
+                linkedIn && linkedIn.value ? linkedIn.value : '',
+            );
+        });
+
+        head.appendChild(title);
+        head.appendChild(addBtn);
+        panel.appendChild(head);
+        panel.appendChild(hint);
+        panel.appendChild(listEl);
+
+        var ranges = Array.isArray(data.ranges) ? data.ranges : [];
+        for (var ri = 0; ri < ranges.length; ri += 1) {
+            appendConnectionRangeRow(listEl, ranges[ri], opts);
+        }
+
+        return panel;
+    }
+
+  /**
+     * @param {HTMLElement} row
+     * @param {boolean} factionMixed
+     * @param {string} skRoot
+     * @param {string} fk
+     * @returns {object[]}
+     */
+    function collectConnectionRangesFromRow(row, factionMixed, skRoot, fk) {
+        var listEl = row.querySelector('[data-bio-conn-ranges-list]');
+        if (!listEl) return [];
+
+        var items = listEl.querySelectorAll('[data-bio-conn-range-item]');
+        var ranges = [];
+
+        for (var i = 0; i < items.length; i += 1) {
+            var item = items[i];
+            var startEl = item.querySelector('[data-role="bio-conn-range-start"]');
+            var endEl = item.querySelector('[data-role="bio-conn-range-end"]');
+            var rout = item.querySelector('[data-role="bio-conn-range-reason-out"]');
+            var rin = item.querySelector('[data-role="bio-conn-range-reason-in"]');
+
+            var startEvent = canonicalStoryEventName(startEl && startEl.value ? startEl.value : '');
+            if (!startEvent) continue;
+
+            var endEvent = canonicalStoryEventName(endEl && endEl.value ? endEl.value : '');
+            var rangeMixed = item.dataset.bioConnFactionMixed === '1';
+            var oneTxt = (rout && rout.value ? rout.value : '').trim();
+            var outTxt = oneTxt;
+            var inTxt = (rin && rin.value ? rin.value : '').trim();
+
+            if (rangeMixed && isFactionHeroNpcMixedEditor(skRoot, fk)) {
+                if (skRoot === 'faction') {
+                    outTxt = oneTxt;
+                    inTxt = '';
+                } else {
+                    outTxt = '';
+                    inTxt = oneTxt;
+                }
+            }
+
+            var entry = {
+                startEvent: startEvent,
+                reasoningSubjectToLinked: outTxt,
+                reasoningLinkedToSubject: inTxt,
+            };
+            if (endEvent) entry.endEvent = endEvent;
+            ranges.push(entry);
+        }
+
+        var norm = window.BioArchiveConnectionRanges;
+        if (norm && typeof norm.normalizeBioConnectionRanges === 'function') {
+            return norm.normalizeBioConnectionRanges(ranges);
+        }
+        return ranges;
+    }
+
     function applyBioConnRelationHints(row, subjectDisplay, linkedName) {
         var ho = row.querySelector('[data-role="bio-conn-hint-out"]');
         var hi = row.querySelector('[data-role="bio-conn-hint-in"]');
@@ -258,6 +569,7 @@
         mid.className = 'event-slide-bio-conn-row__mid';
         const midHead = document.createElement('div');
         midHead.className = 'event-slide-bio-conn-row__panel-head';
+        midHead.dataset.bioConnMidRelationshipHead = '1';
         midHead.textContent = factionMixed ? 'Relationship (one way)' : 'Relationship text';
 
         let subjToLinked =
@@ -307,6 +619,23 @@
         reasonIn.dataset.role = 'bio-conn-reason-in';
         if (!factionMixed && linkedToSubj) reasonIn.value = linkedToSubj;
 
+        const legacyWrap = document.createElement('div');
+        legacyWrap.className = 'event-slide-bio-conn-row__legacy-reasoning';
+        legacyWrap.dataset.bioConnLegacyReasoning = '1';
+        legacyWrap.appendChild(hintOut);
+        legacyWrap.appendChild(reasonOut);
+        if (!factionMixed) {
+            legacyWrap.appendChild(hintIn);
+            legacyWrap.appendChild(reasonIn);
+        }
+
+        const rangesOnlyNote = document.createElement('p');
+        rangesOnlyNote.className = 'event-slide-bio-conn-row__ranges-only-note';
+        rangesOnlyNote.dataset.bioConnRangesOnlyNote = '1';
+        rangesOnlyNote.hidden = true;
+        rangesOnlyNote.textContent =
+            'Relationship wording is set in each story range below. Remove all ranges to edit a single line here.';
+
         const showCodexCb = document.createElement('input');
         showCodexCb.type = 'checkbox';
         showCodexCb.id = rowUid + '-show-codex';
@@ -319,12 +648,8 @@
         if (data.showInCodex === true) showCodexCb.checked = true;
 
         mid.appendChild(midHead);
-        mid.appendChild(hintOut);
-        mid.appendChild(reasonOut);
-        if (!factionMixed) {
-            mid.appendChild(hintIn);
-            mid.appendChild(reasonIn);
-        }
+        mid.appendChild(legacyWrap);
+        mid.appendChild(rangesOnlyNote);
         mid.appendChild(showCodexLab);
 
         const themPanel = document.createElement('div');
@@ -358,18 +683,29 @@
 
         function onLinkedNameChange() {
             applyBioConnRelationHints(row, subjectDisplay, entityIn.value);
+            refreshBioConnRangeHints(row, subjectDisplay, entityIn.value);
         }
         entityIn.addEventListener('input', onLinkedNameChange);
         entityIn.addEventListener('change', onLinkedNameChange);
 
         applyBioConnRelationHints(row, subjectDisplay, entityIn.value);
 
+        const rangesPanel = buildConnectionRangesPanel(row, data, {
+            factionMixed: factionMixed,
+            subjectKind: subjK,
+            subjectDisplay: subjectDisplay,
+        });
+        refreshBioConnRangeHints(row, subjectDisplay, entityIn.value);
+
         row.appendChild(reorder);
         row.appendChild(thisPanel);
         row.appendChild(mid);
         row.appendChild(themPanel);
         row.appendChild(rem);
+        row.appendChild(rangesPanel);
         container.appendChild(row);
+
+        syncRowLegacyRelationshipVisibility(row);
 
         setupEntityAutocomplete(entityIn, fk);
     }
@@ -483,43 +819,74 @@
                         : laneEl && String(laneEl.value).toUpperCase() === 'B'
                           ? 'B'
                           : 'A';
+                var entityName = sanitizeConnectionEntityName(n && n.value ? n.value : '');
+                var collectedRanges = collectConnectionRangesFromRow(
+                    row,
+                    factionMixed,
+                    skRoot,
+                    fk,
+                );
+
+                if (collectedRanges.length) {
+                    var rangedOut = {
+                        kind: fk,
+                        name: entityName,
+                        ranges: collectedRanges,
+                        thisEntryLane: thisEntryLane,
+                    };
+                    if (factionMixed && isFactionHeroNpcMixedEditor(skRoot, fk)) {
+                        rangedOut.thisEntryLane = skRoot === 'faction' ? 'A' : 'B';
+                    }
+                    if (showCodexEl && showCodexEl.checked) rangedOut.showInCodex = true;
+                    if (
+                        window.BioArchiveConnectionRanges
+                        && typeof window.BioArchiveConnectionRanges.syncLegacyReasoningFieldsFromRanges
+                            === 'function'
+                    ) {
+                        window.BioArchiveConnectionRanges.syncLegacyReasoningFieldsFromRanges(rangedOut);
+                    }
+                    return rangedOut;
+                }
+
                 var oneTxt = (rout && rout.value ? rout.value : '').trim();
                 var out;
                 if (factionMixed && isFactionHeroNpcMixedEditor(skRoot, fk)) {
                     if (skRoot === 'faction') {
                         out = {
                             kind: fk,
-                            name: sanitizeConnectionEntityName(n && n.value ? n.value : ''),
+                            name: entityName,
                             reasoningSubjectToLinked: oneTxt,
                             reasoningLinkedToSubject: '',
-                            thisEntryLane: 'A'
+                            thisEntryLane: 'A',
                         };
                     } else {
                         out = {
                             kind: fk,
-                            name: sanitizeConnectionEntityName(n && n.value ? n.value : ''),
+                            name: entityName,
                             reasoningSubjectToLinked: '',
                             reasoningLinkedToSubject: oneTxt,
-                            thisEntryLane: 'B'
+                            thisEntryLane: 'B',
                         };
                     }
                 } else {
                     out = {
                         kind: fk,
-                        name: sanitizeConnectionEntityName(n && n.value ? n.value : ''),
+                        name: entityName,
                         reasoningSubjectToLinked: oneTxt,
                         reasoningLinkedToSubject: (rin && rin.value ? rin.value : '').trim(),
-                        thisEntryLane: thisEntryLane
+                        thisEntryLane: thisEntryLane,
                     };
                 }
                 if (showCodexEl && showCodexEl.checked) out.showInCodex = true;
+
                 return out;
             })
             .filter(function (entry) {
                 return (
                     entry.name ||
                     entry.reasoningSubjectToLinked ||
-                    entry.reasoningLinkedToSubject
+                    entry.reasoningLinkedToSubject ||
+                    (Array.isArray(entry.ranges) && entry.ranges.length > 0)
                 );
             });
     }

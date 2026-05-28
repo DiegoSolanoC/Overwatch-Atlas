@@ -34,6 +34,8 @@ if (typeof window !== 'undefined') {
         importCodexJsonText: (...args) => api.importCodexLayoutFromJsonText(...args),
         syncCodexEdgesFromBioArchiveConnections,
         previewBioCodexArchiveLinkDiff,
+        getCodexAllNodes: () => s.codexAllNodes,
+        getCodexEdges: () => s.codexEdges,
         getBioArchiveCodexSnapshot() {
             const nodes = s.codexAllNodes;
             const edges = s.codexEdges;

@@ -4,8 +4,8 @@
  *
  * Source-of-truth order:
  *   GitHub Pages           → always file (clear localStorage if file is empty)
- *   Local without dev API  → prefer non-empty localStorage (edits would otherwise be lost)
- *   Local with dev API     → prefer file, fall back to localStorage, finally empty + warn
+ *   Local (any port)       → prefer non-empty localStorage so slide edits survive reload
+ *   Dev server (:8000)     → fall back to bundled JSON only when localStorage is empty, then seed LS
  *
  * Returned descriptor (`source`) is logged by callers; `shouldSync` is always false because
  * satellite archives don't drive the globe markers/dock.
@@ -81,8 +81,14 @@ export async function loadSatelliteArchive(dataService) {
     const localHasConnections =
         localOk &&
         parsedLocal.some((e) => Array.isArray(e?.connections) && e.connections.length > 0);
-    if (localOk && !dataService._canPersistTimelineJsonToRepo()) {
-        if (!localHasConnections && Array.isArray(fileEvents) && fileEvents.length > 0) {
+
+    if (localOk) {
+        if (
+            !dataService._canPersistTimelineJsonToRepo()
+            && !localHasConnections
+            && Array.isArray(fileEvents)
+            && fileEvents.length > 0
+        ) {
             dataService.events = fileEvents;
             dataService._normalizeSatelliteEventsInPlace();
             pruneSatellitePhantomConnectionsInPlace(dataService);
@@ -92,11 +98,15 @@ export async function loadSatelliteArchive(dataService) {
             );
             return { events: dataService.events, source: 'file', shouldSync: false };
         }
+
         dataService.events = parsedLocal;
         dataService._normalizeSatelliteEventsInPlace();
         pruneSatellitePhantomConnectionsInPlace(dataService);
+        const portNote = dataService._canPersistTimelineJsonToRepo()
+            ? ' (also written to src/data on Save when the dev API succeeds)'
+            : ' (dev file API not on this port)';
         dataService.updateStatus(
-            `EventDataService: Using localStorage for ${dataService.getArchiveSource()} (dev file API not on this port — edits kept locally)`,
+            `EventDataService: Using localStorage for ${dataService.getArchiveSource()}${portNote}`,
             'info'
         );
         return { events: dataService.events, source: 'localStorage', shouldSync: false };

@@ -1053,14 +1053,6 @@
         },
         {
           "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Sierra",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -1790,18 +1782,45 @@
         {
           "kind": "hero",
           "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningSubjectToLinked": "Wants to kill",
+          "reasoningLinkedToSubject": "Wants to stop",
           "thisEntryLane": "A",
-          "showInCodex": true
+          "showInCodex": true,
+          "ranges": [
+            {
+              "startEvent": "The Original Strike Team",
+              "reasoningSubjectToLinked": "Close Friends",
+              "reasoningLinkedToSubject": "Close Friends",
+              "endEvent": "The Zurich Attack"
+            },
+            {
+              "startEvent": "Old Soldiers",
+              "reasoningSubjectToLinked": "Wants to kill",
+              "reasoningLinkedToSubject": "Wants to stop"
+            }
+          ]
         },
         {
           "kind": "hero",
           "name": "Moira",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningSubjectToLinked": "Wants to kill",
+          "reasoningLinkedToSubject": "Saved his life",
           "thisEntryLane": "A",
-          "showInCodex": true
+          "showInCodex": true,
+          "ranges": [
+            {
+              "startEvent": "Blacklisted",
+              "reasoningSubjectToLinked": "Hired into Blackwatch",
+              "reasoningLinkedToSubject": "Joined Blackwatch",
+              "endEvent": "The Venice Incident"
+            },
+            {
+              "startEvent": "Code of Violence",
+              "reasoningSubjectToLinked": "Wants to kill",
+              "reasoningLinkedToSubject": "Saved his life",
+              "endEvent": "Reign of Talon"
+            }
+          ]
         },
         {
           "kind": "hero",
@@ -1820,44 +1839,52 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Emre",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
           "kind": "faction",
           "name": "Overwatch",
           "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningLinkedToSubject": "Member of the Strike Team",
           "thisEntryLane": "B",
-          "showInCodex": true
+          "showInCodex": true,
+          "ranges": [
+            {
+              "startEvent": "The Original Strike Team",
+              "reasoningSubjectToLinked": "",
+              "reasoningLinkedToSubject": "Member of the Strike Team",
+              "endEvent": "The Zurich Attack"
+            }
+          ]
         },
         {
           "kind": "faction",
           "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningLinkedToSubject": "Member of the Talon Council",
           "thisEntryLane": "B",
-          "showInCodex": true
+          "showInCodex": true,
+          "ranges": [
+            {
+              "startEvent": "Code of Violence",
+              "reasoningSubjectToLinked": "",
+              "reasoningLinkedToSubject": "Member of the Talon Council",
+              "endEvent": "Reign of Talon"
+            }
+          ]
         },
         {
           "kind": "faction",
           "name": "Blackwatch",
           "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningLinkedToSubject": "Director of Blackwatch",
           "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Shimada Clan",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
+          "showInCodex": true,
+          "ranges": [
+            {
+              "startEvent": "New Leadership",
+              "reasoningSubjectToLinked": "",
+              "reasoningLinkedToSubject": "Director of Blackwatch",
+              "endEvent": "The Zurich Attack"
+            }
+          ]
         },
         {
           "kind": "npc",
@@ -2615,10 +2642,22 @@
         {
           "kind": "hero",
           "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningSubjectToLinked": "Wants to stop",
+          "reasoningLinkedToSubject": "Wants to kill",
           "thisEntryLane": "A",
-          "showInCodex": true
+          "ranges": [
+            {
+              "startEvent": "The Original Strike Team",
+              "reasoningSubjectToLinked": "Close Friends",
+              "reasoningLinkedToSubject": "Close Friends",
+              "endEvent": "The Zurich Attack"
+            },
+            {
+              "startEvent": "Old Soldiers",
+              "reasoningSubjectToLinked": "Wants to stop",
+              "reasoningLinkedToSubject": "Wants to kill"
+            }
+          ]
         },
         {
           "kind": "hero",
@@ -2983,10 +3022,23 @@
         {
           "kind": "hero",
           "name": "Reaper",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
+          "reasoningSubjectToLinked": "Saved his life",
+          "reasoningLinkedToSubject": "Wants to kill",
           "thisEntryLane": "A",
-          "showInCodex": true
+          "ranges": [
+            {
+              "startEvent": "Blacklisted",
+              "reasoningSubjectToLinked": "Joined Blackwatch",
+              "reasoningLinkedToSubject": "Hired into Blackwatch",
+              "endEvent": "The Venice Incident"
+            },
+            {
+              "startEvent": "Code of Violence",
+              "reasoningSubjectToLinked": "Saved his life",
+              "reasoningLinkedToSubject": "Wants to kill",
+              "endEvent": "Reign of Talon"
+            }
+          ]
         }
       ],
       "heroRole": "Support",

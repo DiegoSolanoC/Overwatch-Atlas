@@ -1,8 +1,13 @@
+import {
+    connectionRowHasNarrativeText,
+    normalizeBioArchiveConnectionRow,
+} from '../../../interface-shared/bio-archive/bioArchiveConnectionRanges.js';
+
 /**
  * Normalization helpers for bio archives (Heroes / Factions / NPCs):
  *   - `relevantLocations`: array of `{ locationName, country, reasoning }`.
  *     Migrates legacy `string[]` (one "Place, Country" per line) and mixed object shapes.
- *   - `connections`: array of `{ kind, name, reasoningSubjectToLinked, reasoningLinkedToSubject, thisEntryLane, showInCodex? }`.
+ *   - `connections`: linked entity + optional `ranges[]` (`startEvent`, `endEvent?`, directional reasoning).
  *     Legacy single `reasoning` field is duplicated to both directions when the directional fields are absent.
  *   - `normalizeSatelliteArchiveEntry`: slim `{ name, description, ... }` shape used by every satellite entry.
  *     Heroes get `heroRole`/`heroSubRole`, factions get `factionType`.
@@ -107,44 +112,21 @@ function sanitizeBioConnectionEntityName(s) {
 
 /**
  * Bio archive `connections`: linked hero/faction/npc + relationship text each direction.
- * Legacy single `reasoning` is shown both ways when the directional fields are absent.
+ * Optional `ranges[]` — story-event spans with per-period reasoning (see bioArchiveConnectionRanges.js).
  * @param {unknown} raw
  */
 export function normalizeBioArchiveConnections(raw) {
     if (!Array.isArray(raw)) return [];
     return raw
-        .map((item) => {
-            let kind = String(item?.kind || '').toLowerCase();
-            if (kind === 'character') kind = 'hero';
-            if (kind !== 'faction' && kind !== 'npc') kind = 'hero';
-            const name = sanitizeBioConnectionEntityName(item?.name);
-            let reasoningSubjectToLinked =
-                item?.reasoningSubjectToLinked != null ? String(item.reasoningSubjectToLinked).trim() : '';
-            let reasoningLinkedToSubject =
-                item?.reasoningLinkedToSubject != null ? String(item.reasoningLinkedToSubject).trim() : '';
-            const legacy = item?.reasoning != null ? String(item.reasoning).trim() : '';
-            if (!reasoningSubjectToLinked && !reasoningLinkedToSubject && legacy) {
-                reasoningSubjectToLinked = legacy;
-                reasoningLinkedToSubject = legacy;
-            }
-            const laneRaw = String(item?.thisEntryLane ?? '').trim().toUpperCase();
-            const thisEntryLane = laneRaw === 'B' ? 'B' : 'A';
-            const showInCodex = item?.showInCodex === true;
-            const out = {
-                kind,
-                name,
-                reasoningSubjectToLinked,
-                reasoningLinkedToSubject,
-                thisEntryLane
-            };
-            if (showInCodex) out.showInCodex = true;
-            return out;
-        })
+        .map((item) =>
+            normalizeBioArchiveConnectionRow(item, sanitizeBioConnectionEntityName),
+        )
         .filter(
             (c) =>
-                c.name ||
-                c.reasoningSubjectToLinked ||
-                c.reasoningLinkedToSubject
+                c
+                && (c.name
+                    || connectionRowHasNarrativeText(c)
+                    || (Array.isArray(c.ranges) && c.ranges.length > 0)),
         );
 }
 

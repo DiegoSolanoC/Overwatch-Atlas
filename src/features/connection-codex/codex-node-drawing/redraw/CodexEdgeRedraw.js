@@ -55,7 +55,7 @@ let edgeRedrawScheduleTimer = 0;
  * @property {(edgePolys: { edge: object, pts: { x: number, y: number }[] }[]) => void} syncCodexCordPacketState
  * @property {() => void} codexStopCordAnimRafOnly
  * @property {() => void} ensureCodexCordAnimationLoop
- * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'} edgeCordAppearance
+ * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'grey'} edgeCordAppearance
  * @property {(p0: object, p1: object) => number|null} cordSegmentDegreesLabel
  * @property {(p0: object, p1: object, tolDeg?: number) => boolean} cordSegmentWithinOctilinearToleranceDegrees
  * @property {() => boolean} [getTargetedSelectionActive]
@@ -143,7 +143,7 @@ export function redrawCodexEdges(opts = {}) {
         console.log('[Codex Redraw] Skip flags - skipAll=' + skipAll + ', skipEdge=' + skipEdge);
     }
 
-    if (skipAll) {
+    if (skipAll && !forceRedraw) {
         const isViewModeInitialRender = mode === 'view' && !viewInitialDone;
         if (!isViewModeInitialRender) {
             if (perf) {
@@ -158,7 +158,7 @@ export function redrawCodexEdges(opts = {}) {
         }
     }
 
-    if (skipEdge && !(mode === 'view' && !viewInitialDone)) {
+    if (skipEdge && !forceRedraw && !(mode === 'view' && !viewInitialDone)) {
         if (perf) {
             console.log('[Codex Redraw] Skipping edge redraw (skip flag set)');
             console.log('[Codex Perf] Skipping edge redraw (skip flag set)');
@@ -301,12 +301,16 @@ export function redrawCodexEdges(opts = {}) {
             ? '#f87171'
             : appearance === 'yellow'
                 ? '#fbbf24'
-                : visualPrefs.cordColor;
+                : appearance === 'grey'
+                    ? 'rgba(100, 108, 128, 0.55)'
+                    : visualPrefs.cordColor;
         const filterUrl = appearance === 'red'
             ? 'url(#codex-edge-red-glow)'
             : appearance === 'yellow'
                 ? 'url(#codex-edge-yellow-glow)'
-                : 'url(#codex-edge-violet-glow)';
+                : appearance === 'grey'
+                    ? 'none'
+                    : 'url(#codex-edge-violet-glow)';
         for (let seg = 0; seg < pts.length - 1; seg++) {
             const p0 = pts[seg];
             const p1 = pts[seg + 1];
@@ -318,7 +322,10 @@ export function redrawCodexEdges(opts = {}) {
                 stroke: strokeColor,
                 strokeWidth: visualPrefs.cordThickness,
                 filterUrl,
-                lineClass: 'codex-edge-segment',
+                lineClass:
+                    appearance === 'grey'
+                        ? 'codex-edge-segment codex-edge-segment--timeline-dormant'
+                        : 'codex-edge-segment',
                 edgeFromId: fromId,
                 edgeToId: toId
             });
