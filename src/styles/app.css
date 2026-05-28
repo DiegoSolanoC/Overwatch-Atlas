@@ -14,7 +14,7 @@
 
 /* Interactive Worldview + Connection Codex */
 @import url('features/worldview/globe.css?v=54');
-@import url('features/connection-codex/codex.css?v=1');
+@import url('features/connection-codex/codex.css?v=2');
 @import url('features/worldview/map-2d-lite.css?v=13');
 
 /* Color palettes */
@@ -33,7 +33,7 @@
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=62');
-@import url('features/hero-biography/hero-biography-mode.css?v=36');
+@import url('features/hero-biography/hero-biography-mode.css?v=38');
 
 /* Event system */
 @import url('features/event-system/variants.css?v=9');

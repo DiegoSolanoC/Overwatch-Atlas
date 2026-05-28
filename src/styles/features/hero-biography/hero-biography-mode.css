@@ -25,9 +25,95 @@
     }
 
     body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-mode__main,
-    body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-hero-filters {
+    body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-hero-filters,
+    body:has(#atlasHeroBiographyHost):has(.event-image-overlay.open) .hero-biography-mode__archive-description {
         visibility: hidden;
         pointer-events: none;
+    }
+}
+
+/* Heroes archive description — left stage column (not the event slide panel) */
+.hero-biography-mode__archive-description {
+    position: absolute;
+    left: clamp(28px, 4vw, 56px);
+    top: clamp(4.5rem, 10vh, 7.5rem);
+    bottom: calc(var(--hero-bio-chip-dock-gap, 48px) + clamp(100px, 14vh, 160px));
+    width: min(520px, 44vw);
+    max-width: min(560px, 52ch);
+    z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: clamp(14px, 1.6vh, 20px) clamp(16px, 1.8vw, 22px);
+    border-style: solid;
+    border-width: 1px 1px 1px 3px;
+    border-color: rgba(255, 255, 255, 0.14);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.38);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.42);
+    pointer-events: auto;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition:
+        opacity 0.32s ease,
+        visibility 0.32s ease,
+        transform 0.32s ease;
+}
+
+.hero-biography-mode__archive-description.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.hero-biography-mode__archive-description-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(0.92rem, 1.35vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.hero-biography-mode__archive-description-empty {
+    margin: 0;
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.hero-biography-mode__archive-description-empty[hidden] {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .hero-biography-mode__archive-description {
+        left: clamp(20px, 3.2vw, 36px);
+        width: min(400px, 48vw);
+        max-width: min(440px, 46ch);
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-biography-mode__archive-description {
+        left: 16px;
+        right: 16px;
+        width: auto;
+        max-width: none;
+        bottom: auto;
+        max-height: min(30vh, 240px);
     }
 }
 

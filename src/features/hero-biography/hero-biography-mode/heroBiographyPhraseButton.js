@@ -8,8 +8,10 @@ import {
     loadHeroPhrasesMap,
 } from './loadHeroPhrases.js';
 import {
+    cancelHeroSelectionPhraseSchedule,
     isHeroBiographyPhrasePlaying,
     playRandomHeroBiographyPhrase,
+    scheduleHeroSelectionPhrase,
     stopHeroBiographyPhrase,
 } from './heroBiographyPhrasePlayer.js';
 
@@ -103,6 +105,8 @@ export function initHeroBiographyPhraseButton(controlsRow) {
         });
     });
 
+    window.addEventListener('heroBiographyPhrasePlaybackChange', updatePhraseButtonState);
+
     controlsRow.appendChild(phraseBtn);
 }
 
@@ -110,6 +114,7 @@ export function initHeroBiographyPhraseButton(controlsRow) {
  * @param {string | null} heroFilterKey
  */
 export async function setHeroBiographyPhraseButtonHero(heroFilterKey) {
+    cancelHeroSelectionPhraseSchedule();
     activeHeroId = heroFilterKey ? String(heroFilterKey).trim() : null;
     activePhraseFiles = [];
 
@@ -128,9 +133,12 @@ export async function setHeroBiographyPhraseButtonHero(heroFilterKey) {
     }
 
     updatePhraseButtonState();
+    scheduleHeroSelectionPhrase(activeHeroId, activePhraseFiles);
 }
 
 export function destroyHeroBiographyPhraseButton() {
+    window.removeEventListener('heroBiographyPhrasePlaybackChange', updatePhraseButtonState);
+    cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     phraseBtn?.remove();
     phraseBtn = null;

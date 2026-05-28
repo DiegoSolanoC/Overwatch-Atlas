@@ -257,7 +257,8 @@ function updateCodexToolbar() {
         }
     }
 
-    api.ensureCodexToolbarDebugToggle(s.codexToolbarEl);
+    api.ensureCodexStageControls();
+    api.syncCodexStageControlInputs();
     api.ensureCodexVisualPrefsPanel();
     api.syncCodexVisualToolbarFromPrefs();
     api.syncCodexDebugUiClass();
@@ -428,6 +429,7 @@ function ensureCodexToolbar() {
     api.ensureCodexToolbarScaleInput(bar);
     api.ensureCodexToolbarImportExportRow(bar);
     api.ensureCodexToolbarBioSyncButton(bar);
+    api.ensureCodexStageControls();
     api.ensureCodexVisualPrefsPanel();
     updateCodexToolbar();
 }

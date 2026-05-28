@@ -1,0 +1,1396 @@
+{
+  "v": 4,
+  "nodes": [
+    {
+      "id": "cn-1776187918958-thq2voxg",
+      "kind": "faction",
+      "factionFilename": "00Overwatch",
+      "factionDisplay": "Overwatch",
+      "x": 6953.66,
+      "y": 5813.75,
+      "scale": 5,
+      "bgColor": "#021887"
+    },
+    {
+      "id": "cn-1776187942174-ajc0gk24",
+      "kind": "faction",
+      "factionFilename": "33Talon Empire",
+      "factionDisplay": "Talon Empire",
+      "x": 7627.304946019323,
+      "y": 5828.44,
+      "scale": 5,
+      "bgColor": "#000000"
+    },
+    {
+      "id": "cn-1776188289883-mispvcjc",
+      "kind": "faction",
+      "factionFilename": "26Null Sector",
+      "factionDisplay": "Null Sector",
+      "x": 8305.27,
+      "y": 5828.44,
+      "scale": 5,
+      "bgColor": "#5c1d6e"
+    },
+    {
+      "id": "cn-1776188356901-o2jntomc",
+      "kind": "faction",
+      "factionFilename": "01Blackwatch",
+      "factionDisplay": "Blackwatch",
+      "x": 6914.595433924129,
+      "y": 6860.87566075871,
+      "scale": 2,
+      "bgColor": "#1d2125"
+    },
+    {
+      "id": "cn-1776188364565-922eb7sp",
+      "kind": "faction",
+      "factionFilename": "02Ecopoints",
+      "factionDisplay": "Ecopoints",
+      "x": 7297.484409692607,
+      "y": 6651.838733453273,
+      "scale": 2,
+      "bgColor": "#021887"
+    },
+    {
+      "id": "cn-1776188382194-qbacqou6",
+      "kind": "faction",
+      "factionFilename": "34Search & Rescue",
+      "factionDisplay": "Search & Rescue",
+      "x": 7047.413307269455,
+      "y": 6641.220938299575,
+      "scale": 2,
+      "bgColor": "#021887"
+    },
+    {
+      "id": "cn-1776188391402-t41oq8ia",
+      "kind": "faction",
+      "factionFilename": "35IJC",
+      "factionDisplay": "IJC",
+      "x": 7172.554487884239,
+      "y": 6865.675512115759,
+      "scale": 2,
+      "bgColor": "#899fbd"
+    },
+    {
+      "id": "cn-1776188526366-hpc13j68",
+      "kind": "faction",
+      "factionFilename": "25Shambali Order",
+      "factionDisplay": "Shambali Order",
+      "x": 9051.43723610361,
+      "y": 6517.919894363452,
+      "scale": 4,
+      "bgColor": "#d99012"
+    },
+    {
+      "id": "cn-1776188555343-jwbghswm",
+      "kind": "faction",
+      "factionFilename": "36The Sombra Collective",
+      "factionDisplay": "The Sombra Collective",
+      "x": 8006.336602284313,
+      "y": 6523.86,
+      "scale": 4,
+      "bgColor": "#6433b7"
+    },
+    {
+      "id": "cn-1776188568433-ct7ioax0",
+      "kind": "faction",
+      "factionFilename": "23The Chernobog Conspiracy",
+      "factionDisplay": "The Chernobog Conspiracy",
+      "x": 8512.596919193962,
+      "y": 6522.299947181726,
+      "scale": 4,
+      "bgColor": "#bb2516"
+    },
+    {
+      "id": "cn-1776188694977-64cmnrtf",
+      "kind": "faction",
+      "factionFilename": "04Omnica Corporation",
+      "factionDisplay": "Omnica Corporation",
+      "x": 6891.32823539784,
+      "y": 7238.872355741662,
+      "scale": 3,
+      "bgColor": "#969696"
+    },
+    {
+      "id": "cn-1776188705825-jqgeno6j",
+      "kind": "faction",
+      "factionFilename": "12The Anubis Omnic Crisis",
+      "factionDisplay": "The Anubis Omnic Crisis",
+      "x": 6894.102953934241,
+      "y": 8783.353560943167,
+      "scale": 3,
+      "bgColor": "#feae3e"
+    },
+    {
+      "id": "cn-1776188719179-cltz518g",
+      "kind": "faction",
+      "factionFilename": "36The Gwishin",
+      "factionDisplay": "The Gwishin",
+      "x": 7291.748217765147,
+      "y": 8901.643530967589,
+      "scale": 2,
+      "bgColor": "#03132e"
+    },
+    {
+      "id": "cn-1776188731351-mg1n7cxj",
+      "kind": "faction",
+      "factionFilename": "05Vishkar Corporation",
+      "factionDisplay": "Vishkar Corporation",
+      "x": 7289.044679744481,
+      "y": 7229.70057174354,
+      "scale": 3,
+      "bgColor": "#aff7f1"
+    },
+    {
+      "id": "cn-1776188753741-063ofkct",
+      "kind": "faction",
+      "factionFilename": "31Helix Securities",
+      "factionDisplay": "Helix Securities",
+      "x": 7664.364679744481,
+      "y": 7235.88880714138,
+      "scale": 3,
+      "bgColor": "#efe1c6"
+    },
+    {
+      "id": "cn-1776188770813-45776biy",
+      "kind": "faction",
+      "factionFilename": "30M.E.K.A Squad",
+      "factionDisplay": "M.E.K.A Squad",
+      "x": 8061.235856733678,
+      "y": 7241.99527793706,
+      "scale": 3,
+      "bgColor": "#74f1ab"
+    },
+    {
+      "id": "cn-1776188778295-tfgnbkj1",
+      "kind": "faction",
+      "factionFilename": "11Volskaya Industries",
+      "factionDisplay": "Volskaya Industries",
+      "x": 8439.695856733677,
+      "y": 7238.875277937059,
+      "scale": 3,
+      "bgColor": "#aaadb4"
+    },
+    {
+      "id": "cn-1776188801774-u140ql4g",
+      "kind": "faction",
+      "factionFilename": "15Caribbean Coalition",
+      "factionDisplay": "Caribbean Coalition",
+      "x": 8438.494704430248,
+      "y": 7869.680571743542,
+      "scale": 2,
+      "bgColor": "#1d2125"
+    },
+    {
+      "id": "cn-1776188809077-v0ocu0zr",
+      "kind": "faction",
+      "factionFilename": "09Crusader Initiative",
+      "factionDisplay": "Crusader Initiative",
+      "x": 8836.072355741664,
+      "y": 7356.80055411085,
+      "scale": 2,
+      "bgColor": "#486a71"
+    },
+    {
+      "id": "cn-1776188817340-0bswtany",
+      "kind": "faction",
+      "factionFilename": "06Inti Warriors",
+      "factionDisplay": "Inti Warriors",
+      "x": 9090.13882653734,
+      "y": 7268.191731100046,
+      "scale": 3,
+      "bgColor": "#105b84"
+    },
+    {
+      "id": "cn-1776188989261-sni9cnre",
+      "kind": "faction",
+      "factionFilename": "17Colloseo Gladiatori",
+      "factionDisplay": "Colloseo Gladiatori",
+      "x": 7948.06174167966,
+      "y": 8785.91706017191,
+      "scale": 3,
+      "bgColor": "#512b7e"
+    },
+    {
+      "id": "cn-1776188997910-x5sjqser",
+      "kind": "faction",
+      "factionFilename": "14Deadlock Rebels",
+      "factionDisplay": "Deadlock Rebels",
+      "x": 8721.695283226867,
+      "y": 8784.046453162986,
+      "scale": 3,
+      "bgColor": "#5a1f1e"
+    },
+    {
+      "id": "cn-1776189013831-v9g8z604",
+      "kind": "faction",
+      "factionFilename": "28Deep Sea Raiders",
+      "factionDisplay": "Deep Sea Raiders",
+      "x": 9112.003518624706,
+      "y": 8776.72351157163,
+      "scale": 3,
+      "bgColor": "#373d42"
+    },
+    {
+      "id": "cn-1776189030714-9smuueld",
+      "kind": "faction",
+      "factionFilename": "08Ironclad Guild",
+      "factionDisplay": "Ironclad Guild",
+      "x": 6881.162939828088,
+      "y": 7730.977630152182,
+      "scale": 3,
+      "bgColor": "#494949"
+    },
+    {
+      "id": "cn-1776189049078-tnlixum1",
+      "kind": "faction",
+      "factionFilename": "19Wayfinder Society",
+      "factionDisplay": "Wayfinder Society",
+      "x": 7272.199998236731,
+      "y": 7736.767630152183,
+      "scale": 3,
+      "bgColor": "#aa8542"
+    },
+    {
+      "id": "cn-1776189118821-pp4icyoj",
+      "kind": "faction",
+      "factionFilename": "27The Martins Collective",
+      "factionDisplay": "The Martins Collective",
+      "x": 7658.97646903241,
+      "y": 7751.4105717435405,
+      "scale": 3,
+      "bgColor": "#f5f0d8"
+    },
+    {
+      "id": "cn-1776189155391-blrdsyra",
+      "kind": "faction",
+      "factionFilename": "29The Phreaks",
+      "factionDisplay": "The Phreaks",
+      "x": 8334.038233634568,
+      "y": 8785.104100947861,
+      "scale": 3,
+      "bgColor": "#8000ff"
+    },
+    {
+      "id": "cn-1776189184588-1h8nrpbi",
+      "kind": "faction",
+      "factionFilename": "20Los Muertos",
+      "factionDisplay": "Los Muertos",
+      "x": 9286.728840643495,
+      "y": 8352.409964734616,
+      "scale": 2,
+      "bgColor": "#693ea5"
+    },
+    {
+      "id": "cn-1776189210560-3uu1uqoc",
+      "kind": "faction",
+      "factionFilename": "37 Yamagami Blades",
+      "factionDisplay": "Yamagami Blades",
+      "x": 8630.45591315829,
+      "y": 8371.029377121651,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776189217121-65fhi9r3",
+      "kind": "faction",
+      "factionFilename": "21Shimada Clan",
+      "factionDisplay": "Shimada Clan",
+      "x": 7832.374148556131,
+      "y": 8241.332906325972,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776189227153-n4wer0l4",
+      "kind": "faction",
+      "factionFilename": "22Hashimoto Clan",
+      "factionDisplay": "Hashimoto Clan",
+      "x": 8212.591206964773,
+      "y": 8242.504670928132,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776189240157-xzlqn0e9",
+      "kind": "faction",
+      "factionFilename": "32Yokai Gang",
+      "factionDisplay": "Yokai Gang",
+      "x": 8887.347677760452,
+      "y": 8257.601141723813,
+      "scale": 3,
+      "bgColor": "#5acfe5"
+    },
+    {
+      "id": "cn-1776189327254-mrvclha3",
+      "kind": "faction",
+      "factionFilename": "13Lumérico Incorporated",
+      "factionDisplay": "Lumérico Incorporated",
+      "x": 6893.436470795678,
+      "y": 8229.752352215124,
+      "scale": 3,
+      "bgColor": "#aed0c9"
+    },
+    {
+      "id": "cn-1776189340037-y6nqml1q",
+      "kind": "faction",
+      "factionFilename": "39Heliotech Industries",
+      "factionDisplay": "Heliotech Industries",
+      "x": 7297.038796561765,
+      "y": 8341.342923958668,
+      "scale": 2,
+      "bgColor": "#e89420"
+    },
+    {
+      "id": "cn-1776189345903-w13tkb9a",
+      "kind": "faction",
+      "factionFilename": "38Pacific Energy Solutions",
+      "factionDisplay": "Pacific Energy Solutions",
+      "x": 7562.577031959604,
+      "y": 8344.917630152182,
+      "scale": 2,
+      "bgColor": "#60334e"
+    },
+    {
+      "id": "cn-1776189352476-l8qtx93r",
+      "kind": "faction",
+      "factionFilename": "24Oasis Ministries",
+      "factionDisplay": "Oasis Ministries",
+      "x": 8044.999410623766,
+      "y": 7744.9223363457,
+      "scale": 3,
+      "bgColor": "#8c71be"
+    },
+    {
+      "id": "cn-1776189366354-irv4wkok",
+      "kind": "faction",
+      "factionFilename": "07Lucheng Interstellar",
+      "factionDisplay": "Lucheng Interstellar",
+      "x": 8689.01300154251,
+      "y": 7757.918789508688,
+      "scale": 3,
+      "bgColor": "#999999"
+    },
+    {
+      "id": "cn-1776189386504-93hariwi",
+      "kind": "faction",
+      "factionFilename": "10Wuxing University",
+      "factionDisplay": "Wuxing University",
+      "x": 9088.82476614467,
+      "y": 7765.112908089243,
+      "scale": 3,
+      "bgColor": "#e5dad0"
+    },
+    {
+      "id": "cn-1776189424359-1982a8ml",
+      "kind": "faction",
+      "factionFilename": "16Junker Monarchy",
+      "factionDisplay": "Junker Monarchy",
+      "x": 7568.61465682198,
+      "y": 8801.33176636543,
+      "scale": 3,
+      "bgColor": "#e0c26f"
+    },
+    {
+      "id": "cn-1776189507539-assf49p2",
+      "kind": "hero",
+      "heroName": "Ana",
+      "x": 9630.193277697195,
+      "y": 7274.467684859335,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776190150580-gay8nq0u",
+      "kind": "hero",
+      "heroName": "Anran",
+      "x": 11512.023359363906,
+      "y": 6767.019331073409,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196198262-5y6w0bjm",
+      "kind": "hero",
+      "heroName": "Ashe",
+      "x": 11527.67169083791,
+      "y": 6354.013496810414,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196204721-fis6namn",
+      "kind": "hero",
+      "heroName": "Baptiste",
+      "x": 9965.906194828693,
+      "y": 7255.4270605565835,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196211171-fiu3bla1",
+      "kind": "hero",
+      "heroName": "Bastion",
+      "x": 11539.450646614672,
+      "y": 5955.811203981668,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196223986-3odd2n1h",
+      "kind": "hero",
+      "heroName": "Brigitte",
+      "x": 9616.23170075348,
+      "y": 8095.182894988625,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196229194-2fk44bft",
+      "kind": "hero",
+      "heroName": "Cassidy",
+      "x": 11882.134153864958,
+      "y": 6360.250077415848,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196234545-xy7i1stx",
+      "kind": "hero",
+      "heroName": "D.va",
+      "x": 9629.084489553334,
+      "y": 5944.980633819295,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196245474-7zeubdc1",
+      "kind": "hero",
+      "heroName": "Domina",
+      "x": 9641.835070554353,
+      "y": 6745.060211273098,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196250777-gqnrvcb6",
+      "kind": "hero",
+      "heroName": "Doomfist",
+      "x": 10280.654225461958,
+      "y": 5955.0602112730985,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196449851-ihq6q2kc",
+      "kind": "hero",
+      "heroName": "Echo",
+      "x": 11495.353983666657,
+      "y": 7182.75641394191,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196454601-i5cqp9rt",
+      "kind": "hero",
+      "heroName": "Emre",
+      "x": 11876.75064661467,
+      "y": 5979.989535455675,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196460311-ckh9f0q6",
+      "kind": "hero",
+      "heroName": "Freja",
+      "x": 11860.407072698885,
+      "y": 7193.907529937946,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196479762-ave5fhpz",
+      "kind": "hero",
+      "heroName": "Genji",
+      "x": 11871.385457844644,
+      "y": 6778.3175299379445,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196496819-icb5pcwb",
+      "kind": "hero",
+      "heroName": "Hanzo",
+      "x": 12215.412539010715,
+      "y": 6368.181692270088,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196515659-bjdag5mi",
+      "kind": "hero",
+      "heroName": "Hazard",
+      "x": 9960.154383916786,
+      "y": 5951.000581001019,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196520283-ijn6b6y7",
+      "kind": "hero",
+      "heroName": "Illari",
+      "x": 9957.202894988624,
+      "y": 8108.157611529713,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196531050-cwotr9c8",
+      "kind": "hero",
+      "heroName": "Jetpack Cat",
+      "x": 10316.09806773695,
+      "y": 7262.109977688081,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196540666-6pvolx0z",
+      "kind": "hero",
+      "heroName": "Junker Queen",
+      "x": 9964.764806462981,
+      "y": 6767.430211273098,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196548088-m6onbpwi",
+      "kind": "hero",
+      "heroName": "Junkrat",
+      "x": 12225.566701342856,
+      "y": 5984.439084310714,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196641135-ah1klxj2",
+      "kind": "hero",
+      "heroName": "Juno",
+      "x": 10289.309888715405,
+      "y": 8109.403859924777,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196649551-16lk3g8j",
+      "kind": "hero",
+      "heroName": "Kiriko",
+      "x": 9626.622328070798,
+      "y": 7678.306417294568,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196659201-xb05ivvs",
+      "kind": "hero",
+      "heroName": "Lifeweaver",
+      "x": 9957.66761152971,
+      "y": 7677.2081784475395,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196665335-bh6hmgle",
+      "kind": "hero",
+      "heroName": "Lúcio",
+      "x": 10645.095209960245,
+      "y": 7276.06,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196674639-wzypztd4",
+      "kind": "hero",
+      "heroName": "Mauga",
+      "x": 9635.845070554355,
+      "y": 6376.37058100102,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196684186-7jqz9wij",
+      "kind": "hero",
+      "heroName": "Mei",
+      "x": 12559.274775614065,
+      "y": 5974.2339288734365,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196690675-a5qoyt63",
+      "kind": "hero",
+      "heroName": "Mercy",
+      "x": 10301.870566917827,
+      "y": 7690.579372682683,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196706068-vf6jo3yv",
+      "kind": "hero",
+      "heroName": "Moira",
+      "x": 10650.067671929202,
+      "y": 7684.480566917826,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196718017-d7iptftx",
+      "kind": "hero",
+      "heroName": "Orisa",
+      "x": 9964.68491209953,
+      "y": 6368.070316909647,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196774051-4c33pw30",
+      "kind": "hero",
+      "heroName": "Pharah",
+      "x": 12200.220613281921,
+      "y": 7194.919144792187,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196781651-ocp88l4m",
+      "kind": "hero",
+      "heroName": "Ramattra",
+      "x": 10294.040633819295,
+      "y": 6772.270422546196,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196788706-fozp2nfw",
+      "kind": "hero",
+      "heroName": "Reaper",
+      "x": 12209.193532115847,
+      "y": 6784.036225958258,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196805086-xyq2ev6r",
+      "kind": "hero",
+      "heroName": "Reinhardt",
+      "x": 10621.140369727922,
+      "y": 6762.2004753644715,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196821571-4rcgktce",
+      "kind": "hero",
+      "heroName": "Roadhog",
+      "x": 10280.324700826435,
+      "y": 6366.360264091372,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196828122-lxi2dv4l",
+      "kind": "hero",
+      "heroName": "Sierra",
+      "x": 12542.663842990403,
+      "y": 7188.820759646426,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196835600-1h52n95b",
+      "kind": "hero",
+      "heroName": "Sigma",
+      "x": 10943.424278280234,
+      "y": 6760.269735908627,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196844950-pobifv6r",
+      "kind": "hero",
+      "heroName": "Sojourn",
+      "x": 12559.79899842768,
+      "y": 6375.661692270089,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196852034-00yc3egl",
+      "kind": "hero",
+      "heroName": "Soldier 76",
+      "x": 12895.566701342856,
+      "y": 5966.273617998883,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196863784-f3kkr8v0",
+      "kind": "hero",
+      "heroName": "Sombra",
+      "x": 12901.569309302235,
+      "y": 7193.020759646427,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196880352-54bx34qm",
+      "kind": "hero",
+      "heroName": "Symmetra",
+      "x": 13247.380241925892,
+      "y": 5975.51877343616,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196905749-nf6n8qe5",
+      "kind": "hero",
+      "heroName": "Torbjörn",
+      "x": 13575.858627071651,
+      "y": 5988.85809120558,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196911100-qr8yi5kw",
+      "kind": "hero",
+      "heroName": "Tracer",
+      "x": 12561.971917261608,
+      "y": 6776.652685375223,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196918049-3szka57e",
+      "kind": "hero",
+      "heroName": "Vendetta",
+      "x": 12913.29899842768,
+      "y": 6774.285604209153,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196924066-edm90ljs",
+      "kind": "hero",
+      "heroName": "Venture",
+      "x": 13265.942228136162,
+      "y": 6772.687529937946,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196930475-lm63xd8b",
+      "kind": "hero",
+      "heroName": "Widowmaker",
+      "x": 12908.69899842768,
+      "y": 6380.624921978571,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196936200-9siqgmrn",
+      "kind": "hero",
+      "heroName": "Winston",
+      "x": 10617.54433109851,
+      "y": 5954.64010563655,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196943516-m7w9aebw",
+      "kind": "hero",
+      "heroName": "Wrecking Ball",
+      "x": 10948.779154907606,
+      "y": 5962.550264091373,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196949591-cyopgpwx",
+      "kind": "hero",
+      "heroName": "Wuyang",
+      "x": 10958.02747737761,
+      "y": 8107.975480551314,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196956799-6ugphhum",
+      "kind": "hero",
+      "heroName": "Zarya",
+      "x": 10615.884700826433,
+      "y": 6368.230211273098,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776196962623-ddk7o1p4",
+      "kind": "hero",
+      "heroName": "Zenyatta",
+      "x": 10973.351668525995,
+      "y": 7263.809375697248,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197531895-fyylpmp4",
+      "kind": "npc",
+      "npcName": "Adawe",
+      "x": 11480.048373400674,
+      "y": 7660.945125582858,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197727524-g8fx2yzv",
+      "kind": "npc",
+      "npcName": "Antonio",
+      "x": 11874.310134553643,
+      "y": 7623.498080970973,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197734661-n3wmhd4x",
+      "kind": "npc",
+      "npcName": "Asa",
+      "x": 12411.818940318499,
+      "y": 7677.681603276914,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197740892-6e9fqzn6",
+      "kind": "npc",
+      "npcName": "Athena",
+      "x": 12816.453838387923,
+      "y": 7618.272235713648,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197747185-ov00pu8u",
+      "kind": "npc",
+      "npcName": "Aurora",
+      "x": 13081.713732751372,
+      "y": 7620.312288531921,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197773898-vrt0idb9",
+      "kind": "npc",
+      "npcName": "B.O.B",
+      "x": 13344.4936799331,
+      "y": 7619.961971622274,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197779816-8kojasku",
+      "kind": "npc",
+      "npcName": "Bars",
+      "x": 14007.358745365367,
+      "y": 7687.85,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197785893-fhkkqm96",
+      "kind": "npc",
+      "npcName": "Boomslang",
+      "x": 11485.172798588625,
+      "y": 7998.327094994903,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197798582-i6xktlaz",
+      "kind": "npc",
+      "npcName": "Casino",
+      "x": 11679.512376042429,
+      "y": 7999.977570359371,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197806040-5z8jra3s",
+      "kind": "npc",
+      "npcName": "Chisaka",
+      "x": 11889.092323224157,
+      "y": 8003.117359086274,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197821324-p34man2s",
+      "kind": "npc",
+      "npcName": "Claudio",
+      "x": 12337.264402042823,
+      "y": 7955.742552623292,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197831375-68zappm3",
+      "kind": "npc",
+      "npcName": "D.mon",
+      "x": 12814.043556950433,
+      "y": 7949.8127638963915,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197882511-xsmqj1h0",
+      "kind": "npc",
+      "npcName": "Efi",
+      "x": 13073.64329285906,
+      "y": 7953.9528167146655,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197891024-vj1u8iwh",
+      "kind": "npc",
+      "npcName": "Emily",
+      "x": 13334.963081585964,
+      "y": 8018.4529223512145,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197899775-0v9epp21",
+      "kind": "npc",
+      "npcName": "Geiger",
+      "x": 13537.802923131141,
+      "y": 8025.492816714665,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197955340-9ialzc1r",
+      "kind": "npc",
+      "npcName": "Harold",
+      "x": 13942.92271185804,
+      "y": 8023.602763896392,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197963232-c9rv6uj4",
+      "kind": "npc",
+      "npcName": "Hector",
+      "x": 11477.802358696314,
+      "y": 8363.887675995922,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197969276-beq1rriu",
+      "kind": "npc",
+      "npcName": "Iggy",
+      "x": 11673.402358696314,
+      "y": 8312.017517541097,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197976145-vsj1hid6",
+      "kind": "npc",
+      "npcName": "Ingrid",
+      "x": 11949.74220024149,
+      "y": 8372.417359086274,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197989357-65l93878",
+      "kind": "npc",
+      "npcName": "Jackdaw",
+      "x": 12153.301830513567,
+      "y": 8369.467306268,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776197996547-ax6bzskn",
+      "kind": "npc",
+      "npcName": "Jiayi",
+      "x": 12351.801566422195,
+      "y": 8369.007464722823,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198013473-a8laewup",
+      "kind": "npc",
+      "npcName": "Katya",
+      "x": 12794.620133037448,
+      "y": 8366.801301066831,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198022373-o0zmc6re",
+      "kind": "npc",
+      "npcName": "Kace",
+      "x": 12536.398619798081,
+      "y": 8314.16,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198033132-vt4u1eu5",
+      "kind": "npc",
+      "npcName": "Kendra",
+      "x": 12993.123737902173,
+      "y": 8319.18211566101,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198177071-2bom9fnt",
+      "kind": "npc",
+      "npcName": "King",
+      "x": 13266.527342766904,
+      "y": 8374.650486472652,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198183171-3vqqwytd",
+      "kind": "npc",
+      "npcName": "Lanet",
+      "x": 13470.834552496352,
+      "y": 8375.163276743198,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198190957-4hj4odld",
+      "kind": "npc",
+      "npcName": "Liao",
+      "x": 13688.523737902175,
+      "y": 8322.866881607924,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198219789-bkys0s6a",
+      "kind": "npc",
+      "npcName": "Lynx 17",
+      "x": 13954.220133037446,
+      "y": 8378.686881607924,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198226824-v8m7nt4w",
+      "kind": "npc",
+      "npcName": "Mason",
+      "x": 11478.172237279174,
+      "y": 8674.338960535975,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198232155-ou5s8rbe",
+      "kind": "npc",
+      "npcName": "Maximillien",
+      "x": 11693.850608090814,
+      "y": 8630.971750806522,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198318691-7hzwtvim",
+      "kind": "npc",
+      "npcName": "Meri",
+      "x": 11969.16502754972,
+      "y": 8690.553379994883,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198324203-7ytk5c1w",
+      "kind": "npc",
+      "npcName": "Mondatta",
+      "x": 12178.465027549719,
+      "y": 8624.11419458906,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198330904-1m57omri",
+      "kind": "npc",
+      "npcName": "Nameless",
+      "x": 12440.1758421439,
+      "y": 8687.800589724335,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198357928-5tnnx0cn",
+      "kind": "npc",
+      "npcName": "Nobuto",
+      "x": 13104.729915114796,
+      "y": 8684.43419458906,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198370537-lbpkctra",
+      "kind": "npc",
+      "npcName": "Overlord",
+      "x": 13582.819993052806,
+      "y": 8690.7132767432,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198377705-vm3e7of8",
+      "kind": "npc",
+      "npcName": "Revel",
+      "x": 14010.512783323353,
+      "y": 8688.810486472652,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198974115-2jyrwswf",
+      "kind": "npc",
+      "npcName": "Ryota",
+      "x": 11484.997331347615,
+      "y": 9025.686516753436,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198981201-kaorvuxy",
+      "kind": "npc",
+      "npcName": "Sakura",
+      "x": 11683.090121618163,
+      "y": 9021.726516753435,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776198988218-izi2wsik",
+      "kind": "npc",
+      "npcName": "Sanjay",
+      "x": 11894.579307023983,
+      "y": 8964.281750806522,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199008484-l590n2nt",
+      "kind": "npc",
+      "npcName": "Susannah",
+      "x": 12156.48291188871,
+      "y": 8978.037331347616,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199020498-imn45tfj",
+      "kind": "npc",
+      "npcName": "Sven",
+      "x": 12425.608145941796,
+      "y": 9049.49128270035,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199033515-s6jmpjno",
+      "kind": "npc",
+      "npcName": "The Triplets",
+      "x": 12624.029775130153,
+      "y": 9049.48128270035,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199043702-xqydsjiy",
+      "kind": "npc",
+      "npcName": "Toshiro",
+      "x": 12811.487936849577,
+      "y": 8998.460446118846,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199057015-ffml1sq3",
+      "kind": "npc",
+      "npcName": "Touch Up",
+      "x": 13078.096742614436,
+      "y": 9054.189312283192,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199062968-hvbhj4fv",
+      "kind": "npc",
+      "npcName": "Vialli",
+      "x": 13274.937876450089,
+      "y": 9051.486356895077,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1776199068032-gsp8p36b",
+      "kind": "npc",
+      "npcName": "Zera",
+      "x": 13655.24718600092,
+      "y": 9052.098802333181,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778780254335-7peq5ez9",
+      "kind": "hero",
+      "heroName": "Mizuki",
+      "x": 10615.127477377608,
+      "y": 8121.931323964134,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778780376061-i3eyor8c",
+      "kind": "faction",
+      "factionFilename": "18La Coterie",
+      "factionDisplay": "La Coterie",
+      "x": 7654.397979913463,
+      "y": 6645.6661606922935,
+      "scale": 2,
+      "bgColor": "#740e0c"
+    },
+    {
+      "id": "cn-1778802005760-uhk8yuwo",
+      "kind": "npc",
+      "npcName": "Dae-Hyun",
+      "x": 12611.56413795145,
+      "y": 8008.922605441568,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802010909-0ffm7hq0",
+      "kind": "npc",
+      "npcName": "Ngumi",
+      "x": 12904.208285926441,
+      "y": 8682.00419458906,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802015959-tobtv5pi",
+      "kind": "npc",
+      "npcName": "Adeyemi",
+      "x": 11673.371895706614,
+      "y": 7671.966319818001,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802022164-k9v03njq",
+      "kind": "npc",
+      "npcName": "Alisa",
+      "x": 12617.971895706616,
+      "y": 7676.709842123944,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802028575-xtjczb43",
+      "kind": "npc",
+      "npcName": "Anubis",
+      "x": 12147.0866122477,
+      "y": 7616.936886735829,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802034992-1qhaxwlg",
+      "kind": "npc",
+      "npcName": "Chao",
+      "x": 12072.011847859683,
+      "y": 7952.927359086276,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802046964-inwuypky",
+      "kind": "npc",
+      "npcName": "Gérard",
+      "x": 13738.802923131138,
+      "y": 8018.132711078117,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802055327-e8egmozm",
+      "kind": "npc",
+      "npcName": "Naughton",
+      "x": 12641.69386646753,
+      "y": 8629.450589724334,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802071227-smm0y501",
+      "kind": "npc",
+      "npcName": "Osai",
+      "x": 13309.909178458627,
+      "y": 8627.82211566101,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778802077375-32o4outh",
+      "kind": "npc",
+      "npcName": "Portero",
+      "x": 13791.219993052806,
+      "y": 8686.576881607923,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778944759246-swuthwl4",
+      "kind": "npc",
+      "npcName": "Balderich",
+      "x": 13613.54981880153,
+      "y": 7668.544354144145,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778944766661-peoxdqfk",
+      "kind": "npc",
+      "npcName": "Bhatt",
+      "x": 13811.026296495587,
+      "y": 7680.738359646009,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1778953280653-6gstp0j8",
+      "kind": "npc",
+      "npcName": "Vincent",
+      "x": 13460.530731030774,
+      "y": 9049.331383014238,
+      "scale": 1.5,
+      "bgColor": null
+    }
+  ],
+  "edges": []
+}

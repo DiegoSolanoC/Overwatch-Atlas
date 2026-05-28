@@ -230,6 +230,7 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
         api.markCodexLayoutDirty();
         api.selectCodexNode(el);
     }
+    if (s.codexTargetedSelectionActive) api.syncCodexTargetedSelectionDom();
     if (!opts.skipRedraw) redrawCodexEdges();
     return el;
 }
@@ -314,8 +315,11 @@ function bindCodexNodeInteraction(el) {
         e.stopPropagation();
         api.clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded();
 
-        // Prevent selection of filtered-out nodes
-        if (el.classList.contains('codex-node--filtered-out')) {
+        // Prevent selection of filtered-out or targeted-hidden nodes
+        if (
+            el.classList.contains('codex-node--filtered-out')
+            || el.classList.contains('codex-node--target-hidden')
+        ) {
             return;
         }
         

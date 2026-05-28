@@ -33,8 +33,16 @@ import {
     initHeroBiographyPhraseButton,
     setHeroBiographyPhraseButtonHero,
 } from './heroBiographyPhraseButton.js';
-import { stopHeroBiographyPhrase } from './heroBiographyPhrasePlayer.js';
+import {
+    cancelHeroSelectionPhraseSchedule,
+    stopHeroBiographyPhrase,
+} from './heroBiographyPhrasePlayer.js';
 import { clearHeroPhrasesCache } from './loadHeroPhrases.js';
+import {
+    destroyHeroBiographyArchiveDescription,
+    initHeroBiographyArchiveDescription,
+    setHeroBiographyArchiveDescriptionHero,
+} from './heroBiographyArchiveDescription.js';
 
 /** @type {HTMLElement | null} */
 let activeWrap = null;
@@ -157,6 +165,8 @@ export function initHeroBiographySelection(hostEl, mainEl) {
     }
 
     mainEl.appendChild(headerEl);
+
+    initHeroBiographyArchiveDescription(hostEl);
 
     rewirePortraitCopy();
 
@@ -328,6 +338,7 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
  */
 async function applyHeroSelection(heroFilterKey, displayName) {
     resetHeroBiographyDockLookHoverState();
+    cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     hoverPreviewLook = null;
     currentHeroFilterKey = heroFilterKey;
@@ -356,11 +367,13 @@ async function applyHeroSelection(heroFilterKey, displayName) {
     setHeroBiographyDockHeroFilter(heroFilterKey);
     setHeroBiographyLookRangesEditorHero(heroFilterKey, currentLook);
     void setHeroBiographyPhraseButtonHero(heroFilterKey);
+    void setHeroBiographyArchiveDescriptionHero(heroFilterKey);
     refreshHeroBiographyDockPagination();
 }
 
 function clearHeroSelectionUi() {
     resetHeroBiographyDockLookHoverState();
+    cancelHeroSelectionPhraseSchedule();
     stopHeroBiographyPhrase();
     hoverPreviewLook = null;
     currentHeroFilterKey = null;
@@ -368,6 +381,7 @@ function clearHeroSelectionUi() {
     populateLookSelect([]);
     setHeroBiographyLookRangesEditorHero(null);
     void setHeroBiographyPhraseButtonHero(null);
+    void setHeroBiographyArchiveDescriptionHero(null);
     setTitle('');
     setHeroPortrait(null, '', DEFAULT_HERO_BIO_LOOK);
     clearHeroBiographyDockHeroFilter();
@@ -421,6 +435,7 @@ export function destroyHeroBiographySelection() {
     clearHeroBiographySelection();
     destroyHeroBiographyLookRangesEditor();
     destroyHeroBiographyPhraseButton();
+    destroyHeroBiographyArchiveDescription();
     portraitCopyAc?.abort();
     portraitCopyAc = null;
     clearHeroBiosLooksCache();

@@ -147,6 +147,7 @@ async function loadCodexState() {
     s.codexAllNodes = nodes || [];
     // Clear previously rendered nodes
     clearCodexVirtualScroll();
+    api.clearCodexTargetedSelection();
     
     // Reset View Mode initial render flag when loading new layout
     s.codexViewModeInitialRenderDone = false;

@@ -248,10 +248,10 @@ function codexEffectivePacketStrokeRange() {
     return { min: base * 0.97, max: base * 1.03 };
 }
 
-function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = null) {
+function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRect = null, edgesOverride = null) {
     appendCodexJunctionElbowParallelogramsCore(parentG, ns, worldCullRect, {
         getRoot: () => s.root,
-        getEdges: () => s.codexEdges,
+        getEdges: () => edgesOverride || s.codexEdges,
         codexNodeElById: api.codexNodeElById,
         getNodeCenterWorldPx: api.getNodeCenterWorldPx,
         edgeCordAppearance: api.edgeCordAppearance,

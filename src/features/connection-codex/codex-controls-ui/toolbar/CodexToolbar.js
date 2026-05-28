@@ -5,3 +5,4 @@ import './visual-panel/CodexToolbarVisualPanel.js';
 import './rows/CodexToolbarRows.js';
 import './preview/CodexToolbarSelectionPreview.js';
 import './CodexToolbarCore.js';
+import '../stage/CodexStageControls.js';

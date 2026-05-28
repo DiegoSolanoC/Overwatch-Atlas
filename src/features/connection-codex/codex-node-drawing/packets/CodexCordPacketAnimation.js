@@ -22,6 +22,7 @@ import {
     CODEX_PACKET_SPEED_MIN
 } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { edgeDirectedKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
 import { appendCordFilteredLineGroup, appendCordPlainLineGroup } from '../svg/CodexCordSvgElements.js';
 
 /** @type {CodexCordPacketRuntime|null} */
@@ -339,7 +340,22 @@ export function codexStopCordAnimRafOnly() {
     cordAnimLastTs = 0;
 }
 
+/** Start/stop packet RAF when prefs change without a full edge redraw (view mode after initial render). */
+export function applyCodexCordPacketAnimPref() {
+    if (!s.codexPacketAnimEnabled) {
+        codexStopCordAnimRafOnly();
+        const pktG = _rt?.getRoot()?.querySelector('.codex-edges-layer .codex-edge-packets');
+        pktG?.replaceChildren();
+        return;
+    }
+    ensureCodexCordAnimationLoop();
+}
+
 function codexCordAnimationTick(ts) {
+    if (!_rt || !s.codexPacketAnimEnabled) {
+        codexStopCordAnimRafOnly();
+        return;
+    }
     cordAnimRafId = requestAnimationFrame(codexCordAnimationTick);
     if (!_rt) {
         codexStopCordAnimRafOnly();
@@ -428,6 +444,10 @@ function codexCordAnimationTick(ts) {
 }
 
 export function ensureCodexCordAnimationLoop() {
+    if (!s.codexPacketAnimEnabled) {
+        codexStopCordAnimRafOnly();
+        return;
+    }
     if (cordAnimRafId) return;
     cordAnimLastTs = 0;
     cordAnimRafId = requestAnimationFrame(codexCordAnimationTick);

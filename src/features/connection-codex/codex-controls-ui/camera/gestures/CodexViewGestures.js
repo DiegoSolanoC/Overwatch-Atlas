@@ -10,7 +10,11 @@ import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST,
 function codexWheelShouldDeferToScroll(e) {
     const t = e.target;
     if (t && typeof t.closest === 'function') {
-        if (t.closest('.codex-picker') || t.closest('.filter-autocomplete-list')) return true;
+        if (
+            t.closest('.codex-picker')
+            || t.closest('.codex-stage-controls')
+            || t.closest('.filter-autocomplete-list')
+        ) return true;
     }
     return false;
 }

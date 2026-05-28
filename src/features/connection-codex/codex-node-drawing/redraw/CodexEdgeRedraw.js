@@ -45,7 +45,7 @@ let edgeRedrawScheduleTimer = 0;
  * @property {(marginPx: number) => object} getCodexVisibleWorldBoundsExpanded
  * @property {(pts: { x: number, y: number }[], r: object) => boolean} codexEdgePolyIntersectsRect
  * @property {(edgePolys: { pts: { x: number, y: number }[] }[], pad: number) => object|null} codexUnionBoundsFromEdgePolys
- * @property {(parentG: SVGGElement, ns: string, worldCullRect: object|null) => void} appendCodexJunctionElbowParallelograms
+ * @property {(parentG: SVGGElement, ns: string, worldCullRect: object|null, edgesForDecor?: { fromId: string, toId: string }[]) => void} appendCodexJunctionElbowParallelograms
  * @property {(defs: SVGDefsElement, id: string, blurResultId: string, opts: object) => void} appendEdgeGlowFilter
  * @property {(defs: SVGDefsElement, id: string, blurResultId: string, opts: object) => void} appendSoftPacketGlowFilter
  * @property {(defs: SVGDefsElement, ns: string, vw: number, vh: number, maskWorldRect?: object|null) => void} appendCodexEdgeNodeMask
@@ -58,6 +58,9 @@ let edgeRedrawScheduleTimer = 0;
  * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'} edgeCordAppearance
  * @property {(p0: object, p1: object) => number|null} cordSegmentDegreesLabel
  * @property {(p0: object, p1: object, tolDeg?: number) => boolean} cordSegmentWithinOctilinearToleranceDegrees
+ * @property {() => boolean} [getTargetedSelectionActive]
+ * @property {() => Set<string>} [getTargetedSelectionVisibleIds]
+ * @property {() => Set<string>} [getTargetedSelectionVisibleEdgeKeys]
  */
 
 /**
@@ -90,8 +93,12 @@ export function scheduleRedrawCodexEdges() {
     }, 16);
 }
 
-export function redrawCodexEdges() {
+/**
+ * @param {{ force?: boolean }} [opts] When `force` is true, redraw even after view mode’s initial render.
+ */
+export function redrawCodexEdges(opts = {}) {
     if (!_rt) return;
+    const forceRedraw = opts?.force === true;
     const perf = _rt.getPerfDebug();
     const mode = _rt.getMode();
     const viewInitialDone = _rt.getViewModeInitialRenderDone();
@@ -99,7 +106,17 @@ export function redrawCodexEdges() {
     const skipEdge = _rt.getSkipEdgeRedraw();
     const root = _rt.getRoot();
     const worldEl = _rt.getWorldEl();
-    const edges = _rt.getEdges();
+    let edges = _rt.getEdges();
+    if (_rt.getTargetedSelectionActive?.()) {
+        const visible = _rt.getTargetedSelectionVisibleIds?.();
+        const edgeKeys = _rt.getTargetedSelectionVisibleEdgeKeys?.();
+        if (visible && visible.size > 0 && edgeKeys && edgeKeys.size > 0) {
+            edges = edges.filter((e) => {
+                if (!visible.has(e.fromId) || !visible.has(e.toId)) return false;
+                return edgeKeys.has(codexUnorderedPairKey(e.fromId, e.toId));
+            });
+        }
+    }
     const dragIds = _rt.getActiveDragNodeIds();
     const viewZoom = _rt.getViewZoom();
     const visualPrefs = _rt.getVisualPrefs();
@@ -109,7 +126,7 @@ export function redrawCodexEdges() {
     }
 
     if (mode === 'view') {
-        if (viewInitialDone) {
+        if (viewInitialDone && !forceRedraw) {
             if (perf) {
                 console.log('[Codex Redraw] Skipping redraw in View Mode (already rendered)');
                 console.log('[Codex Perf] Skipping redraw in View Mode (already rendered)');
@@ -271,7 +288,12 @@ export function redrawCodexEdges() {
     contentRoot.setAttribute('mask', `url(#${CODEX_EDGES_NODE_ALPHA_MASK_ID})`);
     svg.appendChild(contentRoot);
 
-    _rt.appendCodexJunctionElbowParallelograms(contentRoot, ns, useViewportCull ? visibleRect : null);
+    _rt.appendCodexJunctionElbowParallelograms(
+        contentRoot,
+        ns,
+        useViewportCull ? visibleRect : null,
+        edges
+    );
 
     edgePolys.forEach(({ edge, pts }) => {
         const { fromId, toId } = edge;

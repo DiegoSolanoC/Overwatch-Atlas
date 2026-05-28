@@ -19,6 +19,7 @@ import '../../codex-controls-ui/camera/coords/CodexWorldCoords.js';
 import '../../codex-controls-ui/camera/transform/CodexViewTransform.js';
 import '../../codex-controls-ui/camera/gestures/CodexViewGestures.js';
 import '../../codex-data/save/CodexLayoutSave.js';
+import '../../codex-controls-ui/stage/CodexTargetedSelection.js';
 import '../../codex-data/load/CodexLayoutLoad.js';
 import '../../codex-data/import-export/CodexLayoutImportExport.js';
 import '../../codex-nodes/filters/CodexNodeFilters.js';
@@ -46,6 +47,8 @@ export function initCodexCanvas(rootElement) {
     if (!s.root) return Promise.resolve();
 
     api.loadCodexDebugUiPref();
+    api.loadCodexPacketAnimPref();
+    api.loadCodexTargetedLinkPref();
     api.loadCodexModePref();
     api.loadCodexVisualPrefs();
     api.syncCodexDebugUiClass();
@@ -86,7 +89,8 @@ export function initCodexCanvas(rootElement) {
         getPerfDebug: () => false,
         placeLoadedCodexNodeRecord: api.placeLoadedCodexNodeRecord,
         redrawCodexEdges,
-        scheduleRedrawCodexEdges
+        scheduleRedrawCodexEdges,
+        syncCodexTargetedSelectionDom: api.syncCodexTargetedSelectionDom
     });
 
     registerCodexBioArchiveEdgeSyncRuntime({
@@ -171,7 +175,10 @@ export function initCodexCanvas(rootElement) {
         ensureCodexCordAnimationLoop,
         edgeCordAppearance: api.edgeCordAppearance,
         cordSegmentDegreesLabel,
-        cordSegmentWithinOctilinearToleranceDegrees
+        cordSegmentWithinOctilinearToleranceDegrees,
+        getTargetedSelectionActive: () => s.codexTargetedSelectionActive,
+        getTargetedSelectionVisibleIds: () => s.codexTargetedSelectionVisibleIds,
+        getTargetedSelectionVisibleEdgeKeys: () => s.codexTargetedSelectionVisibleEdgeKeys
     });
 
     if (s.hitLayerEl) {
@@ -183,6 +190,7 @@ export function initCodexCanvas(rootElement) {
         if (e.target.closest('.codex-node')) return;
         if (e.target.closest('.codex-picker')) return;
         if (e.target.closest('.codex-toolbar') || e.target.closest('.codex-visual-panel')) return;
+        if (e.target.closest('.codex-stage-controls')) return;
         if (e.target.closest('.filter-autocomplete-list')) return;
 
         const fromLayer = e.target === s.hitLayerEl || s.hitLayerEl.contains(e.target);

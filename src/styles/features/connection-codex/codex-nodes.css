@@ -754,6 +754,12 @@ body:has(#paginationDock) .codex-visual-panel {
         drop-shadow(0 0 4px rgba(147, 51, 234, 0.55));
 }
 
+/* Targeted selection: fully hidden (not dimmed) */
+.codex-node--target-hidden {
+    display: none !important;
+    pointer-events: none !important;
+}
+
 /* Filtered-out nodes: dark, half-transparent, unselectable */
 .codex-node--filtered-out {
     opacity: 0.4;

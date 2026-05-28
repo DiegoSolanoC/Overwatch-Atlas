@@ -49,6 +49,13 @@ export const s = {
     codexToolbarEl: /** @type {HTMLElement|null} */ (null),
     codexVisualPanelEl: /** @type {HTMLElement|null} */ (null),
     codexDebugUiVisible: true,
+    codexPacketAnimEnabled: true,
+    codexStageControlsEl: /** @type {HTMLElement|null} */ (null),
+    codexTargetedSelectionActive: false,
+    codexTargetedSelectionSeedIds: /** @type {Set<string>} */ (new Set()),
+    codexTargetedSelectionVisibleIds: /** @type {Set<string>} */ (new Set()),
+    codexTargetedSelectionVisibleEdgeKeys: /** @type {Set<string>} */ (new Set()),
+    codexTargetedSelectionLinkSeeds: false,
     onWindowResizeRedraw: /** @type {(() => void)|null} */ (null),
     onCodexGlobalKeydown: /** @type {((e: KeyboardEvent) => void)|null} */ (null),
     codexViewModeInitialRenderDone: false,
@@ -100,7 +107,14 @@ export function resetCanvasSession() {
     s.backgroundPanPointerId = null;
     s.codexToolbarEl = null;
     s.codexVisualPanelEl = null;
+    s.codexStageControlsEl = null;
+    s.codexTargetedSelectionActive = false;
+    s.codexTargetedSelectionSeedIds = new Set();
+    s.codexTargetedSelectionVisibleIds = new Set();
+    s.codexTargetedSelectionVisibleEdgeKeys = new Set();
+    s.codexTargetedSelectionLinkSeeds = false;
     s.codexDebugUiVisible = true;
+    s.codexPacketAnimEnabled = true;
     s.onWindowResizeRedraw = null;
     s.onCodexGlobalKeydown = null;
     s.codexViewModeInitialRenderDone = false;

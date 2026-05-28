@@ -103,9 +103,10 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
         const jId = eIn.toId;
         const elJ = ctx.codexNodeElById(jId);
         if (!elJ || !elJ.classList.contains('codex-node--junction')) continue;
+        if (elJ.classList.contains('codex-node--target-hidden')) continue;
         if (!codexWaypointIsSimpleCorner(jId, edges)) continue;
         const elA = ctx.codexNodeElById(eIn.fromId);
-        if (!elA) continue;
+        if (!elA || elA.classList.contains('codex-node--target-hidden')) continue;
         const cJ = ctx.getNodeCenterWorldPx(elJ);
         if (worldCullRect && !codexPointInWorldRect(cJ.x, cJ.y, worldCullRect)) continue;
         const cA = ctx.getNodeCenterWorldPx(elA);
@@ -118,7 +119,7 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
             const eOut = edges[j];
             if (eOut.fromId !== jId) continue;
             const elB = ctx.codexNodeElById(eOut.toId);
-            if (!elB) continue;
+            if (!elB || elB.classList.contains('codex-node--target-hidden')) continue;
             const cB = ctx.getNodeCenterWorldPx(elB);
             const dxOut = cB.x - cJ.x;
             const dyOut = cB.y - cJ.y;

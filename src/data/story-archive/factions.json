@@ -4,7 +4,280 @@
       "name": "Overwatch",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Orisa",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mercy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Juno",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "IJC",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sojourn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Efi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Genji",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Cassidy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Bastion",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mei",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Jetpack Cat",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Anran",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Wuyang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Tracer",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Ecopoints",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Zarya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Baptiste",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Claudio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "D.va",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reinhardt",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Hector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Pharah",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ana",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Soldier 76",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reaper",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Emre",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Major Player"
     },
     {
@@ -25,35 +298,304 @@
       "name": "The Chernobog Conspiracy",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "IJC",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Lumérico Incorporated",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Wayfinder Society",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Major Player"
     },
     {
       "name": "IJC",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sojourn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Major Player"
     },
     {
       "name": "Deadlock Rebels",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ashe",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Cassidy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Liao",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
       "name": "Shimada Clan",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Toshiro",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Moira",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Widowmaker",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reaper",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Genji",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
       "name": "Hashimoto Clan",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mizuki",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Toshiro",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
@@ -67,14 +609,72 @@
       "name": "Junker Monarchy",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Omnica Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Meri",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Mason",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Junkrat",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
       "name": "The Phreaks",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Revel",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Jackdaw",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
@@ -88,161 +688,824 @@
       "name": "Los Muertos",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Lumérico Incorporated",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Illari",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Venture",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Bastion",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
       "name": "The Sombra Collective",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Lynx 17",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Katya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
       "name": "Crusader Initiative",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Reinhardt",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Inti Warriors",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Heliotech Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Wayfinder Society",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Volskaya Industries",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Lumérico Incorporated",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Zarya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Lynx 17",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Caribbean Coalition",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deep Sea Raiders",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Deep Sea Raiders",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Caribbean Coalition",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mauga",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Pacific Energy Solutions",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Colloseo Gladiatori",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Domina",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Vendetta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Helix Securities",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "M.E.K.A Squad",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Gwishin",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Dae-Hyun",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "D.va",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "The Gwishin",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Anubis Omnic Crisis",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "The Anubis Omnic Crisis",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shambali Order",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Gwishin",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Revel",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Omnica Corporation",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Ironclad Guild",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Wayfinder Society",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Lucheng Interstellar",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Harold",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Juno",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Wrecking Ball",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sigma",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Oasis Ministries",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Wayfinder Society",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Moira",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Hazard",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Pacific Energy Solutions",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deep Sea Raiders",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Lumérico Incorporated",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Heliotech Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "The Martins Collective",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Lifeweaver",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Shambali Order",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Anubis Omnic Crisis",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Lumérico Incorporated",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Los Muertos",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Pacific Energy Solutions",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Heliotech Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Heliotech Industries",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Lumérico Incorporated",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Pacific Energy Solutions",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Vishkar Corporation",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Sanjay",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Lúcio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Wuxing University",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Wuyang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Anran",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
@@ -256,35 +1519,400 @@
       "name": "Wayfinder Society",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Blackwatch",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reaper",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Cassidy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Genji",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "IJC",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Moira",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Widowmaker",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Ecopoints",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mei",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Claudio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Hector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Search & Rescue",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "IJC",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Emre",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Freja",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Talon Empire",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Moira",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Antonio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Hashimoto Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Caribbean Coalition",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deep Sea Raiders",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Adeyemi",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sigma",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Freja",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Sanjay",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Emre",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Vialli",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Widowmaker",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reaper",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Blackwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": ""
     }
   ]

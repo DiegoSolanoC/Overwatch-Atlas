@@ -29,6 +29,7 @@ let codexVirtualScrollRaf = 0;
  * @property {(node: object) => void} placeLoadedCodexNodeRecord
  * @property {() => void} redrawCodexEdges
  * @property {() => void} scheduleRedrawCodexEdges
+ * @property {() => void} [syncCodexTargetedSelectionDom]
  */
 
 export function registerCodexVirtualScrollRuntime(rt) {
@@ -158,6 +159,10 @@ export function updateCodexVirtualScroll() {
         } else if (skipEdge) {
             console.log('[Codex Perf] Skipping edge redraw during batch load');
         }
+    }
+
+    if (typeof _rt.syncCodexTargetedSelectionDom === 'function') {
+        _rt.syncCodexTargetedSelectionDom();
     }
 
     const elapsed = performance.now() - startTime;

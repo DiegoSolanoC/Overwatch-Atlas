@@ -1,5 +1,6 @@
 /**
  * Hero biography voicelines per hero from platform manifest (`heroPhrases`).
+ * Each hero folder may include a `Selection.*` clip (plays on pick + eligible for random).
  */
 
 /** @type {Record<string, string[]> | null} */
@@ -45,4 +46,29 @@ export function getPhrasesForHero(map, heroFilterKey) {
     const list = key && map[key];
     if (!Array.isArray(list)) return [];
     return list.filter((f) => String(f || '').trim());
+}
+
+/**
+ * Basename (no extension) for hero pick voicelines — e.g. Selection.ogg → "Selection".
+ * @param {string} fileName
+ * @returns {boolean}
+ */
+export function isHeroSelectionPhraseFile(fileName) {
+    const base = String(fileName || '')
+        .trim()
+        .replace(/\.[^.]+$/i, '');
+    return base.toLowerCase() === 'selection';
+}
+
+/**
+ * @param {string[]} phraseFiles
+ * @returns {string | null} First Selection clip in the hero folder, if any.
+ */
+export function findSelectionPhraseFile(phraseFiles) {
+    if (!Array.isArray(phraseFiles)) return null;
+    for (const file of phraseFiles) {
+        const name = String(file || '').trim();
+        if (name && isHeroSelectionPhraseFile(name)) return name;
+    }
+    return null;
 }

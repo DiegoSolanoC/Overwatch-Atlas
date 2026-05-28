@@ -4,6 +4,7 @@ import { s } from '../../../codex-canvas/core/canvasSession.js';
 import {
     CODEX_DEBUG_UI_PREF_KEY,
     CODEX_DEBUG_UI_PREF_KEY_LEGACY,
+    CODEX_PACKET_ANIM_PREF_KEY,
     CODEX_MODE_PREF_KEY
 } from '../../../codex-canvas/core/canvasConstants.js';
 import {
@@ -38,6 +39,24 @@ function loadCodexDebugUiPref() {
         else if (raw === '1') s.codexDebugUiVisible = true;
     } catch (_) {
         /* keep default */
+    }
+}
+
+function loadCodexPacketAnimPref() {
+    try {
+        const raw = localStorage.getItem(CODEX_PACKET_ANIM_PREF_KEY);
+        if (raw === '0') s.codexPacketAnimEnabled = false;
+        else if (raw === '1') s.codexPacketAnimEnabled = true;
+    } catch (_) {
+        /* keep default */
+    }
+}
+
+function persistCodexPacketAnimPref() {
+    try {
+        localStorage.setItem(CODEX_PACKET_ANIM_PREF_KEY, s.codexPacketAnimEnabled ? '1' : '0');
+    } catch (_) {
+        /* ignore */
     }
 }
 
@@ -95,38 +114,6 @@ function syncCodexModeClass() {
     }
 }
 
-function ensureCodexToolbarDebugToggle(bar) {
-    if (!bar) return;
-    let row = bar.querySelector('.codex-toolbar__row--junction-pref');
-    if (!row) {
-        row = document.createElement('div');
-        row.className = 'codex-toolbar__row codex-toolbar__row--junction-pref';
-        const lbl = document.createElement('label');
-        lbl.className = 'codex-toolbar__junction-pref-label';
-        const cb = document.createElement('input');
-        cb.type = 'checkbox';
-        cb.className = 'codex-toolbar__junction-toggle';
-        cb.title =
-            'Uncheck to hide waypoints, Break in the picker, cord angle labels, and node coordinates (layout unchanged)';
-        cb.addEventListener('change', () => {
-            s.codexDebugUiVisible = !!cb.checked;
-            persistCodexDebugUiPref();
-            syncCodexDebugUiClass();
-            redrawCodexEdges();
-        });
-        lbl.appendChild(cb);
-        const span = document.createElement('span');
-        span.textContent = 'Show Debugging';
-        lbl.appendChild(span);
-        row.appendChild(lbl);
-        const scaleRow = bar.querySelector('.codex-toolbar__row--scale');
-        if (scaleRow) bar.insertBefore(row, scaleRow);
-        else bar.appendChild(row);
-    }
-    const cb = row.querySelector('.codex-toolbar__junction-toggle');
-    if (cb) cb.checked = s.codexDebugUiVisible;
-}
-
 function ensureCodexToolbarModeToggle(bar) {
     if (!bar) return;
     let row = bar.querySelector('.codex-toolbar__row--mode-toggle');
@@ -161,10 +148,11 @@ function ensureCodexToolbarModeToggle(bar) {
 api.loadCodexVisualPrefs = loadCodexVisualPrefs;
 api.persistCodexVisualPrefs = persistCodexVisualPrefs;
 api.loadCodexDebugUiPref = loadCodexDebugUiPref;
+api.loadCodexPacketAnimPref = loadCodexPacketAnimPref;
 api.loadCodexModePref = loadCodexModePref;
 api.persistCodexDebugUiPref = persistCodexDebugUiPref;
+api.persistCodexPacketAnimPref = persistCodexPacketAnimPref;
 api.persistCodexModePref = persistCodexModePref;
 api.syncCodexDebugUiClass = syncCodexDebugUiClass;
 api.syncCodexModeClass = syncCodexModeClass;
-api.ensureCodexToolbarDebugToggle = ensureCodexToolbarDebugToggle;
 api.ensureCodexToolbarModeToggle = ensureCodexToolbarModeToggle;
