@@ -86,6 +86,56 @@
     transform: translateX(0);
 }
 
+/* Gallery stage: wide side columns — narrow center gap, panels reach far inward */
+body:has(#atlasGalleryHost) .gallery-mode__main {
+    --gallery-center-corridor: clamp(100px, 10vw, 180px);
+    --gallery-side-panel-gap: 6px;
+}
+
+/* Clear passive Now Playing (left) + summary hover badge (right) under header hub */
+body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
+    top: calc(var(--header-height, 88px) + clamp(6.25rem, 13vh, 9.5rem));
+    width: calc(
+        (100vw - var(--gallery-center-corridor, 140px)) / 2 - var(--gallery-side-panel-gap, 6px)
+    );
+    max-width: none;
+}
+
+body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+    left: clamp(44px, 3.6vw, 60px);
+}
+
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+    right: clamp(6px, 0.5vw, 12px);
+}
+
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__group > .event-slide-bio-connections__row--dual {
+    gap: 10px;
+}
+
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
+    overflow: hidden;
+    border-radius: 10px;
+    align-items: flex-end;
+}
+
+/* Match filter-chip framing: fill frame upward (not letterboxed contain) */
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
+body:has(#atlasGalleryHost)
+    .gallery-mode__archive-connections-body
+    .event-slide-filter-token-img.event-slide-bio-connections__portrait {
+    width: clamp(68px, 5.8vw, 92px);
+    height: clamp(80px, 7.2vw, 108px);
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center top;
+}
+
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
+    font-size: 0.88rem;
+}
+
 .gallery-mode__archive-side-panel-heading {
     flex: 0 0 auto;
     margin: 0 0 clamp(10px, 1.2vh, 14px);
@@ -331,9 +381,20 @@
     gap: 8px;
 }
 
-.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait {
-    width: 44px;
-    height: 44px;
+.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
+.gallery-mode__archive-connections-body .event-slide-filter-token-img.event-slide-bio-connections__portrait {
+    width: clamp(60px, 5vw, 80px);
+    height: clamp(72px, 6.5vw, 96px);
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
+    overflow: hidden;
+    border-radius: 10px;
+    align-items: flex-end;
 }
 
 .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
@@ -342,6 +403,16 @@
 }
 
 @media (max-width: 900px) {
+    body:has(#atlasGalleryHost) .gallery-mode__main {
+        --gallery-center-corridor: clamp(80px, 14vw, 140px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
+        width: calc(
+            (100vw - var(--gallery-center-corridor, 100px)) / 2 - var(--gallery-side-panel-gap, 6px)
+        );
+    }
+
     .gallery-mode__archive-side-panel {
         width: min(340px, 32vw);
         max-width: min(380px, 36ch);
@@ -355,9 +426,21 @@
     .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
         right: clamp(34px, 4.8vw, 60px);
     }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+        left: clamp(12px, 2vw, 28px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+        right: clamp(12px, 2vw, 28px);
+    }
 }
 
 @media (max-width: 640px) {
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+        top: calc(var(--header-height, 72px) + clamp(4.5rem, 10vh, 7rem));
+    }
+
     .gallery-mode__archive-description.gallery-mode__archive-side-panel {
         left: 16px;
         right: 16px;

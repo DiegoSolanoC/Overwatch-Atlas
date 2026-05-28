@@ -12,8 +12,9 @@ const FALLBACK_REFERENCE_OPAQUE_HEIGHT_RATIO = 0.807;
 const FALLBACK_REFERENCE_NATURAL_HEIGHT = 924;
 const ALPHA_THRESHOLD = 24;
 const MAX_SAMPLE_EDGE = 512;
-const MIN_SCALE = 0.88;
-const MAX_SCALE = 2.05;
+/** Upscale only (contain keeps the full figure); cap avoids giant foot-crop zoom. */
+const MIN_SCALE = 1;
+const MAX_SCALE = 1.28;
 
 /** @type {{ opaqueHeightRatio: number, naturalHeight: number, opaqueHeightPx: number } | null} */
 let referenceMetrics = null;
@@ -110,24 +111,24 @@ async function getManifestPortraitScale(heroFilterKey) {
 }
 
 /**
- * Match Ana's rendered character height, including compensation for taller source canvases
- * (same fill % in a larger PNG still reads smaller with object-fit: contain).
+ * Match Ana's on-screen character height (opaque bbox), using layout height only.
+ * Compares opaque pixel height in the source — not fill-ratio × canvas height (that
+ * over-scales padded PNGs like Bastion and shrinks tight crops like Ashe).
  * @param {number} opaqueHeightPx
- * @param {number} naturalHeight
+ * @param {number} _naturalHeight
  * @param {string} heroFilterKey
  */
-function computePortraitScale(opaqueHeightPx, naturalHeight, heroFilterKey) {
+function computePortraitScale(opaqueHeightPx, _naturalHeight, heroFilterKey) {
     const ref = getReferenceMetrics();
-    const opaqueRatio = opaqueHeightPx / naturalHeight;
-    const contentScale = ref.opaqueHeightRatio / opaqueRatio;
-    const canvasScale = naturalHeight / ref.naturalHeight;
-    let scale = contentScale * canvasScale;
-
     if (heroFilterKey === REFERENCE_HERO) {
-        scale = 1;
+        return 1;
     }
-
-    return scale;
+    if (!opaqueHeightPx || opaqueHeightPx <= 0 || !ref.opaqueHeightPx) {
+        return 1;
+    }
+    const ratio = ref.opaqueHeightPx / opaqueHeightPx;
+    /* Only scale up heroes with less opaque height than Ana; never shrink tall art (Bastion, etc.). */
+    return Math.max(1, ratio);
 }
 
 function applyPortraitLayoutScale(img, scale) {
@@ -146,6 +147,7 @@ function applyPortraitLayoutScale(img, scale) {
     } else {
         img.style.height = `${(clamped * 100).toFixed(2)}%`;
         img.style.width = 'auto';
+        img.style.maxWidth = '100%';
         img.style.setProperty('--hero-bio-portrait-scale', String(clamped));
     }
 }
