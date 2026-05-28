@@ -1,5 +1,5 @@
 /**
- * Persist heroes-archive description + birthday from Hero Biography stage.
+ * Persist heroes-archive fields from Hero Biography (Gallery) stage.
  */
 
 import {
@@ -98,10 +98,10 @@ function findHeroArchiveIndex(heroFilterKey, events) {
 /**
  * @param {string} heroFilterKey
  * @param {string} heroDisplayName
- * @param {{ description?: string, birthday?: string }} patch
- * @returns {Promise<{ ok: boolean, error?: string }>}
+ * @param {{ description?: string, birthday?: string, connections?: object[] }} patch
+ * @returns {Promise<{ ok: boolean, error?: string, entry?: object }>}
  */
-export async function saveHeroArchiveBioFromBiographyStage(heroFilterKey, heroDisplayName, patch) {
+export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey, heroDisplayName, patch) {
     const key = String(heroFilterKey || '').trim();
     if (!key) return { ok: false, error: 'No hero selected.' };
 
@@ -109,26 +109,46 @@ export async function saveHeroArchiveBioFromBiographyStage(heroFilterKey, heroDi
     const loaded = await loadHeroesArchiveEvents();
     const events = loaded.map((row) => ({ ...row }));
 
-    const description = String(patch?.description ?? '').trim();
-    const birthday = String(patch?.birthday ?? '').trim();
-
     let idx = findHeroArchiveIndex(key, events);
     if (idx < 0) {
         const name = String(heroDisplayName || key).trim() || key;
         events.push({
             name,
-            description,
-            birthday,
+            description: patch.description !== undefined ? String(patch.description ?? '').trim() : '',
+            birthday: patch.birthday !== undefined ? String(patch.birthday ?? '').trim() : '',
             relevantLocations: [],
-            connections: [],
+            connections: patch.connections !== undefined ? patch.connections : [],
         });
         idx = events.length - 1;
     } else {
-        events[idx] = {
-            ...events[idx],
-            description,
-            birthday,
-        };
+        const prev = events[idx];
+        const prevConnections = Array.isArray(prev.connections)
+            ? prev.connections.map((c) => ({ ...c }))
+            : [];
+
+        const next = { ...prev };
+        if (patch.description !== undefined) {
+            next.description = String(patch.description ?? '').trim();
+        }
+        if (patch.birthday !== undefined) {
+            next.birthday = String(patch.birthday ?? '').trim();
+        }
+        if (patch.connections !== undefined) {
+            next.connections = patch.connections;
+        }
+        events[idx] = next;
+
+        if (
+            patch.connections !== undefined
+            && window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
+        ) {
+            window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
+                events,
+                'heroes',
+                events[idx],
+                prevConnections,
+            );
+        }
     }
 
     writeHeroesArchiveLocal(events);
@@ -162,5 +182,16 @@ export async function saveHeroArchiveBioFromBiographyStage(heroFilterKey, heroDi
         postHeroesArchiveToDevApi(events);
     }
 
-    return { ok: true };
+    return { ok: true, entry: events[idx] };
+}
+
+/**
+ * @param {string} heroFilterKey
+ * @param {string} heroDisplayName
+ * @param {{ description?: string, birthday?: string }} patch
+ * @returns {Promise<{ ok: boolean, error?: string }>}
+ */
+export async function saveHeroArchiveBioFromBiographyStage(heroFilterKey, heroDisplayName, patch) {
+    const result = await saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey, heroDisplayName, patch);
+    return { ok: result.ok, error: result.error };
 }

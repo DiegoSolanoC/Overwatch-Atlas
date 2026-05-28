@@ -18,7 +18,16 @@
       "name": "Dae-Hyun",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "D.va",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "MEKA"
     },
     {
@@ -53,7 +62,16 @@
       "name": "Revel",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Phreaks"
     },
     {
@@ -158,7 +176,16 @@
       "name": "Toshiro",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Genji",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Shimada"
     },
     {
@@ -172,14 +199,48 @@
       "name": "Mason",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Roadhog",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Junker Queen",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Junkrat",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Junkers"
     },
     {
       "name": "Meri",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Junkrat",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Junkers"
     },
     {
@@ -193,14 +254,64 @@
       "name": "Harold",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Wrecking Ball",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sigma",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Lucheng"
     },
     {
       "name": "Jiayi",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Mei",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Juno",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Lucheng"
     },
     {
@@ -214,7 +325,32 @@
       "name": "Athena",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Winston",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Juno",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Overwatch"
     },
     {
@@ -228,7 +364,48 @@
       "name": "Efi",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Orisa",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Emre",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Soldier 76",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sojourn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Ana",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Overwatch"
     },
     {
@@ -249,49 +426,152 @@
       "name": "Liao",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ashe",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Cassidy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Overwatch"
     },
     {
       "name": "Adeyemi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Antonio",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Reaper",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Vendetta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Maximillien",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Freja",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Ngumi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Sanjay",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Vialli",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Doomfist",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Vendetta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Talon"
     },
     {
@@ -312,7 +592,16 @@
       "name": "Aurora",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Echo",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Historical Figures"
     },
     {
@@ -340,7 +629,16 @@
       "name": "Mondatta",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Historical Figures"
     },
     {
@@ -375,21 +673,72 @@
       "name": "Iggy",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Tracer",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Ingrid",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mercy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Kendra",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Sojourn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {
@@ -403,21 +752,56 @@
       "name": "Lynx 17",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Zarya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Nameless",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Sven",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "npcCategory": "Civilians"
     },
     {

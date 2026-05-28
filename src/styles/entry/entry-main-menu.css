@@ -350,19 +350,39 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     transform: translate(calc(-1 * var(--side-stack-step-x)), var(--side-stack-step-y));
 }
 
-/* GitHub Pages: no Data Workshop — Read Undivided fills two tile rows */
-.main-menu-side-grid--no-data-workshop .main-menu-side-btn-wrapper--double .main-menu-side-btn {
-    height: calc(
-        2 * (var(--side-tile-body-h) + var(--main-menu-side-desc-h)) + var(--side-tile-stack-gap)
-    );
-    max-height: none;
+/* GitHub Pages: no Data Workshop — Read Undivided spans both top columns (wide) */
+.main-menu-side-grid--no-data-workshop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(14px, 1.8vw, 24px);
+    row-gap: var(--side-tile-stack-gap);
+    align-items: stretch;
 }
 
-.main-menu-side-grid--no-data-workshop .main-menu-side-grid__col--resources {
-    justify-content: flex-end;
+.main-menu-side-grid--no-data-workshop .main-menu-side-btn-wrapper--span-wide {
+    grid-column: 1 / -1;
+    z-index: 3;
+    transform: translate(0, 0);
 }
 
-.main-menu-side-grid--no-data-workshop .main-menu-side-btn-wrapper--slot-bottom {
+.main-menu-side-grid--no-data-workshop .main-menu-side-grid__bottom-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(14px, 1.8vw, 24px);
+    align-items: stretch;
+}
+
+.main-menu-side-grid--no-data-workshop
+    .main-menu-side-grid__bottom-row
+    .main-menu-side-btn-wrapper:nth-child(1) {
+    z-index: 2;
+    transform: translate(0, 0);
+}
+
+.main-menu-side-grid--no-data-workshop
+    .main-menu-side-grid__bottom-row
+    .main-menu-side-btn-wrapper:nth-child(2) {
     z-index: 1;
     transform: translate(calc(-1 * var(--side-stack-step-x)), var(--side-stack-step-y));
 }

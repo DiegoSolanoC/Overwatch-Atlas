@@ -1,34 +1,34 @@
 /**
- * Render heroes-archive connections in the biography intel panel (read-only).
+ * Render bio-archive connections in the Gallery connections panel (read-only).
  */
 
-const HEROES_ARCHIVE = 'heroes';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 
 /**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
  * @param {object | null} entry
  * @returns {string}
  */
-export function buildHeroBiographyConnectionsHtml(entry) {
+export function buildHeroBiographyConnectionsHtml(entry, category = 'heroes') {
     const createHtml =
         typeof window !== 'undefined' && window.__SlideBioConnections?.createBioConnectionsSlideHtml;
     if (!createHtml || !entry) return '';
-    return createHtml(entry, HEROES_ARCHIVE) || '';
+    const arch = normalizeBioBiographyCategory(category);
+    if (arch === 'locations') return '';
+    return createHtml(entry, arch) || '';
 }
 
 /**
  * @param {HTMLElement} container
  * @param {object | null} entry
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} [category]
  */
-export function renderHeroBiographyConnectionsView(container, entry) {
+export function renderHeroBiographyConnectionsView(container, entry, category = 'heroes') {
     if (!container) return;
 
-    const inner = buildHeroBiographyConnectionsHtml(entry);
+    const inner = buildHeroBiographyConnectionsHtml(entry, category);
     if (!inner) {
         container.replaceChildren();
-        const empty = document.createElement('p');
-        empty.className = 'gallery-mode__archive-description-empty';
-        empty.textContent = 'No connections recorded for this hero.';
-        container.append(empty);
         return;
     }
 

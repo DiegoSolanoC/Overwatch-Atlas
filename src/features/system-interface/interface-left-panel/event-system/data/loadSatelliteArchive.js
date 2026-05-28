@@ -188,6 +188,21 @@ function pruneSatellitePhantomConnectionsInPlace(dataService) {
 
 /** @param {import('./EventDataService.js').default} dataService */
 export async function loadSatelliteArchive(dataService) {
+    const arch = dataService.getArchiveSource();
+    if (
+        (arch === 'heroes' || arch === 'factions' || arch === 'npcs')
+        && !window.__atlasBioCrossArchiveRepairDone
+        && typeof window.BioArchiveConnectionsSync?.repairCrossArchiveMirrorsAllBioArchives ===
+            'function'
+    ) {
+        try {
+            await window.BioArchiveConnectionsSync.repairCrossArchiveMirrorsAllBioArchives();
+            window.__atlasBioCrossArchiveRepairDone = true;
+        } catch (err) {
+            console.warn('EventDataService: cross-archive connection repair failed:', err);
+        }
+    }
+
     const fileUrl = dataService._getArchiveFilePath();
     const storageKey = dataService._getArchiveLocalStorageKey();
     const label = fileUrl.replace(/^data\//, '');

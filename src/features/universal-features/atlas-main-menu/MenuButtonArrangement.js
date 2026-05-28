@@ -10,7 +10,7 @@ const UNDIVIDED_WEBTOON_URL =
  * Main menu layout: one row of four primary modes + side column on the right.
  *
  * Side 2×2: [Read Undivided, Dialogue Theater] | [Data Workshop (localhost only), Official Archive].
- * On GitHub Pages, Data Workshop is omitted and Read Undivided spans two tile heights.
+ * On GitHub Pages, Data Workshop is omitted and Read Undivided spans both top columns (wide).
  * Modes row: World, Codex, Story, Gallery.
  *
  * Click handlers are wired in `./ModeActivation.js`.
@@ -106,27 +106,42 @@ export function MenuButtonArrangement() {
     const sideGrid = document.createElement('div');
     sideGrid.className = 'main-menu-side-grid';
 
-    const sideColLeft = document.createElement('div');
-    sideColLeft.className = 'main-menu-side-grid__col';
-    sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
-    sideColLeft.appendChild(readUndividedBtn);
-    sideColLeft.appendChild(theaterBtn);
+    /** @type {HTMLDivElement} */
+    let sideColLeft;
+    /** @type {HTMLDivElement} */
+    let sideColRight;
 
-    const sideColRight = document.createElement('div');
-    sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
     if (dataWorkshopDev) {
+        sideColLeft = document.createElement('div');
+        sideColLeft.className = 'main-menu-side-grid__col';
+        sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
+        sideColLeft.appendChild(readUndividedBtn);
+        sideColLeft.appendChild(theaterBtn);
+
+        sideColRight = document.createElement('div');
+        sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
         sideColRight.setAttribute('aria-label', 'Data Workshop and Official Archive');
         sideColRight.appendChild(archivesBtn);
-    } else {
-        sideColRight.setAttribute('aria-label', 'Official Archive');
-        sideGrid.classList.add('main-menu-side-grid--no-data-workshop');
-        readUndividedBtn.classList.add('main-menu-side-btn-wrapper--double');
-        officialResourcesBtn.classList.add('main-menu-side-btn-wrapper--slot-bottom');
-    }
-    sideColRight.appendChild(officialResourcesBtn);
+        sideColRight.appendChild(officialResourcesBtn);
 
-    sideGrid.appendChild(sideColLeft);
-    sideGrid.appendChild(sideColRight);
+        sideGrid.appendChild(sideColLeft);
+        sideGrid.appendChild(sideColRight);
+    } else {
+        sideGrid.classList.add('main-menu-side-grid--no-data-workshop');
+        readUndividedBtn.classList.add('main-menu-side-btn-wrapper--span-wide');
+
+        const sideBottomRow = document.createElement('div');
+        sideBottomRow.className = 'main-menu-side-grid__bottom-row';
+        sideBottomRow.setAttribute('aria-label', 'Dialogue Theater and Official Archive');
+        sideBottomRow.appendChild(theaterBtn);
+        sideBottomRow.appendChild(officialResourcesBtn);
+
+        sideGrid.appendChild(readUndividedBtn);
+        sideGrid.appendChild(sideBottomRow);
+
+        sideColLeft = sideBottomRow;
+        sideColRight = sideBottomRow;
+    }
     sideColumn.appendChild(sideGrid);
 
     const seeLatestWrapper = document.createElement('div');

@@ -1,9 +1,11 @@
 /**
  * When a Heroes / Factions / NPCs archive row is saved, mirror each
- * connection onto the linked row if that row exists in the same archive list
- * (same JSON file). Directions swap (A's "mentor of" B becomes B's "student
- * of" A), removals propagate, and faction↔(hero|npc) is forced to a single
- * directional descriptor (the faction is always slide-lane A).
+ * connection onto the linked row when it lives in the same JSON file, and onto
+ * the matching row in heroes.json / factions.json / npcs.json when the link
+ * crosses archives (hero↔faction, hero↔npc, etc.). Directions swap (A's
+ * "mentor of" B becomes B's "student of" A), removals propagate, and
+ * faction↔(hero|npc) is forced to a single directional descriptor (the faction
+ * is always slide-lane A).
  *
  * `repairMissingMirrorsForBioArchive` runs before persist to catch mirrors
  * that previous saves missed (e.g. when the slide held a stale object ref
@@ -34,13 +36,311 @@
         return 'hero';
     }
 
-    /** Mirrors only run within one archive file (heroes↔heroes, factions↔factions, npcs↔npcs). */
+    /** Same-file targets only (heroes↔heroes, factions↔factions, npcs↔npcs). Cross-kind uses {@link syncCrossArchiveMirrorsAfterSubjectSave}. */
     function connectionTargetInThisArchive(archiveSource, linkedKind) {
         var lk = normalizeConnKind(linkedKind);
         if (archiveSource === 'heroes') return lk === 'hero';
         if (archiveSource === 'npcs') return lk === 'npc';
         if (archiveSource === 'factions') return lk === 'faction';
         return false;
+    }
+
+    function archForConnKind(k) {
+        var lk = normalizeConnKind(k);
+        if (lk === 'faction') return 'factions';
+        if (lk === 'npc') return 'npcs';
+        return 'heroes';
+    }
+
+    var BIO_ARCHIVE_LS_KEYS = {
+        heroes: 'timelineEventsArchiveHeroes',
+        factions: 'timelineEventsArchiveFactions',
+        npcs: 'timelineEventsArchiveNpcs',
+    };
+
+    var BIO_ARCHIVE_FETCH_URLS = {
+        heroes: 'src/data/story-archive/heroes.json',
+        factions: 'src/data/story-archive/factions.json',
+        npcs: 'src/data/story-archive/npcs.json',
+    };
+
+    function shouldCrossArchiveMirrorRow(c) {
+        return shouldMirrorBioConnectionRow(c) || c.showInCodex === true;
+    }
+
+    function cloneBioArchiveEventsForEdit(events) {
+        if (!Array.isArray(events)) return [];
+        return events.map(function (e) {
+            if (!e || typeof e !== 'object') return e;
+            var next = Object.assign({}, e);
+            if (Array.isArray(e.connections)) {
+                next.connections = e.connections.map(function (c) {
+                    return c && typeof c === 'object' ? Object.assign({}, c) : c;
+                });
+            }
+            return next;
+        });
+    }
+
+    /**
+     * @param {'heroes'|'factions'|'npcs'} arch
+     * @returns {{ events: object[], from: 'ls'|'live' } | null}
+     */
+    function loadBioArchiveSnapshot(arch) {
+        if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') return null;
+        var lsKey = BIO_ARCHIVE_LS_KEYS[arch];
+        if (lsKey) {
+            try {
+                var raw = localStorage.getItem(lsKey);
+                if (raw) {
+                    var parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        return { events: parsed, from: 'ls' };
+                    }
+                }
+            } catch (_) {}
+        }
+        var em = window.eventManager;
+        var ds = em && em.dataService;
+        if (
+            ds
+            && typeof ds.getArchiveSource === 'function'
+            && ds.getArchiveSource() === arch
+            && Array.isArray(em.events)
+            && em.events.length > 0
+        ) {
+            return { events: em.events, from: 'live' };
+        }
+        return null;
+    }
+
+    /**
+     * @param {'heroes'|'factions'|'npcs'} arch
+     * @param {object[]} events
+     */
+    function persistBioArchiveEventsSnapshot(arch, events) {
+        if (arch !== 'heroes' && arch !== 'factions' && arch !== 'npcs') return;
+        if (!Array.isArray(events)) return;
+        var lsKey = BIO_ARCHIVE_LS_KEYS[arch];
+        if (lsKey) {
+            try {
+                localStorage.setItem(lsKey, JSON.stringify(events));
+            } catch (err) {
+                console.warn('[BioArchiveConnectionsSync] Could not write', arch, 'to localStorage:', err);
+            }
+        }
+
+        var em = window.eventManager;
+        var ds = em && em.dataService;
+        if (ds && typeof ds.getArchiveSource === 'function' && ds.getArchiveSource() === arch && Array.isArray(em.events)) {
+            em.events = events;
+        }
+
+        window.dispatchEvent(
+            new CustomEvent('atlas-bio-archives-refreshed', {
+                detail: { archives: [arch] },
+            }),
+        );
+
+        if (ds && typeof ds._canPersistTimelineJsonToRepo === 'function' && !ds._canPersistTimelineJsonToRepo()) {
+            return;
+        }
+        try {
+            var apiUrl =
+                typeof window.resolveDevApiUrl === 'function'
+                    ? window.resolveDevApiUrl('api/story-archive')
+                    : '/api/story-archive';
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ archive: arch, events: events }),
+            }).catch(function (err) {
+                console.warn('[BioArchiveConnectionsSync] Dev API save failed for', arch, err);
+            });
+        } catch (_) {}
+    }
+
+    /**
+     * Propagate connection adds/removals onto the linked row in another archive JSON.
+     * @param {string} subjectArch
+     * @param {'hero'|'faction'|'npc'} subjectKind
+     * @param {string} subjectName
+     * @param {object[]} prevList
+     * @param {object[]} newList
+     */
+    function syncCrossArchiveMirrorsAfterSubjectSave(
+        subjectArch,
+        subjectKind,
+        subjectName,
+        prevList,
+        newList,
+    ) {
+        if (subjectArch !== 'heroes' && subjectArch !== 'factions' && subjectArch !== 'npcs') return;
+
+        var prevKeys = new Set(
+            (prevList || [])
+                .filter(function (c) { return c && String(c.name || '').trim(); })
+                .map(function (c) { return connectionKey(c.kind, c.name); }),
+        );
+        var newKeys = new Set(
+            (newList || [])
+                .filter(function (c) { return c && String(c.name || '').trim(); })
+                .map(function (c) { return connectionKey(c.kind, c.name); }),
+        );
+
+        /** @type {Record<string, object[]|null>} */
+        var cache = {};
+        /** @type {Record<string, boolean>} */
+        var dirty = {};
+
+        function eventsForArch(arch) {
+            if (cache[arch] !== undefined) return cache[arch];
+            var snap = loadBioArchiveSnapshot(arch);
+            if (!snap || !Array.isArray(snap.events)) {
+                cache[arch] = null;
+                return null;
+            }
+            cache[arch] = cloneBioArchiveEventsForEdit(snap.events);
+            return cache[arch];
+        }
+
+        prevKeys.forEach(function (key) {
+            if (newKeys.has(key)) return;
+            var oldRow = (prevList || []).find(function (c) {
+                return connectionKey(c.kind, c.name) === key;
+            });
+            if (!oldRow) return;
+            var lk = normalizeConnKind(oldRow.kind);
+            var ln = sanitizeConnectionEntityName(oldRow.name);
+            if (!ln) return;
+            if (connectionTargetInThisArchive(subjectArch, lk)) return;
+            var targetArch = archForConnKind(lk);
+            if (targetArch === subjectArch) return;
+            var targetEvents = eventsForArch(targetArch);
+            if (!targetEvents) return;
+            var linkedIx = findBioEntryIndex(targetEvents, lk, ln);
+            if (linkedIx < 0) return;
+            var linked = targetEvents[linkedIx];
+            linked.connections = normalizeBioRows(
+                removeConnectionToSubject(linked.connections || [], subjectKind, subjectName),
+            );
+            dirty[targetArch] = true;
+        });
+
+        (newList || []).forEach(function (c) {
+            if (!c) return;
+            var lk = normalizeConnKind(c.kind);
+            var ln = sanitizeConnectionEntityName(c.name);
+            if (!ln) return;
+            if (connectionKey(lk, ln) === connectionKey(subjectKind, subjectName)) return;
+            if (connectionTargetInThisArchive(subjectArch, lk)) return;
+            if (!shouldCrossArchiveMirrorRow(c)) return;
+            var targetArch = archForConnKind(lk);
+            if (targetArch === subjectArch) return;
+            var targetEvents = eventsForArch(targetArch);
+            if (!targetEvents) return;
+            var linkedIx = findBioEntryIndex(targetEvents, lk, ln);
+            if (linkedIx < 0) return;
+            var linked = targetEvents[linkedIx];
+            if (linkedHasMirrorBack(linked, subjectKind, subjectName)) return;
+            coerceFactionMixedRowInPlace(c, subjectKind);
+            var mirror = buildMirrorRow(c, subjectKind, subjectName, {
+                copyShowInCodex: c.showInCodex === true,
+            });
+            linked.connections = normalizeBioRows(upsertMirror(linked.connections, mirror));
+            dirty[targetArch] = true;
+        });
+
+        Object.keys(dirty).forEach(function (arch) {
+            if (!dirty[arch]) return;
+            var evs = cache[arch];
+            if (Array.isArray(evs)) persistBioArchiveEventsSnapshot(arch, evs);
+        });
+    }
+
+    /**
+     * Backfill mirrors across heroes / factions / npcs (e.g. hero→faction links only on hero rows).
+     * @returns {Promise<void>}
+     */
+    function repairCrossArchiveMirrorsAllBioArchives() {
+        var arches = ['heroes', 'factions', 'npcs'];
+        /** @type {Record<string, object[]>} */
+        var loads = {};
+
+        function loadOne(arch) {
+            var snap = loadBioArchiveSnapshot(arch);
+            if (snap && Array.isArray(snap.events) && snap.events.length > 0) {
+                loads[arch] = cloneBioArchiveEventsForEdit(snap.events);
+                return Promise.resolve();
+            }
+            var url = BIO_ARCHIVE_FETCH_URLS[arch];
+            if (!url) {
+                loads[arch] = [];
+                return Promise.resolve();
+            }
+            return fetch(url + '?v=' + Date.now(), { cache: 'no-store' })
+                .then(function (res) {
+                    if (!res.ok) {
+                        loads[arch] = [];
+                        return;
+                    }
+                    return res.json().then(function (data) {
+                        loads[arch] = Array.isArray(data && data.events)
+                            ? cloneBioArchiveEventsForEdit(data.events)
+                            : [];
+                    });
+                })
+                .catch(function () {
+                    loads[arch] = [];
+                });
+        }
+
+        return arches.reduce(function (chain, arch) {
+            return chain.then(function () {
+                return loadOne(arch);
+            });
+        }, Promise.resolve()).then(function () {
+            var dirty = { heroes: false, factions: false, npcs: false };
+            for (var ai = 0; ai < arches.length; ai += 1) {
+                var arch = arches[ai];
+                var events = loads[arch];
+                if (!Array.isArray(events)) continue;
+                var subjectKind = entityKindForArchive(arch);
+                for (var i = 0; i < events.length; i += 1) {
+                    var E = events[i];
+                    if (!E) continue;
+                    var subjectName = E.name != null ? String(E.name).trim() : '';
+                    if (!subjectName) continue;
+                    var conns = Array.isArray(E.connections) ? E.connections : [];
+                    for (var k = 0; k < conns.length; k += 1) {
+                        var c = conns[k];
+                        if (!c) continue;
+                        var lk = normalizeConnKind(c.kind);
+                        var ln = sanitizeConnectionEntityName(c.name);
+                        if (!ln) continue;
+                        if (connectionKey(lk, ln) === connectionKey(subjectKind, subjectName)) continue;
+                        if (connectionTargetInThisArchive(arch, lk)) continue;
+                        if (!shouldCrossArchiveMirrorRow(c)) continue;
+                        var targetArch = archForConnKind(lk);
+                        var targetEvents = loads[targetArch];
+                        if (!Array.isArray(targetEvents)) continue;
+                        var linkedIx = findBioEntryIndex(targetEvents, lk, ln);
+                        if (linkedIx < 0) continue;
+                        var linked = targetEvents[linkedIx];
+                        if (linkedHasMirrorBack(linked, subjectKind, subjectName)) continue;
+                        coerceFactionMixedRowInPlace(c, subjectKind);
+                        var mirror = buildMirrorRow(c, subjectKind, subjectName, {
+                            copyShowInCodex: c.showInCodex === true,
+                        });
+                        linked.connections = normalizeBioRows(upsertMirror(linked.connections, mirror));
+                        dirty[targetArch] = true;
+                    }
+                }
+            }
+            arches.forEach(function (a) {
+                if (dirty[a] && Array.isArray(loads[a])) persistBioArchiveEventsSnapshot(a, loads[a]);
+            });
+        });
     }
 
     function normalizeConnKind(k) {
@@ -483,6 +783,25 @@
         subjectEntry.connections = normalizeBioRows(subjectEntry.connections);
         pruneShowInCodexWithoutDirectCodexEdge(events, arch);
         pruneJunctionPhantomConnectionsInPlace(events, arch);
+        syncCrossArchiveMirrorsAfterSubjectSave(arch, subjectKind, subjectName, prevList, newList);
+
+        var needsCrossRepair = false;
+        for (var ni = 0; ni < newList.length; ni += 1) {
+            var nc = newList[ni];
+            if (!nc) continue;
+            if (!connectionTargetInThisArchive(arch, normalizeConnKind(nc.kind))) {
+                needsCrossRepair = true;
+                break;
+            }
+        }
+        if (needsCrossRepair) {
+            setTimeout(function () {
+                repairCrossArchiveMirrorsAllBioArchives().catch(function (err) {
+                    console.warn('[BioArchiveConnectionsSync] Deferred cross-archive repair failed:', err);
+                });
+            }, 0);
+        }
+
         var selfIx = findBioEntryIndex(events, subjectKind, subjectName);
         if (selfIx >= 0 && em && em.unsavedEventIndices && typeof em.unsavedEventIndices.add === 'function') {
             em.unsavedEventIndices.add(selfIx);
@@ -491,6 +810,7 @@
 
     window.BioArchiveConnectionsSync = {
         syncMirrorsAfterSubjectSave: syncMirrorsAfterSubjectSave,
+        repairCrossArchiveMirrorsAllBioArchives: repairCrossArchiveMirrorsAllBioArchives,
         repairMissingMirrorsForBioArchive: repairMissingMirrorsForBioArchive,
         pruneShowInCodexWithoutDirectCodexEdge: pruneShowInCodexWithoutDirectCodexEdge,
         pruneJunctionPhantomConnectionsInPlace: pruneJunctionPhantomConnectionsInPlace,
