@@ -4,7 +4,7 @@
  * slide and dock view.
  *
  * The real-world country lookup goes through `window.FLAG_FILE_BY_COMMON`
- * (populated by `Interactive-Worldview/worldview-shared-assets/data/flagFileByCommonName.js`). On
+ * (populated by `world/worldview-shared-assets/data/flagFileByCommonName.js`). On
  * top of that we apply:
  *   - `ALIASES`     : historical / colloquial names that map to a canonical
  *                     entry in the map (e.g. "USA" → "United States").

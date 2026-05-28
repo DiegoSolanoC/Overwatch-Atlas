@@ -75,7 +75,7 @@ Make sure these paths exist in the repo (typical GitHub Pages tree):
 - `.nojekyll` — disables Jekyll on GitHub Pages
 - `src/styles/app.css` and `src/styles/` — global CSS entry and partials
 - `src/` — application JavaScript (features, controllers, services)
-- `src/data/` — JSON by feature (`event-system/`, `story-archive/`, `connection-codex/`, `worldview/`, `platform/`); paths in `src/data/registry.js`
+- `src/data/` — JSON by feature (`event-system/`, `story-archive/`, `codex/`, `worldview/`, `platform/`); paths in `src/data/registry.js`
 - `src/assets/` — images, audio, models (e.g. `src/assets/images/Misc/Atlas News.png`)
 - `scripts/` — Node helpers (`generate-manifest`, Pages prep, codex/data tools); see **`scripts/README.md`**. CI uses **`npm run build:pages`**, which regenerates **`src/data/platform/manifest.json`** before copying to **`_site/`**
 
@@ -101,7 +101,7 @@ GitHub serves the site under **`/<repository-name>/`**, so renaming the reposito
 - **Parity with local**: The following are built to look and behave the same on GitHub Pages as locally:
   - **Footer**: Atlas News image (red trapezoid) and sliding headlines ticker appear after the timeline loads (`footer.timeline-loaded`).
   - **Number buttons (1–10)**: Pagination and event-number button styles (including marker-hover highlight) are in `src/styles/features/event-system/event-pagination.css` and load via `src/styles/app.css`.
-  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `src/styles/entry.css`, `src/styles/features/worldview/globe.css`, and `src/styles/mobile/viewport.css`; all loaded via relative imports.
+  - **Button layouts**: Desktop and mobile layouts (zoom, music, palette, event manager, filters, etc.) are in `src/styles/entry.css`, `src/styles/features/world/globe.css`, and `src/styles/mobile/viewport.css`; all loaded via relative imports.
 - **Root files**: Ensure `.nojekyll` exists in the repo root so GitHub Pages does not run Jekyll. Ensure `src/assets/images/Misc/Atlas News.png` (and other files under `src/assets/`, `src/data/`) are committed.
 
 ## Design documentation

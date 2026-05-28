@@ -3,7 +3,7 @@
  * transport, markers, music bridge, and SFX; persists to `localStorage`.
  */
 
-import { applyCurrentPaletteToTransportVehicles } from '../../Interactive-Worldview/worldview-shared-assets/utils/TransportPaletteColors.js';
+import { applyCurrentPaletteToTransportVehicles } from '../../world/worldview-shared-assets/utils/TransportPaletteColors.js';
 import { applyPaletteToExistingEventMarkers } from '../../system-interface/interface-globe-markers/styling/markerColors.js';
 import {
     normalizeSavedPalette,

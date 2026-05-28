@@ -1,8 +1,7 @@
 /**
  * HeaderModeButtons — mounts primary mode-entry header buttons.
  *
- * Left hub (`#headerHubButtonGroup`): Interactive Worldview, Connection Codex,
- * Data Archive, Hero Biography, Story Timeline, Dialogue Theater.
+ * Left hub (`#headerHubButtonGroup`): World, Codex, Story, Gallery.
  * Right hub: Home.
  *
  * Each tile delegates to the matching `runXComponents` global from the orchestrator.
@@ -22,7 +21,7 @@ function attachWorldviewBootstrap() {
 
     // Worldview launches inside its own mode shell — the chooser hub paints
     // 3D Globe / 2D Map options the same way Data Archive paints categories.
-    const launchGlobe = createLoadingLockHandler(window.runGlobeComponents, setRunOperation);
+    const launchGlobe = createLoadingLockHandler(window.runWorldComponents, setRunOperation);
     headerGlobeBtn.addEventListener('click', function bootstrapGlobe(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -36,20 +35,8 @@ function attachCodexBootstrap() {
     headerCodexBtn.addEventListener('click', function bootstrapCodex(e) {
         e.stopPropagation();
         e.preventDefault();
-        if (typeof window.runGlossaryComponents === 'function') {
-            void window.runGlossaryComponents(false);
-        }
-    }, true);
-}
-
-function attachDataArchiveBootstrap() {
-    const headerStoryBtn = document.getElementById('headerStoryViewerBtn');
-    if (!headerStoryBtn) return;
-    headerStoryBtn.addEventListener('click', function bootstrapStory(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        if (typeof window.runBiographyComponents === 'function') {
-            void window.runBiographyComponents(false);
+        if (typeof window.runCodexComponents === 'function') {
+            void window.runCodexComponents(false);
         }
     }, true);
 }
@@ -57,7 +44,7 @@ function attachDataArchiveBootstrap() {
 function attachHeroBiographyBootstrap() {
     const btn = document.getElementById('headerHeroBiographyBtn');
     if (!btn) return;
-    const launch = createLoadingLockHandler(window.runHeroBiographyComponents, setRunOperation);
+    const launch = createLoadingLockHandler(window.runGalleryComponents, setRunOperation);
     btn.addEventListener('click', function bootstrapHeroBiography(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -68,19 +55,8 @@ function attachHeroBiographyBootstrap() {
 function attachStoryTimelineBootstrap() {
     const btn = document.getElementById('headerStoryTimelineBtn');
     if (!btn) return;
-    const launch = createLoadingLockHandler(window.runStoryTimelineComponents, setRunOperation);
+    const launch = createLoadingLockHandler(window.runStoryComponents, setRunOperation);
     btn.addEventListener('click', function bootstrapStoryTimeline(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        void launch();
-    }, true);
-}
-
-function attachDialogueTheaterBootstrap() {
-    const btn = document.getElementById('headerDialogueTheaterBtn');
-    if (!btn) return;
-    const launch = createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation);
-    btn.addEventListener('click', function bootstrapDialogueTheater(e) {
         e.stopPropagation();
         e.preventDefault();
         void launch();
@@ -91,10 +67,10 @@ export function loadHeaderModeButtons() {
     createHeaderHubButton({
         id: 'headerInteractiveGlobeBtn',
         className: '',
-        title: 'Interactive Worldview',
-        label: 'Interactive Worldview',
+        title: 'World',
+        label: 'World',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Interactive%20Worldview.png',
-        iconAlt: 'Interactive Worldview',
+        iconAlt: 'World',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerInteractiveGlobeIcon',
@@ -105,10 +81,10 @@ export function loadHeaderModeButtons() {
     createHeaderHubButton({
         id: 'headerWorldCodexBtn',
         className: '',
-        title: 'Connection Codex',
-        label: 'Connection Codex',
+        title: 'Codex',
+        label: 'Codex',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Connection%20Codex.png',
-        iconAlt: 'Connection Codex',
+        iconAlt: 'Codex',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerWorldCodexIcon',
@@ -117,60 +93,32 @@ export function loadHeaderModeButtons() {
     attachCodexBootstrap();
 
     createHeaderHubButton({
-        id: 'headerStoryViewerBtn',
+        id: 'headerStoryTimelineBtn',
         className: '',
-        title: 'Data Archive',
-        label: 'Data Archive',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Data%20Archive.png',
-        iconAlt: 'Data Archive',
+        title: 'Story',
+        label: 'Story',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Story%20Timeline.png',
+        iconAlt: 'Story',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
-        iconSpanId: 'headerStoryViewerIcon',
-        headerOrder: 17
+        iconSpanId: 'headerStoryTimelineIcon',
+        headerOrder: 17,
     });
-    attachDataArchiveBootstrap();
+    attachStoryTimelineBootstrap();
 
     createHeaderHubButton({
         id: 'headerHeroBiographyBtn',
         className: '',
-        title: 'Hero Biography',
-        label: 'Hero Biography',
+        title: 'Gallery',
+        label: 'Gallery',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Hero%20Biography.png',
-        iconAlt: 'Hero Biography',
+        iconAlt: 'Gallery',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerHeroBiographyIcon',
         headerOrder: 18,
     });
     attachHeroBiographyBootstrap();
-
-    createHeaderHubButton({
-        id: 'headerStoryTimelineBtn',
-        className: '',
-        title: 'Story Timeline',
-        label: 'Story Timeline',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Story%20Timeline.png',
-        iconAlt: 'Story Timeline',
-        parentId: 'headerHubButtonGroup',
-        baseClass: 'header-hub-btn header-hub-btn--icon',
-        iconSpanId: 'headerStoryTimelineIcon',
-        headerOrder: 19,
-    });
-    attachStoryTimelineBootstrap();
-
-    createHeaderHubButton({
-        id: 'headerDialogueTheaterBtn',
-        className: '',
-        title: 'Dialogue Theater',
-        label: 'Dialogue Theater',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png',
-        iconAlt: 'Dialogue Theater',
-        parentId: 'headerHubButtonGroup',
-        baseClass: 'header-hub-btn header-hub-btn--icon',
-        iconSpanId: 'headerDialogueTheaterIcon',
-        headerOrder: 20,
-    });
-    attachDialogueTheaterBootstrap();
 
     createHeaderHubButton({
         id: 'homeBtn',

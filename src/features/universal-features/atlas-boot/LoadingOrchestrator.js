@@ -23,8 +23,8 @@ import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=10
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/interface-platform-input/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases
-import '../../Interactive-Worldview/worldview-controls-ui/runtime/WorldviewInlineLoad.js';                       // inline globe-container loader API
-import '../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js';                            // 3D globe / 2D map chooser hub
+import '../../world/worldview-controls-ui/runtime/WorldviewInlineLoad.js';                       // inline globe-container loader API
+import '../../world/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js';                            // 3D globe / 2D map chooser hub
 
 import { loadPalette, unloadPalette } from './loaders/PaletteLoaders.js';
 import { loadMusic, unloadMusic } from './loaders/MusicLoaders.js';
@@ -46,12 +46,12 @@ const loadedComponents = {
     transport: false,
     controls: false,
     events: false,
-    glossary: false,
-    biography: false,
-    heroBiography: false,
-    storyTimeline: false,
+    codex: false,
+    dataWorkshop: false,
+    gallery: false,
+    story: false,
     dialogueTheater: false,
-    officialResources: false,
+    officialArchive: false,
 };
 
 if (typeof window !== 'undefined') {
@@ -99,24 +99,38 @@ const modeOrchestrator = new ModeOrchestrator(loadedComponents, loaders, unloade
 
 const runMenuComponents = (options = {}) => modeOrchestrator.runMenuComponents(options);
 const runUniversalFeatures = (options = {}) => modeOrchestrator.runUniversalFeatures(options);
-const runGlobeComponents = (isAutoLoad = false) => modeOrchestrator.runGlobeComponents(isAutoLoad);
+const runWorldComponents = (isAutoLoad = false) => modeOrchestrator.runWorldComponents(isAutoLoad);
 const killMenuComponents = () => modeOrchestrator.killMenuComponents();
 const killUniversalFeatures = () => modeOrchestrator.killUniversalFeatures();
 const restoreMainMenu = () => modeOrchestrator.restoreMainMenu();
-const killGlobeComponents = () => modeOrchestrator.killGlobeComponents();
-const runGlossaryComponents = (isAutoLoad = false) => modeOrchestrator.runGlossaryComponents(isAutoLoad);
-const killGlossaryComponents = () => modeOrchestrator.killGlossaryComponents();
-const runBiographyComponents = (isAutoLoad = false) => modeOrchestrator.runBiographyComponents(isAutoLoad);
-const killBiographyComponents = () => modeOrchestrator.killBiographyComponents();
-const runHeroBiographyComponents = (isAutoLoad = false) => modeOrchestrator.runHeroBiographyComponents(isAutoLoad);
-const killHeroBiographyComponents = () => modeOrchestrator.killHeroBiographyComponents();
-const runStoryTimelineComponents = (isAutoLoad = false) => modeOrchestrator.runStoryTimelineComponents(isAutoLoad);
-const killStoryTimelineComponents = () => modeOrchestrator.killStoryTimelineComponents();
+const killWorldComponents = () => modeOrchestrator.killWorldComponents();
+const runCodexComponents = (isAutoLoad = false) => modeOrchestrator.runCodexComponents(isAutoLoad);
+const killCodexComponents = () => modeOrchestrator.killCodexComponents();
+const runDataWorkshopComponents = (isAutoLoad = false) => modeOrchestrator.runDataWorkshopComponents(isAutoLoad);
+const killDataWorkshopComponents = () => modeOrchestrator.killDataWorkshopComponents();
+const runGalleryComponents = (isAutoLoad = false) => modeOrchestrator.runGalleryComponents(isAutoLoad);
+const killGalleryComponents = () => modeOrchestrator.killGalleryComponents();
+const runStoryComponents = (isAutoLoad = false) => modeOrchestrator.runStoryComponents(isAutoLoad);
+const killStoryComponents = () => modeOrchestrator.killStoryComponents();
 const runDialogueTheaterComponents = (isAutoLoad = false) => modeOrchestrator.runDialogueTheaterComponents(isAutoLoad);
 const killDialogueTheaterComponents = () => modeOrchestrator.killDialogueTheaterComponents();
-const runOfficialResourcesComponents = (isAutoLoad = false) =>
-    modeOrchestrator.runOfficialResourcesComponents(isAutoLoad);
-const killOfficialResourcesComponents = () => modeOrchestrator.killOfficialResourcesComponents();
+const runOfficialArchiveComponents = (isAutoLoad = false) =>
+    modeOrchestrator.runOfficialArchiveComponents(isAutoLoad);
+const killOfficialArchiveComponents = () => modeOrchestrator.killOfficialArchiveComponents();
+
+/** @deprecated Legacy window aliases — prefer canonical names above. */
+const runGlobeComponents = runWorldComponents;
+const killGlobeComponents = killWorldComponents;
+const runGlossaryComponents = runCodexComponents;
+const killGlossaryComponents = killCodexComponents;
+const runBiographyComponents = runDataWorkshopComponents;
+const killBiographyComponents = killDataWorkshopComponents;
+const runHeroBiographyComponents = runGalleryComponents;
+const killHeroBiographyComponents = killGalleryComponents;
+const runStoryTimelineComponents = runStoryComponents;
+const killStoryTimelineComponents = killStoryComponents;
+const runOfficialResourcesComponents = runOfficialArchiveComponents;
+const killOfficialResourcesComponents = killOfficialArchiveComponents;
 
 // === Public API on window ==============================================
 
@@ -124,6 +138,20 @@ window.modeOrchestrator = modeOrchestrator;
 window.restoreMainMenu = restoreMainMenu;
 window.runUniversalFeatures = runUniversalFeatures;
 window.runMenuComponents = runMenuComponents;
+window.runWorldComponents = runWorldComponents;
+window.killWorldComponents = killWorldComponents;
+window.runCodexComponents = runCodexComponents;
+window.killCodexComponents = killCodexComponents;
+window.runDataWorkshopComponents = runDataWorkshopComponents;
+window.killDataWorkshopComponents = killDataWorkshopComponents;
+window.runGalleryComponents = runGalleryComponents;
+window.killGalleryComponents = killGalleryComponents;
+window.runStoryComponents = runStoryComponents;
+window.killStoryComponents = killStoryComponents;
+window.runDialogueTheaterComponents = runDialogueTheaterComponents;
+window.killDialogueTheaterComponents = killDialogueTheaterComponents;
+window.runOfficialArchiveComponents = runOfficialArchiveComponents;
+window.killOfficialArchiveComponents = killOfficialArchiveComponents;
 window.runGlobeComponents = runGlobeComponents;
 window.killGlobeComponents = killGlobeComponents;
 window.killMenuComponents = killMenuComponents;
@@ -135,8 +163,6 @@ window.runHeroBiographyComponents = runHeroBiographyComponents;
 window.killHeroBiographyComponents = killHeroBiographyComponents;
 window.runStoryTimelineComponents = runStoryTimelineComponents;
 window.killStoryTimelineComponents = killStoryTimelineComponents;
-window.runDialogueTheaterComponents = runDialogueTheaterComponents;
-window.killDialogueTheaterComponents = killDialogueTheaterComponents;
 window.runOfficialResourcesComponents = runOfficialResourcesComponents;
 window.killOfficialResourcesComponents = killOfficialResourcesComponents;
 window.unloadGlobeBase = unloaders.globeBase;

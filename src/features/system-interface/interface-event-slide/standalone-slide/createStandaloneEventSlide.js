@@ -51,7 +51,7 @@ import { runSaveCurrentVariantData } from './variants/saveCurrentVariantData.js'
 import { runConvertRootEventToMulti } from './variants/convertRootEventToMulti.js';
 import { runCollapseMultiToSingleRoot } from './variants/collapseMultiToSingleRoot.js';
 // Pagination
-import { getDockTimelineEventsForPagination } from '../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+import { getDockTimelineEventsForPagination } from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { runSetupStandalonePagination } from './pagination/setupStandalonePagination.js';
 import { runWireNumberButtons } from './pagination/wireNumberButtons.js';
 import { runAnimatePageTurn } from './pagination/animatePageTurn.js';

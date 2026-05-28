@@ -3,13 +3,13 @@
  *
  * Holds the loaded-component flag bag and the load/unload pairs for every
  * component, and exposes `runXComponents` / `killXComponents` for each mode
- * (Worldview, Codex/Glossary, Data Archive/Biography) plus `runMenuComponents`
+ * (World, Codex, Data Workshop, Story, Gallery, …) plus `runMenuComponents`
  * / `restoreMainMenu` for the menu shell. The actual mode bodies live in
  * their owning features:
  *
- *   - Worldview run/kill ? `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
- *   - Worldview asset load ? `Interactive-Worldview/worldview-mode-entry/WorldviewAssetLoader.js`
- *   - Data Archive mode entry: `Data-Archive/archive-mode/ArchiveModeMount.js`
+ *   - Worldview run/kill ? `world/worldview-mode-entry/WorldviewModeLifecycle.js`
+ *   - Worldview asset load ? `world/worldview-mode-entry/WorldviewAssetLoader.js`
+ *   - Data Archive mode entry: `data-workshop/archive-mode/ArchiveModeMount.js`
  *   - Linear-mode ceremony ? `runtime/modeLifecycleCeremony.js`
  *   - Universal Features  ? `runtime/universalFeaturesLifecycle.js`
  *
@@ -20,53 +20,43 @@
  * name was a hangover from that era; it actually orchestrates *modes*.
  */
 
+import { isDataWorkshopLocalDev } from '../atlas-main-menu/dataWorkshopLocalDev.js';
+import { ATLAS_MODE, MODE_LABEL } from './atlasModes.js';
 import { updateStatus } from './statusFeed.js';
-import { createLoadProgressTracker } from './loadProgressTracker.js';
-import { setCurrentMode } from './mode-lifecycle/CurrentModeStatus.js';
+import { runStagedLinearModeLoad } from './linearModeStagedEntry.js';
 import { restoreMainMenu as restoreMainMenuImpl } from '../atlas-main-menu/restoreMainMenu.js';
 import { runMenuComponents as runMenuComponentsImpl } from '../atlas-main-menu/runMenuComponents.js';
 import {
     createDataArchivePanel,
     openDataArchiveEventsView as openDataArchiveEventsViewImpl,
     exitDataArchive
-} from '../../Data-Archive/archive-mode/ArchiveModeMount.js';
+} from '../../data-workshop/archive-mode/ArchiveModeMount.js';
 import {
     runUniversalFeatures as runUniversalFeaturesImpl,
     killUniversalFeatures as killUniversalFeaturesImpl
 } from './universalFeaturesLifecycle.js';
 import { enterMode, exitMode } from './modeLifecycleCeremony.js';
-import { runGlobeMode, killGlobeMode } from '../../Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js';
+import { runGlobeMode, killGlobeMode } from '../../world/worldview-mode-entry/WorldviewModeLifecycle.js';
 import {
-    mountHeroBiographyMode,
-    unmountHeroBiographyMode,
-} from '../../hero-biography/hero-biography-mode/HeroBiographyModeMount.js';
+    mountGalleryMode,
+    unmountGalleryMode,
+} from '../../gallery/gallery-mode/GalleryModeMount.js';
 import {
-    mountStoryTimelineMode,
-    unmountStoryTimelineMode,
-} from '../../story-timeline/story-timeline-mode/StoryTimelineModeMount.js';
+    mountStoryMode,
+    unmountStoryMode,
+} from '../../story/story-mode/StoryModeMount.js';
 import {
     mountDialogueTheaterMode,
     unmountDialogueTheaterMode,
 } from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js';
 import {
-    mountOfficialResourcesMode,
-    unmountOfficialResourcesMode,
-} from '../../official-resources/official-resources-mode/OfficialResourcesModeMount.js';
-
-/**
- * Stages for the Data Archive entry. Declared up-front so the bar can
- * fill from 0 ? 100% by stage label, the same as Worldview and Codex.
- */
-const DATA_ARCHIVE_STAGES = Object.freeze([
-    { id: 'shellPrep', label: 'Preparing Data Archive shell' },
-    { id: 'categoryHub', label: 'Building category hub' },
-    { id: 'settle', label: 'Finalizing layout' }
-]);
+    mountOfficialArchiveMode,
+    unmountOfficialArchiveMode,
+} from '../../official-archive/official-archive-mode/OfficialArchiveModeMount.js';
 
 /**
  * ModeOrchestrator class
- * Orchestrates entry into / exit out of each app mode (Worldview, Codex,
- * Data Archive, Menu) plus the always-on Universal Features chain.
+ * Orchestrates entry into / exit out of each app mode plus Universal Features.
  */
 export class ModeOrchestrator {
     constructor(loadedComponents, loaders, unloaders) {
@@ -81,26 +71,42 @@ export class ModeOrchestrator {
          * never invoked.
          */
         this._killers = {
-            killGlobeComponents: this.killGlobeComponents.bind(this),
-            killGlossaryComponents: this.killGlossaryComponents.bind(this),
-            killBiographyComponents: this.killBiographyComponents.bind(this),
-            killHeroBiographyComponents: this.killHeroBiographyComponents.bind(this),
-            killStoryTimelineComponents: this.killStoryTimelineComponents.bind(this),
+            killWorldComponents: this.killWorldComponents.bind(this),
+            killCodexComponents: this.killCodexComponents.bind(this),
+            killDataWorkshopComponents: this.killDataWorkshopComponents.bind(this),
+            killGalleryComponents: this.killGalleryComponents.bind(this),
+            killStoryComponents: this.killStoryComponents.bind(this),
             killDialogueTheaterComponents: this.killDialogueTheaterComponents.bind(this),
-            killOfficialResourcesComponents: this.killOfficialResourcesComponents.bind(this),
+            killOfficialArchiveComponents: this.killOfficialArchiveComponents.bind(this),
+            /** @deprecated Use killWorldComponents */
+            killGlobeComponents: this.killWorldComponents.bind(this),
+            /** @deprecated Use killCodexComponents */
+            killGlossaryComponents: this.killCodexComponents.bind(this),
+            /** @deprecated Use killDataWorkshopComponents */
+            killBiographyComponents: this.killDataWorkshopComponents.bind(this),
+            /** @deprecated Use killGalleryComponents */
+            killHeroBiographyComponents: this.killGalleryComponents.bind(this),
+            /** @deprecated Use killStoryComponents */
+            killStoryTimelineComponents: this.killStoryComponents.bind(this),
+            /** @deprecated Use killOfficialArchiveComponents */
+            killOfficialResourcesComponents: this.killOfficialArchiveComponents.bind(this),
         };
     }
 
     /**
-     * Open Data Archive on the given source. External callers
+     * Open Data Workshop on the given source. External callers
      * (`EventManager`, keyboard shortcuts) use this to jump straight into a
      * specific archive without going through the full mode-entry ceremony.
      *
      * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} [archiveSource]
      */
     async openDataArchiveEventsView(archiveSource = 'story') {
+        if (archiveSource === 'story') {
+            await this.runStoryComponents();
+            return;
+        }
         await openDataArchiveEventsViewImpl(archiveSource, {
-            onCancel: () => this.killBiographyComponents(true)
+            onCancel: () => this.killDataWorkshopComponents(true),
         });
     }
 
@@ -127,27 +133,24 @@ export class ModeOrchestrator {
         await runUniversalFeaturesImpl(this._universalFeaturesContext(), options);
     }
 
-    /**
-     * Enter Worldview mode.
-     * @see runGlobeMode in `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
-     */
-    async runGlobeComponents(isAutoLoad = false) {
-        await runGlobeMode(this._globeModeContext(), isAutoLoad);
+    /** Enter World mode (3D globe / 2D map). */
+    async runWorldComponents(isAutoLoad = false) {
+        await runGlobeMode(this._worldModeContext(), isAutoLoad);
     }
 
-    /**
-     * Run all Glossary Components sequentially
-     * Enters Codex mode (Concept Glossary)
-     */
-    async runGlossaryComponents(isAutoLoad = false) {
+    /** @deprecated Use {@link runWorldComponents} */
+    async runGlobeComponents(isAutoLoad = false) {
+        return this.runWorldComponents(isAutoLoad);
+    }
+
+    async runCodexComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
-            mode: 'glossary',
+            mode: ATLAS_MODE.CODEX,
             runBtnId: 'runGlossaryBtn',
-            // Status glyphs are kept ASCII here because this file's encoding strips emojis on save.
-            startMessage: '>> Starting Codex...',
-            successMessage: 'OK - Codex ready',
-            errorPrefix: 'Error in Codex auto-load',
-            isAutoLoad
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.CODEX]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.CODEX]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.CODEX]} load`,
+            isAutoLoad,
         }, async () => {
             if (window.CodexModeService && typeof window.CodexModeService.enterCodexMode === 'function') {
                 await window.CodexModeService.enterCodexMode();
@@ -157,114 +160,152 @@ export class ModeOrchestrator {
         });
     }
 
-    /**
-     * Enter Data Archive mode. Mounts the category-hub shell via
-     * `Data-Archive/archive-mode/ArchiveModeMount.js` and lets the user pick a
-     * category from there. The actual events panel is embedded by the shell
-     * once the user selects a tile.
-     */
-    async runBiographyComponents(isAutoLoad = false) {
+    /** @deprecated Use {@link runCodexComponents} */
+    async runGlossaryComponents(isAutoLoad = false) {
+        return this.runCodexComponents(isAutoLoad);
+    }
+
+    /** Data Workshop — heroes / factions / NPCs / locations. Localhost only. Story uses {@link runStoryComponents}. */
+    async runDataWorkshopComponents(isAutoLoad = false) {
+        if (!isDataWorkshopLocalDev()) {
+            updateStatus('Data Workshop is only available in local development', 'warning');
+            return;
+        }
         await enterMode(this._modeContext(), {
-            mode: 'biography',
+            mode: ATLAS_MODE.DATA_WORKSHOP,
             runBtnId: 'runBiographyBtn',
-            startMessage: '>> Starting Data Archive...',
-            successMessage: 'OK - Data Archive loaded!',
-            errorPrefix: 'Error in Data Archive load',
-            isAutoLoad
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]} loaded!`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]} load`,
+            isAutoLoad,
         }, async () => {
-            const progress = createLoadProgressTracker({
-                modeLabel: 'Data Archive',
-                stages: DATA_ARCHIVE_STAGES
-            });
-            progress.start('>> Starting Data Archive...');
-
-            progress.skipStage('shellPrep', '-> Data Archive: preparing shell...');
-
-            await progress.runStage(
-                'categoryHub',
-                async () => {
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP],
+                mountStageId: 'categoryHub',
+                mountStageLabel: 'building category hub',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]} ready`,
+                mountFn: async () => {
                     await createDataArchivePanel({
-                        onCancel: () => this.killBiographyComponents(true)
+                        onCancel: () => this.killDataWorkshopComponents(true),
                     });
                 },
-                { beginMessage: '-> Data Archive: building category hub...' }
-            );
-
-            await progress.runStage(
-                'settle',
-                async ({ setProgress }) => {
-                    /* Minimum 800ms settle gives the category hub a frame to
-                     * paint before the overlay drops; stream sub-progress so
-                     * the bar moves smoothly across the wait. */
-                    const totalMs = 800;
-                    const stepMs = 80;
-                    const steps = Math.max(1, Math.round(totalMs / stepMs));
-                    for (let i = 1; i <= steps; i += 1) {
-                        await new Promise((r) => setTimeout(r, stepMs));
-                        setProgress(i / steps);
-                    }
-                },
-                { beginMessage: '-> Data Archive: finalizing layout...' }
-            );
-
-            progress.finish('OK - Data Archive ready');
+            });
         });
     }
 
-    /** Placeholder mode — empty main space until Hero Biography is built out. */
-    async runHeroBiographyComponents(isAutoLoad = false) {
+    /** @deprecated Use {@link runDataWorkshopComponents} */
+    async runBiographyComponents(isAutoLoad = false) {
+        return this.runDataWorkshopComponents(isAutoLoad);
+    }
+
+    async runGalleryComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
-            mode: 'heroBiography',
+            mode: ATLAS_MODE.GALLERY,
             runBtnId: 'runHeroBiographyBtn',
-            startMessage: '>> Starting Hero Biography...',
-            successMessage: 'OK - Hero Biography ready',
-            errorPrefix: 'Error in Hero Biography load',
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.GALLERY]} load`,
             isAutoLoad,
         }, async () => {
-            await mountHeroBiographyMode();
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.GALLERY],
+                mountStageId: 'loadContent',
+                mountStageLabel: 'loading hero filters and layout',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} ready`,
+                mountFn: () => mountGalleryMode(),
+            });
         });
     }
 
-    /** Placeholder mode — empty main space until Story Timeline is built out. */
-    async runStoryTimelineComponents(isAutoLoad = false) {
+    /** @deprecated Use {@link runGalleryComponents} */
+    async runHeroBiographyComponents(isAutoLoad = false) {
+        return this.runGalleryComponents(isAutoLoad);
+    }
+
+    async openStoryView() {
+        await this.runStoryComponents();
+    }
+
+    /** @deprecated Use {@link openStoryView} */
+    async openStoryTimelineView() {
+        return this.openStoryView();
+    }
+
+    /** Story mode — main chronology Event Manager. */
+    async runStoryComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
-            mode: 'storyTimeline',
+            mode: ATLAS_MODE.STORY,
             runBtnId: 'runStoryTimelineBtn',
-            startMessage: '>> Starting Story Timeline...',
-            successMessage: 'OK - Story Timeline ready',
-            errorPrefix: 'Error in Story Timeline load',
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.STORY]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.STORY]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.STORY]} load`,
             isAutoLoad,
         }, async () => {
-            await mountStoryTimelineMode();
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.STORY],
+                mountStageId: 'embedTimeline',
+                mountStageLabel: 'loading story timeline',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.STORY]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.STORY]} ready`,
+                mountFn: async () => {
+                    await mountStoryMode({
+                        onCancel: () => this.killStoryComponents(true),
+                    });
+                },
+            });
         });
     }
 
-    /** Placeholder mode — empty main space until Dialogue Theater is built out. */
+    /** @deprecated Use {@link runStoryComponents} */
+    async runStoryTimelineComponents(isAutoLoad = false) {
+        return this.runStoryComponents(isAutoLoad);
+    }
+
     async runDialogueTheaterComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
-            mode: 'dialogueTheater',
+            mode: ATLAS_MODE.DIALOGUE_THEATER,
             runBtnId: 'runDialogueTheaterBtn',
-            startMessage: '>> Starting Dialogue Theater...',
-            successMessage: 'OK - Dialogue Theater ready',
-            errorPrefix: 'Error in Dialogue Theater load',
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]} load`,
             isAutoLoad,
         }, async () => {
-            await mountDialogueTheaterMode();
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER],
+                mountStageId: 'mountShell',
+                mountStageLabel: 'mounting Dialogue Theater shell',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]} ready`,
+                mountFn: () => mountDialogueTheaterMode(),
+            });
         });
     }
 
-    /** Placeholder mode — empty main space until Official Resources is built out. */
-    async runOfficialResourcesComponents(isAutoLoad = false) {
+    async runOfficialArchiveComponents(isAutoLoad = false) {
         await enterMode(this._modeContext(), {
-            mode: 'officialResources',
+            mode: ATLAS_MODE.OFFICIAL_ARCHIVE,
             runBtnId: 'runOfficialResourcesBtn',
-            startMessage: '>> Starting Official Resources...',
-            successMessage: 'OK - Official Resources ready',
-            errorPrefix: 'Error in Official Resources load',
+            startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]} ready`,
+            errorPrefix: `Error in ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]} load`,
             isAutoLoad,
         }, async () => {
-            await mountOfficialResourcesMode();
+            await runStagedLinearModeLoad({
+                modeLabel: MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE],
+                mountStageId: 'mountShell',
+                mountStageLabel: 'mounting Official Archive shell',
+                startMessage: `>> Starting ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]}...`,
+                finishMessage: `OK - ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]} ready`,
+                mountFn: () => mountOfficialArchiveMode(),
+            });
         });
+    }
+
+    /** @deprecated Use {@link runOfficialArchiveComponents} */
+    async runOfficialResourcesComponents(isAutoLoad = false) {
+        return this.runOfficialArchiveComponents(isAutoLoad);
     }
 
     /**
@@ -322,40 +363,41 @@ export class ModeOrchestrator {
         );
     }
 
-    /**
-     * Exit Worldview mode.
-     * @see killGlobeMode in `Interactive-Worldview/worldview-mode-entry/WorldviewModeLifecycle.js`
-     */
-    async killGlobeComponents() {
-        await killGlobeMode(this._globeModeContext());
+    async killWorldComponents() {
+        await killGlobeMode(this._worldModeContext());
     }
 
-    /** Build the context object that the Globe mode lifecycle needs. */
-    _globeModeContext() {
+    /** @deprecated Use {@link killWorldComponents} */
+    async killGlobeComponents() {
+        return this.killWorldComponents();
+    }
+
+    _worldModeContext() {
         return {
             loadedComponents: this.loadedComponents,
             loaders: this.loaders,
             unloaders: this.unloaders,
             killers: this._killers,
-            restoreMainMenu: (preserveNewsTicker) => this.restoreMainMenu(preserveNewsTicker)
+            restoreMainMenu: (preserveNewsTicker) => this.restoreMainMenu(preserveNewsTicker),
         };
     }
 
-    /**
-     * Kill all Glossary Components
-     * Exits Codex mode and restores main menu
-     */
-    async killGlossaryComponents() {
+    /** @deprecated Use {@link _worldModeContext} */
+    _globeModeContext() {
+        return this._worldModeContext();
+    }
+
+    async killCodexComponents() {
         await exitMode(this._modeContext(), {
-            mode: 'glossary',
-            startMessage: 'Killing all Glossary Components...',
-            successMessage: 'OK - All Glossary Components killed!'
+            mode: ATLAS_MODE.CODEX,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.CODEX]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.CODEX]} exited!`,
         }, async () => {
             if (window.unloadGlobeBase && typeof window.unloadGlobeBase === 'function') {
                 try {
                     await window.unloadGlobeBase({ preserveEventsUi: false });
                 } catch (err) {
-                    console.warn('Error unloading globe base during glossary kill:', err);
+                    console.warn('Error unloading globe base during Codex kill:', err);
                 }
             }
             if (window.CodexModeService && typeof window.CodexModeService.clearCodexShellForGlobeInit === 'function') {
@@ -364,66 +406,83 @@ export class ModeOrchestrator {
         });
     }
 
-    /**
-     * Exit Data Archive mode. Tears down the embedded shell via
-     * `Data-Archive/archive-mode/ArchiveModeMount.js` and either restores the
-     * main menu or stays where the user is (when switching directly to
-     * another mode).
-     *
-     * @param {boolean} [restoreMenu=true]
-     */
+    /** @deprecated Use {@link killCodexComponents} */
+    async killGlossaryComponents() {
+        return this.killCodexComponents();
+    }
+
+    async killDataWorkshopComponents(restoreMenu = true) {
+        await exitMode(this._modeContext(), {
+            mode: ATLAS_MODE.DATA_WORKSHOP,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DATA_WORKSHOP]} exited!`,
+            restoreMenu,
+        }, async () => {
+            await exitDataArchive({ restoreMenu });
+        });
+    }
+
+    /** @deprecated Use {@link killDataWorkshopComponents} */
     async killBiographyComponents(restoreMenu = true) {
+        return this.killDataWorkshopComponents(restoreMenu);
+    }
+
+    async killGalleryComponents(restoreMenu = true) {
         await exitMode(this._modeContext(), {
-            mode: 'biography',
-            startMessage: 'Exiting Data Archive...',
-            successMessage: 'OK - Data Archive exited!',
-            restoreMenu
+            mode: ATLAS_MODE.GALLERY,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.GALLERY]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.GALLERY]} exited!`,
+            restoreMenu,
         }, async () => {
-            await exitDataArchive();
+            await unmountGalleryMode();
         });
     }
 
+    /** @deprecated Use {@link killGalleryComponents} */
     async killHeroBiographyComponents(restoreMenu = true) {
+        return this.killGalleryComponents(restoreMenu);
+    }
+
+    async killStoryComponents(restoreMenu = true) {
         await exitMode(this._modeContext(), {
-            mode: 'heroBiography',
-            startMessage: 'Exiting Hero Biography...',
-            successMessage: 'OK - Hero Biography exited!',
+            mode: ATLAS_MODE.STORY,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.STORY]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.STORY]} exited!`,
             restoreMenu,
         }, async () => {
-            await unmountHeroBiographyMode();
+            await unmountStoryMode({ restoreMenu });
         });
     }
 
+    /** @deprecated Use {@link killStoryComponents} */
     async killStoryTimelineComponents(restoreMenu = true) {
-        await exitMode(this._modeContext(), {
-            mode: 'storyTimeline',
-            startMessage: 'Exiting Story Timeline...',
-            successMessage: 'OK - Story Timeline exited!',
-            restoreMenu,
-        }, async () => {
-            await unmountStoryTimelineMode();
-        });
+        return this.killStoryComponents(restoreMenu);
     }
 
     async killDialogueTheaterComponents(restoreMenu = true) {
         await exitMode(this._modeContext(), {
-            mode: 'dialogueTheater',
-            startMessage: 'Exiting Dialogue Theater...',
-            successMessage: 'OK - Dialogue Theater exited!',
+            mode: ATLAS_MODE.DIALOGUE_THEATER,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.DIALOGUE_THEATER]} exited!`,
             restoreMenu,
         }, async () => {
             await unmountDialogueTheaterMode();
         });
     }
 
-    async killOfficialResourcesComponents(restoreMenu = true) {
+    async killOfficialArchiveComponents(restoreMenu = true) {
         await exitMode(this._modeContext(), {
-            mode: 'officialResources',
-            startMessage: 'Exiting Official Resources...',
-            successMessage: 'OK - Official Resources exited!',
+            mode: ATLAS_MODE.OFFICIAL_ARCHIVE,
+            startMessage: `Exiting ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]}...`,
+            successMessage: `OK - ${MODE_LABEL[ATLAS_MODE.OFFICIAL_ARCHIVE]} exited!`,
             restoreMenu,
         }, async () => {
-            await unmountOfficialResourcesMode();
+            await unmountOfficialArchiveMode();
         });
+    }
+
+    /** @deprecated Use {@link killOfficialArchiveComponents} */
+    async killOfficialResourcesComponents(restoreMenu = true) {
+        return this.killOfficialArchiveComponents(restoreMenu);
     }
 }

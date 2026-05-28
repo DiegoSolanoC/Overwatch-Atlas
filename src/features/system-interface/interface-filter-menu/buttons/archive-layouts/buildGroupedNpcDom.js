@@ -3,7 +3,7 @@
  * then manifest NPC chips in archive sort order.
  */
 
-import { resolveNpcCategoryFromArchiveRow } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
+import { resolveNpcCategoryFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 import { createFilterButton } from '../createFilterButton.js';
 import { matchNpcManifestToArchiveRowName } from '../filterKeyMapping.js';
 import { getNpcsArchiveRowsForFilterGrouping } from './archiveLayoutSnapshots.js';

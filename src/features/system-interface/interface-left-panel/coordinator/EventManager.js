@@ -110,6 +110,11 @@ class EventManager {
         return result;
     }
 
+    _isBioDataArchiveSource() {
+        const arch = this.dataService?.getArchiveSource?.() ?? 'story';
+        return arch === 'heroes' || arch === 'factions' || arch === 'npcs' || arch === 'locations';
+    }
+
     async switchStoryArchiveSource(archiveId) {
         if (!this.dataService?.setArchiveSource) return;
         this.dataService.setArchiveSource(archiveId);
@@ -119,6 +124,9 @@ class EventManager {
             window.FilterService.invalidateBioArchiveFilterLayouts();
         }
         this.renderEvents();
+        if (typeof this.applyPerPageSettings === 'function') {
+            this.applyPerPageSettings();
+        }
     }
 
     _resetSearchInputs() {
@@ -133,7 +141,7 @@ class EventManager {
     _resetStoryArchiveListState() {
         this._resetSearchInputs();
         this.currentPage = 1;
-        this.showAllEventsInManager = false;
+        this.showAllEventsInManager = this._isBioDataArchiveSource();
         if (this.eventItemVariantIndices?.clear) {
             this.eventItemVariantIndices.clear();
         }

@@ -1,4 +1,4 @@
-import { EARTH_GLOBE_LIGHT_LAYER } from '../../../Interactive-Worldview/worldview-shared-assets/constants/WorldviewLightingConstants.js';
+import { EARTH_GLOBE_LIGHT_LAYER } from '../../../world/worldview-shared-assets/constants/WorldviewLightingConstants.js';
 import { useOrbitPanelForStationShipMarkers } from '../../interface-platform-input/useOrbitPanelForStationShipMarkers.js';
 
 export function stationShipOnOrbitPanel(sceneModel, locationType) {

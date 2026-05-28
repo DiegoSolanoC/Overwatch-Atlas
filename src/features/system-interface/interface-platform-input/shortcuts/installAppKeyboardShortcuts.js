@@ -135,7 +135,7 @@ function handleLetterToggle(lower, e) {
     }
     if (lower === 'h') {
         if (
-            document.getElementById('atlasHeroBiographyHost') &&
+            document.getElementById('atlasGalleryHost') &&
             clickIfEnabled('heroBiographyChipStripToggle')
         ) {
             consumeEvent(e);

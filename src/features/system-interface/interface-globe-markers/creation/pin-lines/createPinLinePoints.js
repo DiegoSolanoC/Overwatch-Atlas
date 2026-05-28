@@ -1,4 +1,4 @@
-import { latLonToVector3 } from '../../../../Interactive-Worldview/worldview-shared-assets/utils/WorldviewGeometry.js';
+import { latLonToVector3 } from '../../../../world/worldview-shared-assets/utils/WorldviewGeometry.js';
 import { useOrbitPanelForStationShipMarkers } from '../../../interface-platform-input/useOrbitPanelForStationShipMarkers.js';
 
 /**

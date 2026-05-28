@@ -31,8 +31,8 @@ Unlike Windows, GitHub Pages serves files from a **case-sensitive** filesystem. 
 
 ## Button layouts (desktop and mobile)
 
-- **Globe/pagination**: `src/styles/features/worldview/globe.css`, `src/styles/features/connection-codex/codex.css`, `src/styles/features/event-system/event-pagination.css`.
-- **Zoom, music, palette, event manager, filters, etc.**: `src/styles/entry.css`, `src/styles/features/worldview/globe.css`, `src/styles/mobile/viewport.css` (via `src/styles/mobile.css`).
+- **Globe/pagination**: `src/styles/features/world/globe.css`, `src/styles/features/codex/codex.css`, `src/styles/features/event-system/event-pagination.css`.
+- **Zoom, music, palette, event manager, filters, etc.**: `src/styles/entry.css`, `src/styles/features/world/globe.css`, `src/styles/mobile/viewport.css` (via `src/styles/mobile.css`).
 - All loaded through `src/styles/app.css` and `src/styles/entry.css` with relative imports; no absolute URLs.
 
 ## Before you push

@@ -7,7 +7,7 @@
  * No DOM, no globe, no manager dependencies — every helper takes a plain
  * event object and returns a primitive. The legacy global
  * **`window.EventTimelineHelpers`** is kept (consumed by `event-system/render`,
- * the hover badge, the era preview theme, and `connection-codex`) so the
+ * the hover badge, the era preview theme, and `codex`) so the
  * file move from `integration/EventTimelineHelpers.js` to
  * `utils/eventTimelineFields.js` is invisible to runtime callers.
  */

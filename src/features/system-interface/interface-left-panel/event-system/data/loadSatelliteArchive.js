@@ -12,7 +12,7 @@
  */
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
-import { readNpcCategoryFieldsFromArchiveRow } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
+import { readNpcCategoryFieldsFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /** Manifest / filter PNG spellings for rows saved under legacy names. */
 const NPC_ARCHIVE_NAME_CANON = Object.freeze({

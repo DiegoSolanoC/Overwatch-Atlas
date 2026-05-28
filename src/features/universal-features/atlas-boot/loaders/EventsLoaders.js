@@ -16,7 +16,7 @@ import {
     withUnloadLifecycle,
     checkAlreadyLoaded
 } from '../../atlas-shared-ui/loading/LoadingLifecycle.js';
-import { requireGlobeBase } from '../../../Interactive-Worldview/worldview-mode-entry/WorldviewRequireGlobe.js';
+import { requireGlobeBase } from '../../../world/worldview-mode-entry/WorldviewRequireGlobe.js';
 import { removeElementsByIds } from '../../atlas-shared-ui/dom/removeElement.js';
 import { updateStatus } from '../../atlas-mode-runtime/statusFeed.js';
 import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js';

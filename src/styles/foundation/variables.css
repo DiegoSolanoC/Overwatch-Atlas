@@ -137,9 +137,13 @@
     --scrollbar-thumb-nulled: rgba(179, 136, 255, 0.65);
     --scrollbar-thumb-nulled-hover: rgba(179, 136, 255, 0.85);
     
-    /* Layout Constants */
-    --desktop-scale: 0.67;
-    --desktop-scale-inverse: 149.25%; /* 100% / 0.67 */
+    /*
+     * Global UI scale on `body` (see foundation/base.css).
+     * 0.5025 ≈ 0.67 × 0.75 — matches authoring with ~67% site scale + Chrome at 75% zoom.
+     * Keep the browser at 100%; adjust only this variable for global size.
+     */
+    --desktop-scale: 0.5025;
+    --desktop-scale-inverse: 199.004975%; /* 100% / 0.5025 */
     --header-height: 60px;
     /* Core bar height before title-badge extension; body overrides --header-height to painted chrome bottom */
     --header-inner-height: 60px;

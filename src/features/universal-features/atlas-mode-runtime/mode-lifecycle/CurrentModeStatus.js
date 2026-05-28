@@ -1,19 +1,17 @@
 /**
- * Single source of truth for the persisted "current mode" of the app
- * (`'menu' | 'globe' | 'glossary' | 'biography' | 'heroBiography' | 'storyTimeline' | 'dialogueTheater' | 'officialResources'`).
- * Stored in `localStorage`
- * under one key so the loader, orchestrator, and helpers all agree on what
- * mode the app thinks it's in across reloads. A missing value means `'menu'`.
+ * Single source of truth for the persisted "current mode" of the app.
+ * Stored in `localStorage` under one key so the loader, orchestrator, and
+ * helpers all agree on what mode the app thinks it's in across reloads.
+ *
+ * Canonical ids: see `../atlasModes.js` (`world`, `codex`, `dataWorkshop`, …).
  */
+
+import { ATLAS_MODE, normalizeAtlasMode } from '../atlasModes.js';
 
 const CURRENT_MODE_STORAGE_KEY = 'currentMode';
 
 /**
- * Reads the persisted mode. Returns the raw stored value, or `null` if unset
- * or `localStorage` is unavailable. For a defaulted, normalized value use
- * {@link getCurrentModeOrMenu}.
- *
- * @returns {string | null}
+ * @returns {string | null} Raw stored value (may be a legacy id).
  */
 export function getCurrentMode() {
     try {
@@ -24,30 +22,23 @@ export function getCurrentMode() {
 }
 
 /**
- * Reads the persisted mode and normalizes it: missing → `'menu'`, lower-cased.
- *
- * @returns {string}
+ * @returns {import('../atlasModes.js').AtlasModeId | 'menu'}
  */
 export function getCurrentModeOrMenu() {
-    return (getCurrentMode() || 'menu').toString().toLowerCase();
+    return normalizeAtlasMode(getCurrentMode() || ATLAS_MODE.MENU);
 }
 
 /**
- * Persists the active mode. Pass `'menu'` when returning to the hub.
- *
- * @param {string} mode
+ * @param {string} mode Canonical or legacy mode id (normalized before persist).
  */
 export function setCurrentMode(mode) {
     try {
-        localStorage.setItem(CURRENT_MODE_STORAGE_KEY, mode);
+        localStorage.setItem(CURRENT_MODE_STORAGE_KEY, normalizeAtlasMode(mode));
     } catch (_) {
         /* storage unavailable — ignore */
     }
 }
 
-/**
- * Removes the persisted mode (used on fresh page loads and after killing a mode).
- */
 export function clearCurrentMode() {
     try {
         localStorage.removeItem(CURRENT_MODE_STORAGE_KEY);

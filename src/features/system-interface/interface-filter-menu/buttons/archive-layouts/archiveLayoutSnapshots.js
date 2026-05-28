@@ -1,4 +1,4 @@
-import { mapNpcArchiveRowsForGrouping } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
+import { mapNpcArchiveRowsForGrouping } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /**
  * The grouped Heroes / Factions filter layouts need access to the archive

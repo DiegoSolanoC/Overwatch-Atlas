@@ -2,45 +2,26 @@
  * ModeSwitcher — the public mode-switch API exposed on `window`.
  *
  * Exports `appModeSwitch(targetMode)`, the single entry point used by the
- * header hub and any cross-feature code that needs to swap modes. Given a
- * target (`'globe' | 'glossary' | 'biography' | 'menu'`, plus the alias
- * `'timeline'` for `'globe'`), this:
- *   1. Unloads the currently active mode's assets.
- *   2. Loads the target mode's assets.
- *   3. Fires the `appmodechange` event (via `broadcastModeChange`) so the
- *      rest of the app can react.
- *
- * Biography is a "coming soon" placeholder — selecting it reroutes to the
- * menu and surfaces a status-line notice. The persisted-mode value stays
- * `'menu'` in that case.
- *
- * Note on Codex / Glossary: both `'codex'` and `'glossary'` are valid values
- * for the persisted current mode (Codex is set by `CodexModeService`, while
- * Glossary is set when the orchestrator runs the glossary loader). Either
- * value resolves to the same teardown path here.
- *
- * Renamed from `appModeSwitch.js` — the file now matches its conceptual
- * role rather than the exported function it contains. Lives in
- * `ComponentSetUp/` because it's a runtime cross-mode primitive (sibling
- * to `broadcastModeChange.js` and `ModeMutualExclusion.js`), not a
- * boot-time concern. `LoadingOrchestrator` still publishes the bound
- * `appModeSwitch` on `window` so non-module callers can invoke it.
+ * header hub and any cross-feature code that needs to swap modes.
  */
 
+import { ATLAS_MODE, isAtlasMode, normalizeAtlasMode } from '../atlasModes.js';
 import {
     getCurrentModeOrMenu,
-    setCurrentMode
+    setCurrentMode,
 } from './CurrentModeStatus.js';
 import { broadcastModeChange } from './broadcastModeChange.js';
-import { updateStatus } from '../statusFeed.js';
 import { killPlaceholderModeIfActive } from '../../atlas-header/triggerHomeExit.js';
 
-const VALID_LOAD_TARGETS = new Set(['globe', 'glossary', 'biography']);
+const VALID_LOAD_TARGETS = new Set([
+    ATLAS_MODE.WORLD,
+    ATLAS_MODE.CODEX,
+    ATLAS_MODE.DATA_WORKSHOP,
+]);
 
 function normalizeTarget(targetMode) {
-    const requested = (targetMode || '').toString().toLowerCase();
-    const normalized = (requested === 'timeline') ? 'globe' : requested;
-    return VALID_LOAD_TARGETS.has(normalized) ? normalized : 'menu';
+    const requested = normalizeAtlasMode(targetMode);
+    return VALID_LOAD_TARGETS.has(requested) ? requested : ATLAS_MODE.MENU;
 }
 
 async function unloadCurrentMode(currentMode, effectiveNext) {
@@ -48,64 +29,50 @@ async function unloadCurrentMode(currentMode, effectiveNext) {
         return;
     }
 
-    if (currentMode === 'globe') {
-        await window.killGlobeComponents?.();
+    if (isAtlasMode(currentMode, ATLAS_MODE.WORLD)) {
+        await window.killWorldComponents?.();
         return;
     }
-    if (currentMode === 'codex' || currentMode === 'glossary') {
-        // When switching from Codex/Glossary straight into Globe we skip
-        // the explicit teardown: the Globe load path calls
-        // `clearCodexShellForGlobeInit()` (see GlobeBaseHelpers.js), which
-        // wipes the Codex DOM and removes the `codex-mode-active` class.
-        // Calling `killGlossaryComponents` here would just duplicate work
-        // and add UI flicker.
-        if (effectiveNext !== 'globe') {
-            await window.killGlossaryComponents?.();
+    if (isAtlasMode(currentMode, ATLAS_MODE.CODEX)) {
+        if (effectiveNext !== ATLAS_MODE.WORLD) {
+            await window.killCodexComponents?.();
         }
         return;
     }
-    if (currentMode === 'biography') {
-        await window.killBiographyComponents?.();
+    if (isAtlasMode(currentMode, ATLAS_MODE.DATA_WORKSHOP)) {
+        await window.killDataWorkshopComponents?.();
         await window.restoreMainMenu?.();
         return;
     }
-    // Already in menu (or unknown); ensure menu visible.
     await window.restoreMainMenu?.();
 }
 
 async function loadTargetMode(effectiveNext) {
-    if (effectiveNext === 'globe') {
-        await window.runGlobeComponents?.(false);
+    if (effectiveNext === ATLAS_MODE.WORLD) {
+        await window.runWorldComponents?.(false);
         return;
     }
-    if (effectiveNext === 'glossary') {
-        await window.runGlossaryComponents?.(false);
+    if (effectiveNext === ATLAS_MODE.CODEX) {
+        await window.runCodexComponents?.(false);
         return;
     }
     await window.restoreMainMenu?.();
-    setCurrentMode('menu');
+    setCurrentMode(ATLAS_MODE.MENU);
 }
 
 export async function appModeSwitch(targetMode) {
     const next = normalizeTarget(targetMode);
-    // Biography is still a placeholder — reroute to menu but remember the
-    // original request so we can show the "coming soon" status message.
-    const isBiographyPlaceholder = (next === 'biography');
-    const effectiveNext = isBiographyPlaceholder ? 'menu' : next;
     const current = getCurrentModeOrMenu();
 
     try {
-        await unloadCurrentMode(current, effectiveNext);
-        await loadTargetMode(effectiveNext);
-        if (isBiographyPlaceholder) {
-            updateStatus('Biography mode is coming soon — returning to main menu.', 'info');
-        }
-        broadcastModeChange(effectiveNext);
+        await unloadCurrentMode(current, next);
+        await loadTargetMode(next);
+        broadcastModeChange(next);
     } catch (e) {
-        console.error(`appModeSwitch failed transitioning ${current} -> ${effectiveNext} (requested: ${next}):`, e);
+        console.error(`appModeSwitch failed transitioning ${current} -> ${next}:`, e);
         try {
             await window.restoreMainMenu?.();
         } catch (_) { /* ignore secondary failure */ }
-        broadcastModeChange('menu');
+        broadcastModeChange(ATLAS_MODE.MENU);
     }
 }

@@ -22,8 +22,8 @@ body {
     overflow-x: hidden;
     transform: scale(var(--desktop-scale));
     transform-origin: top left;
-    width: var(--desktop-scale-inverse); /* 100% / 0.67 to maintain full width */
-    height: var(--desktop-scale-inverse); /* 100% / 0.67 to maintain full height */
+    width: var(--desktop-scale-inverse);
+    height: var(--desktop-scale-inverse);
 }
 
 html {

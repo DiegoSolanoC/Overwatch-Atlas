@@ -10,12 +10,12 @@
 
 /* App shell */
 @import url('shell/layout.css?v=18');
-@import url('features/worldview/globe-map-launch-hub.css?v=4');
+@import url('features/world/globe-map-launch-hub.css?v=4');
 
-/* Interactive Worldview + Connection Codex */
-@import url('features/worldview/globe.css?v=54');
-@import url('features/connection-codex/codex.css?v=2');
-@import url('features/worldview/map-2d-lite.css?v=13');
+/* World + Codex */
+@import url('features/world/globe.css?v=54');
+@import url('features/codex/codex.css?v=2');
+@import url('features/world/map-2d-lite.css?v=13');
 
 /* Color palettes */
 @import url('themes/gray-palette.css?v=15');
@@ -33,7 +33,7 @@
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=62');
-@import url('features/hero-biography/hero-biography-mode.css?v=43');
+@import url('features/gallery/gallery-mode.css?v=44');
 
 /* Event system */
 @import url('features/event-system/variants.css?v=9');

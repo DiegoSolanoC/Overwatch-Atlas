@@ -75,7 +75,7 @@ Mode switches may play **mode-switch SFX** and show the loading overlay briefly 
 ### 3.4 Header and hub styling
 
 - The **header** uses a deliberate **stylized** layout: hub buttons for major destinations, consistent with the rest of the chrome.
-- **Interactive Worldview** is labeled in code as a timeline entry whose subtitle explains **3D globe or 2D map** (`src/features/Interactive-Worldview/entry/GlobeMapLaunchChoice.js`).
+- **Interactive Worldview** is labeled in code as a timeline entry whose subtitle explains **3D globe or 2D map** (`src/features/world/entry/GlobeMapLaunchChoice.js`).
 
 ---
 

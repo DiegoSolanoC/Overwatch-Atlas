@@ -15,6 +15,7 @@
  * Renamed from `HeaderHubModeButtons.js`.
  */
 
+import { ATLAS_MODE, isAtlasMode, normalizeAtlasMode } from '../atlas-mode-runtime/atlasModes.js';
 import {
     getCurrentModeOrMenu,
     setCurrentMode
@@ -36,7 +37,7 @@ function applyExitButtonVisibility(rightHub, effective) {
         exitBtn.style.display = 'none';
         return;
     }
-    const show = (effective === 'globe') && isTimelineActuallyLoaded();
+    const show = isAtlasMode(effective, ATLAS_MODE.WORLD) && isTimelineActuallyLoaded();
     exitBtn.style.display = show ? '' : 'none';
 }
 
@@ -45,12 +46,14 @@ function applyActiveModeHighlight(hubs, effective) {
         const btns = Array.from(hub.querySelectorAll('.header-hub-btn'));
         btns.forEach((b) => b.classList.remove('header-hub-btn--active'));
     });
-    if (effective === 'globe') {
+    if (isAtlasMode(effective, ATLAS_MODE.WORLD)) {
         const leftHub = document.getElementById('headerHub');
-        const timelineBtn = leftHub ? leftHub.querySelector('.header-hub-btn[data-mode="globe"]') : null;
+        const timelineBtn = leftHub
+            ? leftHub.querySelector('.header-hub-btn[data-mode="world"], .header-hub-btn[data-mode="globe"]')
+            : null;
         if (timelineBtn) timelineBtn.classList.add('header-hub-btn--active');
     }
-    if (effective === 'codex') {
+    if (isAtlasMode(effective, ATLAS_MODE.CODEX)) {
         const codexBtn = document.getElementById('codexToggle');
         if (codexBtn) codexBtn.classList.add('header-hub-btn--active');
     }
@@ -58,10 +61,11 @@ function applyActiveModeHighlight(hubs, effective) {
 
 function buildSetActive(hubs) {
     return (mode) => {
-        const requested = (mode === 'globe') ? 'globe' : (mode === 'menu' ? 'menu' : mode);
-        // Refresh-while-in-globe edge case: localStorage may say "globe" but
-        // the timeline assets aren't actually loaded yet. Fall back to menu.
-        const effective = (requested === 'globe' && !isTimelineActuallyLoaded()) ? 'menu' : requested;
+        const requested = normalizeAtlasMode(mode === 'menu' ? ATLAS_MODE.MENU : mode);
+        const effective =
+            isAtlasMode(requested, ATLAS_MODE.WORLD) && !isTimelineActuallyLoaded()
+                ? ATLAS_MODE.MENU
+                : requested;
 
         applyActiveModeHighlight(hubs, effective);
 

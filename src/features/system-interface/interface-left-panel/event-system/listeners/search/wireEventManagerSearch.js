@@ -151,6 +151,9 @@ export function wireEventManagerSearch(listenerService) {
     wireCountryInput(ctx);
     wireClearAndSelection(ctx);
     const applyPerPageSettings = wirePerPageControls(ctx);
+    if (eventManager) {
+        eventManager.applyPerPageSettings = applyPerPageSettings;
+    }
     applyPerPageSettings();
 
     // Initial prediction state + selection sync (in case checkbox defaulted on).

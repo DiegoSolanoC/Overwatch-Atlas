@@ -1,7 +1,7 @@
 /**
  * Prev/next event buttons for standalone pagination.
  */
-import { isHeroBiographyDockFilterActive } from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+import { isHeroBiographyDockFilterActive } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 
 /** @param {object} ctx */

@@ -7,17 +7,17 @@
  * the original method's 	his).
  */
 
-import { isHeroBiographyDockFilterActive } from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+import { isHeroBiographyDockFilterActive } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import {
     onHeroBiographyDockEventHover,
     onHeroBiographyDockEventHoverEnd,
-} from '../../../../hero-biography/hero-biography-mode/heroBiographyDockLookHover.js';
+} from '../../../../gallery/gallery-mode/heroBiographyDockLookHover.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
     centerCameraOnMarker,
     restoreCameraFromThumbnailHover
-} from '../../../../Interactive-Worldview/worldview-globe-3d/views/WorldviewThumbnailHoverCamera.js';
+} from '../../../../world/worldview-globe-3d/views/WorldviewThumbnailHoverCamera.js';
 import {
     updateStandaloneSliderTicks,
     eventRootSlotMissingDescription,

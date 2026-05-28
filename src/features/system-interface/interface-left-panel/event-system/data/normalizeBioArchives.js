@@ -2,7 +2,7 @@ import {
     connectionRowHasNarrativeText,
     normalizeBioArchiveConnectionRow,
 } from '../../../interface-shared/bio-archive/bioArchiveConnectionRanges.js';
-import { resolveNpcCategoryFromArchiveRow } from '../../../../Data-Archive/archive-category-npcs/ArchiveNpcOrdering.js';
+import { resolveNpcCategoryFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /**
  * Normalization helpers for bio archives (Heroes / Factions / NPCs):

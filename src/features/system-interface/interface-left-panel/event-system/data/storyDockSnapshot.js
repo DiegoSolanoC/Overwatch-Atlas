@@ -1,7 +1,7 @@
 /**
  * storyDockSnapshot — backs the pagination dock at the bottom of the screen.
  *
- * The dock always shows story-timeline thumbnails, even when the Event Manager is currently
+ * The dock always shows story thumbnails, even when the Event Manager is currently
  * displaying a satellite archive (heroes / factions / npcs / locations). When the user
  * leaves story for a satellite, `archiveRouting.setArchiveSourceOn` captures the current
  * main-timeline list into `dataService._storyDockEventsSnapshot`; this module reads it.

@@ -28,8 +28,8 @@ const FILES = {
         locations: publicPath('story-archive', 'locations.json'),
     },
     connectionCodex: {
-        codexLabels: publicPath('connection-codex', 'codex-labels.json'),
-        connections: publicPath('connection-codex', 'connections.json'),
+        codexLabels: publicPath('codex', 'codex-labels.json'),
+        connections: publicPath('codex', 'connections.json'),
     },
     worldview: {
         locations: publicPath('worldview', 'locations.json'),

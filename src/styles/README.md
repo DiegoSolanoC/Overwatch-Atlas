@@ -11,8 +11,8 @@ Entry points (linked from `index.html`):
 |--------|----------------|
 | `foundation/` | Variables, reset, animations, scrollbar utilities |
 | `shell/` | Header, footer, main layout |
-| `features/worldview/` | Globe stage, WebGL chrome, map 2D lite |
-| `features/connection-codex/` | Codex canvas, edges, toolbar, nodes |
+| `features/world/` | Globe stage, WebGL chrome, map 2D lite |
+| `features/codex/` | Codex canvas, edges, toolbar, nodes |
 | `features/event-system/` | Events list, pagination dock/float, panels |
 | `features/story/` | Story viewer, hero |
 | `features/music/` | Music panel |

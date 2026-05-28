@@ -6,7 +6,7 @@ JSON is grouped by **feature** (aligned with `src/features/`). Paths are defined
 |--------|--------|---------|
 | `event-system/` | `timeline-events.json` | Story timeline / Event Manager “story” bucket (was `events.json`) |
 | `story-archive/` | `heroes.json`, `factions.json`, `npcs.json`, `locations.json` | Data Archive satellite lists (was `story-archive-*.json`) |
-| `connection-codex/` | `codex-labels.json`, `connections.json` | Connection Codex graph + transport links |
+| `codex/` | `codex-labels.json`, `connections.json` | Connection Codex graph + transport links |
 | `worldview/` | `locations.json`, `location-display-names.json`, `earth-lights-hubs.json` | Globe / map geography & night lights |
 | `platform/` | `manifest.json` | Filter icons, music catalog (`npm run build:pages` regenerates) |
 

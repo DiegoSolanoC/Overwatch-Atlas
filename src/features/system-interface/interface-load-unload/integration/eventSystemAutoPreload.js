@@ -4,7 +4,7 @@
  * - `timelineMarkerSync.js` (classic script in index.html) — installs `window.TimelineMarkerSync`.
  * - `syncEventsWithGlobeCore.js` — copies EventManager events into the globe data model.
  *
- * For the Data Archive **app mode** (category hub, embedded panel), see `Data-Archive/archive-mode/`.
+ * For the Data Archive **app mode** (category hub, embedded panel), see `data-workshop/archive-mode/`.
  */
 export function isEventSystemLoadOutActive() {
     return typeof document !== 'undefined'

@@ -1,16 +1,5 @@
 /**
  * HomeButtonHandler — wires the universal "Home" header button.
- *
- * Clicking Home plays the mode-switch SFX, hides the various event/image
- * overlays, gracefully unloads whatever mode is active (Worldview /
- * Codex / Data Archive), restores the main menu, and clears persisted
- * mode so a refresh also lands on the menu.
- *
- * The Event System Load Out (filters panel, pagination dock, news ticker,
- * standalone slide) is **not** torn down on Home — it's mounted at boot
- * and stays alive for the lifetime of the page.
- *
- * Designed to be attached once during `loadHeaderModeButtons`.
  */
 
 import {
@@ -23,7 +12,8 @@ import {
   getCurrentModeOrMenu,
   clearCurrentMode,
 } from "../atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js";
-import { teardownGlobeMapChooserHub } from "../../Interactive-Worldview/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js";
+import { ATLAS_MODE, isAtlasMode } from "../atlas-mode-runtime/atlasModes.js";
+import { teardownGlobeMapChooserHub } from "../../world/worldview-mode-entry/entry/WorldviewMapLaunchChoice.js";
 import { playModeSwitchSound } from "../atlas-sound-effects/playModeSwitchSound.js";
 import {
   killPlaceholderModeIfActive,
@@ -48,21 +38,21 @@ async function unloadActiveModeBeforeReturningHome(currentMode) {
   }
 
   if (
-    currentMode === "biography" &&
-    typeof window.killBiographyComponents === "function"
+    isAtlasMode(currentMode, ATLAS_MODE.DATA_WORKSHOP) &&
+    typeof window.killDataWorkshopComponents === "function"
   ) {
-    await window.killBiographyComponents();
+    await window.killDataWorkshopComponents();
   }
 
   if (
-    (currentMode === "glossary" ||
+    (isAtlasMode(currentMode, ATLAS_MODE.CODEX) ||
       document.body.classList.contains("codex-mode-active")) &&
-    typeof window.killGlossaryComponents === "function"
+    typeof window.killCodexComponents === "function"
   ) {
-    await window.killGlossaryComponents();
+    await window.killCodexComponents();
   }
 
-  if (currentMode === "globe") {
+  if (isAtlasMode(currentMode, ATLAS_MODE.WORLD)) {
     teardownGlobeMapChooserHub();
     const runBtn = document.getElementById("runGlobeBtn");
     if (runBtn) runBtn.disabled = false;
@@ -70,19 +60,12 @@ async function unloadActiveModeBeforeReturningHome(currentMode) {
 
   if (
     window.globeController &&
-    typeof window.killGlobeComponents === "function"
+    typeof window.killWorldComponents === "function"
   ) {
-    await window.killGlobeComponents();
+    await window.killWorldComponents();
   }
 }
 
-/**
- * Attach the Home-button click handler. Idempotent caller's responsibility:
- * `loadHeaderModeButtons` only attaches this once because it bails if the
- * button already exists.
- *
- * @param {HTMLElement} homeButton - the `#homeBtn` element to bind
- */
 export function attachHomeButtonHandler(homeButton) {
   homeButton.addEventListener("click", async function (e) {
     e.stopPropagation();

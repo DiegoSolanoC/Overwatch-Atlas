@@ -11,7 +11,8 @@
 
 export function isGlobeTimelineMode() {
     const mode = (typeof localStorage !== 'undefined' && localStorage.getItem('currentMode')) || '';
-    return mode.toString().toLowerCase() === 'globe' && !!window.globeController;
+    const normalized = mode.toString().toLowerCase().replace(/[\s_-]/g, '');
+    return (normalized === 'world' || normalized === 'globe' || normalized === 'timeline') && !!window.globeController;
 }
 
 export function isCodexModeActive() {

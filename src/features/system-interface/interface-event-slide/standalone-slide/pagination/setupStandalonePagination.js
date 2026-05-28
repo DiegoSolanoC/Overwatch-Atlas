@@ -10,7 +10,7 @@
 import {
     getDockTimelineEventsForPagination,
     isHeroBiographyDockFilterActive,
-} from '../../../../hero-biography/hero-biography-mode/heroBiographyDockTimeline.js';
+} from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import {
     updateStandaloneSliderTicks,

@@ -1,4 +1,5 @@
 import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
+import { isDataWorkshopLocalDev } from './dataWorkshopLocalDev.js';
 import { MenuButtonMaker } from './MenuButtonMaker.js';
 import { MenuSideButtonMaker } from './MenuSideButtonMaker.js';
 
@@ -8,14 +9,17 @@ const UNDIVIDED_WEBTOON_URL =
 /**
  * Main menu layout: one row of four primary modes + side column on the right.
  *
- * Side 2×2: [Dialogue Theater, Read Undivided] | [Data Archive, Official Resources].
- * Modes row: Worldview, Codex, Story, Bios.
+ * Side 2×2: [Read Undivided, Dialogue Theater] | [Data Workshop (localhost only), Official Archive].
+ * On GitHub Pages, Data Workshop is omitted and Read Undivided spans two tile heights.
+ * Modes row: World, Codex, Story, Gallery.
  *
  * Click handlers are wired in `./ModeActivation.js`.
  *
  * @returns {object}
  */
 export function MenuButtonArrangement() {
+    const dataWorkshopDev = isDataWorkshopLocalDev();
+
     const stack = document.createElement('div');
     stack.className = 'main-menu-buttons-stack';
 
@@ -47,51 +51,55 @@ export function MenuButtonArrangement() {
         description: 'Listen to Character Interactions',
     });
 
-    const archivesBtn = MenuSideButtonMaker({
-        id: 'runBiographyBtn',
-        title: 'Data Archive',
-        imagePath: 'src/assets/images/Menu/Data%20Archive.png',
-        label: 'Data Archive',
-        description: 'Browse Factions, Characters and Places',
-    });
+    /** @type {HTMLDivElement|null} */
+    let archivesBtn = null;
+    if (dataWorkshopDev) {
+        archivesBtn = MenuSideButtonMaker({
+            id: 'runBiographyBtn',
+            title: 'Data Workshop',
+            imagePath: 'src/assets/images/Menu/Data%20Archive.png',
+            label: 'Data Workshop',
+            description: 'Browse Factions, Characters and Places',
+        });
+    }
 
     const officialResourcesBtn = MenuSideButtonMaker({
         id: 'runOfficialResourcesBtn',
-        title: 'Official Resources',
+        title: 'Official Archive',
         imagePath: 'src/assets/images/Menu/Official%20Resources.png',
-        label: 'Official Resources',
+        label: 'Official Archive',
         description: 'Links to official Overwatch sites and media',
     });
 
     const worldviewBtn = MenuButtonMaker({
         id: 'runGlobeBtn',
-        title: 'Interactive Worldview',
+        title: 'World',
         imagePath: 'src/assets/images/Menu/Interactive%20Worldview.png',
-        label: 'Interactive Worldview',
+        label: 'World',
         description: 'Visualize the story through a 3D globe or 2D map',
     });
 
     const codexBtn = MenuButtonMaker({
         id: 'runGlossaryBtn',
-        title: 'Connection Codex',
+        title: 'Codex',
         imagePath: 'src/assets/images/Menu/Connection%20Codex.png',
-        label: 'Connection Codex',
+        label: 'Codex',
         description: 'Study how every detail connects',
     });
 
     const storyBtn = MenuButtonMaker({
         id: 'runStoryTimelineBtn',
-        title: 'Story Timeline',
+        title: 'Story',
         imagePath: 'src/assets/images/Menu/Story%20Timeline.png',
-        label: 'Story Timeline',
+        label: 'Story',
         description: 'Experience the Narrative in Order',
     });
 
     const biosBtn = MenuButtonMaker({
         id: 'runHeroBiographyBtn',
-        title: 'Hero Biography',
+        title: 'Gallery',
         imagePath: 'src/assets/images/Menu/Hero%20Biography.png',
-        label: 'Hero Biography',
+        label: 'Gallery',
         description: 'Learn about every Hero and their Journey',
     });
 
@@ -100,14 +108,21 @@ export function MenuButtonArrangement() {
 
     const sideColLeft = document.createElement('div');
     sideColLeft.className = 'main-menu-side-grid__col';
-    sideColLeft.setAttribute('aria-label', 'Theater and Undivided');
-    sideColLeft.appendChild(theaterBtn);
+    sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
     sideColLeft.appendChild(readUndividedBtn);
+    sideColLeft.appendChild(theaterBtn);
 
     const sideColRight = document.createElement('div');
-    sideColRight.className = 'main-menu-side-grid__col';
-    sideColRight.setAttribute('aria-label', 'Archive and official resources');
-    sideColRight.appendChild(archivesBtn);
+    sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
+    if (dataWorkshopDev) {
+        sideColRight.setAttribute('aria-label', 'Data Workshop and Official Archive');
+        sideColRight.appendChild(archivesBtn);
+    } else {
+        sideColRight.setAttribute('aria-label', 'Official Archive');
+        sideGrid.classList.add('main-menu-side-grid--no-data-workshop');
+        readUndividedBtn.classList.add('main-menu-side-btn-wrapper--double');
+        officialResourcesBtn.classList.add('main-menu-side-btn-wrapper--slot-bottom');
+    }
     sideColRight.appendChild(officialResourcesBtn);
 
     sideGrid.appendChild(sideColLeft);

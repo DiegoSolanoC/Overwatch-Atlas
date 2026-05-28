@@ -357,7 +357,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     display: none !important;
 }
 
-/* Search row: Categories back + five archive icons (after #eventsSearchInput) */
+/* Search row: Categories back + four archive icons (after #eventsSearchInput) */
 .story-viewer-panel-embedded .story-archive-search-category-strip {
     display: inline-flex;
     flex-direction: row;
@@ -619,6 +619,13 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     line-height: 1.4;
 }
 
+/* Data Workshop bio archives: always list every entry — no per-page / show-all controls */
+#eventsManagePanel.data-workshop-bio-archive .events-per-page-group,
+#eventsManagePanel.data-workshop-bio-archive label.events-search-checkbox:has(#eventsShowAllCheckbox),
+#eventsManagePanel.data-workshop-bio-archive #storyArchiveRightToolbar .story-archive-page-unit {
+    display: none !important;
+}
+
 /* Secondary row: Show all / Per page / Clear live in bottom bar; hidden “Use filter selection” may be the only node */
 .story-viewer-panel-embedded .events-manage-search-row--secondary {
     width: 100%;
@@ -641,7 +648,7 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     visibility: visible;
 }
 
-/* First screen: category tiles (Heroes / Factions / NPCs / Locations / Story) */
+/* First screen: category tiles (Heroes / Factions / NPCs / Locations) */
 .story-viewer-container--hub {
     justify-content: center;
     align-items: center;
@@ -651,14 +658,19 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     position: relative;
     z-index: 2;
     display: grid;
-    /* Right 2×2 (Heroes / Factions / NPCs / Locations) gets more width than Story */
-    grid-template-columns: minmax(260px, 0.88fr) minmax(380px, 1.62fr);
-    gap: clamp(28px, 3.8vw, 52px);
-    width: min(1920px, calc(100% - 16px));
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 2.8vw, 36px);
+    width: min(960px, calc(100% - 16px));
     max-width: 100%;
     padding: 20px 8px 32px;
     box-sizing: border-box;
     align-items: stretch;
+    justify-items: stretch;
+}
+
+/* Data Archive hub: four bio categories in one wide column (no Story tile). */
+#storyArchiveCategoryHub.story-archive-category-hub--bio-only {
+    width: min(1120px, calc(100% - 16px));
 }
 
 /* Match globe/map chooser intro copy (see globe-map-launch-hub-heading / -lead). */
@@ -702,9 +714,8 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
 }
 
 @media (min-width: 1400px) {
-    #storyArchiveCategoryHub.story-archive-category-hub {
-        width: min(2200px, calc(100% - 12px));
-        grid-template-columns: minmax(280px, 0.78fr) minmax(420px, 1.85fr);
+    #storyArchiveCategoryHub.story-archive-category-hub--bio-only {
+        width: min(1280px, calc(100% - 12px));
     }
 }
 
@@ -717,6 +728,12 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(18px, 2.6vw, 30px);
+}
+
+#storyArchiveCategoryHub.story-archive-category-hub--bio-only .story-archive-category-hub__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 2.2vw, 24px);
+    width: 100%;
 }
 
 .story-archive-category-hub__tile {
@@ -750,6 +767,11 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
 
 .story-archive-category-hub__tile--story {
     min-height: clamp(440px, 58vmin, 620px);
+}
+
+#storyArchiveCategoryHub.story-archive-category-hub--bio-only .story-archive-category-hub__tile {
+    min-height: clamp(140px, 22vmin, 220px);
+    width: 100%;
 }
 
 .story-archive-category-hub__tile:hover {
@@ -858,9 +880,12 @@ body.color-palette-gray .story-archive-category-hub__tile:hover {
 
 @media (max-width: 900px) {
     #storyArchiveCategoryHub.story-archive-category-hub {
-        grid-template-columns: 1fr;
         width: min(960px, calc(100% - 16px));
         max-width: 100%;
+    }
+
+    #storyArchiveCategoryHub.story-archive-category-hub--bio-only {
+        width: min(100%, calc(100% - 16px));
     }
 
     .story-archive-category-hub__tile--story {

@@ -281,13 +281,24 @@ export function wireClearAndSelection(ctx) {
  * user changes pagination preferences. Returns the `applyPerPageSettings` function so the
  * orchestrator can run it once on mount to apply initial state.
  */
+function isBioDataArchiveEventManager(eventManager) {
+    if (!eventManager?.dataService?.getArchiveSource) return false;
+    const arch = eventManager.dataService.getArchiveSource();
+    return arch === 'heroes' || arch === 'factions' || arch === 'npcs' || arch === 'locations';
+}
+
 export function wirePerPageControls(ctx) {
     const { perPageInput, showAllCheckbox, eventManager } = ctx;
 
     const applyPerPageSettings = () => {
         if (!eventManager) return;
-        const showAll = !!(showAllCheckbox && showAllCheckbox.checked);
+        const bioArchive = isBioDataArchiveEventManager(eventManager);
+        let showAll = bioArchive || !!(showAllCheckbox && showAllCheckbox.checked);
         eventManager.showAllEventsInManager = showAll;
+        if (showAllCheckbox) {
+            showAllCheckbox.checked = showAll;
+            showAllCheckbox.disabled = bioArchive;
+        }
         if (perPageInput) {
             perPageInput.disabled = showAll;
             perPageInput.style.opacity = showAll ? '0.5' : '';

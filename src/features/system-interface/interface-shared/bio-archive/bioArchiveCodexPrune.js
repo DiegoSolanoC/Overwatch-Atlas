@@ -3,7 +3,7 @@
  * (matches scripts/server-bio-codex-sync.js). Narrative rows without `showInCodex` are kept.
  */
 
-import { fetchCanonicalCodexJson } from '../../../connection-codex/codex-data/load/CodexJsonRepository.js';
+import { fetchCanonicalCodexJson } from '../../../codex/codex-data/load/CodexJsonRepository.js';
 import {
     buildDirectCodexBioPairKeySet,
     pairKeyForBioArchiveConnection,

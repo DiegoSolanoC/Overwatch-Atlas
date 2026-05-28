@@ -266,18 +266,20 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
     box-sizing: border-box;
 }
 
-/* Match side-tile bleed; slight extra inset so art isn’t over-cropped */
+/* Same bleed/counter-skew as story-archive hub tiles — parent clip handles corners */
 .main-menu-modes-row .main-menu-mode-btn .main-menu-image-container {
-    top: -4px;
-    left: -16%;
-    right: -12%;
+    top: 0;
+    left: 0;
+    right: auto;
     bottom: var(--main-menu-side-desc-h);
-    width: auto;
-    margin: 0;
+    width: 124%;
     height: auto;
-    border-radius: 16px 16px 0 0;
+    margin-left: -12%;
+    padding: 0;
+    display: block;
+    border-radius: 0;
     overflow: hidden;
-    transform: skewX(11deg);
+    transform: skewX(11deg) scale(1.06);
     transform-origin: center center;
 }
 
@@ -344,6 +346,23 @@ body.app-timeline-default.event-system-loaded .main-menu-buttons::after {
 }
 
 .main-menu-side-grid__col .main-menu-side-btn-wrapper:nth-child(2) {
+    z-index: 1;
+    transform: translate(calc(-1 * var(--side-stack-step-x)), var(--side-stack-step-y));
+}
+
+/* GitHub Pages: no Data Workshop — Read Undivided fills two tile rows */
+.main-menu-side-grid--no-data-workshop .main-menu-side-btn-wrapper--double .main-menu-side-btn {
+    height: calc(
+        2 * (var(--side-tile-body-h) + var(--main-menu-side-desc-h)) + var(--side-tile-stack-gap)
+    );
+    max-height: none;
+}
+
+.main-menu-side-grid--no-data-workshop .main-menu-side-grid__col--resources {
+    justify-content: flex-end;
+}
+
+.main-menu-side-grid--no-data-workshop .main-menu-side-btn-wrapper--slot-bottom {
     z-index: 1;
     transform: translate(calc(-1 * var(--side-stack-step-x)), var(--side-stack-step-y));
 }

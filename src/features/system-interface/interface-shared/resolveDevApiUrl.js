@@ -1,7 +1,7 @@
 /**
  * Resolves repo-relative dev API paths against the current document URL so
  * `api/events` works on GitHub Pages project roots, nested paths, and LAN :8000.
- * Loaded as a classic script before EventDataService / Codex (see `features/connection-codex/codex-canvas/CodexCanvasEntry.js`).
+ * Loaded as a classic script before EventDataService / Codex (see `features/codex/codex-canvas/CodexCanvasEntry.js`).
  */
 (function (global) {
     function resolveDevApiUrl(path) {

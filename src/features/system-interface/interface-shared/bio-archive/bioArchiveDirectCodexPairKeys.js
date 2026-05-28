@@ -2,8 +2,8 @@
  * Direct Codex cords only — used to validate `showInCodex` archive rows (not junction reachability).
  */
 
-import { findCodexNodeIdForBioEntity } from '../../../connection-codex/codex-edge-cords/topology/CodexBioEntityMatching.js';
-import { normalizeBioNameLoose } from '../../../connection-codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { findCodexNodeIdForBioEntity } from '../../../codex/codex-edge-cords/topology/CodexBioEntityMatching.js';
+import { normalizeBioNameLoose } from '../../../codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
 
 /**
  * @param {string} arch

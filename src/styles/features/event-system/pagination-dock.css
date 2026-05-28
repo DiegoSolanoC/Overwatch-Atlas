@@ -241,8 +241,8 @@
     }
     
     /* 
-     * Body is scaled to 0.67 with width/height at 149.25% to fill viewport.
-     * We need the content to exactly fill 100vh visually (which is 149.25vh in body coordinates).
+     * Body is scaled via --desktop-scale with width/height at --desktop-scale-inverse to fill viewport.
+     * We need the content to exactly fill 100vh visually (inverse % in body coordinates).
      * Setting max-height prevents flex from distributing extra space.
      */
     body:has(#paginationDock) {
@@ -276,7 +276,7 @@
         --event-info-dock-border-overlap: 50px;
         /* Filters/music mirrored cut overlap uses separate geometry; tune independently. */
         --filters-music-dock-border-overlap: 50px;
-        max-height: var(--desktop-scale-inverse, 149.25%) !important;
+        max-height: var(--desktop-scale-inverse, 199.004975%) !important;
         overflow: hidden !important;
     }
     

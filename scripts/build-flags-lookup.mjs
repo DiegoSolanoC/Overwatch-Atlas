@@ -1,5 +1,5 @@
 /**
- * Builds src/features/Interactive-Worldview/data/flagFileByCommonName.js from src/assets/images/Filters/Flags/flags-index.json
+ * Builds src/features/world/data/flagFileByCommonName.js from src/assets/images/Filters/Flags/flags-index.json
  * Run from repo root: node scripts/build-flags-lookup.mjs
  */
 import fs from 'fs';

@@ -12,7 +12,7 @@ import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerF
 import {
     centerCameraOnMarker,
     restoreCameraFromThumbnailHover
-} from '../../../../Interactive-Worldview/worldview-globe-3d/views/WorldviewThumbnailHoverCamera.js';
+} from '../../../../world/worldview-globe-3d/views/WorldviewThumbnailHoverCamera.js';
 import {
     updateStandaloneSliderTicks,
     eventRootSlotMissingDescription,
