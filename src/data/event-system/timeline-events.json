@@ -13509,6 +13509,20 @@
       ]
     },
     {
+      "name": "Deep Sea Deception",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 37.7412,
+      "lon": -25.6756,
+      "image": "",
+      "cityDisplayName": "Atlantic Arcology",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "The Siege of Tokyo",
       "description": "No description available.",
       "locationType": "earth",
