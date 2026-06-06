@@ -134,10 +134,12 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
 
     const addBtn = document.getElementById('addEventBtn');
     const saveBtn = document.getElementById('saveEventsBtn');
+    const importBtn = document.getElementById('importEventsBtn');
     const exportBtn = document.getElementById('exportEventsBtn');
     if (addBtn) addBtn.classList.add('story-viewer-action-btn');
     if (saveBtn) saveBtn.classList.add('story-viewer-action-btn');
     if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
+    if (importBtn) importBtn.classList.add('story-viewer-action-btn');
 
     eventsManagePanel.classList.add('open');
 

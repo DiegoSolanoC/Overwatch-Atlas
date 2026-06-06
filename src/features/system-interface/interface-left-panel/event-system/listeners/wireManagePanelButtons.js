@@ -5,8 +5,9 @@
  *   - Add (`#addEventBtn`), Save (`#saveEventsBtn`), Export (`#exportEventsBtn`),
  *     Import (`#importEventsBtn` + `#importEventsFile`).
  *
- * GitHub Pages disables every "modifying" button (add/save/export/import). Read-only
- * deployments only get the open/close pair.
+ * On static deploy (GitHub Pages), Add is hidden. Save / Export / Import stay available
+ * in Data Workshop bio archives (heroes, factions, npcs, locations) for localStorage +
+ * JSON handoff workflows.
  *
  * The toggle button is **cloned to drop existing listeners** before re-attaching to avoid
  * double-firing on hot reloads / re-renders. After cloning, the function looks the panel up
@@ -16,6 +17,42 @@
  */
 
 import { dismissAllPanelsExcept } from "../../../interface-shared/dismissAllPanelsExcept.js";
+import {
+  isArchiveImportExportEnabled,
+  isArchiveStructuralEditingEnabled,
+} from "../../../interface-info-display/isEventSlideEditDevHost.js";
+
+/**
+ * Show/hide Add / Save / Export / Import based on the active archive + host.
+ * Call after switching archive source (e.g. Data Workshop category change).
+ */
+export function syncArchiveManagePanelActionVisibility() {
+  const canMutateStructure = isArchiveStructuralEditingEnabled();
+  const canImportExport = isArchiveImportExportEnabled();
+  const addBtn = document.getElementById("addEventBtn");
+  const saveBtn = document.getElementById("saveEventsBtn");
+  const exportBtn = document.getElementById("exportEventsBtn");
+  const importBtn = document.getElementById("importEventsBtn");
+  const importFileInput = document.getElementById("importEventsFile");
+  if (addBtn) addBtn.style.display = canMutateStructure ? "" : "none";
+  if (saveBtn) saveBtn.style.display = canImportExport ? "" : "none";
+  if (exportBtn) exportBtn.style.display = canImportExport ? "" : "none";
+  if (importBtn) importBtn.style.display = canImportExport ? "" : "none";
+  if (importFileInput) {
+    importFileInput.style.display = canImportExport ? "" : "none";
+  }
+}
+
+/**
+ * @param {HTMLElement} el
+ * @param {string} key
+ * @param {(ev: Event) => void} handler
+ */
+function wireManageButtonOnce(el, key, handler) {
+  if (!el || el.dataset[key] === "1") return;
+  el.dataset[key] = "1";
+  el.addEventListener("click", handler);
+}
 
 /**
  * @param {any} listenerService  Owning EventListenerService instance (carries `this.eventManager`).
@@ -97,29 +134,13 @@ export function wireManagePanelButtons(
     });
   }
 
-  const isGitHubPages = eventManager.isGitHubPages
-    ? eventManager.isGitHubPages()
-    : false;
-
-  // ------------------------------------------------------------------------
-  // Add / Save / Export / Import (all hidden on read-only GitHub Pages builds)
-  // ------------------------------------------------------------------------
-
   const addBtn = document.getElementById("addEventBtn");
   if (addBtn) {
-    if (isGitHubPages) {
-      addBtn.style.display = "none";
-    } else {
-      const addBtnClone = addBtn.cloneNode(true);
-      addBtn.parentNode.replaceChild(addBtnClone, addBtn);
-      const newAddBtn = document.getElementById("addEventBtn");
-      newAddBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (eventManager.addBlankEventAndOpen)
-          eventManager.addBlankEventAndOpen();
-      });
-    }
+    wireManageButtonOnce(addBtn, "atlasAddWired", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (eventManager.addBlankEventAndOpen) eventManager.addBlankEventAndOpen();
+    });
   } else {
     console.warn(
       "EventListenerService: addEventBtn not found! Make sure events-manage-panel HTML exists.",
@@ -128,44 +149,35 @@ export function wireManagePanelButtons(
 
   const saveBtn = document.getElementById("saveEventsBtn");
   if (saveBtn) {
-    if (isGitHubPages) {
-      saveBtn.style.display = "none";
-    } else {
-      saveBtn.addEventListener("click", () => {
-        if (eventManager.saveEvents) eventManager.saveEvents();
-      });
-    }
+    wireManageButtonOnce(saveBtn, "atlasSaveWired", () => {
+      if (eventManager.saveEvents) eventManager.saveEvents();
+    });
   }
 
   const exportBtn = document.getElementById("exportEventsBtn");
   if (exportBtn) {
-    if (isGitHubPages) {
-      exportBtn.style.display = "none";
-    } else {
-      exportBtn.addEventListener("click", () => {
-        if (eventManager.exportEvents) eventManager.exportEvents();
-      });
-    }
+    wireManageButtonOnce(exportBtn, "atlasExportWired", () => {
+      if (eventManager.exportEvents) eventManager.exportEvents();
+    });
   }
 
   const importBtn = document.getElementById("importEventsBtn");
   const importFileInput = document.getElementById("importEventsFile");
-  if (importBtn && importFileInput) {
-    if (isGitHubPages) {
-      importBtn.style.display = "none";
-      importFileInput.style.display = "none";
-    } else {
-      importBtn.addEventListener("click", () => {
-        importFileInput.click();
-      });
-      importFileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (file && eventManager.importEvents) {
-          eventManager.importEvents(file);
-          // Reset value so the same file can be re-imported.
-          e.target.value = "";
-        }
-      });
-    }
+  if (importBtn) {
+    wireManageButtonOnce(importBtn, "atlasImportWired", () => {
+      importFileInput?.click();
+    });
   }
+  if (importFileInput && importFileInput.dataset.atlasImportFileWired !== "1") {
+    importFileInput.dataset.atlasImportFileWired = "1";
+    importFileInput.addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (file && eventManager.importEvents) {
+        eventManager.importEvents(file);
+        e.target.value = "";
+      }
+    });
+  }
+
+  syncArchiveManagePanelActionVisibility();
 }

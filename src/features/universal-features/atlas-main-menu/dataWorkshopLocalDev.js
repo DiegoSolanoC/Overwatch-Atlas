@@ -1,11 +1,11 @@
 /**
- * Data Workshop is available only when running on loopback (local dev server).
+ * Data Workshop availability (main menu + mode orchestrator).
+ * Available on localhost and GitHub Pages; static deploy uses localStorage + import/export.
  */
 
 /**
  * @returns {boolean}
  */
 export function isDataWorkshopLocalDev() {
-    const h = window.location.hostname;
-    return h === 'localhost' || h === '127.0.0.1';
+    return true;
 }

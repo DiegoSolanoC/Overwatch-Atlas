@@ -2,7 +2,7 @@
  * importExportEvents — JSON `{ events: [...] }` round-trips for the active archive.
  *
  *   - `exportEvents` serializes `dataService.events` and triggers a browser download
- *     (`events-export.json`).
+ *     (`<archive>-export.json`, e.g. `npcs-export.json`).
  *
  *   - `importEvents(file)` reads a user-selected `File` (via `FileReader`), validates it
  *     has an `events` array, replaces `dataService.events`, normalizes if we're on a
@@ -16,13 +16,23 @@
 
 import { isMainTimelineArchive } from './archiveRouting.js';
 
+/**
+ * @param {import('./EventDataService.js').default} dataService
+ * @returns {string}
+ */
+function exportFilenameForArchive(dataService) {
+    const source = dataService.getArchiveSource?.() || 'events';
+    const safe = String(source).replace(/[^a-z0-9_-]+/gi, '-').replace(/^-+|-+$/g, '') || 'events';
+    return `${safe}-export.json`;
+}
+
 export function exportEvents(dataService) {
     const dataStr = JSON.stringify({ events: dataService.events }, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'events-export.json';
+    link.download = exportFilenameForArchive(dataService);
     link.click();
     URL.revokeObjectURL(url);
 }

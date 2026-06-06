@@ -3,7 +3,7 @@
  *   one JSON file + one localStorage key per archive, no merge rules with the main timeline.
  *
  * Source-of-truth order:
- *   GitHub Pages           → always file (clear localStorage if file is empty)
+ *   GitHub Pages           → prefer non-empty localStorage (Data Workshop import/export workflow)
  *   Local (any port)       → prefer non-empty localStorage so slide edits survive reload
  *   Dev server (:8000)     → fall back to bundled JSON only when localStorage is empty, then seed LS
  *
@@ -229,25 +229,8 @@ export async function loadSatelliteArchive(dataService) {
     }
 
     const savedEvents = localStorage.getItem(storageKey);
-    const isGitHubPages = dataService.isGitHubPages();
 
-    if (isGitHubPages) {
-        dataService.events = Array.isArray(fileEvents) ? fileEvents : [];
-        const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-        dataService._normalizeSatelliteEventsInPlace();
-        pruneSatellitePhantomConnectionsInPlace(dataService);
-        if (removedDupes > 0) dataService.saveEvents();
-        if (dataService.events.length === 0) {
-            try {
-                localStorage.removeItem(storageKey);
-            } catch (_) { /* ignore */ }
-        } else {
-            dataService.saveEvents();
-        }
-        return { events: dataService.events, source: 'file', shouldSync: false };
-    }
-
-    // Local http(s): without repo write API (e.g. Live Server on :5500), prefer localStorage so edits survive reload.
+    // Local http(s) and GitHub Pages: prefer non-empty localStorage so workshop edits survive reload.
     let parsedLocal = null;
     if (savedEvents) {
         try {

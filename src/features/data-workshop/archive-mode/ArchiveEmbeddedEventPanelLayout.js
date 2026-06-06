@@ -223,10 +223,12 @@ export function detachEventsManagePanelFromStoryArchive(eventsManagePanel) {
 
     const addBtn = document.getElementById('addEventBtn');
     const saveBtn = document.getElementById('saveEventsBtn');
+    const importBtn = document.getElementById('importEventsBtn');
     const exportBtn = document.getElementById('exportEventsBtn');
     if (addBtn) addBtn.classList.remove('story-viewer-action-btn');
     if (saveBtn) saveBtn.classList.remove('story-viewer-action-btn');
     if (exportBtn) exportBtn.classList.remove('story-viewer-action-btn');
+    if (importBtn) importBtn.classList.remove('story-viewer-action-btn');
     document.getElementById('eventsSearchClear')?.classList.remove('story-viewer-action-btn');
     document.getElementById('eventsShowAllCheckbox')?.closest('label.events-search-checkbox')?.classList.remove('story-viewer-bottom-bar-control');
     document.getElementById('eventsPerPageInput')?.closest('.events-per-page-group')?.classList.remove('story-viewer-bottom-bar-control');

@@ -21,6 +21,11 @@ import {
     getHeroArchiveBirthdayAgeDisplay,
     loadBioArchiveEvents,
 } from './heroBiographyArchiveData.js';
+import {
+    configureHeroBiographyArchiveIoBar,
+    createGalleryArchiveIoButtonGroup,
+    destroyGalleryArchiveIoControls,
+} from './heroBiographyArchiveIoBar.js';
 
 /** @type {HTMLElement | null} */
 let intelPanelEl = null;
@@ -130,7 +135,9 @@ let connectionsSaveInFlight = false;
 
 let loadGeneration = 0;
 
-const canEdit = isHeroBiographyLocalDev();
+function canEditGalleryArchive() {
+    return isHeroBiographyLocalDev();
+}
 
 /**
  * @param {HTMLElement | null} panel
@@ -221,10 +228,10 @@ async function refreshConnectionsCanvas() {
 
     if (!connectionsCanvasController) {
         connectionsCanvasController = createGalleryConnectionCanvas(connectionsCanvasMountEl, {
-            canEdit,
+            canEdit: canEditGalleryArchive(),
             onDirty: () => {
                 const saveBtn = connectionsCanvasController?.getSaveButton();
-                if (saveBtn) saveBtn.hidden = !canEdit;
+                if (saveBtn) saveBtn.hidden = !canEditGalleryArchive();
             },
         });
         const canvasSaveBtn = connectionsCanvasController.getSaveButton();
@@ -352,7 +359,7 @@ function exitAllEditModes() {
 }
 
 function beginIntelEditMode(entry, descriptionText) {
-    if (!canEdit || !currentFilterKey || currentCategory !== 'heroes') return;
+    if (!canEditGalleryArchive() || !currentFilterKey || currentCategory !== 'heroes') return;
     if (isConnectionsEditing) exitConnectionsEditMode();
     intelEditDraft = {
         description: descriptionText || '',
@@ -364,7 +371,7 @@ function beginIntelEditMode(entry, descriptionText) {
 }
 
 function beginConnectionsEditMode() {
-    if (!canEdit || !currentFilterKey || currentCategory !== 'heroes' || !currentEntry) return;
+    if (!canEditGalleryArchive() || !currentFilterKey || currentCategory !== 'heroes' || !currentEntry) return;
     if (isIntelEditing) exitIntelEditMode();
 
     const editor = window.BioArchiveConnectionsEditor;
@@ -384,7 +391,7 @@ function beginConnectionsEditMode() {
 
 async function handleIntelSave() {
     if (
-        !canEdit
+        !canEditGalleryArchive()
         || !currentFilterKey
         || currentCategory !== 'heroes'
         || intelSaveInFlight
@@ -441,7 +448,7 @@ async function handleIntelSave() {
 
 async function handleConnectionsSave() {
     if (
-        !canEdit
+        !canEditGalleryArchive()
         || !currentFilterKey
         || currentCategory !== 'heroes'
         || connectionsSaveInFlight
@@ -500,7 +507,7 @@ function handleConnectionsCancel() {
 
 async function handleCanvasLayoutSave() {
     if (
-        !canEdit
+        !canEditGalleryArchive()
         || !currentFilterKey
         || canvasLayoutSaveInFlight
         || !connectionsCanvasController
@@ -566,64 +573,98 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsHeading.className = 'gallery-mode__archive-side-panel-heading';
     connectionsHeading.textContent = 'Connections';
 
-    if (canEdit) {
-        intelToolbarEl = document.createElement('div');
-        intelToolbarEl.className = 'gallery-mode__archive-description-toolbar';
+    configureHeroBiographyArchiveIoBar({
+        getActiveCategory: () => currentCategory,
+    });
 
-        intelEditBtn = document.createElement('button');
-        intelEditBtn.type = 'button';
-        intelEditBtn.className = 'gallery-mode__archive-description-btn';
-        intelEditBtn.textContent = 'Edit';
-        intelEditBtn.addEventListener('click', async () => {
-            if (!currentFilterKey || currentCategory !== 'heroes') return;
-            clearBioArchiveEventsCache('heroes');
-            const events = await loadBioArchiveEvents('heroes');
-            const entry = findBioArchiveEntryByFilterKey('heroes', currentFilterKey, events);
-            const description = getHeroArchiveBioDescription(entry) || '';
-            beginIntelEditMode(entry, description);
-        });
+    const intelArchiveIo = createGalleryArchiveIoButtonGroup(hostEl);
+    const connectionsArchiveIo = createGalleryArchiveIoButtonGroup(hostEl);
 
-        intelSaveBtn = document.createElement('button');
-        intelSaveBtn.type = 'button';
-        intelSaveBtn.className = 'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--primary';
-        intelSaveBtn.textContent = 'Save';
-        intelSaveBtn.hidden = true;
-        intelSaveBtn.addEventListener('click', () => void handleIntelSave());
+    intelToolbarEl = document.createElement('div');
+    intelToolbarEl.className = 'gallery-mode__archive-description-toolbar';
 
-        intelCancelBtn = document.createElement('button');
-        intelCancelBtn.type = 'button';
-        intelCancelBtn.className = 'gallery-mode__archive-description-btn';
-        intelCancelBtn.textContent = 'Cancel';
-        intelCancelBtn.hidden = true;
-        intelCancelBtn.addEventListener('click', handleIntelCancel);
+    intelEditBtn = document.createElement('button');
+    intelEditBtn.type = 'button';
+    intelEditBtn.className = 'gallery-mode__archive-description-btn';
+    intelEditBtn.textContent = 'Edit';
+    intelEditBtn.addEventListener('click', async () => {
+        if (!currentFilterKey || currentCategory !== 'heroes') return;
+        clearBioArchiveEventsCache('heroes');
+        const events = await loadBioArchiveEvents('heroes');
+        const entry = findBioArchiveEntryByFilterKey('heroes', currentFilterKey, events);
+        const description = getHeroArchiveBioDescription(entry) || '';
+        beginIntelEditMode(entry, description);
+    });
 
-        intelToolbarEl.append(intelEditBtn, intelSaveBtn, intelCancelBtn);
+    intelSaveBtn = document.createElement('button');
+    intelSaveBtn.type = 'button';
+    intelSaveBtn.className = 'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--primary';
+    intelSaveBtn.textContent = 'Save';
+    intelSaveBtn.hidden = true;
+    intelSaveBtn.addEventListener('click', () => void handleIntelSave());
 
-        connectionsToolbarEl = document.createElement('div');
-        connectionsToolbarEl.className = 'gallery-mode__archive-description-toolbar';
+    intelCancelBtn = document.createElement('button');
+    intelCancelBtn.type = 'button';
+    intelCancelBtn.className = 'gallery-mode__archive-description-btn';
+    intelCancelBtn.textContent = 'Cancel';
+    intelCancelBtn.hidden = true;
+    intelCancelBtn.addEventListener('click', handleIntelCancel);
 
-        connectionsEditBtn = document.createElement('button');
-        connectionsEditBtn.type = 'button';
-        connectionsEditBtn.className = 'gallery-mode__archive-description-btn';
-        connectionsEditBtn.textContent = 'Edit';
-        connectionsEditBtn.addEventListener('click', () => beginConnectionsEditMode());
+    intelToolbarEl.append(
+        intelEditBtn,
+        intelArchiveIo.exportBtn,
+        intelArchiveIo.importBtn,
+        intelArchiveIo.saveArchiveBtn,
+        intelSaveBtn,
+        intelCancelBtn,
+    );
 
-        connectionsSaveBtn = document.createElement('button');
-        connectionsSaveBtn.type = 'button';
-        connectionsSaveBtn.className = 'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--primary';
-        connectionsSaveBtn.textContent = 'Save';
-        connectionsSaveBtn.hidden = true;
-        connectionsSaveBtn.addEventListener('click', () => void handleConnectionsSave());
+    connectionsToolbarEl = document.createElement('div');
+    connectionsToolbarEl.className = 'gallery-mode__archive-description-toolbar';
 
-        connectionsCancelBtn = document.createElement('button');
-        connectionsCancelBtn.type = 'button';
-        connectionsCancelBtn.className = 'gallery-mode__archive-description-btn';
-        connectionsCancelBtn.textContent = 'Cancel';
-        connectionsCancelBtn.hidden = true;
-        connectionsCancelBtn.addEventListener('click', handleConnectionsCancel);
+    connectionsEditBtn = document.createElement('button');
+    connectionsEditBtn.type = 'button';
+    connectionsEditBtn.className = 'gallery-mode__archive-description-btn';
+    connectionsEditBtn.textContent = 'Edit';
+    connectionsEditBtn.addEventListener('click', () => beginConnectionsEditMode());
 
-        connectionsToolbarEl.append(connectionsEditBtn, connectionsSaveBtn, connectionsCancelBtn);
+    connectionsSaveBtn = document.createElement('button');
+    connectionsSaveBtn.type = 'button';
+    connectionsSaveBtn.className = 'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--primary';
+    connectionsSaveBtn.textContent = 'Save';
+    connectionsSaveBtn.hidden = true;
+    connectionsSaveBtn.addEventListener('click', () => void handleConnectionsSave());
+
+    connectionsCancelBtn = document.createElement('button');
+    connectionsCancelBtn.type = 'button';
+    connectionsCancelBtn.className = 'gallery-mode__archive-description-btn';
+    connectionsCancelBtn.textContent = 'Cancel';
+    connectionsCancelBtn.hidden = true;
+    connectionsCancelBtn.addEventListener('click', handleConnectionsCancel);
+
+    connectionsToolbarEl.append(
+        connectionsEditBtn,
+        connectionsArchiveIo.exportBtn,
+        connectionsArchiveIo.importBtn,
+        connectionsArchiveIo.saveArchiveBtn,
+        connectionsSaveBtn,
+        connectionsCancelBtn,
+    );
+
+    if (!canEditGalleryArchive()) {
+        intelEditBtn.hidden = true;
+        intelEditBtn.disabled = true;
+        connectionsEditBtn.hidden = true;
+        connectionsEditBtn.disabled = true;
     }
+
+    const intelHeadingBlock = document.createElement('div');
+    intelHeadingBlock.className = 'gallery-mode__archive-side-panel-heading-row';
+    intelHeadingBlock.append(intelHeading, intelToolbarEl);
+
+    const connectionsHeadingBlock = document.createElement('div');
+    connectionsHeadingBlock.className = 'gallery-mode__archive-side-panel-heading-row';
+    connectionsHeadingBlock.append(connectionsHeading, connectionsToolbarEl);
 
     viewBirthdayMetaEl = document.createElement('div');
     viewBirthdayMetaEl.className = 'gallery-mode__archive-birthday-meta';
@@ -720,12 +761,12 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     connectionsEditMount.className = 'gallery-mode__archive-connections-edit-mount';
     connectionsEditEl.append(connectionsEditMount);
 
-    if (intelToolbarEl) intelPanelEl.append(intelHeading, intelToolbarEl);
+    if (intelToolbarEl) intelPanelEl.append(intelHeadingBlock);
     else intelPanelEl.append(intelHeading);
     intelPanelEl.append(intelScrollEl);
 
     if (connectionsToolbarEl) {
-        connectionsPanelEl.append(connectionsHeading, connectionsToolbarEl);
+        connectionsPanelEl.append(connectionsHeadingBlock);
     } else {
         connectionsPanelEl.append(connectionsHeading);
     }
@@ -786,8 +827,12 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
         return;
     }
 
-    if (intelToolbarEl) intelToolbarEl.hidden = !canEdit || !isHero;
-    if (connectionsToolbarEl) connectionsToolbarEl.hidden = !canEdit || !isHero;
+    if (intelToolbarEl) {
+        intelToolbarEl.hidden = !key || cat === 'locations';
+    }
+    if (connectionsToolbarEl) {
+        connectionsToolbarEl.hidden = !key || !supportsConnections;
+    }
 
     if (
         supportsConnections
@@ -827,16 +872,18 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
 
     const hasIntel = !!(description || birthdayDisplay);
 
-    setIntelPanelVisible(hasIntel || (canEdit && isHero) || !isHero);
+    setIntelPanelVisible(hasIntel || (canEditGalleryArchive() && isHero) || !isHero);
     setConnectionsPanelVisible(supportsConnections);
 
-    if (canEdit && intelEditBtn) {
-        intelEditBtn.disabled = !isHero;
+    if (intelEditBtn) {
+        intelEditBtn.hidden = !canEditGalleryArchive() || !isHero;
+        intelEditBtn.disabled = !canEditGalleryArchive() || !isHero;
         intelEditBtn.title = isHero ? 'Edit biography and birthday' : 'Editing is only available for heroes';
     }
-    if (canEdit && connectionsEditBtn) {
-        connectionsEditBtn.disabled = !isHero;
-        connectionsEditBtn.title = isHero ? 'Edit hero connections' : 'Connections editing is only for heroes';
+    if (connectionsEditBtn) {
+        connectionsEditBtn.hidden = !canEditGalleryArchive();
+        connectionsEditBtn.disabled = !canEditGalleryArchive() || !currentEntry;
+        connectionsEditBtn.title = 'Edit connections for this entry';
     }
 }
 
@@ -886,4 +933,5 @@ export function destroyHeroBiographyArchiveDescription() {
     connectionsEmptyEl = null;
     currentEntry = null;
     clearBioArchiveEventsCache();
+    destroyGalleryArchiveIoControls();
 }

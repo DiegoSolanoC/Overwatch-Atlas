@@ -9,8 +9,7 @@
  *   4. Tags the card with search-match classes when the active filter/country search hits.
  *   5. Wires interactions via `wireEventItemInteractions.js` (hover, open, variant cycle).
  *
- * GitHub Pages: drag is disabled, edit affordances skipped, the whole card becomes the
- * "open on globe" target (instead of just the thumb).
+ * GitHub Pages: drag is disabled and the card is view-only except in Data Workshop bio archives.
  *
  * Multi-event handling: the card always renders the **currently-selected variant** (tracked
  * on `eventManager.eventItemVariantIndices`, default 0). Cycling re-renders the card via
@@ -20,6 +19,7 @@
 import { resolveEventItemLocation } from './resolveEventItemLocation.js';
 import { renderEventItemMarkup } from './renderEventItemMarkup.js';
 import { wireEventItemInteractions } from './wireEventItemInteractions.js';
+import { isBioArchiveWorkshopEditingEnabled } from '../../../interface-info-display/isEventSlideEditDevHost.js';
 
 /** @returns {typeof window.FactionArchiveGroupOrderHelpers|null} */
 function factionArchiveGroupOrder() {
@@ -53,8 +53,9 @@ export function createEventItem(renderService, event, index, _allEvents, options
     const item = document.createElement('div');
     item.className = 'event-item';
     const isGitHubPages = eventManager.isGitHubPages ? eventManager.isGitHubPages() : false;
-    if (isGitHubPages) item.classList.add('event-item--view-only');
-    if (!isGitHubPages) item.draggable = true;
+    const isViewOnly = isGitHubPages && !isBioArchiveWorkshopEditingEnabled();
+    if (isViewOnly) item.classList.add('event-item--view-only');
+    if (!isViewOnly) item.draggable = true;
     item.dataset.index = index;
 
     if (options.factionsGroupedList) {
@@ -134,7 +135,7 @@ export function createEventItem(renderService, event, index, _allEvents, options
         displayEvent: resolved.displayEvent,
         index,
         isMultiEvent: resolved.isMultiEvent,
-        isGitHubPages,
+        isViewOnly,
     });
 
     return item;

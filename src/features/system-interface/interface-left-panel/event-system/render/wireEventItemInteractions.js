@@ -24,11 +24,11 @@
  *   displayEvent: Record<string, any>,
  *   index: number,
  *   isMultiEvent: boolean,
- *   isGitHubPages: boolean,
+ *   isViewOnly: boolean,
  * }} ctx
  */
 export function wireEventItemInteractions(ctx) {
-    const { item, eventManager, event, displayEvent, index, isMultiEvent, isGitHubPages } = ctx;
+    const { item, eventManager, event, displayEvent, index, isMultiEvent, isViewOnly } = ctx;
 
     const thumbBlock = item.querySelector('.event-item__thumb-block');
 
@@ -48,7 +48,7 @@ export function wireEventItemInteractions(ctx) {
     }
 
     // Non-GitHub-Pages: clickable thumbnail opens the event on the globe.
-    if (thumbBlock && !isGitHubPages) {
+    if (thumbBlock && !isViewOnly) {
         const openLabel = (displayEvent && displayEvent.name)
             ? `Open event on globe: ${String(displayEvent.name)}`
             : `Open event ${index + 1} on globe`;
@@ -75,7 +75,7 @@ export function wireEventItemInteractions(ctx) {
     }
 
     // GitHub Pages: whole-card is the open target (no edit affordances exist there).
-    if (isGitHubPages) {
+    if (isViewOnly) {
         const label = (displayEvent && displayEvent.name) ? String(displayEvent.name) : (`Event ${index + 1}`);
         item.setAttribute('role', 'button');
         item.setAttribute('tabindex', '0');

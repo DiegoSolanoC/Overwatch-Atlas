@@ -17,8 +17,8 @@ import {
 
 /** @typedef {{ category: string, chips: string[] }} NpcBiographyChipSegment */
 
-/** Top biography row chip count (63 NPCs total → 31 + 32). */
-export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 31;
+/** Top biography row chip count (64 NPCs total → 32 + 32). */
+export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 32;
 
 /**
  * Category order for the flat strip (chips within each category stay name-sorted).
@@ -34,7 +34,7 @@ export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Deadlock',
     'Junkers',
     'Lucheng',
-    'Historical Figures',
+    'Influential Figures',
     'Civilians',
     'Other',
 ]);
@@ -134,7 +134,7 @@ export async function buildNpcBiographyFlatChipRowSegments(manifestNpcs) {
     let topCount = 0;
     let bottomCount = 0;
     const topLimit = NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT;
-    const bottomLimit = 63 - topLimit;
+    const bottomLimit = 64 - topLimit;
 
     /** @type {string[]} */
     const categoryOrder = [];

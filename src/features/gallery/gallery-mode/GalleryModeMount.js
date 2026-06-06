@@ -47,6 +47,8 @@ export async function mountGalleryMode(_options = {}) {
     main.setAttribute('aria-label', 'Hero biography content');
     host.appendChild(main);
 
+    content.appendChild(host);
+
     try {
         await mountHeroBiographyHeroFilterBar(host, main);
     } catch (err) {
@@ -56,8 +58,6 @@ export async function mountGalleryMode(_options = {}) {
         errNote.textContent = 'Could not load hero filters.';
         main.appendChild(errNote);
     }
-
-    content.appendChild(host);
 
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;

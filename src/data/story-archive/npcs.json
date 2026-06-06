@@ -571,14 +571,14 @@
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Anubis",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Aurora",
@@ -594,28 +594,28 @@
           "showInCodex": true
         }
       ],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Balderich",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Bhatt",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Katya",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Mondatta",
@@ -631,28 +631,28 @@
           "showInCodex": true
         }
       ],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Naughton",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Osai",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Portero",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "npcCategory": "Historical Figures"
+      "npcCategory": "Influential Figures"
     },
     {
       "name": "Emily",
@@ -816,6 +816,13 @@
       "relevantLocations": [],
       "connections": [],
       "npcCategory": "Civilians"
+    },
+    {
+      "name": "Palak",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [],
+      "npcCategory": "Influential Figures"
     }
   ]
 }

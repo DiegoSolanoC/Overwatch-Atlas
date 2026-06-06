@@ -264,6 +264,15 @@ body.color-palette-gray .events-manage-title {
     background: rgba(33, 150, 243, 0.5);
 }
 
+.events-manage-action-btn.import-btn {
+    background: rgba(156, 39, 176, 0.3);
+    border-color: rgba(156, 39, 176, 0.6);
+}
+
+.events-manage-action-btn.import-btn:hover {
+    background: rgba(156, 39, 176, 0.5);
+}
+
 /* Search toolbar — outer frame matches .filters-actions + .filters-title */
 .events-manage-controls {
     display: flex;

@@ -41,12 +41,29 @@ import {
     mountHeroBiographyChipStripToggle,
     unmountHeroBiographyChipStripControls,
 } from './heroBiographyChipStripVisibility.js';
+import { configureHeroBiographyArchiveIoBar } from './heroBiographyArchiveIoBar.js';
 
 /** @type {FilterImageService | null} */
 let sessionImageService = null;
 
 /** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
 let activeCategory = 'heroes';
+
+/**
+ * @returns {import('./bioBiographyCategories.js').BioBiographyArchiveCategory}
+ */
+export function getHeroBiographyActiveCategory() {
+    return activeCategory;
+}
+
+/**
+ * Re-render chip strip after archive import (when category matches active tab).
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ */
+export async function refreshHeroBiographyCategoryChipsIfActive(category) {
+    if (normalizeBioBiographyCategory(category) !== activeCategory) return;
+    await renderCategoryChips(activeCategory);
+}
 
 /** @type {HTMLElement | null} */
 let chipsContentEl = null;
@@ -463,6 +480,10 @@ export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
     host.appendChild(strip);
     host._heroBiographyFilterStrip = strip;
     host._heroBiographyActiveCategory = activeCategory;
+
+    configureHeroBiographyArchiveIoBar({
+        refreshCategoryChips: refreshHeroBiographyCategoryChipsIfActive,
+    });
 
     setActiveCategoryTab(categoryRow, activeCategory);
     await renderCategoryChips(activeCategory);

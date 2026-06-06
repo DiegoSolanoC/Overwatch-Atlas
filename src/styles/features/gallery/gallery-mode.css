@@ -142,6 +142,30 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     font-size: 0.88rem;
 }
 
+.gallery-mode__archive-side-panel-heading-row {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(8px, 1vw, 14px);
+    margin: 0 0 clamp(10px, 1.2vh, 14px);
+    padding: 0 0 clamp(8px, 1vh, 12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-mode__archive-side-panel-heading-row .gallery-mode__archive-side-panel-heading {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+}
+
+.gallery-mode__archive-side-panel-heading-row .gallery-mode__archive-description-toolbar {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    flex-wrap: wrap;
+}
+
 .gallery-mode__archive-side-panel-heading {
     flex: 0 0 auto;
     margin: 0 0 clamp(10px, 1.2vh, 14px);
@@ -194,6 +218,21 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 .gallery-mode__archive-description-btn--primary {
     border-color: rgba(100, 180, 255, 0.55);
     color: rgba(200, 230, 255, 0.95);
+}
+
+.gallery-mode__archive-description-btn--save-archive {
+    border-color: rgba(76, 175, 80, 0.55);
+    color: rgba(210, 245, 215, 0.95);
+}
+
+.gallery-mode__archive-description-btn--export {
+    border-color: rgba(33, 150, 243, 0.55);
+    color: rgba(210, 235, 255, 0.95);
+}
+
+.gallery-mode__archive-description-btn--import {
+    border-color: rgba(156, 39, 176, 0.55);
+    color: rgba(240, 215, 245, 0.95);
 }
 
 .gallery-mode__archive-description.is-editing .gallery-mode__archive-description-empty {

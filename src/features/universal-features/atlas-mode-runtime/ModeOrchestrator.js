@@ -20,7 +20,6 @@
  * name was a hangover from that era; it actually orchestrates *modes*.
  */
 
-import { isDataWorkshopLocalDev } from '../atlas-main-menu/dataWorkshopLocalDev.js';
 import { ATLAS_MODE, MODE_LABEL } from './atlasModes.js';
 import { updateStatus } from './statusFeed.js';
 import { runStagedLinearModeLoad } from './linearModeStagedEntry.js';
@@ -165,12 +164,8 @@ export class ModeOrchestrator {
         return this.runCodexComponents(isAutoLoad);
     }
 
-    /** Data Workshop — heroes / factions / NPCs / locations. Localhost only. Story uses {@link runStoryComponents}. */
+    /** Data Workshop — heroes / factions / NPCs / locations. Story uses {@link runStoryComponents}. */
     async runDataWorkshopComponents(isAutoLoad = false) {
-        if (!isDataWorkshopLocalDev()) {
-            updateStatus('Data Workshop is only available in local development', 'warning');
-            return;
-        }
         await enterMode(this._modeContext(), {
             mode: ATLAS_MODE.DATA_WORKSHOP,
             runBtnId: 'runBiographyBtn',

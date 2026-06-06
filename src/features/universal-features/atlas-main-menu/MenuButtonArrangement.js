@@ -1,5 +1,4 @@
 import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
-import { isDataWorkshopLocalDev } from './dataWorkshopLocalDev.js';
 import { MenuButtonMaker } from './MenuButtonMaker.js';
 import { MenuSideButtonMaker } from './MenuSideButtonMaker.js';
 
@@ -9,8 +8,7 @@ const UNDIVIDED_WEBTOON_URL =
 /**
  * Main menu layout: one row of four primary modes + side column on the right.
  *
- * Side 2×2: [Read Undivided, Dialogue Theater] | [Data Workshop (localhost only), Official Archive].
- * On GitHub Pages, Data Workshop is omitted and Read Undivided spans both top columns (wide).
+ * Side 2×2: [Read Undivided, Dialogue Theater] | [Data Workshop, Official Archive].
  * Modes row: World, Codex, Story, Gallery.
  *
  * Click handlers are wired in `./ModeActivation.js`.
@@ -18,8 +16,6 @@ const UNDIVIDED_WEBTOON_URL =
  * @returns {object}
  */
 export function MenuButtonArrangement() {
-    const dataWorkshopDev = isDataWorkshopLocalDev();
-
     const stack = document.createElement('div');
     stack.className = 'main-menu-buttons-stack';
 
@@ -51,17 +47,13 @@ export function MenuButtonArrangement() {
         description: 'Listen to Character Interactions',
     });
 
-    /** @type {HTMLDivElement|null} */
-    let archivesBtn = null;
-    if (dataWorkshopDev) {
-        archivesBtn = MenuSideButtonMaker({
-            id: 'runBiographyBtn',
-            title: 'Data Workshop',
-            imagePath: 'src/assets/images/Menu/Data%20Archive.png',
-            label: 'Data Workshop',
-            description: 'Browse Factions, Characters and Places',
-        });
-    }
+    const archivesBtn = MenuSideButtonMaker({
+        id: 'runBiographyBtn',
+        title: 'Data Workshop',
+        imagePath: 'src/assets/images/Menu/Data%20Archive.png',
+        label: 'Data Workshop',
+        description: 'Browse Factions, Characters and Places',
+    });
 
     const officialResourcesBtn = MenuSideButtonMaker({
         id: 'runOfficialResourcesBtn',
@@ -106,42 +98,20 @@ export function MenuButtonArrangement() {
     const sideGrid = document.createElement('div');
     sideGrid.className = 'main-menu-side-grid';
 
-    /** @type {HTMLDivElement} */
-    let sideColLeft;
-    /** @type {HTMLDivElement} */
-    let sideColRight;
+    const sideColLeft = document.createElement('div');
+    sideColLeft.className = 'main-menu-side-grid__col';
+    sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
+    sideColLeft.appendChild(readUndividedBtn);
+    sideColLeft.appendChild(theaterBtn);
 
-    if (dataWorkshopDev) {
-        sideColLeft = document.createElement('div');
-        sideColLeft.className = 'main-menu-side-grid__col';
-        sideColLeft.setAttribute('aria-label', 'Undivided and Dialogue Theater');
-        sideColLeft.appendChild(readUndividedBtn);
-        sideColLeft.appendChild(theaterBtn);
+    const sideColRight = document.createElement('div');
+    sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
+    sideColRight.setAttribute('aria-label', 'Data Workshop and Official Archive');
+    sideColRight.appendChild(archivesBtn);
+    sideColRight.appendChild(officialResourcesBtn);
 
-        sideColRight = document.createElement('div');
-        sideColRight.className = 'main-menu-side-grid__col main-menu-side-grid__col--resources';
-        sideColRight.setAttribute('aria-label', 'Data Workshop and Official Archive');
-        sideColRight.appendChild(archivesBtn);
-        sideColRight.appendChild(officialResourcesBtn);
-
-        sideGrid.appendChild(sideColLeft);
-        sideGrid.appendChild(sideColRight);
-    } else {
-        sideGrid.classList.add('main-menu-side-grid--no-data-workshop');
-        readUndividedBtn.classList.add('main-menu-side-btn-wrapper--span-wide');
-
-        const sideBottomRow = document.createElement('div');
-        sideBottomRow.className = 'main-menu-side-grid__bottom-row';
-        sideBottomRow.setAttribute('aria-label', 'Dialogue Theater and Official Archive');
-        sideBottomRow.appendChild(theaterBtn);
-        sideBottomRow.appendChild(officialResourcesBtn);
-
-        sideGrid.appendChild(readUndividedBtn);
-        sideGrid.appendChild(sideBottomRow);
-
-        sideColLeft = sideBottomRow;
-        sideColRight = sideBottomRow;
-    }
+    sideGrid.appendChild(sideColLeft);
+    sideGrid.appendChild(sideColRight);
     sideColumn.appendChild(sideGrid);
 
     const seeLatestWrapper = document.createElement('div');

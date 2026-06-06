@@ -18,6 +18,7 @@ import { installEventManagerDataGetters } from './eventManagerDataGetters.js';
 import { syncManagerPaginationForDisplay } from './syncManagerPaginationForDisplay.js';
 import { runAddBlankEventAndOpen } from './runAddBlankEventAndOpen.js';
 import { runDeleteEventAtIndex, runDeleteEventWithConfirm } from './runDeleteEventWithConfirm.js';
+import { syncArchiveManagePanelActionVisibility } from '../event-system/listeners/wireManagePanelButtons.js';
 
 class EventManager {
     constructor() {
@@ -127,6 +128,7 @@ class EventManager {
         if (typeof this.applyPerPageSettings === 'function') {
             this.applyPerPageSettings();
         }
+        syncArchiveManagePanelActionVisibility();
     }
 
     _resetSearchInputs() {
@@ -190,10 +192,13 @@ class EventManager {
         try {
             const result = await this.dataService.importEvents(file);
             if (result.success) {
-                this.saveEvents();
                 this.renderEvents();
                 this.syncEventsToGlobe();
-                alert(`Successfully imported ${result.count} events!`);
+                const arch = this.dataService?.getArchiveSource?.() || 'archive';
+                alert(
+                    `Imported ${result.count} entries into ${arch}. ` +
+                    'Changes are saved in this browser — use Export to share the JSON file.'
+                );
             }
         } catch (error) {
             console.error('Error importing events:', error);
