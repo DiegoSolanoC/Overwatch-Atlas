@@ -278,7 +278,7 @@
       "name": "John Francis Morrison is Born",
       "locationType": "earth",
       "cityDisplayName": "Bloomington, United States",
-      "description": "Born on January 27th of 2021, John \"Jack\" Francis Morrison was raised by farmers, and grew up to become a rambunctious teen. When he was not helping on the farm, he spent his time playing football, and by his eighteenth birthday he would choose to enlist in the army, intending to put the strength and discipline from his years of athletics into good use.",
+      "description": "Born on January 27th of 2021, John \"Jack\" Francis Morrison was raised by farmers, and grew up to become a rambunctious teen. When he was not helping on the farm, he spent his time playing football, and by his eighteenth birthday he would choose to enlist in the army, intending to put the strength and discipline from his years of athletics into good use. He would go on to date a man named Vincent while at university.",
       "image": "",
       "sources": [
         {
@@ -3575,6 +3575,11 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Attacks SEP program bases"
+        },
+        {
+          "locationName": "",
+          "country": "Vincent,",
+          "reasoning": "Conflicted about Jack joining SEP"
         }
       ]
     },
@@ -5019,7 +5024,7 @@
     },
     {
       "name": "Duty Calls",
-      "description": "No description available.",
+      "description": "From the outside, the world saw Overwatch as untouchable heroes at this point in time. However, the reality was that they were still human, and taking on Overwatch was just one aspect of their larger lives.\nMost of the Strike team had families of their own, Ana finally had time to care for her young Fareeha, the Lindholms were expecting yet another baby into the family, and Gabriel had just had his first son with Martina Reyes, his wife that he met while in Mexico.\n\nJack himself was in a relationship with a long-time partner of his when he got promoted to Strike Commander. The man, Vincent, was an archeologist he met during his days at university, where they quickly hit it off. Vincent remained supportive of Jack through his years in the military, but grew cautious during the Crisis when Jack brought up the idea of the Soldier Enhancement Program, and later on Overwatch.\n\nVincent was there for Jack when he needed it most, but he himself wished to settle down as he grew older, while Jack continued to step up and fill increasingly bigger shoes for the sake of the world. Becoming Strike Commander left Jack with very little time for love, and soon after, during a visit to London, the two parted ways. Jack would often question his choice. While everyone around him got to have a family, he dedicated his entire life to Overwatch. Continuing Adawe's legacy and ensuring the organization earned it's place in a post-crisis world became Jack's calling, and while he oftentimes wished to settle, every soldier needs a cause, and his was shaping the world into a better place.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -5031,11 +5036,49 @@
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
+          "reasoning": "Jack and Vincent break up"
+        }
+      ],
+      "headlines": [
+        "Jack Morrisons gives interviews with Victoria Naughton in Australia"
+      ],
+      "sources": [
+        {
+          "text": "Futures Past",
+          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76,",
+          "reasoning": "Chooses work over private life"
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Reaper, Torbjörn,",
+          "reasoning": "Live happy lives with kids and family"
+        },
+        {
+          "locationName": "",
+          "country": "Reinhardt,",
+          "reasoning": "Tags along with the Lindholms"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": []
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vincent,",
+          "reasoning": "Leaves Jack, choosing to live a normal life and settle down"
+        }
+      ]
     },
     {
       "name": "One with the Iris",
@@ -5947,8 +5990,8 @@
       ]
     },
     {
-      "name": "Life Gets in the way",
-      "description": "No description available.",
+      "name": "Mother's Guidance",
+      "description": "Ana's relationship with her family had been messy since the beginning. She had married after being surprised by a little girl from a relatively casual relationship, and during the Crisis both her and Sam had their hands too full to raise a child.\n\nFareeha spent most of her youth in Canada with her father, but Ana would always try to make time for her daughter. Outside Overwatch, Ana went on to train the next generation of the Egyptian Army, and Fareeha, her biggest admirer, would too receive personal classes from her mother. Fareeha would also be a regular visitor to Overwatch bases and became familiar with many of the members of the strike team, developing a closer bond with Cassidy and Angela, who she was closer to in age. In spite of this, Ana always hoped her daughter would go on to live a different life, one free of fighting. Fareeha on the other hand, wished to one day join her mother in Overwatch, which led to drawn-out arguments between the two, which got so bad Fareeha eventually dropped the subject. \n\nAs the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back. However, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. Reinhardt, too, always put others before him, and understood Amari's need for distance well, those he never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant.",
       "locationType": "earth",
       "lat": 30.0443879,
       "lon": 31.2357257,
@@ -5960,30 +6003,42 @@
         {
           "locationName": "",
           "country": "Ana, Reinhardt,",
-          "reasoning": ""
+          "reasoning": "Become close following Ana's divorce"
         },
         {
           "locationName": "",
           "country": "Pharah,",
-          "reasoning": ""
+          "reasoning": "Aspires to become an Overwatch member"
+        },
+        {
+          "locationName": "",
+          "country": "Cassidy, Mercy,",
+          "reasoning": "Connect with Fareeha"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Ana confronts Fareeha about joining Overwatch"
         }
       ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": ""
+          "reasoning": "Ana Amari trains the new generation ofSnipers"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Ana Amari to train next generation of Egyptian Snipers"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ]
     },
     {
       "name": "Liao's Renaissance",
@@ -6566,7 +6621,7 @@
     },
     {
       "name": "Sparrow",
-      "description": "No description available.",
+      "description": "Rumiko Shimada had left the clan years ago, vanishing mysteriously one night. Nobody knew what caused her to leave, but everyone assumed she couldn't live with the Yakuza lifestyle anymore. Her absence made Sojiro extremely protective of his sons, who were raised with the expectation of inheriting command of the Clan together.\n\nGenji, however, had no interest in the clan. He had often thought of leaving as well, were it not for his brother and little Kiriko, who helped him keep a sense of belonging in Hanamura Castle. His disinterest led to developing a playboy lifestyle as a young adult, skipping important clan meetings and sword training to play video games at the local arcade, often taking Kiriko alongside him, though even when he didn't, she would sneak out and follow behind him.\n\nHis carelessness would fall on Hanzo, who got tangled in his brother's escapades far too often, and tended to cover for him when it came time to face their father. Hanzo wasn't too keen on inheriting the clan either, but being the older of the two, expectations were harder on him, and his father had less patience for him than he was for Genji. Hanzo wished that when the day came, he could rule the clan his way, with Genji as his equal, so he worked hard to share his discipline and guidance with him, but on the other hand, Genji was just waiting for the day they kicked him out, and the elders of the clan were getting tired of Sojiro's inability to control his own children.",
       "locationType": "earth",
       "lat": 0,
       "lon": 0,
@@ -6574,9 +6629,53 @@
       "cityDisplayName": "",
       "yearEnd": null,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
-      "sources": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan,",
+          "reasoning": "Genji begins to defy his father and his clan duties"
+        }
+      ],
+      "headlines": [
+        "Shimada associated individuals seen around local Arcade"
+      ],
+      "sources": [
+        {
+          "text": "Fall of the Sparrow",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Genji,",
+          "reasoning": "Slacks off of training to indulge in the city"
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo,",
+          "reasoning": "Takes responsability for Genji"
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": "Follows Genji into the Arcade in secret constantly"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shimada Clan, Yamagami Blades,",
+          "reasoning": "The Shimada put pressure into the brothers to step up to their heir titles"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa, Sojiro,",
+          "reasoning": "Push the brothers to train and be part of the family business"
+        }
+      ]
     },
     {
       "name": "Valkirie",
@@ -7281,7 +7380,7 @@
       "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. \nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan and spent his days pursuing a playboy lifestyle. The elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
+      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. <div>\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.</div>",
       "image": "",
       "lat": 36.6762,
       "lon": 139.6503,
@@ -13518,7 +13617,13 @@
       "cityDisplayName": "Atlantic Arcology",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
