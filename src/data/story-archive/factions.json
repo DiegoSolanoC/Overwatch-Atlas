@@ -7,14 +7,6 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "D.va",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Winston",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -22,200 +14,16 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Orisa",
+          "kind": "npc",
+          "name": "Adawe",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Zarya",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reinhardt",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Bastion",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Emre",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Mei",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Cassidy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Sojourn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Anran",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Genji",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "Member of the Strike Team",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true,
-          "ranges": [
-            {
-              "startEvent": "The Original Strike Team",
-              "reasoningSubjectToLinked": "Member of the Strike Team",
-              "reasoningLinkedToSubject": "",
-              "endEvent": "The Zurich Attack"
-            }
-          ]
-        },
-        {
-          "kind": "hero",
-          "name": "Tracer",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Echo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Pharah",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Sierra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Baptiste",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Ana",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Jetpack Cat",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Mercy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Brigitte",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Juno",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Wuyang",
+          "kind": "npc",
+          "name": "Athena",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -235,7 +43,32 @@
       "name": "Null Sector",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Ramattra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Nameless",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Zera",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Major Player"
     },
     {
@@ -245,7 +78,7 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Echo",
+          "name": "Emre",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -260,8 +93,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Sojourn",
+          "kind": "npc",
+          "name": "Osai",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -284,8 +117,32 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Cassidy",
+          "kind": "npc",
+          "name": "B.O.B",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Bars",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Bez",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Frankie",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -301,23 +158,15 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Widowmaker",
+          "name": "Hanzo",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Genji",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Moira",
+          "kind": "npc",
+          "name": "Sojiro",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -330,10 +179,57 @@
       "name": "Hashimoto Clan",
       "description": "",
       "relevantLocations": [],
+      "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Yokai Gang",
+      "description": "",
+      "relevantLocations": [],
       "connections": [
         {
           "kind": "hero",
           "name": "Mizuki",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Ryota",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Sakura",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Chisaka",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Nobuto",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Kiriko",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -343,20 +239,29 @@
       "factionType": "Criminal Groups"
     },
     {
-      "name": "Yokai Gang",
-      "description": "",
-      "relevantLocations": [],
-      "connections": [],
-      "factionType": "Criminal Groups"
-    },
-    {
       "name": "Junker Monarchy",
       "description": "",
       "relevantLocations": [],
       "connections": [
         {
           "kind": "hero",
-          "name": "Junkrat",
+          "name": "Junker Queen",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Wrecking Ball",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Geiger",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -369,24 +274,18 @@
       "name": "The Phreaks",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
-      "factionType": "Criminal Groups"
-    },
-    {
-      "name": "La Coterie",
-      "description": "",
-      "relevantLocations": [],
-      "connections": [],
-      "factionType": "Criminal Groups"
-    },
-    {
-      "name": "Los Muertos",
-      "description": "",
-      "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Venture",
+          "kind": "npc",
+          "name": "Touch Up",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Boomslang",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -394,15 +293,15 @@
         },
         {
           "kind": "hero",
-          "name": "Sombra",
+          "name": "Hazard",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Illari",
+          "kind": "npc",
+          "name": "Susannah",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -412,10 +311,50 @@
       "factionType": "Criminal Groups"
     },
     {
-      "name": "The Sombra Collective",
+      "name": "La Coterie",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Maximillien",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "Los Muertos",
       "description": "",
       "relevantLocations": [],
       "connections": [],
+      "factionType": "Criminal Groups"
+    },
+    {
+      "name": "The Sombra Collective",
+      "description": "",
+      "relevantLocations": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Sombra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Criminal Groups"
     },
     {
@@ -424,8 +363,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Reinhardt",
+          "kind": "npc",
+          "name": "Balderich",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -438,7 +377,16 @@
       "name": "Inti Warriors",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "Illari",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Military Initiatives"
     },
     {
@@ -447,16 +395,24 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Zarya",
+          "kind": "npc",
+          "name": "Lynx 17",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Sombra",
+          "kind": "npc",
+          "name": "Katya",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Alisa",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -476,16 +432,7 @@
       "name": "Deep Sea Raiders",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Mauga",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
@@ -494,16 +441,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Domina",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Vendetta",
+          "kind": "faction",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -519,7 +458,15 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Echo",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Pharah",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -534,8 +481,32 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "D.va",
+          "kind": "npc",
+          "name": "Casino",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "King",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Dae-Hyun",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "D.mon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -557,8 +528,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Ramattra",
+          "kind": "npc",
+          "name": "Anubis",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -571,14 +542,56 @@
       "name": "Omnica Corporation",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Liao",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Ironclad Guild",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Sven",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Torbjörn",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Brigitte",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
@@ -587,40 +600,32 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Doomfist",
+          "kind": "npc",
+          "name": "Harold",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Winston",
+          "kind": "npc",
+          "name": "Jiayi",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Wrecking Ball",
+          "kind": "npc",
+          "name": "Chao",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Sigma",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Juno",
+          "kind": "faction",
+          "name": "Wuxing University",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -634,14 +639,6 @@
       "description": "",
       "relevantLocations": [],
       "connections": [
-        {
-          "kind": "hero",
-          "name": "Hazard",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "hero",
           "name": "Moira",
@@ -666,8 +663,24 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Lifeweaver",
+          "kind": "npc",
+          "name": "Claudio",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Hector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Palak",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -683,7 +696,15 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Ramattra",
+          "name": "Zenyatta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Mondatta",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -696,7 +717,16 @@
       "name": "Lumérico Incorporated",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Portero",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
@@ -712,8 +742,32 @@
       "relevantLocations": [],
       "connections": [
         {
+          "kind": "npc",
+          "name": "Sanjay",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "hero",
-          "name": "Lúcio",
+          "name": "Domina",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Symmetra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Bhatt",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -728,16 +782,8 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "hero",
-          "name": "Anran",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Wuyang",
+          "kind": "faction",
+          "name": "Lucheng Interstellar",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -750,7 +796,16 @@
       "name": "Yamagami Blades",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
+      "connections": [
+        {
+          "kind": "npc",
+          "name": "Asa",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ],
       "factionType": "Research Institutions"
     },
     {
@@ -764,72 +819,14 @@
       "name": "Blackwatch",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Cassidy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Genji",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "Director of Blackwatch",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true,
-          "ranges": [
-            {
-              "startEvent": "New Leadership",
-              "reasoningSubjectToLinked": "Director of Blackwatch",
-              "reasoningLinkedToSubject": "",
-              "endEvent": "The Zurich Attack"
-            }
-          ]
-        },
-        {
-          "kind": "hero",
-          "name": "Moira",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Ecopoints",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Mei",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {
@@ -839,23 +836,7 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Emre",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Freja",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Sierra",
+          "name": "Ana",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -871,14 +852,6 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Sigma",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -887,7 +860,23 @@
         },
         {
           "kind": "hero",
-          "name": "Emre",
+          "name": "Vendetta",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Colloseo Gladiatori",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "La Coterie",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -895,47 +884,7 @@
         },
         {
           "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Reaper",
-          "reasoningSubjectToLinked": "Member of the Talon Council",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true,
-          "ranges": [
-            {
-              "startEvent": "Code of Violence",
-              "reasoningSubjectToLinked": "Member of the Talon Council",
-              "reasoningLinkedToSubject": "",
-              "endEvent": "Reign of Talon"
-            }
-          ]
-        },
-        {
-          "kind": "hero",
-          "name": "Freja",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Sombra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Moira",
+          "name": "Mauga",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
