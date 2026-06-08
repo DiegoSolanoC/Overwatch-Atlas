@@ -61,6 +61,20 @@
     cursor: pointer;
 }
 
+.codex-edge-hit--filter-dormant {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.codex--view-mode .codex-edge-hit--filter-dormant {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.codex-edge-segment--filter-dormant {
+    pointer-events: none;
+}
+
 .codex-edge-degree-labels {
     pointer-events: none;
 }

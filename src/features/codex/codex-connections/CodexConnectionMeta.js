@@ -223,6 +223,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
         seen.add(key);
 
         const stored = metaByLinked.get(key);
+        const effectivelyPruned = isCodexConnectionPairPruned(sk, sn, kind, name, metaRows);
         const row = stored
             ? {
                 kind: String(stored.linkedKind || stored.kind || kind).toLowerCase(),
@@ -231,7 +232,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
                 reasoningLinkedToSubject: stored.reasoningLinkedToSubject ?? '',
                 thisEntryLane: stored.thisEntryLane ?? 'A',
                 showInCodex: stored.showInCodex === true,
-                pruned: stored.pruned === true,
+                pruned: effectivelyPruned,
                 ranges: Array.isArray(stored.ranges) ? stored.ranges : undefined,
             }
             : {
@@ -240,9 +241,10 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
                 reasoningSubjectToLinked: '',
                 reasoningLinkedToSubject: '',
                 thisEntryLane: 'A',
+                pruned: effectivelyPruned,
             };
 
-        if (!forEdit && bioConnectionRowIsPruned(row)) continue;
+        if (!forEdit && effectivelyPruned) continue;
         if (!forEdit && !bioConnectionRowIsDisplayable(row)) continue;
         out.push(row);
     }
@@ -257,7 +259,8 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
         if (!ln) continue;
         const key = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
         if (seen.has(key)) continue;
-        if (!forEdit && bioConnectionRowIsPruned(row)) continue;
+        const effectivelyPruned = isCodexConnectionPairPruned(sk, sn, lk, ln, metaRows);
+        if (!forEdit && effectivelyPruned) continue;
         seen.add(key);
         out.push({
             kind: lk,
@@ -266,12 +269,67 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
             reasoningLinkedToSubject: row.reasoningLinkedToSubject ?? '',
             thisEntryLane: row.thisEntryLane ?? 'A',
             showInCodex: row.showInCodex === true,
-            pruned: row.pruned === true,
+            pruned: effectivelyPruned,
             ranges: Array.isArray(row.ranges) ? row.ranges : undefined,
         });
     }
 
     return out;
+}
+
+/**
+ * Keep prune state symmetric — a connection belongs to both archive entries.
+ * @param {object[]} rows
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {boolean} pruned
+ */
+function mirrorCodexConnectionPruneOnReverseSubject(rows, subjectKind, subjectName, linkedKind, linkedName, pruned) {
+    const rsk = String(linkedKind || 'hero').toLowerCase();
+    const rsn = String(linkedName || '').trim();
+    const sk = String(subjectKind || 'hero').toLowerCase();
+    const sn = String(subjectName || '').trim();
+    if (!rsn || !sn) return;
+
+    const revKey = codexConnectionSubjectLinkedKey(rsk, rsn, sk, sn);
+    let idx = -1;
+    for (let i = 0; i < (rows || []).length; i += 1) {
+        const row = rows[i];
+        if (!metaRowMatchesSubject(row, rsk, rsn)) continue;
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(rsk, rsn, lk, ln) === revKey) {
+            idx = i;
+            break;
+        }
+    }
+
+    if (pruned) {
+        if (idx >= 0) {
+            rows[idx] = { ...rows[idx], pruned: true };
+            return;
+        }
+        const mirror = normalizeCodexConnectionMetaRow(
+            {
+                kind: sk,
+                name: sn,
+                pruned: true,
+                thisEntryLane: 'A',
+            },
+            rsk,
+            rsn,
+        );
+        if (mirror) rows.push(mirror);
+        return;
+    }
+
+    if (idx >= 0 && rows[idx].pruned === true) {
+        const nextRow = { ...rows[idx] };
+        delete nextRow.pruned;
+        rows[idx] = nextRow;
+    }
 }
 
 /**
@@ -311,6 +369,14 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
         }
         editorPairKeys.add(pairKey);
         next.push(normalized);
+        mirrorCodexConnectionPruneOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            normalized.pruned === true,
+        );
     }
 
     for (const row of metaRows || []) {
@@ -321,7 +387,16 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
         const pairKey = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
         if (!allowed.has(pairKey) || editorPairKeys.has(pairKey)) continue;
         const normalized = normalizeCodexConnectionMetaRow(row, sk, sn);
-        if (normalized) next.push(normalized);
+        if (!normalized) continue;
+        next.push(normalized);
+        mirrorCodexConnectionPruneOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            true,
+        );
     }
 
     return next;

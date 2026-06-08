@@ -19,6 +19,13 @@ import {
     isCodexEdgeTimelineActiveForDockPage,
     isDirectedCodexEdgeOnActiveBioConnectionPath,
 } from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
+import {
+    codexEdgeMatchesActiveFilters,
+    codexFiltersActive,
+    getCodexFilterDerivedState,
+    resolveCodexNodeIdsForActiveFilters,
+} from '../../codex-nodes/filters/CodexNodeFilterMatch.js';
+import { isCodexLinkFiltersEnabled } from '../../codex-controls-ui/stage/CodexDockToggles.js';
 
 
 function findEdge(fromId, toId) {
@@ -162,8 +169,51 @@ function edgeCordBioTimelineActive(edge) {
     return isCodexEdgeTimelineActiveForDockPage(edge, s.codexAllNodes, s.codexEdges);
 }
 
+function ensureCodexFilterDerivedSets() {
+    if (!codexFiltersActive()) return;
+    const state = getCodexFilterDerivedState(
+        s.codexAllNodes,
+        s.codexEdges,
+        isCodexLinkFiltersEnabled(),
+    );
+    s.codexFilterReachableNodeIds = state.reachableNodeIds;
+    s.codexFilterLinkedEdgePairKeys = state.linkedEdgePairKeys;
+    s.codexFilterActiveEdgePairKeys = state.activeEdgePairKeys;
+    s.codexFilterConnectionEndpointNodeIds = state.connectionEndpointNodeIds;
+}
+
+function edgeCordIsFilterLinkedActive(edge) {
+    if (!codexFiltersActive() || !isCodexLinkFiltersEnabled()) return false;
+    ensureCodexFilterDerivedSets();
+    const keys = s.codexFilterLinkedEdgePairKeys;
+    if (!keys || keys.size === 0) return false;
+    return keys.has(codexUnorderedPairKey(edge.fromId, edge.toId));
+}
+
+function edgeCordIsFilterDormant(edge) {
+    if (!codexFiltersActive()) return false;
+    ensureCodexFilterDerivedSets();
+    return !codexEdgeMatchesActiveFilters(edge, s.codexFilterActiveEdgePairKeys);
+}
+
+function edgeCordPacketPathSimpleOnly() {
+    if (!codexFiltersActive() || !isCodexLinkFiltersEnabled()) return false;
+    ensureCodexFilterDerivedSets();
+    return !!(s.codexFilterLinkedEdgePairKeys && s.codexFilterLinkedEdgePairKeys.size > 0);
+}
+
 function edgeCordPacketsEnabled(edge) {
     if (edgeIsCordPendingDelete(edge)) return false;
+    if (codexFiltersActive()) {
+        if (isCodexLinkFiltersEnabled()) {
+            ensureCodexFilterDerivedSets();
+            const keys = s.codexFilterLinkedEdgePairKeys;
+            if (keys && keys.size > 0) {
+                return keys.has(codexUnorderedPairKey(edge.fromId, edge.toId));
+            }
+        }
+        return !edgeCordIsFilterDormant(edge);
+    }
     return isDirectedCodexEdgeOnActiveBioConnectionPath(
         edge,
         s.codexAllNodes,
@@ -174,14 +224,24 @@ function edgeCordPacketsEnabled(edge) {
 function edgeCordAppearance(edge) {
     if (edgeIsCordPendingDelete(edge)) return 'red';
     if (edgeCordShowsYellow(edge)) return 'yellow';
+    if (edgeCordIsFilterDormant(edge)) return 'grey';
+    if (edgeCordIsFilterLinkedActive(edge)) return 'green';
+    if (codexFiltersActive()) return 'violet';
     if (!edgeCordBioTimelineActive(edge)) return 'grey';
     return 'violet';
 }
 
-/** Junction elbows sit between two segments — grey when either leg is timeline-dormant. */
+/** Junction elbows sit between two segments — grey when either leg is timeline- or filter-dormant. */
 function edgeCordAppearanceForJunctionElbow(edgeIn, edgeOut) {
     if (edgeIsCordPendingDelete(edgeIn) || edgeIsCordPendingDelete(edgeOut)) return 'red';
     if (edgeCordShowsYellow(edgeIn) || edgeCordShowsYellow(edgeOut)) return 'yellow';
+    const inActive = !edgeCordIsFilterDormant(edgeIn);
+    const outActive = !edgeCordIsFilterDormant(edgeOut);
+    if (!inActive && !outActive) return 'grey';
+    if (edgeCordIsFilterLinkedActive(edgeIn) || edgeCordIsFilterLinkedActive(edgeOut)) {
+        return 'green';
+    }
+    if (codexFiltersActive()) return 'violet';
     if (!edgeCordBioTimelineActive(edgeIn) || !edgeCordBioTimelineActive(edgeOut)) return 'grey';
     return 'violet';
 }
@@ -238,6 +298,14 @@ function buildPolylineForEdge(edge) {
 
 /** @param {string} fromId @param {string} toId */
 function codexDirectedEdgeAllowedForPacketWalk(fromId, toId) {
+    const edge = findEdge(fromId, toId);
+    if (!edge) return false;
+
+    if (codexFiltersActive()) {
+        ensureCodexFilterDerivedSets();
+        return codexEdgeMatchesActiveFilters(edge, s.codexFilterActiveEdgePairKeys);
+    }
+
     if (!s.codexTargetedSelectionActive) return true;
     const visible = s.codexTargetedSelectionVisibleIds;
     const edgeKeys = s.codexTargetedSelectionVisibleEdgeKeys;
@@ -259,10 +327,13 @@ function samplePacketTailNodeIds(fromId, toId) {
             (e) => e.fromId === cur
                 && e.toId !== prev
                 && codexDirectedEdgeAllowedForPacketWalk(e.fromId, e.toId)
-                && isDirectedCodexEdgeOnActiveBioConnectionPath(
-                    e,
-                    s.codexAllNodes,
-                    s.codexEdges,
+                && (
+                    codexFiltersActive()
+                    || isDirectedCodexEdgeOnActiveBioConnectionPath(
+                        e,
+                        s.codexAllNodes,
+                        s.codexEdges,
+                    )
                 ),
         );
         if (outs.length === 0) break;
@@ -472,6 +543,8 @@ function applyCodexEdgeHoverChainKeySet(chain) {
         if (sep < 0) return;
         const a = key.slice(0, sep);
         const b = key.slice(sep + 1);
+        const edge = findEdge(a, b) || findEdge(b, a);
+        if (edge && edgeCordIsFilterDormant(edge)) return;
         setCodexEdgeHoverVisual(a, b, true);
     });
 }
@@ -519,6 +592,92 @@ function highlightCodexRouteBetweenNodes(fromId, toId) {
     applyCodexEdgeHoverChainKeySet(chain);
 }
 
+/** @returns {Map<string, Set<string>>} */
+function buildCodexFilterRouteAdjacency() {
+    ensureCodexFilterDerivedSets();
+    const edges = s.codexEdges || [];
+    const activeKeys = s.codexFilterActiveEdgePairKeys;
+    const filtered = edges.filter((e) => codexEdgeMatchesActiveFilters(e, activeKeys));
+    return buildCodexUndirectedAdjacency(filtered);
+}
+
+/**
+ * @param {string} hoveredId
+ * @returns {Set<string>}
+ */
+function buildCodexFilterRouteRestrictNodeIds(hoveredId) {
+    ensureCodexFilterDerivedSets();
+    /** @type {Set<string>} */
+    const restrict = new Set(s.codexFilterReachableNodeIds || []);
+    if (hoveredId) restrict.add(hoveredId);
+    return restrict;
+}
+
+/** @param {string} nodeId */
+function highlightCodexFilterIncidentEdges(nodeId) {
+    if (!nodeId) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    /** @type {Set<string>} */
+    const keys = new Set();
+    for (const e of s.codexEdges || []) {
+        if (e.fromId !== nodeId && e.toId !== nodeId) continue;
+        if (edgeCordIsFilterDormant(e)) continue;
+        const chain = collectCodexDirectedChainEdgeKeys(e.fromId, e.toId);
+        chain.forEach((k) => keys.add(k));
+    }
+    if (s.codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(s.codexEdgeHoverChainKeySet, keys)) {
+        return;
+    }
+    applyCodexEdgeHoverChainKeySet(keys);
+}
+
+/**
+ * Shortest active-filter route from a filter seed to the hovered portrait.
+ * @param {string} hoveredId
+ */
+function highlightCodexFilterRouteToNode(hoveredId) {
+    if (!hoveredId) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const seeds = resolveCodexNodeIdsForActiveFilters(s.codexAllNodes);
+    if (!seeds.length) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const adj = buildCodexFilterRouteAdjacency();
+    const kindById = buildCodexNodeKindMapFromSession();
+    const restrict = buildCodexFilterRouteRestrictNodeIds(hoveredId);
+
+    /** @type {string[]|null} */
+    let bestPath = null;
+    for (let i = 0; i < seeds.length; i += 1) {
+        const seedId = seeds[i];
+        if (seedId === hoveredId) continue;
+        const path = shortestPathNodeIdsForTargetedRoutePreview(
+            adj,
+            kindById,
+            seedId,
+            hoveredId,
+            restrict,
+        );
+        if (!path?.length) continue;
+        if (!bestPath || path.length < bestPath.length) bestPath = path;
+    }
+
+    if (!bestPath?.length) {
+        clearAllCodexEdgeHoverVisual();
+        return;
+    }
+    const chain = collectCodexPathRouteDirectedEdgeKeys(bestPath);
+    if (s.codexEdgeHoverChainKeySet && codexEdgeHoverChainSetsEqual(s.codexEdgeHoverChainKeySet, chain)) {
+        return;
+    }
+    applyCodexEdgeHoverChainKeySet(chain);
+}
+
 /** @param {HTMLElement} nodeEl */
 function onCodexNodeTargetedRoutePointerEnter(nodeEl) {
     if (!s.codexTargetedSelectionActive || s.codexTargetedSelectionSeedIds.size !== 1) return;
@@ -527,6 +686,24 @@ function onCodexNodeTargetedRoutePointerEnter(nodeEl) {
     const seedId = getSingleTargetedSelectionSeedId();
     if (!hoveredId || !seedId) return;
     highlightCodexRouteBetweenNodes(seedId, hoveredId);
+}
+
+/** @param {HTMLElement} nodeEl */
+function onCodexNodeFilterRoutePointerEnter(nodeEl) {
+    if (!codexFiltersActive()) return;
+    if (s.codexTargetedSelectionActive && s.codexTargetedSelectionSeedIds.size === 1) return;
+    if (!nodeEl || nodeEl.classList.contains('codex-node--filtered-out')) return;
+
+    const hoveredId = String(nodeEl.dataset.codexNodeId || '');
+    if (!hoveredId) return;
+
+    if (nodeEl.classList.contains('codex-node--filter-connected')) {
+        highlightCodexFilterRouteToNode(hoveredId);
+        return;
+    }
+    if (nodeEl.classList.contains('codex-node--filter-match')) {
+        highlightCodexFilterIncidentEdges(hoveredId);
+    }
 }
 
 /**
@@ -544,10 +721,36 @@ function onCodexNodeTargetedRoutePointerLeave(e, nodeEl) {
     clearAllCodexEdgeHoverVisual();
 }
 
+/**
+ * @param {PointerEvent} e
+ * @param {HTMLElement} nodeEl
+ */
+function onCodexNodeFilterRoutePointerLeave(e, nodeEl) {
+    if (!codexFiltersActive()) return;
+    if (s.codexTargetedSelectionActive && s.codexTargetedSelectionSeedIds.size === 1) return;
+    const rel = /** @type {Node|null} */ (e.relatedTarget);
+    if (rel instanceof Element && s.root?.contains(rel)) {
+        if (rel.closest('.codex-node:not(.codex-node--filtered-out)')) return;
+        if (rel.closest('.codex-edge-hit')) return;
+    }
+    if (nodeEl && rel && nodeEl.contains(rel)) return;
+    clearAllCodexEdgeHoverVisual();
+}
+
+function codexEdgeHitIsFilterDormant(hitEl) {
+    const f = hitEl?.dataset?.codexEdgeFrom || '';
+    const to = hitEl?.dataset?.codexEdgeTo || '';
+    if (!f || !to) return false;
+    const edge = findEdge(f, to) || findEdge(to, f);
+    if (!edge) return false;
+    return edgeCordIsFilterDormant(edge);
+}
+
 function onCodexEdgeSvgPointerOver(e) {
     if (s.codexMode !== 'view') return;
     const t = /** @type {Element} */ (e.target);
     if (!t?.classList?.contains('codex-edge-hit')) return;
+    if (codexEdgeHitIsFilterDormant(t)) return;
     const f = t.dataset.codexEdgeFrom;
     const to = t.dataset.codexEdgeTo;
     if (!f || !to) return;
@@ -585,6 +788,7 @@ function codexSvgPointerDownCapture(e) {
     if (t.closest && (t.closest('.codex-toolbar') || t.closest('.codex-visual-panel'))) return;
 
     if (e.button === 0 && t.classList.contains('codex-edge-hit')) {
+        if (codexEdgeHitIsFilterDormant(t)) return;
         if (s.codexMode === 'view') {
             e.preventDefault();
             e.stopPropagation();
@@ -616,6 +820,8 @@ function codexEscapeEdgeIdForSelector(id) {
 
 function openStoryArchiveFromCodexEdgeHit(fromId, toId) {
     if (s.codexMode !== 'view' || !fromId || !toId) return;
+    const edge = findEdge(fromId, toId) || findEdge(toId, fromId);
+    if (edge && edgeCordIsFilterDormant(edge)) return;
     const { subjectId, otherId } = resolveCodexChainBioEndpoints(fromId, toId);
     const tryOpen = (subjectEl, otherEl) => {
         if (!subjectEl || !api.codexNodeElSupportsStoryArchiveLink(subjectEl)) return false;
@@ -642,7 +848,9 @@ api.removeJunctionAndBridgeEdges = removeJunctionAndBridgeEdges;
 api.removeEdgesForDeletedNodesWithJunctionBridging = removeEdgesForDeletedNodesWithJunctionBridging;
 api.edgeIsCordPendingDelete = edgeIsCordPendingDelete;
 api.edgeCordAppearance = edgeCordAppearance;
+api.edgeCordIsFilterDormant = edgeCordIsFilterDormant;
 api.edgeCordPacketsEnabled = edgeCordPacketsEnabled;
+api.edgeCordPacketPathSimpleOnly = edgeCordPacketPathSimpleOnly;
 api.edgeCordBioTimelineActive = edgeCordBioTimelineActive;
 api.edgeCordIsActivelyUpdating = edgeCordIsActivelyUpdating;
 api.edgeCordShowsYellow = edgeCordShowsYellow;
@@ -664,6 +872,8 @@ api.applyCodexEdgeHoverChainKeySet = applyCodexEdgeHoverChainKeySet;
 api.highlightCodexRouteBetweenNodes = highlightCodexRouteBetweenNodes;
 api.onCodexNodeTargetedRoutePointerEnter = onCodexNodeTargetedRoutePointerEnter;
 api.onCodexNodeTargetedRoutePointerLeave = onCodexNodeTargetedRoutePointerLeave;
+api.onCodexNodeFilterRoutePointerEnter = onCodexNodeFilterRoutePointerEnter;
+api.onCodexNodeFilterRoutePointerLeave = onCodexNodeFilterRoutePointerLeave;
 api.onCodexEdgeSvgPointerOver = onCodexEdgeSvgPointerOver;
 api.onCodexEdgeSvgPointerOut = onCodexEdgeSvgPointerOut;
 api.codexSvgPointerDownCapture = codexSvgPointerDownCapture;

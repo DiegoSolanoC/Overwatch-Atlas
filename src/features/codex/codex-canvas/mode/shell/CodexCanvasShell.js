@@ -2,7 +2,6 @@
 import { api } from '../../core/codexCanvasApi.js';
 import { s } from '../../core/canvasSession.js';
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../../codex-data/persistence/CodexLayoutConstants.js';
-import { flashUiButton, playSoundEffect } from '../../bridge/CodexAppBridge.js';
 
 
 function ensureCodexWorld() {
@@ -40,59 +39,10 @@ function ensureCodexBorderOverlay() {
     return border;
 }
 
+/** Legacy top-right mode button — retired; dock rail owns View/Dev toggle. */
 function ensureCodexModeToggle() {
-    if (!s.root) return null;
-    let modeBtn = s.root.querySelector('.codex-mode-toggle-btn');
-    if (!modeBtn) {
-        modeBtn = document.createElement('button');
-        modeBtn.type = 'button';
-        modeBtn.className = 'globe-control-btn codex-mode-toggle-btn';
-        modeBtn.title = 'Toggle Dev Mode (edit) / View Mode (read-only)';
-        
-        const label = document.createElement('span');
-        label.className = 'codex-mode-toggle-label';
-        label.textContent = 'Dev Mode';
-        
-        modeBtn.appendChild(label);
-        
-        modeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            s.codexMode = s.codexMode === 'view' ? 'dev' : 'view';
-            api.persistCodexModePref();
-            api.syncCodexModeClass();
-            
-            // Update button state
-            label.textContent = s.codexMode === 'dev' ? 'Dev Mode' : 'View Mode';
-            
-            // Play sound effect
-            playSoundEffect('switchMap');
-
-            // Flash effect (global helper when present; otherwise brief background pulse)
-            if (typeof window !== 'undefined' && typeof window.flashButton === 'function') {
-                flashUiButton(modeBtn);
-            } else {
-                modeBtn.style.transition = 'background-color 0.1s ease-out';
-                const originalBg = modeBtn.style.backgroundColor;
-                modeBtn.style.backgroundColor = 'rgba(255, 152, 0, 0.5)';
-                setTimeout(() => {
-                    modeBtn.style.backgroundColor = originalBg;
-                }, 100);
-            }
-            
-            api.updateCodexToolbar();
-        });
-        
-        s.root.appendChild(modeBtn);
-    }
-    
-    // Update initial state
-    const label = modeBtn.querySelector('.codex-mode-toggle-label');
-    if (label) {
-        label.textContent = s.codexMode === 'dev' ? 'Dev Mode' : 'View Mode';
-    }
-    
-    return modeBtn;
+    s.root?.querySelector('.codex-mode-toggle-btn')?.remove();
+    return null;
 }
 
 function ensureEdgesLayer() {
@@ -128,4 +78,3 @@ api.ensureCodexBorderOverlay = ensureCodexBorderOverlay;
 api.ensureCodexModeToggle = ensureCodexModeToggle;
 api.ensureEdgesLayer = ensureEdgesLayer;
 api.ensureHitLayer = ensureHitLayer;
-

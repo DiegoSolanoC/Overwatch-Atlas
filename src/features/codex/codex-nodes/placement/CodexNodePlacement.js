@@ -230,6 +230,7 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
         api.markCodexLayoutDirty();
         api.selectCodexNode(el);
     }
+    api.applyCodexNodeFilterClassesToEl?.(el);
     if (s.codexTargetedSelectionActive) api.syncCodexTargetedSelectionDom();
     if (!opts.skipRedraw) redrawCodexEdges();
     return el;
@@ -398,10 +399,16 @@ function bindCodexNodeInteraction(el) {
         if (typeof api.onCodexNodeTargetedRoutePointerEnter === 'function') {
             api.onCodexNodeTargetedRoutePointerEnter(el);
         }
+        if (typeof api.onCodexNodeFilterRoutePointerEnter === 'function') {
+            api.onCodexNodeFilterRoutePointerEnter(el);
+        }
     });
     el.addEventListener('pointerleave', (e) => {
         if (typeof api.onCodexNodeTargetedRoutePointerLeave === 'function') {
             api.onCodexNodeTargetedRoutePointerLeave(e, el);
+        }
+        if (typeof api.onCodexNodeFilterRoutePointerLeave === 'function') {
+            api.onCodexNodeFilterRoutePointerLeave(e, el);
         }
     });
 }

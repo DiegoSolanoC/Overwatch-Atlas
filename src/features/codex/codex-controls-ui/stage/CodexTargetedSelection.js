@@ -184,8 +184,8 @@ function expandCodexConnectionsOfSeedPruned(seedId, adj, kindById, allowedBioIds
  * @param {Map<string, string>} kindById
  * @returns {{ nodeIds: Set<string>, edgePairKeys: Set<string> }}
  */
-function expandCodexConnectionsOfSeedForTargeted(seedId, adj, kindById) {
-    const allowed = buildAllowedBioNodeIdsForTargetedSeed(seedId);
+function expandCodexConnectionsOfSeedForTargeted(seedId, adj, kindById, allowedBioIds) {
+    const allowed = allowedBioIds || buildAllowedBioNodeIdsForTargetedSeed(seedId);
     return expandCodexConnectionsOfSeedPruned(seedId, adj, kindById, allowed);
 }
 
@@ -350,6 +350,41 @@ function computeCodexTargetedSelectionGraphBranches(seedIds) {
 
     for (let i = 0; i < seeds.length; i += 1) {
         const branch = expandCodexConnectionsOfSeedForTargeted(seeds[i], adj, kindById);
+        branch.nodeIds.forEach((id) => nodeIds.add(id));
+        branch.edgePairKeys.forEach((k) => edgePairKeys.add(k));
+    }
+
+    return { nodeIds, edgePairKeys };
+}
+
+/**
+ * Prune-aware branch graph for one or more seeds (same rules as targeted selection).
+ * @param {string[]} seedIds
+ * @param {object[]} [allNodes]
+ * @param {{ fromId: string, toId: string }[]} [edges]
+ * @returns {{ nodeIds: Set<string>, edgePairKeys: Set<string> }}
+ */
+export function buildCodexPruneAwareBranchGraphForSeedIds(seedIds, allNodes, edges, allowedBySeed) {
+    const seeds = (seedIds || []).filter(Boolean);
+    if (!seeds.length) {
+        return { nodeIds: new Set(), edgePairKeys: new Set() };
+    }
+
+    const nodeList = allNodes || s.codexAllNodes || [];
+    const edgeList = edges || s.codexEdges || [];
+    const adj = buildCodexUndirectedAdjacency(edgeList);
+    /** @type {Map<string, string>} */
+    const kindById = new Map();
+    for (let i = 0; i < nodeList.length; i += 1) {
+        const n = nodeList[i];
+        if (n?.id) kindById.set(n.id, n.kind || '');
+    }
+
+    const nodeIds = new Set();
+    const edgePairKeys = new Set();
+    for (let i = 0; i < seeds.length; i += 1) {
+        const allowed = allowedBySeed?.get(seeds[i]);
+        const branch = expandCodexConnectionsOfSeedForTargeted(seeds[i], adj, kindById, allowed);
         branch.nodeIds.forEach((id) => nodeIds.add(id));
         branch.edgePairKeys.forEach((k) => edgePairKeys.add(k));
     }

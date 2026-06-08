@@ -48,8 +48,17 @@ function syncCodexVisualToolbarFromPrefs() {
     });
 }
 
+function hideCodexVisualPrefsPanel() {
+    s.root?.querySelectorAll('.codex-visual-panel').forEach((el) => el.remove());
+    s.root?.querySelectorAll('.codex-toolbar__visual-details').forEach((el) => el.remove());
+    s.codexVisualPanelEl = null;
+}
+
 function ensureCodexVisualPrefsPanel() {
     if (!s.root) return;
+    hideCodexVisualPrefsPanel();
+    return;
+    /* Retired UI — prefs still load/save; cord & packet look uses saved defaults. */
     s.root.querySelectorAll('.codex-toolbar__visual-details').forEach((el) => el.remove());
 
     const onVisualInput = () => {

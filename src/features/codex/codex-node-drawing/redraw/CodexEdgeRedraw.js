@@ -55,7 +55,8 @@ let edgeRedrawScheduleTimer = 0;
  * @property {(edgePolys: { edge: object, pts: { x: number, y: number }[] }[]) => void} syncCodexCordPacketState
  * @property {() => void} codexStopCordAnimRafOnly
  * @property {() => void} ensureCodexCordAnimationLoop
- * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'grey'} edgeCordAppearance
+ * @property {(edge: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'green'|'grey'} edgeCordAppearance
+ * @property {(edge: { fromId: string, toId: string }) => boolean} [edgeCordIsFilterDormant]
  * @property {(p0: object, p1: object) => number|null} cordSegmentDegreesLabel
  * @property {(p0: object, p1: object, tolDeg?: number) => boolean} cordSegmentWithinOctilinearToleranceDegrees
  * @property {() => boolean} [getTargetedSelectionActive]
@@ -272,6 +273,7 @@ export function redrawCodexEdges(opts = {}) {
         viewH: vh
     };
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-violet-glow', 'violetBlur', cordFilt);
+    _rt.appendEdgeGlowFilter(defs, 'codex-edge-green-glow', 'greenBlur', cordFilt);
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-yellow-glow', 'yellowBlur', cordFilt);
     _rt.appendEdgeGlowFilter(defs, 'codex-edge-red-glow', 'redBlur', cordFilt);
     _rt.appendSoftPacketGlowFilter(defs, 'codex-edge-packet-pink-soft', 'pktPinkBlur', {
@@ -302,20 +304,25 @@ export function redrawCodexEdges(opts = {}) {
     edgePolys.forEach(({ edge, pts }) => {
         const { fromId, toId } = edge;
         const appearance = _rt.edgeCordAppearance(edge);
+        const filterDormant = _rt.edgeCordIsFilterDormant?.(edge) === true;
         const strokeColor = appearance === 'red'
             ? '#f87171'
             : appearance === 'yellow'
                 ? '#fbbf24'
-                : appearance === 'grey'
-                    ? 'rgba(100, 108, 128, 0.55)'
-                    : visualPrefs.cordColor;
+                : appearance === 'green'
+                    ? '#4ade80'
+                    : appearance === 'grey'
+                        ? 'rgba(100, 108, 128, 0.55)'
+                        : visualPrefs.cordColor;
         const filterUrl = appearance === 'red'
             ? 'url(#codex-edge-red-glow)'
             : appearance === 'yellow'
                 ? 'url(#codex-edge-yellow-glow)'
-                : appearance === 'grey'
-                    ? 'none'
-                    : 'url(#codex-edge-violet-glow)';
+                : appearance === 'green'
+                    ? 'url(#codex-edge-green-glow)'
+                    : appearance === 'grey'
+                        ? 'none'
+                        : 'url(#codex-edge-violet-glow)';
         for (let seg = 0; seg < pts.length - 1; seg++) {
             const p0 = pts[seg];
             const p1 = pts[seg + 1];
@@ -329,8 +336,12 @@ export function redrawCodexEdges(opts = {}) {
                 filterUrl,
                 lineClass:
                     appearance === 'grey'
-                        ? 'codex-edge-segment codex-edge-segment--timeline-dormant'
-                        : 'codex-edge-segment',
+                        ? (filterDormant
+                            ? 'codex-edge-segment codex-edge-segment--timeline-dormant codex-edge-segment--filter-dormant'
+                            : 'codex-edge-segment codex-edge-segment--timeline-dormant')
+                        : appearance === 'green'
+                            ? 'codex-edge-segment codex-edge-segment--filter-linked'
+                            : 'codex-edge-segment',
                 edgeFromId: fromId,
                 edgeToId: toId
             });
@@ -339,6 +350,8 @@ export function redrawCodexEdges(opts = {}) {
 
     edgePolys.forEach(({ edge, pts }) => {
         const { fromId, toId } = edge;
+        const filterDormant = _rt.edgeCordIsFilterDormant?.(edge) === true;
+        if (filterDormant) return;
         for (let seg = 0; seg < pts.length - 1; seg++) {
             const p0 = pts[seg];
             const p1 = pts[seg + 1];

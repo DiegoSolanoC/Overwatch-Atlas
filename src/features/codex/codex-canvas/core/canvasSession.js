@@ -49,8 +49,10 @@ export const s = {
     backgroundPanPointerId: /** @type {number|null} */ (null),
     codexToolbarEl: /** @type {HTMLElement|null} */ (null),
     codexVisualPanelEl: /** @type {HTMLElement|null} */ (null),
-    codexDebugUiVisible: true,
+    codexDebugUiVisible: false,
     codexPacketAnimEnabled: true,
+    /** @type {{ countMin: number, countMax: number, maxEdges: number }} */
+    codexPacketEdgePlan: { countMin: 3, countMax: 6, maxEdges: 0 },
     codexStageControlsEl: /** @type {HTMLElement|null} */ (null),
     codexTargetedSelectionActive: false,
     codexTargetedSelectionSeedIds: /** @type {Set<string>} */ (new Set()),
@@ -60,7 +62,15 @@ export const s = {
     onWindowResizeRedraw: /** @type {(() => void)|null} */ (null),
     onCodexGlobalKeydown: /** @type {((e: KeyboardEvent) => void)|null} */ (null),
     codexViewModeInitialRenderDone: false,
-    codexZoomDebounceTimer: /** @type {ReturnType<typeof setTimeout>|null} */ (null)
+    codexZoomDebounceTimer: /** @type {ReturnType<typeof setTimeout>|null} */ (null),
+    /** Portrait + junction ids reachable from active filters (null when filters off). */
+    codexFilterReachableNodeIds: /** @type {Set<string>|null} */ (null),
+    /** Portraits on active filter cords but not in the filter set (null when filters off). */
+    codexFilterConnectionEndpointNodeIds: /** @type {Set<string>|null} */ (null),
+    /** When Link Filters is on with 2+ chips — only these cord pairs stay active. */
+    codexFilterLinkedEdgePairKeys: /** @type {Set<string>|null} */ (null),
+    /** Prune-aware active cord pairs while filters are on (null when filters off). */
+    codexFilterActiveEdgePairKeys: /** @type {Set<string>|null} */ (null),
 };
 
 export function resetCanvasSession() {
@@ -115,10 +125,15 @@ export function resetCanvasSession() {
     s.codexTargetedSelectionVisibleIds = new Set();
     s.codexTargetedSelectionVisibleEdgeKeys = new Set();
     s.codexTargetedSelectionLinkSeeds = false;
-    s.codexDebugUiVisible = true;
+    s.codexDebugUiVisible = false;
     s.codexPacketAnimEnabled = true;
+    s.codexPacketEdgePlan = { countMin: 3, countMax: 6, maxEdges: 0 };
     s.onWindowResizeRedraw = null;
     s.onCodexGlobalKeydown = null;
     s.codexViewModeInitialRenderDone = false;
     s.codexZoomDebounceTimer = null;
+    s.codexFilterReachableNodeIds = null;
+    s.codexFilterConnectionEndpointNodeIds = null;
+    s.codexFilterLinkedEdgePairKeys = null;
+    s.codexFilterActiveEdgePairKeys = null;
 }

@@ -7,6 +7,7 @@ import {
     CODEX_EDGE_FILTER_PAD_PX,
     CODEX_PACKET_COUNT_MAX,
     CODEX_PACKET_COUNT_MIN,
+    resolveCodexPacketEdgePlan,
     CODEX_PACKET_METEOR_CORE_MIN_PULSE,
     CODEX_PACKET_PULSE_DECAY_MAX_SEC,
     CODEX_PACKET_PULSE_DECAY_MIN_SEC,
@@ -46,6 +47,8 @@ const cordPacketState = new Map();
  * @property {(nodeId: string) => boolean} codexNodeIsJunctionWaypoint
  * @property {(edge: { fromId: string, toId: string }) => boolean} edgeCordShowsYellow
  * @property {(edge: { fromId: string, toId: string }) => boolean} edgeCordPacketsEnabled
+ * @property {(edge: { fromId: string, toId: string }) => boolean} [edgeCordIsFilterDormant]
+ * @property {() => { countMin: number, countMax: number, maxEdges: number }} [getCodexPacketEdgePlan]
  * @property {(fromId: string, toId: string) => string[]} samplePacketTailNodeIds
  * @property {(fromId: string, toId: string, tailNodeIds: string[]) => ({ x: number, y: number }[]|null)} tryBuildPacketWorldPoints
  * @property {(nodeId: string) => HTMLElement|null} codexNodeElById
@@ -97,8 +100,25 @@ function recomputePacketPolylineMetrics(p) {
  * Refreshes `p.pts` from node centers; keeps or re-samples `p.tailNodeIds` if the chain is invalid.
  * @param {{ tailNodeIds?: string[], pts: { x: number, y: number }[], segLens: number[], totalLen: number }} p
  */
+function codexPacketPathUsesSimpleSegmentOnly() {
+    return typeof _rt?.edgeCordPacketPathSimpleOnly === 'function'
+        && _rt.edgeCordPacketPathSimpleOnly();
+}
+
 function syncPacketPathToEdge(p, fromId, toId) {
     if (!_rt) return;
+    if (codexPacketPathUsesSimpleSegmentOnly()) {
+        const a = _rt.codexNodeElById(fromId);
+        const b = _rt.codexNodeElById(toId);
+        p.tailNodeIds = [];
+        if (!a || !b) {
+            p.pts = [];
+        } else {
+            p.pts = [_rt.getNodeCenterWorldPx(a), _rt.getNodeCenterWorldPx(b)];
+        }
+        recomputePacketPolylineMetrics(p);
+        return;
+    }
     const targeted = s.codexTargetedSelectionActive
         && s.codexTargetedSelectionVisibleEdgeKeys.size > 0;
     let tail = !targeted && Array.isArray(p.tailNodeIds) ? p.tailNodeIds : null;
@@ -161,11 +181,18 @@ function ensureCodexPacketPulseFields(p) {
     if (p.pulseAgeSec == null) p.pulseAgeSec = 0;
 }
 
+function getCodexPacketCountRange() {
+    const plan = _rt?.getCodexPacketEdgePlan?.() || s.codexPacketEdgePlan;
+    const min = Math.max(0, Math.floor(plan?.countMin ?? CODEX_PACKET_COUNT_MIN));
+    const max = Math.max(min, Math.floor(plan?.countMax ?? CODEX_PACKET_COUNT_MAX));
+    return { min, max };
+}
+
 function createCodexCordPacketsForEdge(fromId, toId) {
     if (!_rt) return [];
-    const n =
-        CODEX_PACKET_COUNT_MIN
-        + Math.floor(Math.random() * (CODEX_PACKET_COUNT_MAX - CODEX_PACKET_COUNT_MIN + 1));
+    const { min, max } = getCodexPacketCountRange();
+    if (max <= 0) return [];
+    const n = min + Math.floor(Math.random() * (max - min + 1));
     const packets = [];
     const { min: pwMin, max: pwMax } = _rt.getPacketStrokeRange();
     for (let i = 0; i < n; i += 1) {
@@ -191,12 +218,92 @@ function createCodexCordPacketsForEdge(fromId, toId) {
 /**
  * @param {{ edge: { fromId: string, toId: string } }[]} edgePolys
  */
+function resizeCodexCordPacketArray(st, fromId, toId) {
+    const { min, max } = getCodexPacketCountRange();
+    const target = max <= 0 ? 0 : min + Math.floor(Math.random() * (max - min + 1));
+    while (st.packets.length < target) {
+        const pulse = sampleCodexPacketPulseProfile();
+        st.packets.push({
+            headT: Math.random(),
+            speed: CODEX_PACKET_SPEED_MIN + Math.random() * (CODEX_PACKET_SPEED_MAX - CODEX_PACKET_SPEED_MIN),
+            lengthT: 0.014 + Math.pow(Math.random(), 1.75) * 0.072,
+            width: 0,
+            pts: [],
+            segLens: [],
+            totalLen: 0,
+            pulseRiseSec: pulse.pulseRiseSec,
+            pulseDecaySec: pulse.pulseDecaySec,
+            pulseAgeSec: 0,
+        });
+    }
+    if (st.packets.length > target) {
+        st.packets.length = target;
+    }
+    const { min: pwMin, max: pwMax } = _rt.getPacketStrokeRange();
+    st.packets.forEach((p) => {
+        if (!p.width) {
+            p.width = pwMin + Math.random() * (pwMax - pwMin);
+        }
+        syncPacketPathToEdge(p, fromId, toId);
+    });
+}
+
+/**
+ * Evenly subsample packet-eligible edges so total lights stay within budget.
+ * @template T
+ * @param {T[]} items
+ * @param {number} maxCount
+ * @returns {T[]}
+ */
+function subsampleCodexPacketEdges(items, maxCount) {
+    if (items.length <= maxCount) return items;
+    const picked = [];
+    for (let i = 0; i < maxCount; i += 1) {
+        const idx = Math.floor((i + 0.5) * items.length / maxCount);
+        picked.push(items[idx]);
+    }
+    return picked;
+}
+
+function applyPacketPolylineToState(st, fromId, toId, pts) {
+    if (pts && pts.length >= 2) {
+        st.packets.forEach((p) => {
+            p.tailNodeIds = [];
+            p.pts = pts.map((pt) => ({ x: pt.x, y: pt.y }));
+            recomputePacketPolylineMetrics(p);
+        });
+        return;
+    }
+    st.packets.forEach((p) => {
+        syncPacketPathToEdge(p, fromId, toId);
+    });
+}
+
 export function syncCodexCordPacketState(edgePolys) {
     if (!_rt) return;
-    const seen = new Set();
-    edgePolys.forEach(({ edge }) => {
+
+    /** @type {{ edge: { fromId: string, toId: string }, pts?: { x: number, y: number }[] }[]} */
+    const eligible = [];
+    edgePolys.forEach((entry) => {
+        const { edge, pts } = entry;
         const { fromId, toId } = edge;
-        if (_rt.codexNodeIsJunctionWaypoint(fromId)) return;
+        if (
+            typeof _rt.edgeCordPacketsEnabled === 'function'
+            && !_rt.edgeCordPacketsEnabled(edge)
+        ) {
+            return;
+        }
+        if (_rt.codexNodeIsJunctionWaypoint(fromId) && !(pts && pts.length >= 2)) return;
+        eligible.push(entry);
+    });
+
+    const plan = resolveCodexPacketEdgePlan(eligible.length);
+    s.codexPacketEdgePlan = plan;
+    const packetEdges = subsampleCodexPacketEdges(eligible, plan.maxEdges);
+
+    const seen = new Set();
+    packetEdges.forEach(({ edge, pts }) => {
+        const { fromId, toId } = edge;
         const key = edgeDirectedKey(fromId, toId);
         seen.add(key);
         let st = cordPacketState.get(key);
@@ -211,10 +318,9 @@ export function syncCodexCordPacketState(edgePolys) {
         } else {
             st.fromId = fromId;
             st.toId = toId;
-            st.packets.forEach((p) => {
-                syncPacketPathToEdge(p, fromId, toId);
-            });
+            resizeCodexCordPacketArray(st, fromId, toId);
         }
+        applyPacketPolylineToState(st, fromId, toId, pts);
         st.active = _rt.edgeCordShowsYellow(edge);
         st.packetsEnabled =
             typeof _rt.edgeCordPacketsEnabled === 'function'
@@ -400,7 +506,11 @@ function codexCordAnimationTick(ts) {
             p.headT += p.speed * dt;
             if (p.headT > 1) {
                 p.headT %= 1;
-                p.tailNodeIds = _rt.samplePacketTailNodeIds(st.fromId, st.toId);
+                if (!codexPacketPathUsesSimpleSegmentOnly()) {
+                    p.tailNodeIds = _rt.samplePacketTailNodeIds(st.fromId, st.toId);
+                } else {
+                    p.tailNodeIds = [];
+                }
                 syncPacketPathToEdge(p, st.fromId, st.toId);
                 p.speed = CODEX_PACKET_SPEED_MIN
                     + Math.random() * (CODEX_PACKET_SPEED_MAX - CODEX_PACKET_SPEED_MIN);

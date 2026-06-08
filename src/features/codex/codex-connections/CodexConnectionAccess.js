@@ -20,6 +20,7 @@ import {
     normalizeCodexConnectionMetaList,
     resolveCodexConnectionsForSubject,
 } from './CodexConnectionMeta.js';
+import { invalidateCodexFilterDerivedCache } from '../codex-nodes/filters/CodexNodeFilterMatch.js';
 
 /** @type {{ v: number, nodes: object[], edges: object[], connections: object[] } | null} */
 let cachedPayload = null;
@@ -334,6 +335,14 @@ export async function saveCodexConnectionsForSubject(archive, subjectName, edito
     if (s.root) {
         setCodexConnectionsInSession(nextConnections);
         s.codexLayoutDirty = false;
+        s.codexFilterReachableNodeIds = null;
+        s.codexFilterConnectionEndpointNodeIds = null;
+        s.codexFilterLinkedEdgePairKeys = null;
+        s.codexFilterActiveEdgePairKeys = null;
+        invalidateCodexFilterDerivedCache();
+        if (typeof window !== 'undefined' && typeof window.applyCodexFilterState === 'function') {
+            window.applyCodexFilterState();
+        }
     }
 
     let writtenToDisk = false;

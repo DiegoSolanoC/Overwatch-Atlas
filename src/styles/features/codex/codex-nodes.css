@@ -128,6 +128,12 @@
 }
 
 /* View Mode: hide all editing controls, make read-only */
+.codex-visual-panel {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 .codex--view-mode .codex-toolbar,
 .codex--view-mode .codex-visual-panel,
 .codex--view-mode .codex-picker {
@@ -157,43 +163,10 @@
 }
 
 .codex--view-mode .codex-edge-segment-group--hover .codex-edge-segment,
-.codex--targeted-selection-active .codex-edge-segment-group--hover .codex-edge-segment {
+.codex--targeted-selection-active .codex-edge-segment-group--hover .codex-edge-segment,
+.codex--filters-active .codex-edge-segment-group--hover .codex-edge-segment {
     stroke: #38bdf8 !important;
     stroke-width: 6px !important;
-}
-
-/* Codex Mode Toggle Button - always visible, styled like globe-control-btn */
-.codex-mode-toggle-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 100;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 6px;
-    border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
-    background: rgba(0, 0, 0, 0.6);
-    color: rgba(255, 255, 255, 0.95);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    backdrop-filter: blur(8px);
-    transition: all 0.15s ease;
-}
-
-.codex-mode-toggle-btn:hover {
-    background: rgba(var(--accent-primary-rgb), 0.3);
-    border-color: rgba(var(--accent-primary-rgb), 0.7);
-}
-
-.codex-mode-toggle-btn:active {
-    transform: scale(0.96);
-}
-
-.codex-mode-toggle-label {
-    white-space: nowrap;
 }
 
 .codex-toolbar__junction-pref-label {
@@ -772,6 +745,29 @@ body:has(#paginationDock) .codex-visual-panel {
 .codex-node--filtered-out .codex-node__inner,
 .codex-node--filtered-out.codex-node--simplified {
     filter: brightness(0.5) grayscale(0.8);
+}
+
+/* Connected to filter selection via active cords — lightly dimmed, still selectable */
+.codex-node--filter-connected {
+    opacity: 0.82;
+    filter: brightness(0.88) grayscale(0.28);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.codex-node--filter-connected .codex-node__inner,
+.codex-node--filter-connected.codex-node--simplified {
+    filter: brightness(0.88) grayscale(0.28);
+}
+
+.codex-node--filter-connected:hover {
+    opacity: 0.9;
+    filter: brightness(0.94) grayscale(0.18);
+}
+
+.codex-node--filter-connected:hover .codex-node__inner,
+.codex-node--filter-connected.codex-node--simplified:hover {
+    filter: brightness(0.94) grayscale(0.18);
 }
 
 .codex-node--unsaved.codex-node--selected .codex-node__inner {

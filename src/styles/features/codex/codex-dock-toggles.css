@@ -1,0 +1,122 @@
+/* Codex dock rail — view/dev, linking, packets, and info toggles */
+
+body.codex-mode-active #codexToggleViewDev.dock-globe-rail__btn,
+body.codex-mode-active #codexLinkFiltersToggle.dock-globe-rail__btn,
+body.codex-mode-active #codexTogglePackets.dock-globe-rail__btn,
+body.codex-mode-active #codexToggleInfo.dock-globe-rail__btn {
+    display: flex !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+/* Orange off-state (world Map toggle pattern) instead of default red toggle-off border. */
+body.codex-mode-active #dockGlobeRailLeft .codex-dock-toggle.dock-globe-rail__btn.toggle-off {
+    border-color: rgba(255, 152, 0, 0.82) !important;
+}
+
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
+body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
+body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
+    width: auto !important;
+    min-width: 112px !important;
+    max-width: 138px !important;
+    height: 48px !important;
+    padding: 0 7px !important;
+    gap: 5px !important;
+    font-size: 11px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em;
+}
+
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn [id$='Icon'],
+body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn [id$='Icon'],
+body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+}
+
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn .globe-control-btn__label,
+body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
+body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
+body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-left: 0 !important;
+    white-space: nowrap;
+}
+
+@media (max-width: 1180px) and (min-width: 769px) {
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
+    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn {
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        height: 48px !important;
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn .globe-control-btn__label,
+    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn .globe-control-btn__label,
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn .globe-control-btn__label,
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn .globe-control-btn__label {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn [id$='Icon'],
+    body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn [id$='Icon'],
+    body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn [id$='Icon'],
+    body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn [id$='Icon'] {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+    }
+}
+
+#codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating,
+#codex-view-root > #codexLinkFiltersToggle.codex-toggle-linking--floating,
+#codex-view-root > #codexTogglePackets.codex-toggle-packets--floating,
+#codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
+    position: fixed;
+    left: max(20px, env(safe-area-inset-left));
+    z-index: 120;
+    display: flex !important;
+    pointer-events: auto !important;
+    width: auto !important;
+    min-width: 112px !important;
+    max-width: 138px !important;
+    height: 48px !important;
+    padding: 0 7px !important;
+    gap: 5px !important;
+    font-size: 11px !important;
+}
+
+#codex-view-root > #codexToggleViewDev.codex-toggle-view-dev--floating {
+    bottom: calc(var(--footer-height, 65px) + 200px);
+}
+
+#codex-view-root > #codexLinkFiltersToggle.codex-toggle-linking--floating {
+    bottom: calc(var(--footer-height, 65px) + 24px);
+}
+
+#codex-view-root > #codexTogglePackets.codex-toggle-packets--floating {
+    bottom: calc(var(--footer-height, 65px) + 80px);
+}
+
+#codex-view-root > #codexToggleInfo.codex-toggle-info--floating {
+    bottom: calc(var(--footer-height, 65px) + 136px);
+}

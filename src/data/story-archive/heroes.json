@@ -26,25 +26,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Phreaks",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Susannah",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Doomfist",
@@ -58,17 +40,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Adeyemi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Winston",
@@ -82,17 +54,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Overwatch",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Wrecking Ball",
@@ -106,17 +68,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Mauga",
@@ -130,17 +82,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Orisa",
@@ -154,25 +96,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Adawe",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Efi",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Roadhog",
@@ -214,25 +138,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Bhatt",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Junker Queen",
@@ -246,21 +152,11 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Junker Monarchy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Ramattra",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Secret Omnium",
@@ -270,17 +166,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Null Sector",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Reinhardt",
@@ -308,17 +194,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Bastion",
@@ -336,7 +212,7 @@
     },
     {
       "name": "Emre",
-      "description": "",
+      "description": "No description available.",
       "relevantLocations": [
         {
           "locationName": "Istanbul",
@@ -346,17 +222,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Chernobog Conspiracy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Junkrat",
@@ -398,17 +264,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Vincent",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Symmetra",
@@ -422,17 +278,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Vishkar Corporation",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Torbjörn",
@@ -446,25 +292,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ironclad Guild",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Ingrid",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Ashe",
@@ -478,25 +306,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "B.O.B",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Cassidy",
@@ -524,25 +334,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Shimada Clan",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Sojiro",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Sojourn",
@@ -570,17 +362,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Gérard",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Anran",
@@ -636,17 +418,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Emily",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Vendetta",
@@ -660,17 +432,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Venture",
@@ -684,17 +446,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Palak",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Echo",
@@ -736,17 +488,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Sierra",
@@ -760,17 +502,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Sombra",
@@ -784,17 +516,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Baptiste",
@@ -847,17 +569,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "1 January 2017",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Search & Rescue",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": "1 January 2017"
     },
     {
       "name": "Jetpack Cat",
@@ -885,17 +597,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Iggy",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Zenyatta",
@@ -909,25 +611,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Shambali Order",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Mondatta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Kiriko",
@@ -941,17 +625,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Yokai Gang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Lifeweaver",
@@ -965,17 +639,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Palak",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Mercy",
@@ -1003,17 +667,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Oasis Ministries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Brigitte",
@@ -1027,17 +681,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": "22 September 2053",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ironclad Guild",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": "22 September 2053"
     },
     {
       "name": "Illari",
@@ -1051,17 +695,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Inti Warriors",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Juno",
@@ -1089,25 +723,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": "",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Yokai Gang",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Toshiro",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Wuyang",

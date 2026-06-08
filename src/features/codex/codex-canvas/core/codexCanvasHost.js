@@ -42,6 +42,11 @@ import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/Code
 import { DOUBLE_RIGHT_MS } from './canvasConstants.js';
 import { ensureCodexTargetedArchiveCache } from '../../codex-controls-ui/stage/codexTargetedSelectionAllowlist.js';
 import {
+    applyCodexModeDockToggles,
+    mountCodexDockToggles,
+    unmountCodexDockToggles,
+} from '../../codex-controls-ui/stage/CodexDockToggles.js';
+import {
     debugCodexTimelineGate,
     getCodexTimelineGateDebugSnapshot,
     initCodexBioConnectionDockTimelineListener,
@@ -53,10 +58,8 @@ export function initCodexCanvas(rootElement) {
     s.root = rootElement;
     if (!s.root) return Promise.resolve();
 
-    api.loadCodexDebugUiPref();
-    api.loadCodexPacketAnimPref();
+    api.resetCodexOpenSessionDefaults?.();
     api.loadCodexTargetedLinkPref();
-    api.loadCodexModePref();
     api.loadCodexVisualPrefs();
     api.syncCodexDebugUiClass();
     api.syncCodexModeClass();
@@ -138,6 +141,9 @@ export function initCodexCanvas(rootElement) {
         codexNodeIsJunctionWaypoint: api.codexNodeIsJunctionWaypoint,
         edgeCordShowsYellow: api.edgeCordShowsYellow,
         edgeCordPacketsEnabled: api.edgeCordPacketsEnabled,
+        edgeCordPacketPathSimpleOnly: api.edgeCordPacketPathSimpleOnly,
+        edgeCordIsFilterDormant: api.edgeCordIsFilterDormant,
+        getCodexPacketEdgePlan: () => s.codexPacketEdgePlan,
         samplePacketTailNodeIds: api.samplePacketTailNodeIds,
         tryBuildPacketWorldPoints: api.tryBuildPacketWorldPoints,
         codexNodeElById: api.codexNodeElById,
@@ -182,6 +188,7 @@ export function initCodexCanvas(rootElement) {
         codexStopCordAnimRafOnly,
         ensureCodexCordAnimationLoop,
         edgeCordAppearance: api.edgeCordAppearance,
+        edgeCordIsFilterDormant: api.edgeCordIsFilterDormant,
         cordSegmentDegreesLabel,
         cordSegmentWithinOctilinearToleranceDegrees,
         getTargetedSelectionActive: () => s.codexTargetedSelectionActive,
@@ -286,17 +293,22 @@ export function initCodexCanvas(rootElement) {
         };
     }
 
-    api.ensureCodexToolbar();
+    mountCodexDockToggles();
     return (async () => {
         await api.yieldCodexBrowserPaint();
         await api.loadCodexState();
         await refreshCodexBioConnectionTimelineIndex();
+        api.applyCodexFilterState?.();
+        applyCodexModeDockToggles({ redraw: false });
         redrawCodexEdges({ force: true });
+        api.ensureCodexToolbar();
         ensureCodexTargetedArchiveCache().catch(() => {});
     })();
 }
 
 export function destroyCodexCanvas() {
+    api.teardownCodexStageControls?.();
+    unmountCodexDockToggles();
     disconnectCodexImageObserver();
     terminateCodexJsonParseWorker();
     unregisterCodexBioPreviewRuntime();

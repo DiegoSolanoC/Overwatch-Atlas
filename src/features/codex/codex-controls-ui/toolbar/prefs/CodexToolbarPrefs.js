@@ -13,6 +13,7 @@ import {
     normalizeCodexVisualPrefs
 } from '../../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { redrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { applyCodexModeDockToggles } from '../../stage/CodexDockToggles.js';
 
 function loadCodexVisualPrefs() {
     try {
@@ -61,14 +62,14 @@ function persistCodexPacketAnimPref() {
 }
 
 function loadCodexModePref() {
-    try {
-        const raw = localStorage.getItem(CODEX_MODE_PREF_KEY);
-        if (raw === 'dev' || raw === 'view') {
-            s.codexMode = raw;
-        }
-    } catch (_) {
-        /* keep default (view) */
-    }
+    s.codexMode = 'view';
+}
+
+/** View-mode defaults on every Codex open (packets on, debug info off). */
+export function resetCodexOpenSessionDefaults() {
+    s.codexMode = 'view';
+    s.codexPacketAnimEnabled = true;
+    s.codexDebugUiVisible = false;
 }
 
 function persistCodexDebugUiPref() {
@@ -99,18 +100,16 @@ function syncCodexModeClass() {
     s.root.classList.toggle('codex--dev-mode', s.codexMode === 'dev');
 
     if (s.codexMode !== 'view') {
-        api.clearAllCodexEdgeHoverVisual();
+        api.clearAllCodexEdgeHoverVisual?.();
     }
 
-    console.log('[Codex Mode] Switching from ' + oldMode + ' to ' + s.codexMode);
-    
-    // Reset View Mode initial render flag when switching to View Mode
-    // This allows the first natural redraw (when nodes are loaded) to execute
+    const modeChanged = oldMode !== s.codexMode;
+    applyCodexModeDockToggles({
+        redraw: modeChanged && (s.codexEdges?.length ?? 0) > 0,
+    });
+
     if (s.codexMode === 'view') {
         s.codexViewModeInitialRenderDone = false;
-        console.log('[Codex Mode] Reset View Mode initial render flag');
-        // Trigger redraw to render edges in View Mode
-        redrawCodexEdges();
     }
 }
 
@@ -156,3 +155,4 @@ api.persistCodexModePref = persistCodexModePref;
 api.syncCodexDebugUiClass = syncCodexDebugUiClass;
 api.syncCodexModeClass = syncCodexModeClass;
 api.ensureCodexToolbarModeToggle = ensureCodexToolbarModeToggle;
+api.resetCodexOpenSessionDefaults = resetCodexOpenSessionDefaults;

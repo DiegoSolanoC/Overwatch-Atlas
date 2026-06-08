@@ -12,7 +12,7 @@ import { appendCordFilteredPolygonGroup } from '../svg/CodexCordSvgElements.js';
  * @property {() => { fromId: string, toId: string }[]} getEdges
  * @property {(nodeId: string) => HTMLElement|null} codexNodeElById
  * @property {(el: HTMLElement) => { x: number, y: number }} getNodeCenterWorldPx
- * @property {(edgeIn: { fromId: string, toId: string }, edgeOut: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'grey'} edgeCordAppearance
+ * @property {(edgeIn: { fromId: string, toId: string }, edgeOut: { fromId: string, toId: string }) => 'red'|'yellow'|'violet'|'green'|'grey'} edgeCordAppearance
  * @property {() => string} getCordColorHex
  */
 
@@ -140,17 +140,21 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
                     ? '#f87171'
                     : appearance === 'yellow'
                         ? '#fbbf24'
-                        : appearance === 'grey'
-                            ? 'rgba(120, 128, 148, 0.38)'
-                            : ctx.getCordColorHex();
+                        : appearance === 'green'
+                            ? '#4ade80'
+                            : appearance === 'grey'
+                                ? 'rgba(120, 128, 148, 0.38)'
+                                : ctx.getCordColorHex();
             const filterUrl =
                 appearance === 'red'
                     ? 'url(#codex-edge-red-glow)'
                     : appearance === 'yellow'
                         ? 'url(#codex-edge-yellow-glow)'
-                        : appearance === 'grey'
-                            ? 'none'
-                            : 'url(#codex-edge-violet-glow)';
+                        : appearance === 'green'
+                            ? 'url(#codex-edge-green-glow)'
+                            : appearance === 'grey'
+                                ? 'none'
+                                : 'url(#codex-edge-violet-glow)';
             const pointsStr = pts.map((p) => `${p.x},${p.y}`).join(' ');
             const elbowG = appendCordFilteredPolygonGroup(parentG, ns, {
                 pointsStr,

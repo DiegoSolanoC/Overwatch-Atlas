@@ -61,6 +61,62 @@ function codexPairIsPrunedBetween(seedNode, otherNode) {
 }
 
 /**
+ * Prune-aware allowed portrait ids for many seeds (shared node/edge scan).
+ * @param {string[]} seedIds
+ * @param {object[]} [nodes]
+ * @param {{ fromId: string, toId: string }[]} [edges]
+ * @returns {Map<string, Set<string>>}
+ */
+export function buildAllowedBioNodeIdsBySeedIds(seedIds, nodes, edges) {
+    const nodeList = nodes || s.codexAllNodes || [];
+    const edgeList = edges || s.codexEdges || [];
+    /** @type {Map<string, object>} */
+    const byId = new Map();
+    for (let i = 0; i < nodeList.length; i += 1) {
+        const n = nodeList[i];
+        if (n?.id) byId.set(n.id, n);
+    }
+
+    /** @type {Map<string, Set<string>>} */
+    const out = new Map();
+    const seeds = (seedIds || []).filter(Boolean);
+    for (let i = 0; i < seeds.length; i += 1) {
+        out.set(seeds[i], new Set());
+    }
+
+    for (let i = 0; i < seeds.length; i += 1) {
+        const seedId = seeds[i];
+        const seed = byId.get(seedId);
+        const allowed = out.get(seedId);
+        if (!seed || !allowed) continue;
+
+        for (let j = 0; j < edgeList.length; j += 1) {
+            const e = edgeList[j];
+            if (!e) continue;
+            let other = '';
+            if (e.fromId === seedId) other = e.toId;
+            else if (e.toId === seedId) other = e.fromId;
+            if (!other) continue;
+            const on = byId.get(other);
+            if (on && on.kind !== 'junction') {
+                if (!codexPairIsPrunedBetween(seed, on)) {
+                    allowed.add(other);
+                }
+            }
+        }
+
+        for (const bridgedId of collectJunctionBridgedBioNodeIdsForSeed(seedId, nodeList, edgeList)) {
+            const on = byId.get(bridgedId);
+            if (on && !codexPairIsPrunedBetween(seed, on)) {
+                allowed.add(bridgedId);
+            }
+        }
+    }
+
+    return out;
+}
+
+/**
  * Allowed portrait node ids reachable from this seed in targeted selection.
  * @param {string} seedId
  * @returns {Set<string>}

@@ -14,4 +14,5 @@ export const CODEX_DEBUG_UI_PREF_KEY = 'timelineCodexShowDebugging';
 export const CODEX_DEBUG_UI_PREF_KEY_LEGACY = 'timelineCodexShowJunctionControls';
 export const CODEX_PACKET_ANIM_PREF_KEY = 'timelineCodexPacketAnim';
 export const CODEX_TARGETED_LINK_PREF_KEY = 'timelineCodexTargetedLinkSelections';
+export const CODEX_LINK_FILTERS_PREF_KEY = 'timelineCodexLinkFilters';
 export const CODEX_MODE_PREF_KEY = 'timelineCodexMode';

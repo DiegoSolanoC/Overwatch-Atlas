@@ -1,88 +1,121 @@
 /** CodexNodeFilters — Codex canvas slice. */
+
 import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import {
     exposeApplyCodexFilterState,
     getFactionMatchHelpers,
-    getStandaloneActiveFiltersSet,
-    getStoryFilterPlacesSync
+    getStoryFilterPlacesSync,
 } from '../../codex-canvas/bridge/CodexAppBridge.js';
+import { resetCodexFilterCordSyncSignature, syncCodexFilterCordDom } from './CodexFilterCordSync.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import { isCodexLinkFiltersEnabled } from '../../codex-controls-ui/stage/CodexDockToggles.js';
+import {
+    codexFiltersActive,
+    codexNodeElMatchesActiveFilters,
+    getCodexFilterDerivedState,
+    invalidateCodexFilterDerivedCache,
+} from './CodexNodeFilterMatch.js';
 
+/** @type {number} */
+let filterStateApplyRaf = 0;
 
 function codexNodeMatchesFilters(nodeEl) {
-    const activeFilters = getStandaloneActiveFiltersSet();
-    if (!activeFilters || activeFilters.size === 0) {
-        return true; // No filters active, all nodes match
+    return codexNodeElMatchesActiveFilters(nodeEl);
+}
+
+function rebuildCodexFilterDerivedSets() {
+    if (!codexFiltersActive()) {
+        s.codexFilterReachableNodeIds = null;
+        s.codexFilterConnectionEndpointNodeIds = null;
+        s.codexFilterLinkedEdgePairKeys = null;
+        s.codexFilterActiveEdgePairKeys = null;
+        return;
     }
-    
-    const kind = nodeEl.dataset.codexKind;
-    const hero = nodeEl.dataset.codexHero || '';
-    const npc = nodeEl.dataset.codexNpc || '';
-    const faction = nodeEl.dataset.codexFactionFile || '';
-    const country = nodeEl.dataset.codexCountryKey || '';
-    
-    // Junction nodes (break points) are never filtered out
-    if (kind === 'junction') {
-        return true;
-    }
-    
-    // Special case: Numbani country node matches if Efi, Adawe, or Orisa are selected
-    if (kind === 'country' && country.toLowerCase() === 'numbani') {
-        const numbaniRelatedFilters = ['Efi', 'Adawe', 'Orisa'];
-        for (const filter of activeFilters) {
-            for (const related of numbaniRelatedFilters) {
-                if (filter === related || filter === `hero:${related}` || filter === `npc:${related}`) {
-                    return true;
-                }
-            }
-        }
-        // Numbani node doesn't match if none of the related filters are selected
+
+    const linkOn = isCodexLinkFiltersEnabled();
+    const state = getCodexFilterDerivedState(s.codexAllNodes, s.codexEdges, linkOn);
+    s.codexFilterReachableNodeIds = state.reachableNodeIds;
+    s.codexFilterLinkedEdgePairKeys = state.linkedEdgePairKeys;
+    s.codexFilterActiveEdgePairKeys = state.activeEdgePairKeys;
+    s.codexFilterConnectionEndpointNodeIds = state.connectionEndpointNodeIds;
+}
+
+function nodeIsFilterConnected(nodeId) {
+    if (!nodeId) return false;
+    if (isCodexLinkFiltersEnabled() && s.codexFilterLinkedEdgePairKeys?.size) {
         return false;
     }
-    
-    // Build filter keys for this node
-    const nodeFilterKeys = new Set();
-    if (kind === 'hero' && hero) {
-        nodeFilterKeys.add(hero);
-        nodeFilterKeys.add(`hero:${hero}`);
-    } else if (kind === 'npc' && npc) {
-        nodeFilterKeys.add(npc);
-        nodeFilterKeys.add(`npc:${npc}`);
-    } else if (kind === 'faction' && faction) {
-        nodeFilterKeys.add(faction);
-        nodeFilterKeys.add(`faction:${faction}`);
-    } else if (kind === 'country' && country) {
-        nodeFilterKeys.add(country);
-        nodeFilterKeys.add(`country:${country}`);
+    return !!(s.codexFilterConnectionEndpointNodeIds?.has(nodeId));
+}
+
+/**
+ * @param {HTMLElement} nodeEl
+ */
+function applyCodexNodeFilterClassesToEl(nodeEl) {
+    if (!nodeEl) return;
+
+    nodeEl.classList.remove(
+        'codex-node--filter-match',
+        'codex-node--filtered-out',
+        'codex-node--filter-connected',
+    );
+
+    if (!codexFiltersActive()) return;
+
+    const kind = String(nodeEl.dataset.codexKind || '');
+    if (kind === 'junction') return;
+
+    const nodeId = String(nodeEl.dataset.codexNodeId || '');
+
+    if (codexNodeMatchesFilters(nodeEl)) {
+        nodeEl.classList.add('codex-node--filter-match');
+        return;
     }
-    
-    // Check if any of the node's filter keys are in the active filters
-    for (const filter of activeFilters) {
-        if (nodeFilterKeys.has(filter)) {
-            return true;
-        }
+
+    if (nodeIsFilterConnected(nodeId)) {
+        nodeEl.classList.add('codex-node--filter-connected');
+        return;
     }
-    
-    return false;
+
+    nodeEl.classList.add('codex-node--filtered-out');
+}
+
+function applyCodexFilterStateNow() {
+    if (!s.root) return;
+
+    if (!codexFiltersActive()) {
+        resetCodexFilterCordSyncSignature();
+    }
+
+    rebuildCodexFilterDerivedSets();
+
+    const linkOn = isCodexLinkFiltersEnabled() && !!(s.codexFilterLinkedEdgePairKeys?.size);
+    s.root.classList.toggle('codex--filter-linking-active', linkOn && codexFiltersActive());
+
+    s.root.querySelectorAll('.codex-node').forEach((nodeEl) => {
+        applyCodexNodeFilterClassesToEl(nodeEl);
+    });
+
+    if (!codexFiltersActive()) {
+        s.root.classList.remove('codex--filter-linking-active');
+        redrawCodexEdges({ force: true });
+        return;
+    }
+
+    if (!syncCodexFilterCordDom()) {
+        redrawCodexEdges({ force: true });
+    }
 }
 
 function applyCodexFilterState() {
     if (!s.root) return;
-    
-    const nodes = s.root.querySelectorAll('.codex-node');
-
-    nodes.forEach((nodeEl) => {
-        const matches = codexNodeMatchesFilters(nodeEl);
-
-        if (matches) {
-            nodeEl.classList.remove('codex-node--filtered-out');
-            nodeEl.classList.add('codex-node--filter-match');
-        } else {
-            nodeEl.classList.add('codex-node--filtered-out');
-            nodeEl.classList.remove('codex-node--filter-match');
-        }
+    if (filterStateApplyRaf) {
+        cancelAnimationFrame(filterStateApplyRaf);
+    }
+    filterStateApplyRaf = requestAnimationFrame(() => {
+        filterStateApplyRaf = 0;
+        applyCodexFilterStateNow();
     });
 }
 
@@ -103,10 +136,10 @@ function applyCodexEventThumbnailFilterHover(event, displayEvent) {
         ? mergeList(S.getStoryEventNpcTokens(event), S.getStoryEventNpcTokens(disp))
         : mergeList(event.npcs, disp.npcs);
     const heroesLower = new Set(
-        heroesRaw.map((h) => String(h || '').trim().toLowerCase()).filter(Boolean)
+        heroesRaw.map((h) => String(h || '').trim().toLowerCase()).filter(Boolean),
     );
     const npcsLower = new Set(
-        npcsRaw.map((n) => String(n || '').trim().toLowerCase()).filter(Boolean)
+        npcsRaw.map((n) => String(n || '').trim().toLowerCase()).filter(Boolean),
     );
     const factions = Array.isArray(factionsRaw) ? factionsRaw : [];
     const fh = getFactionMatchHelpers();
@@ -124,7 +157,7 @@ function applyCodexEventThumbnailFilterHover(event, displayEvent) {
         if (kind === 'faction' && factions.length) {
             const fn = el.dataset.codexFactionFile || '';
             const fd = el.dataset.codexFactionDisplay || '';
-            for (let i = 0; i < factions.length; i++) {
+            for (let i = 0; i < factions.length; i += 1) {
                 const ef = factions[i];
                 if (fh && typeof fh.factionIdsMatch === 'function') {
                     if (fh.factionIdsMatch(fn, ef) || fh.factionIdsMatch(fd, ef)) {
@@ -139,7 +172,6 @@ function applyCodexEventThumbnailFilterHover(event, displayEvent) {
         }
         if (match) el.classList.add('codex-node--filter-hover');
     });
-    redrawCodexEdges();
 }
 
 function clearCodexEventThumbnailFilterHover() {
@@ -148,17 +180,15 @@ function clearCodexEventThumbnailFilterHover() {
     const els = codexRoot.querySelectorAll('.codex-node--filter-hover');
     if (!els.length) return;
     els.forEach((el) => el.classList.remove('codex-node--filter-hover'));
-    redrawCodexEdges();
 }
-
 
 if (typeof window !== 'undefined') {
     exposeApplyCodexFilterState(applyCodexFilterState);
 }
 
-
 api.codexNodeMatchesFilters = codexNodeMatchesFilters;
 api.applyCodexFilterState = applyCodexFilterState;
+api.applyCodexNodeFilterClassesToEl = applyCodexNodeFilterClassesToEl;
 api.applyCodexEventThumbnailFilterHover = applyCodexEventThumbnailFilterHover;
 api.clearCodexEventThumbnailFilterHover = clearCodexEventThumbnailFilterHover;
-
+api.invalidateCodexFilterDerivedCache = invalidateCodexFilterDerivedCache;

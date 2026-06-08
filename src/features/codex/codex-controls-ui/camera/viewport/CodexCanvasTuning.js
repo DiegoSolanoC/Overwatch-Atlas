@@ -51,9 +51,35 @@ export const CODEX_PACKET_PULSE_PAD_PEAK_MULT = 3.05;
 /** Sharp white-hot core on top of filtered glow; only drawn above this pulse strength. */
 export const CODEX_PACKET_METEOR_CORE_MIN_PULSE = 0.06;
 
-/** Packets per directed edge (inclusive range). */
+/** Packets per directed edge (inclusive range) when few cords are active. */
 export const CODEX_PACKET_COUNT_MIN = 3;
 export const CODEX_PACKET_COUNT_MAX = 6;
+
+/** Hard cap on simulated packet lights across the whole board. */
+export const CODEX_PACKET_GLOBAL_BUDGET = 108;
+
+/**
+ * Scale packet density from the number of cords that currently accept packets.
+ * @param {number} activeEdgeCount
+ * @returns {{ countMin: number, countMax: number, maxEdges: number }}
+ */
+export function resolveCodexPacketEdgePlan(activeEdgeCount) {
+    const n = Math.max(0, Math.floor(activeEdgeCount));
+    if (n === 0) {
+        return { countMin: 0, countMax: 0, maxEdges: 0 };
+    }
+    if (n <= 18) {
+        return { countMin: CODEX_PACKET_COUNT_MIN, countMax: CODEX_PACKET_COUNT_MAX, maxEdges: n };
+    }
+    if (n <= 45) {
+        return { countMin: 2, countMax: 4, maxEdges: n };
+    }
+    if (n <= 90) {
+        return { countMin: 1, countMax: 3, maxEdges: n };
+    }
+    const maxEdges = Math.min(n, CODEX_PACKET_GLOBAL_BUDGET);
+    return { countMin: 1, countMax: 1, maxEdges };
+}
 
 /** Arc-length speed per second (higher = more traffic). */
 export const CODEX_PACKET_SPEED_MIN = 0.14;
