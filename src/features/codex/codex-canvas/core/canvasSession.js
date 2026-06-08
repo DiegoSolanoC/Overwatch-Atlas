@@ -23,6 +23,7 @@ export const s = {
     codexMode: /** @type {'dev'|'view'} */ ('view'),
     networkLinkSourceId: /** @type {string|null} */ (null),
     codexEdges: /** @type {{ fromId: string, toId: string }[]} */ ([]),
+    codexConnections: /** @type {object[]} */ ([]),
     codexEdgesSvgEl: /** @type {SVGSVGElement|null} */ (null),
     codexEdgeHoverChainKeySet: /** @type {Set<string>|null} */ (null),
     cordDoubleRightLastTs: /** @type {Map<string, number>} */ (new Map()),
@@ -82,6 +83,7 @@ export function resetCanvasSession() {
     s.codexMode = 'view';
     s.networkLinkSourceId = null;
     s.codexEdges = [];
+    s.codexConnections = [];
     s.codexEdgesSvgEl = null;
     s.codexEdgeHoverChainKeySet = null;
     s.cordDoubleRightLastTs.clear();

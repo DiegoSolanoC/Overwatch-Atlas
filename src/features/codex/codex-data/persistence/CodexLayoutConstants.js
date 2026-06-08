@@ -3,8 +3,8 @@
  */
 export const CODEX_STORAGE_KEY = 'timelineCodexLabels';
 
-/** Persisted layout format (4 = junction nodes, straight cords only; older saves are cleared or migrated on load). */
-export const CODEX_SAVE_VERSION = 4;
+/** Persisted layout format (5 = junction layout + codex-owned `connections[]` metadata). */
+export const CODEX_SAVE_VERSION = 5;
 
 /** First save format with junction nodes only; anything below loads empty (legacy edge-break layouts dropped). */
 export const CODEX_JUNCTION_LAYOUT_MIN_VERSION = 4;

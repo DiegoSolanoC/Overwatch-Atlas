@@ -61,6 +61,7 @@ import {
     resolveLiveArchiveEventDataForSlide,
     resolveLiveArchiveEventIndexForSlide,
 } from '../../../interface-shared/bio-archive/bioArchiveSlideEventData.js';
+import { saveCodexConnectionsForSubject } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
 
 export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         if (!slide.isEditing || !slide.editTarget) return;
@@ -90,7 +91,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                   ) ?? []
                 : undefined;
             const normalized = isBioSave
-                ? { name: cleanName, description: cleanDesc, relevantLocations, connections }
+                ? { name: cleanName, description: cleanDesc, relevantLocations }
                 : { name: cleanName, description: cleanDesc };
             if (archiveSource === 'factions') {
                 normalized.factionType = readFactionTypeBioPanelTrimmed();
@@ -132,12 +133,10 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                         ) ?? em.events.indexOf(liveBeforeSave);
                 }
                 const oldRef = liveBeforeSave;
-                const prevConnections =
-                    isBioSave && Array.isArray(oldRef?.connections)
-                        ? oldRef.connections.map((c) => ({ ...c }))
-                        : [];
                 mergedRow = Object.assign({}, oldRef, normalized);
-                if (connections !== undefined) mergedRow.connections = connections;
+                if ('connections' in mergedRow) {
+                    delete mergedRow.connections;
+                }
                 if (relevantLocations !== undefined) {
                     mergedRow.relevantLocations = relevantLocations;
                 }
@@ -192,18 +191,28 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                         }
                     }
                     em.unsavedEventIndices?.add(saveIdx);
-                    if (
-                        isBioSave &&
-                        window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
-                    ) {
-                        window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
-                            em.events,
-                            archiveSource,
-                            em.events[saveIdx],
-                            prevConnections
+                }
+            }
+            if (isBioSave && connections !== undefined && mergedRow?.name) {
+                void saveCodexConnectionsForSubject(
+                    archiveSource,
+                    String(mergedRow.name).trim(),
+                    connections,
+                ).then((r) => {
+                    if (!r?.ok) {
+                        window.updateAppStatus?.(
+                            r.error || 'Could not save connection metadata to Codex.',
+                            'warning',
+                        );
+                        return;
+                    }
+                    if (r.writtenToDisk) {
+                        window.updateAppStatus?.(
+                            'Connection metadata saved to codex-labels.json.',
+                            'success',
                         );
                     }
-                }
+                });
             }
             if (em?.dataService?._normalizeSatelliteEventsInPlace) {
                 em.dataService._normalizeSatelliteEventsInPlace();

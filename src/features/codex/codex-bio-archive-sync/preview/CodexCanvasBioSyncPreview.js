@@ -2,6 +2,7 @@
  * Dev-server bio ↔ Codex link diff preview overlay (`POST /api/codex/bio-sync-preview`).
  */
 
+import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_SAVE_VERSION } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/CodexLayoutSerialization.js';
 import {
@@ -50,7 +51,7 @@ export async function previewBioCodexArchiveLinkDiff() {
     const root = _rt.getRoot();
     if (!root) return;
     const { nodes, edges } = _rt.getSerializedSnapshot();
-    const payload = { v: CODEX_SAVE_VERSION, nodes, edges };
+    const payload = { v: CODEX_SAVE_VERSION, nodes, edges, connections: s.codexConnections || [] };
     const url = resolveCodexRepoApiUrl('api/codex/bio-sync-preview');
     try {
         updateAppStatus('Comparing Codex links to archive data…', 'success');

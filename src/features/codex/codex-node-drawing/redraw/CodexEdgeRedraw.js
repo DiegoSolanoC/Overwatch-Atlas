@@ -110,11 +110,16 @@ export function redrawCodexEdges(opts = {}) {
     if (_rt.getTargetedSelectionActive?.()) {
         const visible = _rt.getTargetedSelectionVisibleIds?.();
         const edgeKeys = _rt.getTargetedSelectionVisibleEdgeKeys?.();
-        if (visible && visible.size > 0 && edgeKeys && edgeKeys.size > 0) {
+        if (visible && visible.size > 0) {
             edges = edges.filter((e) => {
                 if (!visible.has(e.fromId) || !visible.has(e.toId)) return false;
-                return edgeKeys.has(codexUnorderedPairKey(e.fromId, e.toId));
+                if (edgeKeys && edgeKeys.size > 0) {
+                    return edgeKeys.has(codexUnorderedPairKey(e.fromId, e.toId));
+                }
+                return true;
             });
+        } else {
+            edges = [];
         }
     }
     const dragIds = _rt.getActiveDragNodeIds();

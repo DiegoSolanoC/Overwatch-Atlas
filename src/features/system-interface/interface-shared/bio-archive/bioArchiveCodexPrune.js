@@ -1,6 +1,7 @@
 /**
- * Drop archive `connections[]` rows with `showInCodex: true` when no direct Codex cord exists
- * (matches scripts/server-bio-codex-sync.js). Narrative rows without `showInCodex` are kept.
+ * Drop archive `connections[]` rows with `showInCodex: true` when no matching Codex link exists
+ * (direct cord or junction-bridged pair; matches scripts/server-bio-codex-sync.js).
+ * Narrative rows without `showInCodex` are kept.
  */
 
 import { fetchCanonicalCodexJson } from '../../../codex/codex-data/load/CodexJsonRepository.js';
@@ -97,6 +98,10 @@ export function pruneShowInCodexConnectionsInPlace(events, archiveSource, snap) 
             const c = ev.connections[j];
             if (!c) continue;
             if (c.showInCodex !== true) {
+                kept.push(c);
+                continue;
+            }
+            if (c.pruned === true) {
                 kept.push(c);
                 continue;
             }

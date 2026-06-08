@@ -17,7 +17,11 @@ const EXCLUDE_NAMES = new Set([
     '_site',
     '.cursor',
     'terminals',
+    'scripts',
+    'docs',
 ]);
+
+const MIN_CODEX_SAVE_VERSION = 5;
 
 function shouldCopyName(name) {
     if (EXCLUDE_NAMES.has(name)) return false;
@@ -42,15 +46,10 @@ function copyRecursive(srcDir, destDir) {
     }
 }
 
-fs.rmSync(OUT, { recursive: true, force: true });
-copyRecursive(ROOT, OUT);
-
-// Ensure Jekyll is disabled on Pages
-fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
-
-// Mark deploy as static so runtime matches GitHub Pages (file over localStorage, no /api writes)
-const siteIndex = path.join(OUT, 'index.html');
-if (fs.existsSync(siteIndex)) {
+function injectStaticDeployMeta(siteIndex) {
+    if (!fs.existsSync(siteIndex)) {
+        throw new Error('Missing _site/index.html');
+    }
     let html = fs.readFileSync(siteIndex, 'utf8');
     if (!/name=["']timeline-deploy["']/i.test(html)) {
         const marker = '<meta name="timeline-deploy" content="static">';
@@ -63,4 +62,98 @@ if (fs.existsSync(siteIndex)) {
     }
 }
 
-console.log('GitHub Pages output:', OUT);
+function removeDevOnlyArtifacts() {
+    const paths = [
+        path.join(OUT, 'src', 'server.js'),
+    ];
+    for (const p of paths) {
+        if (fs.existsSync(p)) fs.rmSync(p, { force: true });
+    }
+}
+
+function validateStaticSite() {
+    const errors = [];
+
+    if (!fs.existsSync(path.join(OUT, '.nojekyll'))) {
+        errors.push('Missing _site/.nojekyll');
+    }
+
+    const siteIndex = path.join(OUT, 'index.html');
+    if (!fs.existsSync(siteIndex)) {
+        errors.push('Missing _site/index.html');
+    } else {
+        const html = fs.readFileSync(siteIndex, 'utf8');
+        if (!/name=["']timeline-deploy["']/i.test(html)) {
+            errors.push('index.html missing <meta name="timeline-deploy" content="static">');
+        }
+    }
+
+    const codexPath = path.join(OUT, 'src', 'data', 'codex', 'codex-labels.json');
+    if (!fs.existsSync(codexPath)) {
+        errors.push('Missing _site/src/data/codex/codex-labels.json');
+    } else {
+        try {
+            const codex = JSON.parse(fs.readFileSync(codexPath, 'utf8'));
+            const v = typeof codex.v === 'number' ? codex.v : 0;
+            if (v < MIN_CODEX_SAVE_VERSION) {
+                errors.push(
+                    `codex-labels.json v${v} is below v${MIN_CODEX_SAVE_VERSION} (connection metadata requires v5+)`,
+                );
+            }
+            if (!Array.isArray(codex.connections)) {
+                errors.push('codex-labels.json missing connections[] array (commit Codex v5 export before deploy)');
+            }
+            const nodeCount = Array.isArray(codex.nodes) ? codex.nodes.length : 0;
+            if (nodeCount === 0) {
+                errors.push('codex-labels.json has zero nodes');
+            }
+        } catch (e) {
+            errors.push(`codex-labels.json is not valid JSON: ${e?.message || e}`);
+        }
+    }
+
+    const manifestPath = path.join(OUT, 'src', 'data', 'platform', 'manifest.json');
+    if (!fs.existsSync(manifestPath)) {
+        errors.push('Missing _site/src/data/platform/manifest.json (run generate-manifest first)');
+    }
+
+    if (fs.existsSync(path.join(OUT, 'src', 'server.js'))) {
+        errors.push('Dev server file should not be published: _site/src/server.js');
+    }
+
+    if (errors.length) {
+        console.error('GitHub Pages build validation failed:');
+        for (const msg of errors) {
+            console.error(`  - ${msg}`);
+        }
+        process.exit(1);
+    }
+}
+
+function printSummary() {
+    const codexPath = path.join(OUT, 'src', 'data', 'codex', 'codex-labels.json');
+    const codex = JSON.parse(fs.readFileSync(codexPath, 'utf8'));
+    const manifest = JSON.parse(
+        fs.readFileSync(path.join(OUT, 'src', 'data', 'platform', 'manifest.json'), 'utf8'),
+    );
+    console.log('GitHub Pages output:', OUT);
+    console.log(
+        `  codex-labels.json: v${codex.v}, ${codex.nodes?.length ?? 0} nodes, `
+            + `${codex.edges?.length ?? 0} edges, ${codex.connections?.length ?? 0} connection row(s)`,
+    );
+    console.log(
+        `  manifest: ${manifest.heroes?.length ?? 0} heroes, `
+            + `${manifest.factions?.length ?? 0} factions, ${manifest.npcs?.length ?? 0} npcs`,
+    );
+    console.log('  static deploy meta injected; dev-only paths excluded');
+}
+
+fs.rmSync(OUT, { recursive: true, force: true });
+copyRecursive(ROOT, OUT);
+
+fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+
+injectStaticDeployMeta(path.join(OUT, 'index.html'));
+removeDevOnlyArtifacts();
+validateStaticSite();
+printSummary();

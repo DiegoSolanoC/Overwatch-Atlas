@@ -124,19 +124,19 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "The Phreaks",
+          "kind": "hero",
+          "name": "Hazard",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Hazard",
+          "kind": "faction",
+          "name": "The Phreaks",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -164,19 +164,19 @@
       "relevantLocations": [],
       "connections": [
         {
-          "kind": "faction",
-          "name": "Deadlock Rebels",
+          "kind": "hero",
+          "name": "Ashe",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Ashe",
+          "kind": "faction",
+          "name": "Deadlock Rebels",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -344,7 +344,7 @@
           "name": "Yamagami Blades",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         },
         {
@@ -486,7 +486,7 @@
           "name": "Lucheng Interstellar",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -502,7 +502,7 @@
           "name": "Overwatch",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         },
         {
@@ -526,7 +526,7 @@
           "name": "Overwatch",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -542,7 +542,7 @@
           "name": "The Martins Collective",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -590,7 +590,7 @@
           "name": "The Martins Collective",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -606,7 +606,7 @@
           "name": "Omnica Corporation",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -654,7 +654,7 @@
           "name": "La Coterie",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -709,7 +709,7 @@
           "name": "Volskaya Industries",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -741,7 +741,7 @@
           "name": "Omnica Corporation",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -757,7 +757,7 @@
           "name": "Crusader Initiative",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -773,7 +773,7 @@
           "name": "Vishkar Corporation",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         },
         {
@@ -813,7 +813,7 @@
           "name": "Shambali Order",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         },
         {
@@ -981,7 +981,7 @@
           "name": "Null Sector",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -997,7 +997,7 @@
           "name": "Ironclad Guild",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ],
@@ -1056,24 +1056,24 @@
       "relevantLocations": [],
       "connections": [
         {
+          "kind": "hero",
+          "name": "Venture",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "faction",
           "name": "The Martins Collective",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         },
         {
           "kind": "hero",
           "name": "Lifeweaver",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Venture",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

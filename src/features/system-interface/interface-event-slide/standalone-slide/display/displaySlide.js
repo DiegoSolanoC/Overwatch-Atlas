@@ -7,6 +7,7 @@
  * the original method's 	his).
  */
 
+import '../../../../codex/codex-connections/CodexConnectionAccess.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {

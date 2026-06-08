@@ -96,7 +96,7 @@ export async function syncCodexEdgesFromBioArchiveConnections() {
             const conns = Array.isArray(ev.connections) ? ev.connections : [];
             for (let ci = 0; ci < conns.length; ci += 1) {
                 const c = conns[ci];
-                if (!c || c.showInCodex !== true) continue;
+                if (!c || c.showInCodex !== true || c.pruned === true) continue;
                 let lk = String(c.kind || 'hero').toLowerCase();
                 if (lk === 'character') lk = 'hero';
                 if (lk !== 'faction' && lk !== 'npc') lk = 'hero';
@@ -161,7 +161,7 @@ export async function syncCodexEdgesFromBioArchiveConnections() {
             const conns = Array.isArray(ev.connections) ? ev.connections : [];
             for (let ci = 0; ci < conns.length; ci += 1) {
                 const c = conns[ci];
-                if (!c || c.showInCodex !== true) continue;
+                if (!c || c.showInCodex !== true || c.pruned === true) continue;
                 let lk = String(c.kind || 'hero').toLowerCase();
                 if (lk === 'character') lk = 'hero';
                 if (lk !== 'faction' && lk !== 'npc') lk = 'hero';

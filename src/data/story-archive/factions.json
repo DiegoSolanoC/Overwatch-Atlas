@@ -189,6 +189,14 @@
       "connections": [
         {
           "kind": "hero",
+          "name": "Kiriko",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
           "name": "Mizuki",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
@@ -226,14 +234,6 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Kiriko",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
       ],
       "factionType": "Criminal Groups"
@@ -245,7 +245,7 @@
       "connections": [
         {
           "kind": "hero",
-          "name": "Junker Queen",
+          "name": "Wrecking Ball",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -253,7 +253,7 @@
         },
         {
           "kind": "hero",
-          "name": "Wrecking Ball",
+          "name": "Junker Queen",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -851,8 +851,24 @@
       "relevantLocations": [],
       "connections": [
         {
+          "kind": "faction",
+          "name": "La Coterie",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
           "kind": "hero",
           "name": "Sigma",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Mauga",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -869,22 +885,6 @@
         {
           "kind": "faction",
           "name": "Colloseo Gladiatori",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "La Coterie",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Mauga",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

@@ -2,9 +2,10 @@
  * After Codex layout is saved, upsert hero/faction/npc bio `connections[]` rows so
  * **direct** Codex cords between bio entities appear in archive JSON (`showInCodex`), mirrored on both endpoints.
  *
- * Junction waypoints are visual routing only (splits/merges on one subject's graph); they do **not**
- * imply archive links between every bio pair along that chain (e.g. Sombra → break → … → Bastion does not
- * add Los Muertos / Illari / Venture onto Bastion's row).
+ * Junction waypoints route cords on the board; archive rows are created for (1) direct entity↔entity
+ * cords and (2) entity pairs linked only through junction hops (no other bio node on the path).
+ * Transitive paths through other portraits are still excluded (e.g. A → break → B → break → C does not
+ * add A↔C when B is another hero/faction/npc between them).
  */
 const fs = require('fs');
 const path = require('path');
@@ -147,10 +148,62 @@ function bioEntityResolvableInArchives(loads, entity) {
 }
 
 /**
+ * @param {{ fromId: string, toId: string }[]} edges
+ * @returns {Map<string, string[]>}
+ */
+function buildUndirectedAdjacency(edges) {
+    /** @type {Map<string, string[]>} */
+    const adj = new Map();
+    for (const e of edges || []) {
+        if (!e?.fromId || !e?.toId) continue;
+        if (!adj.has(e.fromId)) adj.set(e.fromId, []);
+        if (!adj.has(e.toId)) adj.set(e.toId, []);
+        adj.get(e.fromId).push(e.toId);
+        adj.get(e.toId).push(e.fromId);
+    }
+    return adj;
+}
+
+function codexNodeIsJunction(byId, id) {
+    const n = byId.get(id);
+    return !!(n && n.kind === 'junction');
+}
+
+function codexNodeIsBioEntity(byId, id) {
+    const n = byId.get(id);
+    return !!(n && (n.kind === 'hero' || n.kind === 'faction' || n.kind === 'npc'));
+}
+
+/**
  * Hero/faction/npc pairs that should appear as mirrored `showInCodex` archive links:
- * only **direct** Codex cords between two bio entities (no junction-only reachability).
+ * direct Codex cords plus junction-bridged pairs (no other bio node between endpoints).
  * @returns {{ allowedKeys: Set<string>, pairs: { a: object, b: object }[] }}
  */
+function connectionRowPrunedBetween(loads, entityA, entityB) {
+    if (!entityA || !entityB) return false;
+    const eventsA = loads[entityA.arch]?.events || [];
+    const ixA = findEventIndexForEntity(eventsA, entityA.arch, entityA);
+    if (ixA >= 0) {
+        const ev = eventsA[ixA];
+        const key = connectionKey(entityB.kind, entityB.connectionName);
+        const row = (ev.connections || []).find(
+            (c) => c && connectionKey(c.kind, c.name) === key,
+        );
+        if (row && row.pruned === true) return true;
+    }
+    const eventsB = loads[entityB.arch]?.events || [];
+    const ixB = findEventIndexForEntity(eventsB, entityB.arch, entityB);
+    if (ixB >= 0) {
+        const ev = eventsB[ixB];
+        const key = connectionKey(entityA.kind, entityA.connectionName);
+        const row = (ev.connections || []).find(
+            (c) => c && connectionKey(c.kind, c.name) === key,
+        );
+        if (row && row.pruned === true) return true;
+    }
+    return false;
+}
+
 function collectCodexBioConnectionPairs(loads, byId, edges) {
     /** @type {Set<string>} */
     const allowedKeys = new Set();
@@ -159,6 +212,7 @@ function collectCodexBioConnectionPairs(loads, byId, edges) {
 
     function recordPair(entityA, entityB) {
         if (!entityA || !entityB) return;
+        if (connectionRowPrunedBetween(loads, entityA, entityB)) return;
         if (!bioEntityResolvableInArchives(loads, entityA) || !bioEntityResolvableInArchives(loads, entityB)) return;
         const sa = canonicalBioEntitySignature(loads, entityA);
         const sb = canonicalBioEntitySignature(loads, entityB);
@@ -174,6 +228,35 @@ function collectCodexBioConnectionPairs(loads, byId, edges) {
         const entA = nodeToBioEntity(byId.get(e.fromId));
         const entB = nodeToBioEntity(byId.get(e.toId));
         if (entA && entB) recordPair(entA, entB);
+    }
+
+    const adj = buildUndirectedAdjacency(edges);
+    for (const [startId] of byId) {
+        if (!codexNodeIsBioEntity(byId, startId)) continue;
+        const entA = nodeToBioEntity(byId.get(startId));
+        if (!entA) continue;
+
+        const seen = new Set([startId]);
+        const queue = [startId];
+        while (queue.length) {
+            const cur = queue.shift();
+            const neighbors = adj.get(cur) || [];
+            for (let ni = 0; ni < neighbors.length; ni += 1) {
+                const nb = neighbors[ni];
+                if (seen.has(nb)) continue;
+                if (codexNodeIsBioEntity(byId, nb)) {
+                    if (nb !== startId) {
+                        const entB = nodeToBioEntity(byId.get(nb));
+                        if (entB) recordPair(entA, entB);
+                    }
+                    continue;
+                }
+                if (codexNodeIsJunction(byId, nb)) {
+                    seen.add(nb);
+                    queue.push(nb);
+                }
+            }
+        }
     }
 
     return { allowedKeys, pairs: [...pairByKey.values()] };
@@ -228,6 +311,10 @@ function pruneStaleShowInCodexConnections(loads, allowedKeys) {
                 const c = ev.connections[j];
                 if (!c) continue;
                 if (c.showInCodex !== true) {
+                    next.push(c);
+                    continue;
+                }
+                if (c.pruned === true) {
                     next.push(c);
                     continue;
                 }
@@ -292,7 +379,7 @@ function diffStoryArchivesVsCodex(dataDir, nodes, edges) {
             const subjectSig = canonicalBioEntitySignature(loads, subjEntity);
             for (let j = 0; j < ev.connections.length; j += 1) {
                 const c = ev.connections[j];
-                if (!c || c.showInCodex !== true) continue;
+                if (!c || c.showInCodex !== true || c.pruned === true) continue;
                 const lk = normalizeConnKind(c.kind);
                 const ln = sanitizeConnectionEntityName(c.name);
                 if (!ln) continue;
@@ -348,6 +435,7 @@ function upsertConnectionRow(events, eventIndex, targetKind, targetName) {
     };
     if (ix >= 0) {
         const cur = ev.connections[ix];
+        if (cur.pruned === true) return false;
         const outSubj = String(cur.reasoningSubjectToLinked ?? '').trim();
         const outLink = String(cur.reasoningLinkedToSubject ?? '').trim();
         const leg = cur.reasoning != null ? String(cur.reasoning).trim() : '';

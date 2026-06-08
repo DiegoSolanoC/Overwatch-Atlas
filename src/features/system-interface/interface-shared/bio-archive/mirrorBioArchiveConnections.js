@@ -11,8 +11,8 @@
  * that previous saves missed (e.g. when the slide held a stale object ref
  * that `indexOf` couldn't locate).
  *
- * Mirrors only explicit `connections[]` rows (or direct Codex cords after a codex save).
- * Junction chains in the Codex do not add archive rows for every bio along the branch.
+ * Mirrors explicit `connections[]` rows (and Codex-backed pairs after a codex save — direct cords
+ * or junction-bridged links, not transitive paths through other portraits).
  *
  * Compatibility note: this file used to be `BioArchiveConnectionsSync.js`
  * and exposed `window.BioArchiveConnectionsSync`. Both the file content and
@@ -65,7 +65,7 @@
     };
 
     function shouldCrossArchiveMirrorRow(c) {
-        return shouldMirrorBioConnectionRow(c) || c.showInCodex === true;
+        return shouldMirrorBioConnectionRow(c) || (c.showInCodex === true && c.pruned !== true);
     }
 
     function cloneBioArchiveEventsForEdit(events) {
@@ -656,7 +656,7 @@
     }
 
     /**
-     * Drop `showInCodex` on rows that are not backed by a direct Codex cord (junction-only links).
+     * Drop `showInCodex` on rows that are not backed by a Codex link (direct or junction-bridged).
      * @param {Array<Object>} events
      * @param {string} archiveSource
      */
@@ -686,7 +686,7 @@
             var changed = false;
             for (var j = 0; j < ev.connections.length; j++) {
                 var c = ev.connections[j];
-                if (!c || c.showInCodex !== true) continue;
+                if (!c || c.showInCodex !== true || c.pruned === true) continue;
                 var lk = normalizeConnKind(c.kind);
                 var ln = sanitizeConnectionEntityName(c.name);
                 if (!ln) continue;
@@ -815,12 +815,12 @@
         pruneShowInCodexWithoutDirectCodexEdge: pruneShowInCodexWithoutDirectCodexEdge,
         pruneJunctionPhantomConnectionsInPlace: pruneJunctionPhantomConnectionsInPlace,
         bioConnectionRowIsDisplayable: function (c) {
-            if (!c) return false;
+            if (!c || c.pruned === true) return false;
             var name = c.name != null ? String(c.name).trim() : '';
             if (!name) return false;
             if (bioConnectionRowHasNarrativeText(c)) return true;
             if (Array.isArray(c.ranges) && c.ranges.length) return true;
-            return c.showInCodex === true;
+            return true;
         },
         resolveBioArchiveEventIndex: resolveBioArchiveEventIndex,
         isFactionHeroNpcMixed: isFactionHeroNpcMixed

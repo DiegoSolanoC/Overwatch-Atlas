@@ -280,7 +280,7 @@ function buildRangedGateRows(allNodes) {
             if (!subjectName) continue;
 
             for (const c of ev.connections || []) {
-                if (!c || c.showInCodex !== true) continue;
+                if (!c || c.showInCodex !== true || c.pruned === true) continue;
                 let lk = String(c.kind || 'hero').toLowerCase();
                 if (lk === 'character') lk = 'hero';
                 if (lk !== 'faction' && lk !== 'npc') lk = 'hero';

@@ -241,9 +241,12 @@ function codexDirectedEdgeAllowedForPacketWalk(fromId, toId) {
     if (!s.codexTargetedSelectionActive) return true;
     const visible = s.codexTargetedSelectionVisibleIds;
     const edgeKeys = s.codexTargetedSelectionVisibleEdgeKeys;
-    if (!visible?.size || !edgeKeys?.size) return true;
+    if (!visible?.size) return false;
     if (!visible.has(fromId) || !visible.has(toId)) return false;
-    return edgeKeys.has(codexUnorderedPairKey(fromId, toId));
+    if (edgeKeys?.size) {
+        return edgeKeys.has(codexUnorderedPairKey(fromId, toId));
+    }
+    return true;
 }
 
 function samplePacketTailNodeIds(fromId, toId) {

@@ -35,15 +35,28 @@ Unlike Windows, GitHub Pages serves files from a **case-sensitive** filesystem. 
 - **Zoom, music, palette, event manager, filters, etc.**: `src/styles/entry.css`, `src/styles/features/world/globe.css`, `src/styles/mobile/viewport.css` (via `src/styles/mobile.css`).
 - All loaded through `src/styles/app.css` and `src/styles/entry.css` with relative imports; no absolute URLs.
 
+## Codex v5 + connection metadata (static hosting)
+
+- **Shipped file**: `src/data/codex/codex-labels.json` must be **v5+** with a `connections[]` array (relationship text, pruned flags, ranges). CI validates this during `npm run build:pages`.
+- **Read on Pages**: Gallery / event-slide info panels and Codex load topology + `connections[]` from that JSON (relative path `src/data/codex/codex-labels.json`). Archives no longer store connection rows.
+- **Edit on Pages** (Gallery or Data Workshop): connection **Save** writes to **browser `localStorage` only** — there is no `/api/codex` on GitHub Pages. Prunes and narrative edits persist per browser until cache is cleared.
+- **Share connection edits**: use **Codex → Export JSON** on the live site, then merge/commit the file locally and push (or re-import on another machine). For a canonical update, save from **localhost** (dev server writes `codex-labels.json` on disk).
+- **Before deploy**: run **`npm run build:pages`** locally; fix any validation errors (missing `connections[]`, old codex version, etc.).
+
 ## Before you push
 
 1. **Commit the Atlas image** (if not already):  
    `git add "src/assets/images/Misc/Atlas News.png"`
 
-2. **Ensure expected paths are in the repo**:  
-   `index.html`, `404.html`, `.nojekyll`, `src/styles/app.css`, `src/script.js`, `src/server.js` (local dev only; not used by the static Pages artifact), `src/data/` (JSON including **`src/data/manifest.json`** — CI regenerates it during `build:pages`; commit it when you change filter/music assets so local `npm start` stays in sync), `src/assets/`, `src/` (application JS), `src/styles/`, `scripts/` (build helpers).
+2. **Commit data you want live**, especially:
+   - `src/data/codex/codex-labels.json` (v5 + `connections[]` after local Codex/connection edits)
+   - `src/data/story-archive/*.json` (bios, roles — not connections)
+   - `src/data/event-system/timeline-events.json` when timeline content changed
 
-3. **Open the live site** at  
+3. **Ensure expected paths are in the repo**:  
+   `index.html`, `404.html`, `.nojekyll`, `src/styles/app.css`, `src/script.js`, `src/server.js` (local dev only; **excluded** from `_site/`), `src/data/` (JSON including **`src/data/platform/manifest.json`** — CI regenerates it during `build:pages`), `src/assets/`, `src/` (application JS), `src/styles/`, `scripts/` (build helpers; **excluded** from `_site/`).
+
+4. **Open the live site** at  
    `https://<username>.github.io/<repo-name>/`  
    (or `.../index.html`). After the globe loads you should see:
    - Footer with Atlas News image (red trapezoid) on the left

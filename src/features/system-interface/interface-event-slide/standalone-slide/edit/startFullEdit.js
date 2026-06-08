@@ -18,6 +18,7 @@ import {
     STORY_FACTION_FILTER_PLACES_OPTS,
     STORY_NPC_FILTER_PLACES_OPTS
 } from '../../../interface-shared/storyEventFilterPlaces.js';
+import { resolveConnectionsForArchiveEntry } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
 
 function resolveLiveArchiveEventData(slide, fallbackEventData) {
     const api = typeof window !== 'undefined' ? window.BioArchiveSlideEventData : null;
@@ -138,15 +139,19 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                     }
                     const connContainer = document.getElementById('eventSlideEditBioConnections');
                     if (connContainer && window.BioArchiveConnectionsEditor?.render) {
-                        const conns = Array.isArray(liveEventData?.connections)
-                            ? liveEventData.connections
-                            : [];
                         const bioOpts =
                             window.BioArchiveConnectionsEditor?.subjectOptsFromArchiveRow?.(
                                 liveEventData,
                                 archiveSourceEdit
                             ) || { subjectName: '', subjectKind: 'hero' };
-                        window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
+                        void resolveConnectionsForArchiveEntry(
+                            archiveSourceEdit,
+                            liveEventData,
+                            bioOpts.subjectName,
+                            { forEdit: true },
+                        ).then((conns) => {
+                            window.BioArchiveConnectionsEditor.render(connContainer, conns, bioOpts);
+                        });
                     }
                 }
                 syncFactionTypeBioPanelVisibility(

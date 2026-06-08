@@ -1,7 +1,11 @@
 /** CodexLayoutLoad — Codex canvas slice. */
 import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
-import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
+import {
+    ensureCodexConnectionPayload,
+    mergeLocalStorageConnectionsPreferLocal,
+    setCodexConnectionsInSession,
+} from '../../codex-connections/CodexConnectionAccess.js';
 import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { parseCodexJsonInWorker } from './CodexJsonParseWorker.js';
 import { fetchCanonicalCodexJson } from './CodexJsonRepository.js';
@@ -103,7 +107,7 @@ async function loadCodexState() {
 
     const canonical = await fetchCanonicalCodexJson();
     if (canonical.ok) {
-        sourceObj = canonical.data;
+        sourceObj = mergeLocalStorageConnectionsPreferLocal(canonical.data);
         loadedFromCanonical = true;
     } else {
         // Use Web Worker to parse JSON without blocking main thread
@@ -121,25 +125,26 @@ async function loadCodexState() {
     }
 
     if (!sourceObj) {
-        sourceObj = { v: CODEX_SAVE_VERSION, nodes: [], edges: [] };
+        sourceObj = { v: CODEX_SAVE_VERSION, nodes: [], edges: [], connections: [] };
     }
 
     const mirrorCanonicalToLocalStorage = () => {
         if (!loadedFromCanonical) return;
         try {
-            const { nodes: nPersist, edges: ePersist } = api.serializeCodexState();
+            const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
             if (!nPersist.length) return;
             localStorage.setItem(
                 CODEX_STORAGE_KEY,
-                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist })
+                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
             );
         } catch (_) {
             /* ignore */
         }
     };
 
-    const { nodes, edges, migratedNow } = parseMigrateAndDedupeCodexSource(sourceObj);
+    const { nodes, edges, connections, migratedNow } = parseMigrateAndDedupeCodexSource(sourceObj);
     s.codexEdges = edges;
+    setCodexConnectionsInSession(connections || []);
     s.codexUnsavedEdgeKeys.clear();
     s.codexViewZoom = CODEX_ZOOM_INITIAL;
     
@@ -198,10 +203,10 @@ async function loadCodexState() {
 
     if (migratedNow) {
         try {
-            const { nodes: nPersist, edges: ePersist } = api.serializeCodexState();
+            const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
             localStorage.setItem(
                 CODEX_STORAGE_KEY,
-                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist })
+                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
             );
         } catch (_) {
             /* ignore */
@@ -217,7 +222,11 @@ async function loadCodexState() {
     }
     api.updateCodexToolbar();
     mirrorCanonicalToLocalStorage();
-    void syncCodexEdgesFromBioArchiveConnections();
+    void ensureCodexConnectionPayload(true).then((payload) => {
+        if (payload?.connections?.length) {
+            setCodexConnectionsInSession(payload.connections);
+        }
+    });
 }
 
 api.placeLoadedCodexNodeRecord = placeLoadedCodexNodeRecord;

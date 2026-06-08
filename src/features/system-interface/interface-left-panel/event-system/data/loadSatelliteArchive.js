@@ -175,6 +175,23 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
     return removed + added;
 }
 
+/**
+ * @param {unknown[]|null} events
+ * @returns {number}
+ */
+function countShowInCodexConnections(events) {
+    if (!Array.isArray(events)) return 0;
+    let total = 0;
+    for (let i = 0; i < events.length; i += 1) {
+        const conns = events[i]?.connections;
+        if (!Array.isArray(conns)) continue;
+        for (let j = 0; j < conns.length; j += 1) {
+            if (conns[j]?.showInCodex === true) total += 1;
+        }
+    }
+    return total;
+}
+
 /** @param {import('./EventDataService.js').default} dataService */
 function pruneSatellitePhantomConnectionsInPlace(dataService) {
     const arch = dataService.getArchiveSource();
@@ -245,6 +262,29 @@ export async function loadSatelliteArchive(dataService) {
         parsedLocal.some((e) => Array.isArray(e?.connections) && e.connections.length > 0);
 
     if (localOk) {
+        const fileConnCount = countShowInCodexConnections(fileEvents);
+        const localConnCount = countShowInCodexConnections(parsedLocal);
+        if (
+            dataService._canPersistTimelineJsonToRepo()
+            && Array.isArray(fileEvents)
+            && fileEvents.length > 0
+            && fileConnCount > localConnCount
+        ) {
+            dataService.events = fileEvents;
+            const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
+            dataService._normalizeSatelliteEventsInPlace();
+            pruneSatellitePhantomConnectionsInPlace(dataService);
+            dataService.saveEvents();
+            if (removedDupes > 0) {
+                /* saveEvents already persisted */
+            }
+            dataService.updateStatus(
+                `EventDataService: disk ${dataService.getArchiveSource()} has newer Codex connections (${fileConnCount} vs ${localConnCount} in localStorage) — refreshed`,
+                'info',
+            );
+            return { events: dataService.events, source: 'file', shouldSync: false };
+        }
+
         if (
             !dataService._canPersistTimelineJsonToRepo()
             && !localHasConnections

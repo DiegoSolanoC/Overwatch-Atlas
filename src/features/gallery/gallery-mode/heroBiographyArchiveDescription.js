@@ -8,6 +8,11 @@ import { getHeroBirthdayRawFromEntry } from '../../system-interface/interface-sh
 import { isHeroBiographyLocalDev } from './heroBiographyLocalDev.js';
 import { saveHeroArchiveEntryPatchFromBiographyStage, saveBioArchiveConnectionCanvasFromGallery } from './heroBiographyArchivePersist.js';
 import {
+    archiveEntryWithConnections,
+    resolveConnectionsForArchiveEntry,
+    saveCodexConnectionsForSubject,
+} from '../../codex/codex-connections/CodexConnectionAccess.js';
+import {
     clearHeroBiographyConnectionsView,
     renderHeroBiographyConnectionsView,
 } from './heroBiographyArchiveConnectionsView.js';
@@ -217,13 +222,16 @@ function setConnectionsViewMode(mode) {
         });
     }
     if (connectionsViewMode === 'canvas') {
-        void refreshConnectionsCanvas();
+        void refreshConnectionsCanvas(currentEntry);
     } else {
-        applyConnectionsEmptyState();
+        applyConnectionsEmptyState(currentEntry);
     }
 }
 
-async function refreshConnectionsCanvas() {
+/**
+ * @param {object | null} [viewEntry]
+ */
+async function refreshConnectionsCanvas(viewEntry = currentEntry) {
     if (!connectionsCanvasMountEl || connectionsViewMode !== 'canvas') return;
 
     if (!connectionsCanvasController) {
@@ -239,19 +247,22 @@ async function refreshConnectionsCanvas() {
     }
 
     await connectionsCanvasController.load(
-        currentEntry,
+        viewEntry,
         currentCategory,
         currentDisplayName,
         currentFilterKey || '',
-        currentEntry?.connectionCanvas,
+        viewEntry?.connectionCanvas,
     );
-    applyConnectionsEmptyState();
+    applyConnectionsEmptyState(viewEntry);
 }
 
-function applyConnectionsEmptyState() {
+/**
+ * @param {object | null} [viewEntry]
+ */
+function applyConnectionsEmptyState(viewEntry = currentEntry) {
     if (!connectionsEmptyEl || isConnectionsEditing) return;
     if (connectionsViewMode === 'canvas') {
-        const hasLinks = listDisplayableConnectionEntities(currentEntry).length > 0;
+        const hasLinks = listDisplayableConnectionEntities(viewEntry).length > 0;
         const hasCanvas = connectionsCanvasController?.hasContent?.() ?? false;
         connectionsEmptyEl.hidden = hasLinks || hasCanvas;
         return;
@@ -289,13 +300,23 @@ function updateConnectionsEmptyCopy(category) {
  * @param {object | null} entry
  * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
  */
-function renderConnectionsBody(entry, category) {
+async function renderConnectionsBody(entry, category) {
     if (!connectionsBodyEl) return;
-    renderHeroBiographyConnectionsView(connectionsBodyEl, entry, category);
-    if (connectionsViewMode === 'canvas') {
-        void refreshConnectionsCanvas();
+    const cat = normalizeBioBiographyCategory(category);
+    let viewEntry = entry;
+    if (entry && (cat === 'heroes' || cat === 'factions' || cat === 'npcs')) {
+        const connections = await resolveConnectionsForArchiveEntry(
+            cat,
+            entry,
+            currentDisplayName,
+        );
+        viewEntry = archiveEntryWithConnections(entry, cat, connections);
     }
-    applyConnectionsEmptyState();
+    renderHeroBiographyConnectionsView(connectionsBodyEl, viewEntry, category);
+    if (connectionsViewMode === 'canvas') {
+        void refreshConnectionsCanvas(viewEntry);
+    }
+    applyConnectionsEmptyState(viewEntry);
 }
 
 function renderBirthdayMeta(display) {
@@ -370,18 +391,28 @@ function beginIntelEditMode(entry, descriptionText) {
     editBodyEl?.focus();
 }
 
-function beginConnectionsEditMode() {
-    if (!canEditGalleryArchive() || !currentFilterKey || currentCategory !== 'heroes' || !currentEntry) return;
+async function beginConnectionsEditMode() {
+    const cat = normalizeBioBiographyCategory(currentCategory);
+    if (
+        !canEditGalleryArchive()
+        || !currentFilterKey
+        || (cat !== 'heroes' && cat !== 'factions' && cat !== 'npcs')
+        || !currentEntry
+    ) {
+        return;
+    }
     if (isIntelEditing) exitIntelEditMode();
 
     const editor = window.BioArchiveConnectionsEditor;
     if (!editor?.render || !connectionsEditMount) return;
 
-    const conns = Array.isArray(currentEntry.connections) ? currentEntry.connections : [];
+    const conns = await resolveConnectionsForArchiveEntry(cat, currentEntry, currentDisplayName, {
+        forEdit: true,
+    });
     const bioOpts =
-        editor.subjectOptsFromArchiveRow?.(currentEntry, 'heroes') || {
+        editor.subjectOptsFromArchiveRow?.(currentEntry, cat) || {
             subjectName: currentDisplayName || currentFilterKey,
-            subjectKind: 'hero',
+            subjectKind: cat === 'factions' ? 'faction' : cat === 'npcs' ? 'npc' : 'hero',
         };
 
     connectionsEditMount.replaceChildren();
@@ -447,10 +478,11 @@ async function handleIntelSave() {
 }
 
 async function handleConnectionsSave() {
+    const cat = normalizeBioBiographyCategory(currentCategory);
     if (
         !canEditGalleryArchive()
         || !currentFilterKey
-        || currentCategory !== 'heroes'
+        || (cat !== 'heroes' && cat !== 'factions' && cat !== 'npcs')
         || connectionsSaveInFlight
         || !connectionsEditMount
     ) {
@@ -459,29 +491,36 @@ async function handleConnectionsSave() {
 
     const editor = window.BioArchiveConnectionsEditor;
     const connections = editor?.collect?.(connectionsEditMount) ?? [];
+    const subjectName =
+        currentEntry?.name != null && String(currentEntry.name).trim()
+            ? String(currentEntry.name).trim()
+            : currentDisplayName || currentFilterKey;
 
     connectionsSaveInFlight = true;
     if (connectionsSaveBtn) connectionsSaveBtn.disabled = true;
 
     try {
-        const result = await saveHeroArchiveEntryPatchFromBiographyStage(
-            currentFilterKey,
-            currentDisplayName,
-            { connections },
-        );
+        const result = await saveCodexConnectionsForSubject(cat, subjectName, connections);
         if (!result.ok) {
             window.updateAppStatus?.(result.error || 'Could not save connections.', 'warning');
             return;
         }
 
-        if (result.entry) currentEntry = result.entry;
-        clearBioArchiveEventsCache('heroes');
+        if (result.writtenToDisk) {
+            window.updateAppStatus?.('Connection metadata saved to codex-labels.json.', 'success');
+        } else {
+            window.updateAppStatus?.(
+                'Connection metadata saved in this browser. Export Codex JSON to share, or save from localhost to update the repo file.',
+                'success',
+            );
+        }
+
         exitConnectionsEditMode();
         window.SoundEffectsManager?.play?.('save');
         if (connectionsSaveBtn && window.flashButton) {
             window.flashButton(connectionsSaveBtn, 'flash-green');
         }
-        renderConnectionsBody(currentEntry, currentCategory);
+        await renderConnectionsBody(currentEntry, currentCategory);
     } catch (err) {
         console.warn('[gallery] Connections save failed:', err);
         window.updateAppStatus?.('Could not save connections.', 'warning');
@@ -868,7 +907,7 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
 
     renderBirthdayMeta(birthdayDisplay);
     renderIntelBody(description || '');
-    renderConnectionsBody(entry, cat);
+    await renderConnectionsBody(entry, cat);
 
     const hasIntel = !!(description || birthdayDisplay);
 

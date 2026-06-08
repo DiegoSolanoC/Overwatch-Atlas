@@ -267,7 +267,8 @@
                         : '';
                     var leg = row.reasoning != null ? String(row.reasoning).trim() : '';
                     if (tOut || tIn || leg) return true;
-                    return row.showInCodex === true;
+                    if (row.pruned === true) return false;
+                    return true;
                 };
 
         for (var i = 0; i < rows.length; i++) {
@@ -448,10 +449,23 @@
             sec.style.display = 'none';
             return;
         }
-        var inner = createBioConnectionsSlideHtml(ev, arch);
-        el.innerHTML = inner;
-        sec.style.display = inner ? 'block' : 'none';
-        if (inner) wireStoryFilterSectionBioArchiveNav(sec);
+        function paint(viewEv) {
+            var inner = createBioConnectionsSlideHtml(viewEv, arch);
+            el.innerHTML = inner;
+            sec.style.display = inner ? 'block' : 'none';
+            if (inner) wireStoryFilterSectionBioArchiveNav(sec);
+        }
+        var svc = typeof window !== 'undefined' ? window.CodexConnectionService : null;
+        if (svc && typeof svc.resolveConnectionsForArchiveEntry === 'function') {
+            svc.resolveConnectionsForArchiveEntry(arch, ev).then(function (conns) {
+                var viewEv = Object.assign({}, ev, { connections: conns });
+                paint(viewEv);
+            }).catch(function () {
+                paint(Object.assign({}, ev, { connections: [] }));
+            });
+            return;
+        }
+        paint(ev);
     }
 
     window.__SlideBioConnections = {

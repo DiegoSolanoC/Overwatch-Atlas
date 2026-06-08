@@ -13,13 +13,31 @@ export function bioConnectionRowHasNarrativeText(c) {
 }
 
 /**
+ * @param {object | null | undefined} c
+ * @returns {boolean}
+ */
+export function bioConnectionRowIsPruned(c) {
+    return !!(c && c.pruned === true);
+}
+
+/**
+ * Archive row participates in Codex link sync / board authorization.
+ * @param {object | null | undefined} c
+ * @returns {boolean}
+ */
+export function bioConnectionRowIsActiveForCodex(c) {
+    if (!c || bioConnectionRowIsPruned(c)) return false;
+    return c.showInCodex === true;
+}
+
+/**
  * Row exists only for Codex / reciprocal mirror with no relationship copy.
  * @param {object | null | undefined} c
  * @returns {boolean}
  */
 export function bioConnectionRowIsCodexOnlyStub(c) {
     if (!c) return false;
-    return c.showInCodex === true && !bioConnectionRowHasNarrativeText(c);
+    return bioConnectionRowIsActiveForCodex(c) && !bioConnectionRowHasNarrativeText(c);
 }
 
 /**
@@ -28,13 +46,12 @@ export function bioConnectionRowIsCodexOnlyStub(c) {
  * @returns {boolean}
  */
 export function bioConnectionRowIsDisplayable(c) {
-    if (!c) return false;
+    if (!c || bioConnectionRowIsPruned(c)) return false;
     const name = c.name != null ? String(c.name).trim() : '';
     if (!name) return false;
     if (bioConnectionRowHasNarrativeText(c)) return true;
     if (Array.isArray(c.ranges) && c.ranges.length > 0) return true;
-    if (c.showInCodex === true) return true;
-    return false;
+    return true;
 }
 
 /**

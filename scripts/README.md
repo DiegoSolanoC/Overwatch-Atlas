@@ -9,8 +9,8 @@ Paths for JSON files: use **`data-paths.cjs`** (wraps `src/data/registry.cjs`).
 | Script | npm / usage |
 |--------|-------------|
 | `generate-manifest.js` | `npm run generate`, `npm start`, `npm run build:pages` — builds `src/data/platform/manifest.json` from assets |
-| `prepare-github-pages.mjs` | `npm run build:pages` — copies site to `_site/` |
-| `server-bio-codex-sync.js` | Loaded by `src/server.js` on codex save — syncs entity edges ↔ story-archive `connections[]` |
+| `prepare-github-pages.mjs` | `npm run build:pages` — copies site to `_site/`, injects static meta, validates codex v5 |
+| `server-bio-codex-sync.js` | Legacy dev-server helper (archive `connections[]` sync); connection metadata now lives in `codex-labels.json` `connections[]` |
 
 ## Generators & content tools
 

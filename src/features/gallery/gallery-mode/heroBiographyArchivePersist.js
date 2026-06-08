@@ -192,15 +192,10 @@ export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey,
             description: patch.description !== undefined ? String(patch.description ?? '').trim() : '',
             birthday: patch.birthday !== undefined ? String(patch.birthday ?? '').trim() : '',
             relevantLocations: [],
-            connections: patch.connections !== undefined ? patch.connections : [],
         });
         idx = events.length - 1;
     } else {
         const prev = events[idx];
-        const prevConnections = Array.isArray(prev.connections)
-            ? prev.connections.map((c) => ({ ...c }))
-            : [];
-
         const next = { ...prev };
         if (patch.description !== undefined) {
             next.description = String(patch.description ?? '').trim();
@@ -208,22 +203,10 @@ export async function saveHeroArchiveEntryPatchFromBiographyStage(heroFilterKey,
         if (patch.birthday !== undefined) {
             next.birthday = String(patch.birthday ?? '').trim();
         }
-        if (patch.connections !== undefined) {
-            next.connections = patch.connections;
+        if ('connections' in next) {
+            delete next.connections;
         }
         events[idx] = next;
-
-        if (
-            patch.connections !== undefined
-            && window.BioArchiveConnectionsSync?.syncMirrorsAfterSubjectSave
-        ) {
-            window.BioArchiveConnectionsSync.syncMirrorsAfterSubjectSave(
-                events,
-                'heroes',
-                events[idx],
-                prevConnections,
-            );
-        }
     }
 
     writeHeroesArchiveLocal(events);
@@ -290,7 +273,6 @@ export async function saveBioArchiveConnectionCanvasFromGallery(category, filter
         events.push({
             name,
             relevantLocations: [],
-            connections: [],
             connectionCanvas: patch.connectionCanvas,
         });
         idx = events.length - 1;

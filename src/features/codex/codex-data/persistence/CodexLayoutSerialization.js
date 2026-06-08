@@ -55,10 +55,18 @@ export function serializeCodexLayoutSnapshot(allNodes, edges) {
 
 /**
  * @param {number} saveVersion
- * @param {object} snapshot `{ nodes, edges }`
+ * @param {object} snapshot `{ nodes, edges, connections? }`
  */
 export function stringifyCodexLayoutJson(saveVersion, snapshot) {
-    return `${JSON.stringify({ v: saveVersion, nodes: snapshot.nodes, edges: snapshot.edges }, null, 2)}\n`;
+    const payload = {
+        v: saveVersion,
+        nodes: snapshot.nodes,
+        edges: snapshot.edges,
+    };
+    if (Array.isArray(snapshot.connections)) {
+        payload.connections = snapshot.connections;
+    }
+    return `${JSON.stringify(payload, null, 2)}\n`;
 }
 
 /**

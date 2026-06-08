@@ -1,7 +1,7 @@
 /** CodexLayoutImportExport — Codex canvas slice. */
 import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
-import { syncCodexEdgesFromBioArchiveConnections } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
+import { setCodexConnectionsInSession, ensureCodexConnectionPayload } from '../../codex-connections/CodexConnectionAccess.js';
 import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { parseMigrateAndDedupeCodexSource } from '../migration/CodexPayloadMigration.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
@@ -43,9 +43,10 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
         return;
     }
 
-    const { nodes, edges, migratedNow } = parseMigrateAndDedupeCodexSource(parsed);
+    const { nodes, edges, connections, migratedNow } = parseMigrateAndDedupeCodexSource(parsed);
     stripCodexBoardForFullReplace();
     s.codexEdges = edges;
+    setCodexConnectionsInSession(connections || []);
     s.codexUnsavedEdgeKeys.clear();
     s.cordDoubleRightLastTs.clear();
     s.codexNodeDeleteLastRightTs.clear();
@@ -71,16 +72,17 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
         redrawCodexEdges();
         api.markCodexLayoutDirty();
         try {
-            const { nodes: nPersist, edges: ePersist } = api.serializeCodexState();
+            const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
             localStorage.setItem(
                 CODEX_STORAGE_KEY,
-                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist })
+                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
             );
         } catch (_) {
             /* ignore */
         }
+        void ensureCodexConnectionPayload(true);
         /*
-         * Verbatim import: do NOT run syncCodexEdgesFromBioArchiveConnections here.
+         * Verbatim import: connection metadata travels with the codex JSON.
          * The bio reconcile runs automatically after a successful Save Codex (saveCodexLayout
          * line ~2195), so the imported state lands first and reconciliation is applied
          * against the new, persisted layout.
@@ -105,32 +107,28 @@ async function importCodexLayoutFromJsonText(jsonText, opts = {}) {
     requestAnimationFrame(() => redrawCodexEdges());
     api.markCodexLayoutDirty();
     try {
-        const { nodes: nPersist, edges: ePersist } = api.serializeCodexState();
+        const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
         localStorage.setItem(
             CODEX_STORAGE_KEY,
-            JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist })
+            JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
         );
     } catch (_) {
         /* ignore */
     }
+    void ensureCodexConnectionPayload(true);
     if (migratedNow) {
         updateAppStatus(
-            'Codex import: layout was upgraded from an older format — use Save Codex to persist (archives reconcile after save).',
+            'Codex import: layout was upgraded from an older format — use Save Codex to persist.',
             'info'
         );
     } else {
         updateAppStatus(
-            `Codex import: ${nodes.length} nodes, ${s.codexEdges.length} links (verbatim). Use Save Codex to persist; archive reconciliation runs after save.`,
+            `Codex import: ${nodes.length} nodes, ${s.codexEdges.length} links, ${(connections || []).length} connection row(s). Use Save Codex to persist.`,
             'success'
         );
     }
     /*
-     * Verbatim import: skip bio-sync here. The reconciler runs automatically after a
-     * successful Save Codex (saveCodexLayout, see post-write hook), so the imported
-     * state — including any direct entity-to-entity cords from another user's export
-     * that aren't in the local archives — survives until the user explicitly saves.
-     * After save, the status line reports any reconcile changes ("removed N orphan
-     * link(s); added M from archives") and the user can Save again to commit them.
+     * Verbatim import: topology + connection metadata come from the file as-is.
      */
     api.updateCodexToolbar();
 }

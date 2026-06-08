@@ -158,7 +158,6 @@ export function normalizeSatelliteArchiveEntry(raw, archiveSource) {
     const bioArchives = new Set(['heroes', 'factions', 'npcs']);
     if (bioArchives.has(archiveSource)) {
         base.relevantLocations = normalizeHeroRelevantLocations(raw.relevantLocations);
-        base.connections = normalizeBioArchiveConnections(raw.connections);
     }
     if (archiveSource === 'factions') {
         let factionType = '';

@@ -9,6 +9,7 @@ import {
 import { api } from './core/codexCanvasApi.js';
 import { s } from './core/canvasSession.js';
 import { buildDirectCodexBioPairKeySet, pairKeyForBioArchiveConnection } from '../../system-interface/interface-shared/bio-archive/bioArchiveDirectCodexPairKeys.js';
+import '../codex-connections/CodexConnectionAccess.js';
 
 export {
     initCodexCanvas,

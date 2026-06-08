@@ -6,7 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const { syncStoryArchivesFromCodexEdges, diffStoryArchivesVsCodex } = require('../scripts/server-bio-codex-sync.js');
+const { diffStoryArchivesVsCodex } = require('../scripts/server-bio-codex-sync.js');
 const {
     absFromPublic,
     FILES,
@@ -125,30 +125,19 @@ function writeCodexStateJson(body, res) {
     }
 
     const outPath = absFromPublic(FILES.connectionCodex.codexLabels);
-    const vOut = typeof body.v === 'number' && body.v >= 4 ? body.v : 4;
-    const payload = { v: vOut, nodes, edges };
+    const connections = Array.isArray(body.connections) ? body.connections : [];
+    const vOut = typeof body.v === 'number' && body.v >= 4 ? body.v : 5;
+    const payload = { v: vOut, nodes, edges, connections };
     const json = JSON.stringify(payload, null, 2) + '\n';
     const tmpPath = outPath + '.tmp';
     try {
         fs.writeFileSync(tmpPath, json, 'utf8');
         fs.renameSync(tmpPath, outPath);
-        const dataDir = path.join(__dirname, 'data');
-        let bio = {};
-        try {
-            // Always reconcile every entity↔entity edge (not only “new” keys). Otherwise a link
-            // already present in codex-labels.json never gets mirrored into satellite archive JSONs.
-            bio = syncStoryArchivesFromCodexEdges(dataDir, nodes, edges);
-        } catch (syncErr) {
-            bio = {
-                bioArchiveSync: false,
-                bioArchiveError: syncErr && syncErr.message ? syncErr.message : String(syncErr),
-            };
-        }
         sendJson(res, 200, {
             ok: true,
             nodesCount: nodes.length,
             edgesCount: edges.length,
-            ...bio,
+            connectionsCount: connections.length,
         });
     } catch (e) {
         try { if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath); } catch (_) {}

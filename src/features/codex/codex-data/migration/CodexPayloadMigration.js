@@ -12,10 +12,12 @@ import {
     dedupeCodexEdgesByNodePair,
     normalizeEdgeRecord
 } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { normalizeCodexConnectionMetaList } from '../../codex-connections/CodexConnectionMeta.js';
 
 function parseLoadedCodexPayload(parsed) {
     let nodes = null;
     let edges = [];
+    let connections = [];
     let v = 2;
     if (Array.isArray(parsed)) {
         nodes = parsed;
@@ -25,8 +27,9 @@ function parseLoadedCodexPayload(parsed) {
         if (Array.isArray(parsed.nodes)) nodes = parsed.nodes;
         else if (Array.isArray(parsed.labels)) nodes = parsed.labels;
         if (Array.isArray(parsed.edges)) edges = parsed.edges;
+        if (Array.isArray(parsed.connections)) connections = parsed.connections;
     }
-    return { nodes: nodes || [], edges, v };
+    return { nodes: nodes || [], edges, connections: normalizeCodexConnectionMetaList(connections), v };
 }
 
 /** True when nodes look like the current object format (wrong `v` in file — should not wipe). */
@@ -127,11 +130,11 @@ function pruneRedundantEntityShortcutEdges(nodes, edges) {
 /**
  * Parse raw save/API payload → node list, deduped edges, migration flags (shared by load + import).
  * @param {unknown} sourceObj
- * @returns {{ nodes: unknown[], edges: { fromId: string, toId: string }[], migratedNow: boolean }}
+ * @returns {{ nodes: unknown[], edges: { fromId: string, toId: string }[], connections: object[], migratedNow: boolean }}
  */
 export function parseMigrateAndDedupeCodexSource(sourceObj) {
     const src = sourceObj && typeof sourceObj === 'object' ? sourceObj : { v: CODEX_SAVE_VERSION, nodes: [], edges: [] };
-    let { nodes, edges, v } = parseLoadedCodexPayload(src);
+    let { nodes, edges, connections, v } = parseLoadedCodexPayload(src);
     let migratedNow = false;
     if (v < CODEX_JUNCTION_LAYOUT_MIN_VERSION) {
         if (codexNodesLookLikeModernSavedShape(nodes)) {
@@ -139,13 +142,11 @@ export function parseMigrateAndDedupeCodexSource(sourceObj) {
         } else {
             nodes = [];
             edges = [];
+            connections = [];
             migratedNow = true;
         }
     } else if (v < CODEX_SAVE_VERSION) {
         migratedNow = true;
-        const m = migrateCodexLayoutCoordsForExpandedWorld(nodes, edges);
-        nodes = m.nodes;
-        edges = m.edges;
     }
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
@@ -153,5 +154,5 @@ export function parseMigrateAndDedupeCodexSource(sourceObj) {
     const prunedEdges = migratedNow
         ? pruneRedundantEntityShortcutEdges(nodes, dedupedEdges)
         : dedupedEdges;
-    return { nodes, edges: prunedEdges, migratedNow };
+    return { nodes, edges: prunedEdges, connections, migratedNow };
 }

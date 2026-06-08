@@ -97,6 +97,7 @@ GitHub serves the site under **`/<repository-name>/`**, so renaming the reposito
 - **Edit Mode**: The application automatically detects when running on GitHub Pages and disables edit/delete functionality for events. This prevents users from modifying data on the live site.
 - **Local Storage**: User preferences (color palette, music state) are saved in browser localStorage and will persist across sessions.
 - **Event Data**: Story timeline loads from `src/data/event-system/timeline-events.json`. On GitHub Pages, users can view events but cannot edit them (edit buttons are hidden).
+- **Codex connections**: Topology and connection metadata ship in `src/data/codex/codex-labels.json` (v5, includes `connections[]`). On Pages, Gallery connection **Save** updates **localStorage** in that browser only; use **Codex Export** + a git push from localhost to publish metadata for everyone. Run **`npm run build:pages`** before pushing — it validates codex v5 and copies a clean `_site/` tree (no `src/server.js` or `scripts/`).
 - **File Paths**: All file paths are relative (no leading `/`), so the site works the same on both localhost and GitHub Pages. Asset paths with spaces (e.g. `Atlas News.png`) use URL-encoded form (`Atlas%20News.png`) in HTML for compatibility.
 - **Parity with local**: The following are built to look and behave the same on GitHub Pages as locally:
   - **Footer**: Atlas News image (red trapezoid) and sliding headlines ticker appear after the timeline loads (`footer.timeline-loaded`).

@@ -530,8 +530,18 @@
      * Swap portrait columns + arrow lane order to match read-only slide (lane A/B).
      * @param {HTMLElement} row
      */
+    function syncBioConnPrunedVisual(row) {
+        if (!row) return;
+        var prunedEl = row.querySelector('[data-role="bio-conn-pruned"]');
+        row.classList.toggle(
+            'event-slide-bio-conn-row--pruned',
+            !!(prunedEl && prunedEl.checked),
+        );
+    }
+
     function refreshBioConnRowVisual(row) {
         if (!row) return;
+        syncBioConnPrunedVisual(row);
         var visual = row.querySelector('[data-bio-conn-visual]');
         if (!visual) return;
 
@@ -704,6 +714,9 @@
         entityIn.autocomplete = 'off';
         entityIn.placeholder = linkedEntityPlaceholder(fk);
         entityIn.dataset.role = 'bio-conn-name';
+        entityIn.readOnly = true;
+        entityIn.title = 'Connections are added or removed on the Codex board';
+        entityIn.className += ' event-slide-bio-conn-row__linked-name-input--locked';
         if (data.name) entityIn.value = data.name;
         row.appendChild(entityIn);
 
@@ -896,27 +909,20 @@
             laneB.addEventListener('change', onLaneChange);
         }
 
-        const showCodexCb = document.createElement('input');
-        showCodexCb.type = 'checkbox';
-        showCodexCb.id = rowUid + '-show-codex';
-        showCodexCb.dataset.role = 'bio-conn-show-codex';
-        const showCodexLab = document.createElement('label');
-        showCodexLab.htmlFor = showCodexCb.id;
-        showCodexLab.className = 'event-slide-bio-conn-row__show-codex';
-        showCodexLab.appendChild(showCodexCb);
-        showCodexLab.appendChild(document.createTextNode(' Show in Codex'));
-        if (data.showInCodex === true) showCodexCb.checked = true;
-        toolbarMain.appendChild(showCodexLab);
-
-        const rem = document.createElement('button');
-        rem.type = 'button';
-        rem.className = 'event-slide-inline-editor__small-btn event-slide-bio-conn-row__remove-btn';
-        rem.textContent = '−';
-        rem.setAttribute('aria-label', 'Remove connection');
-        rem.addEventListener('click', function () {
-            row.remove();
+        const prunedCb = document.createElement('input');
+        prunedCb.type = 'checkbox';
+        prunedCb.id = rowUid + '-pruned';
+        prunedCb.dataset.role = 'bio-conn-pruned';
+        const prunedLab = document.createElement('label');
+        prunedLab.htmlFor = prunedCb.id;
+        prunedLab.className = 'event-slide-bio-conn-row__pruned';
+        prunedLab.appendChild(prunedCb);
+        prunedLab.appendChild(document.createTextNode(' Pruned'));
+        if (data.pruned === true) prunedCb.checked = true;
+        prunedCb.addEventListener('change', function () {
+            syncBioConnPrunedVisual(row);
         });
-        toolbarMain.appendChild(rem);
+        toolbarMain.appendChild(prunedLab);
 
         toolbar.appendChild(reorder);
         toolbar.appendChild(toolbarMain);
@@ -948,7 +954,6 @@
         syncRowLegacyRelationshipVisibility(row);
         refreshBioConnRowVisual(row);
 
-        if (entityIn) setupEntityAutocomplete(entityIn, fk);
     }
 
     /**
@@ -968,22 +973,11 @@
         hspan.className = 'event-slide-bio-conn-block__title';
         hspan.textContent = title;
 
-        var addBtn = document.createElement('button');
-        addBtn.type = 'button';
-        addBtn.className = 'event-slide-inline-editor__small-btn';
-        addBtn.textContent = '+ Add';
-        addBtn.setAttribute('aria-label', 'Add ' + title);
-
         var list = document.createElement('div');
         list.className = 'event-slide-bio-conn-block__list';
         list.dataset.bioConnList = kind;
 
-        addBtn.addEventListener('click', function () {
-            appendRow(list, {}, subjectOpts, kind);
-        });
-
         head.appendChild(hspan);
-        head.appendChild(addBtn);
         sec.appendChild(head);
         sec.appendChild(list);
         return sec;
@@ -1048,7 +1042,7 @@
                 const n = row.querySelector('[data-role="bio-conn-name"]');
                 const rout = row.querySelector('[data-role="bio-conn-reason-out"]');
                 const rin = row.querySelector('[data-role="bio-conn-reason-in"]');
-                const showCodexEl = row.querySelector('[data-role="bio-conn-show-codex"]');
+                const prunedEl = row.querySelector('[data-role="bio-conn-pruned"]');
                 const forcedLane = row.querySelector('[data-role="bio-conn-lane-forced"]');
                 const laneEl = row.querySelector('input[data-role="bio-conn-lane"]:checked');
                 var factionMixed = row.dataset.bioConnFactionMixed === '1';
@@ -1078,7 +1072,7 @@
                     if (factionMixed && isFactionHeroNpcMixedEditor(skRoot, fk)) {
                         rangedOut.thisEntryLane = skRoot === 'faction' ? 'A' : 'B';
                     }
-                    if (showCodexEl && showCodexEl.checked) rangedOut.showInCodex = true;
+                    if (prunedEl && prunedEl.checked) rangedOut.pruned = true;
                     if (
                         window.BioArchiveConnectionRanges
                         && typeof window.BioArchiveConnectionRanges.syncLegacyReasoningFieldsFromRanges
@@ -1118,7 +1112,7 @@
                         thisEntryLane: thisEntryLane,
                     };
                 }
-                if (showCodexEl && showCodexEl.checked) out.showInCodex = true;
+                if (prunedEl && prunedEl.checked) out.pruned = true;
 
                 return out;
             })
@@ -1127,7 +1121,8 @@
                     entry.name ||
                     entry.reasoningSubjectToLinked ||
                     entry.reasoningLinkedToSubject ||
-                    (Array.isArray(entry.ranges) && entry.ranges.length > 0)
+                    (Array.isArray(entry.ranges) && entry.ranges.length > 0) ||
+                    entry.pruned === true
                 );
             });
     }

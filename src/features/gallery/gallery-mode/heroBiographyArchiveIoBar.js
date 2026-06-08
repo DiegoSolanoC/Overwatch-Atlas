@@ -118,8 +118,8 @@ export function createGalleryArchiveIoButtonGroup(hostEl) {
     saveArchiveBtn.type = 'button';
     saveArchiveBtn.className =
         'gallery-mode__archive-description-btn gallery-mode__archive-description-btn--save-archive';
-    saveArchiveBtn.textContent = 'Save';
-    saveArchiveBtn.title = 'Save this archive category in this browser';
+    saveArchiveBtn.textContent = 'Save file';
+    saveArchiveBtn.title = 'Write this archive category JSON to disk (dev server)';
     saveArchiveBtn.addEventListener('click', async () => {
         const category = readActiveCategory?.() || 'heroes';
         try {
