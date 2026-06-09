@@ -11732,7 +11732,13 @@
       "cityDisplayName": "Rome, Roma Capitale, Lazio, Italy",
       "yearEnd": null,
       "eraName": null,
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome, Roma Capitale, Lazio, Italy",
+          "country": "Italy",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -13086,6 +13092,38 @@
       ]
     },
     {
+      "name": "Against the Tide",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "description": "",
+      "image": "",
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang, Anran",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University, Null Sector",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Vested Interests",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
@@ -13120,38 +13158,6 @@
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Against the Tide",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "description": "",
-      "image": "",
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuyang, Anran",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University, Null Sector",
           "reasoning": ""
         }
       ]
@@ -13398,39 +13404,6 @@
       ]
     },
     {
-      "name": "Elemental Kin",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuyang, Anran",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Wuxing University",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Signs of Life",
       "description": "",
       "locationType": "earth",
@@ -13492,6 +13465,39 @@
         {
           "locationName": "",
           "country": "Overwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Elemental Kin",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang, Anran",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Wuxing University",
           "reasoning": ""
         }
       ]
@@ -13738,26 +13744,6 @@
       ]
     },
     {
-      "name": "Old Love",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 57.7072326,
-      "lon": 11.9670171,
-      "image": "",
-      "cityDisplayName": "Gothenburg, Sweden",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Gothenburg, Sweden",
-          "country": "Sweden",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
       "name": "Summit Breach",
       "description": "<br>",
       "locationType": "earth",
@@ -13796,6 +13782,26 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Old Love",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Siege of Tokyo",
@@ -13855,6 +13861,20 @@
           "reasoning": ""
         }
       ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "End of the Line",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.7018928,
+      "lon": 139.7743684,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": []
     }
