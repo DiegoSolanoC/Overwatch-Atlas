@@ -141,6 +141,11 @@
                         <p class="event-slide-hero-locations-edit__hint">Each row: location name, country (autocomplete like story <strong>Secondary countries</strong> — drives the flag), and why it matters (e.g. Place of birth, Former base).</p>
                         <div id="eventSlideEditRelevantLocations" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
                         <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
+                            <span class="event-slide-hero-locations-edit__label">Lifetime range</span>
+                        </div>
+                        <p class="event-slide-hero-locations-edit__hint">Optional story-event span for when this entry exists. Leave <strong>Born / founded at</strong> empty if they existed before the timeline or for an unknown time. Leave <strong>Until</strong> empty if they are still active.</p>
+                        <div id="eventSlideEditEntryLifetime" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
+                        <div class="event-slide-hero-locations-edit__toolbar" style="margin-top: 14px;">
                             <span class="event-slide-hero-locations-edit__label">Connections</span>
                         </div>
                         <p class="event-slide-hero-locations-edit__hint">Use the <strong>Hero</strong>, <strong>Faction</strong>, and <strong>NPC</strong> blocks. In each block, <strong>+ Add</strong> adds a row: <strong>This entry</strong> (you), relationship lines in the middle, and one linked name (autocomplete for that type only). Choose <strong>A (left)</strong> or <strong>B (right)</strong> for this entry on the slide; the linked side uses the other letter. Legacy rows without a letter default to A. Saving mirrors onto the linked row in <strong>this same archive</strong> when that row exists; cross-archive links are not duplicated.</p>
@@ -341,6 +346,7 @@
     <script src="src/features/system-interface/interface-shared/bio-archive/HeroRelevantLocationsEditor.js?v=3"></script>
     <script src="src/features/system-interface/interface-shared/bio-archive/mirrorBioArchiveConnections.js?v=10"></script>
     <script type="module" src="src/features/system-interface/interface-shared/bio-archive/bioArchiveConnectionRangesBridge.js?v=2"></script>
+    <script src="src/features/system-interface/interface-shared/bio-archive/BioArchiveEntryLifetimeEditor.js?v=1"></script>
     <script src="src/features/system-interface/interface-shared/bio-archive/BioArchiveConnectionsEditor.js?v=13"></script>
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/drag-drop/EventListReorderDragDrop.js?v=13"></script>
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/listeners/EventListenerService.js?v=14"></script>

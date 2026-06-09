@@ -8,13 +8,22 @@ import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import {
     ensureCodexCordAnimationLoop,
+    resyncCodexTimelineRangePackets,
     syncCodexCordPacketState,
 } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { appendEdgeGlowFilter } from '../../codex-node-drawing/svg/CodexCordSvgElements.js';
+import {
+    getCodexDockPageIndexSpan,
+    getCodexTimelineRangedPathEdgeKeys,
+} from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
+import { codexUnorderedPairKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { codexFiltersActive } from './CodexNodeFilterMatch.js';
 
 /** @type {number} */
 let filterCordSecondarySyncRaf = 0;
+
+/** @type {number} */
+let timelineRangePacketSyncRaf = 0;
 
 /** @type {string} */
 let lastFilterCordSyncSignature = '';
@@ -40,11 +49,11 @@ const APPEARANCE_FILTER = {
 };
 
 /**
- * @param {'red'|'yellow'|'violet'|'green'|'grey'} appearance
+ * @param {'red'|'yellow'|'violet'|'violet-dim'|'green'|'grey'} appearance
  * @param {{ cordColor: string, cordBlur: number, cordMorph: number, cordGlowLayers: number }} visualPrefs
  */
 function resolveCordAppearanceAttrs(appearance, visualPrefs) {
-    if (appearance === 'violet') {
+    if (appearance === 'violet' || appearance === 'violet-dim') {
         return {
             stroke: visualPrefs.cordColor,
             filter: 'url(#codex-edge-violet-glow)',
@@ -92,12 +101,15 @@ function ensureCodexCordGlowFilters(defs, visualPrefs, vw, vh) {
 function syncCodexSegmentLineClasses(lineEl, appearance, filterDormant) {
     lineEl.classList.remove(
         'codex-edge-segment--timeline-dormant',
+        'codex-edge-segment--timeline-range-inactive',
         'codex-edge-segment--filter-dormant',
         'codex-edge-segment--filter-linked',
     );
     if (appearance === 'grey') {
         lineEl.classList.add('codex-edge-segment--timeline-dormant');
         if (filterDormant) lineEl.classList.add('codex-edge-segment--filter-dormant');
+    } else if (appearance === 'violet-dim') {
+        lineEl.classList.add('codex-edge-segment--timeline-range-inactive');
     } else if (appearance === 'green') {
         lineEl.classList.add('codex-edge-segment--filter-linked');
     }
@@ -114,10 +126,112 @@ function findDirectedEdge(edge) {
         || null;
 }
 
-function buildFilterCordSyncSignature() {
-    const keys = s.codexFilterActiveEdgePairKeys;
-    if (!keys?.size) return '0';
-    return `${keys.size}:${[...keys].sort().join('|')}`;
+function buildCordAppearanceSyncSignature() {
+    const filterKeys = s.codexFilterActiveEdgePairKeys;
+    const filterPart = filterKeys?.size ? `${filterKeys.size}:${[...filterKeys].sort().join('|')}` : '0';
+    const page = getCodexDockPageIndexSpan()?.page ?? 1;
+    const lifetimePart = s.codexEntryLifetimeNodeStatuses?.size ?? 0;
+    const timelinePart = `${page}:${lifetimePart}`;
+    return `${filterPart}|${timelinePart}`;
+}
+
+/** @param {string} id */
+function cssAttrEscape(id) {
+    if (typeof CSS !== 'undefined' && typeof CSS.escape === 'function') {
+        return CSS.escape(String(id));
+    }
+    return String(id).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+/**
+ * @param {'red'|'yellow'|'violet'|'green'|'grey'|'violet-dim'} appearance
+ * @param {string} cordColorHex
+ */
+function elbowFillAndFilterForAppearance(appearance, cordColorHex) {
+    const isGreyAppearance = appearance === 'grey' || appearance === 'violet-dim';
+    const fill = appearance === 'red'
+        ? '#f87171'
+        : appearance === 'yellow'
+            ? '#fbbf24'
+            : appearance === 'green'
+                ? '#4ade80'
+                : isGreyAppearance
+                    ? 'rgba(120, 128, 148, 0.38)'
+                    : cordColorHex;
+    const filterUrl = appearance === 'red'
+        ? 'url(#codex-edge-red-glow)'
+        : appearance === 'yellow'
+            ? 'url(#codex-edge-yellow-glow)'
+            : appearance === 'green'
+                ? 'url(#codex-edge-green-glow)'
+                : isGreyAppearance
+                    ? 'none'
+                    : 'url(#codex-edge-violet-glow)';
+    return { fill, filterUrl };
+}
+
+/**
+ * Fast path for dock page turns — only ranged bio-path segments, elbows, and packets.
+ * @returns {boolean}
+ */
+export function syncCodexTimelineRangeCordDom() {
+    if (!s.root) return false;
+
+    const rangedKeys = getCodexTimelineRangedPathEdgeKeys();
+    if (!rangedKeys.size) return true;
+
+    const svg = s.root.querySelector('.codex-edges-layer');
+    const contentRoot = svg?.querySelector('.codex-edges-masked');
+    if (!contentRoot) return false;
+
+    const edges = s.codexEdges || [];
+    const cordColorHex = s.codexVisualPrefs?.cordColor || '#c084fc';
+
+    for (let i = 0; i < edges.length; i += 1) {
+        const edge = edges[i];
+        const pairKey = codexUnorderedPairKey(edge.fromId, edge.toId);
+        if (!rangedKeys.has(pairKey)) continue;
+
+        const inactive = api.edgeCordAppearance(edge) === 'violet-dim';
+        const sel = `g.codex-edge-segment-group[data-codex-edge-from="${cssAttrEscape(edge.fromId)}"][data-codex-edge-to="${cssAttrEscape(edge.toId)}"]`;
+        contentRoot.querySelectorAll(sel).forEach((group) => {
+            group.classList.toggle('codex-edge-segment-group--timeline-range-inactive', inactive);
+            const line = group.querySelector('line.codex-edge-segment');
+            if (line) {
+                line.classList.toggle('codex-edge-segment--timeline-range-inactive', inactive);
+            }
+        });
+    }
+
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((group) => {
+        const fromId = group.getAttribute('data-codex-elbow-in-from');
+        const jId = group.getAttribute('data-codex-elbow-junction');
+        const toId = group.getAttribute('data-codex-elbow-out-to');
+        if (!fromId || !jId || !toId) return;
+
+        const kIn = codexUnorderedPairKey(fromId, jId);
+        const kOut = codexUnorderedPairKey(jId, toId);
+        if (!rangedKeys.has(kIn) && !rangedKeys.has(kOut)) return;
+
+        const eIn = findDirectedEdge({ fromId, toId: jId });
+        const eOut = findDirectedEdge({ fromId: jId, toId });
+        if (!eIn || !eOut) return;
+
+        const appearance = api.edgeCordAppearanceForJunctionElbow?.(eIn, eOut)
+            ?? api.edgeCordAppearance(eIn);
+        const { fill, filterUrl } = elbowFillAndFilterForAppearance(appearance, cordColorHex);
+        group.setAttribute('filter', filterUrl);
+        const poly = group.querySelector('polygon.codex-edge-elbow-parallelogram');
+        if (poly) poly.setAttribute('fill', fill);
+    });
+
+    if (timelineRangePacketSyncRaf) cancelAnimationFrame(timelineRangePacketSyncRaf);
+    timelineRangePacketSyncRaf = requestAnimationFrame(() => {
+        timelineRangePacketSyncRaf = 0;
+        resyncCodexTimelineRangePackets(rangedKeys);
+    });
+
+    return true;
 }
 
 function syncCodexFilterCordPackets() {
@@ -180,9 +294,11 @@ export function syncCodexFilterCordDom() {
 
         const appearance = api.edgeCordAppearance(edge);
         const filterDormant = api.edgeCordIsFilterDormant?.(edge) === true;
+        const timelineRangeInactive = appearance === 'violet-dim';
         const { stroke, filter } = resolveCordAppearanceAttrs(appearance, visualPrefs);
 
         group.setAttribute('filter', filter);
+        group.classList.toggle('codex-edge-segment-group--timeline-range-inactive', timelineRangeInactive);
         const line = group.querySelector('line.codex-edge-segment');
         if (line) {
             line.setAttribute('stroke', stroke);
@@ -204,7 +320,7 @@ export function syncCodexFilterCordDom() {
 
     s.root.classList.toggle('codex--filters-active', codexFiltersActive());
 
-    const syncSignature = buildFilterCordSyncSignature();
+    const syncSignature = buildCordAppearanceSyncSignature();
     const secondaryChanged = syncSignature !== lastFilterCordSyncSignature;
     lastFilterCordSyncSignature = syncSignature;
 
@@ -221,3 +337,6 @@ export function syncCodexFilterCordDom() {
 
     return true;
 }
+
+api.syncCodexFilterCordDom = syncCodexFilterCordDom;
+api.syncCodexTimelineRangeCordDom = syncCodexTimelineRangeCordDom;

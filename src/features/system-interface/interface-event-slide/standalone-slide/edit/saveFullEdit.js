@@ -85,13 +85,23 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             const relevantLocations = isBioSave
                 ? window.HeroRelevantLocationsEditor?.collect(locContainer) ?? []
                 : undefined;
+            const lifetimeRange = isBioSave
+                ? window.BioArchiveEntryLifetimeEditor?.collect?.(
+                      document.getElementById('eventSlideEditEntryLifetime')
+                  ) ?? null
+                : undefined;
             const connections = isBioSave
                 ? window.BioArchiveConnectionsEditor?.collect?.(
                       document.getElementById('eventSlideEditBioConnections')
                   ) ?? []
                 : undefined;
             const normalized = isBioSave
-                ? { name: cleanName, description: cleanDesc, relevantLocations }
+                ? {
+                    name: cleanName,
+                    description: cleanDesc,
+                    relevantLocations,
+                    ...(lifetimeRange ? { lifetimeRange } : {}),
+                }
                 : { name: cleanName, description: cleanDesc };
             if (archiveSource === 'factions') {
                 normalized.factionType = readFactionTypeBioPanelTrimmed();
@@ -139,6 +149,10 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                 }
                 if (relevantLocations !== undefined) {
                     mergedRow.relevantLocations = relevantLocations;
+                }
+                if (lifetimeRange !== undefined) {
+                    if (lifetimeRange) mergedRow.lifetimeRange = lifetimeRange;
+                    else delete mergedRow.lifetimeRange;
                 }
                 if (saveIdx < 0 && mergedRow.name) {
                     const want = String(mergedRow.name).trim().toLowerCase();

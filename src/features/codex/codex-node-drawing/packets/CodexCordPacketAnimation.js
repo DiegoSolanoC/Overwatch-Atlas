@@ -22,7 +22,7 @@ import {
     CODEX_PACKET_SPEED_MAX,
     CODEX_PACKET_SPEED_MIN
 } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
-import { edgeDirectedKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { edgeDirectedKey, codexUnorderedPairKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import { appendCordFilteredLineGroup, appendCordPlainLineGroup } from '../svg/CodexCordSvgElements.js';
 
@@ -330,6 +330,54 @@ export function syncCodexCordPacketState(edgePolys) {
     cordPacketState.forEach((_, k) => {
         if (!seen.has(k)) cordPacketState.delete(k);
     });
+}
+
+/**
+ * Timeline page turn — upsert/prune packets only on ranged bio path edges (no full-graph scan).
+ * @param {ReadonlySet<string>} rangedPathEdgeKeys
+ */
+export function resyncCodexTimelineRangePackets(rangedPathEdgeKeys) {
+    if (!_rt || !rangedPathEdgeKeys?.size) return;
+
+    const edges = s.codexEdges || [];
+    for (let i = 0; i < edges.length; i += 1) {
+        const edge = edges[i];
+        const pairKey = codexUnorderedPairKey(edge.fromId, edge.toId);
+        if (!rangedPathEdgeKeys.has(pairKey)) continue;
+
+        const key = edgeDirectedKey(edge.fromId, edge.toId);
+        const enabled = _rt.edgeCordPacketsEnabled?.(edge) === true;
+        if (!enabled) {
+            cordPacketState.delete(key);
+            continue;
+        }
+
+        const pts = _rt.buildPolylineForEdge?.(edge);
+        if (!pts || pts.length < 2) continue;
+        if (_rt.codexNodeIsJunctionWaypoint(edge.fromId) && pts.length < 2) continue;
+
+        let st = cordPacketState.get(key);
+        if (!st) {
+            st = {
+                fromId: edge.fromId,
+                toId: edge.toId,
+                active: false,
+                packets: createCodexCordPacketsForEdge(edge.fromId, edge.toId),
+            };
+            cordPacketState.set(key, st);
+        } else {
+            st.fromId = edge.fromId;
+            st.toId = edge.toId;
+            resizeCodexCordPacketArray(st, edge.fromId, edge.toId);
+        }
+        applyPacketPolylineToState(st, edge.fromId, edge.toId, pts);
+        st.active = _rt.edgeCordShowsYellow(edge);
+        st.packetsEnabled = enabled;
+    }
+
+    if (cordPacketState.size > 0) {
+        ensureCodexCordAnimationLoop();
+    }
 }
 
 /** World point at arc length `s` (0 … totalLen) along cord polyline. */

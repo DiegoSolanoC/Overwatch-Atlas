@@ -2,6 +2,7 @@ import {
     connectionRowHasNarrativeText,
     normalizeBioArchiveConnectionRow,
 } from '../../../interface-shared/bio-archive/bioArchiveConnectionRanges.js';
+import { normalizeBioArchiveEntryLifetimeRange } from '../../../interface-shared/bio-archive/bioArchiveEntryLifetime.js';
 import { resolveNpcCategoryFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /**
@@ -10,6 +11,7 @@ import { resolveNpcCategoryFromArchiveRow } from '../../../../data-workshop/arch
  *     Migrates legacy `string[]` (one "Place, Country" per line) and mixed object shapes.
  *   - `connections`: linked entity + optional `ranges[]` (`startEvent`, `endEvent?`, directional reasoning).
  *     Legacy single `reasoning` field is duplicated to both directions when the directional fields are absent.
+ *   - `lifetimeRange`: optional `{ startEvent?, endEvent? }` — when the entry existed on the story timeline.
  *   - `normalizeSatelliteArchiveEntry`: slim `{ name, description, ... }` shape used by every satellite entry.
  *     Heroes get `heroRole`/`heroSubRole`, factions get `factionType`.
  *
@@ -158,6 +160,8 @@ export function normalizeSatelliteArchiveEntry(raw, archiveSource) {
     const bioArchives = new Set(['heroes', 'factions', 'npcs']);
     if (bioArchives.has(archiveSource)) {
         base.relevantLocations = normalizeHeroRelevantLocations(raw.relevantLocations);
+        const lifetimeRange = normalizeBioArchiveEntryLifetimeRange(raw.lifetimeRange);
+        if (lifetimeRange) base.lifetimeRange = lifetimeRange;
     }
     if (archiveSource === 'factions') {
         let factionType = '';

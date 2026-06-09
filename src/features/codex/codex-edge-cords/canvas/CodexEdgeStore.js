@@ -2,6 +2,7 @@
 import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_EDGES_NODE_ALPHA_MASK_ID } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
+import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import { codexUnorderedPairKey, edgeDirectedKey } from '../topology/CodexGraphPrimitives.js';
 import { hasCodexConnectionBetween as topologyHasUndirectedLink } from '../topology/CodexGraphTopology.js';
 import { playSoundEffect } from '../../codex-canvas/bridge/CodexAppBridge.js';
@@ -17,6 +18,7 @@ import { appendCodexEdgeNodeMask as appendCodexEdgeNodeMaskCore } from '../../co
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 import {
     isCodexEdgeTimelineActiveForDockPage,
+    isCodexEdgeTimelineRangeInactive,
     isDirectedCodexEdgeOnActiveBioConnectionPath,
 } from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 import {
@@ -169,6 +171,10 @@ function edgeCordBioTimelineActive(edge) {
     return isCodexEdgeTimelineActiveForDockPage(edge, s.codexAllNodes, s.codexEdges);
 }
 
+function edgeCordIsTimelineRangeInactive(edge) {
+    return isCodexEdgeTimelineRangeInactive(edge, s.codexAllNodes, s.codexEdges);
+}
+
 function ensureCodexFilterDerivedSets() {
     if (!codexFiltersActive()) return;
     const state = getCodexFilterDerivedState(
@@ -204,6 +210,7 @@ function edgeCordPacketPathSimpleOnly() {
 
 function edgeCordPacketsEnabled(edge) {
     if (edgeIsCordPendingDelete(edge)) return false;
+    if (edgeCordIsTimelineRangeInactive(edge)) return false;
     if (codexFiltersActive()) {
         if (isCodexLinkFiltersEnabled()) {
             ensureCodexFilterDerivedSets();
@@ -226,6 +233,7 @@ function edgeCordAppearance(edge) {
     if (edgeCordShowsYellow(edge)) return 'yellow';
     if (edgeCordIsFilterDormant(edge)) return 'grey';
     if (edgeCordIsFilterLinkedActive(edge)) return 'green';
+    if (edgeCordIsTimelineRangeInactive(edge)) return 'violet-dim';
     if (codexFiltersActive()) return 'violet';
     if (!edgeCordBioTimelineActive(edge)) return 'grey';
     return 'violet';
@@ -241,8 +249,15 @@ function edgeCordAppearanceForJunctionElbow(edgeIn, edgeOut) {
     if (edgeCordIsFilterLinkedActive(edgeIn) || edgeCordIsFilterLinkedActive(edgeOut)) {
         return 'green';
     }
+    if (
+        edgeCordIsTimelineRangeInactive(edgeIn)
+        || edgeCordIsTimelineRangeInactive(edgeOut)
+        || !edgeCordBioTimelineActive(edgeIn)
+        || !edgeCordBioTimelineActive(edgeOut)
+    ) {
+        return 'grey';
+    }
     if (codexFiltersActive()) return 'violet';
-    if (!edgeCordBioTimelineActive(edgeIn) || !edgeCordBioTimelineActive(edgeOut)) return 'grey';
     return 'violet';
 }
 
@@ -300,10 +315,15 @@ function buildPolylineForEdge(edge) {
 function codexDirectedEdgeAllowedForPacketWalk(fromId, toId) {
     const edge = findEdge(fromId, toId);
     if (!edge) return false;
+    if (edgeCordIsTimelineRangeInactive(edge)) return false;
 
     if (codexFiltersActive()) {
         ensureCodexFilterDerivedSets();
         return codexEdgeMatchesActiveFilters(edge, s.codexFilterActiveEdgePairKeys);
+    }
+
+    if (!isDirectedCodexEdgeOnActiveBioConnectionPath(edge, s.codexAllNodes, s.codexEdges)) {
+        return false;
     }
 
     if (!s.codexTargetedSelectionActive) return true;
@@ -364,8 +384,37 @@ function tryBuildPacketWorldPoints(fromId, toId, tailNodeIds) {
 function appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect = null) {
     appendCodexEdgeNodeMaskCore(defs, ns, vw, vh, maskWorldRect, {
         getRoot: () => s.root,
-        getDebugUiVisible: () => s.codexDebugUiVisible,
         maskId: CODEX_EDGES_NODE_ALPHA_MASK_ID
+    });
+}
+
+/** @type {number} */
+let edgeNodeMaskSyncRaf = 0;
+
+function syncCodexEdgeNodeMaskDom() {
+    const root = s.root;
+    if (!root) return false;
+    const svg = root.querySelector('.codex-edges-layer');
+    const defs = svg?.querySelector('defs');
+    if (!svg || !defs) return false;
+
+    const oldMask = defs.querySelector(`#${CODEX_EDGES_NODE_ALPHA_MASK_ID}`);
+    if (oldMask) oldMask.remove();
+
+    const ns = 'http://www.w3.org/2000/svg';
+    const worldEl = s.codexWorldEl;
+    const vw = worldEl ? CODEX_WORLD_W : Math.max(1, root.clientWidth);
+    const vh = worldEl ? CODEX_WORLD_H : Math.max(1, root.clientHeight);
+    appendCodexEdgeNodeMask(defs, ns, vw, vh, null);
+    return true;
+}
+
+function scheduleCodexEdgeNodeMaskSync() {
+    if (!s.root) return;
+    if (edgeNodeMaskSyncRaf) cancelAnimationFrame(edgeNodeMaskSyncRaf);
+    edgeNodeMaskSyncRaf = requestAnimationFrame(() => {
+        edgeNodeMaskSyncRaf = 0;
+        syncCodexEdgeNodeMaskDom();
     });
 }
 
@@ -848,6 +897,7 @@ api.removeJunctionAndBridgeEdges = removeJunctionAndBridgeEdges;
 api.removeEdgesForDeletedNodesWithJunctionBridging = removeEdgesForDeletedNodesWithJunctionBridging;
 api.edgeIsCordPendingDelete = edgeIsCordPendingDelete;
 api.edgeCordAppearance = edgeCordAppearance;
+api.edgeCordAppearanceForJunctionElbow = edgeCordAppearanceForJunctionElbow;
 api.edgeCordIsFilterDormant = edgeCordIsFilterDormant;
 api.edgeCordPacketsEnabled = edgeCordPacketsEnabled;
 api.edgeCordPacketPathSimpleOnly = edgeCordPacketPathSimpleOnly;
@@ -861,6 +911,8 @@ api.buildPolylineForEdge = buildPolylineForEdge;
 api.samplePacketTailNodeIds = samplePacketTailNodeIds;
 api.tryBuildPacketWorldPoints = tryBuildPacketWorldPoints;
 api.appendCodexEdgeNodeMask = appendCodexEdgeNodeMask;
+api.scheduleCodexEdgeNodeMaskSync = scheduleCodexEdgeNodeMaskSync;
+api.syncCodexEdgeNodeMaskDom = syncCodexEdgeNodeMaskDom;
 api.codexEffectivePacketStrokeRange = codexEffectivePacketStrokeRange;
 api.appendCodexJunctionElbowParallelograms = appendCodexJunctionElbowParallelograms;
 api.collectCodexDirectedChainEdgeKeys = collectCodexDirectedChainEdgeKeys;

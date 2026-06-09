@@ -71,6 +71,10 @@ export const s = {
     codexFilterLinkedEdgePairKeys: /** @type {Set<string>|null} */ (null),
     /** Prune-aware active cord pairs while filters are on (null when filters off). */
     codexFilterActiveEdgePairKeys: /** @type {Set<string>|null} */ (null),
+    /** Portrait ids on ranged links outside the current dock page span. */
+    codexTimelineRangeInactiveNodeIds: /** @type {Set<string>|null} */ (null),
+    /** Portrait ids tinted by entry lifetime vs dock page (`before` / `after`). */
+    codexEntryLifetimeNodeStatuses: /** @type {Map<string, 'before'|'after'>|null} */ (null),
 };
 
 export function resetCanvasSession() {
@@ -136,4 +140,6 @@ export function resetCanvasSession() {
     s.codexFilterConnectionEndpointNodeIds = null;
     s.codexFilterLinkedEdgePairKeys = null;
     s.codexFilterActiveEdgePairKeys = null;
+    s.codexTimelineRangeInactiveNodeIds = null;
+    s.codexEntryLifetimeNodeStatuses = null;
 }

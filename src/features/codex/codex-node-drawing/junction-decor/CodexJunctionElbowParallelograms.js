@@ -135,6 +135,7 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
             if (!pts) continue;
 
             const appearance = ctx.edgeCordAppearance(eIn, eOut);
+            const isGreyAppearance = appearance === 'grey' || appearance === 'violet-dim';
             const fill =
                 appearance === 'red'
                     ? '#f87171'
@@ -142,7 +143,7 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
                         ? '#fbbf24'
                         : appearance === 'green'
                             ? '#4ade80'
-                            : appearance === 'grey'
+                            : isGreyAppearance
                                 ? 'rgba(120, 128, 148, 0.38)'
                                 : ctx.getCordColorHex();
             const filterUrl =
@@ -152,7 +153,7 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
                         ? 'url(#codex-edge-yellow-glow)'
                         : appearance === 'green'
                             ? 'url(#codex-edge-green-glow)'
-                            : appearance === 'grey'
+                            : isGreyAppearance
                                 ? 'none'
                                 : 'url(#codex-edge-violet-glow)';
             const pointsStr = pts.map((p) => `${p.x},${p.y}`).join(' ');
@@ -162,6 +163,9 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
                 filterUrl,
                 polyClass: 'codex-edge-elbow-parallelogram'
             });
+            elbowG.setAttribute('data-codex-elbow-in-from', eIn.fromId);
+            elbowG.setAttribute('data-codex-elbow-junction', jId);
+            elbowG.setAttribute('data-codex-elbow-out-to', eOut.toId);
             const t = document.createElementNS(ns, 'title');
             t.textContent = 'Axis ↔ diagonal elbow at waypoint (octilinear bend)';
             elbowG.appendChild(t);

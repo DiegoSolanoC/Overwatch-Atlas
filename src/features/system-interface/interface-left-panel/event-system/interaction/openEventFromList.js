@@ -179,7 +179,9 @@ export function openEventFromList(interactionService, event, index) {
 
         if (eventPage !== currentPage) {
             dataModel.setCurrentEventPage(eventPage);
-            if (uiView && typeof uiView.updatePaginationUI === 'function') {
+            if (window.standaloneDockPagination?.goToPage) {
+                window.standaloneDockPagination.goToPage(eventPage, { skipSound: true });
+            } else if (uiView && typeof uiView.updatePaginationUI === 'function') {
                 uiView.updatePaginationUI();
             }
             const T = typeof window !== 'undefined' ? window.TimelineMarkerSync : null;

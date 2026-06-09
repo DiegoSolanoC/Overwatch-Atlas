@@ -9,15 +9,17 @@ import { ARCHIVE_LOCALSTORAGE_KEYS } from '../../../system-interface/interface-l
 import { getDockTimelineEventsForPagination } from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { findCodexNodeIdForBioEntity } from '../../codex-edge-cords/topology/CodexBioEntityMatching.js';
 import { codexUnorderedPairKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { s } from '../../codex-canvas/core/canvasSession.js';
+import {
+    codexConnectionSubjectLinkedKey,
+    isCodexConnectionPairPruned,
+} from '../../codex-connections/CodexConnectionMeta.js';
 import {
     buildStoryEventIndexByName,
     connectionActiveForTimelineIndexSpan,
     normalizeBioConnectionRanges,
 } from '../../../system-interface/interface-shared/bio-archive/bioArchiveConnectionRanges.js';
-import {
-    ensureCodexTargetedArchiveCache,
-    getCodexTargetedArchiveCacheSync,
-} from '../../codex-controls-ui/stage/codexTargetedSelectionAllowlist.js';
+import { normalizeBioArchiveEntryLifetimeRange } from '../../../system-interface/interface-shared/bio-archive/bioArchiveEntryLifetime.js';
 
 const DOCK_EVENTS_PER_PAGE = 10;
 
@@ -34,10 +36,55 @@ let cachedGateRows = [];
 let cachedAdjacency = null;
 
 /** @type {string} */
-let lastGraphSignature = '';
+let lastStructureSignature = '';
 
 /** @type {number} */
 let lastPageForGate = -1;
+
+/** Latest page from `atlas-dock-timeline-page-changed` (avoids stale pagination reads). */
+let dockTimelinePageHint = 0;
+
+/**
+ * @param {number} page
+ */
+export function noteCodexDockTimelinePageChange(page) {
+    if (Number.isFinite(page) && page >= 1) {
+        dockTimelinePageHint = Math.floor(page);
+    }
+}
+
+function resolveDockTimelinePage() {
+    const fromStandalone = window.standaloneDockPagination?.getCurrentPage?.();
+    if (Number.isFinite(fromStandalone) && fromStandalone >= 1) {
+        return Math.floor(fromStandalone);
+    }
+
+    const fromSlide = window.standaloneEventSlide?.currentPage;
+    if (Number.isFinite(fromSlide) && fromSlide >= 1) {
+        return Math.floor(fromSlide);
+    }
+
+    const fromInput = parseInt(document.getElementById('pageInput')?.value || '', 10);
+    if (Number.isFinite(fromInput) && fromInput >= 1) {
+        return fromInput;
+    }
+
+    if (dockTimelinePageHint >= 1) {
+        return dockTimelinePageHint;
+    }
+
+    const fromBridge = window.__codexEventSlideBridge?.dataModel?.getCurrentEventPage?.();
+    if (Number.isFinite(fromBridge) && fromBridge >= 1) {
+        return Math.floor(fromBridge);
+    }
+
+    const fromGlobe = window.globeController?.dataModel?.getCurrentEventPage?.();
+    if (Number.isFinite(fromGlobe) && fromGlobe >= 1) {
+        return Math.floor(fromGlobe);
+    }
+
+    return 1;
+}
 
 /** @type {object | null} */
 let lastDebugSnapshot = null;
@@ -123,7 +170,15 @@ function mergeArchiveEventsForTimelineGate(localEvents, fileEvents) {
             return lc;
         });
 
-        merged.push({ ...localEv, connections });
+        let lifetimeRange = normalizeBioArchiveEntryLifetimeRange(localEv.lifetimeRange);
+        if (!lifetimeRange) {
+            lifetimeRange = normalizeBioArchiveEntryLifetimeRange(fileEv.lifetimeRange);
+        }
+        merged.push({
+            ...localEv,
+            connections,
+            ...(lifetimeRange ? { lifetimeRange } : {}),
+        });
     }
 
     for (const fileEv of fileEvents) {
@@ -138,9 +193,6 @@ function mergeArchiveEventsForTimelineGate(localEvents, fileEvents) {
 }
 
 async function resolveBioArchivesForTimelineIndex() {
-    await ensureCodexTargetedArchiveCache();
-    const cached = getCodexTargetedArchiveCacheSync();
-
     const lsHeroes = readLocalArchiveEvents(ARCHIVE_LOCALSTORAGE_KEYS.heroes);
     const lsFactions = readLocalArchiveEvents(ARCHIVE_LOCALSTORAGE_KEYS.factions);
     const lsNpcs = readLocalArchiveEvents(ARCHIVE_LOCALSTORAGE_KEYS.npcs);
@@ -151,25 +203,25 @@ async function resolveBioArchivesForTimelineIndex() {
         fetchArchiveEvents(FILES.storyArchive.npcs),
     ]);
 
-    const pick = (ls, cacheArr, fileArr) => {
-        if (ls?.length) return ls;
-        if (cacheArr?.length) return cacheArr;
-        return fileArr;
-    };
+    const pick = (ls, fileArr) => (ls?.length ? ls : fileArr);
 
     return {
-        heroes: mergeArchiveEventsForTimelineGate(pick(lsHeroes, cached?.heroes, fileHeroes), fileHeroes),
+        heroes: mergeArchiveEventsForTimelineGate(pick(lsHeroes, fileHeroes), fileHeroes),
         factions: mergeArchiveEventsForTimelineGate(
-            pick(lsFactions, cached?.factions, fileFactions),
+            pick(lsFactions, fileFactions),
             fileFactions,
         ),
-        npcs: mergeArchiveEventsForTimelineGate(pick(lsNpcs, cached?.npcs, fileNpcs), fileNpcs),
+        npcs: mergeArchiveEventsForTimelineGate(pick(lsNpcs, fileNpcs), fileNpcs),
     };
 }
 
 export async function refreshCodexBioConnectionTimelineIndex() {
     timelineGateArchives = await resolveBioArchivesForTimelineIndex();
-    lastGraphSignature = '';
+    invalidateCodexTimelineGateStructureCache();
+}
+
+export function invalidateCodexTimelineGateStructureCache() {
+    lastStructureSignature = '';
 }
 
 export function getCodexDockPageIndexSpan(eventsPerPage = DOCK_EVENTS_PER_PAGE) {
@@ -180,16 +232,34 @@ export function getCodexDockPageIndexSpan(eventsPerPage = DOCK_EVENTS_PER_PAGE) 
         window.standaloneDockPagination?.eventsPerPage > 0
             ? window.standaloneDockPagination.eventsPerPage
             : eventsPerPage;
-    const page =
-        window.standaloneDockPagination?.getCurrentPage?.()
-        ?? window.standaloneEventSlide?.currentPage
-        ?? window.globeController?.dataModel?.getCurrentEventPage?.()
-        ?? 1;
-    const safePage = Math.max(1, page);
+    const safePage = resolveDockTimelinePage();
     const start = (safePage - 1) * perPage;
     if (start >= events.length) return null;
     const end = Math.min(start + perPage - 1, events.length - 1);
     return { start, end, page: safePage };
+}
+
+/**
+ * Bio archive rows with a configured entry lifetime (for Codex portrait tinting).
+ * @returns {{ kind: 'hero'|'faction'|'npc', name: string, lifetime: import('../../../system-interface/interface-shared/bio-archive/bioArchiveEntryLifetime.js').BioArchiveEntryLifetimeRange }[]}
+ */
+export function getBioArchiveEntryLifetimeEntries() {
+    /** @type {{ kind: 'hero'|'faction'|'npc', name: string, lifetime: object }[]} */
+    const rows = [];
+    const lists = [
+        ['hero', timelineGateArchives.heroes],
+        ['faction', timelineGateArchives.factions],
+        ['npc', timelineGateArchives.npcs],
+    ];
+    for (const [kind, arr] of lists) {
+        for (const ev of arr || []) {
+            const name = String(ev?.name || '').trim();
+            if (!name) continue;
+            const lifetime = normalizeBioArchiveEntryLifetimeRange(ev.lifetimeRange);
+            if (lifetime) rows.push({ kind, name, lifetime });
+        }
+    }
+    return rows;
 }
 
 function connectionRangesActiveForDockPage(ranges) {
@@ -261,9 +331,56 @@ function bfsDistancesFrom(startId, adj) {
 
 /**
  * @param {object[]} allNodes
+ * @param {object[]} metaRows
  * @returns {RangedGateRow[]}
  */
-function buildRangedGateRows(allNodes) {
+function buildRangedGateRowsFromCodexMeta(allNodes, metaRows) {
+    /** @type {RangedGateRow[]} */
+    const rows = [];
+    /** @type {Set<string>} */
+    const seen = new Set();
+
+    for (const row of metaRows || []) {
+        if (!row || row.pruned === true) continue;
+        const sk = String(row.subjectKind || 'hero').toLowerCase();
+        const sn = String(row.subjectName || '').trim();
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (!sn || !ln) continue;
+        if (isCodexConnectionPairPruned(sk, sn, lk, ln, metaRows)) continue;
+
+        const ranges = normalizeBioConnectionRanges(row.ranges);
+        if (!ranges.length) continue;
+
+        const pairKey = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
+        if (seen.has(pairKey)) continue;
+        seen.add(pairKey);
+
+        const aId = findCodexNodeIdForBioEntity(sk, sn, allNodes);
+        const bId = findCodexNodeIdForBioEntity(lk, ln, allNodes);
+        if (!aId || !bId || aId === bId) continue;
+
+        rows.push({
+            label: `${sn} ↔ ${ln}`,
+            aId,
+            bId,
+            ranges,
+            active: false,
+            pathEdgeCount: 0,
+            pathKeys: new Set(),
+            directedStepKeys: new Set(),
+        });
+    }
+
+    return rows;
+}
+
+/**
+ * Legacy archive `connections[]` fallback when codex meta has no ranged rows.
+ * @param {object[]} allNodes
+ * @returns {RangedGateRow[]}
+ */
+function buildRangedGateRowsFromArchives(allNodes) {
     /** @type {RangedGateRow[]} */
     const rows = [];
     const archList = [
@@ -412,7 +529,54 @@ function collectCanonicalDirectedStepKeysForGateRow(row, adj, nodeById) {
     return keys;
 }
 
-function recomputeTimelineGateCaches(allNodes, edges) {
+/**
+ * @param {object[]} allNodes
+ * @returns {RangedGateRow[]}
+ */
+function buildRangedGateRows(allNodes) {
+    const metaRows = s.codexConnections || [];
+    const fromCodex = buildRangedGateRowsFromCodexMeta(allNodes, metaRows);
+    if (fromCodex.length) return fromCodex;
+    return buildRangedGateRowsFromArchives(allNodes);
+}
+
+function buildConnectionRangesStructureSignature(metaRows) {
+    if (!Array.isArray(metaRows) || !metaRows.length) return '0';
+    /** @type {string[]} */
+    const parts = [];
+    for (const row of metaRows) {
+        if (!row || row.pruned === true) continue;
+        const ranges = normalizeBioConnectionRanges(row.ranges);
+        if (!ranges.length) continue;
+        const sk = String(row.subjectKind || 'hero').toLowerCase();
+        const sn = String(row.subjectName || '').trim();
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (!sn || !ln) continue;
+        const rangePart = ranges
+            .map((rg) => `${rg.startEvent}\0${rg.endEvent || ''}`)
+            .join(';');
+        parts.push(`${codexConnectionSubjectLinkedKey(sk, sn, lk, ln)}:${rangePart}`);
+    }
+    parts.sort();
+    return parts.join('|') || '0';
+}
+
+function buildStructureSignature(allNodes, edges) {
+    const connLen = s.codexConnections?.length ?? 0;
+    const rangeSig = buildConnectionRangesStructureSignature(s.codexConnections);
+    return `${allNodes.length}:${edges.length}:${connLen}:${rangeSig}`;
+}
+
+function refreshTimelineGatePageActiveFlags() {
+    const page = resolveDockTimelinePage();
+    lastPageForGate = page;
+    for (let i = 0; i < cachedGateRows.length; i += 1) {
+        cachedGateRows[i].active = connectionRangesActiveForDockPage(cachedGateRows[i].ranges);
+    }
+}
+
+function recomputeTimelineGateStructure(allNodes, edges) {
     allRangedPathEdgeKeys = new Set();
     cachedGateRows = [];
     cachedAdjacency = null;
@@ -431,6 +595,14 @@ function recomputeTimelineGateCaches(allNodes, edges) {
         for (const k of row.pathKeys) allRangedPathEdgeKeys.add(k);
     }
 
+    refreshTimelineGatePageActiveFlags();
+    updateTimelineGateDebugSnapshot();
+}
+
+function updateTimelineGateDebugSnapshot() {
+    const span = getCodexDockPageIndexSpan();
+    const gateRows = cachedGateRows;
+
     let dormantEdgeCount = 0;
     for (const k of allRangedPathEdgeKeys) {
         let lit = false;
@@ -448,6 +620,7 @@ function recomputeTimelineGateCaches(allNodes, edges) {
         dockPage: span?.page ?? null,
         dockSpan: span ? { start: span.start, end: span.end } : null,
         archiveHeroCount: timelineGateArchives.heroes?.length ?? 0,
+        codexConnectionCount: s.codexConnections?.length ?? 0,
         rangedGateCount: gateRows.length,
         rangedPathEdgeCount: allRangedPathEdgeKeys.size,
         dormantRangedEdgeCount: dormantEdgeCount,
@@ -464,18 +637,74 @@ function recomputeTimelineGateCaches(allNodes, edges) {
 }
 
 /**
+ * Fast path for dock pagination — only re-evaluates range overlap for the current page.
+ * @param {object[]} allNodes
+ * @param {{ fromId: string, toId: string }[]} edges
+ */
+export function refreshCodexTimelineGatePageActive(allNodes, edges) {
+    if (!Array.isArray(allNodes) || !allNodes.length) return;
+    ensureTimelineGateStructureCached(allNodes, edges);
+    refreshTimelineGatePageActiveFlags();
+    updateTimelineGateDebugSnapshot();
+}
+
+/**
+ * Portrait node ids on ranged links that are inactive for the current dock page.
+ * @returns {Set<string>}
+ */
+export function getCodexTimelineRangeInactiveNodeIds() {
+    /** @type {Set<string>} */
+    const ids = new Set();
+    for (const row of cachedGateRows) {
+        if (row.active || !row.pathKeys.size) continue;
+        ids.add(row.aId);
+        ids.add(row.bId);
+    }
+    return ids;
+}
+
+/**
+ * Edge lies on a ranged bio link but the current dock page is outside its range span.
+ * @param {{ fromId: string, toId: string }} edge
+ * @param {object[]} allNodes
+ * @param {{ fromId: string, toId: string }[]} edges
+ */
+export function isCodexEdgeTimelineRangeInactive(edge, allNodes, edges) {
+    if (!edge?.fromId || !edge?.toId) return false;
+    if (!Array.isArray(allNodes) || !allNodes.length) return false;
+
+    ensureTimelineGateStructureCached(allNodes, edges);
+    const key = codexUnorderedPairKey(edge.fromId, edge.toId);
+    if (!allRangedPathEdgeKeys.has(key)) return false;
+
+    for (const row of cachedGateRows) {
+        if (row.active && row.pathKeys.has(key)) return false;
+    }
+    return true;
+}
+
+function ensureTimelineGateStructureCached(allNodes, edges) {
+    const sig = buildStructureSignature(allNodes, edges);
+    if (sig !== lastStructureSignature) {
+        lastStructureSignature = sig;
+        recomputeTimelineGateStructure(allNodes, edges);
+        return;
+    }
+    refreshTimelineGatePageActiveFlags();
+}
+
+/**
  * @param {object[]} allNodes
  * @param {{ fromId: string, toId: string }[]} edges
  */
 function ensurePathGateCacheFresh(allNodes, edges) {
-    const span = getCodexDockPageIndexSpan();
-    const page = span?.page ?? 1;
-    const sig = `${allNodes.length}:${edges.length}:${page}`;
-    if (sig !== lastGraphSignature || page !== lastPageForGate) {
-        lastGraphSignature = sig;
-        lastPageForGate = page;
-        recomputeTimelineGateCaches(allNodes, edges);
-    }
+    ensureTimelineGateStructureCached(allNodes, edges);
+}
+
+/** @deprecated Use {@link refreshCodexTimelineGatePageActive} */
+function recomputeTimelineGateCaches(allNodes, edges) {
+    lastStructureSignature = '';
+    recomputeTimelineGateStructure(allNodes, edges);
 }
 
 /**
@@ -487,11 +716,10 @@ function ensurePathGateCacheFresh(allNodes, edges) {
 export function isCodexEdgeTimelineActiveForDockPage(edge, allNodes, edges) {
     if (!edge?.fromId || !edge?.toId) return true;
     if (!Array.isArray(allNodes) || !allNodes.length) return true;
-    if (!timelineGateArchives.heroes?.length && !timelineGateArchives.factions?.length) {
-        return true;
-    }
 
     ensurePathGateCacheFresh(allNodes, edges);
+    if (!allRangedPathEdgeKeys.size) return true;
+
     const key = codexUnorderedPairKey(edge.fromId, edge.toId);
     if (!allRangedPathEdgeKeys.has(key)) return true;
 
@@ -511,11 +739,10 @@ export function isCodexEdgeTimelineActiveForDockPage(edge, allNodes, edges) {
 export function isDirectedCodexEdgeOnActiveBioConnectionPath(edge, allNodes, edges) {
     if (!edge?.fromId || !edge?.toId) return true;
     if (!Array.isArray(allNodes) || !allNodes.length) return true;
-    if (!timelineGateArchives.heroes?.length && !timelineGateArchives.factions?.length) {
-        return true;
-    }
 
     ensurePathGateCacheFresh(allNodes, edges);
+    if (!allRangedPathEdgeKeys.size) return true;
+
     const key = codexUnorderedPairKey(edge.fromId, edge.toId);
     if (!allRangedPathEdgeKeys.has(key)) return true;
 
@@ -530,6 +757,11 @@ export function isDirectedCodexEdgeOnActiveBioConnectionPath(edge, allNodes, edg
 /** @returns {object | null} */
 export function getCodexTimelineGateDebugSnapshot() {
     return lastDebugSnapshot;
+}
+
+/** @returns {ReadonlySet<string>} */
+export function getCodexTimelineRangedPathEdgeKeys() {
+    return allRangedPathEdgeKeys;
 }
 
 /**
@@ -566,23 +798,32 @@ export function initCodexBioConnectionDockTimelineListener(getCodexGraph, onTime
         return { nodes: [], edges: [] };
     };
 
-    const apply = () => {
+    const applyStructure = () => {
         const { nodes, edges } = resolveGraph();
-        lastGraphSignature = '';
-        recomputeTimelineGateCaches(nodes, edges);
+        lastStructureSignature = '';
+        recomputeTimelineGateStructure(nodes, edges);
         onTimelineGateChange?.();
     };
 
     const rebuildArchives = () => {
-        void refreshCodexBioConnectionTimelineIndex().then(apply);
+        void refreshCodexBioConnectionTimelineIndex().then(applyStructure);
     };
 
-    const onPage = () => apply();
+    const onPage = (ev) => {
+        const page = ev?.detail?.page;
+        if (Number.isFinite(page) && page >= 1) {
+            noteCodexDockTimelinePageChange(page);
+        }
+        const { nodes, edges } = resolveGraph();
+        if (nodes.length) {
+            refreshCodexTimelineGatePageActive(nodes, edges);
+        }
+    };
 
     window.addEventListener('atlas-dock-timeline-page-changed', onPage);
     window.addEventListener('atlas-bio-archives-refreshed', rebuildArchives);
 
-    void refreshCodexBioConnectionTimelineIndex().then(apply);
+    void refreshCodexBioConnectionTimelineIndex().then(applyStructure);
 
     return () => {
         window.removeEventListener('atlas-dock-timeline-page-changed', onPage);

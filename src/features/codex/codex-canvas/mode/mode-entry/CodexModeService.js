@@ -47,6 +47,7 @@ function yieldForLoadingOverlayPaint() {
  * @param {HTMLElement|null} [container]
  */
 export function clearCodexShellForGlobeInit(container) {
+    destroyCodexCanvas();
     const el = container || document.getElementById('globe-container');
     if (!el) return;
     // Always clear container when switching modes - ensures clean state

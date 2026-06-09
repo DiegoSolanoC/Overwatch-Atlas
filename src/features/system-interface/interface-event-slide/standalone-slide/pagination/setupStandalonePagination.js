@@ -11,6 +11,7 @@ import {
     getDockTimelineEventsForPagination,
     isHeroBiographyDockFilterActive,
 } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
+import { noteCodexDockTimelinePageChange } from '../../../../codex/codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import {
     updateStandaloneSliderTicks,
@@ -51,6 +52,10 @@ export function runSetupStandalonePagination(slide) {
             // Sync to standaloneEventSlide for filter matching
             if (window.standaloneEventSlide) {
                 window.standaloneEventSlide.currentPage = page;
+            }
+            const bridgeDm = window.__codexEventSlideBridge?.dataModel;
+            if (bridgeDm && typeof bridgeDm.setCurrentEventPage === 'function') {
+                bridgeDm.setCurrentEventPage(page);
             }
         };
         
@@ -288,6 +293,7 @@ export function runSetupStandalonePagination(slide) {
                     detail: { page: currentPage },
                 }),
             );
+            noteCodexDockTimelinePageChange(currentPage);
             if (typeof window.__codexApplyTimelineGateFromDock === 'function') {
                 window.__codexApplyTimelineGateFromDock();
             }

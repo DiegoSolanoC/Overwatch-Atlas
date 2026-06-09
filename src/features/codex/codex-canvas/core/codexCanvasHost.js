@@ -52,6 +52,7 @@ import {
     initCodexBioConnectionDockTimelineListener,
     refreshCodexBioConnectionTimelineIndex,
 } from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
+import { applyCodexTimelineRangeVisualRefresh } from '../../codex-bio-archive-sync/timeline/CodexTimelineRangeSync.js';
 
 export function initCodexCanvas(rootElement) {
     destroyCodexCanvas();
@@ -271,12 +272,7 @@ export function initCodexCanvas(rootElement) {
     window.addEventListener('resize', s.onWindowResizeRedraw);
 
     const applyCodexTimelineGateFromDock = () => {
-        if (!s.root) return;
-        void refreshCodexBioConnectionTimelineIndex().then(() => {
-            s.codexSkipAllEdgeRedraws = false;
-            s.codexSkipEdgeRedraw = false;
-            redrawCodexEdges({ force: true });
-        });
+        applyCodexTimelineRangeVisualRefresh();
     };
 
     s.teardownCodexBioConnectionDockTimeline = initCodexBioConnectionDockTimelineListener(
@@ -299,6 +295,7 @@ export function initCodexCanvas(rootElement) {
         await api.loadCodexState();
         await refreshCodexBioConnectionTimelineIndex();
         api.applyCodexFilterState?.();
+        applyCodexTimelineRangeVisualRefresh();
         applyCodexModeDockToggles({ redraw: false });
         redrawCodexEdges({ force: true });
         api.ensureCodexToolbar();

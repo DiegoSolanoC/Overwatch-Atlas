@@ -126,6 +126,15 @@ export const CODEX_OCT_RELEASE_SNAP_EPS = 0.35;
 /** SVG `<mask id="…">` for cutting cords behind node portraits. */
 export const CODEX_EDGES_NODE_ALPHA_MASK_ID = 'codex-edges-node-alpha-mask';
 
+/** CSS hover scale on `.codex-node` — keep in sync with `--codex-node-hover-scale`. */
+export const CODEX_NODE_HOVER_VISUAL_SCALE = 1.15;
+
+/** Ms for node hover transform — keep in sync with `.codex-node { transition: transform … }`. */
+export const CODEX_NODE_HOVER_TRANSITION_MS = 200;
+
+/** @deprecated Use {@link CODEX_NODE_HOVER_TRANSITION_MS} */
+export const CODEX_NODE_HOVER_MASK_RELEASE_MS = CODEX_NODE_HOVER_TRANSITION_MS;
+
 // --- Virtual scroll viewport (world space) ---------------------------------
 
 /** World px padding beyond the visible rect before nodes mount/unmount (larger = fewer churn). */

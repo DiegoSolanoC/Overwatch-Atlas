@@ -4,6 +4,7 @@
  */
 
 import { s } from '../codex-canvas/core/canvasSession.js';
+import { api } from '../codex-canvas/core/codexCanvasApi.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../codex-data/persistence/CodexLayoutConstants.js';
 import { fetchCanonicalCodexJson } from '../codex-data/load/CodexJsonRepository.js';
 import {
@@ -21,6 +22,7 @@ import {
     resolveCodexConnectionsForSubject,
 } from './CodexConnectionMeta.js';
 import { invalidateCodexFilterDerivedCache } from '../codex-nodes/filters/CodexNodeFilterMatch.js';
+import { invalidateCodexTimelineGateStructureCache } from '../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 
 /** @type {{ v: number, nodes: object[], edges: object[], connections: object[] } | null} */
 let cachedPayload = null;
@@ -340,9 +342,11 @@ export async function saveCodexConnectionsForSubject(archive, subjectName, edito
         s.codexFilterLinkedEdgePairKeys = null;
         s.codexFilterActiveEdgePairKeys = null;
         invalidateCodexFilterDerivedCache();
+        invalidateCodexTimelineGateStructureCache();
         if (typeof window !== 'undefined' && typeof window.applyCodexFilterState === 'function') {
             window.applyCodexFilterState();
         }
+        api.applyCodexTimelineRangeVisualRefresh?.();
     }
 
     let writtenToDisk = false;

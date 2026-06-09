@@ -323,6 +323,15 @@ export function redrawCodexEdges(opts = {}) {
                     : appearance === 'grey'
                         ? 'none'
                         : 'url(#codex-edge-violet-glow)';
+        const lineClass = appearance === 'grey'
+            ? (filterDormant
+                ? 'codex-edge-segment codex-edge-segment--timeline-dormant codex-edge-segment--filter-dormant'
+                : 'codex-edge-segment codex-edge-segment--timeline-dormant')
+            : appearance === 'violet-dim'
+                ? 'codex-edge-segment codex-edge-segment--timeline-range-inactive'
+                : appearance === 'green'
+                    ? 'codex-edge-segment codex-edge-segment--filter-linked'
+                    : 'codex-edge-segment';
         for (let seg = 0; seg < pts.length - 1; seg++) {
             const p0 = pts[seg];
             const p1 = pts[seg + 1];
@@ -334,14 +343,7 @@ export function redrawCodexEdges(opts = {}) {
                 stroke: strokeColor,
                 strokeWidth: visualPrefs.cordThickness,
                 filterUrl,
-                lineClass:
-                    appearance === 'grey'
-                        ? (filterDormant
-                            ? 'codex-edge-segment codex-edge-segment--timeline-dormant codex-edge-segment--filter-dormant'
-                            : 'codex-edge-segment codex-edge-segment--timeline-dormant')
-                        : appearance === 'green'
-                            ? 'codex-edge-segment codex-edge-segment--filter-linked'
-                            : 'codex-edge-segment',
+                lineClass,
                 edgeFromId: fromId,
                 edgeToId: toId
             });

@@ -367,6 +367,7 @@ body:has(#paginationDock) .codex-visual-panel {
     margin: 0;
     background: transparent;
     border: none;
+    --codex-node-hover-scale: 1.15;
     transition: transform 0.2s ease-out, filter 0.2s ease-out;
     will-change: transform;
     /* Smooth fade-in when nodes appear */
@@ -374,7 +375,7 @@ body:has(#paginationDock) .codex-visual-panel {
 }
 
 .codex-node:hover {
-    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+    transform: scale(var(--codex-node-hover-scale)) rotate(var(--codex-hex-rotation, 0deg));
     z-index: 20;
 }
 
@@ -384,7 +385,7 @@ body:has(#paginationDock) .codex-visual-panel {
 }
 
 .codex-node--simplified:hover {
-    transform: scale(1.15) rotate(var(--codex-hex-rotation, 0deg));
+    transform: scale(var(--codex-node-hover-scale)) rotate(var(--codex-hex-rotation, 0deg));
 }
 
 .codex-node--filtered-out:hover {
@@ -768,6 +769,62 @@ body:has(#paginationDock) .codex-visual-panel {
 .codex-node--filter-connected:hover .codex-node__inner,
 .codex-node--filter-connected.codex-node--simplified:hover {
     filter: brightness(0.94) grayscale(0.18);
+}
+
+/* Entry lifetime — masked portrait wash + frame-only tint (respects hex alpha) */
+.codex-node--lifetime-before:not(.codex-node--junction),
+.codex-node--lifetime-after:not(.codex-node--junction) {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.codex-node--lifetime-before:not(.codex-node--junction) {
+    --codex-lifetime-wash: rgba(58, 118, 255, 0.46);
+    --codex-lifetime-img-dim: brightness(0.7) grayscale(0.78);
+    --codex-lifetime-frame-tint: brightness(0.74) grayscale(0.5) sepia(0.48) hue-rotate(186deg) saturate(2.35);
+}
+
+.codex-node--lifetime-after:not(.codex-node--junction) {
+    --codex-lifetime-wash: rgba(220, 58, 68, 0.46);
+    --codex-lifetime-img-dim: brightness(0.7) grayscale(0.78);
+    --codex-lifetime-frame-tint: brightness(0.74) grayscale(0.5) sepia(0.48) hue-rotate(330deg) saturate(2.35);
+}
+
+.codex-node--lifetime-before:not(.codex-node--junction) .codex-node__img,
+.codex-node--lifetime-after:not(.codex-node--junction) .codex-node__img {
+    filter: var(--codex-lifetime-img-dim);
+}
+
+/* Frame PNG alpha — only opaque border pixels pick up the tint */
+.codex-node--lifetime-before:not(.codex-node--junction) .codex-node__frame,
+.codex-node--lifetime-after:not(.codex-node--junction) .codex-node__frame {
+    filter: var(--codex-lifetime-frame-tint);
+}
+
+/* Solid wash clipped to hex mask (simplified DOM) */
+.codex-node--lifetime-before:not(.codex-node--junction) .codex-node__img-wrapper::after,
+.codex-node--lifetime-after:not(.codex-node--junction) .codex-node__img-wrapper::after,
+/* Legacy nested DOM */
+.codex-node--lifetime-before:not(.codex-node--junction) .codex-node__clip::after,
+.codex-node--lifetime-after:not(.codex-node--junction) .codex-node__clip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: var(--codex-lifetime-wash);
+}
+
+.codex-node--lifetime-before:not(.codex-node--junction):hover {
+    --codex-lifetime-wash: rgba(58, 118, 255, 0.34);
+    --codex-lifetime-img-dim: brightness(0.78) grayscale(0.62);
+    --codex-lifetime-frame-tint: brightness(0.84) grayscale(0.35) sepia(0.38) hue-rotate(186deg) saturate(2.1);
+}
+
+.codex-node--lifetime-after:not(.codex-node--junction):hover {
+    --codex-lifetime-wash: rgba(220, 58, 68, 0.34);
+    --codex-lifetime-img-dim: brightness(0.78) grayscale(0.62);
+    --codex-lifetime-frame-tint: brightness(0.84) grayscale(0.35) sepia(0.38) hue-rotate(330deg) saturate(2.1);
 }
 
 .codex-node--unsaved.codex-node--selected .codex-node__inner {

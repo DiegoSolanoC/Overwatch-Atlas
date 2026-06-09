@@ -1,5 +1,14 @@
 /* Codex dock rail — view/dev, linking, packets, and info toggles */
 
+#codexToggleViewDev,
+#codexLinkFiltersToggle,
+#codexTogglePackets,
+#codexToggleInfo {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 body.codex-mode-active #codexToggleViewDev.dock-globe-rail__btn,
 body.codex-mode-active #codexLinkFiltersToggle.dock-globe-rail__btn,
 body.codex-mode-active #codexTogglePackets.dock-globe-rail__btn,
@@ -7,11 +16,6 @@ body.codex-mode-active #codexToggleInfo.dock-globe-rail__btn {
     display: flex !important;
     pointer-events: auto !important;
     visibility: visible !important;
-}
-
-/* Orange off-state (world Map toggle pattern) instead of default red toggle-off border. */
-body.codex-mode-active #dockGlobeRailLeft .codex-dock-toggle.dock-globe-rail__btn.toggle-off {
-    border-color: rgba(255, 152, 0, 0.82) !important;
 }
 
 body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,

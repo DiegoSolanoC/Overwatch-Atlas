@@ -8,6 +8,7 @@ import { CODEX_FRAME_PATH, CODEX_IMG_BASE_PX, CODEX_JUNCTION_BASE_PX, CODEX_SCAL
 import { codexFrameVariantForId, codexHexRotationDegreesForId } from './CodexNodeVisualHash.js';
 import { observeCodexImage } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { animateCodexNodeHoverMaskScale, readCodexNodeHoverVisualScale } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
 import { hexToRgba } from '../../codex-node-drawing/svg/CodexPresentationUtils.js';
 import { scheduleUpdateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { capOpts, DOUBLE_RIGHT_MS } from '../../codex-canvas/core/canvasConstants.js';
@@ -396,6 +397,11 @@ function bindCodexNodeInteraction(el) {
     });
 
     el.addEventListener('pointerenter', () => {
+        if (!el.classList.contains('codex-node--junction')) {
+            animateCodexNodeHoverMaskScale(el, readCodexNodeHoverVisualScale(el), () => {
+                api.syncCodexEdgeNodeMaskDom?.();
+            });
+        }
         if (typeof api.onCodexNodeTargetedRoutePointerEnter === 'function') {
             api.onCodexNodeTargetedRoutePointerEnter(el);
         }
@@ -404,6 +410,11 @@ function bindCodexNodeInteraction(el) {
         }
     });
     el.addEventListener('pointerleave', (e) => {
+        if (!el.classList.contains('codex-node--junction')) {
+            animateCodexNodeHoverMaskScale(el, 1, () => {
+                api.syncCodexEdgeNodeMaskDom?.();
+            });
+        }
         if (typeof api.onCodexNodeTargetedRoutePointerLeave === 'function') {
             api.onCodexNodeTargetedRoutePointerLeave(e, el);
         }

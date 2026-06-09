@@ -137,6 +137,13 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                         addBtn.onclick = () =>
                             window.HeroRelevantLocationsEditor?.addRow?.();
                     }
+                    const lifetimeContainer = document.getElementById('eventSlideEditEntryLifetime');
+                    if (lifetimeContainer && window.BioArchiveEntryLifetimeEditor?.render) {
+                        window.BioArchiveEntryLifetimeEditor.render(
+                            lifetimeContainer,
+                            liveEventData?.lifetimeRange,
+                        );
+                    }
                     const connContainer = document.getElementById('eventSlideEditBioConnections');
                     if (connContainer && window.BioArchiveConnectionsEditor?.render) {
                         const bioOpts =
