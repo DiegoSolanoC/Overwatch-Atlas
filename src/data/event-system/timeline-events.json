@@ -1018,7 +1018,7 @@
       "name": "Grasping Gravity",
       "locationType": "earth",
       "cityDisplayName": "The Hague, Netherlands",
-      "description": "New sources of energy and pushes for cleaner solutions lead to many developments in the field of transportation, and the man leading the race would be Dr. Siebren De Kuiper, pioneer of gravitational research, as he believed that gravity was the greatest untapped resource humanity had, and one yet to conquer. For years his studies in The Hague pushed ideas to harness the power of gravity and led to many inventions that changed the world forever, most notoriously, the magnetic levitaitonal systems that most holocars and holobikes use in modern day, as well as the technology that would eventually lead to the creation of the Transcontintental Hyperloop, administered by Omar Takama, head of the Ministry of Transport at Oasis University.<br><br>Siebren's work made flying cars not only a possibility, but a very standard form of living across the world, closing the gap between fossil fuels and a truly sustainable future.",
+      "description": "New sources of energy and pushes for cleaner solutions lead to many developments in the field of transportation, and the man leading the race would be Dr. Siebren De Kuiper, pioneer of gravitational research, as he believed that gravity was the greatest untapped resource humanity had, and one yet to conquer. For years his studies in The Hague pushed ideas to harness the power of gravity and led to many inventions that changed the world forever, most notoriously, the magnetic levitaitonal systems that most holocars and holobikes use in modern day, as well as the technology that would eventually lead to the creation of the Transcontintental Hyperloop, administered by Omar Takama, later known as the head of the Ministry of Transport at Oasis University.\n\nSiebren's work made flying cars not only a possibility, but a very standard form of living across the world, closing the gap between fossil fuels and a truly sustainable future.",
       "image": "",
       "sources": [
         {
@@ -5481,7 +5481,7 @@
       "name": "Rebuilding the Past",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "A notable trend across the world following the Crisis was the return to classical architecture. As many cities had been leveled by the war, many of them needed to rebuild from the ground up, changing greatly from how they used to look years prior. With the construction of the Temple of Anubis, Cairo gained a new Pyramid. As Lumérico built power plants across Mexico, their architecture was inspired by Aztec and Mayan architecture. And this trend can be seen across the world on many other sites. In Greece, a small Aegean island renamed itself to Illios and built a giant statue on the nearby coast, echoing stories of the Colossus of Rhodes. In Iraq, the ever-growing spire of the Oasis University calls back to the tales of the Tower of Babel, a never-ending spear or information growing into the sky.<br><br>But perhaps none of these rebuilt structures stands out more than the Colosseo Gladiatori. Italy had rebuilt the Colosseum and reopened it for the masses. The newly  formed Gladiator games were a pageant that became a cultural touchstone of Rome in the wake of the crisis. Within the Arena Victoriae of the Colosseo, all sorts of events would be hosted to entertain both the public and the European elite. From one-to-one gladiator matches, to robotic chariot races, mech fights and even stand-offs against machines designed for war, much like those Anubis used in The Crisis.<br><br>The Colosseo grew over the years, and the champions of the Arena would quickly become influential figures in Europe too, as the Elites visiting the Colosseo would often sponsor their fights and take in profits from their victories.",
+      "description": "A notable trend across the world following the Crisis was the return to classical architecture. As many cities had been leveled by the war, many of them needed to rebuild from the ground up, changing greatly from how they used to look years prior. With the construction of the Temple of Anubis, Cairo gained a new Pyramid. As Lumérico built power plants across Mexico, their architecture was inspired by Aztec and Mayan architecture. And this trend can be seen across the world on many other sites. In Greece, a small Aegean island renamed itself to Illios and built a giant statue on the nearby coast, echoing stories of the Colossus of Rhodes.\n\nBut perhaps none of these rebuilt structures stands out more than the Colosseo Gladiatori. Italy had rebuilt the Colosseum and reopened it for the masses. The newly  formed Gladiator games were a pageant that became a cultural touchstone of Rome in the wake of the crisis. Within the Arena Victoriae of the Colosseo, all sorts of events would be hosted to entertain both the public and the European elite. From one-to-one gladiator matches, to robotic chariot races, mech fights and even stand-offs against machines designed for war, much like those Anubis used in The Crisis.\n\nThe Colosseo grew over the years, and the champions of the Arena would quickly become influential figures in Europe too, as the Elites visiting the Colosseo would often sponsor their fights and take in profits from their victories.",
       "image": "",
       "lat": 41.8909421,
       "lon": 12.491903,
@@ -5506,7 +5506,7 @@
         },
         {
           "locationName": "",
-          "country": "Mexico, Egypt, Greece, Iraq",
+          "country": "Mexico, Egypt, Greece",
           "reasoning": "Other examples of ancient inspire architecture in the new world"
         }
       ],
@@ -5515,11 +5515,6 @@
           "locationName": "",
           "country": "Colloseo Gladiatori,",
           "reasoning": "A reopen Arena for pageant sports in Italy"
-        },
-        {
-          "locationName": "",
-          "country": "Oasis Ministries",
-          "reasoning": "Every growing University accumulating knowledge in a massive spire"
         }
       ]
     },
@@ -8435,7 +8430,7 @@
       "name": "Retribution",
       "locationType": "earth",
       "cityDisplayName": "Rome,, Italy",
-      "description": "No description available.",
+      "description": "Overwatch intelligence found out that Talon was behind the Oslo attack, and marked the beginning of a year-long war raged by Doomfist himself. The man envisioned a world of conflict, and Overwatch's peacekeeping activities quickly proved to be the greatest obstacle to his crusade. The man who ordered the attack was Antonio Bartalotti, a known arms dealer from Rome and member of Doomfist's council. Overwatch had been interfering with his smuggling operations, and he took the insult with a show of force as soon as he had the chance under Akande.\n\nReyes intercepted the report and gathered Blackwatch for an assembly. Gérard began to set up a new facility in the heart of Rome. From there he would be able to direct the action, disrupting Talon's hold on the area, and eventually pursuing his arrest. Antonio saw this as a threat and responded by attacking the Rome base as well. He had an infiltrator plant a bomb in the building, killing fourteen agents and injuring many more, including Lacroix. Reyes and Cassidy were present during the attack and aided in the evacuation, and both of them grew frustrated by Talon's audacity.\n\nMorrison had charged Reyes with managing the fallout after Oslo, but Antonio was borderline untouchable, due to his high amounts of influence with the Italian government, and even attempting their usual tactics to take him down nearly got Gérard killed. Over the years, Gabriel had grown to despise the red tape surrounding Overwatch activity, and he had been able to work around them while keeping Morrison ignorant of his actions. As he prepared for his next move to counterattack, Reyes cared little about the consequences of his actions. He only had one thing in his mind; retribution.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -8443,6 +8438,10 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Retribution",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/retribution/"
         }
       ],
       "yearStart": 2068,
@@ -8451,29 +8450,54 @@
         {
           "locationName": "Rome,, Italy",
           "country": "Italy",
-          "reasoning": ""
+          "reasoning": "Talon attacks Overwatch facility in Rome"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reaper, Cassidy",
-          "reasoning": ""
+          "reasoning": "Aided evacuation during the Rome attack"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist, Vendetta,",
+          "reasoning": "Discuss the plan following the Rome attack, Marzia;s opinion is disregarded"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Blackwatch, Talon",
-          "reasoning": ""
+          "country": "Overwatch, Blackwatch,",
+          "reasoning": "Pursue the Arrest of Antonio Bartalloti"
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": "Continues to attack Overwatch"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Chaos in Rome after another Overwatch facility is bombed",
+        "Charges of corruption for Antonio Bartalotti are suddenly dropped"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": "Was heavily injured during the attack"
+        },
+        {
+          "locationName": "",
+          "country": "Antonio,",
+          "reasoning": "Bombed Blackwatch as a territorial threat"
+        }
+      ]
     },
     {
       "name": "The Venice Incident",
-      "description": "",
+      "description": "Under his own authority, Reyes ordered a counterstrike of Blackwatch agents to infiltrate Antonio's palace by the Rialto, to apprehend him for questioning, despite lacking the proper clearances to do so. The team consisting of Cassidy, Genji, Moira and himself made their way through the Talon facility smoothly, until they found Bartalotti. Antonio taunted Gabriel during their brief exchange, claiming that he would be released regardless and this would amount to nothing. It's unclear if this was his intention from the beginning, but in response to the mocking, Reyes shot Bartalotti at point-blank, his body flying out of the window.\n\nWhat followed was an all-out war in the city as Talon mobilized a massive force of troops to hunt out the strike team for the entire night. Blackwatch pilot, Carolyn Fio managed to evacuate the team but had been ordered not to identify the Italian forces. The drop-ship had not been cleared to enter Venice and displayed no markings. As the situation got tense, the Italian military gave them their final warning, and the team was forced to identify themselves as acting Overwatch agents.\n\nThe Venice Incident leads to the world discovering Blackwatch, and with it, all the skeletons Overwatch were hiding in their closet. The UN called for hearings and requested information about prior operations by this unknown division, but Reyes delivered clearly redacted and incomplete reports. Reyes argued Antonio's connections to the government meant he would have never seen justice if Reyes had followed protocol, but the damage had been done. Morrison was ordered to put operations on a tighter leash, and slowly Blackwatch would become gutted in everything but name,\n\nThis mission fractured Reyes' relationship with Morrison, and it would never recover, as Jack would often blame him to one degree or another for any trouble that followed. Cassidy too had become jaded by his mentor's actions and often wondered if he was really any better than a criminal.  With Blackwatch getting scaled back, many agents were fired, due to being too much of a liability. Genji was allowed to stay, transferred into the Strike team for training before anyone could look at his background too closely, where he would begin to wear a mask to conceal his relationship with the Shimada.",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
       "lat": 45.4371908,
@@ -8485,27 +8509,48 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Archives Retribution",
+          "url": "https://www.youtube.com/watch?v=QhENmowiMlc"
         }
       ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Venice, Italy",
           "country": "Italy",
-          "reasoning": ""
+          "reasoning": "Gabriel Reyes kills Antonio Bartalotti during ilegal mission"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reaper, Cassidy, Genji, Moira",
-          "reasoning": ""
+          "reasoning": "Infiltrated Talon's complex to apprehend Antonio, until the Mission went south"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Blackwatch, Talon",
-          "reasoning": ""
+          "country": "Overwatch, Blackwatch",
+          "reasoning": "Blackwatch is revealed to the world"
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": "Unleashes an army against Overwatch"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Overwatch agents assassinate respected Italian bussinessman",
+        "Blackwatch hearings continue, more files released"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Antonio,",
+          "reasoning": "Assassinated on the spot by Gabriel Reyes"
         }
       ]
     },
@@ -8513,7 +8558,7 @@
       "name": "Unshackled",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
-      "description": "No description available.",
+      "description": "While Genji and Cassidy were spared from the purge of Blackwatch personnel, Moira wasn't as lucky. Her reputation was a plague on Overwatch's brand, and most of the Scientific divisions had staff that had openly objected to her recruitment to begin with, before Reyes went behind their backs. Angela refused to absorb her into the medical staff, and so, Dr. O'Derain was dismissed, but it would soon become clear that her loyalty to Overwatch and their ideals would not last long, if she had any to begin with.\n\nAs the controversy surrounding Moira's involvement in Venice, as well as the applied capabilities of her research, it peeked the interest of some unconventional backers. Talon saw potential in Moira's research, and she gladly worked for them under the shadows, so long as they funded her experiments, which Talon wished to utilize for their own nefarious purposes. As she worked for Talon in secret, she maintained appearances in the scientific community, controversial as usual. \n\nSoon enough, she was invited to join a collective of scientists in the newly founded City of Oasis, a heavily advanced city where researchers could dedicate their minds to science restraints. Moira was installed as the head of the Ministry of Genetics, though her work is still unknown to the world at large. With Oasis's connections and resources, as well as Talon's funding and ways to get around the law, Moira has been freed from her shackles, and allowed to push the boundaries of her genetic research in pursuit of new breakthroughs.",
       "image": "",
       "lat": 29.5918,
       "lon": 52.5836,
@@ -8521,6 +8566,10 @@
         {
           "text": "Overwatch Declassifed",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Moira Origin Story",
+          "url": "https://www.youtube.com/watch?v=6ETybQd4uRE"
         }
       ],
       "yearStart": 2068,
@@ -8530,30 +8579,38 @@
         {
           "locationName": "Oasis University, Iraq",
           "country": "Iraq",
-          "reasoning": ""
+          "reasoning": "Oasis University to hire Moira as the head of the Ministry of Genetics"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Moira",
-          "reasoning": ""
+          "reasoning": "Leaves Blackwatch, Joins Talon and Oasis"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
+          "country": "Overwatch, Blackwatch,",
+          "reasoning": "Fire Moira due to being too much of a liability"
+        },
+        {
+          "locationName": "",
           "country": "Oasis, Talon",
-          "reasoning": ""
+          "reasoning": "Fund Moira's experiments following her leave in Overwatch"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Controversial Scientist Moira O'Deorain hired into the Ministry of Genetics of Oasis University",
+        "Overwatch removes Dr. O'Deorain following the Venice Incident"
+      ]
     },
     {
       "name": "Prodigy Child",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "",
+      "description": "The more time passed since the Crisis, the more the world moved away from the heavy militarization of the years prior. Volskaya industries began to face a heavy decline in Russia. The Crusaders, while still in use, were not actively seeing battle anymore. The Caribbean Coalition now focused on rebuilding and even then faced conflict with the governments of their nations, and most combat-oriented machinery and equipment ended up in the Roman Colosseo. With the ever present Overwatch taking the lead in global security and peacekeeping, most nations took a step back when it came to developing their own defensive technology.\n\nThe Inti Warriors of Peru made for an intriguing exception to this trend, as there were many factors that allowed them to remain strong. For one. Solar threading was already heavily used in all of Runasapi, making the idea of enhancing your own body to be compatible with it very appealing. The Intis could now serve as providers and healers for their community, and much like the rest of the Paqarina research group, they have become synonymous with Runasapi culture.\n\nThe unwavering presence of the Intis lead to continued enlisting of the locals, and over time one of the younger recruits began to stand out. Illari Quispe Ruiz had begun the demanding Inti training from an early age, and even back then her teachers saw immense potential in her, believing she could rise up to become the strongest warrior of her time. Illari took to this prodigy status proudly, dedicating most of her free time to extensive training and answering the desires of her community, so that one day she could finally live up to the legends she grew up around. Everyone in Runasapi was rooting for their young child of the sun, and as Illari grew older and stronger, it was clear she was meant to be the greatest of them all.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -8564,27 +8621,38 @@
         {
           "locationName": "Runasapi, Peru",
           "country": "Peru",
-          "reasoning": ""
+          "reasoning": "Illari joins the Inti warriors and quickly rises up as a prodigy student"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Illari",
-          "reasoning": ""
+          "reasoning": "Begins her trainign to become an Inti warrior"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Inti Warriors",
-          "reasoning": ""
+          "reasoning": "Trains the new generation of Children of the Sun"
+        }
+      ],
+      "headlines": [
+        "New Generation of Inti Warriors to begin their training",
+        "Caribbean Coalition continues to decline following stricted government guidelines",
+        "Volskaya Industries funding pulled out, company continues to decline"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website Illari",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
         }
       ]
     },
     {
       "name": "Stolen Future",
-      "description": "",
+      "description": "Marzia had seen the death of her father. For years, they had clashed over how he managed the business, her believing that her input could help him make better decisions, but Antonio pushed her daughter away, wishing a different kind of life for her. Marzia was there when Doomfist came to discuss the plans following the Oslo and Rome bombings. She insisted on possible loose ends that could get them in trouble, but her opinion on the matter was disregarded by both her father and Akande.\n\nThe death of her father pained her, but she understood it as a grave he had dug himself. It was what came after that truly reshaped the course of her life. Marzia saw her father's business, as well as his seat on the Talon council, as her rightful inheritance, so it came as a cruel joke of fate when Doomfist seized all of Antonio's assets, and gave the council seat to Augusto Vialli, a Venetian who worked under Antonio, and was expected to take his place in the company.\n\nMarzia was discarded without much thought, as Doomfist did not believe that anyone was owed a place at his table, it had to be earned. Thus, she was left with nothing, by the very same people who her father dedicated years of work for, the very same ones who ignored her insight, the ones whose actions got him killed. Abandoned and bitter, Marzia grew resentment towards Doomfist and his lackeys. She was not going to forget what they did, and if she had to climb her way back to the top in order to get her revenge, so be it.",
       "locationType": "earth",
       "cityDisplayName": "Rome, Italy",
       "lat": 41.8933203,
@@ -8592,7 +8660,12 @@
       "yearStart": 2068,
       "eraName": "The Fall of Overwatch",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "A new Empire",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Rome, Italy",
@@ -8603,16 +8676,33 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta, Doomfist",
-          "reasoning": ""
+          "country": "Vendetta,",
+          "reasoning": "Is left with nothing following the death of her father"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist",
+          "reasoning": "Refuses to let Vendetta into Talon's Council"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon",
-          "reasoning": ""
+          "reasoning": "Siezes Bartalotti assets following Antonio's death"
         }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": "Takes over Antonio's position"
+        }
+      ],
+      "headlines": [
+        "The Bartalotti business to be lead by Augusto Vialli",
+        "Antonio Bartalotti's assests relocated out of Rialto following his death"
       ]
     },
     {
@@ -11633,6 +11723,20 @@
       ]
     },
     {
+      "name": "Waging War",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Rome, Roma Capitale, Lazio, Italy",
+      "yearEnd": null,
+      "eraName": null,
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "System Reboot",
       "description": "",
       "locationType": "earth",
@@ -11762,39 +11866,6 @@
       ]
     },
     {
-      "name": "The Plan",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Junkertown, Australia",
-      "lat": -25,
-      "lon": 135,
-      "yearStart": 2079,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junkrat, Roadhog",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junkers",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Hero of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
@@ -11918,6 +11989,39 @@
         {
           "locationName": "",
           "country": "Deadlock, Overwatch",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "The Plan",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Junkertown, Australia",
+      "lat": -25,
+      "lon": 135,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junkrat, Roadhog",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junkers",
           "reasoning": ""
         }
       ]
