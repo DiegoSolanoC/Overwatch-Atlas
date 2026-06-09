@@ -3,6 +3,7 @@ import { api } from '../../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { DRAG_THRESHOLD_PX } from '../../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { scheduleRedrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { codexStopCordAnimRafOnly } from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
 
@@ -56,6 +57,8 @@ function beginActualNodeDrag(prep, firstMoveEv) {
     const anchor = bases.find((b) => b.el === el) || bases[0];
 
     s.codexActiveDragNodeIds = new Set(dragNodes.map((n) => n.dataset.codexNodeId).filter(Boolean));
+    s.codexEdgeDragUseLightSync = false;
+    codexStopCordAnimRafOnly();
 
     dragNodes.forEach((nodeEl) => {
         nodeEl.style.willChange = 'transform';
@@ -126,6 +129,7 @@ function beginActualNodeDrag(prep, firstMoveEv) {
         if (dragFinished) return;
         dragFinished = true;
         s.codexActiveDragNodeIds.clear();
+        s.codexEdgeDragUseLightSync = false;
         const moved = lastTx !== 0 || lastTy !== 0;
         bases.forEach(({ el: nodeEl, baseLeft: bl, baseTop: bt }) => {
             const newX = bl + lastTx;
@@ -146,7 +150,7 @@ function beginActualNodeDrag(prep, firstMoveEv) {
                 }
             }
         });
-        // Trigger final edge redraw after drag completes
+        // Trigger final full edge redraw after drag completes (includes snap + packets).
         if (moved) {
             scheduleRedrawCodexEdges();
         }

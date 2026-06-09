@@ -43,9 +43,14 @@ let modeToggleBtn = null;
 
 let linkFiltersEnabled = false;
 
-function flashCodexDockToggle(btn, enabled) {
+function flashCodexOnOffToggle(btn, enabled) {
     if (!btn || !window.flashButton) return;
-    window.flashButton(btn, enabled ? 'flash-green' : 'flash-orange');
+    window.flashButton(btn, enabled ? 'flash-green' : 'flash-red');
+}
+
+function flashCodexModeToggle(btn) {
+    if (!btn || !window.flashButton) return;
+    window.flashButton(btn, 'flash-orange');
 }
 
 /**
@@ -76,7 +81,7 @@ export function setCodexLinkFiltersEnabled(enabled) {
  */
 export function toggleCodexLinkFilters() {
     setCodexLinkFiltersEnabled(!linkFiltersEnabled);
-    flashCodexDockToggle(linkingToggleBtn, linkFiltersEnabled);
+    flashCodexOnOffToggle(linkingToggleBtn, linkFiltersEnabled);
     return linkFiltersEnabled;
 }
 
@@ -92,7 +97,7 @@ export function setCodexPacketsEnabled(enabled, opts = {}) {
     syncToggleOffClass(packetsToggleBtn, s.codexPacketAnimEnabled);
     api.syncCodexStageControlInputs?.();
     if (redraw) redrawCodexEdges({ force: true });
-    if (flash) flashCodexDockToggle(packetsToggleBtn, s.codexPacketAnimEnabled);
+    if (flash) flashCodexOnOffToggle(packetsToggleBtn, s.codexPacketAnimEnabled);
 }
 
 /**
@@ -107,7 +112,7 @@ export function setCodexInfoEnabled(enabled, opts = {}) {
     syncToggleOffClass(infoToggleBtn, s.codexDebugUiVisible);
     api.syncCodexStageControlInputs?.();
     if (redraw) redrawCodexEdges({ force: true });
-    if (flash) flashCodexDockToggle(infoToggleBtn, s.codexDebugUiVisible);
+    if (flash) flashCodexOnOffToggle(infoToggleBtn, s.codexDebugUiVisible);
 }
 
 function toggleCodexPackets() {
@@ -121,7 +126,7 @@ function toggleCodexInfo() {
 export function syncCodexModeToggleUi() {
     if (!modeToggleBtn) return;
     const isDev = s.codexMode === 'dev';
-    syncToggleOffClass(modeToggleBtn, isDev);
+    modeToggleBtn.classList.remove('toggle-off');
     const label = modeToggleBtn.querySelector('.globe-control-btn__label');
     if (label) {
         label.textContent = isDev ? 'Dev Mode' : 'View Mode';
@@ -138,7 +143,7 @@ function toggleCodexViewDevMode() {
     syncCodexModeToggleUi();
     api.updateCodexToolbar?.();
     playSoundEffect('switchMap');
-    flashCodexDockToggle(modeToggleBtn, s.codexMode === 'dev');
+    flashCodexModeToggle(modeToggleBtn);
 }
 
 /**
@@ -277,7 +282,7 @@ export function mountCodexDockToggles() {
         iconPath: MODE_ICON,
         iconAlt: 'View or Dev mode',
         headerOrder: 11,
-        enabled: isDev,
+        enabled: true,
     });
 
     linkingToggleBtn = mountDockToggle({

@@ -164,6 +164,13 @@ export function initCodexCanvas(rootElement) {
         getPerfDebug: () => false,
         getEdges: () => s.codexEdges,
         getActiveDragNodeIds: () => s.codexActiveDragNodeIds,
+        getDragUseLightSync: () => s.codexEdgeDragUseLightSync,
+        setDragUseLightSync: (v) => {
+            s.codexEdgeDragUseLightSync = v;
+        },
+        codexNodeElById: api.codexNodeElById,
+        getNodeCenterWorldPx: api.getNodeCenterWorldPx,
+        syncCodexEdgeNodeMaskDom: api.syncCodexEdgeNodeMaskDom,
         getViewZoom: () => s.codexViewZoom,
         getVisualPrefs: () => s.codexVisualPrefs,
         getDoubleRightMs: () => DOUBLE_RIGHT_MS,

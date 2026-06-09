@@ -9,9 +9,12 @@ import { codexFrameVariantForId, codexHexRotationDegreesForId } from './CodexNod
 import { observeCodexImage } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { animateCodexNodeHoverMaskScale, readCodexNodeHoverVisualScale } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
-import { hexToRgba } from '../../codex-node-drawing/svg/CodexPresentationUtils.js';
 import { scheduleUpdateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { capOpts, DOUBLE_RIGHT_MS } from '../../codex-canvas/core/canvasConstants.js';
+import {
+    isCodexNodeBgDefault,
+    resolveCodexNodeBgColor,
+} from './CodexNodeBgColor.js';
 
 function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
     if (!Array.isArray(s.codexAllNodes)) return '';
@@ -79,8 +82,8 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
 
     el.dataset.codexKind = kind;
 
-    if (opts.bgColor) {
-        el.dataset.codexBgColor = opts.bgColor;
+    if (!isCodexNodeBgDefault(opts.bgColor)) {
+        el.dataset.codexBgColor = resolveCodexNodeBgColor(opts.bgColor);
     }
     if (kind === 'junction') {
         el.classList.add('codex-node--junction');
@@ -159,8 +162,8 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
 
     const bg = document.createElement('div');
     bg.className = 'codex-node__bg';
-    const savedBgColor = el.dataset.codexBgColor || '#ffffff';
-    bg.style.background = hexToRgba(savedBgColor, 0.5);
+    const savedBgColor = resolveCodexNodeBgColor(el.dataset.codexBgColor);
+    bg.style.backgroundColor = savedBgColor;
     imgWrapper.appendChild(bg);
 
     el.appendChild(frame);

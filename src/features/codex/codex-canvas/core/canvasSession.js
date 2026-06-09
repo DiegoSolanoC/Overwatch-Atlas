@@ -35,6 +35,7 @@ export const s = {
     pointerPending: /** @type {object|null} */ (null),
     codexLayoutDirty: false,
     codexActiveDragNodeIds: /** @type {Set<string>} */ (new Set()),
+    codexEdgeDragUseLightSync: false,
     codexUnsavedEdgeKeys: /** @type {Set<string>} */ (new Set()),
     codexWorldEl: /** @type {HTMLElement|null} */ (null),
     codexViewPanX: 0,
@@ -109,6 +110,7 @@ export function resetCanvasSession() {
     s.pointerPending = null;
     s.codexLayoutDirty = false;
     s.codexActiveDragNodeIds = new Set();
+    s.codexEdgeDragUseLightSync = false;
     s.codexUnsavedEdgeKeys.clear();
     s.codexWorldEl = null;
     s.codexViewPanX = 0;

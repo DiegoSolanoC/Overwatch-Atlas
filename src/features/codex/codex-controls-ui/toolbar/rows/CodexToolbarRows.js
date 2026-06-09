@@ -3,7 +3,7 @@ import { api } from '../../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { previewBioCodexArchiveLinkDiff } from '../../../codex-bio-archive-sync/preview/CodexCanvasBioSyncPreview.js';
 import { updateAppStatus } from '../../../codex-canvas/bridge/CodexAppBridge.js';
-import { hexToRgba } from '../../../codex-node-drawing/svg/CodexPresentationUtils.js';
+import { CODEX_NODE_BG_DEFAULT } from '../../../codex-nodes/placement/CodexNodeBgColor.js';
 
 function ensureCodexToolbarSelectAllRow(bar) {
     if (!bar || bar.querySelector('.codex-toolbar__select-all')) return;
@@ -125,7 +125,7 @@ function ensureCodexToolbarImportExportRow(bar) {
     colorInput.type = 'color';
     colorInput.className = 'codex-toolbar__bg-color-input';
     colorInput.setAttribute('data-codex-bg-color-picker', 'true');
-    colorInput.value = '#ffffff';
+    colorInput.value = CODEX_NODE_BG_DEFAULT;
     colorInput.title = 'Background color for selected node';
     
     // Add text input for manual hex entry
@@ -133,8 +133,8 @@ function ensureCodexToolbarImportExportRow(bar) {
     hexInput.type = 'text';
     hexInput.className = 'codex-toolbar__bg-color-hex';
     hexInput.setAttribute('data-codex-bg-hex-input', 'true');
-    hexInput.value = '#ffffff';
-    hexInput.placeholder = '#ffffff';
+    hexInput.value = CODEX_NODE_BG_DEFAULT;
+    hexInput.placeholder = CODEX_NODE_BG_DEFAULT;
     hexInput.maxLength = 7;
     hexInput.title = 'Paste hex color directly (e.g., #ff0000)';
     
@@ -147,7 +147,7 @@ function ensureCodexToolbarImportExportRow(bar) {
             selectedNode.dataset.codexBgColor = hexColor;
             const bgEl = selectedNode.querySelector('.codex-node__bg');
             if (bgEl) {
-                bgEl.style.background = hexToRgba(hexColor, 0.5);
+                bgEl.style.backgroundColor = hexColor;
             }
             // Sync to node object in s.codexAllNodes for save persistence
             const nodeId = selectedNode.dataset.codexNodeId;
@@ -176,7 +176,7 @@ function ensureCodexToolbarImportExportRow(bar) {
                 selectedNode.dataset.codexBgColor = hexColor;
                 const bgEl = selectedNode.querySelector('.codex-node__bg');
                 if (bgEl) {
-                    bgEl.style.background = hexToRgba(hexColor, 0.5);
+                    bgEl.style.backgroundColor = hexColor;
                 }
                 // Sync to node object in s.codexAllNodes for save persistence
                 const nodeId = selectedNode.dataset.codexNodeId;

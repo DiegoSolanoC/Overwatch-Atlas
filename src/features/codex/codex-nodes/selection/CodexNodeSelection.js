@@ -7,6 +7,10 @@ import { updateAppStatus, userConfirms } from '../../codex-canvas/bridge/CodexAp
 import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { scheduleUpdateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import {
+    CODEX_NODE_BG_DEFAULT,
+    resolveCodexNodeBgColor,
+} from '../../codex-nodes/placement/CodexNodeBgColor.js';
 
 
 function markCodexLayoutDirty() {
@@ -32,10 +36,10 @@ function selectCodexNode(el, opts = {}) {
         const colorPicker = s.root.querySelector('[data-codex-bg-color-picker]');
         const hexInput = s.root.querySelector('[data-codex-bg-hex-input]');
         if (colorPicker) {
-            colorPicker.value = '#ffffff';
+            colorPicker.value = CODEX_NODE_BG_DEFAULT;
         }
         if (hexInput) {
-            hexInput.value = '#ffffff';
+            hexInput.value = CODEX_NODE_BG_DEFAULT;
         }
         return;
     }
@@ -44,7 +48,7 @@ function selectCodexNode(el, opts = {}) {
     // Update toolbar color picker and hex input to show selected node's background color
     const colorPicker = s.root.querySelector('[data-codex-bg-color-picker]');
     const hexInput = s.root.querySelector('[data-codex-bg-hex-input]');
-    const savedBgColor = el.dataset.codexBgColor || '#ffffff';
+    const savedBgColor = resolveCodexNodeBgColor(el.dataset.codexBgColor);
     if (colorPicker) {
         colorPicker.value = savedBgColor;
     }

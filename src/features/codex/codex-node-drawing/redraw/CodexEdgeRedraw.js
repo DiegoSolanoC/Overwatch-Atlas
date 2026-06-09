@@ -14,12 +14,20 @@ import {
     CODEX_VIEWPORT_CULL_MIN_EDGES,
     CODEX_VIEWPORT_CULL_MIN_NODES
 } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
+import {
+    registerCodexEdgeDragSyncRuntime,
+    syncCodexEdgesDuringNodeDrag,
+    unregisterCodexEdgeDragSyncRuntime,
+} from './CodexEdgeDragSync.js';
 
 /** @type {CodexEdgeRedrawRuntime|null} */
 let _rt = null;
 
 /** @type {ReturnType<typeof setTimeout>|0} */
 let edgeRedrawScheduleTimer = 0;
+
+/** @type {number} */
+let edgeDragSyncRaf = 0;
 
 /**
  * @typedef {object} CodexEdgeRedrawRuntime
@@ -62,6 +70,11 @@ let edgeRedrawScheduleTimer = 0;
  * @property {() => boolean} [getTargetedSelectionActive]
  * @property {() => Set<string>} [getTargetedSelectionVisibleIds]
  * @property {() => Set<string>} [getTargetedSelectionVisibleEdgeKeys]
+ * @property {() => boolean} [getDragUseLightSync]
+ * @property {(v: boolean) => void} [setDragUseLightSync]
+ * @property {(id: string) => HTMLElement|null} [codexNodeElById]
+ * @property {(el: HTMLElement) => { x: number, y: number }} [getNodeCenterWorldPx]
+ * @property {() => boolean} [syncCodexEdgeNodeMaskDom]
  */
 
 /**
@@ -69,10 +82,25 @@ let edgeRedrawScheduleTimer = 0;
  */
 export function registerCodexEdgeRedrawRuntime(rt) {
     _rt = rt;
+    registerCodexEdgeDragSyncRuntime({
+        getRoot: rt.getRoot,
+        getEdges: rt.getEdges,
+        getActiveDragNodeIds: rt.getActiveDragNodeIds,
+        getDragUseLightSync: rt.getDragUseLightSync ?? (() => false),
+        setDragUseLightSync: rt.setDragUseLightSync ?? (() => {}),
+        buildPolylineForEdge: rt.buildPolylineForEdge,
+        codexNodeElById: rt.codexNodeElById ?? (() => null),
+        getNodeCenterWorldPx: rt.getNodeCenterWorldPx ?? (() => ({ x: 0, y: 0 })),
+        getTargetedSelectionActive: rt.getTargetedSelectionActive,
+        getTargetedSelectionVisibleIds: rt.getTargetedSelectionVisibleIds,
+        getTargetedSelectionVisibleEdgeKeys: rt.getTargetedSelectionVisibleEdgeKeys,
+        syncCodexEdgeNodeMaskDom: rt.syncCodexEdgeNodeMaskDom,
+    });
 }
 
 export function unregisterCodexEdgeRedrawRuntime() {
     clearCodexEdgeRedrawSchedule();
+    unregisterCodexEdgeDragSyncRuntime();
     _rt = null;
 }
 
@@ -81,12 +109,28 @@ export function clearCodexEdgeRedrawSchedule() {
         clearTimeout(edgeRedrawScheduleTimer);
         edgeRedrawScheduleTimer = 0;
     }
+    if (edgeDragSyncRaf) {
+        cancelAnimationFrame(edgeDragSyncRaf);
+        edgeDragSyncRaf = 0;
+    }
 }
 
-/** Batches edge redraws to one per animation frame during node drag and view zoom. */
+/** Batches edge redraws; uses in-place geometry sync while nodes are dragged. */
 export function scheduleRedrawCodexEdges() {
     if (!_rt) return;
     if (_rt.getMode() === 'view' && _rt.getViewModeInitialRenderDone()) return;
+
+    if (_rt.getActiveDragNodeIds().size > 0) {
+        if (edgeDragSyncRaf) return;
+        edgeDragSyncRaf = requestAnimationFrame(() => {
+            edgeDragSyncRaf = 0;
+            if (!syncCodexEdgesDuringNodeDrag()) {
+                redrawCodexEdges();
+            }
+        });
+        return;
+    }
+
     if (edgeRedrawScheduleTimer) return;
     edgeRedrawScheduleTimer = setTimeout(() => {
         edgeRedrawScheduleTimer = 0;
@@ -107,6 +151,17 @@ export function redrawCodexEdges(opts = {}) {
     const skipEdge = _rt.getSkipEdgeRedraw();
     const root = _rt.getRoot();
     const worldEl = _rt.getWorldEl();
+    const dragIds = _rt.getActiveDragNodeIds();
+
+    if (
+        dragIds.size > 0
+        && !forceRedraw
+        && _rt.getDragUseLightSync?.()
+        && syncCodexEdgesDuringNodeDrag()
+    ) {
+        return;
+    }
+
     let edges = _rt.getEdges();
     if (_rt.getTargetedSelectionActive?.()) {
         const visible = _rt.getTargetedSelectionVisibleIds?.();
@@ -123,7 +178,6 @@ export function redrawCodexEdges(opts = {}) {
             edges = [];
         }
     }
-    const dragIds = _rt.getActiveDragNodeIds();
     const viewZoom = _rt.getViewZoom();
     const visualPrefs = _rt.getVisualPrefs();
 
@@ -402,72 +456,78 @@ export function redrawCodexEdges(opts = {}) {
     const degLabelsG = document.createElementNS(ns, 'g');
     degLabelsG.classList.add('codex-edge-degree-labels');
     degLabelsG.setAttribute('pointer-events', 'none');
-    edgePolys.forEach(({ edge, pts }) => {
-        for (let seg = 0; seg < pts.length - 1; seg++) {
-            const p0 = pts[seg];
-            const p1 = pts[seg + 1];
-            const dx = p1.x - p0.x;
-            const dy = p1.y - p0.y;
-            const len = Math.hypot(dx, dy);
-            if (len < 48) continue;
-            const actualDeg = _rt.cordSegmentDegreesLabel(p0, p1);
-            if (actualDeg == null) continue;
-            const whileDrag = dragIds.size > 0;
-            const onOctilinearLane = _rt.cordSegmentWithinOctilinearToleranceDegrees(p0, p1);
-            const mx = (p0.x + p1.x) / 2;
-            const my = (p0.y + p1.y) / 2;
-            const ux = dx / len;
-            const uy = dy / len;
-            const nx = -uy;
-            const ny = ux;
-            const off = 36;
-            const ax = mx + nx * off;
-            const ay = my + ny * off;
-            const fsD = CODEX_EDGE_DEGREE_FONT_PX;
+    if (dragIds.size === 0) {
+        edgePolys.forEach(({ edge, pts }) => {
+            for (let seg = 0; seg < pts.length - 1; seg++) {
+                const p0 = pts[seg];
+                const p1 = pts[seg + 1];
+                const dx = p1.x - p0.x;
+                const dy = p1.y - p0.y;
+                const len = Math.hypot(dx, dy);
+                if (len < 48) continue;
+                const actualDeg = _rt.cordSegmentDegreesLabel(p0, p1);
+                if (actualDeg == null) continue;
+                const onOctilinearLane = _rt.cordSegmentWithinOctilinearToleranceDegrees(p0, p1);
+                const mx = (p0.x + p1.x) / 2;
+                const my = (p0.y + p1.y) / 2;
+                const ux = dx / len;
+                const uy = dy / len;
+                const nx = -uy;
+                const ny = ux;
+                const off = 36;
+                const ax = mx + nx * off;
+                const ay = my + ny * off;
+                const fsD = CODEX_EDGE_DEGREE_FONT_PX;
 
-            const stackG = document.createElementNS(ns, 'g');
-            stackG.classList.add('codex-edge-degree-stack');
-            const stackTitle = document.createElementNS(ns, 'title');
-            stackTitle.textContent = whileDrag
-                ? `Bearing ${actualDeg}°. On release, cords snap to the nearest 45° direction when within `
-                    + `±${CODEX_OCT_SOFT_SNAP_TOL_DEG}° of that lane. Coordinates under nodes are world centers.`
-                : `Bearing ${actualDeg}° (0° = east → 90° = south, world y down), node-center to node-center. `
+                const stackG = document.createElementNS(ns, 'g');
+                stackG.classList.add('codex-edge-degree-stack');
+                const stackTitle = document.createElementNS(ns, 'title');
+                stackTitle.textContent = `Bearing ${actualDeg}° (0° = east → 90° = south, world y down), node-center to node-center. `
                     + `Green when within ±${CODEX_OCT_SOFT_SNAP_TOL_DEG}° of a 45° direction. `
                     + 'Coordinates under nodes are world centers.';
-            stackG.appendChild(stackTitle);
+                stackG.appendChild(stackTitle);
 
-            const t = document.createElementNS(ns, 'text');
-            t.classList.add('codex-edge-degree');
-            if (onOctilinearLane) t.classList.add('codex-edge-degree--octilinear');
-            t.setAttribute('font-size', String(fsD));
-            t.setAttribute('x', String(ax));
-            t.setAttribute('y', String(ay));
-            t.setAttribute('text-anchor', 'middle');
-            t.setAttribute('dominant-baseline', 'middle');
-            t.textContent = `${actualDeg}°`;
-            stackG.appendChild(t);
+                const t = document.createElementNS(ns, 'text');
+                t.classList.add('codex-edge-degree');
+                if (onOctilinearLane) t.classList.add('codex-edge-degree--octilinear');
+                t.setAttribute('font-size', String(fsD));
+                t.setAttribute('x', String(ax));
+                t.setAttribute('y', String(ay));
+                t.setAttribute('text-anchor', 'middle');
+                t.setAttribute('dominant-baseline', 'middle');
+                t.textContent = `${actualDeg}°`;
+                stackG.appendChild(t);
 
-            degLabelsG.appendChild(stackG);
-        }
-    });
+                degLabelsG.appendChild(stackG);
+            }
+        });
+    }
     svg.appendChild(degLabelsG);
 
     if (dragIds.size === 0) {
         _rt.syncCodexNodeCoordLabels(nodeList);
     }
 
-    _rt.syncCodexCordPacketState(edgePolys);
-    if (edgePolys.length === 0) {
-        _rt.codexStopCordAnimRafOnly();
-    } else {
-        const pktG = document.createElementNS(ns, 'g');
-        pktG.classList.add('codex-edge-packets');
-        contentRoot.appendChild(pktG);
+    if (dragIds.size === 0) {
+        _rt.syncCodexCordPacketState(edgePolys);
+        if (edgePolys.length === 0) {
+            _rt.codexStopCordAnimRafOnly();
+        } else {
+            const pktG = document.createElementNS(ns, 'g');
+            pktG.classList.add('codex-edge-packets');
+            contentRoot.appendChild(pktG);
 
-        _rt.ensureCodexCordAnimationLoop();
+            _rt.ensureCodexCordAnimationLoop();
+        }
     }
 
     _rt.syncCodexNodeDomCullFromView(nodeList);
+
+    if (dragIds.size > 0) {
+        _rt.setDragUseLightSync?.(true);
+    } else {
+        _rt.setDragUseLightSync?.(false);
+    }
 
     if (mode === 'view' && !viewInitialDone) {
         const visibleNodeCount = nodeList ? nodeList.length : 0;

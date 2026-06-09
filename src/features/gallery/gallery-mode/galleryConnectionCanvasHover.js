@@ -113,6 +113,29 @@ function setGalleryEdgeHoverVisual(edgesSvg, fromId, toId, active) {
     }
 }
 
+/** @param {SVGSVGElement|null} edgesSvg @param {Set<string>|null} chain */
+function syncGalleryElbowHoverVisual(edgesSvg, chain) {
+    const contentRoot = edgesSvg?.querySelector('.codex-edges-masked')
+        || edgesSvg?.querySelector('.gallery-conn-canvas__edges-masked');
+    if (!contentRoot) return;
+
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
+        g.classList.remove('codex-edge-elbow-group--hover');
+    });
+
+    if (!chain?.size) return;
+
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
+        const inFrom = g.getAttribute('data-codex-elbow-in-from');
+        const jId = g.getAttribute('data-codex-elbow-junction');
+        const outTo = g.getAttribute('data-codex-elbow-out-to');
+        if (!inFrom || !jId || !outTo) return;
+        if (chain.has(edgeDirectedKey(inFrom, jId)) && chain.has(edgeDirectedKey(jId, outTo))) {
+            g.classList.add('codex-edge-elbow-group--hover');
+        }
+    });
+}
+
 /**
  * @param {SVGSVGElement} edgesSvg
  * @param {Map<string, HTMLElement>} nodeEls
@@ -122,6 +145,7 @@ export function clearGalleryConnectionHoverVisual(edgesSvg, nodeEls) {
         edgesSvg.querySelectorAll('g.codex-edge-segment-group--hover').forEach((g) => {
             g.classList.remove('codex-edge-segment-group--hover');
         });
+        syncGalleryElbowHoverVisual(edgesSvg, null);
     }
     nodeEls?.forEach((el) => {
         el.classList.remove('codex-node--filter-hover');
@@ -141,6 +165,7 @@ export function applyGalleryConnectionHoverVisual(edgesSvg, nodeEls, chainKeys, 
         if (sep < 0) return;
         setGalleryEdgeHoverVisual(edgesSvg, key.slice(0, sep), key.slice(sep + 1), true);
     });
+    syncGalleryElbowHoverVisual(edgesSvg, chainKeys);
     for (let i = 0; i < nodeIdsToHighlight.length; i += 1) {
         const el = nodeEls.get(nodeIdsToHighlight[i]);
         if (el && !el.classList.contains('codex-node--junction')) {

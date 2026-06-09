@@ -1,4 +1,5 @@
 import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
+import { wireMenuHoverIcon } from './wireMenuHoverIcon.js';
 
 /**
  * Side-column menu tile — same DOM as primary menu buttons (image, title, description in-button).
@@ -72,6 +73,7 @@ export function MenuSideButtonMaker({
         wireLoadingAssetImage(menuImg, {
             wrap: el.querySelector('.main-menu-image-container'),
         });
+        wireMenuHoverIcon(menuImg, { normalPath: imagePath, hoverTarget: el });
     }
 
     wrapper.button = el;

@@ -3,6 +3,8 @@
  * Used by save/export/import preview — DOM is not the source of truth for node positions.
  */
 
+import { serializeCodexNodeBgColor } from '../../codex-nodes/placement/CodexNodeBgColor.js';
+
 /**
  * @param {Array<object>} allNodes
  * @param {{ fromId: string, toId: string }[]} edges
@@ -15,7 +17,7 @@ export function serializeCodexLayoutSnapshot(allNodes, edges) {
         const y = node.y;
         const id = node.id;
         const scale = node.scale || 1;
-        const bgColor = node.bgColor || null;
+        const bgColor = serializeCodexNodeBgColor(node.bgColor);
         if (kind === 'junction') {
             return { id, kind: 'junction', x, y, scale, bgColor };
         }

@@ -4,133 +4,106 @@
       "name": "Casino",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "MEKA",
       "connections": [
         {
           "kind": "faction",
           "name": "M.E.K.A Squad",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "MEKA"
+      ]
     },
     {
       "name": "D.mon",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "MEKA",
       "connections": [
         {
           "kind": "faction",
           "name": "M.E.K.A Squad",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "MEKA"
+      ]
     },
     {
       "name": "Dae-Hyun",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "MEKA",
       "connections": [
         {
           "kind": "faction",
           "name": "M.E.K.A Squad",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "MEKA"
+      ]
     },
     {
       "name": "King",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "MEKA",
       "connections": [
         {
           "kind": "faction",
           "name": "M.E.K.A Squad",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Overlord",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "MEKA"
+      ]
     },
     {
       "name": "Overlord",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "King",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "MEKA"
     },
     {
       "name": "Boomslang",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Phreaks",
       "connections": [
         {
           "kind": "faction",
           "name": "The Phreaks",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Phreaks"
+      ]
     },
     {
       "name": "Jackdaw",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Phreaks"
     },
     {
       "name": "Revel",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Phreaks"
     },
     {
       "name": "Susannah",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Phreaks",
       "connections": [
-        {
-          "kind": "hero",
-          "name": "Hazard",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "faction",
           "name": "The Phreaks",
@@ -139,38 +112,30 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Phreaks"
+      ]
     },
     {
       "name": "Touch Up",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Phreaks",
       "connections": [
         {
           "kind": "faction",
           "name": "The Phreaks",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Phreaks"
+      ]
     },
     {
       "name": "B.O.B",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Deadlock",
       "connections": [
-        {
-          "kind": "hero",
-          "name": "Ashe",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "faction",
           "name": "Deadlock Rebels",
@@ -179,165 +144,131 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Deadlock"
+      ]
     },
     {
       "name": "Bars",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Deadlock",
       "connections": [
         {
           "kind": "faction",
           "name": "Deadlock Rebels",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "The Triplets",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Deadlock"
+      ]
     },
     {
       "name": "Bez",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Deadlock",
       "connections": [
         {
           "kind": "faction",
           "name": "Deadlock Rebels",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Frankie",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Deadlock"
+      ]
     },
     {
       "name": "Frankie",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Deadlock",
       "connections": [
         {
           "kind": "faction",
           "name": "Deadlock Rebels",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Bez",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Deadlock"
+      ]
     },
     {
       "name": "The Triplets",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Bars",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Deadlock"
     },
     {
       "name": "Chisaka",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Yokai",
       "connections": [
         {
           "kind": "faction",
           "name": "Yokai Gang",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Yokai"
+      ]
     },
     {
       "name": "Nobuto",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Yokai",
       "connections": [
         {
           "kind": "faction",
           "name": "Yokai Gang",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Yokai"
+      ]
     },
     {
       "name": "Ryota",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Yokai",
       "connections": [
         {
           "kind": "faction",
           "name": "Yokai Gang",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Yokai"
+      ]
     },
     {
       "name": "Sakura",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Yokai",
       "connections": [
         {
           "kind": "faction",
           "name": "Yokai Gang",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Yokai"
+      ]
     },
     {
       "name": "Asa",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Shimada",
       "connections": [
         {
           "kind": "faction",
@@ -346,140 +277,132 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Kamori-san",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "npcCategory": "Shimada"
+      ]
     },
     {
       "name": "Kamori-san",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Asa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Shimada"
     },
     {
       "name": "Sojiro",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Shimada",
       "connections": [
         {
           "kind": "faction",
           "name": "Shimada Clan",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Hanzo",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Shimada"
+      ]
     },
     {
       "name": "Toshiro",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Mizuki",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Shimada"
     },
     {
       "name": "Geiger",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Junkers",
       "connections": [
         {
           "kind": "faction",
           "name": "Junker Monarchy",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Junkers"
+      ]
     },
     {
       "name": "Mason",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Junkers"
     },
     {
       "name": "Meri",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Junkers"
+    },
+    {
+      "name": "Carmilla",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Gladiators"
+    },
+    {
+      "name": "Magnus",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Gladiators"
+    },
+    {
+      "name": "Maximus",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Gladiators"
+    },
+    {
+      "name": "Titus",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Gladiators"
+    },
+    {
+      "name": "Zephyrus",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Gladiators"
     },
     {
       "name": "Chao",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Lucheng",
       "connections": [
         {
           "kind": "faction",
           "name": "Lucheng Interstellar",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Lucheng"
+      ]
     },
     {
       "name": "Harold",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Lucheng",
       "connections": [
         {
           "kind": "faction",
           "name": "Lucheng Interstellar",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Lucheng"
+      ]
     },
     {
       "name": "Jiayi",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Lucheng",
       "connections": [
         {
           "kind": "faction",
@@ -489,13 +412,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Lucheng"
+      ]
     },
     {
       "name": "Adawe",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Overwatch",
       "connections": [
         {
           "kind": "faction",
@@ -504,22 +427,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Orisa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "npcCategory": "Overwatch"
+      ]
     },
     {
       "name": "Athena",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Overwatch",
       "connections": [
         {
           "kind": "faction",
@@ -529,13 +444,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Overwatch"
+      ]
     },
     {
       "name": "Claudio",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Overwatch",
       "connections": [
         {
           "kind": "faction",
@@ -545,45 +460,25 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Overwatch"
+      ]
     },
     {
       "name": "Efi",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Orisa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Overwatch"
     },
     {
       "name": "Gérard",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Widowmaker",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Overwatch"
     },
     {
       "name": "Hector",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Overwatch",
       "connections": [
         {
           "kind": "faction",
@@ -593,13 +488,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Overwatch"
+      ]
     },
     {
       "name": "Liao",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Overwatch",
       "connections": [
         {
           "kind": "faction",
@@ -609,45 +504,31 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Overwatch"
+      ]
     },
     {
       "name": "Adeyemi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Doomfist",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Antonio",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Vialli",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
+      "npcCategory": "Talon"
+    },
+    {
+      "name": "Chernobog",
+      "description": "",
+      "relevantLocations": [],
       "npcCategory": "Talon"
     },
     {
       "name": "Maximillien",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Talon",
       "connections": [
         {
           "kind": "faction",
@@ -657,52 +538,41 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Talon"
+      ]
     },
     {
       "name": "Ngumi",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Talon"
     },
     {
       "name": "Sanjay",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Talon",
       "connections": [
         {
           "kind": "faction",
           "name": "Vishkar Corporation",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Talon"
+      ]
     },
     {
       "name": "Vialli",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Antonio",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Talon"
     },
     {
       "name": "Alisa",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -712,29 +582,29 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Anubis",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
           "name": "The Anubis Omnic Crisis",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Aurora",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -744,13 +614,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Balderich",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -760,13 +630,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Bhatt",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -775,38 +645,30 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Domina",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Katya",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
           "name": "Volskaya Industries",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Mondatta",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -815,166 +677,104 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Zenyatta",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Naughton",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Kendra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Influential Figures"
     },
     {
       "name": "Osai",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
           "name": "IJC",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Portero",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
           "name": "Lumérico Incorporated",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     },
     {
       "name": "Emily",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Tracer",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Iggy",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Lúcio",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Ingrid",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Torbjörn",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Kendra",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Naughton",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Lanet",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "npc",
-          "name": "Zera",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Lynx 17",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Civilians",
       "connections": [
         {
           "kind": "faction",
           "name": "Volskaya Industries",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
+      ]
+    },
+    {
+      "name": "Ming",
+      "description": "",
+      "relevantLocations": [],
       "npcCategory": "Civilians"
     },
     {
       "name": "Nameless",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Civilians",
       "connections": [
         {
           "kind": "faction",
@@ -984,13 +784,13 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Civilians"
+      ]
     },
     {
       "name": "Sven",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Civilians",
       "connections": [
         {
           "kind": "faction",
@@ -1000,69 +800,42 @@
           "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Civilians"
+      ]
     },
     {
       "name": "Vincent",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "hero",
-          "name": "Soldier 76",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "npcCategory": "Civilians"
     },
     {
       "name": "Zera",
       "description": "No description available.",
       "relevantLocations": [],
+      "npcCategory": "Civilians",
       "connections": [
         {
           "kind": "faction",
           "name": "Null Sector",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Lanet",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
-      ],
-      "npcCategory": "Civilians"
+      ]
     },
     {
       "name": "Kace",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
       "npcCategory": "Civilians"
     },
     {
       "name": "Palak",
       "description": "",
       "relevantLocations": [],
+      "npcCategory": "Influential Figures",
       "connections": [
-        {
-          "kind": "hero",
-          "name": "Venture",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "faction",
           "name": "The Martins Collective",
@@ -1070,17 +843,8 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "Lifeweaver",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "npcCategory": "Influential Figures"
+      ]
     }
   ]
 }

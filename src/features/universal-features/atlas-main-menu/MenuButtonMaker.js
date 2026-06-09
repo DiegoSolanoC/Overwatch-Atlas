@@ -1,4 +1,5 @@
 import { wireLoadingAssetImage } from '../atlas-ui/loadingAssetSlot.js';
+import { wireMenuHoverIcon } from './wireMenuHoverIcon.js';
 
 /**
  * Builds a single main-menu tile (button + external description label below).
@@ -42,6 +43,7 @@ export function MenuButtonMaker({ id, title, imagePath, label, description }) {
     wireLoadingAssetImage(menuImg, {
         wrap: button.querySelector('.main-menu-image-container'),
     });
+    wireMenuHoverIcon(menuImg, { normalPath: imagePath, hoverTarget: button });
 
     wrapper.button = button;
 

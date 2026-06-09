@@ -552,6 +552,29 @@ function setCodexEdgeHoverVisual(fromId, toId, active) {
     }
 }
 
+/** @param {Set<string>|null} chain */
+function syncCodexElbowHoverVisual(chain) {
+    if (!s.root) return;
+    const contentRoot = s.root.querySelector('.codex-edges-layer .codex-edges-masked');
+    if (!contentRoot) return;
+
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
+        g.classList.remove('codex-edge-elbow-group--hover');
+    });
+
+    if (!chain?.size) return;
+
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((g) => {
+        const inFrom = g.getAttribute('data-codex-elbow-in-from');
+        const jId = g.getAttribute('data-codex-elbow-junction');
+        const outTo = g.getAttribute('data-codex-elbow-out-to');
+        if (!inFrom || !jId || !outTo) return;
+        if (chain.has(edgeDirectedKey(inFrom, jId)) && chain.has(edgeDirectedKey(jId, outTo))) {
+            g.classList.add('codex-edge-elbow-group--hover');
+        }
+    });
+}
+
 function clearAllCodexEdgeHoverVisual() {
     s.codexEdgeHoverChainKeySet = null;
     if (!s.root) return;
@@ -560,6 +583,7 @@ function clearAllCodexEdgeHoverVisual() {
     svg.querySelectorAll('g.codex-edge-segment-group--hover').forEach((g) => {
         g.classList.remove('codex-edge-segment-group--hover');
     });
+    syncCodexElbowHoverVisual(null);
 }
 
 /**
@@ -596,6 +620,7 @@ function applyCodexEdgeHoverChainKeySet(chain) {
         if (edge && edgeCordIsFilterDormant(edge)) return;
         setCodexEdgeHoverVisual(a, b, true);
     });
+    syncCodexElbowHoverVisual(chain);
 }
 
 /** @returns {string} */

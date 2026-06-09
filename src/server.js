@@ -339,6 +339,7 @@ const server = http.createServer((req, res) => {
         ['/src/assets/images/misc/', '/src/assets/images/Misc/'],
         ['/src/assets/images/music/', '/src/assets/images/Music/'],
         ['/src/assets/images/menu/', '/src/assets/images/Menu/'],
+        ['/src/assets/images/menu hover/', '/src/assets/images/Menu Hover/'],
         ['/src/assets/images/Background pattern/', '/src/assets/images/Background Pattern/'],
         ['/src/assets/images/Archive/events/', '/src/assets/images/Archive/Events/'],
         ['/src/assets/images/Archive/NPCS/', '/src/assets/images/Archive/NPCs/'],

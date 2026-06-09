@@ -1,5 +1,5 @@
 /**
- * NPC Biography strip — flat chip grid: group order, single continuous flow, 31 + 32 rows.
+ * NPC Biography strip — flat chip grid: group order, two rows, whole categories only.
  */
 
 import { matchNpcManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
@@ -17,8 +17,43 @@ import {
 
 /** @typedef {{ category: string, chips: string[] }} NpcBiographyChipSegment */
 
-/** Top biography row chip count (64 NPCs total → 32 + 32). */
-export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 32;
+/**
+ * Preferred top-row chip budget before whole categories wrap to row 2.
+ * Rows may end uneven — categories are never split across rows.
+ */
+export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 36;
+
+/** @type {number} */
+export const NPC_BIOGRAPHY_TOTAL_CHIP_SLOTS = 71;
+
+/**
+ * @param {Record<string, string[]>} groups
+ * @param {readonly string[]} categoryOrder
+ * @returns {{ top: NpcBiographyChipSegment[], bottom: NpcBiographyChipSegment[] }}
+ */
+export function assignNpcBiographyCategoryRows(groups, categoryOrder) {
+    /** @type {NpcBiographyChipSegment[]} */
+    const top = [];
+    /** @type {NpcBiographyChipSegment[]} */
+    const bottom = [];
+    let topCount = 0;
+    const topLimit = NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT;
+
+    for (const category of categoryOrder) {
+        const chips = groups[category];
+        if (!Array.isArray(chips) || chips.length === 0) continue;
+
+        const segment = { category, chips };
+        if (topCount + chips.length <= topLimit) {
+            top.push(segment);
+            topCount += chips.length;
+        } else {
+            bottom.push(segment);
+        }
+    }
+
+    return { top, bottom };
+}
 
 /**
  * Category order for the flat strip (chips within each category stay name-sorted).
@@ -33,6 +68,7 @@ export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Phreaks',
     'Deadlock',
     'Junkers',
+    'Gladiators',
     'Lucheng',
     'Influential Figures',
     'Civilians',
@@ -120,21 +156,12 @@ export function labelForNpcBiographyCategory(category) {
 }
 
 /**
- * Assign category chips into two rows (31 + 32), splitting a category at the row boundary if needed.
+ * Assign category chips into two rows without splitting any category group.
  * @param {string[]} manifestNpcs
  * @returns {Promise<{ top: NpcBiographyChipSegment[], bottom: NpcBiographyChipSegment[] }>}
  */
 export async function buildNpcBiographyFlatChipRowSegments(manifestNpcs) {
     const { groups } = await buildNpcBiographyCategoryGroups(manifestNpcs);
-
-    /** @type {NpcBiographyChipSegment[]} */
-    const top = [];
-    /** @type {NpcBiographyChipSegment[]} */
-    const bottom = [];
-    let topCount = 0;
-    let bottomCount = 0;
-    const topLimit = NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT;
-    const bottomLimit = 64 - topLimit;
 
     /** @type {string[]} */
     const categoryOrder = [];
@@ -145,31 +172,7 @@ export async function buildNpcBiographyFlatChipRowSegments(manifestNpcs) {
         if (!categoryOrder.includes(category)) categoryOrder.push(category);
     }
 
-    for (const category of categoryOrder) {
-        const chips = groups[category];
-        if (!Array.isArray(chips) || chips.length === 0) continue;
-
-        let offset = 0;
-        while (offset < chips.length) {
-            if (topCount < topLimit) {
-                const take = Math.min(chips.length - offset, topLimit - topCount);
-                top.push({ category, chips: chips.slice(offset, offset + take) });
-                topCount += take;
-                offset += take;
-                continue;
-            }
-            if (bottomCount < bottomLimit) {
-                const take = Math.min(chips.length - offset, bottomLimit - bottomCount);
-                bottom.push({ category, chips: chips.slice(offset, offset + take) });
-                bottomCount += take;
-                offset += take;
-                continue;
-            }
-            break;
-        }
-    }
-
-    return { top, bottom };
+    return assignNpcBiographyCategoryRows(groups, categoryOrder);
 }
 
 /** @deprecated Use {@link buildNpcBiographyFlatChipRowSegments} */
