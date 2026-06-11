@@ -58,19 +58,22 @@
     padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
 }
 
-/* Data Archive grid: ~10 columns on large screens (was ~15 with auto-fill 158px) + taller thumb cap */
-.story-viewer-panel-embedded #eventsList {
+/* Data Archive grid + timeline: shared thumb sizing (list column width) */
+.story-viewer-panel-embedded #eventsList,
+.story-viewer-panel-embedded #storyTimelineEvents {
     --em-visual-min: calc(215px * 0.82);
     --em-visual-max: calc(292px * 0.82);
 }
 
-.story-viewer-panel-embedded #eventsList .event-item {
+.story-viewer-panel-embedded #eventsList .event-item,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item {
     min-height: 272px;
     gap: 6px;
 }
 
-/* Data Archive: title on the image like pagination dock thumbs (.event-number-btn__name) */
-.story-viewer-panel-embedded #eventsList .event-item__thumb-visual::after {
+/* Title on the image like pagination dock thumbs (.event-number-btn__name) */
+.story-viewer-panel-embedded #eventsList .event-item__thumb-visual::after,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-visual::after {
     content: '';
     position: absolute;
     left: 0;
@@ -88,7 +91,8 @@
     );
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar {
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar {
     position: absolute;
     left: 0;
     right: 0;
@@ -103,7 +107,8 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0%, transparent 75%);
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-heading {
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-heading,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar .event-item-heading {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -113,7 +118,8 @@
     margin: 0;
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title {
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar .event-item-title {
     margin: 0;
     font-family: var(--font-default, 'Config', sans-serif);
     font-size: clamp(12px, 2.2vmin, 15px);
@@ -140,32 +146,39 @@
     max-width: 100%;
 }
 
-body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title {
+body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .event-item-title,
+body.color-palette-gray .story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar .event-item-title {
     color: rgba(255, 255, 255, 0.98);
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-container {
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-container,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar .glitchy-text-container {
     display: inline;
     vertical-align: baseline;
     pointer-events: auto;
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-toggle-target {
+.story-viewer-panel-embedded #eventsList .event-item__thumb-titlebar .glitchy-text-toggle-target,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__thumb-titlebar .glitchy-text-toggle-target {
     pointer-events: auto;
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__body .event-item-info {
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-info,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__body .event-item-info {
     gap: 4px;
 }
 
-.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta {
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__body .event-item-meta {
     font-size: 12px;
     line-height: 1.25;
     gap: 2px;
 }
 
 .story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta .event-item-location,
-.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta .event-item-year {
+.story-viewer-panel-embedded #eventsList .event-item__body .event-item-meta .event-item-year,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__body .event-item-meta .event-item-location,
+.story-viewer-panel-embedded #storyTimelineEvents .event-item__body .event-item-meta .event-item-year {
     font-size: inherit;
     margin: 0;
 }
@@ -442,6 +455,243 @@ body.color-palette-gray .story-viewer-panel-embedded #eventsList .event-item__th
     min-height: 0;
     /* Clip to panel height so #eventsList is the only vertical scroll */
     overflow: hidden;
+}
+
+/* Story List/Timeline toggle — match globe Map + codex View/Dev toggles */
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.globe-control-btn.dock-globe-rail__btn {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: skewX(-11deg) !important;
+    width: auto !important;
+    min-width: 112px !important;
+    max-width: 138px !important;
+    height: 48px !important;
+    padding: 0 7px !important;
+    gap: 5px !important;
+    margin-right: 8px;
+    flex-shrink: 0;
+    font-size: 11px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em;
+    border-style: solid !important;
+    border-width: 2px 2px 2px 6px !important;
+    border-color: rgba(255, 255, 255, 0.93) !important;
+    background: var(--btn-primary-bg, rgba(13, 71, 161, 0.35)) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.dock-globe-rail__btn:hover {
+    transform: skewX(-11deg) translateY(-3px) scale(1.04) !important;
+    background: var(--btn-primary-bg-hover, rgba(13, 71, 161, 0.55)) !important;
+    border-color: #fff !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.dock-globe-rail__btn > * {
+    transform: skewX(11deg) !important;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.dock-globe-rail__btn img {
+    transform: none !important;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle [id$='Icon'] {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+}
+
+.story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle .globe-control-btn__label {
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-left: 0 !important;
+    white-space: nowrap;
+}
+
+@media (max-width: 1180px) and (min-width: 769px) {
+    .story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.dock-globe-rail__btn {
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        height: 48px !important;
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    .story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle.dock-globe-rail__btn .globe-control-btn__label {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .story-viewer-panel-embedded #storyArchiveRightToolbar > #storyViewToggle [id$='Icon'] {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+    }
+}
+
+.story-timeline-view {
+    display: none;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+}
+
+.story-timeline-view__viewport {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.story-timeline-view__viewport--dragging {
+    cursor: grabbing;
+}
+
+.story-timeline-view__track {
+    position: relative;
+    height: min(72vh, 640px);
+    min-height: 520px;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.story-timeline-view__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    border-radius: 10px;
+    background: rgba(255, 152, 0, 0.95);
+    box-shadow:
+        0 0 24px rgba(255, 152, 0, 0.7),
+        0 0 48px rgba(255, 152, 0, 0.4);
+}
+
+.story-timeline-view__markers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.story-timeline-year {
+    position: absolute;
+    /* Line sits at 50%; labels sit below it with breathing room */
+    top: calc(50% + 22px);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 0;
+    pointer-events: none;
+}
+
+.story-timeline-year__label {
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif);
+    font-size: 52px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 0.92;
+    color: rgba(255, 255, 255, 0.96);
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.75),
+        0 0 18px rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.story-timeline-year--start .story-timeline-year__label,
+.story-timeline-year--end .story-timeline-year__label {
+    color: #ffcc80;
+    text-shadow:
+        0 0 20px rgba(255, 152, 0, 0.75),
+        0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Event previews — JSON order, alternating above / below the line */
+.story-timeline-view__events {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.story-timeline-event {
+    position: absolute;
+    /* Match one list-grid column at default squish / 10-up layout */
+    width: calc((var(--story-archive-list-max-width) - 2 * var(--story-archive-list-gutter)) / 10);
+    min-width: 200px;
+    max-width: 320px;
+    pointer-events: auto;
+    z-index: 2;
+    overflow: visible;
+}
+
+.story-timeline-event--above {
+    bottom: calc(50% + 28px);
+    transform: translateX(-50%);
+}
+
+.story-timeline-event--below {
+    top: calc(50% + 92px);
+    transform: translateX(-50%);
+}
+
+.story-timeline-event__card.event-item {
+    width: 100%;
+    margin: 0;
+}
+
+.story-timeline-view__empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.story-viewer-panel-embedded--timeline-view .story-timeline-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.story-viewer-panel-embedded--timeline-view #eventsManageControls,
+.story-viewer-panel-embedded--timeline-view #eventsList,
+.story-viewer-panel-embedded--timeline-view #storyArchiveGridSquishBar,
+.story-viewer-panel-embedded--timeline-view #storyArchiveBottomBar #eventsPagination.events-pagination {
+    display: none !important;
+}
+
+.story-viewer-panel-embedded--list-view .story-timeline-view {
+    display: none !important;
 }
 
 /* Tighter top padding — Data Archive hides the header chrome */

@@ -32,7 +32,7 @@
 
 /* Story */
 @import url('features/story/hero.css?v=9');
-@import url('features/story/story-viewer.css?v=62');
+@import url('features/story/story-viewer.css?v=68');
 @import url('features/gallery/gallery-mode.css?v=66');
 
 /* Event system */
@@ -41,7 +41,7 @@
 @import url('features/event-system/event-sources.css?v=9');
 @import url('features/event-system/event-buttons.css?v=14');
 @import url('features/event-system/event-image-overlay.css?v=11');
-@import url('features/event-system/event-item.css?v=51');
+@import url('features/event-system/event-item.css?v=52');
 @import url('features/event-system/event-pagination.css?v=123');
 @import url('features/event-system/news-ticker.css?v=10');
 

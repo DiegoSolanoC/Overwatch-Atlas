@@ -1,3 +1,5 @@
+import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+
 /**
  * Event manager list filtering: title + hero/faction/NPC/country axes.
  * @param {object} mgr — EventManager instance (search* fields, dataService, eventItemVariantIndices)
@@ -90,6 +92,19 @@ export function getSearchMatchAxesForItem(mgr, item) {
         filterHit: filterActive && matchHeroFaction,
         countryHit: countryActive && matchCountry
     };
+}
+
+/**
+ * Same pass/fail rules as the dock pagination strip (`shouldEventBeLocked`).
+ *
+ * @param {Array<object>} events
+ * @param {Set<string>} activeFilters
+ */
+export function filterEventsByStandaloneActiveFilters(events, activeFilters) {
+    if (!Array.isArray(events)) return [];
+    if (!activeFilters || activeFilters.size === 0) return events;
+
+    return events.filter((event) => event && !shouldEventBeLocked(event, activeFilters));
 }
 
 /**

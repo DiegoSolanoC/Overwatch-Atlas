@@ -48,6 +48,24 @@ const LEGACY_FACTION_ID_TO_CANONICAL = {
     '33Yokai': '32Yokai Gang'
 };
 
+function normalizeCountryFlagKey(value) {
+    const s = String(value ?? '').trim();
+    if (!s) return '';
+    if (s.toLowerCase().startsWith('country:')) {
+        return s.slice('country:'.length).trim().toLowerCase();
+    }
+    return s.toLowerCase();
+}
+
+function countryFlagFileMatches(wantRaw, haveRaw) {
+    const want = normalizeCountryFlagKey(wantRaw);
+    const have = normalizeCountryFlagKey(haveRaw);
+    if (!want || !have) return false;
+    if (want === have) return true;
+    const strip = (v) => v.replace(/\.png$/i, '');
+    return strip(want) === strip(have);
+}
+
 function countryFiltersMatchEntity(entity, activeFilters) {
     if (!entity || !activeFilters || activeFilters.size === 0) return false;
     let anyCountryChip = false;
@@ -58,17 +76,36 @@ function countryFiltersMatchEntity(entity, activeFilters) {
         }
     }
     if (!anyCountryChip) return false;
+
     const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
-    const files = lh && typeof lh.collectCountryFlagFilesForEntity === 'function'
-        ? lh.collectCountryFlagFilesForEntity(entity)
-        : [];
+    const sec = typeof window !== 'undefined' ? window.__SecondaryCountryFlags : null;
+    const collect = lh?.collectCountryFlagFilesForEntity ?? sec?.collectCountryFlagFilesForEntity;
+    /** @type {string[]} */
+    let files = collect ? collect(entity) : [];
+
+    const getSecondary = lh?.getSecondaryCountryFlagFilenamesForEntity
+        ?? sec?.getSecondaryCountryFlagFilenamesForEntity;
+    if (getSecondary) {
+        const secondary = getSecondary(entity) || [];
+        const seen = new Set(files);
+        secondary.forEach((flagFile) => {
+            const fn = flagFile != null ? String(flagFile).trim() : '';
+            if (fn && !seen.has(fn)) {
+                seen.add(fn);
+                files.push(fn);
+            }
+        });
+    }
+
     if (!files.length) return false;
-    const flagSet = new Set(files);
+
     for (const f of activeFilters) {
         const s = String(f ?? '');
         if (!s.startsWith('country:')) continue;
         const want = s.slice('country:'.length).trim();
-        if (want && flagSet.has(want)) return true;
+        if (want && files.some((file) => countryFlagFileMatches(want, file))) {
+            return true;
+        }
     }
     return false;
 }

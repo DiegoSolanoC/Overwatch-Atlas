@@ -356,6 +356,8 @@ export function runSetupStandalonePagination(slide) {
                 if (!options.skipSound && window.SoundEffectsManager?.play) {
                     window.SoundEffectsManager.play('page');
                 }
+
+                window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
             }
         };
         

@@ -19,6 +19,7 @@ import { syncManagerPaginationForDisplay } from './syncManagerPaginationForDispl
 import { runAddBlankEventAndOpen } from './runAddBlankEventAndOpen.js';
 import { runDeleteEventAtIndex, runDeleteEventWithConfirm } from './runDeleteEventWithConfirm.js';
 import { syncArchiveManagePanelActionVisibility } from '../event-system/listeners/wireManagePanelButtons.js';
+import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 
 class EventManager {
     constructor() {
@@ -108,6 +109,7 @@ class EventManager {
         if (typeof window !== 'undefined' && window.FilterService?.refreshCountryFilterUsage) {
             window.FilterService.refreshCountryFilterUsage();
         }
+        syncStoryTimelineIfActive();
         return result;
     }
 
@@ -225,6 +227,7 @@ class EventManager {
             this.renderService.renderEvents(displayed, this.currentPage, this.eventsPerPage, () => {
                 this.setupDragAndDrop();
             });
+            syncStoryTimelineIfActive();
         } else {
             console.error('EventManager: EventRenderService not available!');
             this.updateStatus('EventManager: ERROR - EventRenderService not found', 'error');

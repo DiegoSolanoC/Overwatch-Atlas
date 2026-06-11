@@ -160,4 +160,8 @@ export function wireEventManagerSearch(listenerService) {
     filterPopover.updatePredictions();
     countryPopover.updatePredictions();
     selectionSyncer.syncFiltersInputFromSelection();
+
+    if (typeof window !== 'undefined') {
+        window.syncEventManagerSearchFromFilterSelection = selectionSyncer.syncFiltersInputFromSelection;
+    }
 }

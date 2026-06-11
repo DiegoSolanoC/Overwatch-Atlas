@@ -15,6 +15,10 @@ import {
     setupStoryArchiveBottomBar,
     setupStoryArchiveCompactChrome,
 } from './ArchiveEmbeddedEventPanelLayout.js';
+import {
+    mountStoryViewToggle,
+    unmountStoryViewToggle,
+} from '../../story/story-mode/StoryViewToggle.js';
 
 function syncDataWorkshopBioArchivePanelClass(eventsManagePanel, archiveSource) {
     if (!eventsManagePanel) return;
@@ -61,6 +65,12 @@ function applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome = {})
     if (typeof window.eventManager?.applyPerPageSettings === 'function') {
         window.eventManager.applyPerPageSettings();
     }
+
+    if (archiveSource === 'story') {
+        mountStoryViewToggle(eventsManagePanel);
+    } else {
+        unmountStoryViewToggle();
+    }
 }
 
 /**
@@ -90,8 +100,8 @@ export async function switchEmbeddedArchiveSource(archiveSource, chrome = {}) {
         if (chrome.showCategoryToolbar) {
             applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome);
             updateActiveCategory(archiveSource);
-        } else if (typeof window.eventManager?.applyPerPageSettings === 'function') {
-            window.eventManager.applyPerPageSettings();
+        } else {
+            applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome);
         }
     }
 

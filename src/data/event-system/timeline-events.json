@@ -1676,6 +1676,27 @@
       "yearEnd": null
     },
     {
+      "name": "Lady Shion Was Born",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.7018928,
+      "lon": 139.7743684,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "yearStart": 2045
+    },
+    {
       "name": "SST Labs Siege Automaton E54 is Made",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
@@ -3053,7 +3074,7 @@
       "lon": -98.6970374,
       "image": "",
       "cityDisplayName": "Llano County, Texas, United States",
-      "yearEnd": 5053,
+      "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "heroFilterPlaces": [
         {
@@ -7868,6 +7889,11 @@
           "locationName": "Roshani, India",
           "country": "India",
           "reasoning": "Niran leaves Vishkar after his discovery of Biolight"
+        },
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology,",
+          "reasoning": "Takes Niran in as sanctuary"
         }
       ],
       "heroFilterPlaces": [
@@ -8028,6 +8054,54 @@
           "country": "Harold,",
           "reasoning": "Killed alongside the rest of the staff"
         }
+      ]
+    },
+    {
+      "name": "Deep Sea Raiders",
+      "locationType": "earth",
+      "cityDisplayName": "Coral Sea",
+      "description": "While the Ecopoints helped alleviate ecological concerns across the globe, not every nation was too keen on pushing environmentalist standards. Both corporate greed and sometimes even plain irresponsibility by well-meaning people got in the way. The super coral had successfully helped rejuvenate several coral trees across the Pacific, but it was far too effective. It kept expanding across the world's oceans, and as they continued to feed off of pollutants, they began to grow out of proportion, emerging out of the water into sharp structures comparable to small islands.\n\nFor many nations, these super coral reefs serve as another source of tourism and national pride, obvious to the true implications of an introduced species becoming so dominant. For businesses across the globe, however, the reefs blocked trade routes and made it difficult for boats to navigate across many different regions of the planet, disrupting trade globally. Because of their impact, many companies began to equip boats with means to break through the reefs, and some of the people of the Polynesian nations took to this as a personal insult to their culture and history. \n\n\n\nThe Deep Sea Raiders came to call themselves activists who battled capitalism and took curving fossil fuel emissions into their own hands, but in reality they were little more than eco-terrorists. The pirates would hijack many boats crossing near their territories, kill the tribulation, and then steer the ships to crash into the coral which would feed off the oil and debris, growing even larger than they would normally. The Polynesian League was naturally directly impacted by the Deep Sea Raider activity, which disrupted the ecological balance and worsened business relationships with other nations. The league sought to deal with these raiding cells swiftly, but they proved to be quite a persistent movement, supported by a lot of locals who saw this as the government turning back on their culture and the wishes of their people, in spite of the irreparable damage that their harsh actions caused.",
+      "image": "",
+      "lat": -20,
+      "lon": 155,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Coral Sea",
+          "country": "New Zealand",
+          "reasoning": "The Deep Sea Raiders begin to take control of boats and crash them into Super Coral"
+        },
+        {
+          "locationName": "Polynesian League",
+          "country": "Samoa, New Zealand, Hawaii, Cook Islands,",
+          "reasoning": "Attempt to stop the threat with force"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mauga",
+          "reasoning": "Member of the Samoan Raider branch leadb y his father"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deep Sea Raiders",
+          "reasoning": "An eco terrorist group diisrupting trade and the enviroment of the Super Coral Reefs"
+        }
+      ],
+      "headlines": [
+        "Massive Oil leak absorbed by a Super Coral Colony in Samoa",
+        "Experts warn against sailing on waters near New Zealand following terrorist raids"
       ]
     },
     {
@@ -8607,6 +8681,48 @@
       ]
     },
     {
+      "name": "Two Hearts",
+      "description": "Mauga's father was the leader of the Samoan branch of the Deep Sea Raiders, and from an early age, his cell took Mauga many of their incursions, installing on him a heavy disrespect for the law and a feeling of doing something meaningful by defying those who sought to destroy the beauty of their oceans,<div><br></div><div>As their activities prolonged, the Polynesian Leagues began to send military troops to enforce order in their territorial waters, but the raiders did not hesitate to fight back. During a particularly intense battle against these troops, Mauga was critically wounded. He was half dead when they found him, and his heart in no condition for recovery, so the medics saw no choice but to implant a cybernetic heart, to assist his damaged systems. Mauga survived but was forever changed by this near-death experience. The first thing he did as he woke up from surgery was choke the doctor to death. He became a local legend when he returned to Samoa, known as the two-Heart Demon. Once back home, more upgrades and surgeries awaited him to keep up with his dying heart, which eventually gave out and was replaced with another cybernetic heart. </div><div><div>\nThe machines pumping blood to his body at double the power allowed his body to increase in size massively with his metabolism, but it also made maintaining his enhancements harder. Mauga lived at the verge of death every day of his life, at the mercy of either heart possibly malfunctioning. His condition taught him a valuable lesson that defined his way of life going onward: live every day carefree, because it could be his last, and while this attitude made him out to be a careless brute to many, in reality his lack of worries just made it easier to barge in and open doors to new plans.</div></div>",
+      "locationType": "earth",
+      "lat": -13.8345235,
+      "lon": -171.7630955,
+      "image": "",
+      "cityDisplayName": "Apia, Samoa",
+      "yearEnd": null,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": "Mauga nearly dies during a Deep Sea Raider stand off"
+        }
+      ],
+      "headlines": [
+        "Man pressumed dead during Deep Sea Raider standoff spotted at the beach near Samoa",
+        "Reports of a giant man hunting down local enforcement continue"
+      ],
+      "sources": [
+        {
+          "text": "Mauga Origin Story",
+          "url": "https://www.youtube.com/watch?v=PCLjZDkpBoY"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mauga,",
+          "reasoning": "Nearly died during a Raid attack, changed forever by his two hearts"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deep Sea Raiders,",
+          "reasoning": "Provided Mauga with cybernetic hearts to save his life"
+        }
+      ]
+    },
+    {
       "name": "Prodigy Child",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
@@ -8703,45 +8819,6 @@
       "headlines": [
         "The Bartalotti business to be lead by Augusto Vialli",
         "Antonio Bartalotti's assests relocated out of Rialto following his death"
-      ]
-    },
-    {
-      "name": "Deep Sea Raiders",
-      "locationType": "earth",
-      "cityDisplayName": "Coral Sea",
-      "description": "",
-      "image": "",
-      "lat": -20,
-      "lon": 155,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Coral Sea",
-          "country": "New Zealand",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mauga",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Deep Sea Raiders",
-          "reasoning": ""
-        }
       ]
     },
     {
@@ -8855,6 +8932,65 @@
       ]
     },
     {
+      "name": "Hacking Addiction",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sombra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Los Muertos",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Fighting the System",
+      "locationType": "earth",
+      "cityDisplayName": "Paris, France",
+      "description": "",
+      "image": "",
+      "lat": 48.8588897,
+      "lon": 2.320041,
+      "yearStart": 2068,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Phreaks",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Failure at Sea",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
@@ -8933,39 +9069,6 @@
       ]
     },
     {
-      "name": "Hacking Addiction",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "",
-      "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sombra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "La Lupa",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
@@ -9034,6 +9137,39 @@
         {
           "locationName": "",
           "country": "Talon",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Overridden",
+      "locationType": "earth",
+      "cityDisplayName": "Helsinki, Finland",
+      "description": "",
+      "image": "",
+      "lat": 60.1666204,
+      "lon": 24.9435408,
+      "yearStart": 2069,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Helsinki, Finland",
+          "country": "Finland",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emre",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Conspiracy",
           "reasoning": ""
         }
       ]
@@ -9209,65 +9345,6 @@
         {
           "locationName": "",
           "country": "Kendra",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Fighting the System",
-      "locationType": "earth",
-      "cityDisplayName": "Paris, France",
-      "description": "",
-      "image": "",
-      "lat": 48.8588897,
-      "lon": 2.320041,
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Paris, France",
-          "country": "France",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Phreaks",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Overridden",
-      "locationType": "earth",
-      "cityDisplayName": "Helsinki, Finland",
-      "description": "",
-      "image": "",
-      "lat": 60.1666204,
-      "lon": 24.9435408,
-      "yearStart": 2069,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Helsinki, Finland",
-          "country": "Finland",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Emre",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Conspiracy",
           "reasoning": ""
         }
       ]
@@ -10062,7 +10139,7 @@
       "lon": 0,
       "image": "",
       "cityDisplayName": "Novoanskoye, Russia",
-      "yearEnd": 100,
+      "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
@@ -10073,7 +10150,7 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 60
+      "yearStart": 2071
     },
     {
       "name": "Anubis Escapes",
@@ -11731,7 +11808,7 @@
       "image": "",
       "cityDisplayName": "Rome, Roma Capitale, Lazio, Italy",
       "yearEnd": null,
-      "eraName": null,
+      "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
           "locationName": "Rome, Roma Capitale, Lazio, Italy",
@@ -13196,6 +13273,39 @@
       ]
     },
     {
+      "name": "The Invitation",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Sojourn, Wuyang, Anran",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University, Null Sector",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "The Hunt Begins",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen,, Denmark",
@@ -13230,6 +13340,38 @@
         {
           "locationName": "",
           "country": "Maximillien",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Sentinels",
+      "locationType": "earth",
+      "cityDisplayName": "Buenos Aires, Argentina",
+      "description": "",
+      "image": "",
+      "lat": -34.8222,
+      "lon": -58.5358,
+      "eraName": "The Null Sector Invasion",
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Buenos Aires, Argentina",
+          "country": "Argentina",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reinhardt, Brigitte, Genji, Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Null Sector",
           "reasoning": ""
         }
       ]
@@ -13301,104 +13443,6 @@
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Sentinels",
-      "locationType": "earth",
-      "cityDisplayName": "Buenos Aires, Argentina",
-      "description": "",
-      "image": "",
-      "lat": -34.8222,
-      "lon": -58.5358,
-      "eraName": "The Null Sector Invasion",
-      "yearStart": 2080,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Buenos Aires, Argentina",
-          "country": "Argentina",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Reinhardt, Brigitte, Genji, Sojourn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Null Sector",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "New Charter",
-      "description": "",
-      "locationType": "earth",
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearStart": 2079,
-      "yearEnd": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 47.3769,
-      "lon": 8.5417,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sojourn, Tracer",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "IJC, Overwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "The Invitation",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Winston, Sojourn, Wuyang, Anran",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University, Null Sector",
           "reasoning": ""
         }
       ]
@@ -13607,6 +13651,41 @@
       ]
     },
     {
+      "name": "New Charter",
+      "description": "No description available.",
+      "locationType": "earth",
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2079,
+      "yearEnd": 2080,
+      "eraName": "The Reign of Talon",
+      "lat": 47.3769,
+      "lon": 8.5417,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn, Tracer",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "IJC, Overwatch",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Vengance Comes",
       "description": "No description available.",
       "locationType": "earth",
@@ -13694,7 +13773,8 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "yearStart": 2080
     },
     {
       "name": "Crossroads",
@@ -13801,27 +13881,8 @@
         }
       ],
       "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "The Siege of Tokyo",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.7018928,
-      "lon": 139.7743684,
-      "image": "",
-      "cityDisplayName": "Akihabara, Japan",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
+      "sources": [],
+      "yearStart": 2080
     },
     {
       "name": "Progress",
@@ -13862,7 +13923,8 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "yearStart": 2080
     },
     {
       "name": "End of the Line",
@@ -13874,9 +13936,44 @@
       "cityDisplayName": "Akihabara, Japan",
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "yearStart": 2080
+    },
+    {
+      "name": "Facing Demons",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.3606,
+      "lon": 138.7274,
+      "image": "",
+      "cityDisplayName": "Kanezaka, Japan",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ]
     }
   ]
 }

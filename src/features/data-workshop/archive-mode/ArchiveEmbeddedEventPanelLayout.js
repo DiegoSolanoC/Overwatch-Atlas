@@ -6,6 +6,7 @@
 
 import * as adapter from '../archive-event-panel-bridge/ArchiveEventPanelState.js';
 import { isBioArchiveCategory } from '../archive-category-shared/ArchiveCategoryTypes.js';
+import { unmountStoryViewToggle } from '../../story/story-mode/StoryViewToggle.js';
 import { archiveModeSession } from './ArchiveModeSession.js';
 
 /** Event Manager close control removed from DOM in Data Archive embedded layout. */
@@ -240,6 +241,8 @@ export function detachEventsManagePanelFromStoryArchive(eventsManagePanel) {
 
     document.getElementById('storyArchiveLayoutControl')?.remove();
     document.getElementById('storyArchiveGridSquishBar')?.remove();
+
+    unmountStoryViewToggle();
 
     eventsManagePanel.classList.remove('open');
     adapter.originalEventsPanelParent.appendChild(eventsManagePanel);

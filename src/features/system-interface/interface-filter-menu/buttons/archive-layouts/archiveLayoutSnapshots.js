@@ -52,13 +52,7 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
 
     if (type === 'heroes' && arch !== 'heroes') {
-        try {
-            const raw = localStorage.getItem('timelineEventsArchiveHeroes');
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return;
-            }
-        } catch (_) {}
+        /* Always keep bundled heroes.json in cache — localStorage may omit new rows (e.g. Shion). */
         if (!__heroesArchiveFileCache || __heroesArchiveFileCache.length === 0) {
             await fetchJsonEventsIntoCache('src/data/story-archive/heroes.json', a => {
                 __heroesArchiveFileCache = a;
@@ -149,33 +143,37 @@ export function getFactionsArchiveRowsForFilterGrouping() {
 
 /** Resolve the grouped-hero layout's archive rows from the best source. */
 export function getHeroesArchiveRowsForFilterGrouping() {
+    const fileFallback = Array.isArray(__heroesArchiveFileCache) ? __heroesArchiveFileCache : [];
+
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
     if (arch === 'heroes' && Array.isArray(window.eventManager?.events)) {
-        return window.eventManager.events.map(snapshotHeroArchiveRowForGrouping);
+        return mergeSatelliteArchiveRowsFromFileFallback(window.eventManager.events, fileFallback)
+            .map(snapshotHeroArchiveRowForGrouping);
     }
     try {
         const raw = localStorage.getItem('timelineEventsArchiveHeroes');
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                return parsed.map(snapshotHeroArchiveRowForGrouping);
+                return mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback)
+                    .map(snapshotHeroArchiveRowForGrouping);
             }
         }
     } catch (_) {}
-    if (Array.isArray(__heroesArchiveFileCache) && __heroesArchiveFileCache.length > 0) {
-        return __heroesArchiveFileCache.map(snapshotHeroArchiveRowForGrouping);
+    if (fileFallback.length > 0) {
+        return fileFallback.map(snapshotHeroArchiveRowForGrouping);
     }
     return [];
 }
 
 /**
- * Stale NPC localStorage may omit rows that exist in bundled `npcs.json` — merge so
- * grouped filter layout does not dump manifest chips into the overflow "Other" bucket.
+ * Stale localStorage may omit rows that exist in bundled satellite JSON — merge so
+ * grouped filter layouts do not dump manifest chips into the overflow "Other" bucket.
  * @param {unknown[]} events
  * @param {unknown[]} fileFallback
  */
-function mergeNpcArchiveRowsFromFileFallback(events, fileFallback) {
+function mergeSatelliteArchiveRowsFromFileFallback(events, fileFallback) {
     if (!Array.isArray(events) || events.length === 0) return events || [];
     if (!Array.isArray(fileFallback) || fileFallback.length === 0) return events;
 
@@ -205,7 +203,7 @@ export function getNpcsArchiveRowsForFilterGrouping() {
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
     if (arch === 'npcs' && Array.isArray(window.eventManager?.events)) {
         return mapNpcArchiveRowsForGrouping(
-            mergeNpcArchiveRowsFromFileFallback(window.eventManager.events, fileFallback),
+            mergeSatelliteArchiveRowsFromFileFallback(window.eventManager.events, fileFallback),
             fileFallback,
         );
     }
@@ -215,7 +213,7 @@ export function getNpcsArchiveRowsForFilterGrouping() {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
                 return mapNpcArchiveRowsForGrouping(
-                    mergeNpcArchiveRowsFromFileFallback(parsed, fileFallback),
+                    mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback),
                     fileFallback,
                 );
             }

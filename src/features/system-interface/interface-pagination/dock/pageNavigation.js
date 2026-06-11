@@ -96,6 +96,9 @@ function stepWrappedPage(dataModel, wrappedUpdatePaginationUI, onPageChange, del
     updateNewsTickerFromGlobe();
 
     if (onPageChange) onPageChange();
+
+    const perPage = dataModel.eventsPerPage || 10;
+    window.scrollStoryTimelineToDockPage?.(newPage, perPage);
 }
 
 export function handlePrevPageClick(dataModel, wrappedUpdatePaginationUI, onPageChange) {
@@ -133,6 +136,11 @@ export function handlePageInputChange(inputValue, dataModel, wrappedUpdatePagina
         playNavigationSound('page');
     }
     if (onPageChange) onPageChange();
+
+    if (pageChanged) {
+        const perPage = dataModel.eventsPerPage || 10;
+        window.scrollStoryTimelineToDockPage?.(inputValue, perPage);
+    }
 }
 
 export function updatePaginationButtonStates(prevBtn, nextBtn, pageInput, pageTotal, dataModel) {

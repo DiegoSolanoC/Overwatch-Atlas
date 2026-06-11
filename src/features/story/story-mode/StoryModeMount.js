@@ -29,6 +29,7 @@ import {
     storyModeSession,
     storyTimelineModeSession,
 } from './StoryModeSession.js';
+import { mountStoryViewToggle } from './StoryViewToggle.js';
 
 /**
  * @param {object} [options]
@@ -57,6 +58,7 @@ export async function mountStoryMode({ onCancel } = {}) {
         requestAnimationFrame(() => {
             getStoryViewerContainer()?.classList.add('active');
         });
+        mountStoryViewToggle(eventsManagePanel);
         updateStatus('Story open', 'success');
         return;
     }

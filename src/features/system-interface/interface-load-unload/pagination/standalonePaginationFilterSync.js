@@ -15,6 +15,7 @@
  */
 
 import { shouldEventBeLocked } from '../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 
 /**
  * Same rule as dock thumbs / event list: first variant (or root) must have a
@@ -97,6 +98,7 @@ export function updateStandalonePaginationForFilters() {
     });
 
     updateStandaloneSliderTicks(activeFilters, events, eventsPerPage, currentPage);
+    syncStoryTimelineIfActive();
 
     // NOTE: Do NOT call applyFilters here — it creates an infinite loop:
     //   updateStandalonePaginationForFilters -> applyFilters

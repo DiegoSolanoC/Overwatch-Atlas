@@ -152,9 +152,17 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
     const removed = before - dataService.events.length;
 
     let added = 0;
-    if (dataService.getArchiveSource() === 'npcs') {
+    const arch = dataService.getArchiveSource();
+    if (arch === 'npcs') {
         const beforeBundledMerge = dataService.events.length;
         applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents);
+        added = dataService.events.length - beforeBundledMerge;
+    } else if (arch === 'heroes') {
+        const beforeBundledMerge = dataService.events.length;
+        dataService.events = mergeMissingSatelliteEventsFromBundledFile(
+            dataService.events,
+            fileEvents,
+        );
         added = dataService.events.length - beforeBundledMerge;
     }
 

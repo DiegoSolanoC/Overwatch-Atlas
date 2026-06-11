@@ -496,13 +496,13 @@ body.color-palette-gray .event-item-title {
 }
 
 /*
- * Parallelogram thumb — scoped to #eventsList only.
+ * Parallelogram thumb — Event Manager list (#eventsList) + Story timeline (#storyTimelineEvents).
  * Match dock thumbs (.event-number-buttons--thumbs-desktop): outline (8px), skew (-11deg),
  * counter-skew visual (124% / -12% / scale 1.06). Shell+visual use overflow:hidden so *inner* art clips like the dock;
  * the card itself stays overflow:visible so skewX does not get rectangular-clipped on left/right tips.
  * Wider column-gap than row absorbs neighbors’ horizontal skew paint (dock uses a single row).
  */
-#eventsList {
+:is(#eventsList, #storyTimelineEvents) {
     --thumb-row-gap: 14px;
     /* Horizontal skew spill ~ height×tan(11°); extra column space keeps adjacent cards from stacking */
     --thumb-column-gap: 28px;
@@ -520,7 +520,7 @@ body.color-palette-gray .event-item-title {
     padding-right: 18px;
 }
 
-#eventsList .event-item {
+:is(#eventsList, #storyTimelineEvents) .event-item {
     --thumb-skew: -11deg;
     --thumb-outline-y: 8px;
     flex-direction: column;
@@ -541,9 +541,9 @@ body.color-palette-gray .event-item-title {
         background var(--panel-transition, 0.25s ease);
 }
 
-/* Page-turn grow-in (must follow #eventsList .event-item so specificity beats `transform: none` above).
+/* Page-turn grow-in (must follow :is(#eventsList, #storyTimelineEvents) .event-item so specificity beats `transform: none` above).
    Motion aligned with dock thumb grow: thumbPageTurnGrowKeyframes (non-skew) + EventNavigationManager timing. */
-#eventsList .event-item.event-item--enter {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--enter {
     opacity: 0;
     transform: translateY(14px) scale(0.82);
     will-change: transform, opacity;
@@ -552,42 +552,42 @@ body.color-palette-gray .event-item-title {
     transition-timing-function: cubic-bezier(0.22, 0.88, 0.18, 1);
 }
 
-#eventsList .event-item.event-item--enter.event-item--enter-active {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--enter.event-item--enter-active {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #eventsList .event-item.event-item--enter,
-    #eventsList .event-item.event-item--enter.event-item--enter-active {
+    :is(#eventsList, #storyTimelineEvents) .event-item.event-item--enter,
+    :is(#eventsList, #storyTimelineEvents) .event-item.event-item--enter.event-item--enter-active {
         transition: none !important;
         opacity: 1 !important;
         transform: none !important;
     }
 }
 
-#eventsList .event-item.unsaved {
+:is(#eventsList, #storyTimelineEvents) .event-item.unsaved {
     background: transparent;
     border: none;
 }
 
-#eventsList .event-item.event-item--search-hit-filter:not(.event-item--search-hit-country),
-#eventsList .event-item.event-item--search-hit-country:not(.event-item--search-hit-filter),
-#eventsList .event-item.event-item--search-hit-filter.event-item--search-hit-country {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--search-hit-filter:not(.event-item--search-hit-country),
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--search-hit-country:not(.event-item--search-hit-filter),
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--search-hit-filter.event-item--search-hit-country {
     background: transparent;
 }
 
-#eventsList .event-item.event-item--view-only {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--view-only {
     min-height: 200px;
 }
 
-#eventsList .event-item__thumb-block {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-block {
     width: 100%;
     max-width: 100%;
     margin: 0;
 }
 
-#eventsList .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-shell {
     --thumb-skew: -11deg;
     position: relative;
     display: block;
@@ -610,13 +610,13 @@ body.color-palette-gray .event-item-title {
         border-color var(--panel-transition, 0.25s ease);
 }
 
-#eventsList .event-item__thumb-chrome {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome {
     transform: skewX(var(--thumb-skew));
     transform-origin: center center;
     transition: transform var(--panel-transition, 0.25s ease);
 }
 
-#eventsList .event-item__thumb-visual {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-visual {
     position: absolute;
     inset: 0;
     display: block;
@@ -629,7 +629,7 @@ body.color-palette-gray .event-item-title {
     transform-origin: center center;
 }
 
-#eventsList .event-item__thumb-media {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-media {
     position: absolute;
     inset: 0;
     margin: 0;
@@ -638,7 +638,7 @@ body.color-palette-gray .event-item-title {
     z-index: 0;
 }
 
-#eventsList .event-item .event-item__thumb-media .event-item-preview-image {
+:is(#eventsList, #storyTimelineEvents) .event-item .event-item__thumb-media .event-item-preview-image {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -652,7 +652,7 @@ body.color-palette-gray .event-item-title {
 }
 
 /* Lazy photo only — spinner is a separate <img> so it stays visible above the slot color */
-#eventsList .event-item .event-item__thumb-media .event-item-preview-image .event-item-preview-image__photo {
+:is(#eventsList, #storyTimelineEvents) .event-item .event-item__thumb-media .event-item-preview-image .event-item-preview-image__photo {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -662,7 +662,7 @@ body.color-palette-gray .event-item-title {
     z-index: 2;
 }
 
-#eventsList .event-item .event-item__thumb-media .event-item-preview-image .event-item-preview-image__spinner {
+:is(#eventsList, #storyTimelineEvents) .event-item .event-item__thumb-media .event-item-preview-image .event-item-preview-image__spinner {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -676,11 +676,11 @@ body.color-palette-gray .event-item-title {
     pointer-events: none;
 }
 
-#eventsList .event-item .event-item__thumb-media .event-item-preview-image:not(.event-item-preview-image--loading) .event-item-preview-image__spinner {
+:is(#eventsList, #storyTimelineEvents) .event-item .event-item__thumb-media .event-item-preview-image:not(.event-item-preview-image--loading) .event-item-preview-image__spinner {
     display: none !important;
 }
 
-#eventsList .event-item__thumb-visual .multi-event-badge {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-visual .multi-event-badge {
     position: absolute;
     left: clamp(32px, 11%, 68px);
     margin-left: clamp(-12px, -1.8vw, -18px);
@@ -716,13 +716,13 @@ body.color-palette-gray .event-item-title {
     pointer-events: auto;
 }
 
-#eventsList .event-item__thumb-visual .multi-event-badge:hover {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-visual .multi-event-badge:hover {
     background: rgba(76, 175, 80, 0.92);
 }
 
 /* Counter parent skew so the variant trapezoid lines up with the thumb on narrow portrait */
 @media (max-width: 768px) and (orientation: portrait) {
-    #eventsList .event-item__thumb-visual .multi-event-badge {
+    :is(#eventsList, #storyTimelineEvents) .event-item__thumb-visual .multi-event-badge {
         /* Slightly inset from the skewed thumb edge (was 4px / 2px — still read as hugging the rim) */
         left: clamp(10px, 3.2vw, 16px);
         margin-left: 0;
@@ -740,11 +740,11 @@ body.color-palette-gray .event-item-title {
 }
 
 /* Loading: flat slot + spinner <img> (see EventRenderService); optional extra tint */
-#eventsList .event-item .event-item__thumb-media .event-item-preview-image.event-item-preview-image--loading {
+:is(#eventsList, #storyTimelineEvents) .event-item .event-item__thumb-media .event-item-preview-image.event-item-preview-image--loading {
     background-color: #000;
 }
 
-#eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key {
     left: 0;
     top: 0;
     right: 0;
@@ -781,7 +781,7 @@ body.color-palette-gray .event-item-title {
     pointer-events: none;
 }
 
-#eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key:hover {
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key:hover {
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.28) 0%,
@@ -789,7 +789,7 @@ body.color-palette-gray .event-item-title {
     );
 }
 
-#eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
 .events-manage-panel .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
 .story-viewer-panel-embedded .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap {
     color: rgba(255, 230, 230, 0.98);
@@ -803,7 +803,7 @@ body.color-palette-gray .event-item-title {
     );
 }
 
-#eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
+:is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
 .events-manage-panel .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
 .story-viewer-panel-embedded .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover {
     background: linear-gradient(
@@ -813,8 +813,8 @@ body.color-palette-gray .event-item-title {
     );
 }
 
-body.color-palette-gray #eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key,
-body.color-palette-gray #eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key:hover {
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key,
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key:hover {
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.28) 0%,
@@ -822,8 +822,8 @@ body.color-palette-gray #eventsList .event-item__thumb-chrome .event-number-badg
     );
 }
 
-body.color-palette-gray #eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
-body.color-palette-gray #eventsList .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
 body.color-palette-gray .events-manage-panel .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
 body.color-palette-gray .events-manage-panel .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap:hover,
 body.color-palette-gray .story-viewer-panel-embedded .event-item__thumb-chrome .event-number-badge.event-item__thumb-key.event-number-badge--overlap,
@@ -835,19 +835,19 @@ body.color-palette-gray .story-viewer-panel-embedded .event-item__thumb-chrome .
     );
 }
 
-#eventsList .event-item__body {
+:is(#eventsList, #storyTimelineEvents) .event-item__body {
     padding: 0 2px;
 }
 
-#eventsList .event-item.multi-event,
-body.color-palette-gray #eventsList .event-item.multi-event,
-body.color-palette-crimson #eventsList .event-item.multi-event,
-body.color-palette-nulled #eventsList .event-item.multi-event {
+:is(#eventsList, #storyTimelineEvents) .event-item.multi-event,
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item.multi-event,
+body.color-palette-crimson :is(#eventsList, #storyTimelineEvents) .event-item.multi-event,
+body.color-palette-nulled :is(#eventsList, #storyTimelineEvents) .event-item.multi-event {
     border-left: none;
     box-shadow: none;
 }
 
-#eventsList .event-item:hover {
+:is(#eventsList, #storyTimelineEvents) .event-item:hover {
     transform: none;
     border: none;
     background: transparent;
@@ -855,75 +855,75 @@ body.color-palette-nulled #eventsList .event-item.multi-event {
     z-index: 2;
 }
 
-#eventsList .event-item:hover .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item:hover .event-item__thumb-shell {
     transform: skewX(var(--thumb-skew)) scale(1.045);
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
     border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) !important;
 }
 
-#eventsList .event-item:hover .event-item__thumb-chrome {
+:is(#eventsList, #storyTimelineEvents) .event-item:hover .event-item__thumb-chrome {
     transform: skewX(var(--thumb-skew)) scale(1.045);
 }
 
-body.color-palette-gray #eventsList .event-item:hover,
-body.color-palette-crimson #eventsList .event-item:hover,
-body.color-palette-nulled #eventsList .event-item:hover {
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item:hover,
+body.color-palette-crimson :is(#eventsList, #storyTimelineEvents) .event-item:hover,
+body.color-palette-nulled :is(#eventsList, #storyTimelineEvents) .event-item:hover {
     border: none;
     background: transparent;
     box-shadow: none;
 }
 
-body.color-palette-gray #eventsList .event-item:hover .event-item__thumb-shell,
-body.color-palette-crimson #eventsList .event-item:hover .event-item__thumb-shell,
-body.color-palette-nulled #eventsList .event-item:hover .event-item__thumb-shell {
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item:hover .event-item__thumb-shell,
+body.color-palette-crimson :is(#eventsList, #storyTimelineEvents) .event-item:hover .event-item__thumb-shell,
+body.color-palette-nulled :is(#eventsList, #storyTimelineEvents) .event-item:hover .event-item__thumb-shell {
     border-color: rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) rgba(255, 186, 80, 0.9) rgba(255, 255, 255, 0.93) !important;
 }
 
-#eventsList .event-item.multi-event:hover,
-body.color-palette-gray #eventsList .event-item.multi-event:hover,
-body.color-palette-crimson #eventsList .event-item.multi-event:hover,
-body.color-palette-nulled #eventsList .event-item.multi-event:hover {
+:is(#eventsList, #storyTimelineEvents) .event-item.multi-event:hover,
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item.multi-event:hover,
+body.color-palette-crimson :is(#eventsList, #storyTimelineEvents) .event-item.multi-event:hover,
+body.color-palette-nulled :is(#eventsList, #storyTimelineEvents) .event-item.multi-event:hover {
     box-shadow: none;
 }
 
-#eventsList .event-item.unsaved .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item.unsaved .event-item__thumb-shell {
     border-top-color: rgba(255, 235, 59, 0.85) !important;
     border-bottom-color: rgba(255, 235, 59, 0.85) !important;
 }
 
-#eventsList .event-item.dragging {
+:is(#eventsList, #storyTimelineEvents) .event-item.dragging {
     transform: scale(0.95);
     opacity: 0.5;
 }
 
-#eventsList .event-item.dragging .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item.dragging .event-item__thumb-shell {
     transform: skewX(var(--thumb-skew)) scale(0.98);
 }
 
-#eventsList .event-item.dragging .event-item__thumb-chrome {
+:is(#eventsList, #storyTimelineEvents) .event-item.dragging .event-item__thumb-chrome {
     transform: skewX(var(--thumb-skew)) scale(0.98);
 }
 
-#eventsList .event-item.drag-over {
+:is(#eventsList, #storyTimelineEvents) .event-item.drag-over {
     border: none;
     background: transparent;
     outline: 2px dashed rgba(33, 150, 243, 0.85);
     outline-offset: 2px;
 }
 
-body.color-palette-gray #eventsList .event-item.drag-over {
+body.color-palette-gray :is(#eventsList, #storyTimelineEvents) .event-item.drag-over {
     outline-color: rgba(255, 102, 0, 0.9);
 }
 
-body.color-palette-crimson #eventsList .event-item.drag-over {
+body.color-palette-crimson :is(#eventsList, #storyTimelineEvents) .event-item.drag-over {
     outline-color: rgba(239, 83, 80, 0.9);
 }
 
-body.color-palette-nulled #eventsList .event-item.drag-over {
+body.color-palette-nulled :is(#eventsList, #storyTimelineEvents) .event-item.drag-over {
     outline-color: rgba(179, 136, 255, 0.9);
 }
 
-#eventsList .event-item.event-item--unfinished:not(.unsaved) .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--unfinished:not(.unsaved) .event-item__thumb-shell {
     border-top-color: rgba(244, 67, 54, 0.92) !important;
     border-bottom-color: rgba(244, 67, 54, 0.92) !important;
     box-shadow:
@@ -932,7 +932,7 @@ body.color-palette-nulled #eventsList .event-item.drag-over {
         inset 0 0 100px rgba(183, 28, 28, 0.22);
 }
 
-#eventsList .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-shell {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-shell {
     transform: skewX(var(--thumb-skew)) scale(1.045);
     border-color: rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) rgba(255, 138, 128, 0.95) rgba(255, 186, 80, 0.88) !important;
     box-shadow:
@@ -941,17 +941,17 @@ body.color-palette-nulled #eventsList .event-item.drag-over {
         inset 0 0 120px rgba(211, 47, 47, 0.28) !important;
 }
 
-#eventsList .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-chrome {
+:is(#eventsList, #storyTimelineEvents) .event-item.event-item--unfinished:hover:not(.dragging) .event-item__thumb-chrome {
     transform: skewX(var(--thumb-skew)) scale(1.045);
 }
 
 @media (max-width: 768px), (max-height: 599px) {
-    #eventsList .event-item {
+    :is(#eventsList, #storyTimelineEvents) .event-item {
         --thumb-outline-y: 6px;
         min-height: 220px;
     }
 
-    #eventsList .event-item__thumb-shell {
+    :is(#eventsList, #storyTimelineEvents) .event-item__thumb-shell {
         max-height: min(calc(var(--em-visual-max) + 2 * var(--thumb-outline-y)), 48vw);
     }
 }
