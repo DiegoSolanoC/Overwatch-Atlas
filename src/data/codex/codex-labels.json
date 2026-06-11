@@ -286,8 +286,8 @@
       "kind": "faction",
       "factionFilename": "22Hashimoto Clan",
       "factionDisplay": "Hashimoto Clan",
-      "x": 6602.0184400381295,
-      "y": 9168.891656602515,
+      "x": 6467.420877490917,
+      "y": 9027.007868565724,
       "scale": 3,
       "bgColor": null
     },
@@ -296,8 +296,8 @@
       "kind": "faction",
       "factionFilename": "32Yokai Gang",
       "factionDisplay": "Yokai Gang",
-      "x": 7236.15032032393,
-      "y": 9018.986060666342,
+      "x": 7396.57,
+      "y": 8888.39826169876,
       "scale": 3,
       "bgColor": "#5acfe5"
     },
@@ -356,8 +356,8 @@
       "kind": "faction",
       "factionFilename": "10Wuxing University",
       "factionDisplay": "Wuxing University",
-      "x": 14968.250426679966,
-      "y": 7552.2800025266315,
+      "x": 14968.150000348918,
+      "y": 7552.620123701123,
       "scale": 3,
       "bgColor": "#e5dad0"
     },
@@ -744,8 +744,8 @@
       "id": "cn-1776196949591-cyopgpwx",
       "kind": "hero",
       "heroName": "Wuyang",
-      "x": 14253.097512437811,
-      "y": 7744.384013266999,
+      "x": 14252.296721593339,
+      "y": 7745.52,
       "scale": 2.5,
       "bgColor": null
     },
@@ -843,8 +843,8 @@
       "id": "cn-1776197806040-5z8jra3s",
       "kind": "npc",
       "npcName": "Chisaka",
-      "x": 7526.701345164963,
-      "y": 8912.518654835036,
+      "x": 7789.863296975803,
+      "y": 9053.960205163123,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1050,8 +1050,8 @@
       "id": "cn-1776198357928-5tnnx0cn",
       "kind": "npc",
       "npcName": "Nobuto",
-      "x": 7630.211943016058,
-      "y": 9079.418654835037,
+      "x": 7250.642524583073,
+      "y": 9186.216262291535,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1077,8 +1077,8 @@
       "id": "cn-1776198974115-2jyrwswf",
       "kind": "npc",
       "npcName": "Ryota",
-      "x": 7055.900597851095,
-      "y": 9083.879103223358,
+      "x": 7396.119620854242,
+      "y": 8738.939161110728,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1086,8 +1086,8 @@
       "id": "cn-1776198981201-kaorvuxy",
       "kind": "npc",
       "npcName": "Sakura",
-      "x": 7150.4095516116795,
-      "y": 8910.987758058396,
+      "x": 7684.735192419477,
+      "y": 9220.848793367097,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1249,8 +1249,8 @@
       "id": "cn-1778802071227-smm0y501",
       "kind": "npc",
       "npcName": "Osai",
-      "x": 11947.541089623697,
-      "y": 7945.389630900697,
+      "x": 11892.658108798229,
+      "y": 7914.501891201771,
       "scale": 2,
       "bgColor": null
     },
@@ -1285,17 +1285,8 @@
       "id": "cn-1778979041484-kwbkzem6",
       "kind": "npc",
       "npcName": "Frankie",
-      "x": 8880.39751243781,
-      "y": 7589.074013266998,
-      "scale": 1.5,
-      "bgColor": null
-    },
-    {
-      "id": "cn-1778979048695-rt6kdbfn",
-      "kind": "npc",
-      "npcName": "Bez",
-      "x": 8985.937512437811,
-      "y": 7766.024013266999,
+      "x": 8892.985659956501,
+      "y": 7591.587131991299,
       "scale": 1.5,
       "bgColor": null
     },
@@ -1863,8 +1854,8 @@
     {
       "id": "cn-1779032897268-nkx94qi7",
       "kind": "junction",
-      "x": 7956.537512437811,
-      "y": 7639.954013266999,
+      "x": 7956.54,
+      "y": 7701.956341729066,
       "scale": 3,
       "bgColor": null
     },
@@ -1887,16 +1878,16 @@
     {
       "id": "cn-1779032932113-c86k2kkg",
       "kind": "junction",
-      "x": 9053.21751243781,
-      "y": 7518.524013266999,
+      "x": 9073.657893945448,
+      "y": 7538.572423597818,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1779032932734-mr397hwn",
       "kind": "junction",
-      "x": 8153.757512437811,
-      "y": 7519.364013266999,
+      "x": 8119.1881804386385,
+      "y": 7539.3118195613615,
       "scale": 3,
       "bgColor": null
     },
@@ -3576,8 +3567,8 @@
     {
       "id": "cn-1779136597932-yhj13ff0",
       "kind": "junction",
-      "x": 7028.069098073977,
-      "y": 8166.419098073977,
+      "x": 6984.497536529247,
+      "y": 8121.578540806861,
       "scale": 3,
       "bgColor": null
     },
@@ -3592,8 +3583,8 @@
     {
       "id": "cn-1779136647398-35b3awwn",
       "kind": "junction",
-      "x": 7244.145136834386,
-      "y": 8788.462931030106,
+      "x": 7438.962373166905,
+      "y": 8592.087626833094,
       "scale": 3,
       "bgColor": null
     },
@@ -3608,8 +3599,8 @@
     {
       "id": "cn-1779136677110-2uh6udut",
       "kind": "junction",
-      "x": 7111.088373086806,
-      "y": 8789.563133126207,
+      "x": 7227.808829034741,
+      "y": 8592.09,
       "scale": 3,
       "bgColor": null
     },
@@ -3632,8 +3623,8 @@
     {
       "id": "cn-1779139242014-fwkewx40",
       "kind": "junction",
-      "x": 6771.240102418785,
-      "y": 9623.040102418785,
+      "x": 6641.119598155456,
+      "y": 9492.816609662808,
       "scale": 3,
       "bgColor": null
     },
@@ -3960,8 +3951,8 @@
     {
       "id": "cn-1779220799749-xm6z1krq",
       "kind": "junction",
-      "x": 7794.13,
-      "y": 7645.442585132127,
+      "x": 7795.018250080184,
+      "y": 7703.349860903529,
       "scale": 3,
       "bgColor": null
     },
@@ -6298,16 +6289,16 @@
     {
       "id": "cn-1779828356457-8pggu6e8",
       "kind": "junction",
-      "x": 14671.409213157352,
-      "y": 7617.83,
+      "x": 14556.631493671435,
+      "y": 7617.8,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1779828390710-f5f3f8co",
       "kind": "junction",
-      "x": 14931.635087650491,
-      "y": 7360.383102454254,
+      "x": 14929.874818454296,
+      "y": 7247.685557797837,
       "scale": 3,
       "bgColor": null
     },
@@ -6530,16 +6521,16 @@
     {
       "id": "cn-1779910728465-kfyly6ko",
       "kind": "junction",
-      "x": 15369.61519789511,
-      "y": 7011.594802104892,
+      "x": 15371.4,
+      "y": 7068.374731680141,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1779910740162-waa6q1nd",
       "kind": "junction",
-      "x": 14720.382762496138,
-      "y": 7661.922655197528,
+      "x": 14590.941541813985,
+      "y": 7662.72,
       "scale": 3,
       "bgColor": null
     },
@@ -6818,16 +6809,16 @@
     {
       "id": "cn-1779921943900-d0qwd2fx",
       "kind": "junction",
-      "x": 15171.475998425229,
-      "y": 7011.59,
+      "x": 15161.653349421442,
+      "y": 7069.942441283024,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1779921947296-f9lg7uyb",
       "kind": "junction",
-      "x": 15013.622094905702,
-      "y": 6853.577851453731,
+      "x": 14990.56246501866,
+      "y": 6901.102504145938,
       "scale": 3,
       "bgColor": null
     },
@@ -6914,8 +6905,8 @@
     {
       "id": "cn-1779922949779-8uy27d4i",
       "kind": "junction",
-      "x": 6858.825248173782,
-      "y": 8861.020366980767,
+      "x": 6851.068554351121,
+      "y": 8864.245591414137,
       "scale": 3,
       "bgColor": null
     },
@@ -8198,8 +8189,8 @@
     {
       "id": "cn-1780254151869-wdnsoflp",
       "kind": "junction",
-      "x": 8001.531466532912,
-      "y": 7133.03,
+      "x": 8618.805075740958,
+      "y": 7125.689423387179,
       "scale": 3,
       "bgColor": null
     },
@@ -8214,16 +8205,16 @@
     {
       "id": "cn-1780254218974-rbxn80aj",
       "kind": "junction",
-      "x": 8123.62715457519,
-      "y": 7424.733310788857,
+      "x": 8741.015485183952,
+      "y": 7428.8145148160465,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1780254220119-rmxqm1zn",
       "kind": "junction",
-      "x": 8122.476923335009,
-      "y": 7252.339287724125,
+      "x": 8740.128687512002,
+      "y": 7249.1021859696575,
       "scale": 3,
       "bgColor": null
     },
@@ -8238,8 +8229,8 @@
     {
       "id": "cn-1780254297817-xrxojirq",
       "kind": "junction",
-      "x": 7241.639923881105,
-      "y": 7132.214779072037,
+      "x": 7248.8194822573805,
+      "y": 7125.040517742619,
       "scale": 3,
       "bgColor": null
     },
@@ -8254,8 +8245,8 @@
     {
       "id": "cn-1780254432697-g27f4hk5",
       "kind": "junction",
-      "x": 7477.313459498461,
-      "y": 7132.625,
+      "x": 7485.679590277037,
+      "y": 7124.216381051195,
       "scale": 3,
       "bgColor": null
     },
@@ -8439,8 +8430,8 @@
     {
       "id": "cn-1780263356493-dhsu89p2",
       "kind": "junction",
-      "x": 7134.613143256715,
-      "y": 8380.850534865906,
+      "x": 7234.4895835864745,
+      "y": 8382.04803782587,
       "scale": 3,
       "bgColor": null
     },
@@ -8463,16 +8454,16 @@
     {
       "id": "cn-1780263407577-cxhoq8s9",
       "kind": "junction",
-      "x": 7022.934567301816,
-      "y": 8490.937544290211,
+      "x": 7051.532926892673,
+      "y": 8382.05,
       "scale": 3,
       "bgColor": null
     },
     {
       "id": "cn-1780263495155-92uoje7t",
       "kind": "junction",
-      "x": 7299.783472062023,
-      "y": 8166.42,
+      "x": 7259.315423441769,
+      "y": 8120.68,
       "scale": 3,
       "bgColor": null
     },
@@ -8480,8 +8471,8 @@
       "id": "cn-1780263531440-4chlxqh7",
       "kind": "hero",
       "heroName": "Mauga",
-      "x": 7269.658659423709,
-      "y": 7981.801340576291,
+      "x": 7270.9338008973355,
+      "y": 7988.681247481652,
       "scale": 2.5,
       "bgColor": null
     },
@@ -9198,8 +9189,8 @@
     {
       "id": "cn-1780447328131-kgx1o6tu",
       "kind": "junction",
-      "x": 6768.59398784899,
-      "y": 9134.067564526455,
+      "x": 7113.432511463282,
+      "y": 8709.950466025455,
       "scale": 3,
       "bgColor": null
     },
@@ -9402,6 +9393,247 @@
       "kind": "junction",
       "x": 10551.044569779348,
       "y": 7464.515030417315,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781040347143-w0lbkhyy",
+      "kind": "npc",
+      "npcName": "Chernobog",
+      "x": 10226.942658014477,
+      "y": 7815.281959528469,
+      "scale": 2,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781040471790-2oh9g17u",
+      "kind": "npc",
+      "npcName": "Ming",
+      "x": 14891.281155520985,
+      "y": 7443.401678701981,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781040565596-iv0ntn3m",
+      "kind": "junction",
+      "x": 14933.945508202407,
+      "y": 7522.399491797592,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781040567292-9ugja960",
+      "kind": "junction",
+      "x": 14649.171125688195,
+      "y": 7808.78530774856,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781040578717-pf4vr7fc",
+      "kind": "junction",
+      "x": 14492.11474854111,
+      "y": 7809.59137189871,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781041449039-rmmqhyui",
+      "kind": "junction",
+      "x": 15067.7,
+      "y": 7368.245,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781041449631-9eslb8dp",
+      "kind": "junction",
+      "x": 14887.359083585696,
+      "y": 7367.424609618237,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042027527-w823wc7l",
+      "kind": "npc",
+      "npcName": "Maximus",
+      "x": 8447.583001658375,
+      "y": 7196.884115425477,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042044757-ae7ds86c",
+      "kind": "npc",
+      "npcName": "Magnus",
+      "x": 8062.180668877833,
+      "y": 7194.314128921365,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042076505-kpv6q0br",
+      "kind": "npc",
+      "npcName": "Carmilla",
+      "x": 8158.74592506219,
+      "y": 7359.058203859176,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042133610-1w2uwjds",
+      "kind": "npc",
+      "npcName": "Zephyrus",
+      "x": 8254.050668877833,
+      "y": 7191.364101929589,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042159727-4axqkgct",
+      "kind": "npc",
+      "npcName": "Titus",
+      "x": 8348.547076596185,
+      "y": 7355.282935539319,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781042310078-t04oguxx",
+      "kind": "npc",
+      "npcName": "Bez",
+      "x": 8990.597512295799,
+      "y": 7755.666642596037,
+      "scale": 1.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781046157550-eu5ouldv",
+      "kind": "hero",
+      "heroName": "Shion",
+      "x": 6981.438514872836,
+      "y": 8871.566666736462,
+      "scale": 2.5,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781046882572-0ajd7dr6",
+      "kind": "junction",
+      "x": 6940.15413516152,
+      "y": 8491.971627961691,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781046972491-ac3ua5zx",
+      "kind": "junction",
+      "x": 6951.531515448723,
+      "y": 9004.46,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781046988943-mysdmpzh",
+      "kind": "junction",
+      "x": 6788.074513398907,
+      "y": 9167.915486601092,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047007132-apduicr6",
+      "kind": "junction",
+      "x": 7113.43,
+      "y": 9426.11753034898,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047033934-73z2xjwm",
+      "kind": "junction",
+      "x": 7522.976753555545,
+      "y": 9214.083246444454,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047153717-npwvm74y",
+      "kind": "junction",
+      "x": 7401.66,
+      "y": 8216.918387303138,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047187936-ke7gbd7x",
+      "kind": "junction",
+      "x": 7004.071456447236,
+      "y": 8238.903152012388,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047190640-ehrrsj73",
+      "kind": "junction",
+      "x": 7004.966414766032,
+      "y": 8943.222958658667,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047540743-lg16kgza",
+      "kind": "junction",
+      "x": 7283.038662244334,
+      "y": 8199.076945718458,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047607496-ygo6frrr",
+      "kind": "junction",
+      "x": 7041.8121352081325,
+      "y": 8199.901891061472,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781047987765-mbmek0h7",
+      "kind": "junction",
+      "x": 8060.674374551644,
+      "y": 7253.431466284043,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781048018549-8dhjho4a",
+      "kind": "junction",
+      "x": 8058.057263615085,
+      "y": 7250.886651316676,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781048035587-gngtj45h",
+      "kind": "junction",
+      "x": 8056.889806015692,
+      "y": 7253.506865055621,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781048053179-cmmbo1u3",
+      "kind": "junction",
+      "x": 8044.711525506804,
+      "y": 7425.58,
+      "scale": 3,
+      "bgColor": null
+    },
+    {
+      "id": "cn-1781048070554-qnamp7do",
+      "kind": "junction",
+      "x": 8048.522468527682,
+      "y": 7423.6900000000005,
       "scale": 3,
       "bgColor": null
     }
@@ -9650,6 +9882,10 @@
     {
       "fromId": "cn-1776198177071-2bom9fnt",
       "toId": "cn-1776198370537-lbpkctra"
+    },
+    {
+      "fromId": "cn-1776188770813-45776biy",
+      "toId": "cn-1776197831375-68zappm3"
     },
     {
       "fromId": "cn-1779029707766-00xdhrd1",
@@ -10798,22 +11034,6 @@
     {
       "fromId": "cn-1779139242014-fwkewx40",
       "toId": "cn-1779139240981-o31lfgh7"
-    },
-    {
-      "fromId": "cn-1776189240157-xzlqn0e9",
-      "toId": "cn-1776198974115-2jyrwswf"
-    },
-    {
-      "fromId": "cn-1776189240157-xzlqn0e9",
-      "toId": "cn-1776198981201-kaorvuxy"
-    },
-    {
-      "fromId": "cn-1776189240157-xzlqn0e9",
-      "toId": "cn-1776197806040-5z8jra3s"
-    },
-    {
-      "fromId": "cn-1776189240157-xzlqn0e9",
-      "toId": "cn-1776198357928-5tnnx0cn"
     },
     {
       "fromId": "cn-1776196496819-icb5pcwb",
@@ -12636,10 +12856,6 @@
       "toId": "cn-1779832652222-topgzs45"
     },
     {
-      "fromId": "cn-1779910740162-waa6q1nd",
-      "toId": "cn-1779910728465-kfyly6ko"
-    },
-    {
       "fromId": "cn-1776196936200-9siqgmrn",
       "toId": "cn-1779910752362-l7icoh1g"
     },
@@ -13776,16 +13992,8 @@
       "toId": "cn-1780263407577-cxhoq8s9"
     },
     {
-      "fromId": "cn-1780263407577-cxhoq8s9",
-      "toId": "cn-1780263143346-isciti83"
-    },
-    {
       "fromId": "cn-1779136597932-yhj13ff0",
       "toId": "cn-1780263495155-92uoje7t"
-    },
-    {
-      "fromId": "cn-1780263531440-4chlxqh7",
-      "toId": "cn-1780263356493-dhsu89p2"
     },
     {
       "fromId": "cn-1779219481109-b02mjhym",
@@ -14356,6 +14564,166 @@
       "toId": "cn-1780589247190-eklfkjo7"
     },
     {
+      "fromId": "cn-1776188568433-ct7ioax0",
+      "toId": "cn-1779018790899-k6ebd8ik"
+    },
+    {
+      "fromId": "cn-1776188753741-063ofkct",
+      "toId": "cn-1776196828122-lxi2dv4l"
+    },
+    {
+      "fromId": "cn-1776188753741-063ofkct",
+      "toId": "cn-1776196774051-4c33pw30"
+    },
+    {
+      "fromId": "cn-1776189507539-assf49p2",
+      "toId": "cn-1776188382194-qbacqou6"
+    },
+    {
+      "fromId": "cn-1776196844950-pobifv6r",
+      "toId": "cn-1776196690675-a5qoyt63"
+    },
+    {
+      "fromId": "cn-1776196479762-ave5fhpz",
+      "toId": "cn-1776196690675-a5qoyt63"
+    },
+    {
+      "fromId": "cn-1776196479762-ave5fhpz",
+      "toId": "cn-1779048392018-3n01o2v1"
+    },
+    {
+      "fromId": "cn-1776196665335-bh6hmgle",
+      "toId": "cn-1776197969276-beq1rriu"
+    },
+    {
+      "fromId": "cn-1776196911100-qr8yi5kw",
+      "toId": "cn-1776196665335-bh6hmgle"
+    },
+    {
+      "fromId": "cn-1776196684186-7jqz9wij",
+      "toId": "cn-1776196641135-ah1klxj2"
+    },
+    {
+      "fromId": "cn-1776189118821-pp4icyoj",
+      "toId": "cn-1776197963232-c9rv6uj4"
+    },
+    {
+      "fromId": "cn-1776189118821-pp4icyoj",
+      "toId": "cn-1776197821324-p34man2s"
+    },
+    {
+      "fromId": "cn-1776197821324-p34man2s",
+      "toId": "cn-1776197963232-c9rv6uj4"
+    },
+    {
+      "fromId": "cn-1776189118821-pp4icyoj",
+      "toId": "cn-1780794563911-ogozbzha"
+    },
+    {
+      "fromId": "cn-1776196659201-xb05ivvs",
+      "toId": "cn-1780794563911-ogozbzha"
+    },
+    {
+      "fromId": "cn-1780351384401-e2o6fo1k",
+      "toId": "cn-1780794563911-ogozbzha"
+    },
+    {
+      "fromId": "cn-1776189155391-blrdsyra",
+      "toId": "cn-1776196515659-bjdag5mi"
+    },
+    {
+      "fromId": "cn-1776189155391-blrdsyra",
+      "toId": "cn-1776199008484-l590n2nt"
+    },
+    {
+      "fromId": "cn-1776196515659-bjdag5mi",
+      "toId": "cn-1776199008484-l590n2nt"
+    },
+    {
+      "fromId": "cn-1776196821571-4rcgktce",
+      "toId": "cn-1776196548088-m6onbpwi"
+    },
+    {
+      "fromId": "cn-1776189424359-1982a8ml",
+      "toId": "cn-1776196540666-6pvolx0z"
+    },
+    {
+      "fromId": "cn-1776189424359-1982a8ml",
+      "toId": "cn-1776196943516-m7w9aebw"
+    },
+    {
+      "fromId": "cn-1776196540666-6pvolx0z",
+      "toId": "cn-1776196943516-m7w9aebw"
+    },
+    {
+      "fromId": "cn-1776188694977-64cmnrtf",
+      "toId": "cn-1776198190957-4hj4odld"
+    },
+    {
+      "fromId": "cn-1776188694977-64cmnrtf",
+      "toId": "cn-1776197747185-ov00pu8u"
+    },
+    {
+      "fromId": "cn-1776188526366-hpc13j68",
+      "toId": "cn-1776198324203-7ytk5c1w"
+    },
+    {
+      "fromId": "cn-1776198324203-7ytk5c1w",
+      "toId": "cn-1776196962623-ddk7o1p4"
+    },
+    {
+      "fromId": "cn-1776188526366-hpc13j68",
+      "toId": "cn-1776196962623-ddk7o1p4"
+    },
+    {
+      "fromId": "cn-1776188289883-mispvcjc",
+      "toId": "cn-1776196781651-ocp88l4m"
+    },
+    {
+      "fromId": "cn-1776188289883-mispvcjc",
+      "toId": "cn-1776198330904-1m57omri"
+    },
+    {
+      "fromId": "cn-1776188731351-mg1n7cxj",
+      "toId": "cn-1776196880352-54bx34qm"
+    },
+    {
+      "fromId": "cn-1776188731351-mg1n7cxj",
+      "toId": "cn-1779221458220-5oxiyekf"
+    },
+    {
+      "fromId": "cn-1776188731351-mg1n7cxj",
+      "toId": "cn-1776196245474-7zeubdc1"
+    },
+    {
+      "fromId": "cn-1776188731351-mg1n7cxj",
+      "toId": "cn-1776198988218-izi2wsik"
+    },
+    {
+      "fromId": "cn-1778802028575-xtjczb43",
+      "toId": "cn-1776188705825-jqgeno6j"
+    },
+    {
+      "fromId": "cn-1776187942174-ajc0gk24",
+      "toId": "cn-1776188989261-sni9cnre"
+    },
+    {
+      "fromId": "cn-1776187942174-ajc0gk24",
+      "toId": "cn-1776196918049-3szka57e"
+    },
+    {
+      "fromId": "cn-1776187942174-ajc0gk24",
+      "toId": "cn-1780263531440-4chlxqh7"
+    },
+    {
+      "fromId": "cn-1776187942174-ajc0gk24",
+      "toId": "cn-1778780376061-i3eyor8c"
+    },
+    {
+      "fromId": "cn-1778780376061-i3eyor8c",
+      "toId": "cn-1776198232155-ou5s8rbe"
+    },
+    {
       "fromId": "cn-1780955307871-9jm0es0n",
       "toId": "cn-1776198232155-ou5s8rbe"
     },
@@ -14368,12 +14736,96 @@
       "toId": "cn-1780955307871-9jm0es0n"
     },
     {
+      "fromId": "cn-1776187942174-ajc0gk24",
+      "toId": "cn-1776196835600-1h52n95b"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1780236405965-1wyqsh9p"
+    },
+    {
+      "fromId": "cn-1780236405965-1wyqsh9p",
+      "toId": "cn-1778780254335-7peq5ez9"
+    },
+    {
+      "fromId": "cn-1776199043702-xqydsjiy",
+      "toId": "cn-1778780254335-7peq5ez9"
+    },
+    {
+      "fromId": "cn-1776189217121-65fhi9r3",
+      "toId": "cn-1776196496819-icb5pcwb"
+    },
+    {
+      "fromId": "cn-1776189217121-65fhi9r3",
+      "toId": "cn-1780195623793-y533oc6a"
+    },
+    {
+      "fromId": "cn-1780195623793-y533oc6a",
+      "toId": "cn-1776196496819-icb5pcwb"
+    },
+    {
+      "fromId": "cn-1776189327254-mrvclha3",
+      "toId": "cn-1778802077375-32o4outh"
+    },
+    {
+      "fromId": "cn-1780424191331-7mgyvyou",
+      "toId": "cn-1776198013473-a8laewup"
+    },
+    {
+      "fromId": "cn-1780424191331-7mgyvyou",
+      "toId": "cn-1778802022164-k9v03njq"
+    },
+    {
+      "fromId": "cn-1780424191331-7mgyvyou",
+      "toId": "cn-1776198219789-bkys0s6a"
+    },
+    {
+      "fromId": "cn-1776189352476-l8qtx93r",
+      "toId": "cn-1776196706068-vf6jo3yv"
+    },
+    {
+      "fromId": "cn-1776188997910-x5sjqser",
+      "toId": "cn-1776196198262-5y6w0bjm"
+    },
+    {
+      "fromId": "cn-1776188997910-x5sjqser",
+      "toId": "cn-1776197773898-vrt0idb9"
+    },
+    {
+      "fromId": "cn-1776196198262-5y6w0bjm",
+      "toId": "cn-1776197773898-vrt0idb9"
+    },
+    {
+      "fromId": "cn-1776188997910-x5sjqser",
+      "toId": "cn-1778979041484-kwbkzem6"
+    },
+    {
+      "fromId": "cn-1776188997910-x5sjqser",
+      "toId": "cn-1776197779816-8kojasku"
+    },
+    {
+      "fromId": "cn-1776197779816-8kojasku",
+      "toId": "cn-1776199033515-s6jmpjno"
+    },
+    {
       "fromId": "cn-1776197831375-68zappm3",
       "toId": "cn-1780955513615-mdepg9x1"
     },
     {
       "fromId": "cn-1780955513615-mdepg9x1",
       "toId": "cn-1779029835592-kqxwwdkq"
+    },
+    {
+      "fromId": "cn-1776189366354-irv4wkok",
+      "toId": "cn-1778802034992-1qhaxwlg"
+    },
+    {
+      "fromId": "cn-1776189366354-irv4wkok",
+      "toId": "cn-1776197996547-ax6bzskn"
+    },
+    {
+      "fromId": "cn-1776189366354-irv4wkok",
+      "toId": "cn-1776189386504-93hariwi"
     },
     {
       "fromId": "cn-1780423436001-fwblc867",
@@ -14384,12 +14836,92 @@
       "toId": "cn-1776197882511-xsmqj1h0"
     },
     {
+      "fromId": "cn-1776196718017-d7iptftx",
+      "toId": "cn-1776197882511-xsmqj1h0"
+    },
+    {
+      "fromId": "cn-1776188555343-jwbghswm",
+      "toId": "cn-1776196863784-f3kkr8v0"
+    },
+    {
+      "fromId": "cn-1776196863784-f3kkr8v0",
+      "toId": "cn-1776196852034-00yc3egl"
+    },
+    {
+      "fromId": "cn-1778802055327-e8egmozm",
+      "toId": "cn-1776198033132-vt4u1eu5"
+    },
+    {
+      "fromId": "cn-1778802046964-inwuypky",
+      "toId": "cn-1776196930475-lm63xd8b"
+    },
+    {
+      "fromId": "cn-1776188555343-jwbghswm",
+      "toId": "cn-1776189184588-1h8nrpbi"
+    },
+    {
+      "fromId": "cn-1776188817340-0bswtany",
+      "toId": "cn-1776196520283-ijn6b6y7"
+    },
+    {
+      "fromId": "cn-1776196905749-nf6n8qe5",
+      "toId": "cn-1776197976145-vsj1hid6"
+    },
+    {
+      "fromId": "cn-1776189030714-9smuueld",
+      "toId": "cn-1776199020498-imn45tfj"
+    },
+    {
+      "fromId": "cn-1776189030714-9smuueld",
+      "toId": "cn-1776196905749-nf6n8qe5"
+    },
+    {
+      "fromId": "cn-1776189030714-9smuueld",
+      "toId": "cn-1776196223986-3odd2n1h"
+    },
+    {
+      "fromId": "cn-1776196805086-xyq2ev6r",
+      "toId": "cn-1776196223986-3odd2n1h"
+    },
+    {
       "fromId": "cn-1779754326910-pspf94cz",
       "toId": "cn-1780956016208-vtrdz4bo"
     },
     {
       "fromId": "cn-1780956016208-vtrdz4bo",
       "toId": "cn-1776196531050-cwotr9c8"
+    },
+    {
+      "fromId": "cn-1776188809077-v0ocu0zr",
+      "toId": "cn-1778944759246-swuthwl4"
+    },
+    {
+      "fromId": "cn-1776190150580-gay8nq0u",
+      "toId": "cn-1776196949591-cyopgpwx"
+    },
+    {
+      "fromId": "cn-1776197531895-fyylpmp4",
+      "toId": "cn-1776187918958-thq2voxg"
+    },
+    {
+      "fromId": "cn-1776197531895-fyylpmp4",
+      "toId": "cn-1776196718017-d7iptftx"
+    },
+    {
+      "fromId": "cn-1776187918958-thq2voxg",
+      "toId": "cn-1776197740892-6e9fqzn6"
+    },
+    {
+      "fromId": "cn-1776187918958-thq2voxg",
+      "toId": "cn-1776196936200-9siqgmrn"
+    },
+    {
+      "fromId": "cn-1778802015959-tobtv5pi",
+      "toId": "cn-1776196250777-gqnrvcb6"
+    },
+    {
+      "fromId": "cn-1776197727524-g8fx2yzv",
+      "toId": "cn-1780254576988-jan9xtpa"
     },
     {
       "fromId": "cn-1779832651289-2w7ucaf0",
@@ -14428,6 +14960,10 @@
       "toId": "cn-1779221841288-a0wbulm5"
     },
     {
+      "fromId": "cn-1776188770813-45776biy",
+      "toId": "cn-1778802005760-uhk8yuwo"
+    },
+    {
       "fromId": "cn-1780423436001-fwblc867",
       "toId": "cn-1778802010909-0ffm7hq0"
     },
@@ -14444,495 +14980,212 @@
       "toId": "cn-1779033206404-8shjjaw2"
     },
     {
-      "fromId": "cn-1776196515659-bjdag5mi",
-      "toId": "cn-1776199008484-l590n2nt"
+      "fromId": "cn-1781040347143-w0lbkhyy",
+      "toId": "cn-1776188568433-ct7ioax0"
     },
     {
-      "fromId": "cn-1776196943516-m7w9aebw",
-      "toId": "cn-1776189424359-1982a8ml"
+      "fromId": "cn-1781040347143-w0lbkhyy",
+      "toId": "cn-1779018790899-k6ebd8ik"
     },
     {
-      "fromId": "cn-1776196198262-5y6w0bjm",
-      "toId": "cn-1776197773898-vrt0idb9"
+      "fromId": "cn-1781040565596-iv0ntn3m",
+      "toId": "cn-1781040471790-2oh9g17u"
     },
     {
-      "fromId": "cn-1780351384401-e2o6fo1k",
-      "toId": "cn-1780794563911-ogozbzha"
+      "fromId": "cn-1781040567292-9ugja960",
+      "toId": "cn-1781040565596-iv0ntn3m"
     },
     {
-      "fromId": "cn-1780236405965-1wyqsh9p",
-      "toId": "cn-1776189240157-xzlqn0e9"
+      "fromId": "cn-1776196949591-cyopgpwx",
+      "toId": "cn-1781040578717-pf4vr7fc"
     },
     {
-      "fromId": "cn-1776188997910-x5sjqser",
-      "toId": "cn-1776197779816-8kojasku"
+      "fromId": "cn-1781040578717-pf4vr7fc",
+      "toId": "cn-1781040567292-9ugja960"
     },
     {
-      "fromId": "cn-1776188997910-x5sjqser",
-      "toId": "cn-1778979048695-rt6kdbfn"
+      "fromId": "cn-1776189366354-irv4wkok",
+      "toId": "cn-1776197955340-9ialzc1r"
     },
     {
-      "fromId": "cn-1776188997910-x5sjqser",
+      "fromId": "cn-1781041449039-rmmqhyui",
+      "toId": "cn-1779910728465-kfyly6ko"
+    },
+    {
+      "fromId": "cn-1779910740162-waa6q1nd",
+      "toId": "cn-1781041449631-9eslb8dp"
+    },
+    {
+      "fromId": "cn-1781041449631-9eslb8dp",
+      "toId": "cn-1781041449039-rmmqhyui"
+    },
+    {
+      "fromId": "cn-1776189386504-93hariwi",
+      "toId": "cn-1781040471790-2oh9g17u"
+    },
+    {
+      "fromId": "cn-1781042310078-t04oguxx",
       "toId": "cn-1778979041484-kwbkzem6"
     },
     {
-      "fromId": "cn-1778780376061-i3eyor8c",
-      "toId": "cn-1776187942174-ajc0gk24"
+      "fromId": "cn-1776188997910-x5sjqser",
+      "toId": "cn-1781042310078-t04oguxx"
+    },
+    {
+      "fromId": "cn-1780447328131-kgx1o6tu",
+      "toId": "cn-1781046157550-eu5ouldv"
+    },
+    {
+      "fromId": "cn-1780263407577-cxhoq8s9",
+      "toId": "cn-1781046882572-0ajd7dr6"
+    },
+    {
+      "fromId": "cn-1781046882572-0ajd7dr6",
+      "toId": "cn-1780263143346-isciti83"
+    },
+    {
+      "fromId": "cn-1781046972491-ac3ua5zx",
+      "toId": "cn-1781046157550-eu5ouldv"
+    },
+    {
+      "fromId": "cn-1776189227153-n4wer0l4",
+      "toId": "cn-1781046988943-mysdmpzh"
+    },
+    {
+      "fromId": "cn-1781046988943-mysdmpzh",
+      "toId": "cn-1781046972491-ac3ua5zx"
+    },
+    {
+      "fromId": "cn-1781046157550-eu5ouldv",
+      "toId": "cn-1781047007132-apduicr6"
+    },
+    {
+      "fromId": "cn-1781047007132-apduicr6",
+      "toId": "cn-1778780254335-7peq5ez9"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1781047033934-73z2xjwm"
+    },
+    {
+      "fromId": "cn-1781047033934-73z2xjwm",
+      "toId": "cn-1778780254335-7peq5ez9"
+    },
+    {
+      "fromId": "cn-1778780254335-7peq5ez9",
+      "toId": "cn-1776198357928-5tnnx0cn"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1776198357928-5tnnx0cn"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1776198974115-2jyrwswf"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1776198981201-kaorvuxy"
+    },
+    {
+      "fromId": "cn-1776189240157-xzlqn0e9",
+      "toId": "cn-1776197806040-5z8jra3s"
+    },
+    {
+      "fromId": "cn-1780263531440-4chlxqh7",
+      "toId": "cn-1781047153717-npwvm74y"
+    },
+    {
+      "fromId": "cn-1781047153717-npwvm74y",
+      "toId": "cn-1780263356493-dhsu89p2"
+    },
+    {
+      "fromId": "cn-1781046157550-eu5ouldv",
+      "toId": "cn-1781047190640-ehrrsj73"
+    },
+    {
+      "fromId": "cn-1781047190640-ehrrsj73",
+      "toId": "cn-1781047187936-ke7gbd7x"
+    },
+    {
+      "fromId": "cn-1781047540743-lg16kgza",
+      "toId": "cn-1780263531440-4chlxqh7"
+    },
+    {
+      "fromId": "cn-1781047187936-ke7gbd7x",
+      "toId": "cn-1781047607496-ygo6frrr"
+    },
+    {
+      "fromId": "cn-1781047607496-ygo6frrr",
+      "toId": "cn-1781047540743-lg16kgza"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781047987765-mbmek0h7"
+    },
+    {
+      "fromId": "cn-1781047987765-mbmek0h7",
+      "toId": "cn-1781042027527-w823wc7l"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781048018549-8dhjho4a"
+    },
+    {
+      "fromId": "cn-1781048018549-8dhjho4a",
+      "toId": "cn-1781042133610-1w2uwjds"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781048035587-gngtj45h"
+    },
+    {
+      "fromId": "cn-1781048035587-gngtj45h",
+      "toId": "cn-1781042044757-ae7ds86c"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781048053179-cmmbo1u3"
+    },
+    {
+      "fromId": "cn-1781048053179-cmmbo1u3",
+      "toId": "cn-1781042076505-kpv6q0br"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781048070554-qnamp7do"
+    },
+    {
+      "fromId": "cn-1781048070554-qnamp7do",
+      "toId": "cn-1781042159727-4axqkgct"
+    },
+    {
+      "fromId": "cn-1776188989261-sni9cnre",
+      "toId": "cn-1781042027527-w823wc7l"
     }
   ],
   "connections": [
     {
-      "kind": "hero",
-      "name": "Cassidy",
+      "kind": "npc",
+      "name": "Maximus",
       "reasoningSubjectToLinked": "",
       "reasoningLinkedToSubject": "",
       "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Cassidy"
-    },
-    {
-      "kind": "hero",
-      "name": "Emre",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Emre"
-    },
-    {
-      "kind": "hero",
-      "name": "Pharah",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Pharah"
-    },
-    {
-      "kind": "hero",
-      "name": "Reaper",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Reaper"
-    },
-    {
-      "kind": "hero",
-      "name": "Reinhardt",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "ranges": [
-        {
-          "startEvent": "The Original Strike Team",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "endEvent": "Missing in Action"
-        },
-        {
-          "startEvent": "From the Ashes",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": ""
-        }
-      ],
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Reinhardt"
-    },
-    {
-      "kind": "hero",
-      "name": "Soldier 76",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "hero",
-      "linkedName": "Soldier 76"
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Maximus"
     },
     {
       "kind": "faction",
-      "name": "Overwatch",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "faction",
-      "linkedName": "Overwatch"
-    },
-    {
-      "kind": "faction",
-      "name": "Search & Rescue",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Ana",
-      "linkedKind": "faction",
-      "linkedName": "Search & Rescue"
-    },
-    {
-      "kind": "hero",
-      "name": "Ashe",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "hero",
-      "linkedName": "Ashe"
-    },
-    {
-      "kind": "hero",
-      "name": "Cassidy",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "hero",
-      "linkedName": "Cassidy"
-    },
-    {
-      "kind": "hero",
-      "name": "Echo",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "hero",
-      "linkedName": "Echo"
-    },
-    {
-      "kind": "hero",
-      "name": "Torbjörn",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "hero",
-      "linkedName": "Torbjörn"
-    },
-    {
-      "kind": "faction",
-      "name": "Deadlock Rebels",
+      "name": "Colloseo Gladiatori",
       "reasoningSubjectToLinked": "",
       "reasoningLinkedToSubject": "",
       "thisEntryLane": "B",
       "subjectKind": "npc",
-      "subjectName": "Liao",
+      "subjectName": "Maximus",
       "linkedKind": "faction",
-      "linkedName": "Deadlock Rebels"
-    },
-    {
-      "kind": "faction",
-      "name": "Omnica Corporation",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "faction",
-      "linkedName": "Omnica Corporation"
-    },
-    {
-      "kind": "npc",
-      "name": "Antonio",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Antonio"
-    },
-    {
-      "kind": "npc",
-      "name": "Anubis",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Anubis"
-    },
-    {
-      "kind": "npc",
-      "name": "Athena",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Athena"
-    },
-    {
-      "kind": "npc",
-      "name": "Aurora",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Aurora"
-    },
-    {
-      "kind": "npc",
-      "name": "Claudio",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Claudio"
-    },
-    {
-      "kind": "npc",
-      "name": "Hector",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Hector"
-    },
-    {
-      "kind": "npc",
-      "name": "Sven",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "npc",
-      "subjectName": "Liao",
-      "linkedKind": "npc",
-      "linkedName": "Sven"
-    },
-    {
-      "kind": "hero",
-      "name": "Baptiste",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Baptiste"
-    },
-    {
-      "kind": "hero",
-      "name": "Cassidy",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Cassidy"
-    },
-    {
-      "kind": "hero",
-      "name": "D.va",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "D.va"
-    },
-    {
-      "kind": "hero",
-      "name": "Pharah",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Pharah"
-    },
-    {
-      "kind": "hero",
-      "name": "Sierra",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Sierra"
-    },
-    {
-      "kind": "hero",
-      "name": "Torbjörn",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Torbjörn"
-    },
-    {
-      "kind": "hero",
-      "name": "Zarya",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "hero",
-      "linkedName": "Zarya"
-    },
-    {
-      "kind": "faction",
-      "name": "Helix Securities",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "faction",
-      "linkedName": "Helix Securities"
-    },
-    {
-      "kind": "faction",
-      "name": "Overwatch",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "faction",
-      "linkedName": "Overwatch"
-    },
-    {
-      "kind": "faction",
-      "name": "The Chernobog Conspiracy",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "faction",
-      "linkedName": "The Chernobog Conspiracy"
-    },
-    {
-      "kind": "faction",
-      "name": "Wayfinder Society",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "B",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "faction",
-      "linkedName": "Wayfinder Society"
-    },
-    {
-      "kind": "npc",
-      "name": "Anubis",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Anubis"
-    },
-    {
-      "kind": "npc",
-      "name": "Athena",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Athena"
-    },
-    {
-      "kind": "npc",
-      "name": "Aurora",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Aurora"
-    },
-    {
-      "kind": "npc",
-      "name": "Claudio",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Claudio"
-    },
-    {
-      "kind": "npc",
-      "name": "Hector",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Hector"
-    },
-    {
-      "kind": "npc",
-      "name": "Liao",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Liao"
-    },
-    {
-      "kind": "npc",
-      "name": "Sven",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Echo",
-      "linkedKind": "npc",
-      "linkedName": "Sven"
-    },
-    {
-      "kind": "npc",
-      "name": "Mason",
-      "reasoningSubjectToLinked": "",
-      "reasoningLinkedToSubject": "",
-      "thisEntryLane": "A",
-      "subjectKind": "hero",
-      "subjectName": "Junker Queen",
-      "linkedKind": "npc",
-      "linkedName": "Mason"
+      "linkedName": "Colloseo Gladiatori"
     }
   ]
 }

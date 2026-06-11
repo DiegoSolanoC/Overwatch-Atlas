@@ -170,6 +170,7 @@ export function normalizeCodexConnectionMetaRow(row, subjectKind, subjectName) {
             reasoning: row?.reasoning,
             thisEntryLane: row?.thisEntryLane,
             showInCodex: row?.showInCodex,
+            hideInCodex: row?.hideInCodex,
             pruned: row?.pruned,
             ranges: row?.ranges,
         },
@@ -232,6 +233,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
                 reasoningLinkedToSubject: stored.reasoningLinkedToSubject ?? '',
                 thisEntryLane: stored.thisEntryLane ?? 'A',
                 showInCodex: stored.showInCodex === true,
+                hideInCodex: stored.hideInCodex === true,
                 pruned: effectivelyPruned,
                 ranges: Array.isArray(stored.ranges) ? stored.ranges : undefined,
             }
@@ -269,6 +271,7 @@ export function resolveCodexConnectionsForSubject(subjectKind, subjectName, node
             reasoningLinkedToSubject: row.reasoningLinkedToSubject ?? '',
             thisEntryLane: row.thisEntryLane ?? 'A',
             showInCodex: row.showInCodex === true,
+            hideInCodex: row.hideInCodex === true,
             pruned: effectivelyPruned,
             ranges: Array.isArray(row.ranges) ? row.ranges : undefined,
         });
@@ -377,6 +380,14 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
             normalized.linkedName,
             normalized.pruned === true,
         );
+        mirrorCodexConnectionHideOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            normalized.hideInCodex === true,
+        );
     }
 
     for (const row of metaRows || []) {
@@ -399,7 +410,109 @@ export function mergeCodexConnectionMetaForSubject(metaRows, subjectKind, subjec
         );
     }
 
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, sk, sn) || row.hideInCodex !== true) continue;
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (!ln) continue;
+        const pairKey = codexConnectionSubjectLinkedKey(sk, sn, lk, ln);
+        if (!allowed.has(pairKey) || editorPairKeys.has(pairKey)) continue;
+        const normalized = normalizeCodexConnectionMetaRow(row, sk, sn);
+        if (!normalized) continue;
+        next.push(normalized);
+        mirrorCodexConnectionHideOnReverseSubject(
+            next,
+            sk,
+            sn,
+            normalized.linkedKind,
+            normalized.linkedName,
+            true,
+        );
+    }
+
     return next;
+}
+
+/**
+ * Keep hide-in-codex state symmetric — a connection belongs to both archive entries.
+ * @param {object[]} rows
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {boolean} hidden
+ */
+function mirrorCodexConnectionHideOnReverseSubject(rows, subjectKind, subjectName, linkedKind, linkedName, hidden) {
+    const rsk = String(linkedKind || 'hero').toLowerCase();
+    const rsn = String(linkedName || '').trim();
+    const sk = String(subjectKind || 'hero').toLowerCase();
+    const sn = String(subjectName || '').trim();
+    if (!rsn || !sn) return;
+
+    const revKey = codexConnectionSubjectLinkedKey(rsk, rsn, sk, sn);
+    let idx = -1;
+    for (let i = 0; i < (rows || []).length; i += 1) {
+        const row = rows[i];
+        if (!metaRowMatchesSubject(row, rsk, rsn)) continue;
+        const lk = String(row.linkedKind || row.kind || 'hero').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(rsk, rsn, lk, ln) === revKey) {
+            idx = i;
+            break;
+        }
+    }
+
+    if (hidden) {
+        if (idx >= 0) {
+            rows[idx] = { ...rows[idx], hideInCodex: true };
+            return;
+        }
+        const mirror = normalizeCodexConnectionMetaRow(
+            {
+                kind: sk,
+                name: sn,
+                hideInCodex: true,
+                thisEntryLane: 'A',
+            },
+            rsk,
+            rsn,
+        );
+        if (mirror) rows.push(mirror);
+        return;
+    }
+
+    if (idx >= 0 && rows[idx].hideInCodex === true) {
+        const nextRow = { ...rows[idx] };
+        delete nextRow.hideInCodex;
+        rows[idx] = nextRow;
+    }
+}
+
+/**
+ * @param {string} subjectKind
+ * @param {string} subjectName
+ * @param {string} linkedKind
+ * @param {string} linkedName
+ * @param {object[]} metaRows
+ */
+export function isCodexConnectionPairHiddenInCodex(subjectKind, subjectName, linkedKind, linkedName, metaRows) {
+    const key = codexConnectionSubjectLinkedKey(subjectKind, subjectName, linkedKind, linkedName);
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, subjectKind, subjectName)) continue;
+        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(subjectKind, subjectName, lk, ln) !== key) continue;
+        if (row.hideInCodex === true) return true;
+    }
+    const revKey = codexConnectionSubjectLinkedKey(linkedKind, linkedName, subjectKind, subjectName);
+    for (const row of metaRows || []) {
+        if (!metaRowMatchesSubject(row, linkedKind, linkedName)) continue;
+        const lk = String(row.linkedKind || row.kind || '').toLowerCase();
+        const ln = String(row.linkedName != null ? row.linkedName : row.name || '').trim();
+        if (codexConnectionSubjectLinkedKey(linkedKind, linkedName, lk, ln) !== revKey) continue;
+        if (row.hideInCodex === true) return true;
+    }
+    return false;
 }
 
 /**

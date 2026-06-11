@@ -8,12 +8,15 @@
  *      `window.CodexCanvasService.applyCodexEventThumbnailFilterHover(event, displayEvent)`
  *      so the codex canvas can dim non-matching nodes while the manager card is hovered.
  *
- *   2. **Open-on-globe** — the thumbnail (non-GitHub-Pages) or the whole card
+ *   2. **Story archive summary badge** — list + timeline previews show the same hover
+ *      badge as dock pagination thumbs when `#eventsManagePanel` is embedded in story mode.
+ *
+ *   3. **Open-on-globe** — the thumbnail (non-GitHub-Pages) or the whole card
  *      (GitHub-Pages) becomes a `role="button"` that calls
  *      `eventManager.openEventFromList(event, index)`. Clicks on the variant badge bubble
  *      through unrouted so they can hit the cycle handler instead.
  *
- *   3. **Variant cycle** — clicks on `.multi-event-badge` (only present for multi-events)
+ *   4. **Variant cycle** — clicks on `.multi-event-badge` (only present for multi-events)
  *      call `eventManager.cycleEventVariant(index, event, item)`. We also stop `mousedown`
  *      so the surrounding drag handler doesn't initiate a drag on the badge.
  *
@@ -27,10 +30,63 @@
  *   isViewOnly: boolean,
  * }} ctx
  */
+
+function isStoryArchivePreviewContext() {
+    try {
+        const panel = document.getElementById('eventsManagePanel');
+        return !!panel?.classList.contains('story-viewer-panel-embedded');
+    } catch (_) {
+        return false;
+    }
+}
+
+/**
+ * @param {Record<string, any>} event
+ * @param {number} index
+ */
+function showStoryArchiveSummaryBadge(event, index) {
+    const badge = typeof window !== 'undefined' ? window.SummaryInfoBadge : null;
+    if (!badge?.show || !event) return;
+
+    const hoverLines = badge.getHoverPreviewLines
+        ? badge.getHoverPreviewLines(event)
+        : {
+            primary: '',
+            otherVariants: [],
+            era: '',
+            primaryRowFlag: null,
+            otherRowFlags: [],
+            yearLine: 'Year Unknown',
+        };
+
+    badge.show(
+        index + 1,
+        hoverLines.primary || (badge.getPlainTitle ? badge.getPlainTitle(event) : ''),
+        hoverLines.otherVariants || [],
+        hoverLines.era || '',
+        hoverLines.primaryRowFlag || null,
+        hoverLines.otherRowFlags || [],
+        hoverLines.yearLine || 'Year Unknown',
+    );
+}
+
+function hideStoryArchiveSummaryBadge() {
+    window.SummaryInfoBadge?.hide?.();
+}
 export function wireEventItemInteractions(ctx) {
     const { item, eventManager, event, displayEvent, index, isMultiEvent, isViewOnly } = ctx;
 
     const thumbBlock = item.querySelector('.event-item__thumb-block');
+    const storyArchivePreview = isStoryArchivePreviewContext();
+
+    if (storyArchivePreview) {
+        item.addEventListener('pointerenter', () => {
+            showStoryArchiveSummaryBadge(event, index);
+        });
+        item.addEventListener('pointerleave', () => {
+            hideStoryArchiveSummaryBadge();
+        });
+    }
 
     if (thumbBlock) {
         thumbBlock.addEventListener('pointerenter', () => {

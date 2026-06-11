@@ -18,6 +18,14 @@ import {
     eventRootSlotMissingDescription
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
 import { wireStandaloneEventNavButtons } from './standalonePaginationEventNav.js';
+import {
+    isStoryTimelineViewActive,
+    scrollStoryTimelineToProgress,
+} from '../../../../story/story-mode/StoryTimelineView.js';
+import {
+    normalizedProgressFromSliderValue,
+    sliderValueForPageStart,
+} from '../../../interface-pagination/dock/pageSliderMath.js';
 
 export function runSetupStandalonePagination(slide) {
         const prevBtn = document.getElementById('prevPageBtn');
@@ -253,9 +261,7 @@ export function runSetupStandalonePagination(slide) {
                 // One page: still scrub across event slots on that page (hero-bio short lists).
                 pageSlider.disabled = totalPages <= 1 && slotsOnCurrentPage <= 1;
 
-                const pages = Math.max(1, totalPages);
-                const pageCenter = (currentPage - 0.5) / pages;
-                pageSlider.value = String(Math.round(pageCenter * SLIDER_RESOLUTION));
+                pageSlider.value = String(sliderValueForPageStart(currentPage, totalPages));
             }
             
             // Generate ticks and era strip
@@ -357,7 +363,15 @@ export function runSetupStandalonePagination(slide) {
                     window.SoundEffectsManager.play('page');
                 }
 
-                window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
+                if (!options.skipTimelinePan && isStoryTimelineViewActive()) {
+                    const totalPages = getTotalPages();
+                    const progress = totalPages <= 1
+                        ? 0
+                        : (validPage - 0.5) / totalPages;
+                    scrollStoryTimelineToProgress(progress);
+                } else if (!options.skipTimelinePan) {
+                    window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
+                }
             }
         };
         
@@ -465,8 +479,31 @@ export function runSetupStandalonePagination(slide) {
             // Input event for live page updates
             pageSlider.addEventListener('input', () => {
                 const tp = getTotalPages();
-                const value = parseInt(pageSlider.value, 10);
-                const progress = value / SLIDER_RESOLUTION;
+                const progress = normalizedProgressFromSliderValue(pageSlider.value);
+
+                if (isStoryTimelineViewActive()) {
+                    scrollStoryTimelineToProgress(progress);
+
+                    if (tp <= 1) return;
+
+                    const newPage = Math.min(tp, Math.max(1, Math.floor(progress * tp) + 1));
+                    if (newPage === lastPage) return;
+                    lastPage = newPage;
+
+                    sliderGesture.inputEvents += 1;
+                    handlePageChange(newPage, { skipSound: true, skipTimelinePan: true });
+
+                    const isScrubDrag = sliderGesture.dragLike || sliderGesture.inputEvents >= 2;
+                    if (isScrubDrag) {
+                        sliderGesture.tapPendingPageSound = false;
+                        if (window.PanelResizeGearTick?.play) {
+                            window.PanelResizeGearTick.play();
+                        }
+                    } else {
+                        sliderGesture.tapPendingPageSound = true;
+                    }
+                    return;
+                }
 
                 if (tp <= 1) {
                     // Single-page lists: thumb moves across event slots (visual only).

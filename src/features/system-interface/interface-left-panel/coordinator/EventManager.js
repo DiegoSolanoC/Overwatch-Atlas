@@ -20,6 +20,7 @@ import { runAddBlankEventAndOpen } from './runAddBlankEventAndOpen.js';
 import { runDeleteEventAtIndex, runDeleteEventWithConfirm } from './runDeleteEventWithConfirm.js';
 import { syncArchiveManagePanelActionVisibility } from '../event-system/listeners/wireManagePanelButtons.js';
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
+import { refreshStoryArchiveEraTintIfActive } from '../../../story/story-mode/StoryArchiveEraTint.js';
 
 class EventManager {
     constructor() {
@@ -118,6 +119,11 @@ class EventManager {
         return arch === 'heroes' || arch === 'factions' || arch === 'npcs' || arch === 'locations';
     }
 
+    _isStoryDataArchiveSource() {
+        const arch = this.dataService?.getArchiveSource?.() ?? 'story';
+        return arch === 'story';
+    }
+
     async switchStoryArchiveSource(archiveId) {
         if (!this.dataService?.setArchiveSource) return;
         this.dataService.setArchiveSource(archiveId);
@@ -145,7 +151,7 @@ class EventManager {
     _resetStoryArchiveListState() {
         this._resetSearchInputs();
         this.currentPage = 1;
-        this.showAllEventsInManager = this._isBioDataArchiveSource();
+        this.showAllEventsInManager = this._isBioDataArchiveSource() || this._isStoryDataArchiveSource();
         if (this.eventItemVariantIndices?.clear) {
             this.eventItemVariantIndices.clear();
         }
@@ -228,6 +234,7 @@ class EventManager {
                 this.setupDragAndDrop();
             });
             syncStoryTimelineIfActive();
+            refreshStoryArchiveEraTintIfActive();
         } else {
             console.error('EventManager: EventRenderService not available!');
             this.updateStatus('EventManager: ERROR - EventRenderService not found', 'error');

@@ -729,7 +729,7 @@
     box-sizing: border-box;
 }
 
-.event-slide-bio-conn-row__show-codex {
+.event-slide-bio-conn-row__hide-codex {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -739,7 +739,12 @@
     cursor: pointer;
 }
 
-.event-slide-bio-conn-row__show-codex input {
+.event-slide-bio-conn-row__toolbar-main .event-slide-bio-conn-row__hide-codex,
+.event-slide-bio-conn-row__toolbar-main .event-slide-bio-conn-row__pruned {
+    margin-top: 0;
+}
+
+.event-slide-bio-conn-row__hide-codex input {
     margin: 0;
     flex-shrink: 0;
 }

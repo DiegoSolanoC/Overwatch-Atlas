@@ -4,6 +4,7 @@
 
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import { codexUnorderedPairKey } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { codexEdgeIsHiddenOnBoard } from '../../codex-connections/codexHiddenConnectionCords.js';
 import {
     CODEX_EDGE_CULL_MARGIN_PX,
     CODEX_EDGE_DEGREE_FONT_PX,
@@ -162,7 +163,7 @@ export function redrawCodexEdges(opts = {}) {
         return;
     }
 
-    let edges = _rt.getEdges();
+    let edges = _rt.getEdges().filter((e) => !codexEdgeIsHiddenOnBoard(e));
     if (_rt.getTargetedSelectionActive?.()) {
         const visible = _rt.getTargetedSelectionVisibleIds?.();
         const edgeKeys = _rt.getTargetedSelectionVisibleEdgeKeys?.();

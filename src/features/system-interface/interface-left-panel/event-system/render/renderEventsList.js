@@ -36,6 +36,7 @@ import {
 } from './archiveSeparators.js';
 import { createEventItem } from './createEventItem.js';
 import { createGroupedArchiveSeparatorInjector } from './groupedArchiveSeparatorInjector.js';
+import { shouldSkipStoryArchiveListRender, isStoryArchiveEmbeddedPanel } from '../../../../story/story-mode/storyArchivePreviewContext.js';
 
 /** @returns {typeof window.FactionArchiveGroupOrderHelpers|null} */
 function factionArchiveGroupOrder() {
@@ -113,6 +114,18 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
         return;
     }
 
+    if (shouldSkipStoryArchiveListRender()) {
+        const eventsCountElement = document.getElementById('eventsCount');
+        if (eventsCountElement) {
+            eventsCountElement.textContent = `${totalEvents} ${totalEvents === 1 ? 'Event' : 'Events'}`;
+        }
+        eventsList.innerHTML = '';
+        if (typeof onRenderComplete === 'function') {
+            onRenderComplete();
+        }
+        return;
+    }
+
     const fullList = renderService.eventManager && renderService.eventManager.events
         ? renderService.eventManager.events
         : events;
@@ -133,7 +146,11 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
         npcArchiveGroupOrder()?.sortNpcsArchiveEventsStable(fullList);
     }
 
-    const overlapIndexSet = computeOverlapIndexSet(eventsToRender, fullList, renderService.eventManager);
+    const overlapIndexSet = computeOverlapIndexSet(
+        eventsToRender,
+        fullList,
+        isStoryArchiveEmbeddedPanel() ? null : renderService.eventManager,
+    );
     const renderStartTime = performance.now();
     const fragment = document.createDocumentFragment();
 

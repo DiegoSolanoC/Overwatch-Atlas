@@ -22,6 +22,7 @@ import {
     resolveCodexConnectionsForSubject,
 } from './CodexConnectionMeta.js';
 import { invalidateCodexFilterDerivedCache } from '../codex-nodes/filters/CodexNodeFilterMatch.js';
+import { redrawCodexEdges } from '../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { invalidateCodexTimelineGateStructureCache } from '../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 
 /** @type {{ v: number, nodes: object[], edges: object[], connections: object[] } | null} */
@@ -347,6 +348,7 @@ export async function saveCodexConnectionsForSubject(archive, subjectName, edito
             window.applyCodexFilterState();
         }
         api.applyCodexTimelineRangeVisualRefresh?.();
+        redrawCodexEdges({ force: true });
     }
 
     let writtenToDisk = false;

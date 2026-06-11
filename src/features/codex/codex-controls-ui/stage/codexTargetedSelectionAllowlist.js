@@ -4,7 +4,7 @@
 
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import { collectJunctionBridgedBioNodeIdsForSeed } from '../../../system-interface/interface-shared/bio-archive/bioArchiveDirectCodexPairKeys.js';
-import { isCodexConnectionPairPruned } from '../../codex-connections/CodexConnectionMeta.js';
+import { isCodexConnectionPairPruned, isCodexConnectionPairHiddenInCodex } from '../../codex-connections/CodexConnectionMeta.js';
 
 /** Clears cached archive rows (legacy hook — codex meta is session-local now). */
 export function invalidateCodexTargetedArchiveCache() {
@@ -47,16 +47,26 @@ function seedEntityFromNode(node) {
  * @param {object} otherNode
  * @returns {boolean}
  */
-function codexPairIsPrunedBetween(seedNode, otherNode) {
+function codexPairIsBlockedBetween(seedNode, otherNode) {
     const entA = seedEntityFromNode(seedNode);
     const entB = seedEntityFromNode(otherNode);
     if (!entA || !entB) return false;
-    return isCodexConnectionPairPruned(
+    const meta = s.codexConnections || [];
+    if (isCodexConnectionPairPruned(
         entA.kind,
         entA.name,
         entB.kind,
         entB.name,
-        s.codexConnections || [],
+        meta,
+    )) {
+        return true;
+    }
+    return isCodexConnectionPairHiddenInCodex(
+        entA.kind,
+        entA.name,
+        entB.kind,
+        entB.name,
+        meta,
     );
 }
 
@@ -99,7 +109,7 @@ export function buildAllowedBioNodeIdsBySeedIds(seedIds, nodes, edges) {
             if (!other) continue;
             const on = byId.get(other);
             if (on && on.kind !== 'junction') {
-                if (!codexPairIsPrunedBetween(seed, on)) {
+                if (!codexPairIsBlockedBetween(seed, on)) {
                     allowed.add(other);
                 }
             }
@@ -107,7 +117,7 @@ export function buildAllowedBioNodeIdsBySeedIds(seedIds, nodes, edges) {
 
         for (const bridgedId of collectJunctionBridgedBioNodeIdsForSeed(seedId, nodeList, edgeList)) {
             const on = byId.get(bridgedId);
-            if (on && !codexPairIsPrunedBetween(seed, on)) {
+            if (on && !codexPairIsBlockedBetween(seed, on)) {
                 allowed.add(bridgedId);
             }
         }
@@ -143,7 +153,7 @@ export function buildAllowedBioNodeIdsForTargetedSeed(seedId) {
         if (!other) continue;
         const on = byId.get(other);
         if (on && on.kind !== 'junction') {
-            if (!codexPairIsPrunedBetween(seed, on)) {
+            if (!codexPairIsBlockedBetween(seed, on)) {
                 allowed.add(other);
             }
         }
@@ -151,7 +161,7 @@ export function buildAllowedBioNodeIdsForTargetedSeed(seedId) {
 
     for (const bridgedId of collectJunctionBridgedBioNodeIdsForSeed(seedId, nodes, edges)) {
         const on = byId.get(bridgedId);
-        if (on && !codexPairIsPrunedBetween(seed, on)) {
+        if (on && !codexPairIsBlockedBetween(seed, on)) {
             allowed.add(bridgedId);
         }
     }

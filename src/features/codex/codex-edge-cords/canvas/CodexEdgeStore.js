@@ -28,6 +28,7 @@ import {
     resolveCodexNodeIdsForActiveFilters,
 } from '../../codex-nodes/filters/CodexNodeFilterMatch.js';
 import { isCodexLinkFiltersEnabled } from '../../codex-controls-ui/stage/CodexDockToggles.js';
+import { codexEdgeIsHiddenOnBoard } from '../../codex-connections/codexHiddenConnectionCords.js';
 
 
 function findEdge(fromId, toId) {
@@ -196,6 +197,10 @@ function edgeCordIsFilterLinkedActive(edge) {
     return keys.has(codexUnorderedPairKey(edge.fromId, edge.toId));
 }
 
+function edgeCordIsHiddenOnBoard(edge) {
+    return codexEdgeIsHiddenOnBoard(edge, s.codexAllNodes, s.codexEdges, s.codexConnections);
+}
+
 function edgeCordIsFilterDormant(edge) {
     if (!codexFiltersActive()) return false;
     ensureCodexFilterDerivedSets();
@@ -209,6 +214,7 @@ function edgeCordPacketPathSimpleOnly() {
 }
 
 function edgeCordPacketsEnabled(edge) {
+    if (edgeCordIsHiddenOnBoard(edge)) return false;
     if (edgeIsCordPendingDelete(edge)) return false;
     if (edgeCordIsTimelineRangeInactive(edge)) return false;
     if (codexFiltersActive()) {
@@ -229,6 +235,7 @@ function edgeCordPacketsEnabled(edge) {
 }
 
 function edgeCordAppearance(edge) {
+    if (edgeCordIsHiddenOnBoard(edge)) return 'hidden';
     if (edgeIsCordPendingDelete(edge)) return 'red';
     if (edgeCordShowsYellow(edge)) return 'yellow';
     if (edgeCordIsFilterDormant(edge)) return 'grey';
@@ -241,6 +248,7 @@ function edgeCordAppearance(edge) {
 
 /** Junction elbows sit between two segments — grey when either leg is timeline- or filter-dormant. */
 function edgeCordAppearanceForJunctionElbow(edgeIn, edgeOut) {
+    if (edgeCordIsHiddenOnBoard(edgeIn) || edgeCordIsHiddenOnBoard(edgeOut)) return 'hidden';
     if (edgeIsCordPendingDelete(edgeIn) || edgeIsCordPendingDelete(edgeOut)) return 'red';
     if (edgeCordShowsYellow(edgeIn) || edgeCordShowsYellow(edgeOut)) return 'yellow';
     const inActive = !edgeCordIsFilterDormant(edgeIn);

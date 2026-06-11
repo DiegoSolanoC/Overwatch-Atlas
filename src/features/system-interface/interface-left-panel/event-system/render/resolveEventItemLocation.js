@@ -24,6 +24,8 @@
  *   lat: number|undefined, lon: number|undefined, x: number|undefined, y: number|undefined,
  * }}
  */
+import { isPlaceholderEarthCoordinate, shouldSkipAsyncLocationEnhance } from '../../../../story/story-mode/storyArchivePreviewContext.js';
+
 export function resolveEventItemLocation(eventManager, event, index) {
     const isMultiEvent = !!(event.variants && event.variants.length > 0);
     const locationType = event.locationType || 'earth';
@@ -51,7 +53,9 @@ export function resolveEventItemLocation(eventManager, event, index) {
     }
 
     if (!locationName && locationType === 'earth' && locationLat !== undefined && locationLon !== undefined) {
-        if (eventManager.getLocationName) {
+        if (!shouldSkipAsyncLocationEnhance()
+            && !isPlaceholderEarthCoordinate(locationLat, locationLon)
+            && eventManager.getLocationName) {
             locationName = eventManager.getLocationName(locationLat, locationLon);
         }
     }
@@ -89,7 +93,9 @@ export function resolveEventItemLocation(eventManager, event, index) {
         if (currentVariant.lon !== undefined) locationLon = currentVariant.lon;
         const currentVariantLocationType = currentVariant.locationType || locationType;
         if (!locationName && currentVariantLocationType === 'earth' && locationLat !== undefined && locationLon !== undefined) {
-            if (eventManager.getLocationName) {
+            if (!shouldSkipAsyncLocationEnhance()
+                && !isPlaceholderEarthCoordinate(locationLat, locationLon)
+                && eventManager.getLocationName) {
                 locationName = eventManager.getLocationName(locationLat, locationLon);
             }
         }

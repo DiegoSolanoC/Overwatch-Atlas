@@ -21,6 +21,66 @@ function finishPreviewImageLoad(img, wrap) {
     }
 }
 
+/**
+ * @param {HTMLImageElement} img
+ */
+function loadPreviewImageFromDataset(img) {
+    const src = img.dataset?.src;
+    if (!src) return;
+
+    const wrap = img.closest('.event-item-preview-image');
+    wrap?.classList.add('event-item-preview-image--loading');
+    img.style.opacity = '0';
+    const done = () => finishPreviewImageLoad(img, wrap);
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+    img.src = src;
+    delete img.dataset.src;
+    if (img.complete) done();
+}
+
+/**
+ * Eager-load lazy preview images currently visible in `root`.
+ * Needed when the scroll root was `display:none`, or when cards move via CSS
+ * transform (timeline pan) — IntersectionObserver does not re-fire for transforms.
+ *
+ * @param {HTMLElement | null} root
+ * @param {number} [marginPx]
+ */
+export function flushVisibleLazyPreviewImages(root, marginPx = 200) {
+    if (!root) return;
+    root.querySelectorAll('img[data-src]').forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) return;
+
+        const rootRect = root.getBoundingClientRect();
+        const visible = rect.bottom >= rootRect.top - marginPx
+            && rect.top <= rootRect.bottom + marginPx
+            && rect.right >= rootRect.left
+            && rect.left <= rootRect.right;
+        if (visible) {
+            loadPreviewImageFromDataset(img);
+        }
+    });
+}
+
+/**
+ * Re-bind lazy loading for story archive list or timeline after a view switch.
+ */
+export function resyncStoryArchivePreviewImages() {
+    const renderService = typeof window !== 'undefined' ? window.EventRenderService : null;
+    const panel = document.getElementById('eventsManagePanel');
+    if (!renderService || !panel?.classList.contains('story-viewer-panel-embedded')) return;
+
+    const isTimeline = panel.classList.contains('story-viewer-panel-embedded--timeline-view');
+    const root = isTimeline
+        ? document.querySelector('.story-timeline-view__viewport')
+        : document.getElementById('eventsList');
+    if (!root) return;
+
+    setupEventManagerImageLazyLoading(renderService, root);
+}
+
 export function setupEventManagerImageLazyLoading(renderService, eventsList) {
     if (!eventsList) return;
 
@@ -30,16 +90,7 @@ export function setupEventManagerImageLazyLoading(renderService, eventsList) {
     if (!('IntersectionObserver' in window)) {
         imgs.forEach((img) => {
             if (img.dataset.src) {
-                const wrap = img.closest('.event-item-preview-image');
-                const src = img.dataset.src;
-                wrap?.classList.add('event-item-preview-image--loading');
-                img.style.opacity = '0';
-                const done = () => finishPreviewImageLoad(img, wrap);
-                img.addEventListener('load', done, { once: true });
-                img.addEventListener('error', done, { once: true });
-                img.src = src;
-                delete img.dataset.src;
-                if (img.complete) done();
+                loadPreviewImageFromDataset(img);
             }
         });
         return;
@@ -53,17 +104,8 @@ export function setupEventManagerImageLazyLoading(renderService, eventsList) {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             const img = entry.target;
-            const src = img.dataset ? img.dataset.src : null;
-            if (src) {
-                const wrap = img.closest('.event-item-preview-image');
-                wrap?.classList.add('event-item-preview-image--loading');
-                img.style.opacity = '0';
-                const done = () => finishPreviewImageLoad(img, wrap);
-                img.addEventListener('load', done, { once: true });
-                img.addEventListener('error', done, { once: true });
-                img.src = src;
-                delete img.dataset.src;
-                if (img.complete) done();
+            if (img.dataset?.src) {
+                loadPreviewImageFromDataset(img);
             }
             obs.unobserve(img);
         });
@@ -74,4 +116,10 @@ export function setupEventManagerImageLazyLoading(renderService, eventsList) {
     });
 
     imgs.forEach((img) => renderService._eventManagerImgObserver.observe(img));
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            flushVisibleLazyPreviewImages(eventsList, 200);
+        });
+    });
 }

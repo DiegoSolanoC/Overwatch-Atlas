@@ -22,12 +22,15 @@
 import { findLocationByCoords } from './findLocationByCoords.js';
 import { nominatimReverseGeocode } from './nominatimReverseGeocode.js';
 import { repaintEventListLocationLabel } from './repaintEventListLocationLabel.js';
+import { isPlaceholderEarthCoordinate, shouldSkipAsyncLocationEnhance } from '../../../../story/story-mode/storyArchivePreviewContext.js';
 
 class LocationLabelResolver {
     constructor() {
         this.locationCache = new Map();
         this.dataService = null;
         this.eventManager = null;
+        /** @type {Set<string>} */
+        this._enhanceInFlight = new Set();
     }
 
     setDataService(dataService) { this.dataService = dataService; }
@@ -37,6 +40,9 @@ class LocationLabelResolver {
      * @returns {string|null} Location name (sync; may be enhanced asynchronously later).
      */
     getLocationName(lat, lon, cities = [], fictionalCities = [], airports = [], seaports = []) {
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+        if (isPlaceholderEarthCoordinate(lat, lon)) return null;
+
         const cacheKey = `${lat.toFixed(4)}_${lon.toFixed(4)}`;
         if (this.locationCache.has(cacheKey)) return this.locationCache.get(cacheKey);
 
@@ -50,13 +56,15 @@ class LocationLabelResolver {
                 return displayName;
             }
 
-            // Return city now, enhance with country in the background.
-            this.enhanceLocationWithCountry(lat, lon, displayName);
+            if (!shouldSkipAsyncLocationEnhance()) {
+                this.enhanceLocationWithCountry(lat, lon, displayName);
+            }
             return displayName;
         }
 
-        // Unknown coords — try reverse geocode in the background; sync return is null.
-        this.enhanceLocationWithCountry(lat, lon, null);
+        if (!shouldSkipAsyncLocationEnhance()) {
+            this.enhanceLocationWithCountry(lat, lon, null);
+        }
         return null;
     }
 
@@ -65,11 +73,18 @@ class LocationLabelResolver {
      * repaint any visible manager row, and forward to the event slide if it's open.
      */
     async enhanceLocationWithCountry(lat, lon, cityName) {
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+        if (isPlaceholderEarthCoordinate(lat, lon)) return;
+        if (shouldSkipAsyncLocationEnhance()) return;
+
         const cacheKey = `${lat.toFixed(4)}_${lon.toFixed(4)}`;
+        if (this._enhanceInFlight.has(cacheKey)) return;
+        this._enhanceInFlight.add(cacheKey);
 
         // Already has country info — accept verbatim, no enhance.
         if (cityName && cityName.includes(',')) {
             this.locationCache.set(cacheKey, cityName);
+            this._enhanceInFlight.delete(cacheKey);
             return;
         }
 
@@ -96,11 +111,14 @@ class LocationLabelResolver {
             }
         } catch (_) {
             // Already have the city name — silent failure is fine.
+        } finally {
+            this._enhanceInFlight.delete(cacheKey);
         }
     }
 
     clearCache() {
         this.locationCache.clear();
+        this._enhanceInFlight.clear();
     }
 }
 

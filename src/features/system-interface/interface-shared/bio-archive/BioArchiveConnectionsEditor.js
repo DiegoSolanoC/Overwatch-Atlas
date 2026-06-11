@@ -909,6 +909,18 @@
             laneB.addEventListener('change', onLaneChange);
         }
 
+        const hideCodexCb = document.createElement('input');
+        hideCodexCb.type = 'checkbox';
+        hideCodexCb.id = rowUid + '-hide-codex';
+        hideCodexCb.dataset.role = 'bio-conn-hide-codex';
+        const hideCodexLab = document.createElement('label');
+        hideCodexLab.htmlFor = hideCodexCb.id;
+        hideCodexLab.className = 'event-slide-bio-conn-row__hide-codex';
+        hideCodexLab.appendChild(hideCodexCb);
+        hideCodexLab.appendChild(document.createTextNode(' Hide in Codex'));
+        if (data.hideInCodex === true) hideCodexCb.checked = true;
+        toolbarMain.appendChild(hideCodexLab);
+
         const prunedCb = document.createElement('input');
         prunedCb.type = 'checkbox';
         prunedCb.id = rowUid + '-pruned';
@@ -1043,6 +1055,7 @@
                 const rout = row.querySelector('[data-role="bio-conn-reason-out"]');
                 const rin = row.querySelector('[data-role="bio-conn-reason-in"]');
                 const prunedEl = row.querySelector('[data-role="bio-conn-pruned"]');
+                const hideCodexEl = row.querySelector('[data-role="bio-conn-hide-codex"]');
                 const forcedLane = row.querySelector('[data-role="bio-conn-lane-forced"]');
                 const laneEl = row.querySelector('input[data-role="bio-conn-lane"]:checked');
                 var factionMixed = row.dataset.bioConnFactionMixed === '1';
@@ -1073,6 +1086,7 @@
                         rangedOut.thisEntryLane = skRoot === 'faction' ? 'A' : 'B';
                     }
                     if (prunedEl && prunedEl.checked) rangedOut.pruned = true;
+                    if (hideCodexEl && hideCodexEl.checked) rangedOut.hideInCodex = true;
                     if (
                         window.BioArchiveConnectionRanges
                         && typeof window.BioArchiveConnectionRanges.syncLegacyReasoningFieldsFromRanges
@@ -1113,6 +1127,7 @@
                     };
                 }
                 if (prunedEl && prunedEl.checked) out.pruned = true;
+                if (hideCodexEl && hideCodexEl.checked) out.hideInCodex = true;
 
                 return out;
             })
@@ -1122,7 +1137,8 @@
                     entry.reasoningSubjectToLinked ||
                     entry.reasoningLinkedToSubject ||
                     (Array.isArray(entry.ranges) && entry.ranges.length > 0) ||
-                    entry.pruned === true
+                    entry.pruned === true ||
+                    entry.hideInCodex === true
                 );
             });
     }

@@ -87,7 +87,7 @@ function populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar) {
     if (!secondary) return;
 
     const arch = window.eventManager?.dataService?.getArchiveSource?.();
-    if (isBioArchiveCategory(arch)) {
+    if (isBioArchiveCategory(arch) || arch === 'story') {
         return;
     }
 

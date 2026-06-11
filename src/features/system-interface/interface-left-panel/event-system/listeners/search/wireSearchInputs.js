@@ -287,17 +287,22 @@ function isBioDataArchiveEventManager(eventManager) {
     return arch === 'heroes' || arch === 'factions' || arch === 'npcs' || arch === 'locations';
 }
 
+function isStoryDataArchiveEventManager(eventManager) {
+    return eventManager?.dataService?.getArchiveSource?.() === 'story';
+}
+
 export function wirePerPageControls(ctx) {
     const { perPageInput, showAllCheckbox, eventManager } = ctx;
 
     const applyPerPageSettings = () => {
         if (!eventManager) return;
         const bioArchive = isBioDataArchiveEventManager(eventManager);
-        let showAll = bioArchive || !!(showAllCheckbox && showAllCheckbox.checked);
+        const storyArchive = isStoryDataArchiveEventManager(eventManager);
+        let showAll = bioArchive || storyArchive || !!(showAllCheckbox && showAllCheckbox.checked);
         eventManager.showAllEventsInManager = showAll;
         if (showAllCheckbox) {
             showAllCheckbox.checked = showAll;
-            showAllCheckbox.disabled = bioArchive;
+            showAllCheckbox.disabled = bioArchive || storyArchive;
         }
         if (perPageInput) {
             perPageInput.disabled = showAll;

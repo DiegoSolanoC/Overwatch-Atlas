@@ -14,6 +14,7 @@ import {
     isCodexConnectionPairPruned,
     nodeToBioEntity,
 } from '../../codex-connections/CodexConnectionMeta.js';
+import { invalidateCodexHiddenConnectionPathCache } from '../../codex-connections/codexHiddenConnectionCords.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 
 /**
@@ -389,6 +390,7 @@ function codexFilterDerivedCacheSignature(allNodes, edges, linkFiltersEnabled) {
 export function invalidateCodexFilterDerivedCache() {
     codexFilterDerivedCacheKey = '';
     codexFilterDerivedCache = null;
+    invalidateCodexHiddenConnectionPathCache();
 }
 
 /**

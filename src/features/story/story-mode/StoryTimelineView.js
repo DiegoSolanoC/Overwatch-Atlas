@@ -8,13 +8,15 @@ import {
     TIMELINE_CARD_SLOT_PX,
 } from './StoryTimelineEventLayout.js';
 import { createEventItem } from '../../system-interface/interface-left-panel/event-system/render/createEventItem.js';
-import { setupEventManagerImageLazyLoading } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
+import { setupEventManagerImageLazyLoading, flushVisibleLazyPreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
 import { computeOverlapIndexSet } from '../../system-interface/interface-left-panel/event-system/render/overlapDetection.js';
 import { filterEventsByStandaloneActiveFilters } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
+import { refreshStoryArchiveEraTintIfActive } from './StoryArchiveEraTint.js';
 
 const TRACK_PADDING_PX = 80;
 const VIEWPORT_LEADING_PAD_PX = 40;
 const DOCK_EVENTS_PER_PAGE = 10;
+const TIMELINE_CARD_BATCH_SIZE = 24;
 
 /** @type {(() => void) | null} */
 let panTeardown = null;
@@ -22,7 +24,84 @@ let panTeardown = null;
 /** @type {(() => void) | null} */
 let resizeTeardown = null;
 
-/** @type {{ scrollToStart: () => void, scrollToDockPage: (page: number, perPage?: number) => void } | null} */
+/** @type {(() => void) | null} */
+let connectorStemTeardown = null;
+
+/**
+ * Extend each connector stem from the main line to the center of its preview thumb.
+ *
+ * @param {HTMLElement} track
+ */
+function syncTimelineConnectorStems(track) {
+    const line = track.querySelector('.story-timeline-view__line');
+    if (!line) return;
+
+    const lineRect = line.getBoundingClientRect();
+
+    for (const connector of track.querySelectorAll('.story-timeline-connector')) {
+        const index = connector.dataset.index;
+        if (!index) continue;
+
+        const slot = track.querySelector(`.story-timeline-event[data-index="${index}"]`);
+        const thumbShell = slot?.querySelector('.event-item__thumb-shell');
+        if (!slot || !thumbShell) continue;
+
+        const thumbRect = thumbShell.getBoundingClientRect();
+        const thumbCenterY = thumbRect.top + thumbRect.height / 2;
+        const isAbove = connector.classList.contains('story-timeline-connector--above');
+        const height = isAbove
+            ? lineRect.top - thumbCenterY
+            : thumbCenterY - lineRect.bottom;
+
+        connector.style.height = `${Math.max(6, Math.round(height))}px`;
+    }
+}
+
+/**
+ * @param {HTMLElement} track
+ */
+function scheduleTimelineConnectorStemSync(track) {
+    requestAnimationFrame(() => {
+        syncTimelineConnectorStems(track);
+        requestAnimationFrame(() => syncTimelineConnectorStems(track));
+    });
+}
+
+/**
+ * @param {HTMLElement} track
+ * @param {HTMLElement | null} [viewport]
+ */
+function ensureConnectorStemSync(track, viewport = null) {
+    if (typeof connectorStemTeardown === 'function') {
+        connectorStemTeardown();
+        connectorStemTeardown = null;
+    }
+
+    scheduleTimelineConnectorStemSync(track);
+
+    const ac = new AbortController();
+    const { signal } = ac;
+
+    const resizeObserver = new ResizeObserver(() => {
+        syncTimelineConnectorStems(track);
+    });
+    resizeObserver.observe(track);
+    if (viewport) {
+        resizeObserver.observe(viewport);
+    }
+
+    track.addEventListener('load', () => {
+        syncTimelineConnectorStems(track);
+    }, { capture: true, signal });
+
+    connectorStemTeardown = () => {
+        ac.abort();
+        resizeObserver.disconnect();
+        connectorStemTeardown = null;
+    };
+}
+
+/** @type {{ scrollToStart: () => void, scrollToDockPage: (page: number, perPage?: number) => void, scrollToProgress: (progress: number) => void } | null} */
 let panApi = null;
 
 /**
@@ -123,6 +202,8 @@ function isStoryTimelineViewActive() {
         && window.eventManager?.dataService?.getArchiveSource?.() === 'story';
 }
 
+export { isStoryTimelineViewActive };
+
 /**
  * @param {HTMLElement} track
  */
@@ -163,15 +244,22 @@ function ensureTimelineViewport(layer) {
  * @param {ReturnType<typeof buildStoryTimelineEventLayout>} eventLayout
  * @param {HTMLElement} viewport
  * @param {boolean} filterActive
+ * @param {(() => void) | undefined} onReady
  */
-function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, allEvents, eventLayout, viewport, filterActive) {
+function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, allEvents, eventLayout, viewport, filterActive, onReady) {
     track.replaceChildren();
     track.classList.toggle('story-timeline-view__track--filtered', filterActive);
+    track.style.width = `${trackWidth}px`;
 
     const line = document.createElement('div');
     line.className = 'story-timeline-view__line';
     line.setAttribute('aria-hidden', 'true');
     track.appendChild(line);
+
+    const connectorsWrap = document.createElement('div');
+    connectorsWrap.className = 'story-timeline-view__connectors';
+    connectorsWrap.setAttribute('aria-hidden', 'true');
+    track.appendChild(connectorsWrap);
 
     const markersWrap = document.createElement('div');
     markersWrap.className = 'story-timeline-view__markers';
@@ -197,14 +285,24 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
     track.appendChild(eventsWrap);
 
     const renderService = window.EventRenderService;
-    const overlapSet = computeOverlapIndexSet(
-        events,
-        events,
-        renderService?.eventManager ?? null,
-    );
+    const positions = eventLayout.positions;
 
-    if (renderService?.eventManager && eventLayout.positions.length > 0) {
-        for (const pos of eventLayout.positions) {
+    if (!renderService?.eventManager || positions.length === 0) {
+        onReady?.();
+        return;
+    }
+
+    const overlapSet = computeOverlapIndexSet(events, events, null);
+
+    onReady?.();
+
+    let batchIndex = 0;
+
+    const appendTimelineCardBatch = () => {
+        const end = Math.min(batchIndex + TIMELINE_CARD_BATCH_SIZE, positions.length);
+
+        for (; batchIndex < end; batchIndex += 1) {
+            const pos = positions[batchIndex];
             const event = events[pos.index];
             const sourceIndex = sourceIndices[pos.index];
             if (!event || sourceIndex == null) continue;
@@ -215,23 +313,38 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
             slot.dataset.index = String(sourceIndex);
             slot.dataset.anchorYear = String(pos.anchorYear);
 
+            const connector = document.createElement('span');
+            connector.className = `story-timeline-connector story-timeline-connector--${pos.side}`;
+            connector.dataset.index = String(sourceIndex);
+            connector.style.left = `${pos.x}px`;
+            connector.style.setProperty('--stem-phase', String((pos.index % 7) * 0.21));
+            connectorsWrap.appendChild(connector);
+
             const card = createEventItem(renderService, event, sourceIndex, allEvents, {
                 hasOverlap: overlapSet.has(pos.index),
             });
             card.classList.add('story-timeline-event__card');
-            slot.appendChild(card);
+            slot.append(card);
             eventsWrap.appendChild(slot);
         }
 
-        setupEventManagerImageLazyLoading(renderService, viewport);
-    }
+        if (batchIndex < positions.length) {
+            flushVisibleLazyPreviewImages(viewport, 240);
+            requestAnimationFrame(appendTimelineCardBatch);
+            return;
+        }
 
-    track.style.width = `${trackWidth}px`;
+        setupEventManagerImageLazyLoading(renderService, viewport);
+        flushVisibleLazyPreviewImages(viewport, 240);
+        ensureConnectorStemSync(track, viewport);
+    };
+
+    appendTimelineCardBatch();
 }
 
 /**
- * @typedef {'start'|'offset'|'page'} StoryTimelinePanMode
- * @typedef {{ mode?: StoryTimelinePanMode, offset?: number|null, page?: number, eventsPerPage?: number }} StoryTimelinePanConfig
+ * @typedef {'start'|'offset'|'page'|'progress'} StoryTimelinePanMode
+ * @typedef {{ mode?: StoryTimelinePanMode, offset?: number|null, page?: number, eventsPerPage?: number, scrollToProgress?: number }} StoryTimelinePanConfig
  */
 
 /**
@@ -273,6 +386,19 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
     function applyOffset(next) {
         offsetX = clampOffset(next);
         track.style.transform = `translate3d(${offsetX}px, 0, 0)`;
+
+        let progress = 0;
+        if (!trackFitsInViewport()) {
+            const minOffset = viewport.clientWidth - track.offsetWidth;
+            if (minOffset < 0) {
+                progress = Math.max(0, Math.min(1, offsetX / minOffset));
+            }
+        }
+        viewport.dispatchEvent(new CustomEvent('story-timeline-pan', {
+            bubbles: true,
+            detail: { progress },
+        }));
+        flushVisibleLazyPreviewImages(viewport, 240);
     }
 
     /**
@@ -295,25 +421,38 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
     }
 
     /**
+     * @param {number} progress 0 = timeline start, 1 = timeline end
+     */
+    function scrollToProgress(progress) {
+        const t = Math.max(0, Math.min(1, Number(progress) || 0));
+        if (trackFitsInViewport()) {
+            applyOffset(centeredTrackOffset());
+            return;
+        }
+        const minOffset = viewport.clientWidth - track.offsetWidth;
+        applyOffset(minOffset * t);
+    }
+
+    /**
      * @param {number} page1Based
      * @param {number} eventsPerPage
      */
     function scrollToDockPage(page1Based, eventsPerPage = DOCK_EVENTS_PER_PAGE) {
-        if (trackFitsInViewport()) {
-            scrollToTimelineStart();
+        const em = window.eventManager;
+        const totalPages = em?.getTotalEventPages?.() ?? 1;
+        if (totalPages <= 1) {
+            scrollToProgress(0);
             return;
         }
-        const eventIndex = Math.max(0, (page1Based - 1) * eventsPerPage);
-        const slot = track.querySelector(`.story-timeline-event[data-index="${eventIndex}"]`);
-        if (!slot) {
-            scrollToTimelineStart();
-            return;
-        }
-        applyOffset(panOffsetForSlot(slot));
+        scrollToProgress((page1Based - 0.5) / totalPages);
     }
 
     function applyPanConfig() {
         const mode = panConfig.mode || 'start';
+        if (mode === 'progress' && Number.isFinite(panConfig.scrollToProgress)) {
+            scrollToProgress(/** @type {number} */ (panConfig.scrollToProgress));
+            return;
+        }
         if (mode === 'offset' && Number.isFinite(panConfig.offset)) {
             applyOffset(/** @type {number} */ (panConfig.offset));
             return;
@@ -362,6 +501,7 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
     panApi = {
         scrollToStart: scrollToTimelineStart,
         scrollToDockPage,
+        scrollToProgress,
     };
 
     return () => {
@@ -386,6 +526,39 @@ function ensureResizeListener() {
         ac.abort();
         resizeTeardown = null;
     };
+}
+
+/** Slider range matches dock `#eventPageSlider` (see pageSliderMath.js). */
+const DOCK_SLIDER_RESOLUTION = 10000;
+
+/** @returns {number} Normalized 0..1 position from the dock page slider. */
+export function getStoryTimelineProgressFromDockSlider() {
+    const dockPage = window.standaloneDockPagination?.getCurrentPage?.() ?? 1;
+    if (dockPage <= 1) return 0;
+
+    const slider = document.getElementById('eventPageSlider');
+    if (!slider) return 0;
+    const value = Number(slider.value);
+    if (!Number.isFinite(value)) return 0;
+    return Math.max(0, Math.min(1, value / DOCK_SLIDER_RESOLUTION));
+}
+
+/**
+ * Pan the story timeline to a normalized position along the scrollable track.
+ *
+ * @param {number} progress 0 = start, 1 = end
+ */
+export function scrollStoryTimelineToProgress(progress) {
+    if (!isStoryTimelineViewActive()) return;
+
+    if (panApi) {
+        panApi.scrollToProgress(progress);
+        return;
+    }
+
+    refreshStoryTimelineView({
+        scrollToProgress: progress,
+    });
 }
 
 /**
@@ -414,7 +587,7 @@ export function syncStoryTimelineIfActive() {
 }
 
 /**
- * @param {{ preservePan?: boolean, scrollToPage?: number, eventsPerPage?: number }} [options]
+ * @param {{ preservePan?: boolean, scrollToPage?: number, eventsPerPage?: number, scrollToProgress?: number }} [options]
  */
 export function refreshStoryTimelineView(options = {}) {
     const layer = document.getElementById('storyTimelineView');
@@ -440,6 +613,9 @@ export function refreshStoryTimelineView(options = {}) {
     const layout = buildStoryTimelineYearLayout(events, eventLayout);
 
     if (!events.length) {
+        if (typeof connectorStemTeardown === 'function') {
+            connectorStemTeardown();
+        }
         track.replaceChildren();
         track.classList.toggle('story-timeline-view__track--filtered', filterActive);
         const empty = document.createElement('p');
@@ -452,6 +628,9 @@ export function refreshStoryTimelineView(options = {}) {
     }
 
     if (layout.startYear == null || layout.endYear == null) {
+        if (typeof connectorStemTeardown === 'function') {
+            connectorStemTeardown();
+        }
         track.replaceChildren();
         track.classList.toggle('story-timeline-view__track--filtered', filterActive);
         const empty = document.createElement('p');
@@ -473,28 +652,38 @@ export function refreshStoryTimelineView(options = {}) {
         eventLayout,
         nextViewport,
         filterActive,
+        () => {
+            /** @type {StoryTimelinePanConfig} */
+            let panConfig = { mode: 'start' };
+            if (options.scrollToProgress != null && Number.isFinite(options.scrollToProgress)) {
+                panConfig = {
+                    mode: 'progress',
+                    scrollToProgress: options.scrollToProgress,
+                };
+            } else if (options.scrollToPage) {
+                panConfig = {
+                    mode: 'page',
+                    page: options.scrollToPage,
+                    eventsPerPage: options.eventsPerPage ?? DOCK_EVENTS_PER_PAGE,
+                };
+            } else if (savedOffset != null && Number.isFinite(savedOffset)) {
+                panConfig = { mode: 'offset', offset: savedOffset };
+            }
+
+            panTeardown = attachPanHandlers(nextViewport, track, panConfig);
+            ensureResizeListener();
+            refreshStoryArchiveEraTintIfActive();
+        },
     );
-
-    /** @type {StoryTimelinePanConfig} */
-    let panConfig = { mode: 'start' };
-    if (options.scrollToPage) {
-        panConfig = {
-            mode: 'page',
-            page: options.scrollToPage,
-            eventsPerPage: options.eventsPerPage ?? DOCK_EVENTS_PER_PAGE,
-        };
-    } else if (savedOffset != null && Number.isFinite(savedOffset)) {
-        panConfig = { mode: 'offset', offset: savedOffset };
-    }
-
-    panTeardown = attachPanHandlers(nextViewport, track, panConfig);
-    ensureResizeListener();
 }
 
 export function teardownStoryTimelineView() {
     if (typeof panTeardown === 'function') {
         panTeardown();
         panTeardown = null;
+    }
+    if (typeof connectorStemTeardown === 'function') {
+        connectorStemTeardown();
     }
     if (typeof resizeTeardown === 'function') {
         resizeTeardown();
@@ -505,4 +694,5 @@ export function teardownStoryTimelineView() {
 
 if (typeof window !== 'undefined') {
     window.scrollStoryTimelineToDockPage = scrollStoryTimelineToDockPage;
+    window.scrollStoryTimelineToProgress = scrollStoryTimelineToProgress;
 }

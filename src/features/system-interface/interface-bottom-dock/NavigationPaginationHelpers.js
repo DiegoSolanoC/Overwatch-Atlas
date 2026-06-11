@@ -14,6 +14,7 @@ import {
     normalizedProgressFromSliderValue,
     pageFromSliderProgress,
     sliderValueForPageCenter,
+    sliderValueForPageStart,
 } from '../interface-pagination/dock/pageSliderMath.js';
 import {
     clearEventPageSliderSuppressFromGlobe,
@@ -31,6 +32,7 @@ export {
     normalizedProgressFromSliderValue,
     pageFromSliderProgress,
     sliderValueForPageCenter,
+    sliderValueForPageStart,
     clearEventPageSliderSuppressFromGlobe,
     pageHasAtLeastOneFilterMatch,
     resolveWrappedPageSkippingEmptyFilterPages,
@@ -48,6 +50,7 @@ if (typeof window !== 'undefined') {
         normalizedProgressFromSliderValue,
         pageFromSliderProgress,
         sliderValueForPageCenter,
+        sliderValueForPageStart,
         clearEventPageSliderSuppressFromGlobe,
         pageHasAtLeastOneFilterMatch,
         resolveWrappedPageSkippingEmptyFilterPages,

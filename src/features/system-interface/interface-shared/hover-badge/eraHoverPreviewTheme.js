@@ -91,12 +91,78 @@ export function buildGlobalEraStripeBackgroundLinearGradient(allEvents, eventsPe
     return `linear-gradient(to right, ${parts.join(', ')})`;
 }
 
+/**
+ * @param {string} color
+ * @returns {[number, number, number]}
+ */
+function parseColorToRgb(color) {
+    if (typeof color !== 'string') return [128, 128, 128];
+    if (color.startsWith('rgba') || color.startsWith('rgb')) {
+        const match = color.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+        if (match) return [Number(match[1]), Number(match[2]), Number(match[3])];
+    }
+    const hex = color.replace('#', '').trim();
+    if (hex.length === 6) {
+        return [
+            parseInt(hex.slice(0, 2), 16),
+            parseInt(hex.slice(2, 4), 16),
+            parseInt(hex.slice(4, 6), 16),
+        ];
+    }
+    return [128, 128, 128];
+}
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @param {number} t 0..1
+ * @returns {string} `#rrggbb`
+ */
+function lerpHexColor(a, b, t) {
+    const clamped = Math.max(0, Math.min(1, t));
+    const [r0, g0, b0] = parseColorToRgb(a);
+    const [r1, g1, b1] = parseColorToRgb(b);
+    const r = Math.round(r0 + (r1 - r0) * clamped);
+    const g = Math.round(g0 + (g1 - g0) * clamped);
+    const bChannel = Math.round(b0 + (b1 - b0) * clamped);
+    return `#${[r, g, bChannel].map((v) => v.toString(16).padStart(2, '0')).join('')}`;
+}
+
+/**
+ * Sample era stripe color along JSON event order (0 = first event, 1 = last).
+ * @param {object[]|null|undefined} allEvents
+ * @param {number} progress
+ * @returns {string} `#rrggbb`
+ */
+export function sampleEraStripeColorAtLinearProgress(allEvents, progress) {
+    const events = Array.isArray(allEvents) ? allEvents : [];
+    const n = events.length;
+    if (n === 0) return '#808080';
+    const t = Math.max(0, Math.min(1, Number(progress) || 0)) * n;
+    const idx = Math.min(n - 1, Math.floor(t));
+    const frac = t - idx;
+    const c0 = getEraStripeColorHexForEvent(events[idx]);
+    const c1 = getEraStripeColorHexForEvent(events[Math.min(n - 1, idx + 1)]);
+    return lerpHexColor(c0, c1, frac);
+}
+
+/**
+ * @param {string} hex
+ * @returns {string} `r, g, b` for CSS `rgb(var(--x) / alpha)`
+ */
+export function hexColorToRgbCsv(hex) {
+    const [r, g, b] = parseColorToRgb(hex);
+    return `${r}, ${g}, ${b}`;
+}
+
 // Make available globally for non-module usage
 if (typeof window !== 'undefined') {
     window.EraHoverPreviewTheme = {
         getEraHoverPreviewSlug,
         ERA_STRIPE_NEUTRAL,
         getEraStripeColorHexForEvent,
-        buildGlobalEraStripeBackgroundLinearGradient
+        buildGlobalEraStripeBackgroundLinearGradient,
+        sampleEraStripeColorAtLinearProgress,
+        hexColorToRgbCsv,
     };
 }

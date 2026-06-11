@@ -37,3 +37,16 @@ export function sliderValueForPageCenter(page1Based, totalPages) {
     const segT = (p - 0.5) / N;
     return Math.round(segT * EVENT_PAGE_SLIDER_RESOLUTION);
 }
+
+/**
+ * Start of the page’s segment (page 1 = 0). Matches `pageFromSliderProgress` /
+ * story timeline pan so reload on page 1 lands at the true beginning of the track.
+ */
+export function sliderValueForPageStart(page1Based, totalPages) {
+    const N = Math.max(1, totalPages | 0);
+    const p = Math.min(Math.max(1, page1Based | 0), N);
+    if (N <= 1 || p <= 1) return 0;
+    if (p >= N) return EVENT_PAGE_SLIDER_RESOLUTION;
+    const segT = (p - 1) / (N - 1);
+    return Math.round(segT * EVENT_PAGE_SLIDER_RESOLUTION);
+}

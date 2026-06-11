@@ -42,12 +42,7 @@ function getPrimaryLocationForOverlap(event, resolver) {
 
     let locationName = base.cityDisplayName || event.cityDisplayName || null;
 
-    // Earth fallback: look up by coordinates via the resolver.
-    if (!locationName && locationType === 'earth' && lat !== undefined && lon !== undefined) {
-        if (resolver && typeof resolver.getLocationName === 'function') {
-            locationName = resolver.getLocationName(lat, lon);
-        }
-    }
+    // Overlap uses explicit names + coord keys only — never reverse-geocode during bulk render.
 
     // Station/MarsShip: drop the name key unless explicitly set, so the default labels
     // ("Space Station (ISS)", etc.) don't auto-flag every entry as overlapping.
@@ -65,7 +60,9 @@ function getOverlapKeysForEvent(event, resolver) {
 
     let coordKey = null;
     if (locationType === 'earth' && Number.isFinite(lat) && Number.isFinite(lon)) {
-        coordKey = `earth:${lat.toFixed(4)},${lon.toFixed(4)}`;
+        if (Math.abs(lat) >= 1e-6 || Math.abs(lon) >= 1e-6) {
+            coordKey = `earth:${lat.toFixed(4)},${lon.toFixed(4)}`;
+        }
     } else if ((locationType === 'moon' || locationType === 'mars') && Number.isFinite(x) && Number.isFinite(y)) {
         coordKey = `${locationType}:${x.toFixed(1)},${y.toFixed(1)}`;
     }

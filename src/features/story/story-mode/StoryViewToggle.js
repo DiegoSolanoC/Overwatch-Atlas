@@ -4,12 +4,17 @@
  */
 
 import { createHeaderHubButton } from '../../universal-features/atlas-header/HeaderHubButton.js';
-import { refreshStoryTimelineView, teardownStoryTimelineView } from './StoryTimelineView.js';
+import { refreshStoryTimelineView, teardownStoryTimelineView, getStoryTimelineProgressFromDockSlider } from './StoryTimelineView.js';
+import { mountStoryArchiveEraTint, unmountStoryArchiveEraTint, refreshStoryArchiveEraTint } from './StoryArchiveEraTint.js';
+import { resyncStoryArchivePreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
+export { shouldSkipStoryArchiveListRender } from './storyArchivePreviewContext.js';
 
 const STORY_VIEW_MODE_KEY = 'storyViewDisplayMode';
+const DOCK_PARENT_ID = 'dockGlobeRailLeft';
+const STORY_CONTAINER_ID = 'storyViewerContainer';
 
-const ICON_LIST = 'src/assets/images/Icons/Mode%20Icons/Data%20Archive.png';
-const ICON_TIMELINE = 'src/assets/images/Icons/Mode%20Icons/Story%20Timeline.png';
+const ICON_LIST = 'src/assets/images/Icons/Story%20Icons/List.png';
+const ICON_TIMELINE = 'src/assets/images/Icons/Story%20Icons/Timeline.png';
 
 /** @typedef {'list'|'timeline'} StoryViewDisplayMode */
 
@@ -22,9 +27,9 @@ let toggleTeardown = null;
 export function getStoryViewDisplayMode() {
     try {
         const stored = localStorage.getItem(STORY_VIEW_MODE_KEY);
-        if (stored === 'timeline') return 'timeline';
+        if (stored === 'list') return 'list';
     } catch (_) { /* ignore */ }
-    return 'list';
+    return 'timeline';
 }
 
 /**
@@ -81,10 +86,27 @@ export function applyStoryViewDisplayMode(mode) {
     syncStoryViewToggleUi(mode);
 
     if (isTimeline) {
-        refreshStoryTimelineView();
+        const dockPage = window.standaloneDockPagination?.getCurrentPage?.() ?? 1;
+        const progress = dockPage <= 1
+            ? 0
+            : getStoryTimelineProgressFromDockSlider();
+        refreshStoryTimelineView({
+            scrollToProgress: progress,
+        });
     } else {
         teardownStoryTimelineView();
+        const listEl = document.getElementById('eventsList');
+        if (!listEl?.querySelector('.event-item')) {
+            window.eventManager?.renderEvents?.();
+        }
     }
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            resyncStoryArchivePreviewImages();
+            refreshStoryArchiveEraTint();
+        });
+    });
 }
 
 /**
@@ -131,34 +153,32 @@ export function mountStoryViewToggle(eventsManagePanel) {
     const arch = window.eventManager?.dataService?.getArchiveSource?.();
     if (arch !== 'story') return;
 
-    const bottomBar = document.getElementById('storyArchiveBottomBar');
-    if (!bottomBar) return;
-
-    let wrap = document.getElementById('storyArchiveRightToolbar');
-    if (!wrap) {
-        wrap = document.createElement('div');
-        wrap.id = 'storyArchiveRightToolbar';
-        wrap.className = 'story-archive-right-toolbar';
-        bottomBar.appendChild(wrap);
-    }
+    const dockParent = document.getElementById(DOCK_PARENT_ID);
+    const parentId = dockParent ? DOCK_PARENT_ID : STORY_CONTAINER_ID;
 
     let btn = document.getElementById('storyViewToggle');
     if (!btn) {
         btn = createHeaderHubButton({
             id: 'storyViewToggle',
             className: 'dock-globe-rail__btn story-view-toggle',
-            title: 'Switch to Timeline view',
-            label: 'Timeline',
-            iconPath: ICON_TIMELINE,
-            iconAlt: 'Timeline',
-            parentId: 'storyArchiveRightToolbar',
+            title: 'Switch to List view',
+            label: 'List',
+            iconPath: ICON_LIST,
+            iconAlt: 'List',
+            parentId,
             baseClass: 'globe-control-btn',
             iconSpanId: 'storyViewToggleIcon',
+            headerOrder: 10,
+            mobileParentId: DOCK_PARENT_ID,
+            mobileClassName: 'dock-globe-rail__btn story-view-toggle',
         });
+    } else if (dockParent && !dockParent.contains(btn)) {
+        dockParent.appendChild(btn);
     }
 
-    if (btn && wrap.firstChild !== btn) {
-        wrap.insertBefore(btn, wrap.firstChild);
+    if (btn) {
+        btn.classList.toggle('story-view-toggle--floating', !dockParent);
+        btn.style.setProperty('display', 'flex', 'important');
     }
 
     const ac = new AbortController();
@@ -173,6 +193,7 @@ export function mountStoryViewToggle(eventsManagePanel) {
         toggleTeardown = null;
     };
 
+    mountStoryArchiveEraTint();
     applyStoryViewDisplayMode(getStoryViewDisplayMode());
 }
 
@@ -183,6 +204,7 @@ export function unmountStoryViewToggle() {
         } catch (_) { /* ignore */ }
     }
 
+    unmountStoryArchiveEraTint();
     teardownStoryTimelineView();
     document.getElementById('storyViewToggle')?.remove();
     document.getElementById('storyTimelineView')?.remove();

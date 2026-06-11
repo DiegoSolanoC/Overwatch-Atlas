@@ -11,9 +11,9 @@ const TIMELINE_MIN_YEAR = 1500;
 const TIMELINE_MAX_YEAR = 2200;
 
 /** Extra track past start/end so edge cards are not clipped. */
-export const TIMELINE_EDGE_BLEED_PX = 300;
+export const TIMELINE_EDGE_BLEED_PX = 220;
 /** Minimum horizontal gap between consecutive events (JSON order). */
-export const TIMELINE_MIN_EVENT_GAP_PX = 300;
+export const TIMELINE_MIN_EVENT_GAP_PX = 220;
 /** Horizontal slot per event inside a year band. */
 export const TIMELINE_CARD_SLOT_PX = TIMELINE_MIN_EVENT_GAP_PX;
 /** Minimum width for a year that only has one event. */
@@ -250,29 +250,35 @@ function xInYearSegment(seg, slotIndex, slotCount) {
 }
 
 /**
+ * Place every event in its year band, evenly spaced in JSON order.
+ * Singles and range events share the same band — avoids calendar midpoint
+ * jumps that blow gaps within the same year.
+ *
  * @param {unknown[]} events
  * @param {StoryTimelineYearSegment[]} segments
  * @returns {StoryTimelineEventPosition[]}
  */
-function placeSingleYearEvents(events, segments) {
+function placeEventsInYearBands(events, segments) {
     /** @type {StoryTimelineEventPosition[]} */
     const positions = new Array(events.length);
 
     for (const seg of segments) {
-        const singleIndices = seg.indices.filter(
-            (index) => getSingleYearFromEvent(events[index]) != null,
-        );
-        const count = singleIndices.length;
+        const count = seg.indices.length;
         if (!count) continue;
 
         for (let j = 0; j < count; j++) {
-            const index = singleIndices[j];
+            const index = seg.indices[j];
             const x = xInYearSegment(seg, j, count);
+            const single = getSingleYearFromEvent(events[index]);
+            const range = getRangeYearsFromEvent(events[index]);
+            const anchorYear = single ?? (range
+                ? Math.round((range.yearStart + range.yearEnd) / 2)
+                : seg.year);
 
             positions[index] = {
                 index,
-                anchorYear: seg.year,
-                idealX: seg.startX + seg.width / 2,
+                anchorYear,
+                idealX: x,
                 x,
                 side: index % 2 === 0 ? 'above' : 'below',
             };
@@ -280,31 +286,6 @@ function placeSingleYearEvents(events, segments) {
     }
 
     return positions;
-}
-
-/**
- * @param {unknown[]} events
- * @param {StoryTimelineYearSegment[]} segments
- * @param {StoryTimelineEventPosition[]} positions
- */
-function placeRangeYearEvents(events, segments, positions) {
-    for (let i = 0; i < events.length; i++) {
-        if (positions[i]) continue;
-
-        const range = getRangeYearsFromEvent(events[i]);
-        if (!range) continue;
-
-        const anchorYear = Math.round((range.yearStart + range.yearEnd) / 2);
-        const x = calendarYearToX(anchorYear, segments);
-
-        positions[i] = {
-            index: i,
-            anchorYear,
-            idealX: x,
-            x,
-            side: i % 2 === 0 ? 'above' : 'below',
-        };
-    }
 }
 
 /**
@@ -340,30 +321,42 @@ function placeRemainingEvents(events, segments, positions) {
 }
 
 /**
- * Walk JSON order so each card sits to the right of the previous one.
- * Preserves alternating above/below while preventing overlap and backward jumps.
+ * Walk JSON order — even spacing, with a modest bump when the calendar year jumps forward.
  *
  * @param {StoryTimelineEventPosition[]} positions
+ * @param {unknown[]} events
  */
-function enforceJsonOrderMonotonicLayout(positions) {
+function enforceJsonOrderMonotonicLayout(positions, events) {
     const gap = TIMELINE_MIN_EVENT_GAP_PX;
-    let prevX = -Infinity;
+    /** @type {number|null} */
+    let prevX = null;
+    /** @type {number|null} */
+    let prevYear = null;
 
     for (let i = 0; i < positions.length; i++) {
         const pos = positions[i];
         if (!pos) continue;
 
-        let target = Number.isFinite(pos.idealX) && pos.idealX > 0
-            ? pos.idealX
-            : prevX + gap;
-        if (Number.isFinite(prevX) && target > prevX + gap * 4) {
-            target = prevX + gap;
+        const curYear = getSegmentYearFromEvent(events[i]);
+        let x;
+
+        if (prevX == null) {
+            x = Number.isFinite(pos.x) && pos.x > 0
+                ? pos.x
+                : TIMELINE_EDGE_BLEED_PX + gap;
+        } else {
+            let step = gap;
+            if (prevYear != null && curYear != null && curYear > prevYear + 1) {
+                step = gap * 2;
+            }
+            x = prevX + step;
         }
-        const x = Math.max(target, prevX + gap);
 
         pos.x = x;
+        pos.idealX = x;
         pos.side = i % 2 === 0 ? 'above' : 'below';
         prevX = x;
+        if (curYear != null) prevYear = curYear;
     }
 }
 
@@ -384,10 +377,9 @@ export function buildStoryTimelineEventLayout(events, trackPadding) {
     }
 
     const { segments, trackWidth: baseTrackWidth } = assignSegmentGeometry(rawSegments, trackPadding);
-    const positions = placeSingleYearEvents(events, segments);
-    placeRangeYearEvents(events, segments, positions);
+    const positions = placeEventsInYearBands(events, segments);
     placeRemainingEvents(events, segments, positions);
-    enforceJsonOrderMonotonicLayout(positions);
+    enforceJsonOrderMonotonicLayout(positions, events);
 
     let maxX = baseTrackWidth;
     for (const pos of positions) {
