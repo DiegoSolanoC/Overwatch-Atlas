@@ -7,6 +7,8 @@ import { FILES } from '../../../data/registry.js';
 import { matchHeroManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { ensureArchiveLayoutSnapshotsForFilter } from '../../system-interface/interface-filter-menu/buttons/archive-layouts/archiveLayoutSnapshots.js';
 import { ARCHIVE_LOCALSTORAGE_KEYS } from '../../system-interface/interface-left-panel/event-system/data/archiveRouting.js';
+import { mergeHeroBirthdaysFromBundledFile } from '../../system-interface/interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import { syncHeroArchiveBirthdaysFromTimeline } from '../../system-interface/interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import {
     getHeroBirthdayAgeDisplay,
     getHeroBirthdayRawFromEntry
@@ -46,6 +48,18 @@ function archiveRowDescription(ev) {
     return String(ev.description != null ? ev.description : '').trim();
 }
 
+/** @returns {Promise<object[]>} */
+async function fetchBundledHeroArchiveEvents() {
+    try {
+        const res = await fetch(`${FILES.storyArchive.heroes}?v=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data?.events) ? data.events : [];
+    } catch (_) {
+        return [];
+    }
+}
+
 /**
  * @param {BioBiographyArchiveCategory} category
  * @returns {Promise<object[]>}
@@ -66,37 +80,51 @@ export async function loadBioArchiveEvents(category) {
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
 
+    let events = [];
     if (arch === cat && Array.isArray(window.eventManager?.events)) {
-        const live = window.eventManager.events.slice();
-        archiveEventsCache.set(cat, live);
-        return live;
+        events = window.eventManager.events.slice();
+    } else {
+        const lsKey = ARCHIVE_LOCALSTORAGE_KEYS[cat];
+        try {
+            const raw = localStorage.getItem(lsKey);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    events = parsed;
+                }
+            }
+        } catch (_) {}
+
+        if (events.length === 0) {
+            const fileUrl = FILES.storyArchive[cat];
+            try {
+                const res = await fetch(`${fileUrl}?v=${Date.now()}`, { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    events = Array.isArray(data?.events) ? data.events : [];
+                }
+            } catch (_) {}
+        }
     }
 
-    const lsKey = ARCHIVE_LOCALSTORAGE_KEYS[cat];
-    try {
-        const raw = localStorage.getItem(lsKey);
-        if (raw) {
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed) && parsed.length > 0) {
-                archiveEventsCache.set(cat, parsed);
-                return parsed;
-            }
+    if (cat === 'heroes') {
+        events = events.filter((row) => {
+            const name = String(row?.name ?? '').trim();
+            return name && !/ (is Born|is Made|Goes Online|was Made|Was Made)$/i.test(name);
+        });
+        const bundled = await fetchBundledHeroArchiveEvents();
+        if (bundled.length > 0) {
+            events = events.length > 0
+                ? mergeHeroBirthdaysFromBundledFile(events, bundled)
+                : bundled;
         }
-    } catch (_) {}
+        events = await syncHeroArchiveBirthdaysFromTimeline(events);
+    }
 
-    const fileUrl = FILES.storyArchive[cat];
-    try {
-        const res = await fetch(`${fileUrl}?v=${Date.now()}`, { cache: 'no-store' });
-        if (res.ok) {
-            const data = await res.json();
-            const events = Array.isArray(data?.events) ? data.events : [];
-            archiveEventsCache.set(cat, events);
-            return events;
-        }
-    } catch (_) {}
+    events = mergeBioArchiveConnectionCanvasFromLocalStorage(events, cat);
 
-    archiveEventsCache.set(cat, []);
-    return [];
+    archiveEventsCache.set(cat, events);
+    return events;
 }
 
 /** @returns {Promise<object[]>} */
@@ -121,6 +149,62 @@ export function clearHeroesArchiveEventsCache() {
  */
 export function setHeroesArchiveEventsCache(events) {
     archiveEventsCache.set('heroes', Array.isArray(events) ? events : null);
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {object[]|null} events
+ */
+export function setBioArchiveEventsCache(category, events) {
+    archiveEventsCache.set(normalizeBioBiographyCategory(category), Array.isArray(events) ? events : null);
+}
+
+/**
+ * Re-apply gallery `connectionCanvas` patches from localStorage (survives EM normalize / disk refresh).
+ * @param {object[]} events
+ * @param {BioBiographyArchiveCategory} category
+ * @returns {object[]}
+ */
+export function mergeBioArchiveConnectionCanvasFromLocalStorage(events, category) {
+    const cat = normalizeBioBiographyCategory(category);
+    if (cat === 'locations' || !Array.isArray(events) || events.length === 0) return events;
+
+    const lsKey = ARCHIVE_LOCALSTORAGE_KEYS[cat];
+    if (!lsKey) return events;
+
+    let localRows;
+    try {
+        const raw = localStorage.getItem(lsKey);
+        if (!raw) return events;
+        localRows = JSON.parse(raw);
+    } catch (_) {
+        return events;
+    }
+    if (!Array.isArray(localRows) || localRows.length === 0) return events;
+
+    const sync = typeof window !== 'undefined' ? window.BioArchiveConnectionsSync : null;
+    const out = events.map((row) => ({ ...row }));
+    let changed = false;
+
+    for (let i = 0; i < localRows.length; i += 1) {
+        const localRow = localRows[i];
+        if (!localRow?.connectionCanvas || typeof localRow.connectionCanvas !== 'object') continue;
+
+        const idx =
+            sync && typeof sync.resolveBioArchiveEventIndex === 'function'
+                ? sync.resolveBioArchiveEventIndex(out, localRow, cat)
+                : -1;
+        if (idx < 0) continue;
+
+        const incoming = localRow.connectionCanvas;
+        const existing = out[idx]?.connectionCanvas;
+        if (existing === incoming || JSON.stringify(existing) === JSON.stringify(incoming)) continue;
+
+        out[idx] = { ...out[idx], connectionCanvas: incoming };
+        changed = true;
+    }
+
+    return changed ? out : events;
 }
 
 /**

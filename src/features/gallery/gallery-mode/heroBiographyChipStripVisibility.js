@@ -13,11 +13,11 @@ const DOCK_PARENT_ID = 'dockGlobeRailLeft';
 const STRIP_HIDDEN_CLASS = 'gallery-hero-filters--hidden';
 const HOST_COLLAPSED_CLASS = 'gallery-mode--hero-filters-collapsed';
 
-const SELECT_HERO_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Hero%20Biography.png';
+const SELECT_FILE_ICON =
+    'src/assets/images/Icons/Mode%20Icons/Data%20Archive.png';
 
 const ICON_HTML =
-    `<img src="${SELECT_HERO_ICON}" alt="Select hero" style="width: 100%; height: 100%; object-fit: contain;">`;
+    `<img src="${SELECT_FILE_ICON}" alt="Select file" style="width: 100%; height: 100%; object-fit: contain;">`;
 
 /** @type {HTMLElement | null} */
 let hostEl = null;
@@ -168,10 +168,10 @@ export function mountHeroBiographyChipStripToggle() {
     const btn = createHeaderHubButton({
         id: TOGGLE_ID,
         className: 'dock-globe-rail__btn gallery-select-hero-toggle',
-        title: 'Toggle hero selection',
-        label: 'Select Hero',
-        iconPath: SELECT_HERO_ICON,
-        iconAlt: 'Select hero',
+        title: 'Toggle file selection',
+        label: 'Select File',
+        iconPath: SELECT_FILE_ICON,
+        iconAlt: 'Select file',
         parentId,
         baseClass: 'globe-control-btn',
         iconSpanId: ICON_ID,
@@ -179,7 +179,7 @@ export function mountHeroBiographyChipStripToggle() {
     });
 
     if (!btn?.isConnected) {
-        console.warn('[gallery] Select Hero toggle could not mount');
+        console.warn('[gallery] Select File toggle could not mount');
         return;
     }
 

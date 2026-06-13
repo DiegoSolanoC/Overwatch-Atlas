@@ -48,6 +48,30 @@ export const HERO_BIRTHDAY_MONTH_NAMES = [
 /** April 1st, 2080 (UTC). */
 export const HERO_AGE_REFERENCE_DATE_UTC = new Date(Date.UTC(2080, 3, 1));
 
+/** Stored when activation/birth year or day is not yet known. */
+export const HERO_BIRTHDAY_DATE_UNKNOWN_VALUE = 'date unknown';
+
+/**
+ * @param {unknown} raw
+ * @returns {boolean}
+ */
+export function isHeroBirthdayDateUnknown(raw) {
+    const text = String(raw ?? '').trim().toLowerCase();
+    return text === HERO_BIRTHDAY_DATE_UNKNOWN_VALUE || text === 'unknown date';
+}
+
+/**
+ * @param {unknown} raw
+ * @returns {number | null}
+ */
+export function parseHeroBirthdayYearOnly(raw) {
+    const text = String(raw ?? '').trim();
+    const m = text.match(/^(\d{4})$/);
+    if (!m) return null;
+    const year = Number(m[1]);
+    return Number.isInteger(year) && year >= 1 ? year : null;
+}
+
 /**
  * @param {unknown} raw
  * @returns {{ day: number, monthIdx: number, year: number } | null}
@@ -79,9 +103,13 @@ export function parseHeroBirthdayDayMonthYear(raw) {
  * @returns {string}
  */
 export function normalizeHeroBirthdayDayMonthYear(raw) {
+    if (isHeroBirthdayDateUnknown(raw)) return HERO_BIRTHDAY_DATE_UNKNOWN_VALUE;
     const parsed = parseHeroBirthdayDayMonthYear(raw);
-    if (!parsed) return '';
-    return `${parsed.day} ${HERO_BIRTHDAY_MONTH_NAMES[parsed.monthIdx]} ${parsed.year}`;
+    if (parsed) {
+        return `${parsed.day} ${HERO_BIRTHDAY_MONTH_NAMES[parsed.monthIdx]} ${parsed.year}`;
+    }
+    const yearOnly = parseHeroBirthdayYearOnly(raw);
+    return yearOnly != null ? String(yearOnly) : '';
 }
 
 /**
@@ -89,15 +117,22 @@ export function normalizeHeroBirthdayDayMonthYear(raw) {
  * @returns {{ day: string, month: string, year: string }}
  */
 export function splitHeroBirthdayParts(raw) {
-    const parsed = parseHeroBirthdayDayMonthYear(raw);
-    if (!parsed) {
+    if (isHeroBirthdayDateUnknown(raw)) {
         return { day: '', month: '', year: '' };
     }
-    return {
-        day: String(parsed.day),
-        month: HERO_BIRTHDAY_MONTH_NAMES[parsed.monthIdx],
-        year: String(parsed.year)
-    };
+    const parsed = parseHeroBirthdayDayMonthYear(raw);
+    if (parsed) {
+        return {
+            day: String(parsed.day),
+            month: HERO_BIRTHDAY_MONTH_NAMES[parsed.monthIdx],
+            year: String(parsed.year)
+        };
+    }
+    const yearOnly = parseHeroBirthdayYearOnly(raw);
+    if (yearOnly != null) {
+        return { day: '', month: '', year: String(yearOnly) };
+    }
+    return { day: '', month: '', year: '' };
 }
 
 /**
@@ -111,6 +146,8 @@ export function buildHeroBirthdayFromParts(day, month, year) {
     const m = String(month ?? '').trim();
     const y = String(year ?? '').trim();
     if (!d && !m && !y) return '';
+    if (!d && !m && /^\d{4}$/.test(y)) return y;
+    if (!d && !m && isHeroBirthdayDateUnknown(y)) return HERO_BIRTHDAY_DATE_UNKNOWN_VALUE;
     return normalizeHeroBirthdayDayMonthYear(`${d} ${m} ${y}`);
 }
 
@@ -129,11 +166,35 @@ export function computeHeroAgeOnReferenceDate(birth, refDateUtc) {
 }
 
 /**
+ * Age when only the birth/activation year is known (no month or day).
+ * @param {number} year
+ * @param {Date} refDateUtc
+ */
+export function computeHeroAgeFromYearOnly(year, refDateUtc) {
+    return Math.max(0, refDateUtc.getUTCFullYear() - year);
+}
+
+/**
  * @param {unknown} birthdayRaw
  * @param {Date} [referenceDateUtc]
- * @returns {{ birthdayText: string, age: number } | null}
+ * @returns {{ birthdayText: string, age: number | null, yearOnly?: boolean, dateUnknown?: boolean } | null}
  */
 export function getHeroBirthdayAgeDisplay(birthdayRaw, referenceDateUtc = HERO_AGE_REFERENCE_DATE_UTC) {
+    if (isHeroBirthdayDateUnknown(birthdayRaw)) {
+        return {
+            birthdayText: HERO_BIRTHDAY_DATE_UNKNOWN_VALUE,
+            age: null,
+            dateUnknown: true
+        };
+    }
+    const yearOnly = parseHeroBirthdayYearOnly(birthdayRaw);
+    if (yearOnly != null) {
+        return {
+            birthdayText: `${yearOnly} (${HERO_BIRTHDAY_DATE_UNKNOWN_VALUE})`,
+            age: computeHeroAgeFromYearOnly(yearOnly, referenceDateUtc),
+            yearOnly: true
+        };
+    }
     const parsed = parseHeroBirthdayDayMonthYear(birthdayRaw);
     if (!parsed) return null;
     return {
@@ -150,6 +211,7 @@ export function getHeroBirthdayAgeDisplay(birthdayRaw, referenceDateUtc = HERO_A
 export function formatHeroBirthdayAgeLine(birthdayRaw, referenceDateUtc = HERO_AGE_REFERENCE_DATE_UTC) {
     const display = getHeroBirthdayAgeDisplay(birthdayRaw, referenceDateUtc);
     if (!display) return '';
+    if (display.age == null) return `Birthday: ${display.birthdayText}`;
     return `Birthday: ${display.birthdayText}\nAge: ${display.age}`;
 }
 

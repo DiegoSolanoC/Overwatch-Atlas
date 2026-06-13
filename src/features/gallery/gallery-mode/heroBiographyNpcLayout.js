@@ -62,7 +62,9 @@ export function assignNpcBiographyCategoryRows(groups, categoryOrder) {
 export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Overwatch',
     'Talon',
+    'Null Sector',
     'Shimada',
+    'Hashimoto',
     'Yokai',
     'MEKA',
     'Phreaks',

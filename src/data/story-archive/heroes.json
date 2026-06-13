@@ -1,20 +1,6 @@
 {
   "events": [
     {
-      "name": "D.va",
-      "description": "No description available.",
-      "relevantLocations": [
-        {
-          "locationName": "Busan",
-          "country": "South Korea",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Tank",
-      "heroSubRole": "Initiator",
-      "birthday": ""
-    },
-    {
       "name": "Hazard",
       "description": "",
       "relevantLocations": [
@@ -26,7 +12,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": ""
+      "birthday": "11 November 2054"
     },
     {
       "name": "Doomfist",
@@ -40,7 +26,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": ""
+      "birthday": "25 May 2031"
     },
     {
       "name": "Winston",
@@ -54,7 +40,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": ""
+      "birthday": "6 June 2047"
     },
     {
       "name": "Wrecking Ball",
@@ -68,7 +54,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": ""
+      "birthday": "15 October 2062"
     },
     {
       "name": "Mauga",
@@ -82,7 +68,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": ""
+      "birthday": "19 August 2041"
     },
     {
       "name": "Orisa",
@@ -96,7 +82,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": ""
+      "birthday": "9 May 2078"
     },
     {
       "name": "Roadhog",
@@ -110,7 +96,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": ""
+      "birthday": "12 September 2028"
     },
     {
       "name": "Zarya",
@@ -124,7 +110,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": ""
+      "birthday": "4 December 2048"
     },
     {
       "name": "Domina",
@@ -138,7 +124,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": ""
+      "birthday": "28 August 2046"
     },
     {
       "name": "Junker Queen",
@@ -152,7 +138,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": ""
+      "birthday": "14 June 2047"
     },
     {
       "name": "Ramattra",
@@ -166,7 +152,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": ""
+      "birthday": "29 March 2051"
     },
     {
       "name": "Reinhardt",
@@ -180,7 +166,7 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": ""
+      "birthday": "26 June 2015"
     },
     {
       "name": "Sigma",
@@ -194,7 +180,21 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": ""
+      "birthday": "15 March 2015"
+    },
+    {
+      "name": "D.va",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Busan",
+          "country": "South Korea",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator",
+      "birthday": "22 June 2057"
     },
     {
       "name": "Bastion",
@@ -208,7 +208,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "2046"
     },
     {
       "name": "Emre",
@@ -222,7 +222,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "8 November 2034"
     },
     {
       "name": "Junkrat",
@@ -236,7 +236,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "29 February 2052"
     },
     {
       "name": "Mei",
@@ -250,7 +250,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "5 September 2036"
     },
     {
       "name": "Soldier 76",
@@ -264,7 +264,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "27 January 2021"
     },
     {
       "name": "Symmetra",
@@ -278,7 +278,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "2 October 2048"
     },
     {
       "name": "Torbjörn",
@@ -292,7 +292,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": ""
+      "birthday": "21 September 2019"
     },
     {
       "name": "Ashe",
@@ -306,7 +306,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": ""
+      "birthday": "1 October 2037"
     },
     {
       "name": "Cassidy",
@@ -320,7 +320,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": ""
+      "birthday": "31 July 2039"
     },
     {
       "name": "Hanzo",
@@ -334,7 +334,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": ""
+      "birthday": "3 November 2038"
     },
     {
       "name": "Sojourn",
@@ -348,7 +348,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": ""
+      "birthday": "12 January 2028"
     },
     {
       "name": "Widowmaker",
@@ -362,7 +362,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": ""
+      "birthday": "19 November 2043"
     },
     {
       "name": "Anran",
@@ -376,7 +376,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "8 August 2056"
     },
     {
       "name": "Genji",
@@ -390,7 +390,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "28 October 2041"
     },
     {
       "name": "Reaper",
@@ -404,7 +404,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "14 December 2018"
     },
     {
       "name": "Shion",
@@ -412,7 +412,7 @@
       "relevantLocations": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "date unknown"
     },
     {
       "name": "Tracer",
@@ -426,7 +426,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "17 February 2049"
     },
     {
       "name": "Vendetta",
@@ -440,7 +440,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "15 February 2050"
     },
     {
       "name": "Venture",
@@ -454,7 +454,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": ""
+      "birthday": "6 August 2052"
     },
     {
       "name": "Echo",
@@ -468,7 +468,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": ""
+      "birthday": "5 February 2065"
     },
     {
       "name": "Freja",
@@ -482,7 +482,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": ""
+      "birthday": "6 September 2044"
     },
     {
       "name": "Pharah",
@@ -496,7 +496,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": ""
+      "birthday": "15 April 2045"
     },
     {
       "name": "Sierra",
@@ -510,7 +510,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": ""
+      "birthday": "17 April 2054"
     },
     {
       "name": "Sombra",
@@ -524,7 +524,7 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": ""
+      "birthday": "31 December 2046"
     },
     {
       "name": "Baptiste",
@@ -538,11 +538,11 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": ""
+      "birthday": "12 March 2041"
     },
     {
       "name": "Ana",
-      "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\",
+      "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "relevantLocations": [
         {
           "locationName": "Cairo",
@@ -577,7 +577,158 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "1 January 2017"
+      "birthday": "1 January 2017",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "gcc-subject",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Ana",
+            "x": 1176,
+            "y": 1160,
+            "scale": 2.5,
+            "portraitKey": "Ana"
+          },
+          {
+            "id": "gcc-link-hero-cassidy",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Cassidy",
+            "x": 1216,
+            "y": 528,
+            "scale": 2.5,
+            "portraitKey": "Cassidy"
+          },
+          {
+            "id": "gcc-link-hero-emre",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Emre",
+            "x": 1691,
+            "y": 725,
+            "scale": 2.5,
+            "portraitKey": "Emre"
+          },
+          {
+            "id": "gcc-link-faction-overwatch",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Overwatch",
+            "x": 1899.09,
+            "y": 980,
+            "scale": 5,
+            "bgColor": "#003b62",
+            "factionFilename": "00Overwatch"
+          },
+          {
+            "id": "gcc-link-hero-pharah",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Pharah",
+            "x": 1691,
+            "y": 1675,
+            "scale": 2.5,
+            "portraitKey": "Pharah"
+          },
+          {
+            "id": "gcc-link-hero-reaper",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Reaper",
+            "x": 1216,
+            "y": 1872,
+            "scale": 2.5,
+            "portraitKey": "Reaper"
+          },
+          {
+            "id": "gcc-link-hero-reinhardt",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Reinhardt",
+            "x": 741,
+            "y": 1675,
+            "scale": 2.5,
+            "portraitKey": "Reinhardt"
+          },
+          {
+            "id": "gcc-link-faction-search-rescue",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Search & Rescue",
+            "x": 544,
+            "y": 1200,
+            "scale": 2,
+            "bgColor": "#e8b460",
+            "factionFilename": "34Search & Rescue"
+          },
+          {
+            "id": "gcc-link-hero-soldier-76",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Soldier 76",
+            "x": 741,
+            "y": 725,
+            "scale": 2.5,
+            "portraitKey": "Soldier 76"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-cassidy"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-emre"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-overwatch"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-pharah"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-reaper"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-reinhardt"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-search-rescue"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-soldier-76"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "view": {
+          "panX": -118.51435274218764,
+          "panY": -141.19358096679687,
+          "zoom": 0.3608908800000002
+        }
+      }
     },
     {
       "name": "Jetpack Cat",
@@ -591,7 +742,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": ""
+      "birthday": "date unknown"
     },
     {
       "name": "Lúcio",
@@ -605,7 +756,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": ""
+      "birthday": "20 March 2051"
     },
     {
       "name": "Zenyatta",
@@ -619,7 +770,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": ""
+      "birthday": "14 July 2025"
     },
     {
       "name": "Kiriko",
@@ -633,7 +784,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": ""
+      "birthday": "7 July 2057"
     },
     {
       "name": "Lifeweaver",
@@ -647,7 +798,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": ""
+      "birthday": "28 April 2048"
     },
     {
       "name": "Mercy",
@@ -661,7 +812,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": ""
+      "birthday": "13 May 2039"
     },
     {
       "name": "Moira",
@@ -675,7 +826,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": ""
+      "birthday": "4 April 2029"
     },
     {
       "name": "Brigitte",
@@ -703,7 +854,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": ""
+      "birthday": "21 December 2060"
     },
     {
       "name": "Juno",
@@ -717,7 +868,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": ""
+      "birthday": "22 March 2060"
     },
     {
       "name": "Mizuki",
@@ -731,7 +882,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": ""
+      "birthday": "9 April 2057"
     },
     {
       "name": "Wuyang",
@@ -745,7 +896,7 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": ""
+      "birthday": "1 May 2060"
     }
   ]
 }

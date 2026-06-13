@@ -4,7 +4,7 @@
    ======================================== */
 
 /* Foundation */
-@import url('foundation/variables.css?v=21');
+@import url('foundation/variables.css?v=23');
 @import url('foundation/base.css?v=10');
 @import url('foundation/animations.css?v=10');
 
@@ -29,11 +29,12 @@
 @import url('ui/modals.css?v=9');
 @import url('ui/external-link-confirm.css?v=9');
 @import url('ui/loading-asset-slot.css?v=1');
+@import url('features/system-interface/info-description-text-scale.css?v=1');
 
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=77');
-@import url('features/gallery/gallery-mode.css?v=66');
+@import url('features/gallery/gallery-mode.css?v=80');
 
 /* Event system */
 @import url('features/event-system/variants.css?v=9');

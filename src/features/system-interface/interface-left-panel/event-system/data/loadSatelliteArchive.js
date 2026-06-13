@@ -13,6 +13,9 @@
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 import { readNpcCategoryFieldsFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
+import { mergeHeroBirthdaysFromBundledFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
+import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
 
 /** Manifest / filter PNG spellings for rows saved under legacy names. */
 const NPC_ARCHIVE_NAME_CANON = Object.freeze({
@@ -137,6 +140,27 @@ function applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents) {
     dataService.events = mergeNpcCategoriesFromBundledFile(dataService.events, fileEvents);
 }
 
+/** @param {unknown[]} events @returns {string} */
+function snapshotHeroArchiveBirthdays(events) {
+    if (!Array.isArray(events)) return '';
+    return JSON.stringify(events.map((e) => getHeroBirthdayRawFromEntry(e)));
+}
+
+const LIFECYCLE_HERO_ROW_NAME_RE = / (is Born|is Made|Goes Online|was Made|Was Made)$/i;
+
+/**
+ * Timeline lifecycle titles accidentally saved into the heroes archive.
+ * @param {unknown[]} events
+ * @returns {unknown[]}
+ */
+function removeMisfiledTimelineLifecycleHeroRows(events) {
+    if (!Array.isArray(events) || events.length === 0) return events || [];
+    return events.filter((row) => {
+        const name = String(row?.name ?? '').trim();
+        return name && !LIFECYCLE_HERO_ROW_NAME_RE.test(name);
+    });
+}
+
 /**
  * @param {import('./EventDataService.js').default} dataService
  * @param {unknown[]|null} fileEvents
@@ -148,6 +172,9 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
         return 0;
     }
     const before = dataService.events.length;
+    if (dataService.getArchiveSource() === 'heroes') {
+        dataService.events = removeMisfiledTimelineLifecycleHeroRows(dataService.events);
+    }
     dataService.events = dedupeSatelliteEventsByName(dataService.events);
     const removed = before - dataService.events.length;
 
@@ -164,6 +191,12 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
             fileEvents,
         );
         added = dataService.events.length - beforeBundledMerge;
+        if (Array.isArray(fileEvents) && fileEvents.length > 0) {
+            dataService.events = mergeHeroBirthdaysFromBundledFile(
+                dataService.events,
+                fileEvents,
+            );
+        }
     }
 
     if (typeof dataService.updateStatus === 'function') {
@@ -209,6 +242,57 @@ function pruneSatellitePhantomConnectionsInPlace(dataService) {
         dataService.events,
         arch,
     );
+}
+
+/** @param {import('./EventDataService.js').default} dataService @param {unknown[]|null} fileEvents @param {{ alwaysSave?: boolean }} [opts] @returns {Promise<number>} */
+async function finalizeSatelliteLoad(dataService, fileEvents, opts = {}) {
+    const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
+    const birthdaysSynced = await applyHeroBirthdayTimelineSyncInPlace(dataService);
+    dataService._normalizeSatelliteEventsInPlace();
+    pruneSatellitePhantomConnectionsInPlace(dataService);
+    if (removedDupes > 0 || birthdaysSynced || opts.alwaysSave) {
+        dataService.saveEvents();
+    }
+    return removedDupes;
+}
+
+/** @param {import('./EventDataService.js').default} dataService @returns {Promise<boolean>} */
+async function applyHeroBirthdayTimelineSyncInPlace(dataService) {
+    if (dataService.getArchiveSource() !== 'heroes') return false;
+    if (!Array.isArray(dataService.events)) return false;
+    const before = snapshotHeroArchiveBirthdays(dataService.events);
+    dataService.events = await syncHeroArchiveBirthdaysFromTimeline(dataService.events);
+    const after = snapshotHeroArchiveBirthdays(dataService.events);
+    return before !== after;
+}
+
+/**
+ * @param {unknown[]} fileEvents
+ * @param {unknown[]|null} localRows
+ * @param {'heroes'|'factions'|'npcs'|'locations'} arch
+ * @returns {unknown[]}
+ */
+function mergeConnectionCanvasFromLocalRows(fileEvents, localRows, arch) {
+    if (!Array.isArray(fileEvents) || !Array.isArray(localRows) || localRows.length === 0) {
+        return fileEvents;
+    }
+    const sync = typeof window !== 'undefined' ? window.BioArchiveConnectionsSync : null;
+    const out = fileEvents.map((row) => (row && typeof row === 'object' ? { ...row } : row));
+    let changed = false;
+
+    for (let i = 0; i < localRows.length; i += 1) {
+        const localRow = localRows[i];
+        if (!localRow?.connectionCanvas || typeof localRow.connectionCanvas !== 'object') continue;
+        const idx =
+            sync && typeof sync.resolveBioArchiveEventIndex === 'function'
+                ? sync.resolveBioArchiveEventIndex(out, localRow, arch)
+                : -1;
+        if (idx < 0) continue;
+        out[idx] = { ...out[idx], connectionCanvas: localRow.connectionCanvas };
+        changed = true;
+    }
+
+    return changed ? out : fileEvents;
 }
 
 /** @param {import('./EventDataService.js').default} dataService */
@@ -278,14 +362,8 @@ export async function loadSatelliteArchive(dataService) {
             && fileEvents.length > 0
             && fileConnCount > localConnCount
         ) {
-            dataService.events = fileEvents;
-            const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-            dataService._normalizeSatelliteEventsInPlace();
-            pruneSatellitePhantomConnectionsInPlace(dataService);
-            dataService.saveEvents();
-            if (removedDupes > 0) {
-                /* saveEvents already persisted */
-            }
+            dataService.events = mergeConnectionCanvasFromLocalRows(fileEvents, parsedLocal, arch);
+            await finalizeSatelliteLoad(dataService, fileEvents);
             dataService.updateStatus(
                 `EventDataService: disk ${dataService.getArchiveSource()} has newer Codex connections (${fileConnCount} vs ${localConnCount} in localStorage) — refreshed`,
                 'info',
@@ -299,11 +377,8 @@ export async function loadSatelliteArchive(dataService) {
             && Array.isArray(fileEvents)
             && fileEvents.length > 0
         ) {
-            dataService.events = fileEvents;
-            const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-            dataService._normalizeSatelliteEventsInPlace();
-            pruneSatellitePhantomConnectionsInPlace(dataService);
-            if (removedDupes > 0) dataService.saveEvents();
+            dataService.events = mergeConnectionCanvasFromLocalRows(fileEvents, parsedLocal, arch);
+            await finalizeSatelliteLoad(dataService, fileEvents);
             dataService.updateStatus(
                 `EventDataService: localStorage ${dataService.getArchiveSource()} had no connections — loaded bundled file`,
                 'info'
@@ -312,10 +387,7 @@ export async function loadSatelliteArchive(dataService) {
         }
 
         dataService.events = parsedLocal;
-        const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-        dataService._normalizeSatelliteEventsInPlace();
-        pruneSatellitePhantomConnectionsInPlace(dataService);
-        if (removedDupes > 0) dataService.saveEvents();
+        await finalizeSatelliteLoad(dataService, fileEvents);
         const portNote = dataService._canPersistTimelineJsonToRepo()
             ? ' (also written to src/data on Save when the dev API succeeds)'
             : ' (dev file API not on this port)';
@@ -328,11 +400,8 @@ export async function loadSatelliteArchive(dataService) {
 
     if (Array.isArray(fileEvents)) {
         dataService.events = fileEvents;
-        const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-        dataService._normalizeSatelliteEventsInPlace();
-        pruneSatellitePhantomConnectionsInPlace(dataService);
-        dataService.saveEvents();
-        if (removedDupes > 0 && typeof window !== 'undefined') {
+        await finalizeSatelliteLoad(dataService, fileEvents, { alwaysSave: true });
+        if (typeof window !== 'undefined') {
             window.FilterService?.invalidateBioArchiveFilterLayouts?.();
         }
         return { events: dataService.events, source: 'file', shouldSync: false };
@@ -342,10 +411,7 @@ export async function loadSatelliteArchive(dataService) {
         try {
             const parsed = JSON.parse(savedEvents);
             dataService.events = Array.isArray(parsed) ? parsed : [];
-            const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
-            dataService._normalizeSatelliteEventsInPlace();
-            pruneSatellitePhantomConnectionsInPlace(dataService);
-            if (removedDupes > 0) dataService.saveEvents();
+            await finalizeSatelliteLoad(dataService, fileEvents);
             dataService.updateStatus(
                 `EventDataService: Using localStorage for ${dataService.getArchiveSource()} (${dataService.events.length} events)`,
                 'info'

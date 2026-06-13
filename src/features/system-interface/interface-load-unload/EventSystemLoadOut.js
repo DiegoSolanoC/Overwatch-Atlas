@@ -40,6 +40,7 @@ import {
   wireGlobalImageToggleHandler,
 } from "./mountGlobalImageToggle.js";
 import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
+import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
 
 installEventSlidePlainPasteGuard();
 
@@ -245,6 +246,7 @@ export async function loadEventSystem(testBtn) {
         window.standaloneEventSlide.setupStandalonePagination();
       }
     }
+    mountEventSlideInfoDescriptionTextScaleControls();
 
     // Final paint flush so the loading overlay only drops after the
     // browser has actually committed everything we just mounted.

@@ -1,0 +1,81 @@
+/* Shared description text-size preference (info panel + gallery intel) */
+
+.info-description-text-scale {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.info-description-text-scale--leading {
+    margin-right: auto;
+}
+
+.info-description-text-scale__label {
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    white-space: nowrap;
+}
+
+.info-description-text-scale__btn {
+    min-width: 36px;
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-default, 'Config', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+}
+
+.info-description-text-scale__btn--reset {
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.info-description-text-scale__btn:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.info-description-text-scale__btn:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.info-description-text-scale__btn:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+.info-description-text-scale__btn:focus-visible {
+    outline: 2px solid rgba(var(--accent-primary-rgb), 0.85);
+    outline-offset: 2px;
+}
+
+.info-description-text-scale--compact .info-description-text-scale__label {
+    font-size: 0.72rem;
+}
+
+.info-description-text-scale--compact .info-description-text-scale__btn {
+    min-width: 32px;
+    height: 30px;
+    padding: 0 6px;
+    font-size: 0.86rem;
+}
+
+.event-slide-mid-controls .info-description-text-scale {
+    flex-wrap: wrap;
+}
+
+.gallery-mode__archive-description-toolbar .info-description-text-scale {
+    margin-right: auto;
+}

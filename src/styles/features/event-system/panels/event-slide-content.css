@@ -1158,7 +1158,7 @@
 .event-slide-content p#eventSlideText {
     line-height: 1.6;
     color: #e0e0e0;
-    font-size: 18px;
+    font-size: var(--info-description-font-size);
     margin-top: 0; /* No top margin - start of scrollable content */
     margin-bottom: 0;
     transition: opacity 0.2s ease;

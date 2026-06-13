@@ -154,6 +154,13 @@
     --pagination-dock-transition-duration: 0.42s;
     --pagination-dock-transition-easing: cubic-bezier(0.32, 0.72, 0.25, 1);
     --panel-transition: 0.3s ease;
+
+    /* Info-panel / gallery intel description text scale (1.45 = default; updated by JS). */
+    --info-description-text-scale: 1.45;
+    --info-description-font-size: calc(18px * var(--info-description-text-scale));
+    --info-description-font-size-mobile: calc(16px * var(--info-description-text-scale));
+    --info-description-font-size-mobile-compact: calc(14px * var(--info-description-text-scale));
+    --info-description-gallery-font-size: calc(clamp(0.92rem, 1.35vw, 1.05rem) * var(--info-description-text-scale));
     
     /* Breakpoints */
     --breakpoint-mobile: 768px;

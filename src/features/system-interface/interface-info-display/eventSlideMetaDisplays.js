@@ -271,7 +271,9 @@ export function updateEventSlideHeroBirthdayDisplay(eventData, variantIndex) {
         el.style.display = 'none';
         return;
     }
-    el.textContent = `Birthday: ${display.birthdayText}\nAge: ${display.age}`;
+    el.textContent = display.age != null
+        ? `Birthday: ${display.birthdayText}\nAge: ${display.age}`
+        : `Birthday: ${display.birthdayText}`;
     el.removeAttribute('hidden');
     el.style.display = '';
 }

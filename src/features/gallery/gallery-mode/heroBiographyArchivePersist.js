@@ -10,6 +10,7 @@ import {
     findHeroArchiveEntryByFilterKey,
     loadBioArchiveEvents,
     loadHeroesArchiveEvents,
+    setBioArchiveEventsCache,
     setHeroesArchiveEventsCache,
 } from './heroBiographyArchiveData.js';
 import { ARCHIVE_LOCALSTORAGE_KEYS } from '../../system-interface/interface-left-panel/event-system/data/archiveRouting.js';
@@ -61,9 +62,7 @@ function writeBioArchiveLocal(category, events) {
     } catch (err) {
         console.warn(`[gallery] Could not write ${cat} archive to localStorage:`, err);
     }
-    if (cat === 'heroes') {
-        setHeroesArchiveEventsCache(events);
-    }
+    setBioArchiveEventsCache(cat, events);
 }
 
 /**

@@ -86,27 +86,38 @@
     transform: translateX(0);
 }
 
-/* Gallery stage: wide side columns — narrow center gap, panels reach far inward */
-body:has(#atlasGalleryHost) .gallery-mode__main {
-    --gallery-center-corridor: clamp(100px, 10vw, 180px);
-    --gallery-side-panel-gap: 6px;
+/* Gallery stage: fixed-width side columns — stable dock insets, no stretch-to-center */
+body:has(#atlasGalleryHost),
+#atlasGalleryHost {
+    /*
+     * On host/body so sibling intel + connections panels inherit (not .gallery-mode__main).
+     * Top clears passive Now Playing (left) + summary hover badge (right).
+     */
+    --gallery-side-panel-width: 1000px;
+    --gallery-side-panel-inset-top: calc(
+        var(--header-height, 88px) + clamp(12rem, 22vh, 16.5rem)
+    );
+    --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 128px);
 }
 
 /* Clear passive Now Playing (left) + summary hover badge (right) under header hub */
 body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
-    top: calc(var(--header-height, 88px) + clamp(6.25rem, 13vh, 9.5rem));
-    width: calc(
-        (100vw - var(--gallery-center-corridor, 140px)) / 2 - var(--gallery-side-panel-gap, 6px)
-    );
-    max-width: none;
+    position: fixed;
+    top: var(--gallery-side-panel-inset-top);
+    bottom: var(--gallery-side-panel-inset-bottom);
+    height: auto;
+    width: var(--gallery-side-panel-width, 1000px);
+    max-width: var(--gallery-side-panel-width, 1000px);
 }
 
 body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
     left: clamp(44px, 3.6vw, 60px);
+    right: auto;
 }
 
 body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
-    right: clamp(6px, 0.5vw, 12px);
+    right: clamp(52px, 6vw, 92px);
+    left: auto;
 }
 
 .gallery-mode__archive-connections .gallery-mode__archive-connections-view {
@@ -307,26 +318,15 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 .gallery-mode__archive-age-line {
     margin: 0 0 0.35em;
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: clamp(0.88rem, 1.2vw, 0.98rem);
-    line-height: 1.45;
-    color: rgba(255, 255, 255, 0.82);
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .gallery-mode__archive-age-line {
     margin-bottom: 0;
-}
-
-.gallery-mode__archive-birthday-label {
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.55);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 0.78em;
-}
-
-.gallery-mode__archive-birthday-value {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.92);
 }
 
 /* Scrollable body — matches filters / event-slide scrollbar theming */
@@ -379,7 +379,7 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     overflow: visible;
     padding-right: clamp(4px, 0.4vw, 8px);
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: clamp(0.92rem, 1.35vw, 1.05rem);
+    font-size: var(--info-description-gallery-font-size);
     font-weight: 500;
     line-height: 1.55;
     color: rgba(255, 255, 255, 0.9);
@@ -412,26 +412,29 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     flex: 0 0 auto;
     display: inline-flex;
     align-self: flex-start;
-    gap: 4px;
+    gap: 6px;
     margin: 0 0 clamp(10px, 1.2vh, 14px);
-    padding: 3px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(0, 0, 0, 0.22);
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.28);
 }
 
 .gallery-mode__connections-view-btn {
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 5px 10px;
+    padding: 10px 18px;
+    min-height: 44px;
+    min-width: 84px;
     border: 1px solid transparent;
-    border-radius: 3px;
+    border-radius: 4px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.62);
     cursor: pointer;
+    line-height: 1;
 }
 
 .gallery-mode__connections-view-btn:hover {
@@ -561,6 +564,20 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
+}
+
+.gallery-conn-canvas__zoom-btn--park {
+    min-width: 42px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.gallery-conn-canvas__zoom-btn--park.gallery-conn-canvas__zoom-btn--parked {
+    border-color: rgba(100, 180, 255, 0.55);
+    background: rgba(100, 180, 255, 0.18);
+    color: rgba(210, 235, 255, 0.95);
 }
 
 .gallery-conn-canvas__toolbar {
@@ -804,14 +821,27 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
 }
 
 @media (max-width: 900px) {
-    body:has(#atlasGalleryHost) .gallery-mode__main {
-        --gallery-center-corridor: clamp(80px, 14vw, 140px);
+    body:has(#atlasGalleryHost),
+    #atlasGalleryHost {
+        --gallery-side-panel-inset-top: calc(
+            var(--header-height, 88px) + clamp(11rem, 21vh, 15.5rem)
+        );
+        --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 112px);
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
-        width: calc(
-            (100vw - var(--gallery-center-corridor, 100px)) / 2 - var(--gallery-side-panel-gap, 6px)
-        );
+        width: var(--gallery-side-panel-width, 1000px);
+        max-width: var(--gallery-side-panel-width, 1000px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+        left: clamp(12px, 2vw, 28px);
+        right: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+        right: clamp(12px, 2vw, 28px);
+        left: auto;
     }
 
     .gallery-mode__archive-side-panel {
@@ -827,17 +857,15 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
         right: clamp(34px, 4.8vw, 60px);
     }
-
-    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
-        left: clamp(12px, 2vw, 28px);
-    }
-
-    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
-        right: clamp(12px, 2vw, 28px);
-    }
 }
 
 @media (max-width: 640px) {
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
+        position: absolute;
+        bottom: auto;
+        height: auto;
+    }
+
     body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
         top: calc(var(--header-height, 72px) + clamp(4.5rem, 10vh, 7rem));
     }
@@ -866,7 +894,7 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     grid-template-rows: 1fr 0fr;
 }
 
-/* Select Hero toggle — left dock rail (same chrome as Filters / Map toggles) */
+/* Select File toggle — left dock rail (same chrome as Filters / Map toggles) */
 body:has(#atlasGalleryHost) #dockGlobeRailLeft > .globe-control-btn.dock-globe-rail__btn:not(#heroBiographyChipStripToggle) {
     display: none !important;
 }
@@ -1437,12 +1465,18 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 }
 
 .gallery-hero-filters__category-chip {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: clamp(52px, 5.5vw, 68px);
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: clamp(0.72rem, 0.95vw, 0.86rem);
+    font-size: clamp(0.62rem, 0.82vw, 0.74rem);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 6px 10px 7px;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 3px;
     background: rgba(0, 0, 0, 0.35);
@@ -1452,6 +1486,24 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         background 0.2s ease,
         border-color 0.2s ease,
         color 0.2s ease;
+}
+
+.gallery-hero-filters__category-chip-icon {
+    width: clamp(22px, 2.4vw, 28px);
+    height: clamp(22px, 2.4vw, 28px);
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.88;
+    pointer-events: none;
+}
+
+.gallery-hero-filters__category-chip--active .gallery-hero-filters__category-chip-icon {
+    opacity: 1;
+}
+
+.gallery-hero-filters__category-chip-label {
+    line-height: 1.1;
+    pointer-events: none;
 }
 
 .gallery-hero-filters__category-chip:hover {
@@ -1588,7 +1640,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
-    gap: clamp(4px, 0.45vw, 10px);
+    gap: clamp(12px, 1vw, 20px);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -1696,6 +1748,13 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 
 .gallery-hero-filters__subrow--bottom {
     z-index: 2;
+}
+
+/* Hero biography — a little air between subrole category blocks */
+.gallery-hero-filters__role-column--damage .gallery-hero-filters__subrow,
+.gallery-hero-filters__role-column--tank .gallery-hero-filters__subrow,
+.gallery-hero-filters__role-column--support .gallery-hero-filters__subrow {
+    gap: clamp(14px, 1.1vw, 22px);
 }
 
 .gallery-hero-filters__subrole-group {

@@ -11,6 +11,7 @@ import {
     BIO_BIOGRAPHY_CATEGORY_LABELS,
     normalizeBioBiographyCategory,
 } from './bioBiographyCategories.js';
+import { STRIP_CATEGORY_ICONS } from '../../data-workshop/archive-category-shared/ArchiveCategoryTypes.js';
 import { createBioBiographyChip } from './createBioBiographyChip.js';
 import {
     clearBioBiographyChipSelectionForCategoryChange,
@@ -460,7 +461,19 @@ export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
         btn.setAttribute('role', 'tab');
         btn.setAttribute('aria-selected', cat === activeCategory ? 'true' : 'false');
         btn.setAttribute('aria-label', BIO_BIOGRAPHY_CATEGORY_ARIA[cat]);
-        btn.textContent = BIO_BIOGRAPHY_CATEGORY_LABELS[cat];
+
+        const icon = document.createElement('img');
+        icon.className = 'gallery-hero-filters__category-chip-icon';
+        icon.src = STRIP_CATEGORY_ICONS[cat];
+        icon.alt = '';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.draggable = false;
+
+        const label = document.createElement('span');
+        label.className = 'gallery-hero-filters__category-chip-label';
+        label.textContent = BIO_BIOGRAPHY_CATEGORY_LABELS[cat];
+
+        btn.append(icon, label);
         btn.addEventListener('click', () => {
             const nextCat = normalizeBioBiographyCategory(btn.dataset.bioCategory);
             if (nextCat === activeCategory) return;

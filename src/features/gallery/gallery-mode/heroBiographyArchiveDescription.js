@@ -17,6 +17,7 @@ import {
     renderHeroBiographyConnectionsView,
 } from './heroBiographyArchiveConnectionsView.js';
 import { createGalleryConnectionCanvas } from './galleryConnectionCanvas.js';
+import { createInfoDescriptionTextScaleControls } from '../../system-interface/interface-shared/accessibility/infoDescriptionTextScale.js';
 import { listDisplayableConnectionEntities } from './galleryConnectionCanvasModel.js';
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
@@ -118,6 +119,10 @@ let canvasLayoutSaveInFlight = false;
 /** @type {object | null} */
 let currentEntry = null;
 
+/** Entry with resolved Codex connections (same data as list view). */
+/** @type {object | null} */
+let currentViewEntry = null;
+
 /** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
 let currentCategory = 'heroes';
 
@@ -204,6 +209,23 @@ function setConnectionsEditingMode(editing) {
 }
 
 /**
+ * @param {object | null} entry
+ * @returns {Promise<object | null>}
+ */
+async function resolveViewEntryForConnections(entry) {
+    const cat = normalizeBioBiographyCategory(currentCategory);
+    if (!entry || !(cat === 'heroes' || cat === 'factions' || cat === 'npcs')) {
+        return entry;
+    }
+    const connections = await resolveConnectionsForArchiveEntry(
+        cat,
+        entry,
+        currentDisplayName,
+    );
+    return archiveEntryWithConnections(entry, cat, connections);
+}
+
+/**
  * @param {'list' | 'canvas'} mode
  */
 function setConnectionsViewMode(mode) {
@@ -222,17 +244,20 @@ function setConnectionsViewMode(mode) {
         });
     }
     if (connectionsViewMode === 'canvas') {
-        void refreshConnectionsCanvas(currentEntry);
+        void refreshConnectionsCanvas();
     } else {
-        applyConnectionsEmptyState(currentEntry);
+        applyConnectionsEmptyState(currentViewEntry ?? currentEntry);
     }
 }
 
 /**
- * @param {object | null} [viewEntry]
+ * @param {object | null} [presetViewEntry] Pre-resolved entry (e.g. from renderConnectionsBody).
  */
-async function refreshConnectionsCanvas(viewEntry = currentEntry) {
+async function refreshConnectionsCanvas(presetViewEntry) {
     if (!connectionsCanvasMountEl || connectionsViewMode !== 'canvas') return;
+
+    const viewEntry = presetViewEntry ?? await resolveViewEntryForConnections(currentEntry);
+    currentViewEntry = viewEntry;
 
     if (!connectionsCanvasController) {
         connectionsCanvasController = createGalleryConnectionCanvas(connectionsCanvasMountEl, {
@@ -240,6 +265,20 @@ async function refreshConnectionsCanvas(viewEntry = currentEntry) {
             onDirty: () => {
                 const saveBtn = connectionsCanvasController?.getSaveButton();
                 if (saveBtn) saveBtn.hidden = !canEditGalleryArchive();
+            },
+            onViewParked: () => {
+                if (canEditGalleryArchive()) {
+                    void handleCanvasLayoutSave({ parked: true });
+                    return;
+                }
+                const snapshot = connectionsCanvasController?.collectSnapshot?.();
+                if (snapshot && currentViewEntry) {
+                    currentViewEntry = {
+                        ...currentViewEntry,
+                        connectionCanvas: snapshot,
+                    };
+                }
+                window.updateAppStatus?.('Canvas view parked for this session.', 'success');
             },
         });
         const canvasSaveBtn = connectionsCanvasController.getSaveButton();
@@ -303,15 +342,8 @@ function updateConnectionsEmptyCopy(category) {
 async function renderConnectionsBody(entry, category) {
     if (!connectionsBodyEl) return;
     const cat = normalizeBioBiographyCategory(category);
-    let viewEntry = entry;
-    if (entry && (cat === 'heroes' || cat === 'factions' || cat === 'npcs')) {
-        const connections = await resolveConnectionsForArchiveEntry(
-            cat,
-            entry,
-            currentDisplayName,
-        );
-        viewEntry = archiveEntryWithConnections(entry, cat, connections);
-    }
+    const viewEntry = await resolveViewEntryForConnections(entry);
+    currentViewEntry = viewEntry;
     renderHeroBiographyConnectionsView(connectionsBodyEl, viewEntry, category);
     if (connectionsViewMode === 'canvas') {
         void refreshConnectionsCanvas(viewEntry);
@@ -332,25 +364,15 @@ function renderBirthdayMeta(display) {
 
     const birthdayRow = document.createElement('p');
     birthdayRow.className = 'gallery-mode__archive-birthday-line';
-    const birthdayLabel = document.createElement('span');
-    birthdayLabel.className = 'gallery-mode__archive-birthday-label';
-    birthdayLabel.textContent = 'Birthday';
-    const birthdayValue = document.createElement('span');
-    birthdayValue.className = 'gallery-mode__archive-birthday-value';
-    birthdayValue.textContent = display.birthdayText;
-    birthdayRow.append(birthdayLabel, document.createTextNode(' '), birthdayValue);
+    birthdayRow.textContent = `Birthday: ${display.birthdayText}`;
 
-    const ageRow = document.createElement('p');
-    ageRow.className = 'gallery-mode__archive-age-line';
-    const ageLabel = document.createElement('span');
-    ageLabel.className = 'gallery-mode__archive-birthday-label';
-    ageLabel.textContent = 'Age';
-    const ageValue = document.createElement('span');
-    ageValue.className = 'gallery-mode__archive-birthday-value';
-    ageValue.textContent = String(display.age);
-    ageRow.append(ageLabel, document.createTextNode(' '), ageValue);
-
-    viewBirthdayMetaEl.append(birthdayRow, ageRow);
+    viewBirthdayMetaEl.append(birthdayRow);
+    if (display.age != null) {
+        const ageRow = document.createElement('p');
+        ageRow.className = 'gallery-mode__archive-age-line';
+        ageRow.textContent = `Age: ${display.age}`;
+        viewBirthdayMetaEl.append(ageRow);
+    }
     applyIntelEmptyState();
 }
 
@@ -544,7 +566,7 @@ function handleConnectionsCancel() {
     exitConnectionsEditMode();
 }
 
-async function handleCanvasLayoutSave() {
+async function handleCanvasLayoutSave(options = {}) {
     if (
         !canEditGalleryArchive()
         || !currentFilterKey
@@ -571,14 +593,25 @@ async function handleCanvasLayoutSave() {
             window.updateAppStatus?.(result.error || 'Could not save canvas layout.', 'warning');
             return;
         }
-        if (result.entry) currentEntry = result.entry;
+        if (result.entry) {
+            currentEntry = result.entry;
+            if (currentViewEntry) {
+                currentViewEntry = {
+                    ...currentViewEntry,
+                    connectionCanvas: snapshot,
+                };
+            }
+        }
         clearBioArchiveEventsCache(currentCategory);
         connectionsCanvasController.clearDirtyState();
         window.SoundEffectsManager?.play?.('save');
         if (canvasSaveBtn && window.flashButton) {
             window.flashButton(canvasSaveBtn, 'flash-green');
         }
-        window.updateAppStatus?.('Personal connection layout saved.', 'success');
+        window.updateAppStatus?.(
+            options.parked ? 'Canvas view parked and saved.' : 'Personal connection layout saved.',
+            'success',
+        );
     } catch (err) {
         console.warn('[gallery] Canvas layout save failed:', err);
         window.updateAppStatus?.('Could not save canvas layout.', 'warning');
@@ -650,6 +683,7 @@ export function initHeroBiographyArchiveDescription(hostEl) {
     intelCancelBtn.addEventListener('click', handleIntelCancel);
 
     intelToolbarEl.append(
+        createInfoDescriptionTextScaleControls({ compact: true, leading: true }),
         intelEditBtn,
         intelArchiveIo.exportBtn,
         intelArchiveIo.importBtn,
@@ -840,6 +874,7 @@ export async function setBioBiographyArchiveDescription(category, filterKey, dis
     currentFilterKey = key || null;
     currentDisplayName = key ? String(displayName || key).trim() : '';
     currentEntry = null;
+    currentViewEntry = null;
 
     const isHero = cat === 'heroes';
     const supportsConnections = cat === 'heroes' || cat === 'factions' || cat === 'npcs';

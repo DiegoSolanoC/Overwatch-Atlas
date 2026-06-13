@@ -86,6 +86,7 @@ function nodeCenter(el) {
  * @param {{
  *   canEdit?: boolean,
  *   onDirty?: () => void,
+ *   onViewParked?: (view: { panX: number, panY: number, zoom: number }) => void,
  * }} [opts]
  */
 export function createGalleryConnectionCanvas(mountEl, opts = {}) {
@@ -134,7 +135,14 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     fitBtn.title = 'Fit graph in view';
     fitBtn.setAttribute('aria-label', 'Fit graph in view');
 
-    zoomBar.append(zoomOutBtn, zoomInBtn, fitBtn);
+    const parkBtn = document.createElement('button');
+    parkBtn.type = 'button';
+    parkBtn.className = 'gallery-conn-canvas__zoom-btn gallery-conn-canvas__zoom-btn--park';
+    parkBtn.textContent = 'Park';
+    parkBtn.title = 'Save current pan and zoom as this canvas default view';
+    parkBtn.setAttribute('aria-label', 'Park canvas view');
+
+    zoomBar.append(zoomOutBtn, zoomInBtn, fitBtn, parkBtn);
 
     const displayBar = document.createElement('div');
     displayBar.className = 'gallery-conn-canvas__display-bar';
@@ -404,9 +412,39 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             viewPanY = Number(savedView.panY) || 0;
             viewZoom = clampZoom(Number(savedView.zoom));
             applyViewTransform();
+            syncParkButtonState();
             return;
         }
         fitViewToViewport();
+        syncParkButtonState();
+    }
+
+    function syncParkButtonState() {
+        const v = model.view;
+        const hasParkedView =
+            v
+            && Number.isFinite(Number(v.zoom))
+            && Number(v.zoom) > 0;
+        const matchesParked =
+            hasParkedView
+            && Math.abs(viewPanX - (Number(v.panX) || 0)) < 1
+            && Math.abs(viewPanY - (Number(v.panY) || 0)) < 1
+            && Math.abs(viewZoom - Number(v.zoom)) < 0.002;
+        parkBtn.classList.toggle('gallery-conn-canvas__zoom-btn--parked', matchesParked);
+        parkBtn.setAttribute('aria-pressed', matchesParked ? 'true' : 'false');
+    }
+
+    function parkCanvasView() {
+        syncModelView();
+        syncParkButtonState();
+        opts.onViewParked?.({
+            panX: viewPanX,
+            panY: viewPanY,
+            zoom: viewZoom,
+        });
+        if (canEdit) {
+            markDirty();
+        }
     }
 
     function findEdge(fromId, toId) {
@@ -836,6 +874,11 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     fitBtn.addEventListener('click', () => {
         fitViewToViewport();
         markViewDirty();
+        syncParkButtonState();
+    });
+
+    parkBtn.addEventListener('click', () => {
+        parkCanvasView();
     });
 
     viewport.addEventListener(
@@ -877,6 +920,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         viewport.releasePointerCapture(ev.pointerId);
         if (panState.moved) markViewDirty();
         panState = null;
+        syncParkButtonState();
     });
 
     function syncModelFromDom() {

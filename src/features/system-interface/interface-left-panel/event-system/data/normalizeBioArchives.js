@@ -194,5 +194,8 @@ export function normalizeSatelliteArchiveEntry(raw, archiveSource) {
     if (archiveSource === 'npcs') {
         base.npcCategory = resolveNpcCategoryFromArchiveRow(raw);
     }
+    if (raw.connectionCanvas && typeof raw.connectionCanvas === 'object') {
+        base.connectionCanvas = raw.connectionCanvas;
+    }
     return base;
 }
