@@ -13439,39 +13439,6 @@
       ]
     },
     {
-      "name": "Picture of Sucesss",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "London, England",
-      "lat": 51.5074456,
-      "lon": -0.1277653,
-      "yearStart": 2079,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "London, England",
-          "country": "England",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Domina, Symmetra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Hazardous Tactics",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
@@ -13520,6 +13487,39 @@
         {
           "locationName": "Watchpoint Gibraltar",
           "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Picture of Sucesss",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "London, England",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "yearStart": 2079,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, England",
+          "country": "England",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Domina, Symmetra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
           "reasoning": ""
         }
       ]
@@ -13628,72 +13628,6 @@
       ]
     },
     {
-      "name": "New Heights",
-      "description": "",
-      "locationType": "earth",
-      "image": "",
-      "cityDisplayName": "Watchpoint Grand Mesa, United States",
-      "yearStart": 2079,
-      "yearEnd": 2080,
-      "eraName": "The Null Sector Invasion",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Grand Mesa, United States",
-          "country": "United States",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sierra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "The Invitation",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint Gibraltar",
-      "lat": 36.1285933,
-      "lon": -5.3474761,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Winston, Sojourn, Wuyang, Anran",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University, Null Sector",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "The Hunt Begins",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen,, Denmark",
@@ -13733,33 +13667,34 @@
       ]
     },
     {
-      "name": "Sentinels",
-      "locationType": "earth",
-      "cityDisplayName": "Buenos Aires, Argentina",
+      "name": "New Heights",
       "description": "",
+      "locationType": "earth",
       "image": "",
-      "lat": -34.8222,
-      "lon": -58.5358,
+      "cityDisplayName": "Watchpoint Grand Mesa, United States",
+      "yearStart": 2079,
+      "yearEnd": 2080,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2080,
+      "lat": 39.1131257,
+      "lon": -108.0127646,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Buenos Aires, Argentina",
-          "country": "Argentina",
+          "locationName": "Watchpoint Grand Mesa, United States",
+          "country": "United States",
           "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reinhardt, Brigitte, Genji, Sojourn",
+          "country": "Sierra",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Null Sector",
+          "country": "Helix Securities",
           "reasoning": ""
         }
       ]
@@ -13792,6 +13727,104 @@
         {
           "locationName": "",
           "country": "Colloseo Gladiatori, Talon, Vishkar",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "The Invitation",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint Gibraltar",
+      "lat": 36.1285933,
+      "lon": -5.3474761,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Sojourn, Wuyang, Anran",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University, Null Sector",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Elemental Kin",
+      "description": "",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang, Anran",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Wuxing University",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Sentinels",
+      "locationType": "earth",
+      "cityDisplayName": "Buenos Aires, Argentina",
+      "description": "",
+      "image": "",
+      "lat": -34.8222,
+      "lon": -58.5358,
+      "eraName": "The Null Sector Invasion",
+      "yearStart": 2080,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Buenos Aires, Argentina",
+          "country": "Argentina",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reinhardt, Brigitte, Genji, Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Null Sector",
           "reasoning": ""
         }
       ]
@@ -13897,39 +13930,6 @@
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Elemental Kin",
-      "description": "",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuyang, Anran",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Wuxing University",
           "reasoning": ""
         }
       ]
