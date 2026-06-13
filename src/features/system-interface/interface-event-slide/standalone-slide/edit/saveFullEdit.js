@@ -63,6 +63,44 @@ import {
 } from '../../../interface-shared/bio-archive/bioArchiveSlideEventData.js';
 import { saveCodexConnectionsForSubject } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
 
+/**
+ * @param {HTMLElement | null | undefined} el
+ * @returns {string}
+ */
+function readSlidePlainText(el) {
+    if (!el) return '';
+    return String(el.innerText ?? el.textContent ?? '').replace(/\r\n/g, '\n').trim();
+}
+
+/**
+ * @param {{ _presentationFromDockTimeline?: boolean } | null | undefined} slide
+ * @returns {object[]}
+ */
+function resolveStoryTimelineListForSave(slide) {
+    const em = window.eventManager;
+    if (!em) return [];
+    if (slide?._presentationFromDockTimeline) {
+        return em.getDockTimelineEvents?.() || [];
+    }
+    return em.events || [];
+}
+
+/**
+ * @param {object[]} list
+ * @param {object | null | undefined} eventData
+ * @returns {number}
+ */
+function resolveStoryEventIndexInList(list, eventData) {
+    if (!Array.isArray(list) || !eventData) return -1;
+    const byRef = list.indexOf(eventData);
+    if (byRef >= 0) return byRef;
+    const want = String(eventData.name || '').trim().toLowerCase();
+    if (!want) return -1;
+    return list.findIndex(
+        (row) => row && String(row.name || '').trim().toLowerCase() === want,
+    );
+}
+
 export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         if (!slide.isEditing || !slide.editTarget) return;
 
@@ -74,8 +112,8 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         const textElEarly = document.getElementById('eventSlideText');
 
         if (archiveSource !== 'story') {
-            const cleanName = (titleElEarly?.textContent || '').trim();
-            const cleanDesc = (textElEarly?.innerHTML || '').trim();
+            const cleanName = readSlidePlainText(titleElEarly);
+            const cleanDesc = readSlidePlainText(textElEarly);
             const em = window.eventManager;
             const locContainer = document.getElementById('eventSlideEditRelevantLocations');
             const isBioSave =
@@ -343,9 +381,14 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         
         // Save current variant data before saving
         slide.saveCurrentVariantData();
-        
-        const isMultiEvent = eventData.variants && eventData.variants.length > 0;
-        const target = isMultiEvent ? eventData.variants[slide.currentVariantIndex || 0] : eventData;
+
+        const storyList = resolveStoryTimelineListForSave(slide);
+        const liveStoryIdx = resolveStoryEventIndexInList(storyList, eventData);
+        const liveEventData =
+            liveStoryIdx >= 0 && storyList[liveStoryIdx] ? storyList[liveStoryIdx] : eventData;
+
+        const isMultiEvent = liveEventData.variants && liveEventData.variants.length > 0;
+        const target = isMultiEvent ? liveEventData.variants[slide.currentVariantIndex || 0] : liveEventData;
         
         // Gather values from inline editor
         const cityInput = document.getElementById('eventSlideEditCityDisplayName');
@@ -363,8 +406,8 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         
         // Update target
         if (target) {
-            if (titleEl) target.name = titleEl.textContent || target.name;
-            if (textEl) target.description = textEl.innerHTML || target.description;
+            if (titleEl) target.name = readSlidePlainText(titleEl) || target.name;
+            if (textEl) target.description = readSlidePlainText(textEl) || target.description;
             if (cityInput) target.cityDisplayName = cityInput.value;
             if (yearStartInput) target.yearStart = parseInt(yearStartInput.value) || target.yearStart;
             if (yearEndInput) target.yearEnd = parseInt(yearEndInput.value) || null;
@@ -421,12 +464,19 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
 
         const emReorder = window.eventManager;
         const numReorderEl = document.getElementById('eventSlideEditEventNumber');
-        if (emReorder && typeof emReorder.reorderEvents === 'function' && numReorderEl && Array.isArray(emReorder.events)) {
-            const startIdx = emReorder.events.indexOf(eventData);
+        if (
+            emReorder
+            && typeof emReorder.reorderEvents === 'function'
+            && numReorderEl
+            && Array.isArray(storyList)
+            && storyList.length > 0
+            && (window.eventManager?.dataService?.getArchiveSource?.() || 'story') === 'story'
+        ) {
+            const startIdx = liveStoryIdx;
             if (startIdx >= 0) {
                 const n = parseInt(numReorderEl.value, 10);
                 if (!Number.isNaN(n) && n >= 1) {
-                    const newIdx = Math.min(n - 1, emReorder.events.length - 1);
+                    const newIdx = Math.min(n - 1, storyList.length - 1);
                     if (newIdx !== startIdx) {
                         emReorder.reorderEvents(startIdx, newIdx);
                     }
@@ -447,7 +497,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
 
         // Mark as unsaved and persist to localStorage
         if (window.eventManager) {
-            const idx = window.eventManager.events.indexOf(eventData);
+            const idx = liveStoryIdx >= 0 ? liveStoryIdx : storyList.indexOf(liveEventData);
             if (idx >= 0) {
                 window.eventManager.unsavedEventIndices.add(idx);
             }

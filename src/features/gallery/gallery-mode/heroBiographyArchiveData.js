@@ -7,7 +7,7 @@ import { FILES } from '../../../data/registry.js';
 import { matchHeroManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { ensureArchiveLayoutSnapshotsForFilter } from '../../system-interface/interface-filter-menu/buttons/archive-layouts/archiveLayoutSnapshots.js';
 import { ARCHIVE_LOCALSTORAGE_KEYS } from '../../system-interface/interface-left-panel/event-system/data/archiveRouting.js';
-import { mergeHeroBirthdaysFromBundledFile } from '../../system-interface/interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import { mergeHeroBirthdaysFromBundledFile, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../system-interface/interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../system-interface/interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import {
     getHeroBirthdayAgeDisplay,
@@ -117,6 +117,9 @@ export async function loadBioArchiveEvents(category) {
             events = events.length > 0
                 ? mergeHeroBirthdaysFromBundledFile(events, bundled)
                 : bundled;
+            if (events.length > 0) {
+                events = repairCorruptedHeroArchiveDescriptionsFromFile(events, bundled);
+            }
         }
         events = await syncHeroArchiveBirthdaysFromTimeline(events);
     }

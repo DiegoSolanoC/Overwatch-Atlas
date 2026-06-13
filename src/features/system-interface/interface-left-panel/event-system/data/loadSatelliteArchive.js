@@ -13,7 +13,7 @@
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 import { readNpcCategoryFieldsFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
-import { mergeHeroBirthdaysFromBundledFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import { mergeHeroBirthdaysFromBundledFile, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
 
@@ -193,6 +193,10 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
         added = dataService.events.length - beforeBundledMerge;
         if (Array.isArray(fileEvents) && fileEvents.length > 0) {
             dataService.events = mergeHeroBirthdaysFromBundledFile(
+                dataService.events,
+                fileEvents,
+            );
+            dataService.events = repairCorruptedHeroArchiveDescriptionsFromFile(
                 dataService.events,
                 fileEvents,
             );

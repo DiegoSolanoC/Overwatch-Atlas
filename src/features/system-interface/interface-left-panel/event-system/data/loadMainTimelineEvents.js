@@ -17,6 +17,7 @@
 
 import { fetchJsonWithTimeout } from "./fetchWithTimeout.js";
 import { FILES } from "../../../../../data/registry.js";
+import { repairMisfiledLifecycleEventsFromFile } from "./repairMisfiledLifecycleEvents.js";
 
 // ---------------------------------------------------------------------------
 // Private helper
@@ -187,6 +188,18 @@ export async function loadMainTimelineEvents(dataService) {
     `EventDataService: Using localStorage (${localEvents.length} events, user's saved changes)`,
     "info",
   );
+
+  if (fileEvents && fileEvents.length > 0) {
+    const repaired = repairMisfiledLifecycleEventsFromFile(dataService.events, fileEvents);
+    if (repaired !== dataService.events) {
+      dataService.events = repaired;
+      dataService.updateStatus(
+        "EventDataService: Repaired misfiled lifecycle rows (Siebren / Olivia) from timeline-events.json",
+        "warning",
+      );
+      dataService.saveEvents();
+    }
+  }
 
   // Merge file metadata when counts match.
   if (fileEvents && fileEvents.length === dataService.events.length) {

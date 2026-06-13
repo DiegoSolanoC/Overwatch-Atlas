@@ -2,18 +2,18 @@
   "events": [
     {
       "locationType": "earth",
-      "cityDisplayName": " The Hague, Netherlands",
+      "cityDisplayName": "The Hague, Netherlands",
       "image": "",
       "name": "Siebren De Kuiper is Born",
       "description": "On March 15th of 2015, Siebren de Kuiper was born. Growing up in the Netherlands fascinated by the universe and its mysteries, oblivious to the impact he would leave on the world, and the price he would ultimately pay for his hubris.",
       "sources": [
         {
-          "text": "Overwatch Website Sigma",
+          "text": "Overwatch Website, Sigma",
           "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
         }
       ],
       "yearStart": 2015,
-      "eraName": "The Golden Age",
+      "eraName": "The Age of Progress",
       "lat": 52.0799838,
       "lon": 4.3113461,
       "yearEnd": null,
@@ -21,14 +21,14 @@
       "secondaryCountryPlaces": [
         {
           "locationName": "The Hague, Netherlands",
-          "country": "Netherlands,",
+          "country": "Netherlands",
           "reasoning": "Siebren De Kuiper is Born"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sigma,",
+          "country": "Sigma",
           "reasoning": "Siebren De Kuiper is Born"
         }
       ]
@@ -1793,7 +1793,7 @@
       "name": "Olivia Colomar is Born",
       "locationType": "earth",
       "cityDisplayName": "Castillo, Mexico",
-      "description": "On December 31st of 204, Olivia Colomar is born. One of the millions orphaned by the crisis, left to fend for herself in a country left to ruin and riddled with political scandals. From an early age, Olivia learned a constant truth in her life: If you have the information, you control everything. ",
+      "description": "On December 31st of 2046, Olivia Colomar is born. One of the millions orphaned by the crisis, left to fend for herself in a country left to ruin and riddled with political scandals. From an early age, Olivia learned a constant truth in her life: If you have the information, you control everything. ",
       "image": "",
       "sources": [
         {

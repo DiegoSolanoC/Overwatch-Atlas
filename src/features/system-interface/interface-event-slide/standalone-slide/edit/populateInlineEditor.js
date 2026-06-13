@@ -138,10 +138,19 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
 
             const emList = window.eventManager;
             const numEl = document.getElementById('eventSlideEditEventNumber');
-            const listIdx = emList?.events ? emList.events.indexOf(eventData) : -1;
-            if (numEl && emList?.events?.length && listIdx >= 0) {
+            const listForOrder = slide._presentationFromDockTimeline
+                ? (emList?.getDockTimelineEvents?.() || [])
+                : (emList?.events || []);
+            let listIdx = listForOrder.indexOf(eventData);
+            if (listIdx < 0 && eventData?.name) {
+                const want = String(eventData.name).trim().toLowerCase();
+                listIdx = listForOrder.findIndex(
+                    (row) => row && String(row.name || '').trim().toLowerCase() === want,
+                );
+            }
+            if (numEl && listForOrder.length && listIdx >= 0) {
                 numEl.min = '1';
-                numEl.max = String(emList.events.length);
+                numEl.max = String(listForOrder.length);
                 numEl.value = String(listIdx + 1);
             }
 

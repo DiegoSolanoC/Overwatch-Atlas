@@ -63,8 +63,10 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                 orderRow.setAttribute('aria-hidden', 'false');
             }
 
-            // Make title and description editable
+            // Make title and description editable (plain text — never persist glitch HTML)
             if (titleEl) {
+                const plainTitle = (titleEl.innerText ?? titleEl.textContent ?? '').replace(/\r\n/g, '\n').trim();
+                titleEl.textContent = plainTitle;
                 titleEl.contentEditable = 'true';
                 titleEl.setAttribute('spellcheck', 'true');
             }
