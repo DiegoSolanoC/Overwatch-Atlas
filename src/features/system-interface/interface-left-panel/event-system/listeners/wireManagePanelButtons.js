@@ -5,9 +5,8 @@
  *   - Add (`#addEventBtn`), Save (`#saveEventsBtn`), Export (`#exportEventsBtn`),
  *     Import (`#importEventsBtn` + `#importEventsFile`).
  *
- * On static deploy (GitHub Pages), Add is hidden. Save / Export / Import stay available
- * in Data Workshop bio archives (heroes, factions, npcs, locations) for localStorage +
- * JSON handoff workflows.
+ * On static deploy (GitHub Pages), Add / Save / Export / Import stay available in Story
+ * Timeline and Data Workshop bio archives (localStorage + JSON handoff).
  *
  * The toggle button is **cloned to drop existing listeners** before re-attaching to avoid
  * double-firing on hot reloads / re-renders. After cloning, the function looks the panel up

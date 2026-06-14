@@ -1,9 +1,11 @@
+import { isArchiveStructuralEditingEnabled } from '../../interface-info-display/isEventSlideEditDevHost.js';
+
 /**
  * Append a blank row for the active archive, jump pagination to it, re-render, then open the slide.
  * @param {object} mgr — EventManager
  */
 export function runAddBlankEventAndOpen(mgr) {
-    if (mgr.isGitHubPages()) return;
+    if (!isArchiveStructuralEditingEnabled()) return;
     if (!mgr.editService) {
         console.error('EventManager: EventEditService not available');
         return;

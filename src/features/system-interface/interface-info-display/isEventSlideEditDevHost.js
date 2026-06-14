@@ -2,9 +2,11 @@
  * When inline archive / event-slide editing is allowed.
  *
  * - Localhost: always (story + bio archives).
- * - GitHub Pages / static deploy: bio archives only (heroes, factions, npcs, locations)
- *   so collaborators can edit connection data in Data Workshop via localStorage + import/export.
+ * - GitHub Pages / static deploy: Story Timeline, Gallery, Data Workshop bio archives,
+ *   and Codex — localStorage + import/export (no dev-server JSON writes).
  */
+
+import { eventsPanelMountedInStoryArchive } from '../../data-workshop/archive-support/ArchiveEnvironmentChecks.js';
 
 /** @type {ReadonlySet<string>} */
 const BIO_ARCHIVE_SOURCES = new Set(['heroes', 'factions', 'npcs', 'locations']);
@@ -49,21 +51,33 @@ export function getActiveArchiveSource() {
 }
 
 /**
+ * Story Timeline or bio archive editing on static hosting (localStorage + import/export).
+ * @returns {boolean}
+ */
+export function isCollaborativeArchiveEditingEnabled() {
+    if (isLoopbackHost()) return true;
+    if (!isStaticDeployHost()) return false;
+
+    const src = getActiveArchiveSource();
+    if (BIO_ARCHIVE_SOURCES.has(src)) return true;
+    if (src === 'story' && eventsPanelMountedInStoryArchive()) return true;
+    return false;
+}
+
+/**
  * Data Workshop bio archive editing (slide + save/import/export) on static hosting.
  * @returns {boolean}
  */
 export function isBioArchiveWorkshopEditingEnabled() {
-    if (isLoopbackHost()) return true;
-    if (!isStaticDeployHost()) return false;
-    return BIO_ARCHIVE_SOURCES.has(getActiveArchiveSource());
+    return isCollaborativeArchiveEditingEnabled();
 }
 
 /**
- * Add / delete / reorder list rows — local dev server only.
+ * Add / delete / reorder list rows.
  * @returns {boolean}
  */
 export function isArchiveStructuralEditingEnabled() {
-    return isLoopbackHost();
+    return isCollaborativeArchiveEditingEnabled();
 }
 
 /**
@@ -71,7 +85,7 @@ export function isArchiveStructuralEditingEnabled() {
  * @returns {boolean}
  */
 export function isArchiveImportExportEnabled() {
-    return isBioArchiveWorkshopEditingEnabled();
+    return isCollaborativeArchiveEditingEnabled();
 }
 
 /**
@@ -79,5 +93,5 @@ export function isArchiveImportExportEnabled() {
  * @returns {boolean}
  */
 export function isEventSlideEditDevHost() {
-    return isBioArchiveWorkshopEditingEnabled();
+    return isCollaborativeArchiveEditingEnabled();
 }

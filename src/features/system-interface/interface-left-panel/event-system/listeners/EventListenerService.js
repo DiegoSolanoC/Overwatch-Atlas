@@ -3,7 +3,7 @@
  *
  * Facade only. The real logic lives in sibling modules so each concern stays small + testable:
  *   - `wireManagePanelButtons.js` Open/close toggle + Add/Save/Export/Import buttons
- *                                  (Add/Save/Export/Import are hidden on GitHub Pages builds).
+ *                                  (hidden outside Story Timeline / Data Workshop on GitHub Pages).
  *   - `wireToolbarCollapse.js`    Mobile toolbar collapse with localStorage persistence.
  *   - `search/wireEventManagerSearch.js`
  *                                  The 900-line search bar: title + hero/faction/NPC tokens,

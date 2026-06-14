@@ -1,3 +1,5 @@
+import { isArchiveStructuralEditingEnabled } from '../../interface-info-display/isEventSlideEditDevHost.js';
+
 /**
  * Delete one row via EventEditService; refresh list + globe on success.
  * @param {object} mgr — EventManager
@@ -5,8 +7,8 @@
  * @returns {boolean} whether the event was removed
  */
 export function runDeleteEventAtIndex(mgr, index) {
-    if (mgr.isGitHubPages()) {
-        console.log('Event deletion is disabled on GitHub Pages');
+    if (!isArchiveStructuralEditingEnabled()) {
+        console.log('Event deletion is disabled in read-only mode');
         return false;
     }
     if (!mgr.editService) {

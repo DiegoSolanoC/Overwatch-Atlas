@@ -10,12 +10,13 @@
  *   - `reorderEventsInList.js`        — array mutation + per-archive metadata writes +
  *     re-render + unsaved-index bookkeeping
  *
- * GitHub Pages is read-only by policy, so `setupDragAndDrop()` early-returns there.
+ * Read-only hosts skip drag wiring unless collaborative archive editing is enabled.
  *
  * Global: `window.EventListReorderDragDrop` (new) and `window.EventDragDropService`
  * (legacy alias).
  */
 
+import { isArchiveStructuralEditingEnabled } from '../../../interface-info-display/isEventSlideEditDevHost.js';
 import { wireEventCardDragDrop } from './wireEventCardDragDrop.js';
 import { wireArchiveSeparatorDrop } from './wireArchiveSeparatorDrop.js';
 import { reorderEventsInList } from './reorderEventsInList.js';
@@ -31,7 +32,7 @@ class EventListReorderDragDrop {
 
     setupDragAndDrop() {
         if (!this.eventManager) return;
-        if (this.eventManager.isGitHubPages && this.eventManager.isGitHubPages()) return;
+        if (!isArchiveStructuralEditingEnabled()) return;
 
         wireEventCardDragDrop(this);
         wireArchiveSeparatorDrop(this);

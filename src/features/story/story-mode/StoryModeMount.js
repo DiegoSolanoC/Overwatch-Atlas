@@ -30,6 +30,7 @@ import {
     storyTimelineModeSession,
 } from './StoryModeSession.js';
 import { mountStoryViewToggle } from './StoryViewToggle.js';
+import { syncArchiveManagePanelActionVisibility } from '../../system-interface/interface-left-panel/event-system/listeners/wireManagePanelButtons.js';
 
 /**
  * @param {object} [options]
@@ -59,6 +60,7 @@ export async function mountStoryMode({ onCancel } = {}) {
             getStoryViewerContainer()?.classList.add('active');
         });
         mountStoryViewToggle(eventsManagePanel);
+        syncArchiveManagePanelActionVisibility();
         updateStatus('Story open', 'success');
         return;
     }
@@ -74,6 +76,8 @@ export async function mountStoryMode({ onCancel } = {}) {
         () => archiveModeSession.onExitMode || storyTimelineModeSession.onExitMode,
         () => false,
     );
+
+    syncArchiveManagePanelActionVisibility();
 
     updateStatus('Story open', 'success');
 }
@@ -116,6 +120,8 @@ export async function unmountStoryMode({ restoreMenu = true } = {}) {
     removeStoryViewerContainer({ immediate: !restoreMenu });
 
     clearOriginalPanelState();
+
+    syncArchiveManagePanelActionVisibility();
 }
 
 /** @deprecated Use {@link mountStoryMode} */

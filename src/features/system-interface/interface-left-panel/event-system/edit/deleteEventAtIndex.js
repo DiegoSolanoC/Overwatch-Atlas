@@ -1,10 +1,12 @@
+import { isArchiveStructuralEditingEnabled } from '../../../interface-info-display/isEventSlideEditDevHost.js';
+
 /**
  * Remove `events[index]` from the active archive and patch up the dependent state
  * (`unsavedEventIndices` and the manager pagination cursor) so the UI stays consistent.
  *
  * Notes:
- *   - **GitHub Pages guard**: deletion is disabled on the live published site since there's
- *     no API to write back to. Returns `{ success: false, reason: 'github-pages' }`.
+ *   - **Read-only guard**: deletion is disabled outside collaborative editing contexts
+ *     (localhost, Story Timeline on GitHub Pages, Data Workshop bio archives).
  *   - **Unsaved index shift**: any saved-vs-unsaved markers for items *after* the deleted
  *     event need their indices decremented; otherwise we'd flag the wrong rows as dirty.
  *   - **Mark-all-unsaved**: after deletion we also mark every remaining event as unsaved.
@@ -22,8 +24,8 @@ export function deleteEventAtIndex(editService, index) {
         return { success: false };
     }
 
-    if (editService.eventManager.isGitHubPages && editService.eventManager.isGitHubPages()) {
-        return { success: false, reason: 'github-pages' };
+    if (!isArchiveStructuralEditingEnabled()) {
+        return { success: false, reason: 'read-only-host' };
     }
 
     const events = editService.eventManager.events;
