@@ -418,8 +418,12 @@ class FilterService {
   openPanel() {
     /* Mutual exclusion: if Event Info is open, close it before opening Filters. */
     const eventSlide = document.getElementById("eventSlide");
-    if (eventSlide?.classList.contains("open"))
+    if (eventSlide?.classList.contains("open")) {
       eventSlide.classList.remove("open");
+      try {
+        window.standaloneEventSlide?.hideImageOverlay?.();
+      } catch (_) {}
+    }
 
     /* Reset the pending selection to the confirmed snapshot every time we open. */
     if (this.isStandaloneMode() && window.standaloneActiveFilters) {
@@ -455,10 +459,47 @@ class FilterService {
   }
 
   closePanel() {
-    this.filtersPanel?.classList.remove("open");
+    const panel = this.filtersPanel;
+    if (!panel?.classList.contains("open")) {
+      this.filtersButton?.classList.remove("active");
+      document.getElementById("musicToggle")?.classList.remove("active");
+      this.setPanelMode("filters");
+      return;
+    }
+
+    panel.classList.add("panel--closing");
+    panel.classList.remove("open");
     this.filtersButton?.classList.remove("active");
     document.getElementById("musicToggle")?.classList.remove("active");
-    this.setPanelMode("filters");
+    window.globeController?.requestStageLayoutSync?.();
+
+    const finishClose = () => {
+      if (!panel.classList.contains("panel--closing")) return;
+      panel.classList.remove("panel--closing");
+      this.setPanelMode("filters");
+      window.globeController?.requestStageLayoutSync?.();
+    };
+
+    const onTransitionEnd = (event) => {
+      if (event.target !== panel) return;
+      if (
+        event.propertyName !== "width" &&
+        event.propertyName !== "min-width" &&
+        event.propertyName !== "max-width" &&
+        event.propertyName !== "flex-basis"
+      ) {
+        return;
+      }
+      panel.removeEventListener("transitionend", onTransitionEnd);
+      clearTimeout(fallbackTimer);
+      finishClose();
+    };
+
+    panel.addEventListener("transitionend", onTransitionEnd);
+    const fallbackTimer = setTimeout(() => {
+      panel.removeEventListener("transitionend", onTransitionEnd);
+      finishClose();
+    }, 400);
   }
 
   togglePanel() {

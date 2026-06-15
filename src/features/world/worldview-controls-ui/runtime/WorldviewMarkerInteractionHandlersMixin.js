@@ -10,6 +10,10 @@
             return;
         }
 
+        if (event.target.closest?.('.map-hover-callout__panel, .map-hover-callout__stack-row')) {
+            return;
+        }
+
         // Don't register click if mouse was dragged
         if (window.mouseMoved) {
             return;
@@ -91,8 +95,6 @@
             if (hoveredMarker) {
                 this.pulseService.stopEventMarkerPulse(hoveredMarker);
                 this.pulseService.setHoveredMarker(null);
-                this.highlightNumberButtonForMarker(null);
-                this._syncEventsHoverPreviewFromMarker(null);
             }
             // Stop hover radiate sound loop
             if (window.globeController?.map2dLite?.stopHoverRadiateLoop) {
@@ -105,137 +107,13 @@
 
             // Handle event marker click
             if (clickedMarker.userData && clickedMarker.userData.isEventMarker) {
-                console.log('[onMarkerClick] Clicked marker userData:', {
-                    eventName: clickedMarker.userData.eventName,
-                    event: clickedMarker.userData.event,
-                    variant: clickedMarker.userData.variant,
-                    variantIndex: clickedMarker.userData.variantIndex,
-                    locationType: clickedMarker.userData.locationType,
-                    isInteractive: clickedMarker.userData.isInteractive,
-                    isMainVariant: clickedMarker.userData.isMainVariant
-                });
-                
-                // Only allow clicks on interactive markers (main variant or single events)
-                if (clickedMarker.userData.isInteractive === false) {
-                    return; // Non-interactive variant markers cannot be clicked
-                }
-                
-                // Don't allow event marker clicks when image overlay is visible
-                const eventImageOverlay = document.getElementById('eventImageOverlay');
-                if (eventImageOverlay && eventImageOverlay.classList.contains('open')) {
-                    const opacity = parseFloat(window.getComputedStyle(eventImageOverlay).opacity);
-                    if (opacity > 0.1) { // Image is visible (faded in)
-                        return; // Block event marker clicks but allow globe dragging
-                    }
-                }
-                
-                // Don't allow clicks on locked events
-                if (clickedMarker.userData.isLocked) {
-                    return;
-                }
-                
-                // Check if this is the same event that's currently open (by checking Event System's current index)
-                const events = window.eventManager?.getDockTimelineEvents?.() || [];
-                const eventData = clickedMarker.userData.event;
-                
-                // Find event index - need to handle variants correctly
-                let eventIndex = -1;
-                if (clickedMarker.userData.variant) {
-                    // This is a variant marker - find the parent event
-                    eventIndex = events.findIndex(e => {
-                        // Check if this event has variants and one matches
-                        if (e.variants && e.variants.length > 0) {
-                            return e.variants.some(v => v === clickedMarker.userData.variant || v.name === clickedMarker.userData.variant.name);
-                        }
-                        return false;
-                    });
-                } else {
-                    // This is a single event marker
-                    eventIndex = events.findIndex(e => e === eventData || e.name === eventData.name);
-                }
-                if (eventIndex >= 0) {
-                } else {
-                }
-                const currentIndex = window.standaloneEventSlide?.currentEventIndex;
-                const eventSlide = document.getElementById('eventSlide');
-                if (eventIndex >= 0 && eventIndex === currentIndex && eventSlide && eventSlide.classList.contains('open')) {
-                    // Same event and slide is open - close it
-                    eventSlide.classList.remove('open');
-                    
-                    // Reset camera when closing by clicking same marker
-                    if (window.globeController?.interactionController) {
-                        window.globeController.interactionController.stopFollowingStation();
-                        window.globeController.interactionController.restorePlanesVisibility?.();
-                    }
-                    if (window.globeController?.cameraControlService) {
-                        window.globeController.cameraControlService.resetCameraToDefault();
-                    }
-                    
-                    return;
-                }
-                
-                // Check if this is a Moon/Mars/Station/Ship marker - adjust camera behavior
-                const locationType = clickedMarker.userData ? clickedMarker.userData.locationType : 'earth';
-                
-                // Check if marker is on orbit panel (for station/marsShip)
-                const orbitMarkerParent = this.sceneModel.getOrbitMarkerParent ? this.sceneModel.getOrbitMarkerParent() : this.sceneModel.orbitPlane;
-                const isOnOrbitPanel = orbitMarkerParent && clickedMarker.parent === orbitMarkerParent;
-                
-                if (locationType === 'moon' || locationType === 'mars') {
-                    // Reset camera to default view for Moon/Mars events
-                    if (onResetCamera) {
-                        onResetCamera();
-                    }
-                } else if (locationType === 'station' || locationType === 'marsShip') {
-                    // Guard rail: if on orbit panel, treat like moon/mars (reset camera, don't follow)
-                    if (isOnOrbitPanel) {
-                        if (onResetCamera) {
-                            onResetCamera();
-                        }
-                    } else {
-                        // Follow the moving object (ISS / Mars Ship) when on actual satellite
-                        try {
-                            window.globeController?.interactionController?.setPlanesVisibility?.(false);
-                            window.globeController?.interactionController?.startFollowingStation?.(clickedMarker);
-                        } catch (_) {
-                            // fallback to reset if follow isn't available
-                            if (onResetCamera) onResetCamera();
-                        }
-                    }
-                } else {
-                    // Zoom in and center on the marker (Earth events)
-                    if (onZoomToMarker) {
-                        onZoomToMarker(clickedMarker);
-                    }
-                }
-                
-                // Open event slide with viewport-based routing
-                if (eventIndex >= 0) {
-                    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    const isMobilePortrait = isTouchDevice && window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-                    if (isMobilePortrait && window.standaloneEventSlide) {
-                        // Mobile portrait: use standalone implementation
-                        window.standaloneEventSlide.showEvent(eventIndex);
-                    } else if (window.globeController?.uiView) {
-                        // Desktop / mobile landscape: use simple dock-like implementation
-                        const eventData = events[eventIndex];
-                        const eventName = eventData?.name || 'Event';
-                        const eventDescription = eventData?.description || '';
-                        const imagePath = window.eventManager?.getEventImagePath
-                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image, 'story')
-                            : null;
-                        window.globeController.uiView.showEventSlide(eventName, imagePath, eventDescription, clickedMarker, eventData);
-                    }
-                    // Play sound effect
-                    if (window.SoundEffectsManager?.play) {
-                        window.SoundEffectsManager.play('eventClick');
-                    }
-                } else {
-                }
+                this.dismissPinnedMarkerCallout?.();
+                this.activateEventMarker(clickedMarker, { onZoomToMarker, onResetCamera });
             }
         } else {
-            // Clicked elsewhere - hide label
+            // Clicked elsewhere - hide label and sticky marker callout
             this.uiView.hideCityLabel();
+            this.dismissPinnedMarkerCallout?.();
             // NOTE: Event slide close removed - Globe no longer handles event slides
             // Event System Load Out manages its own panel state
             // Empty globe tap (not a drag) closes music/filters panels
@@ -258,8 +136,7 @@
             if (opacity > 0.1) {
                 this.highlightNumberButtonForMarker(null);
                 this._syncEventsHoverPreviewFromMarker(null);
-                this._domLiteHoverStub = null;
-                window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
+                this.dismissPinnedMarkerCallout();
                 return;
             }
         }
@@ -275,7 +152,7 @@
             if (!ud || ud.isLocked || ud.isInteractive === false) {
                 this.highlightNumberButtonForMarker(null);
                 this._syncEventsHoverPreviewFromMarker(null);
-                this._domLiteHoverStub = null;
+                this.dismissPinnedMarkerCallout();
                 window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
                 return;
             }
@@ -284,8 +161,8 @@
                 clearTimeout(this.sceneModel.autoRotateTimeout);
                 this.sceneModel.autoRotateTimeout = null;
             }
-            this.highlightNumberButtonForMarker(markerOrNull);
             this._syncEventsHoverPreviewFromMarker(markerOrNull);
+            this.pinMarkerCallout(markerOrNull);
             this._domLiteHoverStub = markerOrNull;
             window.globeController?.map2dLite?.setSyntheticHoverFromStub?.(markerOrNull);
 
@@ -299,39 +176,11 @@
             return;
         }
 
-        this.highlightNumberButtonForMarker(null);
-        this._syncEventsHoverPreviewFromMarker(null);
-        this._domLiteHoverStub = null;
-        window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
-        if (this.sceneModel.getAutoRotateEnabled() && !this.sceneModel.eventMarker) {
-            this.sceneModel.autoRotateTimeout = setTimeout(() => {
-                this.sceneModel.setAutoRotate(true);
-            }, 500);
-        }
+        this.dismissPinnedMarkerCallout();
     },
 
     clearDomLiteMarkerHoverIf(stub) {
-        if (!this._domLiteHoverStub) return;
-        if (!stub?.userData) {
-            if (this._domLiteHoverStub.userData?.isMap2dLiteProxy) {
-                this.setDomLiteMarkerHover(null);
-            }
-            return;
-        }
-        if (this._domLiteHoverStub === stub) {
-            this.setDomLiteMarkerHover(null);
-            return;
-        }
-        const cur = this._domLiteHoverStub.userData;
-        const next = stub.userData;
-        if (
-            cur.isMap2dLiteProxy &&
-            next.isMap2dLiteProxy &&
-            cur.event === next.event &&
-            (cur.variantIndex ?? 0) === (next.variantIndex ?? 0)
-        ) {
-            this.setDomLiteMarkerHover(null);
-        }
+        this.releaseDomLiteMarkerHover(stub);
     }
 };
 })(typeof window !== 'undefined' ? window : globalThis);

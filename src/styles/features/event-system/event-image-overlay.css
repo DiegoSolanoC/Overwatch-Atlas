@@ -2,9 +2,10 @@
    EVENT IMAGE OVERLAY
    ======================================== */
 
-/* Event Image Overlay (over globe) - flexbox layout */
+/* Event Image Overlay (over globe) — absolute so panel open/close never reflows main#content */
 .event-image-overlay {
-    position: relative;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0); /* Transparent by default - will be set to black if no image */
@@ -22,7 +23,7 @@
     margin: 0;
     box-sizing: border-box;
     box-shadow: none; /* Remove shadow to prevent overlap */
-    flex: 1 1 auto; /* Fill available space in flex layout */
+    flex: none;
 }
 
 .event-image-overlay.open {

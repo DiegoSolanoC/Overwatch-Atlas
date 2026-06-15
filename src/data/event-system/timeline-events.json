@@ -940,7 +940,7 @@
       "name": "Hanzo Shimada is Born",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.<br>Due to his position, he trained since very young to take his father's role as the leader of the clan, becoming very close to his father, especially after his mother abandoned the family.",
+      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.\nDue to his position, he trained since very young to take his father's role as the leader of the clan, becoming very close to his father, especially after his mother abandoned the family.",
       "image": "",
       "sources": [
         {
@@ -975,6 +975,13 @@
           "locationName": "",
           "country": "Shimada Clan,",
           "reasoning": "Criminal Family for which Hanzo was  the first heir"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojiro,",
+          "reasoning": "Hanzo's Father and presumed leader of the Shimada"
         }
       ]
     },
@@ -1393,6 +1400,13 @@
           "locationName": "",
           "country": "Shimada Clan,",
           "reasoning": "The family of Criminals that Genji was supposed to fall in line with"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojiro,",
+          "reasoning": "Father of 2 sons and leader of the Shimada"
         }
       ]
     },
@@ -2050,7 +2064,7 @@
         {
           "locationName": "",
           "country": "Sigma",
-          "reasoning": "One of many scientist who visited the base, alongside Victoria Naughton"
+          "reasoning": "One of many scientist who visited the base"
         }
       ],
       "factionFilterPlaces": [
@@ -2070,6 +2084,11 @@
           "locationName": "",
           "country": "Chao,",
           "reasoning": "Director of Lucheng and the Colony program"
+        },
+        {
+          "locationName": "",
+          "country": "Naughton,",
+          "reasoning": "One of many scientist who visited the base"
         }
       ]
     },
@@ -2193,6 +2212,13 @@
           "country": "Crusader Initiative,",
           "reasoning": "German military program for heavily armored soldiers"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Balderich,",
+          "reasoning": "Future Crusader"
+        }
       ]
     },
     {
@@ -2246,6 +2272,11 @@
           "locationName": "",
           "country": "Antonio",
           "reasoning": "Weapons dealer, early council member"
+        },
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": "Antonio's right hand"
         }
       ]
     },
@@ -3674,7 +3705,7 @@
       "name": "Honor and Glory",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. The Crusaders would be surprised by the arrival of OR14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
+      "description": "The UN had sent invitations to many heroes across the world. Few responded, some chose to defend their nations first, but some, tragically, wouldn't make it to see the team be formed. Balderich Von Adler was viewed as the best of the Crusaders, and was set to finish his last week on the program before reporting to Overwatch. His unit was positioned at the historic Eichenwalde Castle, in the middle of the black forest. The Crusaders would be surprised by the arrival of OR-14 units, wielding shields of their own, and protecting the heavy-hitting Bastion warbots. The warbots overwhelmed the troops and forced them to retreat, with many veteran crusaders dying while protecting the infantry. Balderich would choose to stay behind, half wounded, luring the Omnics into the castle, buying time for his pupil, Reinhardt Wilhelm, to escape and aid the troops in their retreat.\n\nThe efforts of the Crusaders allowed the military to repel the assault and protect the nearby city of Stuttgart, at the cost of losing the fortress to the Omnics. The ruins of the Castle were never rebuilt, and to this day act as a monument to the horrors of the Crisis. The Recovering Reinhardt Wilhelm, trained by Balderich himself, was seen as the best choice to replace him in the Strike team, and several days after that battle he would arrive at the training facility, in his mentor's place.",
       "image": "",
       "sources": [
         {
@@ -3706,7 +3737,7 @@
         {
           "locationName": "",
           "country": "Reinhardt",
-          "reasoning": "Manages to Survive the attack thanks to his Mentors Sacrific, takes his Mentor's spot on Overwatch"
+          "reasoning": "Manages to survive the attack thanks to Balderich's sacrifice, takes his spot on Overwatch"
         }
       ],
       "factionFilterPlaces": [
@@ -4610,7 +4641,7 @@
     },
     {
       "name": "The Temple of Anubis",
-      "description": "Following the quarantining of Anubis, most people expected the God program would be outright destroyed, but against most wishes, Lindholm and Liao had different plans. The construction of the aptly called Temple of Anubis began shortly after its imprisonment. A high security facility designed to look like a pyramid from the outside, blending into the landscape of the city. The Temple was to serve as Anubis' tomb, ensuring that no trace of the God AI escapes and attempts to start another Crisis.<br><br>Many criticized the choice to keep the program at all, with some going as far as to say Overwatch did so to guarantee the world would need them again in the future. However, most experts in the field supported the Temple's construction, as heavy monitoring of the facility ensured that no scraps of its code felt into the wrong hands, as well as allowing them to compare remaining Omnic threads with Anubis, in case it's possible to trace it back as its source. Not only that, but the facility allowed experts to study the AI and find out what exactly went wrong with it, hopefully preventing something like this from ever happening again.",
+      "description": "Following the quarantining of Anubis, most people expected the God program would be outright destroyed, but against most wishes, Lindholm and Liao had different plans. The construction of the aptly called Temple of Anubis began shortly after its imprisonment. A high security facility designed to look like a pyramid from the outside, blending into the landscape of the city. The Temple was to serve as Anubis' tomb, ensuring that no trace of the God AI escapes and attempts to start another Crisis.\n\nMany criticized the choice to keep the program at all, with some going as far as to say Overwatch did so to guarantee the world would need them again in the future. However, most experts in the field supported the Temple's construction, as heavy monitoring of the facility ensured that no scraps of its code felt into the wrong hands, as well as allowing them to compare remaining Omnic threats with Anubis, in case it's possible to trace it back as its source. Not only that, but the facility allowed experts to study the AI and find out what exactly went wrong with it, hopefully preventing something like this from ever happening again. A deterrent from another ungodly apocalypse.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0443879,
@@ -4644,14 +4675,14 @@
         {
           "locationName": "",
           "country": "Torbjörn",
-          "reasoning": "Aids in the Consturction of the Temple"
+          "reasoning": "Aids in the consturction of the Temple"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": "Begins Construction of the Temple of Anubis"
+          "reasoning": "Begins construction of the Temple of Anubis"
         }
       ],
       "npcFilterPlaces": [
@@ -4659,6 +4690,11 @@
           "locationName": "",
           "country": "Liao",
           "reasoning": "Aids in the Consturction of the Temple"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Finally quarantined, the God Program is cut off from current events"
         }
       ]
     },
@@ -4939,7 +4975,7 @@
     },
     {
       "name": "Australian Liberation",
-      "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.<br><br>In Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.<br><br>Members of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
+      "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.\n\nIn Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.\n\nMembers of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -4970,6 +5006,11 @@
           "locationName": "",
           "country": "Roadhog",
           "reasoning": "ALF Member"
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": "Father is an ALF member, with Howl"
         }
       ],
       "factionFilterPlaces": [
@@ -5677,14 +5718,14 @@
         {
           "locationName": "",
           "country": "Sierra",
-          "reasoning": ""
+          "reasoning": "Is constantly shifting locations and homes"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Kendra",
-          "reasoning": ""
+          "reasoning": "Evades her captors at every turn"
         }
       ]
     },
@@ -5923,7 +5964,7 @@
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Serves as impetus for a future Ecological Initiative"
         }
       ],
       "npcFilterPlaces": [
@@ -6025,6 +6066,11 @@
           "locationName": "",
           "country": "Asa, Toshiro,",
           "reasoning": "Kiriko's parents and shop owners"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Kiriko's Grandmother"
         }
       ]
     },
@@ -7499,7 +7545,7 @@
         {
           "locationName": "",
           "country": "Geiger, Meri,",
-          "reasoning": "Aid Odessa in taking the throner"
+          "reasoning": "Aid Odessa in taking the throne"
         },
         {
           "locationName": "",
@@ -7554,13 +7600,32 @@
           "text": "Mina Liao Project Echo Transcripts",
           "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
         }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Funded her creation"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": "The fifth and final of her post-Aurora projects"
+        },
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": "Considered Echo's 'sister'"
+        }
       ]
     },
     {
       "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. <div>\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.</div>",
+      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. \n\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
       "image": "",
       "lat": 36.6762,
       "lon": 139.6503,
@@ -7617,6 +7682,13 @@
       "headlines": [
         "Tensions grow between Criminal gangs in Japan following the assasination of Sojiro Shimada",
         "Overwatch seen in Kanezaka amidst growing Clan violence"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojiro,",
+          "reasoning": "Assasinated by the Hashimoto"
+        }
       ]
     },
     {
@@ -8267,10 +8339,10 @@
       ]
     },
     {
-      "name": "Deep Sea Raiders",
+      "name": "Deep-Sea Raiders",
       "locationType": "earth",
       "cityDisplayName": "Coral Sea",
-      "description": "While the Ecopoints helped alleviate ecological concerns across the globe, not every nation was too keen on pushing environmentalist standards. Both corporate greed and sometimes even plain irresponsibility by well-meaning people got in the way. The super coral had successfully helped rejuvenate several coral trees across the Pacific, but it was far too effective. It kept expanding across the world's oceans, and as they continued to feed off of pollutants, they began to grow out of proportion, emerging out of the water into sharp structures comparable to small islands.\n\nFor many nations, these super coral reefs serve as another source of tourism and national pride, obvious to the true implications of an introduced species becoming so dominant. For businesses across the globe, however, the reefs blocked trade routes and made it difficult for boats to navigate across many different regions of the planet, disrupting trade globally. Because of their impact, many companies began to equip boats with means to break through the reefs, and some of the people of the Polynesian nations took to this as a personal insult to their culture and history. \n\n\n\nThe Deep Sea Raiders came to call themselves activists who battled capitalism and took curving fossil fuel emissions into their own hands, but in reality they were little more than eco-terrorists. The pirates would hijack many boats crossing near their territories, kill the tribulation, and then steer the ships to crash into the coral which would feed off the oil and debris, growing even larger than they would normally. The Polynesian League was naturally directly impacted by the Deep Sea Raider activity, which disrupted the ecological balance and worsened business relationships with other nations. The league sought to deal with these raiding cells swiftly, but they proved to be quite a persistent movement, supported by a lot of locals who saw this as the government turning back on their culture and the wishes of their people, in spite of the irreparable damage that their harsh actions caused.",
+      "description": "While the Ecopoints helped alleviate ecological concerns across the globe, not every nation was too keen on pushing environmentalist standards. Both corporate greed and sometimes even plain irresponsibility by well-meaning people got in the way. The super coral had successfully helped rejuvenate several coral trees across the Pacific, but it was far too effective. It kept expanding across the world's oceans, and as they continued to feed off of pollutants, they began to grow out of proportion, emerging out of the water into sharp structures comparable to small islands.\n\nFor many nations, these super coral reefs serve as another source of tourism and national pride, obvious to the true implications of an introduced species becoming so dominant. For businesses across the globe, however, the reefs blocked trade routes and made it difficult for boats to navigate across many different regions of the planet, disrupting trade globally. Because of their impact, many companies began to equip boats with means to break through the reefs, and some of the people of the Polynesian nations took to this as a personal insult to their culture and history. \n\nThe Deep-sea Raiders came to call themselves activists who battled capitalism and took curving fossil fuel emissions into their own hands, but in reality they were little more than Eco-terrorists. The pirates would hijack many boats crossing near their territories, kill the tribulation, and then steer the ships to crash into the coral which would feed off the oil and debris, growing even larger than they would normally. The Polynesian League was naturally directly impacted by the Deep-sea Raider activity, which disrupted the ecological balance and worsened business relationships with other nations. The league sought to deal with these raiding cells swiftly, but they proved to be quite a persistent movement, supported by a lot of locals who saw this as the government turning back on their culture and the wishes of their people, in spite of the irreparable damage that their harsh actions caused.",
       "image": "",
       "lat": -20,
       "lon": 155,
@@ -8534,7 +8606,7 @@
     },
     {
       "name": "Shrine Maiden",
-      "description": "Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.\n\nKiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain. Not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings. While the old clan was unmistakably corrupt and their activies were as bad as the Hashimotos, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.",
+      "description": "Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.\n\nKiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain. Not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings. While the old clan was unmistakably corrupt and their activies were as bad as the Hashimoto's, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
       "lat": 35.3606,
@@ -8579,6 +8651,11 @@
           "locationName": "",
           "country": "Asa, Toshiro,",
           "reasoning": "Plotting agaisnt the Hashimoto"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Teaches Kiriko about the Fox Spirit"
         }
       ]
     },
@@ -8925,7 +9002,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Soldier 76, Ana,",
+          "country": "Soldier 76, Ana, Reaper,",
           "reasoning": "Heavily Question Reyes over his actions"
         },
         {
@@ -9332,7 +9409,7 @@
     },
     {
       "name": "Widowed",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
       "lat": 48.8588897,
@@ -9366,7 +9443,16 @@
           "country": "Blackwatch, Talon",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Hacking Addiction",
@@ -9431,6 +9517,11 @@
           "locationName": "",
           "country": "Widowmaker",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -9439,13 +9530,25 @@
           "country": "Talon",
           "reasoning": ""
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        }
       ]
     },
     {
       "name": "Failure at Sea",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -13.8345235,
       "lon": -171.7630955,
@@ -9477,8 +9580,14 @@
           "locationName": "",
           "country": "Deep Sea Raiders, Overwatch",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Search & Rescue,",
+          "reasoning": ""
         }
-      ]
+      ],
+      "headlines": []
     },
     {
       "name": "Forced Retirement",
@@ -9549,7 +9658,7 @@
       "name": "La Lupa",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.8909421,
       "lon": 12.491903,
@@ -9576,13 +9685,22 @@
           "country": "Colloseo Gladiatori",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Titus, Maximus,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Overridden",
       "locationType": "earth",
       "cityDisplayName": "Helsinki, Finland",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 60.1666204,
       "lon": 24.9435408,
@@ -9609,13 +9727,22 @@
           "country": "Conspiracy",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "MEKKA",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -9641,7 +9768,15 @@
           "country": "MEKA",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Missing in Action",
@@ -9788,7 +9923,7 @@
     },
     {
       "name": "Storm Rising",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
       "lat": 23.135305,
@@ -9819,7 +9954,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Livre Tournois, Talon, Overwatch",
+          "country": "Talon, La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
       ],
@@ -9829,11 +9969,13 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Doomed to Fail",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0443879,
@@ -9852,7 +9994,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ramattra, Doomfist",
+          "country": "Ramattra, Doomfist, Widowmaker,",
           "reasoning": ""
         }
       ],
@@ -9862,7 +10004,9 @@
           "country": "Null Sector, Talon",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "The Conspiracy",
@@ -9977,7 +10121,7 @@
       "name": "Back in Business",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 45.4371908,
       "lon": 12.3345898,
@@ -10004,7 +10148,16 @@
           "country": "Talon",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Colateral Damage",
@@ -10115,7 +10268,7 @@
       "name": "The Petras Act Hearings",
       "locationType": "earth",
       "cityDisplayName": "Petra, Jordan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "sources": [
         {
@@ -10145,7 +10298,30 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Collective, Helix Securities",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Search & Rescue, Ecopoints, Blackwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective, Helix Securities,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Naughton,",
           "reasoning": ""
         }
       ]
@@ -10234,13 +10410,20 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Echo,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Shrike",
       "locationType": "earth",
       "cityDisplayName": "Necropolis, Egypt",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 29,
       "lon": 31,
@@ -10264,10 +10447,17 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Wayfinders",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Top Player",
@@ -10287,13 +10477,42 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.va,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "King,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overlord,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Runs in the Family",
       "locationType": "earth",
       "cityDisplayName": "Deadlock Gorge, United States",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 40.0170005,
       "lon": -105.2664724,
@@ -10320,13 +10539,27 @@
           "country": "Deadlock",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Bars, The Triplets,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Found Family",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 55.861155,
       "lon": -4.2501687,
@@ -10353,11 +10586,30 @@
           "country": "Phreaks",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Susannah,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Boomslang, Jackdaw, Revel,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Touch Up,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "A Better World",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
       "lat": -22.9110137,
@@ -10387,7 +10639,15 @@
           "country": "Vishkar",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Treassure",
@@ -10426,7 +10686,7 @@
       "name": "Siberian Front",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 60,
       "lon": 100,
@@ -10450,10 +10710,19 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Volskaya",
+          "country": "Volskaya Industries,",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Chivalry",
@@ -10473,7 +10742,19 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Networking",
@@ -10492,11 +10773,6 @@
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
           "reasoning": ""
-        },
-        {
-          "locationName": "London, England",
-          "country": "United Kingdom,",
-          "reasoning": ""
         }
       ],
       "heroFilterPlaces": [
@@ -10513,7 +10789,14 @@
           "reasoning": ""
         }
       ],
-      "headlines": []
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Not Alone",
@@ -10533,7 +10816,21 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Left Behind",
@@ -10587,13 +10884,20 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 2071
+      "yearStart": 2071,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Anubis Escapes",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.0443879,
       "lon": 31.2357257,
@@ -10620,13 +10924,22 @@
           "country": "Helix Securities",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Game On",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -10658,7 +10971,31 @@
           "country": "MEKA",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon, King, Overlord,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Casino,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Neighborhood Hero",
@@ -10678,13 +11015,27 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emily,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Vanadium Strand",
       "locationType": "earth",
       "cityDisplayName": "Petra, Jordan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.3258363,
       "lon": 35.4745669,
@@ -10703,15 +11054,27 @@
           "locationName": "",
           "country": "Moira",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hazard,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wayfinders, Oasis",
+          "country": "Oasis Ministries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Bounty Hunter",
@@ -10743,7 +11106,7 @@
       "name": "Legend of the Junker Queen",
       "locationType": "earth",
       "cityDisplayName": "Outback Wasteland, Australia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -20.7274568,
       "lon": 139.49896,
@@ -10767,10 +11130,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkers",
+          "country": "Junker Monarchy,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Fire Star",
@@ -10862,6 +11227,11 @@
           "locationName": "",
           "country": "Baptiste",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -10876,7 +11246,7 @@
       "name": "Crime Spree",
       "locationType": "earth",
       "cityDisplayName": "Sydney, Australia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -33.8698439,
       "lon": 151.2082848,
@@ -10900,10 +11270,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkers",
+          "country": "Junker Monarchy,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Sonic Policing",
@@ -10948,7 +11320,7 @@
       "name": "Apagando las Luces",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -10972,10 +11344,22 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lumerico, Los Muertos",
+          "country": "Lumérico Incorporated,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Dragon Slayer",
@@ -11014,7 +11398,7 @@
       "name": "Help for the Needy",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.0443879,
       "lon": 31.2357257,
@@ -11031,23 +11415,30 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mercy, Pharah, Baptiste",
+          "country": "Mercy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Genji,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon",
+          "country": "Helix Securities,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Squire",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -11066,6 +11457,11 @@
           "locationName": "",
           "country": "Brigitte, Reinhardt",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Torbjörn,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -11074,13 +11470,22 @@
           "country": "Ironclad",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Destroyer",
       "locationType": "earth",
       "cityDisplayName": "Boklovo, Kurjikstan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.5089324,
       "lon": 74.724091,
@@ -11107,7 +11512,16 @@
           "country": "Ironclad",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sven,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Vigilante",
@@ -11147,7 +11561,7 @@
       "name": "Shooting Star",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -11171,10 +11585,24 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities",
+          "country": "M.E.K.A Squad,",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon, King, Overlord, Casino, Myung,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Hero",
@@ -11272,7 +11700,7 @@
       "name": "Return of the Maiden",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.3606,
       "lon": 138.7274,
@@ -11298,7 +11726,17 @@
           "country": "Hashimoto",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Here to be heard",
@@ -11335,7 +11773,7 @@
     },
     {
       "name": "Assassination",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -11354,23 +11792,42 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Widowmaker, Tracer",
+          "country": "Tracer,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Shambali",
+          "country": "Shambali Order,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mondatta,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Recall",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 36.1285933,
       "lon": -5.3474761,
@@ -11396,11 +11853,21 @@
           "country": "Talon, Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "London Calling",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -11426,10 +11893,34 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shambali, Vishkar",
+          "country": "Shambali Order,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emily,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Iggy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Kace,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Rise and Shine",
@@ -11539,7 +12030,7 @@
       "name": "Protector",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.3606,
       "lon": 138.7274,
@@ -11562,10 +12053,35 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto, Yokai",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kuroura,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Nobuto, Sakura,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ryota,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Ecological Network",
@@ -11603,7 +12119,7 @@
       "name": "Infiltration",
       "locationType": "earth",
       "cityDisplayName": "Saint Petersburg, Russia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 59.938732,
       "lon": 30.316229,
@@ -11619,17 +12135,47 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sombra, Reaper, Widowmaker, Zarya",
+          "country": "Sombra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Widowmaker,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Zarya,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Volskaya",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Answering the Call",
@@ -11667,7 +12213,7 @@
       "name": "Genius Grant",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -11693,13 +12239,23 @@
           "country": "Numbani",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "A New Empire",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.8909421,
       "lon": 12.491903,
@@ -11722,10 +12278,25 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Colloseo Gladiatori, Talon",
+          "country": "Colloseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximus, Magnus, Titus, Carmilla, Zephyrus,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Reflections",
@@ -11744,6 +12315,37 @@
         {
           "locationName": "Watchpoint Gibraltar",
           "country": "Gibraltar",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emily,",
           "reasoning": ""
         }
       ]
@@ -11844,7 +12446,7 @@
       "name": "Old Dragons",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -11860,23 +12462,43 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hanzo, Genji",
+          "country": "Hanzo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Genji,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shimada, Hashimoto",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shimada Clan,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The World could use more Heroes",
       "locationType": "earth",
       "cityDisplayName": "New York, United States",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 40.7127281,
       "lon": -74.0060152,
@@ -11892,17 +12514,35 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reaper, Widowmaker, Tracer, Winston",
+          "country": "Tracer, Winston,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Reaper,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Talon",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Travelling Monk",
@@ -11923,13 +12563,20 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zenyatta,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Heroes Never Die",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.0443879,
       "lon": 31.2357257,
@@ -11945,17 +12592,30 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mercy, Soldier 76, Ana",
+          "country": "Mercy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Ana,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities, Talon",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Doomfist Escapes",
@@ -11992,7 +12652,7 @@
     },
     {
       "name": "Binary",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Tiveden, Sweden",
       "lat": 59.3385984,
@@ -12018,14 +12678,16 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ironclad",
+          "country": "Ironclad Guild,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Stolen Gauntlet",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
       "lat": 12.0022,
@@ -12054,11 +12716,20 @@
           "country": "Talon, Numbani",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Business Meeting",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
       "lat": 43.7402961,
@@ -12084,7 +12755,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Livre Tournois, Talon",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "La Coterie,",
           "reasoning": ""
         }
       ],
@@ -12094,11 +12770,13 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Masquerade",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
       "lat": 45.4371908,
@@ -12117,23 +12795,62 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Doomfist, Reaper, Moira, Domina",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Domina,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Widowmaker,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Max's Vault",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Oasis Ministries, Vishkar Corporation,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Stone by Stone",
       "locationType": "earth",
       "cityDisplayName": "Suravasa, India",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -12156,16 +12873,24 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar, Shambali",
+          "country": "Shambali Order,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Idina Unit OR15A Goes Online",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -12183,6 +12908,11 @@
           "locationName": "",
           "country": "Orisa",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Reinhardt,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -12191,13 +12921,80 @@
           "country": "Numbani",
           "reasoning": ""
         }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Adawe,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Curse Breaker",
+      "locationType": "earth",
+      "cityDisplayName": "Tokyo, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "eraName": "The Age of Conflict",
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        }
       ]
     },
     {
       "name": "Venture's Adventures",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 28.3949,
       "lon": 84.124,
@@ -12220,16 +13017,29 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wayfinders, Talon, Shambali",
+          "country": "Wayfinder Society,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shambali Order,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Searching",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -12245,17 +13055,47 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Zarya, Sombra",
+          "country": "Zarya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Los Muertos, Volskaya, Numbani",
+          "country": "Volskaya Industries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lynx 17,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Waging War",
@@ -12275,11 +13115,47 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ramattra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Reaper,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Null Sector,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "System Reboot",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
       "lat": 57.7072326,
@@ -12305,16 +13181,18 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ironclad",
+          "country": "Ironclad Guild,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Failed Exams",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -12340,13 +13218,23 @@
           "country": "Wuxing University",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ming,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Sending a Message",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.8909421,
       "lon": 12.491903,
@@ -12362,14 +13250,39 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta, Doomfist",
+          "country": "Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Colloseo Gladiatori",
+          "country": "Colloseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Magnus, Titus,",
           "reasoning": ""
         }
       ]
@@ -12378,7 +13291,7 @@
       "name": "Yokais",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.3606,
       "lon": 138.7274,
@@ -12396,15 +13309,30 @@
           "locationName": "",
           "country": "Kiriko",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Yokai",
+          "country": "Yokai Gang,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Sakura, Chisaka, Ryota,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Hero of Numbani",
@@ -12442,7 +13370,7 @@
       "name": "Tangle with Talon",
       "locationType": "earth",
       "cityDisplayName": "Illios, Greece",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 36.1725297,
       "lon": 27.9194016,
@@ -12465,16 +13393,29 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wayfinders, Talon",
+          "country": "Wayfinder Society,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Last Child of the Sun",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -12497,48 +13438,24 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Inti Warriors, Conspiracy",
+          "country": "Inti Warriors,",
           "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Curse Breaker",
-      "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "eraName": "The Null Sector Invasion",
-      "yearStart": 2079,
-      "secondaryCountryPlaces": [
+        },
         {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
           "reasoning": ""
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mitzuki",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto, Yokai",
-          "reasoning": ""
-        }
-      ]
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Reunion",
       "locationType": "earth",
       "cityDisplayName": "Roud 66, United States",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 40.0170005,
       "lon": -105.2664724,
@@ -12554,7 +13471,17 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Cassidy, Ashe, Echo",
+          "country": "Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Echo,",
           "reasoning": ""
         }
       ],
@@ -12564,7 +13491,22 @@
           "country": "Deadlock, Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Bars, The Triplets,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Plan",
@@ -12603,7 +13545,7 @@
       "name": "Worsening Atmosphere",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "x": 45,
       "y": 35,
@@ -12629,7 +13571,17 @@
           "country": "Lucheng",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "New Blood",
@@ -12696,12 +13648,24 @@
           "locationName": "",
           "country": "Null Sector",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Trembley,",
+          "reasoning": ""
         }
       ]
     },
     {
       "name": "Lost Family",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0443879,
@@ -12727,10 +13691,22 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Overwatch",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Stalker",
@@ -12831,7 +13807,7 @@
     },
     {
       "name": "Shockwaves",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
       "lat": 43.6534817,
@@ -12860,13 +13836,22 @@
           "country": "Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Trembley,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Zero Hour",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 48.8534951,
       "lon": 2.3483915,
@@ -12882,23 +13867,46 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo",
+          "country": "Winston, Tracer, Mei,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reinhardt, Brigitte,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Genji,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Echo,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Luck of the Draw",
       "locationType": "earth",
       "cityDisplayName": "Las Vegas, United States",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 36.1674263,
       "lon": -115.1484131,
@@ -12921,16 +13929,31 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Deadlock, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B, Bars, The Triplets,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Busan Defense",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -12946,23 +13969,53 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Cassidy, Pharah, Baptiste, Zarya, D.va",
+          "country": "D.va, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Baptiste, Zarya, Pharah,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, MEKA, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon, King, Overlord, Casino,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Thoughtless Gods",
       "locationType": "earth",
       "cityDisplayName": "Lijiang, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 26.8595868,
       "lon": 100.2249797,
@@ -12988,7 +14041,17 @@
           "country": "Lucheng, Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Where Honor Lives",
@@ -13065,15 +14128,57 @@
       "yearStart": 2079,
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "",
+          "country": "Gibraltar,",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer, Mei, Genji, Mercy, Reinhardt, Brigitte, Echo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Baptiste, D.va, Pharah, Zarya,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Osai,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Unity",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -13099,7 +14204,17 @@
           "country": "Numbani, Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Rebuilding Ruins",
@@ -13137,7 +14252,7 @@
       "name": "Liberation",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 43.6534817,
       "lon": -79.3839347,
@@ -13153,7 +14268,17 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va, Sojourn",
+          "country": "Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Reinhardt, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.va, Lúcio, Zarya, Brigitte, Mercy, Tracer, Mei, Genji, Baptiste, Echo, Pharah,",
           "reasoning": ""
         }
       ],
@@ -13163,7 +14288,17 @@
           "country": "Overwatch, Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Trembley,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Lost Ghosts",
@@ -13264,7 +14399,7 @@
     },
     {
       "name": "Lucky Man",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -13290,16 +14425,28 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Null Sector, Conspiracy",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Water Fighter",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -13325,11 +14472,21 @@
           "country": "Wuxing University",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ming,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Visitor",
-      "description": "",
+      "description": "No description available.",
       "locationType": "marsShip",
       "cityDisplayName": "Red Promise Escape Ship",
       "x": 20,
@@ -13358,7 +14515,16 @@
           "country": "Lucheng Interstellar, Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Stalemate",
@@ -13430,7 +14596,7 @@
       "name": "Warm Welcome",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint Gibraltar",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 36.1285933,
       "lon": -5.3474761,
@@ -13456,7 +14622,17 @@
           "country": "Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Free the Phreaks",
@@ -13527,7 +14703,7 @@
       "name": "Hazardous Tactics",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 29.5918,
       "lon": 52.5836,
@@ -13545,15 +14721,40 @@
           "locationName": "",
           "country": "Hazard",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Phreaks, Helix Securities, Oasis",
+          "country": "The Phreaks,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Oasis Ministries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Helix Securities,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Susannah, Boomslang,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Together",
@@ -13574,11 +14775,37 @@
           "country": "Gibraltar",
           "reasoning": ""
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Tracer,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy, Ana, Pharah, Lúcio, D.va, Bastion, Zarya, Reinhardt, Brigitte, Torbjörn, Echo, Juno, Mei, Mercy, Genji, Baptiste,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emily, Efi, Sam, Ingrid, Dae-Hyun,",
+          "reasoning": ""
+        }
       ]
     },
     {
       "name": "Picture of Sucesss",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "London, England",
       "lat": 51.5074456,
@@ -13604,16 +14831,18 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
+          "country": "Vishkar Corporation,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Futures Past",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -13636,16 +14865,29 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Inti Warriors, Oasis, Conspiracy",
+          "country": "Inti Warriors",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Oasis Ministries, The Chernobog Conspiracy,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Against the Tide",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
@@ -13668,16 +14910,24 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wuxing University, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wuxing University,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Vested Interests",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
@@ -13700,7 +14950,17 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Colloseo Gladiatori, Livre Tournois",
+          "country": "La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Colloseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
       ],
@@ -13710,13 +14970,16 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Hunt Begins",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen,, Denmark",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
@@ -13739,7 +15002,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Livre Tournois, Junker Monarchy",
+          "country": "La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Monarchy,",
           "reasoning": ""
         }
       ],
@@ -13749,7 +15017,10 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "New Heights",
@@ -13835,7 +15106,38 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Ryota, Sakura, Chisaka,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "The Invitation",
@@ -14005,7 +15307,7 @@
       "name": "Old Friend",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
@@ -14023,12 +15325,22 @@
           "locationName": "",
           "country": "Freja",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emre,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Livre Tournois, Talon",
+          "country": "La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon,",
           "reasoning": ""
         }
       ],
@@ -14038,7 +15350,10 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Reconciliation",
@@ -14074,7 +15389,7 @@
     },
     {
       "name": "Reign of Talon",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Rome, Italy",
       "lat": 41.8933203,
@@ -14100,7 +15415,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Talon Empire, Livre Tournois",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "La Coterie,",
           "reasoning": ""
         }
       ],
@@ -14110,13 +15430,15 @@
           "country": "Maximillien",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Search and Destroy",
       "locationType": "earth",
       "cityDisplayName": "Riyadh, Saudi Arabia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 23.333333,
       "lon": 45.333333,
@@ -14139,10 +15461,25 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Conspiracy",
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "New Charter",
@@ -14202,14 +15539,96 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta, Doomfist, Moira, Mauga, Domina, Ashe, Emre, Freja",
+          "country": "Vendetta, Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga, Domina,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Freja, Emre,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra, Reaper, Widowmaker,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon Empire, Deadlock, Hashimoto, Junkers, Helix Securities, Conspiracy, Overwatch",
+          "country": "Talon Empire, Colloseo Gladiatori, La Coterie,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Monarchy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Helix Securities, Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "B.O.B, Bars, The Triplets,",
           "reasoning": ""
         }
       ]
@@ -14268,7 +15687,24 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Anran, Brigitte,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Juno, Wuyang,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Crossroads",
@@ -14345,7 +15781,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra, Sojourn, Freja, Emre, Roadhog,",
+          "country": "Sierra, Sojourn, Freja, Emre",
           "reasoning": ""
         }
       ],
@@ -14353,6 +15789,13 @@
         {
           "locationName": "",
           "country": "Helix Securities, Overwatch, Talon Empire",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Naughton,",
           "reasoning": ""
         }
       ]
@@ -14376,7 +15819,31 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Moira,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Oasis Ministries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire, Colloseo Gladiatori,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Old Love",
@@ -14397,7 +15864,26 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Juno, Wuyang,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Deep Sea Deception",
@@ -14418,7 +15904,48 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Venture,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lifeweaver,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation, Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Palak,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "End of the Line",
@@ -14439,7 +15966,49 @@
       ],
       "headlines": [],
       "sources": [],
-      "yearStart": 2080
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Baptiste,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "previewBadgeMainCharacter": "Sojourn, Shion"
     },
     {
       "name": "Facing Demons",
@@ -14464,10 +16033,62 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Shion,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko, Hanzo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Genji,",
+          "reasoning": ""
         }
-      ]
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Nobuto, Chisaka, Sakura, Ryota,",
+          "reasoning": ""
+        }
+      ],
+      "previewBadgeMainCharacter": "Mizuki, Shion",
+      "previewBadgeSecondaryCharacters": "Hanzo, Kiriko, Sakura, Nobuto, Ryota, Chikasa",
+      "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire"
     }
   ]
 }

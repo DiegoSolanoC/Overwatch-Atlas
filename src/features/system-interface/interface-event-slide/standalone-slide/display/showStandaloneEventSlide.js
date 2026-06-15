@@ -7,11 +7,11 @@
  * the original method's `this`).
  */
 
-export function runShowStandaloneEventSlide(slide, eventData, globalIndex) {
+export function runShowStandaloneEventSlide(slide, eventData, globalIndex, options = {}) {
             if (!eventData) return;
             
             const isMultiEvent = Array.isArray(eventData.variants) && eventData.variants.length > 0;
-            const variantIndex = eventData.variantIndex || 0;
+            const variantIndex = options.variantIndex ?? eventData.variantIndex ?? 0;
             slide.currentVariantIndex = variantIndex;
             const displayEvent = isMultiEvent && eventData.variants[variantIndex] 
                 ? { ...eventData, ...eventData.variants[variantIndex] }

@@ -69,7 +69,22 @@ export class MusicPanelService {
                 if (filterService && typeof filterService.closePanel === 'function') {
                     filterService.closePanel();
                 } else if (filtersPanel) {
+                    filtersPanel.classList.add('panel--closing');
                     filtersPanel.classList.remove('open');
+                    window.globeController?.requestStageLayoutSync?.();
+                    const finish = () => {
+                        filtersPanel.classList.remove('panel--closing');
+                        window.globeController?.requestStageLayoutSync?.();
+                    };
+                    const onEnd = (e) => {
+                        if (e.target !== filtersPanel) return;
+                        if (e.propertyName !== 'width' && e.propertyName !== 'flex-basis') return;
+                        filtersPanel.removeEventListener('transitionend', onEnd);
+                        clearTimeout(t);
+                        finish();
+                    };
+                    filtersPanel.addEventListener('transitionend', onEnd);
+                    const t = setTimeout(finish, 400);
                 }
                 this.musicButton.classList.remove('active');
             } else if (filterService && typeof filterService.openPanelWithMode === 'function') {

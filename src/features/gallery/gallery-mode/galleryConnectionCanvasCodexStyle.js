@@ -3,6 +3,7 @@
  */
 
 import { FILES } from '../../../data/registry.js';
+import { npcNamesLooselyEqual } from '../../system-interface/interface-shared/npcNameAliases.js';
 
 /** @type {object[]|null} */
 let codexNodesCache = null;
@@ -85,7 +86,7 @@ export function codexVisualStyleForEntity(kind, nameToken, codexNodes) {
             return { bgColor: n.bgColor, scale: n.scale };
         }
         if (k === 'npc' && n.kind === 'npc') {
-            if (String(n.npcName || '').trim().toLowerCase() === token.toLowerCase()) {
+            if (npcNamesLooselyEqual(n.npcName, token)) {
                 return { bgColor: n.bgColor, scale: n.scale };
             }
         }

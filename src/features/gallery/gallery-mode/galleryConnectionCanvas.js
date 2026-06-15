@@ -10,6 +10,7 @@ import {
     resolveCodexNodeScale,
 } from '../../codex/codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { codexFrameVariantForId } from '../../codex/codex-nodes/placement/CodexNodeVisualHash.js';
+import { resolveNpcCanonicalName } from '../../system-interface/interface-shared/npcNameAliases.js';
 import {
     CODEX_CORD_STROKE_OPACITY,
     CODEX_VISUAL_DEFAULTS,
@@ -612,7 +613,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             el.dataset.codexHero = key;
             imgSrc = `src/assets/images/Filters/Heroes/${encodeURIComponent(key)}.png`;
         } else if (kind === 'npc') {
-            const key = node.portraitKey || name;
+            const key = resolveNpcCanonicalName(node.portraitKey || name);
             el.dataset.codexNpc = key;
             imgSrc = `src/assets/images/Filters/NPCs/${encodeURIComponent(key)}.png`;
         } else {

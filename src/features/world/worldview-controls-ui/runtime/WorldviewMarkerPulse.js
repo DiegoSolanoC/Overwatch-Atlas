@@ -31,7 +31,7 @@ class WorldviewMarkerPulse {
         if (marker.userData._hoverGlowBase) return;
         const mat = marker.material;
         // Use current color as base (respect overlap cycling colors)
-        const baseColorHex = (mat?.color?.getHex ? mat.color.getHex() : 0xff6600);
+        const baseColorHex = (mat?.color?.getHex ? mat.color.getHex() : this._getDefaultPulseWaveColorHex());
         marker.userData._hoverGlowBase = {
             colorHex: baseColorHex,
             opacity: (mat && typeof mat.opacity === 'number') ? mat.opacity : 1
@@ -138,8 +138,17 @@ class WorldviewMarkerPulse {
         return typeof name === 'string' && name.trim().toLowerCase() === 'the awakening';
     }
 
+    _getDefaultPulseWaveColorHex() {
+        if (typeof document !== 'undefined' && document.body) {
+            if (document.body.classList.contains('color-palette-gray')) return 0x64b5f6;
+            if (document.body.classList.contains('color-palette-crimson')) return 0xffffff;
+            if (document.body.classList.contains('color-palette-nulled')) return 0xffca28;
+        }
+        return 0xff6600;
+    }
+
     /**
-     * Hover wave tint: follow marker.originalColor when set, else warm orange.
+     * Hover wave tint: follow marker.originalColor when set, else palette main marker color.
      * @param {*} marker
      * @returns {number} hex
      */
@@ -156,7 +165,7 @@ class WorldviewMarkerPulse {
         if (ud && Number.isFinite(ud.originalColor)) {
             return ud.originalColor;
         }
-        return 0xffaa00;
+        return this._getDefaultPulseWaveColorHex();
     }
 
     /**

@@ -15,7 +15,6 @@ class WorldviewStationFollow {
      * @param {Object} marker - The station marker to follow
      */
     startFollowingStation(marker) {
-        console.log('[WorldviewStationFollow.startFollowingStation] Called with marker:', marker);
         // Stop any existing following
         this.stopFollowingStation();
         
@@ -38,7 +37,6 @@ class WorldviewStationFollow {
         const followStation = () => {
             // CRITICAL: Check if follow is still active before each frame
             if (!this.isFollowingActive || !this.followingStationMarker) {
-                console.log('[WorldviewStationFollow.followStation] Follow deactivated, stopping animation');
                 return; // Stop if no longer following
             }
             
@@ -47,7 +45,6 @@ class WorldviewStationFollow {
             const earthMapPlane = this.sceneModel.getEarthMapPlane ? this.sceneModel.getEarthMapPlane() : this.sceneModel.earthMapPlane;
             const isMapView = this.sceneModel.getMapViewEnabled ? this.sceneModel.getMapViewEnabled() : !!this.sceneModel.isMapView;
             if (!camera || !marker) {
-                console.log('[WorldviewStationFollow.followStation] Missing camera or marker, stopping');
                 this.stopFollowingStation();
                 return;
             }
@@ -119,41 +116,29 @@ class WorldviewStationFollow {
      * Stop following the station marker
      */
     stopFollowingStation() {
-        console.log('[WorldviewStationFollow.stopFollowingStation] Called');
-        console.log('[WorldviewStationFollow.stopFollowingStation] followingStationMarker:', this.followingStationMarker);
-        console.log('[WorldviewStationFollow.stopFollowingStation] followStationAnimationId:', this.followStationAnimationId);
-        console.log('[WorldviewStationFollow.stopFollowingStation] isFollowingActive:', this.isFollowingActive);
-        
-        // CRITICAL: Set flag to false first to prevent animation loop from continuing
+        const wasFollowing = !!(
+            this.isFollowingActive
+            || this.followingStationMarker
+            || this.followStationAnimationId != null
+        );
+
         this.isFollowingActive = false;
-        
-        // Cancel animation frame
-        if (this.followStationAnimationId !== null) {
-            console.log('[WorldviewStationFollow.stopFollowingStation] Canceling animation frame');
+
+        if (this.followStationAnimationId != null) {
             cancelAnimationFrame(this.followStationAnimationId);
             this.followStationAnimationId = null;
         }
-        
-        // Clear the marker reference
+
         this.followingStationMarker = null;
-        
-        // CRITICAL: Force camera to look at earth globe center to break any follow lock
-        const camera = this.sceneModel.getCamera();
-        const globe = this.sceneModel.getGlobe();
-        if (camera && globe) {
-            console.log('[WorldviewStationFollow.stopFollowingStation] Forcing camera to look at earth center');
-            console.log('[WorldviewStationFollow.stopFollowingStation] Camera position before force:', camera.position.clone());
-            console.log('[WorldviewStationFollow.stopFollowingStation] Globe position:', globe.position.clone());
-            console.log('[WorldviewStationFollow.stopFollowingStation] Globe rotation:', { x: globe.rotation.x, y: globe.rotation.y, z: globe.rotation.z });
-            
-            // Force camera to look at globe center (world position)
-            camera.lookAt(0, 0, 0);
-            
-            console.log('[WorldviewStationFollow.stopFollowingStation] Camera position after force:', camera.position.clone());
-            console.log('[WorldviewStationFollow.stopFollowingStation] Camera quaternion after force:', camera.quaternion.clone());
+
+        // Only snap camera when actually ending station follow — not on no-op calls
+        // (resetCameraToDefault invokes this every time; forcing lookAt breaks zoom animations).
+        if (wasFollowing) {
+            const camera = this.sceneModel.getCamera();
+            if (camera) {
+                camera.lookAt(0, 0, 0);
+            }
         }
-        
-        console.log('[WorldviewStationFollow.stopFollowingStation] Complete - followingStationMarker:', this.followingStationMarker, 'followStationAnimationId:', this.followStationAnimationId, 'isFollowingActive:', this.isFollowingActive);
     }
 
     /**

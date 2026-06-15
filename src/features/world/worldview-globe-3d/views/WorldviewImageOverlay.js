@@ -20,6 +20,48 @@ export class WorldviewImageOverlay {
         this._camDirScratch = new THREE.Vector3();
         this.stillnessStartTime = null;
         this.wasDragging = false;
+        this._imageHideFadeTimer = null;
+    }
+
+    _clearImageHideFadeTimer() {
+        if (this._imageHideFadeTimer) {
+            clearInterval(this._imageHideFadeTimer);
+            this._imageHideFadeTimer = null;
+        }
+    }
+
+    _hideImageOverlayImmediate() {
+        const eventImageOverlay = document.getElementById('eventImageOverlay');
+        const eventImage = document.getElementById('eventImage');
+        const toggleBtn = document.getElementById('eventImageToggle');
+
+        if (!eventImageOverlay) return;
+
+        this._clearImageHideFadeTimer();
+        this.disablePageNavigationButtons(false);
+        eventImageOverlay.style.setProperty('pointer-events', 'none');
+        eventImageOverlay.classList.remove('open', 'slide-open', 'fade-in', 'fade-out');
+        eventImageOverlay.style.display = 'none';
+        eventImageOverlay.style.opacity = '0';
+        eventImageOverlay.style.background = '';
+
+        if (eventImage) {
+            eventImage.classList.remove('fade-in', 'fade-out');
+            eventImage.style.display = 'none';
+            eventImage.style.opacity = '0';
+        }
+
+        if (toggleBtn) {
+            toggleBtn.textContent = 'Show Image';
+        }
+
+        this.imageOverlayVisible = false;
+
+        if (window.MusicManager && typeof window.MusicManager.updateNowPlaying === 'function') {
+            try {
+                window.MusicManager.updateNowPlaying();
+            } catch (_) {}
+        }
     }
     
     /**
@@ -82,6 +124,26 @@ export class WorldviewImageOverlay {
 
         if (!eventImageOverlay) return;
 
+        // Already visible — refresh image in place (e.g. opening another event while Image is on)
+        if (this.imageOverlayVisible && eventImageOverlay.classList.contains('open')) {
+            if (this.imageAutoHideTimeout) {
+                clearTimeout(this.imageAutoHideTimeout);
+                this.imageAutoHideTimeout = null;
+            }
+            eventImageOverlay.style.display = '';
+            eventImageOverlay.style.opacity = '1';
+            eventImageOverlay.style.setProperty('pointer-events', '');
+            eventImageOverlay.classList.remove('fade-out');
+            eventImageOverlay.classList.add('open', 'fade-in');
+            if (eventImage && eventImage.style.display !== 'none') {
+                eventImage.style.opacity = '1';
+                eventImage.classList.remove('fade-out');
+                eventImage.classList.add('fade-in');
+            }
+            this.imageOverlayVisible = true;
+            return;
+        }
+
         // Clear any pending auto-show timeout
         if (this.imageAutoHideTimeout) {
             clearTimeout(this.imageAutoHideTimeout);
@@ -132,6 +194,29 @@ export class WorldviewImageOverlay {
 
         if (!eventImageOverlay) return;
 
+        // Full dismiss (Q / X / panel close): hide instantly before slide layout reflow.
+        // Gradual fade only for temporary hide (click image, drag globe).
+        if (!temporary) {
+            this._clearImageHideFadeTimer();
+            if (window.globeController?.map2dLite?.stopHoverRadiateLoop) {
+                window.globeController.map2dLite.stopHoverRadiateLoop();
+            }
+            if (window.globeController?.map2dLite?.clearSyntheticMarkerHover) {
+                window.globeController.map2dLite.clearSyntheticMarkerHover();
+            }
+            if (window.globeController?.interactionController) {
+                window.globeController.interactionController.hoveredEventMarker = null;
+            }
+            if (window.globeController?.markerPulseService) {
+                window.globeController.markerPulseService.hoveredEventMarker = null;
+            }
+            this._hideImageOverlayImmediate();
+            this.imageToggleState = false;
+            return;
+        }
+
+        this._clearImageHideFadeTimer();
+
         // Re-enable page navigation buttons immediately when hiding starts
         this.disablePageNavigationButtons(false);
 
@@ -154,46 +239,25 @@ export class WorldviewImageOverlay {
             window.globeController.markerPulseService.hoveredEventMarker = null;
         }
 
-        // Gradual fade-out (same approach as standaloneEventSlide)
+        // Gradual fade-out (temporary hide while event panel stays open)
         const startTime = Date.now();
         const fadeInterval = 50;
         const durationMs = 600;
-        
-        const fadeTimer = setInterval(() => {
+
+        this._imageHideFadeTimer = setInterval(() => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / durationMs, 1);
-            // Ease-out curve for smooth disappearance
             const eased = 1 - (1 - progress) * (1 - progress);
             const opacity = 1 - eased;
-            
+
             eventImageOverlay.style.opacity = String(opacity);
             if (eventImage) {
                 eventImage.style.opacity = String(opacity);
             }
-            
+
             if (progress >= 1) {
-                clearInterval(fadeTimer);
-                eventImageOverlay.style.opacity = '0';
-                eventImageOverlay.classList.remove('open', 'slide-open');
-                eventImageOverlay.style.display = 'none';
-                if (eventImage) {
-                    eventImage.style.opacity = '0';
-                    eventImage.style.display = 'none';
-                    eventImage.src = '';
-                }
-                this.imageOverlayVisible = false;
-
-                // If temporary hide, don't change toggle state
-                if (!temporary) {
-                    this.imageToggleState = false;
-                }
-
-                // Passive "Now playing" badge was hidden while overlay was open — restore if appropriate.
-                if (window.MusicManager && typeof window.MusicManager.updateNowPlaying === 'function') {
-                    try {
-                        window.MusicManager.updateNowPlaying();
-                    } catch (_) {}
-                }
+                this._clearImageHideFadeTimer();
+                this._hideImageOverlayImmediate();
             }
         }, fadeInterval);
     }

@@ -13,6 +13,10 @@ class WorldviewMouseInteraction {
      * @param {MouseEvent} event - Mouse event
      */
     onMouseDown(event) {
+        if (event.target.closest?.('.map-hover-callout__panel, .map-hover-callout__stack-row')) {
+            return;
+        }
+
         this.sceneModel.setDragging(true);
         this.sceneModel.setAutoRotate(false);
         
@@ -29,6 +33,7 @@ class WorldviewMouseInteraction {
         
         // Track if mouse moved (to differentiate click from drag)
         window.mouseMoved = false;
+        this._calloutDismissedThisDrag = false;
         
         // Notify UI that dragging started (to hide image overlay if visible)
         if (this.uiView) {
@@ -50,8 +55,13 @@ class WorldviewMouseInteraction {
         if (!this.sceneModel.isDraggingState()) return;
 
         const isMapView = this.sceneModel.getMapViewEnabled && this.sceneModel.getMapViewEnabled();
-        
+
         window.mouseMoved = true;
+
+        if (!isMapView && !this._calloutDismissedThisDrag) {
+            this._calloutDismissedThisDrag = true;
+            window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();
+        }
         
         // If viewing an event and user manually rotates, reset auto-rotate
         if (this.sceneModel.eventMarker) {
@@ -162,6 +172,10 @@ class WorldviewMouseInteraction {
         }
         
         if (this.sceneModel.getAutoRotateEnabled()) {
+            const markerService = window.globeController?.interactionController?.markerService;
+            if (markerService?.hasPinnedCallout?.()) {
+                return;
+            }
             // If viewing an event, recenter to it after delay
             if (this.sceneModel.eventMarker) {
                 this.sceneModel.autoRotateTimeout = setTimeout(() => {

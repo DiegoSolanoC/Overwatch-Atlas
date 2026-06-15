@@ -53,18 +53,206 @@ function closeWorldviewAuxPanels() {
 }
 
 class WorldviewMarkerInteraction {
-    constructor(sceneModel, uiView, pulseService) {
+    constructor(sceneModel, uiView, pulseService, calloutService) {
         this.sceneModel = sceneModel;
         this.uiView = uiView;
         this.pulseService = pulseService;
+        this.calloutService = calloutService || null;
         /** @type {{ userData: object }|null} */
         this._domLiteHoverStub = null;
+        /** Sticky hover label — cleared on hover elsewhere, click away, or drag. */
+        this._pinnedCalloutMarker = null;
+    }
+
+    hasPinnedCallout() {
+        return !!this._pinnedCalloutMarker;
+    }
+
+    _isEventInfoPanelOpen() {
+        const slide = document.getElementById('eventSlide');
+        return !!(slide && slide.classList.contains('open'));
+    }
+
+    pinMarkerCallout(marker) {
+        if (this._isEventInfoPanelOpen()) {
+            this.dismissPinnedMarkerCallout();
+            return;
+        }
+        if (!marker || !marker.userData || marker.userData.isLocked || marker.userData.isInteractive === false) {
+            this.dismissPinnedMarkerCallout();
+            return;
+        }
+        this.sceneModel.setAutoRotate(false);
+        if (this.sceneModel.autoRotateTimeout) {
+            clearTimeout(this.sceneModel.autoRotateTimeout);
+            this.sceneModel.autoRotateTimeout = null;
+        }
+        this._pinnedCalloutMarker = marker;
+        this._syncHoverCalloutFromMarker(marker);
+        this.highlightNumberButtonForMarker(marker);
+    }
+
+    dismissPinnedMarkerCallout() {
+        const hadPin = !!this._pinnedCalloutMarker;
+        this._pinnedCalloutMarker = null;
+        this._domLiteHoverStub = null;
+        this._syncHoverCalloutFromMarker(null);
+        this.highlightNumberButtonForMarker(null);
+        this._syncEventsHoverPreviewFromMarker(null);
+        window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
+        window.globeController?.map2dLite?.clearSyntheticMarkerHover?.();
+        if (hadPin) {
+            this._maybeResumeAutoRotateAfterCalloutDismiss();
+        }
+    }
+
+    _maybeResumeAutoRotateAfterCalloutDismiss() {
+        if (this.hasPinnedCallout()) return;
+        if (!this.sceneModel.getAutoRotateEnabled() || this.sceneModel.eventMarker) return;
+        if (this.sceneModel.autoRotateTimeout) {
+            clearTimeout(this.sceneModel.autoRotateTimeout);
+            this.sceneModel.autoRotateTimeout = null;
+        }
+        this.sceneModel.autoRotateTimeout = setTimeout(() => {
+            if (!this.hasPinnedCallout()) {
+                this.sceneModel.setAutoRotate(true);
+            }
+        }, 500);
+    }
+
+    releaseDomLiteMarkerHover(stub) {
+        if (this._domLiteHoverStub === stub) {
+            this._domLiteHoverStub = null;
+        }
+        window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
+        window.globeController?.map2dLite?.clearSyntheticMarkerHover?.();
+        if (window.globeEventMarkerManager && typeof window.globeEventMarkerManager.resumeOverlapCycling === 'function') {
+            window.globeEventMarkerManager.resumeOverlapCycling();
+        }
     }
 
     /**
-     * Under Events header: show # / title for hovered globe marker (non-module callers use window.SummaryInfoBadge).
-     * @param {THREE.Object3D|null} marker
+     * Open the event info panel for a marker (globe mesh or map lite stub).
+     * @param {object} marker
+     * @param {{ onZoomToMarker?: (m: object) => void, onResetCamera?: () => void, fromCallout?: boolean }} [opts]
+     * @returns {boolean} true when an event panel was opened or already showing
      */
+    activateEventMarker(marker, opts = {}) {
+        const { onZoomToMarker, onResetCamera, fromCallout = false } = opts;
+        if (!marker?.userData?.isEventMarker && !marker?.userData?.isMap2dLiteProxy) {
+            return false;
+        }
+        if (marker.userData.isInteractive === false || marker.userData.isLocked) {
+            return false;
+        }
+
+        if (window.globeController?.interactionController) {
+            window.globeController.interactionController.hoveredEventMarker = null;
+        }
+        if (window.globeController?.markerPulseService) {
+            window.globeController.markerPulseService.hoveredEventMarker = null;
+        }
+        const hoveredMarker = this.pulseService.getHoveredMarker();
+        if (hoveredMarker) {
+            this.pulseService.stopEventMarkerPulse(hoveredMarker);
+            this.pulseService.setHoveredMarker(null);
+            this.highlightNumberButtonForMarker(null);
+            this._syncEventsHoverPreviewFromMarker(null);
+        }
+        window.globeController?.map2dLite?.stopHoverRadiateLoop?.();
+        window.globeController?.map2dLite?.clearSyntheticMarkerHover?.();
+
+        const events = window.eventManager?.getDockTimelineEvents?.() || [];
+        const eventData = marker.userData.event;
+        let eventIndex = -1;
+        if (marker.userData.variant) {
+            eventIndex = events.findIndex((e) => {
+                if (e.variants && e.variants.length > 0) {
+                    return e.variants.some(
+                        (v) => v === marker.userData.variant || v.name === marker.userData.variant.name,
+                    );
+                }
+                return false;
+            });
+        } else {
+            eventIndex = events.findIndex((e) => e === eventData || e.name === eventData?.name);
+        }
+        if (eventIndex < 0 && eventData?.name) {
+            const name = (eventData.name || '').trim();
+            eventIndex = events.findIndex((e) => (e.name || '').trim() === name);
+        }
+
+        const currentIndex = window.standaloneEventSlide?.currentEventIndex;
+        const eventSlide = document.getElementById('eventSlide');
+        if (
+            !fromCallout
+            && eventIndex >= 0
+            && eventIndex === currentIndex
+            && eventSlide
+            && eventSlide.classList.contains('open')
+        ) {
+            this.dismissPinnedMarkerCallout();
+            window.globeController?.uiView?.hideEventSlide?.();
+            return true;
+        }
+
+        const locationType = marker.userData.locationType || 'earth';
+        const orbitMarkerParent = this.sceneModel.getOrbitMarkerParent
+            ? this.sceneModel.getOrbitMarkerParent()
+            : this.sceneModel.orbitPlane;
+        const isOnOrbitPanel = !marker.userData.isMap2dLiteProxy
+            && orbitMarkerParent
+            && marker.parent === orbitMarkerParent;
+
+        if (locationType === 'moon' || locationType === 'mars') {
+            if (onResetCamera) onResetCamera();
+        } else if (locationType === 'station' || locationType === 'marsShip') {
+            if (isOnOrbitPanel) {
+                if (onResetCamera) onResetCamera();
+            } else {
+                try {
+                    window.globeController?.interactionController?.setPlanesVisibility?.(false);
+                    window.globeController?.interactionController?.startFollowingStation?.(marker);
+                } catch (_) {
+                    if (onResetCamera) onResetCamera();
+                }
+            }
+        } else if (onZoomToMarker) {
+            onZoomToMarker(marker);
+        }
+
+        if (eventIndex < 0) {
+            return false;
+        }
+
+        this.dismissPinnedMarkerCallout();
+
+        const variantIdx = marker.userData.variantIndex ?? 0;
+        if (window.globeController?.uiView) {
+            window.globeController.uiView.currentEventMarker = marker;
+        }
+
+        if (window.standaloneEventSlide) {
+            window.standaloneEventSlide.showEvent(eventIndex, { variantIndex: variantIdx });
+        }
+
+        if (window.SoundEffectsManager?.play) {
+            window.SoundEffectsManager.play('eventClick');
+        }
+        return true;
+    }
+
+    _syncHoverCalloutFromMarker(marker) {
+        if (!this.calloutService) return;
+        if (!marker || !marker.userData || marker.userData.isLocked || marker.userData.isInteractive === false) {
+            this.calloutService.hide();
+            return;
+        }
+        if (typeof this.calloutService.show === 'function') {
+            this.calloutService.show(marker);
+        }
+    }
+
     _syncEventsHoverPreviewFromMarker(marker) {
         const badge = typeof window !== 'undefined' ? window.SummaryInfoBadge : null;
         if (!badge || typeof badge.hide !== 'function') return;
@@ -131,6 +319,18 @@ class WorldviewMarkerInteraction {
         if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
             return;
         }
+
+        if (this._isEventInfoPanelOpen()) {
+            if (this.hasPinnedCallout()) {
+                this.dismissPinnedMarkerCallout();
+            }
+            return;
+        }
+
+        const isMapView = this.sceneModel.getMapViewEnabled?.() ?? !!this.sceneModel.isMapView;
+        if (isMapView) {
+            return;
+        }
         
         if (!this.sceneModel) return;
         
@@ -175,6 +375,7 @@ class WorldviewMarkerInteraction {
                 if (hoveredMarker) {
                     this.pulseService.stopEventMarkerPulse(hoveredMarker);
                     this.pulseService.setHoveredMarker(null);
+                    this.dismissPinnedMarkerCallout();
                 }
                 return; // Block hover effects but allow globe movement
             }
@@ -190,8 +391,13 @@ class WorldviewMarkerInteraction {
                 if (currentHovered && currentHovered.userData.isInteractive !== false) {
                     this.pulseService.stopEventMarkerPulse(currentHovered);
                     this.pulseService.setHoveredMarker(null);
-                    this.highlightNumberButtonForMarker(null);
                     this._syncEventsHoverPreviewFromMarker(null);
+                    if (this.hasPinnedCallout()) {
+                        this.highlightNumberButtonForMarker(this._pinnedCalloutMarker);
+                    } else {
+                        this.highlightNumberButtonForMarker(null);
+                        this._syncHoverCalloutFromMarker(null);
+                    }
                 }
                 return;
             }
@@ -203,8 +409,13 @@ class WorldviewMarkerInteraction {
                 if (currentHovered && !currentHovered.userData.isLocked) {
                     this.pulseService.stopEventMarkerPulse(currentHovered);
                     this.pulseService.setHoveredMarker(null);
-                    this.highlightNumberButtonForMarker(null);
                     this._syncEventsHoverPreviewFromMarker(null);
+                    if (this.hasPinnedCallout()) {
+                        this.highlightNumberButtonForMarker(this._pinnedCalloutMarker);
+                    } else {
+                        this.highlightNumberButtonForMarker(null);
+                        this._syncHoverCalloutFromMarker(null);
+                    }
                 }
                 return;
             }
@@ -226,8 +437,8 @@ class WorldviewMarkerInteraction {
             if (currentHovered !== hoveredMarker) {
                 this.pulseService.startEventMarkerPulse(hoveredMarker);
                 this.pulseService.setHoveredMarker(hoveredMarker);
-                this.highlightNumberButtonForMarker(hoveredMarker);
                 this._syncEventsHoverPreviewFromMarker(hoveredMarker);
+                this.pinMarkerCallout(hoveredMarker);
                 
                 // Pause overlap cycling when hovering over a marker
                 if (window.globeEventMarkerManager && typeof window.globeEventMarkerManager.pauseOverlapCycling === 'function') {
@@ -242,24 +453,25 @@ class WorldviewMarkerInteraction {
             // Dispatch custom event to reset image restore timer in MenuHelpers
             window.dispatchEvent(new CustomEvent('markerhover'));
         } else {
-            // Not hovering any event marker - resume auto-rotate if enabled
             const currentHovered = this.pulseService.getHoveredMarker();
             if (currentHovered) {
                 this.pulseService.stopEventMarkerPulse(currentHovered);
                 this.pulseService.setHoveredMarker(null);
-                this.highlightNumberButtonForMarker(null);
                 this._syncEventsHoverPreviewFromMarker(null);
-                
+
+                if (this.hasPinnedCallout()) {
+                    this.highlightNumberButtonForMarker(this._pinnedCalloutMarker);
+                } else {
+                    this.highlightNumberButtonForMarker(null);
+                    this._syncHoverCalloutFromMarker(null);
+                    if (this.sceneModel.getAutoRotateEnabled() && !this.sceneModel.eventMarker) {
+                        this._maybeResumeAutoRotateAfterCalloutDismiss();
+                    }
+                }
+
                 // Resume overlap cycling when hover ends
                 if (window.globeEventMarkerManager && typeof window.globeEventMarkerManager.resumeOverlapCycling === 'function') {
                     window.globeEventMarkerManager.resumeOverlapCycling();
-                }
-                
-                // Resume auto-rotate after a shorter delay
-                if (this.sceneModel.getAutoRotateEnabled() && !this.sceneModel.eventMarker) {
-                    this.sceneModel.autoRotateTimeout = setTimeout(() => {
-                        this.sceneModel.setAutoRotate(true);
-                    }, 500); // 0.5 second delay - faster resume
                 }
             }
         }

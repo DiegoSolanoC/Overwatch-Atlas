@@ -71,6 +71,16 @@ export function runCreateInlineEditor(slide) {
                     <label class="event-slide-inline-editor__label" for="eventSlideEditEraName">Era name (optional)</label>
                     <input class="event-slide-inline-editor__input" id="eventSlideEditEraName" type="text" spellcheck="true" autocomplete="on" />
                 </div>
+                <div class="event-slide-inline-editor__row event-slide-inline-editor__preview-badges">
+                    <div class="event-slide-inline-editor__label">Preview Badges</div>
+                    <p class="event-slide-inline-editor__hint">Comma-separated names; autocomplete matches heroes and NPCs for character fields, factions only for faction.</p>
+                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeMain">Main character</label>
+                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeMain" type="text" spellcheck="false" autocomplete="off" placeholder="Hero or NPC" />
+                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeSecondary">Secondary characters</label>
+                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeSecondary" type="text" spellcheck="false" autocomplete="off" placeholder="Heroes or NPCs" />
+                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeFaction">Faction</label>
+                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeFaction" type="text" spellcheck="false" autocomplete="off" placeholder="Faction" />
+                </div>
                 <div class="event-slide-inline-editor__row" id="eventSlideEditDescriptionContainer">
                     <label class="event-slide-inline-editor__label">Description</label>
                 </div>

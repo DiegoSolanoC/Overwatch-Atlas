@@ -65,6 +65,10 @@ export class WorldviewGlobeController {
         this.map2dLite = null;
         /** Coalesced rAF for {@link #syncMapLiteWebGlImmediate} while DOM map is active (main globe loop is paused). */
         this._mapLiteSyncRafId = null;
+        /** Debounced flush after side-panel width transitions (--panel-transition). */
+        this._stageLayoutSyncTimer = null;
+        /** Coalesced rAF for {@link #requestStageLayoutSync}. */
+        this._stageLayoutSyncRafId = null;
         /** `#globe-container` — needed when leaving map before globe meshes exist. */
         this._globeContainer = null;
         /** True right after earth + celestial rigs are created ({@link GlobeView#initGlobe}); rest of world build may still be running. */
@@ -146,6 +150,10 @@ export class WorldviewGlobeController {
                 this._globeLayoutDirty = true;
             });
             this._globeResizeObserver.observe(container);
+            const mainContent = document.getElementById('content');
+            if (mainContent) {
+                this._globeResizeObserver.observe(mainContent);
+            }
         }
 
         this.setupPageVisibilityTracking();
@@ -243,6 +251,7 @@ export class WorldviewGlobeController {
         this.map2dLite.onContainerResize();
         this.uiView.updateLabelPosition();
         this.uiView.checkAndAutoShowImage();
+        this.interactionController?.updateMarkerHoverCallout?.();
     }
 
     /**
@@ -259,6 +268,44 @@ export class WorldviewGlobeController {
             this._mapLiteSyncRafId = null;
             this.syncMapLiteWebGlImmediate();
         });
+    }
+
+    /**
+     * Resize globe canvas / map viewport after layout-container flex panels animate.
+     * Coalesced to rAF + a post-transition flush (ResizeObserver handles frames in between).
+     */
+    requestStageLayoutSync() {
+        if (this.isCleanedUp) return;
+
+        const flush = () => {
+            this._globeLayoutDirty = true;
+            const mapOn = this.sceneModel.getMapViewEnabled?.()
+                ? this.sceneModel.getMapViewEnabled()
+                : !!this.sceneModel.isMapView;
+            if (mapOn && this.map2dLite?.isVisible?.()) {
+                this.syncMapLiteWebGlImmediate();
+            } else if (this.interactionController) {
+                this._globeLayoutDirty = false;
+                this.interactionController.onWindowResize();
+            }
+        };
+
+        this._globeLayoutDirty = true;
+
+        if (this._stageLayoutSyncRafId == null) {
+            this._stageLayoutSyncRafId = requestAnimationFrame(() => {
+                this._stageLayoutSyncRafId = null;
+                flush();
+            });
+        }
+
+        if (this._stageLayoutSyncTimer != null) {
+            clearTimeout(this._stageLayoutSyncTimer);
+        }
+        this._stageLayoutSyncTimer = setTimeout(() => {
+            this._stageLayoutSyncTimer = null;
+            flush();
+        }, 400);
     }
 
     /**
@@ -353,6 +400,7 @@ export class WorldviewGlobeController {
         if (this.interactionController) {
             // updateMarkerPulse() ends by calling updatePulseRings(); avoid doing rings twice per frame.
             this.interactionController.updateMarkerPulse();
+            this.interactionController.updateMarkerHoverCallout();
             this.interactionController.updateStationPinLines();
         }
 
@@ -528,6 +576,33 @@ export class WorldviewGlobeController {
         } else {
             this.syncMapLiteWebGlImmediate();
         }
+
+        this._resyncCalloutAfterMapViewChange();
+    }
+
+    /**
+     * Drop stale callout DOM when switching globe ↔ map and clear hover/pin state.
+     */
+    _resyncCalloutAfterMapViewChange() {
+        const ic = this.interactionController;
+        const callout = ic?.calloutService;
+        const ms = ic?.markerService;
+        const pulse = ic?.pulseService;
+
+        ms?.dismissPinnedMarkerCallout?.();
+        ms?.releaseDomLiteMarkerHover?.(ms._domLiteHoverStub);
+        ms?._syncEventsHoverPreviewFromMarker?.(null);
+        ms?.highlightNumberButtonForMarker?.(null);
+
+        if (pulse) {
+            const hovered = pulse.getHoveredMarker?.();
+            if (hovered) {
+                pulse.stopEventMarkerPulse?.(hovered);
+                pulse.setHoveredMarker?.(null);
+            }
+        }
+
+        callout?.clearAllOnViewModeChange?.();
     }
 
     /**
@@ -564,6 +639,16 @@ export class WorldviewGlobeController {
         if (this._mapLiteSyncRafId != null) {
             cancelAnimationFrame(this._mapLiteSyncRafId);
             this._mapLiteSyncRafId = null;
+        }
+
+        if (this._stageLayoutSyncTimer != null) {
+            clearTimeout(this._stageLayoutSyncTimer);
+            this._stageLayoutSyncTimer = null;
+        }
+
+        if (this._stageLayoutSyncRafId != null) {
+            cancelAnimationFrame(this._stageLayoutSyncRafId);
+            this._stageLayoutSyncRafId = null;
         }
 
         if (this._globeResizeObserver) {

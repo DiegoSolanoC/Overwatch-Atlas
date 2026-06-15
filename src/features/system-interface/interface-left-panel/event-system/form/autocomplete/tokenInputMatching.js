@@ -10,6 +10,7 @@
  * Inputs to the per-type matcher:
  *   - heroes  / npcs / countries → `string[]`
  *   - factions                   → `{ displayName, filename }[]` (or strings coerced into that shape)
+ *   - heroesAndNpcs              → `{ heroes: string[], npcs: string[] }`
  *
  * All matchers de-duplicate against tokens already in the input (case-insensitive) so we
  * don't suggest something the user has already picked.
@@ -53,7 +54,7 @@ const MAX_MATCHES = 8;
  *
  * @param {string} value Current `<input>` value (full CSV).
  * @param {Array<any>} options Candidates; shape varies by `type`.
- * @param {'heroes'|'factions'|'npcs'|'countries'} type
+ * @param {'heroes'|'factions'|'npcs'|'countries'|'heroesAndNpcs'} type
  * @returns {Array<any>} Sorted candidates (raw entries for heroes/npcs/countries; faction
  *   objects for `type === 'factions'`).
  */
@@ -98,6 +99,27 @@ export function buildMatches(value, options, type) {
                 if (ra !== rb) return ra - rb;
                 return String(a.displayName).length - String(b.displayName).length;
             })
+            .slice(0, MAX_MATCHES);
+    }
+
+    if (type === 'heroesAndNpcs') {
+        const heroes = Array.isArray(options?.heroes) ? options.heroes : [];
+        const npcs = Array.isArray(options?.npcs) ? options.npcs : [];
+        const tagged = [];
+
+        heroes.forEach((entry) => {
+            const name = String(entry || '');
+            if (!name.toLowerCase().includes(prefix) || existing.has(name.toLowerCase())) return;
+            tagged.push({ kind: 'hero', name, rank: substringRank(name, prefix) });
+        });
+        npcs.forEach((entry) => {
+            const name = String(entry || '');
+            if (!name.toLowerCase().includes(prefix) || existing.has(name.toLowerCase())) return;
+            tagged.push({ kind: 'npc', name, rank: substringRank(name, prefix) });
+        });
+
+        return tagged
+            .sort((a, b) => a.rank - b.rank || a.name.length - b.name.length)
             .slice(0, MAX_MATCHES);
     }
 

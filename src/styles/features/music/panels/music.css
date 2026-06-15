@@ -395,6 +395,7 @@ body.color-palette-gray .music-mute-btn:hover {
 /* Passive event hover preview (under Event Manager button) — reuses music badge shell */
 .summary-info-badge {
     align-items: flex-start;
+    justify-content: flex-start;
     max-width: 720px;
 }
 
@@ -418,36 +419,99 @@ body.color-palette-gray .music-mute-btn:hover {
     transform: translateY(-130px) scaleX(-1);
 }
 
-/* 1) Era + years (years smaller, same row after era name) */
-.summary-info-era {
-    width: 100%;
-    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
-    color: rgba(255, 255, 255, 0.98);
-    font-weight: 800;
-    font-size: 64px;
-    line-height: 1.05;
-    letter-spacing: 0.02em;
-    white-space: normal;
-    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.58);
+/* 1) Number | Years */
+.summary-info-num-year {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: flex-start;
-    gap: 0.1em 0.32em;
-    /* Start hidden, animations handle visibility */
+    align-items: center;
+    gap: 0.28em 0.42em;
+    width: 100%;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    line-height: 1.1;
     opacity: 0;
     transform: translateX(-50px);
     filter: blur(3px);
 }
 
+.summary-info-num-year:empty {
+    display: none;
+}
+
+.summary-info-number {
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.52);
+}
+
+.summary-info-number:empty {
+    display: none;
+}
+
+.summary-info-num-year-sep {
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.summary-info-years-line {
+    font-size: clamp(22px, 2.75vw, 32px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.88);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.48);
+    text-align: left;
+}
+
+.summary-info-years-line:empty {
+    display: none;
+}
+
+.summary-info-num-year .summary-info-line-flag--primary:not(:empty) {
+    margin-top: 0;
+}
+
+.summary-info-num-year .summary-info-line-flag--primary .summary-info-flag,
+.summary-info-num-year .summary-info-line-flag--primary img.summary-info-flag {
+    width: clamp(28px, 3vw, 38px);
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+/* 2) Era name */
+.summary-info-era-line {
+    width: 100%;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    color: rgba(255, 255, 255, 0.98);
+    font-weight: 800;
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    white-space: normal;
+    text-align: left;
+    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.58);
+    opacity: 0;
+    transform: translateX(-50px);
+    filter: blur(3px);
+}
+
+.summary-info-era-line:empty,
 .summary-info-era__name:empty {
     display: none;
 }
 
+.summary-info-badge--no-era .summary-info-num-year .summary-info-years-line {
+    font-size: clamp(36px, 4.6vw, 52px);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.94);
+}
+
 /*
  * Era line only: thematic colors while preview is visible or exiting.
- * (--visible is removed as soon as hide runs, but --hiding keeps content for slide-out; without this
- * the era span would inherit white from .summary-info-era for ~200ms.)
  */
 .music-now-playing-badge--visible .summary-info-era__name[data-era='age-progress'],
 .summary-info-badge--hiding .summary-info-era__name[data-era='age-progress'] {
@@ -506,30 +570,16 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 .summary-info-era__years {
-    font-size: clamp(22px, 2.75vw, 32px);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.88);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.48);
-    line-height: 1.1;
-    text-align: left;
+    display: none;
 }
 
-/* No era label — only years (e.g. Year Unknown) */
-.summary-info-era--nameless .summary-info-era__years {
-    font-size: clamp(36px, 4.6vw, 52px);
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.94);
-}
-
-/* 2) Number (no #) + event name — scaled proportionally */
+/* 3) Event name (+ optional variants) */
 .summary-info-mainline {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    gap: 8px 12px;
+    gap: 8px;
     width: 100%;
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
     font-size: 42px;
@@ -537,7 +587,6 @@ body.color-palette-gray .music-mute-btn:hover {
     line-height: 1.12;
     color: rgba(255, 255, 255, 0.96);
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.52);
-    /* Start hidden, animations handle visibility */
     opacity: 0;
     transform: translateX(-50px);
     filter: blur(3px);
@@ -550,8 +599,12 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 /* Slide-in animations when badge becomes visible */
-.music-now-playing-badge--visible .summary-info-era {
+.music-now-playing-badge--visible .summary-info-num-year {
     animation: events-hover-slide-in 280ms ease-out forwards;
+}
+
+.music-now-playing-badge--visible .summary-info-era-line {
+    animation: events-hover-slide-in 280ms ease-out 40ms forwards;
 }
 
 .music-now-playing-badge--visible .summary-info-mainline {
@@ -572,7 +625,8 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 /* Slide-out when badge is hiding - uses explicit hiding class */
-.summary-info-badge--hiding .summary-info-era,
+.summary-info-badge--hiding .summary-info-num-year,
+.summary-info-badge--hiding .summary-info-era-line,
 .summary-info-badge--hiding .summary-info-mainline {
     animation: events-hover-slide-out 200ms ease-in forwards !important;
 }
@@ -645,11 +699,6 @@ body.color-palette-gray .music-mute-btn:hover {
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
     opacity: 0.9;
-}
-
-.summary-info-number:not(:empty)::after {
-    content: '.';
-    margin-right: 6px;
 }
 
 .summary-info-number:empty {

@@ -1,16 +1,41 @@
-import { getMarkerRadius } from './markerSizes.js';
+import { normalizeSavedPalette } from '../../../universal-features/atlas-palette/PaletteConstants.js';
+
+/** Main event marker accent per palette (globe + map 2D). */
+export const MARKER_COLOR_MAIN_BY_PALETTE = {
+    blue: 0xff6600,
+    gray: 0x64b5f6,
+    crimson: 0xffffff,
+    nulled: 0xffca28,
+};
+
+/** Secondary / multi-variant marker accent per palette. */
+export const MARKER_COLOR_SECONDARY_BY_PALETTE = {
+    blue: 0xff69b4,
+    gray: 0x90caf9,
+    crimson: 0xe0e0e0,
+    nulled: 0xffd54f,
+};
+
+/** Locked / filtered-out marker color (paired with markerLockUnlock animations). */
+export const EVENT_MARKER_LOCKED_HEX = 0x331100;
+
+function getCurrentPaletteKey() {
+    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('colorPalette') : null;
+    return normalizeSavedPalette(saved);
+}
 
 /**
- * Marker accent colors (main variant vs secondary).
+ * Marker accent colors (main variant vs secondary), keyed to the active color palette.
  * @param {boolean} isMainVariant
  * @returns {number} hex
  */
 export function getMarkerColor(isMainVariant) {
-    return isMainVariant ? 0xff6600 : 0xff69b4;
+    const palette = getCurrentPaletteKey();
+    if (isMainVariant) {
+        return MARKER_COLOR_MAIN_BY_PALETTE[palette] ?? MARKER_COLOR_MAIN_BY_PALETTE.blue;
+    }
+    return MARKER_COLOR_SECONDARY_BY_PALETTE[palette] ?? MARKER_COLOR_SECONDARY_BY_PALETTE.blue;
 }
-
-/** Locked / filtered-out marker color (paired with markerLockUnlock animations). */
-export const EVENT_MARKER_LOCKED_HEX = 0x331100;
 
 /**
  * Default restore color when userData.originalColor was never set.

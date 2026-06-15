@@ -7,6 +7,7 @@ import {
     heroNamesLooselyEqualCodex,
     normalizeBioNameLoose
 } from './CodexGraphPrimitives.js';
+import { npcNamesLooselyEqual } from '../../../system-interface/interface-shared/npcNameAliases.js';
 
 export function factionNodeMatchesToken(node, token) {
     const raw = String(token || '').trim();
@@ -43,7 +44,7 @@ export function findCodexNodeIdForBioEntity(kind, nameToken, nodes) {
             return n.id;
         }
         if (k === 'npc' && n.kind === 'npc') {
-            if (String(n.npcName || '').trim().toLowerCase() === token.toLowerCase()) return n.id;
+            if (npcNamesLooselyEqual(n.npcName, token)) return n.id;
         }
         if (k === 'faction' && n.kind === 'faction' && factionNodeMatchesToken(n, token)) {
             return n.id;

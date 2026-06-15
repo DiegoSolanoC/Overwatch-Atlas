@@ -384,6 +384,7 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
                             ic.pulseService.setHoveredMarker(marker); // Glow effect
                             ic.startEventMarkerPulse(marker); // Pulse rings
                         }
+                        ic?.markerService?._syncHoverCalloutFromMarker?.(marker);
                         // Center camera on marker
                         centerCameraOnMarker(marker);
                     }
@@ -459,6 +460,7 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
                             ic.stopEventMarkerPulse(hoveredMarker);
                             ic.pulseService.setHoveredMarker(null);
                         }
+                        ic.hideMarkerHoverCallout?.();
                     }
                     restoreCameraFromThumbnailHover();
                     // Resume overlap cycling

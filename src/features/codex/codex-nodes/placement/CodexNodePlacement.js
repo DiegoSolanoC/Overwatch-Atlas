@@ -3,6 +3,7 @@ import { api } from '../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_WORLD_H, CODEX_WORLD_W } from '../../codex-data/persistence/CodexLayoutConstants.js';
 import { generateNodeId, heroNamesLooselyEqualCodex } from '../../codex-edge-cords/topology/CodexGraphPrimitives.js';
+import { npcNamesLooselyEqual } from '../../../system-interface/interface-shared/npcNameAliases.js';
 import { applyLocationFlagBioHighlight, getEventManager, playSoundEffect, updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { CODEX_FRAME_PATH, CODEX_IMG_BASE_PX, CODEX_JUNCTION_BASE_PX, CODEX_SCALE_MAX, CODEX_SCALE_MIN, codexCountryFlagSrc, normalizeCodexCountryKey, resolveCodexNodeScale } from './CodexNodePortraitMetrics.js';
 import { codexFrameVariantForId, codexHexRotationDegreesForId } from './CodexNodeVisualHash.js';
@@ -25,10 +26,10 @@ function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
             if (n && n.kind === 'hero' && heroNamesLooselyEqualCodex(n.heroName, t)) return n.id;
         }
     } else if (kind === 'npc' && String(heroName || '').trim()) {
-        const t = String(heroName).trim().toLowerCase();
+        const t = String(heroName).trim();
         for (let j = 0; j < s.codexAllNodes.length; j += 1) {
             const n = s.codexAllNodes[j];
-            if (n && n.kind === 'npc' && String(n.npcName || '').trim().toLowerCase() === t) return n.id;
+            if (n && n.kind === 'npc' && npcNamesLooselyEqual(n.npcName, t)) return n.id;
         }
     } else if (kind === 'faction' && faction && faction.filename) {
         const fn = String(faction.filename).trim();

@@ -3,6 +3,7 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../interface-shared/storyEventFilterPlaces.js';
+import { activeFilterSetMatchesNpcId } from '../../interface-shared/npcNameAliases.js';
 
 /**
  * Legacy faction strings in events.json that don't match manifest `filename` (filter chip keys).
@@ -137,7 +138,7 @@ export function entityMatchesActiveFilters(entity, activeFilters) {
     const npcFilters = getStoryEventNpcTokens(entity);
     const factionFilters = getStoryEventFactionTokens(entity);
     return heroFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
-        || npcFilters.some((id) => id != null && activeFilters.has(String(id).trim()))
+        || npcFilters.some((id) => activeFilterSetMatchesNpcId(activeFilters, id))
         || factionFilters.some((id) => factionIdMatchesActiveFilters(id, activeFilters))
         || countryFiltersMatchEntity(entity, activeFilters);
 }

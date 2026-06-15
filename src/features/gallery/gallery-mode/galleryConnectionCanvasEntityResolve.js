@@ -4,6 +4,7 @@
 
 import { matchHeroManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { factionNodeMatchesToken } from '../../codex/codex-edge-cords/topology/CodexBioEntityMatching.js';
+import { npcNamesLooselyEqual } from '../../system-interface/interface-shared/npcNameAliases.js';
 
 /**
  * @param {string} token
@@ -96,7 +97,7 @@ export function findCodexNodeForGalleryEntity(kind, nameToken, codexNodes) {
             if (normalizeKey(hn) === normalizeKey(token)) return n;
         }
         if (k === 'npc' && n.kind === 'npc') {
-            if (normalizeKey(n.npcName) === normalizeKey(token)) return n;
+            if (npcNamesLooselyEqual(n.npcName, token)) return n;
         }
         if (k === 'faction' && n.kind === 'faction' && factionNodeMatchesToken(n, token)) {
             return n;

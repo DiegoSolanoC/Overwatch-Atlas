@@ -5,6 +5,8 @@
  * {@link getStoryEventHeroTokens} (etc.) for chips, search, and Codex.
  */
 
+import { resolveNpcCanonicalName } from './npcNameAliases.js';
+
 export const STORY_SECONDARY_PLACES_EDITOR_OPTS = {
     placeholders: {
         locationName: 'Group label',
@@ -95,7 +97,12 @@ export function canonicalizeFactionTokens(tokens) {
 export function canonicalizeNpcTokens(tokens) {
     const manifestNpcs = window.eventManager?.npcs || [];
     const npcCanon = new Map(manifestNpcs.map((n) => [String(n).toLowerCase(), n]));
-    return tokens.map((t) => npcCanon.get(String(t).toLowerCase()) || String(t).trim()).filter(Boolean);
+    return tokens
+        .map((t) => {
+            const resolved = resolveNpcCanonicalName(t);
+            return npcCanon.get(String(resolved).toLowerCase()) || resolved;
+        })
+        .filter(Boolean);
 }
 
 export function normalizeCollectedPlaces(rows) {

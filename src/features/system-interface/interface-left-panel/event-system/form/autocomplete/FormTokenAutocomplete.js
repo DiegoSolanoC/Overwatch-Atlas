@@ -28,7 +28,7 @@ class FormTokenAutocomplete {
     /**
      * @param {HTMLElement} input
      * @param {Array} options Heroes: `string[]`; factions: `{ filename, displayName }[]`; countries / npcs: `string[]`.
-     * @param {'heroes'|'factions'|'npcs'|'countries'} type
+     * @param {'heroes'|'factions'|'npcs'|'countries'|'heroesAndNpcs'} type
      */
     setupAutocomplete(input, options, type) {
         if (input.dataset.autocompleteSetup === 'true') return;
@@ -83,6 +83,20 @@ class FormTokenAutocomplete {
                 matches.forEach((name) => renderTokenPickRow(autocompleteList, {
                     matchCountry: name, onPick: () => applyPick(name),
                 }));
+            } else if (type === 'heroesAndNpcs') {
+                matches.forEach((entry) => {
+                    if (entry.kind === 'npc') {
+                        renderTokenPickRow(autocompleteList, {
+                            matchNpcName: entry.name,
+                            onPick: () => applyPick(entry.name),
+                        });
+                    } else {
+                        renderTokenPickRow(autocompleteList, {
+                            matchHeroName: entry.name,
+                            onPick: () => applyPick(entry.name),
+                        });
+                    }
+                });
             }
 
             document.body.appendChild(autocompleteList);

@@ -446,6 +446,17 @@
     color: rgba(255, 255, 255, 0.55);
 }
 
+.event-slide-inline-editor__preview-badges .event-slide-inline-editor__label--sub {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.event-slide-inline-editor__preview-badges .event-slide-inline-editor__label--sub:first-of-type {
+    margin-top: 0;
+}
+
 .event-slide-inline-editor__row--delete {
     margin-top: 16px;
     padding-top: 14px;

@@ -3,6 +3,7 @@
  */
 
 import { getEraHoverPreviewSlug } from './eraHoverPreviewTheme.js';
+import { attachStageAnchorLayoutWatch } from './stageAnchorLayoutWatch.js';
 
 /**
  * Side-dock Event Manager uses `.open` on #eventsManagePanel. Data Archive also sets `.open` while
@@ -18,6 +19,7 @@ function isEventsManageDockDrawerOpen() {
 }
 
 let badgeEl = null;
+let textNumYearEl = null;
 let textNumberEl = null;
 let textTitleEl = null;
 let textEraEl = null;
@@ -145,15 +147,18 @@ function ensureBadge() {
     badgeEl.setAttribute('aria-hidden', 'true');
     badgeEl.innerHTML = `
         <div class="summary-info-stack">
-            <div class="summary-info-era" aria-hidden="true">
+            <div class="summary-info-num-year" aria-hidden="true">
+                <span class="summary-info-number"></span>
+                <span class="summary-info-num-year-sep" aria-hidden="true">|</span>
+                <span class="summary-info-years-line"></span>
+                <div class="summary-info-line-flag summary-info-line-flag--primary" aria-hidden="true"></div>
+            </div>
+            <div class="summary-info-era-line" aria-hidden="true">
                 <span class="summary-info-era__name"></span>
-                <span class="summary-info-era__years"></span>
             </div>
             <div class="summary-info-mainline">
-                <span class="summary-info-number" aria-hidden="true"></span>
                 <div class="summary-info-title-column">
                     <div class="summary-info-title-row">
-                        <div class="summary-info-line-flag summary-info-line-flag--primary" aria-hidden="true"></div>
                         <span class="summary-info-title"></span>
                     </div>
                     <div class="summary-info-variants" aria-hidden="true"></div>
@@ -164,11 +169,12 @@ function ensureBadge() {
     `;
     document.body.appendChild(badgeEl);
     textPrimaryFlagSlot = badgeEl.querySelector('.summary-info-line-flag--primary');
+    textNumYearEl = badgeEl.querySelector('.summary-info-num-year');
     textNumberEl = badgeEl.querySelector('.summary-info-number');
     textTitleEl = badgeEl.querySelector('.summary-info-title');
-    textEraEl = badgeEl.querySelector('.summary-info-era');
+    textEraEl = badgeEl.querySelector('.summary-info-era-line');
     textEraNameEl = badgeEl.querySelector('.summary-info-era__name');
-    textEraYearsEl = badgeEl.querySelector('.summary-info-era__years');
+    textEraYearsEl = badgeEl.querySelector('.summary-info-years-line');
     textVariantsEl = badgeEl.querySelector('.summary-info-variants');
     return badgeEl;
 }
@@ -337,20 +343,30 @@ export function showSummaryInfo(
     badgeEl.classList.remove('summary-info-badge--hiding');
 
     fillLineFlagSlot(textPrimaryFlagSlot, primaryRowFlag);
-    
-    if (textNumberEl) {
-        textNumberEl.textContent =
-            eventNum != null && Number.isFinite(eventNum)
-                ? String(eventNum)
-                : '';
-    }
-    if (textTitleEl) textTitleEl.textContent = plainEventName || '';
 
+    const hasNum = eventNum != null && Number.isFinite(eventNum);
     const eraTrim = eraName != null ? String(eraName).trim() : '';
     const yearTrim =
         yearLine != null && String(yearLine).trim() !== ''
             ? String(yearLine).trim()
             : 'Year Unknown';
+
+    if (textNumberEl) {
+        textNumberEl.textContent = hasNum ? `#${eventNum}` : '';
+    }
+    if (textTitleEl) textTitleEl.textContent = plainEventName || '';
+
+    if (textEraYearsEl) {
+        textEraYearsEl.textContent = yearTrim;
+    }
+    if (textNumYearEl) {
+        const showRow = hasNum || !!yearTrim;
+        textNumYearEl.style.display = showRow ? '' : 'none';
+        const sepEl = textNumYearEl.querySelector('.summary-info-num-year-sep');
+        if (sepEl) {
+            sepEl.style.display = hasNum && yearTrim ? '' : 'none';
+        }
+    }
 
     if (textEraNameEl) {
         textEraNameEl.textContent = eraTrim;
@@ -361,12 +377,8 @@ export function showSummaryInfo(
             textEraNameEl.removeAttribute('data-era');
         }
     }
-    if (textEraYearsEl) {
-        textEraYearsEl.textContent = yearTrim;
-    }
     if (textEraEl) {
-        textEraEl.style.display = '';
-        textEraEl.classList.toggle('summary-info-era--nameless', !eraTrim);
+        textEraEl.style.display = eraTrim ? '' : 'none';
     }
     if (badgeEl) {
         badgeEl.classList.toggle('summary-info-badge--no-era', !eraTrim);
@@ -446,6 +458,7 @@ export function showSummaryInfo(
         mo = new MutationObserver(() => schedule());
         observerTargets.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['class', 'style'] }));
     }
+    const detachStageWatch = attachStageAnchorLayoutWatch(schedule);
     // Get header hub directly (button is now in dock rail, not header)
     const hub = document.getElementById('headerHub');
     if (hub) hub.addEventListener('scroll', onScroll);
@@ -454,6 +467,7 @@ export function showSummaryInfo(
         window.removeEventListener('resize', onScroll);
         if (hub) hub.removeEventListener('scroll', onScroll);
         if (mo) mo.disconnect();
+        detachStageWatch();
         if (pending != null) {
             cancelAnimationFrame(pending);
             pending = null;
@@ -502,10 +516,15 @@ export function hideSummaryInfo(opts) {
                 textEraNameEl.textContent = '';
                 textEraNameEl.removeAttribute('data-era');
             }
+            if (textNumberEl) textNumberEl.textContent = '';
             if (textEraYearsEl) textEraYearsEl.textContent = '';
+            if (textNumYearEl) {
+                textNumYearEl.style.display = '';
+                const sepEl = textNumYearEl.querySelector('.summary-info-num-year-sep');
+                if (sepEl) sepEl.style.display = '';
+            }
             if (textEraEl) {
                 textEraEl.style.display = '';
-                textEraEl.classList.remove('summary-info-era--nameless');
             }
             if (textVariantsEl) {
                 textVariantsEl.innerHTML = '';
@@ -535,6 +554,7 @@ export function cleanupSummaryInfo() {
         badgeEl.parentNode.removeChild(badgeEl);
     }
     badgeEl = null;
+    textNumYearEl = null;
     textNumberEl = null;
     textTitleEl = null;
     textEraEl = null;

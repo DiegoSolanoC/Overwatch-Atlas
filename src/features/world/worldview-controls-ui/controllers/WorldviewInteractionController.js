@@ -18,10 +18,11 @@ export class WorldviewInteractionController {
         
         // Initialize services
         this.pulseService = new (window.WorldviewMarkerPulse || WorldviewMarkerPulse)(sceneModel);
+        this.calloutService = new (window.WorldviewMarkerHoverCallout || WorldviewMarkerHoverCallout)(sceneModel);
         this.cameraService = new (window.WorldviewCameraControl || WorldviewCameraControl)(sceneModel, uiView);
         this.mouseService = new (window.WorldviewMouseInteraction || WorldviewMouseInteraction)(sceneModel, uiView);
         this.touchService = new (window.WorldviewTouchInteraction || WorldviewTouchInteraction)(sceneModel, uiView);
-        this.markerService = new (window.WorldviewMarkerInteraction || WorldviewMarkerInteraction)(sceneModel, uiView, this.pulseService);
+        this.markerService = new (window.WorldviewMarkerInteraction || WorldviewMarkerInteraction)(sceneModel, uiView, this.pulseService, this.calloutService);
         this.stationService = new (window.WorldviewStationFollow || WorldviewStationFollow)(sceneModel, uiView);
     }
 
@@ -197,6 +198,7 @@ export class WorldviewInteractionController {
                             
                             this.markerService.highlightNumberButtonForMarker(nextMarker);
                             this.markerService._syncEventsHoverPreviewFromMarker(nextMarker);
+                            this.markerService._syncHoverCalloutFromMarker(nextMarker);
                         }
                     }
                 }, 50);
@@ -236,6 +238,10 @@ export class WorldviewInteractionController {
         this.pulseService.stopEventMarkerPulse(marker);
     }
 
+    hideMarkerHoverCallout() {
+        this.markerService?.dismissPinnedMarkerCallout?.();
+    }
+
     /**
      * Create a pulse ring for event marker
      */
@@ -262,6 +268,12 @@ export class WorldviewInteractionController {
      */
     updateMarkerPulse() {
         this.pulseService.updateMarkerPulse();
+    }
+
+    updateMarkerHoverCallout() {
+        if (this.calloutService && typeof this.calloutService.update === 'function') {
+            this.calloutService.update();
+        }
     }
 
     /**

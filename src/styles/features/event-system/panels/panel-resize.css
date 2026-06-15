@@ -10,6 +10,11 @@
         overflow: visible;
     }
 
+    /* Closing animation: keep protruding trapeziums + border PNGs visible (panel--closing must not clip). */
+    .filters-panel.panel--closing {
+        overflow: visible;
+    }
+
     /*
      * Middle seam art between the two filters-side trapeziums (vars on .filters-panel).
      * panel-pattern-overlay.css also uses .filters-panel::before for the tiled pattern + opacity: 0.62;

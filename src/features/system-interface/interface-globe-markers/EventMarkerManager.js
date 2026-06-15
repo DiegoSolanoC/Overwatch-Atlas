@@ -247,6 +247,7 @@ export class EventMarkerManager {
         if (window.globeController?.interactionController?.pulseService) {
             window.globeController.interactionController.pulseService.setHoveredMarker(null);
         }
+        window.globeController?.interactionController?.hideMarkerHoverCallout?.();
 
         return this.removeEventMarkers(animate).then(() => {
             return this.addEventMarkers(animate);

@@ -79,6 +79,8 @@ export const mixin = {
     _onPointerDown(e) {
         if (e.button !== 0) return;
         if (e.target.closest('.map-2d-lite__marker')) return;
+        if (e.target.closest('.map-hover-callout__panel, .map-hover-callout__stack-row')) return;
+        window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();
         this._dragging = true;
         this._moved = false;
         this._lastClientX = e.clientX;
@@ -187,6 +189,8 @@ export const mixin = {
     _onClick(e) {
         if (this._moved) return;
         if (e.target.closest('.map-2d-lite__marker')) return;
+        if (e.target.closest('.map-hover-callout__panel, .map-hover-callout__stack-row')) return;
+        window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();
         const ui = window.globeController?.uiView;
         if (ui?.currentEventMarker) {
             ui.hideEventSlide();
@@ -270,7 +274,7 @@ export const mixin = {
 
             const waveHex = Number.isFinite(stub.userData.originalColor)
                 ? stub.userData.originalColor
-                : 0xffaa00;
+                : fillHex;
             const wr = hexToRgb(waveHex);
             btn.style.setProperty('--map2d-pulse-rgb', `${wr.r},${wr.g},${wr.b}`);
             const fr = hexToRgb(fillHex);

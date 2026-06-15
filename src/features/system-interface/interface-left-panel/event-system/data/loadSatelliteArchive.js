@@ -21,6 +21,7 @@ import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archi
 const NPC_ARCHIVE_NAME_CANON = Object.freeze({
     gerard: 'Gérard',
     sojiro: 'Sojiro',
+    chisaka: 'Chikasa',
 });
 
 /**

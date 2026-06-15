@@ -133,11 +133,11 @@ export function createStandaloneEventSlide() {
                 options.eventList == null || events === dockList;
             
             const eventData = events[index];
-            this.showStandaloneEventSlide(eventData, index);
+            this.showStandaloneEventSlide(eventData, index, options);
         },
         
         // Show event slide with event data
-        showStandaloneEventSlide(eventData, globalIndex) { return runShowStandaloneEventSlide(this, eventData, globalIndex); },
+        showStandaloneEventSlide(eventData, globalIndex, options = {}) { return runShowStandaloneEventSlide(this, eventData, globalIndex, options); },
         
         // Display the slide panel
         displaySlide(eventName, imagePath, description, eventData, isMultiEvent, displayEvent) { return runDisplaySlide(this, eventName, imagePath, description, eventData, isMultiEvent, displayEvent); },

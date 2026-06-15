@@ -29,14 +29,32 @@
     flex: 0 0 var(--user-panel-filters-width, var(--panel-filters-width));
 }
 
-/* Hide panel content when collapsed */
-.filters-panel:not(.open) .filters-panel-content {
+/* Hide panel content when fully collapsed — keep visible while width animates closed */
+.filters-panel:not(.open):not(.panel--closing) .filters-panel-content {
     display: none;
+}
+
+.filters-panel.panel--closing {
+    pointer-events: none;
+}
+
+.filters-panel.panel--closing .filters-panel-content,
+.filters-panel.panel--closing .music-panel-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.filters-panel.panel--closing.filters-panel--music-mode .music-panel-content {
+    display: flex;
+    height: 100%;
+    padding: 20px 20px 20px 20px;
 }
 
 /* Close is outside .filters-panel-content — when collapsed it would still paint (often over the
    center stage / Data Archive) and steal clicks as a “phantom ×”. Only show it while open. */
-.filters-panel:not(.open) .filters-panel-close {
+.filters-panel:not(.open):not(.panel--closing) .filters-panel-close {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;

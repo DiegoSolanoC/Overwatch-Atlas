@@ -42,6 +42,10 @@
     function resolveNpcImageKey(token) {
         var t = R.stripTrailingCommaSep(String(token || '')).trim();
         if (!t) return '';
+        var H = window.NpcNameAliasHelpers;
+        if (H && typeof H.resolveNpcCanonicalName === 'function') {
+            t = H.resolveNpcCanonicalName(t);
+        }
         var list = window.eventManager?.npcs || [];
         var nk = R.normalizeKey(t);
         for (var i = 0; i < list.length; i++) {

@@ -73,7 +73,7 @@ export const NPC_ARCHIVE_CATEGORY_BY_NAME = Object.freeze({
     Ryota: 'Yokai',
     Nobuto: 'Yokai',
     Sakura: 'Yokai',
-    Chisaka: 'Yokai',
+    Chikasa: 'Yokai',
     Sojiro: 'Shimada',
     Toshiro: 'Shimada',
     Asa: 'Shimada',
@@ -231,8 +231,14 @@ export function mapNpcArchiveRowsForGrouping(rows, fileFallbackRows) {
 export function defaultNpcCategoryForName(name) {
     const raw = String(name || '').trim();
     if (!raw) return 'Other';
-    if (NPC_ARCHIVE_CATEGORY_BY_NAME[raw]) return NPC_ARCHIVE_CATEGORY_BY_NAME[raw];
-    const lower = raw.toLowerCase();
+    const canon =
+        typeof window !== 'undefined' && window.NpcNameAliasHelpers?.resolveNpcCanonicalName
+            ? window.NpcNameAliasHelpers.resolveNpcCanonicalName(raw)
+            : raw.toLowerCase() === 'chisaka'
+                ? 'Chikasa'
+                : raw;
+    if (NPC_ARCHIVE_CATEGORY_BY_NAME[canon]) return NPC_ARCHIVE_CATEGORY_BY_NAME[canon];
+    const lower = canon.toLowerCase();
     for (const [key, category] of Object.entries(NPC_ARCHIVE_CATEGORY_BY_NAME)) {
         if (key.toLowerCase() === lower) return category;
     }

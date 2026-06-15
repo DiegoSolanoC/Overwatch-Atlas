@@ -180,9 +180,15 @@ export class WorldviewHudView {
         // Set the image source if provided
         if (eventImage) {
             const eventImageEl = document.getElementById('eventImage');
+            const eventImageOverlay = document.getElementById('eventImageOverlay');
             if (eventImageEl) {
                 eventImageEl.src = eventImage;
                 eventImageEl.style.display = '';
+                eventImageEl.style.opacity = '';
+                eventImageEl.classList.remove('fade-out');
+            }
+            if (eventImageOverlay) {
+                eventImageOverlay.style.display = '';
             }
         }
 
@@ -210,7 +216,7 @@ export class WorldviewHudView {
             updateEventSlideHeroRoleDisplay(null, 0);
         }
 
-        // Show the image overlay
+        // Show the image overlay (refreshes in place when already open)
         this.imageOverlayManager.showImageOverlay();
     }
 
@@ -244,9 +250,9 @@ export class WorldviewHudView {
      * Used on desktop and mobile landscape
      */
     _hideEventSlideSimple() {
-        // This is called by WorldviewMapLiteLayer when clicking markers
-        // Clear the current event marker
         this.currentEventMarker = null;
+
+        window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();
 
         updateEventSlideFactionTypeDisplay(null, 0);
         updateEventSlideHeroRoleDisplay(null, 0);
@@ -255,11 +261,9 @@ export class WorldviewHudView {
         if (window.globeController?.map2dLite?.stopHoverRadiateLoop) {
             window.globeController.map2dLite.stopHoverRadiateLoop();
         }
-        // Clear synthetic marker hover
         if (window.globeController?.map2dLite?.clearSyntheticMarkerHover) {
             window.globeController.map2dLite.clearSyntheticMarkerHover();
         }
-        // Clear hover state
         if (window.globeController?.interactionController) {
             window.globeController.interactionController.hoveredEventMarker = null;
         }
@@ -267,22 +271,40 @@ export class WorldviewHudView {
             window.globeController.markerPulseService.hoveredEventMarker = null;
         }
 
-        // Close the event slide panel (match X button behavior)
+        window.standaloneEventSlide?.cancelEdit?.();
+
+        // Hide image before slide collapse — overlay stays flex-sized while .open and
+        // would expand into the reflowed main area during a slow fade (Q close bug).
+        if (window.standaloneEventSlide?.hideImageOverlay) {
+            window.standaloneEventSlide.hideImageOverlay();
+        } else {
+            this.imageOverlayManager.hideImageOverlay(false);
+        }
+        this.imageOverlayManager.imageOverlayVisible = false;
+        this.imageOverlayManager._clearImageHideFadeTimer?.();
+
         const eventSlide = document.getElementById('eventSlide');
+        const wasOpen = !!eventSlide?.classList.contains('open');
         if (eventSlide) {
             eventSlide.classList.remove('open');
         }
+        if (wasOpen) {
+            window.standaloneEventSlide?.clearSlideHistory?.();
+        }
 
-        // Play sound effect (match X button behavior)
-        if (window.SoundEffectsManager?.play) {
+        if (wasOpen && window.SoundEffectsManager?.play) {
             window.SoundEffectsManager.play('eventClick');
         }
 
-        // Reset globe immediately when closing
-        this.resetToDefault();
+        if (wasOpen) {
+            if (window.globeController?.interactionController) {
+                window.globeController.interactionController.stopFollowingStation();
+                window.globeController.interactionController.restorePlanesVisibility?.();
+            }
+            this.resetToDefault();
+        }
 
-        // Hide the image overlay
-        this.imageOverlayManager.hideImageOverlay();
+        window.globeController?.requestStageLayoutSync?.();
     }
 
     /**

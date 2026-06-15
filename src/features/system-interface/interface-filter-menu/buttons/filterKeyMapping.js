@@ -9,6 +9,8 @@
  * to find which manifest faction / hero corresponds to a given archive row.
  */
 
+import { npcNamesLooselyEqual } from '../../interface-shared/npcNameAliases.js';
+
 const HERO_DISPLAY_NAME_OVERRIDES = {
     /* Manifest filename has no colon (filesystem-safe), display has one. */
     'Soldier 76': 'Soldier: 76'
@@ -103,5 +105,10 @@ export function matchHeroManifestToArchiveRowName(rowName, heroes) {
 
 /** @param {string} rowName @param {string[]} npcs */
 export function matchNpcManifestToArchiveRowName(rowName, npcs) {
-    return matchHeroManifestToArchiveRowName(rowName, npcs);
+    if (!Array.isArray(npcs) || npcs.length === 0) return null;
+    for (let i = 0; i < npcs.length; i++) {
+        const n = npcs[i];
+        if (npcNamesLooselyEqual(rowName, n)) return n;
+    }
+    return null;
 }

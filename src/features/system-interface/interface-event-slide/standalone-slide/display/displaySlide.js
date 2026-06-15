@@ -271,7 +271,8 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
                 variantToggles.style.display = 'flex';
                 eventData.variants.forEach((variant, idx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'variant-toggle-btn' + (idx === 0 ? ' active' : '');
+                    const activeVariant = slide.currentVariantIndex ?? 0;
+                    btn.className = 'variant-toggle-btn' + (idx === activeVariant ? ' active' : '');
                     btn.textContent = variant.name || `Variant ${idx + 1}`;
                     btn.addEventListener('click', () => {
                         slide.currentVariantIndex = idx;

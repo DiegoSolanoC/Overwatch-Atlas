@@ -31,13 +31,14 @@ export function hideEventSlideIfOpen() {
     if (!slideOpen && !overlayOpen) return false;
 
     let closed = false;
+    let closedViaUiHide = false;
     try {
         const uiHide = codexOrGlobeUiView();
         if (uiHide && typeof uiHide.hideEventSlide === 'function') {
             clearHackedOverlays();
             uiHide.hideEventSlide();
-            if (uiHide.hideImageOverlay) uiHide.hideImageOverlay();
             closed = true;
+            closedViaUiHide = true;
         }
     } catch (_) {}
 
@@ -51,8 +52,12 @@ export function hideEventSlideIfOpen() {
         closed = true;
     }
 
-    /* Reset camera so a station/ship "follow" doesn't keep tracking after dismiss. */
-    if (closed) {
+    /*
+     * WorldviewHudView.hideEventSlide already resets camera + layout sync.
+     * A second reset here (especially map2dLite.resetView) ran before the slide
+     * width transition finished and left permanent empty space on map view.
+     */
+    if (closed && !closedViaUiHide) {
         if (window.globeController?.interactionController) {
             window.globeController.interactionController.stopFollowingStation();
             window.globeController.interactionController.restorePlanesVisibility?.();
@@ -60,6 +65,7 @@ export function hideEventSlideIfOpen() {
         if (window.globeController?.cameraControlService) {
             window.globeController.cameraControlService.resetCameraToDefault();
         }
+        window.globeController?.requestStageLayoutSync?.();
     }
     return closed;
 }

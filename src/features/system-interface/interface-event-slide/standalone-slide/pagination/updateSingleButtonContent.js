@@ -355,6 +355,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                         ic.pulseService.setHoveredMarker(marker); // Glow effect
                         ic.startEventMarkerPulse(marker); // Pulse rings
                     }
+                    ic?.markerService?._syncHoverCalloutFromMarker?.(marker);
                     // Center camera on marker
                     centerCameraOnMarker(marker);
                 }
@@ -431,6 +432,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                         ic.pulseService.setHoveredMarker(null);
                     }
                 }
+                ic?.hideMarkerHoverCallout?.();
                 restoreCameraFromThumbnailHover();
                 // Resume overlap cycling
                 window.globeEventMarkerManager?.resumeOverlapCycling?.();

@@ -178,6 +178,7 @@ export const mixin = {
                 variantIndex: variantIndex ?? 0
             };
             btn.__map2dLiteStub = stub;
+            stub.__map2dLiteBtn = btn;
             // Store marker reference for overlap cycling right-click
             btn.__map2dLiteMarkerRef = null; // Will be set after push to createdMarkers
 
@@ -209,7 +210,7 @@ export const mixin = {
             btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
             const waveHex = Number.isFinite(stub.userData.originalColor)
                 ? stub.userData.originalColor
-                : 0xffaa00;
+                : fillHex;
             const wr = hexToRgb(waveHex);
             btn.style.setProperty('--map2d-pulse-rgb', `${wr.r},${wr.g},${wr.b}`);
 
@@ -270,14 +271,12 @@ export const mixin = {
                 });
                 btn.addEventListener('mouseleave', () => {
                     const ms = window.globeController?.interactionController?.markerService;
-                    ms?.clearDomLiteMarkerHoverIf?.(stub);
+                    ms?.releaseDomLiteMarkerHover?.(stub);
                     // Clear continuous sound loop
                     if (this._hoverSoundInterval) {
                         clearInterval(this._hoverSoundInterval);
                         this._hoverSoundInterval = null;
                     }
-                    // Resume overlap cycling when hover ends
-                    this.resumeOverlapCycling();
                 });
             }
 
@@ -294,54 +293,14 @@ export const mixin = {
                     return;
                 }
 
-                // Don't allow event marker clicks when image overlay is visible
-                const eventImageOverlay = document.getElementById('eventImageOverlay');
-                if (eventImageOverlay && eventImageOverlay.classList.contains('open')) {
-                    const opacity = parseFloat(window.getComputedStyle(eventImageOverlay).opacity);
-                    if (opacity > 0.1) {
-                        return;
-                    }
-                }
-
-                // Find event index in Event System (match globe marker logic)
-                const events = window.eventManager?.getDockTimelineEvents?.() || [];
-                const eventData = stub.userData.event;
-                let eventIndex = events.findIndex(e => e === eventData);
-                if (eventIndex < 0) {
-                    const name = eventData?.name;
-                    eventIndex = events.findIndex(e => (e.name || '').trim() === (name || '').trim());
-                }
-
-                // Check if same event is already open (match globe marker logic)
-                const currentIndex = window.standaloneEventSlide?.currentEventIndex;
-                const eventSlide = document.getElementById('eventSlide');
-                if (eventIndex >= 0 && eventIndex === currentIndex && eventSlide && eventSlide.classList.contains('open')) {
-                    // Same event and slide is open - close it
-                    eventSlide.classList.remove('open');
-                    return;
-                }
-
-                // Open event slide with viewport-based routing
-                if (eventIndex >= 0) {
-                    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    const isMobilePortrait = isTouchDevice && window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-                    if (isMobilePortrait && window.standaloneEventSlide) {
-                        // Mobile portrait: use standalone implementation
-                        window.standaloneEventSlide.showEvent(eventIndex);
-                    } else if (window.globeController?.uiView) {
-                        // Desktop / mobile landscape: use simple dock-like implementation
-                        const eventData = events[eventIndex];
-                        const eventName = eventData?.name || 'Event';
-                        const eventDescription = eventData?.description || '';
-                        const imagePath = window.eventManager?.getEventImagePath
-                            ? window.eventManager.getEventImagePath(eventData.name, eventData.image, 'story')
-                            : null;
-                        window.globeController.uiView.showEventSlide(eventName, imagePath, eventDescription, stub, eventData);
-                    }
-                    if (window.SoundEffectsManager?.play) {
-                        window.SoundEffectsManager.play('eventClick');
-                    }
-                }
+                // Open event info panel (same path as globe marker click)
+                const ic = window.globeController?.interactionController;
+                const ms = ic?.markerService;
+                ms?.dismissPinnedMarkerCallout?.();
+                ms?.activateEventMarker?.(stub, {
+                    onZoomToMarker: (m) => ic?.zoomToMarker?.(m),
+                    onResetCamera: () => ic?.resetCameraToDefault?.(),
+                });
             });
 
             // Right-click handler to force cycle overlapping markers

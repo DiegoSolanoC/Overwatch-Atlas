@@ -52,6 +52,7 @@ export function createPanelExclusivityObserver() {
         } finally {
             enforcing = false;
         }
+        window.globeController?.requestStageLayoutSync?.();
     }
 
     return {

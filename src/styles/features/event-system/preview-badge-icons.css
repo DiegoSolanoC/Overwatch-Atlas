@@ -1,0 +1,116 @@
+/* Preview badge filter icons — map/globe marker callouts only */
+
+.preview-badge-icons {
+    --preview-badge-main: 52px;
+    --preview-badge-secondary: 36px;
+    --preview-badge-faction: 44px;
+    --preview-badge-gap: 5px;
+    --preview-badge-group-gap: 10px;
+    --preview-badge-column-gap: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: var(--preview-badge-column-gap);
+    row-gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+}
+
+.preview-badge-icons--compact {
+    --preview-badge-main: 40px;
+    --preview-badge-secondary: 28px;
+    --preview-badge-faction: 34px;
+    --preview-badge-gap: 4px;
+    --preview-badge-group-gap: 8px;
+    --preview-badge-column-gap: 12px;
+    margin-top: 6px;
+}
+
+.map-hover-callout--globe .preview-badge-icons {
+    --preview-badge-main: 68px;
+    --preview-badge-secondary: 44px;
+    --preview-badge-faction: 56px;
+    --preview-badge-gap: 6px;
+    --preview-badge-group-gap: 12px;
+    --preview-badge-column-gap: 20px;
+    margin-top: 10px;
+}
+
+.map-hover-callout--globe .preview-badge-icons--compact {
+    --preview-badge-main: 48px;
+    --preview-badge-secondary: 32px;
+    --preview-badge-faction: 40px;
+}
+
+.preview-badge-icons__characters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--preview-badge-group-gap);
+    min-width: 0;
+}
+
+.preview-badge-icons__main-group,
+.preview-badge-icons__secondary-group,
+.preview-badge-icons__factions {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--preview-badge-gap);
+    flex-shrink: 0;
+}
+
+.preview-badge-icons__factions {
+    justify-content: flex-end;
+}
+
+/* Only characters: use full width */
+.preview-badge-icons:not(:has(.preview-badge-icons__factions)) {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* Only factions: align right without a character column */
+.preview-badge-icons:not(:has(.preview-badge-icons__characters)) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.preview-badge-icons__img {
+    display: block;
+    width: var(--preview-badge-faction);
+    height: var(--preview-badge-faction);
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.48);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.preview-badge-icons__img--main {
+    width: var(--preview-badge-main);
+    height: var(--preview-badge-main);
+    border-radius: 6px;
+}
+
+.preview-badge-icons__img--secondary {
+    width: var(--preview-badge-secondary);
+    height: var(--preview-badge-secondary);
+}
+
+.preview-badge-icons__img--faction {
+    width: var(--preview-badge-faction);
+    height: var(--preview-badge-faction);
+}
+
+/* Widen callout panel when preview badges need horizontal room */
+.map-hover-callout__panel:has(.preview-badge-icons) {
+    max-width: 420px;
+}
+
+.map-hover-callout--globe .map-hover-callout__panel:has(.preview-badge-icons) {
+    max-width: 520px;
+}
+
+.map-hover-callout__panel-inner--compact .preview-badge-icons {
+    --preview-badge-column-gap: 12px;
+}
