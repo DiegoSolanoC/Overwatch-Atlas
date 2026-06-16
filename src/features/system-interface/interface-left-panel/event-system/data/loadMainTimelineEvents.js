@@ -4,8 +4,7 @@
  *   2. Compare with localStorage `timelineEvents`.
  *
  * Selection rules:
- *   GitHub Pages           → prefer non-empty localStorage (collaborator edits + import/export);
- *                          bundled file only when localStorage is empty.
+ *   GitHub Pages           → use shipped JSON unless localStorage has strictly more rows.
  *   Localhost + file > LS  → prefer file (single extra event is enough).
  *   Localhost + LS >= file → prefer localStorage (user's saved edits stay).
  *   Localhost + LS+5 < file → assume file caught up significantly, use file.
@@ -21,18 +20,34 @@ import { FILES } from "../../../../../data/registry.js";
 import { repairMisfiledLifecycleEventsFromFile } from "./repairMisfiledLifecycleEvents.js";
 import { repairCorruptedTimelineTailFromFile } from "./repairCorruptedTimelineTailFromFile.js";
 import { repairStalePlaceholderRowsFromFile } from "./repairStalePlaceholderRowsFromFile.js";
+import {
+  buildTimelineBundleStamp,
+  clearTimelineBundleStamp,
+  readTimelineBundleStampFromMeta,
+  writeTimelineBundleStamp,
+} from "./timelineBundleStamp.js";
 
 /**
- * Dev escape hatch: `?resetTimeline=1` drops cached `timelineEvents` and reloads from disk.
- * @param {boolean} isGitHubPages
+ * @param {unknown[]|null} fileEvents
+ */
+function rememberTimelineBundleStamp(fileEvents) {
+  const stamp =
+    readTimelineBundleStampFromMeta() ||
+    buildTimelineBundleStamp(fileEvents);
+  if (stamp) writeTimelineBundleStamp(stamp);
+}
+
+/**
+ * Escape hatch: `?resetTimeline=1` drops cached `timelineEvents` and reloads from the bundle.
  * @returns {boolean}
  */
-function consumeResetTimelineUrlParam(isGitHubPages) {
-  if (isGitHubPages || typeof window === "undefined") return false;
+function consumeResetTimelineUrlParam() {
+  if (typeof window === "undefined") return false;
   try {
     const params = new URLSearchParams(window.location.search);
     if (params.get("resetTimeline") !== "1") return false;
     localStorage.removeItem("timelineEvents");
+    clearTimelineBundleStamp();
     params.delete("resetTimeline");
     const nextSearch = params.toString();
     const nextUrl =
@@ -75,14 +90,17 @@ function _selectEventsSource(fileEvents, localEvents, isGitHubPages) {
     return "file";
   }
 
-  // Both sources exist.
-  if (isGitHubPages) {
-    // Static deploy: localStorage is how collaborators persist story edits between sessions.
-    return "localStorage-wins";
+  // Deployed / disk bundle ahead of cache — pick up new timeline rows from git.
+  if (fileCount > localCount) {
+    return "file";
   }
 
-  // Localhost: file with even one extra event wins (edited elsewhere).
-  if (fileCount > localCount) {
+  if (isGitHubPages) {
+    // Static site: shipped JSON is canonical unless the browser cache has more rows
+    // (import / add-event workflow not yet exported to git).
+    if (localCount > fileCount) {
+      return "localStorage-wins";
+    }
     return "file";
   }
 
@@ -139,7 +157,7 @@ export async function loadMainTimelineEvents(dataService) {
   // 2. Read localStorage
   // ------------------------------------------------------------------
   const isGitHubPages = dataService.isGitHubPages();
-  const forcedFileReset = consumeResetTimelineUrlParam(isGitHubPages);
+  const forcedFileReset = consumeResetTimelineUrlParam();
   if (forcedFileReset) {
     dataService.updateStatus(
       "EventDataService: resetTimeline=1 — cleared cached timelineEvents",
@@ -173,6 +191,7 @@ export async function loadMainTimelineEvents(dataService) {
         localStorage.removeItem("timelineEvents");
         dataService.events = fileEvents;
         dataService.saveEvents();
+        rememberTimelineBundleStamp(fileEvents);
         return dataService._finishMainTimelineLoadEvents({
           events: dataService.events,
           source: "file",
@@ -195,6 +214,7 @@ export async function loadMainTimelineEvents(dataService) {
     dataService.events = fileEvents;
     localStorage.removeItem("timelineEvents");
     dataService.saveEvents();
+    rememberTimelineBundleStamp(fileEvents);
     return dataService._finishMainTimelineLoadEvents({
       events: dataService.events,
       source: "file",
@@ -268,12 +288,11 @@ export async function loadMainTimelineEvents(dataService) {
 
   // Big-divergence catch-up: if file has significantly more entries the user
   // is behind — override with the file regardless of the earlier decision.
-  // GitHub Pages: never discard non-empty localStorage (collaborator workflow).
-  if (fileEvents && fileEvents.length > 0 && !isGitHubPages) {
+  if (fileEvents && fileEvents.length > 0) {
     const bigDivergence = fileEvents.length > dataService.events.length + 4;
 
     if (bigDivergence) {
-      const label = 'Localhost';
+      const label = isGitHubPages ? 'GitHub Pages' : 'Localhost';
       console.warn(
         `EventDataService [${label}]: localStorage has ${dataService.events.length} events, but events.json has ${fileEvents.length}. Using events.json.`,
       );
@@ -284,6 +303,7 @@ export async function loadMainTimelineEvents(dataService) {
       dataService.events = fileEvents;
       localStorage.removeItem("timelineEvents");
       dataService.saveEvents();
+      rememberTimelineBundleStamp(fileEvents);
       return dataService._finishMainTimelineLoadEvents({
         events: dataService.events,
         source: "file",

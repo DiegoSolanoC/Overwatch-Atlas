@@ -46,6 +46,13 @@ function copyRecursive(srcDir, destDir) {
     }
 }
 
+function escapeHtmlAttr(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;');
+}
+
 function injectStaticDeployMeta(siteIndex) {
     if (!fs.existsSync(siteIndex)) {
         throw new Error('Missing _site/index.html');
@@ -58,8 +65,40 @@ function injectStaticDeployMeta(siteIndex) {
         } else {
             html = html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}\n    ${marker}`);
         }
-        fs.writeFileSync(siteIndex, html, 'utf8');
     }
+    fs.writeFileSync(siteIndex, html, 'utf8');
+}
+
+function injectTimelineBundleMeta(siteIndex) {
+    const timelinePath = path.join(OUT, 'src', 'data', 'event-system', 'timeline-events.json');
+    if (!fs.existsSync(timelinePath)) {
+        throw new Error('Missing _site/src/data/event-system/timeline-events.json');
+    }
+    const data = JSON.parse(fs.readFileSync(timelinePath, 'utf8'));
+    const events = Array.isArray(data.events) ? data.events : [];
+    const count = events.length;
+    const lastName = count > 0 ? String(events[count - 1]?.name ?? '').trim() : '';
+    const stamp = `${count}:${lastName}`;
+    const countMeta = `<meta name="timeline-bundle-events" content="${count}">`;
+    const stampMeta = `<meta name="timeline-bundle-stamp" content="${escapeHtmlAttr(stamp)}">`;
+
+    let html = fs.readFileSync(siteIndex, 'utf8');
+    html = html.replace(/\s*<meta name=["']timeline-bundle-events["'][^>]*>\s*/gi, '\n');
+    html = html.replace(/\s*<meta name=["']timeline-bundle-stamp["'][^>]*>\s*/gi, '\n');
+
+    const anchor = /<meta name=["']timeline-deploy["'][^>]*>/i;
+    if (anchor.test(html)) {
+        html = html.replace(anchor, (m) => `${m}\n    ${countMeta}\n    ${stampMeta}`);
+    } else if (/<meta\s+charset=/i.test(html)) {
+        html = html.replace(
+            /(<meta\s+charset=["']UTF-8["']\s*\/?>)/i,
+            `$1\n    ${countMeta}\n    ${stampMeta}`,
+        );
+    } else {
+        html = html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}\n    ${countMeta}\n    ${stampMeta}`);
+    }
+
+    fs.writeFileSync(siteIndex, html, 'utf8');
 }
 
 function removeDevOnlyArtifacts() {
@@ -85,6 +124,25 @@ function validateStaticSite() {
         const html = fs.readFileSync(siteIndex, 'utf8');
         if (!/name=["']timeline-deploy["']/i.test(html)) {
             errors.push('index.html missing <meta name="timeline-deploy" content="static">');
+        }
+        if (!/name=["']timeline-bundle-stamp["']/i.test(html)) {
+            errors.push('index.html missing <meta name="timeline-bundle-stamp" …> (run build:pages)');
+        }
+        if (!/name=["']timeline-bundle-events["']/i.test(html)) {
+            errors.push('index.html missing <meta name="timeline-bundle-events" …> (run build:pages)');
+        }
+    }
+
+    const timelinePath = path.join(OUT, 'src', 'data', 'event-system', 'timeline-events.json');
+    if (!fs.existsSync(timelinePath)) {
+        errors.push('Missing _site/src/data/event-system/timeline-events.json');
+    } else {
+        try {
+            const timeline = JSON.parse(fs.readFileSync(timelinePath, 'utf8'));
+            const n = Array.isArray(timeline.events) ? timeline.events.length : 0;
+            if (n === 0) errors.push('timeline-events.json has zero events');
+        } catch (e) {
+            errors.push(`timeline-events.json is not valid JSON: ${e?.message || e}`);
         }
     }
 
@@ -136,7 +194,11 @@ function printSummary() {
     const manifest = JSON.parse(
         fs.readFileSync(path.join(OUT, 'src', 'data', 'platform', 'manifest.json'), 'utf8'),
     );
+    const timeline = JSON.parse(
+        fs.readFileSync(path.join(OUT, 'src', 'data', 'event-system', 'timeline-events.json'), 'utf8'),
+    );
     console.log('GitHub Pages output:', OUT);
+    console.log(`  timeline-events.json: ${timeline.events?.length ?? 0} events`);
     console.log(
         `  codex-labels.json: v${codex.v}, ${codex.nodes?.length ?? 0} nodes, `
             + `${codex.edges?.length ?? 0} edges, ${codex.connections?.length ?? 0} connection row(s)`,
@@ -154,6 +216,7 @@ copyRecursive(ROOT, OUT);
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 injectStaticDeployMeta(path.join(OUT, 'index.html'));
+injectTimelineBundleMeta(path.join(OUT, 'index.html'));
 removeDevOnlyArtifacts();
 validateStaticSite();
 printSummary();

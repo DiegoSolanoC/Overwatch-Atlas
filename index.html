@@ -3,6 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script>
+    (function () {
+      var LS_KEY = 'timelineEvents';
+      var STAMP_KEY = 'timelineEventsBundleStamp';
+      function cleanResetParam() {
+        try {
+          var p = new URLSearchParams(location.search);
+          if (p.get('resetTimeline') !== '1') return false;
+          localStorage.removeItem(LS_KEY);
+          localStorage.removeItem(STAMP_KEY);
+          p.delete('resetTimeline');
+          var q = p.toString();
+          history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+          return true;
+        } catch (e) { return false; }
+      }
+      if (cleanResetParam()) return;
+      try {
+        var deploy = document.querySelector('meta[name="timeline-deploy"]');
+        if (!deploy || String(deploy.getAttribute('content')).toLowerCase() !== 'static') return;
+        var stampMeta = document.querySelector('meta[name="timeline-bundle-stamp"]');
+        if (!stampMeta) return;
+        var bundleStamp = String(stampMeta.getAttribute('content') || '');
+        if (!bundleStamp) return;
+        if (localStorage.getItem(STAMP_KEY) === bundleStamp) return;
+        var raw = localStorage.getItem(LS_KEY);
+        if (!raw) return;
+        var localCount = 0;
+        try { localCount = JSON.parse(raw).length; } catch (e) {}
+        var countMeta = document.querySelector('meta[name="timeline-bundle-events"]');
+        var bundleCount = countMeta ? parseInt(countMeta.getAttribute('content') || '0', 10) : 0;
+        if (bundleCount > 0 && localCount > bundleCount) return;
+        localStorage.removeItem(LS_KEY);
+      } catch (e) {}
+    })();
+    </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
     <link rel="stylesheet" href="src/styles/app.css?v=96">
