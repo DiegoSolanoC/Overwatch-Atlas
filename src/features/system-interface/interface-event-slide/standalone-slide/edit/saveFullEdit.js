@@ -62,6 +62,11 @@ import {
     resolveLiveArchiveEventIndexForSlide,
 } from '../../../interface-shared/bio-archive/bioArchiveSlideEventData.js';
 import { saveCodexConnectionsForSubject } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
+import {
+    reorderStoryTimelineInPlace,
+    resolveStoryEventIndexInList,
+} from '../../../interface-shared/storyEventIndexResolution.js';
+import { syncStandaloneSlideEventContext } from '../../../interface-shared/syncStandaloneSlideEventContext.js';
 
 /**
  * @param {HTMLElement | null | undefined} el
@@ -79,26 +84,14 @@ function readSlidePlainText(el) {
 function resolveStoryTimelineListForSave(slide) {
     const em = window.eventManager;
     if (!em) return [];
+    const archiveSource = em.dataService?.getArchiveSource?.() || 'story';
+    if (archiveSource === 'story' && Array.isArray(em.events)) {
+        return em.events;
+    }
     if (slide?._presentationFromDockTimeline) {
         return em.getDockTimelineEvents?.() || [];
     }
     return em.events || [];
-}
-
-/**
- * @param {object[]} list
- * @param {object | null | undefined} eventData
- * @returns {number}
- */
-function resolveStoryEventIndexInList(list, eventData) {
-    if (!Array.isArray(list) || !eventData) return -1;
-    const byRef = list.indexOf(eventData);
-    if (byRef >= 0) return byRef;
-    const want = String(eventData.name || '').trim().toLowerCase();
-    if (!want) return -1;
-    return list.findIndex(
-        (row) => row && String(row.name || '').trim().toLowerCase() === want,
-    );
 }
 
 export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
@@ -308,6 +301,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             if (saveBtn) saveBtn.style.display = 'none';
             slide.isEditing = false;
             slide.editTarget = null;
+            slide.editTargetStoryIndex = -1;
             slide.originalState = null;
             const savedForDisplay =
                 saveIdx >= 0 && em?.events?.[saveIdx]
@@ -383,9 +377,34 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         slide.saveCurrentVariantData();
 
         const storyList = resolveStoryTimelineListForSave(slide);
-        const liveStoryIdx = resolveStoryEventIndexInList(storyList, eventData);
-        const liveEventData =
-            liveStoryIdx >= 0 && storyList[liveStoryIdx] ? storyList[liveStoryIdx] : eventData;
+        const anchorEvent = slide.editTarget?.eventData;
+        if (!anchorEvent || typeof anchorEvent !== 'object') {
+            window.updateAppStatus?.(
+                'No event row is bound to this edit — save cancelled.',
+                'error',
+            );
+            return;
+        }
+
+        let liveStoryIdx = storyList.indexOf(anchorEvent);
+        if (liveStoryIdx < 0) {
+            liveStoryIdx = resolveStoryEventIndexInList(slide, storyList, anchorEvent);
+        }
+        if (liveStoryIdx < 0) {
+            window.updateAppStatus?.(
+                'Could not locate this event in the timeline — save cancelled to avoid overwriting the wrong row. Close and reopen the event, then try again.',
+                'error',
+            );
+            return;
+        }
+        if (storyList.filter((row) => row === anchorEvent).length !== 1) {
+            window.updateAppStatus?.(
+                'This event row appears more than once in the timeline — save cancelled to avoid corrupting data.',
+                'error',
+            );
+            return;
+        }
+        const liveEventData = storyList[liveStoryIdx];
 
         const isMultiEvent = liveEventData.variants && liveEventData.variants.length > 0;
         const target = isMultiEvent ? liveEventData.variants[slide.currentVariantIndex || 0] : liveEventData;
@@ -464,21 +483,17 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
 
         const emReorder = window.eventManager;
         const numReorderEl = document.getElementById('eventSlideEditEventNumber');
-        if (
-            emReorder
-            && typeof emReorder.reorderEvents === 'function'
-            && numReorderEl
-            && Array.isArray(storyList)
-            && storyList.length > 0
-            && (window.eventManager?.dataService?.getArchiveSource?.() || 'story') === 'story'
-        ) {
-            const startIdx = liveStoryIdx;
+        if (emReorder && numReorderEl && Array.isArray(storyList) && storyList.length > 0) {
+            const startIdx = storyList.indexOf(anchorEvent);
             if (startIdx >= 0) {
                 const n = parseInt(numReorderEl.value, 10);
                 if (!Number.isNaN(n) && n >= 1) {
                     const newIdx = Math.min(n - 1, storyList.length - 1);
-                    if (newIdx !== startIdx) {
-                        emReorder.reorderEvents(startIdx, newIdx);
+                    if (newIdx !== startIdx && reorderStoryTimelineInPlace(storyList, startIdx, newIdx)) {
+                        if ((emReorder.dataService?.getArchiveSource?.() || 'story') === 'story') {
+                            emReorder.renderEvents?.();
+                        }
+                        storyList.forEach((_, idx) => emReorder.unsavedEventIndices?.add(idx));
                     }
                 }
             }
@@ -497,9 +512,15 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
 
         // Mark as unsaved and persist to localStorage
         if (window.eventManager) {
-            const idx = liveStoryIdx >= 0 ? liveStoryIdx : storyList.indexOf(liveEventData);
+            const idx = storyList.indexOf(anchorEvent);
             if (idx >= 0) {
                 window.eventManager.unsavedEventIndices.add(idx);
+                syncStandaloneSlideEventContext(
+                    slide,
+                    anchorEvent,
+                    idx,
+                    slide._presentationFromDockTimeline ? {} : { eventList: storyList },
+                );
             }
             // Persist changes to localStorage immediately
             if (window.eventManager.dataService && typeof window.eventManager.dataService.saveEvents === 'function') {
@@ -546,6 +567,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         
         slide.isEditing = false;
         slide.editTarget = null;
+        slide.editTargetStoryIndex = -1;
         slide.originalState = null;
         
         // Refresh display

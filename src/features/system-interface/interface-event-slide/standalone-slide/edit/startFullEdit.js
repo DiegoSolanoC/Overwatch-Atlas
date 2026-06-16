@@ -18,6 +18,10 @@ import {
     STORY_FACTION_FILTER_PLACES_OPTS,
     STORY_NPC_FILTER_PLACES_OPTS
 } from '../../../interface-shared/storyEventFilterPlaces.js';
+import {
+    resolveStoryEventDataInList,
+    resolveStoryEventIndexInList,
+} from '../../../interface-shared/storyEventIndexResolution.js';
 import { resolveConnectionsForArchiveEntry } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
 
 function resolveLiveArchiveEventData(slide, fallbackEventData) {
@@ -35,16 +39,40 @@ function resolveLiveArchiveEventData(slide, fallbackEventData) {
 }
 
 export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBtn) {
-            const liveEventData = resolveLiveArchiveEventData(slide, eventData);
-            slide.isEditing = true;
-            slide.editTarget = { eventData: liveEventData, displayEvent };
-            slide.originalState = JSON.parse(JSON.stringify(liveEventData));
-
             const dockStoryPresentationActive = !!slide._presentationFromDockTimeline;
             const archiveSourceEdit = dockStoryPresentationActive
                 ? 'story'
                 : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
             const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceEdit !== 'story';
+
+            const emStory = window.eventManager;
+            const storyListForBind = dockStoryPresentationActive
+                ? (emStory?.getDockTimelineEvents?.() || [])
+                : (emStory?.events || []);
+            let liveEventData = eventData;
+            if (
+                !liveEventData
+                || !Array.isArray(storyListForBind)
+                || !storyListForBind.includes(liveEventData)
+            ) {
+                liveEventData =
+                    resolveLiveArchiveEventData(slide, eventData)
+                    || resolveStoryEventDataInList(slide, storyListForBind, eventData)
+                    || eventData;
+            }
+
+            slide.isEditing = true;
+            slide.editTarget = { eventData: liveEventData, displayEvent };
+            slide.originalState = JSON.parse(JSON.stringify(liveEventData));
+
+            if (!isSatelliteArchive && Array.isArray(storyListForBind) && liveEventData) {
+                const byRef = storyListForBind.indexOf(liveEventData);
+                slide.editTargetStoryIndex = byRef >= 0
+                    ? byRef
+                    : resolveStoryEventIndexInList(slide, storyListForBind, liveEventData);
+            } else {
+                slide.editTargetStoryIndex = -1;
+            }
             
             // Initialize variant index
             const isMulti = Array.isArray(eventData.variants) && eventData.variants.length > 0;
@@ -106,7 +134,7 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
             
             // Populate editor fields
             if (!isSatelliteArchive) {
-                slide.populateInlineEditor(eventData, displayEvent);
+                slide.populateInlineEditor(liveEventData, displayEvent);
             }
             
             // Enable predictive/autocomplete behavior (same service used in EventManager edit modal)

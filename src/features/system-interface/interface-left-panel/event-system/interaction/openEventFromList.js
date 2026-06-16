@@ -158,7 +158,13 @@ export function openEventFromList(interactionService, event, index) {
                 window.standaloneEventSlide.showEvent(eventIndex, { eventList: listEv });
             }
         } else {
-            uiView.showEventSlide(eventName, imagePath, eventDescription, targetMarker, event);
+            const listEv = interactionService.eventManager.events || [];
+            const eventIndex = listEv.indexOf(event);
+            if (eventIndex >= 0 && window.standaloneEventSlide) {
+                window.standaloneEventSlide.showEvent(eventIndex, { eventList: listEv });
+            } else {
+                uiView.showEventSlide(eventName, imagePath, eventDescription, targetMarker, event);
+            }
         }
 
         interactionService.resetAllEventVariants();

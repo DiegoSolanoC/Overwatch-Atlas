@@ -355,7 +355,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                         ic.pulseService.setHoveredMarker(marker); // Glow effect
                         ic.startEventMarkerPulse(marker); // Pulse rings
                     }
-                    ic?.markerService?._syncHoverCalloutFromMarker?.(marker);
+                    ic?.markerService?.pinMarkerCallout?.(marker);
                     // Center camera on marker
                     centerCameraOnMarker(marker);
                 }
@@ -378,7 +378,10 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
             if (isMapView) {
                 // Map view: clear DOM-lite hover and reset to default view
                 const ms = window.globeController?.interactionController?.markerService;
-                ms?.setDomLiteMarkerHover?.(null);
+                const hoveredStub = ms?._domLiteHoverStub;
+                if (hoveredStub) {
+                    ms?.releaseDomLiteMarkerHover?.(hoveredStub);
+                }
 
                 /*
                  * Prefer the cached marker button from onmouseenter — that
@@ -432,7 +435,6 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                         ic.pulseService.setHoveredMarker(null);
                     }
                 }
-                ic?.hideMarkerHoverCallout?.();
                 restoreCameraFromThumbnailHover();
                 // Resume overlap cycling
                 window.globeEventMarkerManager?.resumeOverlapCycling?.();

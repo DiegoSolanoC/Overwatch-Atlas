@@ -13,6 +13,7 @@ import {
     updateEventSlideFactionTypeDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
+import { syncStandaloneSlideEventContext } from '../../../system-interface/interface-shared/syncStandaloneSlideEventContext.js';
 
 /**
  * WorldviewHudView - Handles UI elements (labels, buttons, toggles)
@@ -214,6 +215,33 @@ export class WorldviewHudView {
         } else {
             updateEventSlideFactionTypeDisplay(null, 0);
             updateEventSlideHeroRoleDisplay(null, 0);
+        }
+
+        if (fullEvent && window.standaloneEventSlide) {
+            const slide = window.standaloneEventSlide;
+            const em = window.eventManager;
+            const managerList = em?.events || [];
+            let list = managerList;
+            let idx = managerList.indexOf(fullEvent);
+            let opts = { eventList: managerList };
+            if (idx < 0) {
+                const dockList = em?.getDockTimelineEvents?.() || [];
+                idx = dockList.indexOf(fullEvent);
+                list = dockList;
+                opts = {};
+            }
+            syncStandaloneSlideEventContext(slide, fullEvent, idx, opts);
+            slide.updateSourcesAndFilters?.(fullEvent);
+            const editBtn = document.getElementById('eventSlideEditBtn');
+            const saveBtn = document.getElementById('eventSlideSaveBtn');
+            slide.wireEditButtons?.(
+                fullEvent,
+                fullEvent,
+                editBtn,
+                saveBtn,
+                eventSlideTitle,
+                eventSlideText,
+            );
         }
 
         // Show the image overlay (refreshes in place when already open)

@@ -1,5 +1,7 @@
 import { isArchiveStructuralEditingEnabled } from '../../interface-info-display/isEventSlideEditDevHost.js';
 
+import { syncStandaloneSlideEventContext } from '../../interface-shared/syncStandaloneSlideEventContext.js';
+
 /**
  * Append a blank row for the active archive, jump pagination to it, re-render, then open the slide.
  * @param {object} mgr — EventManager
@@ -39,6 +41,12 @@ export function runAddBlankEventAndOpen(mgr) {
     }
 
     mgr.renderEvents();
+
+    if (window.standaloneEventSlide) {
+        syncStandaloneSlideEventContext(window.standaloneEventSlide, event, newIndex, {
+            eventList: mgr.events,
+        });
+    }
 
     const open = () => {
         if (mgr.openEventFromList) {

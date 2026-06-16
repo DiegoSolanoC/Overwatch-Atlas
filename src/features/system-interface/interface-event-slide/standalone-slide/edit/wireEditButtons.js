@@ -9,20 +9,6 @@
 
 import { isEventSlideEditDevHost } from '../../../interface-info-display/isEventSlideEditDevHost.js';
 
-function resolveLiveArchiveEventData(slide, fallbackEventData) {
-    const api = typeof window !== 'undefined' ? window.BioArchiveSlideEventData : null;
-    if (api && typeof api.resolveLiveArchiveEventDataForSlide === 'function') {
-        return api.resolveLiveArchiveEventDataForSlide(slide, fallbackEventData);
-    }
-    const em = window.eventManager;
-    const list = em && em.events;
-    const idx = slide && slide.currentEventIndex;
-    if (Array.isArray(list) && typeof idx === 'number' && idx >= 0 && idx < list.length && list[idx]) {
-        return list[idx];
-    }
-    return fallbackEventData;
-}
-
 export function runWireEditButtons(slide, eventData, displayEvent, editBtn, saveBtn, titleEl, textEl) {
             if (!editBtn || !saveBtn) return;
 
@@ -47,16 +33,16 @@ export function runWireEditButtons(slide, eventData, displayEvent, editBtn, save
             saveBtn.parentNode.replaceChild(newSaveBtn, saveBtn);
             
             newEditBtn.onclick = () => {
-                const live = resolveLiveArchiveEventData(slide, eventData);
+                const row = slide.editTarget?.eventData || slide.currentEventData || eventData;
                 if (slide.isEditing) {
                     slide.cancelEdit(newEditBtn, newSaveBtn);
                 } else {
-                    slide.startFullEdit(live, displayEvent, newEditBtn, newSaveBtn);
+                    slide.startFullEdit(row, displayEvent, newEditBtn, newSaveBtn);
                 }
             };
 
             newSaveBtn.onclick = () => {
-                const live = resolveLiveArchiveEventData(slide, eventData);
-                slide.saveFullEdit(live, newEditBtn, newSaveBtn);
+                const row = slide.editTarget?.eventData || slide.currentEventData || eventData;
+                slide.saveFullEdit(row, newEditBtn, newSaveBtn);
             };
 }

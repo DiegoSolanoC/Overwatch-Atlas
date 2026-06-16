@@ -140,12 +140,27 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             const listForOrder = slide._presentationFromDockTimeline
                 ? (emList?.getDockTimelineEvents?.() || [])
                 : (emList?.events || []);
-            let listIdx = listForOrder.indexOf(eventData);
+            let listIdx = -1;
+            if (
+                Array.isArray(slide.allEvents)
+                && typeof slide.currentEventIndex === 'number'
+                && slide.allEvents[slide.currentEventIndex]
+            ) {
+                listIdx = listForOrder.indexOf(slide.allEvents[slide.currentEventIndex]);
+            }
+            if (listIdx < 0) {
+                listIdx = listForOrder.indexOf(eventData);
+            }
             if (listIdx < 0 && eventData?.name) {
                 const want = String(eventData.name).trim().toLowerCase();
-                listIdx = listForOrder.findIndex(
-                    (row) => row && String(row.name || '').trim().toLowerCase() === want,
-                );
+                const nameMatches = [];
+                for (let ni = 0; ni < listForOrder.length; ni += 1) {
+                    const row = listForOrder[ni];
+                    if (row && String(row.name || '').trim().toLowerCase() === want) {
+                        nameMatches.push(ni);
+                    }
+                }
+                if (nameMatches.length === 1) listIdx = nameMatches[0];
             }
             if (numEl && listForOrder.length && listIdx >= 0) {
                 numEl.min = '1';

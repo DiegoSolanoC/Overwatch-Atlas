@@ -52,6 +52,7 @@ import { runConvertRootEventToMulti } from './variants/convertRootEventToMulti.j
 import { runCollapseMultiToSingleRoot } from './variants/collapseMultiToSingleRoot.js';
 // Pagination
 import { getDockTimelineEventsForPagination } from '../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
+import { syncStandaloneSlideEventContext } from '../../../system-interface/interface-shared/syncStandaloneSlideEventContext.js';
 import { runSetupStandalonePagination } from './pagination/setupStandalonePagination.js';
 import { runWireNumberButtons } from './pagination/wireNumberButtons.js';
 import { runAnimatePageTurn } from './pagination/animatePageTurn.js';
@@ -133,6 +134,7 @@ export function createStandaloneEventSlide() {
                 options.eventList == null || events === dockList;
             
             const eventData = events[index];
+            syncStandaloneSlideEventContext(this, eventData, index, options);
             this.showStandaloneEventSlide(eventData, index, options);
         },
         

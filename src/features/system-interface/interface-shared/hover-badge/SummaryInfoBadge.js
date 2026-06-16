@@ -119,6 +119,7 @@ function ensureImageOverlaySummaryRestoreObserver() {
 let textPrimaryFlagSlot = null;
 let textEraNameEl = null;
 let textEraYearsEl = null;
+let textNumTitleSepEl = null;
 
 function fillLineFlagSlot(slotEl, entry) {
     if (!slotEl) return;
@@ -147,18 +148,15 @@ function ensureBadge() {
     badgeEl.setAttribute('aria-hidden', 'true');
     badgeEl.innerHTML = `
         <div class="summary-info-stack">
-            <div class="summary-info-num-year" aria-hidden="true">
-                <span class="summary-info-number"></span>
-                <span class="summary-info-num-year-sep" aria-hidden="true">|</span>
-                <span class="summary-info-years-line"></span>
-                <div class="summary-info-line-flag summary-info-line-flag--primary" aria-hidden="true"></div>
-            </div>
             <div class="summary-info-era-line" aria-hidden="true">
                 <span class="summary-info-era__name"></span>
             </div>
             <div class="summary-info-mainline">
                 <div class="summary-info-title-column">
                     <div class="summary-info-title-row">
+                        <div class="summary-info-line-flag summary-info-line-flag--primary" aria-hidden="true"></div>
+                        <span class="summary-info-number"></span>
+                        <span class="summary-info-num-title-sep" aria-hidden="true">|</span>
                         <span class="summary-info-title"></span>
                     </div>
                     <div class="summary-info-variants" aria-hidden="true"></div>
@@ -169,12 +167,13 @@ function ensureBadge() {
     `;
     document.body.appendChild(badgeEl);
     textPrimaryFlagSlot = badgeEl.querySelector('.summary-info-line-flag--primary');
-    textNumYearEl = badgeEl.querySelector('.summary-info-num-year');
+    textNumYearEl = null;
     textNumberEl = badgeEl.querySelector('.summary-info-number');
     textTitleEl = badgeEl.querySelector('.summary-info-title');
     textEraEl = badgeEl.querySelector('.summary-info-era-line');
     textEraNameEl = badgeEl.querySelector('.summary-info-era__name');
-    textEraYearsEl = badgeEl.querySelector('.summary-info-years-line');
+    textEraYearsEl = null;
+    textNumTitleSepEl = badgeEl.querySelector('.summary-info-num-title-sep');
     textVariantsEl = badgeEl.querySelector('.summary-info-variants');
     return badgeEl;
 }
@@ -346,26 +345,15 @@ export function showSummaryInfo(
 
     const hasNum = eventNum != null && Number.isFinite(eventNum);
     const eraTrim = eraName != null ? String(eraName).trim() : '';
-    const yearTrim =
-        yearLine != null && String(yearLine).trim() !== ''
-            ? String(yearLine).trim()
-            : 'Year Unknown';
+    const titleTrim = plainEventName != null ? String(plainEventName).trim() : '';
 
     if (textNumberEl) {
         textNumberEl.textContent = hasNum ? `#${eventNum}` : '';
     }
-    if (textTitleEl) textTitleEl.textContent = plainEventName || '';
+    if (textTitleEl) textTitleEl.textContent = titleTrim;
 
-    if (textEraYearsEl) {
-        textEraYearsEl.textContent = yearTrim;
-    }
-    if (textNumYearEl) {
-        const showRow = hasNum || !!yearTrim;
-        textNumYearEl.style.display = showRow ? '' : 'none';
-        const sepEl = textNumYearEl.querySelector('.summary-info-num-year-sep');
-        if (sepEl) {
-            sepEl.style.display = hasNum && yearTrim ? '' : 'none';
-        }
+    if (textNumTitleSepEl) {
+        textNumTitleSepEl.style.display = hasNum && titleTrim ? '' : 'none';
     }
 
     if (textEraNameEl) {

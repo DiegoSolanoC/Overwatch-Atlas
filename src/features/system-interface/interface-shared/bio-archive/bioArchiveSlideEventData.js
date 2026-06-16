@@ -2,13 +2,31 @@
  * Resolve the live archive row for the standalone event slide (avoids stale object refs after save).
  */
 
+import { resolveStoryEventDataInList } from '../storyEventIndexResolution.js';
+
 /**
- * @param {{ currentEventIndex?: number } | null | undefined} slide
+ * @param {{ currentEventIndex?: number, allEvents?: object[], _presentationFromDockTimeline?: boolean } | null | undefined} slide
  * @param {object | null | undefined} [fallbackEventData]
  * @returns {object | null}
  */
 export function resolveLiveArchiveEventDataForSlide(slide, fallbackEventData) {
     const em = typeof window !== 'undefined' ? window.eventManager : null;
+
+    if (slide?.isEditing && slide.editTarget?.eventData) {
+        return slide.editTarget.eventData;
+    }
+    if (slide?.currentEventData && typeof slide.currentEventData === 'object') {
+        return slide.currentEventData;
+    }
+
+    if (slide?._presentationFromDockTimeline) {
+        const dockList = em?.getDockTimelineEvents?.() || [];
+        if (dockList.length > 0) {
+            const dockRow = resolveStoryEventDataInList(slide, dockList, fallbackEventData);
+            if (dockRow) return dockRow;
+        }
+    }
+
     const list = em?.events;
     if (!Array.isArray(list) || !list.length) {
         return fallbackEventData && typeof fallbackEventData === 'object' ? fallbackEventData : null;

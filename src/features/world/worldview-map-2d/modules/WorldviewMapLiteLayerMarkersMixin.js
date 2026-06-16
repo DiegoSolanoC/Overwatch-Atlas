@@ -21,6 +21,20 @@ import {
     map2dLiteCelestialMobileSizeFactor
 } from '../WorldviewMapLitePrimitives.js';
 
+/**
+ * @param {{ stub?: { userData?: { isLocked?: boolean, isMainVariant?: boolean } }, disk?: HTMLElement, btn?: HTMLElement }} markerWrapper
+ */
+function applyMapOverlapMarkerStyle(markerWrapper) {
+    if (!markerWrapper?.stub || !markerWrapper.disk || !markerWrapper.btn) return;
+    const fillHex = markerWrapper.stub.userData.isLocked
+        ? EVENT_MARKER_LOCKED_HEX
+        : getMarkerColor(markerWrapper.stub.userData.isMainVariant);
+    markerWrapper.disk.style.backgroundColor = hexToCss(fillHex);
+    const fr = hexToRgb(fillHex);
+    markerWrapper.btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
+    markerWrapper.btn.style.setProperty('--map2d-pulse-rgb', `${fr.r},${fr.g},${fr.b}`);
+}
+
 export const mixin = {
     layoutCelestialPanelsFromCamera() {
         if (!this.isVisible() || !this._moonHost || !this._marsHost || !this._orbitHost || !this.container) return;
@@ -409,23 +423,7 @@ export const mixin = {
                 // Initially hide all except the first, and set colors
                 groupMarkers.forEach((marker, index) => {
                     marker.btn.style.display = (index === 0) ? '' : 'none';
-                    
-                    // Set color based on index: first = orange, second = pink
-                    if (index === 0) {
-                        // First marker: regular orange
-                        const fillHex = marker.stub.userData.isLocked ? EVENT_MARKER_LOCKED_HEX : getMarkerColor(marker.stub.userData.isMainVariant);
-                        marker.disk.style.backgroundColor = hexToCss(fillHex);
-                        const fr = hexToRgb(fillHex);
-                        marker.btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
-                        marker.btn.style.setProperty('--map2d-pulse-rgb', `${fr.r},${fr.g},${fr.b}`);
-                    } else if (index === 1) {
-                        // Second marker: pink
-                        const pinkHex = 0xff69b4;
-                        marker.disk.style.backgroundColor = hexToCss(pinkHex);
-                        const pr = hexToRgb(pinkHex);
-                        marker.btn.style.setProperty('--map2d-fill-rgb', `${pr.r},${pr.g},${pr.b}`);
-                        marker.btn.style.setProperty('--map2d-pulse-rgb', `${pr.r},${pr.g},${pr.b}`);
-                    }
+                    applyMapOverlapMarkerStyle(marker);
                 });
             }
         });
@@ -459,25 +457,7 @@ export const mixin = {
             const nextMarker = group.markers[group.currentIndex];
             if (nextMarker) {
                 nextMarker.btn.style.display = '';
-                
-                // Update color based on which marker is now visible
-                if (group.currentIndex === 0) {
-                    // First marker: regular orange
-                    const fillHex = nextMarker.stub.userData.isLocked ? EVENT_MARKER_LOCKED_HEX : getMarkerColor(nextMarker.stub.userData.isMainVariant);
-                    nextMarker.disk.style.backgroundColor = hexToCss(fillHex);
-                    // Update wave color to match
-                    const fr = hexToRgb(fillHex);
-                    nextMarker.btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
-                    nextMarker.btn.style.setProperty('--map2d-pulse-rgb', `${fr.r},${fr.g},${fr.b}`);
-                } else if (group.currentIndex === 1) {
-                    // Second marker: pink
-                    const pinkHex = 0xff69b4;
-                    nextMarker.disk.style.backgroundColor = hexToCss(pinkHex);
-                    // Update wave color to match
-                    const pr = hexToRgb(pinkHex);
-                    nextMarker.btn.style.setProperty('--map2d-fill-rgb', `${pr.r},${pr.g},${pr.b}`);
-                    nextMarker.btn.style.setProperty('--map2d-pulse-rgb', `${pr.r},${pr.g},${pr.b}`);
-                }
+                applyMapOverlapMarkerStyle(nextMarker);
             }
         });
     },
@@ -547,35 +527,18 @@ export const mixin = {
         const targetMarker = group.markers[targetIndex];
         if (targetMarker) {
             targetMarker.btn.style.display = '';
-            
-            // Update color based on index
-            if (targetIndex === 0) {
-                // First marker: regular orange
-                const fillHex = targetMarker.stub.userData.isLocked ? EVENT_MARKER_LOCKED_HEX : getMarkerColor(targetMarker.stub.userData.isMainVariant);
-                targetMarker.disk.style.backgroundColor = hexToCss(fillHex);
-                const fr = hexToRgb(fillHex);
-                targetMarker.btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
-                targetMarker.btn.style.setProperty('--map2d-pulse-rgb', `${fr.r},${fr.g},${fr.b}`);
-            } else if (targetIndex === 1) {
-                // Second marker: pink
-                const pinkHex = 0xff69b4;
-                targetMarker.disk.style.backgroundColor = hexToCss(pinkHex);
-                const pr = hexToRgb(pinkHex);
-                targetMarker.btn.style.setProperty('--map2d-fill-rgb', `${pr.r},${pr.g},${pr.b}`);
-                targetMarker.btn.style.setProperty('--map2d-pulse-rgb', `${pr.r},${pr.g},${pr.b}`);
-                
-                // Ensure wave element exists for the target marker
-                const body = targetMarker.btn.querySelector('.map-2d-lite__marker-body');
-                if (body && !body.querySelector('.map-2d-lite__marker-wave')) {
-                    const wave = document.createElement('span');
-                    wave.className = 'map-2d-lite__marker-wave';
-                    wave.setAttribute('aria-hidden', 'true');
-                    const disk = body.querySelector('.map-2d-lite__marker-disk');
-                    if (disk) {
-                        body.insertBefore(wave, disk);
-                    } else {
-                        body.appendChild(wave);
-                    }
+            applyMapOverlapMarkerStyle(targetMarker);
+
+            const body = targetMarker.btn.querySelector('.map-2d-lite__marker-body');
+            if (body && !body.querySelector('.map-2d-lite__marker-wave')) {
+                const wave = document.createElement('span');
+                wave.className = 'map-2d-lite__marker-wave';
+                wave.setAttribute('aria-hidden', 'true');
+                const disk = body.querySelector('.map-2d-lite__marker-disk');
+                if (disk) {
+                    body.insertBefore(wave, disk);
+                } else {
+                    body.appendChild(wave);
                 }
             }
         }
@@ -592,9 +555,8 @@ export const mixin = {
     },
 
     forceCycleMarker(marker) {
-        // Find which overlap group this marker belongs to
         const group = this.overlapGroups.find(g => g.markers.includes(marker));
-        if (!group) return;
+        if (!group || group.markers.length < 2) return;
 
         // Hide current marker
         const currentMarker = group.markers[group.currentIndex];
@@ -609,22 +571,14 @@ export const mixin = {
         const nextMarker = group.markers[group.currentIndex];
         if (nextMarker) {
             nextMarker.btn.style.display = '';
-            
-            // Update color based on which marker is now visible
-            if (group.currentIndex === 0) {
-                // First marker: regular orange
-                const fillHex = nextMarker.stub.userData.isLocked ? EVENT_MARKER_LOCKED_HEX : getMarkerColor(nextMarker.stub.userData.isMainVariant);
-                nextMarker.disk.style.backgroundColor = hexToCss(fillHex);
-                const fr = hexToRgb(fillHex);
-                nextMarker.btn.style.setProperty('--map2d-fill-rgb', `${fr.r},${fr.g},${fr.b}`);
-                nextMarker.btn.style.setProperty('--map2d-pulse-rgb', `${fr.r},${fr.g},${fr.b}`);
-            } else if (group.currentIndex === 1) {
-                // Second marker: pink
-                const pinkHex = 0xff69b4;
-                nextMarker.disk.style.backgroundColor = hexToCss(pinkHex);
-                const pr = hexToRgb(pinkHex);
-                nextMarker.btn.style.setProperty('--map2d-fill-rgb', `${pr.r},${pr.g},${pr.b}`);
-                nextMarker.btn.style.setProperty('--map2d-pulse-rgb', `${pr.r},${pr.g},${pr.b}`);
+            applyMapOverlapMarkerStyle(nextMarker);
+
+            const ic = window.globeController?.interactionController;
+            const ms = ic?.markerService;
+            if (ms && nextMarker.stub) {
+                ms.highlightNumberButtonForMarker?.(nextMarker.stub);
+                ms._syncEventsHoverPreviewFromMarker?.(nextMarker.stub);
+                ms.pinMarkerCallout?.(nextMarker.stub);
             }
         }
 

@@ -19,6 +19,7 @@
 import { fetchJsonWithTimeout } from "./fetchWithTimeout.js";
 import { FILES } from "../../../../../data/registry.js";
 import { repairMisfiledLifecycleEventsFromFile } from "./repairMisfiledLifecycleEvents.js";
+import { repairCorruptedTimelineTailFromFile } from "./repairCorruptedTimelineTailFromFile.js";
 
 // ---------------------------------------------------------------------------
 // Private helper
@@ -196,6 +197,16 @@ export async function loadMainTimelineEvents(dataService) {
       dataService.events = repaired;
       dataService.updateStatus(
         "EventDataService: Repaired misfiled lifecycle rows (Siebren / Olivia) from timeline-events.json",
+        "warning",
+      );
+      dataService.saveEvents();
+    }
+
+    const tailRepaired = repairCorruptedTimelineTailFromFile(dataService.events, fileEvents);
+    if (tailRepaired !== dataService.events) {
+      dataService.events = tailRepaired;
+      dataService.updateStatus(
+        "EventDataService: Restored missing tail event (Facing Demons) from timeline-events.json",
         "warning",
       );
       dataService.saveEvents();

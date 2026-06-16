@@ -599,16 +599,12 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 /* Slide-in animations when badge becomes visible */
-.music-now-playing-badge--visible .summary-info-num-year {
+.music-now-playing-badge--visible .summary-info-era-line {
     animation: events-hover-slide-in 280ms ease-out forwards;
 }
 
-.music-now-playing-badge--visible .summary-info-era-line {
-    animation: events-hover-slide-in 280ms ease-out 40ms forwards;
-}
-
 .music-now-playing-badge--visible .summary-info-mainline {
-    animation: events-hover-slide-in 280ms ease-out 80ms forwards;
+    animation: events-hover-slide-in 280ms ease-out 40ms forwards;
 }
 
 @keyframes events-hover-slide-in {
@@ -625,7 +621,6 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 /* Slide-out when badge is hiding - uses explicit hiding class */
-.summary-info-badge--hiding .summary-info-num-year,
 .summary-info-badge--hiding .summary-info-era-line,
 .summary-info-badge--hiding .summary-info-mainline {
     animation: events-hover-slide-out 200ms ease-in forwards !important;
@@ -649,11 +644,13 @@ body.color-palette-gray .music-mute-btn:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 0.42em;
     width: 100%;
     min-width: 0;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    line-height: 1.1;
 }
 
 .summary-info-line-flag {
@@ -698,7 +695,21 @@ body.color-palette-gray .music-mute-btn:hover {
 .summary-info-number {
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
-    opacity: 0.9;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.52);
+    opacity: 1;
+}
+
+.summary-info-num-title-sep {
+    flex-shrink: 0;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 .summary-info-number:empty {

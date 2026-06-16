@@ -18,6 +18,7 @@ import {
     migrateEntityDisplayNamesInBioArchiveEvents,
     migrateEntityDisplayNamesInStoryEvents,
 } from './entityDisplayNameMigration.js';
+import { migrateGeoConsistencyInStoryEvents } from './geoConsistencyMigration.js';
 
 /** @param {import('./EventDataService.js').default} dataService */
 export function persistEvents(dataService) {
@@ -54,6 +55,11 @@ export function persistEvents(dataService) {
             migrateEntityDisplayNamesInStoryEvents(dataService.events);
         } catch (e) {
             console.warn('EventDataService: pre-save entity display-name migration failed:', e);
+        }
+        try {
+            migrateGeoConsistencyInStoryEvents(dataService.events);
+        } catch (e) {
+            console.warn('EventDataService: pre-save geo consistency migration failed:', e);
         }
     }
     const storageKey = dataService._getArchiveLocalStorageKey();

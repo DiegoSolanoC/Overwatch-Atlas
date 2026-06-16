@@ -1,5 +1,20 @@
 const OVERLAP_CYCLE_MS = 5000;
-const OVERLAP_SECOND_COLOR = 0xff69b4;
+
+/**
+ * @param {import('three').Object3D} marker
+ */
+function restoreOverlapMarkerColor(marker) {
+    if (!marker?.userData || !marker.material?.color) return;
+    const ud = marker.userData;
+    if (!ud._trueOriginalColor && ud.originalColor) {
+        ud._trueOriginalColor = ud.originalColor;
+    }
+    const hex = ud._trueOriginalColor ?? ud.originalColor;
+    if (hex != null) {
+        marker.material.color.setHex(hex);
+        ud.originalColor = hex;
+    }
+}
 
 /**
  * Auto-rotates visibility for multiple markers that share the same lat/lon.
@@ -48,18 +63,7 @@ export class OverlapCyclingController {
                     if (marker.userData.pinLine) {
                         marker.userData.pinLine.visible = (index === 0);
                     }
-
-                    if (!marker.userData._trueOriginalColor && marker.userData.originalColor) {
-                        marker.userData._trueOriginalColor = marker.userData.originalColor;
-                    }
-
-                    if (index === 0) {
-                        if (marker.userData.originalColor) {
-                            marker.material.color.setHex(marker.userData.originalColor);
-                        }
-                    } else if (index === 1) {
-                        marker.material.color.setHex(OVERLAP_SECOND_COLOR);
-                    }
+                    restoreOverlapMarkerColor(marker);
                 });
             }
         });
@@ -96,14 +100,7 @@ export class OverlapCyclingController {
                 if (nextMarker.userData.pinLine) {
                     nextMarker.userData.pinLine.visible = true;
                 }
-
-                if (group.currentIndex === 0) {
-                    if (nextMarker.userData.originalColor) {
-                        nextMarker.material.color.setHex(nextMarker.userData.originalColor);
-                    }
-                } else if (group.currentIndex === 1) {
-                    nextMarker.material.color.setHex(OVERLAP_SECOND_COLOR);
-                }
+                restoreOverlapMarkerColor(nextMarker);
 
                 if (nextMarker.userData._hoverGlowBase) {
                     delete nextMarker.userData._hoverGlowBase;
@@ -191,18 +188,7 @@ export class OverlapCyclingController {
             if (targetMarker.userData.pinLine) {
                 targetMarker.userData.pinLine.visible = true;
             }
-
-            if (targetIndex === 0) {
-                if (targetMarker.userData._trueOriginalColor) {
-                    targetMarker.material.color.setHex(targetMarker.userData._trueOriginalColor);
-                    targetMarker.userData.originalColor = targetMarker.userData._trueOriginalColor;
-                } else if (targetMarker.userData.originalColor) {
-                    targetMarker.material.color.setHex(targetMarker.userData.originalColor);
-                }
-            } else if (targetIndex === 1) {
-                targetMarker.material.color.setHex(OVERLAP_SECOND_COLOR);
-                targetMarker.userData.originalColor = OVERLAP_SECOND_COLOR;
-            }
+            restoreOverlapMarkerColor(targetMarker);
 
             if (targetMarker.userData._hoverGlowBase) {
                 delete targetMarker.userData._hoverGlowBase;
@@ -215,7 +201,7 @@ export class OverlapCyclingController {
 
     forceCycleMarker(marker) {
         const group = this.overlapGroups.find(g => g.markers.includes(marker));
-        if (!group) return;
+        if (!group || group.markers.length < 2) return;
 
         const currentMarker = group.markers[group.currentIndex];
         if (currentMarker) {
@@ -236,18 +222,7 @@ export class OverlapCyclingController {
             if (nextMarker.userData.pinLine) {
                 nextMarker.userData.pinLine.visible = true;
             }
-
-            if (group.currentIndex === 0) {
-                if (nextMarker.userData._trueOriginalColor) {
-                    nextMarker.material.color.setHex(nextMarker.userData._trueOriginalColor);
-                    nextMarker.userData.originalColor = nextMarker.userData._trueOriginalColor;
-                } else if (nextMarker.userData.originalColor) {
-                    nextMarker.material.color.setHex(nextMarker.userData.originalColor);
-                }
-            } else if (group.currentIndex === 1) {
-                nextMarker.material.color.setHex(OVERLAP_SECOND_COLOR);
-                nextMarker.userData.originalColor = OVERLAP_SECOND_COLOR;
-            }
+            restoreOverlapMarkerColor(nextMarker);
 
             if (nextMarker.userData._hoverGlowBase) {
                 delete nextMarker.userData._hoverGlowBase;
@@ -276,6 +251,7 @@ export class OverlapCyclingController {
                     const markerService = window.globeController.interactionController.markerService;
                     markerService.highlightNumberButtonForMarker(nextMarker);
                     markerService._syncEventsHoverPreviewFromMarker(nextMarker);
+                    markerService.pinMarkerCallout?.(nextMarker);
                 }
             }
         }

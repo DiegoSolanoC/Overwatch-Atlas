@@ -39,6 +39,7 @@ import {
     migrateEntityDisplayNamesInBioArchiveEvents,
     migrateEntityDisplayNamesInStoryEvents,
 } from './entityDisplayNameMigration.js';
+import { migrateGeoConsistencyInStoryEvents } from './geoConsistencyMigration.js';
 import {
     normalizeBioArchiveConnections,
     normalizeSatelliteArchiveEntry
@@ -185,6 +186,7 @@ class EventDataService {
      */
     _finishMainTimelineLoadEvents(result) {
         let renamed = false;
+        let geoFixed = false;
         try {
             if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
                 migrateAllStoryEventsFilterPlaces(this.events);
@@ -200,6 +202,13 @@ class EventDataService {
             console.warn('EventDataService: entity display-name migration (story) failed:', e);
         }
         try {
+            if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
+                geoFixed = migrateGeoConsistencyInStoryEvents(this.events);
+            }
+        } catch (e) {
+            console.warn('EventDataService: geo consistency migration (story) failed:', e);
+        }
+        try {
             const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
             if (Array.isArray(this.events) && lh?.migrateAllStoryEventsSecondaryPlaces) {
                 lh.migrateAllStoryEventsSecondaryPlaces(this.events);
@@ -207,9 +216,13 @@ class EventDataService {
         } catch (e) {
             console.warn('EventDataService: migrate secondary country places failed:', e);
         }
-        if (renamed) {
+        if (renamed || geoFixed) {
             this.updateStatus(
-                'EventDataService: updated renamed heroes, factions, and NPCs in story events',
+                renamed && geoFixed
+                    ? 'EventDataService: updated renamed entities and geographic labels in story events'
+                    : renamed
+                        ? 'EventDataService: updated renamed heroes, factions, and NPCs in story events'
+                        : 'EventDataService: normalized geographic labels and coordinates in story events',
                 'info',
             );
             this.saveEvents();

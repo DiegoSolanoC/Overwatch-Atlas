@@ -8,12 +8,12 @@ export const MARKER_COLOR_MAIN_BY_PALETTE = {
     nulled: 0xffca28,
 };
 
-/** Secondary / multi-variant marker accent per palette. */
+/** Secondary / multi-variant markers use the same accent as main (labels differentiate variants). */
 export const MARKER_COLOR_SECONDARY_BY_PALETTE = {
-    blue: 0xff69b4,
-    gray: 0x90caf9,
-    crimson: 0xe0e0e0,
-    nulled: 0xffd54f,
+    blue: 0xff6600,
+    gray: 0x64b5f6,
+    crimson: 0xffffff,
+    nulled: 0xffca28,
 };
 
 /** Locked / filtered-out marker color (paired with markerLockUnlock animations). */
