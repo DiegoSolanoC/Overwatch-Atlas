@@ -429,14 +429,14 @@
       "factionType": "Military Initiatives"
     },
     {
-      "name": "Deep Sea Raiders",
+      "name": "Deepsea Raiders",
       "description": "",
       "relevantLocations": [],
       "connections": [],
       "factionType": "Military Initiatives"
     },
     {
-      "name": "Colloseo Gladiatori",
+      "name": "Colosseo Gladiatori",
       "description": "",
       "relevantLocations": [],
       "connections": [
@@ -523,7 +523,7 @@
       "factionType": "Military Initiatives"
     },
     {
-      "name": "The Anubis Omnic Crisis",
+      "name": "Anubis Directives",
       "description": "",
       "relevantLocations": [],
       "connections": [
@@ -884,7 +884,7 @@
         },
         {
           "kind": "faction",
-          "name": "Colloseo Gladiatori",
+          "name": "Colosseo Gladiatori",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",

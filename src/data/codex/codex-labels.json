@@ -114,8 +114,8 @@
     {
       "id": "cn-1776188705825-jqgeno6j",
       "kind": "faction",
-      "factionFilename": "12The Anubis Omnic Crisis",
-      "factionDisplay": "The Anubis Omnic Crisis",
+      "factionFilename": "12Anubis Directives",
+      "factionDisplay": "Anubis Directives",
       "x": 8371.039033185176,
       "y": 6376.270966814824,
       "scale": 3,
@@ -194,8 +194,8 @@
     {
       "id": "cn-1776188989261-sni9cnre",
       "kind": "faction",
-      "factionFilename": "17Colloseo Gladiatori",
-      "factionDisplay": "Colloseo Gladiatori",
+      "factionFilename": "17Colosseo Gladiatori",
+      "factionDisplay": "Colosseo Gladiatori",
       "x": 7709.1575124378105,
       "y": 7264.104013266999,
       "scale": 3,
@@ -214,8 +214,8 @@
     {
       "id": "cn-1776189013831-v9g8z604",
       "kind": "faction",
-      "factionFilename": "28Deep Sea Raiders",
-      "factionDisplay": "Deep Sea Raiders",
+      "factionFilename": "28Deepsea Raiders",
+      "factionDisplay": "Deepsea Raiders",
       "x": 6389.426731128921,
       "y": 8009.25,
       "scale": 3,
@@ -15172,20 +15172,20 @@
       "reasoningLinkedToSubject": "",
       "thisEntryLane": "A",
       "subjectKind": "faction",
-      "subjectName": "Colloseo Gladiatori",
+      "subjectName": "Colosseo Gladiatori",
       "linkedKind": "npc",
       "linkedName": "Maximus"
     },
     {
       "kind": "faction",
-      "name": "Colloseo Gladiatori",
+      "name": "Colosseo Gladiatori",
       "reasoningSubjectToLinked": "",
       "reasoningLinkedToSubject": "",
       "thisEntryLane": "B",
       "subjectKind": "npc",
       "subjectName": "Maximus",
       "linkedKind": "faction",
-      "linkedName": "Colloseo Gladiatori"
+      "linkedName": "Colosseo Gladiatori"
     }
   ]
 }

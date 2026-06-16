@@ -114,8 +114,8 @@
     {
       "id": "cn-1776188705825-jqgeno6j",
       "kind": "faction",
-      "factionFilename": "12The Anubis Omnic Crisis",
-      "factionDisplay": "The Anubis Omnic Crisis",
+      "factionFilename": "12Anubis Directives",
+      "factionDisplay": "Anubis Directives",
       "x": 6894.102953934241,
       "y": 8783.353560943167,
       "scale": 3,
@@ -204,8 +204,8 @@
     {
       "id": "cn-1776188989261-sni9cnre",
       "kind": "faction",
-      "factionFilename": "17Colloseo Gladiatori",
-      "factionDisplay": "Colloseo Gladiatori",
+      "factionFilename": "17Colosseo Gladiatori",
+      "factionDisplay": "Colosseo Gladiatori",
       "x": 7948.06174167966,
       "y": 8785.91706017191,
       "scale": 3,
@@ -224,8 +224,8 @@
     {
       "id": "cn-1776189013831-v9g8z604",
       "kind": "faction",
-      "factionFilename": "28Deep Sea Raiders",
-      "factionDisplay": "Deep Sea Raiders",
+      "factionFilename": "28Deepsea Raiders",
+      "factionDisplay": "Deepsea Raiders",
       "x": 9112.003518624706,
       "y": 8776.72351157163,
       "scale": 3,

@@ -14,6 +14,10 @@
  */
 
 import { migrateAllStoryEventsFilterPlaces } from './eventFilterPlacesMigration.js';
+import {
+    migrateEntityDisplayNamesInBioArchiveEvents,
+    migrateEntityDisplayNamesInStoryEvents,
+} from './entityDisplayNameMigration.js';
 
 /** @param {import('./EventDataService.js').default} dataService */
 export function persistEvents(dataService) {
@@ -33,6 +37,11 @@ export function persistEvents(dataService) {
                 arch,
             );
         }
+        try {
+            migrateEntityDisplayNamesInBioArchiveEvents(dataService.events);
+        } catch (e) {
+            console.warn('EventDataService: pre-save bio entity display-name migration failed:', e);
+        }
         dataService._normalizeSatelliteEventsInPlace();
     }
     if (dataService._isMainTimelineArchive() && Array.isArray(dataService.events)) {
@@ -40,6 +49,11 @@ export function persistEvents(dataService) {
             migrateAllStoryEventsFilterPlaces(dataService.events);
         } catch (e) {
             console.warn('EventDataService: pre-save grouped filter migration failed:', e);
+        }
+        try {
+            migrateEntityDisplayNamesInStoryEvents(dataService.events);
+        } catch (e) {
+            console.warn('EventDataService: pre-save entity display-name migration failed:', e);
         }
     }
     const storageKey = dataService._getArchiveLocalStorageKey();

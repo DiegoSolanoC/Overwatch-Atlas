@@ -127,12 +127,12 @@
       "displayName": "Caribbean Coalition"
     },
     {
-      "filename": "28Deep Sea Raiders",
-      "displayName": "Deep Sea Raiders"
+      "filename": "28Deepsea Raiders",
+      "displayName": "Deepsea Raiders"
     },
     {
-      "filename": "17Colloseo Gladiatori",
-      "displayName": "Colloseo Gladiatori"
+      "filename": "17Colosseo Gladiatori",
+      "displayName": "Colosseo Gladiatori"
     },
     {
       "filename": "31Helix Securities",
@@ -147,8 +147,8 @@
       "displayName": "The Gwishin"
     },
     {
-      "filename": "12The Anubis Omnic Crisis",
-      "displayName": "The Anubis Omnic Crisis"
+      "filename": "12Anubis Directives",
+      "displayName": "Anubis Directives"
     },
     {
       "filename": "04Omnica Corporation",
@@ -234,6 +234,7 @@
     "B.O.B",
     "Bars",
     "Bez",
+    "Benicio",
     "Frankie",
     "The Triplets",
     "Asa",

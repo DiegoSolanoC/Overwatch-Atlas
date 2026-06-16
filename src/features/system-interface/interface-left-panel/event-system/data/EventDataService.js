@@ -36,6 +36,10 @@ import { loadSatelliteArchive } from './loadSatelliteArchive.js';
 import { persistEvents, persistStoryDockTimelineFromSnapshot } from './persistEvents.js';
 import { migrateAllStoryEventsFilterPlaces } from './eventFilterPlacesMigration.js';
 import {
+    migrateEntityDisplayNamesInBioArchiveEvents,
+    migrateEntityDisplayNamesInStoryEvents,
+} from './entityDisplayNameMigration.js';
+import {
     normalizeBioArchiveConnections,
     normalizeSatelliteArchiveEntry
 } from './normalizeBioArchives.js';
@@ -180,6 +184,7 @@ class EventDataService {
      * @param {{ events: Array<Object>, source: string, shouldSync: boolean }} result
      */
     _finishMainTimelineLoadEvents(result) {
+        let renamed = false;
         try {
             if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
                 migrateAllStoryEventsFilterPlaces(this.events);
@@ -188,12 +193,26 @@ class EventDataService {
             console.warn('EventDataService: migrate hero/faction/NPC filter places to grouped failed:', e);
         }
         try {
+            if (this._isMainTimelineArchive() && Array.isArray(this.events)) {
+                renamed = migrateEntityDisplayNamesInStoryEvents(this.events);
+            }
+        } catch (e) {
+            console.warn('EventDataService: entity display-name migration (story) failed:', e);
+        }
+        try {
             const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
             if (Array.isArray(this.events) && lh?.migrateAllStoryEventsSecondaryPlaces) {
                 lh.migrateAllStoryEventsSecondaryPlaces(this.events);
             }
         } catch (e) {
             console.warn('EventDataService: migrate secondary country places failed:', e);
+        }
+        if (renamed) {
+            this.updateStatus(
+                'EventDataService: updated renamed heroes, factions, and NPCs in story events',
+                'info',
+            );
+            this.saveEvents();
         }
         return result;
     }

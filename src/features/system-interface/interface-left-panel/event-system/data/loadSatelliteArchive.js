@@ -13,6 +13,7 @@
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 import { readNpcCategoryFieldsFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
+import { migrateEntityDisplayNamesInBioArchiveEvents } from './entityDisplayNameMigration.js';
 import { mergeHeroBirthdaysFromBundledFile, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
@@ -253,9 +254,21 @@ function pruneSatellitePhantomConnectionsInPlace(dataService) {
 async function finalizeSatelliteLoad(dataService, fileEvents, opts = {}) {
     const removedDupes = prepareSatelliteEventsBeforeNormalize(dataService, fileEvents);
     const birthdaysSynced = await applyHeroBirthdayTimelineSyncInPlace(dataService);
+    let renamed = false;
+    try {
+        renamed = migrateEntityDisplayNamesInBioArchiveEvents(dataService.events);
+    } catch (err) {
+        console.warn('EventDataService: entity display-name migration (bio load) failed:', err);
+    }
     dataService._normalizeSatelliteEventsInPlace();
     pruneSatellitePhantomConnectionsInPlace(dataService);
-    if (removedDupes > 0 || birthdaysSynced || opts.alwaysSave) {
+    if (removedDupes > 0 || birthdaysSynced || renamed || opts.alwaysSave) {
+        if (renamed && typeof dataService.updateStatus === 'function') {
+            dataService.updateStatus(
+                `EventDataService: updated renamed entities in ${dataService.getArchiveSource()} archive`,
+                'info',
+            );
+        }
         dataService.saveEvents();
     }
     return removedDupes;
