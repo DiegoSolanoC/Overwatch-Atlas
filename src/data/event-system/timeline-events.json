@@ -1558,6 +1558,21 @@
       ]
     },
     {
+      "name": "Lost to the past",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 39.1670396,
+      "lon": -86.5342881,
+      "image": "",
+      "cityDisplayName": "Bloomington, United States",
+      "yearStart": 2040,
+      "yearEnd": 2050,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Upgrades",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
@@ -5603,9 +5618,36 @@
       "yearStart": 2053,
       "yearEnd": 2060,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ramattra, Zenyatta",
+          "reasoning": "Become as close as brothers at the Shambali Monastery"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shambali Order",
+          "reasoning": "Both follow Mondatta at the monastery"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mondatta",
+          "reasoning": "Spiritual leader both monks follow"
+        }
+      ]
     },
     {
       "name": "Sierra Turner Woods is Born",
@@ -6330,7 +6372,7 @@
     },
     {
       "name": "City of Harmony",
-      "description": "No description available.",
+      "description": "The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order to achieve this, she collaborated with an Omnic task force that would pioneer what a truly Omnic-inclusive environment looked like, from tailored housing that accommodated their needs instead of human ones, lacking kitchens and instead hosting things like oiling gear. Clinics that performed maintenance and repair of crisis wounds, psychological services to help with the trauma that followed the war and the trouble of consciousness, as well as spiritual centers for study of philosophy and theology, especially with the rising Shambali faith. A lot of focus was also placed on giving Omnics resources to find jobs outside their pre-Crisis designation, letting them pursue their own dreams outside human expectations and design. \n\nThe push for Omnic infrastructure would lead to heavy investment in intellectual and artistic enrichment, which would lead to a thriving sense of pride and community for the arts in the city. A lot of the principles used when building Numbani were modeled after the infrastructure and plans of the new Toronto, following their own Omnic Integration. By the time the city was finished, it had proved to the world that coexistence was possible, and the city became a beacon of hope for Omnic allies around the globe. The day the last brick was laid would be declared Unity Day, and celebrated as a holiday in the city to mark the huge accomplishment of Omnic and Human Collaboration. Shortly after the inauguration, Adawe passed away, and was mourned by the people across the entire city, and celebrated as a Nigerian hero, not unlike Adhabu Ngumi, the first Doomfist.",
       "locationType": "earth",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -6347,9 +6389,24 @@
           "lon": 8.5919
         }
       ],
-      "headlines": [],
-      "sources": [],
-      "yearStart": 2053
+      "headlines": [
+        "Numbani celebrates Unity Day as the City of Harmony is completed",
+        "Founding mother Adawe mourned across the city-state"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2053,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Adawe",
+          "reasoning": "Founder of Numbani; her death marks the end of the founding era"
+        }
+      ]
     },
     {
       "name": "Mother's Guidance",
@@ -6758,9 +6815,31 @@
       "yearStart": 2053,
       "yearEnd": 2060,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "",
+          "lat": 30.0444,
+          "lon": 31.2357
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Reinhardt",
+          "reasoning": "Grow fond of each other after Ana's marriage collapses"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": "Both serve on the strike team during their unspoken romance"
+        }
+      ]
     },
     {
       "name": "Omnic Rights",
@@ -8161,9 +8240,34 @@
       "yearStart": 2066,
       "yearEnd": 2068,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Genji, Mercy",
+          "reasoning": "Ziegler rebuilds Genji and they form a close bond"
+        },
+        {
+          "locationName": "",
+          "country": "Reaper,",
+          "reasoning": "Recruits Genji into Blackwatch in exchange for cybernetics"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch",
+          "reasoning": "Medical division rebuilds Genji into a living weapon"
+        }
+      ]
     },
     {
       "name": "Takeover",
@@ -8377,9 +8481,31 @@
       "yearStart": 2060,
       "yearEnd": 2068,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": "",
+          "lat": 23.2599,
+          "lon": 77.4126
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lifeweaver",
+          "reasoning": "Travels the world and invents Biolight at Vishkar"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation",
+          "reasoning": "Niran researches hardlight healing at the academy"
+        }
+      ]
     },
     {
       "name": "Cold Snap",
@@ -8743,9 +8869,36 @@
       "yearStart": 2068,
       "yearEnd": null,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oslo, Norway",
+          "country": "Norway",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Echo, Cassidy",
+          "reasoning": "Cassidy guards Liao and bonds with Echo during development"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": "Oslo research facility hosts Project Echo"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Liao",
+          "reasoning": "Leads Project Echo and grows close to Cassidy"
+        }
+      ]
     },
     {
       "name": "Intrepit Adventurers",
@@ -8859,9 +9012,43 @@
       "yearStart": 2068,
       "yearEnd": null,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Held as leverage and trained under Lady Shion"
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": "Uses Mizuki to force Toshiro to cooperate"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan",
+          "reasoning": "Shion disciplines Mizuki to control Toshiro"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro",
+          "reasoning": "Forced to improve his Anima weapons under threat to Mizuki"
+        }
+      ]
     },
     {
       "name": "Escalation",

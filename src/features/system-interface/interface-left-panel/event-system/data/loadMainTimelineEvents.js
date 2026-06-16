@@ -20,6 +20,31 @@ import { fetchJsonWithTimeout } from "./fetchWithTimeout.js";
 import { FILES } from "../../../../../data/registry.js";
 import { repairMisfiledLifecycleEventsFromFile } from "./repairMisfiledLifecycleEvents.js";
 import { repairCorruptedTimelineTailFromFile } from "./repairCorruptedTimelineTailFromFile.js";
+import { repairStalePlaceholderRowsFromFile } from "./repairStalePlaceholderRowsFromFile.js";
+
+/**
+ * Dev escape hatch: `?resetTimeline=1` drops cached `timelineEvents` and reloads from disk.
+ * @param {boolean} isGitHubPages
+ * @returns {boolean}
+ */
+function consumeResetTimelineUrlParam(isGitHubPages) {
+  if (isGitHubPages || typeof window === "undefined") return false;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("resetTimeline") !== "1") return false;
+    localStorage.removeItem("timelineEvents");
+    params.delete("resetTimeline");
+    const nextSearch = params.toString();
+    const nextUrl =
+      window.location.pathname +
+      (nextSearch ? `?${nextSearch}` : "") +
+      window.location.hash;
+    window.history.replaceState(null, "", nextUrl);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Private helper
@@ -113,7 +138,18 @@ export async function loadMainTimelineEvents(dataService) {
   // ------------------------------------------------------------------
   // 2. Read localStorage
   // ------------------------------------------------------------------
-  const savedEvents = localStorage.getItem("timelineEvents");
+  const isGitHubPages = dataService.isGitHubPages();
+  const forcedFileReset = consumeResetTimelineUrlParam(isGitHubPages);
+  if (forcedFileReset) {
+    dataService.updateStatus(
+      "EventDataService: resetTimeline=1 — cleared cached timelineEvents",
+      "warning",
+    );
+  }
+
+  const savedEvents = forcedFileReset
+    ? null
+    : localStorage.getItem("timelineEvents");
   let localEvents = null;
 
   if (savedEvents) {
@@ -149,7 +185,6 @@ export async function loadMainTimelineEvents(dataService) {
   // ------------------------------------------------------------------
   // 3. Decide which source wins
   // ------------------------------------------------------------------
-  const isGitHubPages = dataService.isGitHubPages();
   const source = _selectEventsSource(fileEvents, localEvents, isGitHubPages);
 
   if (source === "file") {
@@ -207,6 +242,19 @@ export async function loadMainTimelineEvents(dataService) {
       dataService.events = tailRepaired;
       dataService.updateStatus(
         "EventDataService: Restored missing tail event (Facing Demons) from timeline-events.json",
+        "warning",
+      );
+      dataService.saveEvents();
+    }
+
+    const placeholdersRepaired = repairStalePlaceholderRowsFromFile(
+      dataService.events,
+      fileEvents,
+    );
+    if (placeholdersRepaired !== dataService.events) {
+      dataService.events = placeholdersRepaired;
+      dataService.updateStatus(
+        "EventDataService: Restored blank placeholder events from timeline-events.json",
         "warning",
       );
       dataService.saveEvents();
