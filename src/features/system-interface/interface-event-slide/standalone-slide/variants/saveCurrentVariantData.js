@@ -8,7 +8,6 @@
  */
 
 import { applyStoryFilterPlacesToTarget } from '../../../interface-shared/storyEventFilterPlaces.js';
-import { applyPreviewBadgesToTarget } from '../../../interface-shared/storyPreviewBadgeFields.js';
 
 export function runSaveCurrentVariantData(slide) {
             if (!slide.editTarget) return;
@@ -37,11 +36,6 @@ export function runSaveCurrentVariantData(slide) {
             if (yearStartInput) target.yearStart = yearStartInput.value;
             if (yearEndInput) target.yearEnd = yearEndInput.value;
             if (eraInput) target.eraName = eraInput.value;
-            applyPreviewBadgesToTarget(target, {
-                main: document.getElementById('eventSlideEditPreviewBadgeMain')?.value,
-                secondary: document.getElementById('eventSlideEditPreviewBadgeSecondary')?.value,
-                faction: document.getElementById('eventSlideEditPreviewBadgeFaction')?.value
-            });
             if (window.HeroRelevantLocationsEditor?.collect) {
                 const heroFpElSv = document.getElementById('eventSlideEditHeroFilterPlaces');
                 const hr = heroFpElSv ? window.HeroRelevantLocationsEditor.collect(heroFpElSv) : [];

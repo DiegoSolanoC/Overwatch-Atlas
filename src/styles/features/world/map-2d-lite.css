@@ -650,6 +650,25 @@ button.map-hover-callout__stack-row {
     padding: 2px 0;
 }
 
+.map-hover-callout__badges {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    min-width: 0;
+}
+
+.map-hover-callout__badges .preview-badge-icons {
+    margin-top: 0;
+    width: auto;
+}
+
+.map-hover-callout__panel-inner--has-badges {
+    gap: 8px;
+}
+
+.map-hover-callout__panel-inner--has-badges.map-hover-callout__panel-inner--compact {
+    gap: 6px;
+}
+
 .map-hover-callout__thumb {
     flex: 0 0 var(--callout-thumb-size, 52px);
     width: var(--callout-thumb-size, 52px);

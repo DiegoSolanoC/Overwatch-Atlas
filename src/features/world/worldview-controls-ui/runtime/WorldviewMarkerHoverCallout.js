@@ -1272,12 +1272,25 @@ class WorldviewMarkerHoverCallout {
                 body.appendChild(row);
             }
         }
+    }
 
-        if (content.previewBadges && window.PreviewBadgeHoverDisplay?.appendPreviewBadgeIconRow) {
-            window.PreviewBadgeHoverDisplay.appendPreviewBadgeIconRow(body, content.previewBadges, {
-                compact: !!options.compact,
-            });
+    _appendPanelBadges(parentEl, content, options = {}) {
+        if (!parentEl || !content?.previewBadges) return null;
+        const badgeApi = typeof window !== 'undefined' ? window.PreviewBadgeHoverDisplay : null;
+        if (
+            !badgeApi?.appendPreviewBadgeIconRow
+            || !badgeApi.hasPreviewBadgeIcons?.(content.previewBadges)
+        ) {
+            return null;
         }
+        const slot = document.createElement('div');
+        slot.className = 'map-hover-callout__badges';
+        badgeApi.appendPreviewBadgeIconRow(slot, content.previewBadges, {
+            compact: !!options.compact,
+        });
+        if (!slot.firstChild) return null;
+        parentEl.appendChild(slot);
+        return slot;
     }
 
     _buildDomStackRow(marker, accentCss, compact) {
@@ -1304,6 +1317,11 @@ class WorldviewMarkerHoverCallout {
             compact,
         });
         inner.appendChild(body);
+        this._appendPanelBadges(inner, content, { compact });
+        inner.classList.toggle(
+            'map-hover-callout__panel-inner--has-badges',
+            !!inner.querySelector('.map-hover-callout__badges')
+        );
         rowBtn.appendChild(inner);
         this._wireCalloutStackRow(rowBtn, marker);
         return rowBtn;
@@ -1349,6 +1367,11 @@ class WorldviewMarkerHoverCallout {
         body.className = 'map-hover-callout__body';
         this._appendPanelBody(body, content, accentCss);
         inner.appendChild(body);
+        this._appendPanelBadges(inner, content);
+        inner.classList.toggle(
+            'map-hover-callout__panel-inner--has-badges',
+            !!inner.querySelector('.map-hover-callout__badges')
+        );
         rowBtn.appendChild(inner);
         this._wireCalloutStackRow(rowBtn, soloMarker);
         this._domPanel.appendChild(rowBtn);

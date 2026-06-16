@@ -31,7 +31,8 @@ export const STORY_FACTION_FILTER_PLACES_OPTS = {
         country: 'Factions (comma-separated)',
         reasoning: 'Why they matter'
     },
-    autocompleteType: 'factions'
+    autocompleteType: 'factions',
+    badgePriorityToggle: true
 };
 
 export const STORY_NPC_FILTER_PLACES_OPTS = {
@@ -40,16 +41,21 @@ export const STORY_NPC_FILTER_PLACES_OPTS = {
         country: 'NPCs (comma-separated)',
         reasoning: 'Why they matter'
     },
-    autocompleteType: 'npcs'
+    autocompleteType: 'npcs',
+    badgePriorityToggle: true
 };
 
 export function clonePlaceRows(arr) {
     if (!Array.isArray(arr)) return [];
-    return arr.map((p) => ({
-        locationName: p?.locationName != null ? String(p.locationName) : '',
-        country: p?.country != null ? String(p.country) : '',
-        reasoning: p?.reasoning != null ? String(p.reasoning) : ''
-    }));
+    return arr.map((p) => {
+        const row = {
+            locationName: p?.locationName != null ? String(p.locationName) : '',
+            country: p?.country != null ? String(p.country) : '',
+            reasoning: p?.reasoning != null ? String(p.reasoning) : ''
+        };
+        if (p?.badgePriority) row.badgePriority = true;
+        return row;
+    });
 }
 
 export function tokensFromPlacesCountryFields(places) {
@@ -63,6 +69,31 @@ export function tokensFromPlacesCountryFields(places) {
             .forEach((t) => out.push(t));
     });
     return out;
+}
+
+/**
+ * Tokens from grouped filter rows, starred groups first within the list.
+ * @param {unknown} places
+ * @param {(tokens: string[]) => string[]} canonicalizeFn
+ * @returns {{ priority: string[], rest: string[], all: string[] }}
+ */
+export function splitFilterPlaceTokens(places, canonicalizeFn) {
+    const priority = [];
+    const rest = [];
+    if (!Array.isArray(places)) {
+        return { priority, rest, all: [] };
+    }
+    places.forEach((row) => {
+        const c = row && row.country != null ? String(row.country) : '';
+        const raw = c
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean);
+        const canon = typeof canonicalizeFn === 'function' ? canonicalizeFn(raw) : raw;
+        if (row?.badgePriority) priority.push(...canon);
+        else rest.push(...canon);
+    });
+    return { priority, rest, all: [...priority, ...rest] };
 }
 
 export function canonicalizeHeroTokens(tokens) {
@@ -108,11 +139,15 @@ export function canonicalizeNpcTokens(tokens) {
 export function normalizeCollectedPlaces(rows) {
     if (!Array.isArray(rows)) return [];
     return rows
-        .map((r) => ({
-            locationName: String(r?.locationName || '').trim(),
-            country: String(r?.country || '').trim(),
-            reasoning: String(r?.reasoning || '').trim()
-        }))
+        .map((r) => {
+            const row = {
+                locationName: String(r?.locationName || '').trim(),
+                country: String(r?.country || '').trim(),
+                reasoning: String(r?.reasoning || '').trim()
+            };
+            if (r?.badgePriority) row.badgePriority = true;
+            return row;
+        })
         .filter((r) => r.locationName || r.country || r.reasoning);
 }
 
@@ -297,25 +332,37 @@ export function copyFilterPlaceArraysFromSource(from) {
     }
     return {
         heroFilterPlaces: Array.isArray(from.heroFilterPlaces)
-            ? from.heroFilterPlaces.map((p) => ({
-                  locationName: p.locationName,
-                  country: p.country,
-                  reasoning: p.reasoning
-              }))
+            ? from.heroFilterPlaces.map((p) => {
+                  const row = {
+                      locationName: p.locationName,
+                      country: p.country,
+                      reasoning: p.reasoning
+                  };
+                  if (p?.badgePriority) row.badgePriority = true;
+                  return row;
+              })
             : [],
         factionFilterPlaces: Array.isArray(from.factionFilterPlaces)
-            ? from.factionFilterPlaces.map((p) => ({
-                  locationName: p.locationName,
-                  country: p.country,
-                  reasoning: p.reasoning
-              }))
+            ? from.factionFilterPlaces.map((p) => {
+                  const row = {
+                      locationName: p.locationName,
+                      country: p.country,
+                      reasoning: p.reasoning
+                  };
+                  if (p?.badgePriority) row.badgePriority = true;
+                  return row;
+              })
             : [],
         npcFilterPlaces: Array.isArray(from.npcFilterPlaces)
-            ? from.npcFilterPlaces.map((p) => ({
-                  locationName: p.locationName,
-                  country: p.country,
-                  reasoning: p.reasoning
-              }))
+            ? from.npcFilterPlaces.map((p) => {
+                  const row = {
+                      locationName: p.locationName,
+                      country: p.country,
+                      reasoning: p.reasoning
+                  };
+                  if (p?.badgePriority) row.badgePriority = true;
+                  return row;
+              })
             : []
     };
 }
@@ -335,6 +382,7 @@ if (typeof window !== 'undefined') {
         tokensFromPlacesCountryFields,
         canonicalizeHeroTokens,
         canonicalizeFactionTokens,
-        canonicalizeNpcTokens
+        canonicalizeNpcTokens,
+        splitFilterPlaceTokens
     };
 }

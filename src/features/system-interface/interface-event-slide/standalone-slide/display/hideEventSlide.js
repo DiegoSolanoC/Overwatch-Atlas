@@ -9,6 +9,7 @@
 
 import { showMenuContainer } from '../../../../universal-features/atlas-main-menu/MenuContainer.js';
 import { getCurrentModeOrMenu } from '../../../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
+import { restoreStoryArchiveSourceIfStoryViewerContext } from '../../../interface-left-panel/event-system/data/archiveStoryViewerContext.js';
 
 function restoreHubMenuIfHidden() {
     if (!document.body.classList.contains('app-timeline-default')) return;
@@ -33,6 +34,7 @@ export function runHideEventSlide(slide) {
             const wasOpen = eventSlide?.classList.contains('open');
             if (wasOpen) {
                 slide.clearSlideHistory();
+                void restoreStoryArchiveSourceIfStoryViewerContext();
             }
             
             if (eventSlide) {

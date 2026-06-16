@@ -15,11 +15,15 @@
 /** Deep-clone an array of `{ locationName, country, reasoning }` rows, dropping junk fields. */
 export function cloneFilterPlaceRows(rows) {
     if (!Array.isArray(rows) || rows.length === 0) return null;
-    return rows.map((p) => ({
-        locationName: p.locationName,
-        country: p.country,
-        reasoning: p.reasoning
-    }));
+    return rows.map((p) => {
+        const row = {
+            locationName: p.locationName,
+            country: p.country,
+            reasoning: p.reasoning
+        };
+        if (p?.badgePriority) row.badgePriority = true;
+        return row;
+    });
 }
 
 /**

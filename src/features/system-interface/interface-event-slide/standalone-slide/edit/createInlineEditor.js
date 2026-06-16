@@ -71,16 +71,6 @@ export function runCreateInlineEditor(slide) {
                     <label class="event-slide-inline-editor__label" for="eventSlideEditEraName">Era name (optional)</label>
                     <input class="event-slide-inline-editor__input" id="eventSlideEditEraName" type="text" spellcheck="true" autocomplete="on" />
                 </div>
-                <div class="event-slide-inline-editor__row event-slide-inline-editor__preview-badges">
-                    <div class="event-slide-inline-editor__label">Preview Badges</div>
-                    <p class="event-slide-inline-editor__hint">Comma-separated names; autocomplete matches heroes and NPCs for character fields, factions only for faction.</p>
-                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeMain">Main character</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeMain" type="text" spellcheck="false" autocomplete="off" placeholder="Hero or NPC" />
-                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeSecondary">Secondary characters</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeSecondary" type="text" spellcheck="false" autocomplete="off" placeholder="Heroes or NPCs" />
-                    <label class="event-slide-inline-editor__label event-slide-inline-editor__label--sub" for="eventSlideEditPreviewBadgeFaction">Faction</label>
-                    <input class="event-slide-inline-editor__input" id="eventSlideEditPreviewBadgeFaction" type="text" spellcheck="false" autocomplete="off" placeholder="Faction" />
-                </div>
                 <div class="event-slide-inline-editor__row" id="eventSlideEditDescriptionContainer">
                     <label class="event-slide-inline-editor__label">Description</label>
                 </div>
@@ -102,7 +92,7 @@ export function runCreateInlineEditor(slide) {
                 </div>
                 <div class="event-slide-inline-editor__row">
                     <div class="event-slide-inline-editor__label">Relevant factions (grouped)</div>
-                    <p class="event-slide-inline-editor__hint">Group label, comma-separated factions, why they matter.</p>
+                    <p class="event-slide-inline-editor__hint">Group label, comma-separated factions, why they matter. ☆ marks a group as priority on the map badge.</p>
                     <div class="event-slide-inline-editor__actions">
                         <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddFactionFilterPlaceBtn">+ Add group</button>
                     </div>
@@ -110,7 +100,7 @@ export function runCreateInlineEditor(slide) {
                 </div>
                 <div class="event-slide-inline-editor__row">
                     <div class="event-slide-inline-editor__label">Relevant NPCs (grouped)</div>
-                    <p class="event-slide-inline-editor__hint">Group label, comma-separated NPCs, why they matter.</p>
+                    <p class="event-slide-inline-editor__hint">Group label, comma-separated NPCs, why they matter. ☆ marks a group as priority on the map badge (shown before heroes).</p>
                     <div class="event-slide-inline-editor__actions">
                         <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddNpcFilterPlaceBtn">+ Add group</button>
                     </div>

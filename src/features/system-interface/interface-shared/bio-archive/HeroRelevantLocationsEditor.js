@@ -65,6 +65,9 @@
 
         const row = document.createElement('div');
         row.className = 'event-slide-inline-editor__relevant-loc-row';
+        if (options.badgePriorityToggle) {
+            row.classList.add('event-slide-inline-editor__relevant-loc-row--badge-priority');
+        }
 
         const reorder = document.createElement('div');
         reorder.className = 'event-slide-relevant-loc-reorder';
@@ -123,6 +126,24 @@
             if (container.children.length > 1) row.remove();
         });
 
+        if (options.badgePriorityToggle) {
+            const starBtn = document.createElement('button');
+            starBtn.type = 'button';
+            starBtn.className = 'event-slide-relevant-loc-priority';
+            starBtn.dataset.role = 'rel-loc-badge-priority';
+            starBtn.setAttribute('aria-label', 'Priority for map badge');
+            starBtn.title = 'Priority for map badge (shown before heroes on the label)';
+            const active = !!(data && data.badgePriority);
+            if (active) starBtn.classList.add('event-slide-relevant-loc-priority--active');
+            starBtn.textContent = active ? '★' : '☆';
+            starBtn.addEventListener('click', function () {
+                const on = !starBtn.classList.contains('event-slide-relevant-loc-priority--active');
+                starBtn.classList.toggle('event-slide-relevant-loc-priority--active', on);
+                starBtn.textContent = on ? '★' : '☆';
+            });
+            row.appendChild(starBtn);
+        }
+
         row.appendChild(reorder);
         row.appendChild(nameIn);
         row.appendChild(countryIn);
@@ -160,11 +181,16 @@
                 const n = row.querySelector('[data-role="rel-loc-name"]');
                 const co = row.querySelector('[data-role="rel-loc-country"]');
                 const r = row.querySelector('[data-role="rel-loc-reason"]');
-                return {
+                const star = row.querySelector('[data-role="rel-loc-badge-priority"]');
+                const entry = {
                     locationName: (n && n.value ? n.value : '').trim(),
                     country: (co && co.value ? co.value : '').trim(),
                     reasoning: (r && r.value ? r.value : '').trim()
                 };
+                if (star && star.classList.contains('event-slide-relevant-loc-priority--active')) {
+                    entry.badgePriority = true;
+                }
+                return entry;
             })
             .filter(function (entry) {
                 return entry.locationName || entry.country || entry.reasoning;

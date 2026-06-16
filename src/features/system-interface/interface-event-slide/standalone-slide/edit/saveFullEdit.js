@@ -37,7 +37,6 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
-import { applyPreviewBadgesToTarget } from '../../../interface-shared/storyPreviewBadgeFields.js';
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
 import { readNpcCategoryBioPanelTrimmed, syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
 import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
@@ -413,11 +412,6 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             if (yearStartInput) target.yearStart = parseInt(yearStartInput.value) || target.yearStart;
             if (yearEndInput) target.yearEnd = parseInt(yearEndInput.value) || null;
             if (eraInput) target.eraName = eraInput.value || null;
-            applyPreviewBadgesToTarget(target, {
-                main: document.getElementById('eventSlideEditPreviewBadgeMain')?.value,
-                secondary: document.getElementById('eventSlideEditPreviewBadgeSecondary')?.value,
-                faction: document.getElementById('eventSlideEditPreviewBadgeFaction')?.value
-            });
             if (window.HeroRelevantLocationsEditor?.collect) {
                 const heroFpSave = document.getElementById('eventSlideEditHeroFilterPlaces');
                 const hr = heroFpSave ? window.HeroRelevantLocationsEditor.collect(heroFpSave) : [];

@@ -18,7 +18,6 @@ import {
     STORY_FACTION_FILTER_PLACES_OPTS,
     STORY_NPC_FILTER_PLACES_OPTS
 } from '../../../interface-shared/storyEventFilterPlaces.js';
-import { setupPreviewBadgeInputsAutocomplete } from '../../../interface-shared/storyPreviewBadgeFields.js';
 import { resolveConnectionsForArchiveEntry } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
 
 function resolveLiveArchiveEventData(slide, fallbackEventData) {
@@ -256,7 +255,6 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                 if (filtersInput) auto.setupAutocomplete(filtersInput, heroes, 'heroes');
                 if (factionsInput) auto.setupAutocomplete(factionsInput, factionList, 'factions');
                 if (npcsInput && npcList.length > 0) auto.setupAutocomplete(npcsInput, npcList, 'npcs');
-                setupPreviewBadgeInputsAutocomplete(auto);
             }
             }
             

@@ -11,11 +11,15 @@
 function normalizeCollectedPlaces(rows) {
     if (!Array.isArray(rows)) return [];
     return rows
-        .map((r) => ({
-            locationName: String(r?.locationName || '').trim(),
-            country: String(r?.country || '').trim(),
-            reasoning: String(r?.reasoning || '').trim()
-        }))
+        .map((r) => {
+            const row = {
+                locationName: String(r?.locationName || '').trim(),
+                country: String(r?.country || '').trim(),
+                reasoning: String(r?.reasoning || '').trim()
+            };
+            if (r?.badgePriority) row.badgePriority = true;
+            return row;
+        })
         .filter((r) => r.locationName || r.country || r.reasoning);
 }
 

@@ -1,58 +1,109 @@
 /**
  * importExportEvents — JSON `{ events: [...] }` round-trips for the active archive.
  *
- *   - `exportEvents` serializes `dataService.events` and triggers a browser download
- *     (`<archive>-export.json`, e.g. `npcs-export.json`).
- *
- *   - `importEvents(file)` reads a user-selected `File` (via `FileReader`), validates it
- *     has an `events` array, replaces `dataService.events`, normalizes if we're on a
- *     satellite archive, and persists. Returns a promise resolving to
- *     `{ success: true, count }` on success or rejecting with the parser error otherwise.
- *
- * Both helpers operate on whatever the active archive is at call-time — the saved file
- * therefore reflects the current bucket the user is viewing, and an imported file
- * overwrites that same bucket.
+ * Story Timeline viewer: export/import always targets the main timeline (from the dock
+ * snapshot + `timelineEvents` localStorage), even when a hero/NPC/faction slide left a
+ * satellite archive active in memory. Data Workshop bio tabs export the active bio archive.
  */
 
 import { isMainTimelineArchive } from './archiveRouting.js';
+import {
+    getStoryTimelineEventsForViewerExport,
+    persistStoryTimelineToLocalStorage,
+    shouldUseStoryTimelineForViewerIo,
+} from './archiveStoryViewerContext.js';
 
 /**
  * @param {import('./EventDataService.js').default} dataService
+ * @param {'story'|'heroes'|'factions'|'npcs'|'locations'|string} sourceId
  * @returns {string}
  */
-function exportFilenameForArchive(dataService) {
-    const source = dataService.getArchiveSource?.() || 'events';
-    const safe = String(source).replace(/[^a-z0-9_-]+/gi, '-').replace(/^-+|-+$/g, '') || 'events';
+function exportFilenameForSourceId(sourceId) {
+    const safe = String(sourceId || 'events')
+        .replace(/[^a-z0-9_-]+/gi, '-')
+        .replace(/^-+|-+$/g, '') || 'events';
     return `${safe}-export.json`;
 }
 
+/**
+ * @param {import('./EventDataService.js').default} dataService
+ * @returns {{ events: unknown[], sourceId: string }}
+ */
+function resolveExportPayload(dataService) {
+    if (shouldUseStoryTimelineForViewerIo()) {
+        const events = getStoryTimelineEventsForViewerExport(dataService);
+        return { events: Array.isArray(events) ? events : [], sourceId: 'story' };
+    }
+    return {
+        events: Array.isArray(dataService.events) ? dataService.events : [],
+        sourceId: dataService.getArchiveSource?.() || 'story',
+    };
+}
+
+/**
+ * @param {import('./EventDataService.js').default} dataService
+ * @param {unknown[]} events
+ */
+async function applyImportedEvents(dataService, events) {
+    const list = Array.isArray(events) ? events : [];
+
+    if (shouldUseStoryTimelineForViewerIo()) {
+        persistStoryTimelineToLocalStorage(dataService, list);
+        const em = window.eventManager;
+
+        if (!isMainTimelineArchive(dataService)) {
+            if (em?.switchStoryArchiveSource) {
+                await em.switchStoryArchiveSource('story');
+            } else {
+                dataService.setArchiveSource('story');
+                dataService.events = list;
+                await em?.loadEvents?.();
+            }
+        } else {
+            dataService.events = list;
+        }
+
+        dataService.saveEvents();
+        em?.renderEvents?.();
+        dataService.updateStatus?.(`Imported ${list.length} story timeline events`, 'success');
+        return;
+    }
+
+    dataService.events = list;
+    if (!isMainTimelineArchive(dataService) && typeof dataService._normalizeSatelliteEventsInPlace === 'function') {
+        dataService._normalizeSatelliteEventsInPlace();
+    }
+    dataService.saveEvents();
+    const arch = dataService.getArchiveSource?.() || 'archive';
+    dataService.updateStatus?.(`Imported ${list.length} ${arch} entries`, 'success');
+}
+
 export function exportEvents(dataService) {
-    const dataStr = JSON.stringify({ events: dataService.events }, null, 2);
+    const { events, sourceId } = resolveExportPayload(dataService);
+    const dataStr = JSON.stringify({ events }, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = exportFilenameForArchive(dataService);
+    link.download = exportFilenameForSourceId(sourceId);
     link.click();
     URL.revokeObjectURL(url);
+
+    const label = sourceId === 'story' ? 'story timeline' : `${sourceId} archive`;
+    dataService.updateStatus?.(`Exported ${events.length} ${label} events (${link.download})`, 'success');
 }
 
 export function importEvents(dataService, file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = (e) => {
+        reader.onload = async (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                if (data.events && Array.isArray(data.events)) {
-                    dataService.events = data.events;
-                    if (!isMainTimelineArchive(dataService) && typeof dataService._normalizeSatelliteEventsInPlace === 'function') {
-                        dataService._normalizeSatelliteEventsInPlace();
-                    }
-                    dataService.saveEvents();
-                    resolve({ success: true, count: dataService.events.length });
-                } else {
+                if (!data.events || !Array.isArray(data.events)) {
                     throw new Error('Invalid file format: expected { events: [...] }');
                 }
+                await applyImportedEvents(dataService, data.events);
+                resolve({ success: true, count: data.events.length });
             } catch (error) {
                 console.error('EventDataService: Error importing events:', error);
                 reject(error);

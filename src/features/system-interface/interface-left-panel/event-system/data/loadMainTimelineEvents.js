@@ -4,7 +4,8 @@
  *   2. Compare with localStorage `timelineEvents`.
  *
  * Selection rules:
- *   GitHub Pages           → always prefer file when available; clear localStorage.
+ *   GitHub Pages           → prefer non-empty localStorage (collaborator edits + import/export);
+ *                          bundled file only when localStorage is empty.
  *   Localhost + file > LS  → prefer file (single extra event is enough).
  *   Localhost + LS >= file → prefer localStorage (user's saved edits stay).
  *   Localhost + LS+5 < file → assume file caught up significantly, use file.
@@ -50,8 +51,8 @@ function _selectEventsSource(fileEvents, localEvents, isGitHubPages) {
 
   // Both sources exist.
   if (isGitHubPages) {
-    // GitHub Pages: file is always the source of truth.
-    return "file";
+    // Static deploy: localStorage is how collaborators persist story edits between sessions.
+    return "localStorage-wins";
   }
 
   // Localhost: file with even one extra event wins (edited elsewhere).
@@ -208,13 +209,12 @@ export async function loadMainTimelineEvents(dataService) {
 
   // Big-divergence catch-up: if file has significantly more entries the user
   // is behind — override with the file regardless of the earlier decision.
-  if (fileEvents && fileEvents.length > 0) {
-    const bigDivergence = isGitHubPages
-      ? fileEvents.length > dataService.events.length
-      : fileEvents.length > dataService.events.length + 4;
+  // GitHub Pages: never discard non-empty localStorage (collaborator workflow).
+  if (fileEvents && fileEvents.length > 0 && !isGitHubPages) {
+    const bigDivergence = fileEvents.length > dataService.events.length + 4;
 
     if (bigDivergence) {
-      const label = isGitHubPages ? "GitHub Pages" : "Localhost";
+      const label = 'Localhost';
       console.warn(
         `EventDataService [${label}]: localStorage has ${dataService.events.length} events, but events.json has ${fileEvents.length}. Using events.json.`,
       );

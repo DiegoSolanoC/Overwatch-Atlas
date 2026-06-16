@@ -350,7 +350,7 @@
     },
     {
       "name": "Cleaner Oceans",
-      "description": "While humanity was fighting to stop climate change, its effects were already heavily affecting people all over the world, and it was just as important to find solutions for those problems as it was for those to come. Island nations suffered the most from climate change, as the rising sea level and pollution of the oceans put their lifestyle at risk. For years, the people of the Polynesian region requested the international community to take the issue more seriously, but the handling of the situation left a lot to be desired.<br><br>This eventually led to the creation of the Polynesian League, an intergovernmental alliance between New Zealand, the Cook Islands, Samoa and the recently independent Hawaii, where together they would find solutions to the issues affecting their region.",
+      "description": "While humanity was fighting to stop climate change, its effects were already heavily affecting people all over the world, and it was just as important to find solutions for those problems as it was for those to come. Island nations suffered the most from climate change, as the rising sea level and pollution of the oceans put their lifestyle at risk. For years, the people of the Polynesian region requested the international community to take the issue more seriously, but the handling of the situation left a lot to be desired.\n\nThis eventually led to the creation of the Polynesian League, an intergovernmental alliance between New Zealand, the Cook Islands, Samoa and the recently independent Hawaii, where together they would find solutions to the issues affecting their region.",
       "locationType": "earth",
       "cityDisplayName": "Honolulu, Hawaii",
       "lat": 21.304547,
@@ -8830,7 +8830,8 @@
         {
           "locationName": "",
           "country": "Liao,",
-          "reasoning": "Died during the Oslo Attack"
+          "reasoning": "Died during the Oslo Attack",
+          "badgePriority": true
         },
         {
           "locationName": "",

@@ -232,6 +232,13 @@ export function runSetupStandalonePagination(slide) {
             }
         };
         
+        let sliderGesture = {
+            down: false,
+            dragLike: false,
+            inputEvents: 0,
+            tapPendingPageSound: false
+        };
+        
         // Update pagination UI. The `animate` flag is forwarded to
         // `slide.updateNumberButtons` — the initial seed call passes
         // `{ animate: false }` so the boot doesn't visibly stagger
@@ -249,7 +256,8 @@ export function runSetupStandalonePagination(slide) {
                 pageInput.max = totalPages;
             }
             
-            // Update slider using globe's EVENT_PAGE_SLIDER_RESOLUTION
+            // Sync slider from page — skip while the user is scrubbing so the thumb
+            // does not snap to the start of each page mid-drag.
             if (pageSlider) {
                 const SLIDER_RESOLUTION = 10000;
                 const slotsOnCurrentPage = Math.min(
@@ -261,7 +269,10 @@ export function runSetupStandalonePagination(slide) {
                 // One page: still scrub across event slots on that page (hero-bio short lists).
                 pageSlider.disabled = totalPages <= 1 && slotsOnCurrentPage <= 1;
 
-                pageSlider.value = String(sliderValueForPageStart(currentPage, totalPages));
+                const scrubbing = sliderGesture.down || sliderGesture.dragLike;
+                if (!scrubbing) {
+                    pageSlider.value = String(sliderValueForPageStart(currentPage, totalPages));
+                }
             }
             
             // Generate ticks and era strip
@@ -432,12 +443,6 @@ export function runSetupStandalonePagination(slide) {
         if (pageSlider) {
             const SLIDER_RESOLUTION = 10000;
             let lastPage = getCurrentPage();
-            let sliderGesture = {
-                down: false,
-                dragLike: false,
-                inputEvents: 0,
-                tapPendingPageSound: false
-            };
             
             // Pointer events for gesture detection
             pageSlider.addEventListener('pointerdown', (e) => {

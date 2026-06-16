@@ -466,6 +466,41 @@
     align-items: center;
 }
 
+.event-slide-inline-editor__relevant-loc-row--badge-priority {
+    grid-template-columns: min-content min-content 1.05fr 0.95fr 1.2fr auto;
+}
+
+.event-slide-relevant-loc-priority {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 220, 120, 0.45);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.event-slide-relevant-loc-priority:hover,
+.event-slide-relevant-loc-priority:focus-visible {
+    border-color: rgba(255, 220, 120, 0.55);
+    color: rgba(255, 220, 120, 0.85);
+    outline: none;
+}
+
+.event-slide-relevant-loc-priority--active {
+    color: #ffd866;
+    border-color: rgba(255, 220, 120, 0.75);
+    background: rgba(255, 200, 60, 0.12);
+    box-shadow: 0 0 8px rgba(255, 210, 80, 0.25);
+}
+
 /* Bio archive connections: three stacked blocks (hero / faction / NPC), each with its own row list */
 .event-slide-bio-conn-blocks {
     display: flex;

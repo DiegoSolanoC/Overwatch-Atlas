@@ -23,8 +23,6 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
-import { readPreviewBadgesFromTarget } from '../../../interface-shared/storyPreviewBadgeFields.js';
-
 export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             const target = displayEvent || eventData;
             const archPop = slide._presentationFromDockTimeline
@@ -54,13 +52,6 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             if (yearStartInput) yearStartInput.value = target.yearStart || target.year || '';
             if (yearEndInput) yearEndInput.value = target.yearEnd || '';
             if (eraInput) eraInput.value = target.eraName || '';
-            const previewBadges = readPreviewBadgesFromTarget(target);
-            const previewMainInput = document.getElementById('eventSlideEditPreviewBadgeMain');
-            const previewSecondaryInput = document.getElementById('eventSlideEditPreviewBadgeSecondary');
-            const previewFactionInput = document.getElementById('eventSlideEditPreviewBadgeFaction');
-            if (previewMainInput) previewMainInput.value = previewBadges.main;
-            if (previewSecondaryInput) previewSecondaryInput.value = previewBadges.secondary;
-            if (previewFactionInput) previewFactionInput.value = previewBadges.faction;
             syncFactionTypeBioPanelVisibility(
                 archPop,
                 archPop === 'factions' ? target.factionType : undefined
