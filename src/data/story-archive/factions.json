@@ -4,6 +4,7 @@
       "name": "Overwatch",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Major Player",
       "connections": [
         {
           "kind": "hero",
@@ -29,20 +30,19 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Major Player"
+      ]
     },
     {
       "name": "Talon",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Major Player"
     },
     {
       "name": "Null Sector",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Major Player",
       "connections": [
         {
           "kind": "hero",
@@ -68,13 +68,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Major Player"
+      ]
     },
     {
       "name": "The Chernobog Conspiracy",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Major Player",
       "connections": [
         {
           "kind": "hero",
@@ -84,13 +84,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Major Player"
+      ]
     },
     {
       "name": "IJC",
       "description": "No description available.",
       "relevantLocations": [],
+      "factionType": "Major Player",
       "connections": [
         {
           "kind": "npc",
@@ -100,13 +100,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Major Player"
+      ]
     },
     {
       "name": "Deadlock Rebels",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
           "kind": "hero",
@@ -148,13 +148,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "Shimada Clan",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
           "kind": "hero",
@@ -172,20 +172,19 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "Hashimoto Clan",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Criminal Groups"
     },
     {
       "name": "Yokai Gang",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
           "kind": "hero",
@@ -198,6 +197,14 @@
         {
           "kind": "hero",
           "name": "Mizuki",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Nobuto",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -218,30 +225,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Chikasa",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Nobuto",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "Junker Monarchy",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
           "kind": "hero",
@@ -267,17 +258,17 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "The Phreaks",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
-          "kind": "npc",
-          "name": "Touch Up",
+          "kind": "hero",
+          "name": "Hazard",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -292,8 +283,8 @@
           "showInCodex": true
         },
         {
-          "kind": "hero",
-          "name": "Hazard",
+          "kind": "npc",
+          "name": "Susannah",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -301,28 +292,20 @@
         },
         {
           "kind": "npc",
-          "name": "Susannah",
+          "name": "Touch Up",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "La Coterie",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "npc",
           "name": "Maximillien",
@@ -331,20 +314,19 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "Los Muertos",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Criminal Groups"
     },
     {
       "name": "The Sombra Collective",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Criminal Groups",
       "connections": [
         {
           "kind": "hero",
@@ -354,13 +336,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Criminal Groups"
+      ]
     },
     {
       "name": "Crusader Initiative",
       "description": "No description available.",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
         {
           "kind": "npc",
@@ -370,13 +352,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "Inti Warriors",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
         {
           "kind": "hero",
@@ -386,17 +368,17 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "Volskaya Industries",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
         {
           "kind": "npc",
-          "name": "Lynx 17",
+          "name": "Alisa",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -412,58 +394,38 @@
         },
         {
           "kind": "npc",
-          "name": "Alisa",
+          "name": "Lynx 17",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "Caribbean Coalition",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Deepsea Raiders",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Colosseo Gladiatori",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Helix Securities",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
-        {
-          "kind": "hero",
-          "name": "Sierra",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "hero",
           "name": "Pharah",
@@ -471,14 +433,22 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "Sierra",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "M.E.K.A Squad",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
         {
           "kind": "npc",
@@ -490,7 +460,7 @@
         },
         {
           "kind": "npc",
-          "name": "King",
+          "name": "D.mon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -506,26 +476,25 @@
         },
         {
           "kind": "npc",
-          "name": "D.mon",
+          "name": "King",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "The Gwishin",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Military Initiatives"
     },
     {
       "name": "Anubis Directives",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Military Initiatives",
       "connections": [
         {
           "kind": "npc",
@@ -535,22 +504,14 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Military Initiatives"
+      ]
     },
     {
       "name": "Omnica Corporation",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
-        {
-          "kind": "npc",
-          "name": "Aurora",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "npc",
           "name": "Liao",
@@ -558,23 +519,23 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Aurora",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Ironclad Guild",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
-        {
-          "kind": "npc",
-          "name": "Sven",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "hero",
           "name": "Torbjörn",
@@ -590,15 +551,31 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
+        },
+        {
+          "kind": "npc",
+          "name": "Sven",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Lucheng Interstellar",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
+        {
+          "kind": "npc",
+          "name": "Chao",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
         {
           "kind": "npc",
           "name": "Harold",
@@ -614,30 +591,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "npc",
-          "name": "Chao",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Wuxing University",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Oasis Ministries",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
         {
           "kind": "hero",
@@ -647,20 +608,19 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Pacific Energy Solutions",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Research Institutions"
     },
     {
       "name": "The Martins Collective",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
         {
           "kind": "npc",
@@ -686,13 +646,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Shambali Order",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
         {
           "kind": "hero",
@@ -710,13 +670,13 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Lumérico Incorporated",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
         {
           "kind": "npc",
@@ -726,29 +686,20 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Heliotech Industries",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Research Institutions"
     },
     {
       "name": "Vishkar Corporation",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
-        {
-          "kind": "npc",
-          "name": "Sanjay",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
         {
           "kind": "hero",
           "name": "Domina",
@@ -767,35 +718,33 @@
         },
         {
           "kind": "npc",
+          "name": "Sanjay",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "npc",
           "name": "Bhatt",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Wuxing University",
       "description": "",
       "relevantLocations": [],
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Lucheng Interstellar",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ],
       "factionType": "Research Institutions"
     },
     {
       "name": "Yamagami Blades",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Research Institutions",
       "connections": [
         {
           "kind": "npc",
@@ -805,34 +754,31 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Research Institutions"
+      ]
     },
     {
       "name": "Wayfinder Society",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Research Institutions"
     },
     {
       "name": "Blackwatch",
       "description": "No description available.",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Ecopoints",
       "description": "",
       "relevantLocations": [],
-      "connections": [],
       "factionType": "Overwatch Branches"
     },
     {
       "name": "Search & Rescue",
       "description": "",
       "relevantLocations": [],
+      "factionType": "Overwatch Branches",
       "connections": [
         {
           "kind": "hero",
@@ -842,17 +788,17 @@
           "thisEntryLane": "A",
           "showInCodex": true
         }
-      ],
-      "factionType": "Overwatch Branches"
+      ]
     },
     {
       "name": "Talon Empire",
       "description": "",
       "relevantLocations": [],
+      "factionType": "",
       "connections": [
         {
-          "kind": "faction",
-          "name": "La Coterie",
+          "kind": "hero",
+          "name": "Mauga",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
@@ -868,30 +814,13 @@
         },
         {
           "kind": "hero",
-          "name": "Mauga",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
           "name": "Vendetta",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "A",
           "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Colosseo Gladiatori",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
         }
-      ],
-      "factionType": ""
+      ]
     }
   ]
 }

@@ -15879,6 +15879,61 @@
       "subjectName": "Junker Queen",
       "linkedKind": "npc",
       "linkedName": "Mason"
+    },
+    {
+      "kind": "hero",
+      "name": "Mauga",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "hero",
+      "subjectName": "Shion",
+      "linkedKind": "hero",
+      "linkedName": "Mauga"
+    },
+    {
+      "kind": "hero",
+      "name": "Mizuki",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "hero",
+      "subjectName": "Shion",
+      "linkedKind": "hero",
+      "linkedName": "Mizuki"
+    },
+    {
+      "kind": "faction",
+      "name": "Hashimoto Clan",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "B",
+      "subjectKind": "hero",
+      "subjectName": "Shion",
+      "linkedKind": "faction",
+      "linkedName": "Hashimoto Clan"
+    },
+    {
+      "kind": "faction",
+      "name": "Talon Empire",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "B",
+      "subjectKind": "hero",
+      "subjectName": "Shion",
+      "linkedKind": "faction",
+      "linkedName": "Talon Empire"
+    },
+    {
+      "kind": "npc",
+      "name": "Pompamoto",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "hero",
+      "subjectName": "Shion",
+      "linkedKind": "npc",
+      "linkedName": "Pompamoto"
     }
   ]
 }

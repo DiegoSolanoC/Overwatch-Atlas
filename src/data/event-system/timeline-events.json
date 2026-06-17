@@ -1207,7 +1207,14 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Omnica Corporation,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Lindholm Style",
@@ -1518,10 +1525,10 @@
       ]
     },
     {
-      "name": "Amélie Lacroix is Born",
+      "name": "Amélie Guillard is Born",
       "locationType": "earth",
       "cityDisplayName": "Annecy, France",
-      "description": "On November 19th, 2043, Amélie Lacroix was born in Annecy, France. Part of an influential family, growing up in the ancestral Chataeu Guillard in the rural areas of France, where the crumbling building accumulated cobwebs and spiders, which both fascinated and terrified her as a kid.<br><br>Amelie's life was cold and filled with pressure from a conservative family, which expected her to live by aristocratic traditions. She would go on to become a well-accomplished ballet dancer in Paris, and marry a diplomat by the name of Gérard Lacroix.",
+      "description": "On November 19th, 2043, the young girl once known as Amélie Guillard was born in Annecy, France. Part of an influential family, growing up in the ancestral Chataeu Guillard in the rural areas of France, where the crumbling building accumulated cobwebs and spiders, which both fascinated and terrified her as a kid.\n\nAmelie's life was cold and filled with pressure from a conservative family, which expected her to live by aristocratic traditions. She would go on to become a well-accomplished ballet dancer in Paris.",
       "image": "",
       "sources": [
         {
@@ -1548,13 +1555,6 @@
           "country": "Widowmaker",
           "reasoning": "Amélie Lacroix is Born"
         }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Gérard,",
-          "reasoning": "Future Husband"
-        }
       ]
     },
     {
@@ -1568,9 +1568,29 @@
       "yearStart": 2040,
       "yearEnd": 2050,
       "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bloomington, United States",
+          "country": "United States",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vincent,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Upgrades",
@@ -2246,7 +2266,27 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Omnica Corporation,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Aurora,",
+          "reasoning": "",
+          "badgePriority": true
+        },
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Knights in Shining Armor",
@@ -4900,7 +4940,7 @@
       "name": "Adawe Departs",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics. One year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
+      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics.  Her successor in terms of leadership would be Director William Petras, on behalf of the UN's new international judicial branch, the International Justice Commission, or IJC.\n\nOne year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
       "image": "",
       "sources": [
         {
@@ -4934,8 +4974,13 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Numbani, Overwatch",
+          "country": "Overwatch",
           "reasoning": "Adawe Departs Overwatch to work on the Numbani City State Project"
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": "Is formed as a judicial branch of the UN"
         }
       ],
       "npcFilterPlaces": [
@@ -5156,7 +5201,33 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mei,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch, Ecopoints,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Australian Liberation",
@@ -5445,7 +5516,7 @@
       "name": "Undercover",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
-      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. Gérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Lacroix himself was recently married to a renowned ballerina, Amélie Lacroix, who gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. <br><br>Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world.<br>",
+      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. \n\nGérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world, often using tactics outside of protocol and documentation.",
       "image": "",
       "sources": [
         {
@@ -5475,11 +5546,6 @@
           "locationName": "",
           "country": "Reaper,",
           "reasoning": "BLackwatch Commander"
-        },
-        {
-          "locationName": "",
-          "country": "Widowmaker",
-          "reasoning": "Lacroix's wif"
         }
       ],
       "factionFilterPlaces": [
@@ -7140,17 +7206,60 @@
     },
     {
       "name": "Prima Donna",
-      "description": "No description available.",
+      "description": "Amélie Guillard had left her home years ago, tired of the aristocratic lifestyle that her family had attempted to impose on herself. Through her dancing skills, she pursued a career in Ballet that allowed her to gain notoriety, eventually becoming a prima ballerina known in all of France and abroad.\n\nHer life would take a more interesting turn, however, when she met a certain diplomat in Paris. Gérard Lacroix, Blackwatch's second in command, is currently spearheading investigations into several criminal groups across the world. The pair had dated for a long time, with Amélie being present at Vivian's induction and becoming relatively known around many of the Strike team. Years later, they would go on to marry and live a pleasant life together, although it seemed some of Gérard's closest friends had their reservations with her. Jack Morrison, who had grown particularly close to Lacroix, warned him that something was wrong about her, but Gérard merely found it funny.\n\nAmélie herself, however, gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. However, her husband was one of the only things Amélie genuinely loved throughout her life, the only other thing she ever felt as passionate about being ballet.",
       "locationType": "earth",
-      "lat": 0,
-      "lon": 0,
+      "lat": 48.8588897,
+      "lon": 2.320041,
       "image": "",
-      "cityDisplayName": "",
-      "yearEnd": null,
+      "cityDisplayName": "Paris, France",
+      "yearEnd": 2068,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
-      "sources": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France,",
+          "reasoning": "Gérard marries Prima Ballerina Amélie Guillard",
+          "lat": 48.8588897,
+          "lon": 2.320041
+        }
+      ],
+      "headlines": [
+        "Overwatch agent marries Prima Ballerina from Paris"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website Widowmaker",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/widowmaker/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Widowmaker,",
+          "reasoning": "Marries Gérard, not too interest in his line of work"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Ana,",
+          "reasoning": "Grow skeptical of Amélie"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch,",
+          "reasoning": "Amélie is present at multiple Overwatch events"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": "Marries Amélie, becoming one of the only things she really loves",
+          "badgePriority": true
+        }
+      ],
+      "yearStart": 2060
     },
     {
       "name": "Sparrow",
@@ -7263,7 +7372,7 @@
       "name": "Ye Wuyang is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "On May 1st of 2060, Ye Wuyang was born. The younger of the Ye brothers, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's fire College.",
+      "description": "On May 1st of 2060, Ye Wuyang was born. The younger of the Ye siblings, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's Fire College.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -7700,6 +7809,41 @@
       ]
     },
     {
+      "name": "Storm Chaser",
+      "locationType": "earth",
+      "cityDisplayName": "Copenhagen, Denmark",
+      "description": "Coppenhagen was hit by the crisis when Freja was only a child. Her mother was a diplomet at the time, and because of that everyone looked at her for answers. She commanded several operations right at the eye of the storm, calm constant and consistent, and through her Freja learned that keeping people safe came down to a level head and a focused eye. \n\nShe had admired her mother's work for the longest time, but instead of following in her footsteps, she wished to save people on the ground alongside other operatives, placing herself in the middle of the storm. Following the Freja would go to University to pursue a criminology degree, granting her access to the latest tech available and how to identify and stop a threat before it even began, and outside of her classes she had joined her local search and rescue team to gain experience in the field. \n\nIt was here where she developed outstanding skills at tracking down anyone, in any place, as she felt in love with the rush of seeing a job through the end, and making a difference hands on. For the longest time, Freja dedicated herself to chasing that gratifying feeling, of doing something that mattered and being good at it. Her determination and skil would soon open many doors for her.",
+      "image": "",
+      "lat": 55.6867243,
+      "lon": 12.5700724,
+      "sources": [
+        {
+          "text": "Storm Chaser",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/freja-comic/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen, Denmark",
+          "country": "Denmark",
+          "reasoning": "Freja Skov makes a name for herself at the local Search and Rescue groups in Denmark"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Freja",
+          "reasoning": "Studies criminology and joins her local Search and Rescue"
+        }
+      ],
+      "headlines": [
+        "Tragedy avoided thanks to Freja Skov and Search and Rescue"
+      ]
+    },
+    {
       "name": "Pressure Makes a DIamond",
       "locationType": "earth",
       "cityDisplayName": "Utopea, India",
@@ -8042,7 +8186,7 @@
       "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information. \n\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death. After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics.\n\nAngela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
+      "description": "After years of pushback from many governments, and seeing the sucess of their continous \"vacations\" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.\n\nOverwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information.\n\nFollowing his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -8111,33 +8255,37 @@
       ]
     },
     {
-      "name": "Storm Chaser",
+      "name": "Search and Rescue",
+      "description": "With Overwatch expanding all of its departments from Blackwatch to the Ecopoint program, Ana Amari aided each division in the recruitment process and one. Generally, most of the supportive staff tended to be overshadowed by the Strike team in the public eye, but one key addition gained notoriety even among the Strike team itself: Freja Skov, the so called best tracker in the world.\n\nAt the time Freja had made a name for herself publicly working as a part of local search and rescue teams. The milirary wanted to hire her after her graduation from University but she always had her eye on  bigger fish. Ana Amari approached Freja to join a burgeoning search and rescue division among the Overwatch support personnel.\n\nWhile in Overwatch, Freja would quickly gain notoriety for her unmatched excellence on the job, with many considering her the best tracker in the world. Freja would go on to become personally requested as an assiting operative by several members of the Strike team, like Reinhardt, Mercy and particularly Emre Sarioglu, who she grew especially close with, often taking trips to Istanbul together while on break from duty. For Freja, while the rest of the Strike team was often unreachable, super humans, Emre felt like any other guy, and he always made time to bond with people of all divisions, not just Search and Rescue.",
       "locationType": "earth",
-      "cityDisplayName": "Copenhagen, Denmark",
-      "description": "With Overwatch expanding all of its departments from Blackwatch to the Ecopoint program, Ana Amari aided each division in the recruitment process and one. Generally, most of the supportive staff tended to be overshadowed by the Strike team in the public eye, but one key addition gained notoriety even among the Strike team itself: Freja Skov, the daughter of a Dannish diplomat who played a key role in her country's defense during the Omnic Crisis. She had admired her mother's work for the longest time, but instead of following in her footsteps, she wished to save people on the ground alongside other operatives. After graduating from University with a criminology degree, Freja joined her local search and rescue team to gain experience in the field. It was here where she developed outstanding skills at tracking down anyone, in any place, as she felt in love with the rush of seeing a job through the end, and making a difference hands on.\n\nFor the longest time, Freja dedicated herself to chasing that gratifying feeling, and her determination began to open many doors. Ana Amari approached Freja to join a burgeoning search and rescue division among the Overwatch support personnel. While in Overwatch, Freja would quickly gain notoriety for her unmatched excellence on the job, with many considering her the best tracker in the world. Freja would go on to become personally requested as an assiting operative by several members of the Strike team, like Reinhardt, Mercy and particularly Emre Sarioglu, who she grew especially close with, often taking trips to Istanbul together while on break from duty.",
-      "image": "",
       "lat": 55.6867243,
       "lon": 12.5700724,
+      "image": "",
+      "cityDisplayName": "Copenhagen, Denmark",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Copenhagen, Denmark",
+          "country": "Denmark",
+          "reasoning": "Freja Skov is hired into Overwatch"
+        }
+      ],
+      "headlines": [
+        "Hundreds Evacuated by Overwatch's Search and Rescue team",
+        "The best tracker in the world to Join Overwatch"
+      ],
       "sources": [
         {
           "text": "Storm Chaser",
           "url": "https://overwatch.blizzard.com/en-us/media/comic/freja-comic/"
         }
       ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Copenhagen, Denmark",
-          "country": "Denmark",
-          "reasoning": "Freja Skov gets recruited into the Search and Rescue division of Overwatch"
-        }
-      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Freja",
+          "country": "Freja,",
           "reasoning": "Recruited into Search and Rescue"
         },
         {
@@ -8155,10 +8303,6 @@
           "country": "Mercy, Reinhardt,",
           "reasoning": "Often requested Freja by name"
         }
-      ],
-      "headlines": [
-        "Hundreds Evacuated by Overwatch's Search and Rescue team",
-        "The best tracker in the world to Join Overwatch"
       ],
       "factionFilterPlaces": [
         {
@@ -8231,7 +8375,7 @@
     },
     {
       "name": "Cyber Ninja",
-      "description": "No description available.",
+      "description": "After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. \n\nZiegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. \n\nOnce he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -8244,11 +8388,18 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Genji is rebuilt into a Cybernetic weapon"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Heirs of the Shimada missing following Overwatch activity in the area"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -8471,43 +8622,6 @@
       ]
     },
     {
-      "name": "Healing Nature",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 23.2599,
-      "lon": 77.4126,
-      "image": "",
-      "cityDisplayName": "Roshani, India",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Roshani, India",
-          "country": "India",
-          "reasoning": "",
-          "lat": 23.2599,
-          "lon": 77.4126
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lifeweaver",
-          "reasoning": "Travels the world and invents Biolight at Vishkar"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar Corporation",
-          "reasoning": "Niran researches hardlight healing at the academy"
-        }
-      ]
-    },
-    {
       "name": "Cold Snap",
       "locationType": "earth",
       "cityDisplayName": "Ecoopint Antartica",
@@ -8559,57 +8673,47 @@
       ]
     },
     {
-      "name": "Biolight",
+      "name": "Healing Nature",
+      "description": "As Niran grew older, he would use his parent's wealth to travel the world during his breaks from the architecture academy. While exploring the wilderness of the globe, he was able to experience the turmoil that existed in the world outside his bubble of wealth. Animals and forests dying, in part due to Vishkar's own expansion, war, illness and poverty everywhere he looked, with people who needed help being actively ignored, entire communities riddled with pain. \n\nNiran became determined to use his talents to fix the world, and began to experiment with healing applications of hardlight. After months of research at the Architech Academy, Niran used his knowledge and fascination of botany. Niran would push the limits of hardlight design into something new entirely. A self-replicating biomass made from hardlight. A living, organic material manifested from light structures, capable of repairing tissue near its light in the blink of an eye. Biolight was a revolutionary discovery that could change the world and bring balance back between man and nature. However, he would soon discover that was not possible under Vishkar.",
       "locationType": "earth",
-      "cityDisplayName": "Roshani, India",
-      "description": "As Niran grew older, he would use his parent's wealth to travel the world during his breaks from the architecture academy. While exploring the wilderness of the globe, he was able to experience the turmoil that existed in the world outside his bubble of wealth. Animals and forests dying, in part due to Vishkar's own expansion, war, illness and poverty everywhere he looked, with people who needed help being actively ignored, entire communities riddled with pain. Niran became determined to use his talents to fix the world, and began to experiment with healing applications of hardlight. After months of research at the Architech Academy, Niran used his knowledge and fascination of botany. Niran would push the limits of hardlight design into something new entirely. A self-replicating biomass made from hardlight. A living, organic material manifested from light structures, capable of repairing tissue near its light in the blink of an eye. Biolight was a revolutionary discovery that could change the world and bring balance back between man and nature. However, he would soon discover that was not possible under Vishkar. \n\nDuring his research at the Academy, he would come to discover the notes of Vishwakarma Bhatt, the late founder of the corporation, as well as his dream of providing hardlight freely to the world. Niran wished Biolight would remain accessible to all as well, but seeing how quick the company was to ignore their founder's wishes, choosing to place restrictions on the technology and profit from their monopoly, Niran knew the same fate would await his discovery.  When he unveiled the technology, Vishkar began to claim full ownership of the invention, and Niran resisted. Against the demands of Vishkar's higher ups and the advice of his closest friend Satya, Niran fled the academy and took his research on Biolight with him. Overnight, he became a wanted man on a crusade against a powerful empire, and to make matters worse, his family would cut him off from their wealth to pressure him into turning in his discovery. Niran was alone and hunted, but not out of options. He pleaded for sanctuary in the Atlantic Arcology, where he would be received by a supportive community of like-minded individuals. The nature of the Collective placed him outside global laws and prevented Vishkar from pursuing him further, and the assets of the Arcology allowed Niran to continue his research independently, working alongside the other members of the collective to bring his power to the world, free of charge.",
-      "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
-      "eraName": "The Golden Age",
+      "image": "",
+      "cityDisplayName": "Roshani, India",
       "yearStart": 2060,
       "yearEnd": 2068,
+      "eraName": "The Golden Age",
       "secondaryCountryPlaces": [
         {
           "locationName": "Roshani, India",
           "country": "India",
-          "reasoning": "Niran leaves Vishkar after his discovery of Biolight",
+          "reasoning": "Niran Invents Biolight after travelling the world and seeing its suffering",
           "lat": 23.2599,
           "lon": 77.4126
-        },
+        }
+      ],
+      "headlines": [
+        "Reports of fraud by Vishkar continue in spite of corporate claims",
+        "Another town displaced by Vishkar development"
+      ],
+      "sources": [
         {
-          "locationName": "Atlantic Arcology",
-          "country": "Atlantic Arcology,",
-          "reasoning": "Takes Niran in as sanctuary"
+          "text": "Lifeweaver Origin Story",
+          "url": "https://www.youtube.com/watch?v=y5ggehpY6bQ"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Lifeweaver",
-          "reasoning": "Escapes Vishkar and takes Biolight with him"
+          "reasoning": "Travels the world and invents Biolight at Vishkar"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar Corporation,",
-          "reasoning": "Pursues legal action against Niran"
-        },
-        {
-          "locationName": "",
-          "country": "The Martins Collective,",
-          "reasoning": "Recieve Niran with open arms into their community"
-        }
-      ],
-      "headlines": [
-        "Vishkar engineer goes rouge and flees with priceless technology",
-        "Bounty is placed for Niran PruksaManee in multiple countries"
-      ],
-      "sources": [
-        {
-          "text": "Lifeweaver Origin Story",
-          "url": "https://www.youtube.com/watch?v=y5ggehpY6bQ"
+          "country": "Vishkar Corporation",
+          "reasoning": "Niran researches hardlight healing at the academy"
         }
       ]
     },
@@ -8710,8 +8814,70 @@
       ]
     },
     {
+      "name": "Biolight",
+      "locationType": "earth",
+      "cityDisplayName": "Roshani, India",
+      "description": "During his research at the Academy, he would come to discover the notes of Vishwakarma Bhatt, the late founder of the corporation, as well as his dream of providing hardlight freely to the world. Niran wished Biolight would remain accessible to all as well, but seeing how quick the company was to ignore their founder's wishes, choosing to place restrictions on the technology and profit from their monopoly, Niran knew the same fate would await his discovery. \n\nWhen he unveiled the Biolight technology, Vishkar began to claim full ownership of the invention, and Niran resisted. Against the demands of Vishkar's higher ups and the advice of his closest friend Satya, Niran fled the academy and took his research on Biolight with him. Overnight, he became a wanted man on a crusade against a powerful empire, and to make matters worse, his family would cut him off from their wealth to pressure him into turning in his discovery. \n\nNiran was alone and hunted, but not out of options. He pleaded for sanctuary in the Atlantic Arcology, where he would be received by a supportive community of like-minded individuals. The nature of the Collective placed him outside global laws and prevented Vishkar from pursuing him further, and the assets of the Arcology allowed Niran to continue his research independently, working alongside the other members of the collective to bring his power to the world, free of charge.",
+      "image": "",
+      "lat": 23.2599,
+      "lon": 77.4126,
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Roshani, India",
+          "country": "India",
+          "reasoning": "Niran leaves Vishkar after his discovery of Biolight",
+          "lat": 23.2599,
+          "lon": 77.4126
+        },
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology,",
+          "reasoning": "Takes Niran in as sanctuary"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lifeweaver",
+          "reasoning": "Escapes Vishkar and takes Biolight with him"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": "Pursues legal action against Niran"
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective,",
+          "reasoning": "Recieve Niran with open arms into their community"
+        }
+      ],
+      "headlines": [
+        "Vishkar engineer goes rouge and flees with priceless technology",
+        "Bounty is placed for Niran PruksaManee in multiple countries"
+      ],
+      "sources": [
+        {
+          "text": "Lifeweaver Origin Story",
+          "url": "https://www.youtube.com/watch?v=y5ggehpY6bQ"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Bhatt,",
+          "reasoning": "The late founder's notes prove essential to Biolight"
+        }
+      ]
+    },
+    {
       "name": "Hostage",
-      "description": "Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. This social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils.\n\nThe Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. In spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long. The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.\n\nWhile he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose. The clan took notice of the poor quality of his work, so Lady Shion decided to use her pupil as leverage. Mizuki was still too young and weak to take part in criminal activities, but Shion believed that Toshiro might pick up the slack if the boy was endangered. \n\nMizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties. But on the other hand, Shion's discipline was unforgiving. The Omnic would often seriously injure the boy during their training, in part to set an example for Toshiro. It would get to a point where Mizuki's arm would be cut off. In spite of this, poor Mizuki was too naive and able to see good in people even when there was nothing but harm. Shion was cruel but also caring. She actively hurt him, but he could tell she wanted him to improve and get stronger. This messy relationship kept Mizuki willingly chained down by the Hashimoto for years, as he believed he had no other way to evade his curse.<br>",
+      "description": "Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. This social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils.\n\nThe Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. \n\nIn spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long. The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -8737,31 +8903,13 @@
         {
           "text": "Overwatch Website, Kiriko",
           "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
-        },
-        {
-          "text": "Overwatch Website, Mizuki",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
-        },
-        {
-          "text": "Facing Demons",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/facing-demons/"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": "Spends time with Toshiro as his guardian"
-        },
-        {
-          "locationName": "",
           "country": "Kiriko,",
           "reasoning": "Hidden from the clan by her family"
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": "Used Mizuki as leverage to keep Toshiro"
         }
       ],
       "factionFilterPlaces": [
@@ -8838,29 +8986,8 @@
       ]
     },
     {
-      "name": "Search and Rescue",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 55.6867243,
-      "lon": 12.5700724,
-      "image": "",
-      "cityDisplayName": "Copenhagen, Denmark",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Copenhagen, Denmark",
-          "country": "Denmark",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
       "name": "White Canvas",
-      "description": "No description available.",
+      "description": "After the Shimada takedown, Cassidy had been reassigned outside of Blackwatch, to temporarily run security at the Oslo laboratories, guarding Project: Echo. His status as a cover agent and Liao's own worries with Overwatch made her wary of him at first, but at the same time she was a fierce opponent of pigeonholder, and judging people via a checklist. With time she saw through Cassidy's cowboy persona, and got to meeth im for the funny, loyal, and clever man that he was, what is more he was willing to keep Liao's research and the extend of Echo's intelligence as a secret between the two of them.\n\nWhen Echo was on her early stashes, she began to rech out to personnel, seeking additional input, this is how she first approached Cassidy, who interacted with her as if she were a fully fleshed person. Liao noted in her records that one time during Testing, Echo eliminated the wrong target and exhibited signs of distress, only for Cassidy to descalate the situation, reassuring her that everyone made mistakes, but what mattered is how they made their way through the world. \n\nThis lead to Echo and Cassidy stablishing conversation and exchanging jokes, causing Echo to laugh for the first time. Cassidy's casual approach changed Liao's views on Echo, which sped up development now that she began to see her less as an apology for what happened with Aurora, and more like a child like intelligence that needed guidance to improve.",
       "locationType": "earth",
       "lat": 59.9133301,
       "lon": 10.7389701,
@@ -8873,11 +9000,18 @@
         {
           "locationName": "Oslo, Norway",
           "country": "Norway",
-          "reasoning": ""
+          "reasoning": "Project Echo makes progress thanks to Cassidy"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Meeting reguarding secretive project: Echo's unveilance is postponed"
+      ],
+      "sources": [
+        {
+          "text": "Mina Liao Project Echo Transcripts",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -9003,7 +9137,7 @@
     },
     {
       "name": "Leverage",
-      "description": "No description available.",
+      "description": "While he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose. The clan took notice of the poor quality of his work, so Lady Shion decided to use her pupil as leverage. Mizuki was still too young and weak to take part in criminal activities, but Shion believed that Toshiro might pick up the slack if the boy was endangered.\n\nMizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties. But on the other hand, Shion's discipline was unforgiving. The Omnic would often seriously injure the boy during their training, in part to set an example for Toshiro, which eventually would get to a point where Mizuki's arm would be cut off. \n\nIn spite of this, poor Mizuki was too naive and able to see good in people even when there was nothing but harm. Shion was cruel but also caring. She actively hurt him, but he could tell she wanted him to improve and get stronger. This messy relationship kept Mizuki willingly chained down by the Hashimoto for years, as he believed he had no other way to evade his curse.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -9016,13 +9150,24 @@
         {
           "locationName": "Akihabara, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "The Hashimoto use Mizuki to make Toshiro comply",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Hashimoto gang members seen with strange weaponry"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        },
+        {
+          "text": "Facing Demons",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/facing-demons/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -9332,7 +9477,7 @@
       "name": "The Oslo Attack",
       "locationType": "earth",
       "cityDisplayName": "Oslo, Norway",
-      "description": "After the Shimada takedown, Cassidy had been reassigned outside of Blackwatch, to temporarily run security at the Oslo laboratories, guarding Project: Echo. His status as a cover agent and Liao's own worries with Overwatch made her wary of him at first, but at the same time she was a fierce opponent of pigeonholder, and judging people via a checklist. With time she saw through Cassidy's cowboy persona, and got to meeth im for the funny, loyal, and clever man that he was, what is more he was willing to keep Liao's research and the extend of Echo's intelligence as a secret between the two of them. \n\nWhen Echo was on her early stashes, she began to rech out to personnel, seeking additional input, this is how she first approached Cassidy, who interacted with her as if she were a fully fleshed person. Liao noted in her records that one time during Testing, Echo eliminated the wrong target and exhibited signs of distress, only for Cassidy to descalate the situation, reassuring her that everyone made mistakes, but what mattered is how they made their way through the world. This lead to Echo and Cassidy stablishing conversation and exchanging jokes, causing Echo to laugh for the first time. Cassidy's casual approach changed Liao's views on Echo, which sped up development now that she began to see her less as an apology for what happened with Aurora, and more like a child like intelligence that needed guidance to improve.\n\nOne tragic night, the Oslo facility was rocket by multiple explosives. Cassidy was present but outside of the laboratory, as he had to attend a strategy meeting, so at the time Liao and Echo were alone inside of the building when the attack happened. The epxlosions knocked Cassidy away, but left him uninjured, as he rushed to the lab, he found Liao severely wounded, succubing to her injuries soon after, he sat with her while she died.  Liao would be buried with full honors as the attack was being investigated, her funeral was attended by Mondatta himself, and many other Shambali. Following her death, many monks entered a voluntary full year of silence, as an act of mourning. Liao lived a life trying to make up for a series of events out of her control, in Mondatta's own words during his speech, \"She sought the universal truth, she sought to repay a debt not her own, which had never been hers to pay, but which weighed on her thoughs until the end. We can only pray she is now at peace\". Cassidy did not attend the funeral, as he had turned his attention to hunt her killers\n\nIn her absensce, Echo would be brought online in her unfinished state, to  test her performance in field missions. While her AI continued to grow and evolve her capabilities and intelligence, Overwatch personnel feared that she could absorb the wrong input without adequate management, which limited her use within the organization and eventually led to her deactivation when Overwatch was shut down.",
+      "description": "One tragic night, the Oslo facility was rocket by multiple explosives. Cassidy was present but outside of the laboratory, as he had to attend a strategy meeting, so at the time Liao and Echo were alone inside of the building when the attack happened. The explosions knocked Cassidy away, but left him uninjured, as he rushed to the lab, he found Liao severely wounded, succubing to her injuries soon after, he sat with her while she died. \n\nLiao would be buried with full honors as the attack was being investigated, her funeral was attended by Mondatta himself, and many other Shambali. Following her death, many monks entered a voluntary full year of silence, as an act of mourning. Liao lived a life trying to make up for a series of events out of her control, in Mondatta's own words during his speech, \"She sought the universal truth, she sought to repay a debt not her own, which had never been hers to pay, but which weighed on her thoughs until the end. We can only pray she is now at peace\". Cassidy did not attend the funeral, as he had turned his attention to hunt her killers\n\nIn her absensce, Echo would be brought online in her unfinished state, to test her performance in field missions. While her AI continued to grow and evolve her capabilities and intelligence, Overwatch personnel feared that she could absorb the wrong input without adequate management, which limited her use within the organization and eventually led to her deactivation when Overwatch was shut down.",
       "image": "",
       "lat": 59.9133301,
       "lon": 10.7389701,
@@ -9340,10 +9485,6 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Mina Liao Project Echo Transcripts",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
         }
       ],
       "yearStart": 2068,
@@ -9358,8 +9499,13 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Echo, Cassidy",
-          "reasoning": "Cassidy is assigned to escort Liao, and meets Echo"
+          "country": "Cassidy,",
+          "reasoning": "Stays by Liao's side as she dies"
+        },
+        {
+          "locationName": "",
+          "country": "Echo,",
+          "reasoning": "Send for missions following Liao's death"
         },
         {
           "locationName": "",
@@ -9399,7 +9545,8 @@
         {
           "locationName": "",
           "country": "Liao,",
-          "reasoning": "Died during the Oslo Attack"
+          "reasoning": "Died during the Oslo Attack",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -9989,7 +10136,7 @@
     },
     {
       "name": "Widowed",
-      "description": "No description available.",
+      "description": "When Gérard recovered from his injuries, he immediately turned his attention to investigating Talon's next movements. With Blackwatch on a leash, his resources were far more limited, but his Intel was able to stop several potential threats before things went wrong. Still, his gut told him Talon had some sort of mole on the is for given his familiarity with Blackwatch procedures, but he would not get to continue hunting ghosts for much longer.\n\nLaCroix became a high priority target for Talon to take out and, after multiple failed attempts, they would resort to something far more personal. Former prima ballerina Amélie Lacroix, Gérard's wife, was kidnapped by Talon in the middle of the night, and while she was captive they subjected her to intensive neural reconditioning.\n\nGérard was horrified and focused all of his resources on finding his wife, while Morrison sent agents to guard the families of the rest of Blackwatch staff. In the end, Overwatch found Amélie months later, during a shockingly easy raid on a Talon base. Initial physical and psychological testing showed Amélie was unharmed and unchanged, but Gérard feared that something was off, given how easy the rescue had been. Two weeks later, his concern proved correct when Gérard was found dead in his own bedroom, killed in his sleep, and Amélie had gone missing once more. Overwatch never really rescued Amélie, they simply delivered a hunter to its prey. Lacroix's death was the final nail in the coffin for Blackwatch as a formal division, with Reyes choosing to continue his activities completely unreported, and Cassidy being sent out to do his bidding.",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
       "lat": 48.8588897,
@@ -10007,7 +10154,7 @@
         {
           "locationName": "Paris, France",
           "country": "France",
-          "reasoning": "",
+          "reasoning": "Gérard Lacroix is murdered in his sleep, presumably by his own wife",
           "lat": 48.8588897,
           "lon": 2.320041
         }
@@ -10016,14 +10163,19 @@
         {
           "locationName": "",
           "country": "Widowmaker",
-          "reasoning": ""
+          "reasoning": "Kills Gérard after Talon reprogramming"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Blackwatch, Talon Empire,",
-          "reasoning": ""
+          "country": "Blackwatch, Overwatch,",
+          "reasoning": "Investigates Talon activity and possible moles"
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Kidnaps Amélie Lacroix"
         }
       ],
       "yearEnd": null,
@@ -10031,14 +10183,17 @@
         {
           "locationName": "",
           "country": "Gérard,",
-          "reasoning": ""
+          "reasoning": "Killed in his sleep"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Overwatch agent killed by his own wife?",
+        "Talon kidnaps ballerina Prima donna"
+      ]
     },
     {
       "name": "Emotionless",
-      "description": "No description available.",
+      "description": "While official reports said Amelie had been taken by Talon. There was no real way of knowing what happened, they had no idea if she acted on her own, or if she was a victim. Amelie was hunted by both Overwatch and local police. However, that was not the biggest of her worries. She was haunted by the way killing her own husband made her feel. Amelie was often pretty apathetic and uninterested in many aspects of her life, but she still loved her husband, yet that moment when she killed him in cold blood was the most alive she had ever felt.\n\nUnclear if it was due to the lingering effects of the conditioning she underwent or pure euphoria from a manic episode, Amelie was fighting the urge to kill again. With little options left and intoxicated by bloodlust, Amelie ended up turning to Talon, chasing the thrill of a kill again in spite of how much it terrified her. She requested to be given training to become a marksman, and consented to participate in trials for Moira's experimental program. The genetic treatment altered Amelie's physiology to turn her into the perfect killer. Slowing down her heart, which turned her skin a pale blue color, and dulled her ability to feel human emotion. These drugs allowed Amelie to kill without remorse, and strengthened the release she felt when going for a kill.\n\nUnder Talon, Amelie would go under the name of the Widowmaker, and quickly became one of their most effective assassins, turning every kill into a performance that captivated and devastated her audience, fully embracing her murderous cravings while suppressing the painful memories or her past with a heavy supply of drugs. She retreated to the abandoned Château her family owned, where spiders became her only company. And under the alias of Danielle Guillard, she was able to live a quiet Life I'm between missions, even visiting Gérard's grave on occasion, as the mixed feelings she got from his death were something Moira never managed to fully erase.",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
       "lat": 29.5918,
@@ -10053,31 +10208,33 @@
       ],
       "image": "",
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Mysterious sniper kills politician in the middle of the day, panicked crowds unharmed"
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Oasis University, Iraq",
           "country": "Iraq",
-          "reasoning": ""
+          "reasoning": "Amélie turns to Talon willingly to become an assassin"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Widowmaker",
-          "reasoning": ""
+          "reasoning": "Gets trained and experimented on by Talon concentually"
         },
         {
           "locationName": "",
           "country": "Moira,",
-          "reasoning": ""
+          "reasoning": "Experiments on the Widowmaker, turning her skin blue and her heart rate slow"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "The Widowmaker becomes one of Talon's best assassins"
         }
       ],
       "npcFilterPlaces": [
@@ -10147,7 +10304,7 @@
         },
         {
           "locationName": "",
-          "country": "Ecopoints,",
+          "country": "Ecopoints, Pacific Energy Solutions,",
           "reasoning": "The Polynesian Leage takes control of Ecopoint: Samoa"
         },
         {
@@ -11378,6 +11535,11 @@
           "locationName": "",
           "country": "Sanjay,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": ""
         }
       ],
       "headlines": []
@@ -12042,7 +12204,7 @@
       "name": "Sonic Policing",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -12075,7 +12237,15 @@
           "country": "Vishkar",
           "reasoning": ""
         }
-      ]
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Apagando las Luces",
@@ -14980,7 +15150,7 @@
       "name": "Resistance",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -14996,17 +15166,35 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Lúcio",
+          "country": "Lúcio",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Mei, Reinhardt, Mercy, Genji, Echo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Randevu",
@@ -15094,7 +15282,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Numbani, Null Sector",
+          "country": "Null Sector,",
           "reasoning": ""
         }
       ],
@@ -15113,7 +15301,7 @@
       "name": "Rebuilding Ruins",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 37.7412,
       "lon": -25.6756,
@@ -15139,7 +15327,17 @@
           "country": "Vishkar, Collective, Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Palak,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Liberation",
@@ -15166,6 +15364,11 @@
         },
         {
           "locationName": "",
+          "country": "Ramattra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Winston, Reinhardt, Cassidy,",
           "reasoning": ""
         },
@@ -15178,7 +15381,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
       ],
@@ -15195,7 +15403,7 @@
     },
     {
       "name": "Lost Ghosts",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
       "lat": 47.3744489,
@@ -15221,16 +15429,18 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Null Sector",
+          "country": "Talon Empire, Null Sector,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Ironclad Help",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -15246,23 +15456,36 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reinhardt, Brigitte, Torbjörn, Bastion",
+          "country": "Reinhardt, Brigitte, Torbjörn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Bastion,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ironclad, Overwatch, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "A Great Day",
       "locationType": "earth",
       "cityDisplayName": "Baltic Sea",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 56,
       "lon": 18,
@@ -15278,17 +15501,30 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reaper, Sombra, Mauga, Doomfist",
+          "country": "Mauga, Reaper, Sombra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Lucky Man",
@@ -15421,7 +15657,7 @@
     },
     {
       "name": "Stalemate",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Secret Omnium",
@@ -15447,14 +15683,26 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Null Sector, Overwatch, IJC",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch, IJC",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Emergency Landing",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
       "lat": 19.1738,
@@ -15473,7 +15721,12 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Juno, Winston, Tracer, Mei",
+          "country": "Juno, Mei,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer,",
           "reasoning": ""
         }
       ],
@@ -15483,7 +15736,16 @@
           "country": "Overwatch, Lucheng",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Athena,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Warm Welcome",
@@ -15507,7 +15769,17 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va, Sojourn, Bastion, Juno, Orisa",
+          "country": "Juno, Orisa",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Bastion",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va,",
           "reasoning": ""
         }
       ],
@@ -15515,6 +15787,11 @@
         {
           "locationName": "",
           "country": "Overwatch",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
           "reasoning": ""
         }
       ],
@@ -15563,7 +15840,7 @@
     },
     {
       "name": "Partnership",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Atlantic Arcology",
       "lat": 37.7412,
@@ -15582,17 +15859,29 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Symmetra, Lifeweaver, Zenyatta",
+          "country": "Symmetra, Lifeweaver,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Zenyatta,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shambali, Vishkar, Collective",
+          "country": "The Martins Collective, Shambali Order,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Hazardous Tactics",
@@ -15695,7 +15984,12 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Emily, Efi, Sam, Ingrid, Dae-Hyun,",
+          "country": "Emily,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi, Sam, Ingrid, Benicio, Dae-Hyun,",
           "reasoning": ""
         }
       ]
@@ -15757,14 +16051,19 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Soldier 76, Illari, Sombra",
+          "country": "Soldier 76, Illari,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Inti Warriors",
+          "country": "Inti Warriors, Heliotech Industries,",
           "reasoning": ""
         },
         {
@@ -15786,7 +16085,7 @@
       "name": "Sentinels",
       "locationType": "earth",
       "cityDisplayName": "Buenos Aires, Argentina",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -34.8222,
       "lon": -58.5358,
@@ -15809,10 +16108,18 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Against the Tide",
@@ -15943,7 +16250,7 @@
     },
     {
       "name": "The Invitation",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
       "lat": 36.1407517,
@@ -15964,7 +16271,12 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Sojourn, Wuyang, Anran",
+          "country": "Winston, Wuyang, Anran",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn,",
           "reasoning": ""
         }
       ],
@@ -15974,7 +16286,9 @@
           "country": "Wuxing University, Null Sector",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "The Hunt Begins",
@@ -16062,7 +16376,7 @@
       "name": "The Upper Hand",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -16087,10 +16401,33 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Colosseo Gladiatori, Talon, Vishkar",
+          "country": "Colosseo Gladiatori, Vishkar Corporation,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "EMP",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Double Life",
@@ -16284,7 +16621,7 @@
         },
         {
           "locationName": "",
-          "country": "Talon,",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
       ],
@@ -16303,7 +16640,7 @@
       "name": "Reconciliation",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -16321,17 +16658,30 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ramattra, Zenyatta, Widowmaker, Sombra",
+          "country": "Ramattra, Zenyatta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Sombra",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Shambali, Talon, Null Sector",
+          "country": "Shambali Order, Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Reign of Talon",
@@ -16356,7 +16706,12 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta, Doomfist, Reaper, Widowmaker, Sombra, Moira, Mauga",
+          "country": "Vendetta, Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Widowmaker, Sombra, Moira, Mauga",
           "reasoning": ""
         }
       ],
@@ -16377,6 +16732,11 @@
           "locationName": "",
           "country": "Maximillien",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Antonio,",
+          "reasoning": "Finally 'avenged'"
         }
       ],
       "yearEnd": null,
@@ -16486,6 +16846,11 @@
           "locationName": "",
           "country": "Sombra, Reaper, Widowmaker,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -16573,7 +16938,17 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ana, Winston, Tracer, Mei, Reinhardt, Brigitte, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va, Sojourn, Bastion, Juno, Orisa, Wuyang, Anran, Jetpack Cat",
+          "country": "Anran, Wuyang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte, Ana,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Mei, Reinhardt, Mercy, Genji, Echo, Cassidy, Pharah, Baptiste, Zarya, D.va, Sojourn, Bastion, Juno, Orisa, Jetpack Cat",
           "reasoning": ""
         }
       ],
@@ -16581,6 +16956,13 @@
         {
           "locationName": "",
           "country": "Overwatch, Talon Empire",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi, Athena,",
           "reasoning": ""
         }
       ]
@@ -16604,7 +16986,48 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Brigitte, Torbjörn, Jetpack Cat,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Sojourn, Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mei, Juno, Wuyang, Anran,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Genji, Tracer, Zarya, Orisa, Lúcio, Pharah, Baptiste, Bastion, Echo,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Adaptable Feline",
@@ -16674,14 +17097,29 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra, Sojourn, Freja, Emre, Ashe,",
+          "country": "Cassidy, Ashe,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sierra, Sojourn, Freja, Emre,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lúcio, Pharah, Echo, Zarya,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities, Overwatch, Talon Empire",
+          "country": "Helix Securities, Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels, Talon Empire,",
           "reasoning": ""
         }
       ],
