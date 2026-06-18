@@ -185,12 +185,6 @@
       ]
     },
     {
-      "name": "Benicio",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "Civilians"
-    },
-    {
       "name": "Frankie",
       "description": "",
       "relevantLocations": [],
@@ -558,7 +552,7 @@
       "name": "Ngumi",
       "description": "No description available.",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures"
+      "npcCategory": "Talon"
     },
     {
       "name": "Sanjay",
@@ -642,6 +636,14 @@
       "relevantLocations": [],
       "npcCategory": "Influential Figures",
       "connections": [
+        {
+          "kind": "faction",
+          "name": "The Anubis Omnic Crisis",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
         {
           "kind": "faction",
           "name": "Anubis Directives",
@@ -758,7 +760,7 @@
       "name": "Palak",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Civilians",
+      "npcCategory": "Influential Figures",
       "connections": [
         {
           "kind": "faction",
@@ -785,6 +787,12 @@
           "showInCodex": true
         }
       ]
+    },
+    {
+      "name": "Benicio",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Civilians"
     },
     {
       "name": "Emily",

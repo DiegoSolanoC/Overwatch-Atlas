@@ -147,6 +147,47 @@ export function sampleEraStripeColorAtLinearProgress(allEvents, progress) {
 }
 
 /**
+ * Era-colored main timeline bar — one flat segment per event, split at midpoints
+ * (same palette as the dock era strip under the page slider).
+ *
+ * @param {object[]|null|undefined} events
+ * @param {{ x: number }[]|null|undefined} positions
+ * @param {number} trackWidth
+ * @returns {string|null}
+ */
+export function buildTimelineEraLineGradient(events, positions, trackWidth) {
+    const list = Array.isArray(events) ? events : [];
+    const width = Math.max(1, Number(trackWidth) || 1);
+    /** @type {{ x: number, i: number }[]} */
+    const placed = [];
+
+    if (Array.isArray(positions)) {
+        for (let i = 0; i < positions.length; i++) {
+            const pos = positions[i];
+            if (!pos || !Number.isFinite(pos.x)) continue;
+            placed.push({ x: pos.x, i });
+        }
+    }
+
+    if (!placed.length) return null;
+
+    placed.sort((a, b) => a.x - b.x);
+    const parts = [];
+
+    for (let k = 0; k < placed.length; k += 1) {
+        const { x, i } = placed[k];
+        const leftX = k === 0 ? 0 : (placed[k - 1].x + x) / 2;
+        const rightX = k === placed.length - 1 ? width : (x + placed[k + 1].x) / 2;
+        const color = getEraStripeColorHexForEvent(list[i]);
+        const leftPct = Math.max(0, Math.min(100, (leftX / width) * 100));
+        const rightPct = Math.max(0, Math.min(100, (rightX / width) * 100));
+        parts.push(`${color} ${leftPct}%`, `${color} ${rightPct}%`);
+    }
+
+    return `linear-gradient(to right, ${parts.join(', ')})`;
+}
+
+/**
  * @param {string} hex
  * @returns {string} `r, g, b` for CSS `rgb(var(--x) / alpha)`
  */
@@ -162,6 +203,7 @@ if (typeof window !== 'undefined') {
         ERA_STRIPE_NEUTRAL,
         getEraStripeColorHexForEvent,
         buildGlobalEraStripeBackgroundLinearGradient,
+        buildTimelineEraLineGradient,
         sampleEraStripeColorAtLinearProgress,
         hexColorToRgbCsv,
     };

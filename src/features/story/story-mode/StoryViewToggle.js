@@ -4,7 +4,7 @@
  */
 
 import { createHeaderHubButton } from '../../universal-features/atlas-header/HeaderHubButton.js';
-import { refreshStoryTimelineView, teardownStoryTimelineView, getStoryTimelineProgressFromDockSlider } from './StoryTimelineView.js';
+import { refreshStoryTimelineView, teardownStoryTimelineView } from './StoryTimelineView.js';
 import { mountStoryArchiveEraTint, unmountStoryArchiveEraTint, refreshStoryArchiveEraTint } from './StoryArchiveEraTint.js';
 import { resyncStoryArchivePreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
 export { shouldSkipStoryArchiveListRender } from './storyArchivePreviewContext.js';
@@ -87,11 +87,10 @@ export function applyStoryViewDisplayMode(mode) {
 
     if (isTimeline) {
         const dockPage = window.standaloneDockPagination?.getCurrentPage?.() ?? 1;
-        const progress = dockPage <= 1
-            ? 0
-            : getStoryTimelineProgressFromDockSlider();
+        const eventsPerPage = window.standaloneDockPagination?.eventsPerPage ?? 10;
         refreshStoryTimelineView({
-            scrollToProgress: progress,
+            scrollToPage: dockPage,
+            eventsPerPage,
         });
     } else {
         teardownStoryTimelineView();

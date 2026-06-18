@@ -12,11 +12,17 @@ import { setupEventManagerImageLazyLoading, flushVisibleLazyPreviewImages } from
 import { computeOverlapIndexSet } from '../../system-interface/interface-left-panel/event-system/render/overlapDetection.js';
 import { filterEventsByStandaloneActiveFilters } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
 import { refreshStoryArchiveEraTintIfActive } from './StoryArchiveEraTint.js';
+import {
+    buildTimelineEraLineGradient,
+    getEraStripeColorHexForEvent,
+    hexColorToRgbCsv,
+} from '../../system-interface/interface-shared/hover-badge/eraHoverPreviewTheme.js';
 
 const TRACK_PADDING_PX = 80;
-const VIEWPORT_LEADING_PAD_PX = 40;
 const DOCK_EVENTS_PER_PAGE = 10;
 const TIMELINE_CARD_BATCH_SIZE = 24;
+/** How far connector stems tuck under the main era bar (masks rounded caps). */
+const CONNECTOR_LINE_OVERLAP_PX = 10;
 
 /** @type {(() => void) | null} */
 let panTeardown = null;
@@ -49,11 +55,15 @@ function syncTimelineConnectorStems(track) {
         const thumbRect = thumbShell.getBoundingClientRect();
         const thumbCenterY = thumbRect.top + thumbRect.height / 2;
         const isAbove = connector.classList.contains('story-timeline-connector--above');
-        const height = isAbove
+        const span = isAbove
             ? lineRect.top - thumbCenterY
             : thumbCenterY - lineRect.bottom;
 
-        connector.style.height = `${Math.max(6, Math.round(height))}px`;
+        connector.style.marginTop = isAbove
+            ? `${CONNECTOR_LINE_OVERLAP_PX}px`
+            : `-${CONNECTOR_LINE_OVERLAP_PX}px`;
+        connector.style.height = `${Math.max(6, Math.round(span + CONNECTOR_LINE_OVERLAP_PX))}px`;
+        connector.style.opacity = span > 0 ? '1' : '0';
     }
 }
 
@@ -94,6 +104,13 @@ function ensureConnectorStemSync(track, viewport = null) {
         syncTimelineConnectorStems(track);
     }, { capture: true, signal });
 
+    const panViewport = track.parentElement;
+    if (panViewport) {
+        panViewport.addEventListener('story-timeline-pan', () => {
+            syncTimelineConnectorStems(track);
+        }, { signal });
+    }
+
     connectorStemTeardown = () => {
         ac.abort();
         resizeObserver.disconnect();
@@ -101,8 +118,106 @@ function ensureConnectorStemSync(track, viewport = null) {
     };
 }
 
-/** @type {{ scrollToStart: () => void, scrollToDockPage: (page: number, perPage?: number) => void, scrollToProgress: (progress: number) => void } | null} */
+/** @type {{ scrollToStart: () => void, scrollToDockPage: (page: number, perPage?: number) => void, scrollToDockSliderProgress: (progress: number) => void, scrollToProgress: (progress: number) => void } | null} */
 let panApi = null;
+
+/** Layout snapshot for pan math before / without DOM cards. */
+/** @type {{ sourceIndices: number[], positions: { index: number, x: number }[] } | null} */
+let timelinePanLayoutCache = null;
+
+/**
+ * @returns {{
+ *   dockEvents: unknown[],
+ *   allEvents: unknown[],
+ *   eventsPerPage: number,
+ *   totalPages: number,
+ * }}
+ */
+function getDockPaginationContext() {
+    const eventsPerPage = window.standaloneDockPagination?.eventsPerPage ?? DOCK_EVENTS_PER_PAGE;
+    const dockEvents = window.eventManager?.getDockTimelineEvents?.() ?? [];
+    const allEvents = window.eventManager?.dataService?.getEvents?.()
+        ?? window.eventManager?.events
+        ?? [];
+    const totalPages = Math.max(1, Math.ceil(dockEvents.length / eventsPerPage));
+    return {
+        dockEvents: Array.isArray(dockEvents) ? dockEvents : [],
+        allEvents: Array.isArray(allEvents) ? allEvents : [],
+        eventsPerPage,
+        totalPages,
+    };
+}
+
+/**
+ * @param {number} sourceIndex
+ * @returns {number|null}
+ */
+function findLayoutXForSourceIndex(sourceIndex) {
+    if (!timelinePanLayoutCache) return null;
+    const { sourceIndices, positions } = timelinePanLayoutCache;
+    const filteredIdx = sourceIndices.indexOf(sourceIndex);
+    if (filteredIdx < 0) return null;
+    const pos = positions.find((p) => p.index === filteredIdx);
+    return pos != null ? pos.x : null;
+}
+
+/**
+ * First story-list index on a dock page that exists on the visible timeline track.
+ *
+ * @param {number} page1Based
+ * @param {number} [eventsPerPage]
+ * @returns {number|null}
+ */
+function getFirstVisibleSourceIndexOnPage(page1Based, eventsPerPage = DOCK_EVENTS_PER_PAGE) {
+    const ctx = getDockPaginationContext();
+    const perPage = eventsPerPage || ctx.eventsPerPage;
+    const page = Math.min(Math.max(1, page1Based | 0), ctx.totalPages);
+    const start = (page - 1) * perPage;
+    const pageSlice = ctx.dockEvents.slice(start, start + perPage);
+    const { sourceIndices, filterActive } = getStoryTimelineEventSet();
+    const visible = filterActive ? new Set(sourceIndices) : null;
+
+    for (const event of pageSlice) {
+        const idx = ctx.allEvents.indexOf(event);
+        if (idx < 0) continue;
+        if (visible && !visible.has(idx)) continue;
+        if (findLayoutXForSourceIndex(idx) != null || timelinePanLayoutCache == null) {
+            return idx;
+        }
+    }
+    return null;
+}
+
+/**
+ * @param {number} x
+ * @param {HTMLElement} viewport
+ * @param {number} [cardWidth]
+ * @returns {number}
+ */
+function panOffsetToCenterX(x, viewport, cardWidth = TIMELINE_CARD_SLOT_PX) {
+    const viewportCenter = viewport.clientWidth / 2;
+    return viewportCenter - x - cardWidth / 2;
+}
+
+/**
+ * @param {number} sourceIndex
+ * @param {HTMLElement} viewport
+ * @param {HTMLElement} track
+ * @returns {number|null}
+ */
+function computePanOffsetForSourceIndex(sourceIndex, viewport, track) {
+    const slot = track.querySelector(`.story-timeline-event[data-index="${sourceIndex}"]`);
+    if (slot) {
+        const x = parseFloat(slot.style.left) || 0;
+        const w = slot.offsetWidth || TIMELINE_CARD_SLOT_PX;
+        return panOffsetToCenterX(x, viewport, w);
+    }
+    const layoutX = findLayoutXForSourceIndex(sourceIndex);
+    if (layoutX != null) {
+        return panOffsetToCenterX(layoutX, viewport, TIMELINE_CARD_SLOT_PX);
+    }
+    return null;
+}
 
 /**
  * @param {{
@@ -254,6 +369,10 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
     const line = document.createElement('div');
     line.className = 'story-timeline-view__line';
     line.setAttribute('aria-hidden', 'true');
+    const eraGradient = buildTimelineEraLineGradient(events, eventLayout.positions, trackWidth);
+    if (eraGradient) {
+        line.style.background = eraGradient;
+    }
     track.appendChild(line);
 
     const connectorsWrap = document.createElement('div');
@@ -318,6 +437,11 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
             connector.dataset.index = String(sourceIndex);
             connector.style.left = `${pos.x}px`;
             connector.style.setProperty('--stem-phase', String((pos.index % 7) * 0.21));
+            const eraHex = getEraStripeColorHexForEvent(event);
+            const eraRgb = hexColorToRgbCsv(eraHex);
+            connector.style.setProperty('--stem-era-rgb', eraRgb);
+            connector.style.backgroundColor = `rgba(${eraRgb}, 0.92)`;
+            connector.style.boxShadow = `0 0 10px rgba(${eraRgb}, 0.5)`;
             connectorsWrap.appendChild(connector);
 
             const card = createEventItem(renderService, event, sourceIndex, allEvents, {
@@ -337,14 +461,21 @@ function renderTimelineTrack(track, layout, trackWidth, events, sourceIndices, a
         setupEventManagerImageLazyLoading(renderService, viewport);
         flushVisibleLazyPreviewImages(viewport, 240);
         ensureConnectorStemSync(track, viewport);
+
+        const dockPage = window.standaloneDockPagination?.getCurrentPage?.();
+        if (dockPage && isStoryTimelineViewActive()) {
+            requestAnimationFrame(() => {
+                scrollStoryTimelineToDockPage(dockPage, DOCK_EVENTS_PER_PAGE);
+            });
+        }
     };
 
     appendTimelineCardBatch();
 }
 
 /**
- * @typedef {'start'|'offset'|'page'|'progress'} StoryTimelinePanMode
- * @typedef {{ mode?: StoryTimelinePanMode, offset?: number|null, page?: number, eventsPerPage?: number, scrollToProgress?: number }} StoryTimelinePanConfig
+ * @typedef {'start'|'offset'|'page'|'progress'|'dockProgress'} StoryTimelinePanMode
+ * @typedef {{ mode?: StoryTimelinePanMode, offset?: number|null, page?: number, eventsPerPage?: number, scrollToProgress?: number, scrollToDockProgress?: number }} StoryTimelinePanConfig
  */
 
 /**
@@ -407,8 +538,27 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
     function panOffsetForSlot(slot) {
         if (!slot) return 0;
         const x = parseFloat(slot.style.left) || 0;
-        const cardHalf = (slot.offsetWidth || TIMELINE_CARD_SLOT_PX) / 2;
-        return -(x - cardHalf - VIEWPORT_LEADING_PAD_PX);
+        const cardWidth = slot.offsetWidth || TIMELINE_CARD_SLOT_PX;
+        return panOffsetToCenterX(x, viewport, cardWidth);
+    }
+
+    /**
+     * @param {number} sourceIndex
+     * @returns {number|null}
+     */
+    function panOffsetForSourceIndex(sourceIndex) {
+        return computePanOffsetForSourceIndex(sourceIndex, viewport, track);
+    }
+
+    /**
+     * @param {number} page1Based
+     * @param {number} eventsPerPage
+     * @returns {number|null}
+     */
+    function panOffsetForPageFirstEvent(page1Based, eventsPerPage = DOCK_EVENTS_PER_PAGE) {
+        const sourceIndex = getFirstVisibleSourceIndexOnPage(page1Based, eventsPerPage);
+        if (sourceIndex == null) return null;
+        return panOffsetForSourceIndex(sourceIndex);
     }
 
     function scrollToTimelineStart() {
@@ -438,17 +588,59 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
      * @param {number} eventsPerPage
      */
     function scrollToDockPage(page1Based, eventsPerPage = DOCK_EVENTS_PER_PAGE) {
-        const em = window.eventManager;
-        const totalPages = em?.getTotalEventPages?.() ?? 1;
+        const { totalPages } = getDockPaginationContext();
         if (totalPages <= 1) {
-            scrollToProgress(0);
+            scrollToTimelineStart();
             return;
         }
-        scrollToProgress((page1Based - 0.5) / totalPages);
+        const page = Math.min(Math.max(1, page1Based | 0), totalPages);
+        const offset = panOffsetForPageFirstEvent(page, eventsPerPage);
+        if (offset != null) {
+            applyOffset(offset);
+            return;
+        }
+        scrollToProgress((page - 0.5) / totalPages);
+    }
+
+    /**
+     * Map dock slider progress (0..1) to pan between page anchor events.
+     *
+     * @param {number} progress
+     */
+    function scrollToDockSliderProgress(progress) {
+        const { totalPages, eventsPerPage } = getDockPaginationContext();
+        if (totalPages <= 1) {
+            scrollToTimelineStart();
+            return;
+        }
+
+        const t = Math.max(0, Math.min(1, Number(progress) || 0));
+        const fractionalPage = t * totalPages;
+        const pageLow = Math.min(totalPages - 1, Math.max(0, Math.floor(fractionalPage)));
+        const frac = fractionalPage - pageLow;
+
+        const offsetLow = panOffsetForPageFirstEvent(pageLow + 1, eventsPerPage);
+        const offsetHigh = pageLow + 1 < totalPages
+            ? panOffsetForPageFirstEvent(pageLow + 2, eventsPerPage)
+            : panOffsetForPageFirstEvent(totalPages, eventsPerPage);
+
+        if (offsetLow != null && offsetHigh != null) {
+            applyOffset(offsetLow + (offsetHigh - offsetLow) * frac);
+            return;
+        }
+        if (offsetLow != null) {
+            applyOffset(offsetLow);
+            return;
+        }
+        scrollToProgress(t);
     }
 
     function applyPanConfig() {
         const mode = panConfig.mode || 'start';
+        if (mode === 'dockProgress' && Number.isFinite(panConfig.scrollToDockProgress)) {
+            scrollToDockSliderProgress(/** @type {number} */ (panConfig.scrollToDockProgress));
+            return;
+        }
         if (mode === 'progress' && Number.isFinite(panConfig.scrollToProgress)) {
             scrollToProgress(/** @type {number} */ (panConfig.scrollToProgress));
             return;
@@ -501,6 +693,7 @@ function attachPanHandlers(viewport, track, panConfig = {}) {
     panApi = {
         scrollToStart: scrollToTimelineStart,
         scrollToDockPage,
+        scrollToDockSliderProgress,
         scrollToProgress,
     };
 
@@ -579,6 +772,24 @@ export function scrollStoryTimelineToDockPage(page1Based, eventsPerPage = DOCK_E
     });
 }
 
+/**
+ * Pan timeline from dock slider progress (0 = page 1 anchor, 1 = last page anchor).
+ *
+ * @param {number} progress
+ */
+export function scrollStoryTimelineToDockSliderProgress(progress) {
+    if (!isStoryTimelineViewActive()) return;
+
+    if (panApi) {
+        panApi.scrollToDockSliderProgress(progress);
+        return;
+    }
+
+    refreshStoryTimelineView({
+        scrollToDockProgress: progress,
+    });
+}
+
 export function syncStoryTimelineIfActive() {
     if (!isStoryTimelineViewActive()) return;
     refreshStoryTimelineView({
@@ -587,7 +798,7 @@ export function syncStoryTimelineIfActive() {
 }
 
 /**
- * @param {{ preservePan?: boolean, scrollToPage?: number, eventsPerPage?: number, scrollToProgress?: number }} [options]
+ * @param {{ preservePan?: boolean, scrollToPage?: number, eventsPerPage?: number, scrollToProgress?: number, scrollToDockProgress?: number }} [options]
  */
 export function refreshStoryTimelineView(options = {}) {
     const layer = document.getElementById('storyTimelineView');
@@ -610,9 +821,14 @@ export function refreshStoryTimelineView(options = {}) {
 
     const { events, sourceIndices, allEvents, filterActive } = getStoryTimelineEventSet();
     const eventLayout = buildStoryTimelineEventLayout(events, TRACK_PADDING_PX);
+    timelinePanLayoutCache = {
+        sourceIndices,
+        positions: eventLayout.positions.map((p) => ({ index: p.index, x: p.x })),
+    };
     const layout = buildStoryTimelineYearLayout(events, eventLayout);
 
     if (!events.length) {
+        timelinePanLayoutCache = null;
         if (typeof connectorStemTeardown === 'function') {
             connectorStemTeardown();
         }
@@ -655,16 +871,21 @@ export function refreshStoryTimelineView(options = {}) {
         () => {
             /** @type {StoryTimelinePanConfig} */
             let panConfig = { mode: 'start' };
-            if (options.scrollToProgress != null && Number.isFinite(options.scrollToProgress)) {
+            if (options.scrollToDockProgress != null && Number.isFinite(options.scrollToDockProgress)) {
                 panConfig = {
-                    mode: 'progress',
-                    scrollToProgress: options.scrollToProgress,
+                    mode: 'dockProgress',
+                    scrollToDockProgress: options.scrollToDockProgress,
                 };
             } else if (options.scrollToPage) {
                 panConfig = {
                     mode: 'page',
                     page: options.scrollToPage,
                     eventsPerPage: options.eventsPerPage ?? DOCK_EVENTS_PER_PAGE,
+                };
+            } else if (options.scrollToProgress != null && Number.isFinite(options.scrollToProgress)) {
+                panConfig = {
+                    mode: 'progress',
+                    scrollToProgress: options.scrollToProgress,
                 };
             } else if (savedOffset != null && Number.isFinite(savedOffset)) {
                 panConfig = { mode: 'offset', offset: savedOffset };
@@ -690,9 +911,11 @@ export function teardownStoryTimelineView() {
         resizeTeardown = null;
     }
     panApi = null;
+    timelinePanLayoutCache = null;
 }
 
 if (typeof window !== 'undefined') {
     window.scrollStoryTimelineToDockPage = scrollStoryTimelineToDockPage;
+    window.scrollStoryTimelineToDockSliderProgress = scrollStoryTimelineToDockSliderProgress;
     window.scrollStoryTimelineToProgress = scrollStoryTimelineToProgress;
 }

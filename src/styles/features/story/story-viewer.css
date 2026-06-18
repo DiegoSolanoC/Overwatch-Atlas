@@ -628,10 +628,10 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     transform: translateY(-50%);
     height: 20px;
     border-radius: 10px;
-    background: rgba(255, 152, 0, 0.95);
+    background: var(--story-timeline-line-bg, rgba(255, 255, 255, 0.35));
     box-shadow:
-        0 0 24px rgba(255, 152, 0, 0.7),
-        0 0 48px rgba(255, 152, 0, 0.4);
+        0 0 20px rgba(255, 255, 255, 0.18),
+        0 0 40px rgba(0, 0, 0, 0.35);
     animation: story-timeline-line-pulse 3.2s ease-in-out infinite;
 }
 
@@ -639,24 +639,23 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     0%,
     100% {
         box-shadow:
-            0 0 20px rgba(255, 152, 0, 0.55),
-            0 0 40px rgba(255, 152, 0, 0.32);
+            0 0 16px rgba(255, 255, 255, 0.14),
+            0 0 32px rgba(0, 0, 0, 0.3);
         filter: brightness(1);
     }
 
     50% {
         box-shadow:
-            0 0 32px rgba(255, 152, 0, 0.88),
-            0 0 64px rgba(255, 152, 0, 0.52),
-            0 0 96px rgba(255, 180, 60, 0.22);
-        filter: brightness(1.08);
+            0 0 28px rgba(255, 255, 255, 0.26),
+            0 0 56px rgba(0, 0, 0, 0.38);
+        filter: brightness(1.1);
     }
 }
 
 .story-timeline-view__connectors {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 2;
     pointer-events: none;
     overflow: visible;
 }
@@ -697,9 +696,9 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
 
 .story-timeline-year--start .story-timeline-year__label,
 .story-timeline-year--end .story-timeline-year__label {
-    color: #ffcc80;
+    color: rgba(255, 255, 255, 0.98);
     text-shadow:
-        0 0 20px rgba(255, 152, 0, 0.75),
+        0 0 18px rgba(255, 255, 255, 0.35),
         0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
@@ -717,6 +716,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     --story-timeline-stem-half-line: 10px;
 
     position: absolute;
+    z-index: 1;
     width: clamp(320px, 22vw, 460px);
     min-width: 320px;
     max-width: 460px;
@@ -739,16 +739,16 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     transform: translateX(-50%);
 }
 
-/* Connector stems sit behind the main line; height set in JS to each preview center */
+/* Connector stems run behind previews; height set in JS */
 .story-timeline-connector {
     --story-timeline-stem-half-line: 10px;
 
     position: absolute;
     width: 6px;
-    border-radius: 3px;
     pointer-events: none;
     transform-origin: center center;
-    background: rgba(255, 152, 0, 0.95);
+    background-color: rgba(var(--stem-era-rgb, 255, 152, 0), 0.92);
+    box-shadow: 0 0 10px rgba(var(--stem-era-rgb, 255, 152, 0), 0.5);
     animation: story-timeline-connector-pulse 3.2s ease-in-out infinite;
     animation-delay: calc(var(--stem-phase, 0s));
 }
@@ -757,12 +757,15 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     top: calc(50% - var(--story-timeline-stem-half-line));
     height: 0;
     transform: translateX(-50%) translateY(-100%);
+    /* Square where stem meets the bar; soft cap toward the thumbnail */
+    border-radius: 3px 3px 0 0;
 }
 
 .story-timeline-connector--below {
     top: calc(50% + var(--story-timeline-stem-half-line));
     height: 0;
     transform: translateX(-50%);
+    border-radius: 0 0 3px 3px;
 }
 
 @keyframes story-timeline-connector-pulse {
@@ -778,7 +781,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
 
 .story-timeline-event__card.event-item {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     margin: 0;
     isolation: isolate;

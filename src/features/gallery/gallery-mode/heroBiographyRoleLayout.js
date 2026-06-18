@@ -27,8 +27,8 @@ export const HERO_BIOGRAPHY_SUBROLE_ROWS = Object.freeze({
         bottom: Object.freeze(['Stalwart']),
     },
     Damage: {
-        top: Object.freeze(['Specialist', 'Sharpshooter']),
-        bottom: Object.freeze(['Flanker', 'Recon']),
+        top: Object.freeze(['Flanker', 'Recon']),
+        bottom: Object.freeze(['Specialist', 'Sharpshooter']),
     },
     Support: {
         top: Object.freeze(['Tactician', 'Medic']),

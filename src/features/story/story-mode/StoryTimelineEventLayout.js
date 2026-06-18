@@ -2,7 +2,8 @@
  * Place story event previews on the timeline.
  * Each solid (single) year is a variable-width band — width scales with how many
  * single-year events belong to that year. Range events are placed later between
- * their yearStart and yearEnd on the calendar-mapped axis.
+ * their yearStart and yearEnd on the calendar-mapped axis. Final spacing also
+ * nudges apart consecutive events whose `eraName` differs.
  */
 
 import { collectYearsFromEvent } from './StoryTimelineYears.js';
@@ -18,6 +19,8 @@ export const TIMELINE_MIN_EVENT_GAP_PX = 220;
 export const TIMELINE_CARD_SLOT_PX = TIMELINE_MIN_EVENT_GAP_PX;
 /** Minimum width for a year that only has one event. */
 export const TIMELINE_MIN_YEAR_SEGMENT_PX = TIMELINE_MIN_EVENT_GAP_PX;
+/** Extra space when consecutive events belong to different story eras. */
+export const TIMELINE_ERA_BOUNDARY_EXTRA_PX = 88;
 
 /**
  * @typedef {'above'|'below'} StoryTimelineEventSide
@@ -137,6 +140,16 @@ export function getSegmentYearFromEvent(event) {
     const years = collectYearsFromEvent(event);
     if (years.size > 0) return Math.min(...years);
     return null;
+}
+
+/**
+ * @param {unknown} event
+ * @returns {string}
+ */
+function getEraNameFromEvent(event) {
+    if (!event || typeof event !== 'object') return '';
+    const row = /** @type {Record<string, unknown>} */ (event);
+    return String(row.eraName ?? '').trim();
 }
 
 /**
@@ -321,7 +334,8 @@ function placeRemainingEvents(events, segments, positions) {
 }
 
 /**
- * Walk JSON order — even spacing, with a modest bump when the calendar year jumps forward.
+ * Walk JSON order — even spacing, with a modest bump when the calendar year jumps forward
+ * and a slight extra gap when the story era changes.
  *
  * @param {StoryTimelineEventPosition[]} positions
  * @param {unknown[]} events
@@ -332,12 +346,15 @@ function enforceJsonOrderMonotonicLayout(positions, events) {
     let prevX = null;
     /** @type {number|null} */
     let prevYear = null;
+    /** @type {string|null} */
+    let prevEra = null;
 
     for (let i = 0; i < positions.length; i++) {
         const pos = positions[i];
         if (!pos) continue;
 
         const curYear = getSegmentYearFromEvent(events[i]);
+        const curEra = getEraNameFromEvent(events[i]);
         let x;
 
         if (prevX == null) {
@@ -349,6 +366,9 @@ function enforceJsonOrderMonotonicLayout(positions, events) {
             if (prevYear != null && curYear != null && curYear > prevYear + 1) {
                 step = gap * 2;
             }
+            if (prevEra && curEra && prevEra !== curEra) {
+                step += TIMELINE_ERA_BOUNDARY_EXTRA_PX;
+            }
             x = prevX + step;
         }
 
@@ -357,6 +377,7 @@ function enforceJsonOrderMonotonicLayout(positions, events) {
         pos.side = i % 2 === 0 ? 'above' : 'below';
         prevX = x;
         if (curYear != null) prevYear = curYear;
+        if (curEra) prevEra = curEra;
     }
 }
 

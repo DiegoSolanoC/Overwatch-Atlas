@@ -20,7 +20,8 @@ import {
 import { wireStandaloneEventNavButtons } from './standalonePaginationEventNav.js';
 import {
     isStoryTimelineViewActive,
-    scrollStoryTimelineToProgress,
+    scrollStoryTimelineToDockPage,
+    scrollStoryTimelineToDockSliderProgress,
 } from '../../../../story/story-mode/StoryTimelineView.js';
 import {
     normalizedProgressFromSliderValue,
@@ -375,11 +376,7 @@ export function runSetupStandalonePagination(slide) {
                 }
 
                 if (!options.skipTimelinePan && isStoryTimelineViewActive()) {
-                    const totalPages = getTotalPages();
-                    const progress = totalPages <= 1
-                        ? 0
-                        : (validPage - 0.5) / totalPages;
-                    scrollStoryTimelineToProgress(progress);
+                    scrollStoryTimelineToDockPage(validPage, eventsPerPage);
                 } else if (!options.skipTimelinePan) {
                     window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
                 }
@@ -487,7 +484,7 @@ export function runSetupStandalonePagination(slide) {
                 const progress = normalizedProgressFromSliderValue(pageSlider.value);
 
                 if (isStoryTimelineViewActive()) {
-                    scrollStoryTimelineToProgress(progress);
+                    scrollStoryTimelineToDockSliderProgress(progress);
 
                     if (tp <= 1) return;
 

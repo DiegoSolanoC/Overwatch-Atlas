@@ -1190,33 +1190,6 @@
       ]
     },
     {
-      "name": "Automation",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 42.3315509,
-      "lon": -83.0466403,
-      "image": "",
-      "cityDisplayName": "Detroit, United States",
-      "yearEnd": null,
-      "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Detroit, United States",
-          "country": "United States",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Omnica Corporation,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Lindholm Style",
       "description": "No description available.",
       "locationType": "earth",
@@ -1241,7 +1214,7 @@
       "name": "Resource Management",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God Ais got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.\n\nOn a smaller scale, less complex AIs were also established to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. While their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
+      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God Ais got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.",
       "image": "",
       "sources": [
         {
@@ -1250,10 +1223,8 @@
         }
       ],
       "headlines": [
-        "Hyperloop Train is set to finally open next year",
         "Many governments approve the delegation of duties across many fields to the new so caleld \"God programs\"",
-        "Controversy follows as more and more aspects of daily live are taken over by machines",
-        "Germany invests on science development, and ocean exploration, hoping to open jobs as AI takes over"
+        "Controversy follows as more and more aspects of daily live are taken over by machines"
       ],
       "lat": 30.0444,
       "lon": 31.2357,
@@ -1296,6 +1267,48 @@
           "locationName": "",
           "country": "Chernobog,",
           "reasoning": "God Program of Global Security"
+        }
+      ]
+    },
+    {
+      "name": "Automation",
+      "description": "With the introduction of God programs the world had essentially been set to automatic. On a smaller scale, less complex AIs were able to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. \n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.\n\nIt was not just God Ais making life easier, as by this point Omnics were common household items. They impacted everyday life across the vast majority of nations, becoming the main workforce in multiple manual labor fields, which resulted in the loss of many jobs at first, but with God programs allowing for global scale choreographing of resources, they were able to identify the areas of need and ensure equity and new opportunities around the globe. During this period, the world's population grew rapidly, and when combined with the medical and ecological advancements of the last decades, it allowed for a sense of prosperity and wonder for all of humanity. After years of struggle and discovery, it felt as if anything was possible.",
+      "locationType": "earth",
+      "lat": 40.7579554,
+      "lon": -73.9855319,
+      "image": "",
+      "cityDisplayName": "New York City, United States",
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "New York City, United States",
+          "country": "United States",
+          "reasoning": "",
+          "lat": 40.7579554,
+          "lon": -73.9855319
+        },
+        {
+          "locationName": "Detroit, United States",
+          "country": "United States",
+          "reasoning": "God Programs allow for Automatization around the world"
+        }
+      ],
+      "headlines": [
+        "Hyperloop Train is set to finally open next year",
+        "Germany invests on science development, and ocean exploration, hoping to open jobs as AI takes over"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Omnica Corporation,",
+          "reasoning": "Continues to expand, Omnics become a household item"
         }
       ]
     },
@@ -2093,12 +2106,16 @@
       "name": "Genesis",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
-      "description": "Over the years, Omnica Corporation had been caught under fire for many issues. Between the heavy criticism of the Ironclad guild, the massive spending and broken promises that came with many Omniums, and to top it off, they had reached a point of near perfection with their Omnic designs, where their models would barely every break down and most of the public were willing to buy an Omnic already owned them. The company was in need of a big idea, one that could save them from collapse, and the answer to their troubles seemed to be Mina Liao.\n\nDr. Mina Liao was a prodigy and pioneer of neuroplastic artificial intelligence that had built continuous innovations in the field. She was selected by Omnica to develop the most advanced AI the world had ever seen. Liao's work was both revolutionary and controversial, as many feared this was pushing boundaries too far, but in the end she would reveal Omnica's crowning achievement, with the birth of Aurora.\n\nLiao argued that their newest Omnic was fully sentient, and capable of human-level cognition. While there were many skeptics, the robot passed every test they could think of. Confident in their discovery and understanding the moral issues associated with monetizing it, Liao took it upon herself to not just prove her sentiment, but to pursue personhood. After a long legal battle and international controversy, an international court would declare Aurora as sentient, and grant her full civil rights. Liao helped to cement Omnica's dominance as the unstoppable leader in robotic innovation, but in doing so, she brought even more negative press and expenses for the company, ultimately being the cause of their downfall.",
+      "description": "Over the years, Omnica Corporation had been caught under fire for many issues. Between the heavy criticism of the Ironclad guild, the massive spending and broken promises that came with many Omniums, and to top it off, they had reached a point of near perfection with their Omnic designs, where their models would barely every break down and most of the public were willing to buy an Omnic already owned them. The company was in need of a big idea, one that could save them from collapse, and the answer to their troubles seemed to be Mina Liao.\n\nDr. Mina Liao was a prodigy and pioneer of neuroplastic artificial intelligence that had built continuous innovations in the field. She was selected by Omnica to develop the most advanced AI the world had ever seen. Liao's work was both revolutionary and controversial, as many feared this was pushing boundaries too far, but in the end she would reveal Omnica's crowning achievement, with the birth of Aurora.",
       "image": "",
       "sources": [
         {
           "text": "Overwatch Genesis, Part one: Dawn",
           "url": "https://www.youtube.com/watch?v=PIYMn8eDskg"
+        },
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
       "headlines": [
@@ -2249,7 +2266,7 @@
     },
     {
       "name": "Personhood",
-      "description": "No description available.",
+      "description": "Liao argued that their newest Omnic was fully sentient, and capable of human-level cognition. While there were many skeptics, the robot passed every test they could think of. Confident in their discovery and understanding the moral issues associated with monetizing it, Liao took it upon herself to not just prove her sentiment, but to pursue personhood. \n\nAfter a long legal battle and international controversy, an international court would declare Aurora as sentient, and grant her full civil rights. Liao helped to cement Omnica's dominance as the unstoppable leader in robotic innovation, but in doing so, she brought even more negative press and expenses for the company, ultimately being the cause of their downfall.",
       "locationType": "earth",
       "lat": 46.2017559,
       "lon": 6.1466014,
@@ -2262,29 +2279,40 @@
         {
           "locationName": "Geneva, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Aurora's hearings grant her legal personhood"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Aurora is granted legal personhood in spite of global discourse"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Genesis, Part one: Dawn",
+          "url": "https://www.youtube.com/watch?v=PIYMn8eDskg"
+        },
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Omnica Corporation,",
-          "reasoning": ""
+          "reasoning": "Spends millions on Aurora's legal case"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Aurora,",
-          "reasoning": "",
+          "reasoning": "Is granted legal personhood",
           "badgePriority": true
         },
         {
           "locationName": "",
           "country": "Liao,",
-          "reasoning": ""
+          "reasoning": "Fights for a legal case on Aurora's personhood and wins"
         }
       ]
     },
@@ -2534,7 +2562,7 @@
     },
     {
       "name": "Answers",
-      "description": "After gaining personhood, Aurora was let go into the world. She was a curious soul who wondered from place to place, learning about humanity, their history and the way people across the planet behave. But deep down, Aurora always had questions about her own existence.<br><br>Being born alone, unlike anybody else in the world, was a heavy thought in her mind, and that existentialism led her to a path of meditation. She traveled through the Himalayan mountains and found the ancient monk temple of Shambali, where she hoped to find peace with herself.",
+      "description": "After gaining personhood, Aurora was let go into the world. She was a curious soul who wondered from place to place, learning about humanity, their history and the way people across the planet behave. But deep down, Aurora always had questions about her own existence.\n\nBeing born alone, unlike anybody else in the world, was a heavy thought in her mind, and that existentialism led her to a path of meditation. She traveled through the Himalayan mountains and found the ancient monk temple of Shambali, where she hoped to find peace with herself.",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
       "lat": 28.3949,
@@ -2553,7 +2581,8 @@
         }
       ],
       "headlines": [
-        "Aurora is granted legal personhood in spite of global discourse"
+        "Sentient Omnic goes missing months after gaining personhood",
+        "Ancient temple in the Himalayas is discovered by archeologists"
       ],
       "image": "",
       "secondaryCountryPlaces": [
@@ -5414,7 +5443,7 @@
       "name": "One with the Iris",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "The newly awakened Omnics found themselves in a cold, hostage world. Many were persecuted if not outright hunted and killed, yet on top of it all, most ended up questioning the reason for their existance. How did they cope with being brought to life in such dire conditions? These Omnics traveled the world looking for answers, just like Aurora once did, and it wouldn't be long before they began following her path.<br><br>A cult of travelers led by Tekhartha Mondatta, who dedicated his life to studying Aurora's life, trying to gather a complete picture to truly understand her choice, and his place in the world. His journey took the Omnics to Suravasa, where they would choose to abandon the secular world, and begin Aurora's pilgrimage into the Nepalese Himalayas, to honor her memory. Their journey would take the monks to the ruins of a monastery, Aurora's resting place, where she had finally found enlightenment. In there laid the Iris, a metaphysical anomaly formed as a result of the Awakening pulse. The Monks would mark the start of the Shambali religion, studying the Iris, harnessing its energy in hand-crafted orbs to use for meditation, and living under the ideal that unity and coexistence between Humans and Omnics was achievable, as the way they saw it, they are all one within the Iris.<br><br>It would be here where two Omnics, Ramattra and Zenyatta, would become as close as brothers. Ramattra had chosen to follow Mondatta, lost in grief by the suffering of his people. He later invited Zenyatta to join him, as he hoped together they could find a sense of purpose and harmony amidst conflict. The Shambali faith would quickly grow across the Omnic communities of the world and be a key factor in the Omnic rights movement. Dr. Mina Liao herself would often visit the Monastery, both for study of the Iris, and to organize meetings amongst leaders, like Mondatta, as she had grown to be quite the prominent Omnic right activist following the Awakening. The monks naturally welcomed her warmly, and shared her cause.",
+      "description": "The newly awakened Omnics found themselves in a cold, hostage world. Many were persecuted if not outright hunted and killed, yet on top of it all, most ended up questioning the reason for their existance. How did they cope with being brought to life in such dire conditions? These Omnics traveled the world looking for answers, just like Aurora once did, and it wouldn't be long before they began following her path.\n\nA cult of travelers led by Tekhartha Mondatta, who dedicated his life to studying Aurora's life, trying to gather a complete picture to truly understand her choice, and his place in the world. His journey took the Omnics to Suravasa, where they would choose to abandon the secular world, and begin Aurora's pilgrimage into the Nepalese Himalayas, to honor her memory. Their journey would take the monks to the ruins of a monastery, Aurora's resting place, where she had finally found enlightenment. In there laid the Iris, a metaphysical anomaly formed as a result of the Awakening pulse. The Monks would mark the start of the Shambali religion, studying the Iris, harnessing its energy in hand-crafted orbs to use for meditation, and living under the ideal that unity and coexistence between Humans and Omnics was achievable, as the way they saw it, they are all one within the Iris.\n\n\nThe Shambali faith would quickly grow across the Omnic communities of the world and be a key factor in the Omnic rights movement. Dr. Mina Liao herself would often visit the Monastery, both for study of the Iris, and to organize meetings amongst leaders, like Mondatta, as she had grown to be quite the prominent Omnic right activist following the Awakening. The monks naturally welcomed her warmly, and shared her cause.",
       "image": "",
       "sources": [
         {
@@ -5438,13 +5467,6 @@
           "reasoning": "Omnics around the world follow Auora's pilgrimage"
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ramattra, Zenyatta",
-          "reasoning": "Members of the newly found Shambali Order"
-        }
-      ],
       "factionFilterPlaces": [
         {
           "locationName": "",
@@ -5457,6 +5479,11 @@
           "locationName": "",
           "country": "Mondatta",
           "reasoning": "Spiritual leader of the Shambali Order"
+        },
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": "Visits the monastery to study the Iris"
         }
       ]
     },
@@ -5675,7 +5702,7 @@
     },
     {
       "name": "Brotherhood",
-      "description": "No description available.",
+      "description": "A Ravager unit now going by the name of Ramattra had chosen to follow Mondatta, lost in grief by the suffering of his people, seeking a sense of purpose and hope of one day being able to cohexist with humans. During his time with the Shambali he would still take time to protest for Omnic equality, and many would embrace his message. A lost soul going by Zenyatta approached him seeking guidance, and Ramattra seing hims as a spiritual equal, invited him to join him at the monastery, as he hoped together they could find a sense of purpose and harmony amidst conflict. \n\nFor years, Zenyatta and Ramattra studied and trained together, often arguing over their different views, while still being able to balance each other in harmony. They would regularly gaze at the stars together, wondering just how many Omnics out there might be doing the same, but in reality, Ramattra would soon learn that many were not looking up at all. While the Shambali were blessed with clarity and a sense of purpose, many Omnics across the world were fully submitted to their reality, and even those who were not still suffered without being able to do much to improve their lives. Ramattra would make it his life's mission to guide these Omnics into seeking justice, but his views would often clash with the other monks who merely sought coexistence.",
       "locationType": "earth",
       "lat": 28.3949,
       "lon": 84.124,
@@ -5691,8 +5718,16 @@
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Shambali Monks preeching in the streets",
+        "Miners complain of Omnic precense in Nepal"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -6476,7 +6511,7 @@
     },
     {
       "name": "Mother's Guidance",
-      "description": "Ana's relationship with her family had been messy since the beginning. She had married after being surprised by a little girl from a relatively casual relationship, and during the Crisis both her and Sam had their hands too full to raise a child.\n\nFareeha spent most of her youth in Canada with her father, but Ana would always try to make time for her daughter. Outside Overwatch, Ana went on to train the next generation of the Egyptian Army, and Fareeha, her biggest admirer, would too receive personal classes from her mother, many people questioned her choices, of training military personnel while also being part of an organization that promoted peace, but Amari ignored them, lacking the idealism  to think humanity could ever move pass war.\n\nFareeha would also be a regular visitor to Overwatch bases and became familiar with many of the members of the strike team, developing a kinship with Cassidy and Angela. In spite of this, Ana always hoped her daughter would go on to live a different life, one free of fighting. Fareeha on the other hand, wished to one day join her mother in Overwatch, which led to drawn-out arguments between the two, which got so bad Fareeha eventually dropped the subject. \n\nAs the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back. However, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. Reinhardt, too, always put others before him, and understood Amari's need for distance well, those he never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant.",
+      "description": "Ana's relationship with her family had been messy since the beginning. She had married after being surprised by a little girl from a relatively casual relationship, and during the Crisis both her and Sam had their hands too full to raise a child.\n\nFareeha spent most of her youth in Canada with her father, but Ana would always try to make time for her daughter. Outside Overwatch, Ana went on to train the next generation of the Egyptian Army, and Fareeha, her biggest admirer, would too receive personal classes from her mother, many people questioned her choices, of training military personnel while also being part of an organization that promoted peace, but Amari ignored them, lacking the idealism  to think humanity could ever move pass war.\n\nFareeha would also be a regular visitor to Overwatch bases and became familiar with many of the members of the strike team, developing a kinship with Cassidy and Angela. In spite of this, Ana always hoped her daughter would go on to live a different life, one free of fighting. Fareeha on the other hand, wished to one day join her mother in Overwatch, which led to drawn-out arguments between the two, which got so bad Fareeha eventually dropped the subject.",
       "locationType": "earth",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -6872,7 +6907,7 @@
     },
     {
       "name": "Yearning",
-      "description": "No description available.",
+      "description": "As the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back.\n\nHowever, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. Reinhardt, too, always put others before him, and understood Amari's need for distance well, those he never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant.",
       "locationType": "earth",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -6885,13 +6920,18 @@
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Ana and Reinhardt grow close following years of working together",
           "lat": 30.0444,
           "lon": 31.2357
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -16249,48 +16289,6 @@
       "sources": []
     },
     {
-      "name": "The Invitation",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint: Gibraltar",
-      "lat": 36.1407517,
-      "lon": -5.345374,
-      "yearStart": 2080,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": "",
-          "lat": 36.1407517,
-          "lon": -5.345374
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Winston, Wuyang, Anran",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Sojourn,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University, Null Sector",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": []
-    },
-    {
       "name": "The Hunt Begins",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
@@ -16415,6 +16413,48 @@
       "sources": []
     },
     {
+      "name": "The Invitation",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "yearStart": 2080,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Wuyang, Anran",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University, Null Sector",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": []
+    },
+    {
       "name": "EMP",
       "description": "No description available.",
       "locationType": "earth",
@@ -16425,9 +16465,39 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Double Life",
@@ -16995,17 +17065,22 @@
         },
         {
           "locationName": "",
-          "country": "Winston, Sojourn, Reinhardt,",
+          "country": "Winston, Sojourn, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "The Modern Overwatch Strike Team",
+          "country": "Mei, Genji, Mercy, Reinhardt, Pharah, Baptiste,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Mei, Juno, Wuyang, Anran,",
+          "country": "Juno, Wuyang,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Mercy, Genji, Tracer, Zarya, Orisa, Lúcio, Pharah, Baptiste, Bastion, Echo,",
+          "country": "Tracer, Zarya, Orisa, Lúcio, Baptiste, Echo, Anran,",
           "reasoning": ""
         }
       ],
@@ -17030,7 +17105,7 @@
       ]
     },
     {
-      "name": "Adaptable Feline",
+      "name": "Cat Training",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 57.7072326,
@@ -17057,12 +17132,31 @@
         },
         {
           "locationName": "",
-          "country": "Anran, Brigitte,",
+          "country": "Anran, Wuyang,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Juno, Wuyang,",
+          "country": "Juno, Brigitte,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
           "reasoning": ""
         }
       ]
@@ -17107,7 +17201,7 @@
         },
         {
           "locationName": "",
-          "country": "Lúcio, Pharah, Echo, Zarya,",
+          "country": "Lúcio, Pharah, Zarya,",
           "reasoning": ""
         }
       ],
@@ -17161,12 +17255,34 @@
           "locationName": "",
           "country": "Juno, Wuyang,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Genji, Mercy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Anran, Brigitte, D.va, Baptiste, Bastion, Mei, Jetpack Cat,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Echo,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch,",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
           "reasoning": ""
         }
       ]
@@ -17201,7 +17317,12 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra, Sojourn, Freja, Emre",
+          "country": "Sierra, Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Freja, Emre",
           "reasoning": ""
         }
       ],
