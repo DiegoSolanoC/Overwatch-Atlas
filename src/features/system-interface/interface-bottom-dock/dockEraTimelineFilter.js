@@ -44,6 +44,11 @@ export const DOCK_ERA_MENU_OPTIONS = Object.freeze([
         label: 'The Null Sector Invasion',
         iconPath: 'src/assets/images/Icons/Eras%20Icons/The%20Null%20Sector%20Invasion.png',
     },
+    {
+        id: 'reign-talon',
+        label: 'The Reign of Talon',
+        iconPath: 'src/assets/images/Icons/Eras%20Icons/The%20Reign%20of%20Talon.png',
+    },
 ]);
 
 /**
