@@ -7,7 +7,7 @@
  * the original method's `this`).
  */
 
-export function runUpdateSourcesAndFilters(slide, event) {
+export async function runUpdateSourcesAndFilters(slide, event) {
             const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
             const showingDockStoryEvent = !!slide._presentationFromDockTimeline;
             if (archiveSrc !== 'story' && !showingDockStoryEvent) {
@@ -56,5 +56,5 @@ export function runUpdateSourcesAndFilters(slide, event) {
             }
             
             // Update filters section with icon chips (matching globe mode)
-            slide.renderEventFilters(event);
+            await slide.renderEventFilters(event);
 }

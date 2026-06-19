@@ -16,6 +16,7 @@ import {
     isCodexNodeBgDefault,
     resolveCodexNodeBgColor,
 } from './CodexNodeBgColor.js';
+import { buildFactionDefaultImagePath } from '../../../system-interface/interface-filter-menu/images/factionImagePaths.js';
 
 function findCodexDuplicatePortraitNodeId(kind, heroName, faction, countryKey) {
     if (!Array.isArray(s.codexAllNodes)) return '';
@@ -127,7 +128,7 @@ function createCodexNodeElement(x, y, kind, heroName, faction, opts = {}) {
         imgSrc = codexCountryFlagSrc(ck);
         imgAlt = ck || 'Country';
     } else {
-        imgSrc = `src/assets/images/Filters/Factions/${encodeURIComponent(faction.filename)}.png`;
+        imgSrc = buildFactionDefaultImagePath(faction.filename);
         imgAlt = faction.displayName || '';
     }
 
@@ -237,6 +238,11 @@ function placeCodexNode(x, y, kind, heroName, faction, opts = {}) {
     }
     api.applyCodexNodeFilterClassesToEl?.(el);
     if (s.codexTargetedSelectionActive) api.syncCodexTargetedSelectionDom();
+    if (kind === 'faction') {
+        void import('../../codex-bio-archive-sync/timeline/CodexFactionPortraitLookSync.js')
+            .then((m) => m.applyCodexFactionPortraitLooksNow())
+            .catch(() => {});
+    }
     if (!opts.skipRedraw) redrawCodexEdges();
     return el;
 }

@@ -85,6 +85,7 @@ export function reflowDockChromeRails() {
     const nextEventBtn = document.getElementById('nextEventBtn');
     const globalImageToggleBtn = document.getElementById('globalImageToggle');
     const erasBtn = document.getElementById('erasToggle');
+    const filtersBtn = document.getElementById('filtersToggle');
 
     const centerChromeDockBarOrder = [
         prevPageBtn,
@@ -129,7 +130,7 @@ export function reflowDockChromeRails() {
             prevEventBtn,
             globalImageToggleBtn,
             pageInputWrap,
-            filtersBtn,
+            erasBtn,
             nextEventBtn,
             nextPageBtn,
         ].filter(Boolean);

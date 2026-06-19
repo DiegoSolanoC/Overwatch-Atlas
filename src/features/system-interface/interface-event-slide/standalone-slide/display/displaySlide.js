@@ -53,7 +53,7 @@ import {
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 
-export function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
+export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
         if (!eventSlide) return;
         /* Fresh open from a closed panel: drop stale back-stack (X, hideEventSlide, filters, etc.). */
@@ -274,7 +274,7 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
                     const activeVariant = slide.currentVariantIndex ?? 0;
                     btn.className = 'variant-toggle-btn' + (idx === activeVariant ? ' active' : '');
                     btn.textContent = variant.name || `Variant ${idx + 1}`;
-                    btn.addEventListener('click', () => {
+                    btn.addEventListener('click', async () => {
                         slide.currentVariantIndex = idx;
                         variantToggles.querySelectorAll('.variant-toggle-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
@@ -338,7 +338,7 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
                             slide.hideImageOverlay();
                         }
                         
-                        slide.updateSourcesAndFilters(v);
+                        await slide.updateSourcesAndFilters(v);
                         // Re-wire glitch clicks after variant switch
                         setTimeout(wireGlitchClickToggle, 100);
                     });
@@ -349,8 +349,8 @@ export function runDisplaySlide(slide, eventName, imagePath, description, eventD
             }
         }
         
-        // Update sources and filters
-        slide.updateSourcesAndFilters(displayEvent);
+        // Update sources and filters (await so faction relevancy logos resolve before reveal)
+        await slide.updateSourcesAndFilters(displayEvent);
         
         // Wire up prev/next buttons
         slide.wireNavButtons(eventData);

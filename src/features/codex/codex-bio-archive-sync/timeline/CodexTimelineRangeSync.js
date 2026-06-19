@@ -12,6 +12,7 @@ import {
     applyCodexEntryLifetimeNodeClassesNow,
     resetCodexEntryLifetimeVisualState,
 } from './CodexEntryLifetimeSync.js';
+import { applyCodexFactionPortraitLooksNow, resetCodexFactionPortraitLookState } from './CodexFactionPortraitLookSync.js';
 
 /** @type {number} */
 let timelineVisualRefreshRaf = 0;
@@ -24,6 +25,7 @@ function applyCodexTimelineRangeVisualRefreshNow() {
         nodeEl.classList.remove('codex-node--timeline-range-inactive');
     }
     applyCodexEntryLifetimeNodeClassesNow();
+    applyCodexFactionPortraitLooksNow();
     if (codexFiltersActive()) {
         resetCodexFilterCordSyncSignature();
         if (!syncCodexFilterCordDom()) {
@@ -42,6 +44,7 @@ export function applyCodexTimelineRangeNodeClasses() {
     timelineVisualRefreshRaf = requestAnimationFrame(() => {
         timelineVisualRefreshRaf = 0;
         applyCodexEntryLifetimeNodeClassesNow();
+        applyCodexFactionPortraitLooksNow();
     });
 }
 
@@ -56,6 +59,7 @@ export function applyCodexTimelineRangeVisualRefresh() {
 
 export function resetCodexTimelineRangeVisualState() {
     resetCodexEntryLifetimeVisualState();
+    resetCodexFactionPortraitLookState();
 }
 
 api.applyCodexTimelineRangeVisualRefresh = applyCodexTimelineRangeVisualRefresh;

@@ -1,11 +1,10 @@
 /**
- * Resolve which hero bio look applies at a story event (by event name / index).
+ * Resolve which biography look applies at a story event (heroes or factions).
  */
 
-import {
-    getHeroBiographyLookRange,
-    normalizeEventNameForMatch,
-} from './heroBiographyLookRangesStorage.js';
+import { getBioBiographyLookRange } from './bioBiographyLookRangesStorage.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
+import { normalizeEventNameForMatch } from './heroBiographyLookRangesStorage.js';
 
 /**
  * @returns {object[]}
@@ -55,39 +54,51 @@ export function getStoryTimelineIndexForEvent(event) {
 }
 
 /**
- * @param {string} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} entityKey
  * @param {string} lookName
  * @returns {{ lo: number, hi: number } | null}
  */
-export function getLookRangeTimelineBounds(heroFilterKey, lookName) {
-    const range = getHeroBiographyLookRange(heroFilterKey, lookName);
+export function getLookRangeTimelineBounds(category, entityKey, lookName) {
+    const range = getBioBiographyLookRange(category, entityKey, lookName);
     if (!range) return null;
 
-    const startIdx = findStoryTimelineIndexByEventName(range.startEvent);
-    const endIdx = findStoryTimelineIndexByEventName(range.endEvent);
+    const hasStart = !!(range.startEvent && String(range.startEvent).trim());
+    const hasEnd = !!(range.endEvent && String(range.endEvent).trim());
+    if (!hasStart && !hasEnd) return null;
+
+    const startIdx = hasStart ? findStoryTimelineIndexByEventName(range.startEvent) : -1;
+    const endIdx = hasEnd ? findStoryTimelineIndexByEventName(range.endEvent) : -1;
     if (startIdx < 0 && endIdx < 0) return null;
 
-    const lo = startIdx >= 0 && endIdx >= 0
-        ? Math.min(startIdx, endIdx)
-        : (startIdx >= 0 ? startIdx : endIdx);
-    const hi = startIdx >= 0 && endIdx >= 0
-        ? Math.max(startIdx, endIdx)
-        : (startIdx >= 0 ? startIdx : endIdx);
+    const events = getStoryTimelineEvents();
+    const lastIdx = Math.max(0, events.length - 1);
 
-    return { lo, hi };
+    if (startIdx >= 0 && endIdx >= 0) {
+        return {
+            lo: Math.min(startIdx, endIdx),
+            hi: Math.max(startIdx, endIdx),
+        };
+    }
+
+    if (startIdx >= 0) {
+        return { lo: startIdx, hi: lastIdx };
+    }
+
+    return { lo: 0, hi: endIdx };
 }
 
 /**
- * Narrow / single-event ranges beat broad ones (e.g. Merciful @ one event inside Captain's span).
- * @param {string} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} entityKey
  * @param {string} lookName
  * @returns {{ span: number, explicitSingle: boolean } | null}
  */
-export function getLookRangePriorityMeta(heroFilterKey, lookName) {
-    const bounds = getLookRangeTimelineBounds(heroFilterKey, lookName);
+export function getLookRangePriorityMeta(category, entityKey, lookName) {
+    const bounds = getLookRangeTimelineBounds(category, entityKey, lookName);
     if (!bounds) return null;
 
-    const range = getHeroBiographyLookRange(heroFilterKey, lookName);
+    const range = getBioBiographyLookRange(category, entityKey, lookName);
     const span = bounds.hi - bounds.lo;
     const explicitSingle = !!(
         range?.startEvent &&
@@ -99,23 +110,26 @@ export function getLookRangePriorityMeta(heroFilterKey, lookName) {
 }
 
 /**
- * @param {string} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} entityKey
  * @param {number} timelineIndex
  * @param {string[]} lookNames
  * @returns {string | null}
  */
-export function resolveLookForTimelineIndex(heroFilterKey, timelineIndex, lookNames) {
-    if (!heroFilterKey || timelineIndex < 0 || !lookNames?.length) return null;
+export function resolveLookForTimelineIndex(category, entityKey, timelineIndex, lookNames) {
+    const cat = normalizeBioBiographyCategory(category);
+    if (!entityKey || timelineIndex < 0 || !lookNames?.length) return null;
+    if (cat !== 'heroes' && cat !== 'factions') return null;
 
     /** @type {{ look: string, span: number, explicitSingle: boolean }[]} */
     const matches = [];
 
     for (const look of lookNames) {
-        const bounds = getLookRangeTimelineBounds(heroFilterKey, look);
+        const bounds = getLookRangeTimelineBounds(cat, entityKey, look);
         if (!bounds) continue;
         if (timelineIndex < bounds.lo || timelineIndex > bounds.hi) continue;
 
-        const meta = getLookRangePriorityMeta(heroFilterKey, look);
+        const meta = getLookRangePriorityMeta(cat, entityKey, look);
         if (!meta) continue;
 
         matches.push({
@@ -137,13 +151,14 @@ export function resolveLookForTimelineIndex(heroFilterKey, timelineIndex, lookNa
 }
 
 /**
- * @param {string} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} entityKey
  * @param {object} event
  * @param {string[]} lookNames
  * @returns {string | null}
  */
-export function resolveLookForStoryEvent(heroFilterKey, event, lookNames) {
+export function resolveLookForStoryEvent(category, entityKey, event, lookNames) {
     const idx = getStoryTimelineIndexForEvent(event);
     if (idx < 0) return null;
-    return resolveLookForTimelineIndex(heroFilterKey, idx, lookNames);
+    return resolveLookForTimelineIndex(category, entityKey, idx, lookNames);
 }

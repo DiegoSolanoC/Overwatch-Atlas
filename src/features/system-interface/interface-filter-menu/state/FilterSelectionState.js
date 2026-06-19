@@ -7,7 +7,7 @@
  * `resetToConfirmed()` discards in-progress selections (called when the user
  * closes the panel without confirming or hits the close button).
  *
- * Counting per category is non-trivial: a chip key like `"25Shambali Order"`
+ * Counting per category is non-trivial: a chip key like `"Shambali Order"`
  * might be a faction filename, a hero id, or an arbitrary token left over from
  * pre-migration data, so we use the live manifest (`window.FilterService`) +
  * `window.FactionMatchHelpers` to bucket correctly before falling back to
@@ -45,7 +45,7 @@ class FilterStateManager {
 
     /**
      * Count filters per tab. Globe chips use manifest faction filenames
-     * (e.g. `25Shambali Order`); the faction tab may still hold display names
+     * (e.g. `Shambali Order`); the faction tab may still hold display names
      * after data migration, so we accept both via `FactionMatchHelpers`.
      */
     getCounts() {

@@ -11,6 +11,7 @@ import {
 } from '../../codex/codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { codexFrameVariantForId } from '../../codex/codex-nodes/placement/CodexNodeVisualHash.js';
 import { resolveNpcCanonicalName } from '../../system-interface/interface-shared/npcNameAliases.js';
+import { buildFactionDefaultImagePath } from '../../system-interface/interface-filter-menu/images/factionImagePaths.js';
 import {
     CODEX_CORD_STROKE_OPACITY,
     CODEX_VISUAL_DEFAULTS,
@@ -622,7 +623,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             el.dataset.codexFactionDisplay = display;
             el.dataset.codexFactionFile = ff || name;
             imgSrc = ff
-                ? `src/assets/images/Filters/Factions/${encodeURIComponent(ff)}.png`
+                ? buildFactionDefaultImagePath(ff)
                 : 'src/assets/images/Icons/Filter Icons/Faction Icon.png';
         }
 
@@ -634,6 +635,11 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         img.draggable = false;
         img.decoding = 'async';
         img.alt = name;
+        if (kind === 'faction') {
+            const ffKey = node.factionFilename || resolveGalleryFactionFilename(name) || name;
+            img.dataset.bioPortraitCategory = 'factions';
+            img.dataset.bioPortraitKey = ffKey;
+        }
         img.src = imgSrc;
         img.onerror = () => {
             img.onerror = null;

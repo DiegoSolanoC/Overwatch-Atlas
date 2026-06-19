@@ -4,7 +4,7 @@
  *
  *   - **Filter popover** (`#eventsSearchFiltersSuggestions`): heroes / npcs / factions.
  *     Each row shows the filter icon (`Heroes/<name>.png`, `NPCs/<name>.png`, or
- *     `Factions/<filename>.png`), the label, and the detail badge ("Hero" / "NPC" / "Faction").
+ *     `Factions/<filename>/Default.png`), the label, and the detail badge ("Hero" / "NPC" / "Faction").
  *
  *   - **Country popover** (`#eventsSearchCountrySuggestions`): every country whose
  *     `commonLower` substring-matches the in-progress token. Rows show the flag + label.
@@ -26,6 +26,7 @@ import {
     getTokenCandidates,
 } from './searchIndexes.js';
 import { getCurrentTokenInfo } from './searchTokenUtils.js';
+import { buildFactionDefaultImagePath } from '../../../../interface-filter-menu/images/factionImagePaths.js';
 
 /**
  * Build the filter (hero/faction/npc) popover for the orchestration `ctx`.
@@ -58,7 +59,7 @@ export function createFilterSuggestionPopover(ctx) {
             img.className = 'events-search-suggestion-flag events-search-suggestion-flag--filter-icon';
             img.alt = '';
             if (item.kind === 'faction' && item.factionFilename) {
-                img.src = `src/assets/images/Filters/Factions/${encodeURIComponent(item.factionFilename)}.png`;
+                img.src = buildFactionDefaultImagePath(item.factionFilename);
             } else if (item.kind === 'npc' && item.npcKey) {
                 img.src = `src/assets/images/Filters/NPCs/${encodeURIComponent(item.npcKey)}.png`;
             } else {

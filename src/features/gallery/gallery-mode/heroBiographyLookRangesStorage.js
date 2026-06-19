@@ -119,6 +119,9 @@ export function saveHeroBiographyLookRange(heroFilterKey, lookName, range) {
     window.dispatchEvent(new CustomEvent('heroBiographyLookRangesUpdated', {
         detail: { heroId, look },
     }));
+    window.dispatchEvent(new CustomEvent('bioBiographyLookRangesUpdated', {
+        detail: { category: 'heroes', entityId: heroId, look },
+    }));
 }
 
 /**

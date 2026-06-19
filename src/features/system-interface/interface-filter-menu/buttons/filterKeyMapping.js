@@ -2,7 +2,7 @@
  * Map a manifest entry (string id, faction object, country object, etc.) to
  * the `{ filterKey, displayName }` pair used by chips:
  *   - `filterKey`   : the canonical token stored in the state set
- *                     (e.g. `25Shambali Order`, `country:Mexico/MX.png`)
+ *                     (e.g. `Shambali Order`, `country:Mexico/MX.png`)
  *   - `displayName` : human-readable label rendered on the chip
  *
  * Also includes the manifest <-> archive matchers used by the grouped layouts

@@ -4,6 +4,7 @@ import { s } from '../../codex-canvas/core/canvasSession.js';
 import { getEventManager, getEventsFromEventManager, getGlobeController, getStandaloneEventSlide, playSoundEffect, updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { CODEX_ALLOWED_COUNTRY_KEYS, codexCountryFlagSrc } from '../placement/CodexNodePortraitMetrics.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import { buildFactionDefaultImagePath } from '../../../system-interface/interface-filter-menu/images/factionImagePaths.js';
 
 
 function openPickerAtRootPoint(worldX, worldY, anchorClientX, anchorClientY) {
@@ -253,7 +254,7 @@ function appendSuggestionRow(list, kind, heroName, faction, onPick, countryMeta 
     } else {
         labelText = faction.displayName;
         detailText = 'Faction';
-        img.src = `src/assets/images/Filters/Factions/${encodeURIComponent(faction.filename)}.png`;
+        img.src = buildFactionDefaultImagePath(faction.filename);
         img.className += ' filter-autocomplete-item-icon--faction';
     }
 

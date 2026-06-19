@@ -8,10 +8,19 @@ import {
     DEFAULT_HERO_BIO_LOOK,
 } from './heroBiographyHeroicImagePaths.js';
 import {
+    buildFactionImagePath,
+    DEFAULT_FACTION_LOOK,
+} from '../../system-interface/interface-filter-menu/images/factionImagePaths.js';
+import {
     clearHeroBiosLooksCache,
     getLooksForHero,
     loadHeroBiosLooksMap,
 } from './loadHeroBiosLooks.js';
+import {
+    clearFactionBiosLooksCache,
+    getLooksForFaction,
+    loadFactionBiosLooksMap,
+} from './loadFactionBiosLooks.js';
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import {
     clearHeroBiographyDockHeroFilter,
@@ -30,11 +39,12 @@ import {
     destroyHeroBiographyLookRangesEditor,
     initHeroBiographyLookRangesEditor,
     isHeroBiographyLookRangesEditorEnabled,
-    setHeroBiographyLookRangesEditorHero,
+    setBioBiographyLookRangesEditorEntity,
     syncHeroBiographyLookRangeEditorLook,
 } from './heroBiographyLookRangesEditor.js';
 import { isHeroBiographyLocalDev } from './heroBiographyLocalDev.js';
 import { clearHeroBiographyLookRangesCache } from './heroBiographyLookRangesStorage.js';
+import { clearFactionBiographyLookRangesCache } from './factionBiographyLookRangesStorage.js';
 import {
     destroyHeroBiographyPhraseButton,
     initHeroBiographyPhraseButton,
@@ -78,15 +88,27 @@ let portraitImg = null;
 /** @type {Record<string, string[]> | null} */
 let heroBiosLooksMap = null;
 
+/** @type {Record<string, string[]> | null} */
+let factionBiosLooksMap = null;
+
 /** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
 let currentCategory = 'heroes';
 
 /** @type {string | null} */
 let currentFilterKey = null;
 
+/** @type {HTMLElement | null} */
+let portraitEmptyEl = null;
+
 let currentLook = DEFAULT_HERO_BIO_LOOK;
 /** @type {string | null} */
 let hoverPreviewLook = null;
+
+function refreshConnectionPortraitLooks() {
+    void import('./heroBiographyConnectionPortraitLooks.js')
+        .then((m) => m.refreshGalleryConnectionPortraitLooks())
+        .catch(() => {});
+}
 let portraitLoadId = 0;
 
 /** @type {AbortController | null} */
@@ -98,6 +120,56 @@ function rewirePortraitCopy() {
     if (portraitImg) {
         wireHeroBiographyPortraitCopy(portraitImg, portraitCopyAc.signal);
     }
+}
+
+async function ensureFactionBiosLooksMap() {
+    if (!factionBiosLooksMap) {
+        factionBiosLooksMap = await loadFactionBiosLooksMap();
+    }
+    return factionBiosLooksMap;
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @returns {string}
+ */
+function defaultLookForCategory(category) {
+    return category === 'factions' ? DEFAULT_FACTION_LOOK : DEFAULT_HERO_BIO_LOOK;
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} filterKey
+ * @param {string} lookName
+ * @returns {string}
+ */
+function buildArchivePortraitPath(category, filterKey, lookName) {
+    if (category === 'factions') {
+        return buildFactionImagePath(filterKey, lookName);
+    }
+    return buildHeroBiographyLookPath(filterKey, lookName);
+}
+
+/**
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string} filterKey
+ * @returns {Promise<string[]>}
+ */
+async function loadLooksForArchiveEntity(category, filterKey) {
+    if (category === 'factions') {
+        const map = await ensureFactionBiosLooksMap();
+        return getLooksForFaction(map, filterKey);
+    }
+    const map = await ensureHeroBiosLooksMap();
+    return getLooksForHero(map, filterKey);
+}
+
+function updatePortraitEmptyMessage(category) {
+    if (!portraitEmptyEl) return;
+    portraitEmptyEl.textContent =
+        category === 'factions'
+            ? 'Faction logo not available yet'
+            : 'Heroic portrait not available yet';
 }
 
 async function ensureHeroBiosLooksMap() {
@@ -123,6 +195,7 @@ export function initHeroBiographySelection(hostEl, mainEl) {
     const empty = document.createElement('p');
     empty.className = 'gallery-mode__portrait-empty';
     empty.textContent = 'Heroic portrait not available yet';
+    portraitEmptyEl = empty;
 
     portraitEl.append(portraitImg, empty);
     hostEl.insertBefore(portraitEl, mainEl.nextSibling);
@@ -150,17 +223,23 @@ export function initHeroBiographySelection(hostEl, mainEl) {
     lookSelectEl.className = 'gallery-mode__look-select';
     lookSelectEl.title = 'Change hero look';
     lookSelectEl.addEventListener('change', () => {
-        if (!currentFilterKey || currentCategory !== 'heroes' || !lookSelectEl) return;
+        if (!currentFilterKey || !lookSelectEl) return;
+        if (currentCategory !== 'heroes' && currentCategory !== 'factions') return;
         hoverPreviewLook = null;
         currentLook = lookSelectEl.value;
-        if (isHeroBiographyLookRangesEditorEnabled()) {
+        if (
+            (currentCategory === 'heroes' || currentCategory === 'factions') &&
+            isHeroBiographyLookRangesEditorEnabled()
+        ) {
             syncHeroBiographyLookRangeEditorLook(currentLook);
         }
-        setHeroPortrait(
+        setArchivePortrait(
+            currentCategory,
             currentFilterKey,
             titleEl?.textContent || '',
             currentLook,
         );
+        refreshConnectionPortraitLooks();
     });
 
     lookField.append(lookLabel, lookSelectEl);
@@ -197,36 +276,47 @@ export function getActiveHeroBiographySelection() {
     };
 }
 
-function syncHeroOnlyControlsVisibility() {
-    const isHero = currentCategory === 'heroes';
+function syncPortraitControlsVisibility() {
+    const showPortrait = currentCategory === 'heroes' || currentCategory === 'factions';
+    const showLookPicker = showPortrait;
     if (portraitEl) {
-        portraitEl.style.display = isHero ? '' : 'none';
+        portraitEl.style.display = showPortrait ? '' : 'none';
+        portraitEl.classList.toggle('gallery-mode__portrait--faction', currentCategory === 'factions');
+        portraitEl.classList.toggle('gallery-mode__portrait--hero', currentCategory === 'heroes');
     }
     if (controlsRowEl) {
         const lookField = controlsRowEl.querySelector('.gallery-mode__look-field');
-        if (lookField) lookField.hidden = !isHero;
+        if (lookField) lookField.hidden = !showLookPicker;
     }
     if (rangesRowEl) {
-        rangesRowEl.hidden = !isHero;
+        rangesRowEl.hidden = currentCategory !== 'heroes' && currentCategory !== 'factions';
     }
+    updatePortraitEmptyMessage(currentCategory);
+}
+
+/** @deprecated internal alias */
+function syncHeroOnlyControlsVisibility() {
+    syncPortraitControlsVisibility();
 }
 
 /**
  * @param {string} lookName
  */
 export function previewHeroBiographyLook(lookName) {
-    if (!currentFilterKey || currentCategory !== 'heroes') return;
+    if (!currentFilterKey || (currentCategory !== 'heroes' && currentCategory !== 'factions')) return;
     if (hoverPreviewLook === lookName) return;
 
     hoverPreviewLook = lookName;
     if (lookSelectEl && lookSelectEl.value !== lookName) {
         lookSelectEl.value = lookName;
     }
-    setHeroPortrait(
+    setArchivePortrait(
+        currentCategory,
         currentFilterKey,
         titleEl?.textContent || '',
         lookName,
     );
+    void refreshConnectionPortraitLooks();
 }
 
 /**
@@ -234,18 +324,21 @@ export function previewHeroBiographyLook(lookName) {
  * @param {string} lookName
  */
 export function commitHeroBiographyLook(lookName) {
-    if (!currentFilterKey || currentCategory !== 'heroes' || !lookName) return;
+    if (!currentFilterKey || !lookName) return;
+    if (currentCategory !== 'heroes' && currentCategory !== 'factions') return;
 
     hoverPreviewLook = null;
     currentLook = lookName;
     if (lookSelectEl && lookSelectEl.value !== lookName) {
         lookSelectEl.value = lookName;
     }
-    setHeroPortrait(
+    setArchivePortrait(
+        currentCategory,
         currentFilterKey,
         titleEl?.textContent || '',
         lookName,
     );
+    void refreshConnectionPortraitLooks();
 }
 
 function clearChipVisual(wrap, chip) {
@@ -296,41 +389,46 @@ function populateLookSelect(looks) {
 }
 
 /**
- * @param {string | null} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string | null} filterKey
  * @param {string} displayName
  * @param {string} lookName
  */
-function setHeroPortrait(heroFilterKey, displayName, lookName) {
+function setArchivePortrait(category, filterKey, displayName, lookName) {
     if (!portraitEl || !portraitImg) return;
 
-    if (!heroFilterKey) {
+    const cat = normalizeBioBiographyCategory(category);
+
+    if (!filterKey || (cat !== 'heroes' && cat !== 'factions')) {
         portraitEl.classList.remove('is-visible', 'has-image');
         portraitEl.setAttribute('aria-hidden', 'true');
         portraitImg.onload = null;
         portraitImg.onerror = null;
         portraitImg.removeAttribute('src');
-        delete portraitImg.dataset.heroBioLook;
-        delete portraitImg.dataset.heroBioHero;
+        delete portraitImg.dataset.bioLook;
+        delete portraitImg.dataset.bioEntity;
+        delete portraitImg.dataset.bioCategory;
         portraitImg.alt = '';
         resetHeroBiographyPortraitScale(portraitImg);
         return;
     }
 
-    const look = lookName || DEFAULT_HERO_BIO_LOOK;
+    const look = lookName || defaultLookForCategory(cat);
     const alt = displayName ? `${displayName} — ${look}` : look;
-    const heroKey = String(heroFilterKey).trim();
+    const entityKey = String(filterKey).trim();
 
     if (
-        portraitImg.dataset.heroBioHero === heroKey &&
-        portraitImg.dataset.heroBioLook === look &&
+        portraitImg.dataset.bioEntity === entityKey &&
+        portraitImg.dataset.bioLook === look &&
+        portraitImg.dataset.bioCategory === cat &&
         portraitEl.classList.contains('has-image') &&
         portraitImg.getAttribute('src')
     ) {
         portraitEl.classList.add('is-visible');
         portraitEl.setAttribute('aria-hidden', 'false');
         if (portraitImg.alt !== alt) portraitImg.alt = alt;
-        if (portraitImg.naturalWidth) {
-            void applyHeroBiographyPortraitScale(portraitImg, heroKey);
+        if (cat === 'heroes' && portraitImg.naturalWidth) {
+            void applyHeroBiographyPortraitScale(portraitImg, entityKey);
         }
         return;
     }
@@ -343,35 +441,52 @@ function setHeroPortrait(heroFilterKey, displayName, lookName) {
     portraitImg.onerror = null;
     portraitImg.removeAttribute('src');
     resetHeroBiographyPortraitScale(portraitImg);
-    portraitImg.dataset.heroBioHero = heroKey;
-    portraitImg.dataset.heroBioLook = look;
+    portraitImg.dataset.bioEntity = entityKey;
+    portraitImg.dataset.bioLook = look;
+    portraitImg.dataset.bioCategory = cat;
     portraitImg.alt = alt;
 
-    const src = buildHeroBiographyLookPath(heroFilterKey, look);
+    const src = buildArchivePortraitPath(cat, filterKey, look);
     const loadId = ++portraitLoadId;
 
     portraitImg.onload = () => {
         if (loadId !== portraitLoadId) return;
-        if (portraitImg.dataset.heroBioHero !== heroKey) return;
-        void applyHeroBiographyPortraitScale(portraitImg, heroKey);
+        if (portraitImg.dataset.bioEntity !== entityKey) return;
+        if (cat === 'heroes') {
+            void applyHeroBiographyPortraitScale(portraitImg, entityKey);
+        } else {
+            resetHeroBiographyPortraitScale(portraitImg);
+        }
         portraitEl?.classList.add('has-image');
     };
     portraitImg.onerror = () => {
         if (loadId !== portraitLoadId) return;
-        if (portraitImg.dataset.heroBioHero !== heroKey) return;
+        if (portraitImg.dataset.bioEntity !== entityKey) return;
         portraitEl?.classList.remove('has-image');
         portraitImg.removeAttribute('src');
-        delete portraitImg.dataset.heroBioLook;
-        delete portraitImg.dataset.heroBioHero;
+        delete portraitImg.dataset.bioLook;
+        delete portraitImg.dataset.bioEntity;
+        delete portraitImg.dataset.bioCategory;
         resetHeroBiographyPortraitScale(portraitImg);
     };
 
     portraitImg.src = src;
 
     if (portraitImg.complete && portraitImg.naturalWidth) {
-        void applyHeroBiographyPortraitScale(portraitImg, heroKey);
+        if (cat === 'heroes') {
+            void applyHeroBiographyPortraitScale(portraitImg, entityKey);
+        }
         portraitEl.classList.add('has-image');
     }
+}
+
+/**
+ * @param {string | null} heroFilterKey
+ * @param {string} displayName
+ * @param {string} lookName
+ */
+function setHeroPortrait(heroFilterKey, displayName, lookName) {
+    setArchivePortrait('heroes', heroFilterKey, displayName, lookName);
 }
 
 /**
@@ -387,35 +502,41 @@ async function applyBioSelection(category, filterKey, displayName) {
     hoverPreviewLook = null;
     currentCategory = cat;
     currentFilterKey = filterKey;
-    currentLook = DEFAULT_HERO_BIO_LOOK;
-    syncHeroOnlyControlsVisibility();
+    currentLook = defaultLookForCategory(cat);
+    syncPortraitControlsVisibility();
 
-    if (cat === 'heroes') {
+    if (cat === 'heroes' || cat === 'factions') {
         /** @type {string[]} */
-        let looks = [DEFAULT_HERO_BIO_LOOK];
+        let looks = [defaultLookForCategory(cat)];
         try {
-            const map = await ensureHeroBiosLooksMap();
-            looks = getLooksForHero(map, filterKey);
+            looks = await loadLooksForArchiveEntity(cat, filterKey);
             populateLookSelect(looks);
-            currentLook = looks.includes(DEFAULT_HERO_BIO_LOOK)
-                ? DEFAULT_HERO_BIO_LOOK
-                : looks[0];
+            const preferred = defaultLookForCategory(cat);
+            currentLook = looks.includes(preferred) ? preferred : looks[0];
             if (lookSelectEl) {
                 lookSelectEl.value = currentLook;
             }
         } catch (err) {
-            console.warn('[gallery] Could not load hero looks:', err);
-            looks = [DEFAULT_HERO_BIO_LOOK];
+            console.warn(`[gallery] Could not load ${cat} looks:`, err);
+            looks = [defaultLookForCategory(cat)];
             populateLookSelect(looks);
-            if (lookSelectEl) lookSelectEl.value = DEFAULT_HERO_BIO_LOOK;
+            if (lookSelectEl) lookSelectEl.value = defaultLookForCategory(cat);
         }
-        setHeroPortrait(filterKey, displayName, currentLook);
-        setHeroBiographyLookRangesEditorHero(filterKey, currentLook);
-        void setHeroBiographyPhraseButtonHero(filterKey);
+        setArchivePortrait(cat, filterKey, displayName, currentLook);
+        if (cat === 'heroes' || cat === 'factions') {
+            setBioBiographyLookRangesEditorEntity(cat, filterKey, currentLook);
+        } else {
+            setBioBiographyLookRangesEditorEntity(null, null);
+        }
+        if (cat === 'heroes') {
+            void setHeroBiographyPhraseButtonHero(filterKey);
+        } else {
+            void setHeroBiographyPhraseButtonHero(null);
+        }
     } else {
         populateLookSelect([]);
-        setHeroPortrait(null, '', DEFAULT_HERO_BIO_LOOK);
-        setHeroBiographyLookRangesEditorHero(null);
+        setArchivePortrait(null, null, '', defaultLookForCategory('heroes'));
+        setBioBiographyLookRangesEditorEntity(null, null);
         void setHeroBiographyPhraseButtonHero(null);
     }
 
@@ -432,13 +553,13 @@ function clearHeroSelectionUi() {
     currentCategory = 'heroes';
     currentFilterKey = null;
     currentLook = DEFAULT_HERO_BIO_LOOK;
-    syncHeroOnlyControlsVisibility();
+    syncPortraitControlsVisibility();
     populateLookSelect([]);
-    setHeroBiographyLookRangesEditorHero(null);
+    setBioBiographyLookRangesEditorEntity(null, null);
     void setHeroBiographyPhraseButtonHero(null);
     void setBioBiographyArchiveDescription(null, null);
     setTitle('');
-    setHeroPortrait(null, '', DEFAULT_HERO_BIO_LOOK);
+    setArchivePortrait(null, null, '', DEFAULT_HERO_BIO_LOOK);
     clearHeroBiographyDockHeroFilter();
     refreshHeroBiographyDockPagination();
 }
@@ -516,9 +637,12 @@ export function destroyHeroBiographySelection() {
     portraitCopyAc?.abort();
     portraitCopyAc = null;
     clearHeroBiosLooksCache();
+    clearFactionBiosLooksCache();
     clearHeroBiographyLookRangesCache();
+    clearFactionBiographyLookRangesCache();
     clearHeroPhrasesCache();
     heroBiosLooksMap = null;
+    factionBiosLooksMap = null;
     clearHeroBiographyPortraitScaleCache();
     headerEl = null;
     titleEl = null;
@@ -527,4 +651,5 @@ export function destroyHeroBiographySelection() {
     lookSelectEl = null;
     portraitEl = null;
     portraitImg = null;
+    portraitEmptyEl = null;
 }

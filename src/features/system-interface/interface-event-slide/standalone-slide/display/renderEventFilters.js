@@ -7,7 +7,7 @@
  * the original method's `this`).
  */
 
-export function runRenderEventFilters(slide, event) {
+export async function runRenderEventFilters(slide, event) {
             const filtersSection = document.getElementById('eventFiltersSection');
             const filtersList = document.getElementById('eventFiltersList');
             if (!filtersSection || !filtersList) return;
@@ -106,6 +106,13 @@ export function runRenderEventFilters(slide, event) {
                 lh?.updateRelevantLocationsSlideFromSecondaryPlaces?.(event);
             } else {
                 lh?.clearRelevantLocationsSlideDom?.();
+            }
+
+            try {
+                const portraitLooks = await import('../../../../gallery/gallery-mode/factionBiographyPortraitLooks.js');
+                await portraitLooks.loadFactionBiographyLooksMap();
+            } catch {
+                /* relevancy HTML falls back to Default.png */
             }
 
             lh?.updateStoryFilterPlacesSlideFromEvent?.(event);

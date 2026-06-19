@@ -3,6 +3,7 @@
  */
 
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
+import { refreshGalleryConnectionPortraitLooks } from './heroBiographyConnectionPortraitLooks.js';
 
 /**
  * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
@@ -39,6 +40,8 @@ export function renderHeroBiographyConnectionsView(container, entry, category = 
 
     const wire = window.__SlideBioConnections?.wireStoryFilterSectionBioArchiveNav;
     if (typeof wire === 'function') wire(container);
+
+    void refreshGalleryConnectionPortraitLooks();
 }
 
 /**

@@ -6,13 +6,15 @@
  * which label/detail text to use, and which icon CSS modifier to apply:
  *
  *   - **hero**     → `Filters/Heroes/<name>.png`     + `--hero` modifier
- *   - **faction**  → `Filters/Factions/<filename>.png` + `--faction` modifier
+ *   - **faction**  → `Filters/Factions/<filename>/Default.png` + `--faction` modifier
  *   - **npc**      → `Filters/NPCs/<name>.png`       + `--npc` modifier
  *   - **country**  → flag image via `LocationFlagHelpers.flagSrc(file)` + `--flag` modifier
  *
  * The picked row calls `onPick()` (and stops propagation) so the host caller can write the
  * chosen value back into the input — the pick text is intentionally not decided here.
  */
+
+import { buildFactionDefaultImagePath } from '../../../../interface-filter-menu/images/factionImagePaths.js';
 
 export function renderTokenPickRow(listEl, { matchHeroName, matchFaction, matchNpcName, matchCountry, onPick }) {
     const row = document.createElement('button');
@@ -36,7 +38,7 @@ export function renderTokenPickRow(listEl, { matchHeroName, matchFaction, matchN
     } else if (matchFaction != null) {
         labelText = matchFaction.displayName;
         detailText = 'Faction';
-        img.src = `src/assets/images/Filters/Factions/${encodeURIComponent(matchFaction.filename)}.png`;
+        img.src = buildFactionDefaultImagePath(matchFaction.filename);
         img.className += ' filter-autocomplete-item-icon--faction';
     } else if (matchNpcName != null) {
         labelText = matchNpcName;

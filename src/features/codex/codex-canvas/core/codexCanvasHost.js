@@ -53,6 +53,10 @@ import {
     refreshCodexBioConnectionTimelineIndex,
 } from '../../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
 import { applyCodexTimelineRangeVisualRefresh } from '../../codex-bio-archive-sync/timeline/CodexTimelineRangeSync.js';
+import {
+    initCodexFactionPortraitLookListener,
+    teardownCodexFactionPortraitLookListener,
+} from '../../codex-bio-archive-sync/timeline/CodexFactionPortraitLookSync.js';
 
 export function initCodexCanvas(rootElement) {
     destroyCodexCanvas();
@@ -286,6 +290,7 @@ export function initCodexCanvas(rootElement) {
         () => ({ nodes: s.codexAllNodes, edges: s.codexEdges }),
         applyCodexTimelineGateFromDock,
     );
+    initCodexFactionPortraitLookListener();
 
     if (typeof window !== 'undefined') {
         window.__codexApplyTimelineGateFromDock = applyCodexTimelineGateFromDock;
@@ -311,6 +316,7 @@ export function initCodexCanvas(rootElement) {
 }
 
 export function destroyCodexCanvas() {
+    teardownCodexFactionPortraitLookListener();
     api.teardownCodexStageControls?.();
     unmountCodexDockToggles();
     disconnectCodexImageObserver();

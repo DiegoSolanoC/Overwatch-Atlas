@@ -1,9 +1,11 @@
+import { buildFactionFilterImagePath } from './factionImagePaths.js';
+
 /**
  * Path construction for filter chip thumbnails.
  *
  * Each filter type follows a different URL convention because the underlying
  * assets are organized differently on disk:
- *   - `factions`   : `<folder>/<encoded filename>.png`
+ *   - `factions`   : `<folder>/<encoded filename>/<look>.png` (default look: Default)
  *   - `countries`  : `<folder>/<encoded flag-file path>` (slashes preserved)
  *   - `music`      : `src/assets/images/Music/<encoded icon name>.png`
  *   - `heroes` / `npcs` (default): `<folder>/<encoded item>.png`
@@ -33,7 +35,7 @@ export function generateCacheBuster() {
  */
 export function buildFilterImagePath(item, type, folder) {
     if (type === 'factions') {
-        return `${folder}/${encodeURIComponent(item.filename)}.png`;
+        return buildFactionFilterImagePath(item, folder);
     }
     if (type === 'countries') {
         const fn = (item && item.flagFile != null) ? String(item.flagFile).trim() : '';

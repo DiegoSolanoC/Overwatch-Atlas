@@ -336,6 +336,9 @@ export function createStandaloneEventSlide() {
         hideImageOverlay() { return runHideImageOverlay(this); },
     };
     wireBioDeleteButton(slide);
+    void import('../../../gallery/gallery-mode/factionBiographyPortraitLooks.js')
+        .then((m) => m.loadFactionBiographyLooksMap())
+        .catch(() => {});
     return slide;
 }
 

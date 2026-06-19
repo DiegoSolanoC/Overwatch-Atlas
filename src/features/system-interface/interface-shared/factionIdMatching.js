@@ -1,5 +1,6 @@
 /**
- * Faction id matching: PNG filenames may use a numeric prefix (e.g. 25Shambali Order.png); filter chip key is manifest `filename`.
+ * Faction id matching: legacy event tokens may still carry an old numeric prefix;
+ * manifest `filename` is the PNG basename (e.g. Shambali Order.png).
  * Event data may store the prefixed filename, manifest displayName, or other aliases — all should match
  * the same globe filter chip (filterKey = manifest filename).
  *
@@ -33,7 +34,7 @@
         phreaks: 'the phreaks',
         meka: 'm.e.k.a squad',
         yokai: 'yokai gang',
-        /* Legacy names → La Coterie (manifest filename 18La Coterie.png) */
+        /* Legacy names → La Coterie (manifest filename La Coterie.png) */
         'livre tournois': 'la coterie',
         'max\'s vault': 'la coterie'
     };

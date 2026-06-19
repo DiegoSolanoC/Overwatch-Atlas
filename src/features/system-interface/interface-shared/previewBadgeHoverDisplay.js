@@ -10,7 +10,7 @@
  * Starred NPC/faction groups fill the large row before heroes.
  */
 
-import { resolveNpcCanonicalName } from './npcNameAliases.js';
+import { buildFactionDefaultImagePath } from '../interface-filter-menu/images/factionImagePaths.js';
 import {
     canonicalizeFactionTokens,
     canonicalizeHeroTokens,
@@ -248,7 +248,7 @@ export function resolvePreviewBadgeFactionIcon(token) {
         displayName,
         filename: filename || displayName,
         src: filename
-            ? `${FACTION_IMG}/${encodeURIComponent(filename)}.png`
+            ? buildFactionDefaultImagePath(filename)
             : FACTION_FALLBACK,
     };
 }

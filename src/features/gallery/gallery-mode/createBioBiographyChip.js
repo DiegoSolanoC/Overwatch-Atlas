@@ -25,7 +25,8 @@ function createChipImage(category, filterKey, displayName, imageService) {
     const cat = normalizeBioBiographyCategory(category);
     const folder = IMAGE_FOLDER_BY_CATEGORY[cat] || FILTER_IMAGE_PATHS.HEROES;
     const filterType = cat === 'factions' ? 'factions' : cat === 'npcs' ? 'npcs' : 'heroes';
-    const imagePath = imageService.buildImagePath(filterKey, filterType, folder);
+    const pathItem = filterType === 'factions' ? { filename: filterKey } : filterKey;
+    const imagePath = imageService.buildImagePath(pathItem, filterType, folder);
     const img = imageService.createImageElement(imagePath, filterType, filterKey, folder);
     img.alt = displayName;
     return img;

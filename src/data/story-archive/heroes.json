@@ -794,7 +794,7 @@
             "y": 980,
             "scale": 5,
             "bgColor": "#003b62",
-            "factionFilename": "00Overwatch"
+            "factionFilename": "Overwatch"
           },
           {
             "id": "gcc-link-hero-pharah",
@@ -839,7 +839,7 @@
             "y": 1200,
             "scale": 2,
             "bgColor": "#e8b460",
-            "factionFilename": "34Search & Rescue"
+            "factionFilename": "Search & Rescue"
           },
           {
             "id": "gcc-link-hero-soldier-76",

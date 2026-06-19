@@ -13,6 +13,7 @@ import {
     reapplyCodexTargetedSelectionIfActive,
     resolveCodexNodeIdFromNameQuery
 } from './CodexTargetedSelection.js';
+import { buildFactionDefaultImagePath } from '../../../system-interface/interface-filter-menu/images/factionImagePaths.js';
 
 /** @type {Set<string>} */
 let draftSeedIds = new Set();
@@ -97,7 +98,7 @@ function appendTargetSuggestionRow(list, row, onPick) {
         detailText = 'Country';
     } else if (kind === 'faction' && node) {
         const fn = node.factionFilename || name;
-        img.src = `src/assets/images/Filters/Factions/${encodeURIComponent(fn)}.png`;
+        img.src = buildFactionDefaultImagePath(fn);
         img.className += ' filter-autocomplete-item-icon--faction';
         detailText = 'Faction';
     }

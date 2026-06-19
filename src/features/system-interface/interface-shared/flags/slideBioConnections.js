@@ -135,10 +135,11 @@
                 '" alt="" width="52" height="52" decoding="async" draggable="false" />'
             );
         }
-        var srcF = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '.png';
+        var srcF = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '/Default.png';
         var dataFac = encodeURIComponent(t);
         return (
             '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction event-slide-bio-connections__portrait" ' +
+            'data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '" ' +
             'data-faction-open="' + dataFac + '" role="button" tabindex="0" ' +
             'src="' + srcF + '" alt="" title="Open ' + R.escapeHtmlAttr(t) +
             ' in Factions archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +

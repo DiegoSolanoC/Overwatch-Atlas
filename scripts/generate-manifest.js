@@ -114,32 +114,75 @@ function getHeroesFromFolder(folderPath) {
     }
 }
 
-/** PNG basename keeps optional numeric prefix for file naming; labels use the rest (e.g. 01Blackwatch → Blackwatch). */
-function factionDisplayNameFromBasename(base) {
-    const m = String(base).match(/^(\d+)(.*)$/);
-    if (m && m[2] != null) {
-        const rest = m[2].trim();
-        if (rest) return rest;
+/** Faction folder name = manifest `filename`; display label matches folder name. */
+function factionEntryFromFolderName(folderName) {
+    const name = String(folderName).trim();
+    return { filename: name, displayName: name };
+}
+
+/** Default first, then A–Z (basename without .png). */
+function sortFactionLookNames(fileNames) {
+    const seen = new Set();
+    const unique = [];
+    for (const file of fileNames) {
+        const base = String(file).replace(/\.png$/i, '').trim();
+        if (!base || seen.has(base)) continue;
+        seen.add(base);
+        unique.push(base);
     }
-    return base;
+    const norm = (s) => s.toLowerCase();
+    const defaults = unique.filter((x) => norm(x) === 'default');
+    const rest = unique.filter((x) => norm(x) !== 'default');
+    rest.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
+    return [...defaults, ...rest];
 }
 
 function getFactionsFromFolder(folderPath) {
     try {
-        const files = fs.readdirSync(folderPath);
-        return files
-            .filter((file) => file.toLowerCase().endsWith('.png'))
-            .map((file) => {
-                const filename = file.replace(/\.png$/i, '');
-                return {
-                    filename,
-                    displayName: factionDisplayNameFromBasename(filename)
-                };
-            });
+        const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+        const factions = [];
+        for (const entry of entries) {
+            if (!entry.isDirectory()) continue;
+            const factionDir = path.join(folderPath, entry.name);
+            let files;
+            try {
+                files = fs.readdirSync(factionDir);
+            } catch {
+                continue;
+            }
+            const hasPng = files.some((f) => f.toLowerCase().endsWith('.png'));
+            if (!hasPng) continue;
+            factions.push(factionEntryFromFolderName(entry.name));
+        }
+        return factions;
     } catch (error) {
         console.error(`Error reading folder ${folderPath}:`, error);
         return [];
     }
+}
+
+function getFactionBiosFromFolder(folderPath) {
+    const out = {};
+    try {
+        const entries = fs.readdirSync(folderPath, { withFileTypes: true });
+        for (const entry of entries) {
+            if (!entry.isDirectory()) continue;
+            const factionId = entry.name;
+            const factionDir = path.join(folderPath, entry.name);
+            let files;
+            try {
+                files = fs.readdirSync(factionDir);
+            } catch {
+                continue;
+            }
+            const pngs = files.filter((f) => f.toLowerCase().endsWith('.png'));
+            if (pngs.length === 0) continue;
+            out[factionId] = sortFactionLookNames(pngs);
+        }
+    } catch (error) {
+        console.error(`Error reading folder ${folderPath}:`, error);
+    }
+    return out;
 }
 
 /** Heroic first, Classic second, remaining looks A–Z (basename without .png). */
@@ -241,6 +284,7 @@ factions = orderFactionsByArchive(factions, readStoryArchiveNames(path.join(data
 
 const music = getMusicFiles(musicFolder);
 const heroBios = getHeroBiosFromFolder(biosFolder);
+const factionBios = getFactionBiosFromFolder(factionsFolder);
 const heroPhrases = getHeroPhrasesFromFolder(phrasesFolder);
 
 const manifest = {
@@ -252,6 +296,7 @@ const manifest = {
     npcs,
     music,
     heroBios,
+    factionBios,
     heroPhrases
 };
 
@@ -259,5 +304,5 @@ const manifestPath = path.join(dataDir, 'platform', 'manifest.json');
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 console.log(`${manifestPath} written from disk assets (heroes/factions/npcs ordered like story-archive JSON).`);
 console.log(
-    `  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}, heroBios: ${Object.keys(heroBios).length}, heroPhrases: ${Object.keys(heroPhrases).length}`
+    `  heroes: ${heroes.length}, factions: ${factions.length}, npcs: ${npcs.length}, music: ${music.length}, heroBios: ${Object.keys(heroBios).length}, factionBios: ${Object.keys(factionBios).length}, heroPhrases: ${Object.keys(heroPhrases).length}`
 );

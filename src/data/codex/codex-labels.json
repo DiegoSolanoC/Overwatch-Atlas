@@ -4,7 +4,7 @@
     {
       "id": "cn-1776187918958-thq2voxg",
       "kind": "faction",
-      "factionFilename": "00Overwatch",
+      "factionFilename": "Overwatch",
       "factionDisplay": "Overwatch",
       "x": 13238.55719929182,
       "y": 7305.950237872404,
@@ -14,7 +14,7 @@
     {
       "id": "cn-1776187942174-ajc0gk24",
       "kind": "faction",
-      "factionFilename": "33Talon Empire",
+      "factionFilename": "Talon Empire",
       "factionDisplay": "Talon Empire",
       "x": 7558.02751243781,
       "y": 7764.984013267,
@@ -24,7 +24,7 @@
     {
       "id": "cn-1776188289883-mispvcjc",
       "kind": "faction",
-      "factionFilename": "26Null Sector",
+      "factionFilename": "Null Sector",
       "factionDisplay": "Null Sector",
       "x": 6478.507512437811,
       "y": 5251.8040132669985,
@@ -34,7 +34,7 @@
     {
       "id": "cn-1776188356901-o2jntomc",
       "kind": "faction",
-      "factionFilename": "01Blackwatch",
+      "factionFilename": "Blackwatch",
       "factionDisplay": "Blackwatch",
       "x": 12262.884774930593,
       "y": 8792.610951535647,
@@ -44,7 +44,7 @@
     {
       "id": "cn-1776188364565-922eb7sp",
       "kind": "faction",
-      "factionFilename": "02Ecopoints",
+      "factionFilename": "Ecopoints",
       "factionDisplay": "Ecopoints",
       "x": 14318.6,
       "y": 6520.099185806684,
@@ -54,7 +54,7 @@
     {
       "id": "cn-1776188382194-qbacqou6",
       "kind": "faction",
-      "factionFilename": "34Search & Rescue",
+      "factionFilename": "Search & Rescue",
       "factionDisplay": "Search & Rescue",
       "x": 11752.557456872624,
       "y": 7455.261767301388,
@@ -64,7 +64,7 @@
     {
       "id": "cn-1776188391402-t41oq8ia",
       "kind": "faction",
-      "factionFilename": "35IJC",
+      "factionFilename": "IJC",
       "factionDisplay": "IJC",
       "x": 12075.39751243781,
       "y": 7731.7640132669985,
@@ -74,7 +74,7 @@
     {
       "id": "cn-1776188526366-hpc13j68",
       "kind": "faction",
-      "factionFilename": "25Shambali Order",
+      "factionFilename": "Shambali Order",
       "factionDisplay": "Shambali Order",
       "x": 8284.262915889616,
       "y": 5248.127221186159,
@@ -84,7 +84,7 @@
     {
       "id": "cn-1776188555343-jwbghswm",
       "kind": "faction",
-      "factionFilename": "36The Sombra Collective",
+      "factionFilename": "The Sombra Collective",
       "factionDisplay": "The Sombra Collective",
       "x": 10819.5,
       "y": 8748.499902911808,
@@ -94,7 +94,7 @@
     {
       "id": "cn-1776188568433-ct7ioax0",
       "kind": "faction",
-      "factionFilename": "23The Chernobog Conspiracy",
+      "factionFilename": "The Chernobog Conspiracy",
       "factionDisplay": "The Chernobog Conspiracy",
       "x": 10459.99751243781,
       "y": 7743.154013267,
@@ -104,7 +104,7 @@
     {
       "id": "cn-1776188694977-64cmnrtf",
       "kind": "faction",
-      "factionFilename": "04Omnica Corporation",
+      "factionFilename": "Omnica Corporation",
       "factionDisplay": "Omnica Corporation",
       "x": 9487.16751243781,
       "y": 5283.834013266999,
@@ -114,7 +114,7 @@
     {
       "id": "cn-1776188719179-cltz518g",
       "kind": "faction",
-      "factionFilename": "36The Gwishin",
+      "factionFilename": "The Gwishin",
       "factionDisplay": "The Gwishin",
       "x": 9007.176874188284,
       "y": 6346.892804146401,
@@ -124,7 +124,7 @@
     {
       "id": "cn-1776188731351-mg1n7cxj",
       "kind": "faction",
-      "factionFilename": "05Vishkar Corporation",
+      "factionFilename": "Vishkar Corporation",
       "factionDisplay": "Vishkar Corporation",
       "x": 7013.458456586863,
       "y": 6580.710627564552,
@@ -134,7 +134,7 @@
     {
       "id": "cn-1776188753741-063ofkct",
       "kind": "faction",
-      "factionFilename": "31Helix Securities",
+      "factionFilename": "Helix Securities",
       "factionDisplay": "Helix Securities",
       "x": 11121.697512437811,
       "y": 6586.564013267,
@@ -144,7 +144,7 @@
     {
       "id": "cn-1776188770813-45776biy",
       "kind": "faction",
-      "factionFilename": "30M.E.K.A Squad",
+      "factionFilename": "M.E.K.A Squad",
       "factionDisplay": "M.E.K.A Squad",
       "x": 9787.50751243781,
       "y": 6613.784013266999,
@@ -154,7 +154,7 @@
     {
       "id": "cn-1776188801774-u140ql4g",
       "kind": "faction",
-      "factionFilename": "15Caribbean Coalition",
+      "factionFilename": "Caribbean Coalition",
       "factionDisplay": "Caribbean Coalition",
       "x": 6532.815045427233,
       "y": 8565.47,
@@ -164,7 +164,7 @@
     {
       "id": "cn-1776188809077-v0ocu0zr",
       "kind": "faction",
-      "factionFilename": "09Crusader Initiative",
+      "factionFilename": "Crusader Initiative",
       "factionDisplay": "Crusader Initiative",
       "x": 14871.048485740233,
       "y": 8316.974984992197,
@@ -174,7 +174,7 @@
     {
       "id": "cn-1776188817340-0bswtany",
       "kind": "faction",
-      "factionFilename": "06Inti Warriors",
+      "factionFilename": "Inti Warriors",
       "factionDisplay": "Inti Warriors",
       "x": 13444.3948583199,
       "y": 9492.46,
@@ -184,7 +184,7 @@
     {
       "id": "cn-1776188997910-x5sjqser",
       "kind": "faction",
-      "factionFilename": "14Deadlock Rebels",
+      "factionFilename": "Deadlock Rebels",
       "factionDisplay": "Deadlock Rebels",
       "x": 9068.617512437811,
       "y": 7429.204013266999,
@@ -194,7 +194,7 @@
     {
       "id": "cn-1776189030714-9smuueld",
       "kind": "faction",
-      "factionFilename": "08Ironclad Guild",
+      "factionFilename": "Ironclad Guild",
       "factionDisplay": "Ironclad Guild",
       "x": 14813.79751243781,
       "y": 9465.164013266998,
@@ -204,7 +204,7 @@
     {
       "id": "cn-1776189118821-pp4icyoj",
       "kind": "faction",
-      "factionFilename": "27The Martins Collective",
+      "factionFilename": "The Martins Collective",
       "factionDisplay": "The Martins Collective",
       "x": 14556.515203185409,
       "y": 5687.120896776642,
@@ -214,7 +214,7 @@
     {
       "id": "cn-1776189155391-blrdsyra",
       "kind": "faction",
-      "factionFilename": "29The Phreaks",
+      "factionFilename": "The Phreaks",
       "factionDisplay": "The Phreaks",
       "x": 13218.097512437811,
       "y": 5343.464013266999,
@@ -224,7 +224,7 @@
     {
       "id": "cn-1776189184588-1h8nrpbi",
       "kind": "faction",
-      "factionFilename": "20Los Muertos",
+      "factionFilename": "Los Muertos",
       "factionDisplay": "Los Muertos",
       "x": 11196.416656083766,
       "y": 9178.707834544308,
@@ -234,7 +234,7 @@
     {
       "id": "cn-1776189210560-3uu1uqoc",
       "kind": "faction",
-      "factionFilename": "37 Yamagami Blades",
+      "factionFilename": "Yamagami Blades",
       "factionDisplay": "Yamagami Blades",
       "x": 7871.766873293931,
       "y": 9904.021000825,
@@ -244,7 +244,7 @@
     {
       "id": "cn-1776189217121-65fhi9r3",
       "kind": "faction",
-      "factionFilename": "21Shimada Clan",
+      "factionFilename": "Shimada Clan",
       "factionDisplay": "Shimada Clan",
       "x": 8336.912274212533,
       "y": 9156.238900841548,
@@ -254,7 +254,7 @@
     {
       "id": "cn-1776189227153-n4wer0l4",
       "kind": "faction",
-      "factionFilename": "22Hashimoto Clan",
+      "factionFilename": "Hashimoto Clan",
       "factionDisplay": "Hashimoto Clan",
       "x": 6470.320600438347,
       "y": 9022.434900083348,
@@ -264,7 +264,7 @@
     {
       "id": "cn-1776189240157-xzlqn0e9",
       "kind": "faction",
-      "factionFilename": "32Yokai Gang",
+      "factionFilename": "Yokai Gang",
       "factionDisplay": "Yokai Gang",
       "x": 7396.57,
       "y": 8888.39826169876,
@@ -274,7 +274,7 @@
     {
       "id": "cn-1776189327254-mrvclha3",
       "kind": "faction",
-      "factionFilename": "13Lumérico Incorporated",
+      "factionFilename": "Lumérico Incorporated",
       "factionDisplay": "Lumérico Incorporated",
       "x": 9168.39751243781,
       "y": 9203.264013266999,
@@ -284,7 +284,7 @@
     {
       "id": "cn-1776189340037-y6nqml1q",
       "kind": "faction",
-      "factionFilename": "39Heliotech Industries",
+      "factionFilename": "Heliotech Industries",
       "factionDisplay": "Heliotech Industries",
       "x": 9156.930683510513,
       "y": 9652.000683510512,
@@ -294,7 +294,7 @@
     {
       "id": "cn-1776189345903-w13tkb9a",
       "kind": "faction",
-      "factionFilename": "38Pacific Energy Solutions",
+      "factionFilename": "Pacific Energy Solutions",
       "factionDisplay": "Pacific Energy Solutions",
       "x": 8911.177368761933,
       "y": 9514.30347432497,
@@ -304,7 +304,7 @@
     {
       "id": "cn-1776189352476-l8qtx93r",
       "kind": "faction",
-      "factionFilename": "24Oasis Ministries",
+      "factionFilename": "Oasis Ministries",
       "factionDisplay": "Oasis Ministries",
       "x": 9203.703251225252,
       "y": 8474.185322254312,
@@ -314,7 +314,7 @@
     {
       "id": "cn-1776189366354-irv4wkok",
       "kind": "faction",
-      "factionFilename": "07Lucheng Interstellar",
+      "factionFilename": "Lucheng Interstellar",
       "factionDisplay": "Lucheng Interstellar",
       "x": 14968.482525602521,
       "y": 6562.317534300306,
@@ -324,7 +324,7 @@
     {
       "id": "cn-1776189386504-93hariwi",
       "kind": "faction",
-      "factionFilename": "10Wuxing University",
+      "factionFilename": "Wuxing University",
       "factionDisplay": "Wuxing University",
       "x": 14968.150000348918,
       "y": 7552.620123701123,
@@ -334,7 +334,7 @@
     {
       "id": "cn-1776189424359-1982a8ml",
       "kind": "faction",
-      "factionFilename": "16Junker Monarchy",
+      "factionFilename": "Junker Monarchy",
       "factionDisplay": "Junker Monarchy",
       "x": 11026.79751243781,
       "y": 5267.544013266999,
@@ -1127,7 +1127,7 @@
     {
       "id": "cn-1778780376061-i3eyor8c",
       "kind": "faction",
-      "factionFilename": "18La Coterie",
+      "factionFilename": "La Coterie",
       "factionDisplay": "La Coterie",
       "x": 8082.887512437811,
       "y": 7633.694013266999,
@@ -8544,7 +8544,7 @@
     {
       "id": "cn-1780351352986-8c3ouyfw",
       "kind": "faction",
-      "factionFilename": "19Wayfinder Society",
+      "factionFilename": "Wayfinder Society",
       "factionDisplay": "Wayfinder Society",
       "x": 13960.530255550297,
       "y": 6092.775519485192,
@@ -8884,7 +8884,7 @@
     {
       "id": "cn-1780424191331-7mgyvyou",
       "kind": "faction",
-      "factionFilename": "11Volskaya Industries",
+      "factionFilename": "Volskaya Industries",
       "factionDisplay": "Volskaya Industries",
       "x": 10455.814346345907,
       "y": 9378.945325091396,
@@ -9832,7 +9832,7 @@
     {
       "id": "cn-1781823765569-9og1696b",
       "kind": "faction",
-      "factionFilename": "12Anubis Directives",
+      "factionFilename": "Anubis Directives",
       "factionDisplay": "Anubis Directives",
       "x": 8369.037299266734,
       "y": 6372.840590419167,
@@ -9842,7 +9842,7 @@
     {
       "id": "cn-1781823910258-lpregomt",
       "kind": "faction",
-      "factionFilename": "28Deepsea Raiders",
+      "factionFilename": "Deepsea Raiders",
       "factionDisplay": "Deepsea Raiders",
       "x": 6379.4785062809315,
       "y": 8011.460818040781,
@@ -9852,7 +9852,7 @@
     {
       "id": "cn-1781823979805-s38ed1ze",
       "kind": "faction",
-      "factionFilename": "17Colosseo Gladiatori",
+      "factionFilename": "Colosseo Gladiatori",
       "factionDisplay": "Colosseo Gladiatori",
       "x": 7705.594999999999,
       "y": 7281.919535624091,

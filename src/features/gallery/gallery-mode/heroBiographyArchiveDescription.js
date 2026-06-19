@@ -17,6 +17,7 @@ import {
     renderHeroBiographyConnectionsView,
 } from './heroBiographyArchiveConnectionsView.js';
 import { createGalleryConnectionCanvas } from './galleryConnectionCanvas.js';
+import { refreshGalleryConnectionPortraitLooks } from './heroBiographyConnectionPortraitLooks.js';
 import { createInfoDescriptionTextScaleControls } from '../../system-interface/interface-shared/accessibility/infoDescriptionTextScale.js';
 import { listDisplayableConnectionEntities } from './galleryConnectionCanvasModel.js';
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
@@ -292,6 +293,7 @@ async function refreshConnectionsCanvas(presetViewEntry) {
         currentFilterKey || '',
         viewEntry?.connectionCanvas,
     );
+    void refreshGalleryConnectionPortraitLooks();
     applyConnectionsEmptyState(viewEntry);
 }
 

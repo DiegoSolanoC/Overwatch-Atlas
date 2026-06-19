@@ -394,7 +394,7 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
             
             newBtn.onmouseleave = () => {
                 if (isHeroBiographyDockFilterActive()) {
-                    onHeroBiographyDockEventHoverEnd();
+                    void onHeroBiographyDockEventHoverEnd();
                 }
 
                 if (window.SummaryInfoBadge?.hide) {

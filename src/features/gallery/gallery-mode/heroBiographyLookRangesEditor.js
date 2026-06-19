@@ -1,5 +1,5 @@
 /**
- * Per-look event range inputs (in the Look header block): two predictive fields + Confirm.
+ * Per-look event range inputs (heroes + factions): two predictive fields + Confirm.
  */
 
 import {
@@ -7,11 +7,15 @@ import {
     getLookRangeTimelineBounds,
 } from './heroBiographyLookRangesResolve.js';
 import {
+    getBioBiographyLookRange,
+    saveBioBiographyLookRange,
+} from './bioBiographyLookRangesStorage.js';
+import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
+import {
     isStoryEventNameKnown,
     resolveCanonicalStoryEventName,
     wireStoryEventNameAutocomplete,
 } from './heroBiographyEventNameAutocomplete.js';
-import { getHeroBiographyLookRange, saveHeroBiographyLookRange } from './heroBiographyLookRangesStorage.js';
 import { isHeroBiographyLocalDev } from './heroBiographyLocalDev.js';
 
 /** @type {boolean} */
@@ -32,8 +36,11 @@ let confirmBtn = null;
 /** @type {HTMLElement | null} */
 let statusEl = null;
 
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | null} */
+let activeCategory = null;
+
 /** @type {string | null} */
-let activeHeroId = null;
+let activeEntityId = null;
 
 /** @type {string | null} */
 let activeLook = null;
@@ -73,7 +80,7 @@ function updateConfirmButtonState() {
     const endOk = end && isStoryEventNameKnown(end);
     const canConfirm = startOk || endOk;
 
-    confirmBtn.disabled = !canConfirm || !activeHeroId || !activeLook;
+    confirmBtn.disabled = !canConfirm || !activeEntityId || !activeLook || !activeCategory;
 }
 
 function updateStatusFromInputs() {
@@ -81,14 +88,15 @@ function updateStatusFromInputs() {
 
     const startEvent = startInput.value.trim();
     const endEvent = endInput.value.trim();
-    const saved = activeHeroId && activeLook
-        ? getLookRangeTimelineBounds(activeHeroId, activeLook)
+    const saved = activeCategory && activeEntityId && activeLook
+        ? getLookRangeTimelineBounds(activeCategory, activeEntityId, activeLook)
         : null;
 
     if (saved) {
+        const range = getBioBiographyLookRange(activeCategory, activeEntityId, activeLook);
         statusEl.textContent = formatRangeStatus(
-            getHeroBiographyLookRange(activeHeroId, activeLook)?.startEvent || '',
-            getHeroBiographyLookRange(activeHeroId, activeLook)?.endEvent || '',
+            range?.startEvent || '',
+            range?.endEvent || '',
         ) || 'Range saved — hover dock events to preview';
         statusEl.classList.add('is-valid');
         statusEl.classList.remove('is-invalid');
@@ -112,8 +120,8 @@ function loadInputsForLook(lookName) {
     activeLook = lookName || null;
     if (!startInput || !endInput) return;
 
-    const range = activeHeroId && lookName
-        ? getHeroBiographyLookRange(activeHeroId, lookName)
+    const range = activeCategory && activeEntityId && lookName
+        ? getBioBiographyLookRange(activeCategory, activeEntityId, lookName)
         : null;
 
     startInput.value = range?.startEvent || '';
@@ -123,7 +131,7 @@ function loadInputsForLook(lookName) {
 }
 
 function onConfirm() {
-    if (!activeHeroId || !activeLook || !startInput || !endInput || !confirmBtn) return;
+    if (!activeCategory || !activeEntityId || !activeLook || !startInput || !endInput || !confirmBtn) return;
 
     const startRaw = startInput.value.trim();
     const endRaw = endInput.value.trim();
@@ -132,7 +140,7 @@ function onConfirm() {
 
     if (!startCanonical && !endCanonical) return;
 
-    saveHeroBiographyLookRange(activeHeroId, activeLook, {
+    saveBioBiographyLookRange(activeCategory, activeEntityId, activeLook, {
         startEvent: startCanonical || '',
         endEvent: endCanonical || '',
     });
@@ -147,6 +155,10 @@ function onConfirm() {
         window.flashButton(confirmBtn, 'flash-green');
     }
     window.SoundEffectsManager?.play?.('filterButton');
+}
+
+function onLookRangesUpdated() {
+    if (activeCategory && activeEntityId && activeLook) loadInputsForLook(activeLook);
 }
 
 export function isHeroBiographyLookRangesEditorEnabled() {
@@ -221,24 +233,22 @@ export function initHeroBiographyLookRangesEditor(rangesRowEl) {
     endInput.addEventListener('input', onInputChange);
     confirmBtn.addEventListener('click', onConfirm);
 
-    window.addEventListener('heroBiographyLookRangesUpdated', () => {
-        if (activeHeroId && activeLook) loadInputsForLook(activeLook);
-    });
+    window.addEventListener('heroBiographyLookRangesUpdated', onLookRangesUpdated);
+    window.addEventListener('bioBiographyLookRangesUpdated', onLookRangesUpdated);
 }
 
 /**
- * @param {string | null} heroFilterKey
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {string | null} filterKey
  * @param {string | null} [lookName]
  */
-export function setHeroBiographyLookRangesEditorHero(heroFilterKey, lookName = null) {
+export function setBioBiographyLookRangesEditorEntity(category, filterKey, lookName = null) {
     if (!editorEnabled) return;
 
-    activeHeroId = heroFilterKey ? String(heroFilterKey).trim() : null;
-
-    const visible = !!activeHeroId;
-    if (rangeBlockEl) rangeBlockEl.hidden = !visible;
-
-    if (!visible) {
+    if (!filterKey || (category !== 'heroes' && category !== 'factions')) {
+        activeCategory = null;
+        activeEntityId = null;
+        if (rangeBlockEl) rangeBlockEl.hidden = true;
         activeLook = null;
         if (startInput) startInput.value = '';
         if (endInput) endInput.value = '';
@@ -247,7 +257,21 @@ export function setHeroBiographyLookRangesEditorHero(heroFilterKey, lookName = n
         return;
     }
 
+    const cat = normalizeBioBiographyCategory(category);
+    activeCategory = cat;
+    activeEntityId = String(filterKey).trim();
+
+    if (rangeBlockEl) rangeBlockEl.hidden = false;
+
     if (lookName) loadInputsForLook(lookName);
+}
+
+/**
+ * @param {string | null} heroFilterKey
+ * @param {string | null} [lookName]
+ */
+export function setHeroBiographyLookRangesEditorHero(heroFilterKey, lookName = null) {
+    setBioBiographyLookRangesEditorEntity('heroes', heroFilterKey, lookName);
 }
 
 /**
@@ -255,11 +279,13 @@ export function setHeroBiographyLookRangesEditorHero(heroFilterKey, lookName = n
  * @param {string} lookName
  */
 export function syncHeroBiographyLookRangeEditorLook(lookName) {
-    if (!editorEnabled || !activeHeroId) return;
+    if (!editorEnabled || !activeEntityId || !activeCategory) return;
     loadInputsForLook(lookName);
 }
 
 export function destroyHeroBiographyLookRangesEditor() {
+    window.removeEventListener('heroBiographyLookRangesUpdated', onLookRangesUpdated);
+    window.removeEventListener('bioBiographyLookRangesUpdated', onLookRangesUpdated);
     rangeBlockEl?.parentElement?.classList.remove('gallery-mode__ranges-row--active');
     rangeBlockEl?.remove();
     editorEnabled = false;
@@ -268,6 +294,7 @@ export function destroyHeroBiographyLookRangesEditor() {
     endInput = null;
     confirmBtn = null;
     statusEl = null;
-    activeHeroId = null;
+    activeCategory = null;
+    activeEntityId = null;
     activeLook = null;
 }

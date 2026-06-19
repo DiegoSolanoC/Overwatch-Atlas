@@ -10,6 +10,7 @@
  */
 
 import { FILTER_IMAGE_PATHS, generateCacheBuster } from './filterImagePaths.js';
+import { buildFactionFilterImagePath } from './factionImagePaths.js';
 
 const RETRY_DELAY_SHORT_MS = 300;
 
@@ -25,7 +26,11 @@ function buildRetryUrl(type, filterKey, folder, cacheBuster) {
         const segs = raw.split('/').map(s => encodeURIComponent(s));
         return `${folder}/${segs.join('/')}?v=${cacheBuster}`;
     }
-    /* heroes / npcs / factions all share the same encoded basename pattern. */
+    if (type === 'factions') {
+        const pathItem = { filename: filterKey };
+        return `${buildFactionFilterImagePath(pathItem, folder)}?v=${cacheBuster}`;
+    }
+    /* heroes / npcs */
     return `${folder}/${encodeURIComponent(filterKey)}.png?v=${cacheBuster}`;
 }
 
@@ -40,6 +45,11 @@ function buildAltEncodedUrl(type, filterKey, folder, cacheBuster) {
             : String(filterKey || '').trim();
         const segs = raw.split('/').map(s => encodeURIComponent(s.replace(/\s+/g, '%20')));
         return `${folder}/${segs.join('/')}?v=${cacheBuster}`;
+    }
+    if (type === 'factions') {
+        const pathItem = { filename: filterKey };
+        const base = buildFactionFilterImagePath(pathItem, folder);
+        return `${base.replace(/%20/g, '%20')}?v=${cacheBuster}`;
     }
     return `${folder}/${filterKey.replace(/\s+/g, '%20')}.png?v=${cacheBuster}`;
 }

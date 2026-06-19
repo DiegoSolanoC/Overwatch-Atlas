@@ -983,6 +983,22 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     cursor: grab;
 }
 
+.gallery-mode__portrait--faction {
+    align-items: center;
+    justify-content: center;
+    padding-bottom: clamp(6rem, 14vh, 10rem);
+}
+
+.gallery-mode__portrait--faction .gallery-mode__portrait-img {
+    width: auto;
+    height: auto;
+    max-width: min(42vw, 520px);
+    max-height: min(36vh, 380px);
+    object-fit: contain;
+    object-position: center center;
+    align-self: center;
+}
+
 .gallery-mode__portrait.has-image .gallery-mode__portrait-img:active {
     cursor: grabbing;
 }

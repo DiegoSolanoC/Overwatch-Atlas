@@ -73,7 +73,7 @@
         return [];
     }
 
-    function filterTokenImgHtml(kind, token) {
+    function filterTokenImgHtml(kind, token, ev) {
         var t = R.stripTrailingCommaSep(String(token || '')).trim();
         if (!t) return '';
         var src = '';
@@ -106,10 +106,17 @@
         if (kind === 'factions') {
             var ff = B.resolveFactionImageFilename(t);
             if (!ff) return '';
-            src = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '.png';
+            var portraitHelper = window.__FactionEventSlidePortraitLooks;
+            if (ev && portraitHelper && typeof portraitHelper.buildPortraitSrcForStoryEvent === 'function') {
+                src = portraitHelper.buildPortraitSrcForStoryEvent(ff, ev);
+            }
+            if (!src) {
+                src = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '/Default.png';
+            }
             var dataFacTok = encodeURIComponent(t);
             return (
                 '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction" ' +
+                'data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '" ' +
                 'data-faction-open="' + dataFacTok + '" role="button" tabindex="0" ' +
                 'src="' + src + '" alt="" title="Open ' + R.escapeHtmlAttr(t) +
                 ' in Factions archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
@@ -119,7 +126,7 @@
         return '';
     }
 
-    function createStoryFilterPlacesSlideHtml(rows, kind) {
+    function createStoryFilterPlacesSlideHtml(rows, kind, ev) {
         var list = Array.isArray(rows) ? rows : [];
         var rowParts = [];
         for (var i = 0; i < list.length; i++) {
@@ -138,7 +145,7 @@
             if (tokens.length > 0) {
                 lead = '<span class="event-slide-relevant-locations__flag-row">';
                 for (var ti = 0; ti < tokens.length; ti += 1) {
-                    var one = filterTokenImgHtml(kind, tokens[ti]);
+                    var one = filterTokenImgHtml(kind, tokens[ti], ev);
                     if (one) lead += one;
                 }
                 lead += '</span>';
@@ -216,9 +223,9 @@
         var heroRows = getHeroFilterPlacesRowsForDisplay(ev);
         var facRows = getFactionFilterPlacesRowsForDisplay(ev);
         var npcRows = getNpcFilterPlacesRowsForDisplay(ev);
-        var heroHtml = heroRows.length ? createStoryFilterPlacesSlideHtml(heroRows, 'heroes') : '';
-        var facHtml = facRows.length ? createStoryFilterPlacesSlideHtml(facRows, 'factions') : '';
-        var npcHtml = npcRows.length ? createStoryFilterPlacesSlideHtml(npcRows, 'npcs') : '';
+        var heroHtml = heroRows.length ? createStoryFilterPlacesSlideHtml(heroRows, 'heroes', ev) : '';
+        var facHtml = facRows.length ? createStoryFilterPlacesSlideHtml(facRows, 'factions', ev) : '';
+        var npcHtml = npcRows.length ? createStoryFilterPlacesSlideHtml(npcRows, 'npcs', ev) : '';
         var parts = [];
         if (heroHtml) {
             parts.push(

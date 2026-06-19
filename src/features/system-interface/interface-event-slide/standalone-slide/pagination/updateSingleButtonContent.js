@@ -364,7 +364,7 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
 
         btn.onmouseleave = () => {
             if (isHeroBiographyDockFilterActive()) {
-                onHeroBiographyDockEventHoverEnd();
+                void onHeroBiographyDockEventHoverEnd();
             }
 
             if (window.SummaryInfoBadge?.hide) {
