@@ -1,6 +1,6 @@
 /**
  * Event System Load Out service — the heavy LOAD / UNLOAD payload that mounts
- * the Filters button, Image Display toggle, pagination dock, news ticker,
+ * the Eras button, Filters panel, Image Display toggle, pagination dock, news ticker,
  * standalone Event Slide, and (when the globe is loaded) event markers.
  *
  * Today the Event System is **always loaded at boot** (see `AppInitializer.js`),
@@ -41,6 +41,12 @@ import {
 } from "./mountGlobalImageToggle.js";
 import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
 import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
+import { clearDockEraFilter } from "../interface-bottom-dock/dockEraTimelineFilter.js";
+import {
+  setupDockEraMenu,
+  teardownDockEraMenu,
+} from "../interface-bottom-dock/dockEraMenu.js";
+import { refreshDockTimelinePagination } from "../interface-bottom-dock/refreshDockTimelinePagination.js";
 
 installEventSlidePlainPasteGuard();
 
@@ -61,7 +67,7 @@ const nextPaintCommitted = () =>
 
 /**
  * LOAD path — mount the full Event System Load Out:
- *   - Filters button + Filters panel
+ *   - Eras button + Filters panel
  *   - Image Display toggle
  *   - Pagination dock and slider
  *   - News ticker
@@ -82,12 +88,13 @@ export async function loadEventSystem(testBtn) {
     sweepEventSystemDockOrphans();
 
     createHeaderHubButton({
-      id: "filtersToggle",
+      id: "erasToggle",
       className: "dock-globe-rail__btn",
-      title: "Open Filters",
-      label: "Filters",
-      iconPath: "src/assets/images/Icons/Filter%20Icons/Filter%20Icon.png",
-      iconAlt: "Filters",
+      title: "Eras (E)",
+      label: "Eras",
+      iconPath:
+        "src/assets/images/Icons/Eras%20Icons/The%20Complete%20Timeline.png",
+      iconAlt: "Eras",
       parentId: "dockGlobeRailCenter",
       baseClass: "globe-control-btn",
       headerOrder: 5,
@@ -95,6 +102,10 @@ export async function loadEventSystem(testBtn) {
       mobileBaseClass: "globe-control-btn",
       mobileClassName: "dock-globe-rail__btn",
     });
+    clearDockEraFilter();
+    try {
+        localStorage.removeItem('dockEraFilter');
+    } catch (_) {}
 
     const globalImageToggleState = readPersistedGlobalImageToggleState();
     createHeaderHubButton({
@@ -205,9 +216,9 @@ export async function loadEventSystem(testBtn) {
 
     wireStandaloneFilterButtons();
 
-    const filtersToggle = document.getElementById("filtersToggle");
-    if (filtersToggle) {
-      filtersToggle.style.setProperty("display", "flex", "important");
+    const erasToggle = document.getElementById("erasToggle");
+    if (erasToggle) {
+      erasToggle.style.setProperty("display", "flex", "important");
     }
 
     // Initialize standalone Event Slide (decoupled from globe)
@@ -246,6 +257,8 @@ export async function loadEventSystem(testBtn) {
         window.standaloneEventSlide.setupStandalonePagination();
       }
     }
+    setupDockEraMenu();
+    refreshDockTimelinePagination();
     mountEventSlideInfoDescriptionTextScaleControls();
 
     // Final paint flush so the loading overlay only drops after the
@@ -378,10 +391,13 @@ export async function unloadEventSystem(testBtn) {
     window.FilterService.reset();
   }
 
-  // Remove filters toggle button
-  const filtersToggle = document.getElementById("filtersToggle");
-  if (filtersToggle) {
-    filtersToggle.remove();
+  teardownDockEraMenu();
+  clearDockEraFilter();
+
+  // Remove eras toggle button
+  const erasToggle = document.getElementById("erasToggle");
+  if (erasToggle) {
+    erasToggle.remove();
   }
 
   // Close and remove filters panel

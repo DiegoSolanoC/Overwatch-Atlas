@@ -8,7 +8,7 @@
  *   1. Escape / Q -> stacked dismiss (still works while focus is inside our
  *      panels for Escape).
  *   2. If typing in a regular text field, bail out — let the field have the key.
- *   3. Single-letter toggles (E, H hero roster / H·I image, X, F, G, V, T, C, M, R, Z).
+ *   3. Single-letter toggles (E eras, H hero roster / H·I image, X, F filters, G, V, T, C, M, R, Z).
  *   4. Enter -> zoom reset (unless a button/link has focus).
  *   5. Tab -> cycle event slide variants.
  *   6. Arrow keys / WASD -> scroll panel, else zoom, else page-scroll.
@@ -118,17 +118,10 @@ function digitFromKeyOrCode(key, code) {
 
 function handleLetterToggle(lower, e) {
     if (lower === 'e') {
-        /* Skip if Story Viewer is active (uses same panel). */
-        if (document.getElementById('storyViewerContainer')) return true;
-        if (isEventSlideOpen()) {
-            window.SoundEffectsManager?.play?.('eventClick');
-            hideEventSlideIfOpen();
-            const orchE = window.modeOrchestrator;
-            if (orchE && typeof orchE.openDataArchiveEventsView === 'function') {
-                void orchE.openDataArchiveEventsView('story');
-            } else {
-                window.eventManager?.openEventsManagePanel?.();
-            }
+        if (typeof window._toggleDockEraMenu === 'function') {
+            window._toggleDockEraMenu();
+            consumeEvent(e);
+        } else if (clickIfEnabled('erasToggle')) {
             consumeEvent(e);
         }
         return true;
@@ -157,7 +150,21 @@ function handleLetterToggle(lower, e) {
         }
         return true;
     }
-    if (lower === 'f') { if (clickIfEnabled('filtersToggle')) consumeEvent(e); return true; }
+    if (lower === 'f') {
+        const fs = window.FilterService;
+        const panel = document.getElementById('filtersPanel');
+        if (fs && panel) {
+            const mode = typeof fs.getPanelMode === 'function' ? fs.getPanelMode() : 'filters';
+            if (panel.classList.contains('open') && mode === 'filters' && typeof fs.togglePanel === 'function') {
+                fs.togglePanel();
+            } else if (typeof fs.openPanelWithMode === 'function') {
+                fs.openPanelWithMode('filters');
+            }
+            window.SoundEffectsManager?.play?.('filterButton');
+            consumeEvent(e);
+        }
+        return true;
+    }
     if (lower === 'g') { if (clickIfEnabled('mapViewToggle')) consumeEvent(e); return true; }
     if (lower === 'v') { if (clickIfEnabled('hyperloopToggle')) consumeEvent(e); return true; }
     if (lower === 't') { if (clickIfEnabled('weatherEffectsToggle')) consumeEvent(e); return true; }

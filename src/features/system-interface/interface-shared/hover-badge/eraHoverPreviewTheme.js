@@ -39,6 +39,13 @@ const STRIPE_HEX_BY_SLUG = {
     'reign-talon': '#8b1313',
 };
 
+/** Label color for the dock era picker title (`complete` = neutral white). */
+export function getEraDockLabelColorHex(eraSlugOrId) {
+    const id = String(eraSlugOrId || '').trim();
+    if (!id || id === 'complete') return '#f0f0f0';
+    return STRIPE_HEX_BY_SLUG[id] || '#f0f0f0';
+}
+
 /**
  * @param {object|null|undefined} eventData - Root event (era on parent)
  * @returns {string}

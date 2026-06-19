@@ -81,6 +81,14 @@ export function closeTopOverlay() {
     }
     if (hideEventSlideIfOpen()) return true;
 
+    if (typeof window._closeDockEraMenu === 'function') {
+        const eraMenu = document.getElementById('dockEraMenu');
+        if (eraMenu?.classList.contains('open')) {
+            window._closeDockEraMenu();
+            return true;
+        }
+    }
+
     const palette = document.getElementById('paletteMenu');
     if (palette && palette.classList.contains('open')) {
         if (typeof window._closePaletteMenu === 'function') {

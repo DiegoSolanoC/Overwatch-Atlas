@@ -142,7 +142,7 @@
      */
     .page-controls-row--mobile-only #eventsManageToggle,
     .page-controls-row--mobile-only #globalImageToggle,
-    .page-controls-row--mobile-only #filtersToggle {
+    .page-controls-row--mobile-only #erasToggle {
         position: relative !important;
         inset: auto !important;
         top: auto !important;
@@ -175,17 +175,17 @@
 
     /* Hide labels for Events and Filters buttons in page controls row */
     .page-controls-row--mobile-only #eventsManageToggle .header-hub-btn-label,
-    .page-controls-row--mobile-only #filtersToggle .header-hub-btn-label,
+    .page-controls-row--mobile-only #erasToggle .header-hub-btn-label,
     .page-controls-row--mobile-only #globalImageToggle .header-hub-btn-label,
     .page-controls-row--mobile-only #eventsManageToggle span:not([id$="Icon"]),
-    .page-controls-row--mobile-only #filtersToggle span:not([id$="Icon"]),
+    .page-controls-row--mobile-only #erasToggle span:not([id$="Icon"]),
     .page-controls-row--mobile-only #globalImageToggle span:not([id$="Icon"]) {
         display: none !important;
     }
 
     /* Icon sizing for Events and Filters buttons in page controls row */
     .page-controls-row--mobile-only #eventsManageToggle [id$="Icon"],
-    .page-controls-row--mobile-only #filtersToggle [id$="Icon"],
+    .page-controls-row--mobile-only #erasToggle [id$="Icon"],
     .page-controls-row--mobile-only #globalImageToggle [id$="Icon"] {
         width: 28px !important;
         height: 28px !important;

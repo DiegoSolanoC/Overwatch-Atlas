@@ -632,14 +632,14 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
     }
 
     body:has(#paginationDock) .page-controls-row--mobile-only #eventsManageToggle .header-hub-btn-label,
-    body:has(#paginationDock) .page-controls-row--mobile-only #filtersToggle .header-hub-btn-label,
+    body:has(#paginationDock) .page-controls-row--mobile-only #erasToggle .header-hub-btn-label,
     body:has(#paginationDock) .page-controls-row--mobile-only #eventsManageToggle span:not([id$="Icon"]),
-    body:has(#paginationDock) .page-controls-row--mobile-only #filtersToggle span:not([id$="Icon"]) {
+    body:has(#paginationDock) .page-controls-row--mobile-only #erasToggle span:not([id$="Icon"]) {
         display: inline !important;
     }
 
     body:has(#paginationDock) .page-controls-row--mobile-only #eventsManageToggle [id$="Icon"],
-    body:has(#paginationDock) .page-controls-row--mobile-only #filtersToggle [id$="Icon"] {
+    body:has(#paginationDock) .page-controls-row--mobile-only #erasToggle [id$="Icon"] {
         width: 24px !important;
         height: 24px !important;
         margin-right: 6px !important;
@@ -662,7 +662,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
 
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > .globe-control-btn.dock-globe-rail__btn,
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #globalImageToggle.dock-globe-rail__btn,
-    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #filtersToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #erasToggle.dock-globe-rail__btn,
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #eventsManageToggle.dock-globe-rail__btn {
         flex: 0 0 auto !important;
         min-width: 44px !important;
@@ -694,7 +694,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #prevEventBtn.dock-globe-rail__btn,
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #nextEventBtn.dock-globe-rail__btn,
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #globalImageToggle.dock-globe-rail__btn,
-    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #filtersToggle.dock-globe-rail__btn,
+    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #erasToggle.dock-globe-rail__btn,
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only > #eventsManageToggle.dock-globe-rail__btn {
         width: 44px !important;
         min-width: 44px !important;
@@ -713,7 +713,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
         > *,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
-        > #filtersToggle.dock-globe-rail__btn
+        > #erasToggle.dock-globe-rail__btn
         > *,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
@@ -745,7 +745,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
         img,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
-        > #filtersToggle.dock-globe-rail__btn
+        > #erasToggle.dock-globe-rail__btn
         img,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
@@ -760,7 +760,7 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
         > #globalImageToggle.dock-globe-rail__btn:hover,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
-        > #filtersToggle.dock-globe-rail__btn:hover,
+        > #erasToggle.dock-globe-rail__btn:hover,
     body.pagination-dock-mobile-locked:has(#paginationDock)
         .page-controls-row--mobile-only
         > #eventsManageToggle.dock-globe-rail__btn:hover {

@@ -1,3 +1,5 @@
+import { syncPaletteOptionStaggerIndices } from './PaletteMenuDom.js';
+
 /**
  * PaletteMenuPositioning — open/close `#paletteMenu` anchored to `#colorPaletteToggle`,
  * accounting for `body { transform: scale(...) }` on desktop and scroll/resize.
@@ -65,6 +67,7 @@ export function openPaletteMenu() {
     const positionMenuUnderToggleBound = () => positionMenuUnderToggle(menu, toggle);
 
     positionMenuUnderToggleBound();
+    syncPaletteOptionStaggerIndices(menu);
     menu.classList.add('open');
     menu.style.opacity = '1';
     menu.style.visibility = 'visible';

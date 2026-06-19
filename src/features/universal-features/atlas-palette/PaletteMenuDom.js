@@ -12,6 +12,17 @@ const ICON_CRIMSON = 'src/assets/images/Icons/Palette%20Icons/Red%20Palette%20Ic
 const ICON_NULLED = 'src/assets/images/Icons/Palette%20Icons/Purple%20Palette%20Icon.png';
 
 /**
+ * @param {HTMLElement | null | undefined} [menu]
+ */
+export function syncPaletteOptionStaggerIndices(menu) {
+    const m = menu || document.getElementById('paletteMenu');
+    if (!m) return;
+    m.querySelectorAll('.palette-option-btn').forEach((btn, index) => {
+        btn.style.setProperty('--palette-stagger-index', String(index));
+    });
+}
+
+/**
  * @param {{ paletteId: string, cssClass: string, title: string }} spec
  * @returns {HTMLButtonElement}
  */
@@ -50,6 +61,7 @@ export function ensurePaletteMenuDom() {
             createPaletteOptionButton({ paletteId: 'nulled', cssClass: 'nulled', title: 'Nulled Palette' })
         );
         document.body.appendChild(paletteMenu);
+        syncPaletteOptionStaggerIndices(paletteMenu);
         return paletteMenu;
     }
     if (!paletteMenu.querySelector('[data-palette="crimson"]')) {
@@ -62,6 +74,7 @@ export function ensurePaletteMenuDom() {
             createPaletteOptionButton({ paletteId: 'nulled', cssClass: 'nulled', title: 'Nulled Palette' })
         );
     }
+    syncPaletteOptionStaggerIndices(paletteMenu);
     return paletteMenu;
 }
 

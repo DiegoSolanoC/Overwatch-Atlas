@@ -8,6 +8,7 @@
  */
 
 import { isHeroBiographyDockFilterActive } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
+import { isDockEraFilterActive } from '../../../interface-bottom-dock/dockEraTimelineFilter.js';
 import {
     onHeroBiographyDockEventHover,
     onHeroBiographyDockEventHoverEnd,
@@ -67,7 +68,7 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
         const baseIndex = (pageNum - 1) * eventsPerPage;
         
         // Curated hero-bio dock list — thumbs are all relevant; skip global filter locks.
-        const activeFilters = isHeroBiographyDockFilterActive()
+        const activeFilters = (isHeroBiographyDockFilterActive() || isDockEraFilterActive())
             ? new Set()
             : (window.standaloneActiveFilters || new Set());
         const filtersOn = activeFilters.size > 0;

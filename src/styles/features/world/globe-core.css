@@ -574,7 +574,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn {
+        > #erasToggle.dock-globe-rail__btn {
         transform: none !important;
         width: 100% !important;
         height: 100% !important;
@@ -613,7 +613,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn:hover {
+        > #erasToggle.dock-globe-rail__btn:hover {
         transform: none !important;
     }
 
@@ -628,7 +628,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn:active {
+        > #erasToggle.dock-globe-rail__btn:active {
         transform: none !important;
     }
 
@@ -721,7 +721,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn img {
+        > #erasToggle.dock-globe-rail__btn img {
         transform: none !important;
     }
 
@@ -733,7 +733,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn
+        > #erasToggle.dock-globe-rail__btn
         .globe-control-btn__label,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
@@ -743,7 +743,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail--center
-        > #filtersToggle.dock-globe-rail__btn
+        > #erasToggle.dock-globe-rail__btn
         .header-hub-btn-label {
         white-space: nowrap;
     }
@@ -775,7 +775,7 @@ body.color-palette-nulled #globe-container .dev-sun-yaw-panel__range::-moz-range
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail.dock-globe-rail--center
-        #filtersToggle.dock-globe-rail__btn,
+        #erasToggle.dock-globe-rail__btn,
     body:has(#paginationDock)
         .pagination-dock-top-trapezoid
         .dock-globe-rail.dock-globe-rail--center

@@ -47,9 +47,9 @@ export async function loadEvents(loadedComponents) {
     await withLoadLifecycle(async () => {
         window.eventManager = await initializeEventManager();
 
-        const filtersToggleBtn = document.getElementById('filtersToggle');
-        if (filtersToggleBtn) {
-            filtersToggleBtn.style.setProperty('display', 'flex', 'important');
+        const erasToggleBtn = document.getElementById('erasToggle');
+        if (erasToggleBtn) {
+            erasToggleBtn.style.setProperty('display', 'flex', 'important');
         }
 
         // First sync: pagination DOM is present so markers can bind.
@@ -77,7 +77,7 @@ export async function unloadEvents(loadedComponents) {
         // Universal header chrome (timeline / codex / home) survives mode
         // switches; only event-system-specific UI is removed here.
         removeElementsByIds([
-            { id: 'filtersToggle', message: 'Filter button removed' },
+            { id: 'erasToggle', message: 'Eras button removed' },
             { id: 'eventsManageToggle', message: 'Event manager button removed' },
             { id: 'eventPagination', message: 'Event pagination removed' },
             { id: 'filtersPanel', message: null, checkParent: true },

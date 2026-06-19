@@ -150,7 +150,7 @@
       "name": "Torbjörn Lindholm is Born",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "On September 21st of 2019 Torbjörn Lindholm was born in the city of Gothenburg. He had been a bright mind from an early age and had a clear career path in mind, as he pursued multiple advanced degrees at university, where he met his later wife, a chemical engineering student, Ingrid Lindholm.",
+      "description": "On September 21st of 2019 Torbjörn Lindholm was born in the city of Gothenburg. He had been a bright mind from an early age and had a clear career path in mind, as he pursued multiple advanced degrees at university.",
       "image": "",
       "sources": [
         {
@@ -280,7 +280,7 @@
       "name": "John Francis Morrison is Born",
       "locationType": "earth",
       "cityDisplayName": "Bloomington, United States",
-      "description": "Born on January 27th of 2021, John \"Jack\" Francis Morrison was raised by farmers, and grew up to become a rambunctious teen. When he was not helping on the farm, he spent his time playing football, and by his eighteenth birthday he would choose to enlist in the army, intending to put the strength and discipline from his years of athletics into good use. He would go on to date a man named Vincent while at university.",
+      "description": "Born on January 27th of 2021, John \"Jack\" Francis Morrison was raised by farmers, and grew up to become a rambunctious teen. When he was not helping on the farm, he spent his time playing football, and by his eighteenth birthday he would choose to enlist in the army, intending to put the strength and discipline from his years of athletics into good use.",
       "image": "",
       "sources": [
         {
@@ -779,7 +779,7 @@
       "name": "Mei-Ling Zhou is Born",
       "locationType": "earth",
       "cityDisplayName": "Xi'an, China",
-      "description": "On September 5th, 2036, Mei-Ling Zhou was born in Xi'an China. Growing up during such an environmentally turbulent time period led to her studying climatology, meeting a good friend, Jiayi Teo, at grad school.",
+      "description": "On September 5th, 2036, Mei-Ling Zhou was born in Xi'an China. Growing up during such an environmentally turbulent time period led to her developing a strong believe in preserving the world for future generations.",
       "image": "",
       "sources": [
         {
@@ -807,13 +807,6 @@
           "locationName": "",
           "country": "Mei",
           "reasoning": "Mei-Ling Zhou is Born"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Jiayi",
-          "reasoning": "Close friend Mei met in University"
         }
       ]
     },
@@ -1191,24 +1184,50 @@
     },
     {
       "name": "Lindholm Style",
-      "description": "No description available.",
+      "description": "During his time studying at Linköping University, Torbjörn met a chemical engineer student, Ingrid, who would go on to become his future wife. At the time, she was working with biogenic textiles using a modified Darwin's bark spider hybridized with many species of limpets to produce elastic threading. The result was strong, fire retardant and resistant to electric and acid damage. While she hoped her creation would become a common material used in many fields, it was phenomenally expensive, costing several thousands of dollars per quater ounce, and none of her research subjects lived for more than a year.\n\nIngrid was about to retire her idea when she met Lindholm, who took a look at her project and saw several practical applications on small amounts of fibers, using them for advanced circuits.  Torbjörn's ingenuity saved Ingrid's project for a new life, and they continued to partner as she finished her degree. She found Torbjörn to be a charming, bright conversationalist and not long after leaving college they would marry. While she did not pursue further work in her field following university, her expertise made her a vital component in the early formation of Overwatch years later, and she grew close with many of the agents.",
       "locationType": "earth",
-      "lat": 57.7072326,
-      "lon": 11.9670171,
+      "lat": 58.4098135,
+      "lon": 15.6245252,
       "image": "",
-      "cityDisplayName": "Gothenburg, Sweden",
+      "cityDisplayName": "Linköping, Sweden",
       "yearEnd": 2050,
       "eraName": "The Age of Progress",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Gothenburg, Sweden",
+          "locationName": "Linköping, Sweden",
           "country": "Sweden",
           "reasoning": ""
+        },
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": "Torbjörn and Ingrid meet while at University"
         }
       ],
-      "headlines": [],
-      "sources": [],
-      "yearStart": 2030
+      "headlines": [
+        "Linköping University uneveils possible breakthrough in circuit making"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2030,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Torbjörn,",
+          "reasoning": "Uses Ingrid's experiments on circuity"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": "Develops a bioengineered spider web textile, but it is too expensive to mass produce"
+        }
+      ]
     },
     {
       "name": "Resource Management",
@@ -1572,7 +1591,7 @@
     },
     {
       "name": "Lost to the past",
-      "description": "No description available.",
+      "description": "While still in school, Jack would come across certain person while putting out a fire at a lab. Vincent was an archeologist he met while attempting to replicate an ancient beer recipe for his class project. The man was a firm believer in learning from the past, and figuring out the things that were not written down and got lost to time.\n\nWhile the two of them were cleaning up the mess left by the experiment, they quickly hit it off, and Vincent invited him to have a taste of the beer once it was ready. Jack and Vincent would go on to date for years while finishing school and during Jack's time in the military, but as Jack climbed through the ranks it created friction between them, as he had hoped for a normal life with him, and Jack would not do anything beyond continuing his duties.",
       "locationType": "earth",
       "lat": 39.1670396,
       "lon": -86.5342881,
@@ -1585,23 +1604,30 @@
         {
           "locationName": "Bloomington, United States",
           "country": "United States",
-          "reasoning": ""
+          "reasoning": "Jacl and Vincent meet in University"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Ancient Egyptian beer recipe recreated by College student"
+      ],
+      "sources": [
+        {
+          "text": "Future's Past",
+          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Soldier 76,",
-          "reasoning": ""
+          "reasoning": "Begins dating Vincent through the end of his studies"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Vincent,",
-          "reasoning": ""
+          "reasoning": "Dates Jack in spite of his concerns over military service"
         }
       ]
     },
@@ -1812,36 +1838,6 @@
         }
       ],
       "yearEnd": null
-    },
-    {
-      "name": "Lady Shion Was Made",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "image": "",
-      "cityDisplayName": "Akihabara, Japan",
-      "yearEnd": null,
-      "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "yearStart": 2045,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        }
-      ]
     },
     {
       "name": "SST Labs Siege Automaton E54 is Made",
@@ -2773,6 +2769,41 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": "Future heiress to an Empire"
+        }
+      ]
+    },
+    {
+      "name": "Lady Shion Was Made",
+      "description": "On September 9th of 2050, the Omnic that would go on to become Lady Shion was made. Originally an Omnic like any other, she would not to exist for long before Anubis took control of her, and turned her into a weapon of war.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "Lady Shion Was Made",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Shion",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        }
+      ],
+      "yearStart": 2050,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": "Lady Shion Was Made"
         }
       ]
     },
@@ -5213,7 +5244,7 @@
     },
     {
       "name": "Studying for the Future",
-      "description": "No description available.",
+      "description": "With the Crisis being over and the loss of God programs, the world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou began her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. During her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectualists and obstinates who fought against the data even after years worth of proof of the worsening climate worldwide.",
       "locationType": "earth",
       "lat": 34.261004,
       "lon": 108.9423363,
@@ -5226,35 +5257,43 @@
         {
           "locationName": "Xi'an, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Mei becomes a reknown climatologist fighitng Cliamte Change in Asia"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Superstorm adverted in China thanks to Dr.Zhou's research",
+        "Dr, Tian Xiao uneveils new prototype for water manipulation in Metal College"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mei",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mei/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mei,",
-          "reasoning": ""
+          "reasoning": "Studies climatology and develops new manipulation technology"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng Interstellar,",
-          "reasoning": ""
+          "reasoning": "Seeking to hire Jiayi Teo into their staff after grad school"
         },
         {
           "locationName": "",
           "country": "Overwatch, Ecopoints,",
-          "reasoning": ""
+          "reasoning": "Mei would go on to become part of the Ecopoint Program"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Jiayi,",
-          "reasoning": ""
+          "reasoning": "Close friend Mei met in University"
         }
       ]
     },
@@ -5380,7 +5419,7 @@
     },
     {
       "name": "Duty Calls",
-      "description": "From the outside, the world saw Overwatch as untouchable heroes at this point in time. However, the reality was that they were still human, and taking on Overwatch was just one aspect of their larger lives.\nMost of the Strike team had families of their own, Ana finally had time to care for her young Fareeha, the Lindholms were expecting yet another baby into the family, and Gabriel had just had his first son with Martina Reyes, his wife that he met while in Mexico.\n\nJack himself was in a relationship with a long-time partner of his when he got promoted to Strike Commander. The man, Vincent, was an archeologist he met during his days at university, where they quickly hit it off. Vincent remained supportive of Jack through his years in the military, but grew cautious during the Crisis when Jack brought up the idea of the Soldier Enhancement Program, and later on Overwatch.\n\nVincent was there for Jack when he needed it most, but he himself wished to settle down as he grew older, while Jack continued to step up and fill increasingly bigger shoes for the sake of the world. Becoming Strike Commander left Jack with very little time for love, and soon after, during a visit to London, the two parted ways. Jack would often question his choice. While everyone around him got to have a family, he dedicated his entire life to Overwatch. Continuing Adawe's legacy and ensuring the organization earned it's place in a post-crisis world became Jack's calling, and while he oftentimes wished to settle, every soldier needs a cause, and his was shaping the world into a better place.",
+      "description": "From the outside, the world saw Overwatch as untouchable heroes at this point in time. However, the reality was that they were still human, and taking on Overwatch was just one aspect of their larger lives. Most of the Strike team had families of their own, Ana finally had time to care for her young Fareeha, the Lindholms were expecting yet another baby into the family, and Gabriel had just had his first son with Martina Reyes, his wife that he met while in Mexico.\n\nJack himself was in a relationship with a long-time partner of his when he got promoted to Strike Commander. Vincent remained supportive of Jack through his years in the military, but grew cautious during the Crisis when Jack brought up the idea of the Soldier Enhancement Program, and later on Overwatch.\n\nVincent was there for Jack when he needed it most, but he himself wished to settle down as he grew older, while Jack continued to step up and fill increasingly bigger shoes for the sake of the world. Becoming Strike Commander left Jack with very little time for love, and soon after, during a visit to London, the two parted ways. Jack would often question his choice. While everyone around him got to have a family, he dedicated his entire life to Overwatch. Continuing Adawe's legacy and ensuring the organization earned it's place in a post-crisis world became Jack's calling, and while he oftentimes wished to settle, every soldier needs a cause, and his was shaping the world into a better place.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,

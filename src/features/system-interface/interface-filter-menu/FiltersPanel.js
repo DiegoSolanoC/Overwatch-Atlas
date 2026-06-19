@@ -120,7 +120,7 @@ class FilterService {
 
     /* Panel DOM may not exist yet if event system hasn't mounted — bail
            silently and let the next init() call try again. */
-    if (!this.filtersButton || !this.filtersPanel || !this.filtersGrid) return;
+    if (!this.filtersPanel || !this.filtersGrid) return;
 
     this.initialized = true;
     this.setPanelMode("filters");

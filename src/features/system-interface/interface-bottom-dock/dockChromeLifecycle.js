@@ -34,7 +34,7 @@ export function sweepEventSystemDockOrphans() {
         'nextEventBtn',
         'nextPageBtn',
         'globalImageToggle',
-        'filtersToggle',
+        'erasToggle',
         'eventsManageToggle',
         'pageInput',
         'pageTotal',

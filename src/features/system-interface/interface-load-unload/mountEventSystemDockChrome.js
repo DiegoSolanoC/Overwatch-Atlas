@@ -70,8 +70,8 @@ function clearDockChromeMoveStyles(el) {
  * Full dock chrome reflow. Computes the canonical control order for the
  * current viewport and reparents the 7 controls accordingly.
  *
- * Dock bar order: Prev Page, Prev Event, Image, Textbox (page input), Filters,
- * Next Event, Next Page. Image/Filters join the center rail when the trapezoid
+ * Dock bar order: Prev Page, Prev Event, Image, Textbox (page input), Eras,
+ * Next Event, Next Page. Image/Eras join the center rail when the trapezoid
  * dock is mounted, otherwise they live on the right rail.
  */
 export function reflowDockChromeRails() {
@@ -84,14 +84,14 @@ export function reflowDockChromeRails() {
     const prevEventBtn = document.getElementById('prevEventBtn');
     const nextEventBtn = document.getElementById('nextEventBtn');
     const globalImageToggleBtn = document.getElementById('globalImageToggle');
-    const filtersBtn = document.getElementById('filtersToggle');
+    const erasBtn = document.getElementById('erasToggle');
 
     const centerChromeDockBarOrder = [
         prevPageBtn,
         prevEventBtn,
         globalImageToggleBtn,
         pageInputContainer,
-        filtersBtn,
+        erasBtn,
         nextEventBtn,
         nextPageBtn,
     ];
@@ -163,7 +163,7 @@ export function reflowDockChromeRails() {
             document.getElementById('prevEventBtn'),
             document.getElementById('globalImageToggle'),
             pageInputWrap,
-            document.getElementById('filtersToggle'),
+            document.getElementById('erasToggle'),
             document.getElementById('nextEventBtn'),
             document.getElementById('nextPageBtn'),
         ].filter(Boolean);
