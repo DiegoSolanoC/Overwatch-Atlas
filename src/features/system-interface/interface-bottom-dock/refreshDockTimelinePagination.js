@@ -2,12 +2,15 @@
  * Rebuild dock pagination after any dock timeline subset changes (gallery entity, era, etc.).
  */
 
+import { scrollStoryTimelineToDockPage } from '../../story/story-mode/StoryTimelineView.js';
+
 export function refreshDockTimelinePagination() {
     const slide = window.standaloneEventSlide;
     const pagination = window.standaloneDockPagination;
     const fullDock = window.eventManager?.getDockTimelineEvents?.() ?? [];
     const curated = pagination?.getDockEvents?.() ?? fullDock;
     const subsetActive = curated.length < fullDock.length;
+    const perPage = pagination?.eventsPerPage || 10;
 
     if (
         slide
@@ -21,16 +24,16 @@ export function refreshDockTimelinePagination() {
         }
     }
 
-    if (pagination?.goToPage) {
-        pagination.goToPage(1, { skipSound: true });
-    }
-    if (slide?.updatePaginationUI) {
-        slide.updatePaginationUI({ animate: false });
+    if (pagination?.resetToFirstPage) {
+        pagination.resetToFirstPage({ skipTimelinePan: !subsetActive });
+    } else if (pagination?.goToPage) {
+        pagination.goToPage(1, { skipSound: true, force: true });
+    } else if (slide?.updatePaginationUI) {
+        slide.updatePaginationUI({ animate: false, syncSlider: true });
     }
 
     if (window.newsTickerService && pagination?.getDockEvents) {
         const page = pagination.getCurrentPage?.() || 1;
-        const perPage = pagination.eventsPerPage || 10;
         const events = pagination.getDockEvents();
         const start = (page - 1) * perPage;
         window.newsTickerService.updateTicker(events.slice(start, start + perPage));
@@ -38,6 +41,10 @@ export function refreshDockTimelinePagination() {
 
     window.globeEventMarkerManager?.refreshEventMarkers?.(true);
     window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
+
+    if (subsetActive) {
+        scrollStoryTimelineToDockPage(1, perPage);
+    }
 
     window.dispatchEvent(
         new CustomEvent('atlas-dock-timeline-page-changed', {

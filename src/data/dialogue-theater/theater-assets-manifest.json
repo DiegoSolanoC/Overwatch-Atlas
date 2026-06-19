@@ -1,0 +1,52 @@
+{
+  "scenes": [
+    "Hanamura Yard.png"
+  ],
+  "voicelines": [
+    "Anran_-_Do_we_really_have_time_to_be_relaxing_with_everything_going_on.ogg",
+    "Brigitte_-_Lúcio_and_I_have_been_thinking_of_throwing_a_little_welcome_party_for_you_new_recruits._You_in.ogg",
+    "Brigitte_-_Sure_we_do._If_we_don't_keep_morale_up,_we_won't_be_in_any_shape_to_fight.ogg"
+  ],
+  "renders": {
+    "Ana": [
+      "Bastet.png",
+      "Captain.png",
+      "Classic.png",
+      "El-Sa'ka.png",
+      "Heroic.png",
+      "Horus.png",
+      "Merciful.png",
+      "Shrike.png",
+      "Wasteland.png"
+    ],
+    "Anran": [
+      "Heroic.png"
+    ],
+    "Ashe": [
+      "Classic.png",
+      "Deadlock.png",
+      "Heroic.png",
+      "Socialite.png"
+    ],
+    "Baptiste": [
+      "Classic.png",
+      "Heroic.png",
+      "Medic.png",
+      "Talon.png"
+    ],
+    "Bastion": [
+      "Classic.png",
+      "Heroic.png",
+      "Overgrown.png"
+    ],
+    "Brigitte": [
+      "Classic.png",
+      "Engineer.png",
+      "Heroic.png",
+      "Sparkplug.png"
+    ],
+    "Mauga": [
+      "Heroic.png"
+    ]
+  }
+}

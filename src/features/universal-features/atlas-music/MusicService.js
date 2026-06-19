@@ -121,6 +121,9 @@ export class MusicService {
         if (window.SoundEffectsManager && typeof window.SoundEffectsManager.setupSoundEffectsSlider === 'function') {
             window.SoundEffectsManager.setupSoundEffectsSlider();
         }
+        if (window.CharacterVolumeManager && typeof window.CharacterVolumeManager.setupCharacterVolumeSlider === 'function') {
+            window.CharacterVolumeManager.setupCharacterVolumeSlider();
+        }
 
         constructMusicChildServices(this);
 

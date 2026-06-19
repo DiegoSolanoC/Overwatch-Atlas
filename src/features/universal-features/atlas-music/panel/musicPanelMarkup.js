@@ -65,6 +65,11 @@ export function createMusicPanel() {
                         <input type="range" id="soundEffectsSlider" class="volume-slider" min="0" max="100" value="50">
                         <span id="soundEffectsVolumeValue" class="volume-value">50%</span>
                     </div>
+                    <div class="music-control-row">
+                        <label for="characterVolumeSlider">Character Volume:</label>
+                        <input type="range" id="characterVolumeSlider" class="volume-slider" min="0" max="100" value="70">
+                        <span id="characterVolumeValue" class="volume-value">70%</span>
+                    </div>
                 </div>
             </div>
             <div class="music-grid" id="musicGrid"></div>

@@ -29,6 +29,9 @@ export const FILES = {
     platform: {
         manifest: publicPath('platform', 'manifest.json'),
     },
+    dialogueTheater: {
+        conversations: publicPath('dialogue-theater', 'conversations.json'),
+    },
 };
 
 export const ARCHIVE_FILE_PATHS = {

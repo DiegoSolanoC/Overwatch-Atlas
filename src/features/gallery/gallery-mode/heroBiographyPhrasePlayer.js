@@ -2,6 +2,7 @@
  * Single hero phrase audio at a time — random pick, no overlap until finished.
  */
 
+import { applyCharacterVolume } from '../../universal-features/atlas-character-audio/CharacterVolumeService.js';
 import { buildHeroBiographyPhrasePath } from './heroBiographyPhrasePaths.js';
 import { findSelectionPhraseFile } from './loadHeroPhrases.js';
 
@@ -62,7 +63,10 @@ export async function playHeroBiographyPhrase(heroFilterKey, fileName) {
 
     stopHeroBiographyPhrase();
 
+    window.CharacterVolumeManager?.unlock?.();
+
     const audio = new Audio(src);
+    applyCharacterVolume(audio);
     activeAudio = audio;
     phrasePlaying = true;
     notifyPhrasePlaybackChange();

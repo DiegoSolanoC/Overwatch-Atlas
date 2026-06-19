@@ -109,6 +109,95 @@ function writeStoryArchiveJson(body, res) {
     }
 }
 
+function writeDialogueTheaterJson(body, res) {
+    const conversations = Array.isArray(body?.conversations)
+        ? body.conversations
+        : Array.isArray(body)
+            ? body
+            : null;
+    if (!conversations) {
+        sendJson(res, 400, { error: 'Expected { conversations: [...] }' });
+        return;
+    }
+
+    const outPath = absFromPublic(FILES.dialogueTheater.conversations);
+    const payload = { conversations };
+    const json = JSON.stringify(payload, null, 2) + '\n';
+    const tmpPath = outPath + '.tmp';
+    try {
+        fs.mkdirSync(path.dirname(outPath), { recursive: true });
+        fs.writeFileSync(tmpPath, json, 'utf8');
+        fs.renameSync(tmpPath, outPath);
+        sendJson(res, 200, { ok: true, conversationsCount: conversations.length });
+    } catch (e) {
+        try {
+            if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+        } catch (_) {}
+        sendJson(res, 500, { ok: false, error: 'Write failed' });
+    }
+}
+
+const THEATER_ASSET_ROOT = path.join(__dirname, 'assets');
+const THEATER_SCENE_DIR = path.join(THEATER_ASSET_ROOT, 'images', 'Theater', 'Scene');
+const THEATER_RENDERS_DIR = path.join(THEATER_ASSET_ROOT, 'images', 'Theater', 'Renders');
+const THEATER_VOICELINES_DIR = path.join(THEATER_ASSET_ROOT, 'audio', 'Theater', 'Voicelines');
+
+const THEATER_IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif']);
+const THEATER_AUDIO_EXT = new Set(['.mp3', '.wav', '.ogg', '.m4a', '.webm']);
+
+function listFilesInDir(dirPath, allowedExt) {
+    try {
+        return fs.readdirSync(dirPath, { withFileTypes: true })
+            .filter((d) => d.isFile())
+            .map((d) => d.name)
+            .filter((name) => allowedExt.has(path.extname(name).toLowerCase()))
+            .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    } catch (_) {
+        return [];
+    }
+}
+
+function scanDialogueTheaterAssets() {
+    const scenes = listFilesInDir(THEATER_SCENE_DIR, THEATER_IMAGE_EXT);
+    /** @type {Record<string, string[]>} */
+    const renders = {};
+    try {
+        const heroDirs = fs.readdirSync(THEATER_RENDERS_DIR, { withFileTypes: true })
+            .filter((d) => d.isDirectory());
+        for (let i = 0; i < heroDirs.length; i += 1) {
+            const hero = heroDirs[i].name;
+            const files = listFilesInDir(path.join(THEATER_RENDERS_DIR, hero), THEATER_IMAGE_EXT);
+            if (files.length > 0) renders[hero] = files;
+        }
+    } catch (_) {
+        /* no renders root */
+    }
+
+    /** @type {string[]} */
+    const voicelines = [];
+    function walkVoicelines(dir, prefix) {
+        let entries = [];
+        try {
+            entries = fs.readdirSync(dir, { withFileTypes: true });
+        } catch (_) {
+            return;
+        }
+        for (let i = 0; i < entries.length; i += 1) {
+            const entry = entries[i];
+            const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                walkVoicelines(full, rel);
+            } else if (entry.isFile() && THEATER_AUDIO_EXT.has(path.extname(entry.name).toLowerCase())) {
+                voicelines.push(rel.replace(/\\/g, '/'));
+            }
+        }
+    }
+    walkVoicelines(THEATER_VOICELINES_DIR, '');
+
+    return { scenes, voicelines: voicelines.sort(), renders };
+}
+
 function writeCodexStateJson(body, res) {
     let nodes = null;
     let edges = [];
@@ -183,6 +272,26 @@ const server = http.createServer((req, res) => {
         if (req.method === 'POST' || req.method === 'PUT') {
             readJsonBody(req, res, (body) => {
                 writeStoryArchiveJson(body, res);
+            });
+            return;
+        }
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
+    if (decodedPath === '/api/dialogue-theater/assets') {
+        if (req.method === 'GET') {
+            sendJson(res, 200, scanDialogueTheaterAssets());
+            return;
+        }
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+
+    if (decodedPath === '/api/dialogue-theater') {
+        if (req.method === 'POST' || req.method === 'PUT') {
+            readJsonBody(req, res, (body) => {
+                writeDialogueTheaterJson(body, res);
             });
             return;
         }
@@ -536,6 +645,8 @@ server.listen(PORT, () => {
     console.log(`  - http://localhost:${PORT}/test.html → test.html`);
     console.log(`  - http://localhost:${PORT}/api/events → GET/POST events.json`);
     console.log(`  - http://localhost:${PORT}/api/story-archive → POST story-archive-*.json (Heroes/Factions/NPCs/Locations)`);
+    console.log(`  - http://localhost:${PORT}/api/dialogue-theater → POST conversations.json`);
+    console.log(`  - http://localhost:${PORT}/api/dialogue-theater/assets → GET theater asset catalog`);
     console.log(`  - http://localhost:${PORT}/api/codex → GET/POST codex-labels.json`);
     console.log(`\nPress Ctrl+C to stop the server\n`);
 });

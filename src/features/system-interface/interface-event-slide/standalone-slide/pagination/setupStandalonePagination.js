@@ -53,6 +53,7 @@ export function runSetupStandalonePagination(slide) {
         
         // STANDALONE: Track our own current page (don't rely on globe dataModel)
         let standaloneCurrentPage = 1;
+        let lastSliderPage = 1;
         
         const getCurrentPage = () => standaloneCurrentPage;
         
@@ -246,6 +247,7 @@ export function runSetupStandalonePagination(slide) {
         // thumbnails after the loading overlay drops.
         let updatePaginationUI = (options = {}) => {
             const animate = options.animate !== false;
+            const syncSlider = options.syncSlider === true;
             const currentPage = getCurrentPage();
             const totalPages = getTotalPages();
             const currentEvents = getDockEvents();
@@ -271,7 +273,7 @@ export function runSetupStandalonePagination(slide) {
                 pageSlider.disabled = totalPages <= 1 && slotsOnCurrentPage <= 1;
 
                 const scrubbing = sliderGesture.down || sliderGesture.dragLike;
-                if (!scrubbing) {
+                if (syncSlider || !scrubbing) {
                     pageSlider.value = String(sliderValueForPageStart(currentPage, totalPages));
                 }
             }
@@ -343,43 +345,56 @@ export function runSetupStandalonePagination(slide) {
             const totalPages = getTotalPages();
             const validPage = Math.max(1, Math.min(totalPages, newPage));
             const currentPage = getCurrentPage();
-            
-            if (validPage !== currentPage) {
-                setCurrentPage(validPage);
-                updatePaginationUI();
-                
-                // Log page change with filter state and matches
-                const activeFilters = window.standaloneActiveFilters || new Set();
-                const filterStr = activeFilters.size > 0 ? `[${Array.from(activeFilters).join(', ')}]` : '[]';
-                const matching = getMatchingEventsOnPage(validPage);
-                const matchStr = matching.length > 0 ? `[${matching.join(', ')}]` : '[]';
-                
-                // Refresh event markers on Globe for new page
-                if (window.globeEventMarkerManager) {
-                    window.globeEventMarkerManager.refreshEventMarkers(true);
-                }
-                
-                // Refresh Map2DLiteLayer markers and celestial panels
-                if (window.globeController?.map2dLite?.syncMarkers) {
-                    window.globeController.map2dLite.syncMarkers({ mode: 'pageTurn' });
-                }
-                
-                // Update news ticker with current page events
-                if (window.newsTickerService) {
-                    const currentPageEvents = getEventsForPage(validPage);
-                    window.newsTickerService.updateTicker(currentPageEvents);
-                }
-                
-                // Skip sound during slider scrubbing - tick sounds play instead
-                if (!options.skipSound && window.SoundEffectsManager?.play) {
-                    window.SoundEffectsManager.play('page');
-                }
+            const force = options.force === true;
 
-                if (!options.skipTimelinePan && isStoryTimelineViewActive()) {
-                    scrollStoryTimelineToDockPage(validPage, eventsPerPage);
-                } else if (!options.skipTimelinePan) {
-                    window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
-                }
+            if (!force && validPage === currentPage) {
+                return;
+            }
+
+            setCurrentPage(validPage);
+            lastSliderPage = validPage;
+            if (force) {
+                sliderGesture.down = false;
+                sliderGesture.dragLike = false;
+                sliderGesture.inputEvents = 0;
+                sliderGesture.tapPendingPageSound = false;
+            }
+            updatePaginationUI({
+                animate: options.animate !== false,
+                syncSlider: force,
+            });
+
+            // Log page change with filter state and matches
+            const activeFilters = window.standaloneActiveFilters || new Set();
+            const filterStr = activeFilters.size > 0 ? `[${Array.from(activeFilters).join(', ')}]` : '[]';
+            const matching = getMatchingEventsOnPage(validPage);
+            const matchStr = matching.length > 0 ? `[${matching.join(', ')}]` : '[]';
+
+            // Refresh event markers on Globe for new page
+            if (window.globeEventMarkerManager) {
+                window.globeEventMarkerManager.refreshEventMarkers(true);
+            }
+
+            // Refresh Map2DLiteLayer markers and celestial panels
+            if (window.globeController?.map2dLite?.syncMarkers) {
+                window.globeController.map2dLite.syncMarkers({ mode: 'pageTurn' });
+            }
+
+            // Update news ticker with current page events
+            if (window.newsTickerService) {
+                const currentPageEvents = getEventsForPage(validPage);
+                window.newsTickerService.updateTicker(currentPageEvents);
+            }
+
+            // Skip sound during slider scrubbing - tick sounds play instead
+            if (!options.skipSound && window.SoundEffectsManager?.play) {
+                window.SoundEffectsManager.play('page');
+            }
+
+            if (!options.skipTimelinePan && isStoryTimelineViewActive()) {
+                scrollStoryTimelineToDockPage(validPage, eventsPerPage);
+            } else if (!options.skipTimelinePan) {
+                window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
             }
         };
         
@@ -439,7 +454,6 @@ export function runSetupStandalonePagination(slide) {
         // Page slider - Globe-style with tick sounds and live updates
         if (pageSlider) {
             const SLIDER_RESOLUTION = 10000;
-            let lastPage = getCurrentPage();
             
             // Pointer events for gesture detection
             pageSlider.addEventListener('pointerdown', (e) => {
@@ -465,6 +479,8 @@ export function runSetupStandalonePagination(slide) {
                     window.removeEventListener('pointerup', onUp);
                     window.removeEventListener('pointercancel', onUp);
                     sliderGesture.down = false;
+                    sliderGesture.dragLike = false;
+                    sliderGesture.inputEvents = 0;
                     
                     // Play page sound on tap release
                     if (sliderGesture.tapPendingPageSound && window.SoundEffectsManager?.play) {
@@ -489,8 +505,8 @@ export function runSetupStandalonePagination(slide) {
                     if (tp <= 1) return;
 
                     const newPage = Math.min(tp, Math.max(1, Math.floor(progress * tp) + 1));
-                    if (newPage === lastPage) return;
-                    lastPage = newPage;
+                    if (newPage === lastSliderPage) return;
+                    lastSliderPage = newPage;
 
                     sliderGesture.inputEvents += 1;
                     handlePageChange(newPage, { skipSound: true, skipTimelinePan: true });
@@ -514,8 +530,8 @@ export function runSetupStandalonePagination(slide) {
 
                 const newPage = Math.min(tp, Math.max(1, Math.floor(progress * tp) + 1));
                 
-                if (newPage === lastPage) return;
-                lastPage = newPage;
+                if (newPage === lastSliderPage) return;
+                lastSliderPage = newPage;
                 
                 sliderGesture.inputEvents += 1;
                 
@@ -545,6 +561,13 @@ export function runSetupStandalonePagination(slide) {
             getCurrentPage,
             getDockEvents,
             eventsPerPage,
+            resetToFirstPage(options = {}) {
+                handlePageChange(1, {
+                    skipSound: true,
+                    force: true,
+                    ...options,
+                });
+            },
         };
 
         // Initial seed: skip the page-turn animation so the user sees the

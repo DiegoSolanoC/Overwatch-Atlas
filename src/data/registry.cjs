@@ -39,6 +39,9 @@ const FILES = {
     platform: {
         manifest: publicPath('platform', 'manifest.json'),
     },
+    dialogueTheater: {
+        conversations: publicPath('dialogue-theater', 'conversations.json'),
+    },
 };
 
 /** Event Manager archive bucket → fetch URL (story = timeline). */
