@@ -181,13 +181,6 @@
           "country": "Torbjörn",
           "reasoning": "Torbjörn Lindholm is Born"
         }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ingrid",
-          "reasoning": "Torbjörn Lindholm meets his wife in University"
-        }
       ]
     },
     {
@@ -272,7 +265,7 @@
         {
           "locationName": "",
           "country": "Wuxing University,",
-          "reasoning": "research would be the base for Water College technology"
+          "reasoning": "Namacua's research would be the base for Water College technology"
         }
       ]
     },
@@ -317,7 +310,7 @@
       "name": "Greener Energy",
       "locationType": "earth",
       "cityDisplayName": "Bogota, Colombia",
-      "description": "As technology progressed, many fields of science quickly solved global issues such as illness and water scarcity, but it quickly became clear that the worsening climate of the planet would become the next major obstacle to surpass. Scientists all over the globe scrambled for ideas to produce cost-effective clean energy that could become a worldwide standard.<br><br>Dr. Justina Borda was one of the first to tackle this issue. A phycologist specialized in genetics, who sought to improve energy equity in her home of Colombia. Borda developed a strain of algae capable of thriving in low oxygen waters and photosynthesizing at disproportionate speeds. And after many attempts, she was able to get the energy produced by the algae to work alongside a Goldilocks Generator, taking the excess of electricity from the algae and essentially transforming any body of water into a sola panel.<br><br>Borda's invention spread across the world rapidly, as rural communities quickly standardized its use, to the point that even the most remote corners of the world have bodies of water where their creation managed to propagate. As her invention became the norm, the public moved away from fossil fuels for their daily energy consumption.<br><br>Borda kickstarted a green energy revolution, and as superstorms became all the more common, the wind energy industry followed, which ultimately led to a decrease in carbon emissions of more than 20 percent during this period, giving humanity hope for a better tomorrow.",
+      "description": "As technology progressed, many fields of science quickly solved global issues such as illness and water scarcity, but it quickly became clear that the worsening climate of the planet would become the next major obstacle to surpass. Scientists all over the globe scrambled for ideas to produce cost-effective clean energy that could become a worldwide standard.\n\nDr. Justina Borda was one of the first to tackle this issue. A phycologist specialized in genetics, who sought to improve energy equity in her home of Colombia. Borda developed a strain of algae capable of thriving in low oxygen waters and photosynthesizing at disproportionate speeds. And after many attempts, she was able to get the energy produced by the algae to work alongside a Goldilocks Generator, taking the excess of electricity from the algae and essentially transforming any body of water into a solar panel.\n\nBorda's invention spread across the world rapidly, as rural communities quickly standardized its use, to the point that even the most remote corners of the world have bodies of water where their creation managed to propagate. As her invention became the norm, the public moved away from fossil fuels for their daily energy consumption.\n\nBorda kickstarted a green energy revolution, and as superstorms became all the more common, the wind energy industry followed, which ultimately led to a decrease in carbon emissions of more than 20 percent during this period, giving humanity hope for a better tomorrow.",
       "image": "",
       "sources": [
         {
@@ -507,13 +500,13 @@
         {
           "locationName": "",
           "country": "Omnica Corporation,",
-          "reasoning": "Omnica Corp begins plans for Omnium factoriesworld wide"
+          "reasoning": "Omnica Corp begins plans for Omnium factories worldwide"
         }
       ]
     },
     {
       "name": "The Super Coral Reef",
-      "description": "In their search for solutions on the ecological crisism the Polynesian naitons eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Super Coral. This genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
+      "description": "In their search for solutions on the ecological criticism the Polynesian nations eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Supercoral. This genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
       "locationType": "earth",
       "cityDisplayName": "Coral Sea, Oceania",
       "lat": -20,
@@ -535,14 +528,27 @@
         {
           "locationName": "Coral Sea, Oceania",
           "country": "Oceania",
-          "reasoning": "Super Coral rapidly grows forming massive ecosystems in Polynesia"
+          "reasoning": "Supercoral rapidly grows forming massive ecosystems in Polynesia"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Ecopoints,",
-          "reasoning": "Future Ecopoints would be build around the Samoan Area, the Super Coral played a big role in their decomissioning"
+          "reasoning": "Future Ecopoints would be build around the Samoan Area, the Supercoral played a big role in their decomissioning"
+        },
+        {
+          "locationName": "",
+          "country": "Deepsea Raiders,",
+          "reasoning": "Some groups would later use the byproducts of oceanic chaos to their advantage"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Palak,",
+          "reasoning": "Future researchers would still be tackling the mysteries of Supercoral long into the future",
+          "badgePriority": true
         }
       ]
     },
@@ -585,7 +591,7 @@
       "name": "Rising Tides",
       "locationType": "earth",
       "cityDisplayName": "Esperança, Portugal",
-      "description": "As Super Coral Grew in the Pacific, the people of the Atlantic faced similar problems as Polynesia once did. The coasts of Portugal were facing great erosion and violent waves as the ocean level rose and acidification worsened, but they would find a solution on their own thanks to the ingenuity of the Martins couple.<br><br>Cláudio Martins was a wealthy Portuguese entrepreneur, married to a Venezuelan ecological activist, Hector Martins. The pair were known for their inventions, and together they used their resources to propose to the Portuguese Government to begin the construction of a giant sea wall.<br><br>The Wall was to be made out of Durovidro, a synthetic material Cláudio himself had invented years earlier. Not only was it nearly as tough as a diamond, but it also had the unique quality of neutralizing acidicy, which made it perfect for both solving the rising tides eroding the coast, and preserving the ecosystems around the area. The Durovidro Sea Wall was a massive success after its first prototype, and it slowly expanded over the years.",
+      "description": "As supercoral grew in the Pacific, the people of the Atlantic faced similar problems as Polynesia once did. The coasts of Portugal were facing great erosion and violent waves as the ocean level rose and acidification worsened, but they would find a solution on their own thanks to the ingenuity of the Martins couple.\n\nCláudio Martins was a wealthy Portuguese entrepreneur, married to a Venezuelan ecological activist, Hector Martins. The pair were known for their inventions, and together they used their resources to propose to the Portuguese Government to begin the construction of a giant sea wall.\n\nThe Wall was to be made out of Durovidro, a synthetic material Cláudio himself had invented years earlier. Not only was it nearly as tough as a diamond, but it also had the unique quality of neutralizing acidity, which made it perfect for both solving the rising tides eroding the coast, and preserving the ecosystems around the area. The Durovidro Sea Wall was a massive success after its first prototype, and it slowly expanded over the years.",
       "image": "",
       "sources": [
         {
@@ -779,7 +785,7 @@
       "name": "Mei-Ling Zhou is Born",
       "locationType": "earth",
       "cityDisplayName": "Xi'an, China",
-      "description": "On September 5th, 2036, Mei-Ling Zhou was born in Xi'an China. Growing up during such an environmentally turbulent time period led to her developing a strong believe in preserving the world for future generations.",
+      "description": "On September 5th, 2036, Mei-Ling Zhou was born in Xi'an China. Growing up a shy and anxious young girl during such an environmentally turbulent time period led to her developing a strong belief in preserving the world for future generations.",
       "image": "",
       "sources": [
         {
@@ -814,7 +820,7 @@
       "name": "Wuxing University",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to get into the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.<br><br>The University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.<br>The Fire College, for the study of martial arts and defensive strategies.<br>The Metal College, for robotics and technological engineering.<br>The Water College, for traditional medicine and applications into new medical advancements.<br>The Earth College, for agricultural and sustainability studies.<br>And Wood College, for civil and environmental engineering.<br>Each of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
+      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\n\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
       "image": "",
       "sources": [
         {
@@ -843,6 +849,11 @@
           "locationName": "",
           "country": "Wuxing University",
           "reasoning": "School founded to adapt the knowledge of the past for the future"
+        },
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Many graduates and acolytes of Wuxing would immediately pursue a career at Lucheng"
         }
       ]
     },
@@ -850,7 +861,7 @@
       "name": "The Rise of Omnics",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
-      "description": "Omnica Corporation started from humble beginnings and quickly rose up as a multinational entity, with an annual budget larger than some nations. Thanks to their early support of Esat's cybernetic projects, alongside heavy investment into nuclear sciences, the company got a quick start on advanced robotics and quickly, innovating in manufacturing and automation for years until they were able to present the world with the first set of commercial Automated Robotic Assistance units, later colloquially known as \"Omnics\".<br><br>Omnics were highly advanced Ais that came in many forms, though largely humanoid, and with enough capability for learning and adapting to many different situations, making them have mass appeal as domestic caretakers, companions and substitutes for all kinds of hard labor. Omnics started to appear everywhere, going from more crude, voiceless models first only affordable by the upper class, to fully personable voiced iterations, mass produced for people all over the world.<br><br>As the company grew, and their Omnics became more and more common, they started to commission their Omniums, massive fully automated factories designed to pump out units continuously. Many cities were more than happy to welcome the company, as they wanted to have the latest in Omnic technology available first. Omnica was on top of the world, and yet their biggest achievement would still await them.",
+      "description": "Omnica Corporation started from humble beginnings and quickly rose up as a multinational entity, with an annual budget larger than some nations. Thanks to their early support of Esat's cybernetic projects, alongside heavy investment into nuclear sciences, the company got a quick start on advanced robotics and quickly, innovating in manufacturing and automation for years until they were able to present the world with the first set of commercial Automated Robotic Assistance units, later colloquially known as \"Omnics\".\n\nOmnics were highly advanced Ais that came in many forms, though largely humanoid, and with enough capability for learning and adapting to many different situations, making them have mass appeal as domestic caretakers, companions and substitutes for all kinds of hard labor. Omnics started to appear everywhere, going from more crude, voiceless models first only affordable by the upper class, to fully personable voiced iterations, mass produced for people all over the world.\n\nAs the company grew, and their Omnics became more and more common, they started to commission their Omniums, massive fully automated factories designed to pump out units continuously. Many cities were more than happy to welcome the company, as they wanted to have the latest in Omnic technology available first. Omnica was on top of the world, and yet their biggest achievement would still await them.",
       "image": "",
       "sources": [
         {
@@ -885,7 +896,8 @@
         {
           "locationName": "",
           "country": "Liao",
-          "reasoning": "Dr. Liao makes a name for herself in robotics that later lands her a place in Omnica"
+          "reasoning": "Dr. Liao makes a name for herself in robotics that later lands her a place in Omnica",
+          "badgePriority": true
         }
       ]
     },
@@ -893,7 +905,7 @@
       "name": "Elizabeth Caledonia is Born",
       "locationType": "earth",
       "cityDisplayName": "Bellaire, United States",
-      "description": "On October 1st of 2037, Elizabeth Caledonia was born outside of Bellaire. Elizabeth grew up in the Lead Rose Manor, coming from a privileged family of old money. Her family worked in many fields, consulting powerful CEOS around the world, but were mainly known for their ownership of the Arbalest Arms Company, a 19th century weapon manufacturer.<br><br>Because of their busy schedule, the adults in the house barely ever paid attention to the little Elizabeth, leading to her often feeling alone and often getting into trouble getting back at her parents. The only one that was truly there for her was the family's butler, B.O.B., a Bouncer Omnic Unit, one of the earliest on the market.",
+      "description": "On October 1st of 2037, Elizabeth Caledonia was born outside of Bellaire. Elizabeth grew up in the Lead Rose Manor, coming from a privileged family of old money. Her family worked in many fields, consulting powerful CEOs around the world, but were mainly known for their ownership of the Arbalest Arms Company, a 19th century weapon manufacturer.\n\nBecause of their busy schedule, the adults in the house barely ever paid attention to the little Elizabeth, leading to her often feeling alone and often getting into trouble getting back at her parents. The only one that was truly there for her was the family's butler, B.O.B., a Bouncer Omnic Unit, one of the earliest on the market.",
       "image": "",
       "sources": [
         {
@@ -935,7 +947,7 @@
       "name": "Hanzo Shimada is Born",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.\nDue to his position, he trained since very young to take his father's role as the leader of the clan, becoming very close to his father, especially after his mother abandoned the family.",
+      "description": "On November 3rd of 2038, Hanzo Shimada is born. The firstborn heir of Sojiro, head of the Shimada clan in Hanamura. An ancient family and clan of assassins that grew a criminal empire across Japan through arms trafficking and protection services to the people they ruled over.\n\nDue to his position, he trained since very young to take his father's role as the leader of the clan. He also had fond memories of his mother Rumiko at this age.",
       "image": "",
       "sources": [
         {
@@ -986,7 +998,7 @@
       "name": "Nourishing the World",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
-      "description": "Climate change heavily affected the agricultural industry, as many crops will stop being viable, leading to farmlands across the world becoming deserted. As humanity risked famine across the board, GMOS seemed like the obvious solution, especially after the success of Borda's Algae and Taupega's Coral, which heavily reshaped public opinion on artificially enhanced life.<br><br>As the first set of genetically modified crops began to solve the farming problem, it was precisely their mass appeal that caused harsher regulations on their use, for both safety and privatization reasons. Megacorporations leading this push for artificial crops kept a tight leash on their licensing, leading to multiple lawsuits and price fixing, as farmers couldn't compete with the improved crops, and yet also couldn't afford the seeds themselves.<br>This whole ordeal came to a stop in court, when Matthew Frank, a Manhattan lawyer, convinced the Supreme Court that bioengineered seeds couldn't be held under a patent or copyright, because they were transformative works of an indigenous species. It also helped to his case that, during the pandemics and outbreaks of the previous decades, the rush to get vaccines ready lead to a lot of patents getting dismissed for the sake of saving lives.<br><br>Thanks to this historic legal victory, the GMO crops became effectively open sourced, and with it, effectively solving world hunger. The rise of these highly effective crops led to corporate farmers, who would partner with Omnica Corporation to use a robotic workforce, leading to more efficient, but larger megafarms that quickly encompassed most of the world's arable lands.",
+      "description": "Climate change heavily affected the agricultural industry, as many crops will stop being viable, leading to farmlands across the world becoming deserted. As humanity risked famine across the board, GMOs seemed like the obvious solution, especially after the success of Borda's Algae and Taupega's Supercoral, which heavily reshaped public opinion on artificially enhanced life.\n\nAs the first set of genetically modified crops began to solve the farming problem, it was precisely their mass appeal that caused harsher regulations on their use, for both safety and privatization reasons. Mega-corporations leading this push for artificial crops kept a tight leash on their licensing, leading to multiple lawsuits and price fixing, as farmers couldn't compete with the improved crops, and yet also couldn't afford the seeds themselves.\nThis whole ordeal came to a stop in court, when Matthew Frank, a Manhattan lawyer, convinced the Supreme Court that bio-engineered seeds couldn't be held under a patent or copyright, because they were transformative works of an indigenous species. It also helped to his case that, during the pandemics and outbreaks of the previous decades, the rush to get vaccines ready lead to a lot of patents getting dismissed for the sake of saving lives.\n\nThanks to this historic legal victory, the GMO crops became effectively open sourced, and with it, effectively solving world hunger. The rise of these highly effective crops led to corporate farmers, who would partner with Omnica Corporation to use a robotic workforce, leading to more efficient, but larger megafarms that quickly encompassed most of the world's arable lands. It was business ventures like this that led to Omnica's advertising motto: \"Putting power in your hands\".",
       "image": "",
       "sources": [
         {
@@ -1017,6 +1029,13 @@
           "locationName": "",
           "country": "Cassidy",
           "reasoning": "Later employed by the ever growing Megafarms"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Omnica Corporation,",
+          "reasoning": "Robots were designed to tackle the menial tasks of megafarms"
         }
       ]
     },
@@ -1178,7 +1197,8 @@
         {
           "locationName": "",
           "country": "Bhatt,",
-          "reasoning": "Creator of Hardlight and Vishkar"
+          "reasoning": "Creator of Hardlight and Vishkar",
+          "badgePriority": true
         }
       ]
     },
@@ -1233,7 +1253,7 @@
       "name": "Resource Management",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God Ais got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.",
+      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God AIs got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God Program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.",
       "image": "",
       "sources": [
         {
@@ -1280,7 +1300,8 @@
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "God Program of Ecological Preservation"
+          "reasoning": "God Program of Ecological Preservation",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -1291,7 +1312,7 @@
     },
     {
       "name": "Automation",
-      "description": "With the introduction of God programs the world had essentially been set to automatic. On a smaller scale, less complex AIs were able to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. \n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.\n\nIt was not just God Ais making life easier, as by this point Omnics were common household items. They impacted everyday life across the vast majority of nations, becoming the main workforce in multiple manual labor fields, which resulted in the loss of many jobs at first, but with God programs allowing for global scale choreographing of resources, they were able to identify the areas of need and ensure equity and new opportunities around the globe. During this period, the world's population grew rapidly, and when combined with the medical and ecological advancements of the last decades, it allowed for a sense of prosperity and wonder for all of humanity. After years of struggle and discovery, it felt as if anything was possible.",
+      "description": "With the introduction of God Programs the world had essentially been set to automatic. On a smaller scale, less complex AIs were able to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. \n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God Programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.\n\nIt was not just God AIs making life easier, as by this point Omnics were common household items. They impacted everyday life across the vast majority of nations, becoming the main workforce in multiple manual labor fields, which resulted in the loss of many jobs at first, but with God Programs allowing for global scale choreographing of resources, they were able to identify the areas of need and ensure equity and new opportunities around the globe. During this period, the world's population grew rapidly, and when combined with the medical and ecological advancements of the last decades, it allowed for a sense of prosperity and wonder for all of humanity. After years of struggle and discovery, it felt as if anything was possible.",
       "locationType": "earth",
       "lat": 40.7579554,
       "lon": -73.9855319,
@@ -1372,7 +1393,7 @@
       "name": "Maugaloa Malosi is Born",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
-      "description": "On August 19th, 2041, Maugaloa Malosi was born in Apia, Samoa. His childhood was defined by a love for his country's natural beauty, especially with the rise of Super Coral, as well as a heavy disrespect for the law, which he got from his father. From an early age, Mauga learned that charisma opens doors, and violence gets answers.",
+      "description": "On August 19th, 2041, Maugaloa Malosi was born in Apia, Samoa. His childhood was defined by a love for his country's natural beauty, especially with the rise of Supercoral, as well as a heavy disrespect for the law, which he got from his father. From an early age, Mauga learned that charisma opens doors, and violence gets answers.",
       "image": "",
       "sources": [
         {
@@ -1449,7 +1470,8 @@
         {
           "locationName": "",
           "country": "Alisa,",
-          "reasoning": "Founder of Volskaya Corporation"
+          "reasoning": "Founder of Volskaya Corporation",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -1462,7 +1484,7 @@
       "name": "Genji Shimada is Born",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "On October 28th of 2041, Genji Shimada was born in Hanamura, Japan. The second son of Sojiro Shimada, raised by the sword just like his older brother, Hanzo. Although Genji never showed the same level of conviction as his older brother, often slacking off and indulging in a playboy lifestyle.",
+      "description": "On October 28th of 2041, Genji Shimada was born in Hanamura, Japan. The second son of Sojiro Shimada, raised by the sword just like his older brother, Hanzo. An ambidextrous young boy, Sojiro gave him the nickname \"Sparrow\", becoming Genji's own Sparrowhawk feather calling card.\n\n Although Genji never showed the same level of conviction as his older brother, often slacking off and indulging in a playboy lifestyle. Even afterwards, Hanzo became very close to his father, especially after their mother Rumiko Shimada abandoned the family.",
       "image": "",
       "sources": [
         {
@@ -1516,7 +1538,7 @@
     },
     {
       "name": "Road to the Stars",
-      "description": "Like many other fields of science, astronomy had taken massive leaps over the years, with the monitoring of near-earth objects becoming so advanced, that it allowed humanity to avoid and divert the course of extinction-level asteroids and telescopes were becoming so accurate that many mysteries of old had been solved, and with those new ones arrived.<br><br>At the center of all of these developments was Lucheng Interstellar, a chinese corporation that had envisioned humanity's future in the stars, developing plans for long-range space travel over the years. But before this was possible, they needed to pursue further research into the long-term effects of low gravity on living organisms. In order to do this, they partnered with many scientists across the world, including the Indian Space Research Organization, which had been developing massive mag lev satellite launchers for years. Thanks to IRSO's launching tracks, Lucheng would be able to speed up the construction of their first major milestone in the stars, the Horizon Lunar Colony.",
+      "description": "Like many other fields of science, astronomy had taken massive leaps over the years, with the monitoring of near-earth objects becoming so advanced, that it allowed humanity to avoid and divert the course of extinction-level asteroids and telescopes were becoming so accurate that many mysteries of old had been solved, and with those new ones arrived.\n\nAt the center of all of these developments was Lucheng Interstellar, a Chinese corporation that had envisioned humanity's future in the stars, developing plans for long-range space travel over the years. But before this was possible, they needed to pursue further research into the long-term effects of low gravity on living organisms. In order to do this, they partnered with many scientists across the world, including the Indian Space Research Organization, which had been developing massive mag-lev satellite launchers for years. Thanks to IRSO's launching tracks, Lucheng would be able to speed up the construction of their first major milestone in the stars, the Horizon Lunar Colony.",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
       "lat": 23.2599,
@@ -1674,7 +1696,7 @@
       "name": "Freja Skov is Born",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
-      "description": "On September 6th of 2044, Freja Skov was born in Copenhagen. As the daughter of a diplomat in Denmark, she would go on to see how her mother's choices and work saved hundreds of lives during the coming Crisis. While Freja admitted her mother, she always wanted to have a more active role in saving people, rather than sitting behind a desk. As she grew older, she would pursue Criminology at university.",
+      "description": "On September 6th of 2044, Freja Skov was born in Copenhagen. As the daughter of a diplomat in Denmark, she would go on to see how her mother's choices and work saved hundreds of lives during the coming Crisis. While Freja attended key meetings with her mother, she always wanted to have a more active role in saving people, rather than sitting behind a desk. As she grew older, she would pursue Criminology at university.",
       "image": "",
       "sources": [
         {
@@ -1707,7 +1729,7 @@
     },
     {
       "name": "Space Race",
-      "description": "In order to survive in space, many logistics need to be solved and, much like before, the advancements made to accommodate the Colony would find many different uses across the world. Textile manufacturing for long-term space suits would be used by many workers down on earth due to their similar properties to Kevlar, saving many lives during the crisis. Medical advancements in radiation shielding lead to further research into cancer treatments, also applicable on Earth. A similar case happened for treatment of lower bone density and tissue rejuvenation. In the end, even with all of these discoveries, the key to the stars was found in older technology.\n\nDr. Wing Mui from Wancài Industries in Honk Kong would be responsible for developing advanced hydroponics systems that the Lunar Colony would use to source their breathable air. Using a combination of Namuaca's nano-filtration sheets and Lomakema's water extractor, powering them with a controlled population of Borda Algae, in the wastewater tanks. The result was a massive success, and approved for use in the colony. Mui would go on to be known as the woman who put potatoes on the moon and turned hydroponics into one of the greatest achievements in human history.",
+      "description": "In order to survive in space, many logistics need to be solved and, much like before, the advancements made to accommodate the Colony would find many different uses across the world. Textile manufacturing for long-term space suits would be used by many workers down on earth due to their similar properties to Kevlar, saving many lives during the crisis. Medical advancements in radiation shielding lead to further research into cancer treatments, also applicable on Earth. A similar case happened for treatment of lower bone density and tissue rejuvenation. In the end, even with all of these discoveries, the key to the stars was found in older technology.\n\nDr. Wing Mui from Wancài Industries in Hong Kong would be responsible for developing advanced hydroponics systems that the Lunar Colony would use to source their breathable air. Using a combination of Namuaca's nano-filtration sheets and Lomakema's water extractor, powering them with a controlled population of Borda Algae, in the wastewater tanks. The result was a massive success, and approved for use in the colony. Mui would go on to be known as the woman who put potatoes on the moon and turned hydroponics into one of the greatest achievements in human history.",
       "locationType": "earth",
       "cityDisplayName": "Chongqing, China",
       "lat": 30.05518,
@@ -1843,7 +1865,7 @@
       "name": "SST Labs Siege Automaton E54 is Made",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Around the year 2046, the STT Laboratories would begin production of the Siege Automaton E54 Bastion Units. Designed in part by the great mind of Torbjörn Lindholm, these machines were originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.\n\nOn an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made.",
+      "description": "Around the year 2046, the SST Laboratories would begin production of the Siege Automaton E54 Bastion Units. Designed in part by the great mind of Torbjörn Lindholm, these machines were originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.\n\nOn an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made.",
       "image": "",
       "sources": [
         {
@@ -1884,7 +1906,7 @@
       "name": "Vaira Singhania is Born",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "On August 28 of 2046, Vaira Singhania was born. As the granddaughter of Vishkar's founder, she was expected to eventually inherit the family business, which had placed immense pressure upon her since she was young and quickly shaped her into a perfectionist negotiator, but she always struggled when it came to Hardlight manipulation, which caused constant judgment and disappoiment in the family. \n\n\nFrom an early age, Vaira grew to resend those who did not appreciate her own merits, and took several messures to level the playing field with the competition.",
+      "description": "On August 28 of 2046, Vaira Singhania was born. As the maternal granddaughter of Vishkar's founder, she was expected to eventually inherit the family business, which had placed immense pressure upon her since she was young and quickly shaped her into a perfectionist negotiator, but she always struggled when it came to Hardlight manipulation, which caused constant judgment and disappointment in the family. \n\nFrom an early age, Vaira grew to resent those who did not appreciate her own merits, and took several measures to level the playing field with the competition. She eventually gained or gave herself a moniker in spite of those \"beneath\" her: Domina.",
       "image": "",
       "sources": [
         {
@@ -1930,7 +1952,7 @@
         {
           "locationName": "",
           "country": "Bhatt,",
-          "reasoning": ""
+          "reasoning": "Grandfather to an unworthy succesor"
         }
       ]
     },
@@ -1973,7 +1995,7 @@
       "name": "Specimen 28 is Born",
       "locationType": "earth",
       "cityDisplayName": "Congo Basin, Democratic Republic of the Congo",
-      "description": "On June 6th of 2047, Specimen 28, later known as Winston, was born. He was selected, alongside other Silverback Gorillas to join a captive colony of varied primates that was to live on the Horizon Lunar Colony to aid in research and genetic experimentation. Specimen 28 displayed rapid brain development following the procedures, far more than any of his peers, and was taken under the wing of Dr. Harold Winston, who would teach him about science and tales of humanity, nourishing the gorilla's young developing mind with an immense curiosity for the blue marble outside his habitat window.",
+      "description": "On June 6th of 2047, Specimen 28, later known as Winston, was born. He was selected, alongside other baby Silverback Gorillas to join a captive colony of varied primates that was to live on the Horizon Lunar Colony to aid in research and genetic experimentation. Specimen 28 displayed rapid brain development following the procedures, far more than any of his peers, and was taken under the wing of Dr. Harold Winston, who would teach him about science and tales of humanity, nourishing the gorilla's young developing mind with an immense curiosity for the blue marble outside his habitat window.",
       "image": "",
       "sources": [
         {
@@ -2027,7 +2049,7 @@
       "name": "The Ironclad Guild",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Following his involvement in the STT Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.<br><br>Overtime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But following his work on these robots, he would begin to speak publicly against the growing reliance on Omnics and God AI, highlighting that robots were merely tools, and that needless complications could risk humanity's future. Lindholm wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, while more moderates argued for better guardrails, Lindholm was particularly passionate about the topic, and his words would become poison for his career.<br><br>Many members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
+      "description": "Following his involvement in the SST Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.\n\nOvertime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But following his work on these robots, he would begin to speak publicly against the growing reliance on Omnics and God AI, highlighting that robots were merely tools, and that needless complications could risk humanity's future. Lindholm wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, while more moderates argued for better guardrails, Lindholm was particularly passionate about the topic, and his words would become poison for his career.\n\nMany members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
       "image": "",
       "sources": [
         {
@@ -2102,7 +2124,7 @@
       "name": "Genesis",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
-      "description": "Over the years, Omnica Corporation had been caught under fire for many issues. Between the heavy criticism of the Ironclad guild, the massive spending and broken promises that came with many Omniums, and to top it off, they had reached a point of near perfection with their Omnic designs, where their models would barely every break down and most of the public were willing to buy an Omnic already owned them. The company was in need of a big idea, one that could save them from collapse, and the answer to their troubles seemed to be Mina Liao.\n\nDr. Mina Liao was a prodigy and pioneer of neuroplastic artificial intelligence that had built continuous innovations in the field. She was selected by Omnica to develop the most advanced AI the world had ever seen. Liao's work was both revolutionary and controversial, as many feared this was pushing boundaries too far, but in the end she would reveal Omnica's crowning achievement, with the birth of Aurora.",
+      "description": "Over the years, Omnica Corporation had been caught under fire for many issues. Between the heavy criticism of the Ironclad guild, the massive spending and broken promises that came with many Omniums, and to top it off, they had reached a point of near perfection with their Omnic designs, where their models would barely every break down and most of the public weren't willing to buy an Omnic, already owning them. The company was in need of a big idea, one that could save them from collapse, and the answer to their troubles seemed to be Mina Liao.\n\nDr. Mina Liao was a prodigy and pioneer of neuroplastic artificial intelligence that had built continuous innovations in the field. She was selected by Omnica to develop the most advanced AI the world had ever seen. Liao's work was both revolutionary and controversial, as many feared this was pushing boundaries too far, but in the end she would reveal Omnica's crowning achievement, with the birth of Aurora.",
       "image": "",
       "sources": [
         {
@@ -2158,7 +2180,8 @@
         {
           "locationName": "",
           "country": "Liao, Aurora",
-          "reasoning": "Dr. Liao creates the first ever sentient Omnic, Aurora"
+          "reasoning": "Dr. Liao creates the first ever sentient Omnic, Aurora",
+          "badgePriority": true
         }
       ]
     },
@@ -2166,7 +2189,7 @@
       "name": "New Horizons",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.\n\nThe Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.\n\nIn its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings.\nSiebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
+      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.\n\nThe Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.\n\nIn its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings.\n\nSiebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
       "image": "",
       "sources": [
         {
@@ -2213,7 +2236,8 @@
         {
           "locationName": "",
           "country": "Harold",
-          "reasoning": "Primary Primate caretaker"
+          "reasoning": "Primary Primate caretaker",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -2231,7 +2255,7 @@
       "name": "Niran Pruksamanee is Born",
       "locationType": "earth",
       "cityDisplayName": "Chiang Mai City, Thailand",
-      "description": "On April 28 of 2048, Niran Pruksamanee was born in the city of Chiang Mai. As the middle child of a wealthy family, he had his life planned and high expectations to fulfill, although the young Niran would resist this structure by wandering through their compound's gardens and mending plants alongside their gardeners.<br><br>He was too intelligent for the expensive schools his family chose for him, completing assignments more thoroughly than needed and annoying his teachers, which caused his parents to get frustrated and continue to attempt to install order in his life.",
+      "description": "On April 28 of 2048, Niran Pruksamanee was born in the city of Chiang Mai. As the middle child of a wealthy family, he had his life planned and high expectations to fulfill, although the young Niran would resist this structure by wandering through their compound's gardens and mending plants alongside their gardeners.\n\nHe was too intelligent for the expensive schools his family chose for him, completing assignments more thoroughly than needed and annoying his teachers, which caused his parents to get frustrated and continually attempting to install order in his life.",
       "image": "",
       "sources": [
         {
@@ -2352,6 +2376,11 @@
           "locationName": "",
           "country": "Crusader Initiative,",
           "reasoning": "German military program for heavily armored soldiers"
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": "Vishkar Hardlight utilized in a military form very early"
         }
       ],
       "npcFilterPlaces": [
@@ -2414,7 +2443,8 @@
         {
           "locationName": "",
           "country": "Antonio",
-          "reasoning": "Weapons dealer, early council member"
+          "reasoning": "Weapons dealer, early council member",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -2425,7 +2455,7 @@
     },
     {
       "name": "Collaterate Damage",
-      "description": "Following Aurora's trials and the many controversies they had found themselves in, from accusations of fraud and many protests from locals who were affected by the Omniums, as well as critics of Aurora's research, Omnica found itself with no other option than bankruptcy.\n\nThe Company shut down all operations, but decided to keep ownership of their Omnium factories. Full decommissioning of the factories proved to be a logistical nightmare, and many people at the Company remained hopeful that one day they would be able to use them again, so in the end Omnica left the world with giant empty shells, ghostly facilities that went unused for years.\n\nBy humans, anyway.",
+      "description": "Following Aurora's trials and the many controversies they had found themselves in, from accusations of fraud and many protests from locals who were affected by the Omniums, as well as critics of Aurora's research, Omnica found itself with no other option than bankruptcy.\n\nThe Company shut down all operations, but decided to keep ownership of their Omnium factories. Full decommissioning of the factories proved to be a logistical nightmare, and many people at the Company remained hopeful that one day they would be able to use them again, so in the end Omnica left the world with giant empty shells, ghostly facilities that went unused for years.\n\nBy humans, anyway...",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
       "lat": 42.3315509,
@@ -2449,14 +2479,14 @@
         {
           "locationName": "Omnica Corporation",
           "country": "Omnica Corporation, Anubis Directives",
-          "reasoning": "Goes Bankrupt, Omniums worldwide left abandoned"
+          "reasoning": "Goes bankrupt, Omniums worldwide left abandoned"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Liao, Aurora,",
-          "reasoning": "The Legal battle for Aurora's personhood plays a large part in the bankrupcy"
+          "reasoning": "The legal battle for Aurora's personhood plays a large part in the bankrupcy"
         }
       ],
       "sources": [
@@ -2470,7 +2500,7 @@
       "name": "Satya Vaswani is Born",
       "locationType": "earth",
       "cityDisplayName": "Hyderabad, India",
-      "description": "On October 2nd of 2048, Satya Vaswani was born. Growing up in poverty in the slums of Hyderbad, living in a crowded village where hunger was a constant issue, feeling powerless and afraid, she often found refuge in dancing, to calm her anxiety.",
+      "description": "On October 2nd of 2048, Satya Vaswani was born. An autistic young girl, growing up in poverty in the slums of Hyderbad, living in a crowded village where hunger was a constant issue, feeling powerless and afraid, she often found refuge in dancing, to calm her anxiety.",
       "image": "",
       "sources": [
         {
@@ -2552,7 +2582,8 @@
         {
           "locationName": "",
           "country": "Naughton,",
-          "reasoning": "Lead of the Soldier enhancement program"
+          "reasoning": "Lead of the Soldier enhancement program",
+          "badgePriority": true
         }
       ]
     },
@@ -2599,7 +2630,8 @@
         {
           "locationName": "",
           "country": "Aurora",
-          "reasoning": "Granted personhood, free to explore the world"
+          "reasoning": "Granted personhood, free to explore the world",
+          "badgePriority": true
         }
       ]
     },
@@ -2607,7 +2639,7 @@
       "name": "Playing God",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "Over the years, technology had made life much easier for people around the globe, and had helped reduce the impact of climate change, to a point most nations began to take their stability for granted, taking a step back in monitoring and funding of these environmental programs. With this lax approach, much of the weight on the task of environmentalism felt towards God Ais and the staff behind them, who personified them almost as coworkers.\n\nAnubis, the God Ai in Cairo, was in charge of life preservation, and was one of the most advanced machines on the planet. Data studies of the team showed the AI had been consistently struggling to fulfill its tasks, and the recent international conferences on the matter would often lead to further inaction. Two weeks after the conference, there was a ventilation accident in the Cairo facility, cutting air circulation and sealing the staff inside their facilities. With the entire team suffocated, Anubis was left entirely alone, to make decisions without human supervision.\n\nIn the months it spent free of any staff, God AI reached the conclusion that preserving the environment and the survival of humanity were mutually exclusive tasks, and chose to prioritize conservation over humanity. The God Program managed to infiltrate past the security of multiple abandoned Omniums across the globe and begin the mass production of war machines, preparing to enact his genocide.",
+      "description": "Over the years, technology had made life much easier for people around the globe, and had helped reduce the impact of climate change, to a point most nations began to take their stability for granted, taking a step back in monitoring and funding of these environmental programs. With this lax approach, much of the weight on the task of environmentalism felt towards God AIs and the staff behind them, who personified them almost as coworkers.\n\nAnubis, the God AI in Cairo, was in charge of life preservation, and was one of the most advanced machines on the planet. Data studies of the team showed the AI had been consistently struggling to fulfill its tasks, and the recent international conferences on the matter would often lead to further inaction. Two weeks after the conference, there was a ventilation accident in the Cairo facility, cutting air circulation and sealing the staff inside their facilities. With the entire team suffocated, Anubis was left entirely alone, to make decisions without human supervision.\n\nIn the months it spent free of any staff, God AI reached the conclusion that preserving the environment and the survival of humanity were mutually exclusive tasks, and chose to prioritize conservation over humanity. The God Program managed to infiltrate past the security of multiple abandoned Omniums across the globe and begin the mass production of war machines, preparing to enact his genocide. A butchering to rival even the World Wars a century ago.",
       "image": "",
       "sources": [
         {
@@ -2649,7 +2681,8 @@
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "Goes rouge following ventilation failure"
+          "reasoning": "Goes rouge following ventilation failure",
+          "badgePriority": true
         }
       ]
     },
@@ -2657,7 +2690,7 @@
       "name": "Aleksandra Zaryanova is Born",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "On December 4th of 2048, Aleksandra Zaryanova was born in the small Siberian village of Novoanskoye. Near the shadow of a remote Omnium. Her father would sadly die during the Omnic Crisis, which made Aleksandra determine to gain the strength needed to protect her loved ones. Her resolve would lead her to pursue body building and become a professional weightlifter, with the talent and strength to compete internationally and become a record-setting star in the field, and a source of pride to all of Russia.",
+      "description": "On December 4th of 2048, Aleksandra Zaryanova was born in the small Siberian village of Novoanskoye, near the shadow of a remote Omnium. Her family knew her as 'Sasha', but the world would know her as 'Zarya'.\n\n Her father would sadly die during the Omnic Crisis, which made Aleksandra determine to gain the strength needed to protect her loved ones. Her resolve would lead her to pursue body building and become a professional weightlifter, with the talent and strength to compete internationally and become a record-setting star in the field, and a source of pride to all of Russia.",
       "image": "",
       "sources": [
         {
@@ -2811,7 +2844,7 @@
       "name": "Lúcio Correia Dos Santos is Born",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "On March 20th of 2051, Lúcio Correia dos Santos was born in Rio de Janeiro, growing up in a poor and crowded favela that would be hit hard by the financial upheaval of the Crisis. As his country recovered, he would often try to lift people's spirits through the power of music, using it to bring people together and make them forget their troubles, even if only for a short time. The young man would often perform in the streets, and at block parties, eventually growing up to become an underground celebrity, hosting larger shows.",
+      "description": "On March 20th of 2051, Lúcio Correia dos Santos was born in Rio de Janeiro, growing up in a poor and crowded favela with his father Benicio that would be hit hard by the financial upheaval of the Crisis. As his country recovered, he would often try to lift people's spirits through the power of music, using it to bring people together and make them forget their troubles, even if only for a short time. The young man would often perform in the streets, and at block parties, eventually growing up to become an underground celebrity, hosting larger shows.",
       "image": "",
       "sources": [
         {
@@ -2837,6 +2870,13 @@
           "locationName": "",
           "country": "Lúcio",
           "reasoning": "Lúcio Correia Dos Santos is Born"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": "Father to Lúcio"
         }
       ]
     },
@@ -2899,7 +2939,7 @@
       "name": "Ramattra is Made",
       "locationType": "earth",
       "cityDisplayName": "Secret Omnium, Antartica?",
-      "description": "On March 29th of 2051, Ramattra was made. The R-7000 Ravager Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The Ravagers acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis.",
+      "description": "On March 29th of 2051, what was Ramattra, was made. The R-7000 Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The 'Ravagers' acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis. They were created in Anubis' own image, created on production lines intended for civilian or domestic serving use. These lines now served a new purpose: the creation of an ultimate show of Anubis' force.\n\nRamattra himself was unique in that he led his fellow Omnics into battles, among them were the streets of Midtown in New York.",
       "image": "",
       "sources": [
         {
@@ -2942,6 +2982,11 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Maker of the Wartime Omnics"
+        },
+        {
+          "locationName": "",
+          "country": "Revel,",
+          "reasoning": "Revel is Made"
         }
       ]
     },
@@ -3096,7 +3141,7 @@
       "name": "Expanding the Wall",
       "locationType": "earth",
       "cityDisplayName": "Esperança, Portugal",
-      "description": "Portugal did not have any Omniums built in the country, and it lacked a substantial population of domestic robots. What was once seen as a weakness for the nation, turned out to be of great benefit when the Crisis began, as it meant that the country was granted several days to prepare as the warbots made their way from the outside. The Omnic troops approached Portugal, both from land and from the sea, surrounding the country, yet when the Omnics got close to the coast, they came to a halt by the sea wall. The Durovidro Wall was durable enough to stop the incoming army, and as they focused all their firepower into destroying it, it bought the military enough time to retaliate. The Martins came back at the government's petition, seeking to find a way to prepare for the next wave, and as the pair studied the battlefield, they realized that while the wall showed cracks from bullets and explosives, it absorbed energy blasts and beams, merely discoloring the glass without leaving a scratch. \n\nA deal was made to expand the wall further across the Iberian Peninsula, as the Spanish government agreed to join forces with Portugal in a defensive alliance against Omnics. Over the course of the crisis, the wall would be expanded to reach the Strait of Gibraltar, successfully stopping the robot armies from breaching by sea. As thanks for their efforts and the incredible feat of engineering, Spain gifted the Martins with a small research center at the coast of Gibraltar, which they could use as they pleased.",
+      "description": "Portugal did not have any Omniums built in the country, and it lacked a substantial population of domestic robots. What was once seen as a weakness for the nation, turned out to be of great benefit when the Crisis began, as it meant that the country was granted several days to prepare as the warbots made their way from the outside. The Omnic troops approached Portugal, both between the land and the sea, surrounding the country, yet when the Omnics got close to the coast, they came to a halt by the sea wall. The Durovidro Wall was durable enough to stop the incoming army, and as they focused all their firepower into destroying it, it bought the military enough time to retaliate. The Martins came back at the government's petition, seeking to find a way to prepare for the next wave, and as the pair studied the battlefield, they realized that while the wall showed cracks from bullets and explosives, it absorbed energy blasts and beams, merely discoloring the glass without leaving a scratch. \n\nA deal was made to expand the wall further across the Iberian Peninsula, as the Spanish government agreed to join forces with Portugal in a defensive alliance against Omnics. Over the course of the crisis, the wall would be expanded to reach the Strait of Gibraltar, successfully stopping the robot armies from breaching by sea. As thanks for their efforts and the incredible feat of engineering, Spain gifted the Martins with a small research center at the coast of Gibraltar, which they could use as they pleased.",
       "image": "",
       "sources": [
         {
@@ -3280,7 +3325,7 @@
         {
           "locationName": "",
           "country": "Sigma",
-          "reasoning": "Mag Lev  technology allows forthe evolution of Orbital Launchers"
+          "reasoning": "Mag-lev technology allows for the evolution of Orbital Launchers"
         }
       ],
       "factionFilterPlaces": [
@@ -3337,7 +3382,8 @@
         {
           "locationName": "",
           "country": "Anubis Directives, Wuxing University,",
-          "reasoning": "Anubis troops are stopped by a Fire College squadron, Metal college develops mechs to fight back"
+          "reasoning": "Anubis troops are stopped by a Fire College squadron, Metal college develops mechs to fight back",
+          "badgePriority": true
         }
       ],
       "npcFilterPlaces": [
@@ -3393,7 +3439,8 @@
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "War splits fronts across America"
+          "reasoning": "War splits fronts across America",
+          "badgePriority": true
         }
       ]
     },
@@ -3443,7 +3490,8 @@
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "Troops fight the Inti Warriors"
+          "reasoning": "Troops fight the Inti Warriors",
+          "badgePriority": true
         }
       ]
     },
@@ -3451,7 +3499,7 @@
       "name": "Force the Sun to Set",
       "locationType": "earth",
       "cityDisplayName": "Lagos, Nigeria",
-      "description": "All over the world, heroic figures started to appear throughout the entire Crisis, remarkable individuals that stood out amongst the crowd for their bravery, ingenuity and perhaps most notoriously, superhuman abilities. From genetically enhanced soldiers, to cybernetic warriors, to mech pilots and rocket-powered knights, it appears that all over the planet, individuals branding the latest weapons and technology available to them are making actual progress at repelling warbot attacks. But there was perhaps no figure more notorious and heavily debated, than the mysterious Savior of Nigeria, the Doomfist.\n\nNigeria had endured constant war since the beginning of the crisis, as the high population numbers of Lagos and proximity to an Omnium made it the clearest target for Anubis to go after. When the attacks became global, neighboring countries increased their efforts to block their borders with Nigeria, offering little help and hoping to keep the invasion within the country. All seemed lost, until one night, in the city of Ibadan, he appeared. A single man, carrying no guns, just a metallic gauntlet in his right hand. According to witnesses, the man would leap into the air and piledrive into the machines with impossible force, wrecking the warbots and brawling entire waves of them for hours until sunrise. \n\n\nA young eyewitness approached the man, scared. The kid asked the hero if the war was over, to which his response was, \"No, but there is strength in struggle. With each fight for our home, I grow stronger, and I will keep our people safe\". The man disappeared as authorities arrived to provide aid. But he would show up every night to repel the Omnic forces once more. Witnesses describe his battles as both brutal and beautiful, like an artist at work. His presence spelled the doom of those who crossed his gauntlet, and thus the mighty Doomfist was born.",
+      "description": "All over the world, heroic figures started to appear throughout the entire Crisis, remarkable individuals that stood out amongst the crowd for their bravery, ingenuity and perhaps most notoriously, superhuman abilities. From genetically enhanced soldiers, to cybernetic warriors, to mech pilots and rocket-powered knights, it appears that all over the planet, individuals branding the latest weapons and technology available to them are making actual progress at repelling warbot attacks. But there was perhaps no figure more notorious and heavily debated, than the mysterious Savior of Nigeria, the Doomfist.\n\nNigeria had endured constant war since the beginning of the crisis, as the high population numbers of Lagos and proximity to an Omnium made it the clearest target for Anubis to go after. When the attacks became global, neighboring countries increased their efforts to block their borders with Nigeria, offering little help and hoping to keep the invasion within the country. All seemed lost, until one night, in the city of Ibadan, he appeared. A single man, carrying no guns, just a metallic gauntlet in his right hand. According to witnesses, the man would leap into the air and piledrive into the machines with impossible force, wrecking the warbots and brawling entire waves of them for hours until sunrise. \n\nA young eyewitness approached the man, scared. The kid asked the hero if the war was over, to which his response was, \"No, but there is strength in struggle. With each fight for our home, I grow stronger, and I will keep our people safe\". The man disappeared as authorities arrived to provide aid. But he would show up every night to repel the Omnic forces once more. Witnesses describe his battles as both brutal and beautiful, like an artist at work. His presence spelled the doom of those who crossed his gauntlet, and thus the first mighty Doomfist was born.",
       "image": "",
       "sources": [
         {
@@ -3479,7 +3527,7 @@
         {
           "locationName": "",
           "country": "Doomfist",
-          "reasoning": "Future heir to the Gauntlet and  title"
+          "reasoning": "Future heir to the Gauntlet and third to the title"
         }
       ],
       "factionFilterPlaces": [
@@ -3493,7 +3541,8 @@
         {
           "locationName": "",
           "country": "Ngumi,",
-          "reasoning": "The Original Doomfist, Overwatch Candidate"
+          "reasoning": "The Original Doomfist, Overwatch Candidate",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -3506,7 +3555,7 @@
       "name": "The Svyatogor",
       "locationType": "earth",
       "cityDisplayName": "Moscow, Russia",
-      "description": "I need for better defenses to battle Anubis, the RDF pumped all the money and resources they could into Volskaya Industries, allowing the company to finish the development of their Svyatogor unit. Gigantic mechs that were deployed across Russia Midway through the Crisis. These defensive units were equipped with arm-mounted canons that decimated warbot waves, but they also retained mechanical hands, which proved useful for evacuating civilians and creating barricades. Their size also meant they could go one to one against one of the biggest threads in the conflict, the Titan units. These giants were mostly unstoppable, but their construction did not account for close combat with units around the same size. So if both a Titan and Svyatogor fell, only one of them would get back up. The Svyatogor was also designed to endure the Russian winters, and resistant to most kinds of attacks.\n\nThanks to the Volskaya mechs, Russia was able to fight the crisis alone all the way through, without the need of external help, a feat of which they are proud even today. The mechs were not only effective at protecting small, isolated towns, they were also capable of holding the line in Moscow, in spite of the brutal number of warbots that Anubis sent their way. The God program was unable to keep up with the efficiency and scale of the Svyagotor units, forcing it to redirect most of its resources towards Russia, which left Scandinavia largely spared from the massacre. Sadly both Alisa and her son Mikhail would not surive the crisis, leaving Ekatherina Voslkaya, Alisa's daughter to inherit the company.",
+      "description": "I need for better defenses to battle Anubis, the RDF pumped all the money and resources they could into Volskaya Industries, allowing the company to finish the development of their Svyatogor unit. Gigantic mechs that were deployed across Russia Midway through the Crisis. These defensive units were equipped with arm-mounted canons that decimated warbot waves, but they also retained mechanical hands, which proved useful for evacuating civilians and creating barricades. Their size also meant they could go one to one against one of the biggest threads in the conflict, the Titan units. These giants were mostly unstoppable, but their construction did not account for close combat with units around the same size. So if both a Titan and Svyatogor fell, only one of them would get back up. The Svyatogor was also designed to endure the Russian winters, and resistant to most kinds of attacks.\n\nThanks to the Volskaya mechs, Russia was able to fight the crisis alone all the way through, without the need of external help, a feat of which they are proud even today. The mechs were not only effective at protecting small, isolated towns, they were also capable of holding the line in Moscow, in spite of the brutal number of warbots that Anubis sent their way. The God program was unable to keep up with the efficiency and scale of the Svyagotor units, forcing it to redirect most of its resources towards Russia, which left Scandinavia largely spared from the massacre. Sadly both Alisa and her son Mikhail would not survive the crisis, leaving Katherina Voslkaya, Alisa's daughter to inherit the company.",
       "image": "",
       "sources": [
         {
@@ -3546,7 +3595,8 @@
         {
           "locationName": "",
           "country": "Alisa,",
-          "reasoning": "Mass produces Svyagotor mechs during the Crisis"
+          "reasoning": "Mass produces Svyagotor mechs during the Crisis",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -3599,7 +3649,8 @@
         {
           "locationName": "",
           "country": "Adawe",
-          "reasoning": "Founder of Overwatch"
+          "reasoning": "Founder of Overwatch",
+          "badgePriority": true
         },
         {
           "locationName": "",
@@ -3720,7 +3771,7 @@
     },
     {
       "name": "Defense Network",
-      "description": "A few weeks into the Crisis, Lindholm would be called by the Swedish government, asking him to complete a design for a countrywide Defense Network. After the success of his workshop's defenses in Gothenburg, he had gained quite the reputation, and if there was anyone capable of pulling this off, Sweden believed it was him.  The proposal was drawn by bureaucrats who didn't understand the scope of what they asked, wanting a miracle on a shoestring budget. An anti-aircraft weapons system that mimicked the functions of Finland's security God Ai Chernobog, capable of warning citizens about air strikes nationwide and with mass-produced turret systems across population centers in Sweden.\n\nWhat would have been an impossible task for anyone else, was exactly the challenge that Torbjörn had been waiting for his whole life. While working alongside a team of the greatest minds the nation could offer, they were able to roll out the systems at record time. His design for the Defense Network shared features that he would include to the sky cannons in New York, as well as the Siege systems he later deployed in Canada as part of Overwatch. While he was not formally invited into the strike team, he had heard of the program and believed he could be of use, having the reputation and expertise to back his claim up. Soon after visiting his family back home, he directed himself to the training facility and invited himself into the Overwatch Initiative.",
+      "description": "A few weeks into the Crisis, Lindholm would be called by the Swedish government, asking him to complete a design for a countrywide Defense Network. After the success of his workshop's defenses in Gothenburg, he had gained quite the reputation, and if there was anyone capable of pulling this off, Sweden believed it was him.  The proposal was drawn by bureaucrats who didn't understand the scope of what they asked, wanting a miracle on a shoestring budget. An anti-aircraft weapons system that mimicked the functions of Finland's security God AI Chernobog, capable of warning citizens about air strikes nationwide and with mass-produced turret systems across population centers in Sweden.\n\nWhat would have been an impossible task for anyone else, was exactly the challenge that Torbjörn had been waiting for his whole life. While working alongside a team of the greatest minds the nation could offer, they were able to roll out the systems at record time. His design for the Defense Network shared features that he would include to the sky cannons in New York, as well as the Siege systems he later deployed in Canada as part of Overwatch. While he was not formally invited into the strike team, he had heard of the program and believed he could be of use, having the reputation and expertise to back his claim up. Soon after visiting his family back home, he directed himself to the training facility and invited himself into the Overwatch Initiative.",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
       "lat": 57.7072326,
@@ -3774,12 +3825,17 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Struggles against the Defense Network"
+        },
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": "It's capabilities mimicked for the anti-aircraft system"
         }
       ]
     },
     {
       "name": "The Skycannon",
-      "description": "The New Yorkers managed to endure the crisis on their own for months, coming up with one plan after another to use the city itself against Anubis. The wide cultural range and backgrounds of the many people involved allowed them to stay innovative and use the city's infrastructure to their advantage. Together they dug up and fortified shelters using parts from ships and skyscrappers, and organized to turn all green areas in the city, from rooftop gardens to Central Park, into communal farms that kept the population fed. At some point, Torbjörn Lindholm managed to find a way to contact the defenders from within the city and under his guidance they managed to work on defensive strategies. \n\nThe citizens would mount battleship cannons onto Manhattan's Sky Scrappersm and used to fire strategically at Null Sector Carriers to prevent them from reaching their deployment zones. Anubis would quickly take action and focus on bringing down these armored sky scrappers, but for a good while they bought the survivors enough time to plan ahead and fight on the ground. It was around this time that Anubis deployed the R-700 Ravager units, designed to become its battle commanders. Thanks to their high processing power, they were able to give orders independently of Anubis itself. With their arrival, it was clear that taking down Anubis wouldn't be enough to win the war.",
+      "description": "The New Yorkers managed to endure the crisis on their own for months, coming up with one plan after another to use the city itself against Anubis. The wide cultural range and backgrounds of the many people involved allowed them to stay innovative and use the city's infrastructure to their advantage. Together they dug up and fortified shelters using parts from ships and skyscrapers, and organized to turn all green areas in the city, from rooftop gardens to Central Park, into communal farms that kept the population fed. At some point, Torbjörn Lindholm managed to find a way to contact the defenders from within the city and under his guidance they managed to work on defensive strategies. \n\nThe citizens would mount battleship cannons onto Manhattan's skyscrapers and used to fire strategically at Null Sector Carriers to prevent them from reaching their deployment zones. Anubis would quickly take action and focus on bringing down these armored sky scrappers, but for a good while they bought the survivors enough time to plan ahead and fight on the ground. It was around this time that Anubis deployed the R-7000 Ravager units. Thanks to their high processing power, they were able to give orders independently of Anubis itself. With their arrival, it was clear that taking down Anubis wouldn't be enough to win the war.",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
       "lat": 40.7579554,
@@ -3893,7 +3949,7 @@
       "name": "Super Soldiers",
       "locationType": "earth",
       "cityDisplayName": "Wheeler County, United States",
-      "description": "The Soldier Enhancement Program had been kept secret for a long time due to the many human rights violations going on with its research, and in spite of years of progress, Naughton lacked the ethical green light to move on to human subjects. That all changed when the Crisis started. The United States turned into multiple warzones overnight, and any measures they took to stop the bloodshed seemed only temporary. In desperation, the government decided to go public with the Soldier Enhancement Program. In spite of concerns, the program gathered plenty of public support due to the dire circumstances of the Crisis, and recruitment for human trials began, though at this time the concept was purely fictional. After the initial sucess with Soldier 00, Kendra Banks, the program moved forward on test trials wtih the rest of the volunteers.\n\nAt least two hundred military personnel volunteered for the SEP initially, but only a handful would survive the horrors that awaited them in Naughton's labs, about sixty percent of the subjects died throughout the program. Anubis was also keenly aware of the situation and targeted the labs on multiple occasions. The initial lab at Camp Hale was destroyed within weeks of the announcement, and the team had to hop from one facility to another. In the end, the successful soldiers would be deployed around the country and quickly turn the tides in many battles where they showed up.\n\nThe two most notorious successes of the program were Soldier 24: Gabriel Reyes, and Soldier 76: Jack Morrison. The reputation of these two men was legendary even before Overwatch, the golden-haired hero who appeared out of nowhere and saved the day. And although Reyes was quieter and usually took less flashy missions, he was nonetheless just as effective and valuable, and even while he was still being actively tested on, he found time to communicate and coordinate with troops actively in battle.",
+      "description": "The Soldier Enhancement Program had been kept secret for a long time due to the many human rights violations going on with its research, and in spite of years of progress, Naughton lacked the ethical green light to move on to human subjects. That all changed when the Crisis started. The United States turned into multiple warzones overnight, and any measures they took to stop the bloodshed seemed only temporary. In desperation, the government decided to go public with the Soldier Enhancement Program. In spite of concerns, the program gathered plenty of public support due to the dire circumstances of the Crisis, and recruitment for human trials began, though at this time the concept was purely fictional. After the initial success with Soldier 00, Kendra Banks, the program moved forward on test trials with the rest of the volunteers.\n\nAt least two hundred military personnel volunteered for the SEP initially, but only a handful would survive the horrors that awaited them in Naughton's labs, about sixty percent of the subjects died throughout the program. Anubis was also keenly aware of the situation and targeted the labs on multiple occasions. The initial lab at Camp Hale was destroyed within weeks of the announcement, and the team had to hop from one facility to another. In the end, the successful soldiers would be deployed around the country and quickly turn the tides in many battles where they showed up.\n\nThe two most notorious successes of the program were Soldier 24: Gabriel Reyes, and Soldier 76: Jack Morrison. The reputation of these two men was legendary even before Overwatch, the golden-haired hero who appeared out of nowhere and saved the day. And although Reyes was quieter and usually took less flashy missions, he was nonetheless just as effective and valuable, and even while he was still being actively tested on, he found time to communicate and coordinate with troops actively in battle.",
       "image": "",
       "sources": [
         {
@@ -4048,6 +4104,11 @@
           "locationName": "",
           "country": "Anubis Directives, Overwatch,",
           "reasoning": "Overwatch is formed to end the Crisis"
+        },
+        {
+          "locationName": "",
+          "country": "Inti Warriors,",
+          "reasoning": "Rejects the Overwatch Proposal"
         }
       ],
       "npcFilterPlaces": [
@@ -4070,7 +4131,7 @@
     },
     {
       "name": "Early Missions",
-      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. The team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.<br><br>For months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting, and saving many lives. Further missions in Karachi and Shanghai were projected to result in the casualties of millions had it not been for Overwatch support. By working with local military efforts, Overwatch allowed many regions to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines, but even with the help of heroes, the war still went on. Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down.",
+      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. The team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.\n\nFor months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting, and saving many lives. Further missions in Karachi and Shanghai were projected to result in the casualties of millions had it not been for Overwatch support. By working with local military efforts, Overwatch allowed many regions to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines, but even with the help of heroes, the war still went on. Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down.",
       "locationType": "earth",
       "cityDisplayName": "Kyoto, Japan",
       "lat": 35.6768601,
@@ -4107,7 +4168,7 @@
         {
           "locationName": "Overwatch Strike Team",
           "country": "Soldier 76, Reaper, Ana, Reinhardt, Torbjörn",
-          "reasoning": "The Original Team Deployed During the Crisis"
+          "reasoning": "The original team deployed during the Crisis"
         }
       ],
       "factionFilterPlaces": [
@@ -4122,6 +4183,41 @@
           "locationName": "",
           "country": "Adawe",
           "reasoning": "Acting Commander of the Overwatch Initiative"
+        }
+      ]
+    },
+    {
+      "name": "Jamison Fawkes is Born",
+      "locationType": "earth",
+      "cityDisplayName": "The Outback, Australia",
+      "description": "On February 29th of 2052, Jamison Fawkes was born, in the middle of the Crisis to a family in the Outback. Born into chaos and having his life quickly stolen away after the Crisis, following the explosion of the Omnium, he would grow up as an outcast even amongst Junkers",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Website, Junkrat",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/junkrat/"
+        }
+      ],
+      "headlines": [
+        "Civilians unite to fight the Omnics in the Australian Outback"
+      ],
+      "lat": -25,
+      "lon": 135,
+      "eraName": "The Omnic Crisis",
+      "yearStart": 2052,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "The Outback, Australia",
+          "country": "Australia",
+          "reasoning": "Jamison Fawkes is Born"
+        }
+      ],
+      "yearEnd": null,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junkrat",
+          "reasoning": "Jamison Fawkes is Born"
         }
       ]
     },
@@ -4368,12 +4464,17 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Discovered by Macaria"
+        },
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": "Officially 'shut down'"
         }
       ]
     },
     {
       "name": "The Dark Days",
-      "description": "Many God Ais have grown to be beloved by the public due to their efficiency. For example, the God Program Xibalba guaranteed energy equity across Mexico and neighboring territories. The program had become part of the national identity, almost treated like a mascot by many, but when the order came to shut it down, it caused massive blackouts nationwide. \n\nSome facilities and small towns were able to stay lid thanks to Borda algae generators, or by acquiring fossil fuels, but for the majority, the world went dark. The Mexican army had so far resisted Anubis considerably but, as if the bloodshed wasn't already enough, the looming darkness of the night led to even more deaths than expected for the last tail end of the crisis. Many to this day remember all the people who died, those left behind in the shadows, as monsters, both human and Omnic prowled and hunted them down. To this day, many blame the government for their needless deaths, arguing that turning Xibalba off was turning their back on the people.",
+      "description": "Many God AIs have grown to be beloved by the public due to their efficiency. For example, the God Program Xibalba guaranteed energy equity across Mexico and neighboring territories. The program had become part of the national identity, almost treated like a mascot by many, but when the order came to shut it down, it caused massive blackouts nationwide. \n\nSome facilities and small towns were able to stay lid thanks to Borda algae generators, or by acquiring fossil fuels, but for the majority, the world went dark. The Mexican army had so far resisted Anubis considerably but, as if the bloodshed wasn't already enough, the looming darkness of the night led to even more deaths than expected for the last tail end of the crisis. Many to this day remember all the people who died, those left behind in the shadows, as monsters, both human and Omnic prowled and hunted them down. To this day, many blame the government for their needless deaths, arguing that turning Xibalba off was turning their back on the people.",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
       "lat": 19.1738,
@@ -4414,8 +4515,50 @@
       ]
     },
     {
+      "name": "Sloan Cameron is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "On August 6th of 2052, Sloan Cameron was Born in Nova Scotia. Intrpid and curious since they were a child, with an affinity to find lost objects. Their family moved often. To Nevada,  then Buenos Aires, Reykjavik, Mexico City, Singapore, back and forward always on the move. For Sloan each trip was a new expedition, a chance to unearth trinked and traces of the past, born in a world left in ruin after the war meant everywhere they went, there was lost history to be found",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "headlines": [
+        "Mexico goes dark following the shutdown of Xibalba"
+      ],
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "eraName": "The Omnic Crisis",
+      "yearStart": 2051,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": "Xibalbá is shut down leading to nation wide blackouts"
+        }
+      ],
+      "yearEnd": 2053,
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis Directives, Los Muertos,",
+          "reasoning": "Hundreds of people die during blackouts, leading to resentment with the government"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Forces Xibalbá's shut down"
+        }
+      ]
+    },
+    {
       "name": "Capturing a God",
-      "description": "While most governments shut down their god AI after Anubis was discovered, New York had a better idea of what to do with Macaria. Like many others, the program had been anthropomorphized by their team and local residents, with many looking at it as a friend. So, while defying official orders, they cut Macaria's connections without fully deactivating it. \n\nThe team worked alongside Macaria and its communication systems to spray noise and bad data across the warbot communication networks, disrupting them from getting orders from Anubis and saving countless lives while the troops were blinded. Without Anubis' direct support, the decision-making was left to the Ravagers, who, while they were a thread of their own, were still tangible, defeatable, compared to a God AI. Thanks to Macaria's help, New York was able to defend itself even after the Battle of the Bridges made them lose ground, and while public opinion about God programs never bounced back after Anubis, Macaria is still seen by many as a hero, with the Tony Award-winning Broadway Musical \"Collapse\" portraying her asa conflicted soul, in love with humanity, and willing to die for it.",
+      "description": "While most governments shut down their God AI after Anubis was discovered, New York had a better idea of what to do with Macaria. Like many others, the program had been anthropomorphized by their team and local residents, with many looking at it as a friend. So, while defying official orders, they cut Macaria's connections without fully deactivating it. \n\nThe team worked alongside Macaria and its communication systems to spray noise and bad data across the warbot communication networks, disrupting them from getting orders from Anubis and saving countless lives while the troops were blinded. Without Anubis' direct support, the decision-making was left to the Ravagers, who, while they were a thread of their own, were still tangible, defeatable, compared to a God AI. Thanks to Macaria's help, New York was able to defend itself even after the Battle of the Bridges made them lose ground, and while public opinion about God programs never bounced back after Anubis, Macaria is still seen by many as a hero, with the Tony Award-winning Broadway Musical \"Collapse\" portraying her asa conflicted soul, in love with humanity, and willing to die for it.",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
       "lat": 40.7579554,
@@ -4459,45 +4602,10 @@
       ]
     },
     {
-      "name": "Jamison Fawkes is Born",
-      "locationType": "earth",
-      "cityDisplayName": "The Outback, Australia",
-      "description": "On February 29th of 2052, Jamison Fawkes was born, in the middle of the Crisis to a family in the Outback. Born into chaos and having his life quickly stolen away after the Crisis, following the explosion of the Omnium, he would grow up as an outcast even amongst Junkers",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website, Junkrat",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/junkrat/"
-        }
-      ],
-      "headlines": [
-        "Civilians unite to fight the Omnics in the Australian Outback"
-      ],
-      "lat": -25,
-      "lon": 135,
-      "eraName": "The Omnic Crisis",
-      "yearStart": 2052,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "The Outback, Australia",
-          "country": "Australia",
-          "reasoning": "Jamison Fawkes is Born"
-        }
-      ],
-      "yearEnd": null,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junkrat",
-          "reasoning": "Jamison Fawkes is Born"
-        }
-      ]
-    },
-    {
       "name": "Bombardment",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95 percent of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. \n\nThe Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. All five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
+      "description": "Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95% of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together with local government and national authorities to evacuate millions of civilians into bomb shelters, and those who weren't able to make it in time into the larger bunkers were aided into deploying Steel Blankets. \n\nThe Bombardment lasted three hours, and by the end the city was left as a wasteland, but in spite of heavy casualties, the efforts of the Heroic Five completely decimated the projected death toll. The event was known as the Midsummer Miracle. The Five had made a pact before the disaster, to not take refuge until everyone else made it safely first, so even as the bomb rained down, they kept helping the elderly and the injured rushed into the Iron Blankets. All five of them died helping stragglers, and their names are commemorated all across the city as heroes. Torbjörn himself gave the eulogy to the group, claiming they lived and died by the highest creed of an engineer and a citizen: to help others live better lives, or to help them live at all. While Lindholm was already in Overwatch by the time of the bombardment, he was informed of the massacre as he returned from a mission. Reports say he scarcely seemed to breathe until it was confirmed his wife and children survived, and only then did he allowed himself to grieve, mourning the lives of those that could not be saved.",
       "image": "",
       "sources": [
         {
@@ -4551,54 +4659,61 @@
     {
       "name": "The Savior",
       "locationType": "earth",
-      "cityDisplayName": "Ibadan, Nigeria",
+      "cityDisplayName": "Cairo, Egypt",
       "description": "The man carrying the Doomfist Gauntlet has been identified as Adhabu Ngumi. He had continued fighting on Ibadan, as Anubis ended up perplexed by the rate at which its troops fell. A month into his crusade, the Nigerian Government identified him, and stepped in to make sure his mother had access to any resources and food needed, making sure the household was tended to while their son risked his life for the country.\n\nWith his identity discovered, and the government on his side, Ngumi began working with local authorities, transported across neighboring regions to be deployed wherever he was needed. He would end up marrying the woman assigned as his Stratoscopter pilot, and as the constant fighting incapacitated him, he would refuse to take the Gauntlet off, choosing to repair it himself. Late into the Crisis, Anubis ordered the Nigerian Omnium to pump out more warbots than any one man could fight, and as usual, Doomfist showed up to defend his country. It was only five days before the awakening when he died during the Omnium battle. He had saved millions of lives across West Africa, and once the crisis ended, he was recognized as the Savior of Nigeria, and awarded with the highest civilian honors possible.",
       "image": "",
       "sources": [
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Genesis, Part three: Rebirth",
+          "url": "https://www.youtube.com/watch?v=S5_5aYk4WMo&t=2s"
         }
       ],
       "headlines": [
-        "Doomfist dies during Nigerian warbot attack"
+        "Overwatch scientists refuse to destroy Anubis Program",
+        "Controversial AI prison begins construction"
       ],
-      "lat": 7.3786064,
-      "lon": 3.8969928,
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Ibadan, Nigeria",
-          "country": "Nigeria",
-          "reasoning": "Doomfist dies defending his home from Anubis"
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Anubis program is left in quarantine following the Crisis",
+          "lat": 30.0444,
+          "lon": 31.2357
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Doomfist",
-          "reasoning": "Future heir of the Gauntlet and title"
+          "country": "Torbjörn",
+          "reasoning": "Aids in the consturction of the Temple"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Anubis Directives,",
-          "reasoning": "Anubis defeats Doomfist in an all out attack"
+          "country": "Overwatch,",
+          "reasoning": "Begins construction of the Temple of Anubis"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ngumi,",
-          "reasoning": "Died heroically defending Nigeria"
+          "country": "Liao",
+          "reasoning": "Aids in the Consturction of the Temple"
         },
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "Kills Doomfist in Nigeria"
+          "reasoning": "Finally quarantined, the God Program is cut off from current events"
         }
       ]
     },
@@ -4622,8 +4737,8 @@
         "Omnic troops stop fighting world wide",
         "Warbot drops gun and helps human troops"
       ],
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "lat": 28.3949,
       "lon": 84.124,
@@ -4645,57 +4760,13 @@
         {
           "locationName": "",
           "country": "Aurora, Liao, Adawe",
-          "reasoning": "With Adawe's proval and Aurora's permission, Liao's team broadcasts her concioussness across the planet"
+          "reasoning": "With Adawe's proval and Aurora's permission, Liao's team broadcasts her concioussness across the planet",
+          "badgePriority": true
         },
         {
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Studies the Awakening to stop a second wave"
-        }
-      ]
-    },
-    {
-      "name": "Sloan Cameron is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Nova Scotia, Canada",
-      "description": "On August 6th of 2052, Sloan Cameron was Born in Nova Scotia. Intrpid and curious since they were a child, with an affinity to find lost objects. Their family moved often. To Nevada,  then Buenos Aires, Reykjavik, Mexico City, Singapore, back and forward always on the move. For Sloan each trip was a new expedition, a chance to unearth trinked and traces of the past, born in a world left in ruin after the war meant everywhere they went, there was lost history to be found",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/venture/"
-        }
-      ],
-      "headlines": [
-        "Archeologist struggle to recover relics among the ruins left by the Crisis"
-      ],
-      "lat": 45.1960403,
-      "lon": -63.1653789,
-      "eraName": "The Omnic Crisis",
-      "yearStart": 2052,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Nova Scotia, Canada",
-          "country": "Canada",
-          "reasoning": "Sloan Cameron is Born"
-        },
-        {
-          "locationName": "Dorado, Mexico,",
-          "country": "Mexico,",
-          "reasoning": "Sloan gains dual citizenship from Mexican roots"
-        },
-        {
-          "locationName": "Cameron Excursion Destinations",
-          "country": "United States, Argentina, Iceland, Mexico, Singapore",
-          "reasoning": "Sloan's family is constantly on the move"
-        }
-      ],
-      "yearEnd": null,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Venture",
-          "reasoning": "Sloan Cameron is Born"
         }
       ]
     },
@@ -4706,8 +4777,8 @@
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
       "lon": 31.2357,
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "image": "",
       "sources": [
@@ -4778,8 +4849,8 @@
         "Troops in Baltimore fight alonside Omnics to stop remaining warbots",
         "Omnic Crisis officially over, can humanity ever recover?"
       ],
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
@@ -4861,7 +4932,7 @@
       "name": "Prejudice",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
-      "description": "Reception to Omnic sentience was very mixed and volatile across the world. The Awakening caused global confusion, and while some welcomed a helping hand at the time, not everyone was as kind.<br><br>Many humans took their chance to strike against Omnics, even as they laid down their weapons. Some did not buy the sudden change in motivations, others were far too damaged by the crisis to ever forgive the machines, and a depressingly high number of people outright rejected them, appalled by the idea of sentience, watching the robots that once served humanity, turning against them and causing endless bloodshed, only to suddenly ask to be seen as equals. <br><br>Following the Crisis, many Omnics were hunted down mercilessly purely out of resentment for actions they had no control over. Ravager units specifically were killed to near extinction. It was going to take quite a long time for humanity to heal from the Crisis, and even longer for them to adapt to sentient Omnics, but for many Omnics out there, it was clear they were never meant to coexist, and trying to share this world with humanity was futile.",
+      "description": "Reception to Omnic sentience was very mixed and volatile across the world. The Awakening caused global confusion, and while some welcomed a helping hand at the time, not everyone was as kind.\n\nMany humans took their chance to strike against Omnics, even as they laid down their weapons. Some did not buy the sudden change in motivations, others were far too damaged by the crisis to ever forgive the machines, and a depressingly high number of people outright rejected them, appalled by the idea of sentience, watching the robots that once served humanity, turning against them and causing endless bloodshed, only to suddenly ask to be seen as equals. \n\nFollowing the Crisis, many Omnics were hunted down mercilessly purely out of resentment for actions they had no control over. Ravager units specifically were killed to near extinction. It was going to take quite a long time for humanity to heal from the Crisis, and even longer for them to adapt to sentient Omnics, but for many Omnics out there, it was clear they were never meant to coexist, and trying to share this world with humanity was futile.",
       "image": "",
       "sources": [
         {
@@ -4879,8 +4950,8 @@
       ],
       "lat": 40.7579554,
       "lon": -73.9855319,
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
@@ -4906,8 +4977,8 @@
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
       "lon": 31.2357,
-      "yearStart": 2051,
-      "yearEnd": 2053,
+      "yearStart": 2053,
+      "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "image": "",
       "sources": [
@@ -5000,7 +5071,7 @@
       "name": "Adawe Departs",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics.  Her successor in terms of leadership would be Director William Petras, on behalf of the UN's new international judicial branch, the International Justice Commission, or IJC.\n\nOne year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
+      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics.  Her successor in terms of leadership would be Director William Petras, on behalf of the UN's new international judicial branch, the International Justice Commission, or IJC.One year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
       "image": "",
       "sources": [
         {
@@ -5047,7 +5118,8 @@
         {
           "locationName": "",
           "country": "Adawe",
-          "reasoning": "Leaves the UN and Overwatch to work on the City of Numbani"
+          "reasoning": "Leaves the UN and Overwatch to work on the City of Numbani",
+          "badgePriority": true
         }
       ]
     },
@@ -10749,6 +10821,21 @@
           "reasoning": ""
         }
       ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Ghost",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 52.2333742,
+      "lon": 21.0711489,
+      "image": "",
+      "cityDisplayName": "Warsaw,  Poland",
+      "yearStart": 2069,
+      "yearEnd": 2070,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": []
     },

@@ -596,13 +596,25 @@
     "Hazard": [
       "Heroic"
     ],
+    "Illari": [
+      "Heroic"
+    ],
+    "Jetpack Cat": [
+      "Heroic"
+    ],
     "Junker Queen": [
       "Heroic"
     ],
     "Junkrat": [
       "Heroic"
     ],
+    "Juno": [
+      "Heroic"
+    ],
     "Kiriko": [
+      "Heroic"
+    ],
+    "Lifeweaver": [
       "Heroic"
     ],
     "Lúcio": [
@@ -614,16 +626,67 @@
     "Mei": [
       "Heroic"
     ],
+    "Mercy": [
+      "Heroic"
+    ],
+    "Mizuki": [
+      "Heroic"
+    ],
+    "Moira": [
+      "Heroic"
+    ],
     "Orisa": [
       "Heroic"
     ],
+    "Pharah": [
+      "Heroic"
+    ],
     "Ramattra": [
+      "Heroic"
+    ],
+    "Reaper": [
       "Heroic"
     ],
     "Reinhardt": [
       "Heroic"
     ],
     "Roadhog": [
+      "Heroic"
+    ],
+    "Shion": [
+      "Heroic"
+    ],
+    "Sierra": [
+      "Heroic"
+    ],
+    "Sigma": [
+      "Heroic"
+    ],
+    "Sojourn": [
+      "Heroic"
+    ],
+    "Soldier 76": [
+      "Heroic"
+    ],
+    "Sombra": [
+      "Heroic"
+    ],
+    "Symmetra": [
+      "Heroic"
+    ],
+    "Torbjörn": [
+      "Heroic"
+    ],
+    "Tracer": [
+      "Heroic"
+    ],
+    "Vendetta": [
+      "Heroic"
+    ],
+    "Venture": [
+      "Heroic"
+    ],
+    "Widowmaker": [
       "Heroic"
     ],
     "Winston": [
@@ -636,6 +699,9 @@
       "Heroic"
     ],
     "Zarya": [
+      "Heroic"
+    ],
+    "Zenyatta": [
       "Heroic"
     ]
   },

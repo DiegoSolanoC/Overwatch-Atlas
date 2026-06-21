@@ -3029,13 +3029,25 @@
     "Hazard": [
       "Heroic.png"
     ],
+    "Illari": [
+      "Heroic.png"
+    ],
+    "Jetpack Cat": [
+      "Heroic.png"
+    ],
     "Junker Queen": [
       "Heroic.png"
     ],
     "Junkrat": [
       "Heroic.png"
     ],
+    "Juno": [
+      "Heroic.png"
+    ],
     "Kiriko": [
+      "Heroic.png"
+    ],
+    "Lifeweaver": [
       "Heroic.png"
     ],
     "Lúcio": [
@@ -3047,16 +3059,67 @@
     "Mei": [
       "Heroic.png"
     ],
+    "Mercy": [
+      "Heroic.png"
+    ],
+    "Mizuki": [
+      "Heroic.png"
+    ],
+    "Moira": [
+      "Heroic.png"
+    ],
     "Orisa": [
       "Heroic.png"
     ],
+    "Pharah": [
+      "Heroic.png"
+    ],
     "Ramattra": [
+      "Heroic.png"
+    ],
+    "Reaper": [
       "Heroic.png"
     ],
     "Reinhardt": [
       "Heroic.png"
     ],
     "Roadhog": [
+      "Heroic.png"
+    ],
+    "Shion": [
+      "Heroic.png"
+    ],
+    "Sierra": [
+      "Heroic.png"
+    ],
+    "Sigma": [
+      "Heroic.png"
+    ],
+    "Sojourn": [
+      "Heroic.png"
+    ],
+    "Soldier 76": [
+      "Heroic.png"
+    ],
+    "Sombra": [
+      "Heroic.png"
+    ],
+    "Symmetra": [
+      "Heroic.png"
+    ],
+    "Torbjörn": [
+      "Heroic.png"
+    ],
+    "Tracer": [
+      "Heroic.png"
+    ],
+    "Vendetta": [
+      "Heroic.png"
+    ],
+    "Venture": [
+      "Heroic.png"
+    ],
+    "Widowmaker": [
       "Heroic.png"
     ],
     "Winston": [
@@ -3069,6 +3132,9 @@
       "Heroic.png"
     ],
     "Zarya": [
+      "Heroic.png"
+    ],
+    "Zenyatta": [
       "Heroic.png"
     ]
   }

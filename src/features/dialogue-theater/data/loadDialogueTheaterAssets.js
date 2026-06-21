@@ -250,6 +250,26 @@ export function shouldUpgradeDialogueLineRender(currentRender, heroicRender) {
     return current.toLowerCase() === 'classic.png';
 }
 
+/**
+ * @param {import('./DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @param {Record<string, string[]>} rendersMap
+ * @returns {number} lines updated
+ */
+export function applyHeroicRendersToConversations(conversations, rendersMap) {
+    if (!Array.isArray(conversations) || !rendersMap) return 0;
+    let updated = 0;
+    for (const conversation of conversations) {
+        const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+        for (const line of lines) {
+            const heroic = pickHeroicRenderForHero(line?.hero, rendersMap);
+            if (!shouldUpgradeDialogueLineRender(line?.render, heroic)) continue;
+            line.render = heroic;
+            updated += 1;
+        }
+    }
+    return updated;
+}
+
 export function clearDialogueTheaterAssetsCache() {
     cachedAssets = null;
     loadPromise = null;

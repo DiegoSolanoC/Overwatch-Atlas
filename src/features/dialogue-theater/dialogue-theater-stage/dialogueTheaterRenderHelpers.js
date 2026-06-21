@@ -2,7 +2,11 @@
  * Shared helpers for resolving dialogue line character render URLs.
  */
 
-import { renderImageUrl, resolveRenderHeroFolder } from '../data/loadDialogueTheaterAssets.js';
+import {
+    pickHeroicRenderForHero,
+    renderImageUrl,
+    resolveRenderHeroFolder,
+} from '../data/loadDialogueTheaterAssets.js';
 import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
 import { isBeforeTheCrisisConversation } from '../dialogue-theater-info-panel/beforeTheCrisisPathConfig.js';
 import { FAVORITE_ANIMAL_CONVERSATION_ID } from '../dialogue-theater-info-panel/dialogueTheaterGroupedPathPicker.js';
@@ -81,8 +85,12 @@ export function sideForLineIndex(lineIndex) {
  */
 export function getLineRenderSrc(line, rendersMap) {
     const hero = String(line?.hero || '').trim();
-    const render = String(line?.render || '').trim();
-    if (!hero || !render) return '';
+    if (!hero) return '';
+    let render = String(line?.render || '').trim();
+    if (!render) {
+        render = pickHeroicRenderForHero(hero, rendersMap);
+        if (!render) return '';
+    }
     const folder = resolveRenderHeroFolder(hero, rendersMap);
     if (!folder) return '';
     return renderImageUrl(folder, render);

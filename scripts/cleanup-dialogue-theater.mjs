@@ -4,6 +4,7 @@
  * - remove duplicate conversations (keep earliest in file order)
  * - copy missing voicelines from scraped interactions into theater assets
  * - backfill empty line.voice fields when a matching file exists
+ * - backfill empty or Classic line.render fields with Heroic.png when available
  * - refresh theater-assets-manifest.json
  *
  * Usage:
@@ -17,6 +18,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { conversationVoiceFingerprint } from '../src/features/dialogue-theater/data/dialogueTheaterConversationValidation.js';
+import {
+    pickHeroicRenderForHero,
+    shouldUpgradeDialogueLineRender,
+} from '../src/features/dialogue-theater/data/loadDialogueTheaterAssets.js';
 import {
     findVoicelineForHeroAndSubtitles,
     resolveLineVoiceFile,
@@ -196,6 +201,50 @@ function normalizeConversationHeroNames(conversations, manifestHeroes) {
     return updatedLines;
 }
 
+/**
+ * @param {import('../src/features/dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @param {Record<string, string[]>} rendersMap
+ */
+function backfillHeroicRenders(conversations, rendersMap) {
+    let updatedLines = 0;
+
+    for (const conversation of conversations) {
+        const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+        for (const line of lines) {
+            const heroic = pickHeroicRenderForHero(String(line?.hero || '').trim(), rendersMap);
+            if (!shouldUpgradeDialogueLineRender(line?.render, heroic)) continue;
+            line.render = heroic;
+            updatedLines += 1;
+        }
+    }
+
+    return updatedLines;
+}
+
+/**
+ * @param {import('../src/features/dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @param {Record<string, string[]>} rendersMap
+ */
+function listLinesMissingHeroicRender(conversations, rendersMap) {
+    /** @type {Map<string, number>} */
+    const byHero = new Map();
+
+    for (const conversation of conversations) {
+        const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+        for (const line of lines) {
+            const hero = String(line?.hero || '').trim();
+            if (!hero) continue;
+            const heroic = pickHeroicRenderForHero(hero, rendersMap);
+            const current = String(line?.render || '').trim();
+            if (heroic && current.toLowerCase() === 'heroic.png') continue;
+            if (heroic) continue;
+            byHero.set(hero, (byHero.get(hero) || 0) + 1);
+        }
+    }
+
+    return [...byHero.entries()].sort((a, b) => b[1] - a[1]);
+}
+
 async function main() {
     const opts = parseArgs(process.argv.slice(2));
 
@@ -228,6 +277,20 @@ async function main() {
     }
     const updatedLines = backfillConversationVoices(kept, voicelines);
     console.log(`Backfilled ${updatedLines} line voice field(s)`);
+
+    const updatedRenders = backfillHeroicRenders(kept, assets.renders || {});
+    console.log(`Backfilled ${updatedRenders} line render field(s) with Heroic.png`);
+
+    const missingRenders = listLinesMissingHeroicRender(kept, assets.renders || {});
+    if (missingRenders.length > 0) {
+        console.log('Lines still without a heroic render folder:');
+        for (const [hero, count] of missingRenders.slice(0, 20)) {
+            console.log(`  - ${hero}: ${count} line(s)`);
+        }
+        if (missingRenders.length > 20) {
+            console.log(`  … and ${missingRenders.length - 20} more hero name(s)`);
+        }
+    }
 
     const postBackfill = removeDuplicateConversations(kept);
     if (postBackfill.removed.length > 0) {

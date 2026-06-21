@@ -11,6 +11,11 @@ import {
     normalizeConversationRecord,
 } from './dialogueTheaterConversationSchema.js';
 import { nextConversationNumber } from './dialogueTheaterConversationValidation.js';
+import {
+    applyHeroicRendersToConversations,
+    loadDialogueTheaterAssets,
+    shouldUpgradeDialogueLineRender,
+} from './loadDialogueTheaterAssets.js';
 
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
 export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
@@ -122,6 +127,21 @@ class DialogueTheaterDataService {
      * @param {import('./DialogueTheaterDataService.js').DialogueConversation[]} localRows
      * @param {{ applyFileNames?: boolean }} [options]
      */
+    overlayFileLineRenders(fileRow, pickedRow) {
+        const fileLinesById = new Map(
+            (Array.isArray(fileRow?.lines) ? fileRow.lines : []).map((line) => [line.id, line]),
+        );
+        const lines = (Array.isArray(pickedRow?.lines) ? pickedRow.lines : []).map((line) => {
+            const fileLine = fileLinesById.get(line.id);
+            if (!fileLine) return line;
+            if (shouldUpgradeDialogueLineRender(line.render, fileLine.render)) {
+                return { ...line, render: fileLine.render };
+            }
+            return line;
+        });
+        return { ...pickedRow, lines };
+    }
+
     mergeConversationRows(fileRows, localRows, options = {}) {
         const applyFileNames = Boolean(options.applyFileNames);
         const localById = new Map(localRows.map((row) => [row.id, row]));
@@ -133,11 +153,17 @@ class DialogueTheaterDataService {
                 if (!localRow) return fileRow;
 
                 const picked = this.pickRicherConversationRow(fileRow, localRow);
-                if (!applyFileNames) return picked;
-                return { ...picked, name: fileRow.name };
+                const withRenders = this.overlayFileLineRenders(fileRow, picked);
+                if (!applyFileNames) return withRenders;
+                return { ...withRenders, name: fileRow.name };
             });
         merged.push(...localRows.filter((row) => !fileIds.has(row.id)));
         return merged;
+    }
+
+    async applyHeroicRenderUpgrades() {
+        const assets = await loadDialogueTheaterAssets();
+        return applyHeroicRendersToConversations(this.conversations, assets.renders || {});
     }
 
     /** @param {unknown[]} list */
@@ -201,29 +227,16 @@ class DialogueTheaterDataService {
 
         if (fileNormalized.length === 0) {
             this.conversations = localNormalized;
-            this.clearUnsavedMarkers();
-            updateStatus(
-                `Dialogue Theater: loaded ${this.conversations.length} conversation(s) from localStorage`,
-                'success',
-            );
-            return;
-        }
-
-        if (localNormalized.length === 0) {
+        } else if (localNormalized.length === 0) {
             this.conversations = fileNormalized;
-            this.persistLocalStorageOnly();
-            this.clearUnsavedMarkers();
-            updateStatus(
-                `Dialogue Theater: loaded ${this.conversations.length} conversation(s) from bundled file`,
-                'success',
-            );
-            return;
+        } else {
+            /** Bundled file wins on id unless local has richer paths/lines; keep local-only drafts. */
+            this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
+                applyFileNames,
+            });
         }
 
-        /** Bundled file wins on id unless local has richer paths/lines; keep local-only drafts. */
-        this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
-            applyFileNames,
-        });
+        const heroicUpgrades = await this.applyHeroicRenderUpgrades();
         this.persistLocalStorageOnly();
 
         if (applyFileNames) {
@@ -235,8 +248,13 @@ class DialogueTheaterDataService {
         }
 
         this.clearUnsavedMarkers();
+        let loadSource = 'file + local drafts';
+        if (fileNormalized.length === 0) loadSource = 'localStorage';
+        else if (localNormalized.length === 0) loadSource = 'bundled file';
+        const heroicNote =
+            heroicUpgrades > 0 ? ` — upgraded ${heroicUpgrades} line render(s) to Heroic` : '';
         updateStatus(
-            `Dialogue Theater: loaded ${this.conversations.length} conversation(s) (file + local drafts)`,
+            `Dialogue Theater: loaded ${this.conversations.length} conversation(s) (${loadSource})${heroicNote}`,
             'success',
         );
     }
