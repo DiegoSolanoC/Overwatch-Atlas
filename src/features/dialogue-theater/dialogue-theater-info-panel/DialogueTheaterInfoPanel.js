@@ -17,7 +17,12 @@ import {
     updateDialogueTheaterViewPathSelection,
     wireDialogueTheaterDeleteEntry,
 } from './DialogueTheaterEditPanel.js';
-import { isFavoriteAnimalConversation, shouldUseGroupedPathPicker } from './dialogueTheaterGroupedPathPicker.js';
+import { hasConversationVariationPaths } from '../data/dialogueTheaterPathHelpers.js';
+import { isBeforeTheCrisisConversation } from './beforeTheCrisisPathConfig.js';
+import { isFavoriteAnimalConversation } from './dialogueTheaterGroupedPathPicker.js';
+import { isPeriodicTableConversation } from './periodicTablePathConfig.js';
+import { pickRandomPeriodicTablePathId } from './dialogueTheaterPeriodicTablePicker.js';
+import { usesStandardRandomRoutePlay, pickRandomConversationPathId } from './dialogueTheaterRandomRoutePlay.js';
 import {
     hideDialogueTheaterImageOverlay,
     showDialogueTheaterImageOverlay,
@@ -68,7 +73,8 @@ function isDialogueTheaterPanelOpen() {
     return document.getElementById('eventSlide')?.classList.contains('event-slide--dialogue-theater');
 }
 
-async function onConversationPathChange(pathId) {
+async function onConversationPathChange(pathId, options = {}) {
+    const autoPlay = options.autoPlay !== false;
     if (!activeConversationId) return;
     stopDialogueTheaterViewPlayback();
     dialogueTheaterDataService.updateConversation(activeConversationId, { selectedPathId: pathId });
@@ -77,10 +83,12 @@ async function onConversationPathChange(pathId) {
     if (!row) return;
 
     const host = document.getElementById('dialogueTheaterEditHost');
-    if (host && shouldUseGroupedPathPicker(row)) {
+    if (host && hasConversationVariationPaths(row)) {
         updateDialogueTheaterViewPathSelection(host, row, pathId);
         await refreshDialogueTheaterStage(row);
-        void autoStartDialogueTheaterViewPlayAll(row);
+        if (autoPlay) {
+            void autoStartDialogueTheaterViewPlayAll(row);
+        }
         return;
     }
 
@@ -101,12 +109,12 @@ async function refreshPanelContent(mode) {
     const scrollable = getScrollable();
     if (!row || !scrollable) return;
     const playbackActive = isDialogueTheaterViewPlaybackActive();
-    unmountDialogueTheaterPanel({ preservePlayback: mode === 'edit' && playbackActive });
+    unmountDialogueTheaterPanel({ preservePlayback: playbackActive });
     const host = await mountDialogueTheaterPanel(scrollable, row, mode, {
         onPathChange: mode === 'view' ? onConversationPathChange : undefined,
     });
     await showDialogueTheaterImageOverlay(window.standaloneEventSlide, {
-        preserveStage: mode === 'edit' && playbackActive,
+        preserveStage: playbackActive,
     });
     if (mode === 'edit' && !playbackActive) {
         await refreshDialogueTheaterEditStageFromHost(host, row);
@@ -333,7 +341,7 @@ async function prepareEventSlideForConversation(row) {
  * @param {{ startEditing?: boolean }} [options]
  */
 export async function openDialogueTheaterInfoPanel(conversationId, options = {}) {
-    const row = dialogueTheaterDataService.getConversationById(conversationId);
+    let row = dialogueTheaterDataService.getConversationById(conversationId);
     if (!row) {
         updateStatus('Conversation not found.', 'warning');
         return;
@@ -341,12 +349,31 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
 
     activeConversationId = conversationId;
     wirePanelButtons();
+
+    if (!options.startEditing && usesStandardRandomRoutePlay(row)) {
+        const pathId = pickRandomConversationPathId(row);
+        dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
+        await dialogueTheaterDataService.save({ silent: true });
+        row = dialogueTheaterDataService.getConversationById(conversationId) || row;
+    }
+
+    if (!options.startEditing && isPeriodicTableConversation(row)) {
+        const pathId = pickRandomPeriodicTablePathId(row);
+        dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
+        await dialogueTheaterDataService.save({ silent: true });
+        row = dialogueTheaterDataService.getConversationById(conversationId) || row;
+    }
+
     await prepareEventSlideForConversation(row);
 
     if (options.startEditing) {
         await enterDialogueTheaterEditMode(true);
     } else {
-        void autoStartDialogueTheaterViewPlayAll(row, { masterPlay: isFavoriteAnimalConversation(row) });
+        void autoStartDialogueTheaterViewPlayAll(row, {
+            masterPlay: isFavoriteAnimalConversation(row) || isBeforeTheCrisisConversation(row),
+            randomRoutePlay: usesStandardRandomRoutePlay(row),
+            periodicTablePlay: isPeriodicTableConversation(row),
+        });
     }
 }
 

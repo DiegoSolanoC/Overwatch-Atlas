@@ -192,6 +192,10 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
     white-space: pre-wrap;
 }
 
+.dialogue-theater-stage__dialogue-text .dialogue-theater-subtitle__em {
+    font-style: italic;
+}
+
 .dialogue-theater-stage__dialogue[hidden] {
     display: none !important;
 }

@@ -3,6 +3,10 @@
  * (toggle button, close button, moving `.music-panel-content` into the panel).
  */
 
+import {
+    restoreEventImageOverlayAfterSidePanel,
+} from '../../../system-interface/interface-filter-menu/panel/panelSideImageOverlaySync.js';
+
 export class MusicPanelService {
     constructor(musicButton, musicPanel, musicPanelClose) {
         this.musicButton = musicButton;
@@ -74,6 +78,7 @@ export class MusicPanelService {
                     window.globeController?.requestStageLayoutSync?.();
                     const finish = () => {
                         filtersPanel.classList.remove('panel--closing');
+                        restoreEventImageOverlayAfterSidePanel();
                         window.globeController?.requestStageLayoutSync?.();
                     };
                     const onEnd = (e) => {

@@ -9,11 +9,15 @@
 
 import {
     hideDialogueTheaterImageOverlayGradually,
+    isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 
 export function runHideImageOverlayGradually(slide, durationMs = 600) {
-            if (isDialogueTheaterImageOverlayContext()) {
+            if (
+                isDialogueTheaterImageOverlayContext()
+                || isDialogueTheaterEventSlideMarked()
+            ) {
                 hideDialogueTheaterImageOverlayGradually(slide, durationMs);
                 return;
             }

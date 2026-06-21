@@ -20,7 +20,7 @@ const EXPORT_FILENAME = 'dialogue-theater-export.json';
 
 /** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
 /** @typedef {{ id: string, hero: string, voice: string, subtitles: string, render: string }} DialogueLine */
-/** @typedef {{ id: string, label: string, lineIds: string[] }} DialoguePath */
+/** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
 class DialogueTheaterDataService {
     constructor() {

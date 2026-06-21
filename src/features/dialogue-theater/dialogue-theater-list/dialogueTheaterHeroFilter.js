@@ -14,7 +14,7 @@ import {
  * @param {string[]} manifestHeroes
  * @returns {boolean}
  */
-function heroNamesMatch(a, b, manifestHeroes = []) {
+export function heroNamesMatch(a, b, manifestHeroes = []) {
     const left = String(a || '').trim();
     const right = String(b || '').trim();
     if (!left || !right) return false;

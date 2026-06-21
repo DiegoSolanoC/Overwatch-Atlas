@@ -9,11 +9,15 @@
 
 import {
     hideDialogueTheaterImageOverlay,
+    isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 
 export function runHideImageOverlay(slide) {
-            if (isDialogueTheaterImageOverlayContext()) {
+            if (
+                isDialogueTheaterImageOverlayContext()
+                || isDialogueTheaterEventSlideMarked()
+            ) {
                 hideDialogueTheaterImageOverlay();
                 return;
             }

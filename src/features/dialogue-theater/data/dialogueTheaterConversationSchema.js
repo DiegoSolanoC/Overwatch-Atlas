@@ -71,6 +71,8 @@ export function buildBlankConversationRecord() {
     };
 }
 
+import { stripWikiOutcomeMarkers } from './dialogueSubtitleFormatting.js';
+
 /**
  * @param {unknown} raw
  * @returns {{ id: string, hero: string, voice: string, subtitles: string, render: string }|null}
@@ -82,7 +84,7 @@ export function normalizeDialogueLine(raw) {
         id,
         hero: String(raw.hero != null ? raw.hero : '').trim(),
         voice: String(raw.voice != null ? raw.voice : '').trim(),
-        subtitles: String(raw.subtitles != null ? raw.subtitles : ''),
+        subtitles: stripWikiOutcomeMarkers(String(raw.subtitles != null ? raw.subtitles : '')),
         render: String(raw.render != null ? raw.render : '').trim(),
     };
 }
@@ -104,7 +106,20 @@ export function normalizeDialoguePath(raw) {
         seen.add(lineId);
         lineIds.push(lineId);
     }
-    return { id, label, lineIds };
+    /** @type {import('./DialogueTheaterDataService.js').DialoguePath} */
+    const path = { id, label, lineIds };
+    if (raw.segments && typeof raw.segments === 'object') {
+        /** @type {Record<string, string>} */
+        const segments = {};
+        for (const key of ['asker', 'job', 'reactor', 'epilogue', 'outcome', 'hero', 'variant']) {
+            const value = String(raw.segments[key] || '').trim();
+            if (value) segments[key] = value;
+        }
+        if (Object.keys(segments).length > 0) {
+            path.segments = segments;
+        }
+    }
+    return path;
 }
 
 /**

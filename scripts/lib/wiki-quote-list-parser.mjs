@@ -87,7 +87,9 @@ export function extractTopLevelLiBlocks(ulHtml) {
  * @returns {{ hero: string, subtitles: string }|null}
  */
 export function parseDialogueLine(liInnerHtml) {
-    const heroMatch = liInnerHtml.match(/<b>([^<]+)<\/b>\s*:\s*/i);
+    const heroMatch =
+        liInnerHtml.match(/<b>([^<]*?):<\/b>\s*/i) ||
+        liInnerHtml.match(/<b>([^<]+)<\/b>\s*:\s*/i);
     if (!heroMatch) return null;
 
     const hero = heroMatch[1].trim();

@@ -356,7 +356,7 @@ function parseFavoriteAnimalRow(pageHtml) {
     const variants = [];
 
     for (const block of extractTopLevelVariantBlocks(variantsSection)) {
-        const heroMatch = block.match(/^<li><b>([^:]+):<\/b>\s*/i);
+        const heroMatch = block.match(/^<li><b>([^<]+):<\/b>\s*/i);
         if (!heroMatch) continue;
 
         const hero = heroMatch[1].trim();

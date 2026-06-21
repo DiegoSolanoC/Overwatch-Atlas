@@ -2,6 +2,8 @@
  * Variation path helpers — pick one route through a conversation's dialogue lines.
  */
 
+import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
+
 /**
  * @param {import('./DialogueTheaterDataService.js').DialogueConversation} conversation
  * @returns {boolean}
@@ -89,10 +91,7 @@ export function withResolvedConversationLines(conversation) {
  * @returns {string}
  */
 export function summarizeDialogueLine(text, maxLen = 72) {
-    const collapsed = String(text || '')
-        .replace(/\*+/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
+    const collapsed = stripDialogueSubtitleMarkup(text);
     if (!collapsed) return 'No dialogue text';
     if (collapsed.length <= maxLen) return collapsed;
     return `${collapsed.slice(0, maxLen - 1)}…`;

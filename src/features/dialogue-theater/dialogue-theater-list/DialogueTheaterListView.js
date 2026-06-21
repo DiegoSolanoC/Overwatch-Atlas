@@ -31,6 +31,12 @@ import {
     getHeroFiltersFromStandaloneActiveFilters,
     isDialogueTheaterHeroFilterActive,
 } from './dialogueTheaterHeroFilter.js';
+import {
+    conversationMatchesCharacterPair,
+    isDialogueTheaterPairSearchActive,
+} from './dialogueTheaterPairSearch.js';
+import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
+import { conversationMatchesListSearch } from './dialogueTheaterListSearch.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
 const SAVE_BTN_ID = 'dialogueTheaterSaveBtn';
@@ -40,6 +46,42 @@ let onListChange = null;
 
 /** @type {string} */
 let searchQuery = '';
+
+/** @type {{ getPairA: () => string, getPairB: () => string, refreshSpeakerOptions?: () => void }|null} */
+let pairSearchControls = null;
+
+/** @returns {string[]} */
+function manifestHeroesForPairSearch() {
+    const fs = typeof window !== 'undefined' ? window.FilterService : null;
+    return Array.isArray(fs?.heroes) ? fs.heroes : [];
+}
+
+/**
+ * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
+ */
+function getFilteredConversations() {
+    let rows = dialogueTheaterDataService.conversations;
+
+    const pairA = pairSearchControls?.getPairA?.() || '';
+    const pairB = pairSearchControls?.getPairB?.() || '';
+    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
+
+    if (pairSearchActive) {
+        const manifestHeroes = manifestHeroesForPairSearch();
+        rows = rows.filter((row) => conversationMatchesCharacterPair(row, pairA, pairB, manifestHeroes));
+    } else {
+        rows = rows.filter((row) =>
+            conversationPassesDialogueTheaterFilters(row, window.standaloneActiveFilters),
+        );
+    }
+
+    const q = searchQuery.trim();
+    if (q) {
+        rows = rows.filter((row) => conversationMatchesListSearch(row, q));
+    }
+
+    return [...rows].sort(compareConversationListOrder);
+}
 
 /** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
 let listThumbAssets = null;
@@ -109,24 +151,6 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
 }
 
 /**
- * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
- */
-function getFilteredConversations() {
-    let rows = dialogueTheaterDataService.conversations;
-    rows = rows.filter((row) =>
-        conversationPassesDialogueTheaterFilters(row, window.standaloneActiveFilters),
-    );
-
-    const q = searchQuery.trim().toLowerCase();
-    if (q) {
-        return rows
-            .filter((row) => String(row.name || '').toLowerCase().includes(q))
-            .sort(compareConversationListOrder);
-    }
-    return [...rows].sort(compareConversationListOrder);
-}
-
-/**
  * @param {HTMLElement} root
  */
 function syncSaveButtonState(root) {
@@ -150,9 +174,13 @@ function updateListCount(root) {
     const total = dialogueTheaterDataService.conversations.length;
     const visible = getFilteredConversations().length;
     const q = searchQuery.trim();
-    const heroFilterActive = isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
+    const pairA = pairSearchControls?.getPairA?.() || '';
+    const pairB = pairSearchControls?.getPairB?.() || '';
+    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
+    const heroFilterActive =
+        !pairSearchActive && isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
 
-    if ((q || heroFilterActive) && visible !== total) {
+    if ((q || heroFilterActive || pairSearchActive) && visible !== total) {
         countEl.textContent =
             visible === 1
                 ? `1 of ${total} conversations`
@@ -181,8 +209,16 @@ function renderList(root) {
         const empty = document.createElement('p');
         empty.className = 'dialogue-theater-list__empty';
         const q = searchQuery.trim();
+        const pairA = pairSearchControls?.getPairA?.() || '';
+        const pairB = pairSearchControls?.getPairB?.() || '';
+        const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
         const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
-        if (heroFilters.length && !q) {
+        if (pairSearchActive) {
+            const both = pairA.trim() && pairB.trim();
+            empty.textContent = both
+                ? `No conversations found between ${pairA.trim()} and ${pairB.trim()}.`
+                : 'No conversations include that character.';
+        } else if (heroFilters.length && !q) {
             empty.textContent = 'No conversations include the selected heroes.';
         } else if (q) {
             empty.textContent = 'No conversations match your search.';
@@ -296,9 +332,32 @@ export async function mountDialogueTheaterListView(container) {
                 <div class="events-manage-controls" id="dialogueTheaterManageControls">
                     <h3 class="events-manage-controls-title">Search &amp; filters</h3>
                     <div class="events-manage-search" id="dialogueTheaterManageSearch">
-                        <div class="events-manage-search-row events-manage-search-row--primary">
-                            <label for="dialogueTheaterSearchInput" class="events-search-label">Search:</label>
-                            <input type="text" id="dialogueTheaterSearchInput" class="events-search-input events-search-input--title" placeholder="By title..." autocomplete="off" />
+                        <div class="events-manage-search-row events-manage-search-row--primary dialogue-theater-pair-search-row">
+                            <div class="dialogue-theater-pair-search-col dialogue-theater-pair-search-col--hero">
+                                <label for="dialogueTheaterPairSearchA" class="events-search-label">Character A:</label>
+                                <div class="dialogue-theater-pair-search-col__icon" aria-hidden="true">
+                                    <img id="dialogueTheaterPairSearchIconA" class="dialogue-theater-pair-search-col__icon-img" alt="" hidden />
+                                </div>
+                                <input type="text" id="dialogueTheaterPairSearchA" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character A..." autocomplete="off" spellcheck="false" />
+                            </div>
+                            <div class="dialogue-theater-pair-search-col dialogue-theater-pair-search-col--title">
+                                <label for="dialogueTheaterSearchInput" class="events-search-label">Search:</label>
+                                <div class="dialogue-theater-pair-search-col__icon dialogue-theater-pair-search-col__icon--spacer" aria-hidden="true"></div>
+                                <input
+                                    type="text"
+                                    id="dialogueTheaterSearchInput"
+                                    class="events-search-input events-search-input--title dialogue-theater-pair-search-col__input"
+                                    placeholder="By title or dialogue line..."
+                                    autocomplete="off"
+                                />
+                            </div>
+                            <div class="dialogue-theater-pair-search-col dialogue-theater-pair-search-col--hero">
+                                <label for="dialogueTheaterPairSearchB" class="events-search-label">Character B:</label>
+                                <div class="dialogue-theater-pair-search-col__icon" aria-hidden="true">
+                                    <img id="dialogueTheaterPairSearchIconB" class="dialogue-theater-pair-search-col__icon-img" alt="" hidden />
+                                </div>
+                                <input type="text" id="dialogueTheaterPairSearchB" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character B..." autocomplete="off" spellcheck="false" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -323,13 +382,21 @@ export async function mountDialogueTheaterListView(container) {
     }
 
     searchQuery = '';
-    onListChange = () => renderList(container);
+    pairSearchControls = null;
+    onListChange = () => {
+        pairSearchControls?.refreshSpeakerOptions?.();
+        renderList(container);
+    };
     setDialogueTheaterInfoPanelListRefresh(onListChange);
     wireToolbar(container);
     wireSearch(container);
 
     await dialogueTheaterDataService.load();
     listThumbAssets = await loadDialogueTheaterAssets();
+    pairSearchControls = await wireDialogueTheaterPairSearch(container, {
+        getConversations: () => dialogueTheaterDataService.conversations,
+        onChange: () => renderList(container),
+    });
     renderList(container);
 
     const onEscape = (e) => {
@@ -358,6 +425,7 @@ export function unmountDialogueTheaterListView(container) {
     setDialogueTheaterInfoPanelListRefresh(null);
     onListChange = null;
     searchQuery = '';
+    pairSearchControls = null;
     listThumbAssets = null;
     container?.remove();
 }

@@ -55,6 +55,24 @@ export function extractSectionByHeadingId(html, sectionId) {
     return afterStart.slice(0, nextHeading + 1);
 }
 
+/** Wiki section ids for hero interaction tables (some pages use "Interactions (Removed)"). */
+export const INTERACTIONS_SECTION_IDS = ['Interactions', 'Interactions_.28Removed.29'];
+
+/**
+ * @param {string} html
+ * @returns {string}
+ */
+export function extractInteractionsSection(html) {
+    for (const sectionId of INTERACTIONS_SECTION_IDS) {
+        try {
+            return extractSectionByHeadingId(html, sectionId);
+        } catch {
+            /* try next id */
+        }
+    }
+    throw new Error('No Interactions section found on page.');
+}
+
 /**
  * @param {string} audioCellHtml
  * @returns {(string|null)[]}

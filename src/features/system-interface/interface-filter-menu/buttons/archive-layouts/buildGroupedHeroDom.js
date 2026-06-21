@@ -9,8 +9,20 @@
  */
 
 import { createFilterButton } from '../createFilterButton.js';
-import { matchHeroManifestToArchiveRowName } from '../filterKeyMapping.js';
+import { getHeroDisplayName, matchHeroManifestToArchiveRowName } from '../filterKeyMapping.js';
 import { getHeroesArchiveRowsForFilterGrouping } from './archiveLayoutSnapshots.js';
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @returns {number}
+ */
+function compareHeroFilterIdsAlphabetically(a, b) {
+    return getHeroDisplayName(a).localeCompare(getHeroDisplayName(b), undefined, {
+        sensitivity: 'base',
+        numeric: true,
+    });
+}
 
 export function buildGroupedHeroArchiveFilterDom(
     items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
@@ -78,8 +90,9 @@ export function buildGroupedHeroArchiveFilterDom(
             filtersGrid.appendChild(subSep);
             cachedButtons.push(subSep);
         }
-        for (let h = 0; h < seg.heroes.length; h++) {
-            const heroId = seg.heroes[h];
+        const heroesInSegment = [...seg.heroes].sort(compareHeroFilterIdsAlphabetically);
+        for (let h = 0; h < heroesInSegment.length; h++) {
+            const heroId = heroesInSegment[h];
             usedHeroIds.add(heroId);
             const btn = createFilterButton(heroId, 'heroes', folder, stateManager, imageService, soundManager, updateFilterCounts);
             filtersGrid.appendChild(btn);
@@ -88,7 +101,7 @@ export function buildGroupedHeroArchiveFilterDom(
     }
 
     /* Manifest heroes never seen in any archive row -> "Other" bucket. */
-    const rest = items.filter(id => id && !usedHeroIds.has(id));
+    const rest = items.filter(id => id && !usedHeroIds.has(id)).sort(compareHeroFilterIdsAlphabetically);
     if (rest.length > 0) {
         const sep = document.createElement('div');
         sep.className = 'filters-grid-type-separator';

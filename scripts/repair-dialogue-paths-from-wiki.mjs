@@ -19,7 +19,7 @@ import { resolveLineVoiceFile } from '../src/features/dialogue-theater/data/thea
 import { resolveManifestHeroId } from '../src/features/system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { loadManifestHeroIds, wikiPageTitleForHero } from './lib/wiki-quotes-heroes.mjs';
 import {
-    extractSectionByHeadingId,
+    extractInteractionsSection,
     fetchWikiPageHtml,
     parseInteractionRows,
 } from './lib/wiki-interactions-table.mjs';
@@ -239,7 +239,7 @@ async function main() {
 
         let sectionHtml;
         try {
-            sectionHtml = extractSectionByHeadingId(html, 'Interactions');
+            sectionHtml = extractInteractionsSection(html);
         } catch {
             continue;
         }

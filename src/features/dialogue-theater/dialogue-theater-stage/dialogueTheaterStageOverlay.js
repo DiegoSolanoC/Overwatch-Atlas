@@ -10,10 +10,12 @@ import {
 } from '../data/loadDialogueTheaterAssets.js';
 import {
     getLineRenderSrc,
+    getSoloPreviewLine,
     sideForLineIndex,
-    usesFirstSpeakerOnlyPreview,
+    usesSoloSpeakerPreview,
 } from './dialogueTheaterRenderHelpers.js';
 import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
+import { formatDialogueSubtitleHtml } from '../data/dialogueSubtitleFormatting.js';
 import {
     resolveLineVoiceFile,
     voicelineFilenameToSubtitles,
@@ -72,7 +74,11 @@ function setStageDialogue(stage, line) {
         nameEl.textContent = hero || 'Unknown';
     }
     if (textEl instanceof HTMLElement) {
-        textEl.textContent = text || '…';
+        if (text) {
+            textEl.innerHTML = formatDialogueSubtitleHtml(text);
+        } else {
+            textEl.textContent = '…';
+        }
     }
     if (icon instanceof HTMLImageElement) {
         if (hero) {
@@ -175,12 +181,13 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     }
 
     if (activeLineIndex == null) {
-        const firstSpeakerOnly = usesFirstSpeakerOnlyPreview(conversation);
-        setStageRender(stage, 'left', lines[0] ? getLineRenderSrc(lines[0], rendersMap) : '', false);
+        const soloSpeaker = usesSoloSpeakerPreview(conversation);
+        const leftLine = soloSpeaker ? getSoloPreviewLine(conversation) : lines[0] || null;
+        setStageRender(stage, 'left', leftLine ? getLineRenderSrc(leftLine, rendersMap) : '', false);
         setStageRender(
             stage,
             'right',
-            firstSpeakerOnly ? '' : lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '',
+            soloSpeaker ? '' : lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '',
             false,
         );
         setStageDialogue(stage, null);

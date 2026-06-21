@@ -46,6 +46,10 @@ import {
   applyFilterChipSearch,
 } from "./wiring/wireFiltersSearchBox.js";
 import { createPanelExclusivityObserver } from "./panel/panelExclusivityObserver.js";
+import {
+  hideEventImageOverlayForSidePanel,
+  restoreEventImageOverlayAfterSidePanel,
+} from "./panel/panelSideImageOverlaySync.js";
 import { dismissAllPanelsExcept } from "../interface-shared/dismissAllPanelsExcept.js";
 import {
   adoptLegacyMusicContentIntoSharedPanel,
@@ -416,14 +420,8 @@ class FilterService {
   }
 
   openPanel() {
-    /* Mutual exclusion: if Event Info is open, close it before opening Filters. */
-    const eventSlide = document.getElementById("eventSlide");
-    if (eventSlide?.classList.contains("open")) {
-      eventSlide.classList.remove("open");
-      try {
-        window.standaloneEventSlide?.hideImageOverlay?.();
-      } catch (_) {}
-    }
+    /* Keep the info slide open; hide the center image while filters cover it. */
+    hideEventImageOverlayForSidePanel();
 
     /* Reset the pending selection to the confirmed snapshot every time we open. */
     if (this.isStandaloneMode() && window.standaloneActiveFilters) {
@@ -477,6 +475,7 @@ class FilterService {
       if (!panel.classList.contains("panel--closing")) return;
       panel.classList.remove("panel--closing");
       this.setPanelMode("filters");
+      restoreEventImageOverlayAfterSidePanel();
       window.globeController?.requestStageLayoutSync?.();
     };
 

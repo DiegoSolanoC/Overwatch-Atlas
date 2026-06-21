@@ -14,9 +14,11 @@
     "import:interactions": "node scripts/import-interaction-folder.mjs",
     "import:interactions:all": "node scripts/import-all-interaction-batches.mjs",
     "import:favorite-animal-paths": "node scripts/import-favorite-animal-paths.mjs",
+    "import:periodic-table-paths": "node scripts/import-periodic-table-paths.mjs",
     "audit:dialogue-duplicates": "node scripts/audit-dialogue-duplicate-conversations.mjs",
     "cleanup:dialogue-theater": "node scripts/cleanup-dialogue-theater.mjs",
-    "repair:dialogue-paths": "node scripts/repair-dialogue-paths-from-wiki.mjs"
+    "repair:dialogue-paths": "node scripts/repair-dialogue-paths-from-wiki.mjs",
+    "import:missing-wiki-interactions": "node scripts/import-missing-wiki-interactions.mjs"
   },
   "dependencies": {},
   "devDependencies": {}

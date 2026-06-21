@@ -34,10 +34,25 @@ import {
     summarizeDialogueLine,
     withResolvedConversationLines,
 } from '../data/dialogueTheaterPathHelpers.js';
+import { formatDialogueSubtitleHtml } from '../data/dialogueSubtitleFormatting.js';
+import {
+    buildBeforeTheCrisisMasterPlayQueue,
+    pickRandomBeforeTheCrisisPathId,
+} from './beforeTheCrisisMasterPlay.js';
+import { isBeforeTheCrisisConversation } from './beforeTheCrisisPathConfig.js';
 import {
     buildFavoriteAnimalMasterPlayQueue,
     getConversationLineById,
 } from './favoriteAnimalMasterPlay.js';
+import { buildPeriodicTableMasterPlayQueue } from './periodicTableMasterPlay.js';
+import {
+    highlightPeriodicTablePathSelection,
+    renderPeriodicTablePathSwitcherHtml,
+    shouldUsePeriodicTablePathPicker,
+    wirePeriodicTablePathSelector,
+    wirePeriodicTableRandomRoute,
+} from './dialogueTheaterPeriodicTablePicker.js';
+import { isPeriodicTableConversation } from './periodicTablePathConfig.js';
 import {
     highlightGroupedPathSelection,
     isFavoriteAnimalConversation,
@@ -45,6 +60,18 @@ import {
     shouldUseGroupedPathPicker,
     wireGroupedPathSelector,
 } from './dialogueTheaterGroupedPathPicker.js';
+import {
+    pickRandomConversationPathId,
+    renderStandardRandomRouteControlsHtml,
+    usesStandardRandomRoutePlay,
+} from './dialogueTheaterRandomRoutePlay.js';
+import {
+    highlightTieredPathSelection,
+    renderTieredPathSwitcherHtml,
+    shouldUseTieredPathPicker,
+    wireBeforeTheCrisisRandomRoute,
+    wireTieredPathSelector,
+} from './dialogueTheaterTieredPathPicker.js';
 import { setupSingleValueAutocomplete } from './dialogueTheaterSingleAutocomplete.js';
 import { setupVoicelineAutocomplete } from './dialogueTheaterVoicelineAutocomplete.js';
 import {
@@ -124,8 +151,96 @@ const VIEW_PLAY_ALL_GAP_MS = 500;
 const VIEW_AUTO_PLAY_DELAY_MS = 650;
 const MASTER_PLAY_PATH_GAP_MS = 700;
 
+/** @type {[string, string][]} */
+const PLAYBACK_TRANSPORT_BUTTON_RESETS = [
+    ['#dialogueTheaterMasterPlayBtn', '▶ Master play'],
+    ['#dialogueTheaterRandomPlayBtn', '▶ Random play'],
+    ['#dialogueTheaterRandomRouteBtn', '🎲 Random route'],
+    ['#dialogueTheaterPlayAllBtn', '▶ Play all'],
+];
+
+function resetPlaybackTransportButtons() {
+    const host = document.getElementById(HOST_ID);
+    if (!host) return;
+
+    for (const [selector, label] of PLAYBACK_TRANSPORT_BUTTON_RESETS) {
+        const btn = host.querySelector(selector);
+        if (!(btn instanceof HTMLButtonElement)) continue;
+        if (!/Playing/i.test(btn.textContent)) continue;
+        btn.textContent = label;
+        btn.disabled = false;
+    }
+}
+
+/**
+ * @param {number} ms
+ * @param {symbol} token
+ */
+function waitForPlaybackDelay(ms, token) {
+    return new Promise((resolve) => {
+        if (activeViewPlayAllToken !== token) {
+            resolve();
+            return;
+        }
+
+        let settled = false;
+        /** @type {ReturnType<typeof setTimeout>|undefined} */
+        let timeout;
+        /** @type {ReturnType<typeof setInterval>|undefined} */
+        let poll;
+
+        const finish = () => {
+            if (settled) return;
+            settled = true;
+            if (timeout) clearTimeout(timeout);
+            if (poll) clearInterval(poll);
+            resolve();
+        };
+
+        timeout = setTimeout(finish, ms);
+        poll = setInterval(() => {
+            if (activeViewPlayAllToken !== token) {
+                finish();
+            }
+        }, 32);
+    });
+}
+
+/**
+ * @param {HTMLAudioElement} audio
+ * @param {symbol} token
+ */
+function waitForPlaybackAudio(audio, token) {
+    return new Promise((resolve) => {
+        if (activeViewPlayAllToken !== token) {
+            resolve();
+            return;
+        }
+
+        let settled = false;
+        /** @type {ReturnType<typeof setInterval>|undefined} */
+        let poll;
+
+        const finish = () => {
+            if (settled) return;
+            settled = true;
+            if (poll) clearInterval(poll);
+            resolve();
+        };
+
+        audio.addEventListener('ended', finish, { once: true });
+        audio.addEventListener('error', finish, { once: true });
+        poll = setInterval(() => {
+            if (activeViewPlayAllToken !== token) {
+                finish();
+            }
+        }, 32);
+    });
+}
+
 function stopViewVoicelinePlayback(conversation = null) {
     activeViewPlayAllToken = null;
+    resetPlaybackTransportButtons();
     if (activeViewVoicelineAudio) {
         activeViewVoicelineAudio.pause();
         activeViewVoicelineAudio.currentTime = 0;
@@ -389,19 +504,13 @@ async function playAllViewVoicelines(conversation, voices) {
         if (!audio || activeViewPlayAllToken !== token) return;
 
         activeViewVoicelineAudio = audio;
-        await new Promise((resolve) => {
-            const finish = () => resolve();
-            audio.addEventListener('ended', finish, { once: true });
-            audio.addEventListener('error', finish, { once: true });
-        });
+        await waitForPlaybackAudio(audio, token);
 
         if (activeViewPlayAllToken !== token) return;
         activeViewVoicelineAudio = null;
 
         if (i < voices.length - 1) {
-            await new Promise((resolve) => {
-                setTimeout(resolve, VIEW_PLAY_ALL_GAP_MS);
-            });
+            await waitForPlaybackDelay(VIEW_PLAY_ALL_GAP_MS, token);
         }
     }
 
@@ -463,14 +572,71 @@ async function playMasterPlayLine(token, line, stageConversation, lineIndex, voi
     if (!audio || activeViewPlayAllToken !== token) return false;
 
     activeViewVoicelineAudio = audio;
-    await new Promise((resolve) => {
-        audio.addEventListener('ended', resolve, { once: true });
-        audio.addEventListener('error', resolve, { once: true });
-    });
+    await waitForPlaybackAudio(audio, token);
 
     if (activeViewPlayAllToken !== token) return false;
     activeViewVoicelineAudio = null;
     return true;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {HTMLElement} host
+ * @param {string} pathId
+ * @param {HTMLButtonElement} [btn]
+ */
+async function playSinglePathPlayback(conversation, host, pathId, btn) {
+    await ensureDialogueTheaterAssetsLoaded();
+    stopViewVoicelinePlayback();
+
+    const token = Symbol('singlePathPlay');
+    activeViewPlayAllToken = token;
+    const voicelines = theaterAssets?.voicelines || [];
+    const label = btn?.textContent || '▶ Random play';
+
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '▶ Playing route…';
+    }
+
+    try {
+        if (shouldUseTieredPathPicker(conversation)) {
+            highlightTieredPathSelection(host, conversation, pathId);
+        } else if (shouldUsePeriodicTablePathPicker(conversation)) {
+            highlightPeriodicTablePathSelection(host, conversation, pathId);
+        } else if (shouldUseGroupedPathPicker(conversation)) {
+            highlightGroupedPathSelection(host, conversation, pathId);
+        }
+
+        const lines = resolveLinesForPath(conversation, pathId);
+        const pathConversation = withResolvedConversationLines({
+            ...conversation,
+            selectedPathId: pathId,
+        });
+
+        for (let i = 0; i < lines.length; i += 1) {
+            if (activeViewPlayAllToken !== token) return;
+
+            const ok = await playMasterPlayLine(token, lines[i], pathConversation, i, voicelines);
+            if (!ok) return;
+
+            if (i < lines.length - 1) {
+                await waitForPlaybackDelay(VIEW_PLAY_ALL_GAP_MS, token);
+            }
+        }
+
+        if (activeViewPlayAllToken === token) {
+            resetDialogueTheaterStageToIdle(pathConversation);
+        }
+    } finally {
+        if (activeViewPlayAllToken === token) {
+            activeViewPlayAllToken = null;
+        }
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = label;
+        }
+    }
 }
 
 /**
@@ -486,7 +652,11 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
     activeViewPlayAllToken = token;
     const voicelines = theaterAssets?.voicelines || [];
     const label = btn.textContent || '▶ Master play';
-    const queue = buildFavoriteAnimalMasterPlayQueue(conversation);
+    const queue = isBeforeTheCrisisConversation(conversation)
+        ? buildBeforeTheCrisisMasterPlayQueue(conversation)
+        : isPeriodicTableConversation(conversation)
+          ? buildPeriodicTableMasterPlayQueue(conversation, host.dataset.selectedPathId || resolveSelectedPathId(conversation))
+          : buildFavoriteAnimalMasterPlayQueue(conversation);
 
     btn.disabled = true;
     btn.textContent = '▶ Playing all routes…';
@@ -502,7 +672,13 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
                 if (!line) continue;
 
                 if (step.pathId) {
-                    highlightGroupedPathSelection(host, conversation, step.pathId);
+                    if (shouldUseTieredPathPicker(conversation)) {
+                        highlightTieredPathSelection(host, conversation, step.pathId);
+                    } else if (shouldUsePeriodicTablePathPicker(conversation)) {
+                        highlightPeriodicTablePathSelection(host, conversation, step.pathId);
+                    } else {
+                        highlightGroupedPathSelection(host, conversation, step.pathId);
+                    }
                 }
 
                 const stageConversation = step.pathId
@@ -516,7 +692,13 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
                 const ok = await playMasterPlayLine(token, line, stageConversation, lineIndex, voicelines);
                 if (!ok) return;
             } else {
-                highlightGroupedPathSelection(host, conversation, step.pathId);
+                if (shouldUseTieredPathPicker(conversation)) {
+                    highlightTieredPathSelection(host, conversation, step.pathId);
+                } else if (shouldUsePeriodicTablePathPicker(conversation)) {
+                    highlightPeriodicTablePathSelection(host, conversation, step.pathId);
+                } else {
+                    highlightGroupedPathSelection(host, conversation, step.pathId);
+                }
 
                 const lines = resolveLinesForPath(conversation, step.pathId);
                 const pathConversation = withResolvedConversationLines({
@@ -531,17 +713,13 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
                     if (!ok) return;
 
                     if (i < lines.length - 1) {
-                        await new Promise((resolve) => {
-                            setTimeout(resolve, VIEW_PLAY_ALL_GAP_MS);
-                        });
+                        await waitForPlaybackDelay(VIEW_PLAY_ALL_GAP_MS, token);
                     }
                 }
             }
 
             if (q < queue.length - 1) {
-                await new Promise((resolve) => {
-                    setTimeout(resolve, MASTER_PLAY_PATH_GAP_MS);
-                });
+                await waitForPlaybackDelay(MASTER_PLAY_PATH_GAP_MS, token);
             }
         }
 
@@ -560,9 +738,53 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
 /**
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
  */
-function wireFavoriteAnimalMasterPlay(host, conversation) {
-    if (!isFavoriteAnimalConversation(conversation)) return;
+function wireFavoriteAnimalPlayControls(host, conversation, onPathChange) {
+    if (!isFavoriteAnimalConversation(conversation) && !isPeriodicTableConversation(conversation)) {
+        return;
+    }
+
+    const paths = conversation.paths || [];
+    const voicelines = theaterAssets?.voicelines || [];
+    const hasPlayable = paths.some((path) =>
+        resolveLinesForPath(conversation, path.id).some((line) =>
+            Boolean(resolveLineVoiceFile(line, voicelines)),
+        ),
+    );
+
+    const masterBtn = host.querySelector('#dialogueTheaterMasterPlayBtn');
+    if (masterBtn instanceof HTMLButtonElement) {
+        masterBtn.disabled = !hasPlayable;
+        masterBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            void playAllPathsMasterPlay(conversation, host, masterBtn);
+        });
+    }
+
+    const randomBtn = host.querySelector('#dialogueTheaterRandomPlayBtn');
+    if (randomBtn instanceof HTMLButtonElement) {
+        randomBtn.disabled = !hasPlayable;
+        randomBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const pathId = pickRandomConversationPathId(conversation);
+            if (!pathId) return;
+
+            onPathChange?.(pathId, { autoPlay: false });
+            void playSinglePathPlayback(conversation, host, pathId, randomBtn);
+        });
+    }
+}
+
+/**
+ * @param {HTMLElement} host
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
+function wireMasterPlayButton(host, conversation) {
+    if (!isBeforeTheCrisisConversation(conversation)) return;
 
     const btn = host.querySelector('#dialogueTheaterMasterPlayBtn');
     if (!(btn instanceof HTMLButtonElement)) return;
@@ -581,6 +803,15 @@ function wireFavoriteAnimalMasterPlay(host, conversation) {
         e.stopPropagation();
         void playAllPathsMasterPlay(conversation, host, btn);
     });
+}
+
+/**
+ * @param {HTMLElement} host
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
+ */
+function wireFavoriteAnimalMasterPlay(host, conversation, onPathChange) {
+    wireFavoriteAnimalPlayControls(host, conversation, onPathChange);
 }
 
 /**
@@ -621,7 +852,7 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
             e.preventDefault();
             e.stopPropagation();
 
-            stopViewVoicelinePlayback();
+            stopViewVoicelinePlayback(playbackConversation);
             updateDialogueTheaterStageActiveLine(playbackConversation, idx);
 
             void playCharacterAudio(voicelineAudioUrl(voice)).then((audio) => {
@@ -648,7 +879,54 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
 /**
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {(pathId: string) => void} [onPathChange]
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
+ */
+function wireStandardRandomRouteControls(host, conversation, onPathChange) {
+    if (!usesStandardRandomRoutePlay(conversation)) return;
+
+    const routeBtn = host.querySelector('#dialogueTheaterRandomRouteBtn');
+    const playBtn = host.querySelector('#dialogueTheaterRandomPlayBtn');
+
+    if (routeBtn instanceof HTMLButtonElement) {
+        routeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const pathId = pickRandomConversationPathId(conversation);
+            if (!pathId || pathId === host.dataset.selectedPathId) return;
+
+            updateDialogueTheaterViewPathSelection(host, conversation, pathId);
+            onPathChange?.(pathId, { autoPlay: false });
+        });
+    }
+
+    if (playBtn instanceof HTMLButtonElement) {
+        const paths = conversation.paths || [];
+        const voicelines = theaterAssets?.voicelines || [];
+        const hasPlayable = paths.some((path) =>
+            resolveLinesForPath(conversation, path.id).some((line) =>
+                Boolean(resolveLineVoiceFile(line, voicelines)),
+            ),
+        );
+        playBtn.disabled = !hasPlayable;
+
+        playBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const pathId = pickRandomConversationPathId(conversation);
+            if (!pathId) return;
+
+            updateDialogueTheaterViewPathSelection(host, conversation, pathId);
+            onPathChange?.(pathId, { autoPlay: true });
+        });
+    }
+}
+
+/**
+ * @param {HTMLElement} host
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
  */
 function wireDialogueTheaterPathSelector(host, conversation, onPathChange) {
     const paths = conversation.paths || [];
@@ -698,7 +976,7 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
             return `
                 <article class="dialogue-theater-edit__view-line">
                     ${iconBlock}
-                    <p class="dialogue-theater-edit__view-line-text">${dialogueText ? escapeHtml(dialogueText) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
+                    <p class="dialogue-theater-edit__view-line-text">${dialogueText ? formatDialogueSubtitleHtml(dialogueText) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
                     ${playBtn}
                 </article>
             `;
@@ -713,7 +991,7 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
  * @param {string} pathId
  */
 export function updateDialogueTheaterViewPathSelection(host, conversation, pathId) {
-    stopViewVoicelinePlayback();
+    stopViewVoicelinePlayback(getPlaybackConversation(conversation));
 
     const paths = conversation.paths || [];
     const selectedPathId = paths.some((path) => path.id === pathId)
@@ -725,7 +1003,11 @@ export function updateDialogueTheaterViewPathSelection(host, conversation, pathI
     host.dataset.selectedPathId = selectedPathId;
     host.dataset.pendingHeroKey = '';
 
-    if (shouldUseGroupedPathPicker(conversation)) {
+    if (shouldUseTieredPathPicker(conversation)) {
+        highlightTieredPathSelection(host, conversation, selectedPathId);
+    } else if (shouldUsePeriodicTablePathPicker(conversation)) {
+        highlightPeriodicTablePathSelection(host, conversation, selectedPathId);
+    } else if (shouldUseGroupedPathPicker(conversation)) {
         highlightGroupedPathSelection(host, conversation, selectedPathId);
     } else {
         host.querySelectorAll('.dialogue-theater-path-switch__option').forEach((btn) => {
@@ -767,11 +1049,18 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
 
     const pathSwitcherHtml =
         paths.length > 0
-            ? shouldUseGroupedPathPicker(conversation)
-                ? renderGroupedPathSwitcherHtml(conversation, selectedPathId)
-                : `
-                <div class="dialogue-theater-path-switch">
-                    <span class="dialogue-theater-path-switch__label">Route</span>
+            ? shouldUseTieredPathPicker(conversation)
+                ? renderTieredPathSwitcherHtml(conversation, selectedPathId)
+                : shouldUsePeriodicTablePathPicker(conversation)
+                  ? renderPeriodicTablePathSwitcherHtml(conversation, selectedPathId)
+                  : shouldUseGroupedPathPicker(conversation)
+                    ? renderGroupedPathSwitcherHtml(conversation, selectedPathId)
+                    : `
+                <div class="dialogue-theater-path-switch${usesStandardRandomRoutePlay(conversation) ? ' dialogue-theater-path-switch--standard-random' : ''}">
+                    <div class="dialogue-theater-path-switch__head">
+                        <span class="dialogue-theater-path-switch__label">Route</span>
+                        ${usesStandardRandomRoutePlay(conversation) ? renderStandardRandomRouteControlsHtml() : ''}
+                    </div>
                     <div class="dialogue-theater-path-switch__options" role="tablist" aria-label="Conversation route">
                         ${paths
                             .map(
@@ -821,11 +1110,20 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
         </div>
     `;
 
-    if (shouldUseGroupedPathPicker(conversation)) {
+    if (shouldUseTieredPathPicker(conversation)) {
+        wireTieredPathSelector(host, conversation, options.onPathChange);
+        wireBeforeTheCrisisRandomRoute(host, conversation, options.onPathChange);
+        wireMasterPlayButton(host, conversation);
+    } else if (shouldUsePeriodicTablePathPicker(conversation)) {
+        wirePeriodicTablePathSelector(host, conversation, options.onPathChange);
+        wirePeriodicTableRandomRoute(host, conversation, options.onPathChange);
+        wireFavoriteAnimalPlayControls(host, conversation, options.onPathChange);
+    } else if (shouldUseGroupedPathPicker(conversation)) {
         wireGroupedPathSelector(host, conversation, options.onPathChange);
-        wireFavoriteAnimalMasterPlay(host, conversation);
+        wireFavoriteAnimalMasterPlay(host, conversation, options.onPathChange);
     } else {
         wireDialogueTheaterPathSelector(host, conversation, options.onPathChange);
+        wireStandardRandomRouteControls(host, conversation, options.onPathChange);
     }
     wireDialogueTheaterViewPlayback(host, conversation);
 }
@@ -833,7 +1131,7 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
 /**
  * Auto-start sequential playback when a conversation is opened in view mode.
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {{ delayMs?: number, masterPlay?: boolean }} [options]
+ * @param {{ delayMs?: number, masterPlay?: boolean, randomRoutePlay?: boolean, periodicTablePlay?: boolean }} [options]
  */
 export async function autoStartDialogueTheaterViewPlayAll(conversation, options = {}) {
     await ensureDialogueTheaterAssetsLoaded();
@@ -845,12 +1143,37 @@ export async function autoStartDialogueTheaterViewPlayAll(conversation, options 
 
     if (!document.getElementById(HOST_ID)) return;
 
-    if (options.masterPlay && isFavoriteAnimalConversation(conversation)) {
+    if (options.masterPlay && (isFavoriteAnimalConversation(conversation) || isBeforeTheCrisisConversation(conversation))) {
         const host = document.getElementById(HOST_ID);
         const btn = host?.querySelector('#dialogueTheaterMasterPlayBtn');
         if (host instanceof HTMLElement && btn instanceof HTMLButtonElement) {
+            if (isBeforeTheCrisisConversation(conversation)) {
+                const pathId = pickRandomBeforeTheCrisisPathId(conversation);
+                if (pathId) {
+                    updateDialogueTheaterViewPathSelection(host, conversation, pathId);
+                }
+            }
             void playAllPathsMasterPlay(conversation, host, btn);
         }
+        return;
+    }
+
+    if (options.periodicTablePlay && isPeriodicTableConversation(conversation)) {
+        const host = document.getElementById(HOST_ID);
+        const pathId = resolveSelectedPathId(conversation);
+        const btn = host?.querySelector('#dialogueTheaterRandomPlayBtn');
+        if (host instanceof HTMLElement && btn instanceof HTMLButtonElement && pathId) {
+            updateDialogueTheaterViewPathSelection(host, conversation, pathId);
+            void playSinglePathPlayback(conversation, host, pathId, btn);
+        }
+        return;
+    }
+
+    if (options.randomRoutePlay && usesStandardRandomRoutePlay(conversation)) {
+        const playableVoices = listPlayableVoicesForConversation(conversation);
+        if (playableVoices.length === 0) return;
+
+        void playAllViewVoicelines(conversation, playableVoices);
         return;
     }
 

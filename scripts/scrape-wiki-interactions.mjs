@@ -14,7 +14,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
-    extractSectionByHeadingId,
+    extractInteractionsSection,
     fetchWikiPageHtml,
     filenameFromAudioUrl,
     parseInteractionRows,
@@ -151,7 +151,7 @@ async function main() {
 
     let sectionHtml;
     try {
-        sectionHtml = extractSectionByHeadingId(html, 'Interactions');
+        sectionHtml = extractInteractionsSection(html);
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         console.warn(message);

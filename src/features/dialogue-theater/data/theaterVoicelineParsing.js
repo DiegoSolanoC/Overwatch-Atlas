@@ -151,15 +151,15 @@ export function matchVoicelinesForHero(heroName, voicelines, query, limit = 8) {
         .slice(0, limit);
 }
 
+import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
+
 /**
  * @param {string} text
  * @returns {string}
  */
 export function normalizeSubtitlesForMatch(text) {
     return normalizeVoicelineSearch(
-        String(text || '')
-            .replace(/[.,!?;:'"()]+/g, ' ')
-            .replace(/\s+/g, ' '),
+        stripDialogueSubtitleMarkup(text).replace(/[.,!?;:'"()]+/g, ' '),
     );
 }
 

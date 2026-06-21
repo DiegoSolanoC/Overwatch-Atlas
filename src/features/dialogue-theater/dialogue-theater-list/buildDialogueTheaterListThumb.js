@@ -3,7 +3,7 @@
  */
 
 import { sceneImageUrl } from '../data/loadDialogueTheaterAssets.js';
-import { getConversationIdleRenderPair, usesFirstSpeakerOnlyPreview } from '../dialogue-theater-stage/dialogueTheaterRenderHelpers.js';
+import { getConversationIdleRenderPair, usesSoloSpeakerPreview } from '../dialogue-theater-stage/dialogueTheaterRenderHelpers.js';
 
 /** @param {string} value */
 function escapeAttr(value) {
@@ -53,7 +53,7 @@ export function buildDialogueTheaterListThumbMediaHtml(row, assets, spinnerSrc) 
         ? renderImgTag(rightRenderSrc, 'dialogue-theater-list-thumb__render dialogue-theater-list-thumb__render--right', 'Character')
         : '';
 
-    const soloSpeaker = usesFirstSpeakerOnlyPreview(row);
+    const soloSpeaker = usesSoloSpeakerPreview(row);
     const thumbClass = soloSpeaker
         ? 'event-item-preview-image dialogue-theater-list-thumb dialogue-theater-list-thumb--solo-speaker event-item-preview-image--loading'
         : 'event-item-preview-image dialogue-theater-list-thumb event-item-preview-image--loading';

@@ -7,12 +7,19 @@ import { hideDialogueTheaterStage, ensureDialogueTheaterStageOverlayVisible, sho
 
 const CONVERSATION_ID_ATTR = 'data-dialogue-theater-conversation-id';
 
-export function isDialogueTheaterImageOverlayContext() {
+export function isDialogueTheaterEventSlideMarked() {
     const eventSlide = document.getElementById('eventSlide');
     return !!(
         eventSlide?.classList.contains('event-slide--dialogue-theater')
-        && eventSlide.classList.contains('open')
         && eventSlide.getAttribute(CONVERSATION_ID_ATTR)
+    );
+}
+
+export function isDialogueTheaterImageOverlayContext() {
+    const eventSlide = document.getElementById('eventSlide');
+    return !!(
+        isDialogueTheaterEventSlideMarked()
+        && eventSlide.classList.contains('open')
     );
 }
 
@@ -80,7 +87,12 @@ export async function showDialogueTheaterImageOverlay(slide, options = {}) {
  */
 export function hideDialogueTheaterImageOverlayGradually(slide, durationMs = 600) {
     const overlay = document.getElementById('eventImageOverlay');
-    if (!overlay || !isDialogueTheaterImageOverlayContext()) return false;
+    if (
+        !overlay
+        || (!isDialogueTheaterImageOverlayContext() && !isDialogueTheaterEventSlideMarked())
+    ) {
+        return false;
+    }
 
     overlay.style.setProperty('pointer-events', 'none');
 

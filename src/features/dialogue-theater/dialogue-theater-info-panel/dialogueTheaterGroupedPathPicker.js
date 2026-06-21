@@ -5,6 +5,8 @@
 import { heroFilterIconUrl } from '../data/loadDialogueTheaterAssets.js';
 import { summarizeDialogueLine, resolveSelectedPathId } from '../data/dialogueTheaterPathHelpers.js';
 import { normalizeHeroKey } from '../data/theaterVoicelineParsing.js';
+import { shouldUseTieredPathPicker } from './beforeTheCrisisPathConfig.js';
+import { shouldUsePeriodicTablePathPicker } from './periodicTablePathConfig.js';
 
 /** @typedef {{ id: string, label: string, lineIds: string[] }} DialoguePath */
 /** @typedef {{ id: string, hero?: string, subtitles?: string }} DialogueLine */
@@ -42,6 +44,8 @@ function escapeHtml(text) {
  * @returns {boolean}
  */
 export function shouldUseGroupedPathPicker(conversation) {
+    if (shouldUseTieredPathPicker(conversation)) return false;
+    if (shouldUsePeriodicTablePathPicker(conversation)) return false;
     return (conversation?.paths?.length || 0) >= GROUPED_PATH_THRESHOLD;
 }
 
@@ -66,6 +70,23 @@ function getPathChipHero(path, conversation) {
     const byId = new Map(lines.map((line) => [line.id, line]));
     const pathLines = (path.lineIds || []).map((id) => byId.get(id)).filter(Boolean);
     if (pathLines.length === 0) return labelHero;
+
+    if (pathLines.length === 2) {
+        const opener = String(pathLines[0]?.hero || '').trim();
+        const responder = String(pathLines[1]?.hero || '').trim();
+        if (opener && responder && opener !== responder) {
+            return responder;
+        }
+    }
+
+    if (pathLines.length === 3) {
+        const opener = String(pathLines[0]?.hero || '').trim();
+        const responder = String(pathLines[1]?.hero || '').trim();
+        const closer = String(pathLines[2]?.hero || '').trim();
+        if (opener === closer && opener === 'Winston' && responder) {
+            return responder;
+        }
+    }
 
     const openHero = String(pathLines[0]?.hero || '').trim();
     const closeHero = String(pathLines[pathLines.length - 1]?.hero || '').trim();
@@ -203,20 +224,23 @@ function renderVariantSectionHtml(groups, selectedPathId, pendingHeroKey) {
  * @param {PathHeroGroup} group
  * @param {string} selectedPathId
  * @param {string} activeHeroKey
+ * @param {{ outcomeKey?: string }} [options]
  */
-function renderHeroChipHtml(group, selectedPathId, activeHeroKey) {
+function renderHeroChipHtml(group, selectedPathId, activeHeroKey, options = {}) {
+    const outcomeKey = String(options.outcomeKey || '').trim();
     const isActive =
         group.heroKey === activeHeroKey &&
         (group.paths.length === 1 || group.paths.some((path) => path.id === selectedPathId));
     const wrapClass = isActive ? ' gallery-hero-filters__chip-wrap--active' : '';
     const chipClass = isActive ? ' filter-btn--active' : '';
     const multiClass = group.paths.length > 1 ? ' dialogue-theater-path-switch__hero-wrap--multi' : '';
+    const outcomeAttr = outcomeKey ? ` data-outcome="${escapeHtml(outcomeKey)}"` : '';
     return `
-        <div class="gallery-hero-filters__chip-wrap dialogue-theater-path-switch__hero-wrap${wrapClass}${multiClass}" data-hero-key="${escapeHtml(group.heroKey)}">
+        <div class="gallery-hero-filters__chip-wrap dialogue-theater-path-switch__hero-wrap${wrapClass}${multiClass}" data-hero-key="${escapeHtml(group.heroKey)}"${outcomeAttr}>
             <button
                 type="button"
                 class="filter-btn gallery-hero-filters__chip dialogue-theater-path-switch__hero-chip${chipClass}"
-                data-hero-key="${escapeHtml(group.heroKey)}"
+                data-hero-key="${escapeHtml(group.heroKey)}"${outcomeAttr}
                 aria-pressed="${isActive ? 'true' : 'false'}"
                 aria-label="${escapeHtml(group.hero)}${group.paths.length > 1 ? ` (${group.paths.length} responses)` : ''}"
             >
@@ -234,8 +258,9 @@ function renderHeroChipHtml(group, selectedPathId, activeHeroKey) {
 /**
  * @param {PathHeroGroup[]} groups
  * @param {string} selectedPathId
+ * @param {{ outcomeKey?: string }} [options]
  */
-function renderHeroChipRowsHtml(groups, selectedPathId) {
+export function renderHeroChipRowsHtml(groups, selectedPathId, options = {}) {
     const activeGroup = findGroupForPathId(groups, selectedPathId);
     const activeHeroKey = activeGroup?.heroKey || '';
     /** @type {string[]} */
@@ -250,7 +275,7 @@ function renderHeroChipRowsHtml(groups, selectedPathId) {
                 class="dialogue-theater-path-switch__hero-row gallery-hero-filters__chips-row gallery-hero-filters__chips-row--flat${partialClass}"
                 role="presentation"
             >
-                ${slice.map((group) => renderHeroChipHtml(group, selectedPathId, activeHeroKey)).join('')}
+                ${slice.map((group) => renderHeroChipHtml(group, selectedPathId, activeHeroKey, options)).join('')}
             </div>
         `);
     }
@@ -266,14 +291,21 @@ function renderHeroChipRowsHtml(groups, selectedPathId) {
 export function renderGroupedPathSwitcherHtml(conversation, selectedPathId) {
     const groups = buildPathGroupsByHero(conversation);
     const heroRowsHtml = renderHeroChipRowsHtml(groups, selectedPathId);
-    const masterPlayHtml = isFavoriteAnimalConversation(conversation)
-        ? `<button
+    const masterPlayHtml =
+        isFavoriteAnimalConversation(conversation)
+            ? `<button
                 type="button"
                 id="dialogueTheaterMasterPlayBtn"
                 class="dialogue-theater-path-switch__master-play"
                 aria-label="Play every character response in order"
-            >▶ Master play</button>`
-        : '';
+            >▶ Master play</button>
+            <button
+                type="button"
+                id="dialogueTheaterRandomPlayBtn"
+                class="dialogue-theater-path-switch__master-play"
+                aria-label="Pick a random character response and play it"
+            >▶ Random play</button>`
+            : '';
 
     return `
         <div class="dialogue-theater-path-switch dialogue-theater-path-switch--grouped">

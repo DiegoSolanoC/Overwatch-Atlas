@@ -186,7 +186,7 @@
     },
     {
       "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
-      "name": "6",
+      "name": "Favorite Animals",
       "status": "active",
       "eraName": "",
       "scene": "Gibraltar Office.png",
@@ -1140,7 +1140,7 @@
           ]
         }
       ],
-      "selectedPathId": "19c840bf-2edc-4e56-8cf1-2d6c521feab7"
+      "selectedPathId": "348a044e-7b01-4b22-a8da-7252188c9d29"
     },
     {
       "id": "d673e40c-5579-4bf4-bdcf-4dd183713dec",
@@ -2308,7 +2308,7 @@
     },
     {
       "id": "4a003561-7569-4d6b-9b65-f0786e54c4cd",
-      "name": "43",
+      "name": "Automaton Was Taken",
       "status": "active",
       "eraName": "",
       "scene": "Hanamura Yard.png",
@@ -2376,36 +2376,6 @@
       ]
     },
     {
-      "id": "ec88370a-973b-4125-ab74-c7cef1c362bf",
-      "name": "46",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "09361376-e993-4543-bd4a-44d9f65c5cf5",
-          "hero": "Kiriko",
-          "voice": "Kiriko_-_So_DJ..._what's_your_favorite_animal.ogg",
-          "subtitles": "So, DJ... what's your favorite animal?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "32ab0444-9850-43de-bd7e-4553e3cab304",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_Oh!_Uh,_well..._I_really_like_treefrogs!_Heh,_I_didn't_expect_anyone_to_ask.ogg",
-          "subtitles": "Oh! Uh, well... I really like tree frogs! Heh, I didn't expect anyone to ask.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "98bf6e03-ce7a-460b-a2e2-765fbe853aad",
-          "hero": "Kiriko",
-          "voice": "Kiriko_-_Treefrogs._Yeah,_I_can_see_it.ogg",
-          "subtitles": "Tree frogs? Yeah, I can see it! **chuckle**",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "fb20ca65-659e-4c94-9234-9bb373610eea",
       "name": "47",
       "status": "active",
@@ -2444,7 +2414,7 @@
     },
     {
       "id": "e2805f66-2c68-4e6c-99b1-e6fae6ab9deb",
-      "name": "48",
+      "name": "Easy Target",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2665,7 +2635,7 @@
     },
     {
       "id": "1771136a-b68b-4abc-be41-c63550947d3d",
-      "name": "57",
+      "name": "Such a Young Age",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2695,7 +2665,7 @@
     },
     {
       "id": "bf5b2d2a-5e06-488d-a675-d314d365cca0",
-      "name": "58",
+      "name": "Respect, Not Fear",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2718,7 +2688,7 @@
     },
     {
       "id": "82b86f4e-388c-41a4-88c3-cf137a8d0306",
-      "name": "59",
+      "name": "Past your Prime",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3782,7 +3752,7 @@
     },
     {
       "id": "fcebefae-07de-4a65-9905-cb6ddad65b8b",
-      "name": "95",
+      "name": "There is a girl",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4142,7 +4112,7 @@
     },
     {
       "id": "c0a0de2e-e5fb-4e7b-aa23-5afa500bcc0d",
-      "name": "107",
+      "name": "Periodic Table",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4151,7 +4121,7 @@
           "id": "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
           "hero": "Winston",
           "voice": "Winston_-_Anyone_want_to_hear_my_favorite_joke_about_the_periodic_table_(1).ogg",
-          "subtitles": "Anyone want to hear my favorite joke about the periodic table?",
+          "subtitles": "Anyone wanna hear my favorite joke about the periodic table?",
           "render": "Heroic.png"
         },
         {
@@ -4160,8 +4130,340 @@
           "voice": "Ana_-_No_thank_you.ogg",
           "subtitles": "No thank you.",
           "render": "Heroic.png"
+        },
+        {
+          "id": "b91f10ac-b371-4619-912f-1af740e64218",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Can't_say_I_do.ogg",
+          "subtitles": "Can't say I do.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "43cf4a19-7257-427a-aa5f-09d72f7db47c",
+          "hero": "Baptiste",
+          "voice": "Baptiste_-_I'm_guessing..._no.ogg",
+          "subtitles": "I'm guessing... No.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b3d3390f-bad2-4039-8f1a-9457a9524c0a",
+          "hero": "Cassidy",
+          "voice": "Cassidy_-_I'm_still_puzzling_over_the_last_one.ogg",
+          "subtitles": "I'm still puzzling over the last one.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2c720ce3-e201-4d88-9178-256042a17bdd",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_I_do_not.ogg",
+          "subtitles": "Ugh... I do *not*.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "07552257-5c7f-42bc-97be-cee43735a0cf",
+          "hero": "Echo",
+          "voice": "Echo_-_This_is_not,_perhaps,_the_best_time.ogg",
+          "subtitles": "This is not, perhaps, the best time.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "80f99928-1849-4f39-9f4c-733f3817b90a",
+          "hero": "Genji",
+          "voice": "Genji_-_I_do_not.ogg",
+          "subtitles": "I do not.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "eb840018-5017-4297-8d3e-9a672ff41483",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_No_(2).ogg",
+          "subtitles": "No.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8b1575c0-6f9b-41c9-b082-16098633c2db",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Not_unless_you_want_that_table_broken_over_your_head.ogg",
+          "subtitles": "Not unless you want that table broken over your head!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "92ee8372-c4d6-46c4-88b8-ec6bf0291408",
+          "hero": "Pharah",
+          "voice": "Pharah_-_No_one_wants_that.ogg",
+          "subtitles": "No one wants that.",
+          "render": ""
+        },
+        {
+          "id": "56a373ad-3cb2-4f08-850e-a3a8db67fc8b",
+          "hero": "Reaper",
+          "voice": "Reaper_-_No_(2).ogg",
+          "subtitles": "*No*.",
+          "render": ""
+        },
+        {
+          "id": "884fa21d-de71-4e7a-8a7e-dc4eb3e45e80",
+          "hero": "Sojourn",
+          "voice": "Sojourn_-_Winston,_please,_no.ogg",
+          "subtitles": "Uh, Winston, please. No.",
+          "render": ""
+        },
+        {
+          "id": "c751f54a-8987-45f8-8103-1e6dc689ba7e",
+          "hero": "Soldier: 76",
+          "voice": "Soldier_76_-_No_(2).ogg",
+          "subtitles": "No!",
+          "render": ""
+        },
+        {
+          "id": "b508b528-767e-408e-9b99-fb6154810b45",
+          "hero": "Soldier: 76",
+          "voice": "Soldier_76_-_Nope.ogg",
+          "subtitles": "Nope.",
+          "render": ""
+        },
+        {
+          "id": "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+          "hero": "Winston",
+          "voice": "Winston_-_Anyone_want_to_hear_my_favorite_joke_about_the_periodic_table_(2).ogg",
+          "subtitles": "Anyone want to hear my favorite joke about the periodic table?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f1a2b3c4-d005-4000-8000-c0a0de2e0002",
+          "hero": "Winston",
+          "voice": "Winston_-_(chuckles).ogg",
+          "subtitles": "**chuckles**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b8c4e1a2-d005-4000-8000-c0a0de2e0003",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Na.ogg",
+          "subtitles": "Na!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6cbbb3f7-b6b1-4818-bce4-49fd234f25b2",
+          "hero": "D.Va",
+          "voice": "D.Va_-_Na.ogg",
+          "subtitles": "Na! **laughs**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "7a493a98-4360-4c0e-ad80-da6f02566214",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_I_dunno._Will_it_make_me_go_He_He._Eh.ogg",
+          "subtitles": "I dunno. Will it make me go \"He He\"? Eh?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "12fac236-b150-44cd-be1d-2d0707e9f2ef",
+          "hero": "Mei",
+          "voice": "Mei_-_Na.ogg",
+          "subtitles": "Na!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "748f19ee-71a9-43be-816b-9ec5a83f4988",
+          "hero": "Mercy",
+          "voice": "Mercy_-_Na.ogg",
+          "subtitles": "N-A!",
+          "render": ""
+        },
+        {
+          "id": "772b892e-27bd-4496-bcfd-0396f6b3d5c4",
+          "hero": "Moira",
+          "voice": "Moira_-_Na.ogg",
+          "subtitles": "Na...",
+          "render": ""
+        },
+        {
+          "id": "803ae91b-c70e-4ec8-a2ae-9e74ebd51aa2",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Yes,_but_I_can't_promise_I'll_understand_it.ogg",
+          "subtitles": "Yes! But I can't promise I'll understand it!",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "47901085-b4a6-4dbf-bd93-4103506c441e",
+          "label": "Ana",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "13462f07-9bd3-465b-9e0a-e4c993d3099a"
+          ]
+        },
+        {
+          "id": "e6297fe5-aa45-4361-8a53-1fe6e1ae8200",
+          "label": "Ashe",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "b91f10ac-b371-4619-912f-1af740e64218"
+          ]
+        },
+        {
+          "id": "98687cd0-baf9-4fc9-b38a-b87dc5a8f8ff",
+          "label": "Baptiste",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "43cf4a19-7257-427a-aa5f-09d72f7db47c"
+          ]
+        },
+        {
+          "id": "e547bf5d-b1ba-4b84-944a-25dd4741c40e",
+          "label": "Cassidy",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "b3d3390f-bad2-4039-8f1a-9457a9524c0a"
+          ]
+        },
+        {
+          "id": "65a61d62-bc75-4d4c-b59e-baea2c5a8cb9",
+          "label": "Doomfist",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "2c720ce3-e201-4d88-9178-256042a17bdd"
+          ]
+        },
+        {
+          "id": "400c362f-5809-434c-b285-caff0d3303c1",
+          "label": "Echo",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "07552257-5c7f-42bc-97be-cee43735a0cf"
+          ]
+        },
+        {
+          "id": "2827926b-d000-4f0c-8e80-277b2f9b3cc3",
+          "label": "Genji",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "80f99928-1849-4f39-9f4c-733f3817b90a"
+          ]
+        },
+        {
+          "id": "7c6693f1-a731-4718-bb58-d7a2310f10d4",
+          "label": "Hanzo",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "eb840018-5017-4297-8d3e-9a672ff41483"
+          ]
+        },
+        {
+          "id": "89b88e95-e306-487d-ae0f-484b89cc28a1",
+          "label": "Junker Queen",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "8b1575c0-6f9b-41c9-b082-16098633c2db"
+          ]
+        },
+        {
+          "id": "6c009c68-f0d3-4ef7-9f86-57904c4fe3ee",
+          "label": "Pharah",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "92ee8372-c4d6-46c4-88b8-ec6bf0291408"
+          ]
+        },
+        {
+          "id": "89cbb7a5-6470-4ea4-a68c-a84bbf2dc834",
+          "label": "Reaper",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "56a373ad-3cb2-4f08-850e-a3a8db67fc8b"
+          ]
+        },
+        {
+          "id": "21415647-f539-4638-8364-6a413477b944",
+          "label": "Sojourn",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "884fa21d-de71-4e7a-8a7e-dc4eb3e45e80"
+          ]
+        },
+        {
+          "id": "96d43dc7-5201-4db2-9bab-2ae793af2b0b",
+          "label": "Soldier: 76 — No!",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "c751f54a-8987-45f8-8103-1e6dc689ba7e"
+          ]
+        },
+        {
+          "id": "036d68f4-bb01-426a-9423-6c6b15cfa6e3",
+          "label": "Soldier: 76 — Nope.",
+          "lineIds": [
+            "9bb006fc-073e-49b3-8e34-cb2e4ac984d6",
+            "b508b528-767e-408e-9b99-fb6154810b45"
+          ]
+        },
+        {
+          "id": "96861f36-a6e1-4640-9816-c39d6a88f927",
+          "label": "Brigitte",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "b8c4e1a2-d005-4000-8000-c0a0de2e0003",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "1ac2e9d5-144e-492b-8d82-2fbc2cd62e73",
+          "label": "D.Va",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "6cbbb3f7-b6b1-4818-bce4-49fd234f25b2",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "e88dcdfc-2452-471c-b72f-fbc0ddf381e2",
+          "label": "Junkrat",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "7a493a98-4360-4c0e-ad80-da6f02566214",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "df6ab637-df30-4238-ab32-1f87e081a2fa",
+          "label": "Mei",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "12fac236-b150-44cd-be1d-2d0707e9f2ef",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "84cd2196-b95f-46f2-a532-20b4eae02803",
+          "label": "Mercy",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "748f19ee-71a9-43be-816b-9ec5a83f4988",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "1e6b4b66-3e64-4938-ab5c-fdbf9b7788bd",
+          "label": "Moira",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "772b892e-27bd-4496-bcfd-0396f6b3d5c4",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        },
+        {
+          "id": "fc7b04aa-f770-4926-a2b6-34e22bddd013",
+          "label": "Reinhardt",
+          "lineIds": [
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
+            "803ae91b-c70e-4ec8-a2ae-9e74ebd51aa2",
+            "f1a2b3c4-d005-4000-8000-c0a0de2e0002"
+          ]
+        }
+      ],
+      "selectedPathId": "47901085-b4a6-4dbf-bd93-4103506c441e"
     },
     {
       "id": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1",
@@ -4578,7 +4880,7 @@
     },
     {
       "id": "804276aa-3759-470a-b9f0-3953452b8be4",
-      "name": "122",
+      "name": "Family Business",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4751,7 +5053,7 @@
     },
     {
       "id": "b0244c00-a23d-4558-a6cf-8e3a01c09c41",
-      "name": "128",
+      "name": "Loving the Bleach look",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5704,7 +6006,7 @@
     },
     {
       "id": "199cd012-a0ee-41f4-805a-1dd94e401730",
-      "name": "158",
+      "name": "Nano Cola",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5741,7 +6043,7 @@
     },
     {
       "id": "c62c217b-5bc1-4573-a855-de6522b2f6b5",
-      "name": "159",
+      "name": "Chasing",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7107,7 +7409,7 @@
     },
     {
       "id": "33131daf-ebda-4c8b-acdd-df78fe84108d",
-      "name": "205",
+      "name": "Coming with Us",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7140,7 +7442,28 @@
           "subtitles": "You're lucky. I just wanted to kill you.",
           "render": ""
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f001-4000-8000-33131daf0001",
+          "label": "Doomfist",
+          "lineIds": [
+            "b3e11b82-57a4-4b9a-a08d-4aae1d359ab7",
+            "700e51f1-760e-4575-9c43-d3aefad26fb7",
+            "7ad86229-6508-4daf-a62e-92e929224492"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f001-4000-8000-33131daf0002",
+          "label": "Reaper",
+          "lineIds": [
+            "d6eaceaf-7ff5-4001-858e-72bb6d74bede",
+            "700e51f1-760e-4575-9c43-d3aefad26fb7",
+            "7ad86229-6508-4daf-a62e-92e929224492"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f001-4000-8000-33131daf0001"
     },
     {
       "id": "2e6b9e59-3914-45ee-b2a6-9c1feab77bed",
@@ -7285,7 +7608,7 @@
     },
     {
       "id": "1f8fb4c3-9ec0-456a-ab3a-3ef67f3f7f15",
-      "name": "210",
+      "name": "A ton of DPS",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7308,7 +7631,7 @@
     },
     {
       "id": "375cf848-7b0b-4c85-9ea5-6c23443be667",
-      "name": "211",
+      "name": "Ganymede Scout",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7839,7 +8162,7 @@
     },
     {
       "id": "aa62c5bf-aad8-41ae-a2d2-7a5c1c2ab81d",
-      "name": "228",
+      "name": "Mech Mechanic",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7869,7 +8192,7 @@
     },
     {
       "id": "12493ef5-87d1-403b-b8be-6a7fa4e0b7cd",
-      "name": "229",
+      "name": "Adapt to the Team",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7892,7 +8215,7 @@
     },
     {
       "id": "2ade2627-3e81-4d77-8ea0-63b3d99509eb",
-      "name": "230",
+      "name": "To Stagnate is to Die",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7912,13 +8235,41 @@
           "render": "Heroic.png"
         },
         {
+          "id": "a1c2d3e4-f002-4000-8000-2ade26270001",
+          "hero": "Junkrat",
+          "voice": "",
+          "subtitles": "Why?",
+          "render": "Heroic.png"
+        },
+        {
           "id": "2b666c55-607d-4aaa-b04e-c0e7ba458960",
           "hero": "Doomfist",
           "voice": "Doomfist_-_Because_to_stagnate_is_to_die._Never_forget_that.ogg",
           "subtitles": "Because to stagnate is to die. Never forget that.",
           "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f002-4000-8000-2ade262700101",
+          "label": "Brigitte",
+          "lineIds": [
+            "e8c9fc3b-3345-406e-9765-ea5a73180ff0",
+            "66b00f18-0d5a-4a1b-86cd-9a139d9eeb08",
+            "2b666c55-607d-4aaa-b04e-c0e7ba458960"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f002-4000-8000-2ade262700102",
+          "label": "Junkrat",
+          "lineIds": [
+            "e8c9fc3b-3345-406e-9765-ea5a73180ff0",
+            "a1c2d3e4-f002-4000-8000-2ade26270001",
+            "2b666c55-607d-4aaa-b04e-c0e7ba458960"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f002-4000-8000-2ade262700101"
     },
     {
       "id": "dcb20a44-9f98-44f4-ac5d-6827b32cc4e9",
@@ -8959,7 +9310,7 @@
     },
     {
       "id": "64e556eb-e5b2-46ac-b211-16cbbb9e84e1",
-      "name": "263",
+      "name": "Pachimari Lore",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9017,7 +9368,7 @@
     },
     {
       "id": "4bdb33ac-2675-4f39-9773-91bbd61997ff",
-      "name": "264",
+      "name": "Unworthy of  your Talents",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9054,7 +9405,7 @@
     },
     {
       "id": "9337c8bf-5f5d-430b-9e7e-3aae4e24072d",
-      "name": "265",
+      "name": "Overwatch failed you",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10263,29 +10614,6 @@
       ]
     },
     {
-      "id": "3e5eb96e-c996-407c-a1dd-91c96f048e55",
-      "name": "303",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "dda291e4-4816-4450-b962-c0c09bd939b2",
-          "hero": "Winston",
-          "voice": "Winston_-_Anyone_want_to_hear_my_favorite_joke_about_the_periodic_table_(1).ogg",
-          "subtitles": "Anyone wanna hear my favorite joke about the periodic table?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "75285b6b-d6b8-4168-9136-9604873d8a1f",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_I'm_still_puzzling_over_the_last_one.ogg",
-          "subtitles": "I-I'm still puzzlin' over the last one.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "1358a55b-eeea-43ca-9fd0-96b06acb69d7",
       "name": "304",
       "status": "active",
@@ -10340,7 +10668,7 @@
     },
     {
       "id": "69b23498-09d0-438c-8d9b-bb0169b4632f",
-      "name": "306",
+      "name": "Cute Guy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10377,7 +10705,7 @@
     },
     {
       "id": "12001325-a5c6-4261-8266-d97da47928f6",
-      "name": "307",
+      "name": "Korrea's Strongest",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10407,7 +10735,7 @@
     },
     {
       "id": "5667deee-f473-41e5-83a0-da307b39d48f",
-      "name": "308",
+      "name": "Balanced 1V1",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10430,7 +10758,7 @@
     },
     {
       "id": "aa5580e2-2509-43d6-a6ff-954994cfdc59",
-      "name": "309",
+      "name": "Kimchi's Taste",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10467,7 +10795,7 @@
     },
     {
       "id": "deb51b35-84ba-4301-bf16-2744046f46af",
-      "name": "310",
+      "name": "Going to the Arcade",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10504,7 +10832,7 @@
     },
     {
       "id": "225af4fb-31e5-4a1c-9c26-b6bd5eabca59",
-      "name": "311",
+      "name": "Frown Less",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10564,7 +10892,7 @@
     },
     {
       "id": "84029347-0b70-427a-8501-111cbdc2eaf9",
-      "name": "313",
+      "name": "Your hair doesn't count",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10594,7 +10922,7 @@
     },
     {
       "id": "d21b0a38-c64b-4016-adf2-254206fe3667",
-      "name": "314",
+      "name": "Hamster in the Mech",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10624,7 +10952,7 @@
     },
     {
       "id": "5b62906d-be6d-4395-93f2-dc54637b1827",
-      "name": "315",
+      "name": "Two Superstars",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10661,7 +10989,7 @@
     },
     {
       "id": "1e34e055-6e1c-4740-ba45-86228bcdb634",
-      "name": "316",
+      "name": "The Capable ones",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10684,7 +11012,7 @@
     },
     {
       "id": "fc24daf9-1282-4bb1-8387-a67278fd9b4a",
-      "name": "317",
+      "name": "Moisturizer Recommendations",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10714,7 +11042,7 @@
     },
     {
       "id": "5192c8b5-857e-4758-8829-a45ff64c7600",
-      "name": "318",
+      "name": "Better when I say it",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10744,7 +11072,7 @@
     },
     {
       "id": "842b6b4d-90d6-4507-ae2c-f5fe49e7dbb0",
-      "name": "319",
+      "name": "Going Shopping",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10774,7 +11102,7 @@
     },
     {
       "id": "4036aceb-bc75-448c-b117-d61776d0e0ec",
-      "name": "320",
+      "name": "Travel Tips",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10797,7 +11125,7 @@
     },
     {
       "id": "a50bfeed-1674-44b8-85eb-57d53ab74df3",
-      "name": "321",
+      "name": "Extra Hours",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10827,7 +11155,7 @@
     },
     {
       "id": "5ffe3734-a50e-4ccc-b35b-ba6fe6ba53ac",
-      "name": "322",
+      "name": "Rabbit Experiments",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10850,7 +11178,7 @@
     },
     {
       "id": "88019fb7-8b07-4d8a-9708-2dda170091c5",
-      "name": "323",
+      "name": "Pretty Awesome",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10873,7 +11201,7 @@
     },
     {
       "id": "16cdbd0f-2897-4ae9-8701-b164a420e721",
-      "name": "324",
+      "name": "Priviledge",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10896,7 +11224,7 @@
     },
     {
       "id": "52e5db10-35cb-452b-ad5f-fb7c3cb2e7f3",
-      "name": "325",
+      "name": "Sit this one out",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10919,7 +11247,7 @@
     },
     {
       "id": "9b969d4a-e57f-4211-80ed-b7e7d8fb5c84",
-      "name": "326",
+      "name": "Off Vibes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10956,7 +11284,7 @@
     },
     {
       "id": "b2cef0d0-b6ee-4610-851d-434653847046",
-      "name": "327",
+      "name": "War isn't a game",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10979,7 +11307,7 @@
     },
     {
       "id": "e4d28033-e0ea-49f6-a3ae-d2932bcbaf15",
-      "name": "328",
+      "name": "The Fun One",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11016,7 +11344,7 @@
     },
     {
       "id": "37c9441a-d480-4265-8791-08a2cf80164b",
-      "name": "329",
+      "name": "Far from Home",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11046,7 +11374,7 @@
     },
     {
       "id": "daeafe97-5787-4083-93aa-250e352bb219",
-      "name": "330",
+      "name": "Shatter Bomb",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11069,7 +11397,7 @@
     },
     {
       "id": "4ca30202-a6d8-4a33-b2d1-f6e0cfc373ea",
-      "name": "331",
+      "name": "Bomb Shatter",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11092,7 +11420,7 @@
     },
     {
       "id": "e6e52bf4-04a7-48a2-bb2b-c1940e57c975",
-      "name": "332",
+      "name": "Cute Mech",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11122,7 +11450,7 @@
     },
     {
       "id": "df77f106-248e-419f-91ed-13c2f01e0708",
-      "name": "333",
+      "name": "Mission Brief",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11159,7 +11487,7 @@
     },
     {
       "id": "f44b15d6-1993-4d22-96ae-1a0cbabf1130",
-      "name": "334",
+      "name": "Not much Sleep",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11203,7 +11531,7 @@
     },
     {
       "id": "385b05aa-b761-4f27-a24a-e4b5f55b9e09",
-      "name": "335",
+      "name": "Flashy Mech",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11226,7 +11554,7 @@
     },
     {
       "id": "7673b49d-eaa7-4b04-a0fc-f7377c648ba3",
-      "name": "336",
+      "name": "Sad when we take you out",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11256,7 +11584,7 @@
     },
     {
       "id": "9619db60-090a-46db-85e6-0ecb48f80a65",
-      "name": "337",
+      "name": "Not even trying",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11279,7 +11607,7 @@
     },
     {
       "id": "a22ec657-efd9-4f67-8a5c-507611722dcb",
-      "name": "338",
+      "name": "High Scores",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11309,7 +11637,7 @@
     },
     {
       "id": "55c2f2b8-c87b-4de3-8690-c3eec8d1463d",
-      "name": "339",
+      "name": "Five Minute Boot Up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11339,7 +11667,7 @@
     },
     {
       "id": "a51e1b64-0c54-452f-8435-67a61953aa3f",
-      "name": "340",
+      "name": "Not on Purpose",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11369,7 +11697,7 @@
     },
     {
       "id": "7b83b291-0926-4dde-b67a-e60049d1eaa6",
-      "name": "341",
+      "name": "Hot shot Pilots",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11392,7 +11720,7 @@
     },
     {
       "id": "884a8830-1866-4ca5-bc00-05b9fe96258f",
-      "name": "342",
+      "name": "Bad in Games",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11429,7 +11757,7 @@
     },
     {
       "id": "d13304d7-800c-4ee4-9d9d-3d3e685a832f",
-      "name": "343",
+      "name": "Korea Style",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11466,7 +11794,7 @@
     },
     {
       "id": "5cb37a6d-02c6-4e5b-a26a-6f6d8580d31b",
-      "name": "344",
+      "name": "Best Pilot",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11489,7 +11817,7 @@
     },
     {
       "id": "a7c6bb3d-f0d0-4553-a3cd-1d37fca45a63",
-      "name": "345",
+      "name": "Mech Slayer",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11505,7 +11833,7 @@
           "id": "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
           "hero": "Vendetta",
           "voice": "Vendetta_-_I_don't_call_myself_one,_I_am_one._Your_squad_must_be_overdue_for_a_demonstration.ogg",
-          "subtitles": "I don't call myself one. I *am* one. Your squad must be overdue for a demonstration.",
+          "subtitles": "I don't call myself one. I am one. Your squad must be overdue for a demonstration.",
           "render": ""
         },
         {
@@ -11517,37 +11845,85 @@
         },
         {
           "id": "5be69e00-076e-4999-a1d3-803ad298bce9",
-          "hero": "Unknown",
+          "hero": "D.Va",
           "voice": "D.Va_-_Overlord's_got_our_back!_You'd_never_take_us_down.ogg",
-          "subtitles": "",
+          "subtitles": "Overlord's got our back! You'd never take us down.",
           "render": ""
         },
         {
           "id": "3249c897-11ba-4b77-936b-2a1e1c3421f1",
-          "hero": "Unknown",
+          "hero": "D.Va",
           "voice": "D.Va_-_Are_you_serious._Casino_would_fly_circles_around_you.ogg",
-          "subtitles": "",
+          "subtitles": "*scoffs* Are you serious? Casino would fly circles around you!",
           "render": ""
         },
         {
           "id": "581a82ab-1406-4f1b-885c-3cf4c25c7eb5",
-          "hero": "Unknown",
+          "hero": "D.Va",
           "voice": "D.Va_-_With_King_on_our_team._You_don't_stand_a_chance.ogg",
-          "subtitles": "",
+          "subtitles": "With King on our team, you don't stand a chance!",
           "render": ""
         },
         {
           "id": "1949a5bf-6db8-4fbb-bdcc-0cbdb775a429",
-          "hero": "Unknown",
+          "hero": "D.Va",
           "voice": "D.Va_-_Ha!_No_way,_D.mon's_way_better_with_a_sword_than_you.ogg",
-          "subtitles": "",
+          "subtitles": "Ha! No way! D.Mon's way better with a sword than you!",
           "render": ""
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e01",
+          "label": "Tokki",
+          "lineIds": [
+            "0a859379-a1fe-40d0-a231-17174d0e6655",
+            "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
+            "62a16686-8140-415e-bb26-391ad3830b2f"
+          ]
+        },
+        {
+          "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e02",
+          "label": "Overlord",
+          "lineIds": [
+            "0a859379-a1fe-40d0-a231-17174d0e6655",
+            "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
+            "5be69e00-076e-4999-a1d3-803ad298bce9"
+          ]
+        },
+        {
+          "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e03",
+          "label": "Casino",
+          "lineIds": [
+            "0a859379-a1fe-40d0-a231-17174d0e6655",
+            "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
+            "3249c897-11ba-4b77-936b-2a1e1c3421f1"
+          ]
+        },
+        {
+          "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e04",
+          "label": "King",
+          "lineIds": [
+            "0a859379-a1fe-40d0-a231-17174d0e6655",
+            "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
+            "581a82ab-1406-4f1b-885c-3cf4c25c7eb5"
+          ]
+        },
+        {
+          "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e05",
+          "label": "D.Mon",
+          "lineIds": [
+            "0a859379-a1fe-40d0-a231-17174d0e6655",
+            "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
+            "1949a5bf-6db8-4fbb-bdcc-0cbdb775a429"
+          ]
+        }
+      ],
+      "selectedPathId": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e05"
     },
     {
       "id": "d792e10f-0d37-49ff-a0dd-b79a1483d5c4",
-      "name": "346",
+      "name": "Far in the Backline",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11570,7 +11946,7 @@
     },
     {
       "id": "83819e84-6bfe-4597-9d8e-5f699723cb1c",
-      "name": "347",
+      "name": "Selfie for the fans",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11607,7 +11983,7 @@
     },
     {
       "id": "b0a1afe0-c8cd-4ab5-a71d-aab94088b06b",
-      "name": "348",
+      "name": "Bowling Ball",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11643,45 +12019,8 @@
       ]
     },
     {
-      "id": "f4d7e813-1cf4-4890-9992-c92e7ca22509",
-      "name": "349",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "d41ef5cc-5736-419f-bbbb-3214f673b1bb",
-          "hero": "Wuyang",
-          "voice": "",
-          "subtitles": "Hey, you're that famous Mecha Guardian Player, right? Could you train me?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "7e650eba-d0c2-4b40-a5dd-99fcb8254f01",
-          "hero": "D.Va",
-          "voice": "",
-          "subtitles": "What rank are you? Top 1000.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "37a28534-b6c6-4128-8099-e117aa59b461",
-          "hero": "Wuyang",
-          "voice": "",
-          "subtitles": "I've been stuck in... Chrome for a while, but I think I'm really close to ranking up.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "74c082cf-ab25-4049-8cc2-4b92b2ee0f46",
-          "hero": "D.Va",
-          "voice": "",
-          "subtitles": "Right. I'll ask Dae-Hyun if he has time.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "2c059852-c9ad-4ce7-a8a6-3d81e27c74e8",
-      "name": "350",
+      "name": "Lifting",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11704,7 +12043,7 @@
     },
     {
       "id": "47f2ef1a-fbe8-4ee6-b5ad-6df7534daffd",
-      "name": "351",
+      "name": "Volskaya's Mechs",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11727,7 +12066,7 @@
     },
     {
       "id": "57965dde-38fb-40ae-98ff-4ee0a983aa15",
-      "name": "352",
+      "name": "Rebellious Spirit",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -14406,7 +14745,7 @@
     },
     {
       "id": "95db7602-e77f-4dd8-a13d-e356af2fb021",
-      "name": "435",
+      "name": "The Best Sword master",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -14436,7 +14775,7 @@
     },
     {
       "id": "154f1567-d8af-4836-87ba-7cd72c042164",
-      "name": "436",
+      "name": "Cut you Down",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -15512,7 +15851,7 @@
     },
     {
       "id": "96e1f389-2b35-4fa1-9d71-0eaacba132d5",
-      "name": "470",
+      "name": "Before the Crisis",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -15528,7 +15867,7 @@
           "id": "6c38c78a-357f-4971-bcf4-7e0c6447f607",
           "hero": "Tracer",
           "voice": "Tracer_-_Tekhartha_Zenyatta,_if_you_don't_mind_me_asking..._what_did_you_do_before_the_Crisis.ogg",
-          "subtitles": "Tekhartha Zenyatta. If you don't mind me asking... what did you do before the Crisis?",
+          "subtitles": "Tekhartha Zenyatta. If you don't mind me asking, what did you do before the Crisis?",
           "render": ""
         },
         {
@@ -15542,101 +15881,3464 @@
           "id": "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
           "hero": "Zenyatta",
           "voice": "Zenyatta_-_I_collected_payments_at_a_laser_tag_arena.ogg",
-          "subtitles": "I collected payments at a laser-tag arena.",
+          "subtitles": "I collected payments at a laser tag arena.",
           "render": ""
         },
         {
-          "id": "21dc4ab0-e5d2-4b93-947d-4236cf365798",
-          "hero": "D.Va",
+          "id": "a1b2c3d4-e001-4000-8000-000000000001",
+          "hero": "Zenyatta",
           "voice": "Zenyatta_-_I_was_a_life_guard._At_a_water_park.ogg",
+          "subtitles": "I was a lifeguard at a water park.",
+          "render": ""
+        },
+        {
+          "id": "a1b2c3d4-e001-4000-8000-000000000002",
+          "hero": "Zenyatta",
+          "voice": "Zenyatta_-_I_served_coffee.ogg",
+          "subtitles": "I served coffee.",
+          "render": ""
+        },
+        {
+          "id": "a1b2c3d4-e001-4000-8000-000000000003",
+          "hero": "Zenyatta",
+          "voice": "Zenyatta_-_I_drove_a_tractor.ogg",
+          "subtitles": "I drove a tractor.",
+          "render": ""
+        },
+        {
+          "id": "a1b2c3d4-e001-4000-8000-000000000004",
+          "hero": "Zenyatta",
+          "voice": "Zenyatta_-_I_massaged_sheep_on_a_free-range_pasture.ogg",
+          "subtitles": "I massaged sheep on a free-range pasture.",
+          "render": ""
+        },
+        {
+          "id": "a1b2c3d4-e002-4000-8000-000000000001",
+          "hero": "D.Va",
+          "voice": "D.Va_-_Wait,_for_real.ogg",
           "subtitles": "Wait, for real?",
           "render": "Heroic.png"
         },
         {
-          "id": "ade3b2d4-24d9-46ae-a0c8-5810715004e1",
+          "id": "a1b2c3d4-e002-4000-8000-000000000002",
           "hero": "Doomfist",
-          "voice": "Zenyatta_-_I_served_coffee.ogg",
+          "voice": "Doomfist_-_Is_that_true.ogg",
           "subtitles": "Is that true?",
           "render": "Heroic.png"
         },
         {
-          "id": "b5cdc22a-9c9a-41a7-aab7-de3e30e422fd",
+          "id": "a1b2c3d4-e002-4000-8000-000000000004",
+          "hero": "Roadhog",
+          "voice": "Roadhog_-_Really.ogg",
+          "subtitles": "Really?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a1b2c3d4-e002-4000-8000-000000000003",
           "hero": "Reinhardt",
-          "voice": "Zenyatta_-_I_drove_a_tractor.ogg",
+          "voice": "Reinhardt_-_Is_that_true.ogg",
           "subtitles": "**chuckling** Is that true?",
           "render": "Heroic.png"
         },
         {
-          "id": "dc3ba993-06bf-4e04-99e7-00413b210aa6",
-          "hero": "Roadhog",
-          "voice": "Zenyatta_-_I_massaged_sheep_on_a_free-range_pasture.ogg",
-          "subtitles": "Really?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "a6aa75db-27a4-4a93-bd04-0958787c0122",
+          "id": "a1b2c3d4-e002-4000-8000-000000000005",
           "hero": "Sigma",
-          "voice": "D.Va_-_Wait,_for_real.ogg",
-          "subtitles": "Could that be...?",
-          "render": ""
-        },
-        {
-          "id": "d9613960-b207-4441-b523-63e01288127f",
-          "hero": "Tracer",
-          "voice": "Doomfist_-_Is_that_true.ogg",
-          "subtitles": "Seriously?!",
-          "render": ""
-        },
-        {
-          "id": "bfc26e29-bb85-4654-b682-8519cf07bad3",
-          "hero": "Zarya",
-          "voice": "Reinhardt_-_Is_that_true.ogg",
-          "subtitles": "Really?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "547083b3-3235-45cf-8a78-6d792047e02a",
-          "hero": "Ramattra",
-          "voice": "Roadhog_-_Really.ogg",
-          "subtitles": "Ha! I don't think so. But he wouldn't tell me, either.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "0bba97f4-d407-44c2-ad39-11d0c90a809b",
-          "hero": "Unknown",
           "voice": "Sigma_-_Could_that_be.ogg",
-          "subtitles": "",
+          "subtitles": "Could that be?",
           "render": ""
         },
         {
           "id": "77362c97-5f54-4ada-bf01-3609e612ce5b",
-          "hero": "Unknown",
+          "hero": "Tracer",
           "voice": "Tracer_-_Seriously.ogg",
-          "subtitles": "",
+          "subtitles": "Seriously?",
           "render": ""
         },
         {
           "id": "e2c14d0d-5969-4e08-ac85-df5d447bc007",
-          "hero": "Unknown",
+          "hero": "Zarya",
           "voice": "Zarya_-_Really.ogg",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "Really?",
+          "render": "Heroic.png"
         },
         {
           "id": "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2",
-          "hero": "Unknown",
+          "hero": "Genji",
           "voice": "Genji_-_He_won't_tell_me_either.ogg",
-          "subtitles": "",
+          "subtitles": "He won't tell me either.",
           "render": ""
         },
         {
           "id": "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6",
-          "hero": "Unknown",
+          "hero": "Ramattra",
           "voice": "Ramattra_-_Ha!_I_don't_think_so._But_he_wouldn't_tell_me_either.ogg",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "Ha! I don't think so, but he wouldn't tell me either.",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "d12bf8c8-b8b2-4aee-8fc5-d7239c69a459",
+          "label": "Reinhardt — Coffee — D.Va — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "e9c723ae-8ddd-43d9-8ef7-5ad95e92bbab",
+          "label": "Reinhardt — Coffee — D.Va — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "76b215ff-31ca-4749-80dc-4e257aaeca66",
+          "label": "Reinhardt — Coffee — Doomfist — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b65c871d-8a0e-46a5-89e9-7996d1a913a8",
+          "label": "Reinhardt — Coffee — Doomfist — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "919400a1-72db-4748-8fbb-71599ca1c55a",
+          "label": "Reinhardt — Coffee — Reinhardt — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "fada4edc-0c2a-472b-8d4b-a1f780df82c7",
+          "label": "Reinhardt — Coffee — Reinhardt — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3c54c2c7-2029-49fa-8061-601241296832",
+          "label": "Reinhardt — Coffee — Roadhog — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "d5b58d80-a0b8-491f-8e38-1529b765c97c",
+          "label": "Reinhardt — Coffee — Roadhog — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "7cb75f29-d6ae-4c04-8ffe-39918856b871",
+          "label": "Reinhardt — Coffee — Sigma — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "eb9ff84e-6004-414c-89af-89ae5a9aeff2",
+          "label": "Reinhardt — Coffee — Sigma — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "cf0a5bdf-54f4-4167-826d-000f0a5e0c35",
+          "label": "Reinhardt — Coffee — Tracer — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "7c38bafb-7f87-4e61-89f0-531b2357c0d8",
+          "label": "Reinhardt — Coffee — Tracer — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "58b5784b-8b26-498c-81d6-271de02a6e4b",
+          "label": "Reinhardt — Coffee — Zarya — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "af5f4891-47be-4e95-856c-30ef28ae0713",
+          "label": "Reinhardt — Coffee — Zarya — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "bebf63b8-b793-4df4-8cab-1edab4450d8b",
+          "label": "Reinhardt — Laser tag — D.Va — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "c3749205-082c-4dd5-8293-8b5ffc70767e",
+          "label": "Reinhardt — Laser tag — D.Va — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "9d28444a-750d-4b68-8815-2c6cb281b79c",
+          "label": "Reinhardt — Laser tag — Doomfist — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "a9b7f9d2-1107-49e7-890e-72837ab47f9a",
+          "label": "Reinhardt — Laser tag — Doomfist — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "d96acad6-5f6d-460e-80b1-40f3790769f8",
+          "label": "Reinhardt — Laser tag — Reinhardt — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "cdd6eefe-e967-4ccb-8a16-89c945fa00a7",
+          "label": "Reinhardt — Laser tag — Reinhardt — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f19dbcd8-de34-4a66-8503-d63ef10a10ce",
+          "label": "Reinhardt — Laser tag — Roadhog — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b18810b7-47ee-4fe5-832b-a00671e2fc46",
+          "label": "Reinhardt — Laser tag — Roadhog — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "66166204-a467-4ac0-8f2b-80f652ed47d6",
+          "label": "Reinhardt — Laser tag — Sigma — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "cfecc54c-1769-4ddf-802c-bb8d966c7d67",
+          "label": "Reinhardt — Laser tag — Sigma — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "940d215b-d671-47f9-88a6-d2fafc3a3c1e",
+          "label": "Reinhardt — Laser tag — Tracer — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "13edb442-f1a2-4d85-8d30-549e72507bf0",
+          "label": "Reinhardt — Laser tag — Tracer — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "7fa6a4aa-43af-41c7-8ba0-fec3e0ca9d7c",
+          "label": "Reinhardt — Laser tag — Zarya — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "afaa90c3-b3a9-4e0f-8935-eeb3131921e1",
+          "label": "Reinhardt — Laser tag — Zarya — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e695a24e-e7ee-4f47-85fd-f9c67a9270e3",
+          "label": "Reinhardt — Lifeguard — D.Va — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "96471b4c-b8ce-484c-819e-51e38d7cc92c",
+          "label": "Reinhardt — Lifeguard — D.Va — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "bd433666-32a3-44e0-8957-3bd83c5163b6",
+          "label": "Reinhardt — Lifeguard — Doomfist — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "367c0843-7a99-4c16-859a-15ad76346b19",
+          "label": "Reinhardt — Lifeguard — Doomfist — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "35f12f5a-0c13-4c26-8471-7dc797481946",
+          "label": "Reinhardt — Lifeguard — Reinhardt — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "56ce44b9-fbce-4d37-8ccf-2922b217c152",
+          "label": "Reinhardt — Lifeguard — Reinhardt — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3305b53c-e653-47db-80bd-8460c85225d4",
+          "label": "Reinhardt — Lifeguard — Roadhog — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "dea5d2c9-615f-421d-8872-87947e691b28",
+          "label": "Reinhardt — Lifeguard — Roadhog — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "de93b4e2-0857-454e-8092-8c42b2cc0ab9",
+          "label": "Reinhardt — Lifeguard — Sigma — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "88e7903d-75ad-40de-8e01-eee8e7c50b85",
+          "label": "Reinhardt — Lifeguard — Sigma — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c7095cdb-923a-481b-88de-0f1420dc7548",
+          "label": "Reinhardt — Lifeguard — Tracer — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "78e38818-018b-4906-89e3-a66a4f35aab2",
+          "label": "Reinhardt — Lifeguard — Tracer — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "a22429bd-6f08-4b0c-8f28-3ce3e01fffaf",
+          "label": "Reinhardt — Lifeguard — Zarya — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4fdead33-8a64-4426-8c1d-22c12cb9323e",
+          "label": "Reinhardt — Lifeguard — Zarya — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "cb01a846-c1d4-4b49-8edc-e18cec2f9b05",
+          "label": "Reinhardt — Sheep massage — D.Va — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b377716a-0bc8-4a17-84f2-22aae4565c13",
+          "label": "Reinhardt — Sheep massage — D.Va — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c244a65b-627b-49c3-8f63-75c4e3fc4473",
+          "label": "Reinhardt — Sheep massage — Doomfist — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "335480db-5dfe-43f8-8f66-9e48f431a75e",
+          "label": "Reinhardt — Sheep massage — Doomfist — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "0d51d378-cd6e-4c1d-850c-0440efe6df99",
+          "label": "Reinhardt — Sheep massage — Reinhardt — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "5ae00c6c-a51d-4f69-8705-139d84401ba7",
+          "label": "Reinhardt — Sheep massage — Reinhardt — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "68b45a5c-0513-4d43-8191-3d24eba53e42",
+          "label": "Reinhardt — Sheep massage — Roadhog — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "40741522-6b43-428f-853b-648aafebaf98",
+          "label": "Reinhardt — Sheep massage — Roadhog — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "9e0c22be-2997-4887-8664-c9cfc0ce47f7",
+          "label": "Reinhardt — Sheep massage — Sigma — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "8df18a76-c552-4710-8792-8e26da7e3479",
+          "label": "Reinhardt — Sheep massage — Sigma — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c116ed93-1dc6-4104-8b4a-d138c80cc134",
+          "label": "Reinhardt — Sheep massage — Tracer — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "8e081cc2-7417-467f-8801-481982d1b906",
+          "label": "Reinhardt — Sheep massage — Tracer — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "fb03b8db-08b0-4349-84d7-fce287d59a3d",
+          "label": "Reinhardt — Sheep massage — Zarya — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "89f55432-0d69-4772-81d8-caf5f6ef7157",
+          "label": "Reinhardt — Sheep massage — Zarya — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "b5845d3f-152f-4ef0-8e01-21cd9e543ed0",
+          "label": "Reinhardt — Tractor — D.Va — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "7d61af3e-18d4-4c85-8516-46c1726d6abe",
+          "label": "Reinhardt — Tractor — D.Va — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e0eacd67-3fc8-492e-8c56-2f6980022221",
+          "label": "Reinhardt — Tractor — Doomfist — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "7e773f0c-8db7-4e60-8b9c-12c4834e9a9f",
+          "label": "Reinhardt — Tractor — Doomfist — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3a66ad1e-43b9-400f-844c-cee1d52680c3",
+          "label": "Reinhardt — Tractor — Reinhardt — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "d841d4aa-e3c8-4eb1-8551-a5e2d2b2748a",
+          "label": "Reinhardt — Tractor — Reinhardt — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "8ceddf25-7298-4015-82d9-f8a28181481c",
+          "label": "Reinhardt — Tractor — Roadhog — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "3d660fff-fffc-4fa7-8366-66a21bb97d3b",
+          "label": "Reinhardt — Tractor — Roadhog — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "6074c12e-2f1b-4ecc-8aa7-61b573244428",
+          "label": "Reinhardt — Tractor — Sigma — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "3feb79ec-205c-4fe5-8800-486b1876a5a3",
+          "label": "Reinhardt — Tractor — Sigma — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "b243d984-a80c-4204-8ed0-239d7cb81b13",
+          "label": "Reinhardt — Tractor — Tracer — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4d17c69d-1202-4cd3-8ce6-efc88fb83dc1",
+          "label": "Reinhardt — Tractor — Tracer — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "30e99750-2bc5-4604-8606-5ef458be1c6e",
+          "label": "Reinhardt — Tractor — Zarya — Genji",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "06f4232f-f70b-4741-8cf5-ed72d46dd25e",
+          "label": "Reinhardt — Tractor — Zarya — Ramattra",
+          "lineIds": [
+            "f14b37a1-ee79-486e-80aa-ed07b3e6276f",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "reinhardt",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "ffca3336-dcab-4aba-856e-4a4a10ea5001",
+          "label": "Tracer — Coffee — D.Va — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "117509b4-95ef-46c7-81ec-28a8bfe1b1d4",
+          "label": "Tracer — Coffee — D.Va — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "89b5ab66-5007-49af-8c4d-b94c326dfcc6",
+          "label": "Tracer — Coffee — Doomfist — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "714019f4-b9e0-4747-885d-a0034f2b1c13",
+          "label": "Tracer — Coffee — Doomfist — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "075047ae-bb66-4025-8a1f-fb7e688e477e",
+          "label": "Tracer — Coffee — Reinhardt — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "ac501d48-4052-4180-869a-03632f58a249",
+          "label": "Tracer — Coffee — Reinhardt — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "d3077d43-8b31-4d75-8aed-a8e2ea014a45",
+          "label": "Tracer — Coffee — Roadhog — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4a7e097a-5bb2-491c-8932-c394f0e5a81d",
+          "label": "Tracer — Coffee — Roadhog — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "9985cc4a-47a4-4e6a-808c-64b7f78aeae4",
+          "label": "Tracer — Coffee — Sigma — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "1490b55d-9d9e-49da-8cf0-ea61ce8c3d9d",
+          "label": "Tracer — Coffee — Sigma — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "a34d5a51-8abd-4ee5-8a67-50771b818174",
+          "label": "Tracer — Coffee — Tracer — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "9b4a4d56-2f0f-4f63-8aad-20c21f508efe",
+          "label": "Tracer — Coffee — Tracer — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f966dffb-1a65-4eb3-86b9-4268195fd81b",
+          "label": "Tracer — Coffee — Zarya — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "157f1ea3-5762-4286-8e05-0f83caf89e0b",
+          "label": "Tracer — Coffee — Zarya — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "701736b1-5065-484f-8308-28a531238c06",
+          "label": "Tracer — Laser tag — D.Va — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "3121a73c-710e-4b95-8425-8d3817aaa294",
+          "label": "Tracer — Laser tag — D.Va — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c8c76bbe-c995-4775-86f6-03498d974116",
+          "label": "Tracer — Laser tag — Doomfist — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "dd27b0ef-ff3e-4123-8ca7-e26ae55602dc",
+          "label": "Tracer — Laser tag — Doomfist — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "334028ea-fcda-42ed-84f4-6133bc14d883",
+          "label": "Tracer — Laser tag — Reinhardt — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "9e98563c-7150-4568-8554-33bc88513da7",
+          "label": "Tracer — Laser tag — Reinhardt — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "ab87d010-263c-44ee-8d6e-f00df84b12b4",
+          "label": "Tracer — Laser tag — Roadhog — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4f36f4ef-b5ce-4988-86a3-fdd635d049c4",
+          "label": "Tracer — Laser tag — Roadhog — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f3a3e39e-1551-4ec4-8bb6-e0bf92609683",
+          "label": "Tracer — Laser tag — Sigma — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "d51205de-82e6-4630-82da-5fc08b6b74be",
+          "label": "Tracer — Laser tag — Sigma — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3aefc2d4-2f86-4de0-8672-c0abd8d421b9",
+          "label": "Tracer — Laser tag — Tracer — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "2a1cc21e-a70d-46da-879f-2c5171672c24",
+          "label": "Tracer — Laser tag — Tracer — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3828be1d-1a1f-4978-87d8-c252465ddad7",
+          "label": "Tracer — Laser tag — Zarya — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "c49943c3-6b98-4271-8419-ea2bded3bcfd",
+          "label": "Tracer — Laser tag — Zarya — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e1eb16fe-b2c8-437f-88ab-57bde5601c46",
+          "label": "Tracer — Lifeguard — D.Va — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "f4906c3d-3cd9-4a3f-82f5-914b235605b8",
+          "label": "Tracer — Lifeguard — D.Va — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e1f1690d-89a9-40d2-8f05-f07bc192f6e1",
+          "label": "Tracer — Lifeguard — Doomfist — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "7e4b32b2-b09a-4319-80ac-4a297ffde2c2",
+          "label": "Tracer — Lifeguard — Doomfist — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "4979e8bd-4964-4a18-828e-66a2adf9ec8a",
+          "label": "Tracer — Lifeguard — Reinhardt — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "a42442fb-176c-4d5f-8277-bb30e4ff2ed2",
+          "label": "Tracer — Lifeguard — Reinhardt — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "68766ea3-2326-4367-810d-80625337bc03",
+          "label": "Tracer — Lifeguard — Roadhog — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4d830c07-ce10-4f81-897e-9e2c0f6b2c37",
+          "label": "Tracer — Lifeguard — Roadhog — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "b52d39b5-db4b-49c9-839c-92299b14b57c",
+          "label": "Tracer — Lifeguard — Sigma — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "8e1ca411-47d7-4a4a-852f-7b74ec7cf0e7",
+          "label": "Tracer — Lifeguard — Sigma — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "1cab8953-89be-474f-851c-f0b5089e49cd",
+          "label": "Tracer — Lifeguard — Tracer — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "9f4cba91-1433-47f2-8dc7-129437540793",
+          "label": "Tracer — Lifeguard — Tracer — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "830e48c8-64ee-4497-8a47-a2004b34ff71",
+          "label": "Tracer — Lifeguard — Zarya — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "5b6ee9f4-b5d4-401e-8733-5a419e0c9835",
+          "label": "Tracer — Lifeguard — Zarya — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "99a35188-95cf-447a-8bd0-4c5e054df583",
+          "label": "Tracer — Sheep massage — D.Va — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "2d46b23e-e6fa-45c6-8990-d4d9e4098467",
+          "label": "Tracer — Sheep massage — D.Va — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "25bdb0d7-3828-421a-86fe-897d7e69cfb8",
+          "label": "Tracer — Sheep massage — Doomfist — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "cf00305f-bf05-4dfd-8e3d-83f737cc36ee",
+          "label": "Tracer — Sheep massage — Doomfist — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "2b9bab6c-4115-4a9e-8ca7-1c535c94a57d",
+          "label": "Tracer — Sheep massage — Reinhardt — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "cc9483fc-7798-4717-8505-503723088d81",
+          "label": "Tracer — Sheep massage — Reinhardt — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "40f1bb22-3ac1-46c4-8fc6-4833b060af52",
+          "label": "Tracer — Sheep massage — Roadhog — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4bfecb2e-79a1-49d5-8824-050a232a112a",
+          "label": "Tracer — Sheep massage — Roadhog — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "7a51b02a-d360-434e-8fd3-1a906f82ca1b",
+          "label": "Tracer — Sheep massage — Sigma — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "154b4948-b885-4940-8bde-c33f3687a771",
+          "label": "Tracer — Sheep massage — Sigma — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e3154359-6333-4b4b-8f28-7291c72e2061",
+          "label": "Tracer — Sheep massage — Tracer — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "c16a777d-3e5b-44f2-8bde-0d188f1e85d7",
+          "label": "Tracer — Sheep massage — Tracer — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "5c034770-9e57-4183-898b-3adcb6959475",
+          "label": "Tracer — Sheep massage — Zarya — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "5c5f596c-72ca-481c-892d-e6fb75c4804b",
+          "label": "Tracer — Sheep massage — Zarya — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "dc4dd4ea-f1a1-42ca-8a60-d968ca73386c",
+          "label": "Tracer — Tractor — D.Va — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "7f91ae76-8e6f-4a9e-8fd9-9346b5cd54f6",
+          "label": "Tracer — Tractor — D.Va — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "9ea3f4db-bc08-4838-875f-73aef1e4f27e",
+          "label": "Tracer — Tractor — Doomfist — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "485d6dd4-5052-4d83-8058-7559980ec941",
+          "label": "Tracer — Tractor — Doomfist — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "796003b7-013b-431c-8be6-7454c818414e",
+          "label": "Tracer — Tractor — Reinhardt — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "e120b1d1-56a6-47ca-829f-3daff3edb030",
+          "label": "Tracer — Tractor — Reinhardt — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "344982e6-7392-428f-87c7-304789c63c4e",
+          "label": "Tracer — Tractor — Roadhog — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "75ff7fbe-a5a4-41de-88ff-9c23171d016d",
+          "label": "Tracer — Tractor — Roadhog — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "acfff872-50b7-4d6b-8bd0-3f29ea04c443",
+          "label": "Tracer — Tractor — Sigma — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b31ab007-9fc6-4bb7-8102-edc9795a2db1",
+          "label": "Tracer — Tractor — Sigma — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "14329f5a-428d-41a5-809d-88e013003c56",
+          "label": "Tracer — Tractor — Tracer — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "90e2fe19-2d50-41fc-8fc1-9b3663a0d9ea",
+          "label": "Tracer — Tractor — Tracer — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "d0e093f8-fc7a-4087-8e57-3e9bc4361b8a",
+          "label": "Tracer — Tractor — Zarya — Genji",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "17c96967-a1bb-44ff-88fe-4a468a633ce2",
+          "label": "Tracer — Tractor — Zarya — Ramattra",
+          "lineIds": [
+            "6c38c78a-357f-4971-bcf4-7e0c6447f607",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "tracer",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "b0ba686e-732f-4030-84e2-3ecf240e8a26",
+          "label": "Zarya — Coffee — D.Va — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "0022f5bf-5d57-4f29-852c-5c7b5b014111",
+          "label": "Zarya — Coffee — D.Va — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "08846760-0a35-4c04-82a3-ac473eeab854",
+          "label": "Zarya — Coffee — Doomfist — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "3bdbad39-a54e-483e-82f8-5f95913323cd",
+          "label": "Zarya — Coffee — Doomfist — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "fabf126b-f82d-4d1a-851c-736c13bc1100",
+          "label": "Zarya — Coffee — Reinhardt — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "3ee53e81-9149-49a3-8921-986981e02482",
+          "label": "Zarya — Coffee — Reinhardt — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "949b14b5-afe4-4992-89ee-e3b27deb98bd",
+          "label": "Zarya — Coffee — Roadhog — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "43b649c1-d2dc-431c-81b9-6663e1b340b6",
+          "label": "Zarya — Coffee — Roadhog — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c1e3e9e4-1448-45e8-8c83-d698f7ffddad",
+          "label": "Zarya — Coffee — Sigma — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b95f19c3-e3ae-4af4-884b-6e574c2b0f68",
+          "label": "Zarya — Coffee — Sigma — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "807c9f3e-b156-44eb-8e84-33edd12161f9",
+          "label": "Zarya — Coffee — Tracer — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "fbbea6b5-1db9-489f-88be-7f7e505d7d86",
+          "label": "Zarya — Coffee — Tracer — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "19899b8c-48a4-4f3c-8b9c-43236fa6e789",
+          "label": "Zarya — Coffee — Zarya — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "ccad0e4c-e473-4743-8f3b-8157fd91634e",
+          "label": "Zarya — Coffee — Zarya — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000002",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "coffee",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3d737d6f-eb46-4b24-8673-4e1dfc842547",
+          "label": "Zarya — Laser tag — D.Va — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "2d885e96-953d-48a8-89a8-2d12ddd14b8e",
+          "label": "Zarya — Laser tag — D.Va — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "0b0cc79f-e294-40b4-815c-fd5c68e451fc",
+          "label": "Zarya — Laser tag — Doomfist — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "f502a32c-2c43-4a77-8e20-f3e89add5e6c",
+          "label": "Zarya — Laser tag — Doomfist — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f194cad5-51d5-46f9-8e3b-3208ef145dd4",
+          "label": "Zarya — Laser tag — Reinhardt — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "d87e10f2-7f19-4f3d-8782-46455f053331",
+          "label": "Zarya — Laser tag — Reinhardt — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "36322ff3-625a-482a-8b8d-e18593a437cd",
+          "label": "Zarya — Laser tag — Roadhog — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "39c1bdfa-ab63-4284-8afe-a6b4cf52cb15",
+          "label": "Zarya — Laser tag — Roadhog — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "22d140e8-b6d1-47d6-89c9-fd048ed58d2b",
+          "label": "Zarya — Laser tag — Sigma — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "1004a361-c506-47be-8a8a-b174dcb9a34a",
+          "label": "Zarya — Laser tag — Sigma — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "c499bb4d-1371-4097-8d63-9905c9a59381",
+          "label": "Zarya — Laser tag — Tracer — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "1a68b3f9-9960-427a-8c45-51ca9efd4fb5",
+          "label": "Zarya — Laser tag — Tracer — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "4227d5d5-123d-40eb-89cf-c3e000033b93",
+          "label": "Zarya — Laser tag — Zarya — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "fddaef74-23a7-4b22-8500-4cdda6003119",
+          "label": "Zarya — Laser tag — Zarya — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "6d89aa5d-98e1-4af4-810e-4bfc198d5337",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "laser-tag",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "7463a3ba-8c9b-4cdc-86a6-e8d8241240b4",
+          "label": "Zarya — Lifeguard — D.Va — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "db85e719-a3ee-4b4f-88cb-b419afe7a7da",
+          "label": "Zarya — Lifeguard — D.Va — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f23ff7e8-6fca-48c3-8805-65d850f347a3",
+          "label": "Zarya — Lifeguard — Doomfist — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "ba5b5b59-22a0-4094-8d37-e89dc6fbd75d",
+          "label": "Zarya — Lifeguard — Doomfist — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "49899f90-7e70-4846-8357-80e7dc2d9c9a",
+          "label": "Zarya — Lifeguard — Reinhardt — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "f6752349-2128-4c08-8ae3-a52d4ecf4013",
+          "label": "Zarya — Lifeguard — Reinhardt — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "1e690226-b00e-46df-8b06-84313b496e87",
+          "label": "Zarya — Lifeguard — Roadhog — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "353b6d8c-f3b8-41dc-8fe1-1b65ce2761e6",
+          "label": "Zarya — Lifeguard — Roadhog — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "71e69383-3f81-4466-80c7-e00ba24a6915",
+          "label": "Zarya — Lifeguard — Sigma — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "09878233-8cf5-4a96-86a4-4999e9d23c26",
+          "label": "Zarya — Lifeguard — Sigma — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "9d7c0a02-957e-4f55-8c58-f23d8df3d243",
+          "label": "Zarya — Lifeguard — Tracer — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "49f36c56-a931-43e2-899c-7195fe1597f5",
+          "label": "Zarya — Lifeguard — Tracer — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "a90507d8-2235-416c-8d1e-ac2771ce9b3e",
+          "label": "Zarya — Lifeguard — Zarya — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "6739ad1f-dfe3-43bd-8be8-6b9e21111628",
+          "label": "Zarya — Lifeguard — Zarya — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000001",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "lifeguard",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "7e13a4fa-a04a-4dd8-824c-7f26b07a5cde",
+          "label": "Zarya — Sheep massage — D.Va — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "20dd4909-5af1-4196-8b24-01b38ff6fa14",
+          "label": "Zarya — Sheep massage — D.Va — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "bdcc00fe-e118-4198-83f8-bf2e071b1174",
+          "label": "Zarya — Sheep massage — Doomfist — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "663de4a8-d241-4beb-8f11-b51a80f5f817",
+          "label": "Zarya — Sheep massage — Doomfist — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "4a556e3b-57b6-4e49-8840-74fbd4639635",
+          "label": "Zarya — Sheep massage — Reinhardt — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "9f50e248-07cb-40a3-88cf-c5f00901e574",
+          "label": "Zarya — Sheep massage — Reinhardt — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "e9acf01c-783b-4cd0-8587-0cd27bee6c9e",
+          "label": "Zarya — Sheep massage — Roadhog — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "1064d555-3d4e-4d9f-8b7b-7a07daf74b6d",
+          "label": "Zarya — Sheep massage — Roadhog — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "4853d5d1-649d-4915-8fe2-44b0a0ef44f4",
+          "label": "Zarya — Sheep massage — Sigma — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "5982a44f-a9ba-4d26-83a7-53d6b3719efc",
+          "label": "Zarya — Sheep massage — Sigma — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "18ae6226-7c36-4c50-8b66-a0bfcba6c366",
+          "label": "Zarya — Sheep massage — Tracer — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "a8e4c0fd-c60f-470f-89b8-896e500a0a01",
+          "label": "Zarya — Sheep massage — Tracer — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "8cd9f990-88de-4af6-859f-c2dfd15c57aa",
+          "label": "Zarya — Sheep massage — Zarya — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "24ae17a6-5bd3-4d05-8db6-a54251b72b6d",
+          "label": "Zarya — Sheep massage — Zarya — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000004",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "sheep",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "01eed5f7-a474-4a74-81d0-cdb895042fa4",
+          "label": "Zarya — Tractor — D.Va — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "385cf8f9-fd80-4e10-8032-ef8b1b0c005e",
+          "label": "Zarya — Tractor — D.Va — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000001",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "dva",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "94d55e6f-1aa2-4262-8db2-f862e63af907",
+          "label": "Zarya — Tractor — Doomfist — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "047a6e04-12da-4fa7-8841-40a054f0fa0f",
+          "label": "Zarya — Tractor — Doomfist — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000002",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "doomfist",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "f33d982b-5ebf-4096-8b4f-4be8ac5ccf79",
+          "label": "Zarya — Tractor — Reinhardt — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "b7108993-f4a8-447f-87fa-b0e40dc0b494",
+          "label": "Zarya — Tractor — Reinhardt — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000003",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "reinhardt",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "3508ca17-7171-498c-8a3b-14cc9d0196c5",
+          "label": "Zarya — Tractor — Roadhog — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "2cc03ad9-989a-45d3-8c8c-ae4a55b0c17c",
+          "label": "Zarya — Tractor — Roadhog — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000004",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "roadhog",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "d8706f9d-8b8d-4eca-8117-746e361f297b",
+          "label": "Zarya — Tractor — Sigma — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "76dd0ed1-b606-4900-8d0d-d4350eaa769f",
+          "label": "Zarya — Tractor — Sigma — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "a1b2c3d4-e002-4000-8000-000000000005",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "sigma",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "5a9c75ac-8d38-44ff-80ed-f391461094d0",
+          "label": "Zarya — Tractor — Tracer — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "93fc1d44-58e5-455b-86df-c4d5fc25fa0c",
+          "label": "Zarya — Tractor — Tracer — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "77362c97-5f54-4ada-bf01-3609e612ce5b",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "tracer",
+            "epilogue": "ramattra"
+          }
+        },
+        {
+          "id": "176a5716-8157-44d0-8866-b78c640f4592",
+          "label": "Zarya — Tractor — Zarya — Genji",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "c9ae357a-4709-4cb6-afbc-e2f8d5d0f3f2"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "genji"
+          }
+        },
+        {
+          "id": "4222d839-d32b-4c3b-8af7-22a4a6c59218",
+          "label": "Zarya — Tractor — Zarya — Ramattra",
+          "lineIds": [
+            "668f23d0-ad7a-4efe-b97b-e88028176caa",
+            "a1b2c3d4-e001-4000-8000-000000000003",
+            "e2c14d0d-5969-4e08-ac85-df5d447bc007",
+            "8bad3fc3-bbea-44ca-8747-f8be4ec08ac6"
+          ],
+          "segments": {
+            "asker": "zarya",
+            "job": "tractor",
+            "reactor": "zarya",
+            "epilogue": "ramattra"
+          }
+        }
+      ],
+      "selectedPathId": "d12bf8c8-b8b2-4aee-8fc5-d7239c69a459"
     },
     {
       "id": "38c08d6f-d1b9-4052-9dc6-e25a12d8c496",
@@ -15663,7 +19365,7 @@
     },
     {
       "id": "b3421a95-df9f-4cf0-ad88-6f8206845761",
-      "name": "472",
+      "name": "Sleeping Dragon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -17072,7 +20774,7 @@
     },
     {
       "id": "26d6cadd-cae9-46d4-98cd-38c687e73528",
-      "name": "519",
+      "name": "Inner Conflict",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -18383,7 +22085,7 @@
     },
     {
       "id": "89d0437e-d530-449c-835c-26228ce5cf64",
-      "name": "563",
+      "name": "Being in Charge",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -20556,7 +24258,7 @@
     },
     {
       "id": "9af21ce0-f8e1-443a-bdc0-b6f799ead626",
-      "name": "632",
+      "name": "Science on my side",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21452,7 +25154,7 @@
     },
     {
       "id": "e23404eb-c452-4df8-a6ab-d2124c2125c7",
-      "name": "660",
+      "name": "Rusty",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22546,7 +26248,7 @@
     },
     {
       "id": "7802ba47-7b6c-47f8-b3ae-7d25b8415bf7",
-      "name": "696",
+      "name": "How can you live with yourself",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23670,7 +27372,7 @@
     },
     {
       "id": "fb62db81-a6ad-4d06-9902-7d8f72f77ecb",
-      "name": "733",
+      "name": "Field Work",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23693,7 +27395,7 @@
     },
     {
       "id": "fb9af53a-a920-41c7-8ccf-ffd9d90afaa4",
-      "name": "734",
+      "name": "Non Negotiable",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24455,7 +28157,7 @@
     },
     {
       "id": "fa7efeb5-0a89-4587-b629-d9b347e7ad79",
-      "name": "758",
+      "name": "Enjoying Prison",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24485,7 +28187,7 @@
     },
     {
       "id": "3df199cb-36a4-410b-959a-225c1e2e0345",
-      "name": "759",
+      "name": "Talon's Resources",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24515,7 +28217,7 @@
     },
     {
       "id": "659ca455-3cde-4eaa-b626-8df4eb4be4d7",
-      "name": "760",
+      "name": "Lacking Strenght",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25115,7 +28817,7 @@
     },
     {
       "id": "5f64a6fe-3e1f-40bc-a6b7-760473d5a7aa",
-      "name": "781",
+      "name": "No one Alive",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26971,38 +30673,8 @@
       ]
     },
     {
-      "id": "42f30751-f810-4c96-b699-658239322a9b",
-      "name": "845",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "5dac41a2-03cb-420a-becd-fdd9b4f273eb",
-          "hero": "Sojourn",
-          "voice": "",
-          "subtitles": "In the mood to follow my orders today, Song?",
-          "render": ""
-        },
-        {
-          "id": "80f5c13a-eed1-4af2-bb26-3373bd31e5c2",
-          "hero": "D.Va",
-          "voice": "",
-          "subtitles": "If those orders involve me wrecking the bad guys, you bet!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "91f05bbd-76fc-401b-956c-5241555f6268",
-          "hero": "Sojourn",
-          "voice": "",
-          "subtitles": "**chuckles** I'll see what I can do.",
-          "render": ""
-        }
-      ]
-    },
-    {
       "id": "da253c5c-59dd-43de-865f-a854392934d4",
-      "name": "846",
+      "name": "Hoping for Overwatch",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27466,7 +31138,7 @@
     },
     {
       "id": "79cc87e3-d778-421d-a586-385c55cd5a52",
-      "name": "861",
+      "name": "Enhanced Soldiers",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -28556,7 +32228,7 @@
     },
     {
       "id": "f765a2cf-6192-4b61-bc1d-01d97f18d2e9",
-      "name": "895",
+      "name": "Inefficient",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29101,7 +32773,7 @@
     },
     {
       "id": "386d9d6f-8cae-4bf0-ba58-360fae15744c",
-      "name": "912",
+      "name": "Front Row Seat",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29394,7 +33066,7 @@
     },
     {
       "id": "93f3b692-4ac0-4c03-a165-efea76a819c1",
-      "name": "923",
+      "name": "Cover Me",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29842,7 +33514,7 @@
     },
     {
       "id": "8d83d9f6-6a03-40c1-8ad7-413fb419907d",
-      "name": "938",
+      "name": "Never lost",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29939,7 +33611,7 @@
     },
     {
       "id": "92ef7f4e-c695-4759-999b-78360a8b8a8a",
-      "name": "941",
+      "name": "Nowhere to hide",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29957,78 +33629,6 @@
           "voice": "Doomfist_-_Nowhere_to_hide.ogg",
           "subtitles": "Nowhere to hide.",
           "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "65b52ed1-2d07-4507-92a9-49d3b253100e",
-      "name": "942",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "71210fe9-2ad3-41ba-b0f8-8a038c68beb7",
-          "hero": "Zarya",
-          "voice": "Zarya_-_What_was_your_function_before_the_Crisis.ogg",
-          "subtitles": "What was your function before the Crisis?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "fe2b8885-aa1b-4c58-a734-6aa85131d679",
-          "hero": "Zenyatta",
-          "voice": "Zenyatta_-_I_collected_payments_at_a_laser_tag_arena.ogg",
-          "subtitles": "I collected payments at a laser tag arena.",
-          "render": ""
-        },
-        {
-          "id": "50bf2977-5b9e-4ff2-b550-215dde91bc43",
-          "hero": "Zarya",
-          "voice": "Zenyatta_-_I_was_a_life_guard._At_a_water_park.ogg",
-          "subtitles": "Really?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "56f28be2-18ea-486c-8985-44fb75307c21",
-          "hero": "Genji",
-          "voice": "Zenyatta_-_I_served_coffee.ogg",
-          "subtitles": "He won't tell me either.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "1296d01b-5e38-4bbb-9208-aac30418f786",
-          "hero": "Ramattra",
-          "voice": "Zenyatta_-_I_drove_a_tractor.ogg",
-          "subtitles": "Ha! I don't think so, but he wouldn't tell me either.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "bd327b83-8e7f-462d-9295-9ec103d1cea6",
-          "hero": "Unknown",
-          "voice": "Zenyatta_-_I_massaged_sheep_on_a_free-range_pasture.ogg",
-          "subtitles": "",
-          "render": ""
-        },
-        {
-          "id": "c48c59cf-7573-4f61-934f-c330520090ae",
-          "hero": "Unknown",
-          "voice": "Zarya_-_Really.ogg",
-          "subtitles": "",
-          "render": ""
-        },
-        {
-          "id": "d30d9082-edca-4832-9ad8-679c8910e822",
-          "hero": "Unknown",
-          "voice": "Genji_-_He_won't_tell_me_either.ogg",
-          "subtitles": "",
-          "render": ""
-        },
-        {
-          "id": "3f7a8c80-c1d7-499d-859d-2f07cce9844e",
-          "hero": "Unknown",
-          "voice": "Ramattra_-_Ha!_I_don't_think_so._But_he_wouldn't_tell_me_either.ogg",
-          "subtitles": "",
-          "render": ""
         }
       ]
     },
@@ -30168,7 +33768,7 @@
     },
     {
       "id": "53527426-d988-4b47-a73e-3eca7574261f",
-      "name": "947",
+      "name": "Progress by Chaos",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30556,7 +34156,7 @@
     },
     {
       "id": "2c408896-67c7-4f41-8600-1c9b47581d77",
-      "name": "937",
+      "name": "Ranking Up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30587,6 +34187,302 @@
           "hero": "D.Va",
           "voice": "D.Va_-_Right..._I'll_ask_Dae-hyun_if_he_has_time.ogg",
           "subtitles": "Right... I'll ask Dae-hyun if he has time.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "11dd0841-6e53-4331-adb4-843c28c87e53",
+      "name": "Clean Cuticles",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "62a61959-6c4a-4f34-aae1-c60763a96895",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Look_at_us!_Two_fugitives_on_the_run_in_the_pursuit_of_a_better_world.ogg",
+          "subtitles": "Look at us! Two fugitives on the run in the pursuit of a better world.",
+          "render": ""
+        },
+        {
+          "id": "eb48ec4c-e4b3-4e61-aacd-478839c3e294",
+          "hero": "Hazard",
+          "voice": "Hazard_-_Aye,_I_see_you..._but_I_doubt_ye've_ever_had_to_get_those_hands_dirty.ogg",
+          "subtitles": "Aye, I see you... but I doubt ye've ever had to get those hands dirty.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "bd908a5a-eb0f-4402-9ba8-0e04d4427d98",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Of_course_I_have!_I_just_know_the_value_of_clean_cuticles.ogg",
+          "subtitles": "Of course I have! I just know the value of clean cuticles.",
+          "render": ""
+        }
+      ]
+    },
+    {
+      "id": "65b52ed1-2d07-4507-92a9-49d3b253100e",
+      "name": "942",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "71210fe9-2ad3-41ba-b0f8-8a038c68beb7",
+          "hero": "Zarya",
+          "voice": "Zarya_-_What_was_your_function_before_the_Crisis.ogg",
+          "subtitles": "What was your function before the Crisis?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "fe2b8885-aa1b-4c58-a734-6aa85131d679",
+          "hero": "Zenyatta",
+          "voice": "Zenyatta_-_I_collected_payments_at_a_laser_tag_arena.ogg",
+          "subtitles": "I collected payments at a laser tag arena.",
+          "render": ""
+        },
+        {
+          "id": "50bf2977-5b9e-4ff2-b550-215dde91bc43",
+          "hero": "Zarya",
+          "voice": "Zenyatta_-_I_was_a_life_guard._At_a_water_park.ogg",
+          "subtitles": "Really?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "56f28be2-18ea-486c-8985-44fb75307c21",
+          "hero": "Genji",
+          "voice": "Zenyatta_-_I_served_coffee.ogg",
+          "subtitles": "He won't tell me either.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "1296d01b-5e38-4bbb-9208-aac30418f786",
+          "hero": "Ramattra",
+          "voice": "Zenyatta_-_I_drove_a_tractor.ogg",
+          "subtitles": "Ha! I don't think so, but he wouldn't tell me either.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "bd327b83-8e7f-462d-9295-9ec103d1cea6",
+          "hero": "Unknown",
+          "voice": "Zenyatta_-_I_massaged_sheep_on_a_free-range_pasture.ogg",
+          "subtitles": "",
+          "render": ""
+        },
+        {
+          "id": "c48c59cf-7573-4f61-934f-c330520090ae",
+          "hero": "Unknown",
+          "voice": "Zarya_-_Really.ogg",
+          "subtitles": "",
+          "render": ""
+        },
+        {
+          "id": "d30d9082-edca-4832-9ad8-679c8910e822",
+          "hero": "Unknown",
+          "voice": "Genji_-_He_won't_tell_me_either.ogg",
+          "subtitles": "",
+          "render": ""
+        },
+        {
+          "id": "3f7a8c80-c1d7-499d-859d-2f07cce9844e",
+          "hero": "Unknown",
+          "voice": "Ramattra_-_Ha!_I_don't_think_so._But_he_wouldn't_tell_me_either.ogg",
+          "subtitles": "",
+          "render": ""
+        }
+      ]
+    },
+    {
+      "id": "ba31492f-8ae5-48a1-9466-3d7a59db75f5",
+      "name": "Not as good",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "a37baed7-edfc-482e-ac23-67bf1787a7d1",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Doomfist._Doom..._fist._It's_a_great_name.ogg",
+          "subtitles": "Doomfist. Doom... fist! Haha! It's a great name!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "64a2a11d-84c8-4da4-9a20-a8519b92ffec",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_What's_yours.ogg",
+          "subtitles": "What's yours?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8d21f54f-4d45-426a-b9b7-88e704f71686",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_They_call_me_Junkrat.ogg",
+          "subtitles": "They call me... Junkrat!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b2f3fc43-27a4-4f56-91ea-35372ee5c8e6",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_Not_as_good.ogg",
+          "subtitles": "Not as good.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "82d09c23-fe8e-4e3a-bdc8-f2d9fe4343fe",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_No._Not_as_good.ogg",
+          "subtitles": "No. **sigh** Not as good...",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "489aa3f0-5f9a-4092-bc49-d60e5cf6ca3d",
+      "name": "Is everything philosophy",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c76185cc-77ad-4a7b-a388-e0989cccffc1",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_The_Circuit_Royal._A_contest_of_will_and_technical_ingenuity._A_dance_of_beauty..._and_destruction.ogg",
+          "subtitles": "The Circuit Royal. A contest of will and technical ingenuity. A dance of beauty... and of destruction.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "97f0853e-3e18-4221-b935-8f5a08044a25",
+          "hero": "Lúcio",
+          "voice": "Lúcio_-_Is_everything_poetry_and_philosophy_with_you.ogg",
+          "subtitles": "Is *everything* poetry and philosophy with you?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "76512c35-66a0-4b28-b418-b06ae558afe1",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_Everything_is,_when_you_pay_attention.ogg",
+          "subtitles": "Everything *is.* When you pay attention.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "5aa2617b-8f74-41d6-bb9b-6e560bfb7bc4",
+      "name": "Ancient Ruins",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "3bc678c6-9b5f-4db2-ac40-cf68493d6b56",
+          "hero": "Venture",
+          "voice": "Venture_-_What's_Talon_looking_for_in_ancient_ruins.ogg",
+          "subtitles": "What's Talon looking for in ancient ruins?",
+          "render": ""
+        },
+        {
+          "id": "0909d6a2-fc8e-4124-b581-9108126238df",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_That_is_none_of_your_concern.ogg",
+          "subtitles": "That is none of your concern.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "39e04ab3-4dba-453b-91e3-18d7239e6a6d",
+          "hero": "Venture",
+          "voice": "Venture_-_Yuh-huh,_it's_my_concern._I'm_gonna_find_it_before_it_falls_into_your_hands.ogg",
+          "subtitles": "Yuh-huh, it's my concern. I'm gonna find it before it falls into your hands!",
+          "render": ""
+        },
+        {
+          "id": "61a97463-71cb-4962-8946-a5b0eee40e10",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_Let_the_matter_rest._For_your_sake,_and_the_world's.ogg",
+          "subtitles": "Let the matter rest. For your sake, and the world's.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "6faecc33-bd17-4785-b358-fddbdf99feb7",
+      "name": "Master Plans",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "3e93447e-2310-4ec8-9705-5cffbae354c4",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_How_do_you_keep_track_of_your_master_plans.ogg",
+          "subtitles": "How do you keep track of your master plans?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d3066387-7f8b-4138-9dd3-f6b122e2611e",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_True_tacticians_do_not_plan._They_act_and_force_others_to_react.ogg",
+          "subtitles": "True tacticians do not plan. They act... and force others to react.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "24ce6e79-57f5-4feb-883f-bb9b42a190ac",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_hamster_uses_a_puffy_notebook.ogg",
+          "subtitles": "The hamster uses a puffy notebook.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "fb6739be-ac3d-457b-b087-8e80e2b1a009",
+      "name": "So, I'm trying to ask everybody this.",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "522f6e7d-a398-42c3-8938-eb696ab1c190",
+          "hero": "Lúcio",
+          "voice": "Lúcio_-_So,_I'm_trying_to_ask_everybody_this._What_is_your_favorite_animal.ogg",
+          "subtitles": "So, I'm trying to ask everybody this. What is your favorite animal?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "71c0ca2c-8582-40c6-afad-4d14d401b99c",
+          "hero": "Hazard",
+          "voice": "Hazard_-_Unicorn!_Love_me_a_sharp_horse.ogg",
+          "subtitles": "Unicorn! Love me a sharp horse.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "1ecd488c-3baf-4158-8997-bbeedf692596",
+          "hero": "Lúcio",
+          "voice": "Lúcio_-_Uh..._yeah,_I_can_see_it.ogg",
+          "subtitles": "Uh... yeah, I can see it!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "3e5eb96e-c996-407c-a1dd-91c96f048e55",
+      "name": "303",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "dda291e4-4816-4450-b962-c0c09bd939b2",
+          "hero": "Winston",
+          "voice": "Winston_-_Anyone_want_to_hear_my_favorite_joke_about_the_periodic_table_(1).ogg",
+          "subtitles": "Anyone wanna hear my favorite joke about the periodic table?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "75285b6b-d6b8-4168-9136-9604873d8a1f",
+          "hero": "Cassidy",
+          "voice": "Cassidy_-_I'm_still_puzzling_over_the_last_one.ogg",
+          "subtitles": "I-I'm still puzzlin' over the last one.",
           "render": "Heroic.png"
         }
       ]

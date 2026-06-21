@@ -1,21 +1,23 @@
 /**
- * Mutual exclusion between the filters panel and the event info slide.
+ * Side-panel / event-slide coordination.
  *
- * Both panels can be open simultaneously according to their own state
- * machines, but visually they overlap on common screen sizes. The observer
- * watches the `class` attribute of both panels and, the moment they're both
- * `.open`, closes the event slide (filters wins because the user just opened
- * it). It also keeps the `#filtersToggle` button's `.active` class in sync
- * with the actual `#filtersPanel.open` state, so the toolbar reflects truth
- * even if external code mutated the panel directly.
+ * On desktop flex layout the info slide and filters/music panel sit side by
+ * side, so both may stay `.open`. While both are open we fade out the center
+ * stage image so it does not linger over the panel chrome; closing the side
+ * panel restores it (see `panelSideImageOverlaySync.js`).
+ *
+ * Also keeps `#filtersToggle.active` in sync with `#filtersPanel.open`.
  *
  * `_enforcingPanelExclusivity` is a recursion guard — the observer fires on
  * any class change, and we're about to mutate classes ourselves.
  */
 
+import { hideEventImageOverlayForSidePanel } from './panelSideImageOverlaySync.js';
+
 export function createPanelExclusivityObserver() {
     let observer = null;
     let enforcing = false;
+    let hidImageForOpenSidePanel = false;
 
     function enforcePanelExclusivity() {
         if (enforcing) return;
@@ -28,23 +30,12 @@ export function createPanelExclusivityObserver() {
             const eventOpen = !!eventSlide?.classList.contains('open');
 
             if (filtersOpen && eventOpen) {
-                /* Filters wins — close event slide + its image overlay. */
-                eventSlide.classList.remove('open');
-                const overlay = document.getElementById('eventImageOverlay');
-                if (overlay) {
-                    overlay.classList.remove('open', 'slide-open', 'fade-in', 'fade-out');
-                    overlay.style.display = 'none';
-                    overlay.style.opacity = '0';
+                if (!hidImageForOpenSidePanel) {
+                    hideEventImageOverlayForSidePanel();
+                    hidImageForOpenSidePanel = true;
                 }
-                const eventImage = document.getElementById('eventImage');
-                if (eventImage) eventImage.style.display = 'none';
-                try {
-                    if (window.standaloneEventSlide?.hideImageOverlay) {
-                        window.standaloneEventSlide.hideImageOverlay();
-                    } else if (window.globeController?.uiView?.hideImageOverlay) {
-                        window.globeController.uiView.hideImageOverlay();
-                    }
-                } catch (_) {}
+            } else {
+                hidImageForOpenSidePanel = false;
             }
             if (filtersToggle) {
                 filtersToggle.classList.toggle('active', !!filtersPanel?.classList.contains('open'));
