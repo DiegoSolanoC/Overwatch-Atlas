@@ -13,8 +13,60 @@ import { npcNamesLooselyEqual } from '../../interface-shared/npcNameAliases.js';
 
 const HERO_DISPLAY_NAME_OVERRIDES = {
     /* Manifest filename has no colon (filesystem-safe), display has one. */
-    'Soldier 76': 'Soldier: 76'
+    'Soldier 76': 'Soldier: 76',
 };
+
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function normalizeHeroNameLoose(value) {
+    return String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+}
+
+/**
+ * Match manifest ids to wiki/display spellings — e.g. "Soldier 76" ↔ "Soldier: 76".
+ *
+ * @param {string} a
+ * @param {string} b
+ * @returns {boolean}
+ */
+export function heroNamesLooselyEqual(a, b) {
+    const na = normalizeHeroNameLoose(a);
+    const nb = normalizeHeroNameLoose(b);
+    if (na && na === nb) return true;
+    const la = na.replace(/:/g, '').replace(/\s/g, '');
+    const lb = nb.replace(/:/g, '').replace(/\s/g, '');
+    return la.length > 0 && la === lb;
+}
+
+/**
+ * @param {string} heroName
+ * @param {string[]} [manifestHeroes]
+ * @returns {string}
+ */
+export function resolveManifestHeroId(heroName, manifestHeroes = []) {
+    const trimmed = String(heroName || '').trim();
+    if (!trimmed) return '';
+
+    for (const id of manifestHeroes) {
+        const manifestId = String(id || '').trim();
+        if (!manifestId) continue;
+        if (heroNamesLooselyEqual(trimmed, manifestId)) return manifestId;
+        if (heroNamesLooselyEqual(trimmed, getHeroDisplayName(manifestId))) return manifestId;
+    }
+
+    for (const [manifestId, displayName] of Object.entries(HERO_DISPLAY_NAME_OVERRIDES)) {
+        if (heroNamesLooselyEqual(trimmed, displayName) || heroNamesLooselyEqual(trimmed, manifestId)) {
+            return manifestId;
+        }
+    }
+
+    return trimmed;
+}
 
 export function getHeroDisplayName(heroName) {
     return HERO_DISPLAY_NAME_OVERRIDES[heroName] || heroName;
@@ -92,13 +144,10 @@ export function matchHeroManifestToArchiveRowName(rowName, heroes) {
             const h = heroes[i];
             if (em._heroArchiveNamesLooselyEqual(rowName, h)) return h;
         }
-        return null;
     }
-    const rl = String(rowName || '').trim().toLowerCase();
-    if (!rl) return null;
     for (let i = 0; i < heroes.length; i++) {
         const h = heroes[i];
-        if (String(h || '').trim().toLowerCase() === rl) return h;
+        if (heroNamesLooselyEqual(rowName, h)) return h;
     }
     return null;
 }

@@ -14,6 +14,17 @@ const {
 } = require('./data/registry.cjs');
 
 const PORT = 8000;
+const REPO_ROOT = path.resolve(__dirname, '..');
+
+/**
+ * True when candidate is repoRoot or a file/folder inside it (allows "..." in names).
+ * @param {string} repoRoot
+ * @param {string} candidate
+ */
+function isPathUnderRoot(repoRoot, candidate) {
+    const rel = path.relative(repoRoot, candidate);
+    return rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
+}
 
 // MIME types
 const mimeTypes = {
@@ -109,6 +120,32 @@ function writeStoryArchiveJson(body, res) {
     }
 }
 
+function conversationRichness(row) {
+    const pathCount = Array.isArray(row?.paths) ? row.paths.length : 0;
+    const lineCount = Array.isArray(row?.lines) ? row.lines.length : 0;
+    return pathCount * 1000 + lineCount;
+}
+
+function pickRicherConversation(a, b) {
+    const scoreA = conversationRichness(a);
+    const scoreB = conversationRichness(b);
+    if (scoreB > scoreA) return b;
+    if (scoreA > scoreB) return a;
+    return b;
+}
+
+function mergeDialogueTheaterConversations(incoming, existing) {
+    const existingById = new Map(existing.map((row) => [row.id, row]));
+    const incomingIds = new Set();
+    /** @type {typeof incoming} */
+    const merged = incoming.map((row) => {
+        incomingIds.add(row.id);
+        const prev = existingById.get(row.id);
+        return prev ? pickRicherConversation(prev, row) : row;
+    });
+    return merged;
+}
+
 function writeDialogueTheaterJson(body, res) {
     const conversations = Array.isArray(body?.conversations)
         ? body.conversations
@@ -121,14 +158,28 @@ function writeDialogueTheaterJson(body, res) {
     }
 
     const outPath = absFromPublic(FILES.dialogueTheater.conversations);
-    const payload = { conversations };
+    /** @type {typeof conversations} */
+    let mergedConversations = conversations;
+    try {
+        if (fs.existsSync(outPath)) {
+            const onDisk = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+            const existing = Array.isArray(onDisk?.conversations) ? onDisk.conversations : [];
+            if (existing.length > 0) {
+                mergedConversations = mergeDialogueTheaterConversations(conversations, existing);
+            }
+        }
+    } catch (e) {
+        console.warn('[server] dialogue-theater merge read failed:', e?.message || e);
+    }
+
+    const payload = { conversations: mergedConversations };
     const json = JSON.stringify(payload, null, 2) + '\n';
     const tmpPath = outPath + '.tmp';
     try {
         fs.mkdirSync(path.dirname(outPath), { recursive: true });
         fs.writeFileSync(tmpPath, json, 'utf8');
         fs.renameSync(tmpPath, outPath);
-        sendJson(res, 200, { ok: true, conversationsCount: conversations.length });
+        sendJson(res, 200, { ok: true, conversationsCount: mergedConversations.length });
     } catch (e) {
         try {
             if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
@@ -592,11 +643,9 @@ const server = http.createServer((req, res) => {
         }
     }
 
-    // Serve static files
-    let filePath = '.' + decodedPath;
-    
-    // Security: prevent directory traversal
-    if (filePath.includes('..')) {
+    // Serve static files — resolve under repo root; allow "..." in filenames (not path traversal).
+    const filePath = path.resolve(REPO_ROOT, decodedPath.replace(/^\//, ''));
+    if (!isPathUnderRoot(REPO_ROOT, filePath)) {
         res.writeHead(403, { 'Content-Type': 'text/html' });
         res.end('<h1>403 - Forbidden</h1>', 'utf-8');
         return;

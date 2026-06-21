@@ -52,10 +52,14 @@ import {
     updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
+import { teardownDialogueTheaterEventSlide } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
         if (!eventSlide) return;
+
+        teardownDialogueTheaterEventSlide();
+
         /* Fresh open from a closed panel: drop stale back-stack (X, hideEventSlide, filters, etc.). */
         if (!eventSlide.classList.contains('open')) {
             slide.clearSlideHistory();

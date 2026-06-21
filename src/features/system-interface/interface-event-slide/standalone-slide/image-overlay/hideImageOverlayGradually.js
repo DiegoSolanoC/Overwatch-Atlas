@@ -7,7 +7,17 @@
  * the original method's `this`).
  */
 
+import {
+    hideDialogueTheaterImageOverlayGradually,
+    isDialogueTheaterImageOverlayContext,
+} from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+
 export function runHideImageOverlayGradually(slide, durationMs = 600) {
+            if (isDialogueTheaterImageOverlayContext()) {
+                hideDialogueTheaterImageOverlayGradually(slide, durationMs);
+                return;
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const toggleBtn = document.getElementById('eventImageToggle');

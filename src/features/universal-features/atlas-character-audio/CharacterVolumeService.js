@@ -9,6 +9,27 @@ import { wireCharacterVolumeSlider } from './characterVolumeSlider.js';
 
 const DEFAULT_VOLUME = 0.7;
 
+/**
+ * Re-encode each path segment so apostrophes and "..." survive static server routing.
+ * @param {string} src
+ * @returns {string}
+ */
+function normalizeAssetPlaybackUrl(src) {
+    const raw = String(src || '').trim();
+    if (!raw || /^https?:\/\//i.test(raw)) return raw;
+
+    const segments = raw.replace(/\\/g, '/').split('/').filter(Boolean);
+    return segments
+        .map((segment) => {
+            try {
+                return encodeURIComponent(decodeURIComponent(segment));
+            } catch {
+                return encodeURIComponent(segment);
+            }
+        })
+        .join('/');
+}
+
 class CharacterVolumeService {
     constructor() {
         /** @type {number} */
@@ -49,7 +70,7 @@ class CharacterVolumeService {
      * @returns {Promise<HTMLAudioElement|null>}
      */
     async playFromUrl(src) {
-        const url = String(src || '').trim();
+        const url = normalizeAssetPlaybackUrl(src);
         if (!url) return null;
 
         this.unlock();

@@ -92,6 +92,11 @@
     --scrollbar-thumb: rgba(33, 150, 243, 0.6);
     --scrollbar-thumb-hover: rgba(33, 150, 243, 0.8);
     --scrollbar-track: rgba(0, 0, 0, 0.2);
+    --scrollbar-width: 24px;
+    --scrollbar-width-slim: 16px;
+    --scrollbar-radius: 8px;
+    --scrollbar-radius-slim: 6px;
+    --scrollbar-firefox-width: auto;
     
     /* Scrollbar Colors - Gray Theme */
     --scrollbar-thumb-gray: rgba(255, 102, 0, 0.6);

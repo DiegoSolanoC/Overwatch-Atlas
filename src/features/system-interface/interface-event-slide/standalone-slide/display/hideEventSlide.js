@@ -10,6 +10,10 @@
 import { showMenuContainer } from '../../../../universal-features/atlas-main-menu/MenuContainer.js';
 import { getCurrentModeOrMenu } from '../../../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
 import { restoreStoryArchiveSourceIfStoryViewerContext } from '../../../interface-left-panel/event-system/data/archiveStoryViewerContext.js';
+import {
+    closeDialogueTheaterInfoPanel,
+    isDialogueTheaterInfoPanelActive,
+} from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 
 function restoreHubMenuIfHidden() {
     if (!document.body.classList.contains('app-timeline-default')) return;
@@ -26,6 +30,11 @@ function restoreHubMenuIfHidden() {
 }
 
 export function runHideEventSlide(slide) {
+            if (isDialogueTheaterInfoPanelActive()) {
+                closeDialogueTheaterInfoPanel();
+                return;
+            }
+
             const eventSlide = document.getElementById('eventSlide');
             const eventImageOverlay = document.getElementById('eventImageOverlay');
             const eventImage = document.getElementById('eventImage');

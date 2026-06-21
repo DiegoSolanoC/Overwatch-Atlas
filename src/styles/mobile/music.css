@@ -21,17 +21,17 @@
 }
 
 .music-grid::-webkit-scrollbar {
-    width: 12px;
+    width: var(--scrollbar-width);
 }
 
 .music-grid::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    border-radius: var(--scrollbar-radius);
 }
 
 .music-grid::-webkit-scrollbar-thumb {
     background: rgba(33, 150, 243, 0.6);
-    border-radius: 6px;
+    border-radius: var(--scrollbar-radius);
     border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -40,7 +40,7 @@
 }
 
 .music-grid {
-    scrollbar-width: thin;
+    scrollbar-width: var(--scrollbar-firefox-width);
     scrollbar-color: rgba(33, 150, 243, 0.6) rgba(0, 0, 0, 0.2);
 }
 

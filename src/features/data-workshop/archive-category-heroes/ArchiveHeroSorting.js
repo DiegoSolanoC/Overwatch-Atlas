@@ -10,8 +10,19 @@ import {
 } from "./ArchiveHeroSubroles.js";
 
 /**
+ * Archive rows use `heroSubRole`; older code paths used `heroSubrole`.
+ * @param {object|undefined|null} event
+ * @returns {string|undefined|null}
+ */
+function readHeroSubRoleField(event) {
+  if (!event || typeof event !== "object") return undefined;
+  if (event.heroSubRole != null) return event.heroSubRole;
+  return event.heroSubrole;
+}
+
+/**
  * Sort heroes archive events stably by role then subrole.
- * @param {Array} events - Array of event objects with heroRole and heroSubrole properties
+ * @param {Array} events - Array of event objects with heroRole and heroSubRole properties
  */
 export function sortHeroesArchiveEventsStable(events) {
   events.sort((a, b) => {
@@ -22,9 +33,10 @@ export function sortHeroesArchiveEventsStable(events) {
       return roleRankA - roleRankB;
     }
 
-    // Same role, sort by subrole
-    const subroleRankA = heroArchiveSubroleRank(a?.heroSubrole, a?.heroRole);
-    const subroleRankB = heroArchiveSubroleRank(b?.heroSubrole, b?.heroRole);
+    const roleA = normalizeHeroArchiveRole(a?.heroRole);
+    const roleB = normalizeHeroArchiveRole(b?.heroRole);
+    const subroleRankA = heroArchiveSubroleRank(readHeroSubRoleField(a), roleA);
+    const subroleRankB = heroArchiveSubroleRank(readHeroSubRoleField(b), roleB);
 
     return subroleRankA - subroleRankB;
   });
@@ -65,7 +77,7 @@ export function findFirstIndexForHeroRoleAndSubroleInList(
     const event = events[i];
     if (
       normalizeHeroArchiveRole(event?.heroRole) === normalizedRole &&
-      normalizeHeroArchiveSubrole(event?.heroSubrole) === normalizedSubrole
+      normalizeHeroArchiveSubrole(readHeroSubRoleField(event)) === normalizedSubrole
     ) {
       return i;
     }
@@ -128,7 +140,7 @@ export function moveHeroEntryToLastInItsSubroleGroup(events, index) {
   if (!targetEvent) return;
 
   const targetRole = normalizeHeroArchiveRole(targetEvent.heroRole);
-  const targetSubrole = normalizeHeroArchiveSubrole(targetEvent.heroSubrole);
+  const targetSubrole = normalizeHeroArchiveSubrole(readHeroSubRoleField(targetEvent));
 
   // Find the end of this hero subrole group
   _moveEntryToLastInGroup(
@@ -136,6 +148,6 @@ export function moveHeroEntryToLastInItsSubroleGroup(events, index) {
     index,
     (event) =>
       normalizeHeroArchiveRole(event?.heroRole) === targetRole &&
-      normalizeHeroArchiveSubrole(event?.heroSubrole) === targetSubrole,
+      normalizeHeroArchiveSubrole(readHeroSubRoleField(event)) === targetSubrole,
   );
 }

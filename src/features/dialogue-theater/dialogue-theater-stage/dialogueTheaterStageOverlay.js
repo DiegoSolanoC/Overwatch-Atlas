@@ -6,10 +6,14 @@
 import {
     loadDialogueTheaterAssets,
     heroFilterIconUrl,
-    renderImageUrl,
-    resolveRenderHeroFolder,
     sceneImageUrl,
 } from '../data/loadDialogueTheaterAssets.js';
+import {
+    getLineRenderSrc,
+    sideForLineIndex,
+    usesFirstSpeakerOnlyPreview,
+} from './dialogueTheaterRenderHelpers.js';
+import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
 import {
     resolveLineVoiceFile,
     voicelineFilenameToSubtitles,
@@ -17,28 +21,6 @@ import {
 
 /** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
 let stageAssets = null;
-
-/**
- * @param {import('../data/DialogueTheaterDataService.js').DialogueLine} line
- * @param {Record<string, string[]>} rendersMap
- * @returns {string}
- */
-function getLineRenderSrc(line, rendersMap) {
-    const hero = String(line?.hero || '').trim();
-    const render = String(line?.render || '').trim();
-    if (!hero || !render) return '';
-    const folder = resolveRenderHeroFolder(hero, rendersMap);
-    if (!folder) return '';
-    return renderImageUrl(folder, render);
-}
-
-/**
- * @param {number} lineIndex
- * @returns {'left'|'right'}
- */
-function sideForLineIndex(lineIndex) {
-    return lineIndex % 2 === 0 ? 'left' : 'right';
-}
 
 const STAGE_DIALOGUE_BOX_HTML = `
     <div class="dialogue-theater-stage__dialogue" hidden>
@@ -166,6 +148,7 @@ function setStageRender(stage, side, src, speaking = false) {
  */
 function paintStage(stage, conversation, activeLineIndex = null) {
     const rendersMap = stageAssets?.renders || {};
+    const lines = resolveActiveConversationLines(conversation);
     const sceneEl = stage.querySelector('.dialogue-theater-stage__scene');
     const scene = String(conversation?.scene || '').trim();
 
@@ -192,14 +175,19 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     }
 
     if (activeLineIndex == null) {
-        const lines = conversation?.lines || [];
+        const firstSpeakerOnly = usesFirstSpeakerOnlyPreview(conversation);
         setStageRender(stage, 'left', lines[0] ? getLineRenderSrc(lines[0], rendersMap) : '', false);
-        setStageRender(stage, 'right', lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '', false);
+        setStageRender(
+            stage,
+            'right',
+            firstSpeakerOnly ? '' : lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '',
+            false,
+        );
         setStageDialogue(stage, null);
         return;
     }
 
-    const line = conversation.lines?.[activeLineIndex];
+    const line = lines[activeLineIndex];
     if (!line) return;
 
     const side = sideForLineIndex(activeLineIndex);
@@ -211,17 +199,10 @@ async function ensureStageAssets() {
     stageAssets = await loadDialogueTheaterAssets();
 }
 
-/**
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- */
-export async function showDialogueTheaterStage(conversation) {
-    await ensureStageAssets();
+function openDialogueTheaterStageOverlay() {
     const overlay = document.getElementById('eventImageOverlay');
     const eventSlide = document.getElementById('eventSlide');
-    const stage = ensureStageDom();
-    if (!overlay || !stage) return;
-
-    paintStage(stage, conversation, null);
+    if (!overlay) return false;
 
     overlay.style.display = 'flex';
     overlay.style.opacity = '1';
@@ -229,6 +210,26 @@ export async function showDialogueTheaterStage(conversation) {
     if (eventSlide?.classList.contains('open')) {
         overlay.classList.add('slide-open');
     }
+    return true;
+}
+
+/** Keep overlay + stage DOM visible without repainting the current frame. */
+export async function ensureDialogueTheaterStageOverlayVisible() {
+    await ensureStageAssets();
+    const stage = ensureStageDom();
+    if (!stage) return false;
+    return openDialogueTheaterStageOverlay();
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
+export async function showDialogueTheaterStage(conversation) {
+    await ensureStageAssets();
+    const stage = ensureStageDom();
+    if (!stage || !openDialogueTheaterStageOverlay()) return;
+
+    paintStage(stage, conversation, null);
 }
 
 export function hideDialogueTheaterStage() {

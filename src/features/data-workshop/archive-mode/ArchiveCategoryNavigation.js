@@ -20,7 +20,7 @@ import {
     embedArchiveEventsPanel,
     switchEmbeddedArchiveSource,
 } from './ArchiveEventPanelEmbed.js';
-import { mountCategoryToolbar } from '../archive-controls-ui/ArchiveCategoryToolbar.js';
+import { mountCategoryToolbar, unmountCategoryToolbar } from '../archive-controls-ui/ArchiveCategoryToolbar.js';
 
 function bioArchiveToolbarCallbacks() {
     return {
@@ -120,28 +120,20 @@ export async function returnToStoryArchiveCategoryHub() {
     }
 
     unmountCategoryToolbar();
-    document.getElementById('storyArchiveCategoryHub')?.remove();
     disconnectStoryArchiveOverlapObserver();
 
+    storyContainer.classList.remove('active');
     detachEventsManagePanelFromStoryArchive(eventsManagePanel);
 
     if (window.eventManager?.dataService?.setArchiveSource) {
         window.eventManager.dataService.setArchiveSource('story');
     }
-    try {
-        if (window.eventManager?.loadEvents) {
-            await window.eventManager.loadEvents();
-        }
-    } catch (e) {
-        console.warn('[archive-mode] Restoring main timeline for category hub:', e);
-    }
-    if (window.eventManager?.renderEvents) {
-        window.eventManager.renderEvents();
-    }
 
     storyContainer.classList.add('story-viewer-container--hub');
     storyContainer.classList.remove('story-viewer-container--timeline-mode');
+    storyContainer.replaceChildren();
     storyContainer.appendChild(buildArchiveCategoryHubRoot());
     attachStoryArchiveHubDismissChrome();
+    requestAnimationFrame(() => storyContainer.classList.add('active'));
     updateStatus('Data Workshop — choose a category', 'success');
 }

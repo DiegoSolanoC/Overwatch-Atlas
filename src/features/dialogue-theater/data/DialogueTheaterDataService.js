@@ -10,13 +10,17 @@ import {
     buildBlankConversationRecord,
     normalizeConversationRecord,
 } from './dialogueTheaterConversationSchema.js';
+import { nextConversationNumber } from './dialogueTheaterConversationValidation.js';
 
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
+export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
+export const DIALOGUE_THEATER_NAME_RESET_KEY = 'dialogueTheaterNameResetAt';
 const FILE_URL = FILES.dialogueTheater.conversations;
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
 
-/** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[] }} DialogueConversation */
+/** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
 /** @typedef {{ id: string, hero: string, voice: string, subtitles: string, render: string }} DialogueLine */
+/** @typedef {{ id: string, label: string, lineIds: string[] }} DialoguePath */
 
 class DialogueTheaterDataService {
     constructor() {
@@ -25,6 +29,35 @@ class DialogueTheaterDataService {
         this.isDirty = false;
         /** @type {Set<string>} */
         this.unsavedConversationIds = new Set();
+        /** @type {Set<string>} */
+        this.deletedConversationIds = new Set();
+    }
+
+    loadDeletedConversationIds() {
+        try {
+            const raw = localStorage.getItem(DIALOGUE_THEATER_DELETED_IDS_KEY);
+            if (!raw) return;
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+                this.deletedConversationIds = new Set(parsed.map((id) => String(id || '').trim()).filter(Boolean));
+            }
+        } catch (err) {
+            console.warn('DialogueTheaterDataService: deleted-id parse failed:', err);
+        }
+    }
+
+    persistDeletedConversationIds() {
+        localStorage.setItem(
+            DIALOGUE_THEATER_DELETED_IDS_KEY,
+            JSON.stringify([...this.deletedConversationIds]),
+        );
+    }
+
+    /** @param {string} id */
+    markConversationDeleted(id) {
+        if (!id) return;
+        this.deletedConversationIds.add(id);
+        this.persistDeletedConversationIds();
     }
 
     /** @param {string} id */
@@ -66,6 +99,47 @@ class DialogueTheaterDataService {
         return normalizeConversationRecord(raw);
     }
 
+    /**
+     * Prefer the row with more paths/lines; when equal, prefer the local copy (b).
+     * @param {import('./DialogueTheaterDataService.js').DialogueConversation} a
+     * @param {import('./DialogueTheaterDataService.js').DialogueConversation} b
+     */
+    pickRicherConversationRow(a, b) {
+        const score = (row) => {
+            const pathCount = Array.isArray(row.paths) ? row.paths.length : 0;
+            const lineCount = Array.isArray(row.lines) ? row.lines.length : 0;
+            return pathCount * 1000 + lineCount;
+        };
+        const scoreA = score(a);
+        const scoreB = score(b);
+        if (scoreB > scoreA) return b;
+        if (scoreA > scoreB) return a;
+        return b;
+    }
+
+    /**
+     * @param {import('./DialogueTheaterDataService.js').DialogueConversation[]} fileRows
+     * @param {import('./DialogueTheaterDataService.js').DialogueConversation[]} localRows
+     * @param {{ applyFileNames?: boolean }} [options]
+     */
+    mergeConversationRows(fileRows, localRows, options = {}) {
+        const applyFileNames = Boolean(options.applyFileNames);
+        const localById = new Map(localRows.map((row) => [row.id, row]));
+        const fileIds = new Set(fileRows.map((row) => row.id));
+        const merged = fileRows
+            .filter((fileRow) => !this.deletedConversationIds.has(fileRow.id))
+            .map((fileRow) => {
+                const localRow = localById.get(fileRow.id);
+                if (!localRow) return fileRow;
+
+                const picked = this.pickRicherConversationRow(fileRow, localRow);
+                if (!applyFileNames) return picked;
+                return { ...picked, name: fileRow.name };
+            });
+        merged.push(...localRows.filter((row) => !fileIds.has(row.id)));
+        return merged;
+    }
+
     /** @param {unknown[]} list */
     normalizeConversations(list) {
         if (!Array.isArray(list)) return [];
@@ -82,12 +156,16 @@ class DialogueTheaterDataService {
 
     async load() {
         updateStatus('Dialogue Theater: loading conversations…', 'info');
+        this.loadDeletedConversationIds();
 
         let fileRows = null;
+        /** @type {{ nameResetAt?: string }} */
+        let fileMeta = {};
         try {
             const data = await fetchJsonWithTimeout(FILE_URL);
             if (data && Array.isArray(data.conversations)) {
                 fileRows = data.conversations;
+                fileMeta = data._meta && typeof data._meta === 'object' ? data._meta : {};
             } else {
                 fileRows = [];
             }
@@ -96,20 +174,33 @@ class DialogueTheaterDataService {
             fileRows = [];
         }
 
-        let localRows = null;
+        const fileResetAt = String(fileMeta.nameResetAt || '').trim();
+        const seenResetAt = localStorage.getItem(DIALOGUE_THEATER_NAME_RESET_KEY) || '';
+        const applyFileNames = Boolean(fileResetAt && fileResetAt !== seenResetAt);
+
+        const fileNormalized = this.normalizeConversations(fileRows || []);
+        let localNormalized = [];
         try {
             const saved = localStorage.getItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
             if (saved) {
                 const parsed = JSON.parse(saved);
-                if (Array.isArray(parsed)) localRows = parsed;
+                if (Array.isArray(parsed)) {
+                    localNormalized = this.normalizeConversations(parsed);
+                }
             }
         } catch (err) {
             console.warn('DialogueTheaterDataService: localStorage parse failed:', err);
         }
 
-        const localOk = Array.isArray(localRows) && localRows.length > 0;
-        if (localOk) {
-            this.conversations = this.normalizeConversations(localRows);
+        if (fileNormalized.length === 0 && localNormalized.length === 0) {
+            this.conversations = [];
+            this.clearUnsavedMarkers();
+            updateStatus('Dialogue Theater: no conversations found — starting empty', 'warning');
+            return;
+        }
+
+        if (fileNormalized.length === 0) {
+            this.conversations = localNormalized;
             this.clearUnsavedMarkers();
             updateStatus(
                 `Dialogue Theater: loaded ${this.conversations.length} conversation(s) from localStorage`,
@@ -118,9 +209,9 @@ class DialogueTheaterDataService {
             return;
         }
 
-        if (Array.isArray(fileRows)) {
-            this.conversations = this.normalizeConversations(fileRows);
-            this.save({ silent: true });
+        if (localNormalized.length === 0) {
+            this.conversations = fileNormalized;
+            this.persistLocalStorageOnly();
             this.clearUnsavedMarkers();
             updateStatus(
                 `Dialogue Theater: loaded ${this.conversations.length} conversation(s) from bundled file`,
@@ -129,24 +220,51 @@ class DialogueTheaterDataService {
             return;
         }
 
-        this.conversations = [];
+        /** Bundled file wins on id unless local has richer paths/lines; keep local-only drafts. */
+        this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
+            applyFileNames,
+        });
+        this.persistLocalStorageOnly();
+
+        if (applyFileNames) {
+            localStorage.setItem(DIALOGUE_THEATER_NAME_RESET_KEY, fileResetAt);
+            updateStatus(
+                `Dialogue Theater: reset ${this.conversations.length} conversation title(s) to numbered review placeholders`,
+                'info',
+            );
+        }
+
         this.clearUnsavedMarkers();
-        updateStatus('Dialogue Theater: no conversations found — starting empty', 'warning');
+        updateStatus(
+            `Dialogue Theater: loaded ${this.conversations.length} conversation(s) (file + local drafts)`,
+            'success',
+        );
+    }
+
+    /**
+     * Sync in-memory conversations to localStorage without touching the repo file.
+     */
+    persistLocalStorageOnly() {
+        this.conversations = this.normalizeConversations(this.conversations);
+        localStorage.setItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY, JSON.stringify(this.conversations));
     }
 
     /**
      * @param {{ silent?: boolean }} [opts]
+     * @returns {Promise<void>}
      */
     save(opts = {}) {
         this.conversations = this.normalizeConversations(this.conversations);
         localStorage.setItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY, JSON.stringify(this.conversations));
+        this.deletedConversationIds.clear();
+        this.persistDeletedConversationIds();
         this.clearUnsavedMarkers();
 
         if (!this.canPersistToRepo()) {
             if (!opts.silent) {
                 updateStatus(`Saved ${this.conversations.length} conversation(s) to localStorage`, 'success');
             }
-            return;
+            return Promise.resolve();
         }
 
         const apiUrl =
@@ -155,7 +273,7 @@ class DialogueTheaterDataService {
                 : '/api/dialogue-theater';
         const body = JSON.stringify({ conversations: this.conversations });
 
-        fetch(apiUrl, {
+        return fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body,
@@ -183,6 +301,7 @@ class DialogueTheaterDataService {
     /** @returns {DialogueConversation} */
     addBlankConversation() {
         const row = buildBlankConversationRecord();
+        row.name = String(nextConversationNumber(this.conversations));
         this.conversations.push(row);
         this.markConversationUnsaved(row.id);
         return row;
@@ -239,7 +358,8 @@ class DialogueTheaterDataService {
         this.conversations = this.conversations.filter((c) => c.id !== id);
         if (this.conversations.length === before) return false;
         this.unsavedConversationIds.delete(id);
-        this.isDirty = this.unsavedConversationIds.size > 0;
+        this.markConversationDeleted(id);
+        this.isDirty = true;
         return true;
     }
 
@@ -272,6 +392,8 @@ class DialogueTheaterDataService {
                         throw new Error('Invalid file format: expected { conversations: [...] }');
                     }
                     this.conversations = this.normalizeConversations(list);
+                    this.deletedConversationIds.clear();
+                    this.persistDeletedConversationIds();
                     this.save();
                     updateStatus(`Imported ${this.conversations.length} conversation(s)`, 'success');
                     resolve({ success: true, count: this.conversations.length });

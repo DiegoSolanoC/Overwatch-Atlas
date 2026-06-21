@@ -80,17 +80,34 @@ function voicelineMatchRank(haystack, needle) {
 }
 
 /**
+ * Strip cosmetic skin prefixes like `"Space Prince" Lúcio` → `Lúcio`.
+ * @param {string} heroName
+ * @returns {string}
+ */
+export function heroNameForVoicelineMatch(heroName) {
+    const trimmed = String(heroName || '').trim();
+    if (!trimmed) return '';
+
+    const withoutLeadingSkin = trimmed.replace(/^"[^"]+"\s+/, '').trim();
+    const unquoted = withoutLeadingSkin.replace(/"([^"]+)"/g, '$1').trim();
+    return unquoted || trimmed;
+}
+
+/**
  * @param {string} filename
  * @param {string} heroName
  * @returns {boolean}
  */
 export function voicelineBelongsToHero(filename, heroName) {
-    const hero = String(heroName || '').trim();
+    const hero = heroNameForVoicelineMatch(heroName);
     if (!hero) return false;
     const parsed = parseVoicelineFilename(filename);
     const target = normalizeHeroKey(hero);
     const fileHero = normalizeHeroKey(parsed.hero);
-    return target.length > 0 && fileHero === target;
+    if (target.length > 0 && fileHero === target) return true;
+
+    // Filename hero can be a short form (e.g. Lucio vs Lúcio).
+    return target.length > 0 && (target.includes(fileHero) || fileHero.includes(target));
 }
 
 /**
@@ -182,6 +199,10 @@ export function resolveLineVoiceFile(line, voicelines) {
     if (stored && /\.(ogg|mp3|wav|m4a|webm)$/i.test(stored)) {
         const hero = String(line?.hero || '').trim();
         if (!hero || voicelineBelongsToHero(stored, hero)) return stored;
+        // Imported lines can carry skin-prefixed hero labels — keep an explicit voice file.
+        if (!Array.isArray(voicelines) || voicelines.length === 0 || voicelines.includes(stored)) {
+            return stored;
+        }
     }
 
     return findVoicelineForHeroAndSubtitles(

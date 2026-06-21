@@ -7,7 +7,17 @@
  * the original method's `this`).
  */
 
+import {
+    isDialogueTheaterImageOverlayContext,
+    showDialogueTheaterImageOverlay,
+} from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+
 export function runShowImageOverlay(slide, imagePath) {
+            if (isDialogueTheaterImageOverlayContext()) {
+                void showDialogueTheaterImageOverlay(slide);
+                return;
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const eventSlide = document.getElementById('eventSlide');
@@ -41,6 +51,7 @@ export function runShowImageOverlay(slide, imagePath) {
                         // Don't hide on mobile
                         const isMobile = window.innerWidth <= 768;
                         if (isMobile) return;
+                        if (isDialogueTheaterImageOverlayContext()) return;
                         
                         if (e.target === overlay || e.target.tagName === 'IMG') {
                             e.stopPropagation();

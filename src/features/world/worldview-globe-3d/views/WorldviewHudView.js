@@ -14,6 +14,10 @@ import {
     updateEventSlideHeroRoleDisplay
 } from '../../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
 import { syncStandaloneSlideEventContext } from '../../../system-interface/interface-shared/syncStandaloneSlideEventContext.js';
+import {
+    closeDialogueTheaterInfoPanel,
+    isDialogueTheaterInfoPanelActive,
+} from '../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 
 /**
  * WorldviewHudView - Handles UI elements (labels, buttons, toggles)
@@ -258,6 +262,10 @@ export class WorldviewHudView {
         const isMobilePortrait = isTouchDevice && window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
 
         if (isMobilePortrait && window.standaloneEventSlide?.cancelEdit) {
+            if (isDialogueTheaterInfoPanelActive()) {
+                closeDialogueTheaterInfoPanel();
+                return;
+            }
             // Mobile portrait: use standalone implementation's close logic
             window.standaloneEventSlide.cancelEdit();
             const eventSlide = document.getElementById('eventSlide');
@@ -278,6 +286,13 @@ export class WorldviewHudView {
      * Used on desktop and mobile landscape
      */
     _hideEventSlideSimple() {
+        if (isDialogueTheaterInfoPanelActive()) {
+            closeDialogueTheaterInfoPanel();
+            this.currentEventMarker = null;
+            window.globeController?.requestStageLayoutSync?.();
+            return;
+        }
+
         this.currentEventMarker = null;
 
         window.globeController?.interactionController?.markerService?.dismissPinnedMarkerCallout?.();

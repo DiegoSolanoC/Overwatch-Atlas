@@ -11,11 +11,14 @@
  *     settled from the header-hub mount.)
  */
 
+import { isDialogueTheaterImageOverlayContext } from '../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+
 /**
  * Read the persisted state, initializing the slot on first run.
  *
  * @returns {boolean} `true` if image display is on (the default for new users).
  */
+
 export function readPersistedGlobalImageToggleState() {
     const storedValue = localStorage.getItem('globalImageToggle');
     if (storedValue === null) {
@@ -88,9 +91,13 @@ export function wireGlobalImageToggleHandler(initialState) {
             const slideNowOpen = !!document.getElementById('eventSlide')?.classList.contains('open');
             if (!slideNowOpen || !ss) return;
             if (newState) {
-                const path = ss.currentImagePath?.trim();
-                if (path && ss.showImageOverlayGradually) {
-                    ss.showImageOverlayGradually(path, 600);
+                if (isDialogueTheaterImageOverlayContext() && ss.showImageOverlayGradually) {
+                    ss.showImageOverlayGradually('', 600);
+                } else {
+                    const path = ss.currentImagePath?.trim();
+                    if (path && ss.showImageOverlayGradually) {
+                        ss.showImageOverlayGradually(path, 600);
+                    }
                 }
             } else if (ss.hideImageOverlayGradually) {
                 ss.hideImageOverlayGradually(600);

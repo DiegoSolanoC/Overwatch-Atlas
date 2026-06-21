@@ -3,6 +3,7 @@
  */
 
 import { fetchJsonWithTimeout } from '../../system-interface/interface-left-panel/event-system/data/fetchWithTimeout.js';
+import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 
 /** @typedef {{ scenes: string[], voicelines: string[], renders: Record<string, string[]> }} DialogueTheaterAssets */
 
@@ -11,6 +12,9 @@ let cachedAssets = null;
 
 /** @type {Promise<DialogueTheaterAssets>|null} */
 let loadPromise = null;
+
+/** @type {string[]} */
+let cachedManifestHeroes = [];
 
 const EMPTY_ASSETS = Object.freeze({
     scenes: [],
@@ -148,11 +152,13 @@ export async function loadDialogueTheaterHeroes() {
     try {
         const manifest = await fetchJsonWithTimeout('src/data/platform/manifest.json');
         if (Array.isArray(manifest?.heroes)) {
-            return manifest.heroes.map((h) => String(h).trim()).filter(Boolean);
+            cachedManifestHeroes = manifest.heroes.map((h) => String(h).trim()).filter(Boolean);
+            return cachedManifestHeroes;
         }
     } catch (err) {
         console.warn('Dialogue Theater: hero manifest load failed:', err);
     }
+    cachedManifestHeroes = [];
     return [];
 }
 
@@ -180,7 +186,8 @@ export function voicelineAudioUrl(filename) {
 }
 
 export function heroFilterIconUrl(heroName) {
-    return `src/assets/images/Filters/Heroes/${encodeURIComponent(heroName)}.png`;
+    const filterKey = resolveManifestHeroId(heroName, cachedManifestHeroes) || String(heroName || '').trim();
+    return `src/assets/images/Filters/Heroes/${encodeURIComponent(filterKey)}.png`;
 }
 
 /**
@@ -217,6 +224,30 @@ export function listRenderFilesForHero(heroName, rendersMap) {
     const folder = resolveRenderHeroFolder(heroName, rendersMap);
     if (!folder) return [];
     return Array.isArray(rendersMap[folder]) ? rendersMap[folder] : [];
+}
+
+/**
+ * Heroic.png when present; otherwise empty string.
+ *
+ * @param {string} heroName
+ * @param {Record<string, string[]>} rendersMap
+ * @returns {string}
+ */
+export function pickHeroicRenderForHero(heroName, rendersMap) {
+    const files = listRenderFilesForHero(heroName, rendersMap);
+    return files.find((file) => file.toLowerCase() === 'heroic.png') || '';
+}
+
+/**
+ * @param {string} currentRender
+ * @param {string} heroicRender
+ * @returns {boolean}
+ */
+export function shouldUpgradeDialogueLineRender(currentRender, heroicRender) {
+    if (!heroicRender) return false;
+    const current = String(currentRender || '').trim();
+    if (!current) return true;
+    return current.toLowerCase() === 'classic.png';
 }
 
 export function clearDialogueTheaterAssetsCache() {

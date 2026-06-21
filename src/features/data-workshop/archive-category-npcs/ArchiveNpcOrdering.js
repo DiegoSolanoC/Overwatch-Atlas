@@ -210,6 +210,62 @@ export function resolveNpcCategoryFromArchiveRow(ev, fileFallbackRows) {
 }
 
 /**
+ * @param {unknown} row
+ * @param {string} npcCategory
+ * @returns {unknown}
+ */
+function withNpcCategoryOnArchiveRow(row, npcCategory) {
+    if (!row || typeof row !== 'object') return row;
+    const category = String(npcCategory || '').trim();
+    if (!category) return row;
+
+    if (Array.isArray(row.variants) && row.variants.length > 0) {
+        const vars = row.variants.map((v, idx) =>
+            idx === 0 ? { ...v, npcCategory: category } : v,
+        );
+        return { ...row, npcCategory: category, variants: vars };
+    }
+    return { ...row, npcCategory: category };
+}
+
+/**
+ * Apply `npcCategory` from bundled `npcs.json` onto archive rows (localStorage may be stale).
+ * @param {unknown[]} events
+ * @param {unknown[]} fileEvents
+ * @returns {{ events: unknown[], changed: number }}
+ */
+export function mergeNpcCategoriesFromBundledArchiveRows(events, fileEvents) {
+    if (!Array.isArray(events) || events.length === 0) {
+        return { events: events || [], changed: 0 };
+    }
+    if (!Array.isArray(fileEvents) || fileEvents.length === 0) {
+        return { events, changed: 0 };
+    }
+
+    /** @type {Map<string, unknown>} */
+    const byName = new Map();
+    for (let i = 0; i < fileEvents.length; i++) {
+        const fe = fileEvents[i];
+        if (!fe || typeof fe !== 'object') continue;
+        const n = String(fe.name != null ? fe.name : '').trim().toLowerCase();
+        if (n) byName.set(n, fe);
+    }
+
+    let changed = 0;
+    const out = events.map((e) => {
+        if (!e || typeof e !== 'object') return e;
+        const { name, npcCategory: existing } = readNpcCategoryFieldsFromArchiveRow(e);
+        const fromFile = name ? byName.get(name.toLowerCase()) : null;
+        const bundled = fromFile ? readNpcCategoryFieldsFromArchiveRow(fromFile).npcCategory : '';
+        if (!bundled || existing === bundled) return e;
+        changed += 1;
+        return withNpcCategoryOnArchiveRow(e, bundled);
+    });
+
+    return { events: out, changed };
+}
+
+/**
  * @param {unknown[]} rows
  * @param {unknown[]} [fileFallbackRows]
  * @returns {Array<{ name: string, npcCategory: string }>}

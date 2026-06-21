@@ -19,6 +19,13 @@ Paths for JSON files: use **`data-paths.cjs`** (wraps `src/data/registry.cjs`).
 | `build-flags-lookup.mjs` | `npm run flags:lookup` — regenerates `flagFileByCommonName.js` from `flags-index.json` after adding flag PNGs |
 | `build-earth-lights-hubs.cjs` | `node scripts/build-earth-lights-hubs.cjs` — rebuild `worldview/earth-lights-hubs.json` when hub rules change |
 | `create-event.cjs` | `node scripts/create-event.cjs` — interactive helper to append timeline events |
+| `scrape-wiki-interactions.mjs` | `node scripts/scrape-wiki-interactions.mjs "<wiki Quotes URL>"` — download Interactions voice lines from Overwatch Fandom into `~/Escritorio/interactions` for manual review |
+| `scrape-all-wiki-interactions.mjs` | `npm run scrape:interactions:all` — scrape every manifest hero's `{Hero}/Quotes` page (skips heroes already scraped unless `--force`) |
+| `import-interaction-folder.mjs` | `node scripts/import-interaction-folder.mjs "<scraped batch folder>"` — copy voicelines into theater assets and append Dialogue Theater conversations |
+| `import-all-interaction-batches.mjs` | `npm run import:interactions:all` — import every hero folder under `~/Escritorio/interactions`, skipping duplicate names and voiceline sets |
+| `audit-dialogue-duplicate-conversations.mjs` | `npm run audit:dialogue-duplicates` — list conversations in `conversations.json` that share the same voiceline fingerprint |
+| `cleanup-dialogue-theater.mjs` | `npm run cleanup:dialogue-theater` — remove duplicate conversations, copy missing scraped voicelines, backfill line audio, refresh manifest |
+| `repair-dialogue-paths-from-wiki.mjs` | `npm run repair:dialogue-paths` — re-parse wiki `(with X on the team)` / variant routes and apply variation paths to matching conversations |
 
 ## Codex / archive repair
 

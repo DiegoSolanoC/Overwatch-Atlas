@@ -7,7 +7,17 @@
  * the original method's `this`).
  */
 
+import {
+    isDialogueTheaterImageOverlayContext,
+    showDialogueTheaterImageOverlayGradually,
+} from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+
 export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500) {
+            if (isDialogueTheaterImageOverlayContext()) {
+                void showDialogueTheaterImageOverlayGradually(slide, durationMs);
+                return;
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const eventSlide = document.getElementById('eventSlide');
@@ -29,6 +39,7 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
             if (!overlay.dataset.clickHandlerSetup) {
                 overlay.dataset.clickHandlerSetup = 'true';
                 overlay.addEventListener('click', (e) => {
+                    if (isDialogueTheaterImageOverlayContext()) return;
                     // Only hide if clicking the image itself or overlay (not other controls)
                     if (e.target === overlay || e.target.tagName === 'IMG') {
                         e.stopPropagation();

@@ -7,15 +7,22 @@ import { isEventSlideEditDevHost } from '../../system-interface/interface-info-d
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
 import {
+    autoStartDialogueTheaterViewPlayAll,
     collectDialogueTheaterEditPanel,
+    isDialogueTheaterViewPlaybackActive,
     mountDialogueTheaterPanel,
+    refreshDialogueTheaterEditStageFromHost,
+    stopDialogueTheaterViewPlayback,
     unmountDialogueTheaterPanel,
+    updateDialogueTheaterViewPathSelection,
     wireDialogueTheaterDeleteEntry,
 } from './DialogueTheaterEditPanel.js';
+import { isFavoriteAnimalConversation, shouldUseGroupedPathPicker } from './dialogueTheaterGroupedPathPicker.js';
 import {
-    hideDialogueTheaterStage,
-    showDialogueTheaterStage,
-} from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
+    hideDialogueTheaterImageOverlay,
+    showDialogueTheaterImageOverlay,
+} from '../dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import { refreshDialogueTheaterStage } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 
 /** @type {string|null} */
 let activeConversationId = null;
@@ -61,26 +68,59 @@ function isDialogueTheaterPanelOpen() {
     return document.getElementById('eventSlide')?.classList.contains('event-slide--dialogue-theater');
 }
 
+async function onConversationPathChange(pathId) {
+    if (!activeConversationId) return;
+    stopDialogueTheaterViewPlayback();
+    dialogueTheaterDataService.updateConversation(activeConversationId, { selectedPathId: pathId });
+    await dialogueTheaterDataService.save({ silent: true });
+    const row = dialogueTheaterDataService.getConversationById(activeConversationId);
+    if (!row) return;
+
+    const host = document.getElementById('dialogueTheaterEditHost');
+    if (host && shouldUseGroupedPathPicker(row)) {
+        updateDialogueTheaterViewPathSelection(host, row, pathId);
+        await refreshDialogueTheaterStage(row);
+        void autoStartDialogueTheaterViewPlayAll(row);
+        return;
+    }
+
+    const scrollable = getScrollable();
+    if (!scrollable) return;
+
+    unmountDialogueTheaterPanel();
+    await mountDialogueTheaterPanel(scrollable, row, 'view', {
+        onPathChange: onConversationPathChange,
+    });
+    await refreshDialogueTheaterStage(row);
+    void autoStartDialogueTheaterViewPlayAll(row);
+}
+
 async function refreshPanelContent(mode) {
     if (!activeConversationId) return;
     const row = dialogueTheaterDataService.getConversationById(activeConversationId);
     const scrollable = getScrollable();
     if (!row || !scrollable) return;
-    unmountDialogueTheaterPanel();
-    const host = await mountDialogueTheaterPanel(scrollable, row, mode);
-    if (mode === 'view') {
-        await showDialogueTheaterStage(row);
-    } else {
-        hideDialogueTheaterStage();
+    const playbackActive = isDialogueTheaterViewPlaybackActive();
+    unmountDialogueTheaterPanel({ preservePlayback: mode === 'edit' && playbackActive });
+    const host = await mountDialogueTheaterPanel(scrollable, row, mode, {
+        onPathChange: mode === 'view' ? onConversationPathChange : undefined,
+    });
+    await showDialogueTheaterImageOverlay(window.standaloneEventSlide, {
+        preserveStage: mode === 'edit' && playbackActive,
+    });
+    if (mode === 'edit' && !playbackActive) {
+        await refreshDialogueTheaterEditStageFromHost(host, row);
     }
     if (mode === 'edit') {
         wireDialogueTheaterDeleteEntry(() => {
             const name = row.name || 'Untitled conversation';
             if (!window.confirm(`Delete conversation "${name}"? This cannot be undone.`)) return;
             dialogueTheaterDataService.removeConversation(activeConversationId);
-            closeDialogueTheaterInfoPanel();
-            onListRefresh?.();
-            updateStatus('Conversation deleted.', 'success');
+            void dialogueTheaterDataService.save().then(() => {
+                closeDialogueTheaterInfoPanel();
+                onListRefresh?.();
+                updateStatus('Conversation deleted.', 'success');
+            });
         }, host);
     }
 }
@@ -175,6 +215,8 @@ async function saveDialogueTheaterEdit() {
         titleEl.textContent = nextName;
     }
 
+    await dialogueTheaterDataService.save();
+
     isEditing = false;
     editSnapshot = null;
     document.getElementById('eventSlide')?.classList.remove('event-slide--inline-editing');
@@ -190,7 +232,6 @@ async function saveDialogueTheaterEdit() {
 
     await refreshPanelContent('view');
     onListRefresh?.();
-    updateStatus('Conversation updated — use Save in the list to persist.', 'success');
 }
 
 function wirePanelButtons() {
@@ -268,13 +309,19 @@ async function prepareEventSlideForConversation(row) {
     unmountDialogueTheaterPanel();
 
     if (scrollable) {
-        await mountDialogueTheaterPanel(scrollable, row, 'view');
-        await showDialogueTheaterStage(row);
+        await mountDialogueTheaterPanel(scrollable, row, 'view', {
+            onPathChange: onConversationPathChange,
+        });
     }
 
     eventSlide?.classList.add('event-slide--dialogue-theater');
+    eventSlide?.setAttribute('data-dialogue-theater-conversation-id', row.id);
     eventSlide?.classList.remove('event-slide--inline-editing');
     eventSlide?.classList.add('open');
+
+    if (scrollable) {
+        await showDialogueTheaterImageOverlay(window.standaloneEventSlide);
+    }
 
     if (window.SoundEffectsManager?.play) {
         window.SoundEffectsManager.play('eventClick');
@@ -298,11 +345,31 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
 
     if (options.startEditing) {
         await enterDialogueTheaterEditMode(true);
+    } else {
+        void autoStartDialogueTheaterViewPlayAll(row, { masterPlay: isFavoriteAnimalConversation(row) });
     }
+}
+
+export function teardownDialogueTheaterEventSlide() {
+    if (!isDialogueTheaterPanelOpen()) return;
+
+    isEditing = false;
+    editSnapshot = null;
+    activeConversationId = null;
+    unmountDialogueTheaterPanel();
+    hideDialogueTheaterImageOverlay();
+
+    const eventSlide = document.getElementById('eventSlide');
+    const textEl = document.getElementById('eventSlideText');
+    eventSlide?.classList.remove('event-slide--dialogue-theater', 'event-slide--inline-editing');
+    eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
+    if (textEl) textEl.style.display = '';
 }
 
 export function closeDialogueTheaterInfoPanel() {
     if (!isDialogueTheaterPanelOpen()) return;
+
+    stopDialogueTheaterViewPlayback();
 
     isEditing = false;
     editSnapshot = null;
@@ -315,13 +382,14 @@ export function closeDialogueTheaterInfoPanel() {
     const saveBtn = getSaveBtn();
 
     eventSlide?.classList.remove('open', 'event-slide--dialogue-theater', 'event-slide--inline-editing');
+    eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
     if (titleEl) titleEl.contentEditable = 'false';
     if (textEl) textEl.style.display = '';
     if (editBtn) editBtn.style.display = '';
     if (saveBtn) saveBtn.style.display = 'none';
 
     activeConversationId = null;
-    hideDialogueTheaterStage();
+    hideDialogueTheaterImageOverlay();
     window.standaloneEventSlide?.hideImageOverlay?.();
 
     if (window.SoundEffectsManager?.play) {

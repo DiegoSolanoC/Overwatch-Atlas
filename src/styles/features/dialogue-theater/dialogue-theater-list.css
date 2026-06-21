@@ -6,292 +6,437 @@
     --story-archive-bar-control-height: 36px;
 }
 
-.dialogue-theater-panel-embedded {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded {
+    width: 100% !important;
+    height: 100% !important;
 }
 
-.dialogue-theater-panel-embedded .events-manage-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    padding: 12px 0 0;
-    box-sizing: border-box;
+/* Larger cards than story list — room for scene + two character renders */
+.story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList {
+    --em-visual-min: 236px;
+    --em-visual-max: 352px;
 }
 
-.dialogue-theater-panel-embedded .events-manage-header--story-empty {
-    display: none !important;
-}
-
-.dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
-    width: 100%;
-    max-width: min(var(--story-archive-list-max-width), 100%);
-    margin-inline: auto;
-    box-sizing: border-box;
-    padding-left: max(var(--story-archive-list-gutter), 12px);
-    padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 18px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    row-gap: var(--thumb-row-gap, 14px);
-    column-gap: var(--thumb-column-gap, 28px);
-    overflow-x: visible;
+.story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList .event-item {
+    min-height: 312px;
+    gap: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 @media (min-width: 1201px) {
-    .dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+    .story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    .story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
+        grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    .dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    .story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList .event-item {
+        min-height: 272px;
     }
 }
 
-.dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+.story-viewer-panel-embedded.dialogue-theater-panel-embedded #dialogueTheaterList.events-list {
+    --thumb-column-gap: 38px;
+    padding-left: max(calc(var(--story-archive-list-gutter) + 14px), 26px);
+    padding-right: max(calc(var(--story-archive-list-gutter) + 14px), 26px);
+}
+
+/*
+ * List thumb — scene + first two idle renders.
+ * Extra counter-skew bleed on both sides — reduces bottom-left / bottom-right parallelogram clip.
+ */
+:is(#dialogueTheaterList) .event-item__thumb-visual {
+    width: 130%;
+    margin-left: -15%;
+    transform: skewX(11deg) scale(1.03);
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb {
+    background-color: rgba(8, 18, 32, 0.92);
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb__scene {
+    z-index: 0;
+    object-position: center center;
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb__render {
+    position: absolute;
+    bottom: -10%;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    max-height: 94%;
+    max-width: 78%;
+    object-fit: contain;
+    object-position: center bottom;
+    pointer-events: none;
+    opacity: 1;
+    inset: auto;
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb__render--left {
+    left: 0;
+    transform: translateX(calc(-18% - 40px)) translateY(60px) scale(1.42);
+    transform-origin: bottom left;
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb__render--right {
+    right: 0;
+    transform: translateX(calc(14% + 40px)) translateY(60px) scale(1.42);
+    transform-origin: bottom right;
+}
+
+:is(#dialogueTheaterList) .dialogue-theater-list-thumb--solo-speaker .dialogue-theater-list-thumb__render--left {
+    left: 50%;
+    transform: translateX(-50%) translateY(60px) scale(1.42);
+    transform-origin: bottom center;
+}
+
+
+
+/* Search controls — mirror .story-viewer-panel-embedded #eventsManageControls */
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageControls {
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    padding: 10px 20px 16px;
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
     flex-shrink: 0;
-    width: 100%;
-    max-width: min(var(--story-archive-list-max-width), 100%);
-    margin-inline: auto;
-    box-sizing: border-box;
-    padding: 12px max(var(--story-archive-list-gutter), 12px) 16px;
-    padding-right: max(calc(var(--story-archive-list-gutter) + 6px), 18px);
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
+
 }
 
-.dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar .events-manage-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    margin: 0;
-    min-width: 0;
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageControls > #dialogueTheaterToolbarToggleBtn {
+
+    align-self: flex-start;
+
+    margin: 0 0 10px 0;
+
 }
 
-.dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar .story-viewer-action-btn {
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--story-archive-bar-control-height);
-    padding-block: 0;
-    padding-inline: 16px;
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageControls .events-manage-controls-title {
+
+    text-align: center;
+
+    color: transparent;
+
+    font-size: 0;
+
+    line-height: 0;
+
+    margin: 0 0 clamp(16px, 2.5vmin, 24px) 0;
+
 }
+
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageControls .events-manage-controls-title::after {
+
+    content: 'Search';
+
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+
+    color: var(--accent-primary);
+
+    font-size: 2.2rem;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    display: block;
+
+}
+
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageSearch .events-manage-search-row--primary {
+
+    position: relative;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    flex-wrap: nowrap;
+
+    gap: clamp(16px, 2.6vmin, 26px);
+
+}
+
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterManageSearch .events-manage-search-row--primary label[for='dialogueTheaterSearchInput'] {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip-path: inset(50%);
+
+    white-space: nowrap;
+
+    border: 0;
+
+}
+
+
+
+.dialogue-theater-panel-embedded.story-viewer-panel-embedded #dialogueTheaterSearchInput.events-search-input--title {
+
+    flex: 0 1 auto;
+
+    width: clamp(260px, 52vw, 440px);
+
+    max-width: min(440px, 92vw);
+
+    min-width: 220px;
+
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+}
+
+
 
 .dialogue-theater-list__import-input {
+
     position: absolute;
+
     width: 0;
+
     height: 0;
+
     opacity: 0;
+
     pointer-events: none;
+
 }
+
+
 
 .dialogue-theater-list__empty {
+
     grid-column: 1 / -1;
+
     margin: 32px 8px;
+
     padding: 20px;
+
     text-align: center;
+
     font-size: 14px;
+
     color: rgba(255, 255, 255, 0.82);
+
     background: rgba(0, 0, 0, 0.45);
+
     border: 1px solid rgba(255, 255, 255, 0.14);
+
     border-radius: 8px;
+
 }
 
-.dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar .events-manage-action-btn.save-btn--unsaved {
+
+
+.dialogue-theater-panel-embedded #dialogueTheaterBottomBar .events-manage-action-btn.save-btn--unsaved {
+
     background: rgba(255, 235, 59, 0.22);
+
     border-color: rgba(255, 235, 59, 0.85);
+
     box-shadow: 0 0 12px rgba(255, 235, 59, 0.25);
+
 }
 
-.dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar .events-manage-action-btn.save-btn--unsaved:hover {
+
+
+.dialogue-theater-panel-embedded #dialogueTheaterBottomBar .events-manage-action-btn.save-btn--unsaved:hover {
+
     background: rgba(255, 235, 59, 0.34);
+
     border-color: rgba(255, 235, 59, 0.95);
+
 }
 
-/* Conversation cards — story-style skewed scene thumbnails */
-.dialogue-theater-panel-embedded #dialogueTheaterList .dialogue-theater-conversation-item.event-item {
-    min-height: 248px;
-    gap: 8px;
+
+
+.dialogue-theater-panel-embedded #dialogueTheaterList .event-item {
+
     cursor: default;
+
 }
+
+
 
 .dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-block {
+
     cursor: pointer;
+
 }
+
+
 
 .dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-block:focus-visible {
+
     outline: 2px solid rgba(var(--accent-primary-rgb), 0.85);
+
     outline-offset: 3px;
+
 }
 
-.dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-visual::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 58%;
-    pointer-events: none;
-    z-index: 1;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.88) 0%,
-        rgba(0, 0, 0, 0.55) 38%,
-        rgba(0, 0, 0, 0.18) 72%,
-        transparent 100%
-    );
-}
 
-.dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-titlebar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-width: 100%;
-    z-index: 3;
-    --thumb-title-pad-x: 42px;
-    padding: 14px var(--thumb-title-pad-x) 12px var(--thumb-title-pad-x);
-    margin: 0;
-    box-sizing: border-box;
-    pointer-events: none;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0%, transparent 75%);
-}
-
-.dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-titlebar .event-item-heading {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-}
-
-.dialogue-theater-panel-embedded #dialogueTheaterList .event-item__thumb-titlebar .event-item-title {
-    margin: 0;
-    font-family: var(--font-default, 'Config', sans-serif);
-    font-size: clamp(12px, 2.2vmin, 15px);
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: 0.055em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.98);
-    text-align: left;
-    text-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.85),
-        0 2px 16px rgba(0, 0, 0, 0.45);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    word-break: normal;
-    overflow-wrap: break-word;
-    max-width: 100%;
-}
-
-.dialogue-theater-conversation-item__body {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1 1 auto;
-    min-height: 0;
-}
-
-.dialogue-theater-conversation-item .event-item-actions {
-    margin-top: auto;
-}
-
-.dialogue-theater-conversation-item .event-item-btn.play-btn {
-    background: rgba(156, 39, 176, 0.28);
-    border-color: rgba(186, 104, 200, 0.55);
-    opacity: 0.55;
-    cursor: not-allowed;
-}
-
-.dialogue-theater-conversation-item .event-item-btn.play-btn:disabled {
-    pointer-events: none;
-}
 
 body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-panel-embedded .events-manage-content {
+
     padding-bottom: calc(24px + var(--story-archive-dock-clearance, 0px));
+
 }
 
-body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-list__bottom-bar {
+
+
+body:has(#paginationDock) .dialogue-theater-list-host.active #dialogueTheaterBottomBar.story-archive-bottom-bar {
+
     margin-top: 18px;
+
     padding-top: 20px;
+
     padding-bottom: 8px;
+
 }
+
+
 
 @media (max-width: 768px) {
-    .dialogue-theater-panel-embedded .dialogue-theater-list__bottom-bar .events-manage-action-btn {
+
+    .dialogue-theater-panel-embedded #dialogueTheaterBottomBar .events-manage-action-btn {
+
         flex: 1 1 calc(50% - 5px);
+
         min-width: 0;
+
     }
 
-    .dialogue-theater-panel-embedded #dialogueTheaterList .dialogue-theater-conversation-item.event-item {
-        min-height: 220px;
-    }
 }
+
+
 
 /* Info panel — Dialogue Theater mode on #eventSlide */
+
 #eventSlide.event-slide--dialogue-theater #eventImageOverlay,
+
 #eventSlide.event-slide--dialogue-theater #eventImageToggle,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideMidControls,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideBottom,
+
 #eventSlide.event-slide--dialogue-theater #eventVariantToggles,
+
 #eventSlide.event-slide--dialogue-theater #eventGlitchToggle,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideBack,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideEra,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideOrderRow,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideLocation,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideTimelineMeta,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideFactionTypeDisplay,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideNpcCategoryDisplay,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideHeroRoleDisplay,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideHeroBirthdayDisplay,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideHeroLocationsEdit,
+
 #eventSlide.event-slide--dialogue-theater #eventRelevantLocationsSection,
+
 #eventSlide.event-slide--dialogue-theater #eventBioConnectionsSection,
+
 #eventSlide.event-slide--dialogue-theater #eventStoryFilterPlacesSection,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideInlineEditor,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideText {
+
     display: none !important;
+
 }
 
+
+
 #eventSlide.event-slide--dialogue-theater #eventSlideTitle {
+
     margin-bottom: 0;
+
 }
+
+
 
 #eventSlide.event-slide--dialogue-theater.event-slide--inline-editing #eventSlideTitle {
     outline: 2px solid rgba(var(--accent-primary-rgb), 0.55);
     outline-offset: 4px;
     border-radius: 4px;
+    font-family: var(--font-default);
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0.01em;
 }
+
+
 
 body.color-palette-gray #eventSlide.event-slide--dialogue-theater.event-slide--inline-editing #eventSlideTitle {
+
     outline-color: rgba(255, 102, 0, 0.65);
+
 }
 
+
+
 #eventSlide.event-slide--dialogue-theater #eventSlideScrollable {
+
     min-height: 0;
+
 }
+

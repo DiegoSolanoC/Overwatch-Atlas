@@ -2,6 +2,10 @@
  * Shared #storyViewerContainer lifecycle for Data Archive hub and Story Timeline.
  */
 
+import {
+    detachEventsManagePanelFromStoryArchive,
+} from './ArchiveEmbeddedEventPanelLayout.js';
+
 export const STORY_VIEWER_CONTAINER_ID = 'storyViewerContainer';
 
 export function getStoryViewerContainer() {
@@ -50,11 +54,15 @@ export function ensureDataArchiveCategoryHub(buildHubRoot) {
         storyContainer.classList.add('story-viewer-container--hub');
     }
 
-    document.getElementById('storyArchiveCategoryHub')?.remove();
-    if (!storyContainer.querySelector('#storyArchiveCategoryHub')) {
-        storyContainer.replaceChildren();
-        storyContainer.appendChild(buildHubRoot());
+    storyContainer.classList.remove('active');
+
+    const eventsManagePanel = document.getElementById('eventsManagePanel');
+    if (eventsManagePanel && storyContainer.contains(eventsManagePanel)) {
+        detachEventsManagePanelFromStoryArchive(eventsManagePanel);
     }
+
+    storyContainer.replaceChildren();
+    storyContainer.appendChild(buildHubRoot());
 
     storyContainer.style.display = 'flex';
     requestAnimationFrame(() => storyContainer.classList.add('active'));

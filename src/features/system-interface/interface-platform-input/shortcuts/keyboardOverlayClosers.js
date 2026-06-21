@@ -17,12 +17,21 @@
  */
 
 import { codexOrGlobeUiView } from './keyboardModeResolution.js';
+import {
+    closeDialogueTheaterInfoPanel,
+    isDialogueTheaterInfoPanelActive,
+} from '../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 
 function clearHackedOverlays() {
     document.querySelectorAll('.hacked-overlay').forEach(function (el) { el.remove(); });
 }
 
 export function hideEventSlideIfOpen() {
+    if (isDialogueTheaterInfoPanelActive()) {
+        closeDialogueTheaterInfoPanel();
+        return true;
+    }
+
     const slide = document.getElementById('eventSlide');
     const overlay = document.getElementById('eventImageOverlay');
     const slideOpen = slide && slide.classList.contains('open');

@@ -7,15 +7,22 @@
  * the original method's `this`).
  */
 
+import {
+    isDialogueTheaterImageOverlayContext,
+    restoreDialogueTheaterImageOverlayGradually,
+} from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+
 export function runHideImageOverlayTemporarily(slide, delayMs = 5000) {
             const overlay = document.getElementById('eventImageOverlay');
             if (!overlay || !overlay.classList.contains('open')) {
                 return;
             }
+
+            const restoreTheaterStage = isDialogueTheaterImageOverlayContext();
             
             // Save the current image path before hiding
             const img = document.getElementById('eventImage');
-            const savedImagePath = img?.src || slide.currentImagePath;
+            const savedImagePath = restoreTheaterStage ? null : (img?.src || slide.currentImagePath);
             
             // Hide with gradual fade
             slide.hideImageOverlayGradually(600);
@@ -26,16 +33,22 @@ export function runHideImageOverlayTemporarily(slide, delayMs = 5000) {
             
             const activityEvents = ['mousedown', 'keydown', 'touchstart', 'scroll', 'wheel'];
             
+            const restoreOverlay = () => {
+                const eventSlide = document.getElementById('eventSlide');
+                if (!eventSlide?.classList.contains('open')) return;
+                if (isDialogueTheaterImageOverlayContext()) {
+                    void restoreDialogueTheaterImageOverlayGradually(slide, 600);
+                } else if (savedImagePath) {
+                    slide.showImageOverlayGradually(savedImagePath, 600);
+                }
+            };
+
             const resetTimer = () => {
                 if (restoreTimeoutId) {
                     clearTimeout(restoreTimeoutId);
                 }
                 restoreTimeoutId = setTimeout(() => {
-                    const eventSlide = document.getElementById('eventSlide');
-                    // Only restore if event slide is still open and we have a saved path
-                    if (eventSlide?.classList.contains('open') && savedImagePath) {
-                        slide.showImageOverlayGradually(savedImagePath, 600);
-                    }
+                    restoreOverlay();
                     detachActivityListeners();
                     restoreTimeoutId = null;
                 }, delayMs);
@@ -104,10 +117,7 @@ export function runHideImageOverlayTemporarily(slide, delayMs = 5000) {
             
             // Start initial timer
             restoreTimeoutId = setTimeout(() => {
-                const eventSlide = document.getElementById('eventSlide');
-                if (eventSlide?.classList.contains('open') && savedImagePath) {
-                    slide.showImageOverlayGradually(savedImagePath, 600);
-                }
+                restoreOverlay();
                 detachActivityListeners();
                 if (slideObserver) {
                     slideObserver.disconnect();

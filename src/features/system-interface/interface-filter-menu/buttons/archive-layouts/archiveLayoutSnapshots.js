@@ -1,4 +1,4 @@
-import { mapNpcArchiveRowsForGrouping } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
+import { mapNpcArchiveRowsForGrouping, mergeNpcCategoriesFromBundledArchiveRows } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 
 /**
  * The grouped Heroes / Factions filter layouts need access to the archive
@@ -76,12 +76,10 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
     }
 
     if (type === 'npcs' && arch !== 'npcs') {
-        /* Always keep bundled npcs.json in cache — localStorage rows may lack `npcCategory`. */
-        if (!__npcsArchiveFileCache || __npcsArchiveFileCache.length === 0) {
-            await fetchJsonEventsIntoCache('src/data/story-archive/npcs.json', a => {
-                __npcsArchiveFileCache = a;
-            });
-        }
+        /* Refresh bundled npcs.json so filter/gallery chips pick up repo category changes. */
+        await fetchJsonEventsIntoCache('src/data/story-archive/npcs.json', a => {
+            __npcsArchiveFileCache = a;
+        });
     }
 }
 
@@ -212,10 +210,12 @@ export function getNpcsArchiveRowsForFilterGrouping() {
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                return mapNpcArchiveRowsForGrouping(
-                    mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback),
+                const merged = mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback);
+                const { events: withCategories } = mergeNpcCategoriesFromBundledArchiveRows(
+                    merged,
                     fileFallback,
                 );
+                return mapNpcArchiveRowsForGrouping(withCategories, fileFallback);
             }
         }
     } catch (_) {}

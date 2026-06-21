@@ -21,7 +21,7 @@ import {
  * Preferred top-row chip budget before whole categories wrap to row 2.
  * Rows may end uneven — categories are never split across rows.
  */
-export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 36;
+export const NPC_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 38;
 
 /** @type {number} */
 export const NPC_BIOGRAPHY_TOTAL_CHIP_SLOTS = 71;
@@ -67,11 +67,11 @@ export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Hashimoto',
     'Yokai',
     'MEKA',
+    'Junkers',
+    'Lucheng',
     'Phreaks',
     'Deadlock',
-    'Junkers',
     'Gladiators',
-    'Lucheng',
     'Influential Figures',
     'Civilians',
     'Other',

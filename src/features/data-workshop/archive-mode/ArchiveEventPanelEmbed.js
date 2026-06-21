@@ -20,6 +20,40 @@ import {
     unmountStoryViewToggle,
 } from '../../story/story-mode/StoryViewToggle.js';
 
+/**
+ * @param {HTMLElement|null|undefined} storyContainer
+ */
+function hideStoryViewerContainer(storyContainer) {
+    storyContainer?.classList.remove('active');
+}
+
+/**
+ * @param {HTMLElement|null|undefined} storyContainer
+ */
+function revealStoryViewerContainer(storyContainer) {
+    if (!storyContainer) return;
+    storyContainer.style.display = 'flex';
+    requestAnimationFrame(() => {
+        storyContainer.classList.add('active');
+    });
+}
+
+/**
+ * @param {'story'|'heroes'|'factions'|'npcs'|'locations'} archiveSource
+ * @returns {Promise<void>}
+ */
+async function loadEmbeddedArchiveSource(archiveSource) {
+    if (window.eventManager?.switchStoryArchiveSource) {
+        await window.eventManager.switchStoryArchiveSource(archiveSource);
+        return;
+    }
+    if (window.eventManager) {
+        window.eventManager.dataService?.setArchiveSource?.(archiveSource);
+        await window.eventManager.loadEvents();
+        window.eventManager.renderEvents();
+    }
+}
+
 function syncDataWorkshopBioArchivePanelClass(eventsManagePanel, archiveSource) {
     if (!eventsManagePanel) return;
     eventsManagePanel.classList.toggle('data-workshop-bio-archive', isBioArchiveCategory(archiveSource));
@@ -81,17 +115,15 @@ function applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome = {})
  */
 export async function switchEmbeddedArchiveSource(archiveSource, chrome = {}) {
     const eventsManagePanel = document.getElementById('eventsManagePanel');
+    const storyContainer = document.getElementById('storyViewerContainer');
+    hideStoryViewerContainer(storyContainer);
+
     try {
-        if (window.eventManager?.switchStoryArchiveSource) {
-            await window.eventManager.switchStoryArchiveSource(archiveSource);
-        } else if (window.eventManager) {
-            window.eventManager.dataService?.setArchiveSource?.(archiveSource);
-            await window.eventManager.loadEvents();
-            window.eventManager.renderEvents();
-        }
+        await loadEmbeddedArchiveSource(archiveSource);
     } catch (err) {
         console.error('[archive-mode] Archive switch failed:', err);
         updateStatus(`Could not load archive: ${err?.message || err}`, 'error');
+        revealStoryViewerContainer(storyContainer);
         return;
     }
 
@@ -105,6 +137,7 @@ export async function switchEmbeddedArchiveSource(archiveSource, chrome = {}) {
         }
     }
 
+    revealStoryViewerContainer(storyContainer);
     updateStatus(`${statusLabelForArchive(archiveSource)} open`, 'success');
 }
 
@@ -122,9 +155,23 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
         return;
     }
 
+    hideStoryViewerContainer(storyContainer);
+    eventsManagePanel.classList.remove('open');
+
     if (!hasOriginalState()) {
         storeOriginalPanelState(eventsManagePanel.parentNode, eventsManagePanel.className);
     }
+
+    try {
+        await loadEmbeddedArchiveSource(archiveSource);
+    } catch (err) {
+        console.error('[archive-mode] Embedded archive load failed:', err);
+        updateStatus(`Could not load archive: ${err?.message || err}`, 'error');
+        revealStoryViewerContainer(storyContainer);
+        return;
+    }
+
+    syncDataWorkshopBioArchivePanelClass(eventsManagePanel, archiveSource);
 
     eventsManagePanel.classList.remove('events-manage-panel');
     eventsManagePanel.classList.add('story-viewer-panel-embedded');
@@ -135,6 +182,8 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
     eventsManagePanel.style.top = 'auto';
     eventsManagePanel.style.bottom = 'auto';
 
+    storyContainer.classList.remove('story-viewer-container--hub');
+    storyContainer.classList.add('story-viewer-container--timeline-mode');
     storyContainer.appendChild(eventsManagePanel);
 
     const header = eventsManagePanel.querySelector('.events-manage-header');
@@ -151,25 +200,13 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
     if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
     if (importBtn) importBtn.classList.add('story-viewer-action-btn');
 
-    eventsManagePanel.classList.add('open');
-
-    try {
-        if (window.eventManager?.switchStoryArchiveSource) {
-            await window.eventManager.switchStoryArchiveSource(archiveSource);
-        } else if (window.eventManager) {
-            window.eventManager.dataService?.setArchiveSource?.(archiveSource);
-            await window.eventManager.loadEvents();
-            window.eventManager.renderEvents();
-        }
-    } catch (err) {
-        console.error('[archive-mode] Embedded archive load failed:', err);
-        updateStatus(`Could not load archive: ${err?.message || err}`, 'error');
-    }
-
     applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome);
     if (chrome.showCategoryToolbar) {
         updateActiveCategory(archiveSource);
     }
+
+    eventsManagePanel.classList.add('open');
+    revealStoryViewerContainer(storyContainer);
 
     if (isLocalhost()) {
         setTimeout(() => {

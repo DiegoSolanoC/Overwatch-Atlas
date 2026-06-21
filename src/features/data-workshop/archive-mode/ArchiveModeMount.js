@@ -59,6 +59,7 @@ export async function mountDataArchiveMode({ onCancel } = {}) {
             window.eventManager?.dataService?.getArchiveSource?.() || 'heroes';
 
         if (raw === 'story') {
+            storyContainer.classList.remove('active');
             detachEventsManagePanelFromStoryArchive(eventsManagePanel);
             disconnectStoryArchiveOverlapObserver();
             ensureDataArchiveCategoryHub(buildArchiveCategoryHubRoot);

@@ -12,7 +12,7 @@
  */
 
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
-import { readNpcCategoryFieldsFromArchiveRow } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
+import { mergeNpcCategoriesFromBundledArchiveRows } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 import { migrateEntityDisplayNamesInBioArchiveEvents } from './entityDisplayNameMigration.js';
 import { mergeHeroBirthdaysFromBundledFile, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
@@ -73,40 +73,17 @@ function mergeMissingSatelliteEventsFromBundledFile(events, fileEvents) {
 }
 
 /**
- * Stale NPC localStorage rows often lack `npcCategory`; merge from bundled file before normalize.
+ * Stale NPC localStorage rows may have outdated `npcCategory`; sync from bundled file.
  * @param {unknown[]} events
  * @param {unknown[]|null} fileEvents
- * @returns {unknown[]}
+ * @returns {number} rows updated
  */
 function mergeNpcCategoriesFromBundledFile(events, fileEvents) {
-    if (!Array.isArray(events) || events.length === 0) return events || [];
-    if (!Array.isArray(fileEvents) || fileEvents.length === 0) return events;
-
-    const byName = new Map();
-    for (let i = 0; i < fileEvents.length; i++) {
-        const fe = fileEvents[i];
-        if (!fe || typeof fe !== 'object') continue;
-        const n = String(fe.name != null ? fe.name : '').trim().toLowerCase();
-        if (n) byName.set(n, fe);
+    const { events: merged, changed } = mergeNpcCategoriesFromBundledArchiveRows(events, fileEvents);
+    if (changed > 0 && Array.isArray(events)) {
+        events.splice(0, events.length, ...merged);
     }
-
-    return events.map((e) => {
-        if (!e || typeof e !== 'object') return e;
-        const { name, npcCategory: existing } = readNpcCategoryFieldsFromArchiveRow(e);
-        if (existing) return e;
-
-        const fromFile = name ? byName.get(name.toLowerCase()) : null;
-        const merged = fromFile ? readNpcCategoryFieldsFromArchiveRow(fromFile).npcCategory : '';
-        if (!merged) return e;
-
-        if (Array.isArray(e.variants) && e.variants.length > 0) {
-            const vars = e.variants.map((v, idx) =>
-                idx === 0 ? { ...v, npcCategory: v?.npcCategory || merged } : v,
-            );
-            return { ...e, npcCategory: merged, variants: vars };
-        }
-        return { ...e, npcCategory: merged };
-    });
+    return changed;
 }
 
 /**
@@ -136,10 +113,10 @@ function dedupeSatelliteEventsByName(events) {
 
 /** @param {import('./EventDataService.js').default} dataService @param {unknown[]|null} fileEvents */
 function applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents) {
-    if (dataService.getArchiveSource() !== 'npcs') return;
+    if (dataService.getArchiveSource() !== 'npcs') return 0;
     dataService.events = canonicalizeNpcArchiveEventNames(dataService.events);
     dataService.events = mergeMissingSatelliteEventsFromBundledFile(dataService.events, fileEvents);
-    dataService.events = mergeNpcCategoriesFromBundledFile(dataService.events, fileEvents);
+    return mergeNpcCategoriesFromBundledFile(dataService.events, fileEvents);
 }
 
 /** @param {unknown[]} events @returns {string} */
@@ -181,10 +158,11 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
     const removed = before - dataService.events.length;
 
     let added = 0;
+    let npcCategoriesSynced = 0;
     const arch = dataService.getArchiveSource();
     if (arch === 'npcs') {
         const beforeBundledMerge = dataService.events.length;
-        applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents);
+        npcCategoriesSynced = applyNpcBundledFileMergeBeforeNormalize(dataService, fileEvents);
         added = dataService.events.length - beforeBundledMerge;
     } else if (arch === 'heroes') {
         const beforeBundledMerge = dataService.events.length;
@@ -218,8 +196,14 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
                 'info',
             );
         }
+        if (npcCategoriesSynced > 0) {
+            dataService.updateStatus(
+                `EventDataService: synced ${npcCategoriesSynced} NPC categor${npcCategoriesSynced === 1 ? 'y' : 'ies'} from bundled file`,
+                'info',
+            );
+        }
     }
-    return removed + added;
+    return removed + added + npcCategoriesSynced;
 }
 
 /**
@@ -270,6 +254,13 @@ async function finalizeSatelliteLoad(dataService, fileEvents, opts = {}) {
             );
         }
         dataService.saveEvents();
+        if (
+            typeof window !== 'undefined'
+            && dataService.getArchiveSource() === 'npcs'
+            && removedDupes > 0
+        ) {
+            window.FilterService?.invalidateBioArchiveFilterLayouts?.();
+        }
     }
     return removedDupes;
 }

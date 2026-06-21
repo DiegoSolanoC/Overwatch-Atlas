@@ -44,17 +44,17 @@ html {
 /* Reusable scrollbar styling - applies theme colors via CSS variables */
 
 .scrollbar-custom::-webkit-scrollbar {
-    width: 12px;
+    width: var(--scrollbar-width);
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
     background: var(--scrollbar-track);
-    border-radius: var(--border-radius-small);
+    border-radius: var(--scrollbar-radius);
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
-    border-radius: var(--border-radius-small);
+    border-radius: var(--scrollbar-radius);
     border: 2px solid var(--scrollbar-track);
 }
 
@@ -64,6 +64,6 @@ html {
 
 /* Firefox scrollbar */
 .scrollbar-custom {
-    scrollbar-width: thin;
+    scrollbar-width: var(--scrollbar-firefox-width);
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }

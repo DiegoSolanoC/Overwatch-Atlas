@@ -11,6 +11,7 @@
  */
 
 import { buildFactionDefaultImagePath } from '../interface-filter-menu/images/factionImagePaths.js';
+import { resolveNpcCanonicalName } from './npcNameAliases.js';
 import {
     canonicalizeFactionTokens,
     canonicalizeHeroTokens,

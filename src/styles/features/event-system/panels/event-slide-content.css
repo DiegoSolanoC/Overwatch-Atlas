@@ -38,7 +38,7 @@
     overflow-wrap: break-word;
     max-width: 100%;
     box-sizing: border-box;
-    scrollbar-width: thin;
+    scrollbar-width: var(--scrollbar-firefox-width);
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
@@ -1246,17 +1246,17 @@
 
 /* Custom scrollbar for scrollable area */
 .event-slide-scrollable::-webkit-scrollbar {
-    width: 8px;
+    width: var(--scrollbar-width-slim);
 }
 
 .event-slide-scrollable::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: var(--scrollbar-radius-slim);
 }
 
 .event-slide-scrollable::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
-    border-radius: 4px;
+    border-radius: var(--scrollbar-radius-slim);
 }
 
 .event-slide-scrollable::-webkit-scrollbar-thumb:hover {

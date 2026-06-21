@@ -8893,6 +8893,41 @@
       ]
     },
     {
+      "name": "Hacking Addiction",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "No description available.",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2060,
+      "yearEnd": 2068,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sombra",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Los Muertos",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Biolight",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
@@ -10395,39 +10430,6 @@
       "headlines": [
         "Fourteen death following Overwatch attack on Samoa",
         "Polynesian League Nations set to drop out of the UN"
-      ]
-    },
-    {
-      "name": "Hacking Addiction",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "",
-      "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2068,
-      "yearEnd": 2070,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sombra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
-        }
       ]
     },
     {

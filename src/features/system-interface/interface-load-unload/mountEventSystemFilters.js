@@ -17,6 +17,7 @@
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { updateStandalonePaginationForFilters } from './pagination/standalonePaginationFilterSync.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
+import { syncDialogueTheaterListIfActive } from '../../dialogue-theater/dialogue-theater-list/DialogueTheaterListView.js';
 
 /**
  * Replace `#confirmFiltersBtn` and `#clearFiltersBtn` with cloned copies wired
@@ -40,6 +41,7 @@ export function wireStandaloneFilterButtons() {
             updateStandalonePaginationForFilters();
             window.syncEventManagerSearchFromFilterSelection?.();
             syncStoryTimelineIfActive();
+            syncDialogueTheaterListIfActive();
             if (window.globeEventMarkerManager) {
                 window.globeEventMarkerManager.applyFilters();
             } else if (window.globeController?.eventMarkerManager) {
@@ -80,6 +82,7 @@ export function wireStandaloneFilterButtons() {
             updateStandalonePaginationForFilters();
             window.syncEventManagerSearchFromFilterSelection?.();
             syncStoryTimelineIfActive();
+            syncDialogueTheaterListIfActive();
             if (window.globeEventMarkerManager) {
                 window.globeEventMarkerManager.applyFilters();
             }
