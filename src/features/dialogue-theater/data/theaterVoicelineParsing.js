@@ -154,6 +154,22 @@ export function matchVoicelinesForHero(heroName, voicelines, query, limit = 8) {
 import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
 
 /**
+ * @param {{ hero?: string, voice?: string, subtitles?: string }} line
+ * @returns {boolean}
+ */
+export function isWreckingBallHamsterOnlyLine(line) {
+    if (!isWreckingBallHero(line?.hero || '')) return false;
+
+    const voice = String(line?.voice || '').trim();
+    const cleanSub = stripDialogueSubtitleMarkup(String(line?.subtitles || '')).trim();
+    if (cleanSub) return false;
+
+    if (!voice) return true;
+    const { dialoguePart } = parseVoicelineFilename(voice);
+    return /^\(?(hamster|angry|scared|bashful|unhappy|apologetic|excited)/i.test(dialoguePart);
+}
+
+/**
  * @param {string} text
  * @returns {string}
  */
@@ -218,6 +234,135 @@ export function findVoicelineForHeroAndSubtitles(heroName, subtitles, voicelines
     return bestScore >= MIN_PARTIAL_VOICELINE_MATCH_LEN ? bestFile : '';
 }
 
+export const WRECKING_BALL_HERO = 'Wrecking Ball';
+
+const HAMSTER_VOICELINE_SFX_PREFIXES = [
+    '(hamster_noises)_',
+    '(angry_squeaks)_',
+    '(scared_hamster_noises)_',
+    '(unhappy_hamster_noises)_',
+    '(apologetic_squeaks)_',
+    '(excited_hamster_squeaks)_',
+    '(hamster_squeaks)_',
+    '(angry_squeaks)_(Chinese)__',
+];
+
+const GENERIC_HAMSTER_PREFIX_FILE = 'Wrecking_Ball_-_(hamster_noises).ogg';
+
+/**
+ * @param {string} dialoguePart
+ * @returns {string}
+ */
+function stripVoicelineSfxPrefix(dialoguePart) {
+    let result = String(dialoguePart || '');
+    for (const marker of HAMSTER_VOICELINE_SFX_PREFIXES) {
+        if (result.startsWith(marker)) {
+            return result.slice(marker.length);
+        }
+    }
+    const parenMatch = result.match(/^\([^)]+\)_+/);
+    if (parenMatch) return result.slice(parenMatch[0].length);
+    return result;
+}
+
+/**
+ * @param {string} filename
+ * @returns {boolean}
+ */
+function isHamsterSfxVoiceline(filename) {
+    const { dialoguePart } = parseVoicelineFilename(filename);
+    return /^\([^)]+\)_/i.test(dialoguePart);
+}
+
+/**
+ * Strip `_(2)` / `_(3)` variant suffixes from a voiceline dialogue part.
+ * @param {string} dialoguePart
+ * @returns {string}
+ */
+function voicelineVariantBase(dialoguePart) {
+    return String(dialoguePart || '').replace(/_\(\d+\)$/i, '');
+}
+
+/**
+ * All hamster-prefix variants sharing the same base filename (e.g. multiple MatchTalk takes).
+ * @param {string} prefixFile
+ * @param {string[]} voicelines
+ * @returns {string[]}
+ */
+export function listHamsterPrefixVariants(prefixFile, voicelines) {
+    const pool = listVoicelinesForHero(WRECKING_BALL_HERO, voicelines);
+    if (!prefixFile || pool.length === 0) return [];
+
+    const base = voicelineVariantBase(parseVoicelineFilename(prefixFile).dialoguePart);
+    const matches = pool.filter((file) => {
+        if (!isHamsterSfxVoiceline(file)) return false;
+        return voicelineVariantBase(parseVoicelineFilename(file).dialoguePart) === base;
+    });
+
+    if (matches.length > 0) return matches;
+    return pool.includes(prefixFile) ? [prefixFile] : [];
+}
+
+/**
+ * @param {string[]} variants
+ * @returns {string}
+ */
+function pickRandomHamsterVariant(variants) {
+    if (!Array.isArray(variants) || variants.length === 0) return '';
+    if (variants.length === 1) return variants[0];
+    return variants[Math.floor(Math.random() * variants.length)];
+}
+
+/**
+ * @param {string} translatorFile
+ * @param {string[]} voicelines
+ * @param {string} [subtitleHint]
+ * @returns {string}
+ */
+export function findHamsterPrefixVoicelineForTranslator(translatorFile, voicelines, subtitleHint = '') {
+    const pool = listVoicelinesForHero(WRECKING_BALL_HERO, voicelines);
+    if (!translatorFile || pool.length === 0) return '';
+
+    const translatorDialogue = parseVoicelineFilename(translatorFile).dialoguePart;
+    const translatorNorm = normalizeSubtitlesForMatch(voicelineFilenameToSubtitles(translatorFile));
+    const subtitleNorm = subtitleHint ? normalizeSubtitlesForMatch(subtitleHint) : '';
+
+    for (const sfx of HAMSTER_VOICELINE_SFX_PREFIXES) {
+        const candidate = `Wrecking_Ball_-_${sfx}${translatorDialogue}.ogg`;
+        if (pool.includes(candidate)) return candidate;
+    }
+
+    let bestFile = '';
+    let bestScore = 0;
+    for (const file of pool) {
+        if (!isHamsterSfxVoiceline(file)) continue;
+        const stripped = stripVoicelineSfxPrefix(parseVoicelineFilename(file).dialoguePart);
+        const candidateNorm = normalizeSubtitlesForMatch(stripped.replace(/_/g, ' '));
+        if (candidateNorm === translatorNorm || (subtitleNorm && candidateNorm === subtitleNorm)) {
+            return file;
+        }
+        const score = Math.max(
+            scorePartialVoicelineMatch(translatorNorm, candidateNorm),
+            subtitleNorm ? scorePartialVoicelineMatch(subtitleNorm, candidateNorm) : 0,
+        );
+        if (score > bestScore) {
+            bestScore = score;
+            bestFile = file;
+        }
+    }
+    if (bestScore >= MIN_PARTIAL_VOICELINE_MATCH_LEN) return bestFile;
+
+    return pool.includes(GENERIC_HAMSTER_PREFIX_FILE) ? GENERIC_HAMSTER_PREFIX_FILE : '';
+}
+
+/**
+ * @param {string} heroName
+ * @returns {boolean}
+ */
+export function isWreckingBallHero(heroName) {
+    return normalizeHeroKey(heroName) === normalizeHeroKey(WRECKING_BALL_HERO);
+}
+
 /**
  * @param {{ hero?: string, voice?: string, subtitles?: string }} line
  * @param {string[]} voicelines
@@ -239,4 +384,56 @@ export function resolveLineVoiceFile(line, voicelines) {
         line?.subtitles || '',
         voicelines,
     );
+}
+
+/**
+ * Hamster squeaks / noises that play before Wrecking Ball's translator voice.
+ * @param {{ hero?: string, voicePrefix?: string }} line
+ * @param {string[]} voicelines
+ * @returns {string}
+ */
+export function resolveLineVoicePrefixFile(line, voicelines) {
+    if (!isWreckingBallHero(line?.hero || '')) return '';
+    if (isWreckingBallHamsterOnlyLine(line)) return '';
+
+    const translator = resolveLineVoiceFile(line, voicelines);
+    let prefix = '';
+
+    const stored = String(line?.voicePrefix || '').trim();
+    if (stored && /\.(ogg|mp3|wav|m4a|webm)$/i.test(stored) && stored !== translator) {
+        if (!Array.isArray(voicelines) || voicelines.length === 0 || voicelines.includes(stored)) {
+            prefix = stored;
+        } else if (voicelineBelongsToHero(stored, WRECKING_BALL_HERO)) {
+            prefix = stored;
+        }
+    }
+
+    if (!prefix && translator) {
+        prefix = findHamsterPrefixVoicelineForTranslator(
+            translator,
+            voicelines,
+            String(line?.subtitles || ''),
+        );
+    }
+
+    if (!prefix || prefix === translator) return '';
+    return pickRandomHamsterVariant(listHamsterPrefixVariants(prefix, voicelines));
+}
+
+/**
+ * Ordered voiceline files for playback (hamster noises first, then translator for Wrecking Ball).
+ * @param {{ hero?: string, voice?: string, voicePrefix?: string, subtitles?: string }} line
+ * @param {string[]} voicelines
+ * @returns {string[]}
+ */
+export function resolveLineVoicePlaybackFiles(line, voicelines) {
+    const main = resolveLineVoiceFile(line, voicelines);
+    if (!main) return [];
+
+    if (!isWreckingBallHero(line?.hero || '')) return [main];
+    if (isWreckingBallHamsterOnlyLine(line)) return [main];
+
+    const prefix = resolveLineVoicePrefixFile(line, voicelines);
+    if (prefix && prefix !== main) return [prefix, main];
+    return [main];
 }

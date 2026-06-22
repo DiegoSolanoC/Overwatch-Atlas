@@ -77,6 +77,7 @@ import { setupVoicelineAutocomplete } from './dialogueTheaterVoicelineAutocomple
 import {
     findVoicelineForHeroAndSubtitles,
     resolveLineVoiceFile,
+    resolveLineVoicePlaybackFiles,
     voicelineBelongsToHero,
     voicelineFilenameToSubtitles,
 } from '../data/theaterVoicelineParsing.js';
@@ -483,33 +484,26 @@ function listPlayableLineIndices(conversation) {
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {string[]} voices
  */
-async function playAllViewVoicelines(conversation, voices) {
+async function playAllViewVoicelines(conversation) {
     stopViewVoicelinePlayback();
     const playbackConversation = getPlaybackConversation(conversation);
     const token = Symbol('playAll');
     activeViewPlayAllToken = token;
+    const voicelines = theaterAssets?.voicelines || [];
     const lineIndices = listPlayableLineIndices(conversation);
 
-    for (let i = 0; i < voices.length; i += 1) {
+    for (let i = 0; i < lineIndices.length; i += 1) {
         if (activeViewPlayAllToken !== token) return;
 
         const lineIndex = lineIndices[i];
-        if (lineIndex >= 0) {
-            updateDialogueTheaterStageActiveLine(playbackConversation, lineIndex);
-        }
+        const line = playbackConversation.lines[lineIndex];
+        if (!line) continue;
 
-        const audio = await playCharacterAudio(voicelineAudioUrl(voices[i]));
-        if (!audio || activeViewPlayAllToken !== token) return;
+        const ok = await playMasterPlayLine(token, line, playbackConversation, lineIndex, voicelines);
+        if (!ok || activeViewPlayAllToken !== token) return;
 
-        activeViewVoicelineAudio = audio;
-        await waitForPlaybackAudio(audio, token);
-
-        if (activeViewPlayAllToken !== token) return;
-        activeViewVoicelineAudio = null;
-
-        if (i < voices.length - 1) {
+        if (i < lineIndices.length - 1) {
             await waitForPlaybackDelay(VIEW_PLAY_ALL_GAP_MS, token);
         }
     }
@@ -563,19 +557,24 @@ function indexOfLineInList(lines, targetLine) {
  * @returns {Promise<boolean>}
  */
 async function playMasterPlayLine(token, line, stageConversation, lineIndex, voicelines) {
-    const voice = resolveLineVoiceFile(line, voicelines);
-    if (!voice) return true;
+    const voices = resolveLineVoicePlaybackFiles(line, voicelines);
+    if (voices.length === 0) return true;
 
     updateDialogueTheaterStageActiveLine(stageConversation, lineIndex);
 
-    const audio = await playCharacterAudio(voicelineAudioUrl(voice));
-    if (!audio || activeViewPlayAllToken !== token) return false;
+    for (let i = 0; i < voices.length; i += 1) {
+        if (activeViewPlayAllToken !== token) return false;
 
-    activeViewVoicelineAudio = audio;
-    await waitForPlaybackAudio(audio, token);
+        const audio = await playCharacterAudio(voicelineAudioUrl(voices[i]));
+        if (!audio || activeViewPlayAllToken !== token) return false;
 
-    if (activeViewPlayAllToken !== token) return false;
-    activeViewVoicelineAudio = null;
+        activeViewVoicelineAudio = audio;
+        await waitForPlaybackAudio(audio, token);
+
+        if (activeViewPlayAllToken !== token) return false;
+        activeViewVoicelineAudio = null;
+    }
+
     return true;
 }
 
@@ -830,7 +829,7 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
         playAllBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            void playAllViewVoicelines(conversation, playableVoices);
+            void playAllViewVoicelines(conversation);
         });
     }
 
@@ -839,8 +838,8 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
         if (!(btn instanceof HTMLButtonElement)) return;
 
         const line = lines[idx];
-        const voice = line ? resolveLineVoiceFile(line, voicelines) : '';
-        if (!voice) {
+        const voices = line ? resolveLineVoicePlaybackFiles(line, voicelines) : [];
+        if (voices.length === 0) {
             btn.disabled = true;
             return;
         }
@@ -853,25 +852,15 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
             e.stopPropagation();
 
             stopViewVoicelinePlayback(playbackConversation);
-            updateDialogueTheaterStageActiveLine(playbackConversation, idx);
+            const token = Symbol('linePlay');
+            activeViewPlayAllToken = token;
 
-            void playCharacterAudio(voicelineAudioUrl(voice)).then((audio) => {
-                if (!audio) {
-                    resetDialogueTheaterStageToIdle(playbackConversation);
-                    return;
-                }
-                activeViewVoicelineAudio = audio;
-                audio.addEventListener(
-                    'ended',
-                    () => {
-                        if (activeViewVoicelineAudio === audio) {
-                            activeViewVoicelineAudio = null;
-                            resetDialogueTheaterStageToIdle(playbackConversation);
-                        }
-                    },
-                    { once: true },
-                );
-            });
+            void (async () => {
+                const ok = await playMasterPlayLine(token, line, playbackConversation, idx, voicelines);
+                if (activeViewPlayAllToken !== token) return;
+                activeViewPlayAllToken = null;
+                if (ok) resetDialogueTheaterStageToIdle(playbackConversation);
+            })();
         });
     });
 }
@@ -1173,14 +1162,14 @@ export async function autoStartDialogueTheaterViewPlayAll(conversation, options 
         const playableVoices = listPlayableVoicesForConversation(conversation);
         if (playableVoices.length === 0) return;
 
-        void playAllViewVoicelines(conversation, playableVoices);
+        void playAllViewVoicelines(conversation);
         return;
     }
 
     const playableVoices = listPlayableVoicesForConversation(conversation);
     if (playableVoices.length === 0) return;
 
-    void playAllViewVoicelines(conversation, playableVoices);
+    void playAllViewVoicelines(conversation);
 }
 
 /**
@@ -1352,6 +1341,7 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
     const block = document.createElement('article');
     block.className = 'dialogue-theater-line';
     block.dataset.lineId = line.id;
+    if (line.voicePrefix) block.dataset.voicePrefix = line.voicePrefix;
     if (line.render) block.dataset.selectedRender = line.render;
     block.innerHTML = `
         <div class="dialogue-theater-line__row dialogue-theater-line__row--hero">
@@ -1533,11 +1523,13 @@ export function collectDialogueTheaterEditPanel(host) {
         const voice = resolveVoiceFilenameFromBlock(block);
         const subtitles = block.querySelector('.dialogue-theater-line__subtitles-input')?.value ?? '';
         const lineId = block.dataset.lineId || '';
+        const voicePrefix = block instanceof HTMLElement ? String(block.dataset.voicePrefix || '').trim() : '';
         const render = block.dataset.selectedRender || '';
         const normalized = normalizeDialogueLine({
             id: lineId,
             hero,
             voice,
+            voicePrefix,
             subtitles,
             render,
         });

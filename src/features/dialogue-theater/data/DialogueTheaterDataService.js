@@ -24,7 +24,7 @@ const FILE_URL = FILES.dialogueTheater.conversations;
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
 
 /** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
-/** @typedef {{ id: string, hero: string, voice: string, subtitles: string, render: string }} DialogueLine */
+/** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string }} DialogueLine */
 /** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
 class DialogueTheaterDataService {
@@ -113,7 +113,7 @@ class DialogueTheaterDataService {
         const score = (row) => {
             const pathCount = Array.isArray(row.paths) ? row.paths.length : 0;
             const lineCount = Array.isArray(row.lines) ? row.lines.length : 0;
-            return pathCount * 1000 + lineCount;
+            return pathCount * 10000 + lineCount;
         };
         const scoreA = score(a);
         const scoreB = score(b);
@@ -134,10 +134,19 @@ class DialogueTheaterDataService {
         const lines = (Array.isArray(pickedRow?.lines) ? pickedRow.lines : []).map((line) => {
             const fileLine = fileLinesById.get(line.id);
             if (!fileLine) return line;
+            let next = line;
             if (shouldUpgradeDialogueLineRender(line.render, fileLine.render)) {
-                return { ...line, render: fileLine.render };
+                next = { ...next, render: fileLine.render };
             }
-            return line;
+            const filePrefix = String(fileLine.voicePrefix || '').trim();
+            const fileVoice = String(fileLine.voice || '').trim();
+            if (filePrefix && filePrefix !== fileVoice) {
+                next = { ...next, voicePrefix: filePrefix };
+            }
+            if (String(fileLine.voice || '').trim() && !String(line.voice || '').trim()) {
+                next = { ...next, voice: fileLine.voice };
+            }
+            return next;
         });
         return { ...pickedRow, lines };
     }
@@ -152,7 +161,20 @@ class DialogueTheaterDataService {
                 const localRow = localById.get(fileRow.id);
                 if (!localRow) return fileRow;
 
-                const picked = this.pickRicherConversationRow(fileRow, localRow);
+                let picked = this.pickRicherConversationRow(fileRow, localRow);
+                if (Array.isArray(fileRow.paths) && fileRow.paths.length > 0) {
+                    const pathIds = new Set(fileRow.paths.map((pathRow) => pathRow.id));
+                    const selectedPathId =
+                        localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                            ? localRow.selectedPathId
+                            : fileRow.selectedPathId || fileRow.paths[0]?.id || '';
+                    picked = {
+                        ...picked,
+                        lines: fileRow.lines,
+                        paths: fileRow.paths,
+                        selectedPathId,
+                    };
+                }
                 const withRenders = this.overlayFileLineRenders(fileRow, picked);
                 if (!applyFileNames) return withRenders;
                 return { ...withRenders, name: fileRow.name };

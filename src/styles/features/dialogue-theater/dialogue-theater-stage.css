@@ -4,7 +4,7 @@
     background: #000;
     pointer-events: auto;
     cursor: default;
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* Story overlay defaults imgs to opacity 0 until fade-in; theater stage must stay visible */
@@ -23,8 +23,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
     align-items: stretch;
     justify-content: stretch;
 }
@@ -33,8 +32,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
     background: #050a12;
     --dialogue-box-bottom: clamp(18px, 3vh, 32px);
     /* Info-panel stage renders — bigger, lower, pulled inward vs list thumbnails */

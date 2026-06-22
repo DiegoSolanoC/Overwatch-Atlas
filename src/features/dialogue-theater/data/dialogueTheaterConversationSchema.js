@@ -45,13 +45,14 @@ export function buildBlankDialoguePath() {
 }
 
 /**
- * @returns {{ id: string, hero: string, voice: string, subtitles: string, render: string }}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string }}
  */
 export function buildBlankDialogueLine() {
     return {
         id: createDialogueLineId(),
         hero: '',
         voice: '',
+        voicePrefix: '',
         subtitles: '',
         render: '',
     };
@@ -75,7 +76,7 @@ import { stripWikiOutcomeMarkers } from './dialogueSubtitleFormatting.js';
 
 /**
  * @param {unknown} raw
- * @returns {{ id: string, hero: string, voice: string, subtitles: string, render: string }|null}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string }|null}
  */
 export function normalizeDialogueLine(raw) {
     if (!raw || typeof raw !== 'object') return null;
@@ -84,6 +85,7 @@ export function normalizeDialogueLine(raw) {
         id,
         hero: String(raw.hero != null ? raw.hero : '').trim(),
         voice: String(raw.voice != null ? raw.voice : '').trim(),
+        voicePrefix: String(raw.voicePrefix != null ? raw.voicePrefix : '').trim(),
         subtitles: stripWikiOutcomeMarkers(String(raw.subtitles != null ? raw.subtitles : '')),
         render: String(raw.render != null ? raw.render : '').trim(),
     };
