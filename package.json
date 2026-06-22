@@ -18,6 +18,7 @@
     "audit:dialogue-duplicates": "node scripts/audit-dialogue-duplicate-conversations.mjs",
     "cleanup:dialogue-theater": "node scripts/cleanup-dialogue-theater.mjs",
     "backfill:heroic-renders": "node scripts/backfill-heroic-renders.mjs",
+    "seed:jetpack-cat-missing": "node scripts/seed-jetpack-cat-missing.mjs",
     "repair:dialogue-paths": "node scripts/repair-dialogue-paths-from-wiki.mjs",
     "import:missing-wiki-interactions": "node scripts/import-missing-wiki-interactions.mjs"
   },

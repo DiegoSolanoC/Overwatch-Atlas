@@ -69,7 +69,7 @@
     },
     {
       "id": "31740f95-cc31-4e2a-8061-e249294b3f9e",
-      "name": "3",
+      "name": "Allergies",
       "status": "active",
       "eraName": "",
       "scene": "Gibraltar Office.png",
@@ -1156,7 +1156,7 @@
           ]
         }
       ],
-      "selectedPathId": "ea7d9605-96f3-4447-b480-a3499114fb29"
+      "selectedPathId": "8d24ddbc-2abf-4410-af4f-da3c4a5de0d8"
     },
     {
       "id": "d673e40c-5579-4bf4-bdcf-4dd183713dec",
@@ -1733,7 +1733,7 @@
     },
     {
       "id": "34702171-3af8-43e8-bb28-0e403b24ccbd",
-      "name": "24",
+      "name": "Listening to Tunes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2370,7 +2370,7 @@
     },
     {
       "id": "8ba0b6e7-41c5-45f1-b470-379744f077aa",
-      "name": "45",
+      "name": "Ticket Prices",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3069,7 +3069,7 @@
     },
     {
       "id": "e8db9842-989a-4957-a6ed-01faa080e02e",
-      "name": "71",
+      "name": "Different Company",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4098,7 +4098,7 @@
     },
     {
       "id": "ef3c1e9d-b73c-4c6d-a3b4-e860c6adcc48",
-      "name": "106",
+      "name": "Always Captain",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4479,11 +4479,11 @@
           ]
         }
       ],
-      "selectedPathId": "47901085-b4a6-4dbf-bd93-4103506c441e"
+      "selectedPathId": "e547bf5d-b1ba-4b84-944a-25dd4741c40e"
     },
     {
       "id": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1",
-      "name": "108",
+      "name": "Aliases",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5429,7 +5429,7 @@
     },
     {
       "id": "fa83363e-3919-43b9-833a-6d0199769235",
-      "name": "138",
+      "name": "Not a Toy yet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5459,7 +5459,7 @@
     },
     {
       "id": "1b0056d1-28db-4b17-93e0-8e95855d54c1",
-      "name": "139",
+      "name": "Big Fish",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6373,7 +6373,7 @@
     },
     {
       "id": "b474fdaf-e979-4c0b-9e3e-a37c1070fa08",
-      "name": "169",
+      "name": "Right amount of stupid",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6396,7 +6396,7 @@
     },
     {
       "id": "7ca614e4-7dd6-4de0-b8a3-4f039e5b0b70",
-      "name": "170",
+      "name": "Short Memory",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6426,7 +6426,7 @@
     },
     {
       "id": "6f389c3f-8aed-45f1-b122-c5323f09872d",
-      "name": "171",
+      "name": "Done with Talon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6449,7 +6449,7 @@
     },
     {
       "id": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
-      "name": "172",
+      "name": "Sticking Around",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7268,7 +7268,7 @@
     },
     {
       "id": "269a5a64-1a89-4597-b1c1-64221106f6a3",
-      "name": "200",
+      "name": "All about Attitude",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7305,7 +7305,7 @@
     },
     {
       "id": "45590f18-906a-40fc-bb32-95081818e3e7",
-      "name": "201",
+      "name": "The Ball is safe",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8483,7 +8483,7 @@
     },
     {
       "id": "eb7a8eb3-c461-457a-ba01-146989a006db",
-      "name": "237",
+      "name": "Kitten me",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8512,7 +8512,7 @@
         {
           "id": "c4ad1900-cc20-4809-a2e0-11b14762772e",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_Trust_me._I've_already_tried.ogg",
           "subtitles": "Ugh... trust me. I've already tried.",
           "render": "Heroic.png"
         }
@@ -8557,7 +8557,7 @@
     },
     {
       "id": "c6e4df53-8790-4adf-84b5-fc7c79fc9266",
-      "name": "239",
+      "name": "She just likes you",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8565,7 +8565,7 @@
         {
           "id": "82f93e35-3d0b-4836-8d51-e6dc80a8ce6e",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_I_have_heard_that_cats_can_be_quite_temperamental,_but_Fika_seems_very_friendly.ogg",
           "subtitles": "I have heard that cats can be quite temperamental, but Fika seems very friendly!",
           "render": "Heroic.png"
         },
@@ -8991,7 +8991,7 @@
     },
     {
       "id": "5311a9f1-2737-4727-8a9f-e4e82d16acd9",
-      "name": "253",
+      "name": "Stayed Retired",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9950,7 +9950,7 @@
     },
     {
       "id": "a5789df7-cbd4-4682-9dd0-ead4ec8cf661",
-      "name": "281",
+      "name": "Not Paying",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10631,7 +10631,7 @@
     },
     {
       "id": "1358a55b-eeea-43ca-9fd0-96b06acb69d7",
-      "name": "304",
+      "name": "Tumbleweed",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -12262,7 +12262,7 @@
     },
     {
       "id": "5de85f39-5778-43b8-8519-0fd2b141ac33",
-      "name": "358",
+      "name": "Both Stealing",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -12292,7 +12292,7 @@
     },
     {
       "id": "430b2c93-0136-4cf0-8e7a-36d831f8bfe5",
-      "name": "359",
+      "name": "Drop the mask",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -12329,7 +12329,7 @@
     },
     {
       "id": "6a4deb82-fa60-423f-871a-5e2b79644826",
-      "name": "360",
+      "name": "Inside Voice",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -12349,13 +12349,57 @@
           "render": "Heroic.png"
         },
         {
+          "id": "a1c2d3e4-f007-4000-8000-6a4deb820001",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Perhaps_we_should_use_our_inside_voices.ogg",
+          "subtitles": "Perhaps... we should use our inside voices?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a1c2d3e4-f007-4000-8000-6a4deb820002",
+          "hero": "Mei",
+          "voice": "Mei_-_Um..._Can_you_use_your_inside_voice.ogg",
+          "subtitles": "Um... can you use your... i-inside voice?",
+          "render": "Heroic.png"
+        },
+        {
           "id": "6aba679f-d4aa-415b-8611-26073c35206e",
           "hero": "Mauga",
           "voice": "Mauga_-_This_is_my_inside_voice.ogg",
-          "subtitles": "*This IS my inside voice!*",
+          "subtitles": "This is my inside voice!",
           "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f007-4000-8000-6a4deb820101",
+          "label": "Domina",
+          "lineIds": [
+            "61593beb-cd97-4268-b42f-2a9c625efe06",
+            "b77161a7-a888-4bbb-898c-614bf2279530",
+            "6aba679f-d4aa-415b-8611-26073c35206e"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f007-4000-8000-6a4deb820102",
+          "label": "Lifeweaver",
+          "lineIds": [
+            "61593beb-cd97-4268-b42f-2a9c625efe06",
+            "a1c2d3e4-f007-4000-8000-6a4deb820001",
+            "6aba679f-d4aa-415b-8611-26073c35206e"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f007-4000-8000-6a4deb820103",
+          "label": "Mei",
+          "lineIds": [
+            "61593beb-cd97-4268-b42f-2a9c625efe06",
+            "a1c2d3e4-f007-4000-8000-6a4deb820002",
+            "6aba679f-d4aa-415b-8611-26073c35206e"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f007-4000-8000-6a4deb820102"
     },
     {
       "id": "dceb11f2-1582-4e67-9697-ed0cdc7b5299",
@@ -12493,7 +12537,7 @@
     },
     {
       "id": "78aa8dad-24c8-4df0-ae5e-4917401896e1",
-      "name": "365",
+      "name": "Not for sale",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13304,7 +13348,7 @@
     },
     {
       "id": "cc0fcef6-dcb8-4748-a46f-e95dd59bc068",
-      "name": "389",
+      "name": "Peanut Butter",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13341,7 +13385,7 @@
     },
     {
       "id": "0be01a83-2e86-4bdd-be4b-e02ed8811b9a",
-      "name": "390",
+      "name": "Pilot Sickness",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13350,21 +13394,35 @@
           "id": "5738b780-11c6-4b87-92de-66e5c125df39",
           "hero": "Winston",
           "voice": "Winston_-_Here's_another_one._What_sickness_do_pilots_usually_get.ogg",
-          "subtitles": "Here's another one. What sickness do pilots usually get?",
+          "subtitles": "Here's another one! What sickness do pilots usually get?",
           "render": "Heroic.png"
         },
         {
           "id": "6c7a7842-493c-4dad-acea-b05607c36b27",
           "hero": "Echo",
           "voice": "Echo_-_Hmm,_what.ogg",
-          "subtitles": "Hmm, what?",
+          "subtitles": "Hmm... what?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ee531653-0e51-4760-b5b4-f88d35db0c28",
+          "hero": "Pharah",
+          "voice": "Pharah_-_Sick_of_your_jokes.ogg",
+          "subtitles": "Sick of your jokes?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "75c08e48-7bd3-4eb3-9afd-a09a6ce9fc56",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Ooh,_airsick.ogg",
+          "subtitles": "Ooh-- airsick?",
           "render": "Heroic.png"
         },
         {
           "id": "2c100fae-e7cd-4d8f-8727-318cde2239af",
           "hero": "Winston",
           "voice": "Winston_-_The_flew.ogg",
-          "subtitles": "The *flew!*",
+          "subtitles": "The flew!",
           "render": "Heroic.png"
         },
         {
@@ -13373,12 +13431,59 @@
           "voice": "Echo_-_I'm_glad_that's_impossible_for_me.ogg",
           "subtitles": "I'm glad that's impossible for me.",
           "render": "Heroic.png"
+        },
+        {
+          "id": "19e92752-fcad-4905-9359-bf47a5f68db7",
+          "hero": "Pharah",
+          "voice": "Pharah_-_Okay,_Winston.ogg",
+          "subtitles": "Okay, Winston.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "662c837c-af98-4098-a13b-40fab4b28c31",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Oh,_that_was_a_pretty_good_one.ogg",
+          "subtitles": "Ohoho! That was a pretty good one!",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f004-4000-8000-0be01a830001",
+          "label": "Echo",
+          "lineIds": [
+            "5738b780-11c6-4b87-92de-66e5c125df39",
+            "6c7a7842-493c-4dad-acea-b05607c36b27",
+            "2c100fae-e7cd-4d8f-8727-318cde2239af",
+            "bc54c84b-42d8-4339-8328-d11a12ce4630"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f004-4000-8000-0be01a830002",
+          "label": "Pharah",
+          "lineIds": [
+            "5738b780-11c6-4b87-92de-66e5c125df39",
+            "ee531653-0e51-4760-b5b4-f88d35db0c28",
+            "2c100fae-e7cd-4d8f-8727-318cde2239af",
+            "19e92752-fcad-4905-9359-bf47a5f68db7"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f004-4000-8000-0be01a830003",
+          "label": "Tracer",
+          "lineIds": [
+            "5738b780-11c6-4b87-92de-66e5c125df39",
+            "75c08e48-7bd3-4eb3-9afd-a09a6ce9fc56",
+            "2c100fae-e7cd-4d8f-8727-318cde2239af",
+            "662c837c-af98-4098-a13b-40fab4b28c31"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f004-4000-8000-0be01a830002"
     },
     {
       "id": "edd64592-7320-4eba-8f87-b51d2a218d05",
-      "name": "391",
+      "name": "Shared Programming",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13408,7 +13513,7 @@
     },
     {
       "id": "c0ee751e-9a97-443f-801d-336fc92b0274",
-      "name": "392",
+      "name": "Shredded",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13743,7 +13848,7 @@
     },
     {
       "id": "beb118ad-4576-4b60-94e9-36f3d3079b71",
-      "name": "402",
+      "name": "Killjoy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -14237,7 +14342,7 @@
     },
     {
       "id": "2932ee9e-fc19-4dc4-9370-66b79e9cd109",
-      "name": "418",
+      "name": "New Kid on the block",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -14259,7 +14364,7 @@
         {
           "id": "9f5d41b9-bfa8-4445-b099-345754f6052e",
           "hero": "Mauga",
-          "voice": "",
+          "voice": "Mauga_-_Looks_kinda_heavy..._maybe_I_oughta_carry_it_for_you.ogg",
           "subtitles": "Looks kinda heavy...maybe I oughta carry it for you?",
           "render": "Heroic.png"
         },
@@ -14678,7 +14783,7 @@
     },
     {
       "id": "94b73606-c9f7-41f7-afb1-e06cd6a40a34",
-      "name": "432",
+      "name": "Search and Rescue",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -15306,7 +15411,7 @@
     },
     {
       "id": "d3340d5c-8084-4db8-86a1-64b1f0182313",
-      "name": "452",
+      "name": "Bigger Sword",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -15754,7 +15859,7 @@
     },
     {
       "id": "75f2a274-ec14-4904-bd1e-482369f670f9",
-      "name": "466",
+      "name": "Arena Fighting",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -18155,7 +18260,7 @@
         },
         {
           "id": "b31ab007-9fc6-4bb7-8102-edc9795a2db1",
-          "label": "Tracer — Tractor — Sigma �� Ramattra",
+          "label": "Tracer — Tractor — Sigma — Ramattra",
           "lineIds": [
             "6c38c78a-357f-4971-bcf4-7e0c6447f607",
             "a1b2c3d4-e001-4000-8000-000000000003",
@@ -19935,7 +20040,7 @@
     },
     {
       "id": "0f67048f-5805-4992-8c31-d5347120c0f0",
-      "name": "491",
+      "name": "Gun at home",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21531,7 +21636,7 @@
     },
     {
       "id": "8bfa30bb-cc1f-4784-8509-db719db50fd6",
-      "name": "543",
+      "name": "Monkeys with Glasses",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21554,7 +21659,7 @@
     },
     {
       "id": "6528395d-9f7a-4aee-b4d5-dae54d96251c",
-      "name": "544",
+      "name": "Not seasoned enough",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21577,7 +21682,7 @@
     },
     {
       "id": "fbb2492d-ce0a-4196-be1b-df172d2054f4",
-      "name": "545",
+      "name": "Genius Gift",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21644,7 +21749,7 @@
     },
     {
       "id": "691e7d8c-de61-41ca-b688-fe3881e3450f",
-      "name": "548",
+      "name": "Teaching to beg",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21674,7 +21779,7 @@
     },
     {
       "id": "40a098b4-2e5a-4632-9a0e-e27c34ab9067",
-      "name": "549",
+      "name": "Stay Retired",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21710,45 +21815,8 @@
       ]
     },
     {
-      "id": "94290d21-8aee-49e8-a732-3f6f2fc137c5",
-      "name": "550",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "05e45333-c7ff-4fbb-9b31-4a1142567934",
-          "hero": "Jetpack Cat",
-          "voice": "",
-          "subtitles": "**questioning meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "4569a6fd-536f-4454-bb4e-0900a9ee5a94",
-          "hero": "Juno",
-          "voice": "Juno_-_Are_you_speaking_to_me.ogg",
-          "subtitles": "Are you speaking to me?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "1685dc47-e2f1-4a81-94de-b2ff39700d86",
-          "hero": "Jetpack Cat",
-          "voice": "",
-          "subtitles": "**affirmative meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "6b217a25-6864-4d84-83ef-99f8cab15e78",
-          "hero": "Juno",
-          "voice": "",
-          "subtitles": "Hm… perhaps I should prioritize “cat” on my list of languages to learn.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "836daf87-caec-430c-a733-a5740384054a",
-      "name": "551",
+      "name": "Pulling your Tail",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21784,61 +21852,8 @@
       ]
     },
     {
-      "id": "f021e9cc-ebf3-48bf-a495-a412132725c3",
-      "name": "552",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "85a469bf-7163-40ac-a97d-811ab2148901",
-          "hero": "Lúcio",
-          "voice": "",
-          "subtitles": "So, I’m trying to ask everybody this. What’s your favorite animal?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "22391005-eda3-475c-a1e7-9f00010d7f0c",
-          "hero": "Jetpack Cat",
-          "voice": "Jetpack_Cat_-_(meows)_(Lúcio_interaction).ogg",
-          "subtitles": "**meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "0f73f573-0022-4ce5-81c2-6a0489388b06",
-          "hero": "Lúcio",
-          "voice": "",
-          "subtitles": "Uh… yeah, I can see it!",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "fcee391e-1ad8-429e-ac6b-3ccf38893aa1",
-      "name": "553",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "91b0ece2-015e-49b7-a6ca-0257f2aeeea1",
-          "hero": "Mauga",
-          "voice": "",
-          "subtitles": "How about you fly me up and I’ll make it rain fire!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "2288f749-df1a-4218-a2bb-f6efaa752aa5",
-          "hero": "Jetpack Cat",
-          "voice": "",
-          "subtitles": "**doubtful meows**",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "35a02941-2fb4-4094-bc4a-eceb5d56cffe",
-      "name": "554",
+      "name": "Perfect Test Subject",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21868,7 +21883,7 @@
     },
     {
       "id": "93e776d4-ddaf-48cd-9ea5-0c10d767c519",
-      "name": "555",
+      "name": "Human arrogance",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21879,12 +21894,19 @@
           "voice": "Ramattra_-_How_delightful_to_see_human_arrogance_contradicted._By_a_cat,_no_less.ogg",
           "subtitles": "How delightful to see human arrogance contradicted. By a cat, no less.",
           "render": "Heroic.png"
+        },
+        {
+          "id": "0e11fe81-27b6-49fe-a860-7eadb4d75c1f",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**proud purring**",
+          "render": "Heroic.png"
         }
       ]
     },
     {
       "id": "5cfcd52c-5d14-4b47-aace-d6d3208c91a4",
-      "name": "556",
+      "name": "Sharpen those claws",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21914,7 +21936,7 @@
     },
     {
       "id": "81b3ec2e-9ec7-46dd-bced-a354dff112f1",
-      "name": "557",
+      "name": "Sneaking Treats",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21951,7 +21973,7 @@
     },
     {
       "id": "3b724bfc-a082-4bbb-82b6-9d749d986b21",
-      "name": "558",
+      "name": "Just a phase",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21966,7 +21988,7 @@
         {
           "id": "d68f6798-d98c-4dc4-8ba7-29ee6e34c755",
           "hero": "Jetpack Cat",
-          "voice": "",
+          "voice": "Jetpack_Cat_-_(meows)_(Lúcio_interaction).ogg",
           "subtitles": "**meows**",
           "render": "Heroic.png"
         },
@@ -21981,7 +22003,7 @@
     },
     {
       "id": "6371a584-2754-4b52-983e-37fc23155f97",
-      "name": "559",
+      "name": "Contemptible farce",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22011,7 +22033,7 @@
     },
     {
       "id": "12e1e91c-e86c-49b9-8258-90ffd817cbba",
-      "name": "560",
+      "name": "Playing on the Desk",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22041,7 +22063,7 @@
     },
     {
       "id": "2a04620b-ef77-4fcd-84a7-5db5a959eec7",
-      "name": "561",
+      "name": "Old Friend",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22063,38 +22085,8 @@
         {
           "id": "f847fc4e-6b62-4c88-ad4e-9cfa0d8a76c6",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_You're_both_smart,_and_cute,_and_love_finding_trouble!_I_hope_I_can_introduce_you_to_him_one_day.ogg",
           "subtitles": "You're both smart, and cute, and love finding trouble! I hope I can introduce you to him one day.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "eadde290-8e65-47b2-899c-5fd18f7b7845",
-      "name": "562",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "2ad915f9-3fbd-4d0b-b33e-349844d0e4a9",
-          "hero": "Wuyang",
-          "voice": "",
-          "subtitles": "Hey little guy, c’mere! Psst psst psst.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "59835af5-4b5e-4b30-a130-6c2bf6391e3f",
-          "hero": "Jetpack Cat",
-          "voice": "",
-          "subtitles": "**hisses**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "dd51da5c-ce35-4b99-9cf6-00b362edb2da",
-          "hero": "Wuyang",
-          "voice": "",
-          "subtitles": "Ack! Uh… sorry.",
           "render": "Heroic.png"
         }
       ]
@@ -22265,7 +22257,7 @@
     },
     {
       "id": "21abef55-bd75-4bf5-8d33-0ed3610e62ca",
-      "name": "568",
+      "name": "Fresh Meat",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22295,7 +22287,7 @@
     },
     {
       "id": "0ebd5fa2-fa4e-4ca5-99c4-03eed4cce94c",
-      "name": "569",
+      "name": "Call it even",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22713,7 +22705,7 @@
     },
     {
       "id": "97559ffa-83f4-43d8-825d-9ad5e1ab40cd",
-      "name": "582",
+      "name": "Sharing",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22750,7 +22742,7 @@
     },
     {
       "id": "9ce9a85f-88bb-49bc-86cb-1e2c90b50538",
-      "name": "583",
+      "name": "Light it up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22909,7 +22901,7 @@
     },
     {
       "id": "c1704c09-df7a-4cfd-924d-693fd9caa05b",
-      "name": "589",
+      "name": "Not with us",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -22956,7 +22948,46 @@
           "subtitles": "He's uh... not with us.",
           "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f003-4000-8000-c1704c090001",
+          "label": "Mercy",
+          "lineIds": [
+            "54614766-123e-41c0-b1a0-475b36ae985f",
+            "5a0bd80b-882a-4284-a9b7-2d255910acaf",
+            "23e6082a-a297-43e5-870e-5a4bd40105d9"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f003-4000-8000-c1704c090002",
+          "label": "Pharah",
+          "lineIds": [
+            "54614766-123e-41c0-b1a0-475b36ae985f",
+            "5a0bd80b-882a-4284-a9b7-2d255910acaf",
+            "bb14cd1d-7ed3-46b8-aad2-55d1ee82bee1"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f003-4000-8000-c1704c090003",
+          "label": "Tracer",
+          "lineIds": [
+            "54614766-123e-41c0-b1a0-475b36ae985f",
+            "5a0bd80b-882a-4284-a9b7-2d255910acaf",
+            "320a2fd5-b57d-4732-9b5f-221422591522"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f003-4000-8000-c1704c090004",
+          "label": "Winston",
+          "lineIds": [
+            "54614766-123e-41c0-b1a0-475b36ae985f",
+            "5a0bd80b-882a-4284-a9b7-2d255910acaf",
+            "23ee69e1-7b64-4b80-8596-9fcd8ee9bcdf"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f003-4000-8000-c1704c090003"
     },
     {
       "id": "f7cfc9fd-b3c4-4be5-9e35-da36eb711508",
@@ -23057,7 +23088,7 @@
     },
     {
       "id": "36fb2c40-133e-428f-a882-ee4741cdbfc5",
-      "name": "594",
+      "name": "Cat Language",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23812,7 +23843,7 @@
     },
     {
       "id": "1f62a5fc-0b18-4c39-9ec2-69123234c6d1",
-      "name": "618",
+      "name": "Friend's Advice",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23849,7 +23880,7 @@
     },
     {
       "id": "b3810422-43ac-4266-9662-d087dc2c92fd",
-      "name": "619",
+      "name": "We have each other",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24006,7 +24037,7 @@
     },
     {
       "id": "1d5d1469-1d8a-44ae-adb9-b3bf66095549",
-      "name": "624",
+      "name": "Stealthy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25080,7 +25111,7 @@
     },
     {
       "id": "f201210b-dccb-4e6d-9252-e904b10c626d",
-      "name": "657",
+      "name": "Thorny Situation",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25110,7 +25141,7 @@
     },
     {
       "id": "654c433a-5bdc-4a36-9ac7-e1dfce34497e",
-      "name": "658",
+      "name": "Biolight Vegetbles",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25193,7 +25224,7 @@
     },
     {
       "id": "0c5da355-2a74-4309-9cd9-d83d193c947a",
-      "name": "661",
+      "name": "Rain Fire",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25216,7 +25247,7 @@
     },
     {
       "id": "ad1b3700-5c1d-48c8-a870-9202b087ab6b",
-      "name": "662",
+      "name": "Can't stand work",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25245,45 +25276,8 @@
       ]
     },
     {
-      "id": "0ae19a39-8ee3-4155-b554-b898c57e167b",
-      "name": "663",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "3b7ec22c-69ff-4c80-afc0-002e539cedff",
-          "hero": "Lúcio",
-          "voice": "",
-          "subtitles": "You got a hobby? Y'know, besides going around the world making miserable.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "4dbbab90-82dd-48fb-bfae-b3c7ec8e45f9",
-          "hero": "Mauga",
-          "voice": "Mauga_-_I_was_gonna_say_listening_to_your_tunes.ogg",
-          "subtitles": "I was gonna say listening to your tunes...",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "ea136940-552e-4104-8a1e-3c8dcaa974de",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_Seriously.ogg",
-          "subtitles": "Seriously?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "4d3a0f0f-d335-4165-89cd-0c47a6a6d10f",
-          "hero": "Mauga",
-          "voice": "Mauga_-_But_that'd_be_lying.ogg",
-          "subtitles": "But that'd be lying.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "ab49e07b-06b3-464a-bd9d-98732fb03bac",
-      "name": "664",
+      "name": "More Blood",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25306,7 +25300,7 @@
     },
     {
       "id": "9443aa9c-d4c3-45a6-9e9c-78b9bb92a2bf",
-      "name": "665",
+      "name": "Hot stuff",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25336,7 +25330,7 @@
     },
     {
       "id": "4ebedcc3-4af7-426f-b44b-9eaf7b35e93c",
-      "name": "666",
+      "name": "Did I do something",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25366,7 +25360,7 @@
     },
     {
       "id": "f7a610d5-dea7-47a4-9d9c-e2434271611d",
-      "name": "667",
+      "name": "Ask me again",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25389,7 +25383,7 @@
     },
     {
       "id": "5f465e10-6a84-41a7-a878-2dc1a9957d07",
-      "name": "668",
+      "name": "Stuck around",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25426,7 +25420,7 @@
     },
     {
       "id": "762f972f-2bdc-4daa-aafc-8d94984eedcf",
-      "name": "669",
+      "name": "Bad Robots",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25449,7 +25443,7 @@
     },
     {
       "id": "3c5beb7f-c70d-4c47-a859-66c5aa41b38e",
-      "name": "670",
+      "name": "Smile",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25486,7 +25480,7 @@
     },
     {
       "id": "4157fb2d-f402-4827-9344-c99f17c3a23a",
-      "name": "671",
+      "name": "Starving",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25516,7 +25510,7 @@
     },
     {
       "id": "f0c11e05-5138-4343-b995-d29b776097dd",
-      "name": "672",
+      "name": "Thinking Ahead",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25546,7 +25540,7 @@
     },
     {
       "id": "5f8c843e-bc0e-43ec-9e8b-aac0f3c7a4f0",
-      "name": "673",
+      "name": "Bullet Holes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25569,7 +25563,7 @@
     },
     {
       "id": "674c9437-9af1-447c-a5bf-6a59e6aad695",
-      "name": "674",
+      "name": "Not your Pal",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25606,7 +25600,7 @@
     },
     {
       "id": "09b4e104-94c0-4ee8-a4d6-a75d93a71566",
-      "name": "675",
+      "name": "Mercenary Rates",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25636,7 +25630,7 @@
     },
     {
       "id": "e148c6da-91b4-4a50-b1d4-7dc437771d18",
-      "name": "676",
+      "name": "Good Mileage",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25666,7 +25660,7 @@
     },
     {
       "id": "ddb521cd-1c19-47bc-822f-05fcd9701054",
-      "name": "677",
+      "name": "Tackle Games",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25680,16 +25674,16 @@
         },
         {
           "id": "77a536f0-433f-4032-80d4-2b9d1fac1c13",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Football_isn't_a_game,_kid.ogg",
           "subtitles": "Football isn't a game, kid.",
-          "render": "Heroic.png"
+          "render": ""
         }
       ]
     },
     {
       "id": "0abea25c-d787-4824-b2f2-fa801e63fcb5",
-      "name": "678",
+      "name": "Not your Buddy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25719,7 +25713,7 @@
     },
     {
       "id": "a7f8b911-4769-4c25-b753-46ba0e89bc67",
-      "name": "679",
+      "name": "Finding Anyone",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25756,7 +25750,7 @@
     },
     {
       "id": "e037fd9c-1656-45f8-9ae7-dc5430d73647",
-      "name": "680",
+      "name": "Not the Pizza",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25793,7 +25787,7 @@
     },
     {
       "id": "867732b0-9b1a-4576-a65d-a5054523e8e6",
-      "name": "681",
+      "name": "Dance with Bullets",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25823,7 +25817,7 @@
     },
     {
       "id": "46c7e70d-0f5e-4d28-89ae-b36c837cc96b",
-      "name": "682",
+      "name": "Sum for arrest",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25846,7 +25840,7 @@
     },
     {
       "id": "88d90625-4f28-4192-8528-4e47c8e51e64",
-      "name": "683",
+      "name": "Boss Changes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25876,7 +25870,7 @@
     },
     {
       "id": "ef3b25a3-b451-4845-9d06-a96c20002719",
-      "name": "684",
+      "name": "Overwatch Survived",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25906,7 +25900,7 @@
     },
     {
       "id": "7bdbc74d-86e0-41c3-904c-4e89c9c6163c",
-      "name": "685",
+      "name": "Wildfire",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25943,7 +25937,7 @@
     },
     {
       "id": "ad52b742-eb36-49f0-9c55-4100f483a8ff",
-      "name": "686",
+      "name": "On purpose",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25980,7 +25974,7 @@
     },
     {
       "id": "76bffba0-676a-4ea8-801f-29986359d64a",
-      "name": "687",
+      "name": "All right",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26017,7 +26011,7 @@
     },
     {
       "id": "ff9d92d8-8c5e-4c0c-90d6-8a6c03276d32",
-      "name": "688",
+      "name": "Firm Handshake",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26040,7 +26034,7 @@
     },
     {
       "id": "313ce0d1-36ae-4b18-8f2f-a5fbd694ab7f",
-      "name": "689",
+      "name": "Ruthless",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26077,7 +26071,7 @@
     },
     {
       "id": "ed39fb5c-2b90-4278-a65f-6d6f527f82c6",
-      "name": "690",
+      "name": "Huge fan",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26100,7 +26094,7 @@
     },
     {
       "id": "f56fda67-3ec3-4969-839f-531c6094bb5b",
-      "name": "691",
+      "name": "Never Competed",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26137,7 +26131,7 @@
     },
     {
       "id": "8979c7cc-c37d-4888-b456-2b43a875ce72",
-      "name": "692",
+      "name": "Talking Big",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26174,7 +26168,7 @@
     },
     {
       "id": "5740cad4-3dd3-4421-ba7a-2bc505ab6730",
-      "name": "693",
+      "name": "Muscle of the Team",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26211,7 +26205,7 @@
     },
     {
       "id": "8572242a-a021-406a-a0e3-7025d035598e",
-      "name": "694",
+      "name": "Unflavored",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26241,7 +26235,7 @@
     },
     {
       "id": "df8582db-3464-42c4-80d8-b2b2c4285074",
-      "name": "695",
+      "name": "Always win",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26638,7 +26632,7 @@
     },
     {
       "id": "b93d5ed4-a914-4b7c-8924-f31b0eec8194",
-      "name": "708",
+      "name": "Count on Mei",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26668,7 +26662,7 @@
     },
     {
       "id": "43b04788-5957-4e1d-91e6-8751ee81e13e",
-      "name": "709",
+      "name": "Hotpot",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26705,7 +26699,7 @@
     },
     {
       "id": "e59d74f4-e057-4aaf-bf89-0e1b23ca7b6d",
-      "name": "710",
+      "name": "Not Cute",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26727,8 +26721,8 @@
         {
           "id": "e68c3da2-c264-4410-add1-4892b5421221",
           "hero": "Mei",
-          "voice": "Mei_-_Oops._Sorry._(Chinese)_But_really,_isn't_he_cute,_Snowball.ogg",
-          "subtitles": "Oops, sorry. Kě tā zhēn de tài kě'àile, xuě qiú?",
+          "voice": "",
+          "subtitles": "Oops, sorry! Kě tā zhēn de tài kě'àile, xuě qiú?",
           "render": "Heroic.png"
         },
         {
@@ -26740,30 +26734,37 @@
         },
         {
           "id": "430c0e33-a971-4e40-a4e7-7578e29e1488",
-          "hero": "Mei",
+          "hero": "Wrecking Ball",
           "voice": "Wrecking_Ball_-_(Chinese)_This_is_your_final_warning.ogg",
-          "subtitles": "Oops, sorry. 可他真的太可爱了雪球？",
+          "subtitles": "**angry squeaks** Zuìhòu jǐnggào nǐ yīcì.",
           "render": "Heroic.png"
         },
         {
           "id": "065afb42-bd6c-459d-963c-1d205035a832",
-          "hero": "Wrecking Ball",
+          "hero": "Mei",
           "voice": "",
-          "subtitles": "他说闭嘴。",
+          "subtitles": "Hanzi: Oops, sorry! 可他真的太可爱了雪球？",
           "render": "Heroic.png"
         },
         {
           "id": "5157e9db-d958-47ee-9865-df1d6b38c9bc",
-          "hero": "Mei",
+          "hero": "Wrecking Ball",
           "voice": "",
-          "subtitles": "Oops, sorry. But really, isn't he cute, Snowball?",
+          "subtitles": "Hanzi: 他说闭嘴。 最后警告你一次。",
           "render": "Heroic.png"
         },
         {
           "id": "b4688e1b-bc97-42f7-b33a-e0de8a5709dc",
+          "hero": "Mei",
+          "voice": "Mei_-_Oops._Sorry._(Chinese)_But_really,_isn't_he_cute,_Snowball.ogg",
+          "subtitles": "English: Oops, sorry. But really, isn't he cute, Snowball?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c8e4a1b2-3f5d-4e6a-9c7d-1a2b3c4d5e6f",
           "hero": "Wrecking Ball",
           "voice": "",
-          "subtitles": "He said shut up.",
+          "subtitles": "English: He said, shut up. This is your final warning.",
           "render": "Heroic.png"
         }
       ]
@@ -27268,7 +27269,7 @@
     },
     {
       "id": "40d7026f-c2ab-40b8-969f-50dddbf2e557",
-      "name": "729",
+      "name": "Here to Support",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27327,38 +27328,8 @@
       ]
     },
     {
-      "id": "eb88ec33-9423-434a-ab57-e99a7dd5ec72",
-      "name": "731",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "6a3934c0-6419-40cb-be6b-eae24ea87789",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_Peter_Piper_picked_a_pepp--_No._Peter_piper_pecked_a--_Ugh.ogg",
-          "subtitles": "Peter Piper picked a pepp– No. Peter Piper pecked a– Ugh!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "b6260e55-4b0e-4f74-9e41-843c7a3fd0a7",
-          "hero": "Kiriko",
-          "voice": "Kiriko_-_Are_you_people_always_this_loud.ogg",
-          "subtitles": "Are you people always this loud?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "39656c3f-dcfb-4e96-bcd5-73ecca2b7fc9",
-          "hero": "Mercy",
-          "voice": "Mercy_-_Don't_lump_us_in_with_him.ogg",
-          "subtitles": "Don't lump us in with him.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "9d920b0a-fa68-4105-86df-13f37fe5779e",
-      "name": "732",
+      "name": "Ignorance",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -28547,7 +28518,7 @@
     },
     {
       "id": "d8cdd98b-f2ef-4544-8cc6-5100bdbb1a7c",
-      "name": "771",
+      "name": "Vacation home",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -28601,36 +28572,6 @@
           "hero": "Zenyatta",
           "voice": "Zenyatta_-_Quite_a_puzzle,_isn't_it.ogg",
           "subtitles": "Quite a puzzle, isn't it.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "8a42c21a-a049-4856-b576-8ca429e2492e",
-      "name": "773",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "359a567f-3007-44ad-a0ea-ddb020a5e415",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_Peter_Piper_picked_a_pepp--_No._Peter_piper_pecked_a--_Ugh.ogg",
-          "subtitles": "Peter Piper picked a pepp-- No. Peter Piper pecked a-- Ugh!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "84e34732-518f-4f79-9658-f624b7e6f60f",
-          "hero": "Kiriko",
-          "voice": "Kiriko_-_Are_you_people_always_this_loud.ogg",
-          "subtitles": "Are you people always this loud?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "9b7932a4-392b-41d2-a381-47dcce4e53c1",
-          "hero": "Pharah",
-          "voice": "Pharah_-_He's_not_with_us.ogg",
-          "subtitles": "He's not with us.",
           "render": "Heroic.png"
         }
       ]
@@ -28766,7 +28707,7 @@
     },
     {
       "id": "72fb2886-0ef8-43b1-b578-18aed65ea3ca",
-      "name": "779",
+      "name": "Why a Ball?",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29516,7 +29457,7 @@
     },
     {
       "id": "3345e37e-f4ee-490f-91b7-0c495c8f58b6",
-      "name": "804",
+      "name": "You want a medal?",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29539,7 +29480,7 @@
     },
     {
       "id": "f23f2edd-a4b8-45f4-94b0-e439ec588576",
-      "name": "805",
+      "name": "Just Fine",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29878,7 +29819,7 @@
     },
     {
       "id": "28e399f1-aa14-49df-a6a0-ce0dfe278da6",
-      "name": "817",
+      "name": "Answer the recall",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29901,7 +29842,7 @@
     },
     {
       "id": "7618c189-a773-44f5-ba72-85592783246d",
-      "name": "818",
+      "name": "Love Jokes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30335,7 +30276,7 @@
     },
     {
       "id": "98f4c44c-5890-49a2-af59-d512db6d2b66",
-      "name": "832",
+      "name": "Friend from the Colony",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30358,7 +30299,7 @@
     },
     {
       "id": "f12003aa-60f0-48d3-bd56-a85299b465e8",
-      "name": "833",
+      "name": "Missing the Moon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30381,40 +30322,59 @@
     },
     {
       "id": "b0620d14-866e-419f-a64e-15ddf4602c2c",
-      "name": "834",
+      "name": "Subject Study",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
       "lines": [
         {
           "id": "69c1fd72-54eb-49ea-9341-45b53c59c790",
-          "hero": "Wrecking Ball",
+          "hero": "Sigma",
           "voice": "Sigma_-_Remarkable!_The_subject_weaponizes_momentum_through_geometrical_navigation.ogg",
-          "subtitles": "Stop making the hamster sound boring.",
+          "subtitles": "Remarkable! The subject weaponizes momentum through geometrical navigation.",
           "render": "Heroic.png"
         },
         {
           "id": "d1dea91c-4ab1-4c7c-b238-55506fae98fb",
-          "hero": "Unknown",
+          "hero": "Sigma",
           "voice": "Sigma_-_The_subject_appears_to_be_piloting_the_device._It_may_be_worth_observing_further.ogg",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "The subject appears to be piloting the device. It may be worth observing further...",
+          "render": "Heroic.png"
         },
         {
           "id": "508d510b-6cee-4297-8cce-af14253f50c3",
-          "hero": "Unknown",
-          "voice": "Wrecking_Ball_-_Stop_making_the_hamster_sound_boring.ogg",
-          "subtitles": "",
-          "render": ""
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_subject_reminds_you_he_is_sitting_right_here.ogg",
+          "subtitles": "The subject reminds you he is sitting right here.",
+          "render": "Heroic.png"
         },
         {
           "id": "60b9e63f-b279-4c13-a808-549089fe6272",
-          "hero": "Unknown",
-          "voice": "Wrecking_Ball_-_The_subject_reminds_you_he_is_sitting_right_here.ogg",
-          "subtitles": "",
-          "render": ""
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Stop_making_the_hamster_sound_boring.ogg",
+          "subtitles": "Stop making the hamster sound boring.",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f006-4000-8000-b0620d140001",
+          "label": "Geometrical navigation",
+          "lineIds": [
+            "69c1fd72-54eb-49ea-9341-45b53c59c790",
+            "508d510b-6cee-4297-8cce-af14253f50c3"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f006-4000-8000-b0620d140002",
+          "label": "Piloting the device",
+          "lineIds": [
+            "d1dea91c-4ab1-4c7c-b238-55506fae98fb",
+            "60b9e63f-b279-4c13-a808-549089fe6272"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f006-4000-8000-b0620d140001"
     },
     {
       "id": "67ed321b-eb4b-465f-b1b3-1c2437e032dc",
@@ -31043,7 +31003,7 @@
     },
     {
       "id": "0028e7b4-bbd2-4432-9b01-75db1f4930af",
-      "name": "858",
+      "name": "Recruitment tokens",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -31766,7 +31726,7 @@
     },
     {
       "id": "5835ff8d-59e3-49d2-b3a0-dd70d541b489",
-      "name": "880",
+      "name": "Not telling you",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32011,7 +31971,7 @@
     },
     {
       "id": "b5d30dae-21ba-4ea3-b2d7-81be849f3b1e",
-      "name": "887",
+      "name": "Excessive",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32041,7 +32001,7 @@
     },
     {
       "id": "eae1ae52-2cd9-4229-bc5d-6310e2e031a9",
-      "name": "888",
+      "name": "Foul Smell",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32064,7 +32024,7 @@
     },
     {
       "id": "ea4b2eb9-94dd-43db-8c34-fe7a6f83aea9",
-      "name": "889",
+      "name": "Eats a lot",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32461,7 +32421,7 @@
     },
     {
       "id": "145913d0-2025-44a4-84d8-2d2ddc956765",
-      "name": "902",
+      "name": "Bowling Pin",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32662,7 +32622,7 @@
     },
     {
       "id": "9bc28108-50af-45b3-8bde-766271607735",
-      "name": "908",
+      "name": "No more Bananas",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32684,45 +32644,8 @@
       ]
     },
     {
-      "id": "a53ad44b-fa00-413f-81c2-4d12703e7915",
-      "name": "909",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "d8ffa6f7-8b3c-45d9-9408-98d21a13507c",
-          "hero": "Winston",
-          "voice": "Winston_-_Here's_another_one._What_sickness_do_pilots_usually_get.ogg",
-          "subtitles": "Here's another one! What sickness do pilot usually get?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "1cb4d1b3-9153-4a84-9707-c73fb4ba2552",
-          "hero": "Tracer",
-          "voice": "Tracer_-_Ooh,_airsick.ogg",
-          "subtitles": "Ooh-- airsick?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "235d02bf-5edd-4121-91aa-8b750c6adc62",
-          "hero": "Winston",
-          "voice": "Winston_-_The_flew.ogg",
-          "subtitles": "The *flew!*",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "4097d76b-0ecd-494e-b001-0569c6a5325e",
-          "hero": "Tracer",
-          "voice": "Tracer_-_Oh,_that_was_a_pretty_good_one.ogg",
-          "subtitles": "Ohoho! That was a pretty good one!",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "c003233c-09ec-408a-8b16-944894272031",
-      "name": "910",
+      "name": "Presents",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32909,7 +32832,7 @@
     },
     {
       "id": "2ab227ab-8f79-4663-bf76-d3d71454c3ea",
-      "name": "916",
+      "name": "More than Prey",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32999,7 +32922,7 @@
     },
     {
       "id": "741156f7-86c3-43c6-935c-b62a495699c3",
-      "name": "920",
+      "name": "In ruins",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33135,7 +33058,7 @@
     },
     {
       "id": "229f1845-f327-4204-8d66-dd430f2f3e43",
-      "name": "925",
+      "name": "Flyng Experience",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33171,45 +33094,8 @@
       ]
     },
     {
-      "id": "1a771e72-bbe8-449a-a5c7-12d377a72268",
-      "name": "926",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "6fa3cd28-f925-4e2f-84dd-44456778021f",
-          "hero": "Juno",
-          "voice": "",
-          "subtitles": "It is hard to appreciate the Earth's beauty during all this conflict...",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "64f20d6d-91a0-41b0-9821-53a7689182f2",
-          "hero": "Winston",
-          "voice": "Winston_-_At_times_like_this,_I_remember_a_good_friend's_advice.ogg",
-          "subtitles": "At times like this, I remember a good friend's advice.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "8567ae74-3b48-4b27-9fa7-4bc6bfa03e32",
-          "hero": "Juno",
-          "voice": "Juno_-_You_do._May_I_hear_it.ogg",
-          "subtitles": "You do? May I hear it?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "26470609-984e-4aef-a14d-9bd36f09a3b0",
-          "hero": "Winston",
-          "voice": "Winston_-_Never_accept_the_world_as_it_appears_to_be._Dare_to_see_it_for_what_it_could_be.ogg",
-          "subtitles": "\"Never accept the world as it appears to be. Dare to see it for what it *could* be.\"",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "da9144dc-6d66-4e76-ad65-f4b12a2d39ea",
-      "name": "927",
+      "name": "Paper trail",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33246,7 +33132,7 @@
     },
     {
       "id": "29f0eb17-f47e-44af-893b-4a11720de96b",
-      "name": "928",
+      "name": "Undercover",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33283,7 +33169,7 @@
     },
     {
       "id": "e829416e-2e71-4516-9310-dea38a1a70e2",
-      "name": "929",
+      "name": "Never lands",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33320,7 +33206,7 @@
     },
     {
       "id": "8f852cf6-732f-424d-9ddd-1c361022620d",
-      "name": "930",
+      "name": "Might Spread it",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33357,7 +33243,7 @@
     },
     {
       "id": "0e1122c9-94fd-480f-896e-d04f21a4f71c",
-      "name": "931",
+      "name": "Feet on the ground",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33380,7 +33266,7 @@
     },
     {
       "id": "233cbf17-1ec9-424e-84e5-318ffac2a5d8",
-      "name": "932",
+      "name": "Lunar Food",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33403,7 +33289,7 @@
     },
     {
       "id": "ce8479e4-9144-46e5-9971-89d8311d234d",
-      "name": "933",
+      "name": "Lunar Simians",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33433,7 +33319,7 @@
     },
     {
       "id": "0cf936cb-0445-4634-9cfd-06adc5cf5881",
-      "name": "934",
+      "name": "Accident",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33470,7 +33356,7 @@
     },
     {
       "id": "07bb56b6-b665-42ce-8e1e-c311239ee8b3",
-      "name": "935",
+      "name": "Dry Humor",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33507,7 +33393,7 @@
     },
     {
       "id": "ca35c429-c63d-4f3d-aff9-8d586b70c356",
-      "name": "936",
+      "name": "Inside an Orb",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33597,7 +33483,7 @@
     },
     {
       "id": "01e6538b-21f2-4559-b125-767d5d3be0d8",
-      "name": "940",
+      "name": "Psst psst",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33612,7 +33498,7 @@
         {
           "id": "cc7db382-6020-45b4-b373-82b667fe4c82",
           "hero": "Jetpack Cat",
-          "voice": "",
+          "voice": "Jetpack_Cat_-_(angry_hiss).ogg",
           "subtitles": "**hiss**",
           "render": "Heroic.png"
         },
@@ -34243,29 +34129,6 @@
       ]
     },
     {
-      "id": "3e5eb96e-c996-407c-a1dd-91c96f048e55",
-      "name": "303",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "dda291e4-4816-4450-b962-c0c09bd939b2",
-          "hero": "Winston",
-          "voice": "Winston_-_Anyone_want_to_hear_my_favorite_joke_about_the_periodic_table_(1).ogg",
-          "subtitles": "Anyone wanna hear my favorite joke about the periodic table?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "75285b6b-d6b8-4168-9136-9604873d8a1f",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_I'm_still_puzzling_over_the_last_one.ogg",
-          "subtitles": "I-I'm still puzzlin' over the last one.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "64dd4480-3170-4ae0-916d-0c10501500bc",
       "name": "481",
       "status": "active",
@@ -34358,36 +34221,6 @@
           "hero": "Domina",
           "voice": "",
           "subtitles": "**sigh** No, I suppose not to someone with such a practical sense of style.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "b1def169-4e3b-420a-9cdf-9a6193bf90d9",
-      "name": "547",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "7fa4d9e2-03a5-4b23-a186-57d65e8eb8a4",
-          "hero": "Anran",
-          "voice": "Anran_-_Whew,_I_think_my_allergies_are_acting_up.ogg",
-          "subtitles": "**aggressive sneeze** Whew, I think my allergies are acting up.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "986cc833-44f2-4b1b-ade9-684fb5cd67d4",
-          "hero": "Jetpack Cat",
-          "voice": "",
-          "subtitles": "**innocent meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "6c2e549d-8a7e-4bfb-8c37-a7669a765f2a",
-          "hero": "Anran",
-          "voice": "",
-          "subtitles": "Ugh, no wonder.",
           "render": "Heroic.png"
         }
       ]
@@ -34499,6 +34332,720 @@
           "hero": "Lúcio",
           "voice": "Lúcio_-_What!_I_can't_hear_you.ogg",
           "subtitles": "What?! I can't hear you!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8b47f203-611c-4e19-b9b9-8dfbbe23c1e2",
+      "name": "Not a baby",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "f785e419-d4c0-4360-8438-ebac29683497",
+          "hero": "Reinhardt",
+          "voice": "",
+          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "006dab18-e4e8-402f-a3a3-84c113b26d59",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**confused meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "53b93d5d-ca63-4fc1-a454-b516e9801b49",
+          "hero": "Mercy",
+          "voice": "",
+          "subtitles": "Reinhardt… I do believe it’s “‘kitten’ me”.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "beb50dec-b911-4882-af23-5ca8d6e90cde",
+          "hero": "Reinhardt",
+          "voice": "",
+          "subtitles": "Don’t be ridiculous. She’s not a baby!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "78c57d6f-b792-4ee6-a376-c3c4aab40ffe",
+      "name": "Black cat",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c75ae75b-39b6-406c-ba48-0433a9a47569",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_If_only_you_were_a_black_cat,_you_could_help_me_ward_off_evil.ogg",
+          "subtitles": "Ah, if only you were a black cat... you could ward off evil.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "97d6c89d-1c27-4edc-b704-352e8bb9b49e",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**panicked meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3cc19a6c-424b-4bb9-ac7a-196980ad2f78",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_Sorry,_geez._You're_fine_the_way_you_are,_okay.ogg",
+          "subtitles": "Sorry, jeez! You're fine the way you are, OK?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8ead0f90-accd-4e2f-ac39-7ecab18bb1c8",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**understanding meows**",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "e3fc612b-583a-402a-ab89-ad6f76e82586",
+      "name": "Take it back",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "df4c8e87-0fbe-4f05-84e9-9f3552d1335e",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**provoking meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2554cf60-dc8a-44d0-9a9d-039b8b83731d",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Meow..._meow.ogg",
+          "subtitles": "Mrrow... Meow meow!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5419cd3a-5632-461b-a49c-bd87fcf44a76",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**provoking meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8b892514-eae8-4eef-bb02-826f66d4fe25",
+          "hero": "Wrecking Ball",
+          "voice": "",
+          "subtitles": "He says, oh no you didn't.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3290f215-8d3b-451b-a3ba-d351eb56bf71",
+          "hero": "Wrecking Ball",
+          "voice": "",
+          "subtitles": "He says, the pot is calling the kettle black.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3fee6ff4-ed1a-4d89-b101-30c1081bdc64",
+          "hero": "Wrecking Ball",
+          "voice": "",
+          "subtitles": "He says, you take that back.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "3209c572-d80e-4f5c-be83-affcc901aa9a",
+      "name": "Suspicious mammal",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "5eb36636-4f04-4695-bd83-0cc70c09bd59",
+          "hero": "Wrecking Ball",
+          "voice": "",
+          "subtitles": "The hamster knows a suspicious mammal when he sees one.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c5deee61-a45a-4269-b940-3c36495a6bd8",
+          "hero": "Jetpack Cat",
+          "voice": "",
+          "subtitles": "**innocent meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f8f6a04f-fec9-42af-979c-4ae12028ceb3",
+          "hero": "Wrecking Ball",
+          "voice": "",
+          "subtitles": "The cute act will not work on him. He is the master of it.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "eb88ec33-9423-434a-ab57-e99a7dd5ec72",
+      "name": "731",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "6a3934c0-6419-40cb-be6b-eae24ea87789",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Peter_Piper_picked_a_pepp--_No._Peter_piper_pecked_a--_Ugh.ogg",
+          "subtitles": "Peter Piper picked a pepp– No. Peter Piper pecked a– Ugh!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b6260e55-4b0e-4f74-9e41-843c7a3fd0a7",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Are_you_people_always_this_loud.ogg",
+          "subtitles": "Are you people always this loud?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "39656c3f-dcfb-4e96-bcd5-73ecca2b7fc9",
+          "hero": "Mercy",
+          "voice": "Mercy_-_Don't_lump_us_in_with_him.ogg",
+          "subtitles": "Don't lump us in with him.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8a42c21a-a049-4856-b576-8ca429e2492e",
+      "name": "773",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "359a567f-3007-44ad-a0ea-ddb020a5e415",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Peter_Piper_picked_a_pepp--_No._Peter_piper_pecked_a--_Ugh.ogg",
+          "subtitles": "Peter Piper picked a pepp-- No. Peter Piper pecked a-- Ugh!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "84e34732-518f-4f79-9658-f624b7e6f60f",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Are_you_people_always_this_loud.ogg",
+          "subtitles": "Are you people always this loud?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "9b7932a4-392b-41d2-a381-47dcce4e53c1",
+          "hero": "Pharah",
+          "voice": "Pharah_-_He's_not_with_us.ogg",
+          "subtitles": "He's not with us.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "430b61fb-27c7-4235-9ea0-58703e5c0ad4",
+      "name": "Winston!, Venture!",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "ae8bd255-3000-4d55-a331-4b12048b1edf",
+          "hero": "Winston",
+          "voice": "Winston_-_Winston.ogg",
+          "subtitles": "Winston!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "474cde8b-745d-49e3-8e5c-4b698c753b1a",
+          "hero": "Venture",
+          "voice": "Venture_-_Venture_(1).ogg",
+          "subtitles": "Venture!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5565628a-82a9-44a4-8df1-8dfeed46cdd6",
+          "hero": "Winston",
+          "voice": "Winston_-_Winston.ogg",
+          "subtitles": "Winston!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "788ad0a3-0685-4791-802d-bc683ebdcfdc",
+          "hero": "Venture",
+          "voice": "Venture_-_Venture_(2).ogg",
+          "subtitles": "Venture.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "fdca3927-f1af-4e02-9dab-86f64d23d951",
+          "hero": "Winston",
+          "voice": "Winston_-_Winston.ogg",
+          "subtitles": "Winston!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "39acf2b0-0117-4d9f-afb9-0ddc463bed30",
+          "hero": "Venture",
+          "voice": "Venture_-_Uh..._Hey,_is_he_okay.ogg",
+          "subtitles": "Uh... **whispers** Hey, is he okay?",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "18e4c907-a9f6-46b2-aa15-22e0a9cf444d",
+      "name": "Gym tonight",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "9817c2d1-9822-4b3f-8e4f-b5757c63f4d4",
+          "hero": "Zarya",
+          "voice": "Zarya_-_Winston!_You've_let_yourself_go.ogg",
+          "subtitles": "Winston! You've let yourself go.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "7831859d-2bb8-46c0-91e3-b576d3dc9cc7",
+          "hero": "Winston",
+          "voice": "Winston_-_I-I_haven't!_Maybe_just_a_little_bit.ogg",
+          "subtitles": "I-I haven't! *(pause)* Maybe just a little bit.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3c2fff5d-3aac-44f5-ae0e-3b2c5c4a9b19",
+          "hero": "Zarya",
+          "voice": "Zarya_-_We_will_go_to_the_gym_together._After_the_mission._Tonight.ogg",
+          "subtitles": "We will go to the gym together. After the mission. Tonight.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f7867f68-9771-4220-9157-a2ddac11fc8d",
+          "hero": "Winston",
+          "voice": "Winston_-_F-for_how_long.ogg",
+          "subtitles": "F-for how long?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "be29fdcb-4f79-4de2-87e8-15e563623262",
+          "hero": "Zarya",
+          "voice": "Zarya_-_I_will_tell_you_when_we_are_done.ogg",
+          "subtitles": "I will tell you when we are done.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "14f6dfe1-147c-44c0-84c5-3b520717e464",
+      "name": "Build me a bike?",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "8ffbf2d3-9398-4a56-a08c-6b661880a2b9",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Can_you_build_me_a_bike._Money's_no_object.ogg",
+          "subtitles": "Can you build me a bike? Money's no object.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d13a4ba9-fe33-4247-9b56-88c69b305d4d",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_is_an_artist,_not_a_mechanic.ogg",
+          "subtitles": "He is an artist, not a mechanic.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4707c25a-d238-4262-b563-d8c6b0bca6bb",
+          "hero": "Ashe",
+          "voice": "Ashe_-_All_right._How_about_a_new_chassis_for_Bob.ogg",
+          "subtitles": "All right. How about a new chassis for Bob?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a9e9724c-5dd4-4f60-aa20-be13f589d4f3",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_That_is..._intriguing.ogg",
+          "subtitles": "That is... intriguing.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "a4bc122f-61b4-4d48-baa3-65dda06a229a",
+      "name": "Translation buffer",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "17145a9d-e56b-4b7c-a651-0033ccdaa941",
+          "hero": "Bastion",
+          "voice": "Bastion_-_(curious_beeps)_(2).ogg",
+          "subtitles": "**curious beeps**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6df5ca04-d04a-4b87-a847-99feed32d1b3",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_(hamster_noises)_(6).ogg",
+          "subtitles": "**hamster noises**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6ccd0ae0-b715-4d61-a061-7c19e607abd5",
+          "hero": "Bastion",
+          "voice": "Bastion_-_(fascinated_beeps).ogg",
+          "subtitles": "**fascinated beeps**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d1644d1c-a2c9-40f8-91bf-085bcde5d972",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Alert_translation_buffer_full.ogg",
+          "subtitles": "Alert: translation buffer full.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "46a62ae3-1938-4add-92da-58ad879531fd",
+      "name": "Eating Birdfeed",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "11d14f14-ec59-4797-9ce8-ffd93a1b000f",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Hammond,_did_you_eat_Ganymede's_birdfeed_again.ogg",
+          "subtitles": "Hammond, did you eat Ganymede's birdfeed again?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f03e67a6-c561-442f-8774-cff1401a8e65",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_asks_whether_it's_still_called_birdfeed_if_a_hamster_eats_it.ogg",
+          "subtitles": "He asks whether it's still called birdfeed if a hamster eats it.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "dc63009c-44cf-4b89-9644-a6ed74daeba7",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_That's_a_shame._I'll_be_giving_these_cookies_I_made_to_teammates_who_deserve_them.ogg",
+          "subtitles": "That's a shame! I'll be giving these cookies I made to teammates who deserve them...",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "9a1f2095-e4fa-447e-8127-b26d7e08c1e0",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Translation_failure._Profanity_database_error.ogg",
+          "subtitles": "Translation failure. Profanity database error.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "176ebeba-47c1-4966-bc65-80ec5f1a36b7",
+      "name": "A lot of Armor",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "d0da4d9b-310d-46b9-9868-f2ac93368119",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_You've_got_a_lot_of_armor_for_a_little_guy.ogg",
+          "subtitles": "You've got a lot of armor for a little guy!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e781e654-efce-4866-a364-43fff9a9cd45",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_hamster's_temper_is_rising.ogg",
+          "subtitles": "The hamster's temper is rising.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "84b45775-bbf1-4235-a605-14dd7da203d2",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_I_wonder_how_Mitzi_would_look_in_armor_like_that.ogg",
+          "subtitles": "I wonder how Mitzi would look in armor like that...",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "60719978-30f6-45d6-abc3-259be42007af",
+      "name": "Make me Something else",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "915ba00d-3353-466a-b0cf-f43f724613fd",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Champ,_I_need_ya_to_make_me_something_else.ogg",
+          "subtitles": "Champ! I need ya to make me something else.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ba7ff39d-da9a-4bfd-879b-edbbd5a2ef8f",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_A_robot_guard_dog_for_me_dirt_garden._Maybe_it_can_fly,_you_decide.ogg",
+          "subtitles": "A robot guard dog for me dirt garden. Maybe it can fly. You decide.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "23e23a14-94ab-439f-911a-fd6b8e9b1ff0",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_A_suit_of_armor,_right,_but_one_that_shouts_my_name.ogg",
+          "subtitles": "A suit of armor, right? But one... that shouts my name!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2587fdae-e2ce-484a-8fe4-f94905b82299",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_I_need_a_slop_bucket_that's_bulletproof_and_don't_you_dare_ask_why.ogg",
+          "subtitles": "I need a slop bucket that's bulletproof, and don't you dare ask why!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "80588b8c-3862-4b5e-9b47-53163efedb8c",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_A_grenade_launcher_with_one_trigger,_three_barrels._Paint,_glitter,_and_nails.ogg",
+          "subtitles": "A grenade launcher with one trigger, three barrels. Paint, glitter, and nails.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a4fd117d-3bf5-41a3-bf88-7a55710efaa4",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_says,_fine,_but_give_me_a_challenge_next_time.ogg",
+          "subtitles": "He says, \"fine, but give me a challenge next time.\"",
+          "render": "Heroic.png"
+        }
+      ],
+      "paths": [
+        {
+          "id": "a1c2d3e4-f005-4000-8000-607199780001",
+          "label": "Robot guard dog",
+          "lineIds": [
+            "915ba00d-3353-466a-b0cf-f43f724613fd",
+            "ba7ff39d-da9a-4bfd-879b-edbbd5a2ef8f",
+            "a4fd117d-3bf5-41a3-bf88-7a55710efaa4"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f005-4000-8000-607199780002",
+          "label": "Shouting armor",
+          "lineIds": [
+            "915ba00d-3353-466a-b0cf-f43f724613fd",
+            "23e23a14-94ab-439f-911a-fd6b8e9b1ff0",
+            "a4fd117d-3bf5-41a3-bf88-7a55710efaa4"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f005-4000-8000-607199780003",
+          "label": "Bulletproof slop bucket",
+          "lineIds": [
+            "915ba00d-3353-466a-b0cf-f43f724613fd",
+            "2587fdae-e2ce-484a-8fe4-f94905b82299",
+            "a4fd117d-3bf5-41a3-bf88-7a55710efaa4"
+          ]
+        },
+        {
+          "id": "a1c2d3e4-f005-4000-8000-607199780004",
+          "label": "Glitter grenade launcher",
+          "lineIds": [
+            "915ba00d-3353-466a-b0cf-f43f724613fd",
+            "80588b8c-3862-4b5e-9b47-53163efedb8c",
+            "a4fd117d-3bf5-41a3-bf88-7a55710efaa4"
+          ]
+        }
+      ],
+      "selectedPathId": "a1c2d3e4-f005-4000-8000-607199780002"
+    },
+    {
+      "id": "8f46450a-ed32-441f-8db3-56360a2c7edc",
+      "name": "No Autographs",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "fce48543-4bf6-42c4-9bd8-71aa209873e9",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_The_champ_himself!_Can_you_sign_my_forehead.ogg",
+          "subtitles": "The Champ himself! Can you sign my forehead?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b30b0401-5cd0-4e04-867f-cece000d26d8",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_does_not_do_autographs.ogg",
+          "subtitles": "He does not do autographs.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "d85191ef-289b-445e-91de-0e16b64e8871",
+      "name": "Wombat Pilot",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "051cde5f-5238-46c2-952f-59801e346733",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Hey,_Champ,_why've_you_got_that_wombat_riding_around_with_you.ogg",
+          "subtitles": "Hey, Champ! Why've you got that wombat riding around with ya?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b619bbac-dc43-4741-aa33-b9bc485cdda8",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_is_the_pilot.ogg",
+          "subtitles": "He is the pilot.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "30862aea-4539-4e38-ab87-90ac7c86f9d3",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Ha!_And_I'm_President_of_the_Moon!_Seriously_though,_what's_he_for.ogg",
+          "subtitles": "Ha! And I'm \"President of the Moon!\" Seriously though, what's he for...?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "551f7358-b13d-4c55-b26c-0570686bf311",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Please_move_along.ogg",
+          "subtitles": "Please move along.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "a785f200-c393-444e-a767-e3a3910731c1",
+      "name": "Glorious victories",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "98e4e154-738d-4a42-954b-f5bb557f39f2",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Champ!_Which_of_your_glorious_victories_was_your_favorite.ogg",
+          "subtitles": "Champ! Which of your glorious victories was your favorite?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c21f5903-b7ef-4cac-9dc1-9c2f9d783dff",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_hamster_is_tired_of_your_questions.ogg",
+          "subtitles": "The hamster is tired of your questions.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "13d91c81-869e-4fb5-9809-d70dae772ea1",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Mine_was_when_you_beat_Three-Arm_Luke._Oh,_you_gave_him_the_what-for.ogg",
+          "subtitles": "Mine was when you beat Three-Arm Luke. Oh, you gave him the what-for!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "9001201e-4ad0-4dd7-a5b8-731446ddcc8f",
+      "name": "Delicious",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "664bfd82-2834-451b-be85-542d753ad45e",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_Be_advised,_the_hamster_has_an_instinctive_fear_of_foxes.ogg",
+          "subtitles": "Be advised: the hamster has an instinctive fear of foxes.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d91c1687-3ebd-4517-a242-8bdfb3a7c3bd",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Is_it_because_he_looks_delicious.ogg",
+          "subtitles": "Is it because he looks delicious?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a358d2be-1ece-4ffa-96c5-2127186c995c",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_says,_yes,_and_damn_right_I_do.ogg",
+          "subtitles": "He says, \"Yes, and damn right I do.\"",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "186ceca4-6d59-4ebb-a498-51f5f348be61",
+      "name": "Message for the Fox",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "75e577cb-8e77-4a96-956c-149d877a90e0",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_hamster_has_a_message_for_your_fox.ogg",
+          "subtitles": "The hamster has a message for your fox.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "22654d78-618e-4e7d-8127-80cec0119f7b",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_That's_not_how_it_works.ogg",
+          "subtitles": "...That's not how it works.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2de1d2c3-b149-4957-a6e1-b0d284d20d55",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_mammal_is_disappointed.ogg",
+          "subtitles": "The mammal is disappointed.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "058b4793-cbe1-4cba-8aa0-44c56c4cdbad",
+      "name": "You're Welcome",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "39594351-0dea-4c33-a7c2-a08916e90e6d",
+          "hero": "Torbjörn",
+          "voice": "Torbjörn_-_Hey._Someone_repaired_my_turret_while_I_was_napping.ogg",
+          "subtitles": "Hey! Someone repaired my turret while I was napping!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "1e0ec6cd-98a9-4e2f-bb4b-0c9466346a1f",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_says,_you're_welcome_(2).ogg",
+          "subtitles": "He says, \"you're welcome.\"",
           "render": "Heroic.png"
         }
       ]

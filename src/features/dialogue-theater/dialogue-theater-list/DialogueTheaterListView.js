@@ -27,7 +27,7 @@ import {
     conversationUnfinishedSummary,
 } from '../data/dialogueTheaterConversationValidation.js';
 import {
-    conversationPassesDialogueTheaterFilters,
+    conversationMatchesHeroFilters,
     getHeroFiltersFromStandaloneActiveFilters,
     isDialogueTheaterHeroFilterActive,
 } from './dialogueTheaterHeroFilter.js';
@@ -56,6 +56,52 @@ function manifestHeroesForPairSearch() {
     return Array.isArray(fs?.heroes) ? fs.heroes : [];
 }
 
+/** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
+let listThumbAssets = null;
+
+/** @type {Map<string, string[]>|null} */
+let duplicateLookupCache = null;
+
+/** @type {boolean} */
+let forceFullListRebuild = false;
+
+/** @type {boolean} */
+let renderListScheduled = false;
+
+/** @type {HTMLElement|null} */
+let renderListRoot = null;
+
+function invalidateListCaches(options = {}) {
+    duplicateLookupCache = null;
+    if (options.fullRebuild) forceFullListRebuild = true;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {Map<string, string[]>}
+ */
+function getDuplicateLookup(conversations) {
+    if (!duplicateLookupCache) {
+        duplicateLookupCache = buildConversationDuplicateLookup(conversations);
+    }
+    return duplicateLookupCache;
+}
+
+/**
+ * @param {HTMLElement} root
+ */
+function scheduleRenderList(root) {
+    renderListRoot = root;
+    if (renderListScheduled) return;
+    renderListScheduled = true;
+    requestAnimationFrame(() => {
+        renderListScheduled = false;
+        const host = renderListRoot;
+        renderListRoot = null;
+        if (host instanceof HTMLElement) renderList(host);
+    });
+}
+
 /**
  * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
  */
@@ -70,9 +116,10 @@ function getFilteredConversations() {
         const manifestHeroes = manifestHeroesForPairSearch();
         rows = rows.filter((row) => conversationMatchesCharacterPair(row, pairA, pairB, manifestHeroes));
     } else {
-        rows = rows.filter((row) =>
-            conversationPassesDialogueTheaterFilters(row, window.standaloneActiveFilters),
-        );
+        const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
+        if (heroFilters.length) {
+            rows = rows.filter((row) => conversationMatchesHeroFilters(row, heroFilters));
+        }
     }
 
     const q = searchQuery.trim();
@@ -82,9 +129,6 @@ function getFilteredConversations() {
 
     return [...rows].sort(compareConversationListOrder);
 }
-
-/** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
-let listThumbAssets = null;
 
 /** @param {string} value */
 function escapeHtml(value) {
@@ -151,6 +195,36 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
 }
 
 /**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} row
+ * @param {Map<string, string[]>} duplicateLookup
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {HTMLElement}
+ */
+function buildConversationListItem(row, duplicateLookup, conversations) {
+    const item = document.createElement('article');
+    item.className = 'event-item';
+    item.dataset.conversationId = row.id;
+    item.setAttribute('role', 'listitem');
+    syncConversationListItemState(item, row, duplicateLookup);
+    item.appendChild(buildConversationThumb(row, duplicateLookup, conversations));
+    return item;
+}
+
+/**
+ * @param {HTMLElement} item
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} row
+ * @param {Map<string, string[]>} duplicateLookup
+ */
+function syncConversationListItemState(item, row, duplicateLookup) {
+    item.classList.toggle('unsaved', dialogueTheaterDataService.isConversationUnsaved(row.id));
+    const voicelines = listThumbAssets?.voicelines || [];
+    item.classList.toggle(
+        'event-item--unfinished',
+        conversationHasUnfinishedIssues(row, voicelines, duplicateLookup),
+    );
+}
+
+/**
  * @param {HTMLElement} root
  */
 function syncSaveButtonState(root) {
@@ -166,13 +240,14 @@ function syncSaveButtonState(root) {
 
 /**
  * @param {HTMLElement} root
+ * @param {number} [visibleCount]
  */
-function updateListCount(root) {
+function updateListCount(root, visibleCount) {
     const countEl = root.querySelector('#dialogueTheaterListCount');
     if (!countEl) return;
 
     const total = dialogueTheaterDataService.conversations.length;
-    const visible = getFilteredConversations().length;
+    const visible = visibleCount ?? getFilteredConversations().length;
     const q = searchQuery.trim();
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
@@ -200,12 +275,14 @@ function renderList(root) {
 
     const rows = getFilteredConversations();
     const allConversations = dialogueTheaterDataService.conversations;
-    const duplicateLookup = buildConversationDuplicateLookup(allConversations);
-    updateListCount(root);
+    const duplicateLookup = getDuplicateLookup(allConversations);
+    updateListCount(root, rows.length);
 
-    listEl.innerHTML = '';
+    const useIncremental = !forceFullListRebuild;
+    forceFullListRebuild = false;
 
     if (rows.length === 0) {
+        listEl.innerHTML = '';
         const empty = document.createElement('p');
         empty.className = 'dialogue-theater-list__empty';
         const q = searchQuery.trim();
@@ -230,23 +307,46 @@ function renderList(root) {
         return;
     }
 
-    for (const row of rows) {
-        const item = document.createElement('article');
-        item.className = 'event-item';
-        item.dataset.conversationId = row.id;
-        item.setAttribute('role', 'listitem');
-        if (dialogueTheaterDataService.isConversationUnsaved(row.id)) {
-            item.classList.add('unsaved');
-        }
-        const voicelines = listThumbAssets?.voicelines || [];
-        item.classList.toggle(
-            'event-item--unfinished',
-            conversationHasUnfinishedIssues(row, voicelines, duplicateLookup),
-        );
+    listEl.querySelector('.dialogue-theater-list__empty')?.remove();
 
-        item.appendChild(buildConversationThumb(row, duplicateLookup, allConversations));
-        listEl.appendChild(item);
+    if (!useIncremental) {
+        listEl.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+        for (const row of rows) {
+            fragment.appendChild(buildConversationListItem(row, duplicateLookup, allConversations));
+        }
+        listEl.appendChild(fragment);
+        syncSaveButtonState(root);
+        return;
     }
+
+    /** @type {Map<string, HTMLElement>} */
+    const existingById = new Map();
+    listEl.querySelectorAll('.event-item[data-conversation-id]').forEach((node) => {
+        if (!(node instanceof HTMLElement)) return;
+        const id = node.dataset.conversationId || '';
+        if (id) existingById.set(id, node);
+    });
+
+    const visibleIds = new Set(rows.map((row) => row.id));
+    for (const [id, element] of existingById) {
+        if (!visibleIds.has(id)) {
+            element.remove();
+            existingById.delete(id);
+        }
+    }
+
+    const fragment = document.createDocumentFragment();
+    for (const row of rows) {
+        let item = existingById.get(row.id);
+        if (!item) {
+            item = buildConversationListItem(row, duplicateLookup, allConversations);
+        } else {
+            syncConversationListItemState(item, row, duplicateLookup);
+        }
+        fragment.appendChild(item);
+    }
+    listEl.appendChild(fragment);
 
     syncSaveButtonState(root);
 }
@@ -258,7 +358,7 @@ function wireSearch(root) {
     const searchInput = root.querySelector('#dialogueTheaterSearchInput');
     searchInput?.addEventListener('input', () => {
         searchQuery = searchInput instanceof HTMLInputElement ? searchInput.value : '';
-        renderList(root);
+        scheduleRenderList(root);
     });
 }
 
@@ -383,9 +483,11 @@ export async function mountDialogueTheaterListView(container) {
 
     searchQuery = '';
     pairSearchControls = null;
+    invalidateListCaches({ fullRebuild: true });
     onListChange = () => {
+        invalidateListCaches({ fullRebuild: true });
         pairSearchControls?.refreshSpeakerOptions?.();
-        renderList(container);
+        scheduleRenderList(container);
     };
     setDialogueTheaterInfoPanelListRefresh(onListChange);
     wireToolbar(container);
@@ -395,7 +497,7 @@ export async function mountDialogueTheaterListView(container) {
     listThumbAssets = await loadDialogueTheaterAssets();
     pairSearchControls = await wireDialogueTheaterPairSearch(container, {
         getConversations: () => dialogueTheaterDataService.conversations,
-        onChange: () => renderList(container),
+        onChange: () => scheduleRenderList(container),
     });
     renderList(container);
 
@@ -427,6 +529,9 @@ export function unmountDialogueTheaterListView(container) {
     searchQuery = '';
     pairSearchControls = null;
     listThumbAssets = null;
+    invalidateListCaches();
+    renderListScheduled = false;
+    renderListRoot = null;
     container?.remove();
 }
 
@@ -445,5 +550,6 @@ export function isDialogueTheaterListActive() {
 /** Refresh list when globe filter chips change (hero-only in theater mode). */
 export function syncDialogueTheaterListIfActive() {
     if (!isDialogueTheaterListActive()) return;
-    onListChange?.();
+    const host = document.getElementById(HOST_ID);
+    if (host instanceof HTMLElement) scheduleRenderList(host);
 }

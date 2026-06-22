@@ -71,10 +71,33 @@ export function getSoloPreviewLine(conversation) {
 }
 
 /**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine[]} lines
+ * @returns {Map<string, 'left'|'right'>}
+ */
+export function buildSpeakerSideMap(lines) {
+    /** @type {Map<string, 'left'|'right'>} */
+    const map = new Map();
+    for (const line of lines) {
+        const hero = String(line?.hero || '').trim();
+        if (!hero || map.has(hero)) continue;
+        map.set(hero, map.size === 0 ? 'left' : 'right');
+        if (map.size >= 2) break;
+    }
+    return map;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine[]} lines
  * @param {number} lineIndex
  * @returns {'left'|'right'}
  */
-export function sideForLineIndex(lineIndex) {
+export function sideForLineIndex(lineIndex, lines = []) {
+    const hero = String(lines[lineIndex]?.hero || '').trim();
+    if (hero) {
+        const sideMap = buildSpeakerSideMap(lines);
+        const side = sideMap.get(hero);
+        if (side) return side;
+    }
     return lineIndex % 2 === 0 ? 'left' : 'right';
 }
 
@@ -109,7 +132,17 @@ export function getConversationIdleRenderPair(conversation, rendersMap) {
     }
 
     const lines = resolveActiveConversationLines(conversation);
-    const left = lines[0] ? getLineRenderSrc(lines[0], rendersMap) : '';
-    const right = lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '';
+    const sideMap = buildSpeakerSideMap(lines);
+    const speakers = [...sideMap.keys()];
+    const leftLine =
+        speakers[0] != null
+            ? lines.find((line) => String(line?.hero || '').trim() === speakers[0]) || lines[0]
+            : lines[0] || null;
+    const rightLine =
+        speakers[1] != null
+            ? lines.find((line) => String(line?.hero || '').trim() === speakers[1]) || lines[1]
+            : lines[1] || null;
+    const left = leftLine ? getLineRenderSrc(leftLine, rendersMap) : '';
+    const right = rightLine ? getLineRenderSrc(rightLine, rendersMap) : '';
     return { left, right };
 }

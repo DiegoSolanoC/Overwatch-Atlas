@@ -4,6 +4,7 @@
     background: #000;
     pointer-events: auto;
     cursor: default;
+    overflow: visible;
 }
 
 /* Story overlay defaults imgs to opacity 0 until fade-in; theater stage must stay visible */
@@ -22,7 +23,8 @@
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     align-items: stretch;
     justify-content: stretch;
 }
@@ -31,9 +33,15 @@
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     background: #050a12;
     --dialogue-box-bottom: clamp(18px, 3vh, 32px);
+    /* Info-panel stage renders — bigger, lower, pulled inward vs list thumbnails */
+    --stage-render-bottom: -14%;
+    --stage-render-max-height: min(210%, 2200px);
+    --stage-render-max-width: min(118%, 1400px);
+    --stage-render-inset-x: 16%;
 }
 
 body:has(#paginationDock) .dialogue-theater-stage {
@@ -60,12 +68,12 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
 .dialogue-theater-stage__render {
     position: absolute;
-    bottom: -16%;
+    bottom: var(--stage-render-bottom, -14%);
     z-index: 2;
     width: auto;
     height: auto;
-    max-height: min(240%, 2400px);
-    max-width: min(140%, 1680px);
+    max-height: var(--stage-render-max-height, min(210%, 2200px));
+    max-width: var(--stage-render-max-width, min(118%, 1400px));
     object-fit: contain;
     object-position: center bottom;
     opacity: 1;
@@ -80,13 +88,13 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
 .dialogue-theater-stage__render--left {
     left: 0;
-    transform: translateX(-30%);
+    transform: translateX(calc(-1 * var(--stage-render-inset-x, 16%)));
     transform-origin: bottom left;
 }
 
 .dialogue-theater-stage__render--right {
     right: 0;
-    transform: translateX(30%);
+    transform: translateX(var(--stage-render-inset-x, 16%));
     transform-origin: bottom right;
 }
 
@@ -95,11 +103,11 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 }
 
 .dialogue-theater-stage__render--left.dialogue-theater-stage__render--speaking {
-    transform: translateX(-30%) scale(1.04) translateY(-6px);
+    transform: translateX(calc(-1 * var(--stage-render-inset-x, 16%))) scale(1.05) translateY(-6px);
 }
 
 .dialogue-theater-stage__render--right.dialogue-theater-stage__render--speaking {
-    transform: translateX(30%) scale(1.04) translateY(-6px);
+    transform: translateX(var(--stage-render-inset-x, 16%)) scale(1.05) translateY(-6px);
 }
 
 .dialogue-theater-stage__dialogue {
@@ -205,26 +213,19 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 }
 
 @media (max-width: 768px) {
-    .dialogue-theater-stage__render {
-        bottom: -14%;
-        max-height: 220%;
-        max-width: 148%;
-    }
-
-    .dialogue-theater-stage__render--left {
-        transform: translateX(-34%);
-    }
-
-    .dialogue-theater-stage__render--right {
-        transform: translateX(34%);
+    .dialogue-theater-stage {
+        --stage-render-bottom: -12%;
+        --stage-render-max-height: min(195%, 1800px);
+        --stage-render-max-width: min(122%, 1200px);
+        --stage-render-inset-x: 18%;
     }
 
     .dialogue-theater-stage__render--left.dialogue-theater-stage__render--speaking {
-        transform: translateX(-34%) scale(1.04) translateY(-6px);
+        transform: translateX(calc(-1 * var(--stage-render-inset-x, 18%))) scale(1.05) translateY(-6px);
     }
 
     .dialogue-theater-stage__render--right.dialogue-theater-stage__render--speaking {
-        transform: translateX(34%) scale(1.04) translateY(-6px);
+        transform: translateX(var(--stage-render-inset-x, 18%)) scale(1.05) translateY(-6px);
     }
 
     .dialogue-theater-stage__dialogue {

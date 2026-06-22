@@ -126,7 +126,7 @@ export function isDialogueTheaterHeroFilterActive(activeFilters) {
 export function conversationPassesDialogueTheaterFilters(
     conversation,
     activeFilters = typeof window !== 'undefined' ? window.standaloneActiveFilters : null,
+    heroFilters = getHeroFiltersFromStandaloneActiveFilters(activeFilters),
 ) {
-    const heroFilters = getHeroFiltersFromStandaloneActiveFilters(activeFilters);
     return conversationMatchesHeroFilters(conversation, heroFilters);
 }

@@ -69,12 +69,12 @@
 
 :is(#dialogueTheaterList) .dialogue-theater-list-thumb__render {
     position: absolute;
-    bottom: -10%;
+    bottom: 0;
     z-index: 2;
     width: auto;
     height: auto;
-    max-height: 94%;
-    max-width: 78%;
+    max-height: 88%;
+    max-width: 72%;
     object-fit: contain;
     object-position: center bottom;
     pointer-events: none;

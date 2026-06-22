@@ -57,9 +57,12 @@ export function conversationIncludesCharacter(conversation, characterName, manif
     const query = String(characterName || '').trim();
     if (!query) return true;
 
-    return getConversationSpeakerNames(conversation).some((speaker) =>
-        characterNamesMatch(speaker, query, manifestHeroes),
-    );
+    for (const line of conversation?.lines || []) {
+        const hero = String(line?.hero || '').trim();
+        if (hero && characterNamesMatch(hero, query, manifestHeroes)) return true;
+    }
+
+    return false;
 }
 
 /**

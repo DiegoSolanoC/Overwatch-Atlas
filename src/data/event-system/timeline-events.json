@@ -4517,42 +4517,38 @@
     {
       "name": "Sloan Cameron is Born",
       "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
+      "cityDisplayName": "Nova Scotia, Canada",
       "description": "On August 6th of 2052, Sloan Cameron was Born in Nova Scotia. Intrpid and curious since they were a child, with an affinity to find lost objects. Their family moved often. To Nevada,  then Buenos Aires, Reykjavik, Mexico City, Singapore, back and forward always on the move. For Sloan each trip was a new expedition, a chance to unearth trinked and traces of the past, born in a world left in ruin after the war meant everywhere they went, there was lost history to be found",
       "image": "",
       "sources": [
         {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+          "text": "Overwatch Website, Venture",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/venture/"
         }
       ],
-      "headlines": [
-        "Mexico goes dark following the shutdown of Xibalba"
-      ],
-      "lat": 19.1738,
-      "lon": -96.1342,
+      "headlines": [],
+      "lat": 45.1960403,
+      "lon": -63.1653789,
       "eraName": "The Omnic Crisis",
-      "yearStart": 2051,
+      "yearStart": 2052,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": "Xibalbá is shut down leading to nation wide blackouts"
-        }
-      ],
-      "yearEnd": 2053,
-      "factionFilterPlaces": [
+          "locationName": "Nova Scotia, Canada",
+          "country": "Canada,",
+          "reasoning": "Sloan Cameron"
+        },
         {
           "locationName": "",
-          "country": "Anubis Directives, Los Muertos,",
-          "reasoning": "Hundreds of people die during blackouts, leading to resentment with the government"
+          "country": "United States, Argentina, Iceland, Mexico, Singapore,",
+          "reasoning": "Sloan's Family is constantly on the move"
         }
       ],
-      "npcFilterPlaces": [
+      "yearEnd": null,
+      "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "Forces Xibalbá's shut down"
+          "country": "Venture,",
+          "reasoning": "Sloan Cameron is Born"
         }
       ]
     },
@@ -8965,10 +8961,10 @@
       ]
     },
     {
-      "name": "Hacking Addiction",
+      "name": "Hacking Spree",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "No description available.",
+      "description": "A growing anti-government sentiment began to spread around Mexico following the creation and expansion of Lumérico, as many believed that the reconstruction primarily benefited the rich and influential, while those who needed help the most were left behind.\n\nAfter years of Energy Equity under the beloved Xibalba program, Lumérico's lack of commitment to upholding the lead to resentment among the people, and gave birth to Los Muertos.\nA criminal group labeling themselves after the millions that died during the dark days of the Crisis, left behind by their own Government. One of their strongest assets was, surprisingly enough, a young girl.\n\nOlivia Colomar was one of many left orphaned by the Crisis, and she endured the dark days alone in the cold, and with much of the country's infrastructure gone after the Crisis, she survived through a natural gift for computer programming, learning how to hack her way through any system to get by. When los Muertos took her underneath their wing, she welcomed them and even began to assist using her unique skills. Thanks to Olivia los Muertos, was able to get multiple hits against Lumérico and the government as a whole, and nobody in her community really suspected the nice little girl to be robbing them right under their noses.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -8979,25 +8975,38 @@
         {
           "locationName": "Dorado, Mexico",
           "country": "Mexico",
-          "reasoning": ""
+          "reasoning": "Los"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sombra",
-          "reasoning": ""
+          "reasoning": "Survives by hacking her way through the system"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Los Muertos",
-          "reasoning": ""
+          "reasoning": "Recruit a young hacker into their ranks"
+        },
+        {
+          "locationName": "",
+          "country": "Lumérico Incorporated,",
+          "reasoning": "Fails to deliver energy equity"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Another wave of hacking incidents hit several high profile banks in Mexico",
+        "Los Muertos expand their turf outside of Veracruz"
+      ],
+      "sources": [
+        {
+          "text": "Sombra Origin Story",
+          "url": "https://www.youtube.com/watch?v=vHHjdKMH7_w"
+        }
+      ]
     },
     {
       "name": "Biolight",
@@ -10508,7 +10517,7 @@
       "name": "Forced Retirement",
       "locationType": "earth",
       "cityDisplayName": "Asuncion, Paraguay",
-      "description": "",
+      "description": "Reinhardt was well into his fifties by now, but his enthusiasm for battle was as young as always. Over the years, he had been offered promotions and out-of-combat positions, but he had always refused, choosing to stay as an active part of the strike team alongside the younger agents.\n\nDuring a Global Security Summit in Asunción, Paraguay,a terrorist known as the Hivemind attacked, using unique drone technology to lock herself in with proprietary security data, using fifty high-profile hostages as leverage. Reinhardt was dispatched to command the rescue, and had been ordered to hold still while negotiations took place. The situation, however, escalated when Hivemind began to dispose of the hostages. Wilhelm realized that if he didn't act now, more lives would be lost, so he defied direct orders to save the remaining hostages.\n\nIn the end, 47 lives were saved, but Hivemind escaped with the data. While many saw his actions as heroic, many nations requested compensation for the stolen data, and Overwatch ended up in a massive scandal. To avoid further controversy. Morrison made the hard choice to force Reinhardt into retirement. Wildhelm was confused and cited his success in Asunción and King's Row as a reason why he should stay, but Vivian and Morrison continued to explain to argue that Overwatch could no longer act with the freedom they used to, and his disobedience had consequences. In the end, Reinhardt had no choice but to leave, and while he spent some time in Germany, he would soon move to Gothenburg to spend time with his God children.",
       "image": "",
       "lat": -25.2800459,
       "lon": -57.6343814,
@@ -10525,29 +10534,55 @@
         {
           "locationName": "Asuncion, Paraguay",
           "country": "Paraguay",
-          "reasoning": ""
+          "reasoning": "Reinhardt disobeys orders during terrorist attack"
+        },
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden,",
+          "reasoning": "Reinhardt moves to Gothenburg following his retirement"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reinhardt, Soldier 76",
-          "reasoning": ""
+          "country": "Reinhardt,",
+          "reasoning": "Forced into retirement for disobeying orders"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Sojourn,",
+          "reasoning": "Argue with Reinhardt over their decision"
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte,",
+          "reasoning": "Bitter about Overwatch's choice to leave Reinhardt out"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Caught in controversy for failure to stop Hivemind"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": "Welcomes Reinhardt home with his god children"
+        }
+      ],
+      "headlines": [
+        "Three hostages killed during Asunción Summit attack",
+        "Overwatch action leads to global security data being stolen"
       ]
     },
     {
       "name": "Fighting the System",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
-      "description": "",
+      "description": "This period of history was marked by an epidemic of social injustice across the world. From the list of Turning Green in Kings Row, to the resurgence of criminal groups like Deadlock, The Deepaea Raiders, Los Muertos, the Hashimoto and especially Talon, now that Overwatch has been kept on a tighter leash. Overwatch itself has endured a long streak of failures and controversies, making many people lose faith in not just them, but the establishment as a whole.\n\nUnder these circumstances, a counterculture movement began to rise in popularity across many places in the world: The Phreaks. Primarily formed by self-proclaimed anarchists and often equipped with illegal body modifications. They rose in popularity amongst protestors for Omnic rights, with many Omnics taking shelter with the group and seeking modifications, looking for a fresh start. While the movement was championed by many as the protector of the oppressed and downtrodden, many of the cells quickly grew radicalized and took their fight against the status quo to a more disruptive, violent level.",
       "image": "",
       "lat": 48.8588897,
       "lon": 2.320041,
@@ -10558,7 +10593,7 @@
         {
           "locationName": "Paris, France",
           "country": "France",
-          "reasoning": "",
+          "reasoning": "The Phreaks begin to spread across the world",
           "lat": 48.8588897,
           "lon": 2.320041
         }
@@ -10567,7 +10602,17 @@
         {
           "locationName": "",
           "country": "Phreaks",
-          "reasoning": ""
+          "reasoning": "An anti stablishment movement quickly turning into anarchist rioters"
+        }
+      ],
+      "headlines": [
+        "Beware of the Phreaks, a new underground movement corrupting our youth",
+        "Phreak rioters clash with Police in Paris"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Hazard",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/hazard/"
         }
       ]
     },
@@ -10575,7 +10620,7 @@
       "name": "La Lupa",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "No description available.",
+      "description": "Marzia grew tired of being pushed aside and swore to prove her own worth, and one day reclaim what Talon took from her. Lucky for her, Rome was the right place for those looking to climb their way to the top, as the Colosseo opened the doors to fame and fortune to any daring enough to participate in the Gladiator games.\n\nMarzia joined the ranks under the title of Vendetta, and while many underestimated her at first, she would conquer any challenge the Colosseo threw at her. She became known as the Wolf of Retribution for the tactic of choice, often letting her opponents have fun, thinking they had a chance, only to hit them twice as hard when she enacted her combat. While this play pretend gained her infamy and hatred, as she climbed up the ranks it would become the very same reason why many adored her. Her fame brought with it many powerful connections in the form of sponsors, some of them members of Talon's council themselves. And through her many wins she would come to acquire a formidable weapon, the Palatine Fang, a massive hardlight great sword, capable of cutting down anything in her path.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -10586,7 +10631,7 @@
         {
           "locationName": "Colosseo, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Vendetta rises to fame in the Roman Colosseo",
           "lat": 41.8933203,
           "lon": 12.4829321
         }
@@ -10595,31 +10640,38 @@
         {
           "locationName": "",
           "country": "Vendetta",
-          "reasoning": ""
+          "reasoning": "Enlists into the Colosseo under the stage name of Vendetta"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Colosseo Gladiatori",
-          "reasoning": ""
+          "reasoning": "The Wolf of Retribution makes a name for herself among the Colosseo ranks"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Titus, Maximus,",
-          "reasoning": ""
+          "reasoning": "Marzia grows to be admired among many Gladiators"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "La Lupa earns yet another victory at the Colosseo games"
+      ],
+      "sources": [
+        {
+          "text": "A New Empire",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
+        }
+      ]
     },
     {
       "name": "Overridden",
       "locationType": "earth",
       "cityDisplayName": "Helsinki, Finland",
-      "description": "No description available.",
+      "description": "After years of service, Emre made the hard choice to leave the strike team behind. Far too many times, the higher ups ignored his pleas and advice, and it often led to tragedy like the many deaths in Samoa during the Polynesian campaign. He had grown tired of how lost protocol had gotten and the level of corruption leadership Reyes was playing in. Freja tried to convince him to stay, valuing him too much as a friend to let him go, but Emre already had his eyes set elsewhere. A security firm in Finland had offered him a position, and he wished to try and continue making a difference outside Overwatch's structure.\n\nLittle is known of what truly happened to him, but his body was heavily modified by cybernetics, turned into a living weapon against his will by an unknown force. The God Ai Chernobog, believed to have shut himself down in the crisis, was implanted into his body, forcing him to follow his orders or else endure as his own mind is overridden into submission. \n\nIt's unknown what the true intentions for Chernobog's actions were, what caused his apparent shift of views towards humanity and what his relationship with those who did this to Emre is, or if the Program might have acted alone. Only one thing remains clear, he sees everything, and his will be enacted.",
       "image": "",
       "lat": 60.1666204,
       "lon": 24.9435408,
@@ -10630,38 +10682,51 @@
         {
           "locationName": "Helsinki, Finland",
           "country": "Finland",
-          "reasoning": ""
+          "reasoning": "Emre leaves Overwatch looking to help the world on the outside"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Emre",
-          "reasoning": ""
+          "reasoning": "Taken by a shadow group and turn into a weapon"
+        },
+        {
+          "locationName": "",
+          "country": "Freja,",
+          "reasoning": "Fails to convince Emre to stay"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Conspiracy",
-          "reasoning": ""
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": "An unknown force using Chernobog and Emre to enact their will on the world"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Chernobog,",
-          "reasoning": ""
+          "reasoning": "Implanted into Emre's cybernetic Chassis"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "MR TGQFFGCHRUIIR",
+        "VGQKCTUS: DBRQJKOKM-KBCTUS FÄYJJCSTRTTY"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Emre",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/emre/"
+        }
+      ]
     },
     {
       "name": "MEKKA",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "No description available.",
+      "description": "Without Overwatch, Korea continued to deal with the occasional rise of a Gwishin attack entirely on their own. The ever evolving thread led Dr. Lim to create the Mobile Exo-Force of the Korean Army, a specialized unit for the testing of technology capable of keeping up with the Gwishin attacks and evolution. The program gave birth to a series of reconfigurable drones that could catch the Colossus by surprise, since, after all, what better way to fight off war bots than to innovate with your own.\n\nFor many years, these drones kept a perpetual stalemate against the Colossus, where they managed to defeat the Gwishin but never outright destroy them, but every few years a new wave of Gwishin would emerge, upgraded to counter the drones. MEKA was able to hold the Gwishin off for now, but the accelerating evolution of the Gwishin was quickly outpacing Lim's team, and following the near leveling of Busan during a particularly harsh encounter, it became clear that the team needed to explore alternative measures if they ever hoped to end the Gwishin for good.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -10678,30 +10743,38 @@
         {
           "locationName": "Busan, South Korea",
           "country": "South Korea",
-          "reasoning": ""
+          "reasoning": "Korea unveils MEKA to fight the Gwishin"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "MEKA",
-          "reasoning": ""
+          "reasoning": "A test program for anti Gwishin drones and weaponry"
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": "Continue to emerge periodically, evolving every time"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Myung,",
-          "reasoning": ""
+          "reasoning": "Commander of the MEKKA Squadron"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Busan nearly leveled following Gwishin attack",
+        "Korea rebeals drone Exo-Force units"
+      ]
     },
     {
       "name": "Missing in Action",
       "locationType": "earth",
       "cityDisplayName": "Warsaw, Poland",
-      "description": "No description available.",
+      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. A Talon Sniper took down most of the rescue squad, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
       "image": "",
       "lat": 52.2333742,
       "lon": 21.0711489,
@@ -10718,40 +10791,48 @@
         {
           "locationName": "Warsaw, Poland",
           "country": "Poland",
-          "reasoning": ""
+          "reasoning": "Ana goes missing during a rescue mission"
+        },
+        {
+          "locationName": "Osa, Costa Rica",
+          "country": "Costa Rica,",
+          "reasoning": "A former member of Ecopoint: Osa is among the hostages"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ana, Widowmaker",
-          "reasoning": ""
+          "reasoning": "Engage in a Sniper duel that takes Ana's cybernetic Eye"
         },
         {
           "locationName": "",
           "country": "Soldier 76,",
-          "reasoning": ""
+          "reasoning": "Commands a  rescue mission in Poland"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
+          "country": "Overwatch, Ecopoints,",
+          "reasoning": "Sends a small squad to rescue scientists"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Kidnaps scientists and Ecopoint: staff"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Ana Amari goes missing during Poland Mission",
+        "Overwatch rescues scientists from Talon kidnapping"
+      ]
     },
     {
       "name": "Another Job, Another Battlefield",
       "locationType": "earth",
       "cityDisplayName": "Port-de-Paix, Haiti",
-      "description": "No description available.",
+      "description": "Talon's influence grew across the world, as they continued to expand their network of control across the Caribbean. The Caribbean Coalition, who had long fought to stay alive against the wishes of local authorities, began to lose influence in the region as Overwatch intervention became less prominent.\n\nMany ex-soldiers, like Baptiste, struggled to find work after their service was complete, and Talon took this as an opportunity to lure in personnel. Desperate for funds to help his community, Baptiste took on the offer. Early missions were easy, and they paid well, allowing Baptiste to get a taste of the good life and use the remaining money to support his local clinic.\n\nIt did not take long until the missions escalated, becoming more violent assassinations and resulting in many civilian casualties. Baptiste and the many other ex-Coalition mercenaries that took Talon's deal would go on to completely disrupt life on many of their own Islands, undoing years of the process they had achieved under the Coalition, all for a quick buck. It did not take long for Baptiste to begin feeling haunted by his actions, and question if he should even attempt to leave, but, of course, the only real way to leave Talon was in a coffin.",
       "image": "",
       "lat": 20.0410035,
       "lon": -72.785587,
@@ -10768,30 +10849,33 @@
         {
           "locationName": "Port-de-Paix, Haiti",
           "country": "Haiti",
-          "reasoning": ""
+          "reasoning": "Talon enlists several mercenaries from the Caribbean Coalition"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Baptiste",
-          "reasoning": ""
+          "reasoning": "Joins Talon to help his home clinic but quickly regrets it"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Caribbean Coalition, Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Ex Coaltion Soldiers are Hired into Talon"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Talon attacks distabilize many communities across the Caribbean",
+        "Ex Coalition personnel caught dealing with Talon Agents"
+      ]
     },
     {
       "name": "Fun with Friends",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
-      "description": "No description available.",
+      "description": "Over the years. The Deepsea Raider activities died down. With Overwatch out of the way, the world learned to fear Polynesian Waters and eventually their interventions began to become less common.\n\nMauga, however, was still thirsty for some fun, and the news of a New Doomfist taking over the gauntlet had just reached him. And it picked his interest. The mad man tracked down Akande, seeing him as a worthy opponent and challenged him to a no-rules, anything goes' fight, to which Akande agreed, sensing something was different about Mauga. After the long battle ended with a draw, both exhausted and unwilling to admit defeat, Doomfist was impressed by his ability and offered Mauga a place in Talon, where he could have regular upgrades and maintenance for his two hearts, and all the chaos in the world for his desires.\n\nMauga was placed in Captain Cuerva's unit, the same as Baptiste. The two became surprisingly close, with Baptiste being one of the few people able to see through his facades and calm him down. The Unit wrecked chaos across both the Pacific and the Caribbean, and with Mauga leading the charge, entire cities burned down for his entertainment.",
       "image": "",
       "lat": 45.4371908,
       "lon": 12.3345898,
@@ -10802,7 +10886,7 @@
         {
           "locationName": "Venice, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Mauga Challenges Doomfist to an anything goes brawl",
           "lat": 45.4371908,
           "lon": 12.3345898
         }
@@ -10811,22 +10895,34 @@
         {
           "locationName": "",
           "country": "Mauga, Doomfist",
-          "reasoning": ""
+          "reasoning": "Fight to the death but end up in a draw, Doomfist offers Mauga a Place in Talon"
+        },
+        {
+          "locationName": "",
+          "country": "Baptiste,",
+          "reasoning": "Placed in the same Unit as Mauga, they quickly become close"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Deepsea Raiders, Talon Empire,",
-          "reasoning": ""
+          "country": "Deepsea Raiders,",
+          "reasoning": "Activity dies down after Overwatch leaves the region"
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Begins to launch attacks across the Pacific"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Talon troops seen terrorizing pacific Islands"
+      ],
       "sources": []
     },
     {
       "name": "Ghost",
-      "description": "No description available.",
+      "description": "In truth, Ana had survived her encounter with the Widowmaker, although it left her severely wounded and resulted in the loss of her cybernetic eye, which she chose never to repair. Ana was taken to a hospital under the care of Dr. Lee. Her injuries left her in a long coma, going by the generic Polish name of Janina Kowalska. When she woke up she did not remember who she was.\n\nDuring her recovery, Ana wrestled with her years of service, and all the pain she caused as her memory began to come back. At her advanced age she began to resent the reputation she had earned, as one of the most efficient killers in the world. These haunted memories of an image of herself she no longer claimed and the wounded ego from her sniper duel lead her to request her doctor to retain her anonymity.\n\nAna now believed the world would be better believing she was dead, even her own daughter, as she feared Fareeha expected the fearless Captain Amari to return, not who Ana had become. And she remained a ghost for years, ensuring Overwatch never found her.",
       "locationType": "earth",
       "lat": 52.2333742,
       "lon": 21.0711489,
@@ -10835,9 +10931,43 @@
       "yearStart": 2069,
       "yearEnd": 2070,
       "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
-      "sources": []
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Warsaw,  Poland",
+          "country": "Poland",
+          "reasoning": "Ana wakes up from a coma in Poland"
+        }
+      ],
+      "headlines": [
+        "Overwatch declares Ana Amari as deceased"
+      ],
+      "sources": [
+        {
+          "text": "Bastet",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
+        },
+        {
+          "text": "Lost Ghosts",
+          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/lost-ghosts/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pharah,",
+          "reasoning": "Mourns the loss of her mother"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Reaper,",
+          "reasoning": "Continue to escalate in confrontations without Ana mediating"
+        }
+      ]
     },
     {
       "name": "Disappeared",
@@ -12363,6 +12493,29 @@
           "locationName": "",
           "country": "Junker Monarchy,",
           "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Summit Squad",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "yearStart": 2073,
+      "yearEnd": 2079,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "",
+          "lat": 39.1131257,
+          "lon": -108.0127646
         }
       ],
       "headlines": [],
@@ -17112,6 +17265,21 @@
       ]
     },
     {
+      "name": "The Gibraltar Attack",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "From the Ashes",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
@@ -17468,6 +17636,29 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "The Tiger's Den",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Progress",

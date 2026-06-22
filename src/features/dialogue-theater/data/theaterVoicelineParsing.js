@@ -159,8 +159,31 @@ import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
  */
 export function normalizeSubtitlesForMatch(text) {
     return normalizeVoicelineSearch(
-        stripDialogueSubtitleMarkup(text).replace(/[.,!?;:'"()]+/g, ' '),
+        stripDialogueSubtitleMarkup(text)
+            .replace(/[\u2018\u2019\u201C\u201D`]/g, '')
+            .replace(/[.,!?;:'"()]+/g, ' '),
     );
+}
+
+/** Minimum normalized length for a partial subtitle ↔ filename match. */
+const MIN_PARTIAL_VOICELINE_MATCH_LEN = 10;
+
+/**
+ * @param {string} target normalized subtitle text
+ * @param {string} candidate normalized voiceline dialogue
+ * @returns {number}
+ */
+function scorePartialVoicelineMatch(target, candidate) {
+    if (!target || !candidate) return 0;
+    if (target === candidate) return Number.POSITIVE_INFINITY;
+
+    const shorter = Math.min(target.length, candidate.length);
+    const longer = Math.max(target.length, candidate.length);
+    if (shorter < MIN_PARTIAL_VOICELINE_MATCH_LEN && longer > shorter * 3) return 0;
+
+    if (target.includes(candidate)) return candidate.length;
+    if (candidate.includes(target)) return target.length;
+    return 0;
 }
 
 /**
@@ -180,13 +203,19 @@ export function findVoicelineForHeroAndSubtitles(heroName, subtitles, voicelines
         if (candidate === target) return file;
     }
 
+    let bestFile = '';
+    let bestScore = 0;
     for (let i = 0; i < pool.length; i += 1) {
         const file = pool[i];
         const candidate = normalizeSubtitlesForMatch(voicelineFilenameToSubtitles(file));
-        if (candidate.includes(target) || target.includes(candidate)) return file;
+        const score = scorePartialVoicelineMatch(target, candidate);
+        if (score > bestScore) {
+            bestScore = score;
+            bestFile = file;
+        }
     }
 
-    return '';
+    return bestScore >= MIN_PARTIAL_VOICELINE_MATCH_LEN ? bestFile : '';
 }
 
 /**

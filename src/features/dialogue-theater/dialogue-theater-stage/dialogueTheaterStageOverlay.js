@@ -12,6 +12,7 @@ import {
     getLineRenderSrc,
     getSoloPreviewLine,
     sideForLineIndex,
+    buildSpeakerSideMap,
     usesSoloSpeakerPreview,
 } from './dialogueTheaterRenderHelpers.js';
 import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
@@ -182,14 +183,19 @@ function paintStage(stage, conversation, activeLineIndex = null) {
 
     if (activeLineIndex == null) {
         const soloSpeaker = usesSoloSpeakerPreview(conversation);
-        const leftLine = soloSpeaker ? getSoloPreviewLine(conversation) : lines[0] || null;
+        const sideMap = buildSpeakerSideMap(lines);
+        const speakers = [...sideMap.keys()];
+        const leftLine = soloSpeaker
+            ? getSoloPreviewLine(conversation)
+            : speakers[0] != null
+              ? lines.find((line) => String(line?.hero || '').trim() === speakers[0]) || lines[0]
+              : lines[0] || null;
+        const rightLine =
+            !soloSpeaker && speakers[1] != null
+                ? lines.find((line) => String(line?.hero || '').trim() === speakers[1]) || lines[1]
+                : null;
         setStageRender(stage, 'left', leftLine ? getLineRenderSrc(leftLine, rendersMap) : '', false);
-        setStageRender(
-            stage,
-            'right',
-            soloSpeaker ? '' : lines[1] ? getLineRenderSrc(lines[1], rendersMap) : '',
-            false,
-        );
+        setStageRender(stage, 'right', rightLine ? getLineRenderSrc(rightLine, rendersMap) : '', false);
         setStageDialogue(stage, null);
         return;
     }
@@ -197,7 +203,7 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     const line = lines[activeLineIndex];
     if (!line) return;
 
-    const side = sideForLineIndex(activeLineIndex);
+    const side = sideForLineIndex(activeLineIndex, lines);
     setStageRender(stage, side, getLineRenderSrc(line, rendersMap), true);
     setStageDialogue(stage, line);
 }
