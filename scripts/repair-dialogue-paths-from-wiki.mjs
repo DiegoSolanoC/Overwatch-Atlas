@@ -55,6 +55,7 @@ function lineMatchKey(line) {
     const hero = String(line?.hero || '').trim().toLowerCase();
     const subtitles = String(line?.subtitles || '')
         .replace(/\*+/g, '')
+        .replace(/[—–]/g, '-')
         .replace(/\s+/g, ' ')
         .trim()
         .toLowerCase();

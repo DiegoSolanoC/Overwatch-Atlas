@@ -6,6 +6,11 @@ import {
     matchVoicelinesForHero,
     voicelineFilenameToSubtitles,
 } from '../data/theaterVoicelineParsing.js';
+import {
+    dismissOtherDialogueTheaterAutocompletes,
+    registerAutocompleteDismiss,
+    unregisterAutocompleteDismiss,
+} from './dialogueTheaterAutocompleteDismiss.js';
 
 /**
  * @param {string} text
@@ -48,6 +53,7 @@ export function setupVoicelineAutocomplete(input, options) {
     const removeList = () => {
         listEl?.remove();
         listEl = null;
+        unregisterAutocompleteDismiss(removeList);
     };
 
     const renderSuggestions = () => {
@@ -62,9 +68,11 @@ export function setupVoicelineAutocomplete(input, options) {
         const matches = matchVoicelinesForHero(hero, voicelines, input.value);
         if (matches.length === 0) return;
 
+        dismissOtherDialogueTheaterAutocompletes(removeList);
+
         listEl = document.createElement('div');
         listEl.className =
-            'filter-autocomplete-list dialogue-theater-autocomplete-list dialogue-theater-autocomplete-list--inline';
+            'filter-autocomplete-list dialogue-theater-autocomplete-list dialogue-theater-autocomplete-list--overlay';
 
         matches.forEach((file) => {
             const preview = voicelineFilenameToSubtitles(file);
@@ -83,7 +91,12 @@ export function setupVoicelineAutocomplete(input, options) {
             listEl.appendChild(row);
         });
 
+        registerAutocompleteDismiss(removeList);
+
         wrap.appendChild(listEl);
+        const wrapRect = wrap.getBoundingClientRect();
+        const inputRect = input.getBoundingClientRect();
+        listEl.style.top = `${inputRect.bottom - wrapRect.top + 4}px`;
     };
 
     input.addEventListener('input', renderSuggestions);

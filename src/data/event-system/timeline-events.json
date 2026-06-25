@@ -713,6 +713,47 @@
       ]
     },
     {
+      "name": "Wuxing University",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\n\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Against the Tide",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf"
+        }
+      ],
+      "headlines": [
+        "Wuxing University Opens its doors to the public",
+        "Chinese College makes the rounds online due to its unique new structure"
+      ],
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "yearStart": 2030,
+      "yearEnd": 2050,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": "Fouding places of Wuxing University"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuxing University",
+          "reasoning": "School founded to adapt the knowledge of the past for the future"
+        },
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Many graduates and acolytes of Wuxing would immediately pursue a career at Lucheng"
+        }
+      ]
+    },
+    {
       "name": "Akande Ogundimu is Born",
       "locationType": "earth",
       "cityDisplayName": "Oyo, Nigeria",
@@ -813,47 +854,6 @@
           "locationName": "",
           "country": "Mei",
           "reasoning": "Mei-Ling Zhou is Born"
-        }
-      ]
-    },
-    {
-      "name": "Wuxing University",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\n\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Against the Tide",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf"
-        }
-      ],
-      "headlines": [
-        "Wuxing University Opens its doors to the public",
-        "Chinese College makes the rounds online due to its unique new structure"
-      ],
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "yearStart": 2030,
-      "yearEnd": 2050,
-      "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": "Fouding places of Wuxing University"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuxing University",
-          "reasoning": "School founded to adapt the knowledge of the past for the future"
-        },
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Many graduates and acolytes of Wuxing would immediately pursue a career at Lucheng"
         }
       ]
     },
@@ -5067,7 +5067,7 @@
       "name": "Adawe Departs",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics.  Her successor in terms of leadership would be Director William Petras, on behalf of the UN's new international judicial branch, the International Justice Commission, or IJC.One year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
+      "description": "Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after the groundwork had been laid in the UN for peace negotiations, she announced she would step down as Overwatch's Strike Commander, ready to return to her home of Nigeria, where she planned to focus her efforts on the future of her Nation, for both Humans and Omnics.  Her successor in terms of leadership would be Director William Petras, on behalf of the UN's new international judicial branch, the International Justice Commission, or IJC.\n\nOne year after her leave, she would begin the construction of what would one day become the city of Numbani, a place built from the ground up for Omnics and Humans to coexist as equals, with infrastructure designed to cater to Omnic needs with the same level of attention as human needs. The city of Harmony would become Adawe's biggest legacy and serve as an example to the world of what both humanity and Omnic kind could do when they worked in unity.",
       "image": "",
       "sources": [
         {
@@ -5123,7 +5123,7 @@
       "name": "Loyal Guardian",
       "locationType": "earth",
       "cityDisplayName": "Bellaire, United States",
-      "description": "The Crisis had destroyed many homes, but once it ended, not many expected the return of some old faces. Wondering Omnics, newly awakened would often choose to attempt and return to their old lives, integrating into human society as much as possible, and while this was often not as straightforward as it could be, one case stood out.<br><br>The heir to the Arbalest empire, Ashe. Had lived a cold childhood. Parents are always busy with their meetings, making little time for their daughter. Fellow students staying away due to her status. The girl grew up to become a troublemaker, but there was at least one thing in her life she appreciated. The family's bouncer, Unit B.O.B. had stayed by her side for as long as she could remember, serving as the only real company she ever had. When the crisis began, B.O.B. vanished not long after. The girl refused to eat, and yelled to be left alone. Young Ashe blamed herself for her friend leaving her, and while her family went through the Crisis unscathed, she was lonelier than ever, convinced she would never see her one and only friend again.<br><br>Two years later, B.O.B. had returned to the Lead Rose manor, forever changed. While the girl was overjoyed to see her, and the Omnic reciprocated, she could tell he was different, even if she never fully understood what had happened.",
+      "description": "The Crisis had destroyed many homes, but once it ended, not many expected the return of some old faces. Wandering Omnics, newly awakened would often choose to attempt and return to their old lives, integrating into human society as much as possible, and while this was often not as straightforward as it could be, one case stood out.\n\nThe heir to the Arbalest empire, Ashe. Had lived a cold childhood. Parents are always busy with their meetings, making little time for their daughter. Fellow students staying away due to her status. The girl grew up to become a troublemaker, but there was at least one thing in her life she appreciated. The family's bouncer, Unit B.O.B. had stayed by her side for as long as she could remember, serving as the only real company she ever had. When the crisis began, B.O.B. vanished not long after. The girl refused to eat, and yelled to be left alone. Young Ashe blamed herself for her friend leaving her, and while her family went through the Crisis unscathed, she was lonelier than ever, convinced she would never see her one and only friend again.\n\nAround two years later, B.O.B. had returned to the Lead Rose manor, forever changed. While the girl was overjoyed to see her, and the Omnic reciprocated, she could tell he was different, even if she never fully understood what had happened.",
       "image": "",
       "sources": [
         {
@@ -5166,7 +5166,7 @@
       "name": "New Leadership",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "With Adawe's departure, Jack Morrison was chosen to lead, acting as Strike commander. While many expected Reyes to take the position, and even react negatively to the news, it turns out that he had personally recommended Morrison for the role. The truth is that Reyes wished for a different position, one that wouldn't have him see the weight of the UN's judgment on his every action, and under Morrison he would get his wish, as he would get to coordinate a small team to cover operations.<br><br>Under Morrison's command, Overwatch was set to help rebuild the world, and as a statement of their newfound purpose, the first new addition to the Strike team since the Crisis ended would be announced. Emre Sarioglu, a tactical genius from Turkey who had grown in notoriety for both his military prowess, and his innate ability to build connections with everyone he worked for. While the rest of the Strike team often seemed untouchable, mighty and superhuman, Emre was just a regular guy, who always kept fighting a good fight, and inspiring others to do the same. He would go on to become an invaluable asset and a great middle man between the Strike team and the supporting staff across all of Overwatch's divisions, especially Search and Rescue.",
+      "description": "With Adawe's departure, Jack Morrison was chosen to lead, acting as Strike commander. While many expected Reyes to take the position, and even react negatively to the news, it turns out that he had personally recommended Morrison for the role. The truth is that Reyes wished for a different position, one that wouldn't have him see the weight of the UN's judgment and respective branch on his every action, and under Morrison he would get his wish, as he would get to coordinate a small team for covert operations.\n\nUnder Morrison's command, Overwatch was set to help rebuild the world, and as a statement of their newfound purpose, the first new addition to the Strike team since the Crisis ended would be announced. Emre Sarioglu, a tactical genius from Turkey who had grown in notoriety for both his military prowess, and his innate ability to build connections with everyone he worked for. While the rest of the Strike team often seemed untouchable, mighty and superhuman, Emre was just a regular guy, who always kept fighting a good fight, and inspiring others to do the same. He would go on to become an invaluable asset and a great middle man between the Strike team and the supporting staff across all of Overwatch's divisions, later including Search and Rescue.",
       "image": "",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -5219,7 +5219,7 @@
       "name": "Operation White Dome",
       "locationType": "earth",
       "cityDisplayName": "Istanbul, Turkey",
-      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire that resulted in Lindholm being critically injured, causing him to lose both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn.<br><br>The mission was a success, but it highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
+      "description": "Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resources to match curated teams for different missions, but this ultimately put extra pressure on the Strike team, as they would be ambushed and take heavy fire that resulted in Lindholm being critically injured, causing him to lose both an arm and an eye. Wilhelm sustained lesser injuries while trying to stabilize Torbjörn.\n\nThe mission was a success, but it highlighted that the Strike team was in need of more recruits, and with the blessing of the UN, Morrison began expansion across the entire organization.",
       "image": "",
       "lat": 41.006381,
       "lon": 28.9758715,
@@ -5254,6 +5254,11 @@
           "locationName": "",
           "country": "Overwatch",
           "reasoning": "Fights a loyalist cell in Turkey"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis Directives,",
+          "reasoning": "The last of the Anubis loyal Omnics subdued, at great cost"
         }
       ],
       "yearEnd": null
@@ -5312,7 +5317,7 @@
     },
     {
       "name": "Studying for the Future",
-      "description": "With the Crisis being over and the loss of God programs, the world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou began her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. During her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectualists and obstinates who fought against the data even after years worth of proof of the worsening climate worldwide.",
+      "description": "With the Crisis being over and the loss of God Programs, the world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou began her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. During her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectual and obstinate persons who fought against the data even after years worth of proof of the worsening climate worldwide.",
       "locationType": "earth",
       "lat": 34.261004,
       "lon": 108.9423363,
@@ -5416,7 +5421,7 @@
         {
           "locationName": "",
           "country": "Mason",
-          "reasoning": "ALF Member, founding Kind of Junkertown"
+          "reasoning": "ALF Member, founding King of Junkertown"
         }
       ]
     },
@@ -5424,7 +5429,7 @@
       "name": "Watching the Globe",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
-      "description": "As Overwatch expanded its personnel, they found themselves in need for more bases of operations. The solution became the Watchpoint system, massive specialized facilities all across the world that would not only allow Overwatch to focus its dedicated personnel into a single place, but also increase their influence and ease of action in many different countries. Plenty of criticism rose from the UN, with many thinking it was an overreach, but the approval rates were overwhelming, as after all, who wouldn't want superheroes living in their neighborhood? With the rise of Omnic violence, the many cities in need of humanitarian aid and rebuilding efforts being halted by lack of manpower, Overwatch's help was welcomed all around the globe.\n\nAcquiring permission for building the Watchpoints was a political battle of its own, but some of them came from resources shared from within. The Martins had been given a small military outpost and research lab on the Strait of Gibraltar following their support of Spain during the Crisis. Once the war was over, the base went unused, so they decided to donate the outpost to become the very first Watchpoint. Many bases were built for specialized purposes. Gibraltar got turned into an Orbital Launch site, but in addition to that, Overwatch would soon see many other bases. Grand Mesa, a weapons development facility. Kerguelen, reserved for biological studies. Xining, focused on social analysis and Omnic integration, as well as later on the maximum security prison at Grímsvötn. In addition to the Watchpoints, Overwatch also established headquarters in Zurich, establishing the beginning of a new hopeful era for humanity.",
+      "description": "As Overwatch expanded its personnel, they found themselves in need for more bases of operations. The solution became the Watchpoint system, massive specialized facilities all across the world that would not only allow Overwatch to focus its dedicated personnel into a single place, but also increase their influence and ease of action in many different countries. Plenty of criticism rose from the UN, with many thinking it was an overreach, but the approval rates were overwhelming, as after all, who wouldn't want superheroes living in their neighborhood? With the rise of Omnic violence, the many cities in need of humanitarian aid and rebuilding efforts being halted by lack of manpower, Overwatch's help was welcomed all around the globe.\n\nAcquiring permission for building the Watchpoints was a political battle of its own, but some of them came from resources shared from within. The Martins had been given a small military outpost and research lab on the Strait of Gibraltar following their support of Spain during the Crisis. Once the war was over, the base went unused, so they decided to donate the outpost to become the very first Watchpoint. Many bases were built for specialized purposes:\n\nGibraltar got turned into an Orbital Launch site.\nGrand Mesa, a weapons development facility. \nKerguelen, reserved for biological studies. \nXining, focused on social analysis and Omnic integration. \nThen next was the maximum security prison at Grímsvötn. \nIn addition to the Watchpoints, Overwatch also established headquarters in Zurich, establishing the beginning of a new hopeful era for humanity.",
       "image": "",
       "sources": [
         {
@@ -5481,7 +5486,13 @@
         {
           "locationName": "",
           "country": "Hector, Claudio",
-          "reasoning": "The Martins gift their Gibraltar base to start the first Watchpoint"
+          "reasoning": "The Martins gift their Gibraltar base to start the first Watchpoint",
+          "badgePriority": true
+        },
+        {
+          "locationName": "",
+          "country": "Liao,",
+          "reasoning": "Liao is among the designers of Gibralter's Orbital Launch base"
         }
       ]
     },
@@ -5598,7 +5609,7 @@
       "name": "Anima Weaponry",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.<br><br>A big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.<br><br>While the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
+      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
       "image": "",
       "sources": [
         {
@@ -5629,6 +5640,11 @@
           "locationName": "",
           "country": "Kiriko",
           "reasoning": "Future Daughter, heir to the Fox Anima"
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo, Genji,",
+          "reasoning": "Each given Anima infused Dragon Blades"
         }
       ],
       "factionFilterPlaces": [
@@ -5643,6 +5659,16 @@
           "locationName": "",
           "country": "Toshiro, Asa",
           "reasoning": "The Yamagami Blades, Maker of Anima technology alongside his wife"
+        },
+        {
+          "locationName": "",
+          "country": "Sojiro,",
+          "reasoning": "Given the Anima infused Storm Bow"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Gifted the Anima infused Fox Ofuda"
         }
       ]
     },
@@ -5759,7 +5785,7 @@
     },
     {
       "name": "Outcasted",
-      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self centric king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.<br><br>Living in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland, and the feral Omnics lurking in the Outback.",
+      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self centric king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.\n\nLiving in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland. The feral Omnics lurking in the Outback proved fatal.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -5944,7 +5970,7 @@
       "name": "Deadlock Rebels",
       "locationType": "earth",
       "cityDisplayName": "Bellaire, United States",
-      "description": "Years of neglect led Ashe to constantly breaking the law, and gaining a reputation with the authorities. On one occasion, she was arrested for armed assault inspired by it being in self-defense. While spending time in jail, waiting to be bailed out, she met Cole Cassidy in the cell block. Like many others around the area, he was employed by nearby Megafarms after they lost their Omnic staff. The farms were filled with refugees during the war, and eventually they came to be used for cheap labor. Cass had ended up locked after a brawl broke out among the farmhands. Ashe came to envy her new friend, for the freedom he had as a ruffian, drifting away without having to answer to anybody.\n\nAfter the bailout, Ashe was greeted by disapproving parents on a holoscreen, not even trying to listen to her side of the story. They had grown tired of her actions and decided that once she turned 18, they would cut off from the family and its finances. In a fit of anger, Ashe plotted how to get back at her family for how they treated her, and realized selling Arbalest goods to the black market would be the best way to bite back, but in order to do so she needed to pull a heist. Ashe and B.O.B would then drive by the Ace Valentine megafarm to pick up Cassidy, and together they started to assemble a team to steal from the Arbalest facilities her family controlled. A fellow farmhand,of Cass, Julian and a hired hacker going by Frankie would join their ranks, forming the start of the Deadlock Rebels.\n",
+      "description": "Years of neglect led Ashe to constantly breaking the law, and gaining a reputation with the authorities. On one occasion, she was arrested for armed assault inspired by it being in self-defense. While spending time in jail, waiting to be bailed out, she met Cole Cassidy in the cell block. Like many others around the area, he was employed by nearby megafarms after they lost their Omnic staff. The farms were filled with refugees during the war, and eventually they came to be used for cheap labor. Cass had ended up locked after a brawl broke out among the farmhands. Ashe came to envy her new friend, for the freedom he had as a ruffian, drifting away without having to answer to anybody.\n\nAfter the bailout, Ashe was greeted by disapproving parents on a holoscreen, not even trying to listen to her side of the story. They had grown tired of her actions and decided that once she turned 18, they would cut off from the family and its finances. In a fit of anger, Ashe plotted how to get back at her family for how they treated her, and realized selling Arbalest goods to the black market would be the best way to bite back, but in order to do so she needed to pull a heist. Ashe and B.O.B would then drive by the Ace Valentine megafarm to pick up Cassidy, and together they started to assemble a team to steal from the Arbalest facilities her family controlled. A fellow farmhand of Cass, Julian and a hired hacker going by Frankie would join their ranks, forming the start of the Deadlock Rebels.",
       "image": "",
       "lat": 29.7057858,
       "lon": -95.4588299,
@@ -6133,7 +6159,7 @@
     },
     {
       "name": "On the Run",
-      "description": "While the US publicly seemed OK with SEP soldiers vanishing into obscuring, something about Soldier: 00 appears to be different. Kendra Banks had been the first candidate for the Soldier Enhancement Program, and much like the rest of Project Naughton, her service was heavily redacted and poorly documented. What little is known suggests she defected from the program shortly after her procedure and has been in hiding ever since. Kendra hoped living in Appalachia would keep her and her family hidden, but only a year after her daughter Sierra was born, Kendra would be found.\n\nKendra Banks, now going by Kendra Woods, fled into the night and took Sierra with her, as government agents raided their house asking questions about Project Naughton to her husband, James Turner. Ever since that day, Sierra has lived on the run, bouncing from one school to another, completely unaware of her mother's past. Each time they were found, they would have to move out quickly, and to calm little Sierra down, Kendra knew how to make a game out of evacuation and protocol.\n\nThrough it all, Sierra lived a relatively normal life. While she was always the new kid and had little to no friends due to this, she always placed at the top of her class and demonstrated innate physical skills and sharp thinking. While she always attributed this to her mother's teachings, little did she know one of Doctor Naughton's main hypothesis with the Soldier Enhancement Program, was the possibility of children inheriting the modifications.",
+      "description": "While the US publicly seemed content with SEP soldiers vanishing into obscuring, something about Soldier: 00 appears to be different. Kendra Banks had been the first candidate for the Soldier Enhancement Program, and much like the rest of Project Naughton, her service was heavily redacted and poorly documented. What little is known suggests she defected from the program shortly after her procedure and has been in hiding ever since. Kendra hoped living in Appalachia would keep her and her family hidden, but only a year after her daughter Sierra was born, Kendra would be found.\n\nKendra Banks, now going by Kendra Woods, fled into the night and took Sierra with her, as government agents raided their house asking questions about Project Naughton to her husband, James Turner. Ever since that day, Sierra has lived on the run, bouncing from one school to another, completely unaware of her mother's past. Each time they were found, they would have to move out quickly, and to calm little Sierra down, Kendra knew how to make a game out of evacuation and protocol.\n\nThrough it all, Sierra lived a relatively normal life. While she was always the new kid and had little to no friends due to this, she always placed at the top of her class and demonstrated innate physical skills and sharp thinking. While she always attributed this to her mother's teachings, little did she know one of Doctor Naughton's main hypothesis with the Soldier Enhancement Program, was the possibility of children inheriting the modifications.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Appalachian Virginia, United States",
@@ -6174,6 +6200,41 @@
           "locationName": "",
           "country": "Kendra",
           "reasoning": "Evades her captors at every turn"
+        }
+      ]
+    },
+    {
+      "name": "Mizuki Kawano is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Fukuoka, Japan",
+      "description": "On April 9th of 2057, Mizuki Kawano was born in Fukuoka, under the shadow of misfortune. Ever since he was a baby, his family had been surrounded by unexplained tragedy. His grandparents suddenly lost to unnatural causes, and years later his mom would drown in a freak accident. His father, quite the superstitious man, was quick to assume the bloodline must have been cursed, and from there Mizuki's life would only continue to go downhill. As the mental state of his dad worsened, he ingrained the idea of a curse in the poor kid's head, telling him tales of all the malevolent spirits that haunted the family ever since he was born.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        }
+      ],
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "eraName": "The Golden Age",
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Fukuoka, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki Kawano is Born",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Mizuki Kawano is Born"
         }
       ]
     },
@@ -6299,57 +6360,17 @@
     {
       "name": "Hana Song is Born",
       "locationType": "earth",
-      "cityDisplayName": "Busan, South Korea",
-      "description": "On June 22th or 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.<div><br>Hana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.</div>",
-      "image": "",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "sources": [
-        {
-          "text": "Overwatch Website D.va",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2057,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": "Hana Song is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.va",
-          "reasoning": "Hana Song is Born"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": "Childhood Friend"
-        }
-      ]
-    },
-    {
-      "name": "Mizuki Kawano is Born",
-      "locationType": "earth",
       "cityDisplayName": "Fukuoka, Japan",
-      "description": "On April 9th of 2057, Mizuki Kawano was born in Fukuoka, under the shadow of misfortune. Ever since he was a baby, his family had been surrounded by unexplained tragedy. His grandparents suddenly lost to unnatural causes, and years later his mom would drown in a freak accident. His father, quite the superstitious man, was quick to assume the bloodline must have been cursed, and from there Mizuki's life would only continue to go downhill. As the mental state of his dad worsened, he ingrained the idea of a curse in the poor kid's head, telling him tales of all the malevolent spirits that haunted the family ever since he was born.",
+      "description": "On June 22th of 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.\n\nHana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.",
       "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
       "sources": [
         {
           "text": "Overwatch Website, Mizuki",
           "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
         }
       ],
-      "lat": 35.6768601,
-      "lon": 139.7638947,
       "eraName": "The Golden Age",
       "yearStart": 2057,
       "secondaryCountryPlaces": [
@@ -6368,6 +6389,60 @@
           "locationName": "",
           "country": "Mizuki,",
           "reasoning": "Mizuki Kawano is Born"
+        }
+      ]
+    },
+    {
+      "name": "Kiriko Kamori is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "On July 7th of 2057, Kiriko Kamori is born into the Yamagami blades, spending her childhood surrounded by powerful figures of all kinds, among her parents, stemmed figures in the art of the blade and the craft, her grandmother, the local Shrine Maiden, and the shadow of the Shimada Clan, and the tales of their relationship with the city.\n\nKiriko grew to be a very idealistic, impressionable kid who did not quite fully understand the reality of her situation, of the clan brawls that plagued Kanezaka, and the role her family played in endorsing them, but despite of that, her idealistic self and the teachings of her grandma's faith pushed her to help others and follow her own path.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "sources": [
+        {
+          "text": "Overwatch Website Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "Kiriko Kamori is Born",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": "Kiriko Kamori is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yamagami Blades, Shimada Clan,",
+          "reasoning": "Family Busines with Ties to the Shimada Clan"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa, Toshiro,",
+          "reasoning": "Kiriko's parents and shop owners"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Kiriko's Grandmother"
         }
       ]
     },
@@ -6475,60 +6550,6 @@
       ]
     },
     {
-      "name": "Kiriko Kamori is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "On July 7th of 2057, Kiriko Kamori is born into the Yamagami blades, spending her childhood surrounded by powerful figures of all kinds, among her parents, stemmed figures in the art of the blade and the craft, her grandmother, the local Shrine Maiden, and the shadow of the Shimada Clan, and the tales of their relationship with the city.\n\nKiriko grew to be a very idealistic, impressionable kid who did not quite fully understand the reality of her situation, of the clan brawls that plagued Kanezaka, and the role her family played in endorsing them, but despite of that, her idealistic self and the teachings of her grandma's faith pushed her to help others and follow her own path.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "sources": [
-        {
-          "text": "Overwatch Website Kiriko",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2057,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "Kiriko Kamori is Born",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": "Kiriko Kamori is Born"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yamagami Blades, Shimada Clan,",
-          "reasoning": "Family Busines with Ties to the Shimada Clan"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Asa, Toshiro,",
-          "reasoning": "Kiriko's parents and shop owners"
-        },
-        {
-          "locationName": "",
-          "country": "Kamori-san,",
-          "reasoning": "Kiriko's Grandmother"
-        }
-      ]
-    },
-    {
       "name": "The Architech Academy",
       "locationType": "earth",
       "cityDisplayName": "Roshani, India",
@@ -6612,7 +6633,8 @@
         {
           "locationName": "",
           "country": "Adawe",
-          "reasoning": "Founder of Numbani; her death marks the end of the founding era"
+          "reasoning": "Founder of Numbani; her death marks the end of the founding era",
+          "badgePriority": true
         }
       ]
     },
@@ -6629,13 +6651,13 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ana, Reinhardt,",
-          "reasoning": "Become close following Ana's divorce"
+          "country": "Pharah,",
+          "reasoning": "Aspires to become an Overwatch member"
         },
         {
           "locationName": "",
-          "country": "Pharah,",
-          "reasoning": "Aspires to become an Overwatch member"
+          "country": "Ana, Reinhardt,",
+          "reasoning": "Become close following Ana's divorce"
         },
         {
           "locationName": "",
@@ -6824,7 +6846,7 @@
       "name": "Ecological Initiative",
       "locationType": "earth",
       "cityDisplayName": "Apia, Samoa",
-      "description": "With God programs being gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they started to become heavily neglected. Anubis was meant to be used for ecological preservation, and yet with most infrastructure lost, the whole left by the program began to become apparent to Hector and Claudio. The Martins were long time environmentalist advocates, and they believed that Overwatch could be used to improve the world, so they took a proposal to Morrison and the UN to create a specialized Watchpoint branch. The Ecopoint Program would create stations staffed with Overwatch's scientific leads in critical locations across the globe, where they could monitor ongoing abnormalities in nature and aid in global efforts for preservation of the environment. In spite of a wave of nationalism and distrust for Overwatch presence hitting many countries over the years, the Ecopoints were quite a welcomed proposal, as the Martins were highly respected names in the international communities they worked with, and the benefits of scientifically-oriented bases were far more self-evident than the more generalist and often military nature of Watchpoints. With the approval of the program, other big names like Mui and Namuaca quickly joined, adding further credibility to the initiative. \n\nIn the end, seven initial bases were approved, with more coming later. Ecopoint: Antartica focused on monitoring the impacts of climate change and pursuing methods of recovery of both the atmosphere and the ice caps, as well as studying strange fluctuations found around the Peninsula. Samoa would receive a base within one of the active volcanoes, to focus on seismic monitoring and geothermal research, detecting multiple major earthquakes in the region and saving countless lives. Ecopoint: Connemara focused on the restoration of Irish boglands, later on collaborating with Russian scientists to aid in revitalizing the Siberian lowlands. Ecopoint: Osa in Costa Rica would focus on the recovery of reptiles and amphibians of the Corcovado cloud forest, seen as a bellwether of the rest of the natural world, focusing primarily on antifungals and biological solutions to waste treatment. Ecopoint: Zelandia off the coast of New Zeland would exist in response to the Australian fall-out zone, focusing on filtering radiation and aiding in the recovery of Oceania following the ALF's attack. Ecopoint: Tarapoto, deep within the Colombian Amazon, was built to study the many ecosystems of the area. And lastly, Ecopoint: Monterrey, a submarine base off the shore of California, meant to research marine life and follow protocols originally proposed by Leon Honisch to aid in the recovery of many species. The program was overall seen as one of Overwatch's most clean-cut successes and net positives to society at large, and a great example of the good they could do for the world",
+      "description": "With God Programs, more specifically Anubis, gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they started to become heavily neglected. Anubis was meant to be used for ecological preservation, and yet with most infrastructure lost, the whole left by the program began to become apparent to Hector and Claudio. The Martins were long time environmentalist advocates, and they believed that Overwatch could be used to improve the world, so they took a proposal to Morrison and the UN to create a specialized Watchpoint branch. \n\nThe Ecopoint Program would create stations staffed with Overwatch's scientific leads in critical locations across the globe, where they could monitor ongoing abnormalities in nature and aid in global efforts for preservation of the environment. In spite of a wave of nationalism and distrust for Overwatch presence hitting many countries over the years, the Ecopoints were quite a welcomed proposal, as the Martins were highly respected names in the international communities they worked with, and the benefits of scientifically-oriented bases were far more self-evident than the more generalist and often military nature of Watchpoints. With the approval of the program, other big names like Mui and Namuaca quickly joined, adding further credibility to the initiative. In the end, seven initial bases were approved, with more coming later.\n\nBiosphere (Green) Ecopoints:\n- Ecopoint: Antartica focused on monitoring the impacts of climate change and pursuing methods of recovery of both the atmosphere and the ice caps, as well as studying strange fluctuations found around the Peninsula. \n- Ecopoint: Connemara focused on the restoration of Irish boglands, later on collaborating with Russian scientists to aid in revitalizing the Siberian lowlands. \n- Ecopoint: Tarapoto, deep within the Colombian Amazon, was built to study the many ecosystems of the area. \n- Ecopoint: Osa in Costa Rica would focus on the recovery of reptiles and amphibians of the Corcovado cloud forest, seen as a bellwether of the rest of the natural world, focusing primarily on antifungals and biological solutions to waste treatment. \n\nHydrosphere (Blue) Ecopoints:\n- Samoa would receive a base within one of the active volcanoes, to focus on seismic monitoring and geothermal research, detecting multiple major earthquakes in the region and saving countless lives. \n- Ecopoint: Zealandia off the coast of New Zeland would exist in response to the Australian fall-out zone, focusing on filtering radiation and aiding in the recovery of Oceania following the ALF's attack. \n- And lastly, Ecopoint: Monterrey, a submarine base off the shore of California, meant to research marine life and follow protocols originally proposed by Leon Honisch to aid in the recovery of many species. The program was overall seen as one of Overwatch's most clean-cut successes and net positives to society at large, and a great example of the good they could do for the world",
       "image": "",
       "lat": -13.8345235,
       "lon": -171.7630955,
@@ -6841,7 +6863,7 @@
         {
           "locationName": "Apia, Samoa",
           "country": "Samoa",
-          "reasoning": "Ecopoint: Samoa, Geothermal and Seismic Research"
+          "reasoning": ""
         },
         {
           "locationName": "Antartci Peninsula",
@@ -6854,19 +6876,24 @@
           "reasoning": "Ecopoint: Connemara, Bogland restauration"
         },
         {
+          "locationName": "Lake Tarapoto, Colombia",
+          "country": "Colombia,",
+          "reasoning": "Ecopoint: Tarapoto, Ecosystem studies"
+        },
+        {
           "locationName": "Osa Peninsula, Costa Rica",
           "country": "Costa Rica,",
           "reasoning": "Ecopoint: Osa, Herpetology recovery, Antifungals and biological waste management"
         },
         {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": "Ecopoint: Samoa, Geothermal and Seismic Research"
+        },
+        {
           "locationName": "Zealandian Ocean",
           "country": "New Zealand,",
           "reasoning": "Ecopoint: Zealandia, Radiation filtering and regional restoration"
-        },
-        {
-          "locationName": "Lake Tarapoto, Colombia",
-          "country": "Colombia,",
-          "reasoning": "Ecopoint: Tarapoto, Ecosystem studies"
         },
         {
           "locationName": "Monterrey Bay, United States",
@@ -6901,7 +6928,7 @@
       "name": "The Scourge of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order to achieve this, she collaborated with an Omnic task force that would pioneer what a truly Omnic-inclusive environment looked like, from tailored housing that accommodated their needs instead of human ones, lacking kitchens and instead hosting things like oiling gear. Clinics that performed maintenance and repair of crisis wounds, psychological services to help with the trauma that followed the war and the trouble of consciousness, as well as spiritual centers for study of philosophy and theology, especially with the rising Shambali faith. A lot of focus was also placed on giving Omnics resources to find jobs outside their pre-Crisis designation, letting them pursue their own dreams outside human expectations and design. \n\nThe push for Omnic infrastructure would lead to heavy investment in intellectual and artistic enrichment, which would lead to a thriving sense of pride and community for the arts in the city. A lot of the principles used when building Numbani were modeled after the infrastructure and plans of the new Toronto, following their own Omnic Integration. By the time the city was finished, it had proved to the world that coexistence was possible, and the city became a beacon of hope for Omnic allies around the globe. The day the last brick was laid would be declared Unity Day, and celebrated as a holiday in the city to mark the huge accomplishment of Omnic and Human Collaboration. Shortly after the inauguration, Adawe passed away, and was mourned by the people across the entire city, and celebrated as a Nigerian hero, not unlike Adhabu Ngumi, the first Doomfist.\n\nThe war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. While Scouting for Ecopoint: locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance Watchpoint: Kisangani got approved. While the base focused on informatics security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member. Wildebeest.",
+      "description": "The war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. \n\n\nWhile Scouting for Ecopoint: locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance Watchpoint: Kisangani got approved. While the base focused on informatics security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member: Wildebeest.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -7055,6 +7082,53 @@
       ]
     },
     {
+      "name": "Juno Teo Minh is Born",
+      "locationType": "mars",
+      "cityDisplayName": "Red Promise Colony",
+      "description": "On Marsh 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.\n\nIt also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the Cowboy movies that her dad had brought with him.",
+      "image": "",
+      "x": 45,
+      "y": 35,
+      "sources": [
+        {
+          "text": "Overwatch Website, Juno",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/juno/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": "Juno Teo Minh is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Juno",
+          "reasoning": "Juno Teo Minh is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Unaware of Juno's existance"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": "Juno's Mother"
+        }
+      ]
+    },
+    {
       "name": "Omnic Rights",
       "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.\n",
       "locationType": "earth",
@@ -7099,10 +7173,43 @@
       ]
     },
     {
+      "name": "Ye Wuyang is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Chengdu, China",
+      "description": "On May 1st of 2060, Ye Wuyang was born. The younger of the Ye siblings, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's Fire College.",
+      "image": "",
+      "lat": 30.659867,
+      "lon": 104.063315,
+      "sources": [
+        {
+          "text": "Overwatch Website, Wuyang",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/wuyang/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Chengdu, China",
+          "country": "China",
+          "reasoning": "Ye Wuyang is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang",
+          "reasoning": "Ye Wuyang is Born"
+        }
+      ]
+    },
+    {
       "name": "Black Ops",
       "locationType": "earth",
       "cityDisplayName": "Capetown, South Africa",
-      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge god program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge Ai and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
+      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge god program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
       "image": "",
       "lat": -33.9228378,
       "lon": 18.426976,
@@ -7164,7 +7271,7 @@
       "name": "Growing with the Clan",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "Over the years, the Shimada family had come to rely on the Yamagami Blades, the business run by Toshiro and his wife, Asa. The Yamagami name has served the city for generations following traditional paths, heavily linked by the local shrine to the Fox Spirit, and now under Shimada control, the family chose their side in the turf war of the clans. Not only did Toshiro develop the Anima weapons used by the clean head and his sons, but his wife proved to be quite an asset as well. Often regarded as the best sword master in the world, Asa would serve as the teacher to the Shimada brothers. From a very young age, Asa wished for his daughter to also choose the path of the blade, so since she was very little, Kiriko would often join the brothers in training. Both brothers would quickly grow attached to the little girl, seeing her as a little niece figure. Genji in particular, was one to slack off from training and play with the kids, stealing sweets from the kitchen and playing games in the arcade.\n\n It was not just the brothers who Kiriko grew close to, since she spent so much time in the Shimada Castle, the clan leader, Sojiro Shimada had also grown accustomed to her presence. She would often join the family during the fireworks festivals at the end of summer, and during one night, he told his sons the stories of the clan. How centuries ago, a rival clan attempted to end their rule by setting the orchards aflame, but the Shimada did not move to defend the fields. Instead, they aided the people. These teachings heavily shaped Kiriko's perspective of the clan as Kanezaka's protectors, while she was still too young to understand the true nature of their operations.\n\nOn the off days when Kiriko was not training, she spent time at the Fox shrine with her grandmother, who taught her the traditional ways of spiritual cleansing and meditation. From an early age, her grandmother would teach him how to use the Anima ofuda that her dad had crafted, to summon the Fox spirit and use it to aid those in need. Much like how her mother wanted her to follow in her footsteps, her grandma had laid another path for her as well.\n",
+      "description": "Over the years, the Shimada family had come to rely on the Yamagami Blades, the business run by Toshiro and his wife, Asa. The Yamagami name has served the city for generations following traditional paths, heavily linked by the local shrine to the Fox Spirit, and now under Shimada control, the family chose their side in the turf war of the clans. Not only did Toshiro develop the Anima weapons used by the clean head and his sons, but his wife proved to be quite an asset as well. Often regarded as the best sword master in the world, Asa would serve as the teacher to the Shimada brothers. From a very young age, Asa wished for his daughter to also choose the path of the blade, so since she was very little, Kiriko would often join the brothers in training. Both brothers would quickly grow attached to the little girl, seeing her as a little niece figure. Genji in particular, was one to slack off from training and play with the kids, stealing sweets from the kitchen and playing games in the arcade.\n\n It was not just the brothers who Kiriko grew close to, since she spent so much time in the Shimada Castle, the clan leader, Sojiro Shimada had also grown accustomed to her presence. She would often join the family during the fireworks festivals at the end of summer, and during one night, he told his sons the stories of the clan. How centuries ago, a rival clan attempted to end their rule by setting the orchards aflame, but the Shimada did not move to defend the fields. Instead, they aided the people. These teachings heavily shaped Kiriko's perspective of the clan as Kanezaka's protectors, while she was still too young to understand the true nature of their operations.\n\nOn the off days when Kiriko was not training, she spent time at the Fox shrine with her grandmother, who taught her the traditional ways of spiritual cleansing and meditation. From an early age, her grandmother would teach him how to use the Anima ofuda that her dad had crafted, to summon the Fox spirit and use it to aid those in need. Much like how her mother wanted her to follow in her footsteps, her grandma had laid another path for her as well.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -7218,6 +7325,44 @@
           "locationName": "",
           "country": "Asa, Toshiro,",
           "reasoning": "Owners of the Yamagami business and parents to Kiriko"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Utilizes the Fox Spirit as a method of teaching Kiriko"
+        }
+      ]
+    },
+    {
+      "name": "Illari Quispe Ruiz is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Runasapi, Peru",
+      "description": "On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.",
+      "image": "",
+      "lat": -13.1631,
+      "lon": -72.545,
+      "sources": [
+        {
+          "text": "Overwatch Website, Illari",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2060,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Runasapi, Peru",
+          "country": "Peru",
+          "reasoning": "Illari Quispe Ruiz is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Illari",
+          "reasoning": "Illari Quispe Ruiz is Born"
         }
       ]
     },
@@ -7259,6 +7404,53 @@
       "headlines": [
         "Australian Outback declared unsafe to visit due to Caravan raiders",
         "Health Conditions on the south of Australia worsen as radiation outbreak continues"
+      ]
+    },
+    {
+      "name": "Specimen 8 is Born",
+      "locationType": "moon",
+      "cityDisplayName": "Horizon Lunar Colony",
+      "description": "Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.\n\nOn October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed \"Hammond\" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.",
+      "image": "",
+      "x": 60,
+      "y": 70,
+      "eraName": "The Golden Age",
+      "yearStart": 2062,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Horizon Lunar Colony",
+          "country": "Horizon Lunar Colony",
+          "reasoning": "Specimen 8 is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website: Wrecking Ball",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wrecking Ball",
+          "reasoning": "Specimen 8 is Born"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Approves use of Hamsters for Genetic Therapy"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chao,",
+          "reasoning": "In charge of Genetic Therapy"
+        }
       ]
     },
     {
@@ -7305,54 +7497,115 @@
       ]
     },
     {
-      "name": "Juno Teo Minh is Born",
-      "locationType": "mars",
-      "cityDisplayName": "Red Promise Colony",
-      "description": "On Marsh 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.\n\nIt also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the Cowboy movies that her dad had brought with him.",
+      "name": "Sparrow",
+      "description": "Rumiko Shimada had left the clan years ago, vanishing mysteriously one night. Nobody knew what caused her to leave, but everyone assumed she couldn't live with the Yakuza lifestyle anymore. Her absence made Sojiro extremely protective of his sons, who were raised with the expectation of inheriting command of the Clan together.\n\nGenji, however, had no interest in the clan. He had often thought of leaving as well, were it not for his brother and little Kiriko, who helped him keep a sense of belonging in Hanamura Castle. His disinterest led to developing a playboy lifestyle as a young adult, skipping important clan meetings and sword training to play video games at the local arcade, often taking Kiriko alongside him, though even when he didn't, she would sneak out and follow behind him.\n\nHis carelessness would fall on Hanzo, who got tangled in his brother's escapades far too often, and tended to cover for him when it came time to face their father. Hanzo wasn't too keen on inheriting the clan either, but being the older of the two, expectations were harder on him, and his father had less patience for him than he was for Genji. Hanzo wished that when the day came, he could rule the clan his way, with Genji as his equal, so he worked hard to share his discipline and guidance with him, but on the other hand, Genji was just waiting for the day they kicked him out, and the elders of the clan were getting tired of Sojiro's inability to control his own children.",
+      "locationType": "earth",
+      "lat": 35.6762,
+      "lon": 139.6503,
       "image": "",
-      "x": 45,
-      "y": 35,
-      "sources": [
-        {
-          "text": "Overwatch Website, Juno",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/juno/"
-        }
-      ],
+      "cityDisplayName": "Tokyo",
+      "yearEnd": 2063,
       "eraName": "The Golden Age",
-      "yearStart": 2060,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Red Promise Colony",
-          "country": "Red Promise Colony",
-          "reasoning": "Juno Teo Minh is Born"
+          "locationName": "Hanamura, Japan",
+          "country": "Japan,",
+          "reasoning": "Genji begins to defy his father and his clan duties",
+          "lat": 35.6768601,
+          "lon": 139.7638947
         }
       ],
-      "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Shimada associated individuals seen around local Arcade"
+      ],
+      "sources": [
+        {
+          "text": "Fall of the Sparrow",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Juno",
-          "reasoning": "Juno Teo Minh is Born"
+          "country": "Genji,",
+          "reasoning": "Slacks off of training to indulge in the city"
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo,",
+          "reasoning": "Takes responsability for Genji"
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": "Follows Genji into the Arcade in secret constantly"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Unaware of Juno's existance"
+          "country": "Shimada Clan, Yamagami Blades,",
+          "reasoning": "The Shimada put pressure into the brothers to step up to their heir titles"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Jiayi,",
-          "reasoning": "Juno's Mother"
+          "country": "Asa, Sojiro,",
+          "reasoning": "Push the brothers to train and be part of the family business"
         }
+      ],
+      "yearStart": 2060
+    },
+    {
+      "name": "Valkirie",
+      "locationType": "earth",
+      "cityDisplayName": "Zurich, Switzerland",
+      "description": "It had been ten years since the end of the Crisis, and Angela's early career was already a fruitful one. Her breakthroughs in the field of applied nanobiology radically improved the treatment of life-threatening injuries, capable of stabilizing near-death patients and saving countless lives. Through her schooling and early years outside of college, Overwatch kept an eye on her, allowing her access to the Watchpoints as she volunteered on the medical staff. Ziegler's technology could have made her rich if she chose to remain in private practice, but she always saw science as something that belonged to the world and the people who benefited from it.\n\nIt was here when Morrison finally chose to approach her directly. As the world finally moved away from the crisis, Morrison wished to shift towards peacetime and civilian applications. The heavy investment in the support departments and Ecopoint bases was one of the early signs of this new mission, making the world a better place. As such, Morrison offered Angela to become the leader of the medical division, with all the money, resources and personnel she could ever dream of. Angela was intrigued by these promises, but she was greatly opposed to the militaristic nature of Overwatch. Even since losing her parents to the war, she did not have the greatest opinion on military peacekeeping.\n\nIn the end, she had agreed to the offer with one caveat. The same way Torbjörn requested back in the day, she wanted to become a part of the strike team, so she could keep a level of control over the use of her technology and allow her to see at work personally. Morrison agreed. In order to work on the frontlines, she began development of the Valkyrie swift-response suit, a personal aerial combat armor that came equipped with nanobiotic capabilities and assistive protocols. Ziegler quickly proved to be a surprisingly adept field agent, with a surgical tactic approach to changing situations. Between her efficiency and the design of her suit, she quickly gained notoriety among the strike team, earning her the call sign \"Mercy\". While she did not enjoy the way this framed her, she was always glad to use her technology for the greater good.\n",
+      "image": "",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Valkyrie",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
+        }
+      ],
+      "yearStart": 2063,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": "Angela Ziegler recruited as head of medical staff and part of the Strike team"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mercy, Soldier 76",
+          "reasoning": "Angela accepts Morrison's proposal to join Overwatch"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch",
+          "reasoning": "Expanding peacekeeping resources beyond military"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Overwatch's new Member \"Mercy\" saves countless lives thanks to flying medical suit",
+        "Nanobiotic equipment to begin mass production soon"
       ]
     },
     {
-      "name": "Prima Donna",
+      "name": "Captivate",
       "description": "Amélie Guillard had left her home years ago, tired of the aristocratic lifestyle that her family had attempted to impose on herself. Through her dancing skills, she pursued a career in Ballet that allowed her to gain notoriety, eventually becoming a prima ballerina known in all of France and abroad.\n\nHer life would take a more interesting turn, however, when she met a certain diplomat in Paris. Gérard Lacroix, Blackwatch's second in command, is currently spearheading investigations into several criminal groups across the world. The pair had dated for a long time, with Amélie being present at Vivian's induction and becoming relatively known around many of the Strike team. Years later, they would go on to marry and live a pleasant life together, although it seemed some of Gérard's closest friends had their reservations with her. Jack Morrison, who had grown particularly close to Lacroix, warned him that something was wrong about her, but Gérard merely found it funny.\n\nAmélie herself, however, gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. However, her husband was one of the only things Amélie genuinely loved throughout her life, the only other thing she ever felt as passionate about being ballet.",
       "locationType": "earth",
       "lat": 48.8588897,
@@ -7406,147 +7659,7 @@
           "badgePriority": true
         }
       ],
-      "yearStart": 2060
-    },
-    {
-      "name": "Sparrow",
-      "description": "Rumiko Shimada had left the clan years ago, vanishing mysteriously one night. Nobody knew what caused her to leave, but everyone assumed she couldn't live with the Yakuza lifestyle anymore. Her absence made Sojiro extremely protective of his sons, who were raised with the expectation of inheriting command of the Clan together.\n\nGenji, however, had no interest in the clan. He had often thought of leaving as well, were it not for his brother and little Kiriko, who helped him keep a sense of belonging in Hanamura Castle. His disinterest led to developing a playboy lifestyle as a young adult, skipping important clan meetings and sword training to play video games at the local arcade, often taking Kiriko alongside him, though even when he didn't, she would sneak out and follow behind him.\n\nHis carelessness would fall on Hanzo, who got tangled in his brother's escapades far too often, and tended to cover for him when it came time to face their father. Hanzo wasn't too keen on inheriting the clan either, but being the older of the two, expectations were harder on him, and his father had less patience for him than he was for Genji. Hanzo wished that when the day came, he could rule the clan his way, with Genji as his equal, so he worked hard to share his discipline and guidance with him, but on the other hand, Genji was just waiting for the day they kicked him out, and the elders of the clan were getting tired of Sojiro's inability to control his own children.",
-      "locationType": "earth",
-      "lat": 0,
-      "lon": 0,
-      "image": "",
-      "cityDisplayName": "",
-      "yearEnd": null,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan,",
-          "reasoning": "Genji begins to defy his father and his clan duties",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "headlines": [
-        "Shimada associated individuals seen around local Arcade"
-      ],
-      "sources": [
-        {
-          "text": "Fall of the Sparrow",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Genji,",
-          "reasoning": "Slacks off of training to indulge in the city"
-        },
-        {
-          "locationName": "",
-          "country": "Hanzo,",
-          "reasoning": "Takes responsability for Genji"
-        },
-        {
-          "locationName": "",
-          "country": "Kiriko,",
-          "reasoning": "Follows Genji into the Arcade in secret constantly"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shimada Clan, Yamagami Blades,",
-          "reasoning": "The Shimada put pressure into the brothers to step up to their heir titles"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Asa, Sojiro,",
-          "reasoning": "Push the brothers to train and be part of the family business"
-        }
-      ]
-    },
-    {
-      "name": "Valkirie",
-      "locationType": "earth",
-      "cityDisplayName": "Zurich, Switzerland",
-      "description": "It had been ten years since the end of the Crisis, and Angela's early career was already a fruitful one. Her breakthroughs in the field of applied nanobiology radically improved the treatment of life-threatening injuries, capable of stabilizing near-death patients and saving countless lives. Through her schooling and early years outside of college, Overwatch kept an eye on her, allowing her access to the Watchpoints as she volunteered on the medical staff. Ziegler's technology could have made her rich if she chose to remain in private practice, but she always saw science as something that belonged to the world and the people who benefited from it.\n\nIt was here when Morrison finally chose to approach her directly. As the world finally moved away from the crisis, Morrison wished to shift towards peacetime and civilian applications. The heavy investment in the support departments and Ecopoint bases was one of the early signs of this new mission, making the world a better place. As such, Morrison offered Angela to become the leader of the medical division, with all the money, resources and personnel she could ever dream of. Angela was intrigued by these promises, but she was greatly opposed to the militaristic nature of Overwatch. Even since losing her parents to the war, she did not have the greatest opinion on military peacekeeping.\n\nIn the end, she had agreed to the offer with one caveat. The same way Torbjörn requested back in the day, she wanted to become a part of the strike team, so she could keep a level of control over the use of her technology and allow her to see at work personally. Morrison agreed. In order to work on the frontlines, she began development of the Valkyrie swift-response suit, a personal aerial combat armor that came equipped with nanobiotic capabilities and assistive protocols. Ziegler quickly proved to be a surprisingly adept field agent, with a surgical tactic approach to changing situations. Between her efficiency and the design of her suit, she quickly gained notoriety among the strike team, earning her the call sign \"Mercy\". While she did not enjoy the way this framed her, she was always glad to use her technology for the greater good.\n",
-      "image": "",
-      "lat": 47.3744489,
-      "lon": 8.5410422,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Valkyrie",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
-        }
-      ],
-      "yearStart": 2063,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": "Angela Ziegler recruited as head of medical staff and part of the Strike team"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mercy, Soldier 76",
-          "reasoning": "Angela accepts Morrison's proposal to join Overwatch"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch",
-          "reasoning": "Expanding peacekeeping resources beyond military"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [
-        "Overwatch's new Member \"Mercy\" saves countless lives thanks to flying medical suit",
-        "Nanobiotic equipment to begin mass production soon"
-      ]
-    },
-    {
-      "name": "Ye Wuyang is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Chengdu, China",
-      "description": "On May 1st of 2060, Ye Wuyang was born. The younger of the Ye siblings, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's Fire College.",
-      "image": "",
-      "lat": 30.659867,
-      "lon": 104.063315,
-      "sources": [
-        {
-          "text": "Overwatch Website, Wuyang",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/wuyang/"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Chengdu, China",
-          "country": "China",
-          "reasoning": "Ye Wuyang is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wuyang",
-          "reasoning": "Ye Wuyang is Born"
-        }
-      ]
+      "yearStart": 2064
     },
     {
       "name": "Radiation Poisoning",
@@ -7628,39 +7741,6 @@
           "locationName": "",
           "country": "Mercy,",
           "reasoning": "Answers to public criticism for her lack of involvement"
-        }
-      ]
-    },
-    {
-      "name": "Illari Quispe Ruiz is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Runasapi, Peru",
-      "description": "On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.",
-      "image": "",
-      "lat": -13.1631,
-      "lon": -72.545,
-      "sources": [
-        {
-          "text": "Overwatch Website, Illari",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Runasapi, Peru",
-          "country": "Peru",
-          "reasoning": "Illari Quispe Ruiz is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Illari",
-          "reasoning": "Illari Quispe Ruiz is Born"
         }
       ]
     },
@@ -7775,53 +7855,6 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Allegedly made secret Omniums at the bottom of the sea"
-        }
-      ]
-    },
-    {
-      "name": "Specimen 8 is Born",
-      "locationType": "moon",
-      "cityDisplayName": "Horizon Lunar Colony",
-      "description": "Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.\n\nOn October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed \"Hammond\" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.",
-      "image": "",
-      "x": 60,
-      "y": 70,
-      "eraName": "The Golden Age",
-      "yearStart": 2062,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Horizon Lunar Colony",
-          "country": "Horizon Lunar Colony",
-          "reasoning": "Specimen 8 is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website: Wrecking Ball",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wrecking Ball",
-          "reasoning": "Specimen 8 is Born"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Approves use of Hamsters for Genetic Therapy"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Chao,",
-          "reasoning": "In charge of Genetic Therapy"
         }
       ]
     },
@@ -10435,13 +10468,8 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vialli,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Maximillien,",
-          "reasoning": ""
+          "country": "Vialli, Maximillien,",
+          "reasoning": "Recurrently requested the Widowmaker for Assassination"
         }
       ]
     },
@@ -10971,7 +10999,7 @@
     },
     {
       "name": "Disappeared",
-      "description": "",
+      "description": "Sierra and Kendra survived for years hoping from one place to another, but one day right before her thirteenth birthday, Kendra would mysteriously vanish overnight. Sierra was left alone for the first time in her life, but her mother had prepared her for this situation. Following the emergency protocol, Sierra took a bus ticket from her mother's belongings and ended up back in Appalachia, where she met with her arranged father. James sadly was just as confused as Sierra for years, wondering where the two had gone. The only thing he knew was that government agents came to the house soon after Kendra left with Sierra, asking questions about a certain secret project: Naughton.\n\nIn spite of their loss, James and Sierra were able to reconnect as father and daughter. Under James's care, Sierra would grow a love for the outdoors and mountain climbing. With her father's support, she managed to have a relatively peaceful life through the rest of her teenage years, but she never gave up on the idea of finding her mom, and discovering what she was hiding from her family all these years.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Panola Mountain, United States",
@@ -10983,27 +11011,41 @@
         {
           "locationName": "Panola Mountain, United States",
           "country": "United States",
-          "reasoning": ""
+          "reasoning": "Sierra reumites with her lost father after Kendra disappears"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sierra",
-          "reasoning": ""
+          "reasoning": "Left alone until she finds her father"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Kendra",
-          "reasoning": ""
+          "reasoning": "Suddenly vanishes again"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Local Mother goes missing, Authorities working on finding her"
+      ],
+      "sources": [
+        {
+          "text": "New Heights",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/new-heights/"
+        },
+        {
+          "text": "Overwatch Website, Sierra",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
         }
       ]
     },
     {
       "name": "Storm Rising",
-      "description": "No description available.",
+      "description": "With Ana gone, Sojourn stepped up as Captain of the Strike team, and with Lacroix gone and Reyes on a leash, she would also be placed in charge of pursuing both Talon and the new Doomfist. Her experience with cover-ops and counterterrorism back in Canada made her the ideal candidate to pursue action against Talon, without crossing the line and causing a stir like Reyes had.\n\nSoon enough, Vivian's Intel came with a connection that would grant the team an upper hand against Doomfist. Maximilien, head of La Coterie, the man behind the booming Monte Carlo. Overwatch found out about his connections to Talon but had no legal way of proving it, and they knew that his lawyers and resources would do anything to get him out. However, they also knew that if they apprehended him, he would talk his way out with a deal.\n\nThus, a Strike team consisting of Tracer, Winston, Genji and Mercy was sent to Havana, where Max used a Don Rumbotico distillery as a money laundering front. The team managed to apprehend the Omnic after a drawn-out brawl with Talon troops right as a Hurricane was about to hit the coast, but as expected, it would not take long until he was released free of charge. Officially, there are no records of their interrogation, but behind the scenes, Vivian had won Overwatch their chance to take Doonfist by Surprise.",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
       "lat": 23.135305,
@@ -11015,44 +11057,48 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Storm Rising",
+          "url": "https://www.youtube.com/watch?v=6KbDuCl0YEU&t=3s"
         }
       ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Havana, Cuba",
           "country": "Cuba",
-          "reasoning": ""
+          "reasoning": "Overwatch Apprehends Maximillien to get clues on Doomfist's next move"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Tracer, Winston, Genji, Mercy",
-          "reasoning": ""
+          "reasoning": "Strike team deployed to detain Max"
         },
         {
           "locationName": "",
           "country": "Sojourn,",
-          "reasoning": ""
+          "reasoning": "Commands the operation against Talon"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire, La Coterie,",
-          "reasoning": ""
+          "reasoning": "Maximillien uses Talon troops to secure his money laundering in Havana"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Overwatch pursues Doomfist's arrest through his connections"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
+          "reasoning": "Talked his way out by ratting Doomfist"
         }
       ],
       "yearEnd": null,
@@ -11060,7 +11106,7 @@
     },
     {
       "name": "Doomed to Fail",
-      "description": "No description available.",
+      "description": "Following the Uprising, Ramattra traveled the world, learning of its history and philosophers, trying to answer a single question. How does one save those who don't wish to be saved? He pondered on this for the many years that followed, but could never reach a truly satisfying answer. In his research, however, he studied the Iris and its applications with his Nanite technology, and after a lot of testing, he realized he might have found a way to preserve his species. A way to liberate Omnics from the mortality of their Chassis, and finally, rejoice, from many as one.\n\nThe only issue was convincing the Omnic kind to join him, having lost all of his supporters and with so many Omnics outright rejecting the idea of revolution. If it came down to forcing his own people into submission in order to save them, however, Ramattra had no objections, but he would need a larger army than what he used in Kings Row, and in order to build that he would need resources.\n\nRamattra met with Doomfist in Cairo, seeking to establish a partnership, as his plans of Omnic liberation would seed chaos among humans all across the world, and he knew Talon would cooperate if it benefited their cause. Akande, ever the visionary, saw potential in the Omnic's cause. He believed it to be a noble goal, but doomed to fail without proper backing. With Talon's resources, Ramattra was able to begin the production of his warbots, and while Null Sector sat in silence, away from the public eye for years, under the shadows laid a massive Army comparable to Anubis' forces back in the Crisis.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
@@ -11068,12 +11114,17 @@
       "yearStart": 2070,
       "eraName": "The Fall of Overwatch",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Storm Rising",
+          "url": "https://www.youtube.com/watch?v=6KbDuCl0YEU&t=3s"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Ramattra and Doomfist meet to form an alliance",
           "lat": 30.0444,
           "lon": 31.2357
         }
@@ -11082,29 +11133,31 @@
         {
           "locationName": "",
           "country": "Ramattra, Doomfist,",
-          "reasoning": ""
+          "reasoning": "Ramattra seeks Talon help to enact his plan"
         },
         {
           "locationName": "",
           "country": "Widowmaker,",
-          "reasoning": ""
+          "reasoning": "Guards  the encounter"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector, Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Null Sector becomes funded by Talon"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Reports of Null Sector activity slow down following  the Uprising"
+      ]
     },
     {
       "name": "The Conspiracy",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "No description available.",
+      "description": "Olivia had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.\n\nOlivia had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.\nThat day Olivia Colomar had died, but not long after. Sombra was born. \n\nShe had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -11115,30 +11168,38 @@
         {
           "locationName": "Dorado, Mexico",
           "country": "Mexico",
-          "reasoning": ""
+          "reasoning": "After discovering a global conspiracy and getting her identiy compromised, Sombra is born anew"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sombra",
-          "reasoning": ""
+          "reasoning": "Ditches her old life after being discovered"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Los Muertos, Phreaks",
-          "reasoning": ""
+          "reasoning": "Sombra gets cybernetics following her blackout"
         },
         {
           "locationName": "",
           "country": "The Chernobog Conspiracy,",
-          "reasoning": ""
+          "reasoning": "Finds Sombra during her hacking spree"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Another wave of global hacks hits some of the largest companies in the planet",
+        "Who is Sombra? The Annonymous collective terrorizing the Web"
+      ],
+      "sources": [
+        {
+          "text": "Sombra Origin",
+          "url": "https://www.youtube.com/watch?v=vHHjdKMH7_w"
+        }
+      ]
     },
     {
       "name": "Closed Fist",
@@ -11502,6 +11563,84 @@
       "sources": []
     },
     {
+      "name": "Another Life",
+      "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. However. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To ab infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this chicken and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
+      "locationType": "earth",
+      "lat": 62.648888,
+      "lon": 149.114685,
+      "image": "",
+      "cityDisplayName": "Burkhala, Russia",
+      "yearStart": 2069,
+      "yearEnd": 2080,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Burkhala, Russia",
+          "country": "Russia",
+          "reasoning": "Emre helps Moira steal materials from a R&D facility"
+        },
+        {
+          "locationName": "Guatemala",
+          "country": "Guatemala,",
+          "reasoning": "Emre helps Mauga infiltrate a black site"
+        },
+        {
+          "locationName": "Hungary",
+          "country": "Hungary,",
+          "reasoning": "Emre helps Widowmaker destroy a weapons facility"
+        },
+        {
+          "locationName": "Luanda, Angola",
+          "country": "Angola",
+          "reasoning": "Emre helps Reaper on a raid in Luanda"
+        }
+      ],
+      "headlines": [
+        "Sightings of a man covered in cybernetics raiding several security sights across the world continue"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Emre",
+          "url": "https://overwatch.blizzard.com/heroes/emre"
+        },
+        {
+          "text": "Search and Destroy",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/search-and-destroy/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emre,",
+          "reasoning": "Joins Talon against his will"
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Mauga, Widowmaker, Reaper,",
+          "reasoning": "Work alongside Emre but notice something is off"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Emre joins Talon but only works on specific missions"
+        },
+        {
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": "Order Chernobog to use Talon as a means to reach specific sites"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": "Commands Emre to take specific jobs for Talon"
+        }
+      ]
+    },
+    {
       "name": "Released",
       "description": "No description available.",
       "locationType": "earth",
@@ -11767,29 +11906,6 @@
           "locationName": "",
           "country": "Touch Up,",
           "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Idina Troopers",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "image": "",
-      "cityDisplayName": "City State of Numbani",
-      "yearStart": 2073,
-      "yearEnd": null,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "",
-          "lat": 12.0022,
-          "lon": 8.5919
         }
       ],
       "headlines": [],
@@ -14017,16 +14133,16 @@
       "headlines": []
     },
     {
-      "name": "Stolen Gauntlet",
+      "name": "Idina Troopers",
       "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
       "lat": 12.0022,
       "lon": 8.5919,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "cityDisplayName": "City State of Numbani",
+      "yearStart": 2073,
+      "yearEnd": 2078,
+      "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
           "locationName": "City State of Numbani",
@@ -14036,29 +14152,8 @@
           "lon": 8.5919
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doomfist, Orisa",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Business Meeting",
@@ -14187,6 +14282,149 @@
       "headlines": []
     },
     {
+      "name": "Venture's Adventures",
+      "locationType": "earth",
+      "cityDisplayName": "Shambali Monastery, Nepal",
+      "description": "No description available.",
+      "image": "",
+      "lat": 28.3949,
+      "lon": 84.124,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Venture",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shambali Order,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Curse Breaker",
+      "locationType": "earth",
+      "cityDisplayName": "Tokyo, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "eraName": "The Age of Conflict",
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Stolen Gauntlet",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "City State of Numbani",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist, Orisa",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
+    },
+    {
       "name": "Stone by Stone",
       "locationType": "earth",
       "cityDisplayName": "Suravasa, India",
@@ -14276,167 +14514,6 @@
         {
           "locationName": "",
           "country": "Adawe,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Curse Breaker",
-      "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "eraName": "The Age of Conflict",
-      "yearStart": 2079,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Venture's Adventures",
-      "locationType": "earth",
-      "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "No description available.",
-      "image": "",
-      "lat": 28.3949,
-      "lon": 84.124,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Shambali Monastery, Nepal",
-          "country": "Nepal",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Venture",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wayfinder Society,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shambali Order,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Searching",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "No description available.",
-      "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Zarya,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Sombra,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Volskaya Industries,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Los Muertos,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Katya,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lynx 17,",
           "reasoning": ""
         }
       ],
@@ -14572,6 +14649,68 @@
         {
           "locationName": "",
           "country": "Ming,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Searching",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "No description available.",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Volskaya Industries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lynx 17,",
           "reasoning": ""
         }
       ],
@@ -17913,6 +18052,27 @@
       "previewBadgeMainCharacter": "Mizuki, Shion",
       "previewBadgeSecondaryCharacters": "Hanzo, Kiriko, Sakura, Nobuto, Ryota, Chikasa",
       "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire"
+    },
+    {
+      "name": "Call to Action",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -29.189675,
+      "lon": -54.866624,
+      "image": "",
+      "cityDisplayName": "Santiago, Brazil",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Santiago, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     }
   ]
 }

@@ -2,6 +2,8 @@
  * Theater voiceline filenames: `{Hero}_-_{dialogue_with_underscores}.ogg`
  */
 
+import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
+
 export const VOICELINE_HERO_DIALOGUE_SEPARATOR = '_-_';
 
 /**
@@ -51,6 +53,33 @@ export function parseVoicelineFilename(filename) {
 export function voicelineFilenameToSubtitles(filename) {
     const { dialoguePart } = parseVoicelineFilename(filename);
     return dialoguePart.replace(/_/g, ' ').trim();
+}
+
+/**
+ * MatchTalk dumps include ability callouts and pure SFX — hide those from dialogue pickers.
+ * @param {string} filename
+ * @returns {boolean}
+ */
+export function isLikelyDialogueVoiceline(filename) {
+    const { dialoguePart } = parseVoicelineFilename(filename);
+    const text = String(dialoguePart || '').replace(/_/g, ' ').trim();
+    if (!text) return false;
+
+    // Pure SFX / ability callouts like (breathes) or (Chain Throw)
+    if (/^\([^)]+\)$/i.test(text)) return false;
+
+    return true;
+}
+
+/**
+ * @param {string} heroName
+ * @param {string[]} voicelines
+ * @returns {string[]}
+ */
+export function listDialogueVoicelinesForHero(heroName, voicelines) {
+    return listVoicelinesForHero(heroName, voicelines).filter((file) =>
+        isLikelyDialogueVoiceline(file),
+    );
 }
 
 /**
@@ -128,17 +157,33 @@ export function listVoicelinesForHero(heroName, voicelines) {
  * @param {number} [limit=8]
  * @returns {string[]}
  */
-export function matchVoicelinesForHero(heroName, voicelines, query, limit = 8) {
-    const pool = listVoicelinesForHero(heroName, voicelines);
-    const needle = normalizeVoicelineSearch(query);
-    if (!needle) return pool.slice(0, limit);
+export function matchVoicelinesForHero(heroName, voicelines, query, limit = 24) {
+    const pool = listDialogueVoicelinesForHero(heroName, voicelines);
+    if (pool.length === 0) return [];
+
+    const needle = normalizeVoicelineSearch(stripDialogueSubtitleMarkup(query));
+
+    if (!needle) {
+        return pool
+            .slice()
+            .sort((a, b) =>
+                voicelineFilenameToSubtitles(a).localeCompare(voicelineFilenameToSubtitles(b)),
+            )
+            .slice(0, limit);
+    }
 
     return pool
         .filter((file) => {
             const { dialoguePart } = parseVoicelineFilename(file);
+            const preview = voicelineFilenameToSubtitles(file);
             const dialogueNorm = normalizeVoicelineSearch(dialoguePart);
+            const previewNorm = normalizeVoicelineSearch(stripDialogueSubtitleMarkup(preview));
             const fileNorm = normalizeVoicelineSearch(stripVoicelineExtension(file));
-            return dialogueNorm.includes(needle) || fileNorm.includes(needle);
+            return (
+                dialogueNorm.includes(needle) ||
+                previewNorm.includes(needle) ||
+                fileNorm.includes(needle)
+            );
         })
         .sort((a, b) => {
             const aDialogue = parseVoicelineFilename(a).dialoguePart;
@@ -150,8 +195,6 @@ export function matchVoicelinesForHero(heroName, voicelines, query, limit = 8) {
         })
         .slice(0, limit);
 }
-
-import { stripDialogueSubtitleMarkup } from './dialogueSubtitleFormatting.js';
 
 /**
  * @param {{ hero?: string, voice?: string, subtitles?: string }} line
@@ -209,20 +252,21 @@ function scorePartialVoicelineMatch(target, candidate) {
  * @returns {string}
  */
 export function findVoicelineForHeroAndSubtitles(heroName, subtitles, voicelines) {
-    const pool = listVoicelinesForHero(heroName, voicelines);
+    const fullPool = listVoicelinesForHero(heroName, voicelines);
+    const dialoguePool = fullPool.filter((file) => isLikelyDialogueVoiceline(file));
     const target = normalizeSubtitlesForMatch(subtitles);
-    if (!target || pool.length === 0) return '';
+    if (!target || fullPool.length === 0) return '';
 
-    for (let i = 0; i < pool.length; i += 1) {
-        const file = pool[i];
+    for (let i = 0; i < fullPool.length; i += 1) {
+        const file = fullPool[i];
         const candidate = normalizeSubtitlesForMatch(voicelineFilenameToSubtitles(file));
         if (candidate === target) return file;
     }
 
     let bestFile = '';
     let bestScore = 0;
-    for (let i = 0; i < pool.length; i += 1) {
-        const file = pool[i];
+    for (let i = 0; i < dialoguePool.length; i += 1) {
+        const file = dialoguePool[i];
         const candidate = normalizeSubtitlesForMatch(voicelineFilenameToSubtitles(file));
         const score = scorePartialVoicelineMatch(target, candidate);
         if (score > bestScore) {

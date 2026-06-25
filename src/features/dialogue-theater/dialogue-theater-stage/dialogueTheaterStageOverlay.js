@@ -111,13 +111,27 @@ function ensureStageDom() {
         stage.className = 'dialogue-theater-stage';
         stage.innerHTML = `
             <img class="dialogue-theater-stage__scene" alt="" />
+            <div class="dialogue-theater-stage__scene-gradient" aria-hidden="true"></div>
             <img class="dialogue-theater-stage__render dialogue-theater-stage__render--left" alt="" hidden />
             <img class="dialogue-theater-stage__render dialogue-theater-stage__render--right" alt="" hidden />
             ${STAGE_DIALOGUE_BOX_HTML}
         `;
         container.appendChild(stage);
-    } else if (!stage.querySelector('.dialogue-theater-stage__dialogue')) {
-        stage.insertAdjacentHTML('beforeend', STAGE_DIALOGUE_BOX_HTML);
+    } else {
+        if (!stage.querySelector('.dialogue-theater-stage__scene-gradient')) {
+            const sceneEl = stage.querySelector('.dialogue-theater-stage__scene');
+            const gradient = document.createElement('div');
+            gradient.className = 'dialogue-theater-stage__scene-gradient';
+            gradient.setAttribute('aria-hidden', 'true');
+            if (sceneEl instanceof HTMLElement) {
+                sceneEl.insertAdjacentElement('afterend', gradient);
+            } else {
+                stage.prepend(gradient);
+            }
+        }
+        if (!stage.querySelector('.dialogue-theater-stage__dialogue')) {
+            stage.insertAdjacentHTML('beforeend', STAGE_DIALOGUE_BOX_HTML);
+        }
     }
     return stage;
 }

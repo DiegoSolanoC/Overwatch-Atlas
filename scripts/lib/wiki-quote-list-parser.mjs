@@ -106,7 +106,7 @@ export function parseDialogueLine(liInnerHtml) {
  * @returns {boolean}
  */
 export function isOneOfTheFollowingBlock(liHtml) {
-    return /one\s+of\s+the\s+following/i.test(liHtml);
+    return /one\s+of\s+(?:the\s+following|two|three|four|\d+)\s*:?/i.test(liHtml);
 }
 
 /**
@@ -275,7 +275,7 @@ export function parseQuoteListWithRoutes(quoteCellHtml) {
 
         if (isOneOfTheFollowingBlock(liInner)) {
             const { lines: nestedLines } = parseOneOfTheFollowingBlock(liInner);
-            if (nestedLines.length === 0 || sharedPrefixIndexes.length === 0) {
+            if (nestedLines.length === 0) {
                 continue;
             }
 
@@ -283,6 +283,37 @@ export function parseQuoteListWithRoutes(quoteCellHtml) {
                 lines.push(nestedLine);
                 return lines.length - 1;
             });
+
+            if (sharedPrefixIndexes.length === 0 && paths.length > 0) {
+                /** @type {typeof paths} */
+                const expanded = [];
+                for (const existingPath of paths) {
+                    for (const variantIndex of variantIndexes) {
+                        expanded.push({
+                            label: `${existingPath.label} / ${pathLabelFromLine(lines[variantIndex])}`,
+                            lineIndexes: [...existingPath.lineIndexes, variantIndex],
+                        });
+                    }
+                }
+                paths.length = 0;
+                paths.push(...expanded);
+                sharedPrefixIndexes = [];
+                defaultIndexes = null;
+                continue;
+            }
+
+            if (sharedPrefixIndexes.length === 0 && paths.length === 0) {
+                pendingOneOfPaths = variantIndexes.map((variantIndex) => ({
+                    prefix: [],
+                    variantIndex,
+                    label: pathLabelFromLine(lines[variantIndex]),
+                }));
+                continue;
+            }
+
+            if (sharedPrefixIndexes.length === 0) {
+                continue;
+            }
 
             pendingOneOfPaths = variantIndexes.map((variantIndex) => ({
                 prefix: [...sharedPrefixIndexes],
@@ -343,8 +374,36 @@ export function parseQuoteListWithRoutes(quoteCellHtml) {
         const line = parseDialogueLine(liInner);
         if (!line) continue;
 
+        const nestedUlMatch = liInner.match(/<ul>([\s\S]*)<\/ul>/i);
+        /** @type {Array<{ hero: string, subtitles: string }>} */
+        const nestedResponseLines = [];
+        if (nestedUlMatch) {
+            for (const block of extractTopLevelLiBlocks(nestedUlMatch[0])) {
+                const nestedLine = parseDialogueLine(
+                    block.replace(/^<li[^>]*>/i, '').replace(/<\/li>$/i, ''),
+                );
+                if (nestedLine) nestedResponseLines.push(nestedLine);
+            }
+        }
+
         lines.push(line);
-        const lineIndex = lines.length - 1;
+        const openerIndex = lines.length - 1;
+
+        if (nestedResponseLines.length >= 2) {
+            for (const nestedLine of nestedResponseLines) {
+                lines.push(nestedLine);
+                const branchIndex = lines.length - 1;
+                paths.push({
+                    label: pathLabelFromLine(lines[branchIndex]),
+                    lineIndexes: [openerIndex, branchIndex],
+                });
+            }
+            sharedPrefixIndexes = [];
+            defaultIndexes = null;
+            continue;
+        }
+
+        const lineIndex = openerIndex;
 
         if (pendingOneOfPaths) {
             for (const pending of pendingOneOfPaths) {
@@ -363,6 +422,16 @@ export function parseQuoteListWithRoutes(quoteCellHtml) {
             defaultIndexes.push(lineIndex);
         }
         sharedPrefixIndexes.push(lineIndex);
+    }
+
+    if (pendingOneOfPaths) {
+        for (const pending of pendingOneOfPaths) {
+            paths.push({
+                label: pending.label,
+                lineIndexes: [...pending.prefix, pending.variantIndex],
+            });
+        }
+        pendingOneOfPaths = null;
     }
 
     if (paths.length === 0 && lines.length > 0) {

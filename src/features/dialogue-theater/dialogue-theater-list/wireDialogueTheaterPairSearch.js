@@ -3,7 +3,7 @@
  */
 
 import { loadDialogueTheaterHeroes, heroFilterIconUrl } from '../data/loadDialogueTheaterAssets.js';
-import { setupSingleValueAutocomplete } from '../dialogue-theater-info-panel/dialogueTheaterSingleAutocomplete.js';
+import { setupSingleValueAutocomplete, updateSingleValueAutocompleteOptions } from '../dialogue-theater-info-panel/dialogueTheaterSingleAutocomplete.js';
 import { buildDialogueTheaterSpeakerOptions } from './dialogueTheaterPairSearch.js';
 
 const PAIR_SEARCH_AUTOCOMPLETE = { placement: 'overlay' };
@@ -87,12 +87,10 @@ export async function wireDialogueTheaterPairSearch(root, handlers) {
         refreshSpeakerOptions: () => {
             const nextOptions = buildDialogueTheaterSpeakerOptions(manifestHeroes, handlers.getConversations());
             if (inputA instanceof HTMLInputElement) {
-                inputA.dataset.singleAutocompleteWired = '';
-                wirePairSearchAutocomplete(inputA, nextOptions);
+                updateSingleValueAutocompleteOptions(inputA, nextOptions);
             }
             if (inputB instanceof HTMLInputElement) {
-                inputB.dataset.singleAutocompleteWired = '';
-                wirePairSearchAutocomplete(inputB, nextOptions);
+                updateSingleValueAutocompleteOptions(inputB, nextOptions);
             }
         },
     };

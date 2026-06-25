@@ -46,6 +46,8 @@ export function buildDialogueTheaterListThumbMediaHtml(row, assets, spinnerSrc) 
     const scene = sceneSrc
         ? renderImgTag(sceneSrc, 'event-item-preview-image__photo dialogue-theater-list-thumb__scene', row.name || 'Scene')
         : '';
+    const sceneGradient =
+        '<div class="dialogue-theater-list-thumb__scene-gradient" aria-hidden="true"></div>';
     const leftRender = leftRenderSrc
         ? renderImgTag(leftRenderSrc, 'dialogue-theater-list-thumb__render dialogue-theater-list-thumb__render--left', 'Character')
         : '';
@@ -58,5 +60,5 @@ export function buildDialogueTheaterListThumbMediaHtml(row, assets, spinnerSrc) 
         ? 'event-item-preview-image dialogue-theater-list-thumb dialogue-theater-list-thumb--solo-speaker event-item-preview-image--loading'
         : 'event-item-preview-image dialogue-theater-list-thumb event-item-preview-image--loading';
 
-    return `<div class="${thumbClass}">${spinner}${scene}${leftRender}${rightRender}</div>`;
+    return `<div class="${thumbClass}">${spinner}${scene}${sceneGradient}${leftRender}${rightRender}</div>`;
 }

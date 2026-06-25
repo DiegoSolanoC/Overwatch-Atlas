@@ -438,7 +438,9 @@ export async function mountDialogueTheaterListView(container) {
                                 <div class="dialogue-theater-pair-search-col__icon" aria-hidden="true">
                                     <img id="dialogueTheaterPairSearchIconA" class="dialogue-theater-pair-search-col__icon-img" alt="" hidden />
                                 </div>
-                                <input type="text" id="dialogueTheaterPairSearchA" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character A..." autocomplete="off" spellcheck="false" />
+                                <div class="dialogue-theater-pair-search-col__input-wrap">
+                                    <input type="text" id="dialogueTheaterPairSearchA" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character A..." autocomplete="off" spellcheck="false" />
+                                </div>
                             </div>
                             <div class="dialogue-theater-pair-search-col dialogue-theater-pair-search-col--title">
                                 <label for="dialogueTheaterSearchInput" class="events-search-label">Search:</label>
@@ -456,7 +458,9 @@ export async function mountDialogueTheaterListView(container) {
                                 <div class="dialogue-theater-pair-search-col__icon" aria-hidden="true">
                                     <img id="dialogueTheaterPairSearchIconB" class="dialogue-theater-pair-search-col__icon-img" alt="" hidden />
                                 </div>
-                                <input type="text" id="dialogueTheaterPairSearchB" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character B..." autocomplete="off" spellcheck="false" />
+                                <div class="dialogue-theater-pair-search-col__input-wrap">
+                                    <input type="text" id="dialogueTheaterPairSearchB" class="events-search-input dialogue-theater-pair-search-col__input" placeholder="Character B..." autocomplete="off" spellcheck="false" />
+                                </div>
                             </div>
                         </div>
                     </div>

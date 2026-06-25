@@ -162,17 +162,33 @@ class DialogueTheaterDataService {
                 if (!localRow) return fileRow;
 
                 let picked = this.pickRicherConversationRow(fileRow, localRow);
-                if (Array.isArray(fileRow.paths) && fileRow.paths.length > 0) {
-                    const pathIds = new Set(fileRow.paths.map((pathRow) => pathRow.id));
-                    const selectedPathId =
-                        localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
-                            ? localRow.selectedPathId
-                            : fileRow.selectedPathId || fileRow.paths[0]?.id || '';
+
+                const filePaths = Array.isArray(fileRow.paths) ? fileRow.paths : [];
+                const localPaths = Array.isArray(localRow.paths) ? localRow.paths : [];
+
+                if (localPaths.length > 0) {
+                    // Saved local route edits win over the bundled file (manual path/line tuning).
+                    const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
+                    picked = {
+                        ...picked,
+                        lines: localRow.lines,
+                        paths: localPaths,
+                        selectedPathId:
+                            localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                                ? localRow.selectedPathId
+                                : localPaths[0]?.id || '',
+                    };
+                } else if (filePaths.length > 0) {
+                    // Wiki/script repairs in the repo file replace a flat local copy.
+                    const pathIds = new Set(filePaths.map((pathRow) => pathRow.id));
                     picked = {
                         ...picked,
                         lines: fileRow.lines,
-                        paths: fileRow.paths,
-                        selectedPathId,
+                        paths: filePaths,
+                        selectedPathId:
+                            localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                                ? localRow.selectedPathId
+                                : fileRow.selectedPathId || filePaths[0]?.id || '',
                     };
                 }
                 const withRenders = this.overlayFileLineRenders(fileRow, picked);
@@ -252,7 +268,7 @@ class DialogueTheaterDataService {
         } else if (localNormalized.length === 0) {
             this.conversations = fileNormalized;
         } else {
-            /** Bundled file wins on id unless local has richer paths/lines; keep local-only drafts. */
+            /** Bundled file wins on id unless local has saved route data; keep local-only drafts. */
             this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
                 applyFileNames,
             });

@@ -1241,7 +1241,7 @@ function wireDialogueLineBlock(blockEl, line, onEditChange) {
     }
 
     if (heroInput instanceof HTMLInputElement) {
-        setupSingleValueAutocomplete(heroInput, heroOptions, 'heroes');
+        setupSingleValueAutocomplete(heroInput, heroOptions, 'heroes', { placement: 'overlay' });
         heroInput.addEventListener('input', syncHeroAndRenders);
         heroInput.addEventListener('change', syncHeroAndRenders);
         updateHeroIcon(heroIcon, heroInput.value);
@@ -1348,7 +1348,9 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
             <label class="dialogue-theater-edit__label">Hero</label>
             <div class="dialogue-theater-line__hero-field">
                 <img class="dialogue-theater-line__hero-icon dialogue-theater-line__hero-icon--empty" alt="" />
-                <input type="text" class="dialogue-theater-line__hero-input event-slide-inline-editor__input" placeholder="Pick a hero…" autocomplete="off" />
+                <div class="dialogue-theater-line__hero-input-wrap">
+                    <input type="text" class="dialogue-theater-line__hero-input event-slide-inline-editor__input" placeholder="Pick a hero…" autocomplete="off" />
+                </div>
             </div>
         </div>
         <div class="dialogue-theater-line__row">
