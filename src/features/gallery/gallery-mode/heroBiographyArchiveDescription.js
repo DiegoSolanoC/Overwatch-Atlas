@@ -245,7 +245,14 @@ function setConnectionsViewMode(mode) {
         });
     }
     if (connectionsViewMode === 'canvas') {
-        void refreshConnectionsCanvas();
+        void refreshConnectionsCanvas().then(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    connectionsCanvasController?.refitView?.();
+                    connectionsCanvasMountEl?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                });
+            });
+        });
     } else {
         applyConnectionsEmptyState(currentViewEntry ?? currentEntry);
     }

@@ -107,6 +107,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
         }
       ]
     },
@@ -255,6 +263,14 @@
         {
           "kind": "faction",
           "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
@@ -579,6 +595,14 @@
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
           "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
         }
       ]
     },
@@ -757,8 +781,8 @@
             "role": "subject",
             "entityKind": "hero",
             "entityName": "Ana",
-            "x": 1176,
-            "y": 1160,
+            "x": 1215.43,
+            "y": 1180.83,
             "scale": 2.5,
             "portraitKey": "Ana"
           },
@@ -830,6 +854,17 @@
             "portraitKey": "Reinhardt"
           },
           {
+            "id": "gcc-link-npc-sam",
+            "kind": "npc",
+            "role": "linked",
+            "entityKind": "npc",
+            "entityName": "Sam",
+            "x": 634,
+            "y": 1536,
+            "scale": 1.5,
+            "portraitKey": "Sam"
+          },
+          {
             "id": "gcc-link-faction-search-rescue",
             "kind": "faction",
             "role": "linked",
@@ -885,6 +920,10 @@
           {
             "fromId": "gcc-subject",
             "toId": "gcc-link-hero-soldier-76"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-npc-sam"
           }
         ],
         "display": {
@@ -894,9 +933,9 @@
           "snapAngles": true
         },
         "view": {
-          "panX": -124.51435274218764,
-          "panY": -141.19358096679687,
-          "zoom": 0.3608908800000002
+          "panX": -109.54190788009834,
+          "panY": -122.42104581079502,
+          "zoom": 0.3560282668400643
         }
       },
       "connections": [

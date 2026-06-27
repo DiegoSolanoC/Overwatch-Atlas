@@ -18,6 +18,8 @@ body.codex-mode-active #codexToggleInfo.dock-globe-rail__btn {
     visibility: visible !important;
 }
 
+/* Desktop + mobile landscape: fixed chip width. Portrait uses viewport.css single-row flex. */
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
 body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
 body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
 body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
@@ -31,6 +33,7 @@ body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__bt
     font-size: 11px !important;
     line-height: 1.05 !important;
     letter-spacing: 0.01em;
+}
 }
 
 body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn [id$='Icon'],

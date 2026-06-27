@@ -41,6 +41,11 @@ function ensureSelectHeroIcon() {
     }
 }
 
+/** @returns {boolean} */
+function isGalleryMobilePortrait() {
+    return window.matchMedia('(max-width: 768px) and (orientation: portrait)').matches;
+}
+
 function applyStripVisibility() {
     if (stripEl) {
         stripEl.classList.toggle(STRIP_HIDDEN_CLASS, !stripVisible);
@@ -86,6 +91,14 @@ function handleSelectHeroToggle(event) {
 export function toggleHeroBiographyChipStrip() {
     handleSelectHeroToggle(null);
     return stripVisible;
+}
+
+/** Portrait mobile: dismiss full-screen picker after interacting with a chip. */
+export function hideHeroBiographyChipStripOnPortraitPick() {
+    if (!isGalleryMobilePortrait()) return;
+    if (!stripVisible) return;
+    stripVisible = false;
+    applyStripVisibility();
 }
 
 /**

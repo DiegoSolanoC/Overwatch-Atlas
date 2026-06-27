@@ -100,24 +100,26 @@ body:has(#atlasGalleryHost),
     --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 128px);
 }
 
-/* Clear passive Now Playing (left) + summary hover badge (right) under header hub */
-body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
-    position: fixed;
-    top: var(--gallery-side-panel-inset-top);
-    bottom: var(--gallery-side-panel-inset-bottom);
-    height: auto;
-    width: var(--gallery-side-panel-width, 1000px);
-    max-width: var(--gallery-side-panel-width, 1000px);
-}
+/* Desktop / tablet landscape: fixed side columns flanking the stage */
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
+        position: fixed;
+        top: var(--gallery-side-panel-inset-top);
+        bottom: var(--gallery-side-panel-inset-bottom);
+        height: auto;
+        width: var(--gallery-side-panel-width, 1000px);
+        max-width: var(--gallery-side-panel-width, 1000px);
+    }
 
-body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
-    left: clamp(44px, 3.6vw, 60px);
-    right: auto;
-}
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+        left: clamp(44px, 3.6vw, 60px);
+        right: auto;
+    }
 
-body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
-    right: clamp(52px, 6vw, 92px);
-    left: auto;
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+        right: clamp(52px, 6vw, 92px);
+        left: auto;
+    }
 }
 
 .gallery-mode__archive-connections .gallery-mode__archive-connections-view {
@@ -455,6 +457,33 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     min-width: 0;
 }
 
+/*
+ * Canvas view on desktop / landscape: fill the fixed-height side panel.
+ * (Do NOT apply flex-basis:0 + min-height:0 on portrait — the stacked panel is
+ * height:auto and the canvas mount collapses to zero there.)
+ */
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-view:has(.gallery-mode__connections-canvas-mount:not([hidden])) {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount:not([hidden]) {
+        flex: 1 1 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-conn-canvas__viewport {
+        flex: 1 1 0;
+        min-height: clamp(180px, 32vh, 480px);
+    }
+}
+
 .gallery-mode__connections-canvas-mount[hidden] {
     display: none !important;
 }
@@ -484,6 +513,18 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     min-height: 0;
     min-width: 0;
     overflow: hidden;
+}
+
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
+    body:has(#atlasGalleryHost) .gallery-conn-canvas {
+        flex: 1 1 0;
+        min-height: 0;
+        height: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-conn-canvas__viewport {
+        flex: 1 1 0;
+    }
 }
 
 .gallery-conn-canvas__zoom-bar {
@@ -820,7 +861,7 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     line-height: 1.3;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
     body:has(#atlasGalleryHost),
     #atlasGalleryHost {
         --gallery-side-panel-inset-top: calc(
@@ -859,7 +900,7 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 640px) and (orientation: landscape) {
     body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
         position: absolute;
         bottom: auto;
@@ -2072,5 +2113,472 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 
     .gallery-mode__hero-title {
         font-size: clamp(1.85rem, 9vw, 2.75rem);
+    }
+}
+
+/* Portrait mobile: vertical stack — Look → Intel → Connections (scroll); chips sticky at bottom */
+@media (max-width: 768px) and (orientation: portrait) {
+    body:has(#atlasGalleryHost) {
+        --gallery-portrait-canvas-min: max(320px, 58dvh);
+        --gallery-select-file-dock-pad: max(
+            128px,
+            calc(
+                var(--dock-border-img-h, 88px) * 1.65 + var(--hero-bio-label-band, 20px) +
+                    clamp(36px, 7vh, 64px)
+            )
+        );
+    }
+
+    /*
+     * Portrait scroll stack: keep story-viewer ::before/::after pattern but pin to the
+     * viewport so the tile stays visible while content scrolls (absolute inset:0 stops
+     * at one screen when the host becomes a scroll container).
+     */
+    body:has(#atlasGalleryHost) .gallery-mode.story-viewer-container::before,
+    body:has(#atlasGalleryHost) .gallery-mode.story-viewer-container::after {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode.story-viewer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        grid-template-rows: unset;
+        padding-inline: clamp(12px, 3vw, 16px);
+        padding-bottom: calc(
+            var(--footer-height, 60px) + var(--pagination-dock-height, 200px) +
+                env(safe-area-inset-bottom, 0px) + 12px
+        );
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode--hero-filters-collapsed {
+        grid-template-rows: unset;
+    }
+
+    /* Look block — title + look picker, then portrait art */
+    body:has(#atlasGalleryHost) .gallery-mode__main {
+        order: 1;
+        flex: 0 0 auto;
+        min-height: 0;
+        width: 100%;
+        padding: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px))
+            clamp(12px, 3vw, 16px) clamp(8px, 1.5vh, 12px);
+        pointer-events: auto;
+        z-index: 2;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait {
+        order: 2;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        z-index: 1;
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: clamp(160px, 30vh, 280px);
+        max-height: min(42vh, 360px);
+        margin: 0;
+        padding: 0 clamp(8px, 2vw, 16px) clamp(8px, 1.5vh, 14px);
+        box-sizing: border-box;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait:not(.is-visible) {
+        min-height: 0;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait--faction {
+        align-items: center;
+        justify-content: center;
+        padding-bottom: clamp(8px, 1.5vh, 14px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait--faction .gallery-mode__portrait-img {
+        max-width: min(72vw, 320px);
+        max-height: min(32vh, 280px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait-img {
+        max-height: min(38vh, 320px);
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__portrait-empty {
+        margin: 0;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__hero-header {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__hero-header:not(.is-visible) {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__hero-title {
+        font-size: clamp(1.85rem, 9vw, 2.75rem);
+    }
+
+    /* Intel + Connections — stacked full-width blocks (no desktop fixed/absolute) */
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        flex: 0 0 auto;
+        align-self: stretch;
+        box-sizing: border-box;
+        margin: 0;
+        padding: clamp(12px, 3vw, 16px);
+        overflow: visible;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        z-index: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel:not(.is-visible) {
+        display: none !important;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel,
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+        max-height: none;
+        border-width: 1px;
+        border-color: rgba(255, 255, 255, 0.14);
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.22);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-description.gallery-mode__archive-side-panel {
+        order: 3;
+        margin-top: clamp(8px, 1.5vh, 14px);
+        border-left-width: 3px;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
+        order: 4;
+        margin-top: clamp(12px, 2vh, 18px);
+        margin-bottom: clamp(8px, 1.5vh, 14px);
+        border-right-width: 3px;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel.is-visible {
+        transform: none !important;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-side-panel-heading-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-panel-scroll,
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections .gallery-mode__archive-panel-scroll,
+    body:has(#atlasGalleryHost) .gallery-mode__connections-list-wrap {
+        flex: 0 0 auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+        direction: ltr;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections .gallery-mode__archive-connections-view {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: visible;
+    }
+
+    /*
+     * Connections list — one horizontal row per link: icon | stacked arrows/reasons | icon
+     * (Overrides event-slide-content.css ≤620px column stack inside Gallery only.)
+     */
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__group {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body
+        .event-slide-bio-connections__group
+        > .event-slide-bio-connections__row--dual,
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__row--dual,
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__row--faction-oneway {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: clamp(6px, 2vw, 10px) !important;
+        width: 100% !important;
+        flex: 0 0 auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        padding: clamp(8px, 2vw, 10px) clamp(6px, 1.5vw, 8px);
+        text-align: center;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
+        flex: 0 0 auto;
+        align-items: center;
+        min-width: 0;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
+    body:has(#atlasGalleryHost)
+        .gallery-mode__archive-connections-body
+        .event-slide-filter-token-img.event-slide-bio-connections__portrait {
+        width: clamp(44px, 13vw, 56px) !important;
+        height: clamp(52px, 15vw, 68px) !important;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrows,
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__oneway-arrows {
+        flex: 1 1 auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        width: auto !important;
+        gap: clamp(4px, 1.2vw, 8px) !important;
+        font-size: clamp(0.72rem, 2.8vw, 0.82rem);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-lane {
+        flex-direction: row !important;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: clamp(4px, 1vw, 6px);
+        width: 100%;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
+        font-size: clamp(0.7rem, 2.6vw, 0.8rem);
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-glyph {
+        flex-shrink: 0;
+    }
+
+    /*
+     * Portrait canvas — content-sized (stacked panel has height:auto; flex-basis:0 collapses).
+     */
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections .gallery-mode__archive-connections-view:has(
+            .gallery-mode__connections-canvas-mount:not([hidden])
+        ) {
+        flex: 0 0 auto;
+        min-height: auto;
+        overflow: visible;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-mode__connections-canvas-mount:not([hidden]) {
+        flex: 0 0 auto;
+        min-height: auto;
+        width: 100%;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-conn-canvas {
+        flex: 0 0 auto;
+        min-height: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-conn-canvas__viewport {
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: var(--gallery-portrait-canvas-min);
+        height: var(--gallery-portrait-canvas-min);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-conn-canvas__hint {
+        display: none;
+    }
+
+    /* Chip strip — portrait: Select File open = full-stage overlay; closed = off-screen */
+    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) {
+        overflow: hidden;
+    }
+
+    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__main,
+    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__portrait,
+    body:has(#atlasGalleryHost) #atlasGalleryHost:not(.gallery-mode--hero-filters-collapsed) .gallery-mode__archive-side-panel {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) {
+        position: fixed;
+        /* Full main stage below header — backdrop continues under the mode toggle rail */
+        top: var(--header-chrome-paint-h, var(--header-height, 88px));
+        left: 0;
+        right: 0;
+        bottom: calc(
+            var(--footer-height, 60px) + var(--pagination-dock-height, 200px) +
+                env(safe-area-inset-bottom, 0px)
+        );
+        z-index: 40;
+        order: unset;
+        flex: none;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: calc(
+                var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px)) -
+                    var(--header-chrome-paint-h, var(--header-height, 88px))
+            )
+            clamp(12px, 3vw, 16px)
+            0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-top: none;
+        --hero-bio-chip-max-h: clamp(64px, 14vw, 88px);
+        --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
+        --hero-bio-chip-dock-gap: 0px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden)::before {
+        display: none;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__category-row {
+        flex: 0 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: clamp(8px, 2vw, 12px);
+        margin: 0 0 clamp(14px, 2.2vh, 20px);
+        padding: 0;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__content {
+        flex: 1 1 0;
+        min-height: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        scroll-padding-bottom: var(--gallery-select-file-dock-pad);
+    }
+
+    /* Scroll extent spacer — flex on the outer panel was capping scroll height */
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__content::after {
+        content: '';
+        display: block;
+        flex: 0 0 var(--gallery-select-file-dock-pad);
+        width: 100%;
+        height: var(--gallery-select-file-dock-pad);
+        min-height: var(--gallery-select-file-dock-pad);
+        pointer-events: none;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__roles,
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__flat-grid,
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__npc-flat,
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__faction-other {
+        width: 100%;
+        max-width: min(560px, 100%);
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(18px, 2.8vh, 28px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__role-column {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: min(520px, 100%);
+        align-items: center;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__subrow,
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__npc-flat-row {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: clamp(14px, 2vh, 20px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__subrole-group {
+        width: 100%;
+        max-width: min(480px, 100%);
+        align-items: center;
+        align-self: center;
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__chips-row,
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__chips-row--flat {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        align-self: center;
+        width: 100%;
+        max-width: min(480px, 100%);
+        gap: clamp(8px, 2.2vw, 12px);
+    }
+
+    body:has(#atlasGalleryHost) .gallery-hero-filters--hidden {
+        position: fixed;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 }

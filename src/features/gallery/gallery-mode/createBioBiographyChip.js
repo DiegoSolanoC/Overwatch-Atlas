@@ -6,6 +6,7 @@ import { FILTER_IMAGE_PATHS } from '../../system-interface/interface-filter-menu
 import { normalizeBioBiographyCategory } from './bioBiographyCategories.js';
 import { resolveBioManifestChipIdentity } from './loadBioFilterManifest.js';
 import { toggleBioBiographyChip } from './heroBiographySelection.js';
+import { hideHeroBiographyChipStripOnPortraitPick } from './heroBiographyChipStripVisibility.js';
 import { fitHeroChipLabelText } from './fitHeroChipLabelText.js';
 
 /** @type {Record<string, string>} */
@@ -80,6 +81,7 @@ export function createBioBiographyChip(category, manifestItem, imageService, sou
         const selected = toggleBioBiographyChip(cat, wrap, chip, displayName, filterKey);
         soundManager?.play?.(selected ? 'filterPick' : 'filterOff');
         if (selected) scheduleLabelFit();
+        hideHeroBiographyChipStripOnPortraitPick();
     };
 
     chip.addEventListener('mouseenter', scheduleLabelFit);

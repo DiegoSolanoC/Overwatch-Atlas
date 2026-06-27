@@ -75,10 +75,19 @@
         font-size: 14px !important;
     }
 
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn,
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn {
         width: 48px !important;
         height: 42px !important;
         font-size: 12px !important;
+    }
+
+    @media (orientation: landscape) {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+            width: 48px !important;
+            height: 42px !important;
+            font-size: 12px !important;
+        }
     }
 
     /* Remove gap from dock rail on mobile */
@@ -87,10 +96,140 @@
         justify-content: center !important;
     }
 
-    /* Center left dock rail on mobile portrait (has 3 buttons) */
-    .dock-globe-rail--left {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+    /* Landscape: keep mode toggles centered above the dock */
+    @media (orientation: landscape) {
+        .dock-globe-rail--left {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+    }
+
+    /*
+     * Portrait: mode toggles (World / Codex / Story / Gallery) — top center under header.
+     * Bottom-center placement hid them behind the dock trapezium.
+     */
+    @media (orientation: portrait) {
+        #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
+        .dock-globe-rail--left {
+            top: var(--mode-dock-rail-top, calc(var(--header-height, 72px) + 6px)) !important;
+            bottom: auto !important;
+            left: 50% !important;
+            right: auto !important;
+            transform: translateX(-50%) !important;
+            z-index: 280;
+            display: flex !important;
+            flex-direction: row !important;
+            width: calc(
+                100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+                    clamp(8px, 2vw, 16px)
+            ) !important;
+            max-width: calc(
+                100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+                    clamp(8px, 2vw, 16px)
+            ) !important;
+            min-width: 0 !important;
+            padding-inline: clamp(2px, 0.8vw, 6px);
+            box-sizing: border-box;
+            flex-wrap: nowrap !important;
+            justify-content: stretch !important;
+            gap: clamp(3px, 0.8vw, 6px) !important;
+            transition:
+                top var(--pagination-dock-transition-duration, 0.42s)
+                    var(--pagination-dock-transition-easing, cubic-bezier(0.32, 0.72, 0.25, 1));
+        }
+
+        body:has(#paginationDock) .dock-globe-rail--left {
+            bottom: auto !important;
+        }
+
+        /* Labeled mode toggles — single row, equal flex share across full width */
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+            flex: 1 1 0 !important;
+            width: auto !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            height: var(--mode-dock-rail-height, 48px) !important;
+            padding: 0 clamp(3px, 1vw, 6px) !important;
+            gap: clamp(2px, 0.6vw, 4px) !important;
+            font-size: clamp(9px, 2.4vw, 11px) !important;
+            line-height: 1.05 !important;
+            letter-spacing: 0.01em;
+            justify-content: center !important;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label {
+            display: inline-block !important;
+            width: auto !important;
+            height: auto !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            margin-left: 0 !important;
+            white-space: nowrap;
+            max-width: 100%;
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn [id$='Icon'] {
+            width: clamp(18px, 4.8vw, 22px) !important;
+            height: clamp(18px, 4.8vw, 22px) !important;
+            min-width: clamp(18px, 4.8vw, 22px) !important;
+            min-height: clamp(18px, 4.8vw, 22px) !important;
+            margin-right: 0 !important;
+            flex-shrink: 0;
+        }
+
+        /* Beat mode-specific min-width rules (Codex etc.) — keep one row on portrait */
+        body.codex-mode-active #dockGlobeRailLeft > #codexToggleViewDev.dock-globe-rail__btn,
+        body.codex-mode-active #dockGlobeRailLeft > #codexLinkFiltersToggle.dock-globe-rail__btn,
+        body.codex-mode-active #dockGlobeRailLeft > #codexTogglePackets.dock-globe-rail__btn,
+        body.codex-mode-active #dockGlobeRailLeft > #codexToggleInfo.dock-globe-rail__btn,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            width: auto !important;
+            flex-shrink: 1 !important;
+        }
+
+        /*
+         * Story / Gallery: one centered chip — not full-width stretch.
+         */
+        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+            #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left,
+        body:has(#atlasGalleryHost) #dockGlobeRailLeft.dock-globe-rail.dock-globe-rail--left {
+            justify-content: center !important;
+            width: auto !important;
+            max-width: calc(
+                100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) -
+                    clamp(16px, 4vw, 32px)
+            ) !important;
+        }
+
+        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+            #dockGlobeRailLeft
+            > #storyViewToggle.dock-globe-rail__btn,
+        body:has(#atlasGalleryHost) #dockGlobeRailLeft > #heroBiographyChipStripToggle.dock-globe-rail__btn {
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: min(108px, 32vw) !important;
+            max-width: min(168px, 48vw) !important;
+            padding: 0 clamp(8px, 2.4vw, 12px) !important;
+            font-size: clamp(10px, 2.8vw, 12px) !important;
+        }
+
+        body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+            #dockGlobeRailLeft
+            > #storyViewToggle.dock-globe-rail__btn
+            .globe-control-btn__label,
+        body:has(#atlasGalleryHost)
+            #dockGlobeRailLeft
+            > #heroBiographyChipStripToggle.dock-globe-rail__btn
+            .globe-control-btn__label {
+            max-width: min(88px, 26vw) !important;
+            flex: 0 1 auto !important;
+        }
     }
 
     /* Keep right dock rail on right side (has 2 buttons) */
@@ -100,23 +239,51 @@
         transform: none !important;
     }
 
-    /* Hide labels on dock rail buttons on mobile - show only icons */
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn span:not([id$="Icon"]) {
+    /* Hide labels on center/right dock rail — portrait left rail shows labels */
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn span:not([id$='Icon']),
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn span:not([id$='Icon']) {
         display: none !important;
     }
 
-    /* Center icons in dock rail buttons on mobile */
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+    @media (orientation: landscape) {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .header-hub-btn-label,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn .globe-control-btn__label,
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn span:not([id$='Icon']) {
+            display: none !important;
+        }
+    }
+
+    /* Center/right (+ landscape left): icon-only chip layout */
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn,
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn {
         justify-content: center !important;
         padding: 0 !important;
     }
 
-    .dock-globe-rail > .globe-control-btn.dock-globe-rail__btn [id$="Icon"] {
+    @media (orientation: landscape) {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn {
+            justify-content: center !important;
+            padding: 0 !important;
+        }
+    }
+
+    .dock-globe-rail--center > .globe-control-btn.dock-globe-rail__btn [id$='Icon'],
+    .dock-globe-rail--right > .globe-control-btn.dock-globe-rail__btn [id$='Icon'] {
         margin-right: 0 !important;
         width: 32px !important;
         height: 32px !important;
+    }
+
+    @media (orientation: landscape) {
+        #dockGlobeRailLeft.dock-globe-rail > .globe-control-btn.dock-globe-rail__btn [id$='Icon'] {
+            margin-right: 0 !important;
+            width: 32px !important;
+            height: 32px !important;
+        }
     }
 
     /* Page field in trapezoid cap (portrait uses center rail like desktop) */

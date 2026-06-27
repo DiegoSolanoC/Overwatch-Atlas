@@ -64,6 +64,20 @@ body {
         * (var(--header-hub-strip-h) + var(--header-hub-outline-bottom))
         / var(--header-hub-strip-h)
     );
+    /* Portrait main menu: hub rim + skewed tile overhang below header box */
+    --main-menu-header-clearance: calc(
+        var(--header-hub-outline-bottom, 10px) + clamp(14px, 3vh, 26px)
+    );
+    /* Mode toggle rail (World / Codex / Story / Gallery) — flush under header chrome */
+    --mode-dock-rail-top: calc(var(--header-height) + clamp(12px, 2.4vh, 20px));
+    --mode-dock-rail-height: 48px;
+    --sun-yaw-panel-top: calc(
+        var(--mode-dock-rail-top) + var(--mode-dock-rail-height) + clamp(12px, 2vh, 20px)
+    );
+    /* Scroll/content inset below portrait mode toggle rail */
+    --mode-dock-rail-clearance: calc(
+        var(--mode-dock-rail-top) + var(--mode-dock-rail-height) + clamp(10px, 1.8vh, 16px)
+    );
 }
 
 /* Header Styles */

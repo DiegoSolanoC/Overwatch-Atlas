@@ -272,6 +272,10 @@
         --side-panel-dock-cut-bottom-lift: calc(
             var(--dock-border-img-h, 80px) + max(0px, -1 * var(--dock-top-cap-lift, 0px))
         );
+        /* Main menu / floating content: clear dock trapezoid cap above the dock box */
+        --main-menu-trapezoid-clearance: calc(
+            var(--side-panel-dock-cut-bottom-lift) + clamp(6px, 1.2vh, 12px)
+        );
         /* Info-panel-only intentional overlap into dock top border art (eyeball tuning knob). */
         --event-info-dock-border-overlap: 50px;
         /* Filters/music mirrored cut overlap uses separate geometry; tune independently. */
@@ -285,6 +289,17 @@
         flex: 1 1 auto !important;
         min-height: 0 !important;
         overflow: hidden !important;
+    }
+
+    /*
+     * Mobile: viewport.css pins layout-container to dvh − header − footer and ignores the dock
+     * flex child — release height so flex can shrink main above dock + footer.
+     */
+    @media (max-width: 768px) {
+        body:has(#paginationDock) .layout-container {
+            height: auto !important;
+            max-height: none !important;
+        }
     }
     
     /* Main content area fills layout-container */

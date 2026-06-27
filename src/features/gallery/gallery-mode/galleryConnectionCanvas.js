@@ -972,6 +972,11 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             });
         },
 
+        refitView() {
+            fitViewToViewport();
+            syncParkButtonState();
+        },
+
         destroy() {
             packetAnimator.stop();
             mountEl.replaceChildren();

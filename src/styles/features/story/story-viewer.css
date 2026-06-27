@@ -503,6 +503,8 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     visibility: visible !important;
 }
 
+/* Desktop + mobile landscape: fixed chip width. Portrait uses viewport.css centered chip. */
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
 body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
     width: auto !important;
     min-width: 112px !important;
@@ -513,6 +515,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     font-size: 11px !important;
     line-height: 1.05 !important;
     letter-spacing: 0.01em;
+}
 }
 
 body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn [id$='Icon'] {
@@ -558,7 +561,7 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     font-size: 11px !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: landscape) {
     body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #dockGlobeRailLeft > #storyViewToggle.dock-globe-rail__btn {
         min-width: 48px !important;
         max-width: 48px !important;
@@ -825,6 +828,52 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
 /* Tighter top padding — Data Archive hides the header chrome */
 .story-viewer-panel-embedded .events-manage-content {
     padding-top: 12px;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded
+        .events-manage-content {
+        padding-top: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px));
+        box-sizing: border-box;
+    }
+
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded
+        #eventsManageControls {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded
+        :is(#eventsList, #dialogueTheaterList).events-list {
+        padding-top: clamp(4px, 1vh, 8px);
+    }
+
+    /* Story archive dev tools (Add / Save / Import / Export / Merge) — desktop only for now */
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded:not(.data-workshop-bio-archive)
+        :is(
+            #addEventBtn,
+            #saveEventsBtn,
+            #exportEventsBtn,
+            #importEventsBtn,
+            #mergeEventsBtn,
+            #importEventsFile,
+            #mergeEventsFile
+        ) {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    /* Story bottom bar only held dev actions + hidden pagination — drop on portrait */
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded:not(.data-workshop-bio-archive)
+        #storyArchiveBottomBar {
+        display: none !important;
+    }
 }
 
 /* Whole header hidden in Data Archive (title + count); toolbar lives in #eventsManageControls */
