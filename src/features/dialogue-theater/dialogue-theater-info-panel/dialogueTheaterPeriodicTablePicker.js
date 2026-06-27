@@ -140,12 +140,6 @@ export function renderPeriodicTablePathSwitcherHtml(conversation, selectedPathId
                 <span class="dialogue-theater-path-switch__label">Route</span>
                 <button
                     type="button"
-                    id="dialogueTheaterRandomRouteBtn"
-                    class="dialogue-theater-path-switch__master-play dialogue-theater-path-switch__random-route"
-                    aria-label="Pick a random outcome and response"
-                >🎲 Random route</button>
-                <button
-                    type="button"
                     id="dialogueTheaterMasterPlayBtn"
                     class="dialogue-theater-path-switch__master-play"
                     aria-label="Play every response for the selected outcome"
@@ -308,11 +302,11 @@ export function wirePeriodicTablePathSelector(host, conversation, onPathChange) 
             e.preventDefault();
             e.stopPropagation();
             const pathId = variantBtn.dataset.pathId || '';
-            if (!pathId || pathId === host.dataset.selectedPathId) return;
+            if (!pathId) return;
             host.dataset.pendingHeroKey = '';
             host.dataset.selectedPathId = pathId;
             host.dataset.segments = JSON.stringify(resolveSegmentsForPathId(conversation, pathId));
-            onPathChange?.(pathId);
+            onPathChange?.(pathId, { autoPlay: true });
             return;
         }
 
@@ -333,11 +327,10 @@ export function wirePeriodicTablePathSelector(host, conversation, onPathChange) 
 
             if (group.paths.length === 1) {
                 const pathId = group.paths[0].id;
-                if (pathId === host.dataset.selectedPathId) return;
                 host.dataset.pendingHeroKey = '';
                 host.dataset.selectedPathId = pathId;
                 host.dataset.segments = JSON.stringify(resolveSegmentsForPathId(conversation, pathId));
-                onPathChange?.(pathId);
+                onPathChange?.(pathId, { autoPlay: true });
                 return;
             }
 
@@ -348,39 +341,21 @@ export function wirePeriodicTablePathSelector(host, conversation, onPathChange) 
                 const pathId = group.paths[0].id;
                 host.dataset.selectedPathId = pathId;
                 host.dataset.segments = JSON.stringify(resolveSegmentsForPathId(conversation, pathId));
-                onPathChange?.(pathId);
+                onPathChange?.(pathId, { autoPlay: true });
                 return;
             }
 
-            syncPeriodicTableHeroUi(host, groups, {
-                selectedPathId: currentPathId,
-                pendingHeroKey: heroKey,
-                outcome,
-            });
+            if (hasPathInGroup) {
+                onPathChange?.(currentPathId, { autoPlay: true });
+                syncPeriodicTableHeroUi(host, groups, {
+                    selectedPathId: currentPathId,
+                    pendingHeroKey: heroKey,
+                    outcome,
+                });
+                return;
+            }
         }
     };
 
     switcher.addEventListener('click', host._dialogueTheaterPeriodicClick);
-}
-
-/**
- * @param {HTMLElement} host
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {(pathId: string) => void} onPathChange
- */
-export function wirePeriodicTableRandomRoute(host, conversation, onPathChange) {
-    const btn = host.querySelector('#dialogueTheaterRandomRouteBtn');
-    if (!(btn instanceof HTMLButtonElement)) return;
-
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const pathId = pickRandomPeriodicTablePathId(conversation);
-        if (!pathId || pathId === host.dataset.selectedPathId) return;
-
-        host.dataset.selectedPathId = pathId;
-        host.dataset.pendingHeroKey = '';
-        onPathChange?.(pathId);
-    });
 }

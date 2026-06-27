@@ -35,6 +35,7 @@ import {
     conversationMatchesCharacterPair,
     isDialogueTheaterPairSearchActive,
 } from './dialogueTheaterPairSearch.js';
+import { getActiveDialogueTheaterCharacterFilters } from './dialogueTheaterActiveCharacterFilters.js';
 import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
 import { conversationMatchesListSearch } from './dialogueTheaterListSearch.js';
 
@@ -181,7 +182,9 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
     `;
 
     const openPanel = () => {
-        void openDialogueTheaterInfoPanel(row.id);
+        void openDialogueTheaterInfoPanel(row.id, {
+            characterFilters: getActiveDialogueTheaterCharacterFilters(pairSearchControls),
+        });
     };
     thumbBlock.addEventListener('click', openPanel);
     thumbBlock.addEventListener('keydown', (e) => {

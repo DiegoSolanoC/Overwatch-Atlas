@@ -16,6 +16,29 @@ const HERO_DISPLAY_NAME_OVERRIDES = {
     'Soldier 76': 'Soldier: 76',
 };
 
+/** Emperor / Infinite skin voicelines → manifest hero id (keys: lowercase alnum only). */
+const DIALOGUE_SKIN_HERO_ALIASES = {
+    emperorsigma: 'Sigma',
+    infiniteannihilatorbastion: 'Bastion',
+    infinitecaptainbrigitte: 'Brigitte',
+    infiniteguardsoldier: 'Soldier 76',
+    infiniteseermercy: 'Mercy',
+    infiniteadmiralsojourn: 'Sojourn',
+};
+
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function normalizeHeroAliasKey(value) {
+    return String(value || '')
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .replace(/[^a-z0-9]/g, '');
+}
+
 /**
  * @param {string} value
  * @returns {string}
@@ -52,20 +75,23 @@ export function resolveManifestHeroId(heroName, manifestHeroes = []) {
     const trimmed = String(heroName || '').trim();
     if (!trimmed) return '';
 
+    const skinAlias = DIALOGUE_SKIN_HERO_ALIASES[normalizeHeroAliasKey(trimmed)];
+    const candidate = skinAlias || trimmed;
+
     for (const id of manifestHeroes) {
         const manifestId = String(id || '').trim();
         if (!manifestId) continue;
-        if (heroNamesLooselyEqual(trimmed, manifestId)) return manifestId;
-        if (heroNamesLooselyEqual(trimmed, getHeroDisplayName(manifestId))) return manifestId;
+        if (heroNamesLooselyEqual(candidate, manifestId)) return manifestId;
+        if (heroNamesLooselyEqual(candidate, getHeroDisplayName(manifestId))) return manifestId;
     }
 
     for (const [manifestId, displayName] of Object.entries(HERO_DISPLAY_NAME_OVERRIDES)) {
-        if (heroNamesLooselyEqual(trimmed, displayName) || heroNamesLooselyEqual(trimmed, manifestId)) {
+        if (heroNamesLooselyEqual(candidate, displayName) || heroNamesLooselyEqual(candidate, manifestId)) {
             return manifestId;
         }
     }
 
-    return trimmed;
+    return skinAlias || trimmed;
 }
 
 export function getHeroDisplayName(heroName) {

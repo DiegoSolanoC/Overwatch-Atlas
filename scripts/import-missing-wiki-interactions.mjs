@@ -167,6 +167,7 @@ const MULTI_ROUTE_OPENING_RULES = [
     { needle: 'favorite animal', names: ['Favorite Animals'] },
     { needle: 'chicken cross the road', names: ['To Stagnate is to Die'] },
     { needle: 'periodic table', names: ['Periodic Table'] },
+    { needle: 'tripped over your sword in training', names: ['233'] },
 ];
 
 /**
@@ -406,11 +407,10 @@ async function main() {
                 context,
                 String(nextConversationNumber(conversations)),
             );
-            conversation.name = title;
 
             conversations.push(conversation);
             imported += 1;
-            console.log(`[import] ${title} — ${interaction.lines.length} line(s), partner: ${interaction.partnerHero}`);
+            console.log(`[import] #${conversation.name} — ${interaction.lines.length} line(s), partner: ${interaction.partnerHero} (${title})`);
         }
     }
 
@@ -420,9 +420,25 @@ async function main() {
 
     if (opts.dryRun || imported === 0) return;
 
+    let existingMeta = {};
+    try {
+        const onDisk = JSON.parse(await fs.readFile(CONVERSATIONS_PATH, 'utf8'));
+        if (onDisk?._meta && typeof onDisk._meta === 'object') {
+            existingMeta = onDisk._meta;
+        }
+    } catch {
+        /* first write */
+    }
+
     await fs.writeFile(
         CONVERSATIONS_PATH,
-        `${JSON.stringify({ conversations }, null, 2)}\n`,
+        `${JSON.stringify({
+            _meta: {
+                ...existingMeta,
+                nameResetAt: new Date().toISOString(),
+            },
+            conversations,
+        }, null, 2)}\n`,
         'utf8',
     );
 

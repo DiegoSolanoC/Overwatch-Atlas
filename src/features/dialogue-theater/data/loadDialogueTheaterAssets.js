@@ -146,8 +146,12 @@ function normalizeAssets(raw) {
 }
 
 /**
- * @returns {Promise<string[]>}
+ * @returns {string[]}
  */
+export function getCachedManifestHeroes() {
+    return cachedManifestHeroes;
+}
+
 export async function loadDialogueTheaterHeroes() {
     try {
         const manifest = await fetchJsonWithTimeout('src/data/platform/manifest.json');

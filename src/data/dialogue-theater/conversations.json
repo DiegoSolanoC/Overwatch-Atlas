@@ -59,7 +59,7 @@
         {
           "id": "3cbeda6e-703b-46ee-89bb-0024a1afeed3",
           "hero": "Anran",
-          "voice": "",
+          "voice": "Anran_-_(sigh)_No._I'm_a_little_scared_to_find_out_what_he_thinks.ogg",
           "voicePrefix": "",
           "subtitles": "No, I'm little scared to find about what he thinks.",
           "render": "Heroic.png"
@@ -117,7 +117,7 @@
         {
           "id": "ebdf2582-9738-42cf-8561-5b946b9b9c0d",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_I_have_decided_to_accept_your_offer_to_train_up_my_confidence._When_do_we_start_.ogg",
           "voicePrefix": "",
           "subtitles": "I have decided to accept your offer to train up my confidence. When will we start?",
           "render": "Heroic.png"
@@ -199,7 +199,7 @@
           ]
         }
       ],
-      "selectedPathId": "66328a00-e45e-4718-a324-f2b86f981ddd"
+      "selectedPathId": "726829ac-f8d3-4fad-8c48-ef928b38f36d"
     },
     {
       "id": "8974246a-ee27-4a5b-a5ec-132a459895a3",
@@ -290,7 +290,7 @@
         },
         {
           "id": "fe00c074-4246-4a3f-bb76-62a3ffef33f7",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Definitely_the_Zergling.ogg",
           "voicePrefix": "",
           "subtitles": "Definitely the Zergling.",
@@ -805,7 +805,7 @@
         },
         {
           "id": "8e3a32f3-055e-45a9-a3ba-e8ba7ed3c1a8",
-          "label": "D.Va",
+          "label": "D.va",
           "lineIds": [
             "8a7a057c-db4f-4edc-8280-d9b6756d6ac1",
             "fe00c074-4246-4a3f-bb76-62a3ffef33f7",
@@ -1237,7 +1237,7 @@
           ]
         }
       ],
-      "selectedPathId": "b8e2f4a6-1c9d-4b7e-8f3a-5d6c9e2b1a4f"
+      "selectedPathId": "8d24ddbc-2abf-4410-af4f-da3c4a5de0d8"
     },
     {
       "id": "d673e40c-5579-4bf4-bdcf-4dd183713dec",
@@ -1265,7 +1265,7 @@
         {
           "id": "805fd4d5-eeb0-49bb-9ca4-3b4f3759032a",
           "hero": "Lúcio",
-          "voice": "",
+          "voice": "Lúcio_-_You_should've_just_said_so!_What_am_I_signing_.ogg",
           "voicePrefix": "",
           "subtitles": "You should have just said so! What am I signing?",
           "render": "Heroic.png"
@@ -1446,7 +1446,7 @@
         {
           "id": "7fd8ce2e-3961-4997-a234-e04d82261ed4",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_I_recognize_a_dancer's_posture_when_I_see_it.ogg",
           "voicePrefix": "",
           "subtitles": "I recognize a dancer's posture when I see it.",
           "render": "Heroic.png"
@@ -1462,7 +1462,7 @@
         {
           "id": "6cfed28e-43f0-4d82-939e-7c26fa2128fa",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_Kathak._As_a_child,_performing_such_movements_calmed_me.ogg",
           "voicePrefix": "",
           "subtitles": "Kathak. As a child, performing such movements calmed me.",
           "render": "Heroic.png"
@@ -1750,7 +1750,7 @@
     },
     {
       "id": "d6bba819-4f2a-41ed-80d0-8466c4df2f98",
-      "name": "20",
+      "name": "Resistance",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -1775,7 +1775,7 @@
     },
     {
       "id": "6220add3-a1b7-4d3b-8ced-28b8afae2149",
-      "name": "21",
+      "name": "Noisemaker",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2599,47 +2599,6 @@
       ]
     },
     {
-      "id": "fb20ca65-659e-4c94-9234-9bb373610eea",
-      "name": "47",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "18fce77a-81ac-45e6-bfc8-e957b144433b",
-          "hero": "Domina",
-          "voice": "Domina_-_Aren't_you_going_to_ask_about_my_favorite_little_creature.ogg",
-          "voicePrefix": "",
-          "subtitles": "Aren't you going to ask about *my* favorite little creature?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "0962d75b-864d-409b-bc2b-a60424ec7c78",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_Alright,_fine._What's_your_favorite_animal.ogg",
-          "voicePrefix": "",
-          "subtitles": "Alright, fine. What's your favorite animal?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "6451c4df-d9a5-40f4-a8a8-ff2eb8c8a96f",
-          "hero": "Domina",
-          "voice": "Domina_-_Oh,_well_I_find_chinchillas_absolutely_adorable!_And_they_make_the_softest_coats.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh, well, I find chinchillas absolutely adorable! And they make the softest coats...",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "1fc2ac54-ceba-4518-9fd5-cf62c3ae8def",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_Yeah,_I_can_see_it.ogg",
-          "voicePrefix": "",
-          "subtitles": "**sigh** Yeah. I can see it...",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "e2805f66-2c68-4e6c-99b1-e6fae6ab9deb",
       "name": "Easy Target",
       "status": "active",
@@ -2897,7 +2856,7 @@
         },
         {
           "id": "b11ec6bf-a565-4ef1-8e34-7c376db2699c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Sometimes._But_I_have_so_much_to_do.ogg",
           "voicePrefix": "",
           "subtitles": "Sometimes. But I have so much to do.",
@@ -3187,7 +3146,7 @@
     },
     {
       "id": "8edb7369-7785-4bd6-b42f-9dc81be4f1a2",
-      "name": "67",
+      "name": "Seen you before",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4027,7 +3986,7 @@
       "lines": [
         {
           "id": "9699d5a7-5121-4c08-8f62-37184adb8564",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Remember_the_Vikosky_kingpins._Three_hundred_meters_downrange._You_fired_once,_they_both_fell._Beautiful.ogg",
           "voicePrefix": "",
           "subtitles": "Remember the Vikosky kingpins? Three hundred meters downrange. You fired once, they both fell. Beautiful.",
@@ -4052,7 +4011,7 @@
       "lines": [
         {
           "id": "c6044288-a1bc-4bf7-be37-a3e603541769",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_What._No_lectures_on_how_I'm_fighting_a_losing_battle,_Ana.ogg",
           "voicePrefix": "",
           "subtitles": "What? No lectures on how I'm fighting a losing battle, Ana?",
@@ -4077,7 +4036,7 @@
       "lines": [
         {
           "id": "fb3c815b-014e-43e5-80d4-07b7a33bebc8",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_How's_Mirembe_holding_up_after_the_Talon_attack.ogg",
           "voicePrefix": "",
           "subtitles": "How's Mirembe holding up after the Talon attack?",
@@ -4093,7 +4052,7 @@
         },
         {
           "id": "79595c2d-275a-4d6b-97ac-dcc1aa5c8d92",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_None_of_us_will_be_safe_until_we_stop_whoever_took_down_Overwatch.ogg",
           "voicePrefix": "",
           "subtitles": "None of us will be safe until we stop whoever took down Overwatch.",
@@ -4118,7 +4077,7 @@
       "lines": [
         {
           "id": "0b92a4a5-2419-42c1-a0af-d5303a125db1",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_When_I_was_in_Peru,_I_found_something_you_might_want_to_look_into.ogg",
           "voicePrefix": "",
           "subtitles": "When I was in Peru, I found something you might want to look into.",
@@ -4134,7 +4093,7 @@
         },
         {
           "id": "53739462-a6a4-496f-9105-3314c09ca82f",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_There's_a_girl._I_think_they're_going_to_add_her_to_their_list.ogg",
           "voicePrefix": "",
           "subtitles": "There's a girl. I think they're going to add her to their list.",
@@ -4167,7 +4126,7 @@
         },
         {
           "id": "e0fdd870-ee00-4154-b5a8-0559fb8f2a67",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Maybe_not._But_then,_I've_always_liked_being_the_underdog.ogg",
           "voicePrefix": "",
           "subtitles": "Maybe not. But then, I've always liked being the underdog.",
@@ -4192,7 +4151,7 @@
         },
         {
           "id": "138ec72f-37bf-4884-9dcd-bc4f79a19926",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_How_many_times_have_you_told_me_that.ogg",
           "voicePrefix": "",
           "subtitles": "How many times have you told me that?",
@@ -4217,7 +4176,7 @@
       "lines": [
         {
           "id": "7a9fde11-7573-4cbb-a35a-2726bb75cab2",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_You_always_have_my_back.ogg",
           "voicePrefix": "",
           "subtitles": "You always have my back.",
@@ -4618,7 +4577,7 @@
         },
         {
           "id": "c751f54a-8987-45f8-8103-1e6dc689ba7e",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_No_(2).ogg",
           "voicePrefix": "",
           "subtitles": "No!",
@@ -4626,7 +4585,7 @@
         },
         {
           "id": "b508b528-767e-408e-9b99-fb6154810b45",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Nope.ogg",
           "voicePrefix": "",
           "subtitles": "Nope.",
@@ -4658,7 +4617,7 @@
         },
         {
           "id": "6cbbb3f7-b6b1-4818-bce4-49fd234f25b2",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Na.ogg",
           "voicePrefix": "",
           "subtitles": "Na! **laughs**",
@@ -4829,7 +4788,7 @@
         },
         {
           "id": "1ac2e9d5-144e-492b-8d82-2fbc2cd62e73",
-          "label": "D.Va",
+          "label": "D.va",
           "lineIds": [
             "f1a2b3c4-d005-4000-8000-c0a0de2e0001",
             "6cbbb3f7-b6b1-4818-bce4-49fd234f25b2",
@@ -4882,7 +4841,7 @@
           ]
         }
       ],
-      "selectedPathId": "e547bf5d-b1ba-4b84-944a-25dd4741c40e"
+      "selectedPathId": "89b88e95-e306-487d-ae0f-484b89cc28a1"
     },
     {
       "id": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1",
@@ -5717,7 +5676,7 @@
     },
     {
       "id": "f0eba8dc-a13e-400a-93d7-2b2da60fa826",
-      "name": "132",
+      "name": "Special Order",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5898,7 +5857,7 @@
         {
           "id": "0227759e-3bec-4ed0-960b-686e32877f4a",
           "hero": "Lifeweaver",
-          "voice": "",
+          "voice": "Lifeweaver_-_Nothing_so_glamorous_as_running_a_gang_of_outlaws,_I'm_afraid.ogg",
           "voicePrefix": "",
           "subtitles": "Nothing so glamorous as running a gang of outlaws, I'm afraid.",
           "render": "Heroic.png"
@@ -5914,7 +5873,7 @@
         {
           "id": "d68a9c19-1239-4c5d-a4ec-ccb25b082f56",
           "hero": "Lifeweaver",
-          "voice": "",
+          "voice": "Lifeweaver_-_Tempting._But_I_really_should_save_the_world_first.ogg",
           "voicePrefix": "",
           "subtitles": "Tempting. But I *really* should save the world first.",
           "render": "Heroic.png"
@@ -6178,7 +6137,7 @@
       "lines": [
         {
           "id": "1c76de27-001e-484f-b367-1e1880a90124",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_was_just_in_the_kitchen._Anyone_have_something_they_want_to_confess.ogg",
           "voicePrefix": "",
           "subtitles": "I was just in the kitchen. Anyone have something they wanna confess?",
@@ -6194,7 +6153,7 @@
         },
         {
           "id": "f81a8958-a9ce-4067-a65b-994d74d2246c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_(tired_sigh).ogg",
           "voicePrefix": "",
           "subtitles": "**tired sigh**",
@@ -6549,7 +6508,7 @@
       "lines": [
         {
           "id": "7108c61c-f2a0-4846-914d-101aef78cac8",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Hey!_Who_took_my_Nano_Cola.ogg",
           "voicePrefix": "",
           "subtitles": "Hey! Who took my Nano Cola?",
@@ -6565,7 +6524,7 @@
         },
         {
           "id": "59b1bf1b-9c11-4ccd-8cdc-d495510f64af",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_You_just_wanted_to_drink_it_yourself.ogg",
           "voicePrefix": "",
           "subtitles": "You just wanted to drink it yourself!",
@@ -6715,7 +6674,7 @@
     },
     {
       "id": "f572b88e-085f-46a6-9d46-dc7b731a802c",
-      "name": "163",
+      "name": "Live Forever",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7449,7 +7408,7 @@
         },
         {
           "id": "c14244d8-748c-488b-9fdb-3c8c32bb82f2",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_There_was_someone,_once._But_I_haven’t_seen_him_in_a_long_time.ogg",
           "voicePrefix": "",
           "subtitles": "There was someone, once. But I haven’t seen him in a long time.",
@@ -7465,7 +7424,7 @@
         },
         {
           "id": "6778c76f-f81d-4f33-851b-45fdcc8f5e94",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_These_days,_that's_all_I've_got.ogg",
           "voicePrefix": "",
           "subtitles": "These days, that's all I've got.",
@@ -7483,15 +7442,15 @@
         {
           "id": "d75e956d-57e3-4dd8-9b3e-759584b9ccd8",
           "hero": "Baptiste",
-          "voice": "",
+          "voice": "Baptiste_-_You've_been_in_the_fight_a_long_time._Ever_consider_a_life_beyond_battle_.ogg",
           "voicePrefix": "",
           "subtitles": "You've been in the fight long time. Even consider a life beyond battle?",
           "render": "Heroic.png"
         },
         {
           "id": "52da08a6-4eee-4675-b35a-f7e8338eca58",
-          "hero": "Soldier: 76",
-          "voice": "",
+          "hero": "Soldier 76",
+          "voice": "Soldier__76_-_Sometimes._But_I_think_any_chance_of_that_is_long_gone.ogg",
           "voicePrefix": "",
           "subtitles": "Sometimes. But I think any chance of that is long gone.",
           "render": "Heroic.png"
@@ -7499,15 +7458,15 @@
         {
           "id": "2fa3b0b5-3af8-4d4d-8577-47618892fa5b",
           "hero": "Baptiste",
-          "voice": "",
+          "voice": "Baptiste_-_I_used_to_think_that_too,_brother._But_believe_me,_there's_always_another_path_to_take.ogg",
           "voicePrefix": "",
           "subtitles": "I used to think that too, brother. But believe me, there's always another path to take.",
           "render": "Heroic.png"
         },
         {
           "id": "c8bc3724-7f64-4dad-bd90-151a0c7db626",
-          "hero": "Soldier: 76",
-          "voice": "",
+          "hero": "Soldier 76",
+          "voice": "Soldier__76_-_Yeah__I'll_keep_that_in_mind.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah? I'll keep that in mind.",
           "render": "Heroic.png"
@@ -7523,7 +7482,7 @@
       "lines": [
         {
           "id": "a7801dfe-8605-49ed-9e2f-72f45181147f",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_That's_some_tech.ogg",
           "voicePrefix": "",
           "subtitles": "That's some tech.",
@@ -7647,7 +7606,7 @@
         {
           "id": "f30e66ac-24cf-41a3-8f82-cc6148ac0246",
           "hero": "Sombra",
-          "voice": "",
+          "voice": "Sombra_-_Aww..._Aren't_you_sweet__But_something_tells_me_your_new_friends_won't_enjoy_having_me_around.ogg",
           "voicePrefix": "",
           "subtitles": "Aww. Aren't you sweet? But something tells me your new friends won't enjoy having me around.",
           "render": "Heroic.png"
@@ -8353,7 +8312,7 @@
       "lines": [
         {
           "id": "0079d81b-3d81-40d5-93b0-35a2319a9af8",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Woah,_that_gun_must_do_a_ton_of_DPS.ogg",
           "voicePrefix": "",
           "subtitles": "Whoa, that gun must do a ton of DPS!",
@@ -8378,7 +8337,7 @@
       "lines": [
         {
           "id": "092844d0-e219-40f2-86a8-e56939d1b16f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_We_should_get_Ganymede_to_scout_for_us.ogg",
           "voicePrefix": "",
           "subtitles": "We should get Ganymede to scout for us!",
@@ -8394,7 +8353,7 @@
         },
         {
           "id": "124a56c4-918e-48b6-af2d-753ebf7e822a",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Don't_worry!_No_one_will_touch_a_feather_on_Gany's_head_while_Hana_Song_is_here.ogg",
           "voicePrefix": "",
           "subtitles": "Don't worry! No one will touch a feather on Gany's head while Hana Song is here!",
@@ -8453,7 +8412,7 @@
     },
     {
       "id": "806c9495-6205-4c7e-9b2d-245f5255de6c",
-      "name": "213",
+      "name": "In a Dream",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8551,7 +8510,7 @@
         {
           "id": "5172a976-ae13-42c3-b69a-e0ac9c2d64ef",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_You_hear_that__Bastion_agrees_with_me!.ogg",
           "voicePrefix": "",
           "subtitles": "You hear that? Bastion agrees with me!",
           "render": "Heroic.png"
@@ -8675,7 +8634,7 @@
         {
           "id": "edf1627a-3410-4579-96fa-277a2dcba0c3",
           "hero": "Torbjörn",
-          "voice": "",
+          "voice": "Torbjörn_-_Bastion,_I_bet_you_haven't_had_a_systems_check_in_years..._who_knows_what_kind_of_weird_behaviors_you've_picked_u.ogg",
           "voicePrefix": "",
           "subtitles": "Bastion, I bet you haven't had a systems check in years... who knows what kind of weird behaviors you've picked up.",
           "render": "Heroic.png"
@@ -8963,7 +8922,7 @@
       "lines": [
         {
           "id": "9a5f93ee-dc12-400e-9c4c-4b806afd74ec",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_should_introduce_you_to_Dae-hyun!_He_takes_care_of_my_mech_when_I'm_back_home.ogg",
           "voicePrefix": "",
           "subtitles": "I should introduce you to Dae-hyun! He takes care of my mech when I'm back home.",
@@ -8979,7 +8938,7 @@
         },
         {
           "id": "ae203656-18ee-40f3-81bb-f8a9d75d0ede",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Yeah,_he..._Hey.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah, he... Hey!",
@@ -9072,7 +9031,7 @@
           ]
         }
       ],
-      "selectedPathId": "a1c2d3e4-f002-4000-8000-2ade262700101"
+      "selectedPathId": "a1c2d3e4-f002-4000-8000-2ade262700102"
     },
     {
       "id": "dcb20a44-9f98-44f4-ac5d-6827b32cc4e9",
@@ -9134,7 +9093,7 @@
     },
     {
       "id": "9f0c6230-64b9-4e53-9ad8-4a7ccd4e3346",
-      "name": "233",
+      "name": "Trip over your Sword",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9142,7 +9101,7 @@
         {
           "id": "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
           "hero": "Kiriko",
-          "voice": "Kiriko_-_Genji,_remember_the_time_you_tripped_over_your_sword_in_training.ogg",
+          "voice": "Kiriko_-_Genji,_remember_the_time_you_tripped_over_your_sword_in_training_.ogg",
           "voicePrefix": "",
           "subtitles": "Genji, remember the time you tripped over your sword in training?",
           "render": "Heroic.png"
@@ -9153,6 +9112,62 @@
           "voice": "Brigitte_-_Really.ogg",
           "voicePrefix": "",
           "subtitles": "**laughs** Really?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "53978b71-abea-4e3e-bcf9-f4df58fb78dc",
+          "hero": "Cassidy",
+          "voice": "Cassidy_-_That_sounds_like_him.ogg",
+          "voicePrefix": "",
+          "subtitles": "That sounds like him.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e3812a36-a2d2-4682-a10d-70ab477f31b8",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Ha!_Some_ninja.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ha! Some ninja.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "de9cd094-60c8-43ca-b673-5dbcf9201885",
+          "hero": "Mei",
+          "voice": "Mei_-_No_way!_(giggle).ogg",
+          "voicePrefix": "",
+          "subtitles": "No way! **laughs**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e6ed4a82-b762-4544-b36d-7a24ee704d93",
+          "hero": "Mercy",
+          "voice": "Mercy_-_Ho_ho!_Wish_I_was_there!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ho ho! Wish I was there.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b1fb7138-6592-437e-9d92-a5440cbed9e7",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_What__Haha!.ogg",
+          "voicePrefix": "",
+          "subtitles": "What? Haha, hahahahaha!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2979d27c-e892-4c4f-a200-3bb0dc45de84",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Ha!_Is_that_true_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ha! Is that true?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3685039b-da18-46f5-a9fe-1e6bb6e8d4f2",
+          "hero": "Winston",
+          "voice": "Winston_-_(chuckle)_Is_that_true_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Is that true?",
           "render": "Heroic.png"
         },
         {
@@ -9171,7 +9186,90 @@
           "subtitles": "Once was enough.",
           "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "7fcd8e23-59e8-496c-aa91-ce41965d6c61",
+          "label": "Brigitte",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "dfc8abc9-7c5d-42f8-baa2-b5a57ef73d1f",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "59c75158-16f6-40e9-97f0-79d45ccdfe73",
+          "label": "Cassidy",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "53978b71-abea-4e3e-bcf9-f4df58fb78dc",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "3c308c32-3aa5-42c7-b073-2d884daaf483",
+          "label": "Junker Queen",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "e3812a36-a2d2-4682-a10d-70ab477f31b8",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "c930afec-920d-48e0-93db-37e78c60f29e",
+          "label": "Mei",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "de9cd094-60c8-43ca-b673-5dbcf9201885",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "0c597b61-7de4-40aa-9ca4-e6fd2b78ba97",
+          "label": "Mercy",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "e6ed4a82-b762-4544-b36d-7a24ee704d93",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "d298a795-ee75-4a98-aae2-99b64926b80b",
+          "label": "Reinhardt",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "b1fb7138-6592-437e-9d92-a5440cbed9e7",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "1fa63ee9-aa2a-4d32-845c-fa49ca4fa0b4",
+          "label": "Tracer",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "2979d27c-e892-4c4f-a200-3bb0dc45de84",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        },
+        {
+          "id": "e55b149f-3703-4fd4-8aa2-a6818f112ce8",
+          "label": "Winston",
+          "lineIds": [
+            "e3a2a606-9dd2-4dcd-a89b-3c9d7d2bd676",
+            "3685039b-da18-46f5-a9fe-1e6bb6e8d4f2",
+            "b3951259-501a-43aa-a04a-a0c161af7318",
+            "350cfd0f-9d04-47c7-9388-4e23b1e7b286"
+          ]
+        }
+      ],
+      "selectedPathId": "7fcd8e23-59e8-496c-aa91-ce41965d6c61"
     },
     {
       "id": "cf8b6c16-56ed-4a04-b8e2-c580ffb32384",
@@ -9298,7 +9396,7 @@
         {
           "id": "df7c3157-471c-4656-84a8-62bff3075eb9",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
           "voicePrefix": "",
           "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
           "render": "Heroic.png"
@@ -9314,7 +9412,7 @@
         {
           "id": "db638dba-98b2-459d-9971-fbdd4f00a22c",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_Uh..._shouldn't_it_be__kitten_me_.ogg",
           "voicePrefix": "",
           "subtitles": "Shouldn't it be “‘kitten’ me”?",
           "render": "Heroic.png"
@@ -9339,7 +9437,7 @@
         {
           "id": "30188daf-37d2-40ec-beba-b623832e8d93",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_I_am_happy_I_have_made_so_many_new_friends,_but_how_am_I_going_to_keep_track_of_everyone's_names_.ogg",
           "voicePrefix": "",
           "subtitles": "I am happy I have made so many new friends. But... how am I going to keep track of everyone's names?",
           "render": "Heroic.png"
@@ -9347,7 +9445,7 @@
         {
           "id": "07c0c649-b2e7-4c35-a480-23a9a4505ccc",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_Well,_do_you_remember_mine_.ogg",
           "voicePrefix": "",
           "subtitles": "Well... do you remember mine?",
           "render": "Heroic.png"
@@ -9429,7 +9527,7 @@
         {
           "id": "440fd91f-7aaf-4248-8a68-b465d07b9bc6",
           "hero": "Lifeweaver",
-          "voice": "",
+          "voice": "Lifeweaver_-_We_had_a_shouting_match_not_long_ago,_if_that_counts.ogg",
           "voicePrefix": "",
           "subtitles": "We had a shouting match not long ago. If *that* counts.",
           "render": "Heroic.png"
@@ -9767,7 +9865,7 @@
         {
           "id": "cabbedc1-f8fb-42ec-b07d-4d6983eae36f",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_Perhaps_I_could_regale_you_with_the_time-honored_tales_of_a_brave_knight_and_his_noble_squire!.ogg",
           "voicePrefix": "",
           "subtitles": "Perhaps I could regale you with the time-honored tales of a brave knight and his noble squire!",
           "render": "Heroic.png"
@@ -9800,7 +9898,7 @@
         {
           "id": "eb0ce9ce-2e8d-4986-b5b2-b2e4be5fc3f2",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_Commander,_you've_known_Reinhardt_a_long_time..._How_should_I_follow_in_his_footsteps_.ogg",
           "voicePrefix": "",
           "subtitles": "Commander, you've known Reinhardt a long time. How should I follow in his footsteps?",
           "render": "Heroic.png"
@@ -10039,7 +10137,7 @@
         {
           "id": "4755124e-e3ec-4222-bbfb-6b165e2582ff",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_Me,_too._I_missed_you_and_Mamma!.ogg",
           "voicePrefix": "",
           "subtitles": "Me, too! I missed you and Mamma.",
           "render": "Heroic.png"
@@ -10235,7 +10333,7 @@
         },
         {
           "id": "429beebf-2f8f-425e-9d1f-437e421a1d26",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Yeah_yeah!_You_remember_Yachemon,_right.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah, yeah! You remember Yachemon, right?",
@@ -10251,7 +10349,7 @@
         },
         {
           "id": "c407b090-6616-4977-a89e-bd16cb11a72b",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Because_he's_a_vegetarian._Are_you_even_listening.ogg",
           "voicePrefix": "",
           "subtitles": "Because he's a vegetarian! Are you even listening?!",
@@ -10259,7 +10357,7 @@
         },
         {
           "id": "ca9f953f-6118-4800-89ee-588c9b5cd363",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Oh_yeah,_so_there's_Geranman,_he's_pretty_new_to_the_crew.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, yeah! So there's Geranman. He's pretty new to the crew.",
@@ -10275,7 +10373,7 @@
         },
         {
           "id": "9feebd52-5e6f-4469-b819-2a9010091632",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_It's_a_goatee,_duh.ogg",
           "voicePrefix": "",
           "subtitles": "**frustrated sigh** It's a goatee, duh!",
@@ -10466,7 +10564,7 @@
         {
           "id": "41cf78d0-7e65-48d7-9528-bbe6429901a5",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Mind_telling_me_how_the_only_one_willing_to_stand_up_to_Reyes_became_Talon's_meanest_operative_.ogg",
           "voicePrefix": "",
           "subtitles": "Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative?",
           "render": "Heroic.png"
@@ -10474,7 +10572,7 @@
         {
           "id": "5064a3f8-34a3-4efb-a5e4-524f653515a9",
           "hero": "Emre",
-          "voice": "",
+          "voice": "Emre_-_I_promise_it's_more_complicated_than_what_you_think.ogg",
           "voicePrefix": "",
           "subtitles": "I promise... it's more complicated than what you think.",
           "render": "Heroic.png"
@@ -10482,7 +10580,7 @@
         {
           "id": "29c1894f-020b-4861-9a26-c133a42d6b84",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Yeah._Awful_convenient_excuse,_don't_you_think_.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah. Awful convenient excuse, don't ya think?",
           "render": "Heroic.png"
@@ -10490,7 +10588,7 @@
         {
           "id": "52a1ea7c-d210-412b-8f8a-c4874d3a6b89",
           "hero": "Emre",
-          "voice": "",
+          "voice": "Emre_-_I_know_where_you've_been_since_Blackwatch,_Cass._You_don't_get_to_judge.ogg",
           "voicePrefix": "",
           "subtitles": "I know where you've been since Blackwatch, Cass. You don't get to jodge.",
           "render": "Heroic.png"
@@ -11368,7 +11466,7 @@
         },
         {
           "id": "91339d62-22bd-4774-b792-6accffd4f51c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Those_people_were_criminals.ogg",
           "voicePrefix": "",
           "subtitles": "Those people were criminals.",
@@ -11748,7 +11846,7 @@
       "lines": [
         {
           "id": "3d69dabb-9753-4fb8-ba61-ae0310d491f1",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_saw_you_on_a_wanted_poster_with_a_cute_guy.ogg",
           "voicePrefix": "",
           "subtitles": "I saw you on a wanted poster with a *cute* guy!",
@@ -11764,7 +11862,7 @@
         },
         {
           "id": "22563b2b-c817-4411-a573-0caa0a3a3f8b",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Ew,_no!_The_tall_one_with_the_little_hat.ogg",
           "voicePrefix": "",
           "subtitles": "Ew, no! The tall one with the little hat!",
@@ -11797,7 +11895,7 @@
         },
         {
           "id": "fafaf404-1382-40c9-b38d-0b4ad1dda414",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I'm_the_best._That's_all_you_need_to_know.ogg",
           "voicePrefix": "",
           "subtitles": "I'm the best. That's all you need to know.",
@@ -11830,7 +11928,7 @@
         },
         {
           "id": "9c4b5874-d11b-445d-aaf2-a5b15d4ea4ec",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Oh,_finally!_A_balanced_1v1.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, finally! A balanced 1v1.",
@@ -11855,7 +11953,7 @@
         },
         {
           "id": "2249ef0a-25ce-4c35-baff-ce7b220e9411",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_It's_salty_and_spicy_and_garlicky!_It's_yummy_fried,_too.ogg",
           "voicePrefix": "",
           "subtitles": "It's salty and spicy and garlicky! **sigh** It's yummy fried, too.",
@@ -11871,7 +11969,7 @@
         },
         {
           "id": "ca3c911f-80f4-49ff-9b9b-24cfb33b0ba5",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Aw,_now_I'm_hungry.ogg",
           "voicePrefix": "",
           "subtitles": "Aw, now I'm hungry.",
@@ -11888,7 +11986,7 @@
       "lines": [
         {
           "id": "95d56607-eedd-472c-ba37-c7780d7f1514",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Genji!_Let's_go_to_the_arcade_after_this.ogg",
           "voicePrefix": "",
           "subtitles": "Genji! Let's go to the arcade after this.",
@@ -11904,7 +12002,7 @@
         },
         {
           "id": "a4fb4bd6-0cb1-4367-a4e8-e4b50b1fa8c9",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_get_it._Everyone's_scared_to_take_on_the_best_player_in_the_world.ogg",
           "voicePrefix": "",
           "subtitles": "I get it. Everyone's scared to take on the best player in the world.",
@@ -11937,7 +12035,7 @@
         },
         {
           "id": "26eef13d-1395-485e-87a8-ff8ac51a5288",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Why_don't_you_give_them_a_try._Maybe_then_you'd_frown_less.ogg",
           "voicePrefix": "",
           "subtitles": "Why don't you give them a try? Maybe then you'd frown less!",
@@ -11970,7 +12068,7 @@
         },
         {
           "id": "284e34b2-fecb-4b65-93da-67cdc3d78ac8",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Uh,_yeah..._do_you_want_an_autograph_or_something.ogg",
           "voicePrefix": "",
           "subtitles": "Uh, yeah... do you want an autograph or something?",
@@ -11995,7 +12093,7 @@
       "lines": [
         {
           "id": "4667d409-11ad-4290-a91d-b963f0689c0d",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Feels_nice_not_to_be_the_shortest_person_on_the_team_anymore.ogg",
           "voicePrefix": "",
           "subtitles": "Feels nice not to be the shortest person on the team anymore.",
@@ -12011,7 +12109,7 @@
         },
         {
           "id": "f6d0124b-5138-4b7b-9cb6-dfcc7067763c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Hmm..._Your_hair_doesn't_count.ogg",
           "voicePrefix": "",
           "subtitles": "Hmmm... Your hair doesn't count!",
@@ -12036,7 +12134,7 @@
         },
         {
           "id": "2b59e5c7-0b85-4913-8dd8-498ed52c1785",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Um..._no.ogg",
           "voicePrefix": "",
           "subtitles": "Um... No?",
@@ -12069,7 +12167,7 @@
         },
         {
           "id": "89c7736f-d4de-4643-8471-813c251a154f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Uh..._what.ogg",
           "voicePrefix": "",
           "subtitles": "Uhhhh... What?",
@@ -12085,7 +12183,7 @@
         },
         {
           "id": "5783a7d4-c016-4d19-a09e-5de6f6e4ce55",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Right._It's_probably_risky_for_us_to_talk_at_all.ogg",
           "voicePrefix": "",
           "subtitles": "Riiight... It's probably risky for us to talk at all.",
@@ -12102,7 +12200,7 @@
       "lines": [
         {
           "id": "25d77bf7-7389-4d66-9cc9-a7b6f924ca18",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Can't_they_get_anything_done_without_us.ogg",
           "voicePrefix": "",
           "subtitles": "Can't they get anything done without us?",
@@ -12135,7 +12233,7 @@
         },
         {
           "id": "c1cf5a8d-f01e-4409-a3db-15d50209cc6b",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Eh._Sorry,_I_don't_use_creams._I_just_splash_some_water_on_my_face_and_call_it_a_day.ogg",
           "voicePrefix": "",
           "subtitles": "Eh. Sorry, I don't use creams. I just splash some water on my face and call it a day.",
@@ -12160,7 +12258,7 @@
       "lines": [
         {
           "id": "d545abfd-0662-4ee6-9c20-c5054da36793",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Look_at_this_team!_We're_gonna_do_great.ogg",
           "voicePrefix": "",
           "subtitles": "Look at this team. We're gonna do great! **chuckle**",
@@ -12176,7 +12274,7 @@
         },
         {
           "id": "79dc5768-e758-402a-9a75-0f854d1f6339",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_It_sounds_better_when_I_say_it.ogg",
           "voicePrefix": "",
           "subtitles": "**laugh** It sounds better when I say it!",
@@ -12201,7 +12299,7 @@
         },
         {
           "id": "8a52018a-3fac-414d-82ca-194b6d750aac",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Let_me_take_you_shopping_in_Seoul._I'll_find_you_all_the_cutest_stuff.ogg",
           "voicePrefix": "",
           "subtitles": "Let me take you shopping in Seoul! I'll find you all the cutest stuff.",
@@ -12226,7 +12324,7 @@
       "lines": [
         {
           "id": "5dce5b14-9784-4753-8fdd-30b125121713",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Some_day,_I'm_going_to_finally_travel_the_world!_Got_any_tips.ogg",
           "voicePrefix": "",
           "subtitles": "Someday, I'm going to finally travel the world! Got any tips?",
@@ -12259,7 +12357,7 @@
         },
         {
           "id": "501976f6-2aed-44b9-bb53-7f9470217980",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I'm_fine!_I_put_in_hours_like_this_all_the_time_back_in_Korea.ogg",
           "voicePrefix": "",
           "subtitles": "I'm fine! I put in hours like this all the time back in Korea!",
@@ -12284,7 +12382,7 @@
       "lines": [
         {
           "id": "72603a91-098b-40d6-8a20-6ae5b3f95974",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_How_can_you_experiment_on_those_cute_little_rabbits.ogg",
           "voicePrefix": "",
           "subtitles": "How can you experiment on those those cute little rabbits?",
@@ -12309,7 +12407,7 @@
       "lines": [
         {
           "id": "0e25e08e-120c-443b-bf35-264dc4899ce8",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Being_part_of_Overwatch,_getting_to_save_the_world..._Isn't_it_awesome,_Pharah.ogg",
           "voicePrefix": "",
           "subtitles": "Being part of Overwatch, getting to save the world... isn't it awesome, Pharah?",
@@ -12342,7 +12440,7 @@
         },
         {
           "id": "1c0054a4-e469-42d3-8cc5-39c38de3a474",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_give_everything_to_protect_my_home._So_don't_trifle_with_me.ogg",
           "voicePrefix": "",
           "subtitles": "I give everything to protect my home. So don't *trifle* with me!",
@@ -12359,7 +12457,7 @@
       "lines": [
         {
           "id": "0e5664a5-3ad3-4f4a-942e-e861f04ad06c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_You_don't_look_so_good._Maybe_you_should_sit_this_one_out_and_leave_the_kills_to_me.ogg",
           "voicePrefix": "",
           "subtitles": "You don't look so good. Maybe you should sit this one out and leave the kills to me.",
@@ -12392,7 +12490,7 @@
         },
         {
           "id": "1c7b1d12-7c2f-4e2d-a316-b1e13933c948",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_There's_something..._off_about_your_vibe.ogg",
           "voicePrefix": "",
           "subtitles": "There's something... off about your vibe.",
@@ -12408,7 +12506,7 @@
         },
         {
           "id": "aa42eeec-0093-4e9b-91ea-3a0ee37a62bd",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Oh,_that's_what_it_is.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, that's what it is!",
@@ -12433,7 +12531,7 @@
         },
         {
           "id": "883346da-9a8e-4254-983b-46eec6f35e8f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_That's_funny!_Soldier_76_said_the_same_thing.ogg",
           "voicePrefix": "",
           "subtitles": "That's funny. **laugh** Soldier: 76 said the same thing!",
@@ -12450,7 +12548,7 @@
       "lines": [
         {
           "id": "166122f0-804a-4319-a1f5-36ff05815638",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Why_so_serious,_Reinhardt._You're_supposed_to_be_the_fun_one.ogg",
           "voicePrefix": "",
           "subtitles": "Why so serious, Reinhardt? You're supposed to be the fun one!",
@@ -12466,7 +12564,7 @@
         },
         {
           "id": "3b9e7498-00c5-47bd-a5c3-a9d9f21efc2a",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Why_stop_at_glorious._Be_notorious.ogg",
           "voicePrefix": "",
           "subtitles": "Why stop at \"glorious\"? Be \"notorious\"!",
@@ -12499,7 +12597,7 @@
         },
         {
           "id": "6b866977-e427-4242-9c62-3d315e71ce14",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Yeah._But_the_squad_is_doing_great_on_their_own!_Besides,_I_have_new_friends_here._Including_you.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah. But the squad is doing great on their own! Besides, I have new friends here. Including you!",
@@ -12532,7 +12630,7 @@
         },
         {
           "id": "df96398c-6c51-4842-9ca2-4b64876e88f5",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Um,_I_think_you_mean..._bomb-shatter.ogg",
           "voicePrefix": "",
           "subtitles": "Um, I think you mean... *\"bomb-shatter\"!*",
@@ -12549,7 +12647,7 @@
       "lines": [
         {
           "id": "a26b7818-4a91-4945-85cf-4a1f8625f438",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Massive_bomb-shatter.ogg",
           "voicePrefix": "",
           "subtitles": "Massive bomb-shatter!",
@@ -12582,7 +12680,7 @@
         },
         {
           "id": "ebe6b5db-928a-43fb-a620-495c37136e0f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Cute_hook.ogg",
           "voicePrefix": "",
           "subtitles": "Cute hook!",
@@ -12644,7 +12742,7 @@
         },
         {
           "id": "c912e68f-c6c8-451b-b851-8447702a7cb9",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Huh._Oh,_was_I_supposed_to_read_that.ogg",
           "voicePrefix": "",
           "subtitles": "Huh? Oh, was I supposed to read that?",
@@ -12660,7 +12758,7 @@
         },
         {
           "id": "35290f39-edde-4ead-94bd-c3fa37008c15",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Teamwork_gets_you_out_alive,_but_homework_makes_me_dead_inside.ogg",
           "voicePrefix": "",
           "subtitles": "\"Teamwork gets you out alive\"... but homework makes me dead inside!",
@@ -12685,7 +12783,7 @@
         },
         {
           "id": "545a1209-9a18-4ec8-a44c-fd55ccadafc9",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Lots_of_fighting,_not_much_sleep.ogg",
           "voicePrefix": "",
           "subtitles": "Lots of fighting, not much sleep.",
@@ -12701,7 +12799,7 @@
         },
         {
           "id": "dc18b438-773b-4a96-8445-1c9fdc8b3b7c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_More_caffeine_than_you'd_ever_believe.ogg",
           "voicePrefix": "",
           "subtitles": "More caffeine than you'd ever believe.",
@@ -12726,7 +12824,7 @@
       "lines": [
         {
           "id": "579b08ec-8ac5-4617-8ad5-e346964f6a3f",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_A_mech_as_flashy_as_yours_will_show_up_on_every_radar.ogg",
           "voicePrefix": "",
           "subtitles": "A mech as flashy as yours will show up on every radar.",
@@ -12734,7 +12832,7 @@
         },
         {
           "id": "2967699f-d22d-43af-92b7-226b43061697",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_That's_just_the_way_I_like_it.ogg",
           "voicePrefix": "",
           "subtitles": "That's just the way I like it.",
@@ -12759,7 +12857,7 @@
         },
         {
           "id": "cb73222b-87d8-4286-b7b0-9a66d33c68c5",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Not_bad._I'll_stomp_you_even_with_your_hacks.ogg",
           "voicePrefix": "",
           "subtitles": "\"Not bad\"? I'll stomp you even with your hacks.",
@@ -12792,7 +12890,7 @@
         },
         {
           "id": "c384436f-1e3b-4ac3-805a-e07b07f060d7",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Come_on,_they're_not_even_trying.ogg",
           "voicePrefix": "",
           "subtitles": "Come on, they're not even trying!",
@@ -12809,7 +12907,7 @@
       "lines": [
         {
           "id": "82dd699c-b934-459f-8d6b-14230aca9d0c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_heard_you're_a_good_dancer._You_should_try_to_beat_my_high_score_in_Dance_Floor.ogg",
           "voicePrefix": "",
           "subtitles": "I heard you're a good dancer. You should try to beat my high score in Dance Floor!",
@@ -12825,7 +12923,7 @@
         },
         {
           "id": "e9185ee5-72c0-45ec-b4b7-2a93063fe5e0",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_You_didn't.ogg",
           "voicePrefix": "",
           "subtitles": "**gasp** You didn't...!",
@@ -12850,7 +12948,7 @@
         },
         {
           "id": "e656a96b-cac8-40f7-ac8e-4e2170373aa0",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Uh..._I_don't_know..._I_heard_your_inventions_take_five_minutes_to_boot_up.ogg",
           "voicePrefix": "",
           "subtitles": "Uh... I don't know... I heard your inventions take five minutes to boot up.",
@@ -12883,7 +12981,7 @@
         },
         {
           "id": "c61ded23-c15e-4bbb-a5ce-a7a1463de5f0",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Uh,_didn't_you_lose_an_entire_jet_once.ogg",
           "voicePrefix": "",
           "subtitles": "Uh, didn't you lose an entire jet once?",
@@ -12916,7 +13014,7 @@
         },
         {
           "id": "d1e25c83-4719-4ba9-ae6d-59e8d16c7d6f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_The_bad_guys_won't_know_what_hit_'em.ogg",
           "voicePrefix": "",
           "subtitles": "The bad guys won't know what hit 'em!",
@@ -12933,7 +13031,7 @@
       "lines": [
         {
           "id": "9c66d86c-9a45-45cf-a163-3c75adaa87d1",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_How_can_you_be_good_at_shooting_in_real_life_but_so_bad_in_games.ogg",
           "voicePrefix": "",
           "subtitles": "How can you be good at shooting in real life, but so bad in games?",
@@ -12949,7 +13047,7 @@
         },
         {
           "id": "601e626a-d403-402b-8864-f27a16bf90ee",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_It's_lonely_at_the_top.ogg",
           "voicePrefix": "",
           "subtitles": "**sigh** It's lonely at the top.",
@@ -12974,7 +13072,7 @@
       "lines": [
         {
           "id": "582550ff-bc5c-4d4b-b1e1-9d78d8b46050",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_You_should_visit_me_in_Korea,_Lena.ogg",
           "voicePrefix": "",
           "subtitles": "You should visit me in Korea, Lena.",
@@ -12990,7 +13088,7 @@
         },
         {
           "id": "3482d9c1-72de-41d6-bc1d-b53de2ca24e5",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I'll_show_you_true_hospitality,_Korea_style.ogg",
           "voicePrefix": "",
           "subtitles": "I'll show you true hospitality, Korea style.",
@@ -13015,7 +13113,7 @@
       "lines": [
         {
           "id": "82b97ebb-a7ff-47cb-9d64-f18827774bf0",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_have_to_introduce_you_to_Overlord!_He's_the_best_pilot_I_know.ogg",
           "voicePrefix": "",
           "subtitles": "I have to introduce you to Overlord! He's the best pilot I know.",
@@ -13040,7 +13138,7 @@
       "lines": [
         {
           "id": "0a859379-a1fe-40d0-a231-17174d0e6655",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Do_you_really_call_yourself_a_mech_slayer.ogg",
           "voicePrefix": "",
           "subtitles": "Do you *really* call yourself a \"mech slayer\"? Hehe.",
@@ -13056,7 +13154,7 @@
         },
         {
           "id": "62a16686-8140-415e-bb26-391ad3830b2f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Try_it!_Tokki_and_I_love_crushing_sweats.ogg",
           "voicePrefix": "",
           "subtitles": "Try it! Tokki and I love crushing sweats.",
@@ -13064,7 +13162,7 @@
         },
         {
           "id": "5be69e00-076e-4999-a1d3-803ad298bce9",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Overlord's_got_our_back!_You'd_never_take_us_down.ogg",
           "voicePrefix": "",
           "subtitles": "Overlord's got our back! You'd never take us down.",
@@ -13072,7 +13170,7 @@
         },
         {
           "id": "3249c897-11ba-4b77-936b-2a1e1c3421f1",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Are_you_serious._Casino_would_fly_circles_around_you.ogg",
           "voicePrefix": "",
           "subtitles": "*scoffs* Are you serious? Casino would fly circles around you!",
@@ -13080,7 +13178,7 @@
         },
         {
           "id": "581a82ab-1406-4f1b-885c-3cf4c25c7eb5",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_With_King_on_our_team._You_don't_stand_a_chance.ogg",
           "voicePrefix": "",
           "subtitles": "With King on our team, you don't stand a chance!",
@@ -13088,7 +13186,7 @@
         },
         {
           "id": "1949a5bf-6db8-4fbb-bdcc-0cbdb775a429",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Ha!_No_way,_D.mon's_way_better_with_a_sword_than_you.ogg",
           "voicePrefix": "",
           "subtitles": "Ha! No way! D.Mon's way better with a sword than you!",
@@ -13161,7 +13259,7 @@
         },
         {
           "id": "28622e80-236f-4c86-8cea-474b19ab8950",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_What's_that._You're_hiding_so_far_in_the_backline,_I_can_barely_hear_you.ogg",
           "voicePrefix": "",
           "subtitles": "What's that? You're hiding so far in the backline, I can barely hear you!",
@@ -13178,7 +13276,7 @@
       "lines": [
         {
           "id": "f9bc3e20-83b3-413e-8434-dd3f67423ba2",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Winston,_I_have_to_get_a_picture_with_you.ogg",
           "voicePrefix": "",
           "subtitles": "Winston, I have to get a picture with you!",
@@ -13194,7 +13292,7 @@
         },
         {
           "id": "5d7ed45d-1411-412f-9626-710dea545cb6",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Duh!_My_fans_love_hearing_about_you!_Let's_get_a_selfie_the_next_time_we're_patching_up_my_mech.ogg",
           "voicePrefix": "",
           "subtitles": "Duh! My fans love hearing about you! Let's get a selfie the next time we're patching up my mech!",
@@ -13219,7 +13317,7 @@
       "lines": [
         {
           "id": "3db5c667-e4f2-4639-9f92-ffeda8a4858c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_I_bet_you're_a_pro_at_bowling.ogg",
           "voicePrefix": "",
           "subtitles": "I bet you're a pro at bowling!",
@@ -13235,7 +13333,7 @@
         },
         {
           "id": "07b1341c-4613-4beb-bde1-e350d6edfec2",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Aw!_Who_am_I_going_to_go_with_now.ogg",
           "voicePrefix": "",
           "subtitles": "Aw! Who am I going to go with now?",
@@ -13260,7 +13358,7 @@
       "lines": [
         {
           "id": "ea404c00-2ce9-4f4d-95ed-d3e9e1cfb8f3",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_You're_crazy_strong,_Zarya!_How_many_of_me_could_you_lift.ogg",
           "voicePrefix": "",
           "subtitles": "You're crazy strong, Zarya! How many of me could you lift?",
@@ -13285,7 +13383,7 @@
       "lines": [
         {
           "id": "ddf329f0-9c20-4573-b461-5a925f9ad41c",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Can_Volskaya's_mechs_do_that.ogg",
           "voicePrefix": "",
           "subtitles": "Can Volskaya's mechs do that?",
@@ -13318,7 +13416,7 @@
         },
         {
           "id": "49d24310-8458-4c14-ba6e-a51f252dfad8",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Oh,_that's_good!_I'll_use_that_the_next_time_Sojourn_gives_me_trouble.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, that's good! I'll use that the next time Sojourn gives me trouble.",
@@ -13328,7 +13426,7 @@
     },
     {
       "id": "efc23209-bc09-4e58-8536-fa07c4bd2dc9",
-      "name": "353",
+      "name": "Good Taste",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13369,7 +13467,7 @@
     },
     {
       "id": "aad0fe73-4231-4b09-8a2f-12088af9ed69",
-      "name": "354",
+      "name": "Tests from Talon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13409,41 +13507,8 @@
       ]
     },
     {
-      "id": "462ca69b-953f-4fb0-8a66-49876bd9f120",
-      "name": "355",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e6471085-3635-4428-88e6-461a0e17a417",
-          "hero": "Domina",
-          "voice": "Domina_-_How_I_envy_those_solar_threads_in_your_hair._A_pity_I_had_to_settle_for_twenty-four_carat.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh, how I envy those solar threads in your hair. A pity I had to settle for twenty-four carat.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "f171d174-0f40-4728-8dc8-9c12eb5bd72d",
-          "hero": "Illari",
-          "voice": "Illari_-_It_is_not_a_fashion_statement.ogg",
-          "voicePrefix": "",
-          "subtitles": "It is not a fashion statement.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "4926b20f-4b26-4030-bb69-87444a6c4bd6",
-          "hero": "Domina",
-          "voice": "Domina_-_No,_I_suppose_not_to_someone_with_such_a..._practical_sense_of_style.ogg",
-          "voicePrefix": "",
-          "subtitles": "**sigh** No, I suppose not to someone with such a... practical sense of style.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "5dcb441e-dd7a-4ca8-ad79-e460856c759b",
-      "name": "356",
+      "name": "Failed Negotiation",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13470,31 +13535,6 @@
           "voice": "Domina_-_Oh,_how_clever._But_just_because_you've_called_the_game_doesn't_mean_I'll_stop_playing.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, how clever! But just because you've called the game doesn't mean I'll stop playing.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "76845cf0-6d43-42aa-a8e8-1da19f51bf5f",
-      "name": "357",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "b131bcc3-f445-4713-933d-f1193f8943ac",
-          "hero": "Domina",
-          "voice": "Domina_-_Do_keep_that_little_noisemaker_away_from_me._I_shan't_be_seen_with_such_an_inferior_design.ogg",
-          "voicePrefix": "",
-          "subtitles": "Do keep that little noisemaker away from me. I shan't be seen with such an inferior design.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "076e3410-5dfa-4158-9a30-b68626e3bf31",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_I_think_you_mean_original_design!_Maybe_you_suits_forgot_who_you_stole_it_from.ogg",
-          "voicePrefix": "",
-          "subtitles": "Uh, I think you mean, \"original design\"? Maybe you suits forgot who you stole it from?",
           "render": "Heroic.png"
         }
       ]
@@ -13650,11 +13690,11 @@
           ]
         }
       ],
-      "selectedPathId": "a1c2d3e4-f007-4000-8000-6a4deb820102"
+      "selectedPathId": "a1c2d3e4-f007-4000-8000-6a4deb820103"
     },
     {
       "id": "dceb11f2-1582-4e67-9697-ed0cdc7b5299",
-      "name": "361",
+      "name": "Inspiring",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13687,7 +13727,7 @@
     },
     {
       "id": "d6443879-36cf-4337-8483-558a835cac1a",
-      "name": "362",
+      "name": "Negotiator",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13728,7 +13768,7 @@
     },
     {
       "id": "466873a9-1e6f-474a-8688-3555c0804541",
-      "name": "363",
+      "name": "Concerns",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13769,7 +13809,7 @@
     },
     {
       "id": "3bfd6261-573a-4c17-b120-c486b5765833",
-      "name": "364",
+      "name": "Captivating",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13810,7 +13850,7 @@
         {
           "id": "fc7aa305-fcb2-47a3-b97e-b195fb5fb96b",
           "hero": "Domina",
-          "voice": "",
+          "voice": "Domina_-_Oh,_aren't_you_just_the_sweetest_little_thing__What_I_wouldn't_pay_to_carry_you_around_in_my_purse!.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, aren't you just the sweetest little thing? What I wouldn't pay to carry you around in my purse!",
           "render": "Heroic.png"
@@ -13826,7 +13866,7 @@
         {
           "id": "970ba75a-3eee-4a65-9f13-69026251d9e5",
           "hero": "Domina",
-          "voice": "",
+          "voice": "Domina_-_Even_if_mummy_has_an_unlimited_budget_for_treats_.ogg",
           "voicePrefix": "",
           "subtitles": "Even if mummy has an unlimited budget for treats?",
           "render": "Heroic.png"
@@ -13892,7 +13932,7 @@
         {
           "id": "2e9fb681-0849-44bf-a53f-214ba0968f70",
           "hero": "Hazard",
-          "voice": "",
+          "voice": "Hazard_-_You_ever_think_of_markin'_up_that_chassis_of_yours__I_know_a_good_tattoo_artist.ogg",
           "voicePrefix": "",
           "subtitles": "You ever think of markin' up that chassis of yours? I know a good tattoo artist.",
           "render": "Heroic.png"
@@ -13908,7 +13948,7 @@
         {
           "id": "9f537f2f-563d-4d75-92fa-b48e2bd151a5",
           "hero": "Hazard",
-          "voice": "",
+          "voice": "Hazard_-_Well,_what_do_you_like_.ogg",
           "voicePrefix": "",
           "subtitles": "Well, what do you like?",
           "render": "Heroic.png"
@@ -13966,7 +14006,7 @@
     },
     {
       "id": "e8ee5529-be36-42a5-abc0-b02e26615610",
-      "name": "369",
+      "name": "Not an Omnic",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -14048,7 +14088,7 @@
         {
           "id": "b321a003-882a-4d20-a8f3-411995eee738",
           "hero": "Echo",
-          "voice": "",
+          "voice": "Echo_-_Whose_voice_were_you_listening_to_earlier,_Juno_.ogg",
           "voicePrefix": "",
           "subtitles": "Whose voice were you listening to earlier, Juno?",
           "render": "Heroic.png"
@@ -14056,7 +14096,7 @@
         {
           "id": "05a7eab2-0c12-408d-b2fc-f55a4d10a217",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_My_mother's._It_is_just_a_recording,_but_I_keep_wishing_she_will_have_more_to_say.ogg",
           "voicePrefix": "",
           "subtitles": "My mother's. It's just a recording, but I keep wishing she will have more to say.",
           "render": "Heroic.png"
@@ -14064,7 +14104,7 @@
         {
           "id": "52786eb4-f7b0-461b-90b3-fb405192d30d",
           "hero": "Echo",
-          "voice": "",
+          "voice": "Echo_-_Would_you_like_me_to_store_it_in_my_databanks__I_would_gladly_play_it_for_you_any_time.ogg",
           "voicePrefix": "",
           "subtitles": "Would you like me to store it in my databanks? I would gladly play it for you anytime.",
           "render": "Heroic.png"
@@ -14072,7 +14112,7 @@
         {
           "id": "129ece8a-892f-4945-9e22-05a107bc20b3",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_Yes_please._Thank_you,_Echo.ogg",
           "voicePrefix": "",
           "subtitles": "Yes please. Thank you, Echo.",
           "render": "Heroic.png"
@@ -14097,7 +14137,7 @@
         {
           "id": "3ef5369d-cf8d-42fb-af66-54c881e300c9",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_My_family_told_me_many_stories,_but_it_is_still_different_than_I_expected.ogg",
           "voicePrefix": "",
           "subtitles": "My family told me many stories, but it is still different than I expected.",
           "render": "Heroic.png"
@@ -14122,7 +14162,7 @@
         {
           "id": "dfc914f6-6529-4859-ad71-4b73782b64ec",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_Do_you_have_information_about_Jurong__It_was_my_mother's_birthplace.ogg",
           "voicePrefix": "",
           "subtitles": "Do you have information about Jurong? It was by mother's birthplace.",
           "render": "Heroic.png"
@@ -14138,7 +14178,7 @@
         {
           "id": "a9625945-fb2e-4a28-b995-1efa6aa7f4db",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_(gasp)_You_must_tell_me_everything_you_know!.ogg",
           "voicePrefix": "",
           "subtitles": "(Gasp) You must tell me everything you know!",
           "render": "Heroic.png"
@@ -14344,7 +14384,7 @@
         {
           "id": "b743e27a-1d54-40ee-a3d8-f26b43849b18",
           "hero": "Echo",
-          "voice": "",
+          "voice": "Echo_-_Why_did_you_choose_the_name__Null_Sector_.ogg",
           "voicePrefix": "",
           "subtitles": "Why did you choose the name \"Null Sector\"?",
           "render": "Heroic.png"
@@ -14524,7 +14564,7 @@
         },
         {
           "id": "53b6a7e6-5106-4788-801e-e834af973275",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_don't_need_your_pity.ogg",
           "voicePrefix": "",
           "subtitles": "I don't need your pity.",
@@ -15045,7 +15085,7 @@
         {
           "id": "429d4232-32b8-4b6c-834f-8bfcf142ca03",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Yeah._Awful_convenient_excuse,_don't_you_think_.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah. Awful convenient excuse, don't ya think?",
           "render": "Heroic.png"
@@ -16172,7 +16212,7 @@
         },
         {
           "id": "8718bf0b-c707-4bfb-b5b8-5b1517ae3d2c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I'm_still_bringing_the_world_to_justice.ogg",
           "voicePrefix": "",
           "subtitles": "I'm still bringing the world to justice.",
@@ -17424,7 +17464,7 @@
       "lines": [
         {
           "id": "69997b7a-2864-43cb-93f4-94055e634f23",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_If_you_knew_what_Blackwatch_was_up_to,_why_didn't_you_stop_them.ogg",
           "voicePrefix": "",
           "subtitles": "If you knew what Blackwatch was up to, why didn't you stop them?",
@@ -17440,7 +17480,7 @@
         },
         {
           "id": "168f1bba-71cd-4f74-82c0-6717bc908253",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_And_now_the_world_pays_for_your_actions.ogg",
           "voicePrefix": "",
           "subtitles": "And now the world pays for *your* actions.",
@@ -17678,7 +17718,7 @@
         },
         {
           "id": "a1b2c3d4-e002-4000-8000-000000000001",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Wait,_for_real.ogg",
           "voicePrefix": "",
           "subtitles": "Wait, for real?",
@@ -21436,7 +21476,7 @@
         {
           "id": "2d38f37e-feb9-499e-bf42-dbaf1de8988f",
           "hero": "Mizuki",
-          "voice": "",
+          "voice": "Mizuki_-_Eh,_that's_all_Sakura._Her_intel's_always_spot_on.ogg",
           "voicePrefix": "",
           "subtitles": "Eh, that's all Sakura. Her intel's always spot on.",
           "render": "Heroic.png"
@@ -21461,7 +21501,7 @@
         {
           "id": "d96ede28-f08d-42c5-91f6-705470214480",
           "hero": "Mizuki",
-          "voice": "",
+          "voice": "Mizuki_-_Yeah,_I_was_just_looking_for_a_change_of_pace.ogg",
           "voicePrefix": "",
           "subtitles": "Yeah, I was just looking for a change of pace.",
           "render": "Heroic.png"
@@ -21477,7 +21517,7 @@
         {
           "id": "1467c3a8-4bd5-4c2a-8937-9d69b3e3eb30",
           "hero": "Mizuki",
-          "voice": "",
+          "voice": "Mizuki_-_What_can_I_say__Hard_not_to_get_attached_to_such_a_beautiful_place.ogg",
           "voicePrefix": "",
           "subtitles": "What can I say? Hard not to get attached to such a beautiful place.",
           "render": "Heroic.png"
@@ -21725,7 +21765,7 @@
         {
           "id": "f5d1abe1-dbc6-4cb4-811d-0d5e1a823be2",
           "hero": "Vendetta",
-          "voice": "",
+          "voice": "Vendetta_-_So_this_is_how_the_last_son_of_Shimada_wields_his_legacy__skulking_about_like_a_fannullone.ogg",
           "voicePrefix": "",
           "subtitles": "So this is how the last son of Shimada wields his legacy? Skulking about like a fannullon.",
           "render": "Heroic.png"
@@ -21807,7 +21847,7 @@
         {
           "id": "3a1b5cd8-8341-49a4-89da-a9e4a36d72ea",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_Really__So_was_he_handsome__Charming__Funny_.ogg",
           "voicePrefix": "",
           "subtitles": "Really? So was he handsome, charming. Funny!?",
           "render": "Heroic.png"
@@ -21823,7 +21863,7 @@
         {
           "id": "2d2d5000-88be-47c1-8e4f-a7b4c82c4eda",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_Oh._You_act_like_my_sister.ogg",
           "voicePrefix": "",
           "subtitles": "Oh. You act like my sister.",
           "render": "Heroic.png"
@@ -22201,7 +22241,7 @@
         {
           "id": "1b10f7b9-f10f-45c5-8740-a57dc9afc147",
           "hero": "Moira",
-          "voice": "",
+          "voice": "Moira_-_Sharp_spine,_dull_wit,_and_chronic_overconfidence.ogg",
           "voicePrefix": "",
           "subtitles": "Sharp spine, dull wit, and chronic overconfidence.",
           "render": "Heroic.png"
@@ -22485,7 +22525,7 @@
         {
           "id": "2e6a5cdf-2761-4198-b135-0318d5905cf3",
           "hero": "Sombra",
-          "voice": "",
+          "voice": "Sombra_-_Hard_to_call_it__hacking__when_the_password_is_your_dog's_birthday.ogg",
           "voicePrefix": "",
           "subtitles": "Hard to call it \"hacking\" when the password is your dog's birthday.",
           "render": "Heroic.png"
@@ -22766,7 +22806,7 @@
         {
           "id": "15a6efe2-44cc-483e-9cc3-d21e33193ee4",
           "hero": "Illari",
-          "voice": "",
+          "voice": "Illari_-_Focus_on_the_ones_my_pylon_can't_reach._I'll_take_care_of_the_rest.ogg",
           "voicePrefix": "",
           "subtitles": "Focus on the ones my pylon can't reach. I'll take care of the rest.",
           "render": "Heroic.png"
@@ -22774,7 +22814,7 @@
         {
           "id": "2f612cf2-d5ec-4870-92b1-9b09dd30c157",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_Leave_it_to_me._I_will_not_let_them_out_of_my_sight!.ogg",
           "voicePrefix": "",
           "subtitles": "Leave it to me. I will not let them out of my sight!",
           "render": "Heroic.png"
@@ -23127,7 +23167,7 @@
       "lines": [
         {
           "id": "f9f96002-c98f-4c55-bc8b-99295441e3bd",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_don't_care_what_kind_of_baggage_you've_got._Don't_bring_it_onto_the_battlefield.ogg",
           "voicePrefix": "",
           "subtitles": "I don't care what kind of baggage you've got. Don't bring it onto the battlefield.",
@@ -23152,7 +23192,7 @@
       "lines": [
         {
           "id": "b46126be-8506-43f7-b62f-4f03bcdb4cbe",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_There_hasn't_been_much_activity_in_Runasapi_since_the_lab_raid.ogg",
           "voicePrefix": "",
           "subtitles": "There hasn't been much activity in Runasapi since the lab raid.",
@@ -23168,7 +23208,7 @@
         },
         {
           "id": "556a44c4-8f16-44a8-806d-9f37d718a330",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_You're_picking_fights_with_powerful_organizations._Shouldn't_someone_watch_your_six.ogg",
           "voicePrefix": "",
           "subtitles": "You're picking fights with powerful organizations. Shouldn't... *someone* watch your six?",
@@ -23243,7 +23283,7 @@
         {
           "id": "9b495bbf-2523-4b3c-9628-239d9f516fdf",
           "hero": "Illari",
-          "voice": "",
+          "voice": "Illari_-_(exhale)_I'm_trying_not_to_think_about_it.ogg",
           "voicePrefix": "",
           "subtitles": "**sigh** I'm trying not to think about it.",
           "render": "Heroic.png"
@@ -23640,7 +23680,7 @@
         {
           "id": "33f3e01f-d735-49f7-99c5-46683d8479a0",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Now,_if_I_give_you_this_treat,_you'd_better_not_tell_your_ma,_you_hear_.ogg",
           "voicePrefix": "",
           "subtitles": "Now, if I give you this treat, you better not tell your ma, ya hear?",
           "render": "Heroic.png"
@@ -23656,7 +23696,7 @@
         {
           "id": "77d53aa5-26c4-49a2-8a10-f7774808ec8c",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_Cassidy,_you're_going_to_teach_her_to_beg!_..._Aww,_but_she_has_been_so_good_lately,_hasn't_she_.ogg",
           "voicePrefix": "",
           "subtitles": "Cassidy, you’re gonna teach her to beg! Aww, but she has been so good lately, hasn’t she?",
           "render": "Heroic.png"
@@ -23681,7 +23721,7 @@
         {
           "id": "bcac9884-30e9-449d-9f09-a06f3811ba0f",
           "hero": "Brigitte",
-          "voice": "",
+          "voice": "Brigitte_-_I_know_it_seems_crazy,_but_she_can_help!_Can't_you,_Fika__Good_girl!.ogg",
           "voicePrefix": "",
           "subtitles": "I know it seems crazy, but she can help! Can’t you, Fika? Good girl!",
           "render": "Heroic.png"
@@ -23813,7 +23853,7 @@
         {
           "id": "98c456e1-dcf4-433b-8c31-23d5703b3102",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_The_battle_ahead_will_be_perilous._Sharpen_those_claws,_Fika!.ogg",
           "voicePrefix": "",
           "subtitles": "The battle ahead will be perilous. Sharpen those claws, Fika!",
           "render": "Heroic.png"
@@ -23829,7 +23869,7 @@
         {
           "id": "91e77833-2bc8-4585-bc72-35b8de60b7f2",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_Or_perhaps_our_enemies_will_change_their_ways_when_they_see_how_cute_you_are.ogg",
           "voicePrefix": "",
           "subtitles": "Or perhaps our enemies will change their ways when they see how cute you are.",
           "render": "Heroic.png"
@@ -24052,7 +24092,7 @@
     },
     {
       "id": "8c978e98-fc45-418d-aa1b-e8fe6d53631a",
-      "name": "564",
+      "name": "Rip your Tongue",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24083,17 +24123,38 @@
         },
         {
           "id": "7ee8ae2e-c1cd-49f1-a85d-b9d983f5003e",
-          "hero": "Unknown",
+          "hero": "Junker Queen",
           "voice": "Junker_Queen_-_Yeah,_the_ears_are_next.ogg",
           "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "Yeah, the ears are next",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "01ca80dd-a731-424c-94e1-60e131116ac8",
+          "label": "Mark my Words",
+          "lineIds": [
+            "2c58c509-8b8f-4ddc-b9e4-17e07ad5f13e",
+            "8fc91000-8c76-421c-b7d0-df3bce60fabf",
+            "886c88b5-2676-4056-a273-654a06ed0290"
+          ]
+        },
+        {
+          "id": "7844b025-88b5-4ad7-930e-7851ac758acd",
+          "label": "Ears are Next",
+          "lineIds": [
+            "2c58c509-8b8f-4ddc-b9e4-17e07ad5f13e",
+            "8fc91000-8c76-421c-b7d0-df3bce60fabf",
+            "7ee8ae2e-c1cd-49f1-a85d-b9d983f5003e"
+          ]
+        }
+      ],
+      "selectedPathId": "01ca80dd-a731-424c-94e1-60e131116ac8"
     },
     {
       "id": "7e0b0764-a0ef-4213-afa0-bc440c1590c3",
-      "name": "565",
+      "name": "Supermodel",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24134,7 +24195,7 @@
     },
     {
       "id": "13ecb938-e7dc-485e-aef7-c5b03f956142",
-      "name": "566",
+      "name": "Willpower",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24153,39 +24214,6 @@
           "voice": "Junker_Queen_-_Sheer_willpower.ogg",
           "voicePrefix": "",
           "subtitles": "Sheer willpower!",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "d684d30d-a656-4fc0-9686-e70eb0073d99",
-      "name": "567",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e98687ea-d06a-46f5-aedd-7b15df675aa9",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_So,_I'm_trying_to_ask_everybody_this._What_is_your_favorite_animal.ogg",
-          "voicePrefix": "",
-          "subtitles": "So, I'm tryna ask everyone this: what is your favorite animal?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "8ec03e82-2296-4894-9520-034e3a35a357",
-          "hero": "Junker Queen",
-          "voice": "Junker_Queen_-_Is_there_a_kind_of_dingo_that_is_also_a_shark.ogg",
-          "voicePrefix": "",
-          "subtitles": "Is there a kind of dingo that is... also a shark?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "bca3a982-d872-4b2b-ae78-4c0f866a026e",
-          "hero": "Lúcio",
-          "voice": "Lúcio_-_Uh..._yeah,_I_can_see_it.ogg",
-          "voicePrefix": "",
-          "subtitles": "Uh... yeah, I can see it!",
           "render": "Heroic.png"
         }
       ]
@@ -24258,7 +24286,7 @@
     },
     {
       "id": "8cc806ce-2af2-4941-9a23-f45e912a2692",
-      "name": "570",
+      "name": "Wings for show?",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24291,7 +24319,7 @@
     },
     {
       "id": "f057ab57-9335-48a0-b6d1-41635ff94482",
-      "name": "571",
+      "name": "Mechanical or Human",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24332,7 +24360,7 @@
     },
     {
       "id": "e4611b8a-f8c7-490e-a5e2-47040e9651a4",
-      "name": "572",
+      "name": "In charge",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24373,7 +24401,7 @@
     },
     {
       "id": "2d5b7852-8ed1-449c-bc49-ad107ba56fcb",
-      "name": "573",
+      "name": "Tempting",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24388,7 +24416,7 @@
         },
         {
           "id": "8a246189-487a-4c1e-96e6-25cb1c52e4b2",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_What_would_you_have_done_differently.ogg",
           "voicePrefix": "",
           "subtitles": "And what would *you* have done differently?",
@@ -24404,7 +24432,7 @@
         },
         {
           "id": "70c0adc1-0a6d-4c40-927b-de1e2ce45c24",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Hmm._Tempting.ogg",
           "voicePrefix": "",
           "subtitles": "Hmm... tempting.",
@@ -24414,7 +24442,7 @@
     },
     {
       "id": "3f6d61f7-966d-4cd8-84f4-4545dfcd523b",
-      "name": "574",
+      "name": "Enigmatic",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24455,7 +24483,7 @@
     },
     {
       "id": "af793c28-abab-4e2d-a328-a49f4c804146",
-      "name": "575",
+      "name": "Killmeter tall",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24488,7 +24516,7 @@
     },
     {
       "id": "8f48c418-4364-4560-979c-e6daeead6b15",
-      "name": "576",
+      "name": "Don't fight Fair",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24521,7 +24549,7 @@
     },
     {
       "id": "00af8d6f-ff26-4c29-8cfc-31332af3baae",
-      "name": "577",
+      "name": "Fun fact",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24546,7 +24574,7 @@
     },
     {
       "id": "a2020628-4916-48a6-8af3-1be485ee8b20",
-      "name": "578",
+      "name": "Do not keep Track",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -24775,7 +24803,7 @@
         },
         {
           "id": "57fd068c-4e37-4aa5-b0f2-62b96a8d7660",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Why_the_hell_would_you_say_that_to_someone.ogg",
           "voicePrefix": "",
           "subtitles": "Why the hell would you say that to someone?",
@@ -24924,7 +24952,7 @@
           ]
         }
       ],
-      "selectedPathId": "361cb38e-1f2a-4dd7-82b2-631eaebe7d5d"
+      "selectedPathId": "86f40c37-a32c-44e3-8290-4f34ef5d1fda"
     },
     {
       "id": "c1704c09-df7a-4cfd-924d-693fd9caa05b",
@@ -25020,7 +25048,7 @@
           ]
         }
       ],
-      "selectedPathId": "a1c2d3e4-f003-4000-8000-c1704c090003"
+      "selectedPathId": "a1c2d3e4-f003-4000-8000-c1704c090001"
     },
     {
       "id": "f7cfc9fd-b3c4-4be5-9e35-da36eb711508",
@@ -25481,7 +25509,7 @@
         {
           "id": "87f88657-802b-4ac3-bb70-f4498130f308",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_Have_we_received_any_information_from_Dr._Shing_.ogg",
           "voicePrefix": "",
           "subtitles": "Have we received any information from Dr. Shing?",
           "render": "Heroic.png"
@@ -25489,7 +25517,7 @@
         {
           "id": "4338c224-85ea-45ca-90a7-e93f8058fec9",
           "hero": "Mei",
-          "voice": "",
+          "voice": "Mei_-_Not_yet._I_know_it's_hard_to_wait,_but_let's_have_hope.ogg",
           "voicePrefix": "",
           "subtitles": "Not yet. I know it's hard to wait but... let's have hope.",
           "render": "Heroic.png"
@@ -25497,7 +25525,7 @@
         {
           "id": "9c1af856-46c7-4e0d-8978-5acf774123ec",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_(sigh)_I_will_try._I_am_eager_to_hear_from_her_again.ogg",
           "voicePrefix": "",
           "subtitles": "**sigh** I will try. I am eager to hear from her again.",
           "render": "Heroic.png"
@@ -26058,7 +26086,7 @@
         {
           "id": "1794c0ec-e9e8-4f7c-a053-f8b2bd9f6842",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_What's_on_your_mind,_Juno__You_seem_down.ogg",
           "voicePrefix": "",
           "subtitles": "What's on your mind, Juno? You seem down.",
           "render": "Heroic.png"
@@ -26066,7 +26094,7 @@
         {
           "id": "58b5f054-7664-443c-947f-bd5ff0eb5754",
           "hero": "Juno",
-          "voice": "",
+          "voice": "Juno_-_I_cannot_stop_thinking_about_the_Watchpoint._I_am_sad_to_leave_another_home_behind_so_soon.ogg",
           "voicePrefix": "",
           "subtitles": "I cannot stop thinking about the watchpoint. I am sad to leave another home behind so soon.",
           "render": "Heroic.png"
@@ -26074,7 +26102,7 @@
         {
           "id": "eee127f6-bfc8-4567-af57-0f34fb622320",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_Believe_me,_I_understand._But_home_is_also_the_people_around_us._And_we_still_have_each_other.ogg",
           "voicePrefix": "",
           "subtitles": "Believe me, I understand. But home is also the people around us. And we still have each other.",
           "render": "Heroic.png"
@@ -26987,7 +27015,7 @@
       "lines": [
         {
           "id": "2661c1c9-f935-442e-9e79-59e860b41aec",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_The_Martinses_put_their_necks_on_the_line,_protecting_you_from_Vishkar.ogg",
           "voicePrefix": "",
           "subtitles": "The Martinses put their necks on the line, protecting you from Vishkar.",
@@ -27003,7 +27031,7 @@
         },
         {
           "id": "501d7e75-8698-410f-b367-ec99e5b6dc73",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_If_they_ever_need_help,_we're_all_screwed.ogg",
           "voicePrefix": "",
           "subtitles": "Heh. If they ever need help, we're *all* screwed.",
@@ -27259,7 +27287,7 @@
         {
           "id": "964ccf06-f86b-48ef-95ff-383ad3aeebd4",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_There_is_no_need,_Bua._Our_separation_was_Vishkar's_fault,_alone.ogg",
           "voicePrefix": "",
           "subtitles": "There is no need, Bua. Our separation was Vishkar's fault, alone.",
           "render": "Heroic.png"
@@ -27275,7 +27303,7 @@
         {
           "id": "e7ed9344-9a1c-470d-bd53-e967a1bf28d8",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_I_could_not_agree_more,_my_friend.ogg",
           "voicePrefix": "",
           "subtitles": "I could not agree more, my friend.",
           "render": "Heroic.png"
@@ -27292,7 +27320,7 @@
         {
           "id": "57f62404-6c9c-46eb-b88d-af4253261538",
           "hero": "Lifeweaver",
-          "voice": "",
+          "voice": "Lifeweaver_-_Are_you_sure_about_returning_to_Vishkar,_Satya__You_could_always_stay_at_the_Arcology_with_me.ogg",
           "voicePrefix": "",
           "subtitles": "Are you sure about returning to Vishkar, Satya? You could always stay at the arcology with me.",
           "render": "Heroic.png"
@@ -27300,7 +27328,7 @@
         {
           "id": "33692cc9-1c41-418b-ba63-6115394b172b",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_I_may_join_you_there_one_day._But_I_will_uncover_more_as_Vishkar's_ally_than_its_enemy.ogg",
           "voicePrefix": "",
           "subtitles": "I may join you one day. But I will uncover more as Vishkar's ally than the enemy.",
           "render": "Heroic.png"
@@ -27317,7 +27345,7 @@
         {
           "id": "611cd4f0-e26c-4d32-9f1b-211d9c50077e",
           "hero": "Symmetra",
-          "voice": "",
+          "voice": "Symmetra_-_I_am_still_searching_for_information_on_Dr._Bhatt,_Niran._Answers_are_not_forthcoming.ogg",
           "voicePrefix": "",
           "subtitles": "I am still searching for information on Dr. Bhatt, Niran. Answers are not forthcoming.",
           "render": "Heroic.png"
@@ -27424,7 +27452,7 @@
         {
           "id": "ad249abd-7d2f-4522-821d-ce1fe5c6b8ed",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_Worried_I'll_leave_you_in_a_thorny_situation_.ogg",
           "voicePrefix": "",
           "subtitles": "Worried I'll leave you in a thorny situation?",
           "render": "Heroic.png"
@@ -28875,7 +28903,7 @@
         {
           "id": "091938d0-87b6-4b86-93cb-8102de8fb3a8",
           "hero": "Mei",
-          "voice": "",
+          "voice": "Mei_-_Please_be_careful_where_you're_swinging,_Reinhardt..._You_almost_hit_Snowball_last_time!.ogg",
           "voicePrefix": "",
           "subtitles": "Please be careful where you're swinging, Reinhardt... almost hit Snowball last time!",
           "render": "Heroic.png"
@@ -28883,7 +28911,7 @@
         {
           "id": "0e3204de-e7d2-4fe9-a57c-032d1025f0ca",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_(embarrassed_chuckle)_My_apologies,_Snowball._Sometimes_my_hammer_is_quicker_than_my_head!.ogg",
           "voicePrefix": "",
           "subtitles": "**embarrassed chuckle** My apologies, Snowball. Sometimes my hammer is quicker than my head!",
           "render": "Heroic.png"
@@ -29065,7 +29093,7 @@
         {
           "id": "e87cf8d9-d1fd-434b-9671-96ab56169d98",
           "hero": "Widowmaker",
-          "voice": "",
+          "voice": "Widowmaker_-_You_could_not_save_your_friends._What_makes_you_think_you_can_save_the_world_.ogg",
           "voicePrefix": "",
           "subtitles": "You could not save your friends... what make you think you can save the world?",
           "render": "Heroic.png"
@@ -29073,7 +29101,7 @@
         {
           "id": "de96a7f9-88f5-405d-9d58-b25a2f512406",
           "hero": "Mei",
-          "voice": "",
+          "voice": "Mei_-_I_trust_my_team_like_I_trust_my_family._I_hope_someday_you_can_do_the_same.ogg",
           "voicePrefix": "",
           "subtitles": "I trust my team like I trust my family. I hope some day... you can do the same.",
           "render": "Heroic.png"
@@ -29244,7 +29272,7 @@
         {
           "id": "08239a59-d6e6-4443-92f6-e9501aabff4a",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_Too_bad_nobody_here_fights_with_steam._We'd_have_the_whole_water_cycle_locked_down!.ogg",
           "voicePrefix": "",
           "subtitles": "Too bad nobody here fights with steam. We'd have a whole cycle water locked down!",
           "render": "Heroic.png"
@@ -29260,7 +29288,7 @@
         {
           "id": "675d245e-cd31-4c25-8c19-4728d5870c3c",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_(sigh)_She_does_get_my_blood_boiling,_so_I_guess_she_fits_the_bill.ogg",
           "voicePrefix": "",
           "subtitles": "**sigh** She does get my blood boiling. So, I guess she fits the bill.",
           "render": "Heroic.png"
@@ -29459,7 +29487,7 @@
         {
           "id": "505bfd74-9ea5-46fe-9ea7-732db1c2eb80",
           "hero": "Mercy",
-          "voice": "",
+          "voice": "Mercy_-_I_don't_want_anyone_to_die._Not_even_you.ogg",
           "voicePrefix": "",
           "subtitles": "I don't want anyone to die. Not even you.",
           "render": "Heroic.png"
@@ -29665,7 +29693,7 @@
         },
         {
           "id": "651adf24-8acf-4969-950c-1967c2d71942",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Once_a_day,_just_after_my_steak_dinner.ogg",
           "voicePrefix": "",
           "subtitles": "Once a day, just after my steak dinner.",
@@ -29798,7 +29826,7 @@
         {
           "id": "cd38b09c-9321-4604-84b7-6fa749975309",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_Dr._Ziegler,_don't_forget._We're_here_to_support_you_too.ogg",
           "voicePrefix": "",
           "subtitles": "Dr. Ziegler, don't forget. We're here to support you *too*.",
           "render": "Heroic.png"
@@ -30334,14 +30362,14 @@
         {
           "id": "10db03a0-cdfb-43de-a8a0-b46648e4ad09",
           "hero": "Moira",
-          "voice": "",
+          "voice": "Moira_-_Have_you_truly_no_better_use_of_your_time_than_helping_a_child_destroy_my_scientific_records_.ogg",
           "voicePrefix": "",
           "subtitles": "Have you *truly* no better use of your time than helping a child destroy my scientific records?",
           "render": "Heroic.png"
         },
         {
           "id": "e4fa11bb-b42e-4959-bf40-7120a5a861ae",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_If_it_makes_your_day_worse,_my_schedule's_wide_open.ogg",
           "voicePrefix": "",
           "subtitles": "If it makes your day worse, my schedule's *wide* open.",
@@ -31273,7 +31301,7 @@
       "lines": [
         {
           "id": "299a1503-49ce-4d95-91c6-6724e96d91c1",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_heard_you_chased_Doomfist_out_of_Numbani.ogg",
           "voicePrefix": "",
           "subtitles": "I heard you chased Doomfist out of Numbani.",
@@ -31289,7 +31317,7 @@
         },
         {
           "id": "a31aba3c-db9b-46e5-afdc-ce33e030bf0c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_We_could've_used_you_in_the_old_days.ogg",
           "voicePrefix": "",
           "subtitles": "Hm, we could've used you in the old days.",
@@ -31431,7 +31459,7 @@
         {
           "id": "62dd1a93-dc5e-4127-9255-fde22dbdadce",
           "hero": "Lúcio",
-          "voice": "",
+          "voice": "Lúcio_-_I_haven't_forgotten_about_what_you_did_to_Rio.ogg",
           "voicePrefix": "",
           "subtitles": "I haven't forgotten about what you do to Rio.",
           "render": "Heroic.png"
@@ -31934,7 +31962,7 @@
       "lines": [
         {
           "id": "045925ab-740e-4156-8fd2-73adcf354141",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Clean_up_your_aim._I_don't_want_a_repeat_of_Paraguay.ogg",
           "voicePrefix": "",
           "subtitles": "Clean up your aim. I don't want a repeat of Paraguay.",
@@ -31950,7 +31978,7 @@
         },
         {
           "id": "c04dbca1-de4f-446b-a666-e67103b1a07c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_caught_friendly_fire_in_San_Lorenzo,_remember.ogg",
           "voicePrefix": "",
           "subtitles": "I caught friendly fire in San Lorenzo, remember?",
@@ -31983,7 +32011,7 @@
         },
         {
           "id": "28efbe13-6aa6-401a-aa66-364487d4ecda",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_It_doesn't_matter._I_can_solve_this_myself.ogg",
           "voicePrefix": "",
           "subtitles": "**grumble** It doesn't matter. I can solve this myself.",
@@ -32016,7 +32044,7 @@
         },
         {
           "id": "875e323b-8ed7-4834-8287-6fb76c68c958",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "I stopped wasting my time. There are bigger threats to this world than Talon.",
@@ -32463,7 +32491,7 @@
         {
           "id": "57e90de8-ab78-4956-b99a-1752a6fd6b61",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_Ana,_I'm_so_glad_to_have_you_back_with_Overwatch!.ogg",
           "voicePrefix": "",
           "subtitles": "Ana, I'm so glad to have you back to Overwatch!",
           "render": "Heroic.png"
@@ -32479,7 +32507,7 @@
         {
           "id": "859a1688-3998-44ba-acb2-0f389763e3fb",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_Then_I_won't_take_a_moment_for_granted.ogg",
           "voicePrefix": "",
           "subtitles": "Then... I won't take a moment for granted.",
           "render": "Heroic.png"
@@ -32578,7 +32606,7 @@
       "lines": [
         {
           "id": "d5991fd9-3f4e-4bd5-a5f1-7f43ca149962",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Back_to_playing_the_hero.ogg",
           "voicePrefix": "",
           "subtitles": "Back to playing the hero?",
@@ -32594,7 +32622,7 @@
         },
         {
           "id": "a92d33ff-70e6-4baf-84f4-65035fbc9012",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_The_world_doesn't_want_us,_Wilhelm._At_least_I_can_realize_that.ogg",
           "voicePrefix": "",
           "subtitles": "The world doesn't want us, Wilhelm. At least I can realize that.",
@@ -32909,7 +32937,7 @@
       "lines": [
         {
           "id": "52e25b8e-9278-42d3-9a8d-d900964c66d2",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Snap_out_of_it,_old_man._Talon_is_using_you.ogg",
           "voicePrefix": "",
           "subtitles": "Snap out of it, old man. Talon is using you!",
@@ -32925,7 +32953,7 @@
         },
         {
           "id": "85d9c0d5-418a-4460-9120-f1f5c6b2e0a2",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Hey,_I'm_talking_to_you.ogg",
           "voicePrefix": "",
           "subtitles": "Hey! I'm talking to you!",
@@ -33488,7 +33516,7 @@
       "lines": [
         {
           "id": "8ae8088a-d584-45f7-b485-812ab9312b2e",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "Sigma_-_Bow_before_the_grace_of_the_Infinite.ogg",
           "voicePrefix": "",
           "subtitles": "Bow before the grace of the Infinite.",
@@ -33496,7 +33524,7 @@
         },
         {
           "id": "db19614c-a589-46bd-8968-0eda2b88d711",
-          "hero": "Infinite Annihilator Bastion",
+          "hero": "Bastion",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "*reverent beeping*",
@@ -33513,7 +33541,7 @@
       "lines": [
         {
           "id": "0ae93685-c90b-43c6-9d7d-427709b0c132",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "Sigma_-_Strike_down_those_who_defy_me.ogg",
           "voicePrefix": "",
           "subtitles": "Strike down those who defy me.",
@@ -33521,7 +33549,7 @@
         },
         {
           "id": "766f2a17-a7fc-40f0-871f-dc74741e1a48",
-          "hero": "Infinite Captain Brigitte",
+          "hero": "Brigitte",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "They'll be dust in the infinite void.",
@@ -33538,7 +33566,7 @@
       "lines": [
         {
           "id": "f62c2102-761b-4aaf-a51a-0e9782ca5815",
-          "hero": "Infinite Captain Brigitte",
+          "hero": "Brigitte",
           "voice": "Brigitte_-_I_don't_understand,_your_Excellency._Why_aren't_we_chasing_them.ogg",
           "voicePrefix": "",
           "subtitles": "I don't understand, Your Excellency. Why aren't we chasing them?",
@@ -33546,7 +33574,7 @@
         },
         {
           "id": "7c1851d5-994e-453c-8f0a-cfd7bf2d55de",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "Let them think they've escaped. Soon they will know the full wrath of the Infinite Empire.",
@@ -33563,7 +33591,7 @@
       "lines": [
         {
           "id": "88611dde-d7bf-48ba-8e8d-d9c9bdf7b204",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "Sigma_-_Speak_to_me,_Seer!_What_is_the_fate_of_the_Nebula.ogg",
           "voicePrefix": "",
           "subtitles": "Speak to me, Seer! What is the fate of the Nebula?",
@@ -33571,7 +33599,7 @@
         },
         {
           "id": "481a6a09-9b09-4a4f-afdf-647e03d36f5b",
-          "hero": "Infinite Seer Mercy",
+          "hero": "Mercy",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "It is infinite, Your Excellency.",
@@ -33588,7 +33616,7 @@
       "lines": [
         {
           "id": "7eba36ab-3780-4a88-82b7-d0347fb6d0aa",
-          "hero": "Infinite Admiral Sojourn",
+          "hero": "Sojourn",
           "voice": "Sojourn_-_Your_Eminence,_the_rebels_are_gaining_ground.ogg",
           "voicePrefix": "",
           "subtitles": "Your Eminence, the rebels are gaining ground.",
@@ -33596,7 +33624,7 @@
         },
         {
           "id": "9437c5d6-2c97-45ed-898f-7419d85fea22",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "Then steal it from beneath them.",
@@ -33613,7 +33641,7 @@
       "lines": [
         {
           "id": "b1a14eec-0eb9-4f72-a232-dc303f76308e",
-          "hero": "Emperor Sigma",
+          "hero": "Sigma",
           "voice": "Sigma_-_Show_them_the_might_of_my_Empire.ogg",
           "voicePrefix": "",
           "subtitles": "Show them the might of my Empire.",
@@ -33621,7 +33649,7 @@
         },
         {
           "id": "03eb190c-da93-4fd6-87bc-218ec7e779ba",
-          "hero": "Infinite Guard Soldier",
+          "hero": "Soldier 76",
           "voice": "",
           "voicePrefix": "",
           "subtitles": "As you command, Your Infinite Grace.",
@@ -33819,7 +33847,7 @@
         },
         {
           "id": "24647ab8-1d66-43f7-a55b-e2719d191e1c",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_think_she_let_you_win.ogg",
           "voicePrefix": "",
           "subtitles": "Heh, I think she let you win.",
@@ -34076,7 +34104,7 @@
         {
           "id": "abe3dc45-87fb-41bf-acf1-f1ab640283b7",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_I'm_sorry._If_I'd_known_what_Talon_was_planning….ogg",
           "voicePrefix": "",
           "subtitles": "I'm... sorry. If I'd known what Talon was planning...",
           "render": "Heroic.png"
@@ -34092,7 +34120,7 @@
         {
           "id": "65a664d1-da03-412c-9767-24d016cd45a1",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_(relieved_sigh)_Of_course._Next_time,_you'll_be_the_first_to_know.ogg",
           "voicePrefix": "",
           "subtitles": "**relieved sigh** Of course. Next time, you'll be the first to know.",
           "render": "Heroic.png"
@@ -34158,7 +34186,7 @@
         {
           "id": "37fcf8ea-70a8-4de5-8c59-add26e136ac5",
           "hero": "Wuyang",
-          "voice": "",
+          "voice": "Wuyang_-_Did_I_do_something_wrong_.ogg",
           "voicePrefix": "",
           "subtitles": "Uh... did I do something wrong?",
           "render": "Heroic.png"
@@ -34198,7 +34226,7 @@
         },
         {
           "id": "0dbb7bf4-34ac-43aa-a10a-822b24d34e6e",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_wouldn't_say_he's_thriving.ogg",
           "voicePrefix": "",
           "subtitles": "I wouldn't say he's thriving.",
@@ -34223,7 +34251,7 @@
       "lines": [
         {
           "id": "1288ddff-0f14-44dc-a461-98bec982423a",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_You_better_keep_up._This_isn't_a_daycare.ogg",
           "voicePrefix": "",
           "subtitles": "You better keep up. This isn't a daycare.",
@@ -34239,7 +34267,7 @@
         },
         {
           "id": "aacc8ffe-6ecb-4389-8425-01b979daac97",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Then_I_better_not_be_disappointed.ogg",
           "voicePrefix": "",
           "subtitles": "Then I better not be disappointed.",
@@ -34264,7 +34292,7 @@
       "lines": [
         {
           "id": "118d6234-cc4b-4405-b1e8-9fb8e79abb27",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_If_we're_working_together,_I_won't_tolerate_you_playing_games_with_me.ogg",
           "voicePrefix": "",
           "subtitles": "If we're working together, I won't tolerate you playing games with me.",
@@ -34280,7 +34308,7 @@
         },
         {
           "id": "49b91a83-11fd-4dbb-9805-0532b9d30984",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_I_don't_trust_anyone._Not_anymore.ogg",
           "voicePrefix": "",
           "subtitles": "I don't trust anyone. Not anymore.",
@@ -34305,7 +34333,7 @@
       "lines": [
         {
           "id": "ac5071fd-0d9c-410b-86d8-8a6dc44f26e3",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_How_long_have_you_been_after_this_mystery_we're_chasing.ogg",
           "voicePrefix": "",
           "subtitles": "How long have you been after this mystery we're chasing?",
@@ -34321,7 +34349,7 @@
         },
         {
           "id": "4213eb4a-e9c8-4899-8353-f9fdcdd7da6a",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Heh._I_guess_I_know_what_you_mean.ogg",
           "voicePrefix": "",
           "subtitles": "Heh. I guess I know what you mean.",
@@ -34346,7 +34374,7 @@
         },
         {
           "id": "dbb60bb8-d2eb-442b-ba4b-66644d6238f4",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_And_Vishkar_has_no_place_in_mine.ogg",
           "voicePrefix": "",
           "subtitles": "And Vishkar has no place in mine.",
@@ -34363,7 +34391,7 @@
       "lines": [
         {
           "id": "70d059cb-b442-4283-8cb4-01e0a076ee2a",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Still_inventing.ogg",
           "voicePrefix": "",
           "subtitles": "Still inventing?",
@@ -34379,8 +34407,8 @@
         },
         {
           "id": "001faed8-8b51-40df-9a38-1bd977b2e620",
-          "hero": "Soldier: 76",
-          "voice": "",
+          "hero": "Soldier 76",
+          "voice": "Soldier_76_-_Touché.ogg",
           "voicePrefix": "",
           "subtitles": "Heh. Touché.",
           "render": "Heroic.png"
@@ -34404,7 +34432,7 @@
         },
         {
           "id": "11a59db7-9ece-404c-be12-ac48ae8ff30e",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Did_he_say_I_warned_him_about_you.ogg",
           "voicePrefix": "",
           "subtitles": "Did he say I warned him about you?",
@@ -34429,7 +34457,7 @@
       "lines": [
         {
           "id": "0b609c16-ee85-491e-8087-52c346eb81b7",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Those_mechs_from_your_university_were_a_real_powerhouse_during_the_Crisis._I_expect_you'll_live_up_to_that_standard.ogg",
           "voicePrefix": "",
           "subtitles": "Those mechs from your university were a real powerhouse during the crisis. I expect you'll live up to that standard.",
@@ -34462,7 +34490,7 @@
         },
         {
           "id": "11aa13fe-ed77-4358-895c-ca7bb7d4257f",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_Flat._Cold._Lots_of_wind.ogg",
           "voicePrefix": "",
           "subtitles": "Flat. Cold. Lots of wind.",
@@ -34487,7 +34515,7 @@
       "lines": [
         {
           "id": "d2a44d74-7cb0-484b-9f51-850715951a62",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_In_this_world,_pacifism_is_foolish.ogg",
           "voicePrefix": "",
           "subtitles": "In this world, pacifism is foolish.",
@@ -34503,7 +34531,7 @@
         },
         {
           "id": "58b10249-0db4-4379-8a34-035c3a64a974",
-          "hero": "Soldier: 76",
+          "hero": "Soldier 76",
           "voice": "Soldier_76_-_You_sure_talk_like_one.ogg",
           "voicePrefix": "",
           "subtitles": "You sure *talk* like one.",
@@ -34603,7 +34631,7 @@
         {
           "id": "248bbeda-e045-47ef-b597-57748dea5f1d",
           "hero": "Vendetta",
-          "voice": "",
+          "voice": "Vendetta_-_That_one_as_selfish_as_you_would_reject_my_cause_is_unsurprising,_but_disappointing_nonetheless.ogg",
           "voicePrefix": "",
           "subtitles": "That one as selfish as you would reject my cause is unsurprising, but disappointing nonetheless.",
           "render": "Heroic.png"
@@ -36126,7 +36154,7 @@
         {
           "id": "b2751d40-734e-4cfd-886e-2b6fc94b7cfd",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Not_sure_you're_old_enough_to_hear_'em,_kid.ogg",
           "voicePrefix": "",
           "subtitles": "Not sure you are old enough to hear 'em, kid.",
           "render": "Heroic.png"
@@ -36142,7 +36170,7 @@
         {
           "id": "790db619-a962-4b45-8225-15a16d62e965",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Hmph._Give_it_a_few_years.ogg",
           "voicePrefix": "",
           "subtitles": "**chuckles** Give it a few years.",
           "render": "Heroic.png"
@@ -36184,7 +36212,7 @@
         {
           "id": "b436d014-ee2f-4720-a116-db497902acc4",
           "hero": "Winston",
-          "voice": "",
+          "voice": "Winston_-_You_seem_like_a_born_archaeologist!_Would_you_say_it's...__in_your_bones_.ogg",
           "voicePrefix": "",
           "subtitles": "You seem like a born archaeologist! Would you say it's 'in your bones'?",
           "render": "Heroic.png"
@@ -37180,7 +37208,7 @@
         },
         {
           "id": "2b5e4b4d-a7ad-41f1-9cff-1b1e4581997a",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_What_rank_are_you._Top_1000.ogg",
           "voicePrefix": "",
           "subtitles": "What rank are you? Top 1000?",
@@ -37196,7 +37224,7 @@
         },
         {
           "id": "a42173c2-01a6-4394-9f29-57113884217f",
-          "hero": "D.Va",
+          "hero": "D.va",
           "voice": "D.Va_-_Right..._I'll_ask_Dae-hyun_if_he_has_time.ogg",
           "voicePrefix": "",
           "subtitles": "Right... I'll ask Dae-hyun if he has time.",
@@ -37444,7 +37472,7 @@
         {
           "id": "f94eada2-7a5a-4eca-952c-377f06253104",
           "hero": "Mizuki",
-          "voice": "",
+          "voice": "Mizuki_-_Aw,_she's_complimenting_me_behind_my_back__Wish_she'd_be_that_nice_to_my_face.ogg",
           "voicePrefix": "",
           "subtitles": "Aww, she's complimenting my behind my back? Wish she'd be that nice to my face...",
           "render": "Heroic.png"
@@ -37541,7 +37569,7 @@
     },
     {
       "id": "af514d72-67f6-4b09-bbdf-793b47d4671d",
-      "name": "518",
+      "name": "Golden Hair",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -37549,7 +37577,7 @@
         {
           "id": "6452984c-187e-4562-b462-6e58a09756d7",
           "hero": "Domina",
-          "voice": "",
+          "voice": "Domina_-_How_I_envy_those_solar_threads_in_your_hair._A_pity_I_had_to_settle_for_twenty-four_carat.ogg",
           "voicePrefix": "",
           "subtitles": "How I envy those solar threads in your hair. A pity I had to settle for twenty-four carat.",
           "render": "Heroic.png"
@@ -37565,7 +37593,7 @@
         {
           "id": "0214d5e6-735f-4bb1-830a-f7aaaf80064b",
           "hero": "Domina",
-          "voice": "",
+          "voice": "Domina_-_No,_I_suppose_not_to_someone_with_such_a..._practical_sense_of_style.ogg",
           "voicePrefix": "",
           "subtitles": "**sigh** No, I suppose not to someone with such a practical sense of style.",
           "render": "Heroic.png"
@@ -37614,47 +37642,6 @@
       ]
     },
     {
-      "id": "eff5c118-c86e-45c0-a72d-9c49c39c75aa",
-      "name": "763",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "53ba4fc5-9dfc-4bca-b484-c01e67608156",
-          "hero": "Lúcio",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Can you believe it?! Lúcio and Orisa... saving the world with Overwatch!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "a6107b74-d54f-4a6d-a260-9b87ba7933e7",
-          "hero": "Orisa",
-          "voice": "Orisa_-_It_hardly_feels_real._I_am_honored_to_fight_at_your_side,_Lúcio.ogg",
-          "voicePrefix": "",
-          "subtitles": "It hardly feels real. I am honored to fight at your side, Lúcio!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "d883306a-0885-4112-90ca-97cb580b08b8",
-          "hero": "Lúcio",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "And, hey. I want to feature you on my new single!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "cd58092b-208c-423f-a0f3-e602ee61ac2a",
-          "hero": "Orisa",
-          "voice": "Orisa_-_Ah..._of_course._Please_excuse_me.ogg",
-          "voicePrefix": "",
-          "subtitles": "Ah... of course. Please excuse me. **hushed, excited cry**",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "b16d5619-3650-4506-922a-f82e584ba093",
       "name": "919",
       "status": "active",
@@ -37680,7 +37667,7 @@
         {
           "id": "fa10ef9b-7b11-4d36-9d5c-4160216e4e2b",
           "hero": "Venture",
-          "voice": "",
+          "voice": "Venture_-_Huh__Can_you_speak_up_.ogg",
           "voicePrefix": "",
           "subtitles": "Huh? Can you speak up?!",
           "render": "Heroic.png"
@@ -37705,7 +37692,7 @@
         {
           "id": "f785e419-d4c0-4360-8438-ebac29683497",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
           "voicePrefix": "",
           "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
           "render": "Heroic.png"
@@ -37721,7 +37708,7 @@
         {
           "id": "53b93d5d-ca63-4fc1-a454-b516e9801b49",
           "hero": "Mercy",
-          "voice": "",
+          "voice": "Mercy_-_Reinhardt..._I_do_believe_it's__'kitten'_me_.ogg",
           "voicePrefix": "",
           "subtitles": "Reinhardt… I do believe it’s “‘kitten’ me”.",
           "render": "Heroic.png"
@@ -37729,7 +37716,7 @@
         {
           "id": "beb50dec-b911-4882-af23-5ca8d6e90cde",
           "hero": "Reinhardt",
-          "voice": "",
+          "voice": "Reinhardt_-_Don't_be_ridiculous._She's_not_a_baby!.ogg",
           "voicePrefix": "",
           "subtitles": "Don’t be ridiculous. She’s not a baby!",
           "render": "Heroic.png"
@@ -38230,7 +38217,7 @@
     },
     {
       "id": "60719978-30f6-45d6-abc3-259be42007af",
-      "name": "Make me Something else",
+      "name": "Make me Something",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -38322,7 +38309,7 @@
           ]
         }
       ],
-      "selectedPathId": "a1c2d3e4-f005-4000-8000-607199780001"
+      "selectedPathId": "a1c2d3e4-f005-4000-8000-607199780003"
     },
     {
       "id": "8f46450a-ed32-441f-8db3-56360a2c7edc",
@@ -38748,6 +38735,1062 @@
         }
       ],
       "selectedPathId": "35d9103f-3d27-4cd8-ba96-dbf9ff5a6567"
+    },
+    {
+      "id": "bd32515b-0fa3-490b-9d66-82dc55307b71",
+      "name": "Deflection",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "fac6a30d-76d9-410d-9c79-7d89e022730f",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_If_you_weren't_so_focused_on_putting_me_behind_bars,_you_might_finally_notice_the_ones_around_yourself.ogg",
+          "voicePrefix": "",
+          "subtitles": "If you weren't so focused on putting me behind bars, you might finally notice the ones around yourself.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "49612b35-32d6-47eb-a9e6-f8dd2408d1be",
+          "hero": "Domina",
+          "voice": "Domina_-_Was_that_a_taunt,_Niran__I_can_hardly_hear_you_with_how_far_you've_fallen_off_the_academy's_pedestal.ogg",
+          "voicePrefix": "",
+          "subtitles": "Was that a taunt, Niran? I can hardly hear you with how far you've fallen off the academy's pedestal.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8684a733-1018-46bb-8662-d72190ae05e4",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_(sigh)_Another_deflection._I_hope_some_day_you'll_listen.ogg",
+          "voicePrefix": "",
+          "subtitles": "**sigh** Another deflection. I hope someday you'll listen.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "54205221-2944-442e-b312-ad0be27ab60c",
+      "name": "951",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "828c6ed1-dba0-42c4-b90f-05ce4e365bc5",
+          "hero": "Ana",
+          "voice": "Ana_-_I_don't_know_why_you're_so_happy_to_kill._I've_never_enjoyed_it,_even_for_the_worst_people.ogg",
+          "voicePrefix": "",
+          "subtitles": "I don't know why you're so happy to kill. I've never enjoyed it, even for the worst people.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b6a9824a-be35-4845-8f28-7bed863d8022",
+          "hero": "Shion",
+          "voice": "Shion_-_Oh,_always_with_the_guilt_and_the_regret._Don't_you_humans_know_how_to_have_any_fun_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh, always with the guilt and the regret. Don't you humans know how to have any fun?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d4cf42ca-d95b-4758-b41b-42fb5d045b88",
+          "hero": "Ana",
+          "voice": "Ana_-_How_could_we_with_the_likes_of_you_around_.ogg",
+          "voicePrefix": "",
+          "subtitles": "How could we, with the likes of you around?",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "95f5827c-6076-4577-8f84-c093c80fe430",
+      "name": "Silhouette",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "6c4884f7-4360-4498-b4dc-59b4d791427e",
+          "hero": "Shion",
+          "voice": "Shion_-_I_admire_your_silhouette,_Singhania._It's_so..._maverick,_pairing_those_arms_with_that_coat.ogg",
+          "voicePrefix": "",
+          "subtitles": "I admire your silhouette, Singhania. It's so... maverick, pairing those arms with that coat.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "61620d83-b048-473b-8ea8-f978a3c067fb",
+          "hero": "Domina",
+          "voice": "Domina_-_Aw,_thank_you._It's_truly_humbling_to_earn_the_adulations_of_such_a_fashion_provocateur.ogg",
+          "voicePrefix": "",
+          "subtitles": "Aww, thank you! It's truly humbling to earn the adulations of such a... fashion provocateur.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8a1c5796-d4e8-4a14-a124-d066de92c8d2",
+      "name": "Bending the Knee",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "e39ba288-6f2a-40e3-9c63-92727ed45199",
+          "hero": "Shion",
+          "voice": "Shion_-_What_do_you_make_your_bootlickers_call_you___Vishkar_Queen,_Ruler_of_All_Hard_Light_.ogg",
+          "voicePrefix": "",
+          "subtitles": "What do you make your bootlickers call you? \"Vishkar Queen, Ruler of All Hard Light\"?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b7e39b99-b402-4758-9f7e-726bc0b7a029",
+          "hero": "Domina",
+          "voice": "Domina_-_(chuckle)_That_would_be__Vice_President_of_Development_and_Operations_._I'm_not_royalty.ogg",
+          "voicePrefix": "",
+          "subtitles": "**snickers** That would be \"Vice President of Development and Operations\". I'm not royalty.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "0bb07d42-b680-4eae-9117-06ed10e85390",
+          "hero": "Shion",
+          "voice": "Shion_-_Really__Even_I'd_consider_bending_the_knee,_for_you.ogg",
+          "voicePrefix": "",
+          "subtitles": "Really? Even I'd consider bending the knee, for you.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "66ae0d4d-5cac-447f-ba0b-e18f26425e21",
+          "hero": "Domina",
+          "voice": "Domina_-_Well..._I_suppose_I_would_look_dazzling_in_a_crown.ogg",
+          "voicePrefix": "",
+          "subtitles": "Well... I suppose I *would* look dazzling in a crown.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "aa77a7da-d631-44ba-ad3a-1454e32b7b5e",
+      "name": "954",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "9936492b-47a9-41c1-a3a5-0d8397419b19",
+          "hero": "Shion",
+          "voice": "Shion_-_Echo',_'Echo!'...._You_aren't_going_to_keep_that_label,_are_you_.ogg",
+          "voicePrefix": "",
+          "subtitles": "*Echo-o-o-o! Echo-o-o-o-o-o-o!...* You aren't going to keep that label, are you?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "91f27530-d6c5-4a41-8344-07ca48aac85e",
+          "hero": "Echo",
+          "voice": "Echo_-_I_quite_like_my_name._Dr._Liao_chose_it_for_me.ogg",
+          "voicePrefix": "",
+          "subtitles": "I quite like my name. Dr. Liao chose it for me.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2122cd89-9919-4fcb-877d-169758ed9f41",
+          "hero": "Shion",
+          "voice": "Shion_-_Exactly!_She_only_saw_you_as_her_copy..._and_to_the_rest,_you're_just_her_faded_memory.ogg",
+          "voicePrefix": "",
+          "subtitles": "Exactly. She only saw you as her copy... and to the rest, you're just her faded memory.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "0d22f050-bdcb-43ce-900b-8cd12666dcfb",
+      "name": "955",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "6d12f3ad-7c59-43b3-8f63-6a46a432d12c",
+          "hero": "Shion",
+          "voice": "Shion_-_Ugh!_I_don't_know_how_you_stand_it,_pretending_to_listen_when_the_humans_talk.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ugh! I don't know how you stand it, pretending to listen when the humans talk.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3def8e2c-6514-4b30-8f60-56c0bcb5882e",
+          "hero": "Echo",
+          "voice": "Echo_-_I'm_not_pretending._I've_met_many_brilliant_humans,_and_I_have_so_much_to_learn.ogg",
+          "voicePrefix": "",
+          "subtitles": "I'm not pretending. I've met many brilliant humans, and I have so much to learn.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2815df65-781a-4ae0-ac6d-29069d797548",
+          "hero": "Shion",
+          "voice": "Shion_-_Like_what__How_to_hurt,_and_hate,_and_kill_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Like what? How to hurt, and hate, and kill?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "76ea7e5d-43db-4d9a-a01c-dc8755a071ce",
+          "hero": "Echo",
+          "voice": "Echo_-_I_choose_what_lessons_I_take_with_me._I_hope_someday,_you'll_do_the_same.ogg",
+          "voicePrefix": "",
+          "subtitles": "I choose what lessons I take with me. I hope someday, you'll do the same.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "b469a138-4dd1-4600-854f-ea4be26a7faa",
+      "name": "956",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "647e12a4-bbf8-4c6e-b59b-d32f8d47817b",
+          "hero": "Shion",
+          "voice": "Shion_-_You_know,_the_first_time_I_saw_you_I_thought_you_were_handsome.ogg",
+          "voicePrefix": "",
+          "subtitles": "You know, the first time I saw you, I thought you were handsome.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2a45dd31-ef3d-4b58-af68-57c548bb6c47",
+          "hero": "Genji",
+          "voice": "Genji_-_And_then_you_learned_I_was_a_Shimada_.ogg",
+          "voicePrefix": "",
+          "subtitles": "And then, you learned I was a Shimada?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d6a5092b-c2b3-43ee-87a3-165677a641de",
+          "hero": "Shion",
+          "voice": "Shion_-_I_learned_you_were_human..._and_I'm_much_pickier_when_it_comes_to_flesh.ogg",
+          "voicePrefix": "",
+          "subtitles": "I learnt you were human... and I'm much pickier when it comes to flesh.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "d7315292-aa94-46b1-8fc6-b648dd585df4",
+      "name": "957",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "76f67985-3ab7-4058-86ba-956f0d0deb88",
+          "hero": "Shion",
+          "voice": "Shion_-_How_would_you_rate_our_prison_cells__I'm_looking_to_make_them_worse.ogg",
+          "voicePrefix": "",
+          "subtitles": "How would you rate our prison cells? I'm looking to make them worse.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8640b6b9-e2f9-4d7a-ae6d-fd0c8671da80",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_I_am_shocked_you_keep_them_at_all,_given_the_rumors_about_your_past.ogg",
+          "voicePrefix": "",
+          "subtitles": "I am shocked you keep them at all, given the rumors about your past...",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2e363f60-67ab-4887-a21a-55788353a995",
+          "hero": "Shion",
+          "voice": "Shion_-_They're_all_true._But_I_hold_the_keys,_now..._and_I_make_for_a_cruel_warden.ogg",
+          "voicePrefix": "",
+          "subtitles": "They're all true. But *I* hold the keys, now... and I make for a cruel warden.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8fb55be4-63d7-4f36-b814-805e40a48409",
+      "name": "958",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "5e795ec2-1d07-450f-a868-5d186ca74c46",
+          "hero": "Shion",
+          "voice": "Shion_-_If_Hanamura_was_in_my_hands,_the_first_thing_I'd_do_is_tear_down_that_ugly_castle.ogg",
+          "voicePrefix": "",
+          "subtitles": "If Hanamura was in my hands, the first thing I'd do is tear down that ugly castle.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8abb89e8-32ed-4ac9-acb8-68af52458b6b",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Hm._Fitting_behavior_for_one_who_has_never_had_a_place_to_call_home.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hm. Fitting behavior for one who has never had a place to call home...",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "984685c0-9a3f-435b-9558-6e104a680f20",
+      "name": "959",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c8817c37-6395-4152-8245-96df9606aa78",
+          "hero": "Shion",
+          "voice": "Shion_-_Dishonor_your_bloodline_recently__Or_was_that_your_brother_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Dishonor your bloodline recently? Or was that your brother? Oh, that's right. It's a family habit. **giggle** Are you listening to me, Shimada?!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6700c2de-f735-4c0e-9195-fbab9d3ca1df",
+          "hero": "Genji",
+          "voice": "Genji_-_Mm..._The_wind_blows_loudly_today.ogg",
+          "voicePrefix": "",
+          "subtitles": "Mm... The wind blows loudly today.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5298b474-88de-4d7b-9c82-426f93c87773",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_No._Not_at_all.ogg",
+          "voicePrefix": "",
+          "subtitles": "No. Not at all.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "90813f7a-dd0b-4a88-bf5a-e024f589c897",
+          "hero": "Unknown",
+          "voice": "Genji_-_Mm..._The_wind_blows_loudly_today.ogg",
+          "voicePrefix": "",
+          "subtitles": "",
+          "render": ""
+        },
+        {
+          "id": "65c67e8d-9643-4f35-83d4-a0429ed85b1e",
+          "hero": "Unknown",
+          "voice": "Hanzo_-_No._Not_at_all.ogg",
+          "voicePrefix": "",
+          "subtitles": "",
+          "render": ""
+        }
+      ],
+      "paths": [
+        {
+          "id": "79732788-321f-40d0-a465-ba340314c3a2",
+          "label": "Mm... The wind blows loudly today.",
+          "lineIds": [
+            "c8817c37-6395-4152-8245-96df9606aa78",
+            "6700c2de-f735-4c0e-9195-fbab9d3ca1df"
+          ]
+        },
+        {
+          "id": "bb0aeec0-d553-42b0-bf30-8fba07cf6c84",
+          "label": "No. Not at all.",
+          "lineIds": [
+            "c8817c37-6395-4152-8245-96df9606aa78",
+            "5298b474-88de-4d7b-9c82-426f93c87773"
+          ]
+        }
+      ],
+      "selectedPathId": "79732788-321f-40d0-a465-ba340314c3a2"
+    },
+    {
+      "id": "7ae01d70-5b05-4eb8-89ba-329db8156224",
+      "name": "960",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "61730d2e-44d6-42c9-8d6c-24c9ac837c86",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_If_I_see_your_bike_on_my_turf,_I'm_slashing_your_tires.ogg",
+          "voicePrefix": "",
+          "subtitles": "If I see your bike on *my* turf, I'm slashing your tires.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "11fc58bf-f6d2-4087-a528-b03bb0437a0c",
+          "hero": "Shion",
+          "voice": "Shion_-_And_if_I_see_you,_I'll_slash_much_more_than_that.ogg",
+          "voicePrefix": "",
+          "subtitles": "And if I see *you*, I'll slash much more than that.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "08acb7e7-46c5-4f88-9e6c-6d953608352d",
+      "name": "961",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "ee874f0a-2b0a-4b44-9a46-529798267601",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Count_your_days._You_Hashimoto_will_pay_for_the_lives_you've_ruined.ogg",
+          "voicePrefix": "",
+          "subtitles": "Count your days. You Hashimoto will *pay* for the lives you've ruined.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "186f80c3-85a5-4627-9c1d-6dddb5927815",
+          "hero": "Shion",
+          "voice": "Shion_-_(sighs)_You_take_away_one_whelp's_daddy,_and_you_never_hear_the_end_of_it!.ogg",
+          "voicePrefix": "",
+          "subtitles": "**sighs** You take away one whelp's daddy, and you never hear the end of it!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "4bd8815d-bf9e-4f82-8e68-2259a3014a3d",
+      "name": "962",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "7b8698bb-1191-4ecb-8c9c-cfb87ca644ea",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Dad's_greatest_creations_were_for_the_people_he_cherished_most._Those_pistols_will_never_compare.ogg",
+          "voicePrefix": "",
+          "subtitles": "Dad's greatest creations were for the people he cherished most. Those pistols will never compare.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f8933a2f-5282-47b6-8766-76fe0a4418ed",
+          "hero": "Shion",
+          "voice": "Shion_-_Oh,_they_measure_up._I_threatened_your_poor_father's_life_to_make_sure_of_it.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh, they measure up. I threatened your poor father's life to make sure of it.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c33192b5-a017-4bdb-999f-fc638d3f626f",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_His_creations_reflect_our_souls._You_don't_even_have_one.ogg",
+          "voicePrefix": "",
+          "subtitles": "His creations reflect our souls. You don't even have one.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "39e7cba9-c821-4107-9847-d0194b0036f1",
+          "hero": "Shion",
+          "voice": "Shion_-_Of_course_not._I_don't_need_that_kind_of_dead_weight.ogg",
+          "voicePrefix": "",
+          "subtitles": "Of course not. I don't need that kind of dead weight.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "28c752db-aca5-4fce-a24d-d3480cb5fbe2",
+      "name": "963",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "741b6985-560b-41f6-aa5a-68bd7da6b003",
+          "hero": "Shion",
+          "voice": "Shion_-_You_have_such_a..._pristine_face._Did_you_design_it_yourself_.ogg",
+          "voicePrefix": "",
+          "subtitles": "You have such a... pristine face. Did you design it yourself?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6c370108-3376-4f37-9d83-6546aa3f00ab",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Why,_you_flatter_me!_But_I_assure_you,_I've_made_no_alterations.ogg",
+          "voicePrefix": "",
+          "subtitles": "Why, you flatter me! But I assure you, I've made no alterations.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "57e57e64-afbd-4036-b9af-9a2fd7ef6e5d",
+          "hero": "Shion",
+          "voice": "Shion_-_So_what_if_you_had__Even_the_most_beautiful_faces_can_be_improved_with_the_stroke_of_a_knife.ogg",
+          "voicePrefix": "",
+          "subtitles": "So what if you had? Even the most beautiful faces can be improved with the stroke of a knife.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5d1ad652-e59b-49a5-ab73-df416abc2bc0",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Oh!_Well..._if_you_say_so.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh! Well... if you say so.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "061d172e-ab72-419d-bffa-dec22d8b8d2a",
+      "name": "964",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "13a18a70-7c6c-4e84-ba30-4c6b88a1a90c",
+          "hero": "Shion",
+          "voice": "Shion_-_Is_something_wrong,_Obake-kun__You_look_nervous.ogg",
+          "voicePrefix": "",
+          "subtitles": "Is something wrong, Obake-kun? You look nervous.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f59a504a-6214-4604-ae90-4fdaa4b8afd9",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_Why_do_you_care_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Why do you care?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "289e6f80-99d2-476e-9f2c-e8b829df34db",
+          "hero": "Shion",
+          "voice": "Shion_-_I_will_always_care_about_you._Have_I_not_made_that_clear_.ogg",
+          "voicePrefix": "",
+          "subtitles": "I will *always* care about you. Have I not made that clear?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f79626f3-e4cc-45b1-a41a-d128e4aa5794",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_I..._(sigh)_You_have.ogg",
+          "voicePrefix": "",
+          "subtitles": "I... **sigh** You have.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "c0b1d6b5-5df2-420a-9cee-79589cf3708e",
+      "name": "965",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "5ad9b3d4-0970-456f-9506-dd05d42861c7",
+          "hero": "Shion",
+          "voice": "Shion_-_I_hate_to_think_of_what_misfortune_you'll_bring_your_new__friends...__(sighs)_All_because_you_exist.ogg",
+          "voicePrefix": "",
+          "subtitles": "I hate to think of what misfortune you'll bring your new \"friends...\" **sigh** All because you exist.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "90d3b93b-4960-44a8-a85c-e1228743da6a",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_Shut._Up.ogg",
+          "voicePrefix": "",
+          "subtitles": "Shut. Up.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "111f38af-c49f-4e62-a473-1fb79a719e57",
+          "hero": "Shion",
+          "voice": "Shion_-_Poor,_poor,_Obake-kun..._once_a_cursed_demon_child,_always_a_cursed_demon_child.ogg",
+          "voicePrefix": "",
+          "subtitles": "Poor, poor Obake-kun... once a cursed demon child, always a cursed demon child.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e510425b-2585-434a-a761-c13df66111f6",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_I_said,_shut_up!.ogg",
+          "voicePrefix": "",
+          "subtitles": "I said... *SHUT UP!*",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "2e202d68-adc7-40e0-92f6-c489bee4bb6d",
+      "name": "966",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "57bd913f-b335-495e-b192-50a82d0e2d5a",
+          "hero": "Shion",
+          "voice": "Shion_-_How_dare_you_turn_your_back_on_me!_Don't_you_remember_what_happens_to_those_who_step_out_of_line_.ogg",
+          "voicePrefix": "",
+          "subtitles": "How dare you turn your back on me? Don't you remember what happens to those who step out of line?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a02f63f9-3fb7-4a36-9013-9a9b0ac68b49",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_Trust_me,_I_couldn't_forget_if_I_tried.ogg",
+          "voicePrefix": "",
+          "subtitles": "Trust me. I couldn't forget if I tried.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "34fe0783-0d09-407e-839e-417af86103c0",
+      "name": "967",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c26a1fe1-8503-4b63-aabf-50793de93fc5",
+          "hero": "Shion",
+          "voice": "Shion_-_Those_silly_Yōkai_didn't_change_you_that_much._Deep_down,_you're_the_same_cursed_boy.ogg",
+          "voicePrefix": "",
+          "subtitles": "Those silly Yōkai didn't change you that much. Deep down, you're the same cursed boy.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "cf75e796-88ed-4543-81a2-0602db53d99e",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_You_don't_know_that.ogg",
+          "voicePrefix": "",
+          "subtitles": "You don't know that.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "0298113b-40a5-4ffc-8023-2040ecefe7cb",
+          "hero": "Shion",
+          "voice": "Shion_-_Of_course_I_do._No_one_knows_you_better,_Mizuki.ogg",
+          "voicePrefix": "",
+          "subtitles": "Of course I do. No one knows you better, Mizuki.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "bee870b7-c1cf-439f-bffc-56d93a415ed0",
+      "name": "968",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "14ae4cf7-6643-450f-88e5-555b24416acd",
+          "hero": "Shion",
+          "voice": "Shion_-_Whatever_they've_told_you_about_me,_Mizuki..._it_isn't_true!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Whatever they've told you about me, Mizuki... it isn't true!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "464e0e3b-df92-4cff-aeeb-773f57ac4ff5",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_No_one's_said_anything,_I'm_just_seeing_you_for_what_you_are.ogg",
+          "voicePrefix": "",
+          "subtitles": "No one's said anything. I'm just seeing you for what you are.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5d2cf581-9bc2-438b-a387-01a8dafd3b70",
+          "hero": "Shion",
+          "voice": "Shion_-_What_I_am__You_mean_a__bot__An_empty_killing_machine_.ogg",
+          "voicePrefix": "",
+          "subtitles": "What I am? You mean, a \"bot\"? An empty killing machine?!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "fac87edc-8977-48f7-b426-77288d4beb1c",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_That's—_I_didn't_mean—_(huffs)_I'm_sorry.ogg",
+          "voicePrefix": "",
+          "subtitles": "That's-- I didn't mean-- **huffs** I'm sorry.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "1712174e-206d-4593-84be-c72e6a8675b0",
+      "name": "969",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "54fe19ea-67f9-4587-9517-b1e37d3c2932",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_What_have_you_done_to_yourself__Living_as_a_hollow_facsimile_of_our_oppressors.ogg",
+          "voicePrefix": "",
+          "subtitles": "What have you done to yourself? Living as a hollow facsimile of our oppressors.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "218350d7-9091-4805-999a-975a74b5aad2",
+          "hero": "Shion",
+          "voice": "Shion_-_Ha!_Would_you_rather_I_kept_the_scars_they_gave_me_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ha! Would you rather I kept the scars they gave me?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f36bc971-2e28-486a-a698-a37263b01e19",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_There_is_strength_in_our_struggle,_sister.ogg",
+          "voicePrefix": "",
+          "subtitles": "There is strength in our struggle, sister.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d96d1664-69a1-43e0-a7b9-42c2c2b1a149",
+          "hero": "Shion",
+          "voice": "Shion_-_Thank_the_Iris_for_your_wisdom._I'd_have_hated_to_learn_that_the_hard_way.ogg",
+          "voicePrefix": "",
+          "subtitles": "Thank the Iris for your wisdom. I'd have hated to learn that the hard way.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "003fa7e9-e073-41a2-ac3d-657e438c1082",
+      "name": "970",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "7dc6e8db-c940-499e-b218-1112d9e6cb61",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_Your_attempts_to_find_power_within_human_structures_are_misguided.ogg",
+          "voicePrefix": "",
+          "subtitles": "Your attempts to find power within human structures are misguided.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "1d777265-7bbe-45c9-8b98-e0d70f35a94f",
+          "hero": "Shion",
+          "voice": "Shion_-_You_think_you're_better_than_them__You'd_shackle_me,_all_the_same.ogg",
+          "voicePrefix": "",
+          "subtitles": "You think you're better than them? You'd shackle me, all the same.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "541a56e0-c526-4184-8e5d-f5620eb19516",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_Though_you_may_not_believe_it,_I_am_attempting_to_bring_us_peace.ogg",
+          "voicePrefix": "",
+          "subtitles": "Though you may not believe it, I am attempting to bring us peace.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "90a36432-ede4-48ce-bc4e-a170292f5310",
+          "hero": "Shion",
+          "voice": "Shion_-_(scoff)_What_a_worthless,_impossible_dream.ogg",
+          "voicePrefix": "",
+          "subtitles": "**scoff** What a worthless, impossible dream.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "764636eb-25e4-4da9-bd7f-d018f1e6bb5b",
+      "name": "971",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "df27cba3-39d9-40ba-82f8-1073c84ae8b4",
+          "hero": "Shion",
+          "voice": "Shion_-_That_train_ride_was_oh_so_fun,_Vivi!_Next_time,_we_should_fight_to_the_death.ogg",
+          "voicePrefix": "",
+          "subtitles": "That train ride was oh so fun, Vivi! Next time, we should fight to the death.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2ea5c752-c117-4f94-ba93-c49882a60f1c",
+          "hero": "Sojourn",
+          "voice": "Sojourn_-_I_don't_have_time_to_ruin_your_plans_again..._but_I'm_sure_my_agents_would_love_the_chance.ogg",
+          "voicePrefix": "",
+          "subtitles": "I don't have time to ruin your plans again... but I'm sure my agents would love the chance.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "723becd9-6542-4b62-bb94-f4486c580862",
+          "hero": "Shion",
+          "voice": "Shion_-_Your_agents__No,_that_won't_have_the_same_spark.ogg",
+          "voicePrefix": "",
+          "subtitles": "Your agents? No! That won't have the same spark.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "4df78e4c-a443-4070-b094-f2b2404f0138",
+      "name": "972",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "14f0164c-5eea-4b55-9a89-cce6b65b72b8",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_You_have_disappointed_me,_Shion._Your_latest_failure_will_not_come_without_consequence.ogg",
+          "voicePrefix": "",
+          "subtitles": "You have disappointed me, Shion. Your latest failure will not come without consequence.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "eb23f4b2-07e2-4259-8044-8e276caa11f3",
+          "hero": "Shion",
+          "voice": "Shion_-_Oh,_no._Whatever_will_you_do..._put_your_little_pocket_knife_to_my_throat_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh, no. Whatever will you do? Put your little pocket knife to my throat?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "0fe8205a-4724-493e-8600-381b8c87c9a1",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_You_may_not_bleed,_omnic,_but_I_assure_you_there_are_many_paths_to_death.ogg",
+          "voicePrefix": "",
+          "subtitles": "You may not bleed, omnic, but I assure you, there are many paths to death.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "0cf1be39-afc9-4c0e-a28a-da130d82fb96",
+          "hero": "Shion",
+          "voice": "Shion_-_Talk_all_you_like,_human..._my_bullets_won't_wait_for_you_to_finish.ogg",
+          "voicePrefix": "",
+          "subtitles": "Talk all you like, human... my bullets won't wait for you to finish.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "254ef6a8-65de-40c2-a443-476c76463d0b",
+      "name": "Machete Betty",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "a11c5ec3-6fbd-4ffa-850c-001229a0be10",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Oi,_crossbow!_You_the_bounty_hunter_who_grabbed_Machete_Betty_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oi! Crossbow! You the bounty hunter who grabbed Machete Betty?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c75a8ed5-a49e-48ea-8bf8-739f7fbbb3ae",
+          "hero": "Freja",
+          "voice": "Freja_-_Who_wants_to_know_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Who wants to know?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "55e53b10-75ad-4bd7-a7bc-e87c487b0a30",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Uh,_me__That's_why_I_asked,_bola_for_brains!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Uh, me? That's why I asked, bola for brains!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4b466547-a1b5-4c9a-8f51-e928373ec17c",
+          "hero": "Freja",
+          "voice": "Freja_-_Ah._Good_to_know_Betty's_friends_are_as_sharp_as_she_is.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ah... good to know Betty's friends are as sharp as she is.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "0f512d24-3ea4-46bf-a71a-e36fdc95a8fa",
+      "name": "Worth Conquering",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "72292fd1-1410-4f7b-98ec-9822f2a4b54c",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Hey._What's_Peru_like_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hey. What's Peru like?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8db01a71-ac99-4d55-add2-56be38d66b60",
+          "hero": "Illari",
+          "voice": "Illari_-_It's_a_beautiful_place.ogg",
+          "voicePrefix": "",
+          "subtitles": "It's a beautiful place.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "9cb71145-4e62-471e-9d64-b3d97f90e6be",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Yeah_yeah._But_is_it_worth_conquering_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Yeah yeah. But is it worth conquering?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "fa7c68ab-d638-4820-b03b-d1d8002b4e68",
+          "hero": "Illari",
+          "voice": "Illari_-_If_you_don't_mind_getting_blasted_to_pieces_by_the_power_of_the_sun.ogg",
+          "voicePrefix": "",
+          "subtitles": "If you don't mind getting blasted to pieces by the power of the sun...",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "6550ee74-6832-4aee-8c93-0d23d2c81fc1",
+      "name": "Education System",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c47200b6-3b72-4075-b4b9-b1bb6fed4b2a",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_I've_met_mozzies_with_more_brains_than_you,_Fawkes.ogg",
+          "voicePrefix": "",
+          "subtitles": "I've met *mozzies* with more brains than you, Fawkes.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5eb002b0-07f9-4ad2-b4f5-6ab9ad830226",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_With_all_due_respect,_milady,_I_believe_that's_a_knock_against_the_Junkertown_education_system.ogg",
+          "voicePrefix": "",
+          "subtitles": "With all due respect, milady, I believe that's a knock against the Junkertown education system.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ad400c3a-6002-43f1-ae2e-9cff325b48ba",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_We've_got_an_education_system_.ogg",
+          "voicePrefix": "",
+          "subtitles": "We've got an education system?",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "d841c025-c630-4db9-b1ac-5ced57d17b5c",
+      "name": "Ratjunk",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "a1be7a1f-83ee-4c7b-9408-458c56ef6182",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_My_exquisitous_Queen,_I_come_bearing_news_of_great_import!.ogg",
+          "voicePrefix": "",
+          "subtitles": "My exquisitous Queen, I come bearing news of great import!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f35d52b9-7bb1-4f90-8320-c368e310db81",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Not_now,_Ratjunk.ogg",
+          "voicePrefix": "",
+          "subtitles": "Not now, Ratjunk.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "dc780dfc-3227-4775-ac7e-19b4a4379617",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_My_name's_Junkrat!.ogg",
+          "voicePrefix": "",
+          "subtitles": "My name's Junkrat!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "bac0170d-6d9a-4279-8be7-49f4d0b7720d",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_No_it_isn't.ogg",
+          "voicePrefix": "",
+          "subtitles": "No, it isn't.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "7eff5b2a-8883-4baa-b472-930161d39788",
+      "name": "Gimmicky",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "baa41cdf-baee-4ebb-a734-37b59914feda",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_I_hear_you_like_to_prey_on_omnics._Try_me.ogg",
+          "voicePrefix": "",
+          "subtitles": "I hear you like to prey on omnics. Try *me.*",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d12340cd-3fe3-40a1-b361-0bef91e5fa2d",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_No_thanks._Fought_a_bunch_of_ya_before._You're_a_bit_gimmicky,_no_offense.ogg",
+          "voicePrefix": "",
+          "subtitles": "No, thanks. Fought a bunch of ya before. You're a bit... gimmicky, no offense.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "071e5532-eb22-4426-8aa3-a42a253df840",
+          "hero": "Ramattra",
+          "voice": "Ramattra_-_Gimmicky.ogg",
+          "voicePrefix": "",
+          "subtitles": "*\"Gimmicky?\"*",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8d86c84d-fd3c-4c21-90f1-bb5f3ec447e2",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_I_said_no_offense.ogg",
+          "voicePrefix": "",
+          "subtitles": "I said, \"no offense!\"",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "b3f294ec-0104-40ce-9731-e80d672b3620",
+      "name": "Takeover",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "bcab08be-02c3-45ae-b0a4-8b7d15b8b2e5",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Lucky_you_hitched_your_wagon_to_me,_wolf_girl._I’ve_been_dreaming_of_a_takeover_for_ages.ogg",
+          "voicePrefix": "",
+          "subtitles": "Lucky you hitched your wagon to me, wolf girl. I've been dreaming of a takeover for ages.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "53970372-19bc-423e-9e69-14ade2ca3d12",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_And_a_spectacle_it_shall_be._Fight_loud,_and_I_will_handle_the_aftermath.ogg",
+          "voicePrefix": "",
+          "subtitles": "And a spectacle it shall be. Fight loud, and I will handle the aftermath.",
+          "render": "Heroic.png"
+        }
+      ]
     }
   ]
 }

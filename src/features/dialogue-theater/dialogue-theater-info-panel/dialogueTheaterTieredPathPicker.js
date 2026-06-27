@@ -14,7 +14,6 @@ import {
     resolveSegmentsForPathId,
     shouldUseTieredPathPicker,
 } from './beforeTheCrisisPathConfig.js';
-import { pickRandomBeforeTheCrisisPathId } from './beforeTheCrisisMasterPlay.js';
 
 export { isBeforeTheCrisisConversation, shouldUseTieredPathPicker };
 
@@ -111,12 +110,6 @@ export function renderTieredPathSwitcherHtml(conversation, selectedPathId) {
                 <span class="dialogue-theater-path-switch__label">Route</span>
                 <button
                     type="button"
-                    id="dialogueTheaterRandomRouteBtn"
-                    class="dialogue-theater-path-switch__master-play dialogue-theater-path-switch__random-route"
-                    aria-label="Pick a random route"
-                >🎲 Random route</button>
-                <button
-                    type="button"
                     id="dialogueTheaterMasterPlayBtn"
                     class="dialogue-theater-path-switch__master-play"
                     aria-label="Play a random full route"
@@ -166,7 +159,7 @@ export function highlightTieredPathSelection(host, conversation, pathId) {
 /**
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {(pathId: string) => void} [onPathChange]
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
  */
 export function wireTieredPathSelector(host, conversation, onPathChange) {
     const paths = conversation.paths || [];
@@ -204,7 +197,13 @@ export function wireTieredPathSelector(host, conversation, onPathChange) {
             segments = resolveSegmentsForPathId(conversation, host.dataset.selectedPathId || selectedPathId);
         }
 
-        if (segments[tier] === segmentKey) return;
+        if (segments[tier] === segmentKey) {
+            const currentPathId = host.dataset.selectedPathId || selectedPathId;
+            if (currentPathId) {
+                onPathChange?.(currentPathId, { autoPlay: true });
+            }
+            return;
+        }
 
         segments[tier] = segmentKey;
         const pathId = findPathIdForSegments(conversation, segments);
@@ -212,29 +211,8 @@ export function wireTieredPathSelector(host, conversation, onPathChange) {
 
         host.dataset.segments = JSON.stringify(segments);
         host.dataset.selectedPathId = pathId;
-        onPathChange?.(pathId);
+        onPathChange?.(pathId, { autoPlay: true });
     };
 
     switcher.addEventListener('click', host._dialogueTheaterTierClick);
-}
-
-/**
- * @param {HTMLElement} host
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {(pathId: string) => void} onPathChange
- */
-export function wireBeforeTheCrisisRandomRoute(host, conversation, onPathChange) {
-    const btn = host.querySelector('#dialogueTheaterRandomRouteBtn');
-    if (!(btn instanceof HTMLButtonElement)) return;
-
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const pathId = pickRandomBeforeTheCrisisPathId(conversation);
-        if (!pathId || pathId === host.dataset.selectedPathId) return;
-
-        host.dataset.selectedPathId = pathId;
-        onPathChange?.(pathId);
-    });
 }

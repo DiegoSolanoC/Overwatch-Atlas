@@ -7,6 +7,7 @@ import { summarizeDialogueLine, resolveSelectedPathId } from '../data/dialogueTh
 import { normalizeHeroKey } from '../data/theaterVoicelineParsing.js';
 import { shouldUseTieredPathPicker } from './beforeTheCrisisPathConfig.js';
 import { shouldUsePeriodicTablePathPicker } from './periodicTablePathConfig.js';
+import { conversationUsesHeroPathLabels } from './dialogueTheaterHeroPathLabels.js';
 
 /** @typedef {{ id: string, label: string, lineIds: string[] }} DialoguePath */
 /** @typedef {{ id: string, hero?: string, subtitles?: string }} DialogueLine */
@@ -46,7 +47,11 @@ function escapeHtml(text) {
 export function shouldUseGroupedPathPicker(conversation) {
     if (shouldUseTieredPathPicker(conversation)) return false;
     if (shouldUsePeriodicTablePathPicker(conversation)) return false;
-    return (conversation?.paths?.length || 0) >= GROUPED_PATH_THRESHOLD;
+    const pathCount = conversation?.paths?.length || 0;
+    if (pathCount < 2) return false;
+    if (isFavoriteAnimalConversation(conversation)) return true;
+    if (conversationUsesHeroPathLabels(conversation)) return true;
+    return pathCount >= GROUPED_PATH_THRESHOLD;
 }
 
 /**
@@ -130,11 +135,14 @@ function getPathVariantLabel(path, conversation) {
  */
 export function buildPathGroupsByHero(conversation) {
     const paths = conversation?.paths || [];
+    const groupByRouteLabel = conversationUsesHeroPathLabels(conversation);
     /** @type {Map<string, PathHeroGroup>} */
     const groups = new Map();
 
     for (const path of paths) {
-        const hero = getPathChipHero(path, conversation);
+        const hero = groupByRouteLabel
+            ? parseHeroFromPathLabel(path.label)
+            : getPathChipHero(path, conversation);
         const heroKey = normalizeHeroKey(hero) || hero.toLowerCase();
         if (!groups.has(heroKey)) {
             groups.set(heroKey, { hero, heroKey, paths: [] });
@@ -291,9 +299,11 @@ export function renderHeroChipRowsHtml(groups, selectedPathId, options = {}) {
 export function renderGroupedPathSwitcherHtml(conversation, selectedPathId) {
     const groups = buildPathGroupsByHero(conversation);
     const heroRowsHtml = renderHeroChipRowsHtml(groups, selectedPathId);
-    const masterPlayHtml =
-        isFavoriteAnimalConversation(conversation)
-            ? `<button
+    const routeLabel = conversationUsesHeroPathLabels(conversation) && !isFavoriteAnimalConversation(conversation)
+        ? 'Route'
+        : 'Character';
+    const masterPlayHtml = isFavoriteAnimalConversation(conversation)
+        ? `<button
                 type="button"
                 id="dialogueTheaterMasterPlayBtn"
                 class="dialogue-theater-path-switch__master-play"
@@ -305,15 +315,22 @@ export function renderGroupedPathSwitcherHtml(conversation, selectedPathId) {
                 class="dialogue-theater-path-switch__master-play"
                 aria-label="Pick a random character response and play it"
             >▶ Random play</button>`
-            : '';
+        : conversationUsesHeroPathLabels(conversation)
+          ? `<button
+                type="button"
+                id="dialogueTheaterRandomPlayBtn"
+                class="dialogue-theater-path-switch__master-play"
+                aria-label="Pick a random character response and play it"
+            >▶ Random play</button>`
+          : '';
 
     return `
         <div class="dialogue-theater-path-switch dialogue-theater-path-switch--grouped">
             <div class="dialogue-theater-path-switch__head">
-                <span class="dialogue-theater-path-switch__label">Character</span>
+                <span class="dialogue-theater-path-switch__label">${routeLabel}</span>
                 ${masterPlayHtml}
             </div>
-            <div class="dialogue-theater-path-switch__hero-rows" role="tablist" aria-label="Response character">
+            <div class="dialogue-theater-path-switch__hero-rows" role="tablist" aria-label="${escapeHtml(routeLabel)}">
                 ${heroRowsHtml}
             </div>
             ${renderVariantSectionHtml(groups, selectedPathId)}
@@ -403,7 +420,7 @@ function syncGroupedPathPickerUi(host, groups, state) {
 /**
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {(pathId: string) => void} [onPathChange]
+ * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
  */
 export function wireGroupedPathSelector(host, conversation, onPathChange) {
     const paths = conversation.paths || [];
@@ -435,10 +452,9 @@ export function wireGroupedPathSelector(host, conversation, onPathChange) {
 
         if (group.paths.length === 1) {
             const pathId = group.paths[0].id;
-            if (pathId === host.dataset.selectedPathId) return;
             host.dataset.pendingHeroKey = '';
             host.dataset.selectedPathId = pathId;
-            onPathChange?.(pathId);
+            onPathChange?.(pathId, { autoPlay: true });
             return;
         }
 
@@ -448,14 +464,18 @@ export function wireGroupedPathSelector(host, conversation, onPathChange) {
         if (!hasPathInGroup) {
             const pathId = group.paths[0].id;
             host.dataset.selectedPathId = pathId;
-            onPathChange?.(pathId);
+            onPathChange?.(pathId, { autoPlay: true });
             return;
         }
 
-        syncGroupedPathPickerUi(host, groups, {
-            selectedPathId: currentPathId,
-            pendingHeroKey: heroKey,
-        });
+        if (hasPathInGroup) {
+            onPathChange?.(currentPathId, { autoPlay: true });
+            syncGroupedPathPickerUi(host, groups, {
+                selectedPathId: currentPathId,
+                pendingHeroKey: heroKey,
+            });
+            return;
+        }
     };
 
     rowsHost.addEventListener('click', host._dialogueTheaterHeroRowsClick);
@@ -474,11 +494,11 @@ export function wireGroupedPathSelector(host, conversation, onPathChange) {
             e.stopPropagation();
 
             const pathId = btn.dataset.pathId || '';
-            if (!pathId || pathId === host.dataset.selectedPathId) return;
+            if (!pathId) return;
 
             host.dataset.pendingHeroKey = '';
             host.dataset.selectedPathId = pathId;
-            onPathChange?.(pathId);
+            onPathChange?.(pathId, { autoPlay: true });
         };
 
         switcher.addEventListener('click', host._dialogueTheaterVariantClick);

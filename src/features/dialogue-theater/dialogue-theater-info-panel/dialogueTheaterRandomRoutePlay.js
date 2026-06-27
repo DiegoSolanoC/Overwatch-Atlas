@@ -4,7 +4,7 @@
 
 import { hasConversationVariationPaths } from '../data/dialogueTheaterPathHelpers.js';
 import { isBeforeTheCrisisConversation } from './beforeTheCrisisPathConfig.js';
-import { isFavoriteAnimalConversation } from './dialogueTheaterGroupedPathPicker.js';
+import { isFavoriteAnimalConversation, shouldUseGroupedPathPicker } from './dialogueTheaterGroupedPathPicker.js';
 import { isPeriodicTableConversation } from './periodicTablePathConfig.js';
 
 /**
@@ -25,6 +25,7 @@ export function isSpecialMultiRouteConversation(conversation) {
  */
 export function usesStandardRandomRoutePlay(conversation) {
     if (isSpecialMultiRouteConversation(conversation)) return false;
+    if (shouldUseGroupedPathPicker(conversation)) return false;
     const paths = conversation?.paths || [];
     return paths.length > 1;
 }
@@ -44,12 +45,6 @@ export function pickRandomConversationPathId(conversation) {
  */
 export function renderStandardRandomRouteControlsHtml() {
     return `
-        <button
-            type="button"
-            id="dialogueTheaterRandomRouteBtn"
-            class="dialogue-theater-path-switch__master-play dialogue-theater-path-switch__random-route"
-            aria-label="Pick a random route"
-        >🎲 Random route</button>
         <button
             type="button"
             id="dialogueTheaterRandomPlayBtn"

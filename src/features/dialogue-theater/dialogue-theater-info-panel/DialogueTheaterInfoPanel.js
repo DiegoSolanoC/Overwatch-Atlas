@@ -11,6 +11,7 @@ import {
     collectDialogueTheaterEditPanel,
     isDialogueTheaterViewPlaybackActive,
     mountDialogueTheaterPanel,
+    playDialogueTheaterViewConversation,
     refreshDialogueTheaterEditStageFromHost,
     stopDialogueTheaterViewPlayback,
     unmountDialogueTheaterPanel,
@@ -23,6 +24,8 @@ import { isFavoriteAnimalConversation } from './dialogueTheaterGroupedPathPicker
 import { isPeriodicTableConversation } from './periodicTablePathConfig.js';
 import { pickRandomPeriodicTablePathId } from './dialogueTheaterPeriodicTablePicker.js';
 import { usesStandardRandomRoutePlay, pickRandomConversationPathId } from './dialogueTheaterRandomRoutePlay.js';
+import { pickConversationPathForCharacterFilters } from './dialogueTheaterFilteredPathPick.js';
+import { refreshDialogueTheaterStage } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 import {
     hideDialogueTheaterImageOverlay,
     showDialogueTheaterImageOverlay,
@@ -146,7 +149,7 @@ async function onConversationPathChange(pathId, options = {}) {
         updateDialogueTheaterViewPathSelection(host, row, pathId);
         await refreshDialogueTheaterStage(row);
         if (autoPlay) {
-            void autoStartDialogueTheaterViewPlayAll(row);
+            void playDialogueTheaterViewConversation(row);
         }
         return;
     }
@@ -399,7 +402,7 @@ async function prepareEventSlideForConversation(row) {
 
 /**
  * @param {string} conversationId
- * @param {{ startEditing?: boolean }} [options]
+ * @param {{ startEditing?: boolean, characterFilters?: string[] }} [options]
  */
 export async function openDialogueTheaterInfoPanel(conversationId, options = {}) {
     let row = dialogueTheaterDataService.getConversationById(conversationId);
@@ -411,14 +414,30 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
     activeConversationId = conversationId;
     wirePanelButtons();
 
-    if (!options.startEditing && usesStandardRandomRoutePlay(row)) {
+    const pathCount = row.paths?.length || 0;
+    const characterFilters = (options.characterFilters || [])
+        .map((value) => String(value || '').trim())
+        .filter(Boolean);
+    const manifestHeroes =
+        typeof window !== 'undefined' && Array.isArray(window.FilterService?.heroes)
+            ? window.FilterService.heroes
+            : [];
+
+    if (!options.startEditing && pathCount > 1 && characterFilters.length > 0) {
+        const pathId = pickConversationPathForCharacterFilters(row, characterFilters, manifestHeroes);
+        if (pathId) {
+            dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
+            await dialogueTheaterDataService.save({ silent: true });
+            row = dialogueTheaterDataService.getConversationById(conversationId) || row;
+        }
+    } else if (!options.startEditing && usesStandardRandomRoutePlay(row)) {
         const pathId = pickRandomConversationPathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
         await dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 
-    if (!options.startEditing && isPeriodicTableConversation(row)) {
+    if (!options.startEditing && isPeriodicTableConversation(row) && characterFilters.length === 0) {
         const pathId = pickRandomPeriodicTablePathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
         await dialogueTheaterDataService.save({ silent: true });

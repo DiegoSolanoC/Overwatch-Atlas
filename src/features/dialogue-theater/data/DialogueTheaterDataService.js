@@ -10,12 +10,14 @@ import {
     buildBlankConversationRecord,
     normalizeConversationRecord,
 } from './dialogueTheaterConversationSchema.js';
-import { nextConversationNumber } from './dialogueTheaterConversationValidation.js';
+import { nextConversationNumber, isNumberedConversationName } from './dialogueTheaterConversationValidation.js';
 import {
     applyHeroicRendersToConversations,
     loadDialogueTheaterAssets,
+    loadDialogueTheaterHeroes,
     shouldUpgradeDialogueLineRender,
 } from './loadDialogueTheaterAssets.js';
+import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
 export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
@@ -192,8 +194,18 @@ class DialogueTheaterDataService {
                     };
                 }
                 const withRenders = this.overlayFileLineRenders(fileRow, picked);
-                if (!applyFileNames) return withRenders;
-                return { ...withRenders, name: fileRow.name };
+                if (applyFileNames) {
+                    return { ...withRenders, name: fileRow.name };
+                }
+                // Repo numbered review placeholders beat stale localStorage titles after script imports.
+                if (
+                    localRow
+                    && isNumberedConversationName(fileRow.name)
+                    && !isNumberedConversationName(localRow.name)
+                ) {
+                    return { ...withRenders, name: fileRow.name };
+                }
+                return withRenders;
             });
         merged.push(...localRows.filter((row) => !fileIds.has(row.id)));
         return merged;
@@ -202,6 +214,37 @@ class DialogueTheaterDataService {
     async applyHeroicRenderUpgrades() {
         const assets = await loadDialogueTheaterAssets();
         return applyHeroicRendersToConversations(this.conversations, assets.renders || {});
+    }
+
+    /**
+     * Map skin/display hero spellings to manifest roster ids on every line (and hero path labels).
+     * @param {string[]} manifestHeroes
+     * @returns {number}
+     */
+    canonicalizeConversationLineHeroes(manifestHeroes) {
+        let updated = 0;
+
+        for (const conversation of this.conversations) {
+            for (const line of conversation.lines || []) {
+                const current = String(line?.hero || '').trim();
+                if (!current || current === 'Unknown') continue;
+                const canonical = resolveManifestHeroId(current, manifestHeroes);
+                if (!canonical || canonical === current) continue;
+                line.hero = canonical;
+                updated += 1;
+            }
+
+            for (const pathRow of conversation.paths || []) {
+                const label = String(pathRow?.label || '').trim();
+                if (!label) continue;
+                const canonical = resolveManifestHeroId(label, manifestHeroes);
+                if (!canonical || canonical === label) continue;
+                pathRow.label = canonical;
+                updated += 1;
+            }
+        }
+
+        return updated;
     }
 
     /** @param {unknown[]} list */
@@ -272,6 +315,15 @@ class DialogueTheaterDataService {
             this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
                 applyFileNames,
             });
+        }
+
+        const manifestHeroes = await loadDialogueTheaterHeroes();
+        const heroRenames = this.canonicalizeConversationLineHeroes(manifestHeroes);
+        if (heroRenames > 0) {
+            updateStatus(
+                `Dialogue Theater: normalized ${heroRenames} line hero name(s) to roster ids`,
+                'info',
+            );
         }
 
         const heroicUpgrades = await this.applyHeroicRenderUpgrades();

@@ -51,7 +51,7 @@ import {
     renderPeriodicTablePathSwitcherHtml,
     shouldUsePeriodicTablePathPicker,
     wirePeriodicTablePathSelector,
-    wirePeriodicTableRandomRoute,
+    pickRandomPeriodicTablePathId,
 } from './dialogueTheaterPeriodicTablePicker.js';
 import { isPeriodicTableConversation } from './periodicTablePathConfig.js';
 import {
@@ -61,6 +61,7 @@ import {
     shouldUseGroupedPathPicker,
     wireGroupedPathSelector,
 } from './dialogueTheaterGroupedPathPicker.js';
+import { conversationUsesHeroPathLabels } from './dialogueTheaterHeroPathLabels.js';
 import {
     pickRandomConversationPathId,
     renderStandardRandomRouteControlsHtml,
@@ -70,7 +71,6 @@ import {
     highlightTieredPathSelection,
     renderTieredPathSwitcherHtml,
     shouldUseTieredPathPicker,
-    wireBeforeTheCrisisRandomRoute,
     wireTieredPathSelector,
 } from './dialogueTheaterTieredPathPicker.js';
 import { setupSingleValueAutocomplete } from './dialogueTheaterSingleAutocomplete.js';
@@ -157,7 +157,6 @@ const MASTER_PLAY_PATH_GAP_MS = 700;
 const PLAYBACK_TRANSPORT_BUTTON_RESETS = [
     ['#dialogueTheaterMasterPlayBtn', '▶ Master play'],
     ['#dialogueTheaterRandomPlayBtn', '▶ Random play'],
-    ['#dialogueTheaterRandomRouteBtn', '🎲 Random route'],
     ['#dialogueTheaterPlayAllBtn', '▶ Play all'],
 ];
 
@@ -486,6 +485,14 @@ function listPlayableLineIndices(conversation) {
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  */
+export async function playDialogueTheaterViewConversation(conversation) {
+    await ensureDialogueTheaterAssetsLoaded();
+    await playAllViewVoicelines(conversation);
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
 async function playAllViewVoicelines(conversation) {
     stopViewVoicelinePlayback();
     const playbackConversation = getPlaybackConversation(conversation);
@@ -741,7 +748,11 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
  * @param {(pathId: string, options?: { autoPlay?: boolean }) => void} [onPathChange]
  */
 function wireFavoriteAnimalPlayControls(host, conversation, onPathChange) {
-    if (!isFavoriteAnimalConversation(conversation) && !isPeriodicTableConversation(conversation)) {
+    const isFavoriteOrPeriodic =
+        isFavoriteAnimalConversation(conversation) || isPeriodicTableConversation(conversation);
+    const isHeroChipRoutes = conversationUsesHeroPathLabels(conversation);
+
+    if (!isFavoriteOrPeriodic && !isHeroChipRoutes) {
         return;
     }
 
@@ -755,12 +766,16 @@ function wireFavoriteAnimalPlayControls(host, conversation, onPathChange) {
 
     const masterBtn = host.querySelector('#dialogueTheaterMasterPlayBtn');
     if (masterBtn instanceof HTMLButtonElement) {
-        masterBtn.disabled = !hasPlayable;
-        masterBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            void playAllPathsMasterPlay(conversation, host, masterBtn);
-        });
+        if (!isFavoriteOrPeriodic) {
+            masterBtn.remove();
+        } else {
+            masterBtn.disabled = !hasPlayable;
+            masterBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                void playAllPathsMasterPlay(conversation, host, masterBtn);
+            });
+        }
     }
 
     const randomBtn = host.querySelector('#dialogueTheaterRandomPlayBtn');
@@ -770,11 +785,12 @@ function wireFavoriteAnimalPlayControls(host, conversation, onPathChange) {
             e.preventDefault();
             e.stopPropagation();
 
-            const pathId = pickRandomConversationPathId(conversation);
+            const pathId = isPeriodicTableConversation(conversation)
+                ? pickRandomPeriodicTablePathId(conversation)
+                : pickRandomConversationPathId(conversation);
             if (!pathId) return;
 
-            onPathChange?.(pathId, { autoPlay: false });
-            void playSinglePathPlayback(conversation, host, pathId, randomBtn);
+            onPathChange?.(pathId, { autoPlay: true });
         });
     }
 }
@@ -874,43 +890,27 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
 function wireStandardRandomRouteControls(host, conversation, onPathChange) {
     if (!usesStandardRandomRoutePlay(conversation)) return;
 
-    const routeBtn = host.querySelector('#dialogueTheaterRandomRouteBtn');
     const playBtn = host.querySelector('#dialogueTheaterRandomPlayBtn');
+    if (!(playBtn instanceof HTMLButtonElement)) return;
 
-    if (routeBtn instanceof HTMLButtonElement) {
-        routeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+    const paths = conversation.paths || [];
+    const voicelines = theaterAssets?.voicelines || [];
+    const hasPlayable = paths.some((path) =>
+        resolveLinesForPath(conversation, path.id).some((line) =>
+            Boolean(resolveLineVoiceFile(line, voicelines)),
+        ),
+    );
+    playBtn.disabled = !hasPlayable;
 
-            const pathId = pickRandomConversationPathId(conversation);
-            if (!pathId || pathId === host.dataset.selectedPathId) return;
+    playBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-            updateDialogueTheaterViewPathSelection(host, conversation, pathId);
-            onPathChange?.(pathId, { autoPlay: false });
-        });
-    }
+        const pathId = pickRandomConversationPathId(conversation);
+        if (!pathId) return;
 
-    if (playBtn instanceof HTMLButtonElement) {
-        const paths = conversation.paths || [];
-        const voicelines = theaterAssets?.voicelines || [];
-        const hasPlayable = paths.some((path) =>
-            resolveLinesForPath(conversation, path.id).some((line) =>
-                Boolean(resolveLineVoiceFile(line, voicelines)),
-            ),
-        );
-        playBtn.disabled = !hasPlayable;
-
-        playBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const pathId = pickRandomConversationPathId(conversation);
-            if (!pathId) return;
-
-            updateDialogueTheaterViewPathSelection(host, conversation, pathId);
-            onPathChange?.(pathId, { autoPlay: true });
-        });
-    }
+        onPathChange?.(pathId, { autoPlay: true });
+    });
 }
 
 /**
@@ -930,9 +930,9 @@ function wireDialogueTheaterPathSelector(host, conversation, onPathChange) {
             e.preventDefault();
             e.stopPropagation();
             const pathId = btn.dataset.pathId || '';
-            if (!pathId || pathId === host.dataset.selectedPathId) return;
+            if (!pathId) return;
             host.dataset.selectedPathId = pathId;
-            onPathChange?.(pathId);
+            onPathChange?.(pathId, { autoPlay: true });
         });
     });
 }
@@ -1103,11 +1103,9 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
 
     if (shouldUseTieredPathPicker(conversation)) {
         wireTieredPathSelector(host, conversation, options.onPathChange);
-        wireBeforeTheCrisisRandomRoute(host, conversation, options.onPathChange);
         wireMasterPlayButton(host, conversation);
     } else if (shouldUsePeriodicTablePathPicker(conversation)) {
         wirePeriodicTablePathSelector(host, conversation, options.onPathChange);
-        wirePeriodicTableRandomRoute(host, conversation, options.onPathChange);
         wireFavoriteAnimalPlayControls(host, conversation, options.onPathChange);
     } else if (shouldUseGroupedPathPicker(conversation)) {
         wireGroupedPathSelector(host, conversation, options.onPathChange);
@@ -1152,10 +1150,9 @@ export async function autoStartDialogueTheaterViewPlayAll(conversation, options 
     if (options.periodicTablePlay && isPeriodicTableConversation(conversation)) {
         const host = document.getElementById(HOST_ID);
         const pathId = resolveSelectedPathId(conversation);
-        const btn = host?.querySelector('#dialogueTheaterRandomPlayBtn');
-        if (host instanceof HTMLElement && btn instanceof HTMLButtonElement && pathId) {
+        if (host instanceof HTMLElement && pathId) {
             updateDialogueTheaterViewPathSelection(host, conversation, pathId);
-            void playSinglePathPlayback(conversation, host, pathId, btn);
+            void playDialogueTheaterViewConversation(conversation);
         }
         return;
     }
@@ -1164,14 +1161,14 @@ export async function autoStartDialogueTheaterViewPlayAll(conversation, options 
         const playableVoices = listPlayableVoicesForConversation(conversation);
         if (playableVoices.length === 0) return;
 
-        void playAllViewVoicelines(conversation);
+        void playDialogueTheaterViewConversation(conversation);
         return;
     }
 
     const playableVoices = listPlayableVoicesForConversation(conversation);
     if (playableVoices.length === 0) return;
 
-    void playAllViewVoicelines(conversation);
+    void playDialogueTheaterViewConversation(conversation);
 }
 
 /**
