@@ -593,7 +593,7 @@
             var(--event-mobile-image-top, var(--header-height, 60px))
             + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
         ) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -604,7 +604,7 @@
         box-sizing: border-box !important;
         visibility: hidden !important;
         opacity: 0 !important;
-        z-index: 3000 !important;
+        z-index: var(--event-mobile-info-panel-z, 540) !important;
     }
 
     .event-slide.open {
@@ -618,17 +618,17 @@
             var(--event-mobile-image-top, var(--header-height, 60px))
             + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
         ) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
-        z-index: 3000 !important;
+        z-index: var(--event-mobile-info-panel-z, 540) !important;
     }
 
     /* Full screen mode when image is hidden on mobile - higher specificity */
     .event-slide.open.full-screen:not(.event-slide--mobile-full-text) {
         top: var(--event-mobile-image-top, var(--header-height, 60px)) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
         transition: transform 0.3s ease, top 0.3s ease !important;
     }
@@ -694,6 +694,19 @@
         width: 100% !important;
     }
 
+    /*
+     * Dock + trapezium paint above the panel; pad scroll so description/sources clear the band.
+     */
+    body:has(#paginationDock) .event-slide.open:not(.full-screen) .event-slide-scrollable {
+        --event-mobile-info-dock-scroll-pad: calc(
+            var(--pagination-dock-height, 200px)
+            + var(--side-panel-dock-cut-bottom-lift, 88px)
+            + 12px
+        );
+        padding-bottom: var(--event-mobile-info-dock-scroll-pad) !important;
+        scroll-padding-bottom: var(--event-mobile-info-dock-scroll-pad);
+    }
+
     .event-slide-era-heading {
         display: none !important;
     }
@@ -757,10 +770,7 @@
     }
 
     .event-slide-bottom {
-        flex-shrink: 0 !important;
-        flex-grow: 0 !important;
-        margin-top: auto !important;
-        width: 100% !important;
+        display: none !important;
     }
 
     .event-slide-content * {

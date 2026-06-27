@@ -2,7 +2,7 @@
    EVENT BUTTONS
    ======================================== */
 
-/* Event Image Toggle */
+/* Event Image Toggle — panel copy; dock #globalImageToggle is used on all viewports */
 .event-image-toggle-btn {
     width: auto;
     min-width: 120px;
@@ -14,7 +14,7 @@
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    display: none; /* Hidden on desktop - use global dock toggle instead */
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 0 15px;
@@ -23,23 +23,6 @@
     line-height: 1;
     box-sizing: border-box;
     flex-shrink: 0;
-}
-
-/* Show event image toggle button on mobile only */
-@media (max-width: 768px) {
-    .event-image-toggle-btn {
-        display: flex;
-        width: 44px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
-        height: 44px !important;
-        padding: 0 !important;
-        justify-content: center !important;
-    }
-
-    .event-image-toggle-btn span:not([id$="Icon"]) {
-        display: none !important;
-    }
 }
 
 .event-image-toggle-btn:hover {
@@ -74,20 +57,20 @@ body.color-palette-gray .event-image-toggle-btn:hover {
     margin-top: 0;
 }
 
-/* Event Navigation Buttons (prev/next in full list) - Mobile Only */
+/* Event Navigation Buttons — dock prev/next event on all viewports */
 .event-navigation-buttons {
-    display: none; /* Hidden on desktop */
+    display: none;
     gap: 10px;
     margin-top: 15px;
     margin-bottom: 0;
     justify-content: center;
-    flex-shrink: 0; /* Don't shrink - always at bottom */
+    flex-shrink: 0;
 }
 
-/* Show event navigation buttons on mobile */
 @media (max-width: 768px) {
+    .event-slide-bottom,
     .event-navigation-buttons {
-        display: flex;
+        display: none !important;
     }
 }
 

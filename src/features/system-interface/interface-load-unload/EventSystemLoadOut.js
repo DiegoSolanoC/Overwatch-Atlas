@@ -33,6 +33,7 @@ import { installEventSlidePlainPasteGuard } from "../interface-info-display/inst
 import {
   installPageInputContainerReflow,
   installDockChromeRailLayout,
+  reflowDockChromeRails,
 } from "./mountEventSystemDockChrome.js";
 import { wireStandaloneFilterButtons } from "./mountEventSystemFilters.js";
 import {
@@ -197,6 +198,25 @@ export async function loadEventSystem(testBtn) {
       "Filters panel",
     );
 
+    createHeaderHubButton({
+      id: "filtersToggle",
+      className: "dock-globe-rail__btn",
+      title: "Filters (F)",
+      label: "Filters",
+      iconPath:
+        "src/assets/images/Icons/Filter%20Icons/Filter%20Icon.png",
+      iconAlt: "Filters",
+      parentId: "dockGlobeRailRight",
+      baseClass: "globe-control-btn",
+      iconSpanId: "filtersIcon",
+      headerOrder: 55,
+      mobileParentId: "headerHubRightButtonGroup",
+      mobileBaseClass: "header-hub-btn header-hub-btn--icon",
+      mobileClassName: "",
+    });
+
+    reflowDockChromeRails();
+
     // Initialize FilterService for standalone mode. `init()` is
     // async (awaits the manifest fetch + initial heroes-tab
     // button render) so we await it here — otherwise the
@@ -353,6 +373,7 @@ export async function unloadEventSystem(testBtn) {
   }
 
   document.getElementById("globalImageToggle")?.remove();
+  document.getElementById("filtersToggle")?.remove();
   document
     .querySelectorAll(".page-input-container")
     .forEach((el) => el.remove());

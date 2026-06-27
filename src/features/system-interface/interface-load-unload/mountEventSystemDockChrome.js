@@ -80,6 +80,10 @@ export function reflowDockChromeRails() {
     const globalImageToggleBtn = document.getElementById('globalImageToggle');
     const erasBtn = document.getElementById('erasToggle');
     const filtersBtn = document.getElementById('filtersToggle');
+    const filtersOnMobileHeader =
+        filtersBtn &&
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(max-width: 768px)').matches;
 
     const centerChromeDockBarOrder = [
         prevPageBtn,
@@ -140,7 +144,7 @@ export function reflowDockChromeRails() {
 
     const rightRailTargets = useTrapezoidSideChrome
         ? []
-        : [globalImageToggleBtn, filtersBtn];
+        : [globalImageToggleBtn, ...(filtersOnMobileHeader ? [] : [filtersBtn])].filter(Boolean);
 
     rightRailTargets.forEach((element) => {
         if (!element || !element.isConnected) return;
@@ -150,7 +154,7 @@ export function reflowDockChromeRails() {
         }
     });
 
-    if (!useTrapezoidSideChrome && rightRail) {
+    if (!useTrapezoidSideChrome && rightRail && !filtersOnMobileHeader) {
         [globalImageToggleBtn, filtersBtn].forEach((element) => {
             if (!element || !element.isConnected) return;
             if (element.parentElement !== rightRail) {

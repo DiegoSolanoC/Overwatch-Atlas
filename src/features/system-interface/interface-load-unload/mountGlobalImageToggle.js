@@ -1,7 +1,7 @@
 /**
- * The "Image On / Image Off" header button next to the Filters button. When
- * toggled, it persists the user's preference in `localStorage.globalImageToggle`
- * and asks the open event slide (if any) to show/hide its image overlay.
+ * The "Image On / Image Off" dock button. When toggled, it persists the user's
+ * preference in `localStorage.globalImageToggle` and, if an event slide is
+ * already open, shows or hides its image overlay. It does not open events.
  *
  * Two entry points:
  *   - {@link installGlobalImageToggleButton}: create the button via
@@ -12,6 +12,7 @@
  */
 
 import { isDialogueTheaterImageOverlayContext } from '../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import { isMobileEventSlideViewport } from '../interface-event-slide/standalone-slide/image-overlay/mobileEventSlideImageLayout.js';
 
 /**
  * Read the persisted state, initializing the slot on first run.
@@ -68,43 +69,38 @@ export function wireGlobalImageToggleHandler(initialState) {
             newBtn.classList.remove('active');
         }
 
-        // If the event slide is closed, open it onto the last viewed event so
-        // the user actually sees the image-toggle effect.
         const eventSlide = document.getElementById('eventSlide');
         const isSlideOpen = !!eventSlide?.classList.contains('open');
         const ss = window.standaloneEventSlide;
-        if (!isSlideOpen && ss?.showStandaloneEventSlide) {
-            const events = window.eventManager?.events || [];
-            let idx = Number.isFinite(ss.currentEventIndex) ? ss.currentEventIndex : 0;
-            if (idx < 0) idx = 0;
-            if (idx >= events.length) idx = Math.max(0, events.length - 1);
-            const eventToOpen = ss.currentEventData || events[idx];
-            if (eventToOpen) {
-                const arch = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
-                ss._presentationFromDockTimeline = arch === 'story';
-                ss.showStandaloneEventSlide(eventToOpen, idx);
-            }
-        }
 
-        // Apply image state on the next tick, after the slide has opened.
-        setTimeout(() => {
-            const slideNowOpen = !!document.getElementById('eventSlide')?.classList.contains('open');
-            if (!slideNowOpen || !ss) return;
+        if (isSlideOpen && ss) {
+            const isMobile = isMobileEventSlideViewport();
             if (newState) {
-                if (isDialogueTheaterImageOverlayContext() && ss.showImageOverlayGradually) {
-                    ss.showImageOverlayGradually('', 600);
+                if (isDialogueTheaterImageOverlayContext()) {
+                    if (isMobile && ss.showImageOverlay) {
+                        ss.showImageOverlay('');
+                    } else if (ss.showImageOverlayGradually) {
+                        ss.showImageOverlayGradually('', 600);
+                    }
+                } else if (isMobile) {
+                    const path = ss.currentImagePath?.trim();
+                    if (path && ss.showImageOverlay) {
+                        ss.showImageOverlay(path);
+                    }
                 } else {
                     const path = ss.currentImagePath?.trim();
                     if (path && ss.showImageOverlayGradually) {
                         ss.showImageOverlayGradually(path, 600);
                     }
                 }
+            } else if (isMobile && ss.hideImageOverlay) {
+                ss.hideImageOverlay();
             } else if (ss.hideImageOverlayGradually) {
                 ss.hideImageOverlayGradually(600);
             } else if (ss.hideImageOverlay) {
                 ss.hideImageOverlay();
             }
-        }, 0);
+        }
 
         if (window.SoundEffectsManager) {
             window.SoundEffectsManager.play('imageDisplay');

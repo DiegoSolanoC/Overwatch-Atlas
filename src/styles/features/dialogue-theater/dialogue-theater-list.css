@@ -627,6 +627,10 @@ body:has(#paginationDock) .dialogue-theater-list-host.active #dialogueTheaterBot
 
 #eventSlide.event-slide--dialogue-theater #eventStoryFilterPlacesSection,
 
+#eventSlide.event-slide--dialogue-theater #eventSourcesSection,
+
+#eventSlide.event-slide--dialogue-theater #eventFiltersSection,
+
 #eventSlide.event-slide--dialogue-theater #eventSlideInlineEditor,
 
 #eventSlide.event-slide--dialogue-theater #eventSlideText {

@@ -11,6 +11,10 @@ import {
     isDialogueTheaterImageOverlayContext,
     showDialogueTheaterImageOverlay,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import {
+    isMobileEventSlideViewport,
+    syncMobileEventSlideLayoutForImageShown,
+} from './mobileEventSlideImageLayout.js';
 
 export function runShowImageOverlay(slide, imagePath) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -37,20 +41,14 @@ export function runShowImageOverlay(slide, imagePath) {
                 
                 // Update button text
                 if (toggleBtn) toggleBtn.textContent = 'Hide Image';
-                
-                // On mobile, remove full-screen class from event slide when showing image
-                const isMobile = window.innerWidth <= 768;
-                if (isMobile && eventSlide) {
-                    eventSlide.classList.remove('full-screen');
-                }
-                
+
+                syncMobileEventSlideLayoutForImageShown();
+
                 // Setup click-to-hide handler if not already set (desktop only)
                 if (!overlay.dataset.clickHandlerSet) {
                     overlay.dataset.clickHandlerSet = 'true';
                     overlay.addEventListener('click', (e) => {
-                        // Don't hide on mobile
-                        const isMobile = window.innerWidth <= 768;
-                        if (isMobile) return;
+                        if (isMobileEventSlideViewport()) return;
                         if (isDialogueTheaterImageOverlayContext()) return;
                         
                         if (e.target === overlay || e.target.tagName === 'IMG') {

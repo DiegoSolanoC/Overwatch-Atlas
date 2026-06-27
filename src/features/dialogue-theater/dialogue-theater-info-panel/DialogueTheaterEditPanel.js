@@ -7,6 +7,7 @@ import {
     refreshDialogueTheaterStage,
     resetDialogueTheaterStageToIdle,
     updateDialogueTheaterStageActiveLine,
+    PANEL_DIALOGUE_BOX_HTML,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 import { DOCK_ERA_MENU_OPTIONS } from '../../system-interface/interface-bottom-dock/dockEraTimelineFilter.js';
 import { applyEraNameToEvent } from '../../system-interface/interface-left-panel/event-system/edit/timelineFormParsing.js';
@@ -1077,6 +1078,7 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
 
     host.innerHTML = `
         <div class="dialogue-theater-edit dialogue-theater-edit--view">
+            ${PANEL_DIALOGUE_BOX_HTML}
             <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
                 <div><dt>Status</dt><dd>${statusLabel}</dd></div>
                 <div><dt>Era</dt><dd>${escapeHtml(era)}</dd></div>

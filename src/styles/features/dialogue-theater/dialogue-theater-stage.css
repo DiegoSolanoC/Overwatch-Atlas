@@ -250,8 +250,31 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
 @media (max-width: 768px) {
     /*
-     * Theater uses the same mobile image strip as story entries
-     * (--event-mobile-image-strip-height in event-image-overlay.css).
+     * Dialogue entries: taller stage strip than story (same formula shape, higher floor/cap + multiplier).
+     * Story: min(max(16:9, 40vh), 52vh) * 1.25 → up to ~65vh portrait.
+     */
+    html:has(#eventSlide.event-slide--dialogue-theater.open) {
+        --event-mobile-image-strip-height: calc(
+            min(
+                max(calc(100vw * 9 / 16), 46vh),
+                52vh
+            ) * 1.35
+        );
+    }
+
+    @media (orientation: portrait) {
+        html:has(#eventSlide.event-slide--dialogue-theater.open) {
+            --event-mobile-image-strip-height: calc(
+                min(
+                    max(calc(100vw * 9 / 16), 52vh),
+                    56vh
+                ) * 1.35
+            );
+        }
+    }
+
+    /*
+     * Theater stage overlay — shares --event-mobile-image-strip-height with #eventSlide.
      */
     .event-image-overlay.dialogue-theater-stage-overlay {
         overflow: hidden !important;
@@ -272,24 +295,39 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
     }
 
     .dialogue-theater-stage {
-        --stage-render-bottom: -21%;
-        --stage-render-bottom-extent: 21%;
-        --stage-render-scale: 1.58;
+        --stage-render-bottom: -53%;
+        --stage-render-bottom-extent: 53%;
+        --stage-render-top-gutter: 0%;
+        --stage-render-scale: 1.09;
         --stage-render-max-height: calc(
             100% + var(--stage-render-bottom-extent) - var(--stage-render-top-gutter)
         );
-        --stage-render-max-width: min(280%, 2800px);
-        --stage-render-inset-x: 26%;
+        --stage-render-max-width: min(229%, 2230px);
+        --stage-render-inset-x: 38%;
+    }
+
+    @media (orientation: portrait) {
+        .dialogue-theater-stage {
+            --stage-render-bottom: -77%;
+            --stage-render-bottom-extent: 77%;
+            --stage-render-scale: 1.05;
+            --stage-render-inset-x: 34%;
+        }
     }
 
     .dialogue-theater-stage__render--left.dialogue-theater-stage__render--speaking {
-        transform: translateX(calc(-1 * var(--stage-render-inset-x, 26%)))
-            scale(calc(var(--stage-render-scale, 1.58) * 1.05));
+        transform: translateX(calc(-1 * var(--stage-render-inset-x, 38%)))
+            scale(calc(var(--stage-render-scale, 1.09) * 1.05));
     }
 
     .dialogue-theater-stage__render--right.dialogue-theater-stage__render--speaking {
-        transform: translateX(var(--stage-render-inset-x, 26%))
-            scale(calc(var(--stage-render-scale, 1.58) * 1.05));
+        transform: translateX(var(--stage-render-inset-x, 38%))
+            scale(calc(var(--stage-render-scale, 1.09) * 1.05));
+    }
+
+    /* Subtitle box lives in #eventSlide on mobile — hide the stage overlay copy */
+    .dialogue-theater-stage > .dialogue-theater-stage__dialogue {
+        display: none !important;
     }
 
     .dialogue-theater-stage__dialogue {

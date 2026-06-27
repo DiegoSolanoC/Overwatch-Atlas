@@ -841,3 +841,53 @@
 .dialogue-theater-voice-item__preview {
     display: block;
 }
+
+/* Mobile: active-line highlight + in-panel subtitle box (below dialogue list) */
+@media (max-width: 768px) {
+    .dialogue-theater-edit-host--view .dialogue-theater-edit__hint {
+        display: none;
+    }
+
+    .dialogue-theater-edit__view-line--active {
+        border-color: rgba(var(--accent-primary-rgb), 0.55);
+        background: rgba(var(--accent-primary-rgb), 0.12);
+        box-shadow: 0 0 0 1px rgba(var(--accent-primary-rgb), 0.2);
+    }
+
+    #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        margin-top: 0;
+        margin-bottom: 12px;
+        pointer-events: auto;
+    }
+
+    #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue[hidden] {
+        display: none !important;
+    }
+
+    #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-icon-wrap {
+        width: 52px;
+        height: 52px;
+    }
+
+    #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-name {
+        font-size: 1.05rem;
+    }
+
+    #dialogueTheaterPanelDialogue .dialogue-theater-stage__dialogue-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 769px) {
+    #dialogueTheaterPanelDialogue.dialogue-theater-panel__dialogue {
+        display: none !important;
+    }
+}

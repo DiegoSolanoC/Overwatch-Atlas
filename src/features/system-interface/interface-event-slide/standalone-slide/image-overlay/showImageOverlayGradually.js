@@ -11,6 +11,10 @@ import {
     isDialogueTheaterImageOverlayContext,
     showDialogueTheaterImageOverlayGradually,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import {
+    isMobileEventSlideViewport,
+    syncMobileEventSlideLayoutForImageShown,
+} from './mobileEventSlideImageLayout.js';
 
 export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -34,11 +38,14 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 overlay.classList.add('slide-open');
             }
             overlay.style.opacity = '0';
-            
-            // Setup click handler for temporary hide if not already set
+
+            syncMobileEventSlideLayoutForImageShown();
+
+            // Setup click handler for temporary hide if not already set (desktop only)
             if (!overlay.dataset.clickHandlerSetup) {
                 overlay.dataset.clickHandlerSetup = 'true';
                 overlay.addEventListener('click', (e) => {
+                    if (isMobileEventSlideViewport()) return;
                     if (isDialogueTheaterImageOverlayContext()) return;
                     // Only hide if clicking the image itself or overlay (not other controls)
                     if (e.target === overlay || e.target.tagName === 'IMG') {

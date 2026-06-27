@@ -93,18 +93,30 @@
          * Taller strip for vertical breathing room. Width stays edge-to-edge via cover;
          * object-position top keeps the headline / sky portion visible when cropping.
          */
-        --event-mobile-image-strip-height: min(
-            max(calc(100vw * 9 / 16), 36vh),
-            48vh
+        --event-mobile-image-strip-height: calc(
+            min(
+                max(calc(100vw * 9 / 16), 36vh),
+                48vh
+            ) * 1.25
         );
         --event-mobile-image-object-position: center 6%;
+        /* Info panel sits above stage (500) but below dock chrome (620+). */
+        --event-mobile-image-overlay-z: 500;
+        --event-mobile-info-panel-z: 540;
+    }
+
+    body:has(#paginationDock) {
+        /* Panel may extend under dock; trapezium + border imgs paint above via dock z-index. */
+        --event-mobile-panel-bottom: var(--footer-height);
     }
 
     @media (orientation: portrait) {
         :root {
-            --event-mobile-image-strip-height: min(
-                max(calc(100vw * 9 / 16), 40vh),
-                52vh
+            --event-mobile-image-strip-height: calc(
+                min(
+                    max(calc(100vw * 9 / 16), 40vh),
+                    52vh
+                ) * 1.25
             );
         }
     }
@@ -123,7 +135,7 @@
         padding: 0 !important;
         border: none !important;
         box-sizing: border-box !important;
-        z-index: 3000 !important;
+        z-index: var(--event-mobile-image-overlay-z, 500) !important;
         overflow: hidden !important;
     }
 

@@ -27,7 +27,13 @@ import {
     hideDialogueTheaterImageOverlay,
     showDialogueTheaterImageOverlay,
 } from '../dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
-import { refreshDialogueTheaterStage } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
+import { readPersistedGlobalImageToggleState } from '../../system-interface/interface-load-unload/mountGlobalImageToggle.js';
+import {
+    updateEventSlideFactionTypeDisplay,
+    updateEventSlideNpcCategoryDisplay,
+    updateEventSlideHeroBirthdayDisplay,
+    updateEventSlideHeroRoleDisplay,
+} from '../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
 
 /** @type {string|null} */
 let activeConversationId = null;
@@ -73,6 +79,59 @@ function isDialogueTheaterPanelOpen() {
     return document.getElementById('eventSlide')?.classList.contains('event-slide--dialogue-theater');
 }
 
+/**
+ * @param {{ preserveStage?: boolean }} [options]
+ */
+async function syncDialogueTheaterStageOverlayFromGlobalToggle(options = {}) {
+    if (readPersistedGlobalImageToggleState()) {
+        await showDialogueTheaterImageOverlay(window.standaloneEventSlide, options);
+    } else {
+        hideDialogueTheaterImageOverlay();
+    }
+}
+
+/** Drop story / bio / timeline sections left over from a prior #eventSlide entry. */
+function clearStaleEventSlideSections() {
+    const hideEl = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = 'none';
+        el.setAttribute('hidden', 'hidden');
+    };
+    const clearInner = (id) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '';
+    };
+
+    hideEl('eventRelevantLocationsSection');
+    hideEl('eventBioConnectionsSection');
+    hideEl('eventStoryFilterPlacesSection');
+    hideEl('eventSourcesSection');
+    hideEl('eventFiltersSection');
+
+    clearInner('eventSlideRelevantLocations');
+    clearInner('eventSlideBioConnections');
+    clearInner('eventSourcesList');
+    clearInner('eventFiltersList');
+
+    window.LocationFlagHelpers?.clearBioConnectionsSlideDom?.();
+    window.LocationFlagHelpers?.clearStoryFilterPlacesSlideDom?.();
+
+    updateEventSlideFactionTypeDisplay(null, 0);
+    updateEventSlideNpcCategoryDisplay(null, 0);
+    updateEventSlideHeroRoleDisplay(null, 0);
+    updateEventSlideHeroBirthdayDisplay(null, 0);
+
+    const heroLocEdit = document.getElementById('eventSlideHeroLocationsEdit');
+    if (heroLocEdit) {
+        heroLocEdit.setAttribute('hidden', '');
+        heroLocEdit.style.display = 'none';
+    }
+
+    const variantToggles = document.getElementById('eventVariantToggles');
+    if (variantToggles) variantToggles.innerHTML = '';
+}
+
 async function onConversationPathChange(pathId, options = {}) {
     const autoPlay = options.autoPlay !== false;
     if (!activeConversationId) return;
@@ -113,7 +172,7 @@ async function refreshPanelContent(mode) {
     const host = await mountDialogueTheaterPanel(scrollable, row, mode, {
         onPathChange: mode === 'view' ? onConversationPathChange : undefined,
     });
-    await showDialogueTheaterImageOverlay(window.standaloneEventSlide, {
+    await syncDialogueTheaterStageOverlayFromGlobalToggle({
         preserveStage: playbackActive,
     });
     if (mode === 'edit' && !playbackActive) {
@@ -281,6 +340,8 @@ async function prepareEventSlideForConversation(row) {
     window.standaloneEventSlide?.cancelEdit?.();
     window.standaloneEventSlide?.hideImageOverlay?.();
 
+    clearStaleEventSlideSections();
+
     const eventSlide = document.getElementById('eventSlide');
     const titleEl = document.getElementById('eventSlideTitle');
     const textEl = document.getElementById('eventSlideText');
@@ -328,7 +389,7 @@ async function prepareEventSlideForConversation(row) {
     eventSlide?.classList.add('open');
 
     if (scrollable) {
-        await showDialogueTheaterImageOverlay(window.standaloneEventSlide);
+        await syncDialogueTheaterStageOverlayFromGlobalToggle();
     }
 
     if (window.SoundEffectsManager?.play) {

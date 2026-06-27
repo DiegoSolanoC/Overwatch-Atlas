@@ -12,7 +12,7 @@
             var(--event-mobile-image-top, var(--header-height, 60px))
             + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
         ) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -22,7 +22,7 @@
         box-sizing: border-box !important;
         visibility: hidden !important;
         opacity: 0 !important;
-        z-index: 3000 !important;
+        z-index: var(--event-mobile-info-panel-z, 540) !important;
     }
 
     .event-slide.open {
@@ -36,17 +36,17 @@
             var(--event-mobile-image-top, var(--header-height, 60px))
             + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
         ) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
-        z-index: 3000 !important;
+        z-index: var(--event-mobile-info-panel-z, 540) !important;
     }
     
     /* Full screen mode when image is hidden on mobile */
     .event-slide.open.full-screen {
         top: var(--event-mobile-image-top, var(--header-height, 60px)) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
     }
     
@@ -82,6 +82,20 @@
         padding-right: 5px !important;
         margin-bottom: 10px !important;
         width: 100% !important;
+    }
+
+    /*
+     * Dock + trapezium paint above the panel (z-index 620 vs 540); pad scroll so
+     * description/sources clear the overlapped band.
+     */
+    body:has(#paginationDock) .event-slide.open:not(.full-screen) .event-slide-scrollable {
+        --event-mobile-info-dock-scroll-pad: calc(
+            var(--pagination-dock-height, 200px)
+            + var(--side-panel-dock-cut-bottom-lift, 88px)
+            + 12px
+        );
+        padding-bottom: var(--event-mobile-info-dock-scroll-pad) !important;
+        scroll-padding-bottom: var(--event-mobile-info-dock-scroll-pad);
     }
     
     .event-slide-era-heading {
@@ -149,12 +163,9 @@
         z-index: 1 !important;
     }
     
-    /* Mobile: Bottom section always at bottom */
+    /* Mobile: bottom nav + image toggle live on the pagination dock */
     .event-slide-bottom {
-        flex-shrink: 0 !important;
-        flex-grow: 0 !important;
-        margin-top: auto !important;
-        width: 100% !important;
+        display: none !important;
     }
     
     .event-slide-content * {
@@ -195,7 +206,7 @@
     /* Full screen mode when image is hidden on mobile - override above */
     .event-slide.open.full-screen:not(.event-slide--mobile-full-text) {
         top: var(--event-mobile-image-top, var(--header-height, 60px)) !important;
-        bottom: var(--footer-height) !important;
+        bottom: var(--event-mobile-panel-bottom, var(--footer-height)) !important;
         height: auto !important;
     }
 

@@ -3,7 +3,15 @@
  */
 
 import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
-import { hideDialogueTheaterStage, ensureDialogueTheaterStageOverlayVisible, showDialogueTheaterStage } from './dialogueTheaterStageOverlay.js';
+import {
+    hideDialogueTheaterStage,
+    ensureDialogueTheaterStageOverlayVisible,
+    showDialogueTheaterStage,
+} from './dialogueTheaterStageOverlay.js';
+import {
+    syncMobileEventSlideLayoutForImageHidden,
+    syncMobileEventSlideLayoutForImageShown,
+} from '../../system-interface/interface-event-slide/standalone-slide/image-overlay/mobileEventSlideImageLayout.js';
 
 const CONVERSATION_ID_ATTR = 'data-dialogue-theater-conversation-id';
 
@@ -66,6 +74,7 @@ export function ensureDialogueTheaterOverlayClickHandler(slide) {
 export function hideDialogueTheaterImageOverlay() {
     hideDialogueTheaterStage();
     updateImageToggleLabel(false);
+    syncMobileEventSlideLayoutForImageHidden();
 }
 
 export async function showDialogueTheaterImageOverlay(slide, options = {}) {
@@ -79,6 +88,7 @@ export async function showDialogueTheaterImageOverlay(slide, options = {}) {
     }
     ensureDialogueTheaterOverlayClickHandler(slide);
     updateImageToggleLabel(true);
+    syncMobileEventSlideLayoutForImageShown();
     return true;
 }
 
@@ -126,6 +136,7 @@ export async function showDialogueTheaterImageOverlayGradually(slide, durationMs
 
     await showDialogueTheaterStage(row);
     ensureDialogueTheaterOverlayClickHandler(slide);
+    syncMobileEventSlideLayoutForImageShown();
 
     const overlay = document.getElementById('eventImageOverlay');
     if (!overlay) return false;

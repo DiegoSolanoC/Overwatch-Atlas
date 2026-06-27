@@ -37,27 +37,28 @@ const STAGE_DIALOGUE_BOX_HTML = `
     </div>
 `;
 
-/**
- * @param {import('../data/DialogueTheaterDataService.js').DialogueLine} line
- * @returns {string}
- */
-function getLineDialogueText(line) {
-    const voicelines = stageAssets?.voicelines || [];
-    const resolvedVoice = resolveLineVoiceFile(line, voicelines);
-    return (
-        String(line?.subtitles || '').trim() ||
-        (resolvedVoice ? voicelineFilenameToSubtitles(resolvedVoice) : '')
-    );
+/** Info panel dialogue box (mobile) — sits below the line list in #dialogueTheaterEditHost */
+export const PANEL_DIALOGUE_BOX_HTML = `
+    <div class="dialogue-theater-stage__dialogue dialogue-theater-panel__dialogue" id="dialogueTheaterPanelDialogue" hidden>
+        <div class="dialogue-theater-stage__dialogue-head">
+            <div class="dialogue-theater-stage__dialogue-icon-wrap">
+                <img class="dialogue-theater-stage__dialogue-icon" alt="" />
+            </div>
+            <span class="dialogue-theater-stage__dialogue-name"></span>
+        </div>
+        <p class="dialogue-theater-stage__dialogue-text"></p>
+    </div>
+`;
+
+function isMobileTheaterLayout() {
+    return window.innerWidth <= 768;
 }
 
 /**
- * @param {HTMLElement} stage
+ * @param {HTMLElement} box
  * @param {import('../data/DialogueTheaterDataService.js').DialogueLine|null} line
  */
-function setStageDialogue(stage, line) {
-    const box = stage.querySelector('.dialogue-theater-stage__dialogue');
-    if (!(box instanceof HTMLElement)) return;
-
+function fillDialogueBox(box, line) {
     if (!line) {
         box.hidden = true;
         return;
@@ -93,6 +94,84 @@ function setStageDialogue(stage, line) {
             iconWrap?.classList.add('dialogue-theater-stage__dialogue-icon-wrap--empty');
         }
     }
+}
+
+function clearPanelDialogueHighlight() {
+    document
+        .querySelectorAll('.dialogue-theater-edit__view-line--active')
+        .forEach((row) => row.classList.remove('dialogue-theater-edit__view-line--active'));
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {number|null} activeLineIndex
+ */
+function syncPanelDialogue(conversation, activeLineIndex) {
+    const panelBox = document.getElementById('dialogueTheaterPanelDialogue');
+
+    if (!isMobileTheaterLayout()) {
+        if (panelBox instanceof HTMLElement) {
+            panelBox.hidden = true;
+        }
+        clearPanelDialogueHighlight();
+        return;
+    }
+
+    if (activeLineIndex == null || !(panelBox instanceof HTMLElement)) {
+        if (panelBox instanceof HTMLElement) {
+            panelBox.hidden = true;
+        }
+        clearPanelDialogueHighlight();
+        return;
+    }
+
+    const lines = resolveActiveConversationLines(conversation);
+    const line = lines[activeLineIndex];
+    if (!line) {
+        panelBox.hidden = true;
+        clearPanelDialogueHighlight();
+        return;
+    }
+
+    fillDialogueBox(panelBox, line);
+
+    const host = document.getElementById('dialogueTheaterEditHost');
+    host?.querySelectorAll('.dialogue-theater-edit__view-line').forEach((row, idx) => {
+        const isActive = idx === activeLineIndex;
+        row.classList.toggle('dialogue-theater-edit__view-line--active', isActive);
+        if (isActive && row instanceof HTMLElement) {
+            row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    });
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine} line
+ * @returns {string}
+ */
+function getLineDialogueText(line) {
+    const voicelines = stageAssets?.voicelines || [];
+    const resolvedVoice = resolveLineVoiceFile(line, voicelines);
+    return (
+        String(line?.subtitles || '').trim() ||
+        (resolvedVoice ? voicelineFilenameToSubtitles(resolvedVoice) : '')
+    );
+}
+
+/**
+ * @param {HTMLElement} stage
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine|null} line
+ */
+function setStageDialogue(stage, line) {
+    const box = stage.querySelector('.dialogue-theater-stage__dialogue');
+    if (!(box instanceof HTMLElement)) return;
+
+    if (isMobileTheaterLayout()) {
+        box.hidden = true;
+        return;
+    }
+
+    fillDialogueBox(box, line);
 }
 
 function ensureStageDom() {
@@ -211,6 +290,7 @@ function paintStage(stage, conversation, activeLineIndex = null) {
         setStageRender(stage, 'left', leftLine ? getLineRenderSrc(leftLine, rendersMap) : '', false);
         setStageRender(stage, 'right', rightLine ? getLineRenderSrc(rightLine, rendersMap) : '', false);
         setStageDialogue(stage, null);
+        syncPanelDialogue(conversation, null);
         return;
     }
 
@@ -220,6 +300,7 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     const side = sideForLineIndex(activeLineIndex, lines);
     setStageRender(stage, side, getLineRenderSrc(line, rendersMap), true);
     setStageDialogue(stage, line);
+    syncPanelDialogue(conversation, activeLineIndex);
 }
 
 async function ensureStageAssets() {
@@ -284,11 +365,24 @@ export function hideDialogueTheaterStage() {
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {number|null} activeLineIndex
+ */
+async function syncPanelDialogueWhenStageHidden(conversation, activeLineIndex) {
+    if (!isMobileTheaterLayout()) return;
+    await ensureStageAssets();
+    syncPanelDialogue(conversation, activeLineIndex);
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  */
 export function resetDialogueTheaterStageToIdle(conversation) {
     const stage = document.getElementById('dialogueTheaterStage');
-    if (!stage) return;
-    paintStage(stage, conversation, null);
+    if (stage) {
+        paintStage(stage, conversation, null);
+        return;
+    }
+    void syncPanelDialogueWhenStageHidden(conversation, null);
 }
 
 /**
@@ -297,8 +391,11 @@ export function resetDialogueTheaterStageToIdle(conversation) {
  */
 export function updateDialogueTheaterStageActiveLine(conversation, lineIndex) {
     const stage = document.getElementById('dialogueTheaterStage');
-    if (!stage) return;
-    paintStage(stage, conversation, lineIndex);
+    if (stage) {
+        paintStage(stage, conversation, lineIndex);
+        return;
+    }
+    void syncPanelDialogueWhenStageHidden(conversation, lineIndex);
 }
 
 /**

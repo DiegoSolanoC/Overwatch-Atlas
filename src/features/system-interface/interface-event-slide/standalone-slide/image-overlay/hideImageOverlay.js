@@ -12,6 +12,7 @@ import {
     isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 
 export function runHideImageOverlay(slide) {
             if (
@@ -44,14 +45,6 @@ export function runHideImageOverlay(slide) {
             
             // Update button text
             if (toggleBtn) toggleBtn.textContent = 'Show Image';
-            
-            // On mobile, expand info sheet when hiding image (not in Dialogue Theater stage mode)
-            const isMobile = window.innerWidth <= 768;
-            if (
-                isMobile
-                && eventSlide?.classList.contains('open')
-                && !isDialogueTheaterEventSlideMarked()
-            ) {
-                eventSlide.classList.add('full-screen');
-            }
+
+            syncMobileEventSlideLayoutForImageHidden();
 }

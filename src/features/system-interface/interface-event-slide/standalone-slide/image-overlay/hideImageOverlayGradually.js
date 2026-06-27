@@ -12,6 +12,7 @@ import {
     isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 
 export function runHideImageOverlayGradually(slide, durationMs = 600) {
             if (
@@ -61,6 +62,7 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                         img.src = '';
                     }
                     if (toggleBtn) toggleBtn.textContent = 'Show Image';
+                    syncMobileEventSlideLayoutForImageHidden();
                 }
             }, fadeInterval);
 }

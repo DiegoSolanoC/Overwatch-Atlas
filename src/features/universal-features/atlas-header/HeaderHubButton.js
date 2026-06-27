@@ -134,7 +134,7 @@ function _applyResponsiveMount(button) {
     }
 
     // If we moved into the header hub, re-sort so Exit stays last.
-    if (!isMobile && (targetParentId === 'headerHubRight' || targetParentId === 'headerHubRightButtonGroup')) {
+    if (targetParentId === 'headerHubRight' || targetParentId === 'headerHubRightButtonGroup') {
         _sortHeaderHubRight(_getHeaderHubRight());
     }
     if (

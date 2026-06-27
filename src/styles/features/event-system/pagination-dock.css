@@ -785,3 +785,47 @@ body.pagination-dock-mobile-locked.pagination-dock-collapsed:has(#paginationDock
     gap: 6px;
 }
 
+/*
+ * Mobile event info panel is position:fixed (z-index ~540) and extends over the dock band.
+ * Pin the cap row to the viewport so border art + trapezium always paint above the panel.
+ */
+@media (max-width: 768px) {
+    body:has(#paginationDock) .pagination-dock {
+        z-index: 680 !important;
+    }
+
+    body:has(#paginationDock) .pagination-dock-collapse-strip {
+        z-index: 685 !important;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-cap-row {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        bottom: calc(
+            var(--footer-height, 60px)
+            + var(--pagination-dock-height, 200px)
+            + var(--dock-top-cap-lift, -5px)
+        ) !important;
+        z-index: 690 !important;
+        pointer-events: none;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid,
+    body:has(#paginationDock) .pagination-dock-top-cap-row .dock-globe-rail,
+    body:has(#paginationDock) .pagination-dock-top-cap-row .dock-globe-rail__btn,
+    body:has(#paginationDock) .pagination-dock-top-cap-row .page-input-container {
+        pointer-events: auto;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-border-side .pagination-dock-top-border-img {
+        z-index: 3 !important;
+    }
+
+    body:has(#paginationDock) .pagination-dock-top-cap-row .pagination-dock-top-trapezoid {
+        z-index: 4 !important;
+    }
+}
+

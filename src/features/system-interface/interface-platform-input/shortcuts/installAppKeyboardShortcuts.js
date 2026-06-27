@@ -136,7 +136,13 @@ function handleLetterToggle(lower, e) {
         }
     }
     if (lower === 'h' || lower === 'i') {
-        if (isEventSlideOpen() && clickIfEnabled('eventImageToggle')) consumeEvent(e);
+        if (isEventSlideOpen()) {
+            const imageToggleId =
+                window.innerWidth <= 768 && document.getElementById('globalImageToggle')
+                    ? 'globalImageToggle'
+                    : 'eventImageToggle';
+            if (clickIfEnabled(imageToggleId)) consumeEvent(e);
+        }
         return true;
     }
     if (lower === 'x') {
