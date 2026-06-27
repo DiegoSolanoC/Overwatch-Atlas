@@ -85,23 +85,57 @@
 
 /* Desktop: no special positioning needed with flexbox layout */
 
-/* Mobile: Image overlay takes top half, full width */
+/* Mobile: Image overlay — top strip; height shared with #eventSlide via custom properties */
 @media (max-width: 768px) {
+    :root {
+        --event-mobile-image-top: var(--header-height, 60px);
+        /*
+         * Taller strip for vertical breathing room. Width stays edge-to-edge via cover;
+         * object-position top keeps the headline / sky portion visible when cropping.
+         */
+        --event-mobile-image-strip-height: min(
+            max(calc(100vw * 9 / 16), 36vh),
+            48vh
+        );
+        --event-mobile-image-object-position: center 6%;
+    }
+
+    @media (orientation: portrait) {
+        :root {
+            --event-mobile-image-strip-height: min(
+                max(calc(100vw * 9 / 16), 40vh),
+                52vh
+            );
+        }
+    }
+
     .event-image-overlay {
         position: fixed !important;
-        top: 60px !important;
+        top: var(--event-mobile-image-top) !important;
         left: 0 !important;
         right: 0 !important;
         bottom: auto !important;
-        height: 50vh !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 100% !important;
+        height: var(--event-mobile-image-strip-height) !important;
         margin: 0 !important;
         padding: 0 !important;
         border: none !important;
         box-sizing: border-box !important;
         z-index: 3000 !important;
+        overflow: hidden !important;
+    }
+
+    /* Story / timeline hero image (#eventImage) — full width, top-anchored crop */
+    .event-image-overlay:not(.dialogue-theater-stage-overlay) #eventImage,
+    .event-image-overlay:not(.dialogue-theater-stage-overlay) .event-image-container #eventImage {
+        object-fit: cover !important;
+        object-position: var(--event-mobile-image-object-position, center top) !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
     }
 
     .event-image-overlay:not(.open) {
@@ -121,18 +155,14 @@
         width: 100vw !important;
     }
 
-    /* Mobile: Ensure image container fills full width */
-    .event-image-container {
+    /* Mobile: Image container fills strip; img top-anchored under cover */
+    .event-image-overlay:not(.dialogue-theater-stage-overlay) .event-image-container {
         width: 100% !important;
         max-width: 100% !important;
         min-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-    }
-    
-    .event-image-container img {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
     }
 }

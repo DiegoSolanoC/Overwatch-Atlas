@@ -249,6 +249,28 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 }
 
 @media (max-width: 768px) {
+    /*
+     * Theater uses the same mobile image strip as story entries
+     * (--event-mobile-image-strip-height in event-image-overlay.css).
+     */
+    .event-image-overlay.dialogue-theater-stage-overlay {
+        overflow: hidden !important;
+        background: #050a12;
+    }
+
+    .event-image-overlay.dialogue-theater-stage-overlay .dialogue-theater-stage__scene {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: var(--event-mobile-image-object-position, center 6%) !important;
+    }
+
+    .event-image-overlay.dialogue-theater-stage-overlay .event-image-container,
+    .event-image-overlay.dialogue-theater-stage-overlay .dialogue-theater-stage {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
     .dialogue-theater-stage {
         --stage-render-bottom: -21%;
         --stage-render-bottom-extent: 21%;

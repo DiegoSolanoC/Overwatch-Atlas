@@ -237,6 +237,12 @@ function openDialogueTheaterStageOverlay() {
     if (eventSlide?.classList.contains('open')) {
         overlay.classList.add('slide-open');
     }
+
+    /* Match story entries: split layout below the image strip, not full-screen sheet. */
+    if (window.innerWidth <= 768 && eventSlide?.classList.contains('open')) {
+        eventSlide.classList.remove('full-screen');
+    }
+
     return true;
 }
 

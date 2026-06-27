@@ -1,6 +1,6 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
-    /* Mobile: Event slide takes bottom half, matches panel full width (100% like other panels) */
+    /* Mobile: Event slide below the image strip; fills remaining space above footer */
     .event-slide {
         position: fixed !important;
         left: 0 !important;
@@ -8,14 +8,17 @@
         width: 100% !important;
         max-width: 100% !important;
         min-width: 100% !important;
-        top: calc(60px + (50vh - 30px)) !important;
+        top: calc(
+            var(--event-mobile-image-top, var(--header-height, 60px))
+            + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
+        ) !important;
         bottom: var(--footer-height) !important;
         height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
         border: none !important;
         transform: translateY(100%);
-        transition: transform 0.3s ease !important;
+        transition: transform 0.3s ease, top 0.3s ease !important;
         box-sizing: border-box !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -29,7 +32,12 @@
         width: 100% !important;
         max-width: 100% !important;
         min-width: 100% !important;
-        top: calc(60px + (50vh - 30px)) !important;
+        top: calc(
+            var(--event-mobile-image-top, var(--header-height, 60px))
+            + var(--event-mobile-image-strip-height, min(max(calc(100vw * 9 / 16), 36vh), 48vh))
+        ) !important;
+        bottom: var(--footer-height) !important;
+        height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
         z-index: 3000 !important;
@@ -37,7 +45,7 @@
     
     /* Full screen mode when image is hidden on mobile */
     .event-slide.open.full-screen {
-        top: 60px !important;
+        top: var(--event-mobile-image-top, var(--header-height, 60px)) !important;
         bottom: var(--footer-height) !important;
         height: auto !important;
     }
@@ -154,21 +162,6 @@
         box-sizing: border-box !important;
     }
     
-    /* Mobile: Ensure image container fills full width */
-    .event-image-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    .event-image-container img {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
-    }
-    
     .event-slide-content p#eventSlideText {
         display: block !important;
         visibility: visible !important;
@@ -185,49 +178,23 @@
         max-width: 100% !important;
     }
     
-    /* Mobile: Image overlay takes top half, full width */
-    .event-image-overlay {
-        top: 60px !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: auto !important;
-        height: 50vh !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-    }
-    
-    .event-image-overlay.slide-open {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important;
-    }
 }
 
 /*
- * Mobile portrait: shorter map strip, taller info sheet, title/location/time scroll with description
- * (DOM reparented in MobileEventSlideHelpers). Single scroll via .event-slide-scrollable only.
+ * Mobile portrait: stacked below image strip. Single scroll via .event-slide-scrollable.
  */
 @media (max-width: 768px) and (orientation: portrait) {
-    :root {
-        --event-mobile-map-strip-height: min(34vh, 260px);
-    }
-
-    .event-image-overlay {
-        top: var(--header-height, 60px) !important;
-        height: var(--event-mobile-map-strip-height) !important;
-    }
-
     .event-slide:not(.event-slide--mobile-full-text),
     .event-slide.open:not(.event-slide--mobile-full-text) {
-        top: calc(var(--header-height, 60px) + var(--event-mobile-map-strip-height)) !important;
+        top: calc(
+            var(--event-mobile-image-top, var(--header-height, 60px))
+            + var(--event-mobile-image-strip-height)
+        ) !important;
     }
 
     /* Full screen mode when image is hidden on mobile - override above */
     .event-slide.open.full-screen:not(.event-slide--mobile-full-text) {
-        top: var(--header-height, 60px) !important;
+        top: var(--event-mobile-image-top, var(--header-height, 60px)) !important;
         bottom: var(--footer-height) !important;
         height: auto !important;
     }
