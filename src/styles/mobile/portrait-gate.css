@@ -1,0 +1,66 @@
+/* Full-screen gate when mobile landscape is blocked (see mobilePortraitGate.js). */
+.mobile-portrait-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding:
+        calc(env(safe-area-inset-top, 0px) + 24px)
+        calc(env(safe-area-inset-right, 0px) + 24px)
+        calc(env(safe-area-inset-bottom, 0px) + 24px)
+        calc(env(safe-area-inset-left, 0px) + 24px);
+    box-sizing: border-box;
+    background: #05070c;
+    color: #fff;
+    pointer-events: auto;
+    touch-action: none;
+}
+
+html.mobile-landscape-blocked .mobile-portrait-gate {
+    display: flex;
+}
+
+html.mobile-landscape-blocked body {
+    overflow: hidden !important;
+}
+
+html.mobile-landscape-blocked body > *:not(.mobile-portrait-gate) {
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.mobile-portrait-gate__panel {
+    width: min(100%, 360px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 3vh, 20px);
+}
+
+.mobile-portrait-gate__logo {
+    width: clamp(88px, 26vw, 120px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+}
+
+.mobile-portrait-gate__title {
+    margin: 0;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.mobile-portrait-gate__text {
+    margin: 0;
+    font-family: var(--font-body, 'Segoe UI', system-ui, sans-serif);
+    font-size: clamp(0.95rem, 3.8vw, 1.05rem);
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.78);
+}

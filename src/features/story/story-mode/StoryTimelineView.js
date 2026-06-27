@@ -13,6 +13,10 @@ import { computeOverlapIndexSet } from '../../system-interface/interface-left-pa
 import { filterEventsByStandaloneActiveFilters } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
 import { refreshStoryArchiveEraTintIfActive } from './StoryArchiveEraTint.js';
 import {
+    applyDockEraTimelineFilter,
+    isDockEraFilterActive,
+} from '../../system-interface/interface-bottom-dock/dockEraTimelineFilter.js';
+import {
     buildTimelineEraLineGradient,
     getEraStripeColorHexForEvent,
     hexColorToRgbCsv,
@@ -135,13 +139,13 @@ let timelinePanLayoutCache = null;
  */
 function getDockPaginationContext() {
     const eventsPerPage = window.standaloneDockPagination?.eventsPerPage ?? DOCK_EVENTS_PER_PAGE;
-    const dockEvents = window.eventManager?.getDockTimelineEvents?.() ?? [];
+    const dockEvents = getCuratedDockTimelineEvents();
     const allEvents = window.eventManager?.dataService?.getEvents?.()
         ?? window.eventManager?.events
         ?? [];
     const totalPages = Math.max(1, Math.ceil(dockEvents.length / eventsPerPage));
     return {
-        dockEvents: Array.isArray(dockEvents) ? dockEvents : [],
+        dockEvents,
         allEvents: Array.isArray(allEvents) ? allEvents : [],
         eventsPerPage,
         totalPages,
@@ -242,9 +246,20 @@ function eventManagerSearchActive(em) {
 }
 
 /**
+ * Dock timeline after era (and gallery biography) curation — matches pagination thumbs/slider.
+ * @returns {unknown[]}
+ */
+function getCuratedDockTimelineEvents() {
+    const em = window.eventManager;
+    const base = em?.getDockTimelineEvents?.() ?? [];
+    return applyDockEraTimelineFilter(Array.isArray(base) ? base : []);
+}
+
+/**
  * @returns {boolean}
  */
 function storyTimelineFilterActive() {
+    if (isDockEraFilterActive()) return true;
     const activeFilters = window.standaloneActiveFilters;
     if (activeFilters?.size > 0) return true;
     return eventManagerSearchActive(window.eventManager);
@@ -275,39 +290,41 @@ function getStoryTimelineEventSet() {
         return { events: [], sourceIndices: [], allEvents: [], filterActive: false };
     }
 
+    const fullDock = em.getDockTimelineEvents?.() ?? allEvents;
+    let events = allEvents;
+    let filterActive = false;
+
+    if (isDockEraFilterActive()) {
+        events = applyDockEraTimelineFilter(Array.isArray(fullDock) ? fullDock : []);
+        filterActive = true;
+    }
+
     const activeFilters = window.standaloneActiveFilters;
     if (activeFilters?.size > 0) {
-        const filtered = filterEventsByStandaloneActiveFilters(allEvents, activeFilters);
-        const sourceIndices = filtered.map((event) => allEvents.indexOf(event));
-        return {
-            events: filtered,
-            sourceIndices,
-            allEvents,
-            filterActive: true,
-        };
+        events = filterEventsByStandaloneActiveFilters(events, activeFilters);
+        filterActive = true;
     }
 
     if (eventManagerSearchActive(em)) {
-        const filtered = em.getFilteredEvents?.() ?? allEvents;
-        /** @type {unknown[]} */
-        const events = [];
-        /** @type {number[]} */
-        const sourceIndices = [];
-        for (const event of filtered) {
-            const sourceIndex = allEvents.indexOf(event);
-            if (sourceIndex !== -1) {
-                events.push(event);
-                sourceIndices.push(sourceIndex);
-            }
-        }
-        return { events, sourceIndices, allEvents, filterActive: true };
+        const searchFiltered = new Set(em.getFilteredEvents?.() ?? allEvents);
+        events = events.filter((event) => searchFiltered.has(event));
+        filterActive = true;
+    }
+
+    const sourceIndices = [];
+    const resolvedEvents = [];
+    for (const event of events) {
+        const sourceIndex = allEvents.indexOf(event);
+        if (sourceIndex === -1) continue;
+        resolvedEvents.push(event);
+        sourceIndices.push(sourceIndex);
     }
 
     return {
-        events: allEvents,
-        sourceIndices: allEvents.map((_, index) => index),
+        events: resolvedEvents,
+        sourceIndices,
         allEvents,
-        filterActive: false,
+        filterActive,
     };
 }
 
@@ -790,10 +807,14 @@ export function scrollStoryTimelineToDockSliderProgress(progress) {
     });
 }
 
-export function syncStoryTimelineIfActive() {
+export function syncStoryTimelineIfActive(options = {}) {
     if (!isStoryTimelineViewActive()) return;
     refreshStoryTimelineView({
-        preservePan: !storyTimelineFilterActive(),
+        preservePan: options.preservePan ?? !storyTimelineFilterActive(),
+        scrollToPage: options.scrollToPage,
+        eventsPerPage: options.eventsPerPage,
+        scrollToProgress: options.scrollToProgress,
+        scrollToDockProgress: options.scrollToDockProgress,
     });
 }
 

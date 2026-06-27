@@ -6,9 +6,8 @@
  *
  * Behaviour:
  *   - Desktop: toolbar always visible, button state cleared.
- *   - Mobile: button toggles `events-manage-panel--toolbar-collapsed` on the panel and hides
- *     the search controls. State persists in `localStorage.eventsManageToolbarCollapsed`
- *     (`'1'` collapsed, `'0'` expanded). No stored value → default to collapsed on mobile.
+ *   - Mobile (Event Manager dock): button toggles collapse; defaults collapsed.
+ *   - Mobile (Story list embedded): search always visible; toggle hidden.
  *   - Re-applies on `resize` and `orientationchange` (1-frame deferred for orientation).
  *
  * Idempotent: `listenerService._eventsManageToolbarCollapseBound` blocks double-wiring.
@@ -16,6 +15,8 @@
  * @param {{ _eventsManageToolbarCollapseBound?: boolean }} listenerService
  * @param {HTMLElement} panel
  */
+import { isCompactMobileViewport, shouldPinEmbeddedArchiveSearchToolbar } from '../../../interface-shared/embeddedArchiveMobileSearch.js';
+
 export function wireToolbarCollapse(listenerService, panel) {
     if (listenerService._eventsManageToolbarCollapseBound) return;
     const btn = document.getElementById('eventsManageToolbarToggleBtn');
@@ -25,20 +26,16 @@ export function wireToolbarCollapse(listenerService, panel) {
     listenerService._eventsManageToolbarCollapseBound = true;
 
     const storageKey = 'eventsManageToolbarCollapsed';
-    const isEventsManageMobileToolbar = () => {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        return w <= 768 || Math.min(w, h) < 600;
-    };
 
     const LABEL_HIDE = 'Hide controls';
     const LABEL_SHOW = 'Show controls';
 
     const apply = () => {
-        const mobile = isEventsManageMobileToolbar();
-        const collapsed = btn.getAttribute('aria-pressed') === 'true';
+        const pinned = shouldPinEmbeddedArchiveSearchToolbar(panel);
+        const mobile = isCompactMobileViewport();
+        const collapsed = !pinned && btn.getAttribute('aria-pressed') === 'true';
 
-        if (!mobile) {
+        if (!mobile || pinned) {
             panel.classList.remove('events-manage-panel--toolbar-collapsed');
             btn.setAttribute('aria-pressed', 'false');
             btn.textContent = LABEL_HIDE;
@@ -64,18 +61,17 @@ export function wireToolbarCollapse(listenerService, panel) {
         } else if (stored === '0') {
             btn.setAttribute('aria-pressed', 'false');
         } else {
-            // First visit: default to collapsed on mobile (portrait + landscape).
-            btn.setAttribute('aria-pressed', isEventsManageMobileToolbar() ? 'true' : 'false');
+            btn.setAttribute('aria-pressed', isCompactMobileViewport() ? 'true' : 'false');
         }
     } catch (_) {
-        btn.setAttribute('aria-pressed', isEventsManageMobileToolbar() ? 'true' : 'false');
+        btn.setAttribute('aria-pressed', isCompactMobileViewport() ? 'true' : 'false');
     }
 
     apply();
 
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (!isEventsManageMobileToolbar()) return;
+        if (!isCompactMobileViewport() || shouldPinEmbeddedArchiveSearchToolbar(panel)) return;
         const next = btn.getAttribute('aria-pressed') !== 'true';
         btn.setAttribute('aria-pressed', next ? 'true' : 'false');
         apply();

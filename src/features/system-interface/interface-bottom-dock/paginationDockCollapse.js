@@ -45,7 +45,8 @@ export function initPaginationDockTopChromeMetrics() {
 /** Narrow width or short edge — matches event-manager toolbar / phone landscape */
 export function isPaginationMobileCompactViewport() {
     const w = window.innerWidth;
-    return w <= 768;
+    const h = window.innerHeight;
+    return w <= 768 || h <= 599;
 }
 
 /** Notify listeners that only hook window.resize; globe uses ResizeObserver on #globe-container for live sync */
@@ -133,6 +134,12 @@ export function initPaginationDockCollapse() {
     btn.addEventListener('click', () => {
         togglePaginationDockCollapse();
     });
+
+    const onViewportChange = () => {
+        applyPaginationDockViewportMode();
+    };
+    window.addEventListener('resize', onViewportChange);
+    window.addEventListener('orientationchange', onViewportChange);
 }
 
 if (typeof window !== 'undefined') {

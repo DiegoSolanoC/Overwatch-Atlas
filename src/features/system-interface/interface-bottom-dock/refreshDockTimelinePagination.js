@@ -2,7 +2,7 @@
  * Rebuild dock pagination after any dock timeline subset changes (gallery entity, era, etc.).
  */
 
-import { scrollStoryTimelineToDockPage } from '../../story/story-mode/StoryTimelineView.js';
+import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
 
 export function refreshDockTimelinePagination() {
     const slide = window.standaloneEventSlide;
@@ -42,9 +42,11 @@ export function refreshDockTimelinePagination() {
     window.globeEventMarkerManager?.refreshEventMarkers?.(true);
     window.globeController?.map2dLite?.syncMarkers?.({ mode: 'pageTurn' });
 
-    if (subsetActive) {
-        scrollStoryTimelineToDockPage(1, perPage);
-    }
+    syncStoryTimelineIfActive({
+        preservePan: false,
+        scrollToPage: pagination?.getCurrentPage?.() || 1,
+        eventsPerPage: perPage,
+    });
 
     window.dispatchEvent(
         new CustomEvent('atlas-dock-timeline-page-changed', {

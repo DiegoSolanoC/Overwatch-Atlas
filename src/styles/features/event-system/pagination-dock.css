@@ -329,151 +329,138 @@ body.pagination-dock-mobile-locked .pagination-dock-collapse-strip {
     display: none !important;
 }
 
-/* Mobile-locked mode: lower dock top border image slightly. */
+/* Mobile-locked mode: desktop-like dock chrome (portrait + landscape). */
 body.pagination-dock-mobile-locked:has(#paginationDock) {
     --dock-border-bottom-offset: 0px;
-    --dock-border-height: 150px;
-    --dock-collapse-bottom: 43px;
-    --dock-center-rail-y: 11px;
+    --dock-border-height: 190px;
+    --dock-collapse-bottom: 70px;
+    --dock-center-rail-y: 0px;
+    --dock-top-cap-lift: -5px;
+    --dock-trapezoid-offset-y: 3px;
+    --dock-trapezoid-rail-shift-y: -2px;
+    --dock-border-img-h: 88px;
+    --dock-trapezoid-width: min(820px, 98vw);
+    --dock-segment-slant: 4px;
+}
+
+body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {
+    align-items: stretch !important;
+    justify-content: center !important;
 }
 
 /*
- * Mobile portrait: match desktop dock chrome (trapezoid cap, border art, slider).
- * Landscape mobile keeps legacy compact metrics below.
+ * Symmetric inset — the collapsed-dock news-ticker rule uses heavy left padding on desktop;
+ * on mobile compact that shoves the slider + number strip off-center.
  */
-@media (max-width: 768px) and (orientation: portrait) {
-    body.pagination-dock-mobile-locked:has(#paginationDock) {
-        --dock-border-bottom-offset: 0px;
-        --dock-border-height: 190px;
-        --dock-collapse-bottom: 70px;
-        --dock-center-rail-y: 0px;
-        --dock-top-cap-lift: -5px;
-        --dock-trapezoid-offset-y: 3px;
-        --dock-trapezoid-rail-shift-y: -2px;
-        --dock-border-img-h: 88px;
-        --dock-trapezoid-width: min(820px, 98vw);
-        --dock-segment-slant: 4px;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination,
+body.pagination-dock-mobile-locked:has(#paginationDock):has(footer.timeline-loaded) .event-pagination {
+    align-items: stretch !important;
+    justify-content: center !important;
+    padding-left: calc(env(safe-area-inset-left, 0px) + clamp(12px, 3.5vw, 24px)) !important;
+    padding-right: calc(env(safe-area-inset-right, 0px) + clamp(12px, 3.5vw, 24px)) !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {
-        align-items: stretch !important;
-        justify-content: center !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-row,
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-wrap {
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+}
 
-    /*
-     * Symmetric inset — the collapsed-dock news-ticker rule uses heavy left padding on desktop;
-     * on portrait that shoves the slider + number strip off-center.
-     */
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination,
-    body.pagination-dock-mobile-locked:has(#paginationDock):has(footer.timeline-loaded) .event-pagination {
-        align-items: stretch !important;
-        justify-content: center !important;
-        padding-left: calc(env(safe-area-inset-left, 0px) + clamp(12px, 3.5vw, 24px)) !important;
-        padding-right: calc(env(safe-area-inset-right, 0px) + clamp(12px, 3.5vw, 24px)) !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination-thumb-row {
+    justify-content: center !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-row,
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-wrap {
-        width: 100%;
-        max-width: 100%;
-        align-self: stretch;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .event-pagination-thumb-row
+    .event-number-buttons.event-number-buttons--thumbs-desktop {
+    justify-content: center !important;
+    margin-inline: auto;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination-thumb-row {
-        justify-content: center !important;
-    }
+/* Trapezoid cap: keep page field readable on narrow segments */
+body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-top-trapezoid {
+    overflow: visible;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .event-pagination-thumb-row
-        .event-number-buttons.event-number-buttons--thumbs-desktop {
-        justify-content: center !important;
-        margin-inline: auto;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail.dock-globe-rail--center {
+    --dock-segment-slant: 4px;
+    overflow: visible;
+}
 
-    /* Trapezoid cap: keep page field readable on narrow segments */
-    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock-top-trapezoid {
-        overflow: visible;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container {
+    flex: 1.2 1 0 !important;
+    clip-path: none !important;
+    padding: 2px 4px !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail.dock-globe-rail--center {
-        --dock-segment-slant: 4px;
-        overflow: visible;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container
+    .page-label,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container
+    .page-total {
+    display: none !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > .page-input-container {
-        flex: 1.2 1 0 !important;
-        clip-path: none !important;
-        padding: 2px 4px !important;
-        gap: 4px !important;
-        min-width: 0 !important;
-        overflow: visible !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > .page-input-container
+    .page-input {
+    width: 2.25rem !important;
+    min-width: 34px !important;
+    max-width: 48px !important;
+    height: 26px !important;
+    padding: 0 4px !important;
+    font-size: 14px !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > .page-input-container
-        .page-label,
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > .page-input-container
-        .page-total {
-        display: none !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #prevEventBtn.globe-control-btn,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #nextEventBtn.globe-control-btn {
+    flex: 0.55 1 0 !important;
+    padding: 0 2px !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > .page-input-container
-        .page-input {
-        width: 2.25rem !important;
-        min-width: 34px !important;
-        max-width: 48px !important;
-        height: 26px !important;
-        padding: 0 4px !important;
-        font-size: 14px !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #globalImageToggle.dock-globe-rail__btn,
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .pagination-dock-top-trapezoid
+    .dock-globe-rail--center
+    > #erasToggle.dock-globe-rail__btn {
+    flex: 0.75 1 0 !important;
+    padding: 0 2px !important;
+}
 
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #prevEventBtn.globe-control-btn,
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #nextEventBtn.globe-control-btn {
-        flex: 0.55 1 0 !important;
-        padding: 0 2px !important;
-    }
-
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #globalImageToggle.dock-globe-rail__btn,
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .pagination-dock-top-trapezoid
-        .dock-globe-rail--center
-        > #erasToggle.dock-globe-rail__btn {
-        flex: 0.75 1 0 !important;
-        padding: 0 2px !important;
-    }
-
-    /* Page slider visible on portrait (same as desktop dock) */
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-row.event-page-slider-row--desktop-only {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        height: auto !important;
-        min-height: 56px !important;
-        pointer-events: auto !important;
-        overflow: visible !important;
-    }
+/* Page slider visible on mobile compact (same as desktop dock) */
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-row.event-page-slider-row--desktop-only {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 56px !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
 }
 
 /*
@@ -513,109 +500,92 @@ body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--t
     text-shadow: none;
 }
 
-/* Mobile narrow: skewed thumb strip (portrait + landscape — matches desktop collapsed dock) */
-@media (max-width: 768px) {
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination-thumb-row {
-        align-items: stretch !important;
-    }
-
-    body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail {
-        --thumb-skew: -11deg;
-        min-height: 48px !important;
-        max-height: 52px !important;
-        height: 48px !important;
-        width: clamp(44px, 4.2vw, 56px) !important;
-        min-width: 44px !important;
-        max-width: none !important;
-        aspect-ratio: unset !important;
-        flex: 0 0 auto !important;
-        align-self: center !important;
-        transform: skewX(var(--thumb-skew)) !important;
-        border-radius: 14px !important;
-    }
-
-    body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail .page-btn__arrow-inner {
-        transform: skewX(11deg);
-    }
-
-    body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:hover:not(:disabled) {
-        transform: skewX(var(--thumb-skew)) scale(1.06) !important;
-    }
-
-    body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:active:not(:disabled) {
-        transform: skewX(var(--thumb-skew)) scale(0.97) !important;
-    }
-
-    body.pagination-dock-mobile-locked:has(#paginationDock)
-        .event-pagination-thumb-row
-        .event-number-buttons.event-number-buttons--thumbs-desktop {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        width: auto !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-        flex-wrap: nowrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        align-self: stretch !important;
-        gap: 14px !important;
-        padding: 2px 0 6px !important;
-        box-sizing: border-box !important;
-    }
-
-    body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
-        --thumb-skew: -11deg;
-        position: relative;
-        min-height: 44px !important;
-        max-height: 52px !important;
-        height: 48px !important;
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        aspect-ratio: unset !important;
-        flex: 0 0 calc((100% - 9 * 14px) / 10) !important;
-        max-width: calc((100% - 9 * 14px) / 10) !important;
-        transform: skewX(var(--thumb-skew)) !important;
-        border-radius: 16px !important;
-        overflow: hidden;
-        background: #ffffff !important;
-        border-width: 4px 0 !important;
-        border-style: solid !important;
-        border-color: rgba(0, 0, 0, 0.14) !important;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28) !important;
-        color: #1a1a1a !important;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box !important;
-    }
-
-    body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn:hover:not(:disabled),
-    body.pagination-dock-mobile-locked
-        .event-number-buttons.event-number-buttons--thumbs-desktop
-        .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
-        transform: skewX(var(--thumb-skew)) scale(1.06) !important;
-        background: #f3f7ff !important;
-        border-color: rgba(255, 186, 80, 0.95) !important;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
-    }
+/* Mobile compact: skewed white number slots (matches desktop collapsed dock) */
+body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination-thumb-row {
+    align-items: stretch !important;
 }
 
-/* Slider off on mobile landscape dock only; portrait shows slider like desktop */
-@media (max-width: 768px) and (orientation: landscape) {
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-page-slider-row.event-page-slider-row--desktop-only {
-        display: none !important;
-        min-height: 0 !important;
-        padding: 0 !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        height: 0 !important;
-        overflow: hidden !important;
-    }
+body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail {
+    --thumb-skew: -11deg;
+    min-height: 48px !important;
+    max-height: 52px !important;
+    height: 48px !important;
+    width: clamp(44px, 4.2vw, 56px) !important;
+    min-width: 44px !important;
+    max-width: none !important;
+    aspect-ratio: unset !important;
+    flex: 0 0 auto !important;
+    align-self: center !important;
+    transform: skewX(var(--thumb-skew)) !important;
+    border-radius: 14px !important;
 }
 
-body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only,
+body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail .page-btn__arrow-inner {
+    transform: skewX(11deg);
+}
+
+body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:hover:not(:disabled) {
+    transform: skewX(var(--thumb-skew)) scale(1.06) !important;
+}
+
+body.pagination-dock-mobile-locked .event-pagination-thumb-row .page-btn.page-btn--thumb-rail:active:not(:disabled) {
+    transform: skewX(var(--thumb-skew)) scale(0.97) !important;
+}
+
+body.pagination-dock-mobile-locked:has(#paginationDock)
+    .event-pagination-thumb-row
+    .event-number-buttons.event-number-buttons--thumbs-desktop {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: auto !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-self: stretch !important;
+    gap: 14px !important;
+    padding: 2px 0 6px !important;
+    box-sizing: border-box !important;
+}
+
+body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn {
+    --thumb-skew: -11deg;
+    position: relative;
+    min-height: 44px !important;
+    max-height: 52px !important;
+    height: 48px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    aspect-ratio: unset !important;
+    flex: 0 0 calc((100% - 9 * 14px) / 10) !important;
+    max-width: calc((100% - 9 * 14px) / 10) !important;
+    transform: skewX(var(--thumb-skew)) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    background: #ffffff !important;
+    border-width: 4px 0 !important;
+    border-style: solid !important;
+    border-color: rgba(0, 0, 0, 0.14) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28) !important;
+    color: #1a1a1a !important;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box !important;
+}
+
+body.pagination-dock-mobile-locked .event-number-buttons.event-number-buttons--thumbs-desktop .event-number-btn:hover:not(:disabled),
+body.pagination-dock-mobile-locked
+    .event-number-buttons.event-number-buttons--thumbs-desktop
+    .event-number-btn.number-btn-marker-hover:not(:disabled):not(.locked) {
+    transform: skewX(var(--thumb-skew)) scale(1.06) !important;
+    background: #f3f7ff !important;
+    border-color: rgba(255, 186, 80, 0.95) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
 body:has(#paginationDock) .page-controls-row--mobile-only {
     display: flex !important;
     align-self: stretch;
@@ -629,10 +599,8 @@ body:has(#paginationDock) .page-controls-row--mobile-only {
     flex-wrap: nowrap !important;
 }
 
-@media (max-width: 768px) and (orientation: portrait) {
-    body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only {
-        display: none !important;
-    }
+body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only {
+    display: none !important;
 }
 
 /* Style Events and Filters buttons in page controls row on desktop */

@@ -69,7 +69,9 @@
         font-size: 18px !important;
     }
 
-    .event-number-btn {
+    /* Dock thumb numerals use pagination-dock mobile-locked slots — not the generic chip size */
+    body:not(.pagination-dock-mobile-locked) .event-number-buttons--thumbs-desktop .event-number-btn,
+    .event-number-buttons:not(.event-number-buttons--thumbs-desktop) .event-number-btn {
         width: 32px !important;
         height: 32px !important;
         font-size: 14px !important;
@@ -435,26 +437,6 @@
         width: 28px !important;
         height: 28px !important;
         margin: 0 !important;
-    }
-    }
-
-    /* Center pagination dock on mobile landscape (portrait uses desktop stretch layout) */
-    @media (orientation: landscape) {
-    body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination {
-        align-items: center !important;
-        justify-content: center !important;
-        padding-left: calc(env(safe-area-inset-left, 0px) + clamp(28px, 5vw, 88px)) !important;
-        padding-right: calc(env(safe-area-inset-right, 0px) + clamp(28px, 5vw, 88px)) !important;
-    }
-
-    body.pagination-dock-mobile-locked:has(#paginationDock):has(footer.timeline-loaded) .event-pagination {
-        padding-left: calc(env(safe-area-inset-left, 0px) + clamp(28px, 5vw, 88px)) !important;
-        padding-right: calc(env(safe-area-inset-right, 0px) + clamp(28px, 5vw, 88px)) !important;
     }
     }
 

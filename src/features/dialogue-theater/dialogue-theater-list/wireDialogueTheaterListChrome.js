@@ -3,6 +3,10 @@
  */
 
 import { applyStoryArchiveGridSquishFromDefaults } from '../../data-workshop/archive-controls-ui/ArchiveGridSquish.js';
+import {
+    isCompactMobileViewport,
+    shouldPinEmbeddedArchiveSearchToolbar,
+} from '../../system-interface/interface-shared/embeddedArchiveMobileSearch.js';
 
 /**
  * @param {HTMLElement} panel
@@ -44,20 +48,15 @@ export function wireDialogueTheaterToolbarCollapse(panel) {
     panel.dataset.dialogueTheaterToolbarCollapseBound = 'true';
 
     const storageKey = 'dialogueTheaterToolbarCollapsed';
-    const isMobileToolbar = () => {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        return w <= 768 || Math.min(w, h) < 600;
-    };
-
     const LABEL_HIDE = 'Hide controls';
     const LABEL_SHOW = 'Show controls';
 
     const apply = () => {
-        const mobile = isMobileToolbar();
-        const collapsed = btn.getAttribute('aria-pressed') === 'true';
+        const pinned = shouldPinEmbeddedArchiveSearchToolbar(panel);
+        const mobile = isCompactMobileViewport();
+        const collapsed = !pinned && btn.getAttribute('aria-pressed') === 'true';
 
-        if (!mobile) {
+        if (!mobile || pinned) {
             panel.classList.remove('events-manage-panel--toolbar-collapsed');
             btn.setAttribute('aria-pressed', 'false');
             btn.textContent = LABEL_HIDE;
@@ -81,17 +80,17 @@ export function wireDialogueTheaterToolbarCollapse(panel) {
         } else if (stored === '0') {
             btn.setAttribute('aria-pressed', 'false');
         } else {
-            btn.setAttribute('aria-pressed', isMobileToolbar() ? 'true' : 'false');
+            btn.setAttribute('aria-pressed', isCompactMobileViewport() ? 'true' : 'false');
         }
     } catch (_) {
-        btn.setAttribute('aria-pressed', isMobileToolbar() ? 'true' : 'false');
+        btn.setAttribute('aria-pressed', isCompactMobileViewport() ? 'true' : 'false');
     }
 
     apply();
 
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (!isMobileToolbar()) return;
+        if (!isCompactMobileViewport() || shouldPinEmbeddedArchiveSearchToolbar(panel)) return;
         const next = btn.getAttribute('aria-pressed') !== 'true';
         btn.setAttribute('aria-pressed', next ? 'true' : 'false');
         apply();

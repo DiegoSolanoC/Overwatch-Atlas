@@ -104,6 +104,7 @@ export function applyStoryViewDisplayMode(mode) {
         requestAnimationFrame(() => {
             resyncStoryArchivePreviewImages();
             refreshStoryArchiveEraTint();
+            window.dispatchEvent(new Event('resize'));
         });
     });
 }

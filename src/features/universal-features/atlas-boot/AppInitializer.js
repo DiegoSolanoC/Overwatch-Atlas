@@ -24,6 +24,7 @@ import {
     setupHeaderHub,
     setupOfficialSiteLinkSound
 } from '../atlas-header/HeaderModeSynchronization.js';
+import { initMobilePortraitGate } from './mobilePortraitGate.js';
 import { setupZoomControls } from '../../world/worldview-controls-ui/runtime/WorldviewZoomControls.js';
 import { loadEventSystem } from '../../system-interface/interface-load-unload/EventSystemLoadOut.js?v=100';
 import {
@@ -208,10 +209,12 @@ window.addEventListener('DOMContentLoaded', function () {
 // interaction controller isn't ready yet, it polls internally and re-runs
 // once the globe loads — no boot-side babysitting required.
 if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobilePortraitGate);
     document.addEventListener('DOMContentLoaded', setupHeaderHub);
     document.addEventListener('DOMContentLoaded', setupZoomControls);
     document.addEventListener('DOMContentLoaded', setupOfficialSiteLinkSound);
 } else {
+    initMobilePortraitGate();
     setupHeaderHub();
     setupZoomControls();
     setupOfficialSiteLinkSound();

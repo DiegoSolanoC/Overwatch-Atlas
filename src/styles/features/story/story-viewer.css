@@ -874,6 +874,61 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
         #storyArchiveBottomBar {
         display: none !important;
     }
+
+    /*
+     * Story list + Dialogue Theater: search pinned under mode rail on mobile.
+     */
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded--list-view
+        .events-manage-content,
+    body:has(.dialogue-theater-list-host.active)
+        .dialogue-theater-panel-embedded
+        .events-manage-content {
+        padding-top: var(--mode-dock-rail-clearance, calc(var(--mode-dock-rail-top, 88px) + 56px));
+        box-sizing: border-box;
+    }
+
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded--list-view
+        #eventsManageControls,
+    body:has(.dialogue-theater-list-host.active)
+        .dialogue-theater-panel-embedded
+        #dialogueTheaterManageControls {
+        display: flex !important;
+        flex-direction: column;
+        visibility: visible !important;
+        padding-inline: clamp(12px, 3.5vw, 20px);
+        margin-bottom: 12px;
+    }
+
+    .story-viewer-panel-embedded--list-view.events-manage-panel--toolbar-collapsed #eventsManageControls,
+    .dialogue-theater-panel-embedded.events-manage-panel--toolbar-collapsed #dialogueTheaterManageControls {
+        display: flex !important;
+    }
+
+    .story-viewer-panel-embedded--list-view #eventsManageToolbarToggleBtn,
+    .dialogue-theater-panel-embedded #dialogueTheaterToolbarToggleBtn {
+        display: none !important;
+    }
+
+    .story-viewer-panel-embedded--list-view
+        .events-manage-search-row--primary
+        .events-search-input--title {
+        width: 100%;
+        max-width: min(440px, 92vw);
+        min-width: 0;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded--list-view
+        #eventsList.events-list,
+    body:has(.dialogue-theater-list-host.active)
+        .dialogue-theater-panel-embedded
+        #dialogueTheaterList.events-list {
+        padding-top: clamp(4px, 1vh, 8px);
+    }
 }
 
 /* Whole header hidden in Data Archive (title + count); toolbar lives in #eventsManageControls */
