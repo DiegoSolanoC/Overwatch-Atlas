@@ -3,7 +3,7 @@
  *   - Open/close toggle (`#eventsManageToggle`) — also closes music/filters panels.
  *   - Close button (`#eventsManageClose`).
  *   - Add (`#addEventBtn`), Save (`#saveEventsBtn`), Export (`#exportEventsBtn`),
- *     Import (`#importEventsBtn` + `#importEventsFile`).
+ *     Import (`#importEventsBtn` + `#importEventsFile`), Merge (`#mergeEventsBtn` + `#mergeEventsFile`).
  *
  * On static deploy (GitHub Pages), Add / Save / Export / Import stay available in Story
  * Timeline and Data Workshop bio archives (localStorage + JSON handoff).
@@ -32,13 +32,19 @@ export function syncArchiveManagePanelActionVisibility() {
   const saveBtn = document.getElementById("saveEventsBtn");
   const exportBtn = document.getElementById("exportEventsBtn");
   const importBtn = document.getElementById("importEventsBtn");
+  const mergeBtn = document.getElementById("mergeEventsBtn");
   const importFileInput = document.getElementById("importEventsFile");
+  const mergeFileInput = document.getElementById("mergeEventsFile");
   if (addBtn) addBtn.style.display = canMutateStructure ? "" : "none";
   if (saveBtn) saveBtn.style.display = canImportExport ? "" : "none";
   if (exportBtn) exportBtn.style.display = canImportExport ? "" : "none";
   if (importBtn) importBtn.style.display = canImportExport ? "" : "none";
+  if (mergeBtn) mergeBtn.style.display = canImportExport ? "" : "none";
   if (importFileInput) {
     importFileInput.style.display = canImportExport ? "" : "none";
+  }
+  if (mergeFileInput) {
+    mergeFileInput.style.display = canImportExport ? "" : "none";
   }
 }
 
@@ -173,6 +179,24 @@ export function wireManagePanelButtons(
       const file = e.target.files?.[0];
       if (file && eventManager.importEvents) {
         eventManager.importEvents(file);
+        e.target.value = "";
+      }
+    });
+  }
+
+  const mergeBtn = document.getElementById("mergeEventsBtn");
+  const mergeFileInput = document.getElementById("mergeEventsFile");
+  if (mergeBtn) {
+    wireManageButtonOnce(mergeBtn, "atlasMergeWired", () => {
+      mergeFileInput?.click();
+    });
+  }
+  if (mergeFileInput && mergeFileInput.dataset.atlasMergeFileWired !== "1") {
+    mergeFileInput.dataset.atlasMergeFileWired = "1";
+    mergeFileInput.addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (file && eventManager.mergeEvents) {
+        eventManager.mergeEvents(file);
         e.target.value = "";
       }
     });

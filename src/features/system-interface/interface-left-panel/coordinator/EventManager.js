@@ -214,6 +214,27 @@ class EventManager {
         }
     }
 
+    async mergeEvents(file) {
+        if (!this.dataService) {
+            alert('Error: EventDataService not available');
+            return;
+        }
+        try {
+            const result = await this.dataService.mergeEventsFromFile(file);
+            if (result.success) {
+                this.renderEvents();
+                this.syncEventsToGlobe();
+                alert(
+                    `Merge applied — ${result.count} events in timeline. ` +
+                    'Use Save on localhost to write the repo file, or Export to share JSON.'
+                );
+            }
+        } catch (error) {
+            console.error('Error merging events:', error);
+            alert('Error merging events: ' + error.message);
+        }
+    }
+
     findCityCoordinates(cityName) {
         return this.dataService?.findCityCoordinates(cityName) || null;
     }

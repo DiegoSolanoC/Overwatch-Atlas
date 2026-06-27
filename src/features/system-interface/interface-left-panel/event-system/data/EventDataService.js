@@ -59,7 +59,7 @@ import {
     refreshStoryDockSnapshotFromCurrentEvents,
 } from './storyDockSnapshot.js';
 import { refreshBioArchivesFromCodexDiskWrite } from './refreshBioArchivesFromCodex.js';
-import { exportEvents, importEvents } from './importExportEvents.js';
+import { exportEvents, importEvents, mergeEventsFromFile } from './importExportEvents.js';
 import { mergeTimelineMetadataFromFileEvents } from './mergeTimelineMetadataFromFile.js';
 
 class EventDataService {
@@ -252,6 +252,7 @@ class EventDataService {
 
     exportEvents() { exportEvents(this); }
     importEvents(file) { return importEvents(this, file); }
+    mergeEventsFromFile(file) { return mergeEventsFromFile(this, file); }
 
     // --- Lookups / accessors ---
 

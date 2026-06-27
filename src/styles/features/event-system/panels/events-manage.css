@@ -273,6 +273,15 @@ body.color-palette-gray .events-manage-title {
     background: rgba(156, 39, 176, 0.5);
 }
 
+.events-manage-action-btn.merge-btn {
+    background: rgba(255, 152, 0, 0.28);
+    border-color: rgba(255, 152, 0, 0.62);
+}
+
+.events-manage-action-btn.merge-btn:hover {
+    background: rgba(255, 152, 0, 0.48);
+}
+
 /* Search toolbar — outer frame matches .filters-actions + .filters-title */
 .events-manage-controls {
     display: flex;

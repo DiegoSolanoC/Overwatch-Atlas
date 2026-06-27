@@ -12,6 +12,8 @@ import {
     persistStoryTimelineToLocalStorage,
     shouldUseStoryTimelineForViewerIo,
 } from './archiveStoryViewerContext.js';
+import { buildStoryEventsMergePlan } from './mergeStoryEvents.js';
+import { openStoryEventsMergeModal } from './StoryEventsMergeModal.js';
 
 /**
  * @param {import('./EventDataService.js').default} dataService
@@ -112,4 +114,40 @@ export function importEvents(dataService, file) {
         reader.onerror = () => reject(new Error('Failed to read file'));
         reader.readAsText(file);
     });
+}
+
+/**
+ * @param {import('./EventDataService.js').default} dataService
+ * @param {File} file
+ */
+export async function mergeEventsFromFile(dataService, file) {
+    const text = await file.text();
+    let parsed;
+    try {
+        parsed = JSON.parse(text);
+    } catch {
+        throw new Error('Selected file is not valid JSON');
+    }
+    if (!parsed?.events || !Array.isArray(parsed.events)) {
+        throw new Error('Invalid file format: expected { events: [...] }');
+    }
+
+    const { events: baseEvents } = resolveExportPayload(dataService);
+    const plan = buildStoryEventsMergePlan(baseEvents, parsed.events);
+
+    if (!plan.hasDifferences) {
+        dataService.updateStatus?.(
+            'Merge skipped — current data and selected file have no differences',
+            'info',
+        );
+        return { success: false, reason: 'identical', count: baseEvents.length };
+    }
+
+    const merged = await openStoryEventsMergeModal(plan);
+    if (!merged) {
+        return { success: false, reason: 'cancelled' };
+    }
+
+    await applyImportedEvents(dataService, merged);
+    return { success: true, count: merged.length };
 }

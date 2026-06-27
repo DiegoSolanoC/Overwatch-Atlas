@@ -195,10 +195,12 @@ export async function embedArchiveEventsPanel(archiveSource, chrome = {}) {
     const saveBtn = document.getElementById('saveEventsBtn');
     const importBtn = document.getElementById('importEventsBtn');
     const exportBtn = document.getElementById('exportEventsBtn');
+    const mergeBtn = document.getElementById('mergeEventsBtn');
     if (addBtn) addBtn.classList.add('story-viewer-action-btn');
     if (saveBtn) saveBtn.classList.add('story-viewer-action-btn');
     if (exportBtn) exportBtn.classList.add('story-viewer-action-btn');
     if (importBtn) importBtn.classList.add('story-viewer-action-btn');
+    if (mergeBtn) mergeBtn.classList.add('story-viewer-action-btn');
 
     applyEmbeddedPanelChrome(eventsManagePanel, archiveSource, chrome);
     if (chrome.showCategoryToolbar) {
