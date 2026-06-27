@@ -119,7 +119,8 @@
         height: 32px !important;
     }
 
-    /* Page field: rounded chip (no trapezium clip) — same family as dock row icon buttons */
+    /* Page field in trapezoid cap (portrait uses center rail like desktop) */
+    @media (orientation: landscape) {
     body.pagination-dock-mobile-locked:has(#paginationDock) .page-controls-row--mobile-only .page-input-container {
         flex: 0 1 auto !important;
         width: auto !important;
@@ -268,8 +269,10 @@
         height: 28px !important;
         margin: 0 !important;
     }
+    }
 
-    /* Center pagination dock on mobile portrait */
+    /* Center pagination dock on mobile landscape (portrait uses desktop stretch layout) */
+    @media (orientation: landscape) {
     body.pagination-dock-mobile-locked:has(#paginationDock) .pagination-dock {
         align-items: center !important;
         justify-content: center !important;
@@ -278,15 +281,14 @@
     body.pagination-dock-mobile-locked:has(#paginationDock) .event-pagination {
         align-items: center !important;
         justify-content: center !important;
-        /* Override asymmetric padding to center the content */
         padding-left: calc(env(safe-area-inset-left, 0px) + clamp(28px, 5vw, 88px)) !important;
         padding-right: calc(env(safe-area-inset-right, 0px) + clamp(28px, 5vw, 88px)) !important;
     }
 
-    /* Override timeline-loaded padding on mobile portrait for centering */
     body.pagination-dock-mobile-locked:has(#paginationDock):has(footer.timeline-loaded) .event-pagination {
         padding-left: calc(env(safe-area-inset-left, 0px) + clamp(28px, 5vw, 88px)) !important;
         padding-right: calc(env(safe-area-inset-right, 0px) + clamp(28px, 5vw, 88px)) !important;
+    }
     }
 
     /* Hide codex controls on mobile portrait */

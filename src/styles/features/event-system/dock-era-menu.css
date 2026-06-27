@@ -2,13 +2,18 @@
 
 .dock-era-menu {
     position: fixed;
-    z-index: 320;
+    /* Above pagination dock chrome (620–670) and collapse strip */
+    z-index: 680;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     gap: 12px;
+    width: max-content;
+    max-width: calc(100vw - 20px);
+    box-sizing: border-box;
+    overflow: visible;
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
@@ -51,8 +56,13 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    /* flex-start prevents centered overflow from clipping first/last era icons */
+    justify-content: flex-start;
     gap: 14px;
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
 }
 
 .dock-era-option-btn {
@@ -109,6 +119,12 @@
     box-shadow: 0 0 14px rgba(255, 152, 0, 0.45);
 }
 
+@media (min-width: 769px) {
+    .dock-era-menu__buttons {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 768px) {
     .dock-era-menu__title {
         font-size: clamp(1.1rem, 5vw, 1.5rem);
@@ -118,11 +134,15 @@
     }
 
     .dock-era-menu__buttons {
-        gap: 10px;
-        max-width: calc(100vw - 16px);
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        padding-inline: 2px;
         overflow-x: auto;
-        overflow-y: hidden;
+        overflow-y: visible;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding-inline: 8px;
     }
 
     .dock-era-menu__buttons::-webkit-scrollbar {
@@ -130,7 +150,37 @@
     }
 
     .dock-era-option-btn {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .dock-era-menu.open,
+    .dock-era-menu.open.dock-era-menu--portrait-sheet {
+        transform: none !important;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .dock-era-menu--portrait-sheet .dock-era-menu__title {
+        align-self: center;
+        max-width: 100%;
+    }
+
+    .dock-era-menu--portrait-sheet .dock-era-menu__buttons {
+        width: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+        gap: 6px;
+        padding-inline: 4px;
+        scroll-padding-inline: 4px;
+    }
+
+    .dock-era-menu--portrait-sheet .dock-era-option-btn {
+        width: 40px;
+        height: 40px;
+        padding: 3px;
+        border-width: 2px;
     }
 }

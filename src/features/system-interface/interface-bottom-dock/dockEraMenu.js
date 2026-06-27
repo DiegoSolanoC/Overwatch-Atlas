@@ -17,29 +17,37 @@ let clickOutsideHandler = null;
 /** @type {string | null} */
 let hoveredEraId = null;
 
-function getBodyScale() {
-    try {
-        const t = window.getComputedStyle(document.body).transform;
-        if (!t || t === 'none') return 1;
-        const m = t.match(/^matrix\(([^)]+)\)$/);
-        if (!m) return 1;
-        const parts = m[1].split(',').map((s) => parseFloat(s.trim()));
-        const a = parts[0];
-        return Number.isFinite(a) && a > 0 ? a : 1;
-    } catch {
-        return 1;
+/** Host on <html> so `position: fixed` is viewport-relative (body uses transform: scale on mobile). */
+function getEraMenuPortal() {
+    return document.documentElement;
+}
+
+function ensureEraMenuPortal(menu) {
+    const portal = getEraMenuPortal();
+    if (menu.parentElement !== portal) {
+        portal.appendChild(menu);
     }
 }
 
+function isMobilePortraitViewport() {
+    return window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+}
+
 /**
- * @returns {HTMLElement | null}
+ * @returns {DOMRect | null}
  */
-function getTrapeziumAnchorEl() {
-    return (
-        document.querySelector('.pagination-dock-top-trapezoid')
-        || document.getElementById('paginationDock')
-        || document.getElementById('dockGlobeRailCenter')
-    );
+function getDockCapAnchorRect() {
+    const capRow = document.querySelector('.pagination-dock-top-cap-row');
+    if (capRow) return capRow.getBoundingClientRect();
+
+    const trap = document.querySelector('.pagination-dock-top-trapezoid');
+    if (trap) return trap.getBoundingClientRect();
+
+    const dock = document.getElementById('paginationDock');
+    if (dock) return dock.getBoundingClientRect();
+
+    const centerRail = document.getElementById('dockGlobeRailCenter');
+    return centerRail ? centerRail.getBoundingClientRect() : null;
 }
 
 /**
@@ -68,31 +76,77 @@ function updateEraMenuTitleDisplay() {
  * @param {HTMLElement} menu
  */
 function positionEraMenuRow(menu) {
-    const anchor = getTrapeziumAnchorEl();
-    if (!anchor) return;
+    const anchorRect = getDockCapAnchorRect();
+    if (!anchorRect) return;
 
-    const scale = getBodyScale();
-    const rect = anchor.getBoundingClientRect();
-    const cx = (rect.left + rect.width / 2) / scale;
-    const gapAbove = 36;
-    const anchorTop = rect.top / scale;
+    ensureEraMenuPortal(menu);
 
-    const vw = Math.max(1, (window.innerWidth || 1) / scale);
+    const vv = window.visualViewport;
+    const vvLeft = vv?.offsetLeft ?? 0;
+    const vvTop = vv?.offsetTop ?? 0;
+    const vvWidth = vv?.width ?? window.innerWidth;
+    const vvHeight = vv?.height ?? window.innerHeight;
     const margin = 10;
+    const gapAbove = isMobilePortraitViewport() ? 14 : 36;
+    const portrait = isMobilePortraitViewport();
 
+    menu.style.position = 'fixed';
     menu.style.display = 'flex';
+    menu.classList.toggle('dock-era-menu--portrait-sheet', portrait);
+
+    if (portrait) {
+        /*
+         * Full-width strip: avoid translate(-50%) + max-width shrinking, which with
+         * justify-content:center on the button row clips the first and last icons.
+         */
+        menu.style.transform = 'none';
+        menu.style.width = `${Math.max(160, vvWidth - margin * 2)}px`;
+        menu.style.maxWidth = 'none';
+        menu.style.left = `${vvLeft + margin}px`;
+        menu.style.right = 'auto';
+
+        const menuHeight = menu.offsetHeight;
+        menu.style.top = `${Math.max(
+            vvTop + margin,
+            anchorRect.top - gapAbove - menuHeight,
+        )}px`;
+
+        const buttonsRow = menu.querySelector('.dock-era-menu__buttons');
+        if (buttonsRow) {
+            buttonsRow.scrollLeft = 0;
+        }
+        return;
+    }
+
+    menu.style.transform = 'translate(-50%, 0)';
+    menu.style.width = 'max-content';
+    menu.style.maxWidth = `${Math.max(160, vvWidth - margin * 2)}px`;
+    menu.style.right = 'auto';
+
     const menuWidth = menu.offsetWidth;
     const menuHeight = menu.offsetHeight;
+    const halfW = menuWidth / 2;
 
-    let left = cx;
-    let top = anchorTop - gapAbove - menuHeight;
+    let left = anchorRect.left + anchorRect.width / 2;
+    let top = anchorRect.top - gapAbove - menuHeight;
 
-    if (left - menuWidth / 2 < margin) left = menuWidth / 2 + margin;
-    if (left + menuWidth / 2 > vw - margin) left = vw - menuWidth / 2 - margin;
-    if (top < margin) top = margin;
+    const minLeft = vvLeft + margin + halfW;
+    const maxLeft = vvLeft + vvWidth - margin - halfW;
+    if (left < minLeft) left = minLeft;
+    if (left > maxLeft) left = maxLeft;
+
+    const minTop = vvTop + margin;
+    const maxTop = vvTop + vvHeight - margin - menuHeight;
+    if (top < minTop) top = minTop;
+    if (Number.isFinite(maxTop) && top > maxTop) top = Math.max(minTop, maxTop);
 
     menu.style.left = `${left}px`;
     menu.style.top = `${top}px`;
+
+    const buttonsRow = menu.querySelector('.dock-era-menu__buttons');
+    if (buttonsRow) {
+        buttonsRow.scrollLeft = 0;
+    }
 }
 
 function updateEraMenuActiveState() {
@@ -158,6 +212,7 @@ function ensureDockEraMenuDom() {
     let menu = document.getElementById('dockEraMenu');
     if (menu) {
         ensureDockEraMenuStructure(menu);
+        ensureEraMenuPortal(menu);
         return menu;
     }
 
@@ -195,7 +250,7 @@ function ensureDockEraMenuDom() {
 
     menu.appendChild(titleEl);
     menu.appendChild(row);
-    document.body.appendChild(menu);
+    getEraMenuPortal().appendChild(menu);
     return menu;
 }
 
@@ -209,6 +264,7 @@ export function openDockEraMenu() {
     updateEraMenuActiveState();
 
     const reposition = () => positionEraMenuRow(menu);
+    menu.classList.remove('dock-era-menu--portrait-sheet');
     reposition();
     menu.classList.add('open');
     reposition();
@@ -231,10 +287,14 @@ export function openDockEraMenu() {
     const onResize = () => schedule();
     window.addEventListener('scroll', onScroll, true);
     window.addEventListener('resize', onResize);
+    window.visualViewport?.addEventListener('resize', onResize);
+    window.visualViewport?.addEventListener('scroll', onResize);
 
     menu._eraRepositionCleanup = () => {
         window.removeEventListener('scroll', onScroll, true);
         window.removeEventListener('resize', onResize);
+        window.visualViewport?.removeEventListener('resize', onResize);
+        window.visualViewport?.removeEventListener('scroll', onResize);
         if (raf != null) cancelAnimationFrame(raf);
         menu._eraRepositionCleanup = null;
     };
@@ -249,6 +309,7 @@ export function closeDockEraMenu() {
     const wasOpen = !!menu?.classList.contains('open');
     if (menu) {
         menu.classList.remove('open');
+        menu.classList.remove('dock-era-menu--portrait-sheet');
         try {
             if (menu._eraRepositionCleanup) menu._eraRepositionCleanup();
         } catch (_) {}
