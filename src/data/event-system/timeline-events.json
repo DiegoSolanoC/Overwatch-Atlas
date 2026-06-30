@@ -9718,7 +9718,7 @@
       "name": "The Oslo Attack",
       "locationType": "earth",
       "cityDisplayName": "Oslo, Norway",
-      "description": "One tragic night, the Oslo facility was rocket by multiple explosives. Cassidy was present but outside of the laboratory, as he had to attend a strategy meeting, so at the time Liao and Echo were alone inside of the building when the attack happened. The explosions knocked Cassidy away, but left him uninjured, as he rushed to the lab, he found Liao severely wounded, succubing to her injuries soon after, he sat with her while she died. \n\nLiao would be buried with full honors as the attack was being investigated, her funeral was attended by Mondatta himself, and many other Shambali. Following her death, many monks entered a voluntary full year of silence, as an act of mourning. Liao lived a life trying to make up for a series of events out of her control, in Mondatta's own words during his speech, \"She sought the universal truth, she sought to repay a debt not her own, which had never been hers to pay, but which weighed on her thoughs until the end. We can only pray she is now at peace\". Cassidy did not attend the funeral, as he had turned his attention to hunt her killers\n\nIn her absensce, Echo would be brought online in her unfinished state, to test her performance in field missions. While her AI continued to grow and evolve her capabilities and intelligence, Overwatch personnel feared that she could absorb the wrong input without adequate management, which limited her use within the organization and eventually led to her deactivation when Overwatch was shut down.",
+      "description": "One tragic night, the Oslo facility was rocket by multiple explosives. Cassidy was present but outside of the laboratory, as he had to attend a strategy meeting, so at the time Liao and Echo were alone inside of the building when the attack happened. The explosions knocked Cassidy away, but left him uninjured, as he rushed to the lab, he found Liao severely wounded, succubing to her injuries soon after, he sat with her while she died. \n\nLiao would be buried with full honors as the attack was being investigated, her funeral was attended by Mondatta himself, and many other Shambali. Following her death, many monks entered a voluntary full year of silence, as an act of mourning. Liao lived a life trying to make up for a series of events out of her control, in Mondatta's own words during his speech, \"She sought the universal truth, she sought to repay a debt not her own, which had never been hers to pay, but which weighed on her thoughs until the end. We can only pray she is now at peace\". Cassidy did not attend the funeral, as he had turned his attention to hunt her killers\n\nIn her absensce, Echo would be brought online in her unfinished state, to test her performance in field missions. While her AI continued to grow and evolve her capabilities and intelligence, Overwatch personnel feared that she could absorb the wrong input without adequate management, which limited her use within the organization.",
       "image": "",
       "lat": 59.9133301,
       "lon": 10.7389701,
@@ -11521,7 +11521,7 @@
       "name": "The Petras Act Hearings",
       "locationType": "earth",
       "cityDisplayName": "Petra, Jordan",
-      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like San to testify about Overwatch, and while most agents generally sugar coded their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team tin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack missing, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. In the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee. The act rendered all Overwatch activity illegal and stripped Agents of their credentials and equipment.\n\n\n\nOver the years, Overwatch has fundamentally become a replacement for the old God Program system, building Watchpoints and Ecopoints to ensure global security and recovery. While the actions of the Strike Team and the paramilitary staff were more than questionable, in a lot of ways the scientists staffed at the many bases were some of the best humanity could offer, and yet they would go on to be blacklisted merely for their association with Overwatch. The Rouge God Programs Overwatch had monitored at Grímsvötn were relocated to the Atlantic Arcology under the care of the Martins, except Anubis, as the Temple was turned over to Helix Security, a rising paramilitary firm that took over most of Overwatch's old facilities.",
+      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like San to testify about Overwatch, and while most agents generally sugar coded their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team tin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack missing, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. In the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee. The act rendered all Overwatch activity illegal and stripped Agents of their credentials and equipment.",
       "image": "",
       "sources": [
         {
@@ -11588,8 +11588,74 @@
       ]
     },
     {
+      "name": "Deactivated",
+      "description": "Over the years, Overwatch has fundamentally become a replacement for the old God Program system, building Watchpoints and Ecopoints to ensure global security and recovery. While the actions of the Strike Team and the paramilitary staff were more than questionable, in a lot of ways the scientists staffed at the many bases were some of the best humanity could offer, and yet they would go on to be blacklisted merely for their association with Overwatch. The Rouge God Programs Overwatch had monitored at Grímsvötn were relocated to the Atlantic Arcology under the care of the Martins, except Anubis, as the Temple was turned over to Helix Security, a rising paramilitary firm that took over most of Overwatch's old facilities.\n\nProject: Echo had been deployed in a handful of missions after Dr. Liao's death, but Overwatch leadership was always reluctant to put it into full service. Without Liao's stewardship, it was deemed too dangerous to let Echo learn on her own, so she was shut down and placed into quarantine, lost alongside the many other experimental weapons and unfinished projects now guarded by Helix and other private security groups across the world. Liao's last dream, who had become a person of her own over the years, was essentially shelved like any other piece of machinery would have, unceremoniously buried alongside mountains of failed promises by Overwatch.",
+      "locationType": "earth",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "yearEnd": 2071,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa",
+          "country": "United States,",
+          "reasoning": "Helix takes over Overwatch activity",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        },
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt,",
+          "reasoning": "Helix takes control of the Temple of Anubis",
+          "lat": 30.0444,
+          "lon": 31.2357
+        },
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology,",
+          "reasoning": "The Collective takes over most rouge Ais"
+        }
+      ],
+      "headlines": [
+        "Project: Echo is shut down following the Petras Hearings"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Echo,",
+          "reasoning": "Echo is Shut down"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective, Helix Securities,",
+          "reasoning": "Take control of Overwatch's assets"
+        }
+      ],
+      "yearStart": 2070
+    },
+    {
       "name": "Code of Violence",
-      "description": "No description available.",
+      "description": "The Zurich explosion had not actually killed off Jack or Gabe, they both vanished after the fact, becoming living ghosts. But Reyes was left in a far worse state, when Talon found his body. Dr. O'Deorain concocted a series of chemicals just to keep him alive, further destabilizing his body's molecular phasing. Reyes was living in a never-ending torment, unable to go back to the world of the living, but all things considered, also unwilling to try.\n\nHaving been failed by Overwatch, he decided to give Akande's offer a try, working for Talon alongside another operative, Sombra, to retrieve an asset at a New Mexico site. During the mission, Reyes realized Talon truly lacked any sense of structure, goal or loyalty. Everyone involved was just doing so for their own benefit, loosely fulfilling a shared goal. After clearing off the way into the base, they discovered Subject: Sigma, peacefully floating in maximum security, only to find out an extraction team led by the Widowmaker was to take on the mission from there, as they were still seen as rookies.\n\nThis lack of formalities made Reyes wonder what Takin truly was, a means to an end, held together purely by a code of violence. A group of individuals collaborating purely due to twisted desires leading them to work outside the law, and the perfect kind of environment for Reyes to act as judge, jury and executioner, after so many years of red tape getting in the way. Thus, he took on the mantle of the Reaper, wearing a mask to hide his past and becoming a harbinger of death, taking matters into his own hands and forming an expansive target list of individuals he aimed at removing, with the very last names being his Talon coworkers themselves.",
       "locationType": "earth",
       "cityDisplayName": "New Mexico, United States",
       "lat": 35.6876096,
@@ -11602,116 +11668,45 @@
         {
           "locationName": "New Mexico, United States",
           "country": "United States",
-          "reasoning": ""
+          "reasoning": "Gabriel Reyes takes on the mantle of the Reaper"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reaper, Sombra,",
-          "reasoning": ""
+          "reasoning": "Send to Infiltrate"
         },
         {
           "locationName": "",
           "country": "Sigma,",
-          "reasoning": ""
+          "reasoning": "Kidnapped from the New Mexico Facility"
         },
         {
           "locationName": "",
           "country": "Widowmaker,",
-          "reasoning": ""
+          "reasoning": "Send to finish the extraction"
         },
         {
           "locationName": "",
           "country": "Doomfist, Moira,",
-          "reasoning": ""
+          "reasoning": "Help Reyes survive and Join Talon"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Another Life",
-      "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. However. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To ab infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this chicken and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
-      "locationType": "earth",
-      "lat": 62.648888,
-      "lon": 149.114685,
-      "image": "",
-      "cityDisplayName": "Burkhala, Russia",
-      "yearStart": 2069,
-      "yearEnd": 2080,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Burkhala, Russia",
-          "country": "Russia",
-          "reasoning": "Emre helps Moira steal materials from a R&D facility"
-        },
-        {
-          "locationName": "Guatemala",
-          "country": "Guatemala,",
-          "reasoning": "Emre helps Mauga infiltrate a black site"
-        },
-        {
-          "locationName": "Hungary",
-          "country": "Hungary,",
-          "reasoning": "Emre helps Widowmaker destroy a weapons facility"
-        },
-        {
-          "locationName": "Luanda, Angola",
-          "country": "Angola",
-          "reasoning": "Emre helps Reaper on a raid in Luanda"
+          "reasoning": "Continues to Operate freely with Overwatch gone"
         }
       ],
       "headlines": [
-        "Sightings of a man covered in cybernetics raiding several security sights across the world continue"
+        "Multiple reports of a grim reaper haunting the streets of the US beging to appear"
       ],
       "sources": [
         {
-          "text": "Overwatch Website, Emre",
-          "url": "https://overwatch.blizzard.com/heroes/emre"
-        },
-        {
-          "text": "Search and Destroy",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/search-and-destroy/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Emre,",
-          "reasoning": "Joins Talon against his will"
-        },
-        {
-          "locationName": "",
-          "country": "Moira, Mauga, Widowmaker, Reaper,",
-          "reasoning": "Work alongside Emre but notice something is off"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": "Emre joins Talon but only works on specific missions"
-        },
-        {
-          "locationName": "",
-          "country": "The Chernobog Conspiracy,",
-          "reasoning": "Order Chernobog to use Talon as a means to reach specific sites"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Chernobog,",
-          "reasoning": "Commands Emre to take specific jobs for Talon"
+          "text": "Code of Violence",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/code-of-violence/"
         }
       ]
     },
@@ -11754,45 +11749,6 @@
       ],
       "headlines": [],
       "sources": []
-    },
-    {
-      "name": "Deactivated",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 47.3744489,
-      "lon": 8.5410422,
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearEnd": null,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Echo,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "IJC,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        }
-      ]
     },
     {
       "name": "Shrike",
@@ -11882,6 +11838,84 @@
           "locationName": "",
           "country": "Dae-Hyun,",
           "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Another Life",
+      "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. However. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To ab infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this choice and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
+      "locationType": "earth",
+      "lat": 62.648888,
+      "lon": 149.114685,
+      "image": "",
+      "cityDisplayName": "Burkhala, Russia",
+      "yearStart": 2069,
+      "yearEnd": 2080,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Burkhala, Russia",
+          "country": "Russia",
+          "reasoning": "Emre helps Moira steal materials from a R&D facility"
+        },
+        {
+          "locationName": "Guatemala",
+          "country": "Guatemala,",
+          "reasoning": "Emre helps Mauga infiltrate a black site"
+        },
+        {
+          "locationName": "Hungary",
+          "country": "Hungary,",
+          "reasoning": "Emre helps Widowmaker destroy a weapons facility"
+        },
+        {
+          "locationName": "Luanda, Angola",
+          "country": "Angola",
+          "reasoning": "Emre helps Reaper on a raid in Luanda"
+        }
+      ],
+      "headlines": [
+        "Sightings of a man covered in cybernetics raiding several security sights across the world continue"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Emre",
+          "url": "https://overwatch.blizzard.com/heroes/emre"
+        },
+        {
+          "text": "Search and Destroy",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/search-and-destroy/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Emre,",
+          "reasoning": "Joins Talon against his will"
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Mauga, Widowmaker, Reaper,",
+          "reasoning": "Work alongside Emre but notice something is off"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Emre joins Talon but only works on specific missions"
+        },
+        {
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": "Order Chernobog to use Talon as a means to reach specific sites"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": "Commands Emre to take specific jobs for Talon"
         }
       ]
     },
