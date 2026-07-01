@@ -4673,7 +4673,7 @@
       "lon": 67.0207055,
       "image": "",
       "cityDisplayName": "Karachi Division, Sindh, Pakistan",
-      "yearEnd": null,
+      "yearEnd": 2053,
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
@@ -4720,7 +4720,8 @@
           "country": "Soldier 76, Reaper, Ana, Reinhardt, Torbjörn,",
           "reasoning": "Continue to trample over Anubis' plans"
         }
-      ]
+      ],
+      "yearStart": 2051
     },
     {
       "name": "The Savior",
@@ -11702,8 +11703,8 @@
       "lon": 31.2357,
       "image": "",
       "cityDisplayName": "Cairo, Egypt",
-      "yearStart": 2068,
-      "yearEnd": 2075,
+      "yearStart": 2070,
+      "yearEnd": 2071,
       "eraName": "The Age of Conflict",
       "heroFilterPlaces": [
         {
@@ -12668,7 +12669,7 @@
       "lon": -0.1277653,
       "image": "",
       "cityDisplayName": "London, United Kingdom",
-      "yearEnd": null,
+      "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
@@ -12694,7 +12695,8 @@
           "country": "Emily,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearStart": 2070
     },
     {
       "name": "Vanadium Strand",
