@@ -27,6 +27,7 @@ import {
     handleDeleteCurrentVariant
 } from './variantTabs.js';
 import { populateEditForm } from './populateEditForm.js';
+import { wireSourceRowsIn } from '../../../interface-shared/storyEventSourceAutocomplete.js';
 
 class EventFormService {
     constructor() {
@@ -128,6 +129,10 @@ class EventFormService {
 
     setupAutocomplete(input, options, type) {
         this.autocompleteService.setupAutocomplete(input, options, type);
+    }
+
+    wireSourceAutocomplete() {
+        wireSourceRowsIn(document.getElementById('eventSourcesContainer'));
     }
 }
 

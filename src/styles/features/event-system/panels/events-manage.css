@@ -588,6 +588,19 @@ body.color-palette-gray .events-manage-title {
     transition: all 0.2s ease;
 }
 /* Floating autocomplete (edit modal / inline editor) — matches search suggestion rows */
+.filter-autocomplete-anchor {
+    position: relative;
+    min-width: 0;
+    width: 100%;
+    align-self: start;
+}
+
+.filter-autocomplete-anchor > .event-slide-inline-editor__input,
+.filter-autocomplete-anchor > .event-edit-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .filter-autocomplete-list {
     position: fixed;
     z-index: 10000;
@@ -599,6 +612,16 @@ body.color-palette-gray .events-manage-title {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.2);
     padding: 6px 0;
     min-width: 200px;
+}
+
+.filter-autocomplete-list.filter-autocomplete-list--anchored {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    width: 100%;
+    min-width: 0;
+    margin: 0;
 }
 
 .filter-autocomplete-item {

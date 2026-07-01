@@ -165,4 +165,5 @@ export function populateEditForm(formService, event) {
     }
 
     formService.updateVariantTabs();
+    window.StoryEventLocationAutocomplete?.wireStoryEventCityInputs?.();
 }

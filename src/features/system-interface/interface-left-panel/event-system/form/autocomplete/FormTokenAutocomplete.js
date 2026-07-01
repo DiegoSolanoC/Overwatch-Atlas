@@ -20,6 +20,39 @@
 import { buildMatches } from './tokenInputMatching.js';
 import { renderTokenPickRow } from './renderTokenPickRow.js';
 
+const ANCHOR_CLASS = 'filter-autocomplete-anchor';
+const LIST_ANCHORED_CLASS = 'filter-autocomplete-list--anchored';
+
+/**
+ * Wrap the input once so the suggestion list can sit directly beneath it.
+ * @param {HTMLInputElement} input
+ * @returns {HTMLElement}
+ */
+function ensureAutocompleteAnchor(input) {
+    const parent = input.parentElement;
+    if (parent?.classList?.contains(ANCHOR_CLASS)) {
+        return parent;
+    }
+    const anchor = document.createElement('div');
+    anchor.className = ANCHOR_CLASS;
+    input.parentNode?.insertBefore(anchor, input);
+    anchor.appendChild(input);
+    return anchor;
+}
+
+/**
+ * @param {HTMLInputElement} input
+ * @param {HTMLElement} listEl
+ */
+function mountAnchoredAutocompleteList(input, listEl) {
+    const anchor = ensureAutocompleteAnchor(input);
+    listEl.classList.add(LIST_ANCHORED_CLASS);
+    listEl.style.left = '';
+    listEl.style.top = '';
+    listEl.style.width = '';
+    anchor.appendChild(listEl);
+}
+
 class FormTokenAutocomplete {
     constructor() {
         this.autocompleteLists = new Map();
@@ -54,10 +87,7 @@ class FormTokenAutocomplete {
 
             autocompleteList = document.createElement('div');
             autocompleteList.className = 'filter-autocomplete-list';
-            const rect = input.getBoundingClientRect();
-            autocompleteList.style.left = `${rect.left}px`;
-            autocompleteList.style.top = `${rect.bottom + 4}px`;
-            autocompleteList.style.width = `${Math.max(rect.width, 220)}px`;
+            mountAnchoredAutocompleteList(input, autocompleteList);
 
             // Replace only the trailing segment (post-last-comma) with the picked text.
             const applyPick = (insertText) => {
@@ -99,7 +129,6 @@ class FormTokenAutocomplete {
                 });
             }
 
-            document.body.appendChild(autocompleteList);
             this.autocompleteLists.set(input, autocompleteList);
         });
 

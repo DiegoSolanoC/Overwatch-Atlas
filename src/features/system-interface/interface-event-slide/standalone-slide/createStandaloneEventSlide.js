@@ -42,6 +42,7 @@ import { runPopulateInlineEditor } from './edit/populateInlineEditor.js';
 import { runCancelEdit } from './edit/cancelEdit.js';
 import { runSaveFullEdit } from './edit/saveFullEdit.js';
 import { wireBioDeleteButton } from '../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
+import { wireSourcePairRow } from '../../interface-shared/storyEventSourceAutocomplete.js';
 // Variants
 import { runRenderVariantBar } from './variants/renderVariantBar.js';
 import { runOnVariantAdd } from './variants/onVariantAdd.js';
@@ -196,14 +197,15 @@ export function createStandaloneEventSlide() {
                 const row = document.createElement('div');
                 row.className = 'event-slide-inline-editor__source-row';
                 row.innerHTML = `
-                    <input class="event-slide-inline-editor__input" data-role="source-text" type="text" placeholder="Source text" value="${s.text || ''}" />
-                    <input class="event-slide-inline-editor__input" data-role="source-url" type="text" placeholder="URL (optional)" value="${s.url || ''}" />
+                    <input class="event-slide-inline-editor__input" data-role="source-text" type="text" spellcheck="true" autocomplete="on" placeholder="Source text" value="${s.text || ''}" />
+                    <input class="event-slide-inline-editor__input" data-role="source-url" type="text" spellcheck="false" autocomplete="on" placeholder="URL (optional)" value="${s.url || ''}" />
                     <button type="button" class="event-slide-inline-editor__small-btn" data-role="source-remove">-</button>
                 `;
                 row.querySelector('[data-role="source-remove"]').addEventListener('click', () => {
                     if (container.children.length > 1) row.remove();
                 });
                 container.appendChild(row);
+                wireSourcePairRow(row);
             });
         },
         
@@ -214,14 +216,15 @@ export function createStandaloneEventSlide() {
             const row = document.createElement('div');
             row.className = 'event-slide-inline-editor__source-row';
             row.innerHTML = `
-                <input class="event-slide-inline-editor__input" data-role="source-text" type="text" placeholder="Source text" />
-                <input class="event-slide-inline-editor__input" data-role="source-url" type="text" placeholder="URL (optional)" />
+                <input class="event-slide-inline-editor__input" data-role="source-text" type="text" spellcheck="true" autocomplete="on" placeholder="Source text" />
+                <input class="event-slide-inline-editor__input" data-role="source-url" type="text" spellcheck="false" autocomplete="on" placeholder="URL (optional)" />
                 <button type="button" class="event-slide-inline-editor__small-btn" data-role="source-remove">-</button>
             `;
             row.querySelector('[data-role="source-remove"]').addEventListener('click', () => {
                 if (container.children.length > 1) row.remove();
             });
             container.appendChild(row);
+            wireSourcePairRow(row);
         },
         
         renderVariantBar(eventData) { return runRenderVariantBar(this, eventData); },

@@ -36,16 +36,17 @@ class SourcePairFields {
         pairDiv.innerHTML = `
             <div class="event-edit-field">
                 <label for="eventEditSourceName${newIndex}">Source Name:</label>
-                <input type="text" id="eventEditSourceName${newIndex}" class="event-edit-input source-name-input" autocomplete="off">
+                <input type="text" id="eventEditSourceName${newIndex}" class="event-edit-input source-name-input" autocomplete="on">
             </div>
             <div class="event-edit-field">
                 <label for="eventEditSourceLink${newIndex}">Source Link (optional):</label>
-                <input type="url" id="eventEditSourceLink${newIndex}" class="event-edit-input source-link-input" autocomplete="off">
+                <input type="url" id="eventEditSourceLink${newIndex}" class="event-edit-input source-link-input" autocomplete="on">
             </div>
         `;
         
         container.appendChild(pairDiv);
         this.updateRemoveSourceButton();
+        window.StoryEventSourceAutocomplete?.wireSourcePairRow?.(pairDiv);
     }
     
     /**
@@ -76,15 +77,16 @@ class SourcePairFields {
             <div class="source-pair" data-source-index="0">
                 <div class="event-edit-field">
                     <label for="eventEditSourceName0">Source Name:</label>
-                    <input type="text" id="eventEditSourceName0" class="event-edit-input source-name-input" autocomplete="off">
+                    <input type="text" id="eventEditSourceName0" class="event-edit-input source-name-input" autocomplete="on">
                 </div>
                 <div class="event-edit-field">
                     <label for="eventEditSourceLink0">Source Link (optional):</label>
-                    <input type="url" id="eventEditSourceLink0" class="event-edit-input source-link-input" autocomplete="off">
+                    <input type="url" id="eventEditSourceLink0" class="event-edit-input source-link-input" autocomplete="on">
                 </div>
             </div>
         `;
         this.updateRemoveSourceButton();
+        window.StoryEventSourceAutocomplete?.wireSourceRowsIn?.(container);
     }
     
     /**
@@ -145,6 +147,7 @@ class SourcePairFields {
             });
         }
         this.updateRemoveSourceButton();
+        window.StoryEventSourceAutocomplete?.wireSourceRowsIn?.(this.getContainer());
     }
 }
 

@@ -1,5 +1,5 @@
 /**
- * Multi-row editor for relevant locations (name, country w/ autocomplete, reasoning).
+ * Multi-row editor for relevant locations (group label w/ browser suggestions, country w/ flag autocomplete, reasoning).
  * Used by hero archive and story "secondary country" groups (same row shape; different containers / placeholders).
  * Rows can be reordered with ↑ / ↓.
  */
@@ -24,6 +24,7 @@
             if (opts.length > 0) auto.setupAutocomplete(input, opts, 'countries');
             return;
         }
+
         if (type === 'heroes') {
             const heroes =
                 window.eventManager?.heroes || window.globeController?.dataModel?.heroes || [];
@@ -152,6 +153,9 @@
         container.appendChild(row);
 
         setupListAutocomplete(countryIn, options);
+        if ((options.autocompleteType || 'countries') === 'countries') {
+            window.StoryEventLocationAutocomplete?.wirePlaceNameInput?.(nameIn, countryIn);
+        }
     }
 
     function render(container, locations, options) {

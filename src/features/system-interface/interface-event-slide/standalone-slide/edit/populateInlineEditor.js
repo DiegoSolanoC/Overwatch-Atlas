@@ -197,4 +197,6 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             
             // Render variant bar
             slide.renderVariantBar(eventData);
+
+            window.StoryEventLocationAutocomplete?.wireStoryEventCityInputs?.();
 }

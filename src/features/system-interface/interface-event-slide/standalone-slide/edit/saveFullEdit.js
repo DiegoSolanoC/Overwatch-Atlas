@@ -67,6 +67,8 @@ import {
     resolveStoryEventIndexInList,
 } from '../../../interface-shared/storyEventIndexResolution.js';
 import { syncStandaloneSlideEventContext } from '../../../interface-shared/syncStandaloneSlideEventContext.js';
+import { clearStoryEventSourceOptionsCache } from '../../../interface-shared/storyEventSourceAutocomplete.js';
+import { clearStoryEventLocationOptionsCache } from '../../../interface-shared/storyEventLocationAutocomplete.js';
 
 /**
  * @param {HTMLElement | null | undefined} el
@@ -581,6 +583,8 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             window.eventManager?.getDockTimelineEvents?.() ||
             window.eventManager?.events ||
             [];
+        clearStoryEventSourceOptionsCache();
+        clearStoryEventLocationOptionsCache();
 
         if (window.eventManager?.refreshGlobeEvents) {
             try {

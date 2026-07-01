@@ -4144,7 +4144,7 @@
     },
     {
       "name": "Early Missions",
-      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. The team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.\n\nFor months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting, and saving many lives. Further missions in Karachi and Shanghai were projected to result in the casualties of millions had it not been for Overwatch support. By working with local military efforts, Overwatch allowed many regions to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines, but even with the help of heroes, the war still went on. Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down.",
+      "description": "After training, the strike team was dispatched for its first series of missions. It was decided they would not take place in their home countries to avoid claims of bias. Instead, there was an effort to begin deployment in areas where they were needed the most. The first couple of missions on Darkhan and Shenzhen are classified, but details about the Kyoto mission are known. \n\n\nThe team was deployed without prior announcement, to prevent Anubis from getting word of their approach. After clearing the airspace, the team landed and quickly took ground back from the warbots. The image of Gabriel Reyes helping a child into the arms of her mother made headlines across the globe, and thus Overwatch became the champions of humanity.",
       "locationType": "earth",
       "cityDisplayName": "Kyoto, Japan",
       "lat": 35.6768601,
@@ -4173,7 +4173,7 @@
         },
         {
           "locationName": "Other Known Missions",
-          "country": "China, Mongolia, Pakistan",
+          "country": "China, Mongolia,",
           "reasoning": "Highly Classified early deployments"
         }
       ],
@@ -4666,6 +4666,63 @@
       ]
     },
     {
+      "name": "Tipping the Balance",
+      "description": "For months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting and saving many lives, but with Anubis getting discovered, a renewed ferocity resulted in several smaller cities being lost to a new wave of enraged war bots, and humanity's morale moved toward an all-time low from the dragged out conflict.\n\nBut now, thanks to Overwatch, there was something to hope for, as humanity now had their very own Super Heroes fighting for a better tomorrow, and they would often be dispatched with the specific goal of stabilizing some regions. By working with local military efforts, Overwatch allowed many cities to experience a slight return to normalcy during the war. People were able to go back to work, and kids went to school without fearing the machines. Further missions in Karachi allowed the evacuation of hundreds of civilians, and then only days later, the Shanghai incursion, an all-out attack was projected to result in the casualties of millions, until Overwatch showed up and converted the attack. Overwatch's very presence was proof that the war could be won, but even with the help of heroes, Anubis learned quickly, and it was a matter of time before it found a way to take the strike team down, unless they found a way to take him down first.",
+      "locationType": "earth",
+      "lat": 24.8546842,
+      "lon": 67.0207055,
+      "image": "",
+      "cityDisplayName": "Karachi Division, Sindh, Pakistan",
+      "yearEnd": null,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Karachi Division, Sindh, Pakistan",
+          "country": "Pakistan",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Karachi, Pakistan",
+          "country": "Pakistan,",
+          "reasoning": "Overwatch evacuates hundreds of Civilians"
+        },
+        {
+          "locationName": "Shanghai, China",
+          "country": "China",
+          "reasoning": "Overwatch adverts a massive incursion"
+        }
+      ],
+      "headlines": [
+        "Overwatch adverts the Shanghai Incursion",
+        "Hundreds rescued in Karachi thanks to Overwatch"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declasified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Gives Humanity hope and a brief return to normalcy"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis Directives,",
+          "reasoning": "Quickly learning how to deal with the Strike Team"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "Overwatch Strike Team",
+          "country": "Soldier 76, Reaper, Ana, Reinhardt, Torbjörn,",
+          "reasoning": "Continue to trample over Anubis' plans"
+        }
+      ]
+    },
+    {
       "name": "The Savior",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
@@ -4730,7 +4787,7 @@
       "name": "The Awakening",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.\n\nAfter heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. At her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
+      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.\n\nAfter heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. \n\n\nAt her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
       "image": "",
       "sources": [
         {
@@ -4743,8 +4800,7 @@
         }
       ],
       "headlines": [
-        "Omnic troops stop fighting world wide",
-        "Warbot drops gun and helps human troops"
+        "Massive pulse of light identified to be an Overwatch experiment in Nepal"
       ],
       "yearStart": 2053,
       "yearEnd": null,
@@ -4775,13 +4831,61 @@
         {
           "locationName": "",
           "country": "Anubis,",
+          "reasoning": "Caught by Suprise by the Awakening"
+        }
+      ]
+    },
+    {
+      "name": "A Dying Directive",
+      "description": "All at once, Omnics all over the world came to a halt, and listened to Aurora's passing words, as they came alive, as sentient as she once was. Some began to drop their weapons, distraught over their own actions, while others continued fighting, horrified by the war and consciousness that humanity inflicted upon them or outright choosing to stay on Anubis' side as they saw no reason to defect to their creator. Many more turned their weapons against the remaining warbots, choosing to fight against Anubis now that they were free. \n\nFor the world at large, this was a confusing moment, and not many were willing to believe their cold metal enemies were now alive and friendly, but in the desperation of the moment, humans all over the world began to extend their arms in trust, and fought the remaining troops, Omnic and Man, side by side. Anubis was completely shocked by the Awakening, as he suddenly lost control over the vast majority of its troops. In his panic, he ordered the remaining troops to capture and analyze the defectors. While it could have dismantled one of the troops that remained loyal to him, given the massive reduction in its army, it was understandably cautious. After isolating the Omnic anatomy involved in sentience, it quickly retooled the remaining Omniums to produce a new kind of warbot, better armored, more aggressive and without the necessary components to be awakened, completely unaware that it was impossible for it to happen a second time.",
+      "locationType": "earth",
+      "lat": 39.2908816,
+      "lon": -76.610759,
+      "image": "",
+      "cityDisplayName": "Baltimore, United States",
+      "yearStart": 2053,
+      "yearEnd": null,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Baltimore, United States",
+          "country": "United States",
+          "reasoning": "Humans and Omnics fight side by side after the Awakening"
+        }
+      ],
+      "headlines": [
+        "Omnics across the world claim to be Sentient?",
+        "Warbots rebelling against Anubis world wide"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declasified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis Directives,",
+          "reasoning": "Begins produciton of Awakening proof troops"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Aurora,",
+          "reasoning": "Vanishes from existence following the Awakening"
+        },
+        {
+          "locationName": "",
+          "country": "Anubis,",
           "reasoning": "Studies the Awakening to stop a second wave"
         }
       ]
     },
     {
       "name": "Striking the Source",
-      "description": "The Awakening caught Anubis by surprise, but it didn't take long for it to scan Omnics and figure out what happened. In no time, it had figured out how to protect its troops against being awakened, unaware this was impossible to do a second time to begin with. Not only that, but while the vast majority of Omnics chose to fight alongside humans, there were many who remained at Anubis' side, and a sizable portion of the army, like the dangerous Bastion and Idina units that went unaffected. In spite of this blow, statistics showed that it would take barely a week for Anubis to bounce back, and as it called its army to congregate in Cairo, the window of opportunity was closing. Without time to lose, Reyes decided to strike while they still had the upper hand. \n\nAfter allying with local forces, Ana guided the team through the city, as she was the most familiar with it, and had worked with the troops before. The team followed Lindholm and Liao's guidelines as to how to deal with both Anubis and the remaining troops, most of which were Torbjörn's designs. Wilhelm, Reyes and Morrison pushed the advance into the Omnium and fought hordes of both sentient loyalists and mindless warbots for hours, as they made way for Lindholm's engineer team to get in and quarantine the facility. At last, Anubis had been trapped, and without its instructions, all the remaining Omniums would stop producing any more units, making it easier to seize and deactivate.",
+      "description": "The Awakening caught Anubis by surprise, but it didn't take long for it to restart production with its improved, sentient free troops. Not only that, but while the vast majority of Omnics chose to fight alongside humans, there were many who remained at Anubis' side, and a sizable portion of the army, like the dangerous Bastion and Idina units that went unaffected. In spite of this blow, statistics showed that it would take barely a week for Anubis to bounce back, and as it called its army to congregate in Cairo, the window of opportunity was closing. Without time to lose, Reyes decided to strike while they still had the upper hand. \n\nAfter allying with local forces, Ana guided the team through the city, as she was the most familiar with it, and had worked with the troops before. The team followed Lindholm and Liao's guidelines as to how to deal with both Anubis and the remaining troops, most of which were Torbjörn's designs. Wilhelm, Reyes and Morrison pushed the advance into the Omnium and fought hordes of both sentient loyalists and mindless warbots for hours, as they made way for Lindholm's engineer team to get in and quarantine the facility. At last, Anubis had been trapped, and without its instructions, all the remaining Omniums would stop producing any more units, making it easier to seize and deactivate.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
@@ -6373,26 +6477,24 @@
     {
       "name": "Hana Song is Born",
       "locationType": "earth",
-      "cityDisplayName": "Fukuoka, Japan",
+      "cityDisplayName": "Busan, South Korea",
       "description": "On June 22th of 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.\n\nHana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.",
       "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
+      "lat": 35.1799528,
+      "lon": 129.0752365,
       "sources": [
         {
-          "text": "Overwatch Website, Mizuki",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
         }
       ],
       "eraName": "The Golden Age",
       "yearStart": 2057,
       "secondaryCountryPlaces": [
         {
-          "locationName": "Fukuoka, Japan",
-          "country": "Japan",
-          "reasoning": "Mizuki Kawano is Born",
-          "lat": 35.6768601,
-          "lon": 139.7638947
+          "locationName": "Busan, South Korea",
+          "country": "South Korea,",
+          "reasoning": "Hana Song is Born"
         }
       ],
       "yearEnd": null,
@@ -6400,8 +6502,8 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": "Mizuki Kawano is Born"
+          "country": "D.va",
+          "reasoning": "Hana Song is Born"
         }
       ]
     },
@@ -11520,7 +11622,7 @@
     {
       "name": "The Petras Act Hearings",
       "locationType": "earth",
-      "cityDisplayName": "Petra, Jordan",
+      "cityDisplayName": "Zurich, Switzerland",
       "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like San to testify about Overwatch, and while most agents generally sugar coded their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team tin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack missing, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. In the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee. The act rendered all Overwatch activity illegal and stripped Agents of their credentials and equipment.",
       "image": "",
       "sources": [
@@ -11529,12 +11631,17 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "lat": 30.3258363,
-      "lon": 35.4745669,
+      "lat": 47.3744489,
+      "lon": 8.5410422,
       "yearStart": 2070,
       "yearEnd": 2071,
       "eraName": "The Fall of Overwatch",
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        },
         {
           "locationName": "Petra, Jordan",
           "country": "Jordan",
@@ -11588,8 +11695,66 @@
       ]
     },
     {
+      "name": "Protecting the Skies",
+      "description": "A certain private security firm had begun to make a name for itself around the Middle East, and quickly began to expand its profile internationally over the years. Helix Securities International, backed by Oasis University, quickly became the go-to company for many different organizations. Thanks to the research and development of experimental weaponry and equipment like the flying Raptora armor, they were able to land enough of an Impression to be hired, contracted by the United Nations, as the guard dogs of the many Overwatch facilities that were not in the process of being decommissioned. This relationship led to many dismissing calling this paramilitary \"Overwatch 2.0\", in spite of critics pointing out how superficial of a difference that truly was.\n\nIn spite of that, Helix was able to fill the void left by Overwatch, at least when it came to peacekeeping and guarding important assets, perhaps exemplified best by their assignment on upkeep and defense of the Temple of Anubis in Cairo. Their legitimacy was also boosted by the addition of Fareeha Amari into the Raptora Unit on the Giza Plateau, having been hired fresh out of leaving the army now under the Call sign of \"Pharah\". Whether the mission is to safely guard the remains of the Naughton Vault at Grand Mesa or deal with escaped experimental Bat-Wolves at Oasis, Helix was always up to the task, bringing justice from above.",
+      "locationType": "earth",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "image": "",
+      "cityDisplayName": "Cairo, Egypt",
+      "yearStart": 2068,
+      "yearEnd": 2075,
+      "eraName": "The Age of Conflict",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pharah,",
+          "reasoning": "Hired into the Giza Unit"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities, IJC,",
+          "reasoning": "The UN hires Helix to oversee Overwatch Assets"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt,",
+          "reasoning": "Helix is hired to oversee Overwatch bases, including the Temple of Anubis",
+          "lat": 30.0444,
+          "lon": 31.2357
+        },
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "Helix also takes over many Watchpoints, such as Grand Mesa",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "headlines": [
+        "The Daugther of the legendary Ana Amari to Join Helix Securities",
+        "Helix Securities contracted to take over Watchpoints",
+        "Say hello to Overwatch: 2.0, meet Helix Securities",
+        "Mutated Bat wolves Escape the Ministry of Biology for the third time this week at Oasis University"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Pharah",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/pharah/"
+        },
+        {
+          "text": "Overwatch Declasified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ]
+    },
+    {
       "name": "Deactivated",
-      "description": "Over the years, Overwatch has fundamentally become a replacement for the old God Program system, building Watchpoints and Ecopoints to ensure global security and recovery. While the actions of the Strike Team and the paramilitary staff were more than questionable, in a lot of ways the scientists staffed at the many bases were some of the best humanity could offer, and yet they would go on to be blacklisted merely for their association with Overwatch. The Rouge God Programs Overwatch had monitored at Grímsvötn were relocated to the Atlantic Arcology under the care of the Martins, except Anubis, as the Temple was turned over to Helix Security, a rising paramilitary firm that took over most of Overwatch's old facilities.\n\nProject: Echo had been deployed in a handful of missions after Dr. Liao's death, but Overwatch leadership was always reluctant to put it into full service. Without Liao's stewardship, it was deemed too dangerous to let Echo learn on her own, so she was shut down and placed into quarantine, lost alongside the many other experimental weapons and unfinished projects now guarded by Helix and other private security groups across the world. Liao's last dream, who had become a person of her own over the years, was essentially shelved like any other piece of machinery would have, unceremoniously buried alongside mountains of failed promises by Overwatch.",
+      "description": "Over the years, Overwatch has fundamentally become a replacement for the old God Program system, building Watchpoints and Ecopoints to ensure global security and recovery. While the actions of the Strike Team and the paramilitary staff were more than questionable, in a lot of ways the scientists staffed at the many bases were some of the best humanity could offer, and yet they would go on to be blacklisted merely for their association with Overwatch. The Rouge God Programs Overwatch had monitored at Grímsvötn were relocated to the Atlantic Arcology under the care of the Martins, except Anubis, as the Temple was turned over to Helix Security, alongside many other bases.\n\nProject: Echo had been deployed in a handful of missions after Dr. Liao's death, but Overwatch leadership was always reluctant to put it into full service. Without Liao's stewardship, it was deemed too dangerous to let Echo learn on her own, so she was shut down and placed into quarantine, lost alongside the many other experimental weapons and unfinished projects now guarded by Helix and other private security groups across the world. Liao's last dream, who had become a person of her own over the years, was essentially shelved like any other piece of machinery would have, unceremoniously buried alongside mountains of failed promises by Overwatch.",
       "locationType": "earth",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -11599,18 +11764,11 @@
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Watchpoint: Grand Mesa",
-          "country": "United States,",
-          "reasoning": "Helix takes over Overwatch activity",
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "Echo is Shut down and shelved by the UN",
           "lat": 39.1131257,
           "lon": -108.0127646
-        },
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt,",
-          "reasoning": "Helix takes control of the Temple of Anubis",
-          "lat": 30.0444,
-          "lon": 31.2357
         },
         {
           "locationName": "Atlantic Arcology",
@@ -11638,12 +11796,7 @@
         {
           "locationName": "",
           "country": "IJC,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Decides Echo is better of deactivated"
         },
         {
           "locationName": "",
@@ -11712,7 +11865,7 @@
     },
     {
       "name": "Released",
-      "description": "No description available.",
+      "description": "Under Talon's care, Sigma enjoyed more freedom than he had for several years. His fractured mind struggled to hold its pieces together, meaning he never truly understood the gravity of his situation working with terrorists, as he no longer saw himself as a prisoner. This, combined with the violent lashing out caused by the maddening melody he heard when his condition distabilized, made him both a complying hostage, and a highly dangerous weapon.\n\nTalon understood Sigma as a human. Flawed, manipulable, and far more useful when willingly cooperating than when forced to. Taking advantage of his vulnerable state, they framed themselves as colleagues and patrons helping him further his research by providing him with everything he needed, when in reality they planned to weaponize both him and the fruits of his research Using their assets. Siebren was slowly able to gain control over his power, allowing gravity to abide by his will, moving closer to his life goal.\n\nBut in spite of that, his brittle mind was still unstable. Dr O'Deorain was in charge of supervising his condition and conducted several intrusive tests into his mind to study his condition. During this time, Sombra grew fond of the old man, taking pity on his circumstances and objecting to the way Moira and her scientists treated him. Sombra's kindness played a large role in Sigma's improving mental state, and Talon's continuous indulgence into his fantasies. And since Sombra lacked much loyalty to an organization, it meant now if they ever did something to harm him, they would have to deal with her.",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
       "lat": 29.5918,
@@ -11725,19 +11878,24 @@
         {
           "locationName": "Oasis University, Iraq",
           "country": "Iraq",
-          "reasoning": ""
+          "reasoning": "Sigma is placed under Moira's care and allowed to experiment"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sigma,",
-          "reasoning": ""
+          "reasoning": "Works for Talon oblivious to their intentions"
         },
         {
           "locationName": "",
-          "country": "Moira, Sombra",
-          "reasoning": ""
+          "country": "Moira",
+          "reasoning": "In charge of supervising Sigma"
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": "Grow fond of Sigma"
         }
       ],
       "factionFilterPlaces": [
@@ -11747,14 +11905,21 @@
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Talon Troops equipped with anti gravity tools raid local town"
+      ],
+      "sources": [
+        {
+          "text": "Sigma Origin Story",
+          "url": "https://www.youtube.com/watch?v=onplsJSdp4A"
+        }
+      ]
     },
     {
       "name": "Shrike",
       "locationType": "earth",
       "cityDisplayName": "Necropolis, Egypt",
-      "description": "No description available.",
+      "description": "Ana has traveled a lot since going off the record, even passing through Junkertown once or twice, getting into brawls with the locals. When she ultimately settled on returning to her homeland, she did so with the intention of finally settling down, living peacefully and quietly. However, as more time passed, she noticed how much her home still struggled to recover.\n\nEven decades later, Anubis' impact could be felt from its throne, as the Crisis left Egypt in ruin and too unstable to fully heal. Ana felt that Overwatch could have done more to help Cairo, and marked them as responsible for many of the problems plaguing the city. What's more, with them gone, Talon began to take over parts of the city and profit out of the chaos.\n\nAna could no longer stand on the sidelines after seeing her home succumb to endless tragedy. She took on the name of Shrike and became a ghostly vigilante, looking after her country from the shadows, taking base at a distant necropolis, where she took care of many relics and sent them over to a friend of the Wayfinder, Dr. Hamid Faisal. During her crusade, she would also keep a close eye on her family and close allies, writing many letters to Fareeha trying to explain her absence, but not once did she receive a response.",
       "image": "",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -11765,36 +11930,54 @@
         {
           "locationName": "Necropolis, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Ana settles in Cairo and becoems a vigilante to watch over the city",
           "lat": 30.0444,
           "lon": 31.2357
+        },
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia,",
+          "reasoning": "One of Ana's many travel destinations"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ana",
-          "reasoning": ""
+          "reasoning": "Leaves retirement to protect the people of Cairo as Shrike"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Takes a hold on Cairo following Overwatch's downfall"
         },
         {
           "locationName": "",
           "country": "Wayfinder Society,",
-          "reasoning": ""
+          "reasoning": "In contact with Ana, who is finding relics at the Necorpolis"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Rare Egyptian artifacts found by an annonymous source send to the Wayfinders for analysis",
+        "Chaos reigns in Cairo after another active shotout believed to involve Talon members",
+        "A mask Vigilante running rampant in Cairo seemignly targetting other criminals in the area"
+      ],
+      "sources": [
+        {
+          "text": "Ana Origin Story",
+          "url": "https://www.youtube.com/watch?v=yzFWIw7wV8Q"
+        },
+        {
+          "text": "Bastet",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
+        }
+      ]
     },
     {
       "name": "Top Player",
-      "description": "No description available.",
+      "description": "Years of competitive gaming shaped Hana's life when, just like her father, she decided to shape it into a career. Hana began playing Mecha Guardian V in high school, a massively popular online shooter with a strong Esports presence in South Korea. Over the years, she quickly ascended through the rankings and became the number 1 player on the global scoreboard.\n\nNow better known by her game tag of \"D.va\", she would also take on the challenge at the world championships, winning on a Landslide against her long-time rival Kyung-soo Han, \"King\" and completely overshadowing the rest of her team including her closest player, Yuna Lee \"D.mon\". For years, D.va gathered a reputation for being a merciless opponent who played to win at any cost. As these massive competitive events allowed the people of Korea to keep a sense of normalcy over the continuous rise of the Gwishin, D.va would become a household name among many Koreans and people from all over the world, both from her insane skills and actions per minute rate, as well as thanks to her blossoming streaming career they kick-started from her reputation.",
       "locationType": "earth",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -11809,35 +11992,38 @@
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Hana Song becomes Top Ranked Player in Mecha Guardian V",
+        "D.va's team crushes the competition on the Mecha Guardian V world championship"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "D.va,",
-          "reasoning": ""
+          "reasoning": "Becomes Number 1 Ranked Player and World champion in Mehca Guaridan V"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "D.mon,",
-          "reasoning": ""
+          "reasoning": "D.va team mate and closest in skill"
         },
         {
           "locationName": "",
           "country": "King,",
-          "reasoning": ""
+          "reasoning": "D.va primary Rival"
         },
         {
           "locationName": "",
-          "country": "Overlord,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": ""
+          "country": "Overlord, Dae-Hyun,",
+          "reasoning": "Other well known professional players"
         }
       ]
     },
@@ -11923,7 +12109,7 @@
       "name": "Runs in the Family",
       "locationType": "earth",
       "cityDisplayName": "Deadlock Gorge, United States",
-      "description": "No description available.",
+      "description": "Overwatch's campaigns across America forced many gangs like Deadlock to scale back or lie low, but they never truly went away. And now that Overwatch was gone, it marked the start of a second new West. As gangs struggled in bloodshed and skirmishes to expand their territories once again. Ashe saw an opportunity to grow her influence through the chaos. Thanks to the negotiating tactics she learned from back in the day when she was still meant to take over the family business, she came up with a plan and gathered the heads of the major gangs with a proposal for them to work together, or at least not against each other.\n\nWithout having to worry about endless squabbles and with the shared assets of her former rivals, Ashe turned Deadlock from a notorious gang to a multi-state criminal syndicate. With their growth came many prominent new members, like the triplets, P. T, Terran, and Zeke, who quickly became some of Ashe's most notorious henchmen, as well as an Omnic Sniper going by Bars, who grew close both with Ashe and especially B.O.B., who had also undergone many upgrades to his systems to better suit his chassis to this renegade lifestyle. But perhaps the most eventful change in the Deadlock family would come from Frankie and Bez, who decided to get engaged around this period. As Deadlock grew, however, Ashe could still not let go of the missing founder. Even after so many years, Cassidy's betrayal pained her like an open wound, and even when she publicly trashed him, deep down she missed him enough to keep photos of them together on her holobike.",
       "image": "",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -11934,7 +12120,7 @@
         {
           "locationName": "Deadlock Gorge, United States",
           "country": "United States",
-          "reasoning": "",
+          "reasoning": "Deadlock makes a full comback following Overwatch's shutdown",
           "lat": 39.1131257,
           "lon": -108.0127646
         }
@@ -11943,36 +12129,48 @@
         {
           "locationName": "",
           "country": "Ashe",
-          "reasoning": ""
+          "reasoning": "Uses her family business skills to take advantage of the power vaccum forming in the New West"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Deadlock",
-          "reasoning": ""
+          "reasoning": "Forms a multi gang alliance to avoid conflicts between them"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "B.O.B,",
-          "reasoning": ""
+          "reasoning": "Adquires Upgrades"
         },
         {
           "locationName": "",
           "country": "Bars, The Triplets,",
-          "reasoning": ""
+          "reasoning": "New Members of Deadlock"
+        },
+        {
+          "locationName": "",
+          "country": "Bez, Frankie,",
+          "reasoning": "Engaged"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Deadlock makes a comback in the New West following several deals with other large gangs"
+      ],
+      "sources": [
+        {
+          "text": "Ashe Origin Story",
+          "url": "https://www.youtube.com/watch?v=yvT9wKCrEyo"
+        }
+      ]
     },
     {
       "name": "Found Family",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
-      "description": "No description available.",
+      "description": "Without being able to rely on any system, Findlay was forced to find help outside the law to improve his condition. While researching ways to improve his prosthetics, he came across the Phreaks and their illegal body modding community, so he set out to look for the local cell in Scotland.\n\nThe group he found happened to be the home of one of the most prominent members, Touch up, who upgraded him with cutting-edge cybernetics that allowed him to regain mobility and manage the pain better. While he stayed with the Phreaks he got to meet many like-minded individuals, like Jackdaw, Boomslang and the Omnics Revel and Susannah, and over time he began to see them as a newly found family of his, even starting to date Susie.\n\nNow as a fully fledged member, Findlay left his old life behind and adopted the new name of Hazard. Fully committed to the Phreaks' cause of tearing the system down and fighting the organization that perpetrated the broken status quo, he continued upgrading himself with further cybernetic augments, and began to travel around the world, quickly becoming one of the Phreaks' most prominent and radicalized members, Passionately helping other Phreaks and fellow rebels like the Deadlock gang, which commonly stole from large weapon empires like Arbalest and was willing to provide the Phreaks with firepower if they were able to met her price.",
       "image": "",
       "lat": 55.861155,
       "lon": -4.2501687,
@@ -11983,42 +12181,67 @@
         {
           "locationName": "Glasgow, Scotland",
           "country": "Scotland",
-          "reasoning": ""
+          "reasoning": "Findlay joins the Phreaks after getting upgraded cybernetic"
+        },
+        {
+          "locationName": "Deadlock Gorge, United States",
+          "country": "United States,",
+          "reasoning": "The Phreaks collaborate with Deadlock and are provided with Weapons",
+          "lat": 39.1131257,
+          "lon": -108.0127646
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Hazard",
-          "reasoning": ""
+          "reasoning": "Joins the Phreaks after being welcomed by his local cell"
+        },
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": "Close friends with Hazard after collaborations"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Phreaks",
-          "reasoning": ""
+          "reasoning": "Grow support globally and become more violent"
+        },
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels,",
+          "reasoning": "Weapon Supplier, frequently help each other"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Susannah,",
-          "reasoning": ""
+          "reasoning": "Hazard's partner"
         },
         {
           "locationName": "",
           "country": "Boomslang, Jackdaw, Revel,",
-          "reasoning": ""
+          "reasoning": "Fellow Phreaks"
         },
         {
           "locationName": "",
           "country": "Touch Up,",
-          "reasoning": ""
+          "reasoning": "Leader of Hazard's cell, augmented his cybernetics"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Phreaks seen helping Deadlock steal from Arbalest gun supply",
+        "Reports of undergrownd body modders continue to increase across many cities"
+      ],
+      "sources": [
+        {
+          "text": "Tear it Down",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
+        }
+      ]
     },
     {
       "name": "A Better World",
