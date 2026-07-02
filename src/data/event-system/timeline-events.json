@@ -5085,6 +5085,21 @@
       ]
     },
     {
+      "name": "Kept in Chains",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "The Temple of Anubis",
       "description": "Following the quarantining of Anubis, most people expected the God program would be outright destroyed, but against most wishes, Lindholm and Liao had different plans. The construction of the aptly called Temple of Anubis began shortly after its imprisonment. A high security facility designed to look like a pyramid from the outside, blending into the landscape of the city. The Temple was to serve as Anubis' tomb, ensuring that no trace of the God AI escapes and attempts to start another Crisis.\n\nMany criticized the choice to keep the program at all, with some going as far as to say Overwatch did so to guarantee the world would need them again in the future. However, most experts in the field supported the Temple's construction, as heavy monitoring of the facility ensured that no scraps of its code felt into the wrong hands, as well as allowing them to compare remaining Omnic threats with Anubis, in case it's possible to trace it back as its source. Not only that, but the facility allowed experts to study the AI and find out what exactly went wrong with it, hopefully preventing something like this from ever happening again. A deterrent from another ungodly apocalypse.",
       "locationType": "earth",
@@ -7208,7 +7223,7 @@
       "name": "Juno Teo Minh is Born",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
-      "description": "On Marsh 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.\n\nIt also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the Cowboy movies that her dad had brought with him.",
+      "description": "On March 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red Promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.\n\nIt also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the cowboy movies that her dad had brought with him.",
       "image": "",
       "x": 45,
       "y": 35,
@@ -7332,7 +7347,7 @@
       "name": "Black Ops",
       "locationType": "earth",
       "cityDisplayName": "Capetown, South Africa",
-      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge god program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
+      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge God Program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
       "image": "",
       "lat": -33.9228378,
       "lon": 18.426976,
@@ -8201,6 +8216,21 @@
           "url": "https://overwatch.blizzard.com/en-us/media/comic/picture-of-success/"
         }
       ]
+    },
+    {
+      "name": "Risen In Blood",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2060,
+      "yearEnd": 2066,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Atlantic Arcology",
@@ -11631,7 +11661,7 @@
       "name": "The Petras Act Hearings",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like Sam English to testify about Overwatch, and while most agents generally sugar coded their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team tin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack missing, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. \n\nIn the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee.  Named after the now former Directer of Overwatch, and IJC liaison William Petras, the act rendered all Overwatch activity illegal and stripped most Agents of their credentials and equipment Exceptions were made for cases like Tracer's, who required the use of her chronal accelerator.",
+      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like Sam English to testify about Overwatch, and while most agents generally sugar coated their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team thin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack presumed dead, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. \n\nIn the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee.  Named after the now former Directer of Overwatch, and IJC liaison William Petras, the act rendered all Overwatch activity illegal and stripped most Agents of their credentials and equipment Exceptions were made for cases like Tracer's, who required the use of her chronal accelerator.",
       "image": "",
       "sources": [
         {
@@ -12465,6 +12495,11 @@
           "locationName": "",
           "country": "Talon Empire, Vishkar Corporation,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lumérico Incorporated,",
+          "reasoning": ""
         }
       ],
       "headlines": [],
@@ -12472,6 +12507,11 @@
         {
           "locationName": "",
           "country": "Sanjay,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Portero,",
           "reasoning": ""
         }
       ]
@@ -17831,7 +17871,7 @@
         },
         {
           "locationName": "",
-          "country": "Baptiste, Ana, Mercy, Mei, Orisa, Pharah, Bastion,",
+          "country": "Baptiste, Ana, Mercy, Mei, Orisa, Pharah, Bastion, Jetpack Cat,",
           "reasoning": ""
         },
         {
@@ -17952,7 +17992,7 @@
         },
         {
           "locationName": "The Modern Overwatch Strike Team",
-          "country": "Mei, Genji, Mercy, Reinhardt, Pharah, Baptiste,",
+          "country": "Mei, Genji, Mercy, Reinhardt, Pharah, Bastion,",
           "reasoning": ""
         },
         {
@@ -18248,6 +18288,11 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
+          "country": "Genji,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Shion,",
           "reasoning": ""
         }
@@ -18533,7 +18578,31 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anran, Wuyang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mei, Juno, Zarya, Jetpack Cat,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ]
     }
   ]
 }
