@@ -36,3 +36,27 @@ export function disconnectCodexImageObserver() {
         codexImageObserver = null;
     }
 }
+
+/**
+ * Eagerly decode portraits currently in (or near) the viewport so the first
+ * paint after load is not empty hexes waiting on IntersectionObserver.
+ * @param {ParentNode|null} root
+ */
+export function hydrateCodexPortraitImagesInViewport(root) {
+    if (!root) return;
+    const vv = window.visualViewport;
+    const margin = 160;
+    const top = (vv?.offsetTop ?? 0) - margin;
+    const left = (vv?.offsetLeft ?? 0) - margin;
+    const right = left + (vv?.width ?? window.innerWidth) + margin * 2;
+    const bottom = top + (vv?.height ?? window.innerHeight) + margin * 2;
+
+    root.querySelectorAll('img[data-src]').forEach((img) => {
+        if (!(img instanceof HTMLImageElement) || img.src) return;
+        const r = img.getBoundingClientRect();
+        if (r.bottom < top || r.top > bottom || r.right < left || r.left > right) return;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        if (codexImageObserver) codexImageObserver.unobserve(img);
+    });
+}

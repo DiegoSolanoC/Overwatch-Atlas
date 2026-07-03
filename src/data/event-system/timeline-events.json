@@ -721,7 +721,11 @@
       "sources": [
         {
           "text": "Against the Tide",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
         }
       ],
       "headlines": [
@@ -1648,7 +1652,11 @@
       "sources": [
         {
           "text": "Future's Past",
-          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+            "https://www.youtube.com/watch?v=9kFSMbaufn8"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -1792,8 +1800,8 @@
           "url": "https://overwatch.blizzard.com/en-us/heroes/pharah/"
         },
         {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Audible-Overwatch-2-Sojourn/dp/B0BKBYZYWP/ref=sr_1_1?crid=1G0Y1A2TJTW6E&dib=eyJ2IjoiMSJ9.nuCN9wG_X7GoNmsvzdhAstAeTN_7dqBQl1f0vXlhqOr0mjptq52fWAOIGZKYuJ6ziYwhd-OSeZJAH0yuFsUSaW6yO8JVQ6f9OM9F3I27v6A.Rnhpg-3nIyB9uEFl5O1Sg5GSPXahgviroiOyRcHpVpY&dib_tag=se&keywords=overwatch+sojourn&qid=1764046580&s=books&sprefix=overwatch+sojourn%2Cstripbooks%2C102&sr=1-1"
+          "text": "Overwatch Declassfied",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
       "headlines": [
@@ -3365,7 +3373,11 @@
       "sources": [
         {
           "text": "Against the Tide",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/against-the-tide/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
         }
       ],
       "headlines": [
@@ -4733,10 +4745,6 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Overwatch Genesis, Part three: Rebirth",
-          "url": "https://www.youtube.com/watch?v=S5_5aYk4WMo&t=2s"
         }
       ],
       "headlines": [
@@ -4862,6 +4870,10 @@
         {
           "text": "Overwatch Declasified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Genesis, Part three: Rebirth",
+          "url": "https://www.youtube.com/watch?v=S5_5aYk4WMo&t=2s"
         }
       ],
       "factionFilterPlaces": [
@@ -5095,9 +5107,22 @@
       "yearStart": 2053,
       "yearEnd": 2060,
       "eraName": "The Omnic Crisis",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Website, Shion",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        }
+      ]
     },
     {
       "name": "The Temple of Anubis",
@@ -5261,7 +5286,7 @@
       "sources": [
         {
           "text": "Deadlock Rebels",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/deadlock-rebels-chapter-1/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f939c5127a99742/60d240e5ad189d64efcc9ff0/AsheChpt1_EN_BS.pdf"
         }
       ],
       "headlines": [
@@ -5449,61 +5474,6 @@
       ]
     },
     {
-      "name": "Studying for the Future",
-      "description": "The world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou finished her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. \n\nDuring her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectual and obstinate persons who fought against the data even after years worth of proof of the worsening climate worldwide. These friendly connections however, eventually allowed her to join the biosphere department of Overwatch's new ecological initiative: The Ecopoint Program.",
-      "locationType": "earth",
-      "lat": 34.261004,
-      "lon": 108.9423363,
-      "image": "",
-      "cityDisplayName": "Xi'an, China",
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Xi'an, China",
-          "country": "China",
-          "reasoning": "Mei becomes a reknown climatologist fighitng Cliamte Change in Asia"
-        }
-      ],
-      "headlines": [
-        "Superstorm adverted in China thanks to Dr.Zhou's research",
-        "Dr, Tian Xiao uneveils new prototype for water manipulation in Metal College"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Website, Mei",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/mei/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mei,",
-          "reasoning": "Studies climatology and develops new manipulation technology"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Seeking to hire Jiayi Teo into their staff after grad school"
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch, Ecopoints,",
-          "reasoning": "Mei would go on to become part of the Ecopoint Program"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Jiayi,",
-          "reasoning": "Close friend Mei met in University"
-        }
-      ]
-    },
-    {
       "name": "Australian Liberation",
       "description": "After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultural landmarks of Omnic culture, though even among Omnics this idea was heavily debated with mixed results. In reality, there was a bigger reason why the Omniums remained standing after the Crisis, and that was the dangerous fusion reactors deep in their core.\n\nIn Australia, the government chose to lend the Outback Omnium and  the surrounding land to the Omnics, as a peace offering. But in doing so, this displaced many indigenous residents, rural communities, solar farmers and survivalists who fought hard during the crisis to keep their homes. Their protests over the decision would go unheard, and lead to the creation of the Australian Liberation Front, an extremist group that sought the complete removal of the Omnic presence from their nation. The ALF grew quickly and caught Overwatch's eyes, but while they monitored them closely, what happened next took everyone by surprise.\n\nMembers of the ALF manage to break into the Omnium and, in their attempt to seize it, sabotage the fusion core, resulting in a nuclear explosion visible throughout the entirety of Australia, turning the Outback into an irritated wasteland and decimating the Omnic population beyond repair, leaving the survivors to turn feral from the harsh conditions of the Outback. The ALF settled themselves in the ruins of the Omnium, and established an unofficial Monarchy in what would become Junkertown. Overwatch was about to intervene when the government determined the situation to be a lost cause and a public relations nightmare. Overwatch stood down, and the Junkers remained, though closely monitored, living miserable lives in an apocalypse of their own making.",
       "locationType": "earth",
@@ -5555,6 +5525,61 @@
           "locationName": "",
           "country": "Mason",
           "reasoning": "ALF Member, founding King of Junkertown"
+        }
+      ]
+    },
+    {
+      "name": "Studying for the Future",
+      "description": "The world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou finished her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. \n\nDuring her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectual and obstinate persons who fought against the data even after years worth of proof of the worsening climate worldwide. These friendly connections however, eventually allowed her to join the biosphere department of Overwatch's new ecological initiative: The Ecopoint Program.",
+      "locationType": "earth",
+      "lat": 34.261004,
+      "lon": 108.9423363,
+      "image": "",
+      "cityDisplayName": "Xi'an, China",
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Xi'an, China",
+          "country": "China",
+          "reasoning": "Mei becomes a reknown climatologist fighitng Cliamte Change in Asia"
+        }
+      ],
+      "headlines": [
+        "Superstorm adverted in China thanks to Dr.Zhou's research",
+        "Dr, Tian Xiao uneveils new prototype for water manipulation in Metal College"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mei",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mei/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mei,",
+          "reasoning": "Studies climatology and develops new manipulation technology"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Seeking to hire Jiayi Teo into their staff after grad school"
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch, Ecopoints,",
+          "reasoning": "Mei would go on to become part of the Ecopoint Program"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jiayi,",
+          "reasoning": "Close friend Mei met in University"
         }
       ]
     },
@@ -5630,6 +5655,57 @@
       ]
     },
     {
+      "name": "Undercover",
+      "locationType": "earth",
+      "cityDisplayName": "Paris, France",
+      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. \n\nGérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world, often using tactics outside of protocol and documentation.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "lat": 48.8588897,
+      "lon": 2.320041,
+      "headlines": [
+        "Overwatch expands personnel for Reyes lead operations"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": "Gérard Lacroix is hired into Blackwatch",
+          "lat": 48.8588897,
+          "lon": 2.320041
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reaper,",
+          "reasoning": "BLackwatch Commander"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch",
+          "reasoning": "Overwatch expands its covert ops division"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Gérard,",
+          "reasoning": "Newly hired Blackwatch Agent"
+        }
+      ]
+    },
+    {
       "name": "Duty Calls",
       "description": "From the outside, the world saw Overwatch as untouchable heroes at this point in time. However, the reality was that they were still human, and taking on Overwatch was just one aspect of their larger lives. Most of the Strike team had families of their own, Ana finally had time to care for her young Fareeha, the Lindholms were expecting yet another baby into the family, and Gabriel had just had his first son with Martina Reyes, his wife that he met while in Mexico.\n\nJack himself was in a relationship with a long-time partner of his when he got promoted to Strike Commander. Vincent remained supportive of Jack through his years in the military, but grew cautious during the Crisis when Jack brought up the idea of the Soldier Enhancement Program, and later on Overwatch.\n\nVincent was there for Jack when he needed it most, but he himself wished to settle down as he grew older, while Jack continued to step up and fill increasingly bigger shoes for the sake of the world. Becoming Strike Commander left Jack with very little time for love, and soon after, during a visit to London, the two parted ways. Jack would often question his choice. While everyone around him got to have a family, he dedicated his entire life to Overwatch. Continuing Adawe's legacy and ensuring the organization earned it's place in a post-crisis world became Jack's calling, and while he oftentimes wished to settle, every soldier needs a cause, and his was shaping the world into a better place.",
       "locationType": "earth",
@@ -5654,7 +5730,11 @@
       "sources": [
         {
           "text": "Futures Past",
-          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+            "https://www.youtube.com/watch?v=9kFSMbaufn8"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -5689,6 +5769,49 @@
         }
       ],
       "yearStart": 2053
+    },
+    {
+      "name": "Sierra Turner Woods is Born",
+      "description": "Following the Omnic Crisis, most SEP subjects chose to lie low and fade into private lives, Soldier 00 included. Kendra Banks would meet a Virginian park ranger, James Turner, while she was off the grid. They settled down in the secluded Appalachian mountains and soon enough they would have a kid. On April 17th of 2054, Sierra Turner Woods is born.\n\nSierra was unknowingly the daughter of a super soldier, and seemingly inherited her mother's gifts. Sadly, however, this soon enough would put a target on both of their backs.",
+      "locationType": "earth",
+      "image": "",
+      "cityDisplayName": "Appalachian Virginia, United States",
+      "yearStart": 2054,
+      "eraName": "The Golden Age",
+      "lat": 36.9034309,
+      "lon": -82.7853107,
+      "yearEnd": null,
+      "headlines": [
+        "SEP subjects go silent across America",
+        "Naugthon research to be classified and kept under lock"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Sierra",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Appalachian Virginia, United States",
+          "country": "United States",
+          "reasoning": "Sierra Turner Woods is Born"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sierra",
+          "reasoning": "Sierra Turner Woods is Born"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kendra",
+          "reasoning": "Mother, off the grid"
+        }
+      ]
     },
     {
       "name": "One with the Iris",
@@ -5739,77 +5862,15 @@
       ]
     },
     {
-      "name": "Anima Weaponry",
+      "name": "Outcasted",
+      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self-centered king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.\n\nLiving in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland. The feral Omnics lurking in the Outback proved fatal.",
       "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website, Kiriko",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
-        }
-      ],
+      "cityDisplayName": "Junkertown, Australia",
+      "lat": -25,
+      "lon": 135,
       "yearStart": 2053,
       "yearEnd": 2060,
       "eraName": "The Golden Age",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "headlines": [
-        "Gang violence in Japa slows down, but Shimada activity is at an all time high",
-        "Shimada Clan operators wield unknown energy swords during confrontation with rival groups"
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": "The Shimada Clan expands its power using Anima weapons",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": "Future Daughter, heir to the Fox Anima"
-        },
-        {
-          "locationName": "",
-          "country": "Hanzo, Genji,",
-          "reasoning": "Each given Anima infused Dragon Blades"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shimada Clan, Yamagami Blades,",
-          "reasoning": "The Shimada Clan forms an alliance with local smiths"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro, Asa",
-          "reasoning": "The Yamagami Blades, Maker of Anima technology alongside his wife"
-        },
-        {
-          "locationName": "",
-          "country": "Sojiro,",
-          "reasoning": "Given the Anima infused Storm Bow"
-        },
-        {
-          "locationName": "",
-          "country": "Kamori-san,",
-          "reasoning": "Gifted the Anima infused Fox Ofuda"
-        }
-      ]
-    },
-    {
-      "name": "Undercover",
-      "locationType": "earth",
-      "cityDisplayName": "Paris, France",
-      "description": "While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. \n\nGérard Lacroix, from the administrative and diplomatic division, would come in to fill the role as Reyes's primary partner. A Parisian diplomat with extensive intelligence work, which quickly drew him into Reyes's orbit. Together, Reyes and Lacroix would prove the merits of Blackwatch and quickly begin a take-down campaign on crime and violence across the world, often using tactics outside of protocol and documentation.",
       "image": "",
       "sources": [
         {
@@ -5817,42 +5878,36 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "lat": 48.8588897,
-      "lon": 2.320041,
       "headlines": [
-        "Overwatch expands personnel for Reyes lead operations"
+        "\"Junker Monarchy\" vanishes collaborators to the wasteland",
+        "Australia refuses to negotiate with Junkers"
       ],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Paris, France",
-          "country": "France",
-          "reasoning": "Gérard Lacroix is hired into Blackwatch",
-          "lat": 48.8588897,
-          "lon": 2.320041
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": "Mason Howl vanishes possible threads and rivals into the Australian Wasteland"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Reaper,",
-          "reasoning": "BLackwatch Commander"
+          "country": "Junker Queen,",
+          "reasoning": "Vanished alongside the rest of her family"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Blackwatch",
-          "reasoning": "Overwatch expands its covert ops division"
+          "country": "Junker Monarchy",
+          "reasoning": "Ruthless monarchy lead by a tyrant King"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Gérard,",
-          "reasoning": "Newly hired Blackwatch Agent"
+          "country": "Mason",
+          "reasoning": "King of Junkertown"
         }
       ]
     },
@@ -5917,149 +5972,6 @@
       ]
     },
     {
-      "name": "Outcasted",
-      "description": "As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self-centered king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotiated trade, but one day the King decided to vanish the entire family.\n\nLiving in the wasteland, young Dez Stone would quickly learn to fight to survive, as one by one every member of her family perished to the wasteland. The feral Omnics lurking in the Outback proved fatal.",
-      "locationType": "earth",
-      "cityDisplayName": "Junkertown, Australia",
-      "lat": -25,
-      "lon": 135,
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "headlines": [
-        "\"Junker Monarchy\" vanishes collaborators to the wasteland",
-        "Australia refuses to negotiate with Junkers"
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
-          "reasoning": "Mason Howl vanishes possible threads and rivals into the Australian Wasteland"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junker Queen,",
-          "reasoning": "Vanished alongside the rest of her family"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junker Monarchy",
-          "reasoning": "Ruthless monarchy lead by a tyrant King"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mason",
-          "reasoning": "King of Junkertown"
-        }
-      ]
-    },
-    {
-      "name": "Brotherhood",
-      "description": "A Ravager unit now going by the name of Ramattra had chosen to follow Mondatta, lost in grief by the suffering of his people, seeking a sense of purpose and hope of one day being able to cohexist with humans. During his time with the Shambali he would still take time to protest for Omnic equality, and many would embrace his message. A lost soul going by Zenyatta approached him seeking guidance, and Ramattra seing hims as a spiritual equal, invited him to join him at the monastery, as he hoped together they could find a sense of purpose and harmony amidst conflict. \n\nFor years, Zenyatta and Ramattra studied and trained together, often arguing over their different views, while still being able to balance each other in harmony. They would regularly gaze at the stars together, wondering just how many Omnics out there might be doing the same, but in reality, Ramattra would soon learn that many were not looking up at all. While the Shambali were blessed with clarity and a sense of purpose, many Omnics across the world were fully submitted to their reality, and even those who were not still suffered without being able to do much to improve their lives. Ramattra would make it his life's mission to guide these Omnics into seeking justice, but his views would often clash with the other monks who merely sought coexistence.",
-      "locationType": "earth",
-      "lat": 28.3949,
-      "lon": 84.124,
-      "image": "",
-      "cityDisplayName": "Shambali Monastery, Nepal",
-      "yearStart": 2053,
-      "yearEnd": 2060,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Shambali Monastery, Nepal",
-          "country": "Nepal",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [
-        "Shambali Monks preeching in the streets",
-        "Miners complain of Omnic precense in Nepal"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ramattra, Zenyatta",
-          "reasoning": "Become as close as brothers at the Shambali Monastery"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shambali Order",
-          "reasoning": "Both follow Mondatta at the monastery"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mondatta",
-          "reasoning": "Spiritual leader both monks follow"
-        }
-      ]
-    },
-    {
-      "name": "Sierra Turner Woods is Born",
-      "description": "Following the Omnic Crisis, most SEP subjects chose to lie low and fade into private lives, Soldier 00 included. Kendra Banks would meet a Virginian park ranger, James Turner, while she was off the grid. They settled down in the secluded Appalachian mountains and soon enough they would have a kid. On April 17th of 2054, Sierra Turner Woods is born.\n\nSierra was unknowingly the daughter of a super soldier, and seemingly inherited her mother's gifts. Sadly, however, this soon enough would put a target on both of their backs.",
-      "locationType": "earth",
-      "image": "",
-      "cityDisplayName": "Appalachian Virginia, United States",
-      "yearStart": 2054,
-      "eraName": "The Golden Age",
-      "lat": 36.9034309,
-      "lon": -82.7853107,
-      "yearEnd": null,
-      "headlines": [
-        "SEP subjects go silent across America",
-        "Naugthon research to be classified and kept under lock"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Website, Sierra",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Appalachian Virginia, United States",
-          "country": "United States",
-          "reasoning": "Sierra Turner Woods is Born"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sierra",
-          "reasoning": "Sierra Turner Woods is Born"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kendra",
-          "reasoning": "Mother, off the grid"
-        }
-      ]
-    },
-    {
       "name": "Findlay Docherty is Born",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
@@ -6116,7 +6028,7 @@
       "sources": [
         {
           "text": "Deadlock Rebels",
-          "url": "https://www.amazon.com/Deadlock-Rebels-AFK-Book-Overwatch-ebook/dp/B0912HD7Q2"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f939c5127a99742/60d240e5ad189d64efcc9ff0/AsheChpt1_EN_BS.pdf"
         }
       ],
       "secondaryCountryPlaces": [
@@ -6197,6 +6109,123 @@
       ]
     },
     {
+      "name": "Anima Weaponry",
+      "locationType": "earth",
+      "cityDisplayName": "Hanamura, Japan",
+      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Website, Kiriko",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/"
+        }
+      ],
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "headlines": [
+        "Gang violence in Japa slows down, but Shimada activity is at an all time high",
+        "Shimada Clan operators wield unknown energy swords during confrontation with rival groups"
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "The Shimada Clan expands its power using Anima weapons",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": "Future Daughter, heir to the Fox Anima"
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo, Genji,",
+          "reasoning": "Each given Anima infused Dragon Blades"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shimada Clan, Yamagami Blades,",
+          "reasoning": "The Shimada Clan forms an alliance with local smiths"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro, Asa",
+          "reasoning": "The Yamagami Blades, Maker of Anima technology alongside his wife"
+        },
+        {
+          "locationName": "",
+          "country": "Sojiro,",
+          "reasoning": "Given the Anima infused Storm Bow"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Gifted the Anima infused Fox Ofuda"
+        }
+      ]
+    },
+    {
+      "name": "Brotherhood",
+      "description": "A Ravager unit now going by the name of Ramattra had chosen to follow Mondatta, lost in grief by the suffering of his people, seeking a sense of purpose and hope of one day being able to cohexist with humans. During his time with the Shambali he would still take time to protest for Omnic equality, and many would embrace his message. A lost soul going by Zenyatta approached him seeking guidance, and Ramattra seing hims as a spiritual equal, invited him to join him at the monastery, as he hoped together they could find a sense of purpose and harmony amidst conflict. \n\nFor years, Zenyatta and Ramattra studied and trained together, often arguing over their different views, while still being able to balance each other in harmony. They would regularly gaze at the stars together, wondering just how many Omnics out there might be doing the same, but in reality, Ramattra would soon learn that many were not looking up at all. While the Shambali were blessed with clarity and a sense of purpose, many Omnics across the world were fully submitted to their reality, and even those who were not still suffered without being able to do much to improve their lives. Ramattra would make it his life's mission to guide these Omnics into seeking justice, but his views would often clash with the other monks who merely sought coexistence.",
+      "locationType": "earth",
+      "lat": 28.3949,
+      "lon": 84.124,
+      "image": "",
+      "cityDisplayName": "Shambali Monastery, Nepal",
+      "yearStart": 2053,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Shambali Monastery, Nepal",
+          "country": "Nepal",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [
+        "Shambali Monks preeching in the streets",
+        "Miners complain of Omnic precense in Nepal"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ramattra, Zenyatta",
+          "reasoning": "Become as close as brothers at the Shambali Monastery"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shambali Order",
+          "reasoning": "Both follow Mondatta at the monastery"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mondatta",
+          "reasoning": "Spiritual leader both monks follow"
+        }
+      ]
+    },
+    {
       "name": "Ye Anran is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
@@ -6255,7 +6284,7 @@
       "sources": [
         {
           "text": "Deadlock Rebels",
-          "url": "https://www.amazon.com/Deadlock-Rebels-AFK-Book-Overwatch-ebook/dp/B0912HD7Q2"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f939c5127a99742/60d240e5ad189d64efcc9ff0/AsheChpt1_EN_BS.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -6307,7 +6336,11 @@
       "sources": [
         {
           "text": "New Heights",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/new-heights/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440cblta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440cblta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
+            "https://www.youtube.com/watch?v=O7JRRBhgelo"
+          ]
         },
         {
           "text": "Overwatch Website: Sierra",
@@ -6655,7 +6688,7 @@
       "sources": [
         {
           "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
       "eraName": "The Golden Age",
@@ -7125,7 +7158,11 @@
       "sources": [
         {
           "text": "Red Promise",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/the-red-promise/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4245a9312c310c5e/668ef097c02e3c210b574412/OW_SpaceRanger_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4245a9312c310c5e/668ef097c02e3c210b574412/OW_SpaceRanger_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=9M4dU7cd1KM"
+          ]
         },
         {
           "text": "Overwatch Website: Juno",
@@ -7600,7 +7637,11 @@
       "sources": [
         {
           "text": "The Pocket King",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/the-pocket-king/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=ULQBHWSqzwg"
+          ]
         }
       ],
       "yearStart": 2063,
@@ -7658,8 +7699,8 @@
       ],
       "sources": [
         {
-          "text": "Fall of the Sparrow",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
+          "text": "The Fall of the Sparrow",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -7710,7 +7751,11 @@
         },
         {
           "text": "Valkyrie",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta608baba3bb4fb7b/5dd464f1a5d2cf498cbbad0b/valkyrie_en-us.pdf"
+          ]
         }
       ],
       "yearStart": 2063,
@@ -8137,7 +8182,11 @@
       "sources": [
         {
           "text": "Storm Chaser",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/freja-comic/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+            "https://www.youtube.com/watch?v=LriEejDFSnQ"
+          ]
         }
       ],
       "eraName": "The Golden Age",
@@ -8213,7 +8262,11 @@
         },
         {
           "text": "Picture of Sucess",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/picture-of-success/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
+          ]
         }
       ]
     },
@@ -8228,9 +8281,22 @@
       "yearStart": 2060,
       "yearEnd": 2066,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Website, Shion",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        }
+      ]
     },
     {
       "name": "The Atlantic Arcology",
@@ -8433,7 +8499,7 @@
         },
         {
           "text": "Mina Liao Project Echo Transcripts",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltb4614cf292f07c02/64ac6d0f3c5c6c5a40c21a1e/OW-LoreBites-Echo_enEN.pdf"
         }
       ],
       "factionFilterPlaces": [
@@ -8481,11 +8547,11 @@
       "sources": [
         {
           "text": "Thoughless Gods",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/thoughtless-gods/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt42f4baf211e3c801/665e404aa310e4e5a2a48c1d/OW_Heroes_Hammond_EN_FINAL_Rev.pdf"
         },
         {
           "text": "Wrecking Ball Origin Story",
-          "url": "https://www.google.com/search?q=wrecking+ball+overwatch+oriign&sca_esv=de9c253ead70df5d&rlz=1C1RXQR_enUS1071US1071&sxsrf=ANbL-n6k7h9cf9-qlS1SJuQKdgIX5rRjgA%3A1779224224449&ei=oM4MaqiFG4-2qtsP6sbl6Qk&biw=2400&bih=1138&ved=0ahUKEwio1f7ensaUAxUPm2oFHWpjOZ0Q4dUDCBI&uact=5&oq=wrecking+ball+overwatch+oriign&gs_lp=Egxnd3Mtd2l6LXNlcnAiHndyZWNraW5nIGJhbGwgb3ZlcndhdGNoIG9yaWlnbjIHEAAYgAQYDTILEAAYgAQYigUYhgMyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESOUSUPYBWKURcAF4AZABAJgBR6ABqwOqAQE3uAEDyAEA-AEBmAIIoALGA8ICChAAGEcY1gQYsAPCAg0QABiABBiKBRhDGLADwgIXEC4Y3AYYuAYY2gYY2AIYyAMYsAPYAQHCAhcQLhjYAhi4BhjaBhjcBhjIAxiwA9gBAcICGhAuGNwGGLgGGNoGGNgCGOUEGMgDGLAD2AEBwgIFEAAYgATCAgoQABiABBgUGIcCwgIGEAAYFhgemAMAiAYBkAYMugYECAEYGZIHATigB-EpsgcBN7gHwAPCBwUwLjYuMsgHFIAIAQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:5bf2242b,vid:ZEnC_N06Uxc,st:0"
+          "url": "https://www.youtube.com/watch?v=ZEnC_N06Uxc"
         }
       ],
       "heroFilterPlaces": [
@@ -8612,7 +8678,11 @@
       "sources": [
         {
           "text": "Storm Chaser",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/freja-comic/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+            "https://www.youtube.com/watch?v=LriEejDFSnQ"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -8649,16 +8719,24 @@
       "name": "Cursed",
       "locationType": "earth",
       "cityDisplayName": "Akihabara, Japan",
-      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.<br>",
+      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.",
       "image": "",
       "sources": [
         {
           "text": "Curse Breaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
         },
         {
           "text": "Facing Demons",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/facing-demons/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
+          ]
         }
       ],
       "lat": 35.6768601,
@@ -8763,8 +8841,8 @@
       "lon": 12.3345898,
       "sources": [
         {
-          "text": "Overwatch Declassified",
-          "url": "https://www.youtube.com/watch?v=8-nXN9ZMl8o&t=3s"
+          "text": "Overwatch Declasified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
       "eraName": "The Golden Age",
@@ -8966,6 +9044,10 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Rise and Shine",
+          "url": "https://www.youtube.com/watch?v=8tjcm_kI0n0"
         }
       ],
       "eraName": "The Golden Age",
@@ -9062,8 +9144,12 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         },
         {
-          "text": "Pocket King",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/the-pocket-king/"
+          "text": "The Pocket King",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=ULQBHWSqzwg"
+          ]
         }
       ],
       "yearStart": 2060,
@@ -9128,7 +9214,11 @@
       "sources": [
         {
           "text": "Progress",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/progress/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=3VKL8nqrpj0"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -9390,7 +9480,7 @@
       "sources": [
         {
           "text": "Mina Liao Project Echo Transcripts",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltb4614cf292f07c02/64ac6d0f3c5c6c5a40c21a1e/OW-LoreBites-Echo_enEN.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -9546,7 +9636,11 @@
         },
         {
           "text": "Facing Demons",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/facing-demons/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -9601,7 +9695,7 @@
       "sources": [
         {
           "text": "Ramattra Reflections",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -9955,7 +10049,7 @@
         },
         {
           "text": "Retribution",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/retribution/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4887c701b3d2ad4a/5d03c5d2578308e409458356/overwatch-comic-retribution_en-us.pdf"
         }
       ],
       "yearStart": 2068,
@@ -10150,7 +10244,11 @@
       "sources": [
         {
           "text": "A new Empire",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
         }
       ],
       "secondaryCountryPlaces": [
@@ -10348,7 +10446,7 @@
         },
         {
           "text": "Uprising",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/uprising/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte6a30de40374547c/5d02e6024e4776020a334e62/comic-overwatch-uprising_en-us.pdf"
         }
       ],
       "yearStart": 2068,
@@ -10511,7 +10609,7 @@
       "sources": [
         {
           "text": "Ramattra Reflections",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
         }
       ]
     },
@@ -10844,7 +10942,11 @@
       "sources": [
         {
           "text": "A New Empire",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
         }
       ]
     },
@@ -11099,7 +11201,12 @@
       "headlines": [
         "Talon troops seen terrorizing pacific Islands"
       ],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Website, Mauga",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mauga/"
+        }
+      ]
     },
     {
       "name": "Ghost",
@@ -11125,11 +11232,11 @@
       "sources": [
         {
           "text": "Bastet",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
         },
         {
           "text": "Lost Ghosts",
-          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/lost-ghosts/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd48ce4e52c29ed8f/66c8d57225057a85203f8db0/OW_Heroes_Ana_EN_FINAL.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -11188,7 +11295,11 @@
       "sources": [
         {
           "text": "New Heights",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/new-heights/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
+            "https://www.youtube.com/watch?v=O7JRRBhgelo"
+          ]
         },
         {
           "text": "Overwatch Website, Sierra",
@@ -11239,7 +11350,11 @@
       "sources": [
         {
           "text": "Tear it Down",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+            "https://www.youtube.com/watch?v=u282-SDwYtg"
+          ]
         }
       ]
     },
@@ -11552,8 +11667,12 @@
       ],
       "sources": [
         {
-          "text": "A new Empire",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
+          "text": "A New Empire",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
         }
       ]
     },
@@ -11902,7 +12021,7 @@
       "sources": [
         {
           "text": "Code of Violence",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/code-of-violence/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt950086cc417359fa/6210201304503350d255b9fe/OW_REAPER-COV_ShortStory_enUS.pdf"
         }
       ]
     },
@@ -12014,7 +12133,7 @@
         },
         {
           "text": "Bastet",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
         }
       ]
     },
@@ -12113,7 +12232,11 @@
         },
         {
           "text": "Search and Destroy",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/search-and-destroy/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
+          ]
         }
       ],
       "heroFilterPlaces": [
@@ -12282,7 +12405,11 @@
       "sources": [
         {
           "text": "Tear it Down",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+            "https://www.youtube.com/watch?v=u282-SDwYtg"
+          ]
         }
       ]
     },
@@ -12300,7 +12427,7 @@
       "sources": [
         {
           "text": "A Better World",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-better-world/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd93d424d2d00043b/5d02d05ccf7aa6330ac672b6/comic-overwatch-a-better-world_en-us.pdf"
         }
       ],
       "secondaryCountryPlaces": [
@@ -12384,7 +12511,7 @@
       "sources": [
         {
           "text": "Waste Land",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/wasted-land/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte43dc5bcdc5c9a75/5d02e6a37b48be290a7f9679/comic-overwatch-wasted-land_en-gb.pdf"
         }
       ]
     },
@@ -12425,7 +12552,7 @@
     },
     {
       "name": "Chivalry",
-      "description": "No description available.",
+      "description": "After his retirement, Reinhardt spent most of his days with the Lindholms, playing with the grandchildren and telling them tales of his heroic days. It was clear that he still yearned for a life of honor and glory. In the meantime, Torbjörn himself began a contract with the German army, where his years of experience in Overwatch maintaining Reinhardt's armor made him the best candidate to upgrade the new generation of Crusader Knights. Brigitte herself was now a fully-formed engineer who got to help her father on the Crusader blueprints during her formal apprenticeship at the Ironclad Guilt. Everyone expected Jeff to remain on this path like her father, when suddenly Reinhardt arrived with surprising news.\n\nTired of standing by on the sidelines, as evildoers reigned in chaos after the fall of Overwatch, he now vowed to go on a quest of chivalry, traveling across Europe in the name of justice like an errand knight of all, winning the hearts of the people by fighting for a better tomorrow. The Lindholms assisted Wilhelm on his mission by upgrading his old Crusader Armor, but he was even surprised when Brigitte requested to join him, acting as her squire and personal mechanic.\n\nBrigitte had been very close to her godfather since she was a baby, and objected the most to Reinhardt's forced retirement, so in a way she saw helping him out as a way to make up for the failings of his old friends, and Reinhardt, overjoyed to have someone in his footsteps, gladly accepted to take her in as his pupil. Together the two traveled the continent in a small van for years, stopping at any town they could help them with their troubles and crushing any gangsters and thieves plaguing their lives.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -12437,34 +12564,58 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Reinhardt and Brigitte venture Europe on a Chivalry Quest"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Ex Overwatch Hero seend across the European country side helping villages in need",
+        "Gang violenece plagues the Alps country side"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website Brigitte",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/brigitte/"
+        },
+        {
+          "text": "Brigitte Origin Story",
+          "url": "https://www.youtube.com/watch?v=K_m8fcJb5tE"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Reinhardt,",
-          "reasoning": ""
+          "reasoning": "Sets on to become an errand Knight"
         },
         {
           "locationName": "",
           "country": "Brigitte,",
-          "reasoning": ""
+          "reasoning": "Requests to join Reinhardt as his squire"
+        },
+        {
+          "locationName": "",
+          "country": "Torbjörn,",
+          "reasoning": "Provides Reinheardt with an Upgraded Armor"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Crusader Initiative,",
-          "reasoning": ""
+          "country": "Crusader Initiative, Ironclad Guild,",
+          "reasoning": "Ironclad is left in charge of the Crusader Initiative's upgrades"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": "Takes Reinhardt in to spend time with the Family"
         }
       ]
     },
     {
       "name": "Networking",
-      "description": "No description available.",
+      "description": "The Rio deal's success proved Vaira's worth for many inside Vishkar's upper circle, which led to a promotion as Vice President of Operations and Development, but not everyone within the company knew the unbelievable levels of illegal activities she was getting up to behind their backs.\n\nIt was not just the more than questionable tactics used to eliminate the competition in Rio, as her many years accumulating wealth and working around the European Elite allowed her to pursue some personal projects and clandestine partnerships. Under the pseudonym of Domina, she had begun making deals with Talon, funding and profiting from their missions that destabilized towns and local governments by using them as potential scouting points for new business ventures.\n\nWhile she was daring enough to collaborate with criminals, she was not a fool, and knew to keep her distance. Her seat on the council was always kept warm by Sanjay Korpal, a man who never fought for anything in his life beyond his next promotion. He would act as Domina's eyes on Talon and be the one to take the fall if their connections ever came to light. Under her advice, he would also engage in many other business deals, including active conversation with Guillermo Portero, the CEO of Lumérico in Mexico, looking for a partnership where the company could sell its energy to Vishkar's operations in Latin America. With this new underground network and a Vice President seat, Vaira went on to become one of Vishkar's most influential executives, on a mission to repair their reputation as the golden heroes rebuilding the world that they earned when the crisis ended, but behind the scenes she was willing to do anything to keep that mask up.",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
       "lat": 51.5074456,
@@ -12473,12 +12624,17 @@
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Domina",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/domina/"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": "",
+          "reasoning": "Domina adquires a seat at the Talon Council",
           "lat": 51.5074456,
           "lon": -0.1277653
         }
@@ -12487,32 +12643,35 @@
         {
           "locationName": "",
           "country": "Domina",
-          "reasoning": ""
+          "reasoning": "Secretly works with Talon using Sanjay as her stand in"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire, Vishkar Corporation,",
-          "reasoning": ""
+          "reasoning": "Profit off of each other"
         },
         {
           "locationName": "",
           "country": "Lumérico Incorporated,",
-          "reasoning": ""
+          "reasoning": "Provides energy to Vishkar"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Vaira' Singhania promoted to Vice President of Development y Vishkar's Board Table",
+        "Lumerico energy cost increasess, company planning on international ventures in spite of local complains"
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Sanjay,",
-          "reasoning": ""
+          "reasoning": "Attends Talon's meetins on Domina's behalf"
         },
         {
           "locationName": "",
           "country": "Portero,",
-          "reasoning": ""
+          "reasoning": "In conneciton with Sanjay"
         }
       ]
     },
@@ -12536,7 +12695,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -12585,7 +12749,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "What you left behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0194921f5024bf0c/5d5ef7f33471931c451d2bce/what-you-left-behind_en-us.pdf"
+        }
+      ]
     },
     {
       "name": "Siberian Front",
@@ -12627,7 +12796,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Website, Zarya",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/zarya/"
+        }
+      ]
     },
     {
       "name": "Anubis Escapes",
@@ -12671,7 +12845,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Mission Statement",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd61a7c0fa6827b4d/5d02e273cf7aa6330ac67308/comic-overwatch-mission-statement_en-us.pdf"
+        }
+      ]
     },
     {
       "name": "Game On",
@@ -12685,6 +12864,10 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
         }
       ],
       "yearStart": 2075,
@@ -12760,7 +12943,20 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Tracer",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/tracer/"
+        },
+        {
+          "text": "London Calling 1",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt92403a23118788bd/5f5fc3d0b24c984f27fbd231/OVRWTR_i1_DHDP_ENG-L-min.pdf"
+        },
+        {
+          "text": "Reflections Overwatch",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/reflections/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -12820,13 +13016,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Field Report: Native Vanadium Cache",
+          "url": "https://overwatch.blizzard.com/en-us/news/24160499/field-report-native-vanadium-cache/"
+        }
+      ]
     },
     {
       "name": "Bounty Hunter",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 55.6867243,
       "lon": 12.5700724,
@@ -12845,6 +13046,17 @@
           "locationName": "",
           "country": "Freja",
           "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Storm Chaser",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+            "https://www.youtube.com/watch?v=LriEejDFSnQ"
+          ]
         }
       ]
     },
@@ -12881,7 +13093,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Junker Queen Origin Story",
+          "url": "https://www.youtube.com/watch?v=xxtB_MJrycs"
+        }
+      ]
     },
     {
       "name": "Fire Star",
@@ -12916,7 +13133,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Against the Tide",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
+        }
+      ]
     },
     {
       "name": "Train Hopper",
@@ -12951,7 +13177,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Train Hopper",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt46ce6d6e4643f9b0/5d02e58da812cef40914a52e/comic-overwatch-train-hopper_en-us.pdf"
+        }
+      ]
     },
     {
       "name": "Traitor",
@@ -12964,7 +13195,12 @@
       "yearEnd": null,
       "eraName": "The Age of Conflict",
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Baptiste Origin Story",
+          "url": "https://www.youtube.com/watch?v=ZfWgcjeG83E"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Tortuga, Haiti",
@@ -13027,7 +13263,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Roadhog and Junkrat Origins",
+          "url": "https://www.youtube.com/watch?v=JC9WsS5PIzk"
+        }
+      ]
     },
     {
       "name": "Summit Squad",
@@ -13050,7 +13291,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "New Heights",
+          "url": "https://www.youtube.com/watch?v=O7JRRBhgelo",
+          "urls": [
+            "https://www.youtube.com/watch?v=O7JRRBhgelo",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf"
+          ]
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -13156,13 +13406,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Sombra ARG",
+          "url": "https://wiki.gamedetectives.net/w/Sombra_ARG"
+        }
+      ]
     },
     {
       "name": "Dragon Slayer",
       "locationType": "earth",
       "cityDisplayName": "Bucharest, Romania",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 44.4361414,
       "lon": 26.102684,
@@ -13188,6 +13443,13 @@
           "locationName": "",
           "country": "Crusaders",
           "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Dragon Slayer",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltbe5f9564d8d79e2a/5d02d202486d1c3d0af73230/comic-overwatch-dragon-slayer_en-us.pdf"
         }
       ]
     },
@@ -13231,7 +13493,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Valkyrie",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
+        }
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -13285,7 +13552,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Brigitte Origin Story",
+          "url": "https://www.youtube.com/watch?v=K_m8fcJb5tE"
+        }
+      ]
     },
     {
       "name": "Vigilante",
@@ -13298,7 +13570,12 @@
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Soldier: 76 Origin Story",
+          "url": "https://www.youtube.com/watch?v=G8oR_SvkR0c"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Grand Mesa, United States",
@@ -13364,7 +13641,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Destroyer",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0b9872d6857ba358/5d02d18aa812cef40914a4a6/comic-overwatch-destroyer_en-us.pdf"
+        }
+      ]
     },
     {
       "name": "Shooting Star",
@@ -13416,11 +13698,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Shooting Star Overwatch",
+          "url": "https://www.youtube.com/watch?v=q7j2d6YCQbg"
+        }
+      ]
     },
     {
       "name": "Hero",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
       "lat": 19.1738,
@@ -13429,7 +13716,12 @@
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Hero",
+          "url": "https://www.youtube.com/watch?v=cPRRupAM4DI"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Dorado, Mexico",
@@ -13450,13 +13742,14 @@
           "country": "Los Muertos",
           "reasoning": ""
         }
-      ]
+      ],
+      "headlines": []
     },
     {
       "name": "The Last Bastion",
       "locationType": "earth",
       "cityDisplayName": "Black Forest, Germany",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 48.2634439,
       "lon": 8.1647488,
@@ -13475,6 +13768,13 @@
           "locationName": "",
           "country": "Bastion",
           "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "The Last Bastion",
+          "url": "https://www.youtube.com/watch?v=to8yh83jlXg"
         }
       ]
     },
@@ -13511,7 +13811,7 @@
       ]
     },
     {
-      "name": "Return of the Maiden",
+      "name": "Avatar of the Fox",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
       "description": "No description available.",
@@ -13557,13 +13857,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Kiriko",
+          "url": "https://www.youtube.com/watch?v=9acxn7qAST4&t=330s"
+        }
+      ]
     },
     {
       "name": "Here to be heard",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -13590,6 +13895,13 @@
           "country": "Vishkar",
           "reasoning": ""
         }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Lúcio",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
+        }
       ]
     },
     {
@@ -13602,7 +13914,20 @@
       "yearStart": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Alive",
+          "url": "https://www.youtube.com/results?search_query=alive+overwatch"
+        },
+        {
+          "text": "London Calling 1",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt92403a23118788bd/5f5fc3d0b24c984f27fbd231/OVRWTR_i1_DHDP_ENG-L-min.pdf"
+        },
+        {
+          "text": "London Calling 2",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt92403a23118788bd/5f5fc3d0b24c984f27fbd231/OVRWTR_i1_DHDP_ENG-L-min.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
@@ -13703,7 +14028,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Recall",
+          "url": "https://www.youtube.com/watch?v=sB5zlHMsM7k"
+        }
+      ]
     },
     {
       "name": "London Calling",
@@ -13715,7 +14045,20 @@
       "yearStart": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "London Calling 3",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt822f4d55a12d0f8d/5fbea5330b0a825636796005/OVRWTR_i3_ENG.pdf"
+        },
+        {
+          "text": "London Calling 4",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc142f40bf366beb6/5ffcecfaf5dbf40edb11d4da/OVRWTR_i4_ENG.pdf"
+        },
+        {
+          "text": "London Calling 5",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd82c477868b17b7d/602ed9f3c484333be943defb/OW_1.5_ENG.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
@@ -13788,7 +14131,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Rise and Shine",
+          "url": "https://www.youtube.com/watch?v=8tjcm_kI0n0"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -13842,7 +14190,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "What you left behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0194921f5024bf0c/5d5ef7f33471931c451d2bce/what-you-left-behind_en-us.pdf"
+        }
+      ]
     },
     {
       "name": "Lurking in the Water",
@@ -13933,13 +14286,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Protector of Kanezaka",
+          "url": "https://mangadex.org/chapter/bdd4f526-5f60-4677-9453-0dd5a8145055"
+        }
+      ]
     },
     {
       "name": "Ecological Network",
       "locationType": "earth",
       "cityDisplayName": "Mount Logan, Canada",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 60.5678461,
       "lon": -140.4056911,
@@ -13964,6 +14322,14 @@
           "locationName": "",
           "country": "Overwatch, Ecopoints",
           "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Mei's Adventures",
+          "url": "https://overwatch.blizzard.com/en-us/news/19942649/"
         }
       ]
     },
@@ -14027,13 +14393,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Infiltration",
+          "url": "https://www.youtube.com/watch?v=tU7jskA1zWI"
+        }
+      ]
     },
     {
       "name": "Answering the Call",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 50,
       "lon": 8,
@@ -14058,6 +14429,14 @@
           "locationName": "",
           "country": "Crusaders",
           "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Honor and Glory",
+          "url": "https://www.youtube.com/watch?v=sQfk5HykiEk"
         }
       ]
     },
@@ -14103,7 +14482,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "An Interview with Inventor Efi Oladele",
+          "url": "https://overwatch.blizzard.com/en-us/news/20580087/an-interview-with-inventor-efi-oladele/"
+        },
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
     },
     {
       "name": "A New Empire",
@@ -14152,7 +14540,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "A New Empire",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
+        }
+      ]
     },
     {
       "name": "Reflections",
@@ -14165,7 +14562,12 @@
       "yearEnd": null,
       "eraName": "The Age of Conflict",
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Reflections Overwatch",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/reflections/"
+        }
+      ],
       "yearStart": 2077,
       "secondaryCountryPlaces": [
         {
@@ -14218,7 +14620,16 @@
       "yearStart": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Old Soldiers",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5d511b5298932950/5d02e2dd425980470abcb446/comic-overwatch-old-soldiers_en-us.pdf"
+        },
+        {
+          "text": "Bastet",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Necropolis, Egypt",
@@ -14249,7 +14660,7 @@
       "name": "Failed Recovery",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "x": 60,
       "y": 70,
@@ -14269,6 +14680,13 @@
           "country": "Lucheng",
           "reasoning": ""
         }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Thoughless Gods",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt42f4baf211e3c801/665e404aa310e4e5a2a48c1d/OW_Heroes_Hammond_EN_FINAL_Rev.pdf"
+        }
       ]
     },
     {
@@ -14281,7 +14699,12 @@
       "yearStart": 2077,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Bastet",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Cairo, Egypt",
@@ -14360,7 +14783,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Dragons",
+          "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
+        }
+      ]
     },
     {
       "name": "The World could use more Heroes",
@@ -14412,7 +14840,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Cinematic Trailer",
+          "url": "https://www.youtube.com/watch?v=FqnKB22pOC0"
+        }
+      ]
     },
     {
       "name": "Travelling Monk",
@@ -14435,7 +14868,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Zenyatta",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/zenyatta/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -14501,7 +14939,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Valkyrie",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
+        }
+      ]
     },
     {
       "name": "Doomfist Escapes",
@@ -14513,7 +14956,12 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Doomfist Origin Story",
+          "url": "https://www.youtube.com/watch?v=vaZfZFNuOpI"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Grímsvötn, Iceland",
@@ -14548,7 +14996,12 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "BInary",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt39f14b7a80be5780/5d02d10aa812cef40914a494/comic-overwatch-binary_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Tiveden, Sweden",
@@ -14594,7 +15047,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        }
+      ]
     },
     {
       "name": "Business Meeting",
@@ -14606,7 +15064,12 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Masquerade",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt193f89e1010ef25b/5d02e207a812cef40914a4dc/comic-overwatch-masquerade_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Monte-Carlo, Monaco",
@@ -14658,7 +15121,12 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Masquerade",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt193f89e1010ef25b/5d02e207a812cef40914a4dc/comic-overwatch-masquerade_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Venice, Italy",
@@ -14765,7 +15233,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Venture's Adventures",
+          "url": "https://www.youtube.com/watch?v=jZgG4CvcZso"
+        }
+      ]
     },
     {
       "name": "Curse Breaker",
@@ -14812,7 +15285,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        }
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -14831,7 +15313,16 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        },
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "City State of Numbani",
@@ -14905,7 +15396,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Stone by Stone",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt6b41d4e0dab2e218/5fbd6088ae5aee5796129682/OW_2020_Symmetra_Stone-By-Stone_enUS_revised.pdf"
+        }
+      ]
     },
     {
       "name": "Idina Unit OR15A Goes Online",
@@ -14959,7 +15455,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Overwatch Website, Orisa",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/orisa/"
+        },
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
     },
     {
       "name": "Waging War",
@@ -14981,7 +15486,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Reconcilliation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
+          ]
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -15029,7 +15543,12 @@
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Lindholm Workshop Notes Regarding Bastion",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltbe92ece7f1be99fe/64f8bcff4bca9e607b873ac8/OW_LoreBites_Torb_enEN.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Gothenburg, Sweden",
@@ -15094,7 +15613,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Against the Tide",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
+        }
+      ]
     },
     {
       "name": "Searching",
@@ -15156,7 +15684,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+        }
+      ]
     },
     {
       "name": "Sending a Message",
@@ -15203,7 +15736,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "A New Empire",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
+        }
+      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -15259,7 +15801,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Kiriko Origin Story",
+          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
+        },
+        {
+          "text": "Yokai",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
+        }
+      ]
     },
     {
       "name": "Hero of Numbani",
@@ -15301,7 +15852,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
     },
     {
       "name": "Tangle with Talon",
@@ -15351,7 +15907,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Tangle With Talon",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc802641f64a99128/6658ed88566a79a760a0ee04/OW_Venture_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc802641f64a99128/6658ed88566a79a760a0ee04/OW_Venture_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=yQO9n6DwoE0"
+          ]
+        }
+      ]
     },
     {
       "name": "Last Child of the Sun",
@@ -15391,7 +15956,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Illari Origin Story",
+          "url": "https://www.youtube.com/watch?v=LBI_uHJD-Xo"
+        }
+      ]
     },
     {
       "name": "Reunion",
@@ -15450,11 +16020,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Reunion",
+          "url": "https://www.youtube.com/watch?v=PKYVvPNhRR0"
+        }
+      ]
     },
     {
       "name": "The Plan",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -15462,7 +16037,12 @@
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "The Plan",
+          "url": "https://www.youtube.com/watch?v=_q0QGtk_AM0"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Junkertown, Australia",
@@ -15483,7 +16063,9 @@
           "country": "Junkers",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Worsening Atmosphere",
@@ -15525,7 +16107,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Red Promise",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4245a9312c310c5e/668ef097c02e3c210b574412/OW_SpaceRanger_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4245a9312c310c5e/668ef097c02e3c210b574412/OW_SpaceRanger_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=9M4dU7cd1KM"
+          ]
+        }
+      ]
     },
     {
       "name": "New Blood",
@@ -15537,7 +16128,12 @@
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "New Blood 1",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt990e1c8270ab0a55/618487f3edbd82202b552c06/OW_new-blood-1_EN.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Cairo, Egypt",
@@ -15574,7 +16170,12 @@
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Calling",
+          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
+        }
+      ],
       "yearEnd": null,
       "headlines": [],
       "secondaryCountryPlaces": [
@@ -15621,7 +16222,12 @@
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "New Blood 2",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt461c645442341e70/61afd28c9081800dd2472da3/OW_2.2_EN_Final.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Cairo, Egypt",
@@ -15696,11 +16302,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "New Blood 3",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt696432fe3af2dc73/61d8981ede959148b4b2eac0/OW_2.3_EN_FINAL.pdf"
+        }
+      ]
     },
     {
       "name": "Friendly Rivalry",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -15708,7 +16319,12 @@
       "yearStart": 2079,
       "eraName": "The Age of Conflict",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "A Friendly Rivalry",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7412d0bdf5ab1722/65e24090262479b4c492b50c/OW_Heroes_Junker_INT_ENG_Final.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Junkertown, Australia",
@@ -15729,13 +16345,15 @@
           "country": "Junkers",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Surprise attack",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 60,
       "lon": 100,
@@ -15761,6 +16379,14 @@
           "country": "Overwatch",
           "reasoning": ""
         }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "New Blood 4",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd491d56e1606d412/61fdc39da6bb9250d3e44a53/OW_2.4_Final_EN.pdf"
+        }
       ]
     },
     {
@@ -15773,7 +16399,16 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Calling",
+          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
+        },
+        {
+          "text": "Shockwaves",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt9d680714e6b3463e/64f8bf92d69ac7e216afe1ba/OW_LoreBites_Sojourn_enEN.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Toronto, Canada",
@@ -15860,7 +16495,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Zero Hour",
+          "url": "https://www.youtube.com/watch?v=GKXS_YA9s7E"
+        }
+      ]
     },
     {
       "name": "Luck of the Draw",
@@ -15907,7 +16547,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Luck of the Draw",
+          "url": "https://www.amazon.com/dp/195691630X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
     },
     {
       "name": "Busan Defense",
@@ -15969,7 +16614,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "New Blood 5",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltafcb62fe756a3879/622fa71cda5a7125ed751adf/OW_2.5_Final_EN.pdf"
+        }
+      ]
     },
     {
       "name": "Thoughtless Gods",
@@ -16011,13 +16661,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Thoughless Gods",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt42f4baf211e3c801/665e404aa310e4e5a2a48c1d/OW_Heroes_Hammond_EN_FINAL_Rev.pdf"
+        }
+      ]
     },
     {
       "name": "Where Honor Lives",
       "locationType": "earth",
       "cityDisplayName": "Tokyo, Japan",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -16044,6 +16699,14 @@
           "locationName": "",
           "country": "Hashimoto, Null Sector",
           "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Where Honor Lives",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt10bf8d52957fcb8d/66c79b3f54ac1460e5dfa7b3/OW_Heroes_Hanzo_EN_FINAL.pdf"
         }
       ]
     },
@@ -16095,7 +16758,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Invasion, Resistence",
+          "url": "https://www.youtube.com/watch?v=sK549CCipwg"
+        }
+      ]
     },
     {
       "name": "Randevu",
@@ -16116,7 +16784,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Invasion, Liberation",
+          "url": "https://www.youtube.com/watch?v=J7tiJlf8oSU"
+        },
+        {
+          "text": "As you Are",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blteb7d6f6256e5244d/647a3e85eb5acf10b838f054/OW2_2023_Pride_PDF_EN.pdf"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -16196,7 +16873,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Unity",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltea0ccf340e7f7cef/665e02a177dc635847f2bc03/OW_Heroes_Orisa_EN_FINAL_REV.pdf"
+        }
+      ]
     },
     {
       "name": "Rebuilding Ruins",
@@ -16238,7 +16920,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Rebuilding Ruins",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0e5e335364d4b808/6622c8af3e3ae65dfb769c64/OW_Heroes_Symmetra_EN_FINAL.pdf"
+        }
+      ]
     },
     {
       "name": "Liberation",
@@ -16300,7 +16987,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Invasion, Liberation",
+          "url": "https://www.youtube.com/watch?v=J7tiJlf8oSU"
+        }
+      ]
     },
     {
       "name": "Lost Ghosts",
@@ -16312,7 +17004,12 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Lost Ghosts",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd48ce4e52c29ed8f/66c8d57225057a85203f8db0/OW_Heroes_Ana_EN_FINAL.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Zurich, Switzerland",
@@ -16380,7 +17077,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Invasion, Ironclad",
+          "url": "https://www.youtube.com/watch?v=3QpN9i-GjEI"
+        }
+      ]
     },
     {
       "name": "A Great Day",
@@ -16425,7 +17127,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "A Great Day",
+          "url": "https://www.youtube.com/watch?v=py_kGferDww"
+        }
+      ]
     },
     {
       "name": "Lucky Man",
@@ -16437,7 +17144,12 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Lucky Man",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd757e9c9b4f4faa5/66c8ed58af5f735d26928b0b/OW_Heroes_Soldier76_EN_FINAL.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Zurich, Switzerland",
@@ -16512,7 +17224,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Against the Tide",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
+        }
+      ]
     },
     {
       "name": "Visitor",
@@ -16524,7 +17245,12 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Control",
+          "url": "https://www.youtube.com/watch?v=zMZAkF7ZFwc"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Red Promise Escape Ship",
@@ -16599,7 +17325,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Reconcilliation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
+          ]
+        }
+      ]
     },
     {
       "name": "Emergency Landing",
@@ -16611,7 +17346,12 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Control",
+          "url": "https://www.youtube.com/watch?v=zMZAkF7ZFwc"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Dorado, Mexico",
@@ -16705,13 +17445,18 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Unity",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltea0ccf340e7f7cef/665e02a177dc635847f2bc03/OW_Heroes_Orisa_EN_FINAL_REV.pdf"
+        }
+      ]
     },
     {
       "name": "Free the Phreaks",
       "locationType": "earth",
       "cityDisplayName": "Aatlis, Morocco",
-      "description": "",
+      "description": "No description available.",
       "image": "",
       "lat": 34.0209,
       "lon": -6.8416,
@@ -16737,6 +17482,18 @@
           "country": "Phreaks, Helix Securities",
           "reasoning": ""
         }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Tear it Down",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+            "https://www.youtube.com/watch?v=u282-SDwYtg"
+          ]
+        }
       ]
     },
     {
@@ -16749,7 +17506,16 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Reconcilliation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
+          ]
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Atlantic Arcology",
@@ -16839,7 +17605,12 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Hazardous Tactics",
+          "url": "https://www.youtube.com/watch?v=sR8N3cXWxqM"
+        }
+      ]
     },
     {
       "name": "Together",
@@ -16852,7 +17623,12 @@
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Together",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte4a278e1a0fe4bf4/67620028893a4f305fbb2fb2/OW_Reflections2_EN.pdf"
+        }
+      ],
       "yearStart": 2079,
       "secondaryCountryPlaces": [
         {
@@ -16905,7 +17681,16 @@
       "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Picture of Sucess",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
+          ]
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
@@ -16980,7 +17765,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Future's Past",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
+            "https://www.youtube.com/watch?v=9kFSMbaufn8"
+          ]
+        }
+      ]
     },
     {
       "name": "Sentinels",
@@ -17020,7 +17814,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Atlas Report",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt24704c33b162846e/68fa55d1b5da2d436d224db7/OW_Micro-Sojourn_SinglePage_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt24704c33b162846e/68fa55d1b5da2d436d224db7/OW_Micro-Sojourn_SinglePage_EN.pdf",
+            "https://www.youtube.com/watch?v=LwvFQhBSotk"
+          ]
+        }
+      ]
     },
     {
       "name": "Against the Tide",
@@ -17060,7 +17863,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Against the Tide",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
+            "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
+          ]
+        }
+      ]
     },
     {
       "name": "Vested Interests",
@@ -17112,7 +17924,24 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Vested Interests",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltae90bd382a660bb0/696ae8776abeed1bf187190c/MAX_Micro_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltae90bd382a660bb0/696ae8776abeed1bf187190c/MAX_Micro_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=suqIekAIvH4"
+          ]
+        },
+        {
+          "text": "The Pocket King",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=ULQBHWSqzwg"
+          ]
+        }
+      ]
     },
     {
       "name": "New Charter",
@@ -17147,7 +17976,16 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Atlas Report",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt24704c33b162846e/68fa55d1b5da2d436d224db7/OW_Micro-Sojourn_SinglePage_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt24704c33b162846e/68fa55d1b5da2d436d224db7/OW_Micro-Sojourn_SinglePage_EN.pdf",
+            "https://www.youtube.com/watch?v=LwvFQhBSotk"
+          ]
+        }
+      ]
     },
     {
       "name": "The Hunt Begins",
@@ -17194,11 +18032,24 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Storm Chaser",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt275f48a2413acdea/67db397a4ea776733af28d64/OW_Freja_EN_Single.pdf",
+            "https://www.youtube.com/watch?v=LriEejDFSnQ"
+          ]
+        },
+        {
+          "text": "The Hunt Begins",
+          "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
+        }
+      ]
     },
     {
       "name": "New Heights",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "image": "",
       "cityDisplayName": "Watchpoint: Grand Mesa, United States",
@@ -17228,6 +18079,17 @@
           "locationName": "",
           "country": "Helix Securities",
           "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "New Heights",
+          "url": "https://www.youtube.com/watch?v=O7JRRBhgelo",
+          "urls": [
+            "https://www.youtube.com/watch?v=O7JRRBhgelo",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf"
+          ]
         }
       ]
     },
@@ -17271,7 +18133,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "The Upper Hand",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8c6688d56348d8b3/696ae9f7521fe69c2b245415/Vishkar_Micro_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=kQR0S4jxDKM"
+          ]
+        }
+      ]
     },
     {
       "name": "The Invitation",
@@ -17283,7 +18154,16 @@
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "The Invitation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt248e172abd325cbc/695dad2d6abeed56bc8717a9/Recruits_Micro_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt248e172abd325cbc/695dad2d6abeed56bc8717a9/Recruits_Micro_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=l0Cfph_DlPc"
+          ]
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Gibraltar",
@@ -17334,7 +18214,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
+        }
+      ],
       "factionFilterPlaces": [
         {
           "locationName": "",
@@ -17381,7 +18266,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -17416,7 +18306,7 @@
     },
     {
       "name": "Elemental Kin",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
       "lat": 30.659867,
@@ -17424,7 +18314,12 @@
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Elemental Kin",
+          "url": "https://www.youtube.com/watch?v=ytZnOGwEq9s&t=16s"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Chengdu, China",
@@ -17445,11 +18340,13 @@
           "country": "Overwatch, Wuxing University",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Signs of Life",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Lijiang, China",
       "lat": 26.8595868,
@@ -17457,7 +18354,12 @@
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Signs of Life",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt706090b5dbb2899d/68fa7e332036843c95cb6b0f/OW_Juno_EN.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Lijiang, China",
@@ -17478,11 +18380,13 @@
           "country": "Lucheng, Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Jetpack Katt",
-      "description": "",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Gibraltar",
       "lat": 36.1407517,
@@ -17490,7 +18394,16 @@
       "yearStart": 2080,
       "eraName": "The Null Sector Invasion",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Project Jetpack Katt",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt140a05f6da50ddf5/698d1ca8fa5dc943f288fc8d/JetpackCat_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt140a05f6da50ddf5/698d1ca8fa5dc943f288fc8d/JetpackCat_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=fYgT6nGOf9M"
+          ]
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Gibraltar",
@@ -17513,7 +18426,9 @@
           "country": "Overwatch",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "Old Friend",
@@ -17565,7 +18480,12 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "The Hunt Begins",
+          "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
+        }
+      ]
     },
     {
       "name": "Reconciliation",
@@ -17612,7 +18532,16 @@
       ],
       "yearEnd": null,
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Reconcilliation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
+          ]
+        }
+      ]
     },
     {
       "name": "Reign of Talon",
@@ -17624,7 +18553,12 @@
       "yearStart": 2080,
       "eraName": "The Reign of Talon",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Reign of Talon",
+          "url": "https://www.youtube.com/watch?v=Ch2J2Xuu3VI"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Rome, Italy",
@@ -17718,7 +18652,24 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [
+        {
+          "text": "Search and Destroy",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
+          ]
+        },
+        {
+          "text": "Another Life",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt93fc4cb93459b85d/698661373101f32f395613bc/Emre_Micro_EN_FINAL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt93fc4cb93459b85d/698661373101f32f395613bc/Emre_Micro_EN_FINAL.pdf",
+            "https://www.youtube.com/watch?v=oP3Pba3mo7M"
+          ]
+        }
+      ]
     },
     {
       "name": "Vengance Comes",
@@ -17730,7 +18681,16 @@
       "yearStart": 2080,
       "eraName": "The Reign of Talon",
       "image": "",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Vengange Comes",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt230509ca48e4a621/697d4fa37a42448b0868c853/OW_Talon_EN_FNL_121825.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt230509ca48e4a621/697d4fa37a42448b0868c853/OW_Talon_EN_FNL_121825.pdf",
+            "https://www.youtube.com/watch?v=zB_nnscVC4w"
+          ]
+        }
+      ],
       "yearEnd": null,
       "headlines": [],
       "secondaryCountryPlaces": [
@@ -17857,7 +18817,12 @@
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -17917,7 +18882,20 @@
       "yearStart": 2080,
       "yearEnd": null,
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "From the Ashes",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7acf0897ea322390/69ab437d654060000881e0d5/OW_Gibraltar_EN_FNL_022726.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7acf0897ea322390/69ab437d654060000881e0d5/OW_Gibraltar_EN_FNL_022726.pdf",
+            "https://www.youtube.com/watch?v=n1BlkYaJaZo"
+          ]
+        },
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Gibraltar",
@@ -17978,7 +18956,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -18044,7 +19027,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "yearStart": 2080,
       "heroFilterPlaces": [
         {
@@ -18098,7 +19086,11 @@
       "sources": [
         {
           "text": "Cross Roads",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/crossroads/"
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt01b7f1d9004dc8f1/69e2a51316fb8a479d69a5a5/OW_Cassidy_EN_FNL_FULL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt01b7f1d9004dc8f1/69e2a51316fb8a479d69a5a5/OW_Cassidy_EN_FNL_FULL.pdf",
+            "https://www.youtube.com/watch?v=LTwJGqW69b4"
+          ]
         }
       ],
       "secondaryCountryPlaces": [
@@ -18165,7 +19157,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "yearStart": 2080,
       "heroFilterPlaces": [
         {
@@ -18225,6 +19222,14 @@
         {
           "text": "Summit Breach",
           "url": "https://www.youtube.com/watch?v=lxz-055QD6Q"
+        },
+        {
+          "text": "A Rare Power",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=ozaBSxQUFG0"
+          ]
         }
       ],
       "secondaryCountryPlaces": [
@@ -18284,7 +19289,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        },
+        {
+          "text": "The Fall of the Sparrow",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -18324,7 +19338,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Progress",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=3VKL8nqrpj0"
+          ]
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -18368,7 +19391,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Deepsea Deception",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
+            "https://www.youtube.com/watch?v=CHLN8j9fwX8"
+          ]
+        }
+      ],
       "yearStart": 2080,
       "heroFilterPlaces": [
         {
@@ -18432,7 +19464,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "End of the Linea",
+          "url": "https://www.youtube.com/watch?v=UKJL7JfIvNg&t=29s"
+        }
+      ],
       "yearStart": 2080,
       "heroFilterPlaces": [
         {
@@ -18497,7 +19534,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        }
+      ],
       "yearStart": 2080,
       "heroFilterPlaces": [
         {
@@ -18578,7 +19624,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -18600,6 +19651,46 @@
         {
           "locationName": "",
           "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Ulterior Motive",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -18.1415884,
+      "lon": 178.4421662,
+      "image": "",
+      "cityDisplayName": "Suva, Fiji",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Suva, Fiji",
+          "country": "Fiji,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Brigitte, Tracer, Bastion, D.va,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Lucheng Interstellar, Talon Empire,",
           "reasoning": ""
         }
       ]

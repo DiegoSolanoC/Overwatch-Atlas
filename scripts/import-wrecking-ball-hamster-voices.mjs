@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { scanTheaterAssets } from './import-interaction-folder.mjs';
 import {
@@ -84,6 +85,46 @@ function stripSfxPrefix(name) {
  */
 function folderHasSfxPrefix(folderLabel) {
     return /^\([^)]+\)/i.test(String(folderLabel || '').trim());
+}
+
+/**
+ * @param {string} dialoguePart
+ * @returns {string}
+ */
+function stripHamsterDialoguePart(dialoguePart) {
+    return String(dialoguePart || '')
+        .replace(/^\(hamster_noises\)_/i, '')
+        .replace(/_\(\d+\)$/i, '');
+}
+
+/**
+ * @param {string} hamsterAtlasName
+ * @returns {string}
+ */
+function translatorSiblingAtlasName(hamsterAtlasName) {
+    const dialoguePart = parseVoicelineFilename(hamsterAtlasName).dialoguePart;
+    const stripped = stripHamsterDialoguePart(dialoguePart);
+    return `Wrecking_Ball_-_${stripped}.ogg`;
+}
+
+/**
+ * @param {string} filePath
+ * @returns {string}
+ */
+function fileMd5(filePath) {
+    const data = fs.readFileSync(filePath);
+    return crypto.createHash('md5').update(data).digest('hex');
+}
+
+/**
+ * @param {string} hamsterPath
+ * @returns {boolean}
+ */
+function hamsterClipDuplicatesTranslator(hamsterPath) {
+    const hamsterName = path.basename(hamsterPath);
+    const translatorPath = path.join(VOICELINES_DIR, translatorSiblingAtlasName(hamsterName));
+    if (!fs.existsSync(translatorPath)) return false;
+    return fileMd5(hamsterPath) === fileMd5(translatorPath);
 }
 
 /**
@@ -327,7 +368,10 @@ async function main() {
 
     await fsp.mkdir(VOICELINES_DIR, { recursive: true });
     let copied = 0;
+    let skippedDuplicate = 0;
     const copiedNames = new Set();
+    /** @type {string[]} */
+    const duplicateWarnings = [];
 
     for (const row of planned) {
         const variants = Array.isArray(row.sourceOggs) ? row.sourceOggs : [];
@@ -341,7 +385,23 @@ async function main() {
             copiedNames.add(variant.atlasName);
             const dest = path.join(VOICELINES_DIR, variant.atlasName);
             await fsp.copyFile(variant.sourceOgg, dest);
+            if (hamsterClipDuplicatesTranslator(dest)) {
+                skippedDuplicate += 1;
+                duplicateWarnings.push(variant.atlasName);
+                await fsp.unlink(dest);
+                continue;
+            }
             copied += 1;
+        }
+    }
+
+    if (duplicateWarnings.length) {
+        console.log(`\nSkipped ${skippedDuplicate} hamster clips identical to translator:`);
+        for (const name of duplicateWarnings.slice(0, 12)) {
+            console.log(`  ${name}`);
+        }
+        if (duplicateWarnings.length > 12) {
+            console.log(`  …and ${duplicateWarnings.length - 12} more`);
         }
     }
 

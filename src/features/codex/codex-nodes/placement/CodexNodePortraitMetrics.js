@@ -2,6 +2,8 @@
  * Portrait dimensions, asset paths, country whitelist, and default scales for Codex nodes.
  */
 
+import { codexHexRotationDegreesForId } from './CodexNodeVisualHash.js';
+
 export const CODEX_IMG_BASE_PX = 144;
 export const CODEX_FRAME_PATH = 'src/assets/images/Codex/Node';
 /** Luminance mask base path for variant-specific alpha images (Alpha Node1/2/3.png) */
@@ -47,6 +49,39 @@ export function codexCountryFlagSrc(canonicalKey) {
  * @param {'hero'|'faction'|'country'|'junction'|'npc'} kind
  * @param {unknown} optsScale
  */
+export function codexNodeLayoutSizePx(kind, scale) {
+    const resolved = resolveCodexNodeScale(kind || 'hero', scale);
+    const base = kind === 'junction' ? CODEX_JUNCTION_BASE_PX : CODEX_IMG_BASE_PX;
+    const dim = base * resolved;
+    return { width: dim, height: dim };
+}
+
+/**
+ * @param {{ id?: string, kind?: string, x?: number, y?: number, scale?: number }} node
+ */
+export function codexNodeCenterFromLayoutRecord(node) {
+    if (!node || typeof node.x !== 'number' || typeof node.y !== 'number') return null;
+    const kind = node.kind || 'hero';
+    const { width, height } = codexNodeLayoutSizePx(kind, node.scale);
+    return { x: node.x + width / 2, y: node.y + height / 2 };
+}
+
+/**
+ * @param {{ id?: string, kind?: string, x?: number, y?: number, scale?: number }} node
+ */
+export function codexNodeFrameFromLayoutRecord(node) {
+    if (!node || typeof node.x !== 'number' || typeof node.y !== 'number') return null;
+    const kind = node.kind || 'hero';
+    const { width, height } = codexNodeLayoutSizePx(kind, node.scale);
+    return {
+        left: node.x,
+        top: node.y,
+        width,
+        height,
+        rotationDeg: node.id ? codexHexRotationDegreesForId(node.id) : 0,
+    };
+}
+
 export function resolveCodexNodeScale(kind, optsScale) {
     if (typeof optsScale === 'number' && Number.isFinite(optsScale)) {
         return Math.max(CODEX_SCALE_MIN, Math.min(CODEX_SCALE_MAX, optsScale));

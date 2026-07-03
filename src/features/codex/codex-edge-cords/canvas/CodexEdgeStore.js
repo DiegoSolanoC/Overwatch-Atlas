@@ -15,6 +15,7 @@ import {
     shortestPathNodeIdsForTargetedRoutePreview
 } from '../../codex-controls-ui/stage/CodexTargetedSelection.js';
 import { appendCodexEdgeNodeMask as appendCodexEdgeNodeMaskCore } from '../../codex-node-drawing/svg/CodexNodeFrameSvg.js';
+import { codexNodeCenterFromLayoutRecord } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 import {
     isCodexEdgeTimelineActiveForDockPage,
@@ -316,6 +317,21 @@ function buildPolylineForEdge(edge) {
     if (!a || !b) return null;
     const ca = api.getNodeCenterWorldPx(a);
     const cb = api.getNodeCenterWorldPx(b);
+    return [{ x: ca.x, y: ca.y }, { x: cb.x, y: cb.y }];
+}
+
+/**
+ * Fast plan-time polyline from saved layout (avoids offsetWidth layout reads during load).
+ * @param {{ fromId: string, toId: string }} edge
+ * @param {Map<string, { id: string, kind?: string, x: number, y: number, scale?: number }>} nodeById
+ */
+function buildPolylineForEdgeFromSavedLayout(edge, nodeById) {
+    const a = nodeById.get(edge.fromId);
+    const b = nodeById.get(edge.toId);
+    if (!a || !b) return null;
+    const ca = codexNodeCenterFromLayoutRecord(a);
+    const cb = codexNodeCenterFromLayoutRecord(b);
+    if (!ca || !cb) return null;
     return [{ x: ca.x, y: ca.y }, { x: cb.x, y: cb.y }];
 }
 
@@ -941,6 +957,7 @@ api.clearPendingCodexDeleteState = clearPendingCodexDeleteState;
 api.codexHasPendingDeleteVisuals = codexHasPendingDeleteVisuals;
 api.clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded = clearPendingCodexDeleteStateAndRefreshEdgesIfNeeded;
 api.buildPolylineForEdge = buildPolylineForEdge;
+api.buildPolylineForEdgeFromSavedLayout = buildPolylineForEdgeFromSavedLayout;
 api.samplePacketTailNodeIds = samplePacketTailNodeIds;
 api.tryBuildPacketWorldPoints = tryBuildPacketWorldPoints;
 api.appendCodexEdgeNodeMask = appendCodexEdgeNodeMask;

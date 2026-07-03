@@ -13,6 +13,7 @@ import {
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
+import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
 
 export function runHideImageOverlay(slide) {
             if (
@@ -26,6 +27,11 @@ export function runHideImageOverlay(slide) {
             const overlay = document.getElementById('eventImageOverlay');
             const eventSlide = document.getElementById('eventSlide');
             const toggleBtn = document.getElementById('eventImageToggle');
+            clearEventSourceMediaEmbed();
+            if (slide && typeof slide === 'object') {
+                slide.activeYouTubeVideoId = '';
+                slide.activePdfSourceUrl = '';
+            }
             if (overlay) {
                 overlay.classList.remove('open');
                 // Only remove slide-open if event slide is closed

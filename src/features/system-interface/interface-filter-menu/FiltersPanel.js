@@ -46,10 +46,8 @@ import {
   applyFilterChipSearch,
 } from "./wiring/wireFiltersSearchBox.js";
 import { createPanelExclusivityObserver } from "./panel/panelExclusivityObserver.js";
-import {
-  hideEventImageOverlayForSidePanel,
-  restoreEventImageOverlayAfterSidePanel,
-} from "./panel/panelSideImageOverlaySync.js";
+import { closeEventInfoPanelIfOpen } from "../interface-shared/closeEventInfoPanelIfOpen.js";
+import { restoreEventImageOverlayAfterSidePanel } from "./panel/panelSideImageOverlaySync.js";
 import { dismissAllPanelsExcept } from "../interface-shared/dismissAllPanelsExcept.js";
 import {
   adoptLegacyMusicContentIntoSharedPanel,
@@ -188,6 +186,7 @@ class FilterService {
       adoptLegacyMusicContentIntoSharedPanel(this.filtersPanel);
       this.setPanelMode("music");
       if (!this.filtersPanel?.classList.contains("open")) {
+        closeEventInfoPanelIfOpen();
         this.closeOtherPanels();
         this.filtersPanel?.classList.add("open");
       }
@@ -420,8 +419,7 @@ class FilterService {
   }
 
   openPanel() {
-    /* Keep the info slide open; hide the center image while filters cover it. */
-    hideEventImageOverlayForSidePanel();
+    closeEventInfoPanelIfOpen();
 
     /* Reset the pending selection to the confirmed snapshot every time we open. */
     if (this.isStandaloneMode() && window.standaloneActiveFilters) {

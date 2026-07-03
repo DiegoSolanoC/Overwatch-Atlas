@@ -2,6 +2,8 @@
  * WorldviewImageOverlay - Manages event image overlay visibility, auto-show/hide, and stillness detection
  */
 
+import { clearEventSourceMediaEmbed } from '../../../system-interface/interface-event-slide/standalone-slide/image-overlay/eventSourceMediaOverlay.js';
+
 export class WorldviewImageOverlay {
     constructor(sceneModel, uiView) {
         this.sceneModel = sceneModel;
@@ -37,6 +39,7 @@ export class WorldviewImageOverlay {
 
         if (!eventImageOverlay) return;
 
+        clearEventSourceMediaEmbed();
         this._clearImageHideFadeTimer();
         this.disablePageNavigationButtons(false);
         eventImageOverlay.style.setProperty('pointer-events', 'none');

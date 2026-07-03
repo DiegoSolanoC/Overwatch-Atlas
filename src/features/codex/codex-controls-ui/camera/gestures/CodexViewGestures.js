@@ -202,6 +202,10 @@ function beginActualBackgroundPan(prep, firstMoveEv) {
         s.codexSkipEdgeRedraw = true;
         scheduleUpdateCodexVirtualScroll();
         clearCodexEdgeRedrawSchedule();
+        if (s.codexMode === 'view') {
+            s.codexSkipAllEdgeRedraws = false;
+            s.codexSkipEdgeRedraw = false;
+        }
         // Note: Debounce timer is already managed by applyClient during pan
     };
 

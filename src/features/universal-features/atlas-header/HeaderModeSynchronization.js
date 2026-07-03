@@ -110,9 +110,10 @@ function attachCodexButtonDelegation() {
         if (!btn) return;
         e.preventDefault();
         e.stopPropagation();
-        const svc = window.CodexModeService;
-        if (svc && typeof svc.enterCodexMode === 'function') {
-            void svc.enterCodexMode();
+        if (typeof window.appModeSwitch === 'function') {
+            void window.appModeSwitch(ATLAS_MODE.CODEX);
+        } else if (typeof window.runCodexComponents === 'function') {
+            void window.runCodexComponents(false);
         }
     }, true);
 }

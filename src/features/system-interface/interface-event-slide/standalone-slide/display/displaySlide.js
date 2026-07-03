@@ -53,10 +53,16 @@ import {
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 import { teardownDialogueTheaterEventSlide } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
+import { clearEventSourceMediaEmbed, resetSourceMediaMusicDuckState } from '../image-overlay/eventSourceMediaOverlay.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
         if (!eventSlide) return;
+
+        clearEventSourceMediaEmbed();
+        resetSourceMediaMusicDuckState();
+        slide.activeYouTubeVideoId = '';
+        slide.activePdfSourceUrl = '';
 
         teardownDialogueTheaterEventSlide();
 

@@ -13,6 +13,7 @@ import {
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
+import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
 
 export function runHideImageOverlayGradually(slide, durationMs = 600) {
             if (
@@ -53,6 +54,11 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                 
                 if (progress >= 1) {
                     clearInterval(fadeTimer);
+                    clearEventSourceMediaEmbed();
+                    if (slide && typeof slide === 'object') {
+                        slide.activeYouTubeVideoId = '';
+                        slide.activePdfSourceUrl = '';
+                    }
                     overlay.style.opacity = '0';
                     overlay.classList.remove('open', 'slide-open', 'fade-in');
                     overlay.style.display = 'none';

@@ -6,6 +6,7 @@
 import {
     restoreEventImageOverlayAfterSidePanel,
 } from '../../../system-interface/interface-filter-menu/panel/panelSideImageOverlaySync.js';
+import { closeEventInfoPanelIfOpen } from '../../../system-interface/interface-shared/closeEventInfoPanelIfOpen.js';
 
 export class MusicPanelService {
     constructor(musicButton, musicPanel, musicPanelClose) {
@@ -95,6 +96,7 @@ export class MusicPanelService {
             } else if (filterService && typeof filterService.openPanelWithMode === 'function') {
                 filterService.openPanelWithMode('music');
             } else if (filtersPanel) {
+                closeEventInfoPanelIfOpen();
                 filtersPanel.classList.add('open');
                 filtersPanel.dataset.panelMode = 'music';
                 filtersPanel.classList.add('filters-panel--music-mode');

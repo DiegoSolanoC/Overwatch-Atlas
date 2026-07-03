@@ -67,12 +67,46 @@
 }
 
 .event-image-container {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: auto; /* Capture clicks on the image container */
+}
+
+.event-source-media-embed,
+.event-youtube-embed,
+.event-pdf-embed {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2;
+}
+
+.event-source-media-embed__frame,
+.event-youtube-embed__frame,
+.event-pdf-embed__frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+}
+
+.event-image-overlay[data-media-mode='youtube'],
+.event-image-overlay[data-media-mode='pdf'] {
+    cursor: default;
+}
+
+.event-image-overlay[data-media-mode='youtube'] .event-source-media-embed,
+.event-image-overlay[data-media-mode='youtube'] .event-youtube-embed,
+.event-image-overlay[data-media-mode='pdf'] .event-source-media-embed,
+.event-image-overlay[data-media-mode='pdf'] .event-pdf-embed {
+    pointer-events: auto;
 }
 
 .event-image-container img {

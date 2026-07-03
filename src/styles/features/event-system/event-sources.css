@@ -30,6 +30,81 @@ body.color-palette-gray .event-sources-section {
     color: #e0e0e0;
 }
 
+.event-source-display-item--with-play {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-source-display-item--with-play .event-source-link {
+    flex: 1;
+    min-width: 0;
+}
+
+.event-source-media-play-group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 6px;
+    align-items: center;
+}
+
+.event-source-media-play,
+.event-source-youtube-play {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    background: var(--btn-primary-bg, rgba(33, 150, 243, 0.85));
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.event-source-media-play:hover,
+.event-source-youtube-play:hover {
+    transform: scale(1.06);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: var(--btn-primary-bg-hover, rgba(66, 165, 245, 0.95));
+}
+
+.event-source-media-play--active,
+.event-source-youtube-play--active {
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.35);
+}
+
+.event-source-media-play--close,
+.event-source-youtube-play--close {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    background: rgba(180, 40, 40, 0.35);
+    border-color: rgba(255, 140, 140, 0.55);
+}
+
+.event-source-media-play--close:hover,
+.event-source-youtube-play--close:hover {
+    background: rgba(200, 50, 50, 0.5);
+    border-color: rgba(255, 170, 170, 0.75);
+}
+
+.event-source-media-play--pdf {
+    padding: 4px;
+}
+
+.event-source-media-play__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
 .event-source-link {
     color: #2196F3;
     text-decoration: none;
@@ -80,8 +155,44 @@ body.color-palette-gray .event-sources-section {
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 6px;
+}
+
+.source-links-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.source-link-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    align-items: center;
+}
+
+.source-link-add-btn,
+.source-link-remove-btn {
+    align-self: flex-start;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: #e0e0e0;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.source-link-remove-btn {
+    min-width: 28px;
+    padding-inline: 0;
+}
+
+.source-link-add-btn:hover,
+.source-link-remove-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .source-pair:last-child {

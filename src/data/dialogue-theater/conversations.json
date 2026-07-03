@@ -4853,7 +4853,7 @@
         {
           "id": "bd3fecfc-fa06-471e-904a-4ba0e09f9e28",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_He_says,_if_you_have_many_aliases,_why_call_yourself_Ana.ogg",
+          "voice": "Wrecking_Ball_-_He_says,_if_you_have_many_aliases,_why_call_yourself__Ana_.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_He_says,_if_you_have_many_aliases,_why_call_yourself__Ana_.ogg",
           "subtitles": "He says, if you have many aliases, why call yourself \"Ana\"?",
           "render": "Heroic.png"
@@ -13326,7 +13326,7 @@
         {
           "id": "3492e199-934c-4ff4-8db2-2683e8b8ccc5",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_hamster_says,_no_comment.ogg",
+          "voice": "Wrecking_Ball_-_The_hamster_says,__No_comment._.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_The_hamster_says,__No_comment._.ogg",
           "subtitles": "The hamster says, \"No comment.\"",
           "render": "Heroic.png"
@@ -28467,7 +28467,7 @@
         {
           "id": "96d51605-e10c-4871-b2a6-b6856feeb0e8",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_hamster_prefers_the_adjective_ruthless.ogg",
+          "voice": "Wrecking_Ball_-_The_hamster_prefers_the_adjective__ruthless.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_The_hamster_prefers_the_adjective__ruthless.ogg",
           "subtitles": "The hamster prefers the adjective: \"ruthless.\"",
           "render": "Heroic.png"
@@ -32433,7 +32433,7 @@
         {
           "id": "79a4cd75-1310-4aaa-bd0f-054fcd99e424",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_mammal_says,_likewise.ogg",
+          "voice": "Wrecking_Ball_-_The_mammal_says,__Likewise._.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_The_mammal_says,__Likewise._.ogg",
           "subtitles": "The mammal says, \"Likewise.\"",
           "render": "Heroic.png"
@@ -36616,7 +36616,7 @@
         {
           "id": "796409f6-3d97-47e2-bca5-37c90e478e25",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_Where_did_all_the_simians_in_the_lunar_colony_go.ogg",
+          "voice": "Wrecking_Ball_-_Where_did_all_the_simians_in_the_lunar_colony_go_.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Where_did_all_the_simians_in_the_lunar_colony_go_.ogg",
           "subtitles": "Where did all the Simians in the Lunar Colony go?",
           "render": "Heroic.png"
@@ -36673,7 +36673,7 @@
         {
           "id": "9c3f4b46-8393-4181-81e6-a4b3b188d88b",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_Was_it_also_an_accident_when_you_left_for_Earth_without_him.ogg",
+          "voice": "Wrecking_Ball_-_Was_it_also_an_accident_when_you_left_for_Earth_without_him_.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Was_it_also_an_accident_when_you_left_for_Earth_without_him_.ogg",
           "subtitles": "**hamster noises** Was it also an *\"accident\"* when you left for Earth without him?",
           "render": "Heroic.png"
@@ -36739,7 +36739,7 @@
         {
           "id": "dc881f66-bd72-44b7-8a69-374a87637ff4",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_He_says,_don't_even_think_about_it.ogg",
+          "voice": "Wrecking_Ball_-_He_says,__Don't_even_think_about_it._.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_He_says,__Don't_even_think_about_it._.ogg",
           "subtitles": "He says, \"don't even think about it.\"",
           "render": "Heroic.png"
@@ -37414,7 +37414,7 @@
         {
           "id": "24ce6e79-57f5-4feb-883f-bb9b42a190ac",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_hamster_uses_a_puffy_notebook.ogg",
+          "voice": "Wrecking_Ball_-_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "subtitles": "The hamster uses a puffy notebook.",
           "render": "Heroic.png"
@@ -38134,7 +38134,7 @@
         {
           "id": "d1644d1c-a2c9-40f8-91bf-085bcde5d972",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_Alert_translation_buffer_full.ogg",
+          "voice": "Wrecking_Ball_-_Alert__translation_buffer_full.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Alert__translation_buffer_full.ogg",
           "subtitles": "Alert: translation buffer full.",
           "render": "Heroic.png"
@@ -38200,7 +38200,7 @@
         {
           "id": "e781e654-efce-4866-a364-43fff9a9cd45",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_hamster's_temper_is_rising.ogg",
+          "voice": "Wrecking_Ball_-_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "subtitles": "The hamster's temper is rising.",
           "render": "Heroic.png"
@@ -38453,7 +38453,7 @@
         {
           "id": "75e577cb-8e77-4a96-956c-149d877a90e0",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_The_hamster_has_a_message_for_your_fox.ogg",
+          "voice": "Wrecking_Ball_-_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Hamster_has_detected_pancakes._Bring_pancakes_to_the_hamster,_or_the_hamster_will_locate_pancakes.ogg",
           "subtitles": "The hamster has a message for your fox.",
           "render": "Heroic.png"
@@ -38494,7 +38494,7 @@
         {
           "id": "1e0ec6cd-98a9-4e2f-bb4b-0c9466346a1f",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_He_says,_you're_welcome_(2).ogg",
+          "voice": "Wrecking_Ball_-_He_says,__You're_welcome._.ogg",
           "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_He_says,__You're_welcome._.ogg",
           "subtitles": "He says, \"you're welcome.\"",
           "render": "Heroic.png"

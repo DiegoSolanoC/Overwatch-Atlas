@@ -14,6 +14,7 @@ import {
     closeDialogueTheaterInfoPanel,
     isDialogueTheaterInfoPanelActive,
 } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
+import { clearEventSourceMediaEmbed } from '../image-overlay/eventSourceMediaOverlay.js';
 
 function restoreHubMenuIfHidden() {
     if (!document.body.classList.contains('app-timeline-default')) return;
@@ -51,6 +52,9 @@ export function runHideEventSlide(slide) {
             }
             
             // Hide image overlay completely
+            clearEventSourceMediaEmbed();
+            slide.activeYouTubeVideoId = '';
+            slide.activePdfSourceUrl = '';
             if (eventImageOverlay) {
                 eventImageOverlay.classList.remove('slide-open', 'open', 'fade-in', 'fade-out');
                 eventImageOverlay.style.display = 'none';

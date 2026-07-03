@@ -200,19 +200,16 @@ export async function loadEventSystem(testBtn) {
 
     createHeaderHubButton({
       id: "filtersToggle",
-      className: "dock-globe-rail__btn",
+      className: "",
       title: "Filters (F)",
       label: "Filters",
       iconPath:
         "src/assets/images/Icons/Filter%20Icons/Filter%20Icon.png",
       iconAlt: "Filters",
-      parentId: "dockGlobeRailRight",
-      baseClass: "globe-control-btn",
+      parentId: "headerHubRightButtonGroup",
+      baseClass: "header-hub-btn header-hub-btn--icon",
       iconSpanId: "filtersIcon",
       headerOrder: 55,
-      mobileParentId: "headerHubRightButtonGroup",
-      mobileBaseClass: "header-hub-btn header-hub-btn--icon",
-      mobileClassName: "",
     });
 
     reflowDockChromeRails();

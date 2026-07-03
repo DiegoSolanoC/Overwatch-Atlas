@@ -15,6 +15,10 @@ import {
     isMobileEventSlideViewport,
     syncMobileEventSlideLayoutForImageShown,
 } from './mobileEventSlideImageLayout.js';
+import {
+    clearEventSourceMediaEmbed,
+    shouldIgnoreOverlayClickForSourceMedia,
+} from './eventSourceMediaOverlay.js';
 
 export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -27,7 +31,13 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
             const eventSlide = document.getElementById('eventSlide');
             
             if (!overlay || !img || !imagePath) return;
-            
+
+            clearEventSourceMediaEmbed();
+            if (slide && typeof slide === 'object') {
+                slide.activeYouTubeVideoId = '';
+                slide.activePdfSourceUrl = '';
+            }
+
             img.src = imagePath;
             img.style.display = 'block';
             img.style.opacity = '0';
@@ -47,6 +57,7 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 overlay.addEventListener('click', (e) => {
                     if (isMobileEventSlideViewport()) return;
                     if (isDialogueTheaterImageOverlayContext()) return;
+                    if (shouldIgnoreOverlayClickForSourceMedia(e)) return;
                     // Only hide if clicking the image itself or overlay (not other controls)
                     if (e.target === overlay || e.target.tagName === 'IMG') {
                         e.stopPropagation();

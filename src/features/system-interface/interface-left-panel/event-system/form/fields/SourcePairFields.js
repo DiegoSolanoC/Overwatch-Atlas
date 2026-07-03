@@ -3,6 +3,17 @@
  * Manages adding, removing, and clearing source pairs
  */
 
+import { serializeSourceLinks } from '../../../../interface-event-slide/standalone-slide/sources/sourceUrlUtils.js';
+import { wireSourcePairRow, wireSourceRowsIn } from '../../../../interface-shared/storyEventSourceAutocomplete.js';
+import {
+    appendSourceLinkRow,
+    buildSourcePairMarkup,
+    populateSourceLinkStack,
+    readSourceLinkValues,
+    urlsForSourcePairLoad,
+    wireSourcePairLinkControls,
+} from './sourcePairLinkRows.js';
+
 class SourcePairFields {
     constructor() {
         this.container = null;
@@ -20,75 +31,68 @@ class SourcePairFields {
     }
 
     /**
+     * @param {HTMLElement} pairDiv
+     */
+    wirePair(pairDiv) {
+        wireSourcePairLinkControls(pairDiv);
+        wireSourcePairRow(pairDiv);
+    }
+
+    /**
      * Add a new source pair
      */
     addSourcePair() {
         const container = this.getContainer();
         if (!container) return;
-        
+
         const currentPairs = container.querySelectorAll('.source-pair');
         const newIndex = currentPairs.length;
-        
+
         const pairDiv = document.createElement('div');
-        pairDiv.className = 'source-pair';
-        pairDiv.dataset.sourceIndex = newIndex;
-        
-        pairDiv.innerHTML = `
-            <div class="event-edit-field">
-                <label for="eventEditSourceName${newIndex}">Source Name:</label>
-                <input type="text" id="eventEditSourceName${newIndex}" class="event-edit-input source-name-input" autocomplete="on">
-            </div>
-            <div class="event-edit-field">
-                <label for="eventEditSourceLink${newIndex}">Source Link (optional):</label>
-                <input type="url" id="eventEditSourceLink${newIndex}" class="event-edit-input source-link-input" autocomplete="on">
-            </div>
-        `;
-        
-        container.appendChild(pairDiv);
+        pairDiv.innerHTML = buildSourcePairMarkup(newIndex).trim();
+        const pair = pairDiv.firstElementChild;
+        if (!(pair instanceof HTMLElement)) return;
+
+        container.appendChild(pair);
+        populateSourceLinkStack(pair, ['']);
+        this.wirePair(pair);
         this.updateRemoveSourceButton();
-        window.StoryEventSourceAutocomplete?.wireSourcePairRow?.(pairDiv);
     }
-    
+
     /**
      * Remove the last source pair (but keep at least one)
      */
     removeLastSourcePair() {
         const container = this.getContainer();
         if (!container) return;
-        
+
         const pairs = container.querySelectorAll('.source-pair');
         if (pairs.length <= 1) {
             alert('At least one source field is required');
             return;
         }
-        
+
         pairs[pairs.length - 1].remove();
         this.updateRemoveSourceButton();
     }
-    
+
     /**
      * Clear all source pairs and reset to one empty pair
      */
     clearSourcePairs() {
         const container = this.getContainer();
         if (!container) return;
-        
-        container.innerHTML = `
-            <div class="source-pair" data-source-index="0">
-                <div class="event-edit-field">
-                    <label for="eventEditSourceName0">Source Name:</label>
-                    <input type="text" id="eventEditSourceName0" class="event-edit-input source-name-input" autocomplete="on">
-                </div>
-                <div class="event-edit-field">
-                    <label for="eventEditSourceLink0">Source Link (optional):</label>
-                    <input type="url" id="eventEditSourceLink0" class="event-edit-input source-link-input" autocomplete="on">
-                </div>
-            </div>
-        `;
+
+        container.innerHTML = buildSourcePairMarkup(0);
+        const pair = container.querySelector('.source-pair');
+        if (pair instanceof HTMLElement) {
+            populateSourceLinkStack(pair, ['']);
+            this.wirePair(pair);
+        }
         this.updateRemoveSourceButton();
-        window.StoryEventSourceAutocomplete?.wireSourceRowsIn?.(container);
+        wireSourceRowsIn(container);
     }
-    
+
     /**
      * Update the visibility of the remove source button
      */
@@ -103,58 +107,54 @@ class SourcePairFields {
 
     /**
      * Get all source pairs data
-     * @returns {Array<{text: string, url?: string}>}
+     * @returns {Array<{text: string, url?: string, urls?: string[]}>}
      */
     getSourcePairsData() {
         const container = this.getContainer();
         if (!container) return [];
-        
+
         const sources = [];
-        const sourcePairs = container.querySelectorAll('.source-pair');
-        sourcePairs.forEach((pair) => {
+        container.querySelectorAll('.source-pair').forEach((pair) => {
             const nameInput = pair.querySelector('.source-name-input');
-            const linkInput = pair.querySelector('.source-link-input');
-            const name = nameInput ? nameInput.value.trim() : '';
-            const link = linkInput ? linkInput.value.trim() : '';
-            if (name) {
-                sources.push({
-                    text: name,
-                    url: link || undefined
-                });
-            }
+            const name = nameInput instanceof HTMLInputElement ? nameInput.value.trim() : '';
+            const serialized = serializeSourceLinks(name, readSourceLinkValues(pair));
+            if (serialized) sources.push(serialized);
         });
         return sources;
     }
 
     /**
      * Load sources into source pairs
-     * @param {Array<{text: string, url?: string}>} sources
+     * @param {Array<{text: string, url?: string, urls?: string[]}>} sources
      */
     loadSources(sources) {
         this.clearSourcePairs();
+        const container = this.getContainer();
+        if (!container) return;
+
         if (sources && sources.length > 0) {
             sources.forEach((source, index) => {
                 if (index > 0) {
                     this.addSourcePair();
                 }
-                const pair = document.querySelectorAll('.source-pair')[index];
-                if (pair) {
-                    const nameInput = pair.querySelector('.source-name-input');
-                    const linkInput = pair.querySelector('.source-link-input');
-                    if (nameInput) nameInput.value = source.text || '';
-                    if (linkInput) linkInput.value = source.url || '';
+                const pair = container.querySelectorAll('.source-pair')[index];
+                if (!(pair instanceof HTMLElement)) return;
+
+                const nameInput = pair.querySelector('.source-name-input');
+                if (nameInput instanceof HTMLInputElement) {
+                    nameInput.value = source.text || '';
                 }
+                populateSourceLinkStack(pair, urlsForSourcePairLoad(source));
+                this.wirePair(pair);
             });
         }
         this.updateRemoveSourceButton();
-        window.StoryEventSourceAutocomplete?.wireSourceRowsIn?.(this.getContainer());
+        wireSourceRowsIn(container);
     }
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = SourcePairFields;
 }
 
 if (typeof window !== 'undefined') {
     window.SourcePairFields = SourcePairFields;
 }
+
+export { SourcePairFields };

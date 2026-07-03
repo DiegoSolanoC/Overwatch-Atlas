@@ -99,7 +99,10 @@ function applyCodexFilterStateNow() {
 
     if (!codexFiltersActive()) {
         s.root.classList.remove('codex--filter-linking-active');
-        redrawCodexEdges({ force: true });
+        const skipRedundantOpenRedraw = s.codexMode === 'view' && s.codexViewModeInitialRenderDone;
+        if (!skipRedundantOpenRedraw) {
+            redrawCodexEdges({ force: true });
+        }
         return;
     }
 

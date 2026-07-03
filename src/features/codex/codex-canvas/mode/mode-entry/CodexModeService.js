@@ -36,7 +36,7 @@ function yieldForLoadingOverlayPaint() {
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                setTimeout(resolve, 48);
+                setTimeout(resolve, 16);
             });
         });
     });
@@ -78,6 +78,12 @@ async function mountCodexShellDom() {
     root.setAttribute('aria-label', 'Codex');
     container.appendChild(root);
 
+    // Pin the stage to main#content — without inset fill, height:100% can collapse after globe unload.
+    container.style.position = 'absolute';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.right = '0';
+    container.style.bottom = '0';
     container.style.display = 'block';
     container.style.opacity = '1';
     container.style.pointerEvents = 'auto';
@@ -114,7 +120,7 @@ export async function enterCodexMode() {
     if (!container) return;
 
     // If Codex is already properly initialized (has root element), skip
-    if (container.querySelector('#codex-root')) {
+    if (container.querySelector(`#${CODEX_ROOT_ID}`)) {
         return;
     }
 
@@ -177,14 +183,38 @@ export async function enterCodexMode() {
                 if (!root) {
                     throw new Error('Codex root element missing after shell mount');
                 }
-                setProgress(0.2);
-                await initCodexCanvas(root);
-                setProgress(0.9);
-                try {
-                    if (window.NavigationPaginationHelpers?.clearEventPageSliderSuppressFromGlobe) {
-                        window.NavigationPaginationHelpers.clearEventPageSliderSuppressFromGlobe();
+                setProgress(0.15);
+                window.__codexLoadStageProgress = (spec) => {
+                    const ranges = {
+                        fetch: [0.15, 0.28],
+                        nodes: [0.28, 0.72],
+                        connections: [0.72, 0.96],
+                        finalize: [0.96, 0.99],
+                    };
+                    let stage = 'nodes';
+                    let fraction = 0;
+                    if (typeof spec === 'number') {
+                        fraction = Math.max(0, Math.min(1, spec));
+                    } else if (spec && typeof spec === 'object') {
+                        stage = spec.stage || 'nodes';
+                        fraction = Math.max(0, Math.min(1, Number(spec.fraction) || 0));
                     }
-                } catch (_) { /* ignore */ }
+                    const [start, end] = ranges[stage] || ranges.nodes;
+                    setProgress(start + fraction * (end - start));
+                };
+                try {
+                    await initCodexCanvas(root);
+                    setProgress(0.98);
+                    try {
+                        if (window.NavigationPaginationHelpers?.clearEventPageSliderSuppressFromGlobe) {
+                            window.NavigationPaginationHelpers.clearEventPageSliderSuppressFromGlobe();
+                        }
+                    } catch (_) { /* ignore */ }
+                } finally {
+                    try {
+                        delete window.__codexLoadStageProgress;
+                    } catch (_) { /* ignore */ }
+                }
             },
             { beginMessage: '→ Codex — loading Codex canvas + layout…' }
         );
@@ -194,9 +224,12 @@ export async function enterCodexMode() {
     } catch (err) {
         console.warn('CodexModeService.enterCodexMode', err);
         progress.fail(err && err.message ? `Could not open Codex: ${err.message}` : 'Could not open Codex');
+        clearCodexShellForGlobeInit(container);
+        throw err;
     } finally {
         try {
             delete window.__codexSetLoadingOverlayLine;
+            delete window.__codexLoadStageProgress;
             window.__codexInlineLoaderActive = false;
         } catch (_) { /* ignore */ }
         await new Promise((resolve) => {

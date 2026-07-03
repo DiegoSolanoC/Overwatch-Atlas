@@ -444,12 +444,13 @@ export function resolveLineVoicePrefixFile(line, voicelines) {
     let prefix = '';
 
     const stored = String(line?.voicePrefix || '').trim();
-    if (stored && /\.(ogg|mp3|wav|m4a|webm)$/i.test(stored) && stored !== translator) {
-        if (!Array.isArray(voicelines) || voicelines.length === 0 || voicelines.includes(stored)) {
-            prefix = stored;
-        } else if (voicelineBelongsToHero(stored, WRECKING_BALL_HERO)) {
-            prefix = stored;
-        }
+    if (
+        stored &&
+        /\.(ogg|mp3|wav|m4a|webm)$/i.test(stored) &&
+        stored !== translator &&
+        (!Array.isArray(voicelines) || voicelines.length === 0 || voicelines.includes(stored))
+    ) {
+        prefix = stored;
     }
 
     if (!prefix && translator) {
@@ -461,7 +462,9 @@ export function resolveLineVoicePrefixFile(line, voicelines) {
     }
 
     if (!prefix || prefix === translator) return '';
-    return pickRandomHamsterVariant(listHamsterPrefixVariants(prefix, voicelines));
+
+    const variant = pickRandomHamsterVariant(listHamsterPrefixVariants(prefix, voicelines));
+    return variant || '';
 }
 
 /**

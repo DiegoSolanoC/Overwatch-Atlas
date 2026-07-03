@@ -15,6 +15,10 @@ import {
     isMobileEventSlideViewport,
     syncMobileEventSlideLayoutForImageShown,
 } from './mobileEventSlideImageLayout.js';
+import {
+    clearEventSourceMediaEmbed,
+    shouldIgnoreOverlayClickForSourceMedia,
+} from './eventSourceMediaOverlay.js';
 
 export function runShowImageOverlay(slide, imagePath) {
             if (isDialogueTheaterImageOverlayContext()) {
@@ -28,6 +32,12 @@ export function runShowImageOverlay(slide, imagePath) {
             const toggleBtn = document.getElementById('eventImageToggle');
             
             if (overlay && img && imagePath) {
+                clearEventSourceMediaEmbed();
+                if (slide && typeof slide === 'object') {
+                    slide.activeYouTubeVideoId = '';
+                    slide.activePdfSourceUrl = '';
+                }
+
                 img.src = imagePath;
                 img.style.display = 'block';
                 img.style.opacity = '1';
@@ -50,7 +60,8 @@ export function runShowImageOverlay(slide, imagePath) {
                     overlay.addEventListener('click', (e) => {
                         if (isMobileEventSlideViewport()) return;
                         if (isDialogueTheaterImageOverlayContext()) return;
-                        
+                        if (shouldIgnoreOverlayClickForSourceMedia(e)) return;
+
                         if (e.target === overlay || e.target.tagName === 'IMG') {
                             e.stopPropagation();
                             slide.hideImageOverlayTemporarily(5000);

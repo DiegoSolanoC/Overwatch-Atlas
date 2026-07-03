@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/web/pdf_viewer.css" />
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        #viewerContainer {
+            position: absolute;
+            inset: 0;
+            overflow: auto;
+        }
+
+        .pdfViewer .page {
+            margin: 8px auto;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        #errorMessage {
+            display: none;
+            color: #f0f0f0;
+            padding: 1.5rem;
+            font: 14px/1.5 system-ui, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewerContainer" tabindex="0">
+        <div id="viewer" class="pdfViewer"></div>
+    </div>
+    <p id="errorMessage"></p>
+    <script type="module">
+        import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.mjs';
+        import {
+            EventBus,
+            PDFLinkService,
+            PDFViewer,
+            SpreadMode,
+        } from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/web/pdf_viewer.mjs';
+
+        const PDFJS_VERSION = '4.4.168';
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build/pdf.worker.mjs`;
+
+        const fileUrl = new URLSearchParams(location.search).get('file');
+        const errorEl = document.getElementById('errorMessage');
+        const container = document.getElementById('viewerContainer');
+
+        function showError(message) {
+            container.style.display = 'none';
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+
+        if (!fileUrl) {
+            showError('Missing PDF file URL.');
+        } else {
+            try {
+                const eventBus = new EventBus();
+                const linkService = new PDFLinkService({ eventBus });
+                const viewer = new PDFViewer({
+                    container,
+                    viewer: document.getElementById('viewer'),
+                    eventBus,
+                    linkService,
+                    removePageBorders: true,
+                });
+                linkService.setViewer(viewer);
+
+                eventBus.on('pagesinit', () => {
+                    viewer.spreadMode = SpreadMode.ODD;
+                    viewer.currentScaleValue = 'page-fit';
+                });
+
+                pdfjsLib.getDocument({ url: fileUrl, withCredentials: false }).promise
+                    .then((pdf) => {
+                        viewer.setDocument(pdf);
+                        linkService.setDocument(pdf, null);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        showError('Could not load PDF.');
+                    });
+            } catch (err) {
+                console.error(err);
+                showError('PDF viewer failed to start.');
+            }
+        }
+    </script>
+</body>
+</html>

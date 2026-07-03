@@ -279,9 +279,9 @@ function applyPacketPolylineToState(st, fromId, toId, pts) {
     });
 }
 
-export function syncCodexCordPacketState(edgePolys) {
-    if (!_rt) return;
+const CODEX_PACKET_LOAD_SYNC_CHUNK = 24;
 
+function collectCodexPacketEligibleEdges(edgePolys) {
     /** @type {{ edge: { fromId: string, toId: string }, pts?: { x: number, y: number }[] }[]} */
     const eligible = [];
     edgePolys.forEach((entry) => {
@@ -296,37 +296,83 @@ export function syncCodexCordPacketState(edgePolys) {
         if (_rt.codexNodeIsJunctionWaypoint(fromId) && !(pts && pts.length >= 2)) return;
         eligible.push(entry);
     });
+    return eligible;
+}
 
+function upsertCodexCordPacketEdge({ edge, pts }, seen) {
+    const { fromId, toId } = edge;
+    const key = edgeDirectedKey(fromId, toId);
+    seen.add(key);
+    let st = cordPacketState.get(key);
+    if (!st) {
+        st = {
+            fromId,
+            toId,
+            active: false,
+            packets: createCodexCordPacketsForEdge(fromId, toId)
+        };
+        cordPacketState.set(key, st);
+    } else {
+        st.fromId = fromId;
+        st.toId = toId;
+        resizeCodexCordPacketArray(st, fromId, toId);
+    }
+    applyPacketPolylineToState(st, fromId, toId, pts);
+    st.active = _rt.edgeCordShowsYellow(edge);
+    st.packetsEnabled =
+        typeof _rt.edgeCordPacketsEnabled === 'function'
+            ? _rt.edgeCordPacketsEnabled(edge)
+            : st.active;
+}
+
+/**
+ * Chunked packet sim setup for initial Codex open (yields between slices).
+ * @param {{ edge: object, pts?: { x: number, y: number }[] }[]} edgePolys
+ * @param {() => Promise<void>} yieldFn
+ * @param {(done: number, total: number) => void} [onProgress]
+ */
+export async function syncCodexCordPacketStateDuringLoad(edgePolys, yieldFn, onProgress) {
+    if (!_rt) return;
+
+    onProgress?.(0, 1);
+    await yieldFn();
+
+    const eligible = collectCodexPacketEligibleEdges(edgePolys);
+    const plan = resolveCodexPacketEdgePlan(eligible.length);
+    s.codexPacketEdgePlan = plan;
+    const packetEdges = subsampleCodexPacketEdges(eligible, plan.maxEdges);
+    const total = packetEdges.length;
+    const seen = new Set();
+
+    onProgress?.(0, total);
+    await yieldFn();
+
+    for (let start = 0; start < total; start += CODEX_PACKET_LOAD_SYNC_CHUNK) {
+        const end = Math.min(start + CODEX_PACKET_LOAD_SYNC_CHUNK, total);
+        for (let i = start; i < end; i++) {
+            upsertCodexCordPacketEdge(packetEdges[i], seen);
+        }
+        onProgress?.(end, total);
+        if (end < total) {
+            await yieldFn();
+        }
+    }
+
+    cordPacketState.forEach((_, k) => {
+        if (!seen.has(k)) cordPacketState.delete(k);
+    });
+}
+
+export function syncCodexCordPacketState(edgePolys) {
+    if (!_rt) return;
+
+    const eligible = collectCodexPacketEligibleEdges(edgePolys);
     const plan = resolveCodexPacketEdgePlan(eligible.length);
     s.codexPacketEdgePlan = plan;
     const packetEdges = subsampleCodexPacketEdges(eligible, plan.maxEdges);
 
     const seen = new Set();
-    packetEdges.forEach(({ edge, pts }) => {
-        const { fromId, toId } = edge;
-        const key = edgeDirectedKey(fromId, toId);
-        seen.add(key);
-        let st = cordPacketState.get(key);
-        if (!st) {
-            st = {
-                fromId,
-                toId,
-                active: false,
-                packets: createCodexCordPacketsForEdge(fromId, toId)
-            };
-            cordPacketState.set(key, st);
-        } else {
-            st.fromId = fromId;
-            st.toId = toId;
-            resizeCodexCordPacketArray(st, fromId, toId);
-        }
-        applyPacketPolylineToState(st, fromId, toId, pts);
-        st.active = _rt.edgeCordShowsYellow(edge);
-        st.packetsEnabled =
-            typeof _rt.edgeCordPacketsEnabled === 'function'
-                ? _rt.edgeCordPacketsEnabled(edge)
-                : st.active;
-    });
+    packetEdges.forEach((entry) => upsertCodexCordPacketEdge(entry, seen));
     cordPacketState.forEach((_, k) => {
         if (!seen.has(k)) cordPacketState.delete(k);
     });

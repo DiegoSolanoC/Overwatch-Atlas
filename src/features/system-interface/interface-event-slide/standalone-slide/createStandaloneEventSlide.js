@@ -43,6 +43,7 @@ import { runCancelEdit } from './edit/cancelEdit.js';
 import { runSaveFullEdit } from './edit/saveFullEdit.js';
 import { wireBioDeleteButton } from '../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import { wireSourcePairRow } from '../../interface-shared/storyEventSourceAutocomplete.js';
+import { getSourceUrls } from './sources/sourceUrlUtils.js';
 // Variants
 import { runRenderVariantBar } from './variants/renderVariantBar.js';
 import { runOnVariantAdd } from './variants/onVariantAdd.js';
@@ -65,6 +66,102 @@ import { runHideImageOverlayTemporarily } from './image-overlay/hideImageOverlay
 import { runShowImageOverlayGradually } from './image-overlay/showImageOverlayGradually.js';
 import { runHideImageOverlayGradually } from './image-overlay/hideImageOverlayGradually.js';
 import { runHideImageOverlay } from './image-overlay/hideImageOverlay.js';
+import {
+    clearEventSourceMediaEmbed,
+    resetSourceMediaMusicDuckState,
+    runShowYouTubeOverlay,
+    runShowPdfOverlay,
+    restoreEventImageFromSourceMedia,
+} from './image-overlay/eventSourceMediaOverlay.js';
+
+/**
+ * @param {string} [value]
+ * @returns {HTMLDivElement}
+ */
+function createInlineSourceLinkRow(value = '') {
+    const row = document.createElement('div');
+    row.className = 'event-slide-inline-editor__source-link-row';
+
+    const input = document.createElement('input');
+    input.className = 'event-slide-inline-editor__input';
+    input.dataset.role = 'source-url';
+    input.type = 'text';
+    input.spellcheck = false;
+    input.autocomplete = 'on';
+    input.placeholder = 'URL (optional)';
+    input.value = value;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'event-slide-inline-editor__small-btn';
+    removeBtn.dataset.role = 'source-link-remove';
+    removeBtn.textContent = '−';
+    removeBtn.addEventListener('click', () => {
+        const stack = row.parentElement;
+        if (!stack) return;
+        if (stack.querySelectorAll('[data-role="source-url"]').length <= 1) {
+            input.value = '';
+            return;
+        }
+        row.remove();
+    });
+
+    row.append(input, removeBtn);
+    return row;
+}
+
+/**
+ * @param {HTMLElement} stack
+ * @param {string[]} urls
+ */
+function populateInlineSourceLinks(stack, urls) {
+    if (!stack) return;
+    stack.replaceChildren();
+    const list = urls.length > 0 ? urls : [''];
+    list.forEach((url) => stack.appendChild(createInlineSourceLinkRow(url)));
+
+    const addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.className = 'event-slide-inline-editor__small-btn event-slide-inline-editor__source-link-add';
+    addBtn.dataset.role = 'source-link-add';
+    addBtn.textContent = '+ link';
+    addBtn.addEventListener('click', () => {
+        const linkRow = createInlineSourceLinkRow('');
+        stack.insertBefore(linkRow, addBtn);
+        linkRow.querySelector('[data-role="source-url"]')?.focus();
+    });
+    stack.appendChild(addBtn);
+}
+
+/**
+ * @returns {HTMLDivElement}
+ */
+function createInlineSourceRow() {
+    const row = document.createElement('div');
+    row.className = 'event-slide-inline-editor__source-row';
+
+    const textInput = document.createElement('input');
+    textInput.className = 'event-slide-inline-editor__input';
+    textInput.dataset.role = 'source-text';
+    textInput.type = 'text';
+    textInput.spellcheck = true;
+    textInput.autocomplete = 'on';
+    textInput.placeholder = 'Source text';
+
+    const linksStack = document.createElement('div');
+    linksStack.className = 'event-slide-inline-editor__source-links';
+    linksStack.dataset.role = 'source-links';
+    populateInlineSourceLinks(linksStack, ['']);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'event-slide-inline-editor__small-btn';
+    removeBtn.dataset.role = 'source-remove';
+    removeBtn.textContent = '-';
+
+    row.append(textInput, linksStack, removeBtn);
+    return row;
+}
 
 /**
  * Build a fresh standalone-slide controller. The returned object is meant
@@ -82,6 +179,9 @@ export function createStandaloneEventSlide() {
         currentEventData: null,
         currentVariantIndex: 0,
         isEditing: false,
+        currentImagePath: null,
+        activeYouTubeVideoId: '',
+        activePdfSourceUrl: '',
         /** @type {{ archiveSource: string, eventIndex: number, presentationFromDock: boolean }[]} */
         _slideHistoryStack: [],
         _slideHistoryRestoring: false,
@@ -189,38 +289,34 @@ export function createStandaloneEventSlide() {
         renderSourcesEditor(sources) {
             const container = document.getElementById('eventSlideEditSources');
             if (!container) return;
-            
+
             container.innerHTML = '';
             const srcs = Array.isArray(sources) && sources.length > 0 ? sources : [{ text: '', url: '' }];
-            
-            srcs.forEach((s, idx) => {
-                const row = document.createElement('div');
-                row.className = 'event-slide-inline-editor__source-row';
-                row.innerHTML = `
-                    <input class="event-slide-inline-editor__input" data-role="source-text" type="text" spellcheck="true" autocomplete="on" placeholder="Source text" value="${s.text || ''}" />
-                    <input class="event-slide-inline-editor__input" data-role="source-url" type="text" spellcheck="false" autocomplete="on" placeholder="URL (optional)" value="${s.url || ''}" />
-                    <button type="button" class="event-slide-inline-editor__small-btn" data-role="source-remove">-</button>
-                `;
-                row.querySelector('[data-role="source-remove"]').addEventListener('click', () => {
+
+            srcs.forEach((source) => {
+                const row = createInlineSourceRow();
+                const textInput = row.querySelector('[data-role="source-text"]');
+                if (textInput instanceof HTMLInputElement) {
+                    textInput.value = source.text || '';
+                }
+                const linksStack = row.querySelector('[data-role="source-links"]');
+                populateInlineSourceLinks(linksStack, getSourceUrls(source));
+
+                row.querySelector('[data-role="source-remove"]')?.addEventListener('click', () => {
                     if (container.children.length > 1) row.remove();
                 });
+
                 container.appendChild(row);
                 wireSourcePairRow(row);
             });
         },
-        
+
         addSourceRow() {
             const container = document.getElementById('eventSlideEditSources');
             if (!container) return;
-            
-            const row = document.createElement('div');
-            row.className = 'event-slide-inline-editor__source-row';
-            row.innerHTML = `
-                <input class="event-slide-inline-editor__input" data-role="source-text" type="text" spellcheck="true" autocomplete="on" placeholder="Source text" />
-                <input class="event-slide-inline-editor__input" data-role="source-url" type="text" spellcheck="false" autocomplete="on" placeholder="URL (optional)" />
-                <button type="button" class="event-slide-inline-editor__small-btn" data-role="source-remove">-</button>
-            `;
-            row.querySelector('[data-role="source-remove"]').addEventListener('click', () => {
+
+            const row = createInlineSourceRow();
+            row.querySelector('[data-role="source-remove"]')?.addEventListener('click', () => {
                 if (container.children.length > 1) row.remove();
             });
             container.appendChild(row);
@@ -337,6 +433,15 @@ export function createStandaloneEventSlide() {
         hideImageOverlayGradually(durationMs = 600) { return runHideImageOverlayGradually(this, durationMs); },
         
         hideImageOverlay() { return runHideImageOverlay(this); },
+
+        showYouTubeOverlay(sourceUrl) { return runShowYouTubeOverlay(this, sourceUrl); },
+
+        showPdfOverlay(sourceUrl) { return runShowPdfOverlay(this, sourceUrl); },
+
+        restoreEventImageFromSourceMedia() { return restoreEventImageFromSourceMedia(this); },
+
+        /** @deprecated */
+        restoreEventImageFromYouTube() { return restoreEventImageFromSourceMedia(this); },
     };
     wireBioDeleteButton(slide);
     void import('../../../gallery/gallery-mode/factionBiographyPortraitLooks.js')

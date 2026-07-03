@@ -647,3 +647,12 @@ body.color-palette-gray .filters-confirm-btn:hover {
     border-color: #ff8833;
     box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
 }
+
+/* Desktop: open filters via the right-edge panel handle (or F); header toggle is mobile-only. */
+@media (min-width: 769px) {
+    #filtersToggle {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}

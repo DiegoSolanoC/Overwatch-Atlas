@@ -8,6 +8,7 @@
  */
 
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { serializeSourceLinks } from '../sources/sourceUrlUtils.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
     centerCameraOnMarker,
@@ -477,10 +478,15 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
             
             // Gather sources
             const sourceRows = document.querySelectorAll('#eventSlideEditSources .event-slide-inline-editor__source-row');
-            target.sources = Array.from(sourceRows).map(row => ({
-                text: row.querySelector('[data-role="source-text"]')?.value || '',
-                url: row.querySelector('[data-role="source-url"]')?.value || ''
-            })).filter(s => s.text || s.url);
+            target.sources = Array.from(sourceRows)
+                .map((row) => {
+                    const text = row.querySelector('[data-role="source-text"]')?.value || '';
+                    const links = Array.from(row.querySelectorAll('[data-role="source-url"]'))
+                        .map((input) => (input instanceof HTMLInputElement ? input.value.trim() : ''))
+                        .filter(Boolean);
+                    return serializeSourceLinks(text, links);
+                })
+                .filter(Boolean);
         }
 
         const emReorder = window.eventManager;

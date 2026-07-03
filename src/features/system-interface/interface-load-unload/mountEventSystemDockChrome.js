@@ -79,11 +79,6 @@ export function reflowDockChromeRails() {
     const nextEventBtn = document.getElementById('nextEventBtn');
     const globalImageToggleBtn = document.getElementById('globalImageToggle');
     const erasBtn = document.getElementById('erasToggle');
-    const filtersBtn = document.getElementById('filtersToggle');
-    const filtersOnMobileHeader =
-        filtersBtn &&
-        typeof window.matchMedia === 'function' &&
-        window.matchMedia('(max-width: 768px)').matches;
 
     const centerChromeDockBarOrder = [
         prevPageBtn,
@@ -142,9 +137,7 @@ export function reflowDockChromeRails() {
         });
     }
 
-    const rightRailTargets = useTrapezoidSideChrome
-        ? []
-        : [globalImageToggleBtn, ...(filtersOnMobileHeader ? [] : [filtersBtn])].filter(Boolean);
+    const rightRailTargets = useTrapezoidSideChrome ? [] : [globalImageToggleBtn].filter(Boolean);
 
     rightRailTargets.forEach((element) => {
         if (!element || !element.isConnected) return;
@@ -154,14 +147,11 @@ export function reflowDockChromeRails() {
         }
     });
 
-    if (!useTrapezoidSideChrome && rightRail && !filtersOnMobileHeader) {
-        [globalImageToggleBtn, filtersBtn].forEach((element) => {
-            if (!element || !element.isConnected) return;
-            if (element.parentElement !== rightRail) {
-                clearDockChromeMoveStyles(element);
-                rightRail.appendChild(element);
-            }
-        });
+    if (!useTrapezoidSideChrome && rightRail && globalImageToggleBtn?.isConnected) {
+        if (globalImageToggleBtn.parentElement !== rightRail) {
+            clearDockChromeMoveStyles(globalImageToggleBtn);
+            rightRail.appendChild(globalImageToggleBtn);
+        }
     }
 }
 

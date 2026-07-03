@@ -198,17 +198,13 @@ function appendPortraitAlphaMaskImage(mask, ns, r, frameVariant, codexNodeAlphaP
 }
 
 /**
- * Mask cords by node alpha art: PNG white keeps strokes visible, black hides them under the hex.
- * @param {{ minX: number, minY: number, maxX: number, maxY: number }|null} maskWorldRect — if set, only nodes intersecting this world AABB (faster large graphs).
- * @param {{ getRoot: () => HTMLElement|null, maskId: string }} ctx
- *        `codexNodeAlphaPath` defaults from `CODEX_NODE_ALPHA_PATH` if omitted.
+ * @param {string} ns
+ * @param {number} vw
+ * @param {number} vh
+ * @param {string} maskId
+ * @returns {SVGMaskElement}
  */
-export function appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect, ctx) {
-    const {
-        getRoot,
-        maskId,
-        codexNodeAlphaPath = CODEX_NODE_ALPHA_PATH
-    } = ctx;
+export function createCodexEdgeNodeMaskShell(ns, vw, vh, maskId) {
     const mask = document.createElementNS(ns, 'mask');
     mask.setAttribute('id', maskId);
     mask.setAttribute('maskUnits', 'userSpaceOnUse');
@@ -222,15 +218,66 @@ export function appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect, ctx) {
     base.setAttribute('height', String(vh));
     base.setAttribute('fill', 'white');
     mask.appendChild(base);
+    return mask;
+}
+
+/**
+ * @param {SVGMaskElement} mask
+ * @param {string} ns
+ * @param {HTMLElement} el
+ * @param {{ minX: number, minY: number, maxX: number, maxY: number }|null} maskWorldRect
+ * @param {string} [codexNodeAlphaPath]
+ * @returns {boolean}
+ */
+export function appendCodexEdgeNodeMaskForElement(mask, ns, el, maskWorldRect, codexNodeAlphaPath = CODEX_NODE_ALPHA_PATH) {
+    if (maskWorldRect && !nodeFrameIntersectsRect(el, maskWorldRect)) return false;
+    if (el.dataset.codexKind === 'junction') return false;
+    const r = getNodeFrameWorldRect(el);
+    if (!r || r.width < 1 || r.height < 1) return false;
+    const frameVariant = el.dataset.codexFrameVariant || '1';
+    appendPortraitAlphaMaskImage(mask, ns, r, frameVariant, codexNodeAlphaPath, 1);
+    return true;
+}
+
+/**
+ * Fast rectangular cord cutout from saved layout (load path — no PNG decode / layout reads).
+ * @param {SVGMaskElement} mask
+ * @param {string} ns
+ * @param {{ left: number, top: number, width: number, height: number, rotationDeg?: number }} frame
+ */
+export function appendCodexEdgeNodeMaskBlackRect(mask, ns, frame) {
+    if (!frame || frame.width < 1 || frame.height < 1) return;
+    const cx = frame.left + frame.width / 2;
+    const cy = frame.top + frame.height / 2;
+    const rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('fill', 'black');
+    rect.setAttribute('x', String(frame.left));
+    rect.setAttribute('y', String(frame.top));
+    rect.setAttribute('width', String(frame.width));
+    rect.setAttribute('height', String(frame.height));
+    if (frame.rotationDeg) {
+        rect.setAttribute('transform', `rotate(${frame.rotationDeg} ${cx} ${cy})`);
+    }
+    mask.appendChild(rect);
+}
+
+/**
+ * Mask cords by node alpha art: PNG white keeps strokes visible, black hides them under the hex.
+ * @param {{ minX: number, minY: number, maxX: number, maxY: number }|null} maskWorldRect — if set, only nodes intersecting this world AABB (faster large graphs).
+ * @param {{ getRoot: () => HTMLElement|null, maskId: string }} ctx
+ *        `codexNodeAlphaPath` defaults from `CODEX_NODE_ALPHA_PATH` if omitted.
+ */
+export function appendCodexEdgeNodeMask(defs, ns, vw, vh, maskWorldRect, ctx) {
+    const {
+        getRoot,
+        maskId,
+        codexNodeAlphaPath = CODEX_NODE_ALPHA_PATH
+    } = ctx;
+    const mask = createCodexEdgeNodeMaskShell(ns, vw, vh, maskId);
     const root = getRoot();
     if (root) {
         root.querySelectorAll('.codex-node').forEach((el) => {
-            if (maskWorldRect && !nodeFrameIntersectsRect(el, maskWorldRect)) return;
-            if (el.dataset.codexKind === 'junction') return;
-            const r = getNodeFrameWorldRect(el);
-            if (!r || r.width < 1 || r.height < 1) return;
-            const frameVariant = el.dataset.codexFrameVariant || '1';
-            appendPortraitAlphaMaskImage(mask, ns, r, frameVariant, codexNodeAlphaPath, 1);
+            appendCodexEdgeNodeMaskForElement(mask, ns, el, maskWorldRect, codexNodeAlphaPath);
         });
     }
     defs.appendChild(mask);

@@ -13,7 +13,7 @@ import { parseMigrateAndDedupeCodexSource } from '../migration/CodexPayloadMigra
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
 import { getCodexLoadingOverlayLineSetter } from '../../codex-canvas/bridge/CodexAppBridge.js';
 import { normalizeCodexCountryKey, resolveCodexNodeScale } from '../../codex-nodes/placement/CodexNodePortraitMetrics.js';
-import { redrawCodexEdges, scheduleRedrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { clearCodexVirtualScroll, updateCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 
@@ -33,7 +33,8 @@ function placeLoadedCodexNodeRecord(L) {
     const opts = {
         fromSaved: true,
         skipRedraw: true,
-        skipLazyLoad: true, // Load images immediately for virtual scroll
+        // Lazy portraits during bulk load — eager decode of 2000+ hexes blocks the overlay at the end.
+        skipLazyLoad: false,
         id: L.id,
         scale: resolveCodexNodeScale(placeKind, L.scale),
         bgColor: L.bgColor || null
@@ -57,6 +58,29 @@ function placeLoadedCodexNodeRecord(L) {
     }
 }
 
+function reportCodexLoadStageProgress(spec) {
+    if (typeof window === 'undefined') return;
+    const reporter = window.__codexLoadStageProgress;
+    if (typeof reporter === 'function') {
+        reporter(spec);
+    }
+}
+
+function scheduleDeferredCodexWork(fn) {
+    const run = () => {
+        try {
+            fn();
+        } catch (_) {
+            /* ignore */
+        }
+    };
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(run, { timeout: 2500 });
+    } else {
+        setTimeout(run, 0);
+    }
+}
+
 async function placeCodexNodeRecordsInChunks(nodes) {
     const overlayLine = getCodexLoadingOverlayLineSetter();
     if (overlayLine && nodes.length) {
@@ -64,19 +88,27 @@ async function placeCodexNodeRecordsInChunks(nodes) {
     }
     await yieldCodexBrowserPaint();
 
-    const CODEX_LOAD_NODE_CHUNK = 22;
+    const CODEX_LOAD_NODE_CHUNK = 64;
+    const nodeYield = { units: 0 };
     for (let start = 0; start < nodes.length; start += CODEX_LOAD_NODE_CHUNK) {
         const end = Math.min(start + CODEX_LOAD_NODE_CHUNK, nodes.length);
         for (let i = start; i < end; i++) {
             placeLoadedCodexNodeRecord(nodes[i]);
+            s.codexRenderedNodeIds.add(nodes[i].id);
         }
-        if (overlayLine && nodes.length > CODEX_LOAD_NODE_CHUNK) {
+        reportCodexLoadStageProgress({ stage: 'nodes', fraction: end / nodes.length });
+        if (overlayLine) {
             overlayLine(`Placing nodes… ${end} / ${nodes.length}`);
         }
         if (end < nodes.length) {
-            await yieldBetweenCodexLoadChunks();
+            nodeYield.units += end - start;
+            if (nodeYield.units >= 128) {
+                nodeYield.units = 0;
+                await yieldBetweenCodexLoadChunks();
+            }
         }
     }
+    reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
 }
 
 function yieldCodexBrowserPaint() {
@@ -92,7 +124,7 @@ function yieldCodexBrowserPaint() {
 function yieldBetweenCodexLoadChunks() {
     return new Promise((resolve) => {
         if (typeof requestIdleCallback === 'function') {
-            requestIdleCallback(() => resolve(), { timeout: 120 });
+            requestIdleCallback(() => resolve(), { timeout: 48 });
         } else {
             requestAnimationFrame(resolve);
         }
@@ -105,7 +137,9 @@ async function loadCodexState() {
     let sourceObj = null;
     let loadedFromCanonical = false;
 
+    reportCodexLoadStageProgress({ stage: 'fetch', fraction: 0.15 });
     const canonical = await fetchCanonicalCodexJson();
+    reportCodexLoadStageProgress({ stage: 'fetch', fraction: 0.85 });
     if (canonical.ok) {
         sourceObj = mergeLocalStorageConnectionsPreferLocal(canonical.data);
         loadedFromCanonical = true;
@@ -175,20 +209,22 @@ async function loadCodexState() {
     s.codexSkipAllEdgeRedraws = true;
     s.codexSkipEdgeRedraw = true;
 
-    // Then render visible nodes via virtual scroll
-    updateCodexVirtualScroll();
-
-    // Re-enable edge redraws and do one final redraw
-    s.codexSkipAllEdgeRedraws = false;
-    s.codexSkipEdgeRedraw = false;
-    
-    // In View Mode, force a redraw after nodes are loaded
-    if (s.codexMode === 'view') {
-        s.codexViewModeInitialRenderDone = false;
-        redrawCodexEdges();
+    // View mode needs every node in the DOM for edges; chunk placement so the loader can breathe.
+    if (s.codexMode === 'view' && nodes.length > 0) {
+        await placeCodexNodeRecordsInChunks(nodes);
     } else {
-        scheduleRedrawCodexEdges();
+        updateCodexVirtualScroll();
     }
+
+    // Keep edge redraw suppressed until post-open paint (codexCanvasHost).
+    reportCodexLoadStageProgress({ stage: 'nodes', fraction: 1 });
+
+    const overlayLine = getCodexLoadingOverlayLineSetter();
+    if (overlayLine && nodes.length > 0) {
+        const edgeCount = edges?.length ?? 0;
+        overlayLine(edgeCount > 0 ? `Planning connections… 0 / ${edgeCount}` : 'Preparing Codex…');
+    }
+    reportCodexLoadStageProgress({ stage: 'connections', fraction: 0 });
 
     // Failsafe: if no nodes rendered after initial load, render all nodes
     if (s.codexRenderedNodeIds.size === 0 && nodes.length > 0) {
@@ -202,26 +238,27 @@ async function loadCodexState() {
     }
 
     if (migratedNow) {
-        try {
-            const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
-            localStorage.setItem(
-                CODEX_STORAGE_KEY,
-                JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
-            );
-        } catch (_) {
-            /* ignore */
-        }
         if (loadedFromCanonical) {
             api.markCodexLayoutDirty();
         }
+        scheduleDeferredCodexWork(() => {
+            try {
+                const { nodes: nPersist, edges: ePersist, connections: cPersist } = api.serializeCodexState();
+                localStorage.setItem(
+                    CODEX_STORAGE_KEY,
+                    JSON.stringify({ v: CODEX_SAVE_VERSION, nodes: nPersist, edges: ePersist, connections: cPersist || [] })
+                );
+            } catch (_) {
+                /* ignore */
+            }
+        });
     }
 
-    // Redraw already scheduled by scheduleRedrawCodexEdges() above
+    // Edge redraw runs after the loading overlay drops (codexCanvasHost post-open).
     if (!migratedNow) {
         s.codexLayoutDirty = false;
     }
-    api.updateCodexToolbar();
-    mirrorCanonicalToLocalStorage();
+    scheduleDeferredCodexWork(() => mirrorCanonicalToLocalStorage());
     void ensureCodexConnectionPayload(true).then((payload) => {
         if (payload?.connections?.length) {
             setCodexConnectionsInSession(payload.connections);

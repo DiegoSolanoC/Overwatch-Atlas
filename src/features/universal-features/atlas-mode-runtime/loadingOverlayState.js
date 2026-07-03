@@ -63,3 +63,32 @@ export function hideLoadingOverlay(opts = {}) {
     loadingOverlay.style.visibility = "";
   }
 }
+
+/**
+ * Resolves once the global loading overlay is down (mode-entry `finally` has run).
+ * Used by Codex to defer edge redraw / filter passes that would freeze the loader.
+ * @param {number} [timeoutMs=8000]
+ * @returns {Promise<void>}
+ */
+export function waitForLoadingOverlayInactive(timeoutMs = 8000) {
+  return new Promise((resolve) => {
+    const isInactive = () => {
+      if (isRunOperation) return false;
+      const overlay = document.getElementById('loadingOverlay');
+      return !overlay || !overlay.classList.contains('active');
+    };
+    if (isInactive()) {
+      resolve();
+      return;
+    }
+    const started = Date.now();
+    const tick = () => {
+      if (isInactive() || Date.now() - started > timeoutMs) {
+        resolve();
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}

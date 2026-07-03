@@ -33,14 +33,16 @@ import '../../codex-controls-ui/input/pointer/CodexPointerInput.js';
 import { registerCodexVirtualScrollRuntime, unregisterCodexVirtualScrollRuntime, clearCodexVirtualScroll } from '../../codex-node-drawing/virtual-scroll/CodexVirtualScroll.js';
 import { registerCodexBioPreviewRuntime, unregisterCodexBioPreviewRuntime, previewBioCodexArchiveLinkDiff } from '../../codex-bio-archive-sync/preview/CodexCanvasBioSyncPreview.js';
 import { registerCodexBioArchiveEdgeSyncRuntime, syncCodexEdgesFromBioArchiveConnections, unregisterCodexBioArchiveEdgeSyncRuntime } from '../../codex-bio-archive-sync/reconcile/CodexBioArchiveEdgeSync.js';
-import { registerCodexEdgeRedrawRuntime, unregisterCodexEdgeRedrawRuntime, redrawCodexEdges, scheduleRedrawCodexEdges, clearCodexEdgeRedrawSchedule } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { registerCodexEdgeRedrawRuntime, unregisterCodexEdgeRedrawRuntime, redrawCodexEdges, redrawCodexEdgesDuringLoad, scheduleRedrawCodexEdges, clearCodexEdgeRedrawSchedule } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { registerCodexCordPacketRuntime, unregisterCodexCordPacketRuntime, stopCordAnimAndClearCordPacketState } from '../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
-import { disconnectCodexImageObserver } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
+import { disconnectCodexImageObserver, hydrateCodexPortraitImagesInViewport } from '../../codex-node-drawing/lazy-images/CodexImageLazyLoad.js';
+import { codexFiltersActive } from '../../codex-nodes/filters/CodexNodeFilterMatch.js';
 import { terminateCodexJsonParseWorker } from '../../codex-data/load/CodexJsonParseWorker.js';
 import { serializeCodexLayoutSnapshot } from '../../codex-data/persistence/CodexLayoutSerialization.js';
 import { CODEX_ZOOM_INITIAL } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import { DOUBLE_RIGHT_MS } from './canvasConstants.js';
 import { ensureCodexTargetedArchiveCache } from '../../codex-controls-ui/stage/codexTargetedSelectionAllowlist.js';
+import { getCodexLoadingOverlayLineSetter } from '../bridge/CodexAppBridge.js';
 import {
     applyCodexModeDockToggles,
     mountCodexDockToggles,
@@ -57,6 +59,90 @@ import {
     initCodexFactionPortraitLookListener,
     teardownCodexFactionPortraitLookListener,
 } from '../../codex-bio-archive-sync/timeline/CodexFactionPortraitLookSync.js';
+
+/** Bumped on each mount so a stale async post-open pass cannot paint after teardown. */
+let codexPostOpenGeneration = 0;
+
+function reportCodexLoadStageProgress(spec) {
+    if (typeof window === 'undefined') return;
+    const reporter = window.__codexLoadStageProgress;
+    if (typeof reporter === 'function') {
+        reporter(spec);
+    }
+}
+
+function reportConnectionLoadProgress(info) {
+    reportCodexLoadStageProgress({
+        stage: 'connections',
+        fraction: Math.max(0, Math.min(1, info?.fraction ?? 0)),
+    });
+}
+
+function yieldForCodexPostOpenPaint() {
+    return new Promise((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+}
+
+async function runCodexPostOpenPaint() {
+    const generation = ++codexPostOpenGeneration;
+    const overlayLine = getCodexLoadingOverlayLineSetter();
+    const stillActive = () => generation === codexPostOpenGeneration && !!s.root;
+
+    if (!stillActive()) return;
+
+    const edgeCount = s.codexEdges?.length ?? 0;
+    reportConnectionLoadProgress({ fraction: 0 });
+    if (overlayLine) {
+        overlayLine(edgeCount > 0 ? `Planning connections… 0 / ${edgeCount}` : 'Preparing Codex…');
+    }
+
+    s.codexSkipAllEdgeRedraws = false;
+    s.codexSkipEdgeRedraw = false;
+    s.codexViewModeInitialRenderDone = false;
+
+    applyCodexModeDockToggles({ redraw: false });
+
+    await redrawCodexEdgesDuringLoad({
+        force: true,
+        onProgress: (info) => reportConnectionLoadProgress(info),
+        onStatusLine: (line) => {
+            if (overlayLine) overlayLine(line);
+        },
+    });
+    if (!stillActive()) return;
+
+    if (codexFiltersActive()) {
+        api.applyCodexFilterState?.();
+    }
+    await yieldForCodexPostOpenPaint();
+    if (!stillActive()) return;
+
+    const schedulePortraitHydrate = () => {
+        if (!s.root) return;
+        hydrateCodexPortraitImagesInViewport(s.root);
+    };
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(schedulePortraitHydrate, { timeout: 800 });
+    } else {
+        schedulePortraitHydrate();
+    }
+    api.ensureCodexToolbar();
+    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 0.6 });
+    if (overlayLine) overlayLine('Loading portraits…');
+    reportCodexLoadStageProgress({ stage: 'finalize', fraction: 1 });
+    if (overlayLine) overlayLine('Codex ready');
+
+    s.codexSkipAllEdgeRedraws = false;
+    s.codexSkipEdgeRedraw = false;
+
+    void refreshCodexBioConnectionTimelineIndex().then(() => {
+        if (!s.root) return;
+        applyCodexTimelineRangeVisualRefresh();
+        scheduleRedrawCodexEdges();
+    });
+    ensureCodexTargetedArchiveCache().catch(() => {});
+}
 
 export function initCodexCanvas(rootElement) {
     destroyCodexCanvas();
@@ -167,6 +253,7 @@ export function initCodexCanvas(rootElement) {
         getSkipEdgeRedraw: () => s.codexSkipEdgeRedraw,
         getPerfDebug: () => false,
         getEdges: () => s.codexEdges,
+        getCodexAllNodes: () => s.codexAllNodes,
         getActiveDragNodeIds: () => s.codexActiveDragNodeIds,
         getDragUseLightSync: () => s.codexEdgeDragUseLightSync,
         setDragUseLightSync: (v) => {
@@ -186,6 +273,8 @@ export function initCodexCanvas(rootElement) {
         removeCodexEdgeDirected: api.removeCodexEdgeDirected,
         clearPendingCodexDeleteState: api.clearPendingCodexDeleteState,
         buildPolylineForEdge: api.buildPolylineForEdge,
+        buildPolylineForEdgeFromSavedLayout: api.buildPolylineForEdgeFromSavedLayout,
+        getCodexAllNodes: () => s.codexAllNodes,
         getCodexVisibleWorldBoundsExpanded: api.getCodexVisibleWorldBoundsExpanded,
         codexEdgePolyIntersectsRect,
         codexUnionBoundsFromEdgePolys,
@@ -303,19 +392,13 @@ export function initCodexCanvas(rootElement) {
 
     mountCodexDockToggles();
     return (async () => {
-        await api.yieldCodexBrowserPaint();
         await api.loadCodexState();
-        await refreshCodexBioConnectionTimelineIndex();
-        api.applyCodexFilterState?.();
-        applyCodexTimelineRangeVisualRefresh();
-        applyCodexModeDockToggles({ redraw: false });
-        redrawCodexEdges({ force: true });
-        api.ensureCodexToolbar();
-        ensureCodexTargetedArchiveCache().catch(() => {});
+        await runCodexPostOpenPaint();
     })();
 }
 
 export function destroyCodexCanvas() {
+    codexPostOpenGeneration += 1;
     teardownCodexFactionPortraitLookListener();
     api.teardownCodexStageControls?.();
     unmountCodexDockToggles();

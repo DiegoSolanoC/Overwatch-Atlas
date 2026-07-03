@@ -4,6 +4,8 @@
  *
  * @param {string|null} exceptPanelId - ID of the panel to leave open, or null to close all.
  */
+import { closeEventInfoPanelIfOpen } from './closeEventInfoPanelIfOpen.js';
+
 export function dismissAllPanelsExcept(exceptPanelId) {
     const panels = [
         { panelId: 'musicPanel',        toggleId: 'musicToggle' },
@@ -14,6 +16,12 @@ export function dismissAllPanelsExcept(exceptPanelId) {
 
     panels.forEach(({ panelId, toggleId }) => {
         if (panelId === exceptPanelId) return;
+
+        if (panelId === 'eventSlide') {
+            closeEventInfoPanelIfOpen();
+            return;
+        }
+
         const panel = document.getElementById(panelId);
         if (panel?.classList.contains('open')) {
             panel.classList.remove('open');

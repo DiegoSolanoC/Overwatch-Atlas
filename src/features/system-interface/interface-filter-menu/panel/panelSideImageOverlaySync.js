@@ -1,7 +1,7 @@
 /**
- * Hide the center-stage image overlay while the filters/music panel is open,
- * then restore it when the panel finishes closing (if the info slide is still
- * open and Image On is enabled).
+ * Center-stage image overlay helpers for the filters/music panel lifecycle.
+ * Opening filters or music fully closes the info slide; restore only runs if
+ * the slide is still open when the side panel closes.
  *
  * Story entries use `currentImagePath`; Dialogue Theater uses the stage bridge.
  */
