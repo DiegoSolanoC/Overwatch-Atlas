@@ -1652,11 +1652,7 @@
       "sources": [
         {
           "text": "Future's Past",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
-            "https://www.youtube.com/watch?v=9kFSMbaufn8"
-          ]
+          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
         }
       ],
       "heroFilterPlaces": [
@@ -1800,8 +1796,8 @@
           "url": "https://overwatch.blizzard.com/en-us/heroes/pharah/"
         },
         {
-          "text": "Overwatch Declassfied",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Audible-Overwatch-2-Sojourn/dp/B0BKBYZYWP/ref=sr_1_1?crid=1G0Y1A2TJTW6E&dib=eyJ2IjoiMSJ9.nuCN9wG_X7GoNmsvzdhAstAeTN_7dqBQl1f0vXlhqOr0mjptq52fWAOIGZKYuJ6ziYwhd-OSeZJAH0yuFsUSaW6yO8JVQ6f9OM9F3I27v6A.Rnhpg-3nIyB9uEFl5O1Sg5GSPXahgviroiOyRcHpVpY&dib_tag=se&keywords=overwatch+sojourn&qid=1764046580&s=books&sprefix=overwatch+sojourn%2Cstripbooks%2C102&sr=1-1"
         }
       ],
       "headlines": [
@@ -5122,6 +5118,20 @@
           "text": "Overwatch Website, Shion",
           "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -5730,11 +5740,7 @@
       "sources": [
         {
           "text": "Futures Past",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt379feb9e049c0aed/68364ebd8c71427e13259272/OW_Pride_EN.pdf",
-            "https://www.youtube.com/watch?v=9kFSMbaufn8"
-          ]
+          "url": "https://overwatch.blizzard.com/en-gb/media/short-story/futures-past/"
         }
       ],
       "heroFilterPlaces": [
@@ -5975,7 +5981,7 @@
       "name": "Findlay Docherty is Born",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
-      "description": "On November 11th of 2054, Findlay Dorchety was born to veterans of the Omnic Crisis. He grew up poor in a world that was still adjusting after the war, surrounded by stories of violence and a system that kept failing the people. The crisis had taken a heavy toll on his parents, causing hardship and arguments. His mother died when he was only four, and his father became absent and unkind, leaving Findlay to fend for himself.",
+      "description": "On November 11th of 2054, Findlay Docherty was born to veterans of the Omnic Crisis. He grew up poor in a world that was still adjusting after the war, surrounded by stories of violence and a system that kept failing the people. The crisis had taken a heavy toll on his parents, causing hardship and arguments. His mother died when he was only four, and his father became absent and unkind, leaving Findlay to fend for himself.",
       "image": "",
       "lat": 55.861155,
       "lon": -4.2501687,
@@ -6028,7 +6034,7 @@
       "sources": [
         {
           "text": "Deadlock Rebels",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f939c5127a99742/60d240e5ad189d64efcc9ff0/AsheChpt1_EN_BS.pdf"
+          "url": "https://www.amazon.com/Deadlock-Rebels-AFK-Book-Overwatch-ebook/dp/B0912HD7Q2"
         }
       ],
       "secondaryCountryPlaces": [
@@ -6112,7 +6118,7 @@
       "name": "Anima Weaponry",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Yamagami, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
+      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Kamori, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
       "image": "",
       "sources": [
         {
@@ -6284,7 +6290,7 @@
       "sources": [
         {
           "text": "Deadlock Rebels",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f939c5127a99742/60d240e5ad189d64efcc9ff0/AsheChpt1_EN_BS.pdf"
+          "url": "https://www.amazon.com/Deadlock-Rebels-AFK-Book-Overwatch-ebook/dp/B0912HD7Q2"
         }
       ],
       "heroFilterPlaces": [
@@ -6336,11 +6342,7 @@
       "sources": [
         {
           "text": "New Heights",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440cblta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440cblta7f7666a3004415e/69e94ab3518b9cd9974c3adb/OW_Sierra_8P_EN.pdf",
-            "https://www.youtube.com/watch?v=O7JRRBhgelo"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/new-heights/"
         },
         {
           "text": "Overwatch Website: Sierra",
@@ -6408,7 +6410,7 @@
       "name": "The New West",
       "locationType": "earth",
       "cityDisplayName": "Route 66, United States",
-      "description": "The rise of Gang violence across the American Southwest quickly became a topic of interest for Overwatch, and when needed, they would address these gangs individually by dispatching agents, and later send the engineering teams for repairs. Among the gangs, the rising threat of the Deadlock Rebels became of special concern to Reyes. The leader, Calamity Ashe was fast at forming alliances with other rival gangs, and had created a stranglehold on the region. Reyes would take a small team of troops to investigate the situation personally. After gathering intelligence on the gang, a massive operation to take down the Rebels was put into action.\n\nCole Cassidy, a founding member of the gang, would create a distraction that resulted in his arrest, but allowed the rest of the leadership to escape. Ashe, Frankie and Bez would continue to search for him in hopes of rescue, but they did not know that it was too late for that, as Cassidy had been taken by Overwatch, not as a prisoner but as a willing recruit.\n",
+      "description": "The rise of Gang violence across the American Southwest quickly became a topic of interest for Overwatch, and when needed, they would address these gangs individually by dispatching agents, and later send the engineering teams for repairs. Among the gangs, the rising threat of the Deadlock Rebels became of special concern to Reyes. The leader, Calamity Ashe was fast at forming alliances with other rival gangs, and had created a stranglehold on the region. Reyes would take a small team of troops to investigate the situation personally. After gathering intelligence on the gang, a massive operation to take down the Rebels was put into action.\n\nCole Cassidy, a founding member of the gang, would create a distraction that resulted in his arrest, but allowed the rest of the leadership to escape. Ashe, Frankie and Bez would continue to search for him in hopes of rescue, but they did not know that it was too late for that, as Cassidy had been taken by Overwatch, not as a prisoner but as a willing recruit.",
       "image": "",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -6438,7 +6440,7 @@
         {
           "locationName": "",
           "country": "Reaper,",
-          "reasoning": "Conducted a takedown against Dedlock"
+          "reasoning": "Conducted a takedown against Deadlock"
         },
         {
           "locationName": "",
@@ -7377,6 +7379,11 @@
           "locationName": "",
           "country": "Wuyang",
           "reasoning": "Ye Wuyang is Born"
+        },
+        {
+          "locationName": "",
+          "country": "Anran,",
+          "reasoning": "Now an older sister"
         }
       ]
     },
@@ -7699,8 +7706,8 @@
       ],
       "sources": [
         {
-          "text": "The Fall of the Sparrow",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
+          "text": "Fall of the Sparrow",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
         }
       ],
       "heroFilterPlaces": [
@@ -7751,11 +7758,7 @@
         },
         {
           "text": "Valkyrie",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/",
-          "urls": [
-            "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/",
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta608baba3bb4fb7b/5dd464f1a5d2cf498cbbad0b/valkyrie_en-us.pdf"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
         }
       ],
       "yearStart": 2063,
@@ -8295,6 +8298,27 @@
         {
           "text": "Overwatch Website, Shion",
           "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kuroura,",
+          "reasoning": ""
         }
       ]
     },
@@ -9044,10 +9068,6 @@
         {
           "text": "Overwatch Declassified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        },
-        {
-          "text": "Rise and Shine",
-          "url": "https://www.youtube.com/watch?v=8tjcm_kI0n0"
         }
       ],
       "eraName": "The Golden Age",
@@ -9144,12 +9164,8 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         },
         {
-          "text": "The Pocket King",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4368e5f3c054e83d/670432ddbccb5f94cbaf7614/OW_LoreBites_Max_EN_FINAL.pdf",
-            "https://www.youtube.com/watch?v=ULQBHWSqzwg"
-          ]
+          "text": "Pocket King",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/the-pocket-king/"
         }
       ],
       "yearStart": 2060,
@@ -9214,11 +9230,7 @@
       "sources": [
         {
           "text": "Progress",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf9b84ac434fd653a/69e6c3781a27c1f49ad9120f/Moira_Micro_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=3VKL8nqrpj0"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/progress/"
         }
       ],
       "heroFilterPlaces": [
@@ -9480,7 +9492,7 @@
       "sources": [
         {
           "text": "Mina Liao Project Echo Transcripts",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltb4614cf292f07c02/64ac6d0f3c5c6c5a40c21a1e/OW-LoreBites-Echo_enEN.pdf"
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/echo/"
         }
       ],
       "heroFilterPlaces": [
@@ -9636,11 +9648,7 @@
         },
         {
           "text": "Facing Demons",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/facing-demons/"
         }
       ],
       "heroFilterPlaces": [
@@ -9695,7 +9703,7 @@
       "sources": [
         {
           "text": "Ramattra Reflections",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
         }
       ],
       "heroFilterPlaces": [
@@ -11057,7 +11065,7 @@
       "name": "Missing in Action",
       "locationType": "earth",
       "cityDisplayName": "Warsaw, Poland",
-      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. A Talon Sniper took down most of the rescue squad, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
+      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. A Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
       "image": "",
       "lat": 52.2333742,
       "lon": 21.0711489,
@@ -11350,11 +11358,7 @@
       "sources": [
         {
           "text": "Tear it Down",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
-            "https://www.youtube.com/watch?v=u282-SDwYtg"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
         }
       ]
     },
@@ -11667,12 +11671,8 @@
       ],
       "sources": [
         {
-          "text": "A New Empire",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
-          ]
+          "text": "A new Empire",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
         }
       ]
     },
@@ -12021,7 +12021,7 @@
       "sources": [
         {
           "text": "Code of Violence",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt950086cc417359fa/6210201304503350d255b9fe/OW_REAPER-COV_ShortStory_enUS.pdf"
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/code-of-violence/"
         }
       ]
     },
@@ -12133,13 +12133,13 @@
         },
         {
           "text": "Bastet",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
         }
       ]
     },
     {
       "name": "Top Player",
-      "description": "Years of competitive gaming shaped Hana's life when, just like her father, she decided to shape it into a career. Hana began playing Mecha Guardian V in high school, a massively popular online shooter with a strong Esports presence in South Korea. Over the years, she quickly ascended through the rankings and became the number 1 player on the global scoreboard.\n\nNow better known by her game tag of \"D.va\", she would also take on the challenge at the world championships, winning on a Landslide against her long-time rival Kyung-soo Han, \"King\" and completely overshadowing the rest of her team including her closest player, Yuna Lee \"D.mon\". For years, D.va gathered a reputation for being a merciless opponent who played to win at any cost. As these massive competitive events allowed the people of Korea to keep a sense of normalcy over the continuous rise of the Gwishin, D.va would become a household name among many Koreans and people from all over the world, both from her insane skills and actions per minute rate, as well as thanks to her blossoming streaming career they kick-started from her reputation.",
+      "description": "Years of competitive gaming shaped Hana's life when, just like her father, she decided to shape it into a career. Hana began playing Mecha Guardian V in high school, a massively popular online shooter with a strong E-sports presence in South Korea. Over the years, she quickly ascended through the rankings and became the number one player on the global scoreboard.\n\nNow better known by her game tag of \"D.va\", she would also take on the challenge at the world championships, winning on a landslide against her long-time rival Kyung-soo Han, \"King\" and completely overshadowing the rest of her team including her fellow teammate Yuna Lee, or \"D.mon\". For years, D.va gathered a reputation for being a merciless opponent who played to win at any cost. As these massive competitive events allowed the people of Korea to keep a sense of normalcy over the continuous rise of the Gwishin, D.va would become a household name among many Koreans and people from all over the world, both from her insane skills and actions per minute rate, as well as thanks to her blossoming streaming career they kick-started from her reputation.",
       "locationType": "earth",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -12175,23 +12175,28 @@
         {
           "locationName": "",
           "country": "D.mon,",
-          "reasoning": "D.va team mate and closest in skill"
+          "reasoning": "D.va's team mate and closest in skill"
         },
         {
           "locationName": "",
           "country": "King,",
-          "reasoning": "D.va primary Rival"
+          "reasoning": "D.va's primary Rival"
         },
         {
           "locationName": "",
-          "country": "Overlord, Dae-Hyun,",
+          "country": "Overlord,",
           "reasoning": "Other well known professional players"
+        },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": "Hana's closest friend and supporter"
         }
       ]
     },
     {
       "name": "Another Life",
-      "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. However. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To ab infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this choice and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
+      "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To an infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this choice and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
       "locationType": "earth",
       "lat": 62.648888,
       "lon": 149.114685,
@@ -12232,11 +12237,7 @@
         },
         {
           "text": "Search and Destroy",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
-          ]
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/search-and-destroy/"
         }
       ],
       "heroFilterPlaces": [
@@ -13406,18 +13407,13 @@
         }
       ],
       "headlines": [],
-      "sources": [
-        {
-          "text": "Sombra ARG",
-          "url": "https://wiki.gamedetectives.net/w/Sombra_ARG"
-        }
-      ]
+      "sources": []
     },
     {
       "name": "Dragon Slayer",
       "locationType": "earth",
       "cityDisplayName": "Bucharest, Romania",
-      "description": "No description available.",
+      "description": "",
       "image": "",
       "lat": 44.4361414,
       "lon": 26.102684,
@@ -13443,13 +13439,6 @@
           "locationName": "",
           "country": "Crusaders",
           "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Dragon Slayer",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltbe5f9564d8d79e2a/5d02d202486d1c3d0af73230/comic-overwatch-dragon-slayer_en-us.pdf"
         }
       ]
     },
@@ -13493,12 +13482,7 @@
         }
       ],
       "headlines": [],
-      "sources": [
-        {
-          "text": "Valkyrie",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
-        }
-      ],
+      "sources": [],
       "npcFilterPlaces": [
         {
           "locationName": "",
@@ -13857,12 +13841,7 @@
         }
       ],
       "headlines": [],
-      "sources": [
-        {
-          "text": "Kiriko",
-          "url": "https://www.youtube.com/watch?v=9acxn7qAST4&t=330s"
-        }
-      ]
+      "sources": []
     },
     {
       "name": "Here to be heard",
@@ -17831,7 +17810,7 @@
       "cityDisplayName": "Chengdu, China",
       "description": "No description available.",
       "image": "",
-      "yearStart": 2080,
+      "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -17880,7 +17859,7 @@
       "cityDisplayName": "Monte-Carlo, Monaco",
       "description": "No description available.",
       "image": "",
-      "yearStart": 2080,
+      "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "lat": 43.7402961,
       "lon": 7.426559,
@@ -17964,7 +17943,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sojourn, Tracer",
+          "country": "Sojourn,",
           "reasoning": ""
         }
       ],
@@ -17985,6 +17964,13 @@
             "https://www.youtube.com/watch?v=LwvFQhBSotk"
           ]
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Osai,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -17993,7 +17979,7 @@
       "cityDisplayName": "Copenhagen, Denmark",
       "description": "No description available.",
       "image": "",
-      "yearStart": 2080,
+      "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "lat": 55.6867243,
       "lon": 12.5700724,
@@ -18101,7 +18087,7 @@
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
-      "yearStart": 2080,
+      "yearStart": 2079,
       "eraName": "The Null Sector Invasion",
       "secondaryCountryPlaces": [
         {
@@ -18491,47 +18477,56 @@
       "name": "Reconciliation",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "No description available.",
+      "description": "While meditating on the last conversation between himself, Ramattra and Mondatta, Zenyatta is surrounded in his pilgrimage in Suravasa by Talon agents, led by Widowmaker and Sombra. They arrive with a message from his orderly brother Ramattra; to reconcile. Conflicted, he agrees to this meeting in King's Row, to be escorted to the place of their master's death, by none other than his assassin. \n\nIt had been months now since the Null Sector Invasion started. Immediately, Ramattra dismissed the two agents, wishing to talk in private with Zenyatta. He reminisced on their old master, his teachings, and his advocacy for human-omnic coexistence, a naïve belief. He explained his findings of his own pilgrimage, doing the same as Aurora did just before the Crisis, and to seek out an answer to a question: How to save a world that refuses to be saved. Although Zenyatta points out that Null Sector also spreads suffering and hatred, Ramattra insists the pain he inflicts is small compared to human cruelty.\n\nHe reveals then the crux of why Null Sector invaded now, he has found a way, through the usage of mind uploading devices affixed to omnic's skulls, to save them, preserve them. If not for Overwatch intervening globally, he could've saved many thousands more in this way, but he already has millions, retreating into his secret Omnium presumed in Antarctica. The next step of this plan is already underway and in motion, and Zenyatta has an idea what this supposition means. \n\nRamattra asks a final time his brother to join him, in this next step for those Omnics. Even agreeing now, Zenyatta declines, knowing full well that deals were made between Null Sector and Talon, the very people responsible, the very person responsible for Mondatta's death. Ramattra retorts he has no sympathy for their want of power and greed and conflict. His short time with characters like Maximilien and Reaper, and his knowledge of Vendetta's slow rise to power, confirmed the end of their temporary alliance. \n\nZenyatta, still believing the best, and that peace with humanity was possible, urged Ramattra to not abandon them so completely, that Mondatta's advocacy for coexistence was not in vain. Instead, Ramattra pitied humanity and their misbegotten civilization, and wishes the best for his brother in both their dreams of peace.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
       "eraName": "The Null Sector Invasion",
-      "yearStart": 2080,
+      "yearStart": 2079,
       "secondaryCountryPlaces": [
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": "",
+          "reasoning": "Meeting place of Mondatta's stutue",
           "lat": 51.5074456,
           "lon": -0.1277653
+        },
+        {
+          "locationName": "Suravasa, India",
+          "country": "India",
+          "reasoning": "Talon escorts Zenyatta from his pilgramage",
+          "lat": 23.2599,
+          "lon": 77.4126
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ramattra, Zenyatta,",
-          "reasoning": ""
+          "reasoning": "Talk for the first time in decades"
         },
         {
           "locationName": "",
           "country": "Widowmaker, Sombra",
-          "reasoning": ""
+          "reasoning": "Escorts Zenyatta to King's Row"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Shambali Order, Null Sector,",
-          "reasoning": ""
+          "reasoning": "The first meeting of the Iris' two opposing factions"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "The deal with Null Sector is finally ceased"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Null Sector Invasion winding down following no global attacks"
+      ],
       "sources": [
         {
           "text": "Reconcilliation",
