@@ -1084,6 +1084,13 @@
           "country": "Omnica Corporation,",
           "reasoning": "Continues to expand, Omnics become a household item"
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": "His genius proves to change the world over with his studies"
+        }
       ]
     },
     {
@@ -4744,8 +4751,7 @@
         }
       ],
       "headlines": [
-        "Overwatch scientists refuse to destroy Anubis Program",
-        "Controversial AI prison begins construction"
+        "Doomfist, Savior of Nigeria, declared Dead"
       ],
       "lat": 30.0444,
       "lon": 31.2357,
@@ -4754,37 +4760,22 @@
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "Anubis program is left in quarantine following the Crisis",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Torbjörn",
-          "reasoning": "Aids in the consturction of the Temple"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": "Begins construction of the Temple of Anubis"
+          "locationName": "Lagos, Nigeria",
+          "country": "Nigeria",
+          "reasoning": "Anubis pumped untold omnics into the area"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Liao",
-          "reasoning": "Aids in the Consturction of the Temple"
+          "country": "Ngumi,",
+          "reasoning": "Died protecting Nigeria from Anubis",
+          "badgePriority": true
         },
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "Finally quarantined, the God Program is cut off from current events"
+          "reasoning": "Pumped untold numbers of Omnics into Nigeria"
         }
       ]
     },
@@ -4792,7 +4783,7 @@
       "name": "The Awakening",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.\n\nAfter heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. \n\n\nAt her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
+      "description": "Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believed Aurora's sentience was the result of a one in a billion quantum event. It was irreplaceable, but if they could find a way to broadcast her sentience globally, it would spark the same gift onto the vast majority of Anubis' forces, overriding their programming and potentially turning the tides.\n\nAfter heavy research, Liao's team traveled to Nepal, to reunite with Aurora and explain to them their plan. Unfortunately, the only method Liao was able to come up with, required them to take Aurora's consciousness and spread the same quantum event within her as a giant pulse. The sheer power required to do this would overload Aurora's own mind, meaning she would likely die, her soul lost forever. Liao was determined to find another way, but Aurora decided for herself that she would do it, if it meant casualties, both for humans and for what would be her people, finally stopped. \n\nAt her request, the procedure was done within the Nepalese Himalayas, her new home. When the procedure started, for a brief moment, Aurora's consciousness was projected onto every compatible Omnic on the planet, and in turn each of them echoed her gift, and gained Autonomy away from Anubis. This event is now known as the Awakening, and in her dying moments Aurora sent one last message to her people, about her life, her wishes and why she chose to share this with them. At that moment, all the newly born Omnics had one phrase echoing through their heads: \"You have this one life, Choose well.\"",
       "image": "",
       "sources": [
         {
@@ -4830,13 +4821,13 @@
         {
           "locationName": "",
           "country": "Aurora, Liao, Adawe",
-          "reasoning": "With Adawe's proval and Aurora's permission, Liao's team broadcasts her concioussness across the planet",
+          "reasoning": "With Adawe's approval and Aurora's permission, Liao's team broadcasts her concioussness across the planet",
           "badgePriority": true
         },
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": "Caught by Suprise by the Awakening"
+          "reasoning": "Caught by surprise by the Awakening"
         }
       ]
     },
@@ -8214,66 +8205,6 @@
       ]
     },
     {
-      "name": "Pressure Makes a DIamond",
-      "locationType": "earth",
-      "cityDisplayName": "Utopea, India",
-      "description": "The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.\n\n As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. Through this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira Mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.",
-      "image": "",
-      "lat": 23.2599,
-      "lon": 77.4126,
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Utopea, India",
-          "country": "India",
-          "reasoning": "",
-          "lat": 23.2599,
-          "lon": 77.4126
-        },
-        {
-          "locationName": "London, United Kingdom",
-          "country": "United Kingdom,",
-          "reasoning": "Vaira struggles to keep up with Vishkar Architects in spite of Family expectations",
-          "lat": 51.5074456,
-          "lon": -0.1277653
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Domina",
-          "reasoning": "Pays the design of Assistive Hardlight Arms"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar Corporation,",
-          "reasoning": "Growing Larger, yet getting into many controversies"
-        }
-      ],
-      "headlines": [
-        "Hundreds displace in India following Vishkar home prices being revealed",
-        "Acussations of nepotism and corruption continue within Vishkar's corporate circle"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Website Domina",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/domina/"
-        },
-        {
-          "text": "Picture of Sucess",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
-            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Risen In Blood",
       "description": "No description available.",
       "locationType": "earth",
@@ -9009,58 +8940,10 @@
       ]
     },
     {
-      "name": "Blacklisted",
-      "locationType": "earth",
-      "cityDisplayName": "Dublin, Ireland",
-      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. He came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
-      "image": "",
-      "lat": 53.3493795,
-      "lon": -6.2605593,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "eraName": "The Golden Age",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dublin, Ireland",
-          "country": "Ireland",
-          "reasoning": "Moira O'Deorain is black listed following the release of controversial papers"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Moira, Reaper",
-          "reasoning": "Reyes hires Moira into Blackwatch in secret"
-        },
-        {
-          "locationName": "",
-          "country": "Soldier 76, Mercy, Sojourn,",
-          "reasoning": "Continously oppose Reyes' choices"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Blackwatch",
-          "reasoning": "Expands into its own medical staff"
-        }
-      ],
-      "headlines": [
-        "Controversial paper on Celular regeneration shakes the scientific world",
-        "Overwatch releases public condemnation of Moira O'Deorain's research"
-      ]
-    },
-    {
       "name": "Cold Snap",
       "locationType": "earth",
       "cityDisplayName": "Ecoopint Antartica",
-      "description": "Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint: Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. An abnormally huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.\n\nAs the storm raged on, the team remained in cryo stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was pressured to death. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. During one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents.\n\nAll of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.",
+      "description": "Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint: Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. An abnormally huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.\n\nVeterans Captain Opara, Dr. Arrhenius, Dr. Adams and young Dr. Torres, Dr. MacReady, Dr. Mei-Ling Zhou were the team stationed at the time.\n\nAs the storm raged on, the team remained in cryo-stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was presumed dead. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. During one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents.\n\nAll of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.",
       "image": "",
       "lat": -67.107616,
       "lon": -68099824,
@@ -9204,48 +9087,6 @@
       "headlines": [
         "La Coaterie power brokect presumed to have ties with Talon",
         "Talon activity reported in Monte Carlo"
-      ]
-    },
-    {
-      "name": "Bodily Entropy",
-      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed.",
-      "locationType": "earth",
-      "lat": 47.3744489,
-      "lon": 8.5410422,
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearStart": 2060,
-      "yearEnd": 2068,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": "Moira Experiments on Gabriel Reys"
-        }
-      ],
-      "headlines": [
-        "Gabriel Reyes looking dangerously ill in the latest UN meeting"
-      ],
-      "sources": [
-        {
-          "text": "Progress",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/progress/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Moira, Reaper,",
-          "reasoning": "Gabriel allows Moira to test his experiments on him"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Blackwatch,",
-          "reasoning": ""
-        }
       ]
     },
     {
@@ -10046,7 +9887,7 @@
       "name": "Retribution",
       "locationType": "earth",
       "cityDisplayName": "Rome, Italy",
-      "description": "Overwatch intelligence found out that Talon was behind the Oslo attack, and marked the beginning of a year-long war raged by Doomfist himself. The man envisioned a world of conflict, and Overwatch's peacekeeping activities quickly proved to be the greatest obstacle to his crusade. The man who ordered the attack was Antonio Bartalotti, a known arms dealer from Rome and member of Doomfist's council. Overwatch had been interfering with his smuggling operations, and he took the insult with a show of force as soon as he had the chance under Akande.\n\nReyes intercepted the report and gathered Blackwatch for an assembly. Gérard began to set up a new facility in the heart of Rome. From there he would be able to direct the action, disrupting Talon's hold on the area, and eventually pursuing his arrest. Antonio saw this as a threat and responded by attacking the Rome base as well. He had an infiltrator plant a bomb in the building, killing fourteen agents and injuring many more, including Lacroix. Reyes and Cassidy were present during the attack and aided in the evacuation, and both of them grew frustrated by Talon's audacity.\n\nMorrison had charged Reyes with managing the fallout after Oslo, but Antonio was borderline untouchable, due to his high amounts of influence with the Italian government, and even attempting their usual tactics to take him down nearly got Gérard killed. Over the years, Gabriel had grown to despise the red tape surrounding Overwatch activity, and he had been able to work around them while keeping Morrison ignorant of his actions. As he prepared for his next move to counterattack, Reyes cared little about the consequences of his actions. He only had one thing in his mind; retribution.",
+      "description": "Overwatch intelligence found out that Talon was behind the Oslo attack, and marked the beginning of a year-long war raged by Doomfist himself. The man envisioned a world of conflict, and Overwatch's peacekeeping activities quickly proved to be the greatest obstacle to his crusade. The man who ordered the attack was Antonio Bartalotti, a known arms dealer from Rome and member of Doomfist's council. Overwatch had been interfering with his smuggling operations, and he took the insult with a show of force as soon as he had the chance under Akande.\n\nReyes intercepted the report and gathered Blackwatch for an assembly. Gérard began to set up a new facility in the heart of Rome. From there he would be able to direct the action, disrupting Talon's hold on the area, and eventually pursuing his arrest. Antonio saw this as a threat and responded by attacking the Rome base as well. He had an infiltrator plant a bomb in the building, killing fourteen agents and injuring many more, including Lacroix. Reyes and Cassidy were present during the attack and aided in the evacuation, and both of them grew frustrated by Talon's audacity. Doctor D. Rosenberg attended to Gérard at the Swiss Headquarters, Reyes deciding to stay by his friend's side.\n\nMorrison had charged Reyes with managing the fallout after Oslo, but Antonio was borderline untouchable, due to his high amounts of influence with the Italian government, and even attempting their usual tactics to take him down nearly got Gérard killed. Over the years, Gabriel had grown to despise the red tape surrounding Overwatch activity, and he had been able to work around them while keeping Morrison ignorant of his actions. As he prepared for his next move to counterattack, Reyes cared little about the consequences of his actions. He only had one thing in his mind; retribution.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -10443,7 +10284,7 @@
       "name": "Uprising",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "As the Turing Green project was progressing, it had grown to be quite controversial among the Omnic community. While most saw it as a true first step into integration, an opposition movement began to protest it as a token gesture, meant to absolve humanity from their actions by delivering the bare minimum. These tensions came to a boiling point when, all of a sudden, an army of Crisis-era war bots began to mobilize at Kings Row.\n\nNull Sector claimed to be behind the attack, declaring London as a sovereign Omnic State. In their advance, the machines killed hundreds of humans, displaced several more and took several Omnics oposing the takeover as hostages, including Mondatta himself. People all over the world feared this attack could be the beggining of an all out war between Omnics and Humans. The British Government had no intention of letting Overwatch in after the mess they made in Italy, but Reyes secretly sent Cassidy to do Recon ahead of a potential strike team deployment.",
+      "description": "As the Turing Green project was progressing, it had grown to be quite controversial among the Omnic community. While most saw it as a true first step into integration, an opposition movement began to protest it as a token gesture, meant to absolve humanity from their actions by delivering the bare minimum. These tensions came to a boiling point when, all of a sudden, an army of Crisis-era war bots began to mobilize at Kings Row.\n\nNull Sector claimed to be behind the attack, declaring London as a sovereign Omnic State. In their advance, the machines killed hundreds of humans, displaced several more and took several Omnics oposing the takeover as hostages, including Mondatta himself. People all over the world feared this attack could be the beggining of an all out war between Omnics and Humans. The British Government had no intention of letting Overwatch in after the mess they made in Italy, but Reyes secretly sent Cassidy to do Recon ahead of a potential strike team deployment.\n\nTwenty Seven days into the Uprising, Director Petras attempted to contact Morrison to no avail, as he was constantly put on hold. Jack suspected his calls were  due to a recent Cairo mission, where an Overwatch official was murdered. Petras most likely wanted to avoid the chaos of the humanitarian crisis, and the official investigation that ensued, yet as London continued falling appart it was clear someone had to do something.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -10467,6 +10308,13 @@
           "reasoning": "Null Sector attacks London and claims it as an Omnic State",
           "lat": 51.5074456,
           "lon": -0.1277653
+        },
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Overwatch official murdered recently, provoking investigation",
+          "lat": 30.0444,
+          "lon": 31.2357
         }
       ],
       "heroFilterPlaces": [
@@ -10484,6 +10332,11 @@
           "locationName": "",
           "country": "Reaper, Cassidy,",
           "reasoning": "Reyes sends Cassidy for intel"
+        },
+        {
+          "locationName": "",
+          "country": "Tracer, Genji, Mercy, Winston,",
+          "reasoning": "Training at the time of the Uprising"
         }
       ],
       "factionFilterPlaces": [
@@ -10503,6 +10356,11 @@
           "locationName": "",
           "country": "Lanet, Nameless, Zera,",
           "reasoning": "Aid in commanding the Warboot troops"
+        },
+        {
+          "locationName": "",
+          "country": "Mondatta,",
+          "reasoning": "Among the hostages of Null Sector"
         }
       ],
       "headlines": [
@@ -11065,7 +10923,7 @@
       "name": "Missing in Action",
       "locationType": "earth",
       "cityDisplayName": "Warsaw, Poland",
-      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. A Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
+      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up. They had decided to forgo the Search & Rescue team intentionally, with Agents Kimiko and seasoned Mirembe Atim helped with the hostages.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. All of a sudden, a Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
       "image": "",
       "lat": 52.2333742,
       "lon": 21.0711489,
@@ -12678,7 +12536,7 @@
     },
     {
       "name": "Not Alone",
-      "description": "No description available.",
+      "description": "With Overwatch's disbandment, Winston was one of the most affected agents in the strike team. He was an idealist at heart who saw Overwatch for what could be, and not for the facts, and since he landed in their care, he didn't really have a home or life outside the organization. With the passing of the Petra's Act, Winston took the remains of Watchpoint: Gibraltar and made it his home, resting in seclusion when the world rejected his pleas.\n\nWinston kept little contact with his fellow agents following the shutdown, as most of them went on to live their own lives. At most, he would quietly send Lena materials needed to maintain the Chronal Accelerator. In those cold years at Gibraltar, Winston often found himself staring at the moon and wondering what happened to his family at the colony, especially his old friend Hammond, who he never got to say goodbye to. But in spite of the silence, Winston wasn't completely alone. While the IJC decommissioned most of Overwatch's assets, he actually got to keep Athena alive. \n\nThe program acted as Winston's closest friend and advisor, keeping good track of his diet as he had a tendency for ordering obscene amounts of peanut butter online, and perhaps more alarming, he was constantly keeping tabs on global news, seeing the world fall into chaos and coming extremely close to initiating a recall for all agents if it wasn't for Athena's interventions. So he begrudgingly waited at the Watchpoint, tinkering with new inventions until the day finally came when the world realized their mistake, when Overwatch was needed again.",
       "locationType": "earth",
       "lat": 36.1407517,
       "lon": -5.345374,
@@ -12690,12 +12548,14 @@
         {
           "locationName": "Watchpoint: Gibraltar",
           "country": "Gibraltar",
-          "reasoning": "",
+          "reasoning": "Winston takes the decomissioned Watchpoint: as his Home",
           "lat": 36.1407517,
           "lon": -5.345374
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Peanut Butter Stock skyrockets after annonymous buyer purchases years worth of bulk in a single day"
+      ],
       "sources": [
         {
           "text": "Overwatch Undivided",
@@ -12706,14 +12566,14 @@
         {
           "locationName": "",
           "country": "Winston,",
-          "reasoning": ""
+          "reasoning": "Secludes into Gibraltar waiting for a chance to recall Overwatch"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Athena,",
-          "reasoning": ""
+          "reasoning": "Keeps Winston Company and prevents him from doing anything stupid"
         }
       ]
     },
@@ -12721,7 +12581,7 @@
       "name": "Left Behind",
       "locationType": "earth",
       "cityDisplayName": "Monte Cristi, Dominican Republic",
-      "description": "No description available.",
+      "description": "Baptiste's time in Talon was awkward and short-lived. He made a few friends, sympathizing with Sombra on a couple of missions and getting really close to Mauga of all people, but with every mission that passed they began to turn more gruesome. While the first missions were mainly rescues and interventions, framed as if they were ending the reign of local criminals, soon enough things escalated into full-on violent coups, turf wars where Talon was seeking to takeover once they were done. Recent missions in Singapore and Makati led to many civilian casualties, and while Captain Cuerva said the operations are on level, deep down he knew that wasn't true. The turning point for Baptiste was during a mission while Overwatch was still active, when he saw a strike team deployed to tend to the wounded soon after they left. It made Baptiste realize Talon's goal was not to end the conflict, but instead seeding chaos and profiting from it.\n\nBaptiste pondered leaving many times, but he knew that wasn't a true option. As Mauga put it, they were in too deep, and when he tried to leave he would be chased until he was killed. Things would take a turn in Monte Cristi, where the team was deployed to eliminate the leader of a local Playa cartel, Daniel Fernandez. When they breached the crime lord's safehouse, he was nowhere to be found, so Cuerva ordered them to tear the entire town down until they found him. In the middle of the fire, Baptiste came across a small girl, scared to death as he was destroying her home, now a soldier no better than the Warbots that burnt down his own town back in the Crisis. In horror at what he had become. Baptiste lowered his rifle and fled the scene, finding a fishing boat at the dock. Before he left, he was confronted by Mauga, who had been ordered to find and retrieve him. As Mauga stared at Baptiste, knowing his friend would not come back peacefully, he communicated to Cuerva that he could not find Baptiste. Mauga allowed Baptiste to go, simply saying, \"call me when you're ready to come home.\" While Baptiste was thankful for his understanding, he knew sooner than later, Talon would come after him again, and he needed to be ready.",
       "image": "",
       "lat": 19.7177718,
       "lon": -71.4448113,
@@ -12732,24 +12592,27 @@
         {
           "locationName": "Monte Cristi, Dominican Republic",
           "country": "Dominican Republic",
-          "reasoning": ""
+          "reasoning": "Baptiste defects Talon during a mission gone wrong"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mauga, Baptiste",
-          "reasoning": ""
+          "reasoning": "Mauga lets Baptiste go following the destruction of Monte Cristi"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Burns don the entire town while looking for the Playa Cartel"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Talon confrontation against the Playa Cartel leads to entire houses burning down",
+        "Talon continues to expand its range of influence in the Caribbean according to Government intel"
+      ],
       "sources": [
         {
           "text": "What you left behind",
@@ -12761,7 +12624,7 @@
       "name": "Siberian Front",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "No description available.",
+      "description": "For three decades, the majority of the Omnium remained silent after Overwatch quarantined them at the end of the crisis. So it was a shock to the world when the Siberia Omnium, in the remote region of Krasnoyarsk, suddenly reactivated, and killing machines began to prowl Russia once more. Yet something was off about this particular instance. While the mass media was quick to call this the beginning of a Second Omnic Crisis, with Russia adopting the label for their propaganda, the rest of the world remained unaffected. It was entirely a localized problem.\n\nThe RDF ordered Volskaya to restart production on the Svyatogor, alongside new graviton technology for heavy defense. Katya Volskaya happily complied, as her company fell into irrelevancy for years and saw this as the perfect chance to get back to the top. One notable addition to the war effort was Aleksandra Zaryanova herself. The first attack in Novoanskoye happened the night before one of her tournaments, and as a local, fearing for her family's safety, she withdrew from the competition and immediately enlisted to defend her country. \n\nZarya would quickly rise to become a Sergeant at the Novoanskoye Forward Base, and was personally given an experimental particle cannon, a weapon so heavy it could only be operated by Mechs, but for the strongest woman alive? It was lighter than a feather. Already a national icon from her Olympic career, Zarya's story moved the nation and gave many all over Russia the courage to enlist and defend their motherland together. In spite of this war effort, the Siberian Crisis would drag on for nearly a decade and result in the death of over 15000 lives, with no sign of stopping as the cause of the Omnium reactivating is still unknown.",
       "image": "",
       "lat": 60,
       "lon": 100,
@@ -12772,31 +12635,34 @@
         {
           "locationName": "Novoanskoye, Russia",
           "country": "Russia",
-          "reasoning": ""
+          "reasoning": "The Siberian Omnium is reactivated and a new War begins"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Zarya",
-          "reasoning": ""
+          "reasoning": "Drops her career to enlist in the arny"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Volskaya Industries,",
-          "reasoning": ""
+          "reasoning": "Starts production of a new line of Mechs"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Katya,",
-          "reasoning": ""
+          "reasoning": "Provides Zarya with a Particle Cannon"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Weightlifting Champion Aleksandra Zaryanova quits championship to enlist in the army",
+        "Siberian Omnium reactivated, is this the start of a second Omnic Crisis?"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Zarya",
@@ -13407,7 +13273,14 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Portero,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Dragon Slayer",
@@ -13823,6 +13696,11 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
+          "country": "Yamagami Blades,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Hashimoto",
           "reasoning": ""
         }
@@ -13945,6 +13823,11 @@
         {
           "locationName": "",
           "country": "Mondatta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Iggy,",
           "reasoning": ""
         }
       ],
@@ -14516,6 +14399,11 @@
           "locationName": "",
           "country": "Maximus, Magnus, Titus, Carmilla, Zephyrus,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": ""
         }
       ],
       "headlines": [],
@@ -15006,34 +14894,6 @@
       "headlines": []
     },
     {
-      "name": "Idina Troopers",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "image": "",
-      "cityDisplayName": "City State of Numbani",
-      "yearStart": 2073,
-      "yearEnd": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "",
-          "lat": 12.0022,
-          "lon": 8.5919
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Orisa Origin Story",
-          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
-        }
-      ]
-    },
-    {
       "name": "Business Meeting",
       "description": "No description available.",
       "locationType": "earth",
@@ -15163,7 +15023,7 @@
         },
         {
           "locationName": "",
-          "country": "Maximillien,",
+          "country": "Maximillien, Sanjay,",
           "reasoning": ""
         }
       ],
@@ -15379,6 +15239,13 @@
         {
           "text": "Stone by Stone",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt6b41d4e0dab2e218/5fbd6088ae5aee5796129682/OW_2020_Symmetra_Stone-By-Stone_enUS_revised.pdf"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
         }
       ]
     },
@@ -15630,6 +15497,11 @@
           "locationName": "",
           "country": "Sombra,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Orisa,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -15640,12 +15512,17 @@
         },
         {
           "locationName": "",
-          "country": "Los Muertos,",
+          "country": "The Sombra Collective,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "The Sombra Collective,",
+          "country": "Lumérico Incorporated,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
           "reasoning": ""
         }
       ],
@@ -15653,12 +15530,27 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
+          "country": "Lynx 17,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Katya,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Lynx 17,",
+          "country": "Portero,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
           "reasoning": ""
         }
       ],
@@ -15768,6 +15660,11 @@
         {
           "locationName": "",
           "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yamagami Blades,",
           "reasoning": ""
         }
       ],
@@ -16521,7 +16418,7 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "B.O.B, Bars, The Triplets,",
+          "country": "B.O.B, Bars, The Triplets, Bez,",
           "reasoning": ""
         }
       ],
@@ -16622,6 +16519,11 @@
           "locationName": "",
           "country": "Wrecking Ball",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -16636,6 +16538,11 @@
         {
           "locationName": "",
           "country": "Chao,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Meri, Geiger,",
           "reasoning": ""
         }
       ],
@@ -16671,12 +16578,22 @@
           "locationName": "",
           "country": "Hanzo, Kiriko",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto, Null Sector",
+          "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
           "reasoning": ""
         }
       ],
@@ -16686,6 +16603,13 @@
         {
           "text": "Where Honor Lives",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt10bf8d52957fcb8d/66c79b3f54ac1460e5dfa7b3/OW_Heroes_Hanzo_EN_FINAL.pdf"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
         }
       ]
     },
@@ -16741,6 +16665,13 @@
         {
           "text": "Invasion, Resistence",
           "url": "https://www.youtube.com/watch?v=sK549CCipwg"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": ""
         }
       ]
     },
@@ -16892,6 +16823,11 @@
       ],
       "yearEnd": null,
       "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
+        },
         {
           "locationName": "",
           "country": "Palak,",
@@ -17184,6 +17120,11 @@
         {
           "locationName": "",
           "country": "Wuyang",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Anran,",
           "reasoning": ""
         }
       ],
@@ -18128,6 +18069,13 @@
             "https://www.youtube.com/watch?v=kQR0S4jxDKM"
           ]
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sanjay,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -18174,7 +18122,12 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wuxing University, Null Sector",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wuxing University,",
           "reasoning": ""
         }
       ],
@@ -18443,6 +18396,11 @@
           "locationName": "",
           "country": "Emre,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Moira, Reaper, Widowmaker, Mauga,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -18470,6 +18428,14 @@
         {
           "text": "The Hunt Begins",
           "url": "https://www.youtube.com/watch?v=pIKLdhMtEd0"
+        },
+        {
+          "text": "Search and Destroy",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=NSZ1t4u54DA"
+          ]
         }
       ]
     },
@@ -18477,7 +18443,7 @@
       "name": "Reconciliation",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "While meditating on the last conversation between himself, Ramattra and Mondatta, Zenyatta is surrounded in his pilgrimage in Suravasa by Talon agents, led by Widowmaker and Sombra. They arrive with a message from his orderly brother Ramattra; to reconcile. Conflicted, he agrees to this meeting in King's Row, to be escorted to the place of their master's death, by none other than his assassin. \n\nIt had been months now since the Null Sector Invasion started. Immediately, Ramattra dismissed the two agents, wishing to talk in private with Zenyatta. He reminisced on their old master, his teachings, and his advocacy for human-omnic coexistence, a naïve belief. He explained his findings of his own pilgrimage, doing the same as Aurora did just before the Crisis, and to seek out an answer to a question: How to save a world that refuses to be saved. Although Zenyatta points out that Null Sector also spreads suffering and hatred, Ramattra insists the pain he inflicts is small compared to human cruelty.\n\nHe reveals then the crux of why Null Sector invaded now, he has found a way, through the usage of mind uploading devices affixed to omnic's skulls, to save them, preserve them. If not for Overwatch intervening globally, he could've saved many thousands more in this way, but he already has millions, retreating into his secret Omnium presumed in Antarctica. The next step of this plan is already underway and in motion, and Zenyatta has an idea what this supposition means. \n\nRamattra asks a final time his brother to join him, in this next step for those Omnics. Even agreeing now, Zenyatta declines, knowing full well that deals were made between Null Sector and Talon, the very people responsible, the very person responsible for Mondatta's death. Ramattra retorts he has no sympathy for their want of power and greed and conflict. His short time with characters like Maximilien and Reaper, and his knowledge of Vendetta's slow rise to power, confirmed the end of their temporary alliance. \n\nZenyatta, still believing the best, and that peace with humanity was possible, urged Ramattra to not abandon them so completely, that Mondatta's advocacy for coexistence was not in vain. Instead, Ramattra pitied humanity and their misbegotten civilization, and wishes the best for his brother in both their dreams of peace.",
+      "description": "During Zenyatta's Pilgrimage to Suravasa, he continued to meditate on the last conversation he had with his master, Mondatta, and his closer friend, Rammattra, as their words still wondered in his mind all these years later. Suddenly, he found himself surrounded by Talon agents, led by Widowmaker and Sombra, who were sent to arrange a meeting with the Monk and Null Sector's leader. The ongoing invasion had lasted months and ravaged Omnic communities across the world, so Zenyatta was quite conflicted about what his older brother would have to say, but without much of a choice, Zenyatta agreed, and was escorted into King's Row, the place of their master's death, by the very same woman who pulled the trigger.\n\nRamattra dismissed the two agents, wishing to talk in private with his brother. Ramattra reminisced of their old master, his teachings and advocacy for coexistence, a naïve belief. As he explained his reasons to Zenyatta, he told him how he followed in Aurora's footsteps in trying to answer the question: How to save a world that refuses to be saved? Zenyatta immediately argued that Null Sector also spread suffering and hatred, yet Ramattra insisted his actions are but a fraction of human cruelty. In a final attempt to convince his brother, he tells him the invasion was a means to attach Mind Uploading devices to Omnic Skulls, in order to save and preserve them. Had it not been for Overwatch, he could have saved many thousands more, but he had still managed to retrieve a large enough amount to begin the next steps of his plan, so all that was left was retreating to his base, while Talon took care of the rest.\n\nRamattra asked one final time for his brother to join him in this next phase, alongside the rest of their kin, but Zenyatta still rejected him, unable to look past Ramattra's alliance with Talon, the people responsible for Mondatta's death, even if Ramattra continued to claim he held no sympathy for their greed for conflict. Still, Zenyatta had chosen his own path, believing that peace with humanity was possible. He urged Ramattra to not give up on them completely, and that Mondatta's preaching was not in vain. Ramattra, expectedly disagreed, taking pity on humanity and their misbegotten civilization. So, as they wished the best for each other, and their dreams of peace, they simply parted ways.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
