@@ -4760,6 +4760,13 @@
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
         {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "",
+          "lat": 30.0444,
+          "lon": 31.2357
+        },
+        {
           "locationName": "Lagos, Nigeria",
           "country": "Nigeria",
           "reasoning": "Anubis pumped untold omnics into the area"
@@ -19653,6 +19660,26 @@
           "locationName": "",
           "country": "Overwatch, Lucheng Interstellar, Talon Empire,",
           "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Rematch",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 6.5774,
+      "lon": 3.3213,
+      "image": "",
+      "cityDisplayName": "Lagos, Nigeria",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
         }
       ]
     }
