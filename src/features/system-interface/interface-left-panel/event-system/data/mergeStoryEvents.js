@@ -16,6 +16,7 @@ import { normalizeStoryEventNameForMatch } from '../../../interface-shared/bio-a
  * @property {object[]} incomingOrdered
  * @property {MergeRow[]} rows
  * @property {number} identicalCount
+ * @property {Array<{ baseIndex: number, incomingIndex: number }>} identicalPairs
  * @property {boolean} hasDifferences
  */
 
@@ -31,6 +32,8 @@ import { normalizeStoryEventNameForMatch } from '../../../interface-shared/bio-a
  * @property {string} [matchNote]
  * @property {string[]} [changedFields]
  * @property {MergePickSide} [pick]
+ * @property {Record<string, MergePickSide>} [fieldPicks]
+ * @property {MergePickSide} [positionPick]
  * @property {boolean} [include]
  */
 
@@ -212,6 +215,12 @@ function buildPairedRow(baseItem, incomingItem, matchNote) {
     const kind =
         strictMatch && !repositioned ? 'conflict' : 'reposition';
 
+    const changedFields = listChangedStoryEventFields(baseEvent, incomingEvent);
+    const defaultPick = kind === 'reposition' ? 'base' : 'incoming';
+    /** @type {Record<string, MergePickSide>} */
+    const fieldPicks = {};
+    for (const field of changedFields) fieldPicks[field] = defaultPick;
+
     return {
         key: `pair:${baseIndex}:${incomingIndex}:${storyEventLooseKey(baseEvent) || storyEventPlaceKey(baseEvent)}`,
         label: storyEventDisplayLabel(baseEvent),
@@ -221,8 +230,12 @@ function buildPairedRow(baseItem, incomingItem, matchNote) {
         incomingIndex,
         kind: deepEqual && !repositioned ? 'identical' : kind,
         matchNote,
-        changedFields: listChangedStoryEventFields(baseEvent, incomingEvent),
-        pick: kind === 'reposition' ? 'base' : 'incoming',
+        changedFields,
+        pick: defaultPick,
+        fieldPicks,
+        // Position source for reposition rows (kept independent of per-field content):
+        // 'base' keeps the current position, 'incoming' adopts the incoming placement.
+        positionPick: 'base',
     };
 }
 
@@ -324,6 +337,8 @@ export function buildStoryEventsMergePlan(baseEvents, incomingEvents) {
     const matchedIncomingIndices = new Set();
     /** @type {MergeRow[]} */
     const rows = [];
+    /** @type {Array<{ baseIndex: number, incomingIndex: number }>} */
+    const identicalPairs = [];
     let identicalCount = 0;
 
     for (const [key, baseItem] of baseByStrict) {
@@ -335,6 +350,9 @@ export function buildStoryEventsMergePlan(baseEvents, incomingEvents) {
 
         if (storyEventsDeepEqual(baseItem.event, incomingItem.event)) {
             identicalCount += 1;
+            // Retain the base↔incoming index correspondence so the merge builder
+            // can anchor incoming-positioned events against this stable common spine.
+            identicalPairs.push({ baseIndex: baseItem.index, incomingIndex: incomingItem.index });
             continue;
         }
 
@@ -410,6 +428,7 @@ export function buildStoryEventsMergePlan(baseEvents, incomingEvents) {
         incomingOrdered,
         rows,
         identicalCount,
+        identicalPairs,
         hasDifferences: rows.length > 0,
     };
 }
@@ -423,59 +442,164 @@ function cloneEvent(value) {
 }
 
 /**
- * @param {MergeRow[]} rows
- * @returns {Map<number, MergeRow>}
+ * Which side supplies a given field's value for a paired row.
+ * @param {MergeRow} row
+ * @param {string} field
+ * @returns {MergePickSide}
  */
-function rowsByBaseIndex(rows) {
-    /** @type {Map<number, MergeRow>} */
-    const map = new Map();
-    for (const row of rows) {
-        if (row.baseIndex != null && !map.has(row.baseIndex)) {
-            map.set(row.baseIndex, row);
-        }
-    }
-    return map;
+export function resolveFieldSide(row, field) {
+    const fromMap = row.fieldPicks ? row.fieldPicks[field] : undefined;
+    return fromMap || row.pick || 'base';
 }
 
 /**
+ * Which side supplies the list position for a repositioned row.
+ * @param {MergeRow} row
+ * @returns {MergePickSide}
+ */
+export function resolvePositionSide(row) {
+    return row.positionPick || row.pick || 'base';
+}
+
+/**
+ * Compose the merged event for a paired row, honoring per-field picks. Unchanged fields
+ * are identical on both sides, so we start from the current (base) event and only rewrite
+ * the fields that differ, taking each from its chosen side. A field absent on the chosen
+ * side is removed. This is what lets you take everything from incoming while keeping, say,
+ * the description or name from current.
+ * @param {MergeRow} row
+ * @returns {object}
+ */
+export function buildMergedEventForRow(row) {
+    const base = row.baseEvent;
+    const incoming = row.incomingEvent;
+    const result = cloneEvent(base || incoming || {});
+    const fields = Array.isArray(row.changedFields) ? row.changedFields : [];
+
+    for (const field of fields) {
+        const side = resolveFieldSide(row, field);
+        const source = side === 'incoming' ? incoming : base;
+        if (source && Object.prototype.hasOwnProperty.call(source, field)) {
+            result[field] = cloneEvent(source[field]);
+        } else {
+            delete result[field];
+        }
+    }
+
+    return result;
+}
+
+/**
+ * Rebuild the merged event list.
+ *
+ * Ordering model:
+ *   - The current (base) list is the backbone; events kept from current stay in their
+ *     current order. Matched/identical events act as a stable spine and carry their
+ *     incoming index as an anchor.
+ *   - Events the user pulls from the incoming file — repositioned rows set to "incoming"
+ *     and included incoming-only rows — are *floated* and re-inserted at their incoming
+ *     position (relative to the spine), in incoming order. This is what makes picking
+ *     "incoming" actually move the event, and drops incoming-only rows at their real
+ *     placement instead of at the very end.
+ *   - Repositioned rows left on "current" keep their current position (no move).
+ *
  * @param {StoryEventsMergePlan} plan
  * @param {MergeRow[]} rows
  * @returns {object[]}
  */
 export function buildMergedStoryEventsFromPlan(plan, rows) {
-    const byBaseIndex = rowsByBaseIndex(rows);
+    /** @type {Map<number, MergeRow>} rows addressable by their base index */
+    const rowByBase = new Map();
+    for (const row of rows) {
+        if (row.baseIndex != null && !rowByBase.has(row.baseIndex)) {
+            rowByBase.set(row.baseIndex, row);
+        }
+    }
 
-    /** @type {object[]} */
-    const merged = [];
+    /** @type {Map<number, number>} baseIndex → incomingIndex for identical (unchanged) matches */
+    const identicalIncomingByBase = new Map();
+    for (const pair of plan.identicalPairs || []) {
+        identicalIncomingByBase.set(pair.baseIndex, pair.incomingIndex);
+    }
+
+    /** @type {Array<{ event: object, incomingIndex: number|null }>} */
+    const backbone = [];
+    /** @type {Array<{ event: object, incomingIndex: number }>} */
+    const floats = [];
 
     for (let i = 0; i < plan.baseOrdered.length; i += 1) {
         const baseEvent = plan.baseOrdered[i];
         if (!baseEvent || typeof baseEvent !== 'object') continue;
 
-        const row = byBaseIndex.get(i);
+        const row = rowByBase.get(i);
+
         if (!row) {
-            merged.push(cloneEvent(baseEvent));
+            // Unchanged / identical match (or an unpaired base row) — keep in place.
+            const incomingIndex = identicalIncomingByBase.has(i)
+                ? identicalIncomingByBase.get(i)
+                : null;
+            backbone.push({ event: cloneEvent(baseEvent), incomingIndex });
             continue;
         }
 
-        if (row.kind === 'conflict' || row.kind === 'reposition') {
-            const picked = row.pick === 'incoming' ? row.incomingEvent : row.baseEvent;
-            if (picked) merged.push(cloneEvent(picked));
+        if (row.kind === 'conflict') {
+            backbone.push({
+                event: buildMergedEventForRow(row),
+                incomingIndex: row.incomingIndex ?? null,
+            });
+            continue;
+        }
+
+        if (row.kind === 'reposition') {
+            const composed = buildMergedEventForRow(row);
+            if (resolvePositionSide(row) === 'incoming') {
+                // Adopt the incoming file's placement — float and re-insert below.
+                floats.push({
+                    event: composed,
+                    incomingIndex: row.incomingIndex ?? 0,
+                });
+            } else {
+                // Keep the current position (content still honors per-field picks).
+                backbone.push({ event: composed, incomingIndex: null });
+            }
             continue;
         }
 
         if (row.kind === 'onlyBase') {
-            if (row.include !== false) merged.push(cloneEvent(baseEvent));
+            if (row.include !== false) {
+                backbone.push({ event: cloneEvent(baseEvent), incomingIndex: null });
+            }
         }
     }
 
     for (const row of rows) {
         if (row.kind === 'onlyIncoming' && row.include !== false && row.incomingEvent) {
-            merged.push(cloneEvent(row.incomingEvent));
+            floats.push({
+                event: cloneEvent(row.incomingEvent),
+                incomingIndex: row.incomingIndex ?? 0,
+            });
         }
     }
 
-    return merged;
+    // Insert floated events in incoming order, each anchored just after the last
+    // backbone entry whose incoming index precedes it. Already-inserted floats become
+    // anchors too, so floats keep their incoming order relative to one another.
+    floats.sort((a, b) => a.incomingIndex - b.incomingIndex);
+    for (const float of floats) {
+        let insertAt = 0;
+        for (let j = 0; j < backbone.length; j += 1) {
+            const anchor = backbone[j].incomingIndex;
+            if (anchor != null && anchor < float.incomingIndex) {
+                insertAt = j + 1;
+            }
+        }
+        backbone.splice(insertAt, 0, {
+            event: float.event,
+            incomingIndex: float.incomingIndex,
+        });
+    }
+
+    return backbone.map((entry) => entry.event);
 }
 
 /**

@@ -2478,7 +2478,7 @@
       ]
     },
     {
-      "name": "Collaterate Damage",
+      "name": "Bankruptcy",
       "description": "Following Aurora's trials and the many controversies they had found themselves in, from accusations of fraud and many protests from locals who were affected by the Omniums, as well as critics of Aurora's research, Omnica found itself with no other option than bankruptcy.\n\nThe Company shut down all operations, but decided to keep ownership of their Omnium factories. Full decommissioning of the factories proved to be a logistical nightmare, and many people at the Company remained hopeful that one day they would be able to use them again, so in the end Omnica left the world with giant empty shells, ghostly facilities that went unused for years.\n\nBy humans, anyway...",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
@@ -8306,6 +8306,66 @@
       ]
     },
     {
+      "name": "Pressure Makes a DIamond",
+      "locationType": "earth",
+      "cityDisplayName": "Utopea, India",
+      "description": "The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.\n\n As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. Through this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.",
+      "image": "",
+      "lat": 23.2599,
+      "lon": 77.4126,
+      "eraName": "The Golden Age",
+      "yearStart": 2065,
+      "yearEnd": 2068,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Utopea, India",
+          "country": "India",
+          "reasoning": "",
+          "lat": 23.2599,
+          "lon": 77.4126
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom,",
+          "reasoning": "Vaira struggles to keep up with Vishkar Architects in spite of Family expectations",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Domina",
+          "reasoning": "Pays the design of Assistive Hardlight Arms"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": "Growing Larger, yet getting into many controversies"
+        }
+      ],
+      "headlines": [
+        "Hundreds displace in India following Vishkar home prices being revealed",
+        "Acussations of nepotism and corruption continue within Vishkar's corporate circle"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website Domina",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/domina/"
+        },
+        {
+          "text": "Picture of Sucess",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0da726e75867d1cd/699605076f01acd05d907752/Domina_Micro_EN.pdf",
+            "https://www.youtube.com/watch?v=BWd_QJjBAbM"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Counter Meassures",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
@@ -9577,6 +9637,96 @@
       ]
     },
     {
+      "name": "Blacklisted",
+      "locationType": "earth",
+      "cityDisplayName": "Dublin, Ireland",
+      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. He came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
+      "image": "",
+      "lat": 53.3493795,
+      "lon": -6.2605593,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2068,
+      "yearEnd": null,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dublin, Ireland",
+          "country": "Ireland",
+          "reasoning": "Moira O'Deorain is black listed following the release of controversial papers"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Moira, Reaper",
+          "reasoning": "Reyes hires Moira into Blackwatch in secret"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Mercy, Sojourn,",
+          "reasoning": "Continously oppose Reyes' choices"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Blackwatch",
+          "reasoning": "Expands into its own medical staff"
+        }
+      ],
+      "headlines": [
+        "Controversial paper on Celular regeneration shakes the scientific world",
+        "Overwatch releases public condemnation of Moira O'Deorain's research"
+      ]
+    },
+    {
+      "name": "Bodily Entropy",
+      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2068,
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": "Moira Experiments on Gabriel Reys"
+        }
+      ],
+      "headlines": [
+        "Gabriel Reyes looking dangerously ill in the latest UN meeting"
+      ],
+      "sources": [
+        {
+          "text": "Progress",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/progress/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Moira, Reaper,",
+          "reasoning": "Gabriel allows Moira to test his experiments on him"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Blackwatch,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Escape Pod",
       "description": "In the middle of the chaos, Winston was able to find a nearly finished, makeshift rocket in the base. After putting the finishing touches, he was able to launch the pod and escape to Earth. Little did he know that vessel was actually Hammond's, and he had worked on it for months hoping that they could escape together. Ingenious as always, Hammond was able to attach a spare capsule to Winston's vessel, and secretly hitched a ride when they blasted off. However, the cable broke when they entered the Atmosphere, and Hammond landed in a completely different spot than Winston, who had no idea his friend was following close.\n\nWinston's ship would be intercepted by Overwatch agents in Gibraltar. After making landfall, the team was surprised to find he could address them in perfect English, as he required urgent medical assistance and lost consciousness soon after. After recovery, Overwatch made controversial headlines with the recruitment of their first fully non-human member. Winston proved himself highly intelligent, strong and agile, and when he requested to join the organization, he himself presented a case for personhood in court, following the precedents set by the Omnic Rights movement. Winston's reception was mixed at the start due to the ethically questionable nature of his mere existence, but he quickly proved to be an invaluable ally for the organization, as well as one of the most charismatic faces of the Strike team, becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own.",
       "locationType": "moon",
@@ -10291,7 +10441,7 @@
       "name": "Uprising",
       "locationType": "earth",
       "cityDisplayName": "London, United Kingdom",
-      "description": "As the Turing Green project was progressing, it had grown to be quite controversial among the Omnic community. While most saw it as a true first step into integration, an opposition movement began to protest it as a token gesture, meant to absolve humanity from their actions by delivering the bare minimum. These tensions came to a boiling point when, all of a sudden, an army of Crisis-era war bots began to mobilize at Kings Row.\n\nNull Sector claimed to be behind the attack, declaring London as a sovereign Omnic State. In their advance, the machines killed hundreds of humans, displaced several more and took several Omnics oposing the takeover as hostages, including Mondatta himself. People all over the world feared this attack could be the beggining of an all out war between Omnics and Humans. The British Government had no intention of letting Overwatch in after the mess they made in Italy, but Reyes secretly sent Cassidy to do Recon ahead of a potential strike team deployment.\n\nTwenty Seven days into the Uprising, Director Petras attempted to contact Morrison to no avail, as he was constantly put on hold. Jack suspected his calls were  due to a recent Cairo mission, where an Overwatch official was murdered. Petras most likely wanted to avoid the chaos of the humanitarian crisis, and the official investigation that ensued, yet as London continued falling appart it was clear someone had to do something.",
+      "description": "As the Turing Green project was progressing, it had grown to be quite controversial among the Omnic community. While most saw it as a true first step into integration, an opposition movement began to protest it as a token gesture, meant to absolve humanity from their actions by delivering the bare minimum. These tensions came to a boiling point when, all of a sudden, an army of Crisis-era war bots began to mobilize at Kings Row.\n\nNull Sector claimed to be behind the attack, declaring London as a sovereign Omnic State. In their advance, the machines killed hundreds of humans, displaced several more and took several Omnics oposing the takeover as hostages, including Mondatta himself. People all over the world feared this attack could be the beggining of an all out war between Omnics and Humans. The British Government had no intention of letting Overwatch in after the mess they made in Italy, but Reyes secretly sent Cassidy to do Recon ahead of a potential strike team deployment.\n\n27 days into the Uprising, Director Petras attempted to contact Morrison to no avail, as he was constantly put on hold. Jack suspected this was due to not wanting a repeat of a recent Cairo mission, where an Overwatch official was murdered. Petras most likely wanted to avoid the chaos of the humanitarian crisis, and the official investigation that ensued.",
       "image": "",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -10930,7 +11080,7 @@
       "name": "Missing in Action",
       "locationType": "earth",
       "cityDisplayName": "Warsaw, Poland",
-      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up. They had decided to forgo the Search & Rescue team intentionally, with Agents Kimiko and seasoned Mirembe Atim helped with the hostages.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. All of a sudden, a Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
+      "description": "Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up. They had decided to forgo the Search & Rescue team intentionally.\n\nTalon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. Agents Kimiko and seasoned Mirembe Atim helped with the hostages. All of a sudden, a Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Amélie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.\n\nOfficially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.",
       "image": "",
       "lat": 52.2333742,
       "lon": 21.0711489,
@@ -14759,6 +14909,48 @@
         {
           "locationName": "",
           "country": "Shambali Order,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Idina Troopers",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "image": "",
+      "cityDisplayName": "City State of Numbani",
+      "yearStart": 2078,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Orisa,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
           "reasoning": ""
         }
       ]
@@ -19674,7 +19866,13 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lagos, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": [
         {

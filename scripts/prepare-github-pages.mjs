@@ -5,6 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildTimelineBundleStamp } from '../src/features/system-interface/interface-left-panel/event-system/data/timelineBundleStamp.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -77,8 +78,9 @@ function injectTimelineBundleMeta(siteIndex) {
     const data = JSON.parse(fs.readFileSync(timelinePath, 'utf8'));
     const events = Array.isArray(data.events) ? data.events : [];
     const count = events.length;
-    const lastName = count > 0 ? String(events[count - 1]?.name ?? '').trim() : '';
-    const stamp = `${count}:${lastName}`;
+    // Content hash over the full bundle, so any committed change ships a new stamp and
+    // reliably overrides stale browser caches (see timelineBundleStamp.js).
+    const stamp = buildTimelineBundleStamp(events);
     const countMeta = `<meta name="timeline-bundle-events" content="${count}">`;
     const stampMeta = `<meta name="timeline-bundle-stamp" content="${escapeHtmlAttr(stamp)}">`;
 

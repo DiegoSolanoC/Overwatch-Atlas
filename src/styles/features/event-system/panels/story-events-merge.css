@@ -280,6 +280,340 @@ body.color-palette-gray .story-events-merge-toolbar-btn:hover {
     }
 }
 
+/* Reference-only side panels (no whole-side radio; picking is field-by-field) */
+.story-events-merge-side {
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.story-events-merge-side--base {
+    border-color: rgba(33, 150, 243, 0.35);
+}
+
+.story-events-merge-side--incoming {
+    border-color: rgba(76, 175, 80, 0.35);
+}
+
+/* Position source toggle + field-by-field pickers */
+.story-events-merge-position {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(156, 39, 176, 0.08);
+    border: 1px solid rgba(156, 39, 176, 0.28);
+}
+
+.story-events-merge-position__title,
+.story-events-merge-fields__title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.story-events-merge-fields {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.story-events-merge-fields__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.story-events-merge-fields__bulk {
+    display: flex;
+    gap: 6px;
+}
+
+.story-events-merge-fieldbulk {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.story-events-merge-fieldbulk:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.story-events-merge-field {
+    display: block;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.story-events-merge-field:first-of-type {
+    border-top: none;
+}
+
+.story-events-merge-field__name {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #fff;
+    word-break: break-word;
+}
+
+.story-events-merge-field__opts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+}
+
+@media (max-width: 720px) {
+    .story-events-merge-field__opts {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Segmented radio control shared by position + field pickers */
+.story-events-merge-seg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.82);
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.story-events-merge-position .story-events-merge-seg {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.story-events-merge-seg input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.story-events-merge-seg:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.story-events-merge-field__label {
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.story-events-merge-field__value {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+    max-height: 260px;
+    overflow: auto;
+}
+
+.story-events-merge-seg--base.story-events-merge-seg--active {
+    border-color: rgba(33, 150, 243, 0.8);
+    background: rgba(33, 150, 243, 0.14);
+}
+
+.story-events-merge-seg--incoming.story-events-merge-seg--active {
+    border-color: rgba(76, 175, 80, 0.8);
+    background: rgba(76, 175, 80, 0.14);
+}
+
+.story-events-merge-seg--base.story-events-merge-seg--active .story-events-merge-field__label {
+    color: rgba(187, 222, 251, 0.95);
+}
+
+.story-events-merge-seg--incoming.story-events-merge-seg--active .story-events-merge-field__label {
+    color: rgba(200, 230, 201, 0.95);
+}
+
+/* One-at-a-time navigation bar */
+.story-events-merge-dialog__nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.24);
+}
+
+.story-events-merge-nav-btn {
+    appearance: none;
+    flex: 0 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.story-events-merge-nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.story-events-merge-nav-btn:disabled {
+    opacity: 0.38;
+    cursor: default;
+}
+
+.story-events-merge-nav__center {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+
+.story-events-merge-nav__counter {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.story-events-merge-nav__strip {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 2px 2px 4px;
+    scrollbar-width: thin;
+}
+
+.story-events-merge-dot {
+    appearance: none;
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.story-events-merge-dot:hover {
+    transform: translateY(-1px);
+}
+
+.story-events-merge-dot--conflict {
+    background: rgba(255, 193, 7, 0.55);
+    border-color: rgba(255, 193, 7, 0.7);
+}
+
+.story-events-merge-dot--reposition {
+    background: rgba(156, 39, 176, 0.55);
+    border-color: rgba(186, 104, 200, 0.7);
+}
+
+.story-events-merge-dot--only-base {
+    background: rgba(33, 150, 243, 0.55);
+    border-color: rgba(33, 150, 243, 0.7);
+}
+
+.story-events-merge-dot--only-incoming {
+    background: rgba(76, 175, 80, 0.55);
+    border-color: rgba(76, 175, 80, 0.7);
+}
+
+.story-events-merge-dot--active {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
+    transform: translateY(-1px);
+}
+
+/* Paged single-row layout — roomy and readable */
+.story-events-merge-row--paged {
+    padding: 22px 24px;
+}
+
+.story-events-merge-row__kind {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.story-events-merge-row--paged .story-events-merge-row__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.story-events-merge-row--paged .story-events-merge-row__columns {
+    gap: 20px;
+    margin-bottom: 4px;
+}
+
+/* Reference cards can breathe — show the full description in the paged view */
+.story-events-merge-row--paged .event-item-description {
+    -webkit-line-clamp: unset;
+    display: block;
+    max-height: 200px;
+    overflow: auto;
+    font-size: 13px;
+}
+
+.story-events-merge-row--paged .story-events-merge-card {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.story-events-merge-row--paged .story-events-merge-card__thumb {
+    width: 160px;
+    flex: 0 0 160px;
+}
+
+.story-events-merge-row--paged .story-events-merge-side {
+    padding: 14px;
+}
+
 /* Pickable wrapper around preview card */
 .story-events-merge-pick {
     position: relative;
@@ -302,6 +636,27 @@ body.color-palette-gray .story-events-merge-toolbar-btn:hover {
     border-color: rgba(33, 150, 243, 0.72);
     box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.35), 0 10px 24px rgba(0, 0, 0, 0.28);
     background: rgba(33, 150, 243, 0.08);
+}
+
+/* Provenance-colored selection (kept consistent across palettes):
+   blue = current data, green = incoming file. Overrides the generic + gray
+   selected styles so "only current" and "only incoming" never look the same. */
+.story-events-merge-pick--base.story-events-merge-pick--selected,
+.story-events-merge-pick--only-base.story-events-merge-pick--selected,
+body.color-palette-gray .story-events-merge-pick--base.story-events-merge-pick--selected,
+body.color-palette-gray .story-events-merge-pick--only-base.story-events-merge-pick--selected {
+    border-color: rgba(33, 150, 243, 0.75);
+    box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.4), 0 10px 24px rgba(0, 0, 0, 0.28);
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.story-events-merge-pick--incoming.story-events-merge-pick--selected,
+.story-events-merge-pick--only-incoming.story-events-merge-pick--selected,
+body.color-palette-gray .story-events-merge-pick--incoming.story-events-merge-pick--selected,
+body.color-palette-gray .story-events-merge-pick--only-incoming.story-events-merge-pick--selected {
+    border-color: rgba(76, 175, 80, 0.8);
+    box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.4), 0 10px 24px rgba(0, 0, 0, 0.28);
+    background: rgba(76, 175, 80, 0.1);
 }
 
 body.color-palette-gray .story-events-merge-pick--selected {

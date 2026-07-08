@@ -23,6 +23,7 @@ import { repairStalePlaceholderRowsFromFile } from "./repairStalePlaceholderRows
 import {
   buildTimelineBundleStamp,
   clearTimelineBundleStamp,
+  readStoredTimelineBundleStamp,
   readTimelineBundleStampFromMeta,
   writeTimelineBundleStamp,
 } from "./timelineBundleStamp.js";
@@ -71,12 +72,14 @@ function consumeResetTimelineUrlParam() {
  * @param {any[]|null}  fileEvents     Parsed events from `events.json`, or null if unavailable.
  * @param {any[]|null}  localEvents    Parsed events from localStorage, or null if unavailable.
  * @param {boolean}     isGitHubPages  Whether we are running on GitHub Pages.
+ * @param {boolean}     cacheMatchesDeploy  Whether localStorage was derived from the current
+ *                                          deploy stamp (GitHub Pages only).
  * @returns {'file' | 'localStorage' | 'localStorage-wins'}
  *   - `'file'`            → use fileEvents (and reset localStorage).
  *   - `'localStorage'`    → use localEvents.
  *   - `'localStorage-wins'` → use localEvents (ties or local has more), but still check big-divergence.
  */
-function _selectEventsSource(fileEvents, localEvents, isGitHubPages) {
+function _selectEventsSource(fileEvents, localEvents, isGitHubPages, cacheMatchesDeploy) {
   const fileCount = fileEvents ? fileEvents.length : 0;
   const localCount = localEvents ? localEvents.length : 0;
 
@@ -90,17 +93,18 @@ function _selectEventsSource(fileEvents, localEvents, isGitHubPages) {
     return "file";
   }
 
-  // Deployed / disk bundle ahead of cache — pick up new timeline rows from git.
-  if (fileCount > localCount) {
-    return "file";
+  if (isGitHubPages) {
+    // Static site: the deploy stamp is authoritative. The shipped bundle carries a
+    // content hash, so ANY change to the committed timeline ships a new stamp. Keep
+    // the browser cache only when it was derived from this exact deploy (protects
+    // live in-browser edits made between deploys); otherwise take the shipped bundle
+    // — this is what makes deploys reliably override stale caches without
+    // ?resetTimeline. Row count is intentionally not consulted here.
+    return cacheMatchesDeploy ? "localStorage-wins" : "file";
   }
 
-  if (isGitHubPages) {
-    // Static site: shipped JSON is canonical unless the browser cache has more rows
-    // (import / add-event workflow not yet exported to git).
-    if (localCount > fileCount) {
-      return "localStorage-wins";
-    }
+  // Deployed / disk bundle ahead of cache — pick up new timeline rows from git.
+  if (fileCount > localCount) {
     return "file";
   }
 
@@ -204,7 +208,20 @@ export async function loadMainTimelineEvents(dataService) {
   // ------------------------------------------------------------------
   // 3. Decide which source wins
   // ------------------------------------------------------------------
-  const source = _selectEventsSource(fileEvents, localEvents, isGitHubPages);
+  // On GitHub Pages the deploy stamp (content hash) is authoritative: keep the
+  // cache only when it was derived from this exact shipped bundle.
+  const deployedStamp = isGitHubPages
+    ? readTimelineBundleStampFromMeta() || buildTimelineBundleStamp(fileEvents)
+    : "";
+  const storedStamp = isGitHubPages ? readStoredTimelineBundleStamp() : "";
+  const cacheMatchesDeploy = Boolean(deployedStamp) && storedStamp === deployedStamp;
+
+  const source = _selectEventsSource(
+    fileEvents,
+    localEvents,
+    isGitHubPages,
+    cacheMatchesDeploy,
+  );
 
   if (source === "file") {
     dataService.updateStatus(

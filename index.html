@@ -50,14 +50,13 @@
         if (!stampMeta) return;
         var bundleStamp = String(stampMeta.getAttribute('content') || '');
         if (!bundleStamp) return;
+        // Cache was derived from this exact deploy → keep it (protects live in-browser
+        // edits made between deploys).
         if (localStorage.getItem(STAMP_KEY) === bundleStamp) return;
-        var raw = localStorage.getItem(LS_KEY);
-        if (!raw) return;
-        var localCount = 0;
-        try { localCount = JSON.parse(raw).length; } catch (e) {}
-        var countMeta = document.querySelector('meta[name="timeline-bundle-events"]');
-        var bundleCount = countMeta ? parseInt(countMeta.getAttribute('content') || '0', 10) : 0;
-        if (bundleCount > 0 && localCount > bundleCount) return;
+        // Any other case — a new deploy landed, or the cache carries a legacy/absent
+        // stamp — means the shipped bundle is authoritative. Drop the cached rows so
+        // the deployed timeline loads. The stamp is a content hash, so this fires on
+        // every content change (new rows, edits, reorders), not just count changes.
         localStorage.removeItem(LS_KEY);
       } catch (e) {}
     })();
