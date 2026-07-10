@@ -8416,6 +8416,14 @@
         {
           "text": "Orisa Origin Story",
           "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        },
+        {
+          "text": "Successors",
+          "url": "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+          "urls": [
+            "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta26b70b5ed0d3bf2/6a21ff2dc4516506486841bb/OW_Ravine_EN_FNL.pdf"
+          ]
         }
       ],
       "npcFilterPlaces": [
@@ -8856,21 +8864,36 @@
     {
       "name": "Takeover",
       "locationType": "earth",
-      "cityDisplayName": "Venice, Italy",
+      "cityDisplayName": "City State of Numbani",
       "description": "For years, Akande Ogundimu had trained under the wing of Akinjide Adeyemi, as one of the best lieutenants. His involvement was known by Numbani's security forces, but he was smart enough to keep distance away from more active conflicts to avoid being apprehended. As Ogundimu became one of Adeyemi's most trusted confidants, behind his back, Akande was thinking far bigger than he could ever have imagined. Akande was a well-studied visionary, who had grown to adopt a certain philosophy as his personal mantra: Humanity evolves through conflict.  =It was conflict like the pandemics earlier in the century that pushed medical advances to their limits. It was conflict like the ecological impact of humanity that led to the hundreds of inventions that made life better. It was a conflict like the Omnic Crisis that allowed humanity to come together with Overwatch, and push through an enemy larger than any nation on their own. It was conflict that prevented him from sports, and allowed him to realize his true calling. Akande was meant to spread conflict across the world, for the betterment of humanity.\n\nAkande had grown connections within Talon's council through Adeyemi's network of mercenaries, and within the council they saw him as a potentially valuable asset. Before long, Ogundimu made his choice. He turned against his master and after a brutal face off, he was able to kill him, taking the Gauntlet and the mantle of Doomfist for himself. Akande was already respected within Talon, but between his vision, and now the imposing force of the Gauntlet, the members of the council would have little option but to fall in line at his command. After all, it would be easier to take advantage of governments and industry amid the chaos of ongoing conflicts, so while the new Doomfist pursued an ideology, his closest allies stuck around purely to profit from his crusade.\n\nUnder Doomfist, Talon would shift from being an amorphous, silent force that hijacked power across regions, to a loud, imposing terrorist that quickly proved to be Overwatch's primary obstacle in their peacekeeping duties. The organization was actively growing at this time as well. Research teams began to raise warnings of fringe scientists being recruited by Talon agents, and in some cases, reputable researchers getting kidnapped. Perhaps a more direct blow would be the beggining of a recruitment campaign across the Carribean Sea, as many experienced personnel from the Caribbean Coalition ranks began to be lured by the calling of Talon. Reyes and Lacroix became aware of the change in leadership and even obtained partial footage of the battle. The subject became a main priority for their research, but soon enough, Overwatch would have their hands full from dealing with Talon.",
       "image": "",
-      "lat": 45.4371908,
-      "lon": 12.3345898,
+      "lat": 12.0022,
+      "lon": 8.5919,
       "sources": [
         {
           "text": "Overwatch Declasified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Successors",
+          "url": "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+          "urls": [
+            "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta26b70b5ed0d3bf2/6a21ff2dc4516506486841bb/OW_Ravine_EN_FNL.pdf"
+          ]
         }
       ],
       "eraName": "The Golden Age",
       "yearStart": 2060,
       "yearEnd": 2068,
       "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "",
+          "lat": 12.0022,
+          "lon": 8.5919
+        },
         {
           "locationName": "Venice, Italy",
           "country": "Italy",
@@ -12831,7 +12854,7 @@
       "name": "Anubis Escapes",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "No description available.",
+      "description": "Anubis, sealed in its tomb for over thirty years, had attempted to escape confinement before, but the multiple safe rails and supervisors that Overwatch's engineers provided prevented a full-on breach. With them gone, it did not take long for Anubis to crack Helix's fire walls and contaminate the sentry bots assigned to its throne. When the news of the security breach broke out, a Raptors Unit commanded by Captain Khali was ordered to neutralize the program. Helix encountered many problems that lead to many deaths and injured agents, alongside the disturbing discovery that Anubis figured out how to take over Awakened Omnics, as one of the troopers, Okoro, took his own life right as he sensed he was losing control of his own mind. While many of the soldiers wanted to bail, Pharah insisted there was too much at risk. Captain Khali conceded but noted they wouldn't get far without addressing the team's morale.\n\nAs the team made their way into the temple, fire fighting broke out between the security robots, killing Captain Khali. As per the chain of command, Pharah was in charge of pushing through the rest of the Mission. As they found Anubis, the program was finishing preparations to upload itself into the wider network, escaping confinement into the outside world. Pharah meant to destroy it but as a pillar threatened to crush her team mate Saleh, she decided to prioritize his life over the mission. Once safe, the engineer worked through Anubis' systems while Pharah wrestled with the sentries to buy him time. Together they managed to shut down the program and prevent another global crisis. As the team retreated to treat the wounded, Pharah had gained the respect of her teammates as their new captain, but most importantly, she reconsidered the meaning of her Udjat tattoo. She had the eye or Horus marked just like her mother, who used to say it meant protection. Fareeha now understood, it didn't mean she was protected, but that she was meant to be a protector.",
       "image": "",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -12842,7 +12865,7 @@
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Anubis breaches security and attempts to escape the Temple",
           "lat": 30.0444,
           "lon": 31.2357
         }
@@ -12851,24 +12874,27 @@
         {
           "locationName": "",
           "country": "Pharah",
-          "reasoning": ""
+          "reasoning": "Becomes Captain after her superior's death"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Helix Securities",
-          "reasoning": ""
+          "reasoning": "Loses many soldeirs trying to Stop Anubis"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Anubis,",
-          "reasoning": ""
+          "reasoning": "Attempts to Upload itself into the outside world"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Fareeha Amari stops the Anubis Outbreak",
+        "Anubis escapes Helix's confinement"
+      ],
       "sources": [
         {
           "text": "Mission Statement",
@@ -18766,6 +18792,38 @@
       ],
       "yearEnd": null,
       "headlines": []
+    },
+    {
+      "name": "Successors",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Rome, Italy",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rome, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Successors",
+          "url": "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+          "urls": [
+            "https://www.youtube.com/watch?v=yWeXqMXmeyA",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta26b70b5ed0d3bf2/6a21ff2dc4516506486841bb/OW_Ravine_EN_FNL.pdf"
+          ]
+        }
+      ]
     },
     {
       "name": "Search and Destroy",

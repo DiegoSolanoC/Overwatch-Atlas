@@ -3608,7 +3608,7 @@
     },
     {
       "id": "17d68491-a753-4aef-9e4f-85536222b8a9",
-      "name": "81",
+      "name": "So Dramatic",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3641,7 +3641,7 @@
     },
     {
       "id": "8bd1c2dd-5ad6-4c73-aa46-16f70717f4c0",
-      "name": "82",
+      "name": "Stay Around",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3674,7 +3674,7 @@
     },
     {
       "id": "52a5ef82-ba85-4194-b85f-21161a63cde1",
-      "name": "83",
+      "name": "What is left",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3707,7 +3707,7 @@
     },
     {
       "id": "d322c0ab-5d11-40de-b68e-9470f8ac2ac3",
-      "name": "84",
+      "name": "Always Worry",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3740,7 +3740,7 @@
     },
     {
       "id": "af71562c-b5b1-4b4c-9b8c-bcead179babe",
-      "name": "85",
+      "name": "Unstoppable",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3765,7 +3765,7 @@
     },
     {
       "id": "8e7c8b93-19b7-4fb5-b703-06fdd9b52ee4",
-      "name": "86",
+      "name": "Dancing in the Command Center",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4841,7 +4841,7 @@
           ]
         }
       ],
-      "selectedPathId": "89b88e95-e306-487d-ae0f-484b89cc28a1"
+      "selectedPathId": "fc7b04aa-f770-4926-a2b6-34e22bddd013"
     },
     {
       "id": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1",
@@ -6039,7 +6039,7 @@
     },
     {
       "id": "bbe55a61-d1bb-4ec4-8a0c-9183ed90bb14",
-      "name": "143",
+      "name": "A bodyguard",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6064,7 +6064,7 @@
     },
     {
       "id": "9ba59715-4000-437b-925c-5ea71cd4b5e8",
-      "name": "144",
+      "name": "Big Target",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7195,7 +7195,7 @@
     },
     {
       "id": "e3c48e18-5909-43b3-947d-6cec970f8fc1",
-      "name": "180",
+      "name": "Getting Paid",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7228,7 +7228,7 @@
     },
     {
       "id": "0f3a076a-7fc6-47a8-8fa8-7d21229e060e",
-      "name": "181",
+      "name": "Pick Something Up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8486,7 +8486,7 @@
     },
     {
       "id": "b6267a55-5543-4648-a8fb-3302b797a841",
-      "name": "215",
+      "name": "Bastion Agrees",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8527,7 +8527,7 @@
     },
     {
       "id": "f04e3ea5-0020-40fb-924e-61cfb0c296c0",
-      "name": "216",
+      "name": "Killed Many",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9269,7 +9269,7 @@
           ]
         }
       ],
-      "selectedPathId": "7fcd8e23-59e8-496c-aa91-ce41965d6c61"
+      "selectedPathId": "d298a795-ee75-4a98-aae2-99b64926b80b"
     },
     {
       "id": "cf8b6c16-56ed-4a04-b8e2-c580ffb32384",
@@ -9382,47 +9382,6 @@
           "voice": "Brigitte_-_Potato..._You're_a_genius!_I'll_call_him_Hasselback.ogg",
           "voicePrefix": "",
           "subtitles": "Potato... You're a genius! I'll call him Hasselback!",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
-      "id": "eb7a8eb3-c461-457a-ba01-146989a006db",
-      "name": "Kitten me",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "df7c3157-471c-4656-84a8-62bff3075eb9",
-          "hero": "Reinhardt",
-          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
-          "voicePrefix": "",
-          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "7af364e5-77b9-45e0-b5d5-6c4ee9f0a53f",
-          "hero": "Jetpack Cat",
-          "voice": "Jetpack_Cat_-_(confused_meows).ogg",
-          "voicePrefix": "",
-          "subtitles": "**confused meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "db638dba-98b2-459d-9971-fbdd4f00a22c",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_Uh..._shouldn't_it_be__kitten_me_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Shouldn't it be “‘kitten’ me”?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "c4ad1900-cc20-4809-a2e0-11b14762772e",
-          "hero": "Brigitte",
-          "voice": "Brigitte_-_Trust_me._I've_already_tried.ogg",
-          "voicePrefix": "",
-          "subtitles": "Ugh... trust me. I've already tried.",
           "render": "Heroic.png"
         }
       ]
@@ -9627,7 +9586,7 @@
     },
     {
       "id": "5157db23-64b8-41ba-b1fe-58100fee0c62",
-      "name": "244",
+      "name": "Mess it Up Again",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9652,7 +9611,7 @@
     },
     {
       "id": "a115092e-db3f-4836-914c-70c3a78cbd1b",
-      "name": "245",
+      "name": "Not getting any Taller",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9693,7 +9652,7 @@
     },
     {
       "id": "82540ec2-9297-489d-ac5a-abff00793b18",
-      "name": "246",
+      "name": "Getting a Helmet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9734,7 +9693,7 @@
     },
     {
       "id": "da29c54d-1205-4cb0-bb89-ef1e1a29339d",
-      "name": "247",
+      "name": "We lived",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9775,7 +9734,7 @@
     },
     {
       "id": "8a789c55-21df-49ae-b144-f223d06c0b09",
-      "name": "248",
+      "name": "Twice as Many Lindholms",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9808,7 +9767,7 @@
     },
     {
       "id": "57decf39-d2e1-4f4f-a866-4178c1f06b5a",
-      "name": "249",
+      "name": "Lidnholm Spark",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9849,7 +9808,7 @@
     },
     {
       "id": "d8c9903d-306b-44f9-b6e0-b6b79ed3ad9b",
-      "name": "250",
+      "name": "Medieval History",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10967,7 +10926,7 @@
     },
     {
       "id": "a2b1f023-2952-4afd-b900-cdceadd796c8",
-      "name": "280",
+      "name": "Old Fashioned",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11237,7 +11196,7 @@
     },
     {
       "id": "925c7dd6-cc11-4174-9c27-49ffe51e613d",
-      "name": "287",
+      "name": "Too many Sunsets",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11278,7 +11237,7 @@
     },
     {
       "id": "96366250-f815-4ee8-b7bf-ca9732649f22",
-      "name": "288",
+      "name": "Fresh Faces",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25120,7 +25079,7 @@
     },
     {
       "id": "b9b3f96e-72e2-4fa3-ab4d-1961c7600d78",
-      "name": "591",
+      "name": "Missing an Eye",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25732,7 +25691,7 @@
     },
     {
       "id": "f110c750-94ea-4952-8986-bf8de6a8b647",
-      "name": "609",
+      "name": "Sir Wilhelm",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25757,7 +25716,7 @@
     },
     {
       "id": "04c8a93d-ca96-4bde-b865-73e6230e0b04",
-      "name": "610",
+      "name": "Courage is Might",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26835,7 +26794,7 @@
     },
     {
       "id": "f1306110-9ad0-4a5b-a927-e23e65af461f",
-      "name": "640",
+      "name": "Larger than i thought",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -28854,7 +28813,7 @@
     },
     {
       "id": "31b0e0e9-944c-4211-a60e-7339577965de",
-      "name": "700",
+      "name": "Bonuses",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -28895,7 +28854,7 @@
     },
     {
       "id": "524967ed-6970-4873-b816-81d4f47942ba",
-      "name": "701",
+      "name": "Careful Swinging",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29546,7 +29505,7 @@
     },
     {
       "id": "0126939d-3d21-46d1-a1e6-c01028a1472f",
-      "name": "721",
+      "name": "Not Hanging up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30124,7 +30083,7 @@
     },
     {
       "id": "8d18a50c-ecb8-47d6-b380-49739d56a6d4",
-      "name": "740",
+      "name": "Like a Bug",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -31773,7 +31732,7 @@
     },
     {
       "id": "be7641a2-e597-4f9d-a7bb-7e60b0e3ac5d",
-      "name": "786",
+      "name": "Haunted",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -31806,7 +31765,7 @@
     },
     {
       "id": "a47fdc53-8e52-4a81-84bf-f28a037391b4",
-      "name": "787",
+      "name": "Contibuting",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32457,41 +32416,8 @@
       ]
     },
     {
-      "id": "e76c39ea-ad86-4890-9f45-62e862a3e631",
-      "name": "807",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "57e90de8-ab78-4956-b99a-1752a6fd6b61",
-          "hero": "Reinhardt",
-          "voice": "Reinhardt_-_Ana,_I'm_so_glad_to_have_you_back_with_Overwatch!.ogg",
-          "voicePrefix": "",
-          "subtitles": "Ana, I'm so glad to have you back to Overwatch!",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "cfed4be0-a745-4de8-b031-90ad454bf30f",
-          "hero": "Ana",
-          "voice": "Ana_-_As_am_I,_though_I_can't_promise_I'll_stay_around_forever.ogg",
-          "voicePrefix": "",
-          "subtitles": "As am I, though I can't promise I'll stay around forever.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "859a1688-3998-44ba-acb2-0f389763e3fb",
-          "hero": "Reinhardt",
-          "voice": "Reinhardt_-_Then_I_won't_take_a_moment_for_granted.ogg",
-          "voicePrefix": "",
-          "subtitles": "Then... I won't take a moment for granted.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "d5fb6ca4-44d4-4cad-a4e6-65b91f6f4fa9",
-      "name": "808",
+      "name": "The Classics",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32516,7 +32442,7 @@
     },
     {
       "id": "63bc1894-ed2d-4495-a741-e465e5a71811",
-      "name": "809",
+      "name": "The Poster",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32541,7 +32467,7 @@
     },
     {
       "id": "cdc2c3a7-43e3-4b9f-9a2d-acabd5351ac2",
-      "name": "810",
+      "name": "Watching your back",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32564,17 +32490,36 @@
         },
         {
           "id": "0847ff11-05e5-40dc-bfbc-1300079d6410",
-          "hero": "Unknown",
+          "hero": "Reinhardt",
           "voice": "Reinhardt_-_I'm_sure_Brigitte_could_give_you_some_pointers.ogg",
           "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "I'm sure Brigitte could give you some pointers",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "f2ef5599-54fc-40b7-9e03-248393187c70",
+          "label": "Nothing to Worry",
+          "lineIds": [
+            "7df315ce-c655-46cb-b991-ca52675402eb",
+            "c9410507-7eec-4f19-8965-d03720655df4"
+          ]
+        },
+        {
+          "id": "02960306-757c-48a4-ae5b-4673db834f5c",
+          "label": "Pointers",
+          "lineIds": [
+            "7df315ce-c655-46cb-b991-ca52675402eb",
+            "0847ff11-05e5-40dc-bfbc-1300079d6410"
+          ]
+        }
+      ],
+      "selectedPathId": "f2ef5599-54fc-40b7-9e03-248393187c70"
     },
     {
       "id": "f7090d20-a341-4345-81ce-5f16809049d6",
-      "name": "811",
+      "name": "Playing Hero",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32607,7 +32552,7 @@
     },
     {
       "id": "9ba4b3f5-1ac9-4a34-af43-ef514ff27995",
-      "name": "812",
+      "name": "Slow Phone",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32648,7 +32593,7 @@
     },
     {
       "id": "6b685cda-2042-4e20-a907-8d339989b659",
-      "name": "813",
+      "name": "Obsolete",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32681,7 +32626,7 @@
     },
     {
       "id": "b08597d0-74d3-4971-81ff-78b765463bd6",
-      "name": "814",
+      "name": "Back so Soon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32714,7 +32659,7 @@
     },
     {
       "id": "f05b5113-ee48-4f63-b96e-8e09f7a0f771",
-      "name": "815",
+      "name": "Less Handsome",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -32739,7 +32684,7 @@
     },
     {
       "id": "44f939af-1f44-4f1a-b6d7-9aecd15dd3a3",
-      "name": "816",
+      "name": "Well Placed Bullet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -37658,47 +37603,6 @@
       ]
     },
     {
-      "id": "8b47f203-611c-4e19-b9b9-8dfbbe23c1e2",
-      "name": "Not a baby",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "f785e419-d4c0-4360-8438-ebac29683497",
-          "hero": "Reinhardt",
-          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
-          "voicePrefix": "",
-          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "006dab18-e4e8-402f-a3a3-84c113b26d59",
-          "hero": "Jetpack Cat",
-          "voice": "Jetpack_Cat_-_(confused_meows)_(2).ogg",
-          "voicePrefix": "",
-          "subtitles": "**confused meows**",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "53b93d5d-ca63-4fc1-a454-b516e9801b49",
-          "hero": "Mercy",
-          "voice": "Mercy_-_Reinhardt..._I_do_believe_it's__'kitten'_me_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Reinhardt… I do believe it’s “‘kitten’ me”.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "beb50dec-b911-4882-af23-5ca8d6e90cde",
-          "hero": "Reinhardt",
-          "voice": "Reinhardt_-_Don't_be_ridiculous._She's_not_a_baby!.ogg",
-          "voicePrefix": "",
-          "subtitles": "Don’t be ridiculous. She’s not a baby!",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "78c57d6f-b792-4ee6-a376-c3c4aab40ffe",
       "name": "Black cat",
       "status": "active",
@@ -40209,6 +40113,530 @@
           "voice": "Widowmaker_-_I_don't_owe_you_one.ogg",
           "voicePrefix": "",
           "subtitles": "I don't owe you one.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "78d3aad8-b2ed-4f54-a410-5bd6309b24ff",
+      "name": "High spirits",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "79336ec4-a19c-4ba4-9f0b-f89f9233937c",
+          "hero": "Ana",
+          "voice": "Ana_-_You_seem_in_high_spirits,_Reinhardt.ogg",
+          "voicePrefix": "",
+          "subtitles": "You seem in high spirits, Reinhardt.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c0a9637b-fd46-4f70-90fb-405da9893c65",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Who_wouldn't_be_after_a_date_with_the_most_amazing_woman_in_the_world_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Who wouldn't be, after a date with the most amazing woman in the world?!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5bb72c00-6a45-403d-86f6-962141c548dc",
+          "hero": "Ana",
+          "voice": "Ana_-_(laugh)_If_you're_acting_this_way_already,_I_fear_for_our_next_date.ogg",
+          "voicePrefix": "",
+          "subtitles": "**laughs** If you're acting this way already, I fear for our next date.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3c1fb472-8990-492f-893b-ad92f051e37d",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_There's_a_next_date_!_(laugh)_Wunderbar!.ogg",
+          "voicePrefix": "",
+          "subtitles": "There's a next date? Haha! Wunderbar!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "95fd85c7-7c98-4761-95d1-9250ed2e7db7",
+      "name": "Glorious day",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "44406bd5-c5bd-4a10-9b78-88e904f1530d",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_What_a_glorious_day!_The_sun_is_smiling_upon_us._Hello,_sun!.ogg",
+          "voicePrefix": "",
+          "subtitles": "What a glorious day! The sun is smiling upon us. Hello, sun!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "5f82a20a-3603-4d62-b4a4-5d02099f9a9b",
+          "hero": "Illari",
+          "voice": "Illari_-_He_knows_it_won't_say_hello_back…_right_.ogg",
+          "voicePrefix": "",
+          "subtitles": "He knows it won't say hello back, right?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "321b3205-76ab-4983-abd9-7d08bdb5df36",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Yeah!_Well..._I'm_pretty_sure,_anyway.ogg",
+          "voicePrefix": "",
+          "subtitles": "Yeah! Well, I'm pretty sure, anyway.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "81d89ed3-9ab8-42be-8393-25fe7cd41a58",
+      "name": "Poor cat",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "42f38db7-ac36-4d4f-b9e4-805d2147328e",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_How_are_the_grandkids,_Torbjörn_(1).ogg",
+          "voicePrefix": "",
+          "subtitles": "How are the grandkids, Torbjörn?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c5755035-e8d2-444b-bcda-48f69a49def7",
+          "hero": "Torbjörn",
+          "voice": "Torbjörn_-_Lucas_has_gotten_so_big,_you_wouldn't_believe_it!_The_twins_pull_him_into_all_their_pranks.ogg",
+          "voicePrefix": "",
+          "subtitles": "Lucas has gotten so big, you wouldn't believe it. **chuckles** The twins pull him into all their pranks!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "51b315a2-0b8e-400c-9a5c-6e9a60262f5a",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Oh_no._Their_poor_cat.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh, no. Their poor cat!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "ac531688-844a-4a00-865e-838d9eb4f92b",
+      "name": "Lighten Up",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "17d9f46d-b7e0-4c5a-bbac-26084adaf0fe",
+          "hero": "Illari",
+          "voice": "Illari_-_If_you're_going_to_ask_me_to_lighten_up,_save_it._I've_heard_it_enough_times.ogg",
+          "voicePrefix": "",
+          "subtitles": "If you're going to ask me to lighten up, save it. I've heard it enough times.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "58afc91c-9988-4630-b61e-03fec2422b56",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Nonsense._I_know_happiness_is_not_always_easy_to_come_by.ogg",
+          "voicePrefix": "",
+          "subtitles": "Nonsense. I know happiness is not always easy to come by.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "7d22b7c5-0bd8-423b-bade-3e32dc76592b",
+          "hero": "Illari",
+          "voice": "Illari_-_Oh._I_didn't_think_anyone_else_understood.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh, I didn't think anyone else understood.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "dd326aae-0d4d-49c7-b0d5-1852a3195845",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_We_all_have_our_battles,_my_friend._And_for_us,_every_smile_is_a_victory.ogg",
+          "voicePrefix": "",
+          "subtitles": "We all have our battles, my friend. And for us, every single is a victory.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "c849f0bd-bb7d-4e81-9a96-270ca76d8fc9",
+      "name": "Catting me",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "1671b087-60a5-440d-a830-f7aad876f885",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
+          "voicePrefix": "",
+          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8f56f5f0-c301-43c5-ae1e-5ecbaf140aa2",
+          "hero": "Jetpack Cat",
+          "voice": "Jetpack_Cat_-_(confused_meows).ogg",
+          "voicePrefix": "",
+          "subtitles": "**confused meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c4ae632c-95ae-4247-a2f7-481a39bf3a72",
+          "hero": "Mercy",
+          "voice": "Mercy_-_Reinhardt..._I_do_believe_it's__'kitten'_me_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Reinhardt... I do believe it's 'kitten' me.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b23057a2-249f-4bec-838c-f09c741ed092",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Uh..._shouldn't_it_be_kitten_me.ogg",
+          "voicePrefix": "",
+          "subtitles": "Uh... shouldn't it be 'kitten' me?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4a0e7680-be1c-410a-9c45-c4e7231e2bb7",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Trust_me._I've_already_tried.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ugh, trust me. I've already tried.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "63ff8f7d-854c-4ae8-9ead-fe3bd4cd5d76",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Don't_be_ridiculous._She's_not_a_baby!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Don't be ridiculous. She's not a baby!",
+          "render": "Heroic.png"
+        }
+      ],
+      "paths": [
+        {
+          "id": "8ce0aa8d-9ad5-49b9-b73d-b3b3a351cb01",
+          "label": "Not a baby",
+          "lineIds": [
+            "1671b087-60a5-440d-a830-f7aad876f885",
+            "8f56f5f0-c301-43c5-ae1e-5ecbaf140aa2",
+            "c4ae632c-95ae-4247-a2f7-481a39bf3a72",
+            "63ff8f7d-854c-4ae8-9ead-fe3bd4cd5d76"
+          ]
+        },
+        {
+          "id": "c21e9b1f-a0de-4601-9467-4fa02653a689",
+          "label": "Kitten Me",
+          "lineIds": [
+            "1671b087-60a5-440d-a830-f7aad876f885",
+            "8f56f5f0-c301-43c5-ae1e-5ecbaf140aa2",
+            "b23057a2-249f-4bec-838c-f09c741ed092",
+            "4a0e7680-be1c-410a-9c45-c4e7231e2bb7"
+          ]
+        }
+      ],
+      "selectedPathId": "c21e9b1f-a0de-4601-9467-4fa02653a689"
+    },
+    {
+      "id": "149e6d0e-9087-42e3-bc51-dce8281e0b40",
+      "name": "Resume",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "97efc3f5-434b-419c-b006-20936a83270e",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Mr._Wilhelm,_I'm_working_on_me_resume._What_sounds_better,_itinerant_scoundrel,_or_perspicacious_rapscallion.ogg",
+          "voicePrefix": "",
+          "subtitles": "Mr. Wilhelm, I'm working on me résumé. What sounds better: \"itinerant scoundrel,\" or \"perspicacious rapscallion\"?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ce11184e-5d8a-4cd4-a2f4-bc6c419dad2f",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Is_there_room_for_both.ogg",
+          "voicePrefix": "",
+          "subtitles": "**chuckle** Is there room for both?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "cf9b3d52-23ea-420a-afeb-e423fe337d03",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_I_knew_you_were_the_right_bloke_to_ask.ogg",
+          "voicePrefix": "",
+          "subtitles": "I *knew* you were the right bloke to ask! Haha!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "6543caff-0601-4913-93be-edda08c802ad",
+      "name": "The loud one",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "390f7b28-7d2a-4e9e-969a-989248f8977c",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_You_look_familiar._Are_you_the_loud_one.ogg",
+          "voicePrefix": "",
+          "subtitles": "You look familiar. Are you the loud one?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "f37a1a87-f45b-4e3d-b04e-608d51281638",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_No,_I_am_Reinhardt_Wilhelm!_The_one_with_the_hammer_and_shield.ogg",
+          "voicePrefix": "",
+          "subtitles": "No, I am Reinhardt Wilhelm! The one with the hammer and shield!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ac4150ff-69f2-4b9a-9059-9971476ecf66",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_But_not_the_loud_one._Sure.ogg",
+          "voicePrefix": "",
+          "subtitles": "But not the loud one. Sure.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "7be8af31-d1ef-45aa-971e-89e5c7f50648",
+      "name": "German Music",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "2f7c95ef-2e83-4aa6-ad51-7d99f9140e0e",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Hammer_man._Any_German_music_you_recommend.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hammer Man! Any German music you recommend?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "2e75dcf7-ba6f-4927-94ad-246cf2c03355",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Krankenwagen_Grün._The_best_band_of_the_2030s.ogg",
+          "voicePrefix": "",
+          "subtitles": "Krankenwagen Grün. Haha, the best band of the 2030's!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4ab94b50-4bff-4840-8217-fa54d12deaeb",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Never_heard_of_them.ogg",
+          "voicePrefix": "",
+          "subtitles": "Never heard of them.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "55a0a6a4-0a62-461a-b659-765fb4c1f621",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_What._They_defined_techno-polka._You_young_people_have_no_culture_at_all.ogg",
+          "voicePrefix": "",
+          "subtitles": "What? They defined Techno-polka! You young people have no culture at all.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "4ac58f9c-a525-4dcf-b651-e645d74cafd2",
+      "name": "Love Stories",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "739c5ac4-ab53-44e5-8a85-604c28c68dfc",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_How_are_the_grandkids,_Torbjörn.ogg",
+          "voicePrefix": "",
+          "subtitles": "How are the grandkids, Torbjörn?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e1fa3f02-fe11-4de0-8d0b-1068ade7ef11",
+          "hero": "Torbjörn",
+          "voice": "Torbjörn_-_Märta_just_finished_another_vampire_manuscript._I’m_supposed_to_read_it,_but…_well,_you_know.ogg",
+          "voicePrefix": "",
+          "subtitles": "Märta just finished another vampire manuscript. I'm supposed to read it, but... well, you know.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "3a24f7ad-56aa-49f6-85d0-fd169e3169d6",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_What!_I_love_her_stories!_Send_it_to_me.ogg",
+          "voicePrefix": "",
+          "subtitles": "What? I love her stories! Send it to *me!*",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "f2407a3c-545b-4823-85eb-008e09813824",
+      "name": "Medieval times",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "8e618d20-c88a-43b1-bd7a-8803d40413e0",
+          "hero": "Venture",
+          "voice": "Venture_-_Do_you_ever_wish_you_were_back_in_medieval_times.ogg",
+          "voicePrefix": "",
+          "subtitles": "Do you ever wish you were back in medieval times?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "222fd3eb-7fec-4ead-ab15-5776bbc5f224",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_A_true_knight's_valor_is_timeless,_little_historian._The_world_needs_us_now.ogg",
+          "voicePrefix": "",
+          "subtitles": "A true knight's valor is timeless, little historian. The world needs us now.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "bbc26caf-adcb-495e-b2ae-f0db56c86244",
+          "hero": "Venture",
+          "voice": "Venture_-_Yeah,_cool!_But_imagine_living_in_a_castle,_though.ogg",
+          "voicePrefix": "",
+          "subtitles": "Yeah, cool. **pause** ...But imagine living in a castle, though!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "92dc27fe-8512-4e1c-a789-60c62e7fe7fa",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_I_suppose_that_does_sound_tempting.ogg",
+          "voicePrefix": "",
+          "subtitles": "**laughs** I suppose that does sound tempting!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "66d77b56-dfa0-418d-92a8-5bc47668914c",
+      "name": "Forever changed",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "00691cdb-128e-4cfa-9c9b-d55f49d740e0",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_My_life_was_forever_changed_in_this_place._It_pains_me_to_see_it_forgotten.ogg",
+          "voicePrefix": "",
+          "subtitles": "My life was forever changed in this place. It pains me to see it forgotten.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6d9fa157-a427-4301-9803-55efaece02c1",
+          "hero": "Venture",
+          "voice": "Venture_-_Will_you_tell_me_what_happened_here._I'll_always_remember--promise.ogg",
+          "voicePrefix": "",
+          "subtitles": "Will you tell me what happened here? I'll always remember--promise!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c99277c9-bf04-45a3-9f8c-699f0ff7c55d",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_It_would_be_an_honor,_my_friend.ogg",
+          "voicePrefix": "",
+          "subtitles": "It would be an honor, my friend.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "eb7a8eb3-c461-457a-ba01-146989a006db",
+      "name": "Kitten me",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "df7c3157-471c-4656-84a8-62bff3075eb9",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
+          "voicePrefix": "",
+          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "7af364e5-77b9-45e0-b5d5-6c4ee9f0a53f",
+          "hero": "Jetpack Cat",
+          "voice": "Jetpack_Cat_-_(confused_meows).ogg",
+          "voicePrefix": "",
+          "subtitles": "**confused meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "db638dba-98b2-459d-9971-fbdd4f00a22c",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Uh..._shouldn't_it_be__kitten_me_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Shouldn't it be “‘kitten’ me”?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c4ad1900-cc20-4809-a2e0-11b14762772e",
+          "hero": "Brigitte",
+          "voice": "Brigitte_-_Trust_me._I've_already_tried.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ugh... trust me. I've already tried.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8b47f203-611c-4e19-b9b9-8dfbbe23c1e2",
+      "name": "Not a baby",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "f785e419-d4c0-4360-8438-ebac29683497",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_A_cat__In_a_jetpack_!_(laugh)_You've_got_to_be__catting__me!_(laugh).ogg",
+          "voicePrefix": "",
+          "subtitles": "A cat? In a jetpack?! **laugh** You’ve got to be catting me! **laugh**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "006dab18-e4e8-402f-a3a3-84c113b26d59",
+          "hero": "Jetpack Cat",
+          "voice": "Jetpack_Cat_-_(confused_meows)_(2).ogg",
+          "voicePrefix": "",
+          "subtitles": "**confused meows**",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "53b93d5d-ca63-4fc1-a454-b516e9801b49",
+          "hero": "Mercy",
+          "voice": "Mercy_-_Reinhardt..._I_do_believe_it's__'kitten'_me_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Reinhardt… I do believe it’s “‘kitten’ me”.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "beb50dec-b911-4882-af23-5ca8d6e90cde",
+          "hero": "Reinhardt",
+          "voice": "Reinhardt_-_Don't_be_ridiculous._She's_not_a_baby!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Don’t be ridiculous. She’s not a baby!",
           "render": "Heroic.png"
         }
       ]

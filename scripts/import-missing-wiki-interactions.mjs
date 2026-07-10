@@ -167,7 +167,9 @@ const MULTI_ROUTE_OPENING_RULES = [
     { needle: 'favorite animal', names: ['Favorite Animals'] },
     { needle: 'chicken cross the road', names: ['To Stagnate is to Die'] },
     { needle: 'periodic table', names: ['Periodic Table'] },
-    { needle: 'tripped over your sword in training', names: ['233'] },
+    { needle: 'tripped over your sword in training', names: ['Tripped over your sword', '233'] },
+    { needle: 'before the crisis', names: ['Before the Crisis'] },
+    { needle: 'cat? in a jetpack', names: ['Catting me'] },
 ];
 
 /**
