@@ -170,6 +170,10 @@ const MULTI_ROUTE_OPENING_RULES = [
     { needle: 'tripped over your sword in training', names: ['Tripped over your sword', '233'] },
     { needle: 'before the crisis', names: ['Before the Crisis'] },
     { needle: 'cat? in a jetpack', names: ['Catting me'] },
+    { needle: 'inquiry is unnecessary', names: ['Inquiry', '702'] },
+    { needle: 'rather quiet today, doctor', names: ['Rather Quiet'] },
+    { needle: 'thrills me to put aside', names: ['Brilliant inquiries', '744'] },
+    { needle: 'know that one knows nothing', names: ['Brilliant inquiries', '744'] },
 ];
 
 /**

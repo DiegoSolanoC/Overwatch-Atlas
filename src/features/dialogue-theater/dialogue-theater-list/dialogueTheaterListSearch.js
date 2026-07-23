@@ -16,6 +16,7 @@ export function conversationMatchesListSearch(conversation, query) {
 
     const qLower = q.toLowerCase();
     if (String(conversation?.name || '').toLowerCase().includes(qLower)) return true;
+    if (String(conversation?.eraName || '').toLowerCase().includes(qLower)) return true;
 
     const normalizedQuery = normalizeSubtitlesForMatch(q);
     const strippedQuery = stripDialogueSubtitleMarkup(q).toLowerCase();

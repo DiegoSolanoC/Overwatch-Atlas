@@ -38,6 +38,10 @@ import {
 import { getActiveDialogueTheaterCharacterFilters } from './dialogueTheaterActiveCharacterFilters.js';
 import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
 import { conversationMatchesListSearch } from './dialogueTheaterListSearch.js';
+import {
+    collectDialogueTheaterEraFilterOptions,
+    conversationMatchesEraFilter,
+} from './dialogueTheaterEraFilter.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
 const SAVE_BTN_ID = 'dialogueTheaterSaveBtn';
@@ -47,6 +51,12 @@ let onListChange = null;
 
 /** @type {string} */
 let searchQuery = '';
+
+/** @type {string} */
+let eraFilter = '';
+
+/** @type {boolean} */
+let incompleteFirst = false;
 
 /** @type {{ getPairA: () => string, getPairB: () => string, refreshSpeakerOptions?: () => void }|null} */
 let pairSearchControls = null;
@@ -128,7 +138,25 @@ function getFilteredConversations() {
         rows = rows.filter((row) => conversationMatchesListSearch(row, q));
     }
 
-    return [...rows].sort(compareConversationListOrder);
+    if (eraFilter.trim()) {
+        rows = rows.filter((row) => conversationMatchesEraFilter(row, eraFilter));
+    }
+
+    const sorted = [...rows].sort(compareConversationListOrder);
+    if (!incompleteFirst) return sorted;
+
+    const voicelines = listThumbAssets?.voicelines || [];
+    const duplicates =
+        duplicateLookupCache ||
+        buildConversationDuplicateLookup(dialogueTheaterDataService.conversations);
+    duplicateLookupCache = duplicates;
+
+    return sorted.sort((a, b) => {
+        const aUnfinished = conversationHasUnfinishedIssues(a, voicelines, duplicates) ? 0 : 1;
+        const bUnfinished = conversationHasUnfinishedIssues(b, voicelines, duplicates) ? 0 : 1;
+        if (aUnfinished !== bUnfinished) return aUnfinished - bUnfinished;
+        return 0;
+    });
 }
 
 /** @param {string} value */
@@ -147,6 +175,7 @@ function escapeHtml(value) {
  */
 function buildConversationThumb(row, duplicateLookup, conversations) {
     const name = row.name || 'Untitled conversation';
+    const eraLabel = String(row.eraName || '').trim();
     const voicelines = listThumbAssets?.voicelines || [];
     const isUnfinished = conversationHasUnfinishedIssues(row, voicelines, duplicateLookup);
     const unfinishedSummary = isUnfinished
@@ -154,6 +183,7 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
         : '';
     const duplicateSummary = conversationDuplicateSummary(row.id, duplicateLookup, conversations);
     const tooltipParts = [name];
+    if (eraLabel) tooltipParts.push(eraLabel);
     if (unfinishedSummary) tooltipParts.push(unfinishedSummary);
     if (duplicateSummary) tooltipParts.push(duplicateSummary);
     const imageHtml = buildDialogueTheaterListThumbMediaHtml(
@@ -174,6 +204,7 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
                 <div class="event-item__thumb-titlebar">
                     <div class="event-item-heading">
                         <h3 class="event-item-title">${escapeHtml(name)}</h3>
+                        ${eraLabel ? `<p class="event-item-era dialogue-theater-list__era-tag">${escapeHtml(eraLabel)}</p>` : ''}
                     </div>
                 </div>
             </div>
@@ -363,6 +394,63 @@ function wireSearch(root) {
         searchQuery = searchInput instanceof HTMLInputElement ? searchInput.value : '';
         scheduleRenderList(root);
     });
+
+    const eraSelect = root.querySelector('#dialogueTheaterEraFilter');
+    eraSelect?.addEventListener('change', () => {
+        eraFilter = eraSelect instanceof HTMLSelectElement ? eraSelect.value : '';
+        scheduleRenderList(root);
+    });
+
+    const incompleteBtn = root.querySelector('#dialogueTheaterIncompleteFirstBtn');
+    if (incompleteBtn instanceof HTMLButtonElement) {
+        const storageKey = 'dialogueTheaterIncompleteFirst';
+        try {
+            incompleteFirst = localStorage.getItem(storageKey) === '1';
+        } catch (_) {
+            incompleteFirst = false;
+        }
+        incompleteBtn.setAttribute('aria-pressed', incompleteFirst ? 'true' : 'false');
+        incompleteBtn.classList.toggle('is-active', incompleteFirst);
+
+        incompleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            incompleteFirst = !incompleteFirst;
+            incompleteBtn.setAttribute('aria-pressed', incompleteFirst ? 'true' : 'false');
+            incompleteBtn.classList.toggle('is-active', incompleteFirst);
+            try {
+                localStorage.setItem(storageKey, incompleteFirst ? '1' : '0');
+            } catch (_) {}
+            scheduleRenderList(root);
+        });
+    }
+}
+
+/**
+ * Keep the era filter dropdown in sync with conversation tags.
+ * @param {HTMLElement} root
+ */
+function refreshEraFilterOptions(root) {
+    const eraSelect = root.querySelector('#dialogueTheaterEraFilter');
+    if (!(eraSelect instanceof HTMLSelectElement)) return;
+
+    const previous = eraFilter || eraSelect.value || '';
+    const eras = collectDialogueTheaterEraFilterOptions(dialogueTheaterDataService.conversations);
+    const options = [
+        `<option value="">All eras / tags</option>`,
+        `<option value="__untagged__">Untagged only</option>`,
+        ...eras.map((era) => `<option value="${escapeHtml(era)}">${escapeHtml(era)}</option>`),
+    ];
+    eraSelect.innerHTML = options.join('');
+    if (
+        previous
+        && [...eraSelect.options].some((opt) => opt.value === previous)
+    ) {
+        eraSelect.value = previous;
+        eraFilter = previous;
+    } else {
+        eraSelect.value = '';
+        eraFilter = '';
+    }
 }
 
 /**
@@ -466,6 +554,24 @@ export async function mountDialogueTheaterListView(container) {
                                 </div>
                             </div>
                         </div>
+                        <div class="events-manage-search-row events-manage-search-row--secondary dialogue-theater-era-filter-row">
+                            <div class="dialogue-theater-era-filter">
+                                <label for="dialogueTheaterEraFilter" class="events-search-label">Era / tag:</label>
+                                <div class="dialogue-theater-era-filter__controls">
+                                    <select id="dialogueTheaterEraFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter conversations by era or tag">
+                                        <option value="">All eras / tags</option>
+                                        <option value="__untagged__">Untagged only</option>
+                                    </select>
+                                    <button
+                                        type="button"
+                                        id="dialogueTheaterIncompleteFirstBtn"
+                                        class="dialogue-theater-incomplete-first-btn"
+                                        aria-pressed="false"
+                                        title="Show unfinished (red border) conversations first"
+                                    >Incomplete first</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="dialogueTheaterList" class="events-list" role="list"></div>
@@ -489,11 +595,13 @@ export async function mountDialogueTheaterListView(container) {
     }
 
     searchQuery = '';
+    eraFilter = '';
     pairSearchControls = null;
     invalidateListCaches({ fullRebuild: true });
     onListChange = () => {
         invalidateListCaches({ fullRebuild: true });
         pairSearchControls?.refreshSpeakerOptions?.();
+        refreshEraFilterOptions(container);
         scheduleRenderList(container);
     };
     setDialogueTheaterInfoPanelListRefresh(onListChange);
@@ -502,6 +610,7 @@ export async function mountDialogueTheaterListView(container) {
 
     await dialogueTheaterDataService.load();
     listThumbAssets = await loadDialogueTheaterAssets();
+    refreshEraFilterOptions(container);
     pairSearchControls = await wireDialogueTheaterPairSearch(container, {
         getConversations: () => dialogueTheaterDataService.conversations,
         onChange: () => scheduleRenderList(container),
@@ -534,6 +643,8 @@ export function unmountDialogueTheaterListView(container) {
     setDialogueTheaterInfoPanelListRefresh(null);
     onListChange = null;
     searchQuery = '';
+    eraFilter = '';
+    incompleteFirst = false;
     pairSearchControls = null;
     listThumbAssets = null;
     invalidateListCaches();

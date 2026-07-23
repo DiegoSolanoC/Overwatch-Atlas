@@ -10,7 +10,7 @@ import {
     buildBlankConversationRecord,
     normalizeConversationRecord,
 } from './dialogueTheaterConversationSchema.js';
-import { nextConversationNumber, isNumberedConversationName } from './dialogueTheaterConversationValidation.js';
+import { nextConversationNumber, isNumberedConversationName, isUnknownDialogueHero } from './dialogueTheaterConversationValidation.js';
 import {
     applyHeroicRendersToConversations,
     loadDialogueTheaterAssets,
@@ -18,11 +18,13 @@ import {
     shouldUpgradeDialogueLineRender,
 } from './loadDialogueTheaterAssets.js';
 import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
+import { DIALOGUE_THEATER_RETIRED_WORKING_TAGS } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
 export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
 export const DIALOGUE_THEATER_NAME_RESET_KEY = 'dialogueTheaterNameResetAt';
 const FILE_URL = FILES.dialogueTheater.conversations;
+const RETIRED_WORKING_TAGS = new Set(DIALOGUE_THEATER_RETIRED_WORKING_TAGS);
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
 
 /** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
@@ -167,8 +169,57 @@ class DialogueTheaterDataService {
 
                 const filePaths = Array.isArray(fileRow.paths) ? fileRow.paths : [];
                 const localPaths = Array.isArray(localRow.paths) ? localRow.paths : [];
+                const localEra = String(localRow.eraName || '').trim();
+                const fileEra = String(fileRow.eraName || '').trim();
+                // Finalized YouTube batches: file wins so untagging + line fixes beat stale localStorage.
+                const retireLocalWorkingTag =
+                    RETIRED_WORKING_TAGS.has(localEra) && !RETIRED_WORKING_TAGS.has(fileEra);
 
-                if (localPaths.length > 0) {
+                if (retireLocalWorkingTag) {
+                    picked = {
+                        ...fileRow,
+                        selectedPathId:
+                            fileRow.selectedPathId ||
+                            (filePaths[0] && filePaths[0].id) ||
+                            '',
+                    };
+                } else if (localPaths.length > 0 && filePaths.length > 0) {
+                    const localLineIds = new Set(
+                        (Array.isArray(localRow.lines) ? localRow.lines : []).map((line) => line.id),
+                    );
+                    const fileIntroducesLines = filePaths.some((pathRow) =>
+                        (Array.isArray(pathRow.lineIds) ? pathRow.lineIds : []).some(
+                            (lineId) => lineId && !localLineIds.has(lineId),
+                        ),
+                    );
+                    const localHasUnknown = (Array.isArray(localRow.lines) ? localRow.lines : []).some(
+                        (line) => isUnknownDialogueHero(line?.hero),
+                    );
+                    const fileHasUnknown = (Array.isArray(fileRow.lines) ? fileRow.lines : []).some(
+                        (line) => isUnknownDialogueHero(line?.hero),
+                    );
+                    // Script repairs that split/rebuild multipaths (new line ids, Unknown cleanup).
+                    if (fileIntroducesLines || (localHasUnknown && !fileHasUnknown)) {
+                        picked = {
+                            ...fileRow,
+                            selectedPathId:
+                                fileRow.selectedPathId ||
+                                (filePaths[0] && filePaths[0].id) ||
+                                '',
+                        };
+                    } else {
+                        const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
+                        picked = {
+                            ...picked,
+                            lines: localRow.lines,
+                            paths: localPaths,
+                            selectedPathId:
+                                localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                                    ? localRow.selectedPathId
+                                    : localPaths[0]?.id || '',
+                        };
+                    }
+                } else if (localPaths.length > 0) {
                     // Saved local route edits win over the bundled file (manual path/line tuning).
                     const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
                     picked = {
@@ -266,7 +317,7 @@ class DialogueTheaterDataService {
         this.loadDeletedConversationIds();
 
         let fileRows = null;
-        /** @type {{ nameResetAt?: string }} */
+        /** @type {{ nameResetAt?: string, purgedConversationIds?: string[] }} */
         let fileMeta = {};
         try {
             const data = await fetchJsonWithTimeout(FILE_URL);
@@ -281,6 +332,15 @@ class DialogueTheaterDataService {
             fileRows = [];
         }
 
+        const purgedIds = new Set(
+            (Array.isArray(fileMeta.purgedConversationIds) ? fileMeta.purgedConversationIds : [])
+                .map((id) => String(id || '').trim())
+                .filter(Boolean),
+        );
+        for (const id of purgedIds) {
+            this.deletedConversationIds.add(id);
+        }
+
         const fileResetAt = String(fileMeta.nameResetAt || '').trim();
         const seenResetAt = localStorage.getItem(DIALOGUE_THEATER_NAME_RESET_KEY) || '';
         const applyFileNames = Boolean(fileResetAt && fileResetAt !== seenResetAt);
@@ -292,7 +352,9 @@ class DialogueTheaterDataService {
             if (saved) {
                 const parsed = JSON.parse(saved);
                 if (Array.isArray(parsed)) {
-                    localNormalized = this.normalizeConversations(parsed);
+                    localNormalized = this.normalizeConversations(parsed).filter(
+                        (row) => !purgedIds.has(row.id),
+                    );
                 }
             }
         } catch (err) {

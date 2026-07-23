@@ -9,8 +9,11 @@ import {
     updateDialogueTheaterStageActiveLine,
     PANEL_DIALOGUE_BOX_HTML,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
-import { DOCK_ERA_MENU_OPTIONS } from '../../system-interface/interface-bottom-dock/dockEraTimelineFilter.js';
 import { applyEraNameToEvent } from '../../system-interface/interface-left-panel/event-system/edit/timelineFormParsing.js';
+import {
+    DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS,
+    DIALOGUE_THEATER_WORKING_TAG_OPTIONS,
+} from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import {
     clearDialogueTheaterAssetsCache,
     heroFilterIconUrl,
@@ -84,7 +87,10 @@ import {
 } from '../data/theaterVoicelineParsing.js';
 
 const HOST_ID = 'dialogueTheaterEditHost';
-const ERA_OPTIONS = DOCK_ERA_MENU_OPTIONS.filter((o) => o.id !== 'complete');
+const ERA_OPTIONS = [
+    ...DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS.map((label) => ({ label })),
+    ...DIALOGUE_THEATER_WORKING_TAG_OPTIONS.map((label) => ({ label })),
+];
 
 /** @type {string[]} */
 let heroOptions = [];
@@ -1451,7 +1457,14 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
         statusEl.value = conversation.status === 'outdated' ? 'outdated' : 'active';
     }
     if (eraEl instanceof HTMLSelectElement) {
-        eraEl.value = conversation.eraName || '';
+        const currentEra = String(conversation.eraName || '').trim();
+        if (currentEra && ![...eraEl.options].some((opt) => opt.value === currentEra)) {
+            const opt = document.createElement('option');
+            opt.value = currentEra;
+            opt.textContent = currentEra;
+            eraEl.appendChild(opt);
+        }
+        eraEl.value = currentEra;
     }
 
     const sceneGrid = host.querySelector('#dialogueTheaterSceneGrid');

@@ -43,6 +43,7 @@ const SUBTITLE_SFX_TO_FOLDER = {
     'disappointed meows': '(disappointed meows)',
     'contented purrs': '(contented meowing)',
     'questioning meows': '(questioning meows)',
+    'question meows': '(questioning meows)',
     'doubtful meows': '(doubtful meows)',
     'panicked meows': '(cat sounds)',
     'understanding meows': '(agreeing meows)',
@@ -51,9 +52,13 @@ const SUBTITLE_SFX_TO_FOLDER = {
     'angry hiss': '(angry hiss)',
     hiss: '(hisses)',
     'eager meows': '(eager meows)',
+    'eager meowing': '(eager meowing)',
     'enthusiastic meows': '(enthusiastic meows)',
+    'enthusiastic meow': '(enthusiastic meows)',
     'affirmative meows': '(affirmative meows)',
+    'affirmative meow': '(affirmative meows)',
     'agreeing meows': '(agreeing meows)',
+    'agreeing meow': '(agreeing meows)',
     'placated meows': '(placated meows)',
 };
 
@@ -82,14 +87,25 @@ function folderLabelToAtlasFilename(folderLabel, variantIndex = 0) {
  */
 function resolveFolderLabel(subtitles) {
     const raw = String(subtitles || '').trim();
-    const sfxMatch = raw.match(/^\*\*([^*]+)\*\*/);
-    if (sfxMatch) {
-        const key = sfxMatch[1].trim().toLowerCase();
+    const boldMatch = raw.match(/^\*\*([^*]+)\*\*/);
+    if (boldMatch) {
+        const key = boldMatch[1].trim().toLowerCase();
         if (SUBTITLE_SFX_TO_FOLDER[key]) return SUBTITLE_SFX_TO_FOLDER[key];
+    }
+
+    const italicParenMatch = raw.match(/^\*\(([^)]+)\)\*$/);
+    if (italicParenMatch) {
+        const key = italicParenMatch[1].trim().toLowerCase();
+        if (SUBTITLE_SFX_TO_FOLDER[key]) return SUBTITLE_SFX_TO_FOLDER[key];
+        return `(${key})`;
     }
 
     const plain = stripDialogueSubtitleMarkup(raw).trim().toLowerCase();
     if (PLAIN_TEXT_TO_FOLDER[plain]) return PLAIN_TEXT_TO_FOLDER[plain];
+    if (SUBTITLE_SFX_TO_FOLDER[plain]) return SUBTITLE_SFX_TO_FOLDER[plain];
+    if (/^\([^)]+\)$/.test(plain) && SUBTITLE_SFX_TO_FOLDER[plain.slice(1, -1)]) {
+        return SUBTITLE_SFX_TO_FOLDER[plain.slice(1, -1)];
+    }
 
     return '';
 }
