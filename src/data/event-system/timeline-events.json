@@ -1636,6 +1636,27 @@
       ]
     },
     {
+      "name": "Responsability",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 0,
+      "lon": 0,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2040,
+      "yearEnd": 2050,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Upgrades",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
@@ -4759,6 +4780,13 @@
       "yearEnd": null,
       "eraName": "The Omnic Crisis",
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "",
+          "lat": 30.0444,
+          "lon": 31.2357
+        },
         {
           "locationName": "Lagos, Nigeria",
           "country": "Nigeria",
@@ -8218,6 +8246,29 @@
           "reasoning": "Works with the local government to give Omnics a Home"
         }
       ]
+    },
+    {
+      "name": "Luxuries",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2060,
+      "yearEnd": 2066,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Subject Sigma",
@@ -12899,7 +12950,7 @@
       "name": "Game On",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "No description available.",
+      "description": "The Exo Force Drones were able to hold back the Gwishin for a couple of years, but in due time, the Colossus adapted once more and began to disrupt the control networks. Without being able to control them remotely, the Korean Army was forced to come up with a new solution. The need to keep up with Gwishin adaptation led Dr. Lim to a similar solution to this familiar problem. Replacing the drones with reconfigurable mechs, inspired by Russia's resurgent Svyatogor technology. With these, a small task force of human pilots would be able to keep the war bots at bay with on-the fly improvisation and ever-changing equipment. Initial testing led to mixed results, with many dead and injured pilots. But when the team began to study the pilots that stood out from the rest, a common pattern became apparent, they were all avid video game players.\n\nThe controls of the Exo-Force mechs were not unlike those of most online shooters in the country, and their studies showed that professional players showed impressive reflexes and quick decision-making. The Korean Army decided to draft top talent from the Esports scene and similar fields with overlapping abilities. Mecha Guardian V champions Hana Song and Yuna Lee as well as their main rival, Kyung-soo Han. Seung-hwa Shi, a young analytical support specialist, and Jae-eun Kwon, a former F1 racer. \n\nTogether, under the command of Captain Myung, they formed the current iteration of the MEKA squad, and finally granted Korea a consistent upper hand against the Gwishin. Their efficiency granted the team many liberties, and in concession to their professional backgrounds, they were allowed to customize the look of their uniforms and mechs to match their personal branding, using their professional name tags within battle and even allowing them to broadcast operations live from within the mech. While many of these broke military protocol, it allowed a massive boost in the program's popularity and opened the door to a massive propaganda machine, including several sponsors and movie deals for the different pilots.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -12919,20 +12970,20 @@
         {
           "locationName": "Busan, South Korea",
           "country": "South Korea",
-          "reasoning": ""
+          "reasoning": "MEKA drafts professional gamers into their mech program"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "D.va",
-          "reasoning": ""
+          "reasoning": "Drafted into the Korean Army due to her gaming expertise"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "MEKA",
+          "country": "M.E.K.A Squad,",
           "reasoning": ""
         },
         {
@@ -12946,29 +12997,32 @@
         {
           "locationName": "",
           "country": "D.mon, King, Overlord,",
-          "reasoning": ""
+          "reasoning": "Drafted into the Korean army due to Gamer expertise"
         },
         {
           "locationName": "",
           "country": "Casino,",
-          "reasoning": ""
+          "reasoning": "Drafted into the Korean army due to F1 expertise"
         },
         {
           "locationName": "",
           "country": "Myung,",
-          "reasoning": ""
+          "reasoning": "Captain of the new MEKKA Squad"
         },
         {
           "locationName": "",
           "country": "Dae-Hyun,",
-          "reasoning": ""
+          "reasoning": "Drafted into the Korean army to work as a mechanic"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Esports players drafted into experimental government program",
+        "New MEKA Squad stops the Gwishin Colossus from reaching Busan"
+      ]
     },
     {
       "name": "Neighborhood Hero",
-      "description": "No description available.",
+      "description": "Even the top agents of Overwatch were shoved under the rug after the Petra's Act. Tracer was one of the cleanest, most beloved agents the organization had ever seen, and yet upon returning home she went from the face of the strike team, to a dull desk job at the RAF, a position she later learned was meant to be an intentional demotion.\n\nUnsatisfied with the quiet life and lack of heroism in spite of the resume and abilities, she quit the military and began a new life with her new girlfriend, Emily, at an apartment in Wilmington Road. While she was happy with her new life and partner, complementing each other greatly and spending their nights playing long tabletop campaigns, she was only mostly happy. In reality, she still felt aimless without Overwatch, missing those days when she was making a difference. It didn't take long before she found herself on the move, becoming a local vigilante, righting wrongs wherever she still could, stopping thieves and helping the locals in their daily chores whenever the opportunity presented itself. Emily herself supported her activities, seeing them as compensatory heroics, but deep down she only wished for her love to be truly happy once more.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -12980,12 +13034,15 @@
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": "",
+          "reasoning": "Lena leaves her job in the RAF  to become a vigilante",
           "lat": 51.5074456,
           "lon": -0.1277653
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Tracer seen helping local police in London in spite of Petra's accords",
+        "Tensions rising in the Brittish Underworld with Omnics rioting in the streets"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Tracer",
@@ -13004,14 +13061,14 @@
         {
           "locationName": "",
           "country": "Tracer,",
-          "reasoning": ""
+          "reasoning": "Becomes a neighborhood hero"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Emily,",
-          "reasoning": ""
+          "reasoning": "Lena's new girlfrien"
         }
       ],
       "yearStart": 2070
@@ -13020,7 +13077,7 @@
       "name": "Vanadium Strand",
       "locationType": "earth",
       "cityDisplayName": "Petra, Jordan",
-      "description": "No description available.",
+      "description": "During an excavation in Petra, Jordan, the Wayfinders found what appeared to be a small vein of an unidentified vanadium isotope, completely undecayed and in a condition not seen outside a laboratory. This was a rare enough find, but it's unique phase-shifting reactions made it extremely indestructible when solidified, and got in the way of the digging expedition.\n\nThe Oasis Ministries struck a deal with Dr. Faisal of the Wayfinders, to transfer the material to the University for further research. The head of the Ministry of Geology, Al-Shahrani was currently out studying seismic activity in the Red Sea, so the Vanadium instead found itself a temporary home in the Ministry of Genetics, at Dr. O'Deorain's request. Moira studied the vanadium ferrofluid for years, testing it's applications in medical trials and as an energy source, but this often put her at odds with the Ministry of Geology, which was set back way behind schedule by Moira's insistence to keep the cache.",
       "image": "",
       "lat": 30.3258363,
       "lon": 35.4745669,
@@ -13031,34 +13088,37 @@
         {
           "locationName": "Petra, Jordan",
           "country": "Jordan",
-          "reasoning": ""
+          "reasoning": "A rare Vanadium Cache is found in Petra"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Moira",
-          "reasoning": ""
+          "reasoning": "Left in charge of the Vanadium"
         },
         {
           "locationName": "",
           "country": "Hazard,",
-          "reasoning": ""
+          "reasoning": "Future user of the Vanadium"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Oasis Ministries,",
-          "reasoning": ""
+          "reasoning": "Take care of the Vanadium"
         },
         {
           "locationName": "",
           "country": "Wayfinder Society,",
-          "reasoning": ""
+          "reasoning": "Found a Vanadium Cache"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Wayfinder digiste finds rare Vanadium isotope",
+        "Oasis University to take case of the Vanadium cache"
+      ],
       "sources": [
         {
           "text": "Field Report: Native Vanadium Cache",
@@ -13070,7 +13130,7 @@
       "name": "Bounty Hunter",
       "locationType": "earth",
       "cityDisplayName": "Copenhagen, Denmark",
-      "description": "No description available.",
+      "description": "Overwatch agents all over the world found themselves blacklisted from almost every single field. It did not matter how many years of service they had done or their accomplishments outside the organization, for most of them, just being associated with Overwatch was enough reason to turn down an application. This reality hit Freja particularly hard, as she dedicated her life to Overwatch, measuring herself by the increasingly difficult missions she had grown used to. Without being able to find a job again and after facing constant rejection, her self-worth disappeared overnight.\n\nThat was until a local police department posted about a set of criminals on the loose, which finally made Freja realize that she could still be of use in this new era, just not under search and rescue. Freja began to take bounties in the criminal underworld of Denmark, starting with small jobs to track down and capture criminals behind the back of the law.\n\nOver time, however, this became a full-time compulsion as she began to take bigger, riskier jobs yet again. While at first she limited herself to rescues and taking down criminals, as the money flew in and the rejected applications kept rolling, morality soon became irrelevant, and she continued to chase down bigger fish. She took on the pseudonym of Gefn to protect herself from her feelings towards dubious clientele, and as her notoriety grew, so did her fee. It may not be honest work, but that mattered little anymore. The world turned their backs on Freja, so she carved a new path as one of the most efficient bounty hunters in the whole world.",
       "image": "",
       "lat": 55.6867243,
       "lon": 12.5700724,
@@ -13081,17 +13141,20 @@
         {
           "locationName": "Copenhagen, Denmark",
           "country": "Denmark",
-          "reasoning": ""
+          "reasoning": "Freja takes on bounties of local criminals"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Freja",
-          "reasoning": ""
+          "reasoning": "Becomes an infamous bounty hunder under the name of Gefn"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Criminals delivered to the Polic office in Denmark by annonymous stranger",
+        "Rumors of an underworld bounty hunter market grow in Europe"
+      ],
       "sources": [
         {
           "text": "Storm Chaser",
@@ -13107,7 +13170,7 @@
       "name": "Legend of the Junker Queen",
       "locationType": "earth",
       "cityDisplayName": "Outback Wasteland, Australia",
-      "description": "No description available.",
+      "description": "Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.\n\nHaving grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. For years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.",
       "image": "",
       "lat": -20.7274568,
       "lon": 139.49896,
@@ -13118,28 +13181,43 @@
         {
           "locationName": "Outback Wasteland, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Junkers begi nto systematically take down Feral Omnics"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Junker Queen",
-          "reasoning": ""
+          "reasoning": "Begins an extermination Campaign against Feral Omnics"
+        },
+        {
+          "locationName": "",
+          "country": "Wrecking Ball,",
+          "reasoning": "Follows the Queen in her incursions against Omnics"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Junker Monarchy,",
-          "reasoning": ""
+          "reasoning": "Seeks to expand the territory they control in the Outback"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Massive Omnic Amalgams are spotted near the Outback",
+        "Junker Caravans begin to assult small villages further away from the wasteland"
+      ],
       "sources": [
         {
           "text": "Junker Queen Origin Story",
           "url": "https://www.youtube.com/watch?v=xxtB_MJrycs"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Meri, Geiger,",
+          "reasoning": "Follow the Queen in her Incursions against Omnics"
         }
       ]
     },
@@ -13147,7 +13225,7 @@
       "name": "Fire Star",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "No description available.",
+      "description": "Through many years of training, Ye Anran had become quite the name in competitive dancing and martial arts, but as she grew older, her studies encouraged her to make a choice between her disciplines. Living up to family expectations, Anran was accepted into Wuxing University's Fire College, and announced an early retirement from professional dancing to focus on her Wushu studies instead.\n\nAs a Fire College student, she quickly rose to become the star of her class. Wuxing's program trained the future military tacticians of China through the lenses of martial arts and ancient philosophy, so Anran's strict regimes and dedication sent her right to the top. This extraordinary competence, however, made her quite intimidating to most of her classmates, because while she was an undeniable role model, her harsh, blunt constructive criticism was tough to swallow for most, especially her little brother Wuyang, who was set to join her in Fire College only a couple of years later. Still, anyone brave enough to withstand the fire from her words, quickly found themselves improving alongside her, so even as a first year, Anran was the undeniable star student of Wuxing, making her parents proud.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -13158,24 +13236,26 @@
         {
           "locationName": "Chengdu, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Anran gets accepted into Fire College"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Anran",
-          "reasoning": ""
+          "reasoning": "Retires from Dance to focus on her Studies"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Wuxing University",
-          "reasoning": ""
+          "reasoning": "Fire students who study with Anran begi nto rise to the top"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Meet the next generation of Wuxing's Fire College"
+      ],
       "sources": [
         {
           "text": "Against the Tide",
@@ -13191,7 +13271,7 @@
       "name": "Train Hopper",
       "locationType": "earth",
       "cityDisplayName": "Houston, United States",
-      "description": "No description available.",
+      "description": "Cassidy had fallen far from Overwatch following Petra's accords. Over the years since Venice, he has grown to question his role in Overwatch, if they ever did enough good to outweigh the bad, or if Reyes merely turned him into a weapon for his own crusade instead. He figured Deadlock would want nothing to do with him anyway after signing up to be a part of Overwatch, and for as much as he felt out of place with the good guys, he would not even consider Talon as an option. So, instead, much like Freja, he became a gun for hire, fighting causes he believed were just to get by.\n\nHe made many enemies during his many jobs and often landed in local jail cells, eventually losing his left arm, though the story behind this is still unknown. During those outlaw days, he would also meet Sombra at a bar down in Mexico and use her as a way to gather Intel on jobs, like many other lost souls tended to do when they spend long enough in the shadows. He didn't stay in the same place for long, often hopping from one train to another to move across the States. While resting on a ride on a Houston-bound Hyperloop, he saw a Talon squadron attempting to take over the train. The Gunslinger noticed the troopers were using Blackwatch tactics, not going after him but instead searching for something inside the train.\n\nIf he did not act he would have this whole ordeal pinned on him, so he began to take down the troopers inside the wagons, but the soldiers kept coming without any signs of stopping. As he made his way down the train, he found an ominous glowing box, seemingly Talon's target. Without concerning much about the nature of the payload, he tossed it out of the wagon, confident that if Talon got to keep it they would leave the train and its civilians alone. Cassidy got to enjoy the rest of the ride as a proper lawful passenger, and when news broke out that the attack was being blamed on him, the staff kindly agreed to tell the truth to the police and fudge the arrival times enough to allow him to make an exit.",
       "image": "",
       "lat": 29.7589382,
       "lon": -95.3676974,
@@ -13202,24 +13282,31 @@
         {
           "locationName": "Houston, United States",
           "country": "United States",
-          "reasoning": ""
+          "reasoning": "Cassidy stoops a Talon assault on a Hyper Train"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Cassidy",
-          "reasoning": ""
+          "reasoning": "Becomes a gun for hire"
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": "In contact with Cassidy"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Attempts to steal cargo from a Hypertrain"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Overwatch agent spotted during a Talon Assault near Houston"
+      ],
       "sources": [
         {
           "text": "Train Hopper",
@@ -13229,7 +13316,7 @@
     },
     {
       "name": "Traitor",
-      "description": "No description available.",
+      "description": "After fleeing Talon, Baptiste sat in Tortuga for a while, but it didn't take long before Talon began sending agents after him. One after the other they would try to silence him, many of them Baptiste's old comrades. He knew too much and was too dangerous to be let go, and Cuerva himself wished they could still talk some sense into him, but if they failed to capture him, they would be forced to eliminate him.\n\nDuring their attempts, however, several of the operatives in Cuerva's units went missing, and a letter made its way back to Cuerva containing their emblems torn straight out of their uniforms. Contact with Cuerva himself was lost not long after, but he always said that Baptiste had the devil's own luck on his side. His team made the mistake of going after Baptiste one by one, allowing him to take them down and leave Cuerva for last.\n\nKnowing Talon would not stop, Baptiste began to drift from place to place, never staying too long, only occasionally returning home to check on his local clinic. He wished to help make a better world in any way he could, to make up for his mistakes. For some people, this meant a band aid, for others, a bullet. He knew he couldn't erase the past, but he could at least make a difference where it mattered, so he began carrying out humanitarian efforts while keeping a low profile on his travels, eventually meeting Angela Ziegler at an aid site in Venezuela, who he briefly worked alongside.",
       "locationType": "earth",
       "lat": 20.0410035,
       "lon": -72.785587,
@@ -13237,7 +13324,10 @@
       "cityDisplayName": "Tortuga, Haiti",
       "yearEnd": null,
       "eraName": "The Age of Conflict",
-      "headlines": [],
+      "headlines": [
+        "Talon agents found dead in a Haiti warehouse",
+        "Angelar Ziegler seen helping the needy in Venezuela"
+      ],
       "sources": [
         {
           "text": "Baptiste Origin Story",
@@ -13248,28 +13338,38 @@
         {
           "locationName": "Tortuga, Haiti",
           "country": "Haiti",
-          "reasoning": "",
+          "reasoning": "Talon agents chase down Baptiste",
           "lat": 20.0410035,
           "lon": -72.785587
+        },
+        {
+          "locationName": "Venezuela",
+          "country": "Venezuela,",
+          "reasoning": "Baptiste meets Mercy at an aid side in Venezuela"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Baptiste",
-          "reasoning": ""
+          "reasoning": "Takes down Cuerva's squad in Tortuga"
         },
         {
           "locationName": "",
           "country": "Sombra,",
-          "reasoning": ""
+          "reasoning": "Came across  the Cuerva case in Talon's files"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy,",
+          "reasoning": "Collaborated with Baptiste in a Venezueland camp"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Sends down Cuerva's squad to hunt Baptiste down"
         }
       ]
     },
@@ -13277,7 +13377,7 @@
       "name": "Crime Spree",
       "locationType": "earth",
       "cityDisplayName": "Sydney, Australia",
-      "description": "No description available.",
+      "description": "Junkrat and Roadhog continued wrecking havoc in Junkertown, angering most of the city. After a string of incidents that placed them on the Queen's bad side, enough was enough. Odessa's hands to put some order if she wanted to still be respected amongst the Junkers.\n\nAs an act of mercy, the Queen did not order their execution, instead removing them from the city and threatening to properly kill them if they ever tried to return. Junkrat blamed the situation on Roadhog without much thought, and quickly began to hatch a plan to break into the city and enact their revenge.\n\nThere are two things that solve any problem, according to Junkrat himself: money and explosives. In order to set his secret master plan in motion, the pair needed a lot of riches, so after wandering their way out of the outback, they began an international crime spree. Reported by A Moment in Crime's programming, the Junker duo gained notoriety for a string of robberies, including other crimes like arson, murder, and even stealing the crown jewels in London. Going by the creed of \"No job too big, no score too small\", they spread mayhem across the whole world, causing a loss of millions in property damage and injured casualties, eventually earning a bounty of up to $25 million.",
       "image": "",
       "lat": -33.8698439,
       "lon": 151.2082848,
@@ -13288,21 +13388,33 @@
         {
           "locationName": "Sydney, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Junkrat and Roadhog begin an international Crim spree"
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "The Junkers earn a massive bounty after appearing in A moment in Crime",
+          "lat": 51.5074456,
+          "lon": -0.1277653
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Junkrat, Roadhog",
-          "reasoning": ""
+          "reasoning": "Get kick out of Junkertown and plan revenge"
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": "Kicked out Junkrat and Roadhog from the city"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Junker Monarchy,",
-          "reasoning": ""
+          "reasoning": "Junkers get tired of Junkrat and Roadhog, calling for their head"
         }
       ],
       "headlines": [],
@@ -18527,6 +18639,29 @@
       ]
     },
     {
+      "name": "External Partners",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "image": "",
+      "cityDisplayName": "Deadlock Gorge, United States",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Deadlock Gorge, United States",
+          "country": "United States",
+          "reasoning": "",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Elemental Kin",
       "description": "No description available.",
       "locationType": "earth",
@@ -19235,6 +19370,68 @@
       ]
     },
     {
+      "name": "Summit Breach",
+      "description": "<br>",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "image": "",
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Summit Breach",
+          "url": "https://www.youtube.com/watch?v=lxz-055QD6Q"
+        },
+        {
+          "text": "A Rare Power",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=ozaBSxQUFG0"
+          ]
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sierra, Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Freja, Emre",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities, Overwatch, Talon Empire",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Naughton,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Cat Training",
       "description": "No description available.",
       "locationType": "earth",
@@ -19432,31 +19629,16 @@
       ]
     },
     {
-      "name": "Summit Breach",
-      "description": "<br>",
+      "name": "A Rare Power",
+      "description": "No description available.",
       "locationType": "earth",
-      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "lat": 39.1131257,
       "lon": -108.0127646,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "image": "",
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Summit Breach",
-          "url": "https://www.youtube.com/watch?v=lxz-055QD6Q"
-        },
-        {
-          "text": "A Rare Power",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt669f91e345f75fc5/69e2a520d002ee7055eb56f7/OW_Sierra_Micro_LOC_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=ozaBSxQUFG0"
-          ]
-        }
-      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Watchpoint: Grand Mesa, United States",
@@ -19466,32 +19648,8 @@
           "lon": -108.0127646
         }
       ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sierra, Sojourn,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Freja, Emre",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities, Overwatch, Talon Empire",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Naughton,",
-          "reasoning": ""
-        }
-      ]
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Tiger's Den",
@@ -19831,6 +19989,29 @@
       "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire"
     },
     {
+      "name": "Paths We Choose",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Call to Action",
       "description": "No description available.",
       "locationType": "earth",
@@ -19921,6 +20102,21 @@
       ]
     },
     {
+      "name": "Ambush",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "image": "",
+      "cityDisplayName": "Tokyo",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Rematch",
       "description": "No description available.",
       "locationType": "earth",
@@ -19974,6 +20170,27 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Invention",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 0,
+      "lon": 0,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     }
   ]
 }
