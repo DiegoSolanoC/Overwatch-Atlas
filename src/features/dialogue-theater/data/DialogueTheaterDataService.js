@@ -147,7 +147,9 @@ class DialogueTheaterDataService {
             if (filePrefix && filePrefix !== fileVoice) {
                 next = { ...next, voicePrefix: filePrefix };
             }
-            if (String(fileLine.voice || '').trim() && !String(line.voice || '').trim()) {
+            // Repo voice wins for shared line ids so MatchTalk/script repairs beat stale localStorage
+            // (e.g. wiki-wrong Mei_-_Na!.ogg after a Save that rewrote the file).
+            if (fileVoice && fileVoice !== String(line.voice || '').trim()) {
                 next = { ...next, voice: fileLine.voice };
             }
             return next;
