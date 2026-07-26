@@ -83,6 +83,42 @@ export function codexWaypointIsSimpleCorner(nodeId, edges) {
 }
 
 /**
+ * Precompute in/out degree for every endpoint — O(E) once instead of O(E) per junction.
+ * @param {{ fromId: string, toId: string }[]} edges
+ * @returns {Map<string, { inN: number, outN: number }>}
+ */
+export function buildCodexEdgeEndpointDegrees(edges) {
+    /** @type {Map<string, { inN: number, outN: number }>} */
+    const degrees = new Map();
+    for (let i = 0; i < edges.length; i += 1) {
+        const e = edges[i];
+        if (!e?.fromId || !e?.toId) continue;
+        let from = degrees.get(e.fromId);
+        if (!from) {
+            from = { inN: 0, outN: 0 };
+            degrees.set(e.fromId, from);
+        }
+        from.outN += 1;
+        let to = degrees.get(e.toId);
+        if (!to) {
+            to = { inN: 0, outN: 0 };
+            degrees.set(e.toId, to);
+        }
+        to.inN += 1;
+    }
+    return degrees;
+}
+
+/**
+ * @param {string} nodeId
+ * @param {Map<string, { inN: number, outN: number }>} degrees
+ */
+export function codexWaypointIsSimpleCornerFromDegrees(nodeId, degrees) {
+    const d = degrees.get(nodeId);
+    return !!(d && d.inN === 1 && d.outN === 1);
+}
+
+/**
  * Filled elbow facets at waypoints where a straight (axis) cord meets a 45° diagonal on the next segment.
  * Skipped at multi-way junctions (splits/merges); only simple in-degree-1 / out-degree-1 corners.
  * @param {SVGGElement} parentG
@@ -97,6 +133,21 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
     const seen = new Set();
     const arm = ctx.armPx ?? CODEX_ELBOW_PARALLELOGRAM_ARM_PX;
     const tolDeg = ctx.tolDeg ?? CODEX_ELBOW_BEARING_TOL_DEG;
+    const degrees = buildCodexEdgeEndpointDegrees(edges);
+
+    // Index outgoing edges by fromId so the inner pass is O(degree) not O(E).
+    /** @type {Map<string, { fromId: string, toId: string }[]>} */
+    const outsByFrom = new Map();
+    for (let i = 0; i < edges.length; i += 1) {
+        const e = edges[i];
+        if (!e?.fromId) continue;
+        let list = outsByFrom.get(e.fromId);
+        if (!list) {
+            list = [];
+            outsByFrom.set(e.fromId, list);
+        }
+        list.push(e);
+    }
 
     for (let i = 0; i < edges.length; i++) {
         const eIn = edges[i];
@@ -104,7 +155,7 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
         const elJ = ctx.codexNodeElById(jId);
         if (!elJ || !elJ.classList.contains('codex-node--junction')) continue;
         if (elJ.classList.contains('codex-node--target-hidden')) continue;
-        if (!codexWaypointIsSimpleCorner(jId, edges)) continue;
+        if (!codexWaypointIsSimpleCornerFromDegrees(jId, degrees)) continue;
         const elA = ctx.codexNodeElById(eIn.fromId);
         if (!elA || elA.classList.contains('codex-node--target-hidden')) continue;
         const cJ = ctx.getNodeCenterWorldPx(elJ);
@@ -115,9 +166,9 @@ export function appendCodexJunctionElbowParallelograms(parentG, ns, worldCullRec
         const clsIn = classifyCodexSegmentAxisOrDiagonal(dxIn, dyIn, tolDeg);
         if (clsIn !== 'axis' && clsIn !== 'diag') continue;
 
-        for (let j = 0; j < edges.length; j++) {
-            const eOut = edges[j];
-            if (eOut.fromId !== jId) continue;
+        const outs = outsByFrom.get(jId) || [];
+        for (let j = 0; j < outs.length; j++) {
+            const eOut = outs[j];
             const elB = ctx.codexNodeElById(eOut.toId);
             if (!elB || elB.classList.contains('codex-node--target-hidden')) continue;
             const cB = ctx.getNodeCenterWorldPx(elB);

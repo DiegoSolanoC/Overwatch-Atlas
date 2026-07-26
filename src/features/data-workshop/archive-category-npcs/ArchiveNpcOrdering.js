@@ -55,7 +55,6 @@ const NPC_ARCHIVE_CATEGORY_ALIASES = Object.freeze({
  * @type {Readonly<Record<string, string>>}
  */
 export const NPC_ARCHIVE_CATEGORY_BY_NAME = Object.freeze({
-    'D.mon': 'MEKA',
     Casino: 'MEKA',
     Overlord: 'MEKA',
     King: 'MEKA',

@@ -161,6 +161,31 @@
       "birthday": "4 December 2048"
     },
     {
+      "name": "D.mon",
+      "description": "",
+      "relevantLocations": [],
+      "heroRole": "Tank",
+      "heroSubRole": "Bruiser",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "M.E.K.A Squad",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
+          "name": "D.va",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
       "name": "Domina",
       "description": "",
       "relevantLocations": [
@@ -290,7 +315,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "22 June 2057"
+      "birthday": "22 June 2057",
+      "connections": [
+        {
+          "kind": "hero",
+          "name": "D.mon",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Bastion",

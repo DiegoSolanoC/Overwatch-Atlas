@@ -4,8 +4,10 @@ import { s } from '../../codex-canvas/core/canvasSession.js';
 import { CODEX_SAVE_VERSION, CODEX_STORAGE_KEY } from '../persistence/CodexLayoutConstants.js';
 import { serializeCodexLayoutSnapshot } from '../persistence/CodexLayoutSerialization.js';
 import { isCodexPersistToRepoAvailable, resolveCodexRepoApiUrl, updateAppStatus } from '../../codex-canvas/bridge/CodexAppBridge.js';
-import { redrawCodexEdges } from '../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
-import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
+import {
+    resetCodexFilterCordSyncSignature,
+    syncCodexFilterCordDom,
+} from '../../codex-nodes/filters/CodexFilterCordSync.js';
 import { invalidateCodexConnectionPayloadCache } from '../../codex-connections/CodexConnectionAccess.js';
 
 
@@ -17,6 +19,15 @@ function serializeCodexState() {
     if (!s.root) return { nodes: [], edges: [], connections: [] };
     const snap = serializeCodexLayoutSnapshot(s.codexAllNodes, s.codexEdges);
     return { ...snap, connections: s.codexConnections || [] };
+}
+
+/**
+ * After save, clear yellow/red “dirty” cord colors without rebuilding the board.
+ */
+function refreshCodexAppearanceAfterSave() {
+    resetCodexFilterCordSyncSignature();
+    // Appearance only — no full redraw, no packet polyline rebuild.
+    syncCodexFilterCordDom({ skipPackets: true, syncElbowsNow: true });
 }
 
 function saveCodexLayout() {
@@ -37,7 +48,7 @@ function saveCodexLayout() {
     s.codexLayoutDirty = false;
     api.clearPendingCodexDeleteState();
     api.updateCodexToolbar();
-    redrawCodexEdges();
+    refreshCodexAppearanceAfterSave();
 
     if (isCodexFileApiAvailable()) {
         const codexPost = resolveCodexRepoApiUrl('api/codex');

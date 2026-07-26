@@ -1442,7 +1442,7 @@
       "name": "Resource Management",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God AIs got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God Program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.",
+      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God AIs got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God Program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.\n\n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God Programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
       "image": "",
       "sources": [
         {
@@ -1501,26 +1501,21 @@
     },
     {
       "name": "Automation",
-      "description": "With the introduction of God Programs the world had essentially been set to automatic. On a smaller scale, less complex AIs were able to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. \n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God Programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.\n\nIt was not just God AIs making life easier, as by this point Omnics were common household items. They impacted everyday life across the vast majority of nations, becoming the main workforce in multiple manual labor fields, which resulted in the loss of many jobs at first, but with God Programs allowing for global scale choreographing of resources, they were able to identify the areas of need and ensure equity and new opportunities around the globe. During this period, the world's population grew rapidly, and when combined with the medical and ecological advancements of the last decades, it allowed for a sense of prosperity and wonder for all of humanity. After years of struggle and discovery, it felt as if anything was possible.",
+      "description": "With the introduction of God Programs the world had essentially been set to automatic. On a smaller scale, less complex AIs were able to control local traffic, stocking stores, and manage public work projects, among other things, while on a global level, the God Programs handled these resources and many more with an international perspective in mind, ensuring equity, efficiency and progress. \n\nIt was not just God AIs making life easier, as by this point Omnics were common household items. They impacted everyday life across the vast majority of nations, becoming the main workforce in multiple manual labor fields, which resulted in the loss of many jobs at first, but with God Programs allowing for global scale choreographing of resources, they were able to identify the areas of need and ensure equity and new opportunities around the globe. During this period, the world's population grew rapidly, and when combined with the medical and ecological advancements of the last decades, it allowed for a sense of prosperity and wonder for all of humanity. After years of struggle and discovery, it felt as if anything was possible.",
       "locationType": "earth",
-      "lat": 30.0444,
-      "lon": 31.2357,
+      "lat": 40.7579554,
+      "lon": -73.9855319,
       "image": "",
-      "cityDisplayName": "Cairo, Egypt",
+      "cityDisplayName": "New York City, United States",
       "yearEnd": 2050,
       "eraName": "The Age of Progress",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "Home to the God Program Anubis",
-          "lat": 30.0444,
-          "lon": 31.2357
-        },
-        {
-          "locationName": "Other God Program Hosts",
-          "country": "United States, Mexico, Finland",
-          "reasoning": "Homes to Macaria, Xibalbá and Chernobog"
+          "locationName": "New York City, United States",
+          "country": "United States",
+          "reasoning": "God Ai lead to a new automated age",
+          "lat": 40.7579554,
+          "lon": -73.9855319
         }
       ],
       "headlines": [
@@ -1537,28 +1532,10 @@
         {
           "locationName": "Omnica Corporation",
           "country": "Omnica Corporation, Anubis Directives,",
-          "reasoning": "Omnica's expansion leads  to the rise of AI globally and the eventual crisis"
-        },
-        {
-          "locationName": "",
-          "country": "The Chernobog Conspiracy,",
-          "reasoning": "The creation of the Chernobog program at the center of a global conspiracy"
+          "reasoning": "Omnica and Ai begin to flourish in a new Automated world"
         }
       ],
-      "yearStart": 2040,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "God Program of Ecological Preservation",
-          "badgePriority": true
-        },
-        {
-          "locationName": "",
-          "country": "Chernobog,",
-          "reasoning": "God Program of Global Security"
-        }
-      ]
+      "yearStart": 2040
     },
     {
       "name": "Amélie Guillard is Born",
@@ -1637,7 +1614,7 @@
     },
     {
       "name": "Responsability",
-      "description": "No description available.",
+      "description": "Fresh out of college, Torbjörn Lindholm joined SST Laboratories, an independent firm focused on defensive systems. Lindholm joined with the objective of using his skills to save lives. Everything was meant to protect people. During his time in the Labs, the team would design the E54 Siege Automaton Bastion, a mobile artillery capable of reconfiguring themselves to fit the current needs of the situation. The Bastions were a weapon, but they were a weapon meant to be used by human hands. People were always meant to be giving orders.\n\nBut as AI advanced, with Omnics becoming the standard in most fields and God Ai controlling almost every aspect of people's lives, the superiors at SST Labs thought it would be best for Bastion units to be controlled by Military AI, granting these machines more or less fully autonomy. Torbjörn naturally fought this, as opaque technology like this needed human guidance, it was merely a tool and to needlessly complicate it beyond its intended function risked it making the wrong choices and putting humanity in danger.\n\nBut in a world where AI had literally grown to dominate the world, Lihdholm's words caried little weight. This difference in beliefs made him leave the project, deciding not to meddle with things he didn't understand, as with so many variables he risked becoming a Destroyer of worlds. In the years following, he would begin to publicly speak against the growing reliance on Artificial Intelligence, becoming rather passionate about the issue, and gaining many enemies in the process.",
       "locationType": "earth",
       "lat": 0,
       "lon": 0,
@@ -1650,11 +1627,37 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "SST gives Bastion Units full AI capabilities"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Sweden reveals the new generation of security robots",
+        "SST Laboratories to move to AI powered services"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declasified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Torbjörn, Bastion,",
+          "reasoning": "Helps in developing the Bastion Unit"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ironclad Guild,",
+          "reasoning": "Founded by Torbjörn and collegues soon after his work in STT Labs"
+        }
+      ]
     },
     {
       "name": "Upgrades",
@@ -1910,7 +1913,7 @@
       "name": "SST Labs Siege Automaton E54 is Made",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Around the year 2046, the SST Laboratories would begin production of the Siege Automaton E54 Bastion Units. Designed in part by the great mind of Torbjörn Lindholm, these machines were originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.\n\nOn an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made.",
+      "description": "Around the year 2046, the SST Laboratories would begin production of the Siege Automaton E54 Bastion Units. Machines originally created for peacekeeping, capable of reconfigurating themselves into many different modes. Their versatility and resilience would unknowingly make them the perfect choice for the bulk of the warbot army during the Omnic Crisis.\n\nOn an unknown day during these initial production batch, a faulty E54 unit, nowadays simply known as Bastion, was made, and while one in a million at the time, nobody knew how special this particular unit would be",
       "image": "",
       "sources": [
         {
@@ -2159,7 +2162,7 @@
       "name": "The Ironclad Guild",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "Following his involvement in the SST Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.\n\nOvertime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But following his work on these robots, he would begin to speak publicly against the growing reliance on Omnics and God AI, highlighting that robots were merely tools, and that needless complications could risk humanity's future. Lindholm wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, while more moderates argued for better guardrails, Lindholm was particularly passionate about the topic, and his words would become poison for his career.\n\nMany members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
+      "description": "Following his involvement in the SST Laboratories, Torbjörn would join many of his fellow engineers and found the Ironclad Guild, a Workshop meant for inventors to come together, and discuss their craft openly, sharing resources, techniques and tools to later develop their fields independently. Their mission was to create innovations that would improve the world, and become available to anyone who needs them, without restrictive patents.\n\nOvertime, however, the guild would attract many politically minded members, Torbjörn himself included. During his time on Ironclad, Lindholm would work on the Titan units, meant for peacekeeping and defense, much like his previous work on the Bastion units. But while working on these machines he continued to publically speak against AI, holding a hardline position agaisnt it, and he wasn't alone, as many other members of the guild felt the same and advocated for lobbying against Omnica Corporation, and advocating for right for repear, while more moderates argued for better guardrails, \n\nLindholm's adamant disdain for AI eventually became poison for his career, as he found himself unwelcomed in a majority of engineering firms that decided to push forward with AI and Omnics. Many members of the guild would become ostracized from their fields over their views, and siding with Lindholm was seen as career suicide. Torbjörn would return home, to dedicate himself to raising his family with his now wife, Ingrid. As the world moved forward into developing Omnics, away from his warnings.",
       "image": "",
       "sources": [
         {
@@ -5113,7 +5116,7 @@
     },
     {
       "name": "Kept in Chains",
-      "description": "No description available.",
+      "description": "For many Omnics the awakening was not the end of the battle. While many, like the Ravagers, were hunted down by humans, there were others who kept fighting, not out of any loyalty to Anubis but rather due to sheer confusion and fear. Shion was in Tokyo when it happened, and what for many Omnics was a life-changing moment. For her, it was scored by screams and gunfire. In the middle of the chaos, she dug herself out of the wreckage she woke up in, and fled into the shadows.\n\nShion survived in this constant state of fear for weeks on the streets of Tokyo, killing anyone she came across. Eventually, several local gangs began to hunt down and mistreat Omnics as a form of \"justice\", and one of these groups came across Shion and defeated her, taking her captive as a prize. Rather than killing her, the thugs saw potential in Shion. After all, if they were going to become Tokyo's deadliest blade, they needed something to hone their steal with, and what better target practice than a killing machine, with an unpredictable, sentient spark.\n\nFor Shion, the war never ended, as she endured relentless cruelty for years. The people who captured her went on to become the founders of the Hashimoto Clan, a more organized criminal group that slowly began to take over Tokyo. In all those years, Shion endured the Hashimoto's violence to the point it became almost a comfort, but she still had to hope there was more to life than survival. If there was anything she wanted was to be freed from her prison, and punish those who caged her.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -5126,30 +5129,41 @@
         {
           "locationName": "Akihabara, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Shion awakens in Tokyo and survives by killing",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Reports of rouge killing Omnics continue worldwide",
+        "Gangs torturing Omnics won't be persecuted by the police according to local authorities"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Shion",
           "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        },
+        {
+          "text": "Ambush",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPxX7W5Dj_0"
+          ]
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Shion,",
-          "reasoning": ""
+          "reasoning": "Gets kitnapped by a local gang"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "reasoning": "A group of criminals hunts down Omnics in Tokyo"
         }
       ]
     },
@@ -6082,7 +6096,7 @@
       "name": "Anima Weaponry",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
-      "description": "The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Kamori, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
+      "description": "While smaller gangs like the Hashimoto were on the rise in Japan, they still had a long way to go if they wished to reach the longevity and status of senior Yakuza. The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over Tokyo, but unlike many of the rival clans, they had gained the trust and even loyalty of the locals, seeing themselves as rulers and ruled. As such, inspired by their shady nature, the people of the Kanezaka region respected the clan as protectors, and the Shimada in turn kept opposing clans away, preventing them from hurting their people.\n\nA big part of the Shimada's success was owned by the blacksmith Toshiro Yamagami, creator of the Anima blades. Toshiro was a weapon smith in possession of unique avatar technology, capable of imbuing traditional weaponry with an ethereal, malleable energy. These weapons were not only enhanced by the Anima's energy, but with enough discipline, their users would be able to manifest projections spirits at will. Toshiro would serve the clan, designing blades for their family, which in turn used them to suppress the opposition and solidify their cultural position as the rulers of the region.\n\nWhile the clan forbid Toshiro from making any Anima Avatars after forging dragon blades for the Shimada heirs, Toshiro had one last masterpiece that he kept a secret from the clan. The man had planned to propose to what would be his wife, Asa Kamori, a skilled sword master, daughter to the shrine maiden of the local Fox shrine. To win her mother's heart, Toshiro crafted Ofuda Talismans imbued with Anima technology, which would bring the Fox spirit to life, and assist the old lady in her Miko duties.",
       "image": "",
       "sources": [
         {
@@ -7609,7 +7623,7 @@
     },
     {
       "name": "Risen In Blood",
-      "description": "No description available.",
+      "description": "Years had gone by and Shion still found herself captive by the Hashimoto, but over time she began to hold back, secretly pulling her punches and learning their weaknesses so that one day she could overtake them. Her captors were now revered amongst the Hashimoto. Calling themselves the elders and dressing up in traditional Japanese clothing. In their comfort at the top, they grew complacent, and began to lower their guards around Shion. This allowed Shion to take them by surprise, breaking free and taking on all four of the elders in a gruesome fight that left a trail of death, as the Omnic successfully murdered them all.\n\nShion was not only free at last, she also found herself as the new leader of the Hashimoto. All the humans who mistreated her for years now had no other option than to kneel and follow her every command, or risk becoming her next target. Having taken control of her fate, she chose four humans amongst those smart enough to bow to her power, and granted them seats at her new table of elders, at least as long as they remained useful and submissive, as they all knew very well how easily replaceable they truly were.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -7622,37 +7636,41 @@
         {
           "locationName": "Akihabara, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Shion takes over the Hashimoto Clan",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Sources rumor of a hostile takeover in the Hashimoto clan",
+        "Violent Omnic seen fighting on Tokyo streets"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Shion",
           "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        },
+        {
+          "text": "Ambush",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPxX7W5Dj_0"
+          ]
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Shion,",
-          "reasoning": ""
+          "reasoning": "Eliminates the Elders and chooses her replacements"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Hashimoto Clan,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kuroura,",
-          "reasoning": ""
+          "reasoning": "Falls in line with Shion fearing they will be next"
         }
       ]
     },
@@ -8249,7 +8267,7 @@
     },
     {
       "name": "Luxuries",
-      "description": "No description available.",
+      "description": "During her time as a prisoner, Shion rarely got very few, brief glimpses of the outside world. While Omnics across the world slowly developed their own culture and faith, Shion knew herself not as an Omnic, but instead as inhuman. She never had a chance to develop a sense of self, but now with all the money and power she could dream of, she had the means to transform herself into something she felt comfortable being. Shion performed heavy repairs and modifications to her chassis, mostly cosmetic, sculpting a shape that had an uncanny resemblance to that of a human, but yet she was still an Omnic, she belonged to no world other than the one she formed for herself.\n\nOutside of her duties as head of the clan, Shion lived her life to the fullest, gaining a reputation for excessively indulging in all kinds of luxuries, from partying, costly fashion, plenty of lovers of both metal and flesh, and a growing love for custom-made holo bikes. Yet this carefree lifestyle didn't come in the way of her Hashimoto duties, in spite of what the other elders believed. While they comfortably sat in their chairs, Shion's craving for violence meant she was often working on the field with her men, doing most of the work for the clan, which only served to further secure her position as the most feared and influential of the Elders.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -8262,13 +8280,43 @@
         {
           "locationName": "Akihabara, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Shion spends the Hashimoto fortune on personal pleasures",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Omnic moddifications on the rise in Japan, meet the new face of Omnics",
+        "Hashimoto Clan seemingly linked to Motorcycle investors"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Shion",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/shion/"
+        },
+        {
+          "text": "Ambush",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1f045c78ab440de9/6a45646e970e6f7b7eb75d8a/Ha$H_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPxX7W5Dj_0"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": "Gets a brand new Chassis"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Questions Shion's activities"
+        }
+      ]
     },
     {
       "name": "Subject Sigma",
@@ -9532,6 +9580,11 @@
           "locationName": "",
           "country": "Asa,",
           "reasoning": "Sends Kiriko away to protect her"
+        },
+        {
+          "locationName": "",
+          "country": "Kuroura,",
+          "reasoning": "Left in charge of the Kanezaka branch of the Hashimoto"
         }
       ]
     },
@@ -9735,7 +9788,7 @@
     },
     {
       "name": "Leverage",
-      "description": "While he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose. The clan took notice of the poor quality of his work, so Lady Shion decided to use her pupil as leverage. Mizuki was still too young and weak to take part in criminal activities, but Shion believed that Toshiro might pick up the slack if the boy was endangered.\n\nMizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties. But on the other hand, Shion's discipline was unforgiving. The Omnic would often seriously injure the boy during their training, in part to set an example for Toshiro, which eventually would get to a point where Mizuki's arm would be cut off. \n\nIn spite of this, poor Mizuki was too naive and able to see good in people even when there was nothing but harm. Shion was cruel but also caring. She actively hurt him, but he could tell she wanted him to improve and get stronger. This messy relationship kept Mizuki willingly chained down by the Hashimoto for years, as he believed he had no other way to evade his curse.",
+      "description": "While he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose.  The clan took notice of the poor quality of his work, so Lady Shion decided to use her pupil as leverage. \n\nMizuki was still too young and weak to take part in criminal activities, but Shion believed that Toshiro might pick up the slack if the boy was endangered. With the life of a child on the line, Toshiro began to produce Animas of better quality, including a unique pair of pistols for Shion's personal use. Even if these powerful weapons paled in comparison with the mystifying Shimada Dragons or the Fox Spirit, at least in the eyes of the Elders, they measured up, and if they ever faltered, Shion could always threaten Mizuki again to make sure Toshiro cooperated.\n\nMizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties. But on the other hand, Shion's discipline was unforgiving. The Omnic would often seriously injure the boy during their training, in part to set an example for Toshiro, which eventually would get to a point where Mizuki's arm would be cut off. Mizuki was too naive and able to see good in people even when there was nothing but harm. Shion was cruel but also caring. She actively hurt him, but he could tell she wanted him to improve and get stronger. This messy relationship kept Mizuki willingly chained down by the Hashimoto for years, as he believed he had no other way to evade his curse.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -11460,7 +11513,7 @@
     },
     {
       "name": "Doomed to Fail",
-      "description": "Following the Uprising, Ramattra traveled the world, learning of its history and philosophers, trying to answer a single question. How does one save those who don't wish to be saved? He pondered on this for the many years that followed, but could never reach a truly satisfying answer. In his research, however, he studied the Iris and its applications with his Nanite technology, and after a lot of testing, he realized he might have found a way to preserve his species. A way to liberate Omnics from the mortality of their Chassis, and finally, rejoice, from many as one.\n\nThe only issue was convincing the Omnic kind to join him, having lost all of his supporters and with so many Omnics outright rejecting the idea of revolution. If it came down to forcing his own people into submission in order to save them, however, Ramattra had no objections, but he would need a larger army than what he used in Kings Row, and in order to build that he would need resources.\n\nRamattra met with Doomfist in Cairo, seeking to establish a partnership, as his plans of Omnic liberation would seed chaos among humans all across the world, and he knew Talon would cooperate if it benefited their cause. Akande, ever the visionary, saw potential in the Omnic's cause. He believed it to be a noble goal, but doomed to fail without proper backing. With Talon's resources, Ramattra was able to begin the production of his warbots, and while Null Sector sat in silence, away from the public eye for years, under the shadows laid a massive Army comparable to Anubis' forces back in the Crisis.",
+      "description": "Following the Uprising, Ramattra traveled the world, learning of its history and philosophers, trying to answer a single question. How does one save those who don't wish to be saved? He pondered on this for the many years that followed, but could never reach a truly satisfying answer. In his research, however, he studied the Iris and its applications with his Nanite technology, and after a lot of testing, he realized he might have found a way to preserve his species. A way to liberate Omnics from the mortality of their Chassis, and finally, rejoice, from many as one.\n\n\nThe only issue was convincing the Omnic kind to join him. He had lost most of his supporters following the uprising, and while some small splinter cells remained across the world, they were not quite organized, and they did not even know who their leader was, a hermit hiding for years, who wished to keep Omnics away from active conflict. With so many Omnics outright rejecting the idea of revolution, and unwilling to put his supporters' lives on the line, Ramattra concluded that if it came down to forcing his own people into submission in order to save them, it would be worth it for the sake of their race.\n\nIn order to enact this rapture, he would need a larger army than what he used in Kings Row, and in order to build that he would need resources. Ramattra met with Doomfist in Cairo, seeking to establish a partnership, as his plans of Omnic liberation would seed chaos among humans all across the world, and he knew Talon would cooperate if it benefited their cause. Akande, ever the visionary, saw potential in the Omnic's cause. He believed it to be a noble goal, but doomed to fail without proper backing. With Talon's resources, Ramattra was able to begin the production of his warbots, and while Null Sector sat in silence, away from the public eye for years, under the shadows laid a massive Army comparable to Anubis' forces back in the Crisis.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
@@ -12329,14 +12382,14 @@
           "locationName": "",
           "country": "D.va,",
           "reasoning": "Becomes Number 1 Ranked Player and World champion in Mehca Guaridan V"
-        }
-      ],
-      "npcFilterPlaces": [
+        },
         {
           "locationName": "",
           "country": "D.mon,",
           "reasoning": "D.va's team mate and closest in skill"
-        },
+        }
+      ],
+      "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "King,",
@@ -12976,8 +13029,8 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "D.va",
-          "reasoning": "Drafted into the Korean Army due to her gaming expertise"
+          "country": "D.va, D.mon,",
+          "reasoning": "Drafted into the Korean Army due to their gaming expertise"
         }
       ],
       "factionFilterPlaces": [
@@ -12996,7 +13049,7 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "D.mon, King, Overlord,",
+          "country": "King, Overlord,",
           "reasoning": "Drafted into the Korean army due to Gamer expertise"
         },
         {
@@ -13816,6 +13869,11 @@
           "locationName": "",
           "country": "D.va",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -13838,7 +13896,7 @@
         },
         {
           "locationName": "",
-          "country": "D.mon, King, Overlord, Casino, Myung,",
+          "country": "King, Overlord, Casino, Myung,",
           "reasoning": ""
         }
       ],
@@ -15410,69 +15468,6 @@
       ]
     },
     {
-      "name": "Curse Breaker",
-      "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "eraName": "The Age of Conflict",
-      "yearStart": 2078,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Curse Breaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
-          ]
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Stolen Gauntlet",
       "description": "No description available.",
       "locationType": "earth",
@@ -15801,6 +15796,69 @@
       ]
     },
     {
+      "name": "Yokais",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yamagami Blades,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Sakura, Chikasa, Ryota,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Kiriko Origin Story",
+          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
+        },
+        {
+          "text": "Yokai",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
+        }
+      ]
+    },
+    {
       "name": "Searching",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
@@ -15956,69 +16014,6 @@
       ]
     },
     {
-      "name": "Yokais",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yamagami Blades,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Nobuto, Sakura, Chikasa, Ryota,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Kiriko Origin Story",
-          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
-        },
-        {
-          "text": "Yokai",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
-        }
-      ]
-    },
-    {
       "name": "Hero of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
@@ -16062,6 +16057,69 @@
         {
           "text": "Hero of Numbani",
           "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
+    },
+    {
+      "name": "Curse Breaker",
+      "locationType": "earth",
+      "cityDisplayName": "Tokyo, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "eraName": "The Age of Conflict",
+      "yearStart": 2078,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
         }
       ]
     },
@@ -16230,6 +16288,65 @@
         {
           "text": "Reunion",
           "url": "https://www.youtube.com/watch?v=PKYVvPNhRR0"
+        }
+      ]
+    },
+    {
+      "name": "Double Life",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Kanezaka, Japan",
+      "yearStart": 2079,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Ryota, Sakura, Chikasa,",
+          "reasoning": ""
         }
       ]
     },
@@ -16596,57 +16713,6 @@
       ]
     },
     {
-      "name": "Shockwaves",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Toronto, Canada",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
-      "yearStart": 2079,
-      "eraName": "The Null Sector Invasion",
-      "image": "",
-      "sources": [
-        {
-          "text": "Calling",
-          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
-        },
-        {
-          "text": "Shockwaves",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt9d680714e6b3463e/64f8bf92d69ac7e216afe1ba/OW_LoreBites_Sojourn_enEN.pdf"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Toronto, Canada",
-          "country": "Canada",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sojourn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Null Sector",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Trembley,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
-    },
-    {
       "name": "Zero Hour",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
@@ -16707,6 +16773,57 @@
           "url": "https://www.youtube.com/watch?v=GKXS_YA9s7E"
         }
       ]
+    },
+    {
+      "name": "Shockwaves",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Toronto, Canada",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
+      "yearStart": 2079,
+      "eraName": "The Null Sector Invasion",
+      "image": "",
+      "sources": [
+        {
+          "text": "Calling",
+          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
+        },
+        {
+          "text": "Shockwaves",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt9d680714e6b3463e/64f8bf92d69ac7e216afe1ba/OW_LoreBites_Sojourn_enEN.pdf"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Null Sector",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Trembley,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Luck of the Draw",
@@ -16787,6 +16904,11 @@
           "locationName": "",
           "country": "Baptiste, Zarya, Pharah,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -16815,7 +16937,7 @@
         },
         {
           "locationName": "",
-          "country": "D.mon, King, Overlord, Casino,",
+          "country": "King, Overlord, Casino,",
           "reasoning": ""
         }
       ],
@@ -18428,65 +18550,6 @@
       ]
     },
     {
-      "name": "Double Life",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "image": "",
-      "cityDisplayName": "Kanezaka, Japan",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Null Sector Invasion",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Mizuki",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Kiriko,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Nobuto, Ryota, Sakura, Chikasa,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "New Heights",
       "description": "No description available.",
       "locationType": "earth",
@@ -18631,6 +18694,13 @@
           "country": "Myung,",
           "reasoning": ""
         },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "D.mon,",

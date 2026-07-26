@@ -2,7 +2,10 @@
 import { api } from '../../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { DRAG_THRESHOLD_PX } from '../../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
-import { scheduleRedrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import {
+    scheduleRedrawCodexEdges,
+} from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+import { syncCodexEdgesAroundNodeIds } from '../../../codex-node-drawing/redraw/CodexEdgeDragSync.js';
 import { codexStopCordAnimRafOnly } from '../../../codex-node-drawing/packets/CodexCordPacketAnimation.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../../codex-canvas/core/canvasConstants.js';
 
@@ -57,7 +60,8 @@ function beginActualNodeDrag(prep, firstMoveEv) {
     const anchor = bases.find((b) => b.el === el) || bases[0];
 
     s.codexActiveDragNodeIds = new Set(dragNodes.map((n) => n.dataset.codexNodeId).filter(Boolean));
-    s.codexEdgeDragUseLightSync = false;
+    // Light-sync from the first move — never wipe/rebuild the full edges SVG while dragging.
+    s.codexEdgeDragUseLightSync = true;
     codexStopCordAnimRafOnly();
 
     dragNodes.forEach((nodeEl) => {
@@ -128,9 +132,8 @@ function beginActualNodeDrag(prep, firstMoveEv) {
     const finishDrag = () => {
         if (dragFinished) return;
         dragFinished = true;
-        s.codexActiveDragNodeIds.clear();
-        s.codexEdgeDragUseLightSync = false;
         const moved = lastTx !== 0 || lastTy !== 0;
+        const dragIds = new Set(dragNodes.map((n) => n.dataset.codexNodeId).filter(Boolean));
         bases.forEach(({ el: nodeEl, baseLeft: bl, baseTop: bt }) => {
             const newX = bl + lastTx;
             const newY = bt + lastTy;
@@ -150,17 +153,22 @@ function beginActualNodeDrag(prep, firstMoveEv) {
                 }
             }
         });
-        // Trigger final full edge redraw after drag completes (includes snap + packets).
+        // Commit transform → left/top, then light-sync incident cords only (no full board redraw).
         if (moved) {
-            scheduleRedrawCodexEdges();
+            syncCodexEdgesAroundNodeIds(dragIds);
+            api.scheduleCodexEdgeNodeMaskSync?.();
         }
+        s.codexActiveDragNodeIds.clear();
+        s.codexEdgeDragUseLightSync = false;
         document.removeEventListener(moveEvent, onMove, usePointerRawUpdate ? rawOpts : capOpts);
         document.removeEventListener('pointerup', onUp, capOpts);
         document.removeEventListener('pointercancel', onUp, capOpts);
         el.removeEventListener('lostpointercapture', onLost);
         if (moved) {
-            const dragIds = new Set(dragNodes.map((n) => n.dataset.codexNodeId).filter(Boolean));
             api.applyOctilinearSnapOnDragRelease(dragIds);
+            // Snap may move nodes again — light-sync once more, still no full redraw.
+            syncCodexEdgesAroundNodeIds(dragIds);
+            api.scheduleCodexEdgeNodeMaskSync?.();
             bases.forEach(({ el: nodeEl }) => {
                 api.markNodeVisualUnsaved(nodeEl);
                 api.markIncidentCodexEdgesUnsaved(nodeEl.dataset.codexNodeId);

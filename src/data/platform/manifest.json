@@ -8,6 +8,7 @@
     "Orisa",
     "Roadhog",
     "Zarya",
+    "D.mon",
     "Domina",
     "Junker Queen",
     "Ramattra",
@@ -217,7 +218,6 @@
   ],
   "npcs": [
     "Casino",
-    "D.mon",
     "Dae-Hyun",
     "King",
     "Myung",
@@ -567,6 +567,9 @@
       "Sparkplug"
     ],
     "Cassidy": [
+      "Heroic"
+    ],
+    "D.mon": [
       "Heroic"
     ],
     "D.va": [

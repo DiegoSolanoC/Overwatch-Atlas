@@ -17,22 +17,6 @@
       ]
     },
     {
-      "name": "D.mon",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "MEKA",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "M.E.K.A Squad",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
       "name": "Dae-Hyun",
       "description": "No description available.",
       "relevantLocations": [],

@@ -117,13 +117,34 @@ function syncCodexSegmentLineClasses(lineEl, appearance, filterDormant) {
 
 /**
  * @param {{ fromId: string, toId: string }} edge
+ * @param {Map<string, { fromId: string, toId: string }>|null} [index]
  * @returns {{ fromId: string, toId: string }|null}
  */
-function findDirectedEdge(edge) {
+function findDirectedEdge(edge, index = null) {
     if (!edge?.fromId || !edge?.toId) return null;
+    if (index) {
+        return (
+            index.get(`${edge.fromId}\x1e${edge.toId}`)
+            || index.get(`${edge.toId}\x1e${edge.fromId}`)
+            || null
+        );
+    }
     return api.findEdge?.(edge.fromId, edge.toId)
         || api.findEdge?.(edge.toId, edge.fromId)
         || null;
+}
+
+/** @returns {Map<string, { fromId: string, toId: string }>} */
+function buildDirectedEdgeIndex() {
+    /** @type {Map<string, { fromId: string, toId: string }>} */
+    const index = new Map();
+    const edges = s.codexEdges || [];
+    for (let i = 0; i < edges.length; i += 1) {
+        const e = edges[i];
+        if (!e?.fromId || !e?.toId) continue;
+        index.set(`${e.fromId}\x1e${e.toId}`, e);
+    }
+    return index;
 }
 
 function buildCordAppearanceSyncSignature() {
@@ -132,7 +153,10 @@ function buildCordAppearanceSyncSignature() {
     const page = getCodexDockPageIndexSpan()?.page ?? 1;
     const lifetimePart = s.codexEntryLifetimeNodeStatuses?.size ?? 0;
     const timelinePart = `${page}:${lifetimePart}`;
-    return `${filterPart}|${timelinePart}`;
+    // Unsaved / pending-delete visuals must invalidate secondary elbow/packet sync.
+    const unsavedPart = s.codexUnsavedEdgeKeys?.size ?? 0;
+    const pendingPart = s.cordPendingDeletePairKey ? '1' : '0';
+    return `${filterPart}|${timelinePart}|u${unsavedPart}|p${pendingPart}`;
 }
 
 /** @param {string} id */
@@ -249,23 +273,67 @@ function syncCodexFilterCordPackets() {
     }
 }
 
-function syncCodexJunctionElbowAppearance() {
+function syncCodexJunctionElbowAppearance(edgeIndex = null) {
     const svg = s.root?.querySelector('.codex-edges-layer');
     const contentRoot = svg?.querySelector('.codex-edges-masked');
-    if (!contentRoot || !api.appendCodexJunctionElbowParallelograms) return;
+    if (!contentRoot) return;
 
-    contentRoot.querySelectorAll('polygon.codex-edge-elbow-parallelogram').forEach((poly) => {
-        poly.closest('g')?.remove();
+    const index = edgeIndex || buildDirectedEdgeIndex();
+
+    // Update existing elbow fill/glow in place. Never rebuild (O(E²) with ~1k junctions).
+    contentRoot.querySelectorAll('g[data-codex-elbow-junction]').forEach((group) => {
+        const inFrom = group.getAttribute('data-codex-elbow-in-from');
+        const jId = group.getAttribute('data-codex-elbow-junction');
+        const outTo = group.getAttribute('data-codex-elbow-out-to');
+        if (!inFrom || !jId || !outTo) return;
+
+        const eIn = findDirectedEdge({ fromId: inFrom, toId: jId }, index);
+        const eOut = findDirectedEdge({ fromId: jId, toId: outTo }, index);
+        if (!eIn || !eOut) return;
+
+        const appearance =
+            api.edgeCordAppearanceForJunctionElbow?.(eIn, eOut)
+            || 'violet';
+        if (appearance === 'hidden') {
+            group.style.display = 'none';
+            return;
+        }
+        group.style.display = '';
+
+        const isGreyAppearance = appearance === 'grey' || appearance === 'violet-dim';
+        const fill =
+            appearance === 'red'
+                ? '#f87171'
+                : appearance === 'yellow'
+                    ? '#fbbf24'
+                    : appearance === 'green'
+                        ? '#4ade80'
+                        : isGreyAppearance
+                            ? 'rgba(120, 128, 148, 0.38)'
+                            : (s.codexVisualPrefs?.cordColor || '#a78bfa');
+        const filterUrl =
+            appearance === 'red'
+                ? 'url(#codex-edge-red-glow)'
+                : appearance === 'yellow'
+                    ? 'url(#codex-edge-yellow-glow)'
+                    : appearance === 'green'
+                        ? 'url(#codex-edge-green-glow)'
+                        : isGreyAppearance
+                            ? 'none'
+                            : 'url(#codex-edge-violet-glow)';
+
+        group.setAttribute('filter', filterUrl);
+        group.querySelectorAll('polygon').forEach((poly) => {
+            poly.setAttribute('fill', fill);
+        });
     });
-
-    const ns = 'http://www.w3.org/2000/svg';
-    api.appendCodexJunctionElbowParallelograms(contentRoot, ns, null, s.codexEdges);
 }
 
 /**
+ * @param {{ skipPackets?: boolean, syncElbowsNow?: boolean }} [opts]
  * @returns {boolean} False when the edges layer is not ready for in-place sync.
  */
-export function syncCodexFilterCordDom() {
+export function syncCodexFilterCordDom(opts = {}) {
     if (!s.root) return false;
 
     const svg = s.root.querySelector('.codex-edges-layer');
@@ -284,12 +352,14 @@ export function syncCodexFilterCordDom() {
     }
     ensureCodexCordGlowFilters(defs, visualPrefs, vw, vh);
 
+    const edgeIndex = buildDirectedEdgeIndex();
+
     svg.querySelectorAll('g.codex-edge-segment-group[data-codex-edge-from][data-codex-edge-to]').forEach((group) => {
         const fromId = group.getAttribute('data-codex-edge-from');
         const toId = group.getAttribute('data-codex-edge-to');
         if (!fromId || !toId) return;
 
-        const edge = findDirectedEdge({ fromId, toId });
+        const edge = findDirectedEdge({ fromId, toId }, edgeIndex);
         if (!edge) return;
 
         const appearance = api.edgeCordAppearance(edge);
@@ -311,7 +381,7 @@ export function syncCodexFilterCordDom() {
         const toId = hit.dataset.codexEdgeTo;
         if (!fromId || !toId) return;
 
-        const edge = findDirectedEdge({ fromId, toId });
+        const edge = findDirectedEdge({ fromId, toId }, edgeIndex);
         if (!edge) return;
 
         const filterDormant = api.edgeCordIsFilterDormant?.(edge) === true;
@@ -325,14 +395,20 @@ export function syncCodexFilterCordDom() {
     lastFilterCordSyncSignature = syncSignature;
 
     if (secondaryChanged) {
-        syncCodexFilterCordPackets();
-        if (filterCordSecondarySyncRaf) {
-            cancelAnimationFrame(filterCordSecondarySyncRaf);
+        if (!opts.skipPackets) {
+            syncCodexFilterCordPackets();
         }
-        filterCordSecondarySyncRaf = requestAnimationFrame(() => {
-            filterCordSecondarySyncRaf = 0;
-            syncCodexJunctionElbowAppearance();
-        });
+        if (opts.syncElbowsNow) {
+            syncCodexJunctionElbowAppearance(edgeIndex);
+        } else {
+            if (filterCordSecondarySyncRaf) {
+                cancelAnimationFrame(filterCordSecondarySyncRaf);
+            }
+            filterCordSecondarySyncRaf = requestAnimationFrame(() => {
+                filterCordSecondarySyncRaf = 0;
+                syncCodexJunctionElbowAppearance(edgeIndex);
+            });
+        }
     }
 
     return true;

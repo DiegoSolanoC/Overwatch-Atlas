@@ -196,6 +196,35 @@ function syncDraggedJunctionElbows(svg, dragIds, edges) {
 }
 
 /**
+ * In-place cord + elbow sync for a set of nodes (scale changes, light drag).
+ * Skips full alpha-mask rebuild during frequent updates — callers schedule mask sync on drag end.
+ * @param {Iterable<string>|Set<string>} nodeIds
+ * @param {{ syncMasks?: boolean }} [opts]
+ * @returns {boolean} True when geometry was updated in-place (skip full redraw).
+ */
+export function syncCodexEdgesAroundNodeIds(nodeIds, opts = {}) {
+    if (!_rt) return false;
+    const idSet =
+        nodeIds instanceof Set
+            ? nodeIds
+            : new Set([...nodeIds].map((id) => String(id || '')).filter(Boolean));
+    if (!idSet.size) return false;
+
+    const root = _rt.getRoot();
+    const svg = root?.querySelector('.codex-edges-layer');
+    if (!svg?.querySelector('.codex-edges-masked')) return false;
+
+    const edges = getEdgesForDragSync();
+    syncDraggedEdgeSegments(svg, idSet, edges);
+    syncDraggedJunctionElbows(svg, idSet, edges);
+    if (opts.syncMasks === true) {
+        _rt.syncCodexEdgeNodeMaskDom?.();
+    }
+
+    return true;
+}
+
+/**
  * @returns {boolean} True when geometry was updated in-place (skip full redraw).
  */
 export function syncCodexEdgesDuringNodeDrag() {
@@ -204,14 +233,6 @@ export function syncCodexEdgesDuringNodeDrag() {
     const dragIds = _rt.getActiveDragNodeIds();
     if (!dragIds.size) return false;
 
-    const root = _rt.getRoot();
-    const svg = root?.querySelector('.codex-edges-layer');
-    if (!svg?.querySelector('.codex-edges-masked')) return false;
-
-    const edges = getEdgesForDragSync();
-    syncDraggedEdgeSegments(svg, dragIds, edges);
-    syncDraggedJunctionElbows(svg, dragIds, edges);
-    _rt.syncCodexEdgeNodeMaskDom?.();
-
-    return true;
+    // Never rebuild the full portrait alpha mask every pointer frame — that alone freezes the board.
+    return syncCodexEdgesAroundNodeIds(dragIds, { syncMasks: false });
 }

@@ -2,7 +2,21 @@
 import { api } from '../../../codex-canvas/core/codexCanvasApi.js';
 import { s } from '../../../codex-canvas/core/canvasSession.js';
 import { CODEX_SCALE_MAX, CODEX_SCALE_MIN } from '../../../codex-nodes/placement/CodexNodePortraitMetrics.js';
+import { syncCodexEdgesAroundNodeIds } from '../../../codex-node-drawing/redraw/CodexEdgeDragSync.js';
 import { redrawCodexEdges } from '../../../codex-node-drawing/redraw/CodexEdgeRedraw.js';
+
+/**
+ * Scale changes only move incident cord endpoints / masks — avoid wiping the full edges SVG.
+ * @param {HTMLElement[]} nodes
+ */
+function refreshEdgesAfterScaleChange(nodes) {
+    const ids = new Set(
+        nodes.map((el) => String(el?.dataset?.codexNodeId || '')).filter(Boolean),
+    );
+    if (!syncCodexEdgesAroundNodeIds(ids, { syncMasks: true })) {
+        redrawCodexEdges();
+    }
+}
 
 function nudgeSelectedNodeScale(factor) {
     const nodes = api.getSelectedCodexNodesInRoot();
@@ -14,7 +28,7 @@ function nudgeSelectedNodeScale(factor) {
         api.markIncidentCodexEdgesUnsaved(nodeEl.dataset.codexNodeId);
     });
     api.markCodexLayoutDirty();
-    redrawCodexEdges();
+    refreshEdgesAfterScaleChange(nodes);
 }
 
 function getUniformCodexScaleForNodes(nodes) {
@@ -44,7 +58,7 @@ function setSelectedNodesAbsoluteScale(raw) {
         api.markIncidentCodexEdgesUnsaved(nodeEl.dataset.codexNodeId);
     });
     api.markCodexLayoutDirty();
-    redrawCodexEdges();
+    refreshEdgesAfterScaleChange(nodes);
 }
 
 function bindCodexToolbarScaleInput(input) {

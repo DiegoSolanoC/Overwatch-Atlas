@@ -90,13 +90,14 @@ export function toggleCodexLinkFilters() {
  * @param {{ persist?: boolean, redraw?: boolean, flash?: boolean }} [opts]
  */
 export function setCodexPacketsEnabled(enabled, opts = {}) {
-    const { persist = true, redraw = true, flash = false } = opts;
+    // Appearance-only: RAF packet loop is enough. Never force a full edge rebuild here —
+    // that freezes ~1.2k-node boards on every dock toggle.
+    const { persist = true, flash = false } = opts;
     s.codexPacketAnimEnabled = !!enabled;
     if (persist) api.persistCodexPacketAnimPref?.();
     applyCodexCordPacketAnimPref();
     syncToggleOffClass(packetsToggleBtn, s.codexPacketAnimEnabled);
     api.syncCodexStageControlInputs?.();
-    if (redraw) redrawCodexEdges({ force: true });
     if (flash) flashCodexOnOffToggle(packetsToggleBtn, s.codexPacketAnimEnabled);
 }
 
@@ -105,13 +106,13 @@ export function setCodexPacketsEnabled(enabled, opts = {}) {
  * @param {{ persist?: boolean, redraw?: boolean, flash?: boolean }} [opts]
  */
 export function setCodexInfoEnabled(enabled, opts = {}) {
-    const { persist = true, redraw = true, flash = false } = opts;
+    // Debug labels are CSS-class driven (`syncCodexDebugUiClass`); no edge rebuild needed.
+    const { persist = true, flash = false } = opts;
     s.codexDebugUiVisible = !!enabled;
     if (persist) api.persistCodexDebugUiPref?.();
     api.syncCodexDebugUiClass?.();
     syncToggleOffClass(infoToggleBtn, s.codexDebugUiVisible);
     api.syncCodexStageControlInputs?.();
-    if (redraw) redrawCodexEdges({ force: true });
     if (flash) flashCodexOnOffToggle(infoToggleBtn, s.codexDebugUiVisible);
 }
 

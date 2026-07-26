@@ -19,6 +19,7 @@ import {
 } from '../../codex-controls-ui/camera/viewport/CodexCanvasTuning.js';
 import {
     registerCodexEdgeDragSyncRuntime,
+    syncCodexEdgesAroundNodeIds,
     syncCodexEdgesDuringNodeDrag,
     unregisterCodexEdgeDragSyncRuntime,
 } from './CodexEdgeDragSync.js';
@@ -852,9 +853,8 @@ export function scheduleRedrawCodexEdges() {
         if (edgeDragSyncRaf) return;
         edgeDragSyncRaf = requestAnimationFrame(() => {
             edgeDragSyncRaf = 0;
-            if (!syncCodexEdgesDuringNodeDrag()) {
-                redrawCodexEdges();
-            }
+            // While dragging, never fall back to a full board redraw — light sync or skip.
+            syncCodexEdgesDuringNodeDrag();
         });
         return;
     }
@@ -881,12 +881,10 @@ export function redrawCodexEdges(opts = {}) {
     const worldEl = _rt.getWorldEl();
     const dragIds = _rt.getActiveDragNodeIds();
 
-    if (
-        dragIds.size > 0
-        && !forceRedraw
-        && _rt.getDragUseLightSync?.()
-        && syncCodexEdgesDuringNodeDrag()
-    ) {
+    if (dragIds.size > 0 && !forceRedraw) {
+        // Any active node drag must stay on the light path — a full wipe freezes ~1k junctions.
+        syncCodexEdgesDuringNodeDrag()
+            || syncCodexEdgesAroundNodeIds(dragIds, { syncMasks: false });
         return;
     }
 

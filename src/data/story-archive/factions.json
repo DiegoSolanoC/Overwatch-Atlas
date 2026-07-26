@@ -453,7 +453,7 @@
           "showInCodex": true
         },
         {
-          "kind": "npc",
+          "kind": "hero",
           "name": "D.mon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
