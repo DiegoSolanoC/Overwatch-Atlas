@@ -11,7 +11,13 @@ export function fetchJsonWithTimeout(url, timeoutMs = 10000) {
     const cacheBuster = `${separator}v=${Date.now()}&_=${Math.random().toString(36).substr(2, 9)}&nocache=true`;
     const fullUrl = url + cacheBuster;
     return Promise.race([
-        fetch(fullUrl).then((res) => {
+        fetch(fullUrl, {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                Pragma: 'no-cache',
+            },
+        }).then((res) => {
             if (!res.ok) {
                 throw new Error(`HTTP ${res.status}: ${res.statusText}`);
             }

@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { buildTimelineBundleStamp } from '../src/features/system-interface/interface-left-panel/event-system/data/timelineBundleStamp.js';
+import { buildDialogueTheaterBundleStamp } from '../src/features/dialogue-theater/data/dialogueTheaterBundleStamp.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -103,6 +104,48 @@ function injectTimelineBundleMeta(siteIndex) {
     fs.writeFileSync(siteIndex, html, 'utf8');
 }
 
+function injectDialogueTheaterBundleMeta(siteIndex) {
+    const conversationsPath = path.join(
+        OUT,
+        'src',
+        'data',
+        'dialogue-theater',
+        'conversations.json',
+    );
+    if (!fs.existsSync(conversationsPath)) {
+        throw new Error('Missing _site/src/data/dialogue-theater/conversations.json');
+    }
+    const data = JSON.parse(fs.readFileSync(conversationsPath, 'utf8'));
+    const conversations = Array.isArray(data.conversations) ? data.conversations : [];
+    const count = conversations.length;
+    const stamp = buildDialogueTheaterBundleStamp(conversations);
+    const countMeta = `<meta name="dialogue-theater-bundle-conversations" content="${count}">`;
+    const stampMeta = `<meta name="dialogue-theater-bundle-stamp" content="${escapeHtmlAttr(stamp)}">`;
+
+    let html = fs.readFileSync(siteIndex, 'utf8');
+    html = html.replace(/\s*<meta name=["']dialogue-theater-bundle-conversations["'][^>]*>\s*/gi, '\n');
+    html = html.replace(/\s*<meta name=["']dialogue-theater-bundle-stamp["'][^>]*>\s*/gi, '\n');
+
+    const anchor = /<meta name=["']timeline-bundle-stamp["'][^>]*>/i;
+    if (anchor.test(html)) {
+        html = html.replace(anchor, (m) => `${m}\n    ${countMeta}\n    ${stampMeta}`);
+    } else if (/<meta name=["']timeline-deploy["'][^>]*>/i.test(html)) {
+        html = html.replace(
+            /<meta name=["']timeline-deploy["'][^>]*>/i,
+            (m) => `${m}\n    ${countMeta}\n    ${stampMeta}`,
+        );
+    } else if (/<meta\s+charset=/i.test(html)) {
+        html = html.replace(
+            /(<meta\s+charset=["']UTF-8["']\s*\/?>)/i,
+            `$1\n    ${countMeta}\n    ${stampMeta}`,
+        );
+    } else {
+        html = html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}\n    ${countMeta}\n    ${stampMeta}`);
+    }
+
+    fs.writeFileSync(siteIndex, html, 'utf8');
+}
+
 function removeDevOnlyArtifacts() {
     const paths = [
         path.join(OUT, 'src', 'server.js'),
@@ -133,6 +176,16 @@ function validateStaticSite() {
         if (!/name=["']timeline-bundle-events["']/i.test(html)) {
             errors.push('index.html missing <meta name="timeline-bundle-events" …> (run build:pages)');
         }
+        if (!/name=["']dialogue-theater-bundle-stamp["']/i.test(html)) {
+            errors.push(
+                'index.html missing <meta name="dialogue-theater-bundle-stamp" …> (run build:pages)',
+            );
+        }
+        if (!/name=["']dialogue-theater-bundle-conversations["']/i.test(html)) {
+            errors.push(
+                'index.html missing <meta name="dialogue-theater-bundle-conversations" …> (run build:pages)',
+            );
+        }
     }
 
     const timelinePath = path.join(OUT, 'src', 'data', 'event-system', 'timeline-events.json');
@@ -145,6 +198,25 @@ function validateStaticSite() {
             if (n === 0) errors.push('timeline-events.json has zero events');
         } catch (e) {
             errors.push(`timeline-events.json is not valid JSON: ${e?.message || e}`);
+        }
+    }
+
+    const conversationsPath = path.join(
+        OUT,
+        'src',
+        'data',
+        'dialogue-theater',
+        'conversations.json',
+    );
+    if (!fs.existsSync(conversationsPath)) {
+        errors.push('Missing _site/src/data/dialogue-theater/conversations.json');
+    } else {
+        try {
+            const theater = JSON.parse(fs.readFileSync(conversationsPath, 'utf8'));
+            const n = Array.isArray(theater.conversations) ? theater.conversations.length : 0;
+            if (n === 0) errors.push('conversations.json has zero conversations');
+        } catch (e) {
+            errors.push(`conversations.json is not valid JSON: ${e?.message || e}`);
         }
     }
 
@@ -209,6 +281,10 @@ function printSummary() {
         `  manifest: ${manifest.heroes?.length ?? 0} heroes, `
             + `${manifest.factions?.length ?? 0} factions, ${manifest.npcs?.length ?? 0} npcs`,
     );
+    const theater = JSON.parse(
+        fs.readFileSync(path.join(OUT, 'src', 'data', 'dialogue-theater', 'conversations.json'), 'utf8'),
+    );
+    console.log(`  conversations.json: ${theater.conversations?.length ?? 0} conversations`);
     console.log('  static deploy meta injected; dev-only paths excluded');
 }
 
@@ -219,6 +295,7 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 injectStaticDeployMeta(path.join(OUT, 'index.html'));
 injectTimelineBundleMeta(path.join(OUT, 'index.html'));
+injectDialogueTheaterBundleMeta(path.join(OUT, 'index.html'));
 removeDevOnlyArtifacts();
 validateStaticSite();
 printSummary();

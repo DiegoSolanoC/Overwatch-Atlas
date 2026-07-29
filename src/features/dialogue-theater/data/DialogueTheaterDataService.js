@@ -19,6 +19,13 @@ import {
 } from './loadDialogueTheaterAssets.js';
 import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
 import { DIALOGUE_THEATER_RETIRED_WORKING_TAGS } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
+import {
+    buildDialogueTheaterBundleStamp,
+    clearDialogueTheaterBundleStamp,
+    readDialogueTheaterBundleStampFromMeta,
+    readStoredDialogueTheaterBundleStamp,
+    writeDialogueTheaterBundleStamp,
+} from './dialogueTheaterBundleStamp.js';
 
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
 export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
@@ -26,6 +33,30 @@ export const DIALOGUE_THEATER_NAME_RESET_KEY = 'dialogueTheaterNameResetAt';
 const FILE_URL = FILES.dialogueTheater.conversations;
 const RETIRED_WORKING_TAGS = new Set(DIALOGUE_THEATER_RETIRED_WORKING_TAGS);
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
+
+/**
+ * Escape hatch: `?resetDialogue=1` drops cached theater conversations and reloads from the bundle.
+ * @returns {boolean}
+ */
+function consumeResetDialogueUrlParam() {
+    if (typeof window === 'undefined') return false;
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('resetDialogue') !== '1') return false;
+        localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
+        localStorage.removeItem(DIALOGUE_THEATER_DELETED_IDS_KEY);
+        localStorage.removeItem(DIALOGUE_THEATER_NAME_RESET_KEY);
+        clearDialogueTheaterBundleStamp();
+        params.delete('resetDialogue');
+        const nextSearch = params.toString();
+        const nextUrl =
+            window.location.pathname + (nextSearch ? `?${nextSearch}` : '') + window.location.hash;
+        window.history.replaceState(null, '', nextUrl);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
 
 /** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
 /** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string }} DialogueLine */
@@ -250,13 +281,18 @@ class DialogueTheaterDataService {
                 if (applyFileNames) {
                     return { ...withRenders, name: fileRow.name };
                 }
-                // Repo numbered review placeholders beat stale localStorage titles after script imports.
-                if (
-                    localRow
-                    && isNumberedConversationName(fileRow.name)
-                    && !isNumberedConversationName(localRow.name)
-                ) {
-                    return { ...withRenders, name: fileRow.name };
+                // Prefer a real title over numbered review placeholders from either side.
+                // Repo/script custom names beat stale numbered localStorage; in-progress
+                // local naming beats numbered placeholders still sitting in the file.
+                const fileName = String(fileRow.name || '').trim();
+                const localName = String(localRow.name || '').trim();
+                const fileNumbered = isNumberedConversationName(fileName);
+                const localNumbered = isNumberedConversationName(localName);
+                if (!fileNumbered && localNumbered) {
+                    return { ...withRenders, name: fileName };
+                }
+                if (fileNumbered && !localNumbered && localName) {
+                    return { ...withRenders, name: localName };
                 }
                 return withRenders;
             });
@@ -316,6 +352,7 @@ class DialogueTheaterDataService {
 
     async load() {
         updateStatus('Dialogue Theater: loading conversations…', 'info');
+        const forcedReset = consumeResetDialogueUrlParam();
         this.loadDeletedConversationIds();
 
         let fileRows = null;
@@ -370,10 +407,24 @@ class DialogueTheaterDataService {
             return;
         }
 
+        const fileStamp =
+            readDialogueTheaterBundleStampFromMeta() ||
+            buildDialogueTheaterBundleStamp(fileNormalized);
+        const storedStamp = readStoredDialogueTheaterBundleStamp();
+        const stampMismatch = Boolean(fileStamp && fileStamp !== storedStamp);
+        // Shipped/pulled conversations.json is source of truth after a push/deploy/pull.
+        // Keep only local-only drafts (ids not in the file).
+        const preferShippedFile =
+            forcedReset || (fileNormalized.length > 0 && stampMismatch);
+
         if (fileNormalized.length === 0) {
             this.conversations = localNormalized;
-        } else if (localNormalized.length === 0) {
-            this.conversations = fileNormalized;
+        } else if (localNormalized.length === 0 || preferShippedFile) {
+            const fileIds = new Set(fileNormalized.map((row) => row.id));
+            const localOnlyDrafts = preferShippedFile
+                ? localNormalized.filter((row) => !fileIds.has(row.id))
+                : [];
+            this.conversations = [...fileNormalized, ...localOnlyDrafts];
         } else {
             /** Bundled file wins on id unless local has saved route data; keep local-only drafts. */
             this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
@@ -392,6 +443,7 @@ class DialogueTheaterDataService {
 
         const heroicUpgrades = await this.applyHeroicRenderUpgrades();
         this.persistLocalStorageOnly();
+        if (fileStamp) writeDialogueTheaterBundleStamp(fileStamp);
 
         if (applyFileNames) {
             localStorage.setItem(DIALOGUE_THEATER_NAME_RESET_KEY, fileResetAt);
@@ -405,6 +457,11 @@ class DialogueTheaterDataService {
         let loadSource = 'file + local drafts';
         if (fileNormalized.length === 0) loadSource = 'localStorage';
         else if (localNormalized.length === 0) loadSource = 'bundled file';
+        else if (preferShippedFile) {
+            loadSource = stampMismatch
+                ? 'bundled file (deploy/push refresh)'
+                : 'bundled file (reset)';
+        }
         const heroicNote =
             heroicUpgrades > 0 ? ` — upgraded ${heroicUpgrades} line render(s) to Heroic` : '';
         updateStatus(
@@ -428,6 +485,8 @@ class DialogueTheaterDataService {
     save(opts = {}) {
         this.conversations = this.normalizeConversations(this.conversations);
         localStorage.setItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY, JSON.stringify(this.conversations));
+        const savedStamp = buildDialogueTheaterBundleStamp(this.conversations);
+        if (savedStamp) writeDialogueTheaterBundleStamp(savedStamp);
         this.deletedConversationIds.clear();
         this.persistDeletedConversationIds();
         this.clearUnsavedMarkers();
