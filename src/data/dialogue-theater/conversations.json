@@ -1668,7 +1668,7 @@
     },
     {
       "id": "94c0d066-c429-4d24-afe5-7de3aaac8d58",
-      "name": "19",
+      "name": "In the West",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2196,7 +2196,7 @@
     },
     {
       "id": "ef59089f-2bf7-4a2e-9cad-05d7a6416f01",
-      "name": "35",
+      "name": "Deprioritized",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2229,7 +2229,7 @@
     },
     {
       "id": "ab2d50a2-31bc-41ba-bc8a-e123b9ec4aa6",
-      "name": "36",
+      "name": "Handling Dancing",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2509,7 +2509,7 @@
     },
     {
       "id": "18bb4628-c058-40aa-a531-40907a462b18",
-      "name": "44",
+      "name": "How to Party",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2550,7 +2550,7 @@
         {
           "id": "834bf708-6e58-4a6e-9530-cf58766d90fb",
           "hero": "Lúcio",
-          "voice": "Lúcio_-_Relax!_If_we_make_it_out_alive,_I'll_get_you_a_VIP_pass.ogg",
+          "voice": "L������cio_-_Relax!_If_we_make_it_out_alive,_I'll_get_you_a_VIP_pass.ogg",
           "voicePrefix": "",
           "subtitles": "Relax! If we make it out alive, I'll get you a VIP pass!",
           "render": "Heroic.png"
@@ -2584,7 +2584,7 @@
     },
     {
       "id": "e754e45d-f260-4bda-a393-8033522aefd7",
-      "name": "49",
+      "name": "B.O.B.'s Fire power",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2609,7 +2609,7 @@
     },
     {
       "id": "eead9e95-d37a-4ea1-bbe8-3d3293aac0e0",
-      "name": "50",
+      "name": "Good Work",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2692,7 +2692,7 @@
     },
     {
       "id": "1e8c1a48-6de7-4e68-a32b-a512e2b850e8",
-      "name": "53",
+      "name": "Competition on the Range",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2725,7 +2725,7 @@
     },
     {
       "id": "1b8e057f-6561-4a33-a434-446790c06c29",
-      "name": "54",
+      "name": "Owe you a Round",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2750,7 +2750,7 @@
     },
     {
       "id": "cc59636e-0a97-4511-a35b-78ccbb570ad5",
-      "name": "55",
+      "name": "Back Together",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2775,7 +2775,7 @@
     },
     {
       "id": "3aca4846-ff97-44ec-a9c9-919841fa466a",
-      "name": "56",
+      "name": "Bring out the Best",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -2982,7 +2982,7 @@
     },
     {
       "id": "bf40e6a7-3797-451e-91b9-9da1408ead57",
-      "name": "63",
+      "name": "My Father's Opinion",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -3023,7 +3023,7 @@
     },
     {
       "id": "1190a1e7-f81c-4dcf-b311-06245a97b22c",
-      "name": "64",
+      "name": "Old Wounds",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4186,7 +4186,7 @@
     },
     {
       "id": "cd8b5979-a23d-41cf-bbaa-7b347be6a02e",
-      "name": "100",
+      "name": "Peaceful Reality",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4211,7 +4211,7 @@
     },
     {
       "id": "dc94f5fd-536f-41b2-aa24-8fe085c91f17",
-      "name": "101",
+      "name": "Too Old",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4252,7 +4252,7 @@
     },
     {
       "id": "bac8e182-cdfd-4111-b805-052a893b72cd",
-      "name": "102",
+      "name": "Taking time off",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4854,7 +4854,7 @@
     },
     {
       "id": "1c013b78-8c73-4616-9285-45219cbcbdd0",
-      "name": "111",
+      "name": "Stealing Hearts",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4887,7 +4887,7 @@
     },
     {
       "id": "f43603f8-0fa1-440a-9680-76f220b96600",
-      "name": "112",
+      "name": "Real Glory",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4912,7 +4912,7 @@
     },
     {
       "id": "1371a4c9-4bdf-4a11-b089-fe9bfc9526d4",
-      "name": "113",
+      "name": "How's Bars",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4937,7 +4937,7 @@
     },
     {
       "id": "9f01a2af-559b-410a-8127-d97a43325f99",
-      "name": "114",
+      "name": "Nice to see you",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -4978,7 +4978,7 @@
     },
     {
       "id": "717ab852-0f80-478e-9686-70dfc336805a",
-      "name": "115",
+      "name": "Owing Money",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5019,7 +5019,7 @@
     },
     {
       "id": "3628a3bb-9498-4c4d-8a48-008b51f914cd",
-      "name": "116",
+      "name": "Dynamite Brains",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5060,7 +5060,7 @@
     },
     {
       "id": "8bc41ec0-e352-416b-8b21-8ccc04da2602",
-      "name": "117",
+      "name": "Frankie and Bez",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5101,7 +5101,7 @@
     },
     {
       "id": "007ec2f8-0a83-4cd4-ba7d-ba9e67af114d",
-      "name": "118",
+      "name": "Old Bike",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5142,7 +5142,7 @@
     },
     {
       "id": "b298e252-90bb-4582-8d6c-34c001003009",
-      "name": "119",
+      "name": "Deals with Talon",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5167,7 +5167,7 @@
     },
     {
       "id": "08eedec4-9634-4396-be54-e8ee69efcff1",
-      "name": "120",
+      "name": "Going too Far",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5192,7 +5192,7 @@
     },
     {
       "id": "aacca2bd-a392-4575-ac24-23db1a7500a4",
-      "name": "121",
+      "name": "Where is my Bike",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5503,7 +5503,7 @@
     },
     {
       "id": "2c9071a5-d7d0-47d2-aff2-0de040885be8",
-      "name": "131",
+      "name": "Of my Word",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5569,7 +5569,7 @@
     },
     {
       "id": "57e325a4-62d5-49c7-9f33-445de13f1917",
-      "name": "133",
+      "name": "Western Movies",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5610,7 +5610,7 @@
     },
     {
       "id": "f609684d-def8-432b-8a98-fce2a0187d75",
-      "name": "134",
+      "name": "Foxes Fight Back",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5635,7 +5635,7 @@
     },
     {
       "id": "40da4532-8f80-4099-ba9e-2771b67be8dd",
-      "name": "135",
+      "name": "Your Parents",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5668,7 +5668,7 @@
     },
     {
       "id": "33f5a636-73d3-4724-b386-ab386fd74dda",
-      "name": "136",
+      "name": "Loads of trouble",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5709,7 +5709,7 @@
     },
     {
       "id": "7b60a51f-85e3-40aa-bea5-84e476154c61",
-      "name": "137",
+      "name": "Making a Living",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5750,7 +5750,7 @@
     },
     {
       "id": "fa83363e-3919-43b9-833a-6d0199769235",
-      "name": "Not a Toy yet",
+      "name": "Not a Toy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5816,7 +5816,7 @@
     },
     {
       "id": "980ba389-83d6-41e4-adc0-a50d777961d5",
-      "name": "140",
+      "name": "Aggression and Ability",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -5957,7 +5957,7 @@
     },
     {
       "id": "ec2f6305-8866-4266-8db9-82f7236fee4f",
-      "name": "146",
+      "name": "Too good for Crime",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6111,7 +6111,7 @@
     },
     {
       "id": "65701dee-336f-4258-a2bf-87bbcd98320c",
-      "name": "148",
+      "name": "Headlines",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6278,7 +6278,7 @@
           "voice": "Widowmaker_-_Perhaps_in_the_hands_of_an_amateur.ogg",
           "voicePrefix": "",
           "subtitles": "",
-          "render": ""
+          "render": "Heroic.png"
         }
       ]
     },
@@ -6350,7 +6350,7 @@
     },
     {
       "id": "bb8cb80e-2a74-4fd0-b22d-a402519df512",
-      "name": "155",
+      "name": "Talon's Bounty",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6391,7 +6391,7 @@
     },
     {
       "id": "381d05e0-592e-4a53-9d52-9a4aa1a0899f",
-      "name": "156",
+      "name": "Sticking Around",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6424,7 +6424,7 @@
     },
     {
       "id": "10d9fd1a-e1a6-4fc0-ba6c-06d0849bdb11",
-      "name": "157",
+      "name": "Line them up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6556,7 +6556,7 @@
     },
     {
       "id": "d7b008c3-6b43-4dee-a4ef-a63fc041bb7f",
-      "name": "161",
+      "name": "Can I have your Bow",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6589,7 +6589,7 @@
     },
     {
       "id": "b70b2bb0-eff4-4ec2-b6ce-a505877d6aad",
-      "name": "162",
+      "name": "Looking Sharp",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -6919,7 +6919,7 @@
     },
     {
       "id": "106a8910-2ac6-4228-83e9-3a8d06b4db34",
-      "name": "Sticking Around",
+      "name": "Fighting for Vendetta",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7522,7 +7522,7 @@
     },
     {
       "id": "9209e09e-d402-445e-a0a0-8a012432a794",
-      "name": "192",
+      "name": "Advance Technologies",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7547,7 +7547,7 @@
     },
     {
       "id": "235dd1da-b29c-44c8-85f9-6e0479165bb8",
-      "name": "193",
+      "name": "Immortality Turret",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -7572,7 +7572,7 @@
     },
     {
       "id": "c5c1b05b-1ab5-49eb-85c8-b4a83a78ce22",
-      "name": "194",
+      "name": "Testing Prototypes",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -8821,7 +8821,7 @@
     },
     {
       "id": "535d603c-184f-43c0-9621-4b4f2688ccb0",
-      "name": "227",
+      "name": "Robo Horse",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9204,7 +9204,7 @@
     },
     {
       "id": "cf8b6c16-56ed-4a04-b8e2-c580ffb32384",
-      "name": "234",
+      "name": "Once a Poet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9912,7 +9912,7 @@
     },
     {
       "id": "ab14740d-b73e-45ad-b924-bc948b773518",
-      "name": "255",
+      "name": "My little girl",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9953,7 +9953,7 @@
     },
     {
       "id": "6f6553e2-6b16-4d18-b554-01a2c75a37d0",
-      "name": "256",
+      "name": "Music Festival",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -9978,7 +9978,7 @@
     },
     {
       "id": "b707dc99-105c-4fac-a62f-2f8558ab483f",
-      "name": "257",
+      "name": "Ready to work",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10011,7 +10011,7 @@
     },
     {
       "id": "eee0676c-7269-4942-afb7-6b1b3e30d225",
-      "name": "258",
+      "name": "Back Home",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10052,7 +10052,7 @@
     },
     {
       "id": "521e9c58-3b80-4703-8186-2a5c0789e61f",
-      "name": "259",
+      "name": "More Cats",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10093,7 +10093,7 @@
     },
     {
       "id": "0bc90184-0893-4b57-ab89-84040aa7cc0b",
-      "name": "260",
+      "name": "Curious Whales",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10692,7 +10692,7 @@
     },
     {
       "id": "e7870251-2086-4114-bc93-7c42572ed878",
-      "name": "275",
+      "name": "Liquor preferences",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10717,7 +10717,7 @@
     },
     {
       "id": "2e4bc9e6-0256-40df-96d7-3895b4faeff6",
-      "name": "276",
+      "name": "Traditional Armaments",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -10832,7 +10832,7 @@
     },
     {
       "id": "b3ec3912-8677-43a3-b658-a9f895ef28e9",
-      "name": "279",
+      "name": "Glaring Lights",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11061,7 +11061,7 @@
     },
     {
       "id": "85c9c9fd-5d38-442c-8601-45ed234bdc0f",
-      "name": "285",
+      "name": "Empty Head",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11267,7 +11267,7 @@
     },
     {
       "id": "adf7d755-c9b8-492f-8480-526340db55eb",
-      "name": "291",
+      "name": "Team Choices",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11300,7 +11300,7 @@
     },
     {
       "id": "b04cf0fb-9067-4e23-b5ba-ee311bcca654",
-      "name": "292",
+      "name": "Awful Quiet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11456,7 +11456,7 @@
     },
     {
       "id": "5dee0977-3351-4aca-9cdf-44b4823a5f6d",
-      "name": "296",
+      "name": "Itchy feet",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11489,7 +11489,7 @@
     },
     {
       "id": "7aef2d07-85b3-4b5a-bcf6-1c2398571a7d",
-      "name": "297",
+      "name": "Old School",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -11704,7 +11704,7 @@
     },
     {
       "id": "2332f66e-9bde-4884-8ae8-6db8603dbd60",
-      "name": "305",
+      "name": "Keeping Up Okay",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -13122,7 +13122,7 @@
         },
         {
           "id": "c4e8a1b2-3d5f-4a6b-9c0e-1a2b3c4d5e05",
-          "label": "D.Mon",
+          "label": "D.mon",
           "lineIds": [
             "0a859379-a1fe-40d0-a231-17174d0e6655",
             "44f2b3f1-5015-4c71-b18b-b3042d0a63ce",
@@ -16244,7 +16244,7 @@
     },
     {
       "id": "c8b31412-3282-4b5e-b01c-57433c6b8862",
-      "name": "434",
+      "name": "Like a Brother",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21038,7 +21038,7 @@
     },
     {
       "id": "38c08d6f-d1b9-4052-9dc6-e25a12d8c496",
-      "name": "471",
+      "name": "For your Sake",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21129,7 +21129,7 @@
     },
     {
       "id": "5211df97-ef12-49f8-a303-5ab7260f480b",
-      "name": "474",
+      "name": "Frowning",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21162,7 +21162,7 @@
     },
     {
       "id": "8270f5db-3959-4b1f-952f-d2d8b6237a19",
-      "name": "475",
+      "name": "Sorry enough to Help",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21193,17 +21193,17 @@
         },
         {
           "id": "a0f52f2a-27ab-4ef6-93b8-5f5a07fb8206",
-          "hero": "Unknown",
+          "hero": "Kiriko",
           "voice": "Kiriko_-_Sorry_enough_to_help.ogg",
           "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "Sorry enough to help",
+          "render": "Heroic.png"
         }
       ]
     },
     {
       "id": "36f506f6-5ca7-4b80-93fc-164ff378c0b6",
-      "name": "476",
+      "name": "Lotus Flower",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21244,7 +21244,7 @@
     },
     {
       "id": "344070d6-bf78-4e53-8a15-d2c25e19c274",
-      "name": "477",
+      "name": "Exchanging Couplets",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21277,7 +21277,7 @@
     },
     {
       "id": "2a127e6c-7f07-4f8a-b23f-8ca23335f4ce",
-      "name": "478",
+      "name": "Hair Up",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21343,7 +21343,7 @@
     },
     {
       "id": "0e763926-9282-43b3-a6d2-dda3edcd4c75",
-      "name": "480",
+      "name": "Well Informed",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21368,7 +21368,7 @@
     },
     {
       "id": "46ac1d28-8ba3-490f-8eb7-373db0d56ad0",
-      "name": "482",
+      "name": "Moved Recently",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21409,7 +21409,7 @@
     },
     {
       "id": "ed7553b2-aa3d-408f-9a1c-22e4b184a8b2",
-      "name": "483",
+      "name": "No Honor",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21508,7 +21508,7 @@
     },
     {
       "id": "4a19675e-6f1c-4ab2-8b6a-3885f081f2d1",
-      "name": "486",
+      "name": "Lone Wolf",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21541,7 +21541,7 @@
     },
     {
       "id": "c52f4a48-494a-4ad7-bbae-4e3ce564c51c",
-      "name": "487",
+      "name": "Adopting a Dog",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21574,7 +21574,7 @@
     },
     {
       "id": "d19cf01e-e778-4dc1-a501-c388bac92dc1",
-      "name": "488",
+      "name": "Leaving Organizations",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21615,7 +21615,7 @@
     },
     {
       "id": "f7e641a6-e075-42f7-a50c-45b3b15c109c",
-      "name": "489",
+      "name": "Crooked",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21714,7 +21714,7 @@
     },
     {
       "id": "7ab8a420-1538-443e-ab33-08fbe85b8e7a",
-      "name": "492",
+      "name": "Like my Brother",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21780,7 +21780,7 @@
     },
     {
       "id": "a072ab67-bae7-4a71-849f-56045a135bc3",
-      "name": "494",
+      "name": "Hardest Battle",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -21813,7 +21813,7 @@
     },
     {
       "id": "c80b8dd9-0b74-412d-a7b2-f8437e6ecec6",
-      "name": "495",
+      "name": "Man in the Mirror",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23183,7 +23183,7 @@
     },
     {
       "id": "84f6531c-75cf-48ce-84d1-1ed62af4c2c9",
-      "name": "535",
+      "name": "Smelling the Roses",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23216,7 +23216,7 @@
     },
     {
       "id": "e10efcc6-bedb-40f1-ac9a-5cbd5cf41fa8",
-      "name": "536",
+      "name": "Reverse Engineering",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -23249,7 +23249,7 @@
     },
     {
       "id": "7233c6c1-b6fa-435f-ba32-5d765c86f195",
-      "name": "537",
+      "name": "Thermodynamics",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -25714,7 +25714,7 @@
     },
     {
       "id": "d81eaf4b-deb2-409d-9a10-0bdb5b6123a2",
-      "name": "613",
+      "name": "Naming Turrets",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26266,7 +26266,7 @@
     },
     {
       "id": "18ee5513-26b4-4f43-b176-6161ca23ae15",
-      "name": "629",
+      "name": "Exploitative Boss",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26924,7 +26924,7 @@
     },
     {
       "id": "694febd3-479f-4f3e-85da-6ca185a7adaa",
-      "name": "647",
+      "name": "Days at the Academy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26957,7 +26957,7 @@
     },
     {
       "id": "90399d02-2bc1-4d5a-9677-e7664dceacb5",
-      "name": "648",
+      "name": "Missing the Academy",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -26982,7 +26982,7 @@
     },
     {
       "id": "710fc7cc-7e25-4424-bed3-67bbd38c2525",
-      "name": "649",
+      "name": "Best Roommate",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27015,7 +27015,7 @@
     },
     {
       "id": "8556f68d-a4f3-462c-a527-dab18312147a",
-      "name": "650",
+      "name": "Culinary Inventions",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27056,7 +27056,7 @@
     },
     {
       "id": "5b959861-2f9b-4037-9978-923020ff5165",
-      "name": "651",
+      "name": "Saying Hello",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27070,50 +27070,89 @@
           "render": "Heroic.png"
         },
         {
-          "id": "fe783f32-bca2-4c59-b847-8bcfdb9b1b22",
-          "hero": "Symmetra",
-          "voice": "Lifeweaver_-_Satya,_my_clever_little_fox,_my_precious_pearl_plucked_from_the_depths_of_the_sea.ogg",
-          "voicePrefix": "",
-          "subtitles": "**sigh** What, Bua?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "2e3e6392-1291-4db7-9aea-a186f2ead245",
+          "id": "9f58cad8-85ab-472b-a8c7-713830ca9485",
           "hero": "Lifeweaver",
           "voice": "Lifeweaver_-_Satya,_my_dancing_dream,_rhythmic_ruler_of_my_heart.ogg",
           "voicePrefix": "",
-          "subtitles": "**laughs** What do you mean, \"what\"? I'm just saying hello.",
+          "subtitles": "Satya, my dancing dream, rhythmic ruler of my heart",
           "render": "Heroic.png"
         },
         {
-          "id": "9f58cad8-85ab-472b-a8c7-713830ca9485",
-          "hero": "Unknown",
-          "voice": "Lifeweaver_-_Satya,_my_radiant_moon_among_the_stars,_my_resonant_siren_song.ogg",
-          "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
-        },
-        {
           "id": "1184d255-8aa1-4d43-84cd-61282efaa201",
-          "hero": "Unknown",
-          "voice": "Symmetra_-_What,_Bua.ogg",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Satya,_my_clever_little_fox,_my_precious_pearl_plucked_from_the_depths_of_the_sea.ogg",
           "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "Satya, my clever little fox, my precious pearl plucked from the depths of the sea",
+          "render": "Heroic.png"
         },
         {
           "id": "45e2d17a-35b6-4948-8e1f-5ff44cfc2ec7",
-          "hero": "Unknown",
+          "hero": "Lifeweaver",
+          "voice": "Lifeweaver_-_Satya,_my_radiant_moon_among_the_stars,_my_resonant_siren_song.ogg",
+          "voicePrefix": "",
+          "subtitles": "Satya, my radiant moon among the stars, my resonant siren song",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "07929095-d871-4622-8584-f06ef193f607",
+          "hero": "Symmetra",
+          "voice": "Symmetra_-_What,_Bua.ogg",
+          "voicePrefix": "",
+          "subtitles": "What, Bua",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "29241ce4-764c-4e97-bcfc-6457531e7a8b",
+          "hero": "Lifeweaver",
           "voice": "Lifeweaver_-_What_do_you_mean_what_I'm_just_saying_hello.ogg",
           "voicePrefix": "",
-          "subtitles": "",
-          "render": ""
+          "subtitles": "What do you mean what I'm just saying hello",
+          "render": "Heroic.png"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "4f90d5f1-80f8-4544-96e5-b6e176439ca8",
+          "label": "Reason to LIve",
+          "lineIds": [
+            "e7733b68-dcd2-411d-9424-863b5fa771e5",
+            "07929095-d871-4622-8584-f06ef193f607",
+            "29241ce4-764c-4e97-bcfc-6457531e7a8b"
+          ]
+        },
+        {
+          "id": "cfe263bd-75a9-479e-8235-3dc1aaf4f048",
+          "label": "Ruler of my heart",
+          "lineIds": [
+            "9f58cad8-85ab-472b-a8c7-713830ca9485",
+            "07929095-d871-4622-8584-f06ef193f607",
+            "29241ce4-764c-4e97-bcfc-6457531e7a8b"
+          ]
+        },
+        {
+          "id": "bab904e5-667e-4eb8-aa7b-d5387913f6d8",
+          "label": "Clever Fox",
+          "lineIds": [
+            "1184d255-8aa1-4d43-84cd-61282efaa201",
+            "07929095-d871-4622-8584-f06ef193f607",
+            "29241ce4-764c-4e97-bcfc-6457531e7a8b"
+          ]
+        },
+        {
+          "id": "39c61337-edcc-4220-9a09-a834b0969fab",
+          "label": "Radiant Moon",
+          "lineIds": [
+            "45e2d17a-35b6-4948-8e1f-5ff44cfc2ec7",
+            "07929095-d871-4622-8584-f06ef193f607",
+            "29241ce4-764c-4e97-bcfc-6457531e7a8b"
+          ]
+        }
+      ],
+      "selectedPathId": "4f90d5f1-80f8-4544-96e5-b6e176439ca8"
     },
     {
       "id": "e0d87b1c-1815-40fb-a02f-9226df44f840",
-      "name": "652",
+      "name": "Trying Harder",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27154,7 +27193,7 @@
     },
     {
       "id": "e9dfe0c8-1c98-4728-a2b0-138c0c88b82c",
-      "name": "653",
+      "name": "Returning to Vishkar",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27179,7 +27218,7 @@
     },
     {
       "id": "9ad0b438-eef9-4479-a277-509d82d6833f",
-      "name": "654",
+      "name": "Dr. Bhatt",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -27204,7 +27243,7 @@
     },
     {
       "id": "4f138171-9f57-443a-b5f8-a185a80a5477",
-      "name": "655",
+      "name": "Visiting the Martinses",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29625,7 +29664,7 @@
     },
     {
       "id": "5b16ee2f-5c53-4556-969b-97f10fa25b2a",
-      "name": "726",
+      "name": "Hard Bargain",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -29666,7 +29705,7 @@
     },
     {
       "id": "b9d5df79-19e0-4ebb-8691-22a4b0511c24",
-      "name": "727",
+      "name": "Anger Management",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -30789,7 +30828,7 @@
       "paths": [
         {
           "id": "7661b78d-eb7b-45bb-9a3d-b9fa6a7d4678",
-          "label": "Likewise.",
+          "label": "Echo",
           "lineIds": [
             "37d369fb-8d0f-4cfb-b95f-6147ad637bbc",
             "c961d4c3-a20c-4222-8576-b2824bc5c26a",
@@ -30799,7 +30838,7 @@
         },
         {
           "id": "8748d21d-663f-4b54-b4e8-5e3dc366e23a",
-          "label": "And I with you.",
+          "label": "Orisa",
           "lineIds": [
             "37d369fb-8d0f-4cfb-b95f-6147ad637bbc",
             "c961d4c3-a20c-4222-8576-b2824bc5c26a",
@@ -30809,7 +30848,7 @@
         },
         {
           "id": "7e2a9546-612e-4008-b4e3-c61dc372b768",
-          "label": "How gracious of you.",
+          "label": "Ramattra",
           "lineIds": [
             "37d369fb-8d0f-4cfb-b95f-6147ad637bbc",
             "c961d4c3-a20c-4222-8576-b2824bc5c26a",
@@ -30819,7 +30858,7 @@
         },
         {
           "id": "0c646f02-3e9c-4ee3-a100-bd8e90fd5cd2",
-          "label": "It will be a pleasure.",
+          "label": "Zenyatta",
           "lineIds": [
             "37d369fb-8d0f-4cfb-b95f-6147ad637bbc",
             "c961d4c3-a20c-4222-8576-b2824bc5c26a",
@@ -30828,7 +30867,7 @@
           ]
         }
       ],
-      "selectedPathId": "7e2a9546-612e-4008-b4e3-c61dc372b768"
+      "selectedPathId": "7661b78d-eb7b-45bb-9a3d-b9fa6a7d4678"
     },
     {
       "id": "fa7efeb5-0a89-4587-b629-d9b347e7ad79",
@@ -33544,47 +33583,6 @@
       ]
     },
     {
-      "id": "dcb86fa9-05f5-4ac5-bca1-8f026f70bb16",
-      "name": "844",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "efe0f49e-751b-4ec1-8bcf-f4b355f29539",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Been awful quiet around these parts since Null Sector turned tail.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "0873f4af-dacc-4dff-a830-3568565ce867",
-          "hero": "Sojourn",
-          "voice": "Sojourn_-_Yeah,_yeah.ogg",
-          "voicePrefix": "",
-          "subtitles": "Yeah. But I'm not convinced the fighting's over.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "409ec247-62c9-4f03-8cec-1582ea2677b1",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_You_hopin'_the_world_might_still_need_us_after_all.ogg",
-          "voicePrefix": "",
-          "subtitles": "You hopin' the world might still need us, after all?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "a6d2b8e7-19b6-4c6e-9a09-4b741ebea12c",
-          "hero": "Sojourn",
-          "voice": "Sojourn_-_I'm_never_hoping_for_a_storm._Doesn't_mean_I_can_stop_one_from_rolling_in.ogg",
-          "voicePrefix": "",
-          "subtitles": "I'm never hoping for a storm. Doesn't mean I can stop one from rolling in.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "da253c5c-59dd-43de-865f-a854392934d4",
       "name": "Hoping for Overwatch",
       "status": "active",
@@ -33776,7 +33774,7 @@
     },
     {
       "id": "c910d0a1-8101-45f0-a563-76e0123dd202",
-      "name": "852",
+      "name": "Applying to Vishkar",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -33809,7 +33807,7 @@
     },
     {
       "id": "b2903d8f-c24f-44b5-84a1-eab7e7c2eed8",
-      "name": "853",
+      "name": "Natural Leader",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -34887,7 +34885,7 @@
     },
     {
       "id": "36afc728-2e9a-421c-a925-78985cb09dc5",
-      "name": "883",
+      "name": "Binaural Music",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -34928,7 +34926,7 @@
     },
     {
       "id": "d16e7cbe-2f96-4c84-ad38-d9fd7b33935f",
-      "name": "884",
+      "name": "Crude Creations",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -34953,7 +34951,7 @@
     },
     {
       "id": "d14c4242-f479-4432-a499-06087d264e25",
-      "name": "885",
+      "name": "Beautiful Inventions",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -35274,7 +35272,7 @@
     },
     {
       "id": "74b68682-c4bc-49e0-9f28-8f8d05ba8e67",
-      "name": "893",
+      "name": "Repaying you",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -35307,7 +35305,7 @@
     },
     {
       "id": "2e752e2b-f68a-4820-8c0e-e63465bb303a",
-      "name": "894",
+      "name": "Changing for the Better",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -35530,7 +35528,7 @@
     },
     {
       "id": "1e60144a-8cbc-422f-ae93-917bf97584fd",
-      "name": "901",
+      "name": "Better Shot",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -35645,7 +35643,7 @@
     },
     {
       "id": "c6f2764e-5df5-411c-a6a8-2b834780ddbf",
-      "name": "904",
+      "name": "Developing Orbs",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -36721,47 +36719,6 @@
       ]
     },
     {
-      "id": "ad87c6cf-d9cc-4d73-8662-4f3db1021838",
-      "name": "939",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "99c9adef-386c-4ccb-82df-090b7711c6d6",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_You_act_like_my_brother_did_in_his_youth.ogg",
-          "voicePrefix": "",
-          "subtitles": "**sigh** You act like my brother did in his youth.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "2d929db4-b91f-4f22-9b4d-7e17194f32c6",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_Really._So_was_he_handsome._Charming._Funny.ogg",
-          "voicePrefix": "",
-          "subtitles": "Really? So was he handsome? Charming? Funny?",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "5c34879b-a0ed-47ad-b1ed-c2d34b7d0bc5",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_He_wasted_his_time_fooling_around_instead_of_learning_responsibility.ogg",
-          "voicePrefix": "",
-          "subtitles": "He wasted his time fooling around instead of learning responsibility.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "005fedb6-c76c-422b-b286-21886de6da24",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_Oh._You_act_like_my_sister.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh. Uh, you... act like my sister.",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "01e6538b-21f2-4559-b125-767d5d3be0d8",
       "name": "Psst psst",
       "status": "active",
@@ -37067,47 +37024,6 @@
       ]
     },
     {
-      "id": "26dc205c-1428-4e80-a6f9-82fdeb61cf84",
-      "name": "950",
-      "status": "active",
-      "eraName": "",
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "172e3e80-98bb-4d80-8de6-83aefaf42e76",
-          "hero": "Zenyatta",
-          "voice": "Brigitte_-_Papa,_is_there_anything_you'd_like_to_say_to_our_teammates.ogg",
-          "voicePrefix": "",
-          "subtitles": "It will be a pleasure.",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "8a1690a9-184f-444a-a269-b030bb0bb39e",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_I'm..._looking_forward_to_working_with_you.ogg",
-          "voicePrefix": "",
-          "subtitles": "I'm... looking forward to working with you",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "8c1b5fda-f8fd-4add-99e8-2c071aad8c19",
-          "hero": "Zenyatta",
-          "voice": "Zenyatta_-_It_will_be_a_pleasure.ogg",
-          "voicePrefix": "",
-          "subtitles": "It will be a pleasure",
-          "render": "Heroic.png"
-        },
-        {
-          "id": "081ccf5e-9071-4705-99c0-0e3c3ef4c6f2",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_Yes,_well._Let's_get_this_done.ogg",
-          "voicePrefix": "",
-          "subtitles": "Yes, well. Let's get this done",
-          "render": "Heroic.png"
-        }
-      ]
-    },
-    {
       "id": "b804c52f-749f-441a-bb5b-8adf3748a74f",
       "name": "Next Funeral",
       "status": "active",
@@ -37397,7 +37313,7 @@
     },
     {
       "id": "64dd4480-3170-4ae0-916d-0c10501500bc",
-      "name": "481",
+      "name": "Second Nature",
       "status": "active",
       "eraName": "",
       "scene": "Default.png",
@@ -38525,7 +38441,7 @@
       "paths": [
         {
           "id": "35d9103f-3d27-4cd8-ba96-dbf9ff5a6567",
-          "label": "My wrath",
+          "label": "Ashe",
           "lineIds": [
             "ca2446d9-5031-46aa-b110-17c59fbb2e9f",
             "6d9b5bc6-6f67-4606-a638-4b9e898b613d",
@@ -38534,7 +38450,7 @@
         },
         {
           "id": "30e7d5d8-d269-47e6-a679-d8d09f56972a",
-          "label": "An artist",
+          "label": "Zenyatta",
           "lineIds": [
             "ca2446d9-5031-46aa-b110-17c59fbb2e9f",
             "6d9b5bc6-6f67-4606-a638-4b9e898b613d",
@@ -38542,7 +38458,7 @@
           ]
         }
       ],
-      "selectedPathId": "35d9103f-3d27-4cd8-ba96-dbf9ff5a6567"
+      "selectedPathId": "30e7d5d8-d269-47e6-a679-d8d09f56972a"
     },
     {
       "id": "bd32515b-0fa3-490b-9d66-82dc55307b71",
@@ -41104,7 +41020,7 @@
           "hero": "Genji",
           "voice": "Genji_-_I_am_glad_you_have_chosen_a_side,_brother._I_have_always_been_on_yours.ogg",
           "voicePrefix": "",
-          "subtitles": "I am glad you have a choice in that side, brother. I have always been on yours.",
+          "subtitles": "I am glad you have chosen a side, brother. I have always been on yours",
           "render": "Heroic.png"
         },
         {
@@ -45871,6 +45787,489 @@
           "voice": "Torbjörn_-_Quit_being_so_humble._Nothing_wrong_with_being_proud_of_your_work!.ogg",
           "voicePrefix": "",
           "subtitles": "Quit being so humble. Nothing wrong with being proud of your work!",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "e45de99c-52fd-415e-972b-489ab2016713",
+      "name": "Board Feedback",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "ffd6391e-00d5-40c3-b4cb-d4c099a94b83",
+          "hero": "Symmetra",
+          "voice": "Symmetra_-_I_may_have_another_opportunity_to_travel_to_Rio_de_Janeiro._Do_you_have_any_feedback_for_the_board_.ogg",
+          "voicePrefix": "",
+          "subtitles": "I may have another opportunity to travel to Rio de Janeiro. Do you have any feedback for the board?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ca4dbc3a-093c-46b9-9908-df02b3d53f1e",
+          "hero": "Lúcio",
+          "voice": "Lúcio_-_Yeah,_I_do._Stay_out_of_my_city.ogg",
+          "voicePrefix": "",
+          "subtitles": "Yeah, I do. Stay out of my city.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "da0f65f4-093c-454a-9bda-874c415919f1",
+      "name": "Wearin' Skates",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "3753ff6d-96a3-4737-aace-ab2f6b5107b7",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Do_my_eyes_deceive_me,_or_are_you_wearing_skates.ogg",
+          "voicePrefix": "",
+          "subtitles": "Do my eyes deceive me, or are you wearin' skates?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8db4a290-4acb-4c74-89f5-9f13e39bdb15",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Nice_skates._Very_cute._You_going_to_swap_those_out_before_we_get_to_the_gunfight.ogg",
+          "voicePrefix": "",
+          "subtitles": "Nice skates. Very cute. You goin' to swap those out before we get to the gunfight?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "088ef2e8-a74b-40a1-a906-313ff3130423",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Y'all,_our_teammate_is_wearing_skates._To_a_gunfight.ogg",
+          "voicePrefix": "",
+          "subtitles": "Y'all, our teammate is wearin' skates. To a gunfight! Hahaha!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4e64e26d-249e-498a-99ab-3823e791b40e",
+          "hero": "Lúcio",
+          "voice": "Lúcio_-_You'll_see_what_these_can_do.ogg",
+          "voicePrefix": "",
+          "subtitles": "You'll see what these can do!",
+          "render": "Heroic.png"
+        }
+      ],
+      "paths": [
+        {
+          "id": "b732f093-48d5-4534-954b-9e08ed706625",
+          "label": "My Eyes Decie me",
+          "lineIds": [
+            "3753ff6d-96a3-4737-aace-ab2f6b5107b7",
+            "4e64e26d-249e-498a-99ab-3823e791b40e"
+          ]
+        },
+        {
+          "id": "448fa2a6-7622-42dc-b091-97415db7ffdf",
+          "label": "Nice skates",
+          "lineIds": [
+            "8db4a290-4acb-4c74-89f5-9f13e39bdb15",
+            "4e64e26d-249e-498a-99ab-3823e791b40e"
+          ]
+        },
+        {
+          "id": "02361946-e04c-4d7c-a10d-691f9e9bc3d4",
+          "label": "To a Gunfight",
+          "lineIds": [
+            "088ef2e8-a74b-40a1-a906-313ff3130423",
+            "4e64e26d-249e-498a-99ab-3823e791b40e"
+          ]
+        }
+      ],
+      "selectedPathId": "b732f093-48d5-4534-954b-9e08ed706625"
+    },
+    {
+      "id": "fcd42891-3b92-4a7d-9a7d-81798ec223f7",
+      "name": "Best Shot",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "4aca2811-083e-40a3-a25a-db514cbd7371",
+          "hero": "Ashe",
+          "voice": "Ashe_-_Time_to_settle_who's_the_best_shot.ogg",
+          "voicePrefix": "",
+          "subtitles": "Time to settle who's the best shot.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "de90fc17-f69f-4692-b64a-095e6ccba8e0",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_There_is_no_competition._I_was_trained_by_the_best.ogg",
+          "voicePrefix": "",
+          "subtitles": "There is no competition. I was trained by the best.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "80590b9e-3f3e-4b9f-92c8-38b7464fdb74",
+          "hero": "Ashe",
+          "voice": "Ashe_-_And_I_was_trained_by_the_West.ogg",
+          "voicePrefix": "",
+          "subtitles": "And I was trained by the West.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "79f94dca-bcc7-406a-98f2-7fcf661240c2",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_(sighs)_Americans.ogg",
+          "voicePrefix": "",
+          "subtitles": "**sighs** Americans.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "280e6116-8897-40d0-8a04-e171f5dbcb70",
+      "name": "Unwieldy Rifle",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "c5295c1e-69b6-4696-a34c-85a97e909ce2",
+          "hero": "Ashe",
+          "voice": "Ashe_-_That_rifle_is_a_fine_piece_of_work._Looks_a_little_unwieldy,_though.ogg",
+          "voicePrefix": "",
+          "subtitles": "That rifle is a fine piece of work. Looks a little unwieldy, though",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "6f3cf37d-f05d-4fca-8106-8c9ea7a8f78f",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_Perhaps_in_the_hands_of_an_amateur.ogg",
+          "voicePrefix": "",
+          "subtitles": "Perhaps in the hands of an amateur",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "d9d20b3f-cada-4719-9e42-4b4daf5d46a1",
+      "name": "Younger Self",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "fc1e92ad-2916-4c27-bad7-cd53f61166f9",
+          "hero": "Cassidy",
+          "voice": "Cassidy_-_You_remind_me_of_myself_when_I_was_younger.ogg",
+          "voicePrefix": "",
+          "subtitles": "You remind me of myself when I was younger.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "387ff5d2-86b5-4220-a041-02944bed6b2d",
+          "hero": "D.va",
+          "voice": "D.Va_-_Uh,_I'm_way_cooler_than_you!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Uh, I'm way cooler than you!",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "176247e5-a98d-4eac-8d9c-2dc167a2fc0b",
+          "hero": "Cassidy",
+          "voice": "Cassidy_-_That's_exactly_what_I_would've_said._All_you're_missing_is_the_hat_and_cigar.ogg",
+          "voicePrefix": "",
+          "subtitles": "That's exactly what I would've said! All you're missin' is the hat and cigar.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "a59db6a6-2d57-441d-84d1-0f4e394997ce",
+      "name": "Haikus",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "6af9242c-cee6-4e35-a466-1a574c1c368c",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Weighted_like_a_stone._Blade,_sharpened_-_yearns_to_punish._Strikes_the_final_blow.ogg",
+          "voicePrefix": "",
+          "subtitles": "Weighted like a stone. Blade, sharpened - yearns to punish. Strikes the final blow.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "b866db73-c131-4d2a-8435-b267b713bf81",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Swifter_than_the_wind._A_rushing_crimson_river._Stains_the_earth_with_red.ogg",
+          "voicePrefix": "",
+          "subtitles": "Swifter than the wind. A rushing crimson river. Stains the earth with red.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "c3eea35c-0539-4c1c-8f03-813588a6bf78",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_(groan)_You're_reciting_your_haikus_out_loud_again.ogg",
+          "voicePrefix": "",
+          "subtitles": "**groans** You're reciting your haikus out loud again...",
+          "render": "Heroic.png"
+        }
+      ],
+      "paths": [
+        {
+          "id": "f6e045a4-1c6a-414d-bdd0-da608cab8577",
+          "label": "Stone",
+          "lineIds": [
+            "6af9242c-cee6-4e35-a466-1a574c1c368c",
+            "c3eea35c-0539-4c1c-8f03-813588a6bf78"
+          ]
+        },
+        {
+          "id": "b7447de2-0066-4fa9-ba5f-fa4f6236f149",
+          "label": "Wind",
+          "lineIds": [
+            "b866db73-c131-4d2a-8435-b267b713bf81",
+            "c3eea35c-0539-4c1c-8f03-813588a6bf78"
+          ]
+        }
+      ],
+      "selectedPathId": "f6e045a4-1c6a-414d-bdd0-da608cab8577"
+    },
+    {
+      "id": "233b5697-2e97-49ab-a7b0-75694f0974fa",
+      "name": "Magnum Opus",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "8d21233a-a372-4609-975e-b85348258ff6",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_The_Shimada_weapons_were_masterworks,_but_those_ofuda_were_your_father's_magnum_opus.ogg",
+          "voicePrefix": "",
+          "subtitles": "The Shimada weapons were masterworks, but those ofuda were your father's magnum opus.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "4bdfcfa9-c3b5-48d5-a0a1-770c268344dc",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_He_made_them_for_grandma_when_he_proposed._Bringing_the_fox_spirit_to_life_really_won_her_over.ogg",
+          "voicePrefix": "",
+          "subtitles": "He made them for grandma when he proposed. Bringing the fox spirit to life really won her over.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "e66b0386-b44e-4338-ae20-bdb8a6117a45",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_A_sentimental,_yet_powerful_gift._I_see_why_she_was_impressed.ogg",
+          "voicePrefix": "",
+          "subtitles": "A sentimental, yet powerful gift. I see why she was impressed.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "3334dca9-0b9d-412b-9e07-de32784be309",
+      "name": "Fox Secret",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "51af335d-099d-4957-84c2-b4e53db9ea1f",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Is_it_true_that_my_dad_had_to_keep_the_fox_spirit_a_secret_from_the_clan_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Is it true that my dad had to keep the fox spirit a secret from the clan?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "ad6dd043-6906-4b6e-a6eb-87b618e86037",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Indeed._He_was_forbidden_from_crafting_more_anima_avatars_after_forging_our_dragons.ogg",
+          "voicePrefix": "",
+          "subtitles": "Indeed. He was forbidden from crafting more anima avatars after forging our dragons.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "34dfe256-be0b-4ee2-945e-f341f7785505",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Why__You_used_them_to_help_people.ogg",
+          "voicePrefix": "",
+          "subtitles": "Why? You used them to help people.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "8a86eea1-26d4-4e5d-ac0e-0efbc63521fe",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_The_scenes_that_haunt_my_memories_prove_otherwise.ogg",
+          "voicePrefix": "",
+          "subtitles": "The scenes that haunt my memories... prove otherwise.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "f0598691-8c43-43dc-a3a6-77562a832b74",
+      "name": "Have Faith",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "409ea8a5-58a5-49d4-adcb-e29aa1033718",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Do_you_think_Genji_will_ever_come_back.ogg",
+          "voicePrefix": "",
+          "subtitles": "Do you think Genji will ever come back?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "fcb6db15-19fc-4633-a5e2-95afa1a64f3f",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Have_faith,_Kiriko._The_years_have_changed_us_all,_but_he_will_return_just_as_I_have.ogg",
+          "voicePrefix": "",
+          "subtitles": "Have faith, Kiriko. The years have changed us all, but he will return just as I have.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "8855e925-fade-4da4-8e44-f0181570aa20",
+      "name": "Heard from your father",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "e3ade674-fd34-4c12-a621-4bbb7fa821fd",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Have_you_heard_from_your_father.ogg",
+          "voicePrefix": "",
+          "subtitles": "Have you heard from your father?",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "01b4d07d-5ba6-4b66-8033-29a66727e6e7",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_A_little._It's_been_harder_to_contact_him_since_you_escaped_the_Hashimoto.ogg",
+          "voicePrefix": "",
+          "subtitles": "A little. It's been harder to contact him since you escaped the Hashimoto.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "9adb523f-9bc2-4768-90c4-a92e94f39b52",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_I_did_not_wish_to_make_matters_worse_for_him._I'm_sorry.ogg",
+          "voicePrefix": "",
+          "subtitles": "I did not wish to make matters worse for him. I'm sorry.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "60f3ffa3-dc7c-4df0-870c-61cea9b74838",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Don't_be._I'm_sure_he's_just_glad_you're_back.ogg",
+          "voicePrefix": "",
+          "subtitles": "**reassuring sigh** Don't be. I'm sure he's just glad you're back.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "cda197a3-2f2c-4c69-a5c1-4da553414074",
+      "name": "Hourly Patrols",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "0d7ca1f1-9df8-4b18-8018-9be42a29b673",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_The_Hashimoto_run_hourly_patrols._We_can_sneak_into_the_castle_when_they_change_shifts.ogg",
+          "voicePrefix": "",
+          "subtitles": "The Hashimoto run hourly patrols. We can sneak into the castle when they change shifts.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "a498f897-9f0d-4751-b833-381c54aeae11",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_I_am..._impressed._Your_preparations_are_quite_diligent.ogg",
+          "voicePrefix": "",
+          "subtitles": "I am... impressed. Your preparations are quite diligent.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "cdaaa496-fc1b-4cc8-ac16-72925b488a0a",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_Well,_I_had_to_kill_time_until_someone_came_back.ogg",
+          "voicePrefix": "",
+          "subtitles": "Well, I had to kill time until someone came back...",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "d25b0fcb-1779-47bc-a524-8cd18e3b9511",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Right._Then_I_will_make_your_patience_worthwhile.ogg",
+          "voicePrefix": "",
+          "subtitles": "Right. Then I will make your patience worthwhile.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "7c6342f9-ef8d-49a9-b153-d1cd53f2120b",
+      "name": "Keep Up with the Sword",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "48f925c0-a1f2-44fb-9397-509ed435e1f0",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_My_mom_wants_to_know_if_you've_kept_up_with_the_sword.ogg",
+          "voicePrefix": "",
+          "subtitles": "My mom wants to know if you've kept up with the sword.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "30e6b8a8-4053-42ce-b2bd-75f2abfee2fb",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_I_swore_never_to_wield_a_blade_again.ogg",
+          "voicePrefix": "",
+          "subtitles": "I swore... never to wield a blade again.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "9555721c-192b-4f3c-af13-a17cf7b3f353",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_I'll_tell_her_you're_thinking_about_picking_it_back_up.ogg",
+          "voicePrefix": "",
+          "subtitles": "Mm. I'll tell her you're thinking of picking it back up.",
+          "render": "Heroic.png"
+        }
+      ]
+    },
+    {
+      "id": "29d4ca10-0dac-4329-864a-c959187bf9ff",
+      "name": "Asa-sensei",
+      "status": "active",
+      "eraName": "",
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "6e1b6d43-bd60-469b-b9f9-0f116597065f",
+          "hero": "Hanzo",
+          "voice": "Hanzo_-_Send_my_greetings_to_Asa-sensei.ogg",
+          "voicePrefix": "",
+          "subtitles": "Send my greetings to... Asa-sensei.",
+          "render": "Heroic.png"
+        },
+        {
+          "id": "56389bc6-88ad-481f-8f5d-4b27a9b13b38",
+          "hero": "Kiriko",
+          "voice": "Kiriko_-_You_can_say_hi_yourself.ogg",
+          "voicePrefix": "",
+          "subtitles": "You can say hi yourself.",
           "render": "Heroic.png"
         }
       ]
