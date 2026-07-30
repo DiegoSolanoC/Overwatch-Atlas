@@ -61,6 +61,56 @@
       } catch (e) {}
     })();
     </script>
+    <script>
+    (function () {
+      // Dialogue Theater: clear stale localStorage BEFORE ES modules load.
+      // Module imports are not consistently cache-busted, so ?resetDialogue=1 inside
+      // DialogueTheaterDataService.js can never run on a pinned old module. This head
+      // script mirrors the timeline deploy-stamp pattern and makes push/deploy 1:1.
+      var LS_KEY = 'dialogueTheaterConversations';
+      var STAMP_KEY = 'dialogueTheaterBundleStamp';
+      var DELETED_KEY = 'dialogueTheaterDeletedConversationIds';
+      var NAME_RESET_KEY = 'dialogueTheaterNameResetAt';
+      function clearDialogueCache() {
+        try {
+          localStorage.removeItem(LS_KEY);
+          localStorage.removeItem(STAMP_KEY);
+          localStorage.removeItem(DELETED_KEY);
+          localStorage.removeItem(NAME_RESET_KEY);
+        } catch (e) {}
+      }
+      function cleanResetParam() {
+        try {
+          var p = new URLSearchParams(location.search);
+          if (p.get('resetDialogue') !== '1') return false;
+          clearDialogueCache();
+          p.delete('resetDialogue');
+          var q = p.toString();
+          history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+          return true;
+        } catch (e) { return false; }
+      }
+      if (cleanResetParam()) return;
+      try {
+        var deploy = document.querySelector('meta[name="timeline-deploy"]');
+        var isStatic =
+          deploy && String(deploy.getAttribute('content') || '').toLowerCase() === 'static';
+        // GitHub Pages cannot Save to the repo — always load the shipped JSON.
+        // A matching stamp alone is not enough: a prior merge can leave numbered
+        // titles in localStorage while the stamp still matches the named file.
+        if (isStatic) {
+          clearDialogueCache();
+          return;
+        }
+        var stampMeta = document.querySelector('meta[name="dialogue-theater-bundle-stamp"]');
+        if (!stampMeta) return;
+        var bundleStamp = String(stampMeta.getAttribute('content') || '');
+        if (!bundleStamp) return;
+        if (localStorage.getItem(STAMP_KEY) === bundleStamp) return;
+        clearDialogueCache();
+      } catch (e) {}
+    })();
+    </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
     <link rel="stylesheet" href="src/styles/app.css?v=96">
@@ -394,7 +444,7 @@
     <script src="src/features/world/worldview-controls-ui/runtime/WorldviewStationFollow.js?v=9"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=100"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=102"></script>
     
     <!-- Load services -->
     <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js?v=10"></script>
@@ -458,6 +508,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=101"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=102"></script>
 </body>
 </html>

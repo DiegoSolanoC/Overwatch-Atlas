@@ -2,7 +2,7 @@
  * Bridges story image-overlay helpers (#eventImageOverlay) with Dialogue Theater stage mode.
  */
 
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=102';
 import {
     hideDialogueTheaterStage,
     ensureDialogueTheaterStageOverlayVisible,

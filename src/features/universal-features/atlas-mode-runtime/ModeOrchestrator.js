@@ -47,7 +47,7 @@ import {
 import {
     mountDialogueTheaterMode,
     unmountDialogueTheaterMode,
-} from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js';
+} from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js?v=102';
 import {
     mountOfficialArchiveMode,
     unmountOfficialArchiveMode,

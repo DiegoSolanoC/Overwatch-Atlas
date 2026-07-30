@@ -5,7 +5,7 @@
 
 import { showSaveSuccessFeedback } from '../../system-interface/interface-left-panel/coordinator/flashSaveSuccess.js';
 import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=102';
 import { loadDialogueTheaterAssets } from '../data/loadDialogueTheaterAssets.js';
 import { getEventListSpinnerGifSrc } from '../../universal-features/atlas-ui/loadingGifAssets.js';
 import { buildDialogueTheaterListThumbMediaHtml } from './buildDialogueTheaterListThumb.js';
@@ -13,7 +13,7 @@ import {
     closeDialogueTheaterInfoPanel,
     openDialogueTheaterInfoPanel,
     setDialogueTheaterInfoPanelListRefresh,
-} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
+} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=102';
 import {
     setupDialogueTheaterCompactChrome,
     unwireDialogueTheaterToolbarCollapse,

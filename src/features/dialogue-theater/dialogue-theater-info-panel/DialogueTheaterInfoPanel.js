@@ -5,7 +5,7 @@
 import { dismissAllPanelsExcept } from '../../system-interface/interface-shared/dismissAllPanelsExcept.js';
 import { isEventSlideEditDevHost } from '../../system-interface/interface-info-display/isEventSlideEditDevHost.js';
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=102';
 import {
     autoStartDialogueTheaterViewPlayAll,
     collectDialogueTheaterEditPanel,
