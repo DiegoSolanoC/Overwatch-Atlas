@@ -113,8 +113,8 @@
     </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
-    <link rel="stylesheet" href="src/styles/app.css?v=96">
-    <link rel="stylesheet" href="src/styles/entry.css?v=22">
+    <link rel="stylesheet" href="src/styles/app.css?v=98">
+    <link rel="stylesheet" href="src/styles/entry.css?v=24">
 </head>
 <body class="app-timeline-default">
     <div
@@ -381,6 +381,7 @@
                     <div class="events-manage-search" id="eventsManageSearch">
                     <div class="events-manage-search-row events-manage-search-row--primary">
                         <label for="eventsSearchInput" class="events-search-label">Search:</label>
+                        <span id="eventsSearchResultCount" class="events-search-result-count" aria-live="polite">0</span>
                         <input type="text" id="eventsSearchInput" class="events-search-input events-search-input--title" placeholder="By title..." autocomplete="off" />
                         <label for="eventsSearchFilters" class="events-search-label">Filters:</label>
                         <div class="events-search-field events-search-field--filters">

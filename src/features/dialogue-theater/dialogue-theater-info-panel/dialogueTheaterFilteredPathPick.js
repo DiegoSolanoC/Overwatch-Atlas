@@ -2,43 +2,10 @@
  * Pick a multi-route path based on active character search filters.
  */
 
-import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
-import { characterNamesMatch } from '../dialogue-theater-list/dialogueTheaterPairSearch.js';
+import { pathIncludesCharacter } from '../dialogue-theater-list/dialogueTheaterPairSearch.js';
 import { pickRandomConversationPathId } from './dialogueTheaterRandomRoutePlay.js';
 
-/**
- * @param {string} label
- * @returns {string}
- */
-function parseHeroFromPathLabel(label) {
-    const text = String(label || '').trim();
-    const sep = text.indexOf(' — ');
-    return sep >= 0 ? text.slice(0, sep).trim() : text;
-}
-
-/**
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {import('../data/DialogueTheaterDataService.js').DialoguePath} path
- * @param {string} characterName
- * @param {string[]} manifestHeroes
- * @returns {boolean}
- */
-export function pathIncludesCharacter(conversation, path, characterName, manifestHeroes = []) {
-    const query = String(characterName || '').trim();
-    if (!query) return true;
-
-    const labelHero = parseHeroFromPathLabel(path?.label);
-    if (labelHero && characterNamesMatch(labelHero, query, manifestHeroes)) {
-        return true;
-    }
-
-    const lines = resolveActiveConversationLines({
-        ...conversation,
-        selectedPathId: path.id,
-    });
-
-    return lines.some((line) => characterNamesMatch(String(line?.hero || ''), query, manifestHeroes));
-}
+export { pathIncludesCharacter };
 
 /**
  * Pick a route when character filters are active.

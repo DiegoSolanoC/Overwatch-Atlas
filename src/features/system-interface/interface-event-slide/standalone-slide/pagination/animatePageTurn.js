@@ -7,7 +7,7 @@
  * the original method's `this`).
  */
 
-import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 import {
     thumbPageTurnShrinkKeyframes,
     thumbPageTurnGrowKeyframes
@@ -49,7 +49,6 @@ export function runAnimatePageTurn(slide, pageEvents, pageNum, allEvents) {
             
             // Get active filters for lock state check
             const activeFilters = window.standaloneActiveFilters || new Set();
-            const filtersOn = activeFilters.size > 0;
             
             // Helper to set up click handler
             const setupClickHandler = (button, eventIndex) => {
@@ -83,7 +82,7 @@ export function runAnimatePageTurn(slide, pageEvents, pageNum, allEvents) {
                 setupClickHandler(btn, globalEventIndex);
                 
                 // Calculate CORRECT lock state for this event (not from old button state)
-                const isLocked = filtersOn && event && shouldEventBeLocked(event, activeFilters);
+                const isLocked = shouldDockEventBeLocked(event, activeFilters);
                 
                 btn.dataset.pageTurnToken = waveToken;
                 btn.dataset.locked = isLocked ? 'true' : 'false';

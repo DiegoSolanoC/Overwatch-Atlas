@@ -44,6 +44,7 @@ const SUBTITLE_SFX_TO_FOLDER = {
     'contented purrs': '(contented meowing)',
     'questioning meows': '(questioning meows)',
     'question meows': '(questioning meows)',
+    'pouty meows': '(pouty meows)',
     'doubtful meows': '(doubtful meows)',
     'panicked meows': '(cat sounds)',
     'understanding meows': '(agreeing meows)',

@@ -10,6 +10,11 @@
  * Safe to unit-test in isolation.
  */
 
+import {
+    normalizeForPredictiveMatch,
+    substringRank,
+} from '../../form/autocomplete/tokenInputMatching.js';
+
 /** "0001_Faction_Name.png" → "Faction Name" (titlecased), with numeric prefix stripped. */
 export function defaultFactionDisplayName(filename) {
     const base = String(filename ?? '').replace(/\.png$/i, '').trim();
@@ -23,31 +28,25 @@ export function defaultFactionDisplayName(filename) {
         .join(' ');
 }
 
-/** Lowercase + strip diacritics + collapse whitespace for fuzzy flag-name comparison. */
+/** Fold accents / punctuation / spaces for fuzzy flag-name comparison. */
 export function normalizeFlagKey(s) {
-    if (!s) return '';
-    return String(s)
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .replace(/\s+/g, ' ')
-        .trim();
+    return normalizeForPredictiveMatch(s);
 }
 
 /**
- * Substring-match rank for sorting suggestions:
+ * Substring-match rank for sorting suggestions (accent-/punct-/space-insensitive).
  *   0 → starts with `needle`
  *   1..N → contains `needle` at index N-1
  *   Infinity → no match
  */
 export function tokenSubstringRank(hayLower, needle) {
-    if (!needle || !hayLower.includes(needle)) return Infinity;
-    if (hayLower.startsWith(needle)) return 0;
-    return 1 + hayLower.indexOf(needle);
+    return substringRank(hayLower, needle);
 }
 
 /** Identical contract to {@link tokenSubstringRank}; kept as a named alias for clarity at call sites. */
 export const countrySubstringRank = tokenSubstringRank;
+
+export { normalizeForPredictiveMatch };
 
 /**
  * Split selected filter keys into country (`country:flag.png`) and non-country buckets.

@@ -27,6 +27,43 @@
     margin-bottom: 14px;
 }
 
+.dialogue-theater-edit__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 6px;
+}
+
+.dialogue-theater-edit__tag-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    line-height: 1.2;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dialogue-theater-edit__tag-option input {
+    margin: 0;
+    accent-color: rgb(var(--accent-primary-rgb));
+}
+
+.dialogue-theater-edit__tag-option--locked {
+    opacity: 0.72;
+    cursor: default;
+}
+
+.dialogue-theater-edit__tag-option--locked span::after {
+    content: '';
+}
+
 .dialogue-theater-edit select.dialogue-theater-edit__select {
     width: 100%;
     box-sizing: border-box;

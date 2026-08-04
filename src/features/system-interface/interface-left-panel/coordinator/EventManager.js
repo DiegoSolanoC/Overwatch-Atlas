@@ -21,6 +21,7 @@ import { runDeleteEventAtIndex, runDeleteEventWithConfirm } from './runDeleteEve
 import { syncArchiveManagePanelActionVisibility } from '../event-system/listeners/wireManagePanelButtons.js';
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 import { refreshStoryArchiveEraTintIfActive } from '../../../story/story-mode/StoryArchiveEraTint.js';
+import { updateStandalonePaginationForFilters } from '../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
 
 class EventManager {
     constructor() {
@@ -265,6 +266,7 @@ class EventManager {
     applySearchAndRender() {
         this.currentPage = 1;
         this.renderEvents();
+        updateStandalonePaginationForFilters();
     }
 
     renderPaginationControls() {

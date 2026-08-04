@@ -54,6 +54,38 @@ function npcArchiveGroupOrder() {
 }
 
 /**
+ * Big Noodle count beside Search → title: total when idle, matched/total while filtering.
+ *
+ * @param {any} renderService
+ * @param {Array} filteredEvents
+ */
+function updateEventsSearchResultCount(renderService, filteredEvents) {
+    const el = document.getElementById('eventsSearchResultCount');
+    if (!el) return;
+
+    const eventManager = renderService?.eventManager;
+    const all = Array.isArray(eventManager?.events) ? eventManager.events : filteredEvents;
+    const total = all.length;
+    const visible = Array.isArray(filteredEvents) ? filteredEvents.length : total;
+
+    const filtering = Boolean(
+        eventManager &&
+            ((eventManager.searchQuery && eventManager.searchQuery.trim()) ||
+                (eventManager.searchHeroFilters && eventManager.searchHeroFilters.length > 0) ||
+                (eventManager.searchFactionFilters && eventManager.searchFactionFilters.length > 0) ||
+                (eventManager.searchNpcFilters && eventManager.searchNpcFilters.length > 0) ||
+                (eventManager.searchUnmatchedFilterTokens &&
+                    eventManager.searchUnmatchedFilterTokens.length > 0) ||
+                (eventManager.searchCountryFilters && eventManager.searchCountryFilters.length > 0)),
+    );
+
+    el.textContent = filtering ? `${visible}/${total}` : String(total);
+    el.title = filtering
+        ? `${visible} of ${total} entries match`
+        : `${total} entries in document`;
+}
+
+/**
  * @param {any} renderService Owning EventRenderService.
  * @param {Array} events Post-filter event slice supplied by the caller.
  * @param {number} currentPage
@@ -85,6 +117,8 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
     if (eventsCountElement) {
         eventsCountElement.textContent = `${totalEvents} ${totalEvents === 1 ? 'Event' : 'Events'} (Page ${validPage}/${totalPages})`;
     }
+
+    updateEventsSearchResultCount(renderService, events);
 
     eventsList.innerHTML = '';
 
@@ -119,6 +153,7 @@ export function renderEventsList(renderService, events, currentPage, eventsPerPa
         if (eventsCountElement) {
             eventsCountElement.textContent = `${totalEvents} ${totalEvents === 1 ? 'Event' : 'Events'}`;
         }
+        updateEventsSearchResultCount(renderService, events);
         eventsList.innerHTML = '';
         if (typeof onRenderComplete === 'function') {
             onRenderComplete();

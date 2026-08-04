@@ -173,3 +173,31 @@ export function getFilteredEventsFromList(mgr, all) {
         return false;
     });
 }
+
+/**
+ * @param {object | null | undefined} mgr
+ * @returns {boolean}
+ */
+export function isEventManagerSearchActive(mgr) {
+    if (!mgr) return false;
+    return !!(
+        (mgr.searchQuery || '').trim()
+        || mgr.searchHeroFilters?.length
+        || mgr.searchFactionFilters?.length
+        || mgr.searchNpcFilters?.length
+        || mgr.searchCountryFilters?.length
+        || mgr.searchUnmatchedFilterTokens?.length
+    );
+}
+
+/**
+ * Same pass/fail as list search — used to lock dock thumbs when search is active.
+ * @param {object | null | undefined} mgr
+ * @param {object | null | undefined} event
+ * @returns {boolean}
+ */
+export function shouldEventBeExcludedByManagerSearch(mgr, event) {
+    if (!isEventManagerSearchActive(mgr)) return false;
+    if (!event) return true;
+    return getFilteredEventsFromList(mgr, [event]).length === 0;
+}

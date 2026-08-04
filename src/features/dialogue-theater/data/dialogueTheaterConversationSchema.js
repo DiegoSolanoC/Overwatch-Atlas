@@ -67,12 +67,14 @@ export function buildBlankConversationRecord() {
         name: 'Untitled conversation',
         status: 'active',
         eraName: '',
+        tags: ['Overwatch'],
         scene: DEFAULT_DIALOGUE_SCENE,
         lines: [],
     };
 }
 
 import { stripWikiOutcomeMarkers } from './dialogueSubtitleFormatting.js';
+import { finalizeDialogueTheaterTags } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 
 /**
  * @param {unknown} raw
@@ -136,7 +138,8 @@ export function normalizeConversationRecord(raw, fallbackId) {
     const status = statusRaw === 'outdated' ? 'outdated' : 'active';
     const name = String(raw.name != null ? raw.name : raw.title != null ? raw.title : '')
         .trim() || 'Untitled conversation';
-    const eraName = String(raw.eraName != null ? raw.eraName : '').trim();
+    // Legacy eraName cleared — tags is the multi-label field now.
+    const eraName = '';
     const sceneRaw = String(raw.scene != null ? raw.scene : '').trim();
     const scene = sceneRaw || DEFAULT_DIALOGUE_SCENE;
     const linesRaw = Array.isArray(raw.lines) ? raw.lines : [];
@@ -176,8 +179,10 @@ export function normalizeConversationRecord(raw, fallbackId) {
         selectedPathId = sorted[0]?.id || filteredPaths[0].id;
     }
 
+    const tags = finalizeDialogueTheaterTags(raw.tags, filteredPaths.length > 0);
+
     /** @type {import('./DialogueTheaterDataService.js').DialogueConversation} */
-    const conversation = { id, name, status, eraName, scene, lines };
+    const conversation = { id, name, status, eraName, tags, scene, lines };
     if (filteredPaths.length > 0) {
         conversation.paths = filteredPaths;
         conversation.selectedPathId = selectedPathId;

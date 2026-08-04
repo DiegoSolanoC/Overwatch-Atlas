@@ -19,7 +19,7 @@
  * file was the monolithic loader; today it does not load anything itself.
  */
 
-import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=102';
+import { ModeOrchestrator } from '../atlas-mode-runtime/ModeOrchestrator.js?v=103';
 
 // Side-effect imports: each module attaches handlers / globals on import.
 import '../../system-interface/interface-platform-input/installPlatformGlobals.js'; // populate window.Navigation*Helpers aliases

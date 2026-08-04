@@ -2,7 +2,7 @@ import {
     getDialogueTheaterListHostId,
     mountDialogueTheaterListView,
     unmountDialogueTheaterListView,
-} from '../dialogue-theater-list/DialogueTheaterListView.js?v=102';
+} from '../dialogue-theater-list/DialogueTheaterListView.js?v=105';
 
 function hideGlobeChrome() {
     const testContainer = document.querySelector('.test-container');

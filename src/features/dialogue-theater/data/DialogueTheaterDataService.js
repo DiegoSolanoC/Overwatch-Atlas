@@ -30,6 +30,7 @@ import {
 export const DIALOGUE_THEATER_LOCALSTORAGE_KEY = 'dialogueTheaterConversations';
 export const DIALOGUE_THEATER_DELETED_IDS_KEY = 'dialogueTheaterDeletedConversationIds';
 export const DIALOGUE_THEATER_NAME_RESET_KEY = 'dialogueTheaterNameResetAt';
+export const DIALOGUE_THEATER_TAGS_RESET_KEY = 'dialogueTheaterTagsResetAt';
 const FILE_URL = FILES.dialogueTheater.conversations;
 const RETIRED_WORKING_TAGS = new Set(DIALOGUE_THEATER_RETIRED_WORKING_TAGS);
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
@@ -46,6 +47,7 @@ function consumeResetDialogueUrlParam() {
         localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
         localStorage.removeItem(DIALOGUE_THEATER_DELETED_IDS_KEY);
         localStorage.removeItem(DIALOGUE_THEATER_NAME_RESET_KEY);
+        localStorage.removeItem(DIALOGUE_THEATER_TAGS_RESET_KEY);
         clearDialogueTheaterBundleStamp();
         params.delete('resetDialogue');
         const nextSearch = params.toString();
@@ -58,7 +60,7 @@ function consumeResetDialogueUrlParam() {
     }
 }
 
-/** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
+/** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, tags: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
 /** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string }} DialogueLine */
 /** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
@@ -190,6 +192,7 @@ class DialogueTheaterDataService {
 
     mergeConversationRows(fileRows, localRows, options = {}) {
         const applyFileNames = Boolean(options.applyFileNames);
+        const applyFileTags = Boolean(options.applyFileTags);
         const localById = new Map(localRows.map((row) => [row.id, row]));
         const fileIds = new Set(fileRows.map((row) => row.id));
         const merged = fileRows
@@ -277,7 +280,17 @@ class DialogueTheaterDataService {
                                 : fileRow.selectedPathId || filePaths[0]?.id || '',
                     };
                 }
-                const withRenders = this.overlayFileLineRenders(fileRow, picked);
+                let withRenders = this.overlayFileLineRenders(fileRow, picked);
+                // Tags live on the shipped file after the multi-tag migration; clear legacy eraName.
+                if (applyFileTags) {
+                    withRenders = {
+                        ...withRenders,
+                        tags: Array.isArray(fileRow.tags) ? [...fileRow.tags] : [],
+                        eraName: '',
+                    };
+                } else {
+                    withRenders = { ...withRenders, eraName: '' };
+                }
                 if (applyFileNames) {
                     return { ...withRenders, name: fileRow.name };
                 }
@@ -356,7 +369,7 @@ class DialogueTheaterDataService {
         this.loadDeletedConversationIds();
 
         let fileRows = null;
-        /** @type {{ nameResetAt?: string, purgedConversationIds?: string[] }} */
+        /** @type {{ nameResetAt?: string, tagsResetAt?: string, purgedConversationIds?: string[] }} */
         let fileMeta = {};
         try {
             const data = await fetchJsonWithTimeout(FILE_URL);
@@ -383,6 +396,10 @@ class DialogueTheaterDataService {
         const fileResetAt = String(fileMeta.nameResetAt || '').trim();
         const seenResetAt = localStorage.getItem(DIALOGUE_THEATER_NAME_RESET_KEY) || '';
         const applyFileNames = Boolean(fileResetAt && fileResetAt !== seenResetAt);
+
+        const fileTagsResetAt = String(fileMeta.tagsResetAt || '').trim();
+        const seenTagsResetAt = localStorage.getItem(DIALOGUE_THEATER_TAGS_RESET_KEY) || '';
+        const applyFileTags = Boolean(fileTagsResetAt && fileTagsResetAt !== seenTagsResetAt);
 
         const fileNormalized = this.normalizeConversations(fileRows || []);
         let localNormalized = [];
@@ -429,6 +446,7 @@ class DialogueTheaterDataService {
             /** Bundled file wins on id unless local has saved route data; keep local-only drafts. */
             this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
                 applyFileNames,
+                applyFileTags,
             });
         }
 
@@ -449,6 +467,14 @@ class DialogueTheaterDataService {
             localStorage.setItem(DIALOGUE_THEATER_NAME_RESET_KEY, fileResetAt);
             updateStatus(
                 `Dialogue Theater: reset ${this.conversations.length} conversation title(s) to numbered review placeholders`,
+                'info',
+            );
+        }
+
+        if (applyFileTags) {
+            localStorage.setItem(DIALOGUE_THEATER_TAGS_RESET_KEY, fileTagsResetAt);
+            updateStatus(
+                `Dialogue Theater: reset conversation tags to the multi-tag scheme (Overwatch + extras)`,
                 'info',
             );
         }

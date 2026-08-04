@@ -7,6 +7,9 @@
  * substring-contains it, then sort by `substringRank` (prefix matches rank first, then
  * shortest-first within ties).
  *
+ * Matching is accent-/punctuation-/space-insensitive so typing `lucio`, `dva`, or
+ * `junkerqueen` still finds `Lúcio`, `D.va`, and `Junker Queen`.
+ *
  * Inputs to the per-type matcher:
  *   - heroes  / npcs / countries → `string[]`
  *   - factions                   → `{ displayName, filename }[]` (or strings coerced into that shape)
@@ -16,17 +19,36 @@
  * don't suggest something the user has already picked.
  */
 
+/**
+ * Fold a label for predictive matching: lowercase, strip diacritics, drop spaces/symbols.
+ * `Lúcio` / `lucio`, `D.va` / `dva`, `Soldier: 76` / `soldier76` all collapse the same way.
+ *
+ * @param {string} value
+ * @returns {string}
+ */
+export function normalizeForPredictiveMatch(value) {
+    return String(value || '')
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .replace(/[^a-z0-9]+/g, '');
+}
+
 /** Trailing segment after the final comma, trimmed. */
 export function getCurrentSegment(value) {
     const lastComma = value.lastIndexOf(',');
     return lastComma >= 0 ? value.slice(lastComma + 1).trim() : value.trim();
 }
 
-/** Set of already-typed tokens, lowercased + trimmed. Used to skip duplicates. */
+/** Set of already-committed tokens (everything before the trailing segment), folded. */
 export function existingTokensLower(value) {
     const set = new Set();
-    value.split(',').forEach((s) => {
-        const t = s.trim().toLowerCase();
+    const parts = String(value || '').split(',');
+    // Skip the in-progress trailing segment so typing `lucio` can still suggest `Lúcio`.
+    const committed = parts.slice(0, -1);
+    committed.forEach((s) => {
+        const t = normalizeForPredictiveMatch(s);
         if (t) set.add(t);
     });
     return set;
@@ -40,8 +62,8 @@ export function existingTokensLower(value) {
  *   - `Inf`    : no substring match (filtered out by callers).
  */
 export function substringRank(haystack, needle) {
-    const h = String(haystack || '').toLowerCase();
-    const n = String(needle || '').toLowerCase();
+    const h = normalizeForPredictiveMatch(haystack);
+    const n = normalizeForPredictiveMatch(needle);
     if (!n || !h.includes(n)) return Infinity;
     if (h.startsWith(n)) return 0;
     return 1 + h.indexOf(n);
@@ -61,7 +83,8 @@ const MAX_MATCHES = 8;
 export function buildMatches(value, options, type) {
     const segment = getCurrentSegment(value);
     if (!segment) return [];
-    const prefix = segment.toLowerCase();
+    const prefix = normalizeForPredictiveMatch(segment);
+    if (!prefix) return [];
     const existing = existingTokensLower(value);
 
     if (type === 'heroes' || type === 'npcs' || type === 'countries') {
@@ -69,7 +92,8 @@ export function buildMatches(value, options, type) {
         return list
             .filter((entry) => {
                 const name = String(entry || '');
-                return name.toLowerCase().includes(prefix) && !existing.has(name.toLowerCase());
+                const folded = normalizeForPredictiveMatch(name);
+                return folded.includes(prefix) && !existing.has(folded);
             })
             .sort(
                 (a, b) =>
@@ -90,8 +114,10 @@ export function buildMatches(value, options, type) {
                 if (!f || f.displayName == null) return false;
                 const dn = String(f.displayName).trim();
                 const fn = String(f.filename || '').trim();
-                const hit = dn.toLowerCase().includes(prefix) || fn.toLowerCase().includes(prefix);
-                return hit && !existing.has(dn.toLowerCase());
+                const dnFold = normalizeForPredictiveMatch(dn);
+                const fnFold = normalizeForPredictiveMatch(fn);
+                const hit = dnFold.includes(prefix) || fnFold.includes(prefix);
+                return hit && !existing.has(dnFold);
             })
             .sort((a, b) => {
                 const ra = Math.min(substringRank(a.displayName, prefix), substringRank(a.filename, prefix));
@@ -109,12 +135,14 @@ export function buildMatches(value, options, type) {
 
         heroes.forEach((entry) => {
             const name = String(entry || '');
-            if (!name.toLowerCase().includes(prefix) || existing.has(name.toLowerCase())) return;
+            const folded = normalizeForPredictiveMatch(name);
+            if (!folded.includes(prefix) || existing.has(folded)) return;
             tagged.push({ kind: 'hero', name, rank: substringRank(name, prefix) });
         });
         npcs.forEach((entry) => {
             const name = String(entry || '');
-            if (!name.toLowerCase().includes(prefix) || existing.has(name.toLowerCase())) return;
+            const folded = normalizeForPredictiveMatch(name);
+            if (!folded.includes(prefix) || existing.has(folded)) return;
             tagged.push({ kind: 'npc', name, rank: substringRank(name, prefix) });
         });
 

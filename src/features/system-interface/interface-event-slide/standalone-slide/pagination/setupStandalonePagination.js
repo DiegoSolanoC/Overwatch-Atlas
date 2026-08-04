@@ -12,7 +12,8 @@ import {
     isHeroBiographyDockFilterActive,
 } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
 import { noteCodexDockTimelinePageChange } from '../../../../codex/codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
-import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
+import { isEventManagerSearchActive } from '../../../interface-left-panel/coordinator/search/filterEvents.js';
 import {
     updateStandaloneSliderTicks,
     eventRootSlotMissingDescription
@@ -324,7 +325,9 @@ export function runSetupStandalonePagination(slide) {
             const activeFilters = isHeroBiographyDockFilterActive()
                 ? new Set()
                 : (window.standaloneActiveFilters || new Set());
-            if (activeFilters.size === 0) return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            if (activeFilters.size === 0 && !isEventManagerSearchActive(window.eventManager)) {
+                return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            }
             
             const dockEv = getDockEvents();
             const pageStart = (pageNum - 1) * 10;
@@ -333,7 +336,7 @@ export function runSetupStandalonePagination(slide) {
             
             for (let i = pageStart; i < pageEnd; i++) {
                 const event = dockEv[i];
-                if (event && !shouldEventBeLocked(event, activeFilters)) {
+                if (event && !shouldDockEventBeLocked(event, activeFilters)) {
                     matching.push((i % 10) + 1); // 1-based index on page
                 }
             }

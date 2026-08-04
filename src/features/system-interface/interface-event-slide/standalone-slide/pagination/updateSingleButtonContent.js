@@ -12,7 +12,7 @@ import {
     onHeroBiographyDockEventHover,
     onHeroBiographyDockEventHoverEnd,
 } from '../../../../gallery/gallery-mode/heroBiographyDockLookHover.js';
-import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
     centerCameraOnMarker,
@@ -76,10 +76,9 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
         const pageEnd = Math.min(pageStart + 10, allEvents.length);
         const pageEvents = allEvents.slice(pageStart, pageEnd);
         
-        // Check filter lock state (like wireNumberButtons does)
+        // Check filter + search lock state (like wireNumberButtons does)
         const activeFilters = window.standaloneActiveFilters || new Set();
-        const filtersOn = activeFilters.size > 0;
-        const isLocked = filtersOn && shouldEventBeLocked(event, activeFilters);
+        const isLocked = shouldDockEventBeLocked(event, activeFilters);
         
         // Explicitly handle disabled state (property AND attribute)
         if (isLocked) {
@@ -132,10 +131,6 @@ export function runUpdateSingleButtonContent(slide, btn, event, globalEventIndex
                 keyEl.style.color = '';
                 keyEl.style.textShadow = '';
             }
-        }
-        
-        // Debug logging with visual state
-        if (filtersOn || btn.style.opacity !== '1') {
         }
         
         const numEl = btn.querySelector('.event-number-btn__num');

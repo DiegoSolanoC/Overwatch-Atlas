@@ -2,7 +2,7 @@
  * Prev/next event buttons for standalone pagination.
  */
 import { isHeroBiographyDockFilterActive } from '../../../../gallery/gallery-mode/heroBiographyDockTimeline.js';
-import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 
 /** @param {object} ctx */
 export function wireStandaloneEventNavButtons(ctx) {
@@ -107,7 +107,7 @@ export function wireStandaloneEventNavButtons(ctx) {
                 const activeFilters = window.standaloneActiveFilters || new Set();
                 for (let i = pageStart; i < pageEnd; i++) {
                     const event = currentEvents[i];
-                    if (event && !shouldEventBeLocked(event, activeFilters)) {
+                    if (event && !shouldDockEventBeLocked(event, activeFilters)) {
                         targetIndex = i;
                         break;
                     }

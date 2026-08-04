@@ -7,6 +7,10 @@
 
 import { getSourceUrls } from '../interface-event-slide/standalone-slide/sources/sourceUrlUtils.js';
 import { populateSourceLinkStack } from '../interface-left-panel/event-system/form/fields/sourcePairLinkRows.js';
+import {
+    buildMatches,
+    normalizeForPredictiveMatch,
+} from '../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 
 const SOURCE_NAME_DATALIST_ID = 'storyEventSourceNameList';
 const SOURCE_NAME_FIELD_NAME = 'story-event-source-name';
@@ -16,10 +20,7 @@ const SOURCE_NAME_FIELD_NAME = 'story-event-source-name';
  * @returns {string}
  */
 function normalizeSourceText(text) {
-    return String(text || '')
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ');
+    return normalizeForPredictiveMatch(text);
 }
 
 /**
@@ -272,21 +273,63 @@ export function wireStoryEventSourceAutocomplete(nameInput, urlInput, sourceRow)
 
     refreshSourceNameDatalist();
 
-    nameInput.setAttribute('autocomplete', 'on');
-    nameInput.setAttribute('list', SOURCE_NAME_DATALIST_ID);
+    nameInput.setAttribute('autocomplete', 'off');
+    nameInput.removeAttribute('list');
     nameInput.setAttribute('name', SOURCE_NAME_FIELD_NAME);
 
+    /** @type {HTMLElement|null} */
+    let listEl = null;
+    const removeList = () => {
+        listEl?.remove();
+        listEl = null;
+    };
+
+    const renderSuggestions = () => {
+        removeList();
+        const names = [...getStoryEventSourceOptionsByKey().values()].map((e) => e.text);
+        const matches = buildMatches(nameInput.value, names, 'heroes').slice(0, 8);
+        if (!matches.length) return;
+
+        listEl = document.createElement('div');
+        listEl.className = 'filter-autocomplete-list';
+        matches.forEach((text) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'filter-autocomplete-item';
+            btn.textContent = text;
+            btn.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                nameInput.value = text;
+                removeList();
+                syncUrlFromSourceName(nameInput, urlInput, row);
+            });
+            listEl.appendChild(btn);
+        });
+        const host = nameInput.parentElement || nameInput;
+        host.appendChild(listEl);
+    };
+
     const commit = () => {
+        removeList();
         window.requestAnimationFrame(() => {
             syncUrlFromSourceName(nameInput, urlInput, row);
         });
     };
 
     nameInput.addEventListener('change', commit);
-    nameInput.addEventListener('blur', commit);
-    nameInput.addEventListener('input', () => {
-        if (!resolveUrlsForSourceName(nameInput.value).length) return;
+    nameInput.addEventListener('blur', () => {
+        window.setTimeout(removeList, 120);
         commit();
+    });
+    nameInput.addEventListener('input', () => {
+        renderSuggestions();
+        if (!resolveUrlsForSourceName(nameInput.value).length) return;
+        window.requestAnimationFrame(() => {
+            syncUrlFromSourceName(nameInput, urlInput, row);
+        });
+    });
+    nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') removeList();
     });
 }
 

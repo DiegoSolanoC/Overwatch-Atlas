@@ -1,26 +1,40 @@
 /**
- * Era / tag options used by Dialogue Theater list filter + edit dropdown extras.
+ * Dialogue Theater conversation tags (multi-select).
  *
- * Batch import protocol:
- * 1. Add placeholders from a compilation video (temporary working tag)
- * 2. Wire audio from wiki / MatchTalk
- * 3. Manually rename entries and fix inconsistencies / missing files
- * 4. When the batch is clean, clear the working tag (untag) and retire it here
+ * Base tag "Overwatch" is applied to every entry. Extra tags classify
+ * special cases (classic OW1, map-only, removed, skin, multipath).
  */
 
-import { DOCK_ERA_MENU_OPTIONS } from '../../system-interface/interface-bottom-dock/dockEraTimelineFilter.js';
+/** Canonical tag labels — order used in filters / editors. */
+export const DIALOGUE_THEATER_TAG_OPTIONS = Object.freeze([
+    'Overwatch',
+    'Classic',
+    'Map Exclusive',
+    'Removed',
+    'Skin Specific',
+    'Multi Path',
+]);
 
-/** Canonical timeline eras (excludes Complete Timeline). */
-export const DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS = DOCK_ERA_MENU_OPTIONS.filter(
-    (o) => o.id !== 'complete',
-).map((o) => o.label);
+/** Tags the editor can toggle; Overwatch + Multi Path are managed automatically. */
+export const DIALOGUE_THEATER_EDITABLE_TAGS = Object.freeze([
+    'Classic',
+    'Map Exclusive',
+    'Removed',
+    'Skin Specific',
+]);
 
-/** Active working tags for YouTube / import placeholder batches still in review. */
+export const DIALOGUE_THEATER_BASE_TAG = 'Overwatch';
+export const DIALOGUE_THEATER_MULTI_PATH_TAG = 'Multi Path';
+
+/** @deprecated Timeline eras no longer used as conversation tags. */
+export const DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS = Object.freeze([]);
+
+/** @deprecated Working YouTube tags retired — use DIALOGUE_THEATER_TAG_OPTIONS. */
 export const DIALOGUE_THEATER_WORKING_TAG_OPTIONS = Object.freeze([]);
 
 /**
  * Retired working tags — file copy wins over stale localStorage for these.
- * Keep entries here after a batch is finalized so hard-refresh picks up untagging + line fixes.
+ * Kept so old localStorage eraName values still get cleared on merge.
  */
 export const DIALOGUE_THEATER_RETIRED_WORKING_TAGS = Object.freeze([
     'Midseason 3 (YouTube placeholder)',
@@ -28,31 +42,76 @@ export const DIALOGUE_THEATER_RETIRED_WORKING_TAGS = Object.freeze([
 ]);
 
 /**
- * @param {Array<{ eraName?: string }>} conversations
+ * @param {unknown} value
  * @returns {string[]}
  */
-export function collectDialogueTheaterEraFilterOptions(conversations) {
-    const set = new Set();
-    for (const label of DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS) set.add(label);
-    for (const label of DIALOGUE_THEATER_WORKING_TAG_OPTIONS) set.add(label);
-    const retired = new Set(DIALOGUE_THEATER_RETIRED_WORKING_TAGS);
-    for (const conversation of conversations || []) {
-        const era = String(conversation?.eraName || '').trim();
-        if (era && !retired.has(era)) set.add(era);
+export function normalizeDialogueTheaterTags(value) {
+    const allowed = new Set(DIALOGUE_THEATER_TAG_OPTIONS);
+    const seen = new Set();
+    /** @type {string[]} */
+    const out = [];
+    const list = Array.isArray(value) ? value : value != null && value !== '' ? [value] : [];
+    for (const raw of list) {
+        const tag = String(raw || '').trim();
+        if (!tag || !allowed.has(tag) || seen.has(tag)) continue;
+        seen.add(tag);
+        out.push(tag);
     }
-    return [...set].sort((a, b) => a.localeCompare(b));
+    return out;
 }
 
 /**
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * Ensure base Overwatch tag; sync Multi Path from route data.
+ * @param {string[]} tags
+ * @param {boolean} hasPaths
+ * @returns {string[]}
+ */
+export function finalizeDialogueTheaterTags(tags, hasPaths) {
+    const set = new Set(normalizeDialogueTheaterTags(tags));
+    set.add(DIALOGUE_THEATER_BASE_TAG);
+    if (hasPaths) set.add(DIALOGUE_THEATER_MULTI_PATH_TAG);
+    else set.delete(DIALOGUE_THEATER_MULTI_PATH_TAG);
+    return DIALOGUE_THEATER_TAG_OPTIONS.filter((tag) => set.has(tag));
+}
+
+/**
+ * @param {{ tags?: string[], eraName?: string, paths?: unknown[] }|null|undefined} conversation
+ * @returns {string[]}
+ */
+export function getConversationTags(conversation) {
+    const hasPaths = Array.isArray(conversation?.paths) && conversation.paths.length > 0;
+    const rawTags = Array.isArray(conversation?.tags) ? conversation.tags : [];
+    if (rawTags.length > 0) {
+        return finalizeDialogueTheaterTags(rawTags, hasPaths);
+    }
+    // Legacy single eraName → ignore (cleared); still return base + multipath.
+    return finalizeDialogueTheaterTags([], hasPaths);
+}
+
+/**
+ * @param {Array<{ tags?: string[] }>} conversations
+ * @returns {string[]}
+ */
+export function collectDialogueTheaterEraFilterOptions(conversations) {
+    const set = new Set(DIALOGUE_THEATER_TAG_OPTIONS);
+    for (const conversation of conversations || []) {
+        for (const tag of getConversationTags(conversation)) set.add(tag);
+    }
+    return DIALOGUE_THEATER_TAG_OPTIONS.filter((tag) => set.has(tag));
+}
+
+/**
+ * Filter: conversation must include the selected tag (or be untagged if sentinel).
+ * @param {{ tags?: string[], eraName?: string, paths?: unknown[] }} conversation
  * @param {string} eraFilter
  * @returns {boolean}
  */
 export function conversationMatchesEraFilter(conversation, eraFilter) {
     const filter = String(eraFilter || '').trim();
     if (!filter) return true;
+    const tags = getConversationTags(conversation);
     if (filter === '__untagged__') {
-        return !String(conversation?.eraName || '').trim();
+        return tags.length === 0;
     }
-    return String(conversation?.eraName || '').trim() === filter;
+    return tags.includes(filter);
 }

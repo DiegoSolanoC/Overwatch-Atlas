@@ -8,6 +8,10 @@ import * as adapter from '../archive-event-panel-bridge/ArchiveEventPanelState.j
 import { isBioArchiveCategory } from '../archive-category-shared/ArchiveCategoryTypes.js';
 import { unmountStoryViewToggle } from '../../story/story-mode/StoryViewToggle.js';
 import { archiveModeSession } from './ArchiveModeSession.js';
+import {
+    floatArchiveFileActions,
+    unfloatArchiveFileActions,
+} from '../archive-support/archiveFileActionsFloat.js?v=2';
 
 /** Event Manager close control removed from DOM in Data Archive embedded layout. */
 export function hideStoryArchiveEventManagerClose(eventsManagePanel) {
@@ -74,6 +78,14 @@ export function setupStoryArchiveBottomBar(eventsManagePanel) {
         if (pag) bottomBar.appendChild(pag);
 
         manageContent.insertBefore(bottomBar, list.nextSibling);
+    }
+
+    const actionsEl =
+        document.querySelector('#dockGlobeRailRight > .events-manage-actions')
+        || document.querySelector('#storyArchiveBottomBar > .events-manage-actions')
+        || eventsManagePanel.querySelector('.events-manage-actions');
+    if (actionsEl instanceof HTMLElement) {
+        floatArchiveFileActions(actionsEl, 'story');
     }
 
     populateStoryArchiveRightToolbar(eventsManagePanel, bottomBar);
@@ -157,6 +169,8 @@ export function restoreStoryArchiveCompactChrome(eventsManagePanel) {
 
 /** Restore Add/Save/Export to header and pagination after #eventsList (Event Manager layout). */
 export function teardownStoryArchiveBottomBar(eventsManagePanel) {
+    unfloatArchiveFileActions('story');
+
     const bottomBar = document.getElementById('storyArchiveBottomBar');
     const list = document.getElementById('eventsList');
     const header = eventsManagePanel?.querySelector('.events-manage-header');

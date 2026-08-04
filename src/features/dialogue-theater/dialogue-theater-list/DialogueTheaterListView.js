@@ -13,7 +13,7 @@ import {
     closeDialogueTheaterInfoPanel,
     openDialogueTheaterInfoPanel,
     setDialogueTheaterInfoPanelListRefresh,
-} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=102';
+} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=103';
 import {
     setupDialogueTheaterCompactChrome,
     unwireDialogueTheaterToolbarCollapse,
@@ -39,8 +39,13 @@ import { getActiveDialogueTheaterCharacterFilters } from './dialogueTheaterActiv
 import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
 import { conversationMatchesListSearch } from './dialogueTheaterListSearch.js';
 import {
+    floatArchiveFileActions,
+    unfloatArchiveFileActions,
+} from '../../data-workshop/archive-support/archiveFileActionsFloat.js?v=2';
+import {
     collectDialogueTheaterEraFilterOptions,
     conversationMatchesEraFilter,
+    getConversationTags,
 } from './dialogueTheaterEraFilter.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
@@ -175,7 +180,8 @@ function escapeHtml(value) {
  */
 function buildConversationThumb(row, duplicateLookup, conversations) {
     const name = row.name || 'Untitled conversation';
-    const eraLabel = String(row.eraName || '').trim();
+    const displayTags = getConversationTags(row).filter((tag) => tag !== 'Overwatch');
+    const eraLabel = displayTags.join(' · ');
     const voicelines = listThumbAssets?.voicelines || [];
     const isUnfinished = conversationHasUnfinishedIssues(row, voicelines, duplicateLookup);
     const unfinishedSummary = isUnfinished
@@ -277,9 +283,6 @@ function syncSaveButtonState(root) {
  * @param {number} [visibleCount]
  */
 function updateListCount(root, visibleCount) {
-    const countEl = root.querySelector('#dialogueTheaterListCount');
-    if (!countEl) return;
-
     const total = dialogueTheaterDataService.conversations.length;
     const visible = visibleCount ?? getFilteredConversations().length;
     const q = searchQuery.trim();
@@ -288,16 +291,28 @@ function updateListCount(root, visibleCount) {
     const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
     const heroFilterActive =
         !pairSearchActive && isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
+    const eraActive = Boolean(eraFilter.trim());
+    const filtering = Boolean(q || pairSearchActive || heroFilterActive || eraActive);
 
-    if ((q || heroFilterActive || pairSearchActive) && visible !== total) {
-        countEl.textContent =
-            visible === 1
-                ? `1 of ${total} conversations`
-                : `${visible} of ${total} conversations`;
-        return;
+    const countEl = root.querySelector('#dialogueTheaterListCount');
+    if (countEl) {
+        if (filtering) {
+            countEl.textContent =
+                visible === 1
+                    ? `1 of ${total} conversations`
+                    : `${visible} of ${total} conversations`;
+        } else {
+            countEl.textContent = total === 1 ? '1 conversation' : `${total} conversations`;
+        }
     }
 
-    countEl.textContent = total === 1 ? '1 conversation' : `${total} conversations`;
+    const searchCountEl = root.querySelector('#dialogueTheaterSearchResultCount');
+    if (searchCountEl) {
+        searchCountEl.textContent = filtering ? `${visible}/${total}` : String(total);
+        searchCountEl.title = filtering
+            ? `${visible} of ${total} conversations match`
+            : `${total} conversations in document`;
+    }
 }
 
 /**
@@ -436,7 +451,7 @@ function refreshEraFilterOptions(root) {
     const previous = eraFilter || eraSelect.value || '';
     const eras = collectDialogueTheaterEraFilterOptions(dialogueTheaterDataService.conversations);
     const options = [
-        `<option value="">All eras / tags</option>`,
+        `<option value="">All tags</option>`,
         `<option value="__untagged__">Untagged only</option>`,
         ...eras.map((era) => `<option value="${escapeHtml(era)}">${escapeHtml(era)}</option>`),
     ];
@@ -534,8 +549,10 @@ export async function mountDialogueTheaterListView(container) {
                                 </div>
                             </div>
                             <div class="dialogue-theater-pair-search-col dialogue-theater-pair-search-col--title">
-                                <label for="dialogueTheaterSearchInput" class="events-search-label">Search:</label>
-                                <div class="dialogue-theater-pair-search-col__icon dialogue-theater-pair-search-col__icon--spacer" aria-hidden="true"></div>
+                                <label for="dialogueTheaterSearchInput" class="events-search-label dialogue-theater-pair-search-col__search-label">Search:</label>
+                                <div class="dialogue-theater-pair-search-col__icon dialogue-theater-pair-search-col__icon--count" aria-hidden="true">
+                                    <span id="dialogueTheaterSearchResultCount" class="events-search-result-count" aria-live="polite">0</span>
+                                </div>
                                 <input
                                     type="text"
                                     id="dialogueTheaterSearchInput"
@@ -556,10 +573,10 @@ export async function mountDialogueTheaterListView(container) {
                         </div>
                         <div class="events-manage-search-row events-manage-search-row--secondary dialogue-theater-era-filter-row">
                             <div class="dialogue-theater-era-filter">
-                                <label for="dialogueTheaterEraFilter" class="events-search-label">Era / tag:</label>
+                                <label for="dialogueTheaterEraFilter" class="events-search-label">Tag:</label>
                                 <div class="dialogue-theater-era-filter__controls">
-                                    <select id="dialogueTheaterEraFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter conversations by era or tag">
-                                        <option value="">All eras / tags</option>
+                                    <select id="dialogueTheaterEraFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter conversations by tag">
+                                        <option value="">All tags</option>
                                         <option value="__untagged__">Untagged only</option>
                                     </select>
                                     <button
@@ -617,6 +634,12 @@ export async function mountDialogueTheaterListView(container) {
     });
     renderList(container);
 
+    const theaterActions = container.querySelector('#dialogueTheaterBottomBar .events-manage-actions')
+        || document.querySelector('#dockGlobeRailRight > .events-manage-actions');
+    if (theaterActions instanceof HTMLElement) {
+        floatArchiveFileActions(theaterActions, 'theater');
+    }
+
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;
         e.preventDefault();
@@ -630,6 +653,8 @@ export async function mountDialogueTheaterListView(container) {
  * @param {HTMLElement|null} container
  */
 export function unmountDialogueTheaterListView(container) {
+    unfloatArchiveFileActions('theater');
+
     if (container?._dialogueTheaterEscape) {
         document.removeEventListener('keydown', container._dialogueTheaterEscape);
     }

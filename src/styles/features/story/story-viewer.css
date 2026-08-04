@@ -267,6 +267,15 @@ body.color-palette-gray .story-viewer-panel-embedded #dialogueTheaterList .event
     min-width: 0;
 }
 
+/* File actions float in #archiveFileActionsHost (zoom slot).
+ * Story (non-bio): empty bar has nothing left → hide.
+ * Bio archive keeps the bar for pagination thumbs.
+ * Theater: always hide once actions leave. */
+.story-viewer-panel-embedded:not(.data-workshop-bio-archive) #storyArchiveBottomBar:not(:has(> .events-manage-actions)),
+.story-viewer-panel-embedded #dialogueTheaterBottomBar:not(:has(> .events-manage-actions)) {
+    display: none !important;
+}
+
 .story-viewer-panel-embedded #storyArchiveBottomBar #eventsPagination.events-pagination {
     grid-column: 2;
     justify-self: center;
@@ -815,10 +824,15 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     flex-direction: column;
 }
 
-.story-viewer-panel-embedded--timeline-view #eventsManageControls,
+/* Keep search/filter controls in timeline; hide list chrome only */
 .story-viewer-panel-embedded--timeline-view #eventsList,
 .story-viewer-panel-embedded--timeline-view #storyArchiveGridSquishBar {
     display: none !important;
+}
+
+.story-viewer-panel-embedded--timeline-view #eventsManageControls {
+    display: flex;
+    flex-direction: column;
 }
 
 .story-viewer-panel-embedded--list-view .story-timeline-view {
@@ -876,10 +890,13 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     }
 
     /*
-     * Story list + Dialogue Theater: search pinned under mode rail on mobile.
+     * Story list/timeline + Dialogue Theater: search pinned under mode rail on mobile.
      */
     body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
         .story-viewer-panel-embedded--list-view
+        .events-manage-content,
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded--timeline-view
         .events-manage-content,
     body:has(.dialogue-theater-list-host.active)
         .dialogue-theater-panel-embedded
@@ -890,6 +907,9 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
 
     body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
         .story-viewer-panel-embedded--list-view
+        #eventsManageControls,
+    body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active)
+        .story-viewer-panel-embedded--timeline-view
         #eventsManageControls,
     body:has(.dialogue-theater-list-host.active)
         .dialogue-theater-panel-embedded
@@ -902,16 +922,21 @@ body:has(#storyViewerContainer.story-viewer-container--timeline-mode.active) #do
     }
 
     .story-viewer-panel-embedded--list-view.events-manage-panel--toolbar-collapsed #eventsManageControls,
+    .story-viewer-panel-embedded--timeline-view.events-manage-panel--toolbar-collapsed #eventsManageControls,
     .dialogue-theater-panel-embedded.events-manage-panel--toolbar-collapsed #dialogueTheaterManageControls {
         display: flex !important;
     }
 
     .story-viewer-panel-embedded--list-view #eventsManageToolbarToggleBtn,
+    .story-viewer-panel-embedded--timeline-view #eventsManageToolbarToggleBtn,
     .dialogue-theater-panel-embedded #dialogueTheaterToolbarToggleBtn {
         display: none !important;
     }
 
     .story-viewer-panel-embedded--list-view
+        .events-manage-search-row--primary
+        .events-search-input--title,
+    .story-viewer-panel-embedded--timeline-view
         .events-manage-search-row--primary
         .events-search-input--title {
         width: 100%;
@@ -1407,7 +1432,7 @@ body.color-palette-gray .story-archive-category-hub__tile:hover {
     }
 }
 
-/* Pagination dock cap (~80px border art + trapezium) intrudes above the dock; lift list + page controls. */
+/* Pagination dock cap (~80px border art + trapezium) intrudes above the dock; lift list. */
 body:has(#paginationDock) .story-viewer-container.active,
 body:has(#paginationDock) .dialogue-theater-list-host.active {
     --story-archive-dock-clearance: clamp(92px, 12vmin, 148px);
@@ -1415,12 +1440,6 @@ body:has(#paginationDock) .dialogue-theater-list-host.active {
 
 body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded .events-manage-content {
     padding-bottom: calc(24px + var(--story-archive-dock-clearance));
-}
-
-body:has(#paginationDock) .story-viewer-container.active .story-viewer-panel-embedded :is(#storyArchiveBottomBar, #dialogueTheaterBottomBar) {
-    margin-top: 18px;
-    padding-top: 20px;
-    padding-bottom: 8px;
 }
 
 /* Pattern overlay - matches events-manage-panel, filters-panel, music-panel */

@@ -4,6 +4,8 @@
 
 import { stripDialogueSubtitleMarkup } from '../data/dialogueSubtitleFormatting.js';
 import { normalizeSubtitlesForMatch } from '../data/theaterVoicelineParsing.js';
+import { normalizeForPredictiveMatch } from '../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+import { getConversationTags } from './dialogueTheaterEraFilter.js';
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
@@ -15,14 +17,31 @@ export function conversationMatchesListSearch(conversation, query) {
     if (!q) return true;
 
     const qLower = q.toLowerCase();
-    if (String(conversation?.name || '').toLowerCase().includes(qLower)) return true;
-    if (String(conversation?.eraName || '').toLowerCase().includes(qLower)) return true;
+    const qFold = normalizeForPredictiveMatch(q);
+    const name = String(conversation?.name || '');
+    const tags = getConversationTags(conversation);
+    const tagsJoined = tags.join(' ');
+    if (name.toLowerCase().includes(qLower) || tagsJoined.toLowerCase().includes(qLower)) return true;
+    if (qFold) {
+        if (normalizeForPredictiveMatch(name).includes(qFold)) return true;
+        if (normalizeForPredictiveMatch(tagsJoined).includes(qFold)) return true;
+    }
+    for (const tag of tags) {
+        if (tag.toLowerCase().includes(qLower)) return true;
+        if (qFold && normalizeForPredictiveMatch(tag).includes(qFold)) return true;
+    }
 
     const normalizedQuery = normalizeSubtitlesForMatch(q);
     const strippedQuery = stripDialogueSubtitleMarkup(q).toLowerCase();
 
     const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     for (const line of lines) {
+        const hero = String(line?.hero || '');
+        if (hero) {
+            if (hero.toLowerCase().includes(qLower)) return true;
+            if (qFold && normalizeForPredictiveMatch(hero).includes(qFold)) return true;
+        }
+
         const subtitles = String(line?.subtitles || '');
         if (!subtitles) continue;
 

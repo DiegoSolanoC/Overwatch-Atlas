@@ -9,10 +9,9 @@ import {
     updateDialogueTheaterStageActiveLine,
     PANEL_DIALOGUE_BOX_HTML,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
-import { applyEraNameToEvent } from '../../system-interface/interface-left-panel/event-system/edit/timelineFormParsing.js';
 import {
-    DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS,
-    DIALOGUE_THEATER_WORKING_TAG_OPTIONS,
+    DIALOGUE_THEATER_EDITABLE_TAGS,
+    getConversationTags,
 } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import {
     clearDialogueTheaterAssetsCache,
@@ -87,11 +86,6 @@ import {
 } from '../data/theaterVoicelineParsing.js';
 
 const HOST_ID = 'dialogueTheaterEditHost';
-const ERA_OPTIONS = [
-    ...DIALOGUE_THEATER_TIMELINE_ERA_OPTIONS.map((label) => ({ label })),
-    ...DIALOGUE_THEATER_WORKING_TAG_OPTIONS.map((label) => ({ label })),
-];
-
 /** @type {string[]} */
 let heroOptions = [];
 
@@ -418,8 +412,16 @@ function wireVariationPathsSection(host, conversation) {
     host._dialogueTheaterPathsState = state;
     toggle.checked = state.enabled;
 
+    const syncMultiPathTag = () => {
+        const multiPathEl = host.querySelector('#dialogueTheaterEditMultiPathTag');
+        if (multiPathEl instanceof HTMLInputElement) {
+            multiPathEl.checked = state.enabled;
+        }
+    };
+
     const refreshEditor = () => {
         renderVariationPathsEditor(pathsHost, state, listLineOptionsFromEditHost(host));
+        syncMultiPathTag();
     };
 
     toggle.addEventListener('change', () => {
@@ -1038,7 +1040,8 @@ export function updateDialogueTheaterViewPathSelection(host, conversation, pathI
 export function renderDialogueTheaterViewPanel(host, conversation, options = {}) {
     host.className = 'dialogue-theater-edit-host dialogue-theater-edit-host--view';
     const statusLabel = conversation.status === 'outdated' ? 'Outdated' : 'Active';
-    const era = conversation.eraName || '—';
+    const tags = getConversationTags(conversation);
+    const tagsLabel = tags.length ? tags.join(' · ') : '—';
     const playbackConversation = getPlaybackConversation(conversation);
     const paths = conversation.paths || [];
     const selectedPathId = resolveSelectedPathId(conversation);
@@ -1087,7 +1090,7 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
             ${PANEL_DIALOGUE_BOX_HTML}
             <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
                 <div><dt>Status</dt><dd>${statusLabel}</dd></div>
-                <div><dt>Era</dt><dd>${escapeHtml(era)}</dd></div>
+                <div><dt>Tags</dt><dd>${escapeHtml(tagsLabel)}</dd></div>
             </dl>
             ${pathSwitcherHtml}
             <section class="dialogue-theater-edit__section">
@@ -1415,11 +1418,29 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                 </select>
             </div>
             <div class="dialogue-theater-edit__row">
-                <label class="dialogue-theater-edit__label" for="dialogueTheaterEditEra">Era</label>
-                <select id="dialogueTheaterEditEra" class="dialogue-theater-edit__select">
-                    <option value="">— None —</option>
-                    ${ERA_OPTIONS.map((o) => `<option value="${escapeHtml(o.label)}">${escapeHtml(o.label)}</option>`).join('')}
-                </select>
+                <span class="dialogue-theater-edit__label" id="dialogueTheaterEditTagsLabel">Tags</span>
+                <div
+                    class="dialogue-theater-edit__tags"
+                    role="group"
+                    aria-labelledby="dialogueTheaterEditTagsLabel"
+                >
+                    <label class="dialogue-theater-edit__tag-option dialogue-theater-edit__tag-option--locked">
+                        <input type="checkbox" checked disabled data-theater-tag="Overwatch" />
+                        <span>Overwatch</span>
+                    </label>
+                    ${DIALOGUE_THEATER_EDITABLE_TAGS.map(
+                        (tag) => `
+                    <label class="dialogue-theater-edit__tag-option">
+                        <input type="checkbox" class="dialogue-theater-edit__tag-check" value="${escapeHtml(tag)}" />
+                        <span>${escapeHtml(tag)}</span>
+                    </label>`,
+                    ).join('')}
+                    <label class="dialogue-theater-edit__tag-option dialogue-theater-edit__tag-option--locked">
+                        <input type="checkbox" disabled data-theater-tag="Multi Path" id="dialogueTheaterEditMultiPathTag" />
+                        <span>Multi Path</span>
+                    </label>
+                </div>
+                <p class="dialogue-theater-edit__hint">Overwatch is always applied. Multi Path follows variation routes.</p>
             </div>
             <section class="dialogue-theater-edit__section">
                 <h3 class="dialogue-theater-edit__section-title">Scene</h3>
@@ -1452,19 +1473,17 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
     `;
 
     const statusEl = host.querySelector('#dialogueTheaterEditStatus');
-    const eraEl = host.querySelector('#dialogueTheaterEditEra');
     if (statusEl instanceof HTMLSelectElement) {
         statusEl.value = conversation.status === 'outdated' ? 'outdated' : 'active';
     }
-    if (eraEl instanceof HTMLSelectElement) {
-        const currentEra = String(conversation.eraName || '').trim();
-        if (currentEra && ![...eraEl.options].some((opt) => opt.value === currentEra)) {
-            const opt = document.createElement('option');
-            opt.value = currentEra;
-            opt.textContent = currentEra;
-            eraEl.appendChild(opt);
-        }
-        eraEl.value = currentEra;
+    const currentTags = new Set(getConversationTags(conversation));
+    host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
+        if (!(input instanceof HTMLInputElement)) return;
+        input.checked = currentTags.has(input.value);
+    });
+    const multiPathEl = host.querySelector('#dialogueTheaterEditMultiPathTag');
+    if (multiPathEl instanceof HTMLInputElement) {
+        multiPathEl.checked = currentTags.has('Multi Path');
     }
 
     const sceneGrid = host.querySelector('#dialogueTheaterSceneGrid');
@@ -1519,15 +1538,17 @@ function resolveVoiceFilenameFromBlock(block) {
  */
 export function collectDialogueTheaterEditPanel(host) {
     const statusEl = host.querySelector('#dialogueTheaterEditStatus');
-    const eraEl = host.querySelector('#dialogueTheaterEditEra');
     const status =
         statusEl instanceof HTMLSelectElement && statusEl.value === 'outdated'
             ? 'outdated'
             : 'active';
-    let eraName = eraEl instanceof HTMLSelectElement ? eraEl.value.trim() : '';
-    const eraHolder = {};
-    applyEraNameToEvent(eraHolder, eraName);
-    eraName = eraHolder.eraName || '';
+    /** @type {string[]} */
+    const tags = ['Overwatch'];
+    host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
+        if (input instanceof HTMLInputElement && input.checked && input.value) {
+            tags.push(input.value);
+        }
+    });
 
     const scene = host.dataset.selectedScene || '';
     /** @type {import('../data/DialogueTheaterDataService.js').DialogueLine[]} */
@@ -1551,7 +1572,7 @@ export function collectDialogueTheaterEditPanel(host) {
     });
 
     const pathPatch = collectVariationPathsFromHost(host);
-    return { status, eraName, scene, lines, ...pathPatch };
+    return { status, eraName: '', tags, scene, lines, ...pathPatch };
 }
 
 /**

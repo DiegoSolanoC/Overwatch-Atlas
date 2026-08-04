@@ -10,7 +10,7 @@ import {
 import { createEventItem } from '../../system-interface/interface-left-panel/event-system/render/createEventItem.js';
 import { setupEventManagerImageLazyLoading, flushVisibleLazyPreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
 import { computeOverlapIndexSet } from '../../system-interface/interface-left-panel/event-system/render/overlapDetection.js';
-import { filterEventsByStandaloneActiveFilters } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
+import { filterEventsByStandaloneActiveFilters, isEventManagerSearchActive } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
 import { refreshStoryArchiveEraTintIfActive } from './StoryArchiveEraTint.js';
 import {
     applyDockEraTimelineFilter,
@@ -234,15 +234,7 @@ function computePanOffsetForSourceIndex(sourceIndex, viewport, track) {
  * } | undefined} em
  */
 function eventManagerSearchActive(em) {
-    if (!em) return false;
-    return !!(
-        (em.searchQuery || '').trim()
-        || em.searchHeroFilters?.length
-        || em.searchFactionFilters?.length
-        || em.searchNpcFilters?.length
-        || em.searchCountryFilters?.length
-        || em.searchUnmatchedFilterTokens?.length
-    );
+    return isEventManagerSearchActive(em);
 }
 
 /**

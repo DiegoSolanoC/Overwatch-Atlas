@@ -10,6 +10,7 @@
  */
 
 import { npcNamesLooselyEqual } from '../../interface-shared/npcNameAliases.js';
+import { normalizeForPredictiveMatch } from '../../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 
 const HERO_DISPLAY_NAME_OVERRIDES = {
     /* Manifest filename has no colon (filesystem-safe), display has one. */
@@ -31,39 +32,21 @@ const DIALOGUE_SKIN_HERO_ALIASES = {
  * @returns {string}
  */
 function normalizeHeroAliasKey(value) {
-    return String(value || '')
-        .trim()
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/\p{M}/gu, '')
-        .replace(/[^a-z0-9]/g, '');
+    return normalizeForPredictiveMatch(value);
 }
 
 /**
- * @param {string} value
- * @returns {string}
- */
-function normalizeHeroNameLoose(value) {
-    return String(value || '')
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ');
-}
-
-/**
- * Match manifest ids to wiki/display spellings — e.g. "Soldier 76" ↔ "Soldier: 76".
+ * Match manifest ids to wiki/display spellings — e.g. "Soldier 76" ↔ "Soldier: 76",
+ * "Lucio" ↔ "Lúcio", "Dva" ↔ "D.va".
  *
  * @param {string} a
  * @param {string} b
  * @returns {boolean}
  */
 export function heroNamesLooselyEqual(a, b) {
-    const na = normalizeHeroNameLoose(a);
-    const nb = normalizeHeroNameLoose(b);
-    if (na && na === nb) return true;
-    const la = na.replace(/:/g, '').replace(/\s/g, '');
-    const lb = nb.replace(/:/g, '').replace(/\s/g, '');
-    return la.length > 0 && la === lb;
+    const na = normalizeForPredictiveMatch(a);
+    const nb = normalizeForPredictiveMatch(b);
+    return Boolean(na && nb && na === nb);
 }
 
 /**

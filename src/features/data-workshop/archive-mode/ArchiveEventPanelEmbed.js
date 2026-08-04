@@ -14,7 +14,7 @@ import {
     hideStoryArchiveEventManagerClose,
     setupStoryArchiveBottomBar,
     setupStoryArchiveCompactChrome,
-} from './ArchiveEmbeddedEventPanelLayout.js';
+} from './ArchiveEmbeddedEventPanelLayout.js?v=2';
 import {
     mountStoryViewToggle,
     unmountStoryViewToggle,

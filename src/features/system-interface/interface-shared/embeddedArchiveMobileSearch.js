@@ -10,7 +10,7 @@ export function isCompactMobileViewport() {
 }
 
 /**
- * On mobile, Story list + Dialogue Theater keep search visible (no collapse).
+ * On mobile, Story list/timeline + Dialogue Theater keep search visible (no collapse).
  * @param {HTMLElement | null | undefined} panel
  * @returns {boolean}
  */
@@ -19,7 +19,10 @@ export function shouldPinEmbeddedArchiveSearchToolbar(panel) {
     if (panel.classList.contains('dialogue-theater-panel-embedded')) return true;
     if (
         panel.classList.contains('story-viewer-panel-embedded')
-        && panel.classList.contains('story-viewer-panel-embedded--list-view')
+        && (
+            panel.classList.contains('story-viewer-panel-embedded--list-view')
+            || panel.classList.contains('story-viewer-panel-embedded--timeline-view')
+        )
     ) {
         return true;
     }

@@ -449,6 +449,32 @@ body.color-palette-gray .events-manage-title {
     font-weight: 500;
     white-space: nowrap;
 }
+
+/* Document / filtered entry count beside Search → title field */
+.events-search-result-count {
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif);
+    font-size: clamp(2.2rem, 4.2vw, 3rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 2.5ch;
+    text-align: center;
+    user-select: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+body.color-palette-gray .events-search-result-count {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .events-search-result-count {
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+    }
+}
 .events-search-input {
     min-width: 160px;
     max-width: 220px;

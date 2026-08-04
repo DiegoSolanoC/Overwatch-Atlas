@@ -2,7 +2,7 @@
  * Single-value predictive text (hero / voiceline) — same row UI as filter autocomplete.
  */
 
-import { buildMatches } from '../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+import { buildMatches, normalizeForPredictiveMatch } from '../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 import { renderTokenPickRow } from '../../system-interface/interface-left-panel/event-system/form/autocomplete/renderTokenPickRow.js';
 import {
     dismissOtherDialogueTheaterAutocompletes,
@@ -22,9 +22,11 @@ function playFilterPickSound() {
  * @returns {string|null}
  */
 function findExactHeroMatch(value, options) {
-    const needle = String(value || '').trim().toLowerCase();
+    const needle = normalizeForPredictiveMatch(value);
     if (!needle) return null;
-    const match = options.find((option) => String(option || '').trim().toLowerCase() === needle);
+    const match = options.find(
+        (option) => normalizeForPredictiveMatch(option) === needle,
+    );
     return match ? String(match).trim() : null;
 }
 

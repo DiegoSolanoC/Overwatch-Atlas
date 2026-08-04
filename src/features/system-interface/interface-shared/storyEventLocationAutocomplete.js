@@ -8,6 +8,11 @@
  * Country fields use FormTokenAutocomplete (flag icons) — not wired here.
  */
 
+import {
+    buildMatches,
+    normalizeForPredictiveMatch,
+} from '../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+
 const PLACE_NAME_DATALIST_ID = 'storyEventPlaceNameList';
 const PLACE_NAME_FIELD_NAME = 'story-event-place-name';
 
@@ -19,10 +24,7 @@ let cachedLocationData = null;
  * @returns {string}
  */
 function normalizeKey(text) {
-    return String(text || '')
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ');
+    return normalizeForPredictiveMatch(text);
 }
 
 /**
@@ -201,14 +203,62 @@ export function syncCountryFromPlaceName(nameInput, countryInput) {
 
 /**
  * @param {HTMLInputElement} input
+ * @param {HTMLInputElement|null|undefined} [countryInput]
  */
-function wirePlaceNameField(input) {
+function wirePlaceNameField(input, countryInput) {
     if (!input || input.dataset.storyEventPlaceAutocomplete === 'true') return;
     input.dataset.storyEventPlaceAutocomplete = 'true';
     refreshStoryEventLocationDatalists();
-    input.setAttribute('autocomplete', 'on');
-    input.setAttribute('list', PLACE_NAME_DATALIST_ID);
+    input.setAttribute('autocomplete', 'off');
+    input.removeAttribute('list');
     input.setAttribute('name', PLACE_NAME_FIELD_NAME);
+
+    /** @type {HTMLElement|null} */
+    let listEl = null;
+    const removeList = () => {
+        listEl?.remove();
+        listEl = null;
+    };
+
+    const renderSuggestions = () => {
+        removeList();
+        const names = [...getLocationAutocompleteData().placeNames];
+        const matches = buildMatches(input.value, names, 'countries').slice(0, 8);
+        if (!matches.length) return;
+
+        listEl = document.createElement('div');
+        listEl.className = 'filter-autocomplete-list';
+        matches.forEach((text) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'filter-autocomplete-item';
+            btn.textContent = text;
+            btn.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                input.value = text;
+                removeList();
+                if (countryInput) syncCountryFromPlaceName(input, countryInput);
+            });
+            listEl.appendChild(btn);
+        });
+        const host = input.parentElement || input;
+        host.appendChild(listEl);
+    };
+
+    input.addEventListener('input', () => {
+        renderSuggestions();
+        if (countryInput) syncCountryFromPlaceName(input, countryInput);
+    });
+    input.addEventListener('change', () => {
+        if (countryInput) syncCountryFromPlaceName(input, countryInput);
+    });
+    input.addEventListener('blur', () => {
+        window.setTimeout(removeList, 120);
+        if (countryInput) syncCountryFromPlaceName(input, countryInput);
+    });
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') removeList();
+    });
 }
 
 /**
@@ -217,12 +267,7 @@ function wirePlaceNameField(input) {
  */
 export function wirePlaceNameInput(nameInput, countryInput) {
     if (!nameInput) return;
-    wirePlaceNameField(nameInput);
-    if (!countryInput) return;
-    const onCommit = () => syncCountryFromPlaceName(nameInput, countryInput);
-    nameInput.addEventListener('input', onCommit);
-    nameInput.addEventListener('change', onCommit);
-    nameInput.addEventListener('blur', onCommit);
+    wirePlaceNameField(nameInput, countryInput);
 }
 
 /**

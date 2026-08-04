@@ -13,7 +13,7 @@ import {
     onHeroBiographyDockEventHover,
     onHeroBiographyDockEventHoverEnd,
 } from '../../../../gallery/gallery-mode/heroBiographyDockLookHover.js';
-import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
     centerCameraOnMarker,
@@ -71,7 +71,6 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
         const activeFilters = (isHeroBiographyDockFilterActive() || isDockEraFilterActive())
             ? new Set()
             : (window.standaloneActiveFilters || new Set());
-        const filtersOn = activeFilters.size > 0;
         
         buttons.forEach((btn, index) => {
             // Remove old listeners by cloning
@@ -89,8 +88,8 @@ export function runWireNumberButtons(slide, pageEvents, pageNum, allEvents) {
                 return;
             }
             
-            // Check if this event should be locked based on filters
-            const isLocked = filtersOn && shouldEventBeLocked(event, activeFilters);
+            // Check if this event should be locked based on filters / search
+            const isLocked = shouldDockEventBeLocked(event, activeFilters);
             
             newBtn.disabled = isLocked;
             newBtn.style.opacity = isLocked ? '0.5' : '1';

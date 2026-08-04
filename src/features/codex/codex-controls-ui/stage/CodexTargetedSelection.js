@@ -19,6 +19,10 @@ import {
     buildAllowedBioNodeIdsForTargetedSeed,
     ensureCodexTargetedArchiveCache,
 } from './codexTargetedSelectionAllowlist.js';
+import {
+    normalizeForPredictiveMatch,
+    substringRank,
+} from '../../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 
 /** @param {object} node */
 export function getCodexNodeDisplayName(node) {
@@ -35,12 +39,7 @@ export function getCodexNodeDisplayName(node) {
 }
 
 function substringMatchScore(haystack, needle) {
-    if (!needle) return 0;
-    const h = String(haystack || '').toLowerCase();
-    const n = needle.toLowerCase();
-    if (!h.includes(n)) return Infinity;
-    if (h.startsWith(n)) return 0;
-    return 1 + h.indexOf(n);
+    return substringRank(haystack, needle);
 }
 
 /**
@@ -49,14 +48,14 @@ function substringMatchScore(haystack, needle) {
  * @returns {{ nodeId: string, kind: string, name: string, score: number }[]}
  */
 export function listCodexCanvasNodeSuggestions(prefix, limit = 12) {
-    const p = String(prefix || '').trim().toLowerCase();
+    const p = normalizeForPredictiveMatch(prefix);
     if (!p || !Array.isArray(s.codexAllNodes)) return [];
     const rows = [];
     for (let i = 0; i < s.codexAllNodes.length; i += 1) {
         const n = s.codexAllNodes[i];
         if (!n || n.kind === 'junction') continue;
         const name = getCodexNodeDisplayName(n);
-        if (!name.toLowerCase().includes(p)) continue;
+        if (!normalizeForPredictiveMatch(name).includes(p)) continue;
         rows.push({
             nodeId: n.id,
             kind: n.kind,
@@ -79,11 +78,11 @@ export function listCodexCanvasNodeSuggestions(prefix, limit = 12) {
 export function resolveCodexNodeIdFromNameQuery(query) {
     const q = String(query || '').trim();
     if (!q || !Array.isArray(s.codexAllNodes)) return '';
-    const ql = q.toLowerCase();
+    const qFold = normalizeForPredictiveMatch(q);
     for (let i = 0; i < s.codexAllNodes.length; i += 1) {
         const n = s.codexAllNodes[i];
         if (!n || n.kind === 'junction') continue;
-        if (getCodexNodeDisplayName(n).toLowerCase() === ql) return n.id;
+        if (normalizeForPredictiveMatch(getCodexNodeDisplayName(n)) === qFold) return n.id;
     }
     for (const kind of ['hero', 'npc', 'faction']) {
         const id = findCodexNodeIdForBioEntity(kind, q, s.codexAllNodes);
@@ -91,7 +90,7 @@ export function resolveCodexNodeIdFromNameQuery(query) {
     }
     for (let j = 0; j < s.codexAllNodes.length; j += 1) {
         const n = s.codexAllNodes[j];
-        if (n && n.kind === 'country' && String(n.countryKey || '').trim().toLowerCase() === ql) {
+        if (n && n.kind === 'country' && normalizeForPredictiveMatch(n.countryKey) === qFold) {
             return n.id;
         }
     }
@@ -99,9 +98,11 @@ export function resolveCodexNodeIdFromNameQuery(query) {
         const n = s.codexAllNodes[k];
         if (!n || n.kind === 'junction') continue;
         const name = getCodexNodeDisplayName(n);
-        if (name.toLowerCase().includes(ql)) {
+        if (normalizeForPredictiveMatch(name).includes(qFold)) {
             if (n.kind === 'hero' && heroNamesLooselyEqualCodex(n.heroName, q)) return n.id;
             if (n.kind === 'faction' && factionNodeMatchesToken(n, q)) return n.id;
+            if (n.kind === 'country') return n.id;
+            if (n.kind === 'npc') return n.id;
         }
     }
     return '';

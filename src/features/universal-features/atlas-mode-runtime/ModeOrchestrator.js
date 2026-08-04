@@ -43,11 +43,11 @@ import {
 import {
     mountStoryMode,
     unmountStoryMode,
-} from '../../story/story-mode/StoryModeMount.js';
+} from '../../story/story-mode/StoryModeMount.js?v=2';
 import {
     mountDialogueTheaterMode,
     unmountDialogueTheaterMode,
-} from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js?v=102';
+} from '../../dialogue-theater/dialogue-theater-mode/DialogueTheaterModeMount.js?v=104';
 import {
     mountOfficialArchiveMode,
     unmountOfficialArchiveMode,

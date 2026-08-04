@@ -14,7 +14,8 @@
  * callers (`FilterService`, `EventMarkerManager`) that reach in via the global.
  */
 
-import { shouldEventBeLocked } from '../../interface-globe-markers/filtering/shouldEventBeLocked.js';
+import { shouldDockEventBeLocked } from '../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
+import { isEventManagerSearchActive } from '../../interface-left-panel/coordinator/search/filterEvents.js';
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 
 /**
@@ -73,7 +74,7 @@ export function updateStandalonePaginationForFilters() {
             return;
         }
 
-        const isLocked = activeFilters.size > 0 && shouldEventBeLocked(event, activeFilters);
+        const isLocked = shouldDockEventBeLocked(event, activeFilters);
 
         if (isLocked) {
             btn.disabled = true;
@@ -131,18 +132,22 @@ export function updateStandaloneSliderTicks(activeFilters, events, eventsPerPage
     numLabels.forEach(label => {
         const eventIndex = parseInt(label.dataset.eventIndex, 10);
         const event = eventIndex >= 0 && eventIndex < totalEvents ? events[eventIndex] : null;
-        if (event && !shouldEventBeLocked(event, activeFilters)) {
+        if (event && !shouldDockEventBeLocked(event, activeFilters)) {
             label.classList.add('filter-hit');
         }
     });
 
-    if (!activeFilters || activeFilters.size === 0) return;
+    const curationActive =
+        (activeFilters && activeFilters.size > 0)
+        || isEventManagerSearchActive(typeof window !== 'undefined' ? window.eventManager : null);
+
+    if (!curationActive) return;
 
     const eventTicks = ticksEl.querySelectorAll('.event-page-slider-tick--event');
     eventTicks.forEach(tick => {
         const eventIndex = parseInt(tick.dataset.eventIndex, 10);
         const event = eventIndex >= 0 && eventIndex < totalEvents ? events[eventIndex] : null;
-        if (event && !shouldEventBeLocked(event, activeFilters)) {
+        if (event && !shouldDockEventBeLocked(event, activeFilters)) {
             tick.classList.add('event-page-slider-tick--filter-hit');
         }
     });

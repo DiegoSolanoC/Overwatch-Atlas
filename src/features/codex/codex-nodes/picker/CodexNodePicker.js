@@ -5,6 +5,10 @@ import { getEventManager, getEventsFromEventManager, getGlobeController, getStan
 import { CODEX_ALLOWED_COUNTRY_KEYS, codexCountryFlagSrc } from '../placement/CodexNodePortraitMetrics.js';
 import { capOpts, DOUBLE_RIGHT_MS, CODEX_JUNCTION_PREVIEW_DATA_URI, MAX_SUGGEST, CODEX_DEBUG_UI_PREF_KEY_LEGACY, CODEX_MODE_PREF_KEY } from '../../codex-canvas/core/canvasConstants.js';
 import { buildFactionDefaultImagePath } from '../../../system-interface/interface-filter-menu/images/factionImagePaths.js';
+import {
+    normalizeForPredictiveMatch,
+    substringRank,
+} from '../../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 
 
 function openPickerAtRootPoint(worldX, worldY, anchorClientX, anchorClientY) {
@@ -157,32 +161,31 @@ function removePicker() {
 }
 
 function substringMatchScore(haystack, needle) {
-    if (!needle) return 0;
-    const h = String(haystack || '').toLowerCase();
-    const n = needle.toLowerCase();
-    if (!h.includes(n)) return Infinity;
-    if (h.startsWith(n)) return 0;
-    return 1 + h.indexOf(n);
+    return substringRank(haystack, needle);
 }
 
 function buildMatches(query) {
-    const prefix = query.trim().toLowerCase();
+    const prefix = normalizeForPredictiveMatch(query);
     const { heroes, factions, npcs } = getHeroFactionLists();
     const countries = [];
     if (prefix) {
         for (let i = 0; i < CODEX_ALLOWED_COUNTRY_KEYS.length; i += 1) {
             const key = CODEX_ALLOWED_COUNTRY_KEYS[i];
-            const lk = key.toLowerCase();
-            if (lk.includes(prefix)) {
+            if (normalizeForPredictiveMatch(key).includes(prefix)) {
                 countries.push({ key, label: key });
             }
         }
+        countries.sort(
+            (a, b) =>
+                substringRank(a.label, prefix) - substringRank(b.label, prefix)
+                || String(a.label).length - String(b.label).length
+        );
     }
     if (!prefix) {
         return { heroes: [], factions: [], countries: [], npcs: [] };
     }
     const hMatch = heroes
-        .filter((h) => String(h || '').toLowerCase().includes(prefix))
+        .filter((h) => normalizeForPredictiveMatch(h).includes(prefix))
         .sort(
             (a, b) =>
                 substringMatchScore(a, prefix) - substringMatchScore(b, prefix)
@@ -191,8 +194,8 @@ function buildMatches(query) {
         .slice(0, MAX_SUGGEST);
     const fMatch = factions
         .filter((f) => {
-            const dn = String(f.displayName || '').trim().toLowerCase();
-            const fn = String(f.filename || '').toLowerCase();
+            const dn = normalizeForPredictiveMatch(f.displayName);
+            const fn = normalizeForPredictiveMatch(f.filename);
             return dn.includes(prefix) || fn.includes(prefix);
         })
         .sort((a, b) => {
@@ -210,14 +213,14 @@ function buildMatches(query) {
         .slice(0, MAX_SUGGEST);
     const npcList = Array.isArray(npcs) ? npcs : [];
     const nMatch = npcList
-        .filter((n) => String(n || '').toLowerCase().includes(prefix))
+        .filter((n) => normalizeForPredictiveMatch(n).includes(prefix))
         .sort(
             (a, b) =>
                 substringMatchScore(a, prefix) - substringMatchScore(b, prefix)
                 || String(a).length - String(b).length
         )
         .slice(0, MAX_SUGGEST);
-    return { heroes: hMatch, factions: fMatch, countries, npcs: nMatch };
+    return { heroes: hMatch, factions: fMatch, countries: countries.slice(0, MAX_SUGGEST), npcs: nMatch };
 }
 
 function appendSuggestionRow(list, kind, heroName, faction, onPick, countryMeta = null) {

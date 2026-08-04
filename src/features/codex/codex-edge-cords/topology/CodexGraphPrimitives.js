@@ -2,6 +2,8 @@
  * Pure graph primitives for Codex node–edge layout (no DOM, no globals).
  */
 
+import { normalizeForPredictiveMatch } from '../../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+
 /**
  * @param {{ fromId: string, toId: string }|null|undefined} e
  * @returns {{ fromId: string, toId: string } | null}
@@ -44,18 +46,13 @@ export function generateNodeId() {
     return `cn-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
+/** Same fold as predictive autocomplete (accents / punctuation / spaces stripped). */
 export function normalizeBioNameLoose(s) {
-    return String(s || '')
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ');
+    return normalizeForPredictiveMatch(s);
 }
 
 export function heroNamesLooselyEqualCodex(a, b) {
     const na = normalizeBioNameLoose(a);
     const nb = normalizeBioNameLoose(b);
-    if (na && na === nb) return true;
-    const la = na.replace(/:/g, '').replace(/\s/g, '');
-    const lb = nb.replace(/:/g, '').replace(/\s/g, '');
-    return la.length > 0 && la === lb;
+    return Boolean(na && nb && na === nb);
 }

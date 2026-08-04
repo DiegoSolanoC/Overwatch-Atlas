@@ -17,6 +17,7 @@
 import {
     defaultFactionDisplayName,
     normalizeFlagKey,
+    normalizeForPredictiveMatch,
     tokenSubstringRank,
     countrySubstringRank,
 } from './searchTokenUtils.js';
@@ -28,12 +29,12 @@ export function buildFilterIndex(eventManager) {
     const factions = eventManager.factions || [];
     const heroByLower = new Map();
     heroes.forEach((h) => {
-        const key = (h || '').toString().toLowerCase();
+        const key = normalizeForPredictiveMatch(h);
         if (key) heroByLower.set(key, h);
     });
     const npcByLower = new Map();
     npcs.forEach((n) => {
-        const key = (n || '').toString().toLowerCase();
+        const key = normalizeForPredictiveMatch(n);
         if (key) npcByLower.set(key, n);
     });
     const factionEntries = (factions || []).map((f) => {
@@ -51,6 +52,8 @@ export function buildFilterIndex(eventManager) {
             displayName,
             filenameLower: fn.toLowerCase(),
             displayLower: displayName.toLowerCase(),
+            filenameFold: normalizeForPredictiveMatch(fn),
+            displayFold: normalizeForPredictiveMatch(displayName),
         };
     });
     return { heroes, npcs, heroByLower, npcByLower, factionEntries };
@@ -74,6 +77,7 @@ export function buildFlagIndex() {
             file: map[common],
             commonLower: common.toLowerCase(),
             keyNorm: normalizeFlagKey(common),
+            commonFold: normalizeForPredictiveMatch(common),
         }))
         .sort((a, b) => a.common.localeCompare(b.common));
 }
@@ -91,11 +95,15 @@ export function parseCountryTokens(text, flagIndex) {
     const seen = new Set();
     tokens.forEach((token) => {
         const lower = token.toLowerCase();
+        const fold = normalizeForPredictiveMatch(token);
         let hit = flagIndex.find((e) => e.commonLower === lower);
         if (!hit) hit = flagIndex.find((e) => e.file.toLowerCase() === lower);
         if (!hit) {
             const nk = normalizeFlagKey(token);
             hit = flagIndex.find((e) => e.keyNorm === nk);
+        }
+        if (!hit && fold) {
+            hit = flagIndex.find((e) => e.commonFold === fold || e.keyNorm === fold);
         }
         if (hit && hit.file && !seen.has(hit.file)) {
             seen.add(hit.file);
@@ -134,14 +142,15 @@ export function parseFilterTokens(text, filterIndex) {
 
     tokens.forEach((token) => {
         const lower = token.toLowerCase();
-        if (heroByLower.has(lower)) {
-            const heroName = heroByLower.get(lower);
+        const fold = normalizeForPredictiveMatch(token);
+        if (heroByLower.has(lower) || heroByLower.has(fold)) {
+            const heroName = heroByLower.get(lower) || heroByLower.get(fold);
             if (heroName && !seenHero.has(heroName)) {
                 seenHero.add(heroName);
                 matchedHeroes.push(heroName);
             }
-        } else if (npcByLower.has(lower)) {
-            const npcName = npcByLower.get(lower);
+        } else if (npcByLower.has(lower) || npcByLower.has(fold)) {
+            const npcName = npcByLower.get(lower) || npcByLower.get(fold);
             if (npcName && !seenNpc.has(npcName)) {
                 seenNpc.add(npcName);
                 matchedNpcs.push(npcName);
@@ -151,6 +160,7 @@ export function parseFilterTokens(text, filterIndex) {
             const match = factionEntries.find((fe) => (
                 fe.displayLower === lower
                 || fe.filenameLower === lower
+                || (fold && (fe.displayFold === fold || fe.filenameFold === fold))
                 || (fh && typeof fh.factionIdsMatch === 'function' && (
                     fh.factionIdsMatch(token, fe.filename)
                     || fh.factionIdsMatch(token, fe.displayName)
@@ -177,13 +187,14 @@ export function parseFilterTokens(text, filterIndex) {
  * Sorted by substring rank first (`countrySubstringRank`), then alphabetically.
  */
 export function getCountryCandidates(prefixLower, flagIndex) {
-    if (!prefixLower) return [];
+    const prefix = normalizeForPredictiveMatch(prefixLower);
+    if (!prefix) return [];
     return flagIndex
-        .filter((e) => e.commonLower.includes(prefixLower))
+        .filter((e) => (e.commonFold || normalizeForPredictiveMatch(e.common)).includes(prefix))
         .sort(
             (a, b) =>
-                countrySubstringRank(a.commonLower, prefixLower)
-                - countrySubstringRank(b.commonLower, prefixLower)
+                countrySubstringRank(a.common, prefix)
+                - countrySubstringRank(b.common, prefix)
                 || a.common.length - b.common.length
         )
         .slice(0, 10);
@@ -195,45 +206,47 @@ export function getCountryCandidates(prefixLower, flagIndex) {
  * (`heroKey`, `npcKey`, or `factionFilename`) the popover uses to load the correct image.
  */
 export function getTokenCandidates(prefixLower, filterIndex) {
+    const prefix = normalizeForPredictiveMatch(prefixLower);
+    if (!prefix) return [];
     const results = [];
     (filterIndex.heroes || []).forEach((h) => {
         const label = (h || '').toString();
         if (!label) return;
-        const ll = label.toLowerCase();
-        if (ll.includes(prefixLower)) {
+        if (normalizeForPredictiveMatch(label).includes(prefix)) {
             results.push({
                 kind: 'hero',
                 label,
                 detail: 'Hero',
                 insert: label,
                 heroKey: label,
-                _rank: tokenSubstringRank(ll, prefixLower)
+                _rank: tokenSubstringRank(label, prefix)
             });
         }
     });
     (filterIndex.npcs || []).forEach((n) => {
         const label = (n || '').toString();
         if (!label) return;
-        const ll = label.toLowerCase();
-        if (ll.includes(prefixLower)) {
+        if (normalizeForPredictiveMatch(label).includes(prefix)) {
             results.push({
                 kind: 'npc',
                 label,
                 detail: 'NPC',
                 insert: label,
                 npcKey: label,
-                _rank: tokenSubstringRank(ll, prefixLower)
+                _rank: tokenSubstringRank(label, prefix)
             });
         }
     });
     (filterIndex.factionEntries || []).forEach((f) => {
         if (!f.displayName && !f.filename) return;
-        const match = f.displayLower.includes(prefixLower) || f.filenameLower.includes(prefixLower);
+        const displayFold = f.displayFold || normalizeForPredictiveMatch(f.displayName);
+        const filenameFold = f.filenameFold || normalizeForPredictiveMatch(f.filename);
+        const match = displayFold.includes(prefix) || filenameFold.includes(prefix);
         if (match) {
             const label = f.displayName || defaultFactionDisplayName(f.filename) || f.filename;
             const rank = Math.min(
-                tokenSubstringRank(f.displayLower || '', prefixLower),
-                tokenSubstringRank(f.filenameLower || '', prefixLower)
+                tokenSubstringRank(f.displayName || '', prefix),
+                tokenSubstringRank(f.filename || '', prefix)
             );
             results.push({
                 kind: 'faction',

@@ -27,7 +27,7 @@ import {
     setupStoryArchiveCompactChrome,
     hideStoryArchiveEventManagerClose,
     detachEventsManagePanelFromStoryArchive
-} from './ArchiveEmbeddedEventPanelLayout.js';
+} from './ArchiveEmbeddedEventPanelLayout.js?v=2';
 import { applyStoryArchiveGridSquishFromDefaults } from '../archive-controls-ui/ArchiveGridSquish.js';
 import {
     ensureDataArchiveCategoryHub,

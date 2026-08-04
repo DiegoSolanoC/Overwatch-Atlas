@@ -1,18 +1,24 @@
 /* Zoom Controls — bottom-right row; same right inset as .dock-globe-rail--right / Events strip (--dock-globe-rail-edge-inset 42px) */
-.zoom-controls {
-    position: fixed;
-    left: auto;
-    right: max(42px, env(safe-area-inset-right));
-    top: auto;
-    transform: none;
-    /* Match .dock-globe-rail--left / --right vertical position */
-    bottom: calc(
+:root {
+    --atlas-floating-controls-right: max(42px, env(safe-area-inset-right));
+    --atlas-floating-controls-bottom: calc(
         var(--footer-height, 65px)
         + var(--pagination-dock-height, 240px)
         + var(--dock-globe-rail-gap, 10px)
         + var(--dock-rail-lift-into-border, 0px)
         + var(--dock-rail-side-extra, 30px)
     );
+    --atlas-floating-controls-bottom-mobile: calc(var(--footer-height, 65px) + 24px);
+}
+
+.zoom-controls {
+    position: fixed;
+    left: auto;
+    right: var(--atlas-floating-controls-right);
+    top: auto;
+    transform: none;
+    /* Match .dock-globe-rail--left / --right vertical position */
+    bottom: var(--atlas-floating-controls-bottom);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -102,6 +108,7 @@ body:has(.loading-overlay.active) .dock-globe-rail,
 body:has(.loading-overlay.active) .test-container,
 body:has(.loading-overlay.active) #zoomControls,
 body:has(.loading-overlay.active) .zoom-btn,
+body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-file-actions,
 body:has(.loading-overlay.active) .globe-control-btn,
 body:has(.loading-overlay.active) .time-control-slider {
     visibility: hidden !important;
@@ -118,28 +125,94 @@ body:has(.loading-overlay.active) .time-control-slider {
 @media (max-width: 768px) {
     .zoom-controls {
         left: auto !important;
-        right: max(42px, env(safe-area-inset-right)) !important;
+        right: var(--atlas-floating-controls-right) !important;
         top: auto !important;
         transform: none !important;
         flex-direction: row !important;
-        bottom: calc(var(--footer-height, 65px) + 24px) !important;
+        bottom: var(--atlas-floating-controls-bottom-mobile) !important;
     }
 
     body:has(#paginationDock) .zoom-controls {
-        bottom: calc(
-                var(--footer-height, 65px)
-                + var(--pagination-dock-height, 240px)
-                + var(--dock-globe-rail-gap, 10px)
-                + var(--dock-rail-lift-into-border, 0px)
-                + var(--dock-rail-side-extra, 30px)
-            )
-            !important;
+        bottom: var(--atlas-floating-controls-bottom) !important;
     }
 
     .zoom-btn {
         width: 44px !important;
         height: 44px !important;
         font-size: 26px !important;
+    }
+}
+
+/* Story / Theater file actions — live in #dockGlobeRailRight (same band as list/timeline toggle) */
+#dockGlobeRailRight.dock-globe-rail--archive-file-actions {
+    /* Above story/theater stage; match left rail presence */
+    z-index: 150;
+    max-width: min(720px, calc(100vw - 84px));
+}
+
+#dockGlobeRailRight > .archive-file-actions-row,
+#dockGlobeRailRight > .events-manage-actions.archive-file-actions-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+#dockGlobeRailRight > .archive-file-actions-row > *,
+#dockGlobeRailRight > .events-manage-actions.archive-file-actions-row > * {
+    pointer-events: auto;
+}
+
+#dockGlobeRailRight .archive-file-actions-row .events-manage-action-btn,
+#dockGlobeRailRight .archive-file-actions-row .story-viewer-action-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 52px;
+    min-height: 52px;
+    max-height: 52px;
+    padding: 0 16px;
+    margin: 0;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Rail children are normally skewed; keep file labels upright */
+    transform: none;
+}
+
+#dockGlobeRailRight .archive-file-actions-row .dialogue-theater-list__import-input,
+#dockGlobeRailRight .archive-file-actions-row input[type='file'] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+body:has(.loading-overlay.active) #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+@media (max-width: 768px) {
+    #dockGlobeRailRight.dock-globe-rail--archive-file-actions {
+        max-width: calc(100vw - 24px);
+    }
+
+    #dockGlobeRailRight .archive-file-actions-row .events-manage-action-btn,
+    #dockGlobeRailRight .archive-file-actions-row .story-viewer-action-btn {
+        height: 44px;
+        min-height: 44px;
+        max-height: 44px;
+        padding: 0 12px;
+        font-size: 13px;
     }
 }
 

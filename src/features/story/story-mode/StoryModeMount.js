@@ -4,7 +4,8 @@
 
 import {
     detachEventsManagePanelFromStoryArchive,
-} from '../../data-workshop/archive-mode/ArchiveEmbeddedEventPanelLayout.js';
+    setupStoryArchiveBottomBar,
+} from '../../data-workshop/archive-mode/ArchiveEmbeddedEventPanelLayout.js?v=2';
 import {
     archiveModeSession,
     clearArchiveModeCallbacks,
@@ -61,6 +62,7 @@ export async function mountStoryMode({ onCancel } = {}) {
         });
         mountStoryViewToggle(eventsManagePanel);
         syncArchiveManagePanelActionVisibility();
+        setupStoryArchiveBottomBar(eventsManagePanel);
         updateStatus('Story open', 'success');
         return;
     }

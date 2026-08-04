@@ -160,6 +160,8 @@ function writeDialogueTheaterJson(body, res) {
     const outPath = absFromPublic(FILES.dialogueTheater.conversations);
     /** @type {typeof conversations} */
     let mergedConversations = conversations;
+    /** @type {Record<string, unknown>} */
+    let existingMeta = {};
     try {
         if (fs.existsSync(outPath)) {
             const onDisk = JSON.parse(fs.readFileSync(outPath, 'utf8'));
@@ -167,12 +169,22 @@ function writeDialogueTheaterJson(body, res) {
             if (existing.length > 0) {
                 mergedConversations = mergeDialogueTheaterConversations(conversations, existing);
             }
+            if (onDisk?._meta && typeof onDisk._meta === 'object') {
+                existingMeta = onDisk._meta;
+            }
         }
     } catch (e) {
         console.warn('[server] dialogue-theater merge read failed:', e?.message || e);
     }
 
-    const payload = { conversations: mergedConversations };
+    const bodyMeta = body?._meta && typeof body._meta === 'object' ? body._meta : {};
+    const payload = {
+        conversations: mergedConversations,
+        _meta: { ...existingMeta, ...bodyMeta },
+    };
+    if (!Object.keys(payload._meta).length) {
+        delete payload._meta;
+    }
     const json = JSON.stringify(payload, null, 2) + '\n';
     const tmpPath = outPath + '.tmp';
     try {
