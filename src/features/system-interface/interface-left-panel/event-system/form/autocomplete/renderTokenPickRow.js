@@ -72,6 +72,9 @@ export function renderTokenPickRow(listEl, { matchHeroName, matchFaction, matchN
     row.appendChild(img);
     row.appendChild(labelSpan);
     row.appendChild(detailSpan);
+    row.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+    });
     row.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();

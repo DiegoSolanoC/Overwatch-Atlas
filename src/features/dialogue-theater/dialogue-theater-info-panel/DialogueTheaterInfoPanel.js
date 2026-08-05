@@ -5,7 +5,7 @@
 import { dismissAllPanelsExcept } from '../../system-interface/interface-shared/dismissAllPanelsExcept.js';
 import { isEventSlideEditDevHost } from '../../system-interface/interface-info-display/isEventSlideEditDevHost.js';
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=102';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=105';
 import {
     autoStartDialogueTheaterViewPlayAll,
     collectDialogueTheaterEditPanel,
@@ -37,6 +37,7 @@ import {
     updateEventSlideHeroBirthdayDisplay,
     updateEventSlideHeroRoleDisplay,
 } from '../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
+import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
 
 /** @type {string|null} */
 let activeConversationId = null;
@@ -448,6 +449,9 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
 
     if (options.startEditing) {
         await enterDialogueTheaterEditMode(true);
+    } else if (isChatterEntry(row)) {
+        // Chatters are manual / random picks later — don't auto-play the full list in sequence.
+        await refreshDialogueTheaterStage(row);
     } else {
         void autoStartDialogueTheaterViewPlayAll(row, {
             masterPlay: isFavoriteAnimalConversation(row) || isBeforeTheCrisisConversation(row),

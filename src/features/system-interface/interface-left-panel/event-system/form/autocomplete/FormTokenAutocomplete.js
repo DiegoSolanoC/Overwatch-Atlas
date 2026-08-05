@@ -19,39 +19,7 @@
 
 import { buildMatches } from './tokenInputMatching.js';
 import { renderTokenPickRow } from './renderTokenPickRow.js';
-
-const ANCHOR_CLASS = 'filter-autocomplete-anchor';
-const LIST_ANCHORED_CLASS = 'filter-autocomplete-list--anchored';
-
-/**
- * Wrap the input once so the suggestion list can sit directly beneath it.
- * @param {HTMLInputElement} input
- * @returns {HTMLElement}
- */
-function ensureAutocompleteAnchor(input) {
-    const parent = input.parentElement;
-    if (parent?.classList?.contains(ANCHOR_CLASS)) {
-        return parent;
-    }
-    const anchor = document.createElement('div');
-    anchor.className = ANCHOR_CLASS;
-    input.parentNode?.insertBefore(anchor, input);
-    anchor.appendChild(input);
-    return anchor;
-}
-
-/**
- * @param {HTMLInputElement} input
- * @param {HTMLElement} listEl
- */
-function mountAnchoredAutocompleteList(input, listEl) {
-    const anchor = ensureAutocompleteAnchor(input);
-    listEl.classList.add(LIST_ANCHORED_CLASS);
-    listEl.style.left = '';
-    listEl.style.top = '';
-    listEl.style.width = '';
-    anchor.appendChild(listEl);
-}
+import { ensureAutocompleteAnchor, mountAnchoredAutocompleteList } from './autocompleteListAnchor.js';
 
 class FormTokenAutocomplete {
     constructor() {
@@ -64,8 +32,12 @@ class FormTokenAutocomplete {
      * @param {'heroes'|'factions'|'npcs'|'countries'|'heroesAndNpcs'} type
      */
     setupAutocomplete(input, options, type) {
+        if (!(input instanceof HTMLInputElement)) return;
         if (input.dataset.autocompleteSetup === 'true') return;
         input.dataset.autocompleteSetup = 'true';
+
+        // Wrap immediately so the first matching keystroke does not reparent (and blur) the input.
+        ensureAutocompleteAnchor(input);
 
         let autocompleteList = null;
 

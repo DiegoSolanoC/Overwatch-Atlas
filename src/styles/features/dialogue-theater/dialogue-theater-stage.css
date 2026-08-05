@@ -132,6 +132,31 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
     transform-origin: bottom right;
 }
 
+.dialogue-theater-stage__partner-stack {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.dialogue-theater-stage__partner-stack[hidden] {
+    display: none !important;
+}
+
+.dialogue-theater-stage__render--partner {
+    right: 0;
+    transform-origin: bottom right;
+    /* Fan slightly inward/left so AND stacks read as a group beside the speaker */
+    transform: translateX(
+            calc(
+                var(--stage-render-inset-x, 24%) -
+                    (var(--partner-stack-from-front, 0) * 4.5%)
+            )
+        )
+        translateY(calc(var(--partner-stack-from-front, 0) * -1.2%))
+        scale(calc(var(--stage-render-scale, 1.72) - (var(--partner-stack-from-front, 0) * 0.04)));
+}
+
 .dialogue-theater-stage__render--speaking {
     filter: none;
 }
@@ -141,10 +166,21 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
         scale(calc(var(--stage-render-scale, 1.72) * 1.05));
 }
 
-.dialogue-theater-stage__render--right.dialogue-theater-stage__render--speaking {
-    transform: translateX(var(--stage-render-inset-x, 24%))
-        scale(calc(var(--stage-render-scale, 1.72) * 1.05));
-}
+    .dialogue-theater-stage__render--right.dialogue-theater-stage__render--speaking {
+        transform: translateX(var(--stage-render-inset-x, 24%))
+            scale(calc(var(--stage-render-scale, 1.72) * 1.05));
+    }
+
+    .dialogue-theater-stage__render--partner {
+        transform: translateX(
+                calc(
+                    var(--stage-render-inset-x, 18%) -
+                        (var(--partner-stack-from-front, 0) * 3.5%)
+                )
+            )
+            translateY(calc(var(--partner-stack-from-front, 0) * -1%))
+            scale(calc(var(--stage-render-scale, 1.45) - (var(--partner-stack-from-front, 0) * 0.03)));
+    }
 
 .dialogue-theater-stage__dialogue {
     position: absolute;
@@ -238,6 +274,13 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
 
 .dialogue-theater-stage__dialogue-text .dialogue-theater-subtitle__em {
     font-style: italic;
+}
+
+.dialogue-theater-stage__dialogue-text .dialogue-theater-subtitle__sfx {
+    font-size: 0.86em;
+    color: rgba(255, 255, 255, 0.55);
+    font-style: normal;
+    font-weight: 400;
 }
 
 .dialogue-theater-stage__dialogue[hidden] {

@@ -36,20 +36,20 @@
 
     function rowMatchesActiveCastFilters(row, active) {
         if (!active || active.size === 0 || !row) return false;
-        var imgs = row.querySelectorAll('img[data-hero-open]');
+        var imgs = row.querySelectorAll('[data-hero-open]');
         var hi;
         for (hi = 0; hi < imgs.length; hi++) {
             var hn = decodeURIComponent(imgs[hi].getAttribute('data-hero-open') || '').trim();
             if (!hn) continue;
             if (active.has(hn) || active.has('hero:' + hn)) return true;
         }
-        imgs = row.querySelectorAll('img[data-npc-open]');
+        imgs = row.querySelectorAll('[data-npc-open]');
         for (hi = 0; hi < imgs.length; hi++) {
             var nn = decodeURIComponent(imgs[hi].getAttribute('data-npc-open') || '').trim();
             if (!nn) continue;
             if (active.has(nn) || active.has('npc:' + nn)) return true;
         }
-        imgs = row.querySelectorAll('img[data-faction-open]');
+        imgs = row.querySelectorAll('[data-faction-open]');
         var fh = typeof window !== 'undefined' ? window.FactionMatchHelpers : null;
         for (hi = 0; hi < imgs.length; hi++) {
             var fac = decodeURIComponent(imgs[hi].getAttribute('data-faction-open') || '').trim();

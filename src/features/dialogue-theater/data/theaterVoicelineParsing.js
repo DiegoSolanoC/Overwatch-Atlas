@@ -204,8 +204,12 @@ export function isWreckingBallHamsterOnlyLine(line) {
     if (!isWreckingBallHero(line?.hero || '')) return false;
 
     const voice = String(line?.voice || '').trim();
-    const cleanSub = stripDialogueSubtitleMarkup(String(line?.subtitles || '')).trim();
-    if (cleanSub) return false;
+    // Spoken dialogue only — ignore stage tags like (Hamster Noises) / (Chinese)
+    let rest = stripDialogueSubtitleMarkup(String(line?.subtitles || '')).trim();
+    while (/^\([^)]+\)/.test(rest)) {
+        rest = rest.replace(/^\([^)]+\)\s*/, '').trim();
+    }
+    if (rest) return false;
 
     if (!voice) return true;
     const { dialoguePart } = parseVoicelineFilename(voice);

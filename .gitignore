@@ -16,11 +16,8 @@ Thumbs.db
 # GitHub Pages local build output
 _site/
 
-
-
-
-
-
-
-
-
+# Audit/wiki scratch lives outside the repo (see scripts/lib/auditWorkspace.mjs).
+# Keep these ignores as a safety net if anything is recreated under scripts/.
+scripts/_wiki-quotes-cache/
+scripts/_audit-*
+scripts/_partners-*

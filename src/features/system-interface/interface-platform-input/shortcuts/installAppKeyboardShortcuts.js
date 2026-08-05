@@ -22,6 +22,7 @@ import {
     isTypingContext,
     isEventPageRangeSlider,
     escapeOkWhileTypingInTarget,
+    isInlineEditingBlockingShortcuts,
     modifiersActive
 } from './keyboardTypingContext.js';
 import {
@@ -188,6 +189,9 @@ function handleLetterToggle(lower, e) {
 function onKeyDown(e) {
     if (modifiersActive(e)) return;
 
+    // Editing an open event slide: never steal keys (prev/next, Escape, Q, digits, etc.).
+    if (isInlineEditingBlockingShortcuts()) return;
+
     const target = e.target;
     const key = e.key;
     const lower = typeof key === 'string' ? key.toLowerCase() : '';
@@ -275,6 +279,7 @@ function onKeyDown(e) {
 }
 
 function onWheel(e) {
+    if (isInlineEditingBlockingShortcuts()) return;
     onPaletteWheel(e, { modifiersActive, isTypingContext });
 }
 

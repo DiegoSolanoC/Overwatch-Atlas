@@ -8,8 +8,14 @@ import { fetchJsonWithTimeout } from '../../system-interface/interface-left-pane
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import {
     buildBlankConversationRecord,
+    buildBlankChatterRecord,
     normalizeConversationRecord,
 } from './dialogueTheaterConversationSchema.js';
+import {
+    DIALOGUE_THEATER_ENTRY_CHATTER,
+    DIALOGUE_THEATER_ENTRY_DIALOGUE,
+    isChatterEntry,
+} from './dialogueTheaterEntryType.js';
 import { nextConversationNumber, isNumberedConversationName, isUnknownDialogueHero } from './dialogueTheaterConversationValidation.js';
 import {
     applyHeroicRendersToConversations,
@@ -60,8 +66,8 @@ function consumeResetDialogueUrlParam() {
     }
 }
 
-/** @typedef {{ id: string, name: string, status: 'active'|'outdated', eraName: string, tags: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
-/** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string }} DialogueLine */
+/** @typedef {{ id: string, entryType?: 'dialogue'|'chatter', name: string, status: 'active'|'removed', eraName: string, tags: string[], mapChoices?: string[], skinChoices?: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
+/** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string, disclaimer?: string, partnerMode?: 'or'|'and'|'vague'|'hybrid', partners?: string[], partnerFocus?: string, partnerStackOrder?: string[], partnerFixed?: string[], partnerOrPools?: string[][] }} DialogueLine */
 /** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
 class DialogueTheaterDataService {
@@ -281,13 +287,31 @@ class DialogueTheaterDataService {
                     };
                 }
                 let withRenders = this.overlayFileLineRenders(fileRow, picked);
+                // Keep shipped entryType (dialogue vs chatter) authoritative.
+                if (fileRow.entryType) {
+                    withRenders = { ...withRenders, entryType: fileRow.entryType };
+                }
                 // Tags live on the shipped file after the multi-tag migration; clear legacy eraName.
                 if (applyFileTags) {
+                    const fileMapChoices = Array.isArray(fileRow.mapChoices)
+                        ? fileRow.mapChoices.map((entry) => String(entry || '').trim()).filter(Boolean)
+                        : [];
+                    const fileSkinChoices = Array.isArray(fileRow.skinChoices)
+                        ? fileRow.skinChoices.map((entry) => String(entry || '').trim()).filter(Boolean)
+                        : [];
                     withRenders = {
                         ...withRenders,
                         tags: Array.isArray(fileRow.tags) ? [...fileRow.tags] : [],
                         eraName: '',
+                        mapChoices: fileMapChoices,
+                        skinChoices: fileSkinChoices,
                     };
+                    if (fileMapChoices.length === 0) {
+                        delete withRenders.mapChoices;
+                    }
+                    if (fileSkinChoices.length === 0) {
+                        delete withRenders.skinChoices;
+                    }
                 } else {
                     withRenders = { ...withRenders, eraName: '' };
                 }
@@ -562,6 +586,35 @@ class DialogueTheaterDataService {
         this.conversations.push(row);
         this.markConversationUnsaved(row.id);
         return row;
+    }
+
+    /**
+     * @param {string} [heroName]
+     * @returns {DialogueConversation}
+     */
+    addBlankChatter(heroName = '') {
+        const hero = String(heroName || '').trim() || 'Unknown';
+        let row = buildBlankChatterRecord(hero);
+        if (this.conversations.some((c) => c.id === row.id)) {
+            row = {
+                ...buildBlankChatterRecord(hero),
+                id: `${row.id}-${Date.now().toString(36)}`,
+            };
+        }
+        this.conversations.push(row);
+        this.markConversationUnsaved(row.id);
+        return row;
+    }
+
+    /**
+     * @param {'dialogue'|'chatter'} [entryType]
+     * @returns {DialogueConversation[]}
+     */
+    getConversationsByEntryType(entryType = DIALOGUE_THEATER_ENTRY_DIALOGUE) {
+        const wantChatter = entryType === DIALOGUE_THEATER_ENTRY_CHATTER;
+        return this.conversations.filter((row) =>
+            wantChatter ? isChatterEntry(row) : !isChatterEntry(row),
+        );
     }
 
     /**

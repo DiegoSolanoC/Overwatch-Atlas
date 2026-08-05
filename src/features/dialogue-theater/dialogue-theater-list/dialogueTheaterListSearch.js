@@ -21,10 +21,16 @@ export function conversationMatchesListSearch(conversation, query) {
     const name = String(conversation?.name || '');
     const tags = getConversationTags(conversation);
     const tagsJoined = tags.join(' ');
+    const mapsJoined = Array.isArray(conversation?.mapChoices) ? conversation.mapChoices.join(' ') : '';
+    const skinsJoined = Array.isArray(conversation?.skinChoices) ? conversation.skinChoices.join(' ') : '';
     if (name.toLowerCase().includes(qLower) || tagsJoined.toLowerCase().includes(qLower)) return true;
+    if (mapsJoined && mapsJoined.toLowerCase().includes(qLower)) return true;
+    if (skinsJoined && skinsJoined.toLowerCase().includes(qLower)) return true;
     if (qFold) {
         if (normalizeForPredictiveMatch(name).includes(qFold)) return true;
         if (normalizeForPredictiveMatch(tagsJoined).includes(qFold)) return true;
+        if (mapsJoined && normalizeForPredictiveMatch(mapsJoined).includes(qFold)) return true;
+        if (skinsJoined && normalizeForPredictiveMatch(skinsJoined).includes(qFold)) return true;
     }
     for (const tag of tags) {
         if (tag.toLowerCase().includes(qLower)) return true;

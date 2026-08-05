@@ -21,9 +21,29 @@ import {
     resolveLineVoiceFile,
     voicelineFilenameToSubtitles,
 } from '../data/theaterVoicelineParsing.js';
+import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
+import {
+    CHATTER_PARTNER_MODE_AND,
+    CHATTER_PARTNER_MODE_HYBRID,
+    CHATTER_PARTNER_MODE_OR,
+    CHATTER_PARTNER_MODE_VAGUE,
+    getPartnerHeroRenderSrc,
+    lineHasChatterPartners,
+    normalizeChatterPartnerMode,
+    resolveChatterPartnerDisplayHeroes,
+} from '../data/dialogueTheaterChatterPartners.js';
 
 /** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
 let stageAssets = null;
+
+/** Stable OR partner pick per line id while that line stays active. */
+/** @type {Map<string, string>} */
+const activeOrPartnerPickByLineId = new Map();
+/** Stable multi-hero picks for vague / hybrid modes. */
+/** @type {Map<string, string[]>} */
+const activePartnerSetByLineId = new Map();
+/** @type {string} */
+let activePartnerLineKey = '';
 
 const STAGE_DIALOGUE_BOX_HTML = `
     <div class="dialogue-theater-stage__dialogue" hidden>
@@ -77,7 +97,7 @@ function fillDialogueBox(box, line) {
     }
     if (textEl instanceof HTMLElement) {
         if (text) {
-            textEl.innerHTML = formatDialogueSubtitleHtml(text);
+            textEl.innerHTML = formatDialogueSubtitleHtml(text, { hero });
         } else {
             textEl.textContent = '…';
         }
@@ -193,6 +213,7 @@ function ensureStageDom() {
             <div class="dialogue-theater-stage__scene-gradient" aria-hidden="true"></div>
             <img class="dialogue-theater-stage__render dialogue-theater-stage__render--left" alt="" hidden />
             <img class="dialogue-theater-stage__render dialogue-theater-stage__render--right" alt="" hidden />
+            <div class="dialogue-theater-stage__partner-stack dialogue-theater-stage__partner-stack--right" hidden></div>
             ${STAGE_DIALOGUE_BOX_HTML}
         `;
         container.appendChild(stage);
@@ -206,6 +227,18 @@ function ensureStageDom() {
                 sceneEl.insertAdjacentElement('afterend', gradient);
             } else {
                 stage.prepend(gradient);
+            }
+        }
+        if (!stage.querySelector('.dialogue-theater-stage__partner-stack')) {
+            const rightImg = stage.querySelector('.dialogue-theater-stage__render--right');
+            const stack = document.createElement('div');
+            stack.className =
+                'dialogue-theater-stage__partner-stack dialogue-theater-stage__partner-stack--right';
+            stack.hidden = true;
+            if (rightImg instanceof HTMLElement) {
+                rightImg.insertAdjacentElement('afterend', stack);
+            } else {
+                stage.appendChild(stack);
             }
         }
         if (!stage.querySelector('.dialogue-theater-stage__dialogue')) {
@@ -243,6 +276,92 @@ function setStageRender(stage, side, src, speaking = false) {
 
 /**
  * @param {HTMLElement} stage
+ */
+function clearPartnerStack(stage) {
+    const stack = stage.querySelector('.dialogue-theater-stage__partner-stack');
+    if (!(stack instanceof HTMLElement)) return;
+    stack.innerHTML = '';
+    stack.hidden = true;
+}
+
+/**
+ * Paint partner heroes on the right (OR = one, AND = stacked).
+ * @param {HTMLElement} stage
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine} line
+ * @param {Record<string, string[]>} rendersMap
+ */
+function paintChatterPartners(stage, line, rendersMap) {
+    const stack = stage.querySelector('.dialogue-theater-stage__partner-stack');
+    const rightImg = stage.querySelector('.dialogue-theater-stage__render--right');
+    if (!(stack instanceof HTMLElement)) return;
+
+    const mode = normalizeChatterPartnerMode(line.partnerMode) || CHATTER_PARTNER_MODE_OR;
+    const lineKey = String(line.id || '');
+    if (lineKey !== activePartnerLineKey) {
+        activeOrPartnerPickByLineId.clear();
+        activePartnerSetByLineId.clear();
+        activePartnerLineKey = lineKey;
+    }
+
+    let stablePick = '';
+    /** @type {string[]} */
+    let stableSet = [];
+
+    if (mode === CHATTER_PARTNER_MODE_VAGUE || mode === CHATTER_PARTNER_MODE_HYBRID) {
+        stableSet = activePartnerSetByLineId.get(lineKey) || [];
+        if (stableSet.length === 0) {
+            stableSet = resolveChatterPartnerDisplayHeroes(line, { randomize: true });
+            if (stableSet.length) activePartnerSetByLineId.set(lineKey, stableSet);
+        }
+    } else if (mode !== CHATTER_PARTNER_MODE_AND) {
+        stablePick = activeOrPartnerPickByLineId.get(lineKey) || '';
+        if (!stablePick) {
+            const [picked] = resolveChatterPartnerDisplayHeroes(line, { randomize: true });
+            stablePick = picked || '';
+            if (stablePick) activeOrPartnerPickByLineId.set(lineKey, stablePick);
+        }
+    }
+
+    const heroes = resolveChatterPartnerDisplayHeroes(line, {
+        stablePick,
+        stableSet,
+        randomize: false,
+    });
+
+    if (heroes.length === 0) {
+        clearPartnerStack(stage);
+        return;
+    }
+
+    if (rightImg instanceof HTMLImageElement) {
+        rightImg.hidden = true;
+        rightImg.removeAttribute('src');
+        rightImg.classList.remove('dialogue-theater-stage__render--speaking');
+    }
+
+    stack.hidden = false;
+    stack.replaceChildren();
+    const total = heroes.length;
+    heroes.forEach((hero, index) => {
+        const src = getPartnerHeroRenderSrc(hero, rendersMap);
+        if (!src) return;
+        const img = document.createElement('img');
+        img.className =
+            'dialogue-theater-stage__render dialogue-theater-stage__render--partner fade-in';
+        img.alt = hero;
+        img.src = src;
+        img.draggable = false;
+        // index 0 = back, last = on top
+        img.style.zIndex = String(2 + index);
+        img.style.setProperty('--partner-stack-index', String(index));
+        img.style.setProperty('--partner-stack-count', String(total));
+        img.style.setProperty('--partner-stack-from-front', String(total - 1 - index));
+        stack.appendChild(img);
+    });
+}
+
+/**
+ * @param {HTMLElement} stage
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @param {number|null} activeLineIndex
  */
@@ -275,6 +394,10 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     }
 
     if (activeLineIndex == null) {
+        activePartnerLineKey = '';
+        activeOrPartnerPickByLineId.clear();
+        activePartnerSetByLineId.clear();
+        clearPartnerStack(stage);
         const soloSpeaker = usesSoloSpeakerPreview(conversation);
         const sideMap = buildSpeakerSideMap(lines);
         const speakers = [...sideMap.keys()];
@@ -297,6 +420,16 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     const line = lines[activeLineIndex];
     if (!line) return;
 
+    if (isChatterEntry(conversation) && lineHasChatterPartners(line)) {
+        // Speaker stays left; partners occupy the right (random OR / stacked AND).
+        setStageRender(stage, 'left', getLineRenderSrc(line, rendersMap), true);
+        paintChatterPartners(stage, line, rendersMap);
+        setStageDialogue(stage, line);
+        syncPanelDialogue(conversation, activeLineIndex);
+        return;
+    }
+
+    clearPartnerStack(stage);
     const side = sideForLineIndex(activeLineIndex, lines);
     setStageRender(stage, side, getLineRenderSrc(line, rendersMap), true);
     setStageDialogue(stage, line);

@@ -12,6 +12,10 @@ import {
     buildMatches,
     normalizeForPredictiveMatch,
 } from '../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+import {
+    ensureAutocompleteAnchor,
+    mountAnchoredAutocompleteList,
+} from '../interface-left-panel/event-system/form/autocomplete/autocompleteListAnchor.js';
 
 const PLACE_NAME_DATALIST_ID = 'storyEventPlaceNameList';
 const PLACE_NAME_FIELD_NAME = 'story-event-place-name';
@@ -212,6 +216,7 @@ function wirePlaceNameField(input, countryInput) {
     input.setAttribute('autocomplete', 'off');
     input.removeAttribute('list');
     input.setAttribute('name', PLACE_NAME_FIELD_NAME);
+    ensureAutocompleteAnchor(input);
 
     /** @type {HTMLElement|null} */
     let listEl = null;
@@ -241,8 +246,7 @@ function wirePlaceNameField(input, countryInput) {
             });
             listEl.appendChild(btn);
         });
-        const host = input.parentElement || input;
-        host.appendChild(listEl);
+        mountAnchoredAutocompleteList(input, listEl);
     };
 
     input.addEventListener('input', () => {

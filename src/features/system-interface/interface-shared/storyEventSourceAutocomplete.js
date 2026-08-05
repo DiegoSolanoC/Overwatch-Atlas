@@ -11,6 +11,10 @@ import {
     buildMatches,
     normalizeForPredictiveMatch,
 } from '../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+import {
+    ensureAutocompleteAnchor,
+    mountAnchoredAutocompleteList,
+} from '../interface-left-panel/event-system/form/autocomplete/autocompleteListAnchor.js';
 
 const SOURCE_NAME_DATALIST_ID = 'storyEventSourceNameList';
 const SOURCE_NAME_FIELD_NAME = 'story-event-source-name';
@@ -276,6 +280,7 @@ export function wireStoryEventSourceAutocomplete(nameInput, urlInput, sourceRow)
     nameInput.setAttribute('autocomplete', 'off');
     nameInput.removeAttribute('list');
     nameInput.setAttribute('name', SOURCE_NAME_FIELD_NAME);
+    ensureAutocompleteAnchor(nameInput);
 
     /** @type {HTMLElement|null} */
     let listEl = null;
@@ -305,8 +310,7 @@ export function wireStoryEventSourceAutocomplete(nameInput, urlInput, sourceRow)
             });
             listEl.appendChild(btn);
         });
-        const host = nameInput.parentElement || nameInput;
-        host.appendChild(listEl);
+        mountAnchoredAutocompleteList(nameInput, listEl);
     };
 
     const commit = () => {

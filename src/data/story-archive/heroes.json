@@ -87,6 +87,20 @@
       ]
     },
     {
+      "name": "D.va",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Busan",
+          "country": "South Korea",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Tank",
+      "heroSubRole": "Initiator",
+      "birthday": "22 June 2057"
+    },
+    {
       "name": "Mauga",
       "description": "",
       "relevantLocations": [
@@ -102,7 +116,7 @@
       "connections": [
         {
           "kind": "faction",
-          "name": "Talon Empire",
+          "name": "Talon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
@@ -110,7 +124,7 @@
         },
         {
           "kind": "faction",
-          "name": "Talon",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
@@ -166,24 +180,7 @@
       "relevantLocations": [],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "M.E.K.A Squad",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "hero",
-          "name": "D.va",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
-          "showInCodex": true
-        }
-      ]
+      "birthday": ""
     },
     {
       "name": "Domina",
@@ -287,7 +284,7 @@
       "connections": [
         {
           "kind": "faction",
-          "name": "Talon Empire",
+          "name": "Talon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
@@ -295,7 +292,7 @@
         },
         {
           "kind": "faction",
-          "name": "Talon",
+          "name": "Talon Empire",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
           "thisEntryLane": "B",
@@ -304,25 +301,211 @@
       ]
     },
     {
-      "name": "D.va",
-      "description": "No description available.",
+      "name": "Anran",
+      "description": "",
       "relevantLocations": [
         {
-          "locationName": "Busan",
-          "country": "South Korea",
+          "locationName": "Chengdu",
+          "country": "China",
           "reasoning": "Place of Birth"
         }
       ],
-      "heroRole": "Tank",
-      "heroSubRole": "Initiator",
-      "birthday": "22 June 2057",
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "8 August 2056"
+    },
+    {
+      "name": "Genji",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Hanamura",
+          "country": "Japan",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "28 October 2041"
+    },
+    {
+      "name": "Reaper",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Los Angeles",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "14 December 2018"
+    },
+    {
+      "name": "Shion",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "9 September 2050"
+    },
+    {
+      "name": "Tracer",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "London",
+          "country": "England",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "17 February 2049"
+    },
+    {
+      "name": "Vendetta",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Rome",
+          "country": "Italy",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "15 February 2050",
       "connections": [
         {
-          "kind": "hero",
-          "name": "D.mon",
+          "kind": "faction",
+          "name": "Talon",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",
-          "thisEntryLane": "A",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        },
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Venture",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Nova Scotia",
+          "country": "Canada",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Flanker",
+      "birthday": "6 August 2052"
+    },
+    {
+      "name": "Echo",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Oslo",
+          "country": "Norway",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
+      "birthday": "5 February 2065"
+    },
+    {
+      "name": "Freja",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Copenhagen",
+          "country": "Denmark",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
+      "birthday": "6 September 2044"
+    },
+    {
+      "name": "Pharah",
+      "description": "No description available.",
+      "relevantLocations": [
+        {
+          "locationName": "Cairo",
+          "country": "Egypt",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
+      "birthday": "15 April 2045",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Sierra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Appalachian Virginia",
+          "country": "United States",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
+      "birthday": "17 April 2054",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Sombra",
+      "description": "",
+      "relevantLocations": [
+        {
+          "locationName": "Castillo",
+          "country": "Mexico",
+          "reasoning": "Place of Birth"
+        }
+      ],
+      "heroRole": "Damage",
+      "heroSubRole": "Recon",
+      "birthday": "31 December 2046",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
           "showInCodex": true
         }
       ]
@@ -546,216 +729,6 @@
       "birthday": "19 November 2043"
     },
     {
-      "name": "Anran",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Chengdu",
-          "country": "China",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "8 August 2056"
-    },
-    {
-      "name": "Genji",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Hanamura",
-          "country": "Japan",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "28 October 2041"
-    },
-    {
-      "name": "Reaper",
-      "description": "No description available.",
-      "relevantLocations": [
-        {
-          "locationName": "Los Angeles",
-          "country": "United States",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "14 December 2018"
-    },
-    {
-      "name": "Shion",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "9 September 2050"
-    },
-    {
-      "name": "Tracer",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "London",
-          "country": "England",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "17 February 2049"
-    },
-    {
-      "name": "Vendetta",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Rome",
-          "country": "Italy",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "15 February 2050",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Talon Empire",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        },
-        {
-          "kind": "faction",
-          "name": "Talon",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
-      "name": "Venture",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Nova Scotia",
-          "country": "Canada",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Flanker",
-      "birthday": "6 August 2052"
-    },
-    {
-      "name": "Echo",
-      "description": "No description available.",
-      "relevantLocations": [
-        {
-          "locationName": "Oslo",
-          "country": "Norway",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "5 February 2065"
-    },
-    {
-      "name": "Freja",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Copenhagen",
-          "country": "Denmark",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "6 September 2044"
-    },
-    {
-      "name": "Pharah",
-      "description": "No description available.",
-      "relevantLocations": [
-        {
-          "locationName": "Cairo",
-          "country": "Egypt",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "15 April 2045",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
-      "name": "Sierra",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Appalachian Virginia",
-          "country": "United States",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "17 April 2054",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Helix Securities",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
-      "name": "Sombra",
-      "description": "",
-      "relevantLocations": [
-        {
-          "locationName": "Castillo",
-          "country": "Mexico",
-          "reasoning": "Place of Birth"
-        }
-      ],
-      "heroRole": "Damage",
-      "heroSubRole": "Recon",
-      "birthday": "31 December 2046",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Sombra Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
       "name": "Baptiste",
       "description": "",
       "relevantLocations": [
@@ -968,9 +941,9 @@
           "snapAngles": true
         },
         "view": {
-          "panX": -109.54190788009834,
-          "panY": -122.42104581079502,
-          "zoom": 0.3560282668400643
+          "panX": 19.427637513659562,
+          "panY": -111.26781920742194,
+          "zoom": 0.2534138880000001
         }
       },
       "connections": [

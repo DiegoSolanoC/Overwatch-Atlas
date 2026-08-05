@@ -484,9 +484,23 @@
     grid-template-columns: repeat(3, var(--dt-pair-search-col-w));
     justify-content: center;
     column-gap: clamp(18px, 3vw, 36px);
+    row-gap: 12px;
+    align-items: end;
     width: 100%;
     max-width: min(960px, 96vw);
     margin: 10px auto 0;
+}
+
+.dialogue-theater-era-filter-col {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    align-content: end;
+}
+
+.dialogue-theater-era-filter-col .events-search-label {
+    margin: 0;
 }
 
 .dialogue-theater-era-filter {

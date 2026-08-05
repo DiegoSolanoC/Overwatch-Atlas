@@ -13369,7 +13369,7 @@
     },
     {
       "name": "Traitor",
-      "description": "After fleeing Talon, Baptiste sat in Tortuga for a while, but it didn't take long before Talon began sending agents after him. One after the other they would try to silence him, many of them Baptiste's old comrades. He knew too much and was too dangerous to be let go, and Cuerva himself wished they could still talk some sense into him, but if they failed to capture him, they would be forced to eliminate him.\n\nDuring their attempts, however, several of the operatives in Cuerva's units went missing, and a letter made its way back to Cuerva containing their emblems torn straight out of their uniforms. Contact with Cuerva himself was lost not long after, but he always said that Baptiste had the devil's own luck on his side. His team made the mistake of going after Baptiste one by one, allowing him to take them down and leave Cuerva for last.\n\nKnowing Talon would not stop, Baptiste began to drift from place to place, never staying too long, only occasionally returning home to check on his local clinic. He wished to help make a better world in any way he could, to make up for his mistakes. For some people, this meant a band aid, for others, a bullet. He knew he couldn't erase the past, but he could at least make a difference where it mattered, so he began carrying out humanitarian efforts while keeping a low profile on his travels, eventually meeting Angela Ziegler at an aid site in Venezuela, who he briefly worked alongside.",
+      "description": "After fleeing Talon, Baptiste sat in Tortuga for a while, but it didn't take long before Talon began sending agents after him. One after the other they would try to silence him, many of them Baptiste's old comrades. He knew too much and was too dangerous to be let go, and Cuerva himself wished they could still talk some sense into him, but if they failed to capture him, they would be forced to eliminate him.\n\nDuring their attempts, however, several of the operatives in Cuerva's units went missing, and a letter made its way back to Cuerva containing their emblems torn straight out of their uniforms. Contact with Cuerva himself was lost not long after, but he always said that Baptiste had the devil's own luck on his side. His team made the mistake of going after Baptiste one by one, allowing him to take them down and leave Cuerva for last.\n\nKnowing Talon would not stop, Baptiste began to drift from place to place, never staying too long, only occasionally returning home to check on his local clinic. He wished to help make a better world in any way he could, to make up for his mistakes. For some people, this meant a band aid, for others, a bullet. He knew he couldn't erase the past, but he could at least make a difference where it mattered, so he began carrying out humanitarian efforts while keeping a low profile on his travels, trying to make a difference while still on the run.",
       "locationType": "earth",
       "lat": 20.0410035,
       "lon": -72.785587,
@@ -13394,11 +13394,6 @@
           "reasoning": "Talon agents chase down Baptiste",
           "lat": 20.0410035,
           "lon": -72.785587
-        },
-        {
-          "locationName": "Venezuela",
-          "country": "Venezuela,",
-          "reasoning": "Baptiste meets Mercy at an aid side in Venezuela"
         }
       ],
       "heroFilterPlaces": [
@@ -13411,11 +13406,6 @@
           "locationName": "",
           "country": "Sombra,",
           "reasoning": "Came across  the Cuerva case in Talon's files"
-        },
-        {
-          "locationName": "",
-          "country": "Mercy,",
-          "reasoning": "Collaborated with Baptiste in a Venezueland camp"
         }
       ],
       "factionFilterPlaces": [
@@ -13480,7 +13470,7 @@
     },
     {
       "name": "Summit Squad",
-      "description": "No description available.",
+      "description": "For years, Sierra kept looking for her mom, trying to find more data on the only clue that she had, Project Naughton, but any information about it was highly classified, now transferred to what was left of Watchpoint: Gran Mesa to be guarded by Helix Securities. After graduating from high school, she applied to join Helix, seeking to gain the security clearance needed to review the Naughton Vault.\n\nHer unique physical skill and exceptional intelligence quickly allowed her to soar within the organization, where she was assigned to lead the Perilous Operations Team, colloquially known as Helix's Summit Squad, a division specialized for missions that took place in harsh terrain. Equipped with a plasma rifle and a remote-operated traversal helper drone, R.O.T.H, which she personally nicknamed Dorothy, Sierra went on to spearhead rescues in narrow ridges and stop criminal operations in cave systems. From Gran Canyon to Niagara Falls, she conquered every challenge and quickly gained notoriety amongst Helix's American staff as one of their most invaluable assets.",
       "locationType": "earth",
       "lat": 39.1131257,
       "lon": -108.0127646,
@@ -13493,12 +13483,15 @@
         {
           "locationName": "Watchpoint: Grand Mesa, United States",
           "country": "United States",
-          "reasoning": "",
+          "reasoning": "Sierra Joins Helix looking for her mom",
           "lat": 39.1131257,
           "lon": -108.0127646
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Summit Squad stops criminal operation inside of a deep cave system",
+        "Operative Sierra Woods rescues dozens trapped in an Avalanche"
+      ],
       "sources": [
         {
           "text": "New Heights",
@@ -13513,14 +13506,14 @@
         {
           "locationName": "",
           "country": "Sierra,",
-          "reasoning": ""
+          "reasoning": "Joins Helix looking for high clearance"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Helix Securities,",
-          "reasoning": ""
+          "reasoning": "Assigns Sierra to lead the Summit Squad"
         }
       ]
     },
@@ -13528,7 +13521,7 @@
       "name": "Sonic Policing",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "No description available.",
+      "description": "When Vishkar took control of Rio's renovation, the locks were told they were going to make Rio a better place, but it went down the same way all their other projects did. Failed promises, displacement and poverty, enforcing of curfews and ordinances to suppress local traditions, and even exploiting the populace for cheap labor. But there was still one silver lining for the people of Brasil in the form of Benicio Dos Santos.\n\nBenicio was a local scientist who dedicated his life to the study of sound and its applications as a medium for healing technology. He had joined Vishkar so that, with their help, he would be able to fully develop his prototypes into something that could help his people. Instead, when he presented his inventions to Vishkar, they claimed ownership of the technology and adopted its more destructive capabilities into police equipment, to be used against protesters for quick and forceful neutralizing of anyone who got in their way. \n\nThis technology was used even outside of Rio, later adopted by the London Police to suppress the Omnics of the Underworld, with Vishkar's own vice president Vaira Singhania adopting the technology into her assistive arms for personal protection. What was meant to be Benicio's gift to Rio was turned into yet another tool for oppression, and while Vishkar thought this was just like any of their previous projects, this time the water was beginning to boil, and the people of Rio were beginning to grow tired of their games.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -13538,6 +13531,189 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": "Vishkar oppresses the people of Rio"
+        },
+        {
+          "locationName": "London, United Kingdrom",
+          "country": "United Kingdom,",
+          "reasoning": "Sonic technology is implemented into the Police Department"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lúcio",
+          "reasoning": "Grow tied of Vishkar's lies and of what they did to his father"
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": "Adopts Sonic technology for personal use"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
+          "reasoning": "Supresses protesters using Sonic  technology"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": "Invents Sonic technology to help Rio"
+        }
+      ],
+      "headlines": [
+        "Protests in Rio continue due to Vishkar's failed promises",
+        "London Police to adapt Sonic anti Riot weaponry"
+      ]
+    },
+    {
+      "name": "Help for the Needy",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "description": "With Overwatch gone, Angela lost her limitless funding and immense staff of the best doctors in the world, the time for long miracle-working campaigns across the world was over. In spite of this, however, Angela's dedication to helping those in need never died. She distanced herself from Overwatch and instead dedicated herself to supporting smaller scale medical operations across the world, traveling to war and crime-ridden areas to take care of those affected by all sorts of tragedies.\n\nShe traveled from Poland to South Korea aiding those affected by Talon and the Gwishin, eventually finding herself in Venezuela, where she crossed paths with Baptiste, another wandering medic seeking to heal the world. Everywhere she went she felt the echoes of Overwatch and the guilt of all the problems it left behind after falling apart. Her charity eventually took her to Egypt, where, in spite of masked vigilantes and the efforts of Helix's, Talon's shadow still haunted the streets of Cairo. \n\nShe settled near Pharah's place and the two of them shared a lot of their free time together, connecting after Overwatch. Finally, Fareeha developed a bit of a crush on Angela, though she never knew if the feelings were mutual. For two years she spent her days taking care of those affected by the skirmishes, and while many of the locals shut her down, telling her Overwatch had done enough damage already, she did not become a doctor to be thanked, so she stayed to help anyone she found in need. She even considered applying to join a proper hospital, but even for the great Angela Ziegler, guardian angel of the world, a career with Overwatch in her CV wasn't exactly what most professionals were looking for at the time.",
+      "image": "",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Mercy reaches Cairo and spends two years helping the locals",
+          "lat": 30.0444,
+          "lon": 31.2357
+        },
+        {
+          "locationName": "Warsaw, Poland",
+          "country": "Poland",
+          "reasoning": "Mercy arrives to aid those affected by Talon"
+        },
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": "Mercy arrives to aid those affected by the Gwishin"
+        },
+        {
+          "locationName": "Caracas, Venezuela",
+          "country": "Venezuela,",
+          "reasoning": "Baptiste meets Mercy at an aid site in Venezuela"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mercy,",
+          "reasoning": "Travels around the world helping those in need"
+        },
+        {
+          "locationName": "",
+          "country": "Genji, Torbjörn,",
+          "reasoning": "Keep contact with Mercy from time to time"
+        },
+        {
+          "locationName": "",
+          "country": "Baptiste,",
+          "reasoning": "Meets Angela at an Aid site"
+        },
+        {
+          "locationName": "",
+          "country": "Pharah,",
+          "reasoning": "Spends time with Angela in Cairo"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities, Talon Empire,",
+          "reasoning": "Continue to engage in drawn out skirmishes over Cairo"
+        }
+      ],
+      "headlines": [
+        "Angela Ziegler is seen saving children from the rubble in Cairo",
+        "Helix continues to struggle against Talon raids in Egypt"
+      ],
+      "sources": [
+        {
+          "text": "Valkyrie",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/valkyrie/"
+        },
+        {
+          "text": "As you Are",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blteb7d6f6256e5244d/647a3e85eb5acf10b838f054/OW2_2023_Pride_PDF_EN.pdf"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ingrid,",
+          "reasoning": "Angela visits the Lindholms occassionally for Holidays"
+        }
+      ]
+    },
+    {
+      "name": "Dragon Slayer",
+      "locationType": "earth",
+      "cityDisplayName": "Bucharest, Romania",
+      "description": "Reinhardt's chivalry quest took him to many places in Europe. From protecting Omnics against violent aggressors to finding thieves and retrieving their stolen goods. Together, he and Brigitte built a reputation for their acts of charity, and the spontaneous nature of their interventions allowed them to bypass a lot of the restrictions imposed by the Petras Accords, letting them help those in need without raising an eyebrow.\n\nWhile stopping for fuel and supplies in a remote Romanian town, the knight and his squire found a ghost town, where the citizens were terrorized by the Dragons, a gang of bikers who raided villages they marked as part of their territory. The local authorities did not have the resources or experience to deal with such a spread out problem, so when the duo found the gangsters, Reinhardt immediately took action and attempted to put them in their place. The Dragons, however, took a child hostage, forcing Reinhardt to endure a beating in the streets as they mocked him for being stuck in the past.\n\nAnyone else would have turned away and let the issue be handled by the government, but Reinhardt, in spite of his old weakened body, could not stand by it. Brigitte located the Dragons hiding out at a nearby abandoned factory, and after fixing up his armor, dropped Reinhardt off to fight the Dragons. Fully embracing the poetry of their tale, he envisioned his foes as mighty reptiles coming against a knight of old, and thanks to his trusty Crusader Armor, he was able to take all of them at once and beat them into swearing to never return. Once they were thanked by the locals, and made sure the gangsters kept their word, the duo took off, wondering where their journey would take them next.",
+      "image": "",
+      "lat": 44.4361414,
+      "lon": 26.102684,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Bucharest, Romania",
+          "country": "Romania",
+          "reasoning": "The Dragon Raiders are stopped by Reinhardt's efforts"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Reinhardt, Brigitte",
+          "reasoning": "Fight off raiders in spite of Reinhardt's poor contiion"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Crusaders, Ironclad Guild,",
+          "reasoning": "Reinhardt Armor gives him an upper hand against a full gang"
+        }
+      ],
+      "headlines": [
+        "Stories of raiders across European Villages continue to increase",
+        "Ex Overwatch agent Reinhardt Wilhelm is seen at an Omnic Protest"
+      ],
+      "sources": [
+        {
+          "text": "Dragon Slayer",
+          "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
+        }
+      ]
+    },
+    {
+      "name": "Here to be heard",
+      "locationType": "earth",
+      "cityDisplayName": "Rio de Janeiro, Brazil",
+      "description": "No description available.",
+      "image": "",
+      "lat": -22.9110137,
+      "lon": -43.2093727,
       "yearStart": 2070,
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
@@ -13562,146 +13738,11 @@
           "reasoning": ""
         }
       ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Benicio,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
-    },
-    {
-      "name": "Help for the Needy",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "description": "No description available.",
-      "image": "",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mercy,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Genji, Torbjörn,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities,",
-          "reasoning": ""
-        }
-      ],
       "headlines": [],
-      "sources": [],
-      "npcFilterPlaces": [
+      "sources": [
         {
-          "locationName": "",
-          "country": "Ingrid,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Apagando las Luces",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "No description available.",
-      "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sombra",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lumérico Incorporated,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Los Muertos,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Portero,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Dragon Slayer",
-      "locationType": "earth",
-      "cityDisplayName": "Bucharest, Romania",
-      "description": "",
-      "image": "",
-      "lat": 44.4361414,
-      "lon": 26.102684,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Bucharest, Romania",
-          "country": "Romania",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Reinhardt, Brigitte",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Crusaders",
-          "reasoning": ""
+          "text": "Overwatch Website, Lúcio",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
         }
       ]
     },
@@ -13709,7 +13750,7 @@
       "name": "Squire",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
-      "description": "No description available.",
+      "description": "Brigitte's duties as a Squire were many, from providing upkeep to the Crusader Armor, to taking care of Reinhardt himself, whose body was struggling to keep up after years of combat. His overenthusiasm for the Dragons put him and others in danger, and while bandaging him up and minimal repairs to his armor helped him get back up and win the battle, it was clear to Brigitte that being Reinhardt's mechanic wasn't enough.\n\nThe best way to provide support and relief for the old man was to join him in battle. Over time, Brigitte collected scrap to design a lightweight take on the Crusader suit, determined to become a warrior in her own right. Reinhardt helped out too, training her in combat so that when the time came, she was ready to fight at his side. Together, the duo joined shields to protect the innocent and right the wrongs of the world, and Brigitte, no longer on the sidelines, became an inspiration for everyone who crossed their path.",
       "image": "",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -13720,36 +13761,39 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Brigitte makes an Armor of her own to help Reinhardt"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Brigitte, Reinhardt",
-          "reasoning": ""
+          "reasoning": "Train together to fight hand in hand"
         },
         {
           "locationName": "",
           "country": "Torbjörn,",
-          "reasoning": ""
+          "reasoning": "Provides tools and advice on Brigitte's invention"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ironclad",
-          "reasoning": ""
+          "country": "Ironclad, Crusader Initiative,",
+          "reasoning": "Brigitte's Armor is designed based on the Crusader design."
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Ingrid,",
-          "reasoning": ""
+          "reasoning": "Host Reinhardt and Brigitte on their ocasional returns to Gothenburg"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Hear the story of the Knight of old and his novel Squire",
+        "Armored Shieldmaiden protects civilians during a raid"
+      ],
       "sources": [
         {
           "text": "Brigitte Origin Story",
@@ -13758,46 +13802,69 @@
       ]
     },
     {
-      "name": "Vigilante",
-      "description": "No description available.",
+      "name": "Full Disclosure",
       "locationType": "earth",
-      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "While Sombra operated for Talon, she kept her own agenda with Los Muertos, and continued to aid in their efforts against the Mexican Government and Lumérico. With the help of a couple of clowns, Junkrat and Roadhog, who were breaking their way into the local bank, Sombra took advantage of their distraction to bypass Lumérico Security, where she found all of Guillermo Portero's dirty laundry. Days before the inauguration of the company's latest power plant in the town of Dorado, Lumérico's website was hacked, alongside Portero's own email, both accusing him of corruption and promising a full disclosure. \n\nSoon after, documents were released indicating that Portero used the company's funds as his own piggy bank, inappropriate correspondence with several female officers in important positions in exchange for favors, and personally brined officials to create a system of paybacks that continued benefitting Lumérico. The files laid out a plan to seize land through government expropriation to continue expanding their facilities, as well as emails of conversations with Vishkar's employees like Sanjay Korpal, in regard to exporting their energy systems to the company, not long after the riots in Rio soured the company's reputation in Latin America.\n\nThe hacks reached international attention from Atlas News, while Mexican authorities pursued the culprit, but they had bigger issues to handle now that the public knew the truth about their War Hero Politician. Sombra's efforts incited a popular revolution against Lumérico, and a rise in popularity for Los Muertos, threatening Portero under the name of King Viper. Soon after, Lumérico announced Portero was stepping down as their CEO, but internally, he had not officially resigned as many in the company still had faith in him. Meanwhile, Portero himself claimed he would be fully exonerated by the authorities in due time, which ended up being the case in spite of public outrage. Portero may have remained in power after Sombra's attack, but now all of México and the World at Large had no reason to trust him ever again, turning the Sombra Collective into a Robin Hood hero among the locals and even abroad, and fueling the ranks of Los Muertos even further.",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
       "yearStart": 2070,
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Soldier: 76 Origin Story",
-          "url": "https://www.youtube.com/watch?v=G8oR_SvkR0c"
-        }
-      ],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Watchpoint: Grand Mesa, United States",
-          "country": "United States",
-          "reasoning": "",
-          "lat": 39.1131257,
-          "lon": -108.0127646
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": "A revolution against Portero starts after Sombra's hacking discloses his corruption"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Soldier 76",
-          "reasoning": ""
+          "country": "Sombra",
+          "reasoning": "Breaks into Lumérico security systems"
+        },
+        {
+          "locationName": "",
+          "country": "Junkrat, Roadhog,",
+          "reasoning": "Pull a Bank Heist leaving Lumérico  systems  vulnerable"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities",
-          "reasoning": ""
+          "country": "Lumérico Incorporated,",
+          "reasoning": "Exonerates Portero in spite of the backlash"
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
+          "reasoning": "Gains a huge popularity boost after the disclosure"
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": "Hacks into Portero to Expose him"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Protests on the streets of Mexico against the King Viper rage on",
+        "Portero Exonerated in spite of Sombra's disclosure"
+      ],
+      "sources": [
+        {
+          "text": "Sombra ARG",
+          "url": "https://wiki.gamedetectives.net/w/Sombra_ARG"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Portero, Sanjay,",
+          "reasoning": "In contact looking for a controversial Partnership"
+        }
+      ]
     },
     {
       "name": "Destroyer",
@@ -13845,6 +13912,48 @@
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0b9872d6857ba358/5d02d18aa812cef40914a4a6/comic-overwatch-destroyer_en-us.pdf"
         }
       ]
+    },
+    {
+      "name": "Vigilante",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Soldier: 76 Origin Story",
+          "url": "https://www.youtube.com/watch?v=G8oR_SvkR0c"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
     },
     {
       "name": "Shooting Star",
@@ -14066,46 +14175,6 @@
       ],
       "headlines": [],
       "sources": []
-    },
-    {
-      "name": "Here to be heard",
-      "locationType": "earth",
-      "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "No description available.",
-      "image": "",
-      "lat": -22.9110137,
-      "lon": -43.2093727,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Rio de Janeiro, Brazil",
-          "country": "Brazil",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lúcio",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Lúcio",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
-        }
-      ]
     },
     {
       "name": "Assassination",

@@ -73,39 +73,43 @@
         return [];
     }
 
-    function filterTokenImgHtml(kind, token, ev) {
+    /**
+     * Gallery-style bio chip (portrait + name band), matching Dialogue Theater multipath chips.
+     * @param {'heroes'|'npcs'|'factions'} kind
+     * @param {string} token
+     * @param {object|null|undefined} ev
+     * @returns {string}
+     */
+    function filterTokenChipHtml(kind, token, ev) {
         var t = R.stripTrailingCommaSep(String(token || '')).trim();
         if (!t) return '';
         var src = '';
+        var label = t;
         var fb = B.filterFallbackIconSrc(kind).replace(/'/g, "\\'");
+        var openAttr = '';
+        var clickClass = '';
+        var portraitAttrs = '';
+        var title = '';
+
         if (kind === 'heroes') {
             var hk = B.resolveHeroImageKey(t);
             var canon = hk || t;
+            label = canon;
             src = 'src/assets/images/Filters/Heroes/' + encodeURIComponent(canon) + '.png';
-            var dataEnc = encodeURIComponent(canon);
-            return (
-                '<img class="event-slide-filter-token-img event-slide-filter-token-img--heroes event-slide-filter-token-img--clickable-hero" ' +
-                'data-hero-open="' + dataEnc + '" role="button" tabindex="0" ' +
-                'src="' + src + '" alt="" title="Open ' + R.escapeHtmlAttr(canon) +
-                ' in Heroes archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
-                fb + '\';" />'
-            );
-        }
-        if (kind === 'npcs') {
+            openAttr = 'data-hero-open="' + encodeURIComponent(canon) + '"';
+            clickClass = 'event-slide-filter-token-chip--clickable-hero';
+            title = 'Open ' + R.escapeHtmlAttr(canon) + ' in Heroes archive';
+        } else if (kind === 'npcs') {
             var nk = B.resolveNpcImageKey(t);
+            label = nk || t;
             src = 'src/assets/images/Filters/NPCs/' + encodeURIComponent(nk || t) + '.png';
-            var dataNpcTok = encodeURIComponent(nk || t);
-            return (
-                '<img class="event-slide-filter-token-img event-slide-filter-token-img--npcs event-slide-filter-token-img--clickable-npc" ' +
-                'data-npc-open="' + dataNpcTok + '" role="button" tabindex="0" ' +
-                'src="' + src + '" alt="" title="Open ' + R.escapeHtmlAttr(nk || t) +
-                ' in NPCs archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
-                fb + '\';" />'
-            );
-        }
-        if (kind === 'factions') {
+            openAttr = 'data-npc-open="' + encodeURIComponent(nk || t) + '"';
+            clickClass = 'event-slide-filter-token-chip--clickable-npc';
+            title = 'Open ' + R.escapeHtmlAttr(nk || t) + ' in NPCs archive';
+        } else if (kind === 'factions') {
             var ff = B.resolveFactionImageFilename(t);
             if (!ff) return '';
+            label = t;
             var portraitHelper = window.__FactionEventSlidePortraitLooks;
             if (ev && portraitHelper && typeof portraitHelper.buildPortraitSrcForStoryEvent === 'function') {
                 src = portraitHelper.buildPortraitSrcForStoryEvent(ff, ev);
@@ -113,17 +117,30 @@
             if (!src) {
                 src = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '/Default.png';
             }
-            var dataFacTok = encodeURIComponent(t);
-            return (
-                '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction" ' +
-                'data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '" ' +
-                'data-faction-open="' + dataFacTok + '" role="button" tabindex="0" ' +
-                'src="' + src + '" alt="" title="Open ' + R.escapeHtmlAttr(t) +
-                ' in Factions archive" width="52" height="52" decoding="async" onerror="this.onerror=null;this.src=\'' +
-                fb + '\';" />'
-            );
+            openAttr = 'data-faction-open="' + encodeURIComponent(t) + '"';
+            clickClass = 'event-slide-filter-token-chip--clickable-faction';
+            portraitAttrs =
+                ' data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '"';
+            title = 'Open ' + R.escapeHtmlAttr(t) + ' in Factions archive';
+        } else {
+            return '';
         }
-        return '';
+
+        return (
+            '<div class="gallery-hero-filters__chip-wrap event-slide-filter-token-chip-wrap">' +
+                '<button type="button" class="filter-btn gallery-hero-filters__chip event-slide-filter-token-chip ' +
+                clickClass + '" ' + openAttr +
+                ' title="' + title + '" aria-label="' + title + '">' +
+                    '<div class="filter-image-container">' +
+                        '<img' + portraitAttrs + ' src="' + src + '" alt="" loading="lazy" decoding="async" ' +
+                        'onerror="this.onerror=null;this.src=\'' + fb + '\';" />' +
+                    '</div>' +
+                    '<div class="filter-label">' +
+                        '<span class="filter-label-text">' + R.slideStoryDisplayHtml(label) + '</span>' +
+                    '</div>' +
+                '</button>' +
+            '</div>'
+        );
     }
 
     function createStoryFilterPlacesSlideHtml(rows, kind, ev) {
@@ -143,17 +160,23 @@
             var manyTokens = tokens.length > 1;
             var lead = '';
             if (tokens.length > 0) {
-                lead = '<span class="event-slide-relevant-locations__flag-row">';
+                lead = '<span class="event-slide-relevant-locations__flag-row event-slide-relevant-locations__flag-row--chips">';
                 for (var ti = 0; ti < tokens.length; ti += 1) {
-                    var one = filterTokenImgHtml(kind, tokens[ti], ev);
+                    var one = filterTokenChipHtml(kind, tokens[ti], ev);
                     if (one) lead += one;
                 }
                 lead += '</span>';
             } else {
                 lead =
-                    '<img class="event-slide-filter-token-img event-slide-filter-token-img--' +
-                    kind + '" src="' + B.filterFallbackIconSrc(kind).replace(/'/g, "\\'") +
-                    '" alt="" width="44" height="44" decoding="async" />';
+                    '<span class="event-slide-relevant-locations__flag-row event-slide-relevant-locations__flag-row--chips">' +
+                    '<div class="gallery-hero-filters__chip-wrap event-slide-filter-token-chip-wrap">' +
+                        '<span class="filter-btn gallery-hero-filters__chip event-slide-filter-token-chip event-slide-filter-token-chip--static" aria-hidden="true">' +
+                            '<div class="filter-image-container">' +
+                                '<img src="' + B.filterFallbackIconSrc(kind).replace(/'/g, "\\'") +
+                                '" alt="" decoding="async" />' +
+                            '</div>' +
+                        '</span>' +
+                    '</div></span>';
             }
 
             var mainText;
@@ -188,7 +211,8 @@
                   '</span>'
                 : '';
             rowParts.push(
-                '<div class="event-slide-relevant-locations__row">' + mainBlock + reasonSuffix + '</div>'
+                '<div class="event-slide-relevant-locations__row event-slide-relevant-locations__row--with-chips">' +
+                mainBlock + reasonSuffix + '</div>'
             );
         }
         if (!rowParts.length) return '';

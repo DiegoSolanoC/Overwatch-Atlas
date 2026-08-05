@@ -5,7 +5,7 @@
 
 import { showSaveSuccessFeedback } from '../../system-interface/interface-left-panel/coordinator/flashSaveSuccess.js';
 import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=102';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=105';
 import { loadDialogueTheaterAssets } from '../data/loadDialogueTheaterAssets.js';
 import { getEventListSpinnerGifSrc } from '../../universal-features/atlas-ui/loadingGifAssets.js';
 import { buildDialogueTheaterListThumbMediaHtml } from './buildDialogueTheaterListThumb.js';
@@ -13,7 +13,7 @@ import {
     closeDialogueTheaterInfoPanel,
     openDialogueTheaterInfoPanel,
     setDialogueTheaterInfoPanelListRefresh,
-} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=103';
+} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=107';
 import {
     setupDialogueTheaterCompactChrome,
     unwireDialogueTheaterToolbarCollapse,
@@ -43,10 +43,20 @@ import {
     unfloatArchiveFileActions,
 } from '../../data-workshop/archive-support/archiveFileActionsFloat.js?v=2';
 import {
-    collectDialogueTheaterEraFilterOptions,
+    collectDialogueTheaterStackableFilterOptions,
     conversationMatchesEraFilter,
+    conversationMatchesEraPairFilter,
+    conversationMatchesStatusFilter,
     getConversationTags,
+    labelForDialogueTheaterStatus,
+    normalizeDialogueTheaterStatus,
 } from './dialogueTheaterEraFilter.js';
+import {
+    entryTypeForMode,
+    getDialogueTheaterEntryMode,
+    mountDialogueTheaterEntryToggle,
+    unmountDialogueTheaterEntryToggle,
+} from '../dialogue-theater-mode/DialogueTheaterEntryToggle.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
 const SAVE_BTN_ID = 'dialogueTheaterSaveBtn';
@@ -57,8 +67,15 @@ let onListChange = null;
 /** @type {string} */
 let searchQuery = '';
 
+/** Stackable tag filter (Multi Path / Map Specific / Skin Specific). */
 /** @type {string} */
 let eraFilter = '';
+
+/** @type {string} */
+let statusFilter = '';
+
+/** @type {string} */
+let eraPairFilter = '';
 
 /** @type {boolean} */
 let incompleteFirst = false;
@@ -121,8 +138,17 @@ function scheduleRenderList(root) {
 /**
  * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
  */
+function getModeConversations() {
+    return dialogueTheaterDataService.getConversationsByEntryType(
+        entryTypeForMode(getDialogueTheaterEntryMode()),
+    );
+}
+
+/**
+ * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
+ */
 function getFilteredConversations() {
-    let rows = dialogueTheaterDataService.conversations;
+    let rows = getModeConversations();
 
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
@@ -143,6 +169,12 @@ function getFilteredConversations() {
         rows = rows.filter((row) => conversationMatchesListSearch(row, q));
     }
 
+    if (statusFilter.trim()) {
+        rows = rows.filter((row) => conversationMatchesStatusFilter(row, statusFilter));
+    }
+    if (eraPairFilter.trim()) {
+        rows = rows.filter((row) => conversationMatchesEraPairFilter(row, eraPairFilter));
+    }
     if (eraFilter.trim()) {
         rows = rows.filter((row) => conversationMatchesEraFilter(row, eraFilter));
     }
@@ -153,7 +185,7 @@ function getFilteredConversations() {
     const voicelines = listThumbAssets?.voicelines || [];
     const duplicates =
         duplicateLookupCache ||
-        buildConversationDuplicateLookup(dialogueTheaterDataService.conversations);
+        buildConversationDuplicateLookup(getModeConversations());
     duplicateLookupCache = duplicates;
 
     return sorted.sort((a, b) => {
@@ -162,6 +194,13 @@ function getFilteredConversations() {
         if (aUnfinished !== bUnfinished) return aUnfinished - bUnfinished;
         return 0;
     });
+}
+
+/** @returns {{ singular: string, plural: string }} */
+function entryNouns() {
+    return getDialogueTheaterEntryMode() === 'chatters'
+        ? { singular: 'chatter', plural: 'chatters' }
+        : { singular: 'conversation', plural: 'conversations' };
 }
 
 /** @param {string} value */
@@ -181,7 +220,9 @@ function escapeHtml(value) {
 function buildConversationThumb(row, duplicateLookup, conversations) {
     const name = row.name || 'Untitled conversation';
     const displayTags = getConversationTags(row).filter((tag) => tag !== 'Overwatch');
-    const eraLabel = displayTags.join(' · ');
+    const status = normalizeDialogueTheaterStatus(row.status);
+    const statusLabel = status === 'removed' ? labelForDialogueTheaterStatus(status) : '';
+    const eraLabel = [...(statusLabel ? [statusLabel] : []), ...displayTags].join(' · ');
     const voicelines = listThumbAssets?.voicelines || [];
     const isUnfinished = conversationHasUnfinishedIssues(row, voicelines, duplicateLookup);
     const unfinishedSummary = isUnfinished
@@ -283,7 +324,7 @@ function syncSaveButtonState(root) {
  * @param {number} [visibleCount]
  */
 function updateListCount(root, visibleCount) {
-    const total = dialogueTheaterDataService.conversations.length;
+    const total = getModeConversations().length;
     const visible = visibleCount ?? getFilteredConversations().length;
     const q = searchQuery.trim();
     const pairA = pairSearchControls?.getPairA?.() || '';
@@ -291,18 +332,19 @@ function updateListCount(root, visibleCount) {
     const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
     const heroFilterActive =
         !pairSearchActive && isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
-    const eraActive = Boolean(eraFilter.trim());
+    const eraActive = Boolean(eraFilter.trim() || statusFilter.trim() || eraPairFilter.trim());
     const filtering = Boolean(q || pairSearchActive || heroFilterActive || eraActive);
+    const { singular, plural } = entryNouns();
 
     const countEl = root.querySelector('#dialogueTheaterListCount');
     if (countEl) {
         if (filtering) {
             countEl.textContent =
                 visible === 1
-                    ? `1 of ${total} conversations`
-                    : `${visible} of ${total} conversations`;
+                    ? `1 of ${total} ${plural}`
+                    : `${visible} of ${total} ${plural}`;
         } else {
-            countEl.textContent = total === 1 ? '1 conversation' : `${total} conversations`;
+            countEl.textContent = total === 1 ? `1 ${singular}` : `${total} ${plural}`;
         }
     }
 
@@ -310,8 +352,14 @@ function updateListCount(root, visibleCount) {
     if (searchCountEl) {
         searchCountEl.textContent = filtering ? `${visible}/${total}` : String(total);
         searchCountEl.title = filtering
-            ? `${visible} of ${total} conversations match`
-            : `${total} conversations in document`;
+            ? `${visible} of ${total} ${plural} match`
+            : `${total} ${plural} in document`;
+    }
+
+    const titleEl = root.querySelector('.events-manage-title');
+    if (titleEl) {
+        titleEl.textContent =
+            getDialogueTheaterEntryMode() === 'chatters' ? 'Hero Chatters' : 'Dialogue Theater';
     }
 }
 
@@ -323,7 +371,7 @@ function renderList(root) {
     if (!listEl) return;
 
     const rows = getFilteredConversations();
-    const allConversations = dialogueTheaterDataService.conversations;
+    const allConversations = getModeConversations();
     const duplicateLookup = getDuplicateLookup(allConversations);
     updateListCount(root, rows.length);
 
@@ -339,17 +387,21 @@ function renderList(root) {
         const pairB = pairSearchControls?.getPairB?.() || '';
         const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
         const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
+        const { plural } = entryNouns();
         if (pairSearchActive) {
             const both = pairA.trim() && pairB.trim();
             empty.textContent = both
-                ? `No conversations found between ${pairA.trim()} and ${pairB.trim()}.`
-                : 'No conversations include that character.';
+                ? `No ${plural} found between ${pairA.trim()} and ${pairB.trim()}.`
+                : `No ${plural} include that character.`;
         } else if (heroFilters.length && !q) {
-            empty.textContent = 'No conversations include the selected heroes.';
+            empty.textContent = `No ${plural} include the selected heroes.`;
         } else if (q) {
-            empty.textContent = 'No conversations match your search.';
+            empty.textContent = `No ${plural} match your search.`;
         } else {
-            empty.textContent = 'No conversations yet. Use + Add to create one.';
+            empty.textContent =
+                getDialogueTheaterEntryMode() === 'chatters'
+                    ? 'No chatters yet.'
+                    : 'No conversations yet. Use + Add to create one.';
         }
         listEl.appendChild(empty);
         syncSaveButtonState(root);
@@ -416,6 +468,18 @@ function wireSearch(root) {
         scheduleRenderList(root);
     });
 
+    const statusSelect = root.querySelector('#dialogueTheaterStatusFilter');
+    statusSelect?.addEventListener('change', () => {
+        statusFilter = statusSelect instanceof HTMLSelectElement ? statusSelect.value : '';
+        scheduleRenderList(root);
+    });
+
+    const eraPairSelect = root.querySelector('#dialogueTheaterEraPairFilter');
+    eraPairSelect?.addEventListener('change', () => {
+        eraPairFilter = eraPairSelect instanceof HTMLSelectElement ? eraPairSelect.value : '';
+        scheduleRenderList(root);
+    });
+
     const incompleteBtn = root.querySelector('#dialogueTheaterIncompleteFirstBtn');
     if (incompleteBtn instanceof HTMLButtonElement) {
         const storageKey = 'dialogueTheaterIncompleteFirst';
@@ -441,30 +505,51 @@ function wireSearch(root) {
 }
 
 /**
- * Keep the era filter dropdown in sync with conversation tags.
+ * Keep status / era / tag filter dropdowns in sync.
  * @param {HTMLElement} root
  */
 function refreshEraFilterOptions(root) {
-    const eraSelect = root.querySelector('#dialogueTheaterEraFilter');
-    if (!(eraSelect instanceof HTMLSelectElement)) return;
+    const tagSelect = root.querySelector('#dialogueTheaterEraFilter');
+    if (tagSelect instanceof HTMLSelectElement) {
+        const previous = eraFilter || tagSelect.value || '';
+        const tags = collectDialogueTheaterStackableFilterOptions(getModeConversations());
+        const options = [
+            `<option value="">All extras</option>`,
+            `<option value="__untagged__">No extras</option>`,
+            ...tags.map((tag) => `<option value="${escapeHtml(tag)}">${escapeHtml(tag)}</option>`),
+        ];
+        tagSelect.innerHTML = options.join('');
+        if (previous && [...tagSelect.options].some((opt) => opt.value === previous)) {
+            tagSelect.value = previous;
+            eraFilter = previous;
+        } else {
+            tagSelect.value = '';
+            eraFilter = '';
+        }
+    }
 
-    const previous = eraFilter || eraSelect.value || '';
-    const eras = collectDialogueTheaterEraFilterOptions(dialogueTheaterDataService.conversations);
-    const options = [
-        `<option value="">All tags</option>`,
-        `<option value="__untagged__">Untagged only</option>`,
-        ...eras.map((era) => `<option value="${escapeHtml(era)}">${escapeHtml(era)}</option>`),
-    ];
-    eraSelect.innerHTML = options.join('');
-    if (
-        previous
-        && [...eraSelect.options].some((opt) => opt.value === previous)
-    ) {
-        eraSelect.value = previous;
-        eraFilter = previous;
-    } else {
-        eraSelect.value = '';
-        eraFilter = '';
+    const statusSelect = root.querySelector('#dialogueTheaterStatusFilter');
+    if (statusSelect instanceof HTMLSelectElement) {
+        const previous = statusFilter || statusSelect.value || '';
+        if (previous && [...statusSelect.options].some((opt) => opt.value === previous)) {
+            statusSelect.value = previous;
+            statusFilter = previous;
+        } else {
+            statusSelect.value = '';
+            statusFilter = '';
+        }
+    }
+
+    const eraSelect = root.querySelector('#dialogueTheaterEraPairFilter');
+    if (eraSelect instanceof HTMLSelectElement) {
+        const previous = eraPairFilter || eraSelect.value || '';
+        if (previous && [...eraSelect.options].some((opt) => opt.value === previous)) {
+            eraSelect.value = previous;
+            eraPairFilter = previous;
+        } else {
+            eraSelect.value = '';
+            eraPairFilter = '';
+        }
     }
 }
 
@@ -479,7 +564,10 @@ function wireToolbar(root) {
     const importInput = root.querySelector('#dialogueTheaterImportFile');
 
     addBtn?.addEventListener('click', () => {
-        const row = dialogueTheaterDataService.addBlankConversation();
+        const row =
+            getDialogueTheaterEntryMode() === 'chatters'
+                ? dialogueTheaterDataService.addBlankChatter('Unknown')
+                : dialogueTheaterDataService.addBlankConversation();
         onListChange?.();
         void openDialogueTheaterInfoPanel(row.id, { startEditing: true });
     });
@@ -572,12 +660,20 @@ export async function mountDialogueTheaterListView(container) {
                             </div>
                         </div>
                         <div class="events-manage-search-row events-manage-search-row--secondary dialogue-theater-era-filter-row">
-                            <div class="dialogue-theater-era-filter">
-                                <label for="dialogueTheaterEraFilter" class="events-search-label">Tag:</label>
+                            <div class="dialogue-theater-era-filter-col">
+                                <label for="dialogueTheaterStatusFilter" class="events-search-label">Status:</label>
+                                <select id="dialogueTheaterStatusFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter by status">
+                                    <option value="">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="removed">Removed</option>
+                                </select>
+                            </div>
+                            <div class="dialogue-theater-era-filter-col">
+                                <label for="dialogueTheaterEraFilter" class="events-search-label">Tags:</label>
                                 <div class="dialogue-theater-era-filter__controls">
-                                    <select id="dialogueTheaterEraFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter conversations by tag">
-                                        <option value="">All tags</option>
-                                        <option value="__untagged__">Untagged only</option>
+                                    <select id="dialogueTheaterEraFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter by extra tags">
+                                        <option value="">All extras</option>
+                                        <option value="__untagged__">No extras</option>
                                     </select>
                                     <button
                                         type="button"
@@ -587,6 +683,14 @@ export async function mountDialogueTheaterListView(container) {
                                         title="Show unfinished (red border) conversations first"
                                     >Incomplete first</button>
                                 </div>
+                            </div>
+                            <div class="dialogue-theater-era-filter-col">
+                                <label for="dialogueTheaterEraPairFilter" class="events-search-label">Era:</label>
+                                <select id="dialogueTheaterEraPairFilter" class="events-search-input dialogue-theater-era-filter__select" aria-label="Filter by era">
+                                    <option value="">All</option>
+                                    <option value="Overwatch">Overwatch</option>
+                                    <option value="Classic">Classic</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -613,6 +717,8 @@ export async function mountDialogueTheaterListView(container) {
 
     searchQuery = '';
     eraFilter = '';
+    statusFilter = '';
+    eraPairFilter = '';
     pairSearchControls = null;
     invalidateListCaches({ fullRebuild: true });
     onListChange = () => {
@@ -629,8 +735,17 @@ export async function mountDialogueTheaterListView(container) {
     listThumbAssets = await loadDialogueTheaterAssets();
     refreshEraFilterOptions(container);
     pairSearchControls = await wireDialogueTheaterPairSearch(container, {
-        getConversations: () => dialogueTheaterDataService.conversations,
+        getConversations: () => getModeConversations(),
         onChange: () => scheduleRenderList(container),
+    });
+    mountDialogueTheaterEntryToggle({
+        onChange: () => {
+            closeDialogueTheaterInfoPanel();
+            invalidateListCaches({ fullRebuild: true });
+            refreshEraFilterOptions(container);
+            pairSearchControls?.refreshSpeakerOptions?.();
+            scheduleRenderList(container);
+        },
     });
     renderList(container);
 
@@ -653,6 +768,7 @@ export async function mountDialogueTheaterListView(container) {
  * @param {HTMLElement|null} container
  */
 export function unmountDialogueTheaterListView(container) {
+    unmountDialogueTheaterEntryToggle();
     unfloatArchiveFileActions('theater');
 
     if (container?._dialogueTheaterEscape) {
@@ -669,6 +785,8 @@ export function unmountDialogueTheaterListView(container) {
     onListChange = null;
     searchQuery = '';
     eraFilter = '';
+    statusFilter = '';
+    eraPairFilter = '';
     incompleteFirst = false;
     pairSearchControls = null;
     listThumbAssets = null;

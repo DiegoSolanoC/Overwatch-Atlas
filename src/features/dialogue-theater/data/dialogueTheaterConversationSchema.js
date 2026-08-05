@@ -3,6 +3,13 @@
  */
 export const DEFAULT_DIALOGUE_SCENE = 'Default.png';
 
+import {
+    DIALOGUE_THEATER_ENTRY_CHATTER,
+    DIALOGUE_THEATER_ENTRY_DIALOGUE,
+    chatterIdForHero,
+    normalizeDialogueTheaterEntryType,
+} from './dialogueTheaterEntryType.js';
+
 /**
  * @returns {string}
  */
@@ -45,7 +52,7 @@ export function buildBlankDialoguePath() {
 }
 
 /**
- * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string }}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string }}
  */
 export function buildBlankDialogueLine() {
     return {
@@ -64,6 +71,7 @@ export function buildBlankDialogueLine() {
 export function buildBlankConversationRecord() {
     return {
         id: createConversationId(),
+        entryType: DIALOGUE_THEATER_ENTRY_DIALOGUE,
         name: 'Untitled conversation',
         status: 'active',
         eraName: '',
@@ -73,17 +81,54 @@ export function buildBlankConversationRecord() {
     };
 }
 
+/**
+ * Empty Hero Chatter stub — default scene + Heroic render, no audio/dialogue yet.
+ * @param {string} heroName
+ * @returns {import('./DialogueTheaterDataService.js').DialogueConversation}
+ */
+export function buildBlankChatterRecord(heroName) {
+    const hero = String(heroName || '').trim() || 'Unknown';
+    return {
+        id: chatterIdForHero(hero),
+        entryType: DIALOGUE_THEATER_ENTRY_CHATTER,
+        name: hero,
+        status: 'active',
+        eraName: '',
+        tags: [],
+        scene: DEFAULT_DIALOGUE_SCENE,
+        lines: [
+            {
+                id: createDialogueLineId(),
+                hero,
+                voice: '',
+                voicePrefix: '',
+                subtitles: '',
+                render: 'Heroic.png',
+            },
+        ],
+    };
+}
+
 import { stripWikiOutcomeMarkers } from './dialogueSubtitleFormatting.js';
-import { finalizeDialogueTheaterTags } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
+import {
+    DIALOGUE_THEATER_MAP_SPECIFIC_TAG,
+    DIALOGUE_THEATER_SKIN_SPECIFIC_TAG,
+    normalizeDialogueTheaterStatus,
+    normalizeDialogueTheaterTagsWithFlags,
+    finalizeDialogueTheaterTags,
+    normalizeDialogueTheaterChoiceList,
+} from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
+import { normalizeChatterPartnerFields } from './dialogueTheaterChatterPartners.js';
 
 /**
  * @param {unknown} raw
- * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string }|null}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }|null}
  */
 export function normalizeDialogueLine(raw) {
     if (!raw || typeof raw !== 'object') return null;
     const id = String(raw.id != null ? raw.id : '').trim() || createDialogueLineId();
-    return {
+    /** @type {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }} */
+    const line = {
         id,
         hero: String(raw.hero != null ? raw.hero : '').trim(),
         voice: String(raw.voice != null ? raw.voice : '').trim(),
@@ -91,6 +136,10 @@ export function normalizeDialogueLine(raw) {
         subtitles: stripWikiOutcomeMarkers(String(raw.subtitles != null ? raw.subtitles : '')),
         render: String(raw.render != null ? raw.render : '').trim(),
     };
+    const disclaimer = String(raw.disclaimer != null ? raw.disclaimer : '').trim();
+    if (disclaimer) line.disclaimer = disclaimer;
+    Object.assign(line, normalizeChatterPartnerFields(raw));
+    return line;
 }
 
 /**
@@ -134,8 +183,12 @@ export function normalizeDialoguePath(raw) {
 export function normalizeConversationRecord(raw, fallbackId) {
     if (!raw || typeof raw !== 'object') return null;
     const id = String(raw.id != null ? raw.id : fallbackId || '').trim() || createConversationId();
-    const statusRaw = String(raw.status != null ? raw.status : 'active').trim().toLowerCase();
-    const status = statusRaw === 'outdated' ? 'outdated' : 'active';
+    const entryType = normalizeDialogueTheaterEntryType(raw.entryType);
+    const { tags: rawNormalizedTags, hadRemovedTag } = normalizeDialogueTheaterTagsWithFlags(
+        raw.tags,
+    );
+    let status = normalizeDialogueTheaterStatus(raw.status);
+    if (hadRemovedTag) status = 'removed';
     const name = String(raw.name != null ? raw.name : raw.title != null ? raw.title : '')
         .trim() || 'Untitled conversation';
     // Legacy eraName cleared — tags is the multi-label field now.
@@ -179,10 +232,25 @@ export function normalizeConversationRecord(raw, fallbackId) {
         selectedPathId = sorted[0]?.id || filteredPaths[0].id;
     }
 
-    const tags = finalizeDialogueTheaterTags(raw.tags, filteredPaths.length > 0);
+    const isChatter = entryType === DIALOGUE_THEATER_ENTRY_CHATTER;
+    const tags = isChatter
+        ? []
+        : finalizeDialogueTheaterTags(rawNormalizedTags, filteredPaths.length > 0);
+    const mapChoices = tags.includes(DIALOGUE_THEATER_MAP_SPECIFIC_TAG)
+        ? normalizeDialogueTheaterChoiceList(raw.mapChoices)
+        : [];
+    const skinChoices = tags.includes(DIALOGUE_THEATER_SKIN_SPECIFIC_TAG)
+        ? normalizeDialogueTheaterChoiceList(raw.skinChoices)
+        : [];
 
     /** @type {import('./DialogueTheaterDataService.js').DialogueConversation} */
-    const conversation = { id, name, status, eraName, tags, scene, lines };
+    const conversation = { id, entryType, name, status, eraName, tags, scene, lines };
+    if (mapChoices.length > 0) {
+        conversation.mapChoices = mapChoices;
+    }
+    if (skinChoices.length > 0) {
+        conversation.skinChoices = skinChoices;
+    }
     if (filteredPaths.length > 0) {
         conversation.paths = filteredPaths;
         conversation.selectedPathId = selectedPathId;

@@ -261,7 +261,7 @@
     font-size: 16px;
 }
 
-/* Story timeline — grouped heroes / factions / NPCs (read-only, same rhythm as relevant locations) */
+/* Story timeline — grouped heroes / factions / NPCs (gallery bio chips, countries stay flags) */
 .event-story-filter-places-section .event-filter-header--category {
     margin-top: 14px;
 }
@@ -275,7 +275,52 @@
     font-size: 16px;
 }
 
-.event-story-filter-places-section .event-slide-filter-token-img,
+.event-story-filter-places-section {
+    --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
+    --hero-bio-hover-scale: 1.08;
+    --hero-bio-chip-max-h: clamp(64px, 8vw, 88px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
+    --hero-bio-label-band: clamp(14px, 1.1vw, 18px);
+}
+
+.event-story-filter-places-section .event-slide-relevant-locations__flag-row--chips {
+    align-items: flex-end;
+    gap: 8px 10px;
+    padding-bottom: calc(var(--hero-bio-label-band) + 2px);
+}
+
+.event-story-filter-places-section .event-slide-relevant-locations__row--with-chips {
+    align-items: flex-end;
+    gap: 10px 14px;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-chip-wrap {
+    position: relative;
+    display: block;
+    width: var(--hero-bio-chip-max-w);
+    max-width: var(--hero-bio-chip-max-w);
+    height: var(--hero-bio-chip-max-h);
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
+    width: 100%;
+    height: var(--hero-bio-chip-max-h);
+    max-width: var(--hero-bio-chip-max-w);
+}
+
+.event-story-filter-places-section .event-slide-filter-token-chip--static {
+    pointer-events: none;
+    cursor: default;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-chip:focus-visible {
+    outline: 2px solid rgba(33, 150, 243, 0.95);
+    outline-offset: 3px;
+}
+
+/* Keep legacy bio-connection portrait tokens working until those adopt chips */
 .event-bio-connections-section .event-slide-filter-token-img {
     height: 48px;
     max-height: 56px;
@@ -286,20 +331,14 @@
     flex-shrink: 0;
 }
 
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-hero,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-hero,
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-faction,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-faction,
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-npc,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-npc {
     cursor: pointer;
 }
 
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-hero:focus-visible,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-hero:focus-visible,
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-faction:focus-visible,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-faction:focus-visible,
-.event-story-filter-places-section .event-slide-filter-token-img--clickable-npc:focus-visible,
 .event-bio-connections-section .event-slide-filter-token-img--clickable-npc:focus-visible {
     outline: 2px solid rgba(33, 150, 243, 0.95);
     outline-offset: 3px;

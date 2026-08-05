@@ -10,8 +10,18 @@ import {
     PANEL_DIALOGUE_BOX_HTML,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 import {
-    DIALOGUE_THEATER_EDITABLE_TAGS,
+    DIALOGUE_THEATER_ERA_CLASSIC,
+    DIALOGUE_THEATER_ERA_OVERWATCH,
+    DIALOGUE_THEATER_MAP_SPECIFIC_TAG,
+    DIALOGUE_THEATER_SKIN_SPECIFIC_TAG,
+    DIALOGUE_THEATER_STACKABLE_TAGS,
+    getConversationEraTag,
+    getConversationMapChoices,
+    getConversationSkinChoices,
     getConversationTags,
+    labelForDialogueTheaterStatus,
+    normalizeDialogueTheaterChoiceList,
+    normalizeDialogueTheaterStatus,
 } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import {
     clearDialogueTheaterAssetsCache,
@@ -29,6 +39,14 @@ import {
     buildBlankDialoguePath,
     normalizeDialogueLine,
 } from '../data/dialogueTheaterConversationSchema.js';
+import {
+    CHATTER_PARTNER_MODE_AND,
+    CHATTER_PARTNER_MODE_HYBRID,
+    CHATTER_PARTNER_MODE_OR,
+    CHATTER_PARTNER_MODE_VAGUE,
+    normalizeChatterPartnerList,
+    normalizeChatterPartnerMode,
+} from '../data/dialogueTheaterChatterPartners.js';
 import {
     hasConversationVariationPaths,
     labelForDialogueLineOption,
@@ -974,7 +992,23 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
             return `
                 <article class="dialogue-theater-edit__view-line">
                     ${iconBlock}
-                    <p class="dialogue-theater-edit__view-line-text">${dialogueText ? formatDialogueSubtitleHtml(dialogueText) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
+                    <div class="dialogue-theater-edit__view-line-body">
+                        <p class="dialogue-theater-edit__view-line-text">${dialogueText ? formatDialogueSubtitleHtml(dialogueText, { hero: line.hero }) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
+                        ${line.disclaimer
+                            ? `<p class="dialogue-theater-edit__view-line-disclaimer">${escapeHtml(line.disclaimer)}</p>`
+                            : ''}
+                        ${Array.isArray(line.partners) && line.partners.length
+                            ? `<p class="dialogue-theater-edit__view-line-partners"><span class="dialogue-theater-edit__view-line-partners-label">${
+                                  (() => {
+                                      const mode = normalizeChatterPartnerMode(line.partnerMode);
+                                      if (mode === CHATTER_PARTNER_MODE_AND) return 'Partners (all)';
+                                      if (mode === CHATTER_PARTNER_MODE_VAGUE) return 'Partners (vague count)';
+                                      if (mode === CHATTER_PARTNER_MODE_HYBRID) return 'Partners (hybrid)';
+                                      return 'Partners (random one)';
+                                  })()
+                              }:</span> ${escapeHtml(line.partners.join(', '))}</p>`
+                            : ''}
+                    </div>
                     ${playBtn}
                 </article>
             `;
@@ -1039,9 +1073,13 @@ export function updateDialogueTheaterViewPathSelection(host, conversation, pathI
  */
 export function renderDialogueTheaterViewPanel(host, conversation, options = {}) {
     host.className = 'dialogue-theater-edit-host dialogue-theater-edit-host--view';
-    const statusLabel = conversation.status === 'outdated' ? 'Outdated' : 'Active';
+    const statusLabel = labelForDialogueTheaterStatus(conversation.status);
     const tags = getConversationTags(conversation);
     const tagsLabel = tags.length ? tags.join(' · ') : '—';
+    const mapChoices = getConversationMapChoices(conversation);
+    const mapChoicesLabel = mapChoices.length ? mapChoices.join(', ') : '';
+    const skinChoices = getConversationSkinChoices(conversation);
+    const skinChoicesLabel = skinChoices.length ? skinChoices.join(', ') : '';
     const playbackConversation = getPlaybackConversation(conversation);
     const paths = conversation.paths || [];
     const selectedPathId = resolveSelectedPathId(conversation);
@@ -1091,6 +1129,16 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
             <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
                 <div><dt>Status</dt><dd>${statusLabel}</dd></div>
                 <div><dt>Tags</dt><dd>${escapeHtml(tagsLabel)}</dd></div>
+                ${
+                    mapChoicesLabel
+                        ? `<div><dt>Maps</dt><dd>${escapeHtml(mapChoicesLabel)}</dd></div>`
+                        : ''
+                }
+                ${
+                    skinChoicesLabel
+                        ? `<div><dt>Skins</dt><dd>${escapeHtml(skinChoicesLabel)}</dd></div>`
+                        : ''
+                }
             </dl>
             ${pathSwitcherHtml}
             <section class="dialogue-theater-edit__section">
@@ -1211,7 +1259,113 @@ export function buildDialogueTheaterEditStagePreview(host, baseConversation) {
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} baseConversation
  */
 export async function refreshDialogueTheaterEditStageFromHost(host, baseConversation) {
-    await refreshDialogueTheaterStage(buildDialogueTheaterEditStagePreview(host, baseConversation));
+    const preview = buildDialogueTheaterEditStagePreview(host, baseConversation);
+    const lines = Array.isArray(preview.lines) ? preview.lines : [];
+    const partnerLineIndex = lines.findIndex(
+        (line) => Array.isArray(line.partners) && line.partners.length > 0,
+    );
+    if (partnerLineIndex >= 0) {
+        await ensureDialogueTheaterAssetsLoaded();
+        // Ensure overlay exists then paint the partner line so AND/OR preview is visible while editing.
+        await refreshDialogueTheaterStage(preview);
+        updateDialogueTheaterStageActiveLine(preview, partnerLineIndex);
+        return;
+    }
+    await refreshDialogueTheaterStage(preview);
+}
+
+/**
+ * @param {HTMLElement} blockEl
+ * @param {() => void} [onEditChange]
+ */
+function refreshPartnerStackList(blockEl, onEditChange) {
+    const stackWrap = blockEl.querySelector('.dialogue-theater-line__partners-stack');
+    const listEl = blockEl.querySelector('.dialogue-theater-line__partners-stack-list');
+    const modeInput = blockEl.querySelector(
+        '.dialogue-theater-line__partner-mode:checked',
+    );
+    const partnersInput = blockEl.querySelector('.dialogue-theater-line__partners-input');
+    if (!(listEl instanceof HTMLOListElement) || !(stackWrap instanceof HTMLElement)) return;
+
+    const mode = normalizeChatterPartnerMode(
+        modeInput instanceof HTMLInputElement ? modeInput.value : 'or',
+    );
+    const partners = normalizeChatterPartnerList(
+        partnersInput instanceof HTMLTextAreaElement ? partnersInput.value : '',
+    );
+    stackWrap.hidden = mode !== CHATTER_PARTNER_MODE_AND || partners.length === 0;
+
+    let order = String(blockEl.dataset.partnerStackOrder || '')
+        .split('|')
+        .map((s) => s.trim())
+        .filter(Boolean);
+    const partnerSet = new Set(partners.map((h) => h.toLowerCase()));
+    order = order.filter((h) => partnerSet.has(h.toLowerCase()));
+    for (const hero of partners) {
+        if (!order.some((h) => h.toLowerCase() === hero.toLowerCase())) order.push(hero);
+    }
+    blockEl.dataset.partnerStackOrder = order.join('|');
+
+    let focus = String(blockEl.dataset.partnerFocus || '').trim();
+    if (!order.some((h) => h.toLowerCase() === focus.toLowerCase())) {
+        focus = order[order.length - 1] || order[0] || '';
+        blockEl.dataset.partnerFocus = focus;
+    }
+
+    listEl.innerHTML = '';
+    order.forEach((hero, index) => {
+        const li = document.createElement('li');
+        li.className = 'dialogue-theater-line__partners-stack-item';
+        li.dataset.hero = hero;
+        li.innerHTML = `
+            <span class="dialogue-theater-line__partners-stack-name">${escapeHtml(hero)}</span>
+            <div class="dialogue-theater-line__partners-stack-actions">
+                <button type="button" class="event-slide-inline-editor__small-btn" data-partner-action="up" ${index === 0 ? 'disabled' : ''} title="Move back">↑</button>
+                <button type="button" class="event-slide-inline-editor__small-btn" data-partner-action="down" ${index === order.length - 1 ? 'disabled' : ''} title="Move forward / toward top">↓</button>
+                <label class="dialogue-theater-line__partners-focus">
+                    <input type="radio" name="partner-focus-${escapeHtml(blockEl.dataset.lineId || '')}" data-partner-action="focus" value="${escapeHtml(hero)}" ${
+                        hero.toLowerCase() === focus.toLowerCase() ? 'checked' : ''
+                    } />
+                    Focus
+                </label>
+            </div>
+        `;
+        listEl.appendChild(li);
+    });
+
+    listEl.querySelectorAll('[data-partner-action]').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const action = btn.getAttribute('data-partner-action');
+            const item = btn.closest('.dialogue-theater-line__partners-stack-item');
+            const hero = item instanceof HTMLElement ? item.dataset.hero || '' : '';
+            if (!hero) return;
+            let next = String(blockEl.dataset.partnerStackOrder || '')
+                .split('|')
+                .map((s) => s.trim())
+                .filter(Boolean);
+            const idx = next.findIndex((h) => h.toLowerCase() === hero.toLowerCase());
+            if (action === 'up' && idx > 0) {
+                [next[idx - 1], next[idx]] = [next[idx], next[idx - 1]];
+            } else if (action === 'down' && idx >= 0 && idx < next.length - 1) {
+                [next[idx + 1], next[idx]] = [next[idx], next[idx + 1]];
+            } else if (action === 'focus') {
+                blockEl.dataset.partnerFocus = hero;
+            }
+            if (action === 'up' || action === 'down') {
+                blockEl.dataset.partnerStackOrder = next.join('|');
+            }
+            refreshPartnerStackList(blockEl, onEditChange);
+            onEditChange?.();
+        });
+        if (btn instanceof HTMLInputElement && btn.type === 'radio') {
+            btn.addEventListener('change', () => {
+                if (!btn.checked) return;
+                blockEl.dataset.partnerFocus = btn.value;
+                onEditChange?.();
+            });
+        }
+    });
 }
 
 /**
@@ -1226,6 +1380,18 @@ function wireDialogueLineBlock(blockEl, line, onEditChange) {
     const subtitlesInput = blockEl.querySelector('.dialogue-theater-line__subtitles-input');
     const renderGrid = blockEl.querySelector('.dialogue-theater-line__render-grid');
     const removeBtn = blockEl.querySelector('.dialogue-theater-line__remove-btn');
+    const disclaimerInput = blockEl.querySelector('.dialogue-theater-line__disclaimer-input');
+    const partnersRow = blockEl.querySelector('.dialogue-theater-line__row--partners');
+    const partnersInput = blockEl.querySelector('.dialogue-theater-line__partners-input');
+
+    function syncPartnersRowVisibility() {
+        if (!(partnersRow instanceof HTMLElement)) return;
+        const hasDisclaimer =
+            disclaimerInput instanceof HTMLTextAreaElement && disclaimerInput.value.trim();
+        const hasPartners =
+            partnersInput instanceof HTMLTextAreaElement && partnersInput.value.trim();
+        partnersRow.hidden = !(hasDisclaimer || hasPartners);
+    }
 
     function syncHeroAndRenders() {
         if (!(heroInput instanceof HTMLInputElement)) return;
@@ -1287,6 +1453,27 @@ function wireDialogueLineBlock(blockEl, line, onEditChange) {
     subtitlesInput?.addEventListener('input', () => {
         onEditChange?.();
     });
+
+    disclaimerInput?.addEventListener('input', () => {
+        syncPartnersRowVisibility();
+        onEditChange?.();
+    });
+
+    partnersInput?.addEventListener('input', () => {
+        syncPartnersRowVisibility();
+        refreshPartnerStackList(blockEl, onEditChange);
+        onEditChange?.();
+    });
+
+    blockEl.querySelectorAll('.dialogue-theater-line__partner-mode').forEach((input) => {
+        input.addEventListener('change', () => {
+            refreshPartnerStackList(blockEl, onEditChange);
+            onEditChange?.();
+        });
+    });
+
+    syncPartnersRowVisibility();
+    refreshPartnerStackList(blockEl, onEditChange);
 
     removeBtn?.addEventListener('click', () => {
         blockEl.remove();
@@ -1371,6 +1558,52 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
             <label class="dialogue-theater-edit__label">Subtitles</label>
             <textarea class="dialogue-theater-line__subtitles-input event-slide-inline-editor__textarea" rows="3" placeholder="Dialogue text…"></textarea>
         </div>
+        <div class="dialogue-theater-line__row dialogue-theater-line__row--disclaimer">
+            <label class="dialogue-theater-edit__label">Disclaimer</label>
+            <textarea class="dialogue-theater-line__disclaimer-input event-slide-inline-editor__textarea" rows="2" placeholder="Wiki condition / note (optional)…"></textarea>
+        </div>
+        <div class="dialogue-theater-line__row dialogue-theater-line__row--partners" ${
+            line.disclaimer || (Array.isArray(line.partners) && line.partners.length) ? '' : 'hidden'
+        }>
+            <label class="dialogue-theater-edit__label">Partners</label>
+            <div class="dialogue-theater-line__partners">
+                <div class="dialogue-theater-line__partners-mode" role="group" aria-label="Partner mode">
+                    <label class="dialogue-theater-line__partners-mode-option">
+                        <input type="radio" name="partner-mode-${escapeHtml(line.id)}" class="dialogue-theater-line__partner-mode" value="or" ${
+                            !line.partnerMode || line.partnerMode === 'or' ? 'checked' : ''
+                        } />
+                        <span>OR — random one</span>
+                    </label>
+                    <label class="dialogue-theater-line__partners-mode-option">
+                        <input type="radio" name="partner-mode-${escapeHtml(line.id)}" class="dialogue-theater-line__partner-mode" value="and" ${
+                            line.partnerMode === 'and' ? 'checked' : ''
+                        } />
+                        <span>AND — show all stacked</span>
+                    </label>
+                    <label class="dialogue-theater-line__partners-mode-option">
+                        <input type="radio" name="partner-mode-${escapeHtml(line.id)}" class="dialogue-theater-line__partner-mode" value="vague" ${
+                            line.partnerMode === 'vague' ? 'checked' : ''
+                        } />
+                        <span>Vague — random who &amp; count (min 2)</span>
+                    </label>
+                    <label class="dialogue-theater-line__partners-mode-option">
+                        <input type="radio" name="partner-mode-${escapeHtml(line.id)}" class="dialogue-theater-line__partner-mode" value="hybrid" ${
+                            line.partnerMode === 'hybrid' ? 'checked' : ''
+                        } />
+                        <span>Hybrid — fixed + OR pools</span>
+                    </label>
+                </div>
+                <textarea
+                    class="dialogue-theater-line__partners-input event-slide-inline-editor__textarea"
+                    rows="2"
+                    placeholder="Other-side heroes, comma-separated (e.g. Hanzo, Widowmaker, Zenyatta)"
+                ></textarea>
+                <div class="dialogue-theater-line__partners-stack" ${line.partnerMode === 'and' ? '' : 'hidden'}>
+                    <p class="dialogue-theater-edit__hint">Stack order (last = on top). Use ↑↓ and “Focus” for the chosen render.</p>
+                    <ol class="dialogue-theater-line__partners-stack-list"></ol>
+                </div>
+            </div>
+        </div>
         <div class="dialogue-theater-line__row">
             <label class="dialogue-theater-edit__label">Render</label>
             <div class="dialogue-theater-line__render-grid dialogue-theater-edit__picker-grid"></div>
@@ -1380,6 +1613,8 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
     const heroInput = block.querySelector('.dialogue-theater-line__hero-input');
     const voiceInput = block.querySelector('.dialogue-theater-line__voice-input');
     const subtitlesInput = block.querySelector('.dialogue-theater-line__subtitles-input');
+    const disclaimerInput = block.querySelector('.dialogue-theater-line__disclaimer-input');
+    const partnersInput = block.querySelector('.dialogue-theater-line__partners-input');
     if (heroInput instanceof HTMLInputElement) heroInput.value = line.hero || '';
     if (voiceInput instanceof HTMLInputElement) {
         if (line.voice) {
@@ -1393,6 +1628,27 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
         subtitlesInput.value =
             line.subtitles || (line.voice ? voicelineFilenameToSubtitles(line.voice) : '');
     }
+    if (disclaimerInput instanceof HTMLTextAreaElement) {
+        disclaimerInput.value = line.disclaimer || '';
+    }
+    if (partnersInput instanceof HTMLTextAreaElement) {
+        partnersInput.value = Array.isArray(line.partners) ? line.partners.join(', ') : '';
+    }
+    if (line.partnerFocus) block.dataset.partnerFocus = line.partnerFocus;
+    if (Array.isArray(line.partnerStackOrder) && line.partnerStackOrder.length) {
+        block.dataset.partnerStackOrder = line.partnerStackOrder.join('|');
+    }
+    if (Array.isArray(line.partnerFixed) && line.partnerFixed.length) {
+        block.dataset.partnerFixed = line.partnerFixed.join('|');
+    }
+    if (Array.isArray(line.partnerOrPools) && line.partnerOrPools.length) {
+        block.dataset.partnerOrPools = line.partnerOrPools
+            .map((pool) => (Array.isArray(pool) ? pool.join('|') : ''))
+            .filter(Boolean)
+            .join(';');
+    }
+    if (line.partnerCountMin != null) block.dataset.partnerCountMin = String(line.partnerCountMin);
+    if (line.partnerCountMax != null) block.dataset.partnerCountMax = String(line.partnerCountMax);
     linesHost.appendChild(block);
     wireDialogueLineBlock(block, line, onEditChange);
 }
@@ -1414,8 +1670,26 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                 <label class="dialogue-theater-edit__label" for="dialogueTheaterEditStatus">Status</label>
                 <select id="dialogueTheaterEditStatus" class="dialogue-theater-edit__select">
                     <option value="active">Active</option>
-                    <option value="outdated">Outdated</option>
+                    <option value="removed">Removed</option>
                 </select>
+            </div>
+            <div class="dialogue-theater-edit__row">
+                <span class="dialogue-theater-edit__label" id="dialogueTheaterEditEraLabel">Era</span>
+                <div
+                    class="dialogue-theater-edit__tags dialogue-theater-edit__tags--era"
+                    role="radiogroup"
+                    aria-labelledby="dialogueTheaterEditEraLabel"
+                >
+                    <label class="dialogue-theater-edit__tag-option">
+                        <input type="radio" name="dialogueTheaterEditEra" value="${DIALOGUE_THEATER_ERA_OVERWATCH}" class="dialogue-theater-edit__era-radio" />
+                        <span>${DIALOGUE_THEATER_ERA_OVERWATCH}</span>
+                    </label>
+                    <label class="dialogue-theater-edit__tag-option">
+                        <input type="radio" name="dialogueTheaterEditEra" value="${DIALOGUE_THEATER_ERA_CLASSIC}" class="dialogue-theater-edit__era-radio" />
+                        <span>${DIALOGUE_THEATER_ERA_CLASSIC}</span>
+                    </label>
+                </div>
+                <p class="dialogue-theater-edit__hint">Pick one era. Classic is OW1-era voice; Overwatch is the default.</p>
             </div>
             <div class="dialogue-theater-edit__row">
                 <span class="dialogue-theater-edit__label" id="dialogueTheaterEditTagsLabel">Tags</span>
@@ -1424,11 +1698,7 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                     role="group"
                     aria-labelledby="dialogueTheaterEditTagsLabel"
                 >
-                    <label class="dialogue-theater-edit__tag-option dialogue-theater-edit__tag-option--locked">
-                        <input type="checkbox" checked disabled data-theater-tag="Overwatch" />
-                        <span>Overwatch</span>
-                    </label>
-                    ${DIALOGUE_THEATER_EDITABLE_TAGS.map(
+                    ${DIALOGUE_THEATER_STACKABLE_TAGS.map(
                         (tag) => `
                     <label class="dialogue-theater-edit__tag-option">
                         <input type="checkbox" class="dialogue-theater-edit__tag-check" value="${escapeHtml(tag)}" />
@@ -1440,7 +1710,37 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                         <span>Multi Path</span>
                     </label>
                 </div>
-                <p class="dialogue-theater-edit__hint">Overwatch is always applied. Multi Path follows variation routes.</p>
+                <p class="dialogue-theater-edit__hint">Map Specific and Skin Specific can stack. Multi Path follows variation routes.</p>
+            </div>
+            <div
+                class="dialogue-theater-edit__row dialogue-theater-edit__map-choices-row"
+                id="dialogueTheaterEditMapChoicesRow"
+                hidden
+            >
+                <label class="dialogue-theater-edit__label" for="dialogueTheaterEditMapChoices">Map choices</label>
+                <input
+                    type="text"
+                    id="dialogueTheaterEditMapChoices"
+                    class="event-slide-inline-editor__input dialogue-theater-edit__map-choices-input"
+                    placeholder="e.g. Esperança, Ilios, Samoa"
+                    autocomplete="off"
+                />
+                <p class="dialogue-theater-edit__hint">Maps where this interaction can play. Separate names with commas.</p>
+            </div>
+            <div
+                class="dialogue-theater-edit__row dialogue-theater-edit__skin-choices-row"
+                id="dialogueTheaterEditSkinChoicesRow"
+                hidden
+            >
+                <label class="dialogue-theater-edit__label" for="dialogueTheaterEditSkinChoices">Skin choices</label>
+                <input
+                    type="text"
+                    id="dialogueTheaterEditSkinChoices"
+                    class="event-slide-inline-editor__input dialogue-theater-edit__skin-choices-input"
+                    placeholder="e.g. Galactic Emperor, Space Prince"
+                    autocomplete="off"
+                />
+                <p class="dialogue-theater-edit__hint">Skins required for this interaction. Separate names with commas.</p>
             </div>
             <section class="dialogue-theater-edit__section">
                 <h3 class="dialogue-theater-edit__section-title">Scene</h3>
@@ -1474,8 +1774,13 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
 
     const statusEl = host.querySelector('#dialogueTheaterEditStatus');
     if (statusEl instanceof HTMLSelectElement) {
-        statusEl.value = conversation.status === 'outdated' ? 'outdated' : 'active';
+        statusEl.value = normalizeDialogueTheaterStatus(conversation.status);
     }
+    const eraTag = getConversationEraTag(conversation) || DIALOGUE_THEATER_ERA_OVERWATCH;
+    host.querySelectorAll('.dialogue-theater-edit__era-radio').forEach((input) => {
+        if (!(input instanceof HTMLInputElement)) return;
+        input.checked = input.value === eraTag;
+    });
     const currentTags = new Set(getConversationTags(conversation));
     host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
         if (!(input instanceof HTMLInputElement)) return;
@@ -1485,6 +1790,34 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
     if (multiPathEl instanceof HTMLInputElement) {
         multiPathEl.checked = currentTags.has('Multi Path');
     }
+
+    const mapChoicesRow = host.querySelector('#dialogueTheaterEditMapChoicesRow');
+    const mapChoicesInput = host.querySelector('#dialogueTheaterEditMapChoices');
+    const skinChoicesRow = host.querySelector('#dialogueTheaterEditSkinChoicesRow');
+    const skinChoicesInput = host.querySelector('#dialogueTheaterEditSkinChoices');
+    const syncChoiceRowsVisibility = () => {
+        const checks = [...host.querySelectorAll('.dialogue-theater-edit__tag-check')].filter(
+            (input) => input instanceof HTMLInputElement,
+        );
+        const mapOn = checks.some(
+            (input) => input.value === DIALOGUE_THEATER_MAP_SPECIFIC_TAG && input.checked,
+        );
+        const skinOn = checks.some(
+            (input) => input.value === DIALOGUE_THEATER_SKIN_SPECIFIC_TAG && input.checked,
+        );
+        if (mapChoicesRow instanceof HTMLElement) mapChoicesRow.hidden = !mapOn;
+        if (skinChoicesRow instanceof HTMLElement) skinChoicesRow.hidden = !skinOn;
+    };
+    if (mapChoicesInput instanceof HTMLInputElement) {
+        mapChoicesInput.value = getConversationMapChoices(conversation).join(', ');
+    }
+    if (skinChoicesInput instanceof HTMLInputElement) {
+        skinChoicesInput.value = getConversationSkinChoices(conversation).join(', ');
+    }
+    host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
+        input.addEventListener('change', syncChoiceRowsVisibility);
+    });
+    syncChoiceRowsVisibility();
 
     const sceneGrid = host.querySelector('#dialogueTheaterSceneGrid');
     const sceneItems = (theaterAssets?.scenes || []).map((file) => ({
@@ -1538,17 +1871,38 @@ function resolveVoiceFilenameFromBlock(block) {
  */
 export function collectDialogueTheaterEditPanel(host) {
     const statusEl = host.querySelector('#dialogueTheaterEditStatus');
-    const status =
-        statusEl instanceof HTMLSelectElement && statusEl.value === 'outdated'
-            ? 'outdated'
-            : 'active';
+    const status = normalizeDialogueTheaterStatus(
+        statusEl instanceof HTMLSelectElement ? statusEl.value : 'active',
+    );
+    const eraRadio = host.querySelector('.dialogue-theater-edit__era-radio:checked');
+    const eraTag =
+        eraRadio instanceof HTMLInputElement && eraRadio.value === DIALOGUE_THEATER_ERA_CLASSIC
+            ? DIALOGUE_THEATER_ERA_CLASSIC
+            : DIALOGUE_THEATER_ERA_OVERWATCH;
     /** @type {string[]} */
-    const tags = ['Overwatch'];
+    const tags = [eraTag];
     host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
         if (input instanceof HTMLInputElement && input.checked && input.value) {
             tags.push(input.value);
         }
     });
+
+    /** @type {string[]} */
+    let mapChoices = [];
+    if (tags.includes(DIALOGUE_THEATER_MAP_SPECIFIC_TAG)) {
+        const mapChoicesEl = host.querySelector('#dialogueTheaterEditMapChoices');
+        const raw =
+            mapChoicesEl instanceof HTMLInputElement ? mapChoicesEl.value : '';
+        mapChoices = normalizeDialogueTheaterChoiceList(raw);
+    }
+    /** @type {string[]} */
+    let skinChoices = [];
+    if (tags.includes(DIALOGUE_THEATER_SKIN_SPECIFIC_TAG)) {
+        const skinChoicesEl = host.querySelector('#dialogueTheaterEditSkinChoices');
+        const raw =
+            skinChoicesEl instanceof HTMLInputElement ? skinChoicesEl.value : '';
+        skinChoices = normalizeDialogueTheaterChoiceList(raw);
+    }
 
     const scene = host.dataset.selectedScene || '';
     /** @type {import('../data/DialogueTheaterDataService.js').DialogueLine[]} */
@@ -1557,6 +1911,48 @@ export function collectDialogueTheaterEditPanel(host) {
         const hero = block.querySelector('.dialogue-theater-line__hero-input')?.value?.trim() || '';
         const voice = resolveVoiceFilenameFromBlock(block);
         const subtitles = block.querySelector('.dialogue-theater-line__subtitles-input')?.value ?? '';
+        const disclaimer =
+            block.querySelector('.dialogue-theater-line__disclaimer-input')?.value ?? '';
+        const partnersRaw =
+            block.querySelector('.dialogue-theater-line__partners-input')?.value ?? '';
+        const modeEl = block.querySelector('.dialogue-theater-line__partner-mode:checked');
+        const partnerMode =
+            modeEl instanceof HTMLInputElement ? modeEl.value : CHATTER_PARTNER_MODE_OR;
+        const partnerFocus = block instanceof HTMLElement ? String(block.dataset.partnerFocus || '') : '';
+        const partnerStackOrder =
+            block instanceof HTMLElement
+                ? String(block.dataset.partnerStackOrder || '')
+                      .split('|')
+                      .map((s) => s.trim())
+                      .filter(Boolean)
+                : [];
+        const partnerFixed =
+            block instanceof HTMLElement
+                ? String(block.dataset.partnerFixed || '')
+                      .split('|')
+                      .map((s) => s.trim())
+                      .filter(Boolean)
+                : [];
+        const partnerOrPools =
+            block instanceof HTMLElement
+                ? String(block.dataset.partnerOrPools || '')
+                      .split(';')
+                      .map((pool) =>
+                          pool
+                              .split('|')
+                              .map((s) => s.trim())
+                              .filter(Boolean),
+                      )
+                      .filter((pool) => pool.length > 0)
+                : [];
+        const partnerCountMin =
+            block instanceof HTMLElement && block.dataset.partnerCountMin
+                ? Number(block.dataset.partnerCountMin)
+                : undefined;
+        const partnerCountMax =
+            block instanceof HTMLElement && block.dataset.partnerCountMax
+                ? Number(block.dataset.partnerCountMax)
+                : undefined;
         const lineId = block.dataset.lineId || '';
         const voicePrefix = block instanceof HTMLElement ? String(block.dataset.voicePrefix || '').trim() : '';
         const render = block.dataset.selectedRender || '';
@@ -1567,12 +1963,25 @@ export function collectDialogueTheaterEditPanel(host) {
             voicePrefix,
             subtitles,
             render,
+            disclaimer,
+            partnerMode,
+            partners: normalizeChatterPartnerList(partnersRaw),
+            partnerFocus,
+            partnerStackOrder,
+            partnerFixed,
+            partnerOrPools,
+            partnerCountMin,
+            partnerCountMax,
         });
         if (normalized) lines.push(normalized);
     });
 
     const pathPatch = collectVariationPathsFromHost(host);
-    return { status, eraName: '', tags, scene, lines, ...pathPatch };
+    /** @type {Partial<import('../data/DialogueTheaterDataService.js').DialogueConversation>} */
+    const patch = { status, eraName: '', tags, scene, lines, ...pathPatch };
+    patch.mapChoices = mapChoices;
+    patch.skinChoices = skinChoices;
+    return patch;
 }
 
 /**

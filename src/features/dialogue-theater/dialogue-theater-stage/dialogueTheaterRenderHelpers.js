@@ -11,6 +11,7 @@ import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpe
 import { isBeforeTheCrisisConversation } from '../dialogue-theater-info-panel/beforeTheCrisisPathConfig.js';
 import { FAVORITE_ANIMAL_CONVERSATION_ID } from '../dialogue-theater-info-panel/dialogueTheaterGroupedPathPicker.js';
 import { isPeriodicTableConversation } from '../dialogue-theater-info-panel/periodicTablePathConfig.js';
+import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
@@ -31,6 +32,7 @@ export function usesFirstSpeakerOnlyPreview(conversation) {
  */
 export function usesSoloSpeakerPreview(conversation) {
     return (
+        isChatterEntry(conversation) ||
         usesFirstSpeakerOnlyPreview(conversation) ||
         isBeforeTheCrisisConversation(conversation) ||
         isPeriodicTableConversation(conversation)
@@ -52,6 +54,15 @@ function withDefaultRender(line, fallbackRender) {
  * @returns {import('../data/DialogueTheaterDataService.js').DialogueLine|null}
  */
 export function getSoloPreviewLine(conversation) {
+    if (isChatterEntry(conversation)) {
+        const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+        const first = lines.find((line) => String(line?.hero || '').trim());
+        if (first) return withDefaultRender(first, 'Heroic.png');
+        const hero = String(conversation?.name || '').trim();
+        if (!hero) return null;
+        return { id: 'chatter-preview', hero, voice: '', subtitles: '', render: 'Heroic.png' };
+    }
+
     if (isBeforeTheCrisisConversation(conversation)) {
         const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
         const zenLine = lines.find((line) => String(line?.hero || '').trim() === 'Zenyatta');

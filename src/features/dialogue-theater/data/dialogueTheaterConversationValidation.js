@@ -3,6 +3,7 @@
  */
 
 import { resolveLineVoiceFile } from './theaterVoicelineParsing.js';
+import { isChatterEntry } from './dialogueTheaterEntryType.js';
 
 /**
  * Normalize a voiceline filename for duplicate comparison.
@@ -197,6 +198,17 @@ export function dialogueLineMissingVoice(line, voicelines = []) {
  * @returns {boolean}
  */
 export function conversationHasUnfinishedIssues(conversation, voicelines = [], duplicateLookup = null) {
+    // Empty Hero Chatter stubs are intentional placeholders — skip unfinished chrome for now.
+    if (isChatterEntry(conversation)) {
+        const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+        const hasStartedContent = lines.some((line) => {
+            const voice = String(line?.voice || '').trim();
+            const subtitles = String(line?.subtitles || '').trim();
+            return Boolean(voice || subtitles);
+        });
+        if (!hasStartedContent) return false;
+    }
+
     if (conversationMissingCustomName(conversation?.name)) return true;
     if (duplicateLookup && conversationIsDuplicate(conversation?.id, duplicateLookup)) return true;
 

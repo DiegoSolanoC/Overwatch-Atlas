@@ -398,46 +398,50 @@
         if (!sec || sec.dataset.bioArchiveNavWired === '1') return;
         sec.dataset.bioArchiveNavWired = '1';
 
-        function activateFromImg(img) {
-            if (!img) return;
+        function activateFromTarget(el) {
+            if (!el) return;
             var em = window.eventManager;
-            if (img.hasAttribute('data-hero-open') && em && typeof em.openHeroArchiveEventByName === 'function') {
-                void em.openHeroArchiveEventByName(decodeURIComponent(img.getAttribute('data-hero-open') || ''));
+            if (el.hasAttribute('data-hero-open') && em && typeof em.openHeroArchiveEventByName === 'function') {
+                void em.openHeroArchiveEventByName(decodeURIComponent(el.getAttribute('data-hero-open') || ''));
                 return;
             }
-            if (img.hasAttribute('data-faction-open') && em && typeof em.openFactionArchiveEventByName === 'function') {
-                void em.openFactionArchiveEventByName(decodeURIComponent(img.getAttribute('data-faction-open') || ''));
+            if (el.hasAttribute('data-faction-open') && em && typeof em.openFactionArchiveEventByName === 'function') {
+                void em.openFactionArchiveEventByName(decodeURIComponent(el.getAttribute('data-faction-open') || ''));
                 return;
             }
-            if (img.hasAttribute('data-npc-open') && em && typeof em.openNpcArchiveEventByName === 'function') {
-                void em.openNpcArchiveEventByName(decodeURIComponent(img.getAttribute('data-npc-open') || ''));
+            if (el.hasAttribute('data-npc-open') && em && typeof em.openNpcArchiveEventByName === 'function') {
+                void em.openNpcArchiveEventByName(decodeURIComponent(el.getAttribute('data-npc-open') || ''));
             }
         }
 
         sec.addEventListener('click', function (e) {
-            var img =
-                e.target.closest('img.event-slide-filter-token-img--clickable-hero[data-hero-open]')
-                || e.target.closest('img.event-slide-filter-token-img--clickable-faction[data-faction-open]')
-                || e.target.closest('img.event-slide-filter-token-img--clickable-npc[data-npc-open]');
-            if (!img || !sec.contains(img)) return;
+            var el =
+                e.target.closest(
+                    'button.event-slide-filter-token-chip[data-hero-open], ' +
+                    'button.event-slide-filter-token-chip[data-faction-open], ' +
+                    'button.event-slide-filter-token-chip[data-npc-open], ' +
+                    'img.event-slide-filter-token-img--clickable-hero[data-hero-open], ' +
+                    'img.event-slide-filter-token-img--clickable-faction[data-faction-open], ' +
+                    'img.event-slide-filter-token-img--clickable-npc[data-npc-open]'
+                );
+            if (!el || !sec.contains(el)) return;
             e.preventDefault();
-            activateFromImg(img);
+            activateFromTarget(el);
         });
 
         sec.addEventListener('keydown', function (e) {
             if (e.key !== 'Enter' && e.key !== ' ') return;
             var t = e.target;
-            if (!t || String(t.tagName || '').toLowerCase() !== 'img') return;
-            if (!sec.contains(t)) return;
-            var okHero =
-                t.classList.contains('event-slide-filter-token-img--clickable-hero') && t.getAttribute('data-hero-open');
-            var okFac =
-                t.classList.contains('event-slide-filter-token-img--clickable-faction') && t.getAttribute('data-faction-open');
-            var okNpc =
-                t.classList.contains('event-slide-filter-token-img--clickable-npc') && t.getAttribute('data-npc-open');
-            if (!okHero && !okFac && !okNpc) return;
+            if (!t || !sec.contains(t)) return;
+            var tag = String(t.tagName || '').toLowerCase();
+            if (tag !== 'img' && tag !== 'button') return;
+            var ok =
+                t.hasAttribute('data-hero-open')
+                || t.hasAttribute('data-faction-open')
+                || t.hasAttribute('data-npc-open');
+            if (!ok) return;
             e.preventDefault();
-            activateFromImg(t);
+            activateFromTarget(t);
         });
     }
 
