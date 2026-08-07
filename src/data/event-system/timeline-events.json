@@ -18401,6 +18401,63 @@
       ]
     },
     {
+      "name": "Final Failsafe",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2079,
+      "yearEnd": 2080,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Futures Past",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
@@ -18721,63 +18778,6 @@
       "headlines": []
     },
     {
-      "name": "EMP",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.1796,
-      "lon": 129.0756,
-      "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Null Sector Invasion",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, D.va",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "M.E.K.A Squad,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Gwishin,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Myung,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.mon,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "External Partners",
       "description": "No description available.",
       "locationType": "earth",
@@ -18947,6 +18947,32 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd9cb1632b3fda9e8/696ae5fcc8f27714f043ae30/OW_Emre_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=NSZ1t4u54DA"
           ]
+        }
+      ]
+    },
+    {
+      "name": "Growing Pains",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Null Sector Invasion",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Growing Pains",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf"
         }
       ]
     },
@@ -19701,6 +19727,57 @@
       ]
     },
     {
+      "name": "The Tiger's Den",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        },
+        {
+          "text": "The Fall of the Sparrow",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Genji,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Old Love",
       "description": "No description available.",
       "locationType": "earth",
@@ -19791,19 +19868,19 @@
       "sources": []
     },
     {
-      "name": "The Tiger's Den",
+      "name": "Distress Signal",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
       "image": "",
-      "cityDisplayName": "Akihabara, Japan",
+      "cityDisplayName": "Kanezaka, Japan",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Akihabara, Japan",
+          "locationName": "Kanezaka, Japan",
           "country": "Japan",
           "reasoning": "",
           "lat": 35.6768601,
@@ -19817,27 +19894,8 @@
           "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
         },
         {
-          "text": "The Fall of the Sparrow",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Genji,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "text": "Fall of the Sparrow",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
         }
       ]
     },
@@ -19891,6 +19949,164 @@
         {
           "locationName": "",
           "country": "Talon Empire, Colosseo Gladiatori,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Anima Strike",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Kanezaka, Japan",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Call to Action",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "End of the Line",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "End of the Linea",
+          "url": "https://www.youtube.com/watch?v=UKJL7JfIvNg&t=29s"
+        }
+      ],
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Baptiste,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "previewBadgeMainCharacter": "Sojourn, Shion"
+    },
+    {
+      "name": "Rookie Mission",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -29.189675,
+      "lon": -54.866624,
+      "image": "",
+      "cityDisplayName": "Santiago, Brazil",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Santiago, Brazil",
+          "country": "Brazil",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anran, Wuyang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mei, Juno, Zarya, Jetpack Cat,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
       ]
@@ -19965,76 +20181,6 @@
           "reasoning": ""
         }
       ]
-    },
-    {
-      "name": "End of the Line",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "image": "",
-      "cityDisplayName": "Akihabara, Japan",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "End of the Linea",
-          "url": "https://www.youtube.com/watch?v=UKJL7JfIvNg&t=29s"
-        }
-      ],
-      "yearStart": 2080,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Sojourn, Baptiste,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mauga,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": ""
-        }
-      ],
-      "previewBadgeMainCharacter": "Sojourn, Shion"
     },
     {
       "name": "Facing Demons",
@@ -20128,7 +20274,7 @@
       "previewBadgeFaction": "Yokai Gang, Hashimoto Clan, Overwatch, Talon Empire"
     },
     {
-      "name": "Paths We Choose",
+      "name": "Ambush",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 35.6768601,
@@ -20138,67 +20284,9 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": []
-    },
-    {
-      "name": "Call to Action",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": -29.189675,
-      "lon": -54.866624,
-      "image": "",
-      "cityDisplayName": "Santiago, Brazil",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Santiago, Brazil",
-          "country": "Brazil",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Undivided",
-          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anran, Wuyang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mei, Juno, Zarya, Jetpack Cat,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ]
     },
     {
       "name": "Ulterior Motive",
@@ -20241,17 +20329,46 @@
       ]
     },
     {
-      "name": "Ambush",
+      "name": "Flying Junkers",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 35.6762,
-      "lon": 139.6503,
+      "lat": -25,
+      "lon": 135,
       "image": "",
-      "cityDisplayName": "Tokyo",
+      "cityDisplayName": "Junkertown, Australia",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Paths We Choose",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Akihabara, Japan",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -20330,6 +20447,68 @@
       ],
       "headlines": [],
       "sources": []
+    },
+    {
+      "name": "Tough Call",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.va, D.mon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen, Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wrecking Ball,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire, Junker Monarchy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad, Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "King, Casino, Overlord,",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Tough Call",
+          "url": "https://www.youtube.com/watch?v=i2zohQuNcbo"
+        }
+      ]
     }
   ]
 }
