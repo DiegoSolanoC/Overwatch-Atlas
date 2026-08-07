@@ -24,11 +24,9 @@ export const CODEX_DEFAULT_SCALE_COUNTRY = 1.5;
 export const CODEX_DEFAULT_SCALE_JUNCTION = 3;
 
 /** Extend when adding countries; image path per key (misc art vs flags). */
-export const CODEX_ALLOWED_COUNTRY_KEYS = Object.freeze(['Numbani']);
+export const CODEX_ALLOWED_COUNTRY_KEYS = Object.freeze([]);
 
-export const CODEX_COUNTRY_IMAGE_SRC_BY_KEY = Object.freeze({
-    Numbani: 'src/assets/images/Misc/Numbani.png'
-});
+export const CODEX_COUNTRY_IMAGE_SRC_BY_KEY = Object.freeze({});
 
 export function normalizeCodexCountryKey(raw) {
     const t = String(raw || '').trim().toLowerCase();

@@ -101,6 +101,49 @@ export function labelForDialogueTheaterStatus(status) {
 }
 
 /**
+ * Per-line era on chatter (and optional dialogue) lines.
+ * @param {unknown} raw
+ * @returns {'Overwatch'|'Classic'}
+ */
+export function normalizeDialogueLineEra(raw) {
+    const value = String(raw != null ? raw : '').trim();
+    if (
+        value === DIALOGUE_THEATER_ERA_CLASSIC
+        || /^classic$/i.test(value)
+        || /^ow1$/i.test(value)
+        || /^overwatch\s*1$/i.test(value)
+    ) {
+        return DIALOGUE_THEATER_ERA_CLASSIC;
+    }
+    return DIALOGUE_THEATER_ERA_OVERWATCH;
+}
+
+/**
+ * Per-line status (Active | Removed).
+ * @param {unknown} raw
+ * @returns {DialogueTheaterStatus}
+ */
+export function normalizeDialogueLineStatus(raw) {
+    return normalizeDialogueTheaterStatus(raw);
+}
+
+/**
+ * @param {{ era?: string, status?: string }|null|undefined} line
+ * @returns {'Overwatch'|'Classic'}
+ */
+export function getDialogueLineEra(line) {
+    return normalizeDialogueLineEra(line?.era);
+}
+
+/**
+ * @param {{ era?: string, status?: string }|null|undefined} line
+ * @returns {DialogueTheaterStatus}
+ */
+export function getDialogueLineStatus(line) {
+    return normalizeDialogueLineStatus(line?.status);
+}
+
+/**
  * @param {{ tags?: string[], mapChoices?: unknown }|null|undefined} conversation
  * @returns {string[]}
  */

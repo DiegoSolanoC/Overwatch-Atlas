@@ -88,6 +88,47 @@
         return ICON_HERO_CAT;
     }
 
+    /**
+     * Gallery-style bio chip for archive Connections (same visual as story
+     * relevancy / Dialogue Theater multipath chips). Click attrs open the
+     * linked archive entry via wireStoryFilterSectionBioArchiveNav.
+     */
+    function connectionChipShellHtml(opts) {
+        var src = opts.src || '';
+        var label = opts.label != null ? String(opts.label) : '';
+        var fb = opts.fb || '';
+        var openAttr = opts.openAttr || '';
+        var clickClass = opts.clickClass || '';
+        var portraitAttrs = opts.portraitAttrs || '';
+        var title = opts.title || '';
+        var isStatic = opts.isStatic === true;
+        var tag = isStatic ? 'span' : 'button type="button"';
+        var closeTag = isStatic ? 'span' : 'button';
+        var staticClass = isStatic ? ' event-slide-filter-token-chip--static' : '';
+        var interactiveAttrs = isStatic
+            ? ' aria-hidden="true"'
+            : ' ' + openAttr + ' title="' + title + '" aria-label="' + title + '"';
+        var labelHtml = label
+            ? (
+                '<div class="filter-label">' +
+                    '<span class="filter-label-text">' + R.slideStoryDisplayHtml(label) + '</span>' +
+                '</div>'
+            )
+            : '';
+        return (
+            '<div class="gallery-hero-filters__chip-wrap event-slide-filter-token-chip-wrap event-slide-bio-connections__chip">' +
+                '<' + tag + ' class="filter-btn gallery-hero-filters__chip event-slide-filter-token-chip' +
+                staticClass + (clickClass ? ' ' + clickClass : '') + '"' + interactiveAttrs + '>' +
+                    '<div class="filter-image-container">' +
+                        '<img' + portraitAttrs + ' src="' + src + '" alt="" loading="lazy" decoding="async" draggable="false" ' +
+                        'onerror="this.onerror=null;this.src=\'' + fb + '\';" />' +
+                    '</div>' +
+                    labelHtml +
+                '</' + closeTag + '>' +
+            '</div>'
+        );
+    }
+
     function bioArchiveConnectionPortraitHtml(entityKind, token) {
         var t = R.stripTrailingCommaSep(String(token || '')).trim();
         var k = String(entityKind || 'hero').toLowerCase();
@@ -96,55 +137,56 @@
         var fbPath = k === 'faction' ? ICON_FACTION_CAT : k === 'npc' ? ICON_NPC_CAT : ICON_HERO_CAT;
         var fb = fbPath.replace(/'/g, "\\'");
         if (!t) {
-            return (
-                '<img class="event-slide-bio-connections__portrait event-slide-bio-connections__portrait--fallback" src="' +
-                fbPath +
-                '" alt="" width="52" height="52" decoding="async" draggable="false" />'
-            );
+            return connectionChipShellHtml({
+                src: fbPath,
+                label: '',
+                fb: fb,
+                isStatic: true
+            });
         }
         if (k === 'hero') {
             var hk = resolveHeroImageKey(t);
             var canon = hk || t;
-            var src = 'src/assets/images/Filters/Heroes/' + encodeURIComponent(canon) + '.png';
-            var dataEnc = encodeURIComponent(canon);
-            return (
-                '<img class="event-slide-filter-token-img event-slide-filter-token-img--heroes event-slide-filter-token-img--clickable-hero event-slide-bio-connections__portrait" ' +
-                'data-hero-open="' + dataEnc + '" role="button" tabindex="0" ' +
-                'src="' + src + '" alt="" title="Open ' + R.escapeHtmlAttr(canon) +
-                ' in Heroes archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
-                fb + '\';" />'
-            );
+            return connectionChipShellHtml({
+                src: 'src/assets/images/Filters/Heroes/' + encodeURIComponent(canon) + '.png',
+                label: canon,
+                fb: fb,
+                openAttr: 'data-hero-open="' + encodeURIComponent(canon) + '"',
+                clickClass: 'event-slide-filter-token-chip--clickable-hero',
+                title: 'Open ' + R.escapeHtmlAttr(canon) + ' in Heroes archive'
+            });
         }
         if (k === 'npc') {
             var nk = resolveNpcImageKey(t);
-            var srcN = 'src/assets/images/Filters/NPCs/' + encodeURIComponent(nk || t) + '.png';
-            var dataNpc = encodeURIComponent(nk || t);
-            return (
-                '<img class="event-slide-filter-token-img event-slide-filter-token-img--npcs event-slide-filter-token-img--clickable-npc event-slide-bio-connections__portrait" ' +
-                'data-npc-open="' + dataNpc + '" role="button" tabindex="0" ' +
-                'src="' + srcN + '" alt="" title="Open ' + R.escapeHtmlAttr(nk || t) +
-                ' in NPCs archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
-                fb + '\';" />'
-            );
+            var npcLabel = nk || t;
+            return connectionChipShellHtml({
+                src: 'src/assets/images/Filters/NPCs/' + encodeURIComponent(npcLabel) + '.png',
+                label: npcLabel,
+                fb: fb,
+                openAttr: 'data-npc-open="' + encodeURIComponent(npcLabel) + '"',
+                clickClass: 'event-slide-filter-token-chip--clickable-npc',
+                title: 'Open ' + R.escapeHtmlAttr(npcLabel) + ' in NPCs archive'
+            });
         }
         var ff = resolveFactionImageFilename(t);
         if (!ff) {
-            return (
-                '<img class="event-slide-bio-connections__portrait event-slide-bio-connections__portrait--fallback" src="' +
-                fbPath +
-                '" alt="" width="52" height="52" decoding="async" draggable="false" />'
-            );
+            return connectionChipShellHtml({
+                src: fbPath,
+                label: t,
+                fb: fb,
+                isStatic: true
+            });
         }
-        var srcF = 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '/Default.png';
-        var dataFac = encodeURIComponent(t);
-        return (
-            '<img class="event-slide-filter-token-img event-slide-filter-token-img--factions event-slide-filter-token-img--clickable-faction event-slide-bio-connections__portrait" ' +
-            'data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '" ' +
-            'data-faction-open="' + dataFac + '" role="button" tabindex="0" ' +
-            'src="' + srcF + '" alt="" title="Open ' + R.escapeHtmlAttr(t) +
-            ' in Factions archive" width="52" height="52" decoding="async" draggable="false" onerror="this.onerror=null;this.src=\'' +
-            fb + '\';" />'
-        );
+        return connectionChipShellHtml({
+            src: 'src/assets/images/Filters/Factions/' + encodeURIComponent(ff) + '/Default.png',
+            label: t,
+            fb: fb,
+            openAttr: 'data-faction-open="' + encodeURIComponent(t) + '"',
+            clickClass: 'event-slide-filter-token-chip--clickable-faction',
+            portraitAttrs:
+                ' data-bio-portrait-category="factions" data-bio-portrait-key="' + R.escapeHtmlAttr(ff) + '"',
+            title: 'Open ' + R.escapeHtmlAttr(t) + ' in Factions archive'
+        });
     }
 
     function normalizeBioCodexKind(k) {
@@ -462,7 +504,12 @@
             var inner = createBioConnectionsSlideHtml(viewEv, arch);
             el.innerHTML = inner;
             sec.style.display = inner ? 'block' : 'none';
-            if (inner) wireStoryFilterSectionBioArchiveNav(sec);
+            if (inner) {
+                wireStoryFilterSectionBioArchiveNav(sec);
+                if (window.__BioChipPortraitBackground && typeof window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds === 'function') {
+                    void window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds(sec);
+                }
+            }
         }
         var svc = typeof window !== 'undefined' ? window.CodexConnectionService : null;
         if (svc && typeof svc.resolveConnectionsForArchiveEntry === 'function') {

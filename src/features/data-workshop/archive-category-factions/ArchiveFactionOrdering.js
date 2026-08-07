@@ -10,6 +10,7 @@ const FACTION_ARCHIVE_TYPE_ORDER = [
   "Criminal Groups",
   "Military Initiatives",
   "Research Institutions",
+  "Independent Coalitions",
 ];
 
 /** Lowercase collapsed whitespace → exact label from FACTION_ARCHIVE_TYPE_ORDER */
@@ -26,6 +27,8 @@ const FACTION_ARCHIVE_TYPE_ALIASES = {
   "research institutions": "Research Institutions",
   "research insitrutions": "Research Institutions",
   "research insitutions": "Research Institutions",
+  "independent coalition": "Independent Coalitions",
+  "independent coalitions": "Independent Coalitions",
 };
 
 /**

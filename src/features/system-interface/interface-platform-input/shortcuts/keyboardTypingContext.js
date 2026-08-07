@@ -61,3 +61,13 @@ export function escapeOkWhileTypingInTarget(target) {
 export function modifiersActive(e) {
     return e.ctrlKey || e.metaKey || e.altKey;
 }
+
+/**
+ * True only while an event slide (or dialogue theater slide) is in inline-edit
+ * mode — class toggled by start/save/cancel edit. Hotkeys stay active otherwise.
+ */
+export function isInlineEditingBlockingShortcuts() {
+    if (typeof document === 'undefined') return false;
+    const slide = document.getElementById('eventSlide');
+    return !!(slide && slide.classList.contains('event-slide--inline-editing'));
+}

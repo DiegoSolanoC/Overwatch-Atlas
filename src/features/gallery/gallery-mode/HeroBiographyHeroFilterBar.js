@@ -20,12 +20,7 @@ import {
 } from './heroBiographySelection.js';
 import { loadBioFilterManifestEntries } from './loadBioFilterManifest.js';
 import {
-    buildFactionBiographyTypeGroups,
-    FACTION_BIOGRAPHY_SUBROW_LAYOUT,
-    FACTION_BIOGRAPHY_TYPE_ORDER,
-    factionBiographyColumnClassSlug,
-    headingLabelForFactionBiographyColumn,
-    labelForFactionBiographySubgroup,
+    buildFactionBiographyFlatChipRowSegments,
 } from './heroBiographyFactionLayout.js';
 import {
     buildHeroBiographyRoleGroups,
@@ -90,6 +85,7 @@ function appendEntityChips(chipsRow, category, items) {
 
 /**
  * Subgroup caption with horizontal rules that break for the text (heroes / factions / NPCs).
+ * Empty labels still reserve the label band so every category board keeps the same height.
  * @param {string} labelText
  * @param {string} [extraClass]
  * @returns {HTMLElement}
@@ -100,6 +96,7 @@ function buildSubgroupLabelWithLines(labelText, extraClass = '') {
     if (extraClass) label.classList.add(extraClass);
     if (!labelText) {
         label.classList.add('gallery-hero-filters__subrole-label--hidden');
+        label.setAttribute('aria-hidden', 'true');
         return label;
     }
 
@@ -117,6 +114,56 @@ function buildSubgroupLabelWithLines(labelText, extraClass = '') {
 
     label.append(lineStart, text, lineEnd);
     return label;
+}
+
+/**
+ * Shared Select File board chrome — heading band + body (columns or flat rows).
+ * @param {'columns'|'flat'} variant
+ * @param {string} ariaLabel
+ * @returns {{ board: HTMLElement, body: HTMLElement }}
+ */
+function buildFilterBoard(variant, ariaLabel) {
+    const board = document.createElement('div');
+    board.className = `gallery-hero-filters__board gallery-hero-filters__board--${variant}`;
+    board.setAttribute('aria-label', ariaLabel);
+
+    if (variant === 'flat') {
+        const heading = document.createElement('div');
+        heading.className =
+            'gallery-hero-filters__role-heading gallery-hero-filters__role-heading--spacer';
+        heading.setAttribute('aria-hidden', 'true');
+        heading.textContent = '\u00a0';
+        board.appendChild(heading);
+    }
+
+    const body = document.createElement('div');
+    body.className =
+        variant === 'columns'
+            ? 'gallery-hero-filters__roles'
+            : 'gallery-hero-filters__board-rows';
+    board.appendChild(body);
+    return { board, body };
+}
+
+/**
+ * Flat board subrow (NPCs / Locations) — same subgroup + label pattern as hero columns.
+ * @param {'top'|'bottom'} rowKey
+ * @param {Array<{ key: string, label: string, items: Array<string|{ filename: string, displayName?: string }> }>} segments
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @returns {HTMLElement | null}
+ */
+function buildBandedFlatSubrow(rowKey, segments, category) {
+    const row = document.createElement('div');
+    row.className = `gallery-hero-filters__subrow gallery-hero-filters__subrow--${rowKey}`;
+
+    for (const segment of segments) {
+        if (!segment.items?.length) continue;
+        row.appendChild(
+            buildSubgroupChipGroup(segment.key, segment.label, category, segment.items),
+        );
+    }
+
+    return row.childElementCount > 0 ? row : null;
 }
 
 /**
@@ -204,134 +251,67 @@ function buildRoleColumn(role, roleGroup) {
 }
 
 /**
- * @param {'top'|'bottom'} rowKey
- * @param {string} typeLabel
- * @param {Record<string, Array<{ filename: string, displayName?: string }>>} typeGroup
- * @returns {HTMLElement | null}
- */
-function buildFactionSubroleRow(rowKey, typeLabel, typeGroup) {
-    const row = document.createElement('div');
-    row.className = `gallery-hero-filters__subrow gallery-hero-filters__subrow--${rowKey}`;
-
-    const subgroups = FACTION_BIOGRAPHY_SUBROW_LAYOUT[typeLabel][rowKey];
-    for (const subgroupKey of subgroups) {
-        const entries = typeGroup[subgroupKey] || [];
-        if (entries.length === 0) continue;
-        row.appendChild(
-            buildSubgroupChipGroup(
-                subgroupKey,
-                labelForFactionBiographySubgroup(subgroupKey),
-                'factions',
-                entries,
-            ),
-        );
-    }
-
-    return row.childElementCount > 0 ? row : null;
-}
-
-/**
- * @param {string} typeLabel
- * @param {Record<string, Array<{ filename: string, displayName?: string }>>} typeGroup
- * @returns {HTMLElement}
- */
-function buildFactionTypeColumn(typeLabel, typeGroup) {
-    const slug = factionBiographyColumnClassSlug(typeLabel);
-    const column = document.createElement('section');
-    column.className = `gallery-hero-filters__role-column gallery-hero-filters__role-column--${slug}`;
-    column.setAttribute('aria-label', typeLabel);
-
-    const heading = document.createElement('h3');
-    heading.className = 'gallery-hero-filters__role-heading';
-    heading.textContent = headingLabelForFactionBiographyColumn(typeLabel);
-
-    column.appendChild(heading);
-
-    const topRow = buildFactionSubroleRow('top', typeLabel, typeGroup);
-    const bottomRow = buildFactionSubroleRow('bottom', typeLabel, typeGroup);
-    if (topRow) column.appendChild(topRow);
-    if (bottomRow) column.appendChild(bottomRow);
-
-    return column;
-}
-
-/**
  * @param {HTMLElement} container
  */
 async function renderHeroRoleLayout(container) {
     const manifestHeroes = await loadBioFilterManifestEntries('heroes');
     const roleGroups = await buildHeroBiographyRoleGroups(manifestHeroes);
 
-    const rolesRow = document.createElement('div');
-    rolesRow.className = 'gallery-hero-filters__roles';
+    const { board, body: rolesRow } = buildFilterBoard('columns', 'Heroes');
 
     for (const role of HERO_BIOGRAPHY_ROLE_ORDER) {
         rolesRow.appendChild(buildRoleColumn(role, roleGroups[role]));
     }
 
-    container.appendChild(rolesRow);
+    container.appendChild(board);
     preloadFilterImages(manifestHeroes, 'heroes', FILTER_IMAGE_PATHS.HEROES);
 }
 
 /**
+ * @param {import('./heroBiographyFactionLayout.js').FactionBiographyChipSegment[]} segments
+ * @returns {Array<{ key: string, label: string, items: Array<{ filename: string, displayName?: string }> }>}
+ */
+function factionSegmentsToBanded(segments) {
+    return (segments || [])
+        .filter((s) => s.chips?.length)
+        .map((s) => ({
+            key: s.key,
+            label: s.label,
+            items: s.chips,
+        }));
+}
+
+/**
+ * Factions use the same flat two-row board as NPCs (labeled type segments).
  * @param {HTMLElement} container
  */
 async function renderFactionTypeLayout(container) {
     const manifestFactions = await loadBioFilterManifestEntries('factions');
-    const { groups, other } = await buildFactionBiographyTypeGroups(manifestFactions);
+    const { top, bottom } = await buildFactionBiographyFlatChipRowSegments(manifestFactions);
 
-    const typesRow = document.createElement('div');
-    typesRow.className =
-        'gallery-hero-filters__roles gallery-hero-filters__roles--factions';
+    const { board, body } = buildFilterBoard('flat', 'Factions');
 
-    for (const typeLabel of FACTION_BIOGRAPHY_TYPE_ORDER) {
-        typesRow.appendChild(buildFactionTypeColumn(typeLabel, groups[typeLabel]));
-    }
+    const topRow = buildBandedFlatSubrow('top', factionSegmentsToBanded(top), 'factions');
+    const bottomRow = buildBandedFlatSubrow('bottom', factionSegmentsToBanded(bottom), 'factions');
+    if (topRow) body.appendChild(topRow);
+    if (bottomRow) body.appendChild(bottomRow);
 
-    container.appendChild(typesRow);
-
-    if (other.length > 0) {
-        const otherWrap = document.createElement('div');
-        otherWrap.className = 'gallery-hero-filters__faction-other';
-        const otherLabel = buildSubgroupLabelWithLines(
-            'Other',
-            'gallery-hero-filters__faction-other-label',
-        );
-        const chipsRow = document.createElement('div');
-        chipsRow.className =
-            'gallery-hero-filters__chips-row gallery-hero-filters__chips-row--flat';
-        chipsRow.setAttribute('role', 'list');
-        appendEntityChips(chipsRow, 'factions', other);
-        otherWrap.append(otherLabel, chipsRow);
-        container.appendChild(otherWrap);
-    }
-
+    container.appendChild(board);
     preloadFilterImages(manifestFactions, 'factions', FILTER_IMAGE_PATHS.FACTIONS);
 }
 
 /**
  * @param {import('./heroBiographyNpcLayout.js').NpcBiographyChipSegment[]} segments
- * @param {string} ariaLabel
- * @returns {HTMLElement | null}
+ * @returns {Array<{ key: string, label: string, items: string[] }>}
  */
-function buildNpcFlatBiographyRow(segments, ariaLabel) {
-    const row = document.createElement('div');
-    row.className = 'gallery-hero-filters__npc-flat-row';
-    row.setAttribute('aria-label', ariaLabel);
-
-    for (const segment of segments) {
-        if (!segment.chips?.length) continue;
-        row.appendChild(
-            buildSubgroupChipGroup(
-                segment.category,
-                labelForNpcBiographyCategory(segment.category),
-                'npcs',
-                segment.chips,
-            ),
-        );
-    }
-
-    return row.childElementCount > 0 ? row : null;
+function npcSegmentsToBanded(segments) {
+    return (segments || [])
+        .filter((s) => s.chips?.length)
+        .map((s) => ({
+            key: s.category,
+            label: labelForNpcBiographyCategory(s.category),
+            items: s.chips,
+        }));
 }
 
 /**
@@ -341,21 +321,19 @@ async function renderNpcCategoryLayout(container) {
     const manifestNpcs = await loadBioFilterManifestEntries('npcs');
     const { top, bottom } = await buildNpcBiographyFlatChipRowSegments(manifestNpcs);
 
-    const flat = document.createElement('div');
-    flat.className = 'gallery-hero-filters__npc-flat';
-    flat.setAttribute('aria-label', 'NPCs');
+    const { board, body } = buildFilterBoard('flat', 'NPCs');
 
-    const topRow = buildNpcFlatBiographyRow(top, 'NPCs row 1');
-    const bottomRow = buildNpcFlatBiographyRow(bottom, 'NPCs row 2');
-    if (topRow) flat.appendChild(topRow);
-    if (bottomRow) flat.appendChild(bottomRow);
+    const topRow = buildBandedFlatSubrow('top', npcSegmentsToBanded(top), 'npcs');
+    const bottomRow = buildBandedFlatSubrow('bottom', npcSegmentsToBanded(bottom), 'npcs');
+    if (topRow) body.appendChild(topRow);
+    if (bottomRow) body.appendChild(bottomRow);
 
-    container.appendChild(flat);
-
+    container.appendChild(board);
     preloadFilterImages(manifestNpcs, 'npcs', FILTER_IMAGE_PATHS.NPCS);
 }
 
 /**
+ * Locations (and fallbacks) — same flat two-row board as NPCs.
  * @param {HTMLElement} container
  * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
  */
@@ -364,27 +342,40 @@ async function renderFlatChipGrid(container, category) {
     const items = await loadBioFilterManifestEntries(cat);
 
     if (!items.length) {
+        const { board, body } = buildFilterBoard('flat', BIO_BIOGRAPHY_CATEGORY_LABELS[cat]);
         const empty = document.createElement('p');
         empty.className = 'gallery-hero-filters__category-empty';
         empty.textContent =
             cat === 'locations'
                 ? 'Location biographies are not available yet.'
                 : `No ${BIO_BIOGRAPHY_CATEGORY_LABELS[cat].toLowerCase()} in the manifest.`;
-        container.appendChild(empty);
+        body.appendChild(empty);
+        container.appendChild(board);
         return;
     }
 
-    const grid = document.createElement('div');
-    grid.className = 'gallery-hero-filters__flat-grid';
-    grid.setAttribute('role', 'list');
-    grid.setAttribute('aria-label', BIO_BIOGRAPHY_CATEGORY_LABELS[cat]);
+    const mid = Math.ceil(items.length / 2);
+    const topItems = items.slice(0, mid);
+    const bottomItems = items.slice(mid);
 
-    const chipsRow = document.createElement('div');
-    chipsRow.className = 'gallery-hero-filters__chips-row gallery-hero-filters__chips-row--flat';
-    chipsRow.style.setProperty('--chip-count', String(items.length));
-    appendEntityChips(chipsRow, cat, items);
-    grid.appendChild(chipsRow);
-    container.appendChild(grid);
+    const { board, body } = buildFilterBoard('flat', BIO_BIOGRAPHY_CATEGORY_LABELS[cat]);
+    const topRow = buildBandedFlatSubrow(
+        'top',
+        topItems.length
+            ? [{ key: `${cat}-top`, label: BIO_BIOGRAPHY_CATEGORY_LABELS[cat], items: topItems }]
+            : [],
+        cat,
+    );
+    const bottomRow = buildBandedFlatSubrow(
+        'bottom',
+        bottomItems.length
+            ? [{ key: `${cat}-bottom`, label: '', items: bottomItems }]
+            : [],
+        cat,
+    );
+    if (topRow) body.appendChild(topRow);
+    if (bottomRow) body.appendChild(bottomRow);
+    container.appendChild(board);
 
     const folder =
         cat === 'factions'

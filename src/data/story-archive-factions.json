@@ -173,7 +173,7 @@
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "factionType": "Research Institutions"
+      "factionType": "Independent Coalitions"
     },
     {
       "name": "Lucheng Interstellar",
@@ -187,7 +187,7 @@
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "factionType": "Research Institutions"
+      "factionType": "Independent Coalitions"
     },
     {
       "name": "Pacific Energy Solutions",
@@ -201,14 +201,14 @@
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "factionType": "Research Institutions"
+      "factionType": "Independent Coalitions"
     },
     {
       "name": "Shambali Order",
       "description": "",
       "relevantLocations": [],
       "connections": [],
-      "factionType": "Research Institutions"
+      "factionType": "Independent Coalitions"
     },
     {
       "name": "Lumérico Incorporated",
@@ -250,7 +250,7 @@
       "description": "No description available.",
       "relevantLocations": [],
       "connections": [],
-      "factionType": "Research Institutions"
+      "factionType": "Independent Coalitions"
     },
     {
       "name": "Blackwatch",

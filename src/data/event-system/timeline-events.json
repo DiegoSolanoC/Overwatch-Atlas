@@ -6271,6 +6271,39 @@
       ]
     },
     {
+      "name": "Yuna Lee is Born",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2053,
+      "yearEnd": 2057,
+      "eraName": "The Golden Age",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": "Yuna Lee is Born"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "South Korea",
+          "reasoning": "Yuna Lee is Born"
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Vancouver Floods",
       "locationType": "earth",
       "cityDisplayName": "British Columbia, Canada",
@@ -12398,7 +12431,7 @@
         {
           "locationName": "",
           "country": "Overlord,",
-          "reasoning": "Other well known professional players"
+          "reasoning": "Other well known professional player"
         },
         {
           "locationName": "",
@@ -20284,7 +20317,15 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
       "headlines": [],
       "sources": []
     },

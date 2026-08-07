@@ -21,6 +21,7 @@ import {
     normalizeCodexConnectionMetaList,
     resolveCodexConnectionsForSubject,
 } from './CodexConnectionMeta.js';
+import { migrateNumbaniCountryNodesToFaction } from '../codex-data/migration/CodexPayloadMigration.js';
 import { invalidateCodexFilterDerivedCache } from '../codex-nodes/filters/CodexNodeFilterMatch.js';
 import { redrawCodexEdges } from '../codex-node-drawing/redraw/CodexEdgeRedraw.js';
 import { invalidateCodexTimelineGateStructureCache } from '../codex-bio-archive-sync/timeline/codexBioConnectionDockTimeline.js';
@@ -56,7 +57,8 @@ function parseCodexPayloadRaw(raw) {
         }
         const connections = normalizeCodexConnectionMetaList(parsed.connections);
         const v = typeof parsed.v === 'number' ? parsed.v : CODEX_SAVE_VERSION;
-        return { v, nodes, edges, connections };
+        const migrated = migrateNumbaniCountryNodesToFaction(nodes);
+        return { v, nodes: migrated.nodes, edges, connections };
     } catch (_) {
         return null;
     }
@@ -128,9 +130,14 @@ function payloadFromSession() {
     if (!s.root || !Array.isArray(s.codexAllNodes) || s.codexAllNodes.length === 0) {
         return null;
     }
+    const migrated = migrateNumbaniCountryNodesToFaction(s.codexAllNodes);
+    if (migrated.changed) {
+        s.codexAllNodes = migrated.nodes;
+        s.codexLayoutDirty = true;
+    }
     return {
         v: CODEX_SAVE_VERSION,
-        nodes: s.codexAllNodes,
+        nodes: migrated.nodes,
         edges: s.codexEdges || [],
         connections: normalizeCodexConnectionMetaList(s.codexConnections || []),
     };

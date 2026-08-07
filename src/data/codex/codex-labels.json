@@ -8834,12 +8834,13 @@
     },
     {
       "id": "cn-1780423436001-fwblc867",
-      "kind": "country",
-      "countryKey": "Numbani",
+      "kind": "faction",
       "x": 13218.324731023675,
       "y": 8591.771004647862,
       "scale": 3,
-      "bgColor": null
+      "bgColor": "#a8adb4",
+      "factionFilename": "Numbani City of Harmony",
+      "factionDisplay": "Numbani City of Harmony"
     },
     {
       "id": "cn-1780423709135-92aegnmr",
@@ -16170,6 +16171,138 @@
       "subjectName": "Shion",
       "linkedKind": "npc",
       "linkedName": "Pompamoto"
+    },
+    {
+      "kind": "hero",
+      "name": "Mauga",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Deep Sea Raiders",
+      "linkedKind": "hero",
+      "linkedName": "Mauga"
+    },
+    {
+      "kind": "faction",
+      "name": "Caribbean Coalition",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Deep Sea Raiders",
+      "linkedKind": "faction",
+      "linkedName": "Caribbean Coalition"
+    },
+    {
+      "kind": "faction",
+      "name": "Pacific Energy Solutions",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Deep Sea Raiders",
+      "linkedKind": "faction",
+      "linkedName": "Pacific Energy Solutions"
+    },
+    {
+      "kind": "faction",
+      "name": "Talon Empire",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Deep Sea Raiders",
+      "linkedKind": "faction",
+      "linkedName": "Talon Empire"
+    },
+    {
+      "kind": "hero",
+      "name": "Domina",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "hero",
+      "linkedName": "Domina"
+    },
+    {
+      "kind": "hero",
+      "name": "Vendetta",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "hero",
+      "linkedName": "Vendetta"
+    },
+    {
+      "kind": "faction",
+      "name": "Talon Empire",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "faction",
+      "linkedName": "Talon Empire"
+    },
+    {
+      "kind": "npc",
+      "name": "Carmilla",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Carmilla"
+    },
+    {
+      "kind": "npc",
+      "name": "Magnus",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Magnus"
+    },
+    {
+      "kind": "npc",
+      "name": "Maximus",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Maximus"
+    },
+    {
+      "kind": "npc",
+      "name": "Titus",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Titus"
+    },
+    {
+      "kind": "npc",
+      "name": "Zephyrus",
+      "reasoningSubjectToLinked": "",
+      "reasoningLinkedToSubject": "",
+      "thisEntryLane": "A",
+      "subjectKind": "faction",
+      "subjectName": "Colloseo Gladiatori",
+      "linkedKind": "npc",
+      "linkedName": "Zephyrus"
     }
   ]
 }

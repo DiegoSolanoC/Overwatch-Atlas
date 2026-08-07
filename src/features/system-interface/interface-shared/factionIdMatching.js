@@ -36,7 +36,13 @@
         yokai: 'yokai gang',
         /* Legacy names → La Coterie (manifest filename La Coterie.png) */
         'livre tournois': 'la coterie',
-        'max\'s vault': 'la coterie'
+        'max\'s vault': 'la coterie',
+        /* Short label → Talon Empire (merged; bare "Talon" archive row removed) */
+        talon: 'talon empire',
+        /* City-state also used as country token → dedicated faction filter */
+        numbani: 'numbani city of harmony',
+        'city of harmony': 'numbani city of harmony',
+        'city state of numbani': 'numbani city of harmony'
     };
 
     function normalizeFactionMatchKey(raw) {

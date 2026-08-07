@@ -284,6 +284,9 @@
         sec.innerHTML = parts.join('');
         sec.style.display = parts.length ? 'block' : 'none';
         B.wireStoryFilterSectionBioArchiveNav(sec);
+        if (window.__BioChipPortraitBackground && typeof window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds === 'function') {
+            void window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds(sec);
+        }
         H.scheduleApplyRelevancyRowFilterHighlight();
     }
 

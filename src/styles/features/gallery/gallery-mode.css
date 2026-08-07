@@ -133,22 +133,16 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 }
 
 body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
-    overflow: hidden;
-    border-radius: 10px;
-    align-items: flex-end;
+    overflow: visible;
+    border-radius: 0;
+    align-items: center;
 }
 
-/* Match filter-chip framing: fill frame upward (not letterboxed contain) */
-body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
-body:has(#atlasGalleryHost)
-    .gallery-mode__archive-connections-body
-    .event-slide-filter-token-img.event-slide-bio-connections__portrait {
-    width: clamp(68px, 5.8vw, 92px);
-    height: clamp(80px, 7.2vw, 108px);
-    max-width: none;
-    max-height: none;
-    object-fit: cover;
-    object-position: center top;
+/* Connection chips share gallery bio chip sizing */
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body {
+    --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
+    --hero-bio-chip-max-h: clamp(72px, 7.2vw, 100px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
 }
 
 body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
@@ -813,9 +807,14 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     padding: 6px 2px;
 }
 
-body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event-slide-bio-conn-row__portrait-wrap .event-slide-bio-connections__portrait {
-    width: clamp(48px, 4.5vw, 56px);
-    height: clamp(48px, 4.5vw, 56px);
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event-slide-bio-conn-row__portrait-wrap .event-slide-filter-token-chip-wrap,
+body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event-slide-bio-conn-row__portrait-wrap .event-slide-bio-connections__chip {
+    --hero-bio-chip-rim: clamp(3px, 0.35vw, 5px);
+    --hero-bio-chip-max-h: clamp(52px, 5vw, 64px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
+    width: var(--hero-bio-chip-max-w);
+    max-width: var(--hero-bio-chip-max-w);
+    height: var(--hero-bio-chip-max-h);
 }
 
 body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event-slide-bio-conn-row__arrow-input {
@@ -840,20 +839,16 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-edit-mount .event
     gap: 8px;
 }
 
-.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
-.gallery-mode__archive-connections-body .event-slide-filter-token-img.event-slide-bio-connections__portrait {
-    width: clamp(60px, 5vw, 80px);
-    height: clamp(72px, 6.5vw, 96px);
-    max-width: none;
-    max-height: none;
-    object-fit: cover;
-    object-position: center top;
+.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
+    overflow: visible;
+    border-radius: 0;
+    align-items: center;
 }
 
-.gallery-mode__archive-connections-body .event-slide-bio-connections__portrait-col {
-    overflow: hidden;
-    border-radius: 10px;
-    align-items: flex-end;
+.gallery-mode__archive-connections-body {
+    --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
+    --hero-bio-chip-max-h: clamp(64px, 6.5vw, 92px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
 }
 
 .gallery-mode__archive-connections-body .event-slide-bio-connections__arrow-text {
@@ -1429,8 +1424,10 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 .gallery-hero-filters {
     position: relative;
     z-index: 4;
+    /* Filter icons are square; width matches the image area inside top/bottom rims */
+    --hero-bio-chip-rim: clamp(5px, 0.48vw, 8px);
     --hero-bio-chip-max-h: clamp(80px, 6.75vw, 104px);
-    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
     --hero-bio-chip-h: var(--hero-bio-chip-max-h);
     --hero-bio-chip-w: var(--hero-bio-chip-max-w);
     --hero-bio-label-band: clamp(17px, 1.35vw, 22px);
@@ -1577,16 +1574,65 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 .gallery-hero-filters__content {
     position: relative;
     z-index: 1;
-    min-height: 0;
+    /* Lock footprint so Heroes / Factions / NPCs / Locations don't jump when switching tabs */
+    --gallery-filter-board-heading-h: calc(
+        clamp(1.35rem, 2.8vw, 2rem) * 0.95 + 10px
+    );
+    --gallery-filter-board-row-gap: clamp(6px, 0.85vh, 12px);
+    --gallery-filter-group-gap: clamp(16px, 1.35vw, 26px);
+    min-height: calc(
+        var(--gallery-filter-board-heading-h)
+        + (var(--hero-bio-chip-max-h) + var(--hero-bio-label-band) + clamp(2px, 0.3vh, 5px)) * 2
+        + var(--gallery-filter-board-row-gap)
+        + clamp(4px, 0.55vh, 8px)
+    );
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.gallery-hero-filters__flat-grid {
+.gallery-hero-filters__board {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--gallery-filter-board-row-gap);
     width: 100%;
     box-sizing: border-box;
-    padding: 0 clamp(4px, 0.6vw, 12px) clamp(4px, 0.5vh, 8px);
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
+.gallery-hero-filters__board-rows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gallery-filter-board-row-gap);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gallery-hero-filters__board--flat .gallery-hero-filters__subrow {
+    justify-content: center;
+    gap: var(--gallery-filter-group-gap);
+    width: 100%;
+}
+
+.gallery-hero-filters__board--flat .gallery-hero-filters__subrole-group {
+    flex: 0 0 auto;
+}
+
+.gallery-hero-filters__board--flat .gallery-hero-filters__chips-row {
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Shared wrap utility (dialogue path pickers + legacy flat strips) */
 .gallery-hero-filters__chips-row--flat {
     display: flex;
     flex-wrap: wrap;
@@ -1619,7 +1665,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     flex-direction: row;
     justify-content: stretch;
     align-items: flex-start;
-    gap: clamp(10px, 1.35vw, 24px);
+    gap: clamp(12px, 1.35vw, 22px);
     width: 100%;
     max-width: none;
     box-sizing: border-box;
@@ -1628,136 +1674,19 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         transform 0.58s cubic-bezier(0.32, 0.72, 0.25, 1);
 }
 
-.gallery-hero-filters__roles--factions {
-    gap: clamp(6px, 0.85vw, 14px);
-}
-
-.gallery-hero-filters__roles--factions .gallery-hero-filters__role-heading {
-    font-size: clamp(1.05rem, 1.85vw, 1.45rem);
-    letter-spacing: 0.04em;
-}
-
-.gallery-hero-filters__roles--factions .gallery-hero-filters__subrow--top {
-    margin-bottom: clamp(6px, 0.75vh, 10px);
-}
-
-
-.gallery-hero-filters__roles--npcs {
-    margin-bottom: clamp(2px, 0.3vh, 5px);
-    gap: clamp(2px, 0.3vw, 5px);
-}
-
-.gallery-hero-filters__roles--npcs:last-of-type {
-    margin-bottom: 0;
-}
-
-.gallery-hero-filters__roles--npcs .gallery-hero-filters__role-column {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 0 clamp(1px, 0.15vw, 3px);
-}
-
-.gallery-hero-filters__roles--npcs .gallery-hero-filters__role-heading {
-    font-size: clamp(0.82rem, 1.25vw, 1.05rem);
-    letter-spacing: 0.02em;
-    padding-bottom: 2px;
-    margin-bottom: 0;
-}
-
-.gallery-hero-filters__roles--npcs .gallery-hero-filters__subrow--top {
-    margin-bottom: clamp(2px, 0.3vh, 4px);
-}
-
-.gallery-hero-filters__roles--npcs .gallery-hero-filters__subrow {
-    gap: clamp(2px, 0.25vw, 4px);
-}
-
-.gallery-hero-filters__roles--npcs .gallery-hero-filters__chips-row {
-    gap: clamp(2px, 0.25vw, 4px);
-}
-
-/* NPCs — centered strip: 31 + 32 chips with subgroup labels under each category block */
-.gallery-hero-filters__npc-flat {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(3px, 0.4vh, 6px);
-    width: 100%;
-    max-width: none;
-    box-sizing: border-box;
-    padding: 0 clamp(4px, 0.45vw, 10px) clamp(4px, 0.55vh, 10px);
-}
-
-.gallery-hero-filters__npc-flat-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: clamp(12px, 1vw, 20px);
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.gallery-hero-filters__npc-flat-row .gallery-hero-filters__subrole-group {
-    flex: 0 0 auto;
-    min-width: 0;
-}
-
-.gallery-hero-filters__npc-flat-row .gallery-hero-filters__chips-row {
-    justify-content: center;
-    width: max-content;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.gallery-hero-filters__npc-flat-row:last-child {
-    margin-bottom: clamp(2px, 0.35vh, 6px);
-}
-
+/* Invisible label band still reserves height so columns align across categories */
 .gallery-hero-filters__subrole-label--hidden {
     visibility: hidden;
-    height: 0;
-    margin: 0;
+    min-height: calc(var(--hero-bio-label-band) + clamp(1px, 0.2vh, 3px));
+    margin: calc(var(--hero-bio-label-band) * 0.35 + clamp(1px, 0.2vh, 3px)) 0 0;
     padding: 0;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .gallery-hero-filters__subrole-label--hidden .gallery-hero-filters__subrole-label-line,
 .gallery-hero-filters__subrole-label--hidden .gallery-hero-filters__subrole-label-text {
     display: none;
-}
-
-.gallery-hero-filters__faction-other {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: clamp(8px, 1vh, 14px);
-    padding: 0 clamp(6px, 0.8vw, 12px);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.gallery-hero-filters__faction-other-label {
-    margin: 0 0 clamp(4px, 0.45vh, 6px);
-    width: max-content;
-    max-width: 100%;
-    align-self: center;
-}
-
-.gallery-hero-filters__faction-other-label .gallery-hero-filters__subrole-label-text {
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.gallery-hero-filters__faction-other .gallery-hero-filters__chips-row {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: max-content;
-    max-width: 100%;
 }
 
 .gallery-hero-filters__role-column {
@@ -1766,13 +1695,13 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: clamp(8px, 1vh, 14px);
+    gap: var(--gallery-filter-board-row-gap);
     overflow: visible;
 }
 
 .gallery-hero-filters__role-heading {
-    margin: 0 0 4px;
-    padding: 0 4px 6px;
+    margin: 0 0 2px;
+    padding: 0 4px 4px;
     text-align: center;
     font-family: 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif;
     font-style: oblique;
@@ -1784,6 +1713,17 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     color: rgba(255, 255, 255, 0.94);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-sizing: border-box;
+    flex: 0 0 auto;
+}
+
+/* Flat boards (Factions / NPCs / Locations) reserve the same heading band as column layouts */
+.gallery-hero-filters__role-heading--spacer {
+    visibility: hidden;
+    color: transparent;
+    text-shadow: none;
+    pointer-events: none;
+    user-select: none;
 }
 
 .gallery-hero-filters__subrow {
@@ -1792,26 +1732,26 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    gap: clamp(6px, 0.65vw, 12px);
+    gap: var(--gallery-filter-group-gap);
     width: 100%;
     position: relative;
     overflow: visible;
-    margin-bottom: clamp(2px, 0.35vh, 6px);
+    margin-bottom: 0;
 }
 
 .gallery-hero-filters__subrow--top {
-    margin-bottom: clamp(4px, 0.65vh, 10px);
+    margin-bottom: 0;
 }
 
 .gallery-hero-filters__subrow--bottom {
     z-index: 2;
 }
 
-/* Hero biography — a little air between subrole category blocks */
+/* Hero biography — slight air between subrole blocks (still tighter than before) */
 .gallery-hero-filters__role-column--damage .gallery-hero-filters__subrow,
 .gallery-hero-filters__role-column--tank .gallery-hero-filters__subrow,
 .gallery-hero-filters__role-column--support .gallery-hero-filters__subrow {
-    gap: clamp(14px, 1.1vw, 22px);
+    gap: clamp(18px, 1.4vw, 28px);
 }
 
 .gallery-hero-filters__subrole-group {
@@ -1874,6 +1814,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     max-width: 100%;
     align-self: center;
     box-sizing: border-box;
+    overflow: visible;
 }
 
 .gallery-hero-filters__chip-wrap {
@@ -1924,7 +1865,6 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 }
 
 .gallery-hero-filters__chip.filter-btn {
-    --hero-bio-chip-rim: clamp(5px, 0.48vw, 8px);
     --hero-bio-hover-scale: 1.1;
     position: relative;
     z-index: 1;
@@ -1967,16 +1907,22 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     border-right: 0;
     border-radius: 10px;
     overflow: hidden;
-    background: transparent !important;
+    /* Heroes/NPCs default black wash; factions override via --bio-chip-portrait-bg */
+    background: var(--bio-chip-portrait-bg, rgba(0, 0, 0, 0.5)) !important;
     box-sizing: border-box;
     line-height: 0;
     transition:
         border-color 0.18s ease,
         border-bottom-width 0.18s ease,
-        border-radius 0.18s ease;
+        border-radius 0.18s ease,
+        background-color 0.18s ease;
 }
 
-.gallery-hero-filters__chip.filter-btn.selected .filter-image-container,
+.gallery-hero-filters__chip.filter-btn.selected .filter-image-container {
+    background: var(--bio-chip-portrait-bg, rgba(0, 0, 0, 0.5)) !important;
+    border-color: rgba(255, 255, 255, 0.93) !important;
+}
+
 .gallery-hero-filters__chip.filter-btn.selected .filter-label {
     background: transparent !important;
     border-color: rgba(255, 255, 255, 0.93) !important;
@@ -1988,8 +1934,9 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     height: 100%;
     margin: 0;
     padding: 0;
+    /* Square assets in a square content box (width = height − 2×rim) */
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
     border-radius: 0;
     vertical-align: top;
 }
@@ -2005,7 +1952,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     max-height: none;
     flex: none !important;
     margin: 0 !important;
-    padding: 0 2px;
+    padding: 0 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2017,8 +1964,9 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     color: #0f2840;
     opacity: 0;
     visibility: hidden;
-    overflow: hidden;
+    overflow: visible;
     pointer-events: none;
+    white-space: nowrap;
     transition:
         opacity 0.16s ease,
         visibility 0.16s ease;
@@ -2027,8 +1975,8 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
 .gallery-hero-filters__chip.filter-btn .filter-label-text {
     position: relative;
     z-index: 2;
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: none;
     margin: 0;
     padding: 0;
     font-family: var(--font-control-bold, 'Config', sans-serif);
@@ -2044,6 +1992,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     display: block;
     word-break: normal;
     hyphens: none;
+    flex: 0 0 auto;
 }
 
 /* Hover preview */
@@ -2359,12 +2308,10 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         min-width: 0;
     }
 
-    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__portrait,
-    body:has(#atlasGalleryHost)
-        .gallery-mode__archive-connections-body
-        .event-slide-filter-token-img.event-slide-bio-connections__portrait {
-        width: clamp(44px, 13vw, 56px) !important;
-        height: clamp(52px, 15vw, 68px) !important;
+    body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body {
+        --hero-bio-chip-rim: clamp(3px, 0.8vw, 5px);
+        --hero-bio-chip-max-h: clamp(52px, 15vw, 68px);
+        --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide-bio-connections__arrows,
@@ -2476,8 +2423,9 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         border-top: none;
+        --hero-bio-chip-rim: clamp(4px, 1vw, 6px);
         --hero-bio-chip-max-h: clamp(64px, 14vw, 88px);
-        --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
+        --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
         --hero-bio-chip-dock-gap: 0px;
         opacity: 1;
         visibility: visible;
@@ -2522,10 +2470,9 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         pointer-events: none;
     }
 
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__board,
     body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__roles,
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__flat-grid,
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__npc-flat,
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__faction-other {
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__board-rows {
         width: 100%;
         max-width: min(560px, 100%);
         flex-direction: column;
@@ -2540,8 +2487,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         align-items: center;
     }
 
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__subrow,
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__npc-flat-row {
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__subrow {
         flex-direction: column;
         align-items: center;
         width: 100%;
@@ -2555,8 +2501,7 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         align-self: center;
     }
 
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__chips-row,
-    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__chips-row--flat {
+    body:has(#atlasGalleryHost) .gallery-hero-filters:not(.gallery-hero-filters--hidden) .gallery-hero-filters__chips-row {
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;

@@ -279,18 +279,17 @@
     --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
     --hero-bio-hover-scale: 1.08;
     --hero-bio-chip-max-h: clamp(64px, 8vw, 88px);
-    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) * 0.76);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
     --hero-bio-label-band: clamp(14px, 1.1vw, 18px);
 }
 
 .event-story-filter-places-section .event-slide-relevant-locations__flag-row--chips {
-    align-items: flex-end;
+    align-items: center;
     gap: 8px 10px;
-    padding-bottom: calc(var(--hero-bio-label-band) + 2px);
 }
 
 .event-story-filter-places-section .event-slide-relevant-locations__row--with-chips {
-    align-items: flex-end;
+    align-items: center;
     gap: 10px 14px;
 }
 
@@ -320,26 +319,53 @@
     outline-offset: 3px;
 }
 
-/* Keep legacy bio-connection portrait tokens working until those adopt chips */
-.event-bio-connections-section .event-slide-filter-token-img {
-    height: 48px;
-    max-height: 56px;
-    width: auto;
-    max-width: 72px;
-    object-fit: contain;
-    vertical-align: middle;
-    flex-shrink: 0;
+/* Bio archive Connections — same gallery chips as story relevancy */
+.event-bio-connections-section,
+.event-slide-bio-connections,
+.event-slide-bio-conn-blocks,
+.gallery-mode__archive-connections-body,
+.gallery-mode__archive-connections-edit-mount {
+    --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
+    --hero-bio-hover-scale: 1.08;
+    --hero-bio-chip-max-h: clamp(64px, 8vw, 88px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
+    --hero-bio-label-band: clamp(14px, 1.1vw, 18px);
 }
 
-.event-bio-connections-section .event-slide-filter-token-img--clickable-hero,
-.event-bio-connections-section .event-slide-filter-token-img--clickable-faction,
-.event-bio-connections-section .event-slide-filter-token-img--clickable-npc {
-    cursor: pointer;
+.event-bio-connections-section .event-slide-filter-token-chip-wrap,
+.event-bio-connections-section .event-slide-bio-connections__chip,
+.event-slide-bio-connections .event-slide-filter-token-chip-wrap,
+.event-slide-bio-connections .event-slide-bio-connections__chip,
+.event-slide-bio-conn-blocks .event-slide-filter-token-chip-wrap,
+.event-slide-bio-conn-blocks .event-slide-bio-connections__chip {
+    position: relative;
+    display: block;
+    width: var(--hero-bio-chip-max-w);
+    max-width: var(--hero-bio-chip-max-w);
+    height: var(--hero-bio-chip-max-h);
+    margin: 0;
+    flex: 0 0 auto;
+    overflow: visible;
 }
 
-.event-bio-connections-section .event-slide-filter-token-img--clickable-hero:focus-visible,
-.event-bio-connections-section .event-slide-filter-token-img--clickable-faction:focus-visible,
-.event-bio-connections-section .event-slide-filter-token-img--clickable-npc:focus-visible {
+.event-bio-connections-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn,
+.event-slide-bio-connections .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn,
+.event-slide-bio-conn-blocks .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
+    width: 100%;
+    height: var(--hero-bio-chip-max-h);
+    max-width: var(--hero-bio-chip-max-w);
+}
+
+.event-bio-connections-section .event-slide-filter-token-chip--static,
+.event-slide-bio-connections .event-slide-filter-token-chip--static,
+.event-slide-bio-conn-blocks .event-slide-filter-token-chip--static {
+    pointer-events: none;
+    cursor: default;
+}
+
+.event-bio-connections-section .event-slide-filter-token-chip:focus-visible,
+.event-slide-bio-connections .event-slide-filter-token-chip:focus-visible,
+.event-slide-bio-conn-blocks .event-slide-filter-token-chip:focus-visible {
     outline: 2px solid rgba(33, 150, 243, 0.95);
     outline-offset: 3px;
 }
@@ -642,18 +668,21 @@
     gap: 8px;
     flex: 0 0 auto;
     min-width: 72px;
-    max-width: 120px;
+    max-width: calc(var(--hero-bio-chip-max-w, 72px) + 48px);
 }
 
 .event-slide-bio-conn-row__portrait-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
 }
 
-.event-slide-bio-conn-row__portrait-wrap .event-slide-bio-connections__portrait {
-    width: 56px;
-    height: 56px;
+.event-slide-bio-conn-row__portrait-wrap .event-slide-filter-token-chip-wrap,
+.event-slide-bio-conn-row__portrait-wrap .event-slide-bio-connections__chip {
+    width: var(--hero-bio-chip-max-w, 56px);
+    max-width: var(--hero-bio-chip-max-w, 56px);
+    height: var(--hero-bio-chip-max-h, 56px);
 }
 
 .event-slide-bio-conn-row__portrait-caption {
@@ -1092,15 +1121,7 @@
     justify-content: center;
     align-items: center;
     flex: 0 0 auto;
-}
-
-.event-slide-bio-connections__portrait {
-    display: block;
-    width: 52px;
-    height: 52px;
-    max-width: 72px;
-    object-fit: contain;
-    flex-shrink: 0;
+    overflow: visible;
 }
 
 .event-slide-bio-connections__arrows {

@@ -22,6 +22,10 @@ import {
     labelForDialogueTheaterStatus,
     normalizeDialogueTheaterChoiceList,
     normalizeDialogueTheaterStatus,
+    normalizeDialogueLineEra,
+    normalizeDialogueLineStatus,
+    getDialogueLineEra,
+    getDialogueLineStatus,
 } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import {
     clearDialogueTheaterAssetsCache,
@@ -34,6 +38,7 @@ import {
     sceneImageUrl,
     voicelineAudioUrl,
 } from '../data/loadDialogueTheaterAssets.js';
+import { paintBioChipPortraitBackgrounds } from '../../gallery/gallery-mode/bioChipPortraitBackground.js';
 import {
     buildBlankDialogueLine,
     buildBlankDialoguePath,
@@ -981,6 +986,16 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
                 line.subtitles ||
                 (resolvedVoice ? voicelineFilenameToSubtitles(resolvedVoice) : '');
             const hasVoice = Boolean(resolvedVoice);
+            const lineEra = getDialogueLineEra(line);
+            const lineStatus = getDialogueLineStatus(line);
+            const lineMods = [
+                lineStatus === 'removed' ? 'dialogue-theater-edit__view-line--removed' : '',
+                lineEra === DIALOGUE_THEATER_ERA_CLASSIC
+                    ? 'dialogue-theater-edit__view-line--classic'
+                    : '',
+            ]
+                .filter(Boolean)
+                .join(' ');
             const iconBlock = line.hero
                 ? `<div class="dialogue-theater-edit__view-line-icon-wrap">
                         <img class="dialogue-theater-edit__view-line-icon" src="${heroFilterIconUrl(line.hero)}" alt="" />
@@ -990,7 +1005,7 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
                 ? `<button type="button" class="dialogue-theater-edit__view-line-play" aria-label="Play voiceline">▶</button>`
                 : `<button type="button" class="dialogue-theater-edit__view-line-play" disabled aria-label="No audio">▶</button>`;
             return `
-                <article class="dialogue-theater-edit__view-line">
+                <article class="dialogue-theater-edit__view-line ${lineMods}">
                     ${iconBlock}
                     <div class="dialogue-theater-edit__view-line-body">
                         <p class="dialogue-theater-edit__view-line-text">${dialogueText ? formatDialogueSubtitleHtml(dialogueText, { hero: line.hero }) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
@@ -1172,6 +1187,7 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
         wireStandardRandomRouteControls(host, conversation, options.onPathChange);
     }
     wireDialogueTheaterViewPlayback(host, conversation);
+    void paintBioChipPortraitBackgrounds(host);
 }
 
 /**
@@ -1527,6 +1543,19 @@ function refreshRenderPicker(grid, heroName, selectedRender, onSelect) {
     renderPreviewPicker(grid, items, selectedRender, onSelect);
 }
 
+function applyDialogueLineMetaClasses(blockEl, line) {
+    if (!(blockEl instanceof HTMLElement)) return;
+    const era = getDialogueLineEra(line);
+    const status = getDialogueLineStatus(line);
+    blockEl.classList.toggle('dialogue-theater-line--removed', status === 'removed');
+    blockEl.classList.toggle(
+        'dialogue-theater-line--classic',
+        era === DIALOGUE_THEATER_ERA_CLASSIC,
+    );
+    blockEl.dataset.lineEra = era;
+    blockEl.dataset.lineStatus = status;
+}
+
 /**
  * @param {HTMLElement} linesHost
  * @param {import('../data/DialogueTheaterDataService.js').DialogueLine} line
@@ -1538,7 +1567,33 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
     block.dataset.lineId = line.id;
     if (line.voicePrefix) block.dataset.voicePrefix = line.voicePrefix;
     if (line.render) block.dataset.selectedRender = line.render;
+    applyDialogueLineMetaClasses(block, line);
+    const lineEra = getDialogueLineEra(line);
+    const lineStatus = getDialogueLineStatus(line);
     block.innerHTML = `
+        <div class="dialogue-theater-line__row dialogue-theater-line__row--meta">
+            <label class="dialogue-theater-edit__label">Line</label>
+            <div class="dialogue-theater-line__meta">
+                <label class="dialogue-theater-line__meta-field">
+                    <span>Era</span>
+                    <select class="dialogue-theater-line__era-select event-slide-inline-editor__input">
+                        <option value="${DIALOGUE_THEATER_ERA_OVERWATCH}" ${
+                            lineEra === DIALOGUE_THEATER_ERA_OVERWATCH ? 'selected' : ''
+                        }>Overwatch</option>
+                        <option value="${DIALOGUE_THEATER_ERA_CLASSIC}" ${
+                            lineEra === DIALOGUE_THEATER_ERA_CLASSIC ? 'selected' : ''
+                        }>Classic</option>
+                    </select>
+                </label>
+                <label class="dialogue-theater-line__meta-field">
+                    <span>Status</span>
+                    <select class="dialogue-theater-line__status-select event-slide-inline-editor__input">
+                        <option value="active" ${lineStatus === 'active' ? 'selected' : ''}>Active</option>
+                        <option value="removed" ${lineStatus === 'removed' ? 'selected' : ''}>Removed</option>
+                    </select>
+                </label>
+            </div>
+        </div>
         <div class="dialogue-theater-line__row dialogue-theater-line__row--hero">
             <label class="dialogue-theater-edit__label">Hero</label>
             <div class="dialogue-theater-line__hero-field">
@@ -1615,6 +1670,8 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
     const subtitlesInput = block.querySelector('.dialogue-theater-line__subtitles-input');
     const disclaimerInput = block.querySelector('.dialogue-theater-line__disclaimer-input');
     const partnersInput = block.querySelector('.dialogue-theater-line__partners-input');
+    const eraSelect = block.querySelector('.dialogue-theater-line__era-select');
+    const statusSelect = block.querySelector('.dialogue-theater-line__status-select');
     if (heroInput instanceof HTMLInputElement) heroInput.value = line.hero || '';
     if (voiceInput instanceof HTMLInputElement) {
         if (line.voice) {
@@ -1646,6 +1703,24 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
             .map((pool) => (Array.isArray(pool) ? pool.join('|') : ''))
             .filter(Boolean)
             .join(';');
+    }
+
+    const syncMetaClasses = () => {
+        applyDialogueLineMetaClasses(block, {
+            era:
+                eraSelect instanceof HTMLSelectElement
+                    ? eraSelect.value
+                    : DIALOGUE_THEATER_ERA_OVERWATCH,
+            status:
+                statusSelect instanceof HTMLSelectElement ? statusSelect.value : 'active',
+        });
+        onEditChange?.();
+    };
+    if (eraSelect instanceof HTMLSelectElement) {
+        eraSelect.addEventListener('change', syncMetaClasses);
+    }
+    if (statusSelect instanceof HTMLSelectElement) {
+        statusSelect.addEventListener('change', syncMetaClasses);
     }
     if (line.partnerCountMin != null) block.dataset.partnerCountMin = String(line.partnerCountMin);
     if (line.partnerCountMax != null) block.dataset.partnerCountMax = String(line.partnerCountMax);
@@ -1956,6 +2031,16 @@ export function collectDialogueTheaterEditPanel(host) {
         const lineId = block.dataset.lineId || '';
         const voicePrefix = block instanceof HTMLElement ? String(block.dataset.voicePrefix || '').trim() : '';
         const render = block.dataset.selectedRender || '';
+        const eraEl = block.querySelector('.dialogue-theater-line__era-select');
+        const statusElLine = block.querySelector('.dialogue-theater-line__status-select');
+        const lineEra =
+            eraEl instanceof HTMLSelectElement
+                ? normalizeDialogueLineEra(eraEl.value)
+                : DIALOGUE_THEATER_ERA_OVERWATCH;
+        const lineStatus =
+            statusElLine instanceof HTMLSelectElement
+                ? normalizeDialogueLineStatus(statusElLine.value)
+                : 'active';
         const normalized = normalizeDialogueLine({
             id: lineId,
             hero,
@@ -1963,6 +2048,8 @@ export function collectDialogueTheaterEditPanel(host) {
             voicePrefix,
             subtitles,
             render,
+            era: lineEra,
+            status: lineStatus,
             disclaimer,
             partnerMode,
             partners: normalizeChatterPartnerList(partnersRaw),

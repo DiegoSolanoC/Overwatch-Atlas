@@ -52,7 +52,7 @@ export function buildBlankDialoguePath() {
 }
 
 /**
- * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string }}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, era: string, status: string, disclaimer?: string }}
  */
 export function buildBlankDialogueLine() {
     return {
@@ -62,6 +62,8 @@ export function buildBlankDialogueLine() {
         voicePrefix: '',
         subtitles: '',
         render: '',
+        era: 'Overwatch',
+        status: 'active',
     };
 }
 
@@ -104,6 +106,8 @@ export function buildBlankChatterRecord(heroName) {
                 voicePrefix: '',
                 subtitles: '',
                 render: 'Heroic.png',
+                era: 'Overwatch',
+                status: 'active',
             },
         ],
     };
@@ -117,17 +121,19 @@ import {
     normalizeDialogueTheaterTagsWithFlags,
     finalizeDialogueTheaterTags,
     normalizeDialogueTheaterChoiceList,
+    normalizeDialogueLineEra,
+    normalizeDialogueLineStatus,
 } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import { normalizeChatterPartnerFields } from './dialogueTheaterChatterPartners.js';
 
 /**
  * @param {unknown} raw
- * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }|null}
+ * @returns {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, era: string, status: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }|null}
  */
 export function normalizeDialogueLine(raw) {
     if (!raw || typeof raw !== 'object') return null;
     const id = String(raw.id != null ? raw.id : '').trim() || createDialogueLineId();
-    /** @type {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }} */
+    /** @type {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, era: string, status: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }} */
     const line = {
         id,
         hero: String(raw.hero != null ? raw.hero : '').trim(),
@@ -135,6 +141,8 @@ export function normalizeDialogueLine(raw) {
         voicePrefix: String(raw.voicePrefix != null ? raw.voicePrefix : '').trim(),
         subtitles: stripWikiOutcomeMarkers(String(raw.subtitles != null ? raw.subtitles : '')),
         render: String(raw.render != null ? raw.render : '').trim(),
+        era: normalizeDialogueLineEra(raw.era),
+        status: normalizeDialogueLineStatus(raw.status),
     };
     const disclaimer = String(raw.disclaimer != null ? raw.disclaimer : '').trim();
     if (disclaimer) line.disclaimer = disclaimer;

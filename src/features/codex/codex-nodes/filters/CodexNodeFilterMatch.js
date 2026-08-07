@@ -35,17 +35,6 @@ function nodeKeysMatchActiveFilters(kind, fields, activeFilters) {
     if (kind === 'junction') return true;
 
     const country = String(fields.country || '').trim();
-    if (kind === 'country' && country.toLowerCase() === 'numbani') {
-        const numbaniRelatedFilters = ['Efi', 'Adawe', 'Orisa'];
-        for (const filter of activeFilters) {
-            for (const related of numbaniRelatedFilters) {
-                if (filter === related || filter === `hero:${related}` || filter === `npc:${related}`) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     /** @type {Set<string>} */
     const nodeFilterKeys = new Set();

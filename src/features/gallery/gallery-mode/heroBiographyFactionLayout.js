@@ -1,6 +1,6 @@
 /**
- * Faction Biography strip layout — 4 columns by archive `factionType`, with
- * Overwatch Branches as a labeled subgroup under Major Player (not its own column).
+ * Faction Biography strip — same flat two-row board as NPCs:
+ * labeled type segments (Major Player, Branches, Criminal, …) packed into top/bottom rows.
  */
 
 import { matchFactionManifestToArchiveRowName } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
@@ -14,114 +14,94 @@ import {
     sortFactionsArchiveEventsStable,
 } from '../../data-workshop/archive-category-factions/ArchiveFactionOrdering.js';
 
-/** Left → right: four primary archive types (Overwatch Branches nest under Major Player). */
-export const FACTION_BIOGRAPHY_TYPE_ORDER = Object.freeze([
+/** @typedef {{ key: string, label: string, chips: Array<{ filename: string, displayName?: string }> }} FactionBiographyChipSegment */
+
+/** Preferred top-row chip budget before whole type segments wrap to row 2. */
+export const FACTION_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 22;
+
+/** Display order for labeled segments (left → right within each row). */
+export const FACTION_BIOGRAPHY_SEGMENT_ORDER = Object.freeze([
     'Major Player',
+    'Overwatch Branches',
     'Criminal Groups',
     'Military Initiatives',
     'Research Institutions',
+    'Independent Coalitions',
+    'Other',
 ]);
-
-/** @type {Readonly<Record<string, { top: readonly string[], bottom: readonly string[] }>>} */
-export const FACTION_BIOGRAPHY_SUBROW_LAYOUT = Object.freeze({
-    'Major Player': {
-        top: Object.freeze(['__major__']),
-        bottom: Object.freeze(['Overwatch Branches']),
-    },
-    'Criminal Groups': {
-        top: Object.freeze(['__rowTop__']),
-        bottom: Object.freeze(['__rowBottom__']),
-    },
-    'Military Initiatives': {
-        top: Object.freeze(['__rowTop__']),
-        bottom: Object.freeze(['__rowBottom__']),
-    },
-    'Research Institutions': {
-        top: Object.freeze(['__rowTop__']),
-        bottom: Object.freeze(['__rowBottom__']),
-    },
-});
-
-/** @param {string} typeLabel */
-function factionTypeUsesSplitChipRows(typeLabel) {
-    return typeLabel !== 'Major Player';
-}
 
 const OVERWATCH_BRANCHES_TYPE = 'Overwatch Branches';
 
 /**
- * @param {string} subgroupKey
- * @returns {string}
- */
-export function labelForFactionBiographySubgroup(subgroupKey) {
-    if (
-        subgroupKey === '__major__'
-        || subgroupKey === '__rowTop__'
-        || subgroupKey === '__rowBottom__'
-    ) {
-        return '';
-    }
-    return subgroupKey;
-}
-
-/**
  * @param {string} factionType
- * @returns {{ column: string, subgroup: string }}
+ * @returns {string} segment key in {@link FACTION_BIOGRAPHY_SEGMENT_ORDER}
  */
-export function resolveFactionBiographyColumnAndSubgroup(factionType) {
+export function resolveFactionBiographySegment(factionType) {
     const normalized = normalizeFactionArchiveType(factionType);
-    if (normalized === OVERWATCH_BRANCHES_TYPE) {
-        return { column: 'Major Player', subgroup: OVERWATCH_BRANCHES_TYPE };
-    }
-    if (normalized === 'Major Player') {
-        return { column: 'Major Player', subgroup: '__major__' };
-    }
-    if (FACTION_BIOGRAPHY_TYPE_ORDER.includes(normalized)) {
-        return {
-            column: normalized,
-            subgroup: factionTypeUsesSplitChipRows(normalized) ? '__pending__' : '__rowTop__',
-        };
-    }
-    if (!normalized) {
-        return { column: 'Major Player', subgroup: '__major__' };
-    }
-    return { column: 'Major Player', subgroup: '__major__' };
+    if (normalized === OVERWATCH_BRANCHES_TYPE) return OVERWATCH_BRANCHES_TYPE;
+    if (normalized === 'Major Player') return 'Major Player';
+    if (normalized === 'Criminal Groups') return 'Criminal Groups';
+    if (normalized === 'Military Initiatives') return 'Military Initiatives';
+    if (normalized === 'Research Institutions') return 'Research Institutions';
+    if (normalized === 'Independent Coalitions') return 'Independent Coalitions';
+    if (!normalized) return 'Major Player';
+    return 'Other';
 }
 
 /**
- * @param {string} typeLabel
+ * @param {string} segmentKey
  * @returns {string}
  */
-export function factionBiographyColumnClassSlug(typeLabel) {
-    return String(typeLabel || '')
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '');
+export function labelForFactionBiographySegment(segmentKey) {
+    if (segmentKey === OVERWATCH_BRANCHES_TYPE) return OVERWATCH_BRANCHES_TYPE;
+    if (segmentKey === 'Other') return 'Other';
+    return displayLabelForFactionArchiveType(segmentKey) || segmentKey;
+}
+
+/**
+ * @param {Record<string, Array<{ filename: string, displayName?: string }>>} groups
+ * @param {readonly string[]} segmentOrder
+ * @returns {{ top: FactionBiographyChipSegment[], bottom: FactionBiographyChipSegment[] }}
+ */
+export function assignFactionBiographySegmentRows(groups, segmentOrder) {
+    /** @type {FactionBiographyChipSegment[]} */
+    const top = [];
+    /** @type {FactionBiographyChipSegment[]} */
+    const bottom = [];
+    let topCount = 0;
+    const topLimit = FACTION_BIOGRAPHY_TOP_ROW_CHIP_COUNT;
+
+    for (const key of segmentOrder) {
+        const chips = groups[key];
+        if (!Array.isArray(chips) || chips.length === 0) continue;
+
+        const segment = {
+            key,
+            label: labelForFactionBiographySegment(key),
+            chips,
+        };
+        if (topCount + chips.length <= topLimit) {
+            top.push(segment);
+            topCount += chips.length;
+        } else {
+            bottom.push(segment);
+        }
+    }
+
+    return { top, bottom };
 }
 
 /**
  * @param {Array<{ filename: string, displayName?: string }>} manifestFactions
- * @returns {Promise<{
- *   groups: Record<string, Record<string, Array<{ filename: string, displayName?: string }>>>,
- *   other: Array<{ filename: string, displayName?: string }>,
- * }>}
+ * @returns {Promise<Record<string, Array<{ filename: string, displayName?: string }>>>}
  */
-export async function buildFactionBiographyTypeGroups(manifestFactions) {
+export async function buildFactionBiographySegmentGroups(manifestFactions) {
     await ensureArchiveLayoutSnapshotsForFilter('factions');
 
-    /** @type {Record<string, Record<string, Array<{ filename: string, displayName?: string }>>>} */
+    /** @type {Record<string, Array<{ filename: string, displayName?: string }>>} */
     const groups = {};
-    for (const typeLabel of FACTION_BIOGRAPHY_TYPE_ORDER) {
-        groups[typeLabel] = {};
-        const layout = FACTION_BIOGRAPHY_SUBROW_LAYOUT[typeLabel];
-        const keys = [...(layout?.top || []), ...(layout?.bottom || [])];
-        for (const key of keys) {
-            groups[typeLabel][key] = [];
-        }
-        if (factionTypeUsesSplitChipRows(typeLabel)) {
-            groups[typeLabel].__pending__ = [];
-        }
+    for (const key of FACTION_BIOGRAPHY_SEGMENT_ORDER) {
+        groups[key] = [];
     }
 
     const events = getFactionsArchiveRowsForFilterGrouping().slice();
@@ -133,72 +113,36 @@ export async function buildFactionBiographyTypeGroups(manifestFactions) {
         const entry = matchFactionManifestToArchiveRowName(ev?.name, manifestFactions);
         if (!entry?.filename || usedFilenames.has(entry.filename)) continue;
 
-        const { column, subgroup } = resolveFactionBiographyColumnAndSubgroup(ev?.factionType);
-        if (!groups[column]) continue;
-
-        let bucket = subgroup;
-        if (factionTypeUsesSplitChipRows(column)) {
-            bucket = '__pending__';
-        } else if (!groups[column][bucket]) {
-            bucket = '__major__';
-        }
-
-        if (!groups[column][bucket]) {
-            groups[column][bucket] = [];
-        }
+        const segment = resolveFactionBiographySegment(ev?.factionType);
+        if (!groups[segment]) groups[segment] = [];
 
         usedFilenames.add(entry.filename);
-        groups[column][bucket].push(entry);
+        groups[segment].push(entry);
     }
 
-    /** @type {Array<{ filename: string, displayName?: string }>} */
-    const other = [];
     for (const f of manifestFactions) {
         if (f?.filename && !usedFilenames.has(f.filename)) {
-            other.push(f);
+            groups.Other.push(f);
         }
     }
 
-    other.sort((a, b) =>
-        String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
-            numeric: true,
-            sensitivity: 'base',
-        }),
-    );
-
-    for (const typeLabel of FACTION_BIOGRAPHY_TYPE_ORDER) {
-        if (factionTypeUsesSplitChipRows(typeLabel)) {
-            const pending = groups[typeLabel].__pending__ || [];
-            delete groups[typeLabel].__pending__;
-            pending.sort((a, b) =>
-                String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
-                    numeric: true,
-                    sensitivity: 'base',
-                }),
-            );
-            const splitAt = Math.ceil(pending.length / 2);
-            groups[typeLabel].__rowTop__ = pending.slice(0, splitAt);
-            groups[typeLabel].__rowBottom__ = pending.slice(splitAt);
-        }
-
-        for (const key of Object.keys(groups[typeLabel])) {
-            if (key === '__pending__') continue;
-            groups[typeLabel][key].sort((a, b) =>
-                String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
-                    numeric: true,
-                    sensitivity: 'base',
-                }),
-            );
-        }
+    for (const key of FACTION_BIOGRAPHY_SEGMENT_ORDER) {
+        groups[key].sort((a, b) =>
+            String(a.displayName || '').localeCompare(String(b.displayName || ''), undefined, {
+                numeric: true,
+                sensitivity: 'base',
+            }),
+        );
     }
 
-    return { groups, other };
+    return groups;
 }
 
 /**
- * @param {string} factionType
- * @returns {string}
+ * @param {Array<{ filename: string, displayName?: string }>} manifestFactions
+ * @returns {Promise<{ top: FactionBiographyChipSegment[], bottom: FactionBiographyChipSegment[] }>}
  */
-export function headingLabelForFactionBiographyColumn(factionType) {
-    return displayLabelForFactionArchiveType(factionType) || factionType;
+export async function buildFactionBiographyFlatChipRowSegments(manifestFactions) {
+    const groups = await buildFactionBiographySegmentGroups(manifestFactions);
+    return assignFactionBiographySegmentRows(groups, FACTION_BIOGRAPHY_SEGMENT_ORDER);
 }

@@ -1,4 +1,5 @@
 import { mapNpcArchiveRowsForGrouping, mergeNpcCategoriesFromBundledArchiveRows } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
+import { mergeHeroRolesFromBundledArchiveRows } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 
 /**
  * The grouped Heroes / Factions filter layouts need access to the archive
@@ -52,27 +53,17 @@ export async function ensureArchiveLayoutSnapshotsForFilter(type) {
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
 
     if (type === 'heroes' && arch !== 'heroes') {
-        /* Always keep bundled heroes.json in cache — localStorage may omit new rows (e.g. Shion). */
-        if (!__heroesArchiveFileCache || __heroesArchiveFileCache.length === 0) {
-            await fetchJsonEventsIntoCache('src/data/story-archive/heroes.json', a => {
-                __heroesArchiveFileCache = a;
-            });
-        }
+        /* Refresh bundled heroes.json so filter/gallery chips pick up repo role changes. */
+        await fetchJsonEventsIntoCache('src/data/story-archive/heroes.json', a => {
+            __heroesArchiveFileCache = a;
+        });
     }
 
     if (type === 'factions' && arch !== 'factions') {
-        try {
-            const raw = localStorage.getItem('timelineEventsArchiveFactions');
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return;
-            }
-        } catch (_) {}
-        if (!__factionsArchiveFileCache || __factionsArchiveFileCache.length === 0) {
-            await fetchJsonEventsIntoCache('src/data/story-archive/factions.json', a => {
-                __factionsArchiveFileCache = a;
-            });
-        }
+        /* Refresh bundled factions.json so filter/gallery chips pick up repo type changes. */
+        await fetchJsonEventsIntoCache('src/data/story-archive/factions.json', a => {
+            __factionsArchiveFileCache = a;
+        });
     }
 
     if (type === 'npcs' && arch !== 'npcs') {
@@ -119,22 +110,38 @@ function snapshotHeroArchiveRowForGrouping(ev) {
 
 /** Resolve the grouped-faction layout's archive rows from the best source. */
 export function getFactionsArchiveRowsForFilterGrouping() {
+    const fileFallback = Array.isArray(__factionsArchiveFileCache) ? __factionsArchiveFileCache : [];
+
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
+
+    /** @param {unknown[]} rows */
+    function withBundledFactionFixes(rows) {
+        let out = Array.isArray(rows) ? rows.slice() : [];
+        out = out.filter((row) => {
+            const n = String(row?.name != null ? row.name : '').trim().toLowerCase();
+            return n !== 'talon';
+        });
+        if (fileFallback.length > 0) {
+            out = mergeSatelliteArchiveRowsFromFileFallback(out, fileFallback, 'factions');
+        }
+        return out.map(snapshotFactionArchiveRowForGrouping);
+    }
+
     if (arch === 'factions' && Array.isArray(window.eventManager?.events)) {
-        return window.eventManager.events.map(snapshotFactionArchiveRowForGrouping);
+        return withBundledFactionFixes(window.eventManager.events);
     }
     try {
         const raw = localStorage.getItem('timelineEventsArchiveFactions');
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                return parsed.map(snapshotFactionArchiveRowForGrouping);
+                return withBundledFactionFixes(parsed);
             }
         }
     } catch (_) {}
-    if (Array.isArray(__factionsArchiveFileCache) && __factionsArchiveFileCache.length > 0) {
-        return __factionsArchiveFileCache.map(snapshotFactionArchiveRowForGrouping);
+    if (fileFallback.length > 0) {
+        return fileFallback.map(snapshotFactionArchiveRowForGrouping);
     }
     return [];
 }
@@ -146,7 +153,7 @@ export function getHeroesArchiveRowsForFilterGrouping() {
     const ds = typeof window !== 'undefined' ? window.eventManager?.dataService : null;
     const arch = typeof ds?.getArchiveSource === 'function' ? ds.getArchiveSource() : 'story';
     if (arch === 'heroes' && Array.isArray(window.eventManager?.events)) {
-        return mergeSatelliteArchiveRowsFromFileFallback(window.eventManager.events, fileFallback)
+        return mergeSatelliteArchiveRowsFromFileFallback(window.eventManager.events, fileFallback, 'heroes')
             .map(snapshotHeroArchiveRowForGrouping);
     }
     try {
@@ -154,7 +161,7 @@ export function getHeroesArchiveRowsForFilterGrouping() {
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                return mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback)
+                return mergeSatelliteArchiveRowsFromFileFallback(parsed, fileFallback, 'heroes')
                     .map(snapshotHeroArchiveRowForGrouping);
             }
         }
@@ -168,10 +175,12 @@ export function getHeroesArchiveRowsForFilterGrouping() {
 /**
  * Stale localStorage may omit rows that exist in bundled satellite JSON — merge so
  * grouped filter layouts do not dump manifest chips into the overflow "Other" bucket.
+ * Also overlay taxonomy fields from the bundled file (hero roles / faction types).
  * @param {unknown[]} events
  * @param {unknown[]} fileFallback
+ * @param {'heroes'|'factions'|'npcs'|''} [taxonomy]
  */
-function mergeSatelliteArchiveRowsFromFileFallback(events, fileFallback) {
+function mergeSatelliteArchiveRowsFromFileFallback(events, fileFallback, taxonomy = '') {
     if (!Array.isArray(events) || events.length === 0) return events || [];
     if (!Array.isArray(fileFallback) || fileFallback.length === 0) return events;
 
@@ -181,7 +190,7 @@ function mergeSatelliteArchiveRowsFromFileFallback(events, fileFallback) {
         if (n) names.add(n);
     }
 
-    const out = events.slice();
+    let out = events.slice();
     for (let i = 0; i < fileFallback.length; i++) {
         const fe = fileFallback[i];
         if (!fe || typeof fe !== 'object') continue;
@@ -190,6 +199,29 @@ function mergeSatelliteArchiveRowsFromFileFallback(events, fileFallback) {
         names.add(n);
         out.push(fe);
     }
+
+    if (taxonomy === 'heroes') {
+        out = mergeHeroRolesFromBundledArchiveRows(out, fileFallback).events;
+    } else if (taxonomy === 'factions') {
+        /** @type {Map<string, string>} */
+        const typeByName = new Map();
+        for (let i = 0; i < fileFallback.length; i++) {
+            const fe = fileFallback[i];
+            const n = String(fe?.name != null ? fe.name : '').trim().toLowerCase();
+            const ft = String(fe?.factionType != null ? fe.factionType : '').trim();
+            if (n && ft) typeByName.set(n, ft);
+        }
+        out = out.map((row) => {
+            if (!row || typeof row !== 'object') return row;
+            const n = String(row.name != null ? row.name : '').trim().toLowerCase();
+            const bundled = n ? typeByName.get(n) : '';
+            if (!bundled) return row;
+            const existing = String(row.factionType != null ? row.factionType : '').trim();
+            if (existing === bundled) return row;
+            return { ...row, factionType: bundled };
+        });
+    }
+
     return out;
 }
 

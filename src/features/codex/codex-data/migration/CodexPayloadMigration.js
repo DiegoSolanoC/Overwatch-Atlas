@@ -62,6 +62,33 @@ export function migrateCodexLayoutCoordsForExpandedWorld(nodes, edges) {
 }
 
 /**
+ * Numbani was a one-off country node; it is now the faction "Numbani City of Harmony".
+ * @param {unknown[]} nodes
+ * @returns {{ nodes: unknown[], changed: boolean }}
+ */
+export function migrateNumbaniCountryNodesToFaction(nodes) {
+    if (!Array.isArray(nodes) || nodes.length === 0) {
+        return { nodes: nodes || [], changed: false };
+    }
+    let changed = false;
+    const next = nodes.map((n) => {
+        if (!n || typeof n !== 'object') return n;
+        if (n.kind !== 'country') return n;
+        const key = String(n.countryKey || '').trim().toLowerCase();
+        if (key !== 'numbani') return n;
+        changed = true;
+        const out = { ...n };
+        out.kind = 'faction';
+        out.factionFilename = 'Numbani City of Harmony';
+        out.factionDisplay = 'Numbani City of Harmony';
+        delete out.countryKey;
+        if (out.bgColor == null) out.bgColor = '#a8adb4';
+        return out;
+    });
+    return { nodes: next, changed };
+}
+
+/**
  * Drop a direct entity↔entity edge if those two nodes are still connected without it via a path
  * that uses at least one junction (break) node.
  */
@@ -148,6 +175,9 @@ export function parseMigrateAndDedupeCodexSource(sourceObj) {
     } else if (v < CODEX_SAVE_VERSION) {
         migratedNow = true;
     }
+    const numbaniMig = migrateNumbaniCountryNodesToFaction(nodes);
+    nodes = numbaniMig.nodes;
+    if (numbaniMig.changed) migratedNow = true;
     const dedupedEdges = dedupeCodexEdgesByNodePair(
         Array.isArray(edges) ? edges.map(normalizeEdgeRecord).filter(Boolean) : []
     );

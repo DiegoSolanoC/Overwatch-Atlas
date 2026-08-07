@@ -14,7 +14,7 @@
 import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
 import { mergeNpcCategoriesFromBundledArchiveRows } from '../../../../data-workshop/archive-category-npcs/ArchiveNpcOrdering.js';
 import { migrateEntityDisplayNamesInBioArchiveEvents } from './entityDisplayNameMigration.js';
-import { mergeHeroBirthdaysFromBundledFile, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
+import { mergeHeroBirthdaysFromBundledFile, mergeHeroRolesFromBundledArchiveRows, repairCorruptedHeroArchiveDescriptionsFromFile } from '../../../interface-shared/bio-archive/heroArchiveBundledMerge.js';
 import { syncHeroArchiveBirthdaysFromTimeline } from '../../../interface-shared/bio-archive/heroArchiveTimelineFetch.js';
 import { getHeroBirthdayRawFromEntry } from '../../../interface-shared/bio-archive/HeroBirthdayAge.js';
 
@@ -141,6 +141,98 @@ function removeMisfiledTimelineLifecycleHeroRows(events) {
 }
 
 /**
+ * Bare "Talon" was merged into "Talon Empire" — drop leftover empty satellite rows
+ * and fold any connections onto Talon Empire.
+ * @param {unknown[]} events
+ * @returns {{ events: unknown[], removed: number }}
+ */
+function removeMergedBareTalonFactionRows(events) {
+    if (!Array.isArray(events) || events.length === 0) {
+        return { events: events || [], removed: 0 };
+    }
+
+    /** @type {unknown|null} */
+    let talonRow = null;
+    /** @type {number} */
+    let empireIdx = -1;
+    const kept = [];
+
+    for (let i = 0; i < events.length; i += 1) {
+        const row = events[i];
+        const name = String(row?.name != null ? row.name : '').trim().toLowerCase();
+        if (name === 'talon') {
+            talonRow = row;
+            continue;
+        }
+        if (name === 'talon empire') empireIdx = kept.length;
+        kept.push(row);
+    }
+
+    if (!talonRow) return { events, removed: 0 };
+
+    const talonConns = Array.isArray(talonRow.connections) ? talonRow.connections : [];
+    if (talonConns.length > 0 && empireIdx >= 0) {
+        const empire = kept[empireIdx];
+        if (empire && typeof empire === 'object') {
+            const existing = Array.isArray(empire.connections) ? empire.connections.slice() : [];
+            const seen = new Set(
+                existing.map((c) => `${String(c?.kind || '').toLowerCase()}|${String(c?.name || '').trim().toLowerCase()}`),
+            );
+            for (let i = 0; i < talonConns.length; i += 1) {
+                const c = talonConns[i];
+                if (!c || typeof c !== 'object') continue;
+                const key = `${String(c.kind || '').toLowerCase()}|${String(c.name || '').trim().toLowerCase()}`;
+                if (!key || seen.has(key)) continue;
+                seen.add(key);
+                existing.push(c);
+            }
+            kept[empireIdx] = { ...empire, connections: existing };
+        }
+    }
+
+    return { events: kept, removed: 1 };
+}
+
+/**
+ * Overlay `factionType` from bundled factions.json onto localStorage rows.
+ * @param {unknown[]} events
+ * @param {unknown[]|null} fileEvents
+ * @returns {{ events: unknown[], changed: number }}
+ */
+function mergeFactionTypesFromBundledArchiveRows(events, fileEvents) {
+    if (!Array.isArray(events) || events.length === 0) {
+        return { events: events || [], changed: 0 };
+    }
+    if (!Array.isArray(fileEvents) || fileEvents.length === 0) {
+        return { events, changed: 0 };
+    }
+
+    /** @type {Map<string, string>} */
+    const byName = new Map();
+    for (let i = 0; i < fileEvents.length; i += 1) {
+        const fe = fileEvents[i];
+        if (!fe || typeof fe !== 'object') continue;
+        const n = String(fe.name != null ? fe.name : '').trim().toLowerCase();
+        const ft = String(fe.factionType != null ? fe.factionType : '').trim();
+        if (n && ft) byName.set(n, ft);
+    }
+
+    let changed = 0;
+    const out = events.map((row) => {
+        if (!row || typeof row !== 'object') return row;
+        const n = String(row.name != null ? row.name : '').trim().toLowerCase();
+        const bundled = n ? byName.get(n) : '';
+        if (!bundled) return row;
+        const existing = String(row.factionType != null ? row.factionType : '').trim();
+        if (existing === bundled) return row;
+        changed += 1;
+        return { ...row, factionType: bundled };
+    });
+
+    return { events: out, changed };
+}
+
+/**
  * @param {import('./EventDataService.js').default} dataService
  * @param {unknown[]|null} fileEvents
  * @returns {number} duplicate rows removed
@@ -159,6 +251,8 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
 
     let added = 0;
     let npcCategoriesSynced = 0;
+    let heroRolesSynced = 0;
+    let factionCleanup = 0;
     const arch = dataService.getArchiveSource();
     if (arch === 'npcs') {
         const beforeBundledMerge = dataService.events.length;
@@ -172,6 +266,12 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
         );
         added = dataService.events.length - beforeBundledMerge;
         if (Array.isArray(fileEvents) && fileEvents.length > 0) {
+            const roleMerge = mergeHeroRolesFromBundledArchiveRows(
+                dataService.events,
+                fileEvents,
+            );
+            dataService.events = roleMerge.events;
+            heroRolesSynced = roleMerge.changed;
             dataService.events = mergeHeroBirthdaysFromBundledFile(
                 dataService.events,
                 fileEvents,
@@ -181,6 +281,31 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
                 fileEvents,
             );
         }
+    } else if (arch === 'factions') {
+        const beforeBundledMerge = dataService.events.length;
+        dataService.events = mergeMissingSatelliteEventsFromBundledFile(
+            dataService.events,
+            fileEvents,
+        );
+        added = dataService.events.length - beforeBundledMerge;
+        const talonMerge = removeMergedBareTalonFactionRows(dataService.events);
+        dataService.events = talonMerge.events;
+        factionCleanup += talonMerge.removed;
+        if (Array.isArray(fileEvents) && fileEvents.length > 0) {
+            const typeMerge = mergeFactionTypesFromBundledArchiveRows(
+                dataService.events,
+                fileEvents,
+            );
+            dataService.events = typeMerge.events;
+            factionCleanup += typeMerge.changed;
+        }
+    } else if (arch === 'locations') {
+        const beforeLoc = dataService.events.length;
+        dataService.events = (dataService.events || []).filter((row) => {
+            const n = String(row?.name != null ? row.name : '').trim().toLowerCase();
+            return n !== 'numbani';
+        });
+        factionCleanup += beforeLoc - dataService.events.length;
     }
 
     if (typeof dataService.updateStatus === 'function') {
@@ -202,8 +327,20 @@ function prepareSatelliteEventsBeforeNormalize(dataService, fileEvents) {
                 'info',
             );
         }
+        if (heroRolesSynced > 0) {
+            dataService.updateStatus(
+                `EventDataService: synced ${heroRolesSynced} hero role/subrole${heroRolesSynced === 1 ? '' : 's'} from bundled file`,
+                'info',
+            );
+        }
+        if (factionCleanup > 0) {
+            dataService.updateStatus(
+                `EventDataService: synced ${factionCleanup} faction archive fix${factionCleanup === 1 ? '' : 'es'} from bundled file`,
+                'info',
+            );
+        }
     }
-    return removed + added + npcCategoriesSynced;
+    return removed + added + npcCategoriesSynced + heroRolesSynced + factionCleanup;
 }
 
 /**
@@ -256,7 +393,9 @@ async function finalizeSatelliteLoad(dataService, fileEvents, opts = {}) {
         dataService.saveEvents();
         if (
             typeof window !== 'undefined'
-            && dataService.getArchiveSource() === 'npcs'
+            && (dataService.getArchiveSource() === 'npcs'
+                || dataService.getArchiveSource() === 'heroes'
+                || dataService.getArchiveSource() === 'factions')
             && removedDupes > 0
         ) {
             window.FilterService?.invalidateBioArchiveFilterLayouts?.();

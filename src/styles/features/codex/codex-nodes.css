@@ -680,12 +680,21 @@ body:has(#paginationDock) .codex-visual-panel {
     --codex-faction-portrait-inset: 0.864; /* 0.72 × 1.2 — 20% larger emblem */
 }
 
+/* Numbani art is a full city glyph — zoom further in than other faction emblems */
+.codex-node[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'] {
+    --codex-faction-portrait-inset: 1.28;
+}
+
 .codex-node--simplified[data-codex-kind='faction'] .codex-node__img {
     object-fit: contain;
     width: calc(100% * var(--codex-faction-portrait-inset));
     height: calc(100% * var(--codex-faction-portrait-inset));
     left: calc((100% - 100% * var(--codex-faction-portrait-inset)) / 2);
     top: calc((100% - 100% * var(--codex-faction-portrait-inset)) / 2);
+}
+
+.codex-node--simplified[data-codex-kind='faction'][data-codex-faction-file='Numbani City of Harmony'] .codex-node__img {
+    object-fit: cover;
 }
 
 /* Legacy: nested structure styles for backward compatibility */

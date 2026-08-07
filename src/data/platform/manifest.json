@@ -72,6 +72,10 @@
       "displayName": "IJC"
     },
     {
+      "filename": "Talon Empire",
+      "displayName": "Talon Empire"
+    },
+    {
       "filename": "Deadlock Rebels",
       "displayName": "Deadlock Rebels"
     },
@@ -200,6 +204,10 @@
       "displayName": "Wayfinder Society"
     },
     {
+      "filename": "Numbani City of Harmony",
+      "displayName": "Numbani City of Harmony"
+    },
+    {
       "filename": "Blackwatch",
       "displayName": "Blackwatch"
     },
@@ -210,10 +218,6 @@
     {
       "filename": "Search & Rescue",
       "displayName": "Search & Rescue"
-    },
-    {
-      "filename": "Talon Empire",
-      "displayName": "Talon Empire"
     }
   ],
   "npcs": [
@@ -753,7 +757,9 @@
       "Default"
     ],
     "Junker Monarchy": [
-      "Default"
+      "Default",
+      "ALF",
+      "Mason Monarchy"
     ],
     "La Coterie": [
       "Default"
@@ -773,6 +779,9 @@
     "Null Sector": [
       "Default",
       "Invasion"
+    ],
+    "Numbani City of Harmony": [
+      "Default"
     ],
     "Oasis Ministries": [
       "Default"

@@ -8,6 +8,8 @@ import { resolveBioManifestChipIdentity } from './loadBioFilterManifest.js';
 import { toggleBioBiographyChip } from './heroBiographySelection.js';
 import { hideHeroBiographyChipStripOnPortraitPick } from './heroBiographyChipStripVisibility.js';
 import { fitHeroChipLabelText } from './fitHeroChipLabelText.js';
+import { applyBioChipPortraitBackground } from './bioChipPortraitBackground.js';
+import { loadCodexNodesForGalleryStyle } from './galleryConnectionCanvasCodexStyle.js';
 
 /** @type {Record<string, string>} */
 const IMAGE_FOLDER_BY_CATEGORY = {
@@ -72,6 +74,13 @@ export function createBioBiographyChip(category, manifestItem, imageService, sou
     chip.appendChild(imageContainer);
     chip.appendChild(label);
     wrap.appendChild(chip);
+
+    applyBioChipPortraitBackground(chip, cat, filterKey);
+    if (cat === 'factions') {
+        void loadCodexNodesForGalleryStyle().then((nodes) => {
+            applyBioChipPortraitBackground(chip, cat, filterKey, nodes);
+        });
+    }
 
     const scheduleLabelFit = () => {
         requestAnimationFrame(() => fitHeroChipLabelText(labelText));

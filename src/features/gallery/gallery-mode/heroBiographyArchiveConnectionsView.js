@@ -41,6 +41,9 @@ export function renderHeroBiographyConnectionsView(container, entry, category = 
     const wire = window.__SlideBioConnections?.wireStoryFilterSectionBioArchiveNav;
     if (typeof wire === 'function') wire(container);
 
+    const paintBg = window.__BioChipPortraitBackground?.paintBioChipPortraitBackgrounds;
+    if (typeof paintBg === 'function') void paintBg(container);
+
     void refreshGalleryConnectionPortraitLooks();
 }
 
