@@ -9,7 +9,7 @@ import {
     resolveExactRosterHero,
 } from './dialogueTheaterPairSearch.js';
 
-const PAIR_SEARCH_AUTOCOMPLETE = { placement: 'fixed' };
+const PAIR_SEARCH_AUTOCOMPLETE = { placement: 'overlay' };
 const HERO_ICON_FALLBACK = 'src/assets/images/Icons/Filter Icons/Heroes Icon.png';
 
 /**
