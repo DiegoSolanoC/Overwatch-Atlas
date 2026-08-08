@@ -8963,8 +8963,12 @@
       ],
       "sources": [
         {
-          "text": "Ramattra Reflections",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/"
+          "text": "Ramattra: Reflections",
+          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
+          ]
         }
       ],
       "heroFilterPlaces": [

@@ -381,6 +381,432 @@ body.color-palette-gray .filters-grid .filters-grid-hero-subrole-separator {
     align-items: start; /* Row height from tallest tile only; label height capped below */
 }
 
+/* Gallery Select File–style chip boards (heroes / factions / NPCs / countries) */
+.filters-grid.filters-grid--chip-board {
+    --filters-chip-rim: clamp(5px, 0.48vw, 8px);
+    --filters-chip-max-h: clamp(72px, 5.8vw, 96px);
+    --filters-chip-max-w: calc(var(--filters-chip-max-h) - 2 * var(--filters-chip-rim));
+    --filters-chip-label-band: clamp(17px, 1.35vw, 22px);
+    --filters-chip-label-rim: clamp(3px, 0.32vw, 5px);
+    --filters-chip-board-heading-h: calc(clamp(1.2rem, 2.2vw, 1.75rem) * 0.95 + 10px);
+    --filters-chip-board-row-gap: clamp(6px, 0.85vh, 12px);
+    --filters-chip-group-gap: clamp(14px, 1.2vw, 24px);
+    --hero-bio-chip-rim: var(--filters-chip-rim);
+    --hero-bio-chip-max-h: var(--filters-chip-max-h);
+    --hero-bio-chip-max-w: var(--filters-chip-max-w);
+    --hero-bio-label-band: var(--filters-chip-label-band);
+    --hero-bio-label-rim: var(--filters-chip-label-rim);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    grid-template-columns: none;
+    gap: var(--filters-chip-board-row-gap);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.filters-chip-board {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--filters-chip-board-row-gap);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filters-chip-board__heading {
+    margin: 0;
+    padding: 0 4px 4px;
+    min-height: var(--filters-chip-board-heading-h);
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif;
+    font-style: oblique;
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    font-weight: normal;
+    line-height: 0.95;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.filters-chip-board__heading--spacer {
+    visibility: hidden;
+    color: transparent;
+    text-shadow: none;
+    pointer-events: none;
+    user-select: none;
+}
+
+.filters-chip-board__roles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 1.4vw, 22px);
+    width: 100%;
+    align-items: start;
+}
+
+.filters-chip-board__rows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--filters-chip-board-row-gap);
+    width: 100%;
+}
+
+.filters-chip-board__role-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--filters-chip-board-row-gap);
+    overflow: visible;
+}
+
+/* Heroes: stacked full-width role bands (not side-by-side columns) */
+.filters-chip-board--flat .filters-chip-board__role-band {
+    width: 100%;
+    align-items: center;
+}
+
+.filters-chip-board--flat .filters-chip-board__role-band .filters-chip-board__role-heading {
+    align-self: stretch;
+}
+
+.filters-chip-board--flat .filters-chip-board__role-band .filters-chip-board__subrow {
+    justify-content: center;
+    width: 100%;
+}
+
+.filters-chip-board__role-heading {
+    margin: 0 0 2px;
+    padding: 0 4px 4px;
+    text-align: center;
+    font-family: 'BigNoodleToo', 'Impact', 'Arial Black', sans-serif;
+    font-style: oblique;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    font-weight: normal;
+    line-height: 0.95;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.filters-chip-board__subrow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--filters-chip-group-gap);
+    width: 100%;
+    overflow: visible;
+}
+
+.filters-chip-board--flat .filters-chip-board__subrow {
+    gap: var(--filters-chip-group-gap);
+}
+
+.filters-chip-board__role-column .filters-chip-board__subrow {
+    gap: clamp(16px, 1.3vw, 26px);
+}
+
+.filters-chip-board__subrole-group {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.filters-chip-board__chips-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(4px, 0.42vw, 7px);
+    width: max-content;
+    max-width: 100%;
+    align-self: center;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.filters-chip-board__chips-row--wrap {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.filters-chip-board--flat .filters-chip-board__country-band {
+    width: 100%;
+    align-items: center;
+}
+
+.filters-chip-board--flat .filters-chip-board__country-band .filters-chip-board__role-heading {
+    align-self: stretch;
+}
+
+.filters-chip-board--flat .filters-chip-board__country-band .filters-chip-board__chips-row--wrap {
+    justify-content: center;
+    gap: clamp(6px, 0.55vw, 10px);
+    row-gap: clamp(10px, 1.2vh, 16px);
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.filters-chip-board__subrole-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    margin: calc(var(--filters-chip-label-band) * 0.35 + clamp(1px, 0.2vh, 3px)) 0 0;
+    padding: 0;
+    width: 100%;
+    gap: clamp(4px, 0.45vw, 7px);
+    box-sizing: border-box;
+}
+
+.filters-chip-board__subrole-label-line {
+    flex: 1 1 auto;
+    height: var(--filters-chip-label-rim);
+    min-width: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 999px;
+}
+
+.filters-chip-board__subrole-label-text {
+    flex: 0 0 auto;
+    font-family: var(--font-control-bold, 'Config', sans-serif);
+    font-size: clamp(11px, 0.95vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.filters-chip-board__subrole-label--empty .filters-chip-board__subrole-label-text {
+    min-width: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.filters-chip-wrap {
+    position: relative;
+    flex: 0 0 var(--filters-chip-max-w);
+    width: var(--filters-chip-max-w);
+    min-width: var(--filters-chip-max-w);
+    max-width: var(--filters-chip-max-w);
+    z-index: 1;
+    overflow: visible;
+}
+
+/* Countries: flags are 8:5 (640×400) — wider chip so cover does not crop the flag */
+.filters-chip-wrap.filters-chip-wrap--flag {
+    --filters-chip-max-w: calc(
+        (var(--filters-chip-max-h) - 2 * var(--filters-chip-rim)) * 8 / 5
+    );
+}
+
+.filters-chip-wrap:hover,
+.filters-chip-wrap:focus-within {
+    z-index: 50;
+}
+
+.filters-chip-wrap:has(.filter-btn.selected) {
+    z-index: 45;
+}
+
+.filters-chip-wrap:has(.filter-btn.selected)::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    top: -3px;
+    bottom: calc(-1 * var(--filters-chip-label-band) - 5px);
+    border: 2px solid rgba(255, 186, 80, 0.95);
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 6;
+    animation: filters-chip-golden-glow 2.2s ease-in-out infinite;
+}
+
+@keyframes filters-chip-golden-glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 8px rgba(255, 186, 80, 0.65),
+            0 0 18px rgba(255, 200, 100, 0.38);
+    }
+    50% {
+        box-shadow:
+            0 0 14px rgba(255, 186, 80, 0.95),
+            0 0 28px rgba(255, 210, 100, 0.62);
+    }
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip {
+    --filters-chip-hover-scale: 1.1;
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: var(--filters-chip-max-h);
+    max-width: var(--filters-chip-max-w);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    overflow: visible;
+    box-sizing: border-box;
+    cursor: pointer;
+    transform: scale(1) translateZ(0);
+    transform-origin: center bottom;
+    transition: transform 0.2s ease;
+    isolation: auto;
+    backface-visibility: visible;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip:hover,
+.filters-grid--chip-board .filter-btn.filters-chip.selected {
+    z-index: 12;
+    transform: scale(var(--filters-chip-hover-scale)) translateZ(0);
+    box-shadow: none;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip .filter-image-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-top: var(--filters-chip-rim) solid rgba(255, 255, 255, 0.93);
+    border-bottom: var(--filters-chip-rim) solid rgba(255, 255, 255, 0.93);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bio-chip-portrait-bg, rgba(0, 0, 0, 0.5)) !important;
+    box-sizing: border-box;
+    line-height: 0;
+    transition:
+        border-color 0.18s ease,
+        border-radius 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip.selected .filter-image-container {
+    background: var(--bio-chip-portrait-bg, rgba(0, 0, 0, 0.5)) !important;
+    border-color: rgba(255, 255, 255, 0.93) !important;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 0;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip .filter-label {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 8;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: var(--filters-chip-rim) solid transparent;
+    border-radius: 0 0 10px 10px;
+    background: #fff !important;
+    color: #0f2840;
+    opacity: 0;
+    visibility: hidden;
+    overflow: visible;
+    pointer-events: none;
+    white-space: nowrap;
+    transition:
+        opacity 0.16s ease,
+        visibility 0.16s ease;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip .filter-label-text {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-control-bold, 'Config', sans-serif);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0f2840 !important;
+    white-space: nowrap;
+    overflow: visible;
+    display: block;
+    word-break: normal;
+    -webkit-line-clamp: unset;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip:hover .filter-label,
+.filters-grid--chip-board .filter-btn.filters-chip.selected .filter-label {
+    opacity: 1;
+    visibility: visible;
+    z-index: 60;
+    min-height: var(--filters-chip-label-band);
+    padding: 1px 2px calc(1px + var(--filters-chip-label-rim));
+    border-top: var(--filters-chip-label-rim) solid rgba(255, 255, 255, 0.93);
+    border-bottom: var(--filters-chip-label-rim) solid rgba(255, 255, 255, 0.93);
+    background: #fff !important;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip:hover .filter-image-container,
+.filters-grid--chip-board .filter-btn.filters-chip.selected .filter-image-container {
+    border-bottom: 0 solid transparent;
+    border-radius: 10px 10px 0 0;
+}
+
+.filters-grid--chip-board .filter-btn.filters-chip.selected .filter-label {
+    background: #fff !important;
+}
+
+@media (max-width: 1100px) {
+    .filters-chip-board__roles {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Custom scrollbar styling for filters grid */
 .filters-grid::-webkit-scrollbar {
     width: var(--scrollbar-width);

@@ -1004,6 +1004,20 @@
     min-width: 0;
 }
 
+.event-slide-bio-conn-range__event-input-wrap .gallery-look-ranges__autocomplete-list,
+.event-slide-bio-conn-range__event-input-wrap .filter-autocomplete-list--anchored {
+    position: absolute !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 80;
+    box-sizing: border-box;
+    margin: 0;
+}
+
 .event-slide-bio-conn-range__event-input-wrap .event-slide-inline-editor__input {
     width: 100%;
     box-sizing: border-box;

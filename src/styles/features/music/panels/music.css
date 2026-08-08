@@ -261,7 +261,7 @@ body.color-palette-gray .music-mute-btn:hover {
 }
 
 /* ========================================
-   PASSIVE "NOW PLAYING" BADGE (under Music button)
+   PASSIVE "NOW PLAYING" BADGE (under right header hub; mirrors summary badge)
    ======================================== */
 
 .music-now-playing-badge {

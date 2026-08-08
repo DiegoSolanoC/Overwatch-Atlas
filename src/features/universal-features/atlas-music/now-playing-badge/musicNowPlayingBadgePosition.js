@@ -1,6 +1,7 @@
 /**
- * Body scale + badge anchor math: pins the passive badge under #musicToggle,
- * clamped against the #content region when present.
+ * Body scale + badge anchor math: pins the passive now-playing badge under the
+ * right header hub, mirrored against the summary badge under `#headerHub`.
+ * Horizontal anchors are viewport-fixed so side panels do not shift them.
  */
 
 export function getBodyScale() {
@@ -18,20 +19,21 @@ export function getBodyScale() {
 }
 
 /**
- * @param {HTMLElement} musicButtonEl
  * @param {HTMLElement} badgeEl
  */
-export function positionNowPlayingBadge(musicButtonEl, badgeEl) {
+export function positionNowPlayingBadge(badgeEl) {
+    const headerHubRight = document.getElementById('headerHubRight');
+    if (!badgeEl || !headerHubRight) return;
+
     const scale = getBodyScale();
-    const musicRect = musicButtonEl.getBoundingClientRect();
+    const rect = headerHubRight.getBoundingClientRect();
     const gap = 2;
 
-    const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
-    const leftPos = contentRect
-        ? ((contentRect.left + (contentRect.width * 0.8)) / scale)
-        : (Math.max(1, (window.innerWidth || 1) / scale) * 0.7);
+    // Viewport-fixed mirror of SummaryInfoBadge (20% via `right` → 80% via `left`).
+    const vw = Math.max(1, (window.innerWidth || 1) / scale);
+    const leftPos = vw * 0.8;
 
     badgeEl.style.left = `${leftPos}px`;
     badgeEl.style.right = '';
-    badgeEl.style.top = `${(musicRect.bottom + gap) / scale}px`;
+    badgeEl.style.top = `${(rect.bottom + gap) / scale}px`;
 }

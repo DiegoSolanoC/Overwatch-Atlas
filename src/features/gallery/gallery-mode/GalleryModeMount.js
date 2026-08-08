@@ -4,9 +4,14 @@ import {
     refreshHeroBiographyDockPagination,
 } from './heroBiographyDockTimeline.js';
 import {
-    mountHeroBiographyHeroFilterBar,
-    unmountHeroBiographyHeroFilterBar,
+    mountGalleryBiographyStage,
+    unmountGalleryBiographyStage,
 } from './HeroBiographyHeroFilterBar.js';
+import {
+    closeFiltersPanelForGalleryExit,
+    openFiltersPanelForGallery,
+    pickRandomGalleryHeroOnOpen,
+} from './galleryFiltersBridge.js';
 
 const HOST_ID = 'atlasGalleryHost';
 
@@ -50,14 +55,18 @@ export async function mountGalleryMode(_options = {}) {
     content.appendChild(host);
 
     try {
-        await mountHeroBiographyHeroFilterBar(host, main);
+        await mountGalleryBiographyStage(host, main);
     } catch (err) {
-        console.warn('[gallery] Failed to load hero filters:', err);
+        console.warn('[gallery] Failed to mount biography stage:', err);
         const errNote = document.createElement('p');
         errNote.className = 'gallery-mode__error';
-        errNote.textContent = 'Could not load hero filters.';
+        errNote.textContent = 'Could not load gallery stage.';
         main.appendChild(errNote);
     }
+
+    /* Filters replace the Select File overlay for entity picking. */
+    openFiltersPanelForGallery();
+    void pickRandomGalleryHeroOnOpen();
 
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;
@@ -73,7 +82,8 @@ export async function unmountGalleryMode() {
     if (host?._heroBiographyEscape) {
         document.removeEventListener('keydown', host._heroBiographyEscape);
     }
-    unmountHeroBiographyHeroFilterBar();
+    closeFiltersPanelForGalleryExit();
+    unmountGalleryBiographyStage();
     clearHeroBiographyDockHeroFilter();
     refreshHeroBiographyDockPagination();
     host?.remove();

@@ -98,6 +98,13 @@ body:has(#atlasGalleryHost),
         var(--header-height, 88px) + clamp(12rem, 22vh, 16.5rem)
     );
     --gallery-side-panel-inset-bottom: calc(var(--footer-height, 65px) + 360px + 128px);
+    /*
+     * Stable stage floor — always the expanded dock height (360px), never the live
+     * --pagination-dock-height (which shrinks on collapse and would move portraits).
+     */
+    --gallery-stage-inset-bottom: calc(
+        var(--footer-height, 65px) + var(--pagination-dock-height-expanded, 360px)
+    );
 }
 
 /* Desktop / tablet landscape: fixed side columns flanking the stage */
@@ -119,6 +126,42 @@ body:has(#atlasGalleryHost),
     body:has(#atlasGalleryHost) .gallery-mode__archive-connections.gallery-mode__archive-side-panel {
         right: clamp(52px, 6vw, 92px);
         left: auto;
+    }
+
+    /*
+     * Pin title / look / phrase / portrait to the viewport stage — same idea as
+     * Intel + Connections (position: fixed). Otherwise they live in #content and
+     * slide whenever filters / event-slide change flex width.
+     */
+    body:has(#atlasGalleryHost) .gallery-mode__main {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: var(--header-height, 88px);
+        bottom: var(--gallery-stage-inset-bottom);
+        width: auto;
+        max-width: none;
+        margin: 0;
+        flex: none;
+        z-index: 2;
+    }
+
+    /* Portrait is a sibling of .gallery-mode__main — pin it to the same stage box. */
+    body:has(#atlasGalleryHost) .gallery-mode__portrait {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: var(--header-height, 88px);
+        bottom: var(--gallery-stage-inset-bottom);
+        width: auto;
+        max-width: none;
+        margin: 0;
+        z-index: 1;
+    }
+
+    /* Allow slight feet overflow without reacting to dock open/close. */
+    body:has(#atlasGalleryHost) #atlasGalleryHost.gallery-mode {
+        overflow: visible;
     }
 }
 
@@ -967,20 +1010,33 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     overflow: visible;
 }
 
-/* Full-stage heroic art — sits behind title + chip strip, anchored to dock */
+/* Full-stage heroic art — Dialogue Theater stage render formatting (solo, centered) */
 .gallery-mode__portrait {
+    /*
+     * Theater uses a deep negative bottom bleed for the info-panel stage.
+     * Gallery sits above the pagination dock — keep feet on the stage floor
+     * (no dock burial) with a small upward bias.
+     */
+    --stage-render-bottom: -15%;
+    --stage-render-bottom-extent: 15%;
+    --stage-render-top-gutter: 2%;
+    --stage-render-scale: 1.48;
+    --stage-render-max-height: calc(
+        100% + var(--stage-render-bottom-extent) - var(--stage-render-top-gutter)
+    );
+    --stage-render-max-width: min(300%, 3600px);
+    --hero-bio-portrait-scale: 1;
+
     position: absolute;
     left: 0;
     right: 0;
-    top: clamp(3.75rem, 8.5vh, 6.5rem);
+    top: 0;
     bottom: 0;
     z-index: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    display: block;
     overflow: visible;
     opacity: 0;
     visibility: hidden;
@@ -1000,14 +1056,26 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 
 .gallery-mode__portrait-img {
     display: none;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    flex: 0 0 auto;
-    align-self: flex-end;
+    position: absolute;
+    left: 50%;
+    bottom: var(--stage-render-bottom, -15%);
+    z-index: 2;
+    width: auto;
+    height: auto;
+    max-height: var(--stage-render-max-height);
+    max-width: var(--stage-render-max-width);
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    filter: none;
     object-fit: contain;
     object-position: center bottom;
+    transform: translateX(-50%)
+        scale(calc(var(--stage-render-scale, 1.48) * var(--hero-bio-portrait-scale, 1)));
+    transform-origin: bottom center;
+    transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .gallery-mode__portrait.has-image .gallery-mode__portrait-img {
@@ -1020,19 +1088,24 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 }
 
 .gallery-mode__portrait--faction {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: clamp(6rem, 14vh, 10rem);
 }
 
 .gallery-mode__portrait--faction .gallery-mode__portrait-img {
+    position: relative;
+    left: auto;
+    bottom: auto;
     width: auto;
     height: auto;
     max-width: min(42vw, 520px);
     max-height: min(36vh, 380px);
     object-fit: contain;
     object-position: center center;
-    align-self: center;
+    transform: none;
+    transform-origin: center center;
 }
 
 .gallery-mode__portrait.has-image .gallery-mode__portrait-img:active {
@@ -1040,7 +1113,11 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 }
 
 .gallery-mode__portrait-empty {
-    margin: 0 0 18vh;
+    position: absolute;
+    left: 50%;
+    bottom: 18vh;
+    transform: translateX(-50%);
+    margin: 0;
     padding: 0 16px;
     max-width: 28ch;
     text-align: center;
@@ -1393,8 +1470,7 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
 }
 
 .gallery-mode__look-event-range-input-wrap .gallery-look-ranges__autocomplete-list {
-    position: absolute;
-    top: calc(100% + 4px);
+    position: absolute !important;
     left: 0;
     right: 0;
     width: 100%;
@@ -1403,6 +1479,7 @@ body:has(#atlasGalleryHost) #heroBiographyChipStripToggle.dock-globe-rail__btn {
     overflow-y: auto;
     z-index: 80;
     box-sizing: border-box;
+    margin: 0;
 }
 
 .gallery-look-ranges__autocomplete-list {
@@ -2142,6 +2219,12 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
         align-items: flex-end;
         justify-content: center;
         pointer-events: auto;
+        --stage-render-bottom: 0%;
+        --stage-render-bottom-extent: 0%;
+        --stage-render-top-gutter: 0%;
+        --stage-render-scale: 1;
+        --stage-render-max-height: 100%;
+        --stage-render-max-width: 100%;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait:not(.is-visible) {
@@ -2165,14 +2248,23 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait-img {
+        position: relative;
+        left: auto;
+        bottom: auto;
         max-height: min(38vh, 320px);
         width: auto;
         max-width: 100%;
         object-fit: contain;
         object-position: center bottom;
+        transform: none;
+        transform-origin: center bottom;
     }
 
     body:has(#atlasGalleryHost) .gallery-mode__portrait-empty {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
         margin: 0;
     }
 

@@ -18,6 +18,10 @@ import { updateStatus } from '../../universal-features/atlas-mode-runtime/status
 import { updateStandalonePaginationForFilters } from './pagination/standalonePaginationFilterSync.js';
 import { syncStoryTimelineIfActive } from '../../story/story-mode/StoryTimelineView.js';
 import { syncDialogueTheaterListIfActive } from '../../dialogue-theater/dialogue-theater-list/DialogueTheaterListView.js';
+import {
+    clearGalleryFilterSelectionIfOpen,
+    isAtlasGalleryOpen,
+} from '../../gallery/gallery-mode/galleryFiltersBridge.js';
 
 /**
  * Replace `#confirmFiltersBtn` and `#clearFiltersBtn` with cloned copies wired
@@ -53,10 +57,13 @@ export function wireStandaloneFilterButtons() {
             if (typeof window.LocationFlagHelpers?.scheduleApplyRelevancyRowFilterHighlight === 'function') {
                 window.LocationFlagHelpers.scheduleApplyRelevancyRowFilterHighlight();
             }
-            const filtersPanel = document.getElementById('filtersPanel');
-            if (filtersPanel) filtersPanel.classList.remove('open');
-            const filtersToggle = document.getElementById('filtersToggle');
-            if (filtersToggle) filtersToggle.classList.remove('active');
+            /* In gallery, selection already applied live — keep the panel open. */
+            if (!isAtlasGalleryOpen()) {
+                const filtersPanel = document.getElementById('filtersPanel');
+                if (filtersPanel) filtersPanel.classList.remove('open');
+                const filtersToggle = document.getElementById('filtersToggle');
+                if (filtersToggle) filtersToggle.classList.remove('active');
+            }
             if (typeof window.syncFiltersPanelTrapIcon === 'function') {
                 window.syncFiltersPanelTrapIcon();
             }
@@ -73,6 +80,7 @@ export function wireStandaloneFilterButtons() {
             if (window.FilterService?.stateManager) {
                 window.FilterService.stateManager.clear();
             }
+            clearGalleryFilterSelectionIfOpen();
             if (window.SoundEffectsManager) {
                 window.SoundEffectsManager.play('filterClear');
             }

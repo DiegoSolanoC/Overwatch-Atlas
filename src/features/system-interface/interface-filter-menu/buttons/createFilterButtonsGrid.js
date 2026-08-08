@@ -3,11 +3,9 @@
  *
  *   1. Hit `tryReuseCachedFilterButtons` -> bail with re-appended DOM if hot.
  *   2. Pick the layout:
- *        - factions tab + grouped requested -> faction-type buckets
- *        - heroes tab + grouped requested   -> role + subrole buckets
- *        - npcs tab + grouped requested     -> npc-category buckets
- *        - everything else                  -> flat chip list
- *   3. Cache the resulting buttons array so the next tab switch is cheap.
+ *        - factions / heroes / npcs / countries -> Gallery-style chip boards
+ *        - fallback                             -> wrapping chip row
+ *   3. Cache the resulting top-level nodes so the next tab switch is cheap.
  *   4. Preload the OTHER tabs' images on a stagger so switching tabs feels
  *      instant later.
  */
@@ -17,13 +15,12 @@ import { createFilterButton } from './createFilterButton.js';
 import { buildGroupedFactionArchiveFilterDom } from './archive-layouts/buildGroupedFactionDom.js';
 import { buildGroupedHeroArchiveFilterDom } from './archive-layouts/buildGroupedHeroDom.js';
 import { buildGroupedNpcArchiveFilterDom } from './archive-layouts/buildGroupedNpcDom.js';
+import { buildGroupedCountryFilterDom } from './archive-layouts/buildGroupedCountryDom.js';
 
 function scheduleOtherTabPreloads(type, { heroes, factions, npcs, countries }, preloadImages) {
     const npcList = Array.isArray(npcs) ? npcs : [];
     const countryList = Array.isArray(countries) ? countries : [];
 
-    /* Per-tab preload schedule chosen so the most-likely "next tab" finishes
-       first while the current tab is still rendering its chips. */
     if (type === 'heroes') {
         if (factions.length > 0) setTimeout(() => preloadImages(factions, 'factions', 'src/assets/images/Filters/Factions'), 100);
         if (npcList.length > 0) setTimeout(() => preloadImages(npcList, 'npcs', 'src/assets/images/Filters/NPCs'), 150);
@@ -44,14 +41,9 @@ function scheduleOtherTabPreloads(type, { heroes, factions, npcs, countries }, p
 }
 
 /**
- * @param {boolean} [groupFactionsByArchiveType] When true and `type === 'factions'`,
- *   group chips by archive faction type (always set for the factions tab).
- * @param {boolean} [groupHeroesByArchiveRole] When true and `type === 'heroes'`,
- *   group chips by role + subrole (always set for the heroes tab).
- * @param {boolean} [groupNpcsByArchiveCategory] When true and `type === 'npcs'`,
- *   group chips by archive npc category (always set for the npcs tab).
+ * @returns {Promise<void>}
  */
-export function createFilterButtonsGrid(
+export async function createFilterButtonsGrid(
     items, type, folder,
     filtersGrid, buttonCache,
     stateManager, imageService, soundManager,
@@ -62,29 +54,47 @@ export function createFilterButtonsGrid(
     groupNpcsByArchiveCategory = false
 ) {
     if (!filtersGrid) return;
-    if (tryReuseCachedFilterButtons(type, buttonCache, filtersGrid, stateManager, updateFilterCounts)) return;
+    if (tryReuseCachedFilterButtons(type, buttonCache, filtersGrid, stateManager, updateFilterCounts)) {
+        return;
+    }
 
     filtersGrid.innerHTML = '';
+    filtersGrid.classList.add('filters-grid--chip-board');
+    filtersGrid.classList.remove('filters-grid--chip-board-columns');
+    filtersGrid.classList.add('filters-grid--chip-board-flat');
+    filtersGrid.classList.toggle('filters-grid--chip-board-flags', type === 'countries');
+
+    /** @type {HTMLElement[]} */
     let cachedButtons = [];
 
     if (type === 'factions' && groupFactionsByArchiveType) {
-        cachedButtons = buildGroupedFactionArchiveFilterDom(
+        cachedButtons = await buildGroupedFactionArchiveFilterDom(
             items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
         );
     } else if (type === 'heroes' && groupHeroesByArchiveRole) {
-        cachedButtons = buildGroupedHeroArchiveFilterDom(
+        cachedButtons = await buildGroupedHeroArchiveFilterDom(
             items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
         );
     } else if (type === 'npcs' && groupNpcsByArchiveCategory) {
-        cachedButtons = buildGroupedNpcArchiveFilterDom(
+        cachedButtons = await buildGroupedNpcArchiveFilterDom(
+            items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
+        );
+    } else if (type === 'countries') {
+        cachedButtons = await buildGroupedCountryFilterDom(
             items, folder, filtersGrid, stateManager, imageService, soundManager, updateFilterCounts
         );
     } else {
-        items.forEach(item => {
-            const filterBtn = createFilterButton(item, type, folder, stateManager, imageService, soundManager, updateFilterCounts);
-            filtersGrid.appendChild(filterBtn);
-            cachedButtons.push(filterBtn);
+        const row = document.createElement('div');
+        row.className = 'filters-chip-board__chips-row filters-chip-board__chips-row--wrap';
+        row.setAttribute('role', 'list');
+        items.forEach((item) => {
+            const wrap = createFilterButton(
+                item, type, folder, stateManager, imageService, soundManager, updateFilterCounts,
+            );
+            row.appendChild(wrap);
         });
+        filtersGrid.appendChild(row);
+        cachedButtons = [row];
     }
 
     buttonCache[type] = cachedButtons;

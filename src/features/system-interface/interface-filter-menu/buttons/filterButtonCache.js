@@ -1,28 +1,33 @@
 /**
- * Per-tab cache of already-built filter chip DOM nodes. Switching tabs is hot
- * (the user toggles between Heroes/Factions/NPCs frequently), and rebuilding
- * hundreds of chips every time pegs the layout thread — so we hold the
- * `<div.filter-btn>` references and re-append them on tab switch.
- *
- * The selection class is reconciled from `stateManager` on each restore: the
- * cached node remembers its `dataset.filterKey` but the "selected" state of
- * that key may have changed while it was offscreen.
+ * Per-tab cache of already-built filter chip board DOM nodes.
  */
 
 export function tryReuseCachedFilterButtons(type, buttonCache, filtersGrid, stateManager, updateFilterCounts) {
     if (!buttonCache[type]) return false;
 
     filtersGrid.innerHTML = '';
-    buttonCache[type].forEach(cachedBtn => {
-        const filterKey = cachedBtn.dataset.filterKey;
-        if (filterKey) {
-            if (stateManager.has(filterKey)) {
-                cachedBtn.classList.add('selected');
-            } else {
-                cachedBtn.classList.remove('selected');
-            }
+    filtersGrid.classList.add('filters-grid--chip-board');
+    filtersGrid.classList.remove('filters-grid--chip-board-columns');
+    filtersGrid.classList.add('filters-grid--chip-board-flat');
+    filtersGrid.classList.toggle('filters-grid--chip-board-flags', type === 'countries');
+
+    buttonCache[type].forEach((cachedNode) => {
+        if (!(cachedNode instanceof HTMLElement)) return;
+        cachedNode.querySelectorAll('.filter-btn').forEach((btn) => {
+            const filterKey = btn.dataset.filterKey;
+            if (!filterKey) return;
+            const selected = stateManager.has(filterKey);
+            btn.classList.toggle('selected', selected);
+            btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+        /* Migrate older country chips to wide flag proportion if cache predates the class. */
+        if (type === 'countries') {
+            cachedNode.querySelectorAll('.filters-chip-wrap').forEach((wrap) => {
+                wrap.classList.add('filters-chip-wrap--flag');
+                wrap.querySelector('.filter-btn')?.classList.add('filters-chip--flag');
+            });
         }
-        filtersGrid.appendChild(cachedBtn);
+        filtersGrid.appendChild(cachedNode);
     });
     updateFilterCounts();
     return true;

@@ -155,6 +155,8 @@
     --footer-height: 65px; /* Increased for more space for news ticker */
     --pagination-dock-height: 360px; /* Desktop pagination thumbnails dock */
     --pagination-dock-height-collapsed: 200px; /* Slider + collapse grip + compact number row */
+    /* Expanded dock height — stable; --pagination-dock-height shrinks on collapse. */
+    --pagination-dock-height-expanded: 360px;
     /* Dock collapse: keep dock, globe band, slide, overlay, and thumbs in sync */
     --pagination-dock-transition-duration: 0.42s;
     --pagination-dock-transition-easing: cubic-bezier(0.32, 0.72, 0.25, 1);

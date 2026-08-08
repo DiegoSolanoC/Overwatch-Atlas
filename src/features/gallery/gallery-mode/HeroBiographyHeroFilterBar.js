@@ -16,6 +16,7 @@ import { createBioBiographyChip } from './createBioBiographyChip.js';
 import {
     clearBioBiographyChipSelectionForCategoryChange,
     destroyHeroBiographySelection,
+    getActiveHeroBiographySelection,
     initHeroBiographySelection,
 } from './heroBiographySelection.js';
 import { loadBioFilterManifestEntries } from './loadBioFilterManifest.js';
@@ -425,78 +426,30 @@ function setActiveCategoryTab(categoryRow, category) {
 }
 
 /**
+ * Gallery biography stage only — portrait / looks / archive intel.
+ * Entity picking is delegated to the Filters panel (Select File overlay removed).
+ *
  * @param {HTMLElement} host
  * @param {HTMLElement} mainEl
  */
-export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
-    unmountHeroBiographyHeroFilterBar();
+export async function mountGalleryBiographyStage(host, mainEl) {
+    unmountGalleryBiographyStage();
 
     sessionImageService = new FilterImageService();
     initHeroBiographySelection(host, mainEl);
     activeCategory = 'heroes';
 
-    const strip = document.createElement('div');
-    strip.className = 'gallery-hero-filters';
-    strip.setAttribute('aria-label', 'Biography archive entity selection');
-
-    const categoryRow = document.createElement('div');
-    categoryRow.className = 'gallery-hero-filters__category-row';
-    categoryRow.setAttribute('role', 'tablist');
-    categoryRow.setAttribute('aria-label', 'Archive category');
-
-    for (const cat of BIO_BIOGRAPHY_ARCHIVE_CATEGORIES) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'gallery-hero-filters__category-chip';
-        btn.dataset.bioCategory = cat;
-        btn.setAttribute('role', 'tab');
-        btn.setAttribute('aria-selected', cat === activeCategory ? 'true' : 'false');
-        btn.setAttribute('aria-label', BIO_BIOGRAPHY_CATEGORY_ARIA[cat]);
-
-        const icon = document.createElement('img');
-        icon.className = 'gallery-hero-filters__category-chip-icon';
-        icon.src = STRIP_CATEGORY_ICONS[cat];
-        icon.alt = '';
-        icon.setAttribute('aria-hidden', 'true');
-        icon.draggable = false;
-
-        const label = document.createElement('span');
-        label.className = 'gallery-hero-filters__category-chip-label';
-        label.textContent = BIO_BIOGRAPHY_CATEGORY_LABELS[cat];
-
-        btn.append(icon, label);
-        btn.addEventListener('click', () => {
-            const nextCat = normalizeBioBiographyCategory(btn.dataset.bioCategory);
-            if (nextCat === activeCategory) return;
-            clearBioBiographyChipSelectionForCategoryChange();
-            setActiveCategoryTab(categoryRow, nextCat);
-            void renderCategoryChips(nextCat);
-            getSoundManager()?.play?.('filterPick');
-        });
-        categoryRow.appendChild(btn);
-    }
-
-    chipsContentEl = document.createElement('div');
-    chipsContentEl.className = 'gallery-hero-filters__content';
-
-    strip.appendChild(categoryRow);
-    strip.appendChild(chipsContentEl);
-    host.appendChild(strip);
-    host._heroBiographyFilterStrip = strip;
-    host._heroBiographyActiveCategory = activeCategory;
-
     configureHeroBiographyArchiveIoBar({
-        refreshCategoryChips: refreshHeroBiographyCategoryChipsIfActive,
+        getActiveCategory: () => {
+            const cat = getActiveHeroBiographySelection()?.category;
+            if (cat === 'factions' || cat === 'npcs' || cat === 'heroes') return cat;
+            return activeCategory;
+        },
+        refreshCategoryChips: async () => {},
     });
-
-    setActiveCategoryTab(categoryRow, activeCategory);
-    await renderCategoryChips(activeCategory);
-
-    bindHeroBiographyChipStrip(host, strip);
-    mountHeroBiographyChipStripToggle();
 }
 
-export function unmountHeroBiographyHeroFilterBar() {
+export function unmountGalleryBiographyStage() {
     const host = document.getElementById('atlasGalleryHost');
     host?._heroBiographyFilterStrip?.remove();
     if (host) {
@@ -508,4 +461,18 @@ export function unmountHeroBiographyHeroFilterBar() {
     destroyHeroBiographySelection();
     sessionImageService = null;
     activeCategory = 'heroes';
+}
+
+/**
+ * @deprecated Select File overlay removed — use {@link mountGalleryBiographyStage}.
+ * @param {HTMLElement} host
+ * @param {HTMLElement} mainEl
+ */
+export async function mountHeroBiographyHeroFilterBar(host, mainEl) {
+    return mountGalleryBiographyStage(host, mainEl);
+}
+
+/** @deprecated Use {@link unmountGalleryBiographyStage} */
+export function unmountHeroBiographyHeroFilterBar() {
+    unmountGalleryBiographyStage();
 }

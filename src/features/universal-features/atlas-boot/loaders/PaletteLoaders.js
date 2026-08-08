@@ -26,7 +26,7 @@ export async function loadPalette(loadedComponents) {
     await withLoadLifecycle(async () => {
         createHeaderHubButton({
             id: 'colorPaletteToggle',
-            className: '',
+            className: 'header-hub-btn--wide',
             title: 'Toggle Color Palette',
             label: 'Palette',
             iconPath: 'src/assets/images/Icons/Mode%20Icons/Palette%20Icon.png',
@@ -34,7 +34,8 @@ export async function loadPalette(loadedComponents) {
             parentId: 'headerHubRightButtonGroup',
             baseClass: 'header-hub-btn header-hub-btn--icon',
             iconSpanId: 'colorPaletteIcon',
-            headerOrder: 50
+            // Last on the right; flex-grow 2 so 4 tiles still read as 5 equal segments.
+            headerOrder: 70
         });
 
         loadSoundEffect('colorChange', 'src/assets/audio/sfx/Color Change.mp3', 'Loading palette sound effect...');

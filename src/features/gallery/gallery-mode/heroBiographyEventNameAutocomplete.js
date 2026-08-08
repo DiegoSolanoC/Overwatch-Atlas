@@ -1,5 +1,6 @@
 /**
  * Predictive dropdown for story event names (hero bio look ranges, bio archive connection ranges).
+ * Anchors under the input wrap (Dialogue Theater overlay pattern), not body+fixed.
  */
 
 import { normalizeEventNameForMatch } from './heroBiographyLookRangesStorage.js';
@@ -96,6 +97,18 @@ function syncStoryEventInputValidity(input) {
 
 /**
  * @param {HTMLInputElement} input
+ * @returns {HTMLElement}
+ */
+function getAutocompleteAnchor(input) {
+    const galleryWrap = input.closest('.gallery-mode__look-event-range-input-wrap');
+    if (galleryWrap instanceof HTMLElement) return galleryWrap;
+    const bioWrap = input.closest('.event-slide-bio-conn-range__event-input-wrap');
+    if (bioWrap instanceof HTMLElement) return bioWrap;
+    return input.parentElement instanceof HTMLElement ? input.parentElement : input;
+}
+
+/**
+ * @param {HTMLInputElement} input
  * @param {(value: string) => void} [onPick]
  */
 export function wireStoryEventNameAutocomplete(input, onPick) {
@@ -114,11 +127,16 @@ export function wireStoryEventNameAutocomplete(input, onPick) {
     };
 
     const positionList = () => {
-        if (!listEl) return;
-        const rect = input.getBoundingClientRect();
-        listEl.style.left = `${rect.left}px`;
-        listEl.style.top = `${rect.bottom + 4}px`;
-        listEl.style.width = `${Math.max(rect.width, 220)}px`;
+        if (!(listEl instanceof HTMLElement)) return;
+        const anchor = getAutocompleteAnchor(input);
+        const anchorRect = anchor.getBoundingClientRect();
+        const inputRect = input.getBoundingClientRect();
+        listEl.style.position = 'absolute';
+        listEl.style.left = '0';
+        listEl.style.right = '0';
+        listEl.style.top = `${inputRect.bottom - anchorRect.top + 4}px`;
+        listEl.style.width = '100%';
+        listEl.style.minWidth = '0';
     };
 
     const applyPick = (name) => {
@@ -138,11 +156,11 @@ export function wireStoryEventNameAutocomplete(input, onPick) {
             return;
         }
 
+        const anchor = getAutocompleteAnchor(input);
         listEl = document.createElement('div');
         listEl.className =
-            'story-event-name-autocomplete-list filter-autocomplete-list gallery-look-ranges__autocomplete-list';
+            'story-event-name-autocomplete-list filter-autocomplete-list filter-autocomplete-list--anchored gallery-look-ranges__autocomplete-list';
         listEl.setAttribute('role', 'listbox');
-        positionList();
 
         for (const name of matches) {
             const btn = document.createElement('button');
@@ -156,7 +174,8 @@ export function wireStoryEventNameAutocomplete(input, onPick) {
             listEl.appendChild(btn);
         }
 
-        document.body.appendChild(listEl);
+        anchor.appendChild(listEl);
+        positionList();
         input.setAttribute('aria-expanded', 'true');
     };
 

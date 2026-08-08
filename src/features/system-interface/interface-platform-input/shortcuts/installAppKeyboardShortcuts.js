@@ -128,12 +128,21 @@ function handleLetterToggle(lower, e) {
         return true;
     }
     if (lower === 'h') {
-        if (
-            document.getElementById('atlasGalleryHost') &&
-            clickIfEnabled('heroBiographyChipStripToggle')
-        ) {
-            consumeEvent(e);
-            return true;
+        if (document.getElementById('atlasGalleryHost')) {
+            const fs = window.FilterService;
+            const panel = document.getElementById('filtersPanel');
+            if (fs && panel) {
+                const mode = typeof fs.getPanelMode === 'function' ? fs.getPanelMode() : 'filters';
+                if (panel.classList.contains('open') && mode === 'filters' && typeof fs.togglePanel === 'function') {
+                    fs.togglePanel();
+                } else if (typeof fs.openPanelWithMode === 'function') {
+                    fs.openPanelWithMode('filters');
+                } else if (typeof fs.openPanel === 'function') {
+                    fs.openPanel();
+                }
+                consumeEvent(e);
+                return true;
+            }
         }
     }
     if (lower === 'h' || lower === 'i') {

@@ -30,6 +30,7 @@ import {
     GALLERY_CONN_DEFAULT_DISPLAY,
     snapshotGalleryConnectionCanvas,
 } from './galleryConnectionCanvasModel.js';
+import { ensureCodexConnectionPayload } from '../../codex/codex-connections/CodexConnectionAccess.js';
 import { hexToRgba, loadCodexNodesForGalleryStyle } from './galleryConnectionCanvasCodexStyle.js';
 import {
     enrichGalleryCanvasNodeEntity,
@@ -951,12 +952,26 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
          */
         async load(entry, category, displayName, filterKey, savedCanvas) {
             codexNodes = await loadCodexNodesForGalleryStyle();
+            let codexGraph = null;
+            try {
+                const payload = await ensureCodexConnectionPayload();
+                if (payload?.nodes?.length) {
+                    codexGraph = {
+                        nodes: payload.nodes,
+                        edges: payload.edges || [],
+                        connections: payload.connections || [],
+                    };
+                }
+            } catch (err) {
+                console.warn('[gallery] Codex graph for neighbor cords failed:', err);
+            }
             model = buildGalleryConnectionCanvasModel(
                 entry,
                 category,
                 displayName,
                 filterKey,
                 savedCanvas,
+                codexGraph,
             );
             if (!model.display) {
                 model.display = { ...GALLERY_CONN_DEFAULT_DISPLAY };

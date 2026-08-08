@@ -212,15 +212,38 @@ function getHeroPhrasesFromFolder(folderPath) {
             if (!entry.isDirectory()) continue;
             const heroId = entry.name;
             const heroDir = path.join(folderPath, heroId);
-            let files;
+            /** @type {string[]} */
+            const clips = [];
             try {
-                files = fs.readdirSync(heroDir);
+                for (const name of fs.readdirSync(heroDir)) {
+                    const full = path.join(heroDir, name);
+                    let st;
+                    try {
+                        st = fs.statSync(full);
+                    } catch {
+                        continue;
+                    }
+                    if (st.isFile() && audioExt.test(name)) {
+                        clips.push(name);
+                        continue;
+                    }
+                    // Ultimate voicelines live in Phrases/<hero>/Ultimate/ (weighted 2× in gallery).
+                    if (st.isDirectory() && name === 'Ultimate') {
+                        let ultFiles = [];
+                        try {
+                            ultFiles = fs.readdirSync(full);
+                        } catch {
+                            ultFiles = [];
+                        }
+                        for (const ult of ultFiles) {
+                            if (audioExt.test(ult)) clips.push(`Ultimate/${ult}`);
+                        }
+                    }
+                }
             } catch {
                 continue;
             }
-            const clips = files
-                .filter((f) => audioExt.test(f))
-                .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
+            clips.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
             if (clips.length === 0) continue;
             out[heroId] = clips;
         }

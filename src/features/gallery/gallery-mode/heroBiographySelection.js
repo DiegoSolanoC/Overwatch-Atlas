@@ -91,7 +91,7 @@ let heroBiosLooksMap = null;
 /** @type {Record<string, string[]> | null} */
 let factionBiosLooksMap = null;
 
-/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | 'countries'} */
 let currentCategory = 'heroes';
 
 /** @type {string | null} */
@@ -562,6 +562,53 @@ function clearHeroSelectionUi() {
     setArchivePortrait(null, null, '', DEFAULT_HERO_BIO_LOOK);
     clearHeroBiographyDockHeroFilter();
     refreshHeroBiographyDockPagination();
+}
+
+/**
+ * Apply a Filters-panel pick to the gallery stage + curated dock timeline.
+ * Countries: curated timeline only (no portrait / archive intel).
+ *
+ * @param {'heroes'|'factions'|'npcs'|'countries'} type
+ * @param {string} filterKey
+ * @param {string} displayName
+ */
+export function selectBioBiographyEntityFromFilter(type, filterKey, displayName) {
+    const key = String(filterKey || '').trim();
+    const name = String(displayName || key).trim();
+    if (!key) return;
+
+    activeWrap = null;
+
+    if (type === 'countries') {
+        resetHeroBiographyDockLookHoverState();
+        cancelHeroSelectionPhraseSchedule();
+        stopHeroBiographyPhrase();
+        hoverPreviewLook = null;
+        currentCategory = 'countries';
+        currentFilterKey = key;
+        currentLook = DEFAULT_HERO_BIO_LOOK;
+        syncPortraitControlsVisibility();
+        populateLookSelect([]);
+        setBioBiographyLookRangesEditorEntity(null, null);
+        void setHeroBiographyPhraseButtonHero(null);
+        void setBioBiographyArchiveDescription(null, null);
+        setTitle(name);
+        setArchivePortrait(null, null, '', DEFAULT_HERO_BIO_LOOK);
+        setBioBiographyDockFilter('countries', key, name);
+        refreshHeroBiographyDockPagination();
+        return;
+    }
+
+    const cat = normalizeBioBiographyCategory(type);
+    setTitle(name);
+    void applyBioSelection(cat, key, name);
+}
+
+/**
+ * Clear gallery entity + dock curation (Filters deselect / Clear).
+ */
+export function clearBioBiographyEntityFromFilter() {
+    clearHeroBiographySelection();
 }
 
 /**

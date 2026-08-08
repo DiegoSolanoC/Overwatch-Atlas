@@ -28,7 +28,7 @@ const MODE_ICON =
 const LINKING_ICON =
     'src/assets/images/Icons/Filter%20Icons/Confirm%20Filter%20Icon.png';
 const PACKETS_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Data%20Archive.png';
+    'src/assets/images/Icons/Mode%20Icons/Data%20Workshop.png';
 const INFO_ICON =
     'src/assets/images/Icons/Mode%20Icons/Connection%20Codex.png';
 

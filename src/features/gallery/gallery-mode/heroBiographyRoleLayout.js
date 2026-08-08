@@ -1,6 +1,7 @@
 /**
- * Hero Biography strip layout — mirrors heroes-archive role / subrole grouping
- * (see filters `buildGroupedHeroDom.js`) in a 3-column Tank | Damage | Support grid.
+ * Hero Biography strip layout — role / subrole grouping from heroes-archive.
+ * Gallery Select File still uses Tank | Damage | Support columns; the filters
+ * panel uses the flat two-row segment board (same packing as factions / NPCs).
  */
 
 import {
@@ -14,7 +15,7 @@ import {
 import { normalizeHeroArchiveSubrole } from '../../data-workshop/archive-category-heroes/ArchiveHeroSubroles.js';
 import { normalizeHeroArchiveRole } from '../../data-workshop/archive-category-heroes/ArchiveHeroRoles.js';
 
-/** Left → right columns */
+/** Left → right columns (Gallery Select File) */
 export const HERO_BIOGRAPHY_ROLE_ORDER = Object.freeze(['Tank', 'Damage', 'Support']);
 
 /**
@@ -36,6 +37,28 @@ export const HERO_BIOGRAPHY_SUBROLE_ROWS = Object.freeze({
     },
 });
 
+/**
+ * Flat-board segment order (Tank → Damage → Support, top then bottom subroles).
+ * Whole subrole groups only — never split across rows.
+ */
+export const HERO_BIOGRAPHY_SUBROLE_SEGMENT_ORDER = Object.freeze([
+    'Initiator',
+    'Bruiser',
+    'Stalwart',
+    'Flanker',
+    'Recon',
+    'Specialist',
+    'Sharpshooter',
+    'Tactician',
+    'Medic',
+    'Survivor',
+]);
+
+/** Preferred top-row chip budget before whole subrole segments wrap to row 2. */
+export const HERO_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 22;
+
+/** @typedef {{ key: string, label: string, chips: string[] }} HeroBiographyChipSegment */
+
 /** @type {Record<string, string>} */
 export const HERO_BIOGRAPHY_SUBROLE_LABELS = Object.freeze({
     Tactician: 'Strategist',
@@ -47,6 +70,39 @@ export const HERO_BIOGRAPHY_SUBROLE_LABELS = Object.freeze({
  */
 export function labelForHeroBiographySubrole(subrole) {
     return HERO_BIOGRAPHY_SUBROLE_LABELS[subrole] || subrole;
+}
+
+/**
+ * @param {Record<string, string[]>} flatGroups subrole → hero ids
+ * @param {readonly string[]} segmentOrder
+ * @returns {{ top: HeroBiographyChipSegment[], bottom: HeroBiographyChipSegment[] }}
+ */
+export function assignHeroBiographySubroleRows(flatGroups, segmentOrder) {
+    /** @type {HeroBiographyChipSegment[]} */
+    const top = [];
+    /** @type {HeroBiographyChipSegment[]} */
+    const bottom = [];
+    let topCount = 0;
+    const topLimit = HERO_BIOGRAPHY_TOP_ROW_CHIP_COUNT;
+
+    for (const key of segmentOrder) {
+        const chips = flatGroups[key];
+        if (!Array.isArray(chips) || chips.length === 0) continue;
+
+        const segment = {
+            key,
+            label: labelForHeroBiographySubrole(key),
+            chips,
+        };
+        if (topCount + chips.length <= topLimit) {
+            top.push(segment);
+            topCount += chips.length;
+        } else {
+            bottom.push(segment);
+        }
+    }
+
+    return { top, bottom };
 }
 
 /**
@@ -110,4 +166,34 @@ export async function buildHeroBiographyRoleGroups(manifestHeroes) {
     }
 
     return groups;
+}
+
+/**
+ * Flatten role → subrole groups into a single subrole → heroes map.
+ * @param {Record<string, Record<string, string[]>>} roleGroups
+ * @returns {Record<string, string[]>}
+ */
+export function flattenHeroBiographyRoleGroups(roleGroups) {
+    /** @type {Record<string, string[]>} */
+    const flat = {};
+    for (const role of HERO_BIOGRAPHY_ROLE_ORDER) {
+        const roleGroup = roleGroups[role] || {};
+        for (const subrole of HERO_BIOGRAPHY_SUBROLE_SEGMENT_ORDER) {
+            const chips = roleGroup[subrole];
+            if (!Array.isArray(chips) || chips.length === 0) continue;
+            flat[subrole] = chips;
+        }
+    }
+    return flat;
+}
+
+/**
+ * Filters-panel / flat-board packing: labeled subrole segments in two rows.
+ * @param {string[]} manifestHeroes
+ * @returns {Promise<{ top: HeroBiographyChipSegment[], bottom: HeroBiographyChipSegment[] }>}
+ */
+export async function buildHeroBiographyFlatChipRowSegments(manifestHeroes) {
+    const roleGroups = await buildHeroBiographyRoleGroups(manifestHeroes);
+    const flatGroups = flattenHeroBiographyRoleGroups(roleGroups);
+    return assignHeroBiographySubroleRows(flatGroups, HERO_BIOGRAPHY_SUBROLE_SEGMENT_ORDER);
 }

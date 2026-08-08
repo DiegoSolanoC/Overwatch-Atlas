@@ -1,15 +1,12 @@
 /**
  * Wire `#filtersMenuSearch` so typing filters the visible chips in real time.
- * Search is per-tab and case-insensitive; matching looks at the chip's display
- * label first, falling back to the underlying filter key.
  *
- * Countries tab: chips with zero timeline usage are hidden until the user types
- * in the search box; matching unused countries stay visible but greyed out
- * (`.filter-btn--zero-event-matches`).
+ * Countries tab: Unvisited (0 timeline uses) stay hidden until the user types;
+ * matching unused countries stay visible but greyed out. Category bands hide
+ * when they have no visible chips.
  *
- * Section separators (`.filters-grid-type-separator` /
- * `.filters-grid-hero-subrole-separator`) auto-hide when every chip in the
- * section is filtered out, so the grid never shows an orphan header.
+ * Gallery-style boards: hide empty subgroup / subrow / column shells when search
+ * filters out their chips.
  */
 
 const SEARCH_PLACEHOLDERS = {
@@ -29,13 +26,17 @@ export function applyFilterChipSearch(input, grid, currentFilterType) {
     const query = String(input.value || '').trim().toLowerCase();
     const isCountries = currentFilterType === 'countries';
     const buttons = grid.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => {
+
+    buttons.forEach((btn) => {
         const labelEl = btn.querySelector('.filter-label-text');
         const text = String(labelEl?.textContent || btn.dataset.filterKey || '').trim().toLowerCase();
         const textMatch = !query || text.includes(query);
+        const wrap = btn.closest('.filters-chip-wrap');
 
         if (!isCountries) {
-            btn.style.display = textMatch ? '' : 'none';
+            const show = textMatch;
+            btn.style.display = show ? '' : 'none';
+            if (wrap) wrap.style.display = show ? '' : 'none';
             btn.classList.remove('filter-btn--zero-event-matches');
             return;
         }
@@ -44,14 +45,20 @@ export function applyFilterChipSearch(input, grid, currentFilterType) {
         const hasEventUsage = matchCount > 0;
 
         if (!query) {
-            btn.style.display = hasEventUsage ? '' : 'none';
+            const show = hasEventUsage;
+            btn.style.display = show ? '' : 'none';
+            if (wrap) wrap.style.display = show ? '' : 'none';
             btn.classList.remove('filter-btn--zero-event-matches');
         } else {
-            btn.style.display = textMatch ? '' : 'none';
+            const show = textMatch;
+            btn.style.display = show ? '' : 'none';
+            if (wrap) wrap.style.display = show ? '' : 'none';
             btn.classList.toggle('filter-btn--zero-event-matches', textMatch && !hasEventUsage);
         }
     });
-    grid.querySelectorAll('.filters-grid-type-separator, .filters-grid-hero-subrole-separator').forEach(sep => {
+
+    // Legacy separator headers (if any remain)
+    grid.querySelectorAll('.filters-grid-type-separator, .filters-grid-hero-subrole-separator').forEach((sep) => {
         if (!query) {
             sep.style.display = '';
             return;
@@ -63,7 +70,10 @@ export function applyFilterChipSearch(input, grid, currentFilterType) {
             !n.classList.contains('filters-grid-type-separator') &&
             !n.classList.contains('filters-grid-hero-subrole-separator')
         ) {
-            if (n.classList?.contains('filter-btn') && n.style.display !== 'none') {
+            const chip = n.classList.contains('filter-btn')
+                ? n
+                : n.querySelector?.('.filter-btn');
+            if (chip && chip.style.display !== 'none') {
                 any = true;
                 break;
             }
@@ -71,12 +81,51 @@ export function applyFilterChipSearch(input, grid, currentFilterType) {
         }
         sep.style.display = any ? '' : 'none';
     });
+
+    // Chip-board shells: hide groups/rows/columns with no visible chips while searching.
+    grid.querySelectorAll('.filters-chip-board__subrole-group').forEach((group) => {
+        if (!(group instanceof HTMLElement)) return;
+        if (!query) {
+            group.style.display = '';
+            return;
+        }
+        const any = [...group.querySelectorAll('.filter-btn')].some((btn) => btn.style.display !== 'none');
+        group.style.display = any ? '' : 'none';
+    });
+
+    grid.querySelectorAll('.filters-chip-board__subrow').forEach((row) => {
+        if (!(row instanceof HTMLElement)) return;
+        if (!query) {
+            row.style.display = '';
+            return;
+        }
+        const any = [...row.querySelectorAll('.filters-chip-board__subrole-group')].some(
+            (g) => g.style.display !== 'none',
+        );
+        row.style.display = any ? '' : 'none';
+    });
+
+    grid.querySelectorAll('.filters-chip-board__role-column').forEach((col) => {
+        if (!(col instanceof HTMLElement)) return;
+        const searchOnly = col.dataset.countryVisibility === 'search-only';
+
+        if (!query) {
+            if (searchOnly) {
+                col.style.display = 'none';
+                return;
+            }
+            const anyVisible = [...col.querySelectorAll('.filter-btn')].some(
+                (btn) => btn.style.display !== 'none',
+            );
+            col.style.display = anyVisible ? '' : 'none';
+            return;
+        }
+
+        const any = [...col.querySelectorAll('.filter-btn')].some((btn) => btn.style.display !== 'none');
+        col.style.display = any ? '' : 'none';
+    });
 }
 
-/**
- * Bind the search `<input>` once; subsequent calls re-apply the current query
- * (so repaints after a filter rebuild keep the search live).
- */
 export function bindFilterSearchInputOnce(input, getCurrentFilterType, getGrid) {
     if (!input) return;
     input.placeholder = placeholderForFilterType(getCurrentFilterType());

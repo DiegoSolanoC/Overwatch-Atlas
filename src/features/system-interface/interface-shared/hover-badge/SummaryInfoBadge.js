@@ -3,7 +3,6 @@
  */
 
 import { getEraHoverPreviewSlug } from './eraHoverPreviewTheme.js';
-import { attachStageAnchorLayoutWatch } from './stageAnchorLayoutWatch.js';
 
 /**
  * Side-dock Event Manager uses `.open` on #eventsManagePanel. Data Archive also sets `.open` while
@@ -188,14 +187,11 @@ function positionBadge() {
     const scale = getBodyScale();
     const rect = anchorEl.getBoundingClientRect();
     const gap = 2;
-    
-    // Anchor against the current center stage width (main#content), not viewport.
-    // This makes badge position slide with panel open/close layout changes.
-    const contentRect = document.getElementById('content')?.getBoundingClientRect() || null;
+
+    // Viewport-fixed mirror of the now-playing badge (do not track #content / side panels).
+    // Right edge sits at 20% of the viewport from the left.
     const vw = Math.max(1, (window.innerWidth || 1) / scale);
-    const rightPos = contentRect
-        ? ((vw - ((contentRect.left + (contentRect.width * 0.2)) / scale)))
-        : (vw * 0.8);
+    const rightPos = vw * 0.8;
 
     const top = (rect.bottom + gap) / scale;
 
@@ -435,27 +431,13 @@ export function showSummaryInfo(
     const onScroll = () => schedule();
     window.addEventListener('scroll', onScroll, true);
     window.addEventListener('resize', onScroll);
-    const observerTargets = [
-        document.getElementById('filtersPanel'),
-        document.getElementById('eventSlide'),
-        document.getElementById('eventsManagePanel'),
-        document.querySelector('.layout-container'),
-    ].filter(Boolean);
-    let mo = null;
-    if (typeof MutationObserver !== 'undefined' && observerTargets.length > 0) {
-        mo = new MutationObserver(() => schedule());
-        observerTargets.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['class', 'style'] }));
-    }
-    const detachStageWatch = attachStageAnchorLayoutWatch(schedule);
-    // Get header hub directly (button is now in dock rail, not header)
+    // Vertical follows header hubs only; do not re-anchor when side panels open/close.
     const hub = document.getElementById('headerHub');
     if (hub) hub.addEventListener('scroll', onScroll);
     hoverPreviewFollowCleanup = () => {
         window.removeEventListener('scroll', onScroll, true);
         window.removeEventListener('resize', onScroll);
         if (hub) hub.removeEventListener('scroll', onScroll);
-        if (mo) mo.disconnect();
-        detachStageWatch();
         if (pending != null) {
             cancelAnimationFrame(pending);
             pending = null;

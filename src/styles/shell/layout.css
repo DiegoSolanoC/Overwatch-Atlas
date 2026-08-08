@@ -92,8 +92,8 @@ header {
     --header-hub-stack-w: clamp(56px, 7.5vw, 88px);
     padding: 0; /* allow hub sections to be seamless full-height blocks */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    /* Above sliding panels / image overlay (~150–210); below modals (1000+) */
-    z-index: 270;
+    /* Above side panels (filters / info / music ~540) so hub white rim stays visible; below dock (~620) and modals (1000+) */
+    z-index: 560;
     height: var(--header-chrome-paint-h);
     min-height: var(--header-chrome-paint-h);
     max-height: var(--header-chrome-paint-h);
@@ -231,7 +231,7 @@ header {
     padding-left: 0;
 }
 
-/* Row of three header actions per side (Interactive / Codex / Archive · Music / Palette / Home) */
+/* Mode strips: left 5 · right 4 (Palette spans two flex segments) */
 .header-hub-group {
     display: flex;
     align-items: stretch;
@@ -322,8 +322,8 @@ header {
     position: fixed;
     top: 0;   /* positioned dynamically via JS (below Map/Globe button) */
     left: 0;  /* positioned dynamically via JS */
-    /* Below header chrome (header z-index 270) so the bar tucks behind the hub; still above panels (~200) */
-    z-index: 260;
+    /* Below header chrome (header z-index 560) so the bar tucks behind the hub; still above panels (~540) */
+    z-index: 550;
     /* Keep the container fixed for a large hover hit area.
        We animate the inner content instead so it's easy to grab even when tucked. */
     pointer-events: none; /* enable only when open */
@@ -419,7 +419,7 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     right: 0;
     width: auto;
     min-width: 0;
-    /* Palette (first) on the inner edge toward the hex */
+    /* Theater first (inner edge toward the hex); Palette last (viewport edge) */
     justify-content: flex-start;
 }
 
@@ -427,6 +427,12 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     border-right: none;
     border-left: 1px solid rgba(255, 255, 255, 0.14);
     flex: 1 1 0;
+}
+
+/* Palette = two equal segments so right hub still balances a 5-slot left hub */
+.header-hub.header-hub--right .header-hub-btn.header-hub-btn--wide,
+#colorPaletteToggle.header-hub-btn {
+    flex: 2 1 0;
 }
 
 .header-hub-btn.header-hub-btn--exit {
@@ -478,11 +484,27 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     display: inline-flex;
     align-items: center;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.2px;
     line-height: 1;
     white-space: nowrap;
     opacity: 0.92;
+}
+
+/*
+ * Primary mode hubs (Home…Gallery / Theater…Palette):
+ * desktop = label only; mobile = icon only. Map-stack / dock tiles keep icons.
+ */
+#headerHubButtonGroup .header-hub-icon-wrap,
+#headerHubRightButtonGroup .header-hub-icon-wrap {
+    display: none;
+}
+
+#headerHubButtonGroup .header-hub-btn-label,
+#headerHubRightButtonGroup .header-hub-btn-label {
+    display: inline-flex;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 /* Vehicles icon often has more transparent padding; boost slightly */
@@ -553,7 +575,7 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
 }
 
 /* Viewport-side edge: straight vertical (no slant) on outer side */
-#headerInteractiveGlobeBtn.header-hub-btn {
+#headerHub #homeBtn.header-hub-btn {
     clip-path: polygon(
         0% 0%,
         calc(100% - var(--hub-btn-slant)) 0%,
@@ -562,7 +584,7 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
     );
 }
 
-#homeBtn.header-hub-btn {
+#headerHubRight #colorPaletteToggle.header-hub-btn {
     clip-path: polygon(
         var(--hub-btn-slant) 0%,
         100% 0%,
@@ -703,9 +725,25 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
         justify-content: flex-start;
     }
 
-    /* Icon-only on mobile — same as Events / Filters (labels hidden below). */
+    /* Mode hubs: icon-only on mobile (labels restored above 768 via desktop rules). */
     .header-hub-btn-label {
         display: none;
+    }
+
+    #headerHubButtonGroup .header-hub-icon-wrap,
+    #headerHubRightButtonGroup .header-hub-icon-wrap {
+        display: flex;
+    }
+
+    #headerHubButtonGroup .header-hub-btn-label,
+    #headerHubRightButtonGroup .header-hub-btn-label {
+        display: none;
+    }
+
+    #headerHubButtonGroup .header-hub-btn.header-hub-btn--icon,
+    #headerHubRightButtonGroup .header-hub-btn.header-hub-btn--icon {
+        padding: 0;
+        justify-content: center;
     }
 
     .header-title-badge {
@@ -714,15 +752,26 @@ body.color-palette-nulled #hyperloopToggle.header-hub-btn.header-hub-btn--active
     }
 }
 
-@media (max-width: 1024px) {
-    /* Labels are great on desktop; hide on narrower screens to prevent crowding. */
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Narrow desktop/tablet: hide non–mode-hub labels (dock etc.) to reduce crowding.
+     * Mode hub tiles keep text until the 768px mobile breakpoint. */
     .header-hub-btn-label {
         display: none;
+    }
+
+    #headerHubButtonGroup .header-hub-btn-label,
+    #headerHubRightButtonGroup .header-hub-btn-label {
+        display: inline-flex;
     }
 
     .header-hub-btn.header-hub-btn--icon {
         padding: 0;
         justify-content: center;
+    }
+
+    #headerHubButtonGroup .header-hub-btn.header-hub-btn--icon,
+    #headerHubRightButtonGroup .header-hub-btn.header-hub-btn--icon {
+        padding: 0 8px;
     }
 }
 

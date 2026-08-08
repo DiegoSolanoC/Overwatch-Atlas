@@ -238,11 +238,9 @@ class FilterService {
     allButtons.forEach((btn) => {
       const filterKey = btn.dataset.filterKey;
       if (!filterKey) return;
-      if (this.stateManager.has(filterKey)) {
-        btn.classList.add("selected");
-      } else {
-        btn.classList.remove("selected");
-      }
+      const selected = this.stateManager.has(filterKey);
+      btn.classList.toggle("selected", selected);
+      btn.setAttribute("aria-pressed", selected ? "true" : "false");
     });
     window.syncFiltersPanelTrapIcon?.();
   }
@@ -270,31 +268,52 @@ class FilterService {
   }
 
   /**
-   * Recompute per-flag event usage from the current timeline store and refresh
-   * country chip visibility (call after events load or save).
+   * Recompute per-flag event usage from the current timeline store.
    */
-  refreshCountryFilterUsage() {
+  _rebuildCountryUsageMap() {
     const events =
       typeof window !== "undefined" && window.EventDataService?.events
         ? window.EventDataService.events
         : [];
     this.countryUsageMap = buildCountryFilterUsageMap(events);
-    this._syncCountryUsageOnCachedButtons();
-    if (this.currentFilterType === "countries") {
-      this._applyCurrentCategorySearch();
+  }
+
+  /**
+   * Recompute per-flag event usage from the current timeline store and refresh
+   * country chip visibility (call after events load or save).
+   * Tier bands (Primary / Occasional / Unvisited) depend on counts, so the
+   * countries chip board is rebuilt rather than only patching datasets.
+   */
+  refreshCountryFilterUsage() {
+    this._rebuildCountryUsageMap();
+    this.buttonCache.countries = null;
+    if (this.currentFilterType === "countries" && this.filtersGrid) {
+      void this.createFilterButtons(
+        this.countries,
+        "countries",
+        "src/assets/images/Filters/Flags",
+      );
+      return;
     }
+    this._syncCountryUsageOnCachedButtons();
   }
 
   _syncCountryUsageOnCachedButtons() {
-    const buttons = this.buttonCache.countries;
-    if (!Array.isArray(buttons)) return;
-    for (const btn of buttons) {
-      const filterKey = btn.dataset.filterKey;
-      if (!filterKey || !filterKey.startsWith("country:")) continue;
-      const flagFile = filterKey.slice("country:".length).trim();
-      btn.dataset.eventMatchCount = String(
-        getCountryEventMatchCount(this.countryUsageMap, flagFile),
-      );
+    const roots = this.buttonCache.countries;
+    if (!Array.isArray(roots)) return;
+    for (const root of roots) {
+      if (!(root instanceof HTMLElement)) continue;
+      root.querySelectorAll(".filter-btn").forEach((btn) => {
+        const filterKey = btn.dataset.filterKey;
+        if (!filterKey || !filterKey.startsWith("country:")) return;
+        const flagFile = filterKey.slice("country:".length).trim();
+        const n = String(
+          getCountryEventMatchCount(this.countryUsageMap, flagFile),
+        );
+        btn.dataset.eventMatchCount = n;
+        const wrap = btn.closest(".filters-chip-wrap");
+        if (wrap) wrap.dataset.eventMatchCount = n;
+      });
     }
   }
 
@@ -338,7 +357,7 @@ class FilterService {
   async createFilterButtons(items, type, folder) {
     let list = items;
     if (type === "countries") {
-      this.refreshCountryFilterUsage();
+      this._rebuildCountryUsageMap();
       list = this._countriesWithUsageCounts();
     }
     const groupFactionsByArchiveType = type === "factions";
@@ -351,7 +370,7 @@ class FilterService {
     if (groupNpcsByArchiveCategory)
       await ensureArchiveLayoutSnapshotsForFilter("npcs");
 
-    createFilterButtonsGrid(
+    await createFilterButtonsGrid(
       list,
       type,
       folder,

@@ -13,7 +13,7 @@ import { refreshDockTimelinePagination } from '../../system-interface/interface-
 
 const HOST_ID = 'atlasGalleryHost';
 
-/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} */
+/** @type {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | 'countries'} */
 let activeCategory = 'heroes';
 
 /** @type {string | null} */
@@ -44,7 +44,7 @@ export function getActiveBioBiographyDockSelection() {
 }
 
 /**
- * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | null} category
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | 'countries' | null} category
  * @param {string | null} filterKey
  * @param {string} [displayName]
  */
@@ -117,8 +117,35 @@ function entityIncludesNpc(entity, npcFilterKey) {
 }
 
 /**
+ * @param {object | null | undefined} entity
+ * @param {string} countryFilterKey — `country:<flagFile>` or bare flag filename
+ */
+function entityIncludesCountry(entity, countryFilterKey) {
+    if (!entity) return false;
+    const raw = String(countryFilterKey || '').trim();
+    if (!raw) return false;
+    const want = raw.toLowerCase().startsWith('country:')
+        ? raw.slice('country:'.length).trim()
+        : raw;
+    if (!want) return false;
+
+    const lh = typeof window !== 'undefined' ? window.LocationFlagHelpers : null;
+    const sec = typeof window !== 'undefined' ? window.__SecondaryCountryFlags : null;
+    const collect = lh?.collectCountryFlagFilesForEntity ?? sec?.collectCountryFlagFilesForEntity;
+    const files = collect ? collect(entity) : [];
+    if (!Array.isArray(files) || files.length === 0) return false;
+
+    const norm = (v) => String(v || '').trim().toLowerCase().replace(/\.png$/i, '');
+    const wantN = norm(want);
+    return files.some((f) => {
+        const have = norm(f);
+        return have && (have === wantN || have.endsWith(`/${wantN}`) || wantN.endsWith(`/${have}`));
+    });
+}
+
+/**
  * @param {object} event
- * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
+ * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory | 'countries'} category
  * @param {string} filterKey
  * @param {string} displayName
  */
@@ -130,6 +157,8 @@ export function eventMatchesBioBiographyFilter(event, category, filterKey, displ
     const testEntity = (entity) => {
         if (cat === 'factions') return entityIncludesFaction(entity, key, displayName);
         if (cat === 'npcs') return entityIncludesNpc(entity, key);
+        if (cat === 'countries') return entityIncludesCountry(entity, key);
+        if (cat === 'locations') return false;
         return entityIncludesHero(entity, key);
     };
 

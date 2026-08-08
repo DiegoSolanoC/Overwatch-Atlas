@@ -1,4 +1,4 @@
-/** Inner HTML for the passive now-playing badge (mounted under #musicToggle). */
+/** Inner HTML for the passive now-playing badge (under right header hub). */
 export const NOW_PLAYING_BADGE_INNER_HTML = `
                 <div class="music-now-playing-label">Now playing:</div>
                 <div class="music-now-playing-spacer-top" aria-hidden="true"></div>

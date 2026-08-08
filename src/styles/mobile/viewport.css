@@ -852,7 +852,7 @@
         overflow: hidden !important;
     }
 
-    .filters-grid,
+    .filters-grid:not(.filters-grid--chip-board),
     .music-grid {
         grid-template-columns: repeat(5, 1fr) !important;
     }
@@ -862,7 +862,7 @@
     }
 
     @media (max-width: 480px) {
-        .filters-grid,
+        .filters-grid:not(.filters-grid--chip-board),
         .music-grid {
             grid-template-columns: repeat(4, 1fr) !important;
         }

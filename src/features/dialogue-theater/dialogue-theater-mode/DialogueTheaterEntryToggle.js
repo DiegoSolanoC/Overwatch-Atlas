@@ -14,7 +14,7 @@ const DOCK_PARENT_ID = 'dockGlobeRailLeft';
 const TOGGLE_ID = 'dialogueTheaterEntryToggle';
 
 const ICON_DIALOGUES = 'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png';
-const ICON_CHATTERS = 'src/assets/images/Icons/Mode%20Icons/Hero%20Biography.png';
+const ICON_CHATTERS = 'src/assets/images/Icons/Mode%20Icons/Concept%20Gallery.png';
 
 /** @typedef {'dialogues'|'chatters'} DialogueTheaterEntryMode */
 

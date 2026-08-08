@@ -1,5 +1,6 @@
 /**
- * MusicNowPlayingBadge — passive "Now playing: <title>" badge under #musicToggle.
+ * MusicNowPlayingBadge — passive "Now playing: <title>" badge under the right
+ * header hub (mirrors SummaryInfoBadge under the left hub).
  *
  * DOM mount, overlay sync, and title cross-fade live here. Position math is in
  * `musicNowPlayingBadgePosition.js`; resize/scroll/layout observers in
@@ -25,13 +26,6 @@ export class MusicNowPlayingBadge {
         this._followCleanup = null;
         this._eventImageOverlayMo = null;
         this._eventImageOverlaySyncTimer = null;
-        this._musicButton = null;
-    }
-
-    _resolveMusicButton() {
-        const el = typeof document !== 'undefined' ? document.getElementById('musicToggle') : null;
-        if (el) this._musicButton = el;
-        return this._musicButton;
     }
 
     _ensureBadgeMounted() {
@@ -71,11 +65,9 @@ export class MusicNowPlayingBadge {
     }
 
     _positionBadge() {
-        const btn = this._resolveMusicButton();
-        if (!btn) return;
         this._ensureBadgeMounted();
         if (!this.badge) return;
-        positionNowPlayingBadge(btn, this.badge);
+        positionNowPlayingBadge(this.badge);
     }
 
     _stopFollow() {
@@ -89,7 +81,6 @@ export class MusicNowPlayingBadge {
 
     _startFollow() {
         this._stopFollow();
-        this._resolveMusicButton();
         this._positionBadge();
 
         this._followCleanup = startNowPlayingBadgeLayoutWatch({

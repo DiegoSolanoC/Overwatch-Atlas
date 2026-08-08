@@ -1,10 +1,11 @@
 /**
  * MusicLoaders — load/unload pair for music components.
  *
- * `loadMusic` adds the music toggle button, the music panel HTML, the audio
- * element, initializes MusicService twice (immediate + delayed re-init for
- * service-readiness), and loads the music sound effect. `unloadMusic`
- * removes the button + panel and stops any playing audio.
+ * `loadMusic` mounts a hidden `#musicToggle` (header tile removed — music opens
+ * via Filters), the music panel HTML, the audio element, initializes
+ * MusicService twice (immediate + delayed re-init for service-readiness), and
+ * loads the music sound effect. `unloadMusic` removes the toggle + panel and
+ * stops any playing audio.
  */
 
 import {
@@ -13,7 +14,6 @@ import {
     checkAlreadyLoaded
 } from '../../atlas-shared-ui/loading/LoadingLifecycle.js';
 import { loadSoundEffect } from '../../atlas-sound-effects/loadSoundEffects.js';
-import { createHeaderHubButton } from '../../atlas-header/HeaderHubButton.js';
 import { lookAndAddElement } from '../../atlas-shared-ui/dom/lookAndAddElement.js';
 import { createMusicPanel } from '../../atlas-music/panel/musicPanelMarkup.js';
 import { removeElementsByIds } from '../../atlas-shared-ui/dom/removeElement.js';
@@ -22,23 +22,26 @@ import { getRunOperation } from '../../atlas-mode-runtime/loadingOverlayState.js
 import { initializeMusicService } from '../../atlas-music/initializeMusicService.js';
 import { createBackgroundMusicElement } from '../../atlas-music/createBackgroundMusicElement.js';
 
+/** Hidden toggle so MusicService / Filters / keyboard `M` keep a stable target. */
+function ensureHiddenMusicToggle() {
+    if (document.getElementById('musicToggle')) return;
+    const btn = document.createElement('button');
+    btn.id = 'musicToggle';
+    btn.type = 'button';
+    btn.title = 'Music Options';
+    btn.setAttribute('aria-label', 'Music Options');
+    btn.hidden = true;
+    const parent = document.getElementById('content') || document.body;
+    parent.appendChild(btn);
+}
+
 export async function loadMusic(loadedComponents) {
     if (checkAlreadyLoaded(loadedComponents.music, 'Music')) {
         return;
     }
 
     await withLoadLifecycle(async () => {
-        createHeaderHubButton({
-            id: 'musicToggle',
-            className: '',
-            title: 'Music Options',
-            label: 'Music',
-            iconPath: 'src/assets/images/Icons/Music%20Icons/Music%20Icon.png',
-            iconAlt: 'Music',
-            parentId: 'headerHubRightButtonGroup',
-            baseClass: 'header-hub-btn header-hub-btn--icon',
-            headerOrder: 60
-        });
+        ensureHiddenMusicToggle();
 
         lookAndAddElement('musicPanel', () => {
             updateStatus('Adding music panel...', 'info');

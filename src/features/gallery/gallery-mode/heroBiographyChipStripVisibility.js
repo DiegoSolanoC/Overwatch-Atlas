@@ -14,7 +14,7 @@ const STRIP_HIDDEN_CLASS = 'gallery-hero-filters--hidden';
 const HOST_COLLAPSED_CLASS = 'gallery-mode--hero-filters-collapsed';
 
 const SELECT_FILE_ICON =
-    'src/assets/images/Icons/Mode%20Icons/Data%20Archive.png';
+    'src/assets/images/Icons/Mode%20Icons/Data%20Workshop.png';
 
 const ICON_HTML =
     `<img src="${SELECT_FILE_ICON}" alt="Select file" style="width: 100%; height: 100%; object-fit: contain;">`;

@@ -2,6 +2,8 @@
  * Build / merge gallery personal connection canvas graph from archive entry + saved layout.
  */
 
+import { resolveCodexConnectionsForSubject } from '../../codex/codex-connections/CodexConnectionMeta.js';
+import { normalizeBioNameLoose } from '../../codex/codex-edge-cords/topology/CodexGraphPrimitives.js';
 import { bioConnectionRowIsDisplayable } from '../../system-interface/interface-shared/bio-archive/bioArchiveConnectionRows.js';
 
 export const GALLERY_CONN_CANVAS_VERSION = 1;
@@ -109,14 +111,89 @@ function normalizeSavedCanvas(saved) {
 }
 
 /**
+ * @param {string} kind
+ * @param {string} name
+ */
+function linkedEntityKey(kind, name) {
+    return `${normalizeConnKind(kind)}:${normalizeBioNameLoose(name)}`;
+}
+
+/**
+ * Among first-degree neighbors, add cords when Codex says they connect
+ * (same displayable rules as biography connection lists), skipping pruned pairs.
+ *
+ * @param {{ kind: string, name: string }[]} linkedEntities
+ * @param {{ fromId: string, toId: string }[]} edges
+ * @param {Set<string>} edgeSet
+ * @param {(a: string, b: string) => string} edgeKey
+ * @param {{ nodes?: object[], edges?: object[], connections?: object[] } | null | undefined} codexGraph
+ */
+function ensureFirstDegreeNeighborEdges(linkedEntities, edges, edgeSet, edgeKey, codexGraph) {
+    if (!codexGraph || linkedEntities.length < 2) return;
+
+    const nodes = Array.isArray(codexGraph.nodes) ? codexGraph.nodes : [];
+    const codexEdges = Array.isArray(codexGraph.edges) ? codexGraph.edges : [];
+    const meta = Array.isArray(codexGraph.connections) ? codexGraph.connections : [];
+    if (!nodes.length) return;
+
+    /** @type {Map<string, { kind: string, name: string, id: string }>} */
+    const byKey = new Map();
+    for (let i = 0; i < linkedEntities.length; i += 1) {
+        const ent = linkedEntities[i];
+        const key = linkedEntityKey(ent.kind, ent.name);
+        if (!ent.name || byKey.has(key)) continue;
+        byKey.set(key, {
+            kind: ent.kind,
+            name: ent.name,
+            id: galleryLinkedNodeId(ent.kind, ent.name),
+        });
+    }
+
+    byKey.forEach((fromEnt) => {
+        const rows = resolveCodexConnectionsForSubject(
+            fromEnt.kind,
+            fromEnt.name,
+            nodes,
+            codexEdges,
+            meta,
+            { forEdit: false },
+        );
+        for (let r = 0; r < rows.length; r += 1) {
+            const row = rows[r];
+            if (!bioConnectionRowIsDisplayable(row)) continue;
+            const toEnt = byKey.get(linkedEntityKey(row.kind, row.name));
+            if (!toEnt || toEnt.id === fromEnt.id) continue;
+
+            const [left, right] =
+                fromEnt.id < toEnt.id ? [fromEnt.id, toEnt.id] : [toEnt.id, fromEnt.id];
+            const direct = edgeKey(left, right);
+            const reverse = edgeKey(right, left);
+            if (edgeSet.has(direct) || edgeSet.has(reverse)) continue;
+
+            edges.push({ fromId: left, toId: right });
+            edgeSet.add(direct);
+            edgeSet.add(reverse);
+        }
+    });
+}
+
+/**
  * @param {object|null} entry
  * @param {import('./bioBiographyCategories.js').BioBiographyArchiveCategory} category
  * @param {string} displayName
  * @param {string} filterKey
  * @param {object|null|undefined} savedCanvas
+ * @param {{ nodes?: object[], edges?: object[], connections?: object[] } | null | undefined} [codexGraph]
  * @returns {{ nodes: object[], edges: { fromId: string, toId: string }[] }}
  */
-export function buildGalleryConnectionCanvasModel(entry, category, displayName, filterKey, savedCanvas) {
+export function buildGalleryConnectionCanvasModel(
+    entry,
+    category,
+    displayName,
+    filterKey,
+    savedCanvas,
+    codexGraph = null,
+) {
     const subjectKind = subjectKindFromCategory(category);
     const subjectName = subjectNameFromEntry(entry, displayName);
     const subjectEntityToken =
@@ -226,6 +303,8 @@ export function buildGalleryConnectionCanvasModel(entry, category, displayName, 
             edgeSet.add(directA);
         }
     }
+
+    ensureFirstDegreeNeighborEdges(linkedEntities, edges, edgeSet, edgeKey, codexGraph);
 
     return {
         nodes: Array.from(nodeById.values()),

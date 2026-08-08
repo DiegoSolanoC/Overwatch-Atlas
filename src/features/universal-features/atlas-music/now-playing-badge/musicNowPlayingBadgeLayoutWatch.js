@@ -1,10 +1,9 @@
 /**
- * Resize / scroll / layout MutationObservers so the passive badge stays
- * aligned when panels open, the layout shifts, or the viewport changes.
+ * Resize / scroll observers so the passive badge stays aligned under the right
+ * header hub. Horizontal position is viewport-fixed (not panel-driven).
  */
 
 import { BADGE_VISIBLE_CLASS } from './musicNowPlayingBadgeCssClasses.js';
-import { attachStageAnchorLayoutWatch } from '../../../system-interface/interface-shared/hover-badge/stageAnchorLayoutWatch.js';
 
 /**
  * @param {{
@@ -37,26 +36,9 @@ export function startNowPlayingBadgeLayoutWatch(ctx) {
     window.addEventListener('resize', onViewport);
     window.addEventListener('scroll', onViewport, true);
 
-    const observerTargets = [
-        document.getElementById('filtersPanel'),
-        document.getElementById('eventSlide'),
-        document.getElementById('eventsManagePanel'),
-        document.querySelector('.layout-container'),
-    ].filter(Boolean);
-
-    let mo = null;
-    if (typeof MutationObserver !== 'undefined' && observerTargets.length > 0) {
-        mo = new MutationObserver(schedule);
-        observerTargets.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['class', 'style'] }));
-    }
-
-    const detachStageWatch = attachStageAnchorLayoutWatch(schedule);
-
     return () => {
         window.removeEventListener('resize', onViewport);
         window.removeEventListener('scroll', onViewport, true);
-        if (mo) mo.disconnect();
-        detachStageWatch();
         if (pending != null) {
             cancelAnimationFrame(pending);
             pending = null;

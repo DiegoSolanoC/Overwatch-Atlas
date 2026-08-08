@@ -1,8 +1,9 @@
 /**
  * HeaderModeButtons — mounts primary mode-entry header buttons.
  *
- * Left hub (`#headerHubButtonGroup`): World, Codex, Story, Gallery.
- * Right hub: Home.
+ * Left hub (`#headerHubButtonGroup`): Home, Globe, Codex, Story, Gallery.
+ * Right hub: Theater, Archive, Workshop, Palette (Palette is mounted by
+ * `PaletteLoaders` at double width so the right strip still reads as five segments).
  *
  * Each tile delegates to the matching `runXComponents` global from the orchestrator.
  *
@@ -63,14 +64,79 @@ function attachStoryTimelineBootstrap() {
     }, true);
 }
 
+function attachDialogueTheaterBootstrap() {
+    const btn = document.getElementById('headerDialogueTheaterBtn');
+    if (!btn) return;
+    const launch = typeof window.runDialogueTheaterComponents === 'function'
+        ? createLoadingLockHandler(window.runDialogueTheaterComponents, setRunOperation)
+        : null;
+    if (!launch) return;
+    btn.addEventListener('click', function bootstrapDialogueTheater(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        void launch();
+    }, true);
+}
+
+function attachOfficialArchiveBootstrap() {
+    const btn = document.getElementById('headerOfficialArchiveBtn');
+    if (!btn) return;
+    const run = typeof window.runOfficialArchiveComponents === 'function'
+        ? window.runOfficialArchiveComponents
+        : window.runOfficialResourcesComponents;
+    const launch = typeof run === 'function'
+        ? createLoadingLockHandler(run, setRunOperation)
+        : null;
+    if (!launch) return;
+    btn.addEventListener('click', function bootstrapOfficialArchive(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        void launch();
+    }, true);
+}
+
+function attachDataWorkshopBootstrap() {
+    const btn = document.getElementById('headerDataWorkshopBtn');
+    if (!btn) return;
+    const run = typeof window.runDataWorkshopComponents === 'function'
+        ? window.runDataWorkshopComponents
+        : window.runBiographyComponents;
+    const launch = typeof run === 'function'
+        ? createLoadingLockHandler(run, setRunOperation)
+        : null;
+    if (!launch) return;
+    btn.addEventListener('click', function bootstrapDataWorkshop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        void launch();
+    }, true);
+}
+
 export function loadHeaderModeButtons() {
+    createHeaderHubButton({
+        id: 'homeBtn',
+        className: '',
+        title: 'Return to Home',
+        label: 'Home',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Home%20Button.png',
+        iconAlt: 'Home',
+        parentId: 'headerHubButtonGroup',
+        baseClass: 'header-hub-btn header-hub-btn--icon',
+        iconSpanId: 'homeBtnIcon',
+        headerOrder: 10
+    });
+    const homeButton = document.getElementById('homeBtn');
+    if (homeButton) {
+        attachHomeButtonHandler(homeButton);
+    }
+
     createHeaderHubButton({
         id: 'headerInteractiveGlobeBtn',
         className: '',
-        title: 'World',
-        label: 'World',
+        title: 'Globe',
+        label: 'Globe',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Interactive%20Worldview.png',
-        iconAlt: 'World',
+        iconAlt: 'Globe',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerInteractiveGlobeIcon',
@@ -111,7 +177,7 @@ export function loadHeaderModeButtons() {
         className: '',
         title: 'Gallery',
         label: 'Gallery',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Hero%20Biography.png',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Concept%20Gallery.png',
         iconAlt: 'Gallery',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
@@ -121,21 +187,46 @@ export function loadHeaderModeButtons() {
     attachHeroBiographyBootstrap();
 
     createHeaderHubButton({
-        id: 'homeBtn',
+        id: 'headerDialogueTheaterBtn',
         className: '',
-        title: 'Return to Home',
-        label: 'Home',
-        iconPath: 'src/assets/images/Icons/Mode%20Icons/Home%20Button.png',
-        iconAlt: 'Home',
+        title: 'Theater',
+        label: 'Theater',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png',
+        iconAlt: 'Theater',
         parentId: 'headerHubRightButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
-        iconSpanId: 'homeBtnIcon',
-        headerOrder: 70
+        iconSpanId: 'headerDialogueTheaterIcon',
+        headerOrder: 50
     });
-    const homeButton = document.getElementById('homeBtn');
-    if (homeButton) {
-        attachHomeButtonHandler(homeButton);
-    }
+    attachDialogueTheaterBootstrap();
+
+    createHeaderHubButton({
+        id: 'headerOfficialArchiveBtn',
+        className: '',
+        title: 'Archive',
+        label: 'Archive',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Official%20Archive.png',
+        iconAlt: 'Archive',
+        parentId: 'headerHubRightButtonGroup',
+        baseClass: 'header-hub-btn header-hub-btn--icon',
+        iconSpanId: 'headerOfficialArchiveIcon',
+        headerOrder: 55
+    });
+    attachOfficialArchiveBootstrap();
+
+    createHeaderHubButton({
+        id: 'headerDataWorkshopBtn',
+        className: '',
+        title: 'Workshop',
+        label: 'Workshop',
+        iconPath: 'src/assets/images/Icons/Mode%20Icons/Data%20Workshop.png',
+        iconAlt: 'Workshop',
+        parentId: 'headerHubRightButtonGroup',
+        baseClass: 'header-hub-btn header-hub-btn--icon',
+        iconSpanId: 'headerDataWorkshopIcon',
+        headerOrder: 60
+    });
+    attachDataWorkshopBootstrap();
 
     updateStatus('✓ Header mode buttons loaded', 'success');
 }

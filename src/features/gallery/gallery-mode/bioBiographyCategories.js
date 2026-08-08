@@ -30,12 +30,13 @@ export const BIO_BIOGRAPHY_CATEGORY_ARIA = Object.freeze({
 
 /**
  * @param {string} raw
- * @returns {BioBiographyArchiveCategory}
+ * @returns {BioBiographyArchiveCategory | 'countries'}
  */
 export function normalizeBioBiographyCategory(raw) {
     const k = String(raw || '').trim().toLowerCase();
     if (k === 'factions' || k === 'faction') return 'factions';
     if (k === 'npcs' || k === 'npc') return 'npcs';
     if (k === 'locations' || k === 'location') return 'locations';
+    if (k === 'countries' || k === 'country') return 'countries';
     return 'heroes';
 }

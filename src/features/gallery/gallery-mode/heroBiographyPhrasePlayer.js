@@ -3,7 +3,10 @@
  */
 
 import { applyCharacterVolume } from '../../universal-features/atlas-character-audio/CharacterVolumeService.js';
-import { buildHeroBiographyPhrasePath } from './heroBiographyPhrasePaths.js';
+import {
+    buildHeroBiographyPhrasePath,
+    getHeroBiographyPhraseWeight,
+} from './heroBiographyPhrasePaths.js';
 import { findSelectionPhraseFile } from './loadHeroPhrases.js';
 
 /** @type {HTMLAudioElement | null} */
@@ -102,7 +105,13 @@ export async function playRandomHeroBiographyPhrase(heroFilterKey, phraseFiles) 
         : [];
     if (!files.length) return false;
 
-    const pick = files[Math.floor(Math.random() * files.length)];
+    /** @type {string[]} */
+    const weighted = [];
+    for (const file of files) {
+        const weight = Math.max(1, getHeroBiographyPhraseWeight(file));
+        for (let i = 0; i < weight; i += 1) weighted.push(file);
+    }
+    const pick = weighted[Math.floor(Math.random() * weighted.length)];
     return playHeroBiographyPhrase(heroFilterKey, pick);
 }
 
