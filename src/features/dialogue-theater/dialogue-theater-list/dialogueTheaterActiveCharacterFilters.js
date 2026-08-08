@@ -3,7 +3,18 @@
  */
 
 import { getHeroFiltersFromStandaloneActiveFilters } from './dialogueTheaterHeroFilter.js';
-import { isDialogueTheaterPairSearchActive } from './dialogueTheaterPairSearch.js';
+import {
+    isDialogueTheaterPairSearchActive,
+    resolveExactRosterHero,
+} from './dialogueTheaterPairSearch.js';
+
+/**
+ * @returns {string[]}
+ */
+function manifestHeroesForFilters() {
+    const fs = typeof window !== 'undefined' ? window.FilterService : null;
+    return Array.isArray(fs?.heroes) ? fs.heroes : [];
+}
 
 /**
  * @param {{ getPairA?: () => string, getPairB?: () => string }|null|undefined} pairSearchControls
@@ -16,9 +27,12 @@ export function getActiveDialogueTheaterCharacterFilters(
 ) {
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
+    const manifestHeroes = manifestHeroesForFilters();
 
-    if (isDialogueTheaterPairSearchActive(pairA, pairB)) {
-        return [pairA, pairB].map((value) => String(value || '').trim()).filter(Boolean);
+    if (isDialogueTheaterPairSearchActive(pairA, pairB, manifestHeroes)) {
+        return [pairA, pairB]
+            .map((value) => resolveExactRosterHero(value, manifestHeroes))
+            .filter(Boolean);
     }
 
     return getHeroFiltersFromStandaloneActiveFilters(activeFilters);

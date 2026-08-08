@@ -7,7 +7,6 @@
  */
 
 import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
-import { resolveNpcCanonicalName } from '../../system-interface/interface-shared/npcNameAliases.js';
 import { heroNamesMatch } from './dialogueTheaterHeroFilter.js';
 
 /**
@@ -32,6 +31,29 @@ export function getConversationSpeakerNames(conversation) {
 }
 
 /**
+ * Resolve typed Character A/B text to a roster hero only when it is a full valid name
+ * (or known alias like McCree → Cassidy). Incomplete typing returns ''.
+ *
+ * @param {string} query
+ * @param {string[]} manifestHeroes
+ * @returns {string}
+ */
+export function resolveExactRosterHero(query, manifestHeroes = []) {
+    const trimmed = String(query || '').trim();
+    if (!trimmed) return '';
+
+    const heroes = Array.isArray(manifestHeroes) ? manifestHeroes : [];
+    for (const hero of heroes) {
+        const label = String(hero || '').trim();
+        if (!label) continue;
+        if (heroNamesMatch(label, trimmed, heroes)) return label;
+    }
+    return '';
+}
+
+/**
+ * Exact / alias equality for two character labels.
+ *
  * @param {string} a
  * @param {string} b
  * @param {string[]} manifestHeroes
@@ -41,13 +63,7 @@ export function characterNamesMatch(a, b, manifestHeroes = []) {
     const left = String(a || '').trim();
     const right = String(b || '').trim();
     if (!left || !right) return false;
-    if (heroNamesMatch(left, right, manifestHeroes)) return true;
-
-    const npcLeft = resolveNpcCanonicalName(left);
-    const npcRight = resolveNpcCanonicalName(right);
-    if (npcLeft && npcRight && npcLeft.toLowerCase() === npcRight.toLowerCase()) return true;
-
-    return heroNamesMatch(npcLeft, npcRight, manifestHeroes);
+    return heroNamesMatch(left, right, manifestHeroes);
 }
 
 /**
@@ -101,8 +117,12 @@ export function pathIncludesCharacter(conversation, path, characterName, manifes
     const query = String(characterName || '').trim();
     if (!query) return true;
 
+    const resolved = resolveExactRosterHero(query, manifestHeroes);
+    // Still typing / not a roster name — do not blank the list.
+    if (!resolved) return true;
+
     return speakersOnConversationPath(conversation, path).some((hero) =>
-        characterNamesMatch(hero, query, manifestHeroes),
+        characterNamesMatch(hero, resolved, manifestHeroes),
     );
 }
 
@@ -146,27 +166,38 @@ export function conversationIncludesCharacter(conversation, characterName, manif
     const query = String(characterName || '').trim();
     if (!query) return true;
 
+    const resolved = resolveExactRosterHero(query, manifestHeroes);
+    // Incomplete typing should keep the current list, not show "no conversations".
+    if (!resolved) return true;
+
     for (const line of conversation?.lines || []) {
         const hero = String(line?.hero || '').trim();
-        if (hero && characterNamesMatch(hero, query, manifestHeroes)) return true;
+        if (hero && characterNamesMatch(hero, resolved, manifestHeroes)) return true;
     }
 
     // Multipath labels can name a speaker even when their lines are sparse.
     for (const path of conversation?.paths || []) {
         const labelHero = parseHeroFromPathLabel(path?.label);
-        if (labelHero && characterNamesMatch(labelHero, query, manifestHeroes)) return true;
+        if (labelHero && characterNamesMatch(labelHero, resolved, manifestHeroes)) return true;
     }
 
     return false;
 }
 
 /**
+ * True only when at least one field is a completed roster hero name.
+ * Incomplete typing does not count as an active pair filter.
+ *
  * @param {string} charA
  * @param {string} charB
+ * @param {string[]} manifestHeroes
  * @returns {boolean}
  */
-export function isDialogueTheaterPairSearchActive(charA, charB) {
-    return Boolean(String(charA || '').trim() || String(charB || '').trim());
+export function isDialogueTheaterPairSearchActive(charA, charB, manifestHeroes = []) {
+    return Boolean(
+        resolveExactRosterHero(charA, manifestHeroes) ||
+            resolveExactRosterHero(charB, manifestHeroes),
+    );
 }
 
 /**
@@ -180,40 +211,43 @@ export function conversationMatchesCharacterPair(conversation, charA, charB, man
     const a = String(charA || '').trim();
     const b = String(charB || '').trim();
 
-    if (!a && !b) return true;
-    if (a && !b) return conversationIncludesCharacter(conversation, a, manifestHeroes);
-    if (!a && b) return conversationIncludesCharacter(conversation, b, manifestHeroes);
+    const resolvedA = resolveExactRosterHero(a, manifestHeroes);
+    const resolvedB = resolveExactRosterHero(b, manifestHeroes);
 
-    return conversationHasSharedPathForPair(conversation, a, b, manifestHeroes);
+    if (!resolvedA && !resolvedB) return true;
+    if (resolvedA && !resolvedB) {
+        return conversationIncludesCharacter(conversation, resolvedA, manifestHeroes);
+    }
+    if (!resolvedA && resolvedB) {
+        return conversationIncludesCharacter(conversation, resolvedB, manifestHeroes);
+    }
+
+    return conversationHasSharedPathForPair(conversation, resolvedA, resolvedB, manifestHeroes);
 }
 
 /**
+ * Autocomplete options for Character A/B — atlas roster only (no NPC/one-off speakers).
+ *
  * @param {string[]} manifestHeroes
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
  * @returns {string[]}
  */
-export function buildDialogueTheaterSpeakerOptions(manifestHeroes, conversations) {
+export function buildDialogueTheaterSpeakerOptions(manifestHeroes) {
     const seen = new Set();
     /** @type {string[]} */
     const options = [];
 
-    const add = (name) => {
-        const trimmed = String(name || '').trim();
-        if (!trimmed) return;
-        const key = trimmed.toLowerCase();
-        if (seen.has(key)) return;
+    for (const hero of manifestHeroes || []) {
+        const label = resolveManifestHeroId(hero, manifestHeroes) || String(hero || '').trim();
+        if (!label) continue;
+        // resolveManifestHeroId returns the input when unknown — only keep real roster ids.
+        const isRoster = (manifestHeroes || []).some((entry) =>
+            heroNamesMatch(entry, label, manifestHeroes),
+        );
+        if (!isRoster) continue;
+        const key = label.toLowerCase();
+        if (seen.has(key)) continue;
         seen.add(key);
-        options.push(trimmed);
-    };
-
-    for (const hero of manifestHeroes) {
-        add(resolveManifestHeroId(hero, manifestHeroes) || hero);
-    }
-
-    for (const conversation of conversations) {
-        for (const speaker of getConversationSpeakerNames(conversation)) {
-            add(speaker);
-        }
+        options.push(label);
     }
 
     return options.sort((left, right) => left.localeCompare(right, undefined, { sensitivity: 'base' }));

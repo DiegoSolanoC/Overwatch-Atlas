@@ -37,7 +37,7 @@ import {
 } from './dialogueTheaterPairSearch.js';
 import { getActiveDialogueTheaterCharacterFilters } from './dialogueTheaterActiveCharacterFilters.js';
 import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
-import { conversationMatchesListSearch } from './dialogueTheaterListSearch.js';
+import { conversationMatchesListSearch, buildConversationSearchHaystack } from './dialogueTheaterListSearch.js';
 import {
     floatArchiveFileActions,
     unfloatArchiveFileActions,
@@ -95,6 +95,37 @@ let listThumbAssets = null;
 /** @type {Map<string, string[]>|null} */
 let duplicateLookupCache = null;
 
+/** @type {Map<string, boolean>|null} */
+let unfinishedCache = null;
+
+/** @type {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>|null} */
+let searchHaystackCache = null;
+
+/** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation[]|null} */
+let modeConversationsCache = null;
+
+/** @type {string} */
+let modeConversationsCacheKey = '';
+
+/**
+ * Keep built list cards across filter changes so returning to Overwatch (~1k)
+ * reuses DOM instead of rebuilding thumbs/images.
+ * @type {Map<string, HTMLElement>}
+ */
+let listItemPool = new Map();
+
+/** @type {string} */
+let listItemPoolMode = '';
+
+/** @type {string} */
+let lastRenderedIdsKey = '';
+
+/** @type {number} */
+let progressiveRenderToken = 0;
+
+/** Initial sync create budget when cold-building a large Overwatch set. */
+const LIST_CREATE_CHUNK = 64;
+
 /** @type {boolean} */
 let forceFullListRebuild = false;
 
@@ -104,9 +135,26 @@ let renderListScheduled = false;
 /** @type {HTMLElement|null} */
 let renderListRoot = null;
 
+/** @type {number} */
+let searchDebounceTimer = 0;
+
+function clearListItemPool() {
+    listItemPool.clear();
+    listItemPoolMode = '';
+    lastRenderedIdsKey = '';
+    progressiveRenderToken += 1;
+}
+
 function invalidateListCaches(options = {}) {
     duplicateLookupCache = null;
-    if (options.fullRebuild) forceFullListRebuild = true;
+    unfinishedCache = null;
+    searchHaystackCache = null;
+    modeConversationsCache = null;
+    modeConversationsCacheKey = '';
+    if (options.fullRebuild) {
+        forceFullListRebuild = true;
+        clearListItemPool();
+    }
 }
 
 /**
@@ -118,6 +166,53 @@ function getDuplicateLookup(conversations) {
         duplicateLookupCache = buildConversationDuplicateLookup(conversations);
     }
     return duplicateLookupCache;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {Map<string, boolean>}
+ */
+function getUnfinishedCache(conversations) {
+    if (unfinishedCache) return unfinishedCache;
+    const voicelines = listThumbAssets?.voicelines || [];
+    const duplicates = getDuplicateLookup(conversations);
+    /** @type {Map<string, boolean>} */
+    const map = new Map();
+    for (const row of conversations) {
+        map.set(row.id, conversationHasUnfinishedIssues(row, voicelines, duplicates));
+    }
+    unfinishedCache = map;
+    return map;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @returns {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>}
+ */
+function getSearchHaystackCache(conversations) {
+    if (searchHaystackCache) return searchHaystackCache;
+    /** @type {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>} */
+    const map = new Map();
+    for (const row of conversations) {
+        map.set(row.id, buildConversationSearchHaystack(row));
+    }
+    searchHaystackCache = map;
+    return map;
+}
+
+/**
+ * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
+ */
+function getModeConversations() {
+    const mode = getDialogueTheaterEntryMode();
+    if (modeConversationsCache && modeConversationsCacheKey === mode) {
+        return modeConversationsCache;
+    }
+    modeConversationsCacheKey = mode;
+    modeConversationsCache = dialogueTheaterDataService.getConversationsByEntryType(
+        entryTypeForMode(mode),
+    );
+    return modeConversationsCache;
 }
 
 /**
@@ -138,24 +233,16 @@ function scheduleRenderList(root) {
 /**
  * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
  */
-function getModeConversations() {
-    return dialogueTheaterDataService.getConversationsByEntryType(
-        entryTypeForMode(getDialogueTheaterEntryMode()),
-    );
-}
-
-/**
- * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation[]}
- */
 function getFilteredConversations() {
     let rows = getModeConversations();
+    const haystacks = getSearchHaystackCache(rows);
 
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
-    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
+    const manifestHeroes = manifestHeroesForPairSearch();
+    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB, manifestHeroes);
 
     if (pairSearchActive) {
-        const manifestHeroes = manifestHeroesForPairSearch();
         rows = rows.filter((row) => conversationMatchesCharacterPair(row, pairA, pairB, manifestHeroes));
     } else {
         const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
@@ -166,7 +253,9 @@ function getFilteredConversations() {
 
     const q = searchQuery.trim();
     if (q) {
-        rows = rows.filter((row) => conversationMatchesListSearch(row, q));
+        rows = rows.filter((row) =>
+            conversationMatchesListSearch(row, q, haystacks.get(row.id) || null),
+        );
     }
 
     if (statusFilter.trim()) {
@@ -182,15 +271,11 @@ function getFilteredConversations() {
     const sorted = [...rows].sort(compareConversationListOrder);
     if (!incompleteFirst) return sorted;
 
-    const voicelines = listThumbAssets?.voicelines || [];
-    const duplicates =
-        duplicateLookupCache ||
-        buildConversationDuplicateLookup(getModeConversations());
-    duplicateLookupCache = duplicates;
+    const unfinished = getUnfinishedCache(getModeConversations());
 
     return sorted.sort((a, b) => {
-        const aUnfinished = conversationHasUnfinishedIssues(a, voicelines, duplicates) ? 0 : 1;
-        const bUnfinished = conversationHasUnfinishedIssues(b, voicelines, duplicates) ? 0 : 1;
+        const aUnfinished = unfinished.get(a.id) ? 0 : 1;
+        const bUnfinished = unfinished.get(b.id) ? 0 : 1;
         if (aUnfinished !== bUnfinished) return aUnfinished - bUnfinished;
         return 0;
     });
@@ -276,33 +361,208 @@ function buildConversationThumb(row, duplicateLookup, conversations) {
 }
 
 /**
+ * @param {HTMLElement} item
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} row
+ * @param {Map<string, string[]>} duplicateLookup
+ * @param {Map<string, boolean>} [unfinished]
+ */
+function syncConversationListItemState(item, row, duplicateLookup, unfinished = null) {
+    item.classList.toggle('unsaved', dialogueTheaterDataService.isConversationUnsaved(row.id));
+    const isUnfinished = unfinished
+        ? Boolean(unfinished.get(row.id))
+        : conversationHasUnfinishedIssues(row, listThumbAssets?.voicelines || [], duplicateLookup);
+    item.classList.toggle('event-item--unfinished', isUnfinished);
+}
+
+/**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} row
  * @param {Map<string, string[]>} duplicateLookup
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @param {Map<string, boolean>} unfinished
  * @returns {HTMLElement}
  */
-function buildConversationListItem(row, duplicateLookup, conversations) {
+function buildConversationListItem(row, duplicateLookup, conversations, unfinished) {
     const item = document.createElement('article');
     item.className = 'event-item';
     item.dataset.conversationId = row.id;
     item.setAttribute('role', 'listitem');
-    syncConversationListItemState(item, row, duplicateLookup);
+    syncConversationListItemState(item, row, duplicateLookup, unfinished);
     item.appendChild(buildConversationThumb(row, duplicateLookup, conversations));
     return item;
 }
 
 /**
- * @param {HTMLElement} item
- * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} row
+ * @param {HTMLElement} listEl
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} rows
  * @param {Map<string, string[]>} duplicateLookup
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} allConversations
+ * @param {Map<string, boolean>} unfinished
+ * @param {number} startIndex
+ * @param {number} token
  */
-function syncConversationListItemState(item, row, duplicateLookup) {
-    item.classList.toggle('unsaved', dialogueTheaterDataService.isConversationUnsaved(row.id));
-    const voicelines = listThumbAssets?.voicelines || [];
-    item.classList.toggle(
-        'event-item--unfinished',
-        conversationHasUnfinishedIssues(row, voicelines, duplicateLookup),
-    );
+function progressiveAppendMissingItems(
+    listEl,
+    rows,
+    duplicateLookup,
+    allConversations,
+    unfinished,
+    startIndex,
+    token,
+) {
+    if (token !== progressiveRenderToken) return;
+
+    let index = startIndex;
+    let created = 0;
+    while (index < rows.length && created < LIST_CREATE_CHUNK) {
+        const row = rows[index];
+        index += 1;
+        if (listItemPool.has(row.id)) continue;
+        const item = buildConversationListItem(row, duplicateLookup, allConversations, unfinished);
+        listItemPool.set(row.id, item);
+        created += 1;
+    }
+
+    // Re-append full visible order so newly created cards land in the right slots.
+    const fragment = document.createDocumentFragment();
+    for (const row of rows) {
+        const item = listItemPool.get(row.id);
+        if (!item) continue;
+        syncConversationListItemState(item, row, duplicateLookup, unfinished);
+        fragment.appendChild(item);
+    }
+    listEl.replaceChildren(fragment);
+
+    // Keep scanning from this index so later frames only create remaining gaps.
+    if (index < rows.length && token === progressiveRenderToken) {
+        requestAnimationFrame(() => {
+            progressiveAppendMissingItems(
+                listEl,
+                rows,
+                duplicateLookup,
+                allConversations,
+                unfinished,
+                index,
+                token,
+            );
+        });
+    }
+}
+
+/**
+ * @param {HTMLElement} root
+ */
+function renderList(root) {
+    const listEl = root.querySelector('#dialogueTheaterList');
+    if (!listEl) return;
+
+    const mode = getDialogueTheaterEntryMode();
+    if (listItemPoolMode !== mode) {
+        clearListItemPool();
+        listItemPoolMode = mode;
+    }
+
+    const rows = getFilteredConversations();
+    const allConversations = getModeConversations();
+    const duplicateLookup = getDuplicateLookup(allConversations);
+    const unfinished = getUnfinishedCache(allConversations);
+    updateListCount(root, rows.length);
+
+    const useIncremental = !forceFullListRebuild;
+    forceFullListRebuild = false;
+    progressiveRenderToken += 1;
+    const renderToken = progressiveRenderToken;
+
+    if (rows.length === 0) {
+        listEl.replaceChildren();
+        const empty = document.createElement('p');
+        empty.className = 'dialogue-theater-list__empty';
+        const q = searchQuery.trim();
+        const pairA = pairSearchControls?.getPairA?.() || '';
+        const pairB = pairSearchControls?.getPairB?.() || '';
+        const pairSearchActive = isDialogueTheaterPairSearchActive(
+            pairA,
+            pairB,
+            manifestHeroesForPairSearch(),
+        );
+        const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
+        const { plural } = entryNouns();
+        if (pairSearchActive) {
+            const both = pairA.trim() && pairB.trim();
+            empty.textContent = both
+                ? `No ${plural} found between ${pairA.trim()} and ${pairB.trim()}.`
+                : `No ${plural} include that character.`;
+        } else if (heroFilters.length && !q) {
+            empty.textContent = `No ${plural} include the selected heroes.`;
+        } else if (q) {
+            empty.textContent = `No ${plural} match your search.`;
+        } else {
+            empty.textContent =
+                getDialogueTheaterEntryMode() === 'chatters'
+                    ? 'No chatters yet.'
+                    : 'No conversations yet. Use + Add to create one.';
+        }
+        listEl.appendChild(empty);
+        lastRenderedIdsKey = '';
+        syncSaveButtonState(root);
+        return;
+    }
+
+    listEl.querySelector('.dialogue-theater-list__empty')?.remove();
+
+    const idsKey = rows.map((row) => row.id).join('\0');
+    if (
+        useIncremental &&
+        idsKey === lastRenderedIdsKey &&
+        listEl.childElementCount === rows.length
+    ) {
+        // Same visible set — only refresh cheap state classes.
+        for (const row of rows) {
+            const item = listItemPool.get(row.id);
+            if (item) syncConversationListItemState(item, row, duplicateLookup, unfinished);
+        }
+        syncSaveButtonState(root);
+        return;
+    }
+    lastRenderedIdsKey = idsKey;
+
+    /** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} */
+    const missingRows = [];
+    for (const row of rows) {
+        if (!listItemPool.has(row.id)) missingRows.push(row);
+    }
+
+    // Always create in chunks — full rebuild clears the pool but should not freeze on ~1k cards.
+    const syncCreateCount = LIST_CREATE_CHUNK;
+    for (let i = 0; i < missingRows.length && i < syncCreateCount; i += 1) {
+        const row = missingRows[i];
+        const item = buildConversationListItem(row, duplicateLookup, allConversations, unfinished);
+        listItemPool.set(row.id, item);
+    }
+
+    const fragment = document.createDocumentFragment();
+    for (const row of rows) {
+        const item = listItemPool.get(row.id);
+        if (!item) continue;
+        syncConversationListItemState(item, row, duplicateLookup, unfinished);
+        fragment.appendChild(item);
+    }
+    listEl.replaceChildren(fragment);
+
+    if (missingRows.length > syncCreateCount) {
+        requestAnimationFrame(() => {
+            progressiveAppendMissingItems(
+                listEl,
+                rows,
+                duplicateLookup,
+                allConversations,
+                unfinished,
+                0,
+                renderToken,
+            );
+        });
+    }
+
+    syncSaveButtonState(root);
 }
 
 /**
@@ -329,7 +589,11 @@ function updateListCount(root, visibleCount) {
     const q = searchQuery.trim();
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
-    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
+    const pairSearchActive = isDialogueTheaterPairSearchActive(
+        pairA,
+        pairB,
+        manifestHeroesForPairSearch(),
+    );
     const heroFilterActive =
         !pairSearchActive && isDialogueTheaterHeroFilterActive(window.standaloneActiveFilters);
     const eraActive = Boolean(eraFilter.trim() || statusFilter.trim() || eraPairFilter.trim());
@@ -366,100 +630,14 @@ function updateListCount(root, visibleCount) {
 /**
  * @param {HTMLElement} root
  */
-function renderList(root) {
-    const listEl = root.querySelector('#dialogueTheaterList');
-    if (!listEl) return;
-
-    const rows = getFilteredConversations();
-    const allConversations = getModeConversations();
-    const duplicateLookup = getDuplicateLookup(allConversations);
-    updateListCount(root, rows.length);
-
-    const useIncremental = !forceFullListRebuild;
-    forceFullListRebuild = false;
-
-    if (rows.length === 0) {
-        listEl.innerHTML = '';
-        const empty = document.createElement('p');
-        empty.className = 'dialogue-theater-list__empty';
-        const q = searchQuery.trim();
-        const pairA = pairSearchControls?.getPairA?.() || '';
-        const pairB = pairSearchControls?.getPairB?.() || '';
-        const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB);
-        const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
-        const { plural } = entryNouns();
-        if (pairSearchActive) {
-            const both = pairA.trim() && pairB.trim();
-            empty.textContent = both
-                ? `No ${plural} found between ${pairA.trim()} and ${pairB.trim()}.`
-                : `No ${plural} include that character.`;
-        } else if (heroFilters.length && !q) {
-            empty.textContent = `No ${plural} include the selected heroes.`;
-        } else if (q) {
-            empty.textContent = `No ${plural} match your search.`;
-        } else {
-            empty.textContent =
-                getDialogueTheaterEntryMode() === 'chatters'
-                    ? 'No chatters yet.'
-                    : 'No conversations yet. Use + Add to create one.';
-        }
-        listEl.appendChild(empty);
-        syncSaveButtonState(root);
-        return;
-    }
-
-    listEl.querySelector('.dialogue-theater-list__empty')?.remove();
-
-    if (!useIncremental) {
-        listEl.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-        for (const row of rows) {
-            fragment.appendChild(buildConversationListItem(row, duplicateLookup, allConversations));
-        }
-        listEl.appendChild(fragment);
-        syncSaveButtonState(root);
-        return;
-    }
-
-    /** @type {Map<string, HTMLElement>} */
-    const existingById = new Map();
-    listEl.querySelectorAll('.event-item[data-conversation-id]').forEach((node) => {
-        if (!(node instanceof HTMLElement)) return;
-        const id = node.dataset.conversationId || '';
-        if (id) existingById.set(id, node);
-    });
-
-    const visibleIds = new Set(rows.map((row) => row.id));
-    for (const [id, element] of existingById) {
-        if (!visibleIds.has(id)) {
-            element.remove();
-            existingById.delete(id);
-        }
-    }
-
-    const fragment = document.createDocumentFragment();
-    for (const row of rows) {
-        let item = existingById.get(row.id);
-        if (!item) {
-            item = buildConversationListItem(row, duplicateLookup, allConversations);
-        } else {
-            syncConversationListItemState(item, row, duplicateLookup);
-        }
-        fragment.appendChild(item);
-    }
-    listEl.appendChild(fragment);
-
-    syncSaveButtonState(root);
-}
-
-/**
- * @param {HTMLElement} root
- */
 function wireSearch(root) {
     const searchInput = root.querySelector('#dialogueTheaterSearchInput');
     searchInput?.addEventListener('input', () => {
         searchQuery = searchInput instanceof HTMLInputElement ? searchInput.value : '';
-        scheduleRenderList(root);
+        window.clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = window.setTimeout(() => {
+            scheduleRenderList(root);
+        }, 120);
     });
 
     const eraSelect = root.querySelector('#dialogueTheaterEraFilter');
@@ -790,7 +968,9 @@ export function unmountDialogueTheaterListView(container) {
     incompleteFirst = false;
     pairSearchControls = null;
     listThumbAssets = null;
-    invalidateListCaches();
+    window.clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = 0;
+    invalidateListCaches({ fullRebuild: true });
     renderListScheduled = false;
     renderListRoot = null;
     container?.remove();

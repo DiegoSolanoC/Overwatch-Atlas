@@ -365,6 +365,12 @@
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.42);
 }
 
+/* Body-fixed pair-search suggestions (placement: fixed) — sit above entry thumbnails */
+.dialogue-theater-list-host .filter-autocomplete-list,
+body > .filter-autocomplete-list.dialogue-theater-autocomplete-list {
+    z-index: 10050;
+}
+
 .dialogue-theater-pair-search-col__input-wrap .dialogue-theater-autocomplete-list--inline {
     position: static;
     z-index: auto;

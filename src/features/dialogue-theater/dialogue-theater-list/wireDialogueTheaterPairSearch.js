@@ -4,9 +4,12 @@
 
 import { loadDialogueTheaterHeroes, heroFilterIconUrl } from '../data/loadDialogueTheaterAssets.js';
 import { setupSingleValueAutocomplete, updateSingleValueAutocompleteOptions } from '../dialogue-theater-info-panel/dialogueTheaterSingleAutocomplete.js';
-import { buildDialogueTheaterSpeakerOptions } from './dialogueTheaterPairSearch.js';
+import {
+    buildDialogueTheaterSpeakerOptions,
+    resolveExactRosterHero,
+} from './dialogueTheaterPairSearch.js';
 
-const PAIR_SEARCH_AUTOCOMPLETE = { placement: 'overlay' };
+const PAIR_SEARCH_AUTOCOMPLETE = { placement: 'fixed' };
 const HERO_ICON_FALLBACK = 'src/assets/images/Icons/Filter Icons/Heroes Icon.png';
 
 /**
@@ -20,12 +23,13 @@ function wirePairSearchAutocomplete(input, speakerOptions) {
 /**
  * @param {HTMLImageElement|null} img
  * @param {string} characterName
+ * @param {string[]} manifestHeroes
  */
-function syncPairSearchIcon(img, characterName) {
+function syncPairSearchIcon(img, characterName, manifestHeroes) {
     if (!(img instanceof HTMLImageElement)) return;
 
-    const trimmed = String(characterName || '').trim();
-    if (!trimmed) {
+    const iconHero = resolveExactRosterHero(characterName, manifestHeroes);
+    if (!iconHero) {
         img.hidden = true;
         img.removeAttribute('src');
         img.alt = '';
@@ -33,8 +37,8 @@ function syncPairSearchIcon(img, characterName) {
     }
 
     img.hidden = false;
-    img.alt = trimmed;
-    img.src = heroFilterIconUrl(trimmed);
+    img.alt = iconHero;
+    img.src = heroFilterIconUrl(iconHero);
     img.onerror = () => {
         img.onerror = null;
         img.src = HERO_ICON_FALLBACK;
@@ -53,7 +57,7 @@ export async function wireDialogueTheaterPairSearch(root, handlers) {
     const iconB = root.querySelector('#dialogueTheaterPairSearchIconB');
 
     const manifestHeroes = await loadDialogueTheaterHeroes();
-    const speakerOptions = buildDialogueTheaterSpeakerOptions(manifestHeroes, handlers.getConversations());
+    const speakerOptions = buildDialogueTheaterSpeakerOptions(manifestHeroes);
 
     if (inputA instanceof HTMLInputElement) {
         wirePairSearchAutocomplete(inputA, speakerOptions);
@@ -65,27 +69,50 @@ export async function wireDialogueTheaterPairSearch(root, handlers) {
     const refreshIcons = () => {
         const valueA = inputA instanceof HTMLInputElement ? inputA.value : '';
         const valueB = inputB instanceof HTMLInputElement ? inputB.value : '';
-        syncPairSearchIcon(iconA instanceof HTMLImageElement ? iconA : null, valueA);
-        syncPairSearchIcon(iconB instanceof HTMLImageElement ? iconB : null, valueB);
+        syncPairSearchIcon(iconA instanceof HTMLImageElement ? iconA : null, valueA, manifestHeroes);
+        syncPairSearchIcon(iconB instanceof HTMLImageElement ? iconB : null, valueB, manifestHeroes);
     };
 
-    const notify = () => {
+    /** Only refilter when a completed roster hero selection actually changes. */
+    let lastResolvedKey = `${resolveExactRosterHero('', manifestHeroes)}\0`;
+
+    const resolvedFilterKey = () => {
+        const valueA = inputA instanceof HTMLInputElement ? inputA.value : '';
+        const valueB = inputB instanceof HTMLInputElement ? inputB.value : '';
+        return `${resolveExactRosterHero(valueA, manifestHeroes)}\0${resolveExactRosterHero(valueB, manifestHeroes)}`;
+    };
+
+    const notifyIfResolvedChanged = () => {
         refreshIcons();
+        const key = resolvedFilterKey();
+        if (key === lastResolvedKey) return;
+        lastResolvedKey = key;
         handlers.onChange();
     };
 
-    inputA?.addEventListener('input', notify);
-    inputB?.addEventListener('input', notify);
-    inputA?.addEventListener('change', notify);
-    inputB?.addEventListener('change', notify);
+    /** Debounce typing; skip list work until a full valid hero name appears/clears. */
+    let debounceTimer = 0;
+    const notifyDebounced = () => {
+        refreshIcons();
+        window.clearTimeout(debounceTimer);
+        debounceTimer = window.setTimeout(() => {
+            notifyIfResolvedChanged();
+        }, 120);
+    };
+
+    inputA?.addEventListener('input', notifyDebounced);
+    inputB?.addEventListener('input', notifyDebounced);
+    inputA?.addEventListener('change', notifyIfResolvedChanged);
+    inputB?.addEventListener('change', notifyIfResolvedChanged);
 
     refreshIcons();
+    lastResolvedKey = resolvedFilterKey();
 
     return {
         getPairA: () => (inputA instanceof HTMLInputElement ? inputA.value : ''),
         getPairB: () => (inputB instanceof HTMLInputElement ? inputB.value : ''),
         refreshSpeakerOptions: () => {
-            const nextOptions = buildDialogueTheaterSpeakerOptions(manifestHeroes, handlers.getConversations());
+            const nextOptions = buildDialogueTheaterSpeakerOptions(manifestHeroes);
             if (inputA instanceof HTMLInputElement) {
                 updateSingleValueAutocompleteOptions(inputA, nextOptions);
             }
