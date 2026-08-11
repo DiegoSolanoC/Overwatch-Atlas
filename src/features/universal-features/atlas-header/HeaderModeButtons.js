@@ -1,7 +1,7 @@
 /**
  * HeaderModeButtons — mounts primary mode-entry header buttons.
  *
- * Left hub (`#headerHubButtonGroup`): Home, Globe, Codex, Story, Gallery.
+ * Left hub (`#headerHubButtonGroup`): Home, World, Codex, Story, Gallery.
  * Right hub: Theater, Archive, Workshop, Palette (Palette is mounted by
  * `PaletteLoaders` at double width so the right strip still reads as five segments).
  *
@@ -133,10 +133,10 @@ export function loadHeaderModeButtons() {
     createHeaderHubButton({
         id: 'headerInteractiveGlobeBtn',
         className: '',
-        title: 'Globe',
-        label: 'Globe',
+        title: 'World',
+        label: 'World',
         iconPath: 'src/assets/images/Icons/Mode%20Icons/Interactive%20Worldview.png',
-        iconAlt: 'Globe',
+        iconAlt: 'World',
         parentId: 'headerHubButtonGroup',
         baseClass: 'header-hub-btn header-hub-btn--icon',
         iconSpanId: 'headerInteractiveGlobeIcon',

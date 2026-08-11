@@ -483,9 +483,11 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
 .header-hub-btn-label {
     display: inline-flex;
     align-items: center;
+    font-family: var(--font-menu-title, var(--font-default, 'Config', sans-serif));
     font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.2px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.05em;
     line-height: 1;
     white-space: nowrap;
     opacity: 0.92;
@@ -504,7 +506,9 @@ body.app-timeline-default #headerHubRight .header-hub-btn[data-action="menu"] {
 #headerHubRightButtonGroup .header-hub-btn-label {
     display: inline-flex;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.05em;
 }
 
 /* Vehicles icon often has more transparent padding; boost slightly */

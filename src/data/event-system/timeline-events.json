@@ -2929,6 +2929,99 @@
       ]
     },
     {
+      "name": "Ramattra is Made",
+      "locationType": "earth",
+      "cityDisplayName": "Secret Omnium, Antartica?",
+      "description": "On March 29th of 2051, what was Ramattra, was made. The R-7000 Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The 'Ravagers' acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis. They were created in Anubis' own image, created on production lines intended for civilian or domestic serving use. These lines now served a new purpose: the creation of an ultimate show of Anubis' force.\n\nRamattra himself was unique in that he led his fellow Omnics into battles, among them were the streets of Midtown in New York.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Website, Ramattra",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/ramattra/"
+        }
+      ],
+      "headlines": [
+        "Omnic Crisis declared to be global, cause is still unknown",
+        "Wealthy elites and celebrities presumed to be hiding in bunkers"
+      ],
+      "lat": -75.1,
+      "lon": 123.35,
+      "eraName": "The Age of Progress",
+      "yearStart": 2051,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Secret Omnium, Antartica?",
+          "country": "Antartica?",
+          "reasoning": "Ramattra is Made"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ramattra",
+          "reasoning": "Ramattra is Made"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Crisis",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Maker of the Wartime Omnics"
+        },
+        {
+          "locationName": "",
+          "country": "Revel,",
+          "reasoning": "Revel is Made"
+        }
+      ]
+    },
+    {
+      "name": "Yuna Lee is Born",
+      "description": "On April 21st of 2051, Yuna Lee was born. Growing up during the Crisis and with the rise of Mech armor and giant robots across Europe and Asia, she developed a fascination for these machines from an early age, collecting customizable figures and falling in love with the Mecha Guardian gaming franchise. This passion, as well as her skills as a leader, allowed her to pursue a career in esports while still in college.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2051,
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": "Yuna Lee is Born"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "South Korea",
+          "reasoning": "Yuna Lee is Born"
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, D.mon",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dmon/"
+        }
+      ]
+    },
+    {
       "name": "The Lagos Attack",
       "locationType": "earth",
       "cityDisplayName": "Lagos, Nigeria",
@@ -2980,61 +3073,6 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Unleashes a global war against humanity"
-        }
-      ]
-    },
-    {
-      "name": "Ramattra is Made",
-      "locationType": "earth",
-      "cityDisplayName": "Secret Omnium, Antartica?",
-      "description": "On March 29th of 2051, what was Ramattra, was made. The R-7000 Units were Anubis' crowning jewel in the warbot army, built in a secret facility, somewhere cold and isolated. The 'Ravagers' acted as battalion commanders and strategists, becoming one of the most dreaded units in the Crisis. They were created in Anubis' own image, created on production lines intended for civilian or domestic serving use. These lines now served a new purpose: the creation of an ultimate show of Anubis' force.\n\nRamattra himself was unique in that he led his fellow Omnics into battles, among them were the streets of Midtown in New York.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website, Ramattra",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/ramattra/"
-        }
-      ],
-      "headlines": [
-        "Omnic Crisis declared to be global, cause is still unknown",
-        "Wealthy elites and celebrities presumed to be hiding in bunkers"
-      ],
-      "lat": -75.1,
-      "lon": 123.35,
-      "eraName": "The Omnic Crisis",
-      "yearStart": 2051,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Secret Omnium, Antartica?",
-          "country": "Antartica?",
-          "reasoning": "Ramattra is Made"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ramattra",
-          "reasoning": "Ramattra is Made"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Crisis",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "Maker of the Wartime Omnics"
-        },
-        {
-          "locationName": "",
-          "country": "Revel,",
-          "reasoning": "Revel is Made"
         }
       ]
     },
@@ -6269,39 +6307,6 @@
           "reasoning": "Betrays the Diamondbacks to rescue Cassidy"
         }
       ]
-    },
-    {
-      "name": "Yuna Lee is Born",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearStart": 2053,
-      "yearEnd": 2057,
-      "eraName": "The Golden Age",
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.mon,",
-          "reasoning": "Yuna Lee is Born"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "South Korea",
-          "reasoning": "Yuna Lee is Born"
-        }
-      ],
-      "headlines": [],
-      "sources": []
     },
     {
       "name": "Vancouver Floods",
@@ -12389,7 +12394,7 @@
     },
     {
       "name": "Top Player",
-      "description": "Years of competitive gaming shaped Hana's life when, just like her father, she decided to shape it into a career. Hana began playing Mecha Guardian V in high school, a massively popular online shooter with a strong E-sports presence in South Korea. Over the years, she quickly ascended through the rankings and became the number one player on the global scoreboard.\n\nNow better known by her game tag of \"D.va\", she would also take on the challenge at the world championships, winning on a landslide against her long-time rival Kyung-soo Han, \"King\" and completely overshadowing the rest of her team including her fellow teammate Yuna Lee, or \"D.mon\". For years, D.va gathered a reputation for being a merciless opponent who played to win at any cost. As these massive competitive events allowed the people of Korea to keep a sense of normalcy over the continuous rise of the Gwishin, D.va would become a household name among many Koreans and people from all over the world, both from her insane skills and actions per minute rate, as well as thanks to her blossoming streaming career they kick-started from her reputation.",
+      "description": "Years of competitive gaming shaped Hana's life when, just like her father, she decided to shape it into a career. Hana began playing Mecha Guardian V in high school, a massively popular online shooter with a strong E-sports presence in South Korea. Over the years, she quickly ascended through the rankings and became the number one player on the global scoreboard.\n\nWhile still young, she joined the same team as an already established esports' player, Yuna Lee, a college student going by the username \"D.mon\". Even with many years of professional play, Hana, now going by the username of \"D.va\" to match her senior, constantly carried their matches with her aggressive play style, while Yuna anchored the team as their strategist. Together they formed a dynamic duo that consistently pushed each other to improve, in an unbreakable friendship.\n\nThe team would eventually go on the challenge at the world championships, winning on a landslide against their long-time rival Kyung-soo Han, \"King\". The two women had become celebrities across the gaming world, but Hana was usually in the spotlight, gathering a reputation for being a merciless opponent who played to win at any cost. D.va would become a household name among many Koreans and people from all over the world, both from her insane skills and actions per minute rate, as well as thanks to her blossoming streaming career, which kick-started her reputation. D.mon too, rose in popularity but was usually unaccustomed to the spotlight. While Hana showered in the glory of her wins, she would rather go back to assembling mecha figures in her dorms.",
       "locationType": "earth",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -12401,7 +12406,7 @@
         {
           "locationName": "Busan, South Korea",
           "country": "South Korea",
-          "reasoning": ""
+          "reasoning": "D.va and D.mon win the Mecha Guardian V world championship"
         }
       ],
       "headlines": [
@@ -12412,6 +12417,10 @@
         {
           "text": "Overwatch Website, D.va",
           "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
+        },
+        {
+          "text": "Overwatch Website, D.mon",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dmon/"
         }
       ],
       "heroFilterPlaces": [
@@ -13747,7 +13756,7 @@
       "name": "Here to be heard",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "No description available.",
+      "description": "Benicio's son, Lúcio Correia Dos Santos, was a loud voice in Rio's community. For years, he worked alongside like-minded people to help improve the living conditions of those affected by the Crisis, making sure that the children in the favelas had healthy meals and library books, but to adults, he was more well known for the underground concerts he hosted as a DJ, believing that music would bring people together and help lift their spirits.\n\nLúcio was naturally his father's strongest supporter, and when Vishkar stole his tech to use against his people, he was the one shouting the loudest against their corruption. Tired of Vishkar's oppression and wanting to vindicate his father, Lúcio would break into Vishkar's facility to steal the Sonic technology. Using their Hardlight generators, Lúcio would create equipment that would even ground against Vishkar's enforcers. A pair of light-bladed skates capable of grinding on walls, a handheld sonic blaster and Audio amplifiers capable of outputting the therapeutic sound waves from his father's research. Using these new tools, Lúcio took to the streets to rally the masses against Vishkar, starting a revolution that quickly overwhelmed the architects and enforcers, leaving them with no choice but to temporarily leave the city. Lúcio's leadership made international headlines and helped bring attention to the dire reality of Vishkar's actions, causing a major blow for the company that made many nations, especially in Latin America, unwilling to go through with any more projects.\n\nOvernight, Lúcio had become a global celebrity, with his music reaching the top of the charts. In a matter of weeks, he went from local performances, to filling up entire arenas and starting a world tour: Synaesthesia Auditiva. With his newfound fame, Lúcio realized that he had the attention of the entire world, and with it a chance to be heard, and change the world for the better. Alongside his touring, he would become a very vocal activist, particularly against large corporations like Vishkar and the injustices that people lived under their management. His father, of course, had become one of his strongest supporters as well, happy to see that his son had become a national hero, like those Overwatch agents he always grew up wanting to be, and that while many framed him as a criminal, a rioter and a thief, in his hands, his technology had found a way to help the world, and make the plies of his people heard.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -13758,28 +13767,39 @@
         {
           "locationName": "Rio de Janeiro, Brazil",
           "country": "Brazil",
-          "reasoning": ""
+          "reasoning": "A revolt lead by Lúcio in Rio kicks Vishkar out of the city"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Lúcio",
-          "reasoning": ""
+          "reasoning": "Steals Sonic equipment and rallies the people against Vishkar"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Vishkar",
-          "reasoning": ""
+          "reasoning": "Flees Brazil following the revolts"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Rio in chaos as local Musician leads an uprising against Vishkar",
+        "Vishkar announces their staff will leave Brazil until tensions calm down",
+        "Synaesthesia Auditiva tickets sold out within minutes of going live"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Lúcio",
           "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": "Supports his son and the revolution"
         }
       ]
     },
