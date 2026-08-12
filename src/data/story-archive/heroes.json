@@ -12,7 +12,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "11 November 2054"
+      "birthday": "11 November 2054",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Phreaks",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Doomfist",
@@ -40,7 +50,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "6 June 2047"
+      "birthday": "6 June 2047",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Overwatch",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Wrecking Ball",
@@ -54,7 +74,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Initiator",
-      "birthday": "15 October 2062"
+      "birthday": "15 October 2062",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "D.va",
@@ -82,7 +112,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Bruiser",
-      "birthday": "19 August 2041"
+      "birthday": "19 August 2041",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Orisa",
@@ -132,7 +172,94 @@
       "relevantLocations": [],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "21 April 2051"
+      "birthday": "21 April 2051",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "gcc-subject",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "D.mon",
+            "x": 1216,
+            "y": 1300.96,
+            "scale": 2.5,
+            "portraitKey": "D.mon"
+          },
+          {
+            "id": "gcc-link-hero-d-va",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "D.va",
+            "x": 1216,
+            "y": 406.113,
+            "scale": 2.5,
+            "portraitKey": "D.va"
+          },
+          {
+            "id": "gcc-link-npc-dae-hyun",
+            "kind": "npc",
+            "role": "linked",
+            "entityKind": "npc",
+            "entityName": "Dae-Hyun",
+            "x": 1934.64,
+            "y": 1644,
+            "scale": 1.5,
+            "portraitKey": "Dae-Hyun"
+          },
+          {
+            "id": "gcc-link-faction-m-e-k-a-squad",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "M.E.K.A Squad",
+            "x": 634,
+            "y": 1536,
+            "scale": 3,
+            "bgColor": "#74f1ab",
+            "factionFilename": "M.E.K.A Squad"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-d-va"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-npc-dae-hyun"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-m-e-k-a-squad"
+          },
+          {
+            "fromId": "gcc-link-hero-d-va",
+            "toId": "gcc-link-npc-dae-hyun"
+          },
+          {
+            "fromId": "gcc-link-faction-m-e-k-a-squad",
+            "toId": "gcc-link-hero-d-va"
+          },
+          {
+            "fromId": "gcc-link-faction-m-e-k-a-squad",
+            "toId": "gcc-link-npc-dae-hyun"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "view": {
+          "panX": -98.58663484659394,
+          "panY": -104.96607158412519,
+          "zoom": 0.4030176460800002
+        }
+      }
     },
     {
       "name": "Domina",
@@ -146,7 +273,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "28 August 2046"
+      "birthday": "28 August 2046",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Junker Queen",
@@ -160,7 +297,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "14 June 2047"
+      "birthday": "14 June 2047",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Junker Monarchy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ramattra",
@@ -174,7 +321,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "29 March 2051"
+      "birthday": "29 March 2051",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Null Sector",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Reinhardt",
@@ -202,7 +359,17 @@
       ],
       "heroRole": "Tank",
       "heroSubRole": "Stalwart",
-      "birthday": "15 March 2015"
+      "birthday": "15 March 2015",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Anran",
@@ -252,7 +419,128 @@
       "relevantLocations": [],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": "9 September 2050"
+      "birthday": "9 September 2050",
+      "connectionCanvas": {
+        "v": 1,
+        "nodes": [
+          {
+            "id": "gcc-subject",
+            "kind": "hero",
+            "role": "subject",
+            "entityKind": "hero",
+            "entityName": "Shion",
+            "x": 1417.11,
+            "y": 1164.04,
+            "scale": 2.5,
+            "portraitKey": "Shion"
+          },
+          {
+            "id": "gcc-link-faction-hashimoto-clan",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Hashimoto Clan",
+            "x": 1790.16,
+            "y": 634.908,
+            "scale": 3,
+            "factionFilename": "Hashimoto Clan"
+          },
+          {
+            "id": "gcc-link-hero-mauga",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Mauga",
+            "x": 826.538,
+            "y": 791.066,
+            "scale": 2.5,
+            "portraitKey": "Mauga"
+          },
+          {
+            "id": "gcc-link-hero-mizuki",
+            "kind": "hero",
+            "role": "linked",
+            "entityKind": "hero",
+            "entityName": "Mizuki",
+            "x": 1779.78,
+            "y": 1521.75,
+            "scale": 2.5,
+            "portraitKey": "Mizuki"
+          },
+          {
+            "id": "gcc-link-npc-pompamoto",
+            "kind": "npc",
+            "role": "linked",
+            "entityKind": "npc",
+            "entityName": "Pompamoto",
+            "x": 1489.11,
+            "y": 704.747,
+            "scale": 1.5,
+            "portraitKey": "Pompamoto"
+          },
+          {
+            "id": "gcc-link-faction-talon-empire",
+            "kind": "faction",
+            "role": "linked",
+            "entityKind": "faction",
+            "entityName": "Talon Empire",
+            "x": 430.895,
+            "y": 1213.87,
+            "scale": 5,
+            "bgColor": "#000000",
+            "factionFilename": "Talon Empire"
+          }
+        ],
+        "edges": [
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-hashimoto-clan"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-mauga"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-hero-mizuki"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-npc-pompamoto"
+          },
+          {
+            "fromId": "gcc-subject",
+            "toId": "gcc-link-faction-talon-empire"
+          },
+          {
+            "fromId": "gcc-link-faction-hashimoto-clan",
+            "toId": "gcc-link-hero-mizuki"
+          },
+          {
+            "fromId": "gcc-link-faction-hashimoto-clan",
+            "toId": "gcc-link-npc-pompamoto"
+          },
+          {
+            "fromId": "gcc-link-faction-hashimoto-clan",
+            "toId": "gcc-link-faction-talon-empire"
+          },
+          {
+            "fromId": "gcc-link-faction-talon-empire",
+            "toId": "gcc-link-hero-mauga"
+          }
+        ],
+        "display": {
+          "showAngles": true,
+          "showBreaks": true,
+          "showPackets": true,
+          "snapAngles": true
+        },
+        "view": {
+          "panX": -27.2586015045938,
+          "panY": -154.56831354789847,
+          "zoom": 0.3782347161600001
+        }
+      }
     },
     {
       "name": "Tracer",
@@ -400,7 +688,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Flanker",
-      "birthday": "15 February 2050"
+      "birthday": "15 February 2050",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Talon Empire",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Venture",
@@ -456,7 +754,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "15 April 2045"
+      "birthday": "15 April 2045",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sierra",
@@ -470,7 +778,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "17 April 2054"
+      "birthday": "17 April 2054",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Helix Securities",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sombra",
@@ -484,7 +802,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Recon",
-      "birthday": "31 December 2046"
+      "birthday": "31 December 2046",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Sombra Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Bastion",
@@ -512,7 +840,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "8 November 2034"
+      "birthday": "8 November 2034",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Chernobog Conspiracy",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Junkrat",
@@ -681,7 +1019,17 @@
           "panY": 3.3243217591505356,
           "zoom": 0.36089088000000014
         }
-      }
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Vishkar Corporation",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Torbjörn",
@@ -695,7 +1043,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Specialist",
-      "birthday": "21 September 2019"
+      "birthday": "21 September 2019",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Ashe",
@@ -709,7 +1067,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": "1 October 2037"
+      "birthday": "1 October 2037",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Deadlock Rebels",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Cassidy",
@@ -737,7 +1105,17 @@
       ],
       "heroRole": "Damage",
       "heroSubRole": "Sharpshooter",
-      "birthday": "3 November 2038"
+      "birthday": "3 November 2038",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shimada Clan",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Sojourn",
@@ -984,7 +1362,17 @@
           "panY": -111.26781920742194,
           "zoom": 0.2534138880000001
         }
-      }
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Search & Rescue",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Jetpack Cat",
@@ -1026,7 +1414,17 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Tactician",
-      "birthday": "14 July 2045"
+      "birthday": "14 July 2045",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Shambali Order",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Kiriko",
@@ -1211,7 +1609,17 @@
           "panY": -117.74218896679702,
           "zoom": 0.3608908800000002
         }
-      }
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Lifeweaver",
@@ -1253,7 +1661,17 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Medic",
-      "birthday": "4 April 2029"
+      "birthday": "4 April 2029",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Oasis Ministries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Brigitte",
@@ -1267,7 +1685,17 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": "22 September 2053"
+      "birthday": "22 September 2053",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Illari",
@@ -1281,7 +1709,17 @@
       ],
       "heroRole": "Support",
       "heroSubRole": "Survivor",
-      "birthday": "21 December 2060"
+      "birthday": "21 December 2060",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Inti Warriors",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Juno",
@@ -1449,7 +1887,17 @@
           "panY": -70.183968166797,
           "zoom": 0.3608908800000002
         }
-      }
+      },
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Yokai Gang",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Wuyang",

@@ -451,39 +451,41 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     flex: 0 0 auto;
     display: inline-flex;
     align-self: flex-start;
-    gap: 6px;
+    gap: 8px;
     margin: 0 0 clamp(10px, 1.2vh, 14px);
-    padding: 4px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(0, 0, 0, 0.28);
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .gallery-mode__connections-view-btn {
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 10px 18px;
-    min-height: 44px;
-    min-width: 84px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.62);
+    padding: 12px 22px;
+    min-height: 48px;
+    min-width: 96px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.88);
     cursor: pointer;
     line-height: 1;
 }
 
 .gallery-mode__connections-view-btn:hover {
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.32);
 }
 
 .gallery-mode__connections-view-btn.is-active {
-    border-color: rgba(100, 180, 255, 0.45);
-    background: rgba(100, 180, 255, 0.14);
-    color: rgba(210, 235, 255, 0.95);
+    border-color: rgba(100, 180, 255, 0.65);
+    background: rgba(100, 180, 255, 0.28);
+    color: rgba(230, 245, 255, 1);
 }
 
 .gallery-mode__connections-canvas-mount {
@@ -568,8 +570,8 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    margin: 0 0 6px;
+    gap: 8px;
+    margin: 0 0 8px;
 }
 
 .gallery-conn-canvas__display-bar {
@@ -577,26 +579,28 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px 10px;
-    margin: 0 0 8px;
+    gap: 8px 14px;
+    margin: 0 0 10px;
 }
 
 .gallery-conn-canvas__display-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.72rem;
-    font-weight: 600;
+    font-size: 0.82rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.82);
     cursor: pointer;
     user-select: none;
 }
 
 .gallery-conn-canvas__display-toggle input {
     accent-color: rgba(100, 180, 255, 0.85);
+    width: 16px;
+    height: 16px;
 }
 
 .gallery-conn-canvas__scale-bar {
@@ -618,44 +622,44 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
 
 .gallery-conn-canvas__zoom-btn {
     font-family: var(--font-default, 'Config', sans-serif);
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1;
-    min-width: 28px;
-    height: 28px;
-    padding: 0 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0.28);
-    color: rgba(255, 255, 255, 0.88);
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.62);
+    color: rgba(255, 255, 255, 0.96);
     cursor: pointer;
 }
 
 .gallery-conn-canvas__zoom-btn:hover {
-    border-color: rgba(255, 255, 255, 0.38);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.16);
 }
 
 .gallery-conn-canvas__zoom-btn--fit {
-    min-width: 36px;
-    font-size: 0.72rem;
-    font-weight: 600;
+    min-width: 52px;
+    font-size: 0.85rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
 .gallery-conn-canvas__zoom-btn--park {
-    min-width: 42px;
-    font-size: 0.72rem;
-    font-weight: 600;
+    min-width: 58px;
+    font-size: 0.85rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
 .gallery-conn-canvas__zoom-btn--park.gallery-conn-canvas__zoom-btn--parked {
-    border-color: rgba(100, 180, 255, 0.55);
-    background: rgba(100, 180, 255, 0.18);
-    color: rgba(210, 235, 255, 0.95);
+    border-color: rgba(100, 180, 255, 0.7);
+    background: rgba(100, 180, 255, 0.32);
+    color: rgba(230, 245, 255, 1);
 }
 
 .gallery-conn-canvas__toolbar {
@@ -663,21 +667,41 @@ body:has(#atlasGalleryHost) .gallery-mode__archive-connections-body .event-slide
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
-    margin: 0 0 8px;
+    gap: 10px;
+    margin: 0 0 10px;
 }
 
 .gallery-conn-canvas__tool-btn {
-    padding: 4px 10px;
-    font-size: 0.75rem;
+    padding: 10px 16px;
+    min-height: 40px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.62);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.gallery-conn-canvas__tool-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.gallery-conn-canvas__tool-btn--danger {
+    border-color: rgba(244, 120, 120, 0.55);
+    color: rgba(255, 220, 220, 0.96);
+}
+
+.gallery-conn-canvas__tool-btn--danger:hover:not(:disabled) {
+    border-color: rgba(244, 140, 140, 0.75);
+    background: rgba(180, 50, 50, 0.28);
 }
 
 .gallery-conn-canvas__hint {
     flex: 1 1 auto;
     min-width: 0;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.62);
 }
 
 .gallery-conn-canvas__viewport {

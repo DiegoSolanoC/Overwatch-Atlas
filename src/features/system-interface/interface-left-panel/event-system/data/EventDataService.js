@@ -225,7 +225,7 @@ class EventDataService {
                         : 'EventDataService: normalized geographic labels and coordinates in story events',
                 'info',
             );
-            this.saveEvents();
+            this.saveEvents({ persistToRepo: false });
         }
         return result;
     }
@@ -236,8 +236,11 @@ class EventDataService {
 
     // --- Save / persist ---
 
-    saveEvents() {
-        persistEvents(this);
+    /**
+     * @param {{ persistToRepo?: boolean }} [opts]
+     */
+    saveEvents(opts) {
+        persistEvents(this, opts);
     }
 
     /**

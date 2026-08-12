@@ -8968,12 +8968,8 @@
       ],
       "sources": [
         {
-          "text": "Ramattra: Reflections",
-          "url": "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/",
-          "urls": [
-            "https://overwatch.blizzard.com/en-us/media/short-story/ramattra-reflections/",
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
-          ]
+          "text": "Ramattra Reflections",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
         }
       ],
       "heroFilterPlaces": [
@@ -14073,7 +14069,7 @@
     },
     {
       "name": "Hero",
-      "description": "No description available.",
+      "description": "Following the assault on Gran Mesa, reports placed Soldier: 76 near Dorado, targeting Lumérico power plants after having crossed the border. While Los Muertos had seen a rise in popularity over the years, many of their members were still gangsters, denying the law, endangering civilians and stealing from anyone they could, even little girls. Just because their cause came from political uproar did not mean they were not thugs, and this placed them as Soldier: 76's next target in the area.\n\nThe man pursued a truck of Los Muertos members, leaving a clear message by beating one of them with a charred Piñata. When the criminals attempted to flee, they struggled to keep up against the relentless man and his impeccable aim thanks to his visor. As a last resort, one of the thieves lobbed a grenade at a little girl that had found herself caught in the fighting during her trip to the store. Morrison's instincts kicked in, jumping to protect the girl from the explosion, while the gangsters managed to flee the scene.\n\nAs he recovered from the attack, the little girl recognized the man as one of the Heroes of Old, from the Overwatch posters. Jack disagreed, stating that was not who he was anymore. He vanished in a split second, but secretly watched from the Rooftops as the girl made her way back home safely. The reports fueled the fire of speculation and conspiracy over the man's identity and, while the reward money for his arrest continued to go up, many who crossed his path came to the same conclusion as the little girl. The man was a hero, even if he denied it.",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
       "lat": 19.1738,
@@ -14092,24 +14088,27 @@
         {
           "locationName": "Dorado, Mexico",
           "country": "Mexico",
-          "reasoning": ""
+          "reasoning": "Soldier:76 is seen saving a girl from Los Muertos"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Soldier 76",
-          "reasoning": ""
+          "reasoning": "Hunts down Los Muertos thugs after infiltratring the local Powerplant"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
+          "country": "Los Muertos, Lumérico Incorporated,",
+          "reasoning": "Both Attacked by Soldier: 76 indiscriminately"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Young Girl Claims that the fugitive Soldier: 76 saved her life in Dorado",
+        "Los Muertos Criminal Activity plagues the Streets of Mexico"
+      ]
     },
     {
       "name": "Fika is Born",
@@ -14142,6 +14141,60 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Avatar of the Fox",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yamagami Blades,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Full Disclosure",
@@ -14207,60 +14260,6 @@
           "reasoning": "In contact looking for a controversial Partnership"
         }
       ]
-    },
-    {
-      "name": "Avatar of the Fox",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yamagami Blades,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Hashimoto",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Asa,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
     },
     {
       "name": "Assassination",
@@ -18884,7 +18883,38 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels, Colosseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Elemental Kin",
@@ -19059,6 +19089,42 @@
         {
           "text": "Growing Pains",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta0d4ccfad228785e/6a6a8af58cf0369022d4176c/OW_D.Mon_EN_FNL.pdf"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.va,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "King, Overlord, Casino,",
+          "reasoning": ""
         }
       ]
     },
@@ -19538,12 +19604,22 @@
           "locationName": "",
           "country": "Overwatch, Talon Empire",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Efi, Athena,",
+          "country": "Efi,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Osai,",
           "reasoning": ""
         }
       ]
@@ -19658,23 +19734,33 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra, Sojourn,",
+          "country": "Sierra,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Freja, Emre",
+          "country": "Emre, Freja,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Helix Securities, Overwatch, Talon Empire",
+          "country": "Overwatch, Helix Securities,",
           "reasoning": ""
         }
       ],
       "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Chernobog,",
+          "reasoning": ""
+        },
         {
           "locationName": "",
           "country": "Naughton,",
@@ -19853,12 +19939,27 @@
           "locationName": "",
           "country": "Shion,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Tracer,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto Clan,",
+          "country": "Hashimoto Clan, Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
           "reasoning": ""
         }
       ]
@@ -19913,6 +20014,11 @@
           "locationName": "",
           "country": "Winston, Echo,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pharah, Sierra, Sojourn, Cassidy, Lúcio,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -19951,7 +20057,26 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sierra, Sojourn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emre, Freja,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Helix Securities,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Distress Signal",
@@ -19982,6 +20107,40 @@
         {
           "text": "Fall of the Sparrow",
           "url": "https://overwatch.blizzard.com/en-gb/media/comic/the-fall-of-a-sparrow/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko, Mizuki, Hanzo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Baptiste, Orisa,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
         }
       ]
     },
@@ -20060,7 +20219,33 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki, Kiriko, Hanzo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Baptiste, Cassidy, Mercy, Orisa,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Yokai Gang,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sakura, Nobuto, Chikasa, Ryota,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Call to Action",
@@ -20075,7 +20260,48 @@
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sierra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Torbjörn, Reinhardt,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pharah, Brigitte, Wuyang, Mei, Jetpack Cat, Juno,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Echo, Anran, Bastion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "End of the Line",
@@ -20180,7 +20406,12 @@
         },
         {
           "locationName": "",
-          "country": "Mei, Juno, Zarya, Jetpack Cat,",
+          "country": "Mei, Juno, Zarya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Jetpack Cat,",
           "reasoning": ""
         }
       ],
@@ -20380,7 +20611,26 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Ulterior Motive",
@@ -20441,7 +20691,38 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Queen, Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wrecking Ball, Roadhog, Junkrat,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire, Junker Monarchy,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Meri,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Paths We Choose",
@@ -20464,7 +20745,53 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo, Genji,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang, Yamagami Blades, Shimada Clan,",
+          "reasoning": "The 3 groups, united as 1 clan"
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Sakura, Chikasa, Ryota,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Rematch",
@@ -20504,7 +20831,7 @@
         },
         {
           "locationName": "",
-          "country": "Reinhardt,",
+          "country": "Reinhardt, Ana,",
           "reasoning": ""
         }
       ],
@@ -20540,7 +20867,34 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Torbjörn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "",
+          "badgePriority": true
+        }
+      ]
     },
     {
       "name": "Tough Call",

@@ -235,6 +235,7 @@ export function bindGalleryConnectionCanvasHover(ctx) {
             }
         }
         clearHover();
+        ctx.onHoverCleared?.();
     });
 
     return {
@@ -256,6 +257,25 @@ export function bindGalleryConnectionCanvasHover(ctx) {
                 if (rel.closest?.('.gallery-conn-canvas__edge-hit')) return;
             }
             clearHover();
+            ctx.onHoverCleared?.();
+        },
+        /**
+         * Persist highlight for a selected cord (survives mouse leave).
+         * @param {string} fromId
+         * @param {string} toId
+         */
+        highlightEdge(fromId, toId) {
+            if (!fromId || !toId) {
+                clearHover();
+                return;
+            }
+            const chain = collectGalleryDirectedChainEdgeKeys(
+                fromId,
+                toId,
+                ctx.getModel().edges,
+                kindById,
+            );
+            applyChain(chain, [fromId, toId]);
         },
         clearHover,
     };

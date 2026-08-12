@@ -33,6 +33,9 @@ import { normalizeStoryEventNameForMatch } from '../../../interface-shared/bio-a
  * @property {string[]} [changedFields]
  * @property {MergePickSide} [pick]
  * @property {Record<string, MergePickSide>} [fieldPicks]
+ * @property {Record<string, { base?: unknown, incoming?: unknown }>} [fieldEdits]
+ *   Manual overrides for a side's field (string drafts, string lists, source rows, etc.).
+ *   When that side is selected, the edit is written into the merged event.
  * @property {MergePickSide} [positionPick]
  * @property {boolean} [include]
  */
@@ -453,6 +456,260 @@ export function resolveFieldSide(row, field) {
 }
 
 /**
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+function isSourceLikeEntry(value) {
+    return Boolean(
+        value
+        && typeof value === 'object'
+        && !Array.isArray(value)
+        && ('text' in value || 'url' in value || 'urls' in value),
+    );
+}
+
+/**
+ * @param {string} field
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isStorySourcesField(field, value) {
+    if (field === 'sources') return true;
+    return Array.isArray(value) && value.length > 0 && value.every(isSourceLikeEntry);
+}
+
+/**
+ * @param {string} field
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isStoryStringListField(field, value) {
+    if (field === 'headlines') return true;
+    return Array.isArray(value) && value.every((entry) => typeof entry === 'string');
+}
+
+/**
+ * @param {unknown} value
+ * @returns {Array<{ text: string, url?: string, urls?: string[] }>}
+ */
+export function normalizeStorySourcesValue(value) {
+    if (!Array.isArray(value)) return [];
+    /** @type {Array<{ text: string, url?: string, urls?: string[] }>} */
+    const out = [];
+    for (const entry of value) {
+        if (!entry || typeof entry !== 'object') continue;
+        const text = String(entry.text || '').trim();
+        /** @type {string[]} */
+        const urls = [];
+        const primary = String(entry.url || '').trim();
+        if (primary) urls.push(primary);
+        if (Array.isArray(entry.urls)) {
+            for (const url of entry.urls) {
+                const trimmedUrl = String(url || '').trim();
+                if (trimmedUrl && !urls.includes(trimmedUrl)) urls.push(trimmedUrl);
+            }
+        }
+        if (!text && urls.length === 0) continue;
+        if (urls.length === 0) out.push({ text });
+        else if (urls.length === 1) out.push({ text, url: urls[0] });
+        else out.push({ text, url: urls[0], urls });
+    }
+    return out;
+}
+
+/**
+ * Human-editable text for a field (matches Event slide / form conventions where possible).
+ * @param {string} field
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function serializeStoryFieldForEdit(field, value) {
+    if (field === 'headlines' || isStoryStringListField(field, value)) {
+        return Array.isArray(value) ? value.map((line) => String(line ?? '')).join('\n') : '';
+    }
+    if (field === 'sources' || isStorySourcesField(field, value)) {
+        return normalizeStorySourcesValue(value)
+            .map((source) => {
+                /** @type {string[]} */
+                const urls = [];
+                if (source.url) urls.push(source.url);
+                if (Array.isArray(source.urls)) {
+                    for (const url of source.urls) {
+                        if (url && !urls.includes(url)) urls.push(url);
+                    }
+                }
+                return urls.length ? `${source.text}\n${urls.join('\n')}` : source.text;
+            })
+            .join('\n\n');
+    }
+    if (value == null) return '';
+    if (typeof value === 'string') return value;
+    if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+    try {
+        return JSON.stringify(value, null, 2);
+    } catch {
+        return String(value);
+    }
+}
+
+/**
+ * Parse an edited field string back into a value, using the original as a type hint.
+ * @param {string} field
+ * @param {string} text
+ * @param {unknown} originalValue
+ * @returns {unknown}
+ */
+export function parseStoryFieldEdit(field, text, originalValue) {
+    const raw = String(text ?? '');
+    const trimmed = raw.trim();
+
+    if (field === 'headlines' || isStoryStringListField(field, originalValue)) {
+        if (!trimmed) return [];
+        return raw.split('\n').map((line) => line.trim()).filter(Boolean);
+    }
+
+    if (field === 'sources' || isStorySourcesField(field, originalValue)) {
+        if (!trimmed) return [];
+        try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return normalizeStorySourcesValue(parsed);
+        } catch {
+            /* plain blocks below */
+        }
+        /** @type {Array<{ text: string, url?: string, urls?: string[] }>} */
+        const sources = [];
+        for (const block of raw.split(/\n\s*\n/)) {
+            const lines = block.split('\n').map((line) => line.trim()).filter(Boolean);
+            if (!lines.length) continue;
+            const textLine = lines[0];
+            const urls = lines.slice(1);
+            if (urls.length === 0) sources.push({ text: textLine });
+            else if (urls.length === 1) sources.push({ text: textLine, url: urls[0] });
+            else sources.push({ text: textLine, url: urls[0], urls });
+        }
+        return sources;
+    }
+
+    if (trimmed === '' || trimmed === '—') {
+        if (typeof originalValue === 'number') return null;
+        if (typeof originalValue === 'boolean') return false;
+        if (Array.isArray(originalValue)) return [];
+        if (originalValue && typeof originalValue === 'object') return {};
+        return '';
+    }
+
+    if (typeof originalValue === 'number') {
+        const n = Number(trimmed);
+        return Number.isFinite(n) ? n : originalValue;
+    }
+    if (typeof originalValue === 'boolean') {
+        const lower = trimmed.toLowerCase();
+        if (lower === 'true' || lower === '1' || lower === 'yes') return true;
+        if (lower === 'false' || lower === '0' || lower === 'no') return false;
+        return originalValue;
+    }
+    if (Array.isArray(originalValue) || (originalValue && typeof originalValue === 'object')) {
+        try {
+            return JSON.parse(raw);
+        } catch {
+            return originalValue;
+        }
+    }
+
+    if (
+        originalValue == null
+        && (/^year/i.test(field) || field === 'lat' || field === 'lon' || field === 'birthday')
+    ) {
+        const n = Number(trimmed);
+        if (Number.isFinite(n)) return n;
+    }
+    if (originalValue == null && /^[\[{]/.test(trimmed)) {
+        try {
+            return JSON.parse(raw);
+        } catch {
+            /* keep as string */
+        }
+    }
+    return raw;
+}
+
+/**
+ * Edited value for a side, if the user changed it from the original.
+ * @param {MergeRow} row
+ * @param {string} field
+ * @param {MergePickSide} side
+ * @returns {unknown}
+ */
+export function resolveFieldEdit(row, field, side) {
+    const edits = row.fieldEdits?.[field];
+    if (!edits) return undefined;
+    const value = side === 'incoming' ? edits.incoming : edits.base;
+    return value === undefined ? undefined : value;
+}
+
+/**
+ * @param {MergeRow} row
+ * @param {string} field
+ * @param {MergePickSide} side
+ * @returns {string|undefined}
+ */
+export function resolveFieldEditText(row, field, side) {
+    const value = resolveFieldEdit(row, field, side);
+    if (value === undefined) return undefined;
+    if (typeof value === 'string') return value;
+    return serializeStoryFieldForEdit(field, value);
+}
+
+/**
+ * @param {string} field
+ * @param {unknown} value
+ * @returns {unknown}
+ */
+function normalizeEditCompare(field, value) {
+    if (field === 'sources' || isStorySourcesField(field, value)) {
+        return normalizeStorySourcesValue(value);
+    }
+    if (
+        field === 'secondaryCountryPlaces'
+        || field === 'heroFilterPlaces'
+        || field === 'factionFilterPlaces'
+        || field === 'npcFilterPlaces'
+        || field === 'relevantLocations'
+    ) {
+        if (!Array.isArray(value)) return [];
+        return value.map((row) => ({
+            locationName: String(row?.locationName || '').trim(),
+            country: String(row?.country || '').trim(),
+            reasoning: String(row?.reasoning || '').trim(),
+            ...(row?.badgePriority ? { badgePriority: true } : {}),
+        })).filter((row) => row.locationName || row.country || row.reasoning);
+    }
+    if (typeof value === 'string' && (field === 'headlines' || isStoryStringListField(field, []))) {
+        return parseStoryFieldEdit(field, value, []);
+    }
+    if (field === 'headlines' || isStoryStringListField(field, value)) {
+        return Array.isArray(value) ? value : parseStoryFieldEdit(field, String(value ?? ''), []);
+    }
+    return value ?? null;
+}
+
+/**
+ * Whether a stored edit differs from the original side value.
+ * @param {MergeRow} row
+ * @param {string} field
+ * @param {MergePickSide} side
+ * @returns {boolean}
+ */
+export function fieldSideHasEdit(row, field, side) {
+    const edit = resolveFieldEdit(row, field, side);
+    if (edit === undefined) return false;
+    const event = side === 'incoming' ? row.incomingEvent : row.baseEvent;
+    const original = event && typeof event === 'object' && field in event ? event[field] : undefined;
+    return JSON.stringify(normalizeEditCompare(field, edit))
+        !== JSON.stringify(normalizeEditCompare(field, original));
+}
+
+/**
  * Which side supplies the list position for a repositioned row.
  * @param {MergeRow} row
  * @returns {MergePickSide}
@@ -465,8 +722,7 @@ export function resolvePositionSide(row) {
  * Compose the merged event for a paired row, honoring per-field picks. Unchanged fields
  * are identical on both sides, so we start from the current (base) event and only rewrite
  * the fields that differ, taking each from its chosen side. A field absent on the chosen
- * side is removed. This is what lets you take everything from incoming while keeping, say,
- * the description or name from current.
+ * side is removed. Manual edits on the chosen side win over the original value.
  * @param {MergeRow} row
  * @returns {object}
  */
@@ -479,6 +735,20 @@ export function buildMergedEventForRow(row) {
     for (const field of fields) {
         const side = resolveFieldSide(row, field);
         const source = side === 'incoming' ? incoming : base;
+        const edit = resolveFieldEdit(row, field, side);
+
+        if (edit !== undefined) {
+            const parsed = typeof edit === 'string'
+                ? parseStoryFieldEdit(field, edit, source?.[field])
+                : cloneEvent(edit);
+            if (parsed === null || parsed === undefined) {
+                delete result[field];
+            } else {
+                result[field] = parsed;
+            }
+            continue;
+        }
+
         if (source && Object.prototype.hasOwnProperty.call(source, field)) {
             result[field] = cloneEvent(source[field]);
         } else {

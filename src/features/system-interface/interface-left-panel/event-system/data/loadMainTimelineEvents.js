@@ -158,13 +158,22 @@ export async function loadMainTimelineEvents(dataService) {
   }
 
   // ------------------------------------------------------------------
-  // 2. Read localStorage
+  // 2. Read localStorage (optional hard reset via ?resetTimeline=1)
   // ------------------------------------------------------------------
   const isGitHubPages = dataService.isGitHubPages();
   const forcedFileReset = consumeResetTimelineUrlParam();
   if (forcedFileReset) {
+    // Drop every story-timeline cache so merge/export cannot keep a half-applied import.
+    try {
+      localStorage.removeItem("timelineEvents");
+    } catch (_) {
+      /* ignore */
+    }
+    clearTimelineBundleStamp();
+    dataService._storyDockEventsSnapshot = [];
+    dataService._storyDockEventsSnapshotFromLs = null;
     dataService.updateStatus(
-      "EventDataService: resetTimeline=1 — cleared cached timelineEvents",
+      "EventDataService: resetTimeline=1 — cleared timelineEvents cache; loading bundled JSON",
       "warning",
     );
   }
@@ -194,7 +203,9 @@ export async function loadMainTimelineEvents(dataService) {
         );
         localStorage.removeItem("timelineEvents");
         dataService.events = fileEvents;
-        dataService.saveEvents();
+        dataService._storyDockEventsSnapshot = fileEvents.slice();
+        dataService._storyDockEventsSnapshotFromLs = null;
+        dataService.saveEvents({ persistToRepo: false });
         rememberTimelineBundleStamp(fileEvents);
         return dataService._finishMainTimelineLoadEvents({
           events: dataService.events,
@@ -216,21 +227,27 @@ export async function loadMainTimelineEvents(dataService) {
   const storedStamp = isGitHubPages ? readStoredTimelineBundleStamp() : "";
   const cacheMatchesDeploy = Boolean(deployedStamp) && storedStamp === deployedStamp;
 
-  const source = _selectEventsSource(
-    fileEvents,
-    localEvents,
-    isGitHubPages,
-    cacheMatchesDeploy,
-  );
+  const source =
+    forcedFileReset && fileEvents && fileEvents.length > 0
+      ? "file"
+      : _selectEventsSource(
+          fileEvents,
+          localEvents,
+          isGitHubPages,
+          cacheMatchesDeploy,
+        );
 
   if (source === "file") {
     dataService.updateStatus(
-      `EventDataService: Using events.json (${fileEvents.length} events)`,
+      `EventDataService: Using events.json (${fileEvents.length} events)${forcedFileReset ? " [resetTimeline]" : ""}`,
       "info",
     );
     dataService.events = fileEvents;
+    dataService._storyDockEventsSnapshot = fileEvents.slice();
+    dataService._storyDockEventsSnapshotFromLs = null;
     localStorage.removeItem("timelineEvents");
-    dataService.saveEvents();
+    // LS only — never POST load results to disk (that was overwriting git checkouts).
+    dataService.saveEvents({ persistToRepo: false });
     rememberTimelineBundleStamp(fileEvents);
     return dataService._finishMainTimelineLoadEvents({
       events: dataService.events,
@@ -271,7 +288,7 @@ export async function loadMainTimelineEvents(dataService) {
         "EventDataService: Repaired misfiled lifecycle rows (Siebren / Olivia) from timeline-events.json",
         "warning",
       );
-      dataService.saveEvents();
+      dataService.saveEvents({ persistToRepo: false });
     }
 
     const tailRepaired = repairCorruptedTimelineTailFromFile(dataService.events, fileEvents);
@@ -281,7 +298,7 @@ export async function loadMainTimelineEvents(dataService) {
         "EventDataService: Restored missing tail event (Facing Demons) from timeline-events.json",
         "warning",
       );
-      dataService.saveEvents();
+      dataService.saveEvents({ persistToRepo: false });
     }
 
     const placeholdersRepaired = repairStalePlaceholderRowsFromFile(
@@ -294,7 +311,7 @@ export async function loadMainTimelineEvents(dataService) {
         "EventDataService: Restored blank placeholder events from timeline-events.json",
         "warning",
       );
-      dataService.saveEvents();
+      dataService.saveEvents({ persistToRepo: false });
     }
   }
 
@@ -319,7 +336,7 @@ export async function loadMainTimelineEvents(dataService) {
       );
       dataService.events = fileEvents;
       localStorage.removeItem("timelineEvents");
-      dataService.saveEvents();
+      dataService.saveEvents({ persistToRepo: false });
       rememberTimelineBundleStamp(fileEvents);
       return dataService._finishMainTimelineLoadEvents({
         events: dataService.events,

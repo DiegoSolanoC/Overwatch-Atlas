@@ -14,6 +14,8 @@ import {
 } from './archiveStoryViewerContext.js';
 import { buildStoryEventsMergePlan } from './mergeStoryEvents.js';
 import { openStoryEventsMergeModal } from './StoryEventsMergeModal.js';
+import { fetchJsonWithTimeout } from './fetchWithTimeout.js';
+import { FILES } from '../../../../../data/registry.js';
 
 /**
  * @param {import('./EventDataService.js').default} dataService
@@ -117,6 +119,60 @@ export function importEvents(dataService, file) {
 }
 
 /**
+ * Story merge "Current" side should match on-disk `timeline-events.json` (git/bundle),
+ * not a stale localStorage / dock half-merge — otherwise conflict counts look wrong.
+ * @param {import('./EventDataService.js').default} dataService
+ * @returns {Promise<{ events: unknown[], source: 'file'|'live' }>}
+ */
+async function resolveStoryMergeBaseEvents(dataService) {
+    const live = resolveExportPayload(dataService).events;
+    const wantsStory =
+        shouldUseStoryTimelineForViewerIo()
+        || isMainTimelineArchive(dataService);
+
+    if (!wantsStory) {
+        return { events: live, source: 'live' };
+    }
+
+    try {
+        const bundled = await fetchJsonWithTimeout(FILES.eventSystem.timelineEvents);
+        const fileEvents = Array.isArray(bundled?.events) ? bundled.events : null;
+        if (fileEvents && fileEvents.length > 0) {
+            // Keep live app state in sync with disk so the next export/reset matches.
+            if (
+                !Array.isArray(live)
+                || live.length !== fileEvents.length
+                || JSON.stringify(live) !== JSON.stringify(fileEvents)
+            ) {
+                dataService.updateStatus?.(
+                    `Merge base: on-disk timeline (${fileEvents.length} events) — refreshed past local cache (${Array.isArray(live) ? live.length : 0})`,
+                    'warning',
+                );
+                if (shouldUseStoryTimelineForViewerIo()) {
+                    persistStoryTimelineToLocalStorage(dataService, fileEvents);
+                    if (isMainTimelineArchive(dataService)) {
+                        dataService.events = fileEvents;
+                    }
+                } else if (isMainTimelineArchive(dataService)) {
+                    dataService.events = fileEvents;
+                    dataService.saveEvents?.({ persistToRepo: false });
+                }
+            } else {
+                dataService.updateStatus?.(
+                    `Merge base: on-disk timeline (${fileEvents.length} events)`,
+                    'info',
+                );
+            }
+            return { events: fileEvents, source: 'file' };
+        }
+    } catch (err) {
+        console.warn('[merge] Could not refresh timeline-events.json for merge base:', err);
+    }
+
+    return { events: live, source: 'live' };
+}
+
+/**
  * @param {import('./EventDataService.js').default} dataService
  * @param {File} file
  */
@@ -132,7 +188,7 @@ export async function mergeEventsFromFile(dataService, file) {
         throw new Error('Invalid file format: expected { events: [...] }');
     }
 
-    const { events: baseEvents } = resolveExportPayload(dataService);
+    const { events: baseEvents } = await resolveStoryMergeBaseEvents(dataService);
     const plan = buildStoryEventsMergePlan(baseEvents, parsed.events);
 
     if (!plan.hasDifferences) {

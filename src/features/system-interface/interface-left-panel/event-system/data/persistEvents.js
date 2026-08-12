@@ -6,7 +6,7 @@
  *   4. (Story only)     refresh the dock snapshot.
  *   5. (Bio only)       dispatch `atlas-bio-archives-refreshed` (faction-archive filter ordering).
  *   6. (Bio only)       async kick of CodexCanvasService edge sync (debounced 400ms).
- *   7. Dev server only  POST to `/api/events` or `/api/story-archive`. GH-Pages / file:// skip.
+ *   7. Dev server only  POST to `/api/events` or `/api/story-archive` (unless opts.persistToRepo === false).
  *
  * `persistStoryDockTimelineFromSnapshot` writes the story timeline from the dock snapshot when the
  * user is currently editing a satellite archive — keeps `timelineEvents` (+ events.json) fresh
@@ -20,8 +20,14 @@ import {
 } from './entityDisplayNameMigration.js';
 import { migrateGeoConsistencyInStoryEvents } from './geoConsistencyMigration.js';
 
-/** @param {import('./EventDataService.js').default} dataService */
-export function persistEvents(dataService) {
+/**
+ * @param {import('./EventDataService.js').default} dataService
+ * @param {{ persistToRepo?: boolean }} [opts]
+ *   - persistToRepo: default true. Load/migration paths pass false so a dirty
+ *     localStorage cache cannot overwrite a just-restored git `timeline-events.json`.
+ */
+export function persistEvents(dataService, opts = {}) {
+    const persistToRepo = opts.persistToRepo !== false;
     if (!dataService._isMainTimelineArchive()) {
         const arch = dataService.getArchiveSource();
         // Mirror repair runs from slide save (`syncMirrorsAfterSubjectSave`), not on every persist —
@@ -101,7 +107,7 @@ export function persistEvents(dataService) {
         }
     }
 
-    if (!dataService._canPersistTimelineJsonToRepo()) {
+    if (!persistToRepo || !dataService._canPersistTimelineJsonToRepo()) {
         return;
     }
 

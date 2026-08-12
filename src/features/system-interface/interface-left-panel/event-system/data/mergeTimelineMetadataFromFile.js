@@ -52,7 +52,7 @@ export function mergeTimelineMetadataFromFileEvents(dataService, fileEvents) {
     }
     if (changed) {
         dataService.updateStatus?.('EventDataService: Synced era & year fields from events.json', 'success');
-        dataService.saveEvents();
+        dataService.saveEvents({ persistToRepo: false });
     }
     return changed;
 }

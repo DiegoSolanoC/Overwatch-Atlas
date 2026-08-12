@@ -43,6 +43,7 @@ import {
     galleryNodeCenterFromEl,
 } from './galleryConnectionCanvasOctilinear.js';
 import { createGalleryConnectionPacketAnimator } from './galleryConnectionCanvasPackets.js';
+import { DOUBLE_RIGHT_MS } from '../../codex/codex-canvas/core/canvasConstants.js';
 import {
     appendGalleryEdgeHitLines,
     bindGalleryConnectionCanvasHover,
@@ -214,8 +215,16 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     breakBtn.type = 'button';
     breakBtn.className = 'gallery-mode__archive-description-btn gallery-conn-canvas__tool-btn';
     breakBtn.textContent = 'Add break';
-    breakBtn.title = 'Insert a junction between two selected nodes';
+    breakBtn.title = 'Insert a junction at the midpoint of a selected cord (or between two selected nodes)';
     breakBtn.disabled = true;
+
+    const deleteBreakBtn = document.createElement('button');
+    deleteBreakBtn.type = 'button';
+    deleteBreakBtn.className =
+        'gallery-mode__archive-description-btn gallery-conn-canvas__tool-btn gallery-conn-canvas__tool-btn--danger';
+    deleteBreakBtn.textContent = 'Delete break';
+    deleteBreakBtn.title = 'Remove the selected break junction and reconnect its neighbors';
+    deleteBreakBtn.disabled = true;
 
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
@@ -228,7 +237,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     hint.className = 'gallery-conn-canvas__hint';
     hint.textContent = canEdit ? 'Drag background to pan · drag nodes to move' : 'Scroll wheel to zoom';
 
-    toolbar.append(breakBtn, saveBtn, hint);
+    toolbar.append(breakBtn, deleteBreakBtn, saveBtn, hint);
 
     const viewport = document.createElement('div');
     viewport.className = 'gallery-conn-canvas__viewport';
@@ -241,7 +250,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     world.style.height = `${GALLERY_CONN_CANVAS_WORLD_H}px`;
 
     hint.textContent = canEdit
-        ? 'Drag background to pan · wheel to zoom · select a node to resize'
+        ? 'Drag to pan · click a cord then Add break · right-click a break twice to delete'
         : 'Drag background to pan · wheel to zoom';
 
     const edgesSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -303,7 +312,53 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             return el ? nodeCenter(el) : null;
         },
         isInteractionBlocked: () => !!dragState || !!panState,
+        onHoverCleared: () => {
+            restoreSelectedCordHighlight();
+        },
     });
+
+    /** @type {{ fromId: string, toId: string } | null} */
+    let selectedCord = null;
+    /** @type {Map<string, number>} */
+    const junctionDeleteLastRightTs = new Map();
+    /** @type {{ edge: { fromId: string, toId: string }, startX: number, startY: number } | null} */
+    let cordSelectPending = null;
+
+    function restoreSelectedCordHighlight() {
+        if (!selectedCord) return;
+        const stillThere =
+            findEdge(selectedCord.fromId, selectedCord.toId)
+            || findEdge(selectedCord.toId, selectedCord.fromId);
+        if (!stillThere) {
+            selectedCord = null;
+            syncToolbar();
+            return;
+        }
+        hoverController?.highlightEdge(selectedCord.fromId, selectedCord.toId);
+    }
+
+    function clearSelectedCord() {
+        if (!selectedCord) return;
+        selectedCord = null;
+        hoverController?.clearHover();
+        syncToolbar();
+    }
+
+    function setSelectedCord(edge) {
+        if (!edge?.fromId || !edge?.toId) {
+            clearSelectedCord();
+            return;
+        }
+        selectedCord = { fromId: edge.fromId, toId: edge.toId };
+        selectedIds = new Set();
+        nodeEls.forEach((el) => {
+            el.classList.remove('codex-node--selected', 'codex-node--pending-delete');
+        });
+        junctionDeleteLastRightTs.clear();
+        hoverController?.highlightEdge(edge.fromId, edge.toId);
+        syncToolbar();
+        syncScaleBar();
+    }
 
     function ensureGallerySvgFilters() {
         if (gallerySvgFiltersReady) return;
@@ -494,16 +549,30 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
 
     function syncToolbar() {
         if (!canEdit) return;
-        breakBtn.disabled = selectedIds.size !== 2 || model.display.showBreaks === false;
+        const breaksVisible = model.display.showBreaks !== false;
+        const pairSelected = selectedIds.size === 2;
+        const cordSelected = !!selectedCord;
+        breakBtn.disabled = (!pairSelected && !cordSelected) || !breaksVisible;
+        let selectedJunction = false;
+        selectedIds.forEach((id) => {
+            const n = model.nodes.find((rec) => rec.id === id);
+            if (n?.kind === 'junction') selectedJunction = true;
+        });
+        deleteBreakBtn.disabled = !selectedJunction || !breaksVisible;
     }
 
     function setSelection(ids) {
         selectedIds = new Set(ids);
+        if (selectedIds.size > 0) {
+            selectedCord = null;
+        }
         nodeEls.forEach((el, id) => {
             el.classList.toggle('codex-node--selected', selectedIds.has(id));
+            if (!selectedIds.has(id)) el.classList.remove('codex-node--pending-delete');
         });
         syncToolbar();
         syncScaleBar();
+        if (selectedCord) restoreSelectedCordHighlight();
     }
 
     function redrawCanvasVisual() {
@@ -554,6 +623,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         }
 
         packetAnimator.syncPacketState(model.edges);
+        restoreSelectedCordHighlight();
     }
 
     /**
@@ -679,7 +749,19 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             hoverController?.onNodePointerLeave(ev, el);
         });
 
+        el.addEventListener('contextmenu', (ev) => {
+            const node = model.nodes.find((n) => n.id === nodeId);
+            if (!node || node.kind !== 'junction') return;
+            ev.preventDefault();
+            ev.stopPropagation();
+            armOrDeleteJunctionByRightClick(el, nodeId);
+        }, true);
+
         el.addEventListener('pointerdown', (ev) => {
+            if (ev.button === 0) {
+                junctionDeleteLastRightTs.delete(nodeId);
+                el.classList.remove('codex-node--pending-delete');
+            }
             if (ev.button !== 0) return;
             ev.preventDefault();
             ev.stopPropagation();
@@ -803,27 +885,23 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         syncScaleBar();
     }
 
-    function insertBreakBetweenSelected() {
-        if (selectedIds.size !== 2) return;
-        const ids = Array.from(selectedIds);
-        const idA = ids[0];
-        const idB = ids[1];
-        const edge = findEdge(idA, idB) || findEdge(idB, idA) || null;
-        if (!edge) {
-            window.updateAppStatus?.('Select two nodes that are directly connected.', 'warning');
-            return;
-        }
-
+    /**
+     * @param {{ fromId: string, toId: string }} edge
+     */
+    function insertBreakOnEdge(edge) {
+        if (!canEdit || !edge || model.display.showBreaks === false) return false;
         const elFrom = nodeEls.get(edge.fromId);
         const elTo = nodeEls.get(edge.toId);
-        if (!elFrom || !elTo) return;
+        if (!elFrom || !elTo) return false;
 
         const cA = nodeCenter(elFrom);
         const cB = nodeCenter(elTo);
         const scale = resolveCodexNodeScale('junction', undefined);
         const dim = CODEX_JUNCTION_BASE_PX * scale;
-        const jx = (cA.x + cB.x) / 2 - dim / 2;
-        const jy = (cA.y + cB.y) / 2 - dim / 2;
+        const mx = (cA.x + cB.x) / 2;
+        const my = (cA.y + cB.y) / 2;
+        const jx = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_W - dim, mx - dim / 2));
+        const jy = Math.max(0, Math.min(GALLERY_CONN_CANVAS_WORLD_H - dim, my - dim / 2));
         const jId = genJunctionId();
 
         model.nodes.push({
@@ -843,10 +921,125 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
         model.edges.push({ fromId: edge.fromId, toId: jId });
         model.edges.push({ fromId: jId, toId: edge.toId });
 
+        selectedCord = null;
         setSelection([jId]);
         renderNodes();
         markDirty();
-        window.updateAppStatus?.('Break inserted between selected nodes.', 'success');
+        return true;
+    }
+
+    function insertBreakBetweenSelected() {
+        if (selectedCord) {
+            const edge =
+                findEdge(selectedCord.fromId, selectedCord.toId)
+                || findEdge(selectedCord.toId, selectedCord.fromId)
+                || selectedCord;
+            if (insertBreakOnEdge(edge)) {
+                window.updateAppStatus?.('Break inserted on selected cord.', 'success');
+            }
+            return;
+        }
+        if (selectedIds.size !== 2) return;
+        const ids = Array.from(selectedIds);
+        const edge = findEdge(ids[0], ids[1]) || findEdge(ids[1], ids[0]) || null;
+        if (!edge) {
+            window.updateAppStatus?.('Select two nodes that are directly connected, or click a cord.', 'warning');
+            return;
+        }
+        if (insertBreakOnEdge(edge)) {
+            window.updateAppStatus?.('Break inserted between selected nodes.', 'success');
+        }
+    }
+
+    /**
+     * @param {string} jId
+     */
+    function removeJunctionAndBridge(jId) {
+        const incoming = model.edges.filter((e) => e.toId === jId);
+        const outgoing = model.edges.filter((e) => e.fromId === jId);
+        model.edges = model.edges.filter((e) => e.fromId !== jId && e.toId !== jId);
+        for (let a = 0; a < incoming.length; a += 1) {
+            for (let b = 0; b < outgoing.length; b += 1) {
+                const fromId = incoming[a].fromId;
+                const toId = outgoing[b].toId;
+                if (!fromId || !toId || fromId === toId) continue;
+                if (findEdge(fromId, toId) || findEdge(toId, fromId)) continue;
+                model.edges.push({ fromId, toId });
+            }
+        }
+        model.nodes = model.nodes.filter((n) => n.id !== jId);
+        junctionDeleteLastRightTs.delete(jId);
+    }
+
+    /**
+     * Remove selected junction(s), bridging their neighbors like Codex splice.
+     */
+    function deleteSelectedBreaks() {
+        if (!canEdit || model.display.showBreaks === false) return;
+        const junctionIds = Array.from(selectedIds).filter((id) => {
+            const n = model.nodes.find((rec) => rec.id === id);
+            return n?.kind === 'junction';
+        });
+        if (!junctionIds.length) {
+            window.updateAppStatus?.('Select a break junction to delete.', 'warning');
+            return;
+        }
+
+        for (let i = 0; i < junctionIds.length; i += 1) {
+            removeJunctionAndBridge(junctionIds[i]);
+        }
+
+        setSelection([]);
+        renderNodes();
+        markDirty();
+        window.updateAppStatus?.(
+            junctionIds.length === 1 ? 'Break deleted.' : `${junctionIds.length} breaks deleted.`,
+            'success',
+        );
+    }
+
+    /**
+     * Codex-style double right-click delete for a single break junction.
+     * @param {HTMLElement} el
+     * @param {string} nodeId
+     */
+    function armOrDeleteJunctionByRightClick(el, nodeId) {
+        const node = model.nodes.find((n) => n.id === nodeId);
+        if (!node || node.kind !== 'junction') return;
+        const now = Date.now();
+        const prevTs = junctionDeleteLastRightTs.get(nodeId) || 0;
+        if (prevTs > 0 && now - prevTs < DOUBLE_RIGHT_MS) {
+            junctionDeleteLastRightTs.delete(nodeId);
+            el.classList.remove('codex-node--pending-delete');
+            removeJunctionAndBridge(nodeId);
+            setSelection([]);
+            renderNodes();
+            markDirty();
+            window.updateAppStatus?.('Break deleted.', 'success');
+            return;
+        }
+        nodeEls.forEach((other) => {
+            if (other !== el) other.classList.remove('codex-node--pending-delete');
+        });
+        el.classList.add('codex-node--pending-delete');
+        junctionDeleteLastRightTs.set(nodeId, now);
+        setSelection([nodeId]);
+    }
+
+    /**
+     * @param {Element|null|undefined} target
+     * @returns {{ fromId: string, toId: string }|null}
+     */
+    function edgeFromHitTarget(target) {
+        if (!(target instanceof Element)) return null;
+        const hit = target.classList.contains('gallery-conn-canvas__edge-hit')
+            ? target
+            : target.closest?.('.gallery-conn-canvas__edge-hit');
+        if (!hit) return null;
+        const fromId = hit.getAttribute('data-codex-edge-from') || '';
+        const toId = hit.getAttribute('data-codex-edge-to') || '';
+        if (!fromId || !toId) return null;
+        return findEdge(fromId, toId) || findEdge(toId, fromId) || { fromId, toId };
     }
 
     scaleDownBtn.addEventListener('click', () => nudgeSelectedNodeScale(1 / CODEX_ZOOM_FACTOR));
@@ -868,6 +1061,7 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     });
 
     breakBtn.addEventListener('click', insertBreakBetweenSelected);
+    deleteBreakBtn.addEventListener('click', deleteSelectedBreaks);
 
     zoomOutBtn.addEventListener('click', () => {
         const c = viewportCenterClient();
@@ -902,6 +1096,21 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     viewport.addEventListener('pointerdown', (ev) => {
         if (ev.button !== 0) return;
         if (ev.target.closest('.codex-node')) return;
+
+        const cordEdge =
+            canEdit && model.display.showBreaks !== false
+                ? edgeFromHitTarget(/** @type {Element} */ (ev.target))
+                : null;
+        if (cordEdge) {
+            cordSelectPending = {
+                edge: cordEdge,
+                startX: ev.clientX,
+                startY: ev.clientY,
+            };
+            viewport.setPointerCapture(ev.pointerId);
+            return;
+        }
+
         viewport.setPointerCapture(ev.pointerId);
         panState = {
             startX: ev.clientX,
@@ -910,10 +1119,31 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             origPanY: viewPanY,
             moved: false,
         };
-        if (canEdit) setSelection([]);
+        if (canEdit) {
+            setSelection([]);
+            clearSelectedCord();
+        }
     });
 
     viewport.addEventListener('pointermove', (ev) => {
+        if (cordSelectPending) {
+            const dx = ev.clientX - cordSelectPending.startX;
+            const dy = ev.clientY - cordSelectPending.startY;
+            if (Math.abs(dx) + Math.abs(dy) > 4) {
+                panState = {
+                    startX: cordSelectPending.startX,
+                    startY: cordSelectPending.startY,
+                    origPanX: viewPanX,
+                    origPanY: viewPanY,
+                    moved: true,
+                };
+                cordSelectPending = null;
+                viewPanX = panState.origPanX + dx;
+                viewPanY = panState.origPanY + dy;
+                applyViewTransform();
+            }
+            return;
+        }
         if (!panState) return;
         const dx = ev.clientX - panState.startX;
         const dy = ev.clientY - panState.startY;
@@ -924,6 +1154,17 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
     });
 
     viewport.addEventListener('pointerup', (ev) => {
+        if (cordSelectPending) {
+            try {
+                viewport.releasePointerCapture(ev.pointerId);
+            } catch (_) {
+                /* ignore */
+            }
+            const pending = cordSelectPending;
+            cordSelectPending = null;
+            setSelectedCord(pending.edge);
+            return;
+        }
         if (!panState) return;
         viewport.releasePointerCapture(ev.pointerId);
         if (panState.moved) markViewDirty();
@@ -998,6 +1239,9 @@ export function createGalleryConnectionCanvas(mountEl, opts = {}) {
             nodeEls.clear();
             dragState = null;
             panState = null;
+            cordSelectPending = null;
+            selectedCord = null;
+            junctionDeleteLastRightTs.clear();
         },
 
         isDirty() {
