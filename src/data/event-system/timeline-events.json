@@ -13753,53 +13753,52 @@
       ]
     },
     {
-      "name": "Here to be heard",
+      "name": "Destroyer",
       "locationType": "earth",
-      "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "Benicio's son, Lúcio Correia Dos Santos, was a loud voice in Rio's community. For years, he worked alongside like-minded people to help improve the living conditions of those affected by the Crisis, making sure that the children in the favelas had healthy meals and library books, but to adults, he was more well known for the underground concerts he hosted as a DJ, believing that music would bring people together and help lift their spirits.\n\nLúcio was naturally his father's strongest supporter, and when Vishkar stole his tech to use against his people, he was the one shouting the loudest against their corruption. Tired of Vishkar's oppression and wanting to vindicate his father, Lúcio would break into Vishkar's facility to steal the Sonic technology. Using their Hardlight generators, Lúcio would create equipment that would even ground against Vishkar's enforcers. A pair of light-bladed skates capable of grinding on walls, a handheld sonic blaster and Audio amplifiers capable of outputting the therapeutic sound waves from his father's research. Using these new tools, Lúcio took to the streets to rally the masses against Vishkar, starting a revolution that quickly overwhelmed the architects and enforcers, leaving them with no choice but to temporarily leave the city. Lúcio's leadership made international headlines and helped bring attention to the dire reality of Vishkar's actions, causing a major blow for the company that made many nations, especially in Latin America, unwilling to go through with any more projects.\n\nOvernight, Lúcio had become a global celebrity, with his music reaching the top of the charts. In a matter of weeks, he went from local performances, to filling up entire arenas and starting a world tour: Synaesthesia Auditiva. With his newfound fame, Lúcio realized that he had the attention of the entire world, and with it a chance to be heard, and change the world for the better. Alongside his touring, he would become a very vocal activist, particularly against large corporations like Vishkar and the injustices that people lived under their management. His father, of course, had become one of his strongest supporters as well, happy to see that his son had become a national hero, like those Overwatch agents he always grew up wanting to be, and that while many framed him as a criminal, a rioter and a thief, in his hands, his technology had found a way to help the world, and make the plies of his people heard.",
+      "cityDisplayName": "Boklovo, Kurjikstan",
+      "description": "While Torbjörn was officially retired after the Petra's Act, he still felt there was a job to be done, and unfinished business to clean up. He had spent most of his life creating weapons, many of which were used by Anubis to kill millions. To this day, the weight of his involvement troubled Lindholm, and while many of his creations were either destroyed, or at the very least in good hands, there were still plenty of them that had been stolen or stashed away. Afraid that his technology could fall into the wrong hands, he paid close attention to the news to track down potential misuse all by himself. One of the more extreme cases Lindholm found himself in was in the young nation of Kurjikstan, where out of nowhere a Titan Unit resurged and attacked the capital of Boklovo. \n\nThe full might of the military was deployed to stop the war machine but nothing they used could get behind its defenses, but as the Colossus headed downtown, Torbjörn had managed to infiltrate it from the ground. Having played a part in the creation of the Titans, Lindholm was well familiar with its blind spots and how to get past its defenses. As he made his way to the pilot cabin, the man behind the attack made himself known as one of Lindholm's old colleagues. Sven, a fellow Ironclad from the old days, is controversial for his way to cheat through engineering shortcomings. \n\nAs he tried to reason his madness with Torbjörn, he explained how Kurjikstan, a known dictatorship bent on expansion, was an unpredictable danger on the global scale. He had stolen the Titan to use it to preserve global balance, and Boklovo was meant to be a demonstration of the ultimate weapon, and what it was capable of under a responsible government.Torbjörn however, saw Sven as nothing but a profiteer, awaiting to give his creation to the first \"Responsible Government\" willing to pay the price. Torbjörn was able to neutralize the enraged Sven as he charged at him, and while the Titan unit was shut down, most of Boklovo had already been left in ruins.",
       "image": "",
-      "lat": -22.9110137,
-      "lon": -43.2093727,
+      "lat": 41.5089324,
+      "lon": 74.724091,
       "yearStart": 2070,
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Rio de Janeiro, Brazil",
-          "country": "Brazil",
-          "reasoning": "A revolt lead by Lúcio in Rio kicks Vishkar out of the city"
+          "locationName": "Boklovo, Kurjikstan",
+          "country": "Kurjikstan",
+          "reasoning": "A Titan unit Levels the city of Boklovo"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lúcio",
-          "reasoning": "Steals Sonic equipment and rallies the people against Vishkar"
+          "country": "Torbjörn",
+          "reasoning": "Infiltrates the Titan and stops it down"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vishkar",
-          "reasoning": "Flees Brazil following the revolts"
-        }
-      ],
-      "headlines": [
-        "Rio in chaos as local Musician leads an uprising against Vishkar",
-        "Vishkar announces their staff will leave Brazil until tensions calm down",
-        "Synaesthesia Auditiva tickets sold out within minutes of going live"
-      ],
-      "sources": [
-        {
-          "text": "Overwatch Website, Lúcio",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
+          "country": "Ironclad",
+          "reasoning": "Torbjörn keeps looking for stolen creations"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Benicio,",
-          "reasoning": "Supports his son and the revolution"
+          "country": "Sven,",
+          "reasoning": "Hijacks a Titan to use as a political tool"
+        }
+      ],
+      "headlines": [
+        "Titan unite seen Roaming near Kurjikstan, is the Omnic Crisis back",
+        "Torbjörn Lindholm credited for stopping Titan attack in Boklovo"
+      ],
+      "sources": [
+        {
+          "text": "Destroyer",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0b9872d6857ba358/5d02d18aa812cef40914a4a6/comic-overwatch-destroyer_en-us.pdf"
         }
       ]
     },
@@ -13855,6 +13854,292 @@
         {
           "text": "Brigitte Origin Story",
           "url": "https://www.youtube.com/watch?v=K_m8fcJb5tE"
+        }
+      ]
+    },
+    {
+      "name": "Here to be heard",
+      "locationType": "earth",
+      "cityDisplayName": "Rio de Janeiro, Brazil",
+      "description": "Benicio's son, Lúcio Correia Dos Santos, was a loud voice in Rio's community. For years, he worked alongside like-minded people to help improve the living conditions of those affected by the Crisis, making sure that the children in the favelas had healthy meals and library books, but to adults, he was more well known for the underground concerts he hosted as a DJ, believing that music would bring people together and help lift their spirits.\n\nLúcio was naturally his father's strongest supporter, and when Vishkar stole his tech to use against his people, he was the one shouting the loudest against their corruption. Tired of Vishkar's oppression and wanting to vindicate his father, Lúcio would break into Vishkar's facility to steal the Sonic technology. Using their Hardlight generators, Lúcio would create equipment that would even ground against Vishkar's enforcers. A pair of light-bladed skates capable of grinding on walls, a handheld sonic blaster and Audio amplifiers capable of outputting the therapeutic sound waves from his father's research. Using these new tools, Lúcio took to the streets to rally the masses against Vishkar, starting a revolution that quickly overwhelmed the architects and enforcers, leaving them with no choice but to temporarily leave the city. Lúcio's leadership made international headlines and helped bring attention to the dire reality of Vishkar's actions, causing a major blow for the company that made many nations, especially in Latin America, unwilling to go through with any more projects.\n\nOvernight, Lúcio had become a global celebrity, with his music reaching the top of the charts. In a matter of weeks, he went from local performances, to filling up entire arenas and starting a world tour: Synaesthesia Auditiva. With his newfound fame, Lúcio realized that he had the attention of the entire world, and with it a chance to be heard, and change the world for the better. Alongside his touring, he would become a very vocal activist, particularly against large corporations like Vishkar and the injustices that people lived under their management. His father, of course, had become one of his strongest supporters as well, happy to see that his son had become a national hero, like those Overwatch agents he always grew up wanting to be, and that while many framed him as a criminal, a rioter and a thief, in his hands, his technology had found a way to help the world, and make the plies of his people heard.",
+      "image": "",
+      "lat": -22.9110137,
+      "lon": -43.2093727,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": "A revolt lead by Lúcio in Rio kicks Vishkar out of the city"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lúcio",
+          "reasoning": "Steals Sonic equipment and rallies the people against Vishkar"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
+          "reasoning": "Flees Brazil following the revolts"
+        }
+      ],
+      "headlines": [
+        "Rio in chaos as local Musician leads an uprising against Vishkar",
+        "Vishkar announces their staff will leave Brazil until tensions calm down",
+        "Synaesthesia Auditiva tickets sold out within minutes of going live"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Website, Lúcio",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/lucio/"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": "Supports his son and the revolution"
+        }
+      ]
+    },
+    {
+      "name": "Vigilante",
+      "description": "Five years after Overwatch shut down, a series of attacks on different financial institutions, including Germany's largest bank, large shady corporation like Lumérico, and particularly, former Overwatch facilities, all sparked global attention due to being carried out by a single nameless man with a number 76 marked on his back. The latest of these assaults took place at Watchpoint: Gran Mesa, where the masked man stole a pulse rifle and evaded Helix troops. \n\nNone of the personnel was killed, but one of the injured soldiers mentioned the intruder had strength beyond what any human could achieve, and likely came from a military background. Following the Grand Mesa breach, the United States began an international manhunt for the culprit, and with the release of declassified documents from the Zurich Archives, many were quick to point out that Jack Morrison's designation under the SEP was Soldier: 76.\n\nThe many conspiracy theories that had formed around Morrison's death turned out to be true; he had survived the Zurich explosion, much like Reyes. Jack had spent years building Overwatch into his legacy, his entire life was defined by the organization, so now that it was gone, all he had left was a one-man war, to find those responsible for the fall of Overwatch. Now fully healed from the wounds of the bombing and armed with cutting-edge technology, he was ready to chase the ghosts of Overwatch's pasts for as long as it took to find the truth behind this conspiracy.",
+      "locationType": "earth",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "yearStart": 2075,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Soldier: 76 Origin Story",
+          "url": "https://www.youtube.com/watch?v=G8oR_SvkR0c"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
+          "reasoning": "Soldier: 76 steals weapons from Grand Mesa",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        },
+        {
+          "locationName": "Berlin, Germany",
+          "country": "Germany",
+          "reasoning": "Soldier: 76 infiltrates Germany's largest Bank"
+        },
+        {
+          "locationName": "Mexico City, Mexico",
+          "country": "Mexico",
+          "reasoning": "Soldier: 76 is seen sabotaging A Lumérico power plant"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76",
+          "reasoning": "Searches for the culprit behind Overwatch's fall"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities",
+          "reasoning": "Fails to stop Soldier: 76 at Gran Mesa"
+        },
+        {
+          "locationName": "",
+          "country": "Lumérico Incorporated,",
+          "reasoning": "Another one of Soldier: 76's targets and part of the international Manhunt"
+        }
+      ],
+      "headlines": [
+        "Zurich Archive reveal Jack Morrison's SEP designation as \"Soldier: 76\"",
+        "Man as a strong as a bear single handedly defeats Helix troops at Grand Mesa"
+      ]
+    },
+    {
+      "name": "Shooting Star",
+      "locationType": "earth",
+      "cityDisplayName": "Busan, South Korea",
+      "description": "While the MEKA squad was able to take Gwishin head on in most encounters, the ever-evolving machines often found ways to overwhelm the young pilots. During one particular attack during a thunderstorm, the team was barely able to stop the Colossus, leaving their mechs out of commission and the pilots heavily injured, except for D.va, who managed to end the attack relatively unscathed. While the media reported that D.va was celebrating her victory as the rest of the team took leave, in reality Hana had remained at the base assisting Dae-Hyun with mech repairs. The weight of Korea's safety had begun to take a mental toll on Hana, and she spent most of her time preparing for the next attack, which was just around the corner.\n\nUsually, the Gwishin spread out their incursions for several months, but this time a fleet of five drones had emerged in the middle of the night, merely a week after the last attack. With the rest of the team still recovering and their mechs under repair, it was up to D.va to handle the situation on her own. The Gwishin drones overwhelmed Hana, as she was able to take down two of them, but the rest evaded her fire and continued their route to the city. As D.va pursued them, she managed to take down two more, but her mech was too damaged to take on the last one.\n\nWhile asking Dae-Hyun for help, they noticed the mech's reactor was becoming unstable. Hana suggested an overload, using the explosion to blow up the last Gwishin, and while Dae-Hyun was opposed to such drastic action, the dire circumstances left them no choice. The mech was set to self-destruct in sixty seconds, but fearing the Gwishin would launch its attack before that, Hana chose to pin down the warbot as she ejected herself from her mech, aiming at the core with her light pistol to trigger the explosion early. Hana's unconscious body fell into the sea, before a search and rescue party was able to recover her. She had saved Busan once again and while the media reported she had emerged without a scratch, in reality she had broken a leg and an arm, placing her out of commission with the rest of the squad while she healed, but still choosing to stay at Base to help Dae-Hyun with repairs.",
+      "image": "",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "yearStart": 2075,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.va",
+          "reasoning": "Stops a Gwishin squadron on her own, but returns severly injured"
+        },
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": "Placed on Leave after the previous attack"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "M.E.K.A Squad,",
+          "reasoning": "Put out of comission temporarily after repeated attacks"
+        },
+        {
+          "locationName": "",
+          "country": "The Gwishin,",
+          "reasoning": "Launch a Surprise attack a week after nearly defeating the MEKA Squad"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": "Works on fixing the out of order mechs"
+        },
+        {
+          "locationName": "",
+          "country": "King, Overlord, Casino,",
+          "reasoning": "Placed on Leave after the previous attack"
+        },
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": "Not present during the surprise attack"
+        }
+      ],
+      "headlines": [
+        "MEKA Squad out of Comission following Gwishin attack",
+        "MEKA Pilot D.VA single handedly stops Gwishin incursion and emerges without a scratch"
+      ],
+      "sources": [
+        {
+          "text": "Shooting Star Overwatch",
+          "url": "https://www.youtube.com/watch?v=q7j2d6YCQbg"
+        }
+      ]
+    },
+    {
+      "name": "The Last Bastion",
+      "locationType": "earth",
+      "cityDisplayName": "Black Forest, Germany",
+      "description": "No description available.",
+      "image": "",
+      "lat": 48.2634439,
+      "lon": 8.1647488,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Black Forest, Germany",
+          "country": "Germany",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Bastion",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "The Last Bastion",
+          "url": "https://www.youtube.com/watch?v=to8yh83jlXg"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2075,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Hero",
+          "url": "https://www.youtube.com/watch?v=cPRRupAM4DI"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Los Muertos",
+          "reasoning": ""
+        }
+      ],
+      "headlines": []
+    },
+    {
+      "name": "Fika is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Lijiang, China",
+      "description": "No description available.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Overwatch Website, Jetpack Cat",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/jetpack-cat/"
+        }
+      ],
+      "lat": 26.8595868,
+      "lon": 100.2249797,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": "Fika is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat",
+          "reasoning": ""
         }
       ]
     },
@@ -13920,262 +14205,6 @@
           "locationName": "",
           "country": "Portero, Sanjay,",
           "reasoning": "In contact looking for a controversial Partnership"
-        }
-      ]
-    },
-    {
-      "name": "Destroyer",
-      "locationType": "earth",
-      "cityDisplayName": "Boklovo, Kurjikstan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 41.5089324,
-      "lon": 74.724091,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Boklovo, Kurjikstan",
-          "country": "Kurjikstan",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Torbjörn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ironclad",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sven,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Destroyer",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0b9872d6857ba358/5d02d18aa812cef40914a4a6/comic-overwatch-destroyer_en-us.pdf"
-        }
-      ]
-    },
-    {
-      "name": "Vigilante",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Soldier: 76 Origin Story",
-          "url": "https://www.youtube.com/watch?v=G8oR_SvkR0c"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Grand Mesa, United States",
-          "country": "United States",
-          "reasoning": "",
-          "lat": 39.1131257,
-          "lon": -108.0127646
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
-    },
-    {
-      "name": "Shooting Star",
-      "locationType": "earth",
-      "cityDisplayName": "Busan, South Korea",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "yearStart": 2075,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.va",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "D.mon,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "M.E.K.A Squad,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Gwishin,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "King, Overlord, Casino, Myung,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Shooting Star Overwatch",
-          "url": "https://www.youtube.com/watch?v=q7j2d6YCQbg"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Hero",
-          "url": "https://www.youtube.com/watch?v=cPRRupAM4DI"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Los Muertos",
-          "reasoning": ""
-        }
-      ],
-      "headlines": []
-    },
-    {
-      "name": "The Last Bastion",
-      "locationType": "earth",
-      "cityDisplayName": "Black Forest, Germany",
-      "description": "No description available.",
-      "image": "",
-      "lat": 48.2634439,
-      "lon": 8.1647488,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Black Forest, Germany",
-          "country": "Germany",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Bastion",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "The Last Bastion",
-          "url": "https://www.youtube.com/watch?v=to8yh83jlXg"
-        }
-      ]
-    },
-    {
-      "name": "Fika is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Lijiang, China",
-      "description": "No description available.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Overwatch Website, Jetpack Cat",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/jetpack-cat/"
-        }
-      ],
-      "lat": 26.8595868,
-      "lon": 100.2249797,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Lijiang, China",
-          "country": "China",
-          "reasoning": "Fika is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Jetpack Cat",
-          "reasoning": ""
         }
       ]
     },
