@@ -15,12 +15,40 @@ function escapeHtml(text) {
 }
 
 /**
+ * Decode wiki/HTML entities that leaked into stored subtitle strings
+ * (e.g. Classic imports with leading `&#160;`).
+ * @param {string} text
+ * @returns {string}
+ */
+export function decodeDialogueSubtitleEntities(text) {
+    return String(text || '')
+        .replace(/&#x([0-9a-fA-F]+);/g, (match, hex) => {
+            const codePoint = Number.parseInt(hex, 16);
+            return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : match;
+        })
+        .replace(/&#(\d+);/g, (match, dec) => {
+            const codePoint = Number.parseInt(dec, 10);
+            return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : match;
+        })
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&mdash;/gi, '—')
+        .replace(/&ndash;/gi, '–')
+        .replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&apos;/gi, "'");
+}
+
+/**
  * Wiki interaction outcome markers — not spoken dialogue.
+ * Also normalizes HTML entities / NBSP that should not appear in spoken text.
  * @param {string} text
  * @returns {string}
  */
 export function stripWikiOutcomeMarkers(text) {
-    return String(text || '')
+    return decodeDialogueSubtitleEntities(String(text || ''))
+        .replace(/\u00A0/g, ' ')
         .replace(/\*?\(\s*(?:fails|succeeds)\s*\)\*?/gi, '')
         .replace(/\s+/g, ' ')
         .trim();

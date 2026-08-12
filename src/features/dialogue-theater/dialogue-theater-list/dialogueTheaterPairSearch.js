@@ -6,8 +6,34 @@
  * separate branches of the same multi do not count as a shared interaction.
  */
 
-import { resolveManifestHeroId } from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
+import {
+    getHeroDisplayName,
+    resolveManifestHeroId,
+} from '../../system-interface/interface-filter-menu/buttons/filterKeyMapping.js';
+import { normalizeForPredictiveMatch } from '../../system-interface/interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
 import { heroNamesMatch } from './dialogueTheaterHeroFilter.js';
+
+/**
+ * @typedef {{ epoch: number, anyKeys: Set<string>, pathKeys: Set<string>[] }} ConversationSpeakerIndex
+ */
+
+/** @type {Map<string, string>} */
+const resolveExactMemo = new Map();
+
+/** Bumped when conversation data changes so WeakMap speaker indexes rebuild. */
+let speakerIndexEpoch = 0;
+
+/** @type {WeakMap<object, ConversationSpeakerIndex>} */
+const speakerIndexByConversation = new WeakMap();
+
+/**
+ * Drop resolve memos + force speaker indexes to rebuild on next filter.
+ * Call from Dialogue Theater list cache invalidation.
+ */
+export function clearPairSearchCaches() {
+    resolveExactMemo.clear();
+    speakerIndexEpoch += 1;
+}
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
@@ -43,11 +69,34 @@ export function resolveExactRosterHero(query, manifestHeroes = []) {
     if (!trimmed) return '';
 
     const heroes = Array.isArray(manifestHeroes) ? manifestHeroes : [];
+    const memoKey = `${heroes.length}\0${heroes[0] || ''}\0${heroes[heroes.length - 1] || ''}\0${trimmed}`;
+    if (resolveExactMemo.has(memoKey)) return resolveExactMemo.get(memoKey) || '';
+
+    const fold = normalizeForPredictiveMatch(trimmed);
     for (const hero of heroes) {
         const label = String(hero || '').trim();
         if (!label) continue;
-        if (heroNamesMatch(label, trimmed, heroes)) return label;
+        if (normalizeForPredictiveMatch(label) === fold) {
+            resolveExactMemo.set(memoKey, label);
+            return label;
+        }
+        const display = getHeroDisplayName(label);
+        if (display && normalizeForPredictiveMatch(display) === fold) {
+            resolveExactMemo.set(memoKey, label);
+            return label;
+        }
     }
+
+    for (const hero of heroes) {
+        const label = String(hero || '').trim();
+        if (!label) continue;
+        if (heroNamesMatch(label, trimmed, heroes)) {
+            resolveExactMemo.set(memoKey, label);
+            return label;
+        }
+    }
+
+    resolveExactMemo.set(memoKey, '');
     return '';
 }
 
@@ -74,6 +123,72 @@ function parseHeroFromPathLabel(label) {
     const text = String(label || '').trim();
     const sep = text.indexOf(' — ');
     return sep >= 0 ? text.slice(0, sep).trim() : text;
+}
+
+/**
+ * @param {string} name
+ * @param {string[]} manifestHeroes
+ * @param {Map<string, string>} keyCache
+ * @returns {string}
+ */
+function canonicalHeroKey(name, manifestHeroes, keyCache) {
+    const trimmed = String(name || '').trim();
+    if (!trimmed) return '';
+    const fold = normalizeForPredictiveMatch(trimmed);
+    if (!fold) return '';
+    if (keyCache.has(fold)) return keyCache.get(fold) || '';
+
+    const id = resolveManifestHeroId(trimmed, manifestHeroes) || trimmed;
+    const key = normalizeForPredictiveMatch(id) || fold;
+    keyCache.set(fold, key);
+    const idFold = normalizeForPredictiveMatch(id);
+    if (idFold) keyCache.set(idFold, key);
+    return key;
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {string[]} manifestHeroes
+ * @param {Map<string, string>} keyCache
+ * @returns {ConversationSpeakerIndex}
+ */
+function getSpeakerIndex(conversation, manifestHeroes, keyCache) {
+    const cached = speakerIndexByConversation.get(conversation);
+    if (cached && cached.epoch === speakerIndexEpoch) return cached;
+
+    /** @type {Set<string>} */
+    const anyKeys = new Set();
+    /** @type {Set<string>[]} */
+    const pathKeys = [];
+
+    const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
+    const byId = new Map(lines.map((line) => [line.id, line]));
+
+    for (const line of lines) {
+        const key = canonicalHeroKey(line?.hero, manifestHeroes, keyCache);
+        if (key) anyKeys.add(key);
+    }
+
+    const paths = conversation?.paths;
+    if (Array.isArray(paths) && paths.length > 0) {
+        for (const path of paths) {
+            /** @type {Set<string>} */
+            const set = new Set();
+            const labelKey = canonicalHeroKey(parseHeroFromPathLabel(path?.label), manifestHeroes, keyCache);
+            if (labelKey) set.add(labelKey);
+            for (const lineId of path?.lineIds || []) {
+                const line = byId.get(lineId);
+                const key = canonicalHeroKey(line?.hero, manifestHeroes, keyCache);
+                if (key) set.add(key);
+            }
+            pathKeys.push(set);
+            for (const key of set) anyKeys.add(key);
+        }
+    }
+
+    const index = { epoch: speakerIndexEpoch, anyKeys, pathKeys };
+    speakerIndexByConversation.set(conversation, index);
+    return index;
 }
 
 /**
@@ -170,18 +285,46 @@ export function conversationIncludesCharacter(conversation, characterName, manif
     // Incomplete typing should keep the current list, not show "no conversations".
     if (!resolved) return true;
 
-    for (const line of conversation?.lines || []) {
-        const hero = String(line?.hero || '').trim();
-        if (hero && characterNamesMatch(hero, resolved, manifestHeroes)) return true;
+    const keyCache = new Map();
+    const index = getSpeakerIndex(conversation, manifestHeroes, keyCache);
+    const key = canonicalHeroKey(resolved, manifestHeroes, keyCache);
+    return Boolean(key) && index.anyKeys.has(key);
+}
+
+/**
+ * Fast path when Character A/B are already resolved roster ids (or '').
+ *
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {string} resolvedA
+ * @param {string} resolvedB
+ * @param {string[]} manifestHeroes
+ * @param {Map<string, string>} keyCache
+ * @returns {boolean}
+ */
+export function conversationMatchesResolvedCharacterPair(
+    conversation,
+    resolvedA,
+    resolvedB,
+    manifestHeroes = [],
+    keyCache = new Map(),
+) {
+    const a = String(resolvedA || '').trim();
+    const b = String(resolvedB || '').trim();
+    if (!a && !b) return true;
+
+    const index = getSpeakerIndex(conversation, manifestHeroes, keyCache);
+    const keyA = a ? canonicalHeroKey(a, manifestHeroes, keyCache) : '';
+    const keyB = b ? canonicalHeroKey(b, manifestHeroes, keyCache) : '';
+
+    if (keyA && !keyB) return index.anyKeys.has(keyA);
+    if (!keyA && keyB) return index.anyKeys.has(keyB);
+    if (!keyA || !keyB) return true;
+
+    if (!index.pathKeys.length) {
+        return index.anyKeys.has(keyA) && index.anyKeys.has(keyB);
     }
 
-    // Multipath labels can name a speaker even when their lines are sparse.
-    for (const path of conversation?.paths || []) {
-        const labelHero = parseHeroFromPathLabel(path?.label);
-        if (labelHero && characterNamesMatch(labelHero, resolved, manifestHeroes)) return true;
-    }
-
-    return false;
+    return index.pathKeys.some((set) => set.has(keyA) && set.has(keyB));
 }
 
 /**
@@ -208,21 +351,14 @@ export function isDialogueTheaterPairSearchActive(charA, charB, manifestHeroes =
  * @returns {boolean}
  */
 export function conversationMatchesCharacterPair(conversation, charA, charB, manifestHeroes = []) {
-    const a = String(charA || '').trim();
-    const b = String(charB || '').trim();
-
-    const resolvedA = resolveExactRosterHero(a, manifestHeroes);
-    const resolvedB = resolveExactRosterHero(b, manifestHeroes);
-
-    if (!resolvedA && !resolvedB) return true;
-    if (resolvedA && !resolvedB) {
-        return conversationIncludesCharacter(conversation, resolvedA, manifestHeroes);
-    }
-    if (!resolvedA && resolvedB) {
-        return conversationIncludesCharacter(conversation, resolvedB, manifestHeroes);
-    }
-
-    return conversationHasSharedPathForPair(conversation, resolvedA, resolvedB, manifestHeroes);
+    const resolvedA = resolveExactRosterHero(charA, manifestHeroes);
+    const resolvedB = resolveExactRosterHero(charB, manifestHeroes);
+    return conversationMatchesResolvedCharacterPair(
+        conversation,
+        resolvedA,
+        resolvedB,
+        manifestHeroes,
+    );
 }
 
 /**

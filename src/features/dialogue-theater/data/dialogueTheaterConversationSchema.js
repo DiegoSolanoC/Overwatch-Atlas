@@ -117,6 +117,7 @@ import { stripWikiOutcomeMarkers } from './dialogueSubtitleFormatting.js';
 import {
     DIALOGUE_THEATER_MAP_SPECIFIC_TAG,
     DIALOGUE_THEATER_SKIN_SPECIFIC_TAG,
+    DIALOGUE_THEATER_EVENT_SPECIFIC_TAG,
     normalizeDialogueTheaterStatus,
     normalizeDialogueTheaterTagsWithFlags,
     finalizeDialogueTheaterTags,
@@ -250,6 +251,9 @@ export function normalizeConversationRecord(raw, fallbackId) {
     const skinChoices = tags.includes(DIALOGUE_THEATER_SKIN_SPECIFIC_TAG)
         ? normalizeDialogueTheaterChoiceList(raw.skinChoices)
         : [];
+    const eventChoices = tags.includes(DIALOGUE_THEATER_EVENT_SPECIFIC_TAG)
+        ? normalizeDialogueTheaterChoiceList(raw.eventChoices)
+        : [];
 
     /** @type {import('./DialogueTheaterDataService.js').DialogueConversation} */
     const conversation = { id, entryType, name, status, eraName, tags, scene, lines };
@@ -258,6 +262,9 @@ export function normalizeConversationRecord(raw, fallbackId) {
     }
     if (skinChoices.length > 0) {
         conversation.skinChoices = skinChoices;
+    }
+    if (eventChoices.length > 0) {
+        conversation.eventChoices = eventChoices;
     }
     if (filteredPaths.length > 0) {
         conversation.paths = filteredPaths;

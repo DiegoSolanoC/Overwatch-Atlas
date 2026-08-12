@@ -14,10 +14,12 @@ import {
     DIALOGUE_THEATER_ERA_OVERWATCH,
     DIALOGUE_THEATER_MAP_SPECIFIC_TAG,
     DIALOGUE_THEATER_SKIN_SPECIFIC_TAG,
+    DIALOGUE_THEATER_EVENT_SPECIFIC_TAG,
     DIALOGUE_THEATER_STACKABLE_TAGS,
     getConversationEraTag,
     getConversationMapChoices,
     getConversationSkinChoices,
+    getConversationEventChoices,
     getConversationTags,
     labelForDialogueTheaterStatus,
     normalizeDialogueTheaterChoiceList,
@@ -1095,6 +1097,8 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
     const mapChoicesLabel = mapChoices.length ? mapChoices.join(', ') : '';
     const skinChoices = getConversationSkinChoices(conversation);
     const skinChoicesLabel = skinChoices.length ? skinChoices.join(', ') : '';
+    const eventChoices = getConversationEventChoices(conversation);
+    const eventChoicesLabel = eventChoices.length ? eventChoices.join(', ') : '';
     const playbackConversation = getPlaybackConversation(conversation);
     const paths = conversation.paths || [];
     const selectedPathId = resolveSelectedPathId(conversation);
@@ -1152,6 +1156,11 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
                 ${
                     skinChoicesLabel
                         ? `<div><dt>Skins</dt><dd>${escapeHtml(skinChoicesLabel)}</dd></div>`
+                        : ''
+                }
+                ${
+                    eventChoicesLabel
+                        ? `<div><dt>Events</dt><dd>${escapeHtml(eventChoicesLabel)}</dd></div>`
                         : ''
                 }
             </dl>
@@ -1785,7 +1794,7 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                         <span>Multi Path</span>
                     </label>
                 </div>
-                <p class="dialogue-theater-edit__hint">Map Specific and Skin Specific can stack. Multi Path follows variation routes.</p>
+                <p class="dialogue-theater-edit__hint">Map, Skin, and Event Specific can stack. Multi Path follows variation routes.</p>
             </div>
             <div
                 class="dialogue-theater-edit__row dialogue-theater-edit__map-choices-row"
@@ -1816,6 +1825,21 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                     autocomplete="off"
                 />
                 <p class="dialogue-theater-edit__hint">Skins required for this interaction. Separate names with commas.</p>
+            </div>
+            <div
+                class="dialogue-theater-edit__row dialogue-theater-edit__event-choices-row"
+                id="dialogueTheaterEditEventChoicesRow"
+                hidden
+            >
+                <label class="dialogue-theater-edit__label" for="dialogueTheaterEditEventChoices">Event choices</label>
+                <input
+                    type="text"
+                    id="dialogueTheaterEditEventChoices"
+                    class="event-slide-inline-editor__input dialogue-theater-edit__event-choices-input"
+                    placeholder="e.g. Junkenstein's Revenge, Archives"
+                    autocomplete="off"
+                />
+                <p class="dialogue-theater-edit__hint">Events where this interaction can play. Separate names with commas.</p>
             </div>
             <section class="dialogue-theater-edit__section">
                 <h3 class="dialogue-theater-edit__section-title">Scene</h3>
@@ -1870,6 +1894,8 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
     const mapChoicesInput = host.querySelector('#dialogueTheaterEditMapChoices');
     const skinChoicesRow = host.querySelector('#dialogueTheaterEditSkinChoicesRow');
     const skinChoicesInput = host.querySelector('#dialogueTheaterEditSkinChoices');
+    const eventChoicesRow = host.querySelector('#dialogueTheaterEditEventChoicesRow');
+    const eventChoicesInput = host.querySelector('#dialogueTheaterEditEventChoices');
     const syncChoiceRowsVisibility = () => {
         const checks = [...host.querySelectorAll('.dialogue-theater-edit__tag-check')].filter(
             (input) => input instanceof HTMLInputElement,
@@ -1880,14 +1906,21 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
         const skinOn = checks.some(
             (input) => input.value === DIALOGUE_THEATER_SKIN_SPECIFIC_TAG && input.checked,
         );
+        const eventOn = checks.some(
+            (input) => input.value === DIALOGUE_THEATER_EVENT_SPECIFIC_TAG && input.checked,
+        );
         if (mapChoicesRow instanceof HTMLElement) mapChoicesRow.hidden = !mapOn;
         if (skinChoicesRow instanceof HTMLElement) skinChoicesRow.hidden = !skinOn;
+        if (eventChoicesRow instanceof HTMLElement) eventChoicesRow.hidden = !eventOn;
     };
     if (mapChoicesInput instanceof HTMLInputElement) {
         mapChoicesInput.value = getConversationMapChoices(conversation).join(', ');
     }
     if (skinChoicesInput instanceof HTMLInputElement) {
         skinChoicesInput.value = getConversationSkinChoices(conversation).join(', ');
+    }
+    if (eventChoicesInput instanceof HTMLInputElement) {
+        eventChoicesInput.value = getConversationEventChoices(conversation).join(', ');
     }
     host.querySelectorAll('.dialogue-theater-edit__tag-check').forEach((input) => {
         input.addEventListener('change', syncChoiceRowsVisibility);
@@ -1977,6 +2010,14 @@ export function collectDialogueTheaterEditPanel(host) {
         const raw =
             skinChoicesEl instanceof HTMLInputElement ? skinChoicesEl.value : '';
         skinChoices = normalizeDialogueTheaterChoiceList(raw);
+    }
+    /** @type {string[]} */
+    let eventChoices = [];
+    if (tags.includes(DIALOGUE_THEATER_EVENT_SPECIFIC_TAG)) {
+        const eventChoicesEl = host.querySelector('#dialogueTheaterEditEventChoices');
+        const raw =
+            eventChoicesEl instanceof HTMLInputElement ? eventChoicesEl.value : '';
+        eventChoices = normalizeDialogueTheaterChoiceList(raw);
     }
 
     const scene = host.dataset.selectedScene || '';
@@ -2068,6 +2109,7 @@ export function collectDialogueTheaterEditPanel(host) {
     const patch = { status, eraName: '', tags, scene, lines, ...pathPatch };
     patch.mapChoices = mapChoices;
     patch.skinChoices = skinChoices;
+    patch.eventChoices = eventChoices;
     return patch;
 }
 

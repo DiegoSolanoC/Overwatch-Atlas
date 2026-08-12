@@ -66,7 +66,7 @@ function consumeResetDialogueUrlParam() {
     }
 }
 
-/** @typedef {{ id: string, entryType?: 'dialogue'|'chatter', name: string, status: 'active'|'removed', eraName: string, tags: string[], mapChoices?: string[], skinChoices?: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
+/** @typedef {{ id: string, entryType?: 'dialogue'|'chatter', name: string, status: 'active'|'removed', eraName: string, tags: string[], mapChoices?: string[], skinChoices?: string[], eventChoices?: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
 /** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string, era?: 'Overwatch'|'Classic', status?: 'active'|'removed', disclaimer?: string, partnerMode?: 'or'|'and'|'vague'|'hybrid', partners?: string[], partnerFocus?: string, partnerStackOrder?: string[], partnerFixed?: string[], partnerOrPools?: string[][] }} DialogueLine */
 /** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
@@ -299,18 +299,25 @@ class DialogueTheaterDataService {
                     const fileSkinChoices = Array.isArray(fileRow.skinChoices)
                         ? fileRow.skinChoices.map((entry) => String(entry || '').trim()).filter(Boolean)
                         : [];
+                    const fileEventChoices = Array.isArray(fileRow.eventChoices)
+                        ? fileRow.eventChoices.map((entry) => String(entry || '').trim()).filter(Boolean)
+                        : [];
                     withRenders = {
                         ...withRenders,
                         tags: Array.isArray(fileRow.tags) ? [...fileRow.tags] : [],
                         eraName: '',
                         mapChoices: fileMapChoices,
                         skinChoices: fileSkinChoices,
+                        eventChoices: fileEventChoices,
                     };
                     if (fileMapChoices.length === 0) {
                         delete withRenders.mapChoices;
                     }
                     if (fileSkinChoices.length === 0) {
                         delete withRenders.skinChoices;
+                    }
+                    if (fileEventChoices.length === 0) {
+                        delete withRenders.eventChoices;
                     }
                 } else {
                     withRenders = { ...withRenders, eraName: '' };

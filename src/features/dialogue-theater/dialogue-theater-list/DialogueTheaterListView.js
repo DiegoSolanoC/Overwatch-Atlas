@@ -13,7 +13,7 @@ import {
     closeDialogueTheaterInfoPanel,
     openDialogueTheaterInfoPanel,
     setDialogueTheaterInfoPanelListRefresh,
-} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=107';
+} from '../dialogue-theater-info-panel/DialogueTheaterInfoPanel.js?v=108';
 import {
     setupDialogueTheaterCompactChrome,
     unwireDialogueTheaterToolbarCollapse,
@@ -32,8 +32,10 @@ import {
     isDialogueTheaterHeroFilterActive,
 } from './dialogueTheaterHeroFilter.js';
 import {
-    conversationMatchesCharacterPair,
+    conversationMatchesResolvedCharacterPair,
+    clearPairSearchCaches,
     isDialogueTheaterPairSearchActive,
+    resolveExactRosterHero,
 } from './dialogueTheaterPairSearch.js';
 import { getActiveDialogueTheaterCharacterFilters } from './dialogueTheaterActiveCharacterFilters.js';
 import { wireDialogueTheaterPairSearch } from './wireDialogueTheaterPairSearch.js';
@@ -67,7 +69,7 @@ let onListChange = null;
 /** @type {string} */
 let searchQuery = '';
 
-/** Stackable tag filter (Multi Path / Map Specific / Skin Specific). */
+/** Stackable tag filter (Multi Path / Map Specific / Skin Specific / Event Specific). */
 /** @type {string} */
 let eraFilter = '';
 
@@ -151,6 +153,7 @@ function invalidateListCaches(options = {}) {
     searchHaystackCache = null;
     modeConversationsCache = null;
     modeConversationsCacheKey = '';
+    clearPairSearchCaches();
     if (options.fullRebuild) {
         forceFullListRebuild = true;
         clearListItemPool();
@@ -240,10 +243,21 @@ function getFilteredConversations() {
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
     const manifestHeroes = manifestHeroesForPairSearch();
-    const pairSearchActive = isDialogueTheaterPairSearchActive(pairA, pairB, manifestHeroes);
+    const resolvedPairA = resolveExactRosterHero(pairA, manifestHeroes);
+    const resolvedPairB = resolveExactRosterHero(pairB, manifestHeroes);
+    const pairSearchActive = Boolean(resolvedPairA || resolvedPairB);
 
     if (pairSearchActive) {
-        rows = rows.filter((row) => conversationMatchesCharacterPair(row, pairA, pairB, manifestHeroes));
+        const keyCache = new Map();
+        rows = rows.filter((row) =>
+            conversationMatchesResolvedCharacterPair(
+                row,
+                resolvedPairA,
+                resolvedPairB,
+                manifestHeroes,
+                keyCache,
+            ),
+        );
     } else {
         const heroFilters = getHeroFiltersFromStandaloneActiveFilters(window.standaloneActiveFilters);
         if (heroFilters.length) {

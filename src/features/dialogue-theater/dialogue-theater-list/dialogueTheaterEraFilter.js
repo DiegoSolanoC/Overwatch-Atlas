@@ -4,7 +4,7 @@
  * Status (separate field): Active | Removed  (legacy value `outdated` ≡ Removed)
  *
  * Era pair (exactly one): Overwatch | Classic
- * Stackable tags: Map Specific, Skin Specific, Multi Path (auto from routes)
+ * Stackable tags: Map Specific, Skin Specific, Event Specific, Multi Path (auto from routes)
  */
 
 import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
@@ -17,6 +17,7 @@ export const DIALOGUE_THEATER_TAG_OPTIONS = Object.freeze([
     'Classic',
     'Map Specific',
     'Skin Specific',
+    'Event Specific',
     'Multi Path',
 ]);
 
@@ -24,6 +25,7 @@ export const DIALOGUE_THEATER_TAG_OPTIONS = Object.freeze([
 export const DIALOGUE_THEATER_STACKABLE_TAGS = Object.freeze([
     'Map Specific',
     'Skin Specific',
+    'Event Specific',
 ]);
 
 /** @deprecated Use DIALOGUE_THEATER_STACKABLE_TAGS — kept for older imports. */
@@ -37,6 +39,7 @@ export const DIALOGUE_THEATER_MAP_SPECIFIC_TAG = 'Map Specific';
 /** @deprecated Prefer DIALOGUE_THEATER_MAP_SPECIFIC_TAG */
 export const DIALOGUE_THEATER_MAP_EXCLUSIVE_TAG = DIALOGUE_THEATER_MAP_SPECIFIC_TAG;
 export const DIALOGUE_THEATER_SKIN_SPECIFIC_TAG = 'Skin Specific';
+export const DIALOGUE_THEATER_EVENT_SPECIFIC_TAG = 'Event Specific';
 
 /** Retired tag → becomes status Removed on normalize. */
 export const DIALOGUE_THEATER_RETIRED_REMOVED_TAG = 'Removed';
@@ -161,6 +164,16 @@ export function getConversationSkinChoices(conversation) {
     const tags = getConversationTags(conversation);
     if (!tags.includes(DIALOGUE_THEATER_SKIN_SPECIFIC_TAG)) return [];
     return normalizeDialogueTheaterChoiceList(conversation?.skinChoices);
+}
+
+/**
+ * @param {{ tags?: string[], eventChoices?: unknown }|null|undefined} conversation
+ * @returns {string[]}
+ */
+export function getConversationEventChoices(conversation) {
+    const tags = getConversationTags(conversation);
+    if (!tags.includes(DIALOGUE_THEATER_EVENT_SPECIFIC_TAG)) return [];
+    return normalizeDialogueTheaterChoiceList(conversation?.eventChoices);
 }
 
 /** @deprecated Timeline eras no longer used as conversation tags. */

@@ -241,11 +241,11 @@
           },
           {
             "fromId": "gcc-link-faction-m-e-k-a-squad",
-            "toId": "gcc-link-hero-d-va"
+            "toId": "gcc-link-npc-dae-hyun"
           },
           {
             "fromId": "gcc-link-faction-m-e-k-a-squad",
-            "toId": "gcc-link-npc-dae-hyun"
+            "toId": "gcc-link-hero-d-va"
           }
         ],
         "display": {
@@ -255,9 +255,9 @@
           "snapAngles": true
         },
         "view": {
-          "panX": -98.58663484659394,
-          "panY": -104.96607158412519,
-          "zoom": 0.4030176460800002
+          "panX": -39.30366478514952,
+          "panY": -142.0081655053134,
+          "zoom": 0.3782347161600001
         }
       }
     },
@@ -536,9 +536,9 @@
           "snapAngles": true
         },
         "view": {
-          "panX": -27.2586015045938,
-          "panY": -154.56831354789847,
-          "zoom": 0.3782347161600001
+          "panX": -85.41633918179686,
+          "panY": -204.33925165216192,
+          "zoom": 0.4236228820992001
         }
       }
     },

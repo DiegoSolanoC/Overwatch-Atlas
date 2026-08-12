@@ -19,6 +19,7 @@ export function buildConversationSearchHaystack(conversation) {
     const tagsJoined = tags.join(' ');
     const mapsJoined = Array.isArray(conversation?.mapChoices) ? conversation.mapChoices.join(' ') : '';
     const skinsJoined = Array.isArray(conversation?.skinChoices) ? conversation.skinChoices.join(' ') : '';
+    const eventsJoined = Array.isArray(conversation?.eventChoices) ? conversation.eventChoices.join(' ') : '';
 
     /** @type {string[]} */
     const heroes = [];
@@ -40,7 +41,7 @@ export function buildConversationSearchHaystack(conversation) {
         normalizedSubtitles.push(normalizeSubtitlesForMatch(text));
     }
 
-    const lowerParts = [name, tagsJoined, mapsJoined, skinsJoined, heroes.join(' '), subtitles.join('\n')];
+    const lowerParts = [name, tagsJoined, mapsJoined, skinsJoined, eventsJoined, heroes.join(' '), subtitles.join('\n')];
     const lower = lowerParts.join('\n').toLowerCase();
     const fold = normalizeForPredictiveMatch(lowerParts.join(' '));
     const stripped = strippedSubtitles.join('\n').toLowerCase();
