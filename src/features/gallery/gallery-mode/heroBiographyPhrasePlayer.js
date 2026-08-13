@@ -1,9 +1,11 @@
 /**
  * Single hero phrase audio at a time — random pick, no overlap until finished.
+ * Wrecking Ball: hamster prefix (if mapped) then translator, like theater Match Talk.
  */
 
 import { applyCharacterVolume } from '../../universal-features/atlas-character-audio/CharacterVolumeService.js';
 import {
+    buildHeroBiographyPhraseHamsterMapPath,
     buildHeroBiographyPhrasePath,
     getHeroBiographyPhraseWeight,
 } from './heroBiographyPhrasePaths.js';
@@ -19,8 +21,14 @@ let selectionPhraseTimer = null;
 
 let selectionPhraseGeneration = 0;
 
+/** Bumped to cancel in-flight sequential hamster→translator playback. */
+let phrasePlaybackGeneration = 0;
+
 /** Delay after picking a hero before the Selection voiceline plays. */
 const HERO_SELECTION_PHRASE_DELAY_MS = 480;
+
+/** @type {Map<string, Record<string, string[]> | null>} */
+const hamsterPrefixCache = new Map();
 
 function notifyPhrasePlaybackChange() {
     window.dispatchEvent(new CustomEvent('heroBiographyPhrasePlaybackChange'));
@@ -31,6 +39,7 @@ export function isHeroBiographyPhrasePlaying() {
 }
 
 export function stopHeroBiographyPhrase() {
+    phrasePlaybackGeneration += 1;
     if (activeAudio) {
         activeAudio.pause();
         activeAudio.currentTime = 0;
@@ -52,6 +61,92 @@ export function cancelHeroSelectionPhraseSchedule() {
 
 /**
  * @param {string} heroFilterKey
+ * @returns {Promise<Record<string, string[]> | null>}
+ */
+async function loadHamsterPrefixMap(heroFilterKey) {
+    const key = String(heroFilterKey || '').trim();
+    if (!key) return null;
+    if (hamsterPrefixCache.has(key)) return hamsterPrefixCache.get(key) || null;
+
+    const url = buildHeroBiographyPhraseHamsterMapPath(key);
+    if (!url) {
+        hamsterPrefixCache.set(key, null);
+        return null;
+    }
+
+    try {
+        const res = await fetch(`${url}?v=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) {
+            hamsterPrefixCache.set(key, null);
+            return null;
+        }
+        const json = await res.json();
+        const prefixes =
+            json?.prefixes && typeof json.prefixes === 'object' && !Array.isArray(json.prefixes)
+                ? json.prefixes
+                : null;
+        hamsterPrefixCache.set(key, prefixes);
+        return prefixes;
+    } catch {
+        hamsterPrefixCache.set(key, null);
+        return null;
+    }
+}
+
+/**
+ * @param {string} heroFilterKey
+ * @param {string} fileName
+ * @returns {Promise<string[]>} Relative phrase paths to play in order.
+ */
+async function resolvePhrasePlaybackFiles(heroFilterKey, fileName) {
+    const file = String(fileName || '').trim().replace(/\\/g, '/');
+    if (!file) return [];
+
+    const map = await loadHamsterPrefixMap(heroFilterKey);
+    const variants = map?.[file];
+    if (!Array.isArray(variants) || variants.length === 0) return [file];
+
+    const valid = variants.map((v) => String(v || '').trim().replace(/\\/g, '/')).filter(Boolean);
+    if (!valid.length) return [file];
+
+    const pick = valid[Math.floor(Math.random() * valid.length)];
+    return pick && pick !== file ? [pick, file] : [file];
+}
+
+/**
+ * @param {string} src
+ * @param {number} generation
+ * @returns {Promise<boolean>}
+ */
+function playAudioSrc(src, generation) {
+    return new Promise((resolve) => {
+        if (generation !== phrasePlaybackGeneration) {
+            resolve(false);
+            return;
+        }
+
+        const audio = new Audio(src);
+        applyCharacterVolume(audio);
+        activeAudio = audio;
+
+        const finish = (ok) => {
+            if (activeAudio === audio) {
+                activeAudio.onended = null;
+                activeAudio.onerror = null;
+                activeAudio = null;
+            }
+            resolve(ok && generation === phrasePlaybackGeneration);
+        };
+
+        audio.addEventListener('ended', () => finish(true));
+        audio.addEventListener('error', () => finish(false));
+
+        audio.play().catch(() => finish(false));
+    });
+}
+
+/**
+ * @param {string} heroFilterKey
  * @param {string} fileName — basename from manifest.
  * @returns {Promise<boolean>} True if playback started.
  */
@@ -61,35 +156,38 @@ export async function playHeroBiographyPhrase(heroFilterKey, fileName) {
     const file = String(fileName || '').trim();
     if (!file) return false;
 
-    const src = buildHeroBiographyPhrasePath(heroFilterKey, file);
-    if (!src) return false;
+    const sequence = await resolvePhrasePlaybackFiles(heroFilterKey, file);
+    if (!sequence.length) return false;
+
+    const srcs = sequence
+        .map((rel) => buildHeroBiographyPhrasePath(heroFilterKey, rel))
+        .filter(Boolean);
+    if (!srcs.length) return false;
 
     stopHeroBiographyPhrase();
+    const generation = phrasePlaybackGeneration;
 
     window.CharacterVolumeManager?.unlock?.();
 
-    const audio = new Audio(src);
-    applyCharacterVolume(audio);
-    activeAudio = audio;
     phrasePlaying = true;
     notifyPhrasePlaybackChange();
 
-    const release = () => {
-        if (activeAudio !== audio) return;
-        stopHeroBiographyPhrase();
-    };
-
-    audio.addEventListener('ended', release);
-    audio.addEventListener('error', release);
-
     try {
-        await audio.play();
-        return true;
+        for (const src of srcs) {
+            if (generation !== phrasePlaybackGeneration) break;
+            const ok = await playAudioSrc(src, generation);
+            if (!ok) break;
+        }
     } catch (err) {
         console.warn('[gallery] Phrase playback failed:', err);
-        release();
-        return false;
     }
+
+    if (generation === phrasePlaybackGeneration) {
+        phrasePlaying = false;
+        activeAudio = null;
+        notifyPhrasePlaybackChange();
+    }
+    return true;
 }
 
 /**
@@ -135,4 +233,9 @@ export function scheduleHeroSelectionPhrase(heroFilterKey, phraseFiles, delayMs 
         if (phrasePlaying) return;
         void playHeroBiographyPhrase(key, selectionFile);
     }, Math.max(0, delayMs));
+}
+
+/** Clears cached hamster-prefix maps (tests / hot reload). */
+export function clearHeroBiographyPhraseHamsterCache() {
+    hamsterPrefixCache.clear();
 }

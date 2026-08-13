@@ -75,9 +75,10 @@ export function createFiltersPanel() {
                             <img class="filters-action-btn__icon" src="src/assets/images/Icons/Filter%20Icons/Clear%20Filter%20Icon.png" alt="" width="22" height="22" decoding="async" />
                             <span class="filters-action-btn__label">Clear</span>
                         </button>
-                        <button type="button" id="confirmFiltersBtn" class="filters-action-btn filters-confirm-btn">
+                        <button type="button" id="confirmFiltersBtn" class="filters-action-btn filters-confirm-btn" aria-describedby="confirmFiltersMatchCount">
                             <img class="filters-action-btn__icon" src="src/assets/images/Icons/Filter%20Icons/Confirm%20Filter%20Icon.png" alt="" width="22" height="22" decoding="async" />
                             <span class="filters-action-btn__label">Confirm</span>
+                            <span class="filter-count" id="confirmFiltersMatchCount" style="display: none" aria-live="polite">0</span>
                         </button>
                     </div>
                 </div>

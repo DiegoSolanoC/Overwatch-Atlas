@@ -87,6 +87,9 @@ export function wireStandaloneFilterButtons() {
             if (window.FilterService?.updateButtonStates) {
                 window.FilterService.updateButtonStates();
             }
+            if (window.FilterService?.updateFilterCounts) {
+                window.FilterService.updateFilterCounts();
+            }
             updateStandalonePaginationForFilters();
             window.syncEventManagerSearchFromFilterSelection?.();
             syncStoryTimelineIfActive();

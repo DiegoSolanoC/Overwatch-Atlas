@@ -1,6 +1,7 @@
 /**
  * Hero biography voiceline assets under src/assets/audio/Phrases/<heroId>/.
  * Ultimate clips may live in .../Ultimate/ (manifest paths like `Ultimate/foo.ogg`).
+ * Wrecking Ball hamster prefixes live in .../Hamster/ (+ hamster-prefixes.json).
  */
 
 export const HERO_BIOGRAPHY_PHRASES_ROOT = 'src/assets/audio/Phrases';
@@ -12,7 +13,7 @@ const AUDIO_EXT = /\.(mp3|wav|ogg|m4a|webm)$/i;
 
 /**
  * @param {string} heroFilterKey
- * @param {string} fileName — basename or `Ultimate/basename`
+ * @param {string} fileName — basename, `Ultimate/basename`, or `Hamster/...`
  * @returns {string}
  */
 export function buildHeroBiographyPhrasePath(heroFilterKey, fileName) {
@@ -22,6 +23,17 @@ export function buildHeroBiographyPhrasePath(heroFilterKey, fileName) {
     const parts = file.split('/').filter(Boolean).map((p) => encodeURIComponent(p));
     if (!parts.length) return '';
     return `${HERO_BIOGRAPHY_PHRASES_ROOT}/${encodeURIComponent(heroId)}/${parts.join('/')}`;
+}
+
+/**
+ * Optional map of translator phrase → hamster prefix takes (Wrecking Ball).
+ * @param {string} heroFilterKey
+ * @returns {string}
+ */
+export function buildHeroBiographyPhraseHamsterMapPath(heroFilterKey) {
+    const heroId = String(heroFilterKey || '').trim();
+    if (!heroId) return '';
+    return `${HERO_BIOGRAPHY_PHRASES_ROOT}/${encodeURIComponent(heroId)}/hamster-prefixes.json`;
 }
 
 /** Ultimate clips are twice as likely in the gallery phrase randomizer. */

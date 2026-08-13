@@ -52,6 +52,7 @@ import {
 } from './heroBiographyPhraseButton.js';
 import {
     cancelHeroSelectionPhraseSchedule,
+    clearHeroBiographyPhraseHamsterCache,
     stopHeroBiographyPhrase,
 } from './heroBiographyPhrasePlayer.js';
 import { clearHeroPhrasesCache } from './loadHeroPhrases.js';
@@ -688,6 +689,7 @@ export function destroyHeroBiographySelection() {
     clearHeroBiographyLookRangesCache();
     clearFactionBiographyLookRangesCache();
     clearHeroPhrasesCache();
+    clearHeroBiographyPhraseHamsterCache();
     heroBiosLooksMap = null;
     factionBiosLooksMap = null;
     clearHeroBiographyPortraitScaleCache();

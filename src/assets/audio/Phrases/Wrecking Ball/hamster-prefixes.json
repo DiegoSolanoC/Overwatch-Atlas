@@ -1,0 +1,588 @@
+{
+  "hero": "Wrecking Ball",
+  "note": "Gallery playback: random Hamster take, then translator phrase. Minefield uses shared Ultimate squeak.",
+  "prefixes": {
+    "Access denied.ogg": [
+      "Hamster/Access denied.ogg",
+      "Hamster/Access denied_(2).ogg",
+      "Hamster/Access denied_(3).ogg",
+      "Hamster/Access denied_(4).ogg",
+      "Hamster/Access denied_(5).ogg",
+      "Hamster/Access denied_(6).ogg",
+      "Hamster/Access denied_(7).ogg",
+      "Hamster/Access denied_(8).ogg",
+      "Hamster/Access denied_(9).ogg",
+      "Hamster/Access denied_(10).ogg",
+      "Hamster/Access denied_(11).ogg"
+    ],
+    "Amusement.ogg": [
+      "Hamster/Amusement.ogg",
+      "Hamster/Amusement_(2).ogg",
+      "Hamster/Amusement_(3).ogg",
+      "Hamster/Amusement_(4).ogg"
+    ],
+    "Assessing luck, be careful crossing the street.ogg": [
+      "Hamster/Assessing luck, be careful crossing the street.ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(2).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(3).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(4).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(5).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(6).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(7).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(8).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(9).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(10).ogg",
+      "Hamster/Assessing luck, be careful crossing the street_(11).ogg"
+    ],
+    "Assessing luck, financial outlook strong.ogg": [
+      "Hamster/Assessing luck, financial outlook strong.ogg",
+      "Hamster/Assessing luck, financial outlook strong_(2).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(3).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(4).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(5).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(6).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(7).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(8).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(9).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(10).ogg",
+      "Hamster/Assessing luck, financial outlook strong_(11).ogg"
+    ],
+    "Assessing luck, good time for romance.ogg": [
+      "Hamster/Assessing luck, good time for romance.ogg",
+      "Hamster/Assessing luck, good time for romance_(2).ogg",
+      "Hamster/Assessing luck, good time for romance_(3).ogg",
+      "Hamster/Assessing luck, good time for romance_(4).ogg",
+      "Hamster/Assessing luck, good time for romance_(5).ogg",
+      "Hamster/Assessing luck, good time for romance_(6).ogg",
+      "Hamster/Assessing luck, good time for romance_(7).ogg",
+      "Hamster/Assessing luck, good time for romance_(8).ogg",
+      "Hamster/Assessing luck, good time for romance_(9).ogg",
+      "Hamster/Assessing luck, good time for romance_(10).ogg",
+      "Hamster/Assessing luck, good time for romance_(11).ogg"
+    ],
+    "Assessing luck, great fortune.ogg": [
+      "Hamster/Assessing luck, great fortune.ogg",
+      "Hamster/Assessing luck, great fortune_(2).ogg",
+      "Hamster/Assessing luck, great fortune_(3).ogg",
+      "Hamster/Assessing luck, great fortune_(4).ogg",
+      "Hamster/Assessing luck, great fortune_(5).ogg",
+      "Hamster/Assessing luck, great fortune_(6).ogg",
+      "Hamster/Assessing luck, great fortune_(7).ogg",
+      "Hamster/Assessing luck, great fortune_(8).ogg",
+      "Hamster/Assessing luck, great fortune_(9).ogg",
+      "Hamster/Assessing luck, great fortune_(10).ogg",
+      "Hamster/Assessing luck, great fortune_(11).ogg"
+    ],
+    "Assessing luck, great misfortune.ogg": [
+      "Hamster/Assessing luck, great misfortune.ogg",
+      "Hamster/Assessing luck, great misfortune_(2).ogg",
+      "Hamster/Assessing luck, great misfortune_(3).ogg",
+      "Hamster/Assessing luck, great misfortune_(4).ogg",
+      "Hamster/Assessing luck, great misfortune_(5).ogg",
+      "Hamster/Assessing luck, great misfortune_(6).ogg",
+      "Hamster/Assessing luck, great misfortune_(7).ogg",
+      "Hamster/Assessing luck, great misfortune_(8).ogg",
+      "Hamster/Assessing luck, great misfortune_(9).ogg",
+      "Hamster/Assessing luck, great misfortune_(10).ogg",
+      "Hamster/Assessing luck, great misfortune_(11).ogg"
+    ],
+    "Assessing luck, medium fortune.ogg": [
+      "Hamster/Assessing luck, medium fortune.ogg",
+      "Hamster/Assessing luck, medium fortune_(2).ogg",
+      "Hamster/Assessing luck, medium fortune_(3).ogg",
+      "Hamster/Assessing luck, medium fortune_(4).ogg",
+      "Hamster/Assessing luck, medium fortune_(5).ogg",
+      "Hamster/Assessing luck, medium fortune_(6).ogg",
+      "Hamster/Assessing luck, medium fortune_(7).ogg",
+      "Hamster/Assessing luck, medium fortune_(8).ogg",
+      "Hamster/Assessing luck, medium fortune_(9).ogg",
+      "Hamster/Assessing luck, medium fortune_(10).ogg",
+      "Hamster/Assessing luck, medium fortune_(11).ogg"
+    ],
+    "Assessing luck, medium misfortune.ogg": [
+      "Hamster/Assessing luck, medium misfortune.ogg",
+      "Hamster/Assessing luck, medium misfortune_(2).ogg",
+      "Hamster/Assessing luck, medium misfortune_(3).ogg",
+      "Hamster/Assessing luck, medium misfortune_(4).ogg",
+      "Hamster/Assessing luck, medium misfortune_(5).ogg",
+      "Hamster/Assessing luck, medium misfortune_(6).ogg",
+      "Hamster/Assessing luck, medium misfortune_(7).ogg",
+      "Hamster/Assessing luck, medium misfortune_(8).ogg",
+      "Hamster/Assessing luck, medium misfortune_(9).ogg",
+      "Hamster/Assessing luck, medium misfortune_(10).ogg",
+      "Hamster/Assessing luck, medium misfortune_(11).ogg"
+    ],
+    "Assessing luck, small fortune.ogg": [
+      "Hamster/Assessing luck, small fortune.ogg",
+      "Hamster/Assessing luck, small fortune_(2).ogg",
+      "Hamster/Assessing luck, small fortune_(3).ogg",
+      "Hamster/Assessing luck, small fortune_(4).ogg",
+      "Hamster/Assessing luck, small fortune_(5).ogg",
+      "Hamster/Assessing luck, small fortune_(6).ogg",
+      "Hamster/Assessing luck, small fortune_(7).ogg",
+      "Hamster/Assessing luck, small fortune_(8).ogg",
+      "Hamster/Assessing luck, small fortune_(9).ogg",
+      "Hamster/Assessing luck, small fortune_(10).ogg",
+      "Hamster/Assessing luck, small fortune_(11).ogg"
+    ],
+    "Assessing luck, small misfortune.ogg": [
+      "Hamster/Assessing luck, small misfortune.ogg",
+      "Hamster/Assessing luck, small misfortune_(2).ogg",
+      "Hamster/Assessing luck, small misfortune_(3).ogg",
+      "Hamster/Assessing luck, small misfortune_(4).ogg",
+      "Hamster/Assessing luck, small misfortune_(5).ogg",
+      "Hamster/Assessing luck, small misfortune_(6).ogg",
+      "Hamster/Assessing luck, small misfortune_(7).ogg",
+      "Hamster/Assessing luck, small misfortune_(8).ogg",
+      "Hamster/Assessing luck, small misfortune_(9).ogg",
+      "Hamster/Assessing luck, small misfortune_(10).ogg",
+      "Hamster/Assessing luck, small misfortune_(11).ogg"
+    ],
+    "Assessing luck, success in academics.ogg": [
+      "Hamster/Assessing luck, success in academics.ogg",
+      "Hamster/Assessing luck, success in academics_(2).ogg",
+      "Hamster/Assessing luck, success in academics_(3).ogg",
+      "Hamster/Assessing luck, success in academics_(4).ogg",
+      "Hamster/Assessing luck, success in academics_(5).ogg",
+      "Hamster/Assessing luck, success in academics_(6).ogg",
+      "Hamster/Assessing luck, success in academics_(7).ogg",
+      "Hamster/Assessing luck, success in academics_(8).ogg",
+      "Hamster/Assessing luck, success in academics_(9).ogg",
+      "Hamster/Assessing luck, success in academics_(10).ogg",
+      "Hamster/Assessing luck, success in academics_(11).ogg"
+    ],
+    "Be the ball.ogg": [
+      "Hamster/Be the ball.ogg",
+      "Hamster/Be the ball_(2).ogg",
+      "Hamster/Be the ball_(3).ogg",
+      "Hamster/Be the ball_(4).ogg",
+      "Hamster/Be the ball_(5).ogg",
+      "Hamster/Be the ball_(6).ogg",
+      "Hamster/Be the ball_(7).ogg",
+      "Hamster/Be the ball_(8).ogg",
+      "Hamster/Be the ball_(9).ogg",
+      "Hamster/Be the ball_(10).ogg",
+      "Hamster/Be the ball_(11).ogg"
+    ],
+    "Beware of small mammals.ogg": [
+      "Hamster/Beware of small mammals.ogg",
+      "Hamster/Beware of small mammals_(2).ogg",
+      "Hamster/Beware of small mammals_(3).ogg",
+      "Hamster/Beware of small mammals_(4).ogg"
+    ],
+    "Deck the halls with me.ogg": [
+      "Hamster/Deck the halls with me.ogg"
+    ],
+    "Do not disturb.ogg": [
+      "Hamster/Do not disturb.ogg",
+      "Hamster/Do not disturb_(2).ogg",
+      "Hamster/Do not disturb_(3).ogg",
+      "Hamster/Do not disturb_(4).ogg",
+      "Hamster/Do not disturb_(5).ogg",
+      "Hamster/Do not disturb_(6).ogg",
+      "Hamster/Do not disturb_(7).ogg",
+      "Hamster/Do not disturb_(8).ogg",
+      "Hamster/Do not disturb_(9).ogg",
+      "Hamster/Do not disturb_(10).ogg",
+      "Hamster/Do not disturb_(11).ogg"
+    ],
+    "Do not tell the mammal how high he can go.ogg": [
+      "Hamster/Do not tell the mammal how high he can go.ogg",
+      "Hamster/Do not tell the mammal how high he can go_(2).ogg",
+      "Hamster/Do not tell the mammal how high he can go_(3).ogg",
+      "Hamster/Do not tell the mammal how high he can go_(4).ogg",
+      "Hamster/Do not tell the mammal how high he can go_(5).ogg",
+      "Hamster/Do not tell the mammal how high he can go_(6).ogg"
+    ],
+    "Encouragement module not found.ogg": [
+      "Hamster/Encouragement module not found.ogg",
+      "Hamster/Encouragement module not found_(2).ogg",
+      "Hamster/Encouragement module not found_(3).ogg",
+      "Hamster/Encouragement module not found_(4).ogg",
+      "Hamster/Encouragement module not found_(5).ogg",
+      "Hamster/Encouragement module not found_(6).ogg",
+      "Hamster/Encouragement module not found_(7).ogg",
+      "Hamster/Encouragement module not found_(8).ogg",
+      "Hamster/Encouragement module not found_(9).ogg",
+      "Hamster/Encouragement module not found_(10).ogg",
+      "Hamster/Encouragement module not found_(11).ogg"
+    ],
+    "Engaging festive mode.ogg": [
+      "Hamster/Engaging festive mode.ogg",
+      "Hamster/Engaging festive mode_(2).ogg",
+      "Hamster/Engaging festive mode_(3).ogg",
+      "Hamster/Engaging festive mode_(4).ogg",
+      "Hamster/Engaging festive mode_(5).ogg",
+      "Hamster/Engaging festive mode_(6).ogg"
+    ],
+    "Error. Profanity filter enabled.ogg": [
+      "Hamster/Error. Profanity filter enabled.ogg",
+      "Hamster/Error. Profanity filter enabled_(2).ogg",
+      "Hamster/Error. Profanity filter enabled_(3).ogg",
+      "Hamster/Error. Profanity filter enabled_(4).ogg",
+      "Hamster/Error. Profanity filter enabled_(5).ogg",
+      "Hamster/Error. Profanity filter enabled_(6).ogg",
+      "Hamster/Error. Profanity filter enabled_(7).ogg",
+      "Hamster/Error. Profanity filter enabled_(8).ogg",
+      "Hamster/Error. Profanity filter enabled_(9).ogg",
+      "Hamster/Error. Profanity filter enabled_(10).ogg",
+      "Hamster/Error. Profanity filter enabled_(11).ogg"
+    ],
+    "Frustration detected.ogg": [
+      "Hamster/Frustration detected.ogg",
+      "Hamster/Frustration detected_(2).ogg",
+      "Hamster/Frustration detected_(3).ogg"
+    ],
+    "Game over.ogg": [
+      "Hamster/Game over.ogg",
+      "Hamster/Game over_(2).ogg",
+      "Hamster/Game over_(3).ogg",
+      "Hamster/Game over_(4).ogg",
+      "Hamster/Game over_(5).ogg"
+    ],
+    "Greetings.ogg": [
+      "Hamster/Greetings.ogg",
+      "Hamster/Greetings_(2).ogg",
+      "Hamster/Greetings_(3).ogg",
+      "Hamster/Greetings_(4).ogg"
+    ],
+    "Ha ha. Laughter.ogg": [
+      "Hamster/Ha ha. Laughter.ogg",
+      "Hamster/Ha ha. Laughter_(2).ogg",
+      "Hamster/Ha ha. Laughter_(3).ogg",
+      "Hamster/Ha ha. Laughter_(4).ogg",
+      "Hamster/Ha ha. Laughter_(5).ogg",
+      "Hamster/Ha ha. Laughter_(6).ogg",
+      "Hamster/Ha ha. Laughter_(7).ogg",
+      "Hamster/Ha ha. Laughter_(8).ogg",
+      "Hamster/Ha ha. Laughter_(9).ogg",
+      "Hamster/Ha ha. Laughter_(10).ogg",
+      "Hamster/Ha ha. Laughter_(11).ogg"
+    ],
+    "He compliments your tenacity.ogg": [
+      "Hamster/He compliments your tenacity.ogg",
+      "Hamster/He compliments your tenacity_(2).ogg",
+      "Hamster/He compliments your tenacity_(3).ogg",
+      "Hamster/He compliments your tenacity_(4).ogg",
+      "Hamster/He compliments your tenacity_(5).ogg"
+    ],
+    "He likes you.ogg": [
+      "Hamster/He likes you.ogg",
+      "Hamster/He likes you_(2).ogg",
+      "Hamster/He likes you_(3).ogg",
+      "Hamster/He likes you_(4).ogg",
+      "Hamster/He likes you_(5).ogg"
+    ],
+    "He says he's sorry.ogg": [
+      "Hamster/He says he's sorry.ogg",
+      "Hamster/He says he's sorry_(2).ogg",
+      "Hamster/He says he's sorry_(3).ogg",
+      "Hamster/He says he's sorry_(4).ogg",
+      "Hamster/He says he's sorry_(5).ogg",
+      "Hamster/He says he's sorry_(6).ogg",
+      "Hamster/He says he's sorry_(7).ogg",
+      "Hamster/He says he's sorry_(8).ogg",
+      "Hamster/He says he's sorry_(9).ogg",
+      "Hamster/He says he's sorry_(10).ogg",
+      "Hamster/He says he's sorry_(11).ogg"
+    ],
+    "He says, hello.ogg": [
+      "Hamster/He says, hello.ogg",
+      "Hamster/He says, hello_(2).ogg",
+      "Hamster/He says, hello_(3).ogg",
+      "Hamster/He says, hello_(4).ogg"
+    ],
+    "He says, thank you.ogg": [
+      "Hamster/He says, thank you.ogg",
+      "Hamster/He says, thank you_(2).ogg",
+      "Hamster/He says, thank you_(3).ogg",
+      "Hamster/He says, thank you_(4).ogg",
+      "Hamster/He says, thank you_(5).ogg"
+    ],
+    "Heart rate increasing.ogg": [
+      "Hamster/Heart rate increasing.ogg",
+      "Hamster/Heart rate increasing_(2).ogg",
+      "Hamster/Heart rate increasing_(3).ogg",
+      "Hamster/Heart rate increasing_(4).ogg",
+      "Hamster/Heart rate increasing_(5).ogg",
+      "Hamster/Heart rate increasing_(6).ogg",
+      "Hamster/Heart rate increasing_(7).ogg",
+      "Hamster/Heart rate increasing_(8).ogg",
+      "Hamster/Heart rate increasing_(9).ogg",
+      "Hamster/Heart rate increasing_(10).ogg",
+      "Hamster/Heart rate increasing_(11).ogg"
+    ],
+    "Hello.ogg": [
+      "Hamster/Hello.ogg",
+      "Hamster/Hello_(2).ogg",
+      "Hamster/Hello_(3).ogg",
+      "Hamster/Hello_(4).ogg"
+    ],
+    "Ho. Ho. Ho.ogg": [
+      "Hamster/Ho. Ho. Ho.ogg",
+      "Hamster/Ho. Ho. Ho_(2).ogg",
+      "Hamster/Ho. Ho. Ho_(3).ogg",
+      "Hamster/Ho. Ho. Ho_(4).ogg",
+      "Hamster/Ho. Ho. Ho_(5).ogg",
+      "Hamster/Ho. Ho. Ho_(6).ogg",
+      "Hamster/Ho. Ho. Ho_(7).ogg",
+      "Hamster/Ho. Ho. Ho_(8).ogg",
+      "Hamster/Ho. Ho. Ho_(9).ogg",
+      "Hamster/Ho. Ho. Ho_(10).ogg",
+      "Hamster/Ho. Ho. Ho_(11).ogg"
+    ],
+    "K.O.ogg": [
+      "Hamster/K.O.ogg",
+      "Hamster/K.O_(2).ogg",
+      "Hamster/K.O_(3).ogg",
+      "Hamster/K.O_(4).ogg",
+      "Hamster/K.O_(5).ogg",
+      "Hamster/K.O_(6).ogg",
+      "Hamster/K.O_(7).ogg",
+      "Hamster/K.O_(8).ogg",
+      "Hamster/K.O_(9).ogg",
+      "Hamster/K.O_(10).ogg",
+      "Hamster/K.O_(11).ogg"
+    ],
+    "Keep your eye on the ball.ogg": [
+      "Hamster/Keep your eye on the ball.ogg",
+      "Hamster/Keep your eye on the ball_(2).ogg",
+      "Hamster/Keep your eye on the ball_(3).ogg",
+      "Hamster/Keep your eye on the ball_(4).ogg",
+      "Hamster/Keep your eye on the ball_(5).ogg",
+      "Hamster/Keep your eye on the ball_(6).ogg",
+      "Hamster/Keep your eye on the ball_(7).ogg",
+      "Hamster/Keep your eye on the ball_(8).ogg",
+      "Hamster/Keep your eye on the ball_(9).ogg",
+      "Hamster/Keep your eye on the ball_(10).ogg",
+      "Hamster/Keep your eye on the ball_(11).ogg"
+    ],
+    "More power.ogg": [
+      "Hamster/More power.ogg",
+      "Hamster/More power_(2).ogg",
+      "Hamster/More power_(3).ogg",
+      "Hamster/More power_(4).ogg"
+    ],
+    "No hard feelings.ogg": [
+      "Hamster/No hard feelings.ogg",
+      "Hamster/No hard feelings_(2).ogg",
+      "Hamster/No hard feelings_(3).ogg",
+      "Hamster/No hard feelings_(4).ogg"
+    ],
+    "Odds of success increasing.ogg": [
+      "Hamster/Odds of success increasing.ogg",
+      "Hamster/Odds of success increasing_(2).ogg",
+      "Hamster/Odds of success increasing_(3).ogg",
+      "Hamster/Odds of success increasing_(4).ogg",
+      "Hamster/Odds of success increasing_(5).ogg",
+      "Hamster/Odds of success increasing_(6).ogg",
+      "Hamster/Odds of success increasing_(7).ogg",
+      "Hamster/Odds of success increasing_(8).ogg",
+      "Hamster/Odds of success increasing_(9).ogg",
+      "Hamster/Odds of success increasing_(10).ogg",
+      "Hamster/Odds of success increasing_(11).ogg"
+    ],
+    "Relief detected.ogg": [
+      "Hamster/Relief detected.ogg",
+      "Hamster/Relief detected_(2).ogg",
+      "Hamster/Relief detected_(3).ogg",
+      "Hamster/Relief detected_(4).ogg",
+      "Hamster/Relief detected_(5).ogg",
+      "Hamster/Relief detected_(6).ogg",
+      "Hamster/Relief detected_(7).ogg",
+      "Hamster/Relief detected_(8).ogg",
+      "Hamster/Relief detected_(9).ogg",
+      "Hamster/Relief detected_(10).ogg",
+      "Hamster/Relief detected_(11).ogg"
+    ],
+    "Rolled.ogg": [
+      "Hamster/Rolled.ogg",
+      "Hamster/Rolled_(2).ogg",
+      "Hamster/Rolled_(3).ogg",
+      "Hamster/Rolled_(4).ogg",
+      "Hamster/Rolled_(5).ogg",
+      "Hamster/Rolled_(6).ogg",
+      "Hamster/Rolled_(7).ogg",
+      "Hamster/Rolled_(8).ogg",
+      "Hamster/Rolled_(9).ogg",
+      "Hamster/Rolled_(10).ogg",
+      "Hamster/Rolled_(11).ogg"
+    ],
+    "Salutations.ogg": [
+      "Hamster/Salutations.ogg",
+      "Hamster/Salutations_(2).ogg",
+      "Hamster/Salutations_(3).ogg",
+      "Hamster/Salutations_(4).ogg"
+    ],
+    "Selection.ogg": [
+      "Hamster/Selection.ogg",
+      "Hamster/Selection_(2).ogg",
+      "Hamster/Selection_(3).ogg",
+      "Hamster/Selection_(4).ogg"
+    ],
+    "Self assessment, lonely rolling ball.ogg": [
+      "Hamster/Self assessment, lonely rolling ball.ogg",
+      "Hamster/Self assessment, lonely rolling ball_(2).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(3).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(4).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(5).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(6).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(7).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(8).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(9).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(10).ogg",
+      "Hamster/Self assessment, lonely rolling ball_(11).ogg"
+    ],
+    "Shut down.ogg": [
+      "Hamster/Shut down.ogg",
+      "Hamster/Shut down_(2).ogg",
+      "Hamster/Shut down_(3).ogg",
+      "Hamster/Shut down_(4).ogg",
+      "Hamster/Shut down_(5).ogg",
+      "Hamster/Shut down_(6).ogg",
+      "Hamster/Shut down_(7).ogg",
+      "Hamster/Shut down_(8).ogg",
+      "Hamster/Shut down_(9).ogg",
+      "Hamster/Shut down_(10).ogg",
+      "Hamster/Shut down_(11).ogg"
+    ],
+    "Thanks.ogg": [
+      "Hamster/Thanks.ogg",
+      "Hamster/Thanks_(2).ogg",
+      "Hamster/Thanks_(3).ogg",
+      "Hamster/Thanks_(4).ogg",
+      "Hamster/Thanks_(5).ogg"
+    ],
+    "The hamster is impressed.ogg": [
+      "Hamster/The hamster is impressed.ogg",
+      "Hamster/The hamster is impressed_(2).ogg",
+      "Hamster/The hamster is impressed_(3).ogg",
+      "Hamster/The hamster is impressed_(4).ogg",
+      "Hamster/The hamster is impressed_(5).ogg"
+    ],
+    "This is happening.ogg": [
+      "Hamster/This is happening.ogg",
+      "Hamster/This is happening_(2).ogg",
+      "Hamster/This is happening_(3).ogg",
+      "Hamster/This is happening_(4).ogg"
+    ],
+    "Too early for flapjacks.ogg": [
+      "Hamster/Too early for flapjacks.ogg",
+      "Hamster/Too early for flapjacks_(2).ogg",
+      "Hamster/Too early for flapjacks_(3).ogg",
+      "Hamster/Too early for flapjacks_(4).ogg",
+      "Hamster/Too early for flapjacks_(5).ogg",
+      "Hamster/Too early for flapjacks_(6).ogg",
+      "Hamster/Too early for flapjacks_(7).ogg",
+      "Hamster/Too early for flapjacks_(8).ogg",
+      "Hamster/Too early for flapjacks_(9).ogg",
+      "Hamster/Too early for flapjacks_(10).ogg",
+      "Hamster/Too early for flapjacks_(11).ogg"
+    ],
+    "Traditional hamster greeting.ogg": [
+      "Hamster/Traditional hamster greeting.ogg",
+      "Hamster/Traditional hamster greeting_(2).ogg",
+      "Hamster/Traditional hamster greeting_(3).ogg",
+      "Hamster/Traditional hamster greeting_(4).ogg"
+    ],
+    "Translation not found.ogg": [
+      "Hamster/Translation not found.ogg",
+      "Hamster/Translation not found_(2).ogg",
+      "Hamster/Translation not found_(3).ogg",
+      "Hamster/Translation not found_(4).ogg",
+      "Hamster/Translation not found_(5).ogg",
+      "Hamster/Translation not found_(6).ogg",
+      "Hamster/Translation not found_(7).ogg",
+      "Hamster/Translation not found_(8).ogg",
+      "Hamster/Translation not found_(9).ogg",
+      "Hamster/Translation not found_(10).ogg",
+      "Hamster/Translation not found_(11).ogg"
+    ],
+    "Trick or treat.ogg": [
+      "Hamster/Trick or treat.ogg",
+      "Hamster/Trick or treat_(2).ogg",
+      "Hamster/Trick or treat_(3).ogg",
+      "Hamster/Trick or treat_(4).ogg",
+      "Hamster/Trick or treat_(5).ogg",
+      "Hamster/Trick or treat_(6).ogg",
+      "Hamster/Trick or treat_(7).ogg",
+      "Hamster/Trick or treat_(8).ogg",
+      "Hamster/Trick or treat_(9).ogg",
+      "Hamster/Trick or treat_(10).ogg",
+      "Hamster/Trick or treat_(11).ogg"
+    ],
+    "Ultimate/Area denied.ogg": [
+      "Hamster/Ultimate/Area denied.ogg"
+    ],
+    "Ultimate/Minefield deployed.ogg": [
+      "Hamster/Ultimate/Minefield deployed.ogg"
+    ],
+    "Under the sea. Under my tyranny.ogg": [
+      "Hamster/Under the sea. Under my tyranny.ogg",
+      "Hamster/Under the sea. Under my tyranny_(2).ogg",
+      "Hamster/Under the sea. Under my tyranny_(3).ogg",
+      "Hamster/Under the sea. Under my tyranny_(4).ogg",
+      "Hamster/Under the sea. Under my tyranny_(5).ogg",
+      "Hamster/Under the sea. Under my tyranny_(6).ogg"
+    ],
+    "V-v-victory for the small mammal.ogg": [
+      "Hamster/V-v-victory for the small mammal.ogg",
+      "Hamster/V-v-victory for the small mammal_(2).ogg",
+      "Hamster/V-v-victory for the small mammal_(3).ogg",
+      "Hamster/V-v-victory for the small mammal_(4).ogg",
+      "Hamster/V-v-victory for the small mammal_(5).ogg",
+      "Hamster/V-v-victory for the small mammal_(6).ogg",
+      "Hamster/V-v-victory for the small mammal_(7).ogg",
+      "Hamster/V-v-victory for the small mammal_(8).ogg",
+      "Hamster/V-v-victory for the small mammal_(9).ogg",
+      "Hamster/V-v-victory for the small mammal_(10).ogg",
+      "Hamster/V-v-victory for the small mammal_(11).ogg"
+    ],
+    "Vocabulary not found. Translation impossible.ogg": [
+      "Hamster/Vocabulary not found. Translation impossible.ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(2).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(3).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(4).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(5).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(6).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(7).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(8).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(9).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(10).ogg",
+      "Hamster/Vocabulary not found. Translation impossible_(11).ogg"
+    ],
+    "Weapons operational. Grapple primed. Hamster pumped.ogg": [
+      "Hamster/Weapons operational. Grapple primed. Hamster pumped.ogg",
+      "Hamster/Weapons operational. Grapple primed. Hamster pumped_(2).ogg",
+      "Hamster/Weapons operational. Grapple primed. Hamster pumped_(3).ogg",
+      "Hamster/Weapons operational. Grapple primed. Hamster pumped_(4).ogg"
+    ],
+    "Well done.ogg": [
+      "Hamster/Well done.ogg",
+      "Hamster/Well done_(2).ogg",
+      "Hamster/Well done_(3).ogg",
+      "Hamster/Well done_(4).ogg",
+      "Hamster/Well done_(5).ogg"
+    ],
+    "What he said.ogg": [
+      "Hamster/What he said.ogg",
+      "Hamster/What he said_(2).ogg",
+      "Hamster/What he said_(3).ogg",
+      "Hamster/What he said_(4).ogg",
+      "Hamster/What he said_(5).ogg",
+      "Hamster/What he said_(6).ogg",
+      "Hamster/What he said_(7).ogg",
+      "Hamster/What he said_(8).ogg",
+      "Hamster/What he said_(9).ogg",
+      "Hamster/What he said_(10).ogg",
+      "Hamster/What he said_(11).ogg"
+    ],
+    "Your ferocity is appreciated.ogg": [
+      "Hamster/Your ferocity is appreciated.ogg",
+      "Hamster/Your ferocity is appreciated_(2).ogg",
+      "Hamster/Your ferocity is appreciated_(3).ogg",
+      "Hamster/Your ferocity is appreciated_(4).ogg",
+      "Hamster/Your ferocity is appreciated_(5).ogg"
+    ]
+  }
+}

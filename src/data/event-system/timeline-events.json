@@ -12897,7 +12897,7 @@
       ]
     },
     {
-      "name": "Left Behind",
+      "name": "Cycle of Violence",
       "locationType": "earth",
       "cityDisplayName": "Monte Cristi, Dominican Republic",
       "description": "Baptiste's time in Talon was awkward and short-lived. He made a few friends, sympathizing with Sombra on a couple of missions and getting really close to Mauga of all people, but with every mission that passed they began to turn more gruesome. While the first missions were mainly rescues and interventions, framed as if they were ending the reign of local criminals, soon enough things escalated into full-on violent coups, turf wars where Talon was seeking to takeover once they were done. Recent missions in Singapore and Makati led to many civilian casualties, and while Captain Cuerva said the operations are on level, deep down he knew that wasn't true. The turning point for Baptiste was during a mission while Overwatch was still active, when he saw a strike team deployed to tend to the wounded soon after they left. It made Baptiste realize Talon's goal was not to end the conflict, but instead seeding chaos and profiting from it.\n\nBaptiste pondered leaving many times, but he knew that wasn't a true option. As Mauga put it, they were in too deep, and when he tried to leave he would be chased until he was killed. Things would take a turn in Monte Cristi, where the team was deployed to eliminate the leader of a local Playa cartel, Daniel Fernandez. When they breached the crime lord's safehouse, he was nowhere to be found, so Cuerva ordered them to tear the entire town down until they found him. In the middle of the fire, Baptiste came across a small girl, scared to death as he was destroying her home, now a soldier no better than the Warbots that burnt down his own town back in the Crisis. In horror at what he had become. Baptiste lowered his rifle and fled the scene, finding a fishing boat at the dock. Before he left, he was confronted by Mauga, who had been ordered to find and retrieve him. As Mauga stared at Baptiste, knowing his friend would not come back peacefully, he communicated to Cuerva that he could not find Baptiste. Mauga allowed Baptiste to go, simply saying, \"call me when you're ready to come home.\" While Baptiste was thankful for his understanding, he knew sooner than later, Talon would come after him again, and he needed to be ready.",
@@ -20673,7 +20673,7 @@
       ]
     },
     {
-      "name": "Flying Junkers",
+      "name": "Expanding Operations",
       "description": "No description available.",
       "locationType": "earth",
       "lat": -25,
@@ -20691,7 +20691,16 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Left Behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
+          ]
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -20955,6 +20964,54 @@
         {
           "text": "Tough Call",
           "url": "https://www.youtube.com/watch?v=i2zohQuNcbo"
+        }
+      ]
+    },
+    {
+      "name": "Left Behind",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Left Behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Castaway",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 28.9999625,
+      "lon": 125.0000442,
+      "image": "",
+      "cityDisplayName": "East China Sea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Left Behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
+          ]
         }
       ]
     }

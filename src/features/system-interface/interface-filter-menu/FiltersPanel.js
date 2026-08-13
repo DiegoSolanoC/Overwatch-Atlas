@@ -469,6 +469,7 @@ class FilterService {
     );
 
     this.updateButtonStates();
+    this.updateFilterCounts();
     this.filtersPanel.classList.add("open");
     this.filtersButton?.classList.add("active");
   }

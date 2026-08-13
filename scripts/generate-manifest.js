@@ -228,6 +228,7 @@ function getHeroPhrasesFromFolder(folderPath) {
                         continue;
                     }
                     // Ultimate voicelines live in Phrases/<hero>/Ultimate/ (weighted 2× in gallery).
+                    // Hamster/ holds Wrecking Ball prefix takes — not part of the random pool.
                     if (st.isDirectory() && name === 'Ultimate') {
                         let ultFiles = [];
                         try {

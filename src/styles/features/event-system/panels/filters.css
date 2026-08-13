@@ -169,13 +169,13 @@ body.color-palette-gray .filters-panel-close:hover {
     line-height: 1.2;
 }
 
-/* Toolbar: category tiles + Clear/Confirm in one row under the title */
+/* Toolbar: [tabs | centered search | Clear/Confirm] — equal grow space on both sides of search */
 .filters-toolbar {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    column-gap: 12px;
+    row-gap: 12px;
     width: 100%;
 }
 
@@ -183,8 +183,9 @@ body.color-palette-gray .filters-panel-close:hover {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1 1 260px;
-    min-width: 220px;
+    justify-self: center;
+    width: min(100%, 360px);
+    min-width: 0;
 }
 
 .filters-search-label {
@@ -227,8 +228,9 @@ body.color-palette-gray .filters-panel-close:hover {
     flex-direction: row;
     align-items: center;
     gap: 12px;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-width: 0;
+    justify-self: start;
 }
 
 .filter-count,
@@ -998,7 +1000,31 @@ body.color-palette-gray .filters-actions {
     gap: 15px;
     align-items: center;
     justify-content: flex-end;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
+    justify-self: end;
+}
+
+/* Narrow panel: stack toolbar rows instead of crushing the search field */
+@media (max-width: 1100px) {
+    .filters-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-tabs,
+    .filters-search-wrap,
+    .filters-actions-buttons {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .filters-search-wrap {
+        width: 100%;
+        max-width: none;
+    }
+
+    .filters-actions-buttons {
+        justify-content: flex-start;
+    }
 }
 
 .filters-action-btn {
@@ -1038,6 +1064,13 @@ body.color-palette-gray .filters-actions {
     letter-spacing: 0.8px;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/* Match-count under Confirm — same green badge language as category tabs */
+.filters-confirm-btn .filter-count {
+    display: none;
+    margin: 0;
+    line-height: 1.2;
 }
 
 .filters-action-btn:hover {
