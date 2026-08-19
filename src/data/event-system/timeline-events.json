@@ -14565,6 +14565,11 @@
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
+          "locationName": "Ecoopint Antartica",
+          "country": "Antarctica",
+          "reasoning": ""
+        },
+        {
           "locationName": "Ecopoint: Antartica",
           "country": "Antarctica,",
           "reasoning": "Mei wakes up from Cryo sleep and intercepts Winstons's Recall"
@@ -20975,7 +20980,7 @@
       ]
     },
     {
-      "name": "Invention",
+      "name": "The Luft Akan",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 57.7072326,
