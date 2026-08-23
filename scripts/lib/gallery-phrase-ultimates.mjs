@@ -11,6 +11,7 @@ export const GALLERY_ULTIMATE_BY_HERO = {
     Brigitte: 'Rally',
     Cassidy: 'Deadeye',
     'D.va': 'Self-Destruct',
+    'D.mon': 'Limit Break',
     Domina: 'Panopticon',
     Doomfist: 'Meteor Strike',
     Echo: 'Duplication',

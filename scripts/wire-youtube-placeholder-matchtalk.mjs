@@ -40,6 +40,7 @@ const DEFAULT_EXTRACT_ROOT = path.join(
 const TARGET_ERAS = new Set([
     'Midseason 3 (YouTube placeholder)',
     'Season 3 launch (YouTube placeholder)',
+    'Season 4 (YouTube placeholder)',
 ]);
 
 /** @type {Record<string, string>} */
@@ -48,6 +49,7 @@ const HERO_FOLDER_BY_LINE = {
     soldier76: 'Soldier_ 76',
     'soldier:76': 'Soldier_ 76',
     dva: 'D.Va',
+    dmon: 'D.Mon',
     wreckingball: 'Wrecking Ball',
     junkerqueen: 'Junker Queen',
     jetpackcat: 'Jetpack Cat',

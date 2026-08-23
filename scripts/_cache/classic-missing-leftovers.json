@@ -1,0 +1,790 @@
+{
+  "wiredFromYt": 17,
+  "leftovers": [
+    {
+      "name": "31",
+      "hero": "Cassidy",
+      "sub": "Ashe, how about we let bygones be bygones?"
+    },
+    {
+      "name": "32",
+      "hero": "Cassidy",
+      "sub": "You always were the ambitious one, Ashe."
+    },
+    {
+      "name": "33",
+      "hero": "Cassidy",
+      "sub": "Well, I know how much you missed me. Still have a picture of me at the"
+    },
+    {
+      "name": "33",
+      "hero": "Ashe",
+      "sub": "On the dartboard."
+    },
+    {
+      "name": "34",
+      "hero": "Cassidy",
+      "sub": "Real nice bike you've got, Ashe."
+    },
+    {
+      "name": "36",
+      "hero": "Cassidy",
+      "sub": "And how's B.O.B?"
+    },
+    {
+      "name": "38",
+      "hero": "Torbjörn",
+      "sub": "Watch it, cow lass!"
+    },
+    {
+      "name": "43",
+      "hero": "Baptiste",
+      "sub": "Healing and hurting... Huh, I guess we're not that different."
+    },
+    {
+      "name": "44",
+      "hero": "Baptiste",
+      "sub": "The medical and dental benefits were very good. The co-workers? Not so"
+    },
+    {
+      "name": "45",
+      "hero": "Baptiste",
+      "sub": "Has anyone told you that you're kind of a creep?"
+    },
+    {
+      "name": "47",
+      "hero": "Sombra",
+      "sub": "Aww... you know I can't share my secrets."
+    },
+    {
+      "name": "53",
+      "hero": "Lúcio",
+      "sub": "Hey Bastion, check this out! *[makes Bastion-like beeps]*"
+    },
+    {
+      "name": "58",
+      "hero": "Torbjörn",
+      "sub": "Bastion, I bet you haven't had a systems check in years. Who knows wha"
+    },
+    {
+      "name": "65",
+      "hero": "Brigitte",
+      "sub": "It will take some time for me to get familiar with the design, but if "
+    },
+    {
+      "name": "68",
+      "hero": "Pharah",
+      "sub": "(sighs) I think I went a little overboard on the weights yesterday."
+    },
+    {
+      "name": "68",
+      "hero": "Brigitte",
+      "sub": "Pace yourself! That's what I always told Reinhardt. Not that he ever l"
+    },
+    {
+      "name": "80",
+      "hero": "Torbjörn",
+      "sub": "Isn't it enough to be an engineer, Brigitte?"
+    },
+    {
+      "name": "84",
+      "hero": "Cassidy",
+      "sub": "My clothes!? Have you seen some of the things Talon wears?"
+    },
+    {
+      "name": "91",
+      "hero": "Junkrat",
+      "sub": "Maybe we could, erm, work something out, mate? *nervous laugh*"
+    },
+    {
+      "name": "92",
+      "hero": "Mei",
+      "sub": "Hey, McCree, do you know what time it is?"
+    },
+    {
+      "name": "94",
+      "hero": "Moira",
+      "sub": "Why am I not surprised to learn that you grew up in a place like this,"
+    },
+    {
+      "name": "94",
+      "hero": "Cassidy",
+      "sub": "I'm from Texas."
+    },
+    {
+      "name": "97",
+      "hero": "Cassidy",
+      "sub": "Hey, come on now!"
+    },
+    {
+      "name": "107",
+      "hero": "Cassidy",
+      "sub": "Almost like *someone* woke ‘em up... Why’d you kill Antonio? He make y"
+    },
+    {
+      "name": "107",
+      "hero": "Cassidy",
+      "sub": "Oh, like gettin’ the four of us *killed*?"
+    },
+    {
+      "name": "108",
+      "hero": "Cassidy",
+      "sub": "I thought we were great, Commander. Snatch 'n' grab, that’s it."
+    },
+    {
+      "name": "108",
+      "hero": "Reyes",
+      "sub": "Antonio was right. There was nothing we could do to him. Now, he’s not"
+    },
+    {
+      "name": "109",
+      "hero": "Reyes",
+      "sub": "There’s that famous Cassidy attitude."
+    },
+    {
+      "name": "109",
+      "hero": "Cassidy",
+      "sub": "I’ll try to *adjust* it for ya' boss. Wouldn’t wanna... cause any *pro"
+    },
+    {
+      "name": "111",
+      "hero": "Cassidy",
+      "sub": "If you want something done right... Good thing we’re not in any hurry."
+    },
+    {
+      "name": "112",
+      "hero": "Reyes",
+      "sub": "We get outta this room, then head through the city to the extraction p"
+    },
+    {
+      "name": "113",
+      "hero": "Cassidy",
+      "sub": "You know you can’t shoot ‘im."
+    },
+    {
+      "name": "114",
+      "hero": "Reyes",
+      "sub": "Hear that? The ninja agrees with my decision."
+    },
+    {
+      "name": "115",
+      "hero": "Cassidy",
+      "sub": "Well, the lady was bein’ rude! She had it comin’!"
+    },
+    {
+      "name": "117",
+      "hero": "Cassidy",
+      "sub": "[laughs sarcastically] Couldn’t be better."
+    },
+    {
+      "name": "117",
+      "hero": "Moira",
+      "sub": "Just *grand*, here."
+    },
+    {
+      "name": "118",
+      "hero": "Reyes",
+      "sub": "There’s the one who’ll probably take over for him. Viali. Don’t know t"
+    },
+    {
+      "name": "119",
+      "hero": "Reyes",
+      "sub": "Everyone, through the breach. We’re gettin’ outta here."
+    },
+    {
+      "name": "120",
+      "hero": "Reyes",
+      "sub": "It wasn’t how I drew it up. I still think we should’ve gone with the o"
+    },
+    {
+      "name": "120",
+      "hero": "Reyes",
+      "sub": "Not well."
+    },
+    {
+      "name": "120",
+      "hero": "Cassidy",
+      "sub": "[scoffs] Details."
+    },
+    {
+      "name": "121",
+      "hero": "Reyes",
+      "sub": "Yeah, they really rolled out the red carpet."
+    },
+    {
+      "name": "123",
+      "hero": "Reyes",
+      "sub": "Feels like Talon is mobilizing an entire army to stop us!"
+    },
+    {
+      "name": "124",
+      "hero": "Moira",
+      "sub": "[scoffs] Ironic."
+    },
+    {
+      "name": "129",
+      "hero": "Cassidy",
+      "sub": "No offense, Genji, but I think I’m gonna keep everything just the way "
+    },
+    {
+      "name": "130",
+      "hero": "Reyes",
+      "sub": "It should be smooth sailing from here."
+    },
+    {
+      "name": "130",
+      "hero": "Cassidy",
+      "sub": "Aw, ya *had* to say it, didn’t ya?"
+    },
+    {
+      "name": "130",
+      "hero": "Reyes",
+      "sub": "I withdraw my previous comment. We’re *definitely* not out of the wood"
+    },
+    {
+      "name": "131",
+      "hero": "Blackwatch Pilot",
+      "sub": "I’ve got some company on the way in. I’m gonna try to shake ‘em but it"
+    },
+    {
+      "name": "133",
+      "hero": "Reyes",
+      "sub": "Enough art. Let’s get outta here."
+    },
+    {
+      "name": "134",
+      "hero": "Cassidy",
+      "sub": "Yeah, party of four. The name’s Cassidy."
+    },
+    {
+      "name": "135",
+      "hero": "Blackwatch Pilot",
+      "sub": "I’m just entering Venice airspace. It shouldn’t be much longer."
+    },
+    {
+      "name": "135",
+      "hero": "Cassidy",
+      "sub": "Woah, don’t listen to him! We’re gettin’ outta here."
+    },
+    {
+      "name": "137",
+      "hero": "Cassidy",
+      "sub": "Is this who we’ve become, Gabriel?"
+    },
+    {
+      "name": "138",
+      "hero": "Moira",
+      "sub": "Cassidy... we need to talk about your Italian accent."
+    },
+    {
+      "name": "138",
+      "hero": "Cassidy",
+      "sub": "I watched a lotta old spaghetti westerns. I thought it was pretty good"
+    },
+    {
+      "name": "139",
+      "hero": "Reyes",
+      "sub": "What’s keeping our ride? We can’t wait forever!"
+    },
+    {
+      "name": "139",
+      "hero": "Cassidy",
+      "sub": "Something tells me the army of bad guys convergin’ on our position isn"
+    },
+    {
+      "name": "139",
+      "hero": "Moira",
+      "sub": "Cassidy’s instincts are, as ever, unimpeachable."
+    },
+    {
+      "name": "140",
+      "hero": "Blackwatch Pilot",
+      "sub": "Commander, I have visual on your position. I’m coming in for a landing"
+    },
+    {
+      "name": "141",
+      "hero": "Cassidy",
+      "sub": "What's your Halloween costume gonna be this year, Pharah?"
+    },
+    {
+      "name": "141",
+      "hero": "Pharah",
+      "sub": "Cold."
+    },
+    {
+      "name": "155",
+      "hero": "Genji",
+      "sub": "Yeah! ...wait, used to? Hey! Where did they all go?"
+    },
+    {
+      "name": "166",
+      "hero": "Sombra",
+      "sub": "Isn't it a little embarassing to get beaten up by a monkey?"
+    },
+    {
+      "name": "169",
+      "hero": "Torbjörn",
+      "sub": "And I think a hammer upside the face would suit you!"
+    },
+    {
+      "name": "176",
+      "hero": "Brigitte",
+      "sub": "Genji, how come you hide your face?"
+    },
+    {
+      "name": "176",
+      "hero": "Genji",
+      "sub": "Because I do not [want] people to fear me... or pity me."
+    },
+    {
+      "name": "177",
+      "hero": "Genji",
+      "sub": "(on Route 66) Why have you come back to this place, Cassidy?"
+    },
+    {
+      "name": "200",
+      "hero": "Genji",
+      "sub": "He's still not ready for time to flow forwards again."
+    },
+    {
+      "name": "201",
+      "hero": "Genji",
+      "sub": "Any chocolate today, brother?"
+    },
+    {
+      "name": "201",
+      "hero": "Hanzo",
+      "sub": "Those are *your* amusement, not mine."
+    },
+    {
+      "name": "215",
+      "hero": "Hanzo",
+      "sub": "Perhaps there's still a future for anachronisms."
+    },
+    {
+      "name": "230",
+      "hero": "Junkrat",
+      "sub": "Brrr. I get cold just looking at ya."
+    },
+    {
+      "name": "235",
+      "hero": "Reaper",
+      "sub": "What did you find in there, rat?"
+    },
+    {
+      "name": "235",
+      "hero": "Junkrat",
+      "sub": "No idea what ya' sayin' mate."
+    },
+    {
+      "name": "238",
+      "hero": "Roadhog",
+      "sub": "Hey. Stay out of trouble."
+    },
+    {
+      "name": "246",
+      "hero": "Winston",
+      "sub": "Hey..."
+    },
+    {
+      "name": "253",
+      "hero": "Lúcio",
+      "sub": "Hey, Bastion, check this out! *[imitates beeping]*"
+    },
+    {
+      "name": "255",
+      "hero": "Mercy",
+      "sub": "Lúcio, I never realized your father invented Vishkar's sonic technolog"
+    },
+    {
+      "name": "256",
+      "hero": "Lúcio",
+      "sub": "Orisa, you are amazing! Could you ask Efi if she could help me out wit"
+    },
+    {
+      "name": "265",
+      "hero": "Lúcio",
+      "sub": "Stole? Psh! You need to go ask your bosses where it all came from; the"
+    },
+    {
+      "name": "267",
+      "hero": "Lúcio",
+      "sub": "Can't keep up?"
+    },
+    {
+      "name": "268",
+      "hero": "Lúcio",
+      "sub": "Oh, you're on."
+    },
+    {
+      "name": "269",
+      "hero": "Lúcio",
+      "sub": "Hey, Tracer, you and Emily wanna hit the slopes some time?"
+    },
+    {
+      "name": "270",
+      "hero": "Winston",
+      "sub": "Uhm, okay, I guess. We got this big mission coming up-- Oh, I get it."
+    },
+    {
+      "name": "273",
+      "hero": "Mei",
+      "sub": "Hey, Cassidy, do you know what time it is?"
+    },
+    {
+      "name": "274",
+      "hero": "Junkrat",
+      "sub": "That's cold. OR"
+    },
+    {
+      "name": "280",
+      "hero": "Mei",
+      "sub": "Tracer, you're so amazing! You inspire me."
+    },
+    {
+      "name": "282",
+      "hero": "Tracer",
+      "sub": "Mei, you were such an inspiration to me!"
+    },
+    {
+      "name": "282",
+      "hero": "Mei",
+      "sub": "You inspired me too!"
+    },
+    {
+      "name": "283",
+      "hero": "Winston",
+      "sub": "Oh, uhm, thanks. I like yours, too."
+    },
+    {
+      "name": "284",
+      "hero": "Mei",
+      "sub": "*giggles* We should compare notes some time."
+    },
+    {
+      "name": "296",
+      "hero": "Mercy",
+      "sub": "Pharah, your mother always hoped you'd follow in her footsteps."
+    },
+    {
+      "name": "302",
+      "hero": "Torbjörn",
+      "sub": "Angela, you should know that no one could stop Brigitte from doing som"
+    },
+    {
+      "name": "307",
+      "hero": "Moira",
+      "sub": "Why am I not surprised to learn that you grew up in a place like this,"
+    },
+    {
+      "name": "307",
+      "hero": "Cassidy",
+      "sub": "I'm from Texas."
+    },
+    {
+      "name": "315",
+      "hero": "Tracer",
+      "sub": "While I'm truly touched by your offer - **nervous laughter** - I think"
+    },
+    {
+      "name": "320",
+      "hero": "Cassidy",
+      "sub": "Hey, come on now!"
+    },
+    {
+      "name": "323",
+      "hero": "Mei",
+      "sub": "Orisa, you are adorable!"
+    },
+    {
+      "name": "327",
+      "hero": "Orisa",
+      "sub": "Torbjörn Lindholm, you are responsible, in part, for my creation."
+    },
+    {
+      "name": "339",
+      "hero": "Baptiste",
+      "sub": "Ach."
+    },
+    {
+      "name": "339",
+      "hero": "Pharah",
+      "sub": "Ach who?"
+    },
+    {
+      "name": "340",
+      "hero": "Pharah",
+      "sub": "Cassidy, where did you learn to shoot like that? Was it Jack, Gabriel?"
+    },
+    {
+      "name": "341",
+      "hero": "Pharah",
+      "sub": "You saying I cannot aim? **laughs** I can aim."
+    },
+    {
+      "name": "342",
+      "hero": "Lúcio",
+      "sub": "All right. Let's hear some of that fighting spirit!"
+    },
+    {
+      "name": "342",
+      "hero": "Pharah",
+      "sub": "Rawrrr!"
+    },
+    {
+      "name": "342",
+      "hero": "Lúcio",
+      "sub": "That's *exactly* what I'm talking about! Woo!"
+    },
+    {
+      "name": "343",
+      "hero": "Reinhardt",
+      "sub": "Last year? Heh, I'll show you! I'll catch *twice* as many as you this "
+    },
+    {
+      "name": "344",
+      "hero": "Reinhardt",
+      "sub": "That'll be the day..."
+    },
+    {
+      "name": "345",
+      "hero": "Pharah",
+      "sub": "My unit would've eaten you alive."
+    },
+    {
+      "name": "346",
+      "hero": "Soldier 76",
+      "sub": "Your mother would've been proud of you."
+    },
+    {
+      "name": "347",
+      "hero": "Soldier 76",
+      "sub": "Can't believe Ana Amari's kit took up with mercenaries like Helix."
+    },
+    {
+      "name": "350",
+      "hero": "Torbjörn",
+      "sub": "**clears throat** Jump jets, concussion rockets. Umm... Well, yes it's"
+    },
+    {
+      "name": "355",
+      "hero": "Winston",
+      "sub": "Pharah. Your mother was a hero to me. To all of us."
+    },
+    {
+      "name": "356",
+      "hero": "Pharah",
+      "sub": "Tired."
+    },
+    {
+      "name": "358",
+      "hero": "Pharah",
+      "sub": "Clearly."
+    },
+    {
+      "name": "359",
+      "hero": "Winston",
+      "sub": "Aww... **gasps** Wait... I get it!"
+    },
+    {
+      "name": "362",
+      "hero": "Baptiste",
+      "sub": "Has everyone told you that you're kind of a creep?"
+    },
+    {
+      "name": "363",
+      "hero": "D.va",
+      "sub": "That's funny, haha! Soldier: 76 said the same thing."
+    },
+    {
+      "name": "364",
+      "hero": "Junkrat",
+      "sub": "You look like a guy who needs someone blown up."
+    },
+    {
+      "name": "365",
+      "hero": "Reaper",
+      "sub": "What did you find in there, rat?"
+    },
+    {
+      "name": "365",
+      "hero": "Junkrat",
+      "sub": "No idea what you're sayin', mate."
+    },
+    {
+      "name": "367",
+      "hero": "Roadhog",
+      "sub": "Haha, yeah."
+    },
+    {
+      "name": "369",
+      "hero": "Soldier 76",
+      "sub": "One of these days someone is gonna to put an end to you."
+    },
+    {
+      "name": "371",
+      "hero": "Sombra",
+      "sub": "What are we doing today, Gabe? You don't mind if I call you 'Gabe,' do"
+    },
+    {
+      "name": "375",
+      "hero": "Widowmaker",
+      "sub": "I don't understand how you can trust Sombra."
+    },
+    {
+      "name": "375",
+      "hero": "Reaper",
+      "sub": "I don't. But Sombra has her uses, and I know what she's been up to."
+    },
+    {
+      "name": "392",
+      "hero": "Reinhardt",
+      "sub": "You know, Torbjörn, you would make an *excellent* Santa Claus! Ho, ho,"
+    },
+    {
+      "name": "392",
+      "hero": "Torbjörn",
+      "sub": "Maybe this year you can be the elf. I think Ingrid's been working on s"
+    },
+    {
+      "name": "404",
+      "hero": "Sombra",
+      "sub": "You would make a great bartender Bastion."
+    },
+    {
+      "name": "406",
+      "hero": "D.va",
+      "sub": "Hey Sombra, I hear you are a master of unlocking."
+    },
+    {
+      "name": "409",
+      "hero": "Sombra",
+      "sub": "I wonder what's locked up inside that brain of yours..."
+    },
+    {
+      "name": "417",
+      "hero": "Zarya",
+      "sub": "She's a hero to all Russians. I do not care what you have to say."
+    },
+    {
+      "name": "420",
+      "hero": "Symmetra",
+      "sub": "What you call freedom, I call anarchy."
+    },
+    {
+      "name": "421",
+      "hero": "Lúcio",
+      "sub": "Pfft. You believe that? I don't even know what to tell you."
+    },
+    {
+      "name": "422",
+      "hero": "Lúcio",
+      "sub": "Vishkar's using you! Just like they used my father. Yeah, you just wai"
+    },
+    {
+      "name": "425",
+      "hero": "Torbjörn",
+      "sub": "Hehe, there's something on your dress."
+    },
+    {
+      "name": "428",
+      "hero": "Symmetra",
+      "sub": "What can you know of life?"
+    },
+    {
+      "name": "428",
+      "hero": "Zenyatta",
+      "sub": "Only that which I have observed, experienced and processed. All is one"
+    },
+    {
+      "name": "429",
+      "hero": "Torbjörn",
+      "sub": "Cassidy, what happened to your arm?"
+    },
+    {
+      "name": "431",
+      "hero": "D.va",
+      "sub": "Well, if you wanna give me some upgrades, I'm all ears!"
+    },
+    {
+      "name": "432",
+      "hero": "Torbjörn",
+      "sub": "I was wondering...If I could have a look at your little robot?"
+    },
+    {
+      "name": "432",
+      "hero": "Mei",
+      "sub": "I guess, just keep that hammer to yourself."
+    },
+    {
+      "name": "433",
+      "hero": "Torbjörn",
+      "sub": "Yeah, well, try to keep it in one piece this time."
+    },
+    {
+      "name": "438",
+      "hero": "Zenyatta",
+      "sub": "I hear that you have taken in an omnic, Torbjörn."
+    },
+    {
+      "name": "443",
+      "hero": "Tracer",
+      "sub": "What'cha lookin' at?"
+    },
+    {
+      "name": "454",
+      "hero": "Widowmaker",
+      "sub": "It would be a shame if something happened to you on our next mission. "
+    },
+    {
+      "name": "455",
+      "hero": "Widowmaker",
+      "sub": "Tiens, tiens*. [Well, well.]* It looks like we will be working togethe"
+    },
+    {
+      "name": "456",
+      "hero": "Mei",
+      "sub": "*giggles* We should compare notes some time."
+    },
+    {
+      "name": "457",
+      "hero": "Mercy",
+      "sub": "Winston, are you experiencing any problems with your genetic therapy?"
+    },
+    {
+      "name": "457",
+      "hero": "Winston",
+      "sub": "Aside from a crippling addiction to peanut butter?"
+    },
+    {
+      "name": "459",
+      "hero": "Tracer",
+      "sub": "I think-- **mimics radio static** Hahaha! Just kidding, Winston! It wo"
+    },
+    {
+      "name": "460",
+      "hero": "Tracer",
+      "sub": "Oh, Winston! **giggles** Got your favorite!"
+    },
+    {
+      "name": "461",
+      "hero": "Winston",
+      "sub": "Hammond?"
+    },
+    {
+      "name": "462",
+      "hero": "Winston",
+      "sub": "What?! Well that explains the drag when I lifted off! I was sure that "
+    },
+    {
+      "name": "469",
+      "hero": "Zarya",
+      "sub": "I have my eye on you, omnic."
+    },
+    {
+      "name": "470",
+      "hero": "Zarya",
+      "sub": "Russia has no need for Overwatch assistance."
+    }
+  ]
+}

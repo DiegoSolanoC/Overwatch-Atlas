@@ -8,6 +8,7 @@ const MANIFEST_PATH = path.join(__dirname, '../../src/data/platform/manifest.jso
 /** Manifest id → Fandom wiki page title (before `/Quotes`). */
 export const WIKI_TITLE_OVERRIDES = {
     'D.va': 'D.Va',
+    'D.mon': 'D.Mon',
     'Soldier 76': 'Soldier: 76',
 };
 

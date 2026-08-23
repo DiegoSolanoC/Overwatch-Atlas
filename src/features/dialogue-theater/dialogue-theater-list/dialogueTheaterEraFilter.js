@@ -189,6 +189,7 @@ export const DIALOGUE_THEATER_WORKING_TAG_OPTIONS = Object.freeze([]);
 export const DIALOGUE_THEATER_RETIRED_WORKING_TAGS = Object.freeze([
     'Midseason 3 (YouTube placeholder)',
     'Season 3 launch (YouTube placeholder)',
+    'Season 4 (YouTube placeholder)',
 ]);
 
 /**

@@ -43,7 +43,14 @@ export function clearHeroPhrasesCache() {
  */
 export function getPhrasesForHero(map, heroFilterKey) {
     const key = String(heroFilterKey || '').trim();
-    const list = key && map[key];
+    if (!key || !map || typeof map !== 'object') return [];
+
+    let list = map[key];
+    if (!Array.isArray(list)) {
+        const keyLower = key.toLowerCase();
+        const matched = Object.keys(map).find((k) => k.toLowerCase() === keyLower);
+        list = matched ? map[matched] : null;
+    }
     if (!Array.isArray(list)) return [];
     return list.filter((f) => String(f || '').trim());
 }

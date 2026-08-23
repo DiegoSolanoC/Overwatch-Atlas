@@ -400,7 +400,7 @@ class DialogueTheaterDataService {
         this.loadDeletedConversationIds();
 
         let fileRows = null;
-        /** @type {{ nameResetAt?: string, tagsResetAt?: string, purgedConversationIds?: string[] }} */
+        /** @type {{ nameResetAt?: string, tagsResetAt?: string, purgedConversationIds?: string[], purgedConversationNames?: string[], purgedLineCores?: string[] }} */
         let fileMeta = {};
         try {
             const data = await fetchJsonWithTimeout(FILE_URL);
@@ -424,6 +424,46 @@ class DialogueTheaterDataService {
             this.deletedConversationIds.add(id);
         }
 
+        const purgedNames = new Set(
+            (Array.isArray(fileMeta.purgedConversationNames) ? fileMeta.purgedConversationNames : [])
+                .map((name) => String(name || '').trim())
+                .filter(Boolean),
+        );
+        const purgedLineCores = new Set(
+            (Array.isArray(fileMeta.purgedLineCores) ? fileMeta.purgedLineCores : [])
+                .map((core) => String(core || '').trim().toLowerCase())
+                .filter(Boolean),
+        );
+
+        /**
+         * Drop local-only drafts that scripts moved out of Dialogues (into chatter).
+         * @param {import('./DialogueTheaterDataService.js').DialogueConversation} row
+         */
+        const isPurgedLocalDraft = (row) => {
+            if (!row) return true;
+            if (purgedIds.has(row.id)) return true;
+            const name = String(row.name || '').trim();
+            if (name && purgedNames.has(name)) return true;
+            if (purgedLineCores.size === 0) return false;
+            // Solo dialogue whose every line matches a purged core (moved to chatter).
+            if (row.entryType === 'chatter') return false;
+            const lines = Array.isArray(row.lines) ? row.lines : [];
+            if (lines.length === 0) return false;
+            const heroes = new Set(lines.map((l) => String(l?.hero || '').trim()).filter(Boolean));
+            if (heroes.size !== 1) return false;
+            return lines.every((line) => {
+                const core = String(line?.subtitles || '')
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/\p{M}/gu, '')
+                    .replace(/\*+/g, ' ')
+                    .replace(/\([^)]*\)/g, ' ')
+                    .replace(/[''`´']/g, '')
+                    .replace(/[^a-z0-9]+/g, '');
+                return core && purgedLineCores.has(core);
+            });
+        };
+
         const fileResetAt = String(fileMeta.nameResetAt || '').trim();
         const seenResetAt = localStorage.getItem(DIALOGUE_THEATER_NAME_RESET_KEY) || '';
         const applyFileNames = Boolean(fileResetAt && fileResetAt !== seenResetAt);
@@ -440,7 +480,7 @@ class DialogueTheaterDataService {
                 const parsed = JSON.parse(saved);
                 if (Array.isArray(parsed)) {
                     localNormalized = this.normalizeConversations(parsed).filter(
-                        (row) => !purgedIds.has(row.id),
+                        (row) => !isPurgedLocalDraft(row),
                     );
                 }
             }
@@ -470,15 +510,19 @@ class DialogueTheaterDataService {
         } else if (localNormalized.length === 0 || preferShippedFile) {
             const fileIds = new Set(fileNormalized.map((row) => row.id));
             const localOnlyDrafts = preferShippedFile
-                ? localNormalized.filter((row) => !fileIds.has(row.id))
+                ? localNormalized.filter((row) => !fileIds.has(row.id) && !isPurgedLocalDraft(row))
                 : [];
             this.conversations = [...fileNormalized, ...localOnlyDrafts];
         } else {
             /** Bundled file wins on id unless local has saved route data; keep local-only drafts. */
-            this.conversations = this.mergeConversationRows(fileNormalized, localNormalized, {
-                applyFileNames,
-                applyFileTags,
-            });
+            this.conversations = this.mergeConversationRows(
+                fileNormalized,
+                localNormalized.filter((row) => !isPurgedLocalDraft(row)),
+                {
+                    applyFileNames,
+                    applyFileTags,
+                },
+            );
         }
 
         const manifestHeroes = await loadDialogueTheaterHeroes();

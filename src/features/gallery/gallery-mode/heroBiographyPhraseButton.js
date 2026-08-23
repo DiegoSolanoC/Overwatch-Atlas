@@ -86,9 +86,6 @@ export function initHeroBiographyPhraseButton(controlsRow) {
             if (started && phraseBtn && window.flashButton) {
                 window.flashButton(phraseBtn, 'flash-green');
             }
-            if (started) {
-                window.SoundEffectsManager?.play?.('filterButton');
-            }
 
             const pollEnd = () => {
                 if (isHeroBiographyPhrasePlaying()) {

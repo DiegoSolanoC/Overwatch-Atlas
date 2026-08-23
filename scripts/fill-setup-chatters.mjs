@@ -58,6 +58,7 @@ const WIKI_FILE_TO_HERO = {
     Brigitte: 'Brigitte',
     Cassidy: 'Cassidy',
     'D.Va': 'D.va',
+    'D.Mon': 'D.mon',
     Domina: 'Domina',
     Doomfist: 'Doomfist',
     Echo: 'Echo',
@@ -107,7 +108,7 @@ const WIKI_FILE_TO_HERO = {
 /** Atlas hero → MatchTalk extract folder */
 const HERO_EXTRACT_FOLDER = {
     'D.va': 'D.Va',
-    'D.mon': 'D.mon',
+    'D.mon': 'D.Mon',
     'Jetpack Cat': 'Jetpack Cat',
     'Junker Queen': 'Junker Queen',
     'Soldier 76': 'Soldier_ 76',

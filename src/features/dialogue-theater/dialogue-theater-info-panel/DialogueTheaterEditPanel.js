@@ -1460,6 +1460,9 @@ function wireDialogueLineBlock(blockEl, line, onEditChange) {
                 }
             },
         });
+        voiceInput.addEventListener('focus', () => {
+            void ensureDialogueTheaterAssetsLoaded({ force: true });
+        });
         voiceInput.addEventListener('input', (e) => {
             if (!(e instanceof InputEvent) || !e.isTrusted) return;
             if (blockEl.dataset.voiceFile) {
@@ -2120,7 +2123,8 @@ export function collectDialogueTheaterEditPanel(host) {
  * @param {{ onPathChange?: (pathId: string) => void }} [options]
  */
 export async function mountDialogueTheaterPanel(scrollable, conversation, mode, options = {}) {
-    await ensureDialogueTheaterAssetsLoaded();
+    // Edit mode always rescans so newly copied Voicelines appear in the picker.
+    await ensureDialogueTheaterAssetsLoaded({ force: mode === 'edit' });
     const host = ensureHost(scrollable);
     if (mode === 'edit') {
         renderDialogueTheaterEditPanel(host, conversation);

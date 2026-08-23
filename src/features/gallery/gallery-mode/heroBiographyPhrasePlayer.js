@@ -3,7 +3,10 @@
  * Wrecking Ball: hamster prefix (if mapped) then translator, like theater Match Talk.
  */
 
-import { applyCharacterVolume } from '../../universal-features/atlas-character-audio/CharacterVolumeService.js';
+import {
+    applyCharacterVolume,
+    playCharacterAudio,
+} from '../../universal-features/atlas-character-audio/CharacterVolumeService.js';
 import {
     buildHeroBiographyPhraseHamsterMapPath,
     buildHeroBiographyPhrasePath,
@@ -29,6 +32,15 @@ const HERO_SELECTION_PHRASE_DELAY_MS = 480;
 
 /** @type {Map<string, Record<string, string[]> | null>} */
 const hamsterPrefixCache = new Map();
+
+function isWreckingBallHeroKey(heroFilterKey) {
+    return (
+        String(heroFilterKey || '')
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '') === 'wreckingball'
+    );
+}
 
 function notifyPhrasePlaybackChange() {
     window.dispatchEvent(new CustomEvent('heroBiographyPhrasePlaybackChange'));
@@ -67,6 +79,13 @@ async function loadHamsterPrefixMap(heroFilterKey) {
     const key = String(heroFilterKey || '').trim();
     if (!key) return null;
     if (hamsterPrefixCache.has(key)) return hamsterPrefixCache.get(key) || null;
+
+    // Only Wrecking Ball ships hamster-prefixes.json — skip fetch for everyone else
+    // so the console is not flooded with 404s on every phrase play.
+    if (!isWreckingBallHeroKey(key)) {
+        hamsterPrefixCache.set(key, null);
+        return null;
+    }
 
     const url = buildHeroBiographyPhraseHamsterMapPath(key);
     if (!url) {
@@ -125,23 +144,36 @@ function playAudioSrc(src, generation) {
             return;
         }
 
-        const audio = new Audio(src);
-        applyCharacterVolume(audio);
-        activeAudio = audio;
-
-        const finish = (ok) => {
-            if (activeAudio === audio) {
-                activeAudio.onended = null;
-                activeAudio.onerror = null;
-                activeAudio = null;
+        void playCharacterAudio(src).then((audio) => {
+            if (generation !== phrasePlaybackGeneration) {
+                audio?.pause();
+                resolve(false);
+                return;
             }
-            resolve(ok && generation === phrasePlaybackGeneration);
-        };
+            if (!audio) {
+                console.warn('[gallery] Phrase audio failed to start:', src);
+                resolve(false);
+                return;
+            }
 
-        audio.addEventListener('ended', () => finish(true));
-        audio.addEventListener('error', () => finish(false));
+            activeAudio = audio;
+            applyCharacterVolume(audio);
 
-        audio.play().catch(() => finish(false));
+            const finish = (ok) => {
+                if (activeAudio === audio) {
+                    activeAudio.onended = null;
+                    activeAudio.onerror = null;
+                    activeAudio = null;
+                }
+                resolve(ok && generation === phrasePlaybackGeneration);
+            };
+
+            audio.addEventListener('ended', () => finish(true));
+            audio.addEventListener('error', () => {
+                console.warn('[gallery] Phrase audio error:', src);
+                finish(false);
+            });
+        });
     });
 }
 

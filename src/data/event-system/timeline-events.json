@@ -7330,6 +7330,49 @@
       ]
     },
     {
+      "name": "The Xie Incident",
+      "description": "The more time passed since the crisis ended, the more governments across the world were back to full power, reinstating their policies and deemphasizing international cooperation. More and more countries were eager to prove that they could stand on their own in this new world, and began to hesitate about immediately allowing Overwatch for deployment. Morrison began to feel the weight of global bureaucracy, as lawsuits and protocol became too much to wade through and often allowed criminals to get away.\n\nOne particular mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThe so-called Xie Incident became a stain on Overwatch's reputation, as Russia had consistently been skeptical of allowing the organization inside ever since the Crisis, and after Ana's breach of protocol, those rare occasions only became even rarer. Ana's acts in Russia became a bit of a legend, however, with many exaggerated accounts of her feats and what led to her ban proliferating over the years.",
+      "locationType": "earth",
+      "lat": 55.625578,
+      "lon": 37.6063916,
+      "image": "",
+      "cityDisplayName": "Moscow, Russia",
+      "yearStart": 2056,
+      "yearEnd": 2060,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Moscow, Russia",
+          "country": "Russia",
+          "reasoning": "Ana gets arrested for illegally entering Russia"
+        }
+      ],
+      "headlines": [
+        "Overwatch agent deployed illegally in Russia",
+        "US diplomats rescued safely thanks to Ana Amari"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassfied",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76, Ana,",
+          "reasoning": "Break protocol to rescue a US diiplomats"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Caught under for deploying Ana before adquiring clearance"
+        }
+      ]
+    },
+    {
       "name": "Juno Teo Minh is Born",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
@@ -7462,7 +7505,7 @@
       "name": "Black Ops",
       "locationType": "earth",
       "cityDisplayName": "Capetown, South Africa",
-      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down. After the crisis, a mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.\n\nThis would not be the only time Overwatch broke protocol. An incident in Cape Town led to a rouge God Program to escape containment and rebel against its captors, catching the attention of Anubis loyalists and forming an insurrection, but the red tape stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
+      "description": "While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.\n\nReyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down, and only continued to frustrate Reyes, who began to break protocol more often, keeping things to himself to avoid delays.\n\nNot long after the Xie Incident, another similar overstep took place in Cape Town where a rouge God Program that escaped containment and rebel against its captors, caught the attention of Anubis loyalists and formed an insurrection. The same red tape that prevented Ana's deployment in Russia had now stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes \"on vacation.\" The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.",
       "image": "",
       "lat": -33.9228378,
       "lon": 18.426976,
@@ -11747,6 +11790,53 @@
       ]
     },
     {
+      "name": "Colateral Damage",
+      "locationType": "earth",
+      "cityDisplayName": "Glasgow, Scotland",
+      "description": "Overwatch's conflict with Talon did not just harm their internal staff, instead several civilian casualties resulted from their many encounters, and left several jaded towards the Organization. Findlay Docherty was one of the many victims from their all-out war. Having grown poor, with a widowed father that was very disconnected about his needs, Findlay was just a young teenager looking for some support from the system. His parents were Crisis veterans and regularly got checks for their service, and even if they barely allowed them to get by, it installed in the young man a deep respect for institutions. Tired of living in poverty and neglect, however, he sought a way out, enlisting in the military to help him pay for university, convinced that he would finally find success if he played along with the systems laid out in front of him.\n\nNot long after enlisting, he was caught in the crossfire of an Overwatch in pursuit of a Talon jet. The Overwatch drop-ship had been hit, and it crashed into the flat Findlay grew up in, killing his father and leaving him trapped in the wreckage for almost two days. Findlay miraculously survived, but was left a triple amputee, preventing him from continuing his career in the military. The government offered him very basic prostheses and pain medication alongside a monthly check, but for Findlay he was still burnt by the injustice of it all. He lost everything he had worked for, and  the system gave him the bare minimum in return. Even Overwatch themselves could not bother helping beyond a speech by Strike Commander Morrison. That day marked a shift in Findlay's output for life, as he realized that he could not count on the establishment to have his back.",
+      "image": "",
+      "lat": 55.861155,
+      "lon": -4.2501687,
+      "yearStart": 2070,
+      "yearEnd": 2071,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": "Talon Crashes an Overwatch ship into a flat in Glasgow"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hazard,",
+          "reasoning": "Let a triple amputee and without a father after the incident"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76,",
+          "reasoning": "Gives a public speech to those affected"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Talon Empire,",
+          "reasoning": "Engage in a fight that ends up endangering Civilians"
+        }
+      ],
+      "headlines": [
+        "Several Kill during Overwatch's Confrontation with Talon in Glassgow"
+      ],
+      "sources": [
+        {
+          "text": "Tear it Down",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
+        }
+      ]
+    },
+    {
       "name": "Back in Business",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
@@ -11799,53 +11889,6 @@
         {
           "text": "A new Empire",
           "url": "https://overwatch.blizzard.com/en-us/media/comic/a-new-empire/"
-        }
-      ]
-    },
-    {
-      "name": "Colateral Damage",
-      "locationType": "earth",
-      "cityDisplayName": "Glasgow, Scotland",
-      "description": "Overwatch's conflict with Talon did not just harm their internal staff, instead several civilian casualties resulted from their many encounters, and left several jaded towards the Organization. Findlay Docherty was one of the many victims from their all-out war. Having grown poor, with a widowed father that was very disconnected about his needs, Findlay was just a young teenager looking for some support from the system. His parents were Crisis veterans and regularly got checks for their service, and even if they barely allowed them to get by, it installed in the young man a deep respect for institutions. Tired of living in poverty and neglect, however, he sought a way out, enlisting in the military to help him pay for university, convinced that he would finally find success if he played along with the systems laid out in front of him.\n\nNot long after enlisting, he was caught in the crossfire of an Overwatch in pursuit of a Talon jet. The Overwatch drop-ship had been hit, and it crashed into the flat Findlay grew up in, killing his father and leaving him trapped in the wreckage for almost two days. Findlay miraculously survived, but was left a triple amputee, preventing him from continuing his career in the military. The government offered him very basic prostheses and pain medication alongside a monthly check, but for Findlay he was still burnt by the injustice of it all. He lost everything he had worked for, and  the system gave him the bare minimum in return. Even Overwatch themselves could not bother helping beyond a speech by Strike Commander Morrison. That day marked a shift in Findlay's output for life, as he realized that he could not count on the establishment to have his back.",
-      "image": "",
-      "lat": 55.861155,
-      "lon": -4.2501687,
-      "yearStart": 2070,
-      "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Glasgow, Scotland",
-          "country": "Scotland",
-          "reasoning": "Talon Crashes an Overwatch ship into a flat in Glasgow"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hazard,",
-          "reasoning": "Let a triple amputee and without a father after the incident"
-        },
-        {
-          "locationName": "",
-          "country": "Soldier 76,",
-          "reasoning": "Gives a public speech to those affected"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Talon Empire,",
-          "reasoning": "Engage in a fight that ends up endangering Civilians"
-        }
-      ],
-      "headlines": [
-        "Several Kill during Overwatch's Confrontation with Talon in Glassgow"
-      ],
-      "sources": [
-        {
-          "text": "Tear it Down",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
         }
       ]
     },
@@ -11948,6 +11991,27 @@
           "url": "https://overwatch.blizzard.com/en-us/heroes/genji/"
         }
       ]
+    },
+    {
+      "name": "Mass Backlash",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2070,
+      "yearEnd": 2071,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Petras Act Hearings",
@@ -12145,6 +12209,58 @@
       ]
     },
     {
+      "name": "Released",
+      "description": "Under Talon's care, Sigma enjoyed more freedom than he had for several years. His fractured mind struggled to hold its pieces together, meaning he never truly understood the gravity of his situation working with terrorists, as he no longer saw himself as a prisoner. This, combined with the violent lashing out caused by the maddening melody he heard when his condition distabilized, made him both a complying hostage, and a highly dangerous weapon.\n\nTalon understood Sigma as a human. Flawed, manipulable, and far more useful when willingly cooperating than when forced to. Taking advantage of his vulnerable state, they framed themselves as colleagues and patrons helping him further his research by providing him with everything he needed, when in reality they planned to weaponize both him and the fruits of his research Using their assets. Siebren was slowly able to gain control over his power, allowing gravity to abide by his will, moving closer to his life goal.\n\nBut in spite of that, his brittle mind was still unstable. Dr O'Deorain was in charge of supervising his condition and conducted several intrusive tests into his mind to study his condition. During this time, Sombra grew fond of the old man, taking pity on his circumstances and objecting to the way Moira and her scientists treated him. Sombra's kindness played a large role in Sigma's improving mental state, and Talon's continuous indulgence into his fantasies. And since Sombra lacked much loyalty to an organization, it meant now if they ever did something to harm him, they would have to deal with her.",
+      "locationType": "earth",
+      "cityDisplayName": "Oasis University, Iraq",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "yearStart": 2070,
+      "yearEnd": 2072,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": "Sigma is placed under Moira's care and allowed to experiment"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": "Works for Talon oblivious to their intentions"
+        },
+        {
+          "locationName": "",
+          "country": "Moira",
+          "reasoning": "In charge of supervising Sigma"
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": "Grow fond of Sigma"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Oasis Ministries, Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [
+        "Talon Troops equipped with anti gravity tools raid local town"
+      ],
+      "sources": [
+        {
+          "text": "Sigma Origin Story",
+          "url": "https://www.youtube.com/watch?v=onplsJSdp4A"
+        }
+      ]
+    },
+    {
       "name": "Another Life",
       "description": "Following Chernobog's command, Emre was compelled into joining Talon, where he would go on to become a highly efficient, ruthless killer, completely unlike himself. Many other Agents he worked with over the years noted he was pretty unreachable while working with them. Cold, quiet, and with a tendency to go dark in the middle of the mission, only to reappear right at the end to complete his objectives. Reyes himself got to see the man during his shared assignment in Luanda, and barely even recognized him.\n\nFrom a raid on a R&D Facility in Burkhala with Moira. To an infiltration at a Guatemalan black site with Mauga, and a weapons facility attack in Hungary alongside Widowmaker, many agents took note of his off behavior, in spite of how selective he was about the missions he took. What's more, he would often outright vanish for prolonged periods of time, leaving no clue of where he went, only to suddenly come back when a particular assignment peaked his interest. What none of them knew was that it was not Emre making this choice and going against all his morals, but instead Chernobog, enacting his will through a husk of a man.",
       "locationType": "earth",
@@ -12219,58 +12335,6 @@
           "locationName": "",
           "country": "Chernobog,",
           "reasoning": "Commands Emre to take specific jobs for Talon"
-        }
-      ]
-    },
-    {
-      "name": "Released",
-      "description": "Under Talon's care, Sigma enjoyed more freedom than he had for several years. His fractured mind struggled to hold its pieces together, meaning he never truly understood the gravity of his situation working with terrorists, as he no longer saw himself as a prisoner. This, combined with the violent lashing out caused by the maddening melody he heard when his condition distabilized, made him both a complying hostage, and a highly dangerous weapon.\n\nTalon understood Sigma as a human. Flawed, manipulable, and far more useful when willingly cooperating than when forced to. Taking advantage of his vulnerable state, they framed themselves as colleagues and patrons helping him further his research by providing him with everything he needed, when in reality they planned to weaponize both him and the fruits of his research Using their assets. Siebren was slowly able to gain control over his power, allowing gravity to abide by his will, moving closer to his life goal.\n\nBut in spite of that, his brittle mind was still unstable. Dr O'Deorain was in charge of supervising his condition and conducted several intrusive tests into his mind to study his condition. During this time, Sombra grew fond of the old man, taking pity on his circumstances and objecting to the way Moira and her scientists treated him. Sombra's kindness played a large role in Sigma's improving mental state, and Talon's continuous indulgence into his fantasies. And since Sombra lacked much loyalty to an organization, it meant now if they ever did something to harm him, they would have to deal with her.",
-      "locationType": "earth",
-      "cityDisplayName": "Oasis University, Iraq",
-      "lat": 29.5918,
-      "lon": 52.5836,
-      "yearStart": 2070,
-      "yearEnd": 2072,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Oasis University, Iraq",
-          "country": "Iraq",
-          "reasoning": "Sigma is placed under Moira's care and allowed to experiment"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sigma,",
-          "reasoning": "Works for Talon oblivious to their intentions"
-        },
-        {
-          "locationName": "",
-          "country": "Moira",
-          "reasoning": "In charge of supervising Sigma"
-        },
-        {
-          "locationName": "",
-          "country": "Sombra,",
-          "reasoning": "Grow fond of Sigma"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Oasis Ministries, Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [
-        "Talon Troops equipped with anti gravity tools raid local town"
-      ],
-      "sources": [
-        {
-          "text": "Sigma Origin Story",
-          "url": "https://www.youtube.com/watch?v=onplsJSdp4A"
         }
       ]
     },
@@ -12450,67 +12514,6 @@
       ]
     },
     {
-      "name": "Runs in the Family",
-      "locationType": "earth",
-      "cityDisplayName": "Deadlock Gorge, United States",
-      "description": "Overwatch's campaigns across America forced many gangs like Deadlock to scale back or lie low, but they never truly went away. And now that Overwatch was gone, it marked the start of a second new West. As gangs struggled in bloodshed and skirmishes to expand their territories once again. Ashe saw an opportunity to grow her influence through the chaos. Thanks to the negotiating tactics she learned from back in the day when she was still meant to take over the family business, she came up with a plan and gathered the heads of the major gangs with a proposal for them to work together, or at least not against each other.\n\nWithout having to worry about endless squabbles and with the shared assets of her former rivals, Ashe turned Deadlock from a notorious gang to a multi-state criminal syndicate. With their growth came many prominent new members, like the triplets, P. T, Terran, and Zeke, who quickly became some of Ashe's most notorious henchmen, as well as an Omnic Sniper going by Bars, who grew close both with Ashe and especially B.O.B., who had also undergone many upgrades to his systems to better suit his chassis to this renegade lifestyle. But perhaps the most eventful change in the Deadlock family would come from Frankie and Bez, who decided to get engaged around this period. As Deadlock grew, however, Ashe could still not let go of the missing founder. Even after so many years, Cassidy's betrayal pained her like an open wound, and even when she publicly trashed him, deep down she missed him enough to keep photos of them together on her holobike.",
-      "image": "",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "yearStart": 2071,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Deadlock Gorge, United States",
-          "country": "United States",
-          "reasoning": "Deadlock makes a full comback following Overwatch's shutdown",
-          "lat": 39.1131257,
-          "lon": -108.0127646
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ashe",
-          "reasoning": "Uses her family business skills to take advantage of the power vaccum forming in the New West"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Deadlock",
-          "reasoning": "Forms a multi gang alliance to avoid conflicts between them"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "B.O.B,",
-          "reasoning": "Adquires Upgrades"
-        },
-        {
-          "locationName": "",
-          "country": "Bars, The Triplets,",
-          "reasoning": "New Members of Deadlock"
-        },
-        {
-          "locationName": "",
-          "country": "Bez, Frankie,",
-          "reasoning": "Engaged"
-        }
-      ],
-      "headlines": [
-        "Deadlock makes a comback in the New West following several deals with other large gangs"
-      ],
-      "sources": [
-        {
-          "text": "Ashe Origin Story",
-          "url": "https://www.youtube.com/watch?v=yvT9wKCrEyo"
-        }
-      ]
-    },
-    {
       "name": "Found Family",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
@@ -12588,6 +12591,67 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
             "https://www.youtube.com/watch?v=u282-SDwYtg"
           ]
+        }
+      ]
+    },
+    {
+      "name": "Runs in the Family",
+      "locationType": "earth",
+      "cityDisplayName": "Deadlock Gorge, United States",
+      "description": "Overwatch's campaigns across America forced many gangs like Deadlock to scale back or lie low, but they never truly went away. And now that Overwatch was gone, it marked the start of a second new West. As gangs struggled in bloodshed and skirmishes to expand their territories once again. Ashe saw an opportunity to grow her influence through the chaos. Thanks to the negotiating tactics she learned from back in the day when she was still meant to take over the family business, she came up with a plan and gathered the heads of the major gangs with a proposal for them to work together, or at least not against each other.\n\nWithout having to worry about endless squabbles and with the shared assets of her former rivals, Ashe turned Deadlock from a notorious gang to a multi-state criminal syndicate. With their growth came many prominent new members, like the triplets, P. T, Terran, and Zeke, who quickly became some of Ashe's most notorious henchmen, as well as an Omnic Sniper going by Bars, who grew close both with Ashe and especially B.O.B., who had also undergone many upgrades to his systems to better suit his chassis to this renegade lifestyle. But perhaps the most eventful change in the Deadlock family would come from Frankie and Bez, who decided to get engaged around this period. As Deadlock grew, however, Ashe could still not let go of the missing founder. Even after so many years, Cassidy's betrayal pained her like an open wound, and even when she publicly trashed him, deep down she missed him enough to keep photos of them together on her holobike.",
+      "image": "",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "yearStart": 2071,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Deadlock Gorge, United States",
+          "country": "United States",
+          "reasoning": "Deadlock makes a full comback following Overwatch's shutdown",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ashe",
+          "reasoning": "Uses her family business skills to take advantage of the power vaccum forming in the New West"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deadlock",
+          "reasoning": "Forms a multi gang alliance to avoid conflicts between them"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": "Adquires Upgrades"
+        },
+        {
+          "locationName": "",
+          "country": "Bars, The Triplets,",
+          "reasoning": "New Members of Deadlock"
+        },
+        {
+          "locationName": "",
+          "country": "Bez, Frankie,",
+          "reasoning": "Engaged"
+        }
+      ],
+      "headlines": [
+        "Deadlock makes a comback in the New West following several deals with other large gangs"
+      ],
+      "sources": [
+        {
+          "text": "Ashe Origin Story",
+          "url": "https://www.youtube.com/watch?v=yvT9wKCrEyo"
         }
       ]
     },
@@ -14691,7 +14755,7 @@
       "name": "Protector",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "No description available.",
+      "description": "Kiriko's family wasn't the only ones brave enough to defy the Hashimoto rule in Kanezaka, as many of the young residents who grew up after the Shimada era were not as willing to bend down to any clan like their ancestors. Ryota, Sakura and Nobuto all had their own personal grievances with what the Hashimoto had done to their community and even their own families, and because of it they often ended up confronting the thugs against the odds.\n\nOne night, the group confronted a Hashimoto enforcer pestering the owner of their local Ramen shop, when suddenly the lights were cut out and a ninja figure attacked from the shadows, incapacitating the Hashimoto. The masked hero was none other than Kiriko, who was keeping an eye on the teens for a while, protecting them with the Fox Anima. As she continued her patrol later that night, she spotted the same group being abducted into a car by the Hashimoto, who still had unfinished business with the kids.\n\nKiriko tracked the vehicle into the Hashimoto base where she found them at the mercy of Keigo Kuroura, the head of the Kanezaka branch. Kiriko battled Kuroura himself, quickly overwhelming him as his poor-quality anima blade was no match for Toshiro's masterpiece, the Fox. Once defeated, he attempted to call the headquarters for reinforcements, but Ryota had already crashed his phone, allowing the kids to escape. Kiriko's actions not only saved the teenagers, but inspired them to continue fighting now that they had seen someone else, not that much older, going toe to toe against one of the Clan higher ups. Ryota took a job as a busboy at the ramen shop, using his position as a way to gather Intel, and encouraging his friends to train so they could all help the protector of Kanezaka one day.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -14701,7 +14765,7 @@
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Kiriko protects the people of Kanezaka from the shadows",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
@@ -14710,19 +14774,19 @@
         {
           "locationName": "",
           "country": "Kiriko",
-          "reasoning": ""
+          "reasoning": "Protects Kanezaka's citizens from the Hashimoto clan"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "reasoning": "Face the might of the Fox Avatar and get overwhelmed"
         },
         {
           "locationName": "",
           "country": "Yokai Gang,",
-          "reasoning": ""
+          "reasoning": "Kiriko's spirit sparks a rebellion across local troublemakers"
         }
       ],
       "yearEnd": null,
@@ -14730,20 +14794,22 @@
         {
           "locationName": "",
           "country": "Kuroura,",
-          "reasoning": ""
+          "reasoning": "Struggles to handle the Fox Ninja problem"
         },
         {
           "locationName": "",
           "country": "Nobuto, Sakura,",
-          "reasoning": ""
+          "reasoning": "Fight the Hashimoto head on"
         },
         {
           "locationName": "",
           "country": "Ryota,",
-          "reasoning": ""
+          "reasoning": "Takes a job at a Ramen shop to gather intel"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "The Fox Ninja attacks again, Hashimoto thugs arrested near Kanezaka"
+      ],
       "sources": [
         {
           "text": "Protector of Kanezaka",
@@ -14755,7 +14821,7 @@
       "name": "Ecological Network",
       "locationType": "earth",
       "cityDisplayName": "Mount Logan, Canada",
-      "description": "No description available.",
+      "description": "Mei eventually found her way to Gibraltar and reunited with Winston and Tracer, but given she wasn't a trained fighter, she couldn't do much to help them on the field. What she could do, however, was reestablish the ecological network systems from the old era. Overwatch had several bases and outposts around the world with the express purpose of environmental monitoring and if they truly wanted to get back, they would need more than just fighters, but also scientists, and it just so happens, Mei had nine years word of meteorological data that could help with restoring entire ecosystems and studying other anomalies.\n\nWinston suggested starting writing a journal of her travels, posting it online for people to see her unique perspective, as someone who was coming back from being frozen in time. After improving her portable cryogenic technology, she set off on adventure, writing everything down and slowly becoming more confident throughout her journey. From the heights of Mount Logan to the depths of Asia and even up to the frozen peaks of the Himalayas, Mei began testing her equipment around the world, studying local wildlife, even reaching a neat of an endangered species up in the Attic and appearing on the news giving her forecasts for upcoming super storms. It also wasn't all just work, as from time to time she would take detours into the nearby cities like Hollywood, catching up with years' worth of history and culture.\n\nMei's Travel log not only helped her mentally, get readjusted to the modern world and keep her occupied after the loss of her team, it also brought attention to many ecological issues still plaguing the world years after Overwatch fell. For many readers who couldn't leave their home, it served as a way to learn about the world, while for others, it was a reminder of a better time, where Overwatch actively worked towards healing the planet, not just fighting criminals.",
       "image": "",
       "lat": 60.5678461,
       "lon": -140.4056911,
@@ -14765,25 +14831,56 @@
         {
           "locationName": "Mount Logan, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Mei Tests her equipment in Yukon territory"
+        },
+        {
+          "locationName": "Mount Everest, Neval",
+          "country": "Nepal",
+          "reasoning": "Mei visits the abandoned outposts in Asia"
+        },
+        {
+          "locationName": "Artic Circle",
+          "country": "Norway,",
+          "reasoning": "Mei saves an endangered species nest"
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Mei reports on incoming Super storm",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        },
+        {
+          "locationName": "Hollywood, United States",
+          "country": "United States,",
+          "reasoning": "Mei visits Holiwood to watch the Six Armed Killer"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Mei",
-          "reasoning": ""
+          "reasoning": "Travels around the world restablishing the Ecological Network"
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Suggest Mei to start a Journal"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Ecopoints",
-          "reasoning": ""
+          "reasoning": "Mei uses her research to get the Ecopoints systems working again"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Follow the story of the scientist lost to time with Mei's Adventure block",
+        "Climatologist rescues endangered species nest in the Artic",
+        "How to prepare for the Superstorm hitting England with Dr. Mei Ling Zhou"
+      ],
       "sources": [
         {
           "text": "Mei's Adventures",
@@ -15995,6 +16092,98 @@
       "headlines": []
     },
     {
+      "name": "Searching",
+      "locationType": "earth",
+      "cityDisplayName": "Dorado, Mexico",
+      "description": "No description available.",
+      "image": "",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Orisa,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Volskaya Industries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lumérico Incorporated,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Los Muertos,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lynx 17,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Portero,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+        }
+      ]
+    },
+    {
       "name": "Failed Exams",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
@@ -16109,94 +16298,49 @@
       ]
     },
     {
-      "name": "Searching",
+      "name": "Hero of Numbani",
       "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
+      "cityDisplayName": "City State of Numbani",
       "description": "No description available.",
       "image": "",
-      "lat": 19.1738,
-      "lon": -96.1342,
+      "lat": 12.0022,
+      "lon": 8.5919,
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": ""
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "",
+          "lat": 12.0022,
+          "lon": 8.5919
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Zarya,",
+          "country": "Orisa, Doomfist,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Sombra,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Orisa,",
+          "country": "Lúcio, Sojourn",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Volskaya Industries,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lumérico Incorporated,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Los Muertos,",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
       ],
       "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lynx 17,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Katya,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Portero,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": ""
-        }
-      ],
       "headlines": [],
       "sources": [
         {
-          "text": "Searching",
-          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
         }
       ]
     },
@@ -16264,51 +16408,25 @@
       ]
     },
     {
-      "name": "Hero of Numbani",
-      "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
+      "name": "Meeting your Heroes",
       "description": "No description available.",
+      "locationType": "earth",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
       "image": "",
-      "lat": 12.0022,
-      "lon": 8.5919,
+      "cityDisplayName": "Toronto, Canada",
       "yearStart": 2078,
+      "yearEnd": null,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "",
-          "lat": 12.0022,
-          "lon": 8.5919
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Orisa, Doomfist,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lúcio, Sojourn",
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
           "reasoning": ""
         }
       ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
       "headlines": [],
-      "sources": [
-        {
-          "text": "Hero of Numbani",
-          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
-        }
-      ]
+      "sources": []
     },
     {
       "name": "Curse Breaker",
@@ -18806,7 +18924,7 @@
       ]
     },
     {
-      "name": "New Charter",
+      "name": "Ongoing Operations",
       "description": "No description available.",
       "locationType": "earth",
       "image": "",
@@ -19578,30 +19696,25 @@
       ]
     },
     {
-      "name": "Living Weapon",
+      "name": "New Charter",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 29.5918,
-      "lon": 52.5836,
+      "lat": 47.3744489,
+      "lon": 8.5410422,
       "image": "",
-      "cityDisplayName": "Oasis University, Iraq",
+      "cityDisplayName": "Zurich, Switzerland",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Oasis University, Iraq",
-          "country": "Iraq",
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
           "reasoning": ""
         }
       ],
       "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Sigma",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
-        }
-      ]
+      "sources": []
     },
     {
       "name": "The Gibraltar Attack",
@@ -19814,6 +19927,51 @@
         {
           "locationName": "",
           "country": "Efi,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Living Weapon",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "image": "",
+      "cityDisplayName": "Oasis University, Iraq",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Sigma",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
           "reasoning": ""
         }
       ]
@@ -20964,6 +21122,11 @@
           "locationName": "",
           "country": "Reinhardt, Ana,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lúcio,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -21009,6 +21172,11 @@
           "locationName": "",
           "country": "Winston,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Echo,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -21053,6 +21221,11 @@
           "locationName": "",
           "country": "Wrecking Ball,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junkrat, Roadhog,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -21070,7 +21243,17 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "King, Casino, Overlord,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Geiger,",
           "reasoning": ""
         }
       ],
@@ -21117,6 +21300,32 @@
             "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
           ]
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wrecking Ball, Winston,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.mon,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, M.E.K.A Squad,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Myung,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -21140,6 +21349,25 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
           ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wrecking Ball,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Monarchy,",
+          "reasoning": ""
         }
       ]
     }

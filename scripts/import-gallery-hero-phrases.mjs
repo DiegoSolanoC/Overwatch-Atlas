@@ -56,6 +56,7 @@ const onlyHero = heroArgIdx >= 0 ? String(process.argv[heroArgIdx + 1] || '').tr
 
 const MATCHTALK_FOLDER_ALIASES = {
     'D.va': 'D.Va',
+    'D.mon': 'D.Mon',
     'Soldier 76': 'Soldier_ 76',
     'Wrecking Ball': 'Wrecking Ball',
     'Junker Queen': 'Junker Queen',
