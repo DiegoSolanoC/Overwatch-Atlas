@@ -197,6 +197,7 @@ export function matchVoicelinesForHero(heroName, voicelines, query, limit = 24) 
 }
 
 /**
+ * True when Ball's line is SFX-only (Classic interactions) — no translator VO.
  * @param {{ hero?: string, voice?: string, subtitles?: string }} line
  * @returns {boolean}
  */
@@ -204,16 +205,28 @@ export function isWreckingBallHamsterOnlyLine(line) {
     if (!isWreckingBallHero(line?.hero || '')) return false;
 
     const voice = String(line?.voice || '').trim();
-    // Spoken dialogue only — ignore stage tags like (Hamster Noises) / (Chinese)
+    if (voice) {
+        const { dialoguePart } = parseVoicelineFilename(voice);
+        const base = hamsterSfxVariantBase(dialoguePart);
+        // Pure atlas SFX: (hamster_squeaks) / (angry_squeaks) — not (hamster_noises)_He_says...
+        if (/^\([^)]+\)$/i.test(base)) {
+            return /^\(?(hamster|angry|scared|bashful|unhappy|apologetic|excited)/i.test(base);
+        }
+        return false;
+    }
+
+    // No voice yet: SFX-only subtitle with no translator text
     let rest = stripDialogueSubtitleMarkup(String(line?.subtitles || '')).trim();
     while (/^\([^)]+\)/.test(rest)) {
         rest = rest.replace(/^\([^)]+\)\s*/, '').trim();
     }
-    if (rest) return false;
-
-    if (!voice) return true;
-    const { dialoguePart } = parseVoicelineFilename(voice);
-    return /^\(?(hamster|angry|scared|bashful|unhappy|apologetic|excited)/i.test(dialoguePart);
+    rest = rest
+        .replace(
+            /^(hamster\s+(?:noises?|squeaks?)|angry\s+squeaks?|scared\s+hamster\s+noises?|unhappy\s+hamster\s+noises?|apologetic\s+squeaks?|excited\s+hamster\s+squeaks?|bashful\s+hamster\s+noises?)\s*$/i,
+            '',
+        )
+        .trim();
+    return !rest;
 }
 
 /**
@@ -319,7 +332,9 @@ function stripVoicelineSfxPrefix(dialoguePart) {
  */
 function isHamsterSfxVoiceline(filename) {
     const { dialoguePart } = parseVoicelineFilename(filename);
-    return /^\([^)]+\)_/i.test(dialoguePart);
+    // Prefixed MatchTalk: (hamster_noises)_He_says...
+    // Pure Classic SFX: (angry_squeaks) / (hamster_squeaks)_(2)
+    return /^\([^)]+\)(?:_|$)/i.test(dialoguePart);
 }
 
 /**
@@ -332,6 +347,20 @@ function voicelineVariantBase(dialoguePart) {
 }
 
 /**
+ * SFX family key for hamster variant pooling (strips numbered takes + legacy `_short`).
+ * @param {string} dialoguePart
+ * @returns {string}
+ */
+function hamsterSfxVariantBase(dialoguePart) {
+    let base = voicelineVariantBase(dialoguePart);
+    // Classic stub atlas: Wrecking_Ball_-_(hamster_squeaks)_short.ogg
+    if (/^\([^)]+\)_short$/i.test(base)) {
+        base = base.replace(/_short$/i, '');
+    }
+    return base;
+}
+
+/**
  * All hamster-prefix variants sharing the same base filename (e.g. multiple MatchTalk takes).
  * @param {string} prefixFile
  * @param {string[]} voicelines
@@ -341,10 +370,10 @@ export function listHamsterPrefixVariants(prefixFile, voicelines) {
     const pool = listVoicelinesForHero(WRECKING_BALL_HERO, voicelines);
     if (!prefixFile || pool.length === 0) return [];
 
-    const base = voicelineVariantBase(parseVoicelineFilename(prefixFile).dialoguePart);
+    const base = hamsterSfxVariantBase(parseVoicelineFilename(prefixFile).dialoguePart);
     const matches = pool.filter((file) => {
         if (!isHamsterSfxVoiceline(file)) return false;
-        return voicelineVariantBase(parseVoicelineFilename(file).dialoguePart) === base;
+        return hamsterSfxVariantBase(parseVoicelineFilename(file).dialoguePart) === base;
     });
 
     if (matches.length > 0) return matches;
@@ -482,7 +511,12 @@ export function resolveLineVoicePlaybackFiles(line, voicelines) {
     if (!main) return [];
 
     if (!isWreckingBallHero(line?.hero || '')) return [main];
-    if (isWreckingBallHamsterOnlyLine(line)) return [main];
+
+    // Classic (and any hamster-SFX-only) lines: randomize among shared squeak takes.
+    if (isWreckingBallHamsterOnlyLine(line)) {
+        const picked = pickRandomHamsterVariant(listHamsterPrefixVariants(main, voicelines));
+        return [picked || main];
+    }
 
     const prefix = resolveLineVoicePrefixFile(line, voicelines);
     if (prefix && prefix !== main) return [prefix, main];

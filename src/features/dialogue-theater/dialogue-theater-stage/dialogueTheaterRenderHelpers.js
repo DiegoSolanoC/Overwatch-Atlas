@@ -82,16 +82,52 @@ export function getSoloPreviewLine(conversation) {
 }
 
 /**
+ * True when any line opts into mirror staging (same hero, separate stage instances).
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine[]} lines
+ * @returns {boolean}
+ */
+export function conversationHasMirrorLines(lines) {
+    return (Array.isArray(lines) ? lines : []).some((line) => line?.mirror === true);
+}
+
+/**
+ * Side-map key for a line. When mirror is active for that hero, each appearance
+ * is a distinct instance so the same character can sit left and right.
+ *
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueLine[]} lines
+ * @param {number} lineIndex
+ * @returns {string}
+ */
+export function speakerSideKeyAt(lines, lineIndex) {
+    const line = Array.isArray(lines) ? lines[lineIndex] : null;
+    const hero = String(line?.hero || '').trim();
+    if (!hero) return '';
+    const mirrorHeroes = new Set(
+        (Array.isArray(lines) ? lines : [])
+            .filter((row) => row?.mirror === true)
+            .map((row) => String(row?.hero || '').trim())
+            .filter(Boolean),
+    );
+    if (!mirrorHeroes.has(hero)) return hero;
+    let appearance = 0;
+    for (let i = 0; i < lineIndex; i += 1) {
+        if (String(lines[i]?.hero || '').trim() === hero) appearance += 1;
+    }
+    return appearance === 0 ? hero : `${hero}::mirror:${appearance}`;
+}
+
+/**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueLine[]} lines
  * @returns {Map<string, 'left'|'right'>}
  */
 export function buildSpeakerSideMap(lines) {
     /** @type {Map<string, 'left'|'right'>} */
     const map = new Map();
-    for (const line of lines) {
-        const hero = String(line?.hero || '').trim();
-        if (!hero || map.has(hero)) continue;
-        map.set(hero, map.size === 0 ? 'left' : 'right');
+    const rows = Array.isArray(lines) ? lines : [];
+    for (let i = 0; i < rows.length; i += 1) {
+        const key = speakerSideKeyAt(rows, i);
+        if (!key || map.has(key)) continue;
+        map.set(key, map.size === 0 ? 'left' : 'right');
         if (map.size >= 2) break;
     }
     return map;
@@ -103,10 +139,10 @@ export function buildSpeakerSideMap(lines) {
  * @returns {'left'|'right'}
  */
 export function sideForLineIndex(lineIndex, lines = []) {
-    const hero = String(lines[lineIndex]?.hero || '').trim();
-    if (hero) {
+    const key = speakerSideKeyAt(lines, lineIndex);
+    if (key) {
         const sideMap = buildSpeakerSideMap(lines);
-        const side = sideMap.get(hero);
+        const side = sideMap.get(key);
         if (side) return side;
     }
     return lineIndex % 2 === 0 ? 'left' : 'right';
@@ -145,14 +181,17 @@ export function getConversationIdleRenderPair(conversation, rendersMap) {
     const lines = resolveActiveConversationLines(conversation);
     const sideMap = buildSpeakerSideMap(lines);
     const speakers = [...sideMap.keys()];
+    /** @param {string} key */
+    const lineForSideKey = (key) => {
+        for (let i = 0; i < lines.length; i += 1) {
+            if (speakerSideKeyAt(lines, i) === key) return lines[i];
+        }
+        return null;
+    };
     const leftLine =
-        speakers[0] != null
-            ? lines.find((line) => String(line?.hero || '').trim() === speakers[0]) || lines[0]
-            : lines[0] || null;
+        speakers[0] != null ? lineForSideKey(speakers[0]) || lines[0] : lines[0] || null;
     const rightLine =
-        speakers[1] != null
-            ? lines.find((line) => String(line?.hero || '').trim() === speakers[1]) || lines[1]
-            : lines[1] || null;
+        speakers[1] != null ? lineForSideKey(speakers[1]) || lines[1] : lines[1] || null;
     const left = leftLine ? getLineRenderSrc(leftLine, rendersMap) : '';
     const right = rightLine ? getLineRenderSrc(rightLine, rendersMap) : '';
     return { left, right };

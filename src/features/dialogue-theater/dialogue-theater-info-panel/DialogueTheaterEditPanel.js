@@ -1604,6 +1604,12 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
                         <option value="removed" ${lineStatus === 'removed' ? 'selected' : ''}>Removed</option>
                     </select>
                 </label>
+                <label class="dialogue-theater-line__meta-field dialogue-theater-line__meta-field--mirror">
+                    <span>Mirror</span>
+                    <input type="checkbox" class="dialogue-theater-line__mirror-check" ${
+                        line.mirror === true ? 'checked' : ''
+                    } title="Same hero, separate stage instance (left/right)" />
+                </label>
             </div>
         </div>
         <div class="dialogue-theater-line__row dialogue-theater-line__row--hero">
@@ -1733,6 +1739,10 @@ function appendDialogueLineBlock(linesHost, line, onEditChange) {
     }
     if (statusSelect instanceof HTMLSelectElement) {
         statusSelect.addEventListener('change', syncMetaClasses);
+    }
+    const mirrorCheck = block.querySelector('.dialogue-theater-line__mirror-check');
+    if (mirrorCheck instanceof HTMLInputElement) {
+        mirrorCheck.addEventListener('change', () => onEditChange?.());
     }
     if (line.partnerCountMin != null) block.dataset.partnerCountMin = String(line.partnerCountMin);
     if (line.partnerCountMax != null) block.dataset.partnerCountMax = String(line.partnerCountMax);
@@ -2085,6 +2095,8 @@ export function collectDialogueTheaterEditPanel(host) {
             statusElLine instanceof HTMLSelectElement
                 ? normalizeDialogueLineStatus(statusElLine.value)
                 : 'active';
+        const mirrorEl = block.querySelector('.dialogue-theater-line__mirror-check');
+        const mirror = mirrorEl instanceof HTMLInputElement && mirrorEl.checked;
         const normalized = normalizeDialogueLine({
             id: lineId,
             hero,
@@ -2094,6 +2106,7 @@ export function collectDialogueTheaterEditPanel(host) {
             render,
             era: lineEra,
             status: lineStatus,
+            mirror,
             disclaimer,
             partnerMode,
             partners: normalizeChatterPartnerList(partnersRaw),

@@ -5347,6 +5347,11 @@
           "locationName": "",
           "country": "IJC,",
           "reasoning": "Is formed as a judicial branch of the UN"
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Adawe;s latest project in the works"
         }
       ],
       "npcFilterPlaces": [
@@ -6916,6 +6921,13 @@
           "reasoning": "Founder of Numbani; her death marks the end of the founding era",
           "badgePriority": true
         }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Adawe's legacy, a functional city where Omnics and Humans live in Unity"
+        }
       ]
     },
     {
@@ -7206,6 +7218,11 @@
           "locationName": "",
           "country": "Overwatch",
           "reasoning": "Aids Numbani externally through Watchpoint: Kisangani"
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Chooses to remain independant and not take Overwatch's help"
         }
       ],
       "npcFilterPlaces": [
@@ -8573,8 +8590,8 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Numbani",
-          "reasoning": "Chooses to remain independent"
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Counteracts Doomfist with OR14 Troops"
         }
       ],
       "headlines": [
@@ -9182,6 +9199,11 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": "Talon accepts Akande as the new leading force for the group"
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Investigates Doomfist's death and the rise of his sucessor"
         }
       ],
       "npcFilterPlaces": [
@@ -11790,53 +11812,6 @@
       ]
     },
     {
-      "name": "Colateral Damage",
-      "locationType": "earth",
-      "cityDisplayName": "Glasgow, Scotland",
-      "description": "Overwatch's conflict with Talon did not just harm their internal staff, instead several civilian casualties resulted from their many encounters, and left several jaded towards the Organization. Findlay Docherty was one of the many victims from their all-out war. Having grown poor, with a widowed father that was very disconnected about his needs, Findlay was just a young teenager looking for some support from the system. His parents were Crisis veterans and regularly got checks for their service, and even if they barely allowed them to get by, it installed in the young man a deep respect for institutions. Tired of living in poverty and neglect, however, he sought a way out, enlisting in the military to help him pay for university, convinced that he would finally find success if he played along with the systems laid out in front of him.\n\nNot long after enlisting, he was caught in the crossfire of an Overwatch in pursuit of a Talon jet. The Overwatch drop-ship had been hit, and it crashed into the flat Findlay grew up in, killing his father and leaving him trapped in the wreckage for almost two days. Findlay miraculously survived, but was left a triple amputee, preventing him from continuing his career in the military. The government offered him very basic prostheses and pain medication alongside a monthly check, but for Findlay he was still burnt by the injustice of it all. He lost everything he had worked for, and  the system gave him the bare minimum in return. Even Overwatch themselves could not bother helping beyond a speech by Strike Commander Morrison. That day marked a shift in Findlay's output for life, as he realized that he could not count on the establishment to have his back.",
-      "image": "",
-      "lat": 55.861155,
-      "lon": -4.2501687,
-      "yearStart": 2070,
-      "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Glasgow, Scotland",
-          "country": "Scotland",
-          "reasoning": "Talon Crashes an Overwatch ship into a flat in Glasgow"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hazard,",
-          "reasoning": "Let a triple amputee and without a father after the incident"
-        },
-        {
-          "locationName": "",
-          "country": "Soldier 76,",
-          "reasoning": "Gives a public speech to those affected"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Talon Empire,",
-          "reasoning": "Engage in a fight that ends up endangering Civilians"
-        }
-      ],
-      "headlines": [
-        "Several Kill during Overwatch's Confrontation with Talon in Glassgow"
-      ],
-      "sources": [
-        {
-          "text": "Tear it Down",
-          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
-        }
-      ]
-    },
-    {
       "name": "Back in Business",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
@@ -11893,6 +11868,53 @@
       ]
     },
     {
+      "name": "Colateral Damage",
+      "locationType": "earth",
+      "cityDisplayName": "Glasgow, Scotland",
+      "description": "Overwatch's conflict with Talon did not just harm their internal staff, instead several civilian casualties resulted from their many encounters, and left several jaded towards the Organization. Findlay Docherty was one of the many victims from their all-out war. Having grown poor, with a widowed father that was very disconnected about his needs, Findlay was just a young teenager looking for some support from the system. His parents were Crisis veterans and regularly got checks for their service, and even if they barely allowed them to get by, it installed in the young man a deep respect for institutions. Tired of living in poverty and neglect, however, he sought a way out, enlisting in the military to help him pay for university, convinced that he would finally find success if he played along with the systems laid out in front of him.\n\nNot long after enlisting, he was caught in the crossfire of an Overwatch in pursuit of a Talon jet. The Overwatch drop-ship had been hit, and it crashed into the flat Findlay grew up in, killing his father and leaving him trapped in the wreckage for almost two days. Findlay miraculously survived, but was left a triple amputee, preventing him from continuing his career in the military. The government offered him very basic prostheses and pain medication alongside a monthly check, but for Findlay he was still burnt by the injustice of it all. He lost everything he had worked for, and  the system gave him the bare minimum in return. Even Overwatch themselves could not bother helping beyond a speech by Strike Commander Morrison. That day marked a shift in Findlay's output for life, as he realized that he could not count on the establishment to have his back.",
+      "image": "",
+      "lat": 55.861155,
+      "lon": -4.2501687,
+      "yearStart": 2070,
+      "yearEnd": 2071,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Glasgow, Scotland",
+          "country": "Scotland",
+          "reasoning": "Talon Crashes an Overwatch ship into a flat in Glasgow"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hazard,",
+          "reasoning": "Let a triple amputee and without a father after the incident"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76,",
+          "reasoning": "Gives a public speech to those affected"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Talon Empire,",
+          "reasoning": "Engage in a fight that ends up endangering Civilians"
+        }
+      ],
+      "headlines": [
+        "Several Kill during Overwatch's Confrontation with Talon in Glassgow"
+      ],
+      "sources": [
+        {
+          "text": "Tear it Down",
+          "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
+        }
+      ]
+    },
+    {
       "name": "The Zurich Attack",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
@@ -11921,11 +11943,6 @@
           "locationName": "",
           "country": "Soldier 76, Reaper,",
           "reasoning": "Declared death after the Zurich attack"
-        },
-        {
-          "locationName": "",
-          "country": "Genji,",
-          "reasoning": "Goes missing after the Zurich attack"
         }
       ],
       "factionFilterPlaces": [
@@ -11941,10 +11958,68 @@
       ]
     },
     {
+      "name": "Mass Backlash",
+      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear that Overwatch couldn't operate effectively anymore, which was particularly dangerous given how much power they held.  Not only that but Doomfist's arrest did not result in Talon's collapse, after years of fighting terrorists, not only was Overwatch still unable to stop Talon attacks on civilians they also were blind at attacks towards thee organzation itself. An intervention was needed, questioning the legality of ongoing Overwatch operations. \n\nIn spite of everything, Overwatch agents held dear to the belief they were still needed, that they could make a difference. From people like Freja, walking through the angry crowds to get the job done, to agents like Winston and Lena, who both insisted that Overwach needed to continue, and their operations had only been for the benefit of the world. Meanwhile, other agents like Angela and Vivian had grown jaded by the years, seeing how Overwatch spread its resources and continued to trample over protocol over the years, making them wonder if Overwatch was really doing good. Blackwatch agents were not fairing much better, as Cassidy had never been the same since the Venice Incident, thinking back to his days in Deadlock, how Reyes told him they were doing good things together, only to be framed as a criminal and a murderer in the end. Genji, on the other hand, had long pondered his condition as a living weapon, be it in the hands of the Shimada or Overwatch. He always felt like he couldnt be free of his destiny, and this took a mental toll on him. Not long after the Zurich explosion, he vanished without telling anyone.\n\nWith rumors of Reyes and Morrison possibly surviving or even being implicated in the destruction of the Zurich attack, as well as rouge agents like Genji, public opinion on what little remained of Overwatch continued to go downhill. The heroes of old were being tossed aside as criminals, overstepping the law to follow their own agendas, and the good people working at the different branches were getting caught in the crossfire, getting their resumes stained by pure association with Overwatch. With the massive outcry of the public, the United Nations finally stepped in and began the process to determine if Overwatch really needed to exist anymore.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearStart": 2070,
+      "yearEnd": 2071,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": "Ongoing protests against Overwatch worsen public Opinion"
+        }
+      ],
+      "headlines": [
+        "Massive Protests occur simultaneously across multiple Overwatch bases in the world",
+        "Tracer and Winston call for Overwatch to continue operating in recent interview"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassfied",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer, Winston,",
+          "reasoning": "Insist that Overwatch should be allowed to keep going"
+        },
+        {
+          "locationName": "",
+          "country": "Genji,",
+          "reasoning": "Leaves quietely shortly after the Zurich attack"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Sojourn, Cassidy,",
+          "reasoning": "Grow to believe Overwatch is no longer needed"
+        },
+        {
+          "locationName": "",
+          "country": "Reaper, Soldier 76,",
+          "reasoning": "Ongoing rumors of their survival taint Overwatch's image"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, IJC,",
+          "reasoning": "The United Nations begins to look at the idea of Shutting down Overwatch"
+        }
+      ]
+    },
+    {
       "name": "Self Discovery",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "Jack and Gabe were not the only major profile names to disappear following the Zurich explosion. Genji had long struggled to accept his new body, and his role as a weapon under Blackwatch. The man was at war with himself and too often felt like he was not meant to be who he had become, so he took his chance after the Zurich attack and outright left without telling anyone.\n\nGenji's journey of self-discovery would take him to many places over the years, but he would eventually reach the Nepalese mountains, where he crossed paths with the now Tekhartha Zenyatta, currently leader of the Shambali monks. Zenyatta would see Genji's struggle with accepting his new body and the man he had become, and decided to take him as a pupil, allowing him to deconstruct himself and achieve peace with himself once more. Genji would meditate with the Monks for years, with no one on the outside ever seeing Him again. He did, however, keep in contact with Angela, who he had grown to be extremely close. Even in the remote Himalayas, he found time to write her letters and keep in contact.",
+      "description": "After years of struggling to accept his new body and his role with the Shimada downfall and Blackwatch, Genji was not wondering the world alone, at war with himself. Too often felt like he was not meant to be who he had become, and that his humanity died the day that Hanzo left him behind. And yet there was something about him that continued to fight his inner demons. Years alongside Overwatch agents, specially Angela, gave him a newly found appreciation for life and a desire to keep going, in spite of the ghosts of his past. Troubled by this inner conflict, he began to study ways to find peace with himself, unable to ace the world until he was contempt with who he was.\n\nGenji's journey of self-discovery would take him to many places over the years, but he would eventually reach the Nepalese mountains, where he crossed paths with the now Tekhartha Zenyatta, currently leader of the Shambali monks. Zenyatta would see Genji's struggle with accepting his new body and the man he had become, and decided to take him as a pupil, allowing him to deconstruct himself and achieve peace with himself once more. Genji would meditate with the Monks for years, with no one on the outside ever seeing Him again. He did, however, keep in contact with Angela, who he had grown to be extremely close. Even in the remote Himalayas, he found time to write her letters and keep in contact.",
       "image": "",
       "lat": 28.3949,
       "lon": 84.124,
@@ -11993,31 +12068,10 @@
       ]
     },
     {
-      "name": "Mass Backlash",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 47.3744489,
-      "lon": 8.5410422,
-      "image": "",
-      "cityDisplayName": "Zurich, Switzerland",
-      "yearStart": 2070,
-      "yearEnd": 2071,
-      "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Zurich, Switzerland",
-          "country": "Switzerland",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
       "name": "The Petras Act Hearings",
       "locationType": "earth",
       "cityDisplayName": "Zurich, Switzerland",
-      "description": "Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear there needed to be an intervention questioning the legality of ongoing Overwatch operations. The Petras Act hearings called upon all active members, as well as some retired ones like Reinhardt and closely related individuals like Sam English to testify about Overwatch, and while most agents generally sugar coated their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team thin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack presumed dead, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. \n\nIn the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee.  Named after the now former Directer of Overwatch, and IJC liaison William Petras, the act rendered all Overwatch activity illegal and stripped most Agents of their credentials and equipment Exceptions were made for cases like Tracer's, who required the use of her chronal accelerator.",
+      "description": "Following the protests across the world, the United nations heldt the Petras Act hearings, calling upon all active members, as well as some retired ones like Reinhardt and closely related individuals like Sam English to testify about Overwatch, and while most agents generally sugar coated their experiences, Vivian Chase's testimony proved lethal for Overwatch's case. Vivian had grown to resent Overwatch's position later in its life, as individuals above her continued to disregard rules. In her own words, it only spread out the team thin, making them lose focus on their objective.\n\nMany classified documents came to light during the hearings, and through that Reyes and LaCroix's vacations would be revealed to the world. With Jack presumed dead, he could not defend himself and was judged as if he had been fully aware of the illegal nature of their activities. Dr. Naughton also came in to testify that her boys would have been able to survive the explosion, which only made matters worse, as now many believe they went under hiding to avoid persecution. \n\nIn the end, the United Nations passed the Petras Act, to be enforced by the International Justice Committee.  Named after the now former Directer of Overwatch, and IJC liaison William Petras, the act rendered all Overwatch activity illegal and stripped most Agents of their credentials and equipment Exceptions were made for cases like Tracer's, who required the use of her chronal accelerator.",
       "image": "",
       "sources": [
         {
@@ -14892,7 +14946,7 @@
       "name": "Infiltration",
       "locationType": "earth",
       "cityDisplayName": "Saint Petersburg, Russia",
-      "description": "No description available.",
+      "description": "As the war raged on for years in Russia, there was no real progress made in shutting down the Omnium. Volskaya Industries continued producing new weaponry but never strong enough to stop the fighting all together. While this is not necessarily suspicious in itself, the company was actually hiding a terrible secret in reality, one that put their head, Katya Volskaya, in a dangerous position.\n\nPeople in the Talon council began to grow frustrated with how intractable the situation had become, and at Vialli's command, a small unit was deployed with the goal of assassinating Katya Volskaya. At first, the mission went smoothly. Sombra hacked into the security systems to allow Reaper and Widowmaker in, but just as they got a clear line of sight of Katya, an alarm went off that forced them to clear the perimeter, as the combat mechs prevented them from reaching Katya as she fled the scene. Sombra continued to chase, evading security and even making her way into Katya's locked office. However, she had her own goals in mind that conflicted with the mission.\n\nAll along Sombra had planned this meeting, she was responsible for the alarm going off, saving her life in exchange for being heard out there. All she requested of Katya was a friend, someone who would help Sombra out with Intel and technology, or else she risked being compromised, as Sombra was in possession of leaked footage shooting Katya receiving technology from the Omnics behind the reawaken Omnium. The revelation would ruin her career, her company and jeopardize Russia's future. To add insult to injury, Sombra not only handed her a framed picture of Katya's daughter, highlighting how this could impact her family, but also mocking her with the same gesture they played with in private, showing that the hacker already knew everything about her. Without much of a choice, Katya agreed to the deal, as Sombra called the mission off and fled the scene, promising to keep in contact, but in secret she was already planning to use her strongest soldier to get Sombra off her trail.",
       "image": "",
       "lat": 59.938732,
       "lon": 30.316229,
@@ -14902,36 +14956,36 @@
         {
           "locationName": "Saint Petersburg, Russia",
           "country": "Russia",
-          "reasoning": ""
+          "reasoning": "Talon fails to Assasinate Katya Volskaya"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sombra,",
-          "reasoning": ""
+          "reasoning": "Sabotages the Volskaya mission to get connecitons with Katya"
         },
         {
           "locationName": "",
           "country": "Reaper, Widowmaker,",
-          "reasoning": ""
+          "reasoning": "Fail to Assasinate Katya Volskaya"
         },
         {
           "locationName": "",
           "country": "Zarya,",
-          "reasoning": ""
+          "reasoning": "Called in by Katya to find Sombra"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Attempts to Assasinate Katya Volskaya"
         },
         {
           "locationName": "",
           "country": "The Sombra Collective,",
-          "reasoning": ""
+          "reasoning": "Expands network to include Volskaya intel"
         }
       ],
       "yearEnd": null,
@@ -14939,15 +14993,19 @@
         {
           "locationName": "",
           "country": "Katya,",
-          "reasoning": ""
+          "reasoning": "Takes Sombra's deal fearing for her family and her country"
         },
         {
           "locationName": "",
           "country": "Vialli,",
-          "reasoning": ""
+          "reasoning": "Orders to remove Katya to appease the council"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Talon attempts to assasinate Katya Volskaya",
+        "The Second Omnic Crisis rages on in Russia",
+        "Zarya called in to Volskaya Industries for special mission"
+      ],
       "sources": [
         {
           "text": "Infiltration",
@@ -14956,103 +15014,10 @@
       ]
     },
     {
-      "name": "Answering the Call",
-      "locationType": "earth",
-      "cityDisplayName": "Eichenwalde Castle, Germany",
-      "description": "No description available.",
-      "image": "",
-      "lat": 50,
-      "lon": 8,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Eichenwalde Castle, Germany",
-          "country": "Germany",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Reinhardt, Brigitte",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Crusaders",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Honor and Glory",
-          "url": "https://www.youtube.com/watch?v=sQfk5HykiEk"
-        }
-      ]
-    },
-    {
-      "name": "Genius Grant",
-      "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
-      "image": "",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "",
-          "lat": 12.0022,
-          "lon": 8.5919
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Orisa",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Numbani",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "An Interview with Inventor Efi Oladele",
-          "url": "https://overwatch.blizzard.com/en-us/news/20580087/an-interview-with-inventor-efi-oladele/"
-        },
-        {
-          "text": "Hero of Numbani",
-          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
-        }
-      ]
-    },
-    {
       "name": "A New Empire",
       "locationType": "earth",
       "cityDisplayName": "Colosseo, Italy",
-      "description": "No description available.",
+      "description": "As Vendetta climbed up the ranks of the Colosseo, she turned her violent recklessness into focused rage, and soon saw how her infamy turned around, with even her biggest detractors cheering her name as she took the title of Champion. Marzia was admired by the audience and also by her fellow gladiators, with most newcomers rallying up behind her in every order in hopes of climbing the ranks as well.\n\nProximity to the champion was also highly valued amongst the European Elite, as new sponsors of the highest pedigree began to do business with her. She applied the lessons she learned from her father in negotiations, turning every sponsor into a loyal ally, earning wealth from gambling on rigged matches, using her new network to gather assets and Intel to use for blackmail, and slowly building a corrupt empire of her own as the most influential person in the Colosseo, if not is the entirety of Italy.\n\nMeanwhile, Talon continued to fall into pieces, as Vialli's leadership led to many missed opportunities, from not taking advantage of the London Riots to the rushed assassination on Volskaya failing, it was clear that under his rule Talon's council would eat itself alive. Amassing her own fortune and connections over the years made Vendetta realize that her ambition for Talon went way beyond what her father's seat could have ever accomplished. In all this time, she never lost her sight on Talon, but she would not rush to action anymore, she was willing to watch it crumble so that one day she could usurp its council and use it as a tool to expand her new empire into something history will never forget.",
       "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -15062,7 +15027,7 @@
         {
           "locationName": "Colosseo, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Vendetta goes from Colosseo champion to part of the European Elite",
           "lat": 41.8933203,
           "lon": 12.4829321
         }
@@ -15071,19 +15036,19 @@
         {
           "locationName": "",
           "country": "Vendetta",
-          "reasoning": ""
+          "reasoning": "Grows in influence and connecitons thanks to her wins at the Colosseo"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Colosseo Gladiatori,",
-          "reasoning": ""
+          "reasoning": "Begins to be rigged internally at Vendetta's command"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Begins to faulter under Vialli's leadership"
         }
       ],
       "yearEnd": null,
@@ -15091,15 +15056,18 @@
         {
           "locationName": "",
           "country": "Maximus, Magnus, Titus, Carmilla, Zephyrus,",
-          "reasoning": ""
+          "reasoning": "Fall in line under Vendetta's command"
         },
         {
           "locationName": "",
           "country": "Vialli,",
-          "reasoning": ""
+          "reasoning": "Cuts corners in the council causing infighting"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "La Lupa takes the title of Colosseo Champion",
+        "Rumors of rigged matches at the Colosseo spark from strange gladiator performance"
+      ],
       "sources": [
         {
           "text": "A New Empire",
@@ -15288,8 +15256,64 @@
           "reasoning": ""
         }
       ],
-      "yearEnd": null,
+      "yearEnd": 2078,
       "headlines": []
+    },
+    {
+      "name": "Genius Grant",
+      "locationType": "earth",
+      "cityDisplayName": "City State of Numbani",
+      "description": "The city of Numbani had grown into a technological superpower, as its Omnic-friendly culture became a haven for mechanics, robotic engineers and Ai developers, of all ages. This rapid growth led to the creation of the Adawe Foundation Fellowship's Genius Grant program, a robotics funding program that gave the people of Numbani a chance to get monetary backing for their ideas. What nobody expected when the program stated was that one of its winners would be an eleven-year-old girl.\n\nEfi Rotìmí Opèyèmi Oluwadaré Gabrielle Oladele was a young Yoruba girl who grew her entire life in Numbani, surrounded by technology in a place where Humans and Omnics lived in Unity. From an early age she had a deep admiration for Gabrielle Adawe and her mission with Numbani, so she learned some Omnicode and began to experiment with homemade robotics. She was a gifted girl for mathematics and science, attending international baccalaureate classes while in elementary school and earning honor rolls and awards, but this intellectual gap pushed her away from friends of her own age.\n\nFor those around her, Efi looked overworked, never taking rest from her machines, while for her, robotics was recreational, and given her lengthy resume of functions machines, she decided to open up a business of sorts. She began to sell Junior Assistant drones, small bug-like robots made to be personal companions and house helpers, and while the demand was certainly there, she couldn't quite keep up production on her own. While scouting for source code online, she came across the Genius Grant, and while it was meant for teachers only, she was surprised to receive an authentic nomination email not long after. After submitting her pitch recording highlighting her previous work and the Junie program, it didn't take long before a notification popped up announcing she won the grant. With the money from the Adawe Foundation, Efi planned to amp up production on her Junies to help all of Numbani, and to celebrate her accomplishment, she convinced her family to take them on a trip to Brazil, to see a live concert by Lúcio himself.",
+      "image": "",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Efi Oladele wins the Genius Grant",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Orisa",
+          "reasoning": "Efi's soon to be masterpiece"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Gives Efi the Genius Grant"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Applies and wins the Adawe Foundation Genius Grant"
+        }
+      ],
+      "headlines": [
+        "Meet Efi, Numbani's lastest robotics entrepreneur at only 11 years old",
+        "Child wins Adawe Foundation's Genius grant with her Junior Assistant robot project"
+      ],
+      "sources": [
+        {
+          "text": "An Interview with Inventor Efi Oladele",
+          "url": "https://overwatch.blizzard.com/en-us/news/20580087/an-interview-with-inventor-efi-oladele/"
+        },
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
     },
     {
       "name": "Old Dragons",
@@ -15299,7 +15323,7 @@
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
-      "yearStart": 2077,
+      "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
@@ -15487,6 +15511,13 @@
         {
           "locationName": "",
           "country": "Efi,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
           "reasoning": ""
         }
       ]
@@ -15855,6 +15886,11 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": ""
         }
       ],
       "yearEnd": null,
@@ -15955,7 +15991,7 @@
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Numbani",
+          "country": "Numbani City of Harmony,",
           "reasoning": ""
         }
       ],
@@ -16049,7 +16085,8 @@
           "country": "Maximillien,",
           "reasoning": ""
         }
-      ]
+      ],
+      "yearStart": 2078
     },
     {
       "name": "System Reboot",
@@ -16333,6 +16370,11 @@
           "locationName": "",
           "country": "Talon Empire,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": ""
         }
       ],
       "yearEnd": null,
@@ -16551,6 +16593,65 @@
       ]
     },
     {
+      "name": "Double Life",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "image": "",
+      "cityDisplayName": "Kanezaka, Japan",
+      "yearStart": 2079,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Mizuki",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Kiriko,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Nobuto, Ryota, Sakura, Chikasa,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Last Child of the Sun",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
@@ -16660,61 +16761,52 @@
       ]
     },
     {
-      "name": "Double Life",
-      "description": "No description available.",
+      "name": "Answering the Call",
       "locationType": "earth",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
+      "cityDisplayName": "Eichenwalde Castle, Germany",
+      "description": "Most Overwatch agents around the world simply ignored the recall message, but Reinhardt was as eager to get back in action as anyone could be. The recall caught him in Greenland, in the middle of his travels with Brigitte, but while he was ready to turn his way towards Gibraltar, Brigitte refused to let him.\n\nBrigitte grew up hearing Reinhardt's stories about Overwatch. She knew how much it meant to him, yet at the same time, she remembered how quickly they tossed him aside, forcing him into retirement to choose lives over the following protocol. Brigitte did not believe that Reinhardt needed to answer the recall, they had a good thing going helping people together, and the Overwatch she remembered had no right to call him back. Reinhardt seemingly agreed with Brigitte, appeasing her concerns and dropping the subject, but in reality the need to answer plagued his mind for months.\n\nThe pair continued to journey around Europe, occasionally returning to Gothenburg for supplies or in the holidays, and while Reinhardt would often bring the idea back up, Brigitte continued to shut him down. It was only after a trip to the ruins of Eichwalde Castle that Reinhardt finally managed to break through with her. Visiting the resting place of his own mentor, the battle that changed his life and the place where he got his invitation medal, not because he was chosen but because he had to step up for someone else; telling this story to Brigitte and the weight he feels in his shoulder from the need to answer when called after that day is what finally convinced her to give the new Overwatch a try. The two would set off from their van in Germany, still helping those in need on the way to Gibraltar, taking their time before formally rejoining Overwatch.",
       "image": "",
-      "cityDisplayName": "Kanezaka, Japan",
+      "lat": 50,
+      "lon": 8,
       "yearStart": 2079,
-      "yearEnd": null,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Mizuki",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/mizuki/"
+          "locationName": "Eichenwalde Castle, Germany",
+          "country": "Germany",
+          "reasoning": "Reinhardt and Brigitte Visit the restin Place of Balderich Von Adler"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Kiriko,",
-          "reasoning": ""
+          "country": "Reinhardt, Brigitte",
+          "reasoning": "Reinhardt convinces Brigitte to let him join Overwatch"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        },
+          "country": "Crusaders",
+          "reasoning": "The Eichenwalde ruins fall to disrepair over the years"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Government talks to restore Eichenwalde Castle with the help of Ironclad",
+        "Overwatch Agents reporting a recall message send by Winston"
+      ],
+      "sources": [
         {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "text": "Honor and Glory",
+          "url": "https://www.youtube.com/watch?v=sQfk5HykiEk"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Nobuto, Ryota, Sakura, Chikasa,",
-          "reasoning": ""
+          "country": "Balderich,",
+          "reasoning": "Gets Visited by Reinhardt and Brigitte"
         }
       ]
     },
@@ -17591,6 +17683,11 @@
         {
           "locationName": "",
           "country": "Null Sector,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
           "reasoning": ""
         }
       ],
@@ -21368,6 +21465,30 @@
           "locationName": "",
           "country": "Junker Monarchy,",
           "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Crucible",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 8.2151249,
+      "lon": 3.5642897,
+      "image": "",
+      "cityDisplayName": "Oyo, Nigeria",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Crucible",
+          "url": "https://www.youtube.com/watch?v=6lbNb8SzfHs",
+          "urls": [
+            "https://www.youtube.com/watch?v=6lbNb8SzfHs",
+            "https://overwatch.blizzard.com/en-us/media/comic/crucible/"
+          ]
         }
       ]
     }

@@ -13,6 +13,7 @@ import {
     getSoloPreviewLine,
     sideForLineIndex,
     buildSpeakerSideMap,
+    speakerSideKeyAt,
     usesSoloSpeakerPreview,
 } from './dialogueTheaterRenderHelpers.js';
 import { resolveActiveConversationLines } from '../data/dialogueTheaterPathHelpers.js';
@@ -401,14 +402,21 @@ function paintStage(stage, conversation, activeLineIndex = null) {
         const soloSpeaker = usesSoloSpeakerPreview(conversation);
         const sideMap = buildSpeakerSideMap(lines);
         const speakers = [...sideMap.keys()];
+        /** @param {string} key */
+        const lineForSideKey = (key) => {
+            for (let i = 0; i < lines.length; i += 1) {
+                if (speakerSideKeyAt(lines, i) === key) return lines[i];
+            }
+            return null;
+        };
         const leftLine = soloSpeaker
             ? getSoloPreviewLine(conversation)
             : speakers[0] != null
-              ? lines.find((line) => String(line?.hero || '').trim() === speakers[0]) || lines[0]
+              ? lineForSideKey(speakers[0]) || lines[0]
               : lines[0] || null;
         const rightLine =
             !soloSpeaker && speakers[1] != null
-                ? lines.find((line) => String(line?.hero || '').trim() === speakers[1]) || lines[1]
+                ? lineForSideKey(speakers[1]) || lines[1]
                 : null;
         setStageRender(stage, 'left', leftLine ? getLineRenderSrc(leftLine, rendersMap) : '', false);
         setStageRender(stage, 'right', rightLine ? getLineRenderSrc(rightLine, rendersMap) : '', false);

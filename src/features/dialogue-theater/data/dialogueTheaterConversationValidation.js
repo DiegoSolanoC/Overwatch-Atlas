@@ -4,6 +4,7 @@
 
 import { resolveLineVoiceFile } from './theaterVoicelineParsing.js';
 import { isChatterEntry } from './dialogueTheaterEntryType.js';
+import { getConversationEraTag } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 
 /**
  * Normalize a voiceline filename for duplicate comparison.
@@ -58,8 +59,10 @@ export function buildConversationDuplicateLookup(conversations) {
     const rows = Array.isArray(conversations) ? conversations : [];
     for (let i = 0; i < rows.length; i += 1) {
         const row = rows[i];
-        const fingerprint = conversationVoiceFingerprint(row?.lines || []);
-        if (!fingerprint) continue;
+        const voiceFp = conversationVoiceFingerprint(row?.lines || []);
+        if (!voiceFp) continue;
+        // Same dialogue can exist in Classic + Overwatch; only flag within an era.
+        const fingerprint = `${getConversationEraTag(row) || ''}\x00${voiceFp}`;
 
         const bucket = byFingerprint.get(fingerprint) || [];
         bucket.push(String(row.id || ''));

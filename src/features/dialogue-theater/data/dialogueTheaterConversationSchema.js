@@ -134,7 +134,7 @@ import { normalizeChatterPartnerFields } from './dialogueTheaterChatterPartners.
 export function normalizeDialogueLine(raw) {
     if (!raw || typeof raw !== 'object') return null;
     const id = String(raw.id != null ? raw.id : '').trim() || createDialogueLineId();
-    /** @type {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, era: string, status: string, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }} */
+    /** @type {{ id: string, hero: string, voice: string, voicePrefix: string, subtitles: string, render: string, era: string, status: string, mirror?: boolean, disclaimer?: string, partnerMode?: string, partners?: string[], partnerFocus?: string, partnerStackOrder?: string[] }} */
     const line = {
         id,
         hero: String(raw.hero != null ? raw.hero : '').trim(),
@@ -145,6 +145,7 @@ export function normalizeDialogueLine(raw) {
         era: normalizeDialogueLineEra(raw.era),
         status: normalizeDialogueLineStatus(raw.status),
     };
+    if (raw.mirror === true) line.mirror = true;
     const disclaimer = String(raw.disclaimer != null ? raw.disclaimer : '').trim();
     if (disclaimer) line.disclaimer = disclaimer;
     Object.assign(line, normalizeChatterPartnerFields(raw));
