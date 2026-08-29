@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Classic Roadhog audit: fix stay-out-of-trouble multipath, clean Junkrat cuts.
+ * Classic Roadhog audit: stay-out-of-trouble (sourced "for once" only — no empty Hey path),
+ * clean Junkrat cuts.
  *
  * Usage:
  *   node scripts/fix-roadhog-classic-audit.mjs
@@ -203,16 +204,14 @@ function keepLine(base, hero, subtitles, voiceFile) {
 
 const existingTry =
     heyConv.lines?.find((l) => /stay out of trouble for once/i.test(l.subtitles || '')) ||
-    tryConv?.lines?.[0];
-const existingHey =
-    heyConv.lines?.find((l) => /^Hey\.\s*Stay out of trouble/i.test(l.subtitles || '')) ||
+    tryConv?.lines?.[0] ||
     heyConv.lines?.[0];
 const existingBehavior =
     heyConv.lines?.find((l) => /best behavior/i.test(l.subtitles || '')) ||
     heyConv.lines?.[1] ||
     tryConv?.lines?.[1];
 
-const lineHey = keepLine(existingHey, 'Roadhog', 'Hey. Stay out of trouble.', voice.hey);
+// Keep only the sourced "for once" opener — do not re-add empty "Hey." path.
 const lineTry = keepLine(
     existingTry,
     'Roadhog',
@@ -227,16 +226,13 @@ const lineBehavior = keepLine(
 );
 
 heyConv.name = 'Stay Out of Trouble';
-heyConv.tags = Array.from(new Set([...(heyConv.tags || []), 'Classic', 'Multi Path']));
-heyConv.lines = [lineHey, lineTry, lineBehavior];
-const pathHey = createDialoguePathId();
-const pathTry = createDialoguePathId();
-heyConv.paths = [
-    { id: pathHey, label: 'Hey', lineIds: [lineHey.id, lineBehavior.id] },
-    { id: pathTry, label: 'For once', lineIds: [lineTry.id, lineBehavior.id] },
-];
-heyConv.selectedPathId = pathHey;
-console.log('merged multipath', heyConv.name);
+heyConv.tags = Array.from(
+    new Set([...(heyConv.tags || []).filter((t) => t !== 'Multi Path'), 'Classic']),
+);
+heyConv.lines = [lineTry, lineBehavior];
+delete heyConv.paths;
+delete heyConv.selectedPathId;
+console.log('wired single path', heyConv.name, '(no empty Hey branch)');
 
 if (tryConv) {
     raw.conversations = raw.conversations.filter((c) => c.id !== TRY_ID);

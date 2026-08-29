@@ -22,6 +22,10 @@ import {
     resolveLineVoiceFile,
     voicelineFilenameToSubtitles,
 } from '../data/theaterVoicelineParsing.js';
+import {
+    isLegacyNameLinesEnabled,
+    resolveEffectiveDialogueLine,
+} from '../data/dialogueTheaterLegacyName.js';
 import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
 import {
     CHATTER_PARTNER_MODE_AND,
@@ -171,10 +175,11 @@ function syncPanelDialogue(conversation, activeLineIndex) {
  * @returns {string}
  */
 function getLineDialogueText(line) {
+    const effective = resolveEffectiveDialogueLine(line, isLegacyNameLinesEnabled());
     const voicelines = stageAssets?.voicelines || [];
-    const resolvedVoice = resolveLineVoiceFile(line, voicelines);
+    const resolvedVoice = resolveLineVoiceFile(effective, voicelines);
     return (
-        String(line?.subtitles || '').trim() ||
+        String(effective?.subtitles || '').trim() ||
         (resolvedVoice ? voicelineFilenameToSubtitles(resolvedVoice) : '')
     );
 }

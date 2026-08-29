@@ -67,7 +67,7 @@ function consumeResetDialogueUrlParam() {
 }
 
 /** @typedef {{ id: string, entryType?: 'dialogue'|'chatter', name: string, status: 'active'|'removed', eraName: string, tags: string[], mapChoices?: string[], skinChoices?: string[], eventChoices?: string[], scene: string, lines: DialogueLine[], paths?: DialoguePath[], selectedPathId?: string }} DialogueConversation */
-/** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, render: string, era?: 'Overwatch'|'Classic', status?: 'active'|'removed', mirror?: boolean, disclaimer?: string, partnerMode?: 'or'|'and'|'vague'|'hybrid', partners?: string[], partnerFocus?: string, partnerStackOrder?: string[], partnerFixed?: string[], partnerOrPools?: string[][] }} DialogueLine */
+/** @typedef {{ id: string, hero: string, voice: string, voicePrefix?: string, subtitles: string, modernVoice?: string, modernSubtitles?: string, render: string, era?: 'Overwatch'|'Classic', status?: 'active'|'removed', mirror?: boolean, disclaimer?: string, partnerMode?: 'or'|'and'|'vague'|'hybrid', partners?: string[], partnerFocus?: string, partnerStackOrder?: string[], partnerFixed?: string[], partnerOrPools?: string[][] }} DialogueLine */
 /** @typedef {{ id: string, label: string, lineIds: string[], segments?: { asker?: string, job?: string, reactor?: string, epilogue?: string } }} DialoguePath */
 
 class DialogueTheaterDataService {

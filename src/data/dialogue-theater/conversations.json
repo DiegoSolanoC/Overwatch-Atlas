@@ -5995,7 +5995,7 @@
           ]
         }
       ],
-      "selectedPathId": "6c009c68-f0d3-4ef7-9f86-57904c4fe3ee"
+      "selectedPathId": "96d43dc7-5201-4db2-9bab-2ae793af2b0b"
     },
     {
       "id": "81219024-7f89-4b4e-a00d-3b2d1d4ba7b1",
@@ -7676,7 +7676,7 @@
           ]
         }
       ],
-      "selectedPathId": "a6c87137-2c85-43f5-857e-14e3e585e0d1"
+      "selectedPathId": "8132bceb-9493-4fb3-9936-716f6ffd2c9e"
     },
     {
       "id": "65701dee-336f-4258-a2bf-87bbcd98320c",
@@ -11335,7 +11335,7 @@
           ]
         }
       ],
-      "selectedPathId": "a1c2d3e4-f002-4000-8000-2ade262700101"
+      "selectedPathId": "a1c2d3e4-f002-4000-8000-2ade262700102"
     },
     {
       "id": "dcb20a44-9f98-44f4-ac5d-6827b32cc4e9",
@@ -28415,7 +28415,7 @@
         },
         {
           "id": "3a49c719-b288-41b7-aa83-db18b1f67a72",
-          "hero": "L������������cio",
+          "hero": "L��������������������������������������cio",
           "voice": "Lúcio_-_Look,_I_believe_in_my_team._We'll_get_'em_next_time.ogg",
           "voicePrefix": "",
           "subtitles": "Look, I believe in my team. We'll get 'em next time",
@@ -31156,7 +31156,7 @@
           ]
         }
       ],
-      "selectedPathId": "a52b6d06-a909-43e3-9b57-a65acb5c3b9f"
+      "selectedPathId": "a7eed644-188f-46c0-9d23-2fb81abf90bd"
     },
     {
       "id": "b9b3f96e-72e2-4fa3-ab4d-1961c7600d78",
@@ -45094,7 +45094,7 @@
           ]
         }
       ],
-      "selectedPathId": "424332c5-68da-4629-b844-9ac2250d88dd"
+      "selectedPathId": "3c31780d-b315-47de-b309-39b404659dec"
     },
     {
       "id": "044d8fcf-7e79-4316-b67c-062c18934d00",
@@ -47221,7 +47221,7 @@
           ]
         }
       ],
-      "selectedPathId": "58a8a26e-537f-4e89-9337-b71439d3d8bf"
+      "selectedPathId": "8aaea36f-dda6-4267-baf8-3fd1388f486c"
     },
     {
       "id": "af514d72-67f6-4b09-bbdf-793b47d4671d",
@@ -73351,75 +73351,9 @@
       ]
     },
     {
-      "id": "bbe07fcf-d741-45e2-a4db-6cf64da14e26",
-      "entryType": "dialogue",
-      "name": "28",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "861f4a48-c61f-4afb-a8e1-d84c0e072419",
-          "hero": "Echo",
-          "voice": "Ashe_-_Am_I_supposed_to_be_thankful_for_that.ogg",
-          "voicePrefix": "",
-          "subtitles": "You know, I saved Jesse's life once.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e3cf2d5e-4db5-432d-be81-f3b2b96f396d",
-          "hero": "Ashe",
-          "voice": "Ashe_-_Am_I_supposed_to_be_thankful_for_that.ogg",
-          "voicePrefix": "",
-          "subtitles": "Am I supposed to be thankful for that?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "d5df2c47-d3f4-41bd-b1ce-50f204b22fe6",
-      "entryType": "dialogue",
-      "name": "29",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "893e1cba-711e-4ab9-b929-6e46d580aa7a",
-          "hero": "Ashe",
-          "voice": "Ashe_-_from_what_i_can_tell_you_and_i_are_simpatico_on_how.ogg",
-          "voicePrefix": "",
-          "subtitles": "From what I can tell, you and I are simpático on how we like things run.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c5820079-313b-429e-80d8-19c705c4d2d9",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_For_your_sake,_I_hope_not.ogg",
-          "voicePrefix": "",
-          "subtitles": "For your sake, I hope not.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "a485bdb9-31a6-4a59-9079-c9ab4f6e52a9",
       "entryType": "dialogue",
-      "name": "31",
+      "name": "Bygones",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73430,7 +73364,7 @@
         {
           "id": "0d633036-0926-4eec-93f6-340e5690f699",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Ashe,_how_about_we_let_bygones_be_bygones_.ogg",
           "voicePrefix": "",
           "subtitles": "Ashe, how about we let bygones be bygones?",
           "render": "Heroic.png",
@@ -73440,17 +73374,19 @@
         {
           "id": "761f0ad3-5d96-48c9-a503-d00ac970b470",
           "hero": "Ashe",
-          "voice": "Ashe_-_aw_you_know_thats_not_the_way_it_works_jesse.ogg",
+          "voice": "Ashe_-_Aw,_you_know_that's_not_the_way_it_works,_Jesse.ogg",
           "voicePrefix": "",
           "subtitles": "Aw, you know that's not the way it works, Jesse.",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Ashe_-_Aw,_you_know_that's_not_the_way_it_works.ogg",
+          "modernSubtitles": "Aw, you know that's not the way it works."
         },
         {
           "id": "ae2f0319-960a-4745-93d7-bd39c618f0d0",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_i_was_hopin_youd_make_an_exception_for_old_times_sake.ogg",
+          "voice": "Cassidy_-_I_was_hopin'_you'd_make_an_exception,_for_old_times'_sake.ogg",
           "voicePrefix": "",
           "subtitles": "I was hopin' you'd make an exception, for old times' sake.",
           "render": "Heroic.png",
@@ -73462,7 +73398,7 @@
     {
       "id": "1046f236-1402-4c58-be20-1e3e55676d51",
       "entryType": "dialogue",
-      "name": "32",
+      "name": "Ambitious One",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73473,7 +73409,7 @@
         {
           "id": "eb1354ec-bb00-4696-9a6c-8053ae2f949a",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_You_always_were_the_ambitious_one,_Ashe.ogg",
           "voicePrefix": "",
           "subtitles": "You always were the ambitious one, Ashe.",
           "render": "Heroic.png",
@@ -73485,7 +73421,7 @@
           "hero": "Ashe",
           "voice": "Ashe_-_You_make_that_sound_like_a_bad_thing._You'd_still_be_on_a_farm_if_it_wasn't_for_me.ogg",
           "voicePrefix": "",
-          "subtitles": "You make that sound like a bad thing. You'd still be on a farm if it weren't for me.",
+          "subtitles": "You make that sound like a bad thing. You'd still be on a farm if it wasn't for me.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -73505,7 +73441,7 @@
     {
       "id": "f19850ec-2119-4e77-818e-e8d666f06a3f",
       "entryType": "dialogue",
-      "name": "33",
+      "name": "Dartboard",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73516,19 +73452,21 @@
         {
           "id": "40ea7aa9-fd70-4221-a9a7-d275161f3e79",
           "hero": "Ashe",
-          "voice": "Ashe_-_brave_of_you_to_show_your_face_around_here_jesse.ogg",
+          "voice": "Ashe_-_Brave_of_you_to_show_your_face_around_here,_Jesse.ogg",
           "voicePrefix": "",
           "subtitles": "Brave of you to show your face around here, Jesse.",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Ashe_-_Brave_of_you_to_show_your_face_around_here.ogg",
+          "modernSubtitles": "Brave of you to show your face around here."
         },
         {
           "id": "105c0da5-2e74-4634-a117-5d2c1b5822d1",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Well,_I_know_how_much_you_missed_me._Still_have_a_picture_of_me_at_the_hide-out,_I_hear.ogg",
           "voicePrefix": "",
-          "subtitles": "Well, I know how much you missed me. Still have a picture of me at the hide-out, I hear.",
+          "subtitles": "Well, I heard how much you missed me. Still have a picture of me at the hide-out, I hear.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -73536,7 +73474,7 @@
         {
           "id": "544fb206-d04d-4962-b423-a43084b9bd3e",
           "hero": "Ashe",
-          "voice": "",
+          "voice": "Ashe_-_On_the_dartboard.ogg",
           "voicePrefix": "",
           "subtitles": "On the dartboard.",
           "render": "Heroic.png",
@@ -73546,7 +73484,7 @@
         {
           "id": "c380b955-b606-492f-a435-277913ce8376",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_bet_you_look_at_it_every_day_flattering_really.ogg",
+          "voice": "Cassidy_-_Bet_you_look_at_it_every_day._Flattering,_really.ogg",
           "voicePrefix": "",
           "subtitles": "Bet you look at it every day. Flattering, really.",
           "render": "Heroic.png",
@@ -73558,7 +73496,7 @@
     {
       "id": "78bb106c-1b0b-43e9-8e02-a419a506c075",
       "entryType": "dialogue",
-      "name": "34",
+      "name": "Nice Bike",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73569,7 +73507,7 @@
         {
           "id": "2f8ba55b-3ca3-4c38-997d-b648527d6d35",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_Real_nice_bike_you've_got,_Ashe.ogg",
           "voicePrefix": "",
           "subtitles": "Real nice bike you've got, Ashe.",
           "render": "Heroic.png",
@@ -73579,17 +73517,19 @@
         {
           "id": "ced9d509-0456-40d9-b47c-6c6b3a69d5bf",
           "hero": "Ashe",
-          "voice": "Ashe_-_whatd_you_do_with_it_jesse.ogg",
+          "voice": "Ashe_-_What'd_you_do_with_it,_Jesse!.ogg",
           "voicePrefix": "",
           "subtitles": "What'd you do with it, Jesse?!",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Ashe_-_What'd_you_do_with_it.ogg",
+          "modernSubtitles": "What'd you do with it?!"
         },
         {
           "id": "8dcfed1a-f8a1-4451-a6e2-a25df42c0a3c",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_parked_it_somewhere_im_damned_if_i_remember_where_i_left_the.ogg",
+          "voice": "Cassidy_-_Parked_it_somewhere..._I'm_damned_if_I_remember_where_I_left_the_keys,_though....ogg",
           "voicePrefix": "",
           "subtitles": "Parked it somewhere... I'm damned if I remember where I left the keys, though...",
           "render": "Heroic.png",
@@ -73601,7 +73541,7 @@
     {
       "id": "0fef6883-85a7-4812-b4b3-4701a42e9f82",
       "entryType": "dialogue",
-      "name": "35",
+      "name": "My Type",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73644,7 +73584,7 @@
     {
       "id": "b76dc897-fc07-4d86-a50b-cb8443075ed7",
       "entryType": "dialogue",
-      "name": "36",
+      "name": "How's B.O.B.",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73655,7 +73595,7 @@
         {
           "id": "52cd8323-2f7f-48c1-8727-4b00b6e465aa",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_And_how's_B.O.B_.ogg",
           "voicePrefix": "",
           "subtitles": "And how's B.O.B?",
           "render": "Heroic.png",
@@ -73677,7 +73617,7 @@
     {
       "id": "b9abf948-5689-4dd2-acec-35f6c87c02d1",
       "entryType": "dialogue",
-      "name": "38",
+      "name": "Grumpy Dwarf",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -73688,7 +73628,7 @@
         {
           "id": "03e606b9-5953-4019-9bc9-6e5c06a0c2f7",
           "hero": "Ashe",
-          "voice": "Ashe_-_with_a_grumpy_dwarf_in_a_halloween_costume_on_our_side_how.ogg",
+          "voice": "Ashe_-_With_a_grumpy_dwarf_in_a_Halloween_costume_on_our_side,_how_can_we_lose_.ogg",
           "voicePrefix": "",
           "subtitles": "With a grumpy dwarf in a Halloween costume on our side, how can we lose?",
           "render": "Heroic.png",
@@ -73698,7 +73638,7 @@
         {
           "id": "27228fb6-6e03-4999-9768-1490ee9f551f",
           "hero": "Torbjörn",
-          "voice": "",
+          "voice": "Torbjörn_-_Watch_it,_cow_lass!.ogg",
           "voicePrefix": "",
           "subtitles": "Watch it, cow lass!",
           "render": "Heroic.png",
@@ -74182,7 +74122,7 @@
     {
       "id": "312c8f11-e7bf-4fd2-aae3-cfb2064e999e",
       "entryType": "dialogue",
-      "name": "57",
+      "name": "Tin Cans",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -74206,39 +74146,6 @@
           "voice": "Bastion_-_(sad_beeps).ogg",
           "voicePrefix": "",
           "subtitles": "**sad beeps**",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "2938a860-2361-49ea-8251-f04a4335c856",
-      "entryType": "dialogue",
-      "name": "58",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "8e4e495f-96c7-4f07-988d-e667a5a74f1d",
-          "hero": "Torbjörn",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Bastion, I bet you haven't had a systems check in years. Who knows what kind of weird behaviours you've picked up?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "5b501e6d-18de-449e-9f8b-4e005481fb9f",
-          "hero": "Bastion",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "**weird beeps and chirps**",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -74852,7 +74759,7 @@
     {
       "id": "cecfe2f6-6e39-4707-b6cb-7722711fda0f",
       "entryType": "dialogue",
-      "name": "Learning to Shoot",
+      "name": "16 Bit Hero",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -74901,7 +74808,9 @@
           "subtitles": "You know, McCree, the winning side would pay much better. Maybe, buy yourself some real clothes?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Doomfist_-_You_know,_the_winning_side_would_pay_much_better._Maybe,_buy_yourself_some_real_clothes.ogg",
+          "modernSubtitles": "You know, the winning side would pay much better. Maybe, buy yourself some real clothes?"
         },
         {
           "id": "3caeaaa7-8e1f-4f03-a8c0-9629e09c9668",
@@ -74951,7 +74860,7 @@
     {
       "id": "e6aa251c-4338-4500-83d4-1f930c2de55f",
       "entryType": "dialogue",
-      "name": "86",
+      "name": "Faster Than a Bullet",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -74962,7 +74871,7 @@
         {
           "id": "a7a194ee-dc2b-4ee8-8086-f014d3b262c4",
           "hero": "Cassidy",
-          "voice": "Genji_-_Why_don't_we_find_out.ogg",
+          "voice": "Cassidy_-_You_might_be_fast,_Genji,_but_you_ain't_faster_than_a_bullet.ogg",
           "voicePrefix": "",
           "subtitles": "You might be fast, Genji, but you ain't faster than a bullet.",
           "render": "Heroic.png",
@@ -74984,7 +74893,7 @@
     {
       "id": "bb039621-cef6-4e43-a397-d61bc6cc08d0",
       "entryType": "dialogue",
-      "name": "87",
+      "name": "Getting use to it",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75017,40 +74926,46 @@
     {
       "id": "6e0cefc3-a7ad-4057-b203-81ef3b73a2ca",
       "entryType": "dialogue",
-      "name": "88",
+      "name": "Unfinished Business",
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Map Specific"
       ],
       "scene": "Default.png",
       "lines": [
         {
           "id": "e124eb78-7c5c-4e7d-8fa1-e6d2e76b0997",
           "hero": "Genji",
-          "voice": "Genji_-_why_have_you_come_back_to_this_place_mccree.ogg",
+          "voice": "Genji_-_Why_have_you_come_back_to_this_place,_McCree.ogg",
           "voicePrefix": "",
-          "subtitles": "(on Route 66) Why have you come back to this place, McCree?",
+          "subtitles": "Why have you come back to this place, McCree?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Genji_-_Why_have_you_come_back_to_this_place.ogg",
+          "modernSubtitles": "Why have you come back to this place?"
         },
         {
           "id": "7297d8f9-f728-4a5e-811f-f0562b2dd0a5",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_the_only_thing_it_ever_is_unfinished_business_and_unhappy_history.ogg",
+          "voice": "Cassidy_-_The_only_thing_it_ever_is..._Unfinished_business,_and_unhappy_history.ogg",
           "voicePrefix": "",
           "subtitles": "The only thing it ever is... Unfinished business, and unhappy history.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         }
+      ],
+      "mapChoices": [
+        "Route 66"
       ]
     },
     {
       "id": "c53f3d80-0607-421b-a5e5-f91166eca7ea",
       "entryType": "dialogue",
-      "name": "89",
+      "name": "Sparrow",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75074,105 +74989,6 @@
           "voice": "Genji_-_My_father,_Sojiro,_called_me_that_as_an_insult._I've_grown_to_like_it.ogg",
           "voicePrefix": "",
           "subtitles": "My father Sojiro called me that as an insult. I've grown to like it.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "9438313d-8d7b-48fe-9e45-efb6a2a6e544",
-      "entryType": "dialogue",
-      "name": "90",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "b67d7f5f-5d3f-41dd-9e64-2a0040bbe7a7",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_You_know,_that_sake's_not_half_bad._But_I_prefer_a_little_bite_to_my_liquor.ogg",
-          "voicePrefix": "",
-          "subtitles": "You know, that sake's not half bad but... I prefer a little bite to my liquor.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8b92700d-1fff-45d5-9a12-1d7da3bd64ea",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_how_predictable_such_unsophisticated_taste.ogg",
-          "voicePrefix": "",
-          "subtitles": "How predictable! Such unsophisticated taste.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "ef65d7ff-92c5-42d8-9a20-4e6c16a72bdd",
-      "entryType": "dialogue",
-      "name": "91",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "249bfc95-08c2-4e9b-a43a-b913f2fa9dbf",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_I_heard_there's_a_nice_reward_for_bringing_you_fellas_in.ogg",
-          "voicePrefix": "",
-          "subtitles": "I heard there's a nice reward for bringing you fellas in.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "604f3d68-948d-4201-8e00-28e08921c89e",
-          "hero": "Junkrat",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Maybe we could, erm, work something out, mate? *nervous laugh*",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "494d4e9a-486c-49e6-8661-dc4c8172bbf1",
-      "entryType": "dialogue",
-      "name": "92",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "8546ddac-e4ff-4d9d-b2cf-c8b14c1a85b0",
-          "hero": "Mei",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Hey, McCree, do you know what time it is?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "b7dd2ed1-9780-47c6-940d-c7e1689629f5",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_well_id_say_its_about_now_i_see_what_youre_doing_there.ogg",
-          "voicePrefix": "",
-          "subtitles": "Well, I'd say it's about... now I see what you're doing there!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -75264,7 +75080,9 @@
           "subtitles": "Our courageous cowboy. The years haven't changed you much, have they, Jesse?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Moira_-_Our_courageous_cowboy._The_years_haven't_changed_you_much,_have_they.ogg",
+          "modernSubtitles": "Our courageous cowboy. The years haven't changed you much, have they?"
         },
         {
           "id": "91e546f5-6612-499a-a3df-fa1fe2d8f2c2",
@@ -75297,7 +75115,9 @@
           "subtitles": "Jesse McCree; outlaw. Reward: 60 million dollars. The reward could make up for Efi's grant money.",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Orisa_-_Outlaw._Reward__60_million_dollars._The_reward_could_make_up_for_Efi's_grant_money.ogg",
+          "modernSubtitles": "Outlaw. Reward: 60 million dollars. The reward could make up for Efi's grant money."
         },
         {
           "id": "62ba2845-1bf6-4b5f-84f6-5011db8de50d",
@@ -75314,7 +75134,7 @@
     {
       "id": "f8ee5885-5196-42b4-924e-7c840f10058c",
       "entryType": "dialogue",
-      "name": "98",
+      "name": "Learn to Shoot",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75325,17 +75145,19 @@
         {
           "id": "3f430204-b8ce-4cfc-9fe4-7f6d8d6da421",
           "hero": "Pharah",
-          "voice": "Pharah_-_mccree_where_did_you_learn_to_shoot_like_that_was_it_jack.ogg",
+          "voice": "Pharah_-_McCree,_where_did_you_learn_to_shoot_like_that__Was_it_Jack,_Gabriel.ogg",
           "voicePrefix": "",
           "subtitles": "McCree, where did you learn to shoot like that? Was it Jack, Gabriel?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Pharah_-_Where_did_you_learn_to_shoot_like_that__Was_it_Jack,_Gabriel.ogg",
+          "modernSubtitles": "Where did you learn to shoot like that? Was it Jack, Gabriel?"
         },
         {
           "id": "2a37ad00-ee24-4c61-ac52-0d9961b9e0d1",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_always_was_a_good_shot_but_i_got_a_few_pointers_from.ogg",
+          "voice": "Cassidy_-_Always_was_a_good_shot,_but_I_got_a_few_pointers_from_the_best._That'd_be_your_mother.ogg",
           "voicePrefix": "",
           "subtitles": "Always was a good shot, but I got a few pointers from the best. That'd be your mother.",
           "render": "Heroic.png",
@@ -75347,7 +75169,7 @@
     {
       "id": "38e5dd17-98a4-4f39-a9e1-819be8469a66",
       "entryType": "dialogue",
-      "name": "99",
+      "name": "Toy Guns",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75380,7 +75202,7 @@
     {
       "id": "a8879e6c-9bed-40d3-af08-1f2de05dd637",
       "entryType": "dialogue",
-      "name": "100",
+      "name": "Toss Them Around",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75391,9 +75213,9 @@
         {
           "id": "809f978c-7429-4b42-aca2-563117c7dcd0",
           "hero": "Cassidy",
-          "voice": "Reaper_-_I_don't_take_lessons_from_you.ogg",
+          "voice": "Cassidy_-_You_weren't_given_those_guns_to_toss_them_around_like_trash.ogg",
           "voicePrefix": "",
-          "subtitles": "You weren't given those guns to toss 'em around like trash.",
+          "subtitles": "You weren't given those guns to toss them around like trash.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -75413,7 +75235,7 @@
     {
       "id": "cec84c0c-8fd3-44c1-8185-77be0290b87b",
       "entryType": "dialogue",
-      "name": "101",
+      "name": "All my tricks",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75446,7 +75268,7 @@
     {
       "id": "4cd70380-7136-43cb-80b4-3e8f604f7470",
       "entryType": "dialogue",
-      "name": "102",
+      "name": "Thought you everything",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75479,7 +75301,7 @@
     {
       "id": "2c8360e6-6789-48cc-9ee3-e916cfd365db",
       "entryType": "dialogue",
-      "name": "103",
+      "name": "Look Ridiculous",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75500,9 +75322,9 @@
         {
           "id": "dd02d7d3-9e86-4c9c-8e21-dec8c7e698ab",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_looked_in_a_mirror_lately.ogg",
+          "voice": "Cassidy_-_(laughs)_Looked_in_the_mirror_lately.ogg",
           "voicePrefix": "",
-          "subtitles": "Looked in a mirror lately?",
+          "subtitles": "(laughs) Looked in the mirror lately?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -75516,7 +75338,8 @@
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -75539,13 +75362,42 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "604f3d68-948d-4201-8e00-28e08921c89e",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_Maybe_we_could..._work_something_out,_mate.ogg",
+          "voicePrefix": "",
+          "subtitles": "Maybe we could, erm, work something out, mate? *nervous laugh*",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "9e9a0dd9-99a3-4fda-92e2-d49b397c1b86",
+          "label": "Roadhog",
+          "lineIds": [
+            "a013cdf8-5f96-4aae-9f35-c93ebb73829d",
+            "5e7fac31-2a59-4276-898e-d677133efa98"
+          ]
+        },
+        {
+          "id": "95dad79d-771a-4401-8765-e05d3c9b5b55",
+          "label": "Junkrat",
+          "lineIds": [
+            "a013cdf8-5f96-4aae-9f35-c93ebb73829d",
+            "604f3d68-948d-4201-8e00-28e08921c89e"
+          ]
+        }
+      ],
+      "selectedPathId": "95dad79d-771a-4401-8765-e05d3c9b5b55"
     },
     {
       "id": "6d66ae0c-0824-4211-96ef-cbc6c6027434",
       "entryType": "dialogue",
-      "name": "105",
+      "name": "Cowboy Fan",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75578,7 +75430,7 @@
     {
       "id": "197657f1-cc44-41b2-8f36-fc032b461558",
       "entryType": "dialogue",
-      "name": "106",
+      "name": "Real Names",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -75589,7 +75441,7 @@
         {
           "id": "2b767725-fa86-4344-9d16-3954f21d5731",
           "hero": "Sombra",
-          "voice": "Sombra_-_pleasure_working_with_you_mccree_if_that_is_your_real_name.ogg",
+          "voice": "Sombra_-_Pleasure_working_with_you,_McCree..._if_that_is_your_real_name.ogg",
           "voicePrefix": "",
           "subtitles": "Pleasure working with you, McCree... if that is your real name.",
           "render": "Heroic.png",
@@ -75599,7 +75451,7 @@
         {
           "id": "62454e2b-206e-480b-adae-fbd0964c9916",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_dont_know_what_you_heard_but_my_names_not_joel_best_remember.ogg",
+          "voice": "Cassidy_-_Don't_know_what_you_heard,_but_my_name's_not_Joel._Best_remember_that.ogg",
           "voicePrefix": "",
           "subtitles": "Don't know what you heard, but my name's not Joel. Best remember that.",
           "render": "Heroic.png",
@@ -75609,492 +75461,9 @@
       ]
     },
     {
-      "id": "a047d6e9-c19b-49f0-96b5-7164284276c5",
-      "entryType": "dialogue",
-      "name": "109",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "c92c3369-b5f7-4d2e-b507-a5a7350c30dc",
-          "hero": "Reyes",
-          "voice": "Reaper_-_cole_get_that_door_open.ogg",
-          "voicePrefix": "",
-          "subtitles": "Cole. Get that door open.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "51a6e3b5-5cf0-4a98-bad4-fcfe5e139539",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Maybe_you_could_try_shooting_it._Seems_to_be_your_method_of_choice.ogg",
-          "voicePrefix": "",
-          "subtitles": "Maybe you could try shooting it. Seems to be your method of choice.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "37a16a9f-569c-4f71-ba00-3596932d0568",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "There’s that famous Cassidy attitude.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "6e8c0d23-bcea-42a0-8105-b0aa12395113",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I’ll try to *adjust* it for ya' boss. Wouldn’t wanna... cause any *problems*.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "83b5577a-b82c-474d-92d2-a271fc1f206a",
-      "entryType": "dialogue",
-      "name": "112",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "21b2762c-eeb6-4591-a315-7b9862e0274e",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_so_what_do_we_do_boss.ogg",
-          "voicePrefix": "",
-          "subtitles": "So, what do we do *now*, boss?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "f3e5ac04-bfb8-43d1-a8e0-cc838c38437e",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "We get outta this room, then head through the city to the extraction point. After that, we sit tight and hope *someone* comes to pick us up.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "333665dc-925c-4d4a-a327-b6abfe8c7720",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Not_sure_why_I_was_even_worried.ogg",
-          "voicePrefix": "",
-          "subtitles": "Quite a plan B. Not sure why I was even worried.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "dbf44258-4423-432a-8d11-c13c7298fa79",
-      "entryType": "dialogue",
-      "name": "113",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "36313395-830b-4850-a434-d54e108c77c1",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_how_re_you_gonna_explain_this_to_the_strike_commander.ogg",
-          "voicePrefix": "",
-          "subtitles": "How’re you gonna explain this to the Strike Commander?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "9bb1ccbf-9da0-4589-9838-1c88ae168de2",
-          "hero": "Reyes",
-          "voice": "Reaper_-_you_let_me_worry_about_what_jack_needs_to_know.ogg",
-          "voicePrefix": "",
-          "subtitles": "You let me worry about what Jack needs to know.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "7f4ed8a0-e855-4300-8db9-273d216bf1ef",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "You know you can’t shoot ‘im.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "79c36723-0fbe-4978-a6d1-2b152f114eec",
-          "hero": "Reyes",
-          "voice": "Reaper_-_no_but_i_could_shoot.ogg",
-          "voicePrefix": "",
-          "subtitles": "No, but I could shoot *you*.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "3581181d-61c8-4e51-8c45-6a5e7b860267",
-      "entryType": "dialogue",
-      "name": "115",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "769fff66-3fa4-47d4-bc13-de3b1ee76dea",
-          "hero": "Reyes",
-          "voice": "Reaper_-_this_mess_was_all_worth_it_to_see_cassidy_trying_to_pass.ogg",
-          "voicePrefix": "",
-          "subtitles": "This mess was all worth it to see Cassidy trying to pass himself off as a waiter.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "a80b8543-8969-4a12-8d17-9bd722ee283d",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_i_thought_i_did_just_fine.ogg",
-          "voicePrefix": "",
-          "subtitles": "I thought I did just fine.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "9d37bce6-3e12-4424-a451-c0e6fab15976",
-          "hero": "Reyes",
-          "voice": "Reaper_-_you_got_from_your_cole.ogg",
-          "voicePrefix": "",
-          "subtitles": "You got *fired* from your *cover job*, Cole.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "39abc260-2505-4bf2-afac-c7704a15ada0",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Well, the lady was bein’ rude! She had it comin’!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "1d63a641-aaf1-4256-9d91-c3e04316778a",
-      "entryType": "dialogue",
-      "name": "121",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "2ffec89e-2586-4277-ad6f-041d4d93fbdb",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_looks_like_they_brought_in_the_heavy_hitters.ogg",
-          "voicePrefix": "",
-          "subtitles": "Looks like they brought in the heavy hitters.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "1912ad12-6521-4835-af1a-037eefcfe582",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Yeah, they really rolled out the red carpet.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "b729c35f-de9d-41de-a7d2-68a79872e6ff",
-      "entryType": "dialogue",
-      "name": "123",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "c46faa41-3d9b-4b90-852f-6cc0eda955c9",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Feels like Talon is mobilizing an entire army to stop us!",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d1d94b3a-4039-40e4-bc29-c049e73cef22",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_you_just_to_kick_the_hornet_s_nest.ogg",
-          "voicePrefix": "",
-          "subtitles": "You just *had* to kick the hornet’s nest!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "0b5d9116-29cf-4c73-bf9b-3d086f96dc45",
-      "entryType": "dialogue",
-      "name": "125",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "caf0cc10-a5dd-4722-a7a6-6e4cf9934e11",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_what_s_it_like_genji_y_know_as_a_cyborg.ogg",
-          "voicePrefix": "",
-          "subtitles": "What’s it like, Genji? Y’know... as a cyborg.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "1c3ac84e-2691-4b8d-ac97-bab4afb85491",
-          "hero": "Genji",
-          "voice": "Genji_-_Pain_and_agony._And_what_am_I__Man_or_machine_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Pain... and agony. And what am I? Man? Or machine?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "309a91f4-f6f8-4615-bf12-869f08ed923d",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Then_why_did_you_agree_to_it_.ogg",
-          "voicePrefix": "",
-          "subtitles": "...Then why did you agree to it?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "1f91264d-68c9-42b7-a6cc-316c52bd65f0",
-          "hero": "Genji",
-          "voice": "Genji_-_I_wanted_to_be_able_to_walk_again.ogg",
-          "voicePrefix": "",
-          "subtitles": "I wanted to be able to walk again.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "4a92c68f-5c97-40df-acb7-89195422a7a5",
-      "entryType": "dialogue",
-      "name": "127",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "cbc41ae9-90a9-42ff-a4ed-13110b7e869f",
-          "hero": "Genji",
-          "voice": "Genji_-_it_s_as_if_the_whole_city_has_been_mobilized_against_us.ogg",
-          "voicePrefix": "",
-          "subtitles": "It’s as if the whole city has been mobilized against us!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "292c6fa1-57a4-494b-95de-f23d9704e8e3",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Just_how_you_like_it.ogg",
-          "voicePrefix": "",
-          "subtitles": "Just how you like it.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "6a2c3460-0a21-477e-80e1-92f1f8b14e19",
-      "entryType": "dialogue",
-      "name": "129",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "98c1e194-86e0-4b25-a46d-9db8bcca9de9",
-          "hero": "Genji",
-          "voice": "Genji_-_take_better_care_cassidy_i_d_hate_for_you_to_need_a.ogg",
-          "voicePrefix": "",
-          "subtitles": "Take better care, Cassidy. I’d hate for you to need a body like mine.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "86eb6146-87e2-49c6-a1d7-6e3e90b82103",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "No offense, Genji, but I think I’m gonna keep everything just the way it is. But the way this mission’s going, it might be *my* future.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "3ba31bed-8a41-4981-83a7-b07f62c562fd",
-      "entryType": "dialogue",
-      "name": "130",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "5c3d5fbf-7d2b-4035-8b8f-7d22409840ed",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "It should be smooth sailing from here.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8887794f-f4fb-4ffd-9ba2-2c51b1eafdb6",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Aw, ya *had* to say it, didn’t ya?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "968db2c1-f8a8-4ff2-a8e3-a20fe112d9f4",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I withdraw my previous comment. We’re *definitely* not out of the woods yet.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "0bdf90b7-5832-411d-9d22-c01967baf283",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_i_ll_note_that_for_the_record.ogg",
-          "voicePrefix": "",
-          "subtitles": "I’ll note that for the record.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "63d44df3-36a3-4bc9-842e-a3d28e27b917",
-      "entryType": "dialogue",
-      "name": "134",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "0ce7c359-8b51-46f2-be6c-b61b10146fbe",
-          "hero": "Omnic Host",
-          "voice": "Omnic_Host_-_name_on_your_reservation.ogg",
-          "voicePrefix": "",
-          "subtitles": "Name on your reservation?",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "48c692d9-7776-4033-b18e-d2642993f7f0",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Yeah, party of four. The name’s Cassidy.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d60e7ff0-0cb9-470f-8eb4-b22a644c37ed",
-          "hero": "Omnic Host",
-          "voice": "Omnic_Host_-_i_m_terribly_sorry_but_we_are_unable_to_accomodate_walk_ins.ogg",
-          "voicePrefix": "",
-          "subtitles": "I’m terribly sorry but we are unable to accomodate walk-ins.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "7f7a085b-7dc5-4705-ab19-e62071bdf981",
       "entryType": "dialogue",
-      "name": "141",
+      "name": "Halloween Costume",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -76105,7 +75474,7 @@
         {
           "id": "508db067-9e33-40b9-b6eb-2f35d64b9dba",
           "hero": "Cassidy",
-          "voice": "",
+          "voice": "Cassidy_-_What's_your_Halloween_costume_gonna_be_this_year,_Pharah.ogg",
           "voicePrefix": "",
           "subtitles": "What's your Halloween costume gonna be this year, Pharah?",
           "render": "Heroic.png",
@@ -76115,7 +75484,7 @@
         {
           "id": "122b100d-3e88-4c11-b2e0-25f7893e1633",
           "hero": "Pharah",
-          "voice": "",
+          "voice": "Pharah_-_Cold.ogg",
           "voicePrefix": "",
           "subtitles": "Cold.",
           "render": "Heroic.png",
@@ -76383,7 +75752,7 @@
           ]
         }
       ],
-      "selectedPathId": "4ec916f1-473c-45bf-aec6-12483ef78731"
+      "selectedPathId": "48e4b494-4587-44ff-81c6-20ab0bc09863"
     },
     {
       "id": "d264aaa5-a04b-4226-87ff-be8d54fa3c27",
@@ -76765,7 +76134,8 @@
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -76788,8 +76158,37 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "2f6dc92f-6ced-44d8-b9a1-3c6aceaf3ad8",
+          "hero": "Symmetra",
+          "voice": "Symmetra_-_Should_I_be_worried__I_heard_you_leveled_skyscrapers.ogg",
+          "voicePrefix": "",
+          "subtitles": "Should I be worried? I heard you leveled skyscrapers.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "f2e87c78-4452-40f2-9d09-b50425752783",
+          "label": "Embodiment of chaos",
+          "lineIds": [
+            "1d55439f-1dc5-4c14-9012-30732ba493f0",
+            "22bb2ef7-7358-4b0f-859b-22f39e4ad611"
+          ]
+        },
+        {
+          "id": "6ed48fc0-3324-426e-97f1-d28a7e8b6361",
+          "label": "Leveled skyscrapers",
+          "lineIds": [
+            "1d55439f-1dc5-4c14-9012-30732ba493f0",
+            "2f6dc92f-6ced-44d8-b9a1-3c6aceaf3ad8"
+          ]
+        }
+      ],
+      "selectedPathId": "6ed48fc0-3324-426e-97f1-d28a7e8b6361"
     },
     {
       "id": "4b7199a3-6544-4ed3-86f3-619418022c81",
@@ -77027,46 +76426,14 @@
       ]
     },
     {
-      "id": "a4a2c63d-735b-4971-9a5a-ce232844172f",
-      "entryType": "dialogue",
-      "name": "177",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "f70d0459-11da-4076-9ad7-1954a5897fbb",
-          "hero": "Genji",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "(on Route 66) Why have you come back to this place, Cassidy?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "93668a0b-2661-4a66-9491-b727d01fafdc",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_the_only_thing_it_ever_is_unfinished_business_and_unhappy_history.ogg",
-          "voicePrefix": "",
-          "subtitles": "The only thing it ever is... Unfinished business, and unhappy history.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "dc68876f-e2bd-4c22-b325-6d89b97eb897",
       "entryType": "dialogue",
-      "name": "178",
+      "name": "Change of course",
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -77100,12 +76467,31 @@
           "era": "Overwatch",
           "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "e0a682f3-8459-43c7-af8a-ed41ce6af922",
+          "label": "Not Genji",
+          "lineIds": [
+            "5cba55a9-a927-4a49-a905-f78c89ab7a7d",
+            "4566d1e9-52f8-441e-a101-8b1677f1a992"
+          ]
+        },
+        {
+          "id": "425ca490-68c5-4bfa-9fdf-e8c2421fcc59",
+          "label": "Beyond Redemption",
+          "lineIds": [
+            "5cba55a9-a927-4a49-a905-f78c89ab7a7d",
+            "4b25e94e-bd59-4d09-803d-73f73fc8bf04"
+          ]
+        }
+      ],
+      "selectedPathId": "e0a682f3-8459-43c7-af8a-ed41ce6af922"
     },
     {
       "id": "ce8c0437-5d74-4bbf-be39-dab1e4f7caaf",
       "entryType": "dialogue",
-      "name": "179",
+      "name": "A pity",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77138,7 +76524,7 @@
     {
       "id": "9707a16e-3722-4712-8837-a66d57b4dd94",
       "entryType": "dialogue",
-      "name": "180",
+      "name": "Don't You Recognize Me",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77149,7 +76535,7 @@
         {
           "id": "7e3a3787-b088-45dc-9d1d-be4a8a530d8a",
           "hero": "Genji",
-          "voice": "Genji_-_whats_wrong_hanzo_dont_you_recognize_me.ogg",
+          "voice": "Genji_-_What's_wrong,_Hanzo__Don't_you_recognize_me.ogg",
           "voicePrefix": "",
           "subtitles": "What's wrong, Hanzo? Don't you recognize me?",
           "render": "Heroic.png",
@@ -77171,7 +76557,7 @@
     {
       "id": "bd7e0d4a-e99b-4954-8fa8-200f8f5dd16f",
       "entryType": "dialogue",
-      "name": "181",
+      "name": "Built an Empire",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77182,9 +76568,9 @@
         {
           "id": "af234588-2502-4cd7-8ba3-b6c697e4893f",
           "hero": "Hanzo",
-          "voice": "Hanzo_-_together_we_couldve_built_an_empire.ogg",
+          "voice": "Hanzo_-_We_could_have_built_an_empire_together.ogg",
           "voicePrefix": "",
-          "subtitles": "Together we could've built an empire.",
+          "subtitles": "We could have built an empire together.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -77204,7 +76590,7 @@
     {
       "id": "8cd8af9f-ac2b-46fb-9c88-2278c4e282e9",
       "entryType": "dialogue",
-      "name": "182",
+      "name": "Ammount to Anything",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77237,7 +76623,7 @@
     {
       "id": "a9be1a27-9a47-498c-81f8-0d18ce3a61c6",
       "entryType": "dialogue",
-      "name": "183",
+      "name": "Better Than Me",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77248,7 +76634,7 @@
         {
           "id": "6c5af287-cb32-4e34-a1a7-23f578ccd8dd",
           "hero": "Hanzo",
-          "voice": "Genji_-_I_am_certain_of_it.ogg",
+          "voice": "Hanzo_-_Think_you_can_do_better_than_me.ogg",
           "voicePrefix": "",
           "subtitles": "Think you can do better than me?",
           "render": "Heroic.png",
@@ -77270,7 +76656,7 @@
     {
       "id": "c6554f6c-671a-4760-a644-bafdd166ecc1",
       "entryType": "dialogue",
-      "name": "184",
+      "name": "Fearing Death",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77303,7 +76689,7 @@
     {
       "id": "060e66f4-3f16-47bc-853e-4a6096614aef",
       "entryType": "dialogue",
-      "name": "185",
+      "name": "What would father think",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77394,7 +76780,7 @@
           ]
         }
       ],
-      "selectedPathId": "c3fdde62-de2b-4363-8123-a446f51ce364"
+      "selectedPathId": "d8b01968-fd83-429c-9545-5d145e029c55"
     },
     {
       "id": "e2448f1d-f098-4928-a178-ddd5eef7de04",
@@ -77564,7 +76950,7 @@
     {
       "id": "6aec7549-f7e9-4ac0-8331-784a44e14d41",
       "entryType": "dialogue",
-      "name": "192",
+      "name": "At Peace",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77597,7 +76983,7 @@
     {
       "id": "d4edd85d-1384-4dec-805c-36a90bdb1acc",
       "entryType": "dialogue",
-      "name": "193",
+      "name": "Changing the Past",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77630,7 +77016,7 @@
     {
       "id": "26795ed1-ea2a-44da-8995-0e6141d9d20a",
       "entryType": "dialogue",
-      "name": "194",
+      "name": "Blaming yourself",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77853,12 +77239,12 @@
           ]
         }
       ],
-      "selectedPathId": "18aaec70-60ad-43b6-a3ca-d2c7ba571cdf"
+      "selectedPathId": "323bb334-d931-477b-a539-5c8c6003f8bb"
     },
     {
       "id": "207e6682-900c-4f2e-98be-917e57204dd6",
       "entryType": "dialogue",
-      "name": "Reunion with your brother",
+      "name": "Your Reunion",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -77882,39 +77268,6 @@
           "voice": "Genji_-_He_is_still_not_ready_for_time_to_flow_forward_again.ogg",
           "voicePrefix": "",
           "subtitles": "He's still not ready for time to flow forward again.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "551e3450-54e6-4ba4-934f-3231cbd01fb5",
-      "entryType": "dialogue",
-      "name": "201",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "92216d41-bdd2-493a-a6e0-0de7b9f044a6",
-          "hero": "Genji",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Any chocolate today, brother?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "fe7067cf-efeb-443e-af75-ddcb5e047739",
-          "hero": "Hanzo",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Those are *your* amusement, not mine.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -77955,42 +77308,9 @@
       ]
     },
     {
-      "id": "d3b9df9d-eff6-4fbd-aa1e-036f05348dbf",
-      "entryType": "dialogue",
-      "name": "203",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "0ea490c7-f0c1-489d-8e3f-011993bc66c7",
-          "hero": "Genji",
-          "voice": "Genji_-_It_is_not_too_late_to_change_your_course,_brother.ogg",
-          "voicePrefix": "",
-          "subtitles": "It is not too late to change your course, brother.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "0a66b570-bffd-4320-8bb6-f39cc3ddaaf5",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_You_are_mistaken,_brother._I_am_beyond_redemption.ogg",
-          "voicePrefix": "",
-          "subtitles": "You are mistaken, brother. I am beyond redemption.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "c43059f1-6533-406b-bab4-d899ed62f4d3",
       "entryType": "dialogue",
-      "name": "204",
+      "name": "Hiding Treassure",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78023,7 +77343,7 @@
     {
       "id": "1ed7c4f9-e5ef-432e-9b2f-ff59879c3498",
       "entryType": "dialogue",
-      "name": "207",
+      "name": "Kindred Spirit",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78034,7 +77354,7 @@
         {
           "id": "2c3c6fac-ce70-454d-8506-4f5b77c9aab8",
           "hero": "Symmetra",
-          "voice": "Hanzo_-_I_sense_a_kindred_spirit.ogg",
+          "voice": "Symmetra_-_Order_and_discipline._That_is_the_only_way_to_live.ogg",
           "voicePrefix": "",
           "subtitles": "Order and discipline. That is the only way to live.",
           "render": "Heroic.png",
@@ -78056,7 +77376,7 @@
     {
       "id": "6103c7d9-3704-4cec-ad17-a1c52851099d",
       "entryType": "dialogue",
-      "name": "208",
+      "name": "Bow Against Rifle",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78067,9 +77387,9 @@
         {
           "id": "6b19cb50-f2ba-4926-9ef7-dac71f862a99",
           "hero": "Hanzo",
-          "voice": "Widowmaker_-_That_would_be_the_last_mistake_you_ever_made.ogg",
+          "voice": "Hanzo_-_I_would_take_my_bow_against_your_rifle_any_day.ogg",
           "voicePrefix": "",
-          "subtitles": "I would wager on my bow against your rifle any day.",
+          "subtitles": "I would take my bow against your rifle any day.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -78089,7 +77409,7 @@
     {
       "id": "e1c1ecae-8bbe-4572-95ff-db18fdffe218",
       "entryType": "dialogue",
-      "name": "209",
+      "name": "At what cost",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78146,270 +77466,6 @@
           "voice": "Hanzo_-_We_are_nothing_alike.ogg",
           "voicePrefix": "",
           "subtitles": "We are nothing alike!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "5c1cad50-818e-4c24-8747-2fd0c686d9d2",
-      "entryType": "dialogue",
-      "name": "211",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "2fdba3ad-5709-4aac-ba88-15fe758916c4",
-          "hero": "Cassidy",
-          "voice": "Hanzo_-_We_drink_when_the_job_is_done.ogg",
-          "voicePrefix": "",
-          "subtitles": "Hey Archer, what say you pass that flask around so we can all have a drink? This is thirsty work.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "6915a0d0-599a-42b5-922a-135f274f44b8",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_We_drink_when_the_job_is_done.ogg",
-          "voicePrefix": "",
-          "subtitles": "We drink when the job is done.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "78c2e31c-ed74-4e64-93a6-8a1587127417",
-      "entryType": "dialogue",
-      "name": "212",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "840ade42-f5ca-434a-b8fa-ee266ca3acce",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_You_think_this_lord's_good_for_the_money__Castle_looks_like_it's_seen_better_days.ogg",
-          "voicePrefix": "",
-          "subtitles": "You think this lord's good for the money? This castle looks like it's seen better days.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d52f2f5d-fa6e-4d18-a81e-0ed454466841",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_If_he_breaks_his_word,_he_has_made_some_powerful_enemies.ogg",
-          "voicePrefix": "",
-          "subtitles": "If he breaks his word, he has made some powerful enemies.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "963fc411-f4c9-484b-98d0-4e16af9470bd",
-      "entryType": "dialogue",
-      "name": "213",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "ddb86fce-51c3-44fd-b4a2-b43bc7b46449",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_You_ever_heard_of_Robin_Hood_.ogg",
-          "voicePrefix": "",
-          "subtitles": "You ever heard of Robin Hood?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "5c82e1ce-a670-4d9f-9835-44f60e796eab",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_Indeed._We_have_our_own_version__Ishikawa_Goemon._He_was_boiled_alive.ogg",
-          "voicePrefix": "",
-          "subtitles": "Indeed. We have our own version: Ishikawa Goemon. He was boiled alive.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "0298611d-0467-4ab9-9b61-2b75bf7db5be",
-      "entryType": "dialogue",
-      "name": "214",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "503a9d7e-2363-4fd1-999f-23d8ce1eb932",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_My_people_would_call_you_a_ronin__a_masterless_samurai.ogg",
-          "voicePrefix": "",
-          "subtitles": "My people would call you a rōnin; a masterless samurai.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "5e6e4e6f-a277-4f3a-9eb6-e3a8039ca237",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Ronin..._I_like_the_sound_of_that.ogg",
-          "voicePrefix": "",
-          "subtitles": "Rōnin... I like the sound of that.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "e04374d2-7049-4f9b-91e0-244f1904f02e",
-      "entryType": "dialogue",
-      "name": "215",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "4995296a-c816-4198-a8ac-a0bd0a1b2d65",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_You're_not_bad_with_a_bow,_but_don't_you_think_it's_a_little_old_fashioned_.ogg",
-          "voicePrefix": "",
-          "subtitles": "You're not bad with a bow, but don't you think it's a little old fashioned?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "4e2729d5-4ff7-41b2-9617-e58c8f2946b0",
-          "hero": "Hanzo",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Perhaps there's still a future for anachronisms.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "e0dc1912-7bc9-4a64-b339-950e5e5580cb",
-      "entryType": "dialogue",
-      "name": "216",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "aed38229-1603-4234-b4e2-5744d4996dc7",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_What's_home_like_for_you,_archer_.ogg",
-          "voicePrefix": "",
-          "subtitles": "What's home like for you, Archer?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "5463da16-0609-4eb7-a7dc-7c42cbf0e590",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_A_village_high_atop_a_hill._There_are_cherry_blossoms_in_the_spring._I_miss_it_dearly.ogg",
-          "voicePrefix": "",
-          "subtitles": "A village high atop a hill. There are cherry blossoms in the spring. I miss it dearly.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "63dc194c-caff-4713-8f44-68689626f8d0",
-      "entryType": "dialogue",
-      "name": "217",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "3f56dd06-c2fc-4495-a055-23fb426fcfee",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_Getting_tired,_gunslinger_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Getting tired, Gunslinger?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d14533dc-81de-4ac1-900f-1c2edd639c8b",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Not_a_chance.ogg",
-          "voicePrefix": "",
-          "subtitles": "Not a chance.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "be07b5c3-db22-4b19-910c-625f43c6e5b8",
-      "entryType": "dialogue",
-      "name": "218",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "bec1d3b4-2520-488a-b887-8cf6044c56eb",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Doesn't_seem_to_be_any_end_to_the_monsters.ogg",
-          "voicePrefix": "",
-          "subtitles": "Doesn't seem to be any end to the monsters.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "a0c58498-1f72-4157-b3b4-76007cb94bca",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_Let_them_come…_I_could_always_use_the_practice.ogg",
-          "voicePrefix": "",
-          "subtitles": "Let them come, I could always use the practice.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -78565,108 +77621,9 @@
       ]
     },
     {
-      "id": "792a8730-ad16-48d7-8f23-5a295128d261",
-      "entryType": "dialogue",
-      "name": "223",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "1a268d28-5a5e-48d8-882f-07c154a6a579",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_What_sort_of_monster_do_you_think_the_Reaper_is_.ogg",
-          "voicePrefix": "",
-          "subtitles": "What sort of monster do you think The Reaper is?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "85766d61-d5f8-4623-9df9-0aa176576e2c",
-          "hero": "Soldier 76",
-          "voice": "Soldier_76_-_The_worst_kind_there_is…_a_wicked_man.ogg",
-          "voicePrefix": "",
-          "subtitles": "The worst kind there is... a wicked man.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "50008bcd-2fac-471b-823b-bc1311860b12",
-      "entryType": "dialogue",
-      "name": "224",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "a5b90917-3430-42c9-bd74-491eebcc88e2",
-          "hero": "Soldier 76",
-          "voice": "Soldier_76_-_Surely_Dr._Junkenstein_must_be_running_out_of_his_machines.ogg",
-          "voicePrefix": "",
-          "subtitles": "Surely Dr. Junkenstein must be running out of his machines.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "538027c3-ff97-4b3d-9178-3baee07e3398",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_He_strikes_me_as_a_man_who_had_too_many_free_hours_to_invest_in_his_pursuits.ogg",
-          "voicePrefix": "",
-          "subtitles": "He strikes me as a man who had too many free hours to invest in his pursuits.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "43090875-98df-4813-b736-31cae456a25c",
-      "entryType": "dialogue",
-      "name": "225",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "5e34e9f4-af57-4841-9ad8-2458293f8f99",
-          "hero": "Soldier 76",
-          "voice": "Soldier_76_-_What_drives_a_man_to_such_madness_.ogg",
-          "voicePrefix": "",
-          "subtitles": "What drives a man to such madness?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ffdf3137-c3e2-4b71-90f0-db13e88d558c",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_To_be_tested…_and_to_fail.ogg",
-          "voicePrefix": "",
-          "subtitles": "To be tested... and to fail.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "57469f61-c94a-4cf8-9410-17a8cb4f41bc",
       "entryType": "dialogue",
-      "name": "226",
+      "name": "Any chocolate",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78699,7 +77656,7 @@
     {
       "id": "a88218d8-1f67-44f5-94d6-f3855e9417ec",
       "entryType": "dialogue",
-      "name": "227",
+      "name": "Reckless youth",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78730,52 +77687,9 @@
       ]
     },
     {
-      "id": "ec1105d3-d3bb-4ba8-b341-7f625ed518ba",
-      "entryType": "dialogue",
-      "name": "228",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "3ae5b30a-61b9-49f8-82c6-e73ee4a5838e",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_You_look_like_a_man_who_inherited_a_vast_trove_of_ostentatious_wealth!.ogg",
-          "voicePrefix": "",
-          "subtitles": "You look like a man who inherited a vast trove of ostentatious wealth!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d395a41a-03fd-43b7-bbbe-ca43f955b13a",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_I_gave_up_my_father's_empire..._and_his_fortune_alongside_it.ogg",
-          "voicePrefix": "",
-          "subtitles": "I gave up my father's empire... and his fortune alongside it.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "27ad5a70-3c1a-4e4d-8fe4-e831f9563ade",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_Who_has_it_now_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh... Who has it now?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "8507257b-a6e1-4604-811c-768ad1ee0126",
       "entryType": "dialogue",
-      "name": "230",
+      "name": "Cold Looking",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78786,9 +77700,9 @@
         {
           "id": "66a24f92-2524-4302-91d2-f81418a2850c",
           "hero": "Junkrat",
-          "voice": "",
+          "voice": "Junkrat_-_Brrr..._I_get_cold_just_looking_at_you.ogg",
           "voicePrefix": "",
-          "subtitles": "Brrr. I get cold just looking at ya.",
+          "subtitles": "Brrr... I get cold just looking at you.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -78841,7 +77755,7 @@
     {
       "id": "0ecd5d47-0068-4619-9659-1cece611c86d",
       "entryType": "dialogue",
-      "name": "232",
+      "name": "Blowing Up",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78874,7 +77788,7 @@
     {
       "id": "37c9f9cb-a31a-46ff-abf0-98789ccee36e",
       "entryType": "dialogue",
-      "name": "233",
+      "name": "Lunatic",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -78898,72 +77812,6 @@
           "voice": "Junkrat_-_Oh._Thank_you_very_much!.ogg",
           "voicePrefix": "",
           "subtitles": "Oh, thank you very much.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "d8bee4e6-ff28-420a-8295-a9e120de162e",
-      "entryType": "dialogue",
-      "name": "234",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "6df5deea-1822-465a-82c8-4a41c90a3ff9",
-          "hero": "Reaper",
-          "voice": "Reaper_-_You_got_a_problem,_Junker_.ogg",
-          "voicePrefix": "",
-          "subtitles": "You got a problem, Junker?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ec1816db-f50e-484a-9b79-17d551463cfd",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_I_don’t_do_problems—just_solutions!.ogg",
-          "voicePrefix": "",
-          "subtitles": "I don't do problems-just solutions!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "67591a8b-63b6-4539-8afa-35a54cfc4270",
-      "entryType": "dialogue",
-      "name": "235",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "4ba04ebe-b053-4386-beff-4ef121248934",
-          "hero": "Reaper",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "What did you find in there, rat?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "4c812c7d-d76d-439c-a986-9601633dc1c8",
-          "hero": "Junkrat",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "No idea what ya' sayin' mate.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -79010,21 +77858,10 @@
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic",
-        "Multi Path"
+        "Classic"
       ],
       "scene": "Default.png",
       "lines": [
-        {
-          "id": "e3d43d0e-3b26-466a-9300-95d81cfe5480",
-          "hero": "Roadhog",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Hey. Stay out of trouble.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
         {
           "id": "6a0d7caf-8f73-4820-8adc-7bab2aff6890",
           "hero": "Roadhog",
@@ -79045,26 +77882,7 @@
           "era": "Overwatch",
           "status": "active"
         }
-      ],
-      "paths": [
-        {
-          "id": "70b74fdd-2ee5-4efc-956a-271a87ddc8d3",
-          "label": "Hey",
-          "lineIds": [
-            "e3d43d0e-3b26-466a-9300-95d81cfe5480",
-            "069dbc19-e33c-4125-9f2a-dc165226edc9"
-          ]
-        },
-        {
-          "id": "325bc9c5-aaa9-427f-a8d9-25a1abcc8408",
-          "label": "For once",
-          "lineIds": [
-            "6a0d7caf-8f73-4820-8adc-7bab2aff6890",
-            "069dbc19-e33c-4125-9f2a-dc165226edc9"
-          ]
-        }
-      ],
-      "selectedPathId": "70b74fdd-2ee5-4efc-956a-271a87ddc8d3"
+      ]
     },
     {
       "id": "c310580e-16cf-43a1-a3b1-8f4d17350ebb",
@@ -79168,7 +77986,7 @@
     {
       "id": "29b07ca6-3164-4303-808d-21cfff2feb3a",
       "entryType": "dialogue",
-      "name": "242",
+      "name": "Trade Arms",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -79189,7 +78007,7 @@
         {
           "id": "0591ff2f-1f0d-43b5-8cb3-5e43594389ec",
           "hero": "Torbjörn",
-          "voice": "Torbjörn_-_i_dont_think_theyre_compatible.ogg",
+          "voice": "Torbjörn_-_I_don't_think_they're_compatible.ogg",
           "voicePrefix": "",
           "subtitles": "I don't think they're compatible.",
           "render": "Heroic.png",
@@ -79199,42 +78017,9 @@
       ]
     },
     {
-      "id": "38ae76a6-ec09-4da8-88d5-3313db994c8c",
-      "entryType": "dialogue",
-      "name": "243",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "59d67459-8881-421c-a354-6e6552fe79bb",
-          "hero": "Junkrat",
-          "voice": "Junkrat_-_How_many_of_you_Overwatch_people_are_missing_an_eye_.ogg",
-          "voicePrefix": "",
-          "subtitles": "How many of you overwatch people are missing an eye?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "b06ec00e-c1e4-4fa3-ad1e-eb801b7ae1f0",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_How_many_of_you_scoundrels_are_missing_a_leg.ogg",
-          "voicePrefix": "",
-          "subtitles": "How many of you scoundrels are missing a leg?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "005896e8-2774-4c26-801b-4b4a06a0b774",
       "entryType": "dialogue",
-      "name": "244",
+      "name": "My LIne",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -79247,7 +78032,7 @@
           "hero": "Junkrat",
           "voice": "Junkrat_-_Cheers,_mate!_The_cavalry's_here!.ogg",
           "voicePrefix": "",
-          "subtitles": "Cheers, mate! The cavalry's here! (Mocking Tracer)",
+          "subtitles": "Cheers, mate! The cavalry's here!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -79267,7 +78052,7 @@
     {
       "id": "adb612bd-0b96-4c04-b9d7-adaceeabb447",
       "entryType": "dialogue",
-      "name": "245",
+      "name": "Have a look",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -79278,9 +78063,9 @@
         {
           "id": "65010078-096b-4965-9162-446b89972877",
           "hero": "Junkrat",
-          "voice": "Tracer_-_Over_my_dead_body.ogg",
+          "voice": "Junkrat_-_Think_I_could_have_a_look_at_one_of_those_bombs_of_yours.ogg",
           "voicePrefix": "",
-          "subtitles": "Think I could have a look at one of those \"bombs\" of yours?",
+          "subtitles": "Think I could have a look at one of those bombs of yours?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -79957,7 +78742,7 @@
     {
       "id": "05f16ea5-dfe3-4a91-8e04-1e07e605c88f",
       "entryType": "dialogue",
-      "name": "273",
+      "name": "What Time Is It",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -79968,17 +78753,19 @@
         {
           "id": "70d625fd-b157-4bb7-8027-7c5ee1a2f8c2",
           "hero": "Mei",
-          "voice": "",
+          "voice": "Mei_-_Hey,_McCree,_do_you_know_what_time_it_is.ogg",
           "voicePrefix": "",
-          "subtitles": "Hey, Cassidy, do you know what time it is?",
+          "subtitles": "Hey, McCree, do you know what time it is?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Mei_-_Hey,_do_you_know_what_time_it_is.ogg",
+          "modernSubtitles": "Hey, do you know what time it is?"
         },
         {
           "id": "81d7b852-157e-42c5-bbc6-faed485ce68d",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_well_id_say_its_about_now_i_see_what_youre_doing_there.ogg",
+          "voice": "Cassidy_-_Well,_I'd_say_it's_about..._now_I_see_what_you're_doing_there.ogg",
           "voicePrefix": "",
           "subtitles": "Well, I'd say it's about... now I see what you're doing there!",
           "render": "Heroic.png",
@@ -79990,11 +78777,12 @@
     {
       "id": "67bd4df8-a5d6-42e5-a865-721eb0be00f4",
       "entryType": "dialogue",
-      "name": "274",
+      "name": "No-Good Bully",
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -80003,7 +78791,7 @@
           "hero": "Mei",
           "voice": "Mei_-_You're_just_a_no_good_bully!_How_can_you_even_look_at_yourself_in_the_mirror_.ogg",
           "voicePrefix": "",
-          "subtitles": "You're just a no-good bully. How can you even look at yourself in the mirror? OR You are terrible. OR I hate bullies like you.",
+          "subtitles": "You're just a no-good bully. How can you even look at yourself in the mirror?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80011,9 +78799,9 @@
         {
           "id": "e1a42768-d014-48f8-8fc0-33e1fecb1ce4",
           "hero": "Junkrat",
-          "voice": "",
+          "voice": "Junkrat_-_That's_cold!.ogg",
           "voicePrefix": "",
-          "subtitles": "That's cold. OR",
+          "subtitles": "That's cold!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80023,12 +78811,31 @@
           "hero": "Junkrat",
           "voice": "Junkrat_-_I_beg_your_pardon!_I_consider_myself_a_freedom_fighter,_a..._misunderstood_one.ogg",
           "voicePrefix": "",
-          "subtitles": "I beg your pardon, I consider myself a freedom fighter. A misunderstood one.",
+          "subtitles": "I beg your pardon! I consider myself a freedom fighter, a... misunderstood one.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "1f158c77-303e-4dd5-85bf-3402c25464f8",
+          "label": "That's cold",
+          "lineIds": [
+            "42504ac2-63bd-4906-a8dd-d5d39324b881",
+            "e1a42768-d014-48f8-8fc0-33e1fecb1ce4"
+          ]
+        },
+        {
+          "id": "97416d79-f5ec-4a3e-933d-a313b7c631c0",
+          "label": "Freedom fighter",
+          "lineIds": [
+            "42504ac2-63bd-4906-a8dd-d5d39324b881",
+            "4bda294d-df59-4097-888b-e7c9a78afed3"
+          ]
+        }
+      ],
+      "selectedPathId": "97416d79-f5ec-4a3e-933d-a313b7c631c0"
     },
     {
       "id": "efea32df-4975-4738-af52-73232326e656",
@@ -80132,7 +78939,7 @@
     {
       "id": "a38ccf71-8d25-4e9a-b34b-a19f8657bde6",
       "entryType": "dialogue",
-      "name": "278",
+      "name": "Front Lines Scientist",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -80143,7 +78950,7 @@
         {
           "id": "e66a94a4-b5eb-470b-a43d-6d7e92fff3ac",
           "hero": "Soldier 76",
-          "voice": "Mei_-_I_guess_it's_a_good_thing_I_have_you_to_watch_my_back.ogg",
+          "voice": "Soldier_76_-_The_front_lines_are_no_place_for_a_scientist.ogg",
           "voicePrefix": "",
           "subtitles": "The front lines are no place for a scientist.",
           "render": "Heroic.png",
@@ -80165,7 +78972,7 @@
     {
       "id": "01748291-9e98-49d4-8932-8cd64d83f6cc",
       "entryType": "dialogue",
-      "name": "279",
+      "name": "Little Robot",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -80176,9 +78983,9 @@
         {
           "id": "b233b1b8-5ee1-48f5-b0e9-1f915a96f849",
           "hero": "Torbjörn",
-          "voice": "Torbjörn_-_i_was_wondering_if_i_could_have_a_look_at_your_little.ogg",
+          "voice": "Torbjörn_-_I_was_wondering_if_I_could_take_a_look_at_your_little_robot.ogg",
           "voicePrefix": "",
-          "subtitles": "I was wondering... If I could have a look at your little robot?",
+          "subtitles": "I was wondering if I could take a look at your little robot.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80188,7 +78995,7 @@
           "hero": "Mei",
           "voice": "Mei_-_I_suppose_so..._just_keep_that_hammer_to_yourself.ogg",
           "voicePrefix": "",
-          "subtitles": "I suppose so, just keep that hammer to yourself.",
+          "subtitles": "I suppose so... just keep that hammer to yourself.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80198,7 +79005,7 @@
     {
       "id": "397bf8fb-d0aa-488e-8cd8-21602577ff45",
       "entryType": "dialogue",
-      "name": "280",
+      "name": "Inspiration",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -80209,7 +79016,7 @@
         {
           "id": "df243c09-cab6-46f7-8c11-e9845777acaa",
           "hero": "Mei",
-          "voice": "",
+          "voice": "Mei_-_Tracer!_You_are_so_amazing,_you_inspire_me.ogg",
           "voicePrefix": "",
           "subtitles": "Tracer, you're so amazing! You inspire me.",
           "render": "Heroic.png",
@@ -80219,9 +79026,9 @@
         {
           "id": "6718feb8-ad80-43c6-9b98-a50a59e29031",
           "hero": "Tracer",
-          "voice": "Tracer_-_Mei,_you're_the_real_hero!.ogg",
+          "voice": "Tracer_-_Mei,_you're_the_real_hero.ogg",
           "voicePrefix": "",
-          "subtitles": "Mei, you're the real hero.",
+          "subtitles": "Mei, you're the real hero!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80231,7 +79038,7 @@
     {
       "id": "1b2441cd-0843-40cc-bfdc-87f27532f587",
       "entryType": "dialogue",
-      "name": "281",
+      "name": "Aren't you warm",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -80255,39 +79062,6 @@
           "voice": "Mei_-_Yes,_but_it's_too_late_to_change!.ogg",
           "voicePrefix": "",
           "subtitles": "Yes. But it's too late to change!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "98cde97c-f70b-471f-8322-baf9493c5d26",
-      "entryType": "dialogue",
-      "name": "282",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e20031a8-b0b2-4086-9816-8993d425fcfc",
-          "hero": "Tracer",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Mei, you were such an inspiration to me!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "862e6b30-bec2-4e3e-8f57-91456c723bea",
-          "hero": "Mei",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "You inspired me too!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -80890,7 +79664,7 @@
           ]
         }
       ],
-      "selectedPathId": "29f4dbb1-ae31-474a-9bb8-2eeb1b79ea81"
+      "selectedPathId": "ef2125ea-d732-42fa-86e1-30911a5b043e"
     },
     {
       "id": "047989d6-291d-4bf4-8ddc-cfb27c1e37d0",
@@ -81883,82 +80657,6 @@
       ]
     },
     {
-      "id": "db59e761-00ef-4141-9a88-beb2abf9a8a6",
-      "entryType": "dialogue",
-      "name": "340",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "ca139076-801d-4146-88fc-0fca8a646e31",
-          "hero": "Pharah",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Cassidy, where did you learn to shoot like that? Was it Jack, Gabriel?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e505ffa0-7cc9-4a5d-afb2-50e8bdcdd558",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_always_was_a_good_shot_but_i_got_a_few_pointers_from.ogg",
-          "voicePrefix": "",
-          "subtitles": "Always was a good shot, but I got a few pointers from the best. That'd be your mother.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "ec524b77-4fd6-4c1f-86d6-4f8f403846f0",
-      "entryType": "dialogue",
-      "name": "341",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "190acec0-567c-480b-8535-9142d655bcf7",
-          "hero": "Pharah",
-          "voice": "Pharah_-_Why_not_fire_arrows_that_explode.ogg",
-          "voicePrefix": "",
-          "subtitles": "Why not... fire arrows that explode?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "cf545d92-0efc-45a1-bb65-aad14f3be432",
-          "hero": "Hanzo",
-          "voice": "Hanzo_-_With_enough_skill_and_precision,_explosives_are_unnecessary.ogg",
-          "voicePrefix": "",
-          "subtitles": "With enough skill and precision, explosives are unnecessary.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e29c11df-60fc-45e3-9e14-3b11229b5e7e",
-          "hero": "Pharah",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "You saying I cannot aim? **laughs** I can aim.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "1dff5f05-6879-4569-b7c4-5247a9194b5e",
       "entryType": "dialogue",
       "name": "Ice Fishing",
@@ -82027,7 +80725,7 @@
     {
       "id": "f6eb34a7-cb02-4281-b19d-9a8e40e61423",
       "entryType": "dialogue",
-      "name": "346",
+      "name": "Mother Would Be Proud",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82038,7 +80736,7 @@
         {
           "id": "8af9d931-63cc-47d0-8e6a-9cdcc9b5bdbd",
           "hero": "Soldier 76",
-          "voice": "",
+          "voice": "Soldier_76_-_Your_mother_would_have_been_proud_of_you.ogg",
           "voicePrefix": "",
           "subtitles": "Your mother would've been proud of you.",
           "render": "Heroic.png",
@@ -82058,42 +80756,9 @@
       ]
     },
     {
-      "id": "24c181a7-3bba-4d98-b532-5bffda14eca9",
-      "entryType": "dialogue",
-      "name": "347",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e5c1c982-46c4-4cdb-8891-11cdbec97ece",
-          "hero": "Soldier 76",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Can't believe Ana Amari's kit took up with mercenaries like Helix.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "632a1f23-1f16-4b65-ba96-0f0108c191b6",
-          "hero": "Pharah",
-          "voice": "Pharah_-_Oh,_as_opposed_to_whatever_you_are_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh, as opposed to, whatever you are?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "1d8b7e69-0a89-4cb1-94c1-df3a65ce5cb4",
       "entryType": "dialogue",
-      "name": "348",
+      "name": "Heard that before",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82126,7 +80791,7 @@
     {
       "id": "d6eb09d7-e7d2-4f0e-87f3-7740103a1b1f",
       "entryType": "dialogue",
-      "name": "349",
+      "name": "New Hobby",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82159,7 +80824,7 @@
     {
       "id": "8c80c599-875e-4b52-8935-6c5e8c45396d",
       "entryType": "dialogue",
-      "name": "350",
+      "name": "Mark VI Suit",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82172,7 +80837,7 @@
           "hero": "Pharah",
           "voice": "Pharah_-_Hey_Torbjörn,_check_out_my_new_suit._Mark_VI._State_of_the_art.ogg",
           "voicePrefix": "",
-          "subtitles": "Hey, Torbjörn, check out my new suit. Mark VI, state of the art.",
+          "subtitles": "Hey, Torbjörn, check out my new suit. Mark VI. State of the art.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -82180,9 +80845,9 @@
         {
           "id": "7a96319b-ffb6-450f-b383-dc1ab8e354f6",
           "hero": "Torbjörn",
-          "voice": "",
+          "voice": "Torbjörn_-_(clears_throat)_Jump_jets..._concussion_rockets..._(grumbles)_Well,_yes,_it's_looking_pretty_good.ogg",
           "voicePrefix": "",
-          "subtitles": "**clears throat** Jump jets, concussion rockets. Umm... Well, yes it's looking pretty good.",
+          "subtitles": "**clears throat** Jump jets... concussion rockets... **grumbles** Well, yes, it's looking pretty good.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -82192,7 +80857,7 @@
     {
       "id": "e7c10ef2-7225-4e30-8d6a-ec14d1a06e27",
       "entryType": "dialogue",
-      "name": "351",
+      "name": "Fixing Up your Suit",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82225,11 +80890,12 @@
     {
       "id": "9cc668b6-6e0f-4466-9caa-3fc3bce1b248",
       "entryType": "dialogue",
-      "name": "352",
+      "name": "Winter Plans",
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -82263,12 +80929,31 @@
           "era": "Overwatch",
           "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "1ae1d711-18ce-4bf7-9d20-92bc7a01365d",
+          "label": "Flying Home",
+          "lineIds": [
+            "df7211e8-5e7c-4890-a7ce-61ebcf3d52a1",
+            "e23b394e-adeb-44db-b901-26f3ee45bb1d"
+          ]
+        },
+        {
+          "id": "4b2daec4-3fc6-4ad4-b795-ee0ecda77074",
+          "label": "Canada",
+          "lineIds": [
+            "df7211e8-5e7c-4890-a7ce-61ebcf3d52a1",
+            "0a56379c-6ebe-43f7-8074-1f34f437b562"
+          ]
+        }
+      ],
+      "selectedPathId": "1ae1d711-18ce-4bf7-9d20-92bc7a01365d"
     },
     {
       "id": "a774d4ef-ee11-4c4d-80d1-fcef2d89b001",
       "entryType": "dialogue",
-      "name": "353",
+      "name": "Who knows the Future",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82301,7 +80986,7 @@
     {
       "id": "b9c03d27-dfb8-4246-8ee5-d0159652345c",
       "entryType": "dialogue",
-      "name": "354",
+      "name": "Joining Helix",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82322,9 +81007,9 @@
         {
           "id": "3622019e-850b-40d7-9f71-3ac5a9c246e3",
           "hero": "Tracer",
-          "voice": "Tracer_-_aw_flattered_really_but_ive_got_some_other_things_occupying_my_time.ogg",
+          "voice": "Tracer_-_Aw,_I'm_flattered,_really,_but_I_have_some_other_things_occupying_my_time_now.ogg",
           "voicePrefix": "",
-          "subtitles": "Aw, flattered! Really! But I've got some other things occupying my time now.",
+          "subtitles": "Aw, I'm flattered, really, but I have some other things occupying my time now.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -82398,108 +81083,9 @@
       ]
     },
     {
-      "id": "504a6c5e-7330-458d-adfb-843a1322fe5a",
-      "entryType": "dialogue",
-      "name": "364",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "7bb92583-a5c5-4455-b4e4-38d6b589e934",
-          "hero": "Junkrat",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "You look like a guy who needs someone blown up.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8e883f71-ca93-477a-9333-a7e8cc8d7ed9",
-          "hero": "Reaper",
-          "voice": "Reaper_-_A_candidate_just_came_to_mind.ogg",
-          "voicePrefix": "",
-          "subtitles": "A candidate just came to mind.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "f66ef715-41dc-4ee8-8a2d-2e9c32a59e22",
-      "entryType": "dialogue",
-      "name": "365",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "cfe576a0-e623-4602-af70-eeeb234e59e2",
-          "hero": "Reaper",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "What did you find in there, rat?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "082d9921-fafa-48cd-a95c-a95e2130b8c1",
-          "hero": "Junkrat",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "No idea what you're sayin', mate.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "90ced6a1-d139-4061-ac56-1d196c2dfe17",
-      "entryType": "dialogue",
-      "name": "366",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "585d886a-91b4-40a7-887d-ff991df9c929",
-          "hero": "Reaper",
-          "voice": "Reaper_-_I_didn't_teach_you_all_my_tricks.ogg",
-          "voicePrefix": "",
-          "subtitles": "I didn't teach you all my tricks. / I taught you everything you know.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ec6aa01b-f7d6-4e9f-b329-703c75afde51",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Lucky_for_me,_I_still_have_a_few_tricks_of_my_own.ogg",
-          "voicePrefix": "",
-          "subtitles": "Lucky for me I still have a few tricks of my own.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "a283f55e-8d74-4316-baed-31fe3fa6d919",
       "entryType": "dialogue",
-      "name": "368",
+      "name": "Suppose to be death",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82532,7 +81118,7 @@
     {
       "id": "0992ab90-ab15-4fd5-bde2-f41f9246019c",
       "entryType": "dialogue",
-      "name": "369",
+      "name": "Put an End to You",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82543,9 +81129,9 @@
         {
           "id": "dc4af0ad-a49f-4f30-ba36-45075f3ab989",
           "hero": "Soldier 76",
-          "voice": "",
+          "voice": "Soldier_76_-_One_of_these_days,_someone's_going_to_put_an_end_to_you.ogg",
           "voicePrefix": "",
-          "subtitles": "One of these days someone is gonna to put an end to you.",
+          "subtitles": "One of these days, someone's going to put an end to you.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -82565,7 +81151,7 @@
     {
       "id": "1f6e5e86-f687-453f-a6f2-f245a0f1794b",
       "entryType": "dialogue",
-      "name": "370",
+      "name": "Playing Boy Scout",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82576,9 +81162,9 @@
         {
           "id": "b5c5c959-a643-4a4b-876c-ccc9844ce21b",
           "hero": "Soldier 76",
-          "voice": "Reaper_-_And_you_sure_know_how_to_play_boy_scout.ogg",
+          "voice": "Soldier_76_-_Well,_you_sure_take_to_this_bad_guy_thing_easily,_don't_you.ogg",
           "voicePrefix": "",
-          "subtitles": "Well, you sure take to this bad guy thing easily, don't ya?",
+          "subtitles": "Well, you sure take to this bad guy thing easily, don't you?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -82596,42 +81182,9 @@
       ]
     },
     {
-      "id": "4f476888-0e32-4b87-bc21-591c7963dde6",
-      "entryType": "dialogue",
-      "name": "371",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "b60bfa6b-4f81-4044-9b13-a0fcb89db427",
-          "hero": "Sombra",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "What are we doing today, Gabe? You don't mind if I call you 'Gabe,' do you?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "17ca15c7-d387-4f96-b5fc-7afe0863e009",
-          "hero": "Reaper",
-          "voice": "Reaper_-_Stick_to_the_mission.ogg",
-          "voicePrefix": "",
-          "subtitles": "Stick to the mission.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "37eb7b14-80cb-48bb-b690-f4d51fcadea3",
       "entryType": "dialogue",
-      "name": "372",
+      "name": "Stick to the Plan",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82642,7 +81195,7 @@
         {
           "id": "0e0c3745-f21b-47e3-99ea-1cef5507e110",
           "hero": "Reaper",
-          "voice": "Sombra_-_Look,_someone_has_to_be_ready_when_all_your_careful_planning_doesn't_pan_out.ogg",
+          "voice": "Reaper_-_Try_to_stick_to_the_plan,_Sombra.ogg",
           "voicePrefix": "",
           "subtitles": "Try to stick to the plan, Sombra.",
           "render": "Heroic.png",
@@ -82664,7 +81217,7 @@
     {
       "id": "390b2da8-e37c-4ae2-b757-6b96d2819a2f",
       "entryType": "dialogue",
-      "name": "373",
+      "name": "Paying a visit",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82707,7 +81260,7 @@
     {
       "id": "698905e9-f505-4a1f-96b0-12bef6eeb293",
       "entryType": "dialogue",
-      "name": "374",
+      "name": "Hope it goes better",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82740,7 +81293,7 @@
     {
       "id": "59a84315-e98a-473a-99e4-abbd3bac2d3c",
       "entryType": "dialogue",
-      "name": "375",
+      "name": "Trust Sombra",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -82751,7 +81304,7 @@
         {
           "id": "b3642cdd-2da8-45f3-9fb4-318a3b4ad97a",
           "hero": "Widowmaker",
-          "voice": "",
+          "voice": "Widowmaker_-_I_don't_understand_how_you_can_trust_Sombra.ogg",
           "voicePrefix": "",
           "subtitles": "I don't understand how you can trust Sombra.",
           "render": "Heroic.png",
@@ -82761,7 +81314,7 @@
         {
           "id": "55b798a1-f8ec-43fd-be3b-c958d93ea383",
           "hero": "Reaper",
-          "voice": "",
+          "voice": "Reaper_-_I_don't._But_Sombra_has_her_uses,_and_I_know_what_she's_been_up_to.ogg",
           "voicePrefix": "",
           "subtitles": "I don't. But Sombra has her uses, and I know what she's been up to.",
           "render": "Heroic.png",
@@ -83007,7 +81560,8 @@
       "status": "removed",
       "eraName": "",
       "tags": [
-        "Classic"
+        "Classic",
+        "Multi Path"
       ],
       "scene": "Default.png",
       "lines": [
@@ -83030,8 +81584,37 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "e879411d-3785-45e2-88cf-a83bf892efad",
+          "hero": "Torbjörn",
+          "voice": "Torbjörn_-_Last_I_checked,_I_didn't_ask_for_your_opinion.ogg",
+          "voicePrefix": "",
+          "subtitles": "Last I checked, I didn't ask for your opinion",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
-      ]
+      ],
+      "paths": [
+        {
+          "id": "905abccb-2d37-4dce-8c00-33e9b1c71863",
+          "label": "Reinhardt",
+          "lineIds": [
+            "4213860a-2270-4610-abfd-5051a87f1daf",
+            "a549bf3d-0ad3-447e-afe6-02952516b80a"
+          ]
+        },
+        {
+          "id": "3ea4feed-993a-4515-b0e1-6ac1919a3cfc",
+          "label": "Torbjörn",
+          "lineIds": [
+            "4213860a-2270-4610-abfd-5051a87f1daf",
+            "e879411d-3785-45e2-88cf-a83bf892efad"
+          ]
+        }
+      ],
+      "selectedPathId": "905abccb-2d37-4dce-8c00-33e9b1c71863"
     },
     {
       "id": "cc1fa0c6-e6ef-488a-b5b7-afdd1e53881a",
@@ -83507,42 +82090,9 @@
       ]
     },
     {
-      "id": "572a56be-306f-460e-88f5-c128f5ed260f",
-      "entryType": "dialogue",
-      "name": "400",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e992464e-6a58-434a-a18c-73ac219bf89c",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_I_bet_you're_a_big_fan_of_those_old_fashioned_cowboy_movies,_aren't_you_.ogg",
-          "voicePrefix": "",
-          "subtitles": "I bet you're a big fan of those old fashioned cowboy movies, aren't you?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "0e5fe690-36d9-459c-8fa4-2b81004433ca",
-          "hero": "Soldier 76",
-          "voice": "Soldier_76_-_I_thought_I_was..._until_I_met_you.ogg",
-          "voicePrefix": "",
-          "subtitles": "I thought I was... Until I met you.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "1be2aec0-e8a2-4a82-9f4b-9291fc2a8623",
       "entryType": "dialogue",
-      "name": "401",
+      "name": "Slow down",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83641,7 +82191,7 @@
     {
       "id": "4dfe4a62-1a83-43da-9455-600530933b34",
       "entryType": "dialogue",
-      "name": "404",
+      "name": "Good Barista",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83652,9 +82202,9 @@
         {
           "id": "c6212b41-0c4c-4a1f-aa0a-b9110fd74466",
           "hero": "Sombra",
-          "voice": "",
+          "voice": "Sombra_-_Ah,_you'd_make_a_good_barista,_Bastion.ogg",
           "voicePrefix": "",
-          "subtitles": "You would make a great bartender Bastion.",
+          "subtitles": "Ah, you'd make a good barista, Bastion.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -83662,62 +82212,9 @@
         {
           "id": "f35208fc-4f9c-4249-b9b1-95ec28997195",
           "hero": "Bastion",
-          "voice": "",
+          "voice": "Bastion_-_(series_of_beeps)_barista_reply.ogg",
           "voicePrefix": "",
           "subtitles": "**series of beeps**",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "b4457572-779e-4875-b674-3451176abed5",
-      "entryType": "dialogue",
-      "name": "405",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "a5bfe69a-354b-4c4c-87e7-5de4cec10bee",
-          "hero": "Sombra",
-          "voice": "Sombra_-_Every_time_I_need_a_laugh,_I_look_at_your_search_history.ogg",
-          "voicePrefix": "",
-          "subtitles": "Every time I need a laugh, I look at your search history.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "70c06de2-6013-40d1-a229-f1b454e46346",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Let_me_guess._Last_night,_around_dinner_time_.ogg",
-          "voicePrefix": "",
-          "subtitles": "**sigh** Let me guess. Last night around dinner time?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "1c614940-41d8-4766-985b-8760feca08da",
-          "hero": "Sombra",
-          "voice": "Sombra_-__Cactus_spines_in_butt,_how_get_rid_of_.ogg",
-          "voicePrefix": "",
-          "subtitles": "\"Cactus spines in butt. How get rid of?\"",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "47c0229d-a184-438b-b1da-5caf0a7cebf4",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Was_I_supposed_to_leave_them_in_there_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Was I supposed to leave them in there?!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -83758,42 +82255,9 @@
       ]
     },
     {
-      "id": "6c23f6cb-62c9-4821-8de3-ebd870faaac7",
-      "entryType": "dialogue",
-      "name": "408",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "08de8d1f-a587-42a0-aa6c-9167ae3684bb",
-          "hero": "Sombra",
-          "voice": "Sombra_-_You_wouldn't_believe_what_I_learned_about_you..._Sparrow.ogg",
-          "voicePrefix": "",
-          "subtitles": "You wouldn't believe what I learned about you... Sparrow.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "bbeb4ac2-1af0-4d10-894d-4748f5830011",
-          "hero": "Genji",
-          "voice": "Genji_-_im_at_peace_with_who_i_was_your_threat_does_not_concern.ogg",
-          "voicePrefix": "",
-          "subtitles": "I'm at peace with who I was. Your threat does not concern me.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "5296f448-c1b8-4044-8328-9096badf0af3",
       "entryType": "dialogue",
-      "name": "410",
+      "name": "Gabe",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83826,7 +82290,7 @@
     {
       "id": "f5b1e71e-4821-4bf3-977c-f3da30425f62",
       "entryType": "dialogue",
-      "name": "411",
+      "name": "Your Employers",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83859,7 +82323,7 @@
     {
       "id": "9ba348d5-b19b-4f37-b903-036fe0113991",
       "entryType": "dialogue",
-      "name": "412",
+      "name": "Stole That Device",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83870,7 +82334,7 @@
         {
           "id": "0d338969-e710-414e-8d43-00aab7b8733f",
           "hero": "Tracer",
-          "voice": "Sombra_-_What_can_I_say._A_girl_just_has_to_have_the_latest_tech.ogg",
+          "voice": "Tracer_-_Don't_think_I_don't_recognize_that_device_of_yours._I_know_you_stole_it.ogg",
           "voicePrefix": "",
           "subtitles": "Don't think I don't recognize that device of yours. I know you stole it!",
           "render": "Heroic.png",
@@ -83892,7 +82356,7 @@
     {
       "id": "ac76a789-36d5-4923-86b8-5566e2ac4a25",
       "entryType": "dialogue",
-      "name": "413",
+      "name": "Feeling Sick",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -83925,7 +82389,7 @@
     {
       "id": "b7de6b6b-822a-46bc-9e1a-714c96b8e8d3",
       "entryType": "dialogue",
-      "name": "414",
+      "name": "A real pity",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84110,7 +82574,7 @@
     {
       "id": "6fc36263-a670-4065-acdf-d0882fcdac72",
       "entryType": "dialogue",
-      "name": "423",
+      "name": "Keeping the Peace",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84141,42 +82605,9 @@
       ]
     },
     {
-      "id": "0e7d7f5f-d8d1-4e05-97fe-898f8ec4436a",
-      "entryType": "dialogue",
-      "name": "424",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "8a63b816-2260-4aaa-b4af-24189ac91512",
-          "hero": "Symmetra",
-          "voice": "Torbjörn_-_Last_I_checked,_I_didn't_ask_for_your_opinion.ogg",
-          "voicePrefix": "",
-          "subtitles": "Armor? How positively *medieval*.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "b967d53d-1f8c-404a-8e49-da8d91feb76a",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_Last_I_checked,_I_didn't_ask_for_your_opinion.ogg",
-          "voicePrefix": "",
-          "subtitles": "Last I checked, I didn't ask for your opinion.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "fdf6be8a-df58-4d3a-88f1-0a6e19db4a52",
       "entryType": "dialogue",
-      "name": "425",
+      "name": "Something on Your Dress",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84187,7 +82618,7 @@
         {
           "id": "d9015b2d-039f-49c7-9447-e630967017df",
           "hero": "Torbjörn",
-          "voice": "",
+          "voice": "Torbjörn_-_(chuckles)_There's_something_on_your_dress.ogg",
           "voicePrefix": "",
           "subtitles": "Hehe, there's something on your dress.",
           "render": "Heroic.png",
@@ -84200,39 +82631,6 @@
           "voice": "Symmetra_-_No._There_isn't.ogg",
           "voicePrefix": "",
           "subtitles": "No, there isn't.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "8b91f8c5-eb55-49df-9ba6-56ae2a12b06d",
-      "entryType": "dialogue",
-      "name": "426",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "b6b76953-8dbe-49de-ac5c-dd57a3164a8c",
-          "hero": "Symmetra",
-          "voice": "Symmetra_-_I_am_impressed._I_would_not_think_such_crude_creations_actually_function.ogg",
-          "voicePrefix": "",
-          "subtitles": "I am impressed. I would not think such crude creations actually function.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "53f8e396-6478-4d68-97b0-ad2eda016724",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_why_thank_you_i_must_admit_im_surpris_hey.ogg",
-          "voicePrefix": "",
-          "subtitles": "Why, thank you! I must admit I'm surpris-...hey!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -84308,7 +82706,7 @@
     {
       "id": "065ec2d3-d7e9-470b-b48b-bfadafd20aa5",
       "entryType": "dialogue",
-      "name": "429",
+      "name": "What Happened to Your Arm",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84319,7 +82717,7 @@
         {
           "id": "8e00dd5f-6516-4d4f-b273-72e45602aa3f",
           "hero": "Torbjörn",
-          "voice": "",
+          "voice": "Torbjörn_-_Cassidy,_what_happened_to_your_arm_.ogg",
           "voicePrefix": "",
           "subtitles": "Cassidy, what happened to your arm?",
           "render": "Heroic.png",
@@ -84329,7 +82727,7 @@
         {
           "id": "246f1aa9-a055-43e0-bc6b-d8228eead705",
           "hero": "Cassidy",
-          "voice": "Cassidy_-_i_always_admired_yours_figured_id_get_one_of_my_own.ogg",
+          "voice": "Cassidy_-_I_always_admired_yours._Figured_I'd_get_one_of_my_own.ogg",
           "voicePrefix": "",
           "subtitles": "I always admired yours, figured I'd get one of my own.",
           "render": "Heroic.png",
@@ -84433,72 +82831,6 @@
         }
       ],
       "selectedPathId": "e4a28255-eefd-40cf-9744-b800ecae3aff"
-    },
-    {
-      "id": "9675d8e3-a24e-4109-b7e1-89975b74125f",
-      "entryType": "dialogue",
-      "name": "432",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "37bad8fa-f1f0-4424-bfb8-b3f21a71e9f5",
-          "hero": "Torbjörn",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I was wondering...If I could have a look at your little robot?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "2a77dc52-ff2e-47b4-8037-1175bfb88ba4",
-          "hero": "Mei",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I guess, just keep that hammer to yourself.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "915a4a7e-718f-42d9-a1e6-0374d0679c4a",
-      "entryType": "dialogue",
-      "name": "435",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "42821f95-fd90-44c3-b4f3-378789a9fbf8",
-          "hero": "Symmetra",
-          "voice": "Torbjörn_-_Last_I_checked,_I_didn't_ask_for_your_opinion.ogg",
-          "voicePrefix": "",
-          "subtitles": "Armor? How positively medieval.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8adf7caf-de1a-4038-a2f1-57e60c8e6db5",
-          "hero": "Torbjörn",
-          "voice": "Torbjörn_-_Last_I_checked,_I_didn't_ask_for_your_opinion.ogg",
-          "voicePrefix": "",
-          "subtitles": "Last I checked, I didn't ask for your opinion. / Everyone's a critic...",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
     },
     {
       "id": "630b40fa-15f7-4f32-93da-50c975fcbded",
@@ -84633,75 +82965,9 @@
       ]
     },
     {
-      "id": "58ae4a9b-cb10-42c8-9e8f-1c1380b350a6",
-      "entryType": "dialogue",
-      "name": "441",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "67c24ec6-ff60-4ddc-884d-b43e17c11614",
-          "hero": "Pharah",
-          "voice": "Pharah_-_You're_so_lucky,_Tracer._Ever_since_I_was_a_little_girl,_I_dreamed_of_joining_Overwatch.ogg",
-          "voicePrefix": "",
-          "subtitles": "You're so lucky, Tracer. Ever since I was a little girl, I dreamed of getting into Overwatch.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "2fa52ba8-fde7-4811-9f7f-50450873e869",
-          "hero": "Tracer",
-          "voice": "Tracer_-_Maybe_you'll_still_get_your_chance._Who_knows_what_the_future_holds.ogg",
-          "voicePrefix": "",
-          "subtitles": "Maybe you'll still get your chance! Who knows what the future holds?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "72d7a41c-139c-4409-a808-d0e60a2fccd3",
-      "entryType": "dialogue",
-      "name": "442",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "4745183e-a322-4d51-9612-426f3039e768",
-          "hero": "Sombra",
-          "voice": "Sombra_-_Sometimes_I_feel_a_little_sick_after_using_my_translocator._I'm_sure_you_know_what_I_mean,_Tracer.ogg",
-          "voicePrefix": "",
-          "subtitles": "Sometimes I feel a little sick after using my Translocator. I'm sure you know what I mean, Tracer.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "957268f7-625a-442a-b4cd-a839a98a1a07",
-          "hero": "Tracer",
-          "voice": "Tracer_-_Won't_be_a_problem_if_you_just_disappear_forever.ogg",
-          "voicePrefix": "",
-          "subtitles": "Won't be a problem if you just disappeared forever.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "7707bef4-e9a3-4ccb-b255-dd4366c51599",
       "entryType": "dialogue",
-      "name": "443",
+      "name": "Whacha Lookin' At",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84712,9 +82978,9 @@
         {
           "id": "d5493c1b-0a3d-481b-8516-7ffa60eaa20d",
           "hero": "Tracer",
-          "voice": "",
+          "voice": "Tracer_-_Whacha_lookin'_at.ogg",
           "voicePrefix": "",
-          "subtitles": "What'cha lookin' at?",
+          "subtitles": "Whacha lookin' at?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -84734,7 +83000,7 @@
     {
       "id": "cff975f1-0a48-49c0-ba3e-fc7b26f5bf05",
       "entryType": "dialogue",
-      "name": "444",
+      "name": "Not Happy",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84767,7 +83033,7 @@
     {
       "id": "25497607-7640-4f52-85a1-1f00ccd9d15c",
       "entryType": "dialogue",
-      "name": "445",
+      "name": "All Responsible",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84800,7 +83066,7 @@
     {
       "id": "5740e5b5-96a8-4b36-9df9-818b41d3c9f8",
       "entryType": "dialogue",
-      "name": "446",
+      "name": "Same Decisions",
       "status": "removed",
       "eraName": "",
       "tags": [
@@ -84956,72 +83222,6 @@
           "voice": "Zenyatta_-_To_us_all._I_miss_him_greatly.ogg",
           "voicePrefix": "",
           "subtitles": "To us all. I miss him greatly.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "fb4e6587-d942-4473-b077-5a91fe8b8b39",
-      "entryType": "dialogue",
-      "name": "454",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "4daf0289-d069-4bf9-9358-8685f85b81d3",
-          "hero": "Sombra",
-          "voice": "Sombra_-_Ah,_my_favorite_spider..._I_wonder_what_sort_of_web_you're_spinning_now.ogg",
-          "voicePrefix": "",
-          "subtitles": "Ah, my favorite spider. I wonder what sort of web you're spinning now.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ed3f9e92-5803-43fa-aeb8-e110e2f529d1",
-          "hero": "Widowmaker",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "It would be a shame if something happened to you on our next mission. A real pity.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "e7cd5a1e-cfdc-42b3-a728-8542c77a4ca4",
-      "entryType": "dialogue",
-      "name": "455",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "287adfd7-b736-4598-9ebf-12268a233420",
-          "hero": "Widowmaker",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Tiens, tiens*. [Well, well.]* It looks like we will be working together.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "b85e8225-5b43-4516-a8f3-193ed8f5e0f6",
-          "hero": "Tracer",
-          "voice": "Tracer_-_Don't_think_I'm_happy_about_that.ogg",
-          "voicePrefix": "",
-          "subtitles": "Don't think I'm happy about that!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -88650,7 +86850,9 @@
           "subtitles": "Why am I not surprised to learn that you grew up in a place like this, McCree?",
           "render": "Heroic.png",
           "era": "Overwatch",
-          "status": "active"
+          "status": "active",
+          "modernVoice": "Moira_-_Why_am_I_not_surprised_to_learn_that_you_grew_up_in_a_place_like_this.ogg",
+          "modernSubtitles": "Why am I not surprised to learn that you grew up in a place like this?"
         },
         {
           "id": "4d6bc583-d555-4cc6-a14c-14c9ed63ce7d",
@@ -88659,483 +86861,6 @@
           "voicePrefix": "",
           "subtitles": "I'm from Texas.",
           "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "e9073924-8419-4780-876f-0052dc5d353d",
-      "entryType": "dialogue",
-      "name": "107",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "349833d0-c78b-4d96-bef4-c495dab66fc8",
-          "hero": "Reyes",
-          "voice": "Reaper_-_Get_out_of_here.ogg",
-          "voicePrefix": "",
-          "subtitles": "We need to get out of here before the whole base is on top of us.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "3a61e3f3-a65e-4047-bdd2-95206f6e61c7",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Almost like *someone* woke ‘em up... Why’d you kill Antonio? He make you angry? That all it *takes*?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "803b54b2-b687-4a80-9802-b98bfde5b275",
-          "hero": "Reyes",
-          "voice": "Reaper_-_he_thought_he_was_untouchable_he_was_mistaken.ogg",
-          "voicePrefix": "",
-          "subtitles": "He thought he was untouchable. He was mistaken.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ff5171c8-eaa6-4305-a8da-f014352e5c2f",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Did_you_even_consider_what_was_going_to_happen_before_you_pulled_the_trigger_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Did you even consider what was going to happen before you pulled the trigger?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "abee9211-28cb-4b7f-a312-48f000b05baf",
-          "hero": "Reyes",
-          "voice": "Reaper_-_i_made_a_decision_i_ll_deal_with_the_consequences.ogg",
-          "voicePrefix": "",
-          "subtitles": "I made a decision. I’ll deal with the consequences.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ae7d0dfb-ae7c-43c4-8adc-aaee35cde8c8",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Oh, like gettin’ the four of us *killed*?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "58b2609f-115d-423a-9db7-6f2edd0cd126",
-          "hero": "Reyes",
-          "voice": "Reaper_-_that_s_going_to_happen.ogg",
-          "voicePrefix": "",
-          "subtitles": "[scoffs] That’s *not* going to happen.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "aff5eab9-ff04-42bf-adff-673323020e05",
-      "entryType": "dialogue",
-      "name": "108",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "125331dc-3036-408c-86dc-4598a1bec5fa",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I thought we were great, Commander. Snatch 'n' grab, that’s it.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "af288d9d-c9b6-47bc-bf58-099947b696a5",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Antonio was right. There was nothing we could do to him. Now, he’s not our problem anymore.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "3a4ef9b7-bee0-4c7f-9d51-917b8b87bdf4",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_somethin_tells_me_that_s_not_the_case.ogg",
-          "voicePrefix": "",
-          "subtitles": "Somethin' tells me that’s not the case.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "ac759c09-9f32-470b-8436-667ddfe240c1",
-      "entryType": "dialogue",
-      "name": "114",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "31b16224-5fb0-43b0-bfcb-bf2e1fb3f6ef",
-          "hero": "Genji",
-          "voice": "Genji_-_Who_was_Antonio_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Who was Antonio?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d4530b75-5308-489e-b218-256409dc96a8",
-          "hero": "Reyes",
-          "voice": "Reaper_-_he_s_an_arms_dealer_with_some_other_interests_more_and_less.ogg",
-          "voicePrefix": "",
-          "subtitles": "He’s an arms dealer. With some... other interests. More, and less, legitimate.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "44e8beef-9893-46bc-8d3c-9a9c23c1e1be",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Not_anymore.ogg",
-          "voicePrefix": "",
-          "subtitles": "Not anymore.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c86f4dcb-48aa-4339-a5c4-6fc84fc310c1",
-          "hero": "Genji",
-          "voice": "Genji_-_why_are_you_so_concerned_about_one_death_cassidy_it_s_not.ogg",
-          "voicePrefix": "",
-          "subtitles": "Why are you so concerned about one death, Cassidy? It’s not the first time we’ve had to kill.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "19b67435-8031-4f25-8e9c-f1825e29a0d4",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_was_an_execution.ogg",
-          "voicePrefix": "",
-          "subtitles": "*This* was an execution.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "6bed1882-4c47-41dd-8c77-b5071ea67806",
-          "hero": "Genji",
-          "voice": "Genji_-_I_believe_you_found_an_expedient_solution,_commander.ogg",
-          "voicePrefix": "",
-          "subtitles": "Dead is dead. I believe you found an expedient solution, Commander.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "44b028b0-1959-41ce-8507-2e9904617e38",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Hear that? The ninja agrees with my decision.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8c7e103e-e486-4fb9-9a2e-d2a908c85ba2",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_you_be_sure_to_call_im_as_a_character_witness_then.ogg",
-          "voicePrefix": "",
-          "subtitles": "You be sure to call ‘im as a character witness, then.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "08815e31-9890-4550-9f91-d63b587ad6cb",
-      "entryType": "dialogue",
-      "name": "118",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "b91d0e7d-c71d-466e-8383-bae09794e5d4",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Did_Antonio_have_any_associates_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Did Antonio have any associates?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c6abf094-d934-42c1-9aab-359a6a5e14a7",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "There’s the one who’ll probably take over for him. Viali. Don’t know too much about *him*. Then Doomfist in Numbani. And an omnic, who runs a casino in Monaco, uh, Maximillian, or something.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "7cfa14e1-0d44-4e17-b0ff-0bccc1d18f1b",
-      "entryType": "dialogue",
-      "name": "119",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "75b7a6cd-7374-42cd-a805-3820c09cf85b",
-          "hero": "Reyes",
-          "voice": "Reaper_-_breaching_now_get_ready.ogg",
-          "voicePrefix": "",
-          "subtitles": "Breaching now. get ready!",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "d7688f51-6bb1-46f2-9a15-481056ef1fd0",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_About_damn_time.ogg",
-          "voicePrefix": "",
-          "subtitles": "‘Bout damn time!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8b1422af-f866-476a-85ae-fac63a03b897",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Everyone, through the breach. We’re gettin’ outta here.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "2c93e346-dfd8-401d-a6f9-ec6fa7083164",
-      "entryType": "dialogue",
-      "name": "120",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "f5ca39cc-0ed7-433b-86da-b5865da99283",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_we_didn_t_have_to_go_to_all_this_trouble_if_we.ogg",
-          "voicePrefix": "",
-          "subtitles": "We didn’t have to go to all this trouble if we were just gonna kill Antonio!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "be07757b-bc57-4ca9-a401-ea0ed316d148",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "It wasn’t how I drew it up. I still think we should’ve gone with the original plan of disguising ourselves as a band.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "aaf1f2a6-32e0-4784-a04a-e8e641fd1769",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Do_you_even_play_an_instrument,_boss_.ogg",
-          "voicePrefix": "",
-          "subtitles": "Do you even play an instrument, boss?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "0f613bd3-26ca-40ad-8e44-69a993784ed9",
-          "hero": "Reyes",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Not well.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "04e992c5-8594-445e-b03d-68c128107d12",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "[scoffs] Details.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "1ea1bf25-e927-4ccd-ac48-25a633d81bff",
-      "entryType": "dialogue",
-      "name": "128",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "12c4ad72-ff9b-452f-b690-5e8bea57de26",
-          "hero": "Cassidy",
-          "voice": "Cassidy_-_Even_though_we_snuck_that_surveillance_system_into_Antonio's_office,_our_intel's_a_little_spotty.ogg",
-          "voicePrefix": "",
-          "subtitles": "Even though we snuck that surveillance system into Antonio’s office, our intel’s a little spotty.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c0dbba25-39bb-4636-a472-43682b9b68e2",
-          "hero": "Genji",
-          "voice": "Genji_-_i_can_spy_up_on_our_enemies_unseen_and_undetected.ogg",
-          "voicePrefix": "",
-          "subtitles": "I can spy up on our enemies. Unseen... and undetected.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "93b02a6e-ccb5-48b6-b6c3-9ddf526af25e",
-      "entryType": "dialogue",
-      "name": "135",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "e2dfdf10-17ba-4564-801e-f4f029ac3abc",
-          "hero": "Reyes",
-          "voice": "Reaper_-_we_re_at_the_extraction_point_where_are_you.ogg",
-          "voicePrefix": "",
-          "subtitles": "We’re at the extraction point. Where are you?",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "76eff2fb-847e-465b-a7e0-ad25af69642a",
-          "hero": "Blackwatch Pilot",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "I’m just entering Venice airspace. It shouldn’t be much longer.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "65f0dd4f-805b-42d9-acae-163fbecb1ce3",
-          "hero": "Reyes",
-          "voice": "Reaper_-_if_you_re_not_coming_soon_you_may_as_well_turn_around.ogg",
-          "voicePrefix": "",
-          "subtitles": "If you’re not coming soon, you may as well turn around.",
-          "render": "",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "fb8bc5a9-b1f7-4a57-9c3d-eb8971873ef6",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Woah, don’t listen to him! We’re gettin’ outta here.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "3df5594e-63e9-440e-bdff-5139600f0081",
-      "entryType": "dialogue",
-      "name": "137",
-      "status": "removed",
-      "eraName": "",
-      "tags": [
-        "Classic"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "fdfbcb6a-eeaf-4b2e-9d4e-85bd09f7c361",
-          "hero": "Cassidy",
-          "voice": "",
-          "voicePrefix": "",
-          "subtitles": "Is this who we’ve become, Gabriel?",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "733ce4e9-8d0d-44b9-b977-706fef6df737",
-          "hero": "Reyes",
-          "voice": "Reaper_-_blackwatch_has_always_had_one_purpose_to_do_the_work_of_keeping.ogg",
-          "voicePrefix": "",
-          "subtitles": "Blackwatch has always had one purpose: to do the *real* work of keeping the world safe. I thought *you* had the stomach for it.",
-          "render": "",
           "era": "Overwatch",
           "status": "active"
         }
@@ -89202,6 +86927,69 @@
       "mapChoices": [
         "Oasis"
       ]
+    },
+    {
+      "id": "0dfdfcb1-e5dc-4a20-8050-1465281284f9",
+      "entryType": "dialogue",
+      "name": "Malfunction",
+      "status": "removed",
+      "eraName": "",
+      "tags": [
+        "Classic",
+        "Multi Path"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "530e8279-e15e-44fa-bd52-9ad517ded367",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Whoa,_it's_me!_Is_my_chronal_accelerator_malfunctioning_again.ogg",
+          "voicePrefix": "",
+          "subtitles": "Whoa, it's me! Is my chronal accelerator malfunctioning again?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "cc7f364d-8229-4b49-b40a-62f51b7d496a",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Wait._That's_what_I_was_just_thinking._Spooky.ogg",
+          "voicePrefix": "",
+          "subtitles": "Wait. That's what I was just thinking. Spooky.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "f2ad9605-347f-4381-80b3-9274091e20ca",
+          "hero": "Tracer",
+          "voice": "Tracer_-_Nope,_I_know_how_that_feels._This_is_something_else_entirely.ogg",
+          "voicePrefix": "",
+          "subtitles": "Nope, I know how that feels. This is something else entirely.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ],
+      "paths": [
+        {
+          "id": "5c2c16bb-4d16-4205-9040-defa2daf37fa",
+          "label": "Spooky",
+          "lineIds": [
+            "530e8279-e15e-44fa-bd52-9ad517ded367",
+            "cc7f364d-8229-4b49-b40a-62f51b7d496a"
+          ]
+        },
+        {
+          "id": "a9eca40f-80ad-4d74-94e4-cb5c191b9cad",
+          "label": "Something else",
+          "lineIds": [
+            "530e8279-e15e-44fa-bd52-9ad517ded367",
+            "f2ad9605-347f-4381-80b3-9274091e20ca"
+          ]
+        }
+      ],
+      "selectedPathId": "a9eca40f-80ad-4d74-94e4-cb5c191b9cad"
     }
   ],
   "_meta": {

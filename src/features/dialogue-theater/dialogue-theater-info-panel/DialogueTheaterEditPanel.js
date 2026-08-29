@@ -64,6 +64,13 @@ import {
 } from '../data/dialogueTheaterPathHelpers.js';
 import { formatDialogueSubtitleHtml } from '../data/dialogueSubtitleFormatting.js';
 import {
+    conversationHasLegacyNameFailsafe,
+    isLegacyNameLinesEnabled,
+    resolveEffectiveDialogueLine,
+    setLegacyNameLinesEnabled,
+    withLegacyNamePreference,
+} from '../data/dialogueTheaterLegacyName.js';
+import {
     buildBeforeTheCrisisMasterPlayQueue,
     pickRandomBeforeTheCrisisPathId,
 } from './beforeTheCrisisMasterPlay.js';
@@ -278,7 +285,10 @@ function stopViewVoicelinePlayback(conversation = null) {
 }
 
 function getPlaybackConversation(conversation) {
-    return withResolvedConversationLines(conversation);
+    return withLegacyNamePreference(
+        withResolvedConversationLines(conversation),
+        isLegacyNameLinesEnabled(),
+    );
 }
 
 /**
@@ -598,7 +608,8 @@ function indexOfLineInList(lines, targetLine) {
  * @returns {Promise<boolean>}
  */
 async function playMasterPlayLine(token, line, stageConversation, lineIndex, voicelines) {
-    const voices = resolveLineVoicePlaybackFiles(line, voicelines);
+    const effective = resolveEffectiveDialogueLine(line, isLegacyNameLinesEnabled());
+    const voices = resolveLineVoicePlaybackFiles(effective, voicelines);
     if (voices.length === 0) return true;
 
     updateDialogueTheaterStageActiveLine(stageConversation, lineIndex);
@@ -1034,6 +1045,42 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
 }
 
 /**
+ * @param {HTMLElement} host
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
+function wireLegacyNameToggle(host, conversation) {
+    const btn = host.querySelector('#dialogueTheaterLegacyNameBtn');
+    if (!(btn instanceof HTMLButtonElement)) return;
+
+    const sync = () => {
+        const on = isLegacyNameLinesEnabled();
+        btn.classList.toggle('dialogue-theater-edit__legacy-toggle--on', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.textContent = on ? 'Legacy line: On' : 'Toggle legacy line';
+    };
+    sync();
+
+    btn.addEventListener('click', () => {
+        stopViewVoicelinePlayback(getPlaybackConversation(conversation));
+        setLegacyNameLinesEnabled(!isLegacyNameLinesEnabled());
+        sync();
+        const linesHost = host.querySelector('.dialogue-theater-edit__view-lines');
+        if (linesHost instanceof HTMLElement) {
+            linesHost.innerHTML = buildDialogueTheaterViewLinesHtml(conversation);
+        }
+        const playAllBtn = host.querySelector('#dialogueTheaterPlayAllBtn');
+        if (playAllBtn instanceof HTMLButtonElement) {
+            const hasPlayableVoices = getPlaybackConversation(conversation).lines.some((line) =>
+                Boolean(resolveLineVoiceFile(line, theaterAssets?.voicelines || [])),
+            );
+            playAllBtn.disabled = !hasPlayableVoices;
+        }
+        wireDialogueTheaterViewPlayback(host, conversation);
+        void refreshDialogueTheaterStage(conversation);
+    });
+}
+
+/**
  * Update the active route in view mode without remounting the whole panel.
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
@@ -1141,6 +1188,8 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
     const hasPlayableVoices = playbackConversation.lines.some((line) =>
         Boolean(resolveLineVoiceFile(line, theaterAssets?.voicelines || [])),
     );
+    const showLegacyToggle = conversationHasLegacyNameFailsafe(conversation);
+    const legacyOn = isLegacyNameLinesEnabled();
 
     host.innerHTML = `
         <div class="dialogue-theater-edit dialogue-theater-edit--view">
@@ -1169,13 +1218,26 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
                 <p class="dialogue-theater-edit__hint">Scene and character renders appear on the map overlay.</p>
                 <div class="dialogue-theater-edit__section-head">
                     <h3 class="dialogue-theater-edit__section-title">Dialogue</h3>
-                    <button
+                    <div class="dialogue-theater-edit__section-actions">
+                        ${
+                            showLegacyToggle
+                                ? `<button
                         type="button"
-                        id="dialogueTheaterPlayAllBtn"
-                        class="dialogue-theater-edit__play-all-btn"
-                        ${hasPlayableVoices ? '' : 'disabled'}
-                        aria-label="Play all dialogue lines in order"
-                    >▶ Play all</button>
+                        id="dialogueTheaterLegacyNameBtn"
+                        class="dialogue-theater-edit__legacy-toggle${legacyOn ? ' dialogue-theater-edit__legacy-toggle--on' : ''}"
+                        aria-pressed="${legacyOn ? 'true' : 'false'}"
+                        aria-label="Toggle legacy Jesse or McCree line"
+                    >${legacyOn ? 'Legacy line: On' : 'Toggle legacy line'}</button>`
+                                : ''
+                        }
+                        <button
+                            type="button"
+                            id="dialogueTheaterPlayAllBtn"
+                            class="dialogue-theater-edit__play-all-btn"
+                            ${hasPlayableVoices ? '' : 'disabled'}
+                            aria-label="Play all dialogue lines in order"
+                        >▶ Play all</button>
+                    </div>
                 </div>
                 <div class="dialogue-theater-edit__view-lines">${linesHtml}</div>
             </section>
@@ -1195,6 +1257,7 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
         wireDialogueTheaterPathSelector(host, conversation, options.onPathChange);
         wireStandardRandomRouteControls(host, conversation, options.onPathChange);
     }
+    wireLegacyNameToggle(host, conversation);
     wireDialogueTheaterViewPlayback(host, conversation);
     void paintBioChipPortraitBackgrounds(host);
 }
