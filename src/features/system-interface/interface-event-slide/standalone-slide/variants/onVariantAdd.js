@@ -25,6 +25,7 @@ export function runOnVariantAdd(slide) {
                     description: '',
                     sources: undefined,
                     headlines: undefined,
+                    commentary: undefined,
                     locationType: lt,
                     secondaryCountryPlaces: [],
                     heroFilterPlaces: [],

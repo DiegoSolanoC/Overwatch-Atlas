@@ -74,6 +74,14 @@ export function runCreateInlineEditor(slide) {
                 <div class="event-slide-inline-editor__row" id="eventSlideEditDescriptionContainer">
                     <label class="event-slide-inline-editor__label">Description</label>
                 </div>
+                <div class="event-slide-inline-editor__row" id="eventSlideEditCommentaryRow">
+                    <div class="event-slide-inline-editor__label">Commentary</div>
+                    <p class="event-slide-inline-editor__hint">Dialogue Theater interactions that comment on this entry. Predictive names; play opens the interaction (Back returns here).</p>
+                    <div class="event-slide-inline-editor__sources" id="eventSlideEditCommentary"></div>
+                    <div class="event-slide-inline-editor__actions">
+                        <button type="button" class="event-slide-inline-editor__small-btn" id="eventSlideAddCommentaryBtn">+ Commentary</button>
+                    </div>
+                </div>
                 <div class="event-slide-inline-editor__row">
                     <div class="event-slide-inline-editor__label">Relevant countries &amp; places (grouped)</div>
                     <p class="event-slide-inline-editor__hint">Add one row per group. Reorder with ? / ?. Each row: group label, countries (comma-separated for multiple flags), and why they matter.</p>
@@ -131,6 +139,9 @@ export function runCreateInlineEditor(slide) {
             setTimeout(() => {
                 const addBtn = document.getElementById('eventSlideAddSourceBtn');
                 addBtn?.addEventListener('click', () => slide.addSourceRow());
+
+                const addCommentaryBtn = document.getElementById('eventSlideAddCommentaryBtn');
+                addCommentaryBtn?.addEventListener('click', () => slide.addCommentaryRow());
                 
                 const deleteBtn = document.getElementById('eventSlideInlineDeleteBtn');
                 deleteBtn?.addEventListener('click', () => slide.deleteCurrentEvent());

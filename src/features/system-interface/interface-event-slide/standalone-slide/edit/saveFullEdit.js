@@ -9,6 +9,7 @@
 
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 import { serializeSourceLinks } from '../sources/sourceUrlUtils.js';
+import { collectCommentaryFromEditor } from '../../../interface-shared/storyEventCommentary.js';
 import { findMarkerForEvent } from '../../../interface-globe-markers/findMarkerForEvent.js';
 import {
     centerCameraOnMarker,
@@ -487,6 +488,12 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
                     return serializeSourceLinks(text, links);
                 })
                 .filter(Boolean);
+
+            const commentary = collectCommentaryFromEditor(
+                document.getElementById('eventSlideEditCommentary'),
+            );
+            if (commentary.length > 0) target.commentary = commentary;
+            else delete target.commentary;
         }
 
         const emReorder = window.eventManager;

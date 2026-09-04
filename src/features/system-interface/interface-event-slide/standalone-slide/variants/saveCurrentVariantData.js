@@ -8,6 +8,7 @@
  */
 
 import { applyStoryFilterPlacesToTarget } from '../../../interface-shared/storyEventFilterPlaces.js';
+import { collectCommentaryFromEditor } from '../../../interface-shared/storyEventCommentary.js';
 
 export function runSaveCurrentVariantData(slide) {
             if (!slide.editTarget) return;
@@ -55,6 +56,11 @@ export function runSaveCurrentVariantData(slide) {
                 window.LocationFlagHelpers.syncSecondaryCountryFlagsOnEntity(target);
             }
             if (headlinesInput) target.headlines = headlinesInput.value.split('\n').map(s => s.trim()).filter(s => s);
+            const commentary = collectCommentaryFromEditor(
+                document.getElementById('eventSlideEditCommentary'),
+            );
+            if (commentary.length > 0) target.commentary = commentary;
+            else delete target.commentary;
             if (locationTypeInput) target.locationType = locationTypeInput.value;
             if (latInput) target.lat = parseFloat(latInput.value) || null;
             if (lonInput) target.lon = parseFloat(lonInput.value) || null;

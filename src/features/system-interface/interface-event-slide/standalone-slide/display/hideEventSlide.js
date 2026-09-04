@@ -32,6 +32,11 @@ function restoreHubMenuIfHidden() {
 
 export function runHideEventSlide(slide) {
             if (isDialogueTheaterInfoPanelActive()) {
+                const nav = window.StoryCommentaryTheaterNav;
+                if (nav && typeof nav.closeDialogueTheaterOrRestoreStoryHistory === 'function') {
+                    void nav.closeDialogueTheaterOrRestoreStoryHistory();
+                    return;
+                }
                 closeDialogueTheaterInfoPanel();
                 return;
             }

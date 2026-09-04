@@ -109,6 +109,7 @@ const MERGE_FIELD_LABELS = {
     image: 'Image',
     headlines: 'Headlines (one per line)',
     sources: 'Sources',
+    commentary: 'Commentary',
     heroFilterPlaces: 'Relevant heroes (grouped)',
     factionFilterPlaces: 'Relevant factions (grouped)',
     npcFilterPlaces: 'Relevant NPCs (grouped)',

@@ -112,11 +112,13 @@ function clearStaleEventSlideSections() {
     hideEl('eventStoryFilterPlacesSection');
     hideEl('eventSourcesSection');
     hideEl('eventFiltersSection');
+    hideEl('eventCommentarySection');
 
     clearInner('eventSlideRelevantLocations');
     clearInner('eventSlideBioConnections');
     clearInner('eventSourcesList');
     clearInner('eventFiltersList');
+    clearInner('eventSlideCommentary');
 
     window.LocationFlagHelpers?.clearBioConnectionsSlideDom?.();
     window.LocationFlagHelpers?.clearStoryFilterPlacesSlideDom?.();
@@ -335,6 +337,11 @@ function wirePanelButtons() {
 
     if (closeBtn) {
         closeBtn.onclick = () => {
+            const nav = window.StoryCommentaryTheaterNav;
+            if (nav && typeof nav.closeDialogueTheaterOrRestoreStoryHistory === 'function') {
+                void nav.closeDialogueTheaterOrRestoreStoryHistory();
+                return;
+            }
             closeDialogueTheaterInfoPanel();
         };
     }
@@ -464,6 +471,8 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
 export function teardownDialogueTheaterEventSlide() {
     if (!isDialogueTheaterPanelOpen()) return;
 
+    stopDialogueTheaterViewPlayback();
+
     isEditing = false;
     editSnapshot = null;
     activeConversationId = null;
@@ -502,6 +511,7 @@ export function closeDialogueTheaterInfoPanel() {
     activeConversationId = null;
     hideDialogueTheaterImageOverlay();
     window.standaloneEventSlide?.hideImageOverlay?.();
+    window.StoryCommentaryTheaterNav?.onDialogueTheaterPanelClosed?.();
 
     if (window.SoundEffectsManager?.play) {
         window.SoundEffectsManager.play('eventClick');

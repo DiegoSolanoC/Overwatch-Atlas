@@ -5,6 +5,7 @@
 
 import { createHeaderHubButton } from '../../universal-features/atlas-header/HeaderHubButton.js';
 import { refreshStoryTimelineView, teardownStoryTimelineView } from './StoryTimelineView.js';
+import { scrollStoryListToDockPage } from './StoryListDockScroll.js';
 import { mountStoryArchiveEraTint, unmountStoryArchiveEraTint, refreshStoryArchiveEraTint } from './StoryArchiveEraTint.js';
 import { resyncStoryArchivePreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
 export { shouldSkipStoryArchiveListRender } from './storyArchivePreviewContext.js';
@@ -98,6 +99,12 @@ export function applyStoryViewDisplayMode(mode) {
         if (!listEl?.querySelector('.event-item')) {
             window.eventManager?.renderEvents?.();
         }
+        const dockPage = window.standaloneDockPagination?.getCurrentPage?.() ?? 1;
+        const eventsPerPage = window.standaloneDockPagination?.eventsPerPage ?? 10;
+        // After list paint, sync scroll to the active dock page (same as timeline pan).
+        requestAnimationFrame(() => {
+            scrollStoryListToDockPage(dockPage, eventsPerPage);
+        });
     }
 
     requestAnimationFrame(() => {

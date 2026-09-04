@@ -20,6 +20,9 @@ export function runConvertRootEventToMulti(slide, eventData) {
                 eraName: eventData.eraName || '',
                 headlines: [...(eventData.headlines || [])],
                 sources: eventData.sources ? [...eventData.sources] : undefined,
+                commentary: Array.isArray(eventData.commentary) && eventData.commentary.length
+                    ? [...eventData.commentary]
+                    : undefined,
                 lat: eventData.lat,
                 lon: eventData.lon,
                 x: eventData.x,

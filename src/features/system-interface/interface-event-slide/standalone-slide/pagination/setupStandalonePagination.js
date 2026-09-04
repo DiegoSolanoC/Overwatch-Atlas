@@ -25,6 +25,11 @@ import {
     scrollStoryTimelineToDockSliderProgress,
 } from '../../../../story/story-mode/StoryTimelineView.js';
 import {
+    isStoryListViewActive,
+    scrollStoryListToDockPage,
+    scrollStoryListToDockSliderProgress,
+} from '../../../../story/story-mode/StoryListDockScroll.js';
+import {
     normalizedProgressFromSliderValue,
     sliderValueForPageStart,
 } from '../../../interface-pagination/dock/pageSliderMath.js';
@@ -396,8 +401,11 @@ export function runSetupStandalonePagination(slide) {
 
             if (!options.skipTimelinePan && isStoryTimelineViewActive()) {
                 scrollStoryTimelineToDockPage(validPage, eventsPerPage);
+            } else if (!options.skipListScroll && isStoryListViewActive()) {
+                scrollStoryListToDockPage(validPage, eventsPerPage);
             } else if (!options.skipTimelinePan) {
                 window.scrollStoryTimelineToDockPage?.(validPage, eventsPerPage);
+                window.scrollStoryListToDockPage?.(validPage, eventsPerPage);
             }
         };
         
@@ -513,6 +521,34 @@ export function runSetupStandalonePagination(slide) {
 
                     sliderGesture.inputEvents += 1;
                     handlePageChange(newPage, { skipSound: true, skipTimelinePan: true });
+
+                    const isScrubDrag = sliderGesture.dragLike || sliderGesture.inputEvents >= 2;
+                    if (isScrubDrag) {
+                        sliderGesture.tapPendingPageSound = false;
+                        if (window.PanelResizeGearTick?.play) {
+                            window.PanelResizeGearTick.play();
+                        }
+                    } else {
+                        sliderGesture.tapPendingPageSound = true;
+                    }
+                    return;
+                }
+
+                if (isStoryListViewActive()) {
+                    scrollStoryListToDockSliderProgress(progress);
+
+                    if (tp <= 1) return;
+
+                    const newPage = Math.min(tp, Math.max(1, Math.floor(progress * tp) + 1));
+                    if (newPage === lastSliderPage) return;
+                    lastSliderPage = newPage;
+
+                    sliderGesture.inputEvents += 1;
+                    handlePageChange(newPage, {
+                        skipSound: true,
+                        skipTimelinePan: true,
+                        skipListScroll: true,
+                    });
 
                     const isScrubDrag = sliderGesture.dragLike || sliderGesture.inputEvents >= 2;
                     if (isScrubDrag) {

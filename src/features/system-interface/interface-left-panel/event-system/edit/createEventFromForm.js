@@ -32,6 +32,7 @@ import {
 } from './timelineFormParsing.js';
 import { cloneFilterPlaceRows, processFiltersAndFactions } from './formValueHelpers.js';
 import { buildVariantFromForm } from './buildVariantFromForm.js';
+import { normalizeCommentaryList } from '../../../interface-shared/storyEventCommentary.js';
 
 /**
  * @param {Object} formData See destructure below for shape.
@@ -119,6 +120,7 @@ export function createEventFromForm(formData, variantData = [], factions = []) {
             npcPlaces0 = [{ locationName: '', country: v0.npcs.join(', '), reasoning: '' }];
         }
 
+        const commentary0 = normalizeCommentaryList(v0?.commentary);
         event = {
             name: mainName,
             locationType,
@@ -126,7 +128,8 @@ export function createEventFromForm(formData, variantData = [], factions = []) {
             description: mainDescription,
             image: '',
             sources: mainSources.length > 0 ? mainSources : undefined,
-            headlines: mainHeadlines && mainHeadlines.length > 0 ? mainHeadlines : undefined
+            headlines: mainHeadlines && mainHeadlines.length > 0 ? mainHeadlines : undefined,
+            commentary: commentary0.length > 0 ? commentary0 : undefined
         };
         if (secondaryPlaces0) event.secondaryCountryPlaces = secondaryPlaces0;
         if (heroPlaces0) event.heroFilterPlaces = heroPlaces0;

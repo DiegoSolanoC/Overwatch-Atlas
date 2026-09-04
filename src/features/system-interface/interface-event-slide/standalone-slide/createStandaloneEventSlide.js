@@ -43,6 +43,8 @@ import { runCancelEdit } from './edit/cancelEdit.js';
 import { runSaveFullEdit } from './edit/saveFullEdit.js';
 import { wireBioDeleteButton } from '../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import { wireSourcePairRow } from '../../interface-shared/storyEventSourceAutocomplete.js';
+import { wireStoryEventCommentaryAutocomplete } from '../../interface-shared/storyEventCommentaryAutocomplete.js';
+import { normalizeCommentaryList } from '../../interface-shared/storyEventCommentary.js';
 import { getSourceUrls } from './sources/sourceUrlUtils.js';
 // Variants
 import { runRenderVariantBar } from './variants/renderVariantBar.js';
@@ -160,6 +162,33 @@ function createInlineSourceRow() {
     removeBtn.textContent = '-';
 
     row.append(textInput, linksStack, removeBtn);
+    return row;
+}
+
+/**
+ * @param {string} [name]
+ * @returns {HTMLDivElement}
+ */
+function createInlineCommentaryRow(name = '') {
+    const row = document.createElement('div');
+    row.className = 'event-slide-inline-editor__source-row event-slide-inline-editor__commentary-row';
+
+    const textInput = document.createElement('input');
+    textInput.className = 'event-slide-inline-editor__input';
+    textInput.dataset.role = 'commentary-name';
+    textInput.type = 'text';
+    textInput.spellcheck = true;
+    textInput.autocomplete = 'off';
+    textInput.placeholder = 'Dialogue Theater interaction name';
+    textInput.value = name || '';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'event-slide-inline-editor__small-btn';
+    removeBtn.dataset.role = 'commentary-remove';
+    removeBtn.textContent = '-';
+
+    row.append(textInput, removeBtn);
     return row;
 }
 
@@ -321,6 +350,54 @@ export function createStandaloneEventSlide() {
             });
             container.appendChild(row);
             wireSourcePairRow(row);
+        },
+
+        /**
+         * @param {string[]|undefined|null} commentary
+         */
+        renderCommentaryEditor(commentary) {
+            const container = document.getElementById('eventSlideEditCommentary');
+            if (!container) return;
+
+            container.innerHTML = '';
+            const names = normalizeCommentaryList(commentary);
+            const rows = names.length > 0 ? names : [''];
+
+            rows.forEach((name) => {
+                const row = createInlineCommentaryRow(name);
+                row.querySelector('[data-role="commentary-remove"]')?.addEventListener('click', () => {
+                    if (container.children.length > 1) row.remove();
+                    else {
+                        const input = row.querySelector('[data-role="commentary-name"]');
+                        if (input instanceof HTMLInputElement) input.value = '';
+                    }
+                });
+                container.appendChild(row);
+                const input = row.querySelector('[data-role="commentary-name"]');
+                if (input instanceof HTMLInputElement) {
+                    wireStoryEventCommentaryAutocomplete(input);
+                }
+            });
+        },
+
+        addCommentaryRow() {
+            const container = document.getElementById('eventSlideEditCommentary');
+            if (!container) return;
+
+            const row = createInlineCommentaryRow('');
+            row.querySelector('[data-role="commentary-remove"]')?.addEventListener('click', () => {
+                if (container.children.length > 1) row.remove();
+                else {
+                    const input = row.querySelector('[data-role="commentary-name"]');
+                    if (input instanceof HTMLInputElement) input.value = '';
+                }
+            });
+            container.appendChild(row);
+            const input = row.querySelector('[data-role="commentary-name"]');
+            if (input instanceof HTMLInputElement) {
+                wireStoryEventCommentaryAutocomplete(input);
+                input.focus();
+            }
         },
         
         renderVariantBar(eventData) { return runRenderVariantBar(this, eventData); },

@@ -187,7 +187,7 @@
       "name": "Medical Miracles",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "During the early years of the 21st century, the rapid climate change and growing populations will lead to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem.<br><br>But with hardship and challenges comes progress, and humanity was able to collaborate in speeding up vaccine development, allowing for massive leaps in the medical field, and a period of utopian levels of health and life expectancy.<br><br>As technology advanced, Dr. Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that would later become a global standard, as companies such as Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere.",
+      "description": "During the early years of the 21st century, the rapid climate change and growing populations will lead to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem.\n\nBut with hardship and challenges comes progress, and humanity was able to collaborate in speeding up vaccine development, allowing for massive leaps in the medical field, and a period of utopian levels of health and life expectancy.\n\nAs technology advanced, Dr. Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that would later become a global standard, as companies such as Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere.",
       "image": "",
       "sources": [
         {
@@ -226,6 +226,10 @@
           "country": "Omnica Corporation,",
           "reasoning": "Omnica Corp rises as early leaders of the Cybernetics Field"
         }
+      ],
+      "commentary": [
+        "Getting use to it",
+        "Family Business"
       ]
     },
     {
@@ -755,6 +759,9 @@
           "country": "Lucheng Interstellar,",
           "reasoning": "Many graduates and acolytes of Wuxing would immediately pursue a career at Lucheng"
         }
+      ],
+      "commentary": [
+        "Small World"
       ]
     },
     {
@@ -868,6 +875,9 @@
           "reasoning": "Creator of Hardlight and Vishkar",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Kilometer tall"
       ]
     },
     {
@@ -947,6 +957,9 @@
           "reasoning": "Dr. Liao makes a name for herself in robotics that later lands her a place in Omnica",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Not an Omnic"
       ]
     },
     {
@@ -1204,6 +1217,9 @@
           "country": "Katya,",
           "reasoning": "Future heir to the Volskaya Corporation"
         }
+      ],
+      "commentary": [
+        "Gossiping"
       ]
     },
     {
@@ -1251,6 +1267,9 @@
           "country": "Ingrid,",
           "reasoning": "Develops a bioengineered spider web textile, but it is too expensive to mass produce"
         }
+      ],
+      "commentary": [
+        "Hard Bargain"
       ]
     },
     {
@@ -1338,6 +1357,11 @@
           "country": "Sigma,",
           "reasoning": "His genius proves to change the world over with his studies"
         }
+      ],
+      "commentary": [
+        "Mag Lev Cape",
+        "My greatest Rival",
+        "Applied Science"
       ]
     },
     {
@@ -1442,7 +1466,7 @@
       "name": "Resource Management",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God AIs got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God Program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.\n\n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God Programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
+      "description": "The world had overall become a better place, with more available food, miracle cures for all kinds of medical problems, cleaner energy solutions, highly advanced but complex transport systems, and an abundance of machinery helping on all kinds of tasks around the world. But with these perks, came complexity, and with all of these resources available, the global population also grew immensely. Humanity would soon become overwhelmed by the task of managing all of these sectors on a global scale the traditional way. It was here when God AIs got conceptualized.\n\nHighly advanced artificial intelligence systems will be developed across the world. While most AIs were limited by their processing and resources, a God Program was designed to have full global control and authority over specific aspects of industry in modern society. Among many others, there was Xibalbá, in Mexico City, charged with the management of energy equity across the region. Chernobog in Helsinki, Finland, with a high focus on global security and international affairs. Macaria from Brigeport, Connecticut, in charge of communication systems across the States, and the most infamous of them all, Anubis from Cairo, Egypt, made to pursue ecological solutions for the preservation of life.\n\nWhile their power allowed humanity to take a back seat as the world moved forward, many skeptics worried that these God Programs were given too much power, and had too much leeway to make decisions, and to calm these fears. Each God Ai was under a constant feedback loop by a dedicated team of programmers that provided its maintenance and supervision, allowing humanity to catch any possible mistakes or concerning choices before it was too late.",
       "image": "",
       "sources": [
         {
@@ -1610,6 +1634,9 @@
           "country": "Vincent,",
           "reasoning": "Dates Jack in spite of his concerns over military service"
         }
+      ],
+      "commentary": [
+        "Painful Memories"
       ]
     },
     {
@@ -1657,13 +1684,18 @@
           "country": "Ironclad Guild,",
           "reasoning": "Founded by Torbjörn and collegues soon after his work in STT Labs"
         }
+      ],
+      "commentary": [
+        "Grave Wounds",
+        "Killing Machine",
+        "Good Encryption"
       ]
     },
     {
       "name": "Upgrades",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "Vivian went on to live a turbulent life due to her many cybernetics. While the technology was miraculous, and had become fairly common, it was still met with discrimination and backlash from many over the years. Notoriously, cybernetics would be outright banned from major athletic competitions, due to the very clear advantage these gave to their users.<br><br>Conversely, cybernetics also opened doors for many, as the enhanced abilities and modifications to equipment made cybernetics very appealing to armed forces around the world. Dr. Esat herself objected against the weaponizing of her technology, as she intended for it to save lives, but that did not stop the Canadian Military from admitting enhanced soldiers into their ranks.<br><br>Vivian enlisted at the age of 16, coming from a family of veterans, she developed a fascination for the military. She served in the primary reserves and graduated with a BA in Psychology and a MA in Political Science, later pursuing the Canadian Special Forces.",
+      "description": "Vivian went on to live a turbulent life due to her many cybernetics. While the technology was miraculous, and had become fairly common, it was still met with discrimination and backlash from many over the years. Notoriously, cybernetics would be outright banned from major athletic competitions, due to the very clear advantage these gave to their users.\n\nConversely, cybernetics also opened doors for many, as the enhanced abilities and modifications to equipment made cybernetics very appealing to armed forces around the world. Dr. Esat herself objected against the weaponizing of her technology, as she intended for it to save lives, but that did not stop the Canadian Military from admitting enhanced soldiers into their ranks.\n\nVivian enlisted at the age of 16, coming from a family of veterans, she developed a fascination for the military. She served in the primary reserves and graduated with a BA in Psychology and a MA in Political Science, later pursuing the Canadian Special Forces.",
       "image": "",
       "sources": [
         {
@@ -1696,7 +1728,12 @@
           "reasoning": "Enlists into the CAF after years of Cybernetic surgeries"
         }
       ],
-      "yearEnd": null
+      "yearEnd": null,
+      "commentary": [
+        "Twins",
+        "Ask to Change",
+        "Extension of myself"
+      ]
     },
     {
       "name": "Freja Skov is Born",
@@ -2013,6 +2050,10 @@
           "reasoning": "Dr. Liao creates the first ever sentient Omnic, Aurora",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Meeting Aurora",
+        "Fond of you"
       ]
     },
     {
@@ -2198,6 +2239,10 @@
           "country": "Ironclad Guild,",
           "reasoning": "Guild of engineers advocating for right of repair and anti Omnica expansion policies"
         }
+      ],
+      "commentary": [
+        "Beautiful Inventions",
+        "NO AI Mess"
       ]
     },
     {
@@ -2297,6 +2342,11 @@
           "country": "Naughton,",
           "reasoning": "One of many scientist who visited the base"
         }
+      ],
+      "commentary": [
+        "Friend from the Colony",
+        "Lunar Food",
+        "Lunar Simians"
       ]
     },
     {
@@ -2752,6 +2802,9 @@
           "reasoning": "Lead of the Soldier enhancement program",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Enhancement Program"
       ]
     },
     {
@@ -2800,6 +2853,10 @@
           "reasoning": "Granted personhood, free to explore the world",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Asthma",
+        "Interesting Theory"
       ]
     },
     {
@@ -3171,6 +3228,9 @@
           "country": "Anubis,",
           "reasoning": "Focuses most of the resources in Russia"
         }
+      ],
+      "commentary": [
+        "Rotten Few"
       ]
     },
     {
@@ -3221,6 +3281,9 @@
           "country": "Anubis,",
           "reasoning": "Attack stopped by Ironclad"
         }
+      ],
+      "commentary": [
+        "Tin Cans"
       ]
     },
     {
@@ -3482,6 +3545,9 @@
           "country": "Anubis,",
           "reasoning": "Troops stopped by Fire student squad"
         }
+      ],
+      "commentary": [
+        "Expectations"
       ]
     },
     {
@@ -3583,6 +3649,10 @@
           "reasoning": "Troops fight the Inti Warriors",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        "Not Qualified",
+        "Worth Conquering"
       ]
     },
     {
@@ -3693,6 +3763,9 @@
           "country": "Anubis,",
           "reasoning": "Struggles against mech powered forces"
         }
+      ],
+      "commentary": [
+        "Svyatogors"
       ]
     },
     {
@@ -3857,6 +3930,9 @@
           "country": "Anubis,",
           "reasoning": "Hides among the chaos in Egypt"
         }
+      ],
+      "commentary": [
+        "Best Sniper"
       ]
     },
     {
@@ -4033,6 +4109,9 @@
           "country": "Balderich,",
           "reasoning": "Crusader Recruit"
         }
+      ],
+      "commentary": [
+        "Sir Wilhelm"
       ]
     },
     {
@@ -4093,6 +4172,9 @@
           "country": "Vincent,",
           "reasoning": "Conflicted about Jack joining SEP"
         }
+      ],
+      "commentary": [
+        "Enhanced Soldiers"
       ]
     },
     {
@@ -4217,6 +4299,9 @@
           "country": "Anubis,",
           "reasoning": "Fights Overwatch for the firs ttime"
         }
+      ],
+      "commentary": [
+        "Like the Glory Days"
       ]
     },
     {
@@ -4898,6 +4983,10 @@
           "country": "Anubis,",
           "reasoning": "Caught by surprise by the Awakening"
         }
+      ],
+      "commentary": [
+        "Your Awakening",
+        "Omnic archaeology"
       ]
     },
     {
@@ -5150,6 +5239,9 @@
           "country": "Ramattra",
           "reasoning": "Ravager Units are hunted to near extinction"
         }
+      ],
+      "commentary": [
+        "A Ravager"
       ]
     },
     {
@@ -5203,6 +5295,9 @@
           "country": "Hashimoto Clan,",
           "reasoning": "A group of criminals hunts down Omnics in Tokyo"
         }
+      ],
+      "commentary": [
+        "Rate the Prison"
       ]
     },
     {
@@ -5404,6 +5499,10 @@
           "country": "B.O.B",
           "reasoning": "Returns to Lead Rose forever changed by the Crisis"
         }
+      ],
+      "commentary": [
+        "Not a Toy",
+        "Loads of trouble"
       ]
     },
     {
@@ -5505,7 +5604,10 @@
           "reasoning": "The last of the Anubis loyal Omnics subdued, at great cost"
         }
       ],
-      "yearEnd": null
+      "yearEnd": null,
+      "commentary": [
+        "Missing an Eye"
+      ]
     },
     {
       "name": "Brigitte Lindholm is Born",
@@ -5612,6 +5714,10 @@
           "country": "Mason",
           "reasoning": "ALF Member, founding King of Junkertown"
         }
+      ],
+      "commentary": [
+        "Pig Boy",
+        "Junkers giving you trouble"
       ]
     },
     {
@@ -5886,6 +5992,9 @@
           "country": "Liao,",
           "reasoning": "Visits the monastery to study the Iris"
         }
+      ],
+      "commentary": [
+        "Magical Healing"
       ]
     },
     {
@@ -5996,6 +6105,9 @@
           "country": "Ingrid",
           "reasoning": "Close family friend with the Zeiglers"
         }
+      ],
+      "commentary": [
+        "Birds and Music"
       ]
     },
     {
@@ -6090,6 +6202,9 @@
           "country": "Frankie",
           "reasoning": "Recruited into the heist team"
         }
+      ],
+      "commentary": [
+        "My Type"
       ]
     },
     {
@@ -6133,6 +6248,10 @@
           "country": "Colosseo Gladiatori,",
           "reasoning": "A reopen Arena for pageant sports in Italy"
         }
+      ],
+      "commentary": [
+        "Fun fact",
+        "Circuit Maximus"
       ]
     },
     {
@@ -6200,6 +6319,10 @@
           "country": "Kamori-san,",
           "reasoning": "Gifted the Anima infused Fox Ofuda"
         }
+      ],
+      "commentary": [
+        "Magnum Opus",
+        "Fox Secret"
       ]
     },
     {
@@ -6523,7 +6646,10 @@
           "reasoning": "Integrate Cassidy into Reyes' staff"
         }
       ],
-      "yearStart": 2056
+      "yearStart": 2056,
+      "commentary": [
+        "Jealous of you"
+      ]
     },
     {
       "name": "Mizuki Kawano is Born",
@@ -6608,6 +6734,11 @@
       "headlines": [
         "Vishkar Opens the Architect Academy",
         "India approves the schooling project for hundreds of orphans"
+      ],
+      "commentary": [
+        "Days at the Academy",
+        "Best Roommate",
+        "Missing the Academy"
       ]
     },
     {
@@ -6982,7 +7113,10 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "yearStart": 2053
+      "yearStart": 2053,
+      "commentary": [
+        "Your daugther"
+      ]
     },
     {
       "name": "On the Run",
@@ -7082,6 +7216,10 @@
           "country": "Ingrid,",
           "reasoning": "Bans inventions from the Kitchen"
         }
+      ],
+      "commentary": [
+        "My little girl",
+        "More Cats"
       ]
     },
     {
@@ -7125,6 +7263,9 @@
       "headlines": [
         "Protests over God AI shutdown continue",
         "Overwatch reveals Athena AI support"
+      ],
+      "commentary": [
+        "Shared Programming"
       ]
     },
     {
@@ -7962,13 +8103,20 @@
       "name": "Sparrow",
       "description": "Rumiko Shimada had left the clan years ago, vanishing mysteriously one night. Nobody knew what caused her to leave, but everyone assumed she couldn't live with the Yakuza lifestyle anymore. Her absence made Sojiro extremely protective of his sons, who were raised with the expectation of inheriting command of the Clan together.\n\nGenji, however, had no interest in the clan. He had often thought of leaving as well, were it not for his brother and little Kiriko, who helped him keep a sense of belonging in Hanamura Castle. His disinterest led to developing a playboy lifestyle as a young adult, skipping important clan meetings and sword training to play video games at the local arcade, often taking Kiriko alongside him, though even when he didn't, she would sneak out and follow behind him.\n\nHis carelessness would fall on Hanzo, who got tangled in his brother's escapades far too often, and tended to cover for him when it came time to face their father. Hanzo wasn't too keen on inheriting the clan either, but being the older of the two, expectations were harder on him, and his father had less patience for him than he was for Genji. Hanzo wished that when the day came, he could rule the clan his way, with Genji as his equal, so he worked hard to share his discipline and guidance with him, but on the other hand, Genji was just waiting for the day they kicked him out, and the elders of the clan were getting tired of Sojiro's inability to control his own children.",
       "locationType": "earth",
-      "lat": 35.6762,
-      "lon": 139.6503,
+      "lat": 35.6768601,
+      "lon": 139.7638947,
       "image": "",
-      "cityDisplayName": "Tokyo",
+      "cityDisplayName": "Tokyo, Japan",
       "yearEnd": 2063,
       "eraName": "The Golden Age",
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        },
         {
           "locationName": "Hanamura, Japan",
           "country": "Japan,",
@@ -8802,6 +8950,75 @@
       ]
     },
     {
+      "name": "Cursed",
+      "locationType": "earth",
+      "cityDisplayName": "Akihabara, Japan",
+      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.",
+      "image": "",
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        },
+        {
+          "text": "Facing Demons",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
+            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
+          ]
+        }
+      ],
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2066,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        },
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": "Spared Mizuki and kept him to train personally"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Hashimoto gangsters seen wielding energy weapons",
+        "Tokyo crime rates increase twice as fast this last month"
+      ]
+    },
+    {
       "name": "When Dragons Fall",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
@@ -8815,7 +9032,7 @@
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
       ],
-      "yearStart": 2066,
+      "yearStart": 2067,
       "eraName": "The Golden Age",
       "secondaryCountryPlaces": [
         {
@@ -8936,75 +9153,6 @@
       ]
     },
     {
-      "name": "Cursed",
-      "locationType": "earth",
-      "cityDisplayName": "Akihabara, Japan",
-      "description": "Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. \n\nAs the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.",
-      "image": "",
-      "sources": [
-        {
-          "text": "Curse Breaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
-          ]
-        },
-        {
-          "text": "Facing Demons",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt23f2b796c0af589d/6a19e55cc45165db3668410b/OW_Mizuki_EN_FULL_FNL.pdf",
-            "https://www.youtube.com/watch?v=VPDAm5YsQ1s"
-          ]
-        }
-      ],
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2066,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        },
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "Mizuki is taken in by the Hashimoto following his father's death",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": "Becomes part of the Hashimoto to escape debt and the curse"
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": "Spared Mizuki and kept him to train personally"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": "Shwo mercy on Mizuki by forgiving his debt"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [
-        "Hashimoto gangsters seen wielding energy weapons",
-        "Tokyo crime rates increase twice as fast this last month"
-      ]
-    },
-    {
       "name": "Escalation",
       "description": "Null Sector activity continued across the world, inspiring many Omnics to follow Ramattra's teachings, especially following the groundbreaking of Turing Green, which many followers of Mondatta saw as a new start for Omnics. Null Sector, in contrast, took the idea as an insult, throwing a bone at his people to try and act like it absolved them from years worth of injustice. As momentum grew, the group radicalized from a small cell of liberators, to a fully militarized operation. The escalation meant many of his initial supporters soon began to leave the group behind, but his resolve to bring justice for all Omnics only grew stronger with each ally he lost.\n\nHe decided to bring his closest allies, Nameless, Zera and Lanet, on a journey across the depths of a freezing wasteland, where they found the very same Anubis made Omnium, where Ramattra was born. His plan was to use the facility to create an army, and use it to speak to humans in a language they can understand, violence. For the next two years, the group would produce entire battalions of Crisis-era units at Lanet's supervision, and Ramattra himself would upgrade his own design combining Shambali technology with an invention of his own, Nanites, microscopic machines capable of cooperation and assembly of different structures, including extra reinforced limbs for close combat. As his army grew, Ramattra already had his eyes on the first target of his revolution, but Lanet urged caution, noting the antiquated designs needed more work if they wanted to get things right.\n\nDuring this back-and-forward, tension built up over philosophical differences amongst the group, as Ramattra continuously refused to involve other Omnics and rally forces outside his mindless troops. While Nameless and Zera were used to appealing to the Omnic masses, and wished to allow their people to fight alongside them, Ramattra was tired of bloodshed. He saw himself as a liberator, not a general. It was because of this that he chose to manufacture an army of robots, instead of using his influence to command his supporters, as he wished to keep sentient Omnics away from active conflict as much as possible. This led to constant argument with his allies, who saw their leader radicalize further into a lonely crusade.",
       "locationType": "earth",
@@ -9056,7 +9204,7 @@
     },
     {
       "name": "Cyber Ninja",
-      "description": "After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. \n\nZiegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. \n\nOnce he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
+      "description": "After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. \n\nZiegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -9264,7 +9412,7 @@
     },
     {
       "name": "Shimada Takedown",
-      "description": "After months of treatment, Genji's body was fully reconstructed, and the man had turned into a living weapon, filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within. \n\nTo make matters easier, the Clan had also lost their other heir, not long after Genji. Hanzo Shimada had abandoned his duties, feeling ashamed by his actions, since, as far as he knew, he had killed his brother in cold blood at the orders of a bunch of old men who were supposed to serve him. They say the man became a vagabond, taking his father's Anima storm bow with him as a memento, he swore never to wield a blade again, and once he left Hanamura Castle and began to travel the world, seeking for ways to restore his honor and put his old life behind.\n\n Without solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further. The long-lasting Shimada Clan had been completely dismantled from the shadows, and although Genji craved more, and actively pursued the take-down of other rival gangs in the region like the Hashimoto, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region.",
+      "description": "After months of treatment, Genji's body was fully reconstructed, and the man had turned into a living weapon, filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within. \n\nTo make matters easier, the Clan had also lost their other heir, not long after Genji. Hanzo Shimada had abandoned his duties, feeling ashamed by his actions, since, as far as he knew, he had killed his brother in cold blood at the orders of a bunch of old men who were supposed to serve him. They say the man became a vagabond, taking his father's Anima storm bow with him as a memento, swearing to never to wield a blade again. Once he left Hanamura Castle hebegan to travel the world, seeking for ways to restore his honor and put his old life behind.\n\nWithout solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further. The long-lasting Shimada Clan had been completely dismantled from the shadows, and although Genji craved more, and actively pursued the take-down of other rival gangs in the region like the Hashimoto, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region.",
       "locationType": "earth",
       "cityDisplayName": "Hanamura, Japan",
       "lat": 35.6768601,
@@ -9292,6 +9440,11 @@
           "locationName": "",
           "country": "Genji, Reaper, Cassidy",
           "reasoning": "Work together to arrest the Shimada"
+        },
+        {
+          "locationName": "",
+          "country": "Hanzo,",
+          "reasoning": "Left the clan soon after Genji went missing, thinking he killed him"
         }
       ],
       "factionFilterPlaces": [
@@ -13577,6 +13730,66 @@
       ]
     },
     {
+      "name": "Sonic Policing",
+      "locationType": "earth",
+      "cityDisplayName": "Rio de Janeiro, Brazil",
+      "description": "When Vishkar took control of Rio's renovation, the locks were told they were going to make Rio a better place, but it went down the same way all their other projects did. Failed promises, displacement and poverty, enforcing of curfews and ordinances to suppress local traditions, and even exploiting the populace for cheap labor. But there was still one silver lining for the people of Brasil in the form of Benicio Dos Santos.\n\nBenicio was a local scientist who dedicated his life to the study of sound and its applications as a medium for healing technology. He had joined Vishkar so that, with their help, he would be able to fully develop his prototypes into something that could help his people. Instead, when he presented his inventions to Vishkar, they claimed ownership of the technology and adopted its more destructive capabilities into police equipment, to be used against protesters for quick and forceful neutralizing of anyone who got in their way. \n\nThis technology was used even outside of Rio, later adopted by the London Police to suppress the Omnics of the Underworld, with Vishkar's own vice president Vaira Singhania adopting the technology into her assistive arms for personal protection. What was meant to be Benicio's gift to Rio was turned into yet another tool for oppression, and while Vishkar thought this was just like any of their previous projects, this time the water was beginning to boil, and the people of Rio were beginning to grow tired of their games.",
+      "image": "",
+      "lat": -22.9110137,
+      "lon": -43.2093727,
+      "sources": [
+        {
+          "text": "Overwatch Declassified",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Rio de Janeiro, Brazil",
+          "country": "Brazil",
+          "reasoning": "Vishkar oppresses the people of Rio"
+        },
+        {
+          "locationName": "London, United Kingdrom",
+          "country": "United Kingdom,",
+          "reasoning": "Sonic technology is implemented into the Police Department"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lúcio",
+          "reasoning": "Grow tied of Vishkar's lies and of what they did to his father"
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": "Adopts Sonic technology for personal use"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vishkar",
+          "reasoning": "Supresses protesters using Sonic  technology"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Benicio,",
+          "reasoning": "Invents Sonic technology to help Rio"
+        }
+      ],
+      "headlines": [
+        "Protests in Rio continue due to Vishkar's failed promises",
+        "London Police to adapt Sonic anti Riot weaponry"
+      ]
+    },
+    {
       "name": "Crime Spree",
       "locationType": "earth",
       "cityDisplayName": "Sydney, Australia",
@@ -13675,66 +13888,6 @@
           "country": "Helix Securities,",
           "reasoning": "Assigns Sierra to lead the Summit Squad"
         }
-      ]
-    },
-    {
-      "name": "Sonic Policing",
-      "locationType": "earth",
-      "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "When Vishkar took control of Rio's renovation, the locks were told they were going to make Rio a better place, but it went down the same way all their other projects did. Failed promises, displacement and poverty, enforcing of curfews and ordinances to suppress local traditions, and even exploiting the populace for cheap labor. But there was still one silver lining for the people of Brasil in the form of Benicio Dos Santos.\n\nBenicio was a local scientist who dedicated his life to the study of sound and its applications as a medium for healing technology. He had joined Vishkar so that, with their help, he would be able to fully develop his prototypes into something that could help his people. Instead, when he presented his inventions to Vishkar, they claimed ownership of the technology and adopted its more destructive capabilities into police equipment, to be used against protesters for quick and forceful neutralizing of anyone who got in their way. \n\nThis technology was used even outside of Rio, later adopted by the London Police to suppress the Omnics of the Underworld, with Vishkar's own vice president Vaira Singhania adopting the technology into her assistive arms for personal protection. What was meant to be Benicio's gift to Rio was turned into yet another tool for oppression, and while Vishkar thought this was just like any of their previous projects, this time the water was beginning to boil, and the people of Rio were beginning to grow tired of their games.",
-      "image": "",
-      "lat": -22.9110137,
-      "lon": -43.2093727,
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Rio de Janeiro, Brazil",
-          "country": "Brazil",
-          "reasoning": "Vishkar oppresses the people of Rio"
-        },
-        {
-          "locationName": "London, United Kingdrom",
-          "country": "United Kingdom,",
-          "reasoning": "Sonic technology is implemented into the Police Department"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lúcio",
-          "reasoning": "Grow tied of Vishkar's lies and of what they did to his father"
-        },
-        {
-          "locationName": "",
-          "country": "Domina,",
-          "reasoning": "Adopts Sonic technology for personal use"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Vishkar",
-          "reasoning": "Supresses protesters using Sonic  technology"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Benicio,",
-          "reasoning": "Invents Sonic technology to help Rio"
-        }
-      ],
-      "headlines": [
-        "Protests in Rio continue due to Vishkar's failed promises",
-        "London Police to adapt Sonic anti Riot weaponry"
       ]
     },
     {
@@ -13972,6 +14125,77 @@
       ]
     },
     {
+      "name": "Avatar of the Fox",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "Over the years, Kiriko's grandmother would begin to feel the weight of her years, and eventually passed away, leaving Kiriko as the primary caretaker of the Tetsuzan Shrine of Kanezaka, moving into a new apartment by herself at the request of her mother, who forbade her from continuing their Miko duties, instead wishing for Kiriko to join her again. Their relationship had been strained over the years, with Kiriko finding herself at a crossroads of two paths, that of a spiritual healer like her grandma and a deadly blade like her mother. Kiriko's attachment to her faith caused the two to fight and not talk to each other in weeks, not helped by Kiriko's poor diet choices and the fact that Asa did not know she now had the Fox Anima made by her father.\n\nDuring the Fox Festival, Kiriko found her mother in yet another discussion with her mother, when suddenly she heard a commotion outside. The Hashimoto were bothering Mr Yoshida,a worker at Kiriko's apartment who was coming back from the festival with his granddaughter. As the Hashimoto threatened the helpless man with the money his son owed to the clan, Kiriko had already vanished from her room, reappearing in the hallway and taking on a full gang of Hashimoto all by herself, while trying to keep the old man and the child safe and healing their wounds with the Anima Ofuda. The night of the Fox Anima was enough to reinvigorate anyone in its field, looking almost like possession and scaring the Hashimoto thugs away.\n\nAsa had noticed her daughter's absence and observed the encounter from the door, realizing she had her grandma's kindness, but the fighting spirit of her parents, and most importantly that all the times she brought up the Fox Spirit, it wasn't just blind faith, but the last gift from her Father acting as a guardian companion. When Kiriko returned, the two had heart-to-heart and Kiriko finally agreed to move back with her mom, even if just briefly. Together, the pair swore to keep Kanezaka safe, using the Fox Spirit as a symbol of protection against the Hashimoto. While Toshiro was still a hostage, he was at least allowed to send occasional letters back home, even including a small dagger forged as a gift for Kiriko, and a symbol of the unbreakable spirit of their family, as the last resistance of Tokyo, and the blade that protects the innocent.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2076,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "Kiriko begins to use the Fox Anima against the Hashimoto",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": "Comes back home and protects her neighborhood"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Yamagami Blades,",
+          "reasoning": "Secretly Plot against the Hashimoto"
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto",
+          "reasoning": "Get in confrontations with the Fox Anima"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Asa,",
+          "reasoning": "Reunites with Kiriko in Kanezaka"
+        },
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": "Sends letters and gift to his family periodically"
+        },
+        {
+          "locationName": "",
+          "country": "Kamori-san,",
+          "reasoning": "Passes away leaving Kiriko as the head Miko"
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": "Threatens locals due to owed money"
+        }
+      ],
+      "headlines": [
+        "Hashimoto Gangs stoped by a ghostly fox vigilante"
+      ],
+      "sources": [
+        {
+          "text": "Kiriko",
+          "url": "https://www.youtube.com/watch?v=9acxn7qAST4"
+        }
+      ]
+    },
+    {
       "name": "Here to be heard",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
@@ -14153,48 +14377,6 @@
       ]
     },
     {
-      "name": "The Last Bastion",
-      "locationType": "earth",
-      "cityDisplayName": "Black Forest, Germany",
-      "description": "In the middle of the black forest rested the remains of several Bastion units, defeated by the Crusaders and the German Army during the Crisis, slowly but surely reclaimed by nature, undisturbed for years. One day a miracle happened, a severely damaged unit suddenly reactivated, now overgrown with vines and roots, covered in rust and nested upon by many small animals including a particularly curious yellow cardinal.\n\nThe Bastion unit appeared to be conscious, like any Omnic awakened by the Crisis. Dr. Liao had long thought Bastions lacked the hardware requirements for sentience, which makes the nature of this Omnic's personhood still a mystery. The Awakened Bastion was filled with wonder about the beauty of the forest that surrounded him, and set out to discover its surroundings, growing attached to nature, and the cardinal that had been imprinted onto his chassis.\n\nIn spite of his gentle, even harmless demeanor, the Bastion unit was still dangerous. While Anubis' programming was nearly lost, the core combat capabilities of the machine were still functional and occasionally took over when Bastion sensed a threat. Not only that, but Bastion had scanned other units while scouting the forest, finding out his passage as a warbot and his final directive before being shut down to attack a nearby city. Luckily, Bastion's autonomy and his love for life and the wilderness distracted him from following this directive, choosing instead to remain with his animal companion, but as time passed, humans would begin to encounter the wondering Omnic, attacking him out of fear from the horrors of the Crisis. This led Bastion to largely avoid wandering in populated areas, remaining hidden in the European wilderness.",
-      "image": "",
-      "lat": 48.2634439,
-      "lon": 8.1647488,
-      "yearStart": 2070,
-      "yearEnd": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Black Forest, Germany",
-          "country": "Germany",
-          "reasoning": "A bastio Unit awakes"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Bastion",
-          "reasoning": "Goes against his protocol and explores the forest instead"
-        }
-      ],
-      "headlines": [
-        "Rouge Bastion Unit Reported roaming Germany"
-      ],
-      "sources": [
-        {
-          "text": "The Last Bastion",
-          "url": "https://www.youtube.com/watch?v=to8yh83jlXg"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Anubis,",
-          "reasoning": "Commands Bastion to destroy even after Awakening"
-        }
-      ]
-    },
-    {
       "name": "Underground Hero",
       "description": "The more Tracer dealt with local crimes in London, the more she became aware of the daily injustices of the Omnic Population. While she played a role in stopping the Null Sector Uprising years ago and wasn't hostile towards Omnics, the harsh reality of her home country did not exactly settle in until she took a look on the streets for herself. With Turing Green abandoned, the Omnics had no choice but to settle with their already deteriorating Underworld, and the Sonic weaponry that Vishkar had given to the police only continued to enforce curfews on their activity. It is not surprising then that many had to resort to stealing from the outside world in order to survive.\n\nWhile on her daily patrols, Tracer saw the police pursuing an Omnic gang. After cornering one of the thieves, the Omnico, going by Iggy, explained that the modulator she stole was needed to maintain the Underworld grid, and that no matter what she tried, humans refused to sell it legitimately. Tracer listened to Iggy and attempted to de-escalate, pointing out their shared love for punk music and getting Iggy to show her around the underworld to see her vintage Vinyl collection.\n\nWhile this interaction allowed Tracer to bond with the Omnics, it also opened her eyes to the deplorable state in which the neighboring Omnics lived, and while Iggy's friends were welcoming her, many other Omnics, including their gang leader, Kace, were actively antagonistic and scolded Iggy for bringing a human to their home. Following her visit to the Underworld, Lena began to search for parts that could help maintain the Underworld grid, using her own money to acquire parts that Omnics couldn't get and even getting in contact with Winston for advice for repairs. Even if not everyone was welcoming of her help, she still wished to make the lives of Omnics in London easier, especially now that she had made some friends within their community.",
       "locationType": "earth",
@@ -14240,6 +14422,110 @@
           "locationName": "",
           "country": "Kace,",
           "reasoning": "Disapproves of Tracer"
+        }
+      ]
+    },
+    {
+      "name": "Old Dragons",
+      "locationType": "earth",
+      "cityDisplayName": "Hanamura, Japan",
+      "description": "It had been around a decade since the Shimada brothers fought for the fate of the clan, a day Hanzo remembered like it was yesterday. He was now a lone wolf traveling aimlessly as self-punishment. He tried many ways to find peace with his actions, from meditational arrow carving to poetry, but deep down he knew that wouldn't redeem his mistakes. At first, the clan saw his abandonment as betrayal and sent assassins to kill him, so he used the chance to honor his skills with a bow, thinking that taking care of the Shimada would restore his honor, but once the clan died down, he found himself without purpose once more.  In spite of his roaming, every year he found time to visit Hanamura's castle on the anniversary of Genji's death, honoring him as penance. Every time he returned home, he saw more of what Hashimoto had made to the place, growing ashame of letting this happen, but too lost in his own grief to take care of the issue beyond dealing with thugs blocking his way into the castle. \n\nOn the tenth anniversary of Genji's death, Hanzo broke into the Castle and took down the Hashimoto guards as usual, but as he lit his incense offering and prayed to honor Genji, he noticed a man wearing cybernetic armor had stalked him the whole time. The ninja taunted Hanzo, aware of his hypocrisy in honoring his brother in spite of being his killer, and it led to an armed confrontation in the main room of the castle as the two continued to argue over Hanzo's actions. The ninja argued that if Hanzo truly wanted to reclaim his honor, he should do it through his own actions rather than offerings. That revelation enraged Hanzo enough to trigger the Dragon Animas from his bow and shoot a lethal blow into the intruder, but to his surprise, his opponent carried an Anima weapon himself, using his dragon to bend Hanzo's strike back at him, forcing him to take the full brunt of the attack. \n\nDefeated and with the intruder's sword against his neck, Hanzo was ready to accept his death, but the ninja refused to grant his wish, because he still had purpose in life. It was here when the ninja referred to Hanzo as his brother, and while Hanzo did not believe him at first, when Genji unlocked his mask to reveal his scared face, it finally clicked with Hanzo that all this time his brother was alive. Genji did not stay long, simply claiming he was at peace with himself now and that he had forgiven Hanzo, but now it was time for Hanzo to forgive himself, as times were changing and Hanzo soon would need to pick a side in the world's struggles. As he prepared to leave, Hanzo called him a fool to think real life was like the stories their parents told, to which Genji said that even if he was a fool for believing there was hope for his brother, he nevertheless did, before vanishing on a smoke screen. With much to contemplate, Hanzo returned to finish his offering, with a new sense of purpose and focused as to where his path to redemption would take him next.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Genji and Hanzo reunite at Hanamura Castle",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hanzo,",
+          "reasoning": "Leaves with much to reconsider follwoing Genji's words"
+        },
+        {
+          "locationName": "",
+          "country": "Genji,",
+          "reasoning": "Reveals himself to Hanzo and forgives him"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Takes a hold of Hanamura Castle and the Surrounding Hanaoka district"
+        },
+        {
+          "locationName": "",
+          "country": "Shimada Clan,",
+          "reasoning": "Initially sends assassins after Hanzo before Blackwatch took them down"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": "Stationed to guard the Hanamura Castle"
+        }
+      ],
+      "headlines": [
+        "Commotion and light flashes seen at Hanamura Castle.",
+        "Hashimoto activity on the rise at Hanaoka District"
+      ],
+      "sources": [
+        {
+          "text": "Dragons",
+          "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
+        }
+      ]
+    },
+    {
+      "name": "The Last Bastion",
+      "locationType": "earth",
+      "cityDisplayName": "Black Forest, Germany",
+      "description": "In the middle of the black forest rested the remains of several Bastion units, defeated by the Crusaders and the German Army during the Crisis, slowly but surely reclaimed by nature, undisturbed for years. One day a miracle happened, a severely damaged unit suddenly reactivated, now overgrown with vines and roots, covered in rust and nested upon by many small animals including a particularly curious yellow cardinal.\n\nThe Bastion unit appeared to be conscious, like any Omnic awakened by the Crisis. Dr. Liao had long thought Bastions lacked the hardware requirements for sentience, which makes the nature of this Omnic's personhood still a mystery. The Awakened Bastion was filled with wonder about the beauty of the forest that surrounded him, and set out to discover its surroundings, growing attached to nature, and the cardinal that had been imprinted onto his chassis.\n\nIn spite of his gentle, even harmless demeanor, the Bastion unit was still dangerous. While Anubis' programming was nearly lost, the core combat capabilities of the machine were still functional and occasionally took over when Bastion sensed a threat. Not only that, but Bastion had scanned other units while scouting the forest, finding out his passage as a warbot and his final directive before being shut down to attack a nearby city. Luckily, Bastion's autonomy and his love for life and the wilderness distracted him from following this directive, choosing instead to remain with his animal companion, but as time passed, humans would begin to encounter the wondering Omnic, attacking him out of fear from the horrors of the Crisis. This led Bastion to largely avoid wandering in populated areas, remaining hidden in the European wilderness.",
+      "image": "",
+      "lat": 48.2634439,
+      "lon": 8.1647488,
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Black Forest, Germany",
+          "country": "Germany",
+          "reasoning": "A bastio Unit awakes"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Bastion",
+          "reasoning": "Goes against his protocol and explores the forest instead"
+        }
+      ],
+      "headlines": [
+        "Rouge Bastion Unit Reported roaming Germany"
+      ],
+      "sources": [
+        {
+          "text": "The Last Bastion",
+          "url": "https://www.youtube.com/watch?v=to8yh83jlXg"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis,",
+          "reasoning": "Commands Bastion to destroy even after Awakening"
         }
       ]
     },
@@ -14315,77 +14601,6 @@
           "locationName": "",
           "country": "Jetpack Cat",
           "reasoning": "Fika is Born"
-        }
-      ]
-    },
-    {
-      "name": "Avatar of the Fox",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "Over the years, Kiriko's grandmother would begin to feel the weight of her years, and eventually passed away, leaving Kiriko as the primary caretaker of the Tetsuzan Shrine of Kanezaka, moving into a new apartment by herself at the request of her mother, who forbade her from continuing their Miko duties, instead wishing for Kiriko to join her again. Their relationship had been strained over the years, with Kiriko finding herself at a crossroads of two paths, that of a spiritual healer like her grandma and a deadly blade like her mother. Kiriko's attachment to her faith caused the two to fight and not talk to each other in weeks, not helped by Kiriko's poor diet choices and the fact that Asa did not know she now had the Fox Anima made by her father.\n\nDuring the Fox Festival, Kiriko found her mother in yet another discussion with her mother, when suddenly she heard a commotion outside. The Hashimoto were bothering Mr Yoshida,a worker at Kiriko's apartment who was coming back from the festival with his granddaughter. As the Hashimoto threatened the helpless man with the money his son owed to the clan, Kiriko had already vanished from her room, reappearing in the hallway and taking on a full gang of Hashimoto all by herself, while trying to keep the old man and the child safe and healing their wounds with the Anima Ofuda. The night of the Fox Anima was enough to reinvigorate anyone in its field, looking almost like possession and scaring the Hashimoto thugs away.\n\nAsa had noticed her daughter's absence and observed the encounter from the door, realizing she had her grandma's kindness, but the fighting spirit of her parents, and most importantly that all the times she brought up the Fox Spirit, it wasn't just blind faith, but the last gift from her Father acting as a guardian companion. When Kiriko returned, the two had heart-to-heart and Kiriko finally agreed to move back with her mom, even if just briefly. Together, the pair swore to keep Kanezaka safe, using the Fox Spirit as a symbol of protection against the Hashimoto. While Toshiro was still a hostage, he was at least allowed to send occasional letters back home, even including a small dagger forged as a gift for Kiriko, and a symbol of the unbreakable spirit of their family, as the last resistance of Tokyo, and the blade that protects the innocent.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "Kiriko begins to use the Fox Anima against the Hashimoto",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": "Comes back home and protects her neighborhood"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yamagami Blades,",
-          "reasoning": "Secretly Plot against the Hashimoto"
-        },
-        {
-          "locationName": "",
-          "country": "Hashimoto",
-          "reasoning": "Get in confrontations with the Fox Anima"
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Asa,",
-          "reasoning": "Reunites with Kiriko in Kanezaka"
-        },
-        {
-          "locationName": "",
-          "country": "Toshiro,",
-          "reasoning": "Sends letters and gift to his family periodically"
-        },
-        {
-          "locationName": "",
-          "country": "Kamori-san,",
-          "reasoning": "Passes away leaving Kiriko as the head Miko"
-        },
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": "Threatens locals due to owed money"
-        }
-      ],
-      "headlines": [
-        "Hashimoto Gangs stoped by a ghostly fox vigilante"
-      ],
-      "sources": [
-        {
-          "text": "Kiriko",
-          "url": "https://www.youtube.com/watch?v=9acxn7qAST4"
         }
       ]
     },
@@ -14527,6 +14742,72 @@
       "headlines": [
         "Gun shots heart at the London Rooftops during Mondatta's Speech",
         "Mondatta Assassinated in Kings Row, Overwatch agent spotted on the scene"
+      ]
+    },
+    {
+      "name": "Protector",
+      "locationType": "earth",
+      "cityDisplayName": "Kanezaka, Japan",
+      "description": "Kiriko's family wasn't the only ones brave enough to defy the Hashimoto rule in Kanezaka, as many of the young residents who grew up after the Shimada era were not as willing to bend down to any clan like their ancestors. Ryota, Sakura and Nobuto all had their own personal grievances with what the Hashimoto had done to their community and even their own families, and because of it they often ended up confronting the thugs against the odds.\n\nOne night, the group confronted a Hashimoto enforcer pestering the owner of their local Ramen shop, when suddenly the lights were cut out and a ninja figure attacked from the shadows, incapacitating the Hashimoto. The masked hero was none other than Kiriko, who was keeping an eye on the teens for a while, protecting them with the Fox Anima. As she continued her patrol later that night, she spotted the same group being abducted into a car by the Hashimoto, who still had unfinished business with the kids.\n\nKiriko tracked the vehicle into the Hashimoto base where she found them at the mercy of Keigo Kuroura, the head of the Kanezaka branch. Kiriko battled Kuroura himself, quickly overwhelming him as his poor-quality anima blade was no match for Toshiro's masterpiece, the Fox. Once defeated, he attempted to call the headquarters for reinforcements, but Ryota had already crashed his phone, allowing the kids to escape. Kiriko's actions not only saved the teenagers, but inspired them to continue fighting now that they had seen someone else, not that much older, going toe to toe against one of the Clan higher ups. Ryota took a job as a busboy at the ramen shop, using his position as a way to gather Intel, and encouraging his friends to train so they could all help the protector of Kanezaka one day.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Kanezaka, Japan",
+          "country": "Japan",
+          "reasoning": "Kiriko protects the people of Kanezaka from the shadows",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kiriko",
+          "reasoning": "Protects Kanezaka's citizens from the Hashimoto clan"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": "Face the might of the Fox Avatar and get overwhelmed"
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": "Kiriko's spirit sparks a rebellion across local troublemakers"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Kuroura,",
+          "reasoning": "Struggles to handle the Fox Ninja problem"
+        },
+        {
+          "locationName": "",
+          "country": "Nobuto, Sakura,",
+          "reasoning": "Fight the Hashimoto head on"
+        },
+        {
+          "locationName": "",
+          "country": "Ryota,",
+          "reasoning": "Takes a job at a Ramen shop to gather intel"
+        }
+      ],
+      "headlines": [
+        "The Fox Ninja attacks again, Hashimoto thugs arrested near Kanezaka"
+      ],
+      "sources": [
+        {
+          "text": "Protector of Kanezaka",
+          "url": "https://mangadex.org/chapter/bdd4f526-5f60-4677-9453-0dd5a8145055"
+        }
       ]
     },
     {
@@ -14806,10 +15087,10 @@
       ]
     },
     {
-      "name": "Protector",
+      "name": "Yokais",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
-      "description": "Kiriko's family wasn't the only ones brave enough to defy the Hashimoto rule in Kanezaka, as many of the young residents who grew up after the Shimada era were not as willing to bend down to any clan like their ancestors. Ryota, Sakura and Nobuto all had their own personal grievances with what the Hashimoto had done to their community and even their own families, and because of it they often ended up confronting the thugs against the odds.\n\nOne night, the group confronted a Hashimoto enforcer pestering the owner of their local Ramen shop, when suddenly the lights were cut out and a ninja figure attacked from the shadows, incapacitating the Hashimoto. The masked hero was none other than Kiriko, who was keeping an eye on the teens for a while, protecting them with the Fox Anima. As she continued her patrol later that night, she spotted the same group being abducted into a car by the Hashimoto, who still had unfinished business with the kids.\n\nKiriko tracked the vehicle into the Hashimoto base where she found them at the mercy of Keigo Kuroura, the head of the Kanezaka branch. Kiriko battled Kuroura himself, quickly overwhelming him as his poor-quality anima blade was no match for Toshiro's masterpiece, the Fox. Once defeated, he attempted to call the headquarters for reinforcements, but Ryota had already crashed his phone, allowing the kids to escape. Kiriko's actions not only saved the teenagers, but inspired them to continue fighting now that they had seen someone else, not that much older, going toe to toe against one of the Clan higher ups. Ryota took a job as a busboy at the ramen shop, using his position as a way to gather Intel, and encouraging his friends to train so they could all help the protector of Kanezaka one day.",
+      "description": "Kiriko had kept the Hashimoto at bay in Kanezaka for a while now, but with every encounter she would often run into Ryota, Nobuto and Sakura, who were getting more organized in their attempts at fighting back, between their intensive combat training and their elaborate intel networks. It wouldn't take long for Kiriko to reveal herself to her admirers, deciding that they could work together in coordinated attacks. At the end of the summer festival, they had planned to destroy an arms shipment that arrived at a nearby boat, and while Kiriko used the Fox Anima to destroy the security cameras and incapacitate the guards, her new friends made their way into the cargo crates, and prepared themselves to dispose of the weapons.\n\nWhile Kiriko pushed the crates onto the water, Rota had a different plan lined out already. The trio acquired a stockpile of fireworks from the festival and planned to use them in a demonstration of power against the Hashimoto. It was here when Kiriko realized that, in spite of their spirits, this fledgling gang of warriors was still younger than her, too young to remember the days of the Shimada clan, when the city had proper protectors. She took a moment to recount a story Sojiro Shimada had once told her, of how, centuries ago, a rival clan had attacked Kanezaka, using the fireworks from the festival to burn the city down just to get the attention of the Shimada. The aggressors assumed the clan would retaliate right away and set a trap, but instead the clan spent all of its resources aiding the people. Once the city was taken care of, the townsfolk joined the Shimada in taking down the invaders, overwhelming their forces united as one. The Shimada clan was a criminal group that took from their people, but they also knew that a city needed care in order to flourish, and that if they did not care for Kanezaka they were no better than parasites.\n\nKanezaka is known for its festivals and fireworks. They take pride in them and love them as a symbol of hope. The blast from Ryota's stockade would not only destroy the cargo, but it could potentially spread fire across the whole city, and demoralize their people even further as a symbol of their identity was turned into a weapon. Ryota and his group understood Kiriko's lesson, that if they were to do this, it would tell the world they are strong, but not better than the Hashimoto, destroying the city and hurting the people without any regard for their safety or culture. Kiriko finished her lecture by claiming that they can still strike fear onto the Hashimoto without making the people of Kanezaka afraid of them as well, and that if they wanted to do things the right way, they must remain in the shadows, like ghosts, haunting the Hashimoto always one step ahead. To this, Ryota compared them to folkloric Yokai, vengeful and trickster spirits, harming only those who deal with them wrong. The Yokai name fit perfectly for the gang of misfit teens, and as they threw the guns into the bay, they saved the fireworks to celebrate their victory, and their newly branded gang.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -14819,7 +15100,7 @@
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": "Kiriko protects the people of Kanezaka from the shadows",
+          "reasoning": "The Yokai gang is formed after an attack on Hashimoto Cargo",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
@@ -14828,116 +15109,41 @@
         {
           "locationName": "",
           "country": "Kiriko",
-          "reasoning": "Protects Kanezaka's citizens from the Hashimoto clan"
+          "reasoning": "Guides the rest of her gang to protect Kanezaka without making the same mistakes as the Hashimoto"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": "Face the might of the Fox Avatar and get overwhelmed"
+          "country": "Yokai Gang,",
+          "reasoning": "A rebellion movement formed by local teens in Kanezaka"
         },
         {
           "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": "Kiriko's spirit sparks a rebellion across local troublemakers"
+          "country": "Yamagami Blades,",
+          "reasoning": "Collaborates with Kiriko in their fight against the Hashimoto"
         }
       ],
       "yearEnd": null,
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Kuroura,",
-          "reasoning": "Struggles to handle the Fox Ninja problem"
-        },
-        {
-          "locationName": "",
-          "country": "Nobuto, Sakura,",
-          "reasoning": "Fight the Hashimoto head on"
-        },
-        {
-          "locationName": "",
-          "country": "Ryota,",
-          "reasoning": "Takes a job at a Ramen shop to gather intel"
+          "country": "Nobuto, Sakura, Ryota,",
+          "reasoning": "Join Kiriko as her students and fellow rebels against the Hashimoto"
         }
       ],
       "headlines": [
-        "The Fox Ninja attacks again, Hashimoto thugs arrested near Kanezaka"
+        "Yokai grafitti appears to tag Hashimoto tuft across Kanezaka.",
+        "Missing Fireworks from the End of Summer Festival in Kanezaka alert the police of local gang activity"
       ],
       "sources": [
         {
-          "text": "Protector of Kanezaka",
-          "url": "https://mangadex.org/chapter/bdd4f526-5f60-4677-9453-0dd5a8145055"
-        }
-      ]
-    },
-    {
-      "name": "Ecological Network",
-      "locationType": "earth",
-      "cityDisplayName": "Mount Logan, Canada",
-      "description": "Mei eventually found her way to Gibraltar and reunited with Winston and Tracer, but given she wasn't a trained fighter, she couldn't do much to help them on the field. What she could do, however, was reestablish the ecological network systems from the old era. Overwatch had several bases and outposts around the world with the express purpose of environmental monitoring and if they truly wanted to get back, they would need more than just fighters, but also scientists, and it just so happens, Mei had nine years word of meteorological data that could help with restoring entire ecosystems and studying other anomalies.\n\nWinston suggested starting writing a journal of her travels, posting it online for people to see her unique perspective, as someone who was coming back from being frozen in time. After improving her portable cryogenic technology, she set off on adventure, writing everything down and slowly becoming more confident throughout her journey. From the heights of Mount Logan to the depths of Asia and even up to the frozen peaks of the Himalayas, Mei began testing her equipment around the world, studying local wildlife, even reaching a neat of an endangered species up in the Attic and appearing on the news giving her forecasts for upcoming super storms. It also wasn't all just work, as from time to time she would take detours into the nearby cities like Hollywood, catching up with years' worth of history and culture.\n\nMei's Travel log not only helped her mentally, get readjusted to the modern world and keep her occupied after the loss of her team, it also brought attention to many ecological issues still plaguing the world years after Overwatch fell. For many readers who couldn't leave their home, it served as a way to learn about the world, while for others, it was a reminder of a better time, where Overwatch actively worked towards healing the planet, not just fighting criminals.",
-      "image": "",
-      "lat": 60.5678461,
-      "lon": -140.4056911,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Mount Logan, Canada",
-          "country": "Canada",
-          "reasoning": "Mei Tests her equipment in Yukon territory"
+          "text": "Kiriko Origin Story",
+          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
         },
         {
-          "locationName": "Mount Everest, Neval",
-          "country": "Nepal",
-          "reasoning": "Mei visits the abandoned outposts in Asia"
-        },
-        {
-          "locationName": "Artic Circle",
-          "country": "Norway,",
-          "reasoning": "Mei saves an endangered species nest"
-        },
-        {
-          "locationName": "London, United Kingdom",
-          "country": "United Kingdom",
-          "reasoning": "Mei reports on incoming Super storm",
-          "lat": 51.5074456,
-          "lon": -0.1277653
-        },
-        {
-          "locationName": "Hollywood, United States",
-          "country": "United States,",
-          "reasoning": "Mei visits Holiwood to watch the Six Armed Killer"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mei",
-          "reasoning": "Travels around the world restablishing the Ecological Network"
-        },
-        {
-          "locationName": "",
-          "country": "Winston,",
-          "reasoning": "Suggest Mei to start a Journal"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Ecopoints",
-          "reasoning": "Mei uses her research to get the Ecopoints systems working again"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [
-        "Follow the story of the scientist lost to time with Mei's Adventure block",
-        "Climatologist rescues endangered species nest in the Artic"
-      ],
-      "sources": [
-        {
-          "text": "Mei's Adventures",
-          "url": "https://overwatch.blizzard.com/en-us/news/19942649/"
+          "text": "Yokai",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
         }
       ]
     },
@@ -15079,6 +15285,76 @@
       ]
     },
     {
+      "name": "Ecological Network",
+      "locationType": "earth",
+      "cityDisplayName": "Mount Logan, Canada",
+      "description": "Mei eventually found her way to Gibraltar and reunited with Winston and Tracer, but given she wasn't a trained fighter, she couldn't do much to help them on the field. What she could do, however, was reestablish the ecological network systems from the old era. Overwatch had several bases and outposts around the world with the express purpose of environmental monitoring and if they truly wanted to get back, they would need more than just fighters, but also scientists, and it just so happens, Mei had nine years word of meteorological data that could help with restoring entire ecosystems and studying other anomalies.\n\nWinston suggested starting writing a journal of her travels, posting it online for people to see her unique perspective, as someone who was coming back from being frozen in time. After improving her portable cryogenic technology, she set off on adventure, writing everything down and slowly becoming more confident throughout her journey. From the heights of Mount Logan to the depths of Asia and even up to the frozen peaks of the Himalayas, Mei began testing her equipment around the world, studying local wildlife, even reaching a neat of an endangered species up in the Attic and appearing on the news giving her forecasts for upcoming super storms. It also wasn't all just work, as from time to time she would take detours into the nearby cities like Hollywood, catching up with years' worth of history and culture.\n\nMei's Travel log not only helped her mentally, get readjusted to the modern world and keep her occupied after the loss of her team, it also brought attention to many ecological issues still plaguing the world years after Overwatch fell. For many readers who couldn't leave their home, it served as a way to learn about the world, while for others, it was a reminder of a better time, where Overwatch actively worked towards healing the planet, not just fighting criminals.",
+      "image": "",
+      "lat": 60.5678461,
+      "lon": -140.4056911,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Mount Logan, Canada",
+          "country": "Canada",
+          "reasoning": "Mei Tests her equipment in Yukon territory"
+        },
+        {
+          "locationName": "Mount Everest, Neval",
+          "country": "Nepal",
+          "reasoning": "Mei visits the abandoned outposts in Asia"
+        },
+        {
+          "locationName": "Artic Circle",
+          "country": "Norway,",
+          "reasoning": "Mei saves an endangered species nest"
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Mei reports on incoming Super storm",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        },
+        {
+          "locationName": "Hollywood, United States",
+          "country": "United States,",
+          "reasoning": "Mei visits Holiwood to watch the Six Armed Killer"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mei",
+          "reasoning": "Travels around the world restablishing the Ecological Network"
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Suggest Mei to start a Journal"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ecopoints",
+          "reasoning": "Mei uses her research to get the Ecopoints systems working again"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Follow the story of the scientist lost to time with Mei's Adventure block",
+        "Climatologist rescues endangered species nest in the Artic"
+      ],
+      "sources": [
+        {
+          "text": "Mei's Adventures",
+          "url": "https://overwatch.blizzard.com/en-us/news/19942649/"
+        }
+      ]
+    },
+    {
       "name": "Reflections",
       "description": "In spite of Winston's recall, it had been months and no word came out from most other agents. People like Vivian and Torbjörn sat comfortably in retirement, Cassidy, Genji and Angela had their own matters to tend to and reasons to not come back, and Reinhardt, while sympathetic, politely declined to appease Brigitte's concerns. By the time the Holidays arrived, the only people who properly responded were Lena and Mei, the latter being a complete surprise and often being too busy traveling the world to join Winston and Lena.\n\nIt seems that Overwatch's comeback simply wouldn't happen, but this uncertainty ironically allowed Winston and Tracer a veil in their activities. Without an organized team, their vigilante activities were given the benefit of the doubt by the IJC as they stood out less as premeditated incursions and more like Samaritans helping out when something happened nearby. Still, when it was only the two of them against Talon, who operated worldwide with an entire army of soldiers ravaging cities, there was only so little these two could do to stop them, although that never discouraged them from trying.\n\nPerhaps the most notable high note of this partnership was Winston finally had some company in Gibraltar, as Lena and Emily were not visiting regularly, even spending the holidays together, giving Winston another friend besides Athena, and what's more, someone who shared his vision for the world, to never settle for how things seem, but what they could be instead.",
       "locationType": "earth",
@@ -15146,56 +15422,10 @@
       ]
     },
     {
-      "name": "Old Soldiers",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Necropolis, Egypt",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Old Soldiers",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5d511b5298932950/5d02e2dd425980470abcb446/comic-overwatch-old-soldiers_en-us.pdf"
-        },
-        {
-          "text": "Bastet",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Necropolis, Egypt",
-          "country": "Egypt",
-          "reasoning": "",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Soldier 76, Ana, Reaper",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": []
-    },
-    {
       "name": "Failed Recovery",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "No description available.",
+      "description": "Dr. Chao had spent most of the last couple of decades within the Horizon Lunar Colony, supervising the genetic therapy on their subjects. While she had left the Colony before the Apes rebelled, her bones were so deteriorated from the lower gravity that It had forced her into a wheelchair and an office position. In spite of this, it did not discourage her from climbing Lucheng's corporate ladder, as she ended up in the chair of the CEO at Lijiang. Under her leadership, however, the company had seen multiple blows, from the rejection of the Mars colony at the UN, leading to Project Red Promise to be carried out in secret, to the loss of Dr. De Kuiper at the space station during the black hole incident.\n\nStill, their biggest loss as a company had to be Horizon itself. With some of their best scientists killed off, raging apes preventing any way to get back to the base, and what's worse, Winston wins a legal case for personhood, escaping their claims of ownership and setting a precedent for all their other subjects. In a matter of years, the company had gone from the leading force in space travel, to a bundle of catastrophes that would have bankrupted any other corporation. In spite of this, Chao had built Lucheng to last and was not going to let a few mistakes set them back. Over ten years, Lucheng secretly sent three rescue missions with military personnel meant to retire the colony, but every single attempt resulted in failure, as the Apes were smart enough to deal with the personnel, not a single human sent ever returned. \n\nTheir attempts to reestablish the colony allowed Chao to quietly reconnect the security cameras, and they revealed something astonishing. The Apes that survived unsupervised over the last decade were thriving, creating an advanced society of their own, taking apart parts of the base to expand it into new areas of the colony, making weapons and sparring with each other like gladiators. While their previous missions had failed, this discovery renewed interest in regaining control of the colony, if nothing else, to study the behavior of the Apes from afar. While Chao's determination to take back Horizon continued, the large spending on the missions did compromise Red Promise. As a secret project with high potential for failure, it wasn't exactly Lucheng's first priority when it came to budget anymore, and while the mission had thrived on Mars for over a decade now, plans for future development were quietly shelved, focusing only on maintaining what they already had established instead.",
       "image": "",
       "x": 60,
       "y": 70,
@@ -15206,65 +15436,36 @@
         {
           "locationName": "Horizon Lunar Colony",
           "country": "Horizon Lunar Colony",
-          "reasoning": ""
+          "reasoning": "The Apes expand the Colony and develop their own society"
+        },
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": "Dr. Chao takes control of Lucheng and pursues retaking Horizon"
+        },
+        {
+          "locationName": "Red Promise Colony",
+          "country": "Red Promise Colony",
+          "reasoning": "Plans to expand the Mars Mission quietly shelved"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lucheng",
-          "reasoning": ""
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Attempts and Fails to take the Colony back"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Lucheng CEO denies accussations of animal abuse at Horizon and Lijiang",
+        "Several Lucheng scientists including Jiayi Teo seemignly unnaccounted for in the last two decades"
+      ],
       "sources": [
         {
           "text": "Thoughless Gods",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt42f4baf211e3c801/665e404aa310e4e5a2a48c1d/OW_Heroes_Hammond_EN_FINAL_Rev.pdf"
         }
       ]
-    },
-    {
-      "name": "Bastet",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "yearStart": 2077,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Bastet",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ana, Soldier 76",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": 2078,
-      "headlines": []
     },
     {
       "name": "Genius Grant",
@@ -15323,69 +15524,103 @@
       ]
     },
     {
-      "name": "Old Dragons",
+      "name": "Old Soldiers",
+      "description": "Soldier: 76 was spotted in Egypt, tracking down a local mercenary, the Shriek. This vigilante had been giving Talon problems for the longest time, and every lead took Morrison into the compound of a man named Abdul Hakim, a local crime boss had profited from the aftermath of the crisis for years, paying off the government and the police to turn a blind eye as he rampaged across Cairo's resources. Hakim's influence was in great part thanks to his connections with Talon, and when Jack overheard the voice of none other than Gabriel Reyes through the radio used by Hakim's Guards, he stormed into the facility demanding his presence.\n\nThe ghostly reaper manifested out of thin air and shot Jack in the back with necrotic rounds of his shotgun, leaving him weakened and gaining the upper hand. During their first fight, however, a sniper landed a biotic dart on Jack, providing him with some medical aid and allowing him to fight back through the pain. As their confrontation continued, the Shrike appeared unmasked.\n\nAna Amari had revealed herself as the one messing with Hakim's operations with Talon, and now she gained the upper hand on Reyes, unmasking Jim in the process. The horror from seeing what had become of his body left Ana in shock long enough to allow the Reaper to flee, but now Jack had found his target. Three old soldiers had finally crossed paths once more. Originally close friends, now ghosts, forgotten by the world.",
       "locationType": "earth",
-      "cityDisplayName": "Hanamura, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2078,
+      "cityDisplayName": "Necropolis, Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2077,
       "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Old Soldiers",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5d511b5298932950/5d02e2dd425980470abcb446/comic-overwatch-old-soldiers_en-us.pdf"
+        },
+        {
+          "text": "Bastet",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
+        }
+      ],
       "secondaryCountryPlaces": [
         {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
+          "locationName": "Necropolis, Egypt",
+          "country": "Egypt",
+          "reasoning": "Soldier: 76 chases down Talon and the Shrike",
+          "lat": 30.0444,
+          "lon": 31.2357
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hanzo,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Genji,",
-          "reasoning": ""
+          "country": "Soldier 76, Ana, Reaper",
+          "reasoning": "Engage in a fight at Hakim's base of operations"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shimada Clan,",
-          "reasoning": ""
+          "country": "Talon Empire,",
+          "reasoning": "Supports Hakim's takeover of Cairo"
         }
       ],
       "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Dragons",
-          "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
-        }
+      "headlines": [
+        "Soldier: 76 spotted in Cairo",
+        "Shirke attacks on criminals spike after recent encounter between Helix and Talon"
       ]
     },
     {
-      "name": "The World could use more Heroes",
+      "name": "Bastet",
+      "description": "The wounds left by the Reaper left Jack in a weakened state, as the necrotic ammunition seemed to counteract the accelerated healing of the SEP serum. As the two ghosts fled Hakim's complex, Jack collapsed from his injuries. When he finally woke up, he was in a military cot at an abandoned Necropolis that Ana had taken as her outpost. Ana had treated his wounds as best as she could, but they refused to heal, and while she suggested visiting Angela's outpost in Cairo, Jack refused as she would not want anything to do with him. Over the following days, Jack stayed at the Necropolis resting and healing, but he finally got to confront Ana for never reaching out after she disappeared. \n\nIn spite of this, Morrison wanted Amari's help in fighting Talon head on, but Ana wanted little to do with Jack's crusade, which was not just about Talon but also against large corporations like Lumérico. She pointed out to him how Hakim exploited the people of Cairo and that dealing with Talon's stranglehold on her country was her first priority, while Morrison insisted on seeing the big picture, and the Talon war was raging in the rest of the world. In the end, the two of them did not see eye to eye, and Morrison stormed out by himself at night. He felt uneasy, as not only was Talon onto him now, but his closest chance at an ally refused to join his cause. That's when Ana surprised him by following his trail. Amari had a deal: If they worked together in taking down Hakim's operations, she would aid him in tracking Reyes and Talon abroad. \n\nIn the coming weeks, they rounded up a number of Hakim's associates, whitening away his organization. While Hakim initially went into hiding, it didn't take long before the soldiers found him and captured him, dismantling what was left of his organization. During this last strike, Ana wore an ancient mask of the goddess Bastet, inspired by Soldier: 76's persona. She had reflected on his time working in the shadows and how this framed her as a hunter, a Shrike. Instead, if she was to come back to the world of the living, she wished to be seen as a protector. As the two left the Necropolis ready to chase the rest of Talon, she left one letter behind for Fareeha, finally letting her know she was alive and explaining why she went into hiding. While she had left most of the artifacts in the Necropolis behind for her contacts with the Wayfinders to collect, she kept the Bastet mask as a reminder of the symbol she wanted to be.",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2077,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Bastet",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte733a6fae5ac79c2/5d043324486d1c3d0af734e7/ana-bastet_en-us.pdf"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "Soldier: 76 and Bastet take down Hakim's crime Syndicate",
+          "lat": 30.0444,
+          "lon": 31.2357
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Soldier 76",
+          "reasoning": "Work together to  take down Hakim and free Cairo"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Loses a strong ally in Cairo"
+        }
+      ],
+      "yearEnd": 2078,
+      "headlines": [
+        "Bastet Vigilante takes down Abdul Hakim's crime syndicate"
+      ]
+    },
+    {
+      "name": "The Museum Assault",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
-      "description": "No description available.",
+      "description": "Winston and Tracer continue to chase down Talon alone, but the lack of personnel and resources still  spread them too thin to tend to most assaults around the world, like the Volskaya infiltration of Hakim's Syndicate in Cairo. They did, however, manage to take notice of one of Talon's most important operations in years, a plot to steal the Doomfist Gauntlet. After his imprisonment, the Gauntlet was taken for study at the hands of Overwatch scientists, but after Petra, it was confiscated alongside most of Overwatch's assets. The Gauntlet is now on display at the Overwatch Museum in New York, an expansive gallery that displays multiple deactivated crisis era machines and has several exhibits dedicated to Overwatch agents.\n\nThe day of the heist, Widowmaker and Reaper were sent in to retrieve the Gauntlet but were intercepted by Winston and Tracer. As the agents chase Talon, they bring the gun fight into the Museum itself, forcing Winston and Tracer to protect the civilians while still attempting to stop Talon from stealing the Gauntlet. In the middle of the assault, a young boy, trying to protect his younger brother, grabbed the Doomfist Gauntlet, and as the Widowmaker scouted the area for the thief, the kid managed to land a hit that nearly incapacitated her. With Winston and Tracer gaining the upper hand, it forced the Talon operatives to retreat. Before continuing their chase, Oxton approached the boy to retrieve the Gauntlet. As the kids watched in awe at a real-life superhero saving the day with their help, Lena reportedly told them that the world could always use more heroes, a sentiment that many people shared once the news of the attacks reached the public eye, even if many more still only saw ex-Overwatch personnel breaking the law.",
       "image": "",
       "lat": 40.7579554,
       "lon": -73.9855319,
@@ -15395,7 +15630,7 @@
         {
           "locationName": "New York City, United States",
           "country": "United States",
-          "reasoning": "",
+          "reasoning": "Winston and Tracer stop an heist on the Overwatch Museum",
           "lat": 40.7579554,
           "lon": -73.9855319
         }
@@ -15404,33 +15639,36 @@
         {
           "locationName": "",
           "country": "Tracer, Winston,",
-          "reasoning": ""
+          "reasoning": "Stop Talon from taking the Doomfist Gauntlet"
         },
         {
           "locationName": "",
           "country": "Widowmaker, Reaper,",
-          "reasoning": ""
+          "reasoning": "Fail at retrieving the Gaunlet and are forced to rethreat"
         },
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
+          "reasoning": "Seemignly behind the plot to steal the Gauntlet"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Continues to fight Talon in spite of lack in suport"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Possibly plots to break Doomfist out"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Attack at the Overwatch Museum",
+        "Doomfist attempting to escape?"
+      ],
       "sources": [
         {
           "text": "Overwatch Cinematic Trailer",
@@ -15911,6 +16149,69 @@
       "headlines": []
     },
     {
+      "name": "Curse Breaker",
+      "locationType": "earth",
+      "cityDisplayName": "Tokyo, Japan",
+      "description": "No description available.",
+      "image": "",
+      "lat": 35.6768601,
+      "lon": 139.7638947,
+      "eraName": "The Age of Conflict",
+      "yearStart": 2078,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Tokyo, Japan",
+          "country": "Japan",
+          "reasoning": "",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Shion,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Yokai Gang,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Curse Breaker",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
+            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
+          ]
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Stone by Stone",
       "locationType": "earth",
       "cityDisplayName": "Suravasa, India",
@@ -16279,69 +16580,6 @@
       ]
     },
     {
-      "name": "Yokais",
-      "locationType": "earth",
-      "cityDisplayName": "Kanezaka, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Kanezaka, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Kiriko",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yamagami Blades,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Nobuto, Sakura, Chikasa, Ryota,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Kiriko Origin Story",
-          "url": "https://www.youtube.com/watch?v=LLsJaMzLltE"
-        },
-        {
-          "text": "Yokai",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
-        }
-      ]
-    },
-    {
       "name": "Hero of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
@@ -16392,6 +16630,27 @@
           "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
         }
       ]
+    },
+    {
+      "name": "Meeting your Heroes",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
+      "image": "",
+      "cityDisplayName": "Toronto, Canada",
+      "yearStart": 2078,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Sending a Message",
@@ -16452,90 +16711,6 @@
         {
           "locationName": "",
           "country": "Magnus, Titus,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Meeting your Heroes",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
-      "image": "",
-      "cityDisplayName": "Toronto, Canada",
-      "yearStart": 2078,
-      "yearEnd": null,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Toronto, Canada",
-          "country": "Canada",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
-    },
-    {
-      "name": "Curse Breaker",
-      "locationType": "earth",
-      "cityDisplayName": "Tokyo, Japan",
-      "description": "No description available.",
-      "image": "",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
-      "eraName": "The Age of Conflict",
-      "yearStart": 2078,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Tokyo, Japan",
-          "country": "Japan",
-          "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Mizuki,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Curse Breaker",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c9c4967bc1ece6a/699e363630b74e847e396ff3/Yokai_Micro_EN_Final.pdf",
-            "https://www.youtube.com/watch?v=bT6iXb9N9TY"
-          ]
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Toshiro,",
           "reasoning": ""
         }
       ]
@@ -17606,6 +17781,13 @@
       "yearEnd": null,
       "eraName": "The Null Sector Invasion",
       "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        },
         {
           "locationName": "",
           "country": "Gibraltar,",
@@ -19863,7 +20045,15 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
       "headlines": [],
       "sources": [
         {
@@ -20270,67 +20460,43 @@
       ]
     },
     {
-      "name": "The Tiger's Den",
+      "name": "A Rare Power",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 35.6768601,
-      "lon": 139.7638947,
+      "lat": 39.1131257,
+      "lon": -108.0127646,
       "image": "",
-      "cityDisplayName": "Akihabara, Japan",
+      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Akihabara, Japan",
-          "country": "Japan",
+          "locationName": "Watchpoint: Grand Mesa, United States",
+          "country": "United States",
           "reasoning": "",
-          "lat": 35.6768601,
-          "lon": 139.7638947
+          "lat": 39.1131257,
+          "lon": -108.0127646
         }
       ],
       "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Undivided",
-          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
-        },
-        {
-          "text": "The Fall of the Sparrow",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
-        }
-      ],
+      "sources": [],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Genji,",
+          "country": "Sierra, Sojourn,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Shion,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Sojourn, Cassidy,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mercy, Tracer,",
+          "country": "Emre, Freja,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto Clan, Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch,",
+          "country": "Overwatch, Helix Securities,",
           "reasoning": ""
         }
       ]
@@ -20408,43 +20574,173 @@
       ]
     },
     {
-      "name": "A Rare Power",
+      "name": "The Tiger's Den",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
+      "lat": 35.6768601,
+      "lon": 139.7638947,
       "image": "",
-      "cityDisplayName": "Watchpoint: Grand Mesa, United States",
+      "cityDisplayName": "Akihabara, Japan",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Watchpoint: Grand Mesa, United States",
-          "country": "United States",
+          "locationName": "Akihabara, Japan",
+          "country": "Japan",
           "reasoning": "",
-          "lat": 39.1131257,
-          "lon": -108.0127646
+          "lat": 35.6768601,
+          "lon": 139.7638947
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        },
+        {
+          "text": "The Fall of the Sparrow",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltfc19f544712bf4b7/6a0f9efdc0a6ac557097ace3/JPCollab_LOC_EN_Final.pdf"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sierra, Sojourn,",
+          "country": "Genji,",
           "reasoning": ""
         },
         {
           "locationName": "",
-          "country": "Emre, Freja,",
+          "country": "Shion,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mercy, Tracer,",
           "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch, Helix Securities,",
+          "country": "Hashimoto Clan, Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Living Weapon",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "image": "",
+      "cityDisplayName": "Oasis University, Iraq",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Sigma",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Expanding Operations",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -25,
+      "lon": 135,
+      "image": "",
+      "cityDisplayName": "Junkertown, Australia",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Junkertown, Australia",
+          "country": "Australia",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Left Behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Queen, Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Wrecking Ball, Roadhog, Junkrat,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire, Junker Monarchy,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Meri,",
           "reasoning": ""
         }
       ]
@@ -20619,6 +20915,77 @@
       ]
     },
     {
+      "name": "Deep Sea Deception",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 37.7412,
+      "lon": -25.6756,
+      "image": "",
+      "cityDisplayName": "Atlantic Arcology",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Atlantic Arcology",
+          "country": "Atlantic Arcology",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Deepsea Deception",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
+            "https://www.youtube.com/watch?v=CHLN8j9fwX8"
+          ]
+        }
+      ],
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Venture,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lifeweaver,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wayfinder Society,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "The Martins Collective,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation, Talon Empire,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Palak,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Call to Action",
       "description": "No description available.",
       "locationType": "earth",
@@ -20629,7 +20996,15 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
       "headlines": [],
       "sources": [],
       "heroFilterPlaces": [
@@ -20795,77 +21170,6 @@
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Deep Sea Deception",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 37.7412,
-      "lon": -25.6756,
-      "image": "",
-      "cityDisplayName": "Atlantic Arcology",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Atlantic Arcology",
-          "country": "Atlantic Arcology",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Deepsea Deception",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt574ce45285b28c88/6a0e5cddd39aa3279ccedd07/OW_Pride_EN_FULL.pdf",
-            "https://www.youtube.com/watch?v=CHLN8j9fwX8"
-          ]
-        }
-      ],
-      "yearStart": 2080,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Venture,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lifeweaver,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Domina,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wayfinder Society,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Martins Collective,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vishkar Corporation, Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Palak,",
           "reasoning": ""
         }
       ]
@@ -21039,67 +21343,6 @@
         {
           "locationName": "",
           "country": "Overwatch, Lucheng Interstellar, Talon Empire,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Expanding Operations",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": -25,
-      "lon": 135,
-      "image": "",
-      "cityDisplayName": "Junkertown, Australia",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Junkertown, Australia",
-          "country": "Australia",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Left Behind",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
-          ]
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junker Queen, Vendetta,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Mauga,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Wrecking Ball, Roadhog, Junkrat,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire, Junker Monarchy,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Meri,",
           "reasoning": ""
         }
       ]
@@ -21364,51 +21607,6 @@
       ]
     },
     {
-      "name": "Living Weapon",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 29.5918,
-      "lon": 52.5836,
-      "image": "",
-      "cityDisplayName": "Oasis University, Iraq",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Oasis University, Iraq",
-          "country": "Iraq",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Sigma",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sigma,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Left Behind",
       "description": "No description available.",
       "locationType": "earth",
@@ -21465,17 +21663,44 @@
       ]
     },
     {
+      "name": "Homecoming",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Castaway",
       "description": "No description available.",
       "locationType": "earth",
       "lat": 28.9999625,
       "lon": 125.0000442,
       "image": "",
-      "cityDisplayName": "East China Sea",
+      "cityDisplayName": "Busan, South Korea",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": [
         {
@@ -21536,6 +21761,27 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Relief",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     }
   ]
 }

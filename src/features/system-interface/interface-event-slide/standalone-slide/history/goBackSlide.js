@@ -7,7 +7,13 @@
  * the original method's `this`).
  */
 
+import { tryGoBackStoryCommentaryTheater } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
+
 export async function runGoBackSlide(slide) {
+            // Legacy hook (no-op for in-place commentary opens).
+            if (await tryGoBackStoryCommentaryTheater()) {
+                return;
+            }
             if (!slide._slideHistoryStack?.length) return;
             const prev = slide._slideHistoryStack.pop();
             if (!prev) {

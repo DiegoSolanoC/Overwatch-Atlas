@@ -799,8 +799,6 @@ body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-p
 
 #eventSlide.event-slide--dialogue-theater #eventGlitchToggle,
 
-#eventSlide.event-slide--dialogue-theater #eventSlideBack,
-
 #eventSlide.event-slide--dialogue-theater #eventSlideEra,
 
 #eventSlide.event-slide--dialogue-theater #eventSlideOrderRow,
@@ -826,6 +824,8 @@ body:has(#paginationDock) .dialogue-theater-list-host.active .dialogue-theater-p
 #eventSlide.event-slide--dialogue-theater #eventStoryFilterPlacesSection,
 
 #eventSlide.event-slide--dialogue-theater #eventSourcesSection,
+
+#eventSlide.event-slide--dialogue-theater #eventCommentarySection,
 
 #eventSlide.event-slide--dialogue-theater #eventFiltersSection,
 

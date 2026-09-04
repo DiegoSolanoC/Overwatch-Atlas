@@ -198,3 +198,113 @@ body.color-palette-gray .event-sources-section {
 .source-pair:last-child {
     margin-bottom: 0;
 }
+
+/* Commentary (Dialogue Theater links) — under description, before relevant locations.
+   Matches relevancy typography + gallery chip sizing; play control beside speaker chips. */
+.event-commentary-section {
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.event-commentary-section .event-filter-header {
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.event-commentary-list,
+.event-commentary-section #eventSlideCommentary {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.event-commentary-section {
+    --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
+    --hero-bio-hover-scale: 1.08;
+    --hero-bio-chip-max-h: clamp(64px, 8vw, 88px);
+    --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
+    --hero-bio-label-band: clamp(14px, 1.1vw, 18px);
+}
+
+.event-commentary-display-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 14px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.event-commentary-display-item__title {
+    flex: 1 1 160px;
+    min-width: 0;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.event-commentary-display-item__trailing {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px 10px;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.event-commentary-display-item__chips {
+    align-items: center;
+    gap: 8px 10px;
+}
+
+.event-commentary-section .event-slide-filter-token-chip-wrap {
+    position: relative;
+    display: block;
+    width: var(--hero-bio-chip-max-w);
+    max-width: var(--hero-bio-chip-max-w);
+    height: var(--hero-bio-chip-max-h);
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.event-commentary-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
+    width: 100%;
+    height: var(--hero-bio-chip-max-h);
+    max-width: var(--hero-bio-chip-max-w);
+}
+
+.event-commentary-section .event-slide-filter-token-chip:focus-visible {
+    outline: 2px solid rgba(33, 150, 243, 0.95);
+    outline-offset: 3px;
+}
+
+.event-source-media-play--commentary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--hero-bio-chip-max-h);
+    height: var(--hero-bio-chip-max-h);
+    min-width: var(--hero-bio-chip-max-h);
+    min-height: var(--hero-bio-chip-max-h);
+    padding: 6px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.event-source-media-play--commentary .event-source-media-play__icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: contain;
+    pointer-events: none;
+}

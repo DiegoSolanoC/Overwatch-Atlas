@@ -34,6 +34,14 @@ import {
 
 } from '../image-overlay/eventSourceMediaOverlay.js';
 
+import {
+
+    clearStoryCommentarySlideDom,
+
+    updateStoryCommentarySlideFromEvent,
+
+} from './slideStoryCommentary.js';
+
 
 
 /**
@@ -144,6 +152,8 @@ export async function runUpdateSourcesAndFilters(slide, event) {
 
                 lhEarly?.clearStoryFilterPlacesSlideDom?.();
 
+                clearStoryCommentarySlideDom();
+
                 // Do not clear relevant locations here: displaySlide already filled them for bio satellites;
 
                 // clearing would wipe Ana (relevantLocations) right after render.
@@ -151,6 +161,8 @@ export async function runUpdateSourcesAndFilters(slide, event) {
                 return;
 
             }
+
+            updateStoryCommentarySlideFromEvent(event);
 
             // Update sources section
 

@@ -16,6 +16,7 @@
  */
 
 import { cloneFilterPlaceRows } from './formValueHelpers.js';
+import { normalizeCommentaryList } from '../../../interface-shared/storyEventCommentary.js';
 
 export function buildVariantFromForm(variant) {
     let headlines;
@@ -27,11 +28,14 @@ export function buildVariantFromForm(variant) {
         }
     }
 
+    const commentary = normalizeCommentaryList(variant.commentary);
+
     const variantObj = {
         name: variant.name || '',
         description: variant.description || '',
         sources: variant.sources && variant.sources.length > 0 ? variant.sources : undefined,
         headlines,
+        commentary: commentary.length > 0 ? commentary : undefined,
         image: '',
         locationType: variant.locationType || 'earth'
     };

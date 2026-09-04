@@ -374,6 +374,10 @@
     align-items: start;
 }
 
+.event-slide-inline-editor__commentary-row {
+    grid-template-columns: 1fr auto;
+}
+
 .event-slide-inline-editor__source-links {
     display: flex;
     flex-direction: column;

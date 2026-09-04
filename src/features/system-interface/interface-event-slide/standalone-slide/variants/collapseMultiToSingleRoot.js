@@ -19,6 +19,11 @@ export function runCollapseMultiToSingleRoot(slide, eventData, keepVariant) {
             eventData.eraName = keepVariant.eraName || '';
             eventData.headlines = [...(keepVariant.headlines || [])];
             eventData.sources = keepVariant.sources ? [...keepVariant.sources] : undefined;
+            if (Array.isArray(keepVariant.commentary) && keepVariant.commentary.length) {
+                eventData.commentary = [...keepVariant.commentary];
+            } else {
+                delete eventData.commentary;
+            }
             eventData.lat = keepVariant.lat;
             eventData.lon = keepVariant.lon;
             eventData.x = keepVariant.x;

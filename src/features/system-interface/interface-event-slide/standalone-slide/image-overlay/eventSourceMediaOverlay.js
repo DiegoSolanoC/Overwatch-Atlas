@@ -134,6 +134,14 @@ export function syncSourceMediaPlayButtons(active = {}) {
 
     document.querySelectorAll('.event-source-media-play').forEach((btn) => {
         if (!(btn instanceof HTMLButtonElement)) return;
+        // Commentary uses the same base class for chip sizing, but opens Dialogue Theater —
+        // never rewrite its Theater icon face to the YouTube ▶ / PDF controls.
+        if (
+            btn.classList.contains('event-source-media-play--commentary')
+            || btn.hasAttribute('data-commentary-play')
+        ) {
+            return;
+        }
 
         const kind = String(btn.dataset.mediaKind || '').trim();
         const key = String(btn.dataset.mediaKey || '').trim();

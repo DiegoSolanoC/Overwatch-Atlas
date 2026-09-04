@@ -194,6 +194,7 @@ export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             
             // Render sources
             slide.renderSourcesEditor(target.sources || []);
+            slide.renderCommentaryEditor?.(target.commentary || []);
             
             // Render variant bar
             slide.renderVariantBar(eventData);

@@ -10701,7 +10701,7 @@
     {
       "id": "bb32ec2b-bdee-457c-a321-ba862b69a72b",
       "entryType": "dialogue",
-      "name": "Be Proud",
+      "name": "Good Encryption",
       "status": "active",
       "eraName": "",
       "tags": [
@@ -28415,7 +28415,7 @@
         },
         {
           "id": "3a49c719-b288-41b7-aa83-db18b1f67a72",
-          "hero": "L��������������������������������������cio",
+          "hero": "L����������������������������������������cio",
           "voice": "Lúcio_-_Look,_I_believe_in_my_team._We'll_get_'em_next_time.ogg",
           "voicePrefix": "",
           "subtitles": "Look, I believe in my team. We'll get 'em next time",
@@ -30352,7 +30352,7 @@
     {
       "id": "af793c28-abab-4e2d-a328-a49f4c804146",
       "entryType": "dialogue",
-      "name": "Killmeter tall",
+      "name": "Kilometer tall",
       "status": "active",
       "eraName": "",
       "tags": [

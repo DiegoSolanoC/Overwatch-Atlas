@@ -113,7 +113,7 @@
     </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
-    <link rel="stylesheet" href="src/styles/app.css?v=98">
+    <link rel="stylesheet" href="src/styles/app.css?v=103">
     <link rel="stylesheet" href="src/styles/entry.css?v=24">
 </head>
 <body class="app-timeline-default">
@@ -296,6 +296,10 @@
                 </div>
                 <div class="event-slide-scrollable" id="eventSlideScrollable">
                     <p id="eventSlideText">Placeholder text for event information.</p>
+                    <div id="eventCommentarySection" class="event-relevant-locations-section event-commentary-section" style="display: none;" hidden>
+                        <h4 class="event-filter-header">Commentary</h4>
+                        <div class="event-sources-list event-commentary-list" id="eventSlideCommentary" aria-live="polite"></div>
+                    </div>
                     <div id="eventRelevantLocationsSection" class="event-relevant-locations-section" style="display: none;">
                         <h4 class="event-filter-header">Relevant locations</h4>
                         <div id="eventSlideRelevantLocations" class="event-slide-relevant-locations" aria-live="polite"></div>
@@ -445,7 +449,7 @@
     <script src="src/features/world/worldview-controls-ui/runtime/WorldviewStationFollow.js?v=9"></script>
     
     <!-- Load component loader for globe/menu/features -->
-    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=102"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/LoadingOrchestrator.js?v=105"></script>
     
     <!-- Load services -->
     <script type="module" src="src/features/universal-features/atlas-sound-effects/SoundEffectsService.js?v=10"></script>
@@ -457,7 +461,7 @@
     <script type="module" src="src/features/system-interface/interface-left-panel/event-system/lookup/LocationLabelResolver.js?v=11"></script>
     <script src="src/features/world/worldview-shared-assets/data/flagFileByCommonName.js?v=8"></script>
     <!-- LocationFlagHelpers: 7 slice modules + 1 facade that builds window.LocationFlagHelpers. -->
-    <script src="src/features/system-interface/interface-shared/flags/flagFileResolver.js?v=1"></script>
+    <script src="src/features/system-interface/interface-shared/flags/flagFileResolver.js?v=2"></script>
     <script src="src/features/system-interface/interface-shared/flags/flagLocationContext.js?v=1"></script>
     <script src="src/features/system-interface/interface-shared/flags/secondaryCountryFlags.js?v=1"></script>
     <script src="src/features/system-interface/interface-shared/flags/relevancyRowFilterHighlight.js?v=1"></script>
@@ -510,6 +514,6 @@
     <script src="src/script.js?v=8"></script>
     
     <!-- Shared page initialization (loader, zoom controls) -->
-    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=102"></script>
+    <script type="module" src="src/features/universal-features/atlas-boot/AppInitializer.js?v=103"></script>
 </body>
 </html>

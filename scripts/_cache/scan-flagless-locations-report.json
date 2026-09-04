@@ -1,0 +1,339 @@
+{
+  "totals": {
+    "events": 412,
+    "primaryFlagless": 15,
+    "secondaryFullyFlaglessRows": 0,
+    "secondaryPartialFlaglessRows": 0,
+    "eventsMissingSecondaryPlaces": 3,
+    "uniqueEventsWithAnyFlagless": 15
+  },
+  "primaryFlaglessByReason": {
+    "no_comma_country_and_no_special": [
+      {
+        "index": 121,
+        "name": "Watching the Globe",
+        "year": 2053,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 167,
+        "name": "Sparrow",
+        "year": 2060,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Tokyo",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 206,
+        "name": "Chronal Dissociation",
+        "year": 2068,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 257,
+        "name": "Not Alone",
+        "year": null,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 286,
+        "name": "Recall",
+        "year": 2077,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 295,
+        "name": "Reflections",
+        "year": 2077,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 342,
+        "name": "Randevu",
+        "year": 2079,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 358,
+        "name": "Warm Welcome",
+        "year": 2079,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 366,
+        "name": "Together",
+        "year": 2079,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 370,
+        "name": "The Invitation",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 376,
+        "name": "Jetpack Katt",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 383,
+        "name": "The Gibraltar Attack",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 384,
+        "name": "From the Ashes",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 398,
+        "name": "Call to Action",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "Watchpoint: Gibraltar",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      },
+      {
+        "index": 410,
+        "name": "Castaway",
+        "year": 2080,
+        "locationType": "earth",
+        "field": "cityDisplayName",
+        "cityDisplayName": "East China Sea",
+        "extractedCountry": null,
+        "reason": "no_comma_country_and_no_special"
+      }
+    ]
+  },
+  "secondaryFullyFlaglessByReason": {},
+  "primaryFlagless": [
+    {
+      "index": 121,
+      "name": "Watching the Globe",
+      "year": 2053,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 167,
+      "name": "Sparrow",
+      "year": 2060,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Tokyo",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 206,
+      "name": "Chronal Dissociation",
+      "year": 2068,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 257,
+      "name": "Not Alone",
+      "year": null,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 286,
+      "name": "Recall",
+      "year": 2077,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 295,
+      "name": "Reflections",
+      "year": 2077,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 342,
+      "name": "Randevu",
+      "year": 2079,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 358,
+      "name": "Warm Welcome",
+      "year": 2079,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 366,
+      "name": "Together",
+      "year": 2079,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 370,
+      "name": "The Invitation",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 376,
+      "name": "Jetpack Katt",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 383,
+      "name": "The Gibraltar Attack",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 384,
+      "name": "From the Ashes",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 398,
+      "name": "Call to Action",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    },
+    {
+      "index": 410,
+      "name": "Castaway",
+      "year": 2080,
+      "locationType": "earth",
+      "field": "cityDisplayName",
+      "cityDisplayName": "East China Sea",
+      "extractedCountry": null,
+      "reason": "no_comma_country_and_no_special"
+    }
+  ],
+  "secondaryFullyFlagless": [],
+  "secondaryPartialFlagless": [],
+  "noSecondary": [
+    {
+      "index": 383,
+      "name": "The Gibraltar Attack",
+      "year": 2080,
+      "places": []
+    },
+    {
+      "index": 398,
+      "name": "Call to Action",
+      "year": 2080,
+      "places": []
+    },
+    {
+      "index": 410,
+      "name": "Castaway",
+      "year": 2080,
+      "places": []
+    }
+  ]
+}

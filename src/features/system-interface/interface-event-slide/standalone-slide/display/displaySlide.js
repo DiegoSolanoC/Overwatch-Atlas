@@ -100,6 +100,13 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
         if (relSectionClear) {
             relSectionClear.style.display = 'none';
         }
+        const commentarySectionClear = document.getElementById('eventCommentarySection');
+        const commentaryListClear = document.getElementById('eventSlideCommentary');
+        if (commentaryListClear) commentaryListClear.innerHTML = '';
+        if (commentarySectionClear) {
+            commentarySectionClear.style.display = 'none';
+            commentarySectionClear.setAttribute('hidden', 'hidden');
+        }
         window.LocationFlagHelpers?.clearBioConnectionsSlideDom?.();
         if (heroLocEditClear) {
             heroLocEditClear.setAttribute('hidden', '');

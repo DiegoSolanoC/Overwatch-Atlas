@@ -96,7 +96,12 @@
 
     /** Full-display overrides (no comma, or non-country suffix handled here). */
     function trySpecialDisplayFile(locationName) {
-        var n = (locationName || '').toLowerCase();
+        // Collapse punctuation so "Watchpoint: Gibraltar" still matches "watchpoint gibraltar".
+        var n = String(locationName || '')
+            .toLowerCase()
+            .replace(/[:/|_–—-]+/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
         if (n.indexOf('numbani') >= 0) return FICTIONAL.numbani;
         if (n.indexOf('horizon lunar') >= 0) return FICTIONAL.horizonLunarColony;
         if (n.indexOf('red promise colony') >= 0 || n.indexOf('red promise escape ship') >= 0) {
