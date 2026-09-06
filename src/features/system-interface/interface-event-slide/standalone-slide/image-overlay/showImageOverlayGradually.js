@@ -12,6 +12,10 @@ import {
     showDialogueTheaterImageOverlayGradually,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 import {
+    isStoryCommentaryDirectPlayActive,
+    stopStoryCommentaryDirectPlay,
+} from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
+import {
     isMobileEventSlideViewport,
     syncMobileEventSlideLayoutForImageShown,
 } from './mobileEventSlideImageLayout.js';
@@ -26,6 +30,13 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 return;
             }
 
+            if (
+                isStoryCommentaryDirectPlayActive()
+                || document.getElementById('dialogueTheaterStage')?.dataset?.sceneUrlOverride
+            ) {
+                stopStoryCommentaryDirectPlay({ restoreEventImage: false });
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const eventSlide = document.getElementById('eventSlide');
@@ -38,6 +49,10 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 slide.activePdfSourceUrl = '';
             }
 
+            document.getElementById('dialogueTheaterStage')?.remove();
+            overlay.classList.remove('dialogue-theater-stage-overlay');
+            delete overlay.dataset.storyCommentaryDirectPlay;
+
             img.src = imagePath;
             img.style.display = 'block';
             img.style.opacity = '0';
@@ -48,6 +63,7 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 overlay.classList.add('slide-open');
             }
             overlay.style.opacity = '0';
+            overlay.style.removeProperty('pointer-events');
 
             syncMobileEventSlideLayoutForImageShown();
 
@@ -57,6 +73,7 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 overlay.addEventListener('click', (e) => {
                     if (isMobileEventSlideViewport()) return;
                     if (isDialogueTheaterImageOverlayContext()) return;
+                    if (isStoryCommentaryDirectPlayActive()) return;
                     if (shouldIgnoreOverlayClickForSourceMedia(e)) return;
                     // Only hide if clicking the image itself or overlay (not other controls)
                     if (e.target === overlay || e.target.tagName === 'IMG') {
@@ -80,8 +97,6 @@ export function runShowImageOverlayGradually(slide, imagePath, durationMs = 1500
                 
                 overlay.style.opacity = String(opacity);
                 img.style.opacity = String(opacity);
-                
-                // Log progress at 25%, 50%, 75%, 100%
                 
                 if (progress >= 1) {
                     clearInterval(fadeTimer);

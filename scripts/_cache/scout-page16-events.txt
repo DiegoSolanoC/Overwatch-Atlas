@@ -1,0 +1,133 @@
+﻿Used commentary: 101
+
+=== PAGE 16 (#151ΓÇô160) ===
+
+======================================================================
+#151 The Scourge of Numbani
+year 2056 2060 | The Golden Age | City State of Numbani
+DESC:
+The war hero had been buried with his weapon, and celebrated across the nation, until one day a man appeared in Numbani wielding an upgraded gauntlet, stolen from the grave. Akinjide Adeyemi, a warmonger who profiteered from constant raids in the city, declaring it a blight upon Nigeria and swearing to destroy it. Known as the Scourge of Numbani, between the gauntlet and a small militia distributed across Africa he became, this second Doomfist would terrorize the city for nearly twelve years, and since Overwatch lacked jurisdiction in Numbani, they were unable to intervene from the inside, but they found ways around it. 
+
+While Scouting for Ecopoint: locations, many other Watchpoints would get approved, such as Xining and Grimsvotn, but during this process Ana Amari noted that among the many bases, Overwatch had a shamefully thin presence around Central Africa, and under her guidance, Watchpoint: Kisangani got approved. While the base focused on informatic security and computer science, it would enable Overwatch to respond to threats around the region, fighting Doomfist and his lieutenants from the outside, primarily through the efforts of a new Strike team member: Wildebeest.
+  [place] {"loc":"City State of Numbani","country":"Numbani","why":"Years after the sucess of the city of Numbani, a second Doomfist terrorizes the city"}
+  [hero] {"country":"Doomfist","why":"Liutenant to the Scourge of Numbani"}
+  [faction] {"country":"Overwatch","why":"Aids Numbani externally through Watchpoint: Kisangani"}
+  [faction] {"country":"Numbani City of Harmony,","why":"Chooses to remain independant and not take Overwatch's help"}
+  [npc] {"country":"Adeyemi,","why":"Second Doomfist, the Scourge of Numbani"}
+
+======================================================================
+#152 The Red Promise
+year 2053 2060 | The Golden Age | Lijiang, China
+EXISTING commentary: Doomfist ┬╖ Lijiang Tower ΓÇö Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.
+DESC:
+The Horizon Lunar Colony had been a long-lasting success by this point, but Lucheng Interstellar was never aiming for the Moon. Their eyes always lie beyond the stars. So many years after the Moon base's establishment, the company felt ready to begin the process on the next frontier: Mars.
+
+The initial proposal, however, was denied by the UN, but this did not stop Lucheng. They would keep the plans in motion funded internally, and begin gathering a group of scientists and engineers in the public eye. The small team was going to be the first phase of Project: Red Promise, a multi-stage terraforming Initiative to colonize the surface of Mars. At first, the project carried on smoothly, as the astronauts arrived on the red planet's surface and established a base within a matter of months. What none of them expected was that two of the team members, Dr. Jiayi Teo and Dr. Khiem Van Minh, were having a baby
+  [place] {"loc":"Lijiang, China","country":"China","why":"Lucheng approves Martian colony in spite of UN denial"}
+  [place] {"loc":"Red Promise Colony","country":"Red Promise Colony,","why":"Begins Construction secretly"}
+  [hero] {"country":"Juno","why":"Future First martian"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Sets into motion the secret Project Red Promise"}
+  [npc] {"country":"Jiayi,","why":"Astronaut send as part of Project Red Promise"}
+  [npc] {"country":"Chao,","why":"Head of Lucheng and the Red Promise project"}
+
+======================================================================
+#153 Yearning
+year 2053 2060 | The Golden Age | Cairo, Egypt
+DESC:
+As the years went on, Ana's marriage would eventually collapse, but it wouldn't be the end of her love life. Over the years she had grown quite fond of Lieutenant Reinhardt, who likewise adored her back.
+
+However, with the messy relationships if her past and the dedication they both had to Overwatch as soldiers, life got in the way. Reinhardt, too, always put others before him, and understood Amari's need for distance well, those he never pushed on the matter. So went the years they shared in Overwatch, where they both quietly yearned for each other without ever saying a word of the matter, but the rest of the team? They all knew well what the looks they gave each other meant.
+  [place] {"loc":"Cairo, Egypt","country":"Egypt","why":"Ana and Reinhardt grow close following years of working together"}
+  [hero] {"country":"Ana, Reinhardt","why":"Grow fond of each other after Ana's marriage collapses"}
+  [faction] {"country":"Overwatch","why":"Both serve on the strike team during their unspoken romance"}
+
+======================================================================
+#154 The Xie Incident
+year 2056 2060 | The Golden Age | Moscow, Russia
+DESC:
+The more time passed since the crisis ended, the more governments across the world were back to full power, reinstating their policies and deemphasizing international cooperation. More and more countries were eager to prove that they could stand on their own in this new world, and began to hesitate about immediately allowing Overwatch for deployment. Morrison began to feel the weight of global bureaucracy, as lawsuits and protocol became too much to wade through and often allowed criminals to get away.
+
+One particular mission came up that would allow Morrison to put Overwatch's charter to a test. The family of an American diplomat had been kidnapped and taken into Russia, and Morrison tasked Amari to retrieve her. Ana sidestepped protocol and did the mission before Russia approved of her clearance. Everything went well. She tracked down the terrorist and retrieved the civilians alive, but in the end, she was intercepted by the Russian government and charged with illegal entering and obstruction of local law enforcement. Ana was released, but permanently banned from Russia.
+
+The so-called Xie Incident became a stain on Overwatch's reputation, as Russia had consistently been skeptical of allowing the organization inside ever since the Crisis, and after Ana's breach of protocol, those rare occasions only became even rarer. Ana's acts in Russia became a bit of a legend, however, with many exaggerated accounts of her feats and what led to her ban proliferating over the years.
+  [place] {"loc":"Moscow, Russia","country":"Russia","why":"Ana gets arrested for illegally entering Russia"}
+  [hero] {"country":"Soldier 76, Ana,","why":"Break protocol to rescue a US diiplomats"}
+  [faction] {"country":"Overwatch,","why":"Caught under for deploying Ana before adquiring clearance"}
+
+======================================================================
+#155 Juno Teo Minh is Born
+year 2060 null | The Golden Age | Red Promise Colony
+DESC:
+On March 22nd of the year 2060, Juno Teo Minh, the first Martian, was born. Juno was a surprise to the Red Promise team, but in a lot of ways she embodied the hopes of the project, and everyone loved her as if she was their own kid. While the scientists were often busy with their duties at the base, they made an active effort to give Juno a happy and healthy childhood, but it was clear their curiosity rubbed off on the young girl. Having been born in an early colony with so few people, in a world so far away from Earth, Juno was quite sheltered and inexperienced with a lot of the ways the world worked, things that would be normal to an Earth-born human were completely alien and often terrifying for her.
+
+It also meant that Juno was always eager to get out there, and see more of her home. She wanted to help the team join in expeditions on the planet's surface, and once she was old enough, they would provide her with her own space suit, allowing her to roam through the outdoors of the colony and aid the scientists on the staff, as a true member of the team. Still, she often fantasized about Earth, especially when watching the cowboy movies that her dad had brought with him.
+  [place] {"loc":"Red Promise Colony","country":"Red Promise Colony","why":"Juno Teo Minh is Born"}
+  [hero] {"country":"Juno","why":"Juno Teo Minh is Born"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Unaware of Juno's existance"}
+  [npc] {"country":"Jiayi,","why":"Juno's Mother"}
+(BIRTHDAY ΓÇö skip commentary)
+
+======================================================================
+#156 Omnic Rights
+year 2053 2060 | The Golden Age | London, United Kingdom
+EXISTING commentary: Torbj├╢rn ┬╖ King's Row ΓÇö I can't believe I fell for all that anti-omnic claptrap.
+DESC:
+The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.
+
+When the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: "Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened."
+The road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"Omnics segregated to Underground spaces under strict policing"}
+  [place] {"loc":"Geneva, Switzerland","country":"Switzerland,","why":"Omnics are granted legal personhood"}
+  [npc] {"country":"Liao,","why":"Testifies in favor of Omnic rights"}
+
+======================================================================
+#157 Ye Wuyang is Born
+year 2060 null | The Golden Age | Chengdu, China
+DESC:
+On May 1st of 2060, Ye Wuyang was born. The younger of the Ye siblings, forever under his sister's shadow. Wuyang grew up seeking to meet his family's standards and would often train alongside his older sister in martial arts. While Anran was always outstanding, yet pressured to keep an eye on her younger brother, Wuyang tended to fall behind his sister, though they both aimed towards following the family's tradition and eventually getting accepted into Wuxing's Fire College.
+  [place] {"loc":"Chengdu, China","country":"China","why":"Ye Wuyang is Born"}
+  [hero] {"country":"Wuyang","why":"Ye Wuyang is Born"}
+  [hero] {"country":"Anran,","why":"Now an older sister"}
+(BIRTHDAY ΓÇö skip commentary)
+
+======================================================================
+#158 Black Ops
+year 2056 2060 | The Golden Age | Capetown, South Africa
+DESC:
+While Overwatch's reputation and support was still high across the world, over the last couple of of years they have experienced a series of rejections. Korea refused the establishment of a Watchpoint: in Busan, then Numbani chose to remain outside of jurisdiction in spite of Doomfist's attacks. And many other things got in the way of operations around the world.
+
+Reyes and Cassidy would begin a crackdown on criminals in Calgary, Chicago and Saint Paul. And during this time, a drug trafficker would raise a lawsuit in his defense, arguing Overwatch had no authority over living humans, only Omnics. Naturally, this was quickly dismissed and seen as an attempt to extort money and avoid prosecution, but the red tape and politics of it all slowed Overwatch down, and only continued to frustrate Reyes, who began to break protocol more often, keeping things to himself to avoid delays.
+
+Not long after the Xie Incident, another similar overstep took place in Cape Town where a rouge God Program that escaped containment and rebel against its captors, caught the attention of Anubis loyalists and formed an insurrection. The same red tape that prevented Ana's deployment in Russia had now stopped Morrison from sending in any troops. Lucky for him, Lacroix had extensive covert ops training and came up with the idea of sending both him and Reyes "on vacation." The pair had a quiet trip, limiting themselves to intel gathering and evacuation of sources, as well as, on the rare occasion, the disappearance of one or two criminals. Coincidentally, their vacation led to the apprehension of the rouge AI and the loyalist suddenly vanished, all without official Overwatch involvement. Following this success and the repeated tension with international bureaucracy, Morrison would approve of more and more vacations between the Blackwatch staff, Cassidy joining them in many cases, but whether Jack knew the full extent of these trips is unknown.
+  [place] {"loc":"Capetown, South Africa","country":"South Africa","why":"A rouge AI breaches containment and begins an insureciton"}
+  [place] {"loc":"Chicago, United States","country":"United States,","why":"Reyes and Cassiy  get into a lawsuit"}
+  [hero] {"country":"Reaper,","why":"Goes on Vacations with G├⌐rard, criminals seemignly vanish every time"}
+  [hero] {"country":"Cassidy,","why":"Gets involved in a lawsuit over criminal take down"}
+  [hero] {"country":"Ana,","why":"Banned from Russia after rescue mission"}
+  [faction] {"country":"Overwatch, Blackwatch","why":"Constant breaking of protocol as red tape blocks them from acting in time"}
+  [npc] {"country":"G├⌐rard,","why":"Goes on Vacations with Reyes, criminals seemignly vanish every time"}
+
+======================================================================
+#159 Growing with the Clan
+year 2057 2068 | The Golden Age | Kanezaka, Japan
+DESC:
+Over the years, the Shimada family had come to rely on the Yamagami Blades, the business run by Toshiro and his wife, Asa. The Yamagami name has served the city for generations following traditional paths, heavily linked by the local shrine to the Fox Spirit, and now under Shimada control, the family chose their side in the turf war of the clans. Not only did Toshiro develop the Anima weapons used by the clean head and his sons, but his wife proved to be quite an asset as well. Often regarded as the best sword master in the world, Asa would serve as the teacher to the Shimada brothers. From a very young age, Asa wished for his daughter to also choose the path of the blade, so since she was very little, Kiriko would often join the brothers in training. Both brothers would quickly grow attached to the little girl, seeing her as a little niece figure. Genji in particular, was one to slack off from training and play with the kids, stealing sweets from the kitchen and playing games in the arcade.
+
+ It was not just the brothers who Kiriko grew close to, since she spent so much time in the Shimada Castle, the clan leader, Sojiro Shimada had also grown accustomed to her presence. She would often join the family during the fireworks festivals at the end of summer, and during one night, he told his sons the stories of the clan. How centuries ago, a rival clan attempted to end their rule by setting the orchards aflame, but the Shimada did not move to defend the fields. Instead, they aided the people. These teachings heavily shaped Kiriko's perspective of the clan as Kanezaka's protectors, while she was still too young to understand the true nature of their operations.
+
+On the off days when Kiriko was not training, she spent time at the Fox shrine with her grandmother, who taught her the traditional ways of spiritual cleansing and meditation. From an early age, her grandmother would teach him how to use the Anima ofuda that her dad had crafted, to summon the Fox spirit and use it to aid those in need. Much like how her mother wanted her to follow in her footsteps, her grandma had laid another path for her as well.
+  [place] {"loc":"Kanezaka, Japan","country":"Japan","why":"The Shimada brothers train under the Yamagami Blades"}
+  [hero] {"country":"Hanzo, Genji,","why":"The Shimada brothers both see Kiriko as a cute little niece"}
+  [hero] {"country":"Kiriko","why":"Young kid joining the brothers in their training"}
+  [faction] {"country":"Shimada Clan, Yamagami Blades,","why":"The Clan establishes a continous relationship with the Yamagami family"}
+  [npc] {"country":"Asa, Toshiro,","why":"Owners of the Yamagami business and parents to Kiriko"}
+  [npc] {"country":"Kamori-san,","why":"Utilizes the Fox Spirit as a method of teaching Kiriko"}
+
+======================================================================
+#160 Illari Quispe Ruiz is Born
+year 2060 null | The Golden Age | Runasapi, Peru
+DESC:
+On December 21st of 2060, Illari Quispe Ruiz was born. As a child from Runasapi, Illari was surrounded by war heroes and a community that embraced Solar Threading technology, powering their entire city and defining their way of life. From a very early age, she decided to one day become one of the Inti Warriors, bowing to the desires of her community and dedicating her free time to training, so that one day she could live up to the legends that surrounded her.
+  [place] {"loc":"Runasapi, Peru","country":"Peru","why":"Illari Quispe Ruiz is Born"}
+  [hero] {"country":"Illari","why":"Illari Quispe Ruiz is Born"}
+(BIRTHDAY ΓÇö skip commentary)

@@ -1,0 +1,399 @@
+﻿OW1 Classic map chatters: 231
+Events: 412
+
+=== STRONG OW1 MAP CHATTER ΓåÆ EVENT MATCHES ===
+
+ΓÇó Mercy ┬╖ Busan ΓÇö I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, yoohoo! Hoi z├ñme!
+  free
+  ΓÇ£I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, yoohoo! Hoi z├ñme!ΓÇ¥
+    ΓåÆ #272 Help for the Needy  [105] (hero,map,tokens:5)
+    ΓåÆ #170 When you Wish  [80] (hero,map)
+    ΓåÆ #216 Uprising  [80] (hero,map)
+
+ΓÇó Reinhardt ┬╖ Eichenwalde ΓÇö We fought a terrible battle here. Many Crusaders lost their lives.
+  free
+  ΓÇ£We fought a terrible battle here. Many Crusaders lost their lives.ΓÇ¥
+    ΓåÆ #326 Answering the Call  [105] (hero,map,tokens:5)
+    ΓåÆ #91 Honor and Glory  [100] (hero,map,tokens:4) | already has commentary
+    ΓåÆ #89 Building a Myth  [95] (hero,map,tokens:3) | already has commentary
+
+ΓÇó Sigma ┬╖ Horizon Lunar Colony (Telescope) ΓÇö rowspan="3" |'Horizon Lunar Colony (Telescope)'
+  free
+  ΓÇ£rowspan="3" |'Horizon Lunar Colony (Telescope)'ΓÇ¥
+    ΓåÆ #54 New Horizons  [105] (hero,map,tokens:5) | already has commentary
+    ΓåÆ #43 Road to the Stars  [70] (map,tokens:5)
+    ΓåÆ #45 Space Race  [70] (map,tokens:5)
+
+ΓÇó Genji ┬╖ Watchpoint: Gibraltar ΓÇö It's beautiful here! I could never appreciate it before.
+  free
+  ΓÇ£It's beautiful here! I could never appreciate it before.ΓÇ¥
+    ΓåÆ #297 Reflections  [100] (hero,map,tokens:4)
+    ΓåÆ #211 Questioning  [95] (hero,map,tokens:3)
+    ΓåÆ #191 Shimada Takedown  [90] (hero,map,tokens:2)
+
+ΓÇó Mei ┬╖ Watchpoint: Gibraltar ΓÇö Winston. I think one of these equations is wrong.
+  free
+  ΓÇ£Winston. I think one of these equations is wrong.ΓÇ¥
+    ΓåÆ #297 Reflections  [100] (hero,map,tokens:4)
+    ΓåÆ #342 Randevu  [95] (hero,map,tokens:3)
+    ΓåÆ #358 Warm Welcome  [95] (hero,map,tokens:3)
+
+ΓÇó Moira ┬╖ Oasis ΓÇö If only the world could see the wonders that science has built.
+  free
+  ΓÇ£If only the world could see the wonders that science has built.ΓÇ¥
+    ΓåÆ #214 Unshackled  [100] (hero,map,tokens:4)
+    ΓåÆ #192 Blacklisted  [90] (hero,map,tokens:2)
+    ΓåÆ #211 Questioning  [90] (hero,map,tokens:2)
+
+ΓÇó Sigma ┬╖ Horizon Lunar Colony ΓÇö 'Horizon Lunar Colony'
+  free
+  ΓÇ£'Horizon Lunar Colony'ΓÇ¥
+    ΓåÆ #54 New Horizons  [100] (hero,map,tokens:4) | already has commentary
+    ΓåÆ #43 Road to the Stars  [65] (map,tokens:4)
+    ΓåÆ #45 Space Race  [65] (map,tokens:4)
+
+ΓÇó Winston ┬╖ Horizon Lunar Colony ΓÇö rowspan="2" |'Horizon Lunar Colony'
+  free
+  ΓÇ£rowspan="2" |'Horizon Lunar Colony'ΓÇ¥
+    ΓåÆ #54 New Horizons  [100] (hero,map,tokens:4) | already has commentary
+    ΓåÆ #182 Out There  [100] (hero,map,tokens:4)
+    ΓåÆ #202 Lunar Revolt  [100] (hero,map,tokens:4)
+
+ΓÇó Winston ┬╖ Horizon Lunar Colony ΓÇö They say you can never go home again.
+  free
+  ΓÇ£They say you can never go home again.ΓÇ¥
+    ΓåÆ #202 Lunar Revolt  [100] (hero,map,tokens:4)
+    ΓåÆ #54 New Horizons  [95] (hero,map,tokens:3) | already has commentary
+    ΓåÆ #182 Out There  [95] (hero,map,tokens:3)
+
+ΓÇó Winston ┬╖ Watchpoint: Gibraltar ΓÇö Attack ΓÇö Sorry it's such a mess in here. I-I wasn't expecting company.
+  free
+  ΓÇ£Sorry it's such a mess in here. I-I wasn't expecting company.ΓÇ¥
+    ΓåÆ #257 Not Alone  [100] (hero,map,tokens:4)
+    ΓåÆ #297 Reflections  [95] (hero,map,tokens:3)
+    ΓåÆ #383 The Gibraltar Attack  [95] (hero,map,tokens:3)
+
+ΓÇó Wrecking Ball ┬╖ Horizon Lunar Colony ΓÇö looking through telescope ΓÇö He says "The view is acceptable."
+  free
+  ΓÇ£He says "The view is acceptable."ΓÇ¥
+    ΓåÆ #182 Out There  [100] (hero,map,tokens:4)
+    ΓåÆ #202 Lunar Revolt  [95] (hero,map,tokens:3)
+    ΓåÆ #204 Escape Pod  [95] (hero,map,tokens:3)
+
+ΓÇó Zarya ┬╖ Volskaya Industries ΓÇö Final blow on Overwatch agents ΓÇö Overwatch is not wanted here.
+  free
+  ΓÇ£Overwatch is not wanted here.ΓÇ¥
+    ΓåÆ #259 Siberian Front  [100] (hero,map,tokens:4)
+    ΓåÆ #294 Infiltration  [90] (hero,map,tokens:2)
+    ΓåÆ #317 Searching  [90] (hero,map,tokens:2)
+
+ΓÇó Zarya ┬╖ Volskaya Industries ΓÇö Katya is a hero to my people. We must protect what she has built.
+  free
+  ΓÇ£Katya is a hero to my people. We must protect what she has built.ΓÇ¥
+    ΓåÆ #294 Infiltration  [100] (hero,map,tokens:4)
+    ΓåÆ #259 Siberian Front  [95] (hero,map,tokens:3)
+    ΓåÆ #317 Searching  [95] (hero,map,tokens:3)
+
+ΓÇó Zarya ┬╖ Volskaya Industries ΓÇö V gostjax xorosho, a doma luchshe. (Cyrillic) Being a guest is good, but being at home is better. (subtitled as (Russian) No place like home.
+  free
+  ΓÇ£V gostjax xorosho, a doma luchshe. (Cyrillic) Being a guest is good, but being at home is better. (subtitled as (Russian) No place like homeΓÇ¥
+    ΓåÆ #294 Infiltration  [100] (hero,map,tokens:4)
+    ΓåÆ #259 Siberian Front  [90] (hero,map,tokens:2)
+    ΓåÆ #317 Searching  [90] (hero,map,tokens:2)
+
+ΓÇó Hanzo ┬╖ Hanamura ΓÇö The master of the Shimada Clan has returned.
+  free
+  ΓÇ£The master of the Shimada Clan has returned.ΓÇ¥
+    ΓåÆ #131 Anima Weaponry  [95] (hero,map,tokens:3) | already has commentary
+    ΓåÆ #281 Old Dragons  [95] (hero,map,tokens:3)
+    ΓåÆ #159 Growing with the Clan  [90] (hero,map,tokens:2) | already has commentary
+
+ΓÇó Junkrat ┬╖ Junkertown ΓÇö IΓÇÖve been all around the world, and thereΓÇÖs nowhere that compares to home.
+  free
+  ΓÇ£IΓÇÖve been all around the world, and thereΓÇÖs nowhere that compares to home.ΓÇ¥
+    ΓåÆ #270 Crime Spree  [95] (hero,map,tokens:3)
+    ΓåÆ #253 Treassure  [90] (hero,map,tokens:2)
+    ΓåÆ #285 Full Disclosure  [85] (hero,map,tokens:1)
+
+ΓÇó Junkrat ┬╖ Junkertown ΓÇö One last time: we take this innocent pile of ill-gotten treasure to the scrapyard, reveal it to the queen, then boom!
+  free
+  ΓÇ£One last time: we take this innocent pile of ill-gotten treasure to the scrapyard, reveal it to the queen, then boom!ΓÇ¥
+    ΓåÆ #253 Treassure  [95] (hero,map,tokens:3)
+    ΓåÆ #270 Crime Spree  [90] (hero,map,tokens:2)
+    ΓåÆ #333 Friendly Rivalry  [90] (hero,map,tokens:2)
+
+ΓÇó Mercy ┬╖ Watchpoint: Gibraltar ΓÇö I'm not used to state-of-the-art facilities these days.
+  free
+  ΓÇ£I'm not used to state-of-the-art facilities these days.ΓÇ¥
+    ΓåÆ #297 Reflections  [95] (hero,map,tokens:3)
+    ΓåÆ #216 Uprising  [90] (hero,map,tokens:2)
+    ΓåÆ #342 Randevu  [90] (hero,map,tokens:2)
+
+ΓÇó Mercy ┬╖ Watchpoint: Gibraltar ΓÇö Overwatch was shut down for a reason. Maybe it's best it stay that way.
+  free
+  ΓÇ£Overwatch was shut down for a reason. Maybe it's best it stay that way.ΓÇ¥
+    ΓåÆ #297 Reflections  [95] (hero,map,tokens:3)
+    ΓåÆ #342 Randevu  [95] (hero,map,tokens:3)
+    ΓåÆ #358 Warm Welcome  [95] (hero,map,tokens:3)
+
+ΓÇó Pharah ┬╖ Temple of Anubis ΓÇö I lost many good soldiers here.
+  free
+  ΓÇ£I lost many good soldiers here.ΓÇ¥
+    ΓåÆ #260 Anubis Escapes  [95] (hero,map,tokens:3)
+    ΓåÆ #243 Protecting the Skies  [90] (hero,map,tokens:2)
+    ΓåÆ #146 Mother's Guidance  [80] (hero,map) | already has commentary
+
+ΓÇó Pharah ┬╖ Watchpoint: Gibraltar ΓÇö I always dreamed of being stationed here.
+  free
+  ΓÇ£I always dreamed of being stationed here.ΓÇ¥
+    ΓåÆ #243 Protecting the Skies  [95] (hero,map,tokens:3)
+    ΓåÆ #146 Mother's Guidance  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #342 Randevu  [90] (hero,map,tokens:2)
+
+ΓÇó Reaper ┬╖ Watchpoint: Gibraltar ΓÇö Haven't been back here for a while.
+  free
+  ΓÇ£Haven't been back here for a while.ΓÇ¥
+    ΓåÆ #288 Recall  [95] (hero,map,tokens:3)
+    ΓåÆ #158 Black Ops  [90] (hero,map,tokens:2)
+    ΓåÆ #236 Interrogation  [90] (hero,map,tokens:2)
+
+ΓÇó Reaper ┬╖ Watchpoint: Gibraltar ΓÇö Overwatch... Good riddance.
+  free
+  ΓÇ£Overwatch... Good riddance.ΓÇ¥
+    ΓåÆ #288 Recall  [95] (hero,map,tokens:3)
+    ΓåÆ #158 Black Ops  [90] (hero,map,tokens:2)
+    ΓåÆ #236 Interrogation  [90] (hero,map,tokens:2)
+
+ΓÇó Reaper ┬╖ Watchpoint: Gibraltar ΓÇö Overwatch... I'll put an end to your sad story.
+  free
+  ΓÇ£Overwatch... I'll put an end to your sad story.ΓÇ¥
+    ΓåÆ #288 Recall  [95] (hero,map,tokens:3)
+    ΓåÆ #158 Black Ops  [90] (hero,map,tokens:2)
+    ΓåÆ #187 Cyber Ninja  [90] (hero,map,tokens:2)
+
+ΓÇó Reinhardt ┬╖ Watchpoint: Gibraltar ΓÇö I remember being posted here. It was good for my tan.
+  free
+  ΓÇ£I remember being posted here. It was good for my tan.ΓÇ¥
+    ΓåÆ #297 Reflections  [95] (hero,map,tokens:3)
+    ΓåÆ #342 Randevu  [90] (hero,map,tokens:2)
+    ΓåÆ #358 Warm Welcome  [90] (hero,map,tokens:2)
+
+ΓÇó Sigma ┬╖ Horizon Lunar Colony ΓÇö I never thought I'd be back here. It's beautiful... and cold.
+  free
+  ΓÇ£I never thought I'd be back here. It's beautiful... and cold.ΓÇ¥
+    ΓåÆ #54 New Horizons  [95] (hero,map,tokens:3) | already has commentary
+    ΓåÆ #152 The Red Promise  [65] (map,tokens:4) | already has commentary
+    ΓåÆ #202 Lunar Revolt  [65] (map,tokens:4)
+
+ΓÇó Soldier 76 ┬╖ Watchpoint: Gibraltar ΓÇö Bring back Overwatch. What's the point?
+  free
+  ΓÇ£Bring back Overwatch. What's the point?ΓÇ¥
+    ΓåÆ #150 Gwishin  [95] (hero,map,tokens:3)
+    ΓåÆ #278 Vigilante  [95] (hero,map,tokens:3)
+    ΓåÆ #123 Duty Calls  [90] (hero,map,tokens:2)
+
+ΓÇó Sombra ┬╖ Volskaya Industries ΓÇö I wonder how my friend is doing.
+  free
+  ΓÇ£I wonder how my friend is doing.ΓÇ¥
+    ΓåÆ #294 Infiltration  [95] (hero,map,tokens:3)
+    ΓåÆ #317 Searching  [90] (hero,map,tokens:2)
+
+ΓÇó Winston ┬╖ Numbani ΓÇö Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?
+  free
+  ΓÇ£Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?ΓÇ¥
+    ΓåÆ #235 Closed Fist  [95] (hero,map,tokens:3)
+    ΓåÆ #302 The Museum Assault  [90] (hero,map,tokens:2)
+    ΓåÆ #232 Storm Rising  [85] (hero,map,tokens:1)
+
+ΓÇó Zarya ┬╖ Junkertown ΓÇö Let Russia never repeat the mistakes of this country.
+  free
+  ΓÇ£Let Russia never repeat the mistakes of this country.ΓÇ¥
+    ΓåÆ #294 Infiltration  [95] (hero,map,tokens:3)
+    ΓåÆ #259 Siberian Front  [90] (hero,map,tokens:2)
+
+ΓÇó Zarya ┬╖ Volskaya Industries ΓÇö Byt' mo┼╛et, u ─ìeloveka sto ─ìuvstv i so smert'ju pogibajut tol'ko pjat', izvestnyx nam, a ostal'nye devjanosto pjat' ostajutsja ┼╛ivy. (Cyrillic) Perhaps a man has a hundred senses, and when he dies only the five known to us are destroyed and the remaining ninety-five are left alive. [https://en.wikisource.org/wiki/The_Cherry_Orchard/Act_II Source]
+  free
+  ΓÇ£Byt' mo┼╛et, u ─ìeloveka sto ─ìuvstv i so smert'ju pogibajut tol'ko pjat', izvestnyx nam, a ostal'nye devjanosto pjat' ostajutsja ┼╛ivy. (CyrillΓÇ¥
+    ΓåÆ #259 Siberian Front  [95] (hero,map,tokens:3)
+    ΓåÆ #254 Strongest Woman Alive  [90] (hero,map,tokens:2)
+    ΓåÆ #294 Infiltration  [90] (hero,map,tokens:2)
+
+ΓÇó Baptiste ┬╖ Busan ΓÇö No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, I'm getting it... give me a second!
+  free
+  ΓÇ£No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, I'm getting it... giΓÇ¥
+    ΓåÆ #272 Help for the Needy  [90] (hero,map,tokens:2)
+    ΓåÆ #338 Busan Defense  [85] (hero,map,tokens:1)
+    ΓåÆ #342 Randevu  [80] (hero,map)
+
+ΓÇó Cassidy ┬╖ Eichenwalde ΓÇö Think any of these taps still work? I'm feelin' an almighty thirst.
+  free
+  ΓÇ£(Attack) Think any of these taps still work? I'm feelin' an almighty thirst.ΓÇ¥
+    ΓåÆ #297 Reflections  [90] (hero,map,tokens:2)
+    ΓåÆ #146 Mother's Guidance  [85] (hero,map,tokens:1) | already has commentary
+    ΓåÆ #383 The Gibraltar Attack  [85] (hero,map,tokens:1)
+
+ΓÇó Cassidy ┬╖ Route 66 ΓÇö Attack ΓÇö Ashe always did hate the food here.
+  free
+  ΓÇ£Ashe always did hate the food here.ΓÇ¥
+    ΓåÆ #240 Mass Backlash  [90] (hero,map,tokens:2)
+    ΓåÆ #136 The New West  [85] (hero,map,tokens:1)
+    ΓåÆ #146 Mother's Guidance  [85] (hero,map,tokens:1) | already has commentary
+
+ΓÇó Cassidy ┬╖ Route 66 ΓÇö Attack ΓÇö Yeah, I wouldn't drink the coffee. Always tasted like boiled dirt.
+  free
+  ΓÇ£Yeah, I wouldn't drink the coffee. Always tasted like boiled dirt.ΓÇ¥
+    ΓåÆ #240 Mass Backlash  [90] (hero,map,tokens:2)
+    ΓåÆ #136 The New West  [85] (hero,map,tokens:1)
+    ΓåÆ #146 Mother's Guidance  [85] (hero,map,tokens:1) | already has commentary
+
+ΓÇó D.va ┬╖ Busan ΓÇö Elimination ΓÇö I will defend my country!
+  free
+  ΓÇ£I will defend my country!ΓÇ¥
+    ΓåÆ #261 Game On  [90] (hero,map,tokens:2)
+    ΓåÆ #249 Top Player  [85] (hero,map,tokens:1)
+    ΓåÆ #279 Shooting Star  [85] (hero,map,tokens:1)
+
+ΓÇó D.va ┬╖ Busan ΓÇö Someone has to save the world, it might as well be me! Woo! GG!
+  free
+  ΓÇ£Someone has to save the world, it might as well be me! Woo! GG!ΓÇ¥
+    ΓåÆ #249 Top Player  [90] (hero,map,tokens:2)
+    ΓåÆ #261 Game On  [85] (hero,map,tokens:1)
+    ΓåÆ #279 Shooting Star  [85] (hero,map,tokens:1)
+
+ΓÇó Echo ┬╖ Busan ΓÇö Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!
+  free
+  ΓÇ£Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!ΓÇ¥
+    ΓåÆ #181 Project Echo Goes Online  [90] (hero,map,tokens:2)
+    ΓåÆ #48 Genesis  [85] (hero,map,tokens:1) | already has commentary
+    ΓåÆ #342 Randevu  [80] (hero,map)
+
+ΓÇó Genji ┬╖ Hanamura ΓÇö Attack ΓÇö I passed many an hour of my misspent youth here.
+  free
+  ΓÇ£I passed many an hour of my misspent youth here.ΓÇ¥
+    ΓåÆ #184 When Dragons Fall  [90] (hero,map,tokens:2)
+    ΓåÆ #281 Old Dragons  [90] (hero,map,tokens:2)
+    ΓåÆ #131 Anima Weaponry  [85] (hero,map,tokens:1) | already has commentary
+
+ΓÇó Genji ┬╖ Hanamura ΓÇö Ramen! (sigh) It's just not the same anymore.
+  free
+  ΓÇ£Ramen! (sigh) It's just not the same anymore.ΓÇ¥
+    ΓåÆ #167 Sparrow  [90] (hero,map,tokens:2)
+    ΓåÆ #131 Anima Weaponry  [85] (hero,map,tokens:1) | already has commentary
+    ΓåÆ #184 When Dragons Fall  [85] (hero,map,tokens:1)
+
+ΓÇó Genji ┬╖ Nepal ΓÇö referring to the sword found in his room ΓÇö Dragon's straight edge
+  free
+  ΓÇ£Dragon's straight edgeΓÇ¥
+    ΓåÆ #241 Self Discovery  [90] (hero,map,tokens:2)
+    ΓåÆ #216 Uprising  [80] (hero,map)
+    ΓåÆ #303 Travelling Monk  [80] (hero,map)
+
+ΓÇó Hanzo ┬╖ Hanamura ΓÇö On attack ΓÇö No time for games!
+  free
+  ΓÇ£No time for games!ΓÇ¥
+    ΓåÆ #167 Sparrow  [90] (hero,map,tokens:2)
+    ΓåÆ #281 Old Dragons  [90] (hero,map,tokens:2)
+    ΓåÆ #131 Anima Weaponry  [85] (hero,map,tokens:1) | already has commentary
+
+ΓÇó Hanzo ┬╖ Hanamura ΓÇö This is the home of the Shimada Clan. My home.
+  free
+  ΓÇ£This is the home of the Shimada Clan. My home.ΓÇ¥
+    ΓåÆ #131 Anima Weaponry  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #167 Sparrow  [90] (hero,map,tokens:2)
+    ΓåÆ #184 When Dragons Fall  [90] (hero,map,tokens:2)
+
+ΓÇó Junkrat ┬╖ Junkertown ΓÇö Treasure secured, trolley loaded, theyΓÇÖll never suspect a thing.
+  free
+  ΓÇ£Treasure secured, trolley loaded, theyΓÇÖll never suspect a thing.ΓÇ¥
+    ΓåÆ #253 Treassure  [90] (hero,map,tokens:2)
+    ΓåÆ #270 Crime Spree  [85] (hero,map,tokens:1)
+    ΓåÆ #327 The Plan  [85] (hero,map,tokens:1)
+
+ΓÇó Junkrat ┬╖ Junkertown ΓÇö What do ya think of that, ya Majesty?
+  free
+  ΓÇ£(after multi-elimination) What do ya think of that, ya Majesty?ΓÇ¥
+    ΓåÆ #253 Treassure  [90] (hero,map,tokens:2)
+    ΓåÆ #270 Crime Spree  [90] (hero,map,tokens:2)
+    ΓåÆ #285 Full Disclosure  [85] (hero,map,tokens:1)
+
+ΓÇó Mei ┬╖ Nepal ΓÇö I love it here in the mountains. I wish I could go climbing!
+  free
+  ΓÇ£I love it here in the mountains. I wish I could go climbing!ΓÇ¥
+    ΓåÆ #296 Ecological Network  [90] (hero,map,tokens:2)
+    ΓåÆ #345 Liberation  [80] (hero,map)
+
+ΓÇó Orisa ┬╖ Numbani ΓÇö Before Efi rebuilt me, I was defeated here by Doomfist. I must learn from the memory.
+  free
+  ΓÇ£(Attack) Before Efi rebuilt me, I was defeated here by Doomfist. I must learn from the memory.ΓÇ¥
+    ΓåÆ #179 Counter Meassures  [90] (hero,map,tokens:2)
+    ΓåÆ #299 Genius Grant  [90] (hero,map,tokens:2)
+    ΓåÆ #311 Stolen Gauntlet  [90] (hero,map,tokens:2)
+
+ΓÇó Pharah ┬╖ Eichenwalde ΓÇö After hearing all of Reinhardt's stories, I always wanted to come here.
+  free
+  ΓÇ£After hearing all of Reinhardt's stories, I always wanted to come here.ΓÇ¥
+    ΓåÆ #146 Mother's Guidance  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #342 Randevu  [80] (hero,map)
+    ΓåÆ #345 Liberation  [80] (hero,map)
+
+ΓÇó Pharah ┬╖ Temple of Anubis ΓÇö We're on my home turf now.
+  free
+  ΓÇ£We're on my home turf now.ΓÇ¥
+    ΓåÆ #243 Protecting the Skies  [90] (hero,map,tokens:2)
+    ΓåÆ #260 Anubis Escapes  [90] (hero,map,tokens:2)
+    ΓåÆ #146 Mother's Guidance  [80] (hero,map) | already has commentary
+
+ΓÇó Reaper ┬╖ Watchpoint: Gibraltar ΓÇö Busan (Karaoke)
+  free
+  ΓÇ£Busan (Karaoke)ΓÇ¥
+    ΓåÆ #158 Black Ops  [90] (hero,map,tokens:2)
+    ΓåÆ #288 Recall  [90] (hero,map,tokens:2)
+    ΓåÆ #236 Interrogation  [85] (hero,map,tokens:1)
+
+ΓÇó Reinhardt ┬╖ Eichenwalde ΓÇö This is the home town of my master, Balderich. He was born here! And he died here...
+  free
+  ΓÇ£This is the home town of my master, Balderich. He was born here! And he died here...ΓÇ¥
+    ΓåÆ #91 Honor and Glory  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #326 Answering the Call  [90] (hero,map,tokens:2)
+    ΓåÆ #62 Knights in Shining Armor  [85] (hero,map,tokens:1)
+
+ΓÇó Reinhardt ┬╖ Eichenwalde ΓÇö Too much blood was spilled in my country during the war.
+  free
+  ΓÇ£Too much blood was spilled in my country during the war.ΓÇ¥
+    ΓåÆ #62 Knights in Shining Armor  [90] (hero,map,tokens:2)
+    ΓåÆ #91 Honor and Glory  [85] (hero,map,tokens:1) | already has commentary
+    ΓåÆ #96 Who knew Better  [85] (hero,map,tokens:1)
+
+ΓÇó Reinhardt ┬╖ Route 66, Temple of Anubis or Oasis ΓÇö I'm getting cooked alive in here! Ughhhh!
+  free
+  ΓÇ£I'm getting cooked alive in here! Ughhhh!ΓÇ¥
+    ΓåÆ #93 Early Missions  [90] (hero,map,tokens:2)
+    ΓåÆ #104 Tipping the Balance  [90] (hero,map,tokens:2)
+    ΓåÆ #89 Building a Myth  [85] (hero,map,tokens:1) | already has commentary
+
+ΓÇó Reinhardt ┬╖ Route 66, Temple of Anubis or Oasis ΓÇö rowspan="1" |'Route 66, Temple of Anubis or Oasis'
+  free
+  ΓÇ£rowspan="1" |'Route 66, Temple of Anubis or Oasis'ΓÇ¥
+    ΓåÆ #89 Building a Myth  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #91 Honor and Glory  [90] (hero,map,tokens:2) | already has commentary
+    ΓåÆ #92 The Original Strike Team  [90] (hero,map,tokens:2) | already has commentary
+
+ΓÇó Roadhog ┬╖ Dorado ΓÇö Now I know why they call this place Dorado. (laughs)
+  free
+  ΓÇ£Now I know why they call this place Dorado. (laughs)ΓÇ¥
+    ΓåÆ #285 Full Disclosure  [90] (hero,map,tokens:2)
+
+node : (node:33852) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-2877eab7-1f95-4592-a6ba-337829c8211d.ps1:92 char:1
++ node scripts/_cache/scout-ow1-map-event-matches.mjs 2>&1 | Out-File - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:33852) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Wrote scripts/_cache/scout-ow1-map-event-matches.json (189 with hits)

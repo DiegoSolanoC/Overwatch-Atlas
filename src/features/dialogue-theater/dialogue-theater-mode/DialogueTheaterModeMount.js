@@ -2,7 +2,7 @@ import {
     getDialogueTheaterListHostId,
     mountDialogueTheaterListView,
     unmountDialogueTheaterListView,
-} from '../dialogue-theater-list/DialogueTheaterListView.js?v=111';
+} from '../dialogue-theater-list/DialogueTheaterListView.js?v=115';
 
 function hideGlobeChrome() {
     const testContainer = document.querySelector('.test-container');
@@ -45,12 +45,15 @@ function restoreGlobeChrome() {
 export async function mountDialogueTheaterMode() {
     unmountDialogueTheaterMode();
     hideGlobeChrome();
+    // Match Codex/Story: mode class before heavy list work so dock CSS can reveal chrome.
+    document.body.classList.add('dialogue-theater-mode-active');
 
     const content = document.getElementById('content');
     if (!content) return;
 
     const host = document.createElement('div');
     host.id = getDialogueTheaterListHostId();
+    host.className = 'dialogue-theater-list-host';
     content.appendChild(host);
 
     await mountDialogueTheaterListView(host);
@@ -59,5 +62,6 @@ export async function mountDialogueTheaterMode() {
 export async function unmountDialogueTheaterMode() {
     const host = document.getElementById(getDialogueTheaterListHostId());
     unmountDialogueTheaterListView(host);
+    document.body.classList.remove('dialogue-theater-mode-active');
     restoreGlobeChrome();
 }

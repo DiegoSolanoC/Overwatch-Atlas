@@ -1,0 +1,362 @@
+﻿==== NAMED ====
+
+=== Still Grieving [free] ===
+  Genji: I live, brother. Why are you still grieving?
+  Hanzo: You were not the only thing I lost.
+
+=== Father's Bow [free] ===
+  Genji: You left the Shimada clan behind. Yet, you continue to wield father's bow.
+  Hanzo: Try as I might, I have found it to impossible to let go.
+  Genji: Of his expectations? Or his legacy?
+  Hanzo: Of hope that I may one day be worthy of returning home.
+
+=== Something from nothing [free] ===
+  Hanzo: I have always been bound to my duty. Now, I have nothing.
+  Genji: There is always a way to make something from nothing, brother.
+
+=== Like a Brother [free] ===
+  Cassidy: This one might get tricky. Can I count on you to watch my back?
+  Genji: Of course. You are like a brother to me.
+  Cassidy: You've told me about your family. Not sure that's a compliment.
+
+=== Sleeping Dragon [USED ΓåÆ #184 When Dragons Fall] ===
+  Doomfist: The Shimada could rise again, if you so choose.
+  Hanzo: There is nothing to that name, but... pain.
+  Doomfist: Pain... and a sleeping dragon. *Wake. Him. Up.*
+
+=== Summon a Dragon [USED ΓåÆ #184 When Dragons Fall] ===
+  Ana: I once met a man, who could summon a dragon as you do.
+  Hanzo: Impossible! Only my clan possesses the skill. My brother could, but he is dead.
+
+=== Testing my Patience [free] ===
+  Sigma: In the field, doctor? Testing a hypothesis, perhaps?
+  Moira: With the rate at which our colleagues get injured, I expect I'll be testing my patience.
+
+=== Utilizing you [free] ===
+  Zenyatta: You have an intense gaze, Doctor.
+  Moira: I am thinking on how best to utilize you.
+  Zenyatta: In the coming battle, you mean?
+  Moira: Perhaps...
+
+=== Rather Quiet [USED ΓåÆ #176 Subject Sigma] ===
+  Moira: You've been rather quiet today, Doctor. I've gotten a lot done.
+  Sigma: Can a fish that never sees the surface know it's under water?
+  Sigma: If one built a violin of Planck length, could one play music into another universe
+  Sigma: Someone must build a particle collider around the sun
+  Moira: There it goes
+
+=== Where Max lives [USED ΓåÆ #165 Pocket King] ===
+  Sigma: Hm... why does this place feel familiar?
+  Sombra: We've been here, viejito. This is where Max lives.
+  Sigma: Ah, yes, Maximilien! His collection of Greek sculptures is quite charming.
+
+=== Outside Hire [free] ===
+  Widowmaker: Ah, if it isn't Maximilien's new pet.
+  Freja: What? Jealous he went with an outside hire for once?
+  Widowmaker: **laughs** Not at all. He only bothers me with important matters.
+
+=== Calling the Shots [free] ===
+  Ramattra: You call my people "bots", yet you now take orders from one.
+  Freja: Max isn't my boss. I call the shots as much as he does.
+  Ramattra: Your self-importance is irksome, but impressively, your denial may be worse.
+
+=== Fight for All Omnics [free] ===
+  Ramattra: So, you work with Maximilien. I am amazed even a human can tolerate him.
+  Freja: And here, I thought you fought for *all* omnics...
+  Ramattra: He cares nothing for our people and lives only to enrich himself. I suppose you have that in common.
+
+=== Los Muertos [free] ===
+  Ashe: You still have any contacts with Los Muertos?
+  Sombra: I might. What's in it for me?
+  Ashe: I'd offer you money, but I don't think that's what you're after.
+  Sombra: No. So... any good stories about the cowboy?
+
+=== Leaving Vishkar [free] ===
+  L├║cio: You did the right thing leaving Vishkar behind. The rest of those drones ought to take notes.
+  Lifeweaver: Well, I'm sure it's not so simple for everyone.
+  L├║cio: Get real, man. You think walking away is harder than ruining people's lives?
+  Lifeweaver: At Vishkar? You'd be surprised.
+
+=== Cutting Hands [free] ===
+  Mercy: Biolight has such potential for medicine and agriculture!
+  Lifeweaver: Sadly, Vishkar agrees. They want their hands on it, and they're willing to cut mine off to get it.
+  Mercy: **sigh** Sounds about right.
+
+=== In the Wrong hands [USED ΓåÆ #188 Healing Nature] ===
+  Sigma: Self-propagating biomass? A deadly weapon in the wrong hands.
+  Lifeweaver: No need to fear. I won't sell my biolight to anyone.
+  Sigma: We never plan for our creations to escape our control.
+
+=== The Martinses [free] ===
+  Soldier 76: The Martinses put their necks on the line, protecting you from Vishkar.
+  Lifeweaver: I only hope one day to return the favor.
+  Soldier 76: Heh. If they ever need help, we're *all* screwed.
+
+=== Visiting the Martinses [USED ΓåÆ #164 The Atlantic Arcology] ===
+  Torbj├╢rn: Heh! How are Hector and Claudio doing?
+  Lifeweaver: They miss you. Every week at dinner, it's stories about the old days.
+  Torbj├╢rn: Ah, I've been meaning to pay them a visit. Maybe once the dust settles.
+
+=== Returning to Vishkar [free] ===
+  Lifeweaver: Are you sure about returning to Vishkar, Satya? You could always stay at the arcology with me.
+  Symmetra: I may join you one day. But I will uncover more as Vishkar's ally than the enemy.
+
+=== Dr. Bhatt [free] ===
+  Symmetra: I am still searching for information on Dr. Bhatt, Niran. Answers are not forthcoming.
+  Lifeweaver: It's in Vishkar's best interest to bury it's founder's vision. But you deserve to know the truth.
+
+=== Efi at the Arcology [free] ===
+  Lifeweaver: Have I seen you around the Arcology?
+  Orisa: My creator, Efi, spoke at a conference there.
+  Lifeweaver: Ah, yes! I didn't know which was more impressive: her presentation on ferrofluid injectors, or her appetite for dumplings at dinne
+
+=== Open her eyes [free] ===
+  Kiriko: The Hashimoto have completely overrun Tokyo. It's not much better in Kanezaka, either.
+  Genji: I see how much you need me. But I do not know if the commander will permit my absence.
+  Kiriko: She should open her eyes. If you don't come back now, there won't be anything left.
+
+=== Sorry enough to Help [free] ===
+  Kiriko: The Hashimoto run our neighborhood now. So...
+  Hanzo: Oh, I am sorry to hear that.
+  Kiriko: Sorry enough to help?
+  Kiriko: Sorry enough to help
+
+=== Hashimoto Bounties [free] ===
+  Kiriko: I have some bounties you might want. Five of them, actually.
+  Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to mess with the Hashimoto.
+  Kiriko: All right... Then how are you with rescue missions?
+  Freja: Ah. If you've got the money, let's talk.
+
+=== No Experience [free] ===
+  Widowmaker: What experience do you possibly bring to this mission?
+  Kiriko: Last week, my friends and I sank a Hashimoto party boat.
+  Widowmaker: So... nothing. **sigh**
+
+=== Hope for more [free] ===
+  Hazard: Heard you got into another scrap with the Hashimoto. The Y┼ìkai doin' alright?
+  Kiriko: We'll survive. We always do.
+  Hazard: Have to hope for more than that, though, aye?
+  Kiriko: Why do you think we keep fighting?
+
+=== Fight Smarter [free] ===
+  Sojourn: The Hashimoto are a massive force... with a lot more firepower than a gang of kids.
+  Kiriko: What, you think we shouldn't fight back?
+  Sojourn: I think you need to start fighting smarter.
+
+=== Mina Liao [free] ===
+  Venture: No way... you're Echo! Like, Mina Liao's Echo! Oh, I have so many questions for you!
+  Echo: I... suppose I could answer them.
+  Venture: Awesome! I don't even know where to start, uh, I mean, um... what was she like?
+  Echo: She was... like me.
+
+=== Keeping the Label [free] ===
+  Shion: *Echo-o-o-o! Echo-o-o-o-o-o-o!...* You aren't going to keep that label, are you?
+  Echo: I quite like my name. Dr. Liao chose it for me.
+  Shion: Exactly. She only saw you as her copy... and to the rest, you're just her faded memory.
+
+=== Peanut Butter [free] ===
+  Echo: Is peanut butter that delicious?
+  Winston: It's peanuty buttery heaven!
+  Echo: But my analysis shows me it's high in trans saturated fats.
+  Winston: Did Athena put you up to this?
+
+=== Hammond? [USED ΓåÆ #182 Out There] ===
+  Winston: Hammond?
+  Wrecking Ball: **hamster squeaks**
+
+=== Cursed Boy [USED ΓåÆ #183 Cursed] ===
+  Shion: Those silly Y┼ìkai didn't change you that much. Deep down, you're the same cursed boy.
+  Mizuki: You don't know that.
+  Shion: Of course I do. No one knows you better, Mizuki.
+
+==== NAME SEARCH ====
+D free Tulum
+D free Fear the Reaper
+D free Hashimoto Bounties
+D free Efi at the Arcology
+D free The Martinses
+D free Returning to Vishkar
+D USED ΓåÆ #164 The Atlantic Arcology Visiting the Martinses
+D USED ΓåÆ #188 Healing Nature Biolight Vegetbles
+D free Cryogenic research
+D free Hardlight Snowflakes
+D free Count on Mei
+D free Applying to Vishkar
+D free Leaving Vishkar
+D free Grim Reaper
+D free Los Muertos
+D free Hashimoto calls
+D free Autograph for Snowball
+D free Vishkar is using you
+D free Cryostasis
+D free Cryogenic Freezing
+D free Snow angels
+D free Genetic Issues
+D free Trust Sombra
+D free Toshiro's forge
+
+#### shimada
+C free D.va ┬╖ Hanamura ΓÇö Blizzard games? That's so old-school! [in arcade room]
+C free D.va ┬╖ Hanamura ΓÇö No one's beating my high scores.
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Has
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Genji ┬╖ Hanamura ΓÇö Fukushu ga hossuru nowa fukushu ni kogareta mono nomi
+C USED ΓåÆ #167 Sparrow Genji ┬╖ Hanamura ΓÇö Attack ΓÇö I passed many an hour of my misspent youth here.
+C free Genji ┬╖ Hanamura ΓÇö Ramen! (sigh) It's just not the same anymore.
+C free Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan w
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö from
+C USED ΓåÆ #120 Australian Liberation Hanzo ┬╖ Junkertown or New Junk City ΓÇö A less honorable place is difficult to imagine.
+C free Hanzo ┬╖ Hanamura ΓÇö All of this was to be mine.
+C free Hanzo ┬╖ Hanamura ΓÇö I will take back what is mine by birthright.
+C USED ΓåÆ #281 Old Dragons Hanzo ┬╖ Hanamura ΓÇö The master of the Shimada Clan has returned.
+
+#### moira
+C free Anran ┬╖ Oasis ΓÇö Being here reminds me... I should start looking into certificate programs.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free D.va ┬╖ Oasis ΓÇö Seeing what happened after the war here gives me hope for the rebuilding of my country.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Hazard ┬╖ Oasis ΓÇö These Oasis fools have got to learn. They cannae keep people down forever.
+C free Hazard ┬╖ Oasis ΓÇö on Oasis: University of Oasis map ΓÇö Tore this place up.
+C free Hazard ┬╖ Oasis ΓÇö eliminating Moira ΓÇö Thought you'd be safe here, did ye?
+C free Junkrat ┬╖ Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!
+C free Junkrat ┬╖ Oasis ΓÇö This place is a bit posh for me.
+C free Junkrat ┬╖ Oasis ΓÇö Jamison Fawkes, Minister of Engineering... Has a certain ring to it.
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+C free Mei ┬╖ Let's show them what a team of scientists can do!
+C free Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+
+#### mei
+C free Ana ┬╖ Antarctic Peninsula ΓÇö I could be sunning in Lagos right now. (scoff) And where am I instead?
+C free Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+C free Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and await a fix. ΓÇö Why
+C free Brigitte ┬╖ Blizzard World ΓÇö Do we have time to go on some rides? Flight to Duskwood is my favourite!
+C free Cassidy ┬╖ Blizzard World ΓÇö Ah, hell.
+C free D.va ┬╖ Antarctic Peninsula ΓÇö A, chuwo! (Hangul) Oh, it's so cold!
+C free D.va ┬╖ Hanamura ΓÇö Blizzard games? That's so old-school! [in arcade room]
+C free Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is stepped upon.
+C free Junkrat ┬╖ Antarctic Peninsula ΓÇö The! Antarctic! Peninsula!
+C free Junkrat ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Is it snowing? I really love it when it snows...
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a fix. ΓÇö The sno
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Aaaaaaaaah... Did I do that right?
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö How am I supposed to sing if I do not know the words?
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Thank goodness my parachutes deployed properly.
+
+#### max
+C free Domina ┬╖ Circuit Royal ΓÇö Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a
+C free Echo ┬╖ Systems calibrated for maximum cooperative behavior.
+C free Freja ┬╖ Circuit Royal ΓÇö Ugh, Maximilien's casino... You'd think with all that money, the bot could afford some taste.
+C free L├║cio ┬╖ Circuit Royal ΓÇö I love these cars! Wonder if they'd let me drive one.
+C free Mauga ┬╖ Circuit Royal ΓÇö When are they gonna make a super car my size?
+C free Mercy ┬╖ We must be very careful not to harm any civilians. Do not just assume I can heal them! Although I could, of course.
+C free Reinhardt ┬╖ Circuit Royal ΓÇö I love car races! High octane, burning rubber! Um... the thrill of the chase! Ooh! Pedal to the metal!
+C free Roadhog ┬╖ Circuit Royal ΓÇö On Defense ΓÇö Hmm. I want a car.
+C free Sigma ┬╖ Circuit Royal ΓÇö This city is dazzling! (huffed laughs) And far more lavish than I can handle...
+C free Soldier 76 ┬╖ Circuit Royal ΓÇö On Attack ΓÇö I remember we had Burnes here under deep cover for about six years. (chuckle) She got so good 
+C free Soldier 76 ┬╖ Circuit Royal (on Defense), or Colosseo ΓÇö I remember we were... looking into Corsini S.p.C. Let's just say they're involve
+C free Sombra ┬╖ Circuit Royal ΓÇö Aatlis is mistakenly not included and awaits a fix. ΓÇö Anyone want drinks? They're on Max's tab! (laughs)
+C free Sombra ┬╖ Circuit Royal ΓÇö Anyone want drinks? They're on Max's tab! Ha ha ha!
+C free Symmetra ┬╖ Circuit Royal ΓÇö Gambling is inane. Only a fool believes in luck.
+
+#### entropy
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Cassidy ┬╖ Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Mercy ┬╖ Everyone on this team can heal themselves. This should be easy!
+C free Mercy ┬╖ It's even more important to stretch before missions as you age.
+C USED ΓåÆ #113 The Temple of Anubis Ramattra ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Just as Anubis opened the gates of death, I will exhaust myself to keep them shut.
+C free Reaper ┬╖ Dead weight gets left behind.
+C free Reaper ┬╖ Don't fail me. Or else.
+C free Reaper ┬╖ Everything's going according to plan.
+C free Reaper ┬╖ I could do this on my own. Probably faster, too.
+C free Reaper ┬╖ I really need to get quieter boots. (sigh)
+C free Reaper ┬╖ The end draws near.
+C free Reaper ┬╖ Ugh. Another stain on my cloak. When did this happen? I didn't even notice.
+C free Reaper ┬╖ I'll handle this
+
+#### sombra
+C free Hanzo ┬╖ Dorado ΓÇö Multi-kill ΓÇö My enemies fall like ... heh heh heh, destroyed pi├▒atas!
+C free Junkrat ┬╖ Dorado ΓÇö Hey, me old tunnel! Might be time to make another withdrawal.
+C free Junkrat ┬╖ Dorado ΓÇö Party time! Need some fireworks?
+C free Reaper ┬╖ Dorado ΓÇö Where's Sombra when you need her?
+C free Roadhog ┬╖ Dorado ΓÇö Mmm. (sniffing) Onion, cilantro... yeah.
+C free Roadhog ┬╖ Dorado ΓÇö Now I know why they call this place Dorado. (laughs)
+C free Sierra ┬╖ Dorado or Runasapi ΓÇö Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.
+C free Soldier 76 ┬╖ Dorado ΓÇö I wanna know what Lum├⌐riCo's been up to.
+C free Soldier 76 ┬╖ Dorado ΓÇö Los Muertos is a cancer on this city.
+C free Sombra ┬╖ Hah, let's get started. Got a lot of systems that need hacking.
+C free Sombra ┬╖ Hm... I think I can make this worth my time.
+C free Sombra ┬╖ I'm hoping for an easy mission. Don't make this harder than it needs to be.
+C free Sombra ┬╖ Genial. Otro trabajo aburrido.
+C free Sombra ┬╖ Easy in, easy out. Let's get the job done
+
+#### biolight
+C free Junkrat ┬╖ I've been thinking about leaving society. Just me, a little cottage, and all the gold bars I can carry!
+C free Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wants me
+C free Lifeweaver ┬╖ Esperan├ºa ΓÇö I keep meaning to visit the Museu Martins while I'm here. I love how this town honors them.
+C free Symmetra ┬╖ A Vishkar architech always completes her task to perfection.
+C free Symmetra ┬╖ Para├¡so ΓÇö Vishkar's actions here were... disappointing. I still need answers for them.
+C free Symmetra ┬╖ Dorado ΓÇö This would be a perfect location for a Vishkar development.
+C free Symmetra ┬╖ Oasis ΓÇö The Vishkar Corporation would love to have a presence here.
+
+#### hostage
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+C free Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest 
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Has
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Hanzo ┬╖ You have my word, Kiriko. I will seek my redemption head on.
+C free Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan w
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö from
+C free Hazard ┬╖ Yes! Now these punks I can ride with.
+C free Illari ┬╖ Runasapi ΓÇö Everyone keeps asking me when I will return. But how can I, after everything that's happened?
+C free Illari ┬╖ Runasapi ΓÇö I hate being here. It feels like they're watching me.
+C free Illari ┬╖ Runasapi ΓÇö I wish I could be anywhere but here. (sigh) At least I can visit Chu├▒o.
+C free Illari ┬╖ Runasapi ΓÇö Let's just get this over with so we can leave.
+
+#### raiders
+C free Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+C free Ana ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I've always been a good shot.
+C free Anran ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Huh. Thought I'd have to train more to pull that off.
+C free Anran ┬╖ Ilios or Samoa ΓÇö I know it's hot out, but... don't ask me to fan you. You'll regret it.
+C free Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Get a point on the board, Bob!
+C free Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Lucky shot.
+C free Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Nice shot, Augustin.
+C free Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Swoosh!
+C free Brigitte ┬╖ Ilios, Lijiang Tower, Nepal, or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö I've played a little ball before.
+C free Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö And that's horse!
+C free Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Bingo.
+C free Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Jackpot.
+C free D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a trip to the bea
+C free D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Boom shakalaka! She's on fire!
+
+#### canvas
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ I'm dyin' to see how you botch this one, Cassidy.
+C free Ashe ┬╖ Route 66 ΓÇö This place just ain't the same since that Cassidy ran away with my bike.
+C free Ashe ┬╖ Busan ΓÇö Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the skie
+C free Ashe ┬╖ Busan ΓÇö When I catch McCree - which I guarantee - y'all gonna see, how much he regrets crossin' me... (laughs)
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C free Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+C free Baptiste ┬╖ Well, this is... awkward. (nervous laugh) Are you... still mad at me? Don't answer that.
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Brigitte ┬╖ Busan ΓÇö Who wants to party? Woo! Yeah, come on! Party with me! Let's go! (laughs)
+C free Cassidy ┬╖ "Gunslinger" never made sense to me. I don't sling guns; I sling bullets.
+C free Cassidy ┬╖ Got a good cigar and a big iron on my hip. What more does a man need? Maybe something to drink...
+C free Cassidy ┬╖ Not as quick as I used to be, but I'm still the fastest gun in the New West.
+C free Cassidy ┬╖ Oh, we're in the thick of it now.
+node : (node:16432) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-572d0e00-c542-4cc1-966c-0782906a07c6.ps1:92 char:128
++ ... tary-out.txt; node scripts/_cache/scout-page20-picks.mjs 2>&1 | Out-F ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:16432) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

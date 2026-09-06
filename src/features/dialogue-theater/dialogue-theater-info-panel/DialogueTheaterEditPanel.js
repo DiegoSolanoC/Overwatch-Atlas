@@ -7,6 +7,8 @@ import {
     refreshDialogueTheaterStage,
     resetDialogueTheaterStageToIdle,
     updateDialogueTheaterStageActiveLine,
+    endStoryCommentaryDirectPlayStage,
+    isStoryCommentaryDirectPlayActive,
     PANEL_DIALOGUE_BOX_HTML,
 } from '../dialogue-theater-stage/dialogueTheaterStageOverlay.js';
 import {
@@ -29,6 +31,15 @@ import {
     getDialogueLineEra,
     getDialogueLineStatus,
 } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
+import { mountDialogueTheaterStoryCommentaryRefs } from '../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js';
+import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
+import {
+    chatterLineMatchesCategories,
+    chatterSelectionWithGroup,
+    loadChatterCategorySelection,
+    renderChatterCategorySelectionHtml,
+    saveChatterCategorySelection,
+} from './chatterCategoryFilter.js';
 import {
     clearDialogueTheaterAssetsCache,
     heroFilterIconUrl,
@@ -280,8 +291,20 @@ function stopViewVoicelinePlayback(conversation = null) {
         activeViewVoicelineAudio = null;
     }
     if (conversation) {
-        resetDialogueTheaterStageToIdle(conversation);
+        finishViewPlaybackStage(conversation);
     }
+}
+
+/**
+ * Idle theater stage, or tear down Story Commentary Direct Play overlay.
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
+function finishViewPlaybackStage(conversation) {
+    if (isStoryCommentaryDirectPlayActive()) {
+        endStoryCommentaryDirectPlayStage({ restoreEventImage: true });
+        return;
+    }
+    resetDialogueTheaterStageToIdle(conversation);
 }
 
 function getPlaybackConversation(conversation) {
@@ -513,10 +536,26 @@ function collectVariationPathsFromHost(host) {
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @returns {import('../data/DialogueTheaterDataService.js').DialogueConversation}
+ */
+function getCategoryFilteredPlaybackConversation(conversation) {
+    const playbackConversation = getPlaybackConversation(conversation);
+    if (!isChatterEntry(conversation)) return playbackConversation;
+    const selected = loadChatterCategorySelection();
+    return {
+        ...playbackConversation,
+        lines: (playbackConversation.lines || []).filter((line) =>
+            chatterLineMatchesCategories(line, selected),
+        ),
+    };
+}
+
+/**
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @returns {number[]}
  */
 function listPlayableLineIndices(conversation) {
-    const playbackConversation = getPlaybackConversation(conversation);
+    const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
     const voicelines = theaterAssets?.voicelines || [];
     const indices = [];
     for (let i = 0; i < playbackConversation.lines.length; i += 1) {
@@ -538,7 +577,7 @@ export async function playDialogueTheaterViewConversation(conversation) {
  */
 async function playAllViewVoicelines(conversation) {
     stopViewVoicelinePlayback();
-    const playbackConversation = getPlaybackConversation(conversation);
+    const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
     const token = Symbol('playAll');
     activeViewPlayAllToken = token;
     const voicelines = theaterAssets?.voicelines || [];
@@ -561,7 +600,7 @@ async function playAllViewVoicelines(conversation) {
 
     if (activeViewPlayAllToken === token) {
         activeViewPlayAllToken = null;
-        resetDialogueTheaterStageToIdle(playbackConversation);
+        finishViewPlaybackStage(playbackConversation);
     }
 }
 
@@ -570,7 +609,7 @@ async function playAllViewVoicelines(conversation) {
  * @returns {string[]}
  */
 function listPlayableVoicesForConversation(conversation) {
-    const playbackConversation = getPlaybackConversation(conversation);
+    const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
     const voicelines = theaterAssets?.voicelines || [];
     const voices = [];
     for (let i = 0; i < playbackConversation.lines.length; i += 1) {
@@ -677,7 +716,7 @@ async function playSinglePathPlayback(conversation, host, pathId, btn) {
         }
 
         if (activeViewPlayAllToken === token) {
-            resetDialogueTheaterStageToIdle(pathConversation);
+            finishViewPlaybackStage(pathConversation);
         }
     } finally {
         if (activeViewPlayAllToken === token) {
@@ -775,7 +814,7 @@ async function playAllPathsMasterPlay(conversation, host, btn) {
         }
 
         if (activeViewPlayAllToken === token) {
-            resetDialogueTheaterStageToIdle(getPlaybackConversation(conversation));
+            finishViewPlaybackStage(getPlaybackConversation(conversation));
         }
     } finally {
         if (activeViewPlayAllToken === token) {
@@ -879,15 +918,21 @@ function wireFavoriteAnimalMasterPlay(host, conversation, onPathChange) {
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  */
 function wireDialogueTheaterViewPlayback(host, conversation) {
-    const playbackConversation = getPlaybackConversation(conversation);
+    // Category filters rebuild the visible line list — play must target those lines,
+    // not the unfiltered conversation by DOM index.
+    const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
     const lines = playbackConversation.lines || [];
     const voicelines = theaterAssets?.voicelines || [];
     const playableVoices = listPlayableVoicesForConversation(conversation);
+    const lineById = new Map(lines.map((line) => [String(line.id || ''), line]));
 
     const playAllBtn = host.querySelector('#dialogueTheaterPlayAllBtn');
     if (playAllBtn instanceof HTMLButtonElement) {
-        playAllBtn.disabled = playableVoices.length === 0;
-        playAllBtn.addEventListener('click', (e) => {
+        // Replace to drop stacked listeners from category filter refreshes.
+        const freshPlayAll = /** @type {HTMLButtonElement} */ (playAllBtn.cloneNode(true));
+        playAllBtn.replaceWith(freshPlayAll);
+        freshPlayAll.disabled = playableVoices.length === 0;
+        freshPlayAll.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             void playAllViewVoicelines(conversation);
@@ -895,10 +940,15 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
     }
 
     host.querySelectorAll('.dialogue-theater-edit__view-line').forEach((row, idx) => {
+        if (!(row instanceof HTMLElement)) return;
         const btn = row.querySelector('.dialogue-theater-edit__view-line-play');
         if (!(btn instanceof HTMLButtonElement)) return;
 
-        const line = lines[idx];
+        const lineId = String(row.dataset.lineId || '').trim();
+        const line = (lineId && lineById.get(lineId)) || lines[idx] || null;
+        const lineIndex = line
+            ? Math.max(0, lines.findIndex((entry) => entry.id === line.id))
+            : idx;
         const voices = line ? resolveLineVoicePlaybackFiles(line, voicelines) : [];
         if (voices.length === 0) {
             btn.disabled = true;
@@ -917,10 +967,16 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
             activeViewPlayAllToken = token;
 
             void (async () => {
-                const ok = await playMasterPlayLine(token, line, playbackConversation, idx, voicelines);
+                const ok = await playMasterPlayLine(
+                    token,
+                    line,
+                    playbackConversation,
+                    lineIndex >= 0 ? lineIndex : idx,
+                    voicelines,
+                );
                 if (activeViewPlayAllToken !== token) return;
                 activeViewPlayAllToken = null;
-                if (ok) resetDialogueTheaterStageToIdle(playbackConversation);
+                if (ok) finishViewPlaybackStage(playbackConversation);
             })();
         });
     });
@@ -983,16 +1039,26 @@ function wireDialogueTheaterPathSelector(host, conversation, onPathChange) {
 
 /**
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {{ highlightLineId?: string, categoryFilter?: import('./chatterCategoryFilter.js').ChatterFilterSelection|null }} [options]
  * @returns {string}
  */
-function buildDialogueTheaterViewLinesHtml(conversation) {
+function buildDialogueTheaterViewLinesHtml(conversation, options = {}) {
     const playbackConversation = getPlaybackConversation(conversation);
+    const categoryFilter = options.categoryFilter || null;
+    const lines = categoryFilter
+        ? playbackConversation.lines.filter((line) => chatterLineMatchesCategories(line, categoryFilter))
+        : playbackConversation.lines;
+
     if (!playbackConversation.lines.length) {
         return '<p class="dialogue-theater-edit__muted">No dialogue lines yet.</p>';
     }
+    if (!lines.length) {
+        return '<p class="dialogue-theater-edit__muted">No lines match the selected categories.</p>';
+    }
 
+    const highlightLineId = String(options.highlightLineId || '').trim();
     const voicelines = theaterAssets?.voicelines || [];
-    return playbackConversation.lines
+    return lines
         .map((line) => {
             const resolvedVoice = resolveLineVoiceFile(line, voicelines);
             const dialogueText =
@@ -1001,11 +1067,13 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
             const hasVoice = Boolean(resolvedVoice);
             const lineEra = getDialogueLineEra(line);
             const lineStatus = getDialogueLineStatus(line);
+            const isHighlight = Boolean(highlightLineId && line.id === highlightLineId);
             const lineMods = [
                 lineStatus === 'removed' ? 'dialogue-theater-edit__view-line--removed' : '',
                 lineEra === DIALOGUE_THEATER_ERA_CLASSIC
                     ? 'dialogue-theater-edit__view-line--classic'
                     : '',
+                isHighlight ? 'dialogue-theater-edit__view-line--focus' : '',
             ]
                 .filter(Boolean)
                 .join(' ');
@@ -1017,8 +1085,9 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
             const playBtn = hasVoice
                 ? `<button type="button" class="dialogue-theater-edit__view-line-play" aria-label="Play voiceline">▶</button>`
                 : `<button type="button" class="dialogue-theater-edit__view-line-play" disabled aria-label="No audio">▶</button>`;
+            const lineIdAttr = line.id ? ` data-line-id="${escapeHtml(line.id)}"` : '';
             return `
-                <article class="dialogue-theater-edit__view-line ${lineMods}">
+                <article class="dialogue-theater-edit__view-line ${lineMods}"${lineIdAttr}>
                     ${iconBlock}
                     <div class="dialogue-theater-edit__view-line-body">
                         <p class="dialogue-theater-edit__view-line-text">${dialogueText ? formatDialogueSubtitleHtml(dialogueText, { hero: line.hero }) : '<span class="dialogue-theater-edit__muted">No dialogue text</span>'}</p>
@@ -1042,6 +1111,114 @@ function buildDialogueTheaterViewLinesHtml(conversation) {
             `;
         })
         .join('');
+}
+
+/**
+ * @param {HTMLElement} host
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ */
+function wireChatterCategorySelection(host, conversation) {
+    if (!isChatterEntry(conversation)) return;
+
+    /** @param {HTMLElement} section */
+    const bindSection = (section) => {
+        let selected = loadChatterCategorySelection();
+
+        const syncPressed = () => {
+            section.querySelectorAll('[data-chatter-category][data-chatter-filter-group]').forEach((btn) => {
+                if (!(btn instanceof HTMLButtonElement)) return;
+                const group = btn.dataset.chatterFilterGroup || '';
+                const id = btn.dataset.chatterCategory || '';
+                const on =
+                    (group === 'era' && selected.era === id)
+                    || (group === 'status' && selected.status === id)
+                    || (group === 'group' && selected.group === id)
+                    || (group === 'kind' && selected.kind === id);
+                btn.classList.toggle('dialogue-theater-chatter-cat--on', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+        };
+
+        const refreshLines = () => {
+            const linesHost = host.querySelector('.dialogue-theater-edit__view-lines');
+            if (!(linesHost instanceof HTMLElement)) return;
+            linesHost.innerHTML = buildDialogueTheaterViewLinesHtml(conversation, {
+                categoryFilter: selected,
+            });
+            wireDialogueTheaterViewPlayback(host, conversation);
+            void paintBioChipPortraitBackgrounds(host);
+            const playAllBtn = host.querySelector('#dialogueTheaterPlayAllBtn');
+            if (playAllBtn instanceof HTMLButtonElement) {
+                const filtered = (conversation.lines || []).filter((line) =>
+                    chatterLineMatchesCategories(line, selected),
+                );
+                const hasPlayable = filtered.some((line) =>
+                    Boolean(resolveLineVoiceFile(line, theaterAssets?.voicelines || [])),
+                );
+                playAllBtn.disabled = !hasPlayable;
+            }
+        };
+
+        /** Remount filter chrome when Group changes (kind chips swap). */
+        const remountFilters = () => {
+            const wrap = document.createElement('div');
+            wrap.innerHTML = renderChatterCategorySelectionHtml(selected).trim();
+            const next = wrap.firstElementChild;
+            if (!(next instanceof HTMLElement)) return;
+            section.replaceWith(next);
+            bindSection(next);
+            refreshLines();
+        };
+
+        section.querySelectorAll('[data-chatter-category][data-chatter-filter-group]').forEach((btn) => {
+            if (!(btn instanceof HTMLButtonElement)) return;
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const group = btn.dataset.chatterFilterGroup || '';
+                const id = btn.dataset.chatterCategory || '';
+                if (!group || !id) return;
+                if (group === 'era') {
+                    selected = { ...selected, era: /** @type {any} */ (id) };
+                    if (id === 'classic') {
+                        selected = { ...selected, status: 'removed' };
+                    }
+                } else if (group === 'status') {
+                    selected = { ...selected, status: /** @type {any} */ (id) };
+                    if (id === 'active' && selected.era === 'classic') {
+                        selected = { ...selected, era: 'overwatch' };
+                    }
+                } else if (group === 'group') {
+                    selected = chatterSelectionWithGroup(selected, /** @type {any} */ (id));
+                    saveChatterCategorySelection(selected);
+                    remountFilters();
+                    return;
+                } else if (group === 'kind') {
+                    selected = { ...selected, kind: /** @type {any} */ (id) };
+                }
+                saveChatterCategorySelection(selected);
+                syncPressed();
+                refreshLines();
+            });
+        });
+    };
+
+    const section = host.querySelector('.dialogue-theater-edit__chatter-cats');
+    if (section instanceof HTMLElement) bindSection(section);
+}
+
+/**
+ * @param {HTMLElement} host
+ * @param {string} lineId
+ */
+function scrollDialogueTheaterViewLineIntoView(host, lineId) {
+    const id = String(lineId || '').trim();
+    if (!id) return;
+    const row = host.querySelector(`.dialogue-theater-edit__view-line[data-line-id="${CSS.escape(id)}"]`);
+    if (!(row instanceof HTMLElement)) return;
+    requestAnimationFrame(() => {
+        row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
 }
 
 /**
@@ -1133,10 +1310,13 @@ export function updateDialogueTheaterViewPathSelection(host, conversation, pathI
 /**
  * @param {HTMLElement} host
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {{ onPathChange?: (pathId: string) => void }} [options]
+ * @param {{ onPathChange?: (pathId: string) => void, highlightLineId?: string }} [options]
  */
 export function renderDialogueTheaterViewPanel(host, conversation, options = {}) {
     host.className = 'dialogue-theater-edit-host dialogue-theater-edit-host--view';
+    const highlightLineId = String(options.highlightLineId || '').trim();
+    const isChatter = isChatterEntry(conversation);
+    const chatterCategories = isChatter ? loadChatterCategorySelection() : null;
     const statusLabel = labelForDialogueTheaterStatus(conversation.status);
     const tags = getConversationTags(conversation);
     const tagsLabel = tags.length ? tags.join(' · ') : '—';
@@ -1183,17 +1363,25 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
             `
             : '';
 
-    const linesHtml = buildDialogueTheaterViewLinesHtml(conversation);
+    const linesHtml = buildDialogueTheaterViewLinesHtml(conversation, {
+        highlightLineId,
+        categoryFilter: chatterCategories,
+    });
 
-    const hasPlayableVoices = playbackConversation.lines.some((line) =>
+    const linesForPlay = chatterCategories
+        ? playbackConversation.lines.filter((line) =>
+            chatterLineMatchesCategories(line, chatterCategories),
+        )
+        : playbackConversation.lines;
+    const hasPlayableVoices = linesForPlay.some((line) =>
         Boolean(resolveLineVoiceFile(line, theaterAssets?.voicelines || [])),
     );
     const showLegacyToggle = conversationHasLegacyNameFailsafe(conversation);
     const legacyOn = isLegacyNameLinesEnabled();
 
-    host.innerHTML = `
-        <div class="dialogue-theater-edit dialogue-theater-edit--view">
-            ${PANEL_DIALOGUE_BOX_HTML}
+    const topSectionHtml = isChatter
+        ? renderChatterCategorySelectionHtml(chatterCategories)
+        : `
             <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
                 <div><dt>Status</dt><dd>${statusLabel}</dd></div>
                 <div><dt>Tags</dt><dd>${escapeHtml(tagsLabel)}</dd></div>
@@ -1213,11 +1401,17 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
                         : ''
                 }
             </dl>
+        `;
+
+    host.innerHTML = `
+        <div class="dialogue-theater-edit dialogue-theater-edit--view">
+            ${PANEL_DIALOGUE_BOX_HTML}
+            ${topSectionHtml}
             ${pathSwitcherHtml}
             <section class="dialogue-theater-edit__section">
                 <p class="dialogue-theater-edit__hint">Scene and character renders appear on the map overlay.</p>
                 <div class="dialogue-theater-edit__section-head">
-                    <h3 class="dialogue-theater-edit__section-title">Dialogue</h3>
+                    <h3 class="dialogue-theater-edit__section-title">${isChatter ? 'Chatter' : 'Dialogue'}</h3>
                     <div class="dialogue-theater-edit__section-actions">
                         ${
                             showLegacyToggle
@@ -1257,9 +1451,13 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
         wireDialogueTheaterPathSelector(host, conversation, options.onPathChange);
         wireStandardRandomRouteControls(host, conversation, options.onPathChange);
     }
+    wireChatterCategorySelection(host, conversation);
     wireLegacyNameToggle(host, conversation);
     wireDialogueTheaterViewPlayback(host, conversation);
     void paintBioChipPortraitBackgrounds(host);
+    if (highlightLineId) {
+        scrollDialogueTheaterViewLineIntoView(host, highlightLineId);
+    }
 }
 
 /**
@@ -1823,9 +2021,17 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
         void refreshDialogueTheaterEditStageFromHost(host, conversation);
     };
 
+    const isChatter = isChatterEntry(conversation);
+    const hubMetaHtml = isChatter
+        ? `<p class="dialogue-theater-edit__hint">Chatter status and era are set per line — not on the hub entry.</p>`
+        : null;
+
     host.className = 'dialogue-theater-edit-host dialogue-theater-edit-host--edit';
     host.innerHTML = `
         <div class="dialogue-theater-edit dialogue-theater-edit--edit">
+            ${
+                hubMetaHtml
+                    ?? `
             <div class="dialogue-theater-edit__row">
                 <label class="dialogue-theater-edit__label" for="dialogueTheaterEditStatus">Status</label>
                 <select id="dialogueTheaterEditStatus" class="dialogue-theater-edit__select">
@@ -1850,7 +2056,12 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                     </label>
                 </div>
                 <p class="dialogue-theater-edit__hint">Pick one era. Classic is OW1-era voice; Overwatch is the default.</p>
-            </div>
+            </div>`
+            }
+            ${
+                isChatter
+                    ? ''
+                    : `
             <div class="dialogue-theater-edit__row">
                 <span class="dialogue-theater-edit__label" id="dialogueTheaterEditTagsLabel">Tags</span>
                 <div
@@ -1917,6 +2128,8 @@ export function renderDialogueTheaterEditPanel(host, conversation) {
                 />
                 <p class="dialogue-theater-edit__hint">Events where this interaction can play. Separate names with commas.</p>
             </div>
+            `
+            }
             <section class="dialogue-theater-edit__section">
                 <h3 class="dialogue-theater-edit__section-title">Scene</h3>
                 <p class="dialogue-theater-edit__hint">Preview picker — stored for later theater playback.</p>
@@ -2185,10 +2398,15 @@ export function collectDialogueTheaterEditPanel(host) {
 
     const pathPatch = collectVariationPathsFromHost(host);
     /** @type {Partial<import('../data/DialogueTheaterDataService.js').DialogueConversation>} */
-    const patch = { status, eraName: '', tags, scene, lines, ...pathPatch };
-    patch.mapChoices = mapChoices;
-    patch.skinChoices = skinChoices;
-    patch.eventChoices = eventChoices;
+    const patch = { eraName: '', scene, lines, ...pathPatch };
+    // Chatter hubs omit conversation-level status/era/tags controls — leave those fields alone.
+    if (statusEl instanceof HTMLSelectElement) {
+        patch.status = status;
+        patch.tags = tags;
+        patch.mapChoices = mapChoices;
+        patch.skinChoices = skinChoices;
+        patch.eventChoices = eventChoices;
+    }
     return patch;
 }
 
@@ -2196,17 +2414,25 @@ export function collectDialogueTheaterEditPanel(host) {
  * @param {HTMLElement} scrollable
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
  * @param {'view'|'edit'} mode
- * @param {{ onPathChange?: (pathId: string) => void }} [options]
+ * @param {{ onPathChange?: (pathId: string) => void, highlightLineId?: string }} [options]
  */
 export async function mountDialogueTheaterPanel(scrollable, conversation, mode, options = {}) {
     // Edit mode always rescans so newly copied Voicelines appear in the picker.
-    await ensureDialogueTheaterAssetsLoaded({ force: mode === 'edit' });
+    // View mode: only wait if assets are not cached yet (keeps dialogue switches snappy).
+    if (mode === 'edit' || !cachedAssetsLoadedOnce) {
+        await ensureDialogueTheaterAssetsLoaded({ force: mode === 'edit' });
+    }
     const host = ensureHost(scrollable);
     if (mode === 'edit') {
         renderDialogueTheaterEditPanel(host, conversation);
     } else {
         renderDialogueTheaterViewPanel(host, conversation, options);
     }
+    // Commentary thumbs are heavier (story index + image markup) — paint the entry first.
+    requestAnimationFrame(() => {
+        if (document.getElementById(HOST_ID) !== host) return;
+        mountDialogueTheaterStoryCommentaryRefs(host, conversation);
+    });
     return host;
 }
 

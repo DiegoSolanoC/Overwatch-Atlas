@@ -26,6 +26,7 @@ import {
     downloadWikiVoicelineFile,
     wikiFileTitleToTheaterFilename,
 } from './lib/wiki-voiceline-download.mjs';
+import { stripWikiMarkup } from './lib/wiki-markup.mjs';
 import { listWikiQuotesPages } from './lib/wiki-quotes-heroes.mjs';
 import {
     GALLERY_ABILITY_OUTCOME_RE,
@@ -93,25 +94,19 @@ function dialogueNorm(value) {
         .trim();
 }
 
-function stripWikiMarkup(raw) {
-    return String(raw || '')
-        .replace(/\{\{Audio\|[^}]+\}\}/gi, ' ')
-        .replace(/\{\{QuoteTranslation\|[\s\S]*?\}\}/gi, (m) => {
-            const quote = m.match(/\|\s*quote\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
-            const translation = m.match(/\|\s*translation\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
-            const script = m.match(/\|\s*script\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
-            if (quote && translation && script) return `${quote} (${script}) ${translation}`;
-            if (translation) return translation;
-            return quote || '';
-        })
-        .replace(/\{\{[^}]+\}\}/g, ' ')
-        .replace(/\[\[([^|\]]+)\|[^\]]+\]\]/g, '$1')
-        .replace(/\[\[([^\]]+)\]\]/g, '$1')
-        .replace(/'''?/g, '')
-        .replace(/<\/?[^>]+>/g, ' ')
-        .replace(/\*([^*]+)\*/g, '($1)')
-        .replace(/\s+/g, ' ')
-        .trim();
+function stripGalleryWikiMarkup(raw) {
+    return stripWikiMarkup(
+        String(raw || '')
+            .replace(/\{\{QuoteTranslation\|[\s\S]*?\}\}/gi, (m) => {
+                const quote = m.match(/\|\s*quote\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
+                const translation = m.match(/\|\s*translation\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
+                const script = m.match(/\|\s*script\s*=\s*([^|}]+)/i)?.[1]?.trim() || '';
+                if (quote && translation && script) return `${quote} (${script}) ${translation}`;
+                if (translation) return translation;
+                return quote || '';
+            })
+            .replace(/\*([^*]+)\*/g, '($1)'),
+    );
 }
 
 function splitQuoteAndDisclaimer(rawCell) {
@@ -121,10 +116,10 @@ function splitQuoteAndDisclaimer(rawCell) {
         cell.match(/<small>\s*''?\(([\s\S]*?)\)''?\s*<\/small>/i) ||
         cell.match(/<small>\s*''([\s\S]*?)''\s*<\/small>/i) ||
         cell.match(/<small>([\s\S]*?)<\/small>/i);
-    if (smallMatch) disclaimer = stripWikiMarkup(smallMatch[1]);
+    if (smallMatch) disclaimer = stripGalleryWikiMarkup(smallMatch[1]);
 
     let spoken = cell.replace(/<small>[\s\S]*?<\/small>/gi, ' ');
-    spoken = stripWikiMarkup(spoken);
+    spoken = stripGalleryWikiMarkup(spoken);
 
     if (!disclaimer) {
         const trailing =
@@ -135,7 +130,7 @@ function splitQuoteAndDisclaimer(rawCell) {
             spoken.match(/\s*\((when[\s\S]+)\)\s*$/i) ||
             spoken.match(/\s*\((only[\s\S]+)\)\s*$/i);
         if (trailing) {
-            disclaimer = stripWikiMarkup(trailing[1]);
+            disclaimer = stripGalleryWikiMarkup(trailing[1]);
             spoken = spoken.slice(0, trailing.index).trim();
         }
     }

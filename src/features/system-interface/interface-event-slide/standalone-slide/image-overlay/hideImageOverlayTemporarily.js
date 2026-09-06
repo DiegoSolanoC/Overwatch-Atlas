@@ -11,10 +11,17 @@ import {
     isDialogueTheaterImageOverlayContext,
     restoreDialogueTheaterImageOverlayGradually,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import { isStoryCommentaryDirectPlayActive } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 
 export function runHideImageOverlayTemporarily(slide, delayMs = 5000) {
             const overlay = document.getElementById('eventImageOverlay');
             if (!overlay || !overlay.classList.contains('open')) {
+                return;
+            }
+
+            // Direct Play: hide ends playback — do not auto-restore a broken stage stack.
+            if (isStoryCommentaryDirectPlayActive()) {
+                slide.hideImageOverlay();
                 return;
             }
 

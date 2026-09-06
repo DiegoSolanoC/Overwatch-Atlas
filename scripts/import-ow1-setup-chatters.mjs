@@ -24,6 +24,7 @@ import {
     downloadWikiVoicelineFile,
     wikiFileTitleToTheaterFilename,
 } from './lib/wiki-voiceline-download.mjs';
+import { stripWikiMarkup } from './lib/wiki-markup.mjs';
 import { scanTheaterAssets } from './import-interaction-folder.mjs';
 import { chatterIdForHero } from '../src/features/dialogue-theater/data/dialogueTheaterEntryType.js';
 import { DEFAULT_DIALOGUE_SCENE } from '../src/features/dialogue-theater/data/dialogueTheaterConversationSchema.js';
@@ -114,17 +115,6 @@ function isSetupTrigger(raw) {
     const lower = name.toLowerCase();
     if (/set\s*up\s*here/i.test(lower)) return false;
     return /set[-\s]?up/i.test(lower);
-}
-
-function stripWikiMarkup(text) {
-    return String(text || '')
-        .replace(/\{\{[^}]+\}\}/g, ' ')
-        .replace(/\[\[([^|\]]+)\|[^\]]+\]\]/g, '$1')
-        .replace(/\[\[([^\]]+)\]\]/g, '$1')
-        .replace(/'''?/g, '')
-        .replace(/<\/?[^>]+>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
 }
 
 function cleanDisclaimer(raw) {

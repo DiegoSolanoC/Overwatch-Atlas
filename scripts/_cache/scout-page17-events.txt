@@ -1,0 +1,128 @@
+﻿Used commentary: 126
+
+=== PAGE 17 (#161ΓÇô170) ===
+
+======================================================================
+#161 Survivor
+year 2053 2060 | The Golden Age | Outback Wasteland, Australia
+DESC:
+"Dez" Stone would grow up in the living hell of the Australian Outback, where other exhiled savages roamed in caravans fighting in an unending battle for land and resources, in a hostile, radiated wasteland. If that was not enough already, wastlanders still needed to defend themselves from the Omnics, who had been forever changed by the radiation messing with their systems and the struggle to survive in harsh environments pushed them to become feral. Neither machines nor men were truly sane or safe. The Stones fought hard to survive this harsh life but one by one, they would fall all of them, except for Dez. Fueled by her anger towards King Mason for doing this to her family, and the loss of her loved ones, Odessa endured for years and became a formidable wasteland warrior, who scrapped Feral Omnics for parts to use on armor and weapons, including an electro magnetic gauntlet that proved deadly against anyone who opposed her. 
+
+Years later, the memories of that day, where her family had vanished, still cause her nightmares.
+  [place] {"loc":"Outback Wasteland, Australia","country":"Australia","why":"Australian Wasteland becomes filled with raiders, mutants and feral Omnics"}
+  [hero] {"country":"Junker Queen","why":"Roamed through the Wastelands for years, salvagin Omnics to survive"}
+
+======================================================================
+#162 Risen in Blood
+year 2060 2066 | The Golden Age | Akihabara, Japan
+DESC:
+Years had gone by and Shion still found herself captive by the Hashimoto, but over time she began to hold back, secretly pulling her punches and learning their weaknesses so that one day she could overtake them. Her captors were now revered amongst the Hashimoto. Calling themselves the elders and dressing up in traditional Japanese clothing. In their comfort at the top, they grew complacent, and began to lower their guards around Shion. This allowed Shion to take them by surprise, breaking free and taking on all four of the elders in a gruesome fight that left a trail of death, as the Omnic successfully murdered them all.
+
+Shion was not only free at last, she also found herself as the new leader of the Hashimoto. All the humans who mistreated her for years now had no other option than to kneel and follow her every command, or risk becoming her next target. Having taken control of her fate, she chose four humans amongst those smart enough to bow to her power, and granted them seats at her new table of elders, at least as long as they remained useful and submissive, as they all knew very well how easily replaceable they truly were.
+  [place] {"loc":"Akihabara, Japan","country":"Japan","why":"Shion takes over the Hashimoto Clan"}
+  [hero] {"country":"Shion,","why":"Eliminates the Elders and chooses her replacements"}
+  [faction] {"country":"Hashimoto Clan,","why":"Falls in line with Shion fearing they will be next"}
+
+======================================================================
+#163 Specimen 8 is Born
+year 2062 null | The Golden Age | Horizon Lunar Colony
+DESC:
+Lucheng's experiments with the Ape Colony had turned out fairly successful, and as the years went on, the animals began to develop unexpected side effects. Most notably, they grew in size and brain function. The team down on Earth was thrilled by the discovery and wished to experiment further to study any findings, but because of the funding of the Red Promise project, an already dangerous secret of theirs, spending more on such a morally questionable idea was risky, and far too expensive. To bypass the budget and moral concerns and keep the studies under the radar, Lucheng approved the use of hamsters as cheaper dispensable alternatives.
+
+On October 15 of 2062, Specimen 8 would be born, and quickly experimented on like the rest of his siblings. Nicknamed "Hammond" by the researchers, he would quickly grow and surpass all their expectations of intelligence, completely overshadowing the rest of his siblings. Hammond to this day has memories of those early days of lonely enlightenment. The way his increased intelligence made it unable for his mother to communicate with him, how the scientists would bet on each of his siblings during every test, and how he hoped every time at least one of them would finally break through and join him. A painful existence under thoughtless Gods, where all he wished to do was escape.
+  [place] {"loc":"Horizon Lunar Colony","country":"Horizon Lunar Colony","why":"Specimen 8 is Born"}
+  [hero] {"country":"Wrecking Ball","why":"Specimen 8 is Born"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Approves use of Hamsters for Genetic Therapy"}
+  [npc] {"country":"Chao,","why":"In charge of Genetic Therapy"}
+(BIRTHDAY ΓÇö skip commentary)
+
+======================================================================
+#164 The Atlantic Arcology
+year 2060 2068 | The Golden Age | Atlantic Arcology
+DESC:
+The Martins had been some of Overwatch's most respected and valued members since the founding of the organization back during the Crisis. And within Overwatch, they have achieved massive accomplishments on a global scale after founding the Ecopoint program. However, the couple was not tied to the organization and in its later years they moved on from it to begin a project of their own.
+
+After leaving Overwatch behind, the Martins formed The Collective. A scientific research nonprofit organization that could operate outside a politically regulated scope. It was meant to be a community made by scientists, for scientists, where every member contributed anything they could, and all of them shared the fruit of everyone's labor. This Utopic idea would later develop into the Atlantic Arcology, a massive sea spire made out of durovidro, that would become the home of the collective and anyone from the outer world who wished to be a part of their dream. Arcology became a self-sustaining, eco-friendly city that was not tethered to global politics, where scientists could continue their research without fears of funding or blockades, all with the objective of benefiting humanity as a whole. Many of the world's preeminent scholars and artists would end up sailing to the Spire, especially those seeking political asylum. As a result, it also went on to become a haven for Omnic refugees across the world, and the Collective welcomed them with open arms. Aside from the recurrent presence of curious whales migrating near the facilities and disrupting traffic in and out of the city, Arcology was a massive success for the scientific community, and showed many that Overwatch's goals could be pursued without their involvement.
+  [place] {"loc":"Atlantic Arcology","country":"Atlantic Arcology","why":"The Martins leave Overwatch to create the Atlantic Arcology"}
+  [faction] {"country":"The Martins Collective,","why":"A community of Scientists working outside of international laws"}
+  [faction] {"country":"Overwatch","why":"The Martins leave to found the Collecive"}
+  [npc] {"country":"Hector, Claudio,","why":"Leave Overwatch to create the Arcology and Collective"}
+
+======================================================================
+#165 Pocket King
+year 2063 2068 | The Golden Age | Monte-Carlo, Monaco
+DESC:
+Following the Crisis many Omnics struggled to integrate into human society. Very few of them managed to climb up the ladder of capitalism, but perhaps there is no bigger success than that of Maximillien. Before the crisis, Max was a low-level accountant in Marseille, but following the Awakening he found himself in the position of a preeminent financial advisor for La Coterie, the name the press had given to a group of Europe's most influential power brokers. While he was often stepped on by many of his clients, soon enough they all began kneeling at his feet.  For the longest time, his clients blindly trusted their assets into Max, and behind their backs he had built an elaborate web of money laundering and contingency agreements, very carefully worded deals that would all direct those fortunes directly to him. After years of serving ignorant, arrogant Tycoons, Max arranged a meeting with the six most powerful figures of Monaco, and broke to them the news; he owned each one of them and their companies. 
+
+Overnight, Max had become one of the most powerful figures in out of Europe, and the head of La Coterie. The Omnic was one call away from bankrupting anyone he wished to, so his old clients had no real choice but to serve him. Over the years, Maximillien had guided the reconstruction and rise of Monte Carlo from the shadows, and after years of effort he owned half of the city. His reign over Monaco would continue to expand as he pursued other deals across Europe and beyond, later acquiring Don Rumbotico in Cuba and using it as yet another front for his money laundering. From the window views of his casino, Max watched as the world's wealthiest and powerful elites fed from his hand.
+  [place] {"loc":"Monte-Carlo, Monaco","country":"Monaco","why":"Maximillien secures assets to pretty much the entirety of Monaco"}
+  [faction] {"country":"La Coterie,","why":"A name given to Europe's most powerful power brokers"}
+  [npc] {"country":"Maximillien","why":"Comes to contorl the entirety of Monte Carlo"}
+
+======================================================================
+#166 Valkirie
+year 2063 null | The Golden Age | Zurich, Switzerland
+DESC:
+It had been ten years since the end of the Crisis, and Angela's early career was already a fruitful one. Her breakthroughs in the field of applied nanobiology radically improved the treatment of life-threatening injuries, capable of stabilizing near-death patients and saving countless lives. Through her schooling and early years outside of college, Overwatch kept an eye on her, allowing her access to the Watchpoints as she volunteered on the medical staff. Ziegler's technology could have made her rich if she chose to remain in private practice, but she always saw science as something that belonged to the world and the people who benefited from it.
+
+It was here when Morrison finally chose to approach her directly. As the world finally moved away from the crisis, Morrison wished to shift towards peacetime and civilian applications. The heavy investment in the support departments and Ecopoint bases was one of the early signs of this new mission, making the world a better place. As such, Morrison offered Angela to become the leader of the medical division, with all the money, resources and personnel she could ever dream of. Angela was intrigued by these promises, but she was greatly opposed to the militaristic nature of Overwatch. Even since losing her parents to the war, she did not have the greatest opinion on military peacekeeping.
+
+In the end, she had agreed to the offer with one caveat. The same way Torbj├╢rn requested back in the day, she wanted to become a part of the strike team, so she could keep a level of control over the use of her technology and allow her to see at work personally. Morrison agreed. In order to work on the frontlines, she began development of the Valkyrie swift-response suit, a personal aerial combat armor that came equipped with nanobiotic capabilities and assistive protocols. Ziegler quickly proved to be a surprisingly adept field agent, with a surgical tactic approach to changing situations. Between her efficiency and the design of her suit, she quickly gained notoriety among the strike team, earning her the call sign "Mercy". While she did not enjoy the way this framed her, she was always glad to use her technology for the greater good.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"Angela Ziegler recruited as head of medical staff and part of the Strike team"}
+  [hero] {"country":"Mercy, Soldier 76","why":"Angela accepts Morrison's proposal to join Overwatch"}
+  [faction] {"country":"Overwatch","why":"Expanding peacekeeping resources beyond military"}
+
+======================================================================
+#167 Sparrow
+year 2060 2063 | The Golden Age | Tokyo, Japan
+EXISTING commentary: Genji ┬╖ Hanamura ΓÇö Attack ΓÇö I passed many an hour of my misspent youth here. | Genji ┬╖ Neon Junction ΓÇö I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.
+DESC:
+Rumiko Shimada had left the clan years ago, vanishing mysteriously one night. Nobody knew what caused her to leave, but everyone assumed she couldn't live with the Yakuza lifestyle anymore. Her absence made Sojiro extremely protective of his sons, who were raised with the expectation of inheriting command of the Clan together.
+
+Genji, however, had no interest in the clan. He had often thought of leaving as well, were it not for his brother and little Kiriko, who helped him keep a sense of belonging in Hanamura Castle. His disinterest led to developing a playboy lifestyle as a young adult, skipping important clan meetings and sword training to play video games at the local arcade, often taking Kiriko alongside him, though even when he didn't, she would sneak out and follow behind him.
+
+His carelessness would fall on Hanzo, who got tangled in his brother's escapades far too often, and tended to cover for him when it came time to face their father. Hanzo wasn't too keen on inheriting the clan either, but being the older of the two, expectations were harder on him, and his father had less patience for him than he was for Genji. Hanzo wished that when the day came, he could rule the clan his way, with Genji as his equal, so he worked hard to share his discipline and guidance with him, but on the other hand, Genji was just waiting for the day they kicked him out, and the elders of the clan were getting tired of Sojiro's inability to control his own children.
+  [place] {"loc":"Tokyo, Japan","country":"Japan","why":""}
+  [place] {"loc":"Hanamura, Japan","country":"Japan,","why":"Genji begins to defy his father and his clan duties"}
+  [hero] {"country":"Genji,","why":"Slacks off of training to indulge in the city"}
+  [hero] {"country":"Hanzo,","why":"Takes responsability for Genji"}
+  [hero] {"country":"Kiriko,","why":"Follows Genji into the Arcade in secret constantly"}
+  [faction] {"country":"Shimada Clan, Yamagami Blades,","why":"The Shimada put pressure into the brothers to step up to their heir titles"}
+  [npc] {"country":"Asa, Sojiro,","why":"Push the brothers to train and be part of the family business"}
+
+======================================================================
+#168 Captivate
+year 2064 2068 | The Golden Age | Paris, France
+DESC:
+Am├⌐lie Guillard had left her home years ago, tired of the aristocratic lifestyle that her family had attempted to impose on herself. Through her dancing skills, she pursued a career in Ballet that allowed her to gain notoriety, eventually becoming a prima ballerina known in all of France and abroad.
+
+Her life would take a more interesting turn, however, when she met a certain diplomat in Paris. G├⌐rard Lacroix, Blackwatch's second in command, is currently spearheading investigations into several criminal groups across the world. The pair had dated for a long time, with Am├⌐lie being present at Vivian's induction and becoming relatively known around many of the Strike team. Years later, they would go on to marry and live a pleasant life together, although it seemed some of G├⌐rard's closest friends had their reservations with her. Jack Morrison, who had grown particularly close to Lacroix, warned him that something was wrong about her, but G├⌐rard merely found it funny.
+
+Am├⌐lie herself, however, gave little thought of her husband's career, as it mostly made for a conversation topic at parties in her eyes. However, her husband was one of the only things Am├⌐lie genuinely loved throughout her life, the only other thing she ever felt as passionate about being ballet.
+  [place] {"loc":"Paris, France","country":"France,","why":"G├⌐rard marries Prima Ballerina Am├⌐lie Guillard"}
+  [hero] {"country":"Widowmaker,","why":"Marries G├⌐rard, not too interest in his line of work"}
+  [hero] {"country":"Soldier 76, Ana,","why":"Grow skeptical of Am├⌐lie"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":"Am├⌐lie is present at multiple Overwatch events"}
+  [npc] {"country":"G├⌐rard,","why":"Marries Am├⌐lie, becoming one of the only things she really loves"}
+
+======================================================================
+#169 Radiation Poisoning
+year 2063 2065 | The Golden Age | Melbourne, Australia
+DESC:
+With Angela leading the medical division, Overwatch began campaigns around the world using Nanobiotics to heal those in need, and perhaps there was no other place that needed it the most than Australia. Following the explosion of the Outback Omnium, the high amount of radioactive material blasted into the air and water led to a catastrophic health crisis in the region. While Ecopoint: Zealandia focused on helping the environment heal, the people of Australia needed help to get through the radiation poisoning faster. Cases escalated, and the cancer rate skyrocketed, and in spite of Australia's prior resistance to Overwatch action, Ziegler would not stand by such a tragedy.
+
+Under Angela's command, a mission team would be deployed, comprised of nearly the entire medical staff, alongside Chase and Sarioglu, both rising stars in the Strike team, well versed in public relationships. Together, they collaborated with local governments and local nonprofit groups to help get resources to affected populations, and bring those in remote locations into the Melbourne hospital, where Ziegler could give intensive care. Thanks to their efforts, the projected mortality rate was cut by more than seventy percent, and a wing of the Melbourne hospital was renamed for Ziegler. As the team was ready to leave, a group of Junkers came out of the You Yang Mountains and attempted to claim the city of Little River, hoping to take the medical facilities for themselves once Overwatch left. Ziegler and Chase were still present when the attack happened and were able to repel the raiders with no lives lost. However, they chose to stay at their post and monitor for further hostilities, delaying their return for over a month.
+  [place] {"loc":"Melbourne, Australia","country":"Australia","why":"Mercy leads Medicla Campaign in Australia"}
+  [hero] {"country":"Mercy, Ana, Emre, Sojourn","why":"Aided local authorities to counteract the radiation crisis"}
+  [faction] {"country":"Overwatch, Junker Monarchy,","why":"Fiound each other in a fight during a raide at Little River"}
+
+======================================================================
+#170 When you Wish
+year 2063 2065 | The Golden Age | Toronto, Canada
+DESC:
+Upon returning from Australia, Vivian would be surprised when she was dispatched to a smaller, though not less vital mission. She had been requested by a charity organization dedicated to creating memories for children in critical condition. Jada Levine, a twelve-year-old girl with a more aggressive case of the disease Vivian once had faced, was now moved to palliative care, and qualified for the organization's program. Her wish? You spend a day with Vivian Chase, the savior of Canada and her personal hero.
+
+Vivian accepted, and two weeks later made the trip to Toronto, where the little kid was infatuated with Overwatch, and with Sojourn especially. The exact details of the meeting remain confidential and undocumented, except for Jada's own social media, filled with pictures of herself and her hero, during the last day of her life. Those pictures made the matter public, and Vivian came under fire for not bringing Mercy, the new team member hailed as a miracle worker, alongside her.  But Angela herself answered to this criticism, after getting permission from the parents to comment on her condition. The child was in a far too critical state, her condition too advanced, making surgeons unable to use cybernetics as an option to save her life. Nanobiotics as well had been taken to their extreme during the treatment. Even miracles have their limits. There was nothing Angela could have done, other than pull focus towards herself. Following this occasion, Chase became a far more vocal advocate for research into treatments for her disease, all the way through the end of her days in Overwatch.
+  [place] {"loc":"Toronto, Canada","country":"Canada,","why":"Sojourn is requested by a charity organization to meet a critically ill child"}
+  [hero] {"country":"Sojourn,","why":"Visits a young girl in terminal condition"}
+  [hero] {"country":"Mercy,","why":"Answers to public criticism for her lack of involvement"}

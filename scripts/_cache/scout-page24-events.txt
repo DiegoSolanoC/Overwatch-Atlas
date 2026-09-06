@@ -1,0 +1,144 @@
+﻿Used commentary: 246
+
+=== PAGE 24 (#231ΓÇô240) ===
+
+======================================================================
+#231 Disappeared
+year 2070 null | The Fall of Overwatch | Panola Mountain, United States
+DESC:
+Sierra and Kendra survived for years hoping from one place to another, but one day right before her thirteenth birthday, Kendra would mysteriously vanish overnight. Sierra was left alone for the first time in her life, but her mother had prepared her for this situation. Following the emergency protocol, Sierra took a bus ticket from her mother's belongings and ended up back in Appalachia, where she met with her arranged father. James sadly was just as confused as Sierra for years, wondering where the two had gone. The only thing he knew was that government agents came to the house soon after Kendra left with Sierra, asking questions about a certain secret project: Naughton.
+
+In spite of their loss, James and Sierra were able to reconnect as father and daughter. Under James's care, Sierra would grow a love for the outdoors and mountain climbing. With her father's support, she managed to have a relatively peaceful life through the rest of her teenage years, but she never gave up on the idea of finding her mom, and discovering what she was hiding from her family all these years.
+  [place] {"loc":"Panola Mountain, United States","country":"United States","why":"Sierra reumites with her lost father after Kendra disappears"}
+  [hero] {"country":"Sierra","why":"Left alone until she finds her father"}
+  [npc] {"country":"Kendra","why":"Suddenly vanishes again"}
+
+======================================================================
+#232 Storm Rising
+year 2070 null | The Fall of Overwatch | Havana, Cuba
+DESC:
+With Ana gone, Sojourn stepped up as Captain of the Strike team, and with Lacroix gone and Reyes on a leash, she would also be placed in charge of pursuing both Talon and the new Doomfist. Her experience with cover-ops and counterterrorism back in Canada made her the ideal candidate to pursue action against Talon, without crossing the line and causing a stir like Reyes had.
+
+Soon enough, Vivian's Intel came with a connection that would grant the team an upper hand against Doomfist. Maximilien, head of La Coterie, the man behind the booming Monte Carlo. Overwatch found out about his connections to Talon but had no legal way of proving it, and they knew that his lawyers and resources would do anything to get him out. However, they also knew that if they apprehended him, he would talk his way out with a deal.
+
+Thus, a Strike team consisting of Tracer, Winston, Genji and Mercy was sent to Havana, where Max used a Don Rumbotico distillery as a money laundering front. The team managed to apprehend the Omnic after a drawn-out brawl with Talon troops right as a Hurricane was about to hit the coast, but as expected, it would not take long until he was released free of charge. Officially, there are no records of their interrogation, but behind the scenes, Vivian had won Overwatch their chance to take Doonfist by Surprise.
+  [place] {"loc":"Havana, Cuba","country":"Cuba","why":"Overwatch Apprehends Maximillien to get clues on Doomfist's next move"}
+  [hero] {"country":"Tracer, Winston, Genji, Mercy","why":"Strike team deployed to detain Max"}
+  [hero] {"country":"Sojourn,","why":"Commands the operation against Talon"}
+  [faction] {"country":"Talon Empire, La Coterie,","why":"Maximillien uses Talon troops to secure his money laundering in Havana"}
+  [faction] {"country":"Overwatch,","why":"Overwatch pursues Doomfist's arrest through his connections"}
+  [npc] {"country":"Maximillien","why":"Talked his way out by ratting Doomfist"}
+
+======================================================================
+#233 Doomed to Fail
+year 2070 null | The Fall of Overwatch | Cairo, Egypt
+DESC:
+Following the Uprising, Ramattra traveled the world, learning of its history and philosophers, trying to answer a single question. How does one save those who don't wish to be saved? He pondered on this for the many years that followed, but could never reach a truly satisfying answer. In his research, however, he studied the Iris and its applications with his Nanite technology, and after a lot of testing, he realized he might have found a way to preserve his species. A way to liberate Omnics from the mortality of their Chassis, and finally, rejoice, from many as one.
+
+
+The only issue was convincing the Omnic kind to join him. He had lost most of his supporters following the uprising, and while some small splinter cells remained across the world, they were not quite organized, and they did not even know who their leader was, a hermit hiding for years, who wished to keep Omnics away from active conflict. With so many Omnics outright rejecting the idea of revolution, and unwilling to put his supporters' lives on the line, Ramattra concluded that if it came down to forcing his own people into submission in order to save them, it would be worth it for the sake of their race.
+
+In order to enact this rapture, he would need a larger army than what he used in Kings Row, and in order to build that he would need resources. Ramattra met with Doomfist in Cairo, seeking to establish a partnership, as his plans of Omnic liberation would seed chaos among humans all across the world, and he knew Talon would cooperate if it benefited their cause. Akande, ever the visionary, saw potential in the Omnic's cause. He believed it to be a noble goal, but doomed to fail without proper backing. With Talon's resources, Ramattra was able to begin the production of his warbots, and while Null Sector sat in silence, away from the public eye for years, under the shadows laid a massive Army comparable to Anubis' forces back in the Crisis.
+  [place] {"loc":"Cairo, Egypt","country":"Egypt","why":"Ramattra and Doomfist meet to form an alliance"}
+  [hero] {"country":"Ramattra, Doomfist,","why":"Ramattra seeks Talon help to enact his plan"}
+  [hero] {"country":"Widowmaker,","why":"Guards  the encounter"}
+  [faction] {"country":"Null Sector, Talon Empire,","why":"Null Sector becomes funded by Talon"}
+
+======================================================================
+#234 The Conspiracy
+year 2069 2072 | The Fall of Overwatch | Dorado, Mexico
+DESC:
+Olivia had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.
+
+Olivia had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.
+That day Olivia Colomar had died, but not long after. Sombra was born. 
+
+She had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.
+  [place] {"loc":"Dorado, Mexico","country":"Mexico","why":"After discovering a global conspiracy and getting her identiy compromised, Sombra is born anew"}
+  [hero] {"country":"Sombra","why":"Ditches her old life after being discovered"}
+  [faction] {"country":"Los Muertos, Phreaks","why":"Sombra gets cybernetics following her blackout"}
+  [faction] {"country":"The Chernobog Conspiracy,","why":"Finds Sombra during her hacking spree"}
+
+======================================================================
+#235 Closed Fist
+year 2070 null | The Fall of Overwatch | Singapore, Singapore
+DESC:
+Following the Intel gathered in Havana, Overwatch was now aware of Doomfist's next move. The man had made public apparitions before, following his predecessor's raids on Numbani, but this time he was set to make a short trip to Singapore, and every piece was placed to arrest him on the spot.
+
+A small strike team consisting of Tracer, Winston and Genji was deployed to intercept the criminal, and while he was caught by surprise, he did not go down easily. The battle turned the city into a war zone and the gauntlet proved particularly tricky to deal with, as he dealt significant damage to Genji's cybernetics and caught Tracer off guard in the middle of frantic blinking, destroying her chronal accelerator and taking her out of the flow of time.
+
+In the end, with both Agents incapacitated, it was down to an enraged Winston to go against the might of Doomfist, but in the end, the strength of the modified Gorilla proved stronger than the gauntlet. Doomfist was defeated and arrested on the spot. After years of terrorism and personal attacks against many veteran agents, Overwatch has finally won.
+  [place] {"loc":"Singapore, Singapore","country":"Singapore","why":"Doomfist is defeated and arrested"}
+  [hero] {"country":"Doomfist, Winston","why":"Engage in a one against one battle that Winston wins"}
+  [hero] {"country":"Tracer, Genji,","why":"Become incapacitated while fighting Doomfist"}
+  [faction] {"country":"Overwatch, Talon Empire,","why":"Overwatch arrests Doomfist"}
+
+======================================================================
+#236 Interrogation
+year 2070 null | The Fall of Overwatch | Watchpoint: Gr├¡msv├╢tn, Iceland
+DESC:
+Akande was transported to Watchpoint: Gr├¡msv├╢tn, a maximum security prison designed to hold individuals with abilities and connections that would allow them to evade local authorities. A court-appointed surgeon removed his Gauntlet and once detached, it was sent to Grand Mesa for study. Years after the Crisis, it was still a marvel that left scientists dumbfounded as to how it actually worked, not made any easier by the series of safe locks set to self-destruct, making tinkering into its circuit essentially imposing without breaking it.
+
+Overwatch higher ups came into question, in what developed as completely futile screaming matches against an unfazed quiet man. Reyes, in particular, was left alone to interrogate the inmate for an extended period of time, and while official reports do not disclose a lot of their encounter, behind the cameras, it appears as if Reyes was actually listening to what Akande argued.
+
+Akande got through Reyes' skin, claiming he too saw how broken the global order had become. Years worth of red tape preventing Overwatch from catching him and many other criminals sooner, backlash against actions that needed to be done. He questioned the agent if he truly had made a difference in his extensive career, working for the police, the US Army or Overwatch, and if by locking him, was he really protecting humanity from a man in a cell, or merely protecting a jailed man from getting righteous retribution. Reyes did not answer his questions, looking genuinely disturbed by their implications. While his loyalty to Overwatch remained until the end, in reality, this was Akande planting the seeds of his latest and closest ally yet.
+  [place] {"loc":"Watchpoint: Gr├¡msv├╢tn, Iceland","country":"Iceland","why":"Doomfist is transdered into Watchpoint: Gr├¡msv├╢tn"}
+  [place] {"loc":"Watchpoint: Grand Mesa, United States","country":"United States,","why":"The Gauntlet is transfered into Watchpoing: Grand Mesa to study"}
+  [hero] {"country":"Doomfist, Reaper, Soldier 76","why":"Interrogate Doomfist following his arrest"}
+  [faction] {"country":"Overwatch, Talon Empire,","why":"Talon is left without a leader thanks to Overwatch"}
+
+======================================================================
+#237 Back in Business
+year 2068 2077 | The Fall of Overwatch | Venice, Italy
+DESC:
+For years, Talon had survived under the shadows by focusing on the enrichment of the elite, and the benefit of the Council members. They really only sought money and power for the longest time, but it all changed when Akande took control. Akande's mandate of global conflict meant Talon was no longer sheltered in the darkness, and their actions needed to contribute to a cause, and while many members were indifferent to their organization's politics, naturally, there were those who preferred to lie low and profit in seclusion.
+
+Following Akande's arrest, he managed to still have some level of control over Talon, bypassing his jailers' security and allowing him to communicate from the inside of his cell. However, the true person in charge of their everyday actions was now Augusto Vialli, Antonio's successor from Venice. Under Vialli's command, Talon would retreat into the shadows once more, for no cause other than what benefited the council table's pockets. His direction led to several assassinations and massive cuts in who got to have a say at the table, as the council struggled to earn bigger pieces of an increasingly smaller pie.
+
+La Lupa herself was well aware of the direction Talon was being taken in, and she carefully watched as Vialli left them into ruin. She had earned the respect of many of her fellow gladiators, who were ready to answer to her any command. Using these connections, she deployed an attack on Talon's palace in Venice not long after Doomfist's arrest, thinking she would get an advantage by striking Talon at their weakest point. However, the assault was a failure, and it quickly became clear her numbers were still not large enough to take Talon head on. It would take years for her to be ready for another attack, but the Wolf waited patiently for her girl to strike.
+  [place] {"loc":"Venice, Italy","country":"Italy","why":"Augusto Vialli takes over Talon and prioritizes bussiness over ideals"}
+  [hero] {"country":"Vendetta","why":"Sends a fail attack to kill Vialli"}
+  [hero] {"country":"Doomfist,","why":"Continues to command Talon from within prison"}
+  [faction] {"country":"Talon Empire,","why":"Talon takes a profit oriented approach following Akande's arrest"}
+  [npc] {"country":"Vialli,","why":"Takes charge of Talon's council in Doomfist's absense"}
+
+======================================================================
+#238 Colateral Damage
+year 2070 2071 | The Fall of Overwatch | Glasgow, Scotland
+DESC:
+Overwatch's conflict with Talon did not just harm their internal staff, instead several civilian casualties resulted from their many encounters, and left several jaded towards the Organization. Findlay Docherty was one of the many victims from their all-out war. Having grown poor, with a widowed father that was very disconnected about his needs, Findlay was just a young teenager looking for some support from the system. His parents were Crisis veterans and regularly got checks for their service, and even if they barely allowed them to get by, it installed in the young man a deep respect for institutions. Tired of living in poverty and neglect, however, he sought a way out, enlisting in the military to help him pay for university, convinced that he would finally find success if he played along with the systems laid out in front of him.
+
+Not long after enlisting, he was caught in the crossfire of an Overwatch in pursuit of a Talon jet. The Overwatch drop-ship had been hit, and it crashed into the flat Findlay grew up in, killing his father and leaving him trapped in the wreckage for almost two days. Findlay miraculously survived, but was left a triple amputee, preventing him from continuing his career in the military. The government offered him very basic prostheses and pain medication alongside a monthly check, but for Findlay he was still burnt by the injustice of it all. He lost everything he had worked for, and  the system gave him the bare minimum in return. Even Overwatch themselves could not bother helping beyond a speech by Strike Commander Morrison. That day marked a shift in Findlay's output for life, as he realized that he could not count on the establishment to have his back.
+  [place] {"loc":"Glasgow, Scotland","country":"Scotland","why":"Talon Crashes an Overwatch ship into a flat in Glasgow"}
+  [hero] {"country":"Hazard,","why":"Let a triple amputee and without a father after the incident"}
+  [hero] {"country":"Soldier 76,","why":"Gives a public speech to those affected"}
+  [faction] {"country":"Overwatch, Talon Empire,","why":"Engage in a fight that ends up endangering Civilians"}
+
+======================================================================
+#239 The Zurich Attack
+year 2070 2071 | The Fall of Overwatch | Zurich, Switzerland
+DESC:
+Having arrested their biggest enemy so far gave Overwatch a new hope that public opinion would turn around for them at last, and that the streak of failures and controversies was finally over. But in the end, that hope died when an accident inside the Zurich HQ triggered an explosion that resulted in the destruction of the entire base.
+
+Rumors and misinformation surrounded the press following the attack, with a particularly prominent one being the mention of Reyes and Morrison getting into a physical fight, possibly having caused the accident. In reality, both of the soldiers were caught by surprise in the middle of their fight. It had not been caused by anything they had encountered before, but rather an outside force with so little evidence left it would not be discovered until years later.
+
+While many agents did their best to rescue survivors and avoid casualties, once the rubble set in, both Reyes and Morrison had gone missing. Morrison's funeral was a big event which his family agreed he would have hated, but they had little choice given his position. Reyes, on the other hand, had a quieter private event for his family and close friends only.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"Zurich HQ destroyed after a massive explosion"}
+  [hero] {"country":"Soldier 76, Reaper,","why":"Declared death after the Zurich attack"}
+  [faction] {"country":"The Chernobog Conspiracy, Overwatch,","why":"The Conspiracy seemingly orchestrated the fall of Overwatch"}
+
+======================================================================
+#240 Mass Backlash
+year 2070 2071 | The Fall of Overwatch | Zurich, Switzerland
+DESC:
+Calls of disbandment had happened for years since Blackwatch came to the public eye, but not with the HQ lost and the two highest ranking agents dead, it became clear that Overwatch couldn't operate effectively anymore, which was particularly dangerous given how much power they held.  Not only that but Doomfist's arrest did not result in Talon's collapse, after years of fighting terrorists, not only was Overwatch still unable to stop Talon attacks on civilians they also were blind at attacks towards thee organzation itself. An intervention was needed, questioning the legality of ongoing Overwatch operations. 
+
+In spite of everything, Overwatch agents held dear to the belief they were still needed, that they could make a difference. From people like Freja, walking through the angry crowds to get the job done, to agents like Winston and Lena, who both insisted that Overwach needed to continue, and their operations had only been for the benefit of the world. Meanwhile, other agents like Angela and Vivian had grown jaded by the years, seeing how Overwatch spread its resources and continued to trample over protocol over the years, making them wonder if Overwatch was really doing good. Blackwatch agents were not fairing much better, as Cassidy had never been the same since the Venice Incident, thinking back to his days in Deadlock, how Reyes told him they were doing good things together, only to be framed as a criminal and a murderer in the end. Genji, on the other hand, had long pondered his condition as a living weapon, be it in the hands of the Shimada or Overwatch. He always felt like he couldnt be free of his destiny, and this took a mental toll on him. Not long after the Zurich explosion, he vanished without telling anyone.
+
+With rumors of Reyes and Morrison possibly surviving or even being implicated in the destruction of the Zurich attack, as well as rouge agents like Genji, public opinion on what little remained of Overwatch continued to go downhill. The heroes of old were being tossed aside as criminals, overstepping the law to follow their own agendas, and the good people working at the different branches were getting caught in the crossfire, getting their resumes stained by pure association with Overwatch. With the massive outcry of the public, the United Nations finally stepped in and began the process to determine if Overwatch really needed to exist anymore.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"Ongoing protests against Overwatch worsen public Opinion"}
+  [hero] {"country":"Tracer, Winston,","why":"Insist that Overwatch should be allowed to keep going"}
+  [hero] {"country":"Genji,","why":"Leaves quietely shortly after the Zurich attack"}
+  [hero] {"country":"Mercy, Sojourn, Cassidy,","why":"Grow to believe Overwatch is no longer needed"}
+  [hero] {"country":"Reaper, Soldier 76,","why":"Ongoing rumors of their survival taint Overwatch's image"}
+  [faction] {"country":"Overwatch, IJC,","why":"The United Nations begins to look at the idea of Shutting down Overwatch"}

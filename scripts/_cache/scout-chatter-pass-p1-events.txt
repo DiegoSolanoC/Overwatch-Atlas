@@ -1,0 +1,80 @@
+﻿Used commentary: 61
+
+=== CHATTER PASS EVENTS #1ΓÇô10 ===
+
+======================================================================
+#1 Siebren De Kuiper is Born
+year 2015 null | The Age of Progress | The Hague, Netherlands
+DESC:
+On March 15th of 2015, Siebren de Kuiper was born. Growing up in the Netherlands fascinated by the universe and its mysteries, oblivious to the impact he would leave on the world, and the price he would ultimately pay for his hubris.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#2 Reinhardt Wilhelm is Born
+year 2015 null | The Age of Progress | Stuttgrat, Germany
+DESC:
+On June 26th of 2015, Reinhardt Wilhelm was born to a working-class family in Stuttgrat, growing up dreaming of knights of old and their chivalry adventures. He would grow up to join the German Armed Forces to pursue his childhood dreams.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#3 Ana Amari is Born
+year 2017 null | The Age of Progress | Cairo, Egypt
+DESC:
+On January 1st of 2017, Ana Amari was born to a line of distinguished army veterans in Cairo. Learning how to handle a rifle since very young, becoming a marksperson by high school. Once graduated she would join the El-Sa'ka forces.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#4 Gabriel Reyes is Born
+year 2018 null | The Age of Progress | Los Angeles, United States
+DESC:
+On December 14th of 2018 Gabriel Reyes was born. Raised in Los Angeles by a family of hispanic descent, he would spend his early days helping the family in a convenience store. He would go on to graduate in criminology and pursue law enforcement as part of the LAPD.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#5 Torbj├╢rn Lindholm is Born
+year 2019 null | The Age of Progress | Gothenburg, Sweden
+DESC:
+On September 21st of 2019 Torbj├╢rn Lindholm was born in the city of Gothenburg. He had been a bright mind from an early age and had a clear career path in mind, as he pursued multiple advanced degrees at university.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#6 Medical Miracles
+year 2020 2040 | The Age of Progress | Toronto, Canada
+EXISTING commentary: Getting use to it | Family Business
+DESC:
+During the early years of the 21st century, the rapid climate change and growing populations will lead to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem.
+
+But with hardship and challenges comes progress, and humanity was able to collaborate in speeding up vaccine development, allowing for massive leaps in the medical field, and a period of utopian levels of health and life expectancy.
+
+As technology advanced, Dr. Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that would later become a global standard, as companies such as Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere.
+
+======================================================================
+#7 Crystal Clear
+year 2020 2040 | The Age of Progress | Nampula, Mozambique
+DESC:
+Dr. Leonel Namuaca was working on a revolutionary device which, thanks to nano-filtration systems, managed to greatly improve the cleansing of water from polluted and non-potable sources. Inspired by his life of struggle as climate change forced his family away from home, his purifiers quickly took over the world, helping to stop waterborne illness, and improving water efficiency in regions where it was scarce.
+
+======================================================================
+#8 John Francis Morrison is Born
+year 2021 null | The Age of Progress | Bloomington, United States
+DESC:
+Born on January 27th of 2021, John "Jack" Francis Morrison was raised by farmers, and grew up to become a rambunctious teen. When he was not helping on the farm, he spent his time playing football, and by his eighteenth birthday he would choose to enlist in the army, intending to put the strength and discipline from his years of athletics into good use.
+(BIRTHDAY ΓÇö skip)
+
+======================================================================
+#9 Greener Energy
+year 2020 2040 | The Age of Progress | Bogota, Colombia
+DESC:
+As technology progressed, many fields of science quickly solved global issues such as illness and water scarcity, but it quickly became clear that the worsening climate of the planet would become the next major obstacle to surpass. Scientists all over the globe scrambled for ideas to produce cost-effective clean energy that could become a worldwide standard.
+
+Dr. Justina Borda was one of the first to tackle this issue. A phycologist specialized in genetics, who sought to improve energy equity in her home of Colombia. Borda developed a strain of algae capable of thriving in low oxygen waters and photosynthesizing at disproportionate speeds. And after many attempts, she was able to get the energy produced by the algae to work alongside a Goldilocks Generator, taking the excess of electricity from the algae and essentially transforming any body of water into a solar panel.
+
+Borda's invention spread across the world rapidly, as rural communities quickly standardized its use, to the point that even the most remote corners of the world have bodies of water where their creation managed to propagate. As her invention became the norm, the public moved away from fossil fuels for their daily energy consumption. Borda kickstarted a green energy revolution, and as superstorms became all the more common, the wind energy industry followed, which ultimately led to a decrease in carbon emissions of more than 20 percent during this period, giving humanity hope for a better tomorrow.
+
+======================================================================
+#10 Cleaner Oceans
+year 2020 2040 | The Age of Progress | Honolulu, Hawaii
+DESC:
+While humanity was fighting to stop climate change, its effects were already heavily affecting people all over the world, and it was just as important to find solutions for those problems as it was for those to come. Island nations suffered the most from climate change, as the rising sea level and pollution of the oceans put their lifestyle at risk. For years, the people of the Polynesian region requested the international community to take the issue more seriously, but the handling of the situation left a lot to be desired.
+
+This eventually led to the creation of the Polynesian League, an intergovernmental alliance between New Zealand, the Cook Islands, Samoa and the recently independent Hawaii, where together they would find solutions to the issues affecting their region.

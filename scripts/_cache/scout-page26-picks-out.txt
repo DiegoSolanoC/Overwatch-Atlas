@@ -1,0 +1,145 @@
+﻿==== NAME HITS ====
+    free | Deprioritized
+    free | Periodic Table
+    free | Deals with Talon
+    free | Talon's Bounty
+    free | Done with Talon
+    free | Fighting Talon
+    free | Out of Talon
+    free | Talon's secrets
+    USED ΓåÆ #164 The Atlantic Arcology | Curious Whales
+    free | Korrea's Strongest
+    free | Volskaya's Mechs
+    free | Tests from Talon
+    free | Returning to Vishkar
+    free | Talon's Resources
+    free | At Gibraltar
+    free | Answer the recall
+    free | Applying to Vishkar
+    free | Winston!, Venture!
+    USED ΓåÆ #207 Champion | Glorious victories
+    free | Anubis's Jailers
+    free | Glorious day
+    USED ΓåÆ #197 Biolight | Leaving Vishkar
+    USED ΓåÆ #243 Protecting the Skies | Helix mercenaries
+OW1 free | So Serious
+OW1 free | Coming to Rio
+OW1 free | Vishkar is using you
+OW1 free | Dragging Brigitte
+OW1 free | Just Recall
+OW1 free | Agents of Helix
+OW1 free | Existence is Mysterious
+OW1 USED ΓåÆ #243 Protecting the Skies | Joining Helix
+
+#### family
+D free  B.O.B.'s Fire power
+D free  How's Bars
+D free  Where is my Bike
+D free  Easy Target
+D free  Making a Living
+D USED ΓåÆ #116 Loyal Guardian  Not a Toy
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Cassidy ┬╖ Not as quick as I used to be, but I'm still the fastest gun in the New West.
+
+#### vishkar
+D free  Resistance
+D free  Noisemaker
+D free  Listening to Tunes
+D free  Intact Memory
+D free  Deprioritized
+D USED ΓåÆ #248 Shrike  Always Worry
+C free Ana ┬╖ Let's use our superior range against them.
+C free Anran ┬╖ I'm ready to dance.
+
+#### treasure
+D free  Seen you before
+D free  Fetching Price
+D free  Are you a Couple
+D free  My Specialty
+D free  Not as good
+D free  Education System
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Baptiste ┬╖ Junkertown ΓÇö New Junk City is mistakenly not included and awaits a fix. ΓÇö Ugh. Got dust stuck in my teeth.
+
+#### zarya
+D free  Favorite Animals
+D free  Catching Up
+D free  Korrea's Strongest
+D free  Lifting
+D free  Huge fan
+D USED ΓåÆ #213 Two Hearts  Never Competed
+C free Hazard ┬╖ Aw, gotta work with these bootlickers?
+C free Junkrat ┬╖ We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.
+
+#### chivalry
+D free  Handling Dancing
+D free  No Instrumental
+D USED ΓåÆ #153 Yearning  So Dramatic
+D free  What is left
+D free  Unstoppable
+D USED ΓåÆ #92 The Original Strike Team  Like the Glory Days
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+
+#### network
+D free  Fighting Talon
+D free  Concerns
+C free Domina ┬╖ Enough chatter. We have business to attend to.
+C free Domina ┬╖ Follow my lead, dears. The punishment for defiance is quite severe.
+C free Domina ┬╖ I'll accept nothing less than your best performance out there.
+C free Domina ┬╖ Let's tend to this quickly, shall we? Wasted time is not among the luxuries I can afford.
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+
+#### winston
+D free  Favorite Animals
+D free  What is left
+D USED ΓåÆ #153 Yearning  Dancing in the Command Center
+D free  Always Captain
+D free  Periodic Table
+D free  Be Proud
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+
+#### bap
+D free  Right amount of stupid
+D free  Not Trapped
+D free  Where have you been
+D free  Advance Technologies
+D free  Show your face
+D free  All about Attitude
+C free Baptiste ┬╖ Don't let my immortality field go to your head. It's temporary. You can still die.
+C free Brigitte ┬╖ Don't worry. I'll keep our medic safe.
+
+#### siberia
+D free  Favorite Animals
+D free  Volskaya's Mechs
+D USED ΓåÆ #30 Voslkaya Industries  Gossiping
+D free  Learned Together
+C free Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and await a fix. ΓÇö Why woul
+C free D.va ┬╖ Busan ΓÇö Eichenwalde, King's Row or Volskaya Industries
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a fix. ΓÇö The snow her
+C free L├║cio ┬╖ Volskaya Industries ΓÇö I wish I'd brought my stick and pads. I'm sure I could've found a pick-up game here.
+
+#### anubis
+D free  Pretty Awesome
+D free  Anubis's Jailers
+D free  Basketball Later
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C free Echo ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Pharah would be proud of that one.
+C free Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest doubt
+node : (node:33156) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-8107688b-ac42-47b8-8f07-3b201064235c.ps1:92 char:1
++ node scripts/_cache/scout-page26-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:33156) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

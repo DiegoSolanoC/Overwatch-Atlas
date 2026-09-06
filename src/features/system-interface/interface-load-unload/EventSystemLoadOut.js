@@ -319,15 +319,10 @@ export async function unloadEventSystem(testBtn) {
   updateStatus("Unloading Event System...", "info");
   teardownMenuHelpersEventSystemLayout();
 
-  // Clear news ticker
+  // Clear news ticker headlines, but keep footer.timeline-loaded chrome
+  // (Atlas News trapezoid + strip) so returning Home does not flatten the footer.
   if (window.newsTickerService) {
     window.newsTickerService.clear();
-  }
-
-  // Remove timeline-loaded class from footer
-  const footer = document.querySelector("footer");
-  if (footer) {
-    footer.classList.remove("timeline-loaded");
   }
 
   document.getElementById("eventsManageToggle")?.remove();

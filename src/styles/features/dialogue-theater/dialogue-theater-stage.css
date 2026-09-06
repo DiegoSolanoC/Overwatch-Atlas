@@ -373,6 +373,19 @@ body.pagination-dock-mobile-locked:has(#paginationDock) .dialogue-theater-stage 
         display: none !important;
     }
 
+    /* Story Commentary Direct Play has no theater panel — keep stage subtitles */
+    .event-image-overlay[data-story-commentary-direct-play="1"]
+        .dialogue-theater-stage
+        > .dialogue-theater-stage__dialogue {
+        display: block !important;
+    }
+
+    .event-image-overlay[data-story-commentary-direct-play="1"]
+        .dialogue-theater-stage
+        > .dialogue-theater-stage__dialogue[hidden] {
+        display: none !important;
+    }
+
     .dialogue-theater-stage__dialogue {
         width: min(96%, 560px);
         padding: 16px 18px 18px;

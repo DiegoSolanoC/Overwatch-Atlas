@@ -1,0 +1,232 @@
+﻿==== NAMED ====
+
+=== Hammond? [USED ΓåÆ #182 Out There] (OW1) ===
+  Winston: Hammond?
+  Wrecking Ball: **hamster squeaks**
+
+=== Peanut Butter [free] (live) ===
+  Echo: Is peanut butter that delicious?
+  Winston: It's peanuty buttery heaven!
+  Echo: But my analysis shows me it's high in trans saturated fats.
+  Winston: Did Athena put you up to this?
+
+=== Inside an Orb [free] (live) ===
+  Zenyatta: I have always wondered what it is like being inside an orb.
+  Wrecking Ball: He says, "don't even think about it."
+
+=== Cursed Boy [USED ΓåÆ #183 Cursed] (live) ===
+  Shion: Those silly Y┼ìkai didn't change you that much. Deep down, you're the same cursed boy.
+  Mizuki: You don't know that.
+  Shion: Of course I do. No one knows you better, Mizuki.
+
+=== Toshiro's forge [free] (live) ===
+  Mizuki: I'm glad Toshiro-ojisan is safe now, but I wish we didn't have to blow up his forge.
+  Kiriko: He'll find a way to keep up his craft.
+  Mizuki: But that building held all his secrets.
+  Kiriko: No, he does. Isn't that why you guys bothered keeping him alive?
+
+=== Chronal adjustments [free] (OW1) ===
+  Winston: Need any adjustments to your chronal accelerator?
+  Tracer: I thinkΓÇö **mimics radio static** **giggles** Just kidding, Winston! It works great.
+
+=== Chronal Uncertainty [USED ΓåÆ #190 Lost in Time] (OW1) ===
+  Moira: Your state of chronal uncertainty is fascinating to me, Tracer. I do wish you would allow me to study you.
+  Tracer: While I'm truly touched by your offer, **nervous laugh** I think I'll have to pass... **nervous **
+
+=== Your Name [USED ΓåÆ #200 White Canvas] (live) ===
+  Echo: Cole Cassidy. Cole Cassidy. Cole Cassidy.
+  Cassidy: You called?
+  Echo: I just like saying your name. That's all.
+
+=== Cowboy Hat [USED ΓåÆ #200 White Canvas] (live) ===
+  Echo: I think I can pull off a cowboy hat.
+  Cassidy: Want me to buy you one?
+  Echo: No need. I'll just borrow yours.
+
+=== Mina Liao [free] (live) ===
+  Venture: No way... you're Echo! Like, Mina Liao's Echo! Oh, I have so many questions for you!
+  Echo: I... suppose I could answer them.
+  Venture: Awesome! I don't even know where to start, uh, I mean, um... what was she like?
+  Echo: She was... like me.
+
+=== Keeping the Label [USED ΓåÆ #200 White Canvas] (live) ===
+  Shion: *Echo-o-o-o! Echo-o-o-o-o-o-o!...* You aren't going to keep that label, are you?
+  Echo: I quite like my name. Dr. Liao chose it for me.
+  Shion: Exactly. She only saw you as her copy... and to the rest, you're just her faded memory.
+
+=== D├⌐j├á Vu [free] (live) ===
+  Moira: **sigh** What a nauseating bout of d├⌐j├á vu.
+  Cassidy: Yep. Working with you has always made me sick.
+  Reaper: Are you planning to whine the whole time... again?
+  Genji: **sigh**
+
+=== Pulling the Trigger [free] (live) ===
+  Reaper: You *really* think Antonio's daughter won't take out everyone involved in the Venice Incident? **scoff** Moron.
+  Moira: Only one man pulled the trigger that night. I'd be more concerned for *his* well-being.
+
+=== Disgrace to Overwatch [free] (OW1) ===
+  Soldier 76: You were a disgrace to Overwatch. If I had known what Reyes had been planning, I would have never allowed it.
+  Moira: It seems to me that it was convenient for you not to look too closely into Gabriel's business.
+
+=== Like a Brother [USED ΓåÆ #187 Cyber Ninja] (live) ===
+  Cassidy: This one might get tricky. Can I count on you to watch my back?
+  Genji: Of course. You are like a brother to me.
+  Cassidy: You've told me about your family. Not sure that's a compliment.
+
+=== Hamster in the Mech [free] (live) ===
+  Junker Queen: You got a hamster in that mech?
+  D.va: Um... No?
+  Junker Queen: Sure, sure... I'm watchin' you.
+
+=== Not for sale [free] (live) ===
+  Domina: Oh, aren't you just the sweetest little thing? What I wouldn't pay to carry you around in my purse!
+  Wrecking Ball: The hamster is not for sale.
+  Domina: Even if mummy has an unlimited budget for treats?
+  Wrecking Ball: The hamster will get back to you.
+
+==== NAME SEARCH ====
+ free Foxes Fight Back
+ free Fear the Reaper
+ free Old Fashioned
+ USED ΓåÆ #33 Grasping Gravity Mag Lev Cape
+ free Footbal Championship
+ free Retribution
+ free Paper trail
+ free Winston!, Venture!
+ free Message for the Fox
+ free Champion our Cause
+ free Helping Escape
+ free Hunting Foxes
+ USED ΓåÆ #120 Australian Liberation Junkers giving you trouble
+ free Grim Reaper
+ free Mina Liao
+ free Rocket lady
+ free Fox girl intel
+ USED ΓåÆ #131 Anima Weaponry Fox Secret
+OW1 free Giant Gorilla
+OW1 USED ΓåÆ #190 Lost in Time Chronal Uncertainty
+OW1 free Chronal adjustments
+OW1 USED ΓåÆ #182 Out There Hammond?
+OW1 free How Did You Escape
+ free Toshiro's forge
+ free Knew the champ
+ free Fox sightseeing
+
+#### venture
+C USED ΓåÆ #201 Intrepit Adventurers Venture ┬╖ Eichenwalde, Runasapi, or Temple of Anubis ΓÇö Ilios and Throne of Anubis are mistakenly not included and await a fix. ΓÇö The wo
+C free Venture ┬╖ Colosseo or Ilios ΓÇö Classical archaeology? My favorite!
+C free Venture ┬╖ Eichenwalde ΓÇö Medieval archaeology? My favorite!
+C free Venture ┬╖ Runasapi ΓÇö Peruvian archaeology? My favorite!
+
+#### lunar
+C free Anran ┬╖ Horizon Lunar Colony ΓÇö You know, if all that water was fire, we'd probably be in trouble.
+C free Ashe ┬╖ Horizon Lunar Colony ΓÇö Looking through the telescope ΓÇö Looks nice and quiet from up here.
+C free Brigitte ┬╖ Horizon Lunar Colony ΓÇö looking through telescope ΓÇö It really makes you think.
+C free Cassidy ┬╖ Horizon Lunar Colony ΓÇö Really gives you a perspective on the world down there. What's it all about... Ah, I need a drink.
+C free D.va ┬╖ Horizon Lunar Colony ΓÇö Well? They flew me to the moon!
+C free D.va ┬╖ Horizon Lunar Colony ΓÇö Wow... the view is amazing!
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö The development opportunities are endless.
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö Well, it certainly has potential.
+C free Echo ┬╖ Horizon Lunar Colony ΓÇö Space really puts the world in a new perspective.
+C free Echo ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö Breathtaking.
+C free Emre ┬╖ Horizon Lunar Colony ΓÇö Well... everything looks better from a distance.
+C free Freja ┬╖ Horizon Lunar Colony ΓÇö Doesn't get more remote than this. Huh, I wonder if I could afford a flat here...
+
+#### leverage
+C free Ashe ┬╖ I'm in charge. Don't forget that.
+C free Domina ┬╖ Circuit Royal ΓÇö Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a
+C free Hanzo ┬╖ Fall upon them like a cursed rain
+C free Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+C free Junkrat ┬╖ Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!
+C free Junkrat ┬╖ Ilios ΓÇö Let's say we forget about all this and go to the beach instead! Any takers? Anyone? No?
+C free Kiriko ┬╖ Hanamura or Hanaoka ΓÇö Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö Mizuki looked a little blue th
+C free Kiriko ┬╖ Kanezaka ΓÇö eliminating Shion ΓÇö Kanezaka is under my protection.
+C USED ΓåÆ #198 Hostage Kiriko ┬╖ Neon Junction ΓÇö Toshiro Yamagami... I will definitely rescue you.
+C free Mercy ┬╖ Midtown ΓÇö New York, New York. A summer smell you'll never forget!
+C free Mercy ┬╖ Midtown ΓÇö New York, New York! A summer smell you will never forget.
+C free Mizuki ┬╖ Eh... we'll wrap this up quick.
+
+#### chronal
+C free Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+C free Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Watchpoint: Gibraltar ΓÇö I wouldn't mind stealin' a spaceship. You hear what they make satellites 
+C free Brigitte ┬╖ Watchpoint: Gibraltar ΓÇö Talon's going to pay for From the Ashes. I'll make sure of it.
+C USED ΓåÆ #121 Watching the Globe Echo ┬╖ Watchpoint: Gibraltar ΓÇö So many memories.
+C free Emre ┬╖ | Watchpoint: Gibraltar ΓÇö Always figured I'd end up back here. Just... not like this.
+C free Freja ┬╖ Watchpoint: Gibraltar ΓÇö Ah, Gibraltar. It hasn't been long enough.
+C free Genji ┬╖ Watchpoint: Gibraltar ΓÇö It's beautiful here! I could never appreciate it before.
+C free Juno ┬╖ Watchpoint: Gibraltar ΓÇö Before Reign of Talon Season 1 ΓÇö I am glad I can call this my home away from home.
+C free Mei ┬╖ Watchpoint: Gibraltar ΓÇö Gibraltar is bigger than I remember. Or maybe it's just that I've never seen it so empty...
+C free Mei ┬╖ Watchpoint: Gibraltar ΓÇö Winston. I think one of these equations is wrong.
+C free Mercy ┬╖ Watchpoint: Gibraltar ΓÇö I'm not used to state-of-the-art facilities these days.
+C USED ΓåÆ #297 Reflections Mercy ┬╖ Watchpoint: Gibraltar ΓÇö Overwatch was shut down for a reason. Maybe it's best it stay that way.
+
+#### champ
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Freja ┬╖ Guess they'll hire anyone for a job these days...
+C free Hazard ┬╖ Junkertown or New Junk City ΓÇö eliminating Wrecking Ball ΓÇö This place has got a real pest problem.
+C free Junker Queen ┬╖ Got any room in that mech, Champ? I wanna take some souvenirs.
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload ΓÇö Glad you're back, Champ. Me throne leg needs fixin', it's gone
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload alongside Junkrat and Roadhog ΓÇö Champ, you know better than to h
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload alongside Junkrat and Roadhog ΓÇö Hammond! I told you to murder Ju
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Oi! Junkers! They're at the gates of the Scrapyard! Let's see if they've got what it takes!
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Welcome to the Scrapyard! Where there's only one Champ, and plenty of chumps.
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö while Wrecking Ball is pushing the payload ΓÇö Wrecking Ball is back to defend his title! And h
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö after the match concludes ΓÇö Your new champions!
+C free Junkrat ┬╖ Ah! Almost dropped me launcher, sorry... I've just got nerves, fighting alongside the Champ...
+
+#### oslo
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Duplicating dance moves! To the left, to the right! Mina Liao would be proud!
+C USED ΓåÆ #65 Answers Echo ┬╖ Nepal ΓÇö Shambali Monastery is currently omitted from this trigger and awaits a fix. ΓÇö Dr. Liao told me of her journey here. It i
+C free Echo ┬╖ Busan ΓÇö Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!
+C free Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+
+#### venice
+C free Cassidy ┬╖ Colosseo ΓÇö Rialto is mistakenly not included and awaits a fix ΓÇö Sittin' in caf├⌐s all day, drinkin' good espresso, eatin' past
+C free Domina ┬╖ Rialto ΓÇö environmental kill ΓÇö Go on, take a dip.
+C free Doomfist ┬╖ Rialto ΓÇö Antonio... was a fool.
+C free Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a fix. ΓÇö Overwatch
+C free Freja ┬╖ Rialto ΓÇö The Venice Incident was the beginning of the end for Overwatch. A shame...
+C free Genji ┬╖ Rialto ΓÇö I Retribution this place. (sigh)
+C free Mauga ┬╖ Rialto ΓÇö Aatlis, Colosseo, Esperan├ºa and Midtown are currently excluded due to a bug ΓÇö These tiny streets can't cage me in!
+C free Mei ┬╖ Rialto ΓÇö Snowball, want some Gelato?
+C free Moira ┬╖ Rialto ΓÇö This city brings back Retribution...
+C free Shion ┬╖ Rialto ΓÇö eliminating an omnic hero ΓÇö Oops! Circuits fried.
+C free Sombra ┬╖ Rialto ΓÇö What news on the Rrrrrrialto! (coughs) Sorry.
+C free Torbj├╢rn ┬╖ Colosseo or Rialto ΓÇö That damn tower... I don't care if tourists like it, it's falling over and needs to be fixed!
+
+#### shrine
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Has
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Hanzo ┬╖ You have my word, Kiriko. I will seek my redemption head on.
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan w
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö from
+C free Hazard ┬╖ Yes! Now these punks I can ride with.
+C free Kiriko ┬╖ Can't change the world by following all the rules.
+C free Kiriko ┬╖ If we do this right, they won't even know what happened.
+C free Kiriko ┬╖ So... I might sometimes pop out of thin air right next to you. Do not shoot me.
+C free Kiriko ┬╖ Stay in sight, and I'll keep you safe.
+C free Kiriko ┬╖ They have this coming. So let's give it to them.
+
+==== Tracer+Winston ====
+free  Favorite Animals | L├║cio: So, I'm tryna ask everybody this: what is your favorite / Ana: The caracal. / Anran: Oh, the orchid mantis! Especially the pink ones! / Ashe: I'm partial to scorpions. / Baptiste: Hmm... tiger shark! Best kind of shark. / Bastion: **elephant beeping** / Brigitte: Ooh! Siberian tiger. / Cassidy: **groan** I can never remember the name! It's... half b / Cassidy: It's that... you know, pig thing. Like, the... fancy ju / Cassidy: What's that... jungle animal, with the funky snout? / D.va: Definitely the Zergling. / D.mon: Meerkats. Kinda remind me of the MEKA squad when they w / Doomfist: Whichever is strongest. I'm also fond of starlings... / Echo: My current favorite is triceratops. / Echo: My current favorite is a really big dog used to ward of / Echo: My current favorite is the rhinoceros. / Echo: My current favorite is the tiger shark. / Echo: My current favorite is the dragonfly. / Echo: My current favorite is the penguin. / Echo: My current favorite is the Jack Russell Terrier. / Echo: My current favorite is the unicorn. / Emre:  / Freja: Hmm... I quite like stoats. / Genji: Yeah... triceratops. / Hanzo: The brave and beautiful koi. / Illari: Chu├▒o. My llama. / Jetpack Cat: **self-referential meow** / Junker Queen: Is there a kind of dingo, that is... also a shark? / Kiriko: Really? Take a guess. (her kitsune/fox) / Lifeweaver: The magnificent elkhorn coral. / Mauga: Hammerhead. That's the best shark, no question. / Mei: Ooh! I like penguins! / Mercy: Eichh├╢rnchen. That's German for "squirrel". / Mizuki: I think black cats are the best cats. / Moira: Scolopendra gigantea. (Scientific name for the Amazonia / Orisa: Efi's favorite animal is the puppy. That is my favorite / Pharah: I like... those really big dogs! The ones they use to w / Ramattra: Ants. They build marvelous structures and cooperate whe / Reaper: Any animal will do... if you're hungry enough. / Reinhardt: I identify with the noble rhinoceros! / Roadhog: Pachimari. / Shion: I like killer whales very much. / Sierra: You ever heard of a pupfish? They've got no business be / Sigma: The tardigrade, of course! The most adorable phylum in  / Sojourn: I don't... see why it's relevant, but... leopard seal. / Sombra: I love those deep sea animals. Like the bigfin squid?! / Symmetra: Dragonflies. Such perfect creatures. / Torbj├╢rn: Moose, of course. / Tracer: Cheetah. No, uh, lion! Oh, wait, uh... Gorilla? Oh, no, / Venture: **gasp** I've always wanted to get eaten alive by scara / Vendetta: La Lupa. For her strength, and her glory. / Widowmaker: The black widow. / Wrecking Ball:  / Winston: Hmm... humans, I suppose! / Wuyang: You ever see a stick bug? I think they're pretty neat. / Zarya: Rabbits. The huge ones. / Zenyatta: I envy ants for their clarity of purpose. / L├║cio: Uh... yeah, I can see it! / Domina: Aren't you going to ask about *my* favorite little crea / L├║cio: Alright, fine. What's your favorite animal? / Domina: Oh, well, I find chinchillas absolutely adorable! And t / L├║cio: **sigh** Yeah. I can see it... / Kiriko: So, DJ... what's your favorite animal? / L├║cio: Oh! Uh, well... I really like tree frogs! Heh, I didn't / Kiriko: Tree frogs? Yeah, I can see it! **chuckle**
+USED ΓåÆ #159 Growing with the Clan  Trip over your Sword | Kiriko: Genji, remember the time you tripped over your sword in / Brigitte: **laughs** Really? / Cassidy: That sounds like him. / Junker Queen: Ha! Some ninja. / Mei: No way! **laughs** / Mercy: Ho ho! Wish I was there. / Reinhardt: What? Haha, hahahahaha! / Tracer: Ha! Is that true? / Winston: Is that true? / Genji: It only happened once. / Kiriko: Once was enough.
+free  Pilot Sickness | Winston: Here's another one! What sickness do pilots usually get / Echo: Hmm... what? / Pharah: Sick of your jokes? / Tracer: Ooh-- airsick? / Winston: The flew! / Echo: I'm glad that's impossible for me. / Pharah: Okay, Winston. / Tracer: Ohoho! That was a pretty good one!
+free  Not with us | Junkrat: Peter Piper picked a peppΓÇô no. Peter Piper pecked aΓÇô ug / Kiriko: Are you people always this loud? / Mercy: Don't lump us in with him. / Pharah: He's not with us. / Tracer: **whispers** He's not with us! / Winston: He's uh... not with us.
+free  No more Bananas | Winston: So, uh... I noticed you don't send me bananas anymore. / Tracer: You said you didn't want any! **laugh**
+free  Presents | Winston: I got you a present, Lena! But you can't unwrap it unti / Tracer: Ooh, what is it? / Winston: Wha-- I'm not going to tell you! / Tracer: Oh, *please,* Winston? *Please?* **chuckle** Just a lit / Winston: Absolutely *not!*
+free OW1 An animal | Tracer: Winston! You're an animal! **giggles** / Winston: Empirical evidence suggests I'm a real animal.
+free OW1 Chronal adjustments | Winston: Need any adjustments to your chronal accelerator? / Tracer: I thinkΓÇö **mimics radio static** **giggles** Just kiddi
+node : (node:35984) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-d9c15aea-76b9-4522-ae43-c9f3d08402dc.ps1:92 char:128
++ ... tary-out.txt; node scripts/_cache/scout-page21-picks.mjs 2>&1 | Out-F ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:35984) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -53,6 +53,7 @@ import {
     updateEventSlideHeroRoleDisplay
 } from '../../../interface-info-display/eventSlideMetaDisplays.js';
 import { teardownDialogueTheaterEventSlide } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
+import { stopStoryCommentaryDirectPlay } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { clearEventSourceMediaEmbed, resetSourceMediaMusicDuckState } from '../image-overlay/eventSourceMediaOverlay.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
@@ -64,6 +65,7 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
         slide.activeYouTubeVideoId = '';
         slide.activePdfSourceUrl = '';
 
+        stopStoryCommentaryDirectPlay({ restoreEventImage: false });
         teardownDialogueTheaterEventSlide();
 
         /* Fresh open from a closed panel: drop stale back-stack (X, hideEventSlide, filters, etc.). */

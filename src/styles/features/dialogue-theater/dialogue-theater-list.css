@@ -6,6 +6,59 @@
     --story-archive-bar-control-height: 36px;
 }
 
+/* Chatters/Dialogues toggle — same reveal pattern as Story List/Timeline */
+#dialogueTheaterEntryToggle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn,
+body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn {
+    display: flex !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+@media (min-width: 769px), (max-width: 768px) and (orientation: landscape) {
+    body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn,
+    body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn {
+        width: auto !important;
+        min-width: 112px !important;
+        max-width: 148px !important;
+        height: 48px !important;
+        padding: 0 7px !important;
+        gap: 5px !important;
+        font-size: 11px !important;
+        line-height: 1.05 !important;
+        letter-spacing: 0.01em;
+    }
+}
+
+body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn [id$='Icon'],
+body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn [id$='Icon'] {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+}
+
+body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn .globe-control-btn__label,
+body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn .globe-control-btn__label {
+    display: inline-block !important;
+    max-width: 84px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+body.dialogue-theater-mode-active #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn img,
+body:has(#dialogueTheaterListHost) #dockGlobeRailLeft > #dialogueTheaterEntryToggle.dock-globe-rail__btn img {
+    transform: none !important;
+}
+
 .dialogue-theater-panel-embedded.story-viewer-panel-embedded {
     width: 100% !important;
     height: 100% !important;

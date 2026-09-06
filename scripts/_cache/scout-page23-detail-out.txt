@@ -1,0 +1,177 @@
+﻿=== Stayed Retired [free] active ===
+  Sojourn: Brigitte, you're one of my best agents. So I'll give you one chance to explain why you put a cat in a jetpack.
+  Brigitte: I know it seems crazy, but she can help! Can't you, Fika? Aww, good girl!
+  Jetpack Cat: **happy meows**
+  Sojourn: **sigh** I should've stayed retired...
+=== Retirement [free] active ===
+  Sojourn: So, you finally made it. How's retirement going?
+  Emre: **chuckle** Not bad. A few more firefights than I planned for.
+  Sojourn: You seem prepared to me.
+  Emre: Well, next time, I'm packing less heat, and more sunscreen.
+=== Better than Retirement [free] removed ===
+  Soldier 76: Admit it, Ana. This is better than retirement.
+  Ana: You haven't been to Kauai, have you?
+=== Truth about Retirement [free] removed ===
+  Sombra: You know, I've seen Reinhardt's Overwatch file.
+  Brigitte: What are you getting at?
+  Sombra: I wonder if he's really told you the truth about his retirement.
+=== Retirement suits you [free] removed ===
+  Doomfist: Retirement suits you.
+  Torbj├╢rn: And I think a hammer upside your face would suit you!
+=== Dragging Brigitte [free] removed ===
+  Mercy: Reinhardt. I don't approve of you dragging that poor girl around on your adventures.
+  Reinhardt: Brigitte has made her choice. I would have her at my side.
+  Torbj├╢rn: Angela, you should know that no one could stop Brigitte from doing something she had her mind set on. She is a Lindholm after all.
+=== Madam Wolf [free] active ===
+  Junkrat: If the pot was sweet enough... I might be willing to serve you, madam wolf.
+  Vendetta: I have no use for the allegiance of one so willing to betray his leaders.
+  Junkrat: Who said anything about betrayal? I was only talking about teams. Mercenaries!
+=== Lone Wolf [free] active ===
+  Sojourn: You can't act like a lone wolf on my team.
+  Hanzo: Depending on others brings nothing but disappointment.
+  Sojourn: Let's see if this mission proves you wrong.
+=== Phreak Firewalls [free] active ===
+  Hazard: Best quit poking around my files, lass. You cannae out-hack Phreak firewalls.
+  Sombra: Hard to call it "hacking" when the password is your dog's birthday.
+=== Pretty Bad [free] active ===
+  Emre: All that time not knowing where I was, and this is how you finally find me... I'm sorry, Frej.
+  Freja: It's all right. Could've been worse ways to find you.
+  Emre: Yeah, but... it's still pretty bad, right?
+  Freja: **soft chuckle** Definitely could've been better.
+=== On the Front lines [free] active ===
+  Emre: I'm still not used to seeing you on the front lines.
+  Freja: Not used to being outperformed, you mean?
+  Emre: **chuckles** That a challenge, Frej?
+  Freja: Oh, it's hardly a challenge.
+=== Useful when you show up [free] active ===
+  Moira: That serum you retrieved is coming along nicely, Emre. You're rather useful when you care to show up.
+  Emre: Well, I'd hate to make your life too easy.
+=== Going Soft [free] active ===
+  Ana: I heard Talon failed another mission. Going soft?
+  Widowmaker: Do not speak to me unless you wish to lose your other eye.
+  Ana: I'd still be the better shot.
+=== Eye repair [free] removed ===
+  Mercy: You know, Ana... there are procedures we could look into to repair your eye.
+  Ana: You're very kind, but I'm comfortable with who I am now. It's a good reminder.
+=== Got my eye on you [free] removed ===
+  Zarya: I've got my eye on you, omnic.
+  Zenyatta: And I will watch your back in turn.
+=== Missing an Eye [USED] active ===
+  Junkrat: How many of you Overwatch people are missing an eye?
+  Reinhardt: I don't need two eyes to swing a hammer!
+  Torbj├╢rn: How many of you scoundrels are missing a leg?
+=== Done with Talon [free] active ===
+  Baptiste: I'm *done* with Talon. Nothing can make me change my mind. Not even you.
+  Mauga: Saves me time. Dragging you back is faster!
+=== Talon's secrets [free] active ===
+  Baptiste: Look, I promise I won't spill any of Talon's secrets.
+  Widowmaker: Do you know what happened to the last man I trusted?
+  Baptiste: You know what, that's fine. Keep chasing me.
+=== Show your face [free] active ===
+  Widowmaker: Brave of you to show your face after what happened in Monte Cristi.
+  Baptiste: Well, it is a pretty good face.
+=== Fighting for Vendetta [free] active ===
+  Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even for you.
+  Mauga: Aw, gimme some more credit. You know I only stick around when I'm getting something out of it.
+  Baptiste: **sigh** That's exactly what I'm worried about.
+=== Negotiator [free] active ===
+  Domina: You're quite a skilled negotiator, Marzia. I'm impressed.
+  Vendetta: It takes more than a strong sword arm to succeed in the Colosseo.
+  Domina: Of course. Still rather rugged, though, aren't you?
+  Vendetta: That, I should hope, is readily apparent.
+=== Busan fireworks [free] active ===
+  Junker Queen: Reckon Busan's in need of a little fireworks show!
+  D.va: The only firework show you see will be my missiles blowing up in your face!
+=== Like mother like daughter [free] active ===
+  Torbj├╢rn: Y'know, Fareeha, it's not a sign of weakness if you take it easy sometimes.
+  Pharah: Mistakes arise when people turn careless.
+  Torbj├╢rn: *(sigh)* Like mother, like daughter...
+=== Thinking of Mother [free] active ===
+  Genji: Seeing Keiko's family reunited makes me think of mother. I hope she's well.
+  Hanzo: Genji, let us not speak of her.
+  Genji: Is it so wrong to lament her absence?
+  Hanzo: She wanted nothing more than to be rid of the Shimada name. We must honor that.
+=== Adoptive Mother [free] active ===
+  Junkrat: It's so hard to tell right from wrong. If only I had someone to... give me guidance.
+  Ana: Mm hmm.
+  Junkrat: Someone wise, and experienced! An... adoptive mother, if you will...
+  Ana: Oh, no. Absolutely not.
+
+==== KEY CHATTERS ====
+C free Ana ┬╖ Let's use our superior range against them.
+C free Ashe ┬╖ Colosseo ΓÇö I hear you can smuggle just about anythin' through those skyways.
+C free Baptiste ┬╖ Well, this is... awkward. (nervous laugh) Are you... still mad at me? Don't answer that.
+C free Baptiste ┬╖ I'm ready to go!
+C free Baptiste ┬╖ Look out for each other, 'cause I'm only human
+C free Baptiste ┬╖ Nice and easy now!
+C free Baptiste ┬╖ Colosseo ΓÇö Let's visit the wikipedia:Sistine Chapel after this. I want to get a closer look at that ceiling...
+C free Cassidy ┬╖ Colosseo ΓÇö Rialto is mistakenly not included and awaits a fix ΓÇö Sittin' in caf├⌐s all day, drinkin' good espresso, eatin' pasta wit
+C free Cassidy ┬╖ Colosseo ΓÇö Sittin' in caf├⌐s all day, drinking good espresso, eating pasta with eight syllable names... not a bad way to live.
+C free D.va ┬╖ Ugh. The Junkers want to turn Busan into their dump, but they already live in one!
+C free D.va ┬╖ Busan ΓÇö If they destroy any of my favorite matjips, I'm coming for them!
+C free D.va ┬╖ Busan ΓÇö It's nice being on home turf!
+C free D.va ┬╖ Route 66 ΓÇö A MEKA roadtrip would be jonla fun!
+C USED D.va ┬╖ Busan ΓÇö Elimination ΓÇö I will defend my country!
+C free D.va ┬╖ Busan ΓÇö I play to win, and I always do. That's just who I am. Woo!
+C free D.va ┬╖ Busan ΓÇö MEKA activated! Hit you with that PEW-PEW-PEW! With that PEW-PEW-PEW!
+C USED D.va ┬╖ Busan ΓÇö Someone has to save the world, it might as well be me! Woo! GG!
+C free D.va ┬╖ Busan ΓÇö Naneun seuta ya! Naneun dae seuta! o, i norae jae-il jo-a! Daebak! (giggles) (Hangul) I'm a star! I'm a superstar! I love thi
+C free D.va ┬╖ Busan ΓÇö Eichenwalde, King's Row or Volskaya Industries
+C free D.va ┬╖ Busan ΓÇö The destruction caused by the omnics here... It reminds me of home.
+C USED Doomfist ┬╖ Busan ΓÇö Each Gwishin attack strengthens the defenders, as a furnace hardens steel.
+C free Doomfist ┬╖ Colosseo ΓÇö No one expected the Roman Empire to fall. Perhaps that is why it did.
+C free Emre ┬╖ | Havana ΓÇö You know, I always wanted to retire here.
+C free Freja ┬╖ Route 66 ΓÇö Outlaw country, huh? Enough bounties out here for a girl to retire on.
+C free Hanzo ┬╖ The wolf stirs from his den
+C free Hanzo ┬╖ Colosseo ΓÇö I understand the path that Caesar took. But more than that, I understand his fall.
+C free Hazard ┬╖ Check out these new 'gradies. Phreaks's work. Outdid herself again!
+C free Junker Queen ┬╖ This MEKA lot would never survive the Reckoning. They haven't even got rust on their ridges!
+C free Junker Queen ┬╖ Busan ΓÇö Wish one of those Gwishin would attack. I don't need a mech to fight them.
+C free Junker Queen ┬╖ Colosseo ΓÇö I don't see what's so fancy about Rome. Hardly any scrap heaps at all.
+C free Junkrat ┬╖ Black Forest ΓÇö What a place this is! A ghost in every attic. Maybe this is where I'll retire.
+C free Junkrat ┬╖ Colosseo ΓÇö Have you tried the coffee here? It'll make your eyes v-v-vibrate out of your skull!
+C free Junkrat ┬╖ Colosseo ΓÇö I keep having this dream where I'm running from biplanes in the Colosseum. (shivers) It's spooky!
+C free L├║cio ┬╖ Colosseo ΓÇö I played the sickest concert here. Colosseum hasn't been that packed since Spartacus!
+C free Mauga ┬╖ Loosen up. This is supposed to be fun.
+C free Mauga ┬╖ You and me, Baptiste. You and me
+C free Mauga ┬╖ Rialto ΓÇö Aatlis, Colosseo, Esperan├ºa and Midtown are currently excluded due to a bug ΓÇö These tiny streets can't cage me in!
+C free Moira ┬╖ Colosseo ΓÇö Timendi causa, est nescire. (Latin) Ignorance is the cause of fear.
+C free Moira ┬╖ Colosseo ΓÇö [https://en.wikipedia.org/wiki/Seneca_the_Younger Seneca] said that the cause of fear is ignorance. If only anyone had li
+C free Pharah ┬╖ Oasis ΓÇö City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats escaped...
+C free Reinhardt ┬╖ Where's my lucky hammer? Ah, I'm holding it!
+C free Reinhardt ┬╖ Let's show these kids how it's done.
+C free Reinhardt ┬╖ Ana! Jack! My old friends! This is going to be delightful.
+C free Reinhardt ┬╖ Hold fast! Do not let them through!
+C free Reinhardt ┬╖ Forward with courage!
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Do, da-da, da, hammer down! Ha, ba-ba, da, do-do-do! Hee, hee, ba-da, ho-ho-ho! Yes, yes! (laughs)
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö laughs ΓÇö Oh, ha-ba, da-da-da. Ooh, yes, hammer down! Ha, ha-ba-da, da-da-da. Ah, I love this!
+C free Reinhardt ┬╖ Busan ΓÇö Do do doo, hammer down! Ha ha do do do doo, hee hee hee hee hee hoo, yes, yes, hahahaha!
+C free Reinhardt ┬╖ Busan ΓÇö Ba ba ba ba ba ba, hoo yes, hammer down! Ha ba ba da ba ba! Oh, I love this! Hahahahaha!
+C free Sojourn ┬╖ Havana ΓÇö Emre always said he'd retire here. Wonder where he ended up.
+C free Soldier 76 ┬╖ Any Push Gamemode Map ΓÇö Is Treadweather ever gonna patch the control override on TS-1?
+C free Soldier 76 ┬╖ Circuit Royal (on Defense), or Colosseo ΓÇö I remember we were... looking into Corsini S.p.C. Let's just say they're involved wit
+C free Sombra ┬╖ Watchpoint: Gibraltar ΓÇö Before Season 6 ΓÇö Sometimes I wish Overwatch (group) would come back just so I could get some new intel fro
+C free Symmetra ┬╖ Colosseo ΓÇö I admire the hard-light sculptures in this city. There are wonderful artists here.
+C free Torbj├╢rn ┬╖ Colosseo or Rialto ΓÇö That damn tower... I don't care if tourists like it, it's falling over and needs to be fixed!
+C free Vendetta ┬╖ Colosseo or Rialto ΓÇö Italian ΓÇö Non cΓÇÖ├¿ casa migliore di questa.
+C free Vendetta ┬╖ Colosseo ΓÇö And so we have arrived at the seat of my power.
+C free Venture ┬╖ Colosseo ΓÇö When in Rome, do as the Romans do--and I sure hope the Romans like studying columns!
+C free Venture ┬╖ Colosseo ΓÇö eliminated by Junker Queen using Jagged Blade ΓÇö Jeez! Now I know how Caesar felt.
+C free Venture ┬╖ Colosseo ΓÇö eliminating Vendetta using Sundering Blade ΓÇö You're no Remus!
+C free Venture ┬╖ Colosseo ΓÇö kill streak ΓÇö I came... I saw... I conquered!
+C free Venture ┬╖ Colosseo ΓÇö I've got the heebie jeebies. Good thing I packed a bolillo!
+C free Venture ┬╖ Colosseo or Ilios ΓÇö Classical archaeology? My favorite!
+C free Wrecking Ball ┬╖ Colosseo ΓÇö Note to self. Design sweet Roman gladiator armor with scary grapple.
+node : (node:38108) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-f8c53ffd-4505-4170-9589-f6c9cf49ee14.ps1:92 char:1
++ node scripts/_cache/scout-page23-detail.mjs 2>&1 | Out-File -Encoding ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:38108) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

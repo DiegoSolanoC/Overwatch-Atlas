@@ -1,0 +1,176 @@
+﻿
+=== free | B.O.B.'s Fire power ===
+  Ashe: Why the hell'd you give B.O.B. all that firepower?!
+  Ana: *He* doesn't waste it.
+
+=== free | How's Bars ===
+  Cassidy: How's Bars doin'? Surprised she didn't take my head off last time I stopped by.
+  Ashe: She's not gonna miss if you come 'round again.
+
+=== free | Where is my Bike ===
+  Ashe: I'll only ask one more time, Cassidy. Where'd you leave my bike?
+  Cassidy: Not sure you wanna know.
+  Ashe: If I find even a scratch on it, Bob is gonna use you for target practice!
+
+=== free | Easy Target ===
+  Ashe: They say you're a good shot. Hope you don't mind that I'm better.
+  Ana: I know more than anyone that a head that big is an easy target.
+
+=== free | Coming to Rio [OW1] ===
+  L├║cio: You should come to Rio, Orisa. I could use your help with those Vishkar goons.
+  Orisa: I do not know about this Vishkar, but I am programmed to assist where I can.
+
+=== free | Vishkar is using you [OW1] ===
+  L├║cio: Vishkar's using you, just like they used my father. You just wait. You'll see.
+  Symmetra: Your father was a Vishkar employee. He understood our company's vision. A shame he never educated you.
+
+=== free | Returning to Vishkar ===
+  Lifeweaver: Are you sure about returning to Vishkar, Satya? You could always stay at the arcology with me.
+  Symmetra: I may join you one day. But I will uncover more as Vishkar's ally than the enemy.
+
+=== free | Applying to Vishkar ===
+  Sojourn: I saw Vishkar is opening an office in Toronto.
+  Symmetra: Yes... are you interested in applying?
+  Sojourn: **chuckle** I'd rather clean cattle pens in Alberta.
+
+=== USED ΓåÆ #197 Biolight | Leaving Vishkar ===
+  L├║cio: You did the right thing leaving Vishkar behind. The rest of those drones ought to take notes.
+  Lifeweaver: Well, I'm sure it's not so simple for everyone.
+  L├║cio: Get real, man. You think walking away is harder than ruining people's lives?
+  Lifeweaver: At Vishkar? You'd be surprised.
+
+=== free | Deprioritized ===
+  L├║cio: Did your bosses ever rebuild that favela? You know, the one that *mysteriously* burned down?
+  Symmetra: I am told it is on the backlog.
+  L├║cio: Funny how that sort of project always gets... deprioritized.
+
+=== free | Resistance ===
+  L├║cio: Doesn't matter how many "accidents" you cover up. Rio won't stop fighting to keep Vishkar out of our home!
+  Domina: This is your attempt at resistance? Huh, I hardly noticed.
+
+=== free | Are you a Couple ===
+  Lifeweaver: Are you and Roadhog together?
+  Junkrat: Do you ever see us apart?
+  Lifeweaver: No. I mean, are you a couple?
+  Junkrat: Yes! A couple of dashing rogues! Not sure what you're missing here...
+
+=== free | Fetching Price ===
+  Junkrat: Me mate Roadhog says there's a fetching price on your noggin. Not as high as the one on ours, mind you...
+  Lifeweaver: He said all that?
+  Junkrat: It was more like, "*Gonna turn that bloke in. Worth a heap, hurrrrrrr...*"
+  Lifeweaver: Thank you for the warning. And the convincing impression.
+
+=== free | Seen you before ===
+  Junker Queen: Have I seen you before?
+  Ana: It's possible. I've passed through Junkertown once or twice.
+  Junker Queen: You're the one who kicked Red Ned in the wicker basket!
+  Ana: He started it.
+
+=== free | My Specialty ===
+  Reaper: Roadhog, take them head on.
+  Roadhog: Got it.
+  Junkrat: Hey, I want a mission too!
+  Reaper: Try not to blow yourself up.
+  Junkrat: Aw, but itΓÇÖs me specialty!
+
+=== free | Lifting ===
+  D.va: You're crazy strong, Zarya! How many of me could you lift?
+  Zarya: With or without the mech?
+
+=== free | Huge fan ===
+  Mauga: Champion Aleksandra Zaryanova! Woah. I'm a *huge* fan!
+  Zarya: Yes, you are huge. And loud.
+
+=== free | Korrea's Strongest ===
+  Doomfist: How does one so young become Korea's strongest warrior?
+  D.va: I'm the best. That's all you need to know.
+  Doomfist: **laughter** Confidence! Let's hope it's not unfounded.
+
+=== free | Unstoppable ===
+  Reinhardt: Ana... when we work together, we are unstoppable!
+  Ana: You don't have to shout, Reinhardt. I'm right here.
+
+=== free | What is left ===
+  Ana: You answered Winston's Recall. Even after all you went through...
+  Reinhardt: **sigh** If I am called, and I do not answer... what is left, Ana?
+  Ana: *You* are left, Reinhardt. And that is nothing to scoff at.
+
+=== free | Dragging Brigitte [OW1] ===
+  Mercy: Reinhardt. I don't approve of you dragging that poor girl around on your adventures.
+  Reinhardt: Brigitte has made her choice. I would have her at my side.
+  Torbj├╢rn: Angela, you should know that no one could stop Brigitte from doing something she had her mind set on. She is a Lindholm after all.
+
+=== free | Deals with Talon ===
+  Cassidy: You're makin' deals with Talon, now? You've always been reckless, but I *know* you're not stupid.
+  Ashe: Then you know I've got it under control. You ought'a be smart enough to stay out of my way.
+
+=== free | Concerns ===
+  Domina: Marzia, dear...I have some concerns about your latest enterprise in the Outback.
+  Vendetta: If I desired your advice, I'd have sought you out.
+  Domina: No need to raise your hackles, darling. I'd simply hate to see them tarnish your fine reputation.
+  Vendetta: Don't play the sycophant, Vaira. It doesn't suit you.
+
+=== free | At Gibraltar ===
+  Sojourn: How's it feel to be stationed at Gibraltar?
+  Orisa: It is incredible! Efi has always dreamed of this.
+  Sojourn: Yeah, well... Overwatch is all the better now that you two are part of it.
+  Orisa: "Part of Overwatch"...how amazing.
+
+=== free | Answer the recall ===
+  Winston: I'm *so* happy you answered the Recall, Reinhardt.
+  Reinhardt: For you, my old friend? **chuckle** Of course.
+
+=== free | Just Recall [OW1] ===
+  Mercy: Well, I suppose I'll be patching you up... as usual
+  Tracer: Don't worry Dr. Ziegler, if I get in trouble, I'll just recall!
+
+=== free | Be Proud ===
+  Baptiste: Hey, I saw you in Winston's reports on the Chengdu attack. Way to stick it to Null Sector!
+  Wuyang: Aw, it was nothing. My sister did most of the heavy lifting -- I just got people out safe.
+  Baptiste: Protecting our friends is a noble thing. Be proud of what you do!
+  Wuyang: Thanks, man. It's nice to hear the reminder.
+
+=== free | Always Captain ===
+  Winston: Ana, may I still call you Captain?
+  Ana: Oh, Winston. That was a long time ago.
+  Winston: You'll always be Captain in my heart.
+
+=== free | Out of Talon ===
+  Baptiste: Is it true? You're out of Talon? For good?
+  Sombra: For now. Until someone knocks the new boss down a few pegs.
+  Baptiste: Well, if you're looking for help... you can always come find me.
+  Sombra: Aww. Aren't you sweet? But something tells me your new friends won't enjoy having me around.
+
+=== free | Done with Talon ===
+  Baptiste: I'm *done* with Talon. Nothing can make me change my mind. Not even you.
+  Mauga: Saves me time. Dragging you back is faster!
+
+=== free | Right amount of stupid ===
+  Baptiste: I'll be backing you up, so try not to do something too stupid.
+  Mauga: You know me, Baptiste: just the right amount of stupid.
+
+=== free | Where have you been ===
+  Sombra: Where have you been all these years, Baptiste?
+  Baptiste: You act like you don't know.
+  Sombra: **laughs** This is why I like you.
+
+=== free | Volskaya's Mechs ===
+  D.va: Can Volskaya's mechs do that?
+  Zarya: Hah. Not yet.
+
+=== free | Learned Together ===
+  Reinhardt: Zarya Volskaya, do you remember all the tricks we learned together?
+  Zarya: How could I forget? Let's show them what we can do.
+
+=== free | Anubis's Jailers ===
+  Ramattra: You were one of Anubis's jailers. You should have destroyed it.
+  Pharah: That is... not what I would have expected you to say.
+  Ramattra: Of course not. You *humans* love your assumptions.
+
+=== free | Pretty Awesome ===
+  D.va: Being part of Overwatch, getting to save the world... isn't it awesome, Pharah?
+  Pharah: Yeah. It is pretty awesome.
+
+=== free | Existence is Mysterious [OW1] ===
+  Moira: I must know how your technology functions.
+  Zenyatta: Existence is mysterious, isn't it?

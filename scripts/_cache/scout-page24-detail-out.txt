@@ -1,0 +1,312 @@
+﻿
+=== free | Outside Hire ===
+  Widowmaker: Ah, if it isn't Maximilien's new pet.
+  Freja: What? Jealous he went with an outside hire for once?
+  Widowmaker: **laughs** Not at all. He only bothers me with important matters.
+
+=== free | Calling the Shots ===
+  Ramattra: You call my people "bots", yet you now take orders from one.
+  Freja: Max isn't my boss. I call the shots as much as he does.
+  Ramattra: Your self-importance is irksome, but impressively, your denial may be worse.
+
+=== free | Disappointing ===
+  Doomfist: You disappoint me, Ramattra. A tactician such as yourself should know the consequences of breaking alliances.
+  Ramattra: And a mastermind such as you must know to always anticipate betrayal.
+
+=== free | Why Withdraw ===
+  Sojourn: Null Sector has a foothold in so many cities... why withdraw your forces now?
+  Ramattra: Would you have preferred I destroy humanity?
+  Sojourn: The way you're consolidating your forces? I think you're still planning on it.
+  Ramattra: I seek *liberation,* not devastation. I leave such senseless conflict to your kind.
+
+=== free | Always my brother ===
+  Ramattra: Though we could not reach an accord here, Zenyatta, it still meant a great deal to see you again.
+  Zenyatta: Our roads may lead us apart, Ramattra, but you will always be my brother.
+
+=== free | Trust Sombra [OW1/Classic] ===
+  Widowmaker: I don't understand how you can trust Sombra.
+  Reaper: I don't. But Sombra has her uses, and I know what she's been up to.
+
+=== free | Leaving the Cage ===
+  Symmetra: What more do you know about Lum├⌐riCo and Vishkar?
+  Sombra: Ooh... is the little birdie finally leaving her cage?
+  Symmetra: Do not jump to conclusions.
+
+=== free | Enjoying Prison ===
+  Orisa: Efi visited her cousin recently. I will not forgive what Talon turned him into.
+  Doomfist: Ah, yes. How is Bisi enjoying prison?
+  Orisa: Ask... when I lock *you* up with him.
+
+=== free | Missing Genji ===
+  Sojourn: What's wrong, cowboy? You miss Genji that bad?
+  Cassidy: *(chuckle)* He ain't the only one. Got a lot of old friends out there I've been thinking about lately.
+  Sojourn: You're not trapped here, Cole. I know you'd be doing good wherever you end up.
+  Cassidy: That makes one of us. But... nice of you to say.
+
+=== free | Complicated ===
+  Cassidy: Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative?
+  Emre: I promise... it's more complicated than what you think.
+  Cassidy: Yeah. Awful convenient excuse, don't ya think?
+  Emre: I know where you've been since Blackwatch, Cass. You don't get to jodge.
+
+=== free | Funeral Arrangements ===
+  Vendetta: I hope you've made your funeral arrangements. You never know which fight will be your last.
+  Reaper: They won't take me down out there.
+  Vendetta: I should hope not. That honor is *mine.*
+
+=== free | Giving up on you ===
+  Mercy: I'm not giving up on you, Reyes.
+  Reaper: I wish you would.
+
+=== free | Talon's Resources ===
+  Doomfist: Has the child reconsidered my offer? She would thrive with Talon's resources.
+  Orisa: You stand for everything wrong in this world. Efi will never join you.
+  Doomfist: If she cannot comprehend the era that awaits us, then perhaps I have no use for her after all.
+
+=== free | Boss Changes ===
+  Mauga: I gotta say, I'm lovin' all the changes lately, boss! **chuckles** Doomfist was always on my back about 'exercising restraint', or whatever.
+  Vendetta: I don't care what you think, so long as you're ready to fight.
+  Mauga: **laughter** You don't gotta tell me twice!
+
+=== free | Money before Loyalty ===
+  Vendetta: You were surprisingly efficient in Grand Mesa. My empire would make good use of such talent.
+  Ashe: Deadlock Gang doesn't do charity work. You got an offer?
+  Vendetta: How unfortunate that you would put money before *loyalty.*
+  Ashe: Oh, loyalty's free for the folks I trust. For the rest, it's half up front
+
+=== free | Taking Action ===
+  Sombra: Not like I didn't warn the boss, but... hard to believe Vendetta's already starting a war.
+  Widowmaker: She may be extreme, but I cannot fault her for knowing where she stands.
+  Sombra: Are you kidding me? She blew up Overwatch.
+  Widowmaker: She took action. That is more than Doomfist can claim.
+
+=== free | Who is we ===
+  Reaper: We need to be careful. If Vendetta finds us, we're dead.
+  Sombra: Uh, who's 'we'? You're the one who killed her old man.
+  Reaper: If I go down, I'm taking you with me.
+
+=== free | Make it Count ===
+  Reaper: What are we waiting for? The more time we waste, the harder it'll be to put Vendetta down.
+  Doomfist: I will not approach this fight in overconfidence. We will have one chance, and we will make it count.
+
+=== free | Fighting for Vendetta ===
+  Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even for you.
+  Mauga: Aw, gimme some more credit. You know I only stick around when I'm getting something out of it.
+  Baptiste: **sigh** That's exactly what I'm worried about.
+
+=== free | Working with Vendetta ===
+  Freja: Feels worse than I thought it would, working with Vendetta...
+  Emre: Hold on. We can't both be haunted by our consciences now.
+  Freja: **laughs** You think you can stop me feeling guilty better than I can?
+  Emre: Of course not. But at least I can make you laugh.
+
+=== free | Show some respect ===
+  Junker Queen: This is my turf! You lot better show some respect.
+  Hazard: **disrespectful grunt**
+  Junker Queen: You got grubs in your ears? Bow down.
+  Hazard: Leave it, "Highness," or I'll show you some uncivil disobedience.
+
+=== free | Hope for more ===
+  Hazard: Heard you got into another scrap with the Hashimoto. The Y┼ìkai doin' alright?
+  Kiriko: We'll survive. We always do.
+  Hazard: Have to hope for more than that, though, aye?
+  Kiriko: Why do you think we keep fighting?
+
+=== free | Jack Morrison ===
+  Sojourn: So what exactly are you looking to learn about Jack Morrison?
+  Sierra: Honestly? Whatever you've got.
+
+=== USED ΓåÆ #39 Lost to the past | Painful Memories ===
+  Baptiste: Tell me, has anyone ever captured the heart of Commander Morrison?
+  Soldier 76: There was someone, once. But I havenΓÇÖt seen him in a long time.
+  Baptiste: Ah, sorry to bring up painful memories...
+  Soldier 76: These days, that's all I've got.
+
+=== USED ΓåÆ #224 La Lupa | Dramatic ===
+  Reaper: "The Wolf of Retribution." **scoffs** And people say *I'm* dramatic.
+  Vendetta: Don't test my fangs, "Gabriel Reyes." You'll end up bloody.
+
+=== free | Masked Vigilante ===
+  Orisa: Have you heard the reports? A masked vigilante has been running rampant in Cairo.
+  Ana: Well, let's hope they're swiftly dealt with.
+
+=== free | War machine ===
+  Vendetta: When Maximilien promised a war machine, an Overwatch castaway was not what I had in mind.
+  Emre: Didn't expect this winning smile, did you? **sigh** Max always undersells my looks.
+  Vendetta: He described you as lethal. Yet you speak too much, and move unpredictably.
+  Emre: **chuckle** I get that a lot, too.
+
+=== free | Prize Hunter ===
+  Vendetta: I see Maximilien's prized hunter is still watching over her quarry.
+  Freja: It looks that way.
+  Vendetta: Then I'll take your continued presence here as a sign of allegiance.
+  Emre: We're a package deal, V. If you want me, you put your trust in her.
+  Freja: Keep paying my price, and it's a sign of whatever you'd like.
+
+=== free | Gabrielito ===
+  Venture: Hey! ┬íQui├║bole, Gabrielito! How's it hangin'?
+  Reaper: What did you call me?
+  Venture: "Gabrielito"! That's your nickname, right?
+  Reaper: *(growl)* Sombra...
+
+=== free | Slow Phone ===
+  Reinhardt: Sombra, something is wrong with my phone. It is so slow!
+  Sombra: I'm not tech support, big guy.
+  Reinhardt: I know, I know. I'm just not very good with computers.
+  Sombra: **sigh** Have you tried turning it off and on?
+
+=== free | My Father's Opinion ===
+  Hanzo: I never asked my father his opinion of me. Now, he is beyond my reach.
+  Ana: I'm sure he was proud, even if he never said it.
+  Hanzo: How would you know?
+  Ana: Trust me. I know.
+
+=== free | Spoil the Surprise ===
+  Brigitte: If you don't mind me asking, what is your armor made of?
+  Echo: Your father has my blueprints. Why don't you see for yourself? I'd hate to spoil the surprise.
+
+=== free | Korrea's Strongest ===
+  Doomfist: How does one so young become Korea's strongest warrior?
+  D.va: I'm the best. That's all you need to know.
+  Doomfist: **laughter** Confidence! Let's hope it's not unfounded.
+
+=== free | Spiffing Up ===
+  Tracer: Think you could spiff up my chronal accelerator with hard light?
+  Symmetra: Potentially. Are you envisioning something in particular?
+  Tracer: How about... a falcon that flaps its wings when I run?
+  Tracer: Maybe... a plane that does a barrel roll when I dodge
+  Tracer: What about... a record that spins when I recall
+  Symmetra: That is doable. I will send you a quote
+
+=== free | Inefficient ===
+  Doomfist: A claw hand? Inefficient.
+  Torbj├╢rn: Well, we can't *all* have ultra-powerful gauntlets.
+  Doomfist: No. You cannot.
+
+=== free | What part of Canada ===
+  Sojourn: What part of Canada are you from?
+  Venture: Well, I was born in Nova Scotia. Then we moved to Nevada, then Buenos Aires, Reykjav├¡k, Mexico City, Singapore, back to Nevada... sorry, what was the 
+  Sojourn: Eh... don't worry about it.
+
+=== free | Stressful Situations ===
+  Echo: Thank you, Torbj├╢rn. I've learned much from observing you.
+  Torbj├╢rn: Well, I'm known to be an excellent teacher.
+  Echo: Yes, I believe I've grasped what not to do in stressful situations.
+  Torbj├╢rn: You shouldn't believe everything Mercy says, y'know.
+
+=== free | Don't need Saving ===
+  Ashe: You'd better do quick work in Grand Mesa. Your boss paid for a distraction, not a rescue.
+  Emre: I won't need saving, but you're the last person I'd call for help if I did.
+  Freja: You worry about your people. I'll worry about mine.
+
+=== free | Not Chasing ===
+  Brigitte: I don't understand, Your Excellency. Why aren't we chasing them?
+  Sigma: Let them think they've escaped. Soon they will know the full wrath of the Infinite Empire.
+
+=== free | Lack of Oxygen ===
+  Juno: **sigh** I feel faint. Terran air has so little oxygen.
+  Illari: Have you tried taking an altitude sickness pill?
+  Juno: **nervous chuckle** Those are a choking hazard...
+
+=== USED ΓåÆ #223 Fighting the System | New Chassis ===
+  Ramattra: I've heard you "Phreaks" modify my kind. Force us to hide, even among outcasts.
+  Hazard: Ravagers come to us for a fresh start. New chassis can go a long way.
+  Ramattra: Towards what? Assimilation? Subservience?
+  Hazard: Nah. That's more your deal, I'd wager.
+
+=== free | More Wires than Skin ===
+  Reaper: What the hell happened when you disappeared? You're more wires than skin now.
+  Emre: When's the last time *you* looked in a mirror, Reyes? You're not one to talk.
+
+=== free | Bastion on our side ===
+  Brigitte: Trust me, everyone. With Bastion on our side, this is going to go great!
+  Bastion: **sheepish beeps**
+  Hanzo: Hmph.
+  Junkrat: Who, the bot? *(chuckles)* I thought he was decorative!
+  Pharah: Just make sure you're shooting them, and not me, please.
+  Reaper: Looks like a pile of outdated junk to me.
+
+=== free | How can you live with yourself ===
+  Mei: Doomfist, how can you live with yourself? So many people have died because of you!
+  Doomfist: Yes, but many more have lived.
+  Mei: That makes no sense! Do you hear yourself? Ugh, you're the worst.
+
+=== free | Coward Run ===
+  Soldier 76: I heard you chased Doomfist out of Numbani.
+  Orisa: Making a coward run is no challenge.
+  Soldier 76: Hm, we could've used you in the old days.
+
+=== free | Favorite Animals ===
+  L├║cio: So, I'm tryna ask everybody this: what is your favorite animal?
+  Ana: The caracal.
+  Anran: Oh, the orchid mantis! Especially the pink ones!
+  Ashe: I'm partial to scorpions.
+  Baptiste: Hmm... tiger shark! Best kind of shark.
+  Bastion: **elephant beeping**
+
+=== free | Threat to myself and others ===
+  Emre: Vendetta's got you under lock and key, huh? You must have really set her off.
+  Sigma: She claimed I am "a threat to myself and others"... though I cannot recall why.
+  Emre: Yeah. I know the feeling.
+
+==== TARGETED CHATTER ====
+
+## Havana chatter
+free | Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+free | D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a trip to the beach after this. I won't te
+free | Emre ┬╖ | Havana ΓÇö You know, I always wanted to retire here.
+free | Freja ┬╖ Havana ΓÇö Funny. Emre always talked about retiring here.
+free | Mei ┬╖ Havana ΓÇö Weather report: a storm is rising!
+free | Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+free | Reinhardt ┬╖ Samoa ΓÇö Havana, Ilios and Para├¡so, and the daytime/sunny criterias are mistakenly not included and await a fix. ΓÇö Let's win quickly. I want to hit t
+free | Sigma ┬╖ Havana, Ilios, or Para├¡so ΓÇö Samoa is mistakenly excluded and awaits a fix ΓÇö These conditions are not optimal for experimentation. But they are optimal f
+
+## Singapore chatter
+
+## Zurich/Morrison/Reyes
+USED ΓåÆ #211 Questioning | Cassidy ┬╖ Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.
+free | Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö What's my name? Jack Morrison. Now, it's Soldier: 76. Yeah.
+free | Soldier 76 ┬╖ Route 66 ΓÇö Reyes should've cleaned up the Deadlock Gang a long time ago.
+
+## Glasgow
+
+## gauntlet
+USED ΓåÆ #302 The Museum Assault | Winston ┬╖ Numbani ΓÇö Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?
+
+## chronal
+
+## Venice
+USED ΓåÆ #210 The Venice Incident | Freja ┬╖ Rialto ΓÇö The Venice Incident was the beginning of the end for Overwatch. A shame...
+
+## Max
+free | Freja ┬╖ Circuit Royal ΓÇö Ugh, Maximilien's casino... You'd think with all that money, the bot could afford some taste.
+USED ΓåÆ #165 Pocket King | Winston ┬╖ Circuit Royal ΓÇö Maximilien's tastes are quite... extravagant.
+
+==== EXTRA NAME HITS ====
+    free | Fighting for Vendetta
+    USED ΓåÆ #171 Omnic Liberation | The Name Null Sector
+    free | Working with Vendetta
+    free | Enjoying Prison
+    free | Funeral Arrangements
+    free | Next Funeral
+    free | Winston!, Venture!
+    USED ΓåÆ #112 Kept in Chains | Rate the Prison
+    free | Anubis's Jailers
+    free | Jack Morrison
+OW1 USED ΓåÆ #190 Lost in Time; #206 Chronal Dissociation | Chronal Uncertainty
+OW1 free | Trust Sombra
+OW1 USED ΓåÆ #206 Chronal Dissociation | Chronal adjustments
+    free | Missing Genji
+node : (node:38272) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-af42bc99-92e7-4163-9c44-deaea80a2557.ps1:92 char:1
++ node scripts/_cache/scout-page24-detail.mjs 2>&1 | Out-File -Encoding ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:38272) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -32,7 +32,12 @@ import {
 } from './timelineFormParsing.js';
 import { cloneFilterPlaceRows, processFiltersAndFactions } from './formValueHelpers.js';
 import { buildVariantFromForm } from './buildVariantFromForm.js';
-import { normalizeCommentaryList } from '../../../interface-shared/storyEventCommentary.js';
+import {
+    normalizeCommentaryEntries,
+    serializeCommentaryEntries,
+} from '../../../interface-shared/storyEventCommentary.js';
+import { stampCommentaryTheaterIds } from '../../../interface-shared/storyEventCommentaryTheater.js';
+import { dialogueTheaterDataService } from '../../../../dialogue-theater/data/DialogueTheaterDataService.js?v=105';
 
 /**
  * @param {Object} formData See destructure below for shape.
@@ -120,7 +125,12 @@ export function createEventFromForm(formData, variantData = [], factions = []) {
             npcPlaces0 = [{ locationName: '', country: v0.npcs.join(', '), reasoning: '' }];
         }
 
-        const commentary0 = normalizeCommentaryList(v0?.commentary);
+        const commentary0 = serializeCommentaryEntries(
+            stampCommentaryTheaterIds(
+                normalizeCommentaryEntries(v0?.commentary),
+                dialogueTheaterDataService?.conversations || [],
+            ),
+        );
         event = {
             name: mainName,
             locationType,

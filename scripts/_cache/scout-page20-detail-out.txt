@@ -1,0 +1,138 @@
+﻿=== Cryostasis [free] ===
+  Mercy: Mei, you haven't aged a day. What's your secret?
+  Mei: Cryostasis. But I'm not sure if I'd recommend it.
+=== Cryogenic Freezing [free] ===
+  Moira: Dr. Zhou. I'm interested in your colleagues' research into the long term effects of cryogenic freezing.
+  Mei: Oh, well, yes, I'm sure, maybe... **bursts into tears**
+=== Cryogenic research [free] ===
+  Moira: I've read your report on cryogenically preserving severed appendages. I would be happy to assist in your research.
+  Mei: No thank you. I don't think our methodologies are very aligned.
+  Moira: Of course. I've heard you prefer working alone.
+  Moira: Come now, doctor. I was only hoping to lend a hand.
+=== Genetic Issues [free] ===
+  Mercy: Winston, are you experiencing any issues with your genetic therapy?
+  Winston: Other than a crippling addiction to peanut butter?
+=== Toshiro's forge [free] ===
+  Mizuki: I'm glad Toshiro-ojisan is safe now, but I wish we didn't have to blow up his forge.
+  Kiriko: He'll find a way to keep up his craft.
+  Mizuki: But that building held all his secrets.
+  Kiriko: No, he does. Isn't that why you guys bothered keeping him alive?
+=== Trust Sombra [free] ===
+  Widowmaker: I don't understand how you can trust Sombra.
+  Reaper: I don't. But Sombra has her uses, and I know what she's been up to.
+=== Fear the Reaper [free] ===
+  Baptiste: You know what they say: seasons don't fear the...
+  Reaper: Don't. Just don't.
+=== Grim Reaper [free] ===
+  Kiriko: Ajaraka mokuren tekerettsuno pa!
+  Mizuki: Um... Gesundheit?
+  Kiriko: I was trying to get rid of that grim Reaper for you, but... he's still here.
+  Reaper: *(annoyed grumble)*
+=== Hardlight Snowflakes [free] ===
+  Mei: Do you ever make snowflakes with your light?
+  Symmetra: Regularly. Their repetitive patterns bring peace to my mind.
+  Mei: Great! We can build a snow fortress!
+=== Count on Mei [free] ===
+  Winston: Can you look at my report later? Something seems off.
+  Mei: Winston, you know what I'm going to say to that.
+  Winston: **laughs** Of course. I know I "can always count on Mei"!
+=== Snow angels [free] ===
+  Mei: Look at all the snow! We should make snow angels!
+  Mercy: Why are you looking at me, Mei?
+=== Vishkar is using you [free] ===
+  L├║cio: Vishkar's using you, just like they used my father. You just wait. You'll see.
+  Symmetra: Your father was a Vishkar employee. He understood our company's vision. A shame he never educated you.
+=== Hashimoto calls [free] ===
+  Sombra: You'll never guess what I heard when I tapped the Hashimoto's calls.
+  Kiriko: I don't do guesses. What's your price?
+  Sombra: *(tongue click)* I have a feeling we're going to get along.
+
+==== Echo+Cassidy ====
+free Favorite Animals | L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? / Ana: The caracal. / Anran: Oh, the orchid mantis! Especially the pink ones! / Ashe: I'm partial to scorpions. / Baptiste: Hmm... tiger shark! Best kind of shark. / Bastion: **elephant beeping** / Brigitte: Ooh! Siberian tiger. / Cassidy: **groan** I can never remember the name! It's... half black, half whit / Cassidy: It's that... you know, pig thing. Like, the... fancy jungle pig. / Cassidy: What's that... jungle animal, with the funky snout? / D.va: Definitely the Zergling. / D.mon: Meerkats. Kinda remind me of the MEKA squad when they work together. / Doomfist: Whichever is strongest. I'm also fond of starlings... / Echo: My current favorite is triceratops. / Echo: My current favorite is a really big dog used to ward off bears. / Echo: My current favorite is the rhinoceros. / Echo: My current favorite is the tiger shark. / Echo: My current favorite is the dragonfly. / Echo: My current favorite is the penguin. / Echo: My current favorite is the Jack Russell Terrier. / Echo: My current favorite is the unicorn. / Emre:  / Freja: Hmm... I quite like stoats. / Genji: Yeah... triceratops. / Hanzo: The brave and beautiful koi. / Illari: Chu├▒o. My llama. / Jetpack Cat: **self-referential meow** / Junker Queen: Is there a kind of dingo, that is... also a shark? / Kiriko: Really? Take a guess. (her kitsune/fox) / Lifeweaver: The magnificent elkhorn coral. / Mauga: Hammerhead. That's the best shark, no question. / Mei: Ooh! I like penguins! / Mercy: Eichh├╢rnchen. That's German for "squirrel". / Mizuki: I think black cats are the best cats. / Moira: Scolopendra gigantea. (Scientific name for the Amazonian giant centipe / Orisa: Efi's favorite animal is the puppy. That is my favorite as well. / Pharah: I like... those really big dogs! The ones they use to ward off bears? / Ramattra: Ants. They build marvelous structures and cooperate when threatened. I / Reaper: Any animal will do... if you're hungry enough. / Reinhardt: I identify with the noble rhinoceros! / Roadhog: Pachimari. / Shion: I like killer whales very much. / Sierra: You ever heard of a pupfish? They've got no business being that cute! / Sigma: The tardigrade, of course! The most adorable phylum in the irradiated  / Sojourn: I don't... see why it's relevant, but... leopard seal. / Sombra: I love those deep sea animals. Like the bigfin squid?! / Symmetra: Dragonflies. Such perfect creatures. / Torbj├╢rn: Moose, of course. / Tracer: Cheetah. No, uh, lion! Oh, wait, uh... Gorilla? Oh, no, sorry, Winston / Venture: **gasp** I've always wanted to get eaten alive by scarabs! / Vendetta: La Lupa. For her strength, and her glory. / Widowmaker: The black widow. / Wrecking Ball:  / Winston: Hmm... humans, I suppose! / Wuyang: You ever see a stick bug? I think they're pretty neat. / Zarya: Rabbits. The huge ones. / Zenyatta: I envy ants for their clarity of purpose. / L├║cio: Uh... yeah, I can see it! / Domina: Aren't you going to ask about *my* favorite little creature? / L├║cio: Alright, fine. What's your favorite animal? / Domina: Oh, well, I find chinchillas absolutely adorable! And they make the so / L├║cio: **sigh** Yeah. I can see it... / Kiriko: So, DJ... what's your favorite animal? / L├║cio: Oh! Uh, well... I really like tree frogs! Heh, I didn't expect anyone  / Kiriko: Tree frogs? Yeah, I can see it! **chuckle**
+free Periodic Table | Winston: Anyone wanna hear my favorite joke about the periodic table? / Ana: No thank you. / Ashe: Can't say I do. / Baptiste: I'm guessing... No. / Cassidy: I'm still puzzling over the last one. / Doomfist: Ugh... I do *not*. / Echo: This is not, perhaps, the best time. / Genji: I do not. / Hanzo: No. / Junker Queen: Not unless you want that table broken over your head! / Pharah: No one wants that. / Reaper: *No*. / Sojourn: Uh, Winston, please. No. / Soldier 76: No! / Soldier 76: Nope. / Winston: Anyone want to hear my favorite joke about the periodic table? / Winston: **chuckles** / Brigitte: Na! / D.va: Na! **laughs** / Junkrat: I dunno. Will it make me go "He He"? Eh? / Mei: Na! / Mercy: N-A! / Moira: Na... / Reinhardt: Yes! But I can't promise I'll understand it!
+free Your Name | Echo: Cole Cassidy. Cole Cassidy. Cole Cassidy. / Cassidy: You called? / Echo: I just like saying your name. That's all.
+free Cowboy Hat | Echo: I think I can pull off a cowboy hat. / Cassidy: Want me to buy you one? / Echo: No need. I'll just borrow yours.
+free Are you leaving | Echo: You have been acting strangely since returning from Grand Mesa. / Cassidy: Yeah. An old friend I ran into. She uh gave me a lot to think about. / Echo: I see. Are you going to leave, Cassidy? / Cassidy: Let's save it for after this mission.
+
+==== Moira + Mercy/Reaper/76 ====
+free Favorite Animals | L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? / Ana: The caracal. / Anran: Oh, the orchid mantis! Especially the pink ones! / Ashe: I'm partial to scorpions. / Baptiste: Hmm... tiger shark! Best kind of shark. / Bastion: **elephant beeping** / Brigitte: Ooh! Siberian tiger. / Cassidy: **groan** I can never remember the name! It's... half black, half white, with a. / Cassidy: It's that... you know, pig thing. Like, the... fancy jungle pig. / Cassidy: What's that... jungle animal, with the funky snout? / D.va: Definitely the Zergling. / D.mon: Meerkats. Kinda remind me of the MEKA squad when they work together. / Doomfist: Whichever is strongest. I'm also fond of starlings... / Echo: My current favorite is triceratops. / Echo: My current favorite is a really big dog used to ward off bears. / Echo: My current favorite is the rhinoceros. / Echo: My current favorite is the tiger shark. / Echo: My current favorite is the dragonfly. / Echo: My current favorite is the penguin. / Echo: My current favorite is the Jack Russell Terrier. / Echo: My current favorite is the unicorn. / Emre:  / Freja: Hmm... I quite like stoats. / Genji: Yeah... triceratops. / Hanzo: The brave and beautiful koi. / Illari: Chu├▒o. My llama. / Jetpack Cat: **self-referential meow** / Junker Queen: Is there a kind of dingo, that is... also a shark? / Kiriko: Really? Take a guess. (her kitsune/fox) / Lifeweaver: The magnificent elkhorn coral. / Mauga: Hammerhead. That's the best shark, no question. / Mei: Ooh! I like penguins! / Mercy: Eichh├╢rnchen. That's German for "squirrel". / Mizuki: I think black cats are the best cats. / Moira: Scolopendra gigantea. (Scientific name for the Amazonian giant centipede) / Orisa: Efi's favorite animal is the puppy. That is my favorite as well. / Pharah: I like... those really big dogs! The ones they use to ward off bears? / Ramattra: Ants. They build marvelous structures and cooperate when threatened. I find them / Reaper: Any animal will do... if you're hungry enough. / Reinhardt: I identify with the noble rhinoceros! / Roadhog: Pachimari. / Shion: I like killer whales very much. / Sierra: You ever heard of a pupfish? They've got no business being that cute! / Sigma: The tardigrade, of course! The most adorable phylum in the irradiated vacuum of  / Sojourn: I don't... see why it's relevant, but... leopard seal. / Sombra: I love those deep sea animals. Like the bigfin squid?! / Symmetra: Dragonflies. Such perfect creatures. / Torbj├╢rn: Moose, of course. / Tracer: Cheetah. No, uh, lion! Oh, wait, uh... Gorilla? Oh, no, sorry, Winston... Umm... / Venture: **gasp** I've always wanted to get eaten alive by scarabs! / Vendetta: La Lupa. For her strength, and her glory. / Widowmaker: The black widow. / Wrecking Ball:  / Winston: Hmm... humans, I suppose! / Wuyang: You ever see a stick bug? I think they're pretty neat. / Zarya: Rabbits. The huge ones. / Zenyatta: I envy ants for their clarity of purpose. / L├║cio: Uh... yeah, I can see it! / Domina: Aren't you going to ask about *my* favorite little creature? / L├║cio: Alright, fine. What's your favorite animal? / Domina: Oh, well, I find chinchillas absolutely adorable! And they make the softest coat / L├║cio: **sigh** Yeah. I can see it... / Kiriko: So, DJ... what's your favorite animal? / L├║cio: Oh! Uh, well... I really like tree frogs! Heh, I didn't expect anyone to ask. / Kiriko: Tree frogs? Yeah, I can see it! **chuckle**
+free Periodic Table | Winston: Anyone wanna hear my favorite joke about the periodic table? / Ana: No thank you. / Ashe: Can't say I do. / Baptiste: I'm guessing... No. / Cassidy: I'm still puzzling over the last one. / Doomfist: Ugh... I do *not*. / Echo: This is not, perhaps, the best time. / Genji: I do not. / Hanzo: No. / Junker Queen: Not unless you want that table broken over your head! / Pharah: No one wants that. / Reaper: *No*. / Sojourn: Uh, Winston, please. No. / Soldier 76: No! / Soldier 76: Nope. / Winston: Anyone want to hear my favorite joke about the periodic table? / Winston: **chuckles** / Brigitte: Na! / D.va: Na! **laughs** / Junkrat: I dunno. Will it make me go "He He"? Eh? / Mei: Na! / Mercy: N-A! / Moira: Na... / Reinhardt: Yes! But I can't promise I'll understand it!
+free D├⌐j├á Vu | Moira: **sigh** What a nauseating bout of d├⌐j├á vu. / Cassidy: Yep. Working with you has always made me sick. / Reaper: Are you planning to whine the whole time... again? / Genji: **sigh**
+free Diagnose me | Hazard: Alright, doc... diagnose me. I dare ye! / Mercy: **sigh** Whatever your issue is, it seems quite clear I can't treat it. / Hazard: What makes you think I'm lookin' for a cure? / Moira: Sharp spine, dull wit, and chronic overconfidence. / Hazard: Pfft! Says the numpty with the nasty hand.
+free Waiting for Progress | Mercy: I'd rather wait a century for progress than cause the harm *you* have. / Moira: What a joy it must be, to feel entitled to patience.
+free Funding | Mercy: How are you funding your crimes against humanity these days? / Moira: My old friends, "innovation" and "imagination". A shame you've never met them.
+free Hippocratic Oath | Moira: How fares your research, Dr. Ziegler? Making much progress through all that "red / Mercy: It's called the Hippocratic Oath, doctor. Ring any bells?
+free Ignorance | Mercy: I've read about the genetic therapy they put you through. It sounds unpleasant. / Wrecking Ball: It was, but ignorance was worse. / Moira: Don't bother. Reason is lost on her.
+free Pain | Reaper: Is there *nothing* you can do for this pain? / Moira: Think of it as... fuel beneath the flames of your vengeance. / Reaper: **grumbles**
+free Flattery | Moira: Don't die on me, now. You're one of my finest experiments. / Reaper: Flattery will get you the grave.
+free Pulling the Trigger | Reaper: You *really* think Antonio's daughter won't take out everyone involved in the Ve / Moira: Only one man pulled the trigger that night. I'd be more concerned for *his* well
+free Making your Day Worse | Moira: Have you *truly* no better use of your time than helping a child destroy my scie / Soldier 76: If it makes your day worse, my schedule's *wide* open.
+free Unethical Work | Mercy: Describing your work as unethical would be a kindness. / Moira: But the true question is whether or not you can deny my discoveries... No. I did
+free Welcomed in Oasis | Moira: I know we have our differences, but your brilliant mind would be welcome amongst / Mercy: No thank you. You and your colleagues discredit the field of science. I want not
+free Stable Condition | Moira: Your condition seems relatively stable. / Reaper: No one's accused me of *that* in a long time.
+free Adapting Well | Moira: Your body seems to be adapting well to the changes, Gabriel. / Reaper: This is what you'd call "well".
+free Agony | Reaper: Why am I being subjected to this agony? / Moira: No need to thank me. I only saved your life.
+free Disgrace to Overwatch | Soldier 76: You were a disgrace to Overwatch. If I had known what Reyes had been planning, I / Moira: It seems to me that it was convenient for you not to look too closely into Gabri
+
+==== Mauga / Samoa ====
+D free Favorite Animals | Favorite Animals So, I'm tryna ask everybody this: what is your favorite animal? The caracal. Oh, the orchid mantis! Especially the pink one
+D free Different Company | Different Company How are you liking Samoa, Ana? It'd be better in different company. Oh, I see... you think we oughta ditch these other los
+D free Finding Anyone | Finding Anyone I hear you can find just about *anyone.* Mauga, *no.* Hey, I know you miss him too. We could have a little party! You're bad 
+C USED ΓåÆ #15 The Super Coral Reef Mauga ┬╖ Horizon Lunar Colony ΓÇö Hey, look. You could see the super coral from here.
+C free Mauga ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Ahh... more satisfying than a try.
+C free Mauga ┬╖ Samoa ΓÇö Missed that smell.
+C free Mauga ┬╖ Samoa ΓÇö My old stomping grounds!
+C free Mauga ┬╖ Samoa ΓÇö Ha ha! Not to brag, but I'm kind of a big thing around these parts.
+C free Mauga ┬╖ Final Blow ΓÇö This is home turf, bud!
+C free Mauga ┬╖ Team Kill ΓÇö Ou─ü! That's the island welcome! (Samoan) Whoo! That's the island welcome!
+
+==== Mei Antarctica ====
+C free Mei ┬╖ Antarctic Peninsula ΓÇö Remember, Mei. They wouldn't want you to be sad.
+C free Mei ┬╖ Antarctic Peninsula ΓÇö I heard someone climbed [https://en.wikipedia.org/wiki/Ulvetanna_Peak Ulvetanna] without ropes? Torres would hav
+C free Mei ┬╖ Havana ΓÇö Weather report: a storm is rising!
+C free Mei ┬╖ Blizzard World ΓÇö This place looks like so much fun!
+C free Mei ┬╖ Ecopoint: Antarctica ΓÇö I didn't think I would ever come back here.
+
+==== Kiriko grandma / Toshiro ====
+C free Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+C free Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest doubt
+C free Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+C free Illari ┬╖ Runasapi ΓÇö Everyone keeps asking me when I will return. But how can I, after everything that's happened?
+C free Illari ┬╖ Runasapi ΓÇö I hate being here. It feels like they're watching me.
+C free Illari ┬╖ Runasapi ΓÇö I wish I could be anywhere but here. (sigh) At least I can visit Chu├▒o.
+C free Illari ┬╖ Runasapi ΓÇö Let's just get this over with so we can leave.
+C free Illari ┬╖ Runasapi ΓÇö Why did it have to be here?
+C free Illari ┬╖ Runasapi ΓÇö Quechua ΓÇö Pampachaway.
+C free Kiriko ┬╖ Hanamura, Hanaoka or Neon Junction ΓÇö Watch over us, grandma. We'll send those Hashimoto packing.
+C free Kiriko ┬╖ Neon Junction ΓÇö Toshiro Yamagami... I will definitely rescue you.
+C free Mizuki ┬╖ Toshiro-ojisan mentioned he had a daughter blessed by the fox spirit. Could she be...?
+C free Mizuki ┬╖ Hanamura, Hanaoka or Neon Junction ΓÇö I thought I missed Toshiro-ojisan the first time I left him, but I miss him more now.
+C free Sierra ┬╖ Dorado or Runasapi ΓÇö Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.
+C free Sierra ┬╖ Nepal, Route 66 or Runasapi ΓÇö I'm still looking, Kendra Woods. I know you're out there somewhere.
+C free Soldier 76 ┬╖ Runasapi ΓÇö That Illari lives around here. I hope someone's checking up on her.
+C free Soldier 76 ┬╖ Runasapi ΓÇö Whatever those Oasis scientists were up to here, I'm glad the Illari put a stop to it.
+C free Torbj├╢rn ┬╖ Runasapi ΓÇö What a beautiful hydraulic pump! I've never seen one like it at this altitude.
+C free Tracer ┬╖ Esperan├ºa, Havana, Hollywood, Ilios, Rialto or Runasapi ΓÇö During Daytime with Sunny Weather ΓÇö What beautiful weather! Ooh, did I br
+C free Vendetta ┬╖ Colosseo or Rialto ΓÇö Italian ΓÇö Non cΓÇÖ├¿ casa migliore di questa.
+C USED ΓåÆ #201 Intrepit Adventurers Venture ┬╖ Eichenwalde, Runasapi, or Temple of Anubis ΓÇö Ilios and Throne of Anubis are mistakenly not included and await a fix. ΓÇö The world l
+C free Venture ┬╖ Runasapi ΓÇö Peruvian archaeology? My favorite!
+C free Venture ┬╖ Runasapi ΓÇö If I look reeeeally hard, I bet I can see the Nazca lines from here!
+C free Winston ┬╖ Circuit Royal ΓÇö That's home. That's us. On it, everyone you love, everyone you know, everyone you ever heard of, every human being
+C free Wrecking Ball ┬╖ Junkertown/Temple of Anubis/Oasis/Route 66 ΓÇö Analysing location: hot, dry, unpleasant; ideal for hamsters.
+C free Wuyang ┬╖ Runasapi ΓÇö Nepal and Shambali Monastery are mistakenly not included and await a fix. ΓÇö Nothing beats mountain air.
+C free Zenyatta ┬╖ This generic set-up chatter line is mistakenly restricted to Suravasa and awaits a fix. ΓÇö The birth of all ventures is the willin
+C free Zenyatta ┬╖ Nepal, Runasapi, Shambali Monastery or Watchpoint: Gibraltar ΓÇö There is little so renewing as a breath of mountain air. Or so I h
+C free Zenyatta ┬╖ Suravasa ΓÇö The Shambali have found a home here. We are grateful to have been accepted so warmly.
+node : (node:38568) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-2719c072-02d8-4b18-bf05-2191e938e31e.ps1:92 char:1
++ node scripts/_cache/scout-page20-detail.mjs 2>&1 | Out-File -Encoding ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:38568) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

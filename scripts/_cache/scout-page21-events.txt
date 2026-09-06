@@ -1,0 +1,150 @@
+﻿Used commentary: 197
+
+=== PAGE 21 (#201ΓÇô210) ===
+
+======================================================================
+#201 Intrepit Adventurers
+year 2068 null | The Golden Age | Nova Scotia, Canada
+EXISTING commentary: Venture ┬╖ Eichenwalde, Runasapi, or Temple of Anubis ΓÇö Ilios and Throne of Anubis are mistakenly not included and await a fix. ΓÇö The world lost a lot of history during the Omnic Crisis. But I know we'll recover everything we can!
+DESC:
+The Crisis left behind a broken world, and with it priceless history and icons of cultural value were lost. While many cities rebuilt themselves and archen back to the classical periods, it became all the more evident to many across the world how important it was to preserve history, what was left of it anyway. This is how the Wayfinder Society came to be, a group of archeologists and historians from around the globe, coming together to share resources and connections, all with the goal of preparing expeditions all over the world, to retrieve artifacts and find clues from the past to use in the present.
+
+Sloan Cameron had spent their life traveling with their family, getting to see all corners of the world and exploring their culture and history each time they arrived at a new place. This innate curiosity as well as a keen eye for finding unearthed trinkets drew them to the Wayfinders. At age sixteen, they began an apprenticeship with the group, and never looked back. Sloan would adopt the nickname "Venture" while operating in digsites, and as they joined expeditions through ancient ruins and dormant Omniums, their unfettered bravery and persistence in dangerous situations would make them stand out among many other Wayfinders. Sloan would often return from dig sites covered in dirt, bruises and local fauna, but always with a smile on their face, and it was this passion and dedication that allowed them to take increasingly dangerous and exciting expeditions with the Wayfinders.
+  [place] {"loc":"Nova Scotia, Canada","country":"Canada","why":"Sloan begins their apprenticeship with the Wayfinder Society"}
+  [hero] {"country":"Venture","why":"Begins apprentice ship in the Wayfinder Society"}
+  [faction] {"country":"Wayfinder Society,","why":"An international group of collaborating Archeologists"}
+
+======================================================================
+#202 Lunar Revolt
+year 2062 2068 | The Golden Age | Horizon Lunar Colony
+DESC:
+The Horizon Lunar Colony had stood strong for decades, it saw a changing world, survived the Crisis, and now was home to a generation of increasingly smarter Apes. The experiments pursued by the Horizon team, however, were extremely morally dubious in nature, and the animals themselves grew to resent their handlers for their actions. By this time, Dr. Chao, the head of the research, had returned to Earth, as long-term activity on the moon turned her bones feeble, unable to walk on land, or to get cybernetics, she had moved back to Lijiang Tower's administrative sectors, but the experiments continued without her, and the researchers soon would realize the price for crossing such ethical barriers.
+
+Communication with Horizon was lost abruptly and never restored. What little is known is that the Apes ead an uprising against the staff, killing every single scientist, and claiming control of the colony for themselves. Specimen 28, a gorilla who grew attached to his caretaker, Harold Winston, saw his world crumble apart as his peers killed his teacher. 28 took his mentor's name into his memory and did what he could to find a way to escape the rioting of the other Apes, not knowing somewhere in the Colony, his old friend Hammond was one step head of him.
+  [place] {"loc":"Horizon Lunar Colony","country":"Horizon Lunar Colony","why":"The apes rebel and kill Lucheng's staff"}
+  [hero] {"country":"Winston, Wrecking Ball,","why":"Look for ways to escape the colony"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Loses control of the Lunar Colony"}
+  [npc] {"country":"Chao,","why":"Left the Colony before the uprising"}
+  [npc] {"country":"Harold,","why":"Killed alongside the rest of the staff"}
+
+======================================================================
+#203 Leverage
+year 2068 null | The Golden Age | Akihabara, Japan
+DESC:
+While he was a hostage, Toshiro had not yet surrendered himself fully to the Hashimoto. The man would agree to their demands for Anima weapons to keep himself alive, but he purposely butchered his own work, producing dismal blades with unstable Anima fields, effectively declawing the wielders from the potential danger they could pose.  The clan took notice of the poor quality of his work, so Lady Shion decided to use her pupil as leverage. 
+
+Mizuki was still too young and weak to take part in criminal activities, but Shion believed that Toshiro might pick up the slack if the boy was endangered. With the life of a child on the line, Toshiro began to produce Animas of better quality, including a unique pair of pistols for Shion's personal use. Even if these powerful weapons paled in comparison with the mystifying Shimada Dragons or the Fox Spirit, at least in the eyes of the Elders, they measured up, and if they ever faltered, Shion could always threaten Mizuki again to make sure Toshiro cooperated.
+
+Mizuki kept Toshiro company, and in return, Toshiro's kindness was able to balance his harsh walk of life as he got older and began to take part in clan duties. But on the other hand, Shion's discipline was unforgiving. The Omnic would often seriously injure the boy during their training, in part to set an example for Toshiro, which eventually would get to a point where Mizuki's arm would be cut off. Mizuki was too naive and able to see good in people even when there was nothing but harm. Shion was cruel but also caring. She actively hurt him, but he could tell she wanted him to improve and get stronger. This messy relationship kept Mizuki willingly chained down by the Hashimoto for years, as he believed he had no other way to evade his curse.
+  [place] {"loc":"Akihabara, Japan","country":"Japan","why":"The Hashimoto use Mizuki to make Toshiro comply"}
+  [hero] {"country":"Mizuki,","why":"Held as leverage and trained under Lady Shion"}
+  [hero] {"country":"Shion,","why":"Uses Mizuki to force Toshiro to cooperate"}
+  [faction] {"country":"Hashimoto Clan","why":"Shion disciplines Mizuki to control Toshiro"}
+  [npc] {"country":"Toshiro","why":"Forced to improve his Anima weapons under threat to Mizuki"}
+
+======================================================================
+#204 Escape Pod
+year 2066 2068 | The Golden Age | Horizon Lunar Colony
+DESC:
+In the middle of the chaos, Winston was able to find a nearly finished, makeshift rocket in the base. After putting the finishing touches, he was able to launch the pod and escape to Earth. Little did he know that vessel was actually Hammond's, and he had worked on it for months hoping that they could escape together. Ingenious as always, Hammond was able to attach a spare capsule to Winston's vessel, and secretly hitched a ride when they blasted off. However, the cable broke when they entered the Atmosphere, and Hammond landed in a completely different spot than Winston, who had no idea his friend was following close.
+
+Winston's ship would be intercepted by Overwatch agents in Gibraltar. After making landfall, the team was surprised to find he could address them in perfect English, as he required urgent medical assistance and lost consciousness soon after. After recovery, Overwatch made controversial headlines with the recruitment of their first fully non-human member. Winston proved himself highly intelligent, strong and agile, and when he requested to join the organization, he himself presented a case for personhood in court, following the precedents set by the Omnic Rights movement. Winston's reception was mixed at the start due to the ethically questionable nature of his mere existence, but he quickly proved to be an invaluable ally for the organization, as well as one of the most charismatic faces of the Strike team, becoming the face of the "Overwatch Adventures" cartoon, and by far the most marketable agent with a line of pluses and toys of his own.
+  [place] {"loc":"Horizon Lunar Colony","country":"Horizon Lunar Colony","why":"Winston and Hammond escape the Colony"}
+  [place] {"loc":"Watchpoint: Gibraltar","country":"Gibraltar,","why":"Winstons makes landfall and is intercepted by Overwatch"}
+  [place] {"loc":"Australian Outback","country":"Australia,","why":"Hammond's pod detaches in the atmosphere, lands near Junkertown instead"}
+  [hero] {"country":"Winston,","why":"Escapes the lunar colony after finding makeshift rocket, joins Overwatch soon after"}
+  [hero] {"country":"Wrecking Ball,","why":"Hitches a ride following Winston but gets separated while entering the planet atmosphere"}
+  [faction] {"country":"Overwatch,","why":"Recruits Winston and helps with Personhood case"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Attempt to claim Winston as property"}
+
+======================================================================
+#205 Shrine Maiden
+year 2068 null | The Golden Age | Kanezaka, Japan
+DESC:
+Under the care of her grandmother, Kiriko would forge a close and lasting connection with the Fox Spirit, not just because of her Miko duties, but also through the Fox's anima that her father had created. Her grandma would often let Kiriko borrow the Anima ofuda as she taught her how to prepare her tools for Miko duties, and Kiriko quickly developed a strong sense of justice and empathy, using the anima's power to take on bullies and thugs, protecting those in need and healing them with her grandma's teachings.
+
+Kiriko would spend most of her adolescent years as her grandma's assistant, while her parents, separated by the clan, worked together to find a way to take them down. For years, Toshiro was able to maintain communication with Asa exclusively through letters, in which he fed his wife intel about Hashimoto's plans. For years, Kanezaka would suffer through injustice and exploitation at the hands of the new reigning clan, and Kiriko was not blind to the city's pain. Not just as the shrine maiden and a follower of Kanezaka's local deity, but also as a close pupil of the Shimada's teachings. While the old clan was unmistakably corrupt and their activies were as bad as the Hashimoto's, Sojiro's stories and values left a deep mark on Kiriko, arguably more than they ever did on his own children. She would grow up to be a strong, caring leader, and a fitting protector for the city, as she vowed to one day take on the Hashimoto, rescue her father, and restore peace to the region.
+  [place] {"loc":"Kanezaka, Japan","country":"Japan","why":"Kiriko becomes a Miko under her gradnma's care"}
+  [hero] {"country":"Kiriko","why":"Becomes a Shrine Maiden for the Fox Spirit"}
+  [faction] {"country":"Hashimoto","why":"On the look out for Toshiro's daugther"}
+  [npc] {"country":"Asa, Toshiro,","why":"Plotting agaisnt the Hashimoto"}
+  [npc] {"country":"Kamori-san,","why":"Teaches Kiriko about the Fox Spirit"}
+
+======================================================================
+#206 Chronal Dissociation
+year 2068 2069 | The Golden Age | Watchpoint: Gibraltar
+DESC:
+Overwatch generally saw Winston as a possible fresh start, an outsider who had no preconceptions about Omnics, and with an idealized vision of human culture and history. He never saw the world for what it was, he dared to see what it could be. Since he lacked the assumptions of what was or not possible, he was the perfect mind to tackle the Oxton case. Alongside Wexler's team, Winston studied Lena's Chronal disassociation condition and began work on a device that he called the Chronal anchor. This harness was intended to pull Oxton back into the normal flow of time, and keep her from blipping out again. However, when tested, the device was only capable of keeping Lena anchored in space, not time. Her body was no longer reappearing in entirely different places, but it still vanished from the time flow uncontrollably. Still, progress was still progress.
+
+During this testing, Winston realized that the matrix of the device was building up an unknown form of energy the longer Lena was kept anchored. Eventually, this buildup reaches a critical amount, causing Oxton's time fluctuations. After learning this, he scrapped the original design in favor of a new device called the Chronal Accelerator. This new iteration harnessed the mounting energy into a limited, controlled disassociation, essentially allowing Oxton to experience localized time travel at will. The device kept Lena anchored in time, and as energy built, she could use it to willingly blink or rewind back her own relationship with time and space, releasing the buildup without losing control. Oxton was stable and capable of living a somewhat normal life as long as she was in proximity to a Chronal Accelerator, but she realized that this gift of hers could be used to help Overwatch and the world. So, after being cleared from test runs, Lena began training to become part of the Strike team alongside Winston, who she grew to be close friends with. After all the time, he worked on a solution to her problem. Due to the trails of light left by the Chronal accelerator as she blinked through time, she would earn the call sign Tracer.
+  [place] {"loc":"Watchpoint: Gibraltar","country":"Gibraltar","why":"Winston designs a device capable of stabilizing Lena's Chronal disassociation"}
+  [hero] {"country":"Winston","why":"Invents  the chronal accelerator to save Lena Oxton"}
+  [hero] {"country":"Tracer,","why":"Joins the strike team after her condition stabilizes"}
+  [faction] {"country":"Overwatch,","why":"Recruit Lena into the strike team alongside Winston"}
+
+======================================================================
+#207 Champion
+year 2062 2068 | The Golden Age | Junkertown, Australia
+DESC:
+While Winston was intercepted by Overwatch and found a new home with the organization, Hammond's escape pod would take him to a far more hostile land. Crashing in the middle of the Australian Outback, Hammond used his ingenuity to survive the cruel wasteland. Scrapping debris and metal Omnics, he was able to modify the escape pod into a mobile unit for him to pilot around.
+
+He would eventually make his way into Junkertown and learn about their culture, growing fascinated by the Scrapyard Arena and seeing it as an opportunity to prove himself. Using his knowledge of physics, and available weaponry, his mech became a rolling ball of death, which he used to climb up the ranks of the city. Going by the name of Wrecking Ball, Hammond became a celebrity among Junkers, though his identity remained secret as no one ever saw him outside the mech. Soon enough, Wrecking Ball went from contender, to uncontested champion, becoming a close ally and confidant to the Junker Queen herself, the first person to learn of his true identity. 
+
+Hammond had found a happy, chaotic home among the Junkers and while he was still hurt by Winston abandoning him, he never really looked back now that he had his new life. On occasion, he would wonder out of the city to explore the wider world and acquire parts of his inventions, but of course, as the champion of the Scrapyard, he would always come back to defend his title.
+  [place] {"loc":"Junkertown, Australia","country":"Australia","why":"Wrecking ball becomes the Champion of the Scrapyard"}
+  [hero] {"country":"Wrecking Ball","why":"Builds a mech to battle Junkers"}
+  [hero] {"country":"Junker Queen,","why":"Becomes a close friend to Hammond"}
+  [faction] {"country":"Junker Monarchy,","why":"Wrecking Ball becomes celebrated among junkers"}
+
+======================================================================
+#208 The Oslo Attack
+year 2068 null | The Golden Age | Oslo, Norway
+DESC:
+One tragic night, the Oslo facility was rocket by multiple explosives. Cassidy was present but outside of the laboratory, as he had to attend a strategy meeting, so at the time Liao and Echo were alone inside of the building when the attack happened. The explosions knocked Cassidy away, but left him uninjured, as he rushed to the lab, he found Liao severely wounded, succubing to her injuries soon after, he sat with her while she died. 
+
+Liao would be buried with full honors as the attack was being investigated, her funeral was attended by Mondatta himself, and many other Shambali. Following her death, many monks entered a voluntary full year of silence, as an act of mourning. Liao lived a life trying to make up for a series of events out of her control, in Mondatta's own words during his speech, "She sought the universal truth, she sought to repay a debt not her own, which had never been hers to pay, but which weighed on her thoughs until the end. We can only pray she is now at peace". Cassidy did not attend the funeral, as he had turned his attention to hunt her killers
+
+In her absensce, Echo would be brought online in her unfinished state, to test her performance in field missions. While her AI continued to grow and evolve her capabilities and intelligence, Overwatch personnel feared that she could absorb the wrong input without adequate management, which limited her use within the organization.
+  [place] {"loc":"Oslo, Norway","country":"Norway","why":"Talon sneds a surprise attack to Overwatch"}
+  [hero] {"country":"Cassidy,","why":"Stays by Liao's side as she dies"}
+  [hero] {"country":"Echo,","why":"Send for missions following Liao's death"}
+  [hero] {"country":"Vendetta,","why":"Skeptical of Doomfist's strategy"}
+  [hero] {"country":"Doomfist,","why":"Ordered the Attack in Oslo"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":"Overwatch is Attacked by Talon"}
+  [faction] {"country":"Talon Empire,","why":"Attacks Overwatch's Oslo Tower"}
+  [faction] {"country":"Shambali Order,","why":"Mourned the lost of Mina Liao"}
+  [npc] {"country":"Antonio,","why":"Commanded the Attack in Oslo"}
+  [npc] {"country":"Liao,","why":"Died during the Oslo Attack"}
+  [npc] {"country":"Mondatta,","why":"Attended Liao's funeral and gave a speech"}
+
+======================================================================
+#209 Retribution
+year 2068 null | The Fall of Overwatch | Rome, Italy
+DESC:
+Overwatch intelligence found out that Talon was behind the Oslo attack, and marked the beginning of a year-long war raged by Doomfist himself. The man envisioned a world of conflict, and Overwatch's peacekeeping activities quickly proved to be the greatest obstacle to his crusade. The man who ordered the attack was Antonio Bartalotti, a known arms dealer from Rome and member of Doomfist's council. Overwatch had been interfering with his smuggling operations, and he took the insult with a show of force as soon as he had the chance under Akande.
+
+Reyes intercepted the report and gathered Blackwatch for an assembly. G├⌐rard began to set up a new facility in the heart of Rome. From there he would be able to direct the action, disrupting Talon's hold on the area, and eventually pursuing his arrest. Antonio saw this as a threat and responded by attacking the Rome base as well. He had an infiltrator plant a bomb in the building, killing fourteen agents and injuring many more, including Lacroix. Reyes and Cassidy were present during the attack and aided in the evacuation, and both of them grew frustrated by Talon's audacity. Doctor D. Rosenberg attended to G├⌐rard at the Swiss Headquarters, Reyes deciding to stay by his friend's side.
+
+Morrison had charged Reyes with managing the fallout after Oslo, but Antonio was borderline untouchable, due to his high amounts of influence with the Italian government, and even attempting their usual tactics to take him down nearly got G├⌐rard killed. Over the years, Gabriel had grown to despise the red tape surrounding Overwatch activity, and he had been able to work around them while keeping Morrison ignorant of his actions. As he prepared for his next move to counterattack, Reyes cared little about the consequences of his actions. He only had one thing in his mind; retribution.
+  [place] {"loc":"Rome, Italy","country":"Italy","why":"Talon attacks Overwatch facility in Rome"}
+  [hero] {"country":"Reaper, Cassidy","why":"Aided evacuation during the Rome attack"}
+  [hero] {"country":"Doomfist, Vendetta,","why":"Discuss the plan following the Rome attack, Marzia;s opinion is disregarded"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":"Pursue the Arrest of Antonio Bartalloti"}
+  [faction] {"country":"Talon Empire,","why":"Continues to attack Overwatch"}
+  [npc] {"country":"G├⌐rard,","why":"Was heavily injured during the attack"}
+  [npc] {"country":"Antonio,","why":"Bombed Blackwatch as a territorial threat"}
+
+======================================================================
+#210 The Venice Incident
+year 2068 null | The Fall of Overwatch | Venice, Italy
+DESC:
+Under his own authority, Reyes ordered a counterstrike of Blackwatch agents to infiltrate Antonio's palace by the Rialto, to apprehend him for questioning, despite lacking the proper clearances to do so. The team consisting of Cassidy, Genji, Moira and himself made their way through the Talon facility smoothly, until they found Bartalotti. 
+
+Antonio taunted Gabriel during their brief exchange, claiming that he would be released regardless and this would amount to nothing. It's unclear if this was his intention from the beginning, but in response to the mocking, Reyes shot Bartalotti at point-blank, his body flying out of the window.
+
+What followed was an all-out war in the city as Talon mobilized a massive force of troops to hunt out the strike team for the entire night. Blackwatch pilot, Carolyn Fio managed to evacuate the team but had been ordered not to identify the Italian forces. The drop-ship had not been cleared to enter Venice and displayed no markings. As the situation got tense, the Italian military gave them their final warning, and the team was forced to identify themselves as acting Overwatch agents.
+  [place] {"loc":"Venice, Italy","country":"Italy","why":"Gabriel Reyes kills Antonio Bartalotti during ilegal mission"}
+  [hero] {"country":"Reaper, Cassidy, Genji, Moira","why":"Infiltrated Talon's complex to apprehend Antonio, until the Mission went south"}
+  [faction] {"country":"Overwatch, Blackwatch","why":"Blackwatch is revealed to the world"}
+  [faction] {"country":"Talon Empire,","why":"Unleashes an army against Overwatch"}
+  [npc] {"country":"Antonio,","why":"Assassinated on the spot by Gabriel Reyes"}

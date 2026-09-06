@@ -1,0 +1,170 @@
+﻿
+#### summit
+D free  Siblings
+D free  Got each other
+D free  Going too Far
+D free  Looking Sharp
+D USED ΓåÆ #187 Cyber Ninja  Like a Brother
+D free  Still Grieving
+D free  Something from nothing
+C free Ana ┬╖ Let's use our superior range against them.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Hazard ┬╖ Aw, gotta work with these bootlickers?
+C free Junker Queen ┬╖ Ugh, both brothers on the same team? Better make up before I smash your heads together.
+C free Mercy ┬╖ Looks like I'm going to be in the air, so call if you need me on the ground.
+
+#### needy
+D USED ΓåÆ #146 Mother's Guidance  Your daugther
+D free  Still Hiding
+D free  Thank you Mother
+D free  Tugging Heartstrings
+D free  Money before Loyalty
+D USED ΓåÆ #258 Cycle of Violence  Right amount of stupid
+D free  Just your Type
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Baptiste ┬╖ Don't let my immortality field go to your head. It's temporary. You can still die.
+C free Baptiste ┬╖ I've done things I'm not proud of. Time to start making up for it.
+C free Baptiste ┬╖ Locked and loaded. Who's ready to get this done?
+C free Baptiste ┬╖ Make sure to give me an emergency contact. I'm sure we won't need it, but... just in case.
+C free Baptiste ┬╖ Remember, if you want me to heal you, stand very still. But also avoid their bullets.
+
+#### dragon
+D free  Favorite Animals
+D free  Handling Dancing
+D free  No Instrumental
+D USED ΓåÆ #153 Yearning  So Dramatic
+D USED ΓåÆ #255 Chivalry  What is left
+D free  Unstoppable
+D USED ΓåÆ #92 The Original Strike Team  Like the Glory Days
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Brigitte ┬╖ Don't be afraid to ask for help out there!
+C free Brigitte ┬╖ Here we go again. Shields up!
+C USED ΓåÆ #148 Sparkplug Brigitte ┬╖ It's like Reinhardt always says: the best solution to every problem is a very large hammer. It... makes more sense when he says it, I 
+C free Brigitte ┬╖ Stay close to me and I'll keep you safe.
+
+#### destroyer
+D free  Rubbed off Behavior
+D free  Lidnholm Spark
+D free  Stressful Situations
+D free  Back so Soon
+D free  Two Geniuses
+D free  Digging up Old problems
+D free  Poor cat
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Brigitte ┬╖ Nepal ΓÇö Shambali Monastery is mistakenly not included and awaits a fix. ΓÇö I'm surprised Torbj├╢rn's come around on omnics. Usually he d
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Junkrat ┬╖ Oh, Torbj├╢rn. I ought to kiss you atop your sweet little head!
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+C free Mercy ┬╖ It's even more important to stretch before missions as you age.
+
+#### squire
+D free  Mech Mechanic
+D free  Not getting any Taller
+D free  Medieval History
+D free  Just a phase
+D free  Mechanical or Human
+D free  Thinking Ahead
+D free  Bonuses
+C free Brigitte ┬╖ Here we go again. Shields up!
+C free Reinhardt ┬╖ Don't worry, my friends, I will be your shield!
+
+#### fox
+D free  Favorite Animals
+D free  Old Wounds
+D USED ΓåÆ #205 Shrine Maiden  Foxes Fight Back
+D free  Hashimoto Bounties
+D free  Her own Mistakes
+D free  Open her eyes
+D free  Resolving Differences
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+C free Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest doubt in m
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Hashimoto cla
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Hanzo ┬╖ You have my word, Kiriko. I will seek my redemption head on.
+C free Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+
+#### heard
+D free  Time to Relax
+D free  Favorite Animals
+D free  Resistance
+D USED ΓåÆ #269 Sonic Policing  Noisemaker
+D free  Karaoke
+D free  Listening to Tunes
+D free  Grown a lot
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Let's use our superior range against them.
+C free Ana ┬╖ Para├¡so ΓÇö When was my last trip to wikipedia:Copacabana, Rio de Janeiro? Mm, too long ago...
+C free Ashe ┬╖ Busan ΓÇö Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the skies are not 
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Domina ┬╖ Para├¡so ΓÇö Ugh, much work left to do here. How fortunate that I'm industrious!
+C free Domina ┬╖ Para├¡so ΓÇö eliminating L├║cio ΓÇö They'll idolize anyone these days...
+
+#### vigilante
+D USED ΓåÆ #248 Shrike  Masked Vigilante
+D free  Vigilante Route
+D USED ΓåÆ #39 Lost to the past  Painful Memories
+D free  Traditional Armaments
+D free  War isn't a game
+D USED ΓåÆ #90 Super Soldiers  Enhanced Soldiers
+D free  Vigilantes
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Mercy ┬╖ Everyone on this team can heal themselves. This should be easy!
+C free Mercy ┬╖ It's even more important to stretch before missions as you age.
+C free Pharah ┬╖ Finally, a unit that understands the importance of military discipline...
+C USED ΓåÆ #260 Anubis Escapes Pharah ┬╖ Temple of Anubis ΓÇö I lost many good soldiers here.
+C free Reinhardt ┬╖ Ana! Jack! My old friends! This is going to be delightful.
+
+#### star
+D free  Advance Technologies
+D free  Mech Mechanic
+D free  Pachimari Lore
+D free  In the Sky
+D USED ΓåÆ #213 Two Hearts  Never Competed
+D free  Burning the World Down
+D USED ΓåÆ #249 Top Player  Ranking Up
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+C free Ashe ┬╖ Busan ΓÇö Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the skies are not 
+C free Ashe ┬╖ Busan ΓÇö When I catch McCree - which I guarantee - y'all gonna see, how much he regrets crossin' me... (laughs)
+C free Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö No. I mean, I don't sing. Can I dance instead? Ah, ah, ah-ah, ah, ah, ah-ah-ah, ah, ba, ba, ah, ah... I'm getting it
+C free Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö If you need heals, there's no health stauncher than a blast from my biotic launcher. If they're firing too fast for 
+C free Baptiste ┬╖ Busan ΓÇö No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, I'm ge
+
+#### underground
+D free  Vintage Vinyl
+D free  Keeping in Touch
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my domain! Hmm... what's her 
+C free Roadhog ┬╖ More like Over-rated. (chuckle)
+C free Torbj├╢rn ┬╖ I thought I left Overwatch! But, here we are.
+C free Tracer ┬╖ Blinkity-blinkity! Tracer's here! Yeah!
+C free Widowmaker ┬╖ King's Row ΓÇö eliminating Tracer while airborne ΓÇö At least you took the bullet this time.
+D USED ΓåÆ #262 Neighborhood Hero OW1 Hit the Slopes
+D free OW1 Inspiration
+D free OW1 Come for the Holidays
+D free OW1 Holiday Plans
+D USED ΓåÆ #190 Lost in Time; #206 Chronal Dissociation OW1 Chronal Uncertainty
+node : (node:34512) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-3ca00d22-0984-4dff-86a4-dc6317270767.ps1:92 char:1
++ node scripts/_cache/scout-page28-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:34512) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

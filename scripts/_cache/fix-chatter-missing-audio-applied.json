@@ -1,0 +1,689 @@
+{
+  "apply": true,
+  "reassign": false,
+  "extractRoot": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice",
+  "copiedFromMatchTalk": 0,
+  "downloadedFromWiki": 113,
+  "reassigned": 0,
+  "stillMissing": [],
+  "actions": [
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Let's_do_it_again,_from_the_top.ogg",
+      "title": "File:Ana - Let's do it again, from the top.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Not_bad._Now,_let's_finish_this.ogg",
+      "title": "File:Ana - Not bad. Now, let's finish this.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_They_can_try_all_they_like._We_won't_falter.ogg",
+      "title": "File:Ana - They can try all they like. We won't falter.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_They're_going_to_throw_everything_they_have_at_us._But_it_won't_be_enough.ogg",
+      "title": "File:Ana - They're going to throw everything they have at us. But it won't be enough.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Hold_it_together._We_haven't_lost_yet.ogg",
+      "title": "File:Ana - Hold it together. We haven't lost yet.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Let's_get_it_together._We_are_not_losing_this.ogg",
+      "title": "File:Ana - Let's get it together. We are not losing this.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_We_can_still_turn_this_around._Everyone,_focus.ogg",
+      "title": "File:Ana - We can still turn this around. Everyone, focus.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_We're_getting_sloppy._Shape_up.ogg",
+      "title": "File:Ana - We're getting sloppy. Shape up.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Forget_what_happened_in_the_past,_we_just_have_to_win_here.ogg",
+      "title": "File:Ana - Forget what happened in the past, we just have to win here.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Last_chance._Let's_finish_this.ogg",
+      "title": "File:Ana - Last chance. Let's finish this.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_This_is_the_end._We_must_give_it_our_all.ogg",
+      "title": "File:Ana - This is the end. We must give it our all.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Win_here_and_our_jobs_are_done.ogg",
+      "title": "File:Ana - Win here and our jobs are done.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_go_out_on_my_terms.ogg",
+      "title": "File:Ana - I go out on my terms.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_still_have_some_fight_in_me.ogg",
+      "title": "File:Ana - I still have some fight in me.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_won't_give_in.ogg",
+      "title": "File:Ana - I won't give in.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I'm_not_finished.ogg",
+      "title": "File:Ana - I'm not finished.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_One_of_these_days_I'll_end_up_in_Fiji.ogg",
+      "title": "File:Ana - One of these days I'll end up in Fiji.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_This_is_not_the_end.ogg",
+      "title": "File:Ana - This is not the end.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You'll_have_to_try_harder_than_that.ogg",
+      "title": "File:Ana - You'll have to try harder than that.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_There_is_still_work_to_be_done.ogg",
+      "title": "File:Ana - (Arabic) There is still work to be done.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Age_and_beauty._I_have_you_on_both.ogg",
+      "title": "File:Ana - Age and beauty. I have you on both.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Enemy_down.ogg",
+      "title": "File:Ana - Enemy down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Experience_always_wins_in_the_end.ogg",
+      "title": "File:Ana - Experience always wins in the end.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Hostile_down.ogg",
+      "title": "File:Ana - Hostile down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I'm_no_easy_mark.ogg",
+      "title": "File:Ana - I'm no easy mark.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Justice_delivered_(1).ogg",
+      "title": "File:Ana - Justice delivered (1).ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Kill_confirmed.ogg",
+      "title": "File:Ana - Kill confirmed.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_No_wonder_I_can't_retire.ogg",
+      "title": "File:Ana - No wonder I can't retire.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Not_the_first._Not_the_last.ogg",
+      "title": "File:Ana - Not the first. Not the last.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Tango_down.ogg",
+      "title": "File:Ana - Tango down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_What's_one_more_kill.ogg",
+      "title": "File:Ana - What's one more kill.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_Another_one_falls.ogg",
+      "title": "File:Ana - (Arabic) Another one falls.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_Target_eliminated.ogg",
+      "title": "File:Ana - (Arabic) Target eliminated.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_You_can't_teach_an_old_dog_new_tricks.ogg",
+      "title": "File:Ana - (Arabic) You can't teach an old dog new tricks.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Don't_make_it_easy_for_me,_young_man.ogg",
+      "title": "File:Ana - Don't make it easy for me, young man.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_make_all_of_Reinhardt's_mistakes.ogg",
+      "title": "File:Ana - You make all of Reinhardt's mistakes.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Youth_is_wasted_on_the_young.ogg",
+      "title": "File:Ana - Youth is wasted on the young.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_can't_be_matched.ogg",
+      "title": "File:Ana - I can't be matched.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_used_to_be_better_than_this.ogg",
+      "title": "File:Ana - You used to be better than this.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Wasted_potential.ogg",
+      "title": "File:Ana - Wasted potential.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Make_better_choices,_child.ogg",
+      "title": "File:Ana - Make better choices, child.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_No_one_to_save_you,_Angela.ogg",
+      "title": "File:Ana - No one to save you, Angela.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I'm_disappointed,_Fareeha.ogg",
+      "title": "File:Ana - I'm disappointed, Fareeha.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_don't_even_know_you_anymore.ogg",
+      "title": "File:Ana - I don't even know you anymore.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I'll_make_it_up_to_you,_dear.ogg",
+      "title": "File:Ana - I'll make it up to you, dear.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Settle_down,_old_man.ogg",
+      "title": "File:Ana - Settle down, old man.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Is_that_enough_fun_for_you.ogg",
+      "title": "File:Ana - Is that enough fun for you.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_still_have_much_to_learn.ogg",
+      "title": "File:Ana - You still have much to learn.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_keep_my_secrets.ogg",
+      "title": "File:Ana - I keep my secrets.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Pipe_down.ogg",
+      "title": "File:Ana - Pipe down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Speed_isn't_everything.ogg",
+      "title": "File:Ana - Speed isn't everything.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_One_shot,_one_kill.ogg",
+      "title": "File:Ana - One shot, one kill.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_will_fear_me.ogg",
+      "title": "File:Ana - You will fear me.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Sorry,_Winston,_you're_a_big_target.ogg",
+      "title": "File:Ana - Sorry, Winston, you're a big target.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Long-range_takedown_confirmed.ogg",
+      "title": "File:Ana - Long-range takedown confirmed.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Not_even_my_longest_shot_this_week.ogg",
+      "title": "File:Ana - Not even my longest shot this week.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You're_grounded.ogg",
+      "title": "File:Ana - You're grounded.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Whoever_stole_my_technology_does_not_know_how_to_use_it.ogg",
+      "title": "File:Ana - Whoever stole my technology does not know how to use it.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_can't_use_my_tricks_against_me.ogg",
+      "title": "File:Ana - You can't use my tricks against me.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Wow,_that_really_is_helpful.ogg",
+      "title": "File:Ana - Wow, that really is helpful.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_of_all_people_should_know_how_to_stop_that.ogg",
+      "title": "File:Ana - I of all people should know how to stop that.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_What_did_I_teach_you_about_safe_barrages.ogg",
+      "title": "File:Ana - What did I teach you about safe barrages.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_We_all_saw_that_coming,_Gabriel.ogg",
+      "title": "File:Ana - We all saw that coming, Gabriel.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Remember,_Reinhardt..._when_you_charge,_your_shield_is_down.ogg",
+      "title": "File:Ana - Remember, Reinhardt... when you charge, your shield is down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_think_I've_never_fought_an_invisible_person_before.ogg",
+      "title": "File:Ana - You think I've never fought an invisible person before.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_No_hesitation_this_time.ogg",
+      "title": "File:Ana - No hesitation this time.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Happy_to_assist.ogg",
+      "title": "File:Ana - Happy to assist.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_grew_tired_of_fighting_alone.ogg",
+      "title": "File:Ana - I grew tired of fighting alone.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Making_an_old_woman_do_all_the_work.ogg",
+      "title": "File:Ana - Making an old woman do all the work.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Next_time,_say_please.ogg",
+      "title": "File:Ana - Next time, say please.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_just_needed_a_push.ogg",
+      "title": "File:Ana - You just needed a push.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You're_welcome_(2).ogg",
+      "title": "File:Ana - You're welcome (2).ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_No_shortage_of_work_to_do.ogg",
+      "title": "File:Ana - No shortage of work to do.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_They_never_learn.ogg",
+      "title": "File:Ana - They never learn.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_We_all_die,_eventually.ogg",
+      "title": "File:Ana - We all die, eventually.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Anyone_else.ogg",
+      "title": "File:Ana - Anyone else.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Underestimate_me_at_your_own_peril.ogg",
+      "title": "File:Ana - Underestimate me at your own peril.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You'll_need_more_than_that_to_bring_me_down.ogg",
+      "title": "File:Ana - You'll need more than that to bring me down.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Scorched-earth._Well_done.ogg",
+      "title": "File:Ana - Scorched-earth. Well done.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_keep_score.ogg",
+      "title": "File:Ana - I keep score.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_watch_over_you.ogg",
+      "title": "File:Ana - I watch over you.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_are_under_my_guard.ogg",
+      "title": "File:Ana - You are under my guard.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I'm_still_a_threat_up_close.ogg",
+      "title": "File:Ana - I'm still a threat up close.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You're_joking.ogg",
+      "title": "File:Ana - You're joking.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_Weak.ogg",
+      "title": "File:Ana - (Arabic) Weak.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_want_another_dance_so_badly.ogg",
+      "title": "File:Ana - You want another dance so badly.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Falling_is_easy._Getting_back_up_is_the_challenge.ogg",
+      "title": "File:Ana - Falling is easy. Getting back up is the challenge.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_like_to_confirm_my_kills..._but_this_is_more_fun.ogg",
+      "title": "File:Ana - I like to confirm my kills... but this is more fun.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_make_it_too_simple.ogg",
+      "title": "File:Ana - You make it too simple.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You're_no_longer_my_problem.ogg",
+      "title": "File:Ana - You're no longer my problem.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Enemy_turret_destroyed.ogg",
+      "title": "File:Ana - Enemy turret destroyed.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_Well_done.ogg",
+      "title": "File:Ana - (Arabic) Well done.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Hmph._Not_bad.ogg",
+      "title": "File:Ana - Hmph. Not bad.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_It's_good_to_have_backup_again.ogg",
+      "title": "File:Ana - It's good to have backup again.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Keep_that_up_and_maybe_I_will_retire.ogg",
+      "title": "File:Ana - Keep that up and maybe I will retire.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_That_was_quite_the_shot.ogg",
+      "title": "File:Ana - That was quite the shot.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Well_struck.ogg",
+      "title": "File:Ana - Well struck.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Ah,_you're_a_fast_learner.ogg",
+      "title": "File:Ana - Ah, you're a fast learner.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You're_good_company.ogg",
+      "title": "File:Ana - You're good company.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_(Arabic)_A_master's_hit.ogg",
+      "title": "File:Ana - (Arabic) A master's hit.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Trying_to_impress_me,_young_man.ogg",
+      "title": "File:Ana - Trying to impress me, young man.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Thank_goodness_someone_taught_you_to_shoot.ogg",
+      "title": "File:Ana - Thank goodness someone taught you to shoot.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Well_struck,_archer.ogg",
+      "title": "File:Ana - Well struck, archer.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Clever_like_the_fox.ogg",
+      "title": "File:Ana - Clever like the fox.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_I_knew_you_had_a_mean_streak,_Angela.ogg",
+      "title": "File:Ana - I knew you had a mean streak, Angela.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Like_mother,_like_daughter.ogg",
+      "title": "File:Ana - Like mother, like daughter.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_That's_my_daughter.ogg",
+      "title": "File:Ana - That's my daughter.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Don't_you_miss_watching_my_back,_Gabriel.ogg",
+      "title": "File:Ana - Don't you miss watching my back, Gabriel.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_My_knight_in_shining_armor.ogg",
+      "title": "File:Ana - My knight in shining armor.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Reinhardt,_you_haven't_lost_a_step.ogg",
+      "title": "File:Ana - Reinhardt, you haven't lost a step.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Clean_work_as_always,_Vivian.ogg",
+      "title": "File:Ana - Clean work as always, Vivian.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_Nice_shooting,_Jack.ogg",
+      "title": "File:Ana - Nice shooting, Jack.ogg"
+    },
+    {
+      "hero": "Ana",
+      "kind": "wiki-download",
+      "voice": "Ana_-_You_always_did_watch_my_back,_Torbjörn.ogg",
+      "title": "File:Ana - You always did watch my back, Torbjörn.ogg"
+    }
+  ]
+}

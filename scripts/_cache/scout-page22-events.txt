@@ -1,0 +1,152 @@
+﻿Used commentary: 216
+
+=== PAGE 22 (#211ΓÇô220) ===
+
+======================================================================
+#211 Questioning
+year 2068 null | The Fall of Overwatch | Zurich, Switzerland
+DESC:
+The Venice Incident leads to the world discovering Blackwatch, and with it, all the skeletons Overwatch were hiding in their closet. The UN called for hearings and requested information about prior operations by this unknown division, but Reyes delivered clearly redacted and incomplete reports. Reyes argued Antonio's connections to the government meant he would have never seen justice if Reyes had followed protocol, but the damage had been done. Morrison was ordered to put operations on a tighter leash, and slowly Blackwatch would become gutted in everything but name,
+
+This mission fractured Reyes' relationship with Morrison, and it would never recover, as Jack would often blame him to one degree or another for any trouble that followed. Cassidy too had become jaded by his mentor's actions and often wondered if he was really any better than a criminal. With Blackwatch getting scaled back, many agents were fired, due to being too much of a liability. Genji was allowed to stay, transferred into the Strike team for training before anyone could look at his background too closely, where he would begin to wear a mask to conceal his relationship with the Shimada.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"UN requests hearings about Blackwatch"}
+  [hero] {"country":"Soldier 76, Ana, Reaper,","why":"Heavily Question Reyes over his actions"}
+  [hero] {"country":"Mercy, Moira,","why":"Angela opposes to Moira moving into the medical staff, Moira gets laid off"}
+  [hero] {"country":"Genji, Cassidy,","why":"Absorbed into the main Strike team"}
+  [faction] {"country":"Overwatch,","why":"Absorbed Blackwatch personnel and fired liabilities"}
+  [faction] {"country":"Blackwatch,","why":"Essentially killed off following Venice"}
+  [npc] {"country":"G├⌐rard,","why":"Answers for Blackwatch activity following his recovery"}
+
+======================================================================
+#212 Stolen Future
+year 2068 null | The Fall of Overwatch | Rome, Italy
+DESC:
+Marzia had seen the death of her father. For years, they had clashed over how he managed the business, her believing that her input could help him make better decisions, but Antonio pushed her daughter away, wishing a different kind of life for her. Marzia was there when Doomfist came to discuss the plans following the Oslo and Rome bombings. She insisted on possible loose ends that could get them in trouble, but her opinion on the matter was disregarded by both her father and Akande.
+
+The death of her father pained her, but she understood it as a grave he had dug himself. It was what came after that truly reshaped the course of her life. Marzia saw her father's business, as well as his seat on the Talon council, as her rightful inheritance, so it came as a cruel joke of fate when Doomfist seized all of Antonio's assets, and gave the council seat to Augusto Vialli, a Venetian who worked under Antonio, and was expected to take his place in the company.
+
+Marzia was discarded without much thought, as Doomfist did not believe that anyone was owed a place at his table, it had to be earned. Thus, she was left with nothing, by the very same people who her father dedicated years of work for, the very same ones who ignored her insight, the ones whose actions got him killed. Abandoned and bitter, Marzia grew resentment towards Doomfist and his lackeys. She was not going to forget what they did, and if she had to climb her way back to the top in order to get her revenge, so be it.
+  [place] {"loc":"Rome, Italy","country":"Italy","why":""}
+  [hero] {"country":"Vendetta,","why":"Is left with nothing following the death of her father"}
+  [hero] {"country":"Doomfist","why":"Refuses to let Vendetta into Talon's Council"}
+  [faction] {"country":"Talon Empire,","why":"Siezes Bartalotti assets following Antonio's death"}
+  [npc] {"country":"Vialli,","why":"Takes over Antonio's position"}
+
+======================================================================
+#213 Two Hearts
+year 2068 2070 | The Fall of Overwatch | Apia, Samoa
+DESC:
+Mauga's father was the leader of the Samoan branch of the Deepsea Raiders, and from an early age, his cell took Mauga many of their incursions, installing on him a heavy disrespect for the law and a feeling of doing something meaningful by defying those who sought to destroy the beauty of their oceans,
+
+
+As their activities prolonged, the Polynesian Leagues began to send military troops to enforce order in their territorial waters, but the raiders did not hesitate to fight back. During a particularly intense battle against these troops, Mauga was critically wounded. He was half dead when they found him, and his heart in no condition for recovery, so the medics saw no choice but to implant a cybernetic heart, to assist his damaged systems. Mauga survived but was forever changed by this near-death experience. The first thing he did as he woke up from surgery was choke the doctor to death. He became a local legend when he returned to Samoa, known as the two-Heart Demon. Once back home, more upgrades and surgeries awaited him to keep up with his dying heart, which eventually gave out and was replaced with another cybernetic heart. 
+
+The machines pumping blood to his body at double the power allowed his body to increase in size massively with his metabolism, but it also made maintaining his enhancements harder. Mauga lived at the verge of death every day of his life, at the mercy of either heart possibly malfunctioning. His condition taught him a valuable lesson that defined his way of life going onward: live every day carefree, because it could be his last, and while this attitude made him out to be a careless brute to many, in reality his lack of worries just made it easier to barge in and open doors to new plans.
+  [place] {"loc":"Apia, Samoa","country":"Samoa","why":"Mauga nearly dies during a Deepsea Raider stand off"}
+  [hero] {"country":"Mauga,","why":"Nearly died during a Raid attack, changed forever by his two hearts"}
+  [faction] {"country":"Deepsea Raiders,","why":"Provided Mauga with cybernetic hearts to save his life"}
+
+======================================================================
+#214 Unshackled
+year 2068 2070 | The Fall of Overwatch | Oasis University, Iraq
+EXISTING commentary: Moira ┬╖ Oasis ΓÇö If only the world could see the wonders that science has built.
+DESC:
+While Genji and Cassidy were spared from the purge of Blackwatch personnel, Moira wasn't as lucky. Her reputation was a plague on Overwatch's brand, and most of the Scientific divisions had staff that had openly objected to her recruitment to begin with, before Reyes went behind their backs. Angela refused to absorb her into the medical staff, and so, Dr. O'Derain was dismissed, but it would soon become clear that her loyalty to Overwatch and their ideals would not last long, if she had any to begin with.
+
+As the controversy surrounding Moira's involvement in Venice, as well as the applied capabilities of her research, it peeked the interest of some unconventional backers. Talon saw potential in Moira's research, and she gladly worked for them under the shadows, so long as they funded her experiments, which Talon wished to utilize for their own nefarious purposes. As she worked for Talon in secret, she maintained appearances in the scientific community, controversial as usual. 
+
+Soon enough, she was invited to join a collective of scientists in the newly founded City of Oasis, a heavily advanced city where researchers could dedicate their minds to science restraints. Moira was installed as the head of the Ministry of Genetics, though her work is still unknown to the world at large. With Oasis's connections and resources, as well as Talon's funding and ways to get around the law, Moira has been freed from her shackles, and allowed to push the boundaries of her genetic research in pursuit of new breakthroughs.
+  [place] {"loc":"Oasis University, Iraq","country":"Iraq","why":"Oasis University to hire Moira as the head of the Ministry of Genetics"}
+  [hero] {"country":"Moira","why":"Leaves Blackwatch, Joins Talon and Oasis"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":"Fire Moira due to being too much of a liability"}
+  [faction] {"country":"Oasis Ministries, Talon Empire,","why":"Fund Moira's experiments following her leave in Overwatch"}
+
+======================================================================
+#215 Prodigy Child
+year 2060 2070 | The Fall of Overwatch | Runasapi, Peru
+DESC:
+The more time passed since the Crisis, the more the world moved away from the heavy militarization of the years prior. Volskaya industries began to face a heavy decline in Russia. The Crusaders, while still in use, were not actively seeing battle anymore. The Caribbean Coalition now focused on rebuilding and even then faced conflict with the governments of their nations, and most combat-oriented machinery and equipment ended up in the Roman Colosseo. With the ever present Overwatch taking the lead in global security and peacekeeping, most nations took a step back when it came to developing their own defensive technology.
+
+The Inti Warriors of Peru made for an intriguing exception to this trend, as there were many factors that allowed them to remain strong. For one. Solar threading was already heavily used in all of Runasapi, making the idea of enhancing your own body to be compatible with it very appealing. The Intis could now serve as providers and healers for their community, and much like the rest of the Paqarina research group, they have become synonymous with Runasapi culture.
+
+The unwavering presence of the Intis lead to continued enlisting of the locals, and over time one of the younger recruits began to stand out. Illari Quispe Ruiz had begun the demanding Inti training from an early age, and even back then her teachers saw immense potential in her, believing she could rise up to become the strongest warrior of her time. Illari took to this prodigy status proudly, dedicating most of her free time to extensive training and answering the desires of her community, so that one day she could finally live up to the legends she grew up around. Everyone in Runasapi was rooting for their young child of the sun, and as Illari grew older and stronger, it was clear she was meant to be the greatest of them all.
+  [place] {"loc":"Runasapi, Peru","country":"Peru","why":"Illari joins the Inti warriors and quickly rises up as a prodigy student"}
+  [hero] {"country":"Illari","why":"Begins her trainign to become an Inti warrior"}
+  [faction] {"country":"Inti Warriors","why":"Trains the new generation of Children of the Sun"}
+
+======================================================================
+#216 Uprising
+year 2068 2069 | The Fall of Overwatch | London, United Kingdom
+DESC:
+As the Turing Green project was progressing, it had grown to be quite controversial among the Omnic community. While most saw it as a true first step into integration, an opposition movement began to protest it as a token gesture, meant to absolve humanity from their actions by delivering the bare minimum. These tensions came to a boiling point when, all of a sudden, an army of Crisis-era war bots began to mobilize at Kings Row.
+
+Null Sector claimed to be behind the attack, declaring London as a sovereign Omnic State. In their advance, the machines killed hundreds of humans, displaced several more and took several Omnics oposing the takeover as hostages, including Mondatta himself. People all over the world feared this attack could be the beggining of an all out war between Omnics and Humans. The British Government had no intention of letting Overwatch in after the mess they made in Italy, but Reyes secretly sent Cassidy to do Recon ahead of a potential strike team deployment.
+
+27 days into the Uprising, Director Petras attempted to contact Morrison to no avail, as he was constantly put on hold. Jack suspected this was due to not wanting a repeat of a recent Cairo mission, where an Overwatch official was murdered. Petras most likely wanted to avoid the chaos of the humanitarian crisis, and the official investigation that ensued.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"Null Sector attacks London and claims it as an Omnic State"}
+  [place] {"loc":"Cairo, Egypt","country":"Egypt","why":"Overwatch official murdered recently, provoking investigation"}
+  [hero] {"country":"Ramattra,","why":"Commands the Null Sector attack"}
+  [hero] {"country":"Soldier 76, Ana,","why":"Attempt to negotiate an intervention with the Brittish Government"}
+  [hero] {"country":"Reaper, Cassidy,","why":"Reyes sends Cassidy for intel"}
+  [hero] {"country":"Tracer, Genji, Mercy, Winston,","why":"Training at the time of the Uprising"}
+  [faction] {"country":"Null Sector","why":"Launches a hostile takeover of London"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":"Send Cassidy ahead of a potential deployment"}
+  [npc] {"country":"Lanet, Nameless, Zera,","why":"Aid in commanding the Warboot troops"}
+  [npc] {"country":"Mondatta,","why":"Among the hostages of Null Sector"}
+
+======================================================================
+#217 Intervention
+year 2068 2069 | The Fall of Overwatch | London, United Kingdom
+DESC:
+Prior to her death, Laio had been very vocal about the situation in London, and knowing she would have wanted to help, Morrison did everything he could to intervene. In spite of the British Government's reservations, he dispatched a small team consisting of the cleanest public-facing agents they had, Torbj├╢rn, Reinhardt, Mercy and Tracer. Lindholm and Wilhelm had plenty of experience with the outdated war machines, and Oxton's unique abilities and familiarity as a local played a big role in the mission, allowing the team to rescue the hostages and repel the attack.
+
+After years of scandals and arguably their lowest point in Venice, Overwatch as an organization was at the verge of collapse, but their success in London reminded the world why they were considered heroes to begin with. For a brief period, the tarnished reputation of Overwatch seemed like it could recover, and the organization lost no time in taking advantage of this, by commencing a propaganda campaign to clean the face of the organization with their most recent victory, with Lena herself being the primary subject of this publicity. The uprising was actually Oxton's first official mission, yet she quickly proved to be a darling with the media, becoming essentially the public face of the strike team. But not even Tracer's charisma could save Overwatch from the incoming storm.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"Overwatch sends the strike team to stop the Null Sector Uprising"}
+  [hero] {"country":"Tracer, Mercy, Reinhardt, Torbj├╢rn,","why":""}
+  [faction] {"country":"Overwatch,","why":"Repels the attack sucessfully"}
+  [faction] {"country":"Null Sector,","why":"Retreats its remaining troops"}
+  [npc] {"country":"Lanet,","why":"Killed during the attack"}
+
+======================================================================
+#218 Resolve
+year 2069 2070 | The Fall of Overwatch | Secret Omnium
+DESC:
+Omnic support for null sector fell to an irrecoverable low after the uprising. The group had completely destroyed Turing Green during the attack and the project in which most Omnics placed their hopes for the future would never be picked up again. Perhaps most damning were the words of Mondatta, who labeled Null Sector as a terrorist group following his release.
+
+Not only had Ramattra lost pretty much all of his supporters, but his closest allies, those who he considered friends, turned against him. Lanet warned him the war bots were too outdated and not ready for deployment, yet his impatience ended up costing her life. Nameless argued they should rally support from other Omnics instead of relying on a mindless, careless army, but Ramattra's insistence on keeping Omnics away from the conflict only ended up alienating potential supporters. It became clear to the last few members of Null Sector that the Omnics did not want their liberation, or even if they did, they completely destroyed any chance of it ever happening. 
+
+For Ramattra, however, this loss only strengthened his resolve, as he proclaimed that they were going to free Omnics from this accepted submission, whether they wanted to or not. That any Omnics that opposed them were to be neutralized and held against their will until justice was served. In the heat of the argument, he told his friends that if they disagreed with his vision, they should leave. So they did. Null Sector went from a strong Omnic rights movement to a one-man crusade against the wishes of the very same people he claimed to represent, and in his solitude, Ramattra would only continue to spiral into radicalization.
+  [place] {"loc":"Secret Omnium","country":"Antarctica","why":"Null Sector support decimates following  the failed uprising"}
+  [hero] {"country":"Ramattra","why":"Is left as the last and only member of Null Sector"}
+  [faction] {"country":"Null Sector","why":"Supporters all over the world leave the momeent"}
+  [npc] {"country":"Zera, Nameless,","why":"Leave Null Sector after dispute with Ramattra"}
+
+======================================================================
+#219 Widowed
+year 2069 null | The Fall of Overwatch | Paris, France
+DESC:
+When G├⌐rard recovered from his injuries, he immediately turned his attention to investigating Talon's next movements. With Blackwatch on a leash, his resources were far more limited, but his Intel was able to stop several potential threats before things went wrong. Still, his gut told him Talon had some sort of mole on the is for given his familiarity with Blackwatch procedures, but he would not get to continue hunting ghosts for much longer.
+
+LaCroix became a high priority target for Talon to take out and, after multiple failed attempts, they would resort to something far more personal. Former prima ballerina Am├⌐lie Lacroix, G├⌐rard's wife, was kidnapped by Talon in the middle of the night, and while she was captive they subjected her to intensive neural reconditioning.
+
+G├⌐rard was horrified and focused all of his resources on finding his wife, while Morrison sent agents to guard the families of the rest of Blackwatch staff. In the end, Overwatch found Am├⌐lie months later, during a shockingly easy raid on a Talon base. Initial physical and psychological testing showed Am├⌐lie was unharmed and unchanged, but G├⌐rard feared that something was off, given how easy the rescue had been. Two weeks later, his concern proved correct when G├⌐rard was found dead in his own bedroom, killed in his sleep, and Am├⌐lie had gone missing once more. Overwatch never really rescued Am├⌐lie, they simply delivered a hunter to its prey. Lacroix's death was the final nail in the coffin for Blackwatch as a formal division, with Reyes choosing to continue his activities completely unreported, and Cassidy being sent out to do his bidding.
+  [place] {"loc":"Paris, France","country":"France","why":"G├⌐rard Lacroix is murdered in his sleep, presumably by his own wife"}
+  [hero] {"country":"Widowmaker","why":"Kills G├⌐rard after Talon reprogramming"}
+  [faction] {"country":"Blackwatch, Overwatch,","why":"Investigates Talon activity and possible moles"}
+  [faction] {"country":"Talon Empire,","why":"Kidnaps Am├⌐lie Lacroix"}
+  [npc] {"country":"G├⌐rard,","why":"Killed in his sleep"}
+
+======================================================================
+#220 Emotionless
+year 2069 null | The Fall of Overwatch | Oasis University, Iraq
+DESC:
+While official reports said Amelie had been taken by Talon. There was no real way of knowing what happened, they had no idea if she acted on her own, or if she was a victim. Amelie was hunted by both Overwatch and local police. However, that was not the biggest of her worries. She was haunted by the way killing her own husband made her feel. Amelie was often pretty apathetic and uninterested in many aspects of her life, but she still loved her husband, yet that moment when she killed him in cold blood was the most alive she had ever felt.
+
+Unclear if it was due to the lingering effects of the conditioning she underwent or pure euphoria from a manic episode, Amelie was fighting the urge to kill again. With little options left and intoxicated by bloodlust, Amelie ended up turning to Talon, chasing the thrill of a kill again in spite of how much it terrified her. She requested to be given training to become a marksman, and consented to participate in trials for Moira's experimental program. The genetic treatment altered Amelie's physiology to turn her into the perfect killer. Slowing down her heart, which turned her skin a pale blue color, and dulled her ability to feel human emotion. These drugs allowed Amelie to kill without remorse, and strengthened the release she felt when going for a kill.
+
+Under Talon, Amelie would go under the name of the Widowmaker, and quickly became one of their most effective assassins, turning every kill into a performance that captivated and devastated her audience, fully embracing her murderous cravings while suppressing the painful memories or her past with a heavy supply of drugs. She retreated to the abandoned Ch├óteau her family owned, where spiders became her only company. And under the alias of Danielle Guillard, she was able to live a quiet Life I'm between missions, even visiting G├⌐rard's grave on occasion, as the mixed feelings she got from his death were something Moira never managed to fully erase.
+  [place] {"loc":"Oasis University, Iraq","country":"Iraq","why":"Am├⌐lie turns to Talon willingly to become an assassin"}
+  [hero] {"country":"Widowmaker","why":"Gets trained and experimented on by Talon concentually"}
+  [hero] {"country":"Moira,","why":"Experiments on the Widowmaker, turning her skin blue and her heart rate slow"}
+  [faction] {"country":"Talon Empire,","why":"The Widowmaker becomes one of Talon's best assassins"}
+  [npc] {"country":"Vialli, Maximillien,","why":"Recurrently requested the Widowmaker for Assassination"}

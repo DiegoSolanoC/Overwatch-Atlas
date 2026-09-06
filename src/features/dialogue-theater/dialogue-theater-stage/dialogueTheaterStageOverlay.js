@@ -79,6 +79,11 @@ function isMobileTheaterLayout() {
     return window.innerWidth <= 768;
 }
 
+function isStoryDirectPlayStage(stage) {
+    return Boolean(stage?.dataset?.sceneUrlOverride)
+        || document.getElementById('eventImageOverlay')?.dataset.storyCommentaryDirectPlay === '1';
+}
+
 /**
  * @param {HTMLElement} box
  * @param {import('../data/DialogueTheaterDataService.js').DialogueLine|null} line
@@ -192,7 +197,8 @@ function setStageDialogue(stage, line) {
     const box = stage.querySelector('.dialogue-theater-stage__dialogue');
     if (!(box instanceof HTMLElement)) return;
 
-    if (isMobileTheaterLayout()) {
+    // Mobile theater moves dialogue into the info panel — but Direct Play has no panel.
+    if (isMobileTheaterLayout() && !isStoryDirectPlayStage(stage)) {
         box.hidden = true;
         return;
     }
@@ -200,12 +206,18 @@ function setStageDialogue(stage, line) {
     fillDialogueBox(box, line);
 }
 
-function ensureStageDom() {
+/**
+ * @param {{ keepEventImageSrc?: boolean }} [options]
+ */
+function ensureStageDom(options = {}) {
     const container = document.getElementById('eventImageContainer');
     const defaultImg = document.getElementById('eventImage');
     if (defaultImg) {
         defaultImg.style.display = 'none';
-        defaultImg.removeAttribute('src');
+        // Story Direct Play keeps the event image src so we can restore it after teardown.
+        if (!options.keepEventImageSrc) {
+            defaultImg.removeAttribute('src');
+        }
     }
     if (!container) return null;
 
@@ -375,10 +387,19 @@ function paintStage(stage, conversation, activeLineIndex = null) {
     const rendersMap = stageAssets?.renders || {};
     const lines = resolveActiveConversationLines(conversation);
     const sceneEl = stage.querySelector('.dialogue-theater-stage__scene');
+    const sceneUrlOverride = String(stage.dataset.sceneUrlOverride || '').trim();
     const scene = String(conversation?.scene || '').trim();
 
     if (sceneEl instanceof HTMLImageElement) {
-        if (scene) {
+        if (sceneUrlOverride) {
+            sceneEl.hidden = false;
+            if (sceneEl.getAttribute('src') !== sceneUrlOverride) {
+                sceneEl.src = sceneUrlOverride;
+            }
+            sceneEl.alt = conversation.name || 'Event';
+            sceneEl.style.opacity = '1';
+            sceneEl.classList.add('fade-in');
+        } else if (scene) {
             sceneEl.hidden = false;
             sceneEl.src = sceneImageUrl(scene);
             sceneEl.alt = conversation.name || 'Scene';
@@ -458,17 +479,21 @@ function openDialogueTheaterStageOverlay() {
     const eventSlide = document.getElementById('eventSlide');
     if (!overlay) return false;
 
-    overlay.style.display = 'flex';
-    overlay.style.opacity = '1';
-    overlay.classList.add('open', 'dialogue-theater-stage-overlay');
-    if (eventSlide?.classList.contains('open')) {
+    // Apply slide-open before making the overlay visible so the stage never paints
+    // full-bleed and then snaps beside the panel (characters jump).
+    const slideOpen = !!eventSlide?.classList.contains('open');
+    if (slideOpen) {
         overlay.classList.add('slide-open');
+        if (window.innerWidth <= 768) {
+            eventSlide.classList.remove('full-screen');
+        }
+    } else {
+        overlay.classList.remove('slide-open');
     }
 
-    /* Match story entries: split layout below the image strip, not full-screen sheet. */
-    if (window.innerWidth <= 768 && eventSlide?.classList.contains('open')) {
-        eventSlide.classList.remove('full-screen');
-    }
+    overlay.classList.add('open', 'dialogue-theater-stage-overlay');
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '1';
 
     return true;
 }
@@ -489,11 +514,71 @@ export async function showDialogueTheaterStage(conversation) {
     const stage = ensureStageDom();
     if (!stage || !openDialogueTheaterStageOverlay()) return;
 
+    delete stage.dataset.sceneUrlOverride;
+    const overlay = document.getElementById('eventImageOverlay');
+    if (overlay) delete overlay.dataset.storyCommentaryDirectPlay;
+
     paintStage(stage, conversation, null);
+}
+
+/**
+ * Story Commentary Direct Play: theater renders + subtitles over the event image.
+ * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @param {string} sceneUrl
+ */
+export async function showDialogueTheaterStageWithSceneUrl(conversation, sceneUrl) {
+    await ensureStageAssets();
+    const stage = ensureStageDom({ keepEventImageSrc: true });
+    if (!stage || !openDialogueTheaterStageOverlay()) return;
+
+    const url = String(sceneUrl || '').trim();
+    if (url) stage.dataset.sceneUrlOverride = url;
+    else delete stage.dataset.sceneUrlOverride;
+
+    const overlay = document.getElementById('eventImageOverlay');
+    if (overlay) overlay.dataset.storyCommentaryDirectPlay = '1';
+
+    paintStage(stage, conversation, null);
+}
+
+export function isStoryCommentaryDirectPlayActive() {
+    return document.getElementById('eventImageOverlay')?.dataset.storyCommentaryDirectPlay === '1';
+}
+
+/**
+ * Tear down Direct Play stage DOM and optionally restore #eventImage under an open overlay.
+ * Does not stop audio — callers should stop playback first when needed.
+ * @param {{ restoreEventImage?: boolean }} [options]
+ */
+export function endStoryCommentaryDirectPlayStage({ restoreEventImage = true } = {}) {
+    const overlay = document.getElementById('eventImageOverlay');
+    const wasDirect = overlay?.dataset.storyCommentaryDirectPlay === '1';
+    const stage = document.getElementById('dialogueTheaterStage');
+    const hadOverride = Boolean(stage?.dataset.sceneUrlOverride);
+    if (!wasDirect && !hadOverride) return;
+
+    stage?.remove();
+    overlay?.classList.remove('dialogue-theater-stage-overlay');
+    if (overlay) delete overlay.dataset.storyCommentaryDirectPlay;
+
+    const defaultImg = document.getElementById('eventImage');
+    const slide = window.standaloneEventSlide;
+    const imagePath = String(slide?.currentImagePath || '').trim();
+    if (
+        restoreEventImage
+        && defaultImg
+        && imagePath
+        && overlay?.classList.contains('open')
+    ) {
+        defaultImg.src = imagePath;
+        defaultImg.style.display = 'block';
+        defaultImg.style.opacity = '1';
+    }
 }
 
 export function hideDialogueTheaterStage() {
     const overlay = document.getElementById('eventImageOverlay');
+    if (overlay) delete overlay.dataset.storyCommentaryDirectPlay;
     overlay?.classList.remove('open', 'slide-open', 'dialogue-theater-stage-overlay');
     if (overlay) {
         overlay.style.display = 'none';

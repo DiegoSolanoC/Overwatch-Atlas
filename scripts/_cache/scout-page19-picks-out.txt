@@ -1,0 +1,355 @@
+﻿==== NAMED ====
+
+=== Keeping the Label [free] ===
+  Shion: *Echo-o-o-o! Echo-o-o-o-o-o-o!...* You aren't going to keep that label, are you?
+  Echo: I quite like my name. Dr. Liao chose it for me.
+  Shion: Exactly. She only saw you as her copy... and to the rest, you're just her faded memory.
+
+=== Meeting Aurora [USED ΓåÆ #48 Genesis] ===
+  Ramattra: It's a shame none of us have ever met Aurora, your predecessor.
+  Echo: I hear that often. **ahem** What would you have asked her?
+  Ramattra: The same thing I ask her every day. I wish she could answer.
+
+=== A Ravager [USED ΓåÆ #111 Prejudice] ===
+  Echo: You... are an R-7000 unit. The ones humans call... um...
+  Ramattra: Ravagers, yes. "Squad killers." And... ruder things.
+  Echo: Does it trouble you, being so feared and hated?
+  Ramattra: Once. Now, it gives me a warm little feeling inside.
+
+=== Inside an Orb [free] ===
+  Zenyatta: I have always wondered what it is like being inside an orb.
+  Wrecking Ball: He says, "don't even think about it."
+
+=== People Change [USED ΓåÆ #177 Storm Chaser] ===
+  Echo: Overwatch is back. Why not return to search and rescue?
+  Freja: Who says I want to go back?
+  Echo: But helping people was your purpose. You were among the best.
+  Freja: People change. I wouldn't expect a bot to understand.
+
+=== On the Wrong Path [free] ===
+  Mercy: You are on the wrong path, Freja.
+  Freja: If you say so, Doctor.
+  Mercy: You used to help people! What you're doing now, it's...
+  Freja: ItΓÇÖs enough for me. ThatΓÇÖs all there is to it.
+
+=== Care to listen [free] ===
+  Freja: Ah, Captain Amari. Enjoying the world Overwatch left behind?
+  Ana: You remind me of an old friend. Someone else who thinks he's owed something for his pain.
+  Freja: And what *sage advice* did you have for him?
+  Ana: What's worth saying, if neither of you care to listen?
+
+=== Useful [free] ===
+  Cassidy: You ain't the only one who tried bounty huntin' when Overwatch fell through.
+  Freja: Hm. You gave up quick.
+  Cassidy: Well, I realized that huntin' ain't always helpin'. Reckon you might feel the same, someday.
+  Freja: No one wanted my help. At least this way, I'm useful.
+
+=== Working Alone [free] ===
+  Emre: So... you work alone now?
+  Freja: Yeah. Been that way a while.
+  Emre: You did your best work on a team. This isn't like you, Frej.
+  Freja: A lot's changed, Emre. For both of us.
+
+=== Pretty Bad [free] ===
+  Emre: All that time not knowing where I was, and this is how you finally find me... I'm sorry, Frej.
+  Freja: It's all right. Could've been worse ways to find you.
+  Emre: Yeah, but... it's still pretty bad, right?
+  Freja: **soft chuckle** Definitely could've been better.
+
+=== Still Grieving [free] ===
+  Genji: I live, brother. Why are you still grieving?
+  Hanzo: You were not the only thing I lost.
+
+=== Something from nothing [free] ===
+  Hanzo: I have always been bound to my duty. Now, I have nothing.
+  Genji: There is always a way to make something from nothing, brother.
+
+=== Father's Bow [free] ===
+  Genji: You left the Shimada clan behind. Yet, you continue to wield father's bow.
+  Hanzo: Try as I might, I have found it to impossible to let go.
+  Genji: Of his expectations? Or his legacy?
+  Hanzo: Of hope that I may one day be worthy of returning home.
+
+=== Like my Brother [free] ===
+  Hanzo: You like my brother did in his youth.
+  Wuyang: Really? So was he handsome, charming. Funny!?
+  Hanzo: He wasted his time fooling around instead of learning responsability.
+  Wuyang: Oh. You act like my sister.
+
+=== Wasted Time [free] ===
+  Ramattra: My brother wasted too much of his life teaching you.
+  Genji: I agree.
+  Ramattra: *Really?*
+  Genji: Yes. And like you, I was undeserving of his patience.
+
+=== Always my brother [free] ===
+  Ramattra: Though we could not reach an accord here, Zenyatta, it still meant a great deal to see you again.
+  Zenyatta: Our roads may lead us apart, Ramattra, but you will always be my brother.
+
+=== The Name Null Sector [USED ΓåÆ #171 Omnic Liberation] ===
+  Echo: Why did you choose the name "Null Sector"?
+  Ramattra: Because we defy the numbers humans gave us. We are zeroes, undefined.
+  Echo: Is that not its own struggle?
+  Ramattra: Of course, I expect you know that better than anyone.
+
+=== Why Withdraw [free] ===
+  Sojourn: Null Sector has a foothold in so many cities... why withdraw your forces now?
+  Ramattra: Would you have preferred I destroy humanity?
+  Sojourn: The way you're consolidating your forces? I think you're still planning on it.
+  Ramattra: I seek *liberation,* not devastation. I leave such senseless conflict to your kind.
+
+=== Try Dying again [free] ===
+  Genji: It is strange to be here again.
+  Mercy: It's... different. Certainly not the Gibraltar I remember.
+  Genji: If you are missing old times, I could try almost dying again.
+  Mercy: **laugh** You make my job hard enough when you're not trying.
+
+=== Halloween Dress up [free] ===
+  Mercy: Now that Overwatch is back, I insist that you start dressing up for the Halloween parties.
+  Genji: What? I always dress up.
+  Mercy: You can't be 'cyborg ninja' every year.
+  Genji: How about... 'cyborg ninja in a hat'?
+
+=== In the Wrong hands [free] ===
+  Sigma: Self-propagating biomass? A deadly weapon in the wrong hands.
+  Lifeweaver: No need to fear. I won't sell my biolight to anyone.
+  Sigma: We never plan for our creations to escape our control.
+
+=== Cutting Hands [free] ===
+  Mercy: Biolight has such potential for medicine and agriculture!
+  Lifeweaver: Sadly, Vishkar agrees. They want their hands on it, and they're willing to cut mine off to get it.
+  Mercy: **sigh** Sounds about right.
+
+=== Science on my side [free] ===
+  Doomfist: You are bold to stand against Vishkar on your own.
+  Lifeweaver: I'm not alone. The scientific community is on my side!
+  Doomfist: It would be wise not to count on that for long.
+
+=== Leaving Vishkar [free] ===
+  L├║cio: You did the right thing leaving Vishkar behind. The rest of those drones ought to take notes.
+  Lifeweaver: Well, I'm sure it's not so simple for everyone.
+  L├║cio: Get real, man. You think walking away is harder than ruining people's lives?
+  Lifeweaver: At Vishkar? You'd be surprised.
+
+=== To Stagnate is to Die [free] ===
+  Doomfist: Why did the chicken cross the road?
+  Brigitte: Why?
+  Junkrat: Why?
+  Doomfist: Because to stagnate is to die. Never forget that.
+
+=== Family Business [USED ΓåÆ #6 Medical Miracles] ===
+  Ashe: Your parents ever pester you about goin' back to the family business?
+  Doomfist: They are supportive of my work, now that they have seen what I've become.
+  Ashe: How sweet of 'em.
+
+=== Looking Sharp [free] ===
+  L├║cio: Oh, looking sharp, Orisa! Efi get you some new tech?
+  Orisa: Yes. Defending Numbani has earned us the resources to greatly improve my systems.
+  L├║cio: Oh, too cool! Give her some props for me.
+
+=== Korrea's Strongest [free] ===
+  Doomfist: How does one so young become Korea's strongest warrior?
+  D.va: I'm the best. That's all you need to know.
+  Doomfist: **laughter** Confidence! Let's hope it's not unfounded.
+
+=== Blaming yourself [free] ===
+  Genji: Do not blame yourself for Mondatta's death. It was not your fault.
+  Tracer: You don't understand Genji, I could have saved him. Maybe the world would have been better off if it had been me instead of him.
+
+=== Happy to Kill [USED ΓåÆ #162 Risen in Blood] ===
+  Ana: I don't know why you're so happy to kill. I've never enjoyed it, even for the worst people.
+  Shion: Oh, always with the guilt and the regret. Don't you humans know how to have any fun?
+  Ana: How could we, with the likes of you around?
+
+=== Well Informed [free] ===
+  Hanzo: You Y┼ìkai are surprisingly well-informed about the Hashimoto clan.
+  Mizuki: Eh, that's all Sakura. Her intel's always spot on.
+
+=== Second Nature [free] ===
+  Hanzo: According to Kiriko, your instinct for countering the Hashimoto comes as second nature.
+  Mizuki: Aww, she's complimenting my behind my back? Wish she'd be that nice to my face...
+
+#### CHAT echo
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Duplicating dance moves! To the left, to the right! Mina Liao would be proud!
+C USED ΓåÆ #65 Answers Echo ┬╖ Nepal ΓÇö Shambali Monastery is currently omitted from this trigger and awaits a fix. ΓÇö Dr. Liao told me of her journey here.
+C free Echo ┬╖ Busan ΓÇö Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!
+C free Symmetra ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Hmm. Simple enough to replicate.
+C USED ΓåÆ #65 Answers Venture ┬╖ Nepal or Shambali Monastery ΓÇö This is where Aurora changed the world forever. I am gonna freak out!
+
+#### CHAT horizon
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Anran ┬╖ Horizon Lunar Colony ΓÇö You know, if all that water was fire, we'd probably be in trouble.
+C free Ashe ┬╖ Horizon Lunar Colony ΓÇö Looking through the telescope ΓÇö Looks nice and quiet from up here.
+C free Brigitte ┬╖ Horizon Lunar Colony ΓÇö looking through telescope ΓÇö It really makes you think.
+C free Cassidy ┬╖ Horizon Lunar Colony ΓÇö Really gives you a perspective on the world down there. What's it all about... Ah, I need a drink
+C free D.va ┬╖ Horizon Lunar Colony ΓÇö Well? They flew me to the moon!
+C free D.va ┬╖ Horizon Lunar Colony ΓÇö Wow... the view is amazing!
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö The development opportunities are endless.
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö Well, it certainly has potential.
+C free Echo ┬╖ Horizon Lunar Colony ΓÇö Space really puts the world in a new perspective.
+C free Echo ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö Breathtaking.
+C free Emre ┬╖ Horizon Lunar Colony ΓÇö Well... everything looks better from a distance.
+C free Freja ┬╖ Horizon Lunar Colony ΓÇö Doesn't get more remote than this. Huh, I wonder if I could afford a flat here...
+C free Hanzo ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö The concerns of my life seem so distant from up here.
+C free Hanzo ┬╖ Horizon Lunar Colony ΓÇö The concerns of my life seem so distant from here.
+C free Junker Queen ┬╖ Horizon Lunar Colony ΓÇö My entire realm in plain view.
+C free Junker Queen ┬╖ Junkertown ΓÇö while Winston is pushing the payload ΓÇö Is that a gorilla? With a lightning gun? In my city? Fantastic!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload alongside Junkrat and Roadhog ΓÇö Hammond! I told you to murd
+
+#### CHAT cursed
+C free Doomfist ┬╖ Curse me all you want. Without conflict, there is no future for humanity.
+C free Hanzo ┬╖ Fall upon them like a cursed rain
+C free Junkrat ┬╖ Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!
+C free Kiriko ┬╖ Hanamura or Hanaoka ΓÇö Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö Mizuki looked a little bl
+C free Mizuki ┬╖ Eh... we'll wrap this up quick.
+C free Mizuki ┬╖ I feel a little bad. We're about to ruin their day.
+C free Mizuki ┬╖ If you want my help, you'd better be dying.
+C free Mizuki ┬╖ Not that it matters to me, but... try not to hurt yourselves out there.
+C free Mizuki ┬╖ Toshiro-ojisan mentioned he had a daughter blessed by the fox spirit. Could she be...?
+C free Mizuki ┬╖ Okay. Let's trash 'em
+C free Mizuki ┬╖ Let's make them regret this
+C free Mizuki ┬╖ Time to get serious
+C free Mizuki ┬╖ Let's set up here
+C free Mizuki ┬╖ Set up here
+C free Mizuki ┬╖ I don't know if I deserve to be with Overwatch, but I'm never going back to my old life. Never.
+C free Mizuki ┬╖ Hanamura or Hanaoka ΓÇö After messing up the way he has, Kuroura's lucky the elders aren't local.
+C free Mizuki ┬╖ Hanamura or Hanaoka ΓÇö If only we'd moved here instead of Tokyo, things could have been different.
+C free Mizuki ┬╖ Hanamura or Hanaoka ΓÇö Nothing against the local pastry shop, but if Kiriko makes me eat one more donut, I'll yack.
+
+#### CHAT dragons
+C free D.va ┬╖ Hanamura ΓÇö Blizzard games? That's so old-school! [in arcade room]
+C free D.va ┬╖ Hanamura ΓÇö No one's beating my high scores.
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face th
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Genji ┬╖ Hanamura ΓÇö Fukushu ga hossuru nowa fukushu ni kogareta mono nomi
+C USED ΓåÆ #167 Sparrow Genji ┬╖ Hanamura ΓÇö Attack ΓÇö I passed many an hour of my misspent youth here.
+C free Genji ┬╖ Hanamura ΓÇö Ramen! (sigh) It's just not the same anymore.
+C free Genji ┬╖ Nepal ΓÇö referring to the sword found in his room ΓÇö Dragon's straight edge
+C free Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto c
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö
+C free Hanzo ┬╖ Hanamura ΓÇö All of this was to be mine.
+C free Hanzo ┬╖ Hanamura ΓÇö I will take back what is mine by birthright.
+C USED ΓåÆ #281 Old Dragons Hanzo ┬╖ Hanamura ΓÇö The master of the Shimada Clan has returned.
+C free Hanzo ┬╖ Hanamura ΓÇö This is the home of the Shimada Clan. My home.
+C free Hanzo ┬╖ Hanamura ΓÇö This was once my home. No longer.
+C free Hanzo ┬╖ Hanamura ΓÇö Multi-kill ΓÇö My enemies fall like... heh, cherry blossoms!
+C free Hanzo ┬╖ Hanamura ΓÇö On attack ΓÇö No time for games!
+
+#### CHAT sar
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Emre ┬╖ So, what's on the docket? Winning, I hope...
+C free Emre ┬╖ We'll give it all we've got, and hope that's enough.
+C free Emre ┬╖ We'll make it out alive. Maybe even in one piece.
+C free Emre ┬╖ I wasn't expecting a reunion...
+C free Emre ┬╖ Time to show them what weΓÇÖre made of
+C free Emre ┬╖ Watch each other's backs out there
+C free Emre ┬╖ We'll get this done
+C free Emre ┬╖ Just stick to the plan, and we're golden
+C free Emre ┬╖ Let's be more than they bargained for
+C free Emre ┬╖ They won't see us coming
+C free Emre ┬╖ Let's set up here
+C free Emre ┬╖ | Havana ΓÇö You know, I always wanted to retire here.
+C free Emre ┬╖ Horizon Lunar Colony ΓÇö Well... everything looks better from a distance.
+C free Emre ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Good shot, right?
+C free Emre ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Too easy.
+C free Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a fix. ΓÇö Over
+C free Emre ┬╖ | Watchpoint: Gibraltar ΓÇö Always figured I'd end up back here. Just... not like this.
+
+#### CHAT escalation
+C free Ramattra ┬╖ Now, you will see how war can be waged and won.
+C free Sojourn ┬╖ New Queen Street or Para├¡so ΓÇö Null Sector may have withdrawn, but I can't shake the feeling there's trouble ahead.
+C USED ΓåÆ #120 Australian Liberation Winston ┬╖ Hm, better keep an eye on the Omnium radiation levels.
+
+#### CHAT cyber
+C free D.va ┬╖ Oasis ΓÇö Seeing what happened after the war here gives me hope for the rebuilding of my country.
+C free Genji ┬╖ Junkertown ΓÇö I do not think cyborgs are welcome with open arms in Junkertown.
+C free Sojourn ┬╖ Ah, got a lot of cybernetics on this team, and no one to repair them... (sigh)
+C free Venture ┬╖ Whoa, ninjas! Are we doing like a stealth kinda thing? (whispers) I am all over it.
+
+#### CHAT biolight
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Domina ┬╖ Well, aren't we a competent collective?
+C free Hazard ┬╖ Yes! Now these punks I can ride with.
+C free Junker Queen ┬╖ Alright, ladies. Let's teach these boys a lesson! (laugh)
+C free Lifeweaver ┬╖ I wish violence never solved anything. It would make peace so much easier.
+C free Lifeweaver ┬╖ I've never been more ready for adventure!
+C free Lifeweaver ┬╖ Stay near, will you? I hate when people run off without me!
+C free Lifeweaver ┬╖ The suspense is terrible... I hope it'll last.
+C free Lifeweaver ┬╖ This should be fun.
+C free Lifeweaver ┬╖ Well, off to disappoint my mother again.
+C free Lifeweaver ┬╖ You look like a talented bunch. This should be quick!
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+C free Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wan
+C free Lifeweaver ┬╖ Stay close, Satya! I know how you like to get into trouble.
+C free Lifeweaver ┬╖ I love a fresh beginning. All that promise
+C free Lifeweaver ┬╖ Ready I am
+C free Lifeweaver ┬╖ Exciting times ahead. Everyone hydrated
+
+#### CHAT takeover
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Doomfist ┬╖ Curse me all you want. Without conflict, there is no future for humanity.
+C free Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Stay out of my way, it's time to start a war. Only through conflict do we evolve.
+C USED ΓåÆ #151 The Scourge of Numbani Doomfist ┬╖ Numbani ΓÇö If only you could see me now, Akinjide Adeyemi.
+C free Moira ┬╖ The world evolves, and so must we with it.
+C free Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+C free Winston ┬╖ Talon? How dare you show your faces!... Though, perhaps we should finish the mission before we get into that.
+C USED ΓåÆ #302 The Museum Assault Winston ┬╖ Numbani ΓÇö Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?
+C free Zenyatta ┬╖ In times of conflict, one must seek balance.
+
+#### CHAT tracer
+C free Ana ┬╖ Keep in sight. I'll have us in and out in no time.
+C free Anran ┬╖ I'll get up no matter how many times they knock me down.
+C free Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+C free Ashe ┬╖ Better get paid after all this. I don't like havin' my time wasted.
+C free Ashe ┬╖ Time to get this rolling
+C free Ashe ┬╖ My servant says it's time to go
+C free Ashe ┬╖ It's our time! Follow your empress to victory
+C free Baptiste ┬╖ I've done things I'm not proud of. Time to start making up for it.
+C free Baptiste ┬╖ Any Map at Nighttime ΓÇö Ooh, a night mission. Brings back memories.
+C free Baptiste ┬╖ Any Map at Nighttime ΓÇö respawn ΓÇö Eh, the night is young.
+C free Baptiste ┬╖ Any Map with Rainy Weather ΓÇö final blow ΓÇö First time fighting in the rain?
+C free Brigitte ┬╖ Blizzard World ΓÇö Do we have time to go on some rides? Flight to Duskwood is my favourite!
+C free Brigitte ┬╖ Nepal ΓÇö Don't think we will be taking a family vacation here anytime soon. Papa might have a breakdown...
+C free Cassidy ┬╖ Any last words, now would be the time to say 'em
+C free D.va ┬╖ My time to shine!
+C free Domina ┬╖ Let's tend to this quickly, shall we? Wasted time is not among the luxuries I can afford.
+C free Doomfist ┬╖ It's time. Prove yourselves
+C free Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Stay out of my way, it's time to start a war. Only through conflict do we evolve.
+
+==== DIALOGUE NAME HITS ====
+D free To Stagnate is to Die
+D USED ΓåÆ #48 Genesis Meeting Aurora
+D free Peanut Butter
+D free Like a Brother
+D free Try Dying again
+D free Sleeping Dragon
+D free Like my Brother
+D free Biolight Vegetbles
+D free Developing Orbs
+D free Inside an Orb
+D free Cursed Boy
+D free Torbj├╢rn harboring Efi
+D free Always my brother
+D free Cursed artifacts
+D free Mina Liao
+D free Swatting Orbs
+D free Summon a Dragon
+D free Chronal Uncertainty
+D free Chronal adjustments
+D free Hammond?
+D free Dragons available
+node : (node:14320) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-d2a8535f-28a1-4659-bddb-2a3287cd1973.ps1:92 char:1
++ node scripts/_cache/scout-page19-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:14320) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

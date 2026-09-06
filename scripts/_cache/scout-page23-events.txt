@@ -1,0 +1,145 @@
+﻿Used commentary: 233
+
+=== PAGE 23 (#221ΓÇô230) ===
+
+======================================================================
+#221 Failure at Sea
+year 2068 2069 | The Fall of Overwatch | Apia, Samoa
+DESC:
+The conflict between the Deepsea Raiders and the Polynesian League had become a drawn-out stalemate, and once local enforcement proved insufficient, Morrison decided to intervene and dispatch multiple teams to aid against the terrorists. What was meant to be another unilateral victory for Overwatch by aiding local forces against a radical group like in London instead turned out to be an international scandal due to a sequence of failed missions during the campaign.
+
+For one, the strike team had historically struggled in Maritime battles, which gave the Raiders an advantage amidst the chaos, but even on the land-based missions,  Overwatch struggled to keep up, with one strike near the Black Sands of Tahiti resulting in the loss of a pair of chain guns at the hands of the Raiders. The biggest scandal followed after an attack in Samoa. Search and Rescue was meant to evacuate the city where the Raiders were hiding, but Reyes pulled in his troops before the evacuation efforts were done. 14 civilians died because of his impatience, and had it not been for Freja and Emre, many more might have also perished.
+
+The controversy got so bad that it ended with every country in the Polynesian League leaving the United Nations, as well as the full nationalization of Ecopoint: Samoa. Overwatch was locked out of the region and The Raiders remained active and now effectively uncontested. Their incompetence soured the view many of their best agents and scientists had of the organization, resulting in several resignations.
+  [place] {"loc":"Apia, Samoa","country":"Samoa","why":"Reyes commands an attack while evacuation is still ongoing"}
+  [place] {"loc":"Tahiti, French Polynesia","country":"French Polynesia,","why":"The Deepsea Raiders steal a pair of Chainguns from Overwatch"}
+  [hero] {"country":"Freja, Emre,","why":"In charge of evacuation in Samoa"}
+  [hero] {"country":"Sojourn, Reaper,","why":"Commanded failed attacks on the Deepsea Raiders"}
+  [hero] {"country":"Mauga,","why":"Stole a pair of Chainguns from Overwatch near Tahiti"}
+  [faction] {"country":"Overwatch, Search & Rescue,","why":"Overwatch consistently fails to stop the Raiders"}
+  [faction] {"country":"Ecopoints, Pacific Energy Solutions,","why":"The Polynesian Leage takes control of Ecopoint: Samoa"}
+  [faction] {"country":"Deepsea Raiders,","why":"Give Overwatch trouble at sea"}
+
+======================================================================
+#222 Forced Retirement
+year 2069 2070 | The Fall of Overwatch | Asuncion, Paraguay
+DESC:
+Reinhardt was well into his fifties by now, but his enthusiasm for battle was as young as always. Over the years, he had been offered promotions and out-of-combat positions, but he had always refused, choosing to stay as an active part of the strike team alongside the younger agents.
+
+During a Global Security Summit in Asunci├│n, Paraguay,a terrorist known as the Hivemind attacked, using unique drone technology to lock herself in with proprietary security data, using fifty high-profile hostages as leverage. Reinhardt was dispatched to command the rescue, and had been ordered to hold still while negotiations took place. The situation, however, escalated when Hivemind began to dispose of the hostages. Wilhelm realized that if he didn't act now, more lives would be lost, so he defied direct orders to save the remaining hostages.
+
+In the end, 47 lives were saved, but Hivemind escaped with the data. While many saw his actions as heroic, many nations requested compensation for the stolen data, and Overwatch ended up in a massive scandal. To avoid further controversy. Morrison made the hard choice to force Reinhardt into retirement. Wildhelm was confused and cited his success in Asunci├│n and King's Row as a reason why he should stay, but Vivian and Morrison continued to explain to argue that Overwatch could no longer act with the freedom they used to, and his disobedience had consequences. In the end, Reinhardt had no choice but to leave, and while he spent some time in Germany, he would soon move to Gothenburg to spend time with his God children.
+  [place] {"loc":"Asuncion, Paraguay","country":"Paraguay","why":"Reinhardt disobeys orders during terrorist attack"}
+  [place] {"loc":"Gothenburg, Sweden","country":"Sweden,","why":"Reinhardt moves to Gothenburg following his retirement"}
+  [hero] {"country":"Reinhardt,","why":"Forced into retirement for disobeying orders"}
+  [hero] {"country":"Soldier 76, Sojourn,","why":"Argue with Reinhardt over their decision"}
+  [hero] {"country":"Brigitte,","why":"Bitter about Overwatch's choice to leave Reinhardt out"}
+  [faction] {"country":"Overwatch","why":"Caught in controversy for failure to stop Hivemind"}
+  [npc] {"country":"Ingrid,","why":"Welcomes Reinhardt home with his god children"}
+
+======================================================================
+#223 Fighting the System
+year 2068 2070 | The Fall of Overwatch | Paris, France
+DESC:
+This period of history was marked by an epidemic of social injustice across the world. From the list of Turning Green in Kings Row, to the resurgence of criminal groups like Deadlock, The Deepsea Raiders, Los Muertos, the Hashimoto and especially Talon, now that Overwatch has been kept on a tighter leash. Overwatch itself has endured a long streak of failures and controversies, making many people lose faith in not just them, but the establishment as a whole.
+
+Under these circumstances, a counterculture movement began to rise in popularity across many places in the world: The Phreaks. Primarily formed by self-proclaimed anarchists and often equipped with illegal body modifications. They rose in popularity amongst protestors for Omnic rights, with many Omnics taking shelter with the group and seeking modifications, looking for a fresh start. While the movement was championed by many as the protector of the oppressed and downtrodden, many of the cells quickly grew radicalized and took their fight against the status quo to a more disruptive, violent level.
+  [place] {"loc":"Paris, France","country":"France","why":"The Phreaks begin to spread across the world"}
+  [faction] {"country":"Phreaks","why":"An anti stablishment movement quickly turning into anarchist rioters"}
+
+======================================================================
+#224 La Lupa
+year 2068 2070 | The Fall of Overwatch | Colosseo, Italy
+DESC:
+Marzia grew tired of being pushed aside and swore to prove her own worth, and one day reclaim what Talon took from her. Lucky for her, Rome was the right place for those looking to climb their way to the top, as the Colosseo opened the doors to fame and fortune to any daring enough to participate in the Gladiator games.
+
+Marzia joined the ranks under the title of Vendetta, and while many underestimated her at first, she would conquer any challenge the Colosseo threw at her. She became known as the Wolf of Retribution for the tactic of choice, often letting her opponents have fun, thinking they had a chance, only to hit them twice as hard when she enacted her combat. While this play pretend gained her infamy and hatred, as she climbed up the ranks it would become the very same reason why many adored her. Her fame brought with it many powerful connections in the form of sponsors, some of them members of Talon's council themselves. And through her many wins she would come to acquire a formidable weapon, the Palatine Fang, a massive hardlight great sword, capable of cutting down anything in her path.
+  [place] {"loc":"Colosseo, Italy","country":"Italy","why":"Vendetta rises to fame in the Roman Colosseo"}
+  [hero] {"country":"Vendetta","why":"Enlists into the Colosseo under the stage name of Vendetta"}
+  [faction] {"country":"Colosseo Gladiatori","why":"The Wolf of Retribution makes a name for herself among the Colosseo ranks"}
+  [npc] {"country":"Titus, Maximus,","why":"Marzia grows to be admired among many Gladiators"}
+
+======================================================================
+#225 Overridden
+year 2069 2070 | The Fall of Overwatch | Helsinki, Finland
+DESC:
+After years of service, Emre made the hard choice to leave the strike team behind. Far too many times, the higher ups ignored his pleas and advice, and it often led to tragedy like the many deaths in Samoa during the Polynesian campaign. He had grown tired of how lost protocol had gotten and the level of corruption leadership Reyes was playing in. Freja tried to convince him to stay, valuing him too much as a friend to let him go, but Emre already had his eyes set elsewhere. Many security firms had offered him positions, and he wished to try and continue making a difference outside Overwatch's structure.
+
+Little is known of what truly happened to him, but his body was heavily modified by cybernetics, turned into a living weapon against his will by an unknown force. The God AI Chernobog, believed to have shut himself down in the crisis, was implanted into his body, forcing him to follow his orders or else endure as his own mind is overridden into submission. 
+
+It's unknown what the true intentions for Chernobog's actions were, what caused his apparent shift of views towards humanity and what his relationship with those who did this to Emre is, or if the Program might have acted alone. Only one thing remains clear, he sees everything, and- HAVAINTO SYNT├ä├ä HAVAINTOJA
+  [place] {"loc":"Helsinki, Finland","country":"Finland","why":"Emre leaves Overwatch looking to help the world on the outside"}
+  [hero] {"country":"Emre","why":"Taken by a shadow group and turn into a weapon"}
+  [hero] {"country":"Freja,","why":"Fails to convince Emre to stay"}
+  [faction] {"country":"The Chernobog Conspiracy,","why":"An unknown force using Chernobog and Emre to enact their will on the world"}
+  [npc] {"country":"Chernobog,","why":"Implanted into Emre's cybernetic Chassis"}
+
+======================================================================
+#226 MEKKA
+year 2068 2070 | The Fall of Overwatch | Busan, South Korea
+DESC:
+Without Overwatch, Korea continued to deal with the occasional rise of a Gwishin attack entirely on their own. The ever evolving thread led Dr. Lim to create the Mobile Exo-Force of the Korean Army, a specialized unit for the testing of technology capable of keeping up with the Gwishin attacks and evolution. The program gave birth to a series of reconfigurable drones that could catch the Colossus by surprise, since, after all, what better way to fight off war bots than to innovate with your own.
+
+For many years, these drones kept a perpetual stalemate against the Colossus, where they managed to defeat the Gwishin but never outright destroy them, but every few years a new wave of Gwishin would emerge, upgraded to counter the drones. MEKA was able to hold the Gwishin off for now, but the accelerating evolution of the Gwishin was quickly outpacing Lim's team, and following the near leveling of Busan during a particularly harsh encounter, it became clear that the team needed to explore alternative measures if they ever hoped to end the Gwishin for good.
+  [place] {"loc":"Busan, South Korea","country":"South Korea","why":"Korea unveils MEKA to fight the Gwishin"}
+  [faction] {"country":"MEKA","why":"A test program for anti Gwishin drones and weaponry"}
+  [faction] {"country":"The Gwishin,","why":"Continue to emerge periodically, evolving every time"}
+  [npc] {"country":"Myung,","why":"Commander of the MEKKA Squadron"}
+
+======================================================================
+#227 Missing in Action
+year 2069 2070 | The Fall of Overwatch | Warsaw, Poland
+DESC:
+Talon continued to taunt Overwatch for years, when they suddenly kidnapped a group of scientists, including a former researcher from Ecopoint: Osa. The mission to rescue the hostages was lead by none other than Morrison himself, with Ana as his back-up. They had decided to forgo the Search & Rescue team intentionally.
+
+Talon shelled the entire area, awaiting Overwatch's arrival, and while the team managed to reach the hostages, it was with more losses than they could have hoped for. Agents Kimiko and seasoned Mirembe Atim helped with the hostages. All of a sudden, a Talon Sniper took down most of the rescue squad including agents Al-Farduk and Bayless, and Morrison was forced to order a retreat, but Amari refused, chasing the Sniper in a long-range duel. Ana would be taken by surprise upon landing a hit on the Sniper, realizing the person under the mask was Am├⌐lie Lacroix. The Widowmaker took advantage of the confusion and landed a shot that pierced through Ana's scope, and she never made it back to headquarters following the mission.
+
+Officially, no one in Overwatch knew what happened and Talon's control of the area made it hard to search for her body. Ana was declared missing in action, and Sojourn took her place as third in command. For the longest time, Ana had served as a mediator between Reyes and Morrison. Without her, their already messy relationships deteriorated further. And publicly, Ana's failure made many believe that perhaps Wildhelm's retirement was long overdue, as the original agents appeared to be slowing down.
+  [place] {"loc":"Warsaw, Poland","country":"Poland","why":"Ana goes missing during a rescue mission"}
+  [place] {"loc":"Osa, Costa Rica","country":"Costa Rica,","why":"A former member of Ecopoint: Osa is among the hostages"}
+  [hero] {"country":"Ana, Widowmaker","why":"Engage in a Sniper duel that takes Ana's cybernetic Eye"}
+  [hero] {"country":"Soldier 76,","why":"Commands a  rescue mission in Poland"}
+  [faction] {"country":"Overwatch, Ecopoints,","why":"Sends a small squad to rescue scientists"}
+  [faction] {"country":"Talon Empire,","why":"Kidnaps scientists and Ecopoint: staff"}
+
+======================================================================
+#228 Another Job, Another Battlefield
+year 2068 2070 | The Fall of Overwatch | Port-de-Paix, Haiti
+DESC:
+Talon's influence grew across the world, as they continued to expand their network of control across the Caribbean. The Caribbean Coalition, who had long fought to stay alive against the wishes of local authorities, began to lose influence in the region as Overwatch intervention became less prominent.
+
+Many ex-soldiers, like Baptiste, struggled to find work after their service was complete, and Talon took this as an opportunity to lure in personnel. Desperate for funds to help his community, Baptiste took on the offer. Early missions were easy, and they paid well, allowing Baptiste to get a taste of the good life and use the remaining money to support his local clinic.
+
+It did not take long until the missions escalated, becoming more violent assassinations and resulting in many civilian casualties. Baptiste and the many other ex-Coalition mercenaries that took Talon's deal would go on to completely disrupt life on many of their own Islands, undoing years of the process they had achieved under the Coalition, all for a quick buck. It did not take long for Baptiste to begin feeling haunted by his actions, and question if he should even attempt to leave, but, of course, the only real way to leave Talon was in a coffin.
+  [place] {"loc":"Port-de-Paix, Haiti","country":"Haiti","why":"Talon enlists several mercenaries from the Caribbean Coalition"}
+  [hero] {"country":"Baptiste","why":"Joins Talon to help his home clinic but quickly regrets it"}
+  [faction] {"country":"Caribbean Coalition, Talon Empire,","why":"Ex Coaltion Soldiers are Hired into Talon"}
+
+======================================================================
+#229 Fun with Friends
+year 2068 2070 | The Fall of Overwatch | Venice, Italy
+DESC:
+Over the years. The Deepsea Raider activities died down. With Overwatch out of the way, the world learned to fear Polynesian Waters and eventually their interventions began to become less common.
+
+Mauga, however, was still thirsty for some fun, and the news of a New Doomfist taking over the gauntlet had just reached him. And it picked his interest. The mad man tracked down Akande, seeing him as a worthy opponent and challenged him to a no-rules, anything goes' fight, to which Akande agreed, sensing something was different about Mauga. After the long battle ended with a draw, both exhausted and unwilling to admit defeat, Doomfist was impressed by his ability and offered Mauga a place in Talon, where he could have regular upgrades and maintenance for his two hearts, and all the chaos in the world for his desires.
+
+Mauga was placed in Captain Cuerva's unit, the same as Baptiste. The two became surprisingly close, with Baptiste being one of the few people able to see through his facades and calm him down. The Unit wrecked chaos across both the Pacific and the Caribbean, and with Mauga leading the charge, entire cities burned down for his entertainment.
+  [place] {"loc":"Venice, Italy","country":"Italy","why":"Mauga Challenges Doomfist to an anything goes brawl"}
+  [hero] {"country":"Mauga, Doomfist","why":"Fight to the death but end up in a draw, Doomfist offers Mauga a Place in Talon"}
+  [hero] {"country":"Baptiste,","why":"Placed in the same Unit as Mauga, they quickly become close"}
+  [faction] {"country":"Deepsea Raiders,","why":"Activity dies down after Overwatch leaves the region"}
+  [faction] {"country":"Talon Empire,","why":"Begins to launch attacks across the Pacific"}
+
+======================================================================
+#230 Ghost
+year 2069 2070 | The Fall of Overwatch | Warsaw,  Poland
+DESC:
+In truth, Ana had survived her encounter with the Widowmaker, although it left her severely wounded and resulted in the loss of her cybernetic eye, which she chose never to repair. Ana was taken to a hospital under the care of Dr. Lee. Her injuries left her in a long coma, going by the generic Polish name of Janina Kowalska. When she woke up she did not remember who she was.
+
+During her recovery, Ana wrestled with her years of service, and all the pain she caused as her memory began to come back. At her advanced age she began to resent the reputation she had earned, as one of the most efficient killers in the world. These haunted memories of an image of herself she no longer claimed and the wounded ego from her sniper duel lead her to request her doctor to retain her anonymity.
+
+Ana now believed the world would be better believing she was dead, even her own daughter, as she feared Fareeha expected the fearless Captain Amari to return, not who Ana had become. And she remained a ghost for years, ensuring Overwatch never found her.
+  [place] {"loc":"Warsaw,  Poland","country":"Poland","why":"Ana wakes up from a coma in Poland"}
+  [hero] {"country":"Ana,","why":""}
+  [hero] {"country":"Pharah,","why":"Mourns the loss of her mother"}
+  [hero] {"country":"Soldier 76, Reaper,","why":"Continue to escalate in confrontations without Ana mediating"}

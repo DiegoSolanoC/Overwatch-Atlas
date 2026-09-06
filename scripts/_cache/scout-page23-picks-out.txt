@@ -1,0 +1,317 @@
+﻿==== NAMED ====
+
+=== Different Company [USED ΓåÆ #199 Deep Sea Raiders] (live) ===
+  Mauga: How are you liking Samoa, Ana?
+  Ana: It'd be better in different company.
+  Mauga: Oh, I see... you think we oughta ditch these other losers and get a glass of vaifala?
+  Ana: **sighs** You're buying first round.
+
+=== Two hearts [USED ΓåÆ #213 Two Hearts] (live) ===
+  Shion: I love that you have two hearts. One for each of my pistols to shoot clean through.
+  Mauga: And a gal with no heart is just my type.
+
+=== On the Wrong Path [free] (live) ===
+  Mercy: You are on the wrong path, Freja.
+  Freja: If you say so, Doctor.
+  Mercy: You used to help people! What you're doing now, it's...
+  Freja: ItΓÇÖs enough for me. ThatΓÇÖs all there is to it.
+
+=== People Change [USED ΓåÆ #177 Storm Chaser] (live) ===
+  Echo: Overwatch is back. Why not return to search and rescue?
+  Freja: Who says I want to go back?
+  Echo: But helping people was your purpose. You were among the best.
+  Freja: People change. I wouldn't expect a bot to understand.
+
+=== Working Alone [USED ΓåÆ #185 Search and Rescue] (live) ===
+  Emre: So... you work alone now?
+  Freja: Yeah. Been that way a while.
+  Emre: You did your best work on a team. This isn't like you, Frej.
+  Freja: A lot's changed, Emre. For both of us.
+
+=== Pretty Bad [free] (live) ===
+  Emre: All that time not knowing where I was, and this is how you finally find me... I'm sorry, Frej.
+  Freja: It's all right. Could've been worse ways to find you.
+  Emre: Yeah, but... it's still pretty bad, right?
+  Freja: **soft chuckle** Definitely could've been better.
+
+=== Useful [free] (live) ===
+  Cassidy: You ain't the only one who tried bounty huntin' when Overwatch fell through.
+  Freja: Hm. You gave up quick.
+  Cassidy: Well, I realized that huntin' ain't always helpin'. Reckon you might feel the same, someday.
+  Freja: No one wanted my help. At least this way, I'm useful.
+
+=== Care to listen [free] (live) ===
+  Freja: Ah, Captain Amari. Enjoying the world Overwatch left behind?
+  Ana: You remind me of an old friend. Someone else who thinks he's owed something for his pain.
+  Freja: And what *sage advice* did you have for him?
+  Ana: What's worth saying, if neither of you care to listen?
+MISS None of your Business
+
+=== Back Home [free] (live) ===
+  Torbj├╢rn: I'm glad to have you back home, Brigitte!
+  Brigitte: Me, too! I missed you and Mamma.
+  Torbj├╢rn: Oh, and, while you're here... I'm going to need your help sorting through some scrap metal.
+  Brigitte: **sigh** I guess I'll tell Sojourn I need to miss the next briefing.
+
+=== In your Armor [USED ΓåÆ #166 Valkirie] (live) ===
+  Brigitte: Angela! It's so strange to see you in your armor!
+  Mercy: I could say the same for you!
+
+=== Fighting for Vendetta [free] (live) ===
+  Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even for you.
+  Mauga: Aw, gimme some more credit. You know I only stick around when I'm getting something out of it.
+  Baptiste: **sigh** That's exactly what I'm worried about.
+
+=== Working with Vendetta [free] (live) ===
+  Freja: Feels worse than I thought it would, working with Vendetta...
+  Emre: Hold on. We can't both be haunted by our consciences now.
+  Freja: **laughs** You think you can stop me feeling guilty better than I can?
+  Emre: Of course not. But at least I can make you laugh.
+
+=== Negotiator [free] (live) ===
+  Domina: You're quite a skilled negotiator, Marzia. I'm impressed.
+  Vendetta: It takes more than a strong sword arm to succeed in the Colosseo.
+  Domina: Of course. Still rather rugged, though, aren't you?
+  Vendetta: That, I should hope, is readily apparent.
+
+=== Retribution [free] (live) ===
+  Reaper: I thought you'd know better than to kill Doomfist, since you never shut up about 'retribution'.
+  Vendetta: Your failed leader was already bleeding allies, and what few remain can be swiftly put down.
+
+=== Who is we [free] (live) ===
+  Reaper: We need to be careful. If Vendetta finds us, we're dead.
+  Sombra: Uh, who's 'we'? You're the one who killed her old man.
+  Reaper: If I go down, I'm taking you with me.
+
+=== Taking Action [free] (live) ===
+  Sombra: Not like I didn't warn the boss, but... hard to believe Vendetta's already starting a war.
+  Widowmaker: She may be extreme, but I cannot fault her for knowing where she stands.
+  Sombra: Are you kidding me? She blew up Overwatch.
+  Widowmaker: She took action. That is more than Doomfist can claim.
+
+=== Your daugther [USED ΓåÆ #146 Mother's Guidance] (live) ===
+  Ana: Is Fareeha getting enough rest between missions?
+  Mercy: Ana, your daughter is more than capable of caring for herself.
+  Ana: She never napped when she was little. She was cranky all the time.
+  Pharah: Mom! Everyone can hear you!
+
+=== Going Soft [free] (live) ===
+  Ana: I heard Talon failed another mission. Going soft?
+  Widowmaker: Do not speak to me unless you wish to lose your other eye.
+  Ana: I'd still be the better shot.
+
+=== A fool [USED ΓåÆ #219 Widowed] (live) ===
+  Ana: G├⌐rard was a fool to love someone like you.
+  Widowmaker: You don't know anything about him.
+
+=== G├⌐rard's Grave [USED ΓåÆ #219 Widowed] (live) ===
+  Widowmaker: Was the lily on G├⌐rard's grave yours?
+  Soldier 76: You know we were close.
+  Widowmaker: Not close enough to know he preferred roses.
+
+=== At my Induction [USED ΓåÆ #168 Captivate] (live) ===
+  Sojourn: You look familiar.
+  Widowmaker: You don't.
+  Sojourn: You were at my induction, standing with G├⌐rard... Am├⌐lie?
+  Widowmaker: Call me by that name again, and you will share his fate.
+
+=== Show your face [free] (live) ===
+  Widowmaker: Brave of you to show your face after what happened in Monte Cristi.
+  Baptiste: Well, it is a pretty good face.
+
+=== Talon's secrets [free] (live) ===
+  Baptiste: Look, I promise I won't spill any of Talon's secrets.
+  Widowmaker: Do you know what happened to the last man I trusted?
+  Baptiste: You know what, that's fine. Keep chasing me.
+
+=== Done with Talon [free] (live) ===
+  Baptiste: I'm *done* with Talon. Nothing can make me change my mind. Not even you.
+  Mauga: Saves me time. Dragging you back is faster!
+
+=== Out of Talon [free] (live) ===
+  Baptiste: Is it true? You're out of Talon? For good?
+  Sombra: For now. Until someone knocks the new boss down a few pegs.
+  Baptiste: Well, if you're looking for help... you can always come find me.
+  Sombra: Aww. Aren't you sweet? But something tells me your new friends won't enjoy having me around.
+
+=== Deals with Talon [free] (live) ===
+  Cassidy: You're makin' deals with Talon, now? You've always been reckless, but I *know* you're not stupid.
+  Ashe: Then you know I've got it under control. You ought'a be smart enough to stay out of my way.
+
+=== Fighting Talon [free] (live) ===
+  Sojourn: It feels like Talon has gone from covert ops to world domination overnight.
+  Baptiste: They've done plenty of raids in the past, but nothing nearly this... loud.
+  Sojourn: Huh. You have experience fighting Talon?
+  Baptiste: Yeah. You could say that.
+
+=== Korrea's Strongest [free] (live) ===
+  Doomfist: How does one so young become Korea's strongest warrior?
+  D.va: I'm the best. That's all you need to know.
+  Doomfist: **laughter** Confidence! Let's hope it's not unfounded.
+
+=== Mech Mechanic [free] (live) ===
+  D.va: I should introduce you to Dae-hyun! He takes care of my mech when I'm back home.
+  Brigitte: If that's true, he must have lots of experience.
+  D.va: Yeah, he... Hey!
+
+=== Hamster in the Mech [free] (live) ===
+  Junker Queen: You got a hamster in that mech?
+  D.va: Um... No?
+  Junker Queen: Sure, sure... I'm watchin' you.
+
+==== NAME SEARCH ====
+ free Adoptive Mother
+ free Thank you Mother
+ free Deals with Talon
+ free Talon's Bounty
+ free Done with Talon
+ free Fighting for Vendetta
+ free Fighting Talon
+ free Out of Talon
+ free Talon's secrets
+ free Stayed Retired
+ free Tests from Talon
+ free Working with Vendetta
+ free Retirement
+ free Open her eyes
+ free Lone Wolf
+ free Phreak Firewalls
+ USED ΓåÆ #118 Operation White Dome Missing an Eye
+ free Fun Mother
+ free Googly Eyes
+ free Anger Management
+ free Talon's Resources
+ free What part of Canada
+ USED ΓåÆ #206 Chronal Dissociation No more Bananas
+ free Thinking of Mother
+ free Like mother like daughter
+OW1 free Eye repair
+OW1 free Better than Retirement
+OW1 free Truth about Retirement
+OW1 free Dragging Brigitte
+OW1 free Mother Would Be Proud
+OW1 free Retirement suits you
+OW1 free Got my eye on you
+ free Madam Wolf
+ free Busan fireworks
+
+#### sea
+D free  Favorite Animals
+D USED ΓåÆ #199 Deep Sea Raiders  Different Company
+D USED ΓåÆ #185 Search and Rescue  Working Alone
+D free  On the Wrong Path
+D free  Looking Back
+D free  Good Mileage
+C free Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+C free Ana ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I've always been a good shot.
+C free Anran ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Huh. Thought I'd have to train more to pull that off.
+C free Anran ┬╖ Ilios or Samoa ΓÇö I know it's hot out, but... don't ask me to fan you. You'll regret it.
+
+#### retire
+D free  Favorite Animals
+D free  Handling Dancing
+D free  No Instrumental
+D USED ΓåÆ #153 Yearning  So Dramatic
+D free  What is left
+D free  Unstoppable
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Brigitte ┬╖ Don't be afraid to ask for help out there!
+
+#### phreak
+D free  No Instrumental
+D free  Weather Forecast
+D free  High Price
+D free  New Chassis
+D free  Phreak Firewalls
+D USED ΓåÆ #220 Emotionless  Skin mod
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Echo ┬╖ Activating combat mode
+C free Hazard ┬╖ Aim for your best out there, pals!
+C free Hazard ┬╖ Check out these new 'gradies. Phreaks's work. Outdid herself again!
+
+#### lupa
+D free  Favorite Animals
+D free  Fighting for Vendetta
+D free  Negotiator
+D free  Working with Vendetta
+D free  Threat to myself and others
+D free  Lone Wolf
+C free Ashe ┬╖ Colosseo ΓÇö I hear you can smuggle just about anythin' through those skyways.
+C free Baptiste ┬╖ Colosseo ΓÇö Let's visit the wikipedia:Sistine Chapel after this. I want to get a closer look at that ceiling...
+C free Brigitte ┬╖ Swords, arrows... a hammer and flail? We're practically a Renaissance faire!
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+
+#### override
+D USED ΓåÆ #185 Search and Rescue  Working Alone
+D free  On the Wrong Path
+D free  Looking Back
+D free  Useful when you show up
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Emre ┬╖ So, what's on the docket? Winning, I hope...
+C free Emre ┬╖ We'll give it all we've got, and hope that's enough.
+C free Emre ┬╖ We'll make it out alive. Maybe even in one piece.
+C free Emre ┬╖ I wasn't expecting a reunion...
+C free Emre ┬╖ Time to show them what weΓÇÖre made of
+
+#### meka
+D free  Favorite Animals
+D free  Advance Technologies
+D free  Pachimari Lore
+D free  Korrea's Strongest
+D free  Propaganda Machine
+D free  Extra Hours
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+C free Ashe ┬╖ Busan ΓÇö Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the
+C free Ashe ┬╖ Busan ΓÇö When I catch McCree - which I guarantee - y'all gonna see, how much he regrets crossin' me... (laughs)
+
+#### mia
+D free  Favorite Animals
+D free  Getting back up
+D free  In the West
+D free  VIP Passes
+D free  Keeping me Sharp
+D USED ΓåÆ #86 Eye of Horus  Best Sniper
+C USED ΓåÆ #146 Mother's Guidance Ana ┬╖ A mother's work is never done...
+C free Ana ┬╖ Hah. Just one more mission.
+C free Ana ┬╖ Keep in sight. I'll have us in and out in no time.
+C free Ana ┬╖ Maybe one day, we'll go on missions in Hawaii.
+
+#### bap
+D free  How's Mirembe
+D free  There is a girl
+D free  Underdog
+D free  Going Soft
+D free  Deals with Talon
+D free  Talon's Bounty
+C free Baptiste ┬╖ Don't let my immortality field go to your head. It's temporary. You can still die.
+C free Baptiste ┬╖ I've done things I'm not proud of. Time to start making up for it.
+C free Baptiste ┬╖ Locked and loaded. Who's ready to get this done?
+C free Baptiste ┬╖ Make sure to give me an emergency contact. I'm sure we won't need it, but... just in case.
+
+#### fun
+D free  Favorite Animals
+D free  Deprioritized
+D USED ΓåÆ #137 The Gunslinger  Jealous of you
+D free  Going Shopping
+D free  War isn't a game
+D free  The Fun One
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Baptiste ┬╖ Numbani ΓÇö So this is where Doomfist is from. I hope he's not in town.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free D.va ┬╖ Route 66 ΓÇö A MEKA roadtrip would be jonla fun!
+node : (node:36660) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-fd08917d-4ece-413a-826d-669c8cc54528.ps1:92 char:1
++ node scripts/_cache/scout-page23-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:36660) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -59,6 +59,7 @@ import {
     mountDialogueTheaterEntryToggle,
     unmountDialogueTheaterEntryToggle,
 } from '../dialogue-theater-mode/DialogueTheaterEntryToggle.js';
+import { waitForLoadingOverlayInactive } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
 
 const HOST_ID = 'dialogueTheaterListHost';
 const SAVE_BTN_ID = 'dialogueTheaterSaveBtn';
@@ -94,14 +95,14 @@ function manifestHeroesForPairSearch() {
 /** @type {import('../data/loadDialogueTheaterAssets.js').DialogueTheaterAssets|null} */
 let listThumbAssets = null;
 
-/** @type {Map<string, string[]>|null} */
-let duplicateLookupCache = null;
+/** @type {Map<string, Map<string, string[]>>} */
+const duplicateLookupCacheByMode = new Map();
 
-/** @type {Map<string, boolean>|null} */
-let unfinishedCache = null;
+/** @type {Map<string, Map<string, boolean>>} */
+const unfinishedCacheByMode = new Map();
 
-/** @type {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>|null} */
-let searchHaystackCache = null;
+/** @type {Map<string, Map<string, { lower: string, fold: string, stripped: string, normalized: string }>>} */
+const searchHaystackCacheByMode = new Map();
 
 /** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation[]|null} */
 let modeConversationsCache = null;
@@ -112,12 +113,19 @@ let modeConversationsCacheKey = '';
 /**
  * Keep built list cards across filter changes so returning to Overwatch (~1k)
  * reuses DOM instead of rebuilding thumbs/images.
- * @type {Map<string, HTMLElement>}
+ * Separate pools per entry mode so Dialogues ↔ Chatters does not remount ~1k cards.
+ * @type {Map<string, Map<string, HTMLElement>>}
  */
-let listItemPool = new Map();
+const listItemPoolsByMode = new Map();
+
+/** @type {Map<string, string>} */
+const lastRenderedIdsKeyByMode = new Map();
 
 /** @type {string} */
 let listItemPoolMode = '';
+
+/** @type {Map<string, HTMLElement>} */
+let listItemPool = new Map();
 
 /** @type {string} */
 let lastRenderedIdsKey = '';
@@ -126,7 +134,10 @@ let lastRenderedIdsKey = '';
 let progressiveRenderToken = 0;
 
 /** Initial sync create budget when cold-building a large Overwatch set. */
-const LIST_CREATE_CHUNK = 64;
+const LIST_CREATE_CHUNK = 48;
+
+/** Pause progressive appends while the pointer is over the list (grid reflow under cursor). */
+let listPointerInside = false;
 
 /** @type {boolean} */
 let forceFullListRebuild = false;
@@ -140,19 +151,62 @@ let renderListRoot = null;
 /** @type {number} */
 let searchDebounceTimer = 0;
 
+/** @type {Set<string>|null} */
+let voicelineSetCache = null;
+
+function getVoicelineSet() {
+    const list = listThumbAssets?.voicelines || [];
+    if (!voicelineSetCache || voicelineSetCache.size !== list.length) {
+        voicelineSetCache = new Set(list);
+    }
+    return voicelineSetCache;
+}
+
+/**
+ * @param {string} mode
+ * @returns {Map<string, HTMLElement>}
+ */
+function poolForMode(mode) {
+    let pool = listItemPoolsByMode.get(mode);
+    if (!pool) {
+        pool = new Map();
+        listItemPoolsByMode.set(mode, pool);
+    }
+    return pool;
+}
+
+function adoptPoolForCurrentMode() {
+    const mode = getDialogueTheaterEntryMode();
+    if (listItemPoolMode && listItemPoolMode !== mode) {
+        lastRenderedIdsKeyByMode.set(listItemPoolMode, lastRenderedIdsKey);
+    }
+    listItemPoolMode = mode;
+    listItemPool = poolForMode(mode);
+    lastRenderedIdsKey = lastRenderedIdsKeyByMode.get(mode) || '';
+}
+
 function clearListItemPool() {
-    listItemPool.clear();
+    listItemPoolsByMode.clear();
+    lastRenderedIdsKeyByMode.clear();
+    listItemPool = new Map();
     listItemPoolMode = '';
     lastRenderedIdsKey = '';
     progressiveRenderToken += 1;
 }
 
 function invalidateListCaches(options = {}) {
-    duplicateLookupCache = null;
-    unfinishedCache = null;
-    searchHaystackCache = null;
+    if (options.soft) {
+        // Mode toggle: keep per-mode pools + validation caches; only drop mode list slice.
+        modeConversationsCache = null;
+        modeConversationsCacheKey = '';
+        return;
+    }
+    duplicateLookupCacheByMode.clear();
+    unfinishedCacheByMode.clear();
+    searchHaystackCacheByMode.clear();
     modeConversationsCache = null;
     modeConversationsCacheKey = '';
+    voicelineSetCache = null;
     clearPairSearchCaches();
     if (options.fullRebuild) {
         forceFullListRebuild = true;
@@ -165,10 +219,17 @@ function invalidateListCaches(options = {}) {
  * @returns {Map<string, string[]>}
  */
 function getDuplicateLookup(conversations) {
-    if (!duplicateLookupCache) {
-        duplicateLookupCache = buildConversationDuplicateLookup(conversations);
-    }
-    return duplicateLookupCache;
+    const mode = getDialogueTheaterEntryMode();
+    const cached = duplicateLookupCacheByMode.get(mode);
+    if (cached) return cached;
+    // Chatter hubs can have thousands of lines — fingerprint sort freezes the UI.
+    // Duplicate chrome is for dialogue pairs; skip in chatter mode.
+    const map =
+        mode === 'chatters'
+            ? new Map()
+            : buildConversationDuplicateLookup(conversations);
+    duplicateLookupCacheByMode.set(mode, map);
+    return map;
 }
 
 /**
@@ -176,15 +237,17 @@ function getDuplicateLookup(conversations) {
  * @returns {Map<string, boolean>}
  */
 function getUnfinishedCache(conversations) {
-    if (unfinishedCache) return unfinishedCache;
-    const voicelines = listThumbAssets?.voicelines || [];
+    const mode = getDialogueTheaterEntryMode();
+    const cached = unfinishedCacheByMode.get(mode);
+    if (cached) return cached;
+    const voiceSet = getVoicelineSet();
     const duplicates = getDuplicateLookup(conversations);
     /** @type {Map<string, boolean>} */
     const map = new Map();
     for (const row of conversations) {
-        map.set(row.id, conversationHasUnfinishedIssues(row, voicelines, duplicates));
+        map.set(row.id, conversationHasUnfinishedIssues(row, voiceSet, duplicates));
     }
-    unfinishedCache = map;
+    unfinishedCacheByMode.set(mode, map);
     return map;
 }
 
@@ -193,13 +256,15 @@ function getUnfinishedCache(conversations) {
  * @returns {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>}
  */
 function getSearchHaystackCache(conversations) {
-    if (searchHaystackCache) return searchHaystackCache;
+    const mode = getDialogueTheaterEntryMode();
+    const cached = searchHaystackCacheByMode.get(mode);
+    if (cached) return cached;
     /** @type {Map<string, { lower: string, fold: string, stripped: string, normalized: string }>} */
     const map = new Map();
     for (const row of conversations) {
         map.set(row.id, buildConversationSearchHaystack(row));
     }
-    searchHaystackCache = map;
+    searchHaystackCacheByMode.set(mode, map);
     return map;
 }
 
@@ -209,6 +274,13 @@ function getSearchHaystackCache(conversations) {
 function getModeConversations() {
     const mode = getDialogueTheaterEntryMode();
     if (modeConversationsCache && modeConversationsCacheKey === mode) {
+        // Mid-load rAF can cache [] before conversations.json finishes — refresh if data arrived.
+        if (modeConversationsCache.length === 0) {
+            const live = dialogueTheaterDataService.getConversationsByEntryType(
+                entryTypeForMode(mode),
+            );
+            if (live.length > 0) modeConversationsCache = live;
+        }
         return modeConversationsCache;
     }
     modeConversationsCacheKey = mode;
@@ -238,7 +310,6 @@ function scheduleRenderList(root) {
  */
 function getFilteredConversations() {
     let rows = getModeConversations();
-    const haystacks = getSearchHaystackCache(rows);
 
     const pairA = pairSearchControls?.getPairA?.() || '';
     const pairB = pairSearchControls?.getPairB?.() || '';
@@ -266,7 +337,9 @@ function getFilteredConversations() {
     }
 
     const q = searchQuery.trim();
+    // Haystacks join every subtitle — only build when the user is actually searching.
     if (q) {
+        const haystacks = getSearchHaystackCache(getModeConversations());
         rows = rows.filter((row) =>
             conversationMatchesListSearch(row, q, haystacks.get(row.id) || null),
         );
@@ -316,16 +389,20 @@ function escapeHtml(value) {
  * @param {Map<string, string[]>} duplicateLookup
  * @param {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
  */
-function buildConversationThumb(row, duplicateLookup, conversations) {
+function buildConversationThumb(row, duplicateLookup, conversations, unfinished = null) {
     const name = row.name || 'Untitled conversation';
     const displayTags = getConversationTags(row).filter((tag) => tag !== 'Overwatch');
     const status = normalizeDialogueTheaterStatus(row.status);
     const statusLabel = status === 'removed' ? labelForDialogueTheaterStatus(status) : '';
     const eraLabel = [...(statusLabel ? [statusLabel] : []), ...displayTags].join(' · ');
-    const voicelines = listThumbAssets?.voicelines || [];
-    const isUnfinished = conversationHasUnfinishedIssues(row, voicelines, duplicateLookup);
+    const voiceSet = getVoicelineSet();
+    const isUnfinished = unfinished
+        ? Boolean(unfinished.get(row.id))
+        : conversationHasUnfinishedIssues(row, voiceSet, duplicateLookup);
     const unfinishedSummary = isUnfinished
-        ? conversationUnfinishedSummary(row, voicelines, duplicateLookup, conversations)
+        ? getDialogueTheaterEntryMode() === 'chatters'
+            ? 'Unfinished: needs review'
+            : conversationUnfinishedSummary(row, voiceSet, duplicateLookup, conversations)
         : '';
     const duplicateSummary = conversationDuplicateSummary(row.id, duplicateLookup, conversations);
     const tooltipParts = [name];
@@ -384,7 +461,7 @@ function syncConversationListItemState(item, row, duplicateLookup, unfinished = 
     item.classList.toggle('unsaved', dialogueTheaterDataService.isConversationUnsaved(row.id));
     const isUnfinished = unfinished
         ? Boolean(unfinished.get(row.id))
-        : conversationHasUnfinishedIssues(row, listThumbAssets?.voicelines || [], duplicateLookup);
+        : conversationHasUnfinishedIssues(row, getVoicelineSet(), duplicateLookup);
     item.classList.toggle('event-item--unfinished', isUnfinished);
 }
 
@@ -401,7 +478,7 @@ function buildConversationListItem(row, duplicateLookup, conversations, unfinish
     item.dataset.conversationId = row.id;
     item.setAttribute('role', 'listitem');
     syncConversationListItemState(item, row, duplicateLookup, unfinished);
-    item.appendChild(buildConversationThumb(row, duplicateLookup, conversations));
+    item.appendChild(buildConversationThumb(row, duplicateLookup, conversations, unfinished));
     return item;
 }
 
@@ -425,40 +502,56 @@ function progressiveAppendMissingItems(
 ) {
     if (token !== progressiveRenderToken) return;
 
+    const scheduleNext = (nextIndex) => {
+        const schedule = typeof requestIdleCallback === 'function'
+            ? (cb) => requestIdleCallback(cb, { timeout: 64 })
+            : (cb) => setTimeout(cb, 16);
+        schedule(() => {
+            void waitForLoadingOverlayInactive().then(() => {
+                if (token !== progressiveRenderToken) return;
+                progressiveAppendMissingItems(
+                    listEl,
+                    rows,
+                    duplicateLookup,
+                    allConversations,
+                    unfinished,
+                    nextIndex,
+                    token,
+                );
+            });
+        });
+    };
+
+    // Don't insert cards under an active hover — auto-fill grid reflow makes thumbs
+    // bounce on/off and steal clicks until the fill finishes.
+    if (listPointerInside) {
+        scheduleNext(startIndex);
+        return;
+    }
+
     let index = startIndex;
     let created = 0;
     while (index < rows.length && created < LIST_CREATE_CHUNK) {
         const row = rows[index];
         index += 1;
-        if (listItemPool.has(row.id)) continue;
-        const item = buildConversationListItem(row, duplicateLookup, allConversations, unfinished);
-        listItemPool.set(row.id, item);
+        let item = listItemPool.get(row.id);
+        if (item?.parentElement === listEl) continue;
+        if (!item) {
+            item = buildConversationListItem(row, duplicateLookup, allConversations, unfinished);
+            listItemPool.set(row.id, item);
+        }
         created += 1;
-    }
-
-    // Re-append full visible order so newly created cards land in the right slots.
-    const fragment = document.createDocumentFragment();
-    for (const row of rows) {
-        const item = listItemPool.get(row.id);
-        if (!item) continue;
         syncConversationListItemState(item, row, duplicateLookup, unfinished);
-        fragment.appendChild(item);
+        const prev = index > 1 ? listItemPool.get(rows[index - 2].id) : null;
+        if (prev?.parentElement === listEl) {
+            prev.after(item);
+        } else {
+            listEl.appendChild(item);
+        }
     }
-    listEl.replaceChildren(fragment);
 
-    // Keep scanning from this index so later frames only create remaining gaps.
     if (index < rows.length && token === progressiveRenderToken) {
-        requestAnimationFrame(() => {
-            progressiveAppendMissingItems(
-                listEl,
-                rows,
-                duplicateLookup,
-                allConversations,
-                unfinished,
-                index,
-                token,
-            );
-        });
+        scheduleNext(index);
     }
 }
 
@@ -469,11 +562,18 @@ function renderList(root) {
     const listEl = root.querySelector('#dialogueTheaterList');
     if (!listEl) return;
 
-    const mode = getDialogueTheaterEntryMode();
-    if (listItemPoolMode !== mode) {
-        clearListItemPool();
-        listItemPoolMode = mode;
+    if (!listEl.dataset.progressivePauseWired) {
+        listEl.dataset.progressivePauseWired = '1';
+        listEl.addEventListener('pointerenter', () => {
+            listPointerInside = true;
+        });
+        listEl.addEventListener('pointerleave', () => {
+            listPointerInside = false;
+        });
     }
+
+    const mode = getDialogueTheaterEntryMode();
+    adoptPoolForCurrentMode();
 
     const rows = getFilteredConversations();
     const allConversations = getModeConversations();
@@ -517,6 +617,7 @@ function renderList(root) {
         }
         listEl.appendChild(empty);
         lastRenderedIdsKey = '';
+        lastRenderedIdsKeyByMode.set(mode, '');
         syncSaveButtonState(root);
         return;
     }
@@ -524,20 +625,28 @@ function renderList(root) {
     listEl.querySelector('.dialogue-theater-list__empty')?.remove();
 
     const idsKey = rows.map((row) => row.id).join('\0');
-    if (
-        useIncremental &&
-        idsKey === lastRenderedIdsKey &&
-        listEl.childElementCount === rows.length
-    ) {
-        // Same visible set — only refresh cheap state classes.
-        for (const row of rows) {
-            const item = listItemPool.get(row.id);
-            if (item) syncConversationListItemState(item, row, duplicateLookup, unfinished);
+    if (useIncremental && idsKey === lastRenderedIdsKey) {
+        // Same visible set — never remount. Progressive fill may still be appending;
+        // replaceChildren here was remounting thumbs mid-hover (bounce / dead clicks).
+        // After mode switch the DOM still shows the *other* mode's cards even when this
+        // mode's idsKey matches its cached key — only early-return when list shows our pool.
+        const firstMounted = listEl.querySelector('.event-item');
+        const showingCurrentPool =
+            firstMounted instanceof HTMLElement &&
+            listItemPool.get(firstMounted.dataset.conversationId || '') === firstMounted;
+        if (showingCurrentPool || rows.length === 0) {
+            for (const row of rows) {
+                const item = listItemPool.get(row.id);
+                if (item?.parentElement === listEl) {
+                    syncConversationListItemState(item, row, duplicateLookup, unfinished);
+                }
+            }
+            syncSaveButtonState(root);
+            return;
         }
-        syncSaveButtonState(root);
-        return;
     }
     lastRenderedIdsKey = idsKey;
+    lastRenderedIdsKeyByMode.set(mode, idsKey);
 
     /** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation[]} */
     const missingRows = [];
@@ -553,26 +662,48 @@ function renderList(root) {
         listItemPool.set(row.id, item);
     }
 
+    // Mount only a first chunk synchronously — swapping ~1k pooled cards via replaceChildren
+    // freezes the main thread when toggling Dialogues ↔ Chatters.
     const fragment = document.createDocumentFragment();
+    let mountedSync = 0;
     for (const row of rows) {
+        if (mountedSync >= LIST_CREATE_CHUNK) break;
         const item = listItemPool.get(row.id);
         if (!item) continue;
         syncConversationListItemState(item, row, duplicateLookup, unfinished);
         fragment.appendChild(item);
+        mountedSync += 1;
     }
     listEl.replaceChildren(fragment);
 
-    if (missingRows.length > syncCreateCount) {
+    const needsProgressive = rows.some((row) => {
+        const item = listItemPool.get(row.id);
+        return !item || item.parentElement !== listEl;
+    });
+
+    if (needsProgressive) {
+        let progressiveStart = 0;
+        for (let i = 0; i < rows.length; i += 1) {
+            const item = listItemPool.get(rows[i].id);
+            if (!item || item.parentElement !== listEl) {
+                progressiveStart = i;
+                break;
+            }
+        }
+
         requestAnimationFrame(() => {
-            progressiveAppendMissingItems(
-                listEl,
-                rows,
-                duplicateLookup,
-                allConversations,
-                unfinished,
-                0,
-                renderToken,
-            );
+            void waitForLoadingOverlayInactive().then(() => {
+                if (renderToken !== progressiveRenderToken) return;
+                progressiveAppendMissingItems(
+                    listEl,
+                    rows,
+                    duplicateLookup,
+                    allConversations,
+                    unfinished,
+                    progressiveStart,
+                    renderToken,
+                );
+            });
         });
     }
 
@@ -923,29 +1054,35 @@ export async function mountDialogueTheaterListView(container) {
     wireToolbar(container);
     wireSearch(container);
 
+    // Float dock chrome early (Story/World pattern) so chatter toggle + file
+    // actions are already visible when the loading overlay drops.
+    mountDialogueTheaterEntryToggle({
+        onChange: () => {
+            closeDialogueTheaterInfoPanel();
+            // Soft invalidate — keep per-mode card pools so switching does not remount ~1k thumbs.
+            invalidateListCaches({ soft: true });
+            refreshEraFilterOptions(container);
+            pairSearchControls?.refreshSpeakerOptions?.();
+            scheduleRenderList(container);
+        },
+    });
+    const theaterActionsEarly = container.querySelector('#dialogueTheaterBottomBar .events-manage-actions');
+    if (theaterActionsEarly instanceof HTMLElement) {
+        floatArchiveFileActions(theaterActionsEarly, 'theater');
+    }
+
     await dialogueTheaterDataService.load();
+    // Drop any mid-load empty list cache / pending rAF from chrome mounted before data was ready.
+    renderListScheduled = false;
+    renderListRoot = null;
+    invalidateListCaches({ fullRebuild: true });
     listThumbAssets = await loadDialogueTheaterAssets();
     refreshEraFilterOptions(container);
     pairSearchControls = await wireDialogueTheaterPairSearch(container, {
         getConversations: () => getModeConversations(),
         onChange: () => scheduleRenderList(container),
     });
-    mountDialogueTheaterEntryToggle({
-        onChange: () => {
-            closeDialogueTheaterInfoPanel();
-            invalidateListCaches({ fullRebuild: true });
-            refreshEraFilterOptions(container);
-            pairSearchControls?.refreshSpeakerOptions?.();
-            scheduleRenderList(container);
-        },
-    });
     renderList(container);
-
-    const theaterActions = container.querySelector('#dialogueTheaterBottomBar .events-manage-actions')
-        || document.querySelector('#dockGlobeRailRight > .events-manage-actions');
-    if (theaterActions instanceof HTMLElement) {
-        floatArchiveFileActions(theaterActions, 'theater');
-    }
 
     const onEscape = (e) => {
         if (e.key !== 'Escape') return;

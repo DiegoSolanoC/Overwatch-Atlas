@@ -3,59 +3,23 @@
  * Layout matches relevancy rows: all-caps title, gallery-size speaker chips, play control.
  */
 
-import { getEventCommentaryNames } from '../../../interface-shared/storyEventCommentary.js';
-import { openDialogueTheaterFromStoryCommentary } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
+import {
+    commentaryDisplayTitle,
+    getEventCommentaryEntries,
+} from '../../../interface-shared/storyEventCommentary.js';
+import {
+    directPlayDialogueTheaterFromStoryCommentary,
+    openDialogueTheaterFromStoryCommentary,
+} from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { dialogueTheaterDataService } from '../../../../dialogue-theater/data/DialogueTheaterDataService.js?v=105';
-import { normalizeForPredictiveMatch } from '../../../interface-left-panel/event-system/form/autocomplete/tokenInputMatching.js';
+import {
+    commentaryLiveDisplayTitle,
+    resolveStoryCommentaryTheaterTarget,
+    speakersForCommentaryTheaterTarget,
+} from '../../../interface-shared/storyEventCommentaryTheater.js';
 
 const DIALOGUE_THEATER_ICON =
     'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png';
-
-/**
- * @param {import('../../../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation | null | undefined} conversation
- * @returns {string[]}
- */
-function collectConversationSpeakerNames(conversation) {
-    if (!conversation) return [];
-    /** @type {string[]} */
-    const out = [];
-    const seen = new Set();
-
-    const pushHero = (raw) => {
-        const name = String(raw ?? '').trim();
-        if (!name) return;
-        const key = name.toLowerCase();
-        if (seen.has(key)) return;
-        seen.add(key);
-        out.push(name);
-    };
-
-    const walkLines = (lines) => {
-        if (!Array.isArray(lines)) return;
-        for (const line of lines) pushHero(line?.hero);
-    };
-
-    walkLines(conversation.lines);
-    if (Array.isArray(conversation.paths)) {
-        for (const path of conversation.paths) walkLines(path?.lines);
-    }
-    return out;
-}
-
-/**
- * @param {string} interactionName
- * @returns {import('../../../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation | null}
- */
-function findConversationByName(interactionName) {
-    const needle = normalizeForPredictiveMatch(interactionName);
-    if (!needle) return null;
-    const matches = (dialogueTheaterDataService.conversations || []).filter(
-        (row) => normalizeForPredictiveMatch(row?.name) === needle,
-    );
-    if (!matches.length) return null;
-    const active = matches.find((row) => String(row.status || 'active') !== 'removed');
-    return active || matches[0];
-}
 
 /**
  * Prefer Heroes archive for theater speakers (incl. Sierra, Shion, Vendetta, …).
@@ -176,10 +140,10 @@ export function updateStoryCommentarySlideFromEvent(event) {
     const list = document.getElementById('eventSlideCommentary');
     if (!section || !list) return;
 
-    const names = getEventCommentaryNames(event);
+    const entries = getEventCommentaryEntries(event);
     list.innerHTML = '';
 
-    if (!names.length) {
+    if (!entries.length) {
         section.style.display = 'none';
         section.setAttribute('hidden', 'hidden');
         return;
@@ -195,29 +159,44 @@ export function updateStoryCommentarySlideFromEvent(event) {
         || dialogueTheaterDataService.conversations.length === 0) {
         void dialogueTheaterDataService.load().then(() => {
             const still = document.getElementById('eventSlideCommentary');
-            if (still && getEventCommentaryNames(event).length) {
+            if (still && getEventCommentaryEntries(event).length) {
                 updateStoryCommentarySlideFromEvent(event);
             }
         });
     }
 
-    names.forEach((name) => {
+    entries.forEach((entry) => {
+        const theaterName = entry.name;
+        const displayTitle = commentaryLiveDisplayTitle(
+            entry,
+            dialogueTheaterDataService.conversations || [],
+        ) || commentaryDisplayTitle(entry);
+
         const item = document.createElement('div');
         item.className = 'event-commentary-display-item';
 
         const label = document.createElement('span');
         label.className = 'event-commentary-display-item__title';
         if (R?.slideStoryDisplayHtml) {
-            label.innerHTML = R.slideStoryDisplayHtml(name);
+            label.innerHTML = R.slideStoryDisplayHtml(displayTitle);
         } else {
-            label.textContent = name;
+            label.textContent = displayTitle;
+        }
+        if (entry.label && entry.label !== theaterName) {
+            label.title = theaterName;
+        } else if (displayTitle !== theaterName) {
+            label.title = theaterName;
         }
         item.appendChild(label);
 
         const trailing = document.createElement('div');
         trailing.className = 'event-commentary-display-item__trailing';
 
-        const speakers = collectConversationSpeakerNames(findConversationByName(name));
+        const target = resolveStoryCommentaryTheaterTarget(
+            entry,
+            dialogueTheaterDataService.conversations || [],
+        );
+        const speakers = speakersForCommentaryTheaterTarget(target);
         if (speakers.length) {
             const chipRow = document.createElement('span');
             chipRow.className =
@@ -226,12 +205,43 @@ export function updateStoryCommentarySlideFromEvent(event) {
             trailing.appendChild(chipRow);
         }
 
-        const playBtn = document.createElement('button');
-        playBtn.type = 'button';
-        playBtn.className = 'event-source-media-play event-source-media-play--commentary';
-        playBtn.dataset.commentaryPlay = name;
-        playBtn.title = `Open “${name}” in Dialogue Theater`;
-        playBtn.setAttribute('aria-label', `Open ${name} in Dialogue Theater`);
+        const playGroup = document.createElement('div');
+        playGroup.className = 'event-source-media-play-group event-commentary-play-group';
+
+        const directBtn = document.createElement('button');
+        directBtn.type = 'button';
+        directBtn.className =
+            'event-source-media-play event-source-media-play--commentary event-source-media-play--commentary-direct';
+        directBtn.dataset.commentaryDirectPlay = theaterName;
+        if (entry.theaterId) directBtn.dataset.commentaryTheaterId = entry.theaterId;
+        if (entry.lineId) directBtn.dataset.commentaryLineId = entry.lineId;
+        directBtn.title = `Direct Play “${displayTitle}”`;
+        directBtn.setAttribute('aria-label', `Direct Play ${displayTitle}`);
+
+        const directGlyph = document.createElement('span');
+        directGlyph.className = 'event-source-media-play__glyph';
+        directGlyph.setAttribute('aria-hidden', 'true');
+        directGlyph.textContent = '▶';
+        directBtn.appendChild(directGlyph);
+
+        directBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const directPlay =
+                window.StoryCommentaryTheaterNav?.directPlayDialogueTheaterFromStoryCommentary
+                || directPlayDialogueTheaterFromStoryCommentary;
+            void directPlay(entry);
+        });
+
+        const openBtn = document.createElement('button');
+        openBtn.type = 'button';
+        openBtn.className =
+            'event-source-media-play event-source-media-play--commentary event-source-media-play--commentary-open';
+        openBtn.dataset.commentaryPlay = theaterName;
+        if (entry.theaterId) openBtn.dataset.commentaryTheaterId = entry.theaterId;
+        if (entry.lineId) openBtn.dataset.commentaryLineId = entry.lineId;
+        openBtn.title = `Open “${displayTitle}” in Dialogue Theater`;
+        openBtn.setAttribute('aria-label', `Open ${displayTitle} in Dialogue Theater`);
 
         const img = document.createElement('img');
         img.src = DIALOGUE_THEATER_ICON;
@@ -239,18 +249,20 @@ export function updateStoryCommentarySlideFromEvent(event) {
         img.className = 'event-source-media-play__icon';
         img.decoding = 'async';
         img.draggable = false;
-        playBtn.appendChild(img);
+        openBtn.appendChild(img);
 
-        playBtn.addEventListener('click', (e) => {
+        openBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             const open =
                 window.StoryCommentaryTheaterNav?.openDialogueTheaterFromStoryCommentary
                 || openDialogueTheaterFromStoryCommentary;
-            void open(name);
+            void open(entry);
         });
 
-        trailing.appendChild(playBtn);
+        playGroup.appendChild(directBtn);
+        playGroup.appendChild(openBtn);
+        trailing.appendChild(playGroup);
         item.appendChild(trailing);
         list.appendChild(item);
     });

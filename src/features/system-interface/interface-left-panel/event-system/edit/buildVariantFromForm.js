@@ -16,7 +16,12 @@
  */
 
 import { cloneFilterPlaceRows } from './formValueHelpers.js';
-import { normalizeCommentaryList } from '../../../interface-shared/storyEventCommentary.js';
+import {
+    normalizeCommentaryEntries,
+    serializeCommentaryEntries,
+} from '../../../interface-shared/storyEventCommentary.js';
+import { stampCommentaryTheaterIds } from '../../../interface-shared/storyEventCommentaryTheater.js';
+import { dialogueTheaterDataService } from '../../../../dialogue-theater/data/DialogueTheaterDataService.js?v=105';
 
 export function buildVariantFromForm(variant) {
     let headlines;
@@ -28,7 +33,12 @@ export function buildVariantFromForm(variant) {
         }
     }
 
-    const commentary = normalizeCommentaryList(variant.commentary);
+    const commentary = serializeCommentaryEntries(
+        stampCommentaryTheaterIds(
+            normalizeCommentaryEntries(variant.commentary),
+            dialogueTheaterDataService?.conversations || [],
+        ),
+    );
 
     const variantObj = {
         name: variant.name || '',

@@ -102,7 +102,8 @@ const runUniversalFeatures = (options = {}) => modeOrchestrator.runUniversalFeat
 const runWorldComponents = (isAutoLoad = false) => modeOrchestrator.runWorldComponents(isAutoLoad);
 const killMenuComponents = () => modeOrchestrator.killMenuComponents();
 const killUniversalFeatures = () => modeOrchestrator.killUniversalFeatures();
-const restoreMainMenu = () => modeOrchestrator.restoreMainMenu();
+const restoreMainMenu = (preserveNewsTicker) =>
+    modeOrchestrator.restoreMainMenu(preserveNewsTicker);
 const killWorldComponents = () => modeOrchestrator.killWorldComponents();
 const runCodexComponents = (isAutoLoad = false) => modeOrchestrator.runCodexComponents(isAutoLoad);
 const killCodexComponents = () => modeOrchestrator.killCodexComponents();

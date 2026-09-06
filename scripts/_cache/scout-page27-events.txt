@@ -1,0 +1,96 @@
+﻿Used commentary: 311
+
+=== PAGE 27 (#261ΓÇô270) ===
+
+======================================================================
+#261 Game On
+year 2075 null |  | 
+DESC:
+The Exo Force Drones were able to hold back the Gwishin for a couple of years, but in due time, the Colossus adapted once more and began to disrupt the control networks. Without being able to control them remotely, the Korean Army was forced to come up with a new solution. The need to keep up with Gwishin adaptation led Dr. Lim to a similar solution to this familiar problem. Replacing the drones with reconfigurable mechs, inspired by Russia's resurgent Svyatogor technology. With these, a small task force of human pilots would be able to keep the war bots at bay with on-the fly improvisation and ever-changing equipment. Initial testing led to mixed results, with many dead and injured pilots. But when the team began to study the pilots that stood out from the rest, a common pattern became apparent, they were all avid video game players.
+
+The controls of the Exo-Force mechs were not unlike those of most online shooters in the country, and their studies showed that professional players showed impressive reflexes and quick decision-making. The Korean Army decided to draft top talent from the Esports scene and similar fields with overlapping abilities. Mecha Guardian V champions Hana Song and Yuna Lee as well as their main rival, Kyung-soo Han. Seung-hwa Shi, a young analytical support specialist, and Jae-eun Kwon, a former F1 racer. 
+
+Together, under the command of Captain Myung, they formed the current iteration of the MEKA squad, and finally granted Korea a consistent upper hand against the Gwishin. Their efficiency granted the team many liberties, and in concession to their professional backgrounds, they were allowed to customize the look of their uniforms and mechs to match their personal branding, using their professional name tags within battle and even allowing them to broadcast operations live from within the mech. While many of these broke military protocol, it allowed a massive boost in the program's popularity and opened the door to a massive propaganda machine, including several sponsors and movie deals for the different pilots.
+
+======================================================================
+#262 Neighborhood Hero
+year 2070 2077 |  | 
+DESC:
+Even the top agents of Overwatch were shoved under the rug after the Petra's Act. Tracer was one of the cleanest, most beloved agents the organization had ever seen, and yet upon returning home she went from the face of the strike team, to a dull desk job at the RAF, a position she later learned was meant to be an intentional demotion.
+
+Unsatisfied with the quiet life and lack of heroism in spite of the resume and abilities, she quit the military and began a new life with her new girlfriend, Emily, at an apartment in Wilmington Road. While she was happy with her new life and partner, complementing each other greatly and spending their nights playing long tabletop campaigns, she was only mostly happy. In reality, she still felt aimless without Overwatch, missing those days when she was making a difference. It didn't take long before she found herself on the move, becoming a local vigilante, righting wrongs wherever she still could, stopping thieves and helping the locals in their daily chores whenever the opportunity presented itself. Emily herself supported her activities, seeing them as compensatory heroics, but deep down she only wished for her love to be truly happy once more.
+
+======================================================================
+#263 Vanadium Strand
+year 2069 2077 |  | 
+DESC:
+During an excavation in Petra, Jordan, the Wayfinders found what appeared to be a small vein of an unidentified vanadium isotope, completely undecayed and in a condition not seen outside a laboratory. This was a rare enough find, but it's unique phase-shifting reactions made it extremely indestructible when solidified, and got in the way of the digging expedition.
+
+The Oasis Ministries struck a deal with Dr. Faisal of the Wayfinders, to transfer the material to the University for further research. The head of the Ministry of Geology, Al-Shahrani was currently out studying seismic activity in the Red Sea, so the Vanadium instead found itself a temporary home in the Ministry of Genetics, at Dr. O'Deorain's request. Moira studied the vanadium ferrofluid for years, testing it's applications in medical trials and as an energy source, but this often put her at odds with the Ministry of Geology, which was set back way behind schedule by Moira's insistence to keep the cache.
+
+======================================================================
+#264 Bounty Hunter
+year 2070 2079 |  | 
+DESC:
+Overwatch agents all over the world found themselves blacklisted from almost every single field. It did not matter how many years of service they had done or their accomplishments outside the organization, for most of them, just being associated with Overwatch was enough reason to turn down an application. This reality hit Freja particularly hard, as she dedicated her life to Overwatch, measuring herself by the increasingly difficult missions she had grown used to. Without being able to find a job again and after facing constant rejection, her self-worth disappeared overnight.
+
+That was until a local police department posted about a set of criminals on the loose, which finally made Freja realize that she could still be of use in this new era, just not under search and rescue. Freja began to take bounties in the criminal underworld of Denmark, starting with small jobs to track down and capture criminals behind the back of the law.
+
+Over time, however, this became a full-time compulsion as she began to take bigger, riskier jobs yet again. While at first she limited herself to rescues and taking down criminals, as the money flew in and the rejected applications kept rolling, morality soon became irrelevant, and she continued to chase down bigger fish. She took on the pseudonym of Gefn to protect herself from her feelings towards dubious clientele, and as her notoriety grew, so did her fee. It may not be honest work, but that mattered little anymore. The world turned their backs on Freja, so she carved a new path as one of the most efficient bounty hunters in the whole world.
+
+======================================================================
+#265 Legend of the Junker Queen
+year 2064 2077 |  | 
+DESC:
+Odessa was infamous in the Outback even before becoming the Junker Queen, with many legends telling of her journey to the Burninglands region, where she single-handedly destroyed all 5 of the metal demons, giant Omnic abominations formed into reassembled parts, that cursed anyone dating enough to wonder into their territory. While the veracity of these legends and the period they took place in are still not set in stone, one aspect of the story is indisputably true: the Queen's distaste for Omnics.
+
+Having grown up as a waste lander, Odessa ran into many Feral Omnics over the years, and it shaped in her the idea of taking all you can in order to survive. Now as queen, her thirst for conquest was all the strongest, and having the means to expand her domain, she began to train Junkers from an early age to fight the many dangers of the Outback, including the Omnic Menace, as she called it. For years, Odessa, Meri and even Hammond would join the Scavenger caravans during their many raids into the wasteland with the goal of finding and exterminating any remaining Feral Omnics in the area, diminishing their numbers to near extinction, which only antagonized the few survivors even further. Still, this was not enough to satiate the Queen, who was now waiting to find the next target in her quest to rule the whole world. In the eyes of the Queen, the throne was where she said it was, and her kingdom started and ended wherever she felt like it, so while the Junkers are bound to the Outback right now, if the chance presented itself, they could begin to claim the rest of the world as their own.
+
+======================================================================
+#266 Fire Star
+year 2075 2077 |  | 
+DESC:
+Through many years of training, Ye Anran had become quite the name in competitive dancing and martial arts, but as she grew older, her studies encouraged her to make a choice between her disciplines. Living up to family expectations, Anran was accepted into Wuxing University's Fire College, and announced an early retirement from professional dancing to focus on her Wushu studies instead.
+
+As a Fire College student, she quickly rose to become the star of her class. Wuxing's program trained the future military tacticians of China through the lenses of martial arts and ancient philosophy, so Anran's strict regimes and dedication sent her right to the top. This extraordinary competence, however, made her quite intimidating to most of her classmates, because while she was an undeniable role model, her harsh, blunt constructive criticism was tough to swallow for most, especially her little brother Wuyang, who was set to join her in Fire College only a couple of years later. Still, anyone brave enough to withstand the fire from her words, quickly found themselves improving alongside her, so even as a first year, Anran was the undeniable star student of Wuxing, making her parents proud.
+
+======================================================================
+#267 Train Hopper
+year 2070 2077 |  | 
+DESC:
+Cassidy had fallen far from Overwatch following Petra's accords. Over the years since Venice, he has grown to question his role in Overwatch, if they ever did enough good to outweigh the bad, or if Reyes merely turned him into a weapon for his own crusade instead. He figured Deadlock would want nothing to do with him anyway after signing up to be a part of Overwatch, and for as much as he felt out of place with the good guys, he would not even consider Talon as an option. So, instead, much like Freja, he became a gun for hire, fighting causes he believed were just to get by.
+
+He made many enemies during his many jobs and often landed in local jail cells, eventually losing his left arm, though the story behind this is still unknown. During those outlaw days, he would also meet Sombra at a bar down in Mexico and use her as a way to gather Intel on jobs, like many other lost souls tended to do when they spend long enough in the shadows. He didn't stay in the same place for long, often hopping from one train to another to move across the States. While resting on a ride on a Houston-bound Hyperloop, he saw a Talon squadron attempting to take over the train. The Gunslinger noticed the troopers were using Blackwatch tactics, not going after him but instead searching for something inside the train.
+
+If he did not act he would have this whole ordeal pinned on him, so he began to take down the troopers inside the wagons, but the soldiers kept coming without any signs of stopping. As he made his way down the train, he found an ominous glowing box, seemingly Talon's target. Without concerning much about the nature of the payload, he tossed it out of the wagon, confident that if Talon got to keep it they would leave the train and its civilians alone. Cassidy got to enjoy the rest of the ride as a proper lawful passenger, and when news broke out that the attack was being blamed on him, the staff kindly agreed to tell the truth to the police and fudge the arrival times enough to allow him to make an exit.
+
+======================================================================
+#268 Traitor
+year null null |  | 
+DESC:
+After fleeing Talon, Baptiste sat in Tortuga for a while, but it didn't take long before Talon began sending agents after him. One after the other they would try to silence him, many of them Baptiste's old comrades. He knew too much and was too dangerous to be let go, and Cuerva himself wished they could still talk some sense into him, but if they failed to capture him, they would be forced to eliminate him.
+
+During their attempts, however, several of the operatives in Cuerva's units went missing, and a letter made its way back to Cuerva containing their emblems torn straight out of their uniforms. Contact with Cuerva himself was lost not long after, but he always said that Baptiste had the devil's own luck on his side. His team made the mistake of going after Baptiste one by one, allowing him to take them down and leave Cuerva for last.
+
+Knowing Talon would not stop, Baptiste began to drift from place to place, never staying too long, only occasionally returning home to check on his local clinic. He wished to help make a better world in any way he could, to make up for his mistakes. For some people, this meant a band aid, for others, a bullet. He knew he couldn't erase the past, but he could at least make a difference where it mattered, so he began carrying out humanitarian efforts while keeping a low profile on his travels, trying to make a difference while still on the run.
+
+======================================================================
+#269 Sonic Policing
+year 2070 2077 |  | 
+DESC:
+When Vishkar took control of Rio's renovation, the locks were told they were going to make Rio a better place, but it went down the same way all their other projects did. Failed promises, displacement and poverty, enforcing of curfews and ordinances to suppress local traditions, and even exploiting the populace for cheap labor. But there was still one silver lining for the people of Brasil in the form of Benicio Dos Santos.
+
+Benicio was a local scientist who dedicated his life to the study of sound and its applications as a medium for healing technology. He had joined Vishkar so that, with their help, he would be able to fully develop his prototypes into something that could help his people. Instead, when he presented his inventions to Vishkar, they claimed ownership of the technology and adopted its more destructive capabilities into police equipment, to be used against protesters for quick and forceful neutralizing of anyone who got in their way. 
+
+This technology was used even outside of Rio, later adopted by the London Police to suppress the Omnics of the Underworld, with Vishkar's own vice president Vaira Singhania adopting the technology into her assistive arms for personal protection. What was meant to be Benicio's gift to Rio was turned into yet another tool for oppression, and while Vishkar thought this was just like any of their previous projects, this time the water was beginning to boil, and the people of Rio were beginning to grow tired of their games.
+
+======================================================================
+#270 Crime Spree
+year 2070 2077 |  | 
+DESC:
+Junkrat and Roadhog continued wrecking havoc in Junkertown, angering most of the city. After a string of incidents that placed them on the Queen's bad side, enough was enough. Odessa's hands to put some order if she wanted to still be respected amongst the Junkers.
+
+As an act of mercy, the Queen did not order their execution, instead removing them from the city and threatening to properly kill them if they ever tried to return. Junkrat blamed the situation on Roadhog without much thought, and quickly began to hatch a plan to break into the city and enact their revenge.
+
+There are two things that solve any problem, according to Junkrat himself: money and explosives. In order to set his secret master plan in motion, the pair needed a lot of riches, so after wandering their way out of the outback, they began an international crime spree. Reported by A Moment in Crime's programming, the Junker duo gained notoriety for a string of robberies, including other crimes like arson, murder, and even stealing the crown jewels in London. Going by the creed of "No job too big, no score too small", they spread mayhem across the whole world, causing a loss of millions in property damage and injured casualties, eventually earning a bounty of up to $25 million.
+

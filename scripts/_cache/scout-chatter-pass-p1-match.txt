@@ -1,0 +1,45 @@
+﻿Chatters loaded: 881
+Page 1 (#1ΓÇô10), minScore=48
+
+#1 Siebren De Kuiper is Born ΓÇö BIRTHDAY skip
+
+#2 Reinhardt Wilhelm is Born ΓÇö BIRTHDAY skip
+
+#3 Ana Amari is Born ΓÇö BIRTHDAY skip
+
+#4 Gabriel Reyes is Born ΓÇö BIRTHDAY skip
+
+#5 Torbj├╢rn Lindholm is Born ΓÇö BIRTHDAY skip
+
+==== #6 Medical Miracles ====
+heroes: (none)
+existing: Getting use to it | Family Business
+(no strong chatter candidates)
+
+==== #7 Crystal Clear ====
+heroes: (none)
+(no strong chatter candidates)
+
+#8 John Francis Morrison is Born ΓÇö BIRTHDAY skip
+
+==== #9 Greener Energy ====
+heroes: (none)
+(no strong chatter candidates)
+
+==== #10 Cleaner Oceans ====
+heroes: (none)
+(no strong chatter candidates)
+
+node : (node:30628) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-9c0ee7b1-2451-4272-85a6-181f9da174c4.ps1:92 char:133
++ ... events.txt; node scripts/_cache/scout-chatter-pass-match.mjs 1 48 2>& ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:30628) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

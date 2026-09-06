@@ -14,6 +14,7 @@ import {
     closeDialogueTheaterInfoPanel,
     isDialogueTheaterInfoPanelActive,
 } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
+import { stopStoryCommentaryDirectPlay } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { clearEventSourceMediaEmbed } from '../image-overlay/eventSourceMediaOverlay.js';
 
 function restoreHubMenuIfHidden() {
@@ -40,6 +41,8 @@ export function runHideEventSlide(slide) {
                 closeDialogueTheaterInfoPanel();
                 return;
             }
+
+            stopStoryCommentaryDirectPlay({ restoreEventImage: false });
 
             const eventSlide = document.getElementById('eventSlide');
             const eventImageOverlay = document.getElementById('eventImageOverlay');

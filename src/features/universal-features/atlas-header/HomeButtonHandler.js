@@ -84,8 +84,10 @@ export function attachHomeButtonHandler(homeButton) {
 
     await unloadActiveModeBeforeReturningHome(currentMode);
 
+    // Keep Atlas News headlines scrolling on Home — same as World exit.
+    // Clearing them left an empty strip until the next pagination page-turn.
     if (typeof window.restoreMainMenu === "function") {
-      await window.restoreMainMenu();
+      await window.restoreMainMenu(true);
     }
 
     clearCurrentMode();

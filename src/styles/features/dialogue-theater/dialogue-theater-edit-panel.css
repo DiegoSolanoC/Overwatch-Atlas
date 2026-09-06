@@ -178,6 +178,129 @@
     color: rgba(255, 255, 255, 0.92);
 }
 
+/* Story commentary cites — reuse Event Manager / Story list thumb CSS via #dialogueTheaterStoryCommentaryRefs */
+.dialogue-theater-edit__story-refs {
+    margin: 18px 0 0;
+}
+
+#dialogueTheaterStoryCommentaryRefs.events-list.dialogue-theater-edit__story-refs-row {
+    /* Match Story timeline parallelogram sizing (story-viewer embedded timeline) */
+    --em-visual-min: 200px;
+    --em-visual-max: 248px;
+    flex: 0 0 auto;
+    overflow: visible;
+    margin-top: 8px;
+    margin-bottom: 0;
+    max-height: none;
+    min-height: 0;
+    /* Panel is narrower than the dock list — keep dock min column width */
+    grid-template-columns: repeat(auto-fill, minmax(198px, 1fr));
+}
+
+#dialogueTheaterStoryCommentaryRefs .event-item {
+    cursor: pointer;
+}
+
+#dialogueTheaterStoryCommentaryRefs .event-item:focus-visible {
+    outline: 2px solid rgba(33, 150, 243, 0.85);
+    outline-offset: 2px;
+}
+
+body.color-palette-gray #dialogueTheaterStoryCommentaryRefs .event-item:focus-visible {
+    outline-color: rgba(255, 102, 0, 0.9);
+}
+
+/* Chatter hub — era/status + exclusive category filters */
+.dialogue-theater-edit__chatter-cats {
+    margin: 0 0 18px;
+}
+
+.dialogue-theater-edit__section-head--spaced {
+    margin-top: 18px;
+}
+
+.dialogue-theater-chatter-era-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: 12px;
+}
+
+.dialogue-theater-chatter-era-status .dialogue-theater-chatter-filter-row {
+    margin-top: 0;
+}
+
+.dialogue-theater-chatter-era-status__rule {
+    width: 1px;
+    align-self: stretch;
+    min-height: 48px;
+    background: rgba(255, 255, 255, 0.28);
+    flex: 0 0 1px;
+}
+
+@media (max-width: 520px) {
+    .dialogue-theater-chatter-era-status__rule {
+        display: none;
+    }
+}
+
+.dialogue-theater-chatter-filter-row,
+.dialogue-theater-chatter-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.dialogue-theater-chatter-cats--kinds {
+    gap: 8px;
+}
+
+.dialogue-theater-chatter-cat {
+    margin: 0;
+    padding: 14px 20px;
+    min-height: 48px;
+    border: 2px solid rgba(255, 255, 255, 0.32);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.42);
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.dialogue-theater-chatter-cats--kinds .dialogue-theater-chatter-cat {
+    padding: 10px 14px;
+    min-height: 40px;
+    font-size: 14px;
+}
+
+.dialogue-theater-chatter-cat--group {
+    min-width: 7.5rem;
+}
+
+.dialogue-theater-chatter-cat:hover {
+    border-color: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.dialogue-theater-chatter-cat--on {
+    border-color: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.95);
+    background: rgba(var(--accent-primary-rgb, 33, 150, 243), 0.34);
+    color: #fff;
+    box-shadow: 0 0 0 1px rgba(var(--accent-primary-rgb, 33, 150, 243), 0.35);
+}
+
+.dialogue-theater-chatter-cat:focus-visible {
+    outline: 3px solid rgba(var(--accent-primary-rgb, 33, 150, 243), 0.95);
+    outline-offset: 2px;
+}
+
 .dialogue-theater-edit__picker-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
@@ -531,6 +654,19 @@
 .dialogue-theater-edit__view-line--classic.dialogue-theater-edit__view-line--removed {
     background: rgba(180, 96, 24, 0.3);
     border-color: rgba(255, 170, 80, 0.4);
+}
+
+/* Story Commentary → Open: focus the specific chatter line */
+.dialogue-theater-edit__view-line--focus {
+    border-color: rgba(76, 175, 80, 0.85);
+    background: rgba(76, 175, 80, 0.18);
+    box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.35);
+}
+
+.dialogue-theater-edit__view-line--focus.dialogue-theater-edit__view-line--classic,
+.dialogue-theater-edit__view-line--focus.dialogue-theater-edit__view-line--removed {
+    border-color: rgba(76, 175, 80, 0.85);
+    background: rgba(76, 175, 80, 0.18);
 }
 
 .dialogue-theater-line__row {

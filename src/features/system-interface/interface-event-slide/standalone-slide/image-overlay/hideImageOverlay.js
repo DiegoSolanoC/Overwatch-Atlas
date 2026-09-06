@@ -12,6 +12,10 @@ import {
     isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import {
+    isStoryCommentaryDirectPlayActive,
+    stopStoryCommentaryDirectPlay,
+} from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
 
@@ -24,6 +28,10 @@ export function runHideImageOverlay(slide) {
                 return;
             }
 
+            if (isStoryCommentaryDirectPlayActive()) {
+                stopStoryCommentaryDirectPlay({ restoreEventImage: false });
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const eventSlide = document.getElementById('eventSlide');
             const toggleBtn = document.getElementById('eventImageToggle');
@@ -33,13 +41,15 @@ export function runHideImageOverlay(slide) {
                 slide.activePdfSourceUrl = '';
             }
             if (overlay) {
-                overlay.classList.remove('open');
+                overlay.classList.remove('open', 'dialogue-theater-stage-overlay');
+                delete overlay.dataset.storyCommentaryDirectPlay;
                 // Only remove slide-open if event slide is closed
                 if (!eventSlide?.classList.contains('open')) {
                     overlay.classList.remove('slide-open');
                 }
                 overlay.style.display = 'none';
                 overlay.style.opacity = '0';
+                overlay.style.removeProperty('pointer-events');
             }
             
             const img = document.getElementById('eventImage');
@@ -48,6 +58,8 @@ export function runHideImageOverlay(slide) {
                 img.style.display = 'none';
                 img.style.opacity = '0';
             }
+
+            document.getElementById('dialogueTheaterStage')?.remove();
             
             // Update button text
             if (toggleBtn) toggleBtn.textContent = 'Show Image';

@@ -1,0 +1,213 @@
+﻿=== SIERRA dialogues ===
+free  Favorite Animals
+  L├║cio: So, I'm tryna ask everybody this: what is your favorite animal?
+  Ana: The caracal.
+  Anran: Oh, the orchid mantis! Especially the pink ones!
+  Ashe: I'm partial to scorpions.
+free  Got each other
+  Sierra: Saw you training with your brother the other night. You two make a real good team!
+  Anran: Thanks. He's always teaching me new tricks, too.
+  Sierra: I bet! You're lucky you've got each other.
+  Anran: **sigh** We really are.
+USED  Like the Glory Days
+  Sierra: Coming back to Overwatch after all these years... does it feel like you're reliving the glory days?
+  Ana: "Glory days?" You sound just like Reinhardt.
+  Sierra: I'll be taking that as a good thing, Captain.
+  Ana: He'd certainly like it if you did.
+free  Tugging Heartstrings
+  Sierra: Seeing you and Fareeha out here in the thick of it... Wish I could have that with my mom.
+  Ana: Even when I was apart from my daughter, I never stopped loving her. I'm sure your mother feels the same.
+  Sierra: **sniffs and chuckles** You really know how to tug at a girl's heartstrings. Don't cha, Captain?
+  Ana: **chuckles** Mothers always do.
+free  Welcome Party
+  Ashe: How's our base looking these days, sweetheart? You fix that Bob-shaped hole in the wall yet?
+  Sierra: Why don't you swing by? See for yourself. We'll even throw you a little welcome party.
+  Ashe: I'm sure it'll be a real barn burner.
+  Ashe: I'll bring the fireworks.
+free  Without my mom
+  Sierra: You know, the first year without my mom... it was real hard. Didn't open up for a while.
+  Hanzo: I did not have the luxury of time to grieve. My family needed my strength.
+  Sierra: And now they're grown! When it comes to feeling your feelings, it's better late than never.
+  Hanzo: I... I will keep that in mind.
+free  Never lose sight
+  Sierra: You've been with Overwatch a long time. Any advice for a new recruit?
+  Genji: Hmm... never lose sight of your teammates.
+  Sierra: Well, you're the last person I'd expect to hear that from!
+  Genji: It is important to learn from our mistakes.
+free  Don't call me anything
+  Sierra: Gabriel Reyes... I know that name. Soldier 24, right?
+  Reaper: Nobody calls me that anymore.
+  Sierra: Well, I'm not about to call you "Reaper".
+  Reaper: Then... don't call me anything.
+free  Behind bars
+  Sierra: You might've gotten away from me once, but I won't quit until you're both behind bars.
+  Emre: *(chuckle)* I'm working with the world's best bounty hunter. Good luck tracking us down.
+  Freja: If your tracking skills are like the security at Grand Mesa, I expect I'll be fine.
+free  Naughton Vault
+  Sierra: The Naughton Vault requires top security clearance. How'd you get your intel?
+  Freja: Sorry, kid. Confidentiality's just as important in my line of work as it is in yours.
+  Sierra: Then as a professional, you know I have to get answers.
+  Freja: Let this one go. For your own good.
+free  Watch your Back
+  Sierra: Better watch your back, now. Helix is going to wipe your whole operation off the map.
+  Ashe: I reckon they'll try. But when I'm through, the West'll be wild again.
+free  Working with Overwatch
+  Brigitte: How are you liking working with Overwatch, Sierra?
+  Sierra: Oh, it's amazing! Y'all are so smart, and kind, and... well, nothing beats working with heroes!
+  Brigitte: *chuckle* That's exactly what I've been hearing about you, too.
+free  Sharpshooters
+  Cassidy: I've had my problems with Helix, but I'll be damned if they don't train up some real sharpshooters.
+  Sierra: Careful now, cowboy. That's almost a compliment.
+free  Mount Washington
+  Sierra: I think you could use an adventure, Mei! You ever hike Mount Washington?
+  Mei: No, but I've read about it. They have such interesting weather patterns there.
+  Sierra: Yeah, and the fog stretches for miles. I'll take you with me next time.
+free  Glad you joined
+  Sojourn: I'm glad you joined us. We're going to need all the help we can get to take Talon down.
+  Sierra: Hah, my mom always told me to stand up for what's right. And it doesn't get much more wrong than Talon.
+free  Jack Morrison
+  Sojourn: So what exactly are you looking to learn about Jack Morrison?
+  Sierra: Honestly? Whatever you've got.
+USED  Enhancement Program
+  Sierra: You were the Enhancement Program's best soldier. There's gotta be something you can tell me.
+  Soldier 76: The Naughton project's ancient history. It's been shut down for decades.
+  Sierra: Your "ancient history" is all I've got to go on.
+  Soldier 76: Trust me, kid: the last thing you need is my past catching up to you, too.
+free  Stay buried
+  Sierra: You know, you're not the only one chasing down leads. Maybe we can help each other.
+  Soldier 76: Some things stay buried for a reason. Digging them up can get you killed.
+  Sierra: Yeah? When did that ever stop you?
+  Soldier 76: Guess that's fair.
+free  Dorothy
+  Sierra: Whoof, Dorothy's looking a little worse for wear after that last mission...
+  Torbj├╢rn: Just swing by my workshop after this. I'll patch her up.
+  Sierra: Wow! You mean it, Dr. Lindholm? That'd be amazing!
+  Torbj├╢rn: Please, Dr. Lindholm is my wife!
+
+=== Mei storm rising ===
+free Mei ┬╖ Havana ΓÇö Weather report: a storm is rising!
+
+=== Named extras ===
+
+free | Next Funeral
+  Hazard: Looking forward to crashin' your next funeral, captain.
+  Ana: Keep running your mouth like that, and I'm sure to outlive you.
+
+free | Anubis's Jailers
+  Ramattra: You were one of Anubis's jailers. You should have destroyed it.
+  Pharah: That is... not what I would have expected you to say.
+  Ramattra: Of course not. You *humans* love your assumptions.
+
+USED | Rate the Prison
+  Shion: How would you rate our prison cells? I'm looking to make them worse.
+  Hanzo: I am shocked you keep them at all, given the rumors about your past...
+  Shion: They're all true. But *I* hold the keys, now... and I make for a cruel warden.
+
+free | Coward Run
+  Soldier 76: I heard you chased Doomfist out of Numbani.
+  Orisa: Making a coward run is no challenge.
+  Soldier 76: Hm, we could've used you in the old days.
+
+free | How can you live with yourself
+  Mei: Doomfist, how can you live with yourself? So many people have died because of you!
+  Doomfist: Yes, but many more have lived.
+  Mei: That makes no sense! Do you hear yourself? Ugh, you're the worst.
+
+free | Inefficient
+  Doomfist: A claw hand? Inefficient.
+  Torbj├╢rn: Well, we can't *all* have ultra-powerful gauntlets.
+  Doomfist: No. You cannot.
+
+free | Enjoying Prison
+  Orisa: Efi visited her cousin recently. I will not forgive what Talon turned him into.
+  Doomfist: Ah, yes. How is Bisi enjoying prison?
+  Orisa: Ask... when I lock *you* up with him.
+
+free | More Wires than Skin
+  Reaper: What the hell happened when you disappeared? You're more wires than skin now.
+  Emre: When's the last time *you* looked in a mirror, Reyes? You're not one to talk.
+
+free | Jack Morrison
+  Sojourn: So what exactly are you looking to learn about Jack Morrison?
+  Sierra: Honestly? Whatever you've got.
+
+free | Giving up on you
+  Mercy: I'm not giving up on you, Reyes.
+  Reaper: I wish you would.
+
+free | Complicated
+  Cassidy: Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative?
+  Emre: I promise... it's more complicated than what you think.
+  Cassidy: Yeah. Awful convenient excuse, don't ya think?
+  Emre: I know where you've been since Blackwatch, Cass. You don't get to jodge.
+
+=== backlash / disband / overwatch end ===
+free  Into the thick of it
+free  Care to listen
+free  What is left
+free  Soft Criminals
+free  Adapt to the Team
+free  Unworthy of┬á your Talents
+free  Overwatch failed you
+free  Criminals
+free  Threat to myself and others
+free  No Honor
+free  A new answer
+USED  Tempting
+free  Overwatch Survived
+free  So Miserable
+free  Not Hanging up
+free  At Gibraltar
+free  Answer the recall
+free  Hoping for Overwatch
+free  Spiffing Up
+free  Running from Responsability
+free  Life Before Overwatch
+free  Working with Criminals
+free  Working with Overwatch
+free  Concert together
+free OW1 Overwatch Brats
+free OW1 Just Recall
+USED OW1 Disgrace to Overwatch
+free OW1 Narrow Opinion
+free OW1 No Need for Assistance
+free  You have come far
+free  Condolences
+
+=== Winston + Doomfist dialogues ===
+free  Favorite Animals
+  L├║cio: So, I'm tryna ask everybody this: what is your favorite animal?
+  Ana: The caracal.
+  Anran: Oh, the orchid mantis! Especially the pink ones!
+free  Periodic Table
+  Winston: Anyone wanna hear my favorite joke about the periodic table?
+  Ana: No thank you.
+  Ashe: Can't say I do.
+free  Monkeys with Glasses
+  Illari: I didn't know monkeys needed glasses.
+  Winston: Actually, I'm a gorilla... And a scientist.
+free  Firm Handshake
+  Mauga: I've *always* wanted to pet a gorilla.
+  Winston: **nervous chuckle** How about a firm handshake, with the guns down?
+free OW1 Giant Gorilla
+  D.va: A giant gorilla! Just like in those old video games!
+  Winston: I get that a lot.
+free OW1 Stopped you once
+  Doomfist: I didn't forget about you.
+  Winston: I stopped you once. I can do it again!
+free OW1 Beaten by a Monkey
+  Sombra: Isn't it a little embarrassing to get beaten up by a monkey?
+  Doomfist: Have you ever been hit by a giant, genetically engineered gorilla? I could arrange it for you...
+node : (node:2784) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/Pr
+ojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-88c47d5c-a44f-4257-9d8a-73da30b0be6d.ps1:92 char:1
++ node scripts/_cache/scout-page24-extra.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:2784) [MO...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

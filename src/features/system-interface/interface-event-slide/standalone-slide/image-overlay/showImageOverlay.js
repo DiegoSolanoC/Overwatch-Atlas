@@ -12,6 +12,10 @@ import {
     showDialogueTheaterImageOverlay,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
 import {
+    isStoryCommentaryDirectPlayActive,
+    stopStoryCommentaryDirectPlay,
+} from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
+import {
     isMobileEventSlideViewport,
     syncMobileEventSlideLayoutForImageShown,
 } from './mobileEventSlideImageLayout.js';
@@ -26,6 +30,14 @@ export function runShowImageOverlay(slide, imagePath) {
                 return;
             }
 
+            // Never reopen story image while a Direct Play stage is still attached.
+            if (
+                isStoryCommentaryDirectPlayActive()
+                || document.getElementById('dialogueTheaterStage')?.dataset?.sceneUrlOverride
+            ) {
+                stopStoryCommentaryDirectPlay({ restoreEventImage: false });
+            }
+
             const overlay = document.getElementById('eventImageOverlay');
             const img = document.getElementById('eventImage');
             const eventSlide = document.getElementById('eventSlide');
@@ -38,11 +50,16 @@ export function runShowImageOverlay(slide, imagePath) {
                     slide.activePdfSourceUrl = '';
                 }
 
+                document.getElementById('dialogueTheaterStage')?.remove();
+                overlay.classList.remove('dialogue-theater-stage-overlay');
+                delete overlay.dataset.storyCommentaryDirectPlay;
+
                 img.src = imagePath;
                 img.style.display = 'block';
                 img.style.opacity = '1';
                 overlay.style.display = 'flex';
                 overlay.style.opacity = '1';
+                overlay.style.removeProperty('pointer-events');
                 overlay.classList.add('open');
                 // Add slide-open class if event slide is open (positions image to the right of panel)
                 if (eventSlide?.classList.contains('open')) {
@@ -60,6 +77,7 @@ export function runShowImageOverlay(slide, imagePath) {
                     overlay.addEventListener('click', (e) => {
                         if (isMobileEventSlideViewport()) return;
                         if (isDialogueTheaterImageOverlayContext()) return;
+                        if (isStoryCommentaryDirectPlayActive()) return;
                         if (shouldIgnoreOverlayClickForSourceMedia(e)) return;
 
                         if (e.target === overlay || e.target.tagName === 'IMG') {

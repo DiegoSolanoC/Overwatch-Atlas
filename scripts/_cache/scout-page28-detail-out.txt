@@ -1,0 +1,179 @@
+﻿
+=== free | Dorothy ===
+  Sierra: Whoof, Dorothy's looking a little worse for wear after that last mission...
+  Torbj├╢rn: Just swing by my workshop after this. I'll patch her up.
+  Sierra: Wow! You mean it, Dr. Lindholm? That'd be amazing!
+  Torbj├╢rn: Please, Dr. Lindholm is my wife!
+
+=== free | Naughton Vault ===
+  Sierra: The Naughton Vault requires top security clearance. How'd you get your intel?
+  Freja: Sorry, kid. Confidentiality's just as important in my line of work as it is in yours.
+  Sierra: Then as a professional, you know I have to get answers.
+  Freja: Let this one go. For your own good.
+
+=== free | Watch your Back ===
+  Sierra: Better watch your back, now. Helix is going to wipe your whole operation off the map.
+  Ashe: I reckon they'll try. But when I'm through, the West'll be wild again.
+
+=== free | Working with Overwatch ===
+  Brigitte: How are you liking working with Overwatch, Sierra?
+  Sierra: Oh, it's amazing! Y'all are so smart, and kind, and... well, nothing beats working with heroes!
+  Brigitte: *chuckle* That's exactly what I've been hearing about you, too.
+
+=== free | Just your Type ===
+  Baptiste: Angela, I met someone the other day who I think is *just* your type. Handsome, kind, several doctorates...
+  Mercy: **laughs** I'm afraid there's someone else I have my eye on.
+  Baptiste: Oh? Anyone I know?
+  Mercy: Well, with any luck, you'll find out soon enough.
+
+=== free | Still Hiding ===
+  Pharah: You're *still* hiding. When are you coming back for good?
+  Ana: I'm trying, Fareeha. Please, be patient with me.
+  Pharah: I've been patient for years. What's a little while longer?
+
+=== free | Thank you Mother ===
+  Pharah: Thank you, mother...
+  Ana: You're welcome, Fareeha...
+
+=== free | Unstoppable ===
+  Reinhardt: Ana... when we work together, we are unstoppable!
+  Ana: You don't have to shout, Reinhardt. I'm right here.
+
+=== USED ΓåÆ #255 Chivalry | Working Order [OW1] ===
+  Torbj├╢rn: How's Brigitte doing? Keeping everything in working order?
+  Reinhardt: A knight could not ask for more from his squire!
+
+=== USED ΓåÆ #255 Chivalry | Dragging Brigitte [OW1] ===
+  Mercy: Reinhardt. I don't approve of you dragging that poor girl around on your adventures.
+  Reinhardt: Brigitte has made her choice. I would have her at my side.
+  Torbj├╢rn: Angela, you should know that no one could stop Brigitte from doing something she had her mind set on. She is a Lindholm after all.
+
+=== free | Medieval History ===
+  Venture: This place is incredible! Ah, I wish I knew more Medieval history.
+  Reinhardt: Perhaps I could regale you with the time-honored tales of a brave knight and his noble squire!
+  Venture: No way! Tell me, tell me!
+  Brigitte: Just make sure you do some fact-checking when he's done.
+
+=== free | Not getting any Taller ===
+  Reinhardt: Brigitte, isn't it time to size up your armor? It's been ages!
+  Brigitte: I'm not getting any taller.
+  Reinhardt: What? Why not? Aim to be as huge as me!
+  Brigitte: Considering Papa, I'm already a lot taller than expected.
+
+=== free | Thinking Ahead ===
+  Mauga: Gonna enjoy filling that shield with bullets.
+  Reinhardt: Ugh. Can't you wait until *after* this mission?
+  Mauga: Don't worry. Heh, just thinking ahead.
+
+=== free | Two Geniuses ===
+  Junkrat: Jamison Fawkes and Torbj├╢rn Lindholm. Two handsome geniuses, just chit-chattin' away!
+  Torbj├╢rn: You can't be serious.
+  Junkrat: Don't be so hard on yourself!
+
+=== free | Back so Soon ===
+  Torbj├╢rn: I'll be honest, Reinhardt... When you left after the Titan attack, I didn't expect you back so soon.
+  Reinhardt: Oh, but how could I leave Ingrid with no one to enjoy her delicious kanelbullar?!
+  Torbj├╢rn: **sigh** That's exactly my point. We didn't plan for you in this month's grocery budget!
+
+=== free | Hashimoto Bounties ===
+  Kiriko: I have some bounties you might want. Five of them, actually.
+  Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to mess with the Hashimoto.
+  Kiriko: All right... Then how are you with rescue missions?
+  Freja: Ah. If you've got the money, let's talk.
+
+=== free | Resolving Differences ===
+  Genji: I was sorry to hear about your grandmother's passing. It must have been difficult.
+  Kiriko: Yeah... it was right after mom made me quit my miko duties. I couldn't look her in the eye for *weeks.*
+  Genji: I am glad you've resolved your differences. Not every family can.
+  Kiriko: Me too. Better late than never.
+
+=== free | Open her eyes ===
+  Kiriko: The Hashimoto have completely overrun Tokyo. It's not much better in Kanezaka, either.
+  Genji: I see how much you need me. But I do not know if the commander will permit my absence.
+  Kiriko: She should open her eyes. If you don't come back now, there won't be anything left.
+
+=== free | Her own Mistakes ===
+  Hanzo: Kiriko has grown surprisingly capable. But at times, her na├»ve perspective puts her in danger.
+  Genji: Let her be. She must learn from her own mistakes.
+  Hanzo: You would have *me* turn a blind eye after how long we left her on her own?
+  Genji: Our absence is what lost us the right to guide her.
+
+=== free | Old Wounds ===
+  Ana: I know that look. Mending an old wound?
+  Hanzo: I wronged someone dear to me. The path to redemption is... trying.
+  Ana: It's not pleasant. But you'll see it was worth it in the end.
+  Hanzo: I hope so.
+
+=== free | Resistance ===
+  L├║cio: Doesn't matter how many "accidents" you cover up. Rio won't stop fighting to keep Vishkar out of our home!
+  Domina: This is your attempt at resistance? Huh, I hardly noticed.
+
+=== free | Grown a lot ===
+  L├║cio: You seem... different, Orisa.
+  Orisa: That may be. I have grown much since our first encounter.
+  L├║cio: Hey, we're all growing. Just don't forget who you are, okay?
+  Orisa: Never, L├║cio.
+
+=== free | Music Festival ===
+  Brigitte: Papa, remember the music festival I took you to? The headliner, L├║cio, joined Overwatch!
+  Torbj├╢rn: Well, if Null Sector finds that *racket* as distressing as I did, he'll be a great addition.
+
+=== free | New Single ===
+  L├║cio: Can you believe it?! L├║cio and Orisa... saving the world with Overwatch!
+  Orisa: It hardly feels real. I am honored to fight at your side, L├║cio!
+  L├║cio: And, hey. I want to feature you on my new single!
+  Orisa: Ah... of course. Please excuse me. **hushed, excited cry**
+
+=== free | Vigilante Route ===
+  Ana: I'm a little surprised we both went the vigilante route.
+  Sojourn: What can I say? We've got good sense.
+
+=== free | Vigilantes ===
+  Symmetra: Vigilantes have no place in the world we're building.
+  Soldier 76: And Vishkar has no place in mine.
+
+=== free | Traditional Armaments ===
+  Cassidy: I appreciate a man with traditional taste in armaments.
+  Hanzo: Have you ever fired a bow?
+  Cassidy: No, but you won't catch me with one of those pulse rifles, either.
+
+=== free | War isn't a game ===
+  Reaper: War isn't a game, girl.
+  D.va: That's funny. **laugh** Soldier: 76 said the same thing!
+  Soldier 76: War isn't a game
+  D.va: Are you sure life isn't a game, Soldier 76
+
+=== free | Burning the World Down ===
+  Vendetta: That one as selfish as you would reject my cause is unsurprising, but disappointing nonetheless.
+  Sombra: Of course I left. You're burning the world down!
+  Vendetta: Flee, then. May you waste your life outrunning your regret.
+
+=== free | Mech Mechanic ===
+  D.va: I should introduce you to Dae-hyun! He takes care of my mech when I'm back home.
+  Brigitte: If that's true, he must have lots of experience.
+  D.va: Yeah, he... Hey!
+
+=== free | In the Sky ===
+  Sojourn: Bet it's fun, hanging out in the sky.
+  Echo: I do enjoy the perspective and tactical advantages, yes.
+  Sojourn: Do you... ever pretend you're a bird?
+  Echo: Constantly!
+
+=== free | Who is your Mechanic [OW1] ===
+  Brigitte: Hey, D.Va... Who's your mechanic? They do good work.
+  D.va: Dae-Hyun! He's great, isn't he?
+
+=== free | Vintage Vinyl ===
+  Tracer: A friend of mine has a massive collection of vintage vinyl.
+  L├║cio: That's sick! If they want, I can send them some stuff too.
+  Tracer: Iggy would love that!
+
+=== free | Keeping in Touch ===
+  Tracer: Iggy tells me you kept in touch after your little record trade.
+  L├║cio: Yeah! We've been vibing about our favorite tunes. She's got great taste!
+  Tracer: **giggles** Great taste in DJ's, too!
+  L├║cio: You think so? **clears throat** That's... t-that'd be somethin' else.
+
+=== free | Inspiration [OW1] ===
+  Mei: Tracer, you're so amazing! You inspire me.
+  Tracer: Mei, you're the real hero!

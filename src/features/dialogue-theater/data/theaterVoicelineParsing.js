@@ -449,11 +449,14 @@ export function resolveLineVoiceFile(line, voicelines) {
     const stored = String(line?.voice || '').trim();
     if (stored && /\.(ogg|mp3|wav|m4a|webm)$/i.test(stored)) {
         const hero = String(line?.hero || '').trim();
-        if (!hero || voicelineBelongsToHero(stored, hero)) return stored;
-        // Imported lines can carry skin-prefixed hero labels — keep an explicit voice file.
-        if (!Array.isArray(voicelines) || voicelines.length === 0 || voicelines.includes(stored)) {
-            return stored;
-        }
+        const listed =
+            !Array.isArray(voicelines)
+            || voicelines.length === 0
+            || voicelines.includes(stored);
+        // Prefer the stored path only when it exists in scanned theater assets
+        // (or assets aren't loaded yet). Missing imports must not enable Play.
+        if (listed && (!hero || voicelineBelongsToHero(stored, hero))) return stored;
+        if (listed) return stored;
     }
 
     return findVoicelineForHeroAndSubtitles(

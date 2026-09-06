@@ -28,7 +28,6 @@ import { DIALOGUE_THEATER_RETIRED_WORKING_TAGS } from '../dialogue-theater-list/
 import {
     buildDialogueTheaterBundleStamp,
     clearDialogueTheaterBundleStamp,
-    readDialogueTheaterBundleStampFromMeta,
     readStoredDialogueTheaterBundleStamp,
     writeDialogueTheaterBundleStamp,
 } from './dialogueTheaterBundleStamp.js';
@@ -40,6 +39,21 @@ export const DIALOGUE_THEATER_TAGS_RESET_KEY = 'dialogueTheaterTagsResetAt';
 const FILE_URL = FILES.dialogueTheater.conversations;
 const RETIRED_WORKING_TAGS = new Set(DIALOGUE_THEATER_RETIRED_WORKING_TAGS);
 const EXPORT_FILENAME = 'dialogue-theater-export.json';
+
+/**
+ * @param {unknown} err
+ * @returns {boolean}
+ */
+function isQuotaExceededError(err) {
+    if (!err || typeof err !== 'object') return false;
+    const e = /** @type {{ name?: string, code?: number }} */ (err);
+    return (
+        e.name === 'QuotaExceededError'
+        || e.name === 'NS_ERROR_DOM_QUOTA_REACHED'
+        || e.code === 22
+        || e.code === 1014
+    );
+}
 
 /**
  * Escape hatch: `?resetDialogue=1` drops cached theater conversations and reloads from the bundle.
@@ -495,9 +509,9 @@ class DialogueTheaterDataService {
             return;
         }
 
-        const fileStamp =
-            readDialogueTheaterBundleStampFromMeta() ||
-            buildDialogueTheaterBundleStamp(fileNormalized);
+        // Always fingerprint the loaded file contents (not a possibly-stale _meta stamp),
+        // so imports that grow conversations.json force a cache refresh.
+        const fileStamp = buildDialogueTheaterBundleStamp(fileNormalized);
         const storedStamp = readStoredDialogueTheaterBundleStamp();
         const stampMismatch = Boolean(fileStamp && fileStamp !== storedStamp);
         // Shipped/pulled conversations.json is source of truth after a push/deploy/pull.
@@ -505,14 +519,19 @@ class DialogueTheaterDataService {
         const preferShippedFile =
             forcedReset || (fileNormalized.length > 0 && stampMismatch);
 
+        /** @type {DialogueConversation[]} */
+        let localOnlyDrafts = [];
+        let mirroredFullFile = false;
+
         if (fileNormalized.length === 0) {
             this.conversations = localNormalized;
         } else if (localNormalized.length === 0 || preferShippedFile) {
             const fileIds = new Set(fileNormalized.map((row) => row.id));
-            const localOnlyDrafts = preferShippedFile
+            localOnlyDrafts = preferShippedFile
                 ? localNormalized.filter((row) => !fileIds.has(row.id) && !isPurgedLocalDraft(row))
                 : [];
             this.conversations = [...fileNormalized, ...localOnlyDrafts];
+            mirroredFullFile = localOnlyDrafts.length === 0;
         } else {
             /** Bundled file wins on id unless local has saved route data; keep local-only drafts. */
             this.conversations = this.mergeConversationRows(
@@ -535,7 +554,16 @@ class DialogueTheaterDataService {
         }
 
         const heroicUpgrades = await this.applyHeroicRenderUpgrades();
-        this.persistLocalStorageOnly();
+
+        // Full theater JSON (~5MB+) exceeds localStorage quota. When we loaded the
+        // bundled file as source of truth, drop the cache instead of rewriting it.
+        if (mirroredFullFile) {
+            try {
+                localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
+            } catch (_) { /* ignore */ }
+        } else {
+            this.persistLocalStorageOnly();
+        }
         if (fileStamp) writeDialogueTheaterBundleStamp(fileStamp);
 
         if (applyFileNames) {
@@ -573,10 +601,26 @@ class DialogueTheaterDataService {
 
     /**
      * Sync in-memory conversations to localStorage without touching the repo file.
+     * @returns {boolean} false when quota blocked the write
      */
     persistLocalStorageOnly() {
         this.conversations = this.normalizeConversations(this.conversations);
-        localStorage.setItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY, JSON.stringify(this.conversations));
+        try {
+            localStorage.setItem(
+                DIALOGUE_THEATER_LOCALSTORAGE_KEY,
+                JSON.stringify(this.conversations),
+            );
+            return true;
+        } catch (err) {
+            if (!isQuotaExceededError(err)) throw err;
+            console.warn(
+                'Dialogue Theater: localStorage quota exceeded — clearing cache; bundled conversations.json remains source of truth',
+            );
+            try {
+                localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
+            } catch (_) { /* ignore */ }
+            return false;
+        }
     }
 
     /**
@@ -585,7 +629,24 @@ class DialogueTheaterDataService {
      */
     save(opts = {}) {
         this.conversations = this.normalizeConversations(this.conversations);
-        localStorage.setItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY, JSON.stringify(this.conversations));
+        const wroteLocal = (() => {
+            try {
+                localStorage.setItem(
+                    DIALOGUE_THEATER_LOCALSTORAGE_KEY,
+                    JSON.stringify(this.conversations),
+                );
+                return true;
+            } catch (err) {
+                if (!isQuotaExceededError(err)) throw err;
+                console.warn(
+                    'Dialogue Theater: localStorage quota exceeded on save — writing to repo/file only',
+                );
+                try {
+                    localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
+                } catch (_) { /* ignore */ }
+                return false;
+            }
+        })();
         const savedStamp = buildDialogueTheaterBundleStamp(this.conversations);
         if (savedStamp) writeDialogueTheaterBundleStamp(savedStamp);
         this.deletedConversationIds.clear();
@@ -594,7 +655,12 @@ class DialogueTheaterDataService {
 
         if (!this.canPersistToRepo()) {
             if (!opts.silent) {
-                updateStatus(`Saved ${this.conversations.length} conversation(s) to localStorage`, 'success');
+                updateStatus(
+                    wroteLocal
+                        ? `Saved ${this.conversations.length} conversation(s) to localStorage`
+                        : `Saved ${this.conversations.length} conversation(s) in memory only (browser storage full — use Export or run a local Save with the API)`,
+                    wroteLocal ? 'success' : 'warning',
+                );
             }
             return Promise.resolve();
         }

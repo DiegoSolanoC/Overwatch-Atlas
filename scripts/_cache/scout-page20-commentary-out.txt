@@ -1,0 +1,525 @@
+﻿Dialogues: 1242 | Chatters: 1710
+
+========================================================================
+#191 Shimada Takedown ΓÇö Genji / Hanzo / Blackwatch / Cassidy / Hanamura
+
+---- DIALOGUES: Genji / Hanzo / Shimada / Blackwatch / Cassidy (48) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] New Single  [L├║cio, Orisa]
+         L├║cio: Can you believe it?! L├║cio and Orisa... saving the world with Overwatch! | Orisa: It hardly feels real. I am honored to fight at your side, L├║cio! | L├║cio: And, hey. I want to feature you on my new single! | Orisa: Ah... of course. P
+[free  ] Periodic Table  [Winston, Ana, Ashe, Baptiste, Cassidy, Doomfist, Echo, Genji, Hanzo, Junker Queen, Pharah, Reaper, Sojourn, Soldier 76, Brigitte, D.va, Junkrat, Mei, Mercy, Moira, Reinhardt]
+         Winston: Anyone wanna hear my favorite joke about the periodic table? | Ana: No thank you. | Ashe: Can't say I do. | Baptiste: I'm guessing... No. | Cassidy: I'm still puzzling over the last one. | Doomfist: Ugh... I do *not*. | Echo: This 
+[free  ] Testing Prototypes  [Torbj├╢rn, Baptiste]
+         Torbj├╢rn: I got some new prototypes that need testing. Thought of you. | Baptiste: Me? | Torbj├╢rn: Need someone who knows what they're doing. | Baptiste: I'm flattered, and honored.
+[USED ΓåÆ #159 Growing with the Clan] Trip over your Sword  [Kiriko, Brigitte, Cassidy, Junker Queen, Mei, Mercy, Reinhardt, Tracer, Winston, Genji]
+         Kiriko: Genji, remember the time you tripped over your sword in training? | Brigitte: **laughs** Really? | Cassidy: That sounds like him. | Junker Queen: Ha! Some ninja. | Mei: No way! **laughs** | Mercy: Ho ho! Wish I was there. | Reinhard
+[free  ] Medieval History  [Venture, Reinhardt, Brigitte]
+         Venture: This place is incredible! Ah, I wish I knew more Medieval history. | Reinhardt: Perhaps I could regale you with the time-honored tales of a brave knight and his noble squire! | Venture: No way! Tell me, tell me! | Brigitte: Just ma
+[free  ] Complicated  [Cassidy, Emre]
+         Cassidy: Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative? | Emre: I promise... it's more complicated than what you think. | Cassidy: Yeah. Awful convenient excuse, don't ya think? | Emre: I kno
+[free  ] Focus on the Good Times  [Genji, Cassidy]
+         Genji: You haven't slept. | Cassidy: **laugh** Yeah. Was up last night, thinking about who we used to be. | Genji: I try to focus on the good times. | Cassidy: Hey, yeah. We did have some of those!
+[free  ] Undo it all  [Cassidy, Genji]
+         Cassidy: All this trouble with Talon... ever make you think about Blackwatch? The hurt we caused? | Genji: Sometimes. I try to not to let the guilt weigh on me. | Cassidy: Wish I could just undo it all. Go back, fix those regrets. | Genji: 
+[free  ] No Italian  [Cassidy, Genji]
+         Cassidy: Reckon we've got another Bartalotti to stop. Should be easier without all the sneaking around. | Genji: And you won't have to speak Italian this time. | Cassidy: Well, don't speak so soon, *"signore."* | Genji: Hah. (Japanese: Moro
+[free  ] D├⌐j├á Vu  [Moira, Cassidy, Reaper, Genji]
+         Moira: **sigh** What a nauseating bout of d├⌐j├á vu. | Cassidy: Yep. Working with you has always made me sick. | Reaper: Are you planning to whine the whole time... again? | Genji: **sigh**
+[free  ] Fresh Faces  [Reinhardt, Cassidy]
+         Reinhardt: Look at these fresh faces! What do we owe you for bringing them in, Cole? | Cassidy: Don't care to keep a ledger these days. Heh. What do you say we call it settled? | Reinhardt: Deal! It's an honor just to fight at their side! |
+[free  ] Criminals  [Cassidy, Soldier 76]
+         Cassidy: I'll never forgive us for what we did in Hanamura. | Soldier 76: Those people were criminals. | Cassidy: ...So were we.
+[free  ] Chasing Honor  [Freja, Hanzo]
+         Freja: A man like you could do well in my line of work. | Hanzo: There is no honor in selling one's skills to the highest bidder. | Freja: Then I'll chase bounties while you chase "honor". We'll see who prospers.
+[free  ] Like a Brother  [Cassidy, Genji]
+         Cassidy: This one might get tricky. Can I count on you to watch my back? | Genji: Of course. You are like a brother to me. | Cassidy: You've told me about your family. Not sure that's a compliment.
+[free  ] Still Grieving  [Genji, Hanzo]
+         Genji: I live, brother. Why are you still grieving? | Hanzo: You were not the only thing I lost.
+
+---- CHATTERS: Genji / Hanzo / Hanamura / Shimada (18) ----
+[USED ΓåÆ #167 Sparrow] [OW1] Genji ┬╖ Hanamura ΓÇö Attack ΓÇö I passed many an hour of my misspent youth here.
+[free  ] [OW1] Genji ┬╖ Hanamura ΓÇö Fukushu ga hossuru nowa fukushu ni kogareta mono nomi
+[free  ] [OW1] Genji ┬╖ Hanamura ΓÇö Ramen! (sigh) It's just not the same anymore.
+[free  ] Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Hashimoto clan. Yet, I cannot bear to walk away.
+[free  ] Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+[USED ΓåÆ #167 Sparrow] Genji ┬╖ Neon Junction ΓÇö I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.
+[free  ] [OW1] Genji ┬╖ Nepal ΓÇö This is my home now.
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö All of this was to be mine.
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö I will take back what is mine by birthright.
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö Multi-kill ΓÇö My enemies fall like... heh, cherry blossoms!
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö On attack ΓÇö No time for games!
+[free  ] Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+[USED ΓåÆ #281 Old Dragons] [OW1] Hanzo ┬╖ Hanamura ΓÇö The master of the Shimada Clan has returned.
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö This is the home of the Shimada Clan. My home.
+[free  ] [OW1] Hanzo ┬╖ Hanamura ΓÇö This was once my home. No longer.
+[free  ] Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan will pay for what they have done to my home.
+
+========================================================================
+#192 Blacklisted ΓÇö Moira / Dublin / genetic / Mercy / Reyes / Blackwatch
+
+---- DIALOGUES: Moira / Mercy / genetics / Blackwatch / Dublin (64) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Killing Monsters  [Moira, Ana]
+         Moira: Does it bother you that you've *taken* as many lives as you've saved? | Ana: I don't mind killing monsters. But, go on. Keep pushing me.
+[free  ] Hating the Beach  [Moira, Ana]
+         Moira: Yet another stretch of cloudless skies and idyllic ocean views. Wonderful. | Ana: **sigh** Of course you would hate the beach.
+[free  ] Periodic Table  [Winston, Ana, Ashe, Baptiste, Cassidy, Doomfist, Echo, Genji, Hanzo, Junker Queen, Pharah, Reaper, Sojourn, Soldier 76, Brigitte, D.va, Junkrat, Mei, Mercy, Moira, Reinhardt]
+         Winston: Anyone wanna hear my favorite joke about the periodic table? | Ana: No thank you. | Ashe: Can't say I do. | Baptiste: I'm guessing... No. | Cassidy: I'm still puzzling over the last one. | Doomfist: Ugh... I do *not*. | Echo: This 
+[free  ] Aggression and Ability  [Moira, Ashe]
+         Moira: Aggression is no substitute for ability. | Ashe: Reckon that's true. Good thing I have both.
+[free  ] Healing and Hurting  [Baptiste, Moira]
+         Baptiste: Healing and hurting... hm. I guess we're not that different. | Moira: Hmph. I assure you, we are nothing alike.
+[free  ] D├⌐j├á Vu  [Moira, Cassidy, Reaper, Genji]
+         Moira: **sigh** What a nauseating bout of d├⌐j├á vu. | Cassidy: Yep. Working with you has always made me sick. | Reaper: Are you planning to whine the whole time... again? | Genji: **sigh**
+[free  ] Empty Head  [Cassidy, Moira]
+         Cassidy: Hey there, Moira. How've you been? | Moira: Busier than you, I assume. | Cassidy: **chuckles** I've missed you, too. You look great, by the way. | Moira: Same saccharine tongue, same empty head.
+[free  ] Rabbit Experiments  [D.va, Moira]
+         D.va: How can you experiment on those those cute little rabbits? | Moira: Easily.
+[USED ΓåÆ #48 Genesis] Fond of you  [Echo, Moira]
+         Echo: Dr. Liao was not fond of you. | Moira: Was she any fonder of you? | Echo: Of course. I was her life's work. | Moira: It seemed to me she was far more taken with your predecessor.
+[free  ] Without metal  [Moira, Genji]
+         Moira: I could have rebuilt you without all that metal. | Genji: And left me a monster, like other creations? | Moira: *That* is a matter of perspective.
+[free  ] No Honor  [Hanzo, Moira]
+         Hanzo: I have heard of your experiments. There is no honor in what you do. | Moira: Shimada... where do I know that name from? Oh, that's right... the family of criminals.
+[free  ] Diagnose me  [Hazard, Mercy, Moira]
+         Hazard: Alright, doc... diagnose me. I dare ye! | Mercy: **sigh** Whatever your issue is, it seems quite clear I can't treat it. | Hazard: What makes you think I'm lookin' for a cure? | Moira: Sharp spine, dull wit, and chronic overconfiden
+[free  ] Feeling Remorse  [Illari, Moira]
+         Illari: Don't you ever feel remorse for the pain you have caused? | Moira: Pain makes one stronger. You should know that better than anyone.
+[free  ] Perfect Test Subject  [Moira, Jetpack Cat]
+         Moira: Intelligent, adaptable... You have the makings of a perfect test subject. | Jetpack Cat: **grumbling meows** | Moira: Hm. Though an added dose of obedience would be appreciated...
+[free  ] Born in Space  [Moira, Juno]
+         Moira: I have always wondered what being born in space would do to the human body. | Juno: I... do not like the way you are looking at me.
+
+---- CHATTERS: Moira / Oasis / Dublin / genetics (55) ----
+[free  ] Anran ┬╖ Oasis ΓÇö Being here reminds me... I should start looking into certificate programs.
+[free  ] [OW1] D.va ┬╖ Oasis ΓÇö Seeing what happened after the war here gives me hope for the rebuilding of my country.
+[free  ] Hazard ┬╖ Oasis ΓÇö eliminating Moira ΓÇö Thought you'd be safe here, did ye?
+[free  ] Hazard ┬╖ Oasis ΓÇö on Oasis: University of Oasis map ΓÇö Tore this place up.
+[free  ] Hazard ┬╖ Oasis ΓÇö These Oasis fools have got to learn. They cannae keep people down forever.
+[free  ] [OW1] Junkrat ┬╖ Oasis ΓÇö Jamison Fawkes, Minister of Engineering... Has a certain ring to it.
+[free  ] [OW1] Junkrat ┬╖ Oasis ΓÇö This place is a bit posh for me.
+[free  ] Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+[free  ] Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+[free  ] [OW1] Mei ┬╖ Numbani, Oasis, ΓÇö Woo! I think I might be a little overdressed for this place.
+[free  ] Moira ┬╖ Busan ΓÇö Karaoke ΓÇö Moira refuses to sing. ΓÇö I cannot believe I am being subjected to this... cacophony. And they say my actions are unethical.
+[free  ] Moira ┬╖ Busan ΓÇö Karaoke ΓÇö Moira refuses to sing. ΓÇö No. I am not enjoying this.
+[free  ] Moira ┬╖ Colosseo ΓÇö [https://en.wikipedia.org/wiki/Seneca_the_Younger Seneca] said that the cause of fear is ignorance. If only anyone had listened.
+[free  ] Moira ┬╖ Colosseo ΓÇö Timendi causa, est nescire. (Latin) Ignorance is the cause of fear.
+
+========================================================================
+#193 Cold Snap ΓÇö Mei / Antarctica / Ecopoint / cryo / blizzard
+
+---- DIALOGUES: Mei / Antarctica / cryo / storm / Ecopoint (43) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Periodic Table  [Winston, Ana, Ashe, Baptiste, Cassidy, Doomfist, Echo, Genji, Hanzo, Junker Queen, Pharah, Reaper, Sojourn, Soldier 76, Brigitte, D.va, Junkrat, Mei, Mercy, Moira, Reinhardt]
+         Winston: Anyone wanna hear my favorite joke about the periodic table? | Ana: No thank you. | Ashe: Can't say I do. | Baptiste: I'm guessing... No. | Cassidy: I'm still puzzling over the last one. | Doomfist: Ugh... I do *not*. | Echo: This 
+[free  ] Kitchen Confess  [Soldier 76, Ashe, Junkrat, Mei, Symmetra, Winston]
+         Soldier 76: I was just in the kitchen. Anyone have something they wanna confess? | Ashe: I ain't a snitch, but, let's just say... those corn dogs are gone for good. | Junkrat: Oh, I was just trying to make a milkshake... | Mei: I saw someon
+[free  ] Atch who  [Baptiste, Mei, Pharah]
+         Baptiste: Knock knock! | Mei: Who's there? | Pharah: Who's there? | Baptiste: Atch. | Mei: Atch, who? | Pharah: Atch, who? | Baptiste: Sounds like you have a cold. Let me heal you up!
+[USED ΓåÆ #159 Growing with the Clan] Trip over your Sword  [Kiriko, Brigitte, Cassidy, Junker Queen, Mei, Mercy, Reinhardt, Tracer, Winston, Genji]
+         Kiriko: Genji, remember the time you tripped over your sword in training? | Brigitte: **laughs** Really? | Cassidy: That sounds like him. | Junker Queen: Ha! Some ninja. | Mei: No way! **laughs** | Mercy: Ho ho! Wish I was there. | Reinhard
+[free  ] Cheat Day  [Mei, Brigitte]
+         Mei: Are you going to the gym when we get back? | Brigitte: No way! Today's my cheat day. I'm going to eat a whole apple pie and sleep. | Mei: Cheat day? Is that allowed? | Brigitte: Of course! My workout, my rules.
+[free  ] Weather Forecast  [Cassidy, Mei]
+         Cassidy: Hey Dr. Zhou. Is it gonna rain? | Mei: Looks like a 30% chance of precipitation. | Cassidy: So... maybe. **sigh** The marvels of modern science.
+[free  ] Going Shopping  [Mei, D.va]
+         Mei: **sigh** I really need some new clothes. | D.va: Let me take you shopping in Seoul! I'll find you all the cutest stuff. | Mei: Wait, really? I mean... wow! That Sounds fun!
+[free  ] Travel Tips  [D.va, Mei]
+         D.va: Someday, I'm going to finally travel the world! Got any tips? | Mei: Um... Travel light. But you never know when you need more socks. And underwear. And shirts. Oh! And pants.
+[free  ] Inside Voice  [Mauga, Domina, Lifeweaver, Mei]
+         Mauga: They aren't ready for this! | Domina: Remember your inside voice, Malosi. | Lifeweaver: Perhaps... we should use our inside voices? | Mei: Um... can you use your... i-inside voice? | Mauga: This is my inside voice!
+[free  ] Chicken Rice  [Echo, Mei]
+         Echo: Could you describe the taste of chicken rice? | Mei: Oh, it's very tender and tasty but... subtle? | Echo: Thank you. It was Dr. Liao's favorite dish. | Mei: I'll have some and explain it better next time!
+[free  ] Use a Knife  [Mei, Genji]
+         Mei: Genji? Were you the last one in the kitchen? | Genji: Yes. I was preparing my meals for the week. | Mei: Oh! Well... could you use a knife next time? The sword is a bit messy.
+[free  ] Dangerous as your Storm  [Genji, Mei]
+         Genji: You are as dangerous as your storm! | Mei: That's nice of you to say! I think.
+[free  ] Carving Wood  [Mei, Hanzo]
+         Mei: I saw you carving wooden charms earlier. Can I see? | Hanzo: I... have not honed my skills enough. | Mei: Oh... Ice might be easier. Want me to show you? | Hanzo: Uh... perhaps.
+[free  ] Used to it  [Hazard, Mei]
+         Hazard: Do I spook ye? Look like you're seeing spirits. | Mei: WhaΓÇôno! You're just, um... unique! | Hazard: **soft chuckle** Nae bother, lassie. I'm used to it.
+[free  ] Apologies  [Illari, Mei]
+         Illari: Why do you apologize so much? | Mei: I guess there's a lot I feel sorry about. Don't you? | Illari: It doesn't matter. Anyone I would apologize to... is gone. | Mei: Ah... I know how that feels.
+
+---- CHATTERS: Mei / Antarctic Peninsula / Ecopoint / ice (68) ----
+[free  ] Ana ┬╖ Antarctic Peninsula ΓÇö I could be sunning in Lagos right now. (scoff) And where am I instead?
+[free  ] Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+[free  ] Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and await a fix. ΓÇö Why would you live someplace with snow year-round?
+[free  ] [OW1] Brigitte ┬╖ Blizzard World ΓÇö Do we have time to go on some rides? Flight to Duskwood is my favourite!
+[free  ] Cassidy ┬╖ Blizzard World ΓÇö Ah, hell.
+[free  ] D.va ┬╖ Antarctic Peninsula ΓÇö A, chuwo! (Hangul) Oh, it's so cold!
+[free  ] [OW1] D.va ┬╖ Hanamura ΓÇö Blizzard games? That's so old-school! [in arcade room]
+[free  ] Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is stepped upon.
+[free  ] Junkrat ┬╖ Antarctic Peninsula ΓÇö The! Antarctic! Peninsula!
+[free  ] Junkrat ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Is it snowing? I really love it when it snows...
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö A cowboy with six guns? Oh, Khiem Van Minh will love this!
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Aaaaaaaaah... Did I do that right?
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Blues, greens, yellows! Oh, Earth's colors are so beautiful!
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö How am I supposed to sing if I do not know the words?
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö I remember this place! This is where I learned not to drink soy sauce.
+[free  ] Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a fix. ΓÇö The snow here is quite mild compared to the ice caps back home.
+
+========================================================================
+#194 Uneasy Alliance ΓÇö Maximillien / Doomfist / Monaco / Talon / Coterie
+
+---- DIALOGUES: Maximillien / Doomfist / Monaco / casino / Talon (13) ----
+[free  ] Unworthy of┬á your Talents  [Doomfist, Cassidy]
+         Doomfist: Overwatch again, Cassidy? Haven't they proven unworthy of your talents? | Cassidy: Well, it's that or spend the rest of my life passed out in various diners. | Doomfist: There *are* other options. | Cassidy: Sorry, uh... Talon's m
+[free  ] Mech Slayer  [D.va, Vendetta]
+         D.va: Do you *really* call yourself a "mech slayer"? Hehe. | Vendetta: I don't call myself one. I am one. Your squad must be overdue for a demonstration. | D.va: Try it! Tokki and I love crushing sweats. | D.va: Overlord's got our back! You
+[free  ] Prize Hunter  [Vendetta, Freja, Emre]
+         Vendetta: I see Maximilien's prized hunter is still watching over her quarry. | Freja: It looks that way. | Vendetta: Then I'll take your continued presence here as a sign of allegiance. | Emre: We're a package deal, V. If you want me, you 
+[free  ] War machine  [Vendetta, Emre]
+         Vendetta: When Maximilien promised a war machine, an Overwatch castaway was not what I had in mind. | Emre: Didn't expect this winning smile, did you? **sigh** Max always undersells my looks. | Vendetta: He described you as lethal. Yet you 
+[free  ] Fight for All Omnics  [Ramattra, Freja]
+         Ramattra: So, you work with Maximilien. I am amazed even a human can tolerate him. | Freja: And here, I thought you fought for *all* omnics... | Ramattra: He cares nothing for our people and lives only to enrich himself. I suppose you have 
+[free  ] Outside Hire  [Widowmaker, Freja]
+         Widowmaker: Ah, if it isn't Maximilien's new pet. | Freja: What? Jealous he went with an outside hire for once? | Widowmaker: **laughs** Not at all. He only bothers me with important matters.
+[free  ] Cut you Down  [Genji, Doomfist]
+         Genji: Talon. You are lucky I do not cut you down where you stand. | Doomfist: **laugh** We would welcome the challenge.
+[USED ΓåÆ #130 Rebuilding the Past] Circuit Maximus  [Juno, Vendetta]
+         Juno: You have performed in the Colosseo? I have *always* wanted to see the Circuit Maximus steeds up close... | Vendetta: They have weak points, as does every opponent. | Juno: You don't mean... you have destroyed one before? | Vendetta: S
+[free  ] Enjoying Prison  [Orisa, Doomfist]
+         Orisa: Efi visited her cousin recently. I will not forgive what Talon turned him into. | Doomfist: Ah, yes. How is Bisi enjoying prison? | Orisa: Ask... when I lock *you* up with him.
+[free  ] Talon's Resources  [Doomfist, Orisa]
+         Doomfist: Has the child reconsidered my offer? She would thrive with Talon's resources. | Orisa: You stand for everything wrong in this world. Efi will never join you. | Doomfist: If she cannot comprehend the era that awaits us, then perhap
+[free  ] Hoping for Overwatch  [Doomfist, Sojourn]
+         Doomfist: I hope this iteration of Overwatch proves more durable than the last. | Sojourn: If I were you, I'd be more worried about what's going to happen to Talon.
+[free  ] Ancient Ruins  [Venture, Doomfist]
+         Venture: What's Talon looking for in ancient ruins? | Doomfist: That is none of your concern. | Venture: Yuh-huh, it's my concern. I'm gonna find it before it falls into your hands! | Doomfist: Let the matter rest. For your sake, and the wo
+[USED ΓåÆ #165 Pocket King] Where Max lives  [Sigma, Sombra]
+         Sigma: Hm... why does this place feel familiar? | Sombra: We've been here, viejito. This is where Max lives. | Sigma: Ah, yes, Maximilien! His collection of Greek sculptures is quite charming.
+
+---- CHATTERS: Maximillien / Circuit Royal / Monaco / Doomfist (51) ----
+[free  ] D.mon ┬╖ Maybe I'll take Casino up on that race one day.
+[free  ] Domina ┬╖ Circuit Royal ΓÇö Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a shame if she... no, perish the thought.
+[free  ] Doomfist ┬╖ Alright, then. Test me.
+[USED ΓåÆ #172 Deep Rising] Doomfist ┬╖ Busan ΓÇö Each Gwishin attack strengthens the defenders, as a furnace hardens steel.
+[free  ] Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Is this thing on? Eh eh eh eh eh. Ah ah. Eh eh eh.
+[free  ] Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Stay out of my way, it's time to start a war. Only through conflict do we evolve.
+[free  ] Doomfist ┬╖ Colosseo ΓÇö No one expected the Roman Empire to fall. Perhaps that is why it did.
+[USED ΓåÆ #189 Takeover] Doomfist ┬╖ Curse me all you want. Without conflict, there is no future for humanity.
+[free  ] Doomfist ┬╖ Enter the crucible of war
+[USED ΓåÆ #82 Force the Sun to Set] Doomfist ┬╖ Every battle makes me stronger.
+[free  ] Doomfist ┬╖ For justice!
+[free  ] Doomfist ┬╖ Hold nothing back
+[free  ] Doomfist ┬╖ I hope they put up a fight.
+[free  ] Doomfist ┬╖ Ilios, Lijiang Tower, Nepal, or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Nothing to it.
+
+========================================================================
+#195 Bodily Entropy ΓÇö Moira / Reyes / Blackwatch / SEP / regeneration
+
+---- DIALOGUES: Moira / Reaper / Reyes / regenerate / SEP / experiment (79) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Just like Him  [Reaper, Ana]
+         Reaper: Tell Jack to stop chasing me. | Ana: I have. He wouldn't listen. | Reaper: Isn't that just like him?
+[free  ] The old Gabriel  [Reaper, Ana]
+         Reaper: I didn't need your help. | Ana: I know the old Gabriel is grateful.
+[free  ] Periodic Table  [Winston, Ana, Ashe, Baptiste, Cassidy, Doomfist, Echo, Genji, Hanzo, Junker Queen, Pharah, Reaper, Sojourn, Soldier 76, Brigitte, D.va, Junkrat, Mei, Mercy, Moira, Reinhardt]
+         Winston: Anyone wanna hear my favorite joke about the periodic table? | Ana: No thank you. | Ashe: Can't say I do. | Baptiste: I'm guessing... No. | Cassidy: I'm still puzzling over the last one. | Doomfist: Ugh... I do *not*. | Echo: This 
+[free  ] Kind of a Creep  [Reaper, Baptiste]
+         Reaper: Your heart is pounding, traitor. Are you scared? | Baptiste: Has anyone ever told you that you're kind of a creep?
+[free  ] Fear the Reaper  [Baptiste, Reaper]
+         Baptiste: You know what they say: seasons don't fear the... | Reaper: Don't. Just don't.
+[free  ] Never see me coming  [Baptiste, Reaper]
+         Baptiste: Reaper! Don't sneak up on me like that. | Reaper: Just a reminder that you'll never see me coming.
+[free  ] Coming with Us  [Doomfist, Reaper, Baptiste, Widowmaker]
+         Doomfist: You're coming with us, Augustin. | Reaper: You're coming with us, Augustin. | Baptiste: Why won't you leave me alone? | Widowmaker: You're lucky. I just wanted to kill you.
+[free  ] Bastion on our side  [Brigitte, Bastion, Hanzo, Junkrat, Pharah, Reaper, Widowmaker]
+         Brigitte: Trust me, everyone. With Bastion on our side, this is going to go great! | Bastion: **sheepish beeps** | Hanzo: Hmph. | Junkrat: Who, the bot? *(chuckles)* I thought he was decorative! | Pharah: Just make sure you're shooting them
+[free  ] Complicated  [Cassidy, Emre]
+         Cassidy: Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative? | Emre: I promise... it's more complicated than what you think. | Cassidy: Yeah. Awful convenient excuse, don't ya think? | Emre: I kno
+[free  ] D├⌐j├á Vu  [Moira, Cassidy, Reaper, Genji]
+         Moira: **sigh** What a nauseating bout of d├⌐j├á vu. | Cassidy: Yep. Working with you has always made me sick. | Reaper: Are you planning to whine the whole time... again? | Genji: **sigh**
+[free  ] No Friends  [Cassidy, Reaper]
+         Cassidy: A friend told me that you're gettin' rusty. | Reaper: You don't have friends.
+[free  ] Rabbit Experiments  [D.va, Moira]
+         D.va: How can you experiment on those those cute little rabbits? | Moira: Easily.
+[free  ] Sit this one out  [D.va, Reaper]
+         D.va: You don't look so good. Maybe you should sit this one out and leave the kills to me. | Reaper: I'll be fine once you shut up.
+[free  ] Off Vibes  [Reaper, D.va]
+         Reaper: ...What? What's your problem? | D.va: There's something... off about your vibe. | Reaper: I don't have a "vibe". | D.va: Oh, that's what it is!
+[free  ] War isn't a game  [Reaper, D.va, Soldier 76]
+         Reaper: War isn't a game, girl. | D.va: That's funny. **laugh** Soldier: 76 said the same thing! | Soldier 76: War isn't a game | D.va: Are you sure life isn't a game, Soldier 76
+
+---- CHATTERS: Moira / Reaper / Blackwatch / regenerate (0) ----
+
+========================================================================
+#196 Hacking Spree ΓÇö Sombra / Los Muertos / Dorado / Lum├⌐rico / Olivia
+
+---- DIALOGUES: Sombra / Los Muertos / Dorado / Lum├⌐rico (68) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Tulum  [Sombra, Ana]
+         Sombra: You like beaches, right, Ana? We should do a girls' trip to Tulum! | Ana: Mm... What's it going to cost me? | Sombra: For you, amor? No charge.
+[free  ] Where have you been  [Sombra, Baptiste]
+         Sombra: Where have you been all these years, Baptiste? | Baptiste: You act like you don't know. | Sombra: **laughs** This is why I like you.
+[free  ] Full of Surprises  [Sombra, Baptiste]
+         Sombra: You're with Overwatch now? I thought you didn't do commitment. | Baptiste: You know I'm full of surprises. | Sombra: Qu├⌐ dulce. Could you "surprise" them by planting a few bugs for me? | Baptiste: Even for you, sweetheart... I have 
+[free  ] Out of Talon  [Baptiste, Sombra]
+         Baptiste: Is it true? You're out of Talon? For good? | Sombra: For now. Until someone knocks the new boss down a few pegs. | Baptiste: Well, if you're looking for help... you can always come find me. | Sombra: Aww. Aren't you sweet? But som
+[USED ΓåÆ #40 Responsability] Good Encryption  [Sombra, Bastion]
+         Sombra: Did you know you have a locked storage drive? | Bastion: **inquisitive beeps** | Sombra: **whistle** Good encryption. You should be proud. | Bastion: **proud beeps**
+[free  ] I read your Poetry  [Sombra, Brigitte]
+         Sombra: There's no easy way to say this: I read your poetry folder. | Brigitte: What? I... you had no right! | Sombra: Don't yell at me. We're *both* victims here.
+[free  ] Search History  [Sombra, Cassidy]
+         Sombra: Every time I need a laugh, I look at your search history. | Cassidy: **sigh** Let me guess. Last night, around dinner time? | Sombra: "Cactus spines in butt. How get rid of?" | Cassidy: Was I supposed to leave 'em in there?!
+[free  ] Catching Up  [Cassidy, Sombra]
+         Cassidy: We should catch up sometime soon. | Sombra: Why? I already know what you've been up to. | Cassidy: ...But I don't. | Sombra: And the problem is?
+[free  ] Sad when we take you out  [Sombra, D.va]
+         Sombra: Caught your stream last night, conejita. You're not bad at those games. | D.va: "Not bad"? I'll stomp you even with your hacks. | Sombra: Ay. I'll be sad when we take you out.
+[free  ] Not even trying  [Sombra, D.va]
+         Sombra: Oh, they're all gone? I didn't even use my best tricks! | D.va: Come on, they're not even trying!
+[free  ] Concerns  [Domina, Vendetta]
+         Domina: Marzia, dear...I have some concerns about your latest enterprise in the Outback. | Vendetta: If I desired your advice, I'd have sought you out. | Domina: No need to raise your hackles, darling. I'd simply hate to see them tarnish yo
+[free  ] Firewalls  [Echo, Sombra]
+         Echo: Any luck getting past my fourth firewall yet? | Sombra: Already done. Your fifth's tricky, though. | Echo: Do you want a hint? | Sombra: **scoff** Don't you dare.
+[free  ] Playing Dumb  [Sombra, Emre]
+         Sombra: Give it up, g├╝ey. You think I don't know who you're *really* working for? | Emre: What makes you think *I* know? | Sombra: **scoff** Please. Don't play dumb with me. | Emre: **exasperated chuckle** No "playing". Just dumb.
+[free  ] Secretive Types  [Sombra, Freja]
+         Sombra: You secretive types are so much fun to expose | Freja: You think I don't cover my tracks? | Sombra: Come on, encanto. You know there's always a trail.
+[free  ] Painful way  [Sombra, Freja]
+         Sombra: You need to tell me everything you've learned about that friend of yours. | Freja: Like hell I do. | Sombra: I'll find what I need eventually. It's up to *you* how painful it'll be. | Freja: Touch him, and you'll learn what "pain" r
+
+---- CHATTERS: Sombra / Dorado / Los Muertos / Lum├⌐rico (50) ----
+[USED ΓåÆ #152 The Red Promise] Doomfist ┬╖ Lijiang Tower ΓÇö Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.
+[free  ] [OW1] Hanzo ┬╖ Dorado ΓÇö Multi-kill ΓÇö My enemies fall like ... heh heh heh, destroyed pi├▒atas!
+[free  ] [OW1] Junkrat ┬╖ Dorado ΓÇö Hey, me old tunnel! Might be time to make another withdrawal.
+[free  ] [OW1] Junkrat ┬╖ Dorado ΓÇö Party time! Need some fireworks?
+[free  ] Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+[free  ] [OW1] Reaper ┬╖ Dorado ΓÇö Where's Sombra when you need her?
+[free  ] Roadhog ┬╖ Dorado ΓÇö Mmm. (sniffing) Onion, cilantro... yeah.
+[free  ] [OW1] Roadhog ┬╖ Dorado ΓÇö Now I know why they call this place Dorado. (laughs)
+[free  ] Sierra ┬╖ Dorado or Runasapi ΓÇö Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.
+[free  ] [OW1] Soldier 76 ┬╖ Dorado ΓÇö I wanna know what Lum├⌐riCo's been up to.
+[free  ] [OW1] Soldier 76 ┬╖ Dorado ΓÇö Los Muertos is a cancer on this city.
+[free  ] Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö I wonder what the landlord's password is. Hah... (tch tch) So simple! Let's change that for you.
+[free  ] Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö Let's order some pizza for the neighborhood. And pay their rent. (gasp) And all their debt!
+[free  ] Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö The network security here is so soft and cute. It's like hacking a marshmallow.
+[free  ] Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö The raid leader in the gaming caf├⌐ upstairs is so rude. Oh no! His computer crashed...
+[free  ] Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö This song library is too small. Hah! No problem. I'll add some chiptunes.
+
+========================================================================
+#197 Biolight ΓÇö Lifeweaver flees Vishkar / Arcology / Martins / Satya
+
+---- DIALOGUES: Lifeweaver / Biolight / Vishkar / Arcology / Martins (65) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Resistance  [L├║cio, Domina]
+         L├║cio: Doesn't matter how many "accidents" you cover up. Rio won't stop fighting to keep Vishkar out of our home! | Domina: This is your attempt at resistance? Huh, I hardly noticed.
+[free  ] Loving the Bleach look  [Hazard, Ashe, Lifeweaver, Reinhardt, Sojourn]
+         Hazard: Lovin' the bleached look. You do that yourself? | Ashe: Sweet of you to say so, darlin', but it's natural. | Lifeweaver: Goodness! No. I was just born this dashing. | Reinhardt: Of course! It's aged to perfection! | Sojourn: Ah. You
+[free  ] Your Parents  [Ashe, Lifeweaver]
+         Ashe: I hear, if it weren't for your parents, you'd be as much an outlaw as me. | Lifeweaver: They're always trying to help, but frankly, I'd prefer they gave up. | Ashe: Yeah? Well, be careful what you wish for.
+[USED ΓåÆ #116 Loyal Guardian] Loads of trouble  [Lifeweaver, Ashe]
+         Lifeweaver: I saw your parents at a few exorbitant parties when I was younger. Never you. | Ashe: They didn't care to bring me along. | Lifeweaver: A shame. I'm sure two wayward heirs could've got into *loads* of trouble. | Ashe: **quiet ch
+[free  ] Making a Living  [Ashe, Lifeweaver]
+         Ashe: How you making a living without the family fortune? | Lifeweaver: Nothing so glamorous as running a gang of outlaws, I'm afraid. | Ashe: Well, Deadlock Gang would look mighty fine with a rose garden. | Lifeweaver: Tempting. But I *rea
+[free  ] Reservations  [Lifeweaver, Baptiste]
+         Lifeweaver: I've got reservations at a fantastic restaurant, but... I'm not too sure who to invite. | Baptiste: I know a guy. | Lifeweaver: Is he, by any chance, a dashing ex-mercenary from the Carribean? | Baptiste: **chuckling** He might 
+[free  ] Family Issues  [Lifeweaver, Brigitte]
+         Lifeweaver: I envy your amicable relationship with your family. | Brigitte: You... aren't in touch with yours? | Lifeweaver: We had a shouting match not long ago. If *that* counts.
+[USED ΓåÆ #164 The Atlantic Arcology] Curious Whales  [Brigitte, Torbj├╢rn]
+         Brigitte: Papa, don't the Martins live here? | Torbj├╢rn: No, they mostly hang out in that Arcology of theirs. | Brigitte: Are they *still* having problems with curious whales? | Torbj├╢rn: Yes, and they still won't let me help!
+[free  ] Old Fashioned  [Lifeweaver, Reinhardt, Cassidy]
+         Lifeweaver: You're so old-fashioned, Reinhardt. A hammer? How marvelous! | Reinhardt: I suppose you think I should have a giant laser gun. | Lifeweaver: No! Lean into it! Get Lindholm to build you one of his big robotic horses. | Cassidy: .
+[free  ] Failed Negotiation  [Domina, Lifeweaver]
+         Domina: Why must you be so difficult, Niran? Hand over the prototype, and your bounty disappears. | Lifeweaver: Quite surprising that someone in your position doesn't recognize a failed negotiation when she sees one... | Domina: Oh, how cle
+[free  ] Inside Voice  [Mauga, Domina, Lifeweaver, Mei]
+         Mauga: They aren't ready for this! | Domina: Remember your inside voice, Malosi. | Lifeweaver: Perhaps... we should use our inside voices? | Mei: Um... can you use your... i-inside voice? | Mauga: This is my inside voice!
+[free  ] Locked up  [Lifeweaver, Echo]
+         Lifeweaver: It's monstrous that you were kept locked up for so long. | Echo: It didn't feel very long to me. | Lifeweaver: Well, should your jailers ever come knocking again, I know a place you'd be safe.
+[free  ] Lotus Flower  [Hanzo, Lifeweaver]
+         Hanzo: You favor the lotus flower? Enlightenment, rebirth, and peace. | Lifeweaver: Ah! You know the language of flowers? | Hanzo: I know much that few would suspect. | Lifeweaver: Perhaps you are not the nettle you appear to be.
+[free  ] Exchanging Couplets  [Lifeweaver, Hanzo]
+         Lifeweaver: I hear you're a poet. Shall we exchange couplets over tea sometime? | Hanzo: I would sooner exchange farewells. | Lifeweaver: Very creative! Hint taken.
+[free  ] Lending an Ear  [Lifeweaver, Illari]
+         Lifeweaver: Is something on your mind? I'd be happy to lend an ear. | Illari: I would rather not. Talking's pointless. | Lifeweaver: Are you sure? I'm a great listener. | Illari: Then hear what I just said.
+
+---- CHATTERS: Lifeweaver / Arcology / Vishkar / Biolight (28) ----
+[free  ] Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+[free  ] Lifeweaver ┬╖ Antarctic Peninsula ΓÇö Such a tragedy, what happened here. Poor Mei.
+[free  ] Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wants me to shut up. But wait until you see us in action.
+[free  ] Lifeweaver ┬╖ Esperan├ºa ΓÇö I keep meaning to visit the Museu Martins while I'm here. I love how this town honors them.
+[free  ] Lifeweaver ┬╖ Exciting times ahead. Everyone hydrated
+[free  ] Lifeweaver ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö So much to heal.
+[free  ] Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+[free  ] Lifeweaver ┬╖ I love a fresh beginning. All that promise
+[free  ] Lifeweaver ┬╖ I wish violence never solved anything. It would make peace so much easier.
+[free  ] Lifeweaver ┬╖ I've never been more ready for adventure!
+[free  ] Lifeweaver ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö Like threading a needle.
+[free  ] Lifeweaver ┬╖ Midtown ΓÇö The pizza here doesn't even come with ketchup. It's outrageous!
+[free  ] Lifeweaver ┬╖ Neon Junction ΓÇö My family came here on holidays when I was young, I missed those days.
+[free  ] Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+
+========================================================================
+#198 Hostage ΓÇö Kiriko / Hashimoto / Toshiro / Asa / Kanezaka / Yamagami
+
+---- DIALOGUES: Kiriko / Hashimoto / Yamagami / Toshiro / Asa (110) ----
+[free  ] Siblings  [Kiriko, Anran, Wuyang]
+         Kiriko: I only ever hear horror stories about siblings. Ever wish you were an only child? | Anran: Honestly? I wouldn't give up my brother for the world. | Anran: Literally *every day* of my life. | Wuyang: Wha-- *hey!*
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Old Wounds  [Ana, Hanzo]
+         Ana: I know that look. Mending an old wound? | Hanzo: I wronged someone dear to me. The path to redemption is... trying. | Ana: It's not pleasant. But you'll see it was worth it in the end. | Hanzo: I hope so.
+[free  ] Remind me of myself  [Ana, Kiriko]
+         Ana: You remind me of myself when I was younger. | Kiriko: That a compliment? | Ana: You be the judge. | Kiriko: Okay... Thanks for the compliment.
+[free  ] Foxes Fight Back  [Ashe, Kiriko]
+         Ashe: We hunt foxes where I come from. | Kiriko: Hm. Where I'm from, the foxes fight back.
+[free  ] Healing Wounds  [Baptiste, Kiriko]
+         Baptiste: Ready to heal some wounds? | Kiriko: Physical or emotional? | Baptiste: If you can handle both, go for it.
+[USED ΓåÆ #159 Growing with the Clan] Trip over your Sword  [Kiriko, Brigitte, Cassidy, Junker Queen, Mei, Mercy, Reinhardt, Tracer, Winston, Genji]
+         Kiriko: Genji, remember the time you tripped over your sword in training? | Brigitte: **laughs** Really? | Cassidy: That sounds like him. | Junker Queen: Ha! Some ninja. | Mei: No way! **laughs** | Mercy: Ho ho! Wish I was there. | Reinhard
+[free  ] The Capable ones  [D.va, Kiriko]
+         D.va: Can't they get anything done without us? | Kiriko: It's a full-time job being the capable ones.
+[free  ] Moisturizer Recommendations  [Kiriko, D.va]
+         Kiriko: **sigh** They discontinued my favorite moisturizer. Got any recommendations? | D.va: Eh. Sorry, I don't use creams. I just splash some water on my face and call it a day. | Kiriko: What?! At least use sunscreen!
+[free  ] Hashimoto Bounties  [Kiriko, Freja]
+         Kiriko: I have some bounties you might want. Five of them, actually. | Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to mess with the Hashimoto. | Kiriko: All right... Then how are you with rescue missions? | Freja: 
+[free  ] Bounty for Kids  [Freja, Kiriko]
+         Freja: Strange place, this one. Saw a bounty out for a gang of kids. | Kiriko: You didn't take it, right? | Freja: I'd stay on my good side, just in case.
+[free  ] Her own Mistakes  [Hanzo, Genji]
+         Hanzo: Kiriko has grown surprisingly capable. But at times, her na├»ve perspective puts her in danger. | Genji: Let her be. She must learn from her own mistakes. | Hanzo: You would have *me* turn a blind eye after how long we left her on her
+[USED ΓåÆ #159 Growing with the Clan] Bowl Cut  [Kiriko, Genji]
+         Kiriko: Remember when you had a bowl cut? | Genji: Yes. You didn't want to be the only one. | Kiriko: I never had one! | Genji: I believe I have pictures.
+[free  ] Come Home  [Kiriko, Genji]
+         Kiriko: You should come home, Genji. We need your help. | Genji: There are others in the world who need saving. | Kiriko: When I was a kid, you said you'd always be there for me. | Genji: You are old enough to know it's not that simple.
+[free  ] Killing for Donuts  [Kiriko, Genji]
+         Kiriko: Ugh, I'd kill for some donuts right about now... | Genji: How many have you had today? | Kiriko: I think, seven. Or, eight... | Kiriko: Like... ten? | Kiriko: Probably twelve? | Kiriko: I... totally lost count.
+[free  ] Open her eyes  [Kiriko, Genji]
+         Kiriko: The Hashimoto have completely overrun Tokyo. It's not much better in Kanezaka, either. | Genji: I see how much you need me. But I do not know if the commander will permit my absence. | Kiriko: She should open her eyes. If you don't 
+
+---- CHATTERS: Kiriko / Hashimoto / Kanezaka / Hanaoka (73) ----
+[free  ] Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+[free  ] Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Hashimoto clan. Yet, I cannot bear to walk away.
+[free  ] Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+[free  ] Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest doubt in my mind.
+[free  ] Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+[free  ] Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan will pay for what they have done to my home.
+[free  ] Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö from my duty ΓÇö for far too long.
+[free  ] Illari ┬╖ Runasapi ΓÇö Everyone keeps asking me when I will return. But how can I, after everything that's happened?
+[free  ] Illari ┬╖ Runasapi ΓÇö I hate being here. It feels like they're watching me.
+[free  ] Illari ┬╖ Runasapi ΓÇö I wish I could be anywhere but here. (sigh) At least I can visit Chu├▒o.
+[free  ] Illari ┬╖ Runasapi ΓÇö Let's just get this over with so we can leave.
+[free  ] Illari ┬╖ Runasapi ΓÇö Quechua ΓÇö Pampachaway.
+[free  ] Illari ┬╖ Runasapi ΓÇö Why did it have to be here?
+[free  ] Kiriko ┬╖ Aatlis ΓÇö We're not in Ise, but I'll accept their offerings.
+[free  ] Kiriko ┬╖ All right. Let's go
+[free  ] Kiriko ┬╖ Can't change the world by following all the rules.
+
+========================================================================
+#199 Deep Sea Raiders ΓÇö Mauga / Samoa / coral / pirates / Polynesian
+
+---- DIALOGUES: Mauga / Samoa / coral / pirate / raider (66) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Listening to Tunes  [L├║cio, Mauga]
+         L├║cio: You got a hobby? Y'know, besides going around the world making people miserable. | Mauga: I was gonna say listening to your tunes... | L├║cio: Seriously? | Mauga: But that'd be lying.
+[free  ] Different Company  [Mauga, Ana]
+         Mauga: How are you liking Samoa, Ana? | Ana: It'd be better in different company. | Mauga: Oh, I see... you think we oughta ditch these other losers and get a glass of vaifala? | Ana: **sighs** You're buying first round.
+[USED ΓåÆ #116 Loyal Guardian] Not a Toy  [Mauga, Ashe]
+         Mauga: Wanna see me throw B.O.B. like a basketball? | Ashe: Hands off! He ain't your toy. | Mauga: ...Yet.
+[free  ] Big Fish  [Ashe, Mauga]
+         Ashe: I hear the fishing's great where you're from. | Mauga: Our fish might be a little big for you. | Ashe: There's nothing I can't catch with determination and a little dynamite.
+[free  ] Right amount of stupid  [Baptiste, Mauga]
+         Baptiste: I'll be backing you up, so try not to do something too stupid. | Mauga: You know me, Baptiste: just the right amount of stupid.
+[free  ] Short Memory  [Mauga, Baptiste]
+         Mauga: Why'd you have to go and grow a conscience? | Baptiste: Huh. After all we've seen, how could you not? | Mauga: I got a short memory. Except for when I'm owed.
+[free  ] Done with Talon  [Baptiste, Mauga]
+         Baptiste: I'm *done* with Talon. Nothing can make me change my mind. Not even you. | Mauga: Saves me time. Dragging you back is faster!
+[free  ] Fighting for Vendetta  [Baptiste, Mauga]
+         Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even for you. | Mauga: Aw, gimme some more credit. You know I only stick around when I'm getting something out of it. | Baptiste: **sigh** That's exactly what I'm wor
+[free  ] Not Paying  [Cassidy, Mauga]
+         Cassidy: Must cost a fortune to spill all those bullets. | Mauga: Good thing I'm not paying for 'em.
+[free  ] Both Stealing  [Mauga, Domina]
+         Mauga: How 'bout you and I go rob a place together sometime? Maybe the Louvre? | Domina: What do you take me for, a petty thief? | Mauga: Hah, we're both stealing, princess! You just do it from a boardroom.
+[free  ] Drop the mask  [Mauga, Domina]
+         Mauga: You ever drop the whole "corporate" act? Let the mask slip? | Domina: "Mask?" I haven't the faintest idea what you mean, Malosi. | Mauga: Hey! I know better than most that appearances can be deceiving... | Domina: Perhaps *your* char
+[free  ] Inside Voice  [Mauga, Domina, Lifeweaver, Mei]
+         Mauga: They aren't ready for this! | Domina: Remember your inside voice, Malosi. | Lifeweaver: Perhaps... we should use our inside voices? | Mei: Um... can you use your... i-inside voice? | Mauga: This is my inside voice!
+[free  ] Killjoy  [Mauga, Emre]
+         Mauga: Haven't seen you in a while, Emmy. Where have you been? | Emre: Nowhere you need to know about. | Mauga: **groans** I thought all that time away might chill you out, but you're still the same old killjoy. | Emre: If that means I'm st
+[free  ] New Kid on the block  [Mauga, Freja]
+         Mauga: So, you're the new kid on the block? I like your crossbow. | Freja: Hm. Thanks. | Mauga: Looks kinda heavy...maybe I oughta carry it for you? | Freja: There's still a bounty on your head, Malosi. Don't make me turn it in.
+[free  ] Bigger Sword  [Mauga, Genji]
+         Mauga: I'd get a bigger sword, if I were you. | Genji: What counts is the sharpness of the blade and the mind of the wielder. | Mauga: I said a bigger sword, not bigger words.
+
+---- CHATTERS: Mauga / Samoa / coral / pirate (146) ----
+[free  ] Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+[free  ] Ana ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I've always been a good shot.
+[free  ] Anran ┬╖ Ilios or Samoa ΓÇö I know it's hot out, but... don't ask me to fan you. You'll regret it.
+[free  ] Anran ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Huh. Thought I'd have to train more to pull that off.
+[free  ] Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Get a point on the board, Bob!
+[free  ] Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Lucky shot.
+[free  ] Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Nice shot, Augustin.
+[free  ] Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Swoosh!
+[free  ] Brigitte ┬╖ Ilios, Lijiang Tower, Nepal, or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö I've played a little ball before.
+[free  ] Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö And that's horse!
+[free  ] Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Bingo.
+[free  ] Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Jackpot.
+[free  ] D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a trip to the beach after this. I won't tell if you don't!
+[free  ] D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Boom shakalaka! She's on fire!
+[free  ] D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I just can't lose.
+[free  ] D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö No scoped!
+
+========================================================================
+#200 White Canvas ΓÇö Echo / Cassidy / Liao / Oslo / laugh / Project Echo
+
+---- DIALOGUES: Echo / Cassidy / Liao / mistake / laugh (76) ----
+[free  ] Favorite Animals  [L├║cio, Ana, Anran, Ashe, Baptiste, Bastion, Brigitte, Cassidy, D.va, D.mon, Doomfist, Echo, Emre, Freja, Genji, Hanzo, Illari, Jetpack Cat, Junker Queen, Kiriko, Lifeweaver, Mauga, Mei, Mercy, Mizuki, Moira, Orisa, Pharah, Ramattra, Reaper, Reinhardt, Roadhog, Shion, Sierra, Sigma, Sojourn, Sombra, Symmetra, Torbj├╢rn, Tracer, Venture, Vendetta, Widowmaker, Wrecking Ball, Winston, Wuyang, Zarya, Zenyatta, Domina]
+         L├║cio: So, I'm tryna ask everybody this: what is your favorite animal? | Ana: The caracal. | Anran: Oh, the orchid mantis! Especially the pink ones! | Ashe: I'm partial to scorpions. | Baptiste: Hmm... tiger shark! Best kind of shark. | Bas
+[free  ] Handling Dancing  [L├║cio, Torbj├╢rn]
+         L├║cio: Brigitte tells me you can dance, but I won't believe it until I see it! | Torbj├╢rn: **chuckle** Are you sure you'll be able to handle it? | L├║cio: **laughs** Try me!
+[USED ΓåÆ #153 Yearning] So Dramatic  [Ana, Reinhardt]
+         Ana: Reinhardt, how have you been? | Reinhardt: Terrible. Every moment without you watching over me has been *agony!* | Ana: **laughs** You're so dramatic, you!
+[free  ] Periodic Table  [Winston, Ana, Ashe, Baptiste, Cassidy, Doomfist, Echo, Genji, Hanzo, Junker Queen, Pharah, Reaper, Sojourn, Soldier 76, Brigitte, D.va, Junkrat, Mei, Mercy, Moira, Reinhardt]
+         Winston: Anyone wanna hear my favorite joke about the periodic table? | Ana: No thank you. | Ashe: Can't say I do. | Baptiste: I'm guessing... No. | Cassidy: I'm still puzzling over the last one. | Doomfist: Ugh... I do *not*. | Echo: This 
+[free  ] Just your Type  [Baptiste, Mercy]
+         Baptiste: Angela, I met someone the other day who I think is *just* your type. Handsome, kind, several doctorates... | Mercy: **laughs** I'm afraid there's someone else I have my eye on. | Baptiste: Oh? Anyone I know? | Mercy: Well, with an
+[free  ] Getting Paid  [Baptiste, Reinhardt]
+         Baptiste: It might be a tall order, but want to try taking fewer hits this time? | Reinhardt: Complaining, already? This is what you're paid for! | Baptiste: **laugh** I'm getting paid?
+[free  ] Where have you been  [Sombra, Baptiste]
+         Sombra: Where have you been all these years, Baptiste? | Baptiste: You act like you don't know. | Sombra: **laughs** This is why I like you.
+[free  ] Catching Up  [Baptiste, Zarya]
+         Baptiste: I've been lifting a lot lately, Zarya. Think I might be catching up to you. | Zarya: *chuckling* No, you're not. | Baptiste: We'll see if you're still laughing when I take home the gold at the next Olympics.
+[USED ΓåÆ #159 Growing with the Clan] Trip over your Sword  [Kiriko, Brigitte, Cassidy, Junker Queen, Mei, Mercy, Reinhardt, Tracer, Winston, Genji]
+         Kiriko: Genji, remember the time you tripped over your sword in training? | Brigitte: **laughs** Really? | Cassidy: That sounds like him. | Junker Queen: Ha! Some ninja. | Mei: No way! **laughs** | Mercy: Ho ho! Wish I was there. | Reinhard
+[free  ] We lived  [Brigitte, Reinhardt]
+         Brigitte: I didn't think you'd be doing so well after losing Gibraltar. | Reinhardt: I had fond memories of that old place. But what matters is we lived to fight another day. | Brigitte: And, hey. When we rebuild the Watchpoint, we can make
+[free  ] So Tall  [Tracer, Brigitte]
+         Tracer: I still can't believe how tall you've gotten! | Brigitte: And now, I can lift you with one arm! | Tracer: You'll have to catch me first! **laugh**
+[free  ] Your Name  [Echo, Cassidy]
+         Echo: Cole Cassidy. Cole Cassidy. Cole Cassidy. | Cassidy: You called? | Echo: I just like saying your name. That's all.
+[free  ] Cowboy Hat  [Echo, Cassidy]
+         Echo: I think I can pull off a cowboy hat. | Cassidy: Want me to buy you one? | Echo: No need. I'll just borrow yours.
+[free  ] Focus on the Good Times  [Genji, Cassidy]
+         Genji: You haven't slept. | Cassidy: **laugh** Yeah. Was up last night, thinking about who we used to be. | Genji: I try to focus on the good times. | Cassidy: Hey, yeah. We did have some of those!
+[free  ] Undo it all  [Cassidy, Genji]
+         Cassidy: All this trouble with Talon... ever make you think about Blackwatch? The hurt we caused? | Genji: Sometimes. I try to not to let the guilt weigh on me. | Cassidy: Wish I could just undo it all. Go back, fix those regrets. | Genji: 
+[free  ] Search History  [Sombra, Cassidy]
+         Sombra: Every time I need a laugh, I look at your search history. | Cassidy: **sigh** Let me guess. Last night, around dinner time? | Sombra: "Cactus spines in butt. How get rid of?" | Cassidy: Was I supposed to leave 'em in there?!
+
+---- CHATTERS: Echo / Cassidy / Oslo / Liao (5) ----
+[free  ] [OW1] Echo ┬╖ Busan ΓÇö Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!
+[free  ] Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Duplicating dance moves! To the left, to the right! Mina Liao would be proud!
+[USED ΓåÆ #65 Answers] Echo ┬╖ Nepal ΓÇö Shambali Monastery is currently omitted from this trigger and awaits a fix. ΓÇö Dr. Liao told me of her journey here. It is strange to see it with my own eyes.
+[free  ] Echo ┬╖ Numbani ΓÇö Mistakenly a singular chatter line instead of a conversation with Orisa or another hero. ΓÇö You say they have advanced robotics here. Have they built anyone like me?
+[free  ] Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+node : (node:33028) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-572d0e00-c542-4cc1-966c-0782906a07c6.ps1:92 char:1
++ node scripts/_cache/scout-page20-commentary.mjs 2>&1 | Out-File -Enco ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:33028) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

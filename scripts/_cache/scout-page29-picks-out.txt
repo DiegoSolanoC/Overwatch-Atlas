@@ -1,0 +1,183 @@
+﻿
+#### dragons
+D free  Siblings
+D free  Got each other
+D free  Keeping me Sharp
+D free  Show-off
+D free  Looking Sharp
+D USED ΓåÆ #159 Growing with the Clan  Trip over your Sword
+D USED ΓåÆ #191 Shimada Takedown  Criminals
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Let's use our superior range against them.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Brigitte ┬╖ Swords, arrows... a hammer and flail? We're practically a Renaissance faire!
+C USED ΓåÆ #211 Questioning Cassidy ┬╖ Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.
+
+#### bastion
+D free  New Armor
+D free  Stolen Bird Feed
+D free  Something Useful
+D free  Ganymede Scout
+D USED ΓåÆ #161 Survivor  In a Dream
+D free  Bastion Agrees
+D USED ΓåÆ #89 Building a Myth  Killed Many
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+C free Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+C free Junker Queen ┬╖ Let's see. We've got a bot, an angel, and the stupidest man alive. Does that put us ahead or behind?
+C free Junkrat ┬╖ Black Forest ΓÇö What a place this is! A ghost in every attic. Maybe this is where I'll retire.
+C free Zarya ┬╖ All right, omnics. Let's get it done.
+C free Bastion ┬╖ prideful beeps
+
+#### hero
+D USED ΓåÆ #39 Lost to the past  Painful Memories
+D free  Cute Guy
+D free  War isn't a game
+D free  Killing Business
+D free  Ride into Battle
+D free  The Poster
+D USED ΓåÆ #90 Super Soldiers  Enhanced Soldiers
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Hanzo ┬╖ Dorado ΓÇö Multi-kill ΓÇö My enemies fall like ... heh heh heh, destroyed pi├▒atas!
+C free Junkrat ┬╖ Dorado ΓÇö Hey, me old tunnel! Might be time to make another withdrawal.
+C free Junkrat ┬╖ Dorado ΓÇö Party time! Need some fireworks?
+C free Mercy ┬╖ Everyone on this team can heal themselves. This should be easy!
+C free Mercy ┬╖ It's even more important to stretch before missions as you age.
+
+#### fika
+D free  She just likes you
+D free  Stayed Retired
+D USED ΓåÆ #148 Sparkplug  More Cats
+D free  Sharpen those claws
+D free  Playing on the Desk
+D free  Lucheng's Files
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C USED ΓåÆ #152 The Red Promise Doomfist ┬╖ Lijiang Tower ΓÇö Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.
+C free Freja ┬╖ Guess they'll hire anyone for a job these days...
+C free Juno ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö I cannot help but wonder how our base lost contact with Lucheng Int
+C free Mercy ┬╖ Looks like I'm going to be in the air, so call if you need me on the ground.
+C free Pharah ┬╖ Fliers, we are cleared for takeoff. Let's lock that airspace down.
+C free Reaper ┬╖ Lijiang Tower ΓÇö You think Lucheng Interstellar is clean? (chuckles) Nobody is clean.
+C free Reinhardt ┬╖ Back in my day, we had to fight on the ground.
+C free Roadhog ┬╖ I wanna fly...
+C free Symmetra ┬╖ Unpredictable allies are still allies... barely.
+C free Venture ┬╖ Have fun flying, everyone! I'll be, uh... you know... in the ground.
+C free Wrecking Ball ┬╖ Lijiang Tower ΓÇö Lucheng Interstellar cannot stop the hamster. Never could. Never will.
+C free Zarya ┬╖ I thought this was a military operation. Oh, well...
+C free Jetpack Cat ┬╖ cat sounds
+
+#### disclosure
+D free  Slow Phone
+D free  Gabrielito
+D USED ΓåÆ #196 Hacking Spree  Los Muertos
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Reaper ┬╖ Dorado ΓÇö Where's Sombra when you need her?
+C free Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+C free Sojourn ┬╖ Ah, got a lot of cybernetics on this team, and no one to repair them... (sigh)
+C free Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+C free Soldier 76 ┬╖ Dorado ΓÇö Los Muertos is a cancer on this city.
+C free Sombra ┬╖ Hah, let's get started. Got a lot of systems that need hacking.
+C free Symmetra ┬╖ Unpredictable allies are still allies... barely.
+C free Torbj├╢rn ┬╖ I don't care what evil organization you're a part of. I want you on your best behavior for this mission.
+C free Winston ┬╖ Talon? How dare you show your faces!... Though, perhaps we should finish the mission before we get into that.
+C free Zarya ┬╖ Careful, Aleksandra. You can have it out after the mission.
+D USED ΓåÆ #268 Traitor OW1 Eager to see you
+D free OW1 Unlocking
+D free OW1 Stick to the Plan
+D free OW1 Trust Sombra
+
+#### assassin
+D USED ΓåÆ #280 Underground Hero  Vintage Vinyl
+D free  Keeping in Touch
+D free  Spiffing Up
+C free Ana ┬╖ Let's use our superior range against them.
+C free Anran ┬╖ I'm ready to dance.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Junkrat ┬╖ We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.
+C free Mercy ┬╖ I know she's still in there. If I could just run some tests.
+C free Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+C free Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+C free Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+C free Torbj├╢rn ┬╖ I don't care what evil organization you're a part of. I want you on your best behavior for this mission.
+C free Tracer ┬╖ King's Row ΓÇö eliminating Widowmaker ΓÇö How dare you come back here?!
+C free Widowmaker ┬╖ After the trigger pull lies a blissful eternity-- until the shot connects.
+C free Winston ┬╖ Talon? How dare you show your faces!... Though, perhaps we should finish the mission before we get into that.
+C free Zarya ┬╖ Careful, Aleksandra. You can have it out after the mission.
+D free OW1 Blaming yourself
+D USED ΓåÆ #174 Omnic Housing OW1 Omnic Suffering
+D USED ΓåÆ #190 Lost in Time; #206 Chronal Dissociation OW1 Chronal Uncertainty
+D free OW1 Taking the Risk
+
+#### protector
+D free  Favorite Animals
+D USED ΓåÆ #205 Shrine Maiden  Foxes Fight Back
+D USED ΓåÆ #276 Avatar of the Fox  Hashimoto Bounties
+D free  Her own Mistakes
+D free  Open her eyes
+D free  Sorry enough to Help
+D free  Well Informed
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty to face the Hashimoto cla
+C free Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of my home?
+C free Hanzo ┬╖ You have my word, Kiriko. I will seek my redemption head on.
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the Hashimoto clan will pay fo
+C free Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from this place ΓÇö from my duty ΓÇö
+C free Hazard ┬╖ Yes! Now these punks I can ride with.
+
+#### recall
+D free  Favorite Animals
+D USED ΓåÆ #255 Chivalry  What is left
+D USED ΓåÆ #153 Yearning  Dancing in the Command Center
+D USED ΓåÆ #257 Not Alone  Always Captain
+D free  Periodic Table
+D free  Fear the Reaper
+D free  Never see me coming
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Watchpoint: Gibraltar ΓÇö I wouldn't mind stealin' a spaceship. You hear what they make satellites out of the
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Brigitte ┬╖ Watchpoint: Gibraltar ΓÇö Talon's going to pay for From the Ashes. I'll make sure of it.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+
+#### london
+D USED ΓåÆ #280 Underground Hero  Vintage Vinyl
+D free  Keeping in Touch
+C USED ΓåÆ #217 Intervention Soldier 76 ┬╖ King's Row ΓÇö I wouldn't change a thing we King's Row Uprising.
+D free  Silly little piggy
+D free  Piggy Mary
+
+#### mei
+D free  Fun Mother
+D free  Remmebering the Past
+D USED ΓåÆ #193 Cold Snap  Cryogenic research
+D free  Careful Swinging
+D free  Googly Eyes
+D free  Count on Mei
+D free  Hotpot
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Cassidy ┬╖ Rise and shine, mortals!
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Juno ┬╖ I would be much more nervous without Auntie Mei here!
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+node : (node:33460) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-e4dbc7b5-486c-4cee-9997-fd0b4a6986f2.ps1:92 char:1
++ node scripts/_cache/scout-page29-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:33460) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

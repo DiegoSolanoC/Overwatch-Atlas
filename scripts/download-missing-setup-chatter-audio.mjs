@@ -65,7 +65,7 @@ async function main() {
                 if (!cell) continue;
                 cell = cell.replace(/<small>[\s\S]*?<\/small>/gi, ' ')
                     .replace(/\{\{[^}]+\}\}/g, ' ')
-                    .replace(/\[\[([^|\]]+)\|[^\]]+\]\]/g, '$1')
+                    .replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2')
                     .replace(/\[\[([^\]]+)\]\]/g, '$1')
                     .replace(/'''?/g, '')
                     .replace(/<\/?[^>]+>/g, ' ')

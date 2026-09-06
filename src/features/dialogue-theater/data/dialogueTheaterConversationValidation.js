@@ -2,7 +2,6 @@
  * Dialogue Theater list validation — unfinished conversation heuristics.
  */
 
-import { resolveLineVoiceFile } from './theaterVoicelineParsing.js';
 import { isChatterEntry } from './dialogueTheaterEntryType.js';
 import { getConversationEraTag } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 
@@ -187,16 +186,27 @@ export function isUnknownDialogueHero(hero) {
 
 /**
  * @param {import('./DialogueTheaterDataService.js').DialogueLine} line
- * @param {string[]} voicelines
+ * @param {string[]|Set<string>} voicelines
  * @returns {boolean}
  */
 export function dialogueLineMissingVoice(line, voicelines = []) {
-    return !resolveLineVoiceFile(line, voicelines);
+    const stored = String(line?.voice || '').trim();
+    if (stored) {
+        if (voicelines instanceof Set) return !voicelines.has(stored);
+        if (Array.isArray(voicelines) && voicelines.length > 0) {
+            // Prefer O(1) membership via Set at call sites; array includes is only a fallback.
+            return !voicelines.includes(stored);
+        }
+        // Assets not loaded yet — don't treat assigned filenames as missing.
+        return false;
+    }
+    // Text with no assigned file counts as unfinished.
+    return Boolean(String(line?.subtitles || '').trim());
 }
 
 /**
  * @param {import('./DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {string[]} [voicelines]
+ * @param {string[]|Set<string>} [voicelines]
  * @param {Map<string, string[]>} [duplicateLookup]
  * @returns {boolean}
  */
@@ -215,18 +225,23 @@ export function conversationHasUnfinishedIssues(conversation, voicelines = [], d
     if (conversationMissingCustomName(conversation?.name)) return true;
     if (duplicateLookup && conversationIsDuplicate(conversation?.id, duplicateLookup)) return true;
 
+    const voiceSet =
+        voicelines instanceof Set
+            ? voicelines
+            : new Set(Array.isArray(voicelines) ? voicelines : []);
+
     const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     for (let i = 0; i < lines.length; i += 1) {
         const line = lines[i];
         if (isUnknownDialogueHero(line?.hero)) return true;
-        if (dialogueLineMissingVoice(line, voicelines)) return true;
+        if (dialogueLineMissingVoice(line, voiceSet)) return true;
     }
     return false;
 }
 
 /**
  * @param {import('./DialogueTheaterDataService.js').DialogueConversation} conversation
- * @param {string[]} [voicelines]
+ * @param {string[]|Set<string>} [voicelines]
  * @param {Map<string, string[]>} [duplicateLookup]
  * @param {import('./DialogueTheaterDataService.js').DialogueConversation[]} [conversations]
  * @returns {string}
@@ -248,6 +263,11 @@ export function conversationUnfinishedSummary(
         parts.push('duplicate voicelines');
     }
 
+    const voiceSet =
+        voicelines instanceof Set
+            ? voicelines
+            : new Set(Array.isArray(voicelines) ? voicelines : []);
+
     const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     let unknownCount = 0;
     let missingVoiceCount = 0;
@@ -255,7 +275,7 @@ export function conversationUnfinishedSummary(
     for (let i = 0; i < lines.length; i += 1) {
         const line = lines[i];
         if (isUnknownDialogueHero(line?.hero)) unknownCount += 1;
-        if (dialogueLineMissingVoice(line, voicelines)) missingVoiceCount += 1;
+        if (dialogueLineMissingVoice(line, voiceSet)) missingVoiceCount += 1;
     }
 
     if (unknownCount > 0) {

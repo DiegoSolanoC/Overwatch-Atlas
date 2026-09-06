@@ -1,0 +1,181 @@
+﻿==== EXACT / PARTIAL NAME SEARCH ====
+    free | Fear the Reaper
+    free | Advance Technologies
+    free | Mech Mechanic
+    USED ΓåÆ #223 Fighting the System | Phreak Firewalls
+    free | Monkeys with Glasses
+    free | Mechanical or Human
+    free | Anger Management
+    free | Sigma's Brain
+    free | What part of Canada
+    USED ΓåÆ #206 Chronal Dissociation | No more Bananas
+    free | Anubis's Jailers
+    free | Grim Reaper
+    free | Mina Liao
+    free | Helix mercenaries
+OW1 free | Who is your Mechanic
+OW1 free | Alongside my Pupil
+OW1 free | Agents of Helix
+OW1 free | Joining Helix
+OW1 free | Trust Sombra
+OW1 USED ΓåÆ #235 Closed Fist | Beaten by a Monkey
+    free | Missing Genji
+    free | Esports are Sports
+OW1 free | Advance Technologies
+
+#### self
+D free  Keeping me Sharp
+D free  Show-off
+D USED ΓåÆ #159 Growing with the Clan  Trip over your Sword
+D USED ΓåÆ #167 Sparrow  Going to the Arcade
+D free  Come Home
+D free  Use a Knife
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Ana ┬╖ Let's use our superior range against them.
+C free Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+
+#### petras
+D free  Selfie for the fans
+D free  A new answer
+D free  Working with Overwatch
+C free Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+C free Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my domain! Hmm... what's
+C free Pharah ┬╖ Eichenwalde ΓÇö After hearing all of Reinhardt's stories, I always wanted to come here.
+C free Torbj├╢rn ┬╖ I thought I left Overwatch! But, here we are.
+C free Tracer ┬╖ Look at us! The full might of Overwatch (group), reassembled and ready to rumble!
+
+#### helix
+D USED ΓåÆ #146 Mother's Guidance  Your daugther
+D free  Still Hiding
+D free  Thank you Mother
+D free  Tugging Heartstrings
+D free  Going too Far
+D free  Money before Loyalty
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C free Echo ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Pharah would be proud of that one.
+
+#### violence
+D free  Fear the Reaper
+D free  Never see me coming
+D free  Complicated
+D free  Grim Reaper
+D free  Don't call me anything
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Mercy ┬╖ Everyone on this team can heal themselves. This should be easy!
+C free Reaper ┬╖ Dead weight gets left behind.
+C free Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+
+#### released
+D free  Humming
+D USED ΓåÆ #127 Miracle Worker  Birds and Music
+D free  Sigma's Brain
+D free  Stay Focus
+D free  Who is we
+D free  Snap out of it
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Mei ┬╖ Let's show them what a team of scientists can do!
+C free Mercy ┬╖ It's even more important to stretch before missions as you age.
+
+#### emre
+D USED ΓåÆ #185 Search and Rescue  Working Alone
+D free  Another Life
+D free  Useful when you show up
+C free Emre ┬╖ So, what's on the docket? Winning, I hope...
+C free Emre ┬╖ We'll give it all we've got, and hope that's enough.
+C free Emre ┬╖ We'll make it out alive. Maybe even in one piece.
+C free Emre ┬╖ I wasn't expecting a reunion...
+C free Emre ┬╖ Time to show them what weΓÇÖre made of
+C free Freja ┬╖ Havana ΓÇö Funny. Emre always talked about retiring here.
+C free Pharah ┬╖ Finally, a unit that understands the importance of military discipline...
+
+#### echo
+D free  Recording
+D free  Jurong
+D free  Chicken Rice
+D USED ΓåÆ #48 Genesis  Fond of you
+D free  Optimism
+D USED ΓåÆ #200 White Canvas  Keeping the Label
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+C free Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+C free Echo ┬╖ I'm eager to see what problems we encounter on this mission!
+
+#### shrike
+D free  Masked Vigilante
+D free  Always Worry
+D free  Vigilante Route
+D free  Built by Aliens
+D free  Vigilantes
+D free  Fierce Protector
+C free Venture ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Egyptology? My favorite!
+
+#### dva
+D free  Time to Relax
+D free  Returning the favor
+D free  Into the thick of it
+D free  Karaoke
+D free  Listening to Tunes
+D free  Looking Sharp
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Anran ┬╖ Oasis ΓÇö Being here reminds me... I should start looking into certificate programs.
+C free Ashe ┬╖ Horizon Lunar Colony ΓÇö Looking through the telescope ΓÇö Looks nice and quiet from up here.
+C free Baptiste ┬╖ I've done things I'm not proud of. Time to start making up for it.
+
+#### hazard
+D free  Soft Criminals
+D free  Making a Living
+D free  Money before Loyalty
+D USED ΓåÆ #136 The New West  All about┬á you
+D USED ΓåÆ #223 Fighting the System  New Chassis
+D USED ΓåÆ #223 Fighting the System  Phreak Firewalls
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C USED ΓåÆ #129 Deadlock Rebels Cassidy ┬╖ Things were a lot simpler when I was robbing banks with the Deadlock Rebels.
+C free Hazard ┬╖ Aim for your best out there, pals!
+C free Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö There is water everywhere! Is that not a safety hazard?
+
+==== REQUESTED NAMES ====
+free  Always my brother
+free  Missing Genji
+free  Never lose sight
+free  Running from Responsability
+free  What is left
+free  Answer the recall
+free  Hoping for Overwatch
+free  Overwatch failed you
+free  Care to listen
+MISS fragment Petras
+MISS fragment The Petras Act
+free  Helix mercenaries
+free OW1 Agents of Helix
+free OW1 Joining Helix
+MISS fragment Raptora
+MISS fragment Pharah
+MISS fragment Code of Violence
+free  Fear the Reaper
+free  Grim Reaper
+MISS fragment Subject Sigma
+MISS fragment Released
+MISS fragment Shrike
+MISS fragment D.va
+MISS fragment D.mon
+MISS fragment Top Player
+MISS fragment Found Family
+USED ΓåÆ #223 Fighting the System  Phreak Firewalls
+node : (node:35736) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-c9194d34-8c37-4fb0-afe5-22f51e63b369.ps1:92 char:1
++ node scripts/_cache/scout-page25-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:35736) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

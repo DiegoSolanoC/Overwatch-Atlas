@@ -1,0 +1,52 @@
+﻿
+{| class="listtable"
+|-
+! width="20%" |Map
+! width="70%" |Quote
+! width="10%" |Audio
+|-
+| rowspan="1" |<center><big>'''[[Antarctic Peninsula]]'''</big></center>
+|This is a far cry from my home...
+|{{Audio|Orisa - This is a far cry from my home.ogg}}
+|-
+| rowspan="1" |<center><big>'''[[Ilios]], [[Lijiang Tower]], [[Nepal]] or [[Samoa]]'''</big><br>'''Scoring a Basket in Spawn Room'''</center>
+|Saving highlight.
+|{{Audio|Orisa - Saving highlight.ogg}}
+|-
+| rowspan="2" |<center><big>'''[[Junkertown]] and [[New Junk City]]'''</big></center>
+|It is time someone cleaned up this lawless wasteland.
+|{{Audio|Orisa - It is time someone cleaned up this lawless wasteland.ogg}}
+|-
+|These [[Junkers]] do not care for "bots". ''*chuckle*'' The sentiment is mutual.
+|{{Audio|Orisa - These Junkers do not care for bots. The sentiment is mutual.ogg}}
+|-
+| rowspan="5" |<center><big>'''[[Numbani]]'''</big></center>
+|Efi was right. The [[Junie|Junies]] have taken great care of our home!
+|{{Audio|Orisa - Efi was right. The Junies have taken great care of our home.ogg}}
+|-
+|Many have tried to destroy this city. But Numbani will always hold strong.
+|{{Audio|Orisa - Many have tried to destroy this city. But Numbani will always hold strong.ogg}}
+|-
+|{{QuoteTranslation|quote=Mo wà ní ilé.|script=Yoruba|translation=I am home.}}
+|{{Audio|Orisa - (Yoruba) I am home.ogg}}
+|-
+|You are not welcome in my domain. ''(final blow)''
+|{{Audio|Orisa - You are not welcome in my domain.ogg}}
+|-
+|You will ''never'' take our city! ''(eliminating [[Ramattra]])''
+|{{Audio|Orisa - You will never take our city.ogg}}
+|-
+| rowspan="1" |<center><big>'''[[Paraíso]]'''</big></center>
+|So this is where Lúcio grew up.
+|{{Audio|Orisa - So this is where Lúcio grew up.ogg}}
+|-
+| rowspan="1" |<center><big>'''[[Temple of Anubis]]''' and '''[[Throne of Anubis]]'''</big></center>
+|If Anubis were ever to rise again... I hope I would remember who I am.
+|{{Audio|Orisa - If Anubis were ever to rise again... I hope I would remember who I am.ogg}}
+|-
+| rowspan="1" |<center><big>'''[[Watchpoint: Gibraltar]]'''</big></center>
+|I am proud to be here.
+|{{Audio|Orisa - I am proud to be here.ogg}}
+|-
+|}
+

@@ -1,0 +1,861 @@
+﻿=== EVENTS #101-150 ===
+
+#101 Sloan Cameron is Born [BIRTH/MADE]
+  2052 Nova Scotia, Canada
+
+#102 Capturing a God
+  2051 New York City, United States
+  DESC: While most governments shut down their God AI after Anubis was discovered, New York had a better idea of what to do with Macaria. Like many others, the program had been anthropomorphized by their team and local residents, with many looking at it as a friend. So, while defying off
+
+#103 Bombardment
+  2051 Gothenburg, Sweden
+  DESC: Nearly at the end of the Crisis, Anubis sent a surprise raid that was able to overwhelm the Defense Network, bombarding 95% of Gothenburg into ashes. By all accounts, this would have been a slaughter, had it not been for the efforts of the Heroic Five. The group worked together w
+
+#104 Tipping the Balance
+  2051 Karachi Division, Sindh, Pakistan
+  DESC: For months, Overwatch would turn the tides against Anubis on several fronts across the planet, inspiring people to keep fighting and saving many lives, but with Anubis getting discovered, a renewed ferocity resulted in several smaller cities being lost to a new wave of enraged wa
+
+#105 The Savior
+  2053 Cairo, Egypt
+  DESC: The man carrying the Doomfist Gauntlet has been identified as Adhabu Ngumi. He had continued fighting on Ibadan, as Anubis ended up perplexed by the rate at which its troops fell. A month into his crusade, the Nigerian Government identified him, and stepped in to make sure his mo
+
+#106 The Awakening
+  2053 Shambali Monastery, Nepal
+  EXISTING: Your Awakening | Omnic archaeology
+  DESC: Liao approached Adawe with a theory, as she believed there was another way to stop the crisis without having to expend all military resources on endless battle. Her team had tracked down Aurora and found out that her sentience allowed her to stay unaffected by Anubis. Liao believ
+
+#107 A Dying Directive
+  2053 Baltimore, United States
+  DESC: All at once, Omnics all over the world came to a halt, and listened to Aurora's passing words, as they came alive, as sentient as she once was. Some began to drop their weapons, distraught over their own actions, while others continued fighting, horrified by the war and conscious
+
+#108 Striking the Source
+  2053 Cairo, Egypt
+  DESC: The Awakening caught Anubis by surprise, but it didn't take long for it to restart production with its improved, sentient free troops. Not only that, but while the vast majority of Omnics chose to fight alongside humans, there were many who remained at Anubis' side, and a sizable
+
+#109 Cleaning the leftovers
+  2053 Jakarta, Indonesia
+  DESC: Anubis being defeated did not mean the immediate end of the Crisis. The remaining units, while decentralized, were still dangerous and the sizable number of Omnics who remained against humanity needed to be dealt with as soon as possible. Many Omnics blamed humanity for their con
+
+#110 Energy For Mexico
+  2053 Mexico City, Mexico
+  DESC: The dark days of the Crisis hit Mexico hard, but while Xibalba was never going to be turned back on, the engineers behind the program had spent the later months of the Crisis working on rerouting its functionality, and less than a week after the war ended, the lights finally came
+
+#111 Prejudice
+  2053 New York City, United States
+  EXISTING: A Ravager
+  DESC: Reception to Omnic sentience was very mixed and volatile across the world. The Awakening caused global confusion, and while some welcomed a helping hand at the time, not everyone was as kind. Many humans took their chance to strike against Omnics, even as they laid down their wea
+
+#112 Kept in Chains
+  2053 Akihabara, Japan
+  EXISTING: Rate the Prison
+  DESC: For many Omnics the awakening was not the end of the battle. While many, like the Ravagers, were hunted down by humans, there were others who kept fighting, not out of any loyalty to Anubis but rather due to sheer confusion and fear. Shion was in Tokyo when it happened, and what 
+
+#113 The Temple of Anubis
+  2053 Cairo, Egypt
+  DESC: Following the quarantining of Anubis, most people expected the God program would be outright destroyed, but against most wishes, Lindholm and Liao had different plans. The construction of the aptly called Temple of Anubis began shortly after its imprisonment. A high security faci
+
+#114 Building the Future
+  2053 Toronto, Canada
+  DESC: The Crisis left ruined cities all across the globe, and in places like Toronto, it was a matter of months before the weather became lethal. Without sufficient manpower, he city wouldn't be habitable by winter, and unable to wait for Overwatch to show up, Mayor Sabella Charon and 
+
+#115 Adawe Departs
+  2053 City State of Numbani
+  DESC: Following the Crisis, Adawe was committed to fully focus on her diplomatic duties. She was a strong advocate for peace between humans and the newly sentient Omnics, and called for peace talks between world governments and the emerging leadership figures amongst Omnics. Soon after
+
+#116 Loyal Guardian
+  2053 Bellaire, United States
+  EXISTING: Not a Toy | Loads of trouble
+  DESC: The Crisis had destroyed many homes, but once it ended, not many expected the return of some old faces. Wandering Omnics, newly awakened would often choose to attempt and return to their old lives, integrating into human society as much as possible, and while this was often not a
+
+#117 New Leadership
+  2053 Zurich, Switzerland
+  DESC: With Adawe's departure, Jack Morrison was chosen to lead, acting as Strike commander. While many expected Reyes to take the position, and even react negatively to the news, it turns out that he had personally recommended Morrison for the role. The truth is that Reyes wished for a
+
+#118 Operation White Dome
+  2053 Istanbul, Turkey
+  EXISTING: Missing an Eye
+  DESC: Not so long after Sarioglu's recruitment, he would be deployed in Istabul for Operation White Dome. The team led by Ana Amari were meant to quell a pocket of hostile Anubis loyal Omnics. Neither Reyes or Morrison participated. As a way to show the world, Overwatch had the resourc
+
+#119 Brigitte Lindholm is Born [BIRTH/MADE]
+  2053 Gothenburg, Sweden
+
+#120 Australian Liberation
+  2053 Junkertown, Australia
+  EXISTING: Pig Boy | Junkers giving you trouble
+  DESC: After the crisis, most Omnium factories remained mostly intact, quarantined from Anubis' grasp, so most governors elected to keep the facilities around for study and potentially to find a better use for them. Some countries instead chose to leave them untouched, to serve as cultu
+
+#121 Watching the Globe
+  2053 Watchpoint: Gibraltar
+  DESC: As Overwatch expanded its personnel, they found themselves in need for more bases of operations. The solution became the Watchpoint system, massive specialized facilities all across the world that would not only allow Overwatch to focus its dedicated personnel into a single place
+
+#122 Undercover
+  2053 Paris, France
+  DESC: While Morrison had his hands full, expanding across the globe, Reyes was beginning to set up his Blackwatch Division, a small team for covert operations that would allow him to pursue justice outside red tape and protocol. G├⌐rard Lacroix, from the administrative and diplomatic di
+
+#123 Duty Calls
+  2053 London, United Kingdom
+  DESC: From the outside, the world saw Overwatch as untouchable heroes at this point in time. However, the reality was that they were still human, and taking on Overwatch was just one aspect of their larger lives. Most of the Strike team had families of their own, Ana finally had time t
+
+#124 Sierra┬áTurner Woods is Born [BIRTH/MADE]
+  2054 Appalachian Virginia, United States
+
+#125 One with the Iris
+  2053 Shambali Monastery, Nepal
+  EXISTING: Magical Healing
+  DESC: The newly awakened Omnics found themselves in a cold, hostage world. Many were persecuted if not outright hunted and killed, yet on top of it all, most ended up questioning the reason for their existance. How did they cope with being brought to life in such dire conditions? These
+
+#126 Outcasted
+  2053 Junkertown, Australia
+  DESC: As politics settled among the chaos of the Junkers, King Mason Howl would be crowned the leader of the city. Howl was a ruthless self-centered king who quickly turned his back against his people when questioned. The Stones were a family of settlers that ran town watch and negotia
+
+#127 Miracle Worker
+  2053 Zurich, Switzerland
+  EXISTING: Birds and Music
+  DESC: Like many others around the world, young Angela Zeigler had lost her parents to the Crisis, while they volunteered at a local hospital. This traumatic event would serve to keep her focus on her studies. The girl would go on to become one of the youngest graduates of the medical p
+
+#128 Findlay Docherty is Born [BIRTH/MADE]
+  2054 Glasgow, Scotland
+
+#129 Deadlock Rebels
+  2055 Bellaire, United States
+  EXISTING: My Type
+  DESC: Years of neglect led Ashe to constantly breaking the law, and gaining a reputation with the authorities. On one occasion, she was arrested for armed assault inspired by it being in self-defense. While spending time in jail, waiting to be bailed out, she met Cole Cassidy in the ce
+
+#130 Rebuilding the Past
+  2053 Colosseo, Italy
+  EXISTING: Fun fact | Circuit Maximus
+  DESC: A notable trend across the world following the Crisis was the return to classical architecture. As many cities had been leveled by the war, many of them needed to rebuild from the ground up, changing greatly from how they used to look years prior. With the construction of the Tem
+
+#131 Anima Weaponry
+  2053 Hanamura, Japan
+  EXISTING: Magnum Opus | Fox Secret
+  DESC: While smaller gangs like the Hashimoto were on the rise in Japan, they still had a long way to go if they wished to reach the longevity and status of senior Yakuza. The ancient Shimada clan remained strong even after the crisis. A family of criminals that had a choke-hold over To
+
+#132 Brotherhood
+  2053 Shambali Monastery, Nepal
+  DESC: A Ravager unit now going by the name of Ramattra had chosen to follow Mondatta, lost in grief by the suffering of his people, seeking a sense of purpose and hope of one day being able to cohexist with humans. During his time with the Shambali he would still take time to protest f
+
+#133 Outlaws
+  2055 Deadlock Gorge, United States
+  DESC: As the group expanded their turf with larger, riskier operations, they would often come into conflict with other gang territories, and loyalties would be put into question. The gang came to work with many larger groups before, some of which later became enemies, such as the Diamo
+
+#134 Vancouver Floods
+  2056 British Columbia, Canada
+  DESC: Overwatch aided in the rebuilding efforts all around the world. In the words of Torbj├╢rn himself, they were "The Janitors of the Apocalypse", and their efforts became invaluable in getting the world back together. The engineering team was working on repairing the Canadian pipelin
+
+#135 Ye Anran is Born [BIRTH/MADE]
+  2056 Chengdu, China
+
+#136 The New West
+  2056 Route 66, United States
+  DESC: The rise of Gang violence across the American Southwest quickly became a topic of interest for Overwatch, and when needed, they would address these gangs individually by dispatching agents, and later send the engineering teams for repairs. Among the gangs, the rising threat of th
+
+#137 The Gunslinger
+  2056 Zurich, Switzerland
+  EXISTING: Jealous of you
+  DESC: After the Deadlock raid, Reyes surprised everyone when he brought their prisoner alongside him. Gabriel saw talent in Cassidy, notin his guts, loyalty and excellent marksmanship for someone his age. With enough guidance he could turn his life around, and Reyes believed it would b
+
+#138 Mizuki Kawano is Born [BIRTH/MADE]
+  2057 Fukuoka, Japan
+
+#139 The Architech Academy
+  2056 Roshani, India
+  EXISTING: Days at the Academy | Best Roommate | Missing the Academy
+  DESC: In the years that followed the Crisis, Vishkar would quickly rise into a global powerhouse. Having helped the Indian government during the war, hard light technology advanced greatly in the span of a few years, and with the world left in ruins, the company saw it as a great chanc
+
+#140 Hana Song is Born [BIRTH/MADE]
+  2057 Busan, South Korea
+
+#141 Studying for the Future
+  2053 Xi'an, China
+  DESC: The world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counterac
+
+#142 Ecological Initiative
+  2056 Apia, Samoa
+  DESC: With God Programs, more specifically Anubis, gone, the responsibility of their duties fell back on humanity once more, and while in a lot of cases their functionality was rerouted or essentially taken over by other organizations, in some cases, such as environmental duties, they 
+
+#143 Kiriko Kamori is Born [BIRTH/MADE]
+  2057 Kanezaka, Japan
+
+#144 Building Coalitions
+  2056 Havana, Cuba
+  DESC: As Overwatch expanded and aided the world heal, they sought to form good relationships with other peacekeeping operations around the globe, particularly those that didnt make a part of the original recruitment process during the Crisis. Just like how Doomfist chose to protect his
+
+#145 City of Harmony
+  2053 City State of Numbani
+  DESC: The City of Harmony, Numbani would see ongoing expansion for years following Adawe's departure, to great success and reception worldwide. The City State emerged in Nigeria under Adawe's vision, to build a place for people of all kinds, human and Omnics, to live in unity. In order
+
+#146 Mother's Guidance
+  2053 Cairo, Egypt
+  EXISTING: Your daugther
+  DESC: Ana's relationship with her family had been messy since the beginning. She had married after being surprised by a little girl from a relatively casual relationship, and during the Crisis both her and Sam had their hands too full to raise a child. Fareeha spent most of her youth i
+
+#147 On the Run
+  2056 Appalachian Virginia, United States
+  DESC: While the US publicly seemed content with SEP soldiers vanishing into obscuring, something about Soldier: 00 appears to be different. Kendra Banks had been the first candidate for the Soldier Enhancement Program, and much like the rest of Project Naughton, her service was heavily
+
+#148 Sparkplug
+  2053 Gothenburg, Sweden
+  EXISTING: My little girl | More Cats
+  DESC: The Lindholms were a family filled with bright minds. Both parents were respected figures in the engineering and scientific communities at large, and their children grew up to be successful in many fields, from art to medicine. It was only natural that the creative Lindholm spark
+
+#149 Liao's Renaissance
+  2056 Zurich, Switzerland
+  EXISTING: Shared Programming
+  DESC: With the Crisis, the world had lost faith in Artificial Intelligence all together. Between heavy tensions with Omnics growing worldwide and the repurposing, if not outright, shutdown of God programs worldwide, the planet was ready to move on from AI, but Mina Liao was eager to re
+
+#150 Gwishin
+  2056 Busan, South Korea
+  DESC: Years after the end of the Crisis a Robotic Colossus emerged from the East China Sea, immediately making its advance towards South Korea and setting off Overwatch's alarms. Morrison recalled all agent fields and directed every resource they had towards the machine. The battle aga
+
+=== DIRECT BAG SEARCH ===
+
+## busan/meka/gwishin/dva/korea (101)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+free                                 | Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö No. I mean, I don't sing. Can I dance instead? Ah, ah, ah-ah, ah, ah, ah-ah-ah, ah, ba, ba,
+free                                 | Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö If you need heals, there's no health stauncher than a blast from my biotic launcher. If the
+free                                 | Cassidy ┬╖ Busan ΓÇö Ah, alright. More of a country guy, but, not bad! Let's do this. Yeahhhh.
+free                                 | Cassidy ┬╖ Busan ΓÇö Yeah, alright. Get 'em movin', get 'em rollin'. Get them doggies out tonight! Yeah.
+free                                 | Cassidy ┬╖ Busan ΓÇö Whip 'em on! Take 'em down. Mm-mm, and that is how the cowboy does it. Yeah.
+free                                 | D.va ┬╖ All systems fired up and ready to engage. Hae bojago! (Hangul) Let's do this!
+free                                 | D.va ┬╖ I prepped all night for this mission. Well, maybe I gamed a little, too.
+free                                 | D.va ┬╖ So... don't take it personally when I get the most kills, 'kay?
+free                                 | D.va ┬╖ Stick together! Let me take the hits.
+free                                 | D.va ┬╖ Pop the clutch and let's go!
+free                                 | D.va ┬╖ See you at the finish line!
+free                                 | D.va ┬╖ Let's do it!
+free                                 | D.va ┬╖ My time to shine!
+free                                 | D.va ┬╖ Tokki mobilizing!
+
+## null sector/london/king.?s row/mondatta (10)
+free                                 | D.va ┬╖ King's Row ΓÇö Tokki can jump over Big Ben, no problem!
+free                                 | Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a f
+free                                 | Kiriko ┬╖ King's Row ΓÇö This is London, huh? I've seen fancier.
+free                                 | Mercy ┬╖ We must be very careful not to harm any civilians. Do not just assume I can heal them! Although I could, of cour
+free                                 | Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+free                                 | Sojourn ┬╖ New Queen Street or Para├¡so ΓÇö Null Sector may have withdrawn, but I can't shake the feeling there's trouble ah
+free                                 | Soldier 76 ┬╖ King's Row ΓÇö I wouldn't change a thing we King's Row Uprising.
+free                                 | Torbj├╢rn ┬╖ King's Row ΓÇö I can't believe I fell for all that anti-omnic claptrap.
+free                                 | Tracer ┬╖ King's Row ΓÇö eliminating Widowmaker ΓÇö How dare you come back here?!
+free                                 | Widowmaker ┬╖ King's Row ΓÇö eliminating Tracer while airborne ΓÇö At least you took the bullet this time.
+
+## blackwatch/reyes/reaper/retaliation (38)
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Cassidy ┬╖ Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.
+free                                 | Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+free                                 | Freja ┬╖ Rialto ΓÇö The Venice Incident was the beginning of the end for Overwatch. A shame...
+free                                 | Genji ┬╖ Rialto ΓÇö I Retribution this place. (sigh)
+free                                 | Mercy ┬╖ Everyone on this team can heal themselves. This should be easy!
+free                                 | Mercy ┬╖ It's even more important to stretch before missions as you age.
+free                                 | Moira ┬╖ Rialto ΓÇö This city brings back Retribution...
+free                                 | Reaper ┬╖ Dead weight gets left behind.
+free                                 | Reaper ┬╖ Don't fail me. Or else.
+free                                 | Reaper ┬╖ Everything's going according to plan.
+free                                 | Reaper ┬╖ I could do this on my own. Probably faster, too.
+free                                 | Reaper ┬╖ I really need to get quieter boots. (sigh)
+free                                 | Reaper ┬╖ The end draws near.
+free                                 | Reaper ┬╖ Ugh. Another stain on my cloak. When did this happen? I didn't even notice.
+free                                 | Reaper ┬╖ I'll handle this
+
+## tracer/chronal/slipstream/oxton (40)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my d
+free                                 | Roadhog ┬╖ More like Over-rated. (chuckle)
+free                                 | Torbj├╢rn ┬╖ I thought I left Overwatch! But, here we are.
+free                                 | Torbj├╢rn ┬╖ This is not the reunion I expected...
+free                                 | Tracer ┬╖ Blinkity-blinkity! Tracer's here! Yeah!
+free                                 | Tracer ┬╖ I can't wait to get out there. Can you wait to get out there? Because I can't.
+free                                 | Tracer ┬╖ I got lucky with my call sign. Can you imagine if they'd call me Zippy? (giggle)
+free                                 | Tracer ┬╖ I have a need... for swiftness.
+free                                 | Tracer ┬╖ I've got a good feeling. This could be our best mission yet!
+free                                 | Tracer ┬╖ Keep moving out there - don't wanna give them any easy shots, do we?
+free                                 | Tracer ┬╖ Pre-mission checklist complete. Now it's time for the good bit.
+free                                 | Tracer ┬╖ Quick on our feet, hard to defeat!
+
+## genji/hanzo/shimada/hanamura/sparrow (95)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ana ┬╖ Let's use our superior range against them.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Brigitte ┬╖ Swords, arrows... a hammer and flail? We're practically a Renaissance faire!
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Genji ┬╖ I still have much to learn.
+free                                 | Genji ┬╖ Let us proceed with haste.
+free                                 | Genji ┬╖ Mental bearing, not skill, is the sign of a matured warrior.
+free                                 | Genji ┬╖ We should begin.
+free                                 | Genji ┬╖ We will be the lightning that rides the storm.
+free                                 | Genji ┬╖ Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not
+free                                 | Genji ┬╖ The battle commences!
+free                                 | Genji ┬╖ Let's go!
+free                                 | Genji ┬╖ Let's finish this quickly
+
+## winston/recall/gibraltar/overwatch (72)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Watchpoint: Gibraltar ΓÇö I wouldn't mind stealin' a spaceship. You hear what they m
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Brigitte ┬╖ Watchpoint: Gibraltar ΓÇö Talon's going to pay for From the Ashes. I'll make sure of it.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Echo ┬╖ Watchpoint: Gibraltar ΓÇö So many memories.
+free                                 | Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a f
+free                                 | Emre ┬╖ | Watchpoint: Gibraltar ΓÇö Always figured I'd end up back here. Just... not like this.
+free                                 | Freja ┬╖ Watchpoint: Gibraltar ΓÇö Ah, Gibraltar. It hasn't been long enough.
+free                                 | Genji ┬╖ Neon Junction ΓÇö I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.
+free                                 | Hazard ┬╖ Overwatch? Ugh. Better not embarrass me out there.
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my d
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while Winston is pushing the payload ΓÇö Is that a gorilla? With a lightning gun? In my city? 
+
+## mei/ecopoint/antarctica/climate (70)
+free                                 | Ana ┬╖ Antarctic Peninsula ΓÇö I could be sunning in Lagos right now. (scoff) And where am I instead?
+free                                 | Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and awa
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | D.va ┬╖ Antarctic Peninsula ΓÇö A, chuwo! (Hangul) Oh, it's so cold!
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is step
+free                                 | Junkrat ┬╖ Antarctic Peninsula ΓÇö The! Antarctic! Peninsula!
+free                                 | Junkrat ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Is it snowing? I really love it when it s
+free                                 | Juno ┬╖ I would be much more nervous without Auntie Mei here!
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Aaaaaaaaah... Did I do that right?
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö How am I supposed to sing if I do not know the words?
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Thank goodness my parachutes deployed properly.
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö I remember this place! This is where I learned not to drink soy sauce
+
+## doomfist/numbani/gauntlet/prison (52)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ana ┬╖ Numbani ΓÇö These people moved past the Omnic Crisis so quickly. I envy that.
+free                                 | Baptiste ┬╖ Numbani ΓÇö So this is where Doomfist is from. I hope he's not in town.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Doomfist ┬╖ Alright, then. Test me.
+free                                 | Doomfist ┬╖ Curse me all you want. Without conflict, there is no future for humanity.
+USED #82 Force the Sun to Set        | Doomfist ┬╖ Every battle makes me stronger.
+free                                 | Doomfist ┬╖ I hope they put up a fight.
+free                                 | Doomfist ┬╖ Nothing in this world is deserved. Whatever you want, you must take.
+free                                 | Doomfist ┬╖ Power means nothing if you do not put it to use.
+free                                 | Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+free                                 | Doomfist ┬╖ It's time. Prove yourselves
+free                                 | Doomfist ┬╖ Our trial begins
+free                                 | Doomfist ┬╖ Hold nothing back
+free                                 | Doomfist ┬╖ Let this challenge be a lesson
+free                                 | Doomfist ┬╖ Tonight, we will put them to rest
+
+## sombra|dorado|mexico|hack (41)
+free                                 | Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+USED #152 The Red Promise            | Doomfist ┬╖ Lijiang Tower ΓÇö Lucheng Interstellar understands an important fact: as long as we are shackled to a single pl
+free                                 | Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+free                                 | Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+free                                 | Roadhog ┬╖ Dorado ΓÇö Mmm. (sniffing) Onion, cilantro... yeah.
+free                                 | Sierra ┬╖ Dorado or Runasapi ΓÇö Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.
+free                                 | Sojourn ┬╖ Ah, got a lot of cybernetics on this team, and no one to repair them... (sigh)
+free                                 | Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+free                                 | Sombra ┬╖ Hah, let's get started. Got a lot of systems that need hacking.
+free                                 | Sombra ┬╖ Hm... I think I can make this worth my time.
+free                                 | Sombra ┬╖ I'm hoping for an easy mission. Don't make this harder than it needs to be.
+free                                 | Sombra ┬╖ Genial. Otro trabajo aburrido.
+free                                 | Sombra ┬╖ Easy in, easy out. Let's get the job done
+free                                 | Sombra ┬╖ Party's started
+
+## widow|am[e├⌐]lie|talon|assassin (54)
+free                                 | Ana ┬╖ Let's use our superior range against them.
+free                                 | Anran ┬╖ I'm ready to dance.
+free                                 | Baptiste ┬╖ Well, this is... awkward. (nervous laugh) Are you... still mad at me? Don't answer that.
+free                                 | Brigitte ┬╖ I'm not joining Talon, so don't bother asking...
+free                                 | Brigitte ┬╖ Watchpoint: Gibraltar ΓÇö Talon's going to pay for From the Ashes. I'll make sure of it.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+free                                 | Junkrat ┬╖ We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.
+free                                 | Juno ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö I will never forgive Talon for Overwatch: 
+free                                 | Juno ┬╖ Watchpoint: Gibraltar ΓÇö Before Reign of Talon Season 1 ΓÇö I am glad I can call this my home away from home.
+free                                 | Kiriko ┬╖ Look, Mom. I'm a Talon agent.
+free                                 | Mercy ┬╖ I know she's still in there. If I could just run some tests.
+free                                 | Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+free                                 | Roadhog ┬╖ "Oh no, it's Talon!" (laughs)
+free                                 | Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+free                                 | Torbj├╢rn ┬╖ I don't care what evil organization you're a part of. I want you on your best behavior for this mission.
+
+## mercy|angela|swiss|overwatch medical (52)
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Brigitte ┬╖ Don't worry. I'll keep our medic safe.
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Illari ┬╖ No mistakes, no mercy.
+free                                 | Junker Queen ┬╖ Doctor, have I really got to eat vegetables? It's like CRUNCH, CRUNCH, CRUNCH, how long have I got to che
+free                                 | Junker Queen ┬╖ Let's see. We've got a bot, an angel, and the stupidest man alive. Does that put us ahead or behind?
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my d
+free                                 | Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+free                                 | Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+free                                 | Mei ┬╖ Let's show them what a team of scientists can do!
+free                                 | Mercy ┬╖ Does everyone know the plan?
+free                                 | Mercy ┬╖ Helping those in need is its own reward.
+free                                 | Mercy ┬╖ I've learned a lot from my experiences.
+free                                 | Mercy ┬╖ No unnecessary risks!
+
+## cassidy|deadlock|ashe|route 66 (92)
+free                                 | Ana ┬╖ Let's use our superior range against them.
+free                                 | Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+free                                 | Ashe ┬╖ Been a while.
+free                                 | Ashe ┬╖ Better get paid after all this. I don't like havin' my time wasted.
+free                                 | Ashe ┬╖ Follow the rules, and we won't have a problem.
+free                                 | Ashe ┬╖ I'm in charge. Don't forget that.
+free                                 | Ashe ┬╖ Let's get this show on the road.
+free                                 | Ashe ┬╖ Saddle up. We got work to do.
+free                                 | Ashe ┬╖ We're doin' this my way.
+free                                 | Ashe ┬╖ We're playin' by my rules.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+free                                 | Ashe ┬╖ I'm dyin' to see how you botch this one, Cassidy.
+free                                 | Ashe ┬╖ Aw, hell. The law's here.
+free                                 | Ashe ┬╖ Giddyup!
+free                                 | Ashe ┬╖ Wanna make it out of this Do what I say
+
+## pharah|fareeha|helwan|egypt (40)
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Ashe ┬╖ Aw, hell. The law's here.
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Echo ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Pharah would be proud of that one.
+free                                 | Hazard ┬╖ Aw, gotta work with these bootlickers?
+free                                 | Kiriko ┬╖ Ilios, Lijiang Tower, Nepal, or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö in a team with Pharah ΓÇö You're up, Pha
+free                                 | Mercy ┬╖ Looks like I'm going to be in the air, so call if you need me on the ground.
+free                                 | Mercy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö in a team with Pharah ΓÇö Did you see that
+free                                 | Pharah ┬╖ Forget regulation. After this mission, I'm throwing a party.
+free                                 | Pharah ┬╖ Good leadership makes all the difference.
+free                                 | Pharah ┬╖ I should get a puppy. We had the most adorable Rottweiler back at base...
+free                                 | Pharah ┬╖ Ooh, I live for this!
+free                                 | Pharah ┬╖ No one's a natural. We all have to put in the work.
+free                                 | Pharah ┬╖ Pre-flight checklist complete. Running clean and hot.
+free                                 | Pharah ┬╖ The first time I flew this suit, I crashed. I don't crash anymore.
+free                                 | Pharah ┬╖ There is always room for improvement.
+
+## brigitte|torbj|reinhardt|armor (107)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Brigitte ┬╖ Don't be afraid to ask for help out there!
+free                                 | Brigitte ┬╖ Here we go again. Shields up!
+free                                 | Brigitte ┬╖ It's like Reinhardt always says: the best solution to every problem is a very large hammer. It... makes more 
+free                                 | Brigitte ┬╖ Stay close to me and I'll keep you safe.
+free                                 | Brigitte ┬╖ Work together and we'll make it through.
+free                                 | Brigitte ┬╖ Don't worry. I'll keep our medic safe.
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Brigitte ┬╖ I'm not joining Talon, so don't bother asking...
+free                                 | Brigitte ┬╖ Swords, arrows... a hammer and flail? We're practically a Renaissance faire!
+free                                 | Brigitte ┬╖ We got this!
+free                                 | Brigitte ┬╖ If it's a fight they want, it's a fight they'll get!
+free                                 | Brigitte ┬╖ All together now
+
+## echo|liao|athena (48)
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Echo ┬╖ I'm eager to see what problems we encounter on this mission!
+free                                 | Echo ┬╖ Mission readiness protocols engaged. I'm good to go!
+USED #36 Resource Management         | Echo ┬╖ More to do, more to learn.
+free                                 | Echo ┬╖ Systems calibrated for maximum cooperative behavior.
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Echo ┬╖ On your toes and ready to go!
+free                                 | Echo ┬╖ Activating combat mode
+free                                 | Echo ┬╖ Remember, we don't give up!
+free                                 | Echo ┬╖ Eyes open, everyone!
+free                                 | Echo ┬╖ Take every obstacle as an opportunity to learn
+free                                 | Echo ┬╖ I've detected threats in the area. Doubling combat functions
+free                                 | Echo ┬╖ Objective received eliminate any and all dangers
+
+## kiriko|kanezaka|fox|kitsune (57)
+free                                 | Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+free                                 | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty 
+free                                 | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of
+free                                 | Hanzo ┬╖ You have my word, Kiriko. I will seek my redemption head on.
+free                                 | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the H
+free                                 | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from th
+free                                 | Hazard ┬╖ Yes! Now these punks I can ride with.
+free                                 | Kiriko ┬╖ Can't change the world by following all the rules.
+free                                 | Kiriko ┬╖ If we do this right, they won't even know what happened.
+free                                 | Kiriko ┬╖ So... I might sometimes pop out of thin air right next to you. Do not shoot me.
+free                                 | Kiriko ┬╖ Stay in sight, and I'll keep you safe.
+free                                 | Kiriko ┬╖ They have this coming. So let's give it to them.
+free                                 | Kiriko ┬╖ Watch our flanks. They might try something.
+free                                 | Kiriko ┬╖ My mother trained half our team. I'll sign the rest of you up for lessons. (in a team with both Genji and Hanzo
+free                                 | Kiriko ┬╖ Look, Mom. I'm an Overwatch agent.
+free                                 | Kiriko ┬╖ Look, Mom. I'm a Talon agent.
+
+## baptiste|talon medic|caribbean (58)
+free                                 | Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+free                                 | Baptiste ┬╖ Don't let my immortality field go to your head. It's temporary. You can still die.
+free                                 | Baptiste ┬╖ I've done things I'm not proud of. Time to start making up for it.
+free                                 | Baptiste ┬╖ Locked and loaded. Who's ready to get this done?
+free                                 | Baptiste ┬╖ Make sure to give me an emergency contact. I'm sure we won't need it, but... just in case.
+free                                 | Baptiste ┬╖ Remember, if you want me to heal you, stand very still. But also avoid their bullets.
+free                                 | Baptiste ┬╖ Safety first. Taking down enemies: First and a half.
+free                                 | Baptiste ┬╖ The doctor is in, and he's looking... GOOD!
+free                                 | Baptiste ┬╖ This looks like a team that gets into trouble. Good thing I came along, hm?
+free                                 | Baptiste ┬╖ We're in for a smooth ride, right?... Right?
+free                                 | Baptiste ┬╖ You don't need a fancy diploma to practice medicine. You just need a gun that shoots healing grenades!
+free                                 | Baptiste ┬╖ It's hard to heal you flighty types. Well, I'm up for a challenge.
+free                                 | Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+free                                 | Baptiste ┬╖ Well, this is... awkward. (nervous laugh) Are you... still mad at me? Don't answer that.
+free                                 | Baptiste ┬╖ Nothing sweeter than an uneventful victory
+free                                 | Baptiste ┬╖ I'm ready to go!
+
+## illari|runasapi|inti (37)
+free                                 | Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+free                                 | Illari ┬╖ I wonder if Chu├▒o misses me. I'll kick his butt if he doesn't!
+free                                 | Illari ┬╖ No mistakes, no mercy.
+free                                 | Illari ┬╖ No one rests until this is done.
+free                                 | Illari ┬╖ Stay in range. If you wander off, I can't protect you.
+free                                 | Illari ┬╖ If you're going to die, do it when I'm not looking.
+free                                 | Illari ┬╖ You're only my responsibility if you're close enough to me.
+free                                 | Illari ┬╖ Don't slow me down
+free                                 | Illari ┬╖ No holding back. Let's move
+free                                 | Illari ┬╖ I won't fail
+free                                 | Illari ┬╖ I'll see this through. No matter what
+free                                 | Illari ┬╖ Follow my light
+free                                 | Illari ┬╖ Unfurl your wings
+free                                 | Illari ┬╖ Set up here
+free                                 | Illari ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Of course it went in. There's no goalie.
+free                                 | Illari ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö They always said I was a good shot.
+
+## mauga|samoa|baptiste (155)
+free                                 | Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+free                                 | Ana ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I've always been a good shot.
+free                                 | Anran ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Huh. Thought I'd have to train more to pull that off.
+free                                 | Anran ┬╖ Ilios or Samoa ΓÇö I know it's hot out, but... don't ask me to fan you. You'll regret it.
+free                                 | Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Get a point on the board, Bob!
+free                                 | Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Lucky shot.
+free                                 | Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Nice shot, Augustin.
+free                                 | Baptiste ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Swoosh!
+free                                 | Brigitte ┬╖ Ilios, Lijiang Tower, Nepal, or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö I've played a little ball before.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö And that's horse!
+free                                 | Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Bingo.
+free                                 | Cassidy ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Jackpot.
+free                                 | D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a 
+free                                 | D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Boom shakalaka! She's on fire!
+free                                 | D.va ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I just can't lose.
+
+## venture|archaeolog|omnic archaeology (52)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Freja ┬╖ Guess they'll hire anyone for a job these days...
+free                                 | Hanzo ┬╖ Nothing ventured, nothing gained.
+free                                 | Lifeweaver ┬╖ I've never been more ready for adventure!
+free                                 | Mei ┬╖ Let's show them what a team of scientists can do!
+free                                 | Reinhardt ┬╖ Uh... perhaps some of us should have guns? No?
+free                                 | Reinhardt ┬╖ Ha! Who needs guns? Let's show them that the classics can still get it done!
+free                                 | Symmetra ┬╖ Unpredictable allies are still allies... barely.
+free                                 | Venture ┬╖ Argh! Let's go already!
+free                                 | Venture ┬╖ Did I pack my...? Ah, I'm sure it's fine.
+free                                 | Venture ┬╖ Goggles? On. Boots? On. Drill? Being... held. I'm ready to get into trouble!
+free                                 | Venture ┬╖ Gear up, crew! Who knows what we'll find out there?
+free                                 | Venture ┬╖ I can't wait to get out there!
+free                                 | Venture ┬╖ Intrepid explorers, it's time to get to work!
+USED #39 Lost to the past            | Venture ┬╖ The best archeologists get their noses out of books and into the dirt!
+free                                 | Venture ┬╖ Whoa, ninjas! Are we doing like a stealth kinda thing? (whispers) I am all over it.
+
+## sierra|sep|naughton|on the run (30)
+free                                 | Ana ┬╖ Let's use our superior range against them.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Ashe ┬╖ Aw, hell. The law's here.
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Hazard ┬╖ Aw, gotta work with these bootlickers?
+free                                 | Mercy ┬╖ Looks like I'm going to be in the air, so call if you need me on the ground.
+free                                 | Pharah ┬╖ Finally, a unit that understands the importance of military discipline...
+free                                 | Reinhardt ┬╖ Back in my day, we had to fight on the ground.
+free                                 | Sierra ┬╖ Alright, let's focus up!
+free                                 | Sierra ┬╖ Don't skip out on warm-ups, y'all!
+free                                 | Sierra ┬╖ Everybody have their boots on tight?
+free                                 | Sierra ┬╖ If anyone needs a pep talk, just say the word!
+free                                 | Sierra ┬╖ We're gonna make a good team. I can feel it.
+free                                 | Sierra ┬╖ When the chips are down, I'll have your back.
+free                                 | Sierra ┬╖ Your life's more important than a mission, okay? Stay safe out there.
+free                                 | Sierra ┬╖ I'm ready for anything!
+
+## lifeweaver|suravasa|thailand|vishkar (39)
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Domina ┬╖ Well, aren't we a competent collective?
+free                                 | Hazard ┬╖ Yes! Now these punks I can ride with.
+free                                 | Junker Queen ┬╖ Alright, ladies. Let's teach these boys a lesson! (laugh)
+free                                 | Lifeweaver ┬╖ I wish violence never solved anything. It would make peace so much easier.
+free                                 | Lifeweaver ┬╖ I've never been more ready for adventure!
+free                                 | Lifeweaver ┬╖ Stay near, will you? I hate when people run off without me!
+free                                 | Lifeweaver ┬╖ The suspense is terrible... I hope it'll last.
+free                                 | Lifeweaver ┬╖ This should be fun.
+free                                 | Lifeweaver ┬╖ Well, off to disappoint my mother again.
+free                                 | Lifeweaver ┬╖ You look like a talented bunch. This should be quick!
+free                                 | Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+free                                 | Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+free                                 | Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the oth
+free                                 | Lifeweaver ┬╖ Stay close, Satya! I know how you like to get into trouble.
+free                                 | Lifeweaver ┬╖ I love a fresh beginning. All that promise
+
+## junker|junkertown|outback|odessa (106)
+free                                 | Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+free                                 | Baptiste ┬╖ Junkertown ΓÇö New Junk City is mistakenly not included and awaits a fix. ΓÇö Ugh. Got dust stuck in my teeth.
+free                                 | D.va ┬╖ Ugh. The Junkers want to turn Busan into their dump, but they already live in one!
+free                                 | Echo ┬╖ Junkertown or New Junk City ΓÇö This place confuses me. If it is so hostile to life, why does everyone not leave?
+free                                 | Genji ┬╖ Junkertown or New Junk City ΓÇö This is a silly place.
+free                                 | Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is step
+free                                 | Hanzo ┬╖ Junkertown or New Junk City ΓÇö A less honorable place is difficult to imagine.
+free                                 | Hazard ┬╖ Junkertown or New Junk City ΓÇö eliminating Wrecking Ball ΓÇö This place has got a real pest problem.
+free                                 | Hazard ┬╖ New Queen Street ΓÇö eliminating Sojourn ΓÇö Should'a stood up for the Augments.
+free                                 | Junker Queen ┬╖ Are you lot ready for some bloodshed?
+free                                 | Junker Queen ┬╖ Before we go out there, I gotta' warn ya: I'm gonna yell at ya... a lot. Not because I don't like ya, or 
+free                                 | Junker Queen ┬╖ Is this one a scrap or a heist? I wasn't listening. Heh, heh.
+free                                 | Junker Queen ┬╖ So, here the plan. Do what I do, listen to what I say. And don't screw this up!
+free                                 | Junker Queen ┬╖ The knife's called Gracie, the axe is Carnage... and me? Ha ha, I'm your Queen.
+free                                 | Junker Queen ┬╖ Think you can keep up?
+free                                 | Junker Queen ┬╖ Alright, ladies. Let's teach these boys a lesson! (laugh)
+
+## zarya|volskaya|russia (25)
+free                                 | Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and awa
+free                                 | Hazard ┬╖ Aw, gotta work with these bootlickers?
+free                                 | Junkrat ┬╖ We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.
+free                                 | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a
+free                                 | Pharah ┬╖ Finally, a unit that understands the importance of military discipline...
+free                                 | Zarya ┬╖ Everybody stretch? Good!
+free                                 | Zarya ┬╖ Four hundred pushups before every mission! It works, I promise!
+free                                 | Zarya ┬╖ I'm here to spot you. But you have to put in the work.
+free                                 | Zarya ┬╖ Particle cannon online! Let's run them over.
+free                                 | Zarya ┬╖ The eye will not fail. The hand will not flinch.
+free                                 | Zarya ┬╖ Careful, Aleksandra. You can have it out after the mission.
+free                                 | Zarya ┬╖ I thought this was a military operation. Oh, well...
+free                                 | Zarya ┬╖ Now this is a strong team.
+free                                 | Zarya ┬╖ All right, omnics. Let's get it done.
+free                                 | Zarya ┬╖ For the motherland!
+free                                 | Zarya ┬╖ Warmup's over. Let's do this
+
+## symmetra|vishkar|utopaea (39)
+free                                 | Anran ┬╖ I'm ready to dance.
+free                                 | Domina ┬╖ Do look lively, Vaswani. Two architechs on a battlefront are bound to make headlines.
+free                                 | Domina ┬╖ Well, aren't we a competent collective?
+free                                 | Hazard ┬╖ Aw, gotta work with these bootlickers?
+free                                 | Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+free                                 | Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+free                                 | Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the oth
+free                                 | Lifeweaver ┬╖ Stay close, Satya! I know how you like to get into trouble.
+free                                 | Sojourn ┬╖ Ah, got a lot of cybernetics on this team, and no one to repair them... (sigh)
+free                                 | Symmetra ┬╖ A Vishkar architech always completes her task to perfection.
+free                                 | Symmetra ┬╖ Heed the plan. Divergence leads to defeat.
+free                                 | Symmetra ┬╖ I will create pathways to victory. Make sure you follow them.
+free                                 | Symmetra ┬╖ I will see this task completed.
+free                                 | Symmetra ┬╖ The world is a dream not yet realized.
+free                                 | Symmetra ┬╖ This is such a misuse of my technology.
+free                                 | Symmetra ┬╖ Violence is such a waste of resources. But they've left us no choice.
+
+## lucio|brazil|rio|viskar|hardlight (60)
+free                                 | Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+free                                 | Ana ┬╖ Let's use our superior range against them.
+free                                 | Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+free                                 | Ana ┬╖ Para├¡so ΓÇö When was my last trip to wikipedia:Copacabana, Rio de Janeiro? Mm, too long ago...
+free                                 | Cassidy ┬╖ Para├¡so ΓÇö Now this is one place that knows how to throw a party.
+free                                 | D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a 
+free                                 | Domina ┬╖ Para├¡so ΓÇö Ugh, much work left to do here. How fortunate that I'm industrious!
+free                                 | Domina ┬╖ Para├¡so ΓÇö eliminating L├║cio ΓÇö They'll idolize anyone these days...
+free                                 | Domina ┬╖ Para├¡so ΓÇö eliminating L├║cio ΓÇö The revolution, silenced!
+free                                 | Genji ┬╖ Mental bearing, not skill, is the sign of a matured warrior.
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while L├║cio is pushing the payload ΓÇö Hey you, pop star! No skating on me walls. I'm watching
+free                                 | Junkrat ┬╖ I promise to take this one serious.
+free                                 | Junkrat ┬╖ Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!
+free                                 | Juno ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö L├║cio's football lessons were very helpful
+free                                 | L├║cio ┬╖ Another day, another mission. Man! I'm so excited.
+free                                 | L├║cio ┬╖ Everyone ready?
+
+## orisa|efi|numbani (43)
+free                                 | Ana ┬╖ Numbani ΓÇö These people moved past the Omnic Crisis so quickly. I envy that.
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Ashe ┬╖ Aw, hell. The law's here.
+free                                 | Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+free                                 | Baptiste ┬╖ Numbani ΓÇö So this is where Doomfist is from. I hope he's not in town.
+free                                 | Domina ┬╖ Follow my lead, dears. The punishment for defiance is quite severe.
+free                                 | Doomfist ┬╖ Numbani ΓÇö If only you could see me now, Akinjide Adeyemi.
+free                                 | Doomfist ┬╖ Numbani ΓÇö Just as sheep must have a shepherd, Numbani must have me.
+free                                 | Echo ┬╖ Numbani ΓÇö Mistakenly a singular chatter line instead of a conversation with Orisa or another hero. ΓÇö You say they
+free                                 | Hazard ┬╖ Aw, gotta work with these bootlickers?
+free                                 | Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+free                                 | Kiriko ┬╖ Neon Junction ΓÇö Toshiro Yamagami... I will definitely rescue you.
+free                                 | Lifeweaver ┬╖ Shambali Monastery ΓÇö Nepal is mistakenly not included and awaits a fix. ΓÇö The home of the Iris. So inspirin
+free                                 | Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+free                                 | Mercy ┬╖ We must be very careful not to harm any civilians. Do not just assume I can heal them! Although I could, of cour
+free                                 | Orisa ┬╖ Battle draws near. Ready yourselves.
+
+## sigma|talon|gravity|de kuiper (48)
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+free                                 | Lifeweaver ┬╖ I can't wait to see what we're all going to invent together.
+free                                 | Mei ┬╖ Let's show them what a team of scientists can do!
+free                                 | Mercy ┬╖ It's even more important to stretch before missions as you age.
+free                                 | Reinhardt ┬╖ Uh... perhaps some of us should have guns? No?
+free                                 | Reinhardt ┬╖ Ah, Talon! Still the only criminals foolish enough to battle Overwatch (group) on purpose!
+free                                 | Roadhog ┬╖ Hope you geezers can fight.
+free                                 | Roadhog ┬╖ You eggheads stay away from me.
+free                                 | Sigma ┬╖ At relativistic speeds, length contraction causes an increase in the fluid's density. So the question is, does t
+free                                 | Sigma ┬╖ But though the objects are subject to the same acceleration, the thread between them snaps. Fascinating, fascina
+free                                 | Sigma ┬╖ Make your preparations. Careful research is effective research.
+free                                 | Sigma ┬╖ Not all of us are scientists, but that's no reason to be careless.
+free                                 | Sigma ┬╖ The delta M of a given ray Q is approximately... Hmpfh. The formula escapes me.
+USED #33 Grasping Gravity            | Sigma ┬╖ These phenomena bear further investigation.
+free                                 | Sigma ┬╖ Ik sta te popelen!
+
+## moira|oasis|genetics (53)
+free                                 | Anran ┬╖ Oasis ΓÇö Being here reminds me... I should start looking into certificate programs.
+free                                 | Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+free                                 | Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+free                                 | Hazard ┬╖ Oasis ΓÇö These Oasis fools have got to learn. They cannae keep people down forever.
+free                                 | Hazard ┬╖ Oasis ΓÇö on Oasis: University of Oasis map ΓÇö Tore this place up.
+free                                 | Hazard ┬╖ Oasis ΓÇö eliminating Moira ΓÇö Thought you'd be safe here, did ye?
+free                                 | Junkrat ┬╖ Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!
+free                                 | Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+free                                 | Lifeweaver ┬╖ Oasis ΓÇö The pursuit of knowledge unshackled. Tempting, but so dangerous.
+free                                 | Mei ┬╖ Let's show them what a team of scientists can do!
+free                                 | Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+free                                 | Moira ┬╖ I'll see this matter resolved.
+free                                 | Moira ┬╖ Knowledge is its own reward.
+free                                 | Moira ┬╖ More field research? Grand...
+free                                 | Moira ┬╖ Much lies in store. Let us see to it.
+free                                 | Moira ┬╖ Push your limits. Nothing breaks that I cannot mend.
+
+## sojourn|toronto|canada (57)
+free                                 | Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+free                                 | Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+free                                 | Brigitte ┬╖ Wow! I've heard so many stories about... everyone on this team!
+free                                 | Echo ┬╖ Reconfiguring combat parameters for Overwatch Strike Team operations.
+free                                 | Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is step
+free                                 | Hazard ┬╖ New Queen Street ΓÇö eliminating Sojourn ΓÇö Should'a stood up for the Augments.
+free                                 | Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my d
+free                                 | Junkrat ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Is it snowing? I really love it when it s
+free                                 | Juno ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö in a team with Sojourn ΓÇö Did you see that,
+free                                 | Pharah ┬╖ Finally, a unit that understands the importance of military discipline...
+free                                 | Roadhog ┬╖ More like Over-rated. (chuckle)
+free                                 | Shion ┬╖ Final Blow ΓÇö eliminating Sojourn ΓÇö I can't stand fare dodgers.
+free                                 | Shion ┬╖ Respawn ΓÇö eliminated by Sojourn ΓÇö I won't be humiliated again.
+free                                 | Sierra ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Boy, am I thankful for snow treads out her
+free                                 | Sojourn ┬╖ Clear heads, sharp eyes.
+free                                 | Sojourn ┬╖ Everything's online, functionality looks good... one last diagnostics check couldn't hurt.
+
+=== EXTRA LITERALS ===
+
+~ Recall (1)
+free   | Genji ┬╖ Neon Junction ΓÇö I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.
+
+~ Slipstream|chronal (0)
+
+~ Null Sector (1)
+free   | Sojourn ┬╖ New Queen Street or Para├¡so ΓÇö Null Sector may have withdrawn, but I can't shake the feeling there's trouble ah
+
+~ King's Row (8)
+free   | D.va ┬╖ King's Row ΓÇö Tokki can jump over Big Ben, no problem!
+free   | Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a f
+free   | Kiriko ┬╖ King's Row ΓÇö This is London, huh? I've seen fancier.
+free   | Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+free   | Soldier 76 ┬╖ King's Row ΓÇö I wouldn't change a thing we King's Row Uprising.
+free   | Torbj├╢rn ┬╖ King's Row ΓÇö I can't believe I fell for all that anti-omnic claptrap.
+free   | Tracer ┬╖ King's Row ΓÇö eliminating Widowmaker ΓÇö How dare you come back here?!
+free   | Widowmaker ┬╖ King's Row ΓÇö eliminating Tracer while airborne ΓÇö At least you took the bullet this time.
+
+~ Mondatta (1)
+free   | Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+
+~ Hanamura (17)
+free   | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty 
+free   | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of
+free   | Hanzo ┬╖ Hanamura ΓÇö removed ΓÇö I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.
+free   | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the H
+free   | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from th
+free   | Kiriko ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I should check in
+free   | Kiriko ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö The Hashimoto rul
+free   | Kiriko ┬╖ Hanamura or Hanaoka ΓÇö Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö Mizuki looked a
+free   | Kiriko ┬╖ Hanamura, Hanaoka or Neon Junction ΓÇö Watch over us, grandma. We'll send those Hashimoto packing.
+free   | Mizuki ┬╖ Hanamura or Hanaoka ΓÇö After messing up the way he has, Kuroura's lucky the elders aren't local.
+
+~ Shimada (0)
+
+~ Ecopoint|Antarctic (25)
+free   | Ana ┬╖ Antarctic Peninsula ΓÇö I could be sunning in Lagos right now. (scoff) And where am I instead?
+free   | Anran ┬╖ Antarctic Peninsula, New Queen Street or Shambali Monastery ΓÇö Anyone cold? I have just the thing!
+free   | Baptiste ┬╖ Nepal or Volskaya Industries ΓÇö Antarctic Peninsula and Shambali Monastery are mistakenly not included and awa
+free   | D.va ┬╖ Antarctic Peninsula ΓÇö A, chuwo! (Hangul) Oh, it's so cold!
+free   | Hanzo ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Snow... is so beautiful... until it is step
+free   | Junkrat ┬╖ Antarctic Peninsula ΓÇö The! Antarctic! Peninsula!
+free   | Junkrat ┬╖ Antarctic Peninsula, Nepal, New Queen Street or Shambali Monastery ΓÇö Is it snowing? I really love it when it s
+free   | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Nepal and Volskaya Industries are mistakenly not included and await a
+free   | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö Aaaaaaaaah... Did I do that right?
+free   | Juno ┬╖ Antarctic Peninsula or Shambali Monastery ΓÇö How am I supposed to sing if I do not know the words?
+
+~ Gauntlet (0)
+
+~ Blackwatch (0)
+
+~ Retribution (2)
+free   | Genji ┬╖ Rialto ΓÇö I Retribution this place. (sigh)
+free   | Moira ┬╖ Rialto ΓÇö This city brings back Retribution...
+
+~ Kanezaka|Hashimoto|fox (12)
+free   | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö It is not my duty 
+free   | Genji ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö What has become of
+free   | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö By my arrow, the H
+free   | Hanzo ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I have run from th
+free   | Kiriko ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö I should check in
+free   | Kiriko ┬╖ Hanaoka ΓÇö Hanamura, Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö The Hashimoto rul
+free   | Kiriko ┬╖ Hanamura or Hanaoka ΓÇö Kanezaka and Neon Junction are mistakenly not included and await a fix. ΓÇö Mizuki looked a
+free   | Kiriko ┬╖ Hanamura, Hanaoka or Neon Junction ΓÇö Watch over us, grandma. We'll send those Hashimoto packing.
+free   | Kiriko ┬╖ Kanezaka ΓÇö eliminating Shion ΓÇö Kanezaka is under my protection.
+free   | Kiriko ┬╖ Kanezaka ΓÇö respawn ΓÇö No one is taking my home from me.
+
+~ Athena (0)
+
+~ Helwan (0)
+
+~ Watchpoint (17)
+free   | Anran ┬╖ Watchpoint: Gibraltar ΓÇö I won't let From the Ashes happen again. Next time, I'll be ready.
+free   | Ashe ┬╖ Ilios, Lijiang Tower, Nepal or Watchpoint: Gibraltar ΓÇö I wouldn't mind stealin' a spaceship. You hear what they m
+free   | Brigitte ┬╖ Watchpoint: Gibraltar ΓÇö Talon's going to pay for From the Ashes. I'll make sure of it.
+free   | Echo ┬╖ Watchpoint: Gibraltar ΓÇö So many memories.
+free   | Emre ┬╖ | Watchpoint: Gibraltar ΓÇö Always figured I'd end up back here. Just... not like this.
+free   | Freja ┬╖ Watchpoint: Gibraltar ΓÇö Ah, Gibraltar. It hasn't been long enough.
+free   | Juno ┬╖ Watchpoint: Gibraltar ΓÇö Before Reign of Talon Season 1 ΓÇö I am glad I can call this my home away from home.
+free   | Mei ┬╖ Watchpoint: Gibraltar ΓÇö Gibraltar is bigger than I remember. Or maybe it's just that I've never seen it so empty..
+free   | Moira ┬╖ Watchpoint: Gibraltar ΓÇö Overwatch (group)... keepers of the status quo.
+free   | Orisa ┬╖ Watchpoint: Gibraltar ΓÇö I am proud to be here.
+
+~ Uprising (1)
+free   | Soldier 76 ┬╖ King's Row ΓÇö I wouldn't change a thing we King's Row Uprising.
+
+~ Deadlock (1)
+free   | Cassidy ┬╖ Things were a lot simpler when I was robbing banks with the Deadlock Rebels.
+
+~ Route 66 (11)
+free   | Ashe ┬╖ Route 66 ΓÇö This place just ain't the same since that Cassidy ran away with my bike.
+free   | Brigitte ┬╖ Route 66 ΓÇö That bridge collapsed from a little explosion? Seems like bad engineering to me.
+free   | D.va ┬╖ Route 66 ΓÇö A MEKA roadtrip would be jonla fun!
+free   | Echo ┬╖ Route 66 ΓÇö It's a Reunion outside the crate!
+free   | Freja ┬╖ Route 66 ΓÇö Outlaw country, huh? Enough bounties out here for a girl to retire on.
+free   | Kiriko ┬╖ Route 66 ΓÇö These are the first cacti I've seen that weren't dying on someone's windowsill.
+free   | Roadhog ┬╖ Route 66 ΓÇö Eh, it's a dry heat.
+free   | Roadhog ┬╖ Route 66 ΓÇö My west is wilder.
+free   | Sierra ┬╖ Nepal, Route 66 or Runasapi ΓÇö I'm still looking, Kendra Woods. I know you're out there somewhere.
+free   | Sierra ┬╖ Route 66 ΓÇö Spent weeks holed up here for a sting op, once. Rough job, but... nothing beats that sunset.
+node : (node:34920) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-ab6529e8-ebf3-41b2-80a4-a2509fb4fb33.ps1:92 char:1
++ node scripts/_cache/scout-chatter-map-p11-15.mjs 2>&1 | Out-File -Enc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:34920) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

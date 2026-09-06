@@ -1,0 +1,2032 @@
+{
+  "apply": false,
+  "reassign": true,
+  "extractRoot": "C:\\Users\\diego\\OneDrive\\Escritorio\\ow models\\HeroVoice",
+  "copiedFromMatchTalk": 6,
+  "downloadedFromWiki": 152,
+  "reassigned": 20,
+  "stillMissing": [
+    {
+      "hero": "Ana",
+      "subtitle": "These people moved past the Omnic Crisis so quickly. I envy that.",
+      "voice": "Ana_-_These_people_moved_past_the_Crisis_so_quickly._I_envy_that.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ana",
+      "subtitle": "When was my last trip to Copacabana, Rio de Janeiro? Mm, too long ago...",
+      "voice": "Ana_-_When_was_my_last_trip_to_Copacabana._Too_long_ago.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Anran",
+      "subtitle": "I won't let From the Ashes happen again. Next time, I'll be ready.",
+      "voice": "Anran_-_I_won't_let_this_happen_again._Next_time,_I'll_be_ready.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "Better get paid after all this. I don't like havin' my time wasted.",
+      "voice": "Ashe_-_Better_get_paid_after_all_this._I_don't_like_having_my_time_wasted.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "We're doin' this my way.",
+      "voice": "Ashe_-_We're_doing_this_my_way.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "We're playin' by my rules.",
+      "voice": "Ashe_-_We're_playing_by_my_rules.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "Look at all these good Samaritans. What are we doin' here, Bob?",
+      "voice": "Ashe_-_Look_at_all_these_good_Samaritans._What_are_we_doing_here,_Bob.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "This is a hardy bunch of outlaws. Just need somethin' to steal.",
+      "voice": "Ashe_-_This_is_a_hardy_bunch_of_outlaws._Just_need_something_to_steal.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "I'm dyin' to see how you botch this one, Cassidy.",
+      "voice": "Ashe_-_I'm_dying_to_see_how_you_botch_this_one,_Cassidy.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "I hear you can smuggle just about anythin' through those skyways.",
+      "voice": "Ashe_-_I_hear_you_can_smuggle_just_about_anything_through_those_skyways.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "I wouldn't mind stealin' a spaceship. You hear what they make satellites out of these days?",
+      "voice": "Ashe_-_I_wouldn't_mind_stealing_a_spaceship._You_hear_what_they_make_satellites_out_of_these_days.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ashe",
+      "subtitle": "This place just ain't the same since that Cassidy ran away with my bike.",
+      "voice": "Ashe_-_This_place_just_ain't_the_same_since_that_son_of_a_gun_ran_away_with_my_bike.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Baptiste",
+      "subtitle": "No. I mean, I don't sing. Can I dance instead? Ah, ah, ah-ah, ah, ah, ah-ah-ah, ah, ba, ba, ah, ah... I'm getting it, I'",
+      "voice": "Baptiste_-_No,_I_mean,_I_don't_sing._Can_I_dance_instead.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Baptiste",
+      "subtitle": "If you need heals, there's no health stauncher than a blast from my biotic launcher. If they're firing too fast for me t",
+      "voice": "Baptiste_-_If_you_need_heals_there’s_no_help_stauncher_than_a_blast_from_my_biotic_launcher.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Baptiste",
+      "subtitle": "No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, ",
+      "voice": "Baptiste_-_No,_I_mean,_I_don't_sing._Can_I_dance_instead.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Brigitte",
+      "subtitle": "I'm surprised Torbjörn's come around on omnics. Usually he doesn't change his mind about anything.",
+      "voice": "Brigitte_-_I'm_surprised_Papa's_come_around_on_omnics._Usually_he_doesn't_change_his_mind_about_anything.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Brigitte",
+      "subtitle": "Talon's going to pay for From the Ashes. I'll make sure of it.",
+      "voice": "Brigitte_-_Talon's_going_to_pay_for_what_they_did_here._I'll_make_sure_of_it.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Cassidy",
+      "subtitle": "Things were a lot simpler when I was robbing banks with the Deadlock Rebels.",
+      "voice": "Cassidy_-_Things_were_a_lot_simpler_when_I_was_robbing_banks_with_the_Deadlock_Gang.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Cassidy",
+      "subtitle": "Ah, alright. More of a country guy, but, not bad! Let's do this. Yeahhhh.",
+      "voice": "Cassidy_-_Ah,_alright,_more_of_country_guy,_but_not_bad!_Let's_do_this..._yeahhh.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Cassidy",
+      "subtitle": "Yeah, alright. Get 'em movin', get 'em rollin'. Get them doggies out tonight! Yeah.",
+      "voice": "Cassidy_-_Yeah,_alright,_get_'em_moving,_get_'em_rolling,_get_them_doggies_out_tonight.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Cassidy",
+      "subtitle": "Sittin' in cafés all day, drinkin' good espresso, eatin' pasta with eight-syllable names... Not a bad way to live.",
+      "voice": "Cassidy_-_Sitting_in_cafes_all_day,_drinking_good_espresso,_eating_pasta_with_eight-syllable_names..._Not_a_bad_way_to_live.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Cassidy",
+      "subtitle": "This city is louder than a field of Montana grasshoppers. Y'know, the ones as big as your thumb?",
+      "voice": "Cassidy_-_This_city's_louder_than_a_field_of_Montana_grasshoppers._You_know,_the_ones_as_big_as_your_thumb.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "D.va",
+      "subtitle": "All systems fired up and ready to engage. Hae bojago! (Hangul) Let's do this!",
+      "voice": "D.Va_-_All_systems_fired_up_and_ready_to_engage._(Korean)_Let's_do_this.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "D.va",
+      "subtitle": "A, chuwo! (Hangul) Oh, it's so cold!",
+      "voice": "D.Va_-_(Korean)_So_cold.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "D.va",
+      "subtitle": "Eichenwalde, King's Row or Volskaya Industries",
+      "voice": "D.Va_-_The_destruction_caused_by_the_omnics_here..._it_reminds_me_of_home.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Doomfist",
+      "subtitle": "Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.",
+      "voice": "Doomfist_-_Lucheng_understands_an_important_fact,_as_long_as_we_are_shackled_to_a_single_planet,_we_are_vulnerable.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Doomfist",
+      "subtitle": "If only you could see me now, Akinjide Adeyemi.",
+      "voice": "Doomfist_-_If_only_you_could_see_me_now,_Adeyemi.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Echo",
+      "subtitle": "Duplicating dance moves! To the left, to the right! Mina Liao would be proud!",
+      "voice": "Echo_-_Duplicating_dance_moves!_To_the_left,_to_the_right!_Dr_Liao_would_be_proud.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Echo",
+      "subtitle": "Mm, mm, mm. Oh, ah, mm, mm, mmm... Oh! I think I slipped a circuit...",
+      "voice": "Echo_-_I_think_I_slipped_a_circuit.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Echo",
+      "subtitle": "It's a Reunion outside the crate!",
+      "voice": "Echo_-_It's_a_completely_different_view_outside_the_crate.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Echo",
+      "subtitle": "Am I programmed to dance? Yeah! Oh, ooh, wooh!",
+      "voice": "Echo_-_Am_I_programmed_to_dance._Yeah.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Echo",
+      "subtitle": "Mmm, mmm, mmm, oh, ah, mmm, mmm, mmh, oh! I think I slipped a circuit!",
+      "voice": "Echo_-_I_think_I_slipped_a_circuit.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Freja",
+      "subtitle": "Nå, hvad er planen i dag?",
+      "voice": "Freja_-_(Danish)_What's_the_plan_today.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Freja",
+      "subtitle": "Ugh, Maximilien's casino... You'd think with all that money, the bot could afford some taste.",
+      "voice": "Freja_-_Ah,_Max's_casino..._You’d_think_with_all_that_money,_the_bot_could_afford_some_taste.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Freja",
+      "subtitle": "Doesn't get more remote than this. Huh, I wonder if I could afford a flat here...",
+      "voice": "Freja_-_Doesn't_get_more_remote_than_this._Wonder_if_I_could_afford_a_flat_here.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Genji",
+      "subtitle": "Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the sli",
+      "voice": "Genji_-_(Japanese)_My_blade_is_sharpened,_and_my_will_is_pure.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Genji",
+      "subtitle": "It is not my duty to face the Hashimoto clan. Yet, I cannot bear to walk away.",
+      "voice": "Genji_-_It_is_not_my_duty_to_face_the_Hashimoto._Yet,_I_cannot_bear_to_walk_away.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Genji",
+      "subtitle": "Rakushō da na! (Japanese) Piece of cake!",
+      "voice": "Genji_-_(Japanese)_Easy_(2).ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Genji",
+      "subtitle": "Heh. Nerai wa hazusanee. (Japanese) I don't miss my target.",
+      "voice": "Genji_-_(Japanese)_Heh._I_never_miss.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Genji",
+      "subtitle": "I Retribution this place. (sigh)",
+      "voice": "Genji_-_I_remember_this_place.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Hanzo",
+      "subtitle": "By my arrow, the Hashimoto clan will pay for what they have done to my home.",
+      "voice": "Hanzo_-_By_my_arrow,_the_Hashimoto_will_pay_for_what_they_have_done_to_my_home.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Hanzo",
+      "subtitle": "My enemies fall like ... heh heh heh, destroyed piñatas!",
+      "voice": "Hanzo_-_My_enemies_fall_like_destroyed_piñatas.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Hanzo",
+      "subtitle": "The concerns of my life seem so distant from here.",
+      "voice": "Hanzo_-_The_concerns_of_my_life_seem_so_distant_from_up_here.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Hazard",
+      "subtitle": "Check out these new 'gradies. Phreaks's work. Outdid herself again!",
+      "voice": "Hazard_-_Check_out_these_new_'gradies._Touch-Up's_work._Outdid_herself_again.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Illari",
+      "subtitle": "(sigh) Pampachaway.",
+      "voice": "Illari_-_(Quechua)_(sigh)_I'm_sorry.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "Before we go out there, I gotta' warn ya: I'm gonna yell at ya... a lot. Not because I don't like ya, or because I care,",
+      "voice": "Junker_Queen_-_Before_we_go_out_there,_I_gotta_warn_ya._I'm_gonna_yell_at_ya_a_lot.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "So, here the plan. Do what I do, listen to what I say. And don't screw this up!",
+      "voice": "Junker_Queen_-_So,_here's_the_plan._Do_what_I_do,_listen_to_what_I_say,_and_don't_screw_this_up.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "The knife's called Gracie, the axe is Carnage... and me? Ha ha, I'm your Queen.",
+      "voice": "Junker_Queen_-_The_knife's_called_Gracie._The_axe_is_Carnage._And_me._I'm_your_Queen.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "Wish one of those Gwishin would attack. I don't need a mech to fight them.",
+      "voice": "Junker_Queen_-_Wish_one_of_those_big_underwater_robots_would_attack._I_don't_need_a_mech_to_fight_them.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "The Legend of the Junker Queen Ah, drat. I forgot the words again! Err... Time for the reckoning!",
+      "voice": "Junker_Queen_-_I_know_sacrifice_and_I_know_pain..._Ah,_drat._I_forgot_the_words_again!_Err..._Time_for_the_reckoning.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junker Queen",
+      "subtitle": "Yeah-e-eah, this is MY city! Don't you dare put a scratch on it!",
+      "voice": "Junker_Queen_-_Yeah,_this_is_my_city!_Don't_you_dare_put_a_scratch_on_it.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "(singing:) Had me brekky in a billabong! Me night was short but me day was long... Sooo long!",
+      "voice": "Junkrat_-_Had_my_brekky_in_a_billabong!_Me_night_was_short_but_me_day_was_long..._So_long.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "So, I was like, Roadhog, mate, just 'cause that's how you see it, doesn't mean that's how she sees it, right? But enough",
+      "voice": "Junkrat_-_So_I_was_like,_Roadhog,_mate,_just_cuz_that's_how_you_see_it_doesn't_mean_that's_how_she_sees_it,_right.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.",
+      "voice": "Junkrat_-_We've_got_everybody!_Beamsy!_Sniperetta!_The_Lonely_Bowman!_Oh_we're_going_to_have_fun.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "(singing the blues:) Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!",
+      "voice": "Junkrat_-_Met_this_sheila_in_a_haunted_bog!_She_cursed_my_dreams_with_a_poisoned_frog,_oh_no.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "Dee-ap dap da-bee da! Dee-a dap-da doo! Dee-ap dap da-bee da! Rrr-i dogga-dappa doo!",
+      "voice": "Junkrat_-_Dee_ap_dap_da_bee_da!_Dee_a_dap_da_boo.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "Junkrat-Junker-Jun-ju-ju-ja, Junker-Junker-Junk, Junk-rat-rat, Junkrat-Junkrat-Junkrat, Junkrat-d-drat, d-drat, d-drat-d",
+      "voice": "Junkrat_-_Junkrat-Junkrat-Junkrat-Junkrat,_Junkrat-Junkrat-Junkrat-Junkrat.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "Stealing is my favorite role, here's a list of the things I stole: diamonds, emeralds, magic jewels! Expensive, prosthod",
+      "voice": "Junkrat_-_Stealing_is_my_favorite_role!_Here's_a_list_of_the_things_I_stole!_Diamonds,_em'ralds,_magic_jewels.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Junkrat",
+      "subtitle": "0.4 seconds to go, there's the buzzer... and he scores! He's done it!",
+      "voice": "Junkrat_-_0.4_seconds_ago,_there's_the_buzzer..._and_he_scores!_He's_done_it.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Juno",
+      "subtitle": "A cowboy with six guns? Oh, Khiem Van Minh will love this!",
+      "voice": "Juno_-_A_cowboy_with_six_guns._Father_will_love_this.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Juno",
+      "subtitle": "Khiem Van Minh said there is authentic Vietnamese food in big cities! What should I try first?",
+      "voice": "Juno_-_Father_said_there_is_authentic_Vietnamese_food_in_big_cities._What_should_I_try_first.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Juno",
+      "subtitle": "I will never forgive Talon for Overwatch: Undivided From the Ashes!",
+      "voice": "Juno_-_I_will_never_forgive_Talon_for_attacking_my_new_home.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Kiriko",
+      "subtitle": "They have this coming. So let's give it to them.",
+      "voice": "Kiriko_-_They_had_this_coming._So_let's_give_it_to_them.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Kiriko",
+      "subtitle": "I should check in on Yoshida while I'm here. And maybe get some sweets for Akari...",
+      "voice": "Kiriko_-_I_should_check_in_on_Mr._Yoshida_while_I'm_here._And_maybe_get_some_sweets_for_Akari.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Kiriko",
+      "subtitle": "No one is taking my home from me.",
+      "voice": "Kiriko_-_No_one's_taking_my_home_from_me.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Kiriko",
+      "subtitle": "These are the first cacti I've seen that weren't dying on someone's windowsill.",
+      "voice": "Kiriko_-_These_are_the_first_cacti_I've_seen_that_weren't_dying_on_somebody's_windowsill.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Lifeweaver",
+      "subtitle": "Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wants ",
+      "voice": "Lifeweaver_-_Do_not_fear!_You_have_not_one,_but_two_Vishkar_architechs_on_your_side._Yes,_one_dropped_out,_and_the_other_one_w.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Lifeweaver",
+      "subtitle": "Such a tragedy, what happened here. Poor Mei.",
+      "voice": "Lifeweaver_-_Such_a_tragedy,_what_happened_here._Poor_Doctor_Zhou.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Lifeweaver",
+      "subtitle": "I keep meaning to visit the Museu Martins while I'm here. I love how this town honors them.",
+      "voice": "Lifeweaver_-_I_keep_meaning_to_visit_the_Martinses'_museum_while_I'm_here._I_love_how_this_town_honors_them.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Lúcio",
+      "subtitle": "Settin' my equalizer to absolute destruction.",
+      "voice": "Lúcio_-_Setting_my_equalizer_to_absolute_destruction.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mauga",
+      "subtitle": "When are they gonna make a super car my size?",
+      "voice": "Mauga_-_When_are_they_going_to_make_a_super_car_my_size.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mauga",
+      "subtitle": "Hey, look. You could see the super coral from here.",
+      "voice": "Mauga_-_Hey,_look._You_can_see_the_super_coral_from_here.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mauga",
+      "subtitle": "Ouā! That's the island welcome! (Samoan) Whoo! That's the island welcome!",
+      "voice": "Mauga_-_That's_the_island_welcome.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mei",
+      "subtitle": "Zhège shìjiè xūyào wǒmen! (Hanzi) This world needs us!",
+      "voice": "Mei_-_(Chinese)_The_world_needs_us.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mei",
+      "subtitle": "Hey! Be careful, Juno. Your Jiayi Teo will be furious if I let anything happen to you!",
+      "voice": "Mei_-_Hey!_Be_careful,_Juno._Your_mother_will_be_furious_if_I_let_anything_happen_to_you.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mei",
+      "subtitle": "Zhǎo a zhǎo a zhǎo péngyǒu—a, nǐ bùshì wǒ de hǎo péngyǒu! Bīng zhù nǐ a qiāoqiāo tóu, guāiguāi dòng zhù bùxǔ zǒu! (Hanzi",
+      "voice": "Mei_-_(Chinese)_Looking,_looking,_for_my_friends_-_Wait,_you_are_not_my_friend!_Freeze_you_up,_knock_your_head!.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mercy",
+      "subtitle": "Deh-deh deh-deh, deh, deh, do-do-do, do-do-do. Rrum-pum-pum, do-do, do-do, do-do-do. I love this song!",
+      "voice": "Mercy_-_Da_da_da._Do_do_do._I_love_this_song.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mercy",
+      "subtitle": "La la la, la-la, lah! Do, do, do-do-doo! Ich liebe Musik! La la la, ja! Super.",
+      "voice": "Mercy_-_La_la_la._Do_do_do._(German).ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mercy",
+      "subtitle": "I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, juhuu! Hoi zäme!",
+      "voice": "Mercy_-_I'm_a_dancing_doctor...(German).ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mercy",
+      "subtitle": "Come on, Reinhardt! Show me what you got. \"Sexy, sexy Reinhardt\"... not. (laughs)",
+      "voice": "Mercy_-_Come_on_Reinhardt...sexy_Reinhardt._Not.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Mizuki",
+      "subtitle": "That The Iris stuff freaks me out. At least the spirits can't follow me here... can they?",
+      "voice": "Mizuki_-_That_Iris_stuff_freaks_me_out._At_least_the_spirits_can't_follow_me_here..._can_they.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "I cannot believe I am being subjected to this... cacophony. And they say my actions are unethical.",
+      "voice": "Moira_-_I_can't_believe_I'm_being_subjected_to_this..._Cacophony._And_they_say_that_my_actions_are_unethical.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "They say Wrath of the Bride... but those are just fairytales.",
+      "voice": "Moira_-_They_say_a_banshee_haunts_these_grounds..._but_those_are_just_fairytales.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "A dreamer is one who can only find his way by moonlight, and his punishment is that he sees the dawn before the rest of ",
+      "voice": "Moira_-_A_dreamer_is_one_who_can_only_find_his_way_by_moonlight,_and_his_punishment_is_that_he_sees_the_dawn_before_the_r.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "Hm. Beings born of science Shambali in faith.",
+      "voice": "Moira_-_Hm._Beings_born_of_science_seeking_answers_in_faith.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "Níl aon tinteán mar do thinteán féin. (Irish) There is no hearth like your own hearth.",
+      "voice": "Moira_-_(Irish)_There's_no_place_like_home.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Moira",
+      "subtitle": "This city brings back Retribution...",
+      "voice": "Moira_-_This_city_brings_back_memories.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Orisa",
+      "subtitle": "Mo wà ní ilé. (Yoruba) I am home.",
+      "voice": "Orisa_-_(Yoruba)_I_am_home.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Pharah",
+      "subtitle": "Forget regulation. After this mission, I'm throwing a party.",
+      "voice": "Pharah_-_Forget_regulation._After_the_mission_I'm_throwing_a_party.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Pharah",
+      "subtitle": "I'm the best when push comes to shove, direct complaints to my metal glove. Here comes the moment that you all love... J",
+      "voice": "Pharah_-_I'm_the_best_when_push_comes_to_shove,_direct_complaints_to_my_metal_glove,_here_comes_the_moment_that.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Ramattra",
+      "subtitle": "I lost Mondatta here, Alive. I hope I haven't Reconciliation.",
+      "voice": "Ramattra_-_I_lost_a_brother_here,_years_ago._I_hope_I_haven't_lost_another.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Reaper",
+      "subtitle": "You think Lucheng Interstellar is clean? (chuckles) Nobody is clean.",
+      "voice": "Reaper_-_You_think_Lucheng_Interstellar_is_clean._Nobody's_clean.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Reinhardt",
+      "subtitle": "Do, da-da, da, hammer down! Ha, ba-ba, da, do-do-do! Hee, hee, ba-da, ho-ho-ho! Yes, yes! (laughs)",
+      "voice": "Reinhardt_-_Hammer_down!_Yes,_yes.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Reinhardt",
+      "subtitle": "Ooh, do-do, watch me now! Ha, haha, look at me! Da, da, da-da, do-do-do! Ya-da, doo-doo, doo-doo! Ha.",
+      "voice": "Reinhardt_-_Watch_me_now!_Look_at_me.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Reinhardt",
+      "subtitle": "Oh, ha-ba, da-da-da. Ooh, yes, hammer down! Ha, ha-ba-da, da-da-da. Ah, I love this!",
+      "voice": "Reinhardt_-_Oh,_yes,_hammer_down!_Ahhh,_I_love_this.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Reinhardt",
+      "subtitle": "I love car races! High octane, burning rubber! Um... the thrill of the chase! Ooh! Pedal to the metal!",
+      "voice": "Reinhardt_-_I_love_car_races!_High_octane!_Burning_rubber!_Um..._The_thrill_of_the_chase!_Ooh!_Pedal_to_the_medal.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Shion",
+      "subtitle": "Dōshite watashi ga kon'na yatsura to? (Japanese) Why do I have to be stuck with these losers?",
+      "voice": "Shion_-_(Japanese)_What’s_there_to_be_happy_about,_being_stuck_with_these_losers.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Shion",
+      "subtitle": "Koko ni wa kita koto ga aru... Chikagoro wa shitai sura korogattenai n da na. (Japanese) I've been here before... Fewer ",
+      "voice": "Shion_-_(Japanese)_I_remember_this_street..._fewer_bodies,_now.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sierra",
+      "subtitle": "Your life's more important than a mission, okay? Stay safe out there.",
+      "voice": "Sierra_-_You're_life's_more_important_than_a_mission,_okay._Stay_safe_out_there.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sierra",
+      "subtitle": "Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.",
+      "voice": "Sierra_-_76_was_here,_alright._I_won’t_let_up_until_I_get_answers.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sierra",
+      "subtitle": "I'm still looking, Kendra Woods. I know you're out there somewhere.",
+      "voice": "Sierra_-_I'm_still_looking,_momma._I_know_you're_out_there_somewhere.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sigma",
+      "subtitle": "Ik sta te popelen!",
+      "voice": "Sigma_-_(Dutch)_I_can't_wait_to_begin.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sigma",
+      "subtitle": "[Distracted humming] Oh. I see. [Clears throat]",
+      "voice": "Sigma_-_(distracted_humming)_Oh!_I_see._(clears_throat).ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Sigma",
+      "subtitle": "This is my favorite exercise! (chuckle) A test of force, inertia, and, uh, I... I've lost my train of thought.",
+      "voice": "Sigma_-_This_is_my_favorite_exercise!_A_test_of_force,_inertia,_and..._I-I've_lost_my_train_of_thought.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sigma",
+      "subtitle": "(laughs) Get down with Sigma tonight! Lekker, stroopwafel.",
+      "voice": "Sigma_-_Get_down_with_Sigma_tonight,_like_a_stroopwafel.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sigma",
+      "subtitle": "Beyond the edge of the world, there's a space where emptiness and substance neatly overlap. Where past and future form a",
+      "voice": "Sigma_-_Beyond_the_edge_of_the_world_there's_a_space_where_emptiness_and_substance_neatly_overlap,_where_past_and_future.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sojourn",
+      "subtitle": "I don't get jittery before a fight the way I used to. And you know what? I kinda miss it.",
+      "voice": "Sojourn_-_I_don't_get_jittery_before_a_fight_the_way_I_used_to._And_you_know_what._I_kind_of_miss_it.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sojourn",
+      "subtitle": "I though this was your home court?",
+      "voice": "Sojourn_-_I_thought_this_was_your_home_court.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "Is Treadweather ever gonna patch the control override on TS-1?",
+      "voice": "Soldier_76_-_Is_Treadweather_ever_gonna_patch_the_control_override_on_these_damn_things.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "Mm, bup-bup-bup. Payload! Mm, get the payload. Pa-pa-payload!",
+      "voice": "Soldier_76_-_Mmm_bup_bup_bup._Payload..._Mmm,_get_the_payload!Pa_Pa_Payload.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "I wouldn't change a thing we King's Row Uprising.",
+      "voice": "Soldier_76_-_I_wouldn't_change_a_thing_we_did_here.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "This part of United States is so beautiful. Reminds me of road trips when I was a kid. (sigh) Different world. And I'll ",
+      "voice": "Soldier_76_-_This_part_of_the_country_is_so_beautiful._Reminds_me_of_road_trips_when_I_was_a_kid._Different_world.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "That Illari lives around here. I hope someone's checking up on her.",
+      "voice": "Soldier_76_-_That_kid_lives_around_here._I_hope_someone's_checking_up_on_her.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Soldier 76",
+      "subtitle": "Whatever those Oasis scientists were up to here, I'm glad the Illari put a stop to it.",
+      "voice": "Soldier_76_-_Whatever_those_Oasis_scientists_were_up_to_here,_I'm_glad_the_kid_put_a_stop_to_it.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sombra",
+      "subtitle": "Genial. Otro trabajo aburrido.",
+      "voice": "Sombra_-_(Spanish)_Wonderful._More_grunt_work.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sombra",
+      "subtitle": "I wonder what the landlord's password is. Hah... (tch tch) So simple! Let's change that for you.",
+      "voice": "Sombra_-_I_wonder_what_the_landlord's_password_is._(tch_tch)_So_simple!_Let's_change_that_for_you.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sombra",
+      "subtitle": "This song library is too small. Hah! No problem. I'll add some chiptunes.",
+      "voice": "Sombra_-_This_song_library_is_too_small._No_problem._I'll_add_some_chiptunes.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Sombra",
+      "subtitle": "What news on the Rrrrrrialto! (coughs) Sorry.",
+      "voice": "Sombra_-_What_news_on_the_Rialto!_Sorry.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Symmetra",
+      "subtitle": "Their actions convey futility. Their minds are closed to possibility. But still, order wins the day. Yahi param vaastavi",
+      "voice": "Symmetra_-_Their_actions_convey_futility._Their_minds_are_closed_to_possibility._But_still,_order_wins_the_day._(Hindi)_thi.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Torbjörn",
+      "subtitle": "Now this is a city that understands engineering. And Efi Oladele, whew! A future Ironclad, no doubt.",
+      "voice": "Torbjörn_-_Now_this_is_a_city_that_understands_engineering._And_that_child_genius,_whew!_A_future_Ironclad,_no_doubt.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Tracer",
+      "subtitle": "I got lucky with my call sign. Can you imagine if they'd call me Zippy? (giggle)",
+      "voice": "Tracer_-_I_got_lucky_with_my_call_sign._Can_you_imagine_if_they'd_called_me_Zippy.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Tracer",
+      "subtitle": "Oi! This is no time for standin' around.",
+      "voice": "Tracer_-_Oi!_This_is_no_time_for_standing_around.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Tracer",
+      "subtitle": "I could murder a chip sarnie.",
+      "voice": "Tracer_-_I_could_murder_a_chip_sarney.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Tracer",
+      "subtitle": "Busan (Karaoke)",
+      "voice": "Tracer_-_Tracer's_gonna_save_the_day._This-is-my-song,_Tracer's_here!_Yeah.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Tracer",
+      "subtitle": "Na na na na na na, na na na na na, woo! Tracer's gonna save the day, this-is-my-song, Tracer's here! Yeah!",
+      "voice": "Tracer_-_Tracer's_gonna_save_the_day._This-is-my-song,_Tracer's_here!_Yeah.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Vendetta",
+      "subtitle": "Non c’è casa migliore di questa.",
+      "voice": "Vendetta_-_(Italian)_There_is_no_finer_home_than_this.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Vendetta",
+      "subtitle": "Bested by the Campionessa.",
+      "voice": "Vendetta_-_Bested_by_the_(Italian)_champion.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Vendetta",
+      "subtitle": "Sarà tutto mio.",
+      "voice": "Vendetta_-_(Italian)_I'll_have_it_all.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Vendetta",
+      "subtitle": "Perfetto.",
+      "voice": "Vendetta_-_(Italian)_Perfection.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Venture",
+      "subtitle": "Argh! Let's go already!",
+      "voice": "Venture_-_Ahh!_Let's_go_already.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Venture",
+      "subtitle": "The world lost a lot of history during the Omnic Crisis. But I know we'll recover everything we can!",
+      "voice": "Venture_-_The_world_lost_a_lot_of_history_during_the_Crisis._But_I_know_we'll_recover_everything_we_can.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Venture",
+      "subtitle": "Ooh! Can we ride the Hellscream while we're here?! Please-please-please-please-please?",
+      "voice": "Venture_-_Ohh!_Can_we_ride_the_Hellscream_while_we're_here!_Please_please_please_please_please.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "Je sens que je vais bien m'amuser.",
+      "voice": "Widowmaker_-_(French)_I'm_going_to_enjoy_this.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "Deux Amari. Comme si une ne suffisait pas.",
+      "voice": "Widowmaker_-_(French)_Two_Amaris._As_if_one_wasn't_irksome_enough.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "Comment une équipe peut-elle abriter autant d'imbéciles ?",
+      "voice": "Widowmaker_-_(French)_How_can_one_team_contain_so_many_fools.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "L'amour est cruel, et je suis plus cruelle, car je ne suis jamais satisfaite.",
+      "voice": "Widowmaker_-_(French)_Love_is_cruel,_and_I_am_crueler,_for_I'm_never_satisfied.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "Si l'amour est un jeu, alors j'aime gagner, même si cela te fait pleurer.",
+      "voice": "Widowmaker_-_(French)_If_love's_a_game,_I_like_to_win,_even_if_I_make_you_cry.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Widowmaker",
+      "subtitle": "Parfait.",
+      "voice": "Widowmaker_-_(French)_Perfection.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Winston",
+      "subtitle": "That's home. That's us. On it, everyone you love, everyone you know, everyone you ever heard of, every human being who e",
+      "voice": "Winston_-_That's_home._That's_us._On_it_everyone_you_love,_everyone_you_know,_everyone_you_ever_heard_of,_every_human_being.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Winston",
+      "subtitle": "The first day or so we pointed to our countries. The third or fourth day, we were pointing to our continents. By the fif",
+      "voice": "Winston_-_The_first_day_or_so_we_all_pointed_to_our_countries._The_third_or_fourth_day_we_were_pointing_to_our_continents.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Winston",
+      "subtitle": "To see the earth as it truly is, small and blue and beautiful in that eternal silence where it floats, is to see ourselv",
+      "voice": "Winston_-_To_see_the_earth_as_it_truly_is,_small_and_blue_and_beautiful_in_that_eternal_silence_where_it_floats,_is_to_see.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Winston",
+      "subtitle": "I hear they call him the Wrecking Ball here. And to think, he used to sleep inside my pillow...",
+      "voice": "Winston_-_I_hear_they_call_him_the_Champ_here._And_to_think,_he_used_to_sleep_inside_my_pillow.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Wrecking Ball",
+      "subtitle": "Lucheng Interstellar cannot stop the hamster. Never could. Never will.",
+      "voice": "Wrecking_Ball_-_Lucheng_cannot_stop_the_hamster._Never_could._Never_will.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Wuyang",
+      "subtitle": "Maybe one day, I'll be a Mobile Exo-Force pilot. Just need to climb a few dozen ranks first.",
+      "voice": "Wuyang_-_Maybe_one_day,_I'll_be_a_MEKA_pilot._Just_need_to_climb_a_few_dozen_ranks_first.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Wuyang",
+      "subtitle": "Shifu keeps saying I should visit Mount Emei, but this is close enough, right?",
+      "voice": "Wuyang_-_Shifu_keeps_sayings_I_should_visit_Mount_Emei,_but..._This_is_close_enough,_right.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Zarya",
+      "subtitle": "How can anyone stand to live here? Uzhas! (Cyrillic) How can anyone stand to live here? Yuck!",
+      "voice": "Zarya_-_How_can_anyone_stand_to_live_here._(Russian)_Yuck.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Zarya",
+      "subtitle": "The humans who live here are fools to trust the omnics. They will see.",
+      "voice": "Zarya_-_The_humans_who_live_here_are_fools_to_trust_the_omnics.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "Zenyatta",
+      "subtitle": "I like being near the ocean. It reminds me where I was born.",
+      "voice": "Zenyatta_-_I_like_being_near_the_ocean._It_reminds_me_of_where_I_was_born.ogg",
+      "mtScore": null
+    },
+    {
+      "hero": "D.mon",
+      "subtitle": "*Hero of my Storm* *(amused chuckle)* I totally forgot Hana was in a movie.",
+      "voice": "D.Mon_-__Hero_of_my_Storm__(amused_chuckle)_I_totally_forgot_Hana_was_in_a_movie.ogg",
+      "mtScore": 50
+    },
+    {
+      "hero": "Bastion",
+      "subtitle": "",
+      "voice": null,
+      "mtScore": null
+    }
+  ],
+  "actions": [
+    {
+      "hero": "Ana",
+      "kind": "reassign-matchtalk",
+      "subtitle": "There's nothing I haven't seen before. Stick together. We will complete our mission.",
+      "from": "Ana_-_There's_nothing_I_haven't_seen_before._Stick_together,_and_we_will_complete_our_mission.ogg",
+      "to": "Ana_-_There's_nothing_I_haven't_seen_before._Stick_together,_we_will_complete_our_mission.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Anran",
+      "kind": "wiki-download",
+      "voice": "Anran_-_You_know,_if_all_that_water_was_fire_we'd_probably_be_in_trouble.ogg",
+      "title": "File:Anran - You know, if all that water was fire we'd probably be in trouble.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "kind": "wiki-download",
+      "voice": "Ashe_-_Home,_home,_on_the_range,_where_the_deer_and_the_antelope_play._Where_seldom_is_heard,_a_discouraging_word,_and_the_skies_are_not_cloudy_all_day!_Hey,_B.O.B,_c'mere!_(laughs).ogg",
+      "title": "File:Ashe - Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the skies are not cloudy all day! Hey, B.O.B, c'mere! (laughs).ogg"
+    },
+    {
+      "hero": "Ashe",
+      "kind": "wiki-download",
+      "voice": "Ashe_-_When_I_catch_McCree_-_which_I_guarantee_-_y'all_gonna_see,_how_much_he_regrets_crossin'_me..._(laughs).ogg",
+      "title": "File:Ashe - When I catch McCree - which I guarantee - y'all gonna see, how much he regrets crossin' me... (laughs).ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "kind": "wiki-download-empty",
+      "voice": "Baptiste_-_This_looks_like_a_team_that'd_get_into_trouble._Good_thing_I_came_along,_hm.ogg",
+      "title": "File:Baptiste - This looks like a team that'd get into trouble. Good thing I came along, hm.ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "kind": "wiki-download",
+      "voice": "Baptiste_-_If_you_need_heals,_there's_no_health_stauncher,_then_a_blast_from_my_biotic_launcher._If_they're_firing_too_fast_for_me_to_heal,_then_I'll_drop_an_immortality_field!_...Whoa,_man!_I'm_out_of_breath!_Whooo....ogg",
+      "title": "File:Baptiste - If you need heals, there's no health stauncher, then a blast from my biotic launcher. If they're firing too fast for me to heal, then I'll drop an immortality field! ...Whoa, man! I'm out of breath! Whooo....ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "reassign-matchtalk",
+      "subtitle": "It's like Reinhardt always says: the best solution to every problem is a very large hammer. It... ma",
+      "from": "Brigitte_-_It's_like_Reinhardt_always_says..._The_best_solution_to_every_problem_is_a_very_large_hammer.ogg",
+      "to": "Brigitte_-_It's_like_Reinhardt_always_says..._The_best_solution_to_every_problem_is_a_very_large_hammer._(pause)_It_makes_mo.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download-empty",
+      "voice": "Brigitte_-_I_could've_used_a_little_more_time_to_get_ready..ogg",
+      "title": "File:Brigitte - I could've used a little more time to get ready..ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_Do_we_have_time_to_go_on_some_rides_Flight_to_Duskwood_is_my_favourite!.ogg",
+      "title": "File:Brigitte - Do we have time to go on some rides Flight to Duskwood is my favourite!.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_Ah,_yeah!_Ah,_yeah,_ah,_woo!_Come_on!_Mace_to_the_face!.ogg",
+      "title": "File:Brigitte - Ah, yeah! Ah, yeah, ah, woo! Come on! Mace to the face!.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_Who_wants_to_party_Woo!_Yeah,_come_on!_Party_with_me!_Let's_go!_(laughs).ogg",
+      "title": "File:Brigitte - Who wants to party Woo! Yeah, come on! Party with me! Let's go! (laughs).ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_It_really_makes_you_think..ogg",
+      "title": "File:Brigitte - It really makes you think..ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_I_think_I'm_gonna_get_tetanus_just_from_looking_at_this_place..ogg",
+      "title": "File:Brigitte - I think I'm gonna get tetanus just from looking at this place..ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "kind": "wiki-download",
+      "voice": "Brigitte_-_Don't_think_we_will_be_taking_a_family_vacation_here_anytime_soon._Papa_might_have_a_breakdown....ogg",
+      "title": "File:Brigitte - Don't think we will be taking a family vacation here anytime soon. Papa might have a breakdown....ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "reassign-matchtalk",
+      "subtitle": "There we were, watching the world��s most well-guarded train wind across that purple valley. And I s",
+      "from": "Cassidy_-_There_we_were,_watching_the_world's_most_well-guarded_train_wind_across_that_purple_valley._And_I_said_to_Ashe.ogg",
+      "to": "Cassidy_-_There_we_were,_watching_the_world’s_most_well-guarded_train_wind_across_that_purple_valley._And_I_said_to_Ashe.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download-empty",
+      "voice": "Cassidy_-_(During_Winter_Wonderland)_Looking_downright_festive_in_these_parts..ogg",
+      "title": "File:Cassidy - (During Winter Wonderland) Looking downright festive in these parts..ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Ah,_hell.ogg",
+      "title": "File:Cassidy - Ah, hell.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Ah,_alright._More_of_a_country_guy_but,_not_bad._Let's_do_this!_Yeahhh..ogg",
+      "title": "File:Cassidy - Ah, alright. More of a country guy but, not bad. Let's do this! Yeahhh..ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Whip_'em_on!_Take_'em_down!_Uh,_uh..._and_that_is_how_the_cowboy_does_it._Yeah..ogg",
+      "title": "File:Cassidy - Whip 'em on! Take 'em down! Uh, uh... and that is how the cowboy does it. Yeah..ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Yeah,_get_'em_moving,_get_'em_rollin',_get_them_doggies_out_tonight!.ogg",
+      "title": "File:Cassidy - Yeah, get 'em moving, get 'em rollin', get them doggies out tonight!.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Sittin'_in_cafés_all_day,_drinking_good_espresso,_eating_pasta_with_eight_syllable_names..._not_a_bad_way_to_live..ogg",
+      "title": "File:Cassidy - Sittin' in cafés all day, drinking good espresso, eating pasta with eight syllable names... not a bad way to live..ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_(Attack)_Think_any_of_these_taps_still_work_I'm_feelin'_an_almighty_thirst..ogg",
+      "title": "File:Cassidy - (Attack) Think any of these taps still work I'm feelin' an almighty thirst..ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "kind": "wiki-download",
+      "voice": "Cassidy_-_Doesn't_feel_right_comin'_back_here..ogg",
+      "title": "File:Cassidy - Doesn't feel right comin' back here..ogg"
+    },
+    {
+      "hero": "D.va",
+      "kind": "wiki-download",
+      "voice": "D.va_-_I_will_defend_my_country!.ogg",
+      "title": "File:D.va - I will defend my country!.ogg"
+    },
+    {
+      "hero": "D.va",
+      "kind": "wiki-download",
+      "voice": "D.va_-_I_play_to_win,_and_I_always_do._That's_just_who_I_am._Woo!.ogg",
+      "title": "File:D.va - I play to win, and I always do. That's just who I am. Woo!.ogg"
+    },
+    {
+      "hero": "D.va",
+      "kind": "wiki-download",
+      "voice": "D.va_-_MEKA_activated!_Hit_you_with_that_PEW-PEW-PEW!_With_that_PEW-PEW-PEW!.ogg",
+      "title": "File:D.va - MEKA activated! Hit you with that PEW-PEW-PEW! With that PEW-PEW-PEW!.ogg"
+    },
+    {
+      "hero": "D.va",
+      "kind": "wiki-download",
+      "voice": "D.va_-_Someone_has_to_save_the_world,_it_might_as_well_be_me!_Woo!_GG!.ogg",
+      "title": "File:D.va - Someone has to save the world, it might as well be me! Woo! GG!.ogg"
+    },
+    {
+      "hero": "D.va",
+      "kind": "copy-matchtalk",
+      "subtitle": "Naneun seuta ya! Naneun dae seuta! o, i norae jae-il jo-a! Daebak! (giggles) (Hangul) I'm a star! I'",
+      "from": "D.va_-_Naneun_seuta_ya!_Naneun_dae_seuta!_o,_i_norae_jae-il_jo-a!_Daebak!_(giggles)_(Hangul)_I'm_a_star!_I'm_a_superstar!_I_love_this_song!_Awesome!.ogg",
+      "to": "D.va_-_Na!.ogg",
+      "score": 80
+    },
+    {
+      "hero": "D.va",
+      "kind": "copy-matchtalk",
+      "subtitle": "Blizzard games? That's so old-school! [in arcade room]",
+      "from": "D.va_-_Blizzard_games_That's_so_old-school!_[in_arcade_room].ogg",
+      "to": "D.va_-_Blizzard_games__That's_so_old_school._(sighs).ogg",
+      "score": 80
+    },
+    {
+      "hero": "D.va",
+      "kind": "wiki-download",
+      "voice": "D.va_-_Wow..._the_view_is_amazing!.ogg",
+      "title": "File:D.va - Wow... the view is amazing!.ogg"
+    },
+    {
+      "hero": "Domina",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It ",
+      "from": "Domina_-_Lily_von_Arx_fashions_herself_Europe's_premier_real_estate_mogul,_but_she's_getting_on_in_years.ogg",
+      "to": "Domina_-_Lily_von_Arx_fashions_herself_Europe's_premier_real_estate_mogul,_but_she's_getting_on_in_years._It_would_be_a_sh.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Doomfist",
+      "kind": "wiki-download",
+      "voice": "Doomfist_-_Selsmic_Slam_Dunk.ogg",
+      "title": "File:Doomfist - Selsmic Slam Dunk.ogg"
+    },
+    {
+      "hero": "Echo",
+      "kind": "wiki-download-empty",
+      "voice": "Echo_-_Nothing_to_worry_about,_unless_there's_something_to_worry_about,_as_Mina_Liao_always_said..ogg",
+      "title": "File:Echo - Nothing to worry about, unless there's something to worry about, as Mina Liao always said..ogg"
+    },
+    {
+      "hero": "Echo",
+      "kind": "wiki-download",
+      "voice": "Echo_-_The_beat's_rising!_Ah,_ah,_ah,_yeah!_This_is_when_they_drop_the_beat!.ogg",
+      "title": "File:Echo - The beat's rising! Ah, ah, ah, yeah! This is when they drop the beat!.ogg"
+    },
+    {
+      "hero": "Emre",
+      "kind": "reassign-matchtalk",
+      "subtitle": "You know, I always wanted to retire here.",
+      "from": "Emre_-_You_know,_I_always_want_to_retire_here.ogg",
+      "to": "Emre_-_You_know,_I_always_wanted_to_retire_here.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download-empty",
+      "voice": "Genji_-_Hitoshirezu_kami_no_yurushi_o_machi_shima_ni,_kokora_tsure_naki_yo_o_sugusu_ka_na..ogg",
+      "title": "File:Genji - Hitoshirezu kami no yurushi o machi shima ni, kokora tsure naki yo o sugusu ka na..ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_(Defense)_Fukushu_ga_hossuru_nowa_fukushu_ni_kogareta_mono_nomi.ogg",
+      "title": "File:Genji - (Defense) Fukushu ga hossuru nowa fukushu ni kogareta mono nomi.ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Ramen!_(sigh)_It's_just_not_the_same_anymore..ogg",
+      "title": "File:Genji - Ramen! (sigh) It's just not the same anymore..ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "copy-matchtalk",
+      "subtitle": "I do not think cyborgs are welcome with open arms in Junkertown.",
+      "from": "Genji_-_I_do_not_think_cyborgs_are_welcome_with_open_arms_in_Junkertown..ogg",
+      "to": "Genji_-_I_do_not.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Ah._Just_setting_foot_here_sets_my_soul_at_ease..ogg",
+      "title": "File:Genji - Ah. Just setting foot here sets my soul at ease..ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Dragon's_straight_edge.ogg",
+      "title": "File:Genji - Dragon's straight edge.ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Even_here_I_feel_an_outcast..ogg",
+      "title": "File:Genji - Even here I feel an outcast..ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_It's_beautiful_here!_I_could_never_appreciate_it_before..ogg",
+      "title": "File:Genji - It's beautiful here! I could never appreciate it before..ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Rin._Byō._Tō._Sha._Kai._Jin._Retsu._Zai._Zen!_I_need_dancing!_(Kanji)_Literal_Preside._Warriors._Fight._Person._Altogether._Formation._Align._At._Front._I_need_dancing!_Actual_meaning_Presiding_warriors_and_fighting_personnel,_all_align_your_formation_up_front._I_need_dancing!.ogg",
+      "title": "File:Genji - Rin. Byō. Tō. Sha. Kai. Jin. Retsu. Zai. Zen! I need dancing! (Kanji) Literal Preside. Warriors. Fight. Person. Altogether. Formation. Align. At. Front. I need dancing! Actual meaning Presiding warriors and fighting personnel, all align your formation up front. I need dancing!.ogg"
+    },
+    {
+      "hero": "Genji",
+      "kind": "wiki-download",
+      "voice": "Genji_-_Rin._Byō._Tō._Sha._Kai._Jin._Retsu._Zai._Zen!_I_need_singing!_(Kanji)_Preside._Warriors._Fight._Person._Altogether._Formation._Align._At._Front._I_need_singing!_Actual_meaning_Presiding_warriors_and_fighting_personnel,_all_align_your_formation_up_front._I_need_singing!.ogg",
+      "title": "File:Genji - Rin. Byō. Tō. Sha. Kai. Jin. Retsu. Zai. Zen! I need singing! (Kanji) Preside. Warriors. Fight. Person. Altogether. Formation. Align. At. Front. I need singing! Actual meaning Presiding warriors and fighting personnel, all align your formation up front. I need singing!.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download-empty",
+      "voice": "Hanzo_-_Strength_does_not_come_from_physical_capability,_it_comes_from_an_indomitable_will._(Rarely).ogg",
+      "title": "File:Hanzo - Strength does not come from physical capability, it comes from an indomitable will. (Rarely).ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download-empty",
+      "voice": "Hanzo_-_Try_to_keep_up..ogg",
+      "title": "File:Hanzo - Try to keep up..ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download-empty",
+      "voice": "Hanzo_-_Genji_is_dead._I_killed_him_with_my_own_hands..ogg",
+      "title": "File:Hanzo - Genji is dead. I killed him with my own hands..ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "copy-matchtalk",
+      "subtitle": "(During Winter Wonderland) Perhaps two cakes this year. One to take home, and (laughs) one for a sna",
+      "from": null,
+      "to": "Hanzo_-_...Perhaps.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download-empty",
+      "voice": "Hanzo_-_The_battle_begins..ogg",
+      "title": "File:Hanzo - The battle begins..ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "reassign-matchtalk",
+      "subtitle": "I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.",
+      "from": "Hanzo_-_I_should_really_visit_Asa-sensei._But_I_already_know_what_she's_going_to_say.ogg",
+      "to": "Hanzo_-_I..._(scoffs)!.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download",
+      "voice": "Hanzo_-_This_was_once_my_home._No_longer..ogg",
+      "title": "File:Hanzo - This was once my home. No longer..ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download",
+      "voice": "Hanzo_-_My_enemies_fall_like..._heh,_cherry_blossoms!.ogg",
+      "title": "File:Hanzo - My enemies fall like... heh, cherry blossoms!.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "kind": "wiki-download",
+      "voice": "Hanzo_-_My_wanderings_brought_me_to_this_place._It_was_not_to_my_liking..ogg",
+      "title": "File:Hanzo - My wanderings brought me to this place. It was not to my liking..ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Doctor, have I really got to eat vegetables? It's like CRUNCH, CRUNCH, CRUNCH, how long have I got t",
+      "from": "Junker_Queen_-_Doctor,_have_I_really_gotta_eat_vegetables._It's_like,_crunch,_crunch,_crunch,_how_long_have_I_gotta_chew_these.ogg",
+      "to": "Junker_Queen_-_Doctor,_have_I_really_got_to_eat_vegetables__It's_like_CRUNCH_CRUNCH_CRUNCH,_how_long_have_I_got_to_chew_these_.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Junker Queen",
+      "kind": "reassign-matchtalk",
+      "subtitle": "I don't see what's so fancy about Rome. Hardly any scrap heaps at all.",
+      "from": "Junker_Queen_-_I_don't_see_what's_so_fancy_about_it_Rome._Hardly_any_scrap_heaps_at_all.ogg",
+      "to": "Junker_Queen_-_I_don't_see_what's_so_fancy_about_Rome._Hardly_any_scrap_heaps_at_all.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Junker Queen",
+      "kind": "wiki-download",
+      "voice": "Junker_Queen_(NPC)_-_Glad_you're_back,_Champ._Me_throne_leg_needs_fixin',_it's_gone_all_wobbly.ogg",
+      "title": "File:Junker Queen (NPC) - Glad you're back, Champ. Me throne leg needs fixin', it's gone all wobbly.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Feast your eyes upon this hand-curated assortment of tasteful pyrotechnic delights, with which I int",
+      "from": "Junkrat_-_Feast_your_eyes_upon_this_hand-curated_assortment_of_tasteful_pyrotechnic_delights.ogg",
+      "to": "Junkrat_-_Feast_your_eyes_upon_this_hand-curated_assortment_of_tasteful_pyrotechnic_delights,_with_which_I_intend_to_entert.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Now, I know I ain't got many mates among this group, but I hope we can look past our differences and",
+      "from": "Junkrat_-_Now,_I_know_I_ain't_got_many_mates_among_this_group,_but_I_hope_we_can_look_past_our_differences_and_proceed_forward.ogg",
+      "to": "Junkrat_-_Now,_I_know_I_ain't_got_many_mates_among_this_group,_but_I_hope_we_can_look_past_our_differences_and_proceed_forw.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download-empty",
+      "voice": "Junkrat_-_C'mon,_c'mon,_c'mon,_I_hate_waiting!.ogg",
+      "title": "File:Junkrat - C'mon, c'mon, c'mon, I hate waiting!.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download-empty",
+      "voice": "Junkrat_-_Oh,_don’t_mind_me,_I_was_just_takin’_five._Definitely_not_thinkin'_about_blowin'_somethin'_up._No_way!_Eheh._Definitely_not._...Okay,_come_on,_maybe_just_a_little_something.ogg",
+      "title": "File:Junkrat - Oh, don’t mind me, I was just takin’ five. Definitely not thinkin' about blowin' somethin' up. No way! Eheh. Definitely not. ...Okay, come on, maybe just a little something.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download-empty",
+      "voice": "Junkrat_-_I've_got_a_leg_up_on_the_competition!_Really,_just_one..ogg",
+      "title": "File:Junkrat - I've got a leg up on the competition! Really, just one..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Queen_couldn't_have_done_better_herself.ogg",
+      "title": "File:Junkrat - Queen couldn't have done better herself.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Payload's_moving!_Ooh,_the_Queen's_going_to_love_this.ogg",
+      "title": "File:Junkrat - Payload's moving! Ooh, the Queen's going to love this.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Hey,_me_old_tunnel!_Might_be_time_to_make_another_withdrawal..ogg",
+      "title": "File:Junkrat - Hey, me old tunnel! Might be time to make another withdrawal..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_I_hate_to_break_this_to_everyone,_but_if_we're_here_to_blow_up_the_bots,_someone's_beaten_us_to_it..ogg",
+      "title": "File:Junkrat - I hate to break this to everyone, but if we're here to blow up the bots, someone's beaten us to it..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Let's_say_we_forget_about_all_this_and_go_to_the_beach_instead!_Any_takers_Anyone_No.ogg",
+      "title": "File:Junkrat - Let's say we forget about all this and go to the beach instead! Any takers Anyone No.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_[on_Attack]_So_we're_delivering_a_bomb_to_scrap_some_bots_and_I'm_getting_paid_for_it._My_kind_of_job!.ogg",
+      "title": "File:Junkrat - [on Attack] So we're delivering a bomb to scrap some bots and I'm getting paid for it. My kind of job!.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_This_place_makes_me_sick..ogg",
+      "title": "File:Junkrat - This place makes me sick..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Now_this_place_Makes_me_wanna_be_an_atheist..ogg",
+      "title": "File:Junkrat - Now this place Makes me wanna be an atheist..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_This_place_is_the_worst._Let's_turn_it_into_one_big_scrapheap..ogg",
+      "title": "File:Junkrat - This place is the worst. Let's turn it into one big scrapheap..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_Brrr!_This_is_not_my_kind_of_weather!_Anyone_have_an_extra_coat_Or_some_mittens_Oh,_I_would_kill_for_some_mittens..ogg",
+      "title": "File:Junkrat - Brrr! This is not my kind of weather! Anyone have an extra coat Or some mittens Oh, I would kill for some mittens..ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_There's_no_place_like_home!.ogg",
+      "title": "File:Junkrat - There's no place like home!.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "kind": "wiki-download",
+      "voice": "Junkrat_-_(after_multi-elimination)_What_do_ya_think_of_that,_ya_Majesty.ogg",
+      "title": "File:Junkrat - (after multi-elimination) What do ya think of that, ya Majesty.ogg"
+    },
+    {
+      "hero": "Juno",
+      "kind": "reassign-matchtalk",
+      "subtitle": "I cannot help but wonder how our base lost contact with Lucheng Interstellar.",
+      "from": "Juno_-_I_cannot_help_but_wonder_how_our_base_lost_contact_with_Lucheng.ogg",
+      "to": "Juno_-_I_cannot_help_but_wonder_how_our_base_lost_contact_with_Lucheng.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Kiriko",
+      "kind": "wiki-download",
+      "voice": "Kiriko_-_Those_Haishimoto_we'll_show_them_what_it_means_to_mess_with_us.ogg",
+      "title": "File:Kiriko - Those Haishimoto we'll show them what it means to mess with us.ogg"
+    },
+    {
+      "hero": "Kiriko",
+      "kind": "wiki-download",
+      "voice": "Kiriko_-_(Japanese)_Father..._I_will_definitely_rescue_you.ogg",
+      "title": "File:Kiriko - (Japanese) Father... I will definitely rescue you.ogg"
+    },
+    {
+      "hero": "Lifeweaver",
+      "kind": "wiki-download",
+      "voice": "Lifeweaver_-_My_family_came_here_on_holidays_when_I_was_young,_I_missed_those_days.ogg",
+      "title": "File:Lifeweaver - My family came here on holidays when I was young, I missed those days.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download-empty",
+      "voice": "Lúcio_-_Look_at_this_team._We're_gonna_do_great!.ogg",
+      "title": "File:Lúcio - Look at this team. We're gonna do great!.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download-empty",
+      "voice": "Lúcio_-_(During_New_Year)_My_New_Year's_resolution_Hm,_new_skates_for_all_the_kids_in_the_neighborhood..ogg",
+      "title": "File:Lúcio - (During New Year) My New Year's resolution Hm, new skates for all the kids in the neighborhood..ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download",
+      "voice": "Lúcio_-_Constallation's_on_tour_here._Maybe_I_should_hit_up_their_agant_for_a_collab.ogg",
+      "title": "File:Lúcio - Constallation's on tour here. Maybe I should hit up their agant for a collab.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download",
+      "voice": "Lúcio_-_Wish_I'd_practice_my_Japanese_more,_Konnichiwa!.ogg",
+      "title": "File:Lúcio - Wish I'd practice my Japanese more, Konnichiwa!.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download",
+      "voice": "Lúcio_-_I_never_thought_I'd_see_the_world_like_this!.ogg",
+      "title": "File:Lúcio - I never thought I'd see the world like this!.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download",
+      "voice": "Lúcio_-_Now_this_is_my_kinda_city,_everyone's_free_to_live_as_they_choose..ogg",
+      "title": "File:Lúcio - Now this is my kinda city, everyone's free to live as they choose..ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "kind": "wiki-download",
+      "voice": "Lúcio_-_I_wish_I'd_brought_my_stick_and_pads._I'm_sure_I_could've_found_a_pick-up_game_here..ogg",
+      "title": "File:Lúcio - I wish I'd brought my stick and pads. I'm sure I could've found a pick-up game here..ogg"
+    },
+    {
+      "hero": "Mauga",
+      "kind": "wiki-download",
+      "voice": "Mauga_-_More_satisfying_than_a_try.ogg",
+      "title": "File:Mauga - More satisfying than a try.ogg"
+    },
+    {
+      "hero": "Mauga",
+      "kind": "wiki-download",
+      "voice": "Mauga_-_Last_time_I_was_here_on_business._This_time,_it's_all_pleasure.ogg",
+      "title": "File:Mauga - Last time I was here on business. This time, it's all pleasure.ogg"
+    },
+    {
+      "hero": "Mei",
+      "kind": "wiki-download-empty",
+      "voice": "Mei_-_It's_good_to_get_out_of_the_lab..ogg",
+      "title": "File:Mei - It's good to get out of the lab..ogg"
+    },
+    {
+      "hero": "Mei",
+      "kind": "wiki-download-empty",
+      "voice": "Mei_-_(During_New_Year)_My_new_year's_resolution_Hmmm..._I_could_do_a_better_job_controlling_my_temper..ogg",
+      "title": "File:Mei - (During New Year) My new year's resolution Hmmm... I could do a better job controlling my temper..ogg"
+    },
+    {
+      "hero": "Mei",
+      "kind": "wiki-download",
+      "voice": "Mei_-_(laughter)_This_place_looks_like_so_much_fun!.ogg",
+      "title": "File:Mei - (laughter) This place looks like so much fun!.ogg"
+    },
+    {
+      "hero": "Mei",
+      "kind": "wiki-download",
+      "voice": "Mei_-_Hū_rú_yī_yè_chūn_fēng_lái,_qiān_shù_wàn_shù_lí_huā_kāi._(Hanzi)_As_if_the_vernal_breeze_had_come_back_overnight,_adorning_thousands_of_pear_trees_with_blossoms_white..ogg",
+      "title": "File:Mei - Hū rú yī yè chūn fēng lái, qiān shù wàn shù lí huā kāi. (Hanzi) As if the vernal breeze had come back overnight, adorning thousands of pear trees with blossoms white..ogg"
+    },
+    {
+      "hero": "Mei",
+      "kind": "wiki-download",
+      "voice": "Mei_-_Woo!_I_think_I_might_be_a_little_overdressed_for_this_place..ogg",
+      "title": "File:Mei - Woo! I think I might be a little overdressed for this place..ogg"
+    },
+    {
+      "hero": "Mercy",
+      "kind": "wiki-download",
+      "voice": "Mercy_-_Deh_deh_deh_deh_deh,_do,_do_do_do_do,_rum-pum-rum-pum_do_do_do_do_do_do..._I_love_this_song!.ogg",
+      "title": "File:Mercy - Deh deh deh deh deh, do, do do do do, rum-pum-rum-pum do do do do do do... I love this song!.ogg"
+    },
+    {
+      "hero": "Mercy",
+      "kind": "wiki-download",
+      "voice": "Mercy_-_I'm_a_dancing_doctor,_dancing_doctor,_I'm_a_dancing_doctor,_I'm_a_dancing_doctor,_yoohoo!_Hoi_zäme!.ogg",
+      "title": "File:Mercy - I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, yoohoo! Hoi zäme!.ogg"
+    },
+    {
+      "hero": "Mercy",
+      "kind": "wiki-download",
+      "voice": "Mercy_-_La_la_la_la_la_la,_do_do_do_do_do!_Ich_liebe_Musik!_La_la_la!_Ja!_Super!.ogg",
+      "title": "File:Mercy - La la la la la la, do do do do do! Ich liebe Musik! La la la! Ja! Super!.ogg"
+    },
+    {
+      "hero": "Mercy",
+      "kind": "wiki-download",
+      "voice": "Mercy_-_New_York,_New_York!_A_summer_smell_you_will_never_forget..ogg",
+      "title": "File:Mercy - New York, New York! A summer smell you will never forget..ogg"
+    },
+    {
+      "hero": "Moira",
+      "kind": "wiki-download-empty",
+      "voice": "Moira_-_No_need_to_mess_about..ogg",
+      "title": "File:Moira - No need to mess about..ogg"
+    },
+    {
+      "hero": "Moira",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Timendi causa, est nescire. (Latin) Ignorance is the cause of fear.",
+      "from": "Moira_-_(Latin)_Ignorance_is_the_cause.ogg",
+      "to": "Moira_-_(Latin)___Timendi_Causa_Est_Nescire_.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Orisa",
+      "kind": "wiki-download",
+      "voice": "Orisa_-_(Attack)_Before_Efi_rebuilt_me,_I_was_defeated_here_by_Doomfist._I_must_learn_from_the_memory..ogg",
+      "title": "File:Orisa - (Attack) Before Efi rebuilt me, I was defeated here by Doomfist. I must learn from the memory..ogg"
+    },
+    {
+      "hero": "Orisa",
+      "kind": "wiki-download",
+      "voice": "Orisa_-_I_will_protect_this_city,_whatever_the_cost..ogg",
+      "title": "File:Orisa - I will protect this city, whatever the cost..ogg"
+    },
+    {
+      "hero": "Orisa",
+      "kind": "wiki-download",
+      "voice": "Orisa_-_(Looking_through_the_telescope)_I_wish_Efi_could_be_here._Perhaps_someday..ogg",
+      "title": "File:Orisa - (Looking through the telescope) I wish Efi could be here. Perhaps someday..ogg"
+    },
+    {
+      "hero": "Orisa",
+      "kind": "wiki-download",
+      "voice": "Orisa_-_(Looking_through_the_telescope)_Recording_-_Efi_will_want_to_see_this..ogg",
+      "title": "File:Orisa - (Looking through the telescope) Recording - Efi will want to see this..ogg"
+    },
+    {
+      "hero": "Pharah",
+      "kind": "reassign-matchtalk",
+      "subtitle": "There is always room for improvement.",
+      "from": "Pharah_-_There_is_always_rom_for_improvement.ogg",
+      "to": "Pharah_-_There_is_always_room_for_improvement.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Pharah",
+      "kind": "wiki-download-empty",
+      "voice": "Pharah_-_My_New_Years_resolution_Take_some_time_off..ogg",
+      "title": "File:Pharah - My New Years resolution Take some time off..ogg"
+    },
+    {
+      "hero": "Pharah",
+      "kind": "reassign-matchtalk",
+      "subtitle": "City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because ",
+      "from": "Pharah_-_City_of_unfettered_scientists,_yeah..._until_they_call_Helix_in_tears_at_two_in_the_morning_because_the_wolfbats.ogg",
+      "to": "Pharah_-_City_of_unfettered_scientists,_yeah..._until_they_call_Helix_in_tears_at_two_in_the_morning_because_the_wolfbats.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Pharah",
+      "kind": "wiki-download",
+      "voice": "Pharah_-_After_hearing_all_of_Reinhardt's_stories,_I_always_wanted_to_come_here..ogg",
+      "title": "File:Pharah - After hearing all of Reinhardt's stories, I always wanted to come here..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download-empty",
+      "voice": "Reaper_-_The_reckoning_draws_near..ogg",
+      "title": "File:Reaper - The reckoning draws near..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download-empty",
+      "voice": "Reaper_-_I'm_ready_for_action..ogg",
+      "title": "File:Reaper - I'm ready for action..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download-empty",
+      "voice": "Reaper_-_Death_comes_for_all..ogg",
+      "title": "File:Reaper - Death comes for all..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download-empty",
+      "voice": "Reaper_-_Just_stay_out_of_my_way..ogg",
+      "title": "File:Reaper - Just stay out of my way..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download-empty",
+      "voice": "Reaper_-_I'll_do_this_alone_if_I_have_to..ogg",
+      "title": "File:Reaper - I'll do this alone if I have to..ogg"
+    },
+    {
+      "hero": "Reaper",
+      "kind": "wiki-download",
+      "voice": "Reaper_-_Busan_(Karaoke).ogg",
+      "title": "File:Reaper - Busan (Karaoke).ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "kind": "wiki-download-empty",
+      "voice": "Reinhardt_-_Ah,_my_friends,_what’s_with_all_this_standing_around_There's_glory_to_be_won!.ogg",
+      "title": "File:Reinhardt - Ah, my friends, what’s with all this standing around There's glory to be won!.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "kind": "copy-matchtalk",
+      "subtitle": "I'm getting cooked alive in here! Ughhhh!",
+      "from": "Reinhardt_-_I'm_getting_cooked_alive_in_here!_Ughhhh!.ogg",
+      "to": "Reinhardt_-_I'm_getting_cooked_alive_in_here!_(gasps).ogg",
+      "score": 80
+    },
+    {
+      "hero": "Reinhardt",
+      "kind": "wiki-download",
+      "voice": "Reinhardt_-_Do_do_doo,_hammer_down!_Ha_ha_do_do_do_doo,_hee_hee_hee_hee_hee_hoo,_yes,_yes,_hahahaha!.ogg",
+      "title": "File:Reinhardt - Do do doo, hammer down! Ha ha do do do doo, hee hee hee hee hee hoo, yes, yes, hahahaha!.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "kind": "wiki-download",
+      "voice": "Reinhardt_-_Ba_ba_ba_ba_ba_ba,_hoo_yes,_hammer_down!_Ha_ba_ba_da_ba_ba!_Oh,_I_love_this!_Hahahahaha!.ogg",
+      "title": "File:Reinhardt - Ba ba ba ba ba ba, hoo yes, hammer down! Ha ba ba da ba ba! Oh, I love this! Hahahahaha!.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "kind": "wiki-download",
+      "voice": "Reinhardt_-_Ooh,_doo_doo_doo,_watch_me_now!_Ha,_ha_ha,_look_at_me!_Yeah,_yeah,_yeah,_yeah,_doo_doo!_Ha_ha!.ogg",
+      "title": "File:Reinhardt - Ooh, doo doo doo, watch me now! Ha, ha ha, look at me! Yeah, yeah, yeah, yeah, doo doo! Ha ha!.ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download-empty",
+      "voice": "Roadhog_-_Fired_up!.ogg",
+      "title": "File:Roadhog - Fired up!.ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download-empty",
+      "voice": "Roadhog_-_Stay_out_of_my_way..ogg",
+      "title": "File:Roadhog - Stay out of my way..ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download",
+      "voice": "Roadhog_-_Mm..._Pretty_place._Be_a_shame_to_have_to_kill_someone_here..ogg",
+      "title": "File:Roadhog - Mm... Pretty place. Be a shame to have to kill someone here..ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download",
+      "voice": "Roadhog_-_God_save_the_King..ogg",
+      "title": "File:Roadhog - God save the King..ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download",
+      "voice": "Roadhog_-_Now_I_know_why_they_call_this_place_Dorado._(laughs).ogg",
+      "title": "File:Roadhog - Now I know why they call this place Dorado. (laughs).ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download",
+      "voice": "Roadhog_-_Time_to_pay_off_the_Queen._Aw,_this_is_not_a_good_plan..ogg",
+      "title": "File:Roadhog - Time to pay off the Queen. Aw, this is not a good plan..ogg"
+    },
+    {
+      "hero": "Roadhog",
+      "kind": "wiki-download",
+      "voice": "Roadhog_-_Home_is_where_your_hook_is..ogg",
+      "title": "File:Roadhog - Home is where your hook is..ogg"
+    },
+    {
+      "hero": "Sigma",
+      "kind": "reassign-matchtalk",
+      "subtitle": "The delta M of a given ray Q is approximately... Hmpfh. The formula escapes me.",
+      "from": "Sigma_-_The_delta_M_of_a_given_ray_Q_is_approximately..._Hmph._The_formula_escapes_me.ogg",
+      "to": "Sigma_-_The_delta_M_of_a_given_ray_Q_is_approximately..._Hmpfh._The_formula_escapes_me.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Sigma",
+      "kind": "wiki-download",
+      "voice": "Sigma_-_Get_down_with_Sigma_tonight!_Lekkere_stroopwafel..ogg",
+      "title": "File:Sigma - Get down with Sigma tonight! Lekkere stroopwafel..ogg"
+    },
+    {
+      "hero": "Sigma",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Tempus fugit. (Latin) Time flies.",
+      "from": "Sigma_-_Tempus_fugit.ogg",
+      "to": "Sigma_-_Tempus_fugit.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Soldier 76",
+      "kind": "reassign-matchtalk",
+      "subtitle": "I remember we had Burnes here under deep cover for about six years. (chuckle) She got so good at car",
+      "from": "Soldier_76_-_I_remember_we_had_Burnes_here_under_deep_cover_for_about_six_years._(chuckling)_She_got_so_good_at_cards,_she_qui.ogg",
+      "to": "Soldier_76_-_I_remember_we_had_Burnes_here_under_deep_cover_for_about_six_years._(chuckling)_She_got_so_good_at_cards,_she_qui.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Soldier 76",
+      "kind": "wiki-download",
+      "voice": "Soldier_76_-_I_wanna_know_what_LumériCo's_been_up_to..ogg",
+      "title": "File:Soldier 76 - I wanna know what LumériCo's been up to..ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "kind": "wiki-download",
+      "voice": "Soldier_76_-_Reyes_should've_cleaned_up_the_Deadlock_Gang_a_long_time_ago..ogg",
+      "title": "File:Soldier 76 - Reyes should've cleaned up the Deadlock Gang a long time ago..ogg"
+    },
+    {
+      "hero": "Sombra",
+      "kind": "wiki-download-empty",
+      "voice": "Sombra_-_Looks_like_I_have_time_to_do_some_research..ogg",
+      "title": "File:Sombra - Looks like I have time to do some research..ogg"
+    },
+    {
+      "hero": "Sombra",
+      "kind": "wiki-download",
+      "voice": "Sombra_-_I_don't_even_have_to_hack_my_way_into_here_anymore..ogg",
+      "title": "File:Sombra - I don't even have to hack my way into here anymore..ogg"
+    },
+    {
+      "hero": "Symmetra",
+      "kind": "wiki-download-empty",
+      "voice": "Symmetra_-_I_will_shape_order_from_chaos..ogg",
+      "title": "File:Symmetra - I will shape order from chaos..ogg"
+    },
+    {
+      "hero": "Symmetra",
+      "kind": "wiki-download",
+      "voice": "Symmetra_-_A_demonstration_of_decision.ogg",
+      "title": "File:Symmetra - A demonstration of decision.ogg"
+    },
+    {
+      "hero": "Symmetra",
+      "kind": "wiki-download",
+      "voice": "Symmetra_-_Hmm._Simple_enough_to_replicate.ogg",
+      "title": "File:Symmetra - Hmm. Simple enough to replicate.ogg"
+    },
+    {
+      "hero": "Symmetra",
+      "kind": "wiki-download",
+      "voice": "Symmetra_-_Ah..._From_here_it_all_looks_to_be_so_orderly_and_peaceful..ogg",
+      "title": "File:Symmetra - Ah... From here it all looks to be so orderly and peaceful..ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "copy-matchtalk",
+      "subtitle": "Cassidy said he wanted a bigger grenade, so I built him one. Then he said, \"No, this is too large. I",
+      "from": "Torbjörn_-_Cassidy_said_he_wanted_a_bigger_grenade,_so_I_built_him_one._Then_he_said_no,_this_is_too_large,_I_need_it_to_fit_in_my_hand._Well,_he_should_have_been_more_clear.ogg",
+      "to": "Torbjörn_-_Cassidy_said_he_wanted_a_bigger_grenade,_so_I_built_him_one._Then_he_said_no,_this_is_TOO_large,_I_need_it_to_fit.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download-empty",
+      "voice": "Torbjörn_-_Get_ready..ogg",
+      "title": "File:Torbjörn - Get ready..ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download-empty",
+      "voice": "Torbjörn_-_There's_work_to_be_done..ogg",
+      "title": "File:Torbjörn - There's work to be done..ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download-empty",
+      "voice": "Torbjörn_-_All_this_standing_around_when_there's_work_to_be_done....ogg",
+      "title": "File:Torbjörn - All this standing around when there's work to be done....ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download",
+      "voice": "Torbjörn_-_If_you_ask_me,_the_Brits_have_their_heads_on_straight!_Omnic_rights_Pah!.ogg",
+      "title": "File:Torbjörn - If you ask me, the Brits have their heads on straight! Omnic rights Pah!.ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download",
+      "voice": "Torbjörn_-_This_place_is_like_a_terrible_cumulation_of_a_thousand_of_my_worst_nightmares!_Are_you_kidding_me!.ogg",
+      "title": "File:Torbjörn - This place is like a terrible cumulation of a thousand of my worst nightmares! Are you kidding me!.ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download",
+      "voice": "Torbjörn_-_No_No_No!_N-O,_NO!.ogg",
+      "title": "File:Torbjörn - No No No! N-O, NO!.ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download",
+      "voice": "Torbjörn_-_Busan_(Karaoke).ogg",
+      "title": "File:Torbjörn - Busan (Karaoke).ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "kind": "wiki-download",
+      "voice": "Torbjörn_-_Make_some_turrets!_Ahahahaha!_Usually_they_say_'make_some_noise'_so,_that_was_a,_joke..ogg",
+      "title": "File:Torbjörn - Make some turrets! Ahahahaha! Usually they say 'make some noise' so, that was a, joke..ogg"
+    },
+    {
+      "hero": "Tracer",
+      "kind": "wiki-download-empty",
+      "voice": "Tracer_-_(giggle)_Last_one_there's_a_rotten_egg!.ogg",
+      "title": "File:Tracer - (giggle) Last one there's a rotten egg!.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "kind": "reassign-matchtalk",
+      "subtitle": "The battle is almost upon us. Magnifico.",
+      "from": "Vendetta_-_The_battle_is_almost_upon_us._(Italian)_Wonderful.ogg",
+      "to": "Vendetta_-_The_battle_is_almost_upon_us._Magnifico.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Venture",
+      "kind": "wiki-download",
+      "voice": "Venture_-_Jeez!_Now_I_know_how_Caesar_felt.ogg",
+      "title": "File:Venture - Jeez! Now I know how Caesar felt.ogg"
+    },
+    {
+      "hero": "Venture",
+      "kind": "wiki-download",
+      "voice": "Venture_-_You're_no_Remus.ogg",
+      "title": "File:Venture - You're no Remus.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download-empty",
+      "voice": "Widowmaker_-_Ahh,_Gérard_Lacroix..ogg",
+      "title": "File:Widowmaker - Ahh, Gérard Lacroix..ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_You_have_overstayed_your_welcome..ogg",
+      "title": "File:Widowmaker - You have overstayed your welcome..ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Please_leave..ogg",
+      "title": "File:Widowmaker - Please leave..ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Ilios.ogg",
+      "title": "File:Widowmaker - Ilios.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Mm,_I_remember_an_eventful_vacation_here..ogg",
+      "title": "File:Widowmaker - Mm, I remember an eventful vacation here..ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Junkertown.ogg",
+      "title": "File:Widowmaker - Junkertown.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Ugh,_why_am_I_here.ogg",
+      "title": "File:Widowmaker - Ugh, why am I here.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_Ah,_the_site_of_one_of_my_finest_kills._That_day,_I_felt_alive..ogg",
+      "title": "File:Widowmaker - Ah, the site of one of my finest kills. That day, I felt alive..ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "kind": "wiki-download",
+      "voice": "Widowmaker_-_'Volskaya_Industries'_'or_Nepal'.ogg",
+      "title": "File:Widowmaker - 'Volskaya Industries' 'or Nepal'.ogg"
+    },
+    {
+      "hero": "Winston",
+      "kind": "wiki-download-empty",
+      "voice": "Winston_-_Together,_we_can_solve_any_problem..ogg",
+      "title": "File:Winston - Together, we can solve any problem..ogg"
+    },
+    {
+      "hero": "Winston",
+      "kind": "wiki-download",
+      "voice": "Winston_-_Ever_feel_like_you’re_just_security_for_Doomfist’s_gauntlet.ogg",
+      "title": "File:Winston - Ever feel like you’re just security for Doomfist’s gauntlet.ogg"
+    },
+    {
+      "hero": "Winston",
+      "kind": "wiki-download",
+      "voice": "Winston_-_I’ve_had_some_bad_museum_experiences_in_the_past..ogg",
+      "title": "File:Winston - I’ve had some bad museum experiences in the past..ogg"
+    },
+    {
+      "hero": "Winston",
+      "kind": "wiki-download",
+      "voice": "Winston_-_Sorry_it's_such_a_mess_in_here._I-I_wasn't_expecting_company..ogg",
+      "title": "File:Winston - Sorry it's such a mess in here. I-I wasn't expecting company..ogg"
+    },
+    {
+      "hero": "Wrecking Ball",
+      "kind": "wiki-download",
+      "voice": "Wrecking_Ball_-_He_says_The_view_is_acceptable..ogg",
+      "title": "File:Wrecking Ball - He says The view is acceptable..ogg"
+    },
+    {
+      "hero": "Wrecking Ball",
+      "kind": "wiki-download",
+      "voice": "Wrecking_Ball_-_Analysing_location_hot,_dry,_unpleasant;_ideal_for_hamsters..ogg",
+      "title": "File:Wrecking Ball - Analysing location hot, dry, unpleasant; ideal for hamsters..ogg"
+    },
+    {
+      "hero": "Wrecking Ball",
+      "kind": "wiki-download",
+      "voice": "Wrecking_Ball_-_[Squeaking_along_to_the_Karaoke_Music]..ogg",
+      "title": "File:Wrecking Ball - [Squeaking along to the Karaoke Music]..ogg"
+    },
+    {
+      "hero": "Zarya",
+      "kind": "reassign-matchtalk",
+      "subtitle": "I suppose it cannot hurt to take a little holiday.",
+      "from": "Zarya_-_Well,_I_suppose_it_wouldn't_hurt_to_take_a_vacation.ogg",
+      "to": "Zarya_-_I_suppose_it_cannot_hurt_to_take_a_little_holiday.ogg",
+      "score": 100
+    },
+    {
+      "hero": "Zarya",
+      "kind": "wiki-download",
+      "voice": "Zarya_-_Obletev_Zemlyu_v_korable-sputnike,_ya_uvidel,_kak_prekrasna_nasha_planeta._Lyudi,_budem_khranit'_i_preumnozhat'_etu_krasotu,_a_ne_razrushat'_yeyo!_(Cyrillic)_Orbiting_Earth_in_the_spaceship,_I_saw_how_beautiful_our_planet_is._People,_let_us_preserve_and_increase_this_beauty,_not_destroy_it!.ogg",
+      "title": "File:Zarya - Obletev Zemlyu v korable-sputnike, ya uvidel, kak prekrasna nasha planeta. Lyudi, budem khranit' i preumnozhat' etu krasotu, a ne razrushat' yeyo! (Cyrillic) Orbiting Earth in the spaceship, I saw how beautiful our planet is. People, let us preserve and increase this beauty, not destroy it!.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "kind": "wiki-download",
+      "voice": "Zarya_-_V_gostjax_xorosho,_a_doma_luchshe._(Cyrillic)_Being_a_guest_is_good,_but_being_at_home_is_better._(subtitled_as_(Russian)_No_place_like_home..ogg",
+      "title": "File:Zarya - V gostjax xorosho, a doma luchshe. (Cyrillic) Being a guest is good, but being at home is better. (subtitled as (Russian) No place like home..ogg"
+    },
+    {
+      "hero": "Zarya",
+      "kind": "wiki-download",
+      "voice": "Zarya_-_Byt'_možet,_u_čeloveka_sto_čuvstv_i_so_smert'ju_pogibajut_tol'ko_pjat',_izvestnyx_nam,_a_ostal'nye_devjanosto_pjat'_ostajutsja_živy._(Cyrillic)_Perhaps_a_man_has_a_hundred_senses,_and_when_he_dies_only_the_five_known_to_us_are_destroyed_and_the_remaining_ninety-five_are_left_alive._[httpsen.wikisource.orgwikiThe_Cherry_OrchardAct_II_Source].ogg",
+      "title": "File:Zarya - Byt' možet, u čeloveka sto čuvstv i so smert'ju pogibajut tol'ko pjat', izvestnyx nam, a ostal'nye devjanosto pjat' ostajutsja živy. (Cyrillic) Perhaps a man has a hundred senses, and when he dies only the five known to us are destroyed and the remaining ninety-five are left alive. [httpsen.wikisource.orgwikiThe Cherry OrchardAct II Source].ogg"
+    },
+    {
+      "hero": "Zarya",
+      "kind": "wiki-download",
+      "voice": "Zarya_-_Overwatch_is_not_wanted_here..ogg",
+      "title": "File:Zarya - Overwatch is not wanted here..ogg"
+    },
+    {
+      "hero": "Zenyatta",
+      "kind": "wiki-download",
+      "voice": "Zenyatta_-_The_rhythm_is_in_you;_if_you_search_within,_get_down_into_the_Iris,_float_to_the_beat,_ohmmm.ogg",
+      "title": "File:Zenyatta - The rhythm is in you; if you search within, get down into the Iris, float to the beat, ohmmm.ogg"
+    },
+    {
+      "hero": "Zenyatta",
+      "kind": "reassign-matchtalk",
+      "subtitle": "Perhaps they believe we will not defend this place. But if all the rest of the world were to fall, t",
+      "from": "Zenyatta_-_Perhaps_they_believe_we_will_not_defend_this_place._But_if_all_the_rest_of_the_world_were_to_fall,_this_would_be.ogg",
+      "to": "Zenyatta_-_Perhaps_they_believe_we_will_not_defend_this_place._But_if_all_the_rest_of_the_world_were_to_fall,_this_would_be.ogg",
+      "score": 80
+    },
+    {
+      "hero": "Zenyatta",
+      "kind": "wiki-download",
+      "voice": "Zenyatta_-_The_rhythm_is_in_you_if_you_search_within..ogg",
+      "title": "File:Zenyatta - The rhythm is in you if you search within..ogg"
+    },
+    {
+      "hero": "Bastion",
+      "kind": "wiki-download-empty",
+      "voice": "Bastion_-_Bwee,_hoo_hoo,_bwoo..ogg",
+      "title": "File:Bastion - Bwee, hoo hoo, bwoo..ogg"
+    },
+    {
+      "hero": "Jetpack Cat",
+      "kind": "wiki-download",
+      "voice": "Jetpack_Cat_-_Meow....ogg",
+      "title": "File:Jetpack Cat - Meow....ogg"
+    },
+    {
+      "hero": "Jetpack Cat",
+      "kind": "wiki-download",
+      "voice": "Jetpack_Cat_-_Meow!_Meow!.ogg",
+      "title": "File:Jetpack Cat - Meow! Meow!.ogg"
+    },
+    {
+      "hero": "Jetpack Cat",
+      "kind": "wiki-download",
+      "voice": "Jetpack_Cat_-_Meow..._meow..._meow....ogg",
+      "title": "File:Jetpack Cat - Meow... meow... meow....ogg"
+    },
+    {
+      "hero": "Jetpack Cat",
+      "kind": "wiki-download",
+      "voice": "Jetpack_Cat_-_Mememeow!.ogg",
+      "title": "File:Jetpack Cat - Mememeow!.ogg"
+    }
+  ]
+}

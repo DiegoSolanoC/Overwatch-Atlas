@@ -9,6 +9,14 @@ import {
     mountAnchoredAutocompleteList,
 } from '../interface-left-panel/event-system/form/autocomplete/autocompleteListAnchor.js';
 import { dialogueTheaterDataService } from '../../dialogue-theater/data/DialogueTheaterDataService.js?v=105';
+import {
+    listStoryCommentaryTheaterNames,
+    stampCommentaryTheaterIds,
+} from './storyEventCommentaryTheater.js';
+import {
+    applyCommentaryEntryToNameInput,
+    looksLikeChatterCommentaryName,
+} from './storyEventCommentary.js';
 
 /** @type {string[] | null} */
 let cachedNames = null;
@@ -16,6 +24,33 @@ let cachedNames = null;
 let loadPromise = null;
 
 /**
+ * Show / hide the simplified label field when the theater name is a chatter line.
+ * Also stamps theaterId / lineId on the name input when a match resolves.
+ * @param {HTMLInputElement} nameInput
+ */
+export function syncCommentaryChatterLabelVisibility(nameInput) {
+    const row = nameInput?.closest?.('.event-slide-inline-editor__commentary-row');
+    if (!row) return;
+    const labelInput = row.querySelector('[data-role="commentary-label"]');
+    if (!(labelInput instanceof HTMLInputElement)) return;
+    const isChatter = looksLikeChatterCommentaryName(nameInput.value);
+    row.classList.toggle('event-slide-inline-editor__commentary-row--chatter', isChatter);
+    labelInput.hidden = !isChatter;
+    if (!isChatter) labelInput.value = '';
+
+    const stamped = stampCommentaryTheaterIds(
+        [{
+            name: nameInput.value.trim(),
+            theaterId: nameInput.dataset.theaterId || undefined,
+            lineId: nameInput.dataset.lineId || undefined,
+        }],
+        dialogueTheaterDataService?.conversations || [],
+    )[0];
+    applyCommentaryEntryToNameInput(nameInput, stamped || null);
+}
+
+/**
+ * Dialogue interaction names + active Hero Chatter line labels.
  * @returns {Promise<string[]>}
  */
 export async function ensureDialogueTheaterInteractionNames() {
@@ -31,10 +66,7 @@ export async function ensureDialogueTheaterInteractionNames() {
         } catch (err) {
             console.warn('storyEventCommentaryAutocomplete: failed to load theater data', err);
         }
-        const names = dialogueTheaterDataService.conversations
-            .map((row) => String(row?.name || '').trim())
-            .filter(Boolean)
-            .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        const names = listStoryCommentaryTheaterNames(dialogueTheaterDataService.conversations);
         cachedNames = names;
         return names;
     })();
@@ -85,6 +117,8 @@ export function wireStoryEventCommentaryAutocomplete(nameInput) {
                 e.preventDefault();
                 nameInput.value = text;
                 removeList();
+                syncCommentaryChatterLabelVisibility(nameInput);
+                nameInput.dispatchEvent(new Event('change', { bubbles: true }));
                 window.SoundEffectsManager?.play?.('filterPick');
             });
             listEl.appendChild(btn);
@@ -96,7 +130,11 @@ export function wireStoryEventCommentaryAutocomplete(nameInput) {
         void ensureDialogueTheaterInteractionNames();
     });
     nameInput.addEventListener('input', () => {
+        syncCommentaryChatterLabelVisibility(nameInput);
         void renderSuggestions();
+    });
+    nameInput.addEventListener('change', () => {
+        syncCommentaryChatterLabelVisibility(nameInput);
     });
     nameInput.addEventListener('blur', () => {
         window.setTimeout(removeList, 120);

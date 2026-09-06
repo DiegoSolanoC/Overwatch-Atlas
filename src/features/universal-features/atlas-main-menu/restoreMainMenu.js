@@ -48,10 +48,9 @@ function hideRotateSubBar() {
 }
 
 function resetFooterAndNewsTicker() {
-    const footer = document.querySelector('footer');
-    if (footer) {
-        footer.classList.remove('timeline-loaded');
-    }
+    // Keep `footer.timeline-loaded` — that class owns the Atlas News trapezoid and
+    // two-tone headline strip. Stripping it on Home made the footer look like a
+    // plain bar even after Event System had already styled it for news.
     if (window.newsTickerService && typeof window.newsTickerService.clear === 'function') {
         window.newsTickerService.clear();
     }
@@ -90,9 +89,9 @@ function removeGlobeMapChooserChrome() {
  *   2. Make `.test-container` and its `.main-menu-buttons` visible again.
  *   3. Hide the globe container and reset its inline positioning.
  *   4. Hide the rotation subbar.
- *   5. (When `preserveNewsTicker` is `false`) restore the dark-blue footer and
- *      clear the news ticker � these are kept around when the user is just
- *      switching from one mode straight to another.
+ *   5. (When `preserveNewsTicker` is `false`) clear scrolling headlines only.
+ *      Footer `timeline-loaded` chrome (Atlas News trapezoid + strip) stays so
+ *      Home does not wipe Event System footer decorations.
  *   6. Close any side panels (event slide, events-manage, filters) and remove
  *      any in-flight Globe / Map chooser overlay.
  *   7. Dispatch `appmodechange` with `mode: 'menu'` so the header hub clears

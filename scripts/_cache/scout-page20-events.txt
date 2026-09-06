@@ -1,0 +1,147 @@
+﻿Used commentary: 174
+
+=== PAGE 20 (#191ΓÇô200) ===
+
+======================================================================
+#191 Shimada Takedown
+year 2068 null | The Golden Age | Hanamura, Japan
+DESC:
+After months of treatment, Genji's body was fully reconstructed, and the man had turned into a living weapon, filled with rage and eager to take down his family's business. Taking down the Shimada, a group so deeply rooted in the local community's culture and politics, required a stealth operation that only Blackwatch could see through the end, and with Genji's intel, they would be able to get the upper hand. After months of preparation, Reyes, Lacroix, Genji and Cassidy strategized strikes to arrest several of the major players left in the clan, disrupting their operations piece by piece until the entire Empire began crumbling from within. 
+
+To make matters easier, the Clan had also lost their other heir, not long after Genji. Hanzo Shimada had abandoned his duties, feeling ashamed by his actions, since, as far as he knew, he had killed his brother in cold blood at the orders of a bunch of old men who were supposed to serve him. They say the man became a vagabond, taking his father's Anima storm bow with him as a memento, swearing to never to wield a blade again. Once he left Hanamura Castle hebegan to travel the world, seeking for ways to restore his honor and put his old life behind.
+
+Without solid leadership, the remaining members of the clan began turning on each other and resorting to more openly illegal activities like blackmailing schemes, which slowly fractured their reputation with the Kanezaka community, fueling their decline further. The long-lasting Shimada Clan had been completely dismantled from the shadows, and although Genji craved more, and actively pursued the take-down of other rival gangs in the region like the Hashimoto, the conditions that allowed for the fall of the Shimada were ultimately too circumstantial. Overwatch would not be as lucky as they were here if they tried to take on some of the bigger clans of the broader Tokyo region.
+  [place] {"loc":"Hanamura, Japan","country":"Japan","why":"The Shimada Clan is dismantled by Blackwatch"}
+  [hero] {"country":"Genji, Reaper, Cassidy","why":"Work together to arrest the Shimada"}
+  [hero] {"country":"Hanzo,","why":"Left the clan soon after Genji went missing, thinking he killed him"}
+  [faction] {"country":"Blackwatch,","why":"Pursues the take down of the Shimada and other gangs in Japan"}
+  [faction] {"country":"Shimada Clan, Hashimoto Clan,","why":"With the Shimada crumbling the Hashimoto slowly grow to fill in their role"}
+  [npc] {"country":"G├⌐rard,","why":"Works to arrest the Shimada"}
+
+======================================================================
+#192 Blacklisted
+year 2068 null | The Golden Age | Dublin, Ireland
+DESC:
+After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. He came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop.
+
+Reyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.
+  [place] {"loc":"Dublin, Ireland","country":"Ireland","why":"Moira O'Deorain is black listed following the release of controversial papers"}
+  [hero] {"country":"Moira, Reaper","why":"Reyes hires Moira into Blackwatch in secret"}
+  [hero] {"country":"Soldier 76, Mercy, Sojourn,","why":"Continously oppose Reyes' choices"}
+  [faction] {"country":"Blackwatch","why":"Expands into its own medical staff"}
+
+======================================================================
+#193 Cold Snap
+year 2060 2068 | The Golden Age | Ecoopint Antartica
+DESC:
+Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint: Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. Their experimentation with a prototype machine capable of simulating abnormal weather seemignly influenced the formation of a huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.
+
+Veterans Captain Opara, Dr. Arrhenius, Dr. Adams and young Dr. Torres, Dr. MacReady, Dr. Mei-Ling Zhou were the team stationed at the time. As the storm raged on, the team remained in cryo-stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was presumed dead. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. 
+
+
+During one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents. All of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.
+  [place] {"loc":"Ecoopint Antartica","country":"Antarctica","why":"Ecopoint: Antartica staff pressumed dead after massive superstorm"}
+  [hero] {"country":"Mei","why":"Stuck in Cryostasis, presumed dead"}
+  [faction] {"country":"Ecopoints, Overwatch","why":"Overwatch attempts and fails to rescue the bodies"}
+  [npc] {"country":"Hector, Claudio,","why":"Join their fellow scientists in mourning"}
+
+======================================================================
+#194 Uneasy Alliance
+year 2060 2068 | The Golden Age | Monte-Carlo, Monaco
+DESC:
+Soon after his takeover of Talon, Doomfist began his campaign of conflict by arranging a series of attacks on powerful figures across the globe. Maximillien, the head of the ever-growing Monte Carlo, was naturally a tantalizing target. The first assassin sent his way caused concern, but swiftly dealt with by his security staff. When the second assassin came, this was more flattering. Following this second attempt, the assassin would not return to Doomfist empty-handed, as they claimed the target proposed a deal. 
+
+Not long after, Max found himself in the wreckage of his office, as the imposing figure of Doomfist himself towered over him. Max understood well the level of power he was dealing with, Doomfist was unquestioned and his crusade would not be stopped. All he could do if he had any hope of surviving, was join his side. Maximillien's deal allowed Akande access to his resources, money and connections, as well as his ability to manage Talon's assets effectively. In return, he asked to be allowed to live, as one of his council members. Talon's aid would also allow Maximilien to pursue more contentious negotiations, offering leverage through brute force.
+
+Lucky for Maximillien, Doomfist respected his perseverance, his confidence and his ability to adapt, the deal was made, and Max dragged all of Monte Carlo into Talon's umbrella, just to save his own life. The deal, however, was still a losing hand for Max. At La Coterie, control was everything, and Max had long enjoyed being the one pulling the strings of everyone who was once above him. The house always wins, but if Talon took the house, what would be left of him?
+  [place] {"loc":"Monte-Carlo, Monaco","country":"Monaco","why":"Maximillien offers to aid Doomfist in exchange for a seat at the Talon Council"}
+  [hero] {"country":"Doomfist","why":"Accepts Max's deal"}
+  [faction] {"country":"Talon, La Coterie,","why":"Talon gains acess to La Coterie's assets"}
+  [npc] {"country":"Maximillien","why":"Allies with Doomfist to survive"}
+
+======================================================================
+#195 Bodily Entropy
+year 2068 null | The Golden Age | Zurich, Switzerland
+DESC:
+In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.
+
+Moira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"Moira Experiments on Gabriel Reys"}
+  [hero] {"country":"Moira, Reaper,","why":"Gabriel allows Moira to test his experiments on him"}
+  [faction] {"country":"Overwatch, Blackwatch,","why":""}
+
+======================================================================
+#196 Hacking Spree
+year 2060 2068 | The Golden Age | Dorado, Mexico
+DESC:
+A growing anti-government sentiment began to spread around Mexico following the creation and expansion of Lum├⌐rico, as many believed that the reconstruction primarily benefited the rich and influential, while those who needed help the most were left behind.
+
+After years of Energy Equity under the beloved Xibalba program, Lum├⌐rico's lack of commitment to upholding the lead to resentment among the people, and gave birth to Los Muertos.
+A criminal group labeling themselves after the millions that died during the dark days of the Crisis, left behind by their own Government. One of their strongest assets was, surprisingly enough, a young girl.
+
+Olivia Colomar was one of many left orphaned by the Crisis, and she endured the dark days alone in the cold, and with much of the country's infrastructure gone after the Crisis, she survived through a natural gift for computer programming, learning how to hack her way through any system to get by. When los Muertos took her underneath their wing, she welcomed them and even began to assist using her unique skills. Thanks to Olivia los Muertos, was able to get multiple hits against Lum├⌐rico and the government as a whole, and nobody in her community really suspected the nice little girl to be robbing them right under their noses.
+  [place] {"loc":"Dorado, Mexico","country":"Mexico","why":"Los"}
+  [hero] {"country":"Sombra","why":"Survives by hacking her way through the system"}
+  [faction] {"country":"Los Muertos","why":"Recruit a young hacker into their ranks"}
+  [faction] {"country":"Lum├⌐rico Incorporated,","why":"Fails to deliver energy equity"}
+
+======================================================================
+#197 Biolight
+year 2060 2068 | The Golden Age | Roshani, India
+DESC:
+During his research at the Academy, he would come to discover the notes of Vishwakarma Bhatt, the late founder of the corporation, as well as his dream of providing hardlight freely to the world. Niran wished Biolight would remain accessible to all as well, but seeing how quick the company was to ignore their founder's wishes, choosing to place restrictions on the technology and profit from their monopoly, Niran knew the same fate would await his discovery. 
+
+When he unveiled the Biolight technology, Vishkar began to claim full ownership of the invention, and Niran resisted. Against the demands of Vishkar's higher ups and the advice of his closest friend Satya, Niran fled the academy and took his research on Biolight with him. Overnight, he became a wanted man on a crusade against a powerful empire, and to make matters worse, his family would cut him off from their wealth to pressure him into turning in his discovery. 
+
+Niran was alone and hunted, but not out of options. He pleaded for sanctuary in the Atlantic Arcology, where he would be received by a supportive community of like-minded individuals. The nature of the Collective placed him outside global laws and prevented Vishkar from pursuing him further, and the assets of the Arcology allowed Niran to continue his research independently, working alongside the other members of the collective to bring his power to the world, free of charge.
+  [place] {"loc":"Roshani, India","country":"India","why":"Niran leaves Vishkar after his discovery of Biolight"}
+  [place] {"loc":"Atlantic Arcology","country":"Atlantic Arcology,","why":"Takes Niran in as sanctuary"}
+  [hero] {"country":"Lifeweaver","why":"Escapes Vishkar and takes Biolight with him"}
+  [faction] {"country":"Vishkar Corporation,","why":"Pursues legal action against Niran"}
+  [faction] {"country":"The Martins Collective,","why":"Recieve Niran with open arms into their community"}
+  [npc] {"country":"Bhatt,","why":"The late founder's notes prove essential to Biolight"}
+
+======================================================================
+#198 Hostage
+year 2068 null | The Golden Age | Akihabara, Japan
+DESC:
+Overwatch had taken down the Shimada clan, but in doing so it merely caused a power vacuum in the Kanezaka region. The illegal activities were not the only priority of the clan, as they also saw themselves as the protectors of Kanezaka for generations. In the words of their late leader, if the relationship the clan has with the people of the region is anything less than mutually beneficial, they were nothing more than a parasite. This social contract had stood strong for generations, as the Shimada kept larger, more dangerous gangs at bay, but as their empire crumbled and their operations became more openly shady, the people turned their backs on them, only to soon realize they were the lesser of two evils.
+
+The Hashimoto clan had long been the main rival crime family to the Shimada, and after Overwatch left, they began a takeover of Kanezaka, placing Keigo Kuroura in charge of overseeing the region. As a stronger, more stable group, Overwatch did not have the same level of leverage against them that they did with the Shimada, so they were essentially able to reign uncontested. 
+
+In spite of this, however, the Hashimoto quickly realized there was one potential threat lingering after the fall of the Shimada, the Yamagami Blades, particularly Toshiro himself, who was responsible for the powerful weaponry that allowed the Shimada to hold their ground for so long. The clan act quickly, kidnapping Toshiro and forcing him to supply their syndicate with Anima weapons of their own. Alone and with her hands tied, Asa saw no other choice but to send Kiriko away, changing her last name to Kamori, Asa's birth name, and taking her to live with her grandmother to protect her from the clan.
+  [place] {"loc":"Akihabara, Japan","country":"Japan","why":"The Hashimoto expand into Kanezaka after the Shimada takedown"}
+  [hero] {"country":"Kiriko,","why":"Hidden from the clan by her family"}
+  [faction] {"country":"Hashimoto Clan,","why":"Takes over Kanezaka after the Shimada Clan's fall"}
+  [faction] {"country":"Yamagami Blades,","why":"Toshiro is kidnapped"}
+  [npc] {"country":"Toshiro,","why":"Kidnapped by the Hashimoto to develop Anima weapons"}
+  [npc] {"country":"Asa,","why":"Sends Kiriko away to protect her"}
+  [npc] {"country":"Kuroura,","why":"Left in charge of the Kanezaka branch of the Hashimoto"}
+
+======================================================================
+#199 Deep Sea Raiders
+year 2068 2070 | The Golden Age | Coral Sea, Oceania
+DESC:
+While the Ecopoints helped alleviate ecological concerns across the globe, not every nation was too keen on pushing environmentalist standards. Both corporate greed and sometimes even plain irresponsibility by well-meaning people got in the way. The super coral had successfully helped rejuvenate several coral trees across the Pacific, but it was far too effective. It kept expanding across the world's oceans, and as they continued to feed off of pollutants, they began to grow out of proportion, emerging out of the water into sharp structures comparable to small islands.
+
+For many nations, these super coral reefs serve as another source of tourism and national pride, obvious to the true implications of an introduced species becoming so dominant. For businesses across the globe, however, the reefs blocked trade routes and made it difficult for boats to navigate across many different regions of the planet, disrupting trade globally. Because of their impact, many companies began to equip boats with means to break through the reefs, and some of the people of the Polynesian nations took to this as a personal insult to their culture and history. 
+
+The Deep-sea Raiders came to call themselves activists who battled capitalism and took curving fossil fuel emissions into their own hands, but in reality they were little more than Eco-terrorists. The pirates would hijack many boats crossing near their territories, kill the tribulation, and then steer the ships to crash into the coral which would feed off the oil and debris, growing even larger than they would normally. The Polynesian League was naturally directly impacted by the Deep-sea Raider activity, which disrupted the ecological balance and worsened business relationships with other nations. The league sought to deal with these raiding cells swiftly, but they proved to be quite a persistent movement, supported by a lot of locals who saw this as the government turning back on their culture and the wishes of their people, in spite of the irreparable damage that their harsh actions caused.
+  [place] {"loc":"Coral Sea, Oceania","country":"New Zealand","why":"The Deepsea Raiders begin to take control of boats and crash them into Super Coral"}
+  [place] {"loc":"Polynesian League","country":"Samoa, New Zealand, Hawaii, Cook Islands,","why":"Attempt to stop the threat with force"}
+  [hero] {"country":"Mauga","why":"Member of the Samoan Raider branch leadb y his father"}
+  [faction] {"country":"Deepsea Raiders","why":"An eco terrorist group diisrupting trade and the enviroment of the Super Coral Reefs"}
+
+======================================================================
+#200 White Canvas
+year 2068 null | The Golden Age | Oslo, Norway
+DESC:
+After the Shimada takedown, Cassidy had been reassigned outside of Blackwatch, to temporarily run security at the Oslo laboratories, guarding Project: Echo. His status as a cover agent and Liao's own worries with Overwatch made her wary of him at first, but at the same time she was a fierce opponent of pigeonholder, and judging people via a checklist. With time she saw through Cassidy's cowboy persona, and got to meeth im for the funny, loyal, and clever man that he was, what is more he was willing to keep Liao's research and the extend of Echo's intelligence as a secret between the two of them.
+
+When Echo was on her early stashes, she began to rech out to personnel, seeking additional input, this is how she first approached Cassidy, who interacted with her as if she were a fully fleshed person. Liao noted in her records that one time during Testing, Echo eliminated the wrong target and exhibited signs of distress, only for Cassidy to descalate the situation, reassuring her that everyone made mistakes, but what mattered is how they made their way through the world. 
+
+This lead to Echo and Cassidy stablishing conversation and exchanging jokes, causing Echo to laugh for the first time. Cassidy's casual approach changed Liao's views on Echo, which sped up development now that she began to see her less as an apology for what happened with Aurora, and more like a child like intelligence that needed guidance to improve.
+  [place] {"loc":"Oslo, Norway","country":"Norway","why":"Project Echo makes progress thanks to Cassidy"}
+  [hero] {"country":"Echo, Cassidy","why":"Cassidy guards Liao and bonds with Echo during development"}
+  [faction] {"country":"Overwatch","why":"Oslo research facility hosts Project Echo"}
+  [npc] {"country":"Liao","why":"Leads Project Echo and grows close to Cassidy"}

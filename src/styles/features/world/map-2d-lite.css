@@ -462,6 +462,23 @@ body.color-palette-nulled .map-2d-lite__world::after {
     z-index: 6;
 }
 
+/* Map-mode screen-space callouts — readable at cover zoom; clamp to viewport. */
+.map-hover-callout--map {
+    z-index: 20;
+    --callout-thumb-size: 88px;
+    --callout-stack-thumb-size: 68px;
+    --callout-num-size: 13px;
+    --callout-title-size: 17px;
+    --callout-stack-title-size: 15px;
+    --callout-sub-size: 13px;
+    --callout-hint-size: 12px;
+    --callout-stack-header-size: 12px;
+    --callout-stack-footer-size: 11px;
+    --callout-thumb-radius: 8px;
+    --callout-inner-pad: 12px 14px 12px 12px;
+    --callout-line-width: 3.5px;
+}
+
 .map-hover-callout--globe {
     z-index: 25;
     --callout-thumb-size: 140px;

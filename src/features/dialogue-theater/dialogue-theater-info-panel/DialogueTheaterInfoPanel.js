@@ -276,6 +276,7 @@ async function saveDialogueTheaterEdit() {
 
     const titleEl = document.getElementById('eventSlideTitle');
     const nextName = readPlainText(titleEl) || 'Untitled conversation';
+    const previousName = String(editSnapshot?.name || '').trim();
     const host = document.getElementById('dialogueTheaterEditHost');
     const patch = host ? collectDialogueTheaterEditPanel(host) : {};
 
@@ -289,6 +290,21 @@ async function saveDialogueTheaterEdit() {
     }
 
     await dialogueTheaterDataService.save();
+
+    if (previousName && previousName !== nextName) {
+        try {
+            const { rewriteStoryCommentaryOnTheaterRename } = await import(
+                '../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js'
+            );
+            await rewriteStoryCommentaryOnTheaterRename(
+                activeConversationId,
+                previousName,
+                nextName,
+            );
+        } catch (err) {
+            console.warn('[theater] commentary rename rewrite failed', err);
+        }
+    }
 
     isEditing = false;
     editSnapshot = null;
@@ -347,18 +363,29 @@ function wirePanelButtons() {
     }
 }
 
-async function prepareEventSlideForConversation(row) {
+async function prepareEventSlideForConversation(row, options = {}) {
     window.standaloneEventSlide?.cancelEdit?.();
-    window.standaloneEventSlide?.hideImageOverlay?.();
+
+    const eventSlide = document.getElementById('eventSlide');
+    const stayingInTheater = !!(
+        eventSlide?.classList.contains('event-slide--dialogue-theater')
+        && eventSlide?.classList.contains('open')
+    );
+
+    // Hiding the overlay on every switch collapses full-bleed → slide layout and
+    // makes stage characters jump. Only tear it down when entering theater fresh.
+    if (!stayingInTheater) {
+        window.standaloneEventSlide?.hideImageOverlay?.();
+    }
 
     clearStaleEventSlideSections();
 
-    const eventSlide = document.getElementById('eventSlide');
     const titleEl = document.getElementById('eventSlideTitle');
     const textEl = document.getElementById('eventSlideText');
     const editBtn = getEditBtn();
     const saveBtn = getSaveBtn();
     const scrollable = getScrollable();
+    const highlightLineId = String(options.highlightLineId || '').trim();
 
     dismissAllPanelsExcept('eventSlide');
 
@@ -388,19 +415,29 @@ async function prepareEventSlideForConversation(row) {
     editSnapshot = null;
     unmountDialogueTheaterPanel();
 
-    if (scrollable) {
-        await mountDialogueTheaterPanel(scrollable, row, 'view', {
-            onPathChange: onConversationPathChange,
-        });
-    }
-
+    // Open panel first (same as story entries), then paint stage with slide-open locked.
     eventSlide?.classList.add('event-slide--dialogue-theater');
     eventSlide?.setAttribute('data-dialogue-theater-conversation-id', row.id);
     eventSlide?.classList.remove('event-slide--inline-editing');
     eventSlide?.classList.add('open');
 
+    const overlay = document.getElementById('eventImageOverlay');
+    const showImage = readPersistedGlobalImageToggleState();
+    if (showImage && overlay) {
+        overlay.classList.add('slide-open');
+        if (window.innerWidth <= 768) {
+            eventSlide?.classList.remove('full-screen');
+        }
+    }
+
     if (scrollable) {
-        await syncDialogueTheaterStageOverlayFromGlobalToggle();
+        await mountDialogueTheaterPanel(scrollable, row, 'view', {
+            onPathChange: onConversationPathChange,
+            highlightLineId,
+        });
+        // Match story: brief delay so the panel open transition starts before stage paint.
+        await new Promise((r) => setTimeout(r, 100));
+        void syncDialogueTheaterStageOverlayFromGlobalToggle();
     }
 
     if (window.SoundEffectsManager?.play) {
@@ -410,7 +447,7 @@ async function prepareEventSlideForConversation(row) {
 
 /**
  * @param {string} conversationId
- * @param {{ startEditing?: boolean, characterFilters?: string[] }} [options]
+ * @param {{ startEditing?: boolean, characterFilters?: string[], playLineId?: string }} [options]
  */
 export async function openDialogueTheaterInfoPanel(conversationId, options = {}) {
     let row = dialogueTheaterDataService.getConversationById(conversationId);
@@ -426,6 +463,7 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
     const characterFilters = (options.characterFilters || [])
         .map((value) => String(value || '').trim())
         .filter(Boolean);
+    const playLineId = String(options.playLineId || '').trim();
     const manifestHeroes =
         typeof window !== 'undefined' && Array.isArray(window.FilterService?.heroes)
             ? window.FilterService.heroes
@@ -438,24 +476,37 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
             await dialogueTheaterDataService.save({ silent: true });
             row = dialogueTheaterDataService.getConversationById(conversationId) || row;
         }
-    } else if (!options.startEditing && usesStandardRandomRoutePlay(row)) {
+    } else if (!options.startEditing && !playLineId && usesStandardRandomRoutePlay(row)) {
         const pathId = pickRandomConversationPathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
         await dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 
-    if (!options.startEditing && isPeriodicTableConversation(row) && characterFilters.length === 0) {
+    if (!options.startEditing && !playLineId && isPeriodicTableConversation(row) && characterFilters.length === 0) {
         const pathId = pickRandomPeriodicTablePathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
         await dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 
-    await prepareEventSlideForConversation(row);
+    await prepareEventSlideForConversation(row, {
+        highlightLineId: playLineId,
+    });
 
     if (options.startEditing) {
         await enterDialogueTheaterEditMode(true);
+    } else if (playLineId) {
+        const line = (row.lines || []).find((entry) => entry?.id === playLineId);
+        await refreshDialogueTheaterStage(row);
+        if (line) {
+            void playDialogueTheaterViewConversation({
+                ...row,
+                paths: undefined,
+                selectedPathId: '',
+                lines: [line],
+            });
+        }
     } else if (isChatterEntry(row)) {
         // Chatters are manual / random picks later — don't auto-play the full list in sequence.
         await refreshDialogueTheaterStage(row);

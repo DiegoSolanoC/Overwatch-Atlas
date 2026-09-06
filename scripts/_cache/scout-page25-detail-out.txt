@@ -1,0 +1,1041 @@
+﻿
+=== free | Alongside my Pupil [OW1] ===
+  Zenyatta: It is good to fight alongside one of my brightest pupils.
+  Genji: And you, master.
+  Genji: I am grateful to be here, my master.
+
+=== free | Always my brother ===
+  Ramattra: Though we could not reach an accord here, Zenyatta, it still meant a great deal to see you again.
+  Zenyatta: Our roads may lead us apart, Ramattra, but you will always be my brother.
+
+=== free | Missing Genji ===
+  Sojourn: What's wrong, cowboy? You miss Genji that bad?
+  Cassidy: *(chuckle)* He ain't the only one. Got a lot of old friends out there I've been thinking about lately.
+  Sojourn: You're not trapped here, Cole. I know you'd be doing good wherever you end up.
+  Cassidy: That makes one of us. But... nice of you to say.
+
+=== free | Never lose sight ===
+  Sierra: You've been with Overwatch a long time. Any advice for a new recruit?
+  Genji: Hmm... never lose sight of your teammates.
+  Sierra: Well, you're the last person I'd expect to hear that from!
+  Genji: It is important to learn from our mistakes.
+
+=== free | Come Home ===
+  Kiriko: You should come home, Genji. We need your help.
+  Genji: There are others in the world who need saving.
+  Kiriko: When I was a kid, you said you'd always be there for me.
+  Genji: You are old enough to know it's not that simple.
+
+=== free | Keeping me Sharp ===
+  Ana: You're hard to keep a scope on, Genji. Always so unpredictable.
+  Genji: Oh. I'm... sorry?
+  Ana: Don't be. It keeps me sharp.
+
+=== free | Running from Responsability ===
+  Sojourn: You deployed to Tokyo against orders? Careless decisions like this got Overwatch shut down in the first place.
+  Genji: I have spent a lifetime running from my responsibilities. It is time I face them.
+
+=== free | Overwatch failed you ===
+  Doomfist: You didn't fail Overwatch, Cassidy. Overwatch failed *you*.
+  Cassidy: I'm pretty sure it was mutual.
+
+=== free | Hoping for Overwatch ===
+  Doomfist: I hope this iteration of Overwatch proves more durable than the last.
+  Sojourn: If I were you, I'd be more worried about what's going to happen to Talon.
+
+=== free | What is left ===
+  Ana: You answered Winston's Recall. Even after all you went through...
+  Reinhardt: **sigh** If I am called, and I do not answer... what is left, Ana?
+  Ana: *You* are left, Reinhardt. And that is nothing to scoff at.
+
+=== free | Care to listen ===
+  Freja: Ah, Captain Amari. Enjoying the world Overwatch left behind?
+  Ana: You remind me of an old friend. Someone else who thinks he's owed something for his pain.
+  Freja: And what *sage advice* did you have for him?
+  Ana: What's worth saying, if neither of you care to listen?
+
+=== free | Helix mercenaries ===
+  Soldier 76: Can't believe Ana Amari's kid took up with mercenaries like Helix.
+  Pharah: Oh, as opposed to, whatever you are?
+
+=== free | Agents of Helix [OW1] ===
+  Moira: Well, I must never worry about my safety when the brave agents of Helix are with us.
+  Pharah: Don't be so sure about that.
+
+=== free | Joining Helix [OW1] ===
+  Pharah: Tracer, have you thought about joining Helix? We could always use a good pilot.
+  Tracer: Aw, I'm flattered, really, but I have some other things occupying my time now.
+
+=== free | Still Hiding ===
+  Pharah: You're *still* hiding. When are you coming back for good?
+  Ana: I'm trying, Fareeha. Please, be patient with me.
+  Pharah: I've been patient for years. What's a little while longer?
+
+=== free | Thank you Mother ===
+  Pharah: Thank you, mother...
+  Ana: You're welcome, Fareeha...
+
+=== free | Going too Far ===
+  Cassidy: You've gone too far this time, Ashe! Helix is a hive even you can't afford to kick.
+  Ashe: Oh, look who's finally givin' a hoot about his old gang... but we've won harder scores than this without *you.*
+
+=== free | Fear the Reaper ===
+  Baptiste: You know what they say: seasons don't fear the...
+  Reaper: Don't. Just don't.
+
+=== free | Grim Reaper ===
+  Kiriko: Ajaraka mokuren tekerettsuno pa!
+  Mizuki: Um... Gesundheit?
+  Kiriko: I was trying to get rid of that grim Reaper for you, but... he's still here.
+  Reaper: *(annoyed grumble)*
+
+=== free | Don't call me anything ===
+  Sierra: Gabriel Reyes... I know that name. Soldier 24, right?
+  Reaper: Nobody calls me that anymore.
+  Sierra: Well, I'm not about to call you "Reaper".
+  Reaper: Then... don't call me anything.
+
+=== free | Never see me coming ===
+  Baptiste: Reaper! Don't sneak up on me like that.
+  Reaper: Just a reminder that you'll never see me coming.
+
+=== free | Complicated ===
+  Cassidy: Mind tellin' me how the only one willing to stand-up to Reyes became Talon's meanest operative?
+  Emre: I promise... it's more complicated than what you think.
+  Cassidy: Yeah. Awful convenient excuse, don't ya think?
+  Emre: I know where you've been since Blackwatch, Cass. You don't get to jodge.
+
+=== free | Sigma's Brain ===
+  Sombra: You and jefe need to stop frying Sigma's brain!
+  Moira: I'm trying to help your little friend.
+  Sombra: **scoff** And yourself.
+  Moira: Yes, let's discuss morality. And hypocrisy, while we're at it.
+
+=== free | Humming ===
+  Illari: **humming**
+  Genji: Nice melody. Does it have a name?
+  Illari: No, sometimes I just hum when I'm thinking. I can stop.
+  Genji: Humming? Or thinking?
+  Illari: Ugh...
+
+=== free | Snap out of it ===
+  Soldier 76: Snap out of it, old man. Talon is using you!
+  Sigma: An ant on the ceiling! Where are you going, little friend?
+  Soldier 76: Hey! I'm talking to you!
+  Sigma: Oh, there's another one! What delightful creatures.
+
+=== free | Who is we ===
+  Reaper: We need to be careful. If Vendetta finds us, we're dead.
+  Sombra: Uh, who's 'we'? You're the one who killed her old man.
+  Reaper: If I go down, I'm taking you with me.
+
+=== free | Stay Focus ===
+  Reaper: This time, stay focused, old man.
+  Sigma: How can one focus when viewing the infinite universe?
+  Reaper: You'd better find a way. Fast.
+
+=== free | Another Life ===
+  Illari: You weren't always a bounty hunter, right? You saved people once.
+  Freja: Yeah. In another life.
+  Illari: Don't you still want to help?
+  Freja: Let's just stay focused on the job. Okay?
+
+=== free | Useful when you show up ===
+  Moira: That serum you retrieved is coming along nicely, Emre. You're rather useful when you care to show up.
+  Emre: Well, I'd hate to make your life too easy.
+
+=== free | Mina Liao ===
+  Venture: No way... you're Echo! Like, Mina Liao's Echo! Oh, I have so many questions for you!
+  Echo: I... suppose I could answer them.
+  Venture: Awesome! I don't even know where to start, uh, I mean, um... what was she like?
+  Echo: She was... like me.
+
+=== free | Optimism ===
+  Sojourn: How are you still so optimistic, Echo?
+  Echo: It's not always easy, but Dr. Liao created me to improve the world.
+  Sojourn: She'd be proud of you.
+
+=== free | Recording ===
+  Echo: Whose voice were you listening to earlier, Juno?
+  Juno: My mother's. It's just a recording, but I keep wishing she will have more to say.
+  Echo: Would you like me to store it in my databanks? I would gladly play it for you anytime.
+  Juno: Yes please. Thank you, Echo.
+
+=== free | Masked Vigilante ===
+  Orisa: Have you heard the reports? A masked vigilante has been running rampant in Cairo.
+  Ana: Well, let's hope they're swiftly dealt with.
+
+=== free | Vigilante Route ===
+  Ana: I'm a little surprised we both went the vigilante route.
+  Sojourn: What can I say? We've got good sense.
+
+=== free | Vigilantes ===
+  Symmetra: Vigilantes have no place in the world we're building.
+  Soldier 76: And Vishkar has no place in mine.
+
+=== free | Fierce Protector ===
+  Ana: In Egypt, cats were often seen as fierce protectors.
+  Jetpack Cat: **questioning meows**
+  Ana: And yet you seem more likely to protect your kibble.
+
+=== free | Always Worry ===
+  Reinhardt: Ana, what has been going on in Egypt? It sounds... serious.
+  Ana: Just a few ghosts I'm laying to rest. It's nothing to worry about.
+  Reinhardt: I always worry, Ana. But I trust you're doing what's right.
+
+=== free | Esports are Sports ===
+  Anran: It's nice having so many friendly faces around. I'm so used to training on my own.
+  D.va: That sounds just like my life before MEKA. Sweating it out at the PC bang!
+  Anran: Weren't you just... gaming?
+  D.va: Hey! eSports are still sports!
+
+=== free | Mech Mechanic ===
+  D.va: I should introduce you to Dae-hyun! He takes care of my mech when I'm back home.
+  Brigitte: If that's true, he must have lots of experience.
+  D.va: Yeah, he... Hey!
+
+=== free | Time to Relax ===
+  Brigitte: L├║cio and I have been thinking of throwing a little welcome party for you new recruits. You in
+  Anran: Do we really have time to be relaxing with everything going on
+  Brigitte: Sure we do. If we don't keep morale up, we won't be in any shape to fight
+
+=== free | Soft Criminals ===
+  Ashe: You headed home after this, Haz?
+  Hazard: Aye. Thought I'd bring Susie by the memorial.
+  Ashe: You're more sentimental than I thought.
+  Hazard: Aren't all us criminals softer than we say so?
+
+=== free | Making a Living ===
+  Ashe: How you making a living without the family fortune?
+  Lifeweaver: Nothing so glamorous as running a gang of outlaws, I'm afraid.
+  Ashe: Well, Deadlock Gang would look mighty fine with a rose garden.
+  Lifeweaver: Tempting. But I *really* should save the world first.
+
+=== free | Anger Management ===
+  Mercy: You know, anger management classes might help you with that temper.
+  Torbj├╢rn: Doctors! Always wanting you to do the work.
+
+=== free | Mechanical or Human ===
+  Junker Queen: Are you, on average, more mechanical or more human?
+  Sojourn: Why?
+  Junker Queen: Tryna' figure out whether to scrap you for parts.
+  Sojourn: Hm. Consider the railgun before you decide.
+
+=== free | Advance Technologies ===
+  Torbj├╢rn: Baptiste, was it? How did a mercenary like yourself come by such advanced technologies?
+  Baptiste: Oh, I just make use of what I find lying around.
+
+=== free | A new answer ===
+  Hazard: You know, I really used to idolize you!
+  Sojourn: I've heard that before. What made you lose faith in me, the Petras hearings?
+  Hazard: Naw. It's the way you crawled back to Overwatch that left me scunnered.
+  Sojourn: Well... that's a new answer.
+
+=== free | Selfie for the fans ===
+  D.va: Winston, I have to get a picture with you!
+  Winston: Uh... with *me*?
+  D.va: Duh! My fans love hearing about you! Let's get a selfie the next time we're patching up my mech!
+  Winston: I... sure! Sounds like fun!
+
+==== PETRAS / SHUTDOWN / SOJOURN ====
+free  Selfie for the fans
+  D.va: Winston, I have to get a picture with you!
+  Winston: Uh... with *me*?
+  D.va: Duh! My fans love hearing about you! Let's get a selfie the next time we're patching up my mech!
+free  A new answer
+  Hazard: You know, I really used to idolize you!
+  Sojourn: I've heard that before. What made you lose faith in me, the Petras hearings?
+  Hazard: Naw. It's the way you crawled back to Overwatch that left me scunnered.
+free  Did I do something
+  Mauga: Why the look, doc? Did I do something?
+  Mercy: Besides weaponizing illegal medical enhancements?
+  Mauga: What, that's all? Whew! Thought you found out about some other things...
+free  Running from Responsability
+  Sojourn: You deployed to Tokyo against orders? Careless decisions like this got Overwatch shut down in the first place.
+  Genji: I have spent a lifetime running from my responsibilities. It is time I face them.
+free  Working with Overwatch
+  Brigitte: How are you liking working with Overwatch, Sierra?
+  Sierra: Oh, it's amazing! Y'all are so smart, and kind, and... well, nothing beats working with heroes!
+  Brigitte: *chuckle* That's exactly what I've been hearing about you, too.
+USED ΓåÆ #64 To Build a Better Soldier  Enhancement Program
+  Sierra: You were the Enhancement Program's best soldier. There's gotta be something you can tell me.
+  Soldier 76: The Naughton project's ancient history. It's been shut down for decades.
+  Sierra: Your "ancient history" is all I've got to go on.
+free OW1 Narrow Opinion
+  Winston: Overwatch had good reason to shut down your research.
+  Moira: I shouldn't be surprised at such a narrow opinion coming from a *jumped. Up. Ape.*
+free OW1 Ilegal Activities
+  Winston: Someone's going to put a stop to your illegal activities.
+  Soldier 76: You're one to talk! You and your friends are breaking the law, same as me.
+
+==== SHRIKE / ANA EGYPT ====
+free Venture ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Egyptology? My favorite!
+
+==== DVA / ESPORTS DETAIL ====
+free  Time to Relax
+  Brigitte: L├║cio and I have been thinking of throwing a little welcome party for you new recruits. You in
+  Anran: Do we really have time to be relaxing with everything going on
+  Brigitte: Sure we do. If we don't keep morale up, we won't be in any shape to fight
+free  Returning the favor
+  Sojourn: You know, my twin was always sticking her neck out for me.
+  Anran: I get that. Nothing beats helping your loved ones.
+  Sojourn: If she hadn't let me return the favor, I'd miss out on knowing that feeling. Just some food for thought.
+  Anran: Huh... I'd never thought of it that way.
+free  Into the thick of it
+  Anran: I wasn't expecting to be thrown into the thick of it so soon after joining Overwatch.
+  Wuyang: Yeah... I was hoping we'd have a... little more down-time.
+  Anran: Well, we'll get through it. Taking breaks is overrated, anyway.
+  Wuyang: **sigh** To *you*, maybe...
+free  Karaoke
+  Juno: L├║cio, can you teach me about karaoke?
+  L├║cio: I'd love to help but... as much as I love making music, I'm not much of a singer
+  Juno: Okay, then... how about partying
+  L├║cio: Now, that we can *do!*
+free  Listening to Tunes
+  L├║cio: You got a hobby? Y'know, besides going around the world making people miserable.
+  Mauga: I was gonna say listening to your tunes...
+  L├║cio: Seriously?
+  Mauga: But that'd be lying.
+free  Looking Sharp
+  L├║cio: Oh, looking sharp, Orisa! Efi get you some new tech?
+  Orisa: Yes. Defending Numbani has earned us the resources to greatly improve my systems.
+  L├║cio: Oh, too cool! Give her some props for me.
+free  Too much Noise
+  Widowmaker: You're making too much noise.
+  L├║cio: It's not noise. It's music!
+  Widowmaker: Very well. You're making too much music.
+USED ΓåÆ #199 Deep Sea Raiders  Different Company
+  Mauga: How are you liking Samoa, Ana?
+  Ana: It'd be better in different company.
+  Mauga: Oh, I see... you think we oughta ditch these other losers and get a glass of vaifala?
+  Ana: **sighs** You're buying first round.
+USED ΓåÆ #92 The Original Strike Team  Like the Glory Days
+  Sierra: Coming back to Overwatch after all these years... does it feel like you're reliving the glory days?
+  Ana: "Glory days?" You sound just like Reinhardt.
+  Sierra: I'll be taking that as a good thing, Captain.
+  Ana: He'd certainly like it if you did.
+free  Relativity
+  Ana: The older I get, the faster the years go.
+  Sigma: It's likely that time is passing at the same rate it always has. **chuckle** Barring relativistic effects, of course.
+  Ana: I liked you better when you were talking to yourself.
+free  Beautiful
+  Soldier 76: Remember the Vikosky kingpins? Three hundred meters downrange. You fired once, they both fell. Beautiful.
+  Ana: **sigh** That's not the word I would choose.
+free  Too Old
+  Torbj├╢rn: Retirement looks good on you, Ana.
+  Ana: Aren't we too old for flattery?
+  Torbj├╢rn: Hmph, we're still alive and kicking!
+  Ana: Still young at heart, I see.
+free  Taking time off
+  Ana: Seems retirement couldn't keep a Lindholm away.
+  Torbj├╢rn: **chuckles** I was never good at taking time off anyway.
+  Ana: **chuckles** We've always had that in common, haven't we?
+free  Making a Living
+  Ashe: How you making a living without the family fortune?
+  Lifeweaver: Nothing so glamorous as running a gang of outlaws, I'm afraid.
+  Ashe: Well, Deadlock Gang would look mighty fine with a rose garden.
+  Lifeweaver: Tempting. But I *really* should save the world first.
+free  Sticking Around
+  Baptiste: I'm surprised you're sticking around.
+  Cassidy: Was going to leave, but I reckon you'd miss me too much.
+  Baptiste: True, nobody does "second most handsome man on the team" better than you.
+free  Looking Sharp
+  Baptiste: Always looking sharp, brother.
+  Hanzo: My arrows will never dull, as long as my will stands strong.
+  Baptiste: I meant your hair, but nice to know.
+free  Live Forever
+  Junker Queen: You're the one who's gonna make me live forever, yeah?
+  Baptiste: Uh... are you talking about my Immortality Field? That's... not what it does.
+  Junker Queen: Name doesn't really work then. You might wanna fix that.
+free  Right amount of stupid
+  Baptiste: I'll be backing you up, so try not to do something too stupid.
+  Mauga: You know me, Baptiste: just the right amount of stupid.
+free  Getting Paid
+  Baptiste: It might be a tall order, but want to try taking fewer hits this time?
+  Reinhardt: Complaining, already? This is what you're paid for!
+  Baptiste: **laugh** I'm getting paid?
+free  Lucky Guess
+  Sojourn: I saw you cover the western entryway in our last battle. Smart thinking.
+  Baptiste: Oh, well... I'm just doing what I can to help.
+  Sojourn: And right before Talon filed in there, too. Almost like you knew their next move.
+  Baptiste: Uhhhh... just a... lucky guess.
+free  Out of Talon
+  Baptiste: Is it true? You're out of Talon? For good?
+  Sombra: For now. Until someone knocks the new boss down a few pegs.
+  Baptiste: Well, if you're looking for help... you can always come find me.
+  Sombra: Aww. Aren't you sweet? But something tells me your new friends won't enjoy having me around.
+free  Forgetting about me
+  Baptiste: I see you're making some changes in Talon... any chance that includes forgetting about me?
+  Vendetta: I owe you no favors, least of all your life.
+  Baptiste: Is it a favor, or less work for a very busy woman?
+  Vendetta: Executing traitors isn't work. It's pleasure.
+free  Speaking French
+  Widowmaker: I am surrounded, as usual, by moronic men.
+  Baptiste: Careful! You never know who speaks French.
+free  New Armor
+  Brigitte: Bastion, how are you liking that new armor Papa made for you?
+  Bastion: **encouraging beeps**
+free  Processing
+  Zarya: Good thinking, omnic! Uh... processing. Whatever.
+  Bastion: **giggly beeps**
+free  Spoil the Surprise
+  Brigitte: If you don't mind me asking, what is your armor made of?
+  Echo: Your father has my blueprints. Why don't you see for yourself? I'd hate to spoil the surprise.
+free  Cat Names
+  Brigitte: I've been thinking about getting another striped cat, but I'm running out of cool names...
+  Illari: I've named my llama Chu├▒o, like the freeze-dried potato.
+  Brigitte: Potato... You're a genius! I'll call him Hasselback!
+free  Medieval History
+  Venture: This place is incredible! Ah, I wish I knew more Medieval history.
+  Reinhardt: Perhaps I could regale you with the time-honored tales of a brave knight and his noble squire!
+  Venture: No way! Tell me, tell me!
+  Brigitte: Just make sure you do some fact-checking when he's done.
+free  Focus on the Good Times
+  Genji: You haven't slept.
+  Cassidy: **laugh** Yeah. Was up last night, thinking about who we used to be.
+  Genji: I try to focus on the good times.
+  Cassidy: Hey, yeah. We did have some of those!
+free  No Italian
+  Cassidy: Reckon we've got another Bartalotti to stop. Should be easier without all the sneaking around.
+  Genji: And you won't have to speak Italian this time.
+  Cassidy: Well, don't speak so soon, *"signore."*
+  Genji: Hah. (Japanese: Moron...)
+USED ΓåÆ #210 The Venice Incident  D├⌐j├á Vu
+  Moira: **sigh** What a nauseating bout of d├⌐j├á vu.
+  Cassidy: Yep. Working with you has always made me sick.
+  Reaper: Are you planning to whine the whole time... again?
+  Genji: **sigh**
+free  Orca Joyride
+  Cassidy: Remember when we took one of these for a joyride?
+  Pharah: I remember my C.O. yelling at me for goofing around with Overwatch agents.
+  Cassidy: That's your problem! Always worrying about breaking the rules.
+  Mercy: Someone has to keep you in order, Cole.
+free  Too many Sunsets
+  Cassidy: I hear a lot of folks say "chivalry is dead", but I'm glad to see it's alive 'n well with you, partner.
+  Reinhardt: And look at you, making the old west young again!
+  Cassidy: **chuckles** Oh, I think I've seen too many sunsets to call myself young.
+  Reinhardt: Young or old, I'll be proud to chase the next one by your side!
+free  Extra Hours
+  Mercy: You've been doing a lot around Gibraltar, lately. Are you taking care of yourself?
+  D.va: I'm fine! I put in hours like this all the time back in Korea!
+  Mercy: **sigh** That's exactly what I'm worried about.
+free  Bad in Games
+  D.va: How can you be good at shooting in real life, but so bad in games?
+  Tracer: Mmm... it's not the same thing, I guess.
+  D.va: **sigh** It's lonely at the top.
+  Tracer: I could beat you at the cooking games, though.
+free  Mech Slayer
+  D.va: Do you *really* call yourself a "mech slayer"? Hehe.
+  Vendetta: I don't call myself one. I am one. Your squad must be overdue for a demonstration.
+  D.va: Try it! Tokki and I love crushing sweats.
+  D.va: Overlord's got our back! You'd never take us down.
+free  Locked up
+  Lifeweaver: It's monstrous that you were kept locked up for so long.
+  Echo: It didn't feel very long to me.
+  Lifeweaver: Well, should your jailers ever come knocking again, I know a place you'd be safe.
+USED ΓåÆ #185 Search and Rescue  Working Alone
+  Emre: So... you work alone now?
+  Freja: Yeah. Been that way a while.
+  Emre: You did your best work on a team. This isn't like you, Frej.
+  Freja: A lot's changed, Emre. For both of us.
+free  Working with Vendetta
+  Freja: Feels worse than I thought it would, working with Vendetta...
+  Emre: Hold on. We can't both be haunted by our consciences now.
+  Freja: **laughs** You think you can stop me feeling guilty better than I can?
+  Emre: Of course not. But at least I can make you laugh.
+free  Retirement
+  Sojourn: So, you finally made it. How's retirement going?
+  Emre: **chuckle** Not bad. A few more firefights than I planned for.
+  Sojourn: You seem prepared to me.
+  Emre: Well, next time, I'm packing less heat, and more sunscreen.
+USED ΓåÆ #225 Overridden  Playing Dumb
+  Sombra: Give it up, g├╝ey. You think I don't know who you're *really* working for?
+  Emre: What makes you think *I* know?
+  Sombra: **scoff** Please. Don't play dumb with me.
+  Emre: **exasperated chuckle** No "playing". Just dumb.
+free  Looking Back
+  Mercy: Freja... You should know you are not the only one who looks back on Overwatch with regret.
+  Freja: If I can help it, I don't look back at all.
+free  Humming
+  Illari: **humming**
+  Genji: Nice melody. Does it have a name?
+  Illari: No, sometimes I just hum when I'm thinking. I can stop.
+  Genji: Humming? Or thinking?
+free  Before the Crisis
+  Reinhardt: What did you do, you know, before the Crisis?
+  Tracer: Tekhartha Zenyatta. If you don't mind me asking, what did you do before the Crisis?
+  Zarya: What was your function before the Crisis?
+  Zenyatta: I collected payments at a laser tag arena.
+free  Frowning
+  Hanzo: Keep frowning, and you'll end up looking like me.
+  Illari: You mean you weren't born like that?
+  Hanzo: I was not. Were you?
+free  Moved Recently
+  Hanzo: I hear you moved to Kanezaka fairly recently.
+  Mizuki: Yeah, I was just looking for a change of pace.
+  Hanzo: For one not from there, you are quite... invested in local matters.
+  Mizuki: What can I say? Hard not to get attached to such a beautiful place.
+free  Absolute Victory
+  Vendetta: So this is how the last son of Shimada wields his legacy? Skulking about like a fannullon.
+  Hanzo: The Hashimoto cannot go unchallenged. It is my duty to protect my home from tyrants like you
+  Vendetta: **laughs** Call it tyranny if you like. At least my victory is absolute.
+USED ΓåÆ #223 Fighting the System  Phreak Firewalls
+  Hazard: Best quit poking around my files, lass. You cannae out-hack Phreak firewalls.
+  Sombra: Hard to call it "hacking" when the password is your dog's birthday.
+free  Making up words
+  Venture: Your spikes look just like the stalactites in Carlsbad!
+  Hazard: StalacketyΓÇô What're you sayin' to me now?
+  Venture: Don't tell me you've never been spelunking!
+  Hazard: Alright, now you've just got to be makin' up words.
+free  Lack of Oxygen
+  Juno: **sigh** I feel faint. Terran air has so little oxygen.
+  Illari: Have you tried taking an altitude sickness pill?
+  Juno: **nervous chuckle** Those are a choking hazard...
+free  Lending an Ear
+  Lifeweaver: Is something on your mind? I'd be happy to lend an ear.
+  Illari: I would rather not. Talking's pointless.
+  Lifeweaver: Are you sure? I'm a great listener.
+  Illari: Then hear what I just said.
+free  Footbal Championship
+  Illari: L├║cio, have you heard? About the winner of the football championship?
+  L├║cio: I- uh... I-I don't wanna talk about it.
+  L├║cio: It was a fluke! That yellow card was ridiculous
+  L├║cio: It's only because the ref didn't see that foul from the first half
+free  Dead man Walking
+  Reaper: Little miss sunshine's back to brighten everyone's day.
+  Illari: Call me that again and you're a dead man walking.
+  Reaper: Someone already beat you to that threat
+free  Keeping Tabs
+  Soldier 76: There hasn't been much activity in Runasapi since the lab raid.
+  Illari: Are you keeping tabs on me?
+  Soldier 76: You're picking fights with powerful organizations. Shouldn't... *someone* watch your six?
+  Illari: If you're worried, don't be. I'll manage on my own.
+free  Taking too Much
+  Illari: Did you see my last information request?
+  Sombra: I did. Aren't you taking on too much, chica?
+  Illari: That's for me to decide, not you.
+  Sombra: **sigh** I'll send you the relevant details.
+free  Genius Gift
+  Illari: Are you bigger than other rats because you're from the moon?
+  Wrecking Ball: He says, "no. Scientists did this to him."
+  Illari: I'm sorry. What they did to you was wrong.
+  Wrecking Ball: Mistaking the hamster for vermin is wrong. Making him a genius was a gift.
+free  Perfect Test Subject
+  Moira: Intelligent, adaptable... You have the makings of a perfect test subject.
+  Jetpack Cat: **grumbling meows**
+  Moira: Hm. Though an added dose of obedience would be appreciated...
+free  Sneaking Treats
+  Sojourn: You'd better stay out of trouble out there. Understand, recruit?
+  Jetpack Cat: **innocent meows**
+  Sojourn: And I'll know if you've been sneaking treats between missions!
+  Jetpack Cat: **disappointed meows**
+free  Toe Nails
+  Junkrat: You look like a gentleman who eats his own toenails!
+  Soldier 76: Why the hell would you say that to someone?
+  Junkrat: Just looking for something we might have in common...
+free  Cat Language
+  Jetpack Cat: **questioning meows**
+  Juno: Are you speaking to me?
+  Jetpack Cat: **meows**
+  Juno: Hm... perhaps I should prioritize "cat" on my list of languages to learn.
+free  Skipping Dinner
+  Mei: You look pale, Juno. Did you skip dinner again?
+  Juno: Yes... I spent so long deciding what to try, that I stopped feeling hungry.
+  Mei: That is not a good excuse. **sighs** I'm cooking for you later.
+free  Born in Space
+  Moira: I have always wondered what being born in space would do to the human body.
+  Juno: I... do not like the way you are looking at me.
+free  Courage is Might
+  Juno: Sir Wilhelm... How do you remain brave in combat? I cannot stop shaking!
+  Reinhardt: Half of courage is might, my Martian friend.
+  Juno: Intriguing! But... I do not feel particularly... *mighty...*
+  Reinhardt: Don't fret. Stand with me, and you'll have nothing to fear!
+free  First time playing
+  Sojourn: I saw you on the court with Fareeha last night. Your first time playing basketball?
+  Juno: Oh, yes! You could tell?
+  Sojourn: You were kicking the ball...
+  Juno: And I scored in both hoops!
+free  Lucheng's Files
+  Sombra: Lucheng's files on Mars are locked down tight. I had to take a break from cracking them.
+  Juno: I am not surprised. Apparently, it was a very secret project.
+  Sombra: Now you've got me curious again. I'll visit their firewalls later.
+free  We have each other
+  Winston: What's on your mind, Juno? You seem down.
+  Juno: I cannot stop thinking about the watchpoint. I am sad to leave another home behind so soon.
+  Winston: Believe me, I understand. But home is also the people around us. And we still have each other.
+free  Overwhelming
+  Juno: Earth is overwhelming... there is still so much I do not understand.
+  Zenyatta: Comprehension comes with experience. Experience comes with time.
+  Juno: That means I am taking too long! *groan* I miss my extra 37 minutes and 22 seconds...
+free  Stealthy
+  Mauga: You gotta give me some pointers on being more stealthy.
+  Kiriko: I can't picture you sneaking up on anyone.
+  Mauga: Y'know, I might just surprise you.
+free  Practice Buddies
+  Wuyang: Ever trained your chi? I'm looking for more practice buddies!
+  Kiriko: If you teach me tai chi, I'll teach you aikido.
+  Wuyang: Uh, oh, wait. You're not just looking for an excuse to... flip me, are you?
+  Kiriko: **laughs** Busted!
+USED ΓåÆ #139 The Architech Academy  Best Roommate
+  Lifeweaver: You know, you were the best roommate I've ever had.
+  Symmetra: You were third best. The other two went to bed at appropriate times.
+  Lifeweaver: 4 AM is perfectly appropriate if you're working on a great idea!
+USED ΓåÆ #229 Fun with Friends  Rusty
+  Mauga: You ever worry the fist is making *you* rusty?
+  Doomfist: Hmph. How about a match after this? To address your... concerns.
+free  Can't stand work
+  Junkrat: I was thinking of becoming an underwear model. How does one get pecs as hulking as yours?
+  Mauga: You wouldn't like it.
+  Junkrat: Why? Does it include work? Ugh, I can't *stand* work!
+free  Thinking Ahead
+  Mauga: Gonna enjoy filling that shield with bullets.
+  Reinhardt: Ugh. Can't you wait until *after* this mission?
+  Mauga: Don't worry. Heh, just thinking ahead.
+free  Not your Buddy
+  Mauga: I can't believe you ditched Talon! All my buddies are leaving me behind...
+  Sombra: I'm not taking orders from some self-righteous maniac. Oh, and I'm not your buddy.
+  Mauga: Wha-- **sniffle** No... not anymore...
+free  All right
+  Mauga: Admit it, spider: you think I'm all right.
+  Widowmaker: Well, you *are* loud, boorish, and annoying.
+  Mauga: ..."But"?
+  Widowmaker: I was done talking.
+free  Talking Big
+  Zarya: You talk big, but can you deliver?
+  Mauga: With a big red bow on top!
+  Zarya: I prefer pink.
+  Mauga: For you? I can make it happen.
+USED ΓåÆ #193 Cold Snap  Cryogenic research
+  Moira: I've read your report on cryogenically preserving severed appendages. I would be happy to assist in your research.
+  Mei: No thank you. I don't think our methodologies are very aligned.
+  Moira: Of course. I've heard you prefer working alone.
+  Moira: Come now, doctor. I was only hoping to lend a hand.
+free  Inquiry
+  Sigma: If you know what you're looking for, inquiry is unnecessary. But if you don't know... how do you inquire?
+  Junkrat: Ah, Xeno's Paradox!
+  Mei: Well, maybe you know a little bit, and you keep asking questions until you figure it out!
+  Moira: Ugh. Somehow even more tiresome than the chicken and the egg.
+free  Making a Difference
+  Symmetra: I can't imagine you're here to do research. Why are you fighting?
+  Mei: I'm here to make a difference in the world. Just like you, right?
+free  Googly Eyes
+  Venture: Whoa! Your drone is so cool!
+  Mei: Thank you! His name is Snowball. Say hi, Snowball!
+  Venture: Hey, little guy! Aw, I wish my holoreplicator had a face.
+  Mei: **giggle** You should try sticking some googly eyes on it!
+free  Not Cute
+  Mei: Omigosh! A hamster! So cute!
+  Wrecking Ball: **angry squeaks** Do not call the hamster cute.
+  Mei: Oops. Sorry. (Chinese) But really, isn't he cute, Snowball
+  Mei: Oops, sorry. But really, isn't he cute, Snowball?
+USED ΓåÆ #192 Blacklisted  Hippocratic Oath
+  Moira: How fares your research, Dr. Ziegler? Making much progress through all that "red tape"?
+  Mercy: It's called the Hippocratic Oath, doctor. Ring any bells?
+free  Keeping you Alive
+  Ramattra: It must gall you, working with me. Keeping me alive.
+  Mercy: I don't want anyone to die. Not even you.
+free  Vitamins
+  Mercy: Your hair looks brittle, Jack. Are you taking your vitamins?
+  Soldier 76: Once a day, just after my steak dinner.
+free  Field Work
+  Moira: This foolish mission is taking time away from my experiments, Akande.
+  Doomfist: Think of it as... field work.
+free  Non Negotiable
+  Doomfist: I have yet to see a report on your latest experiment.
+  Moira: It's making progress.
+  Doomfist: Our timeline is non-negotiable.
+  Moira: Keep interrupting me, surely that'll expedite things.
+free  Lab Assistant
+  Junkrat: You looking for a lab assistant? I'm great with chemicals!
+  Moira: Certainly. We would begin by testing your tolerance for pain.
+  Junkrat: What's pain have to do with science?
+  Moira: *Everything*, my strange little friend.
+free  Making your Day Worse
+  Moira: Have you *truly* no better use of your time than helping a child destroy my scientific records?
+  Soldier 76: If it makes your day worse, my schedule's *wide* open.
+free  Human Limits
+  Zarya: You're the one making... abominations.
+  Moira: Hmm. As the strongest woman in the world, you must see merit in pushing humanity's limits.
+  Zarya: All I see is a fool, mistaking a strong body for a gullible mind.
+free  Utilizing you
+  Zenyatta: You have an intense gaze, Doctor.
+  Moira: I am thinking on how best to utilize you.
+  Zenyatta: In the coming battle, you mean?
+  Moira: Perhaps...
+free  Looking forward
+  Brigitte: Papa, is there anything you'd like to say to our teammates?
+  Torbj├╢rn: I'm... looking forward to working with you.
+  Echo: Likewise.
+  Orisa: And I with you.
+free  Lacking Strenght
+  Doomfist: Your new weapons are impressive, but you lack the strength to wield them.
+  Orisa: Efi made me kind. She did not make me weak.
+free  Coward Run
+  Soldier 76: I heard you chased Doomfist out of Numbani.
+  Orisa: Making a coward run is no challenge.
+  Soldier 76: Hm, we could've used you in the old days.
+free  Friendly Fire
+  Soldier 76: Clean up your aim. I don't want a repeat of Paraguay.
+  Reaper: What are you talking about? My aim is fine.
+  Soldier 76: I caught friendly fire in San Lorenzo, remember?
+  Reaper: Oh, right. *That* San Lorenzo.
+free  Who is we
+  Reaper: We need to be careful. If Vendetta finds us, we're dead.
+  Sombra: Uh, who's 'we'? You're the one who killed her old man.
+  Reaper: If I go down, I'm taking you with me.
+free  Marital Problems
+  Widowmaker: I'm taking leave after this mission.
+  Reaper: Marital problems?
+  Widowmaker: Not lately.
+free  Lonely Road
+  Zenyatta: You spend your second chance at life walking a lonely road.
+  Reaper: No one cares, *monk.*
+  Zenyatta: Someone always cares. You must simply seek them out.
+free  Snap out of it
+  Soldier 76: Snap out of it, old man. Talon is using you!
+  Sigma: An ant on the ceiling! Where are you going, little friend?
+  Soldier 76: Hey! I'm talking to you!
+  Sigma: Oh, there's another one! What delightful creatures.
+free  Non invasive Tests
+  Sombra: The boss was talking to Moira the other day. Kept looking over at you.
+  Sigma: Ah, yes! He wanted the doctor to run some... "non-invasive" tests.
+  Sombra: Ay... You come to me if they try anything, okay?
+free  Form and Function
+  Sigma: Your work is to be admired! Form and function, working in harmony...
+  Symmetra: Form is vital to function. The two are inseparable, like movement and music.
+  Sigma: Ah, well... Perhaps I will take your word for it.
+free  Subject Study
+  Sigma: Remarkable! The subject weaponizes momentum through geometrical navigation.
+  Sigma: The subject appears to be piloting the device. It may be worth observing further...
+  Wrecking Ball: The subject reminds you he is sitting right here.
+  Wrecking Ball: Stop making the hamster sound boring.
+free  Comms Clear
+  Junkrat: United again! The Overwatch strike team prepares for action!
+  Sojourn: Hey. Keep the comms clear, please.
+  Junkrat: This is the discipline the commander is known for.
+  Sojourn: I'm about to be known for kicking your butt.
+free  Thinking on your feet
+  Sojourn: Been thinking we ought to change up your training regimen.
+  Wuyang: Uh... did I do something wrong?
+  Sojourn: The opposite. You're great at thinking on your feet. So, let's play to your strengths.
+  Wuyang: Oh. Uh, yeah! Sounds like a plan...
+free  Playing Games
+  Soldier 76: If we're working together, I won't tolerate you playing games with me.
+  Sombra: Ay, relax! What, you don't trust me?
+  Soldier 76: I don't trust anyone. Not anymore.
+  Sombra: Hm. Then we'll get along, after all.
+free  Taking Action
+  Sombra: Not like I didn't warn the boss, but... hard to believe Vendetta's already starting a war.
+  Widowmaker: She may be extreme, but I cannot fault her for knowing where she stands.
+  Sombra: Are you kidding me? She blew up Overwatch.
+  Widowmaker: She took action. That is more than Doomfist can claim.
+free  Sinking Ship
+  Sombra: So you didn't want to stick around and see what a mess V makes of the place either, huh?
+  Widowmaker: No. I know a sinking ship when I see one.
+  Sombra: **sigh** I just hope she doesn't take everyone down with her.
+free  Module Overload
+  Venture: Mr. Lindholm, good to see you! Hey, the excavator's working *great.*
+  Torbj├╢rn: It'd work better if you didn't overload it with all those modules.
+  Venture: Psh, it's *fiiiiine.* Just a few degrees overheated is all...
+free  Fighting Spirit
+  L├║cio: All right. Let's hear that fighting spirit!
+  Bastion: **spirited beeps**
+  D.va: Grrr!
+  Pharah: Rawrrr!
+free  Time Travel
+  Venture: Uh, hey, so... What's the deal with your whole... "blinking" thing?
+  Tracer: Well, Winston describes it as "localized time travel".
+  Venture: Time travel? Like... *you can go back in time and be there for when they laid the first brick of the Great Pyramid of Gi
+  Tracer: Not... exactly. But, I guess I've never tried.
+free  Ninja Attacks
+  Venture: Legend has it that Japanese castles were built with squeaky floorboards to prevent ninja attacks!
+  Genji: It certainly made sneaking out much harder...
+free  Progress by Chaos
+  Zenyatta: Seeking progress by sowing chaos is like planting a tree in a volcano.
+  Doomfist: *Exactly.*
+free  Next Funeral
+  Hazard: Looking forward to crashin' your next funeral, captain.
+  Ana: Keep running your mouth like that, and I'm sure to outlive you.
+free  Ranking Up
+  Wuyang: Hey, you're that famous Mecha Guardian player, right? Could you train me?
+  D.va: What rank are you? Top 1000?
+  Wuyang: I've been stuck in... **clears throat** Chrome, for a while, but I think I'm really close to ranking up!
+  D.va: Right... I'll ask Dae-hyun if he has time.
+free  Ancient Ruins
+  Venture: What's Talon looking for in ancient ruins?
+  Doomfist: That is none of your concern.
+  Venture: Yuh-huh, it's my concern. I'm gonna find it before it falls into your hands!
+  Doomfist: Let the matter rest. For your sake, and the world's.
+free  Take it back
+  Jetpack Cat: **provoking meows**
+  Wrecking Ball: Mrrow... Meow meow!
+  Jetpack Cat: **provoking meows**
+  Wrecking Ball: He says, oh no you didn't.
+free  Thinking of the Team
+  Brigitte: Isn't it reckless to pull enemies towards us?
+  Roadhog: **laughs** Afraid of getting too close?
+  Brigitte: Nope, just thinking of the team. It would help if you did too.
+USED ΓåÆ #112 Kept in Chains  Rate the Prison
+  Shion: How would you rate our prison cells? I'm looking to make them worse.
+  Hanzo: I am shocked you keep them at all, given the rumors about your past...
+  Shion: They're all true. But *I* hold the keys, now... and I make for a cruel warden.
+free  Resume
+  Junkrat: Mr. Wilhelm, I'm working on me r├⌐sum├⌐. What sounds better: "itinerant scoundrel," or "perspicacious rapscallion"?
+  Reinhardt: **chuckle** Is there room for both?
+  Junkrat: I *knew* you were the right bloke to ask! Haha!
+free  Welcome Party
+  Ashe: How's our base looking these days, sweetheart? You fix that Bob-shaped hole in the wall yet?
+  Sierra: Why don't you swing by? See for yourself. We'll even throw you a little welcome party.
+  Ashe: I'm sure it'll be a real barn burner.
+  Ashe: I'll bring the fireworks.
+free  Getting Homesick
+  Cassidy: You getting homesick, too? Huh. Guess we were never good at sticking anywhere too long.
+  Genji: Maybe not.
+  Cassidy: Well, wherever you wind up, if you ever need a gunslinger, you can always count on me.
+  Genji: And if you ever have a need of my blade, it is yours.
+free  Finding Answers
+  Freja: You really think you'll find answers working with Talon?
+  Emre: I don't know. But, it feels like my only option.
+  Freja: Then we'll see it through.
+free  Restless
+  Hanzo: Backing the Hashimoto was a mistake. The sons of Shimada will not rest until Talon is cleared from our streets.
+  Vendetta: Good. The restless are careless and easy to put down.
+free  Not so Agreeable
+  Lifeweaver: You should be careful making deals with Moira.
+  Vendetta: I assure you, she and I have an equal partnership. If you're trying to turn me against her, you won't succeed.
+  Lifeweaver: Perhaps, but you should know she's not so agreeable as she appears to be.
+  Vendetta: Do not assume my ignorance. I know her nature as well as my own.
+USED ΓåÆ #197 Biolight  Leaving Vishkar
+  L├║cio: You did the right thing leaving Vishkar behind. The rest of those drones ought to take notes.
+  Lifeweaver: Well, I'm sure it's not so simple for everyone.
+  L├║cio: Get real, man. You think walking away is harder than ruining people's lives?
+  Lifeweaver: At Vishkar? You'd be surprised.
+free  Dreaming Big
+  Sojourn: I always heard the gangs out west were small-time. Isn't working with Talon a little ambitious?
+  Ashe: Come on now. Can't fault a girl for dreaming big, can you?
+  Sojourn: I can fault her for armed robbery.
+  Ashe: Ugh, details.
+free  Switching Sides
+  Cassidy: Ashe, I've been thinking since Grand Mesa what you said about switching sides.
+  Ashe: Uh-huh. And you realized Overwatch has been your real home all along.
+  Cassidy: No, not that. I'm thinking you might have a point.
+  Ashe: Huh. Maybe they didn't brainwash you after all.
+free  Disappointing
+  Doomfist: You disappoint me, Ramattra. A tactician such as yourself should know the consequences of breaking alliances.
+  Ramattra: And a mastermind such as you must know to always anticipate betrayal.
+free  Thinking of Mother
+  Genji: Seeing Keiko's family reunited makes me think of mother. I hope she's well.
+  Hanzo: Genji, let us not speak of her.
+  Genji: Is it so wrong to lament her absence?
+  Hanzo: She wanted nothing more than to be rid of the Shimada name. We must honor that.
+USED ΓåÆ #175 Luxuries  Kicking off a party
+  Mauga: Nothing like a few bullets to kick off a party. Am I right?
+  Shion: Oh, yes. A little mayhem always revs my engine.
+free  Since Ilios
+  Venture: So... you haven't been in touch since Ilios.
+  Sombra: Be patient, escuincle. You aren't the only piece in this puzzle.
+  Venture: But what kind of puzzle? Lockbox, ancient riddle, jigsaw?
+  Sombra: *(sigh)* Whatever kind makes you stop asking questions.
+free  Behind bars
+  Sierra: You might've gotten away from me once, but I won't quit until you're both behind bars.
+  Emre: *(chuckle)* I'm working with the world's best bounty hunter. Good luck tracking us down.
+  Freja: If your tracking skills are like the security at Grand Mesa, I expect I'll be fine.
+free  Working with Criminals
+  Pharah: I don't work with criminals.
+  Kiriko: What's right isn't always what's legal.
+  Pharah: Then you change the laws.
+  Kiriko: Heh, easy for you to say.
+free  Chihuahua
+  Pharah: I think I'm going to get a chihuahua.
+  Sojourn: You're joking.
+  Pharah: Why, what's wrong with chihuahuas?
+  Sojourn: Uh, well, for starters, they aren't corgis.
+free  Working with Overwatch
+  Brigitte: How are you liking working with Overwatch, Sierra?
+  Sierra: Oh, it's amazing! Y'all are so smart, and kind, and... well, nothing beats working with heroes!
+  Brigitte: *chuckle* That's exactly what I've been hearing about you, too.
+free  Jack Morrison
+  Sojourn: So what exactly are you looking to learn about Jack Morrison?
+  Sierra: Honestly? Whatever you've got.
+free  Dorothy
+  Sierra: Whoof, Dorothy's looking a little worse for wear after that last mission...
+  Torbj├╢rn: Just swing by my workshop after this. I'll patch her up.
+  Sierra: Wow! You mean it, Dr. Lindholm? That'd be amazing!
+  Torbj├╢rn: Please, Dr. Lindholm is my wife!
+free  Channel nine news
+  Junkrat: Jamison Fawkes, channel nine news. Mr. Gunbot, sir, how do you think the battle's going to go?
+  Bastion: **excited, talkative beeps**
+  Junkrat: Could you repeat that in words? Hold on, breaking news! The moon has fallen into the ocean!
+free  Cheer up
+  Junkrat: What's on your mind, mate?
+  Hanzo: I am thinking of what I have lost.
+  Junkrat: What, your keys? Arrows? Snacks? I've got snacks. Cheer up!
+free  Keep Up with the Sword
+  Kiriko: My mom wants to know if you've kept up with the sword.
+  Hanzo: I swore... never to wield a blade again.
+  Kiriko: Mm. I'll tell her you're thinking of picking it back up.
+free  Follow Orders
+  Sojourn: In the mood to follow my orders today, Song?
+  D.va: If those orders involve me wrecking the bad guys, you bet!
+  Sojourn: *(chuckles)* I'll see what I can do.
+free  Last Night
+  Kiriko: Where were you last night? Chikasa said she couldn't get a hold of you.
+  Mizuki: If I told you, I'd have to kill you.
+  Kiriko: Ugh. Can't you answer normally for once?
+  Mizuki: Nah. I like making you mad.
+free  Staff Tricks
+  Wuyang: Dr. Ziegler, you should join us next time we run drills! I feel like I only ever see you in the lab.
+  Mercy: I'm better at working than training. Why not ask Commander Chase?
+  Wuyang: Well... I was hoping to pick up some of your tricks with the staff.
+  Mercy: If you promise to be patient with me, I'll do my best.
+free  Proposal
+  Junkrat: So. Did you have a chance to think about my proposal?
+  Brigitte: I'm not putting explosives on my mace.
+  Junkrat: What? Oh, no, no, no, no, no, you misunderstood. I was talking about your shield.
+  Brigitte: That's even worse!
+free OW1 Taking His side
+  Reaper: I shouldn't be surprised you took *his* side.
+  Ana: You never gave me much choice.
+free OW1 Looking Quite Well
+  Ana: Reinhardt, I must say you're looking quite well. This life must agree with you.
+  Reinhardt: And you are looking as lovely as ever.
+free OW1 A man of your Years
+  Ana: For a man of your years, you're looking pretty good, Jack.
+  Soldier 76: Well, all that stuff they pumped into me has to be good for something.
+free OW1 Better Circumstances
+  Baptiste: It's good to be working with you again, Dr. Ziegler.
+  Mercy: And under better circumstances, too.
+free OW1 Tracking you down
+  Sombra: You would not believe how many people have asked me to track you down.
+  Baptiste: Mmm... I'm pretty sure I could.
+USED ΓåÆ #234 The Conspiracy OW1 Share My Secrets
+  Baptiste: So, how do you... disappear like that? Asking for a friend.
+  Sombra: Aww... you know I can't share my secrets.
+USED ΓåÆ #74 Swedish Engineering OW1 Tin Cans
+  Torbj├╢rn: I hate working with these talking tin cans!
+  Bastion: **sad beeps**
+free OW1 Quick Sparring
+  Brigitte: Genji! How about a quick sparring session?
+  Genji: You're on! Show me what you've been working on!
+free OW1 Overwatch Brats
+  Brigitte: I'm really looking forward to fighting with you Pharah.
+  Pharah: We Overwatch brats have to stick together.
+free OW1 Core Integration
+  Torbj├╢rn: Your armor seems to be working well! I guess you were right about the core integration design.
+  Brigitte: I knew you'd come around!
+free OW1 Smoking is bad
+  Mercy: You know, smoking's bad for your health.
+  Cassidy: Well, I have faith you can get me patched back up, doc.
+free OW1 Courageous Cowboy
+  Moira: Our courageous cowboy. The years haven't changed you much, have they, Jesse?
+  Cassidy: They certainly haven't changed my feelings about working with you.
+free OW1 Real Names
+  Sombra: Pleasure working with you, McCree... if that is your real name.
+  Cassidy: Don't know what you heard, but my name's not Joel. Best remember that.
+free OW1 Bad Name
+  D.va: Ooh, I can't stand you hackers! You give those of us with skill a bad name.
+  Sombra: You know that isn't the kind of hacking I do, right?
+free OW1 Unlocking
+  D.va: Hey, Sombra, I hear you're a master of unlocking.
+  Sombra: What are you talking about?
+free OW1 Small talk
+  Genji: I always liked working with you, Winston. No awkward small talk.
+  Winston: Always liked working with you, too. You have a... great sense of humor!
+free OW1 Hiding Treassure
+  Hanzo: Where did you hide your treasure? You could hardly have it on your person!
+  Junkrat: Treasure? S-sure, I don't know anything you're talking about.
+free OW1 Far from Home
+  Ana: What reason brings you to travel so far from home?
+  Hanzo: I was banished from my home for taking my brother's life. I can never return.
+free OW1 Cold Looking
+  Junkrat: Brrr... I get cold just looking at you.
+  Mei: Then you should look somewhere else.
+free OW1 Crown Jewels
+  Junkrat: **sighs** Remember that time we stole the crown jewels? All hail King Jamison Fawkes the First! And, um... Duke Roadhog?
+  Roadhog: Mako.
+free OW1 Autograph for Snowball
+  Mei: L├║cio, can I have your autograph?
+  L├║cio: Aw, you're making me blush, Mei! Need one for Snowball, too?
+free OW1 Football name
+  L├║cio: I've been thinking about my football name. Ready? How about... Winston. What do you think?
+  Winston: I... Like it!
+free OW1 Safari Costume
+  L├║cio: Winston! Started on your Halloween costume yet?
+  Winston: Actually, I have! I was thinking of a safari costume. Haha, you thought I wasn't going to have one, didn't you?
+free OW1 Snow angels
+  Mei: Look at all the snow! We should make snow angels!
+  Mercy: Why are you looking at me, Mei?
+free OW1 Mark VI Suit
+  Pharah: Hey, Torbj├╢rn, check out my new suit. Mark VI. State of the art.
+  Torbj├╢rn: **clears throat** Jump jets... concussion rockets... **grumbles** Well, yes, it's looking pretty good.
+free OW1 Hope it goes better
+  Reaper: Looks like we're working together again.
+  Widowmaker: Let's hope it goes better than the time at the museum.
+free OW1 Working Order
+  Torbj├╢rn: How's Brigitte doing? Keeping everything in working order?
+  Reinhardt: A knight could not ask for more from his squire!
+free OW1 Excellent Santa Claus
+  Reinhardt: You know, Torbj├╢rn, you would make an *excellent* Santa Claus! Ho, ho, ho!
+  Torbj├╢rn: Maybe this year you can be the elf. I think Ingrid's been working on something.
+free OW1 Ilegal Activities
+  Winston: Someone's going to put a stop to your illegal activities.
+  Soldier 76: You're one to talk! You and your friends are breaking the law, same as me.
+free OW1 Taking the Risk
+  Mercy: Tracer, you should be careful. We don't know the side-effects of using the chronal accelerator.
+  Tracer: Considering the alternatives, I'm willing to take the risks.
+free OW1 Not Happy
+  Widowmaker: Well, well, it looks like we will be working together.
+  Tracer: Don't think I'm happy about that!
+free  Mindless Rage
+  Vendetta: Even in her own keep, Shion could not lead the Hashimoto to victory. How pitiful.
+  Mizuki: Better not let her hear you talking like that. She's killed for a lot less.
+  Vendetta: *(chuckle)* She could not best me. Rage as mindless as hers is a weakness I've long since overcome.
+  Mizuki: *(sigh)* Uh huh... whatever you say.
+free  Missing Genji
+  Sojourn: What's wrong, cowboy? You miss Genji that bad?
+  Cassidy: *(chuckle)* He ain't the only one. Got a lot of old friends out there I've been thinking about lately.
+  Sojourn: You're not trapped here, Cole. I know you'd be doing good wherever you end up.
+  Cassidy: That makes one of us. But... nice of you to say.
+node : (node:30892) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-af8a914d-c8e2-4ed6-b9ac-00b0cfc21f56.ps1:92 char:1
++ node scripts/_cache/scout-page25-detail.mjs 2>&1 | Out-File -Encoding ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:30892) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+free  Esports are Sports
+  Anran: It's nice having so many friendly faces around. I'm so used to training on my own.
+  D.va: That sounds just like my life before MEKA. Sweating it out at the PC bang!
+  Anran: Weren't you just... gaming?
+  D.va: Hey! eSports are still sports!
+free  Cat litter
+  Brigitte: Papa! Have you seen a delivery of cat litter? I've been looking all over!
+  Torbj├╢rn: You mean the clumping, low-dust, moisture-absorbing sand? It was perfect for cleaning up those pesky oil stains!
+  Brigitte: Papa!
+  Torbj├╢rn: *(chuckle)* I'm joking. I'll keep an eye out for it.
+free  Kingdom of wreckage
+  Vendetta: Do not forget our terms. I won't allow your recklessness to ruin my plans.
+  Junker Queen: You doubtin' me, lady? *(laughs)* I made a kingdom out of wreckage.
+  Vendetta: And wreckage suits you. Just don't burn down what I've built.
+USED ΓåÆ #224 La Lupa  Madam Wolf
+  Junkrat: If the pot was sweet enough... I might be willing to serve you, madam wolf.
+  Vendetta: I have no use for the allegiance of one so willing to betray his leaders.
+  Junkrat: Who said anything about betrayal? I was only talking about teams. Mercenaries!
+free  Fox sightseeing
+  Sojourn: You did some good work against the Hashimoto out there.
+  Kiriko: Thanks. Didn't hurt having Commander Chase backing me up.
+  Sojourn: Well, if you ever want to take that fox sightseeing, you'd be welcome in Overwatch.
+  Kiriko: Nice of you to offer, but... I think I'm right where I want to be.
+free OW1 It's Me
+  D.va: It's me! Someone must be hacking.
+  D.va: I hope we don't get banned for this.
+free OW1 Malfunction
+  Tracer: Whoa, it's me! Is my chronal accelerator malfunctioning again?
+  Tracer: Wait. That's what I was just thinking. Spooky.
+  Tracer: Nope, I know how that feels. This is something else entirely.

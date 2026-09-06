@@ -5,13 +5,16 @@
   "family business": [
     "#6 Medical Miracles"
   ],
+  "mauga · horizon lunar colony — hey, look. you could see the super coral from here.": [
+    "#15 The Super Coral Reef"
+  ],
   "small world": [
     "#19 Wuxing University"
   ],
   "kilometer tall": [
     "#22 Hardlight for the World"
   ],
-  "not an omnic": [
+  "zenyatta · my memories from before the awakening are blurry, like a fading dream. but i do remember some things.": [
     "#24 The Rise of Omnics"
   ],
   "gossiping": [
@@ -29,7 +32,19 @@
   "applied science": [
     "#33 Grasping Gravity"
   ],
+  "sigma · these phenomena bear further investigation.": [
+    "#33 Grasping Gravity"
+  ],
+  "echo · more to do, more to learn.": [
+    "#36 Resource Management"
+  ],
+  "before the crisis": [
+    "#37 Automation"
+  ],
   "painful memories": [
+    "#39 Lost to the past"
+  ],
+  "venture · the best archeologists get their noses out of books and into the dirt!": [
     "#39 Lost to the past"
   ],
   "grave wounds": [
@@ -62,14 +77,17 @@
   "no ai mess": [
     "#52 The Ironclad Guild"
   ],
+  "torbjörn · ha! let's go! i've got a few new inventions to try.": [
+    "#52 The Ironclad Guild"
+  ],
   "friend from the colony": [
     "#54 New Horizons"
   ],
-  "lunar food": [
+  "sigma · horizon lunar colony — by looking far out into space, we are also looking far back into time. back toward the horizon of the universe.": [
     "#54 New Horizons"
   ],
-  "lunar simians": [
-    "#54 New Horizons"
+  "orisa · temple of anubis and throne of anubis — if anubis were ever to rise again... i hope i would remember who i am.": [
+    "#60 Playing God"
   ],
   "enhancement program": [
     "#64 To Build a Better Soldier"
@@ -78,6 +96,12 @@
     "#65 Answers"
   ],
   "interesting theory": [
+    "#65 Answers"
+  ],
+  "venture · nepal or shambali monastery — this is where aurora changed the world forever. i am gonna freak out!": [
+    "#65 Answers"
+  ],
+  "echo · nepal — shambali monastery is currently omitted from this trigger and awaits a fix. — dr. liao told me of her journey here. it is strange to see it with my own eyes.": [
     "#65 Answers"
   ],
   "rotten few": [
@@ -90,25 +114,59 @@
     "#79 Fiery Pride"
   ],
   "not qualified": [
-    "#81 Children of the Sun"
+    "#81 Children of the Sun",
+    "#215 Prodigy Child"
   ],
   "worth conquering": [
     "#81 Children of the Sun"
   ],
+  "doomfist · every battle makes me stronger.": [
+    "#82 Force the Sun to Set"
+  ],
   "svyatogors": [
     "#83 The Svyatogor"
+  ],
+  "soldier 76 · look at the state of the world. something has to change.": [
+    "#84 The Proposal"
   ],
   "best sniper": [
     "#86 Eye of Horus"
   ],
+  "ana · i am watching over you": [
+    "#86 Eye of Horus"
+  ],
+  "torbjörn · new york's chief engineering advisor has returned!": [
+    "#88 The Skycannon"
+  ],
   "sir wilhelm": [
+    "#89 Building a Myth"
+  ],
+  "killed many": [
     "#89 Building a Myth"
   ],
   "enhanced soldiers": [
     "#90 Super Soldiers"
   ],
+  "soldier 76 · right or wrong, i'm going to finish this war.": [
+    "#90 Super Soldiers"
+  ],
+  "reinhardt · as balderich always said: \"together, we are stronger than...\" ah... i forget the rest. but it was so inspiring!": [
+    "#91 Honor and Glory"
+  ],
+  "sojourn · eichenwalde — poor reinhardt. what he must have seen here...": [
+    "#91 Honor and Glory"
+  ],
+  "genji · eichenwalde — at times, i can almost hear the voices of those who lost their lives here.": [
+    "#91 Honor and Glory"
+  ],
+  "reinhardt · eichenwalde — we fought a terrible battle here. many crusaders lost their lives.": [
+    "#91 Honor and Glory"
+  ],
   "like the glory days": [
     "#92 The Original Strike Team"
+  ],
+  "friendly fire": [
+    "#104 Tipping the Balance"
   ],
   "your awakening": [
     "#106 The Awakening"
@@ -121,6 +179,21 @@
   ],
   "rate the prison": [
     "#112 Kept in Chains"
+  ],
+  "it isn't true": [
+    "#112 Kept in Chains"
+  ],
+  "venture · throne of anubis — the ai that caused the crisis is quarantined in this temple! so, uh... let's be careful, huh?": [
+    "#113 The Temple of Anubis"
+  ],
+  "echo · throne of anubis — anubis is an interesting case... to think a single program could have such a profound effect on the world.": [
+    "#113 The Temple of Anubis"
+  ],
+  "ramattra · temple of anubis or throne of anubis — just as anubis opened the gates of death, i will exhaust myself to keep them shut.": [
+    "#113 The Temple of Anubis"
+  ],
+  "ana · numbani — these people moved past the omnic crisis so quickly. i envy that.": [
+    "#115 Adawe Departs"
   ],
   "not a toy": [
     "#116 Loyal Guardian"
@@ -137,13 +210,34 @@
   "junkers giving you trouble": [
     "#120 Australian Liberation"
   ],
+  "winston · hm, better keep an eye on the omnium radiation levels.": [
+    "#120 Australian Liberation"
+  ],
+  "hanzo · junkertown or new junk city — a less honorable place is difficult to imagine.": [
+    "#120 Australian Liberation"
+  ],
+  "echo · watchpoint: gibraltar — so many memories.": [
+    "#121 Watching the Globe"
+  ],
   "magical healing": [
     "#125 One with the Iris"
+  ],
+  "lifeweaver · shambali monastery — nepal is mistakenly not included and awaits a fix. — the home of the iris. so inspiring to be in the presence of a force that defines the limits of our understanding.": [
+    "#125 One with the Iris"
+  ],
+  "moira · nepal or shambali monastery — hm. beings born of science shambali in faith.": [
+    "#125 One with the Iris"
+  ],
+  "junker queen · today, you're honorary wastelanders": [
+    "#126 Outcasted"
   ],
   "birds and music": [
     "#127 Miracle Worker"
   ],
   "my type": [
+    "#129 Deadlock Rebels"
+  ],
+  "cassidy · things were a lot simpler when i was robbing banks with the deadlock rebels.": [
     "#129 Deadlock Rebels"
   ],
   "fun fact": [
@@ -158,6 +252,12 @@
   "fox secret": [
     "#131 Anima Weaponry"
   ],
+  "ashe · this is a hardy bunch of outlaws. just need somethin' to steal.": [
+    "#133 Outlaws"
+  ],
+  "all about  you": [
+    "#136 The New West"
+  ],
   "jealous of you": [
     "#137 The Gunslinger"
   ],
@@ -169,5 +269,867 @@
   ],
   "missing the academy": [
     "#139 The Architech Academy"
+  ],
+  "mei · lijiang tower — my friend jiayi works here. she and i had a lot of fun in grad school. maybe too much. (giggle)": [
+    "#141 Studying for the Future"
+  ],
+  "winston · antarctic peninsula — so much data at this eco-watchpoint! i get the \"shivers\" just thinking about it.": [
+    "#142 Ecological Initiative"
+  ],
+  "orisa · numbani — mo wà ní ilé. (yoruba) i am home.": [
+    "#145 City of Harmony"
+  ],
+  "hanzo · numbani — my wanderings brought me to this place. it was not to my liking.": [
+    "#145 City of Harmony"
+  ],
+  "your daugther": [
+    "#146 Mother's Guidance"
+  ],
+  "ana · a mother's work is never done...": [
+    "#146 Mother's Guidance"
+  ],
+  "my little girl": [
+    "#148 Sparkplug"
+  ],
+  "more cats": [
+    "#148 Sparkplug"
+  ],
+  "brigitte · it's like reinhardt always says: the best solution to every problem is a very large hammer. it... makes more sense when he says it, i guess.": [
+    "#148 Sparkplug"
+  ],
+  "shared programming": [
+    "#149 Liao's Renaissance"
+  ],
+  "doomfist · numbani — if only you could see me now, akinjide adeyemi.": [
+    "#151 The Scourge of Numbani"
+  ],
+  "orisa · numbani — many have tried to destroy this city. but numbani will always hold strong.": [
+    "#151 The Scourge of Numbani"
+  ],
+  "doomfist · lijiang tower — lucheng interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.": [
+    "#152 The Red Promise"
+  ],
+  "mei · lijiang tower — who would have thought that jiayi would end up on mars?": [
+    "#152 The Red Promise"
+  ],
+  "western movies": [
+    "#152 The Red Promise"
+  ],
+  "dancing in the command center": [
+    "#153 Yearning"
+  ],
+  "so dramatic": [
+    "#153 Yearning"
+  ],
+  "crazy story": [
+    "#154 The Xie Incident"
+  ],
+  "beautiful": [
+    "#154 The Xie Incident"
+  ],
+  "torbjörn · king's row — i can't believe i fell for all that anti-omnic claptrap.": [
+    "#156 Omnic Rights"
+  ],
+  "trip over your sword": [
+    "#159 Growing with the Clan"
+  ],
+  "bowl cut": [
+    "#159 Growing with the Clan"
+  ],
+  "echo · junkertown or new junk city — this place confuses me. if it is so hostile to life, why does everyone not leave?": [
+    "#161 Survivor"
+  ],
+  "in a dream": [
+    "#161 Survivor"
+  ],
+  "happy to kill": [
+    "#162 Risen in Blood"
+  ],
+  "shion · who should i kill first?": [
+    "#162 Risen in Blood"
+  ],
+  "shion · hanamura or hanaoka — so peaceful here. i should change that.": [
+    "#162 Risen in Blood"
+  ],
+  "curious whales": [
+    "#164 The Atlantic Arcology"
+  ],
+  "visiting the martinses": [
+    "#164 The Atlantic Arcology"
+  ],
+  "winston · circuit royal — maximilien's tastes are quite... extravagant.": [
+    "#165 Pocket King"
+  ],
+  "where max lives": [
+    "#165 Pocket King"
+  ],
+  "mercy · helping those in need is its own reward.": [
+    "#166 Valkirie"
+  ],
+  "in your armor": [
+    "#166 Valkirie"
+  ],
+  "genji · hanamura — attack — i passed many an hour of my misspent youth here.": [
+    "#167 Sparrow"
+  ],
+  "genji · neon junction — i still recall running from home to visit the arcades here... (sigh) if only they'd let me stay.": [
+    "#167 Sparrow"
+  ],
+  "going to the arcade": [
+    "#167 Sparrow"
+  ],
+  "sparrow": [
+    "#167 Sparrow"
+  ],
+  "captivating": [
+    "#168 Captivate"
+  ],
+  "at my induction": [
+    "#168 Captivate"
+  ],
+  "gérard spoke of you": [
+    "#168 Captivate"
+  ],
+  "i got this rash": [
+    "#169 Radiation Poisoning"
+  ],
+  "sorry for your doctor": [
+    "#169 Radiation Poisoning"
+  ],
+  "the name null sector": [
+    "#171 Omnic Liberation"
+  ],
+  "freeing your servant": [
+    "#171 Omnic Liberation"
+  ],
+  "doomfist · busan — each gwishin attack strengthens the defenders, as a furnace hardens steel.": [
+    "#172 Deep Rising"
+  ],
+  "delightfully distracting": [
+    "#173 Harnessing te Harness"
+  ],
+  "omnic suffering": [
+    "#174 Omnic Housing"
+  ],
+  "an inspiration": [
+    "#174 Omnic Housing"
+  ],
+  "kicking off a party": [
+    "#175 Luxuries"
+  ],
+  "strenght in struggle": [
+    "#175 Luxuries"
+  ],
+  "changed much": [
+    "#175 Luxuries"
+  ],
+  "rather quiet": [
+    "#176 Subject Sigma"
+  ],
+  "people change": [
+    "#177 Storm Chaser"
+  ],
+  "none of  your business": [
+    "#177 Storm Chaser"
+  ],
+  "another life": [
+    "#177 Storm Chaser"
+  ],
+  "silhouette": [
+    "#178 Pressure Makes a DIamond"
+  ],
+  "bending the knee": [
+    "#178 Pressure Makes a DIamond"
+  ],
+  "doomfist · numbani — just as sheep must have a shepherd, numbani must have me.": [
+    "#179 Counter Meassures"
+  ],
+  "being in charge": [
+    "#180 Taking the Throne"
+  ],
+  "tempting": [
+    "#180 Taking the Throne"
+  ],
+  "hammond?": [
+    "#182 Out There"
+  ],
+  "cursed boy": [
+    "#183 Cursed"
+  ],
+  "sleeping dragon": [
+    "#184 When Dragons Fall"
+  ],
+  "summon a dragon": [
+    "#184 When Dragons Fall"
+  ],
+  "in your shadow": [
+    "#184 When Dragons Fall"
+  ],
+  "working alone": [
+    "#185 Search and Rescue"
+  ],
+  "ramattra · now, you will see how war can be waged and won.": [
+    "#186 Escalation"
+  ],
+  "halloween dress up": [
+    "#187 Cyber Ninja"
+  ],
+  "like a brother": [
+    "#187 Cyber Ninja"
+  ],
+  "in the wrong hands": [
+    "#188 Healing Nature"
+  ],
+  "biolight vegetbles": [
+    "#188 Healing Nature"
+  ],
+  "to stagnate is to die": [
+    "#189 Takeover"
+  ],
+  "doomfist · curse me all you want. without conflict, there is no future for humanity.": [
+    "#189 Takeover"
+  ],
+  "do you hear it": [
+    "#190 Lost in Time"
+  ],
+  "most crazy thing": [
+    "#190 Lost in Time"
+  ],
+  "chronal uncertainty": [
+    "#190 Lost in Time",
+    "#206 Chronal Dissociation"
+  ],
+  "father's bow": [
+    "#191 Shimada Takedown"
+  ],
+  "hanzo · hanamura — this was once my home. no longer.": [
+    "#191 Shimada Takedown"
+  ],
+  "criminals": [
+    "#191 Shimada Takedown"
+  ],
+  "hippocratic oath": [
+    "#192 Blacklisted"
+  ],
+  "unethical work": [
+    "#192 Blacklisted"
+  ],
+  "waiting for progress": [
+    "#192 Blacklisted"
+  ],
+  "cryogenic research": [
+    "#193 Cold Snap"
+  ],
+  "cryogenic freezing": [
+    "#193 Cold Snap"
+  ],
+  "fight for all omnics": [
+    "#194 Uneasy Alliance"
+  ],
+  "sombra · circuit royal — anyone want drinks? they're on max's tab! ha ha ha!": [
+    "#194 Uneasy Alliance"
+  ],
+  "adapting well": [
+    "#195 Bodily Entropy"
+  ],
+  "flattery": [
+    "#195 Bodily Entropy"
+  ],
+  "los muertos": [
+    "#196 Hacking Spree"
+  ],
+  "leaving vishkar": [
+    "#197 Biolight"
+  ],
+  "cutting hands": [
+    "#197 Biolight"
+  ],
+  "the martinses": [
+    "#197 Biolight"
+  ],
+  "fetching price": [
+    "#197 Biolight"
+  ],
+  "kiriko · neon junction — toshiro yamagami... i will definitely rescue you.": [
+    "#198 Hostage"
+  ],
+  "different company": [
+    "#199 Deep Sea Raiders"
+  ],
+  "your name": [
+    "#200 White Canvas"
+  ],
+  "cowboy hat": [
+    "#200 White Canvas"
+  ],
+  "keeping the label": [
+    "#200 White Canvas"
+  ],
+  "venture · eichenwalde, runasapi, or temple of anubis — ilios and throne of anubis are mistakenly not included and await a fix. — the world lost a lot of history during the omnic crisis. but i know we'll recover everything we can!": [
+    "#201 Intrepit Adventurers"
+  ],
+  "nicknames": [
+    "#201 Intrepit Adventurers"
+  ],
+  "missing the moon": [
+    "#202 Lunar Revolt"
+  ],
+  "lunar simians": [
+    "#202 Lunar Revolt"
+  ],
+  "lunar food": [
+    "#202 Lunar Revolt"
+  ],
+  "hard to talk": [
+    "#203 Leverage"
+  ],
+  "how did you escape": [
+    "#204 Escape Pod"
+  ],
+  "accident": [
+    "#204 Escape Pod"
+  ],
+  "foxes fight back": [
+    "#205 Shrine Maiden"
+  ],
+  "message for the fox": [
+    "#205 Shrine Maiden"
+  ],
+  "your dog": [
+    "#205 Shrine Maiden"
+  ],
+  "chronal adjustments": [
+    "#206 Chronal Dissociation"
+  ],
+  "an animal": [
+    "#206 Chronal Dissociation"
+  ],
+  "presents": [
+    "#206 Chronal Dissociation"
+  ],
+  "no more bananas": [
+    "#206 Chronal Dissociation"
+  ],
+  "wrecking ball · junkertown or new junk city — final blow — welcome to the hamster's playground.": [
+    "#207 Champion"
+  ],
+  "no autographs": [
+    "#207 Champion"
+  ],
+  "glorious victories": [
+    "#207 Champion"
+  ],
+  "knew the champ": [
+    "#207 Champion"
+  ],
+  "pulling the trigger": [
+    "#210 The Venice Incident"
+  ],
+  "déjà vu": [
+    "#210 The Venice Incident"
+  ],
+  "freja · rialto — the venice incident was the beginning of the end for overwatch. a shame...": [
+    "#210 The Venice Incident"
+  ],
+  "doomfist · rialto — antonio... was a fool.": [
+    "#210 The Venice Incident"
+  ],
+  "cassidy · never did forgive myself for not stopping reyes here. seems the world wants to make sure i never will.": [
+    "#211 Questioning"
+  ],
+  "disgrace to overwatch": [
+    "#211 Questioning"
+  ],
+  "sorry for your father": [
+    "#212 Stolen Future"
+  ],
+  "two hearts": [
+    "#213 Two Hearts"
+  ],
+  "never competed": [
+    "#213 Two Hearts"
+  ],
+  "moira · oasis — if only the world could see the wonders that science has built.": [
+    "#214 Unshackled"
+  ],
+  "room for brilliance": [
+    "#214 Unshackled"
+  ],
+  "moira · oasis — this is now my home... as much as any other.": [
+    "#214 Unshackled"
+  ],
+  "welcomed in oasis": [
+    "#214 Unshackled"
+  ],
+  "soldier 76 · king's row — i wouldn't change a thing we king's row uprising.": [
+    "#217 Intervention"
+  ],
+  "emre · | king's row — this line is currently assigned to king's row, but lore-wise is intended for rialto and awaits a fix. — overwatch (group) crossed a line here. and the world paid the price.": [
+    "#217 Intervention"
+  ],
+  "ramattra · this will not be won without sacrifice. be ready.": [
+    "#218 Resolve"
+  ],
+  "gérard's grave": [
+    "#219 Widowed"
+  ],
+  "a fool": [
+    "#219 Widowed"
+  ],
+  "skin mod": [
+    "#220 Emotionless"
+  ],
+  "an emotion": [
+    "#220 Emotionless"
+  ],
+  "distant lately": [
+    "#220 Emotionless"
+  ],
+  "how are you feeling": [
+    "#220 Emotionless"
+  ],
+  "truth about retirement": [
+    "#222 Forced Retirement"
+  ],
+  "phreak firewalls": [
+    "#223 Fighting the System"
+  ],
+  "new chassis": [
+    "#223 Fighting the System"
+  ],
+  "dramatic": [
+    "#224 La Lupa"
+  ],
+  "madam wolf": [
+    "#224 La Lupa"
+  ],
+  "i've seen that before": [
+    "#225 Overridden"
+  ],
+  "playing dumb": [
+    "#225 Overridden"
+  ],
+  "going soft": [
+    "#227 Missing in Action"
+  ],
+  "eye repair": [
+    "#227 Missing in Action"
+  ],
+  "mauga · you and me, baptiste. you and me": [
+    "#229 Fun with Friends"
+  ],
+  "mauga · loosen up. this is supposed to be fun.": [
+    "#229 Fun with Friends"
+  ],
+  "rusty": [
+    "#229 Fun with Friends"
+  ],
+  "like mother like daughter": [
+    "#230 Ghost"
+  ],
+  "without my mom": [
+    "#231 Disappeared"
+  ],
+  "sierra · nepal, route 66 or runasapi — i'm still looking, kendra woods. i know you're out there somewhere.": [
+    "#231 Disappeared"
+  ],
+  "stole that device": [
+    "#234 The Conspiracy"
+  ],
+  "feeling sick": [
+    "#234 The Conspiracy"
+  ],
+  "share my secrets": [
+    "#234 The Conspiracy"
+  ],
+  "stopped you once": [
+    "#235 Closed Fist"
+  ],
+  "beaten by a monkey": [
+    "#235 Closed Fist"
+  ],
+  "immense pain": [
+    "#238 Colateral Damage"
+  ],
+  "undo it all": [
+    "#240 Mass Backlash"
+  ],
+  "breathing": [
+    "#241 Self Discovery"
+  ],
+  "alongside my pupil": [
+    "#241 Self Discovery"
+  ],
+  "a new answer": [
+    "#242 The Petras Act Hearings"
+  ],
+  "pharah · oasis — city of unfettered scientists, yeah... until they call helix in tears at two in the morning because the wolfbats escaped... again.": [
+    "#243 Protecting the Skies"
+  ],
+  "joining helix": [
+    "#243 Protecting the Skies"
+  ],
+  "helix mercenaries": [
+    "#243 Protecting the Skies"
+  ],
+  "agony": [
+    "#244 Code of Violence"
+  ],
+  "pain": [
+    "#244 Code of Violence"
+  ],
+  "sigma's brain": [
+    "#245 Released"
+  ],
+  "stressors": [
+    "#245 Released"
+  ],
+  "snap out of it": [
+    "#245 Released"
+  ],
+  "are you happy with that?": [
+    "#245 Released"
+  ],
+  "non invasive tests": [
+    "#245 Released"
+  ],
+  "more fortunate": [
+    "#246 Another Life"
+  ],
+  "righteous garbage": [
+    "#246 Another Life"
+  ],
+  "useful when you show up": [
+    "#246 Another Life"
+  ],
+  "locked up": [
+    "#247 Deactivated"
+  ],
+  "next funeral": [
+    "#248 Shrike"
+  ],
+  "masked vigilante": [
+    "#248 Shrike"
+  ],
+  "always worry": [
+    "#248 Shrike"
+  ],
+  "you were dead": [
+    "#248 Shrike"
+  ],
+  "you'll get bored": [
+    "#248 Shrike"
+  ],
+  "esports are sports": [
+    "#249 Top Player"
+  ],
+  "ranking up": [
+    "#249 Top Player"
+  ],
+  "soft criminals": [
+    "#250 Found Family"
+  ],
+  "hazard · check out these new 'gradies. phreaks's work. outdid herself again!": [
+    "#250 Found Family"
+  ],
+  "how's bars": [
+    "#251 Runs in the Family"
+  ],
+  "frankie and bez": [
+    "#251 Runs in the Family"
+  ],
+  "deprioritized": [
+    "#252 A Better World"
+  ],
+  "are you a couple": [
+    "#253 Treassure"
+  ],
+  "don't blow it": [
+    "#253 Treassure"
+  ],
+  "bacon": [
+    "#253 Treassure"
+  ],
+  "mako and the wreckers": [
+    "#253 Treassure"
+  ],
+  "lifting": [
+    "#254 Strongest Woman Alive"
+  ],
+  "huge fan": [
+    "#254 Strongest Woman Alive"
+  ],
+  "working order": [
+    "#255 Chivalry"
+  ],
+  "had to do more": [
+    "#255 Chivalry"
+  ],
+  "dragging brigitte": [
+    "#255 Chivalry"
+  ],
+  "what is left": [
+    "#255 Chivalry"
+  ],
+  "leaving the cage": [
+    "#256 Networking"
+  ],
+  "your employers": [
+    "#256 Networking"
+  ],
+  "peanut butter": [
+    "#257 Not Alone"
+  ],
+  "always captain": [
+    "#257 Not Alone"
+  ],
+  "done with talon": [
+    "#258 Cycle of Violence"
+  ],
+  "show your face": [
+    "#258 Cycle of Violence"
+  ],
+  "right amount of stupid": [
+    "#258 Cycle of Violence"
+  ],
+  "short memory": [
+    "#258 Cycle of Violence"
+  ],
+  "medical benefits": [
+    "#258 Cycle of Violence"
+  ],
+  "zarya · volskaya industries — katya is a hero to my people. we must protect what she has built.": [
+    "#259 Siberian Front"
+  ],
+  "volskaya's mechs": [
+    "#259 Siberian Front"
+  ],
+  "pharah · temple of anubis — i lost many good soldiers here.": [
+    "#260 Anubis Escapes"
+  ],
+  "anubis's jailers": [
+    "#260 Anubis Escapes"
+  ],
+  "d.va · busan — someone has to save the world, it might as well be me! woo! gg!": [
+    "#261 Game On"
+  ],
+  "propaganda machine": [
+    "#261 Game On"
+  ],
+  "soldier celebrities": [
+    "#261 Game On"
+  ],
+  "hit the slopes": [
+    "#262 Neighborhood Hero"
+  ],
+  "tracer · king's row — wonder if i have time to visit emily? ...no, better stay focused...": [
+    "#262 Neighborhood Hero"
+  ],
+  "on the wrong path": [
+    "#264 Bounty Hunter"
+  ],
+  "looking back": [
+    "#264 Bounty Hunter"
+  ],
+  "what happened": [
+    "#264 Bounty Hunter"
+  ],
+  "freja · time is money, they say... and i'm not keen on wasting either.": [
+    "#264 Bounty Hunter"
+  ],
+  "show some respect": [
+    "#265 Legend of the Junker Queen"
+  ],
+  "not an omnic": [
+    "#265 Legend of the Junker Queen"
+  ],
+  "too hard on wuyang": [
+    "#266 Fire Star"
+  ],
+  "dancing anxiety": [
+    "#266 Fire Star"
+  ],
+  "anran · nothing burns brighter than my willpower.": [
+    "#266 Fire Star"
+  ],
+  "useful": [
+    "#267 Train Hopper"
+  ],
+  "bills were always paid": [
+    "#267 Train Hopper"
+  ],
+  "real clothes": [
+    "#267 Train Hopper"
+  ],
+  "cassidy · not as quick as i used to be, but i'm still the fastest gun in the new west.": [
+    "#267 Train Hopper"
+  ],
+  "talon's bounty": [
+    "#267 Train Hopper"
+  ],
+  "where have you been": [
+    "#268 Traitor"
+  ],
+  "coming with us": [
+    "#268 Traitor"
+  ],
+  "eager to see you": [
+    "#268 Traitor"
+  ],
+  "sonic inventor": [
+    "#269 Sonic Policing"
+  ],
+  "vishkar is using you": [
+    "#269 Sonic Policing"
+  ],
+  "noisemaker": [
+    "#269 Sonic Policing"
+  ],
+  "crown jewels": [
+    "#270 Crime Spree"
+  ],
+  "dorothy": [
+    "#271 Summit Squad"
+  ],
+  "just your type": [
+    "#272 Help for the Needy"
+  ],
+  "baptiste · i've done things i'm not proud of. time to start making up for it.": [
+    "#272 Help for the Needy"
+  ],
+  "medieval history": [
+    "#273 Dragon Slayer"
+  ],
+  "brigitte · here we go again. shields up!": [
+    "#273 Dragon Slayer"
+  ],
+  "not getting younger": [
+    "#275 Squire"
+  ],
+  "getting a helmet": [
+    "#275 Squire"
+  ],
+  "obsolete": [
+    "#275 Squire"
+  ],
+  "brigitte · stay close to me and i'll keep you safe.": [
+    "#275 Squire"
+  ],
+  "kiriko · hanamura, hanaoka or neon junction — watch over us, grandma. we'll send those hashimoto packing.": [
+    "#276 Avatar of the Fox"
+  ],
+  "killing for donuts": [
+    "#276 Avatar of the Fox"
+  ],
+  "hashimoto bounties": [
+    "#276 Avatar of the Fox"
+  ],
+  "resolving differences": [
+    "#276 Avatar of the Fox"
+  ],
+  "resistance": [
+    "#277 Here to be heard"
+  ],
+  "domina · paraíso — eliminating lúcio — they'll idolize anyone these days...": [
+    "#277 Here to be heard"
+  ],
+  "people should be free": [
+    "#277 Here to be heard"
+  ],
+  "what you stole": [
+    "#277 Here to be heard"
+  ],
+  "vigilantes": [
+    "#278 Vigilante"
+  ],
+  "playing boy scout": [
+    "#278 Vigilante"
+  ],
+  "golden boy": [
+    "#278 Vigilante"
+  ],
+  "suppose to be death": [
+    "#278 Vigilante"
+  ],
+  "d.va · busan — elimination — i will defend my country!": [
+    "#279 Shooting Star"
+  ],
+  "mech mechanic": [
+    "#279 Shooting Star"
+  ],
+  "who is your mechanic": [
+    "#279 Shooting Star"
+  ],
+  "vintage vinyl": [
+    "#280 Underground Hero"
+  ],
+  "hanzo · hanamura — the master of the shimada clan has returned.": [
+    "#281 Old Dragons"
+  ],
+  "you have come far": [
+    "#281 Old Dragons"
+  ],
+  "don't you recognize me": [
+    "#281 Old Dragons"
+  ],
+  "still grieving": [
+    "#281 Old Dragons"
+  ],
+  "junkrat · black forest — what a place this is! a ghost in every attic. maybe this is where i'll retire.": [
+    "#282 The Last Bastion"
+  ],
+  "asleep for a long time": [
+    "#282 The Last Bastion"
+  ],
+  "soldier 76 · dorado — los muertos is a cancer on this city.": [
+    "#283 Hero"
+  ],
+  "unlocking": [
+    "#285 Full Disclosure"
+  ],
+  "sombra · hah, let's get started. got a lot of systems that need hacking.": [
+    "#285 Full Disclosure"
+  ],
+  "sharing": [
+    "#285 Full Disclosure"
+  ],
+  "sombra · dorado — lumérico. (chuckles)": [
+    "#285 Full Disclosure"
+  ],
+  "blaming yourself": [
+    "#286 Assassination"
+  ],
+  "all responsible": [
+    "#286 Assassination"
+  ],
+  "widowmaker · after the trigger pull lies a blissful eternity-- until the shot connects.": [
+    "#286 Assassination"
+  ],
+  "reaper · watchpoint: gibraltar — overwatch... i'll put an end to your sad story.": [
+    "#288 Recall"
+  ],
+  "reaper · watchpoint: gibraltar — overwatch... good riddance.": [
+    "#288 Recall"
+  ],
+  "taking the risk": [
+    "#289 London Calling"
+  ],
+  "googly eyes": [
+    "#290 Rise and Shine"
+  ],
+  "captain opara": [
+    "#290 Rise and Shine"
+  ],
+  "remebering the past": [
+    "#290 Rise and Shine"
+  ],
+  "sombra · volskaya industries — i wonder how my friend is doing.": [
+    "#294 Infiltration"
+  ],
+  "mercy · watchpoint: gibraltar — overwatch was shut down for a reason. maybe it's best it stay that way.": [
+    "#297 Reflections"
+  ],
+  "winston · numbani — ever feel like you’re just security for doomfist’s gauntlet?": [
+    "#302 The Museum Assault"
   ]
 }

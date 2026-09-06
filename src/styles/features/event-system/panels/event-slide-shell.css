@@ -376,6 +376,19 @@
 
 .event-slide-inline-editor__commentary-row {
     grid-template-columns: 1fr auto;
+    align-items: start;
+}
+
+.event-slide-inline-editor__commentary-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.event-slide-inline-editor__commentary-row:not(.event-slide-inline-editor__commentary-row--chatter)
+    .event-slide-inline-editor__commentary-label {
+    display: none;
 }
 
 .event-slide-inline-editor__source-links {

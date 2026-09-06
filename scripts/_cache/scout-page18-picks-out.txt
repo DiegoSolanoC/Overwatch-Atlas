@@ -1,0 +1,508 @@
+﻿
+#### NS/lib
+D free Be Proud [Baptiste,Wuyang] Be Proud Hey, I saw you in Winston's reports on the Chengdu attack. Way to stick it to Null Sector! Aw, it was nothing. 
+D free Music Festival [Brigitte,Torbj├╢rn] Music Festival Papa, remember the music festival I took you to? The headliner, L├║cio, joined Overwatch! Well, if Null Se
+D free Awful Quiet [Cassidy,Sojourn] Awful Quiet Been awful quiet 'round these parts since Null Sector turned tail. Yeah. But I'm not convinced the fighting'
+D free The Name Null Sector [Echo,Ramattra] The Name Null Sector Why did you choose the name "Null Sector"? Because we defy the numbers humans gave us. We are zeroe
+D free Getting Strong [Reinhardt,Orisa] Getting Strong Orisa! I heard you took down Null Sector. You've gotten strong! Thank you. Do you truly believe so? Of co
+D free Why Withdraw [Sojourn,Ramattra] Why Withdraw Null Sector has a foothold in so many cities... why withdraw your forces now? Would you have preferred I de
+D free Always my brother [Ramattra,Zenyatta] Always my brother Though we could not reach an accord here, Zenyatta, it still meant a great deal to see you again. Our 
+D free Your grades [Sombra,Wuyang] Your grades Peeked at your grades. Pretty good for someone studying through a Null Sector attack. Thanks! Honestly, I'm 
+C free Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+C free Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+C free Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+C free Sojourn ┬╖ New Queen Street or Para├¡so ΓÇö Null Sector may have withdrawn, but I can't shake the feeling there's trouble ahead.
+C free Zarya ┬╖ All right, omnics. Let's get it done.
+D free Blaming yourself [Genji,Tracer] Blaming yourself Do not blame yourself for Mondatta's death. It was not your fault. You don't understand Genji, I could 
+D free Omnic Suffering [Genji,Zenyatta] Omnic Suffering Does the suffering of the omnics here trouble you, Master? It does. My brother, Mondatta, gave much to i
+D free All Responsible [Widowmaker,Tracer] All Responsible Does it bother you, knowing that you could have saved Mondatta's life? We are all responsible for the ch
+D free Mondatta was an inspiration [Tracer,Zenyatta] Mondatta was an inspiration Wow. It's an honor to meet a member of the Shambali. Mondatta was an inspiration to me. To u
+
+#### gwishin
+C free Ana ┬╖ Busan ΓÇö with Reinhardt on the team ΓÇö Reinhardt, why don't you give it a try?
+C free Ashe ┬╖ Busan ΓÇö Home, home, on the range, where the deer and the antelope play. Where seldom is heard, a discouraging word, and the skies are
+C free Ashe ┬╖ Busan ΓÇö When I catch McCree - which I guarantee - y'all gonna see, how much he regrets crossin' me... (laughs)
+C free Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö No. I mean, I don't sing. Can I dance instead? Ah, ah, ah-ah, ah, ah, ah-ah-ah, ah, ba, ba, ah, ah... I'm getti
+C free Baptiste ┬╖ Busan ΓÇö Karaoke ΓÇö If you need heals, there's no health stauncher than a blast from my biotic launcher. If they're firing too fast
+C free Baptiste ┬╖ Busan ΓÇö No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, I
+C free Baptiste ┬╖ Busan ΓÇö If you need heals, there's no health stauncher, then a blast from my biotic launcher. If they're firing too fast for me t
+C free Brigitte ┬╖ Busan ΓÇö Ah, yeah! Ah, yeah, ah, woo! Come on! Mace to the face!
+C free Brigitte ┬╖ Busan ΓÇö Who wants to party? Woo! Yeah, come on! Party with me! Let's go! (laughs)
+C free Cassidy ┬╖ Busan ΓÇö Ah, alright. More of a country guy, but, not bad! Let's do this. Yeahhhh.
+C free Cassidy ┬╖ Busan ΓÇö Yeah, alright. Get 'em movin', get 'em rollin'. Get them doggies out tonight! Yeah.
+C free Cassidy ┬╖ Busan ΓÇö Whip 'em on! Take 'em down. Mm-mm, and that is how the cowboy does it. Yeah.
+C free Cassidy ┬╖ Busan (Karaoke) ΓÇö Ah, alright. More of a country guy but, not bad. Let's do this! Yeahhh.
+C free Cassidy ┬╖ Busan (Karaoke) ΓÇö Whip 'em on! Take 'em down! Uh, uh... and that is how the cowboy does it. Yeah.
+C free Cassidy ┬╖ Busan (Karaoke) ΓÇö Yeah, get 'em moving, get 'em rollin', get them doggies out tonight!
+C free D.va ┬╖ Ugh. The Junkers want to turn Busan into their dump, but they already live in one!
+C free D.va ┬╖ Busan ΓÇö If they destroy any of my favorite matjips, I'm coming for them!
+C free D.va ┬╖ Busan ΓÇö It's nice being on home turf!
+C USED ΓåÆ #279 Shooting Star D.va ┬╖ Busan ΓÇö Elimination ΓÇö I will defend my country!
+C free D.va ┬╖ Busan ΓÇö I play to win, and I always do. That's just who I am. Woo!
+C free D.va ┬╖ Busan ΓÇö MEKA activated! Hit you with that PEW-PEW-PEW! With that PEW-PEW-PEW!
+C USED ΓåÆ #261 Game On D.va ┬╖ Busan ΓÇö Someone has to save the world, it might as well be me! Woo! GG!
+C free D.va ┬╖ Busan ΓÇö Naneun seuta ya! Naneun dae seuta! o, i norae jae-il jo-a! Daebak! (giggles) (Hangul) I'm a star! I'm a superstar! I love thi
+C free D.va ┬╖ Busan ΓÇö Eichenwalde, King's Row or Volskaya Industries
+C free D.va ┬╖ Busan ΓÇö The destruction caused by the omnics here... It reminds me of home.
+C USED ΓåÆ #172 Deep Rising Doomfist ┬╖ Busan ΓÇö Each Gwishin attack strengthens the defenders, as a furnace hardens steel.
+C free Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Is this thing on? Eh eh eh eh eh. Ah ah. Eh eh eh.
+C free Doomfist ┬╖ Busan ΓÇö Karaoke ΓÇö Stay out of my way, it's time to start a war. Only through conflict do we evolve.
+C free Echo ┬╖ Busan ΓÇö I heard their fish cakes here are famous!
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Am I programmed to dance? Yeah! Oh! Ooh. Woo!
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Duplicating dance moves! To the left, to the right! Mina Liao would be proud!
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö The beat's rising! Uh, uh, uh, yeah! This is when they drop the beat.
+C free Echo ┬╖ Busan ΓÇö Karaoke ΓÇö Mm, mm, mm. Oh, ah, mm, mm, mmm... Oh! I think I slipped a circuit...
+C free Echo ┬╖ Busan ΓÇö Am I programmed to dance? Yeah! Oh, ooh, wooh!
+C free Echo ┬╖ Busan ΓÇö Duplicating dance moves! To the left, to the right! Dr. Liao would be proud!
+C free Echo ┬╖ Busan ΓÇö Mmm, mmm, mmm, oh, ah, mmm, mmm, mmh, oh! I think I slipped a circuit!
+C free Echo ┬╖ Busan ΓÇö The beat's rising! Ah, ah, ah, yeah! This is when they drop the beat!
+C free Genji ┬╖ Busan ΓÇö Rin. By┼ì. T┼ì. Sha. Kai. Jin. Retsu. Zai. Zen! I need dancing! (Kanji) Literal: Preside. Warriors. Fight. Person. Altogether.
+C free Genji ┬╖ Busan ΓÇö Rin. By┼ì. T┼ì. Sha. Kai. Jin. Retsu. Zai. Zen! I need singing! (Kanji) Preside. Warriors. Fight. Person. Altogether. Formatio
+C free Hanzo ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Everything I had, I threw away... Everyone I loved, I betrayed.
+C free Hanzo ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö The flames of youth burn bright, but fast... Soon they dim to drifting ash.
+C free Junker Queen ┬╖ Busan ΓÇö Wish one of those Gwishin would attack. I don't need a mech to fight them.
+C free Junkrat ┬╖ Busan ΓÇö Dee-ap dap da-bee da! Dee-a dap-da doo! Dee-ap dap da-bee da! Rrr-i dogga-dappa doo!
+C free Junkrat ┬╖ Busan ΓÇö Junkrat-Junker-Jun-ju-ju-ja, Junker-Junker-Junk, Junk-rat-rat, Junkrat-Junkrat-Junkrat, Junkrat-d-drat, d-drat, d-drat-dra
+C free Junkrat ┬╖ Busan ΓÇö Stealing is my favorite role, here's a list of the things I stole: diamonds, emeralds, magic jewels! Expensive, prosthodon
+C free L├║cio ┬╖ Busan ΓÇö Karaoke ΓÇö What's happening, Busan? I can't hear you!
+C free Mei ┬╖ Busan ΓÇö Karaoke machine ΓÇö Sorry, sorry, I'm so sorry! Ooh, ah, come on, Snowball, dance with me!
+C free Mei ┬╖ Busan ΓÇö Karaoke machine ΓÇö Do do do do do do do, I love this song!
+C free Mei ┬╖ Busan ΓÇö Karaoke machine ΓÇö Zh╟Äo a zh╟Äo a zh╟Äo p├⌐ngy╟ÆuΓÇöa, n╟É b├╣sh├¼ w╟Æ de h╟Äo p├⌐ngy╟Æu! B─½ng zh├╣ n╟É a qi─üoqi─üo t├│u, gu─üigu─üi d├▓ng zh├╣ b├╣x╟ö
+C free Mercy ┬╖ Busan ΓÇö Karaoke ΓÇö Deh-deh deh-deh, deh, deh, do-do-do, do-do-do. Rrum-pum-pum, do-do, do-do, do-do-do. I love this song!
+C free Mercy ┬╖ Busan ΓÇö Karaoke ΓÇö La la la, la-la, lah! Do, do, do-do-doo! Ich liebe Musik! La la la, ja! Super.
+C free Mercy ┬╖ Busan ΓÇö Karaoke ΓÇö I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, juhuu! Hoi z├ñme!
+C free Mercy ┬╖ Busan ΓÇö Karaoke ΓÇö with Reinhardt on the team ΓÇö Come on, Reinhardt! Show me what you got. "Sexy, sexy Reinhardt"... not. (laughs)
+C free Mercy ┬╖ Busan ΓÇö Deh deh deh deh deh, do, do do do do, rum-pum-rum-pum do do do do do do... I love this song!
+C free Mercy ┬╖ Busan ΓÇö I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, yoohoo! Hoi z├ñme!
+C free Mercy ┬╖ Busan ΓÇö La la la la la la, do do do do do! Ich liebe Musik! La la la! Ja! Super!
+C free Moira ┬╖ Busan ΓÇö Karaoke ΓÇö Moira refuses to sing. ΓÇö I cannot believe I am being subjected to this... cacophony. And they say my actions are u
+C free Moira ┬╖ Busan ΓÇö Karaoke ΓÇö Moira refuses to sing. ΓÇö No. I am not enjoying this.
+C free Pharah ┬╖ Busan ΓÇö Fly, fools, get with the times! Prepare yourselves for Pharah's rhymes!
+C free Pharah ┬╖ Busan ΓÇö I'm going to shoot you down. Pharah reporting, coming to town!
+C free Pharah ┬╖ Busan ΓÇö I'm the best when push comes to shove, direct complaints to my metal glove. Here comes the moment that you all love... JUST
+C free Pharah ┬╖ Busan ΓÇö Pop it, lock it. Mercy in my pocket. Even Genji can't seem to block it!
+C free Reaper ┬╖ Busan ΓÇö Give me a faster beat. If one person shouts out a request, kill the music.
+C free Reaper ┬╖ Busan ΓÇö What are you looking at? I don't sing. I will not.
+C free Reaper ┬╖ Watchpoint: Gibraltar ΓÇö Busan (Karaoke)
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Do, da-da, da, hammer down! Ha, ba-ba, da, do-do-do! Hee, hee, ba-da, ho-ho-ho! Yes, yes! (laughs)
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Ooh, do-do, watch me now! Ha, haha, look at me! Da, da, da-da, do-do-do! Ya-da, doo-doo, doo-doo! Ha.
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö laughs ΓÇö Oh, ha-ba, da-da-da. Ooh, yes, hammer down! Ha, ha-ba-da, da-da-da. Ah, I love this!
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Sexy, sexy Reinhardt! Oh yes, here we go! Move your legs and move your arms. That is how we do the dance! (l
+C free Reinhardt ┬╖ Busan ΓÇö Do do doo, hammer down! Ha ha do do do doo, hee hee hee hee hee hoo, yes, yes, hahahaha!
+C free Reinhardt ┬╖ Busan ΓÇö Ba ba ba ba ba ba, hoo yes, hammer down! Ha ba ba da ba ba! Oh, I love this! Hahahahaha!
+C free Reinhardt ┬╖ Busan ΓÇö Ooh, doo doo doo, watch me now! Ha, ha ha, look at me! Yeah, yeah, yeah, yeah, doo doo! Ha ha!
+C free Reinhardt ┬╖ Busan ΓÇö So this is D.Va's home! I expect she'll have posters everywhere.
+C free Sigma ┬╖ Busan ΓÇö Get down with Sigma tonight! Lekker, stroopwafel.
+C free Sigma ┬╖ Busan ΓÇö Mm, mm, ooh, mm, ooh, yeah. Come on, now.
+C free Sigma ┬╖ Busan ΓÇö Oh, yeah, baby, come on! (laughs)
+C free Sigma ┬╖ Busan (Karaoke) ΓÇö Get down with Sigma tonight! Lekkere stroopwafel.
+C free Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö Mm, bup-bup-bup. Payload! Mm, get the payload. Pa-pa-payload!
+C free Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö Ooh, I'm not a young man anymore. Uh. Ah. Got you! In. My. Sights.
+C free Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö We're all... all, all, all... all, all soldiers now. Yeah!
+C free Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö What's my name? Jack Morrison. Now, it's Soldier: 76. Yeah.
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö I wonder what the landlord's password is. Ha
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö Let's order some pizza for the neighborhood.
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö The network security here is so soft and cut
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö The raid leader in the gaming caf├⌐ upstairs 
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö This song library is too small. Hah! No prob
+C free Sombra ┬╖ Busan ΓÇö Karaoke ΓÇö Sombra doesn't sing, she instead hacks the karaoke machine and TV. ΓÇö Why would I sing this little song when I can
+C free Symmetra ┬╖ Busan ΓÇö Karaoke (Unused) ΓÇö Everything by my design. Drawing triangles, tracing lines. It's unwise to disrespect, such an efficien
+C free Symmetra ┬╖ Busan ΓÇö Karaoke (Unused) ΓÇö Hopefully, by now you see, the result of my reality. Everything according to plan. Move your feet, mov
+C free Symmetra ┬╖ Busan ΓÇö Karaoke (Unused) ΓÇö Their actions convey futility. Their minds are closed to possibility. But still, order wins the day. Y
+C free Symmetra ┬╖ Busan ΓÇö Karaoke (Unused) ΓÇö Turrets here, turrets there. Placing turrets everywhere. My teleporter is online; perhaps it's best if
+C free Torbj├╢rn ┬╖ Volskaya Industries ΓÇö Busan (Karaoke)
+C free Tracer ┬╖ Horizon Lunar Colony ΓÇö Busan (Karaoke)
+C free Widowmaker ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö One shot, one kill. One shot, one kill.
+C free Widowmaker ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö L'amour est cruel, et je suis plus cruelle, car je ne suis jamais satisfaite.
+C free Widowmaker ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Si l'amour est un jeu, alors j'aime gagner, m├¬me si cela te fait pleurer.
+C free Wrecking Ball ┬╖ Busan (Karaoke) ΓÇö [Squeaking along to the Karaoke Music].
+C free Wuyang ┬╖ Busan ΓÇö Maybe one day, I'll be a Mobile Exo-Force pilot. Just need to climb a few dozen ranks first.
+C free Zenyatta ┬╖ Busan ΓÇö Embrace the rhythm, embrace the beat. Embrace the melody, move your feet.
+C free Zenyatta ┬╖ Busan ΓÇö The rhythm is in you, if you search within. Get down into the Iris. Float to the beat. Ohmmm.
+C free Zenyatta ┬╖ Busan (Karaoke) ΓÇö The rhythm is in you if you search within.
+D free Busan fireworks [Junker Queen,D.va] Busan fireworks Reckon Busan's in need of a little fireworks show! The only firework show you see will be my missiles bl
+D free Stop the Attack [Junker Queen,Sojourn] Stop the Attack Will you lot stop blasting my ship? You're bein' a real pain in my kidneys! We'll stop 'blasting your sh
+
+#### sigma
+D free Humming [Illari,Genji] Humming **humming** Nice melody. Does it have a name? No, sometimes I just hum when I'm thinking. I can stop. Humming? O
+D USED ΓåÆ #33 Grasping Gravity My greatest Rival [Zarya,Sigma] My greatest Rival I like your research, Doctor. Why, thank you! If I may ask, what intrigues you about it? Gravity is my
+D USED ΓåÆ #33 Grasping Gravity Applied Science [Sigma,Zarya] Applied Science Is it true you share an interest in the study of gravity? I shoot black holes at people I don't like. Ah
+D free Owe to the Iris [Sigma,Zenyatta] Owe to the Iris How does this omnic defy gravity? No repulsors are to be detected! I owe my gifts to the Iris. Oh, the I
+D free Flyng Experience [Winston,Echo,Pharah] Flyng Experience I have some flying experience too, actually! Really? Hm, sort of. The gravity on the moon *was* very lo
+C free Sigma ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö What is gravity to an expert?
+C free Zenyatta ┬╖ Busan ΓÇö Embrace the rhythm, embrace the beat. Embrace the melody, move your feet.
+D free The harness [Vendetta,Sigma] The harness Prepare yourself, Subject Sigma. I will have need of you soon. How soon is soon when time slips away? When m
+
+#### housing
+C free D.va ┬╖ King's Row ΓÇö Tokki can jump over Big Ben, no problem!
+C free D.va ┬╖ Busan ΓÇö Eichenwalde, King's Row or Volskaya Industries
+C free Emre ┬╖ | King's Row ΓÇö This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a fix. ΓÇö Overwatch (gro
+C free Kiriko ┬╖ King's Row ΓÇö This is London, huh? I've seen fancier.
+C free Mercy ┬╖ We must be very careful not to harm any civilians. Do not just assume I can heal them! Although I could, of course.
+C free Ramattra ┬╖ King's Row ΓÇö I lost Mondatta here, Alive. I hope I haven't Reconciliation.
+C free Soldier 76 ┬╖ King's Row ΓÇö I wouldn't change a thing we King's Row Uprising.
+C USED ΓåÆ #156 Omnic Rights Torbj├╢rn ┬╖ King's Row ΓÇö I can't believe I fell for all that anti-omnic claptrap.
+C free Tracer ┬╖ King's Row ΓÇö eliminating Widowmaker ΓÇö How dare you come back here?!
+C free Tracer ┬╖ King's Row ΓÇö Back in my old stomping ground.
+C free Tracer ┬╖ King's Row ΓÇö Pub, anyone?
+C free Tracer ┬╖ King's Row ΓÇö Should we nip to the pub?
+C free Tracer ┬╖ King's Row ΓÇö I could murder a chippy.
+C free Tracer ┬╖ King's Row ΓÇö I could murder a chip sarnie.
+C free Tracer ┬╖ King's Row ΓÇö Wonder if I have time to visit Emily? ...No, better stay focused...
+C free Widowmaker ┬╖ King's Row ΓÇö eliminating Tracer while airborne ΓÇö At least you took the bullet this time.
+C free Zenyatta ┬╖ Hanamura ΓÇö Turing Green. My brother's dream, but not to be.
+D free Blaming yourself [Genji,Tracer] Blaming yourself Do not blame yourself for Mondatta's death. It was not your fault. You don't understand Genji, I could 
+D free Omnic Suffering [Genji,Zenyatta] Omnic Suffering Does the suffering of the omnics here trouble you, Master? It does. My brother, Mondatta, gave much to i
+D free All Responsible [Widowmaker,Tracer] All Responsible Does it bother you, knowing that you could have saved Mondatta's life? We are all responsible for the ch
+D free Mondatta was an inspiration [Tracer,Zenyatta] Mondatta was an inspiration Wow. It's an honor to meet a member of the Shambali. Mondatta was an inspiration to me. To u
+
+#### lux
+D free Time to Relax [Brigitte,Anran] Time to Relax L├║cio and I have been thinking of throwing a little welcome party for you new recruits. You in Do we reall
+D free Karaoke [Juno,L├║cio] Karaoke L├║cio, can you teach me about karaoke? I'd love to help but... as much as I love making music, I'm not much of a
+D free Old Fashioned [Lifeweaver,Reinhardt,Cassidy] Old Fashioned You're so old-fashioned, Reinhardt. A hammer? How marvelous! I suppose you think I should have a giant las
+D free Googly Eyes [Venture,Mei] Googly Eyes Whoa! Your drone is so cool! Thank you! His name is Snowball. Say hi, Snowball! Hey, little guy! Aw, I wish 
+D free Golden Hair [Domina,Illari] Golden Hair How I envy those solar threads in your hair. A pity I had to settle for twenty-four carat. It is not a fashi
+D free Silhouette [Shion,Domina] Silhouette I admire your silhouette, Singhania. It's so... maverick, pairing those arms with that coat. Aww, thank you! 
+D free Welcome Party [Ashe,Sierra] Welcome Party How's our base looking these days, sweetheart? You fix that Bob-shaped hole in the wall yet? Why don't you
+D free Kicking off a party [Mauga,Shion] Kicking off a party Nothing like a few bullets to kick off a party. Am I right? Oh, yes. A little mayhem always revs my 
+D free New Hat [Kiriko,Mizuki] New Hat Your new hat looks lighter. Nobuto did a good job. Yeah, I like it. Wish it was a little more lowkey, though. Ri
+C free Brigitte ┬╖ Busan ΓÇö Who wants to party? Woo! Yeah, come on! Party with me! Let's go! (laughs)
+C free Cassidy ┬╖ Para├¡so ΓÇö Now this is one place that knows how to throw a party.
+C free Domina ┬╖ Circuit Royal ΓÇö Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a sham
+C free Junkrat ┬╖ Dorado ΓÇö Party time! Need some fireworks?
+C free Pharah ┬╖ Forget regulation. After this mission, I'm throwing a party.
+C free Sombra ┬╖ Party's started
+D free Cowboy Fan [Cassidy,Soldier 76] Cowboy Fan I bet you're a big fan of those old fashioned cowboy movies, aren't ya? I thought I was, until I met you.
+
+#### freja
+D free Awful Quiet [Cassidy,Sojourn] Awful Quiet Been awful quiet 'round these parts since Null Sector turned tail. Yeah. But I'm not convinced the fighting'
+D free On the Wrong Path [Mercy,Freja] On the Wrong Path You are on the wrong path, Freja. If you say so, Doctor. You used to help people! What you're doing no
+D free Looking Back [Mercy,Freja] Looking Back Freja... You should know you are not the only one who looks back on Overwatch with regret. If I can help it
+D free Behind bars [Sierra,Emre,Freja] Behind bars You might've gotten away from me once, but I won't quit until you're both behind bars. *(chuckle)* I'm worki
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Freja ┬╖ Been a while since I had so much... company.
+C free Freja ┬╖ I move quick. Keep up, if you'd like.
+C free Freja ┬╖ Ready up. Being unprepared has never made a job easier.
+C free Freja ┬╖ Time is money, they say... and I'm not keen on wasting either.
+C free Freja ┬╖ We know why we're here. Let's get to it.
+C free Freja ┬╖ N├Ñ, hvad er planen i dag?
+C free Freja ┬╖ Guess they'll hire anyone for a job these days...
+C free Freja ┬╖ Moving out
+C free Freja ┬╖ Let's get this done
+C free Freja ┬╖ Let's not keep them waiting
+C free Freja ┬╖ Set up here!
+C free Freja ┬╖ Circuit Royal ΓÇö Ugh, Maximilien's casino... You'd think with all that money, the bot could afford some taste.
+C free Freja ┬╖ Havana ΓÇö Funny. Emre always talked about retiring here.
+C free Freja ┬╖ Horizon Lunar Colony ΓÇö Doesn't get more remote than this. Huh, I wonder if I could afford a flat here...
+C free Freja ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö All it takes is a good angle.
+C free Freja ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö I always get my score.
+C free Freja ┬╖ Rialto ΓÇö The Venice Incident was the beginning of the end for Overwatch. A shame...
+C free Freja ┬╖ Route 66 ΓÇö Outlaw country, huh? Enough bounties out here for a girl to retire on.
+C free Freja ┬╖ Watchpoint: Gibraltar ΓÇö Ah, Gibraltar. It hasn't been long enough.
+C free Genji ┬╖ We will be the lightning that rides the storm.
+C free Hazard ┬╖ Aw, gotta work with these bootlickers?
+C free Hazard ┬╖ Maps with Stormy Weather ΓÇö Lookin' awful dreich out there.
+C free Juno ┬╖ We will kick up a dust storm!
+C free Juno ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Making a Basket in Spawn Room ΓÇö Do not worry! I am an expert at navigating dust storms.
+C free Mei ┬╖ Havana ΓÇö Weather report: a storm is rising!
+C free Sierra ┬╖ Powder Keg Mine ΓÇö eliminating Ashe, Emre or Freja ΓÇö Told you not to come 'round here again.
+C free D.mon ┬╖ Hero of my Storm (amused chuckle) I totally forgot Hana was in a movie.
+
+#### domina
+D free Resistance [L├║cio,Domina] Resistance Doesn't matter how many "accidents" you cover up. Rio won't stop fighting to keep Vishkar out of our home! Th
+D free Fighting Talon [Sojourn,Baptiste] Fighting Talon It feels like Talon has gone from covert ops to world domination overnight. They've done plenty of raids 
+D free Science on my side [Doomfist,Lifeweaver] Science on my side You are bold to stand against Vishkar on your own. I'm not alone. The scientific community is on my s
+D free Cutting Hands [Mercy,Lifeweaver] Cutting Hands Biolight has such potential for medicine and agriculture! Sadly, Vishkar agrees. They want their hands on 
+D free The Martinses [Soldier 76,Lifeweaver] The Martinses The Martinses put their necks on the line, protecting you from Vishkar. I only hope one day to return the 
+D free Trying Harder [Lifeweaver,Symmetra] Trying Harder Satya... I wanted to apologize. I should have tried harder to contact you. There is no need, Bua. Our sepa
+D free Returning to Vishkar [Lifeweaver,Symmetra] Returning to Vishkar Are you sure about returning to Vishkar, Satya? You could always stay at the arcology with me. I ma
+D free Dr. Bhatt [Symmetra,Lifeweaver] Dr. Bhatt I am still searching for information on Dr. Bhatt, Niran. Answers are not forthcoming. It's in Vishkar's best 
+D free Sum for arrest [Symmetra,Mauga] Sum for arrest Vishkar is offering a large sum for your arrest. And what, they sent *you* to intimidate me?
+D free Applying to Vishkar [Sojourn,Symmetra] Applying to Vishkar I saw Vishkar is opening an office in Toronto. Yes... are you interested in applying? **chuckle** I'
+D free Vigilantes [Symmetra,Soldier 76] Vigilantes Vigilantes have no place in the world we're building. And Vishkar has no place in mine.
+D free Leaving the Cage [Symmetra,Sombra] Leaving the Cage What more do you know about Lum├⌐riCo and Vishkar? Ooh... is the little birdie finally leaving her cage?
+D free Binaural Music [Symmetra,L├║cio] Binaural Music I've been listening to your new music. Why? Is Vishkar doing research on me or something? No. I am intrig
+D free Silhouette [Shion,Domina] Silhouette I admire your silhouette, Singhania. It's so... maverick, pairing those arms with that coat. Aww, thank you! 
+D free Bending the Knee [Shion,Domina] Bending the Knee What do you make your bootlickers call you? "Vishkar Queen, Ruler of All Hard Light"? **snickers** That
+D free Leaving Vishkar [L├║cio,Lifeweaver] Leaving Vishkar You did the right thing leaving Vishkar behind. The rest of those drones ought to take notes. Well, I'm 
+C free Domina ┬╖ Enough chatter. We have business to attend to.
+C free Domina ┬╖ Follow my lead, dears. The punishment for defiance is quite severe.
+C free Domina ┬╖ I'll accept nothing less than your best performance out there.
+C free Domina ┬╖ Let's tend to this quickly, shall we? Wasted time is not among the luxuries I can afford.
+C free Domina ┬╖ Look sharp. I will not keep improper company.
+C free Domina ┬╖ Work hard for me, dears. I'll be rewarding my favorites!
+C free Domina ┬╖ Do look lively, Vaswani. Two architechs on a battlefront are bound to make headlines.
+C free Domina ┬╖ Well, aren't we a competent collective?
+C free Domina ┬╖ Let's rile up the competition, shall we
+C free Domina ┬╖ Mind your posture, everyone!
+C free Domina ┬╖ If you wish to succeed, then look the part
+C free Domina ┬╖ Let's set up here
+C free Domina ┬╖ Circuit Royal ΓÇö Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a sham
+C free Domina ┬╖ Hollywood ΓÇö Certainly, I could star in a film. If there were ever a script worthy of me, of course.
+C free Domina ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Oh! And on my first attempt, no less.
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö The development opportunities are endless.
+C free Domina ┬╖ Horizon Lunar Colony ΓÇö Looking Through Telescope ΓÇö Well, it certainly has potential.
+C free Domina ┬╖ Para├¡so ΓÇö Ugh, much work left to do here. How fortunate that I'm industrious!
+C free Domina ┬╖ Para├¡so ΓÇö eliminating L├║cio ΓÇö They'll idolize anyone these days...
+C free Domina ┬╖ Para├¡so ΓÇö eliminating L├║cio ΓÇö The revolution, silenced!
+C free Domina ┬╖ Rialto ΓÇö environmental kill ΓÇö Go on, take a dip.
+C free Genji ┬╖ Junkertown ΓÇö I do not think cyborgs are welcome with open arms in Junkertown.
+C free Junkrat ┬╖ Anybody got a toothpick? Ugh. Got one of them mantis arms stuck between me molars.
+C free Lifeweaver ┬╖ All right, inventors. Let's put our contraptions into action!
+C free Lifeweaver ┬╖ Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wants me to s
+C free Reinhardt ┬╖ Busan ΓÇö Karaoke ΓÇö ΓÇö Sexy, sexy Reinhardt! Oh yes, here we go! Move your legs and move your arms. That is how we do the dance! (l
+C free Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+C free Symmetra ┬╖ A Vishkar architech always completes her task to perfection.
+C free Symmetra ┬╖ Busan ΓÇö Karaoke (Unused) ΓÇö Everything by my design. Drawing triangles, tracing lines. It's unwise to disrespect, such an efficien
+C free Symmetra ┬╖ Circuit Royal, Dorado, Hollywood or Midtown ΓÇö No city in the world can compare to Utopaea.
+C free Symmetra ┬╖ Para├¡so ΓÇö Vishkar's actions here were... disappointing. I still need answers for them.
+C free Symmetra ┬╖ Dorado ΓÇö This would be a perfect location for a Vishkar development.
+C free Symmetra ┬╖ Oasis ΓÇö The Vishkar Corporation would love to have a presence here.
+C free Torbj├╢rn ┬╖ I don't care what evil organization you're a part of. I want you on your best behavior for this mission.
+C free D.mon ┬╖ Stretch. Hydrate. Dominate. Specifically in that order.
+D free Coming to Rio [L├║cio,Orisa] Coming to Rio You should come to Rio, Orisa. I could use your help with those Vishkar goons. I do not know about this Vi
+D free People should be free [L├║cio,Symmetra] People should be free What you Vishkar will never understand is that people should be free! What you call freedom is an 
+D free Vishkar is using you [L├║cio,Symmetra] Vishkar is using you Vishkar's using you, just like they used my father. You just wait. You'll see. Your father was a Vi
+D free You believe that? [Symmetra,L├║cio] You believe that? Vishkar is building a better future for humanity. You believe that? I don't even know what to tell you
+D free What you stole [Symmetra,L├║cio] What you stole You should return what you stole from Vishkar. Stole? Psh! You need to go ask your bosses where it all ca
+D free Sonic Inventor [Mercy,L├║cio] Sonic Inventor L├║cio, I never realized your father was the one who invented Vishkar's sonic technology. The Core Tech wa
+D free Keeping the Peace [Pharah,Symmetra] Keeping the Peace Helix should keep the peace in Vishkar developments. We do not need an army to keep the peace. We pref
+D free Monument to my leadership [Vendetta,Domina] Monument to my leadership I commend you, Vaira. Your company's shielding has proven quite useful so far. Of course! Pair
+
+#### numbani
+D free VIP Passes [L├║cio,Orisa] VIP Passes Hey, Orisa! Did Hassana and Naade get those VIP passes I sent them? Somewhere amid their screaming, I believe
+D free Looking Sharp [L├║cio,Orisa] Looking Sharp Oh, looking sharp, Orisa! Efi get you some new tech? Yes. Defending Numbani has earned us the resources to
+D free Grown a lot [L├║cio,Orisa] Grown a lot You seem... different, Orisa. That may be. I have grown much since our first encounter. Hey, we're all growi
+D free New Single [L├║cio,Orisa] New Single Can you believe it?! L├║cio and Orisa... saving the world with Overwatch! It hardly feels real. I am honored t
+D free Just as Cute [Mei,Orisa] Just as Cute Have you gotten *bigger*, Orisa? My dimensions have not changed. Does the javelin make me look taller? A li
+D free Domineering Beast [Moira,Orisa] Domineering Beast So, sweet Idina has grown into a domineering beast. My name is Orisa. You would be wise to remember it
+D free Getting Strong [Reinhardt,Orisa] Getting Strong Orisa! I heard you took down Null Sector. You've gotten strong! Thank you. Do you truly believe so? Of co
+D free Cartoon Superhero [Orisa,Sojourn] Cartoon Superhero You were Efi's favorite character from the Overwatch cartoon. Ah... it made me look like a superhero. 
+D free Did you fail [Ramattra,Orisa] Did you fail So, you were the one leading the fight against my forces in Numbani. Yes. A fight you did not attend. Anoth
+D free Coward Run [Soldier 76,Orisa] Coward Run I heard you chased Doomfist out of Numbani. Making a coward run is no challenge. Hm, we could've used you in 
+D free Demonstration [Tracer,Orisa] Demonstration You're not exactly built for speed, Orisa. How do you catch someone who's running away? I will provide a d
+C USED ΓåÆ #115 Adawe Departs Ana ┬╖ Numbani ΓÇö These people moved past the Omnic Crisis so quickly. I envy that.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+C free Baptiste ┬╖ Numbani ΓÇö So this is where Doomfist is from. I hope he's not in town.
+C USED ΓåÆ #151 The Scourge of Numbani Doomfist ┬╖ Numbani ΓÇö If only you could see me now, Akinjide Adeyemi.
+C free Doomfist ┬╖ Numbani ΓÇö Just as sheep must have a shepherd, Numbani must have me.
+C free Echo ┬╖ Numbani ΓÇö Mistakenly a singular chatter line instead of a conversation with Orisa or another hero. ΓÇö You say they have advanced robot
+C free Genji ┬╖ Numbani ΓÇö Even here I feel an outcast.
+C USED ΓåÆ #145 City of Harmony Hanzo ┬╖ Numbani ΓÇö My wanderings brought me to this place. It was not to my liking.
+C free Hazard ┬╖ Aw, gotta work with these bootlickers?
+C free Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+C free Junkrat ┬╖ Numbani ΓÇö This place is the worst. Let's turn it into one big scrapheap.
+C free L├║cio ┬╖ Numbani ΓÇö Now this is my kinda city, everyone's free to live as they choose.
+C free Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+C free Mei ┬╖ Numbani, Oasis, ΓÇö Woo! I think I might be a little overdressed for this place.
+C free Mercy ┬╖ We must be very careful not to harm any civilians. Do not just assume I can heal them! Although I could, of course.
+C free Orisa ┬╖ Battle draws near. Ready yourselves.
+C free Orisa ┬╖ Find your strength. We are soon to need it.
+C free Orisa ┬╖ My heart is strong, and my javelin is sharp.
+C free Orisa ┬╖ Systems online, weapons ready.
+C free Orisa ┬╖ Whatever awaits us, I am prepared.
+C free Orisa ┬╖ Our enemies are strong, but we are stronger
+C free Orisa ┬╖ Mission underway. Work together
+C free Orisa ┬╖ Initiating combat. I will keep us safe
+C free Orisa ┬╖ Stand as one, and we shall not fail
+C free Orisa ┬╖ Take to the wilds!
+C free Orisa ┬╖ Adapt or fall!
+C free Orisa ┬╖ Set up here
+C free Orisa ┬╖ Antarctic Peninsula ΓÇö This is a far cry from my home...
+C free Orisa ┬╖ Ilios, Lijiang Tower, Nepal or Samoa ΓÇö Scoring a Basket in Spawn Room ΓÇö Saving highlight.
+C free Orisa ┬╖ Junkertown and New Junk City ΓÇö It is time someone cleaned up this lawless wasteland.
+C free Orisa ┬╖ Junkertown and New Junk City ΓÇö These Junkers do not care for "bots". (chuckle) The sentiment is mutual.
+C free Orisa ┬╖ Numbani ΓÇö Efi was right. The Junies have taken great care of our home!
+C USED ΓåÆ #151 The Scourge of Numbani Orisa ┬╖ Numbani ΓÇö Many have tried to destroy this city. But Numbani will always hold strong.
+C USED ΓåÆ #145 City of Harmony Orisa ┬╖ Numbani ΓÇö Mo w├á n├¡ il├⌐. (Yoruba) I am home.
+C free Orisa ┬╖ Numbani ΓÇö final blow ΓÇö You are not welcome in my domain.
+C free Orisa ┬╖ Numbani ΓÇö eliminating Ramattra ΓÇö You will never take our city!
+C free Orisa ┬╖ Para├¡so ΓÇö So this is where L├║cio grew up.
+C USED ΓåÆ #60 Playing God Orisa ┬╖ Temple of Anubis and Throne of Anubis ΓÇö If Anubis were ever to rise again... I hope I would remember who I am.
+C free Orisa ┬╖ Watchpoint: Gibraltar ΓÇö I am proud to be here.
+C free Orisa ┬╖ Numbani ΓÇö Before Efi rebuilt me, I was defeated here by Doomfist. I must learn from the memory.
+C free Orisa ┬╖ Numbani ΓÇö I will protect this city, whatever the cost.
+C free Orisa ┬╖ Horizon Lunar Colony ΓÇö I wish Efi could be here. Perhaps someday.
+C free Orisa ┬╖ Horizon Lunar Colony ΓÇö Recording - Efi will want to see this.
+C free Torbj├╢rn ┬╖ Numbani ΓÇö Now this is a city that understands engineering. And Efi Oladele, whew! A future Ironclad, no doubt.
+C free Torbj├╢rn ┬╖ Numbani ΓÇö No No No! N-O, NO!
+C USED ΓåÆ #302 The Museum Assault Winston ┬╖ Numbani ΓÇö Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?
+C free Winston ┬╖ Numbani ΓÇö IΓÇÖve had some bad museum experiences in the past.
+C free Zarya ┬╖ All right, omnics. Let's get it done.
+C free Zarya ┬╖ Numbani ΓÇö The humans who live here are fools to trust the omnics. They will see.
+C free Zenyatta ┬╖ Numbani ΓÇö How wonderful! A place where omnic and human live as equals.
+D free Ask Efi [L├║cio,Orisa] Ask Efi Orisa, you are amazing! Could you ask Efi if she could help me out with my helmet sometime? I am sure she would 
+D free Coming to Rio [L├║cio,Orisa] Coming to Rio You should come to Rio, Orisa. I could use your help with those Vishkar goons. I do not know about this Vi
+D free Growing Stronger [Genji,Orisa] Growing Stronger Orisa, you grow stronger each time I see you. My artificial intelligence makes it possible to learn fro
+D free Adorable [Mei,Orisa] Adorable Orisa, you are adorable! I will pass your feedback onto Efi, I believe that she will be pleased!
+D free Outside the law [Orisa,Tracer] Outside the law Tracer, is it wrong for us to operate outside the law? That's a difficult question, Orisa. I think there
+
+#### throne
+D free Bending the Knee [Shion,Domina] Bending the Knee What do you make your bootlickers call you? "Vishkar Queen, Ruler of All Hard Light"? **snickers** That
+C USED ΓåÆ #113 The Temple of Anubis Echo ┬╖ Throne of Anubis ΓÇö Anubis is an interesting case... to think a single program could have such a profound effect on the world.
+C free Junker Queen ┬╖ Are you lot ready for some bloodshed?
+C free Junker Queen ┬╖ Before we go out there, I gotta' warn ya: I'm gonna yell at ya... a lot. Not because I don't like ya, or because I care, or a
+C free Junker Queen ┬╖ Is this one a scrap or a heist? I wasn't listening. Heh, heh.
+C free Junker Queen ┬╖ So, here the plan. Do what I do, listen to what I say. And don't screw this up!
+C free Junker Queen ┬╖ The knife's called Gracie, the axe is Carnage... and me? Ha ha, I'm your Queen.
+C free Junker Queen ┬╖ Think you can keep up?
+C free Junker Queen ┬╖ Alright, ladies. Let's teach these boys a lesson! (laugh)
+C free Junker Queen ┬╖ Three bots, huh? You sure you even need any humans?
+C free Junker Queen ┬╖ Ugh, both brothers on the same team? Better make up before I smash your heads together.
+C free Junker Queen ┬╖ Behave yourself, Fawkes. I can still have you executed.
+C free Junker Queen ┬╖ Doctor, have I really got to eat vegetables? It's like CRUNCH, CRUNCH, CRUNCH, how long have I got to chew these?!
+C free Junker Queen ┬╖ Let's see. We've got a bot, an angel, and the stupidest man alive. Does that put us ahead or behind?
+C free Junker Queen ┬╖ Got any room in that mech, Champ? I wanna take some souvenirs.
+C USED ΓåÆ #126 Outcasted Junker Queen ┬╖ Today, you're honorary wastelanders
+C free Junker Queen ┬╖ Let's go smash some heads
+C free Junker Queen ┬╖ Everybody holds, nobody runs
+C free Junker Queen ┬╖ Get it done. Or else
+C free Junker Queen ┬╖ Finally, some action!
+C free Junker Queen ┬╖ Get out of my way
+C free Junker Queen ┬╖ Time for some punishing!
+C free Junker Queen ┬╖ Let's break out the guillotine!
+C free Junker Queen ┬╖ Set up here
+C free Junker Queen ┬╖ We need defenses here
+C free Junker Queen ┬╖ This MEKA lot would never survive the Reckoning. They haven't even got rust on their ridges!
+C free Junker Queen ┬╖ What are we waiting around for? I wanna step on someone' head!
+C free Junker Queen ┬╖ Busan ΓÇö Wish one of those Gwishin would attack. I don't need a mech to fight them.
+C free Junker Queen ┬╖ Karaoke ΓÇö A guitar isn't the only thing I shred. You're lucky I don't rip off your head!
+C free Junker Queen ┬╖ Karaoke ΓÇö The Legend of the Junker Queen Ah, drat. I forgot the words again! Err... Time for the reckoning!
+C free Junker Queen ┬╖ Colosseo ΓÇö I don't see what's so fancy about Rome. Hardly any scrap heaps at all.
+C free Junker Queen ┬╖ Esperan├ºa ΓÇö Portugal? Why on Earth are we in Portugal?
+C free Junker Queen ┬╖ Horizon Lunar Colony ΓÇö My entire realm in plain view.
+C free Junker Queen ┬╖ Junkertown or New Junk City ΓÇö Ahh... How I've missed the smell of our plutonium springs.
+C free Junker Queen ┬╖ Respawn ΓÇö after respawning ΓÇö This city's mine, and it's staying mine.
+C free Junker Queen ┬╖ New Junk City ΓÇö Better find my subjects up to no good. They always get soft when I'm not around.
+C free Junker Queen ┬╖ New Junk City ΓÇö Yeah-e-eah, this is MY city! Don't you dare put a scratch on it!
+C free Junker Queen ┬╖ Junkertown ΓÇö Come on in, mind your head! If you wanna keep it.
+C free Junker Queen ┬╖ Junkertown ΓÇö Welcome to Junkertown!
+C free Junker Queen ┬╖ Junkertown ΓÇö Welcome to Junkertown! Home of the Queen!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Ana, Mercy, Tracer, or Sojourn is pushing the payload ΓÇö Well, look who's entering my domain! Hmm... what's
+C free Junker Queen ┬╖ Junkertown ΓÇö while Junkrat is pushing the payload ΓÇö Is that Junkrat at the gate again? Bloody hell!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Junkrat is pushing the payload ΓÇö Junkrat? How many times do I have to exile ya!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Junkrat is pushing the payload ΓÇö You're either braver or dumber than you look to come back here, Junkrat.
+C free Junker Queen ┬╖ Junkertown ΓÇö while L├║cio is pushing the payload ΓÇö Hey you, pop star! No skating on me walls. I'm watching you.
+C free Junker Queen ┬╖ Junkertown ΓÇö while Roadhog is pushing the payload ΓÇö Aww, why'd ya come back, Mako, I gotta kill ya or I'm gonna look soft! Uh
+C free Junker Queen ┬╖ Junkertown ΓÇö while Roadhog is pushing the payload ΓÇö You can come in this time, Mako. But Junkrat had better not be with ya!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Winston is pushing the payload ΓÇö Is that a gorilla? With a lightning gun? In my city? Fantastic!
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload ΓÇö Glad you're back, Champ. Me throne leg needs fixin', it's gone all 
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload alongside Junkrat and Roadhog ΓÇö Champ, you know better than to hang a
+C free Junker Queen ┬╖ Junkertown ΓÇö while Wrecking Ball is pushing the payload alongside Junkrat and Roadhog ΓÇö Hammond! I told you to murder Junkrat
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Are you gonna let them deliver that payload? Come on!
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Ooh! This is gonna be a good one! Scumbo, bring me my match snacks!
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Oi! Junkers! They're at the gates of the Scrapyard! Let's see if they've got what it takes!
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö Welcome to the Scrapyard! Where there's only one Champ, and plenty of chumps.
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö We gonna see some blood down there today or what?
+C free Junker Queen ┬╖ As an NPC ΓÇö Checkpoint 2 ΓÇö while Wrecking Ball is pushing the payload ΓÇö Wrecking Ball is back to defend his title! And he bet
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö C'mon, finish this! Me cheese bucket's almost empty!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö Get over here, Six-Eyed Ted, you gotta see this!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö Knock 'em down! Kick 'em in theΓÇö Urgh, spilled me backup jug...!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö Push 'em back! Hit 'em with a brick!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö Why am I not seeing more bloodshed?!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö You call that a defense? Set fire to something!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö while the payload is stopped ΓÇö You lot are slower than a dying doublecow!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö after the match concludes ΓÇö Your new champions!
+C free Junker Queen ┬╖ As an NPC ΓÇö Approaching Final Checkpoint ΓÇö after the match concludes ΓÇö Now where'd that doublecow get to?
+C free Junkrat ┬╖ Junkertown ΓÇö One last time: we take this innocent pile of ill-gotten treasure to the scrapyard, reveal it to the queen, then boom!
+C free Mei ┬╖ It's so hot. Ah, I forgot my summer clothes again!
+C free Orisa ┬╖ Junkertown and New Junk City ΓÇö It is time someone cleaned up this lawless wasteland.
+C USED ΓåÆ #60 Playing God Orisa ┬╖ Temple of Anubis and Throne of Anubis ΓÇö If Anubis were ever to rise again... I hope I would remember who I am.
+C USED ΓåÆ #113 The Temple of Anubis Ramattra ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Just as Anubis opened the gates of death, I will exhaust myself to keep them shut.
+C free Roadhog ┬╖ Ilios or Oasis or Nepal ΓÇö to Junkrat ΓÇö Pretty sure they're still mad about those jewels we stole. (sigh) I miss that crown.
+C free Sojourn ┬╖ Now I know we've got some selfish individuals on this team, but we're not winning this thing alone.
+C free Symmetra ┬╖ Unpredictable allies are still allies... barely.
+C free Torbj├╢rn ┬╖ Throne of Anubis ΓÇö Helix is playing with fire, keeping that program alive. We already know what it's capable of!
+C free Tracer ┬╖ Throne of Anubis ΓÇö Can't believe Anubis is just... here. After all the pain it caused.
+C USED ΓåÆ #201 Intrepit Adventurers Venture ┬╖ Eichenwalde, Runasapi, or Temple of Anubis ΓÇö Ilios and Throne of Anubis are mistakenly not included and await a fix. ΓÇö The world l
+C free Venture ┬╖ Colosseo ΓÇö eliminated by Junker Queen using Jagged Blade ΓÇö Jeez! Now I know how Caesar felt.
+C free Venture ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Egyptology? My favorite!
+C free Venture ┬╖ Temple of Anubis or Throne of Anubis ΓÇö Just look at the array of pristine late kingdom hieroglyphics here... Ooh! I think this one
+C free Venture ┬╖ Temple of Anubis or Throne of Anubis ΓÇö final blow ΓÇö Hope your heart's not heavy!
+C USED ΓåÆ #113 The Temple of Anubis Venture ┬╖ Throne of Anubis ΓÇö The AI that caused the Crisis is quarantined in this temple! So, uh... let's be careful, huh?
+C free Zarya ┬╖ I thought this was a military operation. Oh, well...
+C free Zarya ┬╖ Now this is a strong team.
+D free Crown Jewels [Junkrat,Roadhog] Crown Jewels **sighs** Remember that time we stole the crown jewels? All hail King Jamison Fawkes the First! And, um... 
+
+#### named dialogues
+=== Fight for All Omnics free ===
+  Ramattra: So, you work with Maximilien. I am amazed even a human can tolerate him.
+  Freja: And here, I thought you fought for *all* omnics...
+  Ramattra: He cares nothing for our people and lives only to enrich himself. I suppose you have that in common.
+=== Wasted Time free ===
+  Ramattra: My brother wasted too much of his life teaching you.
+  Genji: I agree.
+  Ramattra: *Really?*
+  Genji: Yes. And like you, I was undeserving of his patience.
+=== Where Max lives USED ΓåÆ #165 Pocket King ===
+  Sigma: Hm... why does this place feel familiar?
+  Sombra: We've been here, viejito. This is where Max lives.
+  Sigma: Ah, yes, Maximilien! His collection of Greek sculptures is quite charming.
+=== Being in Charge free ===
+  Junker Queen: Ain't easy, is it? Being in charge of killers and madmen.
+  Doomfist: No. But I welcome the challenge.
+  Junker Queen: We got a lot in common. Shame I'm gonna kill ya someday.
+  Doomfist: **chuckle** Indeed.
+=== Show some respect free ===
+  Junker Queen: This is my turf! You lot better show some respect.
+  Hazard: **disrespectful grunt**
+  Junker Queen: You got grubs in your ears? Bow down.
+  Hazard: Leave it, "Highness," or I'll show you some uncivil disobedience.
+=== Special Order free ===
+  Ashe: They make 'em all as big as you where you come from?
+  Junker Queen: Nah. I was a special order.
+=== In a Dream USED ΓåÆ #161 Survivor ===
+  Junker Queen: I fought a bunch of you Bastions once. You all had wheels and big sharp teeth.
+  Bastion: **confused beeping**
+  Junker Queen: On second thought, that might have been a dream I had...
+  Bastion: **understanding beeping**
+=== Bending the Knee free ===
+  Shion: What do you make your bootlickers call you? "Vishkar Queen, Ruler of All Hard Light"?
+  Domina: **snickers** That would be "Vice President of Development and Operations". I'm not royalty.
+  Shion: Really? Even I'd consider bending the knee, for you.
+  Domina: Well... I suppose I *would* look dazzling in a crown.
+=== Silhouette free ===
+  Shion: I admire your silhouette, Singhania. It's so... maverick, pairing those arms with that coat.
+  Domina: Aww, thank you! It's truly humbling to earn the adulations of such a... fashion provocateur.
+=== Happy to Kill USED ΓåÆ #162 Risen in Blood ===
+  Ana: I don't know why you're so happy to kill. I've never enjoyed it, even for the worst people.
+  Shion: Oh, always with the guilt and the regret. Don't you humans know how to have any fun?
+  Ana: How could we, with the likes of you around?
+=== Hashimoto Bounties free ===
+  Kiriko: I have some bounties you might want. Five of them, actually.
+  Freja: **chuckle** I'm good at what I do, kid, but even I'm not going to mess with the Hashimoto.
+  Kiriko: All right... Then how are you with rescue missions?
+  Freja: Ah. If you've got the money, let's talk.
+=== Outside Hire free ===
+  Widowmaker: Ah, if it isn't Maximilien's new pet.
+  Freja: What? Jealous he went with an outside hire for once?
+  Widowmaker: **laughs** Not at all. He only bothers me with important matters.
+=== On the Wrong Path free ===
+  Mercy: You are on the wrong path, Freja.
+  Freja: If you say so, Doctor.
+  Mercy: You used to help people! What you're doing now, it's...
+  Freja: ItΓÇÖs enough for me. ThatΓÇÖs all there is to it.
+=== Looking Back free ===
+  Mercy: Freja... You should know you are not the only one who looks back on Overwatch with regret.
+  Freja: If I can help it, I don't look back at all.
+=== Prize Hunter free ===
+  Vendetta: I see Maximilien's prized hunter is still watching over her quarry.
+  Freja: It looks that way.
+  Vendetta: Then I'll take your continued presence here as a sign of allegiance.
+  Emre: We're a package deal, V. If you want me, you put your trust in her.
+  Freja: Keep paying my price, and it's a sign of whatever you'd like.
+node : (node:36296) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-02c6bfdb-5b3d-454e-8236-d53988ffa66a.ps1:92 char:1
++ node scripts/_cache/scout-page18-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:36296) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

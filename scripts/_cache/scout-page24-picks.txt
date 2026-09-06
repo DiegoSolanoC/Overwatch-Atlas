@@ -1,0 +1,249 @@
+﻿==== NAMED ====
+
+=== Where Max lives [USED ΓåÆ #165 Pocket King] ===
+  Sigma: Hm... why does this place feel familiar?
+  Sombra: We've been here, viejito. This is where Max lives.
+  Sigma: Ah, yes, Maximilien! His collection of Greek sculptures is quite charming.
+
+=== Outside Hire [free] ===
+  Widowmaker: Ah, if it isn't Maximilien's new pet.
+  Freja: What? Jealous he went with an outside hire for once?
+  Widowmaker: **laughs** Not at all. He only bothers me with important matters.
+
+=== Calling the Shots [free] ===
+  Ramattra: You call my people "bots", yet you now take orders from one.
+  Freja: Max isn't my boss. I call the shots as much as he does.
+  Ramattra: Your self-importance is irksome, but impressively, your denial may be worse.
+
+=== Fight for All Omnics [USED ΓåÆ #194 Uneasy Alliance] ===
+  Ramattra: So, you work with Maximilien. I am amazed even a human can tolerate him.
+  Freja: And here, I thought you fought for *all* omnics...
+  Ramattra: He cares nothing for our people and lives only to enrich himself. I suppose you have that in common.
+
+=== Disappointing [free] ===
+  Doomfist: You disappoint me, Ramattra. A tactician such as yourself should know the consequences of breaking alliances.
+  Ramattra: And a mastermind such as you must know to always anticipate betrayal.
+
+=== Why Withdraw [free] ===
+  Sojourn: Null Sector has a foothold in so many cities... why withdraw your forces now?
+  Ramattra: Would you have preferred I destroy humanity?
+  Sojourn: The way you're consolidating your forces? I think you're still planning on it.
+  Ramattra: I seek *liberation,* not devastation. I leave such senseless conflict to your kind.
+
+=== Always my brother [free] ===
+  Ramattra: Though we could not reach an accord here, Zenyatta, it still meant a great deal to see you again.
+  Zenyatta: Our roads may lead us apart, Ramattra, but you will always be my brother.
+
+=== The Name Null Sector [USED ΓåÆ #171 Omnic Liberation] ===
+  Echo: Why did you choose the name "Null Sector"?
+  Ramattra: Because we defy the numbers humans gave us. We are zeroes, undefined.
+  Echo: Is that not its own struggle?
+  Ramattra: Of course, I expect you know that better than anyone.
+
+=== Los Muertos [USED ΓåÆ #196 Hacking Spree] ===
+  Ashe: You still have any contacts with Los Muertos?
+  Sombra: I might. What's in it for me?
+  Ashe: I'd offer you money, but I don't think that's what you're after.
+  Sombra: No. So... any good stories about the cowboy?
+
+=== Trust Sombra [free] ===
+  Widowmaker: I don't understand how you can trust Sombra.
+  Reaper: I don't. But Sombra has her uses, and I know what she's been up to.
+
+=== Phreak Firewalls [USED ΓåÆ #223 Fighting the System] ===
+  Hazard: Best quit poking around my files, lass. You cannae out-hack Phreak firewalls.
+  Sombra: Hard to call it "hacking" when the password is your dog's birthday.
+
+=== Leaving the Cage [free] ===
+  Symmetra: What more do you know about Lum├⌐riCo and Vishkar?
+  Sombra: Ooh... is the little birdie finally leaving her cage?
+  Symmetra: Do not jump to conclusions.
+
+=== Korrea's Strongest [free] ===
+  Doomfist: How does one so young become Korea's strongest warrior?
+  D.va: I'm the best. That's all you need to know.
+  Doomfist: **laughter** Confidence! Let's hope it's not unfounded.
+
+=== Chronal adjustments [USED ΓåÆ #206 Chronal Dissociation] ===
+  Winston: Need any adjustments to your chronal accelerator?
+  Tracer: I thinkΓÇö **mimics radio static** **giggles** Just kidding, Winston! It works great.
+
+=== Fighting for Vendetta [free] ===
+  Baptiste: Why are you staying with Talon? Fighting for Vendetta is crazy, even for you.
+  Mauga: Aw, gimme some more credit. You know I only stick around when I'm getting something out of it.
+  Baptiste: **sigh** That's exactly what I'm worried about.
+
+=== Working with Vendetta [free] ===
+  Freja: Feels worse than I thought it would, working with Vendetta...
+  Emre: Hold on. We can't both be haunted by our consciences now.
+  Freja: **laughs** You think you can stop me feeling guilty better than I can?
+  Emre: Of course not. But at least I can make you laugh.
+
+=== Who is we [free] ===
+  Reaper: We need to be careful. If Vendetta finds us, we're dead.
+  Sombra: Uh, who's 'we'? You're the one who killed her old man.
+  Reaper: If I go down, I'm taking you with me.
+
+=== Taking Action [free] ===
+  Sombra: Not like I didn't warn the boss, but... hard to believe Vendetta's already starting a war.
+  Widowmaker: She may be extreme, but I cannot fault her for knowing where she stands.
+  Sombra: Are you kidding me? She blew up Overwatch.
+  Widowmaker: She took action. That is more than Doomfist can claim.
+
+=== Make it Count [free] ===
+  Reaper: What are we waiting for? The more time we waste, the harder it'll be to put Vendetta down.
+  Doomfist: I will not approach this fight in overconfidence. We will have one chance, and we will make it count.
+
+=== Negotiator [free] ===
+  Domina: You're quite a skilled negotiator, Marzia. I'm impressed.
+  Vendetta: It takes more than a strong sword arm to succeed in the Colosseo.
+  Domina: Of course. Still rather rugged, though, aren't you?
+  Vendetta: That, I should hope, is readily apparent.
+
+=== Madam Wolf [USED ΓåÆ #224 La Lupa] ===
+  Junkrat: If the pot was sweet enough... I might be willing to serve you, madam wolf.
+  Vendetta: I have no use for the allegiance of one so willing to betray his leaders.
+  Junkrat: Who said anything about betrayal? I was only talking about teams. Mercenaries!
+
+=== Show some respect [free] ===
+  Junker Queen: This is my turf! You lot better show some respect.
+  Hazard: **disrespectful grunt**
+  Junker Queen: You got grubs in your ears? Bow down.
+  Hazard: Leave it, "Highness," or I'll show you some uncivil disobedience.
+
+=== Paws off [free] ===
+  Wrecking Ball: The hamster would like to examine the fuel for your weapons.
+  Hazard: Paws off, you cheeky-teethed junker!
+  Wrecking Ball: Next time, he will steal first and ask never.
+
+=== Hope for more [free] ===
+  Hazard: Heard you got into another scrap with the Hashimoto. The Y┼ìkai doin' alright?
+  Kiriko: We'll survive. We always do.
+  Hazard: Have to hope for more than that, though, aye?
+  Kiriko: Why do you think we keep fighting?
+
+==== NAME SEARCH ====
+ free Fighting for Vendetta
+ free Working with Vendetta
+ USED ΓåÆ #130 Rebuilding the Past Circuit Maximus
+ free Enjoying Prison
+ free Winston!, Venture!
+ USED ΓåÆ #112 Kept in Chains Rate the Prison
+ free Jack Morrison
+OW1 free Trust Sombra
+ free Missing Genji
+
+#### disappear
+D free  My Father's Opinion
+D USED ΓåÆ #152 The Red Promise  Western Movies
+D free  Spoil the Surprise
+D free  Lidnholm Spark
+D USED ΓåÆ #212 Stolen Future  Sorry for your Father
+D free  No Tyrant
+C free Ana ┬╖ Let's use our superior range against them.
+C free Ashe ┬╖ Look at all these good Samaritans. What are we doin' here, Bob?
+C free Ashe ┬╖ Aw, hell. The law's here.
+C free Cassidy ┬╖ Nepal, Runasapi or Shambali Monastery ΓÇö Ain't no prairie, but these mountains sure got a nice view.
+
+#### storm
+D free  Prize Hunter
+D free  War machine
+D USED ΓåÆ #194 Uneasy Alliance  Fight for All Omnics
+D free  Outside Hire
+D USED ΓåÆ #130 Rebuilding the Past  Circuit Maximus
+D USED ΓåÆ #165 Pocket King  Where Max lives
+C free Ana ┬╖ Havana, Ilios or Para├¡so ΓÇö Samoa is mistakenly excluded ΓÇö I hate to work on vacation...
+C free D.va ┬╖ Havana, Ilios or Para├¡so ΓÇö on a beach map. Samoa is mistakenly not included and awaits a fix. ΓÇö Let's sneak in a trip to th
+C free Echo ┬╖ Systems calibrated for maximum cooperative behavior.
+C free Emre ┬╖ | Havana ΓÇö You know, I always wanted to retire here.
+
+#### doomed
+D free  Masked Vigilante
+D free  Bastion on our side
+D free  Boss Changes
+D free  How can you live with yourself
+D free  Talon's Resources
+D free  Coward Run
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Baptiste ┬╖ I don't have much experience healing omnics... Eh, I'll figure it out!
+C free Baptiste ┬╖ Numbani ΓÇö So this is where Doomfist is from. I hope he's not in town.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+
+#### conspiracy
+D free  Slow Phone
+D free  Gabrielito
+D USED ΓåÆ #196 Hacking Spree  Los Muertos
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Doomfist ┬╖ You know our plans. If humanity is to survive, we must not fail.
+C free Hanzo ┬╖ Dorado ΓÇö Multi-kill ΓÇö My enemies fall like ... heh heh heh, destroyed pi├▒atas!
+C free Junkrat ┬╖ Dorado ΓÇö Hey, me old tunnel! Might be time to make another withdrawal.
+C free Junkrat ┬╖ Dorado ΓÇö Party time! Need some fireworks?
+C free Reaper ┬╖ Dorado ΓÇö Where's Sombra when you need her?
+
+#### fist
+D free  What part of Canada
+D free  Spiffing Up
+D free  Inefficient
+C free Ana ┬╖ I know you're determined to dive right in, but try to stay in my line of sight.
+C free Winston ┬╖ Talon? How dare you show your faces!... Though, perhaps we should finish the mission before we get into that.
+C USED ΓåÆ #302 The Museum Assault Winston ┬╖ Numbani ΓÇö Ever feel like youΓÇÖre just security for DoomfistΓÇÖs gauntlet?
+C free Zarya ┬╖ Now this is a strong team.
+
+#### interrog
+D free  Money before Loyalty
+D free  Stressful Situations
+D free  Don't need Saving
+D free  Bad Robots
+D free  Enjoying Prison
+D free  Not Chasing
+C free Junkrat ┬╖ Junkertown ΓÇö ItΓÇÖs not the Chancellor, but the price is right.
+
+#### business
+D free  Favorite Animals
+D USED ΓåÆ #6 Medical Miracles  Family Business
+D USED ΓåÆ #177 Storm Chaser  None of┬á your Business
+D free  Fighting for Vendetta
+D free  Working with Vendetta
+D free  Threat to myself and others
+C free Brigitte ┬╖ Swords, arrows... a hammer and flail? We're practically a Renaissance faire!
+C free Cassidy ┬╖ Always felt a little out of place in Overwatch (group), but I'm still not sure I belong with y'all.
+C free Domina ┬╖ Enough chatter. We have business to attend to.
+C free Domina ┬╖ Well, aren't we a competent collective?
+
+#### collateral
+D USED ΓåÆ #223 Fighting the System  New Chassis
+D USED ΓåÆ #223 Fighting the System  Phreak Firewalls
+D free  Lack of Oxygen
+C USED ΓåÆ #133 Outlaws Ashe ┬╖ This is a hardy bunch of outlaws. Just need somethin' to steal.
+C free Hazard ┬╖ Aim for your best out there, pals!
+C free Hazard ┬╖ Check out these new 'gradies. Phreaks's work. Outdid herself again!
+C free Hazard ┬╖ Enough standin' around!
+C free Hazard ┬╖ It's looking like a revolution.
+C free Hazard ┬╖ Let's gaun then!
+C free Hazard ┬╖ Let's kick things off already!
+
+#### zurich
+D USED ΓåÆ #39 Lost to the past  Painful Memories
+D free  Complicated
+D free  More Wires than Skin
+D free  Giving up on you
+D USED ΓåÆ #224 La Lupa  Dramatic
+D free  Funeral Arrangements
+C free Brigitte ┬╖ Route 66 ΓÇö That bridge collapsed from a little explosion? Seems like bad engineering to me.
+C USED ΓåÆ #211 Questioning Cassidy ┬╖ Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.
+C free Junkrat ┬╖ Now, I know I ain't got many mates among this group, but I hope we can look past our differences and proceed forward, wi
+C free Soldier 76 ┬╖ Busan ΓÇö Karaoke ΓÇö What's my name? Jack Morrison. Now, it's Soldier: 76. Yeah.
+node : (node:18772) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/diego/OneDrive/Escritorio/P
+rojects/Overwatch-Atlas/src/features/dialogue-theater/data/dialogueTheaterEntryType.js is not specified and it doesn't 
+parse as CommonJS.
+At C:\Users\diego\AppData\Local\Temp\ps-script-4a372631-e503-4b34-83b4-a0a7e885f501.ps1:92 char:1
++ node scripts/_cache/scout-page24-picks.mjs 2>&1 | Out-File -Encoding  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:18772) [M...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to 
+C:\Users\diego\OneDrive\Escritorio\Projects\Overwatch-Atlas\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

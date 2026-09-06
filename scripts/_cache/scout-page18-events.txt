@@ -1,0 +1,131 @@
+﻿Used commentary: 144
+
+=== PAGE 18 (#171ΓÇô180) ===
+
+======================================================================
+#171 Omnic Liberation
+year 2065 2068 | The Golden Age | London, United Kingdom
+DESC:
+While the Shambali faith aided hundreds of Omnics to find peace with themselves and the world, the threat of Omnic injustice still lingered, even way after the rulings in favor of personhood. Ramattra had found himself among the many monks who followed Tekhartha Mondatta's teachings, but he failed to see any progress in their vision. While the Shambali urged him to be patient, he could not stand the injustices that his people endured all around the world, without anyone taking action, and so on day, he decided to leave the temple, saying his farewells to his master, Mondatta and his closest friend, Zenyatta.
+
+Ramattra wondered around the world and saw the horrors the Omnics lived through, not just discrimination and segregation, but many kidnapped and dismantled for parts, and those who lived relatively normal lives were forced into squalid conditions by ignorant humans who insisted they did not need sanitary measures, heat or water. In time, the brutal truth started to hit many Omnics. They were a one-generation species. Once they die, no more can be made. Their already limiting numbers were going down by resentful humans who could never understand what their lives were like, and so underground movements of angered Omnics began to appear. During his time in Europe, Ramattra would liberate many Omnics from forced servitude and begin to amass a following. While initially peaceful, this group stood in stark contrast to Mondatta's approach to coexistance; they were far more pro-active and resentful of humanity. This group would be known as Null Sector, a movement of Omnics that defy the numbers humans gave them, all zeroes, undefined.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"A radical Omnic movement begins to appear in Europe"}
+  [hero] {"country":"Ramattra","why":"Founder of Null Sector"}
+  [faction] {"country":"Null Sector","why":"Radical Pro Omnic Movement"}
+  [npc] {"country":"Nameless, Zera, Lanet,","why":"Members of Null Sector"}
+
+======================================================================
+#172 Deep Rising
+year 2060 2068 | The Golden Age | Gwishin Omnium, East China Sea
+EXISTING commentary: Doomfist ┬╖ Busan ΓÇö Each Gwishin attack strengthens the defenders, as a furnace hardens steel.
+DESC:
+Not long after the Gwishin attack, Overwatch received another emergency call from Busan. The Colossus had reappeared, larger than before and upgraded with new abilities. Overwatch dispatched all available agents, but even then, the tactics they used the previous time were no longer effective against it, and the team continued to struggle in maritime battles, so as the giant approached the coastline they were forced to evacuate the city. Fortunately, at the time, the strike team had grown rapidly, and new agents like Fusionator and Soundquake played a big role in defeating the Gwishin. The new agents had not faced the Gwishin before, yet their unique abilities proved effective when everything else failed. They were able to distract the colossus long enough for the rest of the team to take it down.
+
+Mina Liao would be joined by Dr. Yi-am Lim, a robotics engineer from the Korean military. They both analyzed the footage and concluded the warbot was an upgraded version of that of the previous attack, but everyone wondered how that would be possible. It would require an entire team of the best engineers to get this machine running again after years, yet the timeline did not add up. Artificial Intelligence must have been involved in the accelerated development, and everyone began fearing the worst. Liao's research team was dispatched to the Temple of Anubis, to determine if the rouge AI had managed to escape containment, but they found no breaching happened. The researchers were astounded by trying to look for a source, when the third attack happened.
+
+The colossus reemerged from the water, evolved yet again with a design that directly countered Soundquake's technology. Thanks to Dr Lim and yet another new agent, Rumble, the team was able to identify weak points and defeat the machine quicker, and with a smaller force this time. The swift response allowed Lim's team to retrieve the wreckage before the warbot dived back into the water. Thanks to this, they discovered the Gwishin had not been built in any known Omnium. Overwatch scouted the local sea floor and found a series of small drones lurking in the depths, attacking the diving team and forcing them to retreat. The only logical conclusion Liao could reach was that somewhere in the depths of the East China Sea, there was a secret Omnium, likely built by Anubis, and possibly it was not the only one. In spite of their combined efforts and Lim's wishes, Korea chose to remain independent in this battle, and Overwatch left after sharing their findings, despite Liao's frustration with the government choosing politics over allowing Overwatch to protect their people.
+  [place] {"loc":"Gwishin Omnium, East China Sea","country":"China","why":"Secret Omnium Discovered"}
+  [place] {"loc":"Busan, South Korea","country":"South Korea,","why":"Gwishin remerges and attacks Busan multiple times"}
+  [faction] {"country":"Overwatch,","why":"Aids Korea in stopping and researching the Gwishin"}
+  [faction] {"country":"M.E.K.A Squad,","why":"Future defense program"}
+  [faction] {"country":"The Gwishin,","why":"Reappears upgraded to counter Overwatch's strategy"}
+  [npc] {"country":"Anubis,","why":"Allegedly made secret Omniums at the bottom of the sea"}
+
+======================================================================
+#173 Harnessing te Harness
+year 2053 2068 | The Golden Age | Interstellar Journey Space Station
+DESC:
+Doctor De Kuiper had dedicated decades of his life to the study of gravitational forces and how to harness their power. His research had reshaped the world with flying cars and connecting the entire planet with a transcontinental train, and yet, he continues to seek more. Years of research in The Hague led him to believe it would soon be possible to harness the power of a black hole. In order to test his theory, he would perform an experiment within the Interstellar Journey Space Station. Then everything went wrong.
+
+Something failed during the experiment, triggering the formation of a black hole for a brief, yet fatal moment. Siebren found himself right in the gravitational field of the experiment as the black hole appeared, and during this period of time he was exposed to its raw power. De Kuiper survived, both a miracle and a curse, as he now had to pay for the consequences of his hubris. The area nearing Dr. Siebren began to experience strange fluctuations in gravity, relative to his reactions to what was happening around him. To make matters worse, the experience left Siebren with serious psychological damage, incapable of acting coherently and mentioning a constant, maddening melody that nobody else heard. His distress caused the fluctuations to peak. He had to be evacuated immediately.
+
+  [place] {"loc":"Interstellar Journey Space Station","country":"Interstellar Journey Space Station","why":"Dr. Siebren De Kuiper Accidentally creates a black hole"}
+  [place] {"loc":"Secret New Mexico Facility, United States","country":"United States,","why":"Subject Sigma contained"}
+  [hero] {"country":"Sigma","why":"Changed forever by Black Hole Exposure"}
+
+======================================================================
+#174 Omnic Housing
+year 2065 2068 | The Golden Age | London, United Kingdom
+DESC:
+Just like his student before him, Tekhartha Mondatta would choose to leave the monastery not long after Ramattra did. While Ramattra sought to unify Omnics within a banner of justice and liberation, Mondatta believed the Shambali teachings could be used to teach equality and aid Omnic communities around the world through peaceful dialogue. In order to do this, Mondatta traveled the world, giving speeches and meeting with local authorities to discuss measures towards full Omnic Integration, and the place Mondatta had his eyes on to achieve the first milestone was King's Row, in London. 
+
+The Omnics of England had been forced to live in the Underworld, a subterranean complex dug from abandoned Tube lines, power grid and sewage systems. Checkpoints around the city enforced curfews and police kept the Omnic people at bay to maintain segregation. This constant struggle had deemed London one of the main centers of Human Omnic tension in Europe, and the perfect spot for Mondatta to test his influence and teachings. Working with Major Mandah to begin work on Turing Green, a public housing development plan that would effectively give the Omnics a proper home, where they could live alongside human peers, without hiding underground. Mondatta's influence in the city could be felt within the Omnic community and with the groundbreaking of Turing Green, it marked the first step in rectifying years of injustice that Omnics had endured... if only it had lasted.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"Mondatta leads the Turing Green Housing Program"}
+  [faction] {"country":"Shambali Order,","why":"Mondatta leaves to spread Shambali values across the world"}
+  [npc] {"country":"Mondatta,","why":"Works with the local government to give Omnics a Home"}
+
+======================================================================
+#175 Luxuries
+year 2060 2066 | The Golden Age | Akihabara, Japan
+DESC:
+During her time as a prisoner, Shion rarely got very few, brief glimpses of the outside world. While Omnics across the world slowly developed their own culture and faith, Shion knew herself not as an Omnic, but instead as inhuman. She never had a chance to develop a sense of self, but now with all the money and power she could dream of, she had the means to transform herself into something she felt comfortable being. Shion performed heavy repairs and modifications to her chassis, mostly cosmetic, sculpting a shape that had an uncanny resemblance to that of a human, but yet she was still an Omnic, she belonged to no world other than the one she formed for herself.
+
+Outside of her duties as head of the clan, Shion lived her life to the fullest, gaining a reputation for excessively indulging in all kinds of luxuries, from partying, costly fashion, plenty of lovers of both metal and flesh, and a growing love for custom-made holo bikes. Yet this carefree lifestyle didn't come in the way of her Hashimoto duties, in spite of what the other elders believed. While they comfortably sat in their chairs, Shion's craving for violence meant she was often working on the field with her men, doing most of the work for the clan, which only served to further secure her position as the most feared and influential of the Elders.
+  [place] {"loc":"Akihabara, Japan","country":"Japan","why":"Shion spends the Hashimoto fortune on personal pleasures"}
+  [hero] {"country":"Shion,","why":"Gets a brand new Chassis"}
+  [faction] {"country":"Hashimoto Clan,","why":"Questions Shion's activities"}
+
+======================================================================
+#176 Subject Sigma
+year 2053 2068 | The Golden Age | New Mexico, United States
+DESC:
+Upon returning to Earth, Doctor De Kuiper would be quarantined in a Secret Government facility somewhere in New Mexico. He was raving about the true nature of the universe, incoherently talking about time being non-linear, all while gravity around him shifted out of control. Once the most celebrated scientists in human history, Siebren found himself unable to hold reality together, and was deemed a danger to himself, and the world as a whole. 
+
+For years, he would be detained under the name of "Subject: Sigma", in an isolated room where his power could be contained. As years went on, the Doctor retreated into his own mind and the forbidden knowledge that had now cursed him was his only company. For years, he thought he would never see the outside world again, and that whole time, that constant, eerie melody ringed in his ear.
+  [place] {"loc":"New Mexico, United States","country":"United States","why":""}
+  [place] {"loc":"Secret New Mexico Facility, United States","country":"United States","why":"Suhbject Sigma is Contained"}
+  [hero] {"country":"Sigma,","why":"Imprisoned to keep his powers under Control"}
+
+======================================================================
+#177 Storm Chaser
+year 2064 2066 | The Golden Age | Copenhagen, Denmark
+DESC:
+Coppenhagen was hit by the crisis when Freja was only a child. Her mother was a diplomet at the time, and because of that everyone looked at her for answers. She commanded several operations right at the eye of the storm, calm constant and consistent, and through her Freja learned that keeping people safe came down to a level head and a focused eye. 
+
+She had admired her mother's work for the longest time, but instead of following in her footsteps, she wished to save people on the ground alongside other operatives, placing herself in the middle of the storm. Following the Freja would go to University to pursue a criminology degree, granting her access to the latest tech available and how to identify and stop a threat before it even began, and outside of her classes she had joined her local search and rescue team to gain experience in the field. 
+
+It was here where she developed outstanding skills at tracking down anyone, in any place, as she felt in love with the rush of seeing a job through the end, and making a difference hands on. For the longest time, Freja dedicated herself to chasing that gratifying feeling, of doing something that mattered and being good at it. Her determination and skil would soon open many doors for her.
+  [place] {"loc":"Copenhagen, Denmark","country":"Denmark","why":"Freja Skov makes a name for herself at the local Search and Rescue groups in Denmark"}
+  [hero] {"country":"Freja","why":"Studies criminology and joins her local Search and Rescue"}
+
+======================================================================
+#178 Pressure Makes a DIamond
+year 2065 2068 | The Golden Age | Utopea, India
+DESC:
+The Vishkar Empire was ever-growing, especially after the success of the Architech Academy. Although power stayed relatively within the family of the late founder, it would be more accurate to compare the company to a dynasty. Vaira Singhania was the granddaughter of Vishwakarma Bhatt himself, and as such she was expected to one day inherit the business for herself. From a very young age, she struggled to form coherent structures with Hard Light, mostly making organic, ill-defined shapes, and while she liked to consider them art, her family disagreed. All she saw from their eyes was disappointment, and this pressure quickly shaped her into a perfectionist, and someone very insecure about her own merits.
+
+ As she grew older she developed a knack for corporate politics, excelling in all types of lessons from debates and economics, truly a woman shaped to lead a business as large as her family's. And yet, she still lacked the artistic eye needed to perfect Hard Light manipulation, a harsh truth that cut through her, especially with the opening of the academy. As young students graduated to become leading engineers, it became clear that Vaira, the future head of the company, was falling behind her future employees. Yet Vaira did not give up. She worked tirelessly to shape her reputation within the company, spending a fortune on a pair of Mag Lev mechanical arms, capable of manipulating Hard Light just as an architect would. Through this assistive design, she was able to compete against regular architects and come off as an effortless, naturally gifted professional. As Vaira mascaraded through her education, she slowly moved up the corporate ladder outside Vishkar. She insisted on taking on the challenge outside the family business, working on private equity to perfect her own negotiation skills and reinforce her public image, so that once she returned, she would be seen as worthy of taking the family mantle.
+  [place] {"loc":"Utopea, India","country":"India","why":""}
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom,","why":"Vaira struggles to keep up with Vishkar Architects in spite of Family expectations"}
+  [hero] {"country":"Domina","why":"Pays the design of Assistive Hardlight Arms"}
+  [faction] {"country":"Vishkar Corporation,","why":"Growing Larger, yet getting into many controversies"}
+
+======================================================================
+#179 Counter Meassures
+year 2066 2077 | The Golden Age | City State of Numbani
+DESC:
+As the Scourge of Numbani continueD its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results.
+
+Between Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Akande had lost his right arm during the crisis, and while his company provided him with cybernetics, the prosthetics deemed him to have an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors.
+
+For years, Akande Ogundimu had trained under the wing of Akinjide Adeyemi, as one of the best lieutenants. His involvement was known by Numbani's security forces, but he was smart enough to keep distance away from more active conflicts to avoid being apprehended. As Ogundimu became one of Adeyemi's most trusted confidants, behind his back, Akande was thinking far bigger than anything Adeyemi and the rest of his liutenants could ever have imagined.
+  [place] {"loc":"City State of Numbani","country":"Numbani","why":"Numbani deploys the Idina troopers"}
+  [hero] {"country":"Orisa","why":"Future Repurposed OR14 Unit"}
+  [hero] {"country":"Doomfist,","why":"Recruited into Doomfist's mercenary ranks"}
+  [faction] {"country":"Numbani City of Harmony,","why":"Counteracts Doomfist with OR14 Troops"}
+  [npc] {"country":"Adeyemi,","why":"Continues raids through Numbani"}
+
+======================================================================
+#180 Taking the Throne
+year 2064 null | The Golden Age | Junkertown, Australia
+DESC:
+Every few seasons, Junketown hosts the Reckoning. A week-long festivity where junkers from all the outback could feast endlessly, and take part in brawls and shows of strength. The main event of the Reckoning consisted of a free for all in the Scrapyard. A battle for the death in which challengers use all sorts of gadgets and machinery to gain an open hand. Anyone may publicly challenge the reigning monarch to a battle for the crown, provided they were the last man standing in the brawl.
+
+King Mason had gone undefeated for several years, reigning as a tyrant and stomping over allies. The heads of each Junker faction had long tried to dethrone him and take the crown for themselves, but they would all be eclipsed by a certain newcomer. Odessa Stone, an exiled wastelander, made her way into the city and challenged Mason. In her recounting debut, she faced Mari of the Thinkers and Geiger of the Scavengers, and was able to tear through both, while still showing them mercy. Odessa valued connections and loyalty, and could tell the faction leaders did not support their King. As such, she wished to show all Junkers the kind of leader she could be. The match was also being broadcast across the Outback, which she counted on to gain clout and respect with the masses. After defeating all the contenders, Mason himself came down from the top of the scrapyard to take on the wastelander.
+
+After a fierce battle that followed pushed Mason into a corner, as his true colors showed at his worst when he activated the Scrapyard's Magnetism in a desperate move to end the fight. As the crowd turned on Mason for his recklessness, the leaders took Odessa's side, since she spared both. With the magnet down, Odessa was able to defeat the King, and win over support from the crowd, becoming the new Queen of the Junkers.
+  [place] {"loc":"Junkertown, Australia","country":"Australia","why":"King Mason is defeated by a Wastelander"}
+  [hero] {"country":"Junker Queen","why":"Wins the Reckoning and takes the crown"}
+  [faction] {"country":"Junker Monarchy,","why":"Odessa becomes the new Junker Queen"}
+  [npc] {"country":"Geiger, Meri,","why":"Aid Odessa in taking the throne"}
+  [npc] {"country":"Mason,","why":"Dethroned and exhiled"}

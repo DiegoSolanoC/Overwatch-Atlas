@@ -12,6 +12,10 @@ import {
     isDialogueTheaterEventSlideMarked,
     isDialogueTheaterImageOverlayContext,
 } from '../../../../dialogue-theater/dialogue-theater-stage/dialogueTheaterImageOverlayBridge.js';
+import {
+    isStoryCommentaryDirectPlayActive,
+    stopStoryCommentaryDirectPlay,
+} from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { syncMobileEventSlideLayoutForImageHidden } from './mobileEventSlideImageLayout.js';
 import { clearEventSourceMediaEmbed } from './eventSourceMediaOverlay.js';
 
@@ -22,6 +26,12 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
             ) {
                 hideDialogueTheaterImageOverlayGradually(slide, durationMs);
                 return;
+            }
+
+            // Direct Play stage must be torn down before fading the story image,
+            // otherwise leftover stage DOM + theater overlay CSS fight #eventImage.
+            if (isStoryCommentaryDirectPlayActive()) {
+                stopStoryCommentaryDirectPlay({ restoreEventImage: true });
             }
 
             const overlay = document.getElementById('eventImageOverlay');
@@ -50,8 +60,6 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                     img.style.opacity = String(opacity);
                 }
                 
-                // Log progress at 25%, 50%, 75%, 100%
-                
                 if (progress >= 1) {
                     clearInterval(fadeTimer);
                     clearEventSourceMediaEmbed();
@@ -60,8 +68,11 @@ export function runHideImageOverlayGradually(slide, durationMs = 600) {
                         slide.activePdfSourceUrl = '';
                     }
                     overlay.style.opacity = '0';
-                    overlay.classList.remove('open', 'slide-open', 'fade-in');
+                    overlay.classList.remove('open', 'slide-open', 'fade-in', 'dialogue-theater-stage-overlay');
+                    delete overlay.dataset.storyCommentaryDirectPlay;
                     overlay.style.display = 'none';
+                    overlay.style.removeProperty('pointer-events');
+                    document.getElementById('dialogueTheaterStage')?.remove();
                     if (img) {
                         img.style.opacity = '0';
                         img.style.display = 'none';

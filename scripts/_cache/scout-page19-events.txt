@@ -1,0 +1,144 @@
+﻿Used commentary: 160
+
+=== PAGE 19 (#181ΓÇô190) ===
+
+======================================================================
+#181 Project Echo Goes Online
+year 2065 null | The Golden Age | Oslo, Norway
+DESC:
+After Liao's work in Busan, she retreated back to Overwatch's research facility in Oslo. Years of work with Overwatch had slowly allowed her to gain support and leniency to work on her passion through passion, Artificial Intelligence. Following the success of the Athena AI, Liao would go on to work on several more complex projects in secrecy. Documentation on the rest of the projects following Athena is heavily classified, but we do know of her fifth and last, Project: Echo.
+
+On February 5th of 2065, Project Echo went online for the first time. Her masterpiece, her legacy, her redemption, her apology all packaged into a perfect machine. Liao dreamed of one day improving on the design of Omnics, and possibly even replicating Aurora's sentience for years, but even after proving herself, Overwatch limited her research. In the end, Echo was designed as a multi-role adaptive robot that could learn by replicating behavior, using a chassis with Hard light projectors that would allow Echo to duplicate the form of those she scanned, not just learning from their behavior but imitating them to a T. In the end, what was supposed to push the boundaries of sentience once more, was decimated into yet another tool for Overwatch to deploy in missions.
+  [place] {"loc":"Oslo, Norway","country":"Norway","why":"Project: Echo goes Online"}
+  [hero] {"country":"Echo","why":"Project: Echo goes Online"}
+  [faction] {"country":"Overwatch,","why":"Funded her creation"}
+  [npc] {"country":"Liao,","why":"The fifth and final of her post-Aurora projects"}
+  [npc] {"country":"Athena,","why":"Considered Echo's 'sister'"}
+
+======================================================================
+#182 Out There
+year 2062 2068 | The Golden Age | Horizon Lunar Colony
+DESC:
+Among the Apes in the Lunar Colony, one of the gorillas was displaying rapid brain development faster than the rest. Specimen 28, was taken under the wing of Dr. Harold Winston, who took care of the Gorilla almost like a son, nourishing his curiosity with science and tales of human ingenuity back on earth. The young gorilla spent his days assisting the Doctor on experiments, away from the other apes, as he had become an outcast among the other apes. At one point, 28 would be visited by a peculiar, small intruder. Specimen 8, Hammond, had escaped through the vents, and he had just interrupted his plans.
+
+Not long before they first met, Hammond realized that Winston was just like him, another survivor of the genetic therapy who was showing intelligence faster than his peers, and he was struck with a sense of sympathy, at seeing someone just as alone as he was. He was moved by the ape's innocence and sense of wonder, and the two quickly became friends. During his nightly escapades, Hammond would sneak treats like candy and peanut butter, and aid the gorilla in fixing things that the others break. In return, the ape showed him how to dream of a better life. The pair spent hours watching the giant blue marble just outside the window of the habitat, wondering what awaited them there. 
+
+The pair wished to one day leave the base together and explore this distant world, and it just so happened that Hammond's escapades were not just to visit his friend. All this time, he had been tinkering with nuts and bolts, learning how the machinery in the base work, and he quickly fancied himself a mechanic. Even if the scientists found him every time he escaped his cell, none of them had a clue about the real purpose of his exploration of the base. He was set on leaving the moon, and taking Specimen 28 with him.
+  [place] {"loc":"Horizon Lunar Colony","country":"Horizon Lunar Colony","why":"Hammond befriends Winston during escape attempts"}
+  [hero] {"country":"Winston, Wrecking Ball,","why":"Beomce close friends in the Lunar Colony"}
+  [faction] {"country":"Lucheng Interstellar,","why":"Continues experiments on animals"}
+  [npc] {"country":"Chao,","why":"Head of the Genetic experiments"}
+  [npc] {"country":"Harold,","why":"Winston and Hammond's caretaker"}
+
+======================================================================
+#183 Cursed
+year 2066 null | The Golden Age | Akihabara, Japan
+DESC:
+Mizuki's home life continues to deteriorate, as misfortune continued to haunt the family. Dead after death had taken a toll on Mizuki's father as he felt further into superstitions and scams. Failing to cope with the tragedies that marked his life, he continued to blame it on malevolent spirits, and taught his child to fear them. In an attempt to escape their curse, the two would move out of Fukuoka and into Tokyo, but as his father's mental state continued to worsen, he would begin to accumulate debt from the many scams, lucky charms and exorcists that he had paid for as a desperate attempt to ward off the ghouls. Mizuki's father would begin to take loans from the Hashimoto Clan, the local criminal group who called Tokyo their home turf. 
+
+As the family plunged further into debt, Mizuki could only watch in fear, until the day his father was found dead, leaving him to fend for himself. At only nine years old, Mizuki was left as an orphan, and inherited mountains' worth of debt to the Hashimoto. The young kid had internalized the years' worth of trauma that his father inflicted upon the family, so he believed the curse would claim his own life next. As the Hashimoto barged in to collect the debts, one of the Elders would take a keen interest in the young boy. Lady Shion showed Mizuki mercy by forgiving his debt if he joined their organization under her watch, where she would train him and teach him the ways of the clan. Without nowhere else to go, Mizuki accepted this fate reluctantly.
+  [place] {"loc":"Akihabara, Japan","country":"Japan","why":""}
+  [place] {"loc":"Tokyo, Japan","country":"Japan","why":"Mizuki is taken in by the Hashimoto following his father's death"}
+  [hero] {"country":"Mizuki,","why":"Becomes part of the Hashimoto to escape debt and the curse"}
+  [hero] {"country":"Shion,","why":"Spared Mizuki and kept him to train personally"}
+  [faction] {"country":"Hashimoto Clan,","why":"Shwo mercy on Mizuki by forgiving his debt"}
+
+======================================================================
+#184 When Dragons Fall
+year 2067 null | The Golden Age | Hanamura, Japan
+DESC:
+After years of pushback from many governments, and seeing the sucess of their continous "vacations" Reyes approached Morrison with the idea of expanding his division to deal with more questionable operations, taking care of things outside of the protocol and away from the public eye. With Morrion's approval, Blackwatch as we know it, was born. The small cover up division Reyes had been running expanded into a midsize initiative, expanding with several bases and gaining recruitment under Amari's selection. During these hirings, many people who would have otherwise not passed Overwatch's regular screenings would go on to become part of Reyes' staff, often kept secret from Ana and Jack. Perhaps the most well known of these fringe hires was Genji Shimada.
+
+Overwatch was keeping an eye on the Shimada clan for years, but their influence in the Kanezaka region made them hard to take down legally. That was until the assassination of the clan leader, Sojiro Shimada, at the hands of a rival gang, the Hashimoto. Ever since his death, the clan began to expand its criminal activities, and their carelessness marked them as a target for Overwatch to take down. During initial scouting and intel gathering, Ziegler and Sarioglu were notified of a man who had been critically injured. The man turned out to be Genji Shimada, heir to the clan, and was taken into Overwatch's care as a potential valuable source of information.
+
+Following his father's death, the elders of the clan took control and began to put pressure on his older brother, Hanzo, to take control as the new leader. For the longest time, Genji took little interest in the illegal activities of the clan so the elders considered him a liability and resented Sojiro's softness, so when Hanzo took control of the clan, they instructed him to straighten up his own brother. Genji refused, and tensions grew between the two brothers, building to a violent confrontation with a blade which left Genji on the verge of death.
+  [place] {"loc":"Hanamura, Japan","country":"Japan","why":"Overwatch finds a dying Genji during a mission against the Shimada Clan"}
+  [hero] {"country":"Genji, Hanzo","why":"Dueled to death following the clan's orders"}
+  [hero] {"country":"Mercy, Emre,","why":"Found Genji during the Kanezaka mission"}
+  [hero] {"country":"Reaper,","why":"Convinced Genji to join Overwatch in exchange for a rebuilt body"}
+  [faction] {"country":"Overwatch,","why":"Begins an operation to take down the Shimada Clan"}
+  [faction] {"country":"Blackwatch,","why":"Expands into a larger division and recruits Genji"}
+  [faction] {"country":"Shimada Clan, Hashimoto Clan,","why":"Sojiro's death leads to a change in direction in the Shimada Clan"}
+  [npc] {"country":"Sojiro,","why":"Assasinated by the Hashimoto"}
+
+======================================================================
+#185 Search and Rescue
+year 2066 2068 | The Golden Age | Copenhagen, Denmark
+DESC:
+With Overwatch expanding all of its departments from Blackwatch to the Ecopoint program, Ana Amari aided each division in the recruitment process and one. Generally, most of the supportive staff tended to be overshadowed by the Strike team in the public eye, but one key addition gained notoriety even among the Strike team itself: Freja Skov, the so called best tracker in the world.
+
+At the time Freja had made a name for herself publicly working as a part of local search and rescue teams. The milirary wanted to hire her after her graduation from University but she always had her eye on  bigger fish. Ana Amari approached Freja to join a burgeoning search and rescue division among the Overwatch support personnel.
+
+While in Overwatch, Freja would quickly gain notoriety for her unmatched excellence on the job, with many considering her the best tracker in the world. Freja would go on to become personally requested as an assiting operative by several members of the Strike team, like Reinhardt, Mercy and particularly Emre Sarioglu, who she grew especially close with, often taking trips to Istanbul together while on break from duty. For Freja, while the rest of the Strike team was often unreachable, super humans, Emre felt like any other guy, and he always made time to bond with people of all divisions, not just Search and Rescue.
+  [place] {"loc":"Copenhagen, Denmark","country":"Denmark","why":"Freja Skov is hired into Overwatch"}
+  [hero] {"country":"Freja,","why":"Recruited into Search and Rescue"}
+  [hero] {"country":"Ana,","why":"Recruited Freja to the Search and Rescue division"}
+  [hero] {"country":"Emre,","why":"Coordinated with Search and Rescue, close friend of Freja"}
+  [hero] {"country":"Mercy, Reinhardt,","why":"Often requested Freja by name"}
+  [faction] {"country":"Overwatch, Search & Rescue,","why":"Overwatch expands into new Divisions"}
+
+======================================================================
+#186 Escalation
+year 2067 2069 | The Golden Age | Secret Omnium, Antartica?
+DESC:
+Null Sector activity continued across the world, inspiring many Omnics to follow Ramattra's teachings, especially following the groundbreaking of Turing Green, which many followers of Mondatta saw as a new start for Omnics. Null Sector, in contrast, took the idea as an insult, throwing a bone at his people to try and act like it absolved them from years worth of injustice. As momentum grew, the group radicalized from a small cell of liberators, to a fully militarized operation. The escalation meant many of his initial supporters soon began to leave the group behind, but his resolve to bring justice for all Omnics only grew stronger with each ally he lost.
+
+He decided to bring his closest allies, Nameless, Zera and Lanet, on a journey across the depths of a freezing wasteland, where they found the very same Anubis made Omnium, where Ramattra was born. His plan was to use the facility to create an army, and use it to speak to humans in a language they can understand, violence. For the next two years, the group would produce entire battalions of Crisis-era units at Lanet's supervision, and Ramattra himself would upgrade his own design combining Shambali technology with an invention of his own, Nanites, microscopic machines capable of cooperation and assembly of different structures, including extra reinforced limbs for close combat. As his army grew, Ramattra already had his eyes on the first target of his revolution, but Lanet urged caution, noting the antiquated designs needed more work if they wanted to get things right.
+
+During this back-and-forward, tension built up over philosophical differences amongst the group, as Ramattra continuously refused to involve other Omnics and rally forces outside his mindless troops. While Nameless and Zera were used to appealing to the Omnic masses, and wished to allow their people to fight alongside them, Ramattra was tired of bloodshed. He saw himself as a liberator, not a general. It was because of this that he chose to manufacture an army of robots, instead of using his influence to command his supporters, as he wished to keep sentient Omnics away from active conflict as much as possible. This led to constant argument with his allies, who saw their leader radicalize further into a lonely crusade.
+  [place] {"loc":"Secret Omnium, Antartica?","country":"Antartica?","why":"Ramattra begins the creation of a warbot army"}
+  [hero] {"country":"Ramattra,","why":"Amasses an Army to liberate Omnics with"}
+  [faction] {"country":"Null Sector,","why":"Grows larger in support, but does not rally its people"}
+  [npc] {"country":"Nameless, Zera, Lanet,","why":"Work with Ramattra but grow frustrated by his ideals"}
+
+======================================================================
+#187 Cyber Ninja
+year 2066 2068 | The Golden Age | Zurich, Switzerland
+DESC:
+After hearing his story, Gabriel Reyes pitched him the idea of joining forces. If Genji agreed to work with Blackwatch to take down the rest of the Clan, Overwatch could rebuild his body with cybernetics. Angela Ziegler, the head of the medical division and the one in charge of Genji's care, objected to the coercion of his patient, but Genji, enraged by what his brother had done and without much of a choice in his mutilated state, accepted the offer. 
+
+Ziegler was opposed to the procedure, worrying about the weaponizing of the augmentations she would need to develop for Genji, but ultimately committed when given the direct order to do so. With the full scope of the medical team, Ziegler replaced the man's falling organs with cybernetics, mostly based on the ones Sojourn herself relied on. Once he was stable, they began to augment his body and turned him into a living weapon. Genji and Angela formed a very close bond over the several months that passed during the procedure, and this connection was pivotal in Genji's future reassignment to the strike team.
+  [place] {"loc":"Zurich, Switzerland","country":"Switzerland","why":"Genji is rebuilt into a Cybernetic weapon"}
+  [hero] {"country":"Genji, Mercy","why":"Ziegler rebuilds Genji and they form a close bond"}
+  [hero] {"country":"Reaper,","why":"Recruits Genji into Blackwatch in exchange for cybernetics"}
+  [faction] {"country":"Overwatch, Blackwatch","why":"Medical division rebuilds Genji into a living weapon"}
+
+======================================================================
+#188 Healing Nature
+year 2060 2068 | The Golden Age | Roshani, India
+DESC:
+As Niran grew older, he would use his parent's wealth to travel the world during his breaks from the architecture academy. While exploring the wilderness of the globe, he was able to experience the turmoil that existed in the world outside his bubble of wealth. Animals and forests dying, in part due to Vishkar's own expansion, war, illness and poverty everywhere he looked, with people who needed help being actively ignored, entire communities riddled with pain. 
+
+Niran became determined to use his talents to fix the world, and began to experiment with healing applications of hardlight. After months of research at the Architech Academy, Niran used his knowledge and fascination of botany. Niran would push the limits of hardlight design into something new entirely. A self-replicating biomass made from hardlight. A living, organic material manifested from light structures, capable of repairing tissue near its light in the blink of an eye. Biolight was a revolutionary discovery that could change the world and bring balance back between man and nature. However, he would soon discover that was not possible under Vishkar.
+  [place] {"loc":"Roshani, India","country":"India","why":"Niran Invents Biolight after travelling the world and seeing its suffering"}
+  [hero] {"country":"Lifeweaver","why":"Travels the world and invents Biolight at Vishkar"}
+  [faction] {"country":"Vishkar Corporation","why":"Niran researches hardlight healing at the academy"}
+
+======================================================================
+#189 Takeover
+year 2060 2068 | The Golden Age | City State of Numbani
+DESC:
+The power of the Doomfist gauntlet had allowed Adeyemi to brute force his way into Talon, where the council member was left to choose between bending to his will or taking the fist head on. Akande himself had grown connections within Talon's council through Adeyemi's network, and he soon began to see the shortcomings of his teacher. Hellbent causes mindless destruction for personal gain, hoarding all this power and influence over people and wasting his chance to use that position to command the world's future in his image. Akande resented him for this and secretly began to plan Adeyemi's downfall. Before long, Ogundimu made his move during a raid on Numbani, turning against his master and after a brutal face off, he was able to kill him, taking the Gauntlet and the mantle of Doomfist for himself. Much like his predecessor, the Talon council would bend easily under his command, afraid of the power of the Gauntlet at the hands of a mad man, but unlike his master, Akande was a well-studied visionary, who had grown to adopt a certain philosophy as his personal mantra: Humanity evolves through conflict
+
+It was conflict like the pandemics earlier in the century that pushed medical advances to their limits. It was conflict like the ecological impact of humanity that led to the hundreds of inventions that made life better. It was a conflict like the Omnic Crisis that allowed humanity to come together with Overwatch, and push through an enemy larger than any nation on their own. It was conflict that prevented him from sports, and allowed him to realize his true calling. Akande was meant to spread conflict across the world, for the betterment of humanity. It was this vision, combined with the imposing force of the Gauntlet, that would persuade many in Talon to follow him, not just from fear of his power. After all, it would be easier to take advantage of governments and industry amid the chaos of ongoing conflicts, so while the new Doomfist pursued an ideology, his closest allies stuck around purely to profit from his crusade.
+
+Under Doomfist, Talon would shift from being an amorphous, silent force that hijacked power across regions, to a loud, imposing terrorist that quickly proved to be Overwatch's primary obstacle in their peacekeeping duties. The organization was actively growing at this time as well. Research teams began to raise warnings of fringe scientists being recruited by Talon agents, and in some cases, reputable researchers getting kidnapped. Perhaps a more direct blow would be the beginning of a recruitment campaign across the Carribean Sea, as many experienced personnel from the Caribbean Coalition ranks began to be lured by the calling of Talon. Reyes and Lacroix became aware of the change in leadership and even obtained partial footage of the battle. The subject became a main priority for their research, but soon enough, Overwatch would have their hands full from dealing with Talon.
+  [place] {"loc":"City State of Numbani","country":"Numbani","why":""}
+  [place] {"loc":"Venice, Italy","country":"Italy","why":"Akande takes over the Doomfist mantle and control of Talon"}
+  [hero] {"country":"Doomfist","why":"Kills his mentor and becomes the new Doomfist and leader of Talon"}
+  [faction] {"country":"Talon Empire,","why":"Talon accepts Akande as the new leading force for the group"}
+  [faction] {"country":"Numbani City of Harmony,","why":"Investigates Doomfist's death and the rise of his sucessor"}
+  [npc] {"country":"Adeyemi,","why":"Killed by Akande"}
+
+======================================================================
+#190 Lost in Time
+year 2066 2067 | The Golden Age | London, United Kingdom
+DESC:
+Overwatch's research team was relatively quieter than the many controversies the Strike team and Blackwatch would eventually be remembered for, but one of their many experiments would become one of the things the organization became the most known for. Lena Oxton was at the time a young pilot in the Brittish Royal Air Force and had just enlisted into Overwatch for trials of their next generation, teleporting fighter jet, the Splitstream. Lena might have been pretty young at the time, but her uniquely fast reflexes, hand coordination and love for flying at high speeds made her the most suited choice for the test that Britain could offer. 
+
+Unfortunately, during the first test flight, the ship's teleportation matrix would malfunction, and suddenly both Oxton and the jet vanished. Lena was presumed dead, and the incident did not bring any good publicity for Overwatch, but what the scientists did not expect at the time was that Lena's disappearance was a far more complex, rare event than merely vanishing in the accident.
+
+Oxton's molecular structure had become desynchronized from the regular flow of time and space, a condition that would later be called "Chronal Disassociation." In short, Lena was a living ghost, disappearing for hours and days at a time, and whenever she was visible in our present, it was often at completely different places, and she could barely maintain a physical form for long. Lena would remain in this limbo state for about two whole years, in which her body showed no signs of aging while disassociated from our timeline. After her first reappearance in the months after the accident, Shira Wexler, the lead designer of the jet, took full responsibility for her condition and dedicated her team's efforts to finding a cure.
+  [place] {"loc":"London, United Kingdom","country":"United Kingdom","why":"Lena Oxton goes missing during experimental test flight"}
+  [hero] {"country":"Tracer","why":"Becomes Chronically Disasociated following the Splitstream accident"}
+  [faction] {"country":"Overwatch","why":"Works on finding a cure for Lena's condition"}

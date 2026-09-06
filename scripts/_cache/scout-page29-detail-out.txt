@@ -1,0 +1,174 @@
+﻿
+=== free | Siblings ===
+  Kiriko: I only ever hear horror stories about siblings. Ever wish you were an only child?
+  Anran: Honestly? I wouldn't give up my brother for the world.
+  Anran: Literally *every day* of my life.
+  Wuyang: Wha-- *hey!*
+
+=== free | Got each other ===
+  Sierra: Saw you training with your brother the other night. You two make a real good team!
+  Anran: Thanks. He's always teaching me new tricks, too.
+  Sierra: I bet! You're lucky you've got each other.
+  Anran: **sigh** We really are.
+
+=== free | Show-off ===
+  Ana: I never knew you to be a show-off, Genji.
+  Genji: Only a fool wastes an opportunity.
+
+=== free | Keeping me Sharp ===
+  Ana: You're hard to keep a scope on, Genji. Always so unpredictable.
+  Genji: Oh. I'm... sorry?
+  Ana: Don't be. It keeps me sharp.
+
+=== free | Ganymede Scout ===
+  D.va: We should get Ganymede to scout for us!
+  Bastion: **worried beeps**
+  D.va: Don't worry! No one will touch a feather on Gany's head while Hana Song is here!
+  Bastion: **relieved beeps**
+
+=== free | Stolen Bird Feed ===
+  Brigitte: Bastion, is something wrong?
+  Bastion: **concerned and puzzled beep**
+  Brigitte: Your bird-feed was stolen again? **sigh** I'll have to have a word with that hamster.
+
+=== free | Bastion Agrees ===
+  Reinhardt: Let's attack the enemy from the front and take them by surprise!
+  Bastion: **worried beeps**
+  Reinhardt: You hear that? Bastion agrees with me!
+  Bastion: **panicky beeps**
+
+=== free | New Armor ===
+  Brigitte: Bastion, how are you liking that new armor Papa made for you?
+  Bastion: **encouraging beeps**
+
+=== free | Something Useful ===
+  Cassidy: Bastion. Have you by chance got a can-opener in there? I'm aiming to crack open a snack.
+  Bastion: **regretful beeps**
+  Cassidy: Of course not... would be wholly unlike Lindholm to give you something useful.
+
+=== free | The Poster ===
+  Pharah: Reinhardt, you know, I had a poster of you on my wall when I was younger.
+  Reinhardt: I remember the poster. My hair was amazing.
+
+=== free | Cute Guy ===
+  D.va: I saw you on a wanted poster with a *cute* guy!
+  Ashe: **sigh** Tell me you don't mean Cassidy.
+  D.va: Ew, no! The tall one with the little hat!
+  Ashe: Oh, B.O.B. **chuckle** I'll tell him you said hello.
+
+=== free | War isn't a game ===
+  Reaper: War isn't a game, girl.
+  D.va: That's funny. **laugh** Soldier: 76 said the same thing!
+  Soldier 76: War isn't a game
+  D.va: Are you sure life isn't a game, Soldier 76
+
+=== free | Lucheng's Files ===
+  Sombra: Lucheng's files on Mars are locked down tight. I had to take a break from cracking them.
+  Juno: I am not surprised. Apparently, it was a very secret project.
+  Sombra: Now you've got me curious again. I'll visit their firewalls later.
+
+=== free | She just likes you ===
+  Juno: I have heard that cats can be quite temperamental, but Fika seems very friendly!
+  Brigitte: They aren't always the nicest. I think she just really likes you.
+  Jetpack Cat: **innocent meow**
+
+=== free | Sharpen those claws ===
+  Reinhardt: The battle ahead will be perilous. Sharpen those claws, Fika!
+  Jetpack Cat: **contented meows**
+  Reinhardt: Or perhaps our enemies will change their ways when they see how cute you are.
+
+=== free | Playing on the Desk ===
+  Winston: Fika, were you playing on my desk again? You accidentally tripped my security systems!
+  Jetpack Cat: **innocent meows**
+  Winston: **chuckle**Aww, it's okay. I'll find you something else to play with.
+
+=== free | Unlocking [OW1] ===
+  D.va: Hey, Sombra, I hear you're a master of unlocking.
+  Sombra: What are you talking about?
+
+=== free | Stick to the Plan [OW1] ===
+  Reaper: Try to stick to the plan, Sombra.
+  Sombra: Look, someone has to be ready when all your careful planning doesn't pan out.
+
+=== free | Trust Sombra [OW1] ===
+  Widowmaker: I don't understand how you can trust Sombra.
+  Reaper: I don't. But Sombra has her uses, and I know what she's been up to.
+
+=== free | Blaming yourself [OW1] ===
+  Genji: Do not blame yourself for Mondatta's death. It was not your fault.
+  Tracer: You don't understand Genji, I could have saved him. Maybe the world would have been better off if it had been me instead of him.
+
+=== free | Taking the Risk [OW1] ===
+  Mercy: Tracer, you should be careful. We don't know the side-effects of using the chronal accelerator.
+  Tracer: Considering the alternatives, I'm willing to take the risks.
+
+=== free | Open her eyes ===
+  Kiriko: The Hashimoto have completely overrun Tokyo. It's not much better in Kanezaka, either.
+  Genji: I see how much you need me. But I do not know if the commander will permit my absence.
+  Kiriko: She should open her eyes. If you don't come back now, there won't be anything left.
+
+=== free | Sorry enough to Help ===
+  Kiriko: The Hashimoto run our neighborhood now. So...
+  Hanzo: Oh, I am sorry to hear that.
+  Kiriko: Sorry enough to help?
+  Kiriko: Sorry enough to help
+
+=== free | Well Informed ===
+  Hanzo: You Y┼ìkai are surprisingly well-informed about the Hashimoto clan.
+  Mizuki: Eh, that's all Sakura. Her intel's always spot on.
+
+=== free | Her own Mistakes ===
+  Hanzo: Kiriko has grown surprisingly capable. But at times, her na├»ve perspective puts her in danger.
+  Genji: Let her be. She must learn from her own mistakes.
+  Hanzo: You would have *me* turn a blind eye after how long we left her on her own?
+  Genji: Our absence is what lost us the right to guide her.
+
+=== free | Answer the recall ===
+  Winston: I'm *so* happy you answered the Recall, Reinhardt.
+  Reinhardt: For you, my old friend? **chuckle** Of course.
+
+=== free | Just Recall [OW1] ===
+  Mercy: Well, I suppose I'll be patching you up... as usual
+  Tracer: Don't worry Dr. Ziegler, if I get in trouble, I'll just recall!
+
+=== free | Fear the Reaper ===
+  Baptiste: You know what they say: seasons don't fear the...
+  Reaper: Don't. Just don't.
+
+=== free | Never see me coming ===
+  Baptiste: Reaper! Don't sneak up on me like that.
+  Reaper: Just a reminder that you'll never see me coming.
+
+=== free | Keeping in Touch ===
+  Tracer: Iggy tells me you kept in touch after your little record trade.
+  L├║cio: Yeah! We've been vibing about our favorite tunes. She's got great taste!
+  Tracer: **giggles** Great taste in DJ's, too!
+  L├║cio: You think so? **clears throat** That's... t-that'd be somethin' else.
+
+=== free | Remmebering the Past ===
+  Juno: What is wrong, Auntie Mei? You look sad.
+  Mei: I'm okay. I'm just... remembering the past.
+  Juno: Did something happen here?
+  Mei: I'll tell you about it another time.
+
+=== free | Count on Mei ===
+  Winston: Can you look at my report later? Something seems off.
+  Mei: Winston, you know what I'm going to say to that.
+  Winston: **laughs** Of course. I know I "can always count on Mei"!
+
+=== free | Googly Eyes ===
+  Venture: Whoa! Your drone is so cool!
+  Mei: Thank you! His name is Snowball. Say hi, Snowball!
+  Venture: Hey, little guy! Aw, I wish my holoreplicator had a face.
+  Mei: **giggle** You should try sticking some googly eyes on it!
+
+=== free | Hotpot ===
+  Winston: I can't wait for our next hot pot, Mei!
+  Mei: Next time, I'll get more peanut sauce for you!
+  Winston: Maybe without all the... spice?
+  Mei: Winston! That's the best part!
+
+=== free | Fun Mother ===
+  Juno: Auntie Mei, what did Mother do for fun?
+  Mei: Lots of things! Figure skating, karaoke... and, of course, partying!
+  Juno: Then I must learn these skills too.

@@ -1,0 +1,1459 @@
+{
+  "apply": false,
+  "scanned": 1856,
+  "changed": 175,
+  "heroes": [
+    "Ana",
+    "Anran",
+    "Ashe",
+    "Baptiste",
+    "Brigitte",
+    "Cassidy",
+    "D.mon",
+    "D.va",
+    "Domina",
+    "Doomfist",
+    "Echo",
+    "Emre",
+    "Freja",
+    "Genji",
+    "Hanzo",
+    "Hazard",
+    "Illari",
+    "Junker Queen",
+    "Junkrat",
+    "Juno",
+    "Kiriko",
+    "Lifeweaver",
+    "Lúcio",
+    "Mauga",
+    "Mei",
+    "Mercy",
+    "Mizuki",
+    "Moira",
+    "Orisa",
+    "Pharah",
+    "Ramattra",
+    "Reaper",
+    "Reinhardt",
+    "Shion",
+    "Sierra",
+    "Sigma",
+    "Sojourn",
+    "Soldier 76",
+    "Sombra",
+    "Symmetra",
+    "Torbjörn",
+    "Tracer",
+    "Vendetta",
+    "Venture",
+    "Widowmaker",
+    "Winston",
+    "Wrecking Ball",
+    "Wuyang",
+    "Zarya",
+    "Zenyatta"
+  ],
+  "changes": [
+    {
+      "hero": "Ana",
+      "lineId": "b6308163-eb37-4950-b015-26e3b965ead2",
+      "reason": "from-voice",
+      "before": "There's nothing I haven't seen before. Stick together. We will complete our mission.",
+      "after": "There's nothing I haven't seen before. Stick together, and we will complete our mission",
+      "voice": "Ana_-_There's_nothing_I_haven't_seen_before._Stick_together,_and_we_will_complete_our_mission.ogg"
+    },
+    {
+      "hero": "Ana",
+      "lineId": "a506b1fb-c564-44d3-b11c-2a250649dd1c",
+      "reason": "strip-wiki",
+      "before": "Hm... How far is it to wikipedia:Malibu?",
+      "after": "Hm... How far is it to Malibu?",
+      "voice": "Ana_-_Hm..._How_far_is_it_to_Malibu.ogg"
+    },
+    {
+      "hero": "Ana",
+      "lineId": "f70ad268-ab2c-42c9-a49a-8436c92cb119",
+      "reason": "strip-wiki",
+      "before": "Let's hurry this along. There's a beach in wikipedia:Crete with my name on it.",
+      "after": "Let's hurry this along. There's a beach in Crete with my name on it.",
+      "voice": "Ana_-_Let's_hurry_this_along._There's_a_beach_in_Crete_with_my_name_on_it.ogg"
+    },
+    {
+      "hero": "Ana",
+      "lineId": "5c8307ae-6890-4a4f-9481-d22593896191",
+      "reason": "from-voice",
+      "before": "These people moved past the Omnic Crisis so quickly. I envy that.",
+      "after": "These people moved past the Crisis so quickly. I envy that",
+      "voice": "Ana_-_These_people_moved_past_the_Crisis_so_quickly._I_envy_that.ogg"
+    },
+    {
+      "hero": "Ana",
+      "lineId": "75a792e2-bb39-4e45-9c09-776dc8f3d1d8",
+      "reason": "strip-wiki+from-voice",
+      "before": "When was my last trip to wikipedia:Copacabana, Rio de Janeiro? Mm, too long ago...",
+      "after": "When was my last trip to Copacabana. Too long ago",
+      "voice": "Ana_-_When_was_my_last_trip_to_Copacabana._Too_long_ago.ogg"
+    },
+    {
+      "hero": "Anran",
+      "lineId": "b1b65173-f581-4e08-9f62-c80e19412bce",
+      "reason": "from-voice",
+      "before": "I won't let From the Ashes happen again. Next time, I'll be ready.",
+      "after": "I won't let this happen again. Next time, I'll be ready",
+      "voice": "Anran_-_I_won't_let_this_happen_again._Next_time,_I'll_be_ready.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "e32ab8d7-9632-4dfb-a4d3-33849e250e75",
+      "reason": "from-voice",
+      "before": "Better get paid after all this. I don't like havin' my time wasted.",
+      "after": "Better get paid after all this. I don't like having my time wasted",
+      "voice": "Ashe_-_Better_get_paid_after_all_this._I_don't_like_having_my_time_wasted.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "26d09a69-c080-4086-9c50-4d703576124b",
+      "reason": "from-voice",
+      "before": "We're doin' this my way.",
+      "after": "We're doing this my way",
+      "voice": "Ashe_-_We're_doing_this_my_way.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "35f0a914-2802-4d1b-a384-b1536086ac74",
+      "reason": "from-voice",
+      "before": "We're playin' by my rules.",
+      "after": "We're playing by my rules",
+      "voice": "Ashe_-_We're_playing_by_my_rules.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "55cab84e-4b9f-4183-b62e-c04847c23d98",
+      "reason": "from-voice",
+      "before": "Look at all these good Samaritans. What are we doin' here, Bob?",
+      "after": "Look at all these good Samaritans. What are we doing here, Bob",
+      "voice": "Ashe_-_Look_at_all_these_good_Samaritans._What_are_we_doing_here,_Bob.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "ed0881fb-63d6-4ddb-9630-75ae5bc3d4ca",
+      "reason": "from-voice",
+      "before": "This is a hardy bunch of outlaws. Just need somethin' to steal.",
+      "after": "This is a hardy bunch of outlaws. Just need something to steal",
+      "voice": "Ashe_-_This_is_a_hardy_bunch_of_outlaws._Just_need_something_to_steal.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "d26a6e35-64d1-4834-9d13-1ad3c5714e5a",
+      "reason": "from-voice",
+      "before": "I'm dyin' to see how you botch this one, Cassidy.",
+      "after": "I'm dying to see how you botch this one, Cassidy",
+      "voice": "Ashe_-_I'm_dying_to_see_how_you_botch_this_one,_Cassidy.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "3e199e77-ab20-42e0-a7ae-56080e6703f0",
+      "reason": "from-voice",
+      "before": "I hear you can smuggle just about anythin' through those skyways.",
+      "after": "I hear you can smuggle just about anything through those skyways",
+      "voice": "Ashe_-_I_hear_you_can_smuggle_just_about_anything_through_those_skyways.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "7d6eb447-7108-4cb7-a91a-56e52c0c706f",
+      "reason": "from-voice",
+      "before": "I wouldn't mind stealin' a spaceship. You hear what they make satellites out of these days?",
+      "after": "I wouldn't mind stealing a spaceship. You hear what they make satellites out of these days",
+      "voice": "Ashe_-_I_wouldn't_mind_stealing_a_spaceship._You_hear_what_they_make_satellites_out_of_these_days.ogg"
+    },
+    {
+      "hero": "Ashe",
+      "lineId": "95a1a7d5-d0fa-4dce-9755-9c20030f1d64",
+      "reason": "from-voice",
+      "before": "This place just ain't the same since that Cassidy ran away with my bike.",
+      "after": "This place just ain't the same since that son of a gun ran away with my bike",
+      "voice": "Ashe_-_This_place_just_ain't_the_same_since_that_son_of_a_gun_ran_away_with_my_bike.ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "lineId": "0985f45f-74f5-4709-b17b-b0a5145f8f55",
+      "reason": "from-voice",
+      "before": "No. I mean, I don't sing. Can I dance instead? Ah, ah, ah-ah, ah, ah, ah-ah-ah, ah, ba, ba, ah, ah... I'm getting it, I'm getting it... give me a second!",
+      "after": "No, I mean, I don't sing. Can I dance instead",
+      "voice": "Baptiste_-_No,_I_mean,_I_don't_sing._Can_I_dance_instead.ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "lineId": "5eaab5fd-cf69-484a-8d56-841c3e49e78e",
+      "reason": "from-voice",
+      "before": "If you need heals, there's no health stauncher than a blast from my biotic launcher. If they're firing too fast for me to heal, then I'll drop my Immortality Field! Oh, man! I'm out of breath. Whoo...",
+      "after": "If you need heals there’s no help stauncher than a blast from my biotic launcher",
+      "voice": "Baptiste_-_If_you_need_heals_there’s_no_help_stauncher_than_a_blast_from_my_biotic_launcher.ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "lineId": "5269b87c-41d0-4aec-993a-42e8c98e0593",
+      "reason": "strip-wiki",
+      "before": "Let's visit the wikipedia:Sistine Chapel after this. I want to get a closer look at that ceiling...",
+      "after": "Let's visit the Sistine Chapel after this. I want to get a closer look at that ceiling...",
+      "voice": "Baptiste_-_Let's_visit_the_Sistine_Chapel_after_this._I_want_to_get_a_closer_look_at_that_ceiling.ogg"
+    },
+    {
+      "hero": "Baptiste",
+      "lineId": "e9e44343-b7a9-4c22-95dc-8e3b777d747d",
+      "reason": "from-voice",
+      "before": "No... I mean... I don't sing... Can I dance instead? Bah ba ba ba ba ba bah, bah ba ba ba ba, ah... ah! I'm getting it, I'm getting it... give me a second!",
+      "after": "No, I mean, I don't sing. Can I dance instead",
+      "voice": "Baptiste_-_No,_I_mean,_I_don't_sing._Can_I_dance_instead.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "lineId": "f00fef67-f3e6-44f2-813c-b099dfc5f4a4",
+      "reason": "from-voice",
+      "before": "It's like Reinhardt always says: the best solution to every problem is a very large hammer. It... makes more sense when he says it, I guess.",
+      "after": "It's like Reinhardt always says... The best solution to every problem is a very large hammer",
+      "voice": "Brigitte_-_It's_like_Reinhardt_always_says..._The_best_solution_to_every_problem_is_a_very_large_hammer.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "lineId": "19631255-0edf-4652-853e-56bb2979fb4f",
+      "reason": "from-voice",
+      "before": "I'm surprised Torbjörn's come around on omnics. Usually he doesn't change his mind about anything.",
+      "after": "I'm surprised Papa's come around on omnics. Usually he doesn't change his mind about anything",
+      "voice": "Brigitte_-_I'm_surprised_Papa's_come_around_on_omnics._Usually_he_doesn't_change_his_mind_about_anything.ogg"
+    },
+    {
+      "hero": "Brigitte",
+      "lineId": "e7dadec2-3ad7-42de-b1de-3a213cee56c9",
+      "reason": "from-voice",
+      "before": "Talon's going to pay for From the Ashes. I'll make sure of it.",
+      "after": "Talon's going to pay for what they did here. I'll make sure of it",
+      "voice": "Brigitte_-_Talon's_going_to_pay_for_what_they_did_here._I'll_make_sure_of_it.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "8c0d2fc1-47d9-4527-b8b5-64eb012fcb03",
+      "reason": "from-voice",
+      "before": "There we were, watching the world��s most well-guarded train wind across that purple valley. And I said to Ashe, \"You... sure about this?\" And she said... well, I can't repeat what she said in polite company.",
+      "after": "There we were, watching the world's most well-guarded train wind across that purple valley. And I said to Ashe",
+      "voice": "Cassidy_-_There_we_were,_watching_the_world's_most_well-guarded_train_wind_across_that_purple_valley._And_I_said_to_Ashe.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "77762c4f-c660-4d40-9298-2d89b84cf07a",
+      "reason": "from-voice",
+      "before": "Things were a lot simpler when I was robbing banks with the Deadlock Rebels.",
+      "after": "Things were a lot simpler when I was robbing banks with the Deadlock Gang",
+      "voice": "Cassidy_-_Things_were_a_lot_simpler_when_I_was_robbing_banks_with_the_Deadlock_Gang.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "b8f8e34d-afa5-41cc-af82-172d0d4ba7c0",
+      "reason": "from-voice",
+      "before": "Ah, alright. More of a country guy, but, not bad! Let's do this. Yeahhhh.",
+      "after": "Ah, alright, more of country guy, but not bad! Let's do this... yeahhh",
+      "voice": "Cassidy_-_Ah,_alright,_more_of_country_guy,_but_not_bad!_Let's_do_this..._yeahhh.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "14fc6d27-2de8-43a2-9223-239360cd9259",
+      "reason": "from-voice",
+      "before": "Yeah, alright. Get 'em movin', get 'em rollin'. Get them doggies out tonight! Yeah.",
+      "after": "Yeah, alright, get 'em moving, get 'em rolling, get them doggies out tonight",
+      "voice": "Cassidy_-_Yeah,_alright,_get_'em_moving,_get_'em_rolling,_get_them_doggies_out_tonight.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "c414dc2c-729c-449f-b842-e1df4caf589b",
+      "reason": "from-voice",
+      "before": "Sittin' in cafés all day, drinkin' good espresso, eatin' pasta with eight-syllable names... Not a bad way to live.",
+      "after": "Sitting in cafes all day, drinking good espresso, eating pasta with eight-syllable names... Not a bad way to live",
+      "voice": "Cassidy_-_Sitting_in_cafes_all_day,_drinking_good_espresso,_eating_pasta_with_eight-syllable_names..._Not_a_bad_way_to_live.ogg"
+    },
+    {
+      "hero": "Cassidy",
+      "lineId": "7603535c-4667-44eb-93e9-d741ee307346",
+      "reason": "from-voice",
+      "before": "This city is louder than a field of Montana grasshoppers. Y'know, the ones as big as your thumb?",
+      "after": "This city's louder than a field of Montana grasshoppers. You know, the ones as big as your thumb",
+      "voice": "Cassidy_-_This_city's_louder_than_a_field_of_Montana_grasshoppers._You_know,_the_ones_as_big_as_your_thumb.ogg"
+    },
+    {
+      "hero": "D.va",
+      "lineId": "8e7b33f1-e9d1-4af3-bd3e-ae00d173b16d",
+      "reason": "from-voice",
+      "before": "All systems fired up and ready to engage. Hae bojago! (Hangul) Let's do this!",
+      "after": "All systems fired up and ready to engage. (Korean) Let's do this",
+      "voice": "D.Va_-_All_systems_fired_up_and_ready_to_engage._(Korean)_Let's_do_this.ogg"
+    },
+    {
+      "hero": "D.va",
+      "lineId": "745035c3-abf3-4764-b1dd-cc2b407d307e",
+      "reason": "from-voice",
+      "before": "A, chuwo! (Hangul) Oh, it's so cold!",
+      "after": "(Korean) So cold",
+      "voice": "D.Va_-_(Korean)_So_cold.ogg"
+    },
+    {
+      "hero": "D.va",
+      "lineId": "ef1ad49a-c000-4d0a-83f2-e0be329947ca",
+      "reason": "from-voice",
+      "before": "Eichenwalde, King's Row or Volskaya Industries",
+      "after": "The destruction caused by the omnics here... it reminds me of home",
+      "voice": "D.Va_-_The_destruction_caused_by_the_omnics_here..._it_reminds_me_of_home.ogg"
+    },
+    {
+      "hero": "Domina",
+      "lineId": "ffb5bd0e-16e2-4826-a305-cbdc25e7fe72",
+      "reason": "from-voice",
+      "before": "Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years. It would be a shame if she... no, perish the thought.",
+      "after": "Lily von Arx fashions herself Europe's premier real estate mogul, but she's getting on in years",
+      "voice": "Domina_-_Lily_von_Arx_fashions_herself_Europe's_premier_real_estate_mogul,_but_she's_getting_on_in_years.ogg"
+    },
+    {
+      "hero": "Doomfist",
+      "lineId": "b163605c-8fbb-4f2e-a295-a9e94e189acc",
+      "reason": "from-voice",
+      "before": "Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.",
+      "after": "Lucheng understands an important fact, as long as we are shackled to a single planet, we are vulnerable",
+      "voice": "Doomfist_-_Lucheng_understands_an_important_fact,_as_long_as_we_are_shackled_to_a_single_planet,_we_are_vulnerable.ogg"
+    },
+    {
+      "hero": "Doomfist",
+      "lineId": "8b425282-13ef-46f1-b054-9d1697cb1cf5",
+      "reason": "from-voice",
+      "before": "If only you could see me now, Akinjide Adeyemi.",
+      "after": "If only you could see me now, Adeyemi",
+      "voice": "Doomfist_-_If_only_you_could_see_me_now,_Adeyemi.ogg"
+    },
+    {
+      "hero": "Echo",
+      "lineId": "aa57578c-29a2-46b0-ba0e-832c4aa53598",
+      "reason": "from-voice",
+      "before": "Duplicating dance moves! To the left, to the right! Mina Liao would be proud!",
+      "after": "Duplicating dance moves! To the left, to the right! Dr Liao would be proud",
+      "voice": "Echo_-_Duplicating_dance_moves!_To_the_left,_to_the_right!_Dr_Liao_would_be_proud.ogg"
+    },
+    {
+      "hero": "Echo",
+      "lineId": "7d8d07de-715a-44a7-9592-f262cb1c9fcf",
+      "reason": "from-voice",
+      "before": "Mm, mm, mm. Oh, ah, mm, mm, mmm... Oh! I think I slipped a circuit...",
+      "after": "I think I slipped a circuit",
+      "voice": "Echo_-_I_think_I_slipped_a_circuit.ogg"
+    },
+    {
+      "hero": "Echo",
+      "lineId": "dc28e80a-b3a3-4944-991e-b521ffa93ff9",
+      "reason": "from-voice",
+      "before": "It's a Reunion outside the crate!",
+      "after": "It's a completely different view outside the crate",
+      "voice": "Echo_-_It's_a_completely_different_view_outside_the_crate.ogg"
+    },
+    {
+      "hero": "Echo",
+      "lineId": "63285739-a9ef-4edb-84df-6dec54017892",
+      "reason": "from-voice",
+      "before": "Am I programmed to dance? Yeah! Oh, ooh, wooh!",
+      "after": "Am I programmed to dance. Yeah",
+      "voice": "Echo_-_Am_I_programmed_to_dance._Yeah.ogg"
+    },
+    {
+      "hero": "Echo",
+      "lineId": "8dd685a1-f4a2-472b-9b52-bb4c580aba99",
+      "reason": "from-voice",
+      "before": "Mmm, mmm, mmm, oh, ah, mmm, mmm, mmh, oh! I think I slipped a circuit!",
+      "after": "I think I slipped a circuit",
+      "voice": "Echo_-_I_think_I_slipped_a_circuit.ogg"
+    },
+    {
+      "hero": "Emre",
+      "lineId": "a8509859-ab36-4d47-9b70-95e60e298dfe",
+      "reason": "from-voice",
+      "before": "You know, I always wanted to retire here.",
+      "after": "You know, I always want to retire here",
+      "voice": "Emre_-_You_know,_I_always_want_to_retire_here.ogg"
+    },
+    {
+      "hero": "Freja",
+      "lineId": "3dfc8aa6-42c8-4a91-9f56-bcd569af300c",
+      "reason": "from-voice",
+      "before": "Nå, hvad er planen i dag?",
+      "after": "(Danish) What's the plan today",
+      "voice": "Freja_-_(Danish)_What's_the_plan_today.ogg"
+    },
+    {
+      "hero": "Freja",
+      "lineId": "0eed7659-b9e1-4a18-a526-55b79def6f6a",
+      "reason": "from-voice",
+      "before": "Ugh, Maximilien's casino... You'd think with all that money, the bot could afford some taste.",
+      "after": "Ah, Max's casino... You’d think with all that money, the bot could afford some taste",
+      "voice": "Freja_-_Ah,_Max's_casino..._You’d_think_with_all_that_money,_the_bot_could_afford_some_taste.ogg"
+    },
+    {
+      "hero": "Freja",
+      "lineId": "6dc5dd6c-4f67-4726-aab0-c30c3e5192cd",
+      "reason": "from-voice",
+      "before": "Doesn't get more remote than this. Huh, I wonder if I could afford a flat here...",
+      "after": "Doesn't get more remote than this. Wonder if I could afford a flat here",
+      "voice": "Freja_-_Doesn't_get_more_remote_than_this._Wonder_if_I_could_afford_a_flat_here.ogg"
+    },
+    {
+      "hero": "Genji",
+      "lineId": "a8144717-fdb4-4509-8749-36ca3cf89681",
+      "reason": "from-voice",
+      "before": "Waga katana wa togisumasa re, kokoro ni mijin no mayoi nashi. (Japanese) My sword is sharpened, and there is not the slightest doubt in my mind.",
+      "after": "(Japanese) My blade is sharpened, and my will is pure",
+      "voice": "Genji_-_(Japanese)_My_blade_is_sharpened,_and_my_will_is_pure.ogg"
+    },
+    {
+      "hero": "Genji",
+      "lineId": "382852a5-509c-4d23-be9b-453e6201ff53",
+      "reason": "from-voice",
+      "before": "It is not my duty to face the Hashimoto clan. Yet, I cannot bear to walk away.",
+      "after": "It is not my duty to face the Hashimoto. Yet, I cannot bear to walk away",
+      "voice": "Genji_-_It_is_not_my_duty_to_face_the_Hashimoto._Yet,_I_cannot_bear_to_walk_away.ogg"
+    },
+    {
+      "hero": "Genji",
+      "lineId": "3fdf2183-31dd-45ca-8e7d-28d48cdc849f",
+      "reason": "from-voice",
+      "before": "Rakushō da na! (Japanese) Piece of cake!",
+      "after": "(Japanese) Easy (2)",
+      "voice": "Genji_-_(Japanese)_Easy_(2).ogg"
+    },
+    {
+      "hero": "Genji",
+      "lineId": "e0f4a676-caa6-4c0e-ba72-c129f683b3cb",
+      "reason": "from-voice",
+      "before": "Heh. Nerai wa hazusanee. (Japanese) I don't miss my target.",
+      "after": "(Japanese) Heh. I never miss",
+      "voice": "Genji_-_(Japanese)_Heh._I_never_miss.ogg"
+    },
+    {
+      "hero": "Genji",
+      "lineId": "b5583757-db4e-45ec-8f5d-7d15d74f95b9",
+      "reason": "from-voice",
+      "before": "I Retribution this place. (sigh)",
+      "after": "I remember this place",
+      "voice": "Genji_-_I_remember_this_place.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "lineId": "69c912ed-0384-4f50-9799-4035499dd34b",
+      "reason": "from-voice",
+      "before": "I should really visit Asa Yamagami. (sigh) But I already know what she's going to say.",
+      "after": "I should really visit Asa-sensei. But I already know what she's going to say",
+      "voice": "Hanzo_-_I_should_really_visit_Asa-sensei._But_I_already_know_what_she's_going_to_say.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "lineId": "39cee5d5-10c3-4dab-b468-2bb5aab487ca",
+      "reason": "from-voice",
+      "before": "By my arrow, the Hashimoto clan will pay for what they have done to my home.",
+      "after": "By my arrow, the Hashimoto will pay for what they have done to my home",
+      "voice": "Hanzo_-_By_my_arrow,_the_Hashimoto_will_pay_for_what_they_have_done_to_my_home.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "lineId": "9a4e81f9-d822-471c-8c46-ea1a7f8e03c0",
+      "reason": "from-voice",
+      "before": "My enemies fall like ... heh heh heh, destroyed piñatas!",
+      "after": "My enemies fall like destroyed piñatas",
+      "voice": "Hanzo_-_My_enemies_fall_like_destroyed_piñatas.ogg"
+    },
+    {
+      "hero": "Hanzo",
+      "lineId": "a880d6f7-0889-473d-b483-fd11db399dd7",
+      "reason": "from-voice",
+      "before": "The concerns of my life seem so distant from here.",
+      "after": "The concerns of my life seem so distant from up here",
+      "voice": "Hanzo_-_The_concerns_of_my_life_seem_so_distant_from_up_here.ogg"
+    },
+    {
+      "hero": "Hazard",
+      "lineId": "cb244043-31b8-406d-bb9c-38bea0c9c962",
+      "reason": "from-voice",
+      "before": "Check out these new 'gradies. Phreaks's work. Outdid herself again!",
+      "after": "Check out these new 'gradies. Touch-Up's work. Outdid herself again",
+      "voice": "Hazard_-_Check_out_these_new_'gradies._Touch-Up's_work._Outdid_herself_again.ogg"
+    },
+    {
+      "hero": "Illari",
+      "lineId": "3665d221-feb0-40ab-9e14-e71eb5f4b0f8",
+      "reason": "from-voice",
+      "before": "(sigh) Pampachaway.",
+      "after": "(Quechua) (sigh) I'm sorry",
+      "voice": "Illari_-_(Quechua)_(sigh)_I'm_sorry.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "c3fa17ab-6417-403a-a319-1fcad79b6491",
+      "reason": "from-voice",
+      "before": "Before we go out there, I gotta' warn ya: I'm gonna yell at ya... a lot. Not because I don't like ya, or because I care, or any of that. It's just because... I'm really good at this.",
+      "after": "Before we go out there, I gotta warn ya. I'm gonna yell at ya a lot",
+      "voice": "Junker_Queen_-_Before_we_go_out_there,_I_gotta_warn_ya._I'm_gonna_yell_at_ya_a_lot.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "41c3906e-b330-4f40-a4eb-eccc1de88942",
+      "reason": "from-voice",
+      "before": "So, here the plan. Do what I do, listen to what I say. And don't screw this up!",
+      "after": "So, here's the plan. Do what I do, listen to what I say, and don't screw this up",
+      "voice": "Junker_Queen_-_So,_here's_the_plan._Do_what_I_do,_listen_to_what_I_say,_and_don't_screw_this_up.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "f6f6ccbd-b8fd-456f-97cd-fa35345db003",
+      "reason": "from-voice",
+      "before": "The knife's called Gracie, the axe is Carnage... and me? Ha ha, I'm your Queen.",
+      "after": "The knife's called Gracie. The axe is Carnage. And me. I'm your Queen",
+      "voice": "Junker_Queen_-_The_knife's_called_Gracie._The_axe_is_Carnage._And_me._I'm_your_Queen.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "06e5ec63-2885-44dc-98fb-e153c70d9931",
+      "reason": "from-voice",
+      "before": "Doctor, have I really got to eat vegetables? It's like CRUNCH, CRUNCH, CRUNCH, how long have I got to chew these?!",
+      "after": "Doctor, have I really gotta eat vegetables. It's like, crunch, crunch, crunch, how long have I gotta chew these",
+      "voice": "Junker_Queen_-_Doctor,_have_I_really_gotta_eat_vegetables._It's_like,_crunch,_crunch,_crunch,_how_long_have_I_gotta_chew_these.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "4f16466c-9d25-446c-8905-6d7b9e69a34f",
+      "reason": "from-voice",
+      "before": "Wish one of those Gwishin would attack. I don't need a mech to fight them.",
+      "after": "Wish one of those big underwater robots would attack. I don't need a mech to fight them",
+      "voice": "Junker_Queen_-_Wish_one_of_those_big_underwater_robots_would_attack._I_don't_need_a_mech_to_fight_them.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "e6d1029b-0038-462e-a55f-290d6f0f97e4",
+      "reason": "from-voice",
+      "before": "The Legend of the Junker Queen Ah, drat. I forgot the words again! Err... Time for the reckoning!",
+      "after": "I know sacrifice and I know pain... Ah, drat. I forgot the words again! Err... Time for the reckoning",
+      "voice": "Junker_Queen_-_I_know_sacrifice_and_I_know_pain..._Ah,_drat._I_forgot_the_words_again!_Err..._Time_for_the_reckoning.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "f5f66f30-f48c-410a-953e-40d0fbf53d75",
+      "reason": "from-voice",
+      "before": "I don't see what's so fancy about Rome. Hardly any scrap heaps at all.",
+      "after": "I don't see what's so fancy about it Rome. Hardly any scrap heaps at all",
+      "voice": "Junker_Queen_-_I_don't_see_what's_so_fancy_about_it_Rome._Hardly_any_scrap_heaps_at_all.ogg"
+    },
+    {
+      "hero": "Junker Queen",
+      "lineId": "7a4b597b-fa40-4963-9ba7-a42a46f546f4",
+      "reason": "from-voice",
+      "before": "Yeah-e-eah, this is MY city! Don't you dare put a scratch on it!",
+      "after": "Yeah, this is my city! Don't you dare put a scratch on it",
+      "voice": "Junker_Queen_-_Yeah,_this_is_my_city!_Don't_you_dare_put_a_scratch_on_it.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "85763bcd-7f7a-491f-904f-507fc52785c4",
+      "reason": "from-voice",
+      "before": "Feast your eyes upon this hand-curated assortment of tasteful pyrotechnic delights, with which I intend to entertain you this evening. Or possibly morning... What time is it?",
+      "after": "Feast your eyes upon this hand-curated assortment of tasteful pyrotechnic delights",
+      "voice": "Junkrat_-_Feast_your_eyes_upon_this_hand-curated_assortment_of_tasteful_pyrotechnic_delights.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "209ee8cf-b45b-43df-9fb5-6de2853ad752",
+      "reason": "from-voice",
+      "before": "(singing:) Had me brekky in a billabong! Me night was short but me day was long... Sooo long!",
+      "after": "Had my brekky in a billabong! Me night was short but me day was long... So long",
+      "voice": "Junkrat_-_Had_my_brekky_in_a_billabong!_Me_night_was_short_but_me_day_was_long..._So_long.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "3cfedbcc-3714-48f4-b8ea-1e2759b7b5ae",
+      "reason": "from-voice",
+      "before": "Now, I know I ain't got many mates among this group, but I hope we can look past our differences and proceed forward, with mutual respect, into a bold and prosperous future, inclusive of a few modest explosions, as the circumstances permit.",
+      "after": "Now, I know I ain't got many mates among this group, but I hope we can look past our differences and proceed forward",
+      "voice": "Junkrat_-_Now,_I_know_I_ain't_got_many_mates_among_this_group,_but_I_hope_we_can_look_past_our_differences_and_proceed_forward.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "9b14a02a-4108-4e0a-9dc6-2bf2565baede",
+      "reason": "from-voice",
+      "before": "So, I was like, Roadhog, mate, just 'cause that's how you see it, doesn't mean that's how she sees it, right? But enough of my earbashing. Let's get out there.",
+      "after": "So I was like, Roadhog, mate, just cuz that's how you see it doesn't mean that's how she sees it, right",
+      "voice": "Junkrat_-_So_I_was_like,_Roadhog,_mate,_just_cuz_that's_how_you_see_it_doesn't_mean_that's_how_she_sees_it,_right.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "e67ae38e-4a32-4ace-834b-56a36e403d01",
+      "reason": "from-voice",
+      "before": "We've got everybody! Beamsy. Sniperetta. The Lonely Bowman. Oh-ho-ho! We're gonna have fun.",
+      "after": "We've got everybody! Beamsy! Sniperetta! The Lonely Bowman! Oh we're going to have fun",
+      "voice": "Junkrat_-_We've_got_everybody!_Beamsy!_Sniperetta!_The_Lonely_Bowman!_Oh_we're_going_to_have_fun.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "c838874d-3aea-492e-bd7c-53078ba9d189",
+      "reason": "from-voice",
+      "before": "(singing the blues:) Met this sheila in a haunted bog, ha ha! She cursed my dreams with a poisoned frog, oh no!",
+      "after": "Met this sheila in a haunted bog! She cursed my dreams with a poisoned frog, oh no",
+      "voice": "Junkrat_-_Met_this_sheila_in_a_haunted_bog!_She_cursed_my_dreams_with_a_poisoned_frog,_oh_no.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "9a975be1-04db-4dfb-9df2-172ed7865294",
+      "reason": "from-voice",
+      "before": "Dee-ap dap da-bee da! Dee-a dap-da doo! Dee-ap dap da-bee da! Rrr-i dogga-dappa doo!",
+      "after": "Dee ap dap da bee da! Dee a dap da boo",
+      "voice": "Junkrat_-_Dee_ap_dap_da_bee_da!_Dee_a_dap_da_boo.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "f7554721-0a43-46b5-ab08-1417a82482ec",
+      "reason": "from-voice",
+      "before": "Junkrat-Junker-Jun-ju-ju-ja, Junker-Junker-Junk, Junk-rat-rat, Junkrat-Junkrat-Junkrat, Junkrat-d-drat, d-drat, d-drat-drat-drat...",
+      "after": "Junkrat-Junkrat-Junkrat-Junkrat, Junkrat-Junkrat-Junkrat-Junkrat",
+      "voice": "Junkrat_-_Junkrat-Junkrat-Junkrat-Junkrat,_Junkrat-Junkrat-Junkrat-Junkrat.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "f2b46f29-e002-4357-af24-d6b3c324a046",
+      "reason": "from-voice",
+      "before": "Stealing is my favorite role, here's a list of the things I stole: diamonds, emeralds, magic jewels! Expensive, prosthodontic tools! Fancy bikes and shoes with spikes! Herds of exotic wildlife! Cash, and gold, and all that muck! Once, I stole a firetruck! Hoo-hoooo!",
+      "after": "Stealing is my favorite role! Here's a list of the things I stole! Diamonds, em'ralds, magic jewels",
+      "voice": "Junkrat_-_Stealing_is_my_favorite_role!_Here's_a_list_of_the_things_I_stole!_Diamonds,_em'ralds,_magic_jewels.ogg"
+    },
+    {
+      "hero": "Junkrat",
+      "lineId": "7ca51b7c-72a5-430d-ae75-af915b8043ce",
+      "reason": "from-voice",
+      "before": "0.4 seconds to go, there's the buzzer... and he scores! He's done it!",
+      "after": "0.4 seconds ago, there's the buzzer... and he scores! He's done it",
+      "voice": "Junkrat_-_0.4_seconds_ago,_there's_the_buzzer..._and_he_scores!_He's_done_it.ogg"
+    },
+    {
+      "hero": "Juno",
+      "lineId": "c4d3339e-ff79-4e68-b2a9-24340a8d0693",
+      "reason": "from-voice",
+      "before": "A cowboy with six guns? Oh, Khiem Van Minh will love this!",
+      "after": "A cowboy with six guns. Father will love this",
+      "voice": "Juno_-_A_cowboy_with_six_guns._Father_will_love_this.ogg"
+    },
+    {
+      "hero": "Juno",
+      "lineId": "02dd12e2-e802-4f8d-b540-b6f6f0d4d4d7",
+      "reason": "from-voice",
+      "before": "I cannot help but wonder how our base lost contact with Lucheng Interstellar.",
+      "after": "I cannot help but wonder how our base lost contact with Lucheng",
+      "voice": "Juno_-_I_cannot_help_but_wonder_how_our_base_lost_contact_with_Lucheng.ogg"
+    },
+    {
+      "hero": "Juno",
+      "lineId": "0d50a70d-b740-4d38-965f-195690186868",
+      "reason": "from-voice",
+      "before": "Khiem Van Minh said there is authentic Vietnamese food in big cities! What should I try first?",
+      "after": "Father said there is authentic Vietnamese food in big cities. What should I try first",
+      "voice": "Juno_-_Father_said_there_is_authentic_Vietnamese_food_in_big_cities._What_should_I_try_first.ogg"
+    },
+    {
+      "hero": "Juno",
+      "lineId": "9a809396-e3d7-40d9-a533-34ab21486d57",
+      "reason": "from-voice",
+      "before": "I will never forgive Talon for Overwatch: Undivided From the Ashes!",
+      "after": "I will never forgive Talon for attacking my new home",
+      "voice": "Juno_-_I_will_never_forgive_Talon_for_attacking_my_new_home.ogg"
+    },
+    {
+      "hero": "Kiriko",
+      "lineId": "1c6f8ee6-aa78-4a8a-ba97-4bd7e6eb79b6",
+      "reason": "from-voice",
+      "before": "They have this coming. So let's give it to them.",
+      "after": "They had this coming. So let's give it to them",
+      "voice": "Kiriko_-_They_had_this_coming._So_let's_give_it_to_them.ogg"
+    },
+    {
+      "hero": "Kiriko",
+      "lineId": "9cd5db5c-dfe7-4953-a0d6-db1dd77a5083",
+      "reason": "from-voice",
+      "before": "I should check in on Yoshida while I'm here. And maybe get some sweets for Akari...",
+      "after": "I should check in on Mr. Yoshida while I'm here. And maybe get some sweets for Akari",
+      "voice": "Kiriko_-_I_should_check_in_on_Mr._Yoshida_while_I'm_here._And_maybe_get_some_sweets_for_Akari.ogg"
+    },
+    {
+      "hero": "Kiriko",
+      "lineId": "aae6dd6b-64c1-4429-b679-135d84057d18",
+      "reason": "from-voice",
+      "before": "No one is taking my home from me.",
+      "after": "No one's taking my home from me",
+      "voice": "Kiriko_-_No_one's_taking_my_home_from_me.ogg"
+    },
+    {
+      "hero": "Kiriko",
+      "lineId": "89b0ce54-e549-4568-bb40-3d34335f0124",
+      "reason": "from-voice",
+      "before": "These are the first cacti I've seen that weren't dying on someone's windowsill.",
+      "after": "These are the first cacti I've seen that weren't dying on somebody's windowsill",
+      "voice": "Kiriko_-_These_are_the_first_cacti_I've_seen_that_weren't_dying_on_somebody's_windowsill.ogg"
+    },
+    {
+      "hero": "Lifeweaver",
+      "lineId": "7401479f-1dd6-47fc-81cf-63c39c6491b4",
+      "reason": "from-voice",
+      "before": "Do not fear. You have not one, but two Vishkar architects on your side... Yes. One dropped out, and the other one wants me to shut up. But wait until you see us in action.",
+      "after": "Do not fear! You have not one, but two Vishkar architechs on your side. Yes, one dropped out, and the other one w",
+      "voice": "Lifeweaver_-_Do_not_fear!_You_have_not_one,_but_two_Vishkar_architechs_on_your_side._Yes,_one_dropped_out,_and_the_other_one_w.ogg"
+    },
+    {
+      "hero": "Lifeweaver",
+      "lineId": "b36a9aa3-37cd-4c0b-b320-8367fdf323f6",
+      "reason": "from-voice",
+      "before": "Such a tragedy, what happened here. Poor Mei.",
+      "after": "Such a tragedy, what happened here. Poor Doctor Zhou",
+      "voice": "Lifeweaver_-_Such_a_tragedy,_what_happened_here._Poor_Doctor_Zhou.ogg"
+    },
+    {
+      "hero": "Lifeweaver",
+      "lineId": "4f012d5d-99d5-42c2-9757-3ea086b8a6b6",
+      "reason": "from-voice",
+      "before": "I keep meaning to visit the Museu Martins while I'm here. I love how this town honors them.",
+      "after": "I keep meaning to visit the Martinses' museum while I'm here. I love how this town honors them",
+      "voice": "Lifeweaver_-_I_keep_meaning_to_visit_the_Martinses'_museum_while_I'm_here._I_love_how_this_town_honors_them.ogg"
+    },
+    {
+      "hero": "Lúcio",
+      "lineId": "9b0caad4-14fb-4623-bc97-b5f5a9a58062",
+      "reason": "from-voice",
+      "before": "Settin' my equalizer to absolute destruction.",
+      "after": "Setting my equalizer to absolute destruction",
+      "voice": "Lúcio_-_Setting_my_equalizer_to_absolute_destruction.ogg"
+    },
+    {
+      "hero": "Mauga",
+      "lineId": "7ab55466-9aef-4487-8513-55b35bb40ced",
+      "reason": "from-voice",
+      "before": "When are they gonna make a super car my size?",
+      "after": "When are they going to make a super car my size",
+      "voice": "Mauga_-_When_are_they_going_to_make_a_super_car_my_size.ogg"
+    },
+    {
+      "hero": "Mauga",
+      "lineId": "5037de02-a0c2-4309-9f78-a329ceb80671",
+      "reason": "from-voice",
+      "before": "Hey, look. You could see the super coral from here.",
+      "after": "Hey, look. You can see the super coral from here",
+      "voice": "Mauga_-_Hey,_look._You_can_see_the_super_coral_from_here.ogg"
+    },
+    {
+      "hero": "Mauga",
+      "lineId": "8c7ca460-4efb-4709-a086-c5924b501250",
+      "reason": "from-voice",
+      "before": "Ouā! That's the island welcome! (Samoan) Whoo! That's the island welcome!",
+      "after": "That's the island welcome",
+      "voice": "Mauga_-_That's_the_island_welcome.ogg"
+    },
+    {
+      "hero": "Mei",
+      "lineId": "91a5e3be-5f49-4acd-a5a2-4b66bf9996b5",
+      "reason": "from-voice",
+      "before": "Zhège shìjiè xūyào wǒmen! (Hanzi) This world needs us!",
+      "after": "(Chinese) The world needs us",
+      "voice": "Mei_-_(Chinese)_The_world_needs_us.ogg"
+    },
+    {
+      "hero": "Mei",
+      "lineId": "6533dcb6-f608-4e47-9516-eb28db0c3fc4",
+      "reason": "from-voice",
+      "before": "Hey! Be careful, Juno. Your Jiayi Teo will be furious if I let anything happen to you!",
+      "after": "Hey! Be careful, Juno. Your mother will be furious if I let anything happen to you",
+      "voice": "Mei_-_Hey!_Be_careful,_Juno._Your_mother_will_be_furious_if_I_let_anything_happen_to_you.ogg"
+    },
+    {
+      "hero": "Mei",
+      "lineId": "e753cfc1-a97f-4bea-b64a-bb3921db8c8e",
+      "reason": "strip-wiki",
+      "before": "I heard someone climbed [https://en.wikipedia.org/wiki/Ulvetanna_Peak Ulvetanna] without ropes? Torres would have been so jealous!",
+      "after": "I heard someone climbed Ulvetanna without ropes? Torres would have been so jealous!",
+      "voice": "Mei_-_I_heard_someone_climbed_Ulvetanna_without_ropes._Torres_would_have_been_so_jealous.ogg"
+    },
+    {
+      "hero": "Mei",
+      "lineId": "a9030df7-7f1a-4e55-a883-3ad21c25a454",
+      "reason": "from-voice",
+      "before": "Zhǎo a zhǎo a zhǎo péngyǒu—a, nǐ bùshì wǒ de hǎo péngyǒu! Bīng zhù nǐ a qiāoqiāo tóu, guāiguāi dòng zhù bùxǔ zǒu! (Hanzi) Looking, looking, looking for my friends—Wait, you are not my friend! I'll freeze you up, you're not allowed to leave!",
+      "after": "(Chinese) Looking, looking, for my friends - Wait, you are not my friend! Freeze you up, knock your head!",
+      "voice": "Mei_-_(Chinese)_Looking,_looking,_for_my_friends_-_Wait,_you_are_not_my_friend!_Freeze_you_up,_knock_your_head!.ogg"
+    },
+    {
+      "hero": "Mercy",
+      "lineId": "555cf473-a99b-40c8-839f-bef9df89baba",
+      "reason": "from-voice",
+      "before": "Deh-deh deh-deh, deh, deh, do-do-do, do-do-do. Rrum-pum-pum, do-do, do-do, do-do-do. I love this song!",
+      "after": "Da da da. Do do do. I love this song",
+      "voice": "Mercy_-_Da_da_da._Do_do_do._I_love_this_song.ogg"
+    },
+    {
+      "hero": "Mercy",
+      "lineId": "6ddd11ca-c7cf-4164-8a29-293eb19ca662",
+      "reason": "from-voice",
+      "before": "La la la, la-la, lah! Do, do, do-do-doo! Ich liebe Musik! La la la, ja! Super.",
+      "after": "La la la. Do do do. (German)",
+      "voice": "Mercy_-_La_la_la._Do_do_do._(German).ogg"
+    },
+    {
+      "hero": "Mercy",
+      "lineId": "c97e3846-70c4-4db4-85f9-99c40bfe34cf",
+      "reason": "from-voice",
+      "before": "I'm a dancing doctor, dancing doctor, I'm a dancing doctor, I'm a dancing doctor, juhuu! Hoi zäme!",
+      "after": "I'm a dancing doctor...(German)",
+      "voice": "Mercy_-_I'm_a_dancing_doctor...(German).ogg"
+    },
+    {
+      "hero": "Mercy",
+      "lineId": "6c59900b-cfdf-4000-8133-66725e11dc37",
+      "reason": "from-voice",
+      "before": "Come on, Reinhardt! Show me what you got. \"Sexy, sexy Reinhardt\"... not. (laughs)",
+      "after": "Come on Reinhardt...sexy Reinhardt. Not",
+      "voice": "Mercy_-_Come_on_Reinhardt...sexy_Reinhardt._Not.ogg"
+    },
+    {
+      "hero": "Mizuki",
+      "lineId": "ab1f9e32-6034-42ea-abba-77efb949276e",
+      "reason": "from-voice",
+      "before": "That The Iris stuff freaks me out. At least the spirits can't follow me here... can they?",
+      "after": "That Iris stuff freaks me out. At least the spirits can't follow me here... can they",
+      "voice": "Mizuki_-_That_Iris_stuff_freaks_me_out._At_least_the_spirits_can't_follow_me_here..._can_they.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "8447743d-2b9a-4dc1-aab5-5274e140e138",
+      "reason": "from-voice",
+      "before": "I cannot believe I am being subjected to this... cacophony. And they say my actions are unethical.",
+      "after": "I can't believe I'm being subjected to this... Cacophony. And they say that my actions are unethical",
+      "voice": "Moira_-_I_can't_believe_I'm_being_subjected_to_this..._Cacophony._And_they_say_that_my_actions_are_unethical.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "5edb8cc2-1a12-4157-bc9c-13d5a2cdcbdc",
+      "reason": "from-voice",
+      "before": "Timendi causa, est nescire. (Latin) Ignorance is the cause of fear.",
+      "after": "(Latin) Ignorance is the cause",
+      "voice": "Moira_-_(Latin)_Ignorance_is_the_cause.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "bad9dded-7743-4bea-9e77-1379d88f982e",
+      "reason": "strip-wiki",
+      "before": "[https://en.wikipedia.org/wiki/Seneca_the_Younger Seneca] said that the cause of fear is ignorance. If only anyone had listened.",
+      "after": "Seneca said that the cause of fear is ignorance. If only anyone had listened.",
+      "voice": "Moira_-_Seneca_said_that_the_cause_of_fear_is_ignorance._If_only_anyone_had_listened.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "9f143dc4-ed35-4876-8e92-e0947649f9be",
+      "reason": "from-voice",
+      "before": "They say Wrath of the Bride... but those are just fairytales.",
+      "after": "They say a banshee haunts these grounds... but those are just fairytales",
+      "voice": "Moira_-_They_say_a_banshee_haunts_these_grounds..._but_those_are_just_fairytales.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "54c782dd-e6af-44b1-9c59-b1688eca59dc",
+      "reason": "from-voice",
+      "before": "A dreamer is one who can only find his way by moonlight, and his punishment is that he sees the dawn before the rest of the world.",
+      "after": "A dreamer is one who can only find his way by moonlight, and his punishment is that he sees the dawn before the r",
+      "voice": "Moira_-_A_dreamer_is_one_who_can_only_find_his_way_by_moonlight,_and_his_punishment_is_that_he_sees_the_dawn_before_the_r.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "7f130b62-0124-4116-8073-fea5a2253f46",
+      "reason": "from-voice",
+      "before": "Hm. Beings born of science Shambali in faith.",
+      "after": "Hm. Beings born of science seeking answers in faith",
+      "voice": "Moira_-_Hm._Beings_born_of_science_seeking_answers_in_faith.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "4624a2c8-8c91-4ffc-860a-23ce4b49d9b3",
+      "reason": "from-voice",
+      "before": "Níl aon tinteán mar do thinteán féin. (Irish) There is no hearth like your own hearth.",
+      "after": "(Irish) There's no place like home",
+      "voice": "Moira_-_(Irish)_There's_no_place_like_home.ogg"
+    },
+    {
+      "hero": "Moira",
+      "lineId": "9d7ea59d-2689-4c55-89db-0a2b7c828384",
+      "reason": "from-voice",
+      "before": "This city brings back Retribution...",
+      "after": "This city brings back memories",
+      "voice": "Moira_-_This_city_brings_back_memories.ogg"
+    },
+    {
+      "hero": "Orisa",
+      "lineId": "86999d39-fe67-4fdc-bddf-0069e0796aa9",
+      "reason": "from-voice",
+      "before": "Mo wà ní ilé. (Yoruba) I am home.",
+      "after": "(Yoruba) I am home",
+      "voice": "Orisa_-_(Yoruba)_I_am_home.ogg"
+    },
+    {
+      "hero": "Pharah",
+      "lineId": "aff6f959-48c4-448d-80b6-6397a4137c46",
+      "reason": "from-voice",
+      "before": "Forget regulation. After this mission, I'm throwing a party.",
+      "after": "Forget regulation. After the mission I'm throwing a party",
+      "voice": "Pharah_-_Forget_regulation._After_the_mission_I'm_throwing_a_party.ogg"
+    },
+    {
+      "hero": "Pharah",
+      "lineId": "ec886f1a-cc5a-4b97-83d9-a58e9321d136",
+      "reason": "from-voice",
+      "before": "There is always room for improvement.",
+      "after": "There is always rom for improvement",
+      "voice": "Pharah_-_There_is_always_rom_for_improvement.ogg"
+    },
+    {
+      "hero": "Pharah",
+      "lineId": "3109b76c-e7aa-4d4e-8621-20d57f058828",
+      "reason": "from-voice",
+      "before": "I'm the best when push comes to shove, direct complaints to my metal glove. Here comes the moment that you all love... JUSTICE RAINS FROM ABOVE! Lyrical superiority achieved!",
+      "after": "I'm the best when push comes to shove, direct complaints to my metal glove, here comes the moment that",
+      "voice": "Pharah_-_I'm_the_best_when_push_comes_to_shove,_direct_complaints_to_my_metal_glove,_here_comes_the_moment_that.ogg"
+    },
+    {
+      "hero": "Pharah",
+      "lineId": "469a73bb-3865-4a8d-896c-d322315676ca",
+      "reason": "from-voice",
+      "before": "City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats escaped... again.",
+      "after": "City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats",
+      "voice": "Pharah_-_City_of_unfettered_scientists,_yeah..._until_they_call_Helix_in_tears_at_two_in_the_morning_because_the_wolfbats.ogg"
+    },
+    {
+      "hero": "Ramattra",
+      "lineId": "f8a09be7-487c-40ee-8c77-9055babde7fe",
+      "reason": "from-voice",
+      "before": "I lost Mondatta here, Alive. I hope I haven't Reconciliation.",
+      "after": "I lost a brother here, years ago. I hope I haven't lost another",
+      "voice": "Ramattra_-_I_lost_a_brother_here,_years_ago._I_hope_I_haven't_lost_another.ogg"
+    },
+    {
+      "hero": "Reaper",
+      "lineId": "c9c06758-3ea2-42e9-a112-77fcf504e659",
+      "reason": "from-voice",
+      "before": "You think Lucheng Interstellar is clean? (chuckles) Nobody is clean.",
+      "after": "You think Lucheng Interstellar is clean. Nobody's clean",
+      "voice": "Reaper_-_You_think_Lucheng_Interstellar_is_clean._Nobody's_clean.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "lineId": "2f694b74-dafe-48fd-a7fe-d6096456f42c",
+      "reason": "from-voice",
+      "before": "Do, da-da, da, hammer down! Ha, ba-ba, da, do-do-do! Hee, hee, ba-da, ho-ho-ho! Yes, yes! (laughs)",
+      "after": "Hammer down! Yes, yes",
+      "voice": "Reinhardt_-_Hammer_down!_Yes,_yes.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "lineId": "5b7cdb1d-881d-4d88-bdbd-04e8a63ee23f",
+      "reason": "from-voice",
+      "before": "Ooh, do-do, watch me now! Ha, haha, look at me! Da, da, da-da, do-do-do! Ya-da, doo-doo, doo-doo! Ha.",
+      "after": "Watch me now! Look at me",
+      "voice": "Reinhardt_-_Watch_me_now!_Look_at_me.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "lineId": "fc22a951-506e-48b4-b224-7569d896e855",
+      "reason": "from-voice",
+      "before": "Oh, ha-ba, da-da-da. Ooh, yes, hammer down! Ha, ha-ba-da, da-da-da. Ah, I love this!",
+      "after": "Oh, yes, hammer down! Ahhh, I love this",
+      "voice": "Reinhardt_-_Oh,_yes,_hammer_down!_Ahhh,_I_love_this.ogg"
+    },
+    {
+      "hero": "Reinhardt",
+      "lineId": "c67e25aa-5fd8-451f-bcc2-d653cb5c4029",
+      "reason": "from-voice",
+      "before": "I love car races! High octane, burning rubber! Um... the thrill of the chase! Ooh! Pedal to the metal!",
+      "after": "I love car races! High octane! Burning rubber! Um... The thrill of the chase! Ooh! Pedal to the medal",
+      "voice": "Reinhardt_-_I_love_car_races!_High_octane!_Burning_rubber!_Um..._The_thrill_of_the_chase!_Ooh!_Pedal_to_the_medal.ogg"
+    },
+    {
+      "hero": "Shion",
+      "lineId": "f06030d4-aa98-4a45-8495-97a0f662ffc5",
+      "reason": "from-voice",
+      "before": "Dōshite watashi ga kon'na yatsura to? (Japanese) Why do I have to be stuck with these losers?",
+      "after": "(Japanese) What’s there to be happy about, being stuck with these losers",
+      "voice": "Shion_-_(Japanese)_What’s_there_to_be_happy_about,_being_stuck_with_these_losers.ogg"
+    },
+    {
+      "hero": "Shion",
+      "lineId": "554e6244-7322-4d9f-8cb9-d4de629959ca",
+      "reason": "from-voice",
+      "before": "Koko ni wa kita koto ga aru... Chikagoro wa shitai sura korogattenai n da na. (Japanese) I've been here before... Fewer bodies lying around these days.",
+      "after": "(Japanese) I remember this street... fewer bodies, now",
+      "voice": "Shion_-_(Japanese)_I_remember_this_street..._fewer_bodies,_now.ogg"
+    },
+    {
+      "hero": "Sierra",
+      "lineId": "d4cef76d-ba76-4abc-bcbb-2410e49be523",
+      "reason": "from-voice",
+      "before": "Your life's more important than a mission, okay? Stay safe out there.",
+      "after": "You're life's more important than a mission, okay. Stay safe out there",
+      "voice": "Sierra_-_You're_life's_more_important_than_a_mission,_okay._Stay_safe_out_there.ogg"
+    },
+    {
+      "hero": "Sierra",
+      "lineId": "33ce6ba7-cdfa-4c44-b9cd-a66241f5bfc4",
+      "reason": "from-voice",
+      "before": "Soldier: 76 Hero Futures Past, alright. I won't let up until I get answers.",
+      "after": "76 was here, alright. I won’t let up until I get answers",
+      "voice": "Sierra_-_76_was_here,_alright._I_won’t_let_up_until_I_get_answers.ogg"
+    },
+    {
+      "hero": "Sierra",
+      "lineId": "55b095b5-e47c-4ab5-8c33-4a6bc7035d1e",
+      "reason": "from-voice",
+      "before": "I'm still looking, Kendra Woods. I know you're out there somewhere.",
+      "after": "I'm still looking, momma. I know you're out there somewhere",
+      "voice": "Sierra_-_I'm_still_looking,_momma._I_know_you're_out_there_somewhere.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "04984816-261f-4d35-98e5-064fc9273602",
+      "reason": "from-voice",
+      "before": "The delta M of a given ray Q is approximately... Hmpfh. The formula escapes me.",
+      "after": "The delta M of a given ray Q is approximately... Hmph. The formula escapes me",
+      "voice": "Sigma_-_The_delta_M_of_a_given_ray_Q_is_approximately..._Hmph._The_formula_escapes_me.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "800b035a-bff3-4aef-9dbb-580deb927ff1",
+      "reason": "from-voice",
+      "before": "Ik sta te popelen!",
+      "after": "(Dutch) I can't wait to begin",
+      "voice": "Sigma_-_(Dutch)_I_can't_wait_to_begin.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "840a763e-7b84-4b12-b87e-b8bf1f63ff79",
+      "reason": "from-voice",
+      "before": "[Distracted humming] Oh. I see. [Clears throat]",
+      "after": "(distracted humming) Oh! I see. (clears throat)",
+      "voice": "Sigma_-_(distracted_humming)_Oh!_I_see._(clears_throat).ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "57462ffa-10bc-461b-8970-df2148ac9364",
+      "reason": "from-voice",
+      "before": "This is my favorite exercise! (chuckle) A test of force, inertia, and, uh, I... I've lost my train of thought.",
+      "after": "This is my favorite exercise! A test of force, inertia, and... I-I've lost my train of thought",
+      "voice": "Sigma_-_This_is_my_favorite_exercise!_A_test_of_force,_inertia,_and..._I-I've_lost_my_train_of_thought.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "57787c77-d9ee-497b-b89c-803d3f3a5020",
+      "reason": "from-voice",
+      "before": "(laughs) Get down with Sigma tonight! Lekker, stroopwafel.",
+      "after": "Get down with Sigma tonight, like a stroopwafel",
+      "voice": "Sigma_-_Get_down_with_Sigma_tonight,_like_a_stroopwafel.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "4d579fb8-80b6-4247-aeb5-846ad8084a1f",
+      "reason": "from-voice",
+      "before": "Beyond the edge of the world, there's a space where emptiness and substance neatly overlap. Where past and future form a continuous, endless loop. And hovering about there are signs no one has ever read, chords no one has ever heard.",
+      "after": "Beyond the edge of the world there's a space where emptiness and substance neatly overlap, where past and future",
+      "voice": "Sigma_-_Beyond_the_edge_of_the_world_there's_a_space_where_emptiness_and_substance_neatly_overlap,_where_past_and_future.ogg"
+    },
+    {
+      "hero": "Sigma",
+      "lineId": "c865bb19-fcec-469e-af7e-aeeb393c1820",
+      "reason": "from-voice",
+      "before": "Tempus fugit. (Latin) Time flies.",
+      "after": "Tempus fugit",
+      "voice": "Sigma_-_Tempus_fugit.ogg"
+    },
+    {
+      "hero": "Sojourn",
+      "lineId": "ea53a120-d750-4e3a-aa2a-c64f4cf50e78",
+      "reason": "from-voice",
+      "before": "I don't get jittery before a fight the way I used to. And you know what? I kinda miss it.",
+      "after": "I don't get jittery before a fight the way I used to. And you know what. I kind of miss it",
+      "voice": "Sojourn_-_I_don't_get_jittery_before_a_fight_the_way_I_used_to._And_you_know_what._I_kind_of_miss_it.ogg"
+    },
+    {
+      "hero": "Sojourn",
+      "lineId": "d8586f69-64f6-4670-919b-4d86d053d7ac",
+      "reason": "from-voice",
+      "before": "I though this was your home court?",
+      "after": "I thought this was your home court",
+      "voice": "Sojourn_-_I_thought_this_was_your_home_court.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "03afb142-5357-4d59-9cd3-673f67998580",
+      "reason": "from-voice",
+      "before": "Is Treadweather ever gonna patch the control override on TS-1?",
+      "after": "Is Treadweather ever gonna patch the control override on these damn things",
+      "voice": "Soldier_76_-_Is_Treadweather_ever_gonna_patch_the_control_override_on_these_damn_things.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "cbfa3f4e-31c4-42d5-a4fb-b1a012c13790",
+      "reason": "from-voice",
+      "before": "Mm, bup-bup-bup. Payload! Mm, get the payload. Pa-pa-payload!",
+      "after": "Mmm bup bup bup. Payload... Mmm, get the payload!Pa Pa Payload",
+      "voice": "Soldier_76_-_Mmm_bup_bup_bup._Payload..._Mmm,_get_the_payload!Pa_Pa_Payload.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "4a4e5c0e-c722-45a5-ab1f-24d62cd93e2d",
+      "reason": "from-voice",
+      "before": "I remember we had Burnes here under deep cover for about six years. (chuckle) She got so good at cards, she quit Overwatch (group) and played full-time.",
+      "after": "I remember we had Burnes here under deep cover for about six years. (chuckling) She got so good at cards, she qui",
+      "voice": "Soldier_76_-_I_remember_we_had_Burnes_here_under_deep_cover_for_about_six_years._(chuckling)_She_got_so_good_at_cards,_she_qui.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "4e38c86b-cc40-43ac-a0c2-e31e84fbb063",
+      "reason": "from-voice",
+      "before": "I wouldn't change a thing we King's Row Uprising.",
+      "after": "I wouldn't change a thing we did here",
+      "voice": "Soldier_76_-_I_wouldn't_change_a_thing_we_did_here.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "fbc103f7-ebf9-4f40-b9b2-f3223d042fef",
+      "reason": "from-voice",
+      "before": "This part of United States is so beautiful. Reminds me of road trips when I was a kid. (sigh) Different world. And I'll never get it back.",
+      "after": "This part of the country is so beautiful. Reminds me of road trips when I was a kid. Different world",
+      "voice": "Soldier_76_-_This_part_of_the_country_is_so_beautiful._Reminds_me_of_road_trips_when_I_was_a_kid._Different_world.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "ed0a4aa3-671e-4c71-bfe4-d429991cb3be",
+      "reason": "from-voice",
+      "before": "That Illari lives around here. I hope someone's checking up on her.",
+      "after": "That kid lives around here. I hope someone's checking up on her",
+      "voice": "Soldier_76_-_That_kid_lives_around_here._I_hope_someone's_checking_up_on_her.ogg"
+    },
+    {
+      "hero": "Soldier 76",
+      "lineId": "55b3d495-051a-440c-83e2-db9bd189e73f",
+      "reason": "from-voice",
+      "before": "Whatever those Oasis scientists were up to here, I'm glad the Illari put a stop to it.",
+      "after": "Whatever those Oasis scientists were up to here, I'm glad the kid put a stop to it",
+      "voice": "Soldier_76_-_Whatever_those_Oasis_scientists_were_up_to_here,_I'm_glad_the_kid_put_a_stop_to_it.ogg"
+    },
+    {
+      "hero": "Sombra",
+      "lineId": "ac3ceeba-1a63-4baa-8cdc-a037ec51a082",
+      "reason": "from-voice",
+      "before": "Genial. Otro trabajo aburrido.",
+      "after": "(Spanish) Wonderful. More grunt work",
+      "voice": "Sombra_-_(Spanish)_Wonderful._More_grunt_work.ogg"
+    },
+    {
+      "hero": "Sombra",
+      "lineId": "c75bf4d1-1b94-4d11-a7d5-9d9bb477a7b8",
+      "reason": "from-voice",
+      "before": "I wonder what the landlord's password is. Hah... (tch tch) So simple! Let's change that for you.",
+      "after": "I wonder what the landlord's password is. (tch tch) So simple! Let's change that for you",
+      "voice": "Sombra_-_I_wonder_what_the_landlord's_password_is._(tch_tch)_So_simple!_Let's_change_that_for_you.ogg"
+    },
+    {
+      "hero": "Sombra",
+      "lineId": "7932a9f7-d7a3-448b-9925-5681b50e1c51",
+      "reason": "from-voice",
+      "before": "This song library is too small. Hah! No problem. I'll add some chiptunes.",
+      "after": "This song library is too small. No problem. I'll add some chiptunes",
+      "voice": "Sombra_-_This_song_library_is_too_small._No_problem._I'll_add_some_chiptunes.ogg"
+    },
+    {
+      "hero": "Sombra",
+      "lineId": "1e53c6bc-9ac7-4439-a697-c642faee2088",
+      "reason": "from-voice",
+      "before": "What news on the Rrrrrrialto! (coughs) Sorry.",
+      "after": "What news on the Rialto! Sorry",
+      "voice": "Sombra_-_What_news_on_the_Rialto!_Sorry.ogg"
+    },
+    {
+      "hero": "Symmetra",
+      "lineId": "53df2356-fef3-4893-8c80-0a609498b41e",
+      "reason": "from-voice",
+      "before": "Their actions convey futility. Their minds are closed to possibility. But still, order wins the day. Yahi param vaastavikta hai! (Devanagari) This is the ultimate reality!",
+      "after": "Their actions convey futility. Their minds are closed to possibility. But still, order wins the day. (Hindi) thi",
+      "voice": "Symmetra_-_Their_actions_convey_futility._Their_minds_are_closed_to_possibility._But_still,_order_wins_the_day._(Hindi)_thi.ogg"
+    },
+    {
+      "hero": "Torbjörn",
+      "lineId": "881e9ce0-74e0-44f0-8b4f-889ad43afae5",
+      "reason": "from-voice",
+      "before": "Now this is a city that understands engineering. And Efi Oladele, whew! A future Ironclad, no doubt.",
+      "after": "Now this is a city that understands engineering. And that child genius, whew! A future Ironclad, no doubt",
+      "voice": "Torbjörn_-_Now_this_is_a_city_that_understands_engineering._And_that_child_genius,_whew!_A_future_Ironclad,_no_doubt.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "lineId": "ca093247-3040-42d9-ba55-5cebd06073b9",
+      "reason": "from-voice",
+      "before": "I got lucky with my call sign. Can you imagine if they'd call me Zippy? (giggle)",
+      "after": "I got lucky with my call sign. Can you imagine if they'd called me Zippy",
+      "voice": "Tracer_-_I_got_lucky_with_my_call_sign._Can_you_imagine_if_they'd_called_me_Zippy.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "lineId": "5f5e4392-10fb-41c6-89be-58a53e00e8d4",
+      "reason": "from-voice",
+      "before": "Oi! This is no time for standin' around.",
+      "after": "Oi! This is no time for standing around",
+      "voice": "Tracer_-_Oi!_This_is_no_time_for_standing_around.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "lineId": "d4dd34e2-6b7d-4c21-a465-48c8c3b95cd9",
+      "reason": "from-voice",
+      "before": "I could murder a chip sarnie.",
+      "after": "I could murder a chip sarney",
+      "voice": "Tracer_-_I_could_murder_a_chip_sarney.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "lineId": "fba6395d-2720-4e2d-b902-4ef360213bae",
+      "reason": "from-voice",
+      "before": "Busan (Karaoke)",
+      "after": "Tracer's gonna save the day. This-is-my-song, Tracer's here! Yeah",
+      "voice": "Tracer_-_Tracer's_gonna_save_the_day._This-is-my-song,_Tracer's_here!_Yeah.ogg"
+    },
+    {
+      "hero": "Tracer",
+      "lineId": "7b61ae21-198c-4dbc-b343-42a70c673400",
+      "reason": "from-voice",
+      "before": "Na na na na na na, na na na na na, woo! Tracer's gonna save the day, this-is-my-song, Tracer's here! Yeah!",
+      "after": "Tracer's gonna save the day. This-is-my-song, Tracer's here! Yeah",
+      "voice": "Tracer_-_Tracer's_gonna_save_the_day._This-is-my-song,_Tracer's_here!_Yeah.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "lineId": "33defa5b-f423-49f4-a2fe-6d5a24c4b368",
+      "reason": "from-voice",
+      "before": "The battle is almost upon us. Magnifico.",
+      "after": "The battle is almost upon us. (Italian) Wonderful",
+      "voice": "Vendetta_-_The_battle_is_almost_upon_us._(Italian)_Wonderful.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "lineId": "7e0b4baa-cb8d-44a0-bf6a-92afe4fb5c29",
+      "reason": "from-voice",
+      "before": "Non c’è casa migliore di questa.",
+      "after": "(Italian) There is no finer home than this",
+      "voice": "Vendetta_-_(Italian)_There_is_no_finer_home_than_this.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "lineId": "cc7a8c4c-35ef-4beb-afb0-0fdbd3120578",
+      "reason": "from-voice",
+      "before": "Bested by the Campionessa.",
+      "after": "Bested by the (Italian) champion",
+      "voice": "Vendetta_-_Bested_by_the_(Italian)_champion.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "lineId": "c61303fa-de50-49b7-9ec2-3a0d842610b9",
+      "reason": "from-voice",
+      "before": "Sarà tutto mio.",
+      "after": "(Italian) I'll have it all",
+      "voice": "Vendetta_-_(Italian)_I'll_have_it_all.ogg"
+    },
+    {
+      "hero": "Vendetta",
+      "lineId": "4a42230e-a025-45bc-b45f-a9feab4ccf19",
+      "reason": "from-voice",
+      "before": "Perfetto.",
+      "after": "(Italian) Perfection",
+      "voice": "Vendetta_-_(Italian)_Perfection.ogg"
+    },
+    {
+      "hero": "Venture",
+      "lineId": "8487ddf2-9a59-4398-8fc3-a6b59cb1c460",
+      "reason": "from-voice",
+      "before": "Argh! Let's go already!",
+      "after": "Ahh! Let's go already",
+      "voice": "Venture_-_Ahh!_Let's_go_already.ogg"
+    },
+    {
+      "hero": "Venture",
+      "lineId": "2268c532-3767-4647-9675-18bd978d771e",
+      "reason": "from-voice",
+      "before": "The world lost a lot of history during the Omnic Crisis. But I know we'll recover everything we can!",
+      "after": "The world lost a lot of history during the Crisis. But I know we'll recover everything we can",
+      "voice": "Venture_-_The_world_lost_a_lot_of_history_during_the_Crisis._But_I_know_we'll_recover_everything_we_can.ogg"
+    },
+    {
+      "hero": "Venture",
+      "lineId": "94286644-687f-40e9-a879-a027f501979a",
+      "reason": "from-voice",
+      "before": "Ooh! Can we ride the Hellscream while we're here?! Please-please-please-please-please?",
+      "after": "Ohh! Can we ride the Hellscream while we're here! Please please please please please",
+      "voice": "Venture_-_Ohh!_Can_we_ride_the_Hellscream_while_we're_here!_Please_please_please_please_please.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "89e9c966-a3cd-453f-b554-eb1b7b11e84a",
+      "reason": "from-voice",
+      "before": "Je sens que je vais bien m'amuser.",
+      "after": "(French) I'm going to enjoy this",
+      "voice": "Widowmaker_-_(French)_I'm_going_to_enjoy_this.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "0bb8376f-5cd7-4aed-98d5-2428977f44f5",
+      "reason": "from-voice",
+      "before": "Deux Amari. Comme si une ne suffisait pas.",
+      "after": "(French) Two Amaris. As if one wasn't irksome enough",
+      "voice": "Widowmaker_-_(French)_Two_Amaris._As_if_one_wasn't_irksome_enough.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "1a35ee63-d30f-4eac-b20e-9a6146e350f4",
+      "reason": "from-voice",
+      "before": "Comment une équipe peut-elle abriter autant d'imbéciles ?",
+      "after": "(French) How can one team contain so many fools",
+      "voice": "Widowmaker_-_(French)_How_can_one_team_contain_so_many_fools.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "00fea741-cd2b-45ed-9eae-b2e1f0d13420",
+      "reason": "from-voice",
+      "before": "L'amour est cruel, et je suis plus cruelle, car je ne suis jamais satisfaite.",
+      "after": "(French) Love is cruel, and I am crueler, for I'm never satisfied",
+      "voice": "Widowmaker_-_(French)_Love_is_cruel,_and_I_am_crueler,_for_I'm_never_satisfied.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "ffe39d47-2036-4d4e-baaa-4223ca37eaec",
+      "reason": "from-voice",
+      "before": "Si l'amour est un jeu, alors j'aime gagner, même si cela te fait pleurer.",
+      "after": "(French) If love's a game, I like to win, even if I make you cry",
+      "voice": "Widowmaker_-_(French)_If_love's_a_game,_I_like_to_win,_even_if_I_make_you_cry.ogg"
+    },
+    {
+      "hero": "Widowmaker",
+      "lineId": "eba7a7d9-289a-4f7b-8f3e-b29d20a66213",
+      "reason": "from-voice",
+      "before": "Parfait.",
+      "after": "(French) Perfection",
+      "voice": "Widowmaker_-_(French)_Perfection.ogg"
+    },
+    {
+      "hero": "Winston",
+      "lineId": "6fb7d15a-fa37-4d91-bd95-0e264f047f9a",
+      "reason": "from-voice",
+      "before": "That's home. That's us. On it, everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives. The aggregate of our joy and suffering. Every hunter and forager, every hero and coward, every creator and destroyer of civilization, every king and peasant, every young couple in love, every mother and father, hopeful child, inventor and explorer, every saint and sinner in history... lived there.",
+      "after": "That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being",
+      "voice": "Winston_-_That's_home._That's_us._On_it_everyone_you_love,_everyone_you_know,_everyone_you_ever_heard_of,_every_human_being.ogg"
+    },
+    {
+      "hero": "Winston",
+      "lineId": "fd3e7260-630b-46fb-81fe-f2423e1e089c",
+      "reason": "from-voice",
+      "before": "The first day or so we pointed to our countries. The third or fourth day, we were pointing to our continents. By the fifth day, we were aware of only one earth.",
+      "after": "The first day or so we all pointed to our countries. The third or fourth day we were pointing to our continents",
+      "voice": "Winston_-_The_first_day_or_so_we_all_pointed_to_our_countries._The_third_or_fourth_day_we_were_pointing_to_our_continents.ogg"
+    },
+    {
+      "hero": "Winston",
+      "lineId": "de3d0333-45f1-494e-ad9e-220c0686ae51",
+      "reason": "from-voice",
+      "before": "To see the earth as it truly is, small and blue and beautiful in that eternal silence where it floats, is to see ourselves as riders on the earth together. Brothers on that bright loveliness in the eternal cold - brothers who know now, they are truly brothers.",
+      "after": "To see the earth as it truly is, small and blue and beautiful in that eternal silence where it floats, is to see",
+      "voice": "Winston_-_To_see_the_earth_as_it_truly_is,_small_and_blue_and_beautiful_in_that_eternal_silence_where_it_floats,_is_to_see.ogg"
+    },
+    {
+      "hero": "Winston",
+      "lineId": "4969224e-ed88-48f7-b358-77ef10f94fb5",
+      "reason": "from-voice",
+      "before": "I hear they call him the Wrecking Ball here. And to think, he used to sleep inside my pillow...",
+      "after": "I hear they call him the Champ here. And to think, he used to sleep inside my pillow",
+      "voice": "Winston_-_I_hear_they_call_him_the_Champ_here._And_to_think,_he_used_to_sleep_inside_my_pillow.ogg"
+    },
+    {
+      "hero": "Wrecking Ball",
+      "lineId": "044ad2b9-05ca-4496-8164-f0eb8283c6f9",
+      "reason": "from-voice",
+      "before": "Lucheng Interstellar cannot stop the hamster. Never could. Never will.",
+      "after": "Lucheng cannot stop the hamster. Never could. Never will",
+      "voice": "Wrecking_Ball_-_Lucheng_cannot_stop_the_hamster._Never_could._Never_will.ogg"
+    },
+    {
+      "hero": "Wuyang",
+      "lineId": "0779c365-6124-4ecd-b1a2-3be5775da075",
+      "reason": "from-voice",
+      "before": "Maybe one day, I'll be a Mobile Exo-Force pilot. Just need to climb a few dozen ranks first.",
+      "after": "Maybe one day, I'll be a MEKA pilot. Just need to climb a few dozen ranks first",
+      "voice": "Wuyang_-_Maybe_one_day,_I'll_be_a_MEKA_pilot._Just_need_to_climb_a_few_dozen_ranks_first.ogg"
+    },
+    {
+      "hero": "Wuyang",
+      "lineId": "6421e1df-9283-4b83-8ea8-5093742b3520",
+      "reason": "strip-wiki+from-voice",
+      "before": "Shifu keeps saying I should visit [https://en.wikipedia.org/wiki/Mount_Emei Mount Emei], but this is close enough, right?",
+      "after": "Shifu keeps sayings I should visit Mount Emei, but... This is close enough, right",
+      "voice": "Wuyang_-_Shifu_keeps_sayings_I_should_visit_Mount_Emei,_but..._This_is_close_enough,_right.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "lineId": "1e53a475-afa9-4016-a743-53e732612c38",
+      "reason": "from-voice",
+      "before": "How can anyone stand to live here? Uzhas! (Cyrillic) How can anyone stand to live here? Yuck!",
+      "after": "How can anyone stand to live here. (Russian) Yuck",
+      "voice": "Zarya_-_How_can_anyone_stand_to_live_here._(Russian)_Yuck.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "lineId": "eaa3935a-7053-4b8e-8f6a-451394795ac9",
+      "reason": "from-voice",
+      "before": "I suppose it cannot hurt to take a little holiday.",
+      "after": "Well, I suppose it wouldn't hurt to take a vacation",
+      "voice": "Zarya_-_Well,_I_suppose_it_wouldn't_hurt_to_take_a_vacation.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "lineId": "5b7ec314-748a-44f6-9b36-f621bbab1039",
+      "reason": "from-voice",
+      "before": "The humans who live here are fools to trust the omnics. They will see.",
+      "after": "The humans who live here are fools to trust the omnics",
+      "voice": "Zarya_-_The_humans_who_live_here_are_fools_to_trust_the_omnics.ogg"
+    },
+    {
+      "hero": "Zarya",
+      "lineId": "c66dcc00-f3ab-4836-b9de-09e51af8ad79",
+      "reason": "strip-wiki",
+      "before": "Byt' možet, u čeloveka sto čuvstv i so smert'ju pogibajut tol'ko pjat', izvestnyx nam, a ostal'nye devjanosto pjat' ostajutsja živy. (Cyrillic) Perhaps a man has a hundred senses, and when he dies only the five known to us are destroyed and the remaining ninety-five are left alive. [https://en.wikisource.org/wiki/The_Cherry_Orchard/Act_II Source]",
+      "after": "Byt' možet, u čeloveka sto čuvstv i so smert'ju pogibajut tol'ko pjat', izvestnyx nam, a ostal'nye devjanosto pjat' ostajutsja živy. (Cyrillic) Perhaps a man has a hundred senses, and when he dies only the five known to us are destroyed and the remaining ninety-five are left alive. Source",
+      "voice": "Zarya_-_Byt'_možet,_u_čeloveka_sto_čuvstv_i_so_smert'ju_pogibajut_tol'ko_pjat',_izvestnyx_nam,_a_ostal'nye_devjanosto_pjat'_ostajutsja_živy._(Cyrillic)_Perhaps_a_man_has_a_hundred_senses,_and_when_he_dies_only_the_five_known_to_us_are_destroyed_and_the_remaining_ninety-five_are_left_alive._[httpsen.wikisource.orgwikiThe_Cherry_OrchardAct_II_Source].ogg"
+    },
+    {
+      "hero": "Zenyatta",
+      "lineId": "546c0987-5b0e-43ef-a14c-a4bb5e1c8383",
+      "reason": "from-voice",
+      "before": "I like being near the ocean. It reminds me where I was born.",
+      "after": "I like being near the ocean. It reminds me of where I was born",
+      "voice": "Zenyatta_-_I_like_being_near_the_ocean._It_reminds_me_of_where_I_was_born.ogg"
+    },
+    {
+      "hero": "Zenyatta",
+      "lineId": "69c43360-078e-4f64-bdff-3e7cf143a68a",
+      "reason": "from-voice",
+      "before": "Perhaps they believe we will not defend this place. But if all the rest of the world were to fall, this would be the stand I chose to make.",
+      "after": "Perhaps they believe we will not defend this place. But if all the rest of the world were to fall, this would be",
+      "voice": "Zenyatta_-_Perhaps_they_believe_we_will_not_defend_this_place._But_if_all_the_rest_of_the_world_were_to_fall,_this_would_be.ogg"
+    },
+    {
+      "hero": "D.mon",
+      "lineId": "830582e6-c080-47e2-bc8a-61b4946e3975",
+      "reason": "from-voice",
+      "before": "*Hero of my Storm* *(amused chuckle)* I totally forgot Hana was in a movie.",
+      "after": "Hero of my Storm  (amused chuckle) I totally forgot Hana was in a movie",
+      "voice": "D.Mon_-__Hero_of_my_Storm__(amused_chuckle)_I_totally_forgot_Hana_was_in_a_movie.ogg"
+    }
+  ]
+}

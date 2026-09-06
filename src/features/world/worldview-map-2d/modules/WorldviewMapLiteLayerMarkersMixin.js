@@ -149,16 +149,18 @@ export const mixin = {
         const mode = opts.mode || 'instant';
         if (!this.markersEl || !this.isVisible()) return;
 
-        this.markersEl.replaceChildren();
-        this._moonMarkersEl?.replaceChildren();
-        this._marsMarkersEl?.replaceChildren();
-        this._orbitMarkersEl?.replaceChildren();
-        const events = this._getCurrentPageEvents();
+        const runRebuild = () => {
+            this.markersEl.replaceChildren();
+            this._moonMarkersEl?.replaceChildren();
+            this._marsMarkersEl?.replaceChildren();
+            this._orbitMarkersEl?.replaceChildren();
+            const events = this._getCurrentPageEvents();
 
-        // Track created marker buttons for overlap cycling
-        const createdMarkers = [];
+            // Track created marker buttons for overlap cycling
+            const createdMarkers = [];
+            const growBodies = [];
 
-        const addMarkerEl = (fullEvent, displayEvent, variantIndex) => {
+            const addMarkerEl = (fullEvent, displayEvent, variantIndex) => {
             const lt = displayEvent.locationType || fullEvent.locationType || 'earth';
             let host, markersContainer;
 
@@ -334,7 +336,11 @@ export const mixin = {
             if (!stub.userData.isLocked) {
                 disk.classList.add('map-2d-lite__marker-disk--pulse');
             }
-            
+            if (mode === 'pageTurn') {
+                body.classList.add('map-2d-lite__marker-body--grow');
+                growBodies.push(body);
+            }
+
             // Track marker for overlap cycling
             const markerObj = {
                 btn,
@@ -349,17 +355,47 @@ export const mixin = {
             btn.__map2dLiteMarkerRef = markerObj;
         };
 
-        for (let i = 0; i < events.length; i++) {
-            const event = events[i];
-            if (event.variants && event.variants.length > 0) {
-                addMarkerEl(event, event.variants[0], 0);
-            } else {
-                addMarkerEl(event, event, null);
+            for (let i = 0; i < events.length; i++) {
+                const event = events[i];
+                if (event.variants && event.variants.length > 0) {
+                    addMarkerEl(event, event.variants[0], 0);
+                } else {
+                    addMarkerEl(event, event, null);
+                }
             }
+
+            // Set up overlap cycling for Earth markers
+            this.setupOverlapCycling(createdMarkers);
+
+            if (mode === 'pageTurn') {
+                this._domLiteCelestialEnterMode = 'pageTurn';
+                this.layoutCelestialPanelsFromCamera();
+                this._domLiteCelestialEnterMode = null;
+                if (growBodies.length) {
+                    window.setTimeout(() => {
+                        growBodies.forEach((body) => {
+                            body.classList.remove('map-2d-lite__marker-body--grow');
+                        });
+                    }, DOM_LITE_MARKER_TRANSITION_MS + 80);
+                }
+            }
+        };
+
+        if (mode === 'pageTurn') {
+            const exitCelestial = typeof this._animateCelestialHostsExitIfVisible === 'function'
+                ? this._animateCelestialHostsExitIfVisible()
+                : Promise.resolve();
+            void Promise.all([
+                this._animateDomMarkersExit?.() ?? Promise.resolve(),
+                exitCelestial,
+            ]).then(() => {
+                if (!this.isVisible() || !this.markersEl) return;
+                runRebuild();
+            });
+            return;
         }
-        
-        // Set up overlap cycling for Earth markers
-        this.setupOverlapCycling(createdMarkers);
+
+        runRebuild();
     },
 
     resetView() {

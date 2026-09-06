@@ -724,25 +724,29 @@ class WorldviewMarkerHoverCallout {
 
         const locationType = marker?.userData?.locationType || 'earth';
         if (locationType === 'earth') {
-            if (!map2d.world) return null;
+            // Screen-space over the viewport so dock-hover zoom does not balloon labels
+            // or skew leader-line layout (offsetWidth is unscaled under CSS transforms).
+            if (!map2d.viewport) return null;
             return {
-                parent: map2d.world,
-                width: map2d._baseW || map2d.world.clientWidth || 1000,
-                height: map2d._baseH || map2d.world.clientHeight || 500,
-                isCelestial: false,
-                mapScale: 1,
+                parent: map2d.viewport,
+                width: map2d.viewport.clientWidth || 1,
+                height: map2d.viewport.clientHeight || 1,
+                isEarthScreen: true,
+                mapScale: map2d._scale ?? 1,
             };
         }
 
         if (!map2d.root) return null;
         const host = btn.closest('.map-2d-lite__celestial-host');
         if (!host) return null;
+        // Keep celestial callouts inside their panel host so the leader line
+        // originates from that panel's placement (moon/mars/orbit stack).
         return {
             parent: host,
             width: host.clientWidth || 1,
             height: host.clientHeight || 1,
             isCelestial: true,
-            mapScale: map2d._scale ?? 1,
+            mapScale: 1,
             celestialHost: host,
         };
     }
@@ -753,11 +757,29 @@ class WorldviewMarkerHoverCallout {
     }
 
     _getMapDomButtonCenter(btn, anchor) {
-        if (anchor?.isCelestial) {
+        const map2d = window.globeController?.map2dLite;
+
+        if (anchor?.isEarthScreen && map2d) {
             const u = parseFloat(btn.style.left);
             const v = parseFloat(btn.style.top);
-            const w = anchor.width || anchor.celestialHost?.clientWidth || 1;
-            const h = anchor.height || anchor.celestialHost?.clientHeight || 1;
+            if (!Number.isFinite(u) || !Number.isFinite(v)) {
+                return { x: 0, y: 0 };
+            }
+            const wx = (u / 100) * (map2d._baseW || 1000);
+            const wy = (v / 100) * (map2d._baseH || 500);
+            const scale = map2d._scale ?? 1;
+            return {
+                x: (map2d._tx ?? 0) + wx * scale,
+                y: (map2d._ty ?? 0) + wy * scale,
+            };
+        }
+
+        if (anchor?.isCelestial) {
+            const host = anchor.celestialHost || anchor.parent;
+            const u = parseFloat(btn.style.left);
+            const v = parseFloat(btn.style.top);
+            const w = anchor.width || host?.clientWidth || 1;
+            const h = anchor.height || host?.clientHeight || 1;
             if (!Number.isFinite(u) || !Number.isFinite(v)) {
                 return { x: 0, y: 0 };
             }
@@ -784,11 +806,23 @@ class WorldviewMarkerHoverCallout {
         }
 
         const margin = MAP_DOM_EDGE_MARGIN;
+
+        if (anchor?.isEarthScreen) {
+            const w = anchor.width || anchor.parent?.clientWidth || 1;
+            const h = anchor.height || anchor.parent?.clientHeight || 1;
+            return {
+                left: margin,
+                top: margin,
+                right: w - margin,
+                bottom: h - margin,
+            };
+        }
+
         const locationType = marker?.userData?.locationType || 'earth';
 
-        if (locationType !== 'earth') {
+        if (locationType !== 'earth' || anchor?.isCelestial) {
             const map2d = window.globeController?.map2dLite;
-            const host = anchor?.celestialHost;
+            const host = anchor?.celestialHost || (anchor?.isCelestial ? anchor.parent : null);
             const root = map2d?.root;
             if (host && root) {
                 const rootRect = root.getBoundingClientRect();
@@ -805,8 +839,8 @@ class WorldviewMarkerHoverCallout {
             return {
                 left: margin,
                 top: margin,
-                right: anchor.width - margin,
-                bottom: anchor.height - margin,
+                right: (anchor.width || 1) - margin,
+                bottom: (anchor.height || 1) - margin,
             };
         }
 
@@ -1059,6 +1093,7 @@ class WorldviewMarkerHoverCallout {
             this._setCelestialCalloutHostOpen(this._celestialCalloutHost, false);
             this._celestialCalloutHost = null;
             root.classList.remove('map-hover-callout--celestial');
+            root.classList.remove('map-hover-callout--map');
             root.classList.add('map-hover-callout--globe');
             root.style.transform = '';
             root.style.transformOrigin = '';
@@ -1069,23 +1104,36 @@ class WorldviewMarkerHoverCallout {
 
         root.style.display = 'block';
         if (anchor.isCelestial) {
-            const map2d = window.globeController?.map2dLite;
             const host = anchor.celestialHost;
             if (this._celestialCalloutHost && this._celestialCalloutHost !== host) {
                 this._setCelestialCalloutHostOpen(this._celestialCalloutHost, false);
             }
             this._celestialCalloutHost = host || null;
             this._setCelestialCalloutHostOpen(host, true);
-            anchor.mapScale = map2d?._scale ?? 1;
-            anchor.width = host?.clientWidth || 1;
-            anchor.height = host?.clientHeight || 1;
+            // Host-local coords; no map-zoom scale (dock hover stays readable).
+            anchor.mapScale = 1;
+            anchor.width = host?.clientWidth || anchor.parent?.clientWidth || 1;
+            anchor.height = host?.clientHeight || anchor.parent?.clientHeight || 1;
             root.classList.add('map-hover-callout--celestial');
-            root.style.transformOrigin = `${mx}px ${my}px`;
-            root.style.transform = `scale(${anchor.mapScale})`;
+            root.classList.add('map-hover-callout--map');
+            root.style.transformOrigin = '';
+            root.style.transform = '';
+        } else if (anchor.isEarthScreen) {
+            this._setCelestialCalloutHostOpen(this._celestialCalloutHost, false);
+            this._celestialCalloutHost = null;
+            root.classList.remove('map-hover-callout--celestial');
+            root.classList.add('map-hover-callout--map');
+            if (anchor.parent) {
+                anchor.width = anchor.parent.clientWidth || 1;
+                anchor.height = anchor.parent.clientHeight || 1;
+            }
+            root.style.transform = '';
+            root.style.transformOrigin = '';
         } else {
             this._setCelestialCalloutHostOpen(this._celestialCalloutHost, false);
             this._celestialCalloutHost = null;
             root.classList.remove('map-hover-callout--celestial');
+            root.classList.remove('map-hover-callout--map');
             root.style.transform = '';
             root.style.transformOrigin = '';
         }

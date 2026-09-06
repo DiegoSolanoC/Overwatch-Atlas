@@ -2,12 +2,11 @@
  * globeModeLifecycle — `runGlobeMode` / `killGlobeMode` for Worldview.
  *
  * Worldview's mode lifecycle does NOT use the shared `enterMode` /
- * `exitMode` ceremony in `runtime/modeLifecycleCeremony.js`. Two reasons:
+ * `exitMode` ceremony in `runtime/modeLifecycleCeremony.js`. Reasons:
  *
- *   1. Manual entry paints the 3D-Globe / 2D-Map chooser hub, then EXITS
- *      early — the overlay drops, the hub stays interactive, and the
- *      actual asset load only fires when the user picks a tile (via
- *      `loadGlobeAssets`). The linear modes don't have that branch.
+ *   1. Entry resolves globe vs map from desktop/mobile defaults, then loads
+ *      assets via `loadGlobeAssets`. The in-mode map/globe toggle handles
+ *      switching after load.
  *   2. Exit walks a 4-stage layered unload (Events → Controls → Transport
  *      → Globe Base) with an Event-System guard that preserves the events
  *      UI when the user has Event System Load Out enabled. The linear
@@ -19,7 +18,7 @@
  * wrapper methods that just forward to these.
  */
 
-import { showLoadingOverlay, hideLoadingOverlay, setRunOperation, getRunOperation } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
+import { showLoadingOverlay, hideLoadingOverlay, setRunOperation } from '../../universal-features/atlas-mode-runtime/loadingOverlayState.js';
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
 import { resetLoadProgress } from '../../universal-features/atlas-mode-runtime/loadProgressTracker.js';
 import { setCurrentMode, clearCurrentMode } from '../../universal-features/atlas-mode-runtime/mode-lifecycle/CurrentModeStatus.js';
@@ -27,22 +26,22 @@ import { hideMenuContainer } from '../../universal-features/atlas-main-menu/Menu
 import { killOtherModes } from '../../universal-features/atlas-mode-runtime/mode-lifecycle/ModeMutualExclusion.js';
 import { isEventSystemLoadOutActive } from '../../system-interface/interface-load-unload/integration/eventSystemAutoPreload.js';
 import { playModeSwitchSound } from '../../universal-features/atlas-sound-effects/playModeSwitchSound.js';
-import { mountGlobeMapChooserHub, teardownGlobeMapChooserHub } from './entry/WorldviewMapLaunchChoice.js';
+import { teardownGlobeMapChooserHub } from './entry/WorldviewMapLaunchChoice.js';
 import { loadGlobeAssets } from './WorldviewAssetLoader.js';
 
-/** Wait until the next frame has painted (twice) so the chooser DOM is visible. */
-function nextPaintCommitted() {
-    return new Promise((resolve) => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => resolve());
-        });
-    });
-}
+const MAP_VIEW_MOBILE_MQ = '(max-width: 768px)';
 
-const CHOOSER_OVERLAY_MIN_VISIBLE_MS = 320;
-
-function wait(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+/**
+ * Desktop → 3D globe, mobile → 2D map. In-mode toggle switches after load.
+ * @returns {boolean}
+ */
+export function resolveWorldStartOnMap() {
+    try {
+        return typeof window.matchMedia === 'function'
+            && window.matchMedia(MAP_VIEW_MOBILE_MQ).matches;
+    } catch (_) {
+        return false;
+    }
 }
 
 /**
@@ -55,17 +54,13 @@ function wait(ms) {
  */
 
 /**
- * Enter Worldview mode and present the 3D-Globe / 2D-Map chooser hub.
- *
- * `isAutoLoad === true` skips the hub and uses the persisted
- * `mapGlobePreToggle` preference (used by header switches and other
- * automated flows where the user has already chosen).
+ * Enter Worldview mode and load globe or map directly (no chooser hub).
  *
  * @param {GlobeModeContext} ctx
  * @param {boolean} [isAutoLoad=false]
  */
 export async function runGlobeMode(ctx, isAutoLoad = false) {
-    const { loadedComponents, loaders, killers, restoreMainMenu } = ctx;
+    const { loadedComponents, loaders, killers } = ctx;
 
     playModeSwitchSound(isAutoLoad);
 
@@ -88,56 +83,20 @@ export async function runGlobeMode(ctx, isAutoLoad = false) {
 
     resetLoadProgress();
     hideMenuContainer();
+    teardownGlobeMapChooserHub();
 
     const assetsCtx = { loadedComponents, loaders };
+    const startOnMap = resolveWorldStartOnMap();
 
-    if (isAutoLoad) {
-        const startOnMap = localStorage.getItem('mapGlobePreToggle') === 'true';
+    try {
         await loadGlobeAssets(startOnMap, assetsCtx, { keepRunOperation: true });
-        return;
-    }
-
-    if (!getRunOperation()) {
-        setRunOperation(true);
-        showLoadingOverlay();
-    }
-    updateStatus('Loading World…', 'info');
-
-    let hubInteractionStarted = false;
-    try {
-        mountGlobeMapChooserHub({
-            onPick: (startOnMap) => {
-                hubInteractionStarted = true;
-                void loadGlobeAssets(startOnMap, assetsCtx);
-            },
-            onCancel: () => {
-                hubInteractionStarted = true;
-                setRunOperation(false);
-                hideLoadingOverlay();
-                if (runBtn) runBtn.disabled = false;
-                clearCurrentMode();
-                void restoreMainMenu();
-            }
-        });
-        updateStatus('✓ World — choose a view', 'success');
     } catch (error) {
-        console.error('Error mounting Worldview chooser:', error);
-        updateStatus(`✗ Error in Worldview chooser: ${error.message}`, 'error');
+        console.error('Error loading Worldview:', error);
+        updateStatus(`✗ Error loading Worldview: ${error.message}`, 'error');
         setRunOperation(false);
         hideLoadingOverlay();
-        return;
-    }
-
-    try {
-        await nextPaintCommitted();
-        await wait(CHOOSER_OVERLAY_MIN_VISIBLE_MS);
-    } catch (_) {
-        /* ignore */
-    }
-
-    if (!hubInteractionStarted) {
-        setRunOperation(false);
-        hideLoadingOverlay();
+        if (runBtn) runBtn.disabled = false;
+        clearCurrentMode();
     }
 }
 

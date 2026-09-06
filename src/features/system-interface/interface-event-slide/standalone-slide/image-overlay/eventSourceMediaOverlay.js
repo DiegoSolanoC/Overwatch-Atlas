@@ -139,6 +139,7 @@ export function syncSourceMediaPlayButtons(active = {}) {
         if (
             btn.classList.contains('event-source-media-play--commentary')
             || btn.hasAttribute('data-commentary-play')
+            || btn.hasAttribute('data-commentary-direct-play')
         ) {
             return;
         }

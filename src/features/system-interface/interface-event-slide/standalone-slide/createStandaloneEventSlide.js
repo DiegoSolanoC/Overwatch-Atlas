@@ -44,7 +44,11 @@ import { runSaveFullEdit } from './edit/saveFullEdit.js';
 import { wireBioDeleteButton } from '../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 import { wireSourcePairRow } from '../../interface-shared/storyEventSourceAutocomplete.js';
 import { wireStoryEventCommentaryAutocomplete } from '../../interface-shared/storyEventCommentaryAutocomplete.js';
-import { normalizeCommentaryList } from '../../interface-shared/storyEventCommentary.js';
+import {
+    applyCommentaryEntryToNameInput,
+    looksLikeChatterCommentaryName,
+    normalizeCommentaryEntries,
+} from '../../interface-shared/storyEventCommentary.js';
 import { getSourceUrls } from './sources/sourceUrlUtils.js';
 // Variants
 import { runRenderVariantBar } from './variants/renderVariantBar.js';
@@ -166,12 +170,25 @@ function createInlineSourceRow() {
 }
 
 /**
- * @param {string} [name]
+ * @param {{ name?: string, label?: string, theaterId?: string, lineId?: string } | string} [entry]
  * @returns {HTMLDivElement}
  */
-function createInlineCommentaryRow(name = '') {
+function createInlineCommentaryRow(entry = '') {
+    const parsed =
+        typeof entry === 'string'
+            ? { name: entry, label: '' }
+            : {
+                name: String(entry?.name || ''),
+                label: String(entry?.label || ''),
+                theaterId: String(entry?.theaterId || '').trim() || undefined,
+                lineId: String(entry?.lineId || '').trim() || undefined,
+            };
+
     const row = document.createElement('div');
     row.className = 'event-slide-inline-editor__source-row event-slide-inline-editor__commentary-row';
+
+    const fields = document.createElement('div');
+    fields.className = 'event-slide-inline-editor__commentary-fields';
 
     const textInput = document.createElement('input');
     textInput.className = 'event-slide-inline-editor__input';
@@ -179,8 +196,31 @@ function createInlineCommentaryRow(name = '') {
     textInput.type = 'text';
     textInput.spellcheck = true;
     textInput.autocomplete = 'off';
-    textInput.placeholder = 'Dialogue Theater interaction name';
-    textInput.value = name || '';
+    textInput.placeholder = 'Dialogue or Hero Chatter line';
+    textInput.value = parsed.name || '';
+    applyCommentaryEntryToNameInput(textInput, parsed);
+
+    const labelInput = document.createElement('input');
+    labelInput.className = 'event-slide-inline-editor__input event-slide-inline-editor__commentary-label';
+    labelInput.dataset.role = 'commentary-label';
+    labelInput.type = 'text';
+    labelInput.spellcheck = true;
+    labelInput.autocomplete = 'off';
+    labelInput.placeholder = 'Simplified label (chatter)';
+    labelInput.value = parsed.label || '';
+    labelInput.title = 'Short display name for this Hero Chatter on the story slide';
+
+    const syncLabelVisibility = () => {
+        const isChatter = looksLikeChatterCommentaryName(textInput.value);
+        row.classList.toggle('event-slide-inline-editor__commentary-row--chatter', isChatter);
+        labelInput.hidden = !isChatter;
+        if (!isChatter) labelInput.value = '';
+    };
+    syncLabelVisibility();
+    textInput.addEventListener('input', syncLabelVisibility);
+    textInput.addEventListener('change', syncLabelVisibility);
+
+    fields.append(textInput, labelInput);
 
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
@@ -188,7 +228,7 @@ function createInlineCommentaryRow(name = '') {
     removeBtn.dataset.role = 'commentary-remove';
     removeBtn.textContent = '-';
 
-    row.append(textInput, removeBtn);
+    row.append(fields, removeBtn);
     return row;
 }
 
@@ -353,23 +393,29 @@ export function createStandaloneEventSlide() {
         },
 
         /**
-         * @param {string[]|undefined|null} commentary
+         * @param {Array<string|{name?:string,label?:string}>|undefined|null} commentary
          */
         renderCommentaryEditor(commentary) {
             const container = document.getElementById('eventSlideEditCommentary');
             if (!container) return;
 
             container.innerHTML = '';
-            const names = normalizeCommentaryList(commentary);
-            const rows = names.length > 0 ? names : [''];
+            const entries = normalizeCommentaryEntries(commentary);
+            const rows = entries.length > 0 ? entries : [{ name: '' }];
 
-            rows.forEach((name) => {
-                const row = createInlineCommentaryRow(name);
+            rows.forEach((entry) => {
+                const row = createInlineCommentaryRow(entry);
                 row.querySelector('[data-role="commentary-remove"]')?.addEventListener('click', () => {
                     if (container.children.length > 1) row.remove();
                     else {
                         const input = row.querySelector('[data-role="commentary-name"]');
+                        const label = row.querySelector('[data-role="commentary-label"]');
                         if (input instanceof HTMLInputElement) input.value = '';
+                        if (label instanceof HTMLInputElement) {
+                            label.value = '';
+                            label.hidden = true;
+                        }
+                        row.classList.remove('event-slide-inline-editor__commentary-row--chatter');
                     }
                 });
                 container.appendChild(row);
@@ -389,7 +435,13 @@ export function createStandaloneEventSlide() {
                 if (container.children.length > 1) row.remove();
                 else {
                     const input = row.querySelector('[data-role="commentary-name"]');
+                    const label = row.querySelector('[data-role="commentary-label"]');
                     if (input instanceof HTMLInputElement) input.value = '';
+                    if (label instanceof HTMLInputElement) {
+                        label.value = '';
+                        label.hidden = true;
+                    }
+                    row.classList.remove('event-slide-inline-editor__commentary-row--chatter');
                 }
             });
             container.appendChild(row);

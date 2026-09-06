@@ -286,6 +286,10 @@ body.color-palette-gray .event-sources-section {
     outline-offset: 3px;
 }
 
+.event-commentary-play-group {
+    flex-shrink: 0;
+}
+
 .event-source-media-play--commentary {
     display: inline-flex;
     align-items: center;
@@ -307,4 +311,13 @@ body.color-palette-gray .event-sources-section {
     margin: 0;
     object-fit: contain;
     pointer-events: none;
+}
+
+.event-source-media-play--commentary-direct .event-source-media-play__glyph {
+    display: block;
+    font-size: calc(var(--hero-bio-chip-max-h) * 0.42);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.95);
+    pointer-events: none;
+    user-select: none;
 }

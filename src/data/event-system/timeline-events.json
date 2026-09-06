@@ -589,6 +589,12 @@
           "reasoning": "Future researchers would still be tackling the mysteries of Supercoral long into the future",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        {
+          "name": "Mauga · Horizon Lunar Colony — Hey, look. You could see the super coral from here.",
+          "label": "Super Coral"
+        }
       ]
     },
     {
@@ -959,7 +965,10 @@
         }
       ],
       "commentary": [
-        "Not an Omnic"
+        {
+          "name": "Zenyatta · My memories from before the Awakening are blurry, like a fading dream. But I do remember some things.",
+          "label": "Blurry Memories"
+        }
       ]
     },
     {
@@ -1361,7 +1370,11 @@
       "commentary": [
         "Mag Lev Cape",
         "My greatest Rival",
-        "Applied Science"
+        "Applied Science",
+        {
+          "name": "Sigma · These phenomena bear further investigation.",
+          "label": "Further Investigation"
+        }
       ]
     },
     {
@@ -1521,6 +1534,12 @@
           "country": "Chernobog,",
           "reasoning": "God Program of Global Security"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Echo · More to do, more to learn.",
+          "label": "More to Learn"
+        }
       ]
     },
     {
@@ -1559,7 +1578,10 @@
           "reasoning": "Omnica and Ai begin to flourish in a new Automated world"
         }
       ],
-      "yearStart": 2040
+      "yearStart": 2040,
+      "commentary": [
+        "Before the Crisis"
+      ]
     },
     {
       "name": "Amélie Guillard is Born",
@@ -1636,7 +1658,11 @@
         }
       ],
       "commentary": [
-        "Painful Memories"
+        "Painful Memories",
+        {
+          "name": "Venture · The best archeologists get their noses out of books and into the dirt!",
+          "label": "Best Archeologists"
+        }
       ]
     },
     {
@@ -2242,7 +2268,11 @@
       ],
       "commentary": [
         "Beautiful Inventions",
-        "NO AI Mess"
+        "NO AI Mess",
+        {
+          "name": "Torbjörn · Ha! Let's go! I've got a few new inventions to try.",
+          "label": "New Inventions"
+        }
       ]
     },
     {
@@ -2345,8 +2375,10 @@
       ],
       "commentary": [
         "Friend from the Colony",
-        "Lunar Food",
-        "Lunar Simians"
+        {
+          "name": "Sigma · Horizon Lunar Colony — By looking far out into space, we are also looking far back into time. Back toward the horizon of the universe.",
+          "label": "The Horizon"
+        }
       ]
     },
     {
@@ -2621,6 +2653,12 @@
           "reasoning": "Goes rouge following ventilation failure",
           "badgePriority": true
         }
+      ],
+      "commentary": [
+        {
+          "name": "Orisa · Temple of Anubis and Throne of Anubis — If Anubis were ever to rise again... I hope I would remember who I am.",
+          "label": "Remember who I am"
+        }
       ]
     },
     {
@@ -2856,7 +2894,15 @@
       ],
       "commentary": [
         "Asthma",
-        "Interesting Theory"
+        "Interesting Theory",
+        {
+          "name": "Venture · Nepal or Shambali Monastery — This is where Aurora changed the world forever. I am gonna freak out!",
+          "label": "Changed The World"
+        },
+        {
+          "name": "Echo · Nepal — Shambali Monastery is currently omitted from this trigger and awaits a fix. — Dr. Liao told me of her journey here. It is strange to see it with my own eyes.",
+          "label": "My own Eyes"
+        }
       ]
     },
     {
@@ -3709,6 +3755,12 @@
           "country": "Anubis,",
           "reasoning": "Utterly confused by Doomfist's effectiveness"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Every battle makes me stronger.",
+          "label": "Stronger"
+        }
       ]
     },
     {
@@ -3819,6 +3871,12 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Forces humanity to agree to Overwatch proposal"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Soldier 76 · Look at the state of the world. Something has to change.",
+          "label": "Something has to change"
         }
       ]
     },
@@ -3932,7 +3990,11 @@
         }
       ],
       "commentary": [
-        "Best Sniper"
+        "Best Sniper",
+        {
+          "name": "Ana · I am watching over you",
+          "label": "Over you"
+        }
       ]
     },
     {
@@ -4054,6 +4116,12 @@
           "country": "Anubis,",
           "reasoning": "Struggles against  unified New Yorkers"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Torbjörn · New York's Chief Engineering Advisor has returned!",
+          "label": "Engineering Advisor"
+        }
       ]
     },
     {
@@ -4111,7 +4179,8 @@
         }
       ],
       "commentary": [
-        "Sir Wilhelm"
+        "Sir Wilhelm",
+        "Killed Many"
       ]
     },
     {
@@ -4174,7 +4243,11 @@
         }
       ],
       "commentary": [
-        "Enhanced Soldiers"
+        "Enhanced Soldiers",
+        {
+          "name": "Soldier 76 · Right or wrong, I'm going to finish this war.",
+          "label": "Right or Wrong"
+        }
       ]
     },
     {
@@ -4233,6 +4306,24 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Unleashes hell near Stuttgart"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Reinhardt · As Balderich always said: \"Together, we are stronger than...\" Ah... I forget the rest. But it was so inspiring!",
+          "label": "Balderich's Words"
+        },
+        {
+          "name": "Sojourn · Eichenwalde — Poor Reinhardt. What he must have seen here...",
+          "label": "Poor Reinhardt"
+        },
+        {
+          "name": "Genji · Eichenwalde — At times, I can almost hear the voices of those who lost their lives here.",
+          "label": "The voices"
+        },
+        {
+          "name": "Reinhardt · Eichenwalde — We fought a terrible battle here. Many Crusaders lost their lives.",
+          "label": "Lost LIves"
         }
       ]
     },
@@ -4883,7 +4974,10 @@
           "reasoning": "Continue to trample over Anubis' plans"
         }
       ],
-      "yearStart": 2051
+      "yearStart": 2051,
+      "commentary": [
+        "Friendly Fire"
+      ]
     },
     {
       "name": "The Savior",
@@ -5297,7 +5391,8 @@
         }
       ],
       "commentary": [
-        "Rate the Prison"
+        "Rate the Prison",
+        "It isn't True"
       ]
     },
     {
@@ -5358,6 +5453,20 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Finally quarantined, the God Program is cut off from current events"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Venture · Throne of Anubis — The AI that caused the Crisis is quarantined in this temple! So, uh... let's be careful, huh?",
+          "label": "Be Careful"
+        },
+        {
+          "name": "Echo · Throne of Anubis — Anubis is an interesting case... to think a single program could have such a profound effect on the world.",
+          "label": "Interesting case"
+        },
+        {
+          "name": "Ramattra · Temple of Anubis or Throne of Anubis — Just as Anubis opened the gates of death, I will exhaust myself to keep them shut.",
+          "label": "Gates of Death"
         }
       ]
     },
@@ -5455,6 +5564,12 @@
           "country": "Adawe",
           "reasoning": "Leaves the UN and Overwatch to work on the City of Numbani",
           "badgePriority": true
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Ana · Numbani — These people moved past the Omnic Crisis so quickly. I envy that.",
+          "label": "Envy"
         }
       ]
     },
@@ -5717,7 +5832,15 @@
       ],
       "commentary": [
         "Pig Boy",
-        "Junkers giving you trouble"
+        "Junkers giving you trouble",
+        {
+          "name": "Winston · Hm, better keep an eye on the Omnium radiation levels.",
+          "label": "Omnium Radiation"
+        },
+        {
+          "name": "Hanzo · Junkertown or New Junk City — A less honorable place is difficult to imagine.",
+          "label": "Difficult to Imagine"
+        }
       ]
     },
     {
@@ -5788,6 +5911,12 @@
           "locationName": "",
           "country": "Liao,",
           "reasoning": "Liao is among the designers of Gibralter's Orbital Launch base"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Echo · Watchpoint: Gibraltar — So many memories.",
+          "label": "Many Memories"
         }
       ]
     },
@@ -5994,7 +6123,15 @@
         }
       ],
       "commentary": [
-        "Magical Healing"
+        "Magical Healing",
+        {
+          "name": "Lifeweaver · Shambali Monastery — Nepal is mistakenly not included and awaits a fix. — The home of the Iris. So inspiring to be in the presence of a force that defines the limits of our understanding.",
+          "label": "Home of the Iris"
+        },
+        {
+          "name": "Moira · Nepal or Shambali Monastery — Hm. Beings born of science Shambali in faith.",
+          "label": "Faith"
+        }
       ]
     },
     {
@@ -6044,6 +6181,12 @@
           "locationName": "",
           "country": "Mason",
           "reasoning": "King of Junkertown"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Junker Queen · Today, you're honorary wastelanders",
+          "label": "Wastelanders"
         }
       ]
     },
@@ -6204,7 +6347,11 @@
         }
       ],
       "commentary": [
-        "My Type"
+        "My Type",
+        {
+          "name": "Cassidy · Things were a lot simpler when I was robbing banks with the Deadlock Rebels.",
+          "label": "Robbing Banks"
+        }
       ]
     },
     {
@@ -6434,6 +6581,12 @@
           "country": "Bez,",
           "reasoning": "Betrays the Diamondbacks to rescue Cassidy"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Ashe · This is a hardy bunch of outlaws. Just need somethin' to steal.",
+          "label": "Outlaws"
+        }
       ]
     },
     {
@@ -6599,6 +6752,9 @@
           "country": "Gérard,",
           "reasoning": "Blackwatch Operator"
         }
+      ],
+      "commentary": [
+        "All about  you"
       ]
     },
     {
@@ -6742,6 +6898,46 @@
       ]
     },
     {
+      "name": "Hana Song is Born",
+      "locationType": "earth",
+      "cityDisplayName": "Busan, South Korea",
+      "description": "On June 22th of 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.\n\nHana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.",
+      "image": "",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "sources": [
+        {
+          "text": "Overwatch Website, D.va",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
+        }
+      ],
+      "eraName": "The Golden Age",
+      "yearStart": 2057,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea,",
+          "reasoning": "Hana Song is Born"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "D.va",
+          "reasoning": "Hana Song is Born"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Dae-Hyun,",
+          "reasoning": "Close childhood friend"
+        }
+      ]
+    },
+    {
       "name": "Studying for the Future",
       "description": "The world needed to relearn how to take care of itself, and while many believed blatant climate change on the advent of new technologies over the last couple of decades, the true cause was not really known to science even after years of research and investment in how to counteract it. Unexplained anomalies in the atmosphere have begun to present themselves across the world, many of them relating to the formation of super storms, and the effects of these abnormal pockets in the environment could be catastrophic if left unchecked.\n\nIt was around this time that a young Dr. Mei-Ling Zhou finished her college degree as a climatologist, specializing in studying these weather phenomena, determined to fight for a better future. Dr. Zhou's research quickly became notorious in the environmentalist community as she introduced many cutting-edge innovations in climate manipulation that were able to protect areas in risk from Asia and around the world. \n\nDuring her time in grad school, Mei's research would allow her to meet many people across multiple scientific fields, such as her close friend, Jiayi Teo, who had family working at Wuxing University's Metal College and aimed at joining Lucheng Interstellar. But it also made Mei run into many anti-intellectual and obstinate persons who fought against the data even after years worth of proof of the worsening climate worldwide. These friendly connections however, eventually allowed her to join the biosphere department of Overwatch's new ecological initiative: The Ecopoint Program.",
       "locationType": "earth",
@@ -6794,45 +6990,11 @@
           "country": "Jiayi,",
           "reasoning": "Close friend Mei met in University"
         }
-      ]
-    },
-    {
-      "name": "Hana Song is Born",
-      "locationType": "earth",
-      "cityDisplayName": "Busan, South Korea",
-      "description": "On June 22th of 2057, Hana Song was born in Busan. Her father was a former professional gamer during his youth and he would bond with his daughter through the hobby, playing early century classics like StarCraft with her, which quickly made it apparent Hana had excellent skills, just like her father.\n\nHana would grow up to be a heavily competitive woman, staying up late with her childhood friend Dae-Hyun to work on his hover bike. She would often race and on one occasion she managed to win, at the cost of the bike and nearly taking her own life due to the reactor overloading.",
-      "image": "",
-      "lat": 35.1799528,
-      "lon": 129.0752365,
-      "sources": [
-        {
-          "text": "Overwatch Website, D.va",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/dva/"
-        }
       ],
-      "eraName": "The Golden Age",
-      "yearStart": 2057,
-      "secondaryCountryPlaces": [
+      "commentary": [
         {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea,",
-          "reasoning": "Hana Song is Born"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "D.va",
-          "reasoning": "Hana Song is Born"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Dae-Hyun,",
-          "reasoning": "Close childhood friend"
+          "name": "Mei · Lijiang Tower — My friend Jiayi works here. She and I had a lot of fun in grad school. Maybe too much. (giggle)",
+          "label": "Grad School"
         }
       ]
     },
@@ -6915,6 +7077,12 @@
           "locationName": "",
           "country": "Hector, Claudio,",
           "reasoning": "Proposers of the Ecopoint program"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Winston · Antarctic Peninsula — So much data at this eco-Watchpoint! I get the \"shivers\" just thinking about it.",
+          "label": "So much Data"
         }
       ]
     },
@@ -7059,6 +7227,16 @@
           "country": "Numbani City of Harmony,",
           "reasoning": "Adawe's legacy, a functional city where Omnics and Humans live in Unity"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Orisa · Numbani — Mo wà ní ilé. (Yoruba) I am home.",
+          "label": "Home"
+        },
+        {
+          "name": "Hanzo · Numbani — My wanderings brought me to this place. It was not to my liking.",
+          "label": "Wanderings"
+        }
       ]
     },
     {
@@ -7115,7 +7293,11 @@
       ],
       "yearStart": 2053,
       "commentary": [
-        "Your daugther"
+        "Your daugther",
+        {
+          "name": "Ana · A mother's work is never done...",
+          "label": "Mothers work"
+        }
       ]
     },
     {
@@ -7219,7 +7401,11 @@
       ],
       "commentary": [
         "My little girl",
-        "More Cats"
+        "More Cats",
+        {
+          "name": "Brigitte · It's like Reinhardt always says: the best solution to every problem is a very large hammer. It... makes more sense when he says it, I guess.",
+          "label": "Large Hammer"
+        }
       ]
     },
     {
@@ -7376,6 +7562,16 @@
       "headlines": [
         "Man claiming to be Doomfist wrecks havoc across Numbani",
         "The city of harmony delays Unity Day celebrations due to concerns about warmonger raid"
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Numbani — If only you could see me now, Akinjide Adeyemi.",
+          "label": "If you could see me"
+        },
+        {
+          "name": "Orisa · Numbani — Many have tried to destroy this city. But Numbani will always hold strong.",
+          "label": "Many Have tried"
+        }
       ]
     },
     {
@@ -7443,6 +7639,17 @@
           "country": "Chao,",
           "reasoning": "Head of Lucheng and the Red Promise project"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Lijiang Tower — Lucheng Interstellar understands an important fact: as long as we are shackled to a single planet, we are vulnerable.",
+          "label": "Vulneralbe"
+        },
+        {
+          "name": "Mei · Lijiang Tower — Who would have thought that Jiayi would end up on Mars?",
+          "label": "Who would have thought"
+        },
+        "Western Movies"
       ]
     },
     {
@@ -7485,6 +7692,10 @@
           "country": "Overwatch",
           "reasoning": "Both serve on the strike team during their unspoken romance"
         }
+      ],
+      "commentary": [
+        "Dancing in the Command Center",
+        "So Dramatic"
       ]
     },
     {
@@ -7528,6 +7739,10 @@
           "country": "Overwatch,",
           "reasoning": "Caught under for deploying Ana before adquiring clearance"
         }
+      ],
+      "commentary": [
+        "Crazy story",
+        "Beautiful"
       ]
     },
     {
@@ -7579,7 +7794,7 @@
     },
     {
       "name": "Omnic Rights",
-      "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.\n",
+      "description": "The decade following the crisis saw the rise of the Omnic Rights movement, as it became clear to the world as a whole that the sentience was permanent and impossible to ignore, and Omnics themselves grappled with their place in the world. While cities like Toronto and Numbani made active efforts towards Omnic integration, the reality is that the world at large was generally far more hostile. From the cleansing of Ravager units, to the destruction of the Australian Omnium, or the inhospitable conditions of the London Underworld, to domestic units being thrown into the streets all over the planet, as their previous families rejected them or in worse cases, were forced back into servitude. Something needed to change, and here, so an organized movement began to campaign for the United Nations, seeking for global recognition of rights and obligations for all Omnics, to be treated with equal respect and empathy as humans.\n\nWhen the UN finally took a stance on the issue, Liao was called as a witness for the case of Omnic sentience. In the hearings she brought in the research and records she had performed while under Ovewatch, alongside previous evidence used for Aurora's original case. In response to the mountains of undeniable evidence, the UN agreed and granted Omnic kind legal personhood status worldwide. In spite of this, not every government complied, and many humans would continue to resent and discriminate Omnic communities. Cases like Cliff Brassey, the first human charged for Omnic Murder, echo the feelings of many people around the world: \"Breaking a machine is property damage, isn't it? This'll blow over. We'll put the tin cans back in the kitchen and forget this ever happened.\"\nThe road towards equality would be a long and dragged out one, but progress was possible, and more than welcomed.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -7618,6 +7833,12 @@
           "locationName": "",
           "country": "Liao,",
           "reasoning": "Testifies in favor of Omnic rights"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Torbjörn · King's Row — I can't believe I fell for all that anti-omnic claptrap.",
+          "label": "Anti Omnic"
         }
       ]
     },
@@ -7785,6 +8006,10 @@
           "country": "Kamori-san,",
           "reasoning": "Utilizes the Fox Spirit as a method of teaching Kiriko"
         }
+      ],
+      "commentary": [
+        "Trip over your Sword",
+        "Bowl Cut"
       ]
     },
     {
@@ -7858,6 +8083,13 @@
       "headlines": [
         "Australian Outback declared unsafe to visit due to Caravan raiders",
         "Health Conditions on the south of Australia worsen as radiation outbreak continues"
+      ],
+      "commentary": [
+        {
+          "name": "Echo · Junkertown or New Junk City — This place confuses me. If it is so hostile to life, why does everyone not leave?",
+          "label": "Hostile Place"
+        },
+        "In a Dream"
       ]
     },
     {
@@ -7910,6 +8142,17 @@
           "locationName": "",
           "country": "Hashimoto Clan,",
           "reasoning": "Falls in line with Shion fearing they will be next"
+        }
+      ],
+      "commentary": [
+        "Happy to Kill",
+        {
+          "name": "Shion · Who should I kill first?",
+          "label": "Who to Kill"
+        },
+        {
+          "name": "Shion · Hanamura or Hanaoka — So peaceful here. I should change that.",
+          "label": "So Peaceful"
         }
       ]
     },
@@ -8003,6 +8246,10 @@
           "country": "Hector, Claudio,",
           "reasoning": "Leave Overwatch to create the Arcology and Collective"
         }
+      ],
+      "commentary": [
+        "Curious Whales",
+        "Visiting the Martinses"
       ]
     },
     {
@@ -8050,6 +8297,13 @@
       "headlines": [
         "Omnic appointed head of Monte Carlo's development",
         "Axiom stocks spike follwoing change in company leadership"
+      ],
+      "commentary": [
+        {
+          "name": "Winston · Circuit Royal — Maximilien's tastes are quite... extravagant.",
+          "label": "Extravagant"
+        },
+        "Where Max lives"
       ]
     },
     {
@@ -8097,6 +8351,13 @@
       "headlines": [
         "Overwatch's new Member \"Mercy\" saves countless lives thanks to flying medical suit",
         "Nanobiotic equipment to begin mass production soon"
+      ],
+      "commentary": [
+        {
+          "name": "Mercy · Helping those in need is its own reward.",
+          "label": "Its own Reward"
+        },
+        "In your Armor"
       ]
     },
     {
@@ -8165,7 +8426,19 @@
           "reasoning": "Push the brothers to train and be part of the family business"
         }
       ],
-      "yearStart": 2060
+      "yearStart": 2060,
+      "commentary": [
+        {
+          "name": "Genji · Hanamura — Attack — I passed many an hour of my misspent youth here.",
+          "label": "Misspent youth"
+        },
+        {
+          "name": "Genji · Neon Junction — I still recall running from home to visit the arcades here... (sigh) If only they'd let me stay.",
+          "label": "Visiting Arcades"
+        },
+        "Going to the Arcade",
+        "Sparrow"
+      ]
     },
     {
       "name": "Captivate",
@@ -8222,7 +8495,12 @@
           "badgePriority": true
         }
       ],
-      "yearStart": 2064
+      "yearStart": 2064,
+      "commentary": [
+        "Captivating",
+        "At my Induction",
+        "Gérard spoke of you"
+      ]
     },
     {
       "name": "Radiation Poisoning",
@@ -8265,6 +8543,10 @@
       "headlines": [
         "Junker cavaran raids Overwatch outpost, no casualties, few wounded",
         "Melbourn hospotal renames facility in honor to Angela Ziegler"
+      ],
+      "commentary": [
+        "I got this Rash",
+        "Sorry for your Doctor"
       ]
     },
     {
@@ -8361,6 +8643,10 @@
       "headlines": [
         "Reports of Omnic Activist storming warehouses increase",
         "Omnic Underworld conditions worsen in London, protests continue"
+      ],
+      "commentary": [
+        "The Name Null Sector",
+        "Freeing your Servant"
       ]
     },
     {
@@ -8419,13 +8705,19 @@
           "country": "Anubis,",
           "reasoning": "Allegedly made secret Omniums at the bottom of the sea"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Busan — Each Gwishin attack strengthens the defenders, as a furnace hardens steel.",
+          "label": "Harden Steel"
+        }
       ]
     },
     {
       "name": "Harnessing te Harness",
       "locationType": "station",
       "cityDisplayName": "Interstellar Journey Space Station",
-      "description": "Doctor De Kuiper had dedicated decades of his life to the study of gravitational forces and how to harness their power. His research had reshaped the world with flying cars and connecting the entire planet with a transcontinental train, and yet, he continues to seek more. Years of research in The Hague led him to believe it would soon be possible to harness the power of a black hole. In order to test his theory, he would perform an experiment within the Interstellar Journey Space Station. Then everything went wrong.\n\nSomething failed during the experiment, triggering the formation of a black hole for a brief, yet fatal moment. Siebren found himself right in the gravitational field of the experiment as the black hole appeared, and during this period of time he was exposed to its raw power. De Kuiper survived, both a miracle and a curse, as he now had to pay for the consequences of his hubris. The area nearing Dr. Siebren began to experience strange fluctuations in gravity, relative to his reactions to what was happening around him. To make matters worse, the experience left Siebren with serious psychological damage, incapable of acting coherently and mentioning a constant, maddening melody that nobody else heard. His distress caused the fluctuations to peak. He had to be evacuated immediately.<br>",
+      "description": "Doctor De Kuiper had dedicated decades of his life to the study of gravitational forces and how to harness their power. His research had reshaped the world with flying cars and connecting the entire planet with a transcontinental train, and yet, he continues to seek more. Years of research in The Hague led him to believe it would soon be possible to harness the power of a black hole. In order to test his theory, he would perform an experiment within the Interstellar Journey Space Station. Then everything went wrong.\n\nSomething failed during the experiment, triggering the formation of a black hole for a brief, yet fatal moment. Siebren found himself right in the gravitational field of the experiment as the black hole appeared, and during this period of time he was exposed to its raw power. De Kuiper survived, both a miracle and a curse, as he now had to pay for the consequences of his hubris. The area nearing Dr. Siebren began to experience strange fluctuations in gravity, relative to his reactions to what was happening around him. To make matters worse, the experience left Siebren with serious psychological damage, incapable of acting coherently and mentioning a constant, maddening melody that nobody else heard. His distress caused the fluctuations to peak. He had to be evacuated immediately.",
       "image": "",
       "sources": [
         {
@@ -8463,6 +8755,9 @@
       ],
       "headlines": [
         "Accident on the International Space Station during Dr. De Kuiper's experiment"
+      ],
+      "commentary": [
+        "Delightfully distracting"
       ]
     },
     {
@@ -8509,6 +8804,10 @@
           "country": "Mondatta,",
           "reasoning": "Works with the local government to give Omnics a Home"
         }
+      ],
+      "commentary": [
+        "Omnic Suffering",
+        "An inspiration"
       ]
     },
     {
@@ -8562,6 +8861,11 @@
           "country": "Hashimoto Clan,",
           "reasoning": "Questions Shion's activities"
         }
+      ],
+      "commentary": [
+        "Kicking off a party",
+        "Strenght in Struggle",
+        "Changed much"
       ]
     },
     {
@@ -8602,6 +8906,9 @@
           "country": "Sigma,",
           "reasoning": "Imprisoned to keep his powers under Control"
         }
+      ],
+      "commentary": [
+        "Rather Quiet"
       ]
     },
     {
@@ -8641,6 +8948,11 @@
       ],
       "headlines": [
         "Tragedy avoided thanks to Freja Skov and Search and Rescue"
+      ],
+      "commentary": [
+        "People Change",
+        "None of  your Business",
+        "Another Life"
       ]
     },
     {
@@ -8701,6 +9013,10 @@
             "https://www.youtube.com/watch?v=BWd_QJjBAbM"
           ]
         }
+      ],
+      "commentary": [
+        "Silhouette",
+        "Bending the Knee"
       ]
     },
     {
@@ -8770,6 +9086,12 @@
           "country": "Adeyemi,",
           "reasoning": "Continues raids through Numbani"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Numbani — Just as sheep must have a shepherd, Numbani must have me.",
+          "label": "Like Sheep"
+        }
       ]
     },
     {
@@ -8825,6 +9147,10 @@
       "headlines": [
         "Reports of a change in Junker Monarchy confirmed",
         "Radiation levels in the outback stabilizing"
+      ],
+      "commentary": [
+        "Being in Charge",
+        "Tempting"
       ]
     },
     {
@@ -8947,6 +9273,9 @@
           "country": "Harold,",
           "reasoning": "Winston and Hammond's caretaker"
         }
+      ],
+      "commentary": [
+        "Hammond?"
       ]
     },
     {
@@ -9016,6 +9345,9 @@
       "headlines": [
         "Hashimoto gangsters seen wielding energy weapons",
         "Tokyo crime rates increase twice as fast this last month"
+      ],
+      "commentary": [
+        "Cursed Boy"
       ]
     },
     {
@@ -9088,6 +9420,11 @@
           "country": "Sojiro,",
           "reasoning": "Assasinated by the Hashimoto"
         }
+      ],
+      "commentary": [
+        "Sleeping Dragon",
+        "Summon a Dragon",
+        "In your Shadow"
       ]
     },
     {
@@ -9150,6 +9487,9 @@
           "country": "Overwatch, Search & Rescue,",
           "reasoning": "Overwatch expands into new Divisions"
         }
+      ],
+      "commentary": [
+        "Working Alone"
       ]
     },
     {
@@ -9200,6 +9540,12 @@
           "country": "Nameless, Zera, Lanet,",
           "reasoning": "Work with Ramattra but grow frustrated by his ideals"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Ramattra · Now, you will see how war can be waged and won.",
+          "label": "Waged and Won"
+        }
       ]
     },
     {
@@ -9247,6 +9593,10 @@
           "country": "Overwatch, Blackwatch",
           "reasoning": "Medical division rebuilds Genji into a living weapon"
         }
+      ],
+      "commentary": [
+        "Halloween Dress up",
+        "Like a Brother"
       ]
     },
     {
@@ -9292,6 +9642,10 @@
           "country": "Vishkar Corporation",
           "reasoning": "Niran researches hardlight healing at the academy"
         }
+      ],
+      "commentary": [
+        "In the Wrong hands",
+        "Biolight Vegetbles"
       ]
     },
     {
@@ -9364,6 +9718,13 @@
       "headlines": [
         "The Scourge of Numbani is dead, man claiming to be his killer steals the Doomfist Gauntlet",
         "Reports of Talon across the Caribbean continue, corruption allegations among the Coaltion ranks on the rise"
+      ],
+      "commentary": [
+        "To Stagnate is to Die",
+        {
+          "name": "Doomfist · Curse me all you want. Without conflict, there is no future for humanity.",
+          "label": "Curse me"
+        }
       ]
     },
     {
@@ -9408,6 +9769,12 @@
       ],
       "headlines": [
         "Overwatch pilot lost in time following engine malfunciton in experimental jet"
+      ],
+      "commentary": [
+        "Do you hear it",
+        "Most Crazy Thing",
+        "Chronal Uncertainty",
+        "Time Travel"
       ]
     },
     {
@@ -9470,6 +9837,14 @@
       "headlines": [
         "Shimada activity reports in Kanezaka suddendly drop, several known members missing",
         "Kanezakan locals claim extorsion attempts at the hand of Shimada gangsters"
+      ],
+      "commentary": [
+        "Father's Bow",
+        {
+          "name": "Hanzo · Hanamura — This was once my home. No longer.",
+          "label": "No longer"
+        },
+        "Criminals"
       ]
     },
     {
@@ -9518,13 +9893,18 @@
       "headlines": [
         "Controversial paper on Celular regeneration shakes the scientific world",
         "Overwatch releases public condemnation of Moira O'Deorain's research"
+      ],
+      "commentary": [
+        "Hippocratic Oath",
+        "Unethical Work",
+        "Waiting for Progress"
       ]
     },
     {
       "name": "Cold Snap",
       "locationType": "earth",
       "cityDisplayName": "Ecoopint Antartica",
-      "description": "Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint: Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. Their experimentation with a prototype machine capable of simulating abnormal weather seemignly influenced the formation of a huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.\n\nVeterans Captain Opara, Dr. Arrhenius, Dr. Adams and young Dr. Torres, Dr. MacReady, Dr. Mei-Ling Zhou were the team stationed at the time. As the storm raged on, the team remained in cryo-stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was presumed dead. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. \n\n\nDuring one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents. All of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.",
+      "description": "Shortly after O'Deorain's recruitment, Overwatch would face a devastating loss in Ecopoint: Antartica. The scientific team on the base dedicated their studies to finding and replicating anomalous weather conditions, but not even with their equipment and knowledge were they able to foresee the quick formation of a massive superstorm in the region. Their experimentation with a prototype machine capable of simulating abnormal weather seemignly influenced the formation of a huge blizzard trapped the team within the base in unlivable conditions, and made evacuation efforts extremely risky. The Ecopoint facilities were equipped with cryo sleep technology, allowing the team to freeze their bodies and enter a stasis, which should have allowed them to survive until the storm passed. These kinds of storms had happened before, and it had become standard procedure, but this particular blizzard was worse than any projections could have estimated.\n\nVeterans Captain Opara, Dr. Arrhenius, Dr. Adams and young Dr. Torres, Dr. MacReady, Dr. Mei-Ling Zhou were the team stationed at the time. As the storm raged on, the team remained in cryo-stasis, getting past the survival time window, where the system should have forced them to wake up, in the middle of the never-ending blizzard. Months passed, and the storm did not dissipate. Any attempts to establish communication failed, so the team was presumed dead. Overwatch would attempt to retrieve their bodies on multiple occasions, but the storm's anomalous persistence prevented access to the base for a full year. \n\nDuring one of the many rescue attempts, an Icebreaker ship, the Resolute, would crash into the Ice, and the rescue team barely managed to escape with their lives. The anomaly continued and Overwatch was forced to stop further retrieval attempts, lest they lose more agents. All of Overwatch entered a mourning period, with the Ecopoint bases rushing to improve security protocols in case of evacuation, and the UN calling for a full accounting of the records for review. Hector and Claudio joined their old partners in mourning the loss of the entire Antarctica team, and those who died trying to get their bodies back.",
       "image": "",
       "lat": -67.107616,
       "lon": -68099824,
@@ -9569,6 +9949,10 @@
         "Anomalous Blizzard reaches Thirteen months of consistent activity",
         "Overwatch declares Antartica staff dead after storm extends pass the survivable window",
         "The Resolute ship is lost during rescue mission in Antartica"
+      ],
+      "commentary": [
+        "Cryogenic research",
+        "Cryogenic Freezing"
       ]
     },
     {
@@ -9623,6 +10007,13 @@
       "headlines": [
         "La Coaterie power brokect presumed to have ties with Talon",
         "Talon activity reported in Monte Carlo"
+      ],
+      "commentary": [
+        "Fight for All Omnics",
+        {
+          "name": "Sombra · Circuit Royal — Anyone want drinks? They're on Max's tab! Ha ha ha!",
+          "label": "Max's Tab"
+        }
       ]
     },
     {
@@ -9665,13 +10056,17 @@
           "country": "Overwatch, Blackwatch,",
           "reasoning": ""
         }
+      ],
+      "commentary": [
+        "Adapting Well",
+        "Flattery"
       ]
     },
     {
       "name": "Hacking Spree",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "A growing anti-government sentiment began to spread around Mexico following the creation and expansion of Lumérico, as many believed that the reconstruction primarily benefited the rich and influential, while those who needed help the most were left behind.\n\nAfter years of Energy Equity under the beloved Xibalba program, Lumérico's lack of commitment to upholding the lead to resentment among the people, and gave birth to Los Muertos.\nA criminal group labeling themselves after the millions that died during the dark days of the Crisis, left behind by their own Government. One of their strongest assets was, surprisingly enough, a young girl.\n\nOlivia Colomar was one of many left orphaned by the Crisis, and she endured the dark days alone in the cold, and with much of the country's infrastructure gone after the Crisis, she survived through a natural gift for computer programming, learning how to hack her way through any system to get by. When los Muertos took her underneath their wing, she welcomed them and even began to assist using her unique skills. Thanks to Olivia los Muertos, was able to get multiple hits against Lumérico and the government as a whole, and nobody in her community really suspected the nice little girl to be robbing them right under their noses.",
+      "description": "A growing anti-government sentiment began to spread around Mexico following the creation and expansion of Lumérico, as many believed that the reconstruction primarily benefited the rich and influential, while those who needed help the most were left behind.\n\nAfter years of Energy Equity under the beloved Xibalba program, Lumérico's lack of commitment to upholding the lead to resentment among the people, and gave birth to Los Muertos.\nA criminal group labeling themselves after the millions that died during the dark days of the Crisis, left behind by their own Government. One of their strongest assets was, surprisingly enough, a young girl.\n\nOlivia Colomar was one of many left orphaned by the Crisis, and she endured the dark days alone in the cold, and with much of the country's infrastructure gone after the Crisis, she survived through a natural gift for computer programming, learning how to hack her way through any system to get by. When los Muertos took her underneath their wing, she welcomed them and even began to assist using her unique skills. Thanks to Olivia, los Muertos, was able to get multiple hits against Lumérico and the government as a whole, and nobody in her community really suspected the nice little girl to be robbing them right under their noses.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -9713,6 +10108,9 @@
           "text": "Sombra Origin Story",
           "url": "https://www.youtube.com/watch?v=vHHjdKMH7_w"
         }
+      ],
+      "commentary": [
+        "Los Muertos"
       ]
     },
     {
@@ -9775,6 +10173,12 @@
           "country": "Bhatt,",
           "reasoning": "The late founder's notes prove essential to Biolight"
         }
+      ],
+      "commentary": [
+        "Leaving Vishkar",
+        "Cutting Hands",
+        "The Martinses",
+        "Fetching Price"
       ]
     },
     {
@@ -9842,6 +10246,12 @@
           "country": "Kuroura,",
           "reasoning": "Left in charge of the Kanezaka branch of the Hashimoto"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Kiriko · Neon Junction — Toshiro Yamagami... I will definitely rescue you.",
+          "label": "Rescue you"
+        }
       ]
     },
     {
@@ -9890,6 +10300,9 @@
       "headlines": [
         "Massive Oil leak absorbed by a Super Coral Colony in Samoa",
         "Experts warn against sailing on waters near New Zealand following terrorist raids"
+      ],
+      "commentary": [
+        "Different Company"
       ]
     },
     {
@@ -9939,6 +10352,11 @@
           "country": "Liao",
           "reasoning": "Leads Project Echo and grows close to Cassidy"
         }
+      ],
+      "commentary": [
+        "Your Name",
+        "Cowboy Hat",
+        "Keeping the Label"
       ]
     },
     {
@@ -9982,6 +10400,13 @@
           "text": "Overwatch Website, Venture",
           "url": "https://overwatch.blizzard.com/en-us/heroes/venture/#rise-to-the-challenge"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Venture · Eichenwalde, Runasapi, or Temple of Anubis — Ilios and Throne of Anubis are mistakenly not included and await a fix. — The world lost a lot of history during the Omnic Crisis. But I know we'll recover everything we can!",
+          "label": "Lost History"
+        },
+        "Nicknames"
       ]
     },
     {
@@ -10040,6 +10465,11 @@
           "country": "Harold,",
           "reasoning": "Killed alongside the rest of the staff"
         }
+      ],
+      "commentary": [
+        "Missing the Moon",
+        "Lunar Simians",
+        "Lunar Food"
       ]
     },
     {
@@ -10100,6 +10530,9 @@
           "country": "Toshiro",
           "reasoning": "Forced to improve his Anima weapons under threat to Mizuki"
         }
+      ],
+      "commentary": [
+        "Hard to Talk"
       ]
     },
     {
@@ -10169,6 +10602,10 @@
           "country": "Lucheng Interstellar,",
           "reasoning": "Attempt to claim Winston as property"
         }
+      ],
+      "commentary": [
+        "How Did You Escape",
+        "Accident"
       ]
     },
     {
@@ -10226,6 +10663,11 @@
           "country": "Kamori-san,",
           "reasoning": "Teaches Kiriko about the Fox Spirit"
         }
+      ],
+      "commentary": [
+        "Foxes Fight Back",
+        "Message for the Fox",
+        "Your Dog"
       ]
     },
     {
@@ -10280,6 +10722,13 @@
       "headlines": [
         "Agent Winston saves pilot lost in time",
         "Overwatch to recruit time traveling agent"
+      ],
+      "commentary": [
+        "Chronal adjustments",
+        "Chronal Uncertainty",
+        "An animal",
+        "Presents",
+        "No more Bananas"
       ]
     },
     {
@@ -10328,6 +10777,15 @@
           "text": "Overwatch Website, Wrecking Ball",
           "url": "https://overwatch.blizzard.com/en-us/heroes/wrecking-ball/"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Wrecking Ball · Junkertown or New Junk City — final blow — Welcome to the hamster's playground.",
+          "label": "Playground"
+        },
+        "No Autographs",
+        "Glorious victories",
+        "Knew the champ"
       ]
     },
     {
@@ -10546,6 +11004,18 @@
           "country": "Antonio,",
           "reasoning": "Assassinated on the spot by Gabriel Reyes"
         }
+      ],
+      "commentary": [
+        "Pulling the Trigger",
+        "Déjà Vu",
+        {
+          "name": "Freja · Rialto — The Venice Incident was the beginning of the end for Overwatch. A shame...",
+          "label": "Beggining of the End"
+        },
+        {
+          "name": "Doomfist · Rialto — Antonio... was a fool.",
+          "label": "A fool"
+        }
       ]
     },
     {
@@ -10611,6 +11081,13 @@
           "country": "Gérard,",
           "reasoning": "Answers for Blackwatch activity following his recovery"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Cassidy · Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.",
+          "label": "Forgive myself"
+        },
+        "Disgrace to Overwatch"
       ]
     },
     {
@@ -10672,11 +11149,14 @@
       "headlines": [
         "The Bartalotti business to be lead by Augusto Vialli",
         "Antonio Bartalotti's assests relocated out of Rialto following his death"
+      ],
+      "commentary": [
+        "Sorry for your Father"
       ]
     },
     {
       "name": "Two Hearts",
-      "description": "Mauga's father was the leader of the Samoan branch of the Deepsea Raiders, and from an early age, his cell took Mauga many of their incursions, installing on him a heavy disrespect for the law and a feeling of doing something meaningful by defying those who sought to destroy the beauty of their oceans,\n\n\nAs their activities prolonged, the Polynesian Leagues began to send military troops to enforce order in their territorial waters, but the raiders did not hesitate to fight back. During a particularly intense battle against these troops, Mauga was critically wounded. He was half dead when they found him, and his heart in no condition for recovery, so the medics saw no choice but to implant a cybernetic heart, to assist his damaged systems. Mauga survived but was forever changed by this near-death experience. The first thing he did as he woke up from surgery was choke the doctor to death. He became a local legend when he returned to Samoa, known as the two-Heart Demon. Once back home, more upgrades and surgeries awaited him to keep up with his dying heart, which eventually gave out and was replaced with another cybernetic heart. \n\nThe machines pumping blood to his body at double the power allowed his body to increase in size massively with his metabolism, but it also made maintaining his enhancements harder. Mauga lived at the verge of death every day of his life, at the mercy of either heart possibly malfunctioning. His condition taught him a valuable lesson that defined his way of life going onward: live every day carefree, because it could be his last, and while this attitude made him out to be a careless brute to many, in reality his lack of worries just made it easier to barge in and open doors to new plans.",
+      "description": "Mauga's father was the leader of the Samoan branch of the Deepsea Raiders, and from an early age, his cell took Mauga many of their incursions, installing on him a heavy disrespect for the law and a feeling of doing something meaningful by defying those who sought to destroy the beauty of their oceans,\n\nAs their activities prolonged, the Polynesian Leagues began to send military troops to enforce order in their territorial waters, but the raiders did not hesitate to fight back. During a particularly intense battle against these troops, Mauga was critically wounded. He was half dead when they found him, and his heart in no condition for recovery, so the medics saw no choice but to implant a cybernetic heart, to assist his damaged systems. Mauga survived but was forever changed by this near-death experience. The first thing he did as he woke up from surgery was choke the doctor to death. He became a local legend when he returned to Samoa, known as the two-Heart Demon. Once back home, more upgrades and surgeries awaited him to keep up with his dying heart, which eventually gave out and was replaced with another cybernetic heart. \n\nThe machines pumping blood to his body at double the power allowed his body to increase in size massively with his metabolism, but it also made maintaining his enhancements harder. Mauga lived at the verge of death every day of his life, at the mercy of either heart possibly malfunctioning. His condition taught him a valuable lesson that defined his way of life going onward: live every day carefree, because it could be his last, and while this attitude made him out to be a careless brute to many, in reality his lack of worries just made it easier to barge in and open doors to new plans.",
       "locationType": "earth",
       "lat": -13.8345235,
       "lon": -171.7630955,
@@ -10715,7 +11195,11 @@
           "reasoning": "Provided Mauga with cybernetic hearts to save his life"
         }
       ],
-      "yearStart": 2068
+      "yearStart": 2068,
+      "commentary": [
+        "Two hearts",
+        "Never Competed"
+      ]
     },
     {
       "name": "Unshackled",
@@ -10767,6 +11251,18 @@
       "headlines": [
         "Controversial Scientist Moira O'Deorain hired into the Ministry of Genetics of Oasis University",
         "Overwatch removes Dr. O'Deorain following the Venice Incident"
+      ],
+      "commentary": [
+        {
+          "name": "Moira · Oasis — If only the world could see the wonders that science has built.",
+          "label": "Wonders"
+        },
+        "Room for Brilliance",
+        {
+          "name": "Moira · Oasis — This is now my home... as much as any other.",
+          "label": "My Home"
+        },
+        "Welcomed in Oasis"
       ]
     },
     {
@@ -10811,6 +11307,9 @@
           "text": "Overwatch Website Illari",
           "url": "https://overwatch.blizzard.com/en-us/heroes/illari/"
         }
+      ],
+      "commentary": [
+        "Not Qualified"
       ]
     },
     {
@@ -10960,6 +11459,16 @@
           "country": "Lanet,",
           "reasoning": "Killed during the attack"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Soldier 76 · King's Row — I wouldn't change a thing we King's Row Uprising.",
+          "label": "Wouldn't Change"
+        },
+        {
+          "name": "Emre · | King's Row — This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a fix. — Overwatch (group) crossed a line here. And the world paid the price.",
+          "label": "Crossed the line"
+        }
       ]
     },
     {
@@ -11009,6 +11518,12 @@
         {
           "text": "Ramattra Reflections",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc08ef1227df73769/638db09da056f810486e240e/OW_LoreBite-Ramattra_FINAL_EN.pdf"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Ramattra · This will not be won without sacrifice. Be ready.",
+          "label": "Sacrifice"
         }
       ]
     },
@@ -11067,6 +11582,10 @@
       "headlines": [
         "Overwatch agent killed by his own wife?",
         "Talon kidnaps ballerina Prima donna"
+      ],
+      "commentary": [
+        "Gérard's Grave",
+        "A fool"
       ]
     },
     {
@@ -11121,6 +11640,12 @@
           "country": "Vialli, Maximillien,",
           "reasoning": "Recurrently requested the Widowmaker for Assassination"
         }
+      ],
+      "commentary": [
+        "Skin mod",
+        "An Emotion",
+        "Distant Lately",
+        "How are you feeling"
       ]
     },
     {
@@ -11254,6 +11779,9 @@
       "headlines": [
         "Three hostages killed during Asunción Summit attack",
         "Overwatch action leads to global security data being stolen"
+      ],
+      "commentary": [
+        "Truth about Retirement"
       ]
     },
     {
@@ -11292,6 +11820,10 @@
           "text": "Overwatch Website, Hazard",
           "url": "https://overwatch.blizzard.com/en-us/heroes/hazard/"
         }
+      ],
+      "commentary": [
+        "Phreak Firewalls",
+        "New Chassis"
       ]
     },
     {
@@ -11347,13 +11879,17 @@
             "https://www.youtube.com/watch?v=GDiqTSiZyOs"
           ]
         }
+      ],
+      "commentary": [
+        "Dramatic",
+        "Madam Wolf"
       ]
     },
     {
       "name": "Overridden",
       "locationType": "earth",
       "cityDisplayName": "Helsinki, Finland",
-      "description": "After years of service, Emre made the hard choice to leave the strike team behind. Far too many times, the higher ups ignored his pleas and advice, and it often led to tragedy like the many deaths in Samoa during the Polynesian campaign. He had grown tired of how lost protocol had gotten and the level of corruption leadership Reyes was playing in. Freja tried to convince him to stay, valuing him too much as a friend to let him go, but Emre already had his eyes set elsewhere. Many security firms had offered him positions, and he wished to try and continue making a difference outside Overwatch's structure.\n\nLittle is known of what truly happened to him, but his body was heavily modified by cybernetics, turned into a living weapon against his will by an unknown force. The God AI Chernobog, believed to have shut himself down in the crisis, was implanted into his body, forcing him to follow his orders or else endure as his own mind is overridden into submission. \n\nIt's unknown what the true intentions for Chernobog's actions were, what caused his apparent shift of views towards humanity and what his relationship with those who did this to Emre is, or if the Program might have acted alone. Only one thing remains clear, he sees everything, and- HAVAINTO SYNTÄÄ HAVAINTOJA",
+      "description": "After years of service, Emre made the hard choice to leave the strike team behind. Far too many times, the higher ups ignored his pleas and advice, and it often led to tragedy like the many deaths in Samoa during the Polynesian campaign. He had grown tired of how lost protocol had gotten and the level of corruption leadership Reyes was playing in. Freja tried to convince him to stay, valuing him too much as a friend to let him go, but Emre already had his eyes set elsewhere. Many security firms had offered him positions, and he wished to try and continue making a difference outside Overwatch's structure.\n\nLittle is known of what truly happened to him, but his body was heavily modified by cybernetics, turned into a living weapon against his will by an unknown force. The God AI Chernobog, believed to have shut himself down in the crisis, was implanted into his body, forcing him to follow his orders or else endure as his own mind is overridden into submission. \n\nIt's unknown what the true intentions for Chernobog's actions were, what caused his apparent shift of views towards humanity and what his relationship with those who did this to Emre is, or if the Program might have acted alone. Only one thing remains clear, he sees everything, and-MR TGQFFGCHRUIIR",
       "image": "",
       "lat": 60.1666204,
       "lon": 24.9435408,
@@ -11402,6 +11938,10 @@
           "text": "Overwatch Website, Emre",
           "url": "https://overwatch.blizzard.com/en-us/heroes/emre/"
         }
+      ],
+      "commentary": [
+        "I've seen that before",
+        "Playing Dumb"
       ]
     },
     {
@@ -11508,6 +12048,10 @@
       "headlines": [
         "Ana Amari goes missing during Poland Mission",
         "Overwatch rescues scientists from Talon kidnapping"
+      ],
+      "commentary": [
+        "Going Soft",
+        "Eye repair"
       ]
     },
     {
@@ -11605,6 +12149,17 @@
           "text": "Overwatch Website, Mauga",
           "url": "https://overwatch.blizzard.com/en-us/heroes/mauga/"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Mauga · You and me, Baptiste. You and me",
+          "label": "You and Me"
+        },
+        {
+          "name": "Mauga · Loosen up. This is supposed to be fun.",
+          "label": "Loosen up"
+        },
+        "Rusty"
       ]
     },
     {
@@ -11654,6 +12209,9 @@
           "country": "Soldier 76, Reaper,",
           "reasoning": "Continue to escalate in confrontations without Ana mediating"
         }
+      ],
+      "commentary": [
+        "Like mother like daughter"
       ]
     },
     {
@@ -11703,6 +12261,13 @@
         {
           "text": "Overwatch Website, Sierra",
           "url": "https://overwatch.blizzard.com/en-us/heroes/sierra/"
+        }
+      ],
+      "commentary": [
+        "Without my mom",
+        {
+          "name": "Sierra · Nepal, Route 66 or Runasapi — I'm still looking, Kendra Woods. I know you're out there somewhere.",
+          "label": "Still Looking"
         }
       ]
     },
@@ -11820,7 +12385,7 @@
       "name": "The Conspiracy",
       "locationType": "earth",
       "cityDisplayName": "Dorado, Mexico",
-      "description": "Olivia had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.\n\nOlivia had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.\nThat day Olivia Colomar had died, but not long after. Sombra was born. \n\nShe had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.",
+      "description": "Olivia\n497464\n had grown extremely confident in her hacking skills over the years as a member of Los Muertos, and she was one to challenge herself. She continued hacking through highly secured firewalls of many companies and organizations across the globe. It had become an addiction for her. But one day, while she was diving through the seas of data in her computer, she stumbled on the web of a global conspiracy. An unknown force awaited her at the end of her search, and it stared right back at her.\n\nOlivia\n?6=^:%\n had encountered the first barrier she couldn't just break through. And with her identity compromised, she was forced to go into hiding, deleting all traces of her life never to be seen again.\nThat day Olivia Colomar\n}!#{=?:+@1$1,>\n had died, but not long after. Sombra was born.  She had upgraded herself with cybernetics and stolen teleportation technology, not unlike the chronal anchor Winston developed years ago, and essentially became a living computer with one goal in mind: To find the truth about the conspiracy she uncovered, and figure out the true mastermind pulling the strings that collected the whole world. To do so however, she needed wider connections than what los Muertos could offer. She joined Talon in order to expand her own network of resources and to follow the clues left behind by this conspiracy, pointing to a certain rogue agent with the same Eye symbol carved into his chest.",
       "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -11862,6 +12427,12 @@
           "text": "Sombra Origin",
           "url": "https://www.youtube.com/watch?v=vHHjdKMH7_w"
         }
+      ],
+      "commentary": [
+        "Stole That Device",
+        "Feeling Sick",
+        "Share My Secrets",
+        "Change of Origins"
       ]
     },
     {
@@ -11913,6 +12484,10 @@
       "yearEnd": null,
       "headlines": [
         "Doomfist is finally defeated in Singapore"
+      ],
+      "commentary": [
+        "Stopped you once",
+        "Beaten by a Monkey"
       ]
     },
     {
@@ -12065,6 +12640,9 @@
           "text": "Tear it Down",
           "url": "https://overwatch.blizzard.com/en-us/media/comic/tear-it-down/"
         }
+      ],
+      "commentary": [
+        "Immense Pain"
       ]
     },
     {
@@ -12166,6 +12744,9 @@
           "country": "Overwatch, IJC,",
           "reasoning": "The United Nations begins to look at the idea of Shutting down Overwatch"
         }
+      ],
+      "commentary": [
+        "Undo it all"
       ]
     },
     {
@@ -12218,6 +12799,10 @@
           "text": "Overwatch Website, Genjig",
           "url": "https://overwatch.blizzard.com/en-us/heroes/genji/"
         }
+      ],
+      "commentary": [
+        "Breathing",
+        "Alongside my Pupil"
       ]
     },
     {
@@ -12293,6 +12878,9 @@
           "country": "Naughton, Sam,",
           "reasoning": "Called to testify"
         }
+      ],
+      "commentary": [
+        "A new answer"
       ]
     },
     {
@@ -12356,6 +12944,14 @@
           "text": "Overwatch Declasified",
           "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Pharah · Oasis — City of unfettered scientists, yeah... until they call Helix in tears at two in the morning because the wolfbats escaped... again.",
+          "label": "Wolfbats"
+        },
+        "Joining Helix",
+        "Helix mercenaries"
       ]
     },
     {
@@ -12413,6 +13009,10 @@
           "text": "Code of Violence",
           "url": "https://overwatch.blizzard.com/en-us/media/short-story/code-of-violence/"
         }
+      ],
+      "commentary": [
+        "Agony",
+        "Pain"
       ]
     },
     {
@@ -12465,6 +13065,13 @@
           "text": "Sigma Origin Story",
           "url": "https://www.youtube.com/watch?v=onplsJSdp4A"
         }
+      ],
+      "commentary": [
+        "Sigma's Brain",
+        "Stressors",
+        "Snap out of it",
+        "Are you happy with that?",
+        "Non invasive Tests"
       ]
     },
     {
@@ -12543,6 +13150,12 @@
           "country": "Chernobog,",
           "reasoning": "Commands Emre to take specific jobs for Talon"
         }
+      ],
+      "commentary": [
+        "More Fortunate",
+        "Righteous Garbage",
+        "Useful when you show up",
+        "More Wires than Skin"
       ]
     },
     {
@@ -12597,7 +13210,10 @@
           "reasoning": "Take control of Overwatch's assets"
         }
       ],
-      "yearStart": 2070
+      "yearStart": 2070,
+      "commentary": [
+        "Locked up"
+      ]
     },
     {
       "name": "Shrike",
@@ -12657,6 +13273,13 @@
           "text": "Bastet",
           "url": "https://overwatch.blizzard.com/en-us/media/short-story/bastet/"
         }
+      ],
+      "commentary": [
+        "Next Funeral",
+        "Masked Vigilante",
+        "Always Worry",
+        "You were Dead",
+        "You'll get bored"
       ]
     },
     {
@@ -12718,6 +13341,10 @@
           "country": "Dae-Hyun,",
           "reasoning": "Hana's closest friend and supporter"
         }
+      ],
+      "commentary": [
+        "Esports are Sports",
+        "Ranking Up"
       ]
     },
     {
@@ -12799,6 +13426,13 @@
             "https://www.youtube.com/watch?v=u282-SDwYtg"
           ]
         }
+      ],
+      "commentary": [
+        "Soft Criminals",
+        {
+          "name": "Hazard · Check out these new 'gradies. Phreaks's work. Outdid herself again!",
+          "label": "Touch Up"
+        }
       ]
     },
     {
@@ -12860,6 +13494,10 @@
           "text": "Ashe Origin Story",
           "url": "https://www.youtube.com/watch?v=yvT9wKCrEyo"
         }
+      ],
+      "commentary": [
+        "How's Bars",
+        "Frankie and Bez"
       ]
     },
     {
@@ -12915,6 +13553,9 @@
       "headlines": [
         "Calado officies burn down after explosion in Rio",
         "Vishkar to rebuild Rio's city center and favelas in the new Paraiso Project"
+      ],
+      "commentary": [
+        "Deprioritized"
       ]
     },
     {
@@ -12962,6 +13603,12 @@
           "text": "Waste Land",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte43dc5bcdc5c9a75/5d02e6a37b48be290a7f9679/comic-overwatch-wasted-land_en-gb.pdf"
         }
+      ],
+      "commentary": [
+        "Are you a Couple",
+        "Don't Blow It",
+        "Bacon",
+        "Mako and the Wreckers"
       ]
     },
     {
@@ -12997,6 +13644,10 @@
           "country": "Zarya,",
           "reasoning": "Becomes an Olympic Weightlifter"
         }
+      ],
+      "commentary": [
+        "Lifting",
+        "Huge fan"
       ]
     },
     {
@@ -13060,6 +13711,12 @@
           "country": "Ingrid,",
           "reasoning": "Takes Reinhardt in to spend time with the Family"
         }
+      ],
+      "commentary": [
+        "Working Order",
+        "Had to do more",
+        "Dragging Brigitte",
+        "What is left"
       ]
     },
     {
@@ -13122,6 +13779,10 @@
           "country": "Portero,",
           "reasoning": "In conneciton with Sanjay"
         }
+      ],
+      "commentary": [
+        "Leaving the Cage",
+        "Your Employers"
       ]
     },
     {
@@ -13165,6 +13826,10 @@
           "country": "Athena,",
           "reasoning": "Keeps Winston Company and prevents him from doing anything stupid"
         }
+      ],
+      "commentary": [
+        "Peanut Butter",
+        "Always Captain"
       ]
     },
     {
@@ -13208,6 +13873,13 @@
           "text": "What you left behind",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0194921f5024bf0c/5d5ef7f33471931c451d2bce/what-you-left-behind_en-us.pdf"
         }
+      ],
+      "commentary": [
+        "Done with Talon",
+        "Show your face",
+        "Right amount of stupid",
+        "Short Memory",
+        "Medical Benefits"
       ]
     },
     {
@@ -13258,6 +13930,13 @@
           "text": "Overwatch Website, Zarya",
           "url": "https://overwatch.blizzard.com/en-us/heroes/zarya/"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Zarya · Volskaya Industries — Katya is a hero to my people. We must protect what she has built.",
+          "label": "A Hero"
+        },
+        "Volskaya's Mechs"
       ]
     },
     {
@@ -13310,6 +13989,13 @@
           "text": "Mission Statement",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltd61a7c0fa6827b4d/5d02e273cf7aa6330ac67308/comic-overwatch-mission-statement_en-us.pdf"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Pharah · Temple of Anubis — I lost many good soldiers here.",
+          "label": "Good Soldiers"
+        },
+        "Anubis's Jailers"
       ]
     },
     {
@@ -13384,6 +14070,14 @@
       "headlines": [
         "Esports players drafted into experimental government program",
         "New MEKA Squad stops the Gwishin Colossus from reaching Busan"
+      ],
+      "commentary": [
+        {
+          "name": "D.va · Busan — Someone has to save the world, it might as well be me! Woo! GG!",
+          "label": "Save the world"
+        },
+        "Propaganda Machine",
+        "Soldier celebrities"
       ]
     },
     {
@@ -13437,7 +14131,14 @@
           "reasoning": "Lena's new girlfrien"
         }
       ],
-      "yearStart": 2070
+      "yearStart": 2070,
+      "commentary": [
+        "Hit the Slopes",
+        {
+          "name": "Tracer · King's Row — Wonder if I have time to visit Emily? ...No, better stay focused...",
+          "label": "Visit Emily"
+        }
+      ]
     },
     {
       "name": "Vanadium Strand",
@@ -13530,6 +14231,15 @@
             "https://www.youtube.com/watch?v=LriEejDFSnQ"
           ]
         }
+      ],
+      "commentary": [
+        "On the Wrong Path",
+        "Looking Back",
+        "What Happened",
+        {
+          "name": "Freja · Time is money, they say... and I'm not keen on wasting either.",
+          "label": "Time is Money"
+        }
       ]
     },
     {
@@ -13585,6 +14295,10 @@
           "country": "Meri, Geiger,",
           "reasoning": "Follow the Queen in her Incursions against Omnics"
         }
+      ],
+      "commentary": [
+        "Show some respect",
+        "Not an Omnic"
       ]
     },
     {
@@ -13630,6 +14344,14 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
             "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
           ]
+        }
+      ],
+      "commentary": [
+        "Too hard on Wuyang",
+        "Dancing anxiety",
+        {
+          "name": "Anran · Nothing burns brighter than my willpower.",
+          "label": "Burn Brighter"
         }
       ]
     },
@@ -13678,6 +14400,16 @@
           "text": "Train Hopper",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt46ce6d6e4643f9b0/5d02e58da812cef40914a52e/comic-overwatch-train-hopper_en-us.pdf"
         }
+      ],
+      "commentary": [
+        "Useful",
+        "Bills were Always Paid",
+        "Real Clothes",
+        {
+          "name": "Cassidy · Not as quick as I used to be, but I'm still the fastest gun in the New West.",
+          "label": "Fastest Gun"
+        },
+        "Talon's Bounty"
       ]
     },
     {
@@ -13727,6 +14459,11 @@
           "country": "Talon Empire,",
           "reasoning": "Sends down Cuerva's squad to hunt Baptiste down"
         }
+      ],
+      "commentary": [
+        "Where have you been",
+        "Coming with Us",
+        "Eager to see you"
       ]
     },
     {
@@ -13787,13 +14524,18 @@
       "headlines": [
         "Protests in Rio continue due to Vishkar's failed promises",
         "London Police to adapt Sonic anti Riot weaponry"
+      ],
+      "commentary": [
+        "Sonic Inventor",
+        "Vishkar is using you",
+        "Noisemaker"
       ]
     },
     {
       "name": "Crime Spree",
       "locationType": "earth",
       "cityDisplayName": "Sydney, Australia",
-      "description": "Junkrat and Roadhog continued wrecking havoc in Junkertown, angering most of the city. After a string of incidents that placed them on the Queen's bad side, enough was enough. Odessa's hands to put some order if she wanted to still be respected amongst the Junkers.\n\nAs an act of mercy, the Queen did not order their execution, instead removing them from the city and threatening to properly kill them if they ever tried to return. Junkrat blamed the situation on Roadhog without much thought, and quickly began to hatch a plan to break into the city and enact their revenge.\n\nThere are two things that solve any problem, according to Junkrat himself: money and explosives. In order to set his secret master plan in motion, the pair needed a lot of riches, so after wandering their way out of the outback, they began an international crime spree. Reported by A Moment in Crime's programming, the Junker duo gained notoriety for a string of robberies, including other crimes like arson, murder, and even stealing the crown jewels in London. Going by the creed of \"No job too big, no score too small\", they spread mayhem across the whole world, causing a loss of millions in property damage and injured casualties, eventually earning a bounty of up to $25 million.",
+      "description": "Junkrat and Roadhog continued wrecking havoc in Junkertown, angering most of the city. After a string of incidents that placed them on the Queen's bad side, enough was enough. Odessa's hands to put some order if she wanted to still be respected amongst the Junkers. As an act of mercy, the Queen did not order their execution, instead removing them from the city and threatening to properly kill them if they ever tried to return. Junkrat blamed the situation on Roadhog without much thought, and quickly began to hatch a plan to break into the city and enact their revenge.\n\nThere are two things that solve any problem, according to Junkrat himself: money and explosives. In order to set his secret master plan in motion, the pair needed a lot of riches, so after wandering their way out of the outback, they began an international crime spree. Reported by A Moment in Crime's programming, the Junker duo gained notoriety for a string of robberies, including other crimes like arson, murder, and even stealing the crown jewels in London. Going by the creed of \"No job too big, no score too small\", they spread mayhem across the whole world, causing a loss of millions in property damage and injured casualties, eventually earning a bounty of up to $25 million.",
       "image": "",
       "lat": -33.8698439,
       "lon": 151.2082848,
@@ -13839,6 +14581,9 @@
           "text": "Roadhog and Junkrat Origins",
           "url": "https://www.youtube.com/watch?v=JC9WsS5PIzk"
         }
+      ],
+      "commentary": [
+        "Crown Jewels"
       ]
     },
     {
@@ -13888,6 +14633,9 @@
           "country": "Helix Securities,",
           "reasoning": "Assigns Sierra to lead the Summit Squad"
         }
+      ],
+      "commentary": [
+        "Dorothy"
       ]
     },
     {
@@ -13974,6 +14722,13 @@
           "country": "Ingrid,",
           "reasoning": "Angela visits the Lindholms occassionally for Holidays"
         }
+      ],
+      "commentary": [
+        "Just your Type",
+        {
+          "name": "Baptiste · I've done things I'm not proud of. Time to start making up for it.",
+          "label": "Making Up"
+        }
       ]
     },
     {
@@ -14016,6 +14771,13 @@
         {
           "text": "Dragon Slayer",
           "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
+        }
+      ],
+      "commentary": [
+        "Medieval History",
+        {
+          "name": "Brigitte · Here we go again. Shields up!",
+          "label": "Shields up"
         }
       ]
     },
@@ -14122,6 +14884,15 @@
           "text": "Brigitte Origin Story",
           "url": "https://www.youtube.com/watch?v=K_m8fcJb5tE"
         }
+      ],
+      "commentary": [
+        "Not getting younger",
+        "Getting a Helmet",
+        "Obsolete",
+        {
+          "name": "Brigitte · Stay close to me and I'll keep you safe.",
+          "label": "Stay Close"
+        }
       ]
     },
     {
@@ -14193,6 +14964,15 @@
           "text": "Kiriko",
           "url": "https://www.youtube.com/watch?v=9acxn7qAST4"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Kiriko · Hanamura, Hanaoka or Neon Junction — Watch over us, grandma. We'll send those Hashimoto packing.",
+          "label": "Watch over us"
+        },
+        "Killing for Donuts",
+        "Hashimoto Bounties",
+        "Resolving Differences"
       ]
     },
     {
@@ -14244,6 +15024,15 @@
           "country": "Benicio,",
           "reasoning": "Supports his son and the revolution"
         }
+      ],
+      "commentary": [
+        "Resistance",
+        {
+          "name": "Domina · Paraíso — eliminating Lúcio — They'll idolize anyone these days...",
+          "label": "Idols"
+        },
+        "People should be free",
+        "What you stole"
       ]
     },
     {
@@ -14304,6 +15093,16 @@
       "headlines": [
         "Zurich Archive reveal Jack Morrison's SEP designation as \"Soldier: 76\"",
         "Man as a strong as a bear single handedly defeats Helix troops at Grand Mesa"
+      ],
+      "commentary": [
+        "Vigilantes",
+        "Playing Boy Scout",
+        "Golden Boy",
+        "Suppose to be death",
+        {
+          "name": "Soldier 76 · If anybody asks, I was never here.",
+          "label": "Never here"
+        }
       ]
     },
     {
@@ -14374,6 +15173,14 @@
           "text": "Shooting Star Overwatch",
           "url": "https://www.youtube.com/watch?v=q7j2d6YCQbg"
         }
+      ],
+      "commentary": [
+        {
+          "name": "D.va · Busan — Elimination — I will defend my country!",
+          "label": "Defend my Country"
+        },
+        "Mech Mechanic",
+        "Who is your Mechanic"
       ]
     },
     {
@@ -14423,6 +15230,9 @@
           "country": "Kace,",
           "reasoning": "Disapproves of Tracer"
         }
+      ],
+      "commentary": [
+        "Vintage Vinyl"
       ]
     },
     {
@@ -14485,6 +15295,15 @@
           "text": "Dragons",
           "url": "https://www.youtube.com/watch?v=oJ09xdxzIJQ"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Hanzo · Hanamura — The master of the Shimada Clan has returned.",
+          "label": "Return"
+        },
+        "You have come far",
+        "Don't You Recognize Me",
+        "Still Grieving"
       ]
     },
     {
@@ -14527,6 +15346,14 @@
           "country": "Anubis,",
           "reasoning": "Commands Bastion to destroy even after Awakening"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Junkrat · Black Forest — What a place this is! A ghost in every attic. Maybe this is where I'll retire.",
+          "label": "Ghosts in every attic"
+        },
+        "Asleep for a long time",
+        "A Bird Following You"
       ]
     },
     {
@@ -14570,6 +15397,13 @@
       "headlines": [
         "Young Girl Claims that the fugitive Soldier: 76 saved her life in Dorado",
         "Los Muertos Criminal Activity plagues the Streets of Mexico"
+      ],
+      "commentary": [
+        {
+          "name": "Soldier 76 · Dorado — Los Muertos is a cancer on this city.",
+          "label": "A cancer"
+        },
+        "Ilegal Activities"
       ]
     },
     {
@@ -14667,6 +15501,18 @@
           "country": "Portero, Sanjay,",
           "reasoning": "In contact looking for a controversial Partnership"
         }
+      ],
+      "commentary": [
+        "Unlocking",
+        {
+          "name": "Sombra · Hah, let's get started. Got a lot of systems that need hacking.",
+          "label": "Hacking Systems"
+        },
+        "Sharing",
+        {
+          "name": "Sombra · Dorado — LumériCo. (chuckles)",
+          "label": "Lumérico"
+        }
       ]
     },
     {
@@ -14742,6 +15588,14 @@
       "headlines": [
         "Gun shots heart at the London Rooftops during Mondatta's Speech",
         "Mondatta Assassinated in Kings Row, Overwatch agent spotted on the scene"
+      ],
+      "commentary": [
+        "Blaming yourself",
+        "All Responsible",
+        {
+          "name": "Widowmaker · After the trigger pull lies a blissful eternity-- until the shot connects.",
+          "label": "The Trigger"
+        }
       ]
     },
     {
@@ -14875,6 +15729,16 @@
           "text": "Recall",
           "url": "https://www.youtube.com/watch?v=sB5zlHMsM7k"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Reaper · Watchpoint: Gibraltar — Overwatch... I'll put an end to your sad story.",
+          "label": "Sad Story"
+        },
+        {
+          "name": "Reaper · Watchpoint: Gibraltar — Overwatch... Good riddance.",
+          "label": "Good Ridance"
+        }
       ]
     },
     {
@@ -14950,6 +15814,9 @@
       "headlines": [
         "Tracer wounded while stopping riots at the London Underworld",
         "Omnics plot to destroy the Underworld following Mondatta's death"
+      ],
+      "commentary": [
+        "Taking the Risk"
       ]
     },
     {
@@ -14997,6 +15864,11 @@
           "country": "Ecopoints, Overwatch",
           "reasoning": "Turns back on due to the recall"
         }
+      ],
+      "commentary": [
+        "Googly Eyes",
+        "Captain Opara",
+        "Remebering the Past"
       ]
     },
     {
@@ -15049,6 +15921,10 @@
           "text": "What you left behind",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0194921f5024bf0c/5d5ef7f33471931c451d2bce/what-you-left-behind_en-us.pdf"
         }
+      ],
+      "commentary": [
+        "Live Forever",
+        "Finding Anyone"
       ]
     },
     {
@@ -15145,6 +16021,15 @@
           "text": "Yokai",
           "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7e01beb57eafac48/632d2de05f39a30d9cedbe53/OW_Yokai-Kiriiko_EN_Final.pdf"
         }
+      ],
+      "commentary": [
+        "Hope for more",
+        "Her own Mistakes",
+        {
+          "name": "Kiriko · Kanezaka — eliminating Shion — Kanezaka is under my protection.",
+          "label": "Under my Protection"
+        },
+        "Slashing your Tires"
       ]
     },
     {
@@ -15216,6 +16101,17 @@
           "text": "Infiltration",
           "url": "https://www.youtube.com/watch?v=tU7jskA1zWI"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Sombra · Volskaya Industries — I wonder how my friend is doing.",
+          "label": "My Friend"
+        },
+        "Trust Sombra",
+        {
+          "name": "Reaper · Dorado — Where's Sombra when you need her?",
+          "label": "Where's Sombra"
+        }
       ]
     },
     {
@@ -15282,6 +16178,9 @@
             "https://www.youtube.com/watch?v=GDiqTSiZyOs"
           ]
         }
+      ],
+      "commentary": [
+        "Front Row Seat"
       ]
     },
     {
@@ -15352,6 +16251,10 @@
           "text": "Mei's Adventures",
           "url": "https://overwatch.blizzard.com/en-us/news/19942649/"
         }
+      ],
+      "commentary": [
+        "Travel Tips",
+        "Travelling the world"
       ]
     },
     {
@@ -15419,6 +16322,13 @@
           "country": "Athena,Emily,",
           "reasoning": "Join Winston and Lena in the Holidays"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Mercy · Watchpoint: Gibraltar — Overwatch was shut down for a reason. Maybe it's best it stay that way.",
+          "label": "For a Reason"
+        },
+        "Hotpot"
       ]
     },
     {
@@ -15570,6 +16480,11 @@
       "headlines": [
         "Soldier: 76 spotted in Cairo",
         "Shirke attacks on criminals spike after recent encounter between Helix and Talon"
+      ],
+      "commentary": [
+        "Better than Retirement",
+        "Hard to Kill",
+        "Out of Hand"
       ]
     },
     {
@@ -15614,6 +16529,12 @@
       "yearEnd": 2078,
       "headlines": [
         "Bastet Vigilante takes down Abdul Hakim's crime syndicate"
+      ],
+      "commentary": [
+        "Someone to Trust",
+        "That one Time",
+        "Bastet",
+        "When the Fighting is Over"
       ]
     },
     {
@@ -15674,11 +16595,18 @@
           "text": "Overwatch Cinematic Trailer",
           "url": "https://www.youtube.com/watch?v=FqnKB22pOC0"
         }
+      ],
+      "commentary": [
+        {
+          "name": "Winston · Numbani — Ever feel like you’re just security for Doomfist’s gauntlet?",
+          "label": "Security"
+        },
+        "Do my Job"
       ]
     },
     {
       "name": "Travelling Monk",
-      "description": "No description available.",
+      "description": "After years of self-discovery, Genji had now left the Shambali Monastery to meet his brother once more, and while he returned a couple of times to visit his master, especially during the holdays, the sparrow was ready to move out into the world. After seeing his pupil leave, Tekhartha Zenyatta had grown to see the limits of the Shambali's path, a creed made by Omnics and for Omnics without fully encapsulating the human perspective into the picture. Zenyatta believed that the only way to repair the relationships between humans and omnics was not through dogmatic teachings like the monks, hrough slow activism like his Master Mondatta or even through fighting and liberating like his brother Ramattra. In Zenyatta's eyes, the true way to breach the gap between people was interpersonal connection and engagement, to start a conversation and meet eye to eye.\n\nSeeking a way to apply his new philosophy, Zenyatta left the monastery behind, becoming a wondering monk, traveling the world helping those in need of guidance to overcome their personal struggles and find inner peace. After years of exposure to the Iris anomaly through meditation and channeling the Shambali orbs, he began to accumulate the anomalous energy in his own body, allowing him to defy gravity and gain similar properties as the orbs the monks used to harvest this energy. Using the gifts of the Iris, Zenyatta was able to better connect with others, using the effects of the orbs to reflect their perspective and allow them to see from new angles, bringing people together as one under the Shambali faith. While his journey would take him to many places, he would often spend his time at the village in Suravasa, the starting point of Aurora's pilgrimage and where many lost souls came to seek the guidance of the Iris. He acted as a spiritual teacher that brought humans and omnics together, quickly becoming quite respected amongst the locals, making a difference in his own way beyond the regular Shambali teachings.",
       "locationType": "earth",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -15691,12 +16619,15 @@
         {
           "locationName": "Suravasa, India",
           "country": "India",
-          "reasoning": "",
+          "reasoning": "Zenyatta leaves the monastery and becomes a trravelling monk",
           "lat": 23.2599,
           "lon": 77.4126
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Tekhartha Zenyatta joins arriving Omnics and humans into their pilgrimage to nepal.",
+        "Suravasa Temple celebrating the arrival of the Shambali Tekartha"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Zenyatta",
@@ -15707,14 +16638,26 @@
         {
           "locationName": "",
           "country": "Zenyatta,",
-          "reasoning": ""
+          "reasoning": "Forever changed by the Iris exposure"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Shambali Order,",
-          "reasoning": ""
+          "reasoning": "More people are brought into the faith of the Shambali under Zenyatta's teachings"
+        }
+      ],
+      "commentary": [
+        "Owe to the Iris",
+        "Lonely Road",
+        {
+          "name": "Zenyatta · Do not fear, for growth is always painful.",
+          "label": "Growth is Painful"
+        },
+        {
+          "name": "Zenyatta · In times of conflict, one must seek balance.",
+          "label": "Seek Balace"
         }
       ]
     },
@@ -16990,6 +17933,11 @@
           "country": "Balderich,",
           "reasoning": "Gets Visited by Reinhardt and Brigitte"
         }
+      ],
+      "commentary": [
+        "Not Hanging up",
+        "Answer the recall",
+        "What is left"
       ]
     },
     {
@@ -18921,6 +19869,11 @@
             "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
           ]
         }
+      ],
+      "commentary": [
+        "Always my brother",
+        "Why Withdraw",
+        "Disappointing"
       ]
     },
     {
