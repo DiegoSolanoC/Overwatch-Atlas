@@ -584,6 +584,14 @@
         },
         {
           "kind": "hero",
+          "name": "Doctrine",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "A",
+          "showInCodex": true
+        },
+        {
+          "kind": "hero",
           "name": "Mauga",
           "reasoningSubjectToLinked": "",
           "reasoningLinkedToSubject": "",

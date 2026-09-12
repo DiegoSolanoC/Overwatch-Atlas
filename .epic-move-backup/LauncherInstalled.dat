@@ -1,0 +1,92 @@
+{
+	"InstallationList": [
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\VALORANT",
+			"NamespaceId": "cbd5b3d310a54b12bf3fe8c41994174f",
+			"ItemId": "d1aec7fb384d4f98beb902d813bbae3c",
+			"ArtifactId": "602eb4abc8764c87b7f2607a1ef8c18e",
+			"AppVersion": "1168-327",
+			"AppName": "602eb4abc8764c87b7f2607a1ef8c18e"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_4.23",
+			"NamespaceId": "ue",
+			"ItemId": "3ddb1bad6e004b99a7192c1a29f2318a",
+			"ArtifactId": "UE_4.23",
+			"AppVersion": "4.23.1-9631420+++UE4+Release-4.23-2023.1-Windows",
+			"AppName": "UE_4.23"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\AmongUs",
+			"NamespaceId": "33956bcb55d4452d8c47e16b94e294bd",
+			"ItemId": "729a86a5146640a2ace9e8c595414c56",
+			"ArtifactId": "963137e4c29d4c79a81323b8fab03a40",
+			"AppVersion": "6691",
+			"AppName": "963137e4c29d4c79a81323b8fab03a40"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.7",
+			"NamespaceId": "ue",
+			"ItemId": "7299c1cd206b4bb58658a98199b66860",
+			"ArtifactId": "UE_5.7",
+			"AppVersion": "5.7.4-51494982+++UE5+Release-5.7-Windows",
+			"AppName": "UE_5.7"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\WitchIt",
+			"NamespaceId": "b9e6e3d5a4474a8ead248c62bfdf08b7",
+			"ItemId": "a01d846767aa43d0bbb285548d59817d",
+			"ArtifactId": "fdbd9987b8344d2ead326c7f18d6da0e",
+			"AppVersion": "1.6.0.3.23247",
+			"AppName": "fdbd9987b8344d2ead326c7f18d6da0e"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\FallGuys",
+			"NamespaceId": "50118b7f954e450f8823df1614b24e80",
+			"ItemId": "38ec4849ea4f4de6aa7b6fb0f2d278e1",
+			"ArtifactId": "0a2d9f6403244d12969e11da6713137b",
+			"AppVersion": "EGS_11958",
+			"AppName": "0a2d9f6403244d12969e11da6713137b"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.5",
+			"NamespaceId": "ue",
+			"ItemId": "1ce536b653df463bb2492f529d832b71",
+			"ArtifactId": "QuixelBridge_5.5",
+			"AppVersion": "5.5.0-37670630+++UE5+Release-5.5-2025.0.3-38491436-Windows",
+			"AppName": "QuixelBridge_5.5"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.7",
+			"NamespaceId": "ue",
+			"ItemId": "c5c30696e4e0482f9c0a170873975230",
+			"ArtifactId": "FabPlugin_5.7",
+			"AppVersion": "5.7.0-47537391+++UE5+Release-5.7-0.0.10-53078256-Windows",
+			"AppName": "FabPlugin_5.7"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.5",
+			"NamespaceId": "ue",
+			"ItemId": "1b3c549b6a724e90ad94d9c1f410bc96",
+			"ArtifactId": "UE_5.5",
+			"AppVersion": "5.5.4-40574608+++UE5+Release-5.5-Windows",
+			"AppName": "UE_5.5"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.5",
+			"NamespaceId": "ue",
+			"ItemId": "c5c30696e4e0482f9c0a170873975230",
+			"ArtifactId": "FabPlugin_5.5",
+			"AppVersion": "5.5.0-37670630+++UE5+Release-5.5-0.0.6-49870471-Windows",
+			"AppName": "FabPlugin_5.5"
+		},
+		{
+			"InstallLocation": "C:\\Program Files\\Epic Games\\UE_5.7",
+			"NamespaceId": "ue",
+			"ItemId": "1ce536b653df463bb2492f529d832b71",
+			"ArtifactId": "QuixelBridge_5.7",
+			"AppVersion": "5.7.0-47537391+++UE5+Release-5.7-2025.0.1-47537391-Windows",
+			"AppName": "QuixelBridge_5.7"
+		}
+	]
+}

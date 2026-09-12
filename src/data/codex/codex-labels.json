@@ -8835,12 +8835,12 @@
     {
       "id": "cn-1780423436001-fwblc867",
       "kind": "faction",
+      "factionFilename": "Numbani City of Harmony",
+      "factionDisplay": "Numbani City of Harmony",
       "x": 13218.324731023675,
       "y": 8591.771004647862,
       "scale": 3,
-      "bgColor": "#a8adb4",
-      "factionFilename": "Numbani City of Harmony",
-      "factionDisplay": "Numbani City of Harmony"
+      "bgColor": "#a8adb4"
     },
     {
       "id": "cn-1780423709135-92aegnmr",

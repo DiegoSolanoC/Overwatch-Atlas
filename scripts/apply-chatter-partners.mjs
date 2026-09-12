@@ -29,6 +29,7 @@ const CANONICAL = [
     'Cassidy',
     'D.mon',
     'D.va',
+    'Doctrine',
     'Domina',
     'Doomfist',
     'Echo',

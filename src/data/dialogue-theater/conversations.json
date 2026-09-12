@@ -153127,6 +153127,25 @@
         }
       ],
       "selectedPathId": "a9eca40f-80ad-4d74-94e4-cb5c191b9cad"
+    },
+    {
+      "id": "chatter-doctrine",
+      "entryType": "chatter",
+      "name": "Doctrine",
+      "status": "active",
+      "eraName": "",
+      "tags": [],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "3be85b99-dc5e-4524-9473-5ae09408de31",
+          "hero": "Doctrine",
+          "voice": "",
+          "voicePrefix": "",
+          "subtitles": "",
+          "render": "Heroic.png"
+        }
+      ]
     }
   ],
   "_meta": {
@@ -153214,6 +153233,8 @@
     "ow1MapSpecificChattersImportedAt": "2026-09-05T15:53:46.799Z",
     "ow1MapSpecificChattersAdded": 231,
     "matchEventChattersImportedAt": "2026-09-05T23:43:33.462Z",
-    "matchEventChattersAdded": 0
+    "matchEventChattersAdded": 0,
+    "chattersSeededAt": "2026-09-12T19:10:39.525Z",
+    "chatterCount": 54
   }
 }

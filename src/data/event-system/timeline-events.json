@@ -1,6 +1,28 @@
 {
   "events": [
     {
+      "name": "Tamuka Yeukai is Born",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -18.4554963,
+      "lon": 29.7468414,
+      "image": "",
+      "cityDisplayName": "Zimbabwe",
+      "yearStart": 2003,
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": "Tamuka Yeukai is Born"
+        }
+      ]
+    },
+    {
       "locationType": "earth",
       "cityDisplayName": "The Hague, Netherlands",
       "image": "",
@@ -16847,7 +16869,7 @@
     },
     {
       "name": "Binary",
-      "description": "No description available.",
+      "description": "The reawaken Bastion unit continued to roam across Europe, crossing seas and making its way into northern Sweden, where reports of its presence would become more prominent and while the military treated them as rumors and false alarms, the townsfolk were beginning to rally looking for a way to get rid of it themselves. The news also reached the ears of Torbjörn Lindholm, still looking to amend the sins of his creations. Lindholm knew Bastion units better than anyone else on the planet, so he was the best person to deal with the situation, yet he couldn't help but notice that, in spite of how prominent sightings had become, it had not attacked anyone once. At first, this made him feel the unit must be too damaged, and thus easy take down, so he expected it would only take a couple of days to find it and deactivate it.\n\nDespite his confidence, a town official joined him in his hunt to make sure the job was done by the book. He had done some research on Torbjörn and, due to his involvement in SST Labs, he did not fully trust him. As Lindholm's bay attacked both the Bastion and his bird companion, the official let fire loose, causing them both to flee. Torbjörn was confused, it was not in their program to run away, they were made to fight against any odds until they were shut down, something was clearly wrong with this unit, and it was a matter of time before its protocols reactivated and caused someone to get killed. Torbjörn chased the unit, tried to provoke it to fire up his programming and capture it, yet all he got was a couple of sticks the Omnic had taken from a beaver dam.\n\nThis moment was interrupted by open fire from the official and his police squad, nearly leaving Lindholm wounded in the process. Torbjörn was very intrigued by this unit, it behaved unlike anything he had ever seen, he knew this hunt needed to be called off, and the Bastion needed proper studying. The official refused,  thinking the engineer had gone mad and tried to restrain him, which prompted Torbjörn to trigger his trap on them to get them off his trail. Once he finally found the Bastion again, it convinced him to follow him all the way back to the Ironclad Workshop, although he grew increasingly frustrated with the Omnic's friendliness and how easily it got distracted by animals.",
       "locationType": "earth",
       "cityDisplayName": "Tiveden, Sweden",
       "lat": 59.3385984,
@@ -16865,29 +16887,31 @@
         {
           "locationName": "Tiveden, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Bastion is found by Torbjörn in Northern Sweden"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Torbjörn, Bastion",
-          "reasoning": ""
+          "reasoning": "Bastion follows Torbjörn to the Ironclad Guild"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Ironclad Guild,",
-          "reasoning": ""
+          "reasoning": "Takes Bastion in for studying"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Crisis Era Siege Automaton Unit reported in Northern Sweden"
+      ]
     },
     {
       "name": "Business Meeting",
-      "description": "No description available.",
+      "description": "On their way out of prison, Akande and Reyes discussed the recent incidents that Talon had carried out, like the failed attempt on Katya Volskaya's life, which was carried out under Vialli's orders and not something Akande agreed with, as he considered her a valuable asset that would keep the conflict in Russia going, so Volskaya was more useful alive to him, On the other hand he heard of Lacroix's successful assassination of Mondatta and the riots that followed, considering it a missed opportunity to scale the conflict further due to Overwatch's involvement. The acquisition of the partial database at Gibraltar was a net gain, particularly since Reyes had already taken some names off the list, but Ana and Morrison were now on Reyes's track off of Cairo, and they would need to be dealt with sooner or later. \n\nRegardless of these successes, there was something that bothered Akande. Current leadership seemed to disagree with his vision and if he was to take back control at the council table, it needed to be made clear who was really in charge. Akande traveled to Monaco guarded by Sombra and Widowmaker during a visit to Maximilien, making sure one of the largest assets Talon had would fall in line again. Max, careful as usual, declared his loyalty to Doomfist but highlighted that many others wouldn't be so pleased to see him return, and they had their concerns over whether he would keep the money flowing, but right as they had their conversation at one of the game tables, Vialli's men came into the casino looking to start a fight. Lacroix and Akande dealt with them swiftly, but this confirmed Akande's worries; Talon was planning to turn on him, and he needed to act quickly.",
       "locationType": "earth",
       "cityDisplayName": "Monte-Carlo, Monaco",
       "lat": 43.7402961,
@@ -16905,42 +16929,50 @@
         {
           "locationName": "Monte-Carlo, Monaco",
           "country": "Monaco",
-          "reasoning": ""
+          "reasoning": "Vialli's men attack Doomfist in Monte Carlo"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Doomfist, Widowmaker",
-          "reasoning": ""
+          "reasoning": "Deal with Vialli's men in the Casino"
         },
         {
           "locationName": "",
           "country": "Sombra, Reaper",
-          "reasoning": ""
+          "reasoning": "Aid Doomfist on getting back in Power"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "The Council is split over Akande's return"
         },
         {
           "locationName": "",
           "country": "La Coterie,",
-          "reasoning": ""
+          "reasoning": "Covers up Akande's return"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Maximillien",
-          "reasoning": ""
+          "reasoning": "Swears to stick by Akande's side"
+        },
+        {
+          "locationName": "",
+          "country": "Vialli,",
+          "reasoning": "Attempts to remove Akande out of the picture"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "First fight breaks on Maximillien's Casino",
+        "European Elite investing money and resources on locating Doomfist and arresting him again"
+      ]
     },
     {
       "name": "Masquerade",
@@ -17379,7 +17411,7 @@
     },
     {
       "name": "System Reboot",
-      "description": "No description available.",
+      "description": "As Torbjörn and Bastion made their way to Gothenburg, the Engineer spent the journey watching Bastion's every move, purposely looking way to try and bait his CPU into drawing its weapon against him, giving him an excuse to put him down, but the opportunity never came. When he brought the machine into the house, he expected Ingrid to scold him, but instead she simply smiled. As he worked his way into the code, he developed a high voltage device hardwired into Bastion to act as a kill switch, so that if the Omnic did turn aggressive, he could shut the entire thing down all together and protect his family and neighbors, but somehow this never triggered its defense protocols.  He had also notice that the bird that he found Bastion with had followed them all the way into the workshop, never leaving the workshop window. The machine seemed to respond to it quite well, perhaps forming a reciprocal connection. \n\nBastion was quite docile, a little too curious around the workshop, as he would often steal Lindholm's tools to tighten bolts that came loose on his machines before he could get to them himself. When Torbjörn needed to work on his systems, Bastion would just slowly move into the designated area by himself and wait. Once his diagnostics ran, he was able to disarm the unit and, alongside an overworked maintenance system, he found a single order being sent to its programming systems over a thousand times, a command to fire, alongside a frozen coordinate from its last deployment. Anubis' directives were still telling the Bastion to engage and kill, yet for some reason, he purposely ignored them. As Torbjörn probed deeper, he noticed that Bastion became jumpier, perhaps because its power system was the most critically protected part, and it meant he was closer to finding its secrets, but for some reason even the bird seemed agitated. The sound of his voice did seem to calm the robot, but doing so made Lindholm feel like a clown for pampering a machine. He tried everything from a program override to take him online or switching him into maintenance mode, but nothing worked and Bastion wasn't complying. \n\nThe frustration nearly drove Torbjörn to press the kill switch and end it right there, until he noticed the way Bastion looked at the bird in the window. Too curious about their connection, he dropped the switch and opened the window, only to see the bird fly without hesitation towards Bastion. Torbjörn was ready to fire, but he froze when he saw the chest panel open to reveal a nest that Bastion was protecting in the safest place of his body. Dumbfounded by the sight, Torbjörn dropped his gun in shame. Bastion was different because he was sentient, just like the Omnics that had awakened during the Crisis. Mister Lindholm was never the biggest  advocate for AI and he never quite accepted Omnics into society because of this, but this epiphany made him realize how much harm he had done to their community with his comments. Torbjörn kept Bastion around, realizing that he had a lot to learn still, he upgraded his chassis with a new code of paint matching his little bird's feathers, and he also managed to remove the remaining wartime programming to make sure nobody could get hurt by accident. In time, he became almost a son to Mister Lindholm, who began to make more liberal comics on Omnic Integration publicly, talking about how it's a person's responsibility to take care of their children, no matter if they are flesh or metal, because it is what we owe them for forcing them into existence.",
       "locationType": "earth",
       "cityDisplayName": "Gothenburg, Sweden",
       "lat": 57.7072326,
@@ -17397,25 +17429,33 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Bastion is reconfigured and repaired by Torbjörn"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Torbjörn, Bastion",
-          "reasoning": ""
+          "country": "Torbjörn",
+          "reasoning": "Begins to advocate for Omnic rights after takin in Bastion"
+        },
+        {
+          "locationName": "",
+          "country": "Bastion,",
+          "reasoning": "Helps Torbjörn at the guild and allows him to inspect him"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Ironclad Guild,",
-          "reasoning": ""
+          "reasoning": "Studies Bastion and removes the crisis era programming"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "The Ironclad Guild unveils a reformed Bastion Unit as one of their new members.",
+        "Torbjörn Lindholm advocates for Omnic Integration in recent seminar"
+      ]
     },
     {
       "name": "Searching",
@@ -22816,6 +22856,46 @@
       ],
       "headlines": [],
       "sources": []
+    },
+    {
+      "name": "Breakout",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 64.4081387,
+      "lon": -17.3377919,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Breakout",
+          "url": "https://www.youtube.com/watch?v=h5dwH7nx9do"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist, Doctrine, Sombra, Reaper, Widowmaker,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        }
+      ]
     }
   ]
 }

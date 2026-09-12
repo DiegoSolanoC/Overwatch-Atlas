@@ -52,7 +52,8 @@
     "Illari",
     "Juno",
     "Mizuki",
-    "Wuyang"
+    "Wuyang",
+    "Doctrine"
   ],
   "factions": [
     {
@@ -577,6 +578,9 @@
       "Heroic"
     ],
     "D.va": [
+      "Heroic"
+    ],
+    "Doctrine": [
       "Heroic"
     ],
     "Domina": [

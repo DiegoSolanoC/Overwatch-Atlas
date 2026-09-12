@@ -35,6 +35,7 @@ export const ROSTER_FORMER_OVERWATCH = Object.freeze([
 
 /** Talon-aligned heroes (wiki set-up lists + Vendetta when noted). */
 export const ROSTER_TALON = Object.freeze([
+    'Doctrine',
     'Doomfist',
     'Mauga',
     'Moira',
@@ -48,6 +49,7 @@ export const ROSTER_TALON = Object.freeze([
 /** “Old / veteran” heroes (wiki old-heroes lists). */
 export const ROSTER_OLD = Object.freeze([
     'Ana',
+    'Doctrine',
     'Reaper',
     'Reinhardt',
     'Sigma',
