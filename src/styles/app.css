@@ -9,11 +9,11 @@
 @import url('foundation/animations.css?v=10');
 
 /* App shell */
-@import url('shell/layout.css?v=23');
+@import url('shell/layout.css?v=24');
 @import url('features/world/globe-map-launch-hub.css?v=4');
 
 /* World + Codex */
-@import url('features/world/globe.css?v=55');
+@import url('features/world/globe.css?v=56');
 @import url('features/codex/codex.css?v=3');
 @import url('features/world/map-2d-lite.css?v=21');
 @import url('features/event-system/preview-badge-icons.css?v=7');
@@ -47,7 +47,7 @@
 @import url('features/event-system/event-buttons.css?v=15');
 @import url('features/event-system/event-image-overlay.css?v=23');
 @import url('features/event-system/event-item.css?v=52');
-@import url('features/event-system/event-pagination.css?v=126');
+@import url('features/event-system/event-pagination.css?v=127');
 @import url('features/event-system/news-ticker.css?v=10');
 
 /* Event system panels */

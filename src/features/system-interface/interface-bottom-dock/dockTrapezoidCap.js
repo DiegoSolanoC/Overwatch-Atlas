@@ -7,7 +7,7 @@
  *   - buildOrMigrateDockTrapezoidCap(dock): idempotent. Creates the cap row if
  *     missing, migrates any pre-existing legacy `.pagination-dock-top-border-wrap`
  *     and orphan trapezoid into the new structure, ensures the SVGs are present
- *     at the latest version (`data-dock-trap-v="10"` for fill, `"2"` for border),
+ *     at the latest version (`data-dock-trap-v="10"` for fill, `"3"` for border),
  *     and re-attaches `#dockGlobeRailCenter` inside the trapezoid.
  *
  * Pulls `ensureDockGlobeRailCenterRestored` from dockChromeLifecycle.js so the
@@ -20,12 +20,14 @@ const DOCK_BORDER_SRC = 'src/assets/images/Misc/UI/Dock%20Border.png';
 
 /* Fill only (under rail); white outline is a separate sibling SVG above the rail. */
 /* Top y=3 matches border path; y=0 caused colored fill above the white outline. */
+/* Border uses the same straight legs as the fill — curved Q strokes sat inside the chord
+ * and left blue fill visible outside the white outline on some browsers/GPUs. */
 const TRAPEZOID_FILL_SVG = `<svg class="pagination-dock-top-trapezoid__svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-v="10" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
 <polygon class="pagination-dock-top-trapezoid__fill" points="2,3 98,3 112,100 -12,100" />
 </svg>`;
 
-const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="2" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
-<path d="M -12,100 Q -5,52 2,3 L 98,3 Q 105,52 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
+const TRAPEZOID_BORDER_SVG = `<svg class="pagination-dock-top-trapezoid__border-svg" xmlns="http://www.w3.org/2000/svg" data-dock-trap-border-v="3" viewBox="-12 -12 124 124" preserveAspectRatio="none" overflow="visible" focusable="false" aria-hidden="true">
+<path d="M -12,100 L 2,3 L 98,3 L 112,100" fill="none" stroke="#ffffff" stroke-width="8" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
 </svg>`;
 
 function buildBorderImg() {
@@ -102,9 +104,10 @@ function applyTrapezoidSvgsAndCenterRail(capRow) {
         trap.appendChild(centerRail);
     }
 
-    trap.querySelectorAll('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"]')
-        .forEach((el) => el.remove());
-    if (!trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="2"]')) {
+    trap.querySelectorAll(
+        '.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="1"], .pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="2"]'
+    ).forEach((el) => el.remove());
+    if (!trap.querySelector('.pagination-dock-top-trapezoid__border-svg[data-dock-trap-border-v="3"]')) {
         trap.insertAdjacentHTML('beforeend', TRAPEZOID_BORDER_SVG);
     }
 }

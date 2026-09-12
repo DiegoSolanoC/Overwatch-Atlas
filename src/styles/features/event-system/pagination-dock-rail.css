@@ -61,7 +61,7 @@
     justify-content: center !important;
     height: 44px !important;
     min-width: 100px !important;
-    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 100%, 0 100%) round 10px !important;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 100%, 0 100%) !important;
     transition: transform 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
 }
 

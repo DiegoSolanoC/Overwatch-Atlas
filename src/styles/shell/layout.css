@@ -32,17 +32,11 @@ body {
     --header-height: var(--header-chrome-paint-h);
     /*
      * Parallelogram clip-path slant: same screen slope as hex diagonals.
-     * ViewBox run is 12×76 with non-uniform stretch → multiply 12/76 by (badge W / badge H).
+     * Math simplifies to 12% of badge width (12/76 × 76/100). Keep a px fallback
+     * first — if a browser rejects the calc, clip-path must not go invalid (rect bars).
      */
-    --header-hub-btn-slant: calc(
-        var(--header-title-badge-box-h)
-        * (var(--header-hub-hex-y-bottom) - var(--header-hub-hex-y-top))
-        / 100
-        * var(--header-hub-hex-edge-dx)
-        / var(--header-hub-hex-edge-dy)
-        * var(--header-badge-outer-w)
-        / var(--header-title-badge-box-h)
-    );
+    --header-hub-btn-slant: 36px;
+    --header-hub-btn-slant: calc(var(--header-badge-outer-w) * 12 / 100);
     /* Hub button row height (matches .header-hub height) — used to scale outline slant */
     --header-hub-strip-h: calc(
         var(--header-title-badge-box-h) * (var(--header-hub-hex-y-bottom) - var(--header-hub-hex-y-top)) / 100
@@ -59,6 +53,7 @@ body {
      * ::before clip-path slant: match button diagonals after the rim extends only past the bottom
      * (and inward on one horizontal side per hub).
      */
+    --header-hub-outline-slant: calc(var(--header-hub-btn-slant) * 1.16);
     --header-hub-outline-slant: calc(
         var(--header-hub-btn-slant)
         * (var(--header-hub-strip-h) + var(--header-hub-outline-bottom))

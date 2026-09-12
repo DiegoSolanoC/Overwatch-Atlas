@@ -12756,6 +12756,11 @@
         },
         {
           "locationName": "",
+          "country": "Freja,",
+          "reasoning": "Finds the protests unfair given her work"
+        },
+        {
+          "locationName": "",
           "country": "Genji,",
           "reasoning": "Leaves quietely shortly after the Zurich attack"
         },
@@ -12775,10 +12780,18 @@
           "locationName": "",
           "country": "Overwatch, IJC,",
           "reasoning": "The United Nations begins to look at the idea of Shutting down Overwatch"
+        },
+        {
+          "locationName": "",
+          "country": "Search & Rescue, Ecopoints,",
+          "reasoning": "Overlooked in the media despite all their good"
         }
       ],
       "commentary": [
-        "Undo it all"
+        {
+          "name": "Undo it all",
+          "theaterId": "5ac2e55f-eff3-461c-b89b-59da9a8cadae"
+        }
       ]
     },
     {
@@ -20845,6 +20858,30 @@
             "https://overwatch.blizzard.com/en-us/media/comic/crucible/"
           ]
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Widowmaker,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reaper,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -20992,6 +21029,11 @@
         },
         {
           "locationName": "",
+          "country": "Vishkar Corporation, Oasis Ministries,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "The Chernobog Conspiracy,",
           "reasoning": ""
         },
@@ -21012,7 +21054,7 @@
         },
         {
           "locationName": "",
-          "country": "Helix Securities, Overwatch,",
+          "country": "Helix Securities, Overwatch, IJC,",
           "reasoning": ""
         }
       ],
@@ -22485,6 +22527,11 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
+          "country": "Toshiro,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
           "country": "Nobuto, Sakura, Chikasa, Ryota,",
           "reasoning": ""
         }
@@ -22634,6 +22681,11 @@
           "locationName": "",
           "country": "Junkrat, Roadhog,",
           "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Winston,",
+          "reasoning": ""
         }
       ],
       "factionFilterPlaces": [
@@ -22755,7 +22807,53 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mizuki, Baptiste, Sojourn, Cassidy, Mercy,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "D.va,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Zarya, Wuyang, Anran, Mei, Juno,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Torbjörn, Echo,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Tracer, Brigitte, Bastion, Jetpack Cat,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Reinhardt, Ana, Sierra, Lúcio, Pharah,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Castaway",
@@ -22834,6 +22932,18 @@
             "https://overwatch.blizzard.com/en-us/media/comic/crucible/"
           ]
         }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Reaper, Sombra,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -22855,7 +22965,36 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wuyang, Juno,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Brigitte, Jetpack Cat, Torbjörn,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Anran,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Winston, Sojourn, Zarya, Mei, Mercy, Tracer, Cassidy,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Breakout",
