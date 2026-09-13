@@ -279,6 +279,14 @@ export function getChatterLineGroupAndKind(line) {
         if (chatterKind) return { group: 'chatter', kind: chatterKind };
 
         // Non-empty leftover disclaimer is almost always a map header from imports.
+        // Partner conditionals ("with Tracer…", "on the team") stay in chatter setup.
+        if (
+            (Array.isArray(line.partners) && line.partners.length > 0)
+            || /^(?:with|alongside)\b/i.test(disclaimer)
+            || /\bon the team\b/i.test(disclaimer)
+        ) {
+            return { group: 'chatter', kind: 'setup' };
+        }
         return { group: 'map', kind: 'all' };
     }
 
@@ -471,10 +479,8 @@ export function renderChatterCategorySelectionHtml(selected) {
     const showKinds = filter.group === 'chatter' || filter.group === 'eliminations';
 
     return `
-        <section class="dialogue-theater-edit__section dialogue-theater-edit__chatter-cats" aria-label="Chatter filters">
-            <div class="dialogue-theater-edit__section-head">
-                <h3 class="dialogue-theater-edit__section-title">Status &amp; Era</h3>
-            </div>
+        <section class="dialogue-theater-edit__chatter-cats" aria-label="Chatter filters">
+            <h4 class="dialogue-theater-chatter-filter-heading">Status &amp; Era</h4>
             <div class="dialogue-theater-chatter-era-status" role="group" aria-label="Status and era">
                 <div class="dialogue-theater-chatter-filter-row dialogue-theater-chatter-filter-row--era" role="group" aria-label="Era">
                     ${renderOptionButtons(CHATTER_ERA_OPTIONS, filter.era, 'era')}
@@ -485,18 +491,14 @@ export function renderChatterCategorySelectionHtml(selected) {
                 </div>
             </div>
 
-            <div class="dialogue-theater-edit__section-head dialogue-theater-edit__section-head--spaced">
-                <h3 class="dialogue-theater-edit__section-title">Group</h3>
-            </div>
+            <h4 class="dialogue-theater-chatter-filter-heading dialogue-theater-edit__section-head--spaced">Group</h4>
             <p class="dialogue-theater-edit__hint">Matches the wiki sections. Call-outs / PvE / Communication stay out for now.</p>
             <div class="dialogue-theater-chatter-cats dialogue-theater-chatter-cats--groups" role="radiogroup" aria-label="Chatter group">
                 ${renderOptionButtons(CHATTER_GROUP_OPTIONS, filter.group, 'group')}
             </div>
 
             ${showKinds ? `
-            <div class="dialogue-theater-edit__section-head dialogue-theater-edit__section-head--spaced">
-                <h3 class="dialogue-theater-edit__section-title">Category</h3>
-            </div>
+            <h4 class="dialogue-theater-chatter-filter-heading dialogue-theater-edit__section-head--spaced">Category</h4>
             <div class="dialogue-theater-chatter-cats dialogue-theater-chatter-cats--kinds" role="radiogroup" aria-label="Chatter category">
                 ${renderOptionButtons(kindOptions, filter.kind, 'kind')}
             </div>

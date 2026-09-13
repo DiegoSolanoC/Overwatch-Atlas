@@ -17,6 +17,8 @@ import {
     resolveStoryCommentaryTheaterTarget,
     speakersForCommentaryTheaterTarget,
 } from '../../../interface-shared/storyEventCommentaryTheater.js';
+import { fitHeroChipLabelTextInRoot } from '../../../../gallery/gallery-mode/fitHeroChipLabelText.js';
+import { wireSlideChipFloatingLabels } from '../../../../gallery/gallery-mode/wireSlideChipFloatingLabels.js';
 
 const DIALOGUE_THEATER_ICON =
     'src/assets/images/Icons/Mode%20Icons/Dialogue%20Theater.png';
@@ -268,4 +270,8 @@ export function updateStoryCommentarySlideFromEvent(event) {
     });
 
     wireCommentaryBioArchiveNav(section);
+    requestAnimationFrame(() => {
+        fitHeroChipLabelTextInRoot(section);
+        wireSlideChipFloatingLabels(section);
+    });
 }

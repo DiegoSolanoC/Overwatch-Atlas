@@ -643,7 +643,14 @@
         font-size: 13px !important;
     }
     #eventSlideEditBtn {
-        right: 188px !important;
+        right: 200px !important;
+        top: 14px !important;
+        height: 34px !important;
+        padding: 0 10px !important;
+        font-size: 13px !important;
+    }
+    #eventSlideDeleteBtn {
+        right: 290px !important;
         top: 14px !important;
         height: 34px !important;
         padding: 0 10px !important;

@@ -113,7 +113,7 @@
     </script>
     <title>Main - Overwatch Atlas</title>
     <link rel="icon" type="image/png" href="src/assets/images/Website%20Logo.png">
-    <link rel="stylesheet" href="src/styles/app.css?v=104">
+    <link rel="stylesheet" href="src/styles/app.css?v=111">
     <link rel="stylesheet" href="src/styles/entry.css?v=24">
 </head>
 <body class="app-timeline-default">
@@ -172,13 +172,16 @@
     <div class="layout-container">
         <!-- Event Slide Panel (left side) -->
         <div class="event-slide" id="eventSlide">
+            <button class="event-slide-action-btn event-slide-delete-btn" id="eventSlideDeleteBtn" title="Delete entry" type="button" style="display: none;">Delete</button>
             <button class="event-slide-action-btn event-slide-edit-btn" id="eventSlideEditBtn" title="Edit description" type="button">Edit</button>
             <button class="event-slide-action-btn event-slide-save-btn" id="eventSlideSaveBtn" title="Save description" type="button" style="display: none;">Save</button>
             <div class="event-slide-close-cluster" id="eventSlideCloseCluster">
-                <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close">&times;</div>
-                <button type="button" class="event-slide-back-btn" id="eventSlideBack" aria-label="Back to previous entry" title="Back" style="display: none;">
-                    <img class="event-slide-back-btn__icon" src="src/assets/images/Icons/Utility%20Icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
-                </button>
+                <div class="event-slide-close-cluster__controls">
+                    <div class="event-slide-close" id="eventSlideClose" role="button" tabindex="0" aria-label="Close">&times;</div>
+                    <button type="button" class="event-slide-back-btn" id="eventSlideBack" aria-label="Back to previous entry" title="Back" style="display: none;">
+                        <img class="event-slide-back-btn__icon" src="src/assets/images/Icons/Utility%20Icons/Back%20Arrow.png" alt="" width="36" height="36" decoding="async" />
+                    </button>
+                </div>
             </div>
             <div class="event-slide-content" id="eventSlideContent">
                 <div class="event-slide-top" id="eventSlideTop">
@@ -193,7 +196,13 @@
                         <button type="button" id="eventGlitchToggle" class="event-glitch-toggle-btn" style="display: none;" aria-label="Glitch effect" aria-pressed="false"><span class="event-glitch-toggle-btn__icon" aria-hidden="true"></span></button>
                     </div>
                     <p id="eventSlideLocation" class="event-slide-location" style="display: none;"></p>
-                    <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
+                    <div class="event-slide-meta-jump-row" id="eventSlideMetaJumpRow">
+                        <p id="eventSlideTimelineMeta" class="event-slide-timeline-meta" style="display: none;" aria-live="polite"></p>
+                        <div class="event-slide-section-jumps" id="eventSlideSectionJumps" role="group" aria-label="Jump to section">
+                            <button type="button" class="event-slide-section-jump" id="eventSlideJumpStory" data-event-section="story">Story</button>
+                            <button type="button" class="event-slide-section-jump" id="eventSlideJumpDetails" data-event-section="details">Details</button>
+                        </div>
+                    </div>
                     <p id="eventSlideFactionTypeDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <p id="eventSlideNpcCategoryDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
                     <p id="eventSlideHeroRoleDisplay" class="event-slide-faction-type-display" hidden aria-live="polite"></p>
@@ -285,9 +294,6 @@
                         </div>
                         <p class="event-slide-hero-locations-edit__hint">Use the <strong>Hero</strong>, <strong>Faction</strong>, and <strong>NPC</strong> blocks. In each block, <strong>+ Add</strong> adds a row: <strong>This entry</strong> (you), relationship lines in the middle, and one linked name (autocomplete for that type only). Choose <strong>A (left)</strong> or <strong>B (right)</strong> for this entry on the slide; the linked side uses the other letter. Legacy rows without a letter default to A. Saving mirrors onto the linked row in <strong>this same archive</strong> when that row exists; cross-archive links are not duplicated.</p>
                         <div id="eventSlideEditBioConnections" class="event-slide-inline-editor__sources event-slide-inline-editor__relevant-locations-sources"></div>
-                        <div class="event-slide-hero-locations-edit__toolbar event-slide-hero-locations-edit__toolbar--delete">
-                            <button type="button" class="event-slide-inline-editor__delete-btn" id="eventSlideBioDeleteBtn" hidden>Delete entry</button>
-                        </div>
                     </div>
                 </div>
                 <div class="event-slide-mid-controls" id="eventSlideMidControls" aria-label="Event display options">
@@ -295,27 +301,36 @@
                     </div>
                 </div>
                 <div class="event-slide-scrollable" id="eventSlideScrollable">
-                    <p id="eventSlideText">Placeholder text for event information.</p>
-                    <div id="eventCommentarySection" class="event-relevant-locations-section event-commentary-section" style="display: none;" hidden>
-                        <h4 class="event-filter-header">Commentary</h4>
-                        <div class="event-sources-list event-commentary-list" id="eventSlideCommentary" aria-live="polite"></div>
-                    </div>
-                    <div id="eventRelevantLocationsSection" class="event-relevant-locations-section" style="display: none;">
-                        <h4 class="event-filter-header">Relevant locations</h4>
-                        <div id="eventSlideRelevantLocations" class="event-slide-relevant-locations" aria-live="polite"></div>
-                    </div>
-                    <div id="eventBioConnectionsSection" class="event-relevant-locations-section event-bio-connections-section" style="display: none;" aria-live="polite">
-                        <h4 class="event-filter-header">Connections</h4>
-                        <div id="eventSlideBioConnections" class="event-slide-bio-connections"></div>
-                    </div>
-                    <div id="eventStoryFilterPlacesSection" class="event-relevant-locations-section event-story-filter-places-section" style="display: none;" aria-live="polite"></div>
-                    <div class="event-sources-section" id="eventSourcesSection" style="display: none;">
-                        <h4 class="event-filter-header">Sources:</h4>
-                        <div class="event-sources-list" id="eventSourcesList"></div>
-                    </div>
-                    <div class="event-filters-section" id="eventFiltersSection" style="display: none;">
-                        <div class="event-filters-list" id="eventFiltersList"></div>
-                    </div>
+                    <section id="eventSlideStorySection" class="event-slide-pane event-slide-pane--story" data-event-section="story" aria-labelledby="eventSlideStoryHeading">
+                        <h3 id="eventSlideStoryHeading" class="event-slide-pane__heading">Story</h3>
+                        <p id="eventSlideText">Placeholder text for event information.</p>
+                    </section>
+                    <section id="eventSlideDetails" class="event-slide-pane event-slide-pane--details" data-event-section="details" aria-labelledby="eventSlideDetailsHeading">
+                        <h3 id="eventSlideDetailsHeading" class="event-slide-pane__heading">Details</h3>
+                        <div id="eventCommentarySection" class="event-relevant-locations-section event-commentary-section" style="display: none;" hidden>
+                            <h4 class="event-filter-header">Commentary</h4>
+                            <div class="event-sources-list event-commentary-list" id="eventSlideCommentary" aria-live="polite"></div>
+                        </div>
+                        <div id="eventRelevantLocationsSection" class="event-relevant-locations-section" style="display: none;">
+                            <h4 class="event-filter-header event-filter-header--category">
+                                <img class="event-filter-header-icon" src="src/assets/images/Icons/Filter%20Icons/Location%20Icon.png" alt="" width="36" height="36" decoding="async" />
+                                <span class="event-filter-header-label">Relevant locations</span>
+                            </h4>
+                            <div id="eventSlideRelevantLocations" class="event-slide-relevant-locations" aria-live="polite"></div>
+                        </div>
+                        <div id="eventBioConnectionsSection" class="event-relevant-locations-section event-bio-connections-section" style="display: none;" aria-live="polite">
+                            <h4 class="event-filter-header">Connections</h4>
+                            <div id="eventSlideBioConnections" class="event-slide-bio-connections"></div>
+                        </div>
+                        <div id="eventStoryFilterPlacesSection" class="event-relevant-locations-section event-story-filter-places-section" style="display: none;" aria-live="polite"></div>
+                        <div class="event-sources-section" id="eventSourcesSection" style="display: none;">
+                            <h4 class="event-filter-header">Sources</h4>
+                            <div class="event-sources-list" id="eventSourcesList"></div>
+                        </div>
+                        <div class="event-filters-section" id="eventFiltersSection" style="display: none;">
+                            <div class="event-filters-list" id="eventFiltersList"></div>
+                        </div>
+                    </section>
                 </div>
                 <div class="event-slide-bottom" id="eventSlideBottom">
                     <div class="event-control-buttons">

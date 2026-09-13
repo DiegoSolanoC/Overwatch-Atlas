@@ -1,4 +1,7 @@
 /** Persisted step index for info-panel / gallery intel description text size. */
+import '../../../gallery/gallery-mode/fitHeroChipLabelText.js';
+import '../../../gallery/gallery-mode/wireSlideChipFloatingLabels.js';
+
 export const INFO_DESCRIPTION_TEXT_SCALE_STORAGE_KEY = 'infoDescriptionTextScaleStep';
 
 /** Multipliers applied to each panel's base description font size. */

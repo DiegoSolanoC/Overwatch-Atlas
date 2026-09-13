@@ -37,6 +37,37 @@
         return ln;
     }
 
+    /**
+     * Filter-menu style flag chip (8:5 tile + hover name band).
+     * @param {string|null} flagFile
+     * @param {string} label
+     * @returns {string}
+     */
+    function locationFlagChipHtml(flagFile, label) {
+        var fn = String(flagFile || '').trim();
+        var pin = !fn;
+        var src = pin ? R.LOC_ICON : R.flagSrc(fn);
+        var labelText = String(label || '').trim()
+            || (fn ? R.commonLabelForFlagFile(fn) : 'Location');
+        var dataAttr = fn
+            ? ' data-relevancy-flag-file="' + R.escapeHtmlAttr(fn) + '"'
+            : '';
+        var escPin = R.LOC_ICON.replace(/'/g, "\\'");
+        return (
+            '<div class="gallery-hero-filters__chip-wrap event-slide-filter-token-chip-wrap event-slide-filter-token-chip-wrap--flag">' +
+                '<span class="filter-btn gallery-hero-filters__chip event-slide-filter-token-chip event-slide-filter-token-chip--flag" aria-hidden="true">' +
+                    '<div class="filter-image-container">' +
+                        '<img' + dataAttr + ' src="' + src + '" alt="" decoding="async" ' +
+                        'onerror="this.onerror=null;this.src=\'' + escPin + '\';" />' +
+                    '</div>' +
+                    '<div class="filter-label">' +
+                        '<span class="filter-label-text">' + R.slideStoryDisplayHtml(labelText) + '</span>' +
+                    '</div>' +
+                '</span>' +
+            '</div>'
+        );
+    }
+
     function createRelevantLocationsSlideHtml(entries, locationType) {
         var t = locationType || 'earth';
         var list = Array.isArray(entries) ? entries : [];
@@ -82,23 +113,23 @@
                 .filter(Boolean);
             var manyCountryTokens = countryTokens.length > 1;
             var lead = '';
-            if (country && countryTokens.length > 1) {
-                lead = '<span class="event-slide-relevant-locations__flag-row">';
+            if (countryTokens.length > 0) {
+                lead = '<span class="event-slide-relevant-locations__flag-row event-slide-relevant-locations__flag-row--chips">';
                 for (var ti = 0; ti < countryTokens.length; ti += 1) {
                     var tok = countryTokens[ti];
-                    var fMulti = S.resolveManualCountryTokenToFlagFile(tok, t);
-                    if (!fMulti && locName) fMulti = R.getResolvedFlagFilename(locName + ', ' + tok, t);
-                    if (!fMulti) fMulti = R.getResolvedFlagFilename(tok, t);
-                    lead += fMulti ? R.flagImg(fMulti) : R.pinImg();
+                    var fTok = S.resolveManualCountryTokenToFlagFile(tok, t);
+                    if (!fTok && locName) fTok = R.getResolvedFlagFilename(locName + ', ' + tok, t);
+                    if (!fTok) fTok = R.getResolvedFlagFilename(tok, t);
+                    lead += locationFlagChipHtml(fTok, tok);
                 }
                 lead += '</span>';
             } else {
-                /* Single country token: prefer explicit `country`, then "Place, Country", then place-only. */
-                var flagFn = null;
-                if (country) flagFn = S.resolveManualCountryTokenToFlagFile(country, t);
-                if (!flagFn && locName && country) flagFn = R.getResolvedFlagFilename(locName + ', ' + country, t);
-                if (!flagFn && locName) flagFn = R.getResolvedFlagFilename(locName, t);
-                lead = flagFn ? R.flagImg(flagFn) : R.pinImg();
+                /* No country token: try place-only flag, else pin chip. */
+                var flagFn = locName ? R.getResolvedFlagFilename(locName, t) : null;
+                lead =
+                    '<span class="event-slide-relevant-locations__flag-row event-slide-relevant-locations__flag-row--chips">' +
+                    locationFlagChipHtml(flagFn, locName || 'Location') +
+                    '</span>';
             }
 
             /* With a group label + many flags, the flags carry geography → skip the country list in prose. */
@@ -134,7 +165,8 @@
                   '</span>'
                 : '';
             rowParts.push(
-                '<div class="event-slide-relevant-locations__row">' + mainBlock + reasonSuffix + '</div>'
+                '<div class="event-slide-relevant-locations__row event-slide-relevant-locations__row--with-chips">' +
+                mainBlock + reasonSuffix + '</div>'
             );
         }
         if (!rowParts.length) return '';
@@ -177,6 +209,15 @@
         var inner = rows.length ? createRelevantLocationsSlideHtml(rows, lt) : '';
         relEl.innerHTML = inner;
         if (relSection) relSection.style.display = inner ? 'block' : 'none';
+        requestAnimationFrame(function () {
+            var root = relSection || relEl;
+            if (typeof window.__fitHeroChipLabelTextInRoot === 'function') {
+                window.__fitHeroChipLabelTextInRoot(root);
+            }
+            if (typeof window.__wireSlideChipFloatingLabels === 'function') {
+                window.__wireSlideChipFloatingLabels(root);
+            }
+        });
         H.scheduleApplyRelevancyRowFilterHighlight();
     }
 

@@ -45,7 +45,7 @@ export async function runRenderEventFilters(slide, event) {
             const createHeader = (label, iconSrc) => {
                 const h = document.createElement('h4');
                 h.className = 'event-filter-header event-filter-header--category';
-                h.innerHTML = `<img class="event-filter-header-icon" src="${iconSrc}" alt="" width="20" height="20" decoding="async"><span class="event-filter-header-label">${label}</span>`;
+                h.innerHTML = `<img class="event-filter-header-icon" src="${iconSrc}" alt="" width="36" height="36" decoding="async"><span class="event-filter-header-label">${label}</span>`;
                 return h;
             };
 

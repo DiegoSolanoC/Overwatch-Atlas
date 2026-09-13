@@ -23,11 +23,10 @@ import {
     getStoryEventHeroTokens,
     getStoryEventNpcTokens
 } from '../../../interface-shared/storyEventFilterPlaces.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 export function runPopulateInlineEditor(slide, eventData, displayEvent) {
             const target = displayEvent || eventData;
-            const archPop = slide._presentationFromDockTimeline
-                ? 'story'
-                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+            const archPop = resolveEventSlideArchiveSource(slide);
             const isBioPop =
                 archPop === 'heroes' || archPop === 'factions' || archPop === 'npcs';
 

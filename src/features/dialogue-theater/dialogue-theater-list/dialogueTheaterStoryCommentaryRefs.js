@@ -381,7 +381,7 @@ export function mountDialogueTheaterStoryCommentaryRefs(host, conversation) {
 
     const head = document.createElement('div');
     head.className = 'dialogue-theater-edit__section-head';
-    head.innerHTML = '<h3 class="dialogue-theater-edit__section-title">Used as commentary</h3>';
+    head.innerHTML = '<h3 class="dialogue-theater-edit__section-title dialogue-theater-pane-heading">Used as commentary</h3>';
     section.appendChild(head);
 
     const hint = document.createElement('p');

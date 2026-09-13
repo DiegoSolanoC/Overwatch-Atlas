@@ -113,7 +113,16 @@ export function serializeCommentaryEntries(entries) {
  */
 export function getEventCommentaryEntries(event) {
     if (!event || typeof event !== 'object') return [];
-    return normalizeCommentaryEntries(/** @type {{ commentary?: unknown }} */ (event).commentary);
+    const entries = normalizeCommentaryEntries(
+        /** @type {{ commentary?: unknown }} */ (event).commentary,
+    );
+    // Stamp ids + refresh drifted chatter labels whenever theater data is loaded,
+    // so speaker chips / play / route work even before the JSON is re-saved.
+    const conversations = dialogueTheaterDataService?.conversations;
+    if (Array.isArray(conversations) && conversations.length > 0) {
+        return stampCommentaryTheaterIds(entries, conversations);
+    }
+    return entries;
 }
 
 /**

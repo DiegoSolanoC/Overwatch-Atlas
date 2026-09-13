@@ -209,7 +209,7 @@
       "name": "Medical Miracles",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
-      "description": "During the early years of the 21st century, the rapid climate change and growing populations will lead to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem.\n\nBut with hardship and challenges comes progress, and humanity was able to collaborate in speeding up vaccine development, allowing for massive leaps in the medical field, and a period of utopian levels of health and life expectancy.\n\nAs technology advanced, Dr. Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that would later become a global standard, as companies such as Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere.",
+      "description": "During the early years of the 21st century, rapid climate change and growing populations led to a series of pandemics across the World. From yellow fever to dengue, pathogens are becoming an ever evolving problem, and the population that spread further into previously untouched regions was the most prone to these diseases. While these emergencies could have thrown the world into collapse, with hardship and challenges comes progress. Humanity was able to collaborate in speeding up vaccine development, bringing in significant nonprofit funding for disease treatment of innovations, allowing for research to be shared without locking it behind placeholder interests. This era is defined by the massive leaps in the medical field that followed, creating a brief period of utopian levels of health and life expectancy. \n\nOne of the most notorious advancements of the early medical revolution came in the field of prosthetics. The Canadian Doctor Elaine Esat would introduce the world to the marvels of cybernetics, empowering humans with mechanical organs and limbs that were able to aid any kind of disability. From ocular implants to improved peacemakers and full-on exoskeletons, and even implants capable of curing some forms of dementia and memory loss. Esat's work was publicly funded, so the patents were available for anyone, which would lead to the rising boom of countless cybernetic companies that refined technology with their own models. Companies like Ogundimu Synergies Inc. and Omnica Corp quickly made a name for themselves in the global robotics sphere, as cybernetics became a global standard, with many people often getting largely cosmetic threats and eventually leading to illegal modification as the technology became more available.",
       "image": "",
       "sources": [
         {
@@ -250,13 +250,19 @@
         }
       ],
       "commentary": [
-        "Getting use to it",
-        "Family Business"
+        {
+          "name": "Getting use to it",
+          "theaterId": "bb039621-cef6-4e43-a397-d61bc6cc08d0"
+        },
+        {
+          "name": "Family Business",
+          "theaterId": "804276aa-3759-470a-b9f0-3953452b8be4"
+        }
       ]
     },
     {
       "name": "Crystal Clear",
-      "description": "Dr. Leonel Namuaca was working on a revolutionary device which, thanks to nano-filtration systems, managed to greatly improve the cleansing of water from polluted and non-potable sources. Inspired by his life of struggle as climate change forced his family away from home, his purifiers quickly took over the world, helping to stop waterborne illness, and improving water efficiency in regions where it was scarce.",
+      "description": "As climate change forced people across the most disgraced areas of the world to suffer through droughts and often living off of contaminated water sources, many people often became displaced from their homes, seeking places where living didn't mean starving. Leonel Namuace was only a kid when his family ended up in a refugee settlement in Mozambique, where he learned first hand how vital it was to have access to clean water for people fleeing conflicts across the world.\n\nOver the years, Dr. Namuaca would dedicate his life to studying ways in which he could secure drinkable water for every family in need, and years of research into covalent organic frameworks led to the creation of a revolutionary device capable of standardizing hygiene and health for the masses. A system of nano filtration sheets that could force higher quantities of water through mineral filters, made from common affordable materials, allowed his invention to easily deploy globally and quickly took over the world, helping to stop waterborne illness, and improving water efficiency in regions where it was scarce.\n\nNamuaca's work was later used by Michael Lomakema, who realized purification alone couldn't do much in the absence of water. Experts pushed to repurpose disused oil and gas pipelines to transport water into drier regions, but doing so would often place it at municipal and corporate control. Dr. Lomakema instead wanted water to be free to the people, so he began working alongside his college department in the Great Basin Desert, using the printable schematics of Namuaca's nano filtration sheets, and in less than six months they had engineered a home printable water extractor, which would allow people to get clean water essentially out of tin air, extracted from any degree of humidity. A second model was later distributed to draw water out of the ground without the disruption and table issues caused by drilling wells. The work of these two men forever changed the world as we knew it, and would eventually be the key to taking humanity to the stars and beyond.",
       "locationType": "earth",
       "cityDisplayName": "Nampula, Mozambique",
       "lat": -14.966969,
@@ -280,18 +286,23 @@
           "locationName": "Nampula, Mozambique",
           "country": "Mozambique",
           "reasoning": "Dr. Namuaca tests revolutionary Nano-filtration systems"
+        },
+        {
+          "locationName": "Great Basin, United States",
+          "country": "United States",
+          "reasoning": "Dr. Lomakema designs the water extractors to create water out of humidity"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng Interstellar,",
-          "reasoning": "Namacua's research would be the base for later developments in Horizon Luanr Colony"
+          "reasoning": "Namacua's and Lomakema's research would be the base for later developments in Horizon Luanr Colony"
         },
         {
           "locationName": "",
           "country": "Wuxing University,",
-          "reasoning": "Namacua's research would be the base for Water College technology"
+          "reasoning": "These designs would be the base for Water College technology"
         }
       ]
     },
@@ -371,11 +382,11 @@
     },
     {
       "name": "Cleaner Oceans",
-      "description": "While humanity was fighting to stop climate change, its effects were already heavily affecting people all over the world, and it was just as important to find solutions for those problems as it was for those to come. Island nations suffered the most from climate change, as the rising sea level and pollution of the oceans put their lifestyle at risk. For years, the people of the Polynesian region requested the international community to take the issue more seriously, but the handling of the situation left a lot to be desired.<br><br>This eventually led to the creation of the Polynesian League, an intergovernmental alliance between New Zealand, the Cook Islands, Samoa and the recently independent Hawaii, where together they would find solutions to the issues affecting their region.",
+      "description": "While humanity was fighting to stop climate change, its effects were already heavily affecting people all over the world, and it was just as important to find solutions for those problems as it was for those to come. Island nations suffered the most from climate change, as the rising sea level and pollution of the oceans put their lifestyle at risk. For years, the people of the Polynesian region requested the international community to take the issue more seriously, but the handling of the situation left a lot to be desired.\n\nThis eventually led to the creation of the Polynesian League, an intergovernmental alliance between New Zealand, the Cook Islands, Samoa and the recently independent Hawaii, where together they would find solutions to the issues affecting their region. In their search for solutions on the ecological criticism the Polynesian nations eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Supercoral. \n\nThis genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
       "locationType": "earth",
-      "cityDisplayName": "Honolulu, Hawaii",
-      "lat": 21.304547,
-      "lon": -157.855676,
+      "cityDisplayName": "Apia, Samoa",
+      "lat": -13.8345235,
+      "lon": -171.7630955,
       "yearStart": 2020,
       "yearEnd": 2040,
       "eraName": "The Age of Progress",
@@ -392,6 +403,11 @@
       "image": "",
       "secondaryCountryPlaces": [
         {
+          "locationName": "Apia, Samoa",
+          "country": "Samoa",
+          "reasoning": "Supercoral rapidly grows forming massive ecosystems in Polynesia"
+        },
+        {
           "locationName": "Honolulu, Hawaii",
           "country": "Hawaii",
           "reasoning": "Hawaii gains Independence following formation of the Polynesian League"
@@ -407,46 +423,26 @@
           "locationName": "",
           "country": "Ecopoints",
           "reasoning": "Future Ecopoints would be built around the Polynesian League"
-        }
-      ]
-    },
-    {
-      "name": "Out of Thin Air",
-      "description": "Namuaca's work was later used by Michael Lomakema, who realized purification alone couldn't do much in the absence of water. And he engineered, alongside his college department in the Great Basin Desert, a home printable water extractor, which, combined with Namuaca's technology, allowed people to get clean water essentially out of tin air, extracted from any degree of humidity.<br><br>The work of these two men forever changed the world as we knew it, and would eventually be the key to taking humanity to the stars and beyond.",
-      "locationType": "earth",
-      "cityDisplayName": "Great Basin, United States",
-      "lat": 39.5,
-      "lon": -116.5,
-      "yearStart": 2020,
-      "yearEnd": 2040,
-      "eraName": "The Age of Progress",
-      "sources": [
-        {
-          "text": "Overwatch Declassfied",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "headlines": [
-        "Scientist Claims its now possible to extract water out of tin air"
-      ],
-      "image": "",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Great Basin, United States",
-          "country": "United States",
-          "reasoning": "Dr. Lomakema designs the water extractors to create water out of humidity"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lucheng Interstellar,",
-          "reasoning": "Lomakema's research would be the base for later developments in Horizon Luanr Colony"
         },
         {
           "locationName": "",
-          "country": "Wuxing University,",
-          "reasoning": "Lomakema's research would be the base for Water College technology"
+          "country": "Deepsea Raiders,",
+          "reasoning": "Some groups would later use the byproducts of oceanic chaos to their advantage"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Palak,",
+          "reasoning": "Future researchers would still be tackling the mysteries of Supercoral long into the future"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Mauga · Horizon Lunar Colony — Hey, look. You can see the super coral from here",
+          "label": "Super Coral",
+          "theaterId": "chatter-mauga",
+          "lineId": "5037de02-a0c2-4309-9f78-a329ceb80671"
         }
       ]
     },
@@ -498,7 +494,7 @@
       "name": "The Nuclear Solution",
       "locationType": "earth",
       "cityDisplayName": "Detroit, United States",
-      "description": "While green energy was enough to sustain small towns and daily activities for most households, industry at large required a lot more power still, and to solve this, they turned to a familiar solution, nuclear power. While the infamous accidents from the previous decades like Chernobyl and Fukushima made it a hard sell, breakthroughs in fusion reactors allowed for the first Fusion plant to be brought up online, and after that it wouldn't be long before this became the standard for metropolitan areas, government research centers and large industrial facilities.",
+      "description": "While green energy was enough to sustain small towns and daily activities for most households, industry at large required a lot more power still, and to solve this, they turned to a familiar solution, nuclear power. For generations, development of this field has gone down in popularity since the infamous accidents from previous decades, like Chernobyl, Three Mile Island and Fukushima. So, even on the verge of a climate catastrophe, the public refused to accept nuclear energy as a viable solution, all the more so when the optics of it all made it feel unnecessary. Why pay to build massive facilities that needed to deal with long-lasting radioactive waste when each household could power itself from algae fields?\n\nBut then, quietly in the background, massive breakthroughs allowed the creation of the first deuterium tritium fusion reaction, something scientists had been trying to get working for nearly a century. In a matter of decades, this discovery allowed for the first Fusion power plant to be brought up online, creating a clean, safe, limitless power source, but one that was quite expensive to make and maintain over time. Still, while nuclear didn't become a full-on standard for everyday needs, it became the standard for metropolitan areas, government research centers and large industrial facilities. Before long, most major cities around the world were powered by nuclear energy, which, combined with the greener sources of energy that were used in other edge cases, painted an image of a future where energy would never be a problem.",
       "image": "",
       "sources": [
         {
@@ -562,60 +558,6 @@
           "locationName": "",
           "country": "Roadhog",
           "reasoning": "Mako Rutledge is Born"
-        }
-      ]
-    },
-    {
-      "name": "The Super Coral Reef",
-      "description": "In their search for solutions on the ecological criticism the Polynesian nations eventually landed on the Coral Restoration Initiative, a project led by Dr. Aleluia Taupega who, with the help of his students, created \"Montipora Taupega\", now known as Supercoral. This genetically enhanced coral was extremely resilient to the changing environment and quick to grow to extraordinary sizes. Once introduced, it quickly helped revitalize the coral reefs of the Pacific and, thanks to its unique metabolism, it helped clean the oceans from chemicals and microplastics. The trade-off was that as the Coral consumed any substances in its path, it grew so large it created massive island-like structures above water. While the view is unlike any other place on earth and one of deep ecological and touristic importance, the expanding size of the reefs also leads to the blocking of many trade routes, causing international inconvenience and scandal.",
-      "locationType": "earth",
-      "cityDisplayName": "Coral Sea, Oceania",
-      "lat": -20,
-      "lon": 155,
-      "yearStart": 2020,
-      "yearEnd": 2040,
-      "eraName": "The Age of Progress",
-      "sources": [
-        {
-          "text": "Overwatch Declassified",
-          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
-        }
-      ],
-      "headlines": [
-        "Artificial Coral is to be released into Polynesian waters"
-      ],
-      "image": "",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Coral Sea, Oceania",
-          "country": "Oceania",
-          "reasoning": "Supercoral rapidly grows forming massive ecosystems in Polynesia"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ecopoints,",
-          "reasoning": "Future Ecopoints would be build around the Samoan Area, the Supercoral played a big role in their decomissioning"
-        },
-        {
-          "locationName": "",
-          "country": "Deepsea Raiders,",
-          "reasoning": "Some groups would later use the byproducts of oceanic chaos to their advantage"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Palak,",
-          "reasoning": "Future researchers would still be tackling the mysteries of Supercoral long into the future",
-          "badgePriority": true
-        }
-      ],
-      "commentary": [
-        {
-          "name": "Mauga · Horizon Lunar Colony — Hey, look. You could see the super coral from here.",
-          "label": "Super Coral"
         }
       ]
     },
@@ -748,7 +690,7 @@
       "name": "Wuxing University",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\n\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
+      "description": "With all the new technologies that were arising, academic institutions were constantly growing, as more people wanted to enter the many new technological fields that were opening, and one of the schools that quickly took the lead in the world would be Wuxing University. According to the academy's teachings, centuries ago, a wise family had dedicated themselves to the understanding and application of the traditional Wuxing philosophy, and the study of the building blocks of the world. With the years of accumulated knowledge, they founded what later became the University, where traditional wisdom was to pioneer new science, for students to have all the knowledge of the past available to guide their future.\n\nThe University, true to its name, splits its fields of study into five categories, relating to the phases of the Wuxing teachings.\nThe Fire College, for the study of martial arts and defensive strategies.\nThe Metal College, for robotics and technological engineering.\nThe Water College, for traditional medicine and applications into new medical advancements.\nThe Earth College, for agricultural and sustainability studies.\nAnd Wood College, for civil and environmental engineering.\nEach of these faculties played major roles in China's major advancements during the following decades, quickly increasing the College's prestige across the world.",
       "image": "",
       "sources": [
         {
@@ -789,7 +731,10 @@
         }
       ],
       "commentary": [
-        "Small World"
+        {
+          "name": "Small World",
+          "theaterId": "b24e77df-81d4-487d-b880-45ba9fc2b30a"
+        }
       ]
     },
     {
@@ -1205,7 +1150,7 @@
       "name": "Voslkaya Industries",
       "locationType": "earth",
       "cityDisplayName": "Saint Petersburg, Russia",
-      "description": "In Russia, Alisa Volskaya would return home after graduating as an engineer at MIT, and soon after she would serve in the Russian Defense Forces. Thanks to her ingenuity, she would be tasked with developing weaponry for the RDF, and to do so she would create the robotics manufacturing company, Volskaya Industries. Alisa was quite a quiet inventor, and while she enjoyed her craft and providing for the military, she never sought to grow the corporation privately.\n\nAlisa would innovate in the name of Russia for years, but her most ingenious ideas would stay private until the Crisis, where she would finally get the chance and the money to make them a reality.",
+      "description": "In Russia, Alisa Volskaya would return home after graduating as an engineer at MIT, and soon after she would serve in the Russian Defense Forces. Thanks to her ingenuity, she would be tasked with developing weaponry for the RDF, and to do so she would create the robotics manufacturing company, Volskaya Industries. Alisa was quite a quiet inventor, and while she enjoyed her craft and providing for the military, she never sought to grow the corporation privately.\n\nAlisa would innovate in the name of Russia for years, but her most ingenious ideas would stay private until the Crisis, where she would finally get the chance and the money to make them a reality. Not just that, while she had brilliant ideas for designs like massive human operated defensive robots, she often failed to see much potential use out of them outside all our war. She thought of ways to protect her family and strengthen the RDF, but her vision clouded her from diversifying her craft beyond displays of power.",
       "image": "",
       "sources": [
         {
@@ -1250,7 +1195,10 @@
         }
       ],
       "commentary": [
-        "Gossiping"
+        {
+          "name": "Gossiping",
+          "theaterId": "72a84e44-342d-42f3-96cc-9ca403401f4f"
+        }
       ]
     },
     {
@@ -1344,7 +1292,7 @@
       "name": "Grasping Gravity",
       "locationType": "earth",
       "cityDisplayName": "New York City, United States",
-      "description": "New sources of energy and pushes for cleaner solutions lead to many developments in the field of transportation, and the man leading the race would be a fresh graduate Dr. Siebren De Kuiper, pioneer of gravitational research, as he believed that gravity was the greatest untapped resource humanity had, and one yet to conquer. For years his studies in The Hague pushed ideas to harness the power of gravity and led to many inventions that changed the world forever, most notoriously, the magnetic levitaitonal systems that most holocars and holobikes use in modern day, as well as the technology that would eventually lead to the creation of the Transcontintental Hyperloop, administered by Omar Takama, later known as the head of the Ministry of Transport at Oasis University.\n\nSiebren's work made flying cars not only a possibility, but a very standard form of living across the world, closing the gap between fossil fuels and a truly sustainable future.",
+      "description": "New sources of energy and pushes for cleaner solutions lead to many developments in the field of transportation, and the man leading the race would be a fresh graduate Dr. Siebren De Kuiper, pioneer of gravitational research, as he believed that gravity was the greatest untapped resource humanity had, and one yet to conquer. \n\nFor years his studies in The Hague pushed ideas to harness the power of gravity and led to many inventions that changed the world forever, most notoriously, the magnetic levitaitonal systems that most holocars and holobikes use in modern day, as well as the technology that would eventually lead to the creation of the Transcontintental Hyperloop, administered by Omar Takama, later known as the head of the Ministry of Transport at Oasis University. Siebren's work made flying cars not only a possibility, but a very standard form of living across the world, closing the gap between fossil fuels and a truly sustainable future.",
       "image": "",
       "sources": [
         {
@@ -1390,12 +1338,23 @@
         }
       ],
       "commentary": [
-        "Mag Lev Cape",
-        "My greatest Rival",
-        "Applied Science",
+        {
+          "name": "Mag Lev Cape",
+          "theaterId": "dfc08699-4c23-4422-9360-77ffb40d5e85"
+        },
+        {
+          "name": "My greatest Rival",
+          "theaterId": "67ed321b-eb4b-465f-b1b3-1c2437e032dc"
+        },
+        {
+          "name": "Applied Science",
+          "theaterId": "708b0475-c5a8-4814-ab5f-b4b9c6febc31"
+        },
         {
           "name": "Sigma · These phenomena bear further investigation.",
-          "label": "Further Investigation"
+          "label": "Further Investigation",
+          "theaterId": "chatter-sigma",
+          "lineId": "b10a374c-66fe-489c-82cc-5e943e116175"
         }
       ]
     },
@@ -2334,7 +2293,7 @@
       "name": "New Horizons",
       "locationType": "moon",
       "cityDisplayName": "Horizon Lunar Colony",
-      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.\n\nThe Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.\n\nIn its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings.\n\nSiebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
+      "description": "At last, after years of development and research, Lucheng was able to finish the construction of the fully functional Horizon Lunar Colony. The base became the home of a colony of primates and other animals, to use for the study of long-term effects of low gravity, hoping this would prepare humanity for future trips into the stars.\n\nThe Apes underwent many genetic treatments that would increase their size, and alongside it their strength and intelligence, and a group of scientists in the base dedicated themselves to observing and teaching the primates to solve complex problems far beyond the capabilities of their counterparts back on Earth.\n\nIn its heyday, many prominent scientists would become temporary residents at Horizon, including Dr. Siebren de Kuiper, who spent a whole year at the base continuing his studies on gravity and providing advice for the staff. De Kuiper credits his time at the colony for much of his research findings. Siebren's time at Horizon overlapped with Victoria Naughton, a geneticist later responsible for the Soldier Enhancement Program. Other scientists, like Dr Ainar Omarov visited the colony, whose optical technologies are still used in monitoring systems.",
       "image": "",
       "sources": [
         {
@@ -2396,10 +2355,15 @@
         }
       ],
       "commentary": [
-        "Friend from the Colony",
+        {
+          "name": "Friend from the Colony",
+          "theaterId": "98f4c44c-5890-49a2-af59-d512db6d2b66"
+        },
         {
           "name": "Sigma · Horizon Lunar Colony — By looking far out into space, we are also looking far back into time. Back toward the horizon of the universe.",
-          "label": "The Horizon"
+          "label": "The Horizon",
+          "theaterId": "chatter-sigma",
+          "lineId": "a6f970ac-4ee9-434b-afa0-a6e9f88d1522"
         }
       ]
     },
@@ -6145,14 +6109,21 @@
         }
       ],
       "commentary": [
-        "Magical Healing",
         {
-          "name": "Lifeweaver · Shambali Monastery — Nepal is mistakenly not included and awaits a fix. — The home of the Iris. So inspiring to be in the presence of a force that defines the limits of our understanding.",
-          "label": "Home of the Iris"
+          "name": "Magical Healing",
+          "theaterId": "6fb1a4c9-db00-43e6-b819-2808d4baa240"
         },
         {
-          "name": "Moira · Nepal or Shambali Monastery — Hm. Beings born of science Shambali in faith.",
-          "label": "Faith"
+          "name": "Lifeweaver · Shambali Monastery — Nepal is mistakenly not included and awaits a fix. — The home of the Iris. So inspiring to be in the presence of a force that defines the limits of our understanding.",
+          "label": "Home of the Iris",
+          "theaterId": "chatter-lifeweaver",
+          "lineId": "ca8067c8-326b-4f76-92b7-a4bd9d882c8b"
+        },
+        {
+          "name": "Moira · Nepal or Shambali Monastery — Hm. Beings born of science seeking answers in faith",
+          "label": "Faith",
+          "theaterId": "chatter-moira",
+          "lineId": "7f130b62-0124-4116-8073-fea5a2253f46"
         }
       ]
     },
@@ -14941,6 +14912,21 @@
       ]
     },
     {
+      "name": "Confiscated",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 64.3984222,
+      "lon": -17.3178863,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearStart": 2070,
+      "yearEnd": 2077,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Avatar of the Fox",
       "locationType": "earth",
       "cityDisplayName": "Kanezaka, Japan",
@@ -16989,7 +16975,7 @@
     },
     {
       "name": "Masquerade",
-      "description": "No description available.",
+      "description": "Following Vialli's attempt to get rid of Akande, he began to plan how to get rid of the opposition to his rule in Talon, and it became clear that the best time to strike would be during the Venetian Masquerade Ball. Doomfist and his lieutenants were able to walk the streets preyed on by Vialli's men completely protected by the anonymity of their masks, allowing Widowmaker to strike down the patrols outside the Palace, while Sombra shut down the lights, so Reaper could ravage through security on the inside.\n\nWith none of his men present, Vialli was now defenseless and, as a last attempt to save himself, he decided to confront Akande directly at the Rialto Bridge. He tried to explain how it was never personal, but that he wished to keep Talon as a profit-centered organization that had moved away from Doomfist's ideology. In cutting Akande off, Vialli believed he was doing the best for the organization. Akande obviously disagreed, since profits were never his goal, but he did believe Talon was going into a different direction, one that no longer involved Vialli. As the Italian proudly walked to shake Akande's hand, thinking he understood his motives, Akande grabbed him by the arm and threw Vialli off the bridge, letting the fall kill him.\n\nWith the man trying to steal Talon away from its visionary death, all preparations were ready, and Akande, joined by Reyes, made their way to the council table. There awaited some of Talon's largest benefactors; Maximilien, Dr. O'Derain and Sanjay Korpal acting on behalf of Vishkar's interests, all of them honorless tools that did not act surprised to see Akande walk in, and did not object to his return in spite of Vialli's views, after all each of them had their life on the line as well as bigger reasons to stay by Talon no matter who oversaw them. Without any opposition, Doomfist was finally back in power and there was unfinished business Talon needed to tend to, a certain end to the deal that he had made with an Omnic before his arrest, which would mark the beginning of a path to global war.",
       "locationType": "earth",
       "cityDisplayName": "Venice, Italy",
       "lat": 45.4371908,
@@ -17007,7 +16993,7 @@
         {
           "locationName": "Venice, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Doomfist kills Vialli and his loyalists",
           "lat": 45.4371908,
           "lon": 12.3345898
         }
@@ -17016,39 +17002,39 @@
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
+          "reasoning": "Takes back Talon after Killing Vialli"
         },
         {
           "locationName": "",
           "country": "Moira, Domina,",
-          "reasoning": ""
+          "reasoning": "Side with Doomfist"
         },
         {
           "locationName": "",
-          "country": "Reaper, Widowmaker,",
-          "reasoning": ""
+          "country": "Reaper, Widowmaker, Sombra,",
+          "reasoning": "Help Doomfist clear the perimeter"
         },
         {
           "locationName": "",
-          "country": "Sombra,",
-          "reasoning": ""
+          "country": "Ramattra,",
+          "reasoning": "Restarts negotiations with Talon"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Falls inline Under Doomfists"
         },
         {
           "locationName": "",
           "country": "La Coterie,",
-          "reasoning": ""
+          "reasoning": "Under Max's control they are back to being a Doomfist aset"
         },
         {
           "locationName": "",
           "country": "Oasis Ministries, Vishkar Corporation,",
-          "reasoning": ""
+          "reasoning": "Continue to benefit from Talon in secret"
         }
       ],
       "yearEnd": null,
@@ -17056,15 +17042,18 @@
         {
           "locationName": "",
           "country": "Vialli,",
-          "reasoning": ""
+          "reasoning": "Falls down the bridge"
         },
         {
           "locationName": "",
           "country": "Maximillien, Sanjay,",
-          "reasoning": ""
+          "reasoning": "Side with Doomfist"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Augusto Vialli found death at the Rialto Bridge.",
+        "Talon brawl during the Venician Masquerade results in dozens of deaths"
+      ]
     },
     {
       "name": "Venture's Adventures",
@@ -21375,7 +21364,7 @@
     },
     {
       "name": "Summit Breach",
-      "description": "<br>",
+      "description": "No description available.",
       "locationType": "earth",
       "cityDisplayName": "Watchpoint: Grand Mesa, United States",
       "lat": 39.1131257,

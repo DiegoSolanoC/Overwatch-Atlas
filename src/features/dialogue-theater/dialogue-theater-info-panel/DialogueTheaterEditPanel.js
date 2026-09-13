@@ -147,6 +147,11 @@ function ensureHost(scrollable) {
         host = document.createElement('div');
         host.id = HOST_ID;
         host.className = 'dialogue-theater-edit-host';
+    }
+    // Always park the host as the first child of the scrollport — never under
+    // #eventSlideDetails / #eventSlideStorySection (those panes are display:none
+    // in theater mode and would hide the whole chatter/dialogue UI).
+    if (host.parentElement !== scrollable || scrollable.firstElementChild !== host) {
         scrollable.prepend(host);
     }
     return host;
@@ -542,11 +547,16 @@ function getCategoryFilteredPlaybackConversation(conversation) {
     const playbackConversation = getPlaybackConversation(conversation);
     if (!isChatterEntry(conversation)) return playbackConversation;
     const selected = loadChatterCategorySelection();
+    const filtered = (playbackConversation.lines || []).filter((line) =>
+        chatterLineMatchesCategories(line, selected),
+    );
+    // Stale/sparse filters must not blank the hub or disable every ▶ button.
+    if (!filtered.length && (playbackConversation.lines || []).length) {
+        return playbackConversation;
+    }
     return {
         ...playbackConversation,
-        lines: (playbackConversation.lines || []).filter((line) =>
-            chatterLineMatchesCategories(line, selected),
-        ),
+        lines: filtered,
     };
 }
 
@@ -577,11 +587,18 @@ export async function playDialogueTheaterViewConversation(conversation) {
  */
 async function playAllViewVoicelines(conversation) {
     stopViewVoicelinePlayback();
-    const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
+    // Story-commentary / playLineId snapshots already pin the lines to play.
+    // Do not let hub category filters blank that subset.
+    const playbackConversation = conversation?.__pinPlaybackLines
+        ? getPlaybackConversation(conversation)
+        : getCategoryFilteredPlaybackConversation(conversation);
     const token = Symbol('playAll');
     activeViewPlayAllToken = token;
     const voicelines = theaterAssets?.voicelines || [];
-    const lineIndices = listPlayableLineIndices(conversation);
+    const lineIndices = [];
+    for (let i = 0; i < playbackConversation.lines.length; i += 1) {
+        if (resolveLineVoiceFile(playbackConversation.lines[i], voicelines)) lineIndices.push(i);
+    }
 
     for (let i = 0; i < lineIndices.length; i += 1) {
         if (activeViewPlayAllToken !== token) return;
@@ -920,11 +937,16 @@ function wireFavoriteAnimalMasterPlay(host, conversation, onPathChange) {
 function wireDialogueTheaterViewPlayback(host, conversation) {
     // Category filters rebuild the visible line list — play must target those lines,
     // not the unfiltered conversation by DOM index.
+    const allPlayback = getPlaybackConversation(conversation);
     const playbackConversation = getCategoryFilteredPlaybackConversation(conversation);
     const lines = playbackConversation.lines || [];
     const voicelines = theaterAssets?.voicelines || [];
     const playableVoices = listPlayableVoicesForConversation(conversation);
-    const lineById = new Map(lines.map((line) => [String(line.id || ''), line]));
+    // Resolve by id against the full line set so a filter fallback in the HTML
+    // can never leave ▶ buttons wired to a missing/empty filtered list.
+    const lineById = new Map(
+        (allPlayback.lines || []).map((line) => [String(line.id || ''), line]),
+    );
 
     const playAllBtn = host.querySelector('#dialogueTheaterPlayAllBtn');
     if (playAllBtn instanceof HTMLButtonElement) {
@@ -946,8 +968,12 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
 
         const lineId = String(row.dataset.lineId || '').trim();
         const line = (lineId && lineById.get(lineId)) || lines[idx] || null;
+        const stageConversation = line && lines.some((entry) => entry.id === line.id)
+            ? playbackConversation
+            : allPlayback;
+        const stageLines = stageConversation.lines || [];
         const lineIndex = line
-            ? Math.max(0, lines.findIndex((entry) => entry.id === line.id))
+            ? Math.max(0, stageLines.findIndex((entry) => entry.id === line.id))
             : idx;
         const voices = line ? resolveLineVoicePlaybackFiles(line, voicelines) : [];
         if (voices.length === 0) {
@@ -962,7 +988,7 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
             e.preventDefault();
             e.stopPropagation();
 
-            stopViewVoicelinePlayback(playbackConversation);
+            stopViewVoicelinePlayback(stageConversation);
             const token = Symbol('linePlay');
             activeViewPlayAllToken = token;
 
@@ -970,13 +996,13 @@ function wireDialogueTheaterViewPlayback(host, conversation) {
                 const ok = await playMasterPlayLine(
                     token,
                     line,
-                    playbackConversation,
+                    stageConversation,
                     lineIndex >= 0 ? lineIndex : idx,
                     voicelines,
                 );
                 if (activeViewPlayAllToken !== token) return;
                 activeViewPlayAllToken = null;
-                if (ok) finishViewPlaybackStage(playbackConversation);
+                if (ok) finishViewPlaybackStage(stageConversation);
             })();
         });
     });
@@ -1044,10 +1070,16 @@ function wireDialogueTheaterPathSelector(host, conversation, onPathChange) {
  */
 function buildDialogueTheaterViewLinesHtml(conversation, options = {}) {
     const playbackConversation = getPlaybackConversation(conversation);
-    const categoryFilter = options.categoryFilter || null;
-    const lines = categoryFilter
+    let categoryFilter = options.categoryFilter || null;
+    let lines = categoryFilter
         ? playbackConversation.lines.filter((line) => chatterLineMatchesCategories(line, categoryFilter))
         : playbackConversation.lines;
+
+    // Stale session filters can blank every hub — fall back to unfiltered lines.
+    if (categoryFilter && !lines.length && playbackConversation.lines.length) {
+        categoryFilter = null;
+        lines = playbackConversation.lines;
+    }
 
     if (!playbackConversation.lines.length) {
         return '<p class="dialogue-theater-edit__muted">No dialogue lines yet.</p>';
@@ -1380,38 +1412,45 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
     const legacyOn = isLegacyNameLinesEnabled();
 
     const topSectionHtml = isChatter
-        ? renderChatterCategorySelectionHtml(chatterCategories)
+        ? ''
         : `
-            <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
-                <div><dt>Status</dt><dd>${statusLabel}</dd></div>
-                <div><dt>Tags</dt><dd>${escapeHtml(tagsLabel)}</dd></div>
-                ${
-                    mapChoicesLabel
-                        ? `<div><dt>Maps</dt><dd>${escapeHtml(mapChoicesLabel)}</dd></div>`
-                        : ''
-                }
-                ${
-                    skinChoicesLabel
-                        ? `<div><dt>Skins</dt><dd>${escapeHtml(skinChoicesLabel)}</dd></div>`
-                        : ''
-                }
-                ${
-                    eventChoicesLabel
-                        ? `<div><dt>Events</dt><dd>${escapeHtml(eventChoicesLabel)}</dd></div>`
-                        : ''
-                }
-            </dl>
+            <section id="dialogueTheaterInfoSection" class="dialogue-theater-edit__section dialogue-theater-edit__section--info" data-theater-section="info">
+                <h3 class="dialogue-theater-edit__section-title dialogue-theater-pane-heading">Info</h3>
+                <dl class="dialogue-theater-edit__meta dialogue-theater-edit__meta--view">
+                    <div><dt>Status</dt><dd>${statusLabel}</dd></div>
+                    <div><dt>Tags</dt><dd>${escapeHtml(tagsLabel)}</dd></div>
+                    ${
+                        mapChoicesLabel
+                            ? `<div><dt>Maps</dt><dd>${escapeHtml(mapChoicesLabel)}</dd></div>`
+                            : ''
+                    }
+                    ${
+                        skinChoicesLabel
+                            ? `<div><dt>Skins</dt><dd>${escapeHtml(skinChoicesLabel)}</dd></div>`
+                            : ''
+                    }
+                    ${
+                        eventChoicesLabel
+                            ? `<div><dt>Events</dt><dd>${escapeHtml(eventChoicesLabel)}</dd></div>`
+                            : ''
+                    }
+                </dl>
+            </section>
         `;
+
+    const chatterCategoriesBlock = isChatter
+        ? `<div class="dialogue-theater-edit__chatter-categories">${renderChatterCategorySelectionHtml(chatterCategories)}</div>`
+        : '';
 
     host.innerHTML = `
         <div class="dialogue-theater-edit dialogue-theater-edit--view">
             ${PANEL_DIALOGUE_BOX_HTML}
             ${topSectionHtml}
             ${pathSwitcherHtml}
-            <section class="dialogue-theater-edit__section">
+            <section id="dialogueTheaterLinesSection" class="dialogue-theater-edit__section dialogue-theater-edit__section--lines" data-theater-section="lines">
                 <p class="dialogue-theater-edit__hint">Scene and character renders appear on the map overlay.</p>
                 <div class="dialogue-theater-edit__section-head">
-                    <h3 class="dialogue-theater-edit__section-title">${isChatter ? 'Chatter' : 'Dialogue'}</h3>
+                    <h3 class="dialogue-theater-edit__section-title dialogue-theater-pane-heading">${isChatter ? 'Chatter' : 'Dialogue'}</h3>
                     <div class="dialogue-theater-edit__section-actions">
                         ${
                             showLegacyToggle
@@ -1433,7 +1472,8 @@ export function renderDialogueTheaterViewPanel(host, conversation, options = {})
                         >▶ Play all</button>
                     </div>
                 </div>
-                <div class="dialogue-theater-edit__view-lines">${linesHtml}</div>
+                ${chatterCategoriesBlock}
+                <div class="dialogue-theater-edit__view-lines" id="dialogueTheaterViewLines">${linesHtml}</div>
             </section>
         </div>
     `;

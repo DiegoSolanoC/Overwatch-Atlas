@@ -10,6 +10,11 @@
         overflow: visible;
     }
 
+    /* Open slide must not clip the seam trapezium / Cut border (shell sets overflow:hidden). */
+    .event-slide.open {
+        overflow: visible;
+    }
+
     /* Closing animation: keep protruding trapeziums + border PNGs visible (panel--closing must not clip). */
     .filters-panel.panel--closing {
         overflow: visible;

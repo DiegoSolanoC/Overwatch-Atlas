@@ -41,6 +41,7 @@ import {
   wireGlobalImageToggleHandler,
 } from "./mountGlobalImageToggle.js";
 import { createStandaloneEventSlide } from "../interface-event-slide/standalone-slide/createStandaloneEventSlide.js";
+import { wireEventSlideSectionJumps } from "../interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js";
 import { mountEventSlideInfoDescriptionTextScaleControls } from "../interface-shared/accessibility/infoDescriptionTextScale.js";
 import { clearDockEraFilter } from "../interface-bottom-dock/dockEraTimelineFilter.js";
 import {
@@ -274,6 +275,7 @@ export async function loadEventSystem(testBtn) {
         window.standaloneEventSlide.setupStandalonePagination();
       }
     }
+    wireEventSlideSectionJumps();
     setupDockEraMenu();
     refreshDockTimelinePagination();
     mountEventSlideInfoDescriptionTextScaleControls();

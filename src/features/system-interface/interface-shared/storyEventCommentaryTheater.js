@@ -92,12 +92,198 @@ export const CHATTER_COMMENTARY_SEP = ' · ';
 export const CHATTER_COMMENTARY_MAP_SEP = ' — ';
 
 /**
+ * @param {string} a
+ * @param {string} b
+ * @returns {number}
+ */
+function levenshteinDistance(a, b) {
+    const s = String(a || '');
+    const t = String(b || '');
+    if (s === t) return 0;
+    if (!s.length) return t.length;
+    if (!t.length) return s.length;
+    /** @type {number[]} */
+    let prev = Array.from({ length: t.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= s.length; i += 1) {
+        /** @type {number[]} */
+        const cur = [i];
+        for (let j = 1; j <= t.length; j += 1) {
+            const cost = s[i - 1] === t[j - 1] ? 0 : 1;
+            cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+        }
+        prev = cur;
+    }
+    return prev[t.length];
+}
+
+/**
  * True when a commentary theater name is a Hero Chatter line label (`Hero · …`).
  * @param {string} name
  * @returns {boolean}
  */
 export function isChatterCommentaryTheaterName(name) {
     return String(name || '').includes(CHATTER_COMMENTARY_SEP);
+}
+
+/**
+ * @param {string} name
+ * @returns {{ hero: string, map: string, subtitle: string } | null}
+ */
+export function parseChatterCommentaryLabel(name) {
+    const raw = String(name || '').trim();
+    const sep = raw.indexOf(CHATTER_COMMENTARY_SEP);
+    if (sep < 0) return null;
+    const hero = raw.slice(0, sep).trim();
+    let rest = raw.slice(sep + CHATTER_COMMENTARY_SEP.length).trim();
+    rest = rest.replace(/\s*\(\d+\)\s*$/, '').trim();
+    if (!hero || !rest) return null;
+    const mapSep = rest.indexOf(CHATTER_COMMENTARY_MAP_SEP);
+    if (mapSep >= 0) {
+        return {
+            hero,
+            map: rest.slice(0, mapSep).trim(),
+            subtitle: rest.slice(mapSep + CHATTER_COMMENTARY_MAP_SEP.length).trim(),
+        };
+    }
+    return { hero, map: '', subtitle: rest };
+}
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @returns {number} 0..1 similarity
+ */
+function chatterSubtitleSimilarity(a, b) {
+    const cleanA = cleanChatterSubtitleForCommentaryLabel(a);
+    const cleanB = cleanChatterSubtitleForCommentaryLabel(b);
+    const na = normalizeForPredictiveMatch(cleanA);
+    const nb = normalizeForPredictiveMatch(cleanB);
+    if (!na || !nb) return 0;
+    if (na === nb) return 1;
+    if (na.includes(nb) || nb.includes(na)) return 0.95;
+
+    const ta = cleanA
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+    const tb = cleanB
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+    if (!ta.length || !tb.length) return 0;
+    const setB = new Set(tb);
+    let inter = 0;
+    for (const t of ta) if (setB.has(t)) inter += 1;
+    const union = new Set([...ta, ...tb]).size;
+    const jaccard = union ? inter / union : 0;
+
+    // Shared leading phrase (e.g. "I wouldn't change a thing we …").
+    let prefix = 0;
+    while (prefix < ta.length && prefix < tb.length && ta[prefix] === tb[prefix]) {
+        prefix += 1;
+    }
+    const prefixScore = prefix >= 5
+        ? Math.min(0.93, 0.55 + prefix * 0.06)
+        : 0;
+
+    // Voice-filename style: strip fillers and compare condensed stems.
+    // Require a long shared stem so short lines like "Dead on." cannot
+    // hitch onto "Deadlock…" via a tiny substring.
+    const stem = (tokList) => tokList
+        .filter((t) => t.length > 2 && !['the', 'and', 'for', 'that', 'this', 'with', 'from'].includes(t))
+        .join('');
+    const sa = stem(ta);
+    const sb = stem(tb);
+    let stemScore = 0;
+    if (sa && sb) {
+        if (sa === sb) stemScore = 0.97;
+        else if (sa.includes(sb) || sb.includes(sa)) {
+            const shorter = Math.min(sa.length, sb.length);
+            const longer = Math.max(sa.length, sb.length);
+            if (shorter >= 16 && shorter / longer >= 0.72) stemScore = 0.9;
+        }
+    }
+
+    return Math.max(jaccard, prefixScore, stemScore);
+}
+
+/**
+ * @param {string} wantedMap
+ * @param {string} disclaimer
+ * @returns {boolean}
+ */
+function chatterMapSoftMatches(wantedMap, disclaimer) {
+    const want = String(wantedMap || '').trim();
+    if (!want) return true;
+    const live = mapLabelFromChatterDisclaimer(disclaimer);
+    if (!live) return false;
+    const nw = normalizeForPredictiveMatch(want);
+    const nl = normalizeForPredictiveMatch(live);
+    if (!nw || !nl) return false;
+    if (nw === nl || nw.includes(nl) || nl.includes(nw)) return true;
+    // "Nepal or Shambali Monastery" vs "Nepal" — share a leading place token.
+    const wantTokens = want
+        .toLowerCase()
+        .split(/[^a-z0-9]+/i)
+        .filter((t) => t.length > 2);
+    const liveTokens = new Set(
+        live
+            .toLowerCase()
+            .split(/[^a-z0-9]+/i)
+            .filter((t) => t.length > 2),
+    );
+    return wantTokens.some((t) => liveTokens.has(t));
+}
+
+/**
+ * Soft resolve a chatter line when the stored commentary label drifted
+ * (wiki/voice subtitle rewrites, punctuation, map note edits).
+ * @param {string} name
+ * @param {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation[]} conversations
+ * @param {string} [restrictTheaterId]
+ * @returns {StoryCommentaryTheaterTarget | null}
+ */
+function resolveChatterLineBySoftLabel(name, conversations, restrictTheaterId = '') {
+    const parsed = parseChatterCommentaryLabel(name);
+    if (!parsed?.hero || !parsed.subtitle) return null;
+    const heroNeedle = normalizeForPredictiveMatch(parsed.hero);
+    const restrictId = String(restrictTheaterId || '').trim();
+
+    /** @type {{ score: number, conversation: any, line: any }[]} */
+    const hits = [];
+    for (const row of conversations) {
+        if (!isChatterEntry(row) || String(row.status || 'active') === 'removed') continue;
+        if (restrictId && String(row.id || '') !== restrictId) continue;
+        for (const line of row.lines || []) {
+            if (!isActiveChatterLineForCommentary(line)) continue;
+            const hero = normalizeForPredictiveMatch(line.hero || row.name);
+            if (!hero || hero !== heroNeedle) continue;
+            if (!chatterMapSoftMatches(parsed.map, line.disclaimer)) continue;
+            const score = chatterSubtitleSimilarity(parsed.subtitle, line.subtitles);
+            // Map-scoped lines can drift further; accept a slightly lower floor.
+            const minScore = parsed.map ? 0.62 : 0.72;
+            if (score < minScore) continue;
+            hits.push({ score, conversation: row, line });
+        }
+    }
+    if (!hits.length) return null;
+    hits.sort((a, b) => b.score - a.score);
+    const best = hits[0];
+    const second = hits[1];
+    const margin = parsed.map ? 0.05 : 0.08;
+    if (second && best.score - second.score < margin && best.score < 0.98) {
+        // Ambiguous soft match — refuse rather than open the wrong line.
+        return null;
+    }
+    return { kind: 'chatter-line', conversation: best.conversation, line: best.line };
 }
 
 /**
@@ -301,6 +487,8 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
                             return { kind: 'chatter-line', conversation: row, line };
                         }
                     }
+                    const soft = resolveChatterLineBySoftLabel(name, list, theaterId);
+                    if (soft) return soft;
                 }
                 return { kind: 'chatter-hub', conversation: row, line: null };
             }
@@ -325,6 +513,33 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
         return { kind: 'dialogue', conversation: row, line: null };
     }
 
+    // 2b) Soft dialogue name (typos like "Ilegal Activities" → "Illegal Activities").
+    if (!isChatterCommentaryTheaterName(name)) {
+        /** @type {{ score: number, row: any }[]} */
+        const dialogueHits = [];
+        for (const row of list) {
+            if (isChatterEntry(row) || !isDialogueEligibleForCommentary(row)) continue;
+            const rowNeedle = normalizeForPredictiveMatch(row?.name);
+            if (!rowNeedle) continue;
+            if (rowNeedle === needle) {
+                dialogueHits.push({ score: 1, row });
+                continue;
+            }
+            const dist = levenshteinDistance(needle, rowNeedle);
+            const maxLen = Math.max(needle.length, rowNeedle.length);
+            if (maxLen < 8 || dist > 2) continue;
+            const score = 1 - dist / maxLen;
+            if (score >= 0.85) dialogueHits.push({ score, row });
+        }
+        dialogueHits.sort((a, b) => b.score - a.score);
+        if (
+            dialogueHits.length === 1
+            || (dialogueHits[0] && dialogueHits[0].score - (dialogueHits[1]?.score || 0) >= 0.05)
+        ) {
+            return { kind: 'dialogue', conversation: dialogueHits[0].row, line: null };
+        }
+    }
+
     // 3) Chatter line label (with optional " (2)" duplicate suffix).
     for (const row of list) {
         if (!isChatterEntry(row) || String(row.status || 'active') === 'removed') continue;
@@ -344,6 +559,12 @@ export function resolveStoryCommentaryTheaterTarget(nameOrEntry, conversations) 
                 return { kind: 'chatter-line', conversation: row, line };
             }
         }
+    }
+
+    // 4) Soft match after subtitle / map-note rewrites (e.g. Omnic Crisis → Crisis).
+    if (isChatterCommentaryTheaterName(name)) {
+        const soft = resolveChatterLineBySoftLabel(name, list);
+        if (soft) return soft;
     }
 
     return null;

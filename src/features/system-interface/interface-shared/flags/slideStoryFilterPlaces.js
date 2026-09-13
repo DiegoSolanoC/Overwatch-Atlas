@@ -255,7 +255,7 @@
             parts.push(
                 '<h4 class="event-filter-header event-filter-header--category">' +
                     '<img class="event-filter-header-icon" src="' + B.ICON_HERO_CAT +
-                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '" alt="" width="36" height="36" decoding="async" />' +
                     '<span class="event-filter-header-label">Relevant heroes</span>' +
                 '</h4>' +
                 '<div class="event-slide-relevant-locations">' + heroHtml + '</div>'
@@ -265,7 +265,7 @@
             parts.push(
                 '<h4 class="event-filter-header event-filter-header--category">' +
                     '<img class="event-filter-header-icon" src="' + B.ICON_FACTION_CAT +
-                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '" alt="" width="36" height="36" decoding="async" />' +
                     '<span class="event-filter-header-label">Relevant factions</span>' +
                 '</h4>' +
                 '<div class="event-slide-relevant-locations">' + facHtml + '</div>'
@@ -275,7 +275,7 @@
             parts.push(
                 '<h4 class="event-filter-header event-filter-header--category">' +
                     '<img class="event-filter-header-icon" src="' + B.ICON_NPC_CAT +
-                    '" alt="" width="20" height="20" decoding="async" />' +
+                    '" alt="" width="36" height="36" decoding="async" />' +
                     '<span class="event-filter-header-label">Relevant NPCs</span>' +
                 '</h4>' +
                 '<div class="event-slide-relevant-locations">' + npcHtml + '</div>'
@@ -287,6 +287,14 @@
         if (window.__BioChipPortraitBackground && typeof window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds === 'function') {
             void window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds(sec);
         }
+        requestAnimationFrame(function () {
+            if (typeof window.__fitHeroChipLabelTextInRoot === 'function') {
+                window.__fitHeroChipLabelTextInRoot(sec);
+            }
+            if (typeof window.__wireSlideChipFloatingLabels === 'function') {
+                window.__wireSlideChipFloatingLabels(sec);
+            }
+        });
         H.scheduleApplyRelevancyRowFilterHighlight();
     }
 

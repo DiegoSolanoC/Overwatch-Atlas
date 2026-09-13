@@ -9,6 +9,9 @@
     min-width: var(--panel-event-width-collapsed);
     max-width: var(--panel-event-width-collapsed);
     flex: 0 0 var(--panel-event-width-collapsed);
+    /* Allow shrinking inside .layout-container so the inner scrollable is the reader */
+    min-height: 0;
+    align-self: stretch;
     background: var(--bg-secondary); /* Dark blue for default blue palette */
     box-shadow: none; /* Remove shadow to prevent overlap */
     transition: width var(--panel-transition), min-width var(--panel-transition), max-width var(--panel-transition), flex-basis var(--panel-transition);
@@ -33,6 +36,10 @@
     min-width: var(--user-panel-event-width, var(--panel-event-width));
     max-width: var(--user-panel-event-width, var(--panel-event-width));
     flex: 0 0 var(--user-panel-event-width, var(--panel-event-width));
+    display: flex;
+    flex-direction: column;
+    /* Title/location stay put; description+details scroll inside #eventSlideScrollable */
+    overflow: hidden;
 }
 
 /* Hide panel content when collapsed */
@@ -88,10 +95,131 @@
     pointer-events: auto;
 }
 
+.event-slide-close-cluster__controls {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+}
+
 .event-slide-close-cluster .event-slide-close {
     position: static;
     top: auto;
     right: auto;
+}
+
+/* Years + Story/Details — same row under location */
+.event-slide-meta-jump-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    width: 100%;
+    margin: 8px 0 0 0;
+    box-sizing: border-box;
+}
+
+.event-slide-meta-jump-row .event-slide-timeline-meta {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.event-slide-section-jumps {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 0 0 auto;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.event-slide-section-jump {
+    margin: 0;
+    min-width: 104px;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    text-transform: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.event-slide-section-jump:hover {
+    background: rgba(0, 0, 0, 0.64);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.03);
+}
+
+.event-slide-section-jump:focus-visible {
+    outline: 2px solid var(--accent-primary, #5aa9e6);
+    outline-offset: 2px;
+}
+
+.event-slide-section-jump.is-active {
+    background: rgba(90, 169, 230, 0.35);
+    border-color: rgba(90, 169, 230, 0.75);
+}
+
+.event-slide-section-jump[hidden] {
+    display: none !important;
+}
+
+/*
+ * Two panes in one scrollport: Story + Details.
+ * Panes size to their content (no viewport min-height gap).
+ * Jump-to-top room comes from an end spacer, not empty space between panes.
+ */
+.event-slide-scrollable {
+    position: relative;
+}
+
+.event-slide-pane {
+    display: block;
+    box-sizing: border-box;
+}
+
+.event-slide-pane--story {
+    padding-bottom: 8px;
+}
+
+.event-slide-pane--details {
+    margin-top: 8px;
+    padding-top: 4px;
+}
+
+.event-slide-pane__heading {
+    font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
+    color: var(--accent-primary);
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: 0.02em;
+    margin: 0 0 12px 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.event-slide-scroll-pin-spacer {
+    display: block;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    pointer-events: none;
 }
 
 .event-slide-back-btn {
@@ -200,7 +328,18 @@
 }
 
 .event-slide-edit-btn {
-    right: 205px; /* sits left of Save button */
+    right: 220px; /* sits left of Save — ~90px gap */
+}
+
+.event-slide-delete-btn {
+    right: 320px; /* sits left of Edit / Cancel — ~100px gap */
+    background: rgba(180, 40, 40, 0.55);
+    border-color: rgba(255, 120, 120, 0.45);
+}
+
+.event-slide-delete-btn:hover:not(:disabled) {
+    background: rgba(200, 50, 50, 0.72);
+    border-color: rgba(255, 160, 160, 0.65);
 }
 
 .event-slide--inline-editing .event-slide-scrollable p#eventSlideText {
@@ -216,10 +355,16 @@
     border-color: rgba(var(--accent-primary-rgb), 0.75);
 }
 
-/* Inline edit mode: hide rendered sections to save space */
+/* Inline edit mode: hide finished Details chrome (edit form covers these) */
 .event-slide--inline-editing #eventSourcesSection,
 .event-slide--inline-editing #eventFiltersSection,
-.event-slide--inline-editing #eventRelevantLocationsSection {
+.event-slide--inline-editing #eventRelevantLocationsSection,
+.event-slide--inline-editing #eventCommentarySection,
+.event-slide--inline-editing #eventBioConnectionsSection,
+.event-slide--inline-editing #eventStoryFilterPlacesSection,
+.event-slide--inline-editing #eventSlideDetails,
+.event-slide--inline-editing .event-slide-pane__heading,
+.event-slide--inline-editing #eventSlideScrollPinSpacer {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -611,7 +756,9 @@
     padding: 20px 20px 20px 20px;
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
     height: 100%;
+    min-height: 0;
     box-sizing: border-box;
     overflow: hidden; /* Prevent content from overflowing */
 }

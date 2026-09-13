@@ -86,7 +86,7 @@ async function resolveCommentaryTheaterTargetOrWarn(interactionNameOrEntry) {
  */
 function buildStoryCommentaryPlaybackConversation(target) {
     const base = target.conversation;
-    /** @type {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation} */
+    /** @type {import('../../dialogue-theater/data/DialogueTheaterDataService.js').DialogueConversation & { __pinPlaybackLines?: boolean }} */
     let playback = { ...base };
 
     if (target.kind === 'chatter-line' && target.line) {
@@ -95,6 +95,7 @@ function buildStoryCommentaryPlaybackConversation(target) {
             paths: undefined,
             selectedPathId: '',
             lines: [target.line],
+            __pinPlaybackLines: true,
         };
     } else if (target.kind === 'chatter-hub') {
         const playable = (base.lines || []).filter(isActiveChatterLineForCommentary);
@@ -105,6 +106,7 @@ function buildStoryCommentaryPlaybackConversation(target) {
                 paths: undefined,
                 selectedPathId: '',
                 lines: pick ? [pick] : [],
+                __pinPlaybackLines: true,
             };
         }
     } else if ((base.paths || []).length > 1) {
@@ -177,20 +179,16 @@ export async function directPlayDialogueTheaterFromStoryCommentary(interactionNa
         return false;
     }
 
-    const sceneUrl = String(slide.currentImagePath || '').trim();
-    if (!sceneUrl) {
-        updateStatus('No event image to play commentary over.', 'warning');
-        return false;
-    }
-
     const playback = buildStoryCommentaryPlaybackConversation(target);
     if (!(playback.lines || []).length) {
         updateStatus('No playable lines for this commentary.', 'warning');
         return false;
     }
 
+    const sceneUrl = String(slide.currentImagePath || '').trim();
+
     try {
-        if (typeof slide.showImageOverlay === 'function') {
+        if (sceneUrl && typeof slide.showImageOverlay === 'function') {
             slide.showImageOverlay(sceneUrl);
         }
         await showDialogueTheaterStageWithSceneUrl(playback, sceneUrl);

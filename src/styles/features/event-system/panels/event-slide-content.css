@@ -150,7 +150,7 @@
 
 .event-slide-top .event-slide-location,
 .event-slide-location {
-    font-size: 24px;
+    font-size: var(--info-description-font-size);
     color: rgba(255, 255, 255, 0.78);
     margin: 0 0 0 0; /* No margin adjustments needed in top section */
     line-height: 1.5;
@@ -182,7 +182,7 @@
 }
 
 .event-slide-timeline-meta {
-    font-size: 17px;
+    font-size: var(--info-description-font-size);
     color: rgba(255, 255, 255, 0.82);
     margin: 8px 0 0 0;
     line-height: 1.45;
@@ -191,7 +191,7 @@
 }
 
 .event-slide-faction-type-display {
-    font-size: 28px;
+    font-size: var(--info-description-font-size);
     color: rgba(255, 255, 255, 0.92);
     margin: 10px 0 0 0;
     line-height: 1.35;
@@ -243,13 +243,36 @@
     overflow-y: auto;
 }
 
-/* Relevant locations + story grouped filters (same card rhythm and accent as sources) */
+/* Relevant locations + story grouped filters (same card rhythm and accent as sources).
+ * Background lives on ::before so chip labels can paint past the rounded frame. */
 .event-relevant-locations-section {
     margin: 20px 0 10px 0;
     padding: 15px;
+    padding-bottom: 28px; /* room for hover name bands below chips */
+    background: transparent;
+    border-radius: 0;
+    border-left: none;
+    overflow: visible !important;
+    position: relative;
+    z-index: 1;
+    isolation: auto;
+    contain: none;
+}
+
+.event-relevant-locations-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
-    border-left: 3px solid #2196f3; /* match default .event-sources-section */
+    border-left: 3px solid #2196f3;
+}
+
+.event-relevant-locations-section > * {
+    position: relative;
+    z-index: 1;
 }
 
 .event-relevant-locations-section .event-filter-header {
@@ -258,10 +281,13 @@
 
 .event-relevant-locations-section .event-slide-relevant-locations {
     margin: 4px 0 0 0;
-    font-size: 16px;
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
+    color: #e0e0e0;
+    overflow: visible;
 }
 
-/* Story timeline — grouped heroes / factions / NPCs (gallery bio chips, countries stay flags) */
+/* Story timeline — grouped heroes / factions / NPCs (gallery bio chips) + location flag chips */
 .event-story-filter-places-section .event-filter-header--category {
     margin-top: 14px;
 }
@@ -272,28 +298,67 @@
 
 .event-story-filter-places-section .event-slide-relevant-locations {
     margin: 4px 0 10px 0;
-    font-size: 16px;
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
+    color: #e0e0e0;
+    overflow: visible;
 }
 
-.event-story-filter-places-section {
+.event-story-filter-places-section,
+.event-bio-connections-section,
+.event-commentary-section {
+    overflow: visible !important;
+    position: relative;
+    z-index: 1;
+    isolation: auto;
+    contain: none;
+    padding-bottom: 28px;
+}
+
+.event-story-filter-places-section,
+.event-relevant-locations-section,
+.event-bio-connections-section,
+.event-commentary-section {
     --hero-bio-chip-rim: clamp(4px, 0.4vw, 6px);
     --hero-bio-hover-scale: 1.08;
     --hero-bio-chip-max-h: clamp(64px, 8vw, 88px);
     --hero-bio-chip-max-w: calc(var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim));
     --hero-bio-label-band: clamp(14px, 1.1vw, 18px);
+    --hero-bio-label-rim: clamp(3px, 0.32vw, 5px);
 }
 
-.event-story-filter-places-section .event-slide-relevant-locations__flag-row--chips {
+/* Country flags — compact 8:5 tiles (closer to old 52×36 flags, not hero-chip sized) */
+.event-relevant-locations-section .event-slide-filter-token-chip-wrap--flag {
+    --hero-bio-chip-rim: 3px;
+    --hero-bio-chip-max-h: clamp(34px, 3.6vw, 42px);
+    --hero-bio-chip-max-w: calc(
+        (var(--hero-bio-chip-max-h) - 2 * var(--hero-bio-chip-rim)) * 8 / 5
+    );
+    --hero-bio-label-band: 14px;
+    --hero-bio-label-rim: 3px;
+    width: var(--hero-bio-chip-max-w);
+    max-width: var(--hero-bio-chip-max-w);
+    /* Chip tile only — hover labels portal out; don't lock wrap height to clip bands */
+    height: auto;
+    min-height: var(--hero-bio-chip-max-h);
+}
+
+.event-story-filter-places-section .event-slide-relevant-locations__flag-row--chips,
+.event-relevant-locations-section .event-slide-relevant-locations__flag-row--chips {
     align-items: center;
     gap: 8px 10px;
+    overflow: visible;
 }
 
-.event-story-filter-places-section .event-slide-relevant-locations__row--with-chips {
+.event-story-filter-places-section .event-slide-relevant-locations__row--with-chips,
+.event-relevant-locations-section .event-slide-relevant-locations__row--with-chips {
     align-items: center;
     gap: 10px 14px;
+    overflow: visible;
 }
 
-.event-story-filter-places-section .event-slide-filter-token-chip-wrap {
+.event-story-filter-places-section .event-slide-filter-token-chip-wrap,
+.event-relevant-locations-section .event-slide-filter-token-chip-wrap {
     position: relative;
     display: block;
     width: var(--hero-bio-chip-max-w);
@@ -301,12 +366,109 @@
     height: var(--hero-bio-chip-max-h);
     margin: 0;
     flex: 0 0 auto;
+    overflow: visible;
+    z-index: 1;
 }
 
-.event-story-filter-places-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
+/* After the shared wrap height rule — keep flag wraps from locking a clip box */
+.event-relevant-locations-section .event-slide-filter-token-chip-wrap--flag {
+    height: auto;
+    min-height: var(--hero-bio-chip-max-h);
+}
+
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:hover,
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:focus-within {
+    z-index: 200;
+}
+
+/* Hover labels must paint above the rounded section chrome, not clip inside it */
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:hover .filter-label,
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:focus-within .filter-label,
+.event-slide-scrollable .event-slide-filter-token-chip.filter-btn:hover .filter-label,
+.event-slide-scrollable .event-slide-filter-token-chip.filter-btn--active .filter-label {
+    z-index: 210;
+    overflow: visible !important;
+}
+
+.event-story-filter-places-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn,
+.event-relevant-locations-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
     width: 100%;
     height: var(--hero-bio-chip-max-h);
     max-width: var(--hero-bio-chip-max-w);
+    overflow: visible;
+}
+
+/* Match filter-menu chip labels: widen white band via fitHeroChipLabelText */
+.event-slide-scrollable .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn .filter-label,
+.event-slide-scrollable .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn .filter-label-text {
+    max-width: none;
+    overflow: visible;
+    white-space: nowrap;
+    -webkit-line-clamp: unset;
+    word-break: normal;
+    text-overflow: clip;
+}
+
+.event-slide-scrollable .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn .filter-label {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none;
+}
+
+.event-slide-scrollable .event-slide-relevant-locations__flag-row--chips,
+.event-slide-scrollable .event-slide-relevant-locations__row--with-chips,
+.event-slide-scrollable .event-slide-bio-connections,
+.event-slide-scrollable .event-commentary-list {
+    overflow: visible;
+}
+
+/* Room for expanded name bands without clipping at the scrollport edge */
+.event-slide-scrollable .event-story-filter-places-section,
+.event-slide-scrollable .event-bio-connections-section,
+.event-slide-scrollable .event-commentary-section,
+.event-slide-scrollable .event-relevant-locations-section {
+    overflow: visible;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+/* Flag chips: show hover band even when not a button */
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:hover .event-slide-filter-token-chip .filter-label,
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:focus-within .event-slide-filter-token-chip .filter-label {
+    opacity: 1;
+    visibility: visible;
+    z-index: 60;
+    min-height: var(--hero-bio-label-band);
+    padding: 1px 2px calc(1px + var(--hero-bio-label-rim, 3px));
+    border-top: var(--hero-bio-label-rim, 3px) solid rgba(255, 255, 255, 0.93);
+    border-bottom: var(--hero-bio-label-rim, 3px) solid rgba(255, 255, 255, 0.93);
+}
+
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:hover .event-slide-filter-token-chip .filter-image-container,
+.event-slide-scrollable .event-slide-filter-token-chip-wrap:focus-within .event-slide-filter-token-chip .filter-image-container {
+    border-top-color: rgba(255, 255, 255, 0.93);
+    border-bottom: 0 solid transparent;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Portaled hover labels (body) — escape scrollport + chip transform */
+body > .filter-label.event-slide-filter-label--floating {
+    position: fixed !important;
+    z-index: 10050 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+    overflow: visible !important;
+    white-space: nowrap;
+    color: #0f2840;
+    background: #fff !important;
+}
+
+.event-relevant-locations-section .event-slide-filter-token-chip--flag .filter-image-container img {
+    object-fit: cover;
+    object-position: center;
 }
 
 .event-story-filter-places-section .event-slide-filter-token-chip--static {
@@ -354,6 +516,7 @@
     width: 100%;
     height: var(--hero-bio-chip-max-h);
     max-width: var(--hero-bio-chip-max-w);
+    overflow: visible;
 }
 
 .event-bio-connections-section .event-slide-filter-token-chip--static,
@@ -383,14 +546,14 @@
 /* Hero archive — relevant places (Name, Country) + flags */
 .event-slide-relevant-locations {
     margin: 10px 0 0 0;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.45;
+    font-size: var(--info-description-font-size);
+    color: #e0e0e0;
+    line-height: 1.55;
 }
 
 .event-slide-relevant-locations__label {
     font-weight: 700;
-    font-size: 16px;
+    font-size: var(--info-description-font-size);
     color: rgba(255, 255, 255, 0.88);
     margin-bottom: 6px;
     letter-spacing: 0.02em;
@@ -1278,6 +1441,22 @@
     white-space: pre-line; /* Preserve line breaks and collapse multiple spaces */
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Details body copy tracks the same A−/=/A+ scale as the description */
+.event-slide-scrollable .event-slide-relevant-locations,
+.event-slide-scrollable .event-slide-relevant-locations__label,
+.event-slide-scrollable .event-slide-relevant-locations__main,
+.event-slide-scrollable .event-slide-relevant-locations__reason,
+.event-slide-scrollable .event-slide-relevant-locations__comma-country,
+.event-slide-scrollable .event-source-display-item,
+.event-slide-scrollable .event-source-link,
+.event-slide-scrollable .event-source-text,
+.event-slide-content .event-slide-timeline-meta,
+.event-slide-content .event-slide-faction-type-display,
+.event-slide-content .event-slide-location {
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
 }
 
 /* Bottom section - always at bottom, never scrolls */

@@ -38,6 +38,7 @@ import {
     updateEventSlideHeroRoleDisplay,
 } from '../../system-interface/interface-info-display/eventSlideMetaDisplays.js';
 import { isChatterEntry } from '../data/dialogueTheaterEntryType.js';
+import { syncEventSlideSectionJumpsMode } from '../../system-interface/interface-event-slide/standalone-slide/display/wireEventSlideSectionJumps.js';
 
 /** @type {string|null} */
 let activeConversationId = null;
@@ -420,6 +421,16 @@ async function prepareEventSlideForConversation(row, options = {}) {
     eventSlide?.setAttribute('data-dialogue-theater-conversation-id', row.id);
     eventSlide?.classList.remove('event-slide--inline-editing');
     eventSlide?.classList.add('open');
+    syncEventSlideSectionJumpsMode('theater', { isChatter: isChatterEntry(row) });
+    if (scrollable) {
+        // Drop leftover story scroll + pin spacer so chatter doesn't open onto blank space.
+        scrollable.scrollTop = 0;
+        const spacer = document.getElementById('eventSlideScrollPinSpacer');
+        if (spacer) {
+            spacer.style.height = '0px';
+            spacer.hidden = true;
+        }
+    }
 
     const overlay = document.getElementById('eventImageOverlay');
     const showImage = readPersistedGlobalImageToggleState();
@@ -431,12 +442,15 @@ async function prepareEventSlideForConversation(row, options = {}) {
     }
 
     if (scrollable) {
+        scrollable.scrollTop = 0;
         await mountDialogueTheaterPanel(scrollable, row, 'view', {
             onPathChange: onConversationPathChange,
             highlightLineId,
         });
+        scrollable.scrollTop = 0;
         // Match story: brief delay so the panel open transition starts before stage paint.
         await new Promise((r) => setTimeout(r, 100));
+        scrollable.scrollTop = 0;
         void syncDialogueTheaterStageOverlayFromGlobalToggle();
     }
 
@@ -505,6 +519,7 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
                 paths: undefined,
                 selectedPathId: '',
                 lines: [line],
+                __pinPlaybackLines: true,
             });
         }
     } else if (isChatterEntry(row)) {
@@ -535,6 +550,7 @@ export function teardownDialogueTheaterEventSlide() {
     eventSlide?.classList.remove('event-slide--dialogue-theater', 'event-slide--inline-editing');
     eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
     if (textEl) textEl.style.display = '';
+    syncEventSlideSectionJumpsMode('story');
 }
 
 export function closeDialogueTheaterInfoPanel() {
@@ -554,6 +570,7 @@ export function closeDialogueTheaterInfoPanel() {
 
     eventSlide?.classList.remove('open', 'event-slide--dialogue-theater', 'event-slide--inline-editing');
     eventSlide?.removeAttribute('data-dialogue-theater-conversation-id');
+    syncEventSlideSectionJumpsMode('story');
     if (titleEl) titleEl.contentEditable = 'false';
     if (textEl) textEl.style.display = '';
     if (editBtn) editBtn.style.display = '';

@@ -509,6 +509,14 @@
                 if (window.__BioChipPortraitBackground && typeof window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds === 'function') {
                     void window.__BioChipPortraitBackground.paintBioChipPortraitBackgrounds(sec);
                 }
+                requestAnimationFrame(function () {
+                    if (typeof window.__fitHeroChipLabelTextInRoot === 'function') {
+                        window.__fitHeroChipLabelTextInRoot(sec);
+                    }
+                    if (typeof window.__wireSlideChipFloatingLabels === 'function') {
+                        window.__wireSlideChipFloatingLabels(sec);
+                    }
+                });
             }
         }
         var svc = typeof window !== 'undefined' ? window.CodexConnectionService : null;

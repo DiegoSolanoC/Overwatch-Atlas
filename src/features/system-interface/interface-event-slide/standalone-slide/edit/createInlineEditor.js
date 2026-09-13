@@ -130,9 +130,6 @@ export function runCreateInlineEditor(slide) {
                     <div class="event-slide-inline-variant-bar" id="eventSlideInlineVariantBar"></div>
                     <p class="event-slide-inline-editor__hint">Switch tabs to edit another variant. + / - add or remove (saved when you click Save).</p>
                 </div>
-                <div class="event-slide-inline-editor__row event-slide-inline-editor__row--delete">
-                    <button type="button" class="event-slide-inline-editor__delete-btn" id="eventSlideInlineDeleteBtn">Delete event</button>
-                </div>
             `;
             
             // Wire add source button
@@ -142,9 +139,6 @@ export function runCreateInlineEditor(slide) {
 
                 const addCommentaryBtn = document.getElementById('eventSlideAddCommentaryBtn');
                 addCommentaryBtn?.addEventListener('click', () => slide.addCommentaryRow());
-                
-                const deleteBtn = document.getElementById('eventSlideInlineDeleteBtn');
-                deleteBtn?.addEventListener('click', () => slide.deleteCurrentEvent());
                 
                 // Wire variant bar
                 const variantBar = document.getElementById('eventSlideInlineVariantBar');

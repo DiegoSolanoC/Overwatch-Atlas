@@ -8,6 +8,7 @@
  */
 
 import { isEventSlideEditDevHost } from '../../../interface-info-display/isEventSlideEditDevHost.js';
+import { setEventSlideDeleteButtonVisible } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
 
 export function runWireEditButtons(slide, eventData, displayEvent, editBtn, saveBtn, titleEl, textEl) {
             if (!editBtn || !saveBtn) return;
@@ -15,6 +16,7 @@ export function runWireEditButtons(slide, eventData, displayEvent, editBtn, save
             if (!isEventSlideEditDevHost()) {
                 editBtn.style.display = 'none';
                 saveBtn.style.display = 'none';
+                setEventSlideDeleteButtonVisible(false);
                 editBtn.disabled = true;
                 saveBtn.disabled = true;
                 return;
@@ -25,6 +27,7 @@ export function runWireEditButtons(slide, eventData, displayEvent, editBtn, save
             editBtn.textContent = 'Edit';
             editBtn.style.display = 'block';
             saveBtn.style.display = 'none';
+            setEventSlideDeleteButtonVisible(false);
             
             // Remove old listeners by cloning
             const newEditBtn = editBtn.cloneNode(true);

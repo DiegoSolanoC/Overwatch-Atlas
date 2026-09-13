@@ -245,6 +245,12 @@ export function createStandaloneEventSlide() {
         allEvents: [],
         /** True when the slide row comes from the main-timeline dock (thumbs / story), not satellite Event Manager rows. Do not infer via `allEvents === getDockTimelineEvents()` — references can differ while content is still dock. */
         _presentationFromDockTimeline: true,
+        /**
+         * When set, overrides EventManager archive source for slide chrome
+         * (bio peeks from story without switching the live archive).
+         * @type {string|null}
+         */
+        _presentationArchiveSource: null,
         currentEventData: null,
         currentVariantIndex: 0,
         isEditing: false,
@@ -263,7 +269,9 @@ export function createStandaloneEventSlide() {
             this._slideHistoryStack.push({
                 archiveSource: em?.dataService?.getArchiveSource?.() || 'story',
                 eventIndex: this.currentEventIndex,
-                presentationFromDock: !!this._presentationFromDockTimeline
+                presentationFromDock: !!this._presentationFromDockTimeline,
+                presentationArchiveSource: this._presentationArchiveSource || null,
+                eventList: this._presentationFromDockTimeline ? null : (this.allEvents || null),
             });
             this.updateBackButtonVisibility();
         },
@@ -288,7 +296,7 @@ export function createStandaloneEventSlide() {
 
         /**
          * @param {number} index
-         * @param {{ eventList?: Array<Object>, keepSlideHistory?: boolean }} [options] - `eventList` for Event Manager rows; omit for dock. `keepSlideHistory` when following relevancy / prev-next while Back stack is active.
+         * @param {{ eventList?: Array<Object>, keepSlideHistory?: boolean, presentationArchiveSource?: string }} [options] - `eventList` for Event Manager rows; omit for dock. `keepSlideHistory` when following relevancy / prev-next while Back stack is active. `presentationArchiveSource` forces bio/story chrome without switching EventManager.
          */
         showEvent(index, options = {}) {
             if (!this._slideHistoryRestoring && !options.keepSlideHistory) {
@@ -302,6 +310,15 @@ export function createStandaloneEventSlide() {
             this.allEvents = events;
             this._presentationFromDockTimeline =
                 options.eventList == null || events === dockList;
+
+            if (options.presentationArchiveSource) {
+                this._presentationArchiveSource = String(options.presentationArchiveSource);
+            } else if (this._presentationFromDockTimeline) {
+                this._presentationArchiveSource = 'story';
+            } else {
+                this._presentationArchiveSource =
+                    window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            }
             
             const eventData = events[index];
             syncStandaloneSlideEventContext(this, eventData, index, options);

@@ -61,3 +61,18 @@ export function fitHeroChipLabelTextInChip(chipEl) {
     const labelText = chipEl.querySelector('.filter-label-text');
     if (labelText) fitHeroChipLabelText(labelText);
 }
+
+/**
+ * @param {ParentNode | null | undefined} root
+ */
+export function fitHeroChipLabelTextInRoot(root) {
+    if (!root || typeof root.querySelectorAll !== 'function') return;
+    root.querySelectorAll('.filter-label-text').forEach((el) => {
+        if (el instanceof HTMLElement) fitHeroChipLabelText(el);
+    });
+}
+
+if (typeof window !== 'undefined') {
+    window.__fitHeroChipLabelText = fitHeroChipLabelText;
+    window.__fitHeroChipLabelTextInRoot = fitHeroChipLabelTextInRoot;
+}

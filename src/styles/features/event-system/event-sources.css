@@ -26,7 +26,8 @@ body.color-palette-gray .event-sources-section {
     padding: 8px 12px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
     color: #e0e0e0;
 }
 
@@ -108,6 +109,8 @@ body.color-palette-gray .event-sources-section {
 .event-source-link {
     color: #2196F3;
     text-decoration: none;
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
     transition: color 0.2s ease;
 }
 
@@ -118,6 +121,8 @@ body.color-palette-gray .event-sources-section {
 
 .event-source-text {
     color: #e0e0e0;
+    font-size: var(--info-description-font-size);
+    line-height: 1.55;
 }
 
 /* Event Source Item in Edit Form */
@@ -204,12 +209,11 @@ body.color-palette-gray .event-sources-section {
 .event-commentary-section {
     margin-top: 12px;
     margin-bottom: 4px;
+    overflow: visible !important;
 }
 
 .event-commentary-section .event-filter-header {
     margin-top: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
 }
 
 .event-commentary-list,
@@ -273,12 +277,14 @@ body.color-palette-gray .event-sources-section {
     height: var(--hero-bio-chip-max-h);
     margin: 0;
     flex: 0 0 auto;
+    overflow: visible;
 }
 
 .event-commentary-section .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn {
     width: 100%;
     height: var(--hero-bio-chip-max-h);
     max-width: var(--hero-bio-chip-max-w);
+    overflow: visible;
 }
 
 .event-commentary-section .event-slide-filter-token-chip:focus-visible {

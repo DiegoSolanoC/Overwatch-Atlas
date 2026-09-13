@@ -42,6 +42,7 @@ import {
 import { readFactionTypeBioPanelTrimmed, syncFactionTypeBioPanelVisibility } from '../../../interface-shared/bio-archive/FactionTypeBioInput.js';
 import { readNpcCategoryBioPanelTrimmed, syncNpcCategoryBioPanelVisibility } from '../../../interface-shared/bio-archive/NpcCategoryBioInput.js';
 import { syncBioDeleteButtonVisibility } from '../../../interface-shared/bio-archive/BioArchiveDeleteButton.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 import {
     heroBirthdayPartsIncomplete,
     readHeroBirthdayBioPanelTrimmed,
@@ -102,9 +103,7 @@ export function runSaveFullEdit(slide, eventData, editBtn, saveBtn) {
         if (!slide.isEditing || !slide.editTarget) return;
 
         const dockStoryPresentationActive = !!slide._presentationFromDockTimeline;
-        const archiveSource = dockStoryPresentationActive
-            ? 'story'
-            : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
+        const archiveSource = resolveEventSlideArchiveSource(slide);
         const titleElEarly = document.getElementById('eventSlideTitle');
         const textElEarly = document.getElementById('eventSlideText');
 

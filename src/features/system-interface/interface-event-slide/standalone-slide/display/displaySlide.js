@@ -55,6 +55,7 @@ import {
 import { teardownDialogueTheaterEventSlide } from '../../../../dialogue-theater/dialogue-theater-info-panel/DialogueTheaterInfoPanel.js';
 import { stopStoryCommentaryDirectPlay } from '../../../interface-shared/openDialogueTheaterFromStoryCommentary.js';
 import { clearEventSourceMediaEmbed, resetSourceMediaMusicDuckState } from '../image-overlay/eventSourceMediaOverlay.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 
 export async function runDisplaySlide(slide, eventName, imagePath, description, eventData, isMultiEvent, displayEvent) {
         const eventSlide = document.getElementById('eventSlide');
@@ -82,10 +83,8 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
         const eventSlideLocation = document.getElementById('eventSlideLocation');
         const eventSlideTimelineMeta = document.getElementById('eventSlideTimelineMeta');
         const dockStoryPresentationActive = !!slide._presentationFromDockTimeline;
-        const archiveSourceSlide = dockStoryPresentationActive
-            ? 'story'
-            : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
-        const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceSlide !== 'story';
+        const archiveSourceSlide = resolveEventSlideArchiveSource(slide);
+        const isSatelliteArchive = archiveSourceSlide !== 'story';
         
         // Store the image path for later use when toggling
         slide.currentImagePath = imagePath;

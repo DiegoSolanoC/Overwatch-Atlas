@@ -23,6 +23,7 @@ import {
     resolveStoryEventIndexInList,
 } from '../../../interface-shared/storyEventIndexResolution.js';
 import { resolveConnectionsForArchiveEntry } from '../../../../codex/codex-connections/CodexConnectionAccess.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 
 function resolveLiveArchiveEventData(slide, fallbackEventData) {
     const api = typeof window !== 'undefined' ? window.BioArchiveSlideEventData : null;
@@ -40,10 +41,8 @@ function resolveLiveArchiveEventData(slide, fallbackEventData) {
 
 export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBtn) {
             const dockStoryPresentationActive = !!slide._presentationFromDockTimeline;
-            const archiveSourceEdit = dockStoryPresentationActive
-                ? 'story'
-                : (window.eventManager?.dataService?.getArchiveSource?.() || 'story');
-            const isSatelliteArchive = !dockStoryPresentationActive && archiveSourceEdit !== 'story';
+            const archiveSourceEdit = resolveEventSlideArchiveSource(slide);
+            const isSatelliteArchive = archiveSourceEdit !== 'story';
 
             const emStory = window.eventManager;
             const storyListForBind = dockStoryPresentationActive
@@ -226,7 +225,7 @@ export function runStartFullEdit(slide, eventData, displayEvent, editBtn, saveBt
                 syncNpcCategoryBioPanelVisibility('story');
                 syncHeroBioRolePanelsVisibility('story', undefined, undefined);
                 syncHeroBirthdayBioPanelVisibility('story', undefined);
-                syncBioDeleteButtonVisibility('story', false);
+                syncBioDeleteButtonVisibility('story', true);
             }
 
             const addSecPlacesBtn = document.getElementById('eventSlideAddSecondaryCountryPlaceBtn');

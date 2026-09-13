@@ -23,14 +23,33 @@ export async function runGoBackSlide(slide) {
             slide._slideHistoryRestoring = true;
             try {
                 const em = window.eventManager;
-                if (em?.switchStoryArchiveSource) {
-                    await em.switchStoryArchiveSource(prev.archiveSource);
-                }
+                const peekArchive =
+                    prev.presentationArchiveSource &&
+                    prev.presentationArchiveSource !== 'story' &&
+                    Array.isArray(prev.eventList);
+
                 if (prev.presentationFromDock) {
-                    slide.showEvent(prev.eventIndex, {});
+                    if (em?.switchStoryArchiveSource) {
+                        await em.switchStoryArchiveSource(prev.archiveSource || 'story');
+                    }
+                    slide.showEvent(prev.eventIndex, {
+                        presentationArchiveSource: prev.presentationArchiveSource || 'story',
+                    });
+                } else if (peekArchive && (prev.archiveSource || 'story') === 'story') {
+                    // Bio peek from story: restore the peeked list without switching archives.
+                    slide.showEvent(prev.eventIndex, {
+                        eventList: prev.eventList,
+                        presentationArchiveSource: prev.presentationArchiveSource,
+                    });
                 } else {
-                    const list = em?.events || [];
-                    slide.showEvent(prev.eventIndex, { eventList: list });
+                    if (em?.switchStoryArchiveSource) {
+                        await em.switchStoryArchiveSource(prev.archiveSource);
+                    }
+                    const list = Array.isArray(prev.eventList) ? prev.eventList : (em?.events || []);
+                    slide.showEvent(prev.eventIndex, {
+                        eventList: list,
+                        presentationArchiveSource: prev.presentationArchiveSource || undefined,
+                    });
                 }
             } finally {
                 slide._slideHistoryRestoring = false;

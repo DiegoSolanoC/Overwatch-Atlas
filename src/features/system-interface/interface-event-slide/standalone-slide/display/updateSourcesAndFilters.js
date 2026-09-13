@@ -17,6 +17,7 @@
 
 
 import { isYouTubeSourceUrl, parseYouTubeVideoId } from '../sources/youtubeSourceUtils.js';
+import { resolveEventSlideArchiveSource } from '../resolveEventSlideArchiveSource.js';
 
 import { isPdfSourceUrl, pdfSourceKey } from '../sources/pdfSourceUtils.js';
 
@@ -134,11 +135,11 @@ function createSourceMediaPlayButton(slide, label, mediaKind, mediaKey, onPlay) 
 
 export async function runUpdateSourcesAndFilters(slide, event) {
 
-            const archiveSrc = window.eventManager?.dataService?.getArchiveSource?.() || 'story';
+            const archiveSrc = resolveEventSlideArchiveSource(slide);
 
-            const showingDockStoryEvent = !!slide._presentationFromDockTimeline;
+            const showingDockStoryEvent = archiveSrc === 'story' && !!slide._presentationFromDockTimeline;
 
-            if (archiveSrc !== 'story' && !showingDockStoryEvent) {
+            if (archiveSrc !== 'story') {
 
                 const ss = document.getElementById('eventSourcesSection');
 
