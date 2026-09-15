@@ -6643,6 +6643,20 @@
       ]
     },
     {
+      "name": "Incurable",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -18.4554963,
+      "lon": 29.7468414,
+      "image": "",
+      "cityDisplayName": "Zimbabwe",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Ye Anran is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
@@ -9779,6 +9793,20 @@
         "Chronal Uncertainty",
         "Time Travel"
       ]
+    },
+    {
+      "name": "Sacrifice",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 64.3984222,
+      "lon": -17.3178863,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Shimada Takedown",
@@ -14922,7 +14950,13 @@
       "yearStart": 2070,
       "yearEnd": 2077,
       "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
