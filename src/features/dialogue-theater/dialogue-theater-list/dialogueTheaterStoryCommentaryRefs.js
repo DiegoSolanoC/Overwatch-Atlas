@@ -85,7 +85,7 @@ export function buildDialogueCommentaryUsageIndex(events) {
     events.forEach((event, eventIndex) => {
         if (!event || typeof event !== 'object') return;
 
-        for (const entry of getEventCommentaryEntries(event)) {
+        for (const entry of getEventCommentaryEntries(event, { stamp: false })) {
             indexEntry(entry, {
                 eventIndex,
                 variantIndex: 0,
@@ -97,7 +97,7 @@ export function buildDialogueCommentaryUsageIndex(events) {
         const variants = Array.isArray(event.variants) ? event.variants : [];
         variants.forEach((variant, variantIndex) => {
             if (!variant || typeof variant !== 'object') return;
-            for (const entry of getEventCommentaryEntries(variant)) {
+            for (const entry of getEventCommentaryEntries(variant, { stamp: false })) {
                 indexEntry(entry, {
                     eventIndex,
                     variantIndex,
@@ -370,7 +370,8 @@ export function mountDialogueTheaterStoryCommentaryRefs(host, conversation) {
 
     if (!conversation || isChatterEntry(conversation)) return;
 
-    invalidateDialogueCommentaryUsageIndex();
+    // Keep the usage index cached across opens — rebuilding scans every story
+    // event and was stalling dialogue entry open (chatters skip this path).
     const refs = lookupDialogueCommentaryUsage(conversation);
     if (!refs.length) return;
 

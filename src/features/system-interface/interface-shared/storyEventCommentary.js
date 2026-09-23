@@ -109,13 +109,16 @@ export function serializeCommentaryEntries(entries) {
 
 /**
  * @param {unknown} event
+ * @param {{ stamp?: boolean }} [options]
  * @returns {CommentaryEntry[]}
  */
-export function getEventCommentaryEntries(event) {
+export function getEventCommentaryEntries(event, options = {}) {
     if (!event || typeof event !== 'object') return [];
     const entries = normalizeCommentaryEntries(
         /** @type {{ commentary?: unknown }} */ (event).commentary,
     );
+    // Index / bulk scans must stay cheap — skip soft-resolve stamping there.
+    if (options.stamp === false) return entries;
     // Stamp ids + refresh drifted chatter labels whenever theater data is loaded,
     // so speaker chips / play / route work even before the JSON is re-saved.
     const conversations = dialogueTheaterDataService?.conversations;

@@ -144,7 +144,8 @@ async function onConversationPathChange(pathId, options = {}) {
     if (!activeConversationId) return;
     stopDialogueTheaterViewPlayback();
     dialogueTheaterDataService.updateConversation(activeConversationId, { selectedPathId: pathId });
-    await dialogueTheaterDataService.save({ silent: true });
+    // Persist in the background — awaiting a full conversations.json write stalls the UI.
+    void dialogueTheaterDataService.save({ silent: true });
     const row = dialogueTheaterDataService.getConversationById(activeConversationId);
     if (!row) return;
 
@@ -487,20 +488,20 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
         const pathId = pickConversationPathForCharacterFilters(row, characterFilters, manifestHeroes);
         if (pathId) {
             dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-            await dialogueTheaterDataService.save({ silent: true });
+            void dialogueTheaterDataService.save({ silent: true });
             row = dialogueTheaterDataService.getConversationById(conversationId) || row;
         }
     } else if (!options.startEditing && !playLineId && usesStandardRandomRoutePlay(row)) {
         const pathId = pickRandomConversationPathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-        await dialogueTheaterDataService.save({ silent: true });
+        void dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 
     if (!options.startEditing && !playLineId && isPeriodicTableConversation(row) && characterFilters.length === 0) {
         const pathId = pickRandomPeriodicTablePathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-        await dialogueTheaterDataService.save({ silent: true });
+        void dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 

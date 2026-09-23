@@ -11,7 +11,13 @@
       "yearStart": 2003,
       "yearEnd": null,
       "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zimbabwe",
+          "country": "Zimbabwe,",
+          "reasoning": "Tamuka Yeukai is Born"
+        }
+      ],
       "headlines": [],
       "sources": [],
       "heroFilterPlaces": [
@@ -9804,7 +9810,13 @@
       "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
       "yearEnd": null,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -17093,7 +17105,7 @@
       "name": "Venture's Adventures",
       "locationType": "earth",
       "cityDisplayName": "Shambali Monastery, Nepal",
-      "description": "No description available.",
+      "description": "Sloan had seen a lot in their travels as part of the Wayfinders, from the rare Vanadium Cache in Petra, where they got to keep some small fragments that they used on a decorative pet rock called Rosetta, to a mysterious disc with an eye symbol that kept appearing in a lot of the placed they visited all around the world, and to make matters worse it seemed that the Wayfinders weren't the only ones looking to retrieve the lost artifacts of the old world, as looters, scavengers and master thieves would often trail Way finder expeditions to find and smuggle the treasure behind their backs.\n\nIt started in Cairo while Sloan was researching an old canopic jar decorated with Anubis' head on its top, but as the expedition team dug deeper in the ruins of the Giza plateau, they completely lost the item in their inventory. Sloan pressured further, fearless as ever and more than willing to deal with any troublemakers taking valuable artifacts as their own. Studying the reliefs at the dig site leads Sloan to a possible connection to the Nepalese mountains, as if someone could have taken the relic away from Egypt and into the Himalayas. Following the track of the thieves led Venture all the way to the nearby villa at the foot of the Shambali monastery, where the local monks were kind enough to direct them to a nearby mining operation in the mountains. After a lot of careful digging, Sloan managed to break into a hidden Talon facility, where multiple agents awaited with the stolen goods.\n\nAs the security systems alerted the rest of the staff, the Talon troopers attempted to flee, firing at Venture to buy themselves time, but Sloan was daring enough to chase through their bullets using the Excavator's hard light shielding, using the drill to quickly dodge through the heavy fire and blast their way into the depths of the hide-out, where unleashing a tectonic shock from the drill's heavy-duty modules knocked down the Talon agents as they planned to leave. Venture retrieved the artifact safe and sound, and drilled their way out of the base before Talon could catch them. Still, with the increasingly strange findings around the world, the continuous Talon attacks near the Temple of Anubis and the repeated cases of smugglers breaking into expeditions, it was clear there was more to a lot of these digsites than what laid on the surface, a conspiracy of sorts that was waiting to be discovered, and Sloan was up to solve the mystery.",
       "image": "",
       "lat": 28.3949,
       "lon": 84.124,
@@ -17103,35 +17115,51 @@
         {
           "locationName": "Shambali Monastery, Nepal",
           "country": "Nepal",
-          "reasoning": ""
+          "reasoning": "Venture retrieves a stolen artifact from Talon base"
+        },
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "A lost artifact goes missing from a Wayfinder expedition",
+          "lat": 30.0444,
+          "lon": 31.2357
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Venture",
-          "reasoning": ""
+          "reasoning": "Follows the trail into the Himalayas and confronts Talon on their own"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Wayfinder Society,",
-          "reasoning": ""
+          "reasoning": "Continue to encounter smugglers and thieves"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Loots Wayfinder research for their own profit"
         },
         {
           "locationName": "",
           "country": "Shambali Order,",
-          "reasoning": ""
+          "reasoning": "Aids Venture in finding the thieves"
+        },
+        {
+          "locationName": "",
+          "country": "The Chernobog Conspiracy,",
+          "reasoning": "A mysterious disct with the Eye Symbol of Chernobog is found in several places around the world"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Ancient Egyptian relic stolen from Wayfinder's research site",
+        "Talon operation discovered near the Shambali Monastery",
+        "Cryptic Eye symbol spotted in 10 countries across 4 continents"
+      ],
       "sources": [
         {
           "text": "Venture's Adventures",
@@ -17141,7 +17169,7 @@
     },
     {
       "name": "Stolen Gauntlet",
-      "description": "No description available.",
+      "description": "On Unity Day, the Oladeles left their apartment and headed to the airport, but the congested streets delayed their cab. Tension was building in Numbani between Humans and Omnics, as rumors of possibly postponing the event due to anonymous threats caused citizens to show up regardless and crowd the streets, keeping the city's security busy all day. As the family waited at the terminal for their flight to Brazil, Efi passed the time playing on her laptop when all of a sudden the screen flickered, leaving a ghostly magenta image. All wireless connections blinked out except for one, 344X-Azucar, which disappeared before Efi could connect. It was the same day the Doomfist gauntlet arrived to be escorted to the Numbani Heritage museum, but as Efi saw the guards retrieve the cargo, multiple explosions could be heard throughout the terminal.\n\nAs the rubble settled, Efi was dazed but not injured, seeing the OR15 units deployed to deal with the attack. Efi saw people hurt during the chaos, but her mom told her to stay still and let the Idinas handle it. Instead, Efi took a Junie drone to explore the chaos remotely, where she found none other than Akande Ogundimu, effortlessly wrecking the entire OR15 troop that was meant to stop him. Hoping to distract him, Efi had her Junie display a hologram of Akinjide Adeyemi, catching Akande off guard at the sight of his dead mentor, but it didn't take long for him to realize what was going on and destroy the nearby Junie. Akande completely leveled the city's defenses all on his own, taking back the gauntlet and vanishing. A couple of weeks later, he rescued him at Peace Park, where he shattered a statue of Gabrielle Adawe, giving a speech denouncing Numbani's ideals of unity, and saying that Omnic acceptance was making the people weak, but that with him back, Numbani now had a shepherd that will keep wolves at bay. Regardless of his actual beliefs, it was clear he intended to spread fear and discord amongst the people of Numbani.\n\nEfi and her family were interviewed by the Numbani Civic Department following the attack, where Efi gave them the captured footage which later circulated through Atlas News. After the shock from the attack, however, the only question going through Efi's mind was what was next. Numbani had lost its defenders and a mastermind criminal was tormenting the city once more, and it looked like the government completely gave up on the Idina program, scrapping it following the attack. Looking at the remains of the Idinas and knowing she still had the installments from the genius grant intact, she asked the officials if she could buy the destroyed OR15s. While the officers refused, thinking the machines would be too dangerous and expensive for a child, one of them slipped an address, which turned out to be an auction house where the government planned to sell the scrapped inventory. Efi had built robots to help people all her life, but seeing the attack at the airport first hand made her realize she needed to make something greater, a true guardian of Numbani, someone who could keep everyone safe.",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
       "lat": 12.0022,
@@ -17163,7 +17191,7 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": "",
+          "reasoning": "Doomfist steals the gauntlet at Numbani's Airport",
           "lat": 12.0022,
           "lon": 8.5919
         }
@@ -17172,19 +17200,24 @@
         {
           "locationName": "",
           "country": "Doomfist, Orisa",
-          "reasoning": ""
+          "reasoning": "Doomfist destroys the entire OR15 troop"
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": "Hacks through the Airport's security"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Recovers the gauntlet"
         },
         {
           "locationName": "",
           "country": "Numbani City of Harmony,",
-          "reasoning": ""
+          "reasoning": "Tension grows between Humans and Omnics"
         }
       ],
       "yearEnd": null,
@@ -17195,13 +17228,25 @@
           "reasoning": ""
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Unity Day parade postponed following Doomfist's attack",
+        "Government to decomission the Idina program due to failure to stop Doomfist",
+        "Doomfist preaches in Numbani after destroying Adawe's statue"
+      ],
+      "commentary": [
+        {
+          "name": "Doomfist · Numbani — Just as sheep must have a shepherd, Numbani must have me.",
+          "label": "Shepherd",
+          "theaterId": "chatter-doomfist",
+          "lineId": "38a8d257-315d-42a7-b150-31fdc85bce32"
+        }
+      ]
     },
     {
       "name": "Curse Breaker",
       "locationType": "earth",
       "cityDisplayName": "Tokyo, Japan",
-      "description": "No description available.",
+      "description": "The Yokai Gang continues to disrupt Hashimoto Operations in the Kanezaka district, getting bolder by attacking them directly, sinking their party boats and taking down several grunts by themselves. Guarded under the Fox Anima's power, it allowed them to even the ground against the untrained Hashimoto failing to use their own Anima properly. After enough failures at catching the teenagers, the elders of the clan had enough of Kuroura's incompetence, and decided to take action.\n\nMizuki was still a bit young to take part in most clan activities, but he was not much older than the Yokai members, which made him a great choice to spy on them. When the clan assigned him to infiltrate the group, he decided to visit Toshiro one last time, looking for advice. He was not too keen on hurting the innocent, especially kids, most of them younger than him, but at the same time, after years of ruthless training at the hands of Lady Shion, he was too afraid of what would happen if he failed, even worse if he decided to abandon his duties, as Toshiro suggested him do.\n\nThe wise old man recognized his inner struggle, but he saw this as an opportunity for Mizuki to start a clean slate, make friends and grow more confident he could escape the curse he said plagued his family. To help him out, he offered one final gift. An Anima Kusarigama, of the highest quality, one he made in secret while everyone in the clan thought he had merely lost his touch after all these years. The weapon was meant to protect Mizuki from any harm: A spiritual barrier that would allow him to break the curses that haunted his mind, and find a new place in the world, a Kekkai. Mizuki was scared of what would happen, but he took Toshiro's gift and embarked to Kanezaka, where he was to become a brand-new man.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -17211,7 +17256,7 @@
         {
           "locationName": "Tokyo, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Mizuki is sent to Infiltrate the Yokai",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
@@ -17220,28 +17265,25 @@
         {
           "locationName": "",
           "country": "Mizuki,",
-          "reasoning": ""
+          "reasoning": "Sent to become a spy for the Hashimoto"
         },
         {
           "locationName": "",
           "country": "Shion,",
-          "reasoning": ""
+          "reasoning": "Agrees with the elders to let Mizuki become a mole"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
+          "country": "Hashimoto Clan, Yokai Gang,",
+          "reasoning": "The Kanezaka Branch struggles to handle the Yokai Gang"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Yokai gang sinks Hashimoto party boat"
+      ],
       "sources": [
         {
           "text": "Curse Breaker",
@@ -17256,7 +17298,12 @@
         {
           "locationName": "",
           "country": "Toshiro,",
-          "reasoning": ""
+          "reasoning": "Gifts Mizuki an Anima weapon for him to forge his own path"
+        },
+        {
+          "locationName": "",
+          "country": "Kuroura,",
+          "reasoning": "Elders sent help to Kanezaka as a way to deal with the Yokai"
         }
       ]
     },
@@ -17264,7 +17311,7 @@
       "name": "Stone by Stone",
       "locationType": "earth",
       "cityDisplayName": "Suravasa, India",
-      "description": "No description available.",
+      "description": "Following the controversies in Rio, Vishkar decided to scale back his projects temporarily until the matter was resolved or died down. DocuSign instead on Indian-based projects. It was all the more inopportune than when development near Roshani triggered tremors in the area, damaging the nearby Temples in Suravasa and collapsing a statue of Aurora that lay inside. This PR nightmare threatened Vishkar's development rights in his own homeland and to handle the matter carefully, Sanjay Korpal suggested having Satya volunteer, pointing to her background as a girl from a small village. The plan was simple: give the villagers what they wanted, no matter the cost, it would be nothing compared to the financial loss that could follow otherwise. But satisfying the villagers wouldn't be an easy task, given the religious and cultural importance of Aurora in the area, they wouldn't just want monetary compensation, but Satya was ordered to make whatever they wanted to happen.\n\nWhen Symmetra arrived at Suravasa, the crowd was antagonistic, and even the head of the local government stated they wanted nothing to do with Vishkar. Still, they granted her access to the temple, guided by none other than Tekhartha Zenyatta, who was in the middle of his pilgrimage. While Zenyatta was glad to see Vishkar taking responsibility, he knew it would mean little if it wasn't actually helpful, so he welcomed Satya to stay and get familiar with the culture if it helped her understand the weight of what happened. Despite her concerns and anxiety about the prospect, Satya decides to stay, learns about Aurora and Mondatta, the Iris and the Shamballi faith, bonding with Zenyatta over their trouble understanding figures of speech. Satya was gifted temple robes and while she didn't wear them at first, she was attracted by it as a way to show a genuine desire to learn. Over the following days, Satya spent her time helping clean the rubble, meditating with the monks using a Shamballi orb of perception to enhance her senses and help her adjust to life at the temple. While the people of the village remained antagonistic towards her even days after, Zenyatta stood beside her in silent support.\n\nDuring one of their discussions, the concept of wabi sabi and kintsugi came up. The Japanese ideals of appreciating imperfection and making art from broken pieces gave Satya an idea of what she needed to do. Over the following days, she convinced the laborers to help her reassemble Aurora's statue, which she held together with golden hard light on its cracks. When it was done, it was publicly unveiled to both Vishkar and the locals, striking awe into the crowd at the now repaired and arguably improved statue. On her departure, Zenyatta gifted her incense, stating she was welcome to visit again any time. While Sanjay was impressed with her performance, he questioned the use of yellow Hardlight instead of the company's blue. Satya explained how she found the blue beautiful, but cold and unfitting of a temple dedicated to Aurora, and her acts of love. Satya's time with the monks opened her mind to new perspectives, making her realize that in order to truly help the world they needed to meet eye to eye with the people they preached to help, and understand their needs, acting with respect towards each other. While Sanjay sympathized with her optimism, deep down he knew the darkness in which Vishkar meddled, and that he was in no position to follow these teachings. But for Satya, this was an open door to seeing beyond Vishkar's narrow-minded vision.",
       "image": "",
       "lat": 23.2599,
       "lon": 77.4126,
@@ -17274,7 +17321,7 @@
         {
           "locationName": "Suravasa, India",
           "country": "India",
-          "reasoning": "",
+          "reasoning": "Vishkar development results in Tremors near Suravasa",
           "lat": 23.2599,
           "lon": 77.4126
         }
@@ -17283,23 +17330,27 @@
         {
           "locationName": "",
           "country": "Symmetra, Zenyatta",
-          "reasoning": ""
+          "reasoning": "Satya is taken in by Zenyatta to learn about the local culture and their needs"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Shambali Order,",
-          "reasoning": ""
+          "reasoning": "Aurora's statue is destroyed in the tremors"
         },
         {
           "locationName": "",
           "country": "Vishkar Corporation,",
-          "reasoning": ""
+          "reasoning": "Symmetra is sent to fix the issue, repairing the statue in a new way"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Vishkar development causes Tremors in Roshani",
+        "Shambali Temples and Aurora statue affected by Vishkar construction",
+        "Architeth Satya Vaswani unveils the new version of Aurora's statue"
+      ],
       "sources": [
         {
           "text": "Stone by Stone",
@@ -17310,7 +17361,7 @@
         {
           "locationName": "",
           "country": "Sanjay,",
-          "reasoning": ""
+          "reasoning": "Suggests Satya be the one to handle the issue"
         }
       ]
     },
@@ -17318,7 +17369,7 @@
       "name": "Idina Unit OR15A Goes Online",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
+      "description": "In the months following the airport attack, Efi burnt through her Genius Grant, her savings, multiple donations and money from everything she sold, all t work on her new passion project, the defender of Numbani. Using the OR15 parts, she salvaged alongside more advanced parts like a Branford arm, a fusion driver and a miniature Tobelstein reactor for graviton generation. She also used an Axiom vocal processor with clips from her mother, grandmother, her calculus teacher and Gabrielle Adawe's recordings, all synthesized together into a new warm personality.\n\nOn May 9th of 2078, the modified Idina Unit OR15 went online, to which Efi named her Orisa, after the deities of the Yoruba faith. A robot with the power of the most advanced military machines but the heart and compassion of a young girl",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -17328,7 +17379,7 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": "",
+          "reasoning": "Idina Unit OR15A goes online",
           "lat": 12.0022,
           "lon": 8.5919
         }
@@ -17337,19 +17388,19 @@
         {
           "locationName": "",
           "country": "Orisa",
-          "reasoning": ""
+          "reasoning": "Idina Unit OR15A goes online"
         },
         {
           "locationName": "",
           "country": "Sojourn, Reinhardt,",
-          "reasoning": ""
+          "reasoning": "Used as examples for Orisa to strive for"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Numbani City of Harmony,",
-          "reasoning": ""
+          "reasoning": "Has to endure the early stages of Orisa's development"
         }
       ],
       "yearEnd": null,
@@ -17357,15 +17408,17 @@
         {
           "locationName": "",
           "country": "Efi,",
-          "reasoning": ""
+          "reasoning": "Rushes to build Orisa to help Numbani"
         },
         {
           "locationName": "",
           "country": "Adawe,",
-          "reasoning": ""
+          "reasoning": "Used as part of Orisa's vocal samples"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Repurposed OR15 causes car accident while helping an old lady cross the street."
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Orisa",
@@ -17635,79 +17688,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Hero of Numbani",
-      "locationType": "earth",
-      "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
-      "image": "",
-      "lat": 12.0022,
-      "lon": 8.5919,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "",
-          "lat": 12.0022,
-          "lon": 8.5919
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Orisa, Doomfist,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lúcio, Sojourn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Numbani City of Harmony,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Hero of Numbani",
-          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
-        }
-      ]
-    },
-    {
-      "name": "Meeting your Heroes",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
-      "image": "",
-      "cityDisplayName": "Toronto, Canada",
-      "yearStart": 2078,
-      "yearEnd": null,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Toronto, Canada",
-          "country": "Canada",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": []
     },
     {
       "name": "Sending a Message",
@@ -18000,6 +17980,58 @@
       ]
     },
     {
+      "name": "Hero of Numbani",
+      "locationType": "earth",
+      "cityDisplayName": "City State of Numbani",
+      "description": "No description available.",
+      "image": "",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Orisa, Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Lúcio, Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ]
+    },
+    {
       "name": "Answering the Call",
       "locationType": "earth",
       "cityDisplayName": "Eichenwalde Castle, Germany",
@@ -18053,6 +18085,27 @@
         "Answer the recall",
         "What is left"
       ]
+    },
+    {
+      "name": "Meeting your Heroes",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
+      "image": "",
+      "cityDisplayName": "Toronto, Canada",
+      "yearStart": 2079,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "The Plan",
@@ -21321,7 +21374,7 @@
     },
     {
       "name": "Shelter",
-      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it. \n\nOn the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.\n\nThe team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated, however, Vivian received news from the IJC. The UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast.",
+      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it.\n\nOn the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.The team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated and ready to rest, Vivian received news from the IJC. \n\nThe UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast. The next day Sojourn withheld the news from the IJC fearing this would affect team morale, and knowing they had to give it their all against Talon, instead she selected a handful agents to be on standby for deployment, while everyone else should co-ordinate with Winston. Efi, ever optimistic began to ponder what it would take to repair Gibraltar's systems if they ever got to return, but it was here where Winston finally broke the news of Athena's loss, and how even if they ever saw to take back the base, it would never be the same again. Torbjörn, seeing the pain of the team and being quite hurt by the attack as an Ex Overwatch member, decided to personally help Overwatch fight back, aiming to one day rebuild Gibraltar together.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -21337,7 +21390,10 @@
           "reasoning": "Overwatch retrieves to the Ironclad Workshop"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Numbani celebrates Overwatch's survival",
+        "Rome officials told to arrest any Overwatch agents on sight"
+      ],
       "sources": [
         {
           "text": "Overwatch Undivided",
@@ -22812,6 +22868,55 @@
       ]
     },
     {
+      "name": "Castaway",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 28.9999625,
+      "lon": 125.0000442,
+      "image": "",
+      "cityDisplayName": "Busan, South Korea",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Busan, South Korea",
+          "country": "South Korea",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Left Behind",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Wrecking Ball,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Junker Monarchy,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Homecoming",
       "description": "No description available.",
       "locationType": "earth",
@@ -22874,55 +22979,6 @@
         {
           "locationName": "",
           "country": "Efi,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Castaway",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 28.9999625,
-      "lon": 125.0000442,
-      "image": "",
-      "cityDisplayName": "Busan, South Korea",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Busan, South Korea",
-          "country": "South Korea",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Left Behind",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2d7de75525d55005/6a7b7bc46cec0dae03b13f1a/OW_Junkers_FNL_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=O-2h2x0NrhQ"
-          ]
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Wrecking Ball,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Junker Queen,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Junker Monarchy,",
           "reasoning": ""
         }
       ]

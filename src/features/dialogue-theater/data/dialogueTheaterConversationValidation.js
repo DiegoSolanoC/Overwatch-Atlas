@@ -185,11 +185,32 @@ export function isUnknownDialogueHero(hero) {
 }
 
 /**
+ * Line ids referenced by any path (empty if the conversation has no paths).
+ *
+ * @param {import('./DialogueTheaterDataService.js').DialogueConversation} conversation
+ * @returns {Set<string>}
+ */
+function conversationPathLineIds(conversation) {
+    /** @type {Set<string>} */
+    const ids = new Set();
+    const paths = Array.isArray(conversation?.paths) ? conversation.paths : [];
+    for (let i = 0; i < paths.length; i += 1) {
+        const lineIds = Array.isArray(paths[i]?.lineIds) ? paths[i].lineIds : [];
+        for (let j = 0; j < lineIds.length; j += 1) {
+            const id = String(lineIds[j] || '').trim();
+            if (id) ids.add(id);
+        }
+    }
+    return ids;
+}
+
+/**
  * @param {import('./DialogueTheaterDataService.js').DialogueLine} line
  * @param {string[]|Set<string>} voicelines
+ * @param {{ pathLineIds?: Set<string> }} [options]
  * @returns {boolean}
  */
-export function dialogueLineMissingVoice(line, voicelines = []) {
+export function dialogueLineMissingVoice(line, voicelines = [], options = {}) {
     const stored = String(line?.voice || '').trim();
     if (stored) {
         if (voicelines instanceof Set) return !voicelines.has(stored);
@@ -201,7 +222,18 @@ export function dialogueLineMissingVoice(line, voicelines = []) {
         return false;
     }
     // Text with no assigned file counts as unfinished.
-    return Boolean(String(line?.subtitles || '').trim());
+    if (Boolean(String(line?.subtitles || '').trim())) return true;
+    // Path answer stubs (Favorite Animals Emre / Wrecking Ball): known hero, empty voice+subtitles.
+    const pathLineIds = options.pathLineIds;
+    if (
+        pathLineIds instanceof Set &&
+        pathLineIds.size > 0 &&
+        pathLineIds.has(String(line?.id || '').trim()) &&
+        !isUnknownDialogueHero(line?.hero)
+    ) {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -230,11 +262,13 @@ export function conversationHasUnfinishedIssues(conversation, voicelines = [], d
             ? voicelines
             : new Set(Array.isArray(voicelines) ? voicelines : []);
 
+    const pathLineIds = conversationPathLineIds(conversation);
+    const voiceOpts = { pathLineIds };
     const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     for (let i = 0; i < lines.length; i += 1) {
         const line = lines[i];
         if (isUnknownDialogueHero(line?.hero)) return true;
-        if (dialogueLineMissingVoice(line, voiceSet)) return true;
+        if (dialogueLineMissingVoice(line, voiceSet, voiceOpts)) return true;
     }
     return false;
 }
@@ -268,6 +302,8 @@ export function conversationUnfinishedSummary(
             ? voicelines
             : new Set(Array.isArray(voicelines) ? voicelines : []);
 
+    const pathLineIds = conversationPathLineIds(conversation);
+    const voiceOpts = { pathLineIds };
     const lines = Array.isArray(conversation?.lines) ? conversation.lines : [];
     let unknownCount = 0;
     let missingVoiceCount = 0;
@@ -275,7 +311,7 @@ export function conversationUnfinishedSummary(
     for (let i = 0; i < lines.length; i += 1) {
         const line = lines[i];
         if (isUnknownDialogueHero(line?.hero)) unknownCount += 1;
-        if (dialogueLineMissingVoice(line, voiceSet)) missingVoiceCount += 1;
+        if (dialogueLineMissingVoice(line, voiceSet, voiceOpts)) missingVoiceCount += 1;
     }
 
     if (unknownCount > 0) {

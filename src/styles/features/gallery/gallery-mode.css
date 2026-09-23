@@ -2046,6 +2046,8 @@ body:has(#paginationDock):has(#atlasGalleryHost) .gallery-hero-filters:not(.gall
     position: absolute;
     left: 0;
     top: 100%;
+    /* Hide subpixel gap between portrait and band under transform/browser zoom */
+    margin-top: -1px;
     z-index: 8;
     width: 100%;
     height: auto !important;

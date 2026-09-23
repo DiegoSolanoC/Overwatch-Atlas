@@ -35,7 +35,7 @@
 /* Story */
 @import url('features/story/hero.css?v=9');
 @import url('features/story/story-viewer.css?v=83');
-@import url('features/gallery/gallery-mode.css?v=92');
+@import url('features/gallery/gallery-mode.css?v=93');
 @import url('features/dialogue-theater/dialogue-theater-list.css?v=21');
 @import url('features/dialogue-theater/dialogue-theater-stage.css?v=22');
 @import url('features/dialogue-theater/dialogue-theater-edit-panel.css?v=22');
@@ -51,8 +51,8 @@
 @import url('features/event-system/news-ticker.css?v=10');
 
 /* Event system panels */
-@import url('features/event-system/panels/event-slide.css?v=45');
-@import url('features/event-system/panels/filters.css?v=15');
+@import url('features/event-system/panels/event-slide.css?v=46');
+@import url('features/event-system/panels/filters.css?v=16');
 @import url('features/music/panels/music.css?v=29');
 @import url('features/event-system/panels/events-manage.css?v=30');
 @import url('features/event-system/panels/story-events-merge.css?v=6');

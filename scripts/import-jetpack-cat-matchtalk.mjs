@@ -17,14 +17,14 @@ import { stripDialogueSubtitleMarkup } from '../src/features/dialogue-theater/da
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, '..');
 
-const DEFAULT_EXTRACT = path.join(
-    process.env.USERPROFILE || '',
-    'OneDrive',
-    'Escritorio',
-    'ow models',
-    'HeroVoice',
-    'Jetpack Cat',
-);
+const DEFAULT_EXTRACT_CANDIDATES = [
+    process.env.HEROVOICE_JETPACK,
+    'D:\\ow models\\HeroVoice\\Jetpack Cat',
+    path.join(process.env.USERPROFILE || '', 'OneDrive', 'Escritorio', 'ow models', 'HeroVoice', 'Jetpack Cat'),
+].filter(Boolean);
+
+const DEFAULT_EXTRACT =
+    DEFAULT_EXTRACT_CANDIDATES.find((p) => fs.existsSync(p)) || DEFAULT_EXTRACT_CANDIDATES.at(-1);
 
 const CONVERSATIONS_PATH = path.join(REPO, 'src/data/dialogue-theater/conversations.json');
 const MANIFEST_PATH = path.join(REPO, 'src/data/dialogue-theater/theater-assets-manifest.json');

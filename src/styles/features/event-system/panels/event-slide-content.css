@@ -453,17 +453,16 @@
     border-radius: 10px 10px 0 0;
 }
 
-/* Portaled hover labels (body) — escape scrollport + chip transform */
-body > .filter-label.event-slide-filter-label--floating {
-    position: fixed !important;
-    z-index: 10050 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: none !important;
-    overflow: visible !important;
-    white-space: nowrap;
-    color: #0f2840;
+/* Keep label glued under the portrait (filter-menu pattern) — no body portal */
+.event-slide-scrollable .event-slide-filter-token-chip.gallery-hero-filters__chip.filter-btn .filter-label {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: -1px; /* hide scale/zoom hairline between tile and band */
     background: #fff !important;
+    color: #0f2840;
+    border-radius: 0 0 10px 10px;
+    pointer-events: none;
 }
 
 .event-relevant-locations-section .event-slide-filter-token-chip--flag .filter-image-container img {
