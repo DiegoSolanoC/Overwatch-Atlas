@@ -21835,51 +21835,6 @@
       ]
     },
     {
-      "name": "Living Weapon",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 29.5918,
-      "lon": 52.5836,
-      "image": "",
-      "cityDisplayName": "Oasis University, Iraq",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Oasis University, Iraq",
-          "country": "Iraq",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Website, Sigma",
-          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sigma,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Expanding Operations",
       "description": "No description available.",
       "locationType": "earth",
@@ -22812,6 +22767,51 @@
       ]
     },
     {
+      "name": "Living Weapon",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 29.5918,
+      "lon": 52.5836,
+      "image": "",
+      "cityDisplayName": "Oasis University, Iraq",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oasis University, Iraq",
+          "country": "Iraq",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Sigma",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/sigma/"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sigma,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Left Behind",
       "description": "No description available.",
       "locationType": "earth",
@@ -22866,6 +22866,28 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Chimera Warriors",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Castaway",
@@ -23114,6 +23136,50 @@
           "reasoning": ""
         }
       ]
+    },
+    {
+      "name": "Reclaiming Gibraltar",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
+      "headlines": [],
+      "sources": []
+    },
+    {
+      "name": "Precipice of Glory",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": []
     }
   ]
 }
