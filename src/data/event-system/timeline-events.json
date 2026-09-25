@@ -16565,6 +16565,116 @@
       ]
     },
     {
+      "name": "Searching",
+      "locationType": "earth",
+      "cityDisplayName": "Saint Petersburg, Northwestern Federal District, Russia",
+      "description": "Aleksandra Zaryanova, Russia's strongest soldier and a key player on the Siberian front, was suddenly called to Volskaya Industries. While she thought that she knew what this meeting would be about, perhaps some success in the war or a new military strategy, she was completely confused when Katya explained the nature of her next mission, to track down the hacker Sombra. Zarya found herself unfit for this mission. What they needed was a spy, but Katya reassured her that what she needed was a friend. In reality, Katya knew involving someone more experienced could compromise the truth Sombra knew reaching the ears of the government, compared to what would happen if a soldier, especially one as loyal as Zarya, found out.\n\nOver multiple weeks, Zarya was sent to multiple places in the world following any leads on the hacker that they could find: in Lijiang Tower, where Lucheng couldn't find a trace of hacking in their firewalls, in Hanamura where contacts in the Hashimoto Clan had no idea about this entity in the criminal underworld, and then in London where the local police collaborated interrogating suspects, hoping Volskaya would send some mechs as compensation. Everywhere Zarya went, there was no clue about who Sombra was, in spite of the massive hacking sprees that had happened across the world for years. \n\nSeeing little progress and the growing frustration in her soldier, Katya arranged a meeting with a local hacker in Numbani. A city full of Omnics made Zarya's skin crawl given how much she resented their kind, but It all got worse when her contact turned out to be an Omnic themselves. Lynx 17, was a hacker who had been investigating what they called the Sombra Collective for years. While Zarya was not at all happy to work with an Omnic, she knew it had to be for her country. She told Lynx that the hacker wasn't a group but rather a single woman, to which Lynx narrowed down how to track her.",
+      "image": "",
+      "lat": 59.9606739,
+      "lon": 30.1586551,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Saint Petersburg, Northwestern Federal District, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Saint Petersburg, Russia",
+          "country": "Russia",
+          "reasoning": "Katya Voslkaya Calls Zarya in to track down Sombra"
+        },
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": "Zarya visits Lucheng to see if they knew of the Hacker"
+        },
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Zarya contacts the Hashimoto to track Sombra in the criminal underworld",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Zarya is helped by local police to profile suspects of hacker activity",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        },
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Katya hires a hacker to help Zarya find Sombra",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya,",
+          "reasoning": "Tries and fails to catch Sombra following dead end leads"
+        },
+        {
+          "locationName": "",
+          "country": "Sombra,",
+          "reasoning": "Avoids Volskaya's chase and hacks Lynx 17 in secret"
+        },
+        {
+          "locationName": "",
+          "country": "Orisa,",
+          "reasoning": "Seen learning through Numbani"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Volskaya Industries,",
+          "reasoning": "Brings Zarya in to discretly deal with Sombra and avoid a scandal"
+        },
+        {
+          "locationName": "",
+          "country": "The Sombra Collective,",
+          "reasoning": "Continues a hacking spree without leading trace beyond what Lynx can find"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lynx 17,",
+          "reasoning": "Hired to find the Sombra Collective"
+        },
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": "Orders Zarya to track down Sombra"
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Aids Orisa through Numbani"
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": "Zarya's informat in the Hashimoto"
+        }
+      ],
+      "headlines": [
+        "Sergeant called out of the front by Voslkaya Industries"
+      ],
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+        }
+      ]
+    },
+    {
       "name": "Bastet",
       "description": "The wounds left by the Reaper left Jack in a weakened state, as the necrotic ammunition seemed to counteract the accelerated healing of the SEP serum. As the two ghosts fled Hakim's complex, Jack collapsed from his injuries. When he finally woke up, he was in a military cot at an abandoned Necropolis that Ana had taken as her outpost. Ana had treated his wounds as best as she could, but they refused to heal, and while she suggested visiting Angela's outpost in Cairo, Jack refused as she would not want anything to do with him. Over the following days, Jack stayed at the Necropolis resting and healing, but he finally got to confront Ana for never reaching out after she disappeared. \n\nIn spite of this, Morrison wanted Amari's help in fighting Talon head on, but Ana wanted little to do with Jack's crusade, which was not just about Talon but also against large corporations like Lumérico. She pointed out to him how Hakim exploited the people of Cairo and that dealing with Talon's stranglehold on her country was her first priority, while Morrison insisted on seeing the big picture, and the Talon war was raging in the rest of the world. In the end, the two of them did not see eye to eye, and Morrison stormed out by himself at night. He felt uneasy, as not only was Talon onto him now, but his closest chance at an ally refused to join his cause. That's when Ana surprised him by following his trail. Amari had a deal: If they worked together in taking down Hakim's operations, she would aid him in tracking Reyes and Talon abroad. \n\nIn the coming weeks, they rounded up a number of Hakim's associates, whitening away his organization. While Hakim initially went into hiding, it didn't take long before the soldiers found him and captured him, dismantling what was left of his organization. During this last strike, Ana wore an ancient mask of the goddess Bastet, inspired by Soldier: 76's persona. She had reflected on his time working in the shadows and how this framed her as a hunter, a Shrike. Instead, if she was to come back to the world of the living, she wished to be seen as a protector. As the two left the Necropolis ready to chase the rest of Talon, she left one letter behind for Fareeha, finally letting her know she was alive and explaining why she went into hiding. While she had left most of the artifacts in the Necropolis behind for her contacts with the Wayfinders to collect, she kept the Bastet mask as a reminder of the symbol she wanted to be.",
       "locationType": "earth",
@@ -17431,72 +17541,70 @@
       ]
     },
     {
-      "name": "Waging War",
-      "description": "No description available.",
+      "name": "Sending a Message",
       "locationType": "earth",
+      "cityDisplayName": "Colosseo, Italy",
+      "description": "Vendetta was in the middle of a feast with the other gladiators when the news of Doomfist had successfully murdered Augusto Vialli and taken back control of Talon following his escape from confinement, having waited so long for the moment to strike resulted in the return to power of her biggest detractor. Determined to reclaim her father's legacy, she decided this had to be her moment, no more climbing, no more wasted time on meaningless opponents, her eyes were on the council.\n\nUsing the followers she had amassed at the Colosseo, she began to seize control of multiple assets and territory that once belonged to her father, envisioning a bigger empire than anything Antonio could have ever imagined. She also set up a meeting with a member of the Talon council who sponsored her battles, and when he arrived she had her guards restrain him as she personally executed him.\n\nMarzia sent her a message, and it did not go unnoticed by Talon, as many agents within the organization began to grow concerned about her rise to power. She would have hoped for this fear to also strike Akande, but it seemed as if he did not even flinch, simply moving someone else to take the empty seat. Still, Vendetta wouldn't be discouraged by her opponent making the mistake of looking down on her, she was bound to take over Talon sooner or later, even if she had to kill the council one by one before getting to the man at the top.",
+      "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
-      "image": "",
-      "cityDisplayName": "Rome, Italy",
-      "yearEnd": null,
+      "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Rome, Italy",
+          "locationName": "Colosseo, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Vendetta begins to attack Talon to send a message to Doomfist",
           "lat": 41.8933203,
           "lon": 12.4829321
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Reconcilliation",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
-            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
-          ]
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Ramattra,",
-          "reasoning": ""
+          "country": "Vendetta,",
+          "reasoning": "Kills a council member and reclaims her father's terirotry"
         },
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Widowmaker, Reaper,",
-          "reasoning": ""
+          "reasoning": "Ignores Vendetta's escalating attacks"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
+          "country": "Colosseo Gladiatori,",
+          "reasoning": "Vow to aid Vendetta into her climb for power"
         },
         {
           "locationName": "",
-          "country": "Null Sector,",
-          "reasoning": ""
+          "country": "La Coterie, Talon Empire,",
+          "reasoning": "Grow concern of Vendetta's influence"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Notorious elite goes missing during a visit to the Roman Colosseo",
+        "Attacks on buildings previously belonging to Antonio Bartalotti continue across Italy"
+      ],
+      "sources": [
+        {
+          "text": "A New Empire",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Maximillien,",
-          "reasoning": ""
+          "country": "Magnus, Titus,",
+          "reasoning": "Restraing a council member for his execution"
         }
-      ],
-      "yearStart": 2078
+      ]
     },
     {
       "name": "System Reboot",
@@ -17547,94 +17655,61 @@
       ]
     },
     {
-      "name": "Searching",
+      "name": "Dirty Secrets",
+      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
       "locationType": "earth",
-      "cityDisplayName": "Dorado, Mexico",
-      "description": "No description available.",
-      "image": "",
       "lat": 19.1738,
       "lon": -96.1342,
-      "yearStart": 2078,
+      "image": "",
+      "cityDisplayName": "Dorado",
+      "yearEnd": null,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
           "locationName": "Dorado, Mexico",
           "country": "Mexico",
-          "reasoning": ""
+          "reasoning": "Zarya and Lynx track down Sombra into Dorado"
+        }
+      ],
+      "headlines": [
+        "Zaryanova to return to the Siberian front immediately after recent trip to Mexico",
+        "The people of Mexico protest Portero's exoneration"
+      ],
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Zarya,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Sombra,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Orisa,",
-          "reasoning": ""
+          "country": "Zarya, Sombra,",
+          "reasoning": "Zarya catches Sombra and is told the truth about Volskaya"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
+          "country": "Lumérico Incorporated, Los Muertos,",
+          "reasoning": "Sombra's activity witrh Los Muertos reveals her true location"
+        },
+        {
+          "locationName": "",
           "country": "Volskaya Industries,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Lumérico Incorporated,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Los Muertos,",
-          "reasoning": ""
+          "reasoning": "Continues to profit from the Omnic war in Siberia in secret"
         }
       ],
-      "yearEnd": null,
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lynx 17,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
           "country": "Katya,",
-          "reasoning": ""
+          "reasoning": "Lets Zarya go after she promised to keep the secret"
         },
         {
           "locationName": "",
-          "country": "Portero,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Searching",
-          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+          "country": "Lynx 17,",
+          "reasoning": "Is rescued by Zarya after incapacitated"
         }
       ]
     },
@@ -17642,7 +17717,7 @@
       "name": "Failed Exams",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
-      "description": "No description available.",
+      "description": "Ye Wuyang grew up seeking to uphold his family's legacy, as not only had both of his parents been Fire College graduates who fought during the Omnic Crisis, but his older sister, Anran, was by now the starting student of the faculty and nearly down with her credits. For years, he had prepared for the admission exams with his sister, studying the materials and training in several forms of Kung fu to be in the best shape possible. But in spite of his best efforts, his grades were not enough to make the cutoff in admittance.\n\nThe rejection letter caused a lot of heat within the family, and while they tried to be supportive of Wuyang, he could tell that deep down they were very disappointed and saw him as a waste of potential. Unable to pursue the same field as his family, Wuyang was left wondering what to do next, it did not help that the closest family friend, Ming, while not making it to Fire College either, at least was able to land on Metal College, second to Fire in prestige. However, in spite of not getting accepted into Fire College, his greats were good enough for him to enter Water College instead, at the less prestigious faculty of Wuxing, focused on traditional healing methods and philosophy and how to apply them to the modern world.\n\nGoing into his first-year student year, Wuyang was surprised by how much he enjoyed his medicinal studies. While his classes were not nearly as action-packed and intense as Fire College training, he found them full white, learning about Qi Gong and other similar practices to relax the body and using calming magnetically levitated water to soothe patients and heal their wounds through biotic treatment. But in spite of how comfortable he had grown in his new role as a medic, in the back of his mind he continued to feel like he was the black sheep of the family, and that he needed to find a way to make his parents proud.",
       "image": "",
       "lat": 30.659867,
       "lon": 104.063315,
@@ -17652,21 +17727,26 @@
         {
           "locationName": "Chengdu, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Wuyang fails to enter Fire College like the rest of his family"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Wuyang, Anran",
-          "reasoning": ""
+          "country": "Wuyang,",
+          "reasoning": "Is rejected by Fire College, going into Water College instead"
+        },
+        {
+          "locationName": "",
+          "country": "Anran",
+          "reasoning": "Supports Wuyang in spite of his failute to get into Fire College"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Wuxing University",
-          "reasoning": ""
+          "reasoning": "Does not re consider Wuyang's exams in spite of family pleas"
         }
       ],
       "yearEnd": null,
@@ -17674,10 +17754,12 @@
         {
           "locationName": "",
           "country": "Ming,",
-          "reasoning": ""
+          "reasoning": "Gets accepted into Water College"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Cut off for Wuxing application exams shortens this year with less accepted applications"
+      ],
       "sources": [
         {
           "text": "Against the Tide",
@@ -17690,67 +17772,70 @@
       ]
     },
     {
-      "name": "Sending a Message",
+      "name": "Waging War",
+      "description": "Ramattra spent years silent, watching as the world continued to get worse for Omnics, helping where he could and rallying some support for Null Sector around the world, even if the name continued to be tainted by his failures. He was in London when his master, Mondatta, was assassinated, and while he had grown to resent him and his vision for coexistence, he still couldn't help but mourn his death, even if from a distance.\n\nWhile the years following the uprising were quiet, in reality he had continued production of a new generation of Null Sector machines, one large enough to not only attack multiple cities at once, overwhelming most militaries and equipped with machines that could incapacitate Omnic by putting them in a coma-like state. All of these thanks to years' worth of funding from Talon, and now that Doomfist was back in control, it was time to arrange the preparations for conflict. Ramattra met with Talon once more, taking a seat at the council and outlining the plans of the upcoming invasion and how Talon members were to profit out of it. Vishkar in particular, was set to be one of the largest benefactors from the chaos as any destruction left from the invasion opened new opportunities for development, just like in the days of the Crisis. \n\nIn his time-shared with Talon, Ramattra grew to find them quite a lacking ally. While they provided resources and Intel, they were mired by greed, betrayal and lust for power. He was particularly appalled by Maximilien, an Omnic just like him, but too self-centered to care about his kind, or anything beyond himself and his own riches. He knew well that this partnership with Talon was not meant to last, especially with the growing talks among the ranks of the Gladiator causing trouble for their troops in Rome, and Akande's disregard of the threat made it clear that one day, Talon's troubles would become the world's troubles.",
       "locationType": "earth",
-      "cityDisplayName": "Colosseo, Italy",
-      "description": "No description available.",
-      "image": "",
       "lat": 41.8933203,
       "lon": 12.4829321,
-      "yearStart": 2078,
+      "image": "",
+      "cityDisplayName": "Rome, Italy",
+      "yearEnd": null,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Colosseo, Italy",
+          "locationName": "Rome, Italy",
           "country": "Italy",
-          "reasoning": "",
+          "reasoning": "Ramattra meets with Talon to arrange the Invasion",
           "lat": 41.8933203,
           "lon": 12.4829321
+        }
+      ],
+      "headlines": [
+        "Null Sector cells appear around the world years after the Uprising",
+        "Null Sector leader still missing, who is behind this extremist group?"
+      ],
+      "sources": [
+        {
+          "text": "Reconcilliation",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt2b6d074ccdc0f692/68c0582d5ab1736d29987ea9/OW_Ramattra_EN.pdf",
+            "https://www.youtube.com/watch?v=kQ_y0QcorJ8"
+          ]
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": ""
+          "country": "Ramattra,",
+          "reasoning": "Amases a huge army of warbots to capture all Omnics"
         },
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
+          "reasoning": "Aids in getting Ramattra Resources follwoing his comeback"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Colosseo Gladiatori,",
-          "reasoning": ""
+          "country": "Talon Empire, Null Sector,",
+          "reasoning": "Collaborate on arranging a world wide robot invasion"
         },
         {
           "locationName": "",
-          "country": "La Coterie, Talon Empire,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "sources": [
-        {
-          "text": "A New Empire",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
-          ]
+          "country": "Vishkar Corporation,",
+          "reasoning": "Plans to Profit from the devastatio nof the Invasion"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Magnus, Titus,",
-          "reasoning": ""
+          "country": "Maximillien,",
+          "reasoning": "Gets on Ramattra's Bad Side"
         }
-      ]
+      ],
+      "yearStart": 2078
     },
     {
       "name": "Tangle with Talon",
