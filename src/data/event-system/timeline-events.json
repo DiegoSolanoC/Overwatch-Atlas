@@ -16511,6 +16511,21 @@
       ]
     },
     {
+      "name": "Tear it down",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 51.5074456,
+      "lon": -0.1277653,
+      "image": "",
+      "cityDisplayName": "London, United Kingdom",
+      "yearStart": 2077,
+      "yearEnd": 2079,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
+    },
+    {
       "name": "Old Soldiers",
       "description": "Soldier: 76 was spotted in Egypt, tracking down a local mercenary, the Shriek. This vigilante had been giving Talon problems for the longest time, and every lead took Morrison into the compound of a man named Abdul Hakim, a local crime boss had profited from the aftermath of the crisis for years, paying off the government and the police to turn a blind eye as he rampaged across Cairo's resources. Hakim's influence was in great part thanks to his connections with Talon, and when Jack overheard the voice of none other than Gabriel Reyes through the radio used by Hakim's Guards, he stormed into the facility demanding his presence.\n\nThe ghostly reaper manifested out of thin air and shot Jack in the back with necrotic rounds of his shotgun, leaving him weakened and gaining the upper hand. During their first fight, however, a sniper landed a biotic dart on Jack, providing him with some medical aid and allowing him to fight back through the pain. As their confrontation continued, the Shrike appeared unmasked.\n\nAna Amari had revealed herself as the one messing with Hakim's operations with Talon, and now she gained the upper hand on Reyes, unmasking Jim in the process. The horror from seeing what had become of his body left Ana in shock long enough to allow the Reaper to flee, but now Jack had found his target. Three old soldiers had finally crossed paths once more. Originally close friends, now ghosts, forgotten by the world.",
       "locationType": "earth",
@@ -16562,116 +16577,6 @@
         "Better than Retirement",
         "Hard to Kill",
         "Out of Hand"
-      ]
-    },
-    {
-      "name": "Searching",
-      "locationType": "earth",
-      "cityDisplayName": "Saint Petersburg, Northwestern Federal District, Russia",
-      "description": "Aleksandra Zaryanova, Russia's strongest soldier and a key player on the Siberian front, was suddenly called to Volskaya Industries. While she thought that she knew what this meeting would be about, perhaps some success in the war or a new military strategy, she was completely confused when Katya explained the nature of her next mission, to track down the hacker Sombra. Zarya found herself unfit for this mission. What they needed was a spy, but Katya reassured her that what she needed was a friend. In reality, Katya knew involving someone more experienced could compromise the truth Sombra knew reaching the ears of the government, compared to what would happen if a soldier, especially one as loyal as Zarya, found out.\n\nOver multiple weeks, Zarya was sent to multiple places in the world following any leads on the hacker that they could find: in Lijiang Tower, where Lucheng couldn't find a trace of hacking in their firewalls, in Hanamura where contacts in the Hashimoto Clan had no idea about this entity in the criminal underworld, and then in London where the local police collaborated interrogating suspects, hoping Volskaya would send some mechs as compensation. Everywhere Zarya went, there was no clue about who Sombra was, in spite of the massive hacking sprees that had happened across the world for years. \n\nSeeing little progress and the growing frustration in her soldier, Katya arranged a meeting with a local hacker in Numbani. A city full of Omnics made Zarya's skin crawl given how much she resented their kind, but It all got worse when her contact turned out to be an Omnic themselves. Lynx 17, was a hacker who had been investigating what they called the Sombra Collective for years. While Zarya was not at all happy to work with an Omnic, she knew it had to be for her country. She told Lynx that the hacker wasn't a group but rather a single woman, to which Lynx narrowed down how to track her.",
-      "image": "",
-      "lat": 59.9606739,
-      "lon": 30.1586551,
-      "yearStart": 2078,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Saint Petersburg, Northwestern Federal District, Russia",
-          "country": "Russia",
-          "reasoning": ""
-        },
-        {
-          "locationName": "Saint Petersburg, Russia",
-          "country": "Russia",
-          "reasoning": "Katya Voslkaya Calls Zarya in to track down Sombra"
-        },
-        {
-          "locationName": "Lijiang, China",
-          "country": "China",
-          "reasoning": "Zarya visits Lucheng to see if they knew of the Hacker"
-        },
-        {
-          "locationName": "Hanamura, Japan",
-          "country": "Japan",
-          "reasoning": "Zarya contacts the Hashimoto to track Sombra in the criminal underworld",
-          "lat": 35.6768601,
-          "lon": 139.7638947
-        },
-        {
-          "locationName": "London, United Kingdom",
-          "country": "United Kingdom",
-          "reasoning": "Zarya is helped by local police to profile suspects of hacker activity",
-          "lat": 51.5074456,
-          "lon": -0.1277653
-        },
-        {
-          "locationName": "City State of Numbani",
-          "country": "Numbani",
-          "reasoning": "Katya hires a hacker to help Zarya find Sombra",
-          "lat": 12.0022,
-          "lon": 8.5919
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Zarya,",
-          "reasoning": "Tries and fails to catch Sombra following dead end leads"
-        },
-        {
-          "locationName": "",
-          "country": "Sombra,",
-          "reasoning": "Avoids Volskaya's chase and hacks Lynx 17 in secret"
-        },
-        {
-          "locationName": "",
-          "country": "Orisa,",
-          "reasoning": "Seen learning through Numbani"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Volskaya Industries,",
-          "reasoning": "Brings Zarya in to discretly deal with Sombra and avoid a scandal"
-        },
-        {
-          "locationName": "",
-          "country": "The Sombra Collective,",
-          "reasoning": "Continues a hacking spree without leading trace beyond what Lynx can find"
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lynx 17,",
-          "reasoning": "Hired to find the Sombra Collective"
-        },
-        {
-          "locationName": "",
-          "country": "Katya,",
-          "reasoning": "Orders Zarya to track down Sombra"
-        },
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": "Aids Orisa through Numbani"
-        },
-        {
-          "locationName": "",
-          "country": "Pompamoto,",
-          "reasoning": "Zarya's informat in the Hashimoto"
-        }
-      ],
-      "headlines": [
-        "Sergeant called out of the front by Voslkaya Industries"
-      ],
-      "sources": [
-        {
-          "text": "Searching",
-          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
-        }
       ]
     },
     {
@@ -17418,6 +17323,72 @@
       ]
     },
     {
+      "name": "Sending a Message",
+      "locationType": "earth",
+      "cityDisplayName": "Colosseo, Italy",
+      "description": "Vendetta was in the middle of a feast with the other gladiators when the news of Doomfist had successfully murdered Augusto Vialli and taken back control of Talon following his escape from confinement, having waited so long for the moment to strike resulted in the return to power of her biggest detractor. Determined to reclaim her father's legacy, she decided this had to be her moment, no more climbing, no more wasted time on meaningless opponents, her eyes were on the council.\n\nUsing the followers she had amassed at the Colosseo, she began to seize control of multiple assets and territory that once belonged to her father, envisioning a bigger empire than anything Antonio could have ever imagined. She also set up a meeting with a member of the Talon council who sponsored her battles, and when he arrived she had her guards restrain him as she personally executed him.\n\nMarzia sent her a message, and it did not go unnoticed by Talon, as many agents within the organization began to grow concerned about her rise to power. She would have hoped for this fear to also strike Akande, but it seemed as if he did not even flinch, simply moving someone else to take the empty seat. Still, Vendetta wouldn't be discouraged by her opponent making the mistake of looking down on her, she was bound to take over Talon sooner or later, even if she had to kill the council one by one before getting to the man at the top.",
+      "image": "",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "yearStart": 2078,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "Vendetta begins to attack Talon to send a message to Doomfist",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": "Kills a council member and reclaims her father's terirotry"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": "Ignores Vendetta's escalating attacks"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Colosseo Gladiatori,",
+          "reasoning": "Vow to aid Vendetta into her climb for power"
+        },
+        {
+          "locationName": "",
+          "country": "La Coterie, Talon Empire,",
+          "reasoning": "Grow concern of Vendetta's influence"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [
+        "Notorious elite goes missing during a visit to the Roman Colosseo",
+        "Attacks on buildings previously belonging to Antonio Bartalotti continue across Italy"
+      ],
+      "sources": [
+        {
+          "text": "A New Empire",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
+            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
+          ]
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Magnus, Titus,",
+          "reasoning": "Restraing a council member for his execution"
+        }
+      ]
+    },
+    {
       "name": "Stone by Stone",
       "locationType": "earth",
       "cityDisplayName": "Suravasa, India",
@@ -17541,68 +17512,112 @@
       ]
     },
     {
-      "name": "Sending a Message",
+      "name": "Searching",
       "locationType": "earth",
-      "cityDisplayName": "Colosseo, Italy",
-      "description": "Vendetta was in the middle of a feast with the other gladiators when the news of Doomfist had successfully murdered Augusto Vialli and taken back control of Talon following his escape from confinement, having waited so long for the moment to strike resulted in the return to power of her biggest detractor. Determined to reclaim her father's legacy, she decided this had to be her moment, no more climbing, no more wasted time on meaningless opponents, her eyes were on the council.\n\nUsing the followers she had amassed at the Colosseo, she began to seize control of multiple assets and territory that once belonged to her father, envisioning a bigger empire than anything Antonio could have ever imagined. She also set up a meeting with a member of the Talon council who sponsored her battles, and when he arrived she had her guards restrain him as she personally executed him.\n\nMarzia sent her a message, and it did not go unnoticed by Talon, as many agents within the organization began to grow concerned about her rise to power. She would have hoped for this fear to also strike Akande, but it seemed as if he did not even flinch, simply moving someone else to take the empty seat. Still, Vendetta wouldn't be discouraged by her opponent making the mistake of looking down on her, she was bound to take over Talon sooner or later, even if she had to kill the council one by one before getting to the man at the top.",
+      "cityDisplayName": "Saint Petersburg, Northwestern Federal District, Russia",
+      "description": "Aleksandra Zaryanova, Russia's strongest soldier and a key player on the Siberian front, was suddenly called to Volskaya Industries. While she thought that she knew what this meeting would be about, perhaps some success in the war or a new military strategy, she was completely confused when Katya explained the nature of her next mission, to track down the hacker Sombra. Zarya found herself unfit for this mission. What they needed was a spy, but Katya reassured her that what she needed was a friend. In reality, Katya knew involving someone more experienced could compromise the truth Sombra knew reaching the ears of the government, compared to what would happen if a soldier, especially one as loyal as Zarya, found out.\n\nOver multiple weeks, Zarya was sent to multiple places in the world following any leads on the hacker that they could find: in Lijiang Tower, where Lucheng couldn't find a trace of hacking in their firewalls, in Hanamura where contacts in the Hashimoto Clan had no idea about this entity in the criminal underworld, and then in London where the local police collaborated interrogating suspects, hoping Volskaya would send some mechs as compensation. Everywhere Zarya went, there was no clue about who Sombra was, in spite of the massive hacking sprees that had happened across the world for years. \n\nSeeing little progress and the growing frustration in her soldier, Katya arranged a meeting with a local hacker in Numbani. A city full of Omnics made Zarya's skin crawl given how much she resented their kind, but It all got worse when her contact turned out to be an Omnic themselves. Lynx 17, was a hacker who had been investigating what they called the Sombra Collective for years. While Zarya was not at all happy to work with an Omnic, she knew it had to be for her country. She told Lynx that the hacker wasn't a group but rather a single woman, to which Lynx narrowed down how to track her.",
       "image": "",
-      "lat": 41.8933203,
-      "lon": 12.4829321,
+      "lat": 59.9606739,
+      "lon": 30.1586551,
       "yearStart": 2078,
       "eraName": "The Age of Conflict",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Colosseo, Italy",
-          "country": "Italy",
-          "reasoning": "Vendetta begins to attack Talon to send a message to Doomfist",
-          "lat": 41.8933203,
-          "lon": 12.4829321
+          "locationName": "Saint Petersburg, Northwestern Federal District, Russia",
+          "country": "Russia",
+          "reasoning": ""
+        },
+        {
+          "locationName": "Saint Petersburg, Russia",
+          "country": "Russia",
+          "reasoning": "Katya Voslkaya Calls Zarya in to track down Sombra"
+        },
+        {
+          "locationName": "Lijiang, China",
+          "country": "China",
+          "reasoning": "Zarya visits Lucheng to see if they knew of the Hacker"
+        },
+        {
+          "locationName": "Hanamura, Japan",
+          "country": "Japan",
+          "reasoning": "Zarya contacts the Hashimoto to track Sombra in the criminal underworld",
+          "lat": 35.6768601,
+          "lon": 139.7638947
+        },
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "Zarya is helped by local police to profile suspects of hacker activity",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        },
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Katya hires a hacker to help Zarya find Sombra",
+          "lat": 12.0022,
+          "lon": 8.5919
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Vendetta,",
-          "reasoning": "Kills a council member and reclaims her father's terirotry"
+          "country": "Zarya,",
+          "reasoning": "Tries and fails to catch Sombra following dead end leads"
         },
         {
           "locationName": "",
-          "country": "Doomfist,",
-          "reasoning": "Ignores Vendetta's escalating attacks"
+          "country": "Sombra,",
+          "reasoning": "Avoids Volskaya's chase and hacks Lynx 17 in secret"
+        },
+        {
+          "locationName": "",
+          "country": "Orisa,",
+          "reasoning": "Seen learning through Numbani"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Colosseo Gladiatori,",
-          "reasoning": "Vow to aid Vendetta into her climb for power"
+          "country": "Volskaya Industries,",
+          "reasoning": "Brings Zarya in to discretly deal with Sombra and avoid a scandal"
         },
         {
           "locationName": "",
-          "country": "La Coterie, Talon Empire,",
-          "reasoning": "Grow concern of Vendetta's influence"
+          "country": "The Sombra Collective,",
+          "reasoning": "Continues a hacking spree without leading trace beyond what Lynx can find"
         }
       ],
       "yearEnd": null,
-      "headlines": [
-        "Notorious elite goes missing during a visit to the Roman Colosseo",
-        "Attacks on buildings previously belonging to Antonio Bartalotti continue across Italy"
-      ],
-      "sources": [
-        {
-          "text": "A New Empire",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt88558193e32a2781/68f2cfbc403b2522cfc2f88d/OW_Vendetta_EN.pdf",
-            "https://www.youtube.com/watch?v=GDiqTSiZyOs"
-          ]
-        }
-      ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Magnus, Titus,",
-          "reasoning": "Restraing a council member for his execution"
+          "country": "Lynx 17,",
+          "reasoning": "Hired to find the Sombra Collective"
+        },
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": "Orders Zarya to track down Sombra"
+        },
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Aids Orisa through Numbani"
+        },
+        {
+          "locationName": "",
+          "country": "Pompamoto,",
+          "reasoning": "Zarya's informat in the Hashimoto"
+        }
+      ],
+      "headlines": [
+        "Sergeant called out of the front by Voslkaya Industries"
+      ],
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
         }
       ]
     },
@@ -17652,65 +17667,6 @@
       "headlines": [
         "The Ironclad Guild unveils a reformed Bastion Unit as one of their new members.",
         "Torbjörn Lindholm advocates for Omnic Integration in recent seminar"
-      ]
-    },
-    {
-      "name": "Dirty Secrets",
-      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
-      "locationType": "earth",
-      "lat": 19.1738,
-      "lon": -96.1342,
-      "image": "",
-      "cityDisplayName": "Dorado",
-      "yearEnd": null,
-      "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Dorado, Mexico",
-          "country": "Mexico",
-          "reasoning": "Zarya and Lynx track down Sombra into Dorado"
-        }
-      ],
-      "headlines": [
-        "Zaryanova to return to the Siberian front immediately after recent trip to Mexico",
-        "The people of Mexico protest Portero's exoneration"
-      ],
-      "sources": [
-        {
-          "text": "Searching",
-          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Zarya, Sombra,",
-          "reasoning": "Zarya catches Sombra and is told the truth about Volskaya"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Lumérico Incorporated, Los Muertos,",
-          "reasoning": "Sombra's activity witrh Los Muertos reveals her true location"
-        },
-        {
-          "locationName": "",
-          "country": "Volskaya Industries,",
-          "reasoning": "Continues to profit from the Omnic war in Siberia in secret"
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Katya,",
-          "reasoning": "Lets Zarya go after she promised to keep the secret"
-        },
-        {
-          "locationName": "",
-          "country": "Lynx 17,",
-          "reasoning": "Is rescued by Zarya after incapacitated"
-        }
       ]
     },
     {
@@ -17768,6 +17724,70 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltda027517bc96a819/6892813ccec4566b0c2fe2bc/OW_Aqua_EN.pdf",
             "https://www.youtube.com/watch?v=RY3sER2O0jM&t=106s"
           ]
+        }
+      ]
+    },
+    {
+      "name": "Dirty Secrets",
+      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar\n,/.[)<.!}$;9}[\n, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
+      "locationType": "earth",
+      "lat": 19.1738,
+      "lon": -96.1342,
+      "image": "",
+      "cityDisplayName": "Dorado, Mexico",
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Dorado, Mexico",
+          "country": "Mexico",
+          "reasoning": "Zarya and Lynx track down Sombra into Dorado"
+        }
+      ],
+      "headlines": [
+        "Zaryanova to return to the Siberian front immediately after recent trip to Mexico",
+        "The people of Mexico protest Portero's exoneration"
+      ],
+      "sources": [
+        {
+          "text": "Searching",
+          "url": "https://static.playoverwatch.com/media/comics/15/en-us/comic-overwatch-searching.pdf"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Zarya, Sombra,",
+          "reasoning": "Zarya catches Sombra and is told the truth about Volskaya"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Lumérico Incorporated, Los Muertos,",
+          "reasoning": "Sombra's activity witrh Los Muertos reveals her true location"
+        },
+        {
+          "locationName": "",
+          "country": "Volskaya Industries,",
+          "reasoning": "Continues to profit from the Omnic war in Siberia in secret"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Katya,",
+          "reasoning": "Lets Zarya go after she promised to keep the secret"
+        },
+        {
+          "locationName": "",
+          "country": "Lynx 17,",
+          "reasoning": "Is rescued by Zarya after incapacitated"
+        },
+        {
+          "locationName": "",
+          "country": "Portero,",
+          "reasoning": "Refuses to help Zarya and Lynx"
         }
       ]
     },
