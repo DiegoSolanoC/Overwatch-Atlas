@@ -3041,7 +3041,7 @@
       ],
       "lat": -75.1,
       "lon": 123.35,
-      "eraName": "The Age of Progress",
+      "eraName": "The Omnic Crisis",
       "yearStart": 2051,
       "secondaryCountryPlaces": [
         {
@@ -3088,7 +3088,7 @@
       "cityDisplayName": "Busan, South Korea",
       "yearStart": 2051,
       "yearEnd": null,
-      "eraName": "The Age of Progress",
+      "eraName": "The Omnic Crisis",
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -6660,7 +6660,14 @@
       "eraName": "The Golden Age",
       "secondaryCountryPlaces": [],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Ye Anran is Born",
@@ -9818,7 +9825,26 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Freja,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Search & Rescue,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Shimada Takedown",
@@ -10650,6 +10676,20 @@
         "How Did You Escape",
         "Accident"
       ]
+    },
+    {
+      "name": "Image Control",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Shrine Maiden",
@@ -11569,6 +11609,20 @@
           "label": "Sacrifice"
         }
       ]
+    },
+    {
+      "name": "Graduation",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 47.3744489,
+      "lon": 8.5410422,
+      "image": "",
+      "cityDisplayName": "Zurich, Switzerland",
+      "yearEnd": null,
+      "eraName": "The Fall of Overwatch",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": []
     },
     {
       "name": "Widowed",
@@ -14970,7 +15024,22 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sven,",
+          "reasoning": "",
+          "badgePriority": true
+        }
+      ]
     },
     {
       "name": "Avatar of the Fox",
@@ -16521,7 +16590,15 @@
       "yearStart": 2077,
       "yearEnd": 2079,
       "eraName": "The Age of Conflict",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "London, United Kingdom",
+          "country": "United Kingdom",
+          "reasoning": "",
+          "lat": 51.5074456,
+          "lon": -0.1277653
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -17729,7 +17806,7 @@
     },
     {
       "name": "Dirty Secrets",
-      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar\n,/.[)<.!}$;9}[\n, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
+      "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
       "locationType": "earth",
       "lat": 19.1738,
       "lon": -96.1342,
@@ -17861,7 +17938,7 @@
       "name": "Tangle with Talon",
       "locationType": "earth",
       "cityDisplayName": "Illios, Greece",
-      "description": "No description available.",
+      "description": "Venture had encountered Talon a couple more times since the incident in Nepal. This last time was during an expedition to the island of Illios in Greece. They had stayed behind working on a dig site all the way into dusk, so when they came back to the camp, the rest of the expedition was gone, visiting the town for dinner. Sloan watched the sunset while eating ice cream when, all of a sudden, they heard a loud crack from some of the pottery.\n\nTalon agents had been deployed on the digsite thinking the Wayfinders were fully gone, and were commanded by Mauga to keep the place clean, seemingly because Doomfist was looking for something in particular in ancient ruins. This was the third time this year that Sloan had run into Talon agents looting their relics and, given just how careless Mauga and his agents were being with the relics, Venture couldn't just let them get away with it. Using the smart excavator, Venture sneaked in and warned the Talon troops to drop the relics or pay the price. Mauga unleashes hell onto the Wayfinders with his chain gun, but Sloan was able to dodge the fire from underground, jumping out and retrieving some artifacts straight from Mauga's hand.\n\nWhile Mauga was more than happy to keep the fight going and irritate Sloan, the team was hearing chatter on the police communication networks. To avoid a larger issue, Mauga ordered a rethread, claiming Doomfist will have to look for his artifact elsewhere. As the ship was flying off a purple silhouette manifested from behind Sloan, Sombra had tagged along, claiming she knew what they were looking for and that it wasn't here, but that Venture might just be useful for her, as another piece of a larger puzzle. She claimed they would be in contact before disappearing. Venture now knew for sure Talon's goal was more than just looting, there is something hidden in ancient ruins that they want to get their hands on, and someone needs to stop them.",
       "image": "",
       "lat": 36.1725297,
       "lon": 27.9194016,
@@ -17878,33 +17955,36 @@
         {
           "locationName": "",
           "country": "Venture, Sombra,",
-          "reasoning": ""
+          "reasoning": "Keep in contact after the Talon encounter"
         },
         {
           "locationName": "",
           "country": "Mauga, Doomfist",
-          "reasoning": ""
+          "reasoning": "Looking for a particular artifact hidden within ruins"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Wayfinder Society,",
-          "reasoning": ""
+          "reasoning": "Continues to endure Talon raids"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Loots multiple digsites after the Wayfinders leave"
         },
         {
           "locationName": "",
           "country": "The Sombra Collective,",
-          "reasoning": ""
+          "reasoning": "Sombra believes this could link to her conspiracy"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Wayfinders report Talon Activity in Greek digsite",
+        "Talon raids archeological grounds across the world"
+      ],
       "sources": [
         {
           "text": "Tangle With Talon",
@@ -17918,7 +17998,7 @@
     },
     {
       "name": "Double Life",
-      "description": "No description available.",
+      "description": "Not long after arriving in Kanezaka, Mizuki ran into the Yokai and was warmly welcomed by the group, who were grateful for any and all support they could find. In fact, he wasn't the only new member, as an Omnic by the name of Chikasa had already joined the teens in their fight. With these two new additions, the Yokai sought to expand their operations closer to Tokyo and into the Tiger's Den. Mizuki quickly grew attached with his new crew, and in spite of his mission, he would often protect the group from Hashimoto activity, particularly budding heads with Ryota, who often tagged Hashimoto turf. He was quite impressed with how spot on their Intel was, all thanks to Sakura, and in spite of the opportunity, he never fed her any info, true or false. Nobuto didn't lose much time either, as he had figured out a way to imprint Anima energy through Ofuda, and even if not as strong as a Hashimoto Blade or the Fox Spirit, he wanted everyone to be prepared to fight, so he gifted Mizuki a Kasa Hat, covered in Ofuda that would give it Anima properties.\n\nIn spite of how welcoming the team was to him, Mizuki kept his distance. His room was barren outside the countless good luck charms that he had bought every week since arriving in Kanezaka. He would often disappear in the middle of the night, and Chikasa would spend hours trying to get a hold of him. But even then, he didn't often report to the Hashimoto. He found himself caught between his clan duties and this new family he had grown to cherish, so he chose to pretend for as long as he could. \n\nThis was the first time in years Mizuki got to be his own person, free from Shion's grip and surrounded by people his age, and out of all of them he was quite influenced by Kiriko herself, a shrine maiden who prayed for his worries and looked after his wounds. Even though he was always hiding information from her, she was always caring and could tell Mizuki had a warm heart for the team, and Mizuki quickly realized that this was none other than Toshiro's daughter, protected by the Fox Spirit just like he had mentioned, but in all their time together he couldn't bring himself to tell her the truth about him and his father, because it could sabotage his mission or worse, it could make the Yokai turn on him, and he would have lost both his new friends and the respect of the clan.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -17931,12 +18011,15 @@
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Mizuki arrives to Kanezaka and infiltrates the Yokai",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Yoaki activity on the Rise, tagged graffiti found in Akihabara",
+        "The new Lucky Lucky Good Luck Amulet wave sells out on day one"
+      ],
       "sources": [
         {
           "text": "Overwatch Website, Mizuki",
@@ -17947,31 +18030,36 @@
         {
           "locationName": "",
           "country": "Mizuki,",
-          "reasoning": ""
+          "reasoning": "Finds himself struggling to betray his new friends"
         },
         {
           "locationName": "",
           "country": "Kiriko,",
-          "reasoning": ""
+          "reasoning": "Trusts Mizuki and helps ease his spiritual worries"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Yokai Gang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "country": "Yokai Gang, Hashimoto Clan,",
+          "reasoning": "Continue to brawl each other, every time closer to the heart of Tokyo"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Nobuto, Ryota, Sakura, Chikasa,",
-          "reasoning": ""
+          "country": "Ryota, Sakura,",
+          "reasoning": "Provoke the Hashimoto and plan calculated attacks"
+        },
+        {
+          "locationName": "",
+          "country": "Nobuto",
+          "reasoning": "Makes blueprints for Anima powered items for the team including Mizuki's hat"
+        },
+        {
+          "locationName": "",
+          "country": "Chikasa,",
+          "reasoning": "Another new addition to the Yokai alongside Mizuki"
         }
       ]
     },
@@ -21479,7 +21567,7 @@
     },
     {
       "name": "Shelter",
-      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it.\n\nOn the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.The team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated and ready to rest, Vivian received news from the IJC. \n\nThe UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast. The next day Sojourn withheld the news from the IJC fearing this would affect team morale, and knowing they had to give it their all against Talon, instead she selected a handful agents to be on standby for deployment, while everyone else should co-ordinate with Winston. Efi, ever optimistic began to ponder what it would take to repair Gibraltar's systems if they ever got to return, but it was here where Winston finally broke the news of Athena's loss, and how even if they ever saw to take back the base, it would never be the same again. Torbjörn, seeing the pain of the team and being quite hurt by the attack as an Ex Overwatch member, decided to personally help Overwatch fight back, aiming to one day rebuild Gibraltar together.",
+      "description": "The Drop-ship remained silent for a while as everyone processed what had happened. Having lost Gibraltar, Overwatch was without a base of operations and with an entire army hunting them down, Sojourn knew morale was low, but they had no time to waste. The first priorities now were to find a place to take sanctuary in and figure out what Talon was up to after such a bold, unprecedented attack. Luckily for them, they already had an answer to both, as the Lindholms had been calling Brigitte all night trying to make sure she was okay, and a city as fortified as Gothenburg made the Ironclad Workshop an ideal place to stay, if the Lindholms allowed it. On the other hand, while she had mentioned it to some agents before, Ana was not able to give more details about her arrival. Her information pointed to Doomfist having been killed at the hands of the Gladiator Vendetta, Marzia Bartalotti. The name was enough to send some of the older agents into the past, as the ghost of Antonio continued to haunt over a decade after his death. Blackwatch intel on Antonio did not know he had a daughter, likely due to how much he pushed Marzia away from the business, but regardless, this revelation meant Talon's new leader had a personal score to settle with Overwatch and the attack on Gibraltar made it clear she would stop at nothing to see them go down.\n\n\nThe team would set course to Gothenburg, where they were warmly welcomed by both Torbjörn and Ingrid, although they really questioned Brigitte's habit of picking up cats even while away from home. As everyone got situated and ready to rest, Vivian received news from the IJC.  The UN was aware of the Talon attack, and they wanted to set the record straight as soon as possible. They decided not to prosecute any agents for the recall or their actions during the Null Sector Invasion, but they also determined that reinstating Overwatch to its former position would require too extensive funding, resources and oversight, which they sorely lacked in the aftermath of the Invasion. As such, they decided it would be best to shut Overwatch down again. Osei tried her best to advocate for Vivians case, but in the end, all she managed was to buy them more time. In the wake of Talon's attack in Gibraltar and intel of military escalation going on in Italy, Overwatch was given permission to intervene only under absolute certainty that Talon was involved, otherwise they were in the process of getting decommissioned once more, so if they planned to save the world, they needed to do it fast. \n\n\nThe next day Sojourn withheld the news from the IJC fearing this would affect team morale, and knowing they had to give it their all against Talon, instead she selected a handful agents to be on standby for deployment, while everyone else should co-ordinate with Winston. Efi, ever optimistic began to ponder what it would take to repair Gibraltar's systems if they ever got to return, but it was here where Winston finally broke the news of Athena's loss, and how even if they ever saw to take back the base, it would never be the same again. Torbjörn, seeing the pain of the team and being quite hurt by the attack as an Ex Overwatch member, decided to personally help Overwatch fight back, aiming to one day rebuild Gibraltar together.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -21558,6 +21646,70 @@
       ]
     },
     {
+      "name": "Cat Training",
+      "description": "While most of the team was placed on standby or to coordinate deployment, with Winston, Juno and Efi, being some of the newer and younger members of the team, were told to work with the Ye Siblings using the basic training module. Things may not have gone as planned, but they were still new recruits, and they needed to go through orientation quickly before deployment. The Lindholms allowed them to use the Ironclad R&D workshop, which had plenty of space to prepare the Holo-Program for training. There was just one issue. Wuyang had no idea what they were talking about. The Overwatch Regulation Manual, a relic from Adawe's original groundwork, was a standardized insert on the invitation tokens that the siblings received, but while Anran paid attention to the full message, Wuyang thought it ended right after the invite.\n\nWhen the module started, the siblings were tested on field efficienty, a simulation of a civilian evacuation mission appeared in the room. Wuyang went first confused and improvising, doing his best to barely rescue some civilians while never following any protocols. On the opposite hand, when Anran stepped up for her turn, she was over prepared, confident and passed the test flawlessly. As Efi and Anran walked away to take a look at the Zhuque Fans, Juno tried to contort Wuyang. Her first try wasn't much better than his, so she let him know it didn't need to learn alone, just like how Mei was there for her when she arrived on earth. Their bonding was interrupted when they heard Anran screaming in the distance as what looked like a drone zoomed through the workshop. But this wasn't a Talon attack, it was a subsonic airborne feline.\n\nTo the dismay of Anran's allergies, Brigitte had a spark of inspiration the night prior while showing her old blueprints to the other girls in the team, and after a lot of hesitation, she decided to use the Ironclad tools to build the Jetpack unit she had been thinking of. Fika surprisingly got the hang of the Jetpack very quickly, to the point that Juno and Wuyang were struggling to catch her. Still, Brigitte feared this was far too unconventional, and if the rest of the team, especially Sojourn, saw it, they would shut it down. The irony of saying this when their head scientist was a talking Gorilla didn't escape the team's minds, especially since Winston walked into the room soon after to discuss upgrades to the training facilities. When Fika rushed towards the exit, he caught her midair, and ever an optimist, he was impressed with the design and the engineering prowess that came with tailoring it to a cat. But unfortunately, before the team could discuss this any further, the workshop's alarms went off. The systems had detected yet another Talon attack on Watch point, the weapons depot at Grand Mesa.",
+      "locationType": "earth",
+      "lat": 57.7072326,
+      "lon": 11.9670171,
+      "image": "",
+      "cityDisplayName": "Gothenburg, Sweden",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": "Juno and Efi train the new recruits and get interrupted by Fika on a Jetpack"
+        }
+      ],
+      "headlines": [
+        "Talon attack on Watchpoint: Gran Mesa following the Gibraltar raid"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ],
+      "yearStart": 2080,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Brigitte,",
+          "reasoning": "Fika gets a new jetpack made by Brigitte"
+        },
+        {
+          "locationName": "",
+          "country": "Anran, Wuyang,",
+          "reasoning": "Take on the training modules to different degrees of sucess"
+        },
+        {
+          "locationName": "",
+          "country": "Juno,",
+          "reasoning": "Conforts Wuyang after failing his trail"
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Congratulates Brigitte's design"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Runs the training module"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Ironclad Guild,",
+          "reasoning": "Ironcald lets Overwatch use the Workshop for training"
+        }
+      ]
+    },
+    {
       "name": "Summit Breach",
       "description": "No description available.",
       "locationType": "earth",
@@ -21625,68 +21777,6 @@
         {
           "locationName": "",
           "country": "Naughton,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Cat Training",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 57.7072326,
-      "lon": 11.9670171,
-      "image": "",
-      "cityDisplayName": "Gothenburg, Sweden",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Gothenburg, Sweden",
-          "country": "Sweden",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Overwatch Undivided",
-          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
-        }
-      ],
-      "yearStart": 2080,
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Jetpack Cat,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Anran, Wuyang,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Juno, Brigitte,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Winston,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Ironclad Guild,",
           "reasoning": ""
         }
       ]
@@ -21803,7 +21893,7 @@
     },
     {
       "name": "Old Love",
-      "description": "No description available.",
+      "description": "Half of the team was busy at Grand Mesa, with Winston and Echo giving support and intel all the way back into the workshop. The last attack still had Winston shaken, mulling the loss of Athena, his long-time companion, when everyone else left. Losing Athena and her old home was a lot to take for Winston, but Echo shared those feelings. Having lost Mina Liao and her other creations, Athena was the closest thing to a Sister that Echo had, and she to felt the hole she left on the team, but she reminded Winston how their shared purpose was to hlep the world through Overwatch, continuing the fight despite adversity. If she was still around she would be proud of them both. In the meantime, however, the rest of the team didn't have much to do besides wait. Anran joined Efi Hana and Mei in the training yard while Brigitte went back to adjusting Fika's jetpack, but as everyone went their separate ways, Wuyang and Juno noticed the team morale wasn't doing that well, and they needed a plan to bring it up.\n\nAs they thought of ideas for pranks to lighten the mood, they come across Ana and Reinhardt, catching up with the years' loss, talking about Brigitte's new invention, and how much she reminded them of Torbjörn back in the day. As they reminisce of their youth, Reinhardt recalled the Edelwiss flowers of Zugspitzel, gathering Efi, Orisa, Bastion, Brigitte, Hana and Anran to work as matchmakers, and arrange a date for the old lovers. While Anran thought they had no time for distractions in war, the rest of the team thought they could use something to smile at. Brigitte, in particular, had known them both all their life, and she never saw him smile like he did when Ana was around. The group set their plan in motion, even convincing Angela and Genji to help by guarding the perimeter after six that night, getting the pair to joke about their own youth and, in particular, Genji's old-man about-town lifestyle. As the night approached, the team even got Baptiste to help with the cooking right and Mei with the music, before sending both Ana and Reinhardt mysterious invites at their doors, telling them to look sharper for dinner.\n\nBefore everything was set up, Ana decided to arrive fifteen minutes early, only to see Reinhardt had done the same. Once they saw the surprise, Wuyang and Juno acted as their waiters, guiding them to the table. As they waited for food, it got the old soldiers to look back at their past, how they met, the Crisis, their trips with young Fareeha, and how, in spite of all the bad things, Reinhardt was more grateful for the memories he shared with Ana. The two finally brought up their shared feelings, how they both thought they would work well together, but life always got in the way. The timing was never right for something real, but now they finally did. The lovers got up from the table and began to dance under the lights of a disco ball held by Fika's grapple, just as Sojourn and the rest of the Strike team returned from Grand Mesa. As Juno and Wuyang rushed outside to tell the team about the dinner so that they did not interrupt the moment, Fareeha was beaming with joy at the news, relieved that after all these years, it was finally official.",
       "locationType": "earth",
       "lat": 57.7072326,
       "lon": 11.9670171,
@@ -21815,10 +21905,12 @@
         {
           "locationName": "Gothenburg, Sweden",
           "country": "Sweden",
-          "reasoning": ""
+          "reasoning": "Wuyang and Juno organize a date to bring team morale up"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Sierre Turner Woods leaves Watchpoint: Grand Mesa to chase Talon alongisde Overwatch"
+      ],
       "sources": [
         {
           "text": "Overwatch Undivided",
@@ -21830,46 +21922,46 @@
         {
           "locationName": "",
           "country": "Ana, Reinhardt,",
-          "reasoning": ""
+          "reasoning": "Enjoy the dinner and dance together"
         },
         {
           "locationName": "",
           "country": "Juno, Wuyang,",
-          "reasoning": ""
+          "reasoning": "Organize the dinner and act as waiters"
         },
         {
           "locationName": "",
           "country": "Genji, Mercy,",
-          "reasoning": ""
+          "reasoning": "Guard the perimeter"
         },
         {
           "locationName": "",
           "country": "Anran, Brigitte, D.va, Baptiste, Bastion, Mei, Jetpack Cat,",
-          "reasoning": ""
+          "reasoning": "Help set up the dinner"
         },
         {
           "locationName": "",
           "country": "Winston, Echo,",
-          "reasoning": ""
+          "reasoning": "Keep watch of Talon's attacks"
         },
         {
           "locationName": "",
           "country": "Pharah, Sierra, Sojourn, Cassidy, Lúcio,",
-          "reasoning": ""
+          "reasoning": "Return from Grand Mesa"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Ironclad Guild,",
-          "reasoning": ""
+          "reasoning": "Come together to set up the date"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Efi,",
-          "reasoning": ""
+          "reasoning": "Help set up the dinner"
         }
       ]
     },
@@ -22992,7 +23084,38 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Mauga, Moira,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire, Colosseo Gladiatori,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Titus,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Zephyrus, Maximus,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Castaway",
@@ -23262,7 +23385,48 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer, Winston, Juno, Brigitte, Echo,",
+          "reasoning": "The Coast Team"
+        },
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Torbjörn, Pharah, Ana,",
+          "reasoning": "The Air Team"
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy, Mercy, Wuyang, Reinhardt, Anran, Mizuki, Mei, Baptiste, Zarya, Lúcio,",
+          "reasoning": "The Dropship Team"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire, Colosseo Gladiatori,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Part of Coast Team"
+        },
+        {
+          "locationName": "",
+          "country": "Titus,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Ultimatum",
@@ -23284,7 +23448,48 @@
         }
       ],
       "headlines": [],
-      "sources": []
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Vendetta,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Domina,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Emre, Freja,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Colosseo Gladiatori,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Maximillien,",
+          "reasoning": ""
+        }
+      ]
     }
   ]
 }

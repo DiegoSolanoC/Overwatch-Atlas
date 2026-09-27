@@ -32,6 +32,7 @@ import {
 } from './StoryModeSession.js';
 import { mountStoryViewToggle } from './StoryViewToggle.js';
 import { syncArchiveManagePanelActionVisibility } from '../../system-interface/interface-left-panel/event-system/listeners/wireManagePanelButtons.js';
+import { refreshOpenEventSlideDescriptionSearchHighlight } from '../../system-interface/interface-left-panel/coordinator/search/storyDescriptionSearchHighlight.js';
 
 /**
  * @param {object} [options]
@@ -92,6 +93,14 @@ export async function unmountStoryMode({ restoreMenu = true } = {}) {
     detachStoryArchiveHubDismissChrome();
     clearStoryModeCallbacks();
     clearArchiveModeCallbacks();
+
+    // Free-text Search (and description highlights) are story-session scoped.
+    const searchInput = document.getElementById('eventsSearchInput');
+    if (searchInput) searchInput.value = '';
+    if (window.eventManager) {
+        window.eventManager.searchQuery = '';
+    }
+    refreshOpenEventSlideDescriptionSearchHighlight();
 
     const eventsManagePanel = document.getElementById('eventsManagePanel');
     if (eventsManagePanel) {

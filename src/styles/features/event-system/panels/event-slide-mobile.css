@@ -126,7 +126,7 @@
         flex: 0 1 auto !important;
         min-width: 0 !important;
         max-width: calc(100% - var(--event-slide-glitch-slot, 52px)) !important;
-        font-size: 1.5rem !important;
+        font-size: var(--info-title-font-size-mobile) !important;
         position: relative !important;
         z-index: 1 !important;
     }
@@ -274,7 +274,7 @@
     }
 
     .event-slide-scrollable h2#eventSlideTitle {
-        font-size: 1.15rem !important;
+        font-size: var(--info-title-font-size-mobile-compact) !important;
         line-height: 1.25 !important;
         margin: 0 !important;
         font-weight: 700 !important;

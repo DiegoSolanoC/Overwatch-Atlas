@@ -48,7 +48,7 @@
     margin: 0 0 12px 0;
     padding: 0;
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
-    font-size: 2.45rem;
+    font-size: var(--info-era-heading-font-size);
     font-weight: 800;
     line-height: 1.12;
     letter-spacing: 0.03em;
@@ -141,7 +141,7 @@
     color: var(--accent-primary);
     margin-bottom: 10px;
     margin-top: 0;
-    font-size: 2.2rem;
+    font-size: var(--info-title-font-size);
 }
 
 .event-slide-title-row h2 {
@@ -1440,6 +1440,16 @@
     white-space: pre-line; /* Preserve line breaks and collapse multiple spaces */
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Free-text Search tokens that matched this entry's description */
+#eventSlideText mark.event-slide-search-highlight {
+    background: rgba(255, 196, 72, 0.45);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 0.05em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 /* Details body copy tracks the same A−/=/A+ scale as the description */

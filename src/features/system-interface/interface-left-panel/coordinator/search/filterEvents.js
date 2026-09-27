@@ -1,7 +1,87 @@
 import { shouldEventBeLocked } from '../../../interface-globe-markers/filtering/shouldEventBeLocked.js';
 
 /**
- * Event manager list filtering: title + hero/faction/NPC/country axes.
+ * Hero / faction / NPC labels attached to a story entry (for free-text search).
+ * @param {object} mgr
+ * @param {object} item
+ * @returns {string[]}
+ */
+function getItemFeatureSearchLabels(mgr, item) {
+    const S = typeof window !== 'undefined' ? window.StoryFilterPlacesSync : null;
+    const heroes = S?.getStoryEventHeroTokens?.(item) ?? item?.filters ?? [];
+    const npcs = S?.getStoryEventNpcTokens?.(item) ?? item?.npcs ?? [];
+    const factions = S?.getStoryEventFactionTokens?.(item) ?? item?.factions ?? [];
+    /** @type {string[]} */
+    const labels = [];
+    for (let i = 0; i < heroes.length; i += 1) {
+        const h = String(heroes[i] || '').trim();
+        if (h) labels.push(h);
+    }
+    for (let i = 0; i < npcs.length; i += 1) {
+        const n = String(npcs[i] || '').trim();
+        if (n) labels.push(n);
+    }
+    const factionManifest = Array.isArray(mgr?.factions) ? mgr.factions : [];
+    for (let i = 0; i < factions.length; i += 1) {
+        const id = String(factions[i] || '').trim();
+        if (!id) continue;
+        labels.push(id);
+        const bare = id.replace(/\.[^.]+$/i, '').replace(/[_-]+/g, ' ').trim();
+        if (bare && bare.toLowerCase() !== id.toLowerCase()) labels.push(bare);
+        for (let j = 0; j < factionManifest.length; j += 1) {
+            const entry = factionManifest[j];
+            const filename =
+                typeof entry === 'object' && entry !== null && entry.filename != null
+                    ? String(entry.filename)
+                    : String(entry || '');
+            if (!filename) continue;
+            const fh = typeof window !== 'undefined' && window.FactionMatchHelpers;
+            const same =
+                filename === id ||
+                filename.toLowerCase() === id.toLowerCase() ||
+                (fh && typeof fh.factionIdsMatch === 'function' && fh.factionIdsMatch(filename, id));
+            if (!same) continue;
+            const display =
+                typeof entry === 'object' && entry !== null && entry.displayName != null
+                    ? String(entry.displayName).trim()
+                    : '';
+            if (display) labels.push(display);
+            break;
+        }
+    }
+    return labels;
+}
+
+/**
+ * Free-text haystack: title, description, and feature names (heroes / factions / NPCs).
+ * @param {object} mgr
+ * @param {object} item
+ * @returns {string}
+ */
+function buildEventTextSearchHaystack(mgr, item) {
+    const name = String(item?.name || '');
+    const description = String(item?.description || '');
+    const features = getItemFeatureSearchLabels(mgr, item).join(' ');
+    return `${name}\n${description}\n${features}`.toLowerCase();
+}
+
+/**
+ * Title / description / feature free-text match (whitespace tokens; every token must hit).
+ * @param {object} mgr
+ * @param {object} item
+ * @param {string} q — already trimmed + lowercased
+ * @param {string[]} tokens
+ * @returns {boolean}
+ */
+function itemMatchesTextSearch(mgr, item, q, tokens) {
+    if (!q) return true;
+    const haystack = buildEventTextSearchHaystack(mgr, item);
+    if (tokens.length > 0) return tokens.every((t) => haystack.includes(t));
+    return haystack.includes(q);
+}
+
+/**
+ * Event manager list filtering: title/description/features + hero/faction/NPC/country axes.
  * @param {object} mgr — EventManager instance (search* fields, dataService, eventItemVariantIndices)
  * @param {object} item — event or variant row
  */
@@ -30,8 +110,9 @@ function computeSearchAxisMatchesForItem(mgr, item) {
                 fh && typeof fh.factionIdsMatch === 'function' ? fh.factionIdsMatch(itemF, f) : itemF === f
             )
         );
-    const nameLower = (item?.name || '').toLowerCase();
-    const unmatchedHit = hasU && unmatchedLower.every((t) => nameLower.includes(t));
+    // Unmatched filter CSV tokens also hit description + feature names (same haystack as title search).
+    const textHaystack = buildEventTextSearchHaystack(mgr, item);
+    const unmatchedHit = hasU && unmatchedLower.every((t) => textHaystack.includes(t));
     let matchHeroFaction;
     if (!hasH && !hasF && !hasN && !hasU) {
         matchHeroFaction = true;
@@ -138,11 +219,9 @@ export function getFilteredEventsFromList(mgr, all) {
         unmatchedTokens.length > 0;
     const countryGroupActive = countryFilters.length > 0;
 
-    const titleTokens = q ? q.split(/\s+/).filter((t) => t.length > 0) : [];
+    const textTokens = q ? q.split(/\s+/).filter((t) => t.length > 0) : [];
     const matchesItem = (item) => {
-        const name = (item?.name || '').toLowerCase();
-        const matchTitle =
-            !q || (titleTokens.length > 0 ? titleTokens.every((t) => name.includes(t)) : name.includes(q));
+        const matchText = itemMatchesTextSearch(mgr, item, q, textTokens);
         const { matchHeroFaction, matchCountry } = computeSearchAxisMatchesForItem(mgr, item);
         let dimPass = true;
         if (filterGroupActive && countryGroupActive) {
@@ -152,7 +231,7 @@ export function getFilteredEventsFromList(mgr, all) {
         } else if (countryGroupActive) {
             dimPass = matchCountry;
         }
-        return matchTitle && dimPass;
+        return matchText && dimPass;
     };
 
     return all.filter((event) => {
@@ -178,11 +257,21 @@ export function getFilteredEventsFromList(mgr, all) {
  * @param {object | null | undefined} mgr
  * @returns {boolean}
  */
-export function isEventManagerSearchActive(mgr) {
+export function isEventManagerTextSearchActive(mgr) {
+    if (!mgr) return false;
+    return Boolean(String(mgr.searchQuery || '').trim());
+}
+
+/**
+ * Filter / country axes only — excludes free-text title search.
+ * Dock thumbs and the story timeline use this so typing in Search does not lock or hide dock entries.
+ * @param {object | null | undefined} mgr
+ * @returns {boolean}
+ */
+export function isEventManagerAxisSearchActive(mgr) {
     if (!mgr) return false;
     return !!(
-        (mgr.searchQuery || '').trim()
-        || mgr.searchHeroFilters?.length
+        mgr.searchHeroFilters?.length
         || mgr.searchFactionFilters?.length
         || mgr.searchNpcFilters?.length
         || mgr.searchCountryFilters?.length
@@ -191,13 +280,39 @@ export function isEventManagerSearchActive(mgr) {
 }
 
 /**
- * Same pass/fail as list search — used to lock dock thumbs when search is active.
+ * @param {object | null | undefined} mgr
+ * @returns {boolean}
+ */
+export function isEventManagerSearchActive(mgr) {
+    return isEventManagerTextSearchActive(mgr) || isEventManagerAxisSearchActive(mgr);
+}
+
+/**
+ * Dock / timeline curation — Filters + Country axes only (never free-text Search).
  * @param {object | null | undefined} mgr
  * @param {object | null | undefined} event
  * @returns {boolean}
  */
 export function shouldEventBeExcludedByManagerSearch(mgr, event) {
-    if (!isEventManagerSearchActive(mgr)) return false;
+    if (!isEventManagerAxisSearchActive(mgr)) return false;
     if (!event) return true;
-    return getFilteredEventsFromList(mgr, [event]).length === 0;
+    const axisOnly = {
+        ...mgr,
+        searchQuery: '',
+    };
+    return getFilteredEventsFromList(axisOnly, [event]).length === 0;
+}
+
+/**
+ * Whitespace tokens from the free-text Search box that appear in an entry description.
+ * @param {string | null | undefined} description
+ * @param {string | null | undefined} searchQuery
+ * @returns {string[]}
+ */
+export function getDescriptionSearchHighlightTokens(description, searchQuery) {
+    const q = String(searchQuery || '').trim().toLowerCase();
+    if (!q) return [];
+    const desc = String(description || '').toLowerCase();
+    if (!desc) return [];
+    return q.split(/\s+/).filter((t) => t.length > 0 && desc.includes(t));
 }

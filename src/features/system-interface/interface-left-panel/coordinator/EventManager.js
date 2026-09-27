@@ -22,6 +22,7 @@ import { syncArchiveManagePanelActionVisibility } from '../event-system/listener
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 import { refreshStoryArchiveEraTintIfActive } from '../../../story/story-mode/StoryArchiveEraTint.js';
 import { updateStandalonePaginationForFilters } from '../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
+import { refreshOpenEventSlideDescriptionSearchHighlight } from './search/storyDescriptionSearchHighlight.js';
 
 class EventManager {
     constructor() {
@@ -66,7 +67,11 @@ class EventManager {
     }
 
     getFilteredDockTimelineEvents() {
-        return filterGetFilteredEventsFromList(this, this.getDockTimelineEvents());
+        // Dock curation ignores free-text Search; Filters/Country axes still apply.
+        return filterGetFilteredEventsFromList(
+            { ...this, searchQuery: '' },
+            this.getDockTimelineEvents(),
+        );
     }
 
     getFilteredEvents() {
@@ -267,6 +272,7 @@ class EventManager {
         this.currentPage = 1;
         this.renderEvents();
         updateStandalonePaginationForFilters();
+        refreshOpenEventSlideDescriptionSearchHighlight();
     }
 
     renderPaginationControls() {

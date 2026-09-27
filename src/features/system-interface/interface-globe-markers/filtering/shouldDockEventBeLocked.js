@@ -2,7 +2,8 @@ import { shouldEventBeLocked } from './shouldEventBeLocked.js';
 import { shouldEventBeExcludedByManagerSearch } from '../../interface-left-panel/coordinator/search/filterEvents.js';
 
 /**
- * Dock thumbs / page-turn lock: chip filters + Event Manager search (same curation as timeline).
+ * Dock thumbs / page-turn lock: chip filters + Event Manager Filters/Country axes.
+ * Free-text Search does not lock dock entries.
  * @param {Object} event
  * @param {Set} [activeFilters]
  * @returns {boolean}

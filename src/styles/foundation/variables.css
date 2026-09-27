@@ -168,6 +168,11 @@
     --info-description-font-size-mobile: calc(16px * var(--info-description-text-scale));
     --info-description-font-size-mobile-compact: calc(14px * var(--info-description-text-scale));
     --info-description-gallery-font-size: calc(clamp(0.92rem, 1.35vw, 1.05rem) * var(--info-description-text-scale));
+    /* Accent titles keep their larger defaults at scale 1.45, then track the same control. */
+    --info-title-font-size: calc(2.2rem * var(--info-description-text-scale) / 1.45);
+    --info-era-heading-font-size: calc(2.45rem * var(--info-description-text-scale) / 1.45);
+    --info-title-font-size-mobile: calc(1.5rem * var(--info-description-text-scale) / 1.45);
+    --info-title-font-size-mobile-compact: calc(1.15rem * var(--info-description-text-scale) / 1.45);
     
     /* Breakpoints */
     --breakpoint-mobile: 768px;

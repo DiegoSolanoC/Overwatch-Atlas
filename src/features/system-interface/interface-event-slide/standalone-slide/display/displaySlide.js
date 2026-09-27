@@ -19,6 +19,7 @@ import {
     eventRootSlotMissingDescription,
     eventSlotMissingDescription
 } from '../../../interface-load-unload/pagination/standalonePaginationFilterSync.js';
+import { setEventSlideDescriptionWithSearchHighlight } from '../../../interface-left-panel/coordinator/search/storyDescriptionSearchHighlight.js';
 import {
     thumbPageTurnShrinkKeyframes,
     thumbPageTurnGrowKeyframes
@@ -136,7 +137,7 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
             eventSlideTitle.innerHTML = applyGlitch(eventName);
         }
         if (eventSlideText) {
-            eventSlideText.innerHTML = applyGlitch(description) || 'No description available.';
+            setEventSlideDescriptionWithSearchHighlight(eventSlideText, description, applyGlitch);
         }
         
         // Display location and years under title (Story timeline only)
@@ -245,7 +246,11 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
                         eventSlideTitle.innerHTML = applyGlitch(currentEvent?.name || eventName);
                     }
                     if (eventSlideText) {
-                        eventSlideText.innerHTML = applyGlitch(currentEvent?.description || description) || 'No description available.';
+                        setEventSlideDescriptionWithSearchHighlight(
+                            eventSlideText,
+                            currentEvent?.description || description,
+                            applyGlitch,
+                        );
                     }
                     slide.updateSourcesAndFilters?.(currentEvent);
                     // Wire click handlers on new glitch elements
@@ -302,7 +307,9 @@ export async function runDisplaySlide(slide, eventName, imagePath, description, 
                         
                         // Update title and description
                         if (eventSlideTitle) eventSlideTitle.innerHTML = applyGlitch(vName);
-                        if (eventSlideText) eventSlideText.innerHTML = applyGlitch(vDesc) || 'No description available.';
+                        if (eventSlideText) {
+                            setEventSlideDescriptionWithSearchHighlight(eventSlideText, vDesc, applyGlitch);
+                        }
                         if (archiveSourceSlide === 'heroes') {
                             updateEventSlideHeroRoleDisplay(eventData, idx);
                             updateEventSlideHeroBirthdayDisplay(eventData, idx);

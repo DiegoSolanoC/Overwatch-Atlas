@@ -203,7 +203,7 @@
 .event-slide-pane__heading {
     font-family: var(--font-title, 'BigNoodleToo', 'Impact', sans-serif);
     color: var(--accent-primary);
-    font-size: 2.2rem;
+    font-size: var(--info-title-font-size);
     font-weight: 800;
     line-height: 1.12;
     letter-spacing: 0.02em;

@@ -120,8 +120,8 @@ export function parseCountryTokens(text, flagIndex) {
  *   3. Faction via displayName / filename / `FactionMatchHelpers.factionIdsMatch`.
  *
  * Anything that doesn't match goes into `unmatchedTokens` so callers can still apply them
- * as free-text title keywords (e.g. typing `"Iris"` filters by title even when no hero
- * named "Iris" exists yet).
+ * as free-text keywords against title, description, and feature names (e.g. typing `"Iris"`
+ * filters by those fields even when no hero named "Iris" exists yet).
  *
  * @returns {{ matchedHeroes: string[], matchedFactions: string[], matchedNpcs: string[], unmatchedTokens: string[] }}
  */

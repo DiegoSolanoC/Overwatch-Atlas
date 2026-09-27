@@ -1,4 +1,4 @@
-/** Persisted step index for info-panel / gallery intel description text size. */
+/** Persisted step index for info-panel / gallery intel description + accent title text size. */
 import '../../../gallery/gallery-mode/fitHeroChipLabelText.js';
 import '../../../gallery/gallery-mode/wireSlideChipFloatingLabels.js';
 

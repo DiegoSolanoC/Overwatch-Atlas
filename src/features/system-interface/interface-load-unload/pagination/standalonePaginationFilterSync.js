@@ -15,7 +15,7 @@
  */
 
 import { shouldDockEventBeLocked } from '../../interface-globe-markers/filtering/shouldDockEventBeLocked.js';
-import { isEventManagerSearchActive } from '../../interface-left-panel/coordinator/search/filterEvents.js';
+import { isEventManagerAxisSearchActive } from '../../interface-left-panel/coordinator/search/filterEvents.js';
 import { syncStoryTimelineIfActive } from '../../../story/story-mode/StoryTimelineView.js';
 
 /**
@@ -139,7 +139,7 @@ export function updateStandaloneSliderTicks(activeFilters, events, eventsPerPage
 
     const curationActive =
         (activeFilters && activeFilters.size > 0)
-        || isEventManagerSearchActive(typeof window !== 'undefined' ? window.eventManager : null);
+        || isEventManagerAxisSearchActive(typeof window !== 'undefined' ? window.eventManager : null);
 
     if (!curationActive) return;
 

@@ -5,7 +5,7 @@
  * `ctx` for DOM refs, popover handles, selection-sync handles, and the `applySearch`
  * callback:
  *
- *   - `wireTitleSearchInput`    — `#eventsSearchInput` (title text).
+ *   - `wireTitleSearchInput`    — `#eventsSearchInput` (title / feature / description text).
  *   - `wireFiltersInput`        — `#eventsSearchFilters` (hero/faction/npc tokens).
  *   - `wireCountryInput`        — `#eventsSearchCountry` (country/flag tokens).
  *   - `wireClearAndSelection`   — `#eventsSearchClear` + always-on selection checkbox +

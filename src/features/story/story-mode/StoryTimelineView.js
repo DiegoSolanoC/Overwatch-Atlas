@@ -10,7 +10,11 @@ import {
 import { createEventItem } from '../../system-interface/interface-left-panel/event-system/render/createEventItem.js';
 import { setupEventManagerImageLazyLoading, flushVisibleLazyPreviewImages } from '../../system-interface/interface-left-panel/event-system/render/eventManagerImageLazyLoad.js';
 import { computeOverlapIndexSet } from '../../system-interface/interface-left-panel/event-system/render/overlapDetection.js';
-import { filterEventsByStandaloneActiveFilters, isEventManagerSearchActive } from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
+import {
+    filterEventsByStandaloneActiveFilters,
+    isEventManagerAxisSearchActive,
+    getFilteredEventsFromList,
+} from '../../system-interface/interface-left-panel/coordinator/search/filterEvents.js';
 import { refreshStoryArchiveEraTintIfActive } from './StoryArchiveEraTint.js';
 import {
     applyDockEraTimelineFilter,
@@ -224,8 +228,8 @@ function computePanOffsetForSourceIndex(sourceIndex, viewport, track) {
 }
 
 /**
+ * Dock / timeline curation ignores free-text Search; only Filters + Country axes apply.
  * @param {{
- *   searchQuery?: string,
  *   searchHeroFilters?: string[],
  *   searchFactionFilters?: string[],
  *   searchNpcFilters?: string[],
@@ -233,8 +237,8 @@ function computePanOffsetForSourceIndex(sourceIndex, viewport, track) {
  *   searchUnmatchedFilterTokens?: string[],
  * } | undefined} em
  */
-function eventManagerSearchActive(em) {
-    return isEventManagerSearchActive(em);
+function eventManagerAxisSearchActive(em) {
+    return isEventManagerAxisSearchActive(em);
 }
 
 /**
@@ -254,7 +258,7 @@ function storyTimelineFilterActive() {
     if (isDockEraFilterActive()) return true;
     const activeFilters = window.standaloneActiveFilters;
     if (activeFilters?.size > 0) return true;
-    return eventManagerSearchActive(window.eventManager);
+    return eventManagerAxisSearchActive(window.eventManager);
 }
 
 /**
@@ -297,8 +301,9 @@ function getStoryTimelineEventSet() {
         filterActive = true;
     }
 
-    if (eventManagerSearchActive(em)) {
-        const searchFiltered = new Set(em.getFilteredEvents?.() ?? allEvents);
+    if (eventManagerAxisSearchActive(em)) {
+        const axisOnlyMgr = { ...em, searchQuery: '' };
+        const searchFiltered = new Set(getFilteredEventsFromList(axisOnlyMgr, allEvents));
         events = events.filter((event) => searchFiltered.has(event));
         filterActive = true;
     }

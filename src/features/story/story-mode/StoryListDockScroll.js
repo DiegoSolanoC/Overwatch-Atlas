@@ -69,15 +69,9 @@ function getFirstSourceIndexOnDockPage(page1Based, eventsPerPage = DOCK_EVENTS_P
     const start = (page - 1) * perPage;
     const pageSlice = ctx.dockEvents.slice(start, start + perPage);
 
-    const filtered = window.eventManager?.getFilteredEvents?.();
-    const filteredSet = Array.isArray(filtered) && filtered.length
-        ? new Set(filtered)
-        : null;
-
     for (const event of pageSlice) {
         const idx = ctx.allEvents.indexOf(event);
         if (idx < 0) continue;
-        if (filteredSet && !filteredSet.has(event)) continue;
         return idx;
     }
     return null;
