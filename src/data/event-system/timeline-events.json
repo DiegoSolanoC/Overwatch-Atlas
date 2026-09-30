@@ -10687,7 +10687,13 @@
       "cityDisplayName": "Zurich, Switzerland",
       "yearEnd": null,
       "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -11620,7 +11626,13 @@
       "cityDisplayName": "Zurich, Switzerland",
       "yearEnd": null,
       "eraName": "The Fall of Overwatch",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Zurich, Switzerland",
+          "country": "Switzerland",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": []
     },
@@ -13461,7 +13473,7 @@
       "name": "Found Family",
       "locationType": "earth",
       "cityDisplayName": "Glasgow, Scotland",
-      "description": "Without being able to rely on any system, Findlay was forced to find help outside the law to improve his condition. While researching ways to improve his prosthetics, he came across the Phreaks and their illegal body modding community, so he set out to look for the local cell in Scotland.\n\nThe group he found happened to be the home of one of the most prominent members, Touch up, who upgraded him with cutting-edge cybernetics that allowed him to regain mobility and manage the pain better. While he stayed with the Phreaks he got to meet many like-minded individuals, like Jackdaw, Boomslang and the Omnics Revel and Susannah, and over time he began to see them as a newly found family of his, even starting to date Susie.\n\nNow as a fully fledged member, Findlay left his old life behind and adopted the new name of Hazard. Fully committed to the Phreaks' cause of tearing the system down and fighting the organization that perpetrated the broken status quo, he continued upgrading himself with further cybernetic augments, and began to travel around the world, quickly becoming one of the Phreaks' most prominent and radicalized members, Passionately helping other Phreaks and fellow rebels like the Deadlock gang, which commonly stole from large weapon empires like Arbalest and was willing to provide the Phreaks with firepower if they were able to met her price.",
+      "description": "Without being able to rely on any system, Findlay was forced to find help outside the law to improve his condition. While researching ways to improve his prosthetics, he came across the Phreaks and their illegal body modding community, so he set out to look for the local cell in Scotland.\n\nThe group he found happened to be the home of one of the most prominent members, Touch up, who upgraded him with cutting-edge cybernetics that allowed him to regain mobility and manage the pain better. While he stayed with the Phreaks he got to meet many like-minded individuals, like Jackdaw, Boomslang and the Omnics Revel and Susannah, and over time he began to see them as a newly found family of his, even starting to date Susie.\n\nNow as a fully fledged member, Findlay left his old life behind and adopted the new name of Hazard. Fully committed to the Phreaks' cause of tearing the system down and fighting the organization that perpetrated the broken status quo.",
       "image": "",
       "lat": 55.861155,
       "lon": -4.2501687,
@@ -13473,13 +13485,6 @@
           "locationName": "Glasgow, Scotland",
           "country": "Scotland",
           "reasoning": "Findlay joins the Phreaks after getting upgraded cybernetic"
-        },
-        {
-          "locationName": "Deadlock Gorge, United States",
-          "country": "United States,",
-          "reasoning": "The Phreaks collaborate with Deadlock and are provided with Weapons",
-          "lat": 39.1131257,
-          "lon": -108.0127646
         }
       ],
       "heroFilterPlaces": [
@@ -13487,11 +13492,6 @@
           "locationName": "",
           "country": "Hazard",
           "reasoning": "Joins the Phreaks after being welcomed by his local cell"
-        },
-        {
-          "locationName": "",
-          "country": "Ashe,",
-          "reasoning": "Close friends with Hazard after collaborations"
         }
       ],
       "factionFilterPlaces": [
@@ -13499,11 +13499,6 @@
           "locationName": "",
           "country": "Phreaks",
           "reasoning": "Grow support globally and become more violent"
-        },
-        {
-          "locationName": "",
-          "country": "Deadlock Rebels,",
-          "reasoning": "Weapon Supplier, frequently help each other"
         }
       ],
       "npcFilterPlaces": [
@@ -13524,7 +13519,6 @@
         }
       ],
       "headlines": [
-        "Phreaks seen helping Deadlock steal from Arbalest gun supply",
         "Reports of undergrownd body modders continue to increase across many cities"
       ],
       "sources": [
@@ -13538,10 +13532,11 @@
         }
       ],
       "commentary": [
-        "Soft Criminals",
         {
-          "name": "Hazard · Check out these new 'gradies. Phreaks's work. Outdid herself again!",
-          "label": "Touch Up"
+          "name": "Hazard · Check out these new 'gradies. Touch-Up's work. Outdid herself again",
+          "label": "Touch Up",
+          "theaterId": "chatter-hazard",
+          "lineId": "cb244043-31b8-406d-bb9c-38bea0c9c962"
         }
       ]
     },
@@ -16581,7 +16576,7 @@
     },
     {
       "name": "Tear it down",
-      "description": "No description available.",
+      "description": "Over the years fighting alongside the Phreaks, Hazard continued upgrading himself with further cybernetic augments, and began traveling around the world, quickly becoming one of the Phreaks' most prominent and radicalized members, passionately helping other Phreaks and fellow rebels like the Deadlock gang, which commonly stole from large weapon empires like Arbalest and was willing to provide the Phreaks with firepower if they were able to met her price.\n\nTheir cause saw a massive boost following Mondatta's death, as many Omnics and supporters were sought out, afraid and in distress, and when the London Police killed a protestor, the Phreaks were the ones to show up and dismantle the Sonic suppressors that kept the Underworld living in fear. After their missions, Hazard would take time to bring Susie to Mondatta's brand-new memorial at King's Row, paying his respects and bowing to protect the Omnics from their oppressors.\n\nThe movement was growing every day as more people became dissatisfied with the system. It was clear to Hazard that this world was a prison, treating everyone like a number rather than people, and that the Phreaks had the power to help people realize that, setting them free and joining the fight for a better world, even if it meant tearing this one down.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -16594,13 +16589,75 @@
         {
           "locationName": "London, United Kingdom",
           "country": "United Kingdom",
-          "reasoning": "",
+          "reasoning": "The Phreaks rise in support following Mondatta's death",
           "lat": 51.5074456,
           "lon": -0.1277653
+        },
+        {
+          "locationName": "Paris, France",
+          "country": "France",
+          "reasoning": "Phreaks join Omnics in riots and protests",
+          "lat": 48.8588897,
+          "lon": 2.320041
+        },
+        {
+          "locationName": "Deadlock Gorge, United States",
+          "country": "United States",
+          "reasoning": "The Phreaks collaborate with Deadlock and are provided with Weapons",
+          "lat": 39.1131257,
+          "lon": -108.0127646
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Phreaks vandalize police equipment provided by Vishkar",
+        "Deadlock and the Phreaks seemignly allied in the latest Arbalest heist"
+      ],
+      "sources": [
+        {
+          "text": "Tear it Down",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt38dadd74e6ddafe8/6720166c3288a83f32e29fcf/OW_Hazard_EN.pdf",
+            "https://www.youtube.com/watch?v=u282-SDwYtg"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Hazard,",
+          "reasoning": "Becomes one of the more prominent disruptors of the criminal world"
+        },
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": "Close friends with Hazard after collaborations"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deadlock Rebels,",
+          "reasoning": "Weapon Supplier, frequently help each other"
+        },
+        {
+          "locationName": "",
+          "country": "Vishkar Corporation,",
+          "reasoning": "Gets their Sonic supressors destroyed by the Phreaks"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Susannah,",
+          "reasoning": "Visits the Mondatta Memorial at Kings Row"
+        },
+        {
+          "locationName": "",
+          "country": "Touch Up, Boomslang, Jackdaw, Revel,",
+          "reasoning": "Protect Omnics world wide and join in riots and protests"
+        }
+      ]
     },
     {
       "name": "Old Soldiers",
@@ -17805,6 +17862,68 @@
       ]
     },
     {
+      "name": "Much to Learn",
+      "description": "Efi ran into a lot of issues in the early days of testing Orisa. For one, she tried to get her running as soon as possible following the increase in Doonfist's attacks, taunting her to hurry. This caused a breach between Efi and her friends, who tried to help her but were overworked and pushed away. When Orisa finally went online, it took a lot of calibration for both its weapons and her knowledge database, getting Efi in trouble with her family and the law, as testing resulted in broken statues, car accidents and threats of insurance cancellations. At first, this led Efi to believe Orisa's compassion caused her to make a lot of poor decisions, so she deactivated her modules, in spite of how much it pained her.\n\nThe following day Orisa was gone, and the news reported Doomfist atop of the Numbani Heritage Museum, with Orisa seen on route to fight him. Without sympathy, any attempts to reason with the robot failed. Orisa turned off communications and her location beacon. When Efi finally arrived at the museum, she found Orisa holding her own against Doomfist and his lieutenants, one of his supporters turning out to be her cousin Bisi, tangled in a life of crime. While Orisa fought well, Akande managed to incapacitate her, and as Efi came to Orisa's side, the visionary offered her a place in Talon, impressed by her ability. Efi refused, but right as Akande prepared to give the final blow, Orisa turned back and neutralized his supporters, buying enough time for the authorities to show up, forcing Talon to flee.\n\nEfi became a bit of a celebrity in school, but all she really wanted was to make peace with her friends, especially after seeing her own cousin fall for Talon. Her mother wasn't thrilled to see her daughter come face to face with a terrorist again, but nonetheless, she allowed Efi and her friends to work on Orisa still, until preparations for Unity day started. While working on a school play, one of the kids needed to play the part of Doomfist, and Orisa's systems confused him for the real man, attacking him while the student was fine. This made Efi realize things had gone out of hand. In spite of Orisa's pleas that she was still learning from her mistakes, Efi sorrowfully shut her down, to make sure no one else was hurt.",
+      "locationType": "earth",
+      "lat": 12.0022,
+      "lon": 8.5919,
+      "image": "",
+      "cityDisplayName": "City State of Numbani",
+      "yearStart": 2078,
+      "yearEnd": null,
+      "eraName": "The Age of Conflict",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "City State of Numbani",
+          "country": "Numbani",
+          "reasoning": "Orisa gets shut down after several mistakes",
+          "lat": 12.0022,
+          "lon": 8.5919
+        }
+      ],
+      "headlines": [
+        "Doomfist attacks the Numbani Heritage Museum",
+        "OR15 hurts child at the Unity Day play rehersals",
+        "Efi Oladele to pay reparations for Orisa's damage"
+      ],
+      "sources": [
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        },
+        {
+          "text": "Orisa Origin Story",
+          "url": "https://www.youtube.com/watch?v=Lvm0of3iDUU"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist, Orisa,",
+          "reasoning": "Fight at the Heritage Museum"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": "Bring Efi;s cousin as one of Doomfist's lieutenants"
+        },
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Deals with Orisa's errors"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Shuts down Orisa after multiple mistakes"
+        }
+      ]
+    },
+    {
       "name": "Dirty Secrets",
       "description": "When searching for Sombra's true identity, the high activity in Mexico and the Sugar Skull calling sign took the Zarya and Lynx to Dorado, where the exonerated head of Lumérico, Portero, wished to help them deal with the hacker, but given his vulnerable position against Sombra, he refused to lend them their resources, handling the issue internally instead. When the pair went around asking the locals for clues, nobody admitted to anything, seeing Sombra as a Robin Hood figure and protecting her from the authorities. \n\nThat's until a young girl, Alejandra, gave them a clue about how to find her. In the middle of the night, the pair infiltrated a local warehouse and took down its security protocols, luring Sombra out. Zarya quickly trapped the hacker into a graviton surge, even taunting her by saying her real name, Olivia Colomar, which she learned from the girl she met earlier. Sombra threatened to reveal Katya's secrets, how Volskaya was using technology from the very same Omnics it was seeking to destroy, and how even though Katya said Sombra tried to kill her, in reality she was trying to save her life and keep her in power because she believed they could ally against a bigger enemy behind the strings of the world.\n\nZarya did not know what to make of this, but there was little time to think, since Sombra had hacked Lynx earlier in Numbani and in order to escape she deactivated him, telling Zarya the warehouse was set to explode before vanishing herself. On the way out, Zarya, in spite of herself, went back to rescue Lynx, who even questioned her change of heart as they regained control of their bodies. Zarya had grown troubled by what Sombra told her, to know the suffering of her home was merely a source of profit for Volskaya, not only that but getting to see an Omnic feel real emotions and grief for her suffering in spite of how many of their kind she had killed, it made her reconsider her position in this war. When she returned to Russia, she decided to keep Volskaya's secret for the good of the nation, but she was unable to trust Katya or her intentions anymore. She quit the chase for Sombra and returned to the Siberian Front, fighting for her people's safety but jaded by the reality of the war.",
       "locationType": "earth",
@@ -18067,7 +18186,7 @@
       "name": "Last Child of the Sun",
       "locationType": "earth",
       "cityDisplayName": "Runasapi, Peru",
-      "description": "No description available.",
+      "description": "After years of training to become a part of the Inti Warriors, Illari was finally deemed ready, becoming the youngest person to ever undergo the Solar threading ceremony, right around her coming of age birthday. In order to store and control the sun's power, every Inti needed to imbue their body with cybernetic threading, and the tradition called for every warrior to gather into the engraving chamber, a distant temple off of the nearby mountains of Runasapi. At first, the Inti were ready for the augmentation, channeling the sun and ready to welcome Illari as one of their own, but nobody could have been prepared for what happened.\n\nThe procedure unleashed a devastating amount of power from Illari's body as it absorbed the solar energy through her threads, causing a massive blast that destroyed the entire chamber, essentially vaporizing the entirety of the Wariors in an instant. When the dust settled, Illari could only watch in horror, as the defenders of her people were now gone, and with them the future she spent her whole life preparing for. The power readings of the ceremony were extremely off, almost as if there was some external meddling during the procedure that caused the accident, yet Illari could only blame herself, after years of being seen as an oddity, a prodigy, she believed the raw power of the explosion to be the result of her dedication, she blamed herself for the death of her people, and even if the people of Runasapi did not see it the same way, and openly welcomed her back into the town, cherishing her legacy and mourning their loss together, Illari couldn't bring herself to face them.\n\nUnable to move on from the tragedy, Illari isolated herself, leaving the city after refusing all sympathy. She lived as a llama header, with her pet Chuño being her only real companion since her youth, with whom she often rehearsed conversations, afraid of how she would come off otherwise. She replayed the accident over and over in her head, wondering if things could have been different if she hadn't strived for perfection, and if it was her fault that no one knew the true extent of her power, not once even considering that the accident might not have been her doing to begin with. With no clear path to follow, she continued her training alone, and over time it became clear that even if the warriors were dead, she was still one of them, the last child of the Sun. Even if she couldn't face anyone in Runasapi, it was still her honor-bound duty to be its protector, and to keep the memory of her people alive.",
       "image": "",
       "lat": -13.1631,
       "lon": -72.545,
@@ -18077,30 +18196,34 @@
         {
           "locationName": "Runasapi, Peru",
           "country": "Peru",
-          "reasoning": ""
+          "reasoning": "The Inti Warriors die during Illari's ceremony"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Illari",
-          "reasoning": ""
+          "reasoning": "Blames herself for the death of her people"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Inti Warriors,",
-          "reasoning": ""
+          "reasoning": "Completely Annihlated by Illari's Ceremony"
         },
         {
           "locationName": "",
           "country": "The Chernobog Conspiracy,",
-          "reasoning": ""
+          "reasoning": "Seemingly involved in the accident"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "All of the Inti Warriors wiped out during terrible accident",
+        "Runasapi unveils the Museum of the Inti Warriors",
+        "The last child of the Sun disappears from Runasapi following the chamber incident"
+      ],
       "sources": [
         {
           "text": "Illari Origin Story",
@@ -23366,69 +23489,6 @@
       ]
     },
     {
-      "name": "Reclaiming Gibraltar",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 36.1407517,
-      "lon": -5.345374,
-      "image": "",
-      "cityDisplayName": "Watchpoint: Gibraltar",
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Gibraltar",
-          "country": "Gibraltar",
-          "reasoning": "",
-          "lat": 36.1407517,
-          "lon": -5.345374
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Tracer, Winston, Juno, Brigitte, Echo,",
-          "reasoning": "The Coast Team"
-        },
-        {
-          "locationName": "",
-          "country": "Jetpack Cat, Torbjörn, Pharah, Ana,",
-          "reasoning": "The Air Team"
-        },
-        {
-          "locationName": "",
-          "country": "Sojourn, Cassidy, Mercy, Wuyang, Reinhardt, Anran, Mizuki, Mei, Baptiste, Zarya, Lúcio,",
-          "reasoning": "The Dropship Team"
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire, Colosseo Gladiatori,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Efi,",
-          "reasoning": "Part of Coast Team"
-        },
-        {
-          "locationName": "",
-          "country": "Titus,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Ultimatum",
       "description": "No description available.",
       "locationType": "earth",
@@ -23487,6 +23547,69 @@
         {
           "locationName": "",
           "country": "Maximillien,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Reclaiming Gibraltar",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
+      "headlines": [],
+      "sources": [],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tracer, Winston, Juno, Brigitte, Echo,",
+          "reasoning": "The Coast Team"
+        },
+        {
+          "locationName": "",
+          "country": "Jetpack Cat, Torbjörn, Pharah, Ana,",
+          "reasoning": "The Air Team"
+        },
+        {
+          "locationName": "",
+          "country": "Sojourn, Cassidy, Mercy, Wuyang, Reinhardt, Anran, Mizuki, Mei, Baptiste, Zarya, Lúcio,",
+          "reasoning": "The Dropship Team"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire, Colosseo Gladiatori,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Part of Coast Team"
+        },
+        {
+          "locationName": "",
+          "country": "Titus,",
           "reasoning": ""
         }
       ]
