@@ -1784,6 +1784,29 @@
       ]
     },
     {
+      "name": "Shared Vision",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 0,
+      "lon": 0,
+      "image": "",
+      "cityDisplayName": "",
+      "yearEnd": null,
+      "eraName": "The Age of Progress",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Road to the Stars",
       "description": "Like many other fields of science, astronomy had taken massive leaps over the years, with the monitoring of near-earth objects becoming so advanced, that it allowed humanity to avoid and divert the course of extinction-level asteroids and telescopes were becoming so accurate that many mysteries of old had been solved, and with those new ones arrived.\n\nAt the center of all of these developments was Lucheng Interstellar, a Chinese corporation that had envisioned humanity's future in the stars, developing plans for long-range space travel over the years. But before this was possible, they needed to pursue further research into the long-term effects of low gravity on living organisms. In order to do this, they partnered with many scientists across the world, including the Indian Space Research Organization, which had been developing massive mag-lev satellite launchers for years. Thanks to IRSO's launching tracks, Lucheng would be able to speed up the construction of their first major milestone in the stars, the Horizon Lunar Colony.",
       "locationType": "earth",
@@ -6649,27 +6672,6 @@
       ]
     },
     {
-      "name": "Incurable",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": -18.4554963,
-      "lon": 29.7468414,
-      "image": "",
-      "cityDisplayName": "Zimbabwe",
-      "yearEnd": null,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doctrine,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
       "name": "Ye Anran is Born",
       "locationType": "earth",
       "cityDisplayName": "Chengdu, China",
@@ -6915,6 +6917,36 @@
         "Days at the Academy",
         "Best Roommate",
         "Missing the Academy"
+      ]
+    },
+    {
+      "name": "Life's Battery",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -18.4554963,
+      "lon": 29.7468414,
+      "image": "",
+      "cityDisplayName": "Zimbabwe",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        }
       ]
     },
     {
@@ -9630,6 +9662,54 @@
       ]
     },
     {
+      "name": "Cost of Life",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 64.3984222,
+      "lon": -17.3178863,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearEnd": null,
+      "eraName": "The Golden Age",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Freja,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch, Search & Rescue,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Healing Nature",
       "description": "As Niran grew older, he would use his parent's wealth to travel the world during his breaks from the architecture academy. While exploring the wilderness of the globe, he was able to experience the turmoil that existed in the world outside his bubble of wealth. Animals and forests dying, in part due to Vishkar's own expansion, war, illness and poverty everywhere he looked, with people who needed help being actively ignored, entire communities riddled with pain. \n\nNiran became determined to use his talents to fix the world, and began to experiment with healing applications of hardlight. After months of research at the Architech Academy, Niran used his knowledge and fascination of botany. Niran would push the limits of hardlight design into something new entirely. A self-replicating biomass made from hardlight. A living, organic material manifested from light structures, capable of repairing tissue near its light in the blink of an eye. Biolight was a revolutionary discovery that could change the world and bring balance back between man and nature. However, he would soon discover that was not possible under Vishkar.",
       "locationType": "earth",
@@ -9805,45 +9885,6 @@
         "Most Crazy Thing",
         "Chronal Uncertainty",
         "Time Travel"
-      ]
-    },
-    {
-      "name": "Sacrifice",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 64.3984222,
-      "lon": -17.3178863,
-      "image": "",
-      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
-      "yearEnd": null,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Grímsvötn, Iceland",
-          "country": "Iceland",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doctrine,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Ana, Freja,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Overwatch, Search & Rescue,",
-          "reasoning": ""
-        }
       ]
     },
     {
@@ -23241,6 +23282,48 @@
       ]
     },
     {
+      "name": "Crucible",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 8.2151249,
+      "lon": 3.5642897,
+      "image": "",
+      "cityDisplayName": "Oyo, Nigeria",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oyo, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Crucible",
+          "url": "https://www.youtube.com/watch?v=6lbNb8SzfHs",
+          "urls": [
+            "https://www.youtube.com/watch?v=6lbNb8SzfHs",
+            "https://overwatch.blizzard.com/en-us/media/comic/crucible/"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Widowmaker, Reaper, Sombra,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
       "name": "Castaway",
       "description": "No description available.",
       "locationType": "earth",
@@ -23357,43 +23440,41 @@
       ]
     },
     {
-      "name": "Crucible",
+      "name": "Breakout",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 8.2151249,
-      "lon": 3.5642897,
+      "lat": 64.4081387,
+      "lon": -17.3377919,
       "image": "",
-      "cityDisplayName": "Oyo, Nigeria",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Oyo, Nigeria",
-          "country": "Nigeria",
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
           "reasoning": ""
         }
       ],
       "headlines": [],
       "sources": [
         {
-          "text": "Crucible",
-          "url": "https://www.youtube.com/watch?v=6lbNb8SzfHs",
-          "urls": [
-            "https://www.youtube.com/watch?v=6lbNb8SzfHs",
-            "https://overwatch.blizzard.com/en-us/media/comic/crucible/"
-          ]
+          "text": "Breakout",
+          "url": "https://www.youtube.com/watch?v=h5dwH7nx9do"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Doomfist,",
+          "country": "Doomfist, Doctrine, Sombra, Reaper, Widowmaker,",
           "reasoning": ""
-        },
+        }
+      ],
+      "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Widowmaker, Reaper, Sombra,",
+          "country": "Helix Securities,",
           "reasoning": ""
         }
       ]
@@ -23449,42 +23530,30 @@
       ]
     },
     {
-      "name": "Breakout",
+      "name": "Masterpiece",
       "description": "No description available.",
       "locationType": "earth",
-      "lat": 64.4081387,
-      "lon": -17.3377919,
+      "lat": 0,
+      "lon": 0,
       "image": "",
-      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "cityDisplayName": "Oyo, Nigeria",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Grímsvötn, Iceland",
-          "country": "Iceland",
-          "reasoning": ""
-        }
-      ],
+      "secondaryCountryPlaces": [],
       "headlines": [],
       "sources": [
         {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        },
+        {
           "text": "Breakout",
           "url": "https://www.youtube.com/watch?v=h5dwH7nx9do"
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doomfist, Doctrine, Sombra, Reaper, Widowmaker,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities,",
-          "reasoning": ""
         }
       ]
     },
