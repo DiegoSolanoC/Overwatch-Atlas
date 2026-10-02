@@ -18273,74 +18273,10 @@
       ]
     },
     {
-      "name": "Reunion",
-      "locationType": "earth",
-      "cityDisplayName": "Route 66, United States",
-      "description": "No description available.",
-      "image": "",
-      "lat": 39.1131257,
-      "lon": -108.0127646,
-      "eraName": "The Age of Conflict",
-      "yearStart": 2079,
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Route 66, United States",
-          "country": "United States",
-          "reasoning": "",
-          "lat": 39.1131257,
-          "lon": -108.0127646
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Cassidy,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Ashe,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Echo,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Deadlock, Overwatch",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "B.O.B,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Bars, The Triplets,",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Reunion",
-          "url": "https://www.youtube.com/watch?v=PKYVvPNhRR0"
-        }
-      ]
-    },
-    {
       "name": "Hero of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "No description available.",
+      "description": "Cassidy sat at an old dinner somewhere on Route 66, waiting patiently as he enjoyed some food. When a massive crash rumbled outside, that was his cue. The Deadlock gang had blown up the side of a moving train likely heading from or out of Watchpoint: Gran Mesa, and there was something in the cargo that interested Cassidy.\n\nWhen he revealed himself, there was tension in the air among the rebels, who were more than eager to shoot him in the head for treason. He tried to make things easy, he couldn't bother to stop them, there was just one thing in that cargo he needed, but Ashe was not going to let him have it his way. At high noon, an all-out gun fight broke out. Six on one, Cassidy managed to keep them entertained until B.O.B's upgraded firepower forced him into a corner. Just so happened, he hid nearby some of their grenades, and he used them to incapacitate the remaining rebels.\n\nAfter tying Ashe, the rebels and the disassembled parts of Bob and sending them off the area, he finally got to the cargo, where he opened a white cocoon, revealing Echo was inside. The robot was confused, waking up after years in confinement to see her closest friend now without one of his arms. Cassidy explained what happened to her, and how he received Winston's invite to bring Overwatch back together, but he never quite felt like he truly belonged there. Still, he appreciates what Winston was trying to do, and while they want him back, in reality they need someone like Echo. Without saying much else, he took Ashe's bike and rode into the sunset, leaving Echo behind to explore on her own and hopefully make her way to Gibraltar if she sought it best.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -18350,7 +18286,7 @@
         {
           "locationName": "City State of Numbani",
           "country": "Numbani",
-          "reasoning": "",
+          "reasoning": "Orisa and Lúcio defeat Doomfist",
           "lat": 12.0022,
           "lon": 8.5919
         }
@@ -18359,32 +18295,48 @@
         {
           "locationName": "",
           "country": "Orisa, Doomfist,",
-          "reasoning": ""
+          "reasoning": "Battle at the charity concert"
         },
         {
           "locationName": "",
-          "country": "Lúcio, Sojourn",
-          "reasoning": ""
+          "country": "Lúcio,",
+          "reasoning": "Holds a charity concert for Unity day"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Is chased out of Numbani"
         },
         {
           "locationName": "",
           "country": "Numbani City of Harmony,",
-          "reasoning": ""
+          "reasoning": "Celebrates Orisa as a hero"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Doomfist pushed out of Numbani by Orisa",
+        "Lúcio hold a charity concert for Unity Day"
+      ],
       "sources": [
         {
           "text": "Hero of Numbani",
           "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Causes a sonic blast that topples Talon agents"
+        }
+      ],
+      "commentary": [
+        {
+          "name": "Coward Run",
+          "theaterId": "b5df4ebe-b9b4-4d11-867e-7b20496a1945"
         }
       ]
     },
@@ -18444,6 +18396,73 @@
       ]
     },
     {
+      "name": "Reunion",
+      "locationType": "earth",
+      "cityDisplayName": "Route 66, United States",
+      "description": "Cassidy sat at an old dinner somewhere on Route 66, waiting patiently as he enjoyed some food. When a massive crash rumbled outside, that was his cue. The Deadlock gang had blown up the side of a moving train likely heading from or out of Watchpoint: Gran Mesa, and there was something in the cargo that interested Cassidy.\n\nWhen he revealed himself, there was tension in the air among the rebels, who were more than eager to shoot him in the head for treason. He tried to make things easy, he couldn't bother to stop them, there was just one thing in that cargo he needed, but Ashe was not going to let him have it his way. At high noon, an all-out gun fight broke out. Six on one, Cassidy managed to keep them entertained until B.O.B's upgraded firepower forced him into a corner. Just so happened, he hid nearby some of their grenades, and he used them to incapacitate the remaining rebels.\n\nAfter tying Ashe, the rebels and the disassembled parts of Bob and sending them off the area, he finally got to the cargo, where he opened a white cocoon, revealing Echo was inside. The robot was confused, waking up after years in confinement to see her closest friend now without one of his arms. Cassidy explained what happened to her, and how he received Winston's invite to bring Overwatch back together, but he never quite felt like he truly belonged there. Still, he appreciates what Winston was trying to do, and while they want him back, in reality they need someone like Echo. Without saying much else, he took Ashe's bike and rode into the sunset, leaving Echo behind to explore on her own and hopefully make her way to Gibraltar if she sought it best.",
+      "image": "",
+      "lat": 39.1131257,
+      "lon": -108.0127646,
+      "eraName": "The Age of Conflict",
+      "yearStart": 2079,
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Route 66, United States",
+          "country": "United States",
+          "reasoning": "Cassidy reawakens Echo after stealing cargo from the Deadlock Rebels",
+          "lat": 39.1131257,
+          "lon": -108.0127646
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Cassidy,",
+          "reasoning": "Beats Deadlock to take back Echo"
+        },
+        {
+          "locationName": "",
+          "country": "Ashe,",
+          "reasoning": "Fails to catch Cassidy"
+        },
+        {
+          "locationName": "",
+          "country": "Echo,",
+          "reasoning": "Reawakens and is off to explore the world"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Deadlock, Overwatch",
+          "reasoning": "Deadlock gets a hold of ex Overwatch Cargo"
+        }
+      ],
+      "yearEnd": null,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "B.O.B,",
+          "reasoning": "Burst into pieces but still functions"
+        },
+        {
+          "locationName": "",
+          "country": "Bars, The Triplets,",
+          "reasoning": "Get Overwhelmed by Cassidy"
+        }
+      ],
+      "headlines": [
+        "Deadlock Gang blows up a military cargo near route 66",
+        "Overwatch Project: Echo seen flying at high speeds across America"
+      ],
+      "sources": [
+        {
+          "text": "Reunion",
+          "url": "https://www.youtube.com/watch?v=PKYVvPNhRR0"
+        }
+      ]
+    },
+    {
       "name": "Meeting your Heroes",
       "description": "No description available.",
       "locationType": "earth",
@@ -18463,6 +18482,105 @@
       ],
       "headlines": [],
       "sources": []
+    },
+    {
+      "name": "New Blood",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "New Blood 1",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt990e1c8270ab0a55/618487f3edbd82202b552c06/OW_new-blood-1_EN.pdf"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "",
+          "lat": 30.0444,
+          "lon": 31.2357
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Cassidy",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Talon Empire, Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": []
+    },
+    {
+      "name": "Lost Family",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Cairo, Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "New Blood 2",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt461c645442341e70/61afd28c9081800dd2472da3/OW_2.2_EN_Final.pdf"
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Cairo, Egypt",
+          "country": "Egypt",
+          "reasoning": "",
+          "lat": 30.0444,
+          "lon": 31.2357
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Ana, Pharah",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Cassidy,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Helix Securities,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Talon Empire,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": ""
+        }
+      ],
+      "yearEnd": null,
+      "headlines": []
     },
     {
       "name": "The Plan",
@@ -18556,157 +18674,6 @@
       ]
     },
     {
-      "name": "New Blood",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "yearStart": 2079,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "New Blood 1",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt990e1c8270ab0a55/618487f3edbd82202b552c06/OW_new-blood-1_EN.pdf"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ana, Cassidy",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Talon Empire, Overwatch,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": []
-    },
-    {
-      "name": "Suspicious activity",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Toronto, Canada",
-      "lat": 43.6534817,
-      "lon": -79.3839347,
-      "yearStart": 2079,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "Calling",
-          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
-        }
-      ],
-      "yearEnd": null,
-      "headlines": [],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Toronto, Canada",
-          "country": "Canada",
-          "reasoning": ""
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Sojourn",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Null Sector",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "IJC,",
-          "reasoning": ""
-        }
-      ],
-      "npcFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Trembley,",
-          "reasoning": ""
-        }
-      ]
-    },
-    {
-      "name": "Lost Family",
-      "description": "No description available.",
-      "locationType": "earth",
-      "cityDisplayName": "Cairo, Egypt",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "yearStart": 2079,
-      "eraName": "The Age of Conflict",
-      "image": "",
-      "sources": [
-        {
-          "text": "New Blood 2",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt461c645442341e70/61afd28c9081800dd2472da3/OW_2.2_EN_Final.pdf"
-        }
-      ],
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Cairo, Egypt",
-          "country": "Egypt",
-          "reasoning": "",
-          "lat": 30.0444,
-          "lon": 31.2357
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Ana, Pharah",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Cassidy,",
-          "reasoning": ""
-        }
-      ],
-      "factionFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Helix Securities,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Talon Empire,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        }
-      ],
-      "yearEnd": null,
-      "headlines": []
-    },
-    {
       "name": "Stalker",
       "locationType": "earth",
       "cityDisplayName": "Bucharest, Romania",
@@ -18785,6 +18752,58 @@
       ],
       "yearEnd": null,
       "headlines": []
+    },
+    {
+      "name": "Suspicious activity",
+      "description": "No description available.",
+      "locationType": "earth",
+      "cityDisplayName": "Toronto, Canada",
+      "lat": 43.6534817,
+      "lon": -79.3839347,
+      "yearStart": 2079,
+      "eraName": "The Age of Conflict",
+      "image": "",
+      "sources": [
+        {
+          "text": "Calling",
+          "url": "https://www.youtube.com/watch?v=alJt9mdQKKc"
+        }
+      ],
+      "yearEnd": null,
+      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Toronto, Canada",
+          "country": "Canada",
+          "reasoning": ""
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Null Sector",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "IJC,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Trembley,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Surprise attack",
@@ -23540,7 +23559,13 @@
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oyo, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
       "headlines": [],
       "sources": [
         {
