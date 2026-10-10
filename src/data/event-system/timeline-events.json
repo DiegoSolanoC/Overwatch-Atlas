@@ -2,12 +2,12 @@
   "events": [
     {
       "name": "Tamuka Yeukai is Born",
-      "description": "No description available.",
+      "description": "On the 20th of October 2003, Tamuka Yeukai was born in Zimbawe, with a life defined by lost. Both of his parents died at a young age, leaving him only with his younger brother Tatenda, who suffered from a rare degenerative disease. Tamuka devoted his life to the only family he had left, trying to give him the world and fighting with doctors for years, growing tired of hearing that there was nothing they could do to help.",
       "locationType": "earth",
-      "lat": -18.4554963,
-      "lon": 29.7468414,
+      "lat": -17.8567035,
+      "lon": 31.0601584,
       "image": "",
-      "cityDisplayName": "Zimbabwe",
+      "cityDisplayName": "Harare, Zimbabwe",
       "yearStart": 2003,
       "yearEnd": null,
       "eraName": "The Age of Progress",
@@ -19,7 +19,12 @@
         }
       ],
       "headlines": [],
-      "sources": [],
+      "sources": [
+        {
+          "text": "Overwatch Website, Doctrine",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/doctrine/"
+        }
+      ],
       "heroFilterPlaces": [
         {
           "locationName": "",
@@ -17625,7 +17630,7 @@
       "name": "Idina Unit OR15A Goes Online",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "In the months following the airport attack, Efi burnt through her Genius Grant, her savings, multiple donations and money from everything she sold, all t work on her new passion project, the defender of Numbani. Using the OR15 parts, she salvaged alongside more advanced parts like a Branford arm, a fusion driver and a miniature Tobelstein reactor for graviton generation. She also used an Axiom vocal processor with clips from her mother, grandmother, her calculus teacher and Gabrielle Adawe's recordings, all synthesized together into a new warm personality.\n\nOn May 9th of 2078, the modified Idina Unit OR15 went online, to which Efi named her Orisa, after the deities of the Yoruba faith. A robot with the power of the most advanced military machines but the heart and compassion of a young girl",
+      "description": "In the months following the airport attack, Efi burnt through her Genius Grant, her savings, multiple donations and money from everything she sold, all t work on her new passion project, the defender of Numbani. Using the OR15 parts, she salvaged alongside more advanced parts like a Branford arm, a fusion driver and a miniature Tobelstein reactor for graviton generation was planned but she could not buy one in time. She also used an Axiom vocal processor with clips from her mother, grandmother, her calculus teacher and Gabrielle Adawe's recordings, all synthesized together into a new warm personality.\n\nOn May 9th of 2078, the modified Idina Unit OR15 went online, to which Efi named her Orisa, after the deities of the Yoruba faith. A robot with the power of the most advanced military machines but the heart and compassion of a young girl",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -17904,7 +17909,7 @@
     },
     {
       "name": "Much to Learn",
-      "description": "Efi ran into a lot of issues in the early days of testing Orisa. For one, she tried to get her running as soon as possible following the increase in Doonfist's attacks, taunting her to hurry. This caused a breach between Efi and her friends, who tried to help her but were overworked and pushed away. When Orisa finally went online, it took a lot of calibration for both its weapons and her knowledge database, getting Efi in trouble with her family and the law, as testing resulted in broken statues, car accidents and threats of insurance cancellations. At first, this led Efi to believe Orisa's compassion caused her to make a lot of poor decisions, so she deactivated her modules, in spite of how much it pained her.\n\nThe following day Orisa was gone, and the news reported Doomfist atop of the Numbani Heritage Museum, with Orisa seen on route to fight him. Without sympathy, any attempts to reason with the robot failed. Orisa turned off communications and her location beacon. When Efi finally arrived at the museum, she found Orisa holding her own against Doomfist and his lieutenants, one of his supporters turning out to be her cousin Bisi, tangled in a life of crime. While Orisa fought well, Akande managed to incapacitate her, and as Efi came to Orisa's side, the visionary offered her a place in Talon, impressed by her ability. Efi refused, but right as Akande prepared to give the final blow, Orisa turned back and neutralized his supporters, buying enough time for the authorities to show up, forcing Talon to flee.\n\nEfi became a bit of a celebrity in school, but all she really wanted was to make peace with her friends, especially after seeing her own cousin fall for Talon. Her mother wasn't thrilled to see her daughter come face to face with a terrorist again, but nonetheless, she allowed Efi and her friends to work on Orisa still, until preparations for Unity day started. While working on a school play, one of the kids needed to play the part of Doomfist, and Orisa's systems confused him for the real man, attacking him while the student was fine. This made Efi realize things had gone out of hand. In spite of Orisa's pleas that she was still learning from her mistakes, Efi sorrowfully shut her down, to make sure no one else was hurt.",
+      "description": "Efi ran into a lot of issues in the early days of testing Orisa. For one, she tried to get her running as soon as possible following the increase in Doonfist's attacks, taunting her to hurry. This caused a breach between Efi and her friends, who tried to help her but were overworked and pushed away. When Orisa finally went online, it took a lot of calibration for both its weapons and her knowledge database, getting Efi in trouble with her family and the law, as testing resulted in broken statues, car accidents and threats of insurance cancellation, leaving Efi without money to get the part she still needed for Graviton power and frustrated over the learning progress. At first, this led Efi to believe Orisa's compassion caused her to make a lot of poor decisions, so she deactivated her modules, in spite of how much it pained her.\n\nThe following day Orisa was gone, and the news reported Doomfist atop of the Numbani Heritage Museum, with Orisa seen on route to fight him. Without sympathy, any attempts to reason with the robot failed. Orisa turned off communications and her location beacon. When Efi finally arrived at the museum, she found Orisa holding her own against Doomfist and his lieutenants, one of his supporters turning out to be her cousin Bisi, tangled in a life of crime. While Orisa fought well, Akande managed to incapacitate her, and as Efi came to Orisa's side, the visionary offered her a place in Talon, impressed by her ability. Efi refused, but right as Akande prepared to give the final blow, Orisa turned back and neutralized his supporters, buying enough time for the authorities to show up, forcing Talon to flee.\n\nEfi became a bit of a celebrity in school, but all she really wanted was to make peace with her friends, especially after seeing her own cousin fall for Talon. Her mother wasn't thrilled to see her daughter come face to face with a terrorist again, but nonetheless, she allowed Efi and her friends to work on Orisa still, until preparations for Unity day started. While working on a school play, one of the kids needed to play the part of Doomfist, and Orisa's systems confused him for the real man, attacking him while the student was fine. This made Efi realize things had gone out of hand. In spite of Orisa's pleas that she was still learning from her mistakes, Efi sorrowfully shut her down, to make sure no one else was hurt.",
       "locationType": "earth",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -18030,7 +18035,7 @@
     },
     {
       "name": "Waging War",
-      "description": "Ramattra spent years silent, watching as the world continued to get worse for Omnics, helping where he could and rallying some support for Null Sector around the world, even if the name continued to be tainted by his failures. He was in London when his master, Mondatta, was assassinated, and while he had grown to resent him and his vision for coexistence, he still couldn't help but mourn his death, even if from a distance.\n\nWhile the years following the uprising were quiet, in reality he had continued production of a new generation of Null Sector machines, one large enough to not only attack multiple cities at once, overwhelming most militaries and equipped with machines that could incapacitate Omnic by putting them in a coma-like state. All of these thanks to years' worth of funding from Talon, and now that Doomfist was back in control, it was time to arrange the preparations for conflict. Ramattra met with Talon once more, taking a seat at the council and outlining the plans of the upcoming invasion and how Talon members were to profit out of it. Vishkar in particular, was set to be one of the largest benefactors from the chaos as any destruction left from the invasion opened new opportunities for development, just like in the days of the Crisis. \n\nIn his time-shared with Talon, Ramattra grew to find them quite a lacking ally. While they provided resources and Intel, they were mired by greed, betrayal and lust for power. He was particularly appalled by Maximilien, an Omnic just like him, but too self-centered to care about his kind, or anything beyond himself and his own riches. He knew well that this partnership with Talon was not meant to last, especially with the growing talks among the ranks of the Gladiator causing trouble for their troops in Rome, and Akande's disregard of the threat made it clear that one day, Talon's troubles would become the world's troubles.",
+      "description": "Ramattra spent years silent, watching as the world continued to get worse for Omnics, helping where he could and rallying some support for Null Sector around the world, even if the name continued to be tainted by his failures. He was in London when his master, Mondatta, was assassinated, and while he had grown to resent him and his vision for coexistence, he still couldn't help but mourn his death, even if from a distance.\n\nWhile the years following the uprising were quiet, in reality he had continued production of a new generation of Null Sector machines, one large enough to not only attack multiple cities at once, overwhelming most militaries and equipped with machines that could incapacitate Omnic by putting them in a coma-like state. All of these thanks to years' worth of funding from Talon, and now that Doomfist was back in control, it was time to arrange the preparations for conflict. Ramattra met with Talon once more, taking a seat at the council and outlining the plans of the upcoming invasion and how Talon members were to profit out of it. Vishkar in particular, was set to be one of the largest benefactors from the chaos as any destruction left from the invasion opened new opportunities for development, just like in the days of the Crisis.\n\nIn his time-shared with Talon, Ramattra grew to find them quite a lacking ally. While they provided resources and Intel, they were mired by greed, betrayal and lust for power. And while Akande's crusade in Numbani made more Omnics and Humans turn against each other in the city that had championed their coexhistence, Ramattra wasn't particularly happy with the way Akande's methods endangered his people. He was particularly appalled by Maximilien, an Omnic just like him, but too self-centered to care about his kind, or anything beyond himself and his own riches. He knew well that this partnership with Talon was not meant to last, especially with the growing talks among the ranks of the Gladiator causing trouble for their troops in Rome, and Akande's disregard of the threat made it clear that one day, Talon's troubles would become the world's troubles.",
       "locationType": "earth",
       "lat": 41.8933203,
       "lon": 12.4829321,
@@ -18276,7 +18281,7 @@
       "name": "Hero of Numbani",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "Cassidy sat at an old dinner somewhere on Route 66, waiting patiently as he enjoyed some food. When a massive crash rumbled outside, that was his cue. The Deadlock gang had blown up the side of a moving train likely heading from or out of Watchpoint: Gran Mesa, and there was something in the cargo that interested Cassidy.\n\nWhen he revealed himself, there was tension in the air among the rebels, who were more than eager to shoot him in the head for treason. He tried to make things easy, he couldn't bother to stop them, there was just one thing in that cargo he needed, but Ashe was not going to let him have it his way. At high noon, an all-out gun fight broke out. Six on one, Cassidy managed to keep them entertained until B.O.B's upgraded firepower forced him into a corner. Just so happened, he hid nearby some of their grenades, and he used them to incapacitate the remaining rebels.\n\nAfter tying Ashe, the rebels and the disassembled parts of Bob and sending them off the area, he finally got to the cargo, where he opened a white cocoon, revealing Echo was inside. The robot was confused, waking up after years in confinement to see her closest friend now without one of his arms. Cassidy explained what happened to her, and how he received Winston's invite to bring Overwatch back together, but he never quite felt like he truly belonged there. Still, he appreciates what Winston was trying to do, and while they want him back, in reality they need someone like Echo. Without saying much else, he took Ashe's bike and rode into the sunset, leaving Echo behind to explore on her own and hopefully make her way to Gibraltar if she sought it best.",
+      "description": "Almost a year since Doonfist's original attack at the Airport, Efi and her friends were working on a fundraiser for Unity Day, when she got a call from none other than Lúcio himself, who wanted to visit Numbani and support it by doing a charity concert at the plaza. There was just one catch: He wanted Orisa to join them. Unable to admit she had shut Orisa down, Efi agreed, but in spite of her friends pleading, she refused to turn the robot back on, afraid it would harm people. In the days after, however, she received a package by Lúcio with the missing Tobelstein reactor she needed for Orisa, and with some convincing from her mother, she decided to give Orisa another try.\n\nDays before the event, Efi ran into Bisi at a café that had been taken by Talon. He went to tell her to consider Akande's offer, implying he had a role in her nomination for the Genius Grant. Efi refused but this only strengthened her resolve. Someone needed to kick Talon out of the city. When the event finally came, people seemed more comfortable around Orisa since she had learned how to behave around crowds, and the duo got to meet Lúcio and chat over his experiences in Rio. The event was going well up until Lúcio got to the stage, when Talon made their move.\n\nDoomfist appeared covered in white paint, honoring spirits, declaring himself victor of a battle yet to come. Lúcio and Orisa held their own against Talon while Efi helped evacuate the civilians. She tried to reason with Bisi as he destroyed Orisa's supercharger, but it was no use. Instead, she leads the students into rigging Lúcio's sonic amplifiers to lead out a massive blast, toppling the Talon agents. Akande took Bisi hostage, dropping him off a ledge. Orisa was able to catch Bisi with a graviton pulse, but it bought Doomfist time to escape, and soon after, Bisi was taken by the authorities. The concert incident marked the last sighting of Doomfist in Numbani since his return, and a turn in public opinion on Orisa as people saw her as an Efi as the new heroes of Numbani.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -18464,7 +18469,7 @@
     },
     {
       "name": "Meeting your Heroes",
-      "description": "No description available.",
+      "description": "After Unity Day, Orisa and Efi made international headlines for stopping Doonfist's rampage, and the city granted Efi the resources needed to continue the project formally. One day, however, Orisa had to break into Efi's classroom with surprising news, telling her that someone was awaiting them, and she would explain everything when airborne, as it turns out, there was a drop-ship bound for Toronto outside. Vivian Chase had come across the news of the young heroes of Numbani and pulled a lot of favors to personally meet both.\n\nThis was a dream come true for Efi, as Sojourn was always her favorite agent from the Overwatch cartoon, and while Vivian had her reservations about her portrayal, she was always happy to inspire the new generation. After escorting the two through Toronto and sitting down at the park, Efi asked Vivian if there was any chance of Overwatch truly coming back after Winston's recall. Vivian had ignored the recall, as she found it unlikely that it could ever work out given her own criticisms of old Overwatch, but if they inspired her to make Orisa and help Numbani, the organization must have done something right.\n\nShe wanted them to know what it truly meant to be seen as a hero, especially so young, that now they had a legacy to take care of, and a mission to uphold, and that was a big responsibility. Both Efi and Orisa both knew what their goal was, to defend Numbani better than anyone could. Efi took Vivian's words to heart, using the city's funding to upgrade Orisa with a more mobile, intimidating design, including an energy javelin that would let her pin down criminals on the run. Under their watch, Numbani would never be terrorized by warmongers and false prophets again.",
       "locationType": "earth",
       "lat": 43.6534817,
       "lon": -79.3839347,
@@ -18477,15 +18482,47 @@
         {
           "locationName": "Toronto, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Sojourn calls in Efi and Orisa to Canada"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "The Hero of Numban seen running around New Queens Street"
+      ],
+      "sources": [
+        {
+          "text": "Hero of Numbani",
+          "url": "https://www.amazon.com/dp/133857597X?lv=shuf&channelId=500&plpRedirect=mhFallback"
+        },
+        {
+          "text": "Unity",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltea0ccf340e7f7cef/665e02a177dc635847f2bc03/OW_Heroes_Orisa_EN_FINAL_REV.pdf"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Sojourn, Orisa,",
+          "reasoning": "Vivian tells Orisa and Efi to think of their new responsability as heroes"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Numbani City of Harmony,",
+          "reasoning": "Agrees to fund Orisa's progress"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Efi,",
+          "reasoning": "Upgrades Orisa to be more combat ready"
+        }
+      ]
     },
     {
       "name": "New Blood",
-      "description": "No description available.",
+      "description": "After freeing Echo, Cassidy was once again aimless, driving away without a destination, but he had gotten a message, saying it was time to talk, with coordination halfway across the globe, with the wars and chaos going on the last couple of years it was hard for Cassidy not to pay mind, if someone needed him, he had to hear them out. The note brought him to Cairo, where he met with a long-lost ghost, but before they saw each other he had a feeling he knew who it was.\n\nAna had taken a detour from her travels with Jack, wanting to catch up with Cassidy following the recall, she had the feeling he was undecided about what to do, and much like her, he wasn't a man who wished to repeat the past. Before she could pitch him her idea of what to do, their meeting spot got raided by Talon agents. As the two got surrounded by troops, they were forced to flee into Ana's new hideout, since her old place at the Necropolis had been compromised. \n\nThere, she revealed to Cassidy all the intel she had acquired with Jack, of Talon's plans for worldwide conflict as well as other global threats she had been monitoring, from the Phreaks and the Gwishin to the Siberian Omnium. Ana explained that hard times like this forged heroes, and that with a guiding hand they could organize exceptional people all across the globe into something bigger, just like Overwatch once did. She wanted a man like Cassidy to lead them, someone willing to let the past die and bring in new blood that could make the world a better place, and while Cassidy had his doubts that he could fit those boots, he decided to give it a try and bring a gang together.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
@@ -18503,31 +18540,41 @@
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Anac contacts Cassidy to propose him find new Overwatch Recruits",
           "lat": 30.0444,
           "lon": 31.2357
+        },
+        {
+          "locationName": "Route 66, United States",
+          "country": "United States",
+          "reasoning": "Cassidy Abandons Ashe's bike somewhere in the desert",
+          "lat": 39.1131257,
+          "lon": -108.0127646
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ana, Cassidy",
-          "reasoning": ""
+          "reasoning": "Meet in Cairo and get ambushed by Talon"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Talon Empire, Overwatch,",
-          "reasoning": ""
+          "reasoning": "Talon continues to chase the Overwatch agents they got intel on"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Talon raids Egyptian Necropolis near Cairo",
+        "Cole Cassidy seen taking a train to the middle east"
+      ]
     },
     {
       "name": "Lost Family",
-      "description": "No description available.",
+      "description": "Cassidy's first stop was actually still in Cairo, where she hoped to convince Pharah to join him. The young Captain had already found herself comfortable in Helix Securities, and under their guard Egypt was slowly regaining order as Talon was drawn out of the country. When Winston activated the recall, Lena forwarded it to Fareeha. Then, not long ago, both Reinhardt and Brigitte did as well, but Fareeha declined them, finding her place to be with Helix. In reality, however, she was trying to honor her mother.\n\nAna had forbidden Fareeha from joining Overwatch back in the day, and as a way to pay her respects, Pharah was keeping herself from joining them now. Cassidy could tell this was the case and set up a meeting for the ghost soldier to finally reunite with her daughter. The meeting spot was too out in the open, and before they could really have a proper conversation, Talon troops ambushed the trio. Ana and Cassidy jumped through the marina as Pharah cleared the perimeter from the sky. The Talon forces were too staggered, but Ana thought it was best to lead them into the open, where Pharah let out a rocket barrage that wiped out the whole enemy cell.\n\nThe dust settled, but Fareeha had taken a direct hit before the barrage. Ana quickly came to tend to her wounds, allowing them to finally have a proper heart-to-heart, where Ana expressed regret for keeping her at arms' length all those years, only to abandon her so easily. She knew she couldn't undo the past, but she at least wanted to make things right with her now, giving her the blessing to join Cole in the new Overwatch. Fareeha was hurt but happy to get the chance to see her mother again. She accepted the offer, staying on standby in Cairo until the rest of the recruits were all accounted for.",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
       "lat": 30.0444,
@@ -18545,7 +18592,7 @@
         {
           "locationName": "Cairo, Egypt",
           "country": "Egypt",
-          "reasoning": "",
+          "reasoning": "Ana and Fareeha reunite thanks  to Cole setting up a meeting",
           "lat": 30.0444,
           "lon": 31.2357
         }
@@ -18554,37 +18601,40 @@
         {
           "locationName": "",
           "country": "Ana, Pharah",
-          "reasoning": ""
+          "reasoning": "Rekindle in spite of the past, hpapy to see each other"
         },
         {
           "locationName": "",
           "country": "Cassidy,",
-          "reasoning": ""
+          "reasoning": "Recruits Pharah into his new blood team"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Helix Securities,",
-          "reasoning": ""
+          "reasoning": "Works hard to keep Talon out of the city"
         },
         {
           "locationName": "",
           "country": "Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Continues to chace down Cole and Ana"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Tries to invite Pharah but gets rejected until Cassidy shows up"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Captain Fareeha Amari to resign from the Raptora Unit",
+        "Talon attack in Cairo leads to a bombed pier"
+      ]
     },
     {
       "name": "The Plan",
-      "description": "No description available.",
+      "description": "After years of mayhem and crime across the world, Junkrat and Roadhog returned to the outback with a mountain full of riches that they had accumulated from their heists. It was finally time to move on to the next step in Junkrat's masterful plan. Together they piled up the treasure on a cargo car and pushed it to Junkertown's entrance, where they planned to use it as a Trojan horse offering for the Queen, only for it to blow in her face once they finally carried it inside.\n\nThey had to run over the plan multiple times as Junkrat kept forgetting important steps, from wearing disguise to avoid being recognized, to making sure they could secure the treasure once they were inside. It took several tries, but Roadhog finally gave the go ahead. They prepared the bombs with strict timing and knocked on the door, but in spite of their careful planning and disguises, Junkrat couldn't help himself, announcing both of their real names loudly and causing the guard to reinforce the front door, completely locking both of them out of the city and wasting years' worth of effort in an instant leaving them with a ticking time bomb on their feet.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -18602,31 +18652,33 @@
         {
           "locationName": "Junkertown, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Junkrat and Roadhog return to Junkertown to take revenge on the Queen"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Junkrat, Roadhog",
-          "reasoning": ""
+          "reasoning": "Plot to infiltrate the city and attack the Queen only to fail before even't entering the city"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Junkers",
-          "reasoning": ""
+          "reasoning": "Increase border security to prevent Junkrat and Roadhog from entering the city"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Junker Criminals spotted back in the Outback after year long Crime spree"
+      ]
     },
     {
       "name": "Worsening Atmosphere",
       "locationType": "mars",
       "cityDisplayName": "Red Promise Colony",
-      "description": "No description available.",
+      "description": "Almost two decades had gone by since the Red Promise Colony was established, and Juno had grown into a valuable member of the mission, accompanying the scientists onto the field and aiding in the terraforming effort. However, the years of alterations had unforeseen repercussions, soil and debris was constantly kicked off into the atmosphere, causing increasingly violent dust storms that put the survival of the base at risk. The team began to worry that life on the planet could not be sustained for much longer without the help and resources to stabilize the weather, but their attempts to contact Lucheng back on Earth for several months resulted in complete silence. \n\nRed Promise was meant to be the first wave of a larger colonization mission, yet two decades later the second wave never arrived, their resources were running tin and their chances of survival were looking bleak. Without knowing if assistance was on the way or how much time they had left, the scientists had to come to terms with their fate. They gathered enough resources for a small vessel to transport a single person back home, and it was decided Juno, the embodiment of their mission and all of their hopes, was the one who should go. The girl pleaded with her parents to not make her leave, but they didn't wish for her to share their faith.\n\nMars was the only home Juno ever knew and while everyone else had already made peace with their situation, she refused to let them die so easily. Rather than seeing the mission as an evacuation, she promised to find someone who could help. She remembered the stories her mom Jiayi told her when she was a kid, about a close family friend, a brilliant climatologist from Overwatch, Dr. Mei Ling Zhou, if only she could find her, they could come up with a plan to help the colony survive. And so, after small difficulties during take off, her parents said their goodbyes and Juno tearfully left the red planet behind, carrying the hope of everyone on base with her, as one last red promise that they would not die in vain.",
       "image": "",
       "x": 45,
       "y": 35,
@@ -18636,21 +18688,26 @@
         {
           "locationName": "Red Promise Colony",
           "country": "Red Promise Colony",
-          "reasoning": ""
+          "reasoning": "Violent Dust Storms and lack of resources forces the colony to evacuate one last survivor"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Juno",
-          "reasoning": ""
+          "reasoning": "Sent back to Earth by the Red Promise team"
+        },
+        {
+          "locationName": "",
+          "country": "Mei,",
+          "reasoning": "Juno's last hailmary to help Mars"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Lucheng",
-          "reasoning": ""
+          "reasoning": "Cuts communication with Red Promise all together"
         }
       ],
       "yearEnd": null,
@@ -18658,10 +18715,13 @@
         {
           "locationName": "",
           "country": "Jiayi,",
-          "reasoning": ""
+          "reasoning": "Guides Juno on her way out,"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Astronomists notice violent Dust Storms in Mars have grown abnormally over the last two decades",
+        "Rumours of Secret Lucheng Project have been addressed by Dr. Chao as hearsay"
+      ],
       "sources": [
         {
           "text": "Red Promise",
@@ -18670,6 +18730,10 @@
             "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt4245a9312c310c5e/668ef097c02e3c210b574412/OW_SpaceRanger_EN_Final.pdf",
             "https://www.youtube.com/watch?v=9M4dU7cd1KM"
           ]
+        },
+        {
+          "text": "Control",
+          "url": "https://www.youtube.com/watch?v=zMZAkF7ZFwc"
         }
       ]
     },
@@ -18677,7 +18741,7 @@
       "name": "Stalker",
       "locationType": "earth",
       "cityDisplayName": "Bucharest, Romania",
-      "description": "No description available.",
+      "description": "After Pharah flew off, Cole and Ana parted ways. The next recruit was further north, so Cassidy had to hitch a ride on the hyper loop, but he soon realized he had someone stalking him since leaving Cairo. Baptiste had spent months running away from Talon, helping agents on their target list, and after pulling enough favors, he was able to reach Angela's tent in Cairo, only to find she had already left before he arrived. Talon was still on his tracks too, but they also were chasing some other Overwatch agents, so when he found Cassidy, he decided to tail him so he could deliver him the Intel.\n\nCassidy could tell Talon's stealth tactics when he saw them, so he took his chance to lose Baptiste in a crowd while changing trains in Bucharest. Baptiste chased him down, leading to a confrontation, but he did not wish to fight. He explained to Cole who he was, his past with Talon and how he knew of the kill list, but just as he was telling his story, Talon had caught up to them both, hunting them down in the station and placing a bonus on whoever got the traitor.\n\nThe two realized it was in their best interest to cover each other's backs. They tried to keep a low profile, but eventually the troops found them, forcing them to open fire before the train they got in took off. Once things were calm on the train, Cassidy told Baptiste he would have someone look into his records, find out if he was legit or not, but if he was telling the truth, he wanted to offer him a place with Overwatch, recalling how Reyes once offered him the chance when nobody else believed he could be of any good. The pair split off in different stops, with Baptiste at the ready for whenever he got a call back to action, and Cassidy now on his way to Siberia, where his next recruit was waiting.",
       "image": "",
       "lat": 44.4361414,
       "lon": 26.102684,
@@ -18687,25 +18751,27 @@
         {
           "locationName": "Bucharest, Romania",
           "country": "Romania",
-          "reasoning": ""
+          "reasoning": "Baptiste stalks Cassidy to warm him of Talon's hit list"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Cassidy, Baptiste",
-          "reasoning": ""
+          "reasoning": "Escape Talon together after Brief Confrontaiton"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Talon continues hunting down ex Overwatch personnel"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Talon attack chacing fugitives in Bucharest"
+      ],
       "sources": [
         {
           "text": "New Blood 3",
@@ -18715,7 +18781,7 @@
     },
     {
       "name": "Friendly Rivalry",
-      "description": "No description available.",
+      "description": "When Junkrat and Roadhog attempted to infiltrate Junkertown again by blowing up the main gate, the pair were captured and taken in chains to await their execution. The entire city rallied up awaiting their deaths, filling up the scrapyards to see it for themselves. After reading out their crimes, the Queen declared their sentence, death at the hands of the champ. The wrecking ball entered the arena, playing around with his prey as the crow cheered. In their attempt to stop the champion, Roadhog threw his hook at the mech, tearing off an entire panel, revealing Wrecking Ball's identity as a hamster to the city. But the Junkers didn't seem to mind the truth, still cheering for their champion to murder the prisoners. \n\nAs Wrecking Ball prepared for the final hit, Junkrat managed to land a lucky grande through the hatch, sending Wrecking Ball flying out of the arena. As the Queen prepared to personally execute them both to please the crowd, Junkrat made one last attempt to save their lives. He revealed his treasure hid behind the final door, the last impenetrable area of the Omnium. He had somehow managed to break in years ago and scanned his eye for the key, but upon saying this, the entire city broke loose trying to kill him and claim his eye for themselves. The Queen, however, defended the prisoners, escorting them through the crowds of madmen alongside the Wrecking ball, killing anyone who dared claim the treasure in her city. \n\nAs they made their way to the last door, Junkrat got to see Junkertown with fresh new eyes. All those years in the outside world made the city feel a lot more dysfunctional than he remembered, and as the Queen charged into the mob, she explained to him that the only reason why there's any order is that she is able to put them in their place when hell breaks loose. When they made it to the final door, the city was beaten to the ground. In spite of his attempts to betray the Queen, Odessa slammed Junkrat's face into the scanner, opening the door. Behind it laid the treasure, a nearly complete Crisis era warship. Junkrat and Roadhog's lives were spared as long as they got out of the Queen's sight, as she now had a bigger fish to fry, getting the machine ready for a ride.",
       "locationType": "earth",
       "cityDisplayName": "Junkertown, Australia",
       "lat": -25,
@@ -18733,29 +18799,36 @@
         {
           "locationName": "Junkertown, Australia",
           "country": "Australia",
-          "reasoning": ""
+          "reasoning": "Junkrat reveals his tressure to the Queen to Spare his life"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Junkrat, Roadhog, Junker Queen, Wrecking Ball",
-          "reasoning": ""
+          "country": "Junkrat, Roadhog,",
+          "reasoning": "Fight for their lives before giving Queen access to the last door"
+        },
+        {
+          "locationName": "",
+          "country": "Junker Queen, Wrecking Ball",
+          "reasoning": "In charge of the excecution"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Junkers",
-          "reasoning": ""
+          "reasoning": "The city turns against the Queen to catch the tressure for themselves"
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [
+        "Public Execution televised on the Junker side of the Outback"
+      ]
     },
     {
       "name": "Suspicious activity",
-      "description": "No description available.",
+      "description": "After the Petra's Act, Vivian decided to settle down and enjoy retirement, unlike most other strike team members. She returned to Toronto and adopted a rescued dog she called Murphy, giving it cybernetic care with a prosthetic leg. But in spite of the comforts of the simple life and not answering Winston's recall, she still kept taps on the city and any suspicious activity, just in case something went bad enough that she should intervene.\n\nWhen she found out about an increase in Null Sector activity in Toronto after so many years in the shadows, she couldn't leave that be. She put on her biker outfit to remain anonymous and chased down the leads into the depths of the subway system, where the Null Sector cell was already skirmishing with the International Security forces led by Noah Tremblay.\n\nThe Omnic radicals were accompanied by a large combat unit that helped them get the upper hand against Tremblay's team, until Sojourn jumped onto the scene, eviscerating the war bot and neutralizing the Omnic's. She saved Tremblay's life in spite of his injuries and allowed for the capture of the rouge Omnics, but in doing so, the munitions fired from her railgun stayed behind at the crime scene, giving Tremblay a clue about whom the vigilante was, and enough grounds for arrest under the Petra's Act. Tremblay had his hands full, between this and the still unknown reasons for Null Sector's return to the spotlight, but he knew he had to do what he thought was right, and pay a visit to Vivian shortly after.",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
       "lat": 43.6534817,
@@ -18770,38 +18843,41 @@
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Null Sector cells rumored to have reappeared across the US and Europe",
+        "Biker Vigilante stops rouge Omnics in the Toronto subway according to authorities"
+      ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Toronto, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Sojourn tracks and stops Null Sector activity"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sojourn",
-          "reasoning": ""
+          "reasoning": "Turns to Vigilantism when crime spikes in Toronto"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector",
-          "reasoning": ""
+          "reasoning": "Begin to be spotted across the world after years of silence"
         },
         {
           "locationName": "",
           "country": "IJC,",
-          "reasoning": ""
+          "reasoning": "Taking care of Null Sector while keeping Overwatch in check"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Trembley,",
-          "reasoning": ""
+          "reasoning": "Saved by Sojourn but not in charge of her arrest"
         }
       ]
     },
@@ -22150,7 +22226,7 @@
     },
     {
       "name": "The Tiger's Den",
-      "description": "No description available.",
+      "description": "The night of the Grand Mesa breach, Winston and Echo came across another signal, worth taking a look at. The Hashimoto had begun an all-out takeover of Tokyo. While Overwatch didn't know at the time, Talon had actually agreed to provide ground troops for the Clan, helping them seize the city by infiltrating the police force and eliminating the only two rival families that challenged their reign. In exchange, the Hashimoto would supply Talon with state-of-the-art Anima weaponry, which Vendetta planned to gift to her champions.\n\nGenji was horrified at the sight, as reports showed the clan members devastating the city with Anima blades, while casualties were low. Genji feared for what had become of his home. If the Hashimoto had such a wide supply of Anima that even their lower-level grunts could wield them, then the city was in grave danger. But while Angela shared his worries, she knew they couldn't stretch Overwatch's resources tightly again, especially not in their current circumstances. Seeing the younger recruits get acquainted with Sierra the next morning got both Genji and Cassidy thinking about how their own inductions went, and it pained them both, from what Cassidy had learned hours earlier about Deadlock, and how Genji now felt leaving his home to rot at the hands of the Tigers. \n\nHe knew he had to do something, so when he had his chance, he pulled Vivian to a private place, announcing his departure. Vivian did not grant him permission, as the Tokyo situation was already being monitored, but the IJC strictly forbade their intervention without solid proof of Talon's involvement. Genji volunteered for scouting, acting on his own behalf rather than as an Overwatch agent, because he had not come to ask permision, rather as an act of courtesy towards Vivian, he was going back to Tokyo and making things right, regardless of what Overwatch or the IJC thought. So he quietly left, leaving the team behind to worry what would come of making the same mistakes Overwatch did in the past, and intervening prematurely where they shouldn't.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -22163,9 +22239,14 @@
         {
           "locationName": "Akihabara, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "The Hashimoto begin a hostile takeover of all of Tokyo",
           "lat": 35.6768601,
           "lon": 139.7638947
+        },
+        {
+          "locationName": "Gothenburg, Sweden",
+          "country": "Sweden",
+          "reasoning": "Genji leaves Overwatch to hunt down the Hashimoto"
         }
       ],
       "headlines": [],
@@ -22183,34 +22264,34 @@
         {
           "locationName": "",
           "country": "Genji,",
-          "reasoning": ""
+          "reasoning": "Leaves Overwatch to personally deal with the Hashimoto"
         },
         {
           "locationName": "",
           "country": "Shion,",
-          "reasoning": ""
+          "reasoning": "Agrees to supply Talon with Anima weapons"
         },
         {
           "locationName": "",
-          "country": "Sojourn, Cassidy,",
-          "reasoning": ""
+          "country": "Sojourn,",
+          "reasoning": "Tries to prevent Genji from Leaving"
         },
         {
           "locationName": "",
-          "country": "Mercy, Tracer,",
-          "reasoning": ""
+          "country": "Mercy, Tracer, Cassidy,",
+          "reasoning": "Catch up on Reinhardt and Ana's date"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Hashimoto Clan, Talon Empire,",
-          "reasoning": ""
+          "reasoning": "Cooperate to sieze Tokyo and eliminate opposition"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Unable to interfere without confirmation Talon was involved"
         }
       ]
     },
