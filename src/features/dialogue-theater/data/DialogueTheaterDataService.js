@@ -224,8 +224,6 @@ class DialogueTheaterDataService {
                 const localRow = localById.get(fileRow.id);
                 if (!localRow) return fileRow;
 
-                let picked = this.pickRicherConversationRow(fileRow, localRow);
-
                 const filePaths = Array.isArray(fileRow.paths) ? fileRow.paths : [];
                 const localPaths = Array.isArray(localRow.paths) ? localRow.paths : [];
                 const localEra = String(localRow.eraName || '').trim();
@@ -233,8 +231,26 @@ class DialogueTheaterDataService {
                 // Finalized YouTube batches: file wins so untagging + line fixes beat stale localStorage.
                 const retireLocalWorkingTag =
                     RETIRED_WORKING_TAGS.has(localEra) && !RETIRED_WORKING_TAGS.has(fileEra);
+                const fileLines = Array.isArray(fileRow.lines) ? fileRow.lines : [];
+                const localLines = Array.isArray(localRow.lines) ? localRow.lines : [];
+                const fileLineCount = fileLines.length;
+                const localLineCount = localLines.length;
+                const localLineIds = new Set(localLines.map((line) => line.id).filter(Boolean));
+                const fileLineIds = new Set(fileLines.map((line) => line.id).filter(Boolean));
+                const localOnlyLineIds = localLines.filter((line) => line?.id && !fileLineIds.has(line.id));
+                const fileOnlyLineIds = fileLines.filter((line) => line?.id && !localLineIds.has(line.id));
+                // Local is a strict subset of file line ids → intentional trim (removed Baptiste/Brigitte/etc).
+                const localIsStrictLineSubset =
+                    localLineCount > 0 &&
+                    localLineCount < fileLineCount &&
+                    localOnlyLineIds.length === 0 &&
+                    fileOnlyLineIds.length > 0;
+                // Script rebuilds that both add and replace lines (not a pure trim).
+                const fileRebuildsLines =
+                    fileOnlyLineIds.length > 0 && localOnlyLineIds.length > 0;
 
-                if (retireLocalWorkingTag) {
+                let picked;
+                if (retireLocalWorkingTag || fileRebuildsLines) {
                     picked = {
                         ...fileRow,
                         selectedPathId:
@@ -242,31 +258,50 @@ class DialogueTheaterDataService {
                             (filePaths[0] && filePaths[0].id) ||
                             '',
                     };
-                } else if (localPaths.length > 0 && filePaths.length > 0) {
-                    const localLineIds = new Set(
-                        (Array.isArray(localRow.lines) ? localRow.lines : []).map((line) => line.id),
-                    );
-                    const fileIntroducesLines = filePaths.some((pathRow) =>
-                        (Array.isArray(pathRow.lineIds) ? pathRow.lineIds : []).some(
-                            (lineId) => lineId && !localLineIds.has(lineId),
-                        ),
-                    );
-                    const localHasUnknown = (Array.isArray(localRow.lines) ? localRow.lines : []).some(
-                        (line) => isUnknownDialogueHero(line?.hero),
-                    );
-                    const fileHasUnknown = (Array.isArray(fileRow.lines) ? fileRow.lines : []).some(
-                        (line) => isUnknownDialogueHero(line?.hero),
-                    );
-                    // Script repairs that split/rebuild multipaths (new line ids, Unknown cleanup).
-                    if (fileIntroducesLines || (localHasUnknown && !fileHasUnknown)) {
-                        picked = {
-                            ...fileRow,
-                            selectedPathId:
-                                fileRow.selectedPathId ||
-                                (filePaths[0] && filePaths[0].id) ||
-                                '',
-                        };
-                    } else {
+                } else if (localIsStrictLineSubset) {
+                    // Keep the user's trimmed line list; don't let pickRicher resurrect removed lines.
+                    picked = {
+                        ...localRow,
+                        selectedPathId: localRow.selectedPathId || '',
+                    };
+                } else {
+                    picked = this.pickRicherConversationRow(fileRow, localRow);
+
+                    if (localPaths.length > 0 && filePaths.length > 0) {
+                        const fileIntroducesLines = filePaths.some((pathRow) =>
+                            (Array.isArray(pathRow.lineIds) ? pathRow.lineIds : []).some(
+                                (lineId) => lineId && !localLineIds.has(lineId),
+                            ),
+                        );
+                        const localHasUnknown = localLines.some((line) =>
+                            isUnknownDialogueHero(line?.hero),
+                        );
+                        const fileHasUnknown = fileLines.some((line) =>
+                            isUnknownDialogueHero(line?.hero),
+                        );
+                        // Script repairs that split/rebuild multipaths (new line ids, Unknown cleanup).
+                        if (fileIntroducesLines || (localHasUnknown && !fileHasUnknown)) {
+                            picked = {
+                                ...fileRow,
+                                selectedPathId:
+                                    fileRow.selectedPathId ||
+                                    (filePaths[0] && filePaths[0].id) ||
+                                    '',
+                            };
+                        } else {
+                            const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
+                            picked = {
+                                ...picked,
+                                lines: localRow.lines,
+                                paths: localPaths,
+                                selectedPathId:
+                                    localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                                        ? localRow.selectedPathId
+                                        : localPaths[0]?.id || '',
+                            };
+                        }
+                    } else if (localPaths.length > 0) {
+                        // Saved local route edits win over the bundled file (manual path/line tuning).
                         const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
                         picked = {
                             ...picked,
@@ -277,31 +312,19 @@ class DialogueTheaterDataService {
                                     ? localRow.selectedPathId
                                     : localPaths[0]?.id || '',
                         };
+                    } else if (filePaths.length > 0) {
+                        // Wiki/script repairs in the repo file replace a flat local copy.
+                        const pathIds = new Set(filePaths.map((pathRow) => pathRow.id));
+                        picked = {
+                            ...picked,
+                            lines: fileRow.lines,
+                            paths: filePaths,
+                            selectedPathId:
+                                localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
+                                    ? localRow.selectedPathId
+                                    : fileRow.selectedPathId || filePaths[0]?.id || '',
+                        };
                     }
-                } else if (localPaths.length > 0) {
-                    // Saved local route edits win over the bundled file (manual path/line tuning).
-                    const pathIds = new Set(localPaths.map((pathRow) => pathRow.id));
-                    picked = {
-                        ...picked,
-                        lines: localRow.lines,
-                        paths: localPaths,
-                        selectedPathId:
-                            localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
-                                ? localRow.selectedPathId
-                                : localPaths[0]?.id || '',
-                    };
-                } else if (filePaths.length > 0) {
-                    // Wiki/script repairs in the repo file replace a flat local copy.
-                    const pathIds = new Set(filePaths.map((pathRow) => pathRow.id));
-                    picked = {
-                        ...picked,
-                        lines: fileRow.lines,
-                        paths: filePaths,
-                        selectedPathId:
-                            localRow.selectedPathId && pathIds.has(localRow.selectedPathId)
-                                ? localRow.selectedPathId
-                                : fileRow.selectedPathId || filePaths[0]?.id || '',
-                    };
                 }
                 let withRenders = this.overlayFileLineRenders(fileRow, picked);
                 // Keep shipped entryType (dialogue vs chatter) authoritative.
@@ -667,7 +690,7 @@ class DialogueTheaterDataService {
                     'warning',
                 );
             }
-            return Promise.resolve();
+            return Promise.reject(new Error('dev API unavailable'));
         }
 
         const apiUrl =
@@ -708,6 +731,7 @@ class DialogueTheaterDataService {
                         'warning',
                     );
                 }
+                throw err;
             });
     }
 

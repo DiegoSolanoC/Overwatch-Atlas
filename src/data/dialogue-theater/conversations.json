@@ -1030,6 +1030,15 @@
           ]
         },
         {
+          "id": "efdf3d59-11ac-40b3-91ae-1015dd6406af",
+          "label": "Doctrine",
+          "lineIds": [
+            "8a7a057c-db4f-4edc-8280-d9b6756d6ac1",
+            "01a62cef-45dc-4e66-92ef-e41f2f8e283c",
+            "fc50de03-59a5-48e4-9262-3b2a48e8e682"
+          ]
+        },
+        {
           "id": "34ecf3dc-68ec-4c0e-87a1-3d3668fd0d21",
           "label": "Domina — Chinchillas",
           "lineIds": [
@@ -28407,7 +28416,7 @@
         },
         {
           "id": "3a49c719-b288-41b7-aa83-db18b1f67a72",
-          "hero": "L����������������������������������������cio",
+          "hero": "L������������������������������������������������cio",
           "voice": "Lúcio_-_Look,_I_believe_in_my_team._We'll_get_'em_next_time.ogg",
           "voicePrefix": "",
           "subtitles": "Look, I believe in my team. We'll get 'em next time",
@@ -74884,7 +74893,7 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active",
-          "disclaimer": "Elimination — Scenario"
+          "disclaimer": "Elimination �� Scenario"
         },
         {
           "id": "1c411152-ff85-4446-8391-1cd52fee5198",
@@ -167479,24 +167488,14 @@
     {
       "id": "79628f32-21f1-4f6b-8921-ef91fe791b08",
       "entryType": "dialogue",
-      "name": "2",
+      "name": "Killing is an art",
       "status": "active",
-      "eraName": "Season 4.5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
-        {
-          "id": "a07a9059-a99a-4a28-9092-6abf7765660f",
-          "hero": "Baptiste",
-          "voice": "Baptiste_-_One_shot,_one_kill..ogg",
-          "voicePrefix": "",
-          "subtitles": "One shot, one kill.",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
         {
           "id": "0f9415ee-9ad1-4b98-b4f7-88fee01f0d3d",
           "hero": "Shion",
@@ -167532,9 +167531,9 @@
     {
       "id": "0532130e-8937-44ba-b0ba-33cb0586bf6a",
       "entryType": "dialogue",
-      "name": "3",
+      "name": "Focus on Saving the World",
       "status": "active",
-      "eraName": "Season 4.5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167546,16 +167545,6 @@
           "voice": "Winston_-_Have_you_heard_from_the_IJC,_Sojourn_Surely,_these_Talon_attacks_have_shown_them_Overwatch_is_worth_saving!.ogg",
           "voicePrefix": "",
           "subtitles": "Have you heard from the IJC, Sojourn Surely, these Talon attacks have shown them Overwatch is worth saving!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "a15f062f-f9b5-4593-ab69-963a75ac08b3",
-          "hero": "Brigitte",
-          "voice": "Brigitte_-_Oh,_don't_worry_about_that._Mamma_says_it's_the_quietest_the_workshop_has_been_in_years!.ogg",
-          "voicePrefix": "",
-          "subtitles": "Oh, don't worry about that. Mamma says it's the quietest the workshop has been in years!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -167575,9 +167564,9 @@
     {
       "id": "fdd5bddf-6b82-474c-b189-b55ff109bd78",
       "entryType": "dialogue",
-      "name": "4",
+      "name": "Skincare Line",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167618,9 +167607,9 @@
     {
       "id": "5a348ea8-14fa-47ba-9821-629ef85665f0",
       "entryType": "dialogue",
-      "name": "5",
+      "name": "Renewed Life",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167671,9 +167660,9 @@
     {
       "id": "d1f62435-37e8-44a3-b548-23e327d71741",
       "entryType": "dialogue",
-      "name": "6",
+      "name": "Sacrifice",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167714,9 +167703,9 @@
     {
       "id": "f913fe2f-9c7f-4bad-8b84-69b5680d4750",
       "entryType": "dialogue",
-      "name": "7",
+      "name": "Rebuilt Gauntlet",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167810,9 +167799,9 @@
     {
       "id": "47d7ee00-1c31-45f0-a307-07cfdbacb74f",
       "entryType": "dialogue",
-      "name": "9",
+      "name": "Gory Details",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167881,74 +167870,11 @@
       ]
     },
     {
-      "id": "5dec18ef-4af7-4321-bd97-8d78a5a8290f",
-      "entryType": "dialogue",
-      "name": "10",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "2354a153-d0ef-4053-8731-8416e459e4c4",
-          "hero": "Shion",
-          "voice": "Shion_-_Huh._Do_I_really_seem_so_moral_I_was_only_hoping_to_compare_body_counts.ogg",
-          "voicePrefix": "",
-          "subtitles": "Huh. Do I really seem so moral I was only hoping to compare body counts",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8847b2f6-3839-4f23-9b35-e68e09f3bc33",
-          "hero": "Sierra",
-          "voice": "Sierra_-_You'll_be_behind_bars_for_the_rest_of_your_days_once_Helix_catches_up_to_you.ogg",
-          "voicePrefix": "",
-          "subtitles": "You'll be behind bars for the rest of your days once Helix catches up to you",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "43d4dcfc-c8bd-43c7-ae4e-54d7528520c4",
-          "hero": "Doctrine",
-          "voice": "Doctrine_-_I_assure_you,_girl,_there_is_no_punishment_I_cannot_outlast.ogg",
-          "voicePrefix": "",
-          "subtitles": "I assure you, girl, there is no punishment I cannot outlast",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "7e7f6b89-c59b-4237-a4fb-dd1476cbaac9",
-          "hero": "Doctrine",
-          "voice": "Doctrine_-_I_have_heard_rumors_of_Dr._Naughton's_serum._They_tell_of_prolonged_youth,_among_other_benefits.ogg",
-          "voicePrefix": "",
-          "subtitles": "I have heard rumors of Dr. Naughton's serum. They tell of prolonged youth, among other benefits",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "a74f99dd-a061-479f-86a7-7ee7c8afdcb9",
-          "hero": "Sierra",
-          "voice": "Sierra_-_I_always_knew_my_mother_looked_good_for_her_age,_but_I_never_would've_guessed_her_secret_was_something_so_high_se.ogg",
-          "voicePrefix": "",
-          "subtitles": "I always knew my mother looked good for her age, but I never would've guessed her secret was something so high se",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "92fd43e9-19d6-4a14-885f-b2a0e633c80c",
       "entryType": "dialogue",
-      "name": "11",
+      "name": "Birds of a Feather",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -167975,61 +167901,11 @@
           "status": "active"
         },
         {
-          "id": "7603aae5-eed2-4233-a941-d1042e7fcfc6",
-          "hero": "Freja",
-          "voice": "Freja_-_And_here_I_thought_you_fought_for_all_omnics.ogg",
-          "voicePrefix": "",
-          "subtitles": "And here I thought you fought for all omnics",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
           "id": "975c6f3a-c64e-428a-9dca-ef7f0e181e5c",
           "hero": "Doctrine",
           "voice": "Doctrine_-_And_here_I_thought_you'd_be_harmonious_with_every_old_codger_speaking_in_riddles._Alas..._birds_of_a_feather_do_n.ogg",
           "voicePrefix": "",
           "subtitles": "And here I thought you'd be harmonious with every old codger speaking in riddles. Alas... birds of a feather do n",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "4e0f9f74-fd00-4b8c-870c-c72e9c628d94",
-          "hero": "Doctrine",
-          "voice": "Doctrine_-_Have_you_any_news_of_my_brother_I_pray_the_years_have_been_kind.ogg",
-          "voicePrefix": "",
-          "subtitles": "Have you any news of my brother I pray the years have been kind",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "fc0d6668-149d-4895-b29b-41aed365369c",
-          "hero": "Sombra",
-          "voice": "Sombra_-_Seems_happy._And_he_looks_his_age,_unlike_someone_I_know.ogg",
-          "voicePrefix": "",
-          "subtitles": "Seems happy. And he looks his age, unlike someone I know",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c0fb18a6-7416-46e0-a18f-8c48db7c58e2",
-          "hero": "Doctrine",
-          "voice": "Doctrine_-_A_blasphemous_contradiction..._what_joy_does_he_find_as_death_approaches_his_doorstep.ogg",
-          "voicePrefix": "",
-          "subtitles": "A blasphemous contradiction... what joy does he find as death approaches his doorstep",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "6b97389a-0def-4877-bca6-0af7313b13e3",
-          "hero": "Sombra",
-          "voice": "Sombra_-_By_the_sound_of_it,_a_lot_more_than_he_would_have_with_you_in_his_life.ogg",
-          "voicePrefix": "",
-          "subtitles": "By the sound of it, a lot more than he would have with you in his life",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168039,9 +167915,9 @@
     {
       "id": "372d5a93-d851-47e3-8ec8-ef56ef8e6bbc",
       "entryType": "dialogue",
-      "name": "12",
+      "name": "Rewrite wrongs",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168072,9 +167948,9 @@
     {
       "id": "be5db894-ad0f-4a45-b83d-06d05481495d",
       "entryType": "dialogue",
-      "name": "13",
+      "name": "Super Old",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168115,9 +167991,9 @@
     {
       "id": "2371a694-462b-47f2-a7a1-c7ad98de7477",
       "entryType": "dialogue",
-      "name": "14",
+      "name": "There to Execute",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168158,9 +168034,9 @@
     {
       "id": "3eff5590-bdb3-4512-a558-9547197384f9",
       "entryType": "dialogue",
-      "name": "15",
+      "name": "Cherished Blood Bond",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168191,9 +168067,9 @@
     {
       "id": "09ef81c2-f62f-4776-bc48-55132386bd0f",
       "entryType": "dialogue",
-      "name": "16",
+      "name": "Walking Sim",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168224,7 +168100,17 @@
           "hero": "D.va",
           "voice": "D.va_-_Uh,_you_mean..._Outside_!.ogg",
           "voicePrefix": "",
-          "subtitles": "Uh, you mean... Outside !",
+          "subtitles": "Uh, you mean... Outside?!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "a6b9b304-e1e0-4760-82da-113b9f4e3bf5",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Girl.ogg",
+          "voicePrefix": "",
+          "subtitles": "Girl.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168234,9 +168120,9 @@
     {
       "id": "9fa8b659-1d38-4d54-beaf-ad1f6054c545",
       "entryType": "dialogue",
-      "name": "17",
+      "name": "Very Legal",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168275,64 +168161,11 @@
       ]
     },
     {
-      "id": "4bebccae-f5d5-4851-a20b-d1425070ce3b",
-      "entryType": "dialogue",
-      "name": "18",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "51154b08-c502-4177-9f2f-318d93cd5d8c",
-          "hero": "Sierra",
-          "voice": "Sierra_-_Hugs_!_Oh,_that_girl_really_is_a_genius!.ogg",
-          "voicePrefix": "",
-          "subtitles": "Hugs ! Oh, that girl really is a genius!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "60956521-69bd-41a6-9ea7-f8ac726cbb0b",
-          "hero": "Sierra",
-          "voice": "Sierra_-_You_really_think_so_Oh,_the_techs_back_at_Grand_Mesa_are_gonna_flip_when_I_tell_'em_you_said_that.ogg",
-          "voicePrefix": "",
-          "subtitles": "You really think so Oh, the techs back at Grand Mesa are gonna flip when I tell 'em you said that",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "abec803d-1860-4e16-958f-85fdbe72b42c",
-          "hero": "Sierra",
-          "voice": "Sierra_-_Hey_'Risa!_I_got_my_hands_on_some_extra_glittery_nail_polish_the_other_day,_and_I_think_it's_just_your_color.ogg",
-          "voicePrefix": "",
-          "subtitles": "Hey 'Risa! I got my hands on some extra glittery nail polish the other day, and I think it's just your color",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "4ca7a15e-68f6-476a-9c58-e5047fa18916",
-          "hero": "Orisa",
-          "voice": "Orisa_-_Ah,_how_exciting!_But..._I_do_not_have_nails.ogg",
-          "voicePrefix": "",
-          "subtitles": "Ah, how exciting! But... I do not have nails",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
       "id": "ccbba309-0ac0-4fe1-b435-77d37848b03b",
       "entryType": "dialogue",
-      "name": "19",
+      "name": "Used to the Unexpected",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -168363,30 +168196,50 @@
     {
       "id": "a2d7c63c-9b59-45be-906f-8cd2883abc33",
       "entryType": "dialogue",
-      "name": "20",
+      "name": "Anubis Chamber",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "90da4ea0-aefb-4198-a7aa-2e1ff344f1b5",
+          "id": "90ae9ce0-57a4-492f-bdfd-fb67bc27a4e2",
           "hero": "Venture",
-          "voice": "Venture_-_Sierra,_can_you_ask_Helix_to_let_the_Wayfinders_into_Anubis's_chamber.ogg",
+          "voice": "Venture_-_Sierra,_can_you_ask_Helix_to_let_the_Wayfinders_into_Anubis's_chamber_.ogg",
           "voicePrefix": "",
-          "subtitles": "Sierra, can you ask Helix to let the Wayfinders into Anubis's chamber",
+          "subtitles": "Sierra, can you ask Helix to let the Wayfinders into Anubis's chamber?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "30454d13-cdc1-4534-a8f9-d801defc80a4",
-          "hero": "Venture",
-          "voice": "Venture_-_Please_We'll_be_super_careful—we_always_are!.ogg",
+          "id": "cfe5cea4-33a7-41bf-a256-a0d2c5a1e603",
+          "hero": "Sierra",
+          "voice": "Sierra_-_You_know_I_can't._A_good_security_captain_doesn't_break_protocol—for_everyone's_safety.ogg",
           "voicePrefix": "",
-          "subtitles": "Please We'll be super careful—we always are!",
+          "subtitles": "You know I can't. A good security captain doesn't break protocol—for everyone's safety",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "9882e389-6ba0-4ed3-aec2-6a0193f3dcc9",
+          "hero": "Venture",
+          "voice": "Venture_-_Please__We'll_be_super_careful—we_always_are!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Please? We'll be super careful—we always are!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "57f27754-ca66-4462-b5a0-886729e45ebe",
+          "hero": "Sierra",
+          "voice": "Sierra_-_(sigh)_I'll_see_if_the_Raptora_division_can_get_you_clearance._But,_no_promises.ogg",
+          "voicePrefix": "",
+          "subtitles": "(sigh) I'll see if the Raptora division can get you clearance. But, no promises",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168396,24 +168249,14 @@
     {
       "id": "9dbb2441-782a-435f-816a-c267a57b437d",
       "entryType": "dialogue",
-      "name": "21",
+      "name": "Accomodations",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
-        {
-          "id": "eab42247-c185-447f-bb68-8a1f1f229c56",
-          "hero": "Sierra",
-          "voice": "Sierra_-_(sigh)_I'll_see_if_the_Raptora_division_can_get_you_clearance._But,_no_promises.ogg",
-          "voicePrefix": "",
-          "subtitles": "(sigh) I'll see if the Raptora division can get you clearance. But, no promises",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
         {
           "id": "ec0b4477-26cf-4f3e-8391-fe522259d525",
           "hero": "Winston",
@@ -168423,36 +168266,13 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "2907212e-ac26-48b3-9875-31b8809a16fb",
-      "entryType": "dialogue",
-      "name": "22",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
+        },
         {
-          "id": "e44199a7-08bf-4635-a3bf-251bbea89603",
+          "id": "c875f359-2be1-4500-a43c-4a1dca714565",
           "hero": "Sierra",
           "voice": "Sierra_-_Well,_for_places_that_survived_an_explosion_,_I'd_definitely_rank_it_as_cozier_than_the_Bandera_Ice_Cave.ogg",
           "voicePrefix": "",
           "subtitles": "Well, for places that survived an explosion , I'd definitely rank it as cozier than the Bandera Ice Cave",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "f8ebe18d-ba54-43c1-9c40-1aec6d985ec9",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_Thanks!_You_should_see_my_sister,_though._She's_really_dedicated.ogg",
-          "voicePrefix": "",
-          "subtitles": "Thanks! You should see my sister, though. She's really dedicated",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168462,36 +168282,36 @@
     {
       "id": "86a1fdd8-7fe6-43ae-8f78-fe8e1dc121a4",
       "entryType": "dialogue",
-      "name": "23",
+      "name": "Workout Routine",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "fa4a7832-8c1f-4f32-9d43-becdc02e036a",
+          "id": "2280f9c6-e4bb-4103-9c32-50aa259f3c3a",
           "hero": "Sierra",
-          "voice": "Sierra_-_Hey_Zarya,_you_got_a_minute_to_help_me_plan_this_new_workout_routine.ogg",
+          "voice": "Sierra_-_Hey_Zarya,_you_got_a_minute_to_help_me_plan_this_new_workout_routine_.ogg",
           "voicePrefix": "",
-          "subtitles": "Hey Zarya, you got a minute to help me plan this new workout routine",
+          "subtitles": "Hey Zarya, you got a minute to help me plan this new workout routine?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "7fb8d7a5-8e10-43a5-bcd9-067a6b4c312b",
+          "id": "013a681b-2a75-454d-ae89-fc368b113767",
           "hero": "Zarya",
-          "voice": "Zarya_-_I_have_many_minutes!_What_muscle_groups_are_we_focusing_today.ogg",
+          "voice": "Zarya_-_I_have_many_minutes!_What_muscle_groups_are_we_focusing_today_.ogg",
           "voicePrefix": "",
-          "subtitles": "I have many minutes! What muscle groups are we focusing today",
+          "subtitles": "I have many minutes! What muscle groups are we focusing today?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "8950218f-e1b6-4d78-a9b4-30b152af180c",
+          "id": "d8f3f8ce-93e6-43c3-9e25-0fa832c1d62f",
           "hero": "Sierra",
           "voice": "Sierra_-_I_was_thinking..._a_little_bit_of_everything.ogg",
           "voicePrefix": "",
@@ -168501,31 +168321,11 @@
           "status": "active"
         },
         {
-          "id": "f4a4d25b-ad26-4c66-8fc7-fcdcd5730cdf",
+          "id": "a555899e-85d2-42e4-9040-f47cf88f55eb",
           "hero": "Zarya",
           "voice": "Zarya_-_Aha,_yes!_A_balanced_approach.ogg",
           "voicePrefix": "",
           "subtitles": "Aha, yes! A balanced approach",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "f20ee858-f125-4fa0-8027-68389d332304",
-          "hero": "Zarya",
-          "voice": "Zarya_-_This_color_is_not_dye._I_was_born_with_it.ogg",
-          "voicePrefix": "",
-          "subtitles": "This color is not dye. I was born with it",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "614a3f22-3fcc-4c26-9571-c463c17d8bdf",
-          "hero": "Freja",
-          "voice": "Freja_-_(sigh)_Save_it,_bot._You're_not_the_first_to_lecture_me.ogg",
-          "voicePrefix": "",
-          "subtitles": "(sigh) Save it, bot. You're not the first to lecture me",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168535,26 +168335,36 @@
     {
       "id": "711dd412-a3f9-4949-9012-323e4d244b2c",
       "entryType": "dialogue",
-      "name": "24",
+      "name": "I'm a Natural",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "7e20351a-9a59-4740-b76a-759b0d7aec43",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_That's_me!_Have_they_mentioned_anything_about_my_progress.ogg",
+          "id": "b066eb90-5550-42e0-9dd5-d6bf3b537b7b",
+          "hero": "D.mon",
+          "voice": "D.mon_-_Aren't_you_that_guy_Hana_pawned_off_to_Dae-hyun_for_training_.ogg",
           "voicePrefix": "",
-          "subtitles": "That's me! Have they mentioned anything about my progress",
+          "subtitles": "Aren't you that guy Hana pawned off to Dae-hyun for training?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "e031711e-76b2-4e73-930d-ef68cacd5106",
+          "id": "329987e2-ca22-4efa-b77c-293783b9de7d",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_That's_me!_Have_they_mentioned_anything_about_my_progress_.ogg",
+          "voicePrefix": "",
+          "subtitles": "That's me! Have they mentioned anything about my progress?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "1518aa3f-8cb3-4a9e-9dcd-96d6297b2c9d",
           "hero": "D.mon",
           "voice": "D.mon_-_Uh,_they_said_you_really,_uh..._keep_your_eyes_on_the_screen.ogg",
           "voicePrefix": "",
@@ -168562,36 +168372,13 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "9e4c0f71-762a-4519-89c3-e379eaa84912",
-      "entryType": "dialogue",
-      "name": "25",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "0f3994d3-06a3-4f4f-b0cb-35eaa566d524",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_Haha!_What_can_I_say_I'm_a_natural.ogg",
-          "voicePrefix": "",
-          "subtitles": "Haha! What can I say I'm a natural",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
         },
         {
-          "id": "0f446060-1804-4157-93f2-5933be343978",
+          "id": "894a7b5a-7e1d-4096-9f86-1a8dab1d795b",
           "hero": "Wuyang",
-          "voice": "Wuyang_-_Well..._what_other_words_would_you_use.ogg",
+          "voice": "Wuyang_-_Haha!_What_can_I_say__I'm_a_natural.ogg",
           "voicePrefix": "",
-          "subtitles": "Well... what other words would you use",
+          "subtitles": "Haha! What can I say? I'm a natural.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168601,26 +168388,26 @@
     {
       "id": "857cbae6-07c5-40d3-af8f-8c82be1df13e",
       "entryType": "dialogue",
-      "name": "26",
+      "name": "100% Potable",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "5efd02b1-fd14-4cf9-84c4-f3a807c43182",
+          "id": "7452ce9f-ed2c-43e9-acc9-d9a44afd2781",
           "hero": "Junker Queen",
-          "voice": "Junker_Queen_-_Hey,_you_ever_drink_that_water.ogg",
+          "voice": "Junker_Queen_-_Hey,_you_ever_drink_that_water_.ogg",
           "voicePrefix": "",
-          "subtitles": "Hey, you ever drink that water",
+          "subtitles": "Hey, you ever drink that water?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "a0f4d3ce-b35f-4d8b-9966-be173a7712f2",
+          "id": "d1a37317-b678-4092-838f-2b1971e2c78a",
           "hero": "Wuyang",
           "voice": "Wuyang_-_All_the_time!_Everything_that_comes_out_of_this_staff_is_100%_potable.ogg",
           "voicePrefix": "",
@@ -168630,11 +168417,11 @@
           "status": "active"
         },
         {
-          "id": "cf8b85e7-8eb2-4e42-b777-e1c9903fa428",
+          "id": "0a9b4782-7fa3-4ade-b9e1-fe06690de11e",
           "hero": "Junker Queen",
-          "voice": "Junker_Queen_-_Of_course_it's_potable._You're_carrying_it_around_aren't_you.ogg",
+          "voice": "Junker_Queen_-_Of_course_it's_potable._You're_carrying_it_around_aren't_you_.ogg",
           "voicePrefix": "",
-          "subtitles": "Of course it's potable. You're carrying it around aren't you",
+          "subtitles": "Of course it's potable. You're carrying it around, aren't you?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168644,16 +168431,16 @@
     {
       "id": "51c44bc1-15b7-465a-89ad-855a9daa1323",
       "entryType": "dialogue",
-      "name": "27",
+      "name": "Good Luck Charm",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "8de91840-fd56-44de-a7ee-d1462d9e1893",
+          "id": "ecec392e-0255-4275-a0bf-6559a452a571",
           "hero": "Wuyang",
           "voice": "Wuyang_-_Juno_made_you_a_good_luck_charm,_but_she's_too_nervous_to_give_it_to_you.ogg",
           "voicePrefix": "",
@@ -168663,41 +168450,21 @@
           "status": "active"
         },
         {
-          "id": "e3e57c52-2611-48e7-b333-8534ea30d3f0",
+          "id": "ea84a290-0de4-4b75-852f-67af72a1aaca",
           "hero": "Mizuki",
-          "voice": "Mizuki_-_Am_I_that_unapproachable_I_don't_bite..._usually.ogg",
+          "voice": "Mizuki_-_Am_I_that_unapproachable__I_don't_bite..._usually.ogg",
           "voicePrefix": "",
-          "subtitles": "Am I that unapproachable I don't bite... usually",
+          "subtitles": "Am I that unapproachable? I don't bite... usually.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "ea043de7-64da-4690-b3e4-fbb81a8ef857",
+          "id": "ffce9671-80d6-4535-8c4b-bd289dc815b8",
           "hero": "Wuyang",
           "voice": "Wuyang_-_Not_helping_your_case,_man.ogg",
           "voicePrefix": "",
           "subtitles": "Not helping your case, man",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e0f9c648-bcaf-47f8-b537-abc1bbfcad22",
-          "hero": "Mizuki",
-          "voice": "Mizuki_-_What's_in_it_for_me.ogg",
-          "voicePrefix": "",
-          "subtitles": "What's in it for me",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e20261c5-9c33-4cae-9383-495c5a845f93",
-          "hero": "Wuyang",
-          "voice": "Wuyang_-_You_get_to_splash_people_with_water_and_tell_them_you_thought_they_needed_help.ogg",
-          "voicePrefix": "",
-          "subtitles": "You get to splash people with water and tell them you thought they needed help",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168707,16 +168474,26 @@
     {
       "id": "124b32d6-0258-46bc-8fd1-880016f81254",
       "entryType": "dialogue",
-      "name": "28",
+      "name": "Followers",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "cb6b8e12-7777-4a19-9e3b-2798b35624f3",
+          "id": "c5bb5bb4-3c24-4712-90fa-86b68ede4119",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_No_way..._Efi_followed_me_back_on_HollaGram!_That_makes_83_fans_of_yours_truly.ogg",
+          "voicePrefix": "",
+          "subtitles": "No way... Efi followed me back on HollaGram! That makes 83 fans of yours truly",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "89e1e318-065f-4044-a3e5-68d9c32c30ac",
           "hero": "Orisa",
           "voice": "Orisa_-_Impressive!_That_means_there_are..._searching..._a_combined_10,836,483_followers_between_you.ogg",
           "voicePrefix": "",
@@ -168726,7 +168503,7 @@
           "status": "active"
         },
         {
-          "id": "440998a0-aced-4aaa-bf34-d94e2e946c04",
+          "id": "786bd002-7dd1-4cc9-bde3-a37a73e061ac",
           "hero": "Wuyang",
           "voice": "Wuyang_-_Okay,_well_you_don't_have_to_put_it_like_that.ogg",
           "voicePrefix": "",
@@ -168740,26 +168517,46 @@
     {
       "id": "17a9e328-8918-4bf7-b29c-0144ccb072c8",
       "entryType": "dialogue",
-      "name": "29",
+      "name": "When I Was Seven",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "04d85107-9d53-4edd-b966-d1323099e565",
+          "id": "a86e946c-4077-4398-9b83-157167b11586",
           "hero": "Wuyang",
-          "voice": "Wuyang_-_Hypothetically,_could_I_send_you_back_in_time_to_fix_something_I_did_when_I_was_seven.ogg",
+          "voice": "Wuyang_-_Hypothetically,_could_I_send_you_back_in_time_to_fix_something_I_did_when_I_was_seven_.ogg",
           "voicePrefix": "",
-          "subtitles": "Hypothetically, could I send you back in time to fix something I did when I was seven",
+          "subtitles": "Hypothetically, could I send you back in time to fix something I did when I was seven?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "f1b9c4c9-5597-4970-9abd-db5f4e1732e3",
+          "id": "4adac9c8-fa9b-4b61-957c-79343fb3895e",
+          "hero": "Tracer",
+          "voice": "Tracer_-_If_only_I_could!_Was_it_extremely_embarrassing_.ogg",
+          "voicePrefix": "",
+          "subtitles": "If only I could! Was it extremely embarrassing?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "399205fc-a4ea-4346-853a-26765077cd86",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Ugh._You_don't_even_know.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ugh. You don't even know",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "5bba3fa0-a696-488f-b897-311ca8acf07c",
           "hero": "Tracer",
           "voice": "Tracer_-_But_now_I_want_to!.ogg",
           "voicePrefix": "",
@@ -168773,16 +168570,16 @@
     {
       "id": "26c21c97-4b5b-472a-a1f8-c7207c2fc4a9",
       "entryType": "dialogue",
-      "name": "30",
+      "name": "I Could Be Stricter",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "69479e82-ad7f-49cd-a379-57144a678f37",
+          "id": "ef834101-8334-4609-9501-f525ed199a97",
           "hero": "Wuyang",
           "voice": "Wuyang_-_Being_on_your_team_takes_me_back_to_the_good_ol'_days_of_training_with_shifu._You're_a_lot_nicer_than_him,_though.ogg",
           "voicePrefix": "",
@@ -168792,11 +168589,21 @@
           "status": "active"
         },
         {
-          "id": "4072a19f-74b1-474c-815b-5ec9c1894e85",
+          "id": "b8bb6878-48c4-4bc4-8b87-f352cf99eda2",
           "hero": "Zenyatta",
           "voice": "Zenyatta_-_I_could_be_stricter.ogg",
           "voicePrefix": "",
           "subtitles": "I could be stricter",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "6c1c3889-e127-49cf-a56d-66f315b32ae2",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Please_don't.ogg",
+          "voicePrefix": "",
+          "subtitles": "Please don't.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168820,6 +168627,16 @@
           "voice": "Wuyang_-_I_don't_think_Fika_likes_me…_Is_she_scared_of_water,_or_something.ogg",
           "voicePrefix": "",
           "subtitles": "I don't think Fika likes me… Is she scared of water, or something",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "4b033205-b9fd-4b83-828d-1ece9a790bc2",
+          "hero": "Jetpack Cat",
+          "voice": "Jetpack_Cat_-_(assuring_meows).ogg",
+          "voicePrefix": "",
+          "subtitles": "**assuring meows**",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168849,36 +168666,46 @@
     {
       "id": "071350bb-9921-46d8-beee-1e12ac4fc04f",
       "entryType": "dialogue",
-      "name": "32",
+      "name": "Detonate Your Face",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "0bf8601c-b071-40fb-aebe-622fe826dc41",
-          "hero": "Junker Queen",
-          "voice": "Junker_Queen_-_You_bonk_your_head_on_a_mech,_Fawkes_Vendetta_made_off_with_our_bomb!.ogg",
+          "id": "4cf398ab-aac0-40fd-ac4a-be80ac129811",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_My_most_luminant_queen..._you_performed_so_adacquittably_in_Busan!.ogg",
           "voicePrefix": "",
-          "subtitles": "You bonk your head on a mech, Fawkes Vendetta made off with our bomb!",
+          "subtitles": "My most luminant queen... you performed so adequately in Busan!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "0c710bd2-edc2-4e9d-b7e1-43e957256ecc",
+          "id": "84e412be-6d09-495e-a994-6ee787e720ae",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_You_bonk_your_head_on_a_mech,_Fawkes__Vendetta_made_off_with_our_bomb!.ogg",
+          "voicePrefix": "",
+          "subtitles": "You bonk your head on a mech, Fawkes? Vendetta made off with our bomb!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "c072915d-aea9-44d9-8ba0-04b23a552c19",
           "hero": "Junkrat",
           "voice": "Junkrat_-_Ah,_but_even_defeat_looks_majestorial_on_you!.ogg",
           "voicePrefix": "",
-          "subtitles": "Ah, but even defeat looks majestorial on you!",
+          "subtitles": "Ah, but even defeat looks magisterial on you!",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "73812bc2-5845-4aed-8184-bdb6102ce8e2",
+          "id": "8500a228-e2d5-49bf-a10c-60b4a6a95b8d",
           "hero": "Junker Queen",
           "voice": "Junker_Queen_-_Enough!_One_more_oversized_word_out_of_you,_and_I'll_detonate_your_face!.ogg",
           "voicePrefix": "",
@@ -168892,30 +168719,50 @@
     {
       "id": "fe98b8cb-044f-4d94-a443-7168deb7e0f7",
       "entryType": "dialogue",
-      "name": "33",
+      "name": "Ship Thrusters",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "bcc9746a-a421-45ed-bdf3-9bd93f150b73",
+          "id": "bdc6dc02-5c30-4876-b1d2-f5958e0b5fd7",
           "hero": "Mauga",
-          "voice": "Mauga_-_How_are_those_ship_thrusters_treating_you,_Queenie.ogg",
+          "voice": "Mauga_-_How_are_those_ship_thrusters_treating_you,_Queenie_.ogg",
           "voicePrefix": "",
-          "subtitles": "How are those ship thrusters treating you, Queenie",
+          "subtitles": "How are those ship thrusters treating you, Queenie?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "c8838b16-0eeb-4c28-964b-05e7d998b310",
+          "id": "7cf26d4f-b427-4637-9795-ee71b9d528b3",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Like_a_dream._Got_us_all_the_way_to_Korea_no_problem!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Like a dream. Got us all the way to Korea, no problem!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "bb0bf2cf-e565-4a13-8606-f46aac004976",
+          "hero": "Mauga",
+          "voice": "Mauga_-_Where_you_thinking_of_taking_'em_next_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Where you thinking of taking 'em next?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "525bdc05-8c10-4116-9706-a5cfd964e56f",
           "hero": "Junker Queen",
           "voice": "Junker_Queen_-_None_of_your_business_'till_you_find_me_another_bomb_to_steal.ogg",
           "voicePrefix": "",
-          "subtitles": "None of your business 'till you find me another bomb to steal",
+          "subtitles": "None of your business 'till you find me another bomb to steal.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168925,30 +168772,50 @@
     {
       "id": "924c541c-0c38-4463-b14a-db9bb2bd36d8",
       "entryType": "dialogue",
-      "name": "34",
+      "name": "Junker Planet",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "9da27f07-113d-49f9-bb97-3c77f4d6cf62",
+          "id": "7690f91a-07ca-4314-95fa-4b557ac2bccf",
           "hero": "Junker Queen",
-          "voice": "Junker_Queen_-_I_need_another_vacation,_and_this_time_I_don't_want_to_see_any_ugly_Talon_mugs_around!_Where_should_we_go.ogg",
+          "voice": "Junker_Queen_-_I_need_another_vacation,_and_this_time_I_don't_want_to_see_any_ugly_Talon_mugs_around!_Where_should_we_go_.ogg",
           "voicePrefix": "",
-          "subtitles": "I need another vacation, and this time I don't want to see any ugly Talon mugs around! Where should we go",
+          "subtitles": "I need another vacation, and this time I don't want to see any ugly Talon mugs around! Where should we go?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
         },
         {
-          "id": "9d5689d2-b7fc-4e03-bc9b-ad6c70e30b01",
+          "id": "5893e666-0c09-42f1-8fb9-07b2d93d3079",
+          "hero": "Roadhog",
+          "voice": "Roadhog_-_Hmm._Moon.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hmm. Moon",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "e9f1c63c-050c-4e50-b798-89368566addf",
           "hero": "Junker Queen",
           "voice": "Junker_Queen_-_I'll_do_you_one_better._Let's_take_our_ship_straight_to_Mars!.ogg",
           "voicePrefix": "",
           "subtitles": "I'll do you one better. Let's take our ship straight to Mars!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "7e0d3d60-7054-4451-9c56-17e07d4f1540",
+          "hero": "Roadhog",
+          "voice": "Roadhog_-_Yeah..._Junker_planet.ogg",
+          "voicePrefix": "",
+          "subtitles": "Yeah... Junker planet.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -168958,40 +168825,30 @@
     {
       "id": "c4b4e665-dfb8-4b9e-971f-f22df98b5831",
       "entryType": "dialogue",
-      "name": "35",
+      "name": "Queen of the World",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "9adbc940-b093-4449-9a45-0c3d81eb3231",
+          "id": "d1f7941b-e934-4f2e-90f1-5f71a2cb7257",
+          "hero": "Junker Queen",
+          "voice": "Junker_Queen_-_Thought_I'd_cause_a_ruckus_and_then_die_for_ya__When_I'm_queen_of_the_world,_you're_first_on_the_chopping_block.ogg",
+          "voicePrefix": "",
+          "subtitles": "Thought I'd cause a ruckus and then die for ya? When I'm queen of the world, you're first on the chopping block.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "59e9aafb-59f1-45be-8d45-bf3be07889e6",
           "hero": "Vendetta",
           "voice": "Vendetta_-_(laughs)_'Queen_of_the_world'!_The_only_throne_you_will_ever_command_is_a_festering_heap.ogg",
           "voicePrefix": "",
-          "subtitles": "(laughs) 'Queen of the world'! The only throne you will ever command is a festering heap",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "a3920895-6cb8-4f57-9939-b444ef0439e0",
-          "hero": "Sojourn",
-          "voice": "Sojourn_-_I_don't_care_what_it_takes._This_war_of_yours_ends_now.ogg",
-          "voicePrefix": "",
-          "subtitles": "I don't care what it takes. This war of yours ends now",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "8445d50d-3c5b-4cd7-871f-9bdfbc905f0e",
-          "hero": "Vendetta",
-          "voice": "Vendetta_-_History_will_remember_which_of_us_claims_victory,_and_my_name_will_never_be_forgotten.ogg",
-          "voicePrefix": "",
-          "subtitles": "History will remember which of us claims victory, and my name will never be forgotten",
+          "subtitles": "(laughs) 'Queen of the world'! The only throne you will ever command is a festering heap.",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169001,14 +168858,24 @@
     {
       "id": "6ea05417-2c0f-4423-831f-ee66713697c0",
       "entryType": "dialogue",
-      "name": "36",
+      "name": "Shutdown Order",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
+        {
+          "id": "946f6fe8-ba94-450f-9ac8-88f0aaac859b",
+          "hero": "Sojourn",
+          "voice": "Sojourn_-_Winston..._I'm_sorry._About_the_shutdown_order,_I..._I_should've_told_you.ogg",
+          "voicePrefix": "",
+          "subtitles": "Winston... I'm sorry. About the shutdown order, I... I should've told you",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
         {
           "id": "cf73122d-5463-4f8a-9b54-e0c09335d8de",
           "hero": "Winston",
@@ -169044,14 +168911,24 @@
     {
       "id": "c6c43f05-ceba-45fb-ac4f-d2a77ac0043f",
       "entryType": "dialogue",
-      "name": "37",
+      "name": "Wanted men",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
+        {
+          "id": "163fc3c5-d27b-4444-8c98-8689f30d1278",
+          "hero": "Sojourn",
+          "voice": "Sojourn_-_Wait..._I_know_you_two._You_weren't_just_at_Busan,_you're_wanted_for_heists_around_the_world.ogg",
+          "voicePrefix": "",
+          "subtitles": "Wait... I know you two. You weren't just at Busan, you're wanted for heists around the world",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
         {
           "id": "b7ee7b5b-b3aa-40c0-9418-12b419e87f7d",
           "hero": "Junkrat",
@@ -169071,15 +168948,25 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "8f5b6279-04cc-4d08-811b-46face6f83b6",
+          "hero": "Junkrat",
+          "voice": "Junkrat_-_I_mean,_er..._What_he_said!.ogg",
+          "voicePrefix": "",
+          "subtitles": "I mean, er... What he said!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
       ]
     },
     {
       "id": "1dbf921b-e618-476b-8383-1cd6ad9dedee",
       "entryType": "dialogue",
-      "name": "38",
+      "name": "The World will adapt",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169120,9 +169007,9 @@
     {
       "id": "f172c15b-ad9d-40a2-8640-d2f461def162",
       "entryType": "dialogue",
-      "name": "39",
+      "name": "Asking Around",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169147,15 +169034,25 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "87f93b4b-b23f-4c32-86b7-8f50f4d5edff",
+          "hero": "Sombra",
+          "voice": "Sombra_-_More_like_demanding._Every_day._Several_times_an_hour.ogg",
+          "voicePrefix": "",
+          "subtitles": "More like demanding. Every day. Several times an hour",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
       ]
     },
     {
       "id": "d7e0b29c-0341-4c11-80d6-83271e7ce243",
       "entryType": "dialogue",
-      "name": "40",
+      "name": "Nothing is Secret",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169172,11 +169069,21 @@
           "status": "active"
         },
         {
-          "id": "0265d581-d84e-4ae3-b5b7-9a0b17d8bc23",
-          "hero": "Sombra",
-          "voice": "Sombra_-_Right,_right,_but..._between_us.ogg",
+          "id": "708dd31f-0d7e-44bd-a57f-897532282426",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_Akande_keeps_us_as_allies..._I_can_only_trust_that_his_judgement_is_sound.ogg",
           "voicePrefix": "",
-          "subtitles": "Right, right, but... between us",
+          "subtitles": "Akande keeps us as allies... I can only trust that his judgement is sound",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "0581360b-c675-45f2-8bf4-7d565ffa8410",
+          "hero": "Sombra",
+          "voice": "Sombra_-_Right,_right,_but..._between_us_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Right, right, but... between us?",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169196,9 +169103,9 @@
     {
       "id": "9563df2a-26e5-463f-a0e4-a69f7c9e4cab",
       "entryType": "dialogue",
-      "name": "41",
+      "name": "Looking Brand new",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169239,9 +169146,9 @@
     {
       "id": "bac6e9c5-dd27-4a66-9a6a-61dfae735e49",
       "entryType": "dialogue",
-      "name": "42",
+      "name": "Teammate and Friend",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169272,9 +169179,9 @@
     {
       "id": "6105a672-670a-4f22-a700-b3ffed3a8404",
       "entryType": "dialogue",
-      "name": "43",
+      "name": "Hope from our people",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169305,30 +169212,30 @@
     {
       "id": "2c69d7d8-a78b-4d32-909b-b5f4b3bba7db",
       "entryType": "dialogue",
-      "name": "44",
+      "name": "Tone down Violence",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
         {
-          "id": "1e48d99b-96fb-44f0-8c43-8a5bae8cce1d",
-          "hero": "Vendetta",
-          "voice": "Vendetta_-_I_will_not_tolerate_excuses._Pull_your_weight,_or_be_cut_down_like_the_rest!.ogg",
-          "voicePrefix": "",
-          "subtitles": "I will not tolerate excuses. Pull your weight, or be cut down like the rest!",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
           "id": "06bdd920-8756-4872-bd19-93723afd01eb",
           "hero": "Winston",
           "voice": "Winston_-_It_was_good_to_see_you_again_after_so_long,_Hammond.ogg",
           "voicePrefix": "",
           "subtitles": "It was good to see you again after so long, Hammond",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "4c10d4a9-887f-432d-aecc-1f4d784a1bb5",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_says_likewise,_old_friend.ogg",
+          "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_He_says_likewise,_old_friend.ogg",
+          "subtitles": "**hamster noises** He says: likewise, old friend",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169344,41 +169251,11 @@
           "status": "active"
         },
         {
-          "id": "03bc2b19-30f5-437c-9505-8f88bc3cf10e",
+          "id": "4fe6dbec-e9ef-4b44-8dc8-908b03c01b0e",
           "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_(hamster_noises)_Do_not_push_your_luck.ogg",
-          "voicePrefix": "",
-          "subtitles": "(hamster noises) Do not push your luck",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ccb75a75-9712-4a29-a0c8-fa25c1e76bb8",
-          "hero": "Winston",
-          "voice": "Winston_-_I_know_you_have_a_new_family_now,_Hammond,_but_if_you_ever_need_help,_I'm_here_for_you.ogg",
-          "voicePrefix": "",
-          "subtitles": "I know you have a new family now, Hammond, but if you ever need help, I'm here for you",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "e9171cee-7ebe-41c5-9b57-6ef9cbcc0fc2",
-          "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_(hamster_noises)_The_hamster_is_grateful._And_he_has_a_word_of_caution.ogg",
-          "voicePrefix": "",
-          "subtitles": "(hamster noises) The hamster is grateful. And he has a word of caution",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "ee767a1b-91d8-471a-8216-0aa7e0f05551",
-          "hero": "Wrecking Ball",
-          "voice": "Wrecking_Ball_-_(hamster_noises)_He_says_do_not_forget_where_you_came_from.ogg",
-          "voicePrefix": "",
-          "subtitles": "(hamster noises) He says do not forget where you came from",
+          "voice": "Wrecking_Ball_-_Do_not_push_your_luck.ogg",
+          "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_Do_not_push_your_luck.ogg",
+          "subtitles": "**hamster noises** Do not push your luck",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169388,9 +169265,9 @@
     {
       "id": "4b4f287f-b08c-4d1c-9e28-e1d1317dd71f",
       "entryType": "dialogue",
-      "name": "45",
+      "name": "Making time",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169412,82 +169289,6 @@
           "voice": "Brigitte_-_Of_course,_Papa._I'll_always_find_time_for_you_and_Mamma.ogg",
           "voicePrefix": "",
           "subtitles": "Of course, Papa. I'll always find time for you and Mamma",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "73c55553-9e8a-46b3-bc0c-07e58e4d0ebc",
-      "entryType": "dialogue",
-      "name": "46",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "ca544be0-6cf6-44b4-a5ab-54b15e8f8a73",
-          "hero": "Widowmaker",
-          "voice": "Widowmaker_-_If_we_are_to_work_together_again,_I_desire_a_more_equal_partnership.ogg",
-          "voicePrefix": "",
-          "subtitles": "If we are to work together again, I desire a more equal partnership",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "6c8797af-8093-4ee5-abb9-4ada02653bae",
-          "hero": "Widowmaker",
-          "voice": "Widowmaker_-_The_freedom_to_choose_my_own_targets..._and_perhaps_a_tighter_leash_on_the_financier.ogg",
-          "voicePrefix": "",
-          "subtitles": "The freedom to choose my own targets... and perhaps a tighter leash on the financier",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "d37c074e-3799-4caf-a157-cdc1c7cd6ffb",
-      "entryType": "dialogue",
-      "name": "47",
-      "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
-      "tags": [
-        "Overwatch"
-      ],
-      "scene": "Default.png",
-      "lines": [
-        {
-          "id": "dec17522-8c4e-4850-9456-5a2a861dc8a4",
-          "hero": "Doomfist",
-          "voice": "Doomfist_-_(chuckle)_Consider_it_done.ogg",
-          "voicePrefix": "",
-          "subtitles": "(chuckle) Consider it done",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "c52314dd-0daf-4ea6-9d1e-2e6fcd15e0ad",
-          "hero": "Shion",
-          "voice": "Shion_-_Are_you_accepting_new_patients,_Doctor.ogg",
-          "voicePrefix": "",
-          "subtitles": "Are you accepting new patients, Doctor",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
-        {
-          "id": "0c090220-e0d1-4bf9-b4db-77069e06e089",
-          "hero": "Moira",
-          "voice": "Moira_-_I_doubt_you_need_my_assistance._I_can_tell_you've_already_tested_the_limits_of_what_your_body_can_handle.ogg",
-          "voicePrefix": "",
-          "subtitles": "I doubt you need my assistance. I can tell you've already tested the limits of what your body can handle",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169530,24 +169331,14 @@
     {
       "id": "54417ebd-1166-4b13-b8c9-4d6a129e21fb",
       "entryType": "dialogue",
-      "name": "48",
+      "name": "War Devastation",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
       "scene": "Default.png",
       "lines": [
-        {
-          "id": "9bd68dac-d3ec-4c12-aee2-2f3f75e7a722",
-          "hero": "Doctrine",
-          "voice": "Doctrine_-_Your_war_brought_more_than_just_this_devastation..._would_that_we_could_return_to_a_time_before.ogg",
-          "voicePrefix": "",
-          "subtitles": "Your war brought more than just this devastation... would that we could return to a time before",
-          "render": "Heroic.png",
-          "era": "Overwatch",
-          "status": "active"
-        },
         {
           "id": "5891ab49-b85f-4837-947f-c207ca6cc4d0",
           "hero": "Bastion",
@@ -169557,15 +169348,25 @@
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
+        },
+        {
+          "id": "72a709dd-1fa7-44ad-9598-a41715a1dbb7",
+          "hero": "Doctrine",
+          "voice": "Doctrine_-_Your_war_brought_more_than_just_this_devastation..._would_that_we_could_return_to_a_time_before.ogg",
+          "voicePrefix": "",
+          "subtitles": "Your war brought more than just this devastation... would that we could return to a time before",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
         }
       ]
     },
     {
       "id": "01d7a03e-a86e-41f2-bece-dc70745aed23",
       "entryType": "dialogue",
-      "name": "49",
+      "name": "Aesthetics",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169596,9 +169397,9 @@
     {
       "id": "b4646412-f60e-4cbe-b136-1bb92f036fd7",
       "entryType": "dialogue",
-      "name": "50",
+      "name": "Grotesque Arm",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169639,9 +169440,9 @@
     {
       "id": "7fb9cb03-0bed-405b-b5ac-6eae95c4dcb6",
       "entryType": "dialogue",
-      "name": "51",
+      "name": "Deprived of Purpose",
       "status": "active",
-      "eraName": "Season 5 (YouTube placeholder)",
+      "eraName": "",
       "tags": [
         "Overwatch"
       ],
@@ -169663,6 +169464,723 @@
           "voice": "Doomfist_-_I_was_deprived_of_purpose,_then._The_struggle_to_find_it_again_shaped_the_man_I_am_today.ogg",
           "voicePrefix": "",
           "subtitles": "I was deprived of purpose, then. The struggle to find it again shaped the man I am today",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "9b9936f8-9bc5-41a1-987e-21829b09ad4d",
+      "entryType": "dialogue",
+      "name": "Body Counts",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "b8a6bef6-56c1-420d-82dc-8cf0152924d8",
+          "hero": "Shion",
+          "voice": "Shion_-_How_many_humans_had_to_die_for_you_to_keep_that_shine_on_your_skin.ogg",
+          "voicePrefix": "",
+          "subtitles": "How many humans had to die for you to keep that shine on your skin",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "a42198db-5333-4aa7-9092-cbd79a60b35f",
+          "hero": "Doctrine",
+          "voice": "Doctrine_-_More_than_deserved,_or_so_I_am_oft_reminded..._and_how_I_would_loathe_to_be_judged_for_it_by_you.ogg",
+          "voicePrefix": "",
+          "subtitles": "More than deserved, or so I am oft reminded... and how I would loathe to be judged for it by you",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "fac91ec6-df40-44dc-909f-4e4b4b37b163",
+          "hero": "Shion",
+          "voice": "Shion_-_Huh._Do_I_really_seem_so_moral_I_was_only_hoping_to_compare_body_counts.ogg",
+          "voicePrefix": "",
+          "subtitles": "Huh. Do I really seem so moral I was only hoping to compare body counts",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "59e11180-41b1-4832-8c54-25afb5aba949",
+      "entryType": "dialogue",
+      "name": "Young for Her age",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "5e0ee4c7-c401-4429-ae4b-3a8c6a45baba",
+          "hero": "Doctrine",
+          "voice": "Doctrine_-_I_have_heard_rumors_of_Dr._Naughton's_serum._They_tell_of_prolonged_youth,_among_other_benefits.ogg",
+          "voicePrefix": "",
+          "subtitles": "I have heard rumors of Dr. Naughton's serum. They tell of prolonged youth, among other benefits",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "d10ec782-cc08-43a3-aace-ecd5febe9e0c",
+          "hero": "Sierra",
+          "voice": "Sierra_-_I_always_knew_my_mother_looked_good_for_her_age,_but_I_never_would've_guessed_her_secret_was_something_so_high_se.ogg",
+          "voicePrefix": "",
+          "subtitles": "I always knew my mother looked good for her age, but I never would've guessed her secret was something so high se",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "4c002443-c0a2-489f-bdff-c51f826e6676",
+      "entryType": "dialogue",
+      "name": "Blasfemous Contradiction",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "12b4e5f8-565d-496e-95a5-45eadb034102",
+          "hero": "Doctrine",
+          "voice": "Doctrine_-_Have_you_any_news_of_my_brother_I_pray_the_years_have_been_kind.ogg",
+          "voicePrefix": "",
+          "subtitles": "Have you any news of my brother I pray the years have been kind",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "04568ed4-75c1-418f-b589-2b77b0d93be7",
+          "hero": "Sombra",
+          "voice": "Sombra_-_Seems_happy._And_he_looks_his_age,_unlike_someone_I_know.ogg",
+          "voicePrefix": "",
+          "subtitles": "Seems happy. And he looks his age, unlike someone I know",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "a797e527-95af-4d4e-8dbe-45851903a0ec",
+          "hero": "Doctrine",
+          "voice": "Doctrine_-_A_blasphemous_contradiction..._what_joy_does_he_find_as_death_approaches_his_doorstep.ogg",
+          "voicePrefix": "",
+          "subtitles": "A blasphemous contradiction... what joy does he find as death approaches his doorstep",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "dde801de-41fb-405c-9b73-884300c659b1",
+          "hero": "Sombra",
+          "voice": "Sombra_-_By_the_sound_of_it,_a_lot_more_than_he_would_have_with_you_in_his_life.ogg",
+          "voicePrefix": "",
+          "subtitles": "By the sound of it, a lot more than he would have with you in his life",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "36f7329a-16b9-4fb4-bf2c-9447d60773ff",
+      "entryType": "dialogue",
+      "name": "Stinkin' Cute",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "48aecda9-6e2a-40ca-a15f-8fb1fb5046dd",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Sheesh,_Orisa._If_Efi_wanted_to_scare_trouble_away_from_Numbani,_why'd_she_make_you_so_stinkin'_cute_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Sheesh, Orisa. If Efi wanted to scare trouble away from Numbani, why'd she make you so stinkin' cute?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "0fd7ae9f-c1b0-44c5-a779-dbbd99303246",
+          "hero": "Orisa",
+          "voice": "Orisa_-_Defense_is_not_my_only_function._I_also_give_hugs.ogg",
+          "voicePrefix": "",
+          "subtitles": "Defense is not my only function. I also give hugs.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "975d94e9-adb0-4f37-996d-fde1a31cfbec",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Hugs_!_Oh,_that_girl_really_is_a_genius!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hugs?! Oh, that girl really is a genius!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "2da40d4d-e8e2-4511-8cc0-7f54a88e9004",
+      "entryType": "dialogue",
+      "name": "Junies",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "f8f2ca2d-edf4-45c5-bfbf-772d6f546aff",
+          "hero": "Orisa",
+          "voice": "Orisa_-_Oh!_Your_R.O.T.H._unit_reminds_me_of_the_Junies_Efi_designed.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh! Your R.O.T.H. unit reminds me of the Junies Efi designed.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "56d5e088-6ff6-44d8-b0c9-6dc24110f7cc",
+          "hero": "Sierra",
+          "voice": "Sierra_-_You_really_think_so__Oh,_the_techs_back_at_Grand_Mesa_are_gonna_flip_when_I_tell_'em_you_said_that.ogg",
+          "voicePrefix": "",
+          "subtitles": "You really think so? Oh, the techs back at Grand Mesa are gonna flip when I tell 'em you said that.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "3556bbb9-5a0a-47e3-be14-fb3eeef06b80",
+      "entryType": "dialogue",
+      "name": "Nail Polish",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "8b5aa0fc-6b60-4f1a-bb69-442d675530fd",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Hey_'Risa!_I_got_my_hands_on_some_extra_glittery_nail_polish_the_other_day,_and_I_think_it's_just_your_color.ogg",
+          "voicePrefix": "",
+          "subtitles": "Hey 'Risa! I got my hands on some extra glittery nail polish the other day, and I think it's just your color",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "44da70ec-88ca-41c7-9cea-cf81b0350eeb",
+          "hero": "Orisa",
+          "voice": "Orisa_-_Ah,_how_exciting!_But..._I_do_not_have_nails.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ah, how exciting! But... I do not have nails.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "e5981eb7-64ee-4a48-8417-45657b880086",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Who_needs_'em__I_wouldn't_be_doing_right_by_your_big_sis_if_we_didn’t_get_a_little_creative!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Who needs 'em? I wouldn't be doing right by your big sis if we didn't get a little creative!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "7a66d57f-ed74-4283-802c-a606ad3c4dd9",
+      "entryType": "dialogue",
+      "name": "Toe to Toe",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "1d5ceabc-94e0-4861-a024-bda4b2ad1f4d",
+          "hero": "Sierra",
+          "voice": "Sierra_-_I_see_you,_putting_in_the_extra_training_hours._It's_paying_off!.ogg",
+          "voicePrefix": "",
+          "subtitles": "I see you, putting in the extra training hours. It's paying off!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "56e737e8-15d6-44ad-beea-fa157edd918d",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Thanks!_You_should_see_my_sister,_though._She's_really_dedicated.ogg",
+          "voicePrefix": "",
+          "subtitles": "Thanks! You should see my sister, though. She's really dedicated.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "eef6ed9c-a2ae-4d20-81f9-c4138a8ca817",
+          "hero": "Sierra",
+          "voice": "Sierra_-_I_know--and_you're_goin_toe_to_toe_with_her!_You_oughta_be_proud_of_that.ogg",
+          "voicePrefix": "",
+          "subtitles": "I know--and you're goin toe to toe with her! You oughta be proud of that",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "6c863bed-59b5-4a7f-8086-615d10cf4999",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Ha,_good_point._I_will_be!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ha, good point. I will be!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "74d5a498-6451-4a54-92a4-736f82835dad",
+      "entryType": "dialogue",
+      "name": "Dye Color",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "9246f348-02e9-4370-9113-9351a8b5df3e",
+          "hero": "Sierra",
+          "voice": "Sierra_-_That_dye_color_is_so_cute_on_you,_Zarya!_Gotta_respect_a_soldier_who_rocks_pink,_am_I_right_.ogg",
+          "voicePrefix": "",
+          "subtitles": "That dye color is so cute on you, Zarya! Gotta respect a soldier who rocks pink, am I right",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "b4bdf0a6-fd3f-404d-8067-484737ae4bb8",
+          "hero": "Zarya",
+          "voice": "Zarya_-_This_color_is_not_dye._I_was_born_with_it.ogg",
+          "voicePrefix": "",
+          "subtitles": "This color is not dye. I was born with it",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "9b6d31d7-181d-4f7b-b6ee-1ab1af227d36",
+          "hero": "Sierra",
+          "voice": "Sierra_-_Oop,_now_hold_on--girl,_you_said_that_so_straight_I_almost_believed_you!.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oop, now hold on--girl, you said that so straight I almost believed you!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "02a4cc32-ade7-4ea8-a097-629f67517ffb",
+          "hero": "Zarya",
+          "voice": "Zarya_-_(chuckle)_You_are_not_the_first_to_fall_for_my_jokes.ogg",
+          "voicePrefix": "",
+          "subtitles": "(chuckle) You are not the first to fall for my jokes",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "63c563cc-ca03-447d-97e0-163911d5af7d",
+      "entryType": "dialogue",
+      "name": "Bittersweet",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "2cc70107-14d4-4af0-9f35-ed1f270b4ec2",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Is_it_nice,_spending_time_with_your_brother_again_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Is it nice, spending time with your brother again?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "3bf54acc-20f6-43d9-a5e3-a211b0d8f54c",
+          "hero": "Genji",
+          "voice": "Genji_-__Nice__is_one_word_I_could_use_to_describe_it.ogg",
+          "voicePrefix": "",
+          "subtitles": "_Nice_ is one word I could use to describe it.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "491da3b4-d52c-4926-bf3a-0681125be073",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Well..._what_other_words_would_you_use_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Well... what other words would you use?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "54d894ea-e188-4451-a7ac-b85f3af73db9",
+          "hero": "Genji",
+          "voice": "Genji_-_Bittersweet..._but_cathartic.ogg",
+          "voicePrefix": "",
+          "subtitles": "Bittersweet... but cathartic",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "a3e3dedd-3cac-4983-8a99-57fddb9e2825",
+      "entryType": "dialogue",
+      "name": "Turtle Tools",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "5634b6d5-aba4-42af-a440-1d5d96a293dc",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_Wanna_trade_mythological-turtle-themed_healing_tools_sometime_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Wanna trade mythological-turtle-themed healing tools sometime?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "a8a6e265-5a91-4523-9948-068c067caf7f",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_What's_in_it_for_me_.ogg",
+          "voicePrefix": "",
+          "subtitles": "What's in it for me?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "a221ffc1-510c-4446-b56b-9528f26ad496",
+          "hero": "Wuyang",
+          "voice": "Wuyang_-_You_get_to_splash_people_with_water_and_tell_them_you_thought_they_needed_help_.ogg",
+          "voicePrefix": "",
+          "subtitles": "You get to splash people with water and tell them you thought they needed help?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "d71d8c2d-68d3-48d5-9b79-2f343ebdbf15",
+          "hero": "Mizuki",
+          "voice": "Mizuki_-_That_does_kinda_sound_fun._I'm_in.ogg",
+          "voicePrefix": "",
+          "subtitles": "That does kinda sound fun. I'm in",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "9694ae8c-a8e5-4a33-b034-bd98984d4db4",
+      "entryType": "dialogue",
+      "name": "Never Forgotten",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "cc189537-ed98-45bd-9f23-997e54d247e2",
+          "hero": "Sojourn",
+          "voice": "Sojourn_-_I_don't_care_what_it_takes._This_war_of_yours_ends_now.ogg",
+          "voicePrefix": "",
+          "subtitles": "I don't care what it takes. This war of yours ends now",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "c5e400cd-a6c6-404a-af26-655159732a09",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_History_will_remember_which_of_us_claims_victory,_and_my_name_will_never_be_forgotten.ogg",
+          "voicePrefix": "",
+          "subtitles": "History will remember which of us claims victory, and my name will never be forgotten",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "7ef9efb1-aa62-4029-87c7-c824df62a2c8",
+      "entryType": "dialogue",
+      "name": "Some quiet",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch",
+        "Multi Path"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "ed9c29c6-0526-4c27-bb4c-c3d1b03414bc",
+          "hero": "Roadhog",
+          "voice": "Roadhog_-_Finally..._some_quiet.ogg",
+          "voicePrefix": "",
+          "subtitles": "Finally... some quiet",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "45ff2989-1d96-4a7d-bb24-b184fe44e8a5",
+          "hero": "Bastion",
+          "voice": "Bastion_-_(excited_beeps).ogg",
+          "voicePrefix": "",
+          "subtitles": "**excited beeps**",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "0d66c530-bf2c-469f-a5ae-cb5367831899",
+          "hero": "Jetpack Cat",
+          "voice": "Jetpack_Cat_-_(chaotic_yowls).ogg",
+          "voicePrefix": "",
+          "subtitles": "**chaotic yowls**",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "ae0de47e-a7d7-4777-93a4-1f53f66797c8",
+          "hero": "Roadhog",
+          "voice": "Roadhog_-_Ugh.ogg",
+          "voicePrefix": "",
+          "subtitles": "Ugh.",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ],
+      "paths": [
+        {
+          "id": "6e592127-2819-47b4-a831-d8d2be9d77a9",
+          "label": "Bastion",
+          "lineIds": [
+            "ed9c29c6-0526-4c27-bb4c-c3d1b03414bc",
+            "45ff2989-1d96-4a7d-bb24-b184fe44e8a5",
+            "ae0de47e-a7d7-4777-93a4-1f53f66797c8"
+          ]
+        },
+        {
+          "id": "c51f166a-a41c-458b-b43f-17d45d3f6b6e",
+          "label": "Jetpack Cat",
+          "lineIds": [
+            "ed9c29c6-0526-4c27-bb4c-c3d1b03414bc",
+            "0d66c530-bf2c-469f-a5ae-cb5367831899",
+            "ae0de47e-a7d7-4777-93a4-1f53f66797c8"
+          ]
+        }
+      ],
+      "selectedPathId": "6e592127-2819-47b4-a831-d8d2be9d77a9"
+    },
+    {
+      "id": "6eb27b78-ae6e-4fd4-bb25-d8b4b4ce27b0",
+      "entryType": "dialogue",
+      "name": "Can not Hold Together",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "2124666a-294c-4bb4-94bb-8809d1aaef00",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_The_EMP_is_in_place,_Subject_Sigma._Its_detonation_falls_to_you.ogg",
+          "voicePrefix": "",
+          "subtitles": "The EMP is in place, Subject Sigma. Its detonation falls to you",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "48c11283-3845-45b1-9d82-9b64033f1ab0",
+          "hero": "Sigma",
+          "voice": "Sigma_-_No,_no,_no..._No,_there_is_no_use._It_cannot_hold_together._It_will_not_hold_together!.ogg",
+          "voicePrefix": "",
+          "subtitles": "No, no, no... No, there is no use. It cannot hold together. It will not hold together!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "b9e605fa-7c0c-4a61-b6f8-420d4b2a1364",
+          "hero": "Vendetta",
+          "voice": "Vendetta_-_I_will_not_tolerate_excuses._Pull_your_weight,_or_be_cut_down_like_the_rest!.ogg",
+          "voicePrefix": "",
+          "subtitles": "I will not tolerate excuses. Pull your weight, or be cut down like the rest!",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "8df9ac11-fef1-49c3-8421-41780d0912bf",
+      "entryType": "dialogue",
+      "name": "Word of Caution",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "f233dbb9-3f6d-42d0-b5a3-91f8f06a5c79",
+          "hero": "Winston",
+          "voice": "Winston_-_I_know_you_have_a_new_family_now,_Hammond,_but_if_you_ever_need_help,_I'm_here_for_you.ogg",
+          "voicePrefix": "",
+          "subtitles": "I know you have a new family now, Hammond, but if you ever need help, I'm here for you",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "75de420c-6174-4e13-b5a9-309eaf429c42",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_The_hamster_is_grateful._And_he_has_a_word_of_caution.ogg",
+          "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_The_hamster_is_grateful._And_he_has_a_word_of_caution.ogg",
+          "subtitles": "**hamster noises** The hamster is grateful. And he has a word of caution",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "37259ed8-fbcd-4024-9057-531c048b38ed",
+          "hero": "Winston",
+          "voice": "Winston_-_Oh__What_is_it_.ogg",
+          "voicePrefix": "",
+          "subtitles": "Oh? What is it?",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "5f1c8699-a205-4a7f-b758-365e19c86ef9",
+          "hero": "Wrecking Ball",
+          "voice": "Wrecking_Ball_-_He_says_do_not_forget_where_you_came_from.ogg",
+          "voicePrefix": "Wrecking_Ball_-_(hamster_noises)_He_says_do_not_forget_where_you_came_from.ogg",
+          "subtitles": "**hamster noises** He says: do not forget where you came from",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "5ba5766d-c7f3-4afc-96f6-869232937690",
+      "entryType": "dialogue",
+      "name": "Equal Partnership",
+      "status": "active",
+      "eraName": "",
+      "tags": [
+        "Overwatch"
+      ],
+      "scene": "Default.png",
+      "lines": [
+        {
+          "id": "2d6dbb6e-09e1-4e73-880d-f9db6b67cfb1",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_If_we_are_to_work_together_again,_I_desire_a_more_equal_partnership.ogg",
+          "voicePrefix": "",
+          "subtitles": "If we are to work together again, I desire a more equal partnership",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "6fdf2d49-c597-4d95-8aa1-f62c4229b397",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_You_have_certainly_proven_your_loyalty._Speak_your_terms.ogg",
+          "voicePrefix": "",
+          "subtitles": "You have certainly proven your loyalty. Speak your terms",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "fe6397e0-5874-42c3-a45f-8a3a19f9cba3",
+          "hero": "Widowmaker",
+          "voice": "Widowmaker_-_The_freedom_to_choose_my_own_targets..._and_perhaps_a_tighter_leash_on_the_financier.ogg",
+          "voicePrefix": "",
+          "subtitles": "The freedom to choose my own targets... and perhaps a tighter leash on the financier",
+          "render": "Heroic.png",
+          "era": "Overwatch",
+          "status": "active"
+        },
+        {
+          "id": "9799f2e8-0f96-4422-9989-ae9ff2748253",
+          "hero": "Doomfist",
+          "voice": "Doomfist_-_(chuckle)_Consider_it_done.ogg",
+          "voicePrefix": "",
+          "subtitles": "(chuckle) Consider it done",
           "render": "Heroic.png",
           "era": "Overwatch",
           "status": "active"
@@ -169711,7 +170229,10 @@
       "49",
       "247",
       "290",
-      "399"
+      "399",
+      "47",
+      "46",
+      "10"
     ],
     "purgedLineCores": [
       "iwantedtothankyouthepacketlosssolutionyougavemeworked",
@@ -169765,6 +170286,17 @@
     "s45S5YoutubeDialogueCount": 47,
     "s45S5YoutubeChatterCount": 7,
     "braveKittyS45At": "2026-10-13T01:27:07.226Z",
-    "s5AuditGapsFixedAt": "2026-10-13T02:00:23.767Z"
+    "s5AuditGapsFixedAt": "2026-10-13T02:00:23.767Z",
+    "s5AuditFinishAt": "2026-10-13T02:08:22.329Z",
+    "nameResetAt": "2026-10-13T03:38:08.303Z",
+    "s5LiveForeverRenameAt": "2026-10-13T02:10:28.334Z",
+    "s5SierraZaryaFixedAt": "2026-10-13T03:16:25.033Z",
+    "s5WuyangJqFixedAt": "2026-10-13T03:38:08.303Z",
+    "purgedConversationIds": [
+      "d37c074e-3799-4caf-a157-cdc1c7cd6ffb",
+      "73c55553-9e8a-46b3-bc0c-07e58e4d0ebc",
+      "5dec18ef-4af7-4321-bd97-8d78a5a8290f"
+    ],
+    "s5FollowupsAt": "2026-10-13T04:26:20.300Z"
   }
 }

@@ -5,7 +5,7 @@
 import { dismissAllPanelsExcept } from '../../system-interface/interface-shared/dismissAllPanelsExcept.js';
 import { isEventSlideEditDevHost } from '../../system-interface/interface-info-display/isEventSlideEditDevHost.js';
 import { updateStatus } from '../../universal-features/atlas-mode-runtime/statusFeed.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=105';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=108';
 import {
     autoStartDialogueTheaterViewPlayAll,
     collectDialogueTheaterEditPanel,
@@ -143,9 +143,8 @@ async function onConversationPathChange(pathId, options = {}) {
     const autoPlay = options.autoPlay !== false;
     if (!activeConversationId) return;
     stopDialogueTheaterViewPlayback();
+    // Path picks stay in memory only — do not POST the full corpus on every route change.
     dialogueTheaterDataService.updateConversation(activeConversationId, { selectedPathId: pathId });
-    // Persist in the background — awaiting a full conversations.json write stalls the UI.
-    void dialogueTheaterDataService.save({ silent: true });
     const row = dialogueTheaterDataService.getConversationById(activeConversationId);
     if (!row) return;
 
@@ -281,6 +280,8 @@ async function saveDialogueTheaterEdit() {
     const previousName = String(editSnapshot?.name || '').trim();
     const host = document.getElementById('dialogueTheaterEditHost');
     const patch = host ? collectDialogueTheaterEditPanel(host) : {};
+    const saveBtn = getSaveBtn();
+    const editBtn = getEditBtn();
 
     dialogueTheaterDataService.updateConversation(activeConversationId, {
         name: nextName,
@@ -291,39 +292,55 @@ async function saveDialogueTheaterEdit() {
         titleEl.textContent = nextName;
     }
 
-    // Exit edit UI immediately — disk write of conversations.json is the slow part.
-    // Persist in background (already-normalized row; skip full normalize pass).
+    // Await disk write so a failed POST cannot look like a successful save
+    // (edits were exiting edit mode immediately, then reappearing on reload).
+    if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving…';
+    }
+
+    try {
+        await dialogueTheaterDataService.save({ skipNormalize: true });
+    } catch {
+        // Status already shown by DataService; stay in edit mode.
+        if (saveBtn) {
+            saveBtn.disabled = false;
+            saveBtn.textContent = 'Save';
+        }
+        return;
+    }
+
     isEditing = false;
     editSnapshot = null;
     document.getElementById('eventSlide')?.classList.remove('event-slide--inline-editing');
 
-    const editBtn = getEditBtn();
-    const saveBtn = getSaveBtn();
     if (editBtn) {
         editBtn.style.display = isEventSlideEditDevHost() ? '' : 'none';
         editBtn.textContent = 'Edit';
     }
-    if (saveBtn) saveBtn.style.display = 'none';
+    if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save';
+        saveBtn.style.display = 'none';
+    }
     if (titleEl) titleEl.contentEditable = 'false';
 
     await refreshPanelContent('view');
     onListRefresh?.({ soft: true });
 
-    void dialogueTheaterDataService.save({ silent: true, skipNormalize: true }).then(() => {
-        if (previousName && previousName !== nextName) {
-            void import('../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js')
-                .then(({ rewriteStoryCommentaryOnTheaterRename }) =>
-                    rewriteStoryCommentaryOnTheaterRename(
-                        activeConversationId,
-                        previousName,
-                        nextName,
-                    ),
-                )
-                .catch((err) => {
-                    console.warn('[theater] commentary rename rewrite failed', err);
-                });
-        }
-    });
+    if (previousName && previousName !== nextName) {
+        void import('../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js')
+            .then(({ rewriteStoryCommentaryOnTheaterRename }) =>
+                rewriteStoryCommentaryOnTheaterRename(
+                    activeConversationId,
+                    previousName,
+                    nextName,
+                ),
+            )
+            .catch((err) => {
+                console.warn('[theater] commentary rename rewrite failed', err);
+            });
+    }
 }
 
 function wirePanelButtons() {
@@ -450,9 +467,6 @@ async function prepareEventSlideForConversation(row, options = {}) {
             highlightLineId,
         });
         scrollable.scrollTop = 0;
-        // Match story: brief delay so the panel open transition starts before stage paint.
-        await new Promise((r) => setTimeout(r, 100));
-        scrollable.scrollTop = 0;
         void syncDialogueTheaterStageOverlayFromGlobalToggle();
     }
 
@@ -485,24 +499,22 @@ export async function openDialogueTheaterInfoPanel(conversationId, options = {})
             ? window.FilterService.heroes
             : [];
 
+    // Path picks stay in memory only — do not POST the full 6MB corpus on every open.
     if (!options.startEditing && pathCount > 1 && characterFilters.length > 0) {
         const pathId = pickConversationPathForCharacterFilters(row, characterFilters, manifestHeroes);
         if (pathId) {
             dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-            void dialogueTheaterDataService.save({ silent: true });
             row = dialogueTheaterDataService.getConversationById(conversationId) || row;
         }
     } else if (!options.startEditing && !playLineId && usesStandardRandomRoutePlay(row)) {
         const pathId = pickRandomConversationPathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-        void dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 
     if (!options.startEditing && !playLineId && isPeriodicTableConversation(row) && characterFilters.length === 0) {
         const pathId = pickRandomPeriodicTablePathId(row);
         dialogueTheaterDataService.updateConversation(conversationId, { selectedPathId: pathId });
-        void dialogueTheaterDataService.save({ silent: true });
         row = dialogueTheaterDataService.getConversationById(conversationId) || row;
     }
 

@@ -5,7 +5,7 @@
 
 import { showSaveSuccessFeedback } from '../../system-interface/interface-left-panel/coordinator/flashSaveSuccess.js';
 import { triggerHomeExit } from '../../universal-features/atlas-header/triggerHomeExit.js';
-import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=105';
+import { dialogueTheaterDataService } from '../data/DialogueTheaterDataService.js?v=108';
 import { loadDialogueTheaterAssets } from '../data/loadDialogueTheaterAssets.js';
 import { getEventListSpinnerGifSrc } from '../../universal-features/atlas-ui/loadingGifAssets.js';
 import { buildDialogueTheaterListThumbMediaHtml } from './buildDialogueTheaterListThumb.js';
@@ -1022,9 +1022,9 @@ export async function mountDialogueTheaterListView(container) {
                 <div id="dialogueTheaterBottomBar" class="story-archive-bottom-bar">
                     <div class="events-manage-actions">
                         <button type="button" id="dialogueTheaterAddBtn" class="events-manage-action-btn story-viewer-action-btn">+ Add</button>
-                        <button type="button" id="${SAVE_BTN_ID}" class="events-manage-action-btn save-btn story-viewer-action-btn">💾 Save</button>
-                        <button type="button" id="dialogueTheaterExportBtn" class="events-manage-action-btn export-btn story-viewer-action-btn">📥 Export</button>
-                        <button type="button" id="dialogueTheaterImportBtn" class="events-manage-action-btn import-btn story-viewer-action-btn">📤 Import</button>
+                        <button type="button" id="${SAVE_BTN_ID}" class="events-manage-action-btn save-btn story-viewer-action-btn">ðŸ’¾ Save</button>
+                        <button type="button" id="dialogueTheaterExportBtn" class="events-manage-action-btn export-btn story-viewer-action-btn">ðŸ“¥ Export</button>
+                        <button type="button" id="dialogueTheaterImportBtn" class="events-manage-action-btn import-btn story-viewer-action-btn">ðŸ“¤ Import</button>
                         <input type="file" id="dialogueTheaterImportFile" accept="application/json,.json" aria-hidden="true" tabindex="-1" class="dialogue-theater-list__import-input" />
                     </div>
                 </div>

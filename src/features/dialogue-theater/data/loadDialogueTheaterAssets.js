@@ -190,7 +190,18 @@ export function voicelineAudioUrl(filename) {
 }
 
 export function heroFilterIconUrl(heroName) {
-    const filterKey = resolveManifestHeroId(heroName, cachedManifestHeroes) || String(heroName || '').trim();
+    const trimmed = String(heroName || '').trim();
+    if (!trimmed) return '';
+    const filterKey = resolveManifestHeroId(trimmed, cachedManifestHeroes);
+    // resolveManifestHeroId falls back to the raw string — ignore unresolved type-in
+    // prefixes so Filters/Heroes/yo.png (etc.) does not 404 while editing.
+    if (!filterKey) return '';
+    if (
+        cachedManifestHeroes.length > 0 &&
+        !cachedManifestHeroes.some((id) => String(id || '').trim() === filterKey)
+    ) {
+        return '';
+    }
     return `src/assets/images/Filters/Heroes/${encodeURIComponent(filterKey)}.png`;
 }
 

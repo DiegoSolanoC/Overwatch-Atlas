@@ -1817,12 +1817,13 @@ function wireDialogueLineBlock(blockEl, line, onEditChange) {
 function updateHeroIcon(iconEl, heroName) {
     if (!(iconEl instanceof HTMLImageElement)) return;
     const trimmed = String(heroName || '').trim();
-    if (!trimmed) {
+    const src = trimmed ? heroFilterIconUrl(trimmed) : '';
+    if (!src) {
         iconEl.removeAttribute('src');
         iconEl.classList.add('dialogue-theater-line__hero-icon--empty');
         return;
     }
-    iconEl.src = heroFilterIconUrl(trimmed);
+    iconEl.src = src;
     iconEl.alt = trimmed;
     iconEl.classList.remove('dialogue-theater-line__hero-icon--empty');
 }
@@ -2438,7 +2439,7 @@ export function collectDialogueTheaterEditPanel(host) {
 
     const pathPatch = collectVariationPathsFromHost(host);
     /** @type {Partial<import('../data/DialogueTheaterDataService.js').DialogueConversation>} */
-    const patch = { eraName: '', scene, lines, ...pathPatch };
+    const patch = { scene, lines, ...pathPatch };
     // Chatter hubs omit conversation-level status/era/tags controls — leave those fields alone.
     if (statusEl instanceof HTMLSelectElement) {
         patch.status = status;

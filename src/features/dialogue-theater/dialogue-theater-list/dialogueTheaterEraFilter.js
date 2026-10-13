@@ -190,6 +190,8 @@ export const DIALOGUE_THEATER_RETIRED_WORKING_TAGS = Object.freeze([
     'Midseason 3 (YouTube placeholder)',
     'Season 3 launch (YouTube placeholder)',
     'Season 4 (YouTube placeholder)',
+    'Season 4.5 (YouTube placeholder)',
+    'Season 5 (YouTube placeholder)',
 ]);
 
 /**
