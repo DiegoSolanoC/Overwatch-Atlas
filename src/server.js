@@ -158,26 +158,33 @@ function writeDialogueTheaterJson(body, res) {
     }
 
     const outPath = absFromPublic(FILES.dialogueTheater.conversations);
+    // Client posts the full in-memory list. Default: trust it (skip 6MB re-read +
+    // merge — that was the main per-save stall under OneDrive). Opt into legacy
+    // merge with `{ replace: false }`.
+    const replace = body?.replace !== false;
     /** @type {typeof conversations} */
     let mergedConversations = conversations;
     /** @type {Record<string, unknown>} */
     let existingMeta = {};
-    try {
-        if (fs.existsSync(outPath)) {
-            const onDisk = JSON.parse(fs.readFileSync(outPath, 'utf8'));
-            const existing = Array.isArray(onDisk?.conversations) ? onDisk.conversations : [];
-            if (existing.length > 0) {
-                mergedConversations = mergeDialogueTheaterConversations(conversations, existing);
+    const bodyMeta = body?._meta && typeof body._meta === 'object' ? body._meta : {};
+
+    if (!replace) {
+        try {
+            if (fs.existsSync(outPath)) {
+                const onDisk = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+                const existing = Array.isArray(onDisk?.conversations) ? onDisk.conversations : [];
+                if (existing.length > 0) {
+                    mergedConversations = mergeDialogueTheaterConversations(conversations, existing);
+                }
+                if (onDisk?._meta && typeof onDisk._meta === 'object') {
+                    existingMeta = onDisk._meta;
+                }
             }
-            if (onDisk?._meta && typeof onDisk._meta === 'object') {
-                existingMeta = onDisk._meta;
-            }
+        } catch (e) {
+            console.warn('[server] dialogue-theater merge read failed:', e?.message || e);
         }
-    } catch (e) {
-        console.warn('[server] dialogue-theater merge read failed:', e?.message || e);
     }
 
-    const bodyMeta = body?._meta && typeof body._meta === 'object' ? body._meta : {};
     const payload = {
         conversations: mergedConversations,
         _meta: { ...existingMeta, ...bodyMeta },

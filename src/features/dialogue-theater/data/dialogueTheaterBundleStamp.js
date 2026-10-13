@@ -23,6 +23,18 @@ function hashString(str) {
 }
 
 /**
+ * @param {string} serialized
+ * @param {number} count
+ * @returns {string}
+ */
+export function buildDialogueTheaterBundleStampFromSerialized(serialized, count) {
+    const text = String(serialized || '');
+    const n = Number(count) || 0;
+    if (!text || n <= 0) return '';
+    return `${n}:${hashString(text)}`;
+}
+
+/**
  * @param {unknown[]|null|undefined} conversations
  * @returns {string}
  */
@@ -34,8 +46,7 @@ export function buildDialogueTheaterBundleStamp(conversations) {
     } catch (_) {
         serialized = '';
     }
-    if (!serialized) return '';
-    return `${conversations.length}:${hashString(serialized)}`;
+    return buildDialogueTheaterBundleStampFromSerialized(serialized, conversations.length);
 }
 
 /**

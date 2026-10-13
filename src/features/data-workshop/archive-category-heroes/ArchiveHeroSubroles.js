@@ -7,7 +7,7 @@
 export const HERO_ARCHIVE_SUBROLE_ORDER_BY_ROLE = {
     Tank: ['Initiator', 'Bruiser', 'Stalwart'],
     Damage: ['Flanker', 'Recon', 'Specialist', 'Sharpshooter'],
-    Support: ['Tactician', 'Medic', 'Survivor']
+    Support: ['Tactician', 'Medic', 'Survivor', 'Unassigned']
 };
 
 /** Subrole aliases for normalization */
@@ -21,7 +21,10 @@ export const HERO_ARCHIVE_SUBROLE_ALIASES = {
     recon: 'Recon',
     tactician: 'Tactician',
     medic: 'Medic',
-    survivor: 'Survivor'
+    survivor: 'Survivor',
+    unassigned: 'Unassigned',
+    none: 'Unassigned',
+    unknown: 'Unassigned',
 };
 
 /**
@@ -63,7 +66,8 @@ export function displayLabelForHeroArchiveSubrole(subrole) {
  * @returns {number}
  */
 export function heroArchiveSubroleRank(subrole, role) {
-    const normalized = normalizeHeroArchiveSubrole(subrole);
+    let normalized = normalizeHeroArchiveSubrole(subrole);
+    if (!normalized && role === 'Support') normalized = 'Unassigned';
     const roleSubroles = HERO_ARCHIVE_SUBROLE_ORDER_BY_ROLE[role] || [];
     const index = roleSubroles.indexOf(normalized);
     return index === -1 ? roleSubroles.length + 1 : index;

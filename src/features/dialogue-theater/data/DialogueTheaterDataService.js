@@ -27,6 +27,7 @@ import { resolveManifestHeroId } from '../../system-interface/interface-filter-m
 import { DIALOGUE_THEATER_RETIRED_WORKING_TAGS } from '../dialogue-theater-list/dialogueTheaterEraFilter.js';
 import {
     buildDialogueTheaterBundleStamp,
+    buildDialogueTheaterBundleStampFromSerialized,
     clearDialogueTheaterBundleStamp,
     readStoredDialogueTheaterBundleStamp,
     writeDialogueTheaterBundleStamp,
@@ -93,6 +94,8 @@ class DialogueTheaterDataService {
         this.unsavedConversationIds = new Set();
         /** @type {Set<string>} */
         this.deletedConversationIds = new Set();
+        /** @type {Record<string, unknown>} */
+        this.fileMeta = {};
     }
 
     loadDeletedConversationIds() {
@@ -421,12 +424,15 @@ class DialogueTheaterDataService {
             if (data && Array.isArray(data.conversations)) {
                 fileRows = data.conversations;
                 fileMeta = data._meta && typeof data._meta === 'object' ? data._meta : {};
+                this.fileMeta = { ...fileMeta };
             } else {
                 fileRows = [];
+                this.fileMeta = {};
             }
         } catch (err) {
             console.warn('DialogueTheaterDataService: bundled file fetch failed:', err);
             fileRows = [];
+            this.fileMeta = {};
         }
 
         const purgedIds = new Set(
@@ -624,42 +630,41 @@ class DialogueTheaterDataService {
     }
 
     /**
-     * @param {{ silent?: boolean }} [opts]
+     * @param {{ silent?: boolean, skipNormalize?: boolean }} [opts]
      * @returns {Promise<void>}
      */
     save(opts = {}) {
-        this.conversations = this.normalizeConversations(this.conversations);
-        const wroteLocal = (() => {
-            try {
-                localStorage.setItem(
-                    DIALOGUE_THEATER_LOCALSTORAGE_KEY,
-                    JSON.stringify(this.conversations),
-                );
-                return true;
-            } catch (err) {
-                if (!isQuotaExceededError(err)) throw err;
-                console.warn(
-                    'Dialogue Theater: localStorage quota exceeded on save — writing to repo/file only',
-                );
-                try {
-                    localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
-                } catch (_) { /* ignore */ }
-                return false;
-            }
-        })();
-        const savedStamp = buildDialogueTheaterBundleStamp(this.conversations);
+        // Rows are already normalized on updateConversation / import; skip a full
+        // pass unless callers ask for it (toolbar Save still normalizes once).
+        if (!opts.skipNormalize) {
+            this.conversations = this.normalizeConversations(this.conversations);
+        }
+
+        // Full theater JSON (~6MB) exceeds localStorage — never attempt a full dump.
+        try {
+            localStorage.removeItem(DIALOGUE_THEATER_LOCALSTORAGE_KEY);
+        } catch (_) { /* ignore */ }
+
+        let serialized = '';
+        try {
+            serialized = JSON.stringify(this.conversations);
+        } catch (err) {
+            console.warn('DialogueTheaterDataService: serialize failed:', err);
+            serialized = '';
+        }
+
+        const savedStamp = serialized
+            ? buildDialogueTheaterBundleStampFromSerialized(serialized, this.conversations.length)
+            : buildDialogueTheaterBundleStamp(this.conversations);
         if (savedStamp) writeDialogueTheaterBundleStamp(savedStamp);
         this.deletedConversationIds.clear();
         this.persistDeletedConversationIds();
-        this.clearUnsavedMarkers();
 
         if (!this.canPersistToRepo()) {
             if (!opts.silent) {
                 updateStatus(
-                    wroteLocal
-                        ? `Saved ${this.conversations.length} conversation(s) to localStorage`
-                        : `Saved ${this.conversations.length} conversation(s) in memory only (browser storage full — use Export or run a local Save with the API)`,
-                    wroteLocal ? 'success' : 'warning',
+                    `Could not write conversations.json (dev API unavailable). Use Export or run the local server.`,
+                    'warning',
                 );
             }
             return Promise.resolve();
@@ -669,7 +674,16 @@ class DialogueTheaterDataService {
             typeof window.resolveDevApiUrl === 'function'
                 ? window.resolveDevApiUrl('api/dialogue-theater')
                 : '/api/dialogue-theater';
-        const body = JSON.stringify({ conversations: this.conversations });
+        let metaJson = '{}';
+        try {
+            metaJson = JSON.stringify(
+                this.fileMeta && typeof this.fileMeta === 'object' ? this.fileMeta : {},
+            );
+        } catch (_) {
+            metaJson = '{}';
+        }
+        // Reuse the conversations serialization — avoid a second 4MB stringify.
+        const body = `{"conversations":${serialized || '[]'},"_meta":${metaJson},"replace":true}`;
 
         return fetch(apiUrl, {
             method: 'POST',
@@ -678,9 +692,10 @@ class DialogueTheaterDataService {
         })
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                this.clearUnsavedMarkers();
                 if (!opts.silent) {
                     updateStatus(
-                        `Saved ${this.conversations.length} conversation(s) to localStorage and src/data`,
+                        `Saved ${this.conversations.length} conversation(s) to src/data`,
                         'success',
                     );
                 }
@@ -689,7 +704,7 @@ class DialogueTheaterDataService {
                 console.warn('DialogueTheaterDataService: dev API save failed:', err);
                 if (!opts.silent) {
                     updateStatus(
-                        `Saved ${this.conversations.length} conversation(s) to localStorage (dev file write failed)`,
+                        `Save failed — edits are still unsaved. Is the local server running? (${err?.message || err})`,
                         'warning',
                     );
                 }

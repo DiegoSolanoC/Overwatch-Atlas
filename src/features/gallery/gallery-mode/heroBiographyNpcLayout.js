@@ -72,7 +72,10 @@ export const NPC_BIOGRAPHY_CATEGORY_DISPLAY_ORDER = Object.freeze([
     'Phreaks',
     'Deadlock',
     'Gladiators',
-    'Influential Figures',
+    'Fugitives',
+    'Historical Figures',
+    'Influential Players',
+    'Researchers',
     'Civilians',
     'Other',
 ]);

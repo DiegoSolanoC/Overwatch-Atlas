@@ -13,8 +13,8 @@
       "eraName": "The Age of Progress",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Zimbabwe",
-          "country": "Zimbabwe,",
+          "locationName": "Harare, Zimbabwe",
+          "country": "Zimbabwe",
           "reasoning": "Tamuka Yeukai is Born"
         }
       ],
@@ -30,6 +30,13 @@
           "locationName": "",
           "country": "Doctrine,",
           "reasoning": "Tamuka Yeukai is Born"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tatenda,",
+          "reasoning": "Tamuka's brother and only remaining family"
         }
       ]
     },
@@ -3784,6 +3791,70 @@
       ]
     },
     {
+      "name": "Grave Devotion",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 8.2151249,
+      "lon": 3.5642897,
+      "image": "",
+      "cityDisplayName": "Oyo, Nigeria",
+      "yearStart": 2051,
+      "yearEnd": 2053,
+      "eraName": "The Omnic Crisis",
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Anubis Directives,",
+          "reasoning": ""
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tatenda,",
+          "reasoning": ""
+        }
+      ],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oyo, Nigeria",
+          "country": "Nigeria",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        },
+        {
+          "text": "Overwatch Website, Doomfist",
+          "url": "https://overwatch.blizzard.com/en-us/heroes/doomfist/"
+        },
+        {
+          "text": "Overwatch Website, Doctrine",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/doctrine/"
+        }
+      ]
+    },
+    {
       "name": "The Svyatogor",
       "locationType": "earth",
       "cityDisplayName": "Moscow, Russia",
@@ -4935,6 +5006,44 @@
           "locationName": "",
           "country": "Anubis,",
           "reasoning": "Surprise bombarding of Gothenburg"
+        }
+      ]
+    },
+    {
+      "name": "Life's Battery",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": -18.4554963,
+      "lon": 29.7468414,
+      "image": "",
+      "cityDisplayName": "Zimbabwe",
+      "yearEnd": 2052,
+      "eraName": "The Omnic Crisis",
+      "secondaryCountryPlaces": [],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "urls": [
+            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        }
+      ],
+      "yearStart": 2051,
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tatenda,",
+          "reasoning": ""
         }
       ]
     },
@@ -6922,36 +7031,6 @@
         "Days at the Academy",
         "Best Roommate",
         "Missing the Academy"
-      ]
-    },
-    {
-      "name": "Life's Battery",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": -18.4554963,
-      "lon": 29.7468414,
-      "image": "",
-      "cityDisplayName": "Zimbabwe",
-      "yearEnd": null,
-      "eraName": "The Golden Age",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
-          "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
-            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
-          ]
-        }
-      ],
-      "heroFilterPlaces": [
-        {
-          "locationName": "",
-          "country": "Doctrine,",
-          "reasoning": ""
-        }
       ]
     },
     {
@@ -18885,7 +18964,7 @@
       "name": "Surprise attack",
       "locationType": "earth",
       "cityDisplayName": "Novoanskoye, Russia",
-      "description": "No description available.",
+      "description": "In the Novoanskoye forward base of the Siberian front, Zarya was doing her daily patrols, working with soldiers to strip the metal out of the nearby mines, starving the Omnium out of resources. But unexpectedly, war bots broke into the city's defenses, forcing the higher ups to retreat and leave the city behind for good. Zaryanova was a native of Novoanskoye, and after learning the truth behind Volskaya, the city and her people were the only real thing keeping her in the front. She was not going to leave her post, and her commander, understanding her wishes, granted permission to stay behind and help evacuate anyone who was left.\n\nOn her way out of the base, she was greeted by Cole Cassidy in a truck, willing to get her right into the fight and keep her from the fire, even if Zarya insisted this wasn't his fight. Together, they manage to tear the way through the Omnium war bots into the village where Zarya was lucky enough to find her family was still alive.\n\nThe city was gone, and the officers left it to its own fate, but, thanks to Cassidy, Zarya was able to make a difference. As they evacuated survivors, Cassidy approached Zarya with his pitch, showing how the RDF wouldn't miss one soldier, but together he and Zarya could do so much more for the world. Zarya, bitter about the choices her country continued to make and grateful for his help, took the offer without question. But as they came back from the group, Zarya's sisters called them to see shocking images on the news: an all-out attack on Paris at the hands of Null Sector.",
       "image": "",
       "lat": 60,
       "lon": 100,
@@ -18902,18 +18981,21 @@
         {
           "locationName": "",
           "country": "Zarya, Cassidy",
-          "reasoning": ""
+          "reasoning": "Defend the village and evacuate civilians when the army left them for death"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch",
-          "reasoning": ""
+          "reasoning": "Cassidy recruits another member into his new blood squadron"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Omnics destroy the town of Novoanskoye in the Siberian front",
+        "Lieutenant Aleksandra Zaryanova goes missing after trying to save Siberian civilians"
+      ],
       "sources": [
         {
           "text": "New Blood 4",
@@ -18925,7 +19007,7 @@
       "name": "Zero Hour",
       "locationType": "earth",
       "cityDisplayName": "Paris, France",
-      "description": "No description available.",
+      "description": "Null Sector troops began a large-scale incursion into Paris, attacking human civilians and restraining any Omnics they came across. While at the time this appeared to be an isolated instance, soon enough, multiple cities across the world reported similar incidents, leading to drawn-out battles with the local authorities and concerns about what could be a second Omnic Crisis.\n\nAn attack of such a scale grabbed Winston's attention, commanding Overwatch agents to head to ground zero and stop Null Sector, but in spite of his efforts and the recall, the only agents stationed at Gibralta were him, Tracer and Mei. The trio attempted to help regardless, landing in Paris and begging the fight until a modified Titan unit showed up, overwhelming the agents and injuring Mei.\n\nThe team was in no condition to keep the fight going, they needed to focus on full evacuation, but just as it looked like there was no hope for the city, ex-Overwatch agents from all over the world began to arrive at the scene. Genji, Echo, Mercy Reinhardt and Brigitte all showed up to assist, treating Mei's wounds, shielding the civilians and coming up with a plan to take down the Titan by delivering a pulse bomb attached to Mei's cryogenic tank, freezing it completely. The battle in Paris was over, and the people were wondering if this meant Overwatch was truly back, to which Winston happily answered yes. Null Sector may be wrecking havoc across the world, but the Heroes of Old and of today were fighting tirelessly to keep them at bay, and now, with Overwatch reunited, humanity has another chance.",
       "image": "",
       "lat": 48.8588897,
       "lon": 2.320041,
@@ -18935,7 +19017,7 @@
         {
           "locationName": "Paris, France",
           "country": "France",
-          "reasoning": "",
+          "reasoning": "Null Sector begins a world wide invasion with its first attack in Paris",
           "lat": 48.8588897,
           "lon": 2.320041
         }
@@ -18944,38 +19026,41 @@
         {
           "locationName": "",
           "country": "Winston, Tracer, Mei,",
-          "reasoning": ""
+          "reasoning": "First Responders to the attack"
         },
         {
           "locationName": "",
           "country": "Reinhardt, Brigitte,",
-          "reasoning": ""
+          "reasoning": "Arrive in their van to shield civilians"
         },
         {
           "locationName": "",
           "country": "Mercy, Genji,",
-          "reasoning": ""
+          "reasoning": "Regroup with Overwatch in spite of rejecting the recall initially"
         },
         {
           "locationName": "",
           "country": "Echo,",
-          "reasoning": ""
+          "reasoning": "Flies from the Atlantic to join the rest"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Begins a world wide invasion"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Formally announces their combeack after success in France"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Null Sector Invades Paris, Titan unit destroys the city",
+        "Overwatch agents stop the war machines in France, Winston declares the organization is back"
+      ],
       "sources": [
         {
           "text": "Zero Hour",
@@ -23636,14 +23721,14 @@
       "lat": 0,
       "lon": 0,
       "image": "",
-      "cityDisplayName": "Oyo, Nigeria",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
       "yearStart": 2080,
       "yearEnd": null,
       "eraName": "The Reign of Talon",
       "secondaryCountryPlaces": [
         {
-          "locationName": "Oyo, Nigeria",
-          "country": "Nigeria",
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
           "reasoning": ""
         }
       ],

@@ -359,6 +359,28 @@
       "npcCategory": "Gladiators"
     },
     {
+      "name": "Kace",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "npcCategory": "Fugitives"
+    },
+    {
+      "name": "Sven",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "npcCategory": "Fugitives",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Ironclad Guild",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
       "name": "Chao",
       "description": "No description available.",
       "relevantLocations": [],
@@ -499,6 +521,12 @@
       ]
     },
     {
+      "name": "Mirembe",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Overwatch"
+    },
+    {
       "name": "Adeyemi",
       "description": "No description available.",
       "relevantLocations": [],
@@ -596,7 +624,7 @@
       "name": "Alisa",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -612,7 +640,7 @@
       "name": "Anubis",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -628,7 +656,7 @@
       "name": "Aurora",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -644,7 +672,7 @@
       "name": "Balderich",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -660,7 +688,7 @@
       "name": "Bhatt",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -673,26 +701,10 @@
       ]
     },
     {
-      "name": "Katya",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "Influential Figures",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
       "name": "Mondatta",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Historical Figures",
       "connections": [
         {
           "kind": "faction",
@@ -705,22 +717,38 @@
       ]
     },
     {
-      "name": "Naughton",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "Influential Figures"
-    },
-    {
       "name": "Ngumi",
       "description": "No description available.",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures"
+      "npcCategory": "Historical Figures"
+    },
+    {
+      "name": "Esat",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Influential Players"
+    },
+    {
+      "name": "Katya",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Influential Players",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Osai",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Influential Players",
       "connections": [
         {
           "kind": "faction",
@@ -736,7 +764,7 @@
       "name": "Portero",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Influential Figures",
+      "npcCategory": "Influential Players",
       "connections": [
         {
           "kind": "faction",
@@ -749,10 +777,60 @@
       ]
     },
     {
+      "name": "Trembley",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Influential Players"
+    },
+    {
       "name": "Benicio",
       "description": "",
       "relevantLocations": [],
-      "npcCategory": "Civilians"
+      "npcCategory": "Researchers"
+    },
+    {
+      "name": "Lynx 17",
+      "description": "No description available.",
+      "relevantLocations": [],
+      "npcCategory": "Researchers",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "Volskaya Industries",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
+    },
+    {
+      "name": "Ming",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Researchers"
+    },
+    {
+      "name": "Naughton",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Researchers"
+    },
+    {
+      "name": "Palak",
+      "description": "",
+      "relevantLocations": [],
+      "npcCategory": "Researchers",
+      "connections": [
+        {
+          "kind": "faction",
+          "name": "The Martins Collective",
+          "reasoningSubjectToLinked": "",
+          "reasoningLinkedToSubject": "",
+          "thisEntryLane": "B",
+          "showInCodex": true
+        }
+      ]
     },
     {
       "name": "Emily",
@@ -773,54 +851,10 @@
       "npcCategory": "Civilians"
     },
     {
-      "name": "Kace",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "npcCategory": "Civilians"
-    },
-    {
       "name": "Kendra",
       "description": "",
       "relevantLocations": [],
       "npcCategory": "Civilians"
-    },
-    {
-      "name": "Lynx 17",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "npcCategory": "Civilians",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Volskaya Industries",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
-      "name": "Ming",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "Civilians"
-    },
-    {
-      "name": "Palak",
-      "description": "",
-      "relevantLocations": [],
-      "npcCategory": "Civilians",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "The Martins Collective",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
     },
     {
       "name": "Sam",
@@ -829,23 +863,7 @@
       "npcCategory": "Civilians"
     },
     {
-      "name": "Sven",
-      "description": "No description available.",
-      "relevantLocations": [],
-      "npcCategory": "Civilians",
-      "connections": [
-        {
-          "kind": "faction",
-          "name": "Ironclad Guild",
-          "reasoningSubjectToLinked": "",
-          "reasoningLinkedToSubject": "",
-          "thisEntryLane": "B",
-          "showInCodex": true
-        }
-      ]
-    },
-    {
-      "name": "Trembley",
+      "name": "Tatenda",
       "description": "",
       "relevantLocations": [],
       "npcCategory": "Civilians"

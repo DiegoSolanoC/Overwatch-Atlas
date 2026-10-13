@@ -1044,7 +1044,13 @@ export async function mountDialogueTheaterListView(container) {
     eraPairFilter = '';
     pairSearchControls = null;
     invalidateListCaches({ fullRebuild: true });
-    onListChange = () => {
+    onListChange = (options = {}) => {
+        // Soft refresh after single-entry edits — sync card chrome without remounting ~1k thumbs.
+        if (options.soft) {
+            invalidateListCaches({ soft: true });
+            scheduleRenderList(container);
+            return;
+        }
         invalidateListCaches({ fullRebuild: true });
         pairSearchControls?.refreshSpeakerOptions?.();
         refreshEraFilterOptions(container);

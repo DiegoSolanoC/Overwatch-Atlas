@@ -12,6 +12,7 @@ export const GALLERY_ULTIMATE_BY_HERO = {
     Cassidy: 'Deadeye',
     'D.va': 'Self-Destruct',
     'D.mon': 'Limit Break',
+    Doctrine: 'Deliverance',
     Domina: 'Panopticon',
     Doomfist: 'Meteor Strike',
     Echo: 'Duplication',

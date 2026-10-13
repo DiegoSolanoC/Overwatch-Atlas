@@ -46,14 +46,14 @@ let activeConversationId = null;
 /** @type {boolean} */
 let isEditing = false;
 
-/** @type {(() => void)|null} */
+/** @type {((options?: { soft?: boolean }) => void)|null} */
 let onListRefresh = null;
 
 /** @type {import('../data/DialogueTheaterDataService.js').DialogueConversation|null} */
 let editSnapshot = null;
 
 /**
- * @param {() => void} fn
+ * @param {((options?: { soft?: boolean }) => void)|null} fn
  */
 export function setDialogueTheaterInfoPanelListRefresh(fn) {
     onListRefresh = fn;
@@ -291,23 +291,8 @@ async function saveDialogueTheaterEdit() {
         titleEl.textContent = nextName;
     }
 
-    await dialogueTheaterDataService.save();
-
-    if (previousName && previousName !== nextName) {
-        try {
-            const { rewriteStoryCommentaryOnTheaterRename } = await import(
-                '../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js'
-            );
-            await rewriteStoryCommentaryOnTheaterRename(
-                activeConversationId,
-                previousName,
-                nextName,
-            );
-        } catch (err) {
-            console.warn('[theater] commentary rename rewrite failed', err);
-        }
-    }
-
+    // Exit edit UI immediately — disk write of conversations.json is the slow part.
+    // Persist in background (already-normalized row; skip full normalize pass).
     isEditing = false;
     editSnapshot = null;
     document.getElementById('eventSlide')?.classList.remove('event-slide--inline-editing');
@@ -322,7 +307,23 @@ async function saveDialogueTheaterEdit() {
     if (titleEl) titleEl.contentEditable = 'false';
 
     await refreshPanelContent('view');
-    onListRefresh?.();
+    onListRefresh?.({ soft: true });
+
+    void dialogueTheaterDataService.save({ silent: true, skipNormalize: true }).then(() => {
+        if (previousName && previousName !== nextName) {
+            void import('../dialogue-theater-list/dialogueTheaterStoryCommentaryRefs.js')
+                .then(({ rewriteStoryCommentaryOnTheaterRename }) =>
+                    rewriteStoryCommentaryOnTheaterRename(
+                        activeConversationId,
+                        previousName,
+                        nextName,
+                    ),
+                )
+                .catch((err) => {
+                    console.warn('[theater] commentary rename rewrite failed', err);
+                });
+        }
+    });
 }
 
 function wirePanelButtons() {

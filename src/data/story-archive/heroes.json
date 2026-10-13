@@ -2135,6 +2135,14 @@
       "heroRole": "Support",
       "heroSubRole": "Survivor",
       "birthday": "2003"
+    },
+    {
+      "name": "55",
+      "description": "",
+      "relevantLocations": [],
+      "heroRole": "Support",
+      "heroSubRole": "",
+      "birthday": ""
     }
   ]
 }

@@ -33,7 +33,7 @@ export const HERO_BIOGRAPHY_SUBROLE_ROWS = Object.freeze({
     },
     Support: {
         top: Object.freeze(['Tactician', 'Medic']),
-        bottom: Object.freeze(['Survivor']),
+        bottom: Object.freeze(['Survivor', 'Unassigned']),
     },
 });
 
@@ -52,6 +52,7 @@ export const HERO_BIOGRAPHY_SUBROLE_SEGMENT_ORDER = Object.freeze([
     'Tactician',
     'Medic',
     'Survivor',
+    'Unassigned',
 ]);
 
 /** Preferred top-row chip budget before whole subrole segments wrap to row 2. */
@@ -62,6 +63,7 @@ export const HERO_BIOGRAPHY_TOP_ROW_CHIP_COUNT = 22;
 /** @type {Record<string, string>} */
 export const HERO_BIOGRAPHY_SUBROLE_LABELS = Object.freeze({
     Tactician: 'Strategist',
+    Unassigned: 'Unassigned',
 });
 
 /**
@@ -144,13 +146,14 @@ export async function buildHeroBiographyRoleGroups(manifestHeroes) {
             const role = normalizeHeroArchiveRole(ev?.heroRole);
             if (!HERO_BIOGRAPHY_ROLE_ORDER.includes(role)) continue;
 
-            const sub = normalizeHeroArchiveSubrole(ev?.heroSubRole);
+            let sub = normalizeHeroArchiveSubrole(ev?.heroSubRole);
+            if (!sub && role === 'Support') sub = 'Unassigned';
             used.add(heroId);
 
             if (groups[role][sub]) {
                 groups[role][sub].push(heroId);
             }
-            /* Unknown subrole or manifest-only placeholders: omitted from bio strip for now. */
+            /* Unknown subroles outside Support Unassigned: omitted from bio strip for now. */
         }
     }
 
