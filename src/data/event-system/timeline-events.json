@@ -257,7 +257,7 @@
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": "Ogundimu Synergies Inc.   rise as early leaders of the Cybernetics Field"
+          "reasoning": "Ogundimu Synergies Inc. rise as early leaders of the Cybernetics Field"
         }
       ],
       "factionFilterPlaces": [
@@ -275,6 +275,13 @@
         {
           "name": "Family Business",
           "theaterId": "804276aa-3759-470a-b9f0-3953452b8be4"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Esat,",
+          "reasoning": "Pioneers the Cybernetic field that c hanged the world"
         }
       ]
     },
@@ -1755,9 +1762,25 @@
       ],
       "yearEnd": null,
       "commentary": [
-        "Twins",
-        "Ask to Change",
-        "Extension of myself"
+        {
+          "name": "Twins",
+          "theaterId": "ad676d5d-d4f6-4022-9e5b-b142a0d4c3c0"
+        },
+        {
+          "name": "Ask to Change",
+          "theaterId": "135b8507-b1dc-462c-a32d-910c7c07c745"
+        },
+        {
+          "name": "Extension of myself",
+          "theaterId": "6968336b-b1e0-4a6d-88de-620b3e74d51f"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Esat,",
+          "reasoning": "Rebuilds nearly all of Vivian's body but opposes to military use"
+        }
       ]
     },
     {
@@ -1797,24 +1820,61 @@
     },
     {
       "name": "Shared Vision",
-      "description": "No description available.",
+      "description": "Tamuka and Tatenda grew up seeing multiple medical breaktrhoughs, yet none could completely cure Tatenda's condition without resorting to full-on cybernetic implants that would alter him forever. In his devotion to spare his brother from pain and untimely demise, Tamuka began researching cybernetic engineering, hearing of Elaine Esat's achievements and becoming fascinated by her methodology. \n\nOvertime, he became a gifted engineer himself, even getting to meet Dr. Esat himself, who was kind enough to direct him to a high level position at Ogundimu Synergies, the leading force in cybernetics in Africa. The head of the company, Yejide Ogundimu, fully supported Tamuka's cause, finding ways for cybernetics to not just replace parts of a malfunctioning body, but combining this technology with cellular manipulation, to allow these machines to eventually repair organic tissue. \n\nWhile Omnics were entering the workforce, solving so many of humanity's external problems, Tamuka became obsessed with soothing the ills that ravaged humans from within, and with Ogundimu's resources, Tamuka's research promised a better future for humanity, one where cybernetics weren't just a mean to prolong someone's life due to bodily failure, but rather a way to fully reject the inevitability of death, allowing a human body to remain young and healthy, while still fully organic, the closest thing to true immortality.",
       "locationType": "earth",
-      "lat": 0,
-      "lon": 0,
+      "lat": 8.2151249,
+      "lon": 3.5642897,
       "image": "",
-      "cityDisplayName": "",
-      "yearEnd": null,
+      "cityDisplayName": "Oyo, Nigeria",
+      "yearEnd": 2050,
       "eraName": "The Age of Progress",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Oyo, Nigeria",
+          "country": "Nigeria",
+          "reasoning": "Tamuka is hired by Ogundimu Synergies to further his research in cybernetic tissue repar"
+        }
+      ],
+      "headlines": [
+        "Ogundimu Synergies announces project focusing on celular regeneration."
+      ],
       "sources": [
         {
           "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
           "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
           ]
+        },
+        {
+          "text": "Overwatch Website, Doctrine",
+          "url": "https://overwatch.blizzard.com/en-gb/heroes/doctrine/"
+        }
+      ],
+      "yearStart": 2030,
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": "Becomes an engineer seeking inmortality"
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": "Meets Temuka and shares a similar vision"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Esat,",
+          "reasoning": "Refers Tamuka to the Ogundimu family"
+        },
+        {
+          "locationName": "",
+          "country": "Tatenda,",
+          "reasoning": "Manages to survive thanks to his brother's care"
         }
       ]
     },
@@ -3792,7 +3852,7 @@
     },
     {
       "name": "Grave Devotion",
-      "description": "No description available.",
+      "description": "Tamuka became an indispensable asset for Ogundimu Synergies, eventually rising to become the Chief engineer of the company, but when the crisis came, his research would stagnate due to the consistent attacks Nigeria was struggling with at the time, causing power outages and endangering people in the company. The teenage son of Yejide, Akande Ogundimu, had been a victim of these endless conflicts, surviving the attack but losing his right arm, and because of this, the Ogundimus had their top engineer take a side step from his personal project to design a catered replacement limb for their son. \n\nThe family was forever grateful to him, and Akande, changed by the loss of his arm, found that he shared a lot in common with Doctor Tamuka's vision, as heir to a cybernetics company and now an amputee himself, he related to Tamuka's wish to push humanity's evolution forwards, even if it meant crossing the lines of society's expectations. Akande's arm was the last project Doctor Tamuka worked on under the Ogundimu brand. However, the escalating conflict with the war machines leads to an explosion in his laboratory while both him and his brother are inside. Both survived. However, his brother, still struggling from his degenerative condition, was left heavily wounded by the accident, forcing Tamuka out of his job to care for his brother in what could have been his final days. \n\nTatenda had long accepted death as a natural part of life, having lived far longer than anyone else expected him to, and being more than happy with the life he got to live alongside his brother, a brilliant mind that cared for him even when the rest of the world gave up. But Tamuka, on the other hand, was desperate, refusing to lose Tatenda after so many years, having come so close to finding a solution, only for the war to stall him. Over the years, Tamuka had become so determined that his research could cure Tatenda that he no longer saw his field as mere scientific concepts, but rather it had become his religion, a philosophy to live by as he wrote a new gospel for humanity's future. Having dedicated his whole life to this doctrine, he refused to let it all be in vain, and the desperation of the moment lead him into seeking solutions, often beyond what was morally acceptable.",
       "locationType": "earth",
       "lat": 8.2151249,
       "lon": 3.5642897,
@@ -3805,42 +3865,45 @@
         {
           "locationName": "",
           "country": "Doctrine,",
-          "reasoning": ""
+          "reasoning": "Becomes desperate to find a way to heal Tatenda"
         },
         {
           "locationName": "",
           "country": "Doomfist,",
-          "reasoning": ""
+          "reasoning": "Loses his arm but gets a new cybernetic one"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Anubis Directives,",
-          "reasoning": ""
+          "reasoning": "Constantly attacks Nigeria causing power outages"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Tatenda,",
-          "reasoning": ""
+          "reasoning": "Hospitalized after fatal accident"
         }
       ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Oyo, Nigeria",
           "country": "Nigeria",
-          "reasoning": ""
+          "reasoning": "Tamuka leaves Ogundimu Synergies following an accident that hospitalized his brother"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Doctor Tamuka leaves Ogundimu Synergies after Omnic attack in his laboratories",
+        "Endless refugees displaced all across Africa due to the Crisis"
+      ],
       "sources": [
         {
           "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
           "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
           ]
         },
@@ -4468,7 +4531,7 @@
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "Hector, Claudio, Adawe",
+          "country": "Hector, Claudio, Adawe, Esat,",
           "reasoning": "Many Great minds were hired to assist the Strike Team"
         },
         {
@@ -4483,7 +4546,10 @@
         }
       ],
       "commentary": [
-        "Like the Glory Days"
+        {
+          "name": "Like the Glory Days",
+          "theaterId": "c674759f-d87e-48d8-b10c-c2f242d2fd22"
+        }
       ]
     },
     {
@@ -5011,22 +5077,30 @@
     },
     {
       "name": "Life's Battery",
-      "description": "No description available.",
+      "description": "With Tatenda's life on the line, the urgency made Tamuka's mind race. He knew his technology worked, but without enough energy and time to fuel it, the tissue regeneration would stall and ultimately fail. That is when the radical approach crossed his mind, as all life on the planet was powered by electrical impulses, to create the underlying battery of consciousness. In such dire conditions, the only way in which he could save Tatenda in time would be if he found a way to transfer the energy of a living creature, to power his devices and use them to restore life itself. Tamuka focused his efforts on developing technology capable of siphoning external biological sources of energy to transfer them to a target.\n\nWhile his initial experiments worked, the energy he was able to provide was not enough to maintain lasting structural integrity. In order to make true progress, he needed a larger source to siphon from. The final step towards immortality demanded a heavy toll, an immense amount of biological currents that could only come from a large sacrifice. Running out of time, Tamuka thought of the thousands of people who were now displaced into refugee camps due to the Crisis, disconnected from the outside world to such a degree that if they were suddenly wiped out, nobody on the outside would notice, or assume it wasn't just another tragic Omnic attack.\n\nOut of desperation and love, Tamuka began unleashing swarms of drones on refugee camps, killing hundreds, seeing their deaths as a tragedy that would not only restore his brother's health, but serve as a stepping stone into a future where death was no longer certain. Once enough power had been collected, Tamuka returned to his brother, using the drones to both heal his wounds and grant his body a renewed vitality that freed him from his degenerative condition. When he woke up, Tatenda was not just healed, but for the first time in his whole life, he felt no pain. He was given new life by what he thought was a miracle at the hands of his brother's doctrine. But the more he questioned Tamuka about how he achieved it, the more he would avoid the subject. Tatenda was given new life, at the cost of hundreds of souls hidden behind his back.",
       "locationType": "earth",
-      "lat": -18.4554963,
-      "lon": 29.7468414,
+      "lat": -17.8567035,
+      "lon": 31.0601584,
       "image": "",
-      "cityDisplayName": "Zimbabwe",
+      "cityDisplayName": "Harare, Zimbabwe",
       "yearEnd": 2052,
       "eraName": "The Omnic Crisis",
-      "secondaryCountryPlaces": [],
-      "headlines": [],
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Harare, Zimbabwe",
+          "country": "Zimbabwe",
+          "reasoning": "Doctrine kills hundreds to collect the energy required to save Tatenda"
+        }
+      ],
+      "headlines": [
+        "Several refugee camps vanish across Africa on an unconfirmed attack"
+      ],
       "sources": [
         {
           "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
           "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
           ]
         }
@@ -5035,7 +5109,7 @@
         {
           "locationName": "",
           "country": "Doctrine,",
-          "reasoning": ""
+          "reasoning": "Unleashes swarms of drones upon refugee camps to use as a battery"
         }
       ],
       "yearStart": 2051,
@@ -5043,7 +5117,7 @@
         {
           "locationName": "",
           "country": "Tatenda,",
-          "reasoning": ""
+          "reasoning": "Revived by Tamuka's technology without knowing the cost"
         }
       ]
     },
@@ -9169,7 +9243,7 @@
       "name": "Counter Meassures",
       "locationType": "earth",
       "cityDisplayName": "City State of Numbani",
-      "description": "As the Scourge of Numbani continueD its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results.\n\nBetween Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Akande had lost his right arm during the crisis, and while his company provided him with cybernetics, the prosthetics deemed him to have an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors.\n\nFor years, Akande Ogundimu had trained under the wing of Akinjide Adeyemi, as one of the best lieutenants. His involvement was known by Numbani's security forces, but he was smart enough to keep distance away from more active conflicts to avoid being apprehended. As Ogundimu became one of Adeyemi's most trusted confidants, behind his back, Akande was thinking far bigger than anything Adeyemi and the rest of his liutenants could ever have imagined.",
+      "description": "As the Scourge of Numbani continueD its rampage across the city. Numbani would choose to remain independent, in spite of Overwatch's efforts to assist with the problem from the outside. To counter the warmonger's attacks, the city funded the creation of an early warning system, as well as the upgrading and reprogramming of a squadron of OR14 Idina line warbots. The reborn OR15 security robots would serve as the city's primary defense to external threats and oppose Doomfist's incursions into the city, to mixed results.\n\nBetween Numbani's own defense force and Overwatch dismantling his lieutenants on the outside, Adeyemi found himself looking for more mercenaries to bolster his ranks. Among these new recruits came in Akande Ogundimu, the heir of Ogundimu Industries. Having lost his right arm during the crisis, the prosthetics Doctor Tamuka made for him were deemed an unfair advantage in martial arts competitions, forcing him to retire from fighting. Following the injury, Ogundimu grew into a bitter man who blamed the world for refusing him to participate in the sport he loved, and so he would come across Adeyemi, who offered him a place with his lieutenants. Akande was wary, but intrigued by learning more about the Doomfist's gauntlet and his connections to a shadow group of benefactors.\n\nFor years, Akande Ogundimu had trained under the wing of Akinjide Adeyemi, as one of the best lieutenants. His involvement was known by Numbani's security forces, but he was smart enough to keep distance away from more active conflicts to avoid being apprehended. As Ogundimu became one of Adeyemi's most trusted confidants, behind his back, Akande was thinking far bigger than anything Adeyemi and the rest of his liutenants could ever have imagined.",
       "image": "",
       "lat": 12.0022,
       "lon": 8.5919,
@@ -9236,7 +9310,9 @@
       "commentary": [
         {
           "name": "Doomfist · Numbani — Just as sheep must have a shepherd, Numbani must have me.",
-          "label": "Like Sheep"
+          "label": "Like Sheep",
+          "theaterId": "chatter-doomfist",
+          "lineId": "38a8d257-315d-42a7-b150-31fdc85bce32"
         }
       ]
     },
@@ -9747,7 +9823,7 @@
     },
     {
       "name": "Cost of Life",
-      "description": "No description available.",
+      "description": "No description available.Tamuka rejoiced for years following Tatenda's recovery, but with this revelation also came an unfamiliar sensation, a craving for more. Saving one person's life through his technology was only a stepping stone into Tamuka's quest for immortality. Having cheated death once, he wished to push even further and discover just how much was possible by siphoning the power of life. Daring to achieve more with his technology, Tamuka dropped all pretenses of moral justification, beginning to see the victims of his crimes not as a tragedy, but rather as food of sorts. Like a mosquito, his goal in life required the death of others to be sustained. He was not hunting out of malice but because it was only natural in his eyes to take in order to evolve.\n\nFor years, Tamuka continued attacking settlements across the world, among those who still struggled to recover from the crisis, becoming bolder and having the whole world scorn when they slowly found out the trail of death he was leaving behind. In his advanced age, the death toll he accumulated powered his body, keeping it physically young as decades passed. Taking his place in what he believed to be the natural order, he compared himself to the Adze, a creature of West African folklore that created havoc upon revealing its human form. While he sympathized with the creature and saw its feasting on lives as a means of survival, he relished the irony of it all, as the media, now fully alert to his activities, painted him as a demon, not far off from the creatures of those children's fables. But while Tamuka thought himself unstoppable, he was caught by surprise when Tatenda found out of his activities. Tatenda had grown suspicious of his brother for years, and when the media caught on to the vampiric monster rampaging through Africa, he connected the dots and decided to see it for himself. \n\nHorrified by the atrocities his brother committed, even more so he called the death of thousands a gift he never agreed to. His heart broke when Tamuka said he only wished to see him smile without pain, when in reality, in spite of his illness, Tatenda always smiled for his brother, happy to have someone as caring in his life. Seeing the monster his brother had become gave Tatenda the strength he needed to make one final call. Behind the scenes, he had already denounced him to Overwatch, and the Search and Rescue team that was looking for the missing civilians planned an ambush with Tatenda's help. Ana and Freja apprehended the doctor, leading to a quick trail he called a farce and life-long sentence at Watchpoint: Grímsvötn, where without his drones, his body would be forced to endure the passage of time, making him look his age, and grow weak in a maximum security cell under the lava streams of the volcano.",
       "locationType": "earth",
       "lat": 64.3984222,
       "lon": -17.3178863,
@@ -9759,16 +9835,24 @@
         {
           "locationName": "Watchpoint: Grímsvötn, Iceland",
           "country": "Iceland",
+          "reasoning": "Doctrine is sentenced to life imprisonment"
+        },
+        {
+          "locationName": "Harare, Zimbabwe",
+          "country": "Zimbabwe",
           "reasoning": ""
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Overwatch arrests Doctor Tamuka Yeukai for crimes against humanity",
+        "Tamuka Yeukai is given several life sentences at Watchpoint: Grímsvötn"
+      ],
       "sources": [
         {
           "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
           "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
           ]
         }
@@ -9777,19 +9861,26 @@
         {
           "locationName": "",
           "country": "Doctrine,",
-          "reasoning": ""
+          "reasoning": "Arrested by Overwatch after Tatenda's set up"
         },
         {
           "locationName": "",
           "country": "Ana, Freja,",
-          "reasoning": ""
+          "reasoning": "In charge of capturing Doctrine"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Overwatch, Search & Rescue,",
-          "reasoning": ""
+          "reasoning": "Investiagated the missing victims across Africa"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Tatenda,",
+          "reasoning": "Sets up a meeting with Tamuka to arrest him"
         }
       ]
     },
@@ -10045,7 +10136,7 @@
       "name": "Blacklisted",
       "locationType": "earth",
       "cityDisplayName": "Dublin, Ireland",
-      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. He came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
+      "description": "After Genji's recruitment into Blackwatch, Angela began to file many complaints against Reyes, stating that his actions went against everything that Overwatch stood for. Vivian was also openly opposed to Blackwatch, though given her special ops background, she showed more appreciation towards Reyes and what he could accomplish, just less about the extralegal nature of his actions. While Morrison noted these complaints and asked Reyes to avoid antagonizing them further, Reyes immediately prioritized finding a new medical official to specialize in Blackwatch operations. \n\nHe came across a research paper released by an ambitious geneticist, Moira O'Deorain, DNA alteration at a cellular level. The methodology shared a lot of principles with the Soldier Enhancement Program, but innovated on them by making some morally questionable choices, where the treatment would cause cells to continually tear themselves apart and immediately regenerate, degenerating and repairing the subject's entire body on a constant loop. While other studies such as Doctor Tamuka's cybernetic regeneration saught to use technology as a means to repair a dying body, Doctor O'Deorain instead saught to halt entropy all together, keeping the body in a cellular statis phase in which any aging or damage would immediatelly be reverted, all done purely through genetics rather than robotics.\n\nReyes flagged Moira as worth watching, but not long after, a condemnation by the medical staff was released, before he could run her credentials. Moira's work was problematic in the scientific community, with plenty of researchers unable to replicate the results, and the ethical shortfalls of her work resulted in growing dissent among her peers. This was not the promising step forward in human potential she had promised; it was mere shoddy science. Moira was dismissed from the University of Dublin, seen as a liability, and when she attempted to work in the private sector, her name had been blacklisted and no reputable group would employ her. Through all this, Ziegler specifically spoke out against O'Deorain, and Reyes ignored each and every remark.",
       "image": "",
       "lat": 53.3493795,
       "lon": -6.2605593,
@@ -10089,9 +10180,18 @@
         "Overwatch releases public condemnation of Moira O'Deorain's research"
       ],
       "commentary": [
-        "Hippocratic Oath",
-        "Unethical Work",
-        "Waiting for Progress"
+        {
+          "name": "Hippocratic Oath",
+          "theaterId": "29d216c6-e3f4-41de-8615-eb9bfa0bc9c1"
+        },
+        {
+          "name": "Unethical Work",
+          "theaterId": "0b56aba8-3d2a-46f3-933e-a933929ce436"
+        },
+        {
+          "name": "Waiting for Progress",
+          "theaterId": "0aa42825-7a47-42b8-9185-def62fdbfed1"
+        }
       ]
     },
     {
@@ -10212,7 +10312,7 @@
     },
     {
       "name": "Bodily Entropy",
-      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed.",
+      "description": "In spite of all the warnings and advice of the medical staff in Overwatch, Gabriel sent an offer to Moira, promising resources, staff and a laboratory of her own, and while initially suspicious, the idea of rubbing her success in the faces of those who destroyed her career lured her in. Her employment was kept under absolute secrecy, and unlike most other Blackwatch agents, she was not openly associated with Overwatch's primary organization. If Blackwatch was Overwatch's dirty little secret, Moira was theirs.\n\nMoira worked in the shadows, developing new weapons and technology for Blackwatch, even testing her genetic research on Gabriel himself. Since he was a SEP subject, it allowed her to further her progress by emulating the original formula. Experiments on Reyes lead to a monumental leap in Moira's research, allowing his body to continually repair itself, cheating death through sheer biological will. Despite this, however, the degeneration of tissue was quite volatile, and Reyes would begin to see his body tearing itself apart into smoke, before stabilizing itself back into shape, in an extremely painful, irreparable state of limbo. Moira herself would go on to apply the same experiments on her own body as well, and while Reyes did not exactly come out of the lab in good condition, this new ability proved useful in many Blackwatch missions that followed, even making it possibly to weaponize it through siphoning devices and munition, allowing them  both to regenerate faste through the decay of their targets.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -10252,8 +10352,14 @@
         }
       ],
       "commentary": [
-        "Adapting Well",
-        "Flattery"
+        {
+          "name": "Adapting Well",
+          "theaterId": "4082accd-cd46-4222-adf0-9d719c0d283c"
+        },
+        {
+          "name": "Flattery",
+          "theaterId": "b1ee585a-9f02-46ea-876e-e635304bbc99"
+        }
       ]
     },
     {
@@ -10731,7 +10837,7 @@
     },
     {
       "name": "Escape Pod",
-      "description": "In the middle of the chaos, Winston was able to find a nearly finished, makeshift rocket in the base. After putting the finishing touches, he was able to launch the pod and escape to Earth. Little did he know that vessel was actually Hammond's, and he had worked on it for months hoping that they could escape together. Ingenious as always, Hammond was able to attach a spare capsule to Winston's vessel, and secretly hitched a ride when they blasted off. However, the cable broke when they entered the Atmosphere, and Hammond landed in a completely different spot than Winston, who had no idea his friend was following close.\n\nWinston's ship would be intercepted by Overwatch agents in Gibraltar. After making landfall, the team was surprised to find he could address them in perfect English, as he required urgent medical assistance and lost consciousness soon after. After recovery, Overwatch made controversial headlines with the recruitment of their first fully non-human member. Winston proved himself highly intelligent, strong and agile, and when he requested to join the organization, he himself presented a case for personhood in court, following the precedents set by the Omnic Rights movement. Winston's reception was mixed at the start due to the ethically questionable nature of his mere existence, but he quickly proved to be an invaluable ally for the organization, as well as one of the most charismatic faces of the Strike team, becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own.",
+      "description": "In the middle of the chaos, Winston was able to find a nearly finished, makeshift rocket in the base. After putting the finishing touches, he was able to launch the pod and escape to Earth. Little did he know that vessel was actually Hammond's, and he had worked on it for months hoping that they could escape together. Ingenious as always, Hammond was able to attach a spare capsule to Winston's vessel, and secretly hitched a ride when they blasted off. However, the cable broke when they entered the Atmosphere, and Hammond landed in a completely different spot than Winston, who had no idea his friend was following close.\n\nWinston's ship would be intercepted by Overwatch agents in Gibraltar. After making landfall, the team was surprised to find he could address them in perfect English, as he required urgent medical assistance and lost consciousness soon after. After recovery, Overwatch made controversial headlines with the recruitment of their first fully non-human member. Winston proved himself highly intelligent, strong and agile, and when he requested to join the organization, he himself presented a case for personhood in court, following the precedents set by the Omnic Rights movement. Winston's reception was mixed at the start due to the ethically questionable nature of his mere existence, but he quickly proved to be an invaluable ally for the organization, as well as one of the most charismatic faces of the Strike team.",
       "locationType": "moon",
       "image": "",
       "cityDisplayName": "Horizon Lunar Colony",
@@ -10798,13 +10904,19 @@
         }
       ],
       "commentary": [
-        "How Did You Escape",
-        "Accident"
+        {
+          "name": "How Did You Escape",
+          "theaterId": "4d12707d-1e9d-4c4c-aaf7-d4a361e4ef2f"
+        },
+        {
+          "name": "Accident",
+          "theaterId": "0cf936cb-0445-4634-9cfd-06adc5cf5881"
+        }
       ]
     },
     {
       "name": "Image Control",
-      "description": "No description available.",
+      "description": "As Strike Commander, Morrison wanted to shape Overwatch into an organization that changed the world for the better, beyond any military action or scientific research, especially when many groups and governments often misinterpreted his actions and tried to defame their agents. The first decade of Overwatch's existence was considered their Golden age, in great part because he personally instructed members of the organization to find the best means of contributing to the recovery of the planet, regardless of what that looked like for each of them.\n\nUnder this command, many agents of the strike team would devote lengthy portions of their private civilian life to seeking far-reaching sustainable impact. Linholm would use his connections in the Ironclad Guild to help rebuild and secure Swede, and with the Crusader Initiative no longer in active duty, Reinhardt often found himself helping out at his home. Ana and Emre came into heavy collaboration with the medical and search and rescue teams, even outside their schedules, to help out on their personal humanitarian efforts at home. Angela opened a clinical practice in a large children's hospital in Zurich, working freely without compunction. And Morrison himself, the ever-busy commander, still found time to at least make public appearances at public relations events, even finding time to sit down for a televised interview with Dr. Naughton in Australia shortly after the explosion of the Omnium.\n\nIn spite of these separate lives, members of the organization still found time to share among themselves, quickly growing to see each other almost as family. One of their most notorious traditions included their Halloween parties where the whole team would dress up, often in costumes made by themselves, safe for Genji, who always excused himself by saying his costume was a Cyber Ninja. For endless nights, the team celebrated together, listening to Wilhelm's tall tales and sharing their latest projects outside the organization, or at least that's how it was before everything started to fall apart.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -10816,11 +10928,58 @@
         {
           "locationName": "Zurich, Switzerland",
           "country": "Switzerland",
-          "reasoning": ""
+          "reasoning": "Overwatch Agents find time to change the world in their private life"
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Angela Ziegler sets up a clinic at Zurich's Children Hospital"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassfied",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        },
+        {
+          "text": "Junkenstein",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltcfb4c03e5f35f009/5d02d340a812cef40914a4c4/comic-overwatch-junkenstein_en-gb.pdf"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Soldier 76,",
+          "reasoning": "Assist Public events"
+        },
+        {
+          "locationName": "",
+          "country": "Ana, Emre, Freja,",
+          "reasoning": "Collaborate with charity and humanitarian groups"
+        },
+        {
+          "locationName": "",
+          "country": "Reinhardt, Emre,",
+          "reasoning": "Help rebuild the world after the Crisis"
+        },
+        {
+          "locationName": "",
+          "country": "Mercy,",
+          "reasoning": "Opens a fully free clinic at a children's hospital"
+        }
+      ],
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Overwatch commands their agents to aid the world outside of the organization"
+        }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Naughton,",
+          "reasoning": "Sits down for an interview with Jack Morrison"
+        }
+      ]
     },
     {
       "name": "Shrine Maiden",
@@ -11234,7 +11393,7 @@
     },
     {
       "name": "Questioning",
-      "description": "The Venice Incident leads to the world discovering Blackwatch, and with it, all the skeletons Overwatch were hiding in their closet. The UN called for hearings and requested information about prior operations by this unknown division, but Reyes delivered clearly redacted and incomplete reports. Reyes argued Antonio's connections to the government meant he would have never seen justice if Reyes had followed protocol, but the damage had been done. Morrison was ordered to put operations on a tighter leash, and slowly Blackwatch would become gutted in everything but name,\n\nThis mission fractured Reyes' relationship with Morrison, and it would never recover, as Jack would often blame him to one degree or another for any trouble that followed. Cassidy too had become jaded by his mentor's actions and often wondered if he was really any better than a criminal. With Blackwatch getting scaled back, many agents were fired, due to being too much of a liability. Genji was allowed to stay, transferred into the Strike team for training before anyone could look at his background too closely, where he would begin to wear a mask to conceal his relationship with the Shimada.",
+      "description": "The Venice Incident leads to the world discovering Blackwatch, and with it, all the skeletons Overwatch were hiding in their closet. The UN called for hearings and requested information about prior operations by this unknown division, but Reyes delivered clearly redacted and incomplete reports. Reyes argued Antonio's connections to the government meant he would have never seen justice if Reyes had followed protocol, but the damage had been done. Morrison was ordered to put operations on a tighter leash, and slowly Blackwatch would become gutted in everything but name,\n\nThis mission fractured Reyes' relationship with Morrison, and it would never recover, as Jack would often blame him to one degree or another for any trouble that followed. Cassidy too had become jaded by his mentor's actions and often wondered if he was really any better than a criminal. With Blackwatch getting scaled back, many agents were fired, due to being too much of a liability. Genji was allowed to stay, transferred into the Strike team for training before anyone could look at his background too closely, but he would begin to wear a mask to conceal his relationship with the Shimada.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -11299,9 +11458,14 @@
       "commentary": [
         {
           "name": "Cassidy · Never did forgive myself for not stopping Reyes here. Seems the world wants to make sure I never will.",
-          "label": "Forgive myself"
+          "label": "Forgive myself",
+          "theaterId": "chatter-cassidy",
+          "lineId": "56d03c81-c42d-4ae0-9ed8-b5373af5c7ff"
         },
-        "Disgrace to Overwatch"
+        {
+          "name": "Disgrace to Overwatch",
+          "theaterId": "7a86b7cd-bcae-4b35-ae12-245cc0c8a8e6"
+        }
       ]
     },
     {
@@ -11616,7 +11780,7 @@
     },
     {
       "name": "Intervention",
-      "description": "Prior to her death, Laio had been very vocal about the situation in London, and knowing she would have wanted to help, Morrison did everything he could to intervene. In spite of the British Government's reservations, he dispatched a small team consisting of the cleanest public-facing agents they had, Torbjörn, Reinhardt, Mercy and Tracer. Lindholm and Wilhelm had plenty of experience with the outdated war machines, and Oxton's unique abilities and familiarity as a local played a big role in the mission, allowing the team to rescue the hostages and repel the attack.\n\nAfter years of scandals and arguably their lowest point in Venice, Overwatch as an organization was at the verge of collapse, but their success in London reminded the world why they were considered heroes to begin with. For a brief period, the tarnished reputation of Overwatch seemed like it could recover, and the organization lost no time in taking advantage of this, by commencing a propaganda campaign to clean the face of the organization with their most recent victory, with Lena herself being the primary subject of this publicity. The uprising was actually Oxton's first official mission, yet she quickly proved to be a darling with the media, becoming essentially the public face of the strike team. But not even Tracer's charisma could save Overwatch from the incoming storm.",
+      "description": "Prior to her death, Laio had been very vocal about the situation in London, and knowing she would have wanted to help, Morrison did everything he could to intervene. In spite of the British Government's reservations, he dispatched a small team consisting of the cleanest public-facing agents they had, Torbjörn, Reinhardt, Mercy and Tracer. The mission was unsanctioned, and could potentially have caused the complete shut-down of the organization, but according to Angela, Jack was moved by Lena's words when she came into his office requesting Overwatch to aid her home city. While the rest of the agents welcomed the young cadet into the team, Torbjörn grudgingly questioned her addition, saying that it \"looks like the cavalry's here\" when she boarded the aircraft, a phrase Lena would go on to adopt as a personal catchphrase when dealing with civilians.\n\nWhen the team reached London, they had to fight through hordes of war bots covering the streets, but Lindholm and Wilhelm had plenty of experience with the outdated war machines, and Oxton's unique abilities and familiarity as a local played a big role in the mission, allowing the team to make their way deeper into the Underworld, rescue Mondatta and the other hostages and force Null Sector to fully call off the attack. After years of scandals and arguably their lowest point in Venice, Overwatch as an organization was at the verge of collapse, but their success in London reminded the world why they were considered heroes to begin with. \n\nFor a brief period, the tarnished reputation of Overwatch seemed like it could recover, and the organization lost no time in taking advantage of this, by commencing a propaganda campaign to clean the face of the organization with their most recent victory, with Lena herself being the primary subject of this publicity. The uprising was actually Oxton's first official mission, yet she quickly proved to be a darling with the media, becoming essentially the public face of the strike team. But not even Tracer's charisma could save Overwatch from the incoming storm.",
       "locationType": "earth",
       "lat": 51.5074456,
       "lon": -0.1277653,
@@ -11676,12 +11840,16 @@
       ],
       "commentary": [
         {
-          "name": "Soldier 76 · King's Row — I wouldn't change a thing we King's Row Uprising.",
-          "label": "Wouldn't Change"
+          "name": "Soldier 76 · King's Row — I wouldn't change a thing we did here",
+          "label": "Wouldn't Change",
+          "theaterId": "chatter-soldier-76",
+          "lineId": "4e38c86b-cc40-43ac-a0c2-e31e84fbb063"
         },
         {
           "name": "Emre · | King's Row — This line is currently assigned to King's Row, but lore-wise is intended for Rialto and awaits a fix. — Overwatch (group) crossed a line here. And the world paid the price.",
-          "label": "Crossed the line"
+          "label": "Crossed the line",
+          "theaterId": "chatter-emre",
+          "lineId": "96590f56-c4a2-4f5c-8491-2d3829d66b4c"
         }
       ]
     },
@@ -11743,7 +11911,7 @@
     },
     {
       "name": "Graduation",
-      "description": "No description available.",
+      "description": "While the London Uprising was Lena's first deployment, she would only formally graduate as a member of the strike team a couple of months later, alongside Winston and Genji, forming what would be the last generation of the Strike team and arguably its most public-facing agents. The victory against Null Sector was seen internally as the start of a comeback to the public eye for Overwatch, and they spearheaded a full-on propaganda campaign and recruitment program, with Tracer being the face attached to every poster.\n\nIt wasn't just Lena either, as Winston became quite the popular agent and a breath of fresh air for the public. He was simultaneously a scientific oddity while also being incredibly personable and marketable,  becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own. At one point Hollywood excecutives even approached him with talks of movie deals. \n\nGenji also gained a lot of notoriety following his appearance in the Overwatch cartoon, quickly becoming a beloved agent among younger children, who had no idea the man under the mask had history in the Japanese criminal world. The transfer from Blackwatch to the Strike Team also did a lot to help Genji out mentally, as he got to spend more time with Angela and generally became comfortable around people who saw him as more than just a weapon. With the addition of these three agents, the strike team was able to perform several high-profile missions that briefly turned public opinion around for the organization, but in spite of their best efforts to recover from years of criticism, the worse was yet to come.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -11758,8 +11926,28 @@
           "reasoning": ""
         }
       ],
-      "headlines": [],
-      "sources": []
+      "headlines": [
+        "Overwatch launches a new recruitment campaign around the world.",
+        "The Overwatch Adventure Cartoon has been renewed for a second season"
+      ],
+      "sources": [
+        {
+          "text": "Overwatch Declassfied",
+          "url": "https://www.amazon.com/Overwatch-Declassified-Official-Seanan-McGuire/dp/1803361662"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Winston, Tracer, Genji,",
+          "reasoning": "Graduate as fully fledge strike team members"
+        },
+        {
+          "locationName": "",
+          "country": "Soldier 76, Ana, Torbjörn, Reinhardt, Mercy, Cassidy,",
+          "reasoning": "Celebrate the new recruits during their graduation"
+        }
+      ]
     },
     {
       "name": "Widowed",
@@ -14173,7 +14361,7 @@
       "name": "Anubis Escapes",
       "locationType": "earth",
       "cityDisplayName": "Cairo, Egypt",
-      "description": "Anubis, sealed in its tomb for over thirty years, had attempted to escape confinement before, but the multiple safe rails and supervisors that Overwatch's engineers provided prevented a full-on breach. With them gone, it did not take long for Anubis to crack Helix's firewalls and contaminate the sentry bots assigned to its throne. When the news of the security breach broke out, a Raptors Unit commanded by Captain Khali was ordered to neutralize the program. Helix encountered many problems that lead to many deaths and injured agents, alongside the disturbing discovery that Anubis figured out how to take over Awakened Omnics, as one of the troopers, Okoro, took his own life right as he sensed he was losing control of his own mind. While many of the soldiers wanted to bail, Pharah insisted there was too much at risk. Captain Khali conceded but noted they wouldn't get far without addressing the team's morale.\n\nAs the team made their way into the temple, fire fighting broke out between the security robots, killing Captain Khali. As per the chain of command, Pharah was in charge of pushing through the rest of the Mission. As they found Anubis, the program was finishing preparations to upload itself into the wider network, escaping confinement into the outside world. Pharah meant to destroy it but as a pillar threatened to crush her team mate Saleh, she decided to prioritize his life over the mission. Once safe, the engineer worked through Anubis' systems while Pharah wrestled with the sentries to buy him time. Together they managed to shut down the program and prevent another global crisis. As the team retreated to treat the wounded, Pharah had gained the respect of her teammates as their new captain, but most importantly, she reconsidered the meaning of her Udjat tattoo. She had the eye or Horus marked just like her mother, who used to say it meant protection. Fareeha now understood, it didn't mean she was protected, but that she was meant to be a protector.",
+      "description": "Anubis, sealed in its tomb for over thirty years, had attempted to escape confinement before, but the multiple safe rails and supervisors that Overwatch's engineers provided prevented a full-on breach. With them gone, it did not take long for Anubis to crack Helix's firewalls and contaminate the sentry bots assigned to its throne. When the news of the security breach broke out, a Raptors Unit commanded by Captain Khali was ordered to neutralize the program. Helix encountered many problems that lead to many deaths and injured agents, alongside the disturbing discovery that Anubis figured out how to take over Awakened Omnics, as one of the troopers, Okoro, took his own life right as he sensed he was losing control of his own mind. \n\nWhile many of the soldiers wanted to bail, Pharah insisted there was too much at risk. Captain Khali conceded but noted they wouldn't get far without addressing the team's morale. As the team made their way into the temple, fire fighting broke out between the security robots, killing Captain Khali. As per the chain of command, Pharah was in charge of pushing through the rest of the Mission. As they found Anubis, the program was finishing preparations to upload itself into the wider network, escaping confinement into the outside world. \n\nPharah meant to destroy it but as a pillar threatened to crush her team mate Saleh, she decided to prioritize his life over the mission. Once safe, the engineer worked through Anubis' systems while Pharah wrestled with the sentries to buy him time. Together they managed to shut down the program and prevent another global crisis. As the team retreated to treat the wounded, Pharah had gained the respect of her teammates as their new captain, but most importantly, she reconsidered the meaning of her Udjat tattoo. She had the eye or Horus marked just like her mother, who used to say it meant protection. Fareeha now understood, it didn't mean she was protected, but that she was meant to be a protector.",
       "image": "",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -14223,9 +14411,14 @@
       "commentary": [
         {
           "name": "Pharah · Temple of Anubis — I lost many good soldiers here.",
-          "label": "Good Soldiers"
+          "label": "Good Soldiers",
+          "theaterId": "chatter-pharah",
+          "lineId": "5bc87b31-7325-4f39-9469-099eead94d15"
         },
-        "Anubis's Jailers"
+        {
+          "name": "Anubis's Jailers",
+          "theaterId": "746de51e-ab04-4d69-967a-6426e8d6315f"
+        }
       ]
     },
     {
@@ -15127,7 +15320,7 @@
     },
     {
       "name": "Confiscated",
-      "description": "No description available.",
+      "description": "Following the destruction of Boklovo, Sven was arrested and was sentenced to imprisonment in Watchpoint: Grímsvötn, now operated by Helix Securities. During the transferring process, Helix was granted jurisdiction to break into Sven's personal workshop, where they found several of his machines and confiscated anything potentially dangerous to be taken into their custody at Watchpoint: as well. \n\nAmong the many ill intendedcontraptions, the team found one in particular that stood out, simply named Violet-116, a large Omnic-like robot with an imposing presence. When asked about the device, the prisoner refused to collaborate, but his notes revealed the machine was merely a prototype, one that he may never get to finish behind bars. Regardless, much like everything else in his workshop, it was deemed too dangerous to leave behind, and so they transferred to section 02 of the Prison alongside his other weapons.\n\nThat wasn't enough according to many of the Helix guards, as, in spite of years going by without any alerts, agents stationed in this area of the prison began to grow paranoid of it, feeling as though they were being watched by it. In response to the complaints, the machine was restrained further with energy bands going over its limbs and head, but the team continued to feel uneasy at its sight, with many not even being sure if it was a machine or if the mad engineer had something alive inside of it.",
       "locationType": "earth",
       "lat": 64.3984222,
       "lon": -17.3178863,
@@ -15140,23 +15333,31 @@
         {
           "locationName": "Watchpoint: Grímsvötn, Iceland",
           "country": "Iceland",
-          "reasoning": ""
+          "reasoning": "Helix Security confiscates Sven's machinery following his arrest"
         }
       ],
-      "headlines": [],
-      "sources": [],
+      "headlines": [
+        "Terrorist responsible for the fall of Kurjikstan sentenced to life in prison",
+        "Helix Security Raids Workshop of Ex Ironclad member"
+      ],
+      "sources": [
+        {
+          "text": "Destroyer",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0b9872d6857ba358/5d02d18aa812cef40914a4a6/comic-overwatch-destroyer_en-us.pdf"
+        }
+      ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Helix Securities,",
-          "reasoning": ""
+          "reasoning": "Personnel grows continously paranoid around the Violet-116 prototype"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Sven,",
-          "reasoning": "",
+          "reasoning": "Inprisoned in Watchpoint: Grímsvötn",
           "badgePriority": true
         }
       ]
@@ -19070,7 +19271,7 @@
     },
     {
       "name": "Shockwaves",
-      "description": "No description available.",
+      "description": "Vivian was coming home from walking Murphy and getting coffee when agent Tremblay knocked on the door, laying out the scene of the crime from the previous night, and the gun munitions that gave her away. Initially, he thought Vivian was yet another agent answering the recall, but she held her ground in her beliefs about Overwatch and welcomed Tremblay to arrest her if he thought that was right. As the agent pulled out his handcuffs, however, a Null Sector carrying ship made its way into Toronto and began deploying thousands of war bots, making Vivian realize the rise in activity from the previous days was all connected to this; they were laying the ground for invasion. \n\nIn a rush, she activated the equipment in her house to connect to police communications, coordinating with the international authorities and giving orders to Tremblay's troops, with Tremblay himself reneging on her arrest to try and cooperate in a defensive strategy. In less than ten minutes since their arrival, Null Sector had turned the city into a war zone, taking Omnics hostages, often ignoring humans. Sojourn collaborated with the Canadian Army and Tremblay's forces until losing communication due to jammed frequencies. It took them hours to make their way through the city and, in spite of their beliefs, they made a dent in the war bots, enemies kept coming from the flying warship. \n\nWhile her cybernetics allowed her to keep going without rest for days, she was starting to show fatigue, and if a cybernetically enhanced human was struggling to keep up, the rest of the team was even more overwhelmed. There was little left of the city to defend anymore, they needed to focus on evacuating everyone they could through the ferry system, as all boats were called to the harbor. Vivian was tired, reliving flashbacks of the crisis as her home was destroyed once more, but she was more than willing to fight even if she was the last person standing.",
       "locationType": "earth",
       "cityDisplayName": "Toronto, Canada",
       "lat": 43.6534817,
@@ -19092,21 +19293,21 @@
         {
           "locationName": "Toronto, Canada",
           "country": "Canada",
-          "reasoning": ""
+          "reasoning": "Null Sector launches a brutal all out attack on Canada"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Sojourn",
-          "reasoning": ""
+          "reasoning": "Fights for hours endlessly to help civilians evacuate"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector",
-          "reasoning": ""
+          "reasoning": "Overwhelms Canadian forces and begins to take Omnics hostage"
         }
       ],
       "yearEnd": null,
@@ -19114,16 +19315,18 @@
         {
           "locationName": "",
           "country": "Trembley,",
-          "reasoning": ""
+          "reasoning": "Commands his troops to follow Vivian's lead"
         }
       ],
-      "headlines": []
+      "headlines": [
+        "Overwatch agent Vivian \"Sojourn\" Chase collaborating with law enforcement on a join resistance against Null Sector"
+      ]
     },
     {
       "name": "Luck of the Draw",
       "locationType": "earth",
       "cityDisplayName": "Las Vegas, United States",
-      "description": "No description available.",
+      "description": "Ashe was visiting the Spectacle Resort Casino in Las Vegas for a business meeting with the Jackpot gang, a local group seeking to buy some stolen Arbalest weapons, but Ashe didn't care much for them and got impatient as they walked her in circles. Things had not gone well for the gang ever since their encounter with Cassidy, and now with Overwatch reportedly being back, most of their clients got scared and froze their shipments out of nowhere. Before Ashe could leave the place, an explosion rocked the casino. Null Sector had arrived and was attacking civilians running away on the Vegas Strip, forcing the gang to retreat back into the Casino alongside some civilians and the Jackpots, where they barricaded as best as they could.\n\nThey remained trapped for more than a day, with the communication systems down preventing them from calling Bez and Frankie for backup. Later, a couple of humans came in requesting help for an incapacitated Omnic wearing a device on her head implanted by the Null Sector, but when the Jackpots tried to remove it they ended up killing the Omnic. Tension broke between the survivors, especially B.O.B. and Bars, seeing an Omnic die at the hands of a careless human. When the Jackpots pointed out Null Sector only targeted Omnic's, and they could use them as bait, it angered Ashe in a confrontation that knocked down one of the Jackpots.\n\nAfter the fight, the remaining survivors fell in line with Deadlock, who planned to reach the casino roof and use the touring ships to escape the city. As they were preparing the first evacuation, a Null Sector drone spotted them. Ashe stayed behind dealing with the robots but B.O.B refused to go without her in spite of being a target. They fought the horde until they ran out of bullets, but before B.O.B could be subjugated, Bars managed to shoot them down from the air, giving the pair an opening to take the second ship even after it got damaged. With everyone evacuated, they retreated to Deadlock Gorge, with Ashe chastising B.O.B for being so reckless, while reassuring him they would remain partners until the end, and that no matter how much they tried, she would never let Null Sector get their hands on him.",
       "image": "",
       "lat": 36.1674263,
       "lon": -115.1484131,
@@ -19133,37 +19336,45 @@
         {
           "locationName": "Las Vegas, United States",
           "country": "United States",
-          "reasoning": ""
+          "reasoning": "Null Sector rampages Las Vegas forcing an Air evacuation"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Ashe",
-          "reasoning": ""
+          "reasoning": "Fights Null Sector and commands an air evacuation"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Subjugates Omnics all over Las Vegas"
         },
         {
           "locationName": "",
           "country": "Deadlock Rebels,",
-          "reasoning": ""
+          "reasoning": "Aids the survivors by evacuating them out of the city"
         }
       ],
       "yearEnd": null,
       "npcFilterPlaces": [
         {
           "locationName": "",
-          "country": "B.O.B, Bars, The Triplets, Bez,",
-          "reasoning": ""
+          "country": "B.O.B, Bars, The Triplets,",
+          "reasoning": "Aid in the evacuation and covering Ashe"
+        },
+        {
+          "locationName": "",
+          "country": "Bez, Frankie,",
+          "reasoning": "Stayed behind in the gorge, aid with the refugees"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Las Vegas Strip completely destroyed in Omnic Attack",
+        "Reports of Omnics found lifeless all over the worlds. Authrorities warn not to remove head clamps"
+      ],
       "sources": [
         {
           "text": "Luck of the Draw",
@@ -19175,7 +19386,7 @@
       "name": "Busan Defense",
       "locationType": "earth",
       "cityDisplayName": "Busan, South Korea",
-      "description": "No description available.",
+      "description": "As the world watched in horror what happened in Paris before attacks in other cities followed, the MEKA squad grew eager to do something. They had been fighting war bots for years, and now a similar problem is happening worldwide. If only they could share their intelligence or join the fight, it could save hundreds of lives. But in spite of Winston's words, Overwatch was still outlawed, and the increasingly unpredictable Gwishin attacks bounded all pilots to Busan. Hana discussed the matter privately with Captain Myung, who admired Overwatch but couldn't afford to hurt Korea's image when the rest of the world still saw them as criminals. \n\nBefore they could finish their conversation, however, all alarms went off, Null Sector had reached Busan, and all pilots needed to be deployed. The MEKA squad battled the war bots on the ground but quickly got overwhelmed. D.va insisted they could finish this off if she was granted permission to take the fight all the way to the command ship, but Myung refused her, as without the right Intel they would be sending their last line of defense out of the ground where civilians needed help. But just as things started to look bleak, an unidentified drop-ship entered the area. Cassidy and Zarya reclaimed a small Overwatch Orca Vessel from a Talon controller based in Mongolia, and after regrouping with Pharah and Baptiste, the group set course for Korea. \n\nIn a joint attack with the MEKA squad, they were able to repel Null Sector. After the battle, Overwatch was granted clearance to land on the base, where Cassidy proposed an alliance. In spite of her initial doubts, Captain Myung approved for D.va to leave with Overwatch, tasked to study Intel in the Null Sector and the potential threat it posed to Korea. In exchange, Cassidy gave a copy of Ana's hard drive to Myung, continuing all the data on the monitored threads Amari was investigating. Together, Overwatch and MEKA formed a lasting coalition that brought legitimacy to Overwatch's return in spite of the IJC's orders.",
       "image": "",
       "lat": 35.1799528,
       "lon": 129.0752365,
@@ -19185,41 +19396,46 @@
         {
           "locationName": "Busan, South Korea",
           "country": "South Korea",
-          "reasoning": ""
+          "reasoning": "Overwatch and MEKA fight Null Sector Together"
+        },
+        {
+          "locationName": "Ulaanbaatar, Mongolia",
+          "country": "Mongolia,",
+          "reasoning": "Cassidy retrieves an Overwatch Vessel from a Talon Base"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "D.va, Cassidy,",
-          "reasoning": ""
+          "reasoning": "D.va is allowed to join Overwatch as an embassador for Korea"
         },
         {
           "locationName": "",
           "country": "Baptiste, Zarya, Pharah,",
-          "reasoning": ""
+          "reasoning": "Regroup with Cassidy and Aid in ground evacuation"
         },
         {
           "locationName": "",
           "country": "D.mon,",
-          "reasoning": ""
+          "reasoning": "Overwhelmed by the Null Sector attack"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Invades Korea and Overwhelms their military forces"
         },
         {
           "locationName": "",
-          "country": "M.E.K.A Squad,",
-          "reasoning": ""
+          "country": "M.E.K.A Squad, Overwatch,",
+          "reasoning": "Collaborate on taking down Null Sector"
         },
         {
           "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
+          "country": "IJC,",
+          "reasoning": "Deny Winston's claims that Overwatch is back"
         }
       ],
       "yearEnd": null,
@@ -19227,15 +19443,18 @@
         {
           "locationName": "",
           "country": "Myung,",
-          "reasoning": ""
+          "reasoning": "Allows for a joint Operation in spite of the IJC's demmands"
         },
         {
           "locationName": "",
           "country": "King, Overlord, Casino,",
-          "reasoning": ""
+          "reasoning": "Overwhelmed by the Null Sector attack"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "M.E.K.A squad leader Hana Song to join Overwatch operation against Null Sector",
+        "Overwatch dropship seen flying near mongolia"
+      ],
       "sources": [
         {
           "text": "New Blood 5",
@@ -22443,7 +22662,7 @@
     },
     {
       "name": "Distress Signal",
-      "description": "No description available.",
+      "description": "When Genji arrived in Japan, he found the usually bustling and bright Shibuya completely dark and desolate. Tokyo had already been lost. From the shadows, he scanned the area until he found a dozen grunts on stand by. As he got impatient to see what they were up to, he decided to step in, planing on taking all but one down so he could chase him into their stronghold, but as he dropped behind them, a warrior in a black Oni mask spotted him, leading to an all-out fight. He managed to take them in the end, but as he had the last one, pinned down a hulking figure in a golden mask attacked him with an Anima katana, with Genji deflecting the attack on his last grunt, taking her out. \n\nAt the sight of a lieutenant challenging him, Genji thought taking him down would bring a prisoner with all the intel needed for Overwatch to tie Talon into the Tokyo takeover and be able to intervene, but before he could have a serious fight, the attacker vanished. Genji chased him down through the rooftops until his blade caused one corner to grumble, forcing Genji to take the fall. His cybernetics absorbed most of it, and when he looked up, the warrior was looming over the old arcade in which Genji used to spend his youth, a place he knew in and out, where he finally could fight with the advantage. He did not have the foresight to realize he was being ambushed, as dozens of goons awaited behind the cabinets. As soon as he took the bait, he found himself surrounded.\n\nBefore he could heft his sword, an arrow flew by hitting the lieutenant's shoulder, followed by a volley of arrows hitting him all at once. While he knew who it was, he was wary of his brother, given the state in which he was. The last time they found each other, but Hanzo appeared different, at peace. He mentioned how last time they met Genji asked him to pick a side, but he had always been on Genji's side, and so he was here to help. Right after, a familiar voice sneaked up behind Genji, pinning an Ofuda to his chest to make his wounds fade. Kiriko had grown, but mischief never left her. This brief calm was interrupted when reinforcements arrived, Talon soldiers, the evidence Genji was seeking. The trio tried to fight them off, but it was too much to handle, they needed to run. In haste, Genji decided to distract the troops, letting himself be captured so he could gather intel from inside the stronghold, and getting Hanzo and Kiriko and Opening to escape, using Genji's communication device so that they could contact Sojourn back in Gothenubrg, letting her know that Talon was indeed involved, and that they needed Overwatch's help.",
       "locationType": "earth",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -22456,12 +22675,15 @@
         {
           "locationName": "Kanezaka, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Genji gets captured by the Hashimoto Clan",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Overwatch confirms Talon involement in the Siege of Tokyo according to the IJC",
+        "Gunfight breaks out at Hanamura Arcade"
+      ],
       "sources": [
         {
           "text": "Overwatch Undivided",
@@ -22476,34 +22698,34 @@
         {
           "locationName": "",
           "country": "Kiriko, Mizuki, Hanzo,",
-          "reasoning": ""
+          "reasoning": "Contact Overwatch to ask for help with Talon and Genji"
         },
         {
           "locationName": "",
-          "country": "Sojourn, Cassidy,",
-          "reasoning": ""
+          "country": "Genji,",
+          "reasoning": "Gets captured to allow Kiriko and Hanzo to Escape"
         },
         {
           "locationName": "",
-          "country": "Mercy, Baptiste, Orisa,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Tracer,",
-          "reasoning": ""
+          "country": "Shion,",
+          "reasoning": "Visits Genji in the stronghold's prisonner cells"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Yokai Gang,",
-          "reasoning": ""
+          "reasoning": "Fight the Hashimoto and Talon"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "With Talon's involvment confirmed, Overwatch can take action"
+        },
+        {
+          "locationName": "",
+          "country": "Hashimoto Clan, Talon Empire,",
+          "reasoning": "Work together to hunt down any resistence in Tokyo"
         }
       ]
     },
@@ -23736,9 +23958,9 @@
       "sources": [
         {
           "text": "Cost of Life",
-          "url": "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
           "urls": [
-            "https://overwatch.blizzard.com/en-gb/media/comic/cost-of-life/",
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
             "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
           ]
         },
