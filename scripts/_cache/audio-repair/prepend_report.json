@@ -1,0 +1,14 @@
+{
+  "source": "intro_long.wav (rdhRY9WEOy4)",
+  "tail_start_s": 20.55,
+  "intro_end_s": 22.35,
+  "xfade_s": 1.8,
+  "gain": 0.8283880672693164,
+  "repaired_kept_from": 0.0,
+  "out_duration": 121.20066666666666,
+  "layout": "intro[0-20.55] + crossfade(1.80s) + repaired[1.80-end]",
+  "outputs": [
+    "C:\\Users\\diego\\OneDrive\\Escritorio\\Projects\\Overwatch-Atlas\\scripts\\_cache\\audio-repair\\repaired_full.wav",
+    "C:\\Users\\diego\\OneDrive\\Escritorio\\Projects\\Overwatch-Atlas\\scripts\\_cache\\audio-repair\\repaired_full.mp3"
+  ]
+}

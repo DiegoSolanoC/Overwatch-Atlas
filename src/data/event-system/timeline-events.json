@@ -513,6 +513,13 @@
           "country": "Sojourn",
           "reasoning": "Vivian Chase is Born"
         }
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Esat,",
+          "reasoning": "Takes Sojourn in for surgery"
+        }
       ]
     },
     {
@@ -3877,21 +3884,21 @@
         {
           "locationName": "",
           "country": "Anubis Directives,",
-          "reasoning": "Constantly attacks Nigeria causing power outages"
+          "reasoning": ""
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Tatenda,",
-          "reasoning": "Hospitalized after fatal accident"
+          "reasoning": ""
         }
       ],
       "secondaryCountryPlaces": [
         {
           "locationName": "Oyo, Nigeria",
           "country": "Nigeria",
-          "reasoning": "Tamuka leaves Ogundimu Synergies following an accident that hospitalized his brother"
+          "reasoning": ""
         }
       ],
       "headlines": [
@@ -7354,7 +7361,7 @@
       "name": "Building Coalitions",
       "locationType": "earth",
       "cityDisplayName": "Havana, Cuba",
-      "description": "As Overwatch expanded and aided the world heal, they sought to form good relationships with other peacekeeping operations around the globe, particularly those that didnt make a part of the original recruitment process during the Crisis. Just like how Doomfist chose to protect his own home over joining Overwatch, many other groups like the Inti Warriors of Peru or the Caribbean Coaliton rejected Adawe's proposal, oftne due to intense regional pressure and concerns joining Overwatch would leave their home undefended. Morrison outreach groups all over the world, from Peru to Polynesia, Jordan and Bangladesh to try and collaborate in the post-Crisis landscape, but one of these partners proved to be closer than the rest.\n\nThe Caribbean Coaltion remained strong even as the Crisis ended, but it quickly fueled concerns among the governments of the Caribbean and Latin America that the alliance defied their sovereignty. This was part of a global wave of nationalism following the Crisis, as many nations, struck by years of violence and destruction, chose to spend resources inward. The Coaltion defied that mindset, and understood that without sharing their resources in these dire times the Caribbean would never bounce back. The Concerned Nations requested Overwatch to intervene and dismantle the rouge Coalition at once, but to everyone's surprise, Commander Morrison chose to aid the Coalition's efforts instead, deploying the strike team and much of the medical crew, including Angela Ziegler herself. To the people of the Caribbean, Overwatch were more than welcome, and a wave of recruitments soon followed, but the governments soon would come to resent this response and in the years to follow they would be less inclined to speak positively of Overwatch.\n\nDuring this period, a young orphan, Jean-Baptiste Augustin, would await the day he could enlist into Overwatch, hoping he could be a medic alongside his heroes. However, as the governments resisted their presence, Overwatch recruitment would never come to Haiti, so without many other options to survive, Baptiste chose to join the military, working as a combat medic for the Caribbean Coalition, hoping one day he could be like the heroes from the posters.",
+      "description": "As Overwatch expanded and aided the world heal, they sought to form good relationships with other peacekeeping operations around the globe, particularly those that didnt make a part of the original recruitment process during the Crisis. Just like how Doomfist chose to protect his own home over joining Overwatch, many other groups like the Inti Warriors of Peru or the Caribbean Coaliton rejected Adawe's proposal, oftne due to intense regional pressure and concerns joining Overwatch would leave their home undefended. Morrison outreach groups all over the world, from Peru to Polynesia, Jordan and Bangladesh to try and collaborate in the post-Crisis landscape, but one of these partners proved to be closer than the rest.\n\nThe Caribbean Coaltion remained strong even as the Crisis ended, but it quickly fueled concerns among the governments of the Caribbean and Latin America that the alliance defied their sovereignty. This was part of a global wave of nationalism following the Crisis, as many nations, struck by years of violence and destruction, chose to spend resources inward. The Coaltion defied that mindset, and understood that without sharing their resources in these dire times the Caribbean would never bounce back. The Concerned Nations requested Overwatch to intervene and dismantle the rouge Coalition at once, but to everyone's surprise, Commander Morrison chose to aid the Coalition's efforts instead, deploying the strike team, including latest recruit Mirembe Atim, and much of the medical crew, including Angela Ziegler herself. To the people of the Caribbean, Overwatch were more than welcome, and a wave of recruitments soon followed, but the governments soon would come to resent this response and in the years to follow they would be less inclined to speak positively of Overwatch.\n\nDuring this period, a young orphan, Jean-Baptiste Augustin, would await the day he could enlist into Overwatch, hoping he could be a medic alongside his heroes. However, as the governments resisted their presence, Overwatch recruitment would never come to Haiti, so without many other options to survive, Baptiste chose to join the military, working as a combat medic for the Caribbean Coalition, hoping one day he could be like the heroes from the posters.",
       "image": "",
       "lat": 23.135305,
       "lon": -82.3589631,
@@ -7391,6 +7398,13 @@
       "headlines": [
         "Overwatch defies government petitions to shut down the Caribbean Coaltion",
         "Overwatch aids in efforts to rebuild Latin America"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": "Joins as an Overwatch agent"
+        }
       ]
     },
     {
@@ -10947,29 +10961,34 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Soldier 76,",
-          "reasoning": "Assist Public events"
+          "country": "Reinhardt,",
+          "reasoning": "Tells a take and helps rebuild the world after the Crisis"
         },
         {
           "locationName": "",
-          "country": "Ana, Emre, Freja,",
-          "reasoning": "Collaborate with charity and humanitarian groups"
+          "country": "Mercy, Torbjörn,",
+          "reasoning": "Send a Halloween photo to Winston pending his Lucheng lawsuit"
         },
         {
           "locationName": "",
-          "country": "Reinhardt, Emre,",
-          "reasoning": "Help rebuild the world after the Crisis"
+          "country": "Ana, Soldier 76, Emre, Freja,",
+          "reasoning": "Assist publically and collaborate with charity and humanitarian groups"
         },
         {
           "locationName": "",
-          "country": "Mercy,",
-          "reasoning": "Opens a fully free clinic at a children's hospital"
+          "country": "Reaper, Cassidy,",
+          "reasoning": "Continue operating Blackwatch looking to recuit Genji"
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Enters a legal battle for custody with Lucheng"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch,",
+          "country": "Overwatch, Search & Rescue, blac",
           "reasoning": "Overwatch commands their agents to aid the world outside of the organization"
         }
       ],
@@ -10979,7 +10998,8 @@
           "country": "Naughton,",
           "reasoning": "Sits down for an interview with Jack Morrison"
         }
-      ]
+      ],
+      "yearStart": 2068
     },
     {
       "name": "Shrine Maiden",
@@ -11911,7 +11931,7 @@
     },
     {
       "name": "Graduation",
-      "description": "While the London Uprising was Lena's first deployment, she would only formally graduate as a member of the strike team a couple of months later, alongside Winston and Genji, forming what would be the last generation of the Strike team and arguably its most public-facing agents. The victory against Null Sector was seen internally as the start of a comeback to the public eye for Overwatch, and they spearheaded a full-on propaganda campaign and recruitment program, with Tracer being the face attached to every poster.\n\nIt wasn't just Lena either, as Winston became quite the popular agent and a breath of fresh air for the public. He was simultaneously a scientific oddity while also being incredibly personable and marketable,  becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own. At one point Hollywood excecutives even approached him with talks of movie deals. \n\nGenji also gained a lot of notoriety following his appearance in the Overwatch cartoon, quickly becoming a beloved agent among younger children, who had no idea the man under the mask had history in the Japanese criminal world. The transfer from Blackwatch to the Strike Team also did a lot to help Genji out mentally, as he got to spend more time with Angela and generally became comfortable around people who saw him as more than just a weapon. With the addition of these three agents, the strike team was able to perform several high-profile missions that briefly turned public opinion around for the organization, but in spite of their best efforts to recover from years of criticism, the worse was yet to come.",
+      "description": "While the London Uprising was Lena's first deployment, she would only formally graduate as a member of the strike team a couple of months later, alongside Winston and Genji, forming what would be the last generation of the Strike team and arguably its most public-facing agents. The victory against Null Sector was seen internally as the start of a comeback to the public eye for Overwatch, and they spearheaded a full-on propaganda campaign and recruitment program, with Tracer being the face attached to every poster.\n\nIt wasn't just Lena either, as Winston became quite the popular agent and a breath of fresh air for the public, having finally won his legal dispute for his freedom from Lucheng's legal team. He was simultaneously a scientific oddity while also being incredibly personable and marketable,  becoming the face of the \"Overwatch Adventures\" cartoon, and by far the most marketable agent with a line of pluses and toys of his own. At one point Hollywood excecutives even approached him with talks of movie deals. \n\nGenji also gained a lot of notoriety following his appearance in the Overwatch cartoon, quickly becoming a beloved agent among younger children, who had no idea the man under the mask had history in the Japanese criminal world. The transfer from Blackwatch to the Strike Team also did a lot to help Genji out mentally, as he got to spend more time with Angela and generally became comfortable around people who saw him as more than just a weapon. With the addition of these three agents, the strike team was able to perform several high-profile missions that briefly turned public opinion around for the organization, but in spite of their best efforts to recover from years of criticism, the worse was yet to come.",
       "locationType": "earth",
       "lat": 47.3744489,
       "lon": 8.5410422,
@@ -11939,13 +11959,41 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Winston, Tracer, Genji,",
+          "country": "Winston,",
+          "reasoning": "Gains legal sovereignty and joins the strike team"
+        },
+        {
+          "locationName": "",
+          "country": "Tracer, Genji,",
           "reasoning": "Graduate as fully fledge strike team members"
         },
         {
           "locationName": "",
-          "country": "Soldier 76, Ana, Torbjörn, Reinhardt, Mercy, Cassidy,",
+          "country": "Soldier 76, Ana, Reaper,",
+          "reasoning": "Animosity between the Commanders grows more and more"
+        },
+        {
+          "locationName": "",
+          "country": "Torbjörn, Reinhardt,",
           "reasoning": "Celebrate the new recruits during their graduation"
+        }
+      ],
+      "yearStart": 2069,
+      "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Overwatch,",
+          "reasoning": "Begins being more comercially public, including a children's cartoon"
+        },
+        {
+          "locationName": "",
+          "country": "Blackwatch,",
+          "reasoning": "Looses Genji to the main Strike Team"
+        },
+        {
+          "locationName": "",
+          "country": "Lucheng Interstellar,",
+          "reasoning": "Finally loose legal custody over Winston"
         }
       ]
     },
@@ -12474,6 +12522,13 @@
       "commentary": [
         "Going Soft",
         "Eye repair"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": "Seasoned member of Ana's squad"
+        }
       ]
     },
     {
@@ -12517,6 +12572,13 @@
       "headlines": [
         "Talon attacks distabilize many communities across the Caribbean",
         "Ex Coalition personnel caught dealing with Talon Agents"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": "Helps aid civilians following a Talon attack"
+        }
       ]
     },
     {
@@ -13096,6 +13158,11 @@
           "locationName": "",
           "country": "Soldier 76, Reaper,",
           "reasoning": "Declared death after the Zurich attack"
+        },
+        {
+          "locationName": "",
+          "country": "Winston,",
+          "reasoning": "Aids the survivors of the attack"
         }
       ],
       "factionFilterPlaces": [
@@ -13108,6 +13175,13 @@
       "headlines": [
         "Overwatch HQ at Zurich suffers a terrorist attack",
         "Jack Morrison and Gabriel Reyes are declared death during Zurich's rescue efforts"
+      ],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": "Aids the survivors of the attack"
+        }
       ]
     },
     {
@@ -13452,7 +13526,7 @@
     },
     {
       "name": "Released",
-      "description": "Under Talon's care, Sigma enjoyed more freedom than he had for several years. His fractured mind struggled to hold its pieces together, meaning he never truly understood the gravity of his situation working with terrorists, as he no longer saw himself as a prisoner. This, combined with the violent lashing out caused by the maddening melody he heard when his condition distabilized, made him both a complying hostage, and a highly dangerous weapon.\n\nTalon understood Sigma as a human. Flawed, manipulable, and far more useful when willingly cooperating than when forced to. Taking advantage of his vulnerable state, they framed themselves as colleagues and patrons helping him further his research by providing him with everything he needed, when in reality they planned to weaponize both him and the fruits of his research Using their assets. Siebren was slowly able to gain control over his power, allowing gravity to abide by his will, moving closer to his life goal.\n\nBut in spite of that, his brittle mind was still unstable. Dr O'Deorain was in charge of supervising his condition and conducted several intrusive tests into his mind to study his condition. During this time, Sombra grew fond of the old man, taking pity on his circumstances and objecting to the way Moira and her scientists treated him. Sombra's kindness played a large role in Sigma's improving mental state, and Talon's continuous indulgence into his fantasies. And since Sombra lacked much loyalty to an organization, it meant now if they ever did something to harm him, they would have to deal with her.",
+      "description": "Under Talon's care, Sigma enjoyed more freedom than he had for several years. His fractured mind struggled to hold its pieces together, meaning he never truly understood the gravity of his situation working with terrorists, as he no longer saw himself as a prisoner. This, combined with the violent lashing out caused by the maddening melody he heard when his condition destabilized, made him both a complying hostage, and a highly dangerous weapon.\n\nTalon understood Sigma as a human. Flawed, manipulable, and far more useful when willingly cooperating than when forced to. Taking advantage of his vulnerable state, they framed themselves as colleagues and patrons, helping him further his research by providing him with everything he needed, when in reality they planned to weaponize both him and the fruits of his research using their assets. Siebren was slowly able to gain control over his power, allowing gravity to abide by his will, moving closer to his life goal.\n\nBut in spite of that, his brittle mind was still unstable. Dr O'Deorain was in charge of supervising his condition and conducted several intrusive tests into his mind to study his condition. Akande instructed Sombra to help recode the classified research files they found alongside Subject Sigma, to aid Dr. O'Deorain in understading how to make use of him. In her frequent visits to their laboratory, Sombra grew fond of the old man, taking pity on his circumstances and objecting to the way Moira and her scientists treated him. Sombra's kindness played a large role in Sigma's improving mental state, and Talon's continuous indulgence into his fantasies. And since Sombra lacked much loyalty to an organization, it meant now if they ever did something to harm him, they would have to deal with her.",
       "locationType": "earth",
       "cityDisplayName": "Oasis University, Iraq",
       "lat": 29.5918,
@@ -16788,6 +16862,11 @@
           "locationName": "",
           "country": "Athena,Emily,",
           "reasoning": "Join Winston and Lena in the Holidays"
+        },
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": "Turns down the recall"
         }
       ],
       "commentary": [
@@ -16961,6 +17040,11 @@
         }
       ],
       "factionFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "The Phreaks,",
+          "reasoning": "Start wreaking havoc on corporations and oppression"
+        },
         {
           "locationName": "",
           "country": "Deadlock Rebels,",
@@ -19466,7 +19550,7 @@
       "name": "Thoughtless Gods",
       "locationType": "earth",
       "cityDisplayName": "Lijiang, China",
-      "description": "No description available.",
+      "description": "The Junkers began to roam the outback looking for any scrap they could use to repair the Crisis-era ships locked behind the last door, when Hammond came across a feral Omnic's trap. It didn't take much to defeat the feeble machine, but its parting words warned of a grave danger coming. Looking at the surroundings, it seemed the Omnic were watching the global invasion on the TV on a small settlement. While the Queen relished the idea of one say pulling off a similar raid, Hammond noticed the logo of Lucheng Interstellar on the tower shown, realizing he could get the antigravity thrusters he needed from their rockets.\n\nWithout much argument, the Queen allowed him to take off and get the parts. In Lijiang, the chaos of the Invasion kept security busy as Lucheng used all of its resources to defend the tower, but the Wrecking Ball was able to roll through the guards, pile drive them and swing via way to the higher floors where Lucheng's offices were. He finally reached a control room which he used to divert the remaining guard, until he noticed one of the live feeds came from the Lunar Colony. Before he could think much of it, he was interrupted by Doctor Chao in her hover chair. Their reunion wasn't friendly, with Hammond questioning the ethics of what she did to him, with her admitting Lucheng scientists were thoughtless Gods playing with nature.\n\nDr. Chao, amazed that one of her finest projects was alive, wished to get a hold of Hammond, since, unlike Winston he didn't have a legal personhood. Hammond could have killed Chao right there, but she welcomed it, having built an empire to outlast her. This made Hammond realize her death wouldn't solve anything. He needed to actually hurt her legacy, starting by sending a message to the colony, informing the apes they are being watched, breaking Chao's holochair and leaving her on the floor before storming out with the components. Hammond. Wrecking Ball returns to the outback with the prize for the Queen but also a newfound commitment to destroy Lucheng, and aid the other victims of their sins in the moon base.",
       "image": "",
       "lat": 26.8595868,
       "lon": 100.2249797,
@@ -19476,26 +19560,31 @@
         {
           "locationName": "Lijiang, China",
           "country": "China",
-          "reasoning": ""
+          "reasoning": "Wrecking Ball breaks into Lijiang Tower"
+        },
+        {
+          "locationName": "Outback Wasteland, Australia",
+          "country": "Australia",
+          "reasoning": "The Junkers look for parts to repair their new ship"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Wrecking Ball",
-          "reasoning": ""
+          "reasoning": "Confronts Chao and vows to destroy Lucheng"
         },
         {
           "locationName": "",
           "country": "Junker Queen,",
-          "reasoning": ""
+          "reasoning": "Allows Hammond to leave and get the ship parts"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Lucheng, Null Sector",
-          "reasoning": ""
+          "country": "Lucheng Interstellar, Null Sector,",
+          "reasoning": "Lucheng protects their assets against the Invasion"
         }
       ],
       "yearEnd": null,
@@ -19503,15 +19592,18 @@
         {
           "locationName": "",
           "country": "Chao,",
-          "reasoning": ""
+          "reasoning": "Attempts to capture Hammond"
         },
         {
           "locationName": "",
           "country": "Meri, Geiger,",
-          "reasoning": ""
+          "reasoning": "Aid in scavaging the Outback"
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Massive rolling maching seen breaking into Lijiang Tower, affiliation with Null Sector Unconfirmed",
+        "Feral Omnic activity on the rise on the Australian Outback"
+      ],
       "sources": [
         {
           "text": "Thoughless Gods",
@@ -19523,7 +19615,7 @@
       "name": "Where Honor Lives",
       "locationType": "earth",
       "cityDisplayName": "Tokyo, Japan",
-      "description": "No description available.",
+      "description": "Hanzo was in Okinawa when the Null Sector invasion started, and as he watched the news footage, the voice of his father crossed his head for the first time in fourteen years. He took it as a message to come back to Tokyo. Perhaps this is where he was needed. The ship loomed over the city but was yet to attack, causing civilians to flee in a panic, while the Hashimoto prowled the streets. Hanzo followed them to their stronghold but was led to a dead end where the grunts outnumbered him. During the skirmish, he noticed the weapons they used behaved like Anima but were not quite able to manifest anything. The Hashimoto landed a gunshot on Hanzo causing him to lose blood, and summoned an Anima dragon strike from his last arrow. While this last resort killed most of the grunts, the old warrior collapsed from his injuries, leaving the survivors to take him prisoner, realizing they had captured a Shimada.\n\nHanzo woke up in a jail cell, fading in and out of consciousness for hours with an Omnic guard barely feeling like giving him any water. This continued all night until Toshiro Yamagami was brought into his cell, where Hanzo realized that he was responsible for the faulty Anima blades the Hashimoto were using. After questioning his support of the Hashimoto, Toshiro reminded him he had a family to look after, making Hanzo remember those who were affected by the fall of the Shimada. In either case, coming here was a mistake. Toshiro was sent to confirm Hanzo's identity, since as long as the scion lived, so did the hopes of the people. While Toshiro tried to argue with the elders in Hanzo's stead, the clan was still set on his execution. Hanzo was waiting for the right movement to make a move while awaiting the lethal blow, arguing with the elders that he left the clan name behind, but they were having none of it. Just before they could follow through, however, the light started flickering, and a ghostly fox entered the scene. \n\nKiriko's Intel led her into the stronghold and while she expected to find her dad, she couldn't leave Hanzo to his death. Together, the two battled the Hashimoto until exhaustion before fleeing the scene. By then, Null Sector had deployed hundreds of troops in Tokyo, keeping the Hashimoto distracted and allowing Hanzo and Kiriko to flee, helping civilians on the way to evacuate. After tending to their wounds and rekindling, Kiriko wondered if Genji would come for their help, but Hanzo knew he would be busy with Overwatch. He didn't quite feel ready to face Kiriko, but after seeing the effect his actions had on the Yamagami family, he chose to stay with her, defending Kanezaka and making things right. He believed that was why his father sent him there, to make amends for what the clan left broken, and find honor protecting the city once more.",
       "image": "",
       "lat": 35.6768601,
       "lon": 139.7638947,
@@ -19533,7 +19625,7 @@
         {
           "locationName": "Tokyo, Japan",
           "country": "Japan",
-          "reasoning": "",
+          "reasoning": "Hanzo is captured by the Hashimoto",
           "lat": 35.6768601,
           "lon": 139.7638947
         }
@@ -19542,28 +19634,26 @@
         {
           "locationName": "",
           "country": "Hanzo, Kiriko",
-          "reasoning": ""
+          "reasoning": "Flee the stronghold together"
         },
         {
           "locationName": "",
           "country": "Shion,",
-          "reasoning": ""
+          "reasoning": "Orders Hanzo's execution to crush the Hopes of the people"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Null Sector,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "Hashimoto Clan,",
-          "reasoning": ""
+          "country": "Null Sector, Hashimoto Clan,",
+          "reasoning": "The Hashimoto use the panic of the invasion to take advantage of the innocent"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Hashimoto grunts assault citizens as panic rages in Japan following the arrival of Null Sector",
+        "Shimada Dragons seen on a Shibuyan alley, is the clan returning to the city?"
+      ],
       "sources": [
         {
           "text": "Where Honor Lives",
@@ -19574,7 +19664,7 @@
         {
           "locationName": "",
           "country": "Toshiro,",
-          "reasoning": ""
+          "reasoning": "Ordered to confirm Hanzo's identity"
         }
       ]
     },
@@ -19582,7 +19672,7 @@
       "name": "Resistance",
       "locationType": "earth",
       "cityDisplayName": "Rio de Janeiro, Brazil",
-      "description": "No description available.",
+      "description": "When the Null Sector Carrier loomed over Rio, Lúcio hurried into the Favelas and began evacuating as many people as he could, using his Sonic equipment to keep the Null Sector Troops at bay. As the fight got worse, he managed to see the Overwatch's actions in Paris, and as a lifelong admirer of heroes like them, he decided to send out a transmission pleading for their help. He would hold Null Sector off for as long as he could, but the local resistance was losing ground, and they could really use their help. Without even knowing if the message would reach Overwatch, he sent his Hail Mary, welcoming time back after years of being shut down.\n\nWinston's team had General Osei from the IJC already up in arms about his reckless choices, claiming that even if the world is on fire they can't just go around avoiding the law. Still, with the Invasion hitting so many cities at once, Overwatch was more than happy to help out, so they headed to Rio where they joined forces with Lúcio at his club to plan a strategy. After making their way through the city and onto the beachside, they decided that in order to put an end to the reinforcements, they had to take the battle straight to the carrier. \n\nAfter flying their way inside, the team took down the power source and the Charger unit that guarded it, barely making it out alive as the warship exploded. With Rio safe from the attack, Lúcio offered to help Overwatch in return for their aid, so he took off to Gibraltar with them, officially joining the team. His father Benicio later sending his regards to Winston for taking him in, as he knew how much he always dreamed of walking next to heroes of old, and after everything that went down with Vishkar, they both knew what it meant to be labelled as a criminal for trying to do what was right. The way Benicio saw it, this world was long overdue a new perspective, and he knew his son could help Overwatch achive that.",
       "image": "",
       "lat": -22.9110137,
       "lon": -43.2093727,
@@ -19592,40 +19682,43 @@
         {
           "locationName": "Rio de Janeiro, Brazil",
           "country": "Brazil",
-          "reasoning": ""
+          "reasoning": "Overwatch responds Lúcio's message and arrives to Rio"
         }
       ],
       "heroFilterPlaces": [
         {
           "locationName": "",
           "country": "Lúcio",
-          "reasoning": ""
+          "reasoning": "Contacts Overwatch for help with the Invasion"
         },
         {
           "locationName": "",
           "country": "Winston, Tracer, Mei, Reinhardt, Mercy, Genji, Echo,",
-          "reasoning": ""
+          "reasoning": "Aid in stopping the mothership in Rio"
         },
         {
           "locationName": "",
           "country": "Brigitte,",
-          "reasoning": ""
+          "reasoning": "Pilots Overwatch's ship"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
           "country": "Null Sector,",
-          "reasoning": ""
+          "reasoning": "Invades Rio until the mothership is destroyed"
         },
         {
           "locationName": "",
           "country": "Overwatch,",
-          "reasoning": ""
+          "reasoning": "Defies IJC orders and travels to Rio"
         }
       ],
       "yearEnd": null,
-      "headlines": [],
+      "headlines": [
+        "Overwatch destroys Null Sector carrier looming over Rio",
+        "Brazilian celebrity and activitst Lúcio joins Overwatch's effort against Null Sector"
+      ],
       "sources": [
         {
           "text": "Invasion, Resistence",
@@ -19636,13 +19729,13 @@
         {
           "locationName": "",
           "country": "Benicio,",
-          "reasoning": ""
+          "reasoning": "Thanks Winston for takin in his son"
         }
       ]
     },
     {
       "name": "Randevu",
-      "description": "No description available.",
+      "description": "After D.va was granted clearance to leave Korea, Cassidy's team took off to regroup at Watchpoint: Gibraltar alongside the main theme. Fareeha was piloting the ship and Baptiste, feeling like a complete outside, tried to open up with her about Cassidy. Truth be told, he found himself liking the cowboy, but given how close he and Fareeha acted, he assumed they were an item. Fareeha instead saw him more like a brother, and besides she had her eyes on someone else already, a doctor Baptiste knew well. Bonding over their shared admiration for Cassidy and Angela, as well as being able to open up on their sexuality made Baptiste feel slightly more at ease, but he was still not willing to tell anyone else he was ex Talon, fearing what they thought if he confessed.\n\nWhen Winston's team arrived in Gibraltar, they were surprised by the additional personnel and firepower they found, as now that the themes had merged, their chances to make a dent in Null Sector's attacks got a lot better, but this was still a minuscule fraction of what Overwatch used to have. Null Sector's forces were too large to fight head on, and if Overwatch hoped to be able to stop the invasion, they needed a more tactical approach, and someone able to better coordinate the larger team. If they were going to pull this off, there was still one more person who could take over as Captain, Vivian Chase.\n\nThe issue was that Toronto had been hit heavier than most other cities, and Null Sector managed to take down communication between most troops in the group. The team did not fully know Null Sector's motives behind the invasion, but they always claimed to bring Omnic liberation. Because of that, the history of the city came to mind. While modern Toronto is a very Omnic welcoming city, where many followers of the Shambali and even self-proclaimed Phreaks championed their unity, the early days after the crisis when Wilcox Engineering hired the Omnics illegally to rebuild was a massive scandal that defined the path towards Omnic rights. If this history is the reason why Null Sector unleashed hell in Canada, it meant Null Sector was not just acting on behalf of the injustices Omnics suffered today, but rather this invasion was retribution for decades worth of struggle, even those that the world had already moved away from. Regardless of their motives, Toronto needed Overwatch's help, especially if they wished to find Vivian before it was too late.",
       "locationType": "earth",
       "lat": 36.1407517,
       "lon": -5.345374,
@@ -19655,17 +19748,14 @@
         {
           "locationName": "Watchpoint: Gibraltar",
           "country": "Gibraltar",
-          "reasoning": "",
+          "reasoning": "Overweatch regroups on Gibraltar to prepare for a more tactical approach",
           "lat": 36.1407517,
           "lon": -5.345374
-        },
-        {
-          "locationName": "",
-          "country": "Gibraltar,",
-          "reasoning": ""
         }
       ],
-      "headlines": [],
+      "headlines": [
+        "Multiple cities requesting Overwatch's help in spite of the IJC dennouncing their comeback"
+      ],
       "sources": [
         {
           "text": "Invasion, Liberation",
@@ -19680,36 +19770,31 @@
         {
           "locationName": "",
           "country": "Winston, Cassidy,",
-          "reasoning": ""
+          "reasoning": "Coordinate the two teams and agree that Vivian should be recruited next"
         },
         {
           "locationName": "",
           "country": "Tracer, Mei, Genji, Mercy, Reinhardt, Brigitte, Echo,",
-          "reasoning": ""
+          "reasoning": "Arrive from the Rio team"
         },
         {
           "locationName": "",
           "country": "Baptiste, D.va, Pharah, Zarya,",
-          "reasoning": ""
+          "reasoning": "Arrive from the Busan team"
         }
       ],
       "factionFilterPlaces": [
         {
           "locationName": "",
-          "country": "Overwatch,",
-          "reasoning": ""
-        },
-        {
-          "locationName": "",
-          "country": "IJC,",
-          "reasoning": ""
+          "country": "Overwatch, IJC,",
+          "reasoning": "Overwatch plans further interventions in spite of the IJC's requests"
         }
       ],
       "npcFilterPlaces": [
         {
           "locationName": "",
           "country": "Osai,",
-          "reasoning": ""
+          "reasoning": "Continues to opose Overwatch's activity"
         }
       ]
     },
@@ -19924,7 +20009,14 @@
         }
       ],
       "yearEnd": null,
-      "headlines": []
+      "headlines": [],
+      "npcFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Mirembe,",
+          "reasoning": ""
+        }
+      ]
     },
     {
       "name": "Ironclad Help",
@@ -23562,7 +23654,7 @@
       "heroFilterPlaces": [
         {
           "locationName": "",
-          "country": "Sigma,",
+          "country": "Sigma, Moira,",
           "reasoning": ""
         },
         {
@@ -23937,40 +24029,6 @@
       ]
     },
     {
-      "name": "Masterpiece",
-      "description": "No description available.",
-      "locationType": "earth",
-      "lat": 0,
-      "lon": 0,
-      "image": "",
-      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
-      "yearStart": 2080,
-      "yearEnd": null,
-      "eraName": "The Reign of Talon",
-      "secondaryCountryPlaces": [
-        {
-          "locationName": "Watchpoint: Grímsvötn, Iceland",
-          "country": "Iceland",
-          "reasoning": ""
-        }
-      ],
-      "headlines": [],
-      "sources": [
-        {
-          "text": "Cost of Life",
-          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
-          "urls": [
-            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
-            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
-          ]
-        },
-        {
-          "text": "Breakout",
-          "url": "https://www.youtube.com/watch?v=h5dwH7nx9do"
-        }
-      ]
-    },
-    {
       "name": "Ultimatum",
       "description": "No description available.",
       "locationType": "earth",
@@ -24093,6 +24151,144 @@
           "locationName": "",
           "country": "Titus,",
           "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "Masterpiece",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 0,
+      "lon": 0,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Grímsvötn, Iceland",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Grímsvötn, Iceland",
+          "country": "Iceland",
+          "reasoning": ""
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Cost of Life",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta86aa83bc3687adf/6aab21212c0580c09c274054/OW_PrisonBreak_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=2ZHZBa-Zt2c"
+          ]
+        },
+        {
+          "text": "Breakout",
+          "url": "https://www.youtube.com/watch?v=h5dwH7nx9do"
+        }
+      ],
+      "heroFilterPlaces": [
+        {
+          "locationName": "",
+          "country": "Doctrine,",
+          "reasoning": ""
+        },
+        {
+          "locationName": "",
+          "country": "Doomfist,",
+          "reasoning": ""
+        }
+      ]
+    },
+    {
+      "name": "System Bypass",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 36.1407517,
+      "lon": -5.345374,
+      "image": "",
+      "cityDisplayName": "Watchpoint: Gibraltar",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Watchpoint: Gibraltar",
+          "country": "Gibraltar",
+          "reasoning": "",
+          "lat": 36.1407517,
+          "lon": -5.345374
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Overwatch Undivided",
+          "url": "https://www.webtoons.com/en/action/overwatch/list?title_no=9843"
+        }
+      ]
+    },
+    {
+      "name": "Until the End",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Until the End",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltb2f9e1a01694a8e4/6acd3ce955641d7063f35eef/Endgame_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltb2f9e1a01694a8e4/6acd3ce955641d7063f35eef/Endgame_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=heZa_uk-nus"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fracture",
+      "description": "No description available.",
+      "locationType": "earth",
+      "lat": 41.8933203,
+      "lon": 12.4829321,
+      "image": "",
+      "cityDisplayName": "Colosseo, Italy",
+      "yearStart": 2080,
+      "yearEnd": null,
+      "eraName": "The Reign of Talon",
+      "secondaryCountryPlaces": [
+        {
+          "locationName": "Colosseo, Italy",
+          "country": "Italy",
+          "reasoning": "",
+          "lat": 41.8933203,
+          "lon": 12.4829321
+        }
+      ],
+      "headlines": [],
+      "sources": [
+        {
+          "text": "Fracture",
+          "url": "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte3c66b9a14750de5/6ac821a64b66aa4b2591da0d/OW_Bomb_EN_FNL.pdf",
+          "urls": [
+            "https://blz-contentstack-assets.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte3c66b9a14750de5/6ac821a64b66aa4b2591da0d/OW_Bomb_EN_FNL.pdf",
+            "https://www.youtube.com/watch?v=-pZ7BtLTPSw"
+          ]
         }
       ]
     }
