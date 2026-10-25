@@ -210,6 +210,10 @@
       "displayName": "Numbani City of Harmony"
     },
     {
+      "filename": "Polynesian League",
+      "displayName": "Polynesian League"
+    },
+    {
       "filename": "Blackwatch",
       "displayName": "Blackwatch"
     },
@@ -806,6 +810,9 @@
       "New Era"
     ],
     "Pacific Energy Solutions": [
+      "Default"
+    ],
+    "Polynesian League": [
       "Default"
     ],
     "Search & Rescue": [

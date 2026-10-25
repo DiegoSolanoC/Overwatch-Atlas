@@ -9939,6 +9939,16 @@
       "y": 5770.134864566058,
       "scale": 3,
       "bgColor": null
+    },
+    {
+      "id": "cn-1780352000000-polyleague",
+      "kind": "faction",
+      "factionFilename": "Polynesian League",
+      "factionDisplay": "Polynesian League",
+      "x": 13680,
+      "y": 6420,
+      "scale": 3,
+      "bgColor": "#8ecfff"
     }
   ],
   "edges": [
